@@ -1,0 +1,87 @@
+aliases:
+  commands:
+  - PLUS-CHANGE, CHANGE
+  names:
+  - Mobius West
+applications: []
+attribution:
+  ocf_contributors: []
+  original_authors: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: not-started
+canonical:
+  command:
+    modes: []
+    primary: PLUS-PROGRAM
+  name: Mobius West
+chains: []
+claims:
+  intended_effects: []
+  prohibited_claims:
+  - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+classification:
+  primary_domain: experimental
+  secondary_domains:
+  - foundation
+companions: []
+compatibility:
+  legacy_commands:
+  - PLUS-CHANGE, CHANGE
+  rationale: Legacy two-word cue PLUS-CHANGE, CHANGE is retained; concise cue PLUS-PROGRAM is proposed
+    for review.
+  state: bridge-trainable
+contributor:
+  contact: null
+  name: null
+history:
+- date: '2026-09-12'
+  note: Initial legacy mapping record created by bootstrap generator.
+  version: 0.1.0
+id: OCF-EXP-001
+incompatible_functions: []
+legacy:
+  command_status: proposed
+  commands:
+  - PLUS-CHANGE, CHANGE
+  name: MOBIUS WEST
+  source_availability: available
+  source_system: Monroe H-PLUS
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+ocf:
+  command_review: review-required
+  reimplementation_status: planned
+purpose:
+  community_description: Legacy 'change' practice for breaking personal loops; proposed concise cue PLUS-PROGRAM.
+  source_description: null
+  summary: Legacy 'change' practice for breaking personal loops; proposed concise cue PLUS-PROGRAM.
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+schema_version: '1.0'
+slug: mobius-west
+sources:
+- locator: null
+  title: OCF Bootstrap Specification — Legacy Function Index
+  type: legacy-reference
+  url: null
+status:
+  evidence: community-hypothesis
+  implementation: specification-only
+  maturity: legacy-mapped
+use_cases: []
+version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'

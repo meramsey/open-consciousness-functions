@@ -1,0 +1,364 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/function.schema.json",
+  "title": "OCF Function",
+  "description": "Canonical record for an Open Consciousness Functions (OCF) function. A function capability is modeled independently from its command(s), training script, and audio implementation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "slug",
+    "canonical",
+    "legacy",
+    "ocf",
+    "aliases",
+    "classification",
+    "compatibility",
+    "status",
+    "lifecycle",
+    "purpose",
+    "safety",
+    "claims",
+    "audio",
+    "sources",
+    "attribution",
+    "version"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "contributor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": ["string", "null"] },
+        "contact": { "type": ["string", "null"] }
+      }
+    },
+    "canonical": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "command"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "command": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["primary", "modes"],
+          "properties": {
+            "primary": { "type": ["string", "null"] },
+            "modes": {
+              "type": "array",
+              "items": { "type": "string" },
+              "uniqueItems": true
+            }
+          }
+        }
+      }
+    },
+    "legacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_system", "name", "commands", "command_status", "source_availability"],
+      "properties": {
+        "source_system": { "type": ["string", "null"] },
+        "name": { "type": "string" },
+        "commands": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "command_status": {
+          "type": "string",
+          "enum": ["unchanged", "normalized", "proposed", "review-required"]
+        },
+        "source_availability": {
+          "type": "string",
+          "enum": ["available", "unavailable", "pending-source-review"]
+        },
+        "source_notes": { "type": ["string", "null"] }
+      }
+    },
+    "ocf": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reimplementation_status", "command_review"],
+      "properties": {
+        "reimplementation_status": {
+          "type": "string",
+          "enum": ["planned", "draft", "in-progress", "complete", "released"]
+        },
+        "command_review": {
+          "type": "string",
+          "enum": ["pending", "approved", "needs-review", "review-required", "superseded"]
+        },
+        "testing_status": {
+          "type": ["string", "null"],
+          "enum": ["not-tested", "informal", "reported", "published"]
+        }
+      }
+    },
+    "aliases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["names", "commands"],
+      "properties": {
+        "names": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "commands": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary_domain", "secondary_domains"],
+      "properties": {
+        "primary_domain": {
+          "type": "string",
+          "enum": [
+            "foundation",
+            "cognition",
+            "emotion",
+            "communication",
+            "body",
+            "performance",
+            "sensory",
+            "sleep",
+            "lifestyle",
+            "emergency",
+            "automation",
+            "experimental"
+          ]
+        },
+        "secondary_domains": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "foundation",
+              "cognition",
+              "emotion",
+              "communication",
+              "body",
+              "performance",
+              "sensory",
+              "sleep",
+              "lifestyle",
+              "emergency",
+              "automation",
+              "experimental"
+            ]
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state"],
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": [
+            "unchanged",
+            "alias-listed",
+            "bridge-trainable",
+            "canonical-first",
+            "legacy-first",
+            "none"
+          ]
+        },
+        "rationale": { "type": ["string", "null"] },
+        "legacy_commands": { "type": "array", "items": { "type": "string" } },
+        "strategy": { "type": "string" },
+        "review_state": { "type": "string" }
+      }
+    },
+    "status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["maturity", "implementation", "evidence"],
+      "properties": {
+        "maturity": {
+          "type": "string",
+          "enum": ["legacy-mapped", "community-proposed", "experimental", "accepted", "deprecated"]
+        },
+        "implementation": {
+          "type": "string",
+          "enum": ["specification-only", "script-drafted", "script-approved", "implemented", "released"]
+        },
+        "evidence": {
+          "type": "string",
+          "enum": [
+            "source-described",
+            "community-hypothesis",
+            "anecdotal",
+            "experimental",
+            "externally-supported",
+            "unverified",
+            "pending-source-review"
+          ]
+        }
+      }
+    },
+    "lifecycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["persistence", "activation", "release"],
+      "properties": {
+        "persistence": {
+          "type": "string",
+          "enum": ["temporary", "permanent", "persistent", "conditional"]
+        },
+        "activation": {
+          "type": "string",
+          "enum": ["manual", "automatic", "conditional", "continuous"]
+        },
+        "trigger_conditions": { "type": "array", "items": { "type": "string" } },
+        "release": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["required", "command"],
+          "properties": {
+            "required": { "type": "boolean" },
+            "command": { "type": ["string", "null"] }
+          }
+        }
+      }
+    },
+    "purpose": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "source_description", "community_description"],
+      "properties": {
+        "summary": { "type": "string" },
+        "source_description": { "type": ["string", "null"] },
+        "community_description": { "type": "string" }
+      }
+    },
+    "applications": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "use_cases": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "companions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "incompatible_functions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "chains": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "safety": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "notes"],
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": ["general", "health", "emergency", "experimental"]
+        },
+        "notes": { "type": "array", "items": { "type": "string" } },
+        "medical_relevance": { "type": "boolean" }
+      }
+    },
+    "claims": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["intended_effects", "prohibited_claims"],
+      "properties": {
+        "intended_effects": { "type": "array", "items": { "type": "string" } },
+        "prohibited_claims": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "audio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["script_status", "implementation_status", "background_audio"],
+      "properties": {
+        "script_status": {
+          "type": "string",
+          "enum": ["not-started", "draft", "review", "approved", "published"]
+        },
+        "implementation_status": {
+          "type": "string",
+          "enum": ["not-started", "planned", "in-progress", "completed", "released"]
+        },
+        "background_audio": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["strategy", "engine", "preset"],
+          "properties": {
+            "strategy": { "type": "string", "enum": ["optional", "required", "none"] },
+            "engine": { "type": ["string", "null"] },
+            "preset": { "type": ["string", "null"] }
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "title", "locator", "url"],
+        "properties": {
+          "type": { "type": "string" },
+          "title": { "type": "string" },
+          "locator": { "type": ["string", "null"] },
+          "url": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "attribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["original_authors", "ocf_contributors"],
+      "properties": {
+        "original_authors": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "ocf_contributors": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+      }
+    },
+    "version": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["current", "created", "updated"],
+      "properties": {
+        "current": { "type": "string" },
+        "created": { "type": "string" },
+        "updated": { "type": "string" }
+      }
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["version", "date", "note"],
+        "properties": {
+          "version": { "type": "string" },
+          "date": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    }
+  }
+}

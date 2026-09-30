@@ -23,7 +23,14 @@ community-authored consciousness-function training exercises.
   generated documentation).
 - A **proposal/review workflow** (RFC/PEP style).
 - An **audio implementation model** with optional generated background audio
-  via the [Farfield](https://github.com/txus/farfield) engine.
+  via the [Farfield](https://github.com/txus/farfield) and
+  [SBaGenX](https://github.com/lm7137/SBaGenX) engines, or even-timbre beds
+  composed from operator-supplied **reference masters** (`reference-master`
+  engine, e.g. `F10`/`F11` bed + access excerpt).
+- A **timed-transcript authoring pipeline** — timed lyrics (`.lrc`), SRT,
+  WebVTT, text, and Markdown become canonical **OCF timed YAML** scripts
+  (`ocf transcript import`); from there, sections/states, analysis, and
+  buildable spoken audio — see `docs/TIMED_TRANSCRIPTS.md`.
 
 ## What OCF is not
 
@@ -41,6 +48,22 @@ community-authored consciousness-function training exercises.
 55 legacy mappings are in place. Function records start at
 `specification-only`; community scripts, audio implementations, and reviews
 are welcome through the proposal workflow.
+
+The **timed-transcript / audio toolchain** has two parts. The **transcript
+pipeline** (`.lrc`/`.srt`/`.vtt`/`.txt`/`.md` → OCF timed YAML, sections,
+state/focus levels, analysis, export, timing-only templates) is **shipped** as
+`ocf transcript …`. The **voice/TTS and mixing/mastering** chain (`ocf voice
+…` and `ocf audio build …`) is also **shipped**: optional TTS backends
+(espeak-ng/espeak/piper) render narration per cue, mixing is pure stdlib PCM
+(Farfield/SBaGenX beds) or ffmpeg `amix` (reference-master beds), and
+FLAC/MP3 encode via ffmpeg/flac when available — otherwise everything
+degrades gracefully with install guidance. Only the **preparation** module
+(`ocf preparation …`) remains specified (v0.4+, not yet shipped).
+`docs/TIMED_TRANSCRIPTS.md` marks each capability as *implemented*, *specified*,
+or *planned*. Planned v0.5 work — localization/locale packs, composable
+preparation stages (optional affirmation, oHm/resonant-tuning), and
+focus-state auditory cue events — is designed (not shipped) in
+`docs/PREPARATION_MODULE.md`, `docs/LOCALIZATION.md`, and `ROADMAP.md`.
 
 ## Quick start
 
@@ -64,6 +87,38 @@ python3 -m pytest                             # run the test suite
 
 See `CONTRIBUTING.md` for the easy path, and `docs/USER_GUIDE.md` for the
 full command reference.
+
+## Adding a function from timed lyrics
+
+A *timed-lyrics* file (LRC) is a lyric-style timed transcript whose lines are
+timestamped, e.g. `[00:03:30.00]Let the body settle and relax.`. Many existing
+timed meditation reads exist this way. OCF's transcript pipeline turns such a
+file into a canonical script (live today) and, onward, into a function record
+and a built audio implementation:
+
+```text
+timed lyrics (.lrc)  or  .srt / .vtt / .txt / .md / OCF timed YAML
+        │  ocf transcript import FILE          (live)
+        ▼
+OCF timed YAML  (canonical editable script under audio/scripts/)
+        │  ocf transcript segment/analyze/review FILE   (live)
+        ▼
+function record  (functions/<domain>/<slug>.yaml)
+        │  ocf new audio  (implementation manifest)
+        ▼
+voice (TTS backend: espeak-ng · espeak · piper)     (live; profiles in audio/voices/)
+        +  background (Farfield · SBaGenX · reference-master, optionally state-aware)
+        │  ocf voice render / ocf audio build       (live)
+        ▼
+lossless master (WAV/FLAC) + render manifest + checksums
+```
+
+The step-by-step walkthrough — including sample LRC input, canonical OCF timed
+YAML output, authoring modes, timing rules, and a `supported / specified`
+status matrix — lives in **[`docs/TIMED_TRANSCRIPTS.md`](docs/TIMED_TRANSCRIPTS.md)**.
+The normative specification is
+`OCF_OpenCode_Bootstrap_Prompt_v3_Transcript_Focus_Preparation.md`
+(sections 32, 44–50).
 
 ## Example function record
 
@@ -120,14 +175,53 @@ future audio — never presented as reconstructed original Monroe audio.
 
 ## Audio architecture
 
-Audio is modeled independently from functions:
+Audio is modeled independently from functions. A spoken session is produced
+by layered, independent artifacts:
 
-```
-function capability  ->  training script  ->  audio implementation
-                                          ->  optional background preset
+```text
+function capability
+        │
+        ▼
+timed transcript (OCF timed YAML / audio/scripts/)
+        │
+        ├─────────────► spoken narration stem  (TTS backend per cue)
+        └─────────────► background stem       (Farfield · SBaGenX · reference-master)
+                            │
+                            ▼ (mixer — pure stdlib PCM)
+       mastered output (WAV/FLAC) + render manifest + checksums
 ```
 
-see `docs/AUDIO_STANDARD.md`, `docs/BACKGROUND_AUDIO.md`.
+A function is never tied to a single recording: one function may have several
+audio implementations, several transcripts, and several background presets.
+See `docs/AUDIO_STANDARD.md`, `docs/BACKGROUND_AUDIO.md`, and
+`docs/TIMED_TRANSCRIPTS.md`.
+
+## Transcript & audio pipeline — what is supported
+
+| Artifact              | Formats / engines                                   | Status         |
+| --------------------- | --------------------------------------------------- | -------------- |
+| Function records      | canonical YAML (`schemas/function.schema.json`)     | implemented    |
+| Proposals             | Markdown + YAML front matter                        | implemented    |
+| Audio implementations | YAML manifests (`OCF-AUDIO-*`)                      | implemented    |
+| Background presets    | YAML manifests (`OCF-BG-*`), engines: Farfield · SBaGenX · reference-master | implemented    |
+| Timed transcripts     | import LRC/SRT/VTT/txt/md → **OCF timed YAML** (`audio/scripts/`) | implemented    |
+| Sections / states     | role sections, state profiles, analysis, export, timing templates | implemented    |
+| Voices / TTS          | optional backends: espeak-ng · espeak · piper, per-cue WAV render | implemented     |
+| Mixing / mastering    | stdlib PCM mix, WAV/FLAC/MP3 via ffmpeg/flac, `OCF-RENDER-*` manifest | implemented     |
+| Voice cloning         | OpenVoice · Kokoro · pre-recorded narration                        | specified       |
+
+"Specified" means the format and CLI behavior are fully defined in
+`OCF_OpenCode_Bootstrap_Prompt_v3_Transcript_Focus_Preparation.md` and tracked
+in `ROADMAP.md`; the corresponding `ocf preparation …` commands are not yet
+shipped. "Implemented" rows have live, tested commands.
+`ocf voice doctor` checks which optional TTS backends are installed.
+
+**Audio binaries and Git LFS.** The repository vendors no rendered or
+third-party audio: builds and citation-only material stay local
+(`.gitignore`, licensing grounds). Genuinely committable binary assets
+(OCF-owned or clearly licensed community audio, figures) are tracked as
+**Git LFS** objects by `.gitattributes`, so a contributor just adds the file.
+See `CONTRIBUTING.md` ("Large files and Git LFS").
 
 ## Farfield integration
 

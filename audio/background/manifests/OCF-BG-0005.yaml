@@ -1,0 +1,35 @@
+schema_version: "1.0"
+id: "OCF-BG-0005"
+name: "Focus 11 — older-FLAC measured sustained state (Farfield)"
+author: "OCF"
+engine: "farfield"
+engine_source:
+  repository: "https://github.com/txus/farfield"
+  version: "0.1.0"
+preset:
+  file: "audio/background/presets/farfield/focus-11-a.yaml"
+render:
+  output: "audio/background/rendered/focus-11-a-farfield.wav"
+  seed: null
+  deterministic: true
+usage:
+  functions:
+  - "OCF-FND-002"
+  audio_implementations: []
+provenance:
+  design: "derived"
+  notes: |
+    OCF-authored Farfield preset measured from the operator-supplied older
+    Focus 11 FLAC (06:54-12:27, citation-only, never vendored): binaural
+    4.0 Hz pair (L 167.35 / R 171.35, right high) and ~7.4 Hz pair
+    (L 412.3 / R 404.9, left high) over a pink bed, 30-minute sustained
+    state with no carrier drift. The preset file is OCF's own parametric
+    representation of the measurement; it contains no recording audio.
+    Mirrors presets/farfield/focus-11-a.yaml (upstream contribution staging).
+safety:
+  headphone_notice: true
+  driving_warning: true
+  notes:
+  - "Binaural pairs require headphones to be heard as intended."
+  - "Background audio is not sleep/medical/performance therapy."
+license: "Apache-2.0 (OCF-authored preset); measurement source citation-only"

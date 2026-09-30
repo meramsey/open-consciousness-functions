@@ -1,0 +1,60 @@
+name: Command change
+description: Request a canonical command change (documented change record).
+title: "[Command] <legacy> -> <OCF>"
+labels: ["command-change"]
+body:
+  - type: markdown
+    attributes:
+      value: "Changing a command requires the full change record. See `docs/COMMAND_GRAMMAR.md`. Good short commands (PLUS-THINK, PLUS-FOCUS) are preserved, not renamed."
+  - type: input
+    id: legacy
+    attributes:
+      label: Legacy command
+    validations:
+      required: true
+  - type: input
+    id: proposed
+    attributes:
+      label: Proposed OCF command
+    validations:
+      required: true
+  - type: input
+    id: oldwords
+    attributes:
+      label: Old spoken-word count
+    validations:
+      required: true
+  - type: input
+    id: newwords
+    attributes:
+      label: New spoken-word count
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for change
+      description: "Cryptic? arbitrary? awkward? inconsistent with a useful pattern?"
+    validations:
+      required: true
+  - type: dropdown
+    id: compat
+    attributes:
+      label: Compatibility strategy
+      options:
+        - alias-listed
+        - bridge-trainable
+        - canonical-first
+        - legacy-first
+        - none
+    validations:
+      required: true
+  - type: dropdown
+    id: review
+    attributes:
+      label: Requested review state
+      options:
+        - needs-review
+        - review-required
+    validations:
+      required: true

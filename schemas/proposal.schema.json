@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/proposal.schema.json",
+  "title": "OCF Proposal",
+  "description": "RFC/PEP-style proposal for a new or changed OCF function or policy.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "title",
+    "status",
+    "date",
+    "authors",
+    "problem",
+    "purpose",
+    "proposed_name",
+    "proposed_command",
+    "command_length_rationale",
+    "activation",
+    "release",
+    "persistence",
+    "safety",
+    "compatibility",
+    "evidence_state",
+    "alternatives",
+    "implementation",
+    "testing",
+    "sources",
+    "licensing"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0" },
+    "id": { "type": "string", "pattern": "^OCFP-[0-9]{4}$" },
+    "title": { "type": "string", "minLength": 1 },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "review",
+        "experimental",
+        "accepted",
+        "deprecated",
+        "superseded",
+        "rejected",
+        "withdrawn"
+      ]
+    },
+    "date": { "type": "string" },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "contact": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "related_functions": { "type": "array", "items": { "type": "string" } },
+    "problem": { "type": "string" },
+    "purpose": { "type": "string" },
+    "proposed_name": { "type": "string" },
+    "proposed_command": { "type": ["string", "null"] },
+    "command_length_rationale": { "type": "string" },
+    "activation": { "type": "string" },
+    "release": { "type": "string" },
+    "persistence": {
+      "type": "string",
+      "enum": ["temporary", "permanent", "persistent", "conditional"]
+    },
+    "safety": { "type": "string" },
+    "compatibility": { "type": "string" },
+    "evidence_state": {
+      "type": "string",
+      "enum": [
+        "source-described",
+        "community-hypothesis",
+        "anecdotal",
+        "experimental",
+        "externally-supported",
+        "unverified",
+        "pending-source-review"
+      ]
+    },
+    "alternatives": { "type": "string" },
+    "implementation": { "type": "string" },
+    "testing": { "type": "string" },
+    "sources": { "type": "array", "items": { "type": "string" } },
+    "licensing": { "type": "string" }
+  }
+}

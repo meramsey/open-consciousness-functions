@@ -1,0 +1,49 @@
+name: lint
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install ruff
+        run: python -m pip install ruff
+      - name: ruff check
+        run: ruff check scripts tests
+      - name: ruff format check
+        run: ruff format --check scripts tests
+
+  markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          config: .markdownlint.json
+          globs: "**/*.md"
+      - name: Check generated-file headers
+        run: |
+          for f in FUNCTION_INDEX.md legacy/hplus-command-map.csv docs/COMMAND_REVIEW.md; do
+            head -n 1 "$f" | grep -q "GENERATED FILE" || { echo "$f missing generated header"; exit 1; }
+          done
+
+  internal-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check internal markdown links
+        run: python scripts/tools/check_markdown_links.py

@@ -1,0 +1,96 @@
+schema_version: "1.0"
+
+id: "OCF-XXX-000"
+slug: "template-function"
+
+canonical:
+  name: "Template Function"
+  command:
+    primary: "PLUS-TEMPLATE"
+    modes:
+      - "PLUS-TEMPLATE MORE"
+      - "PLUS-TEMPLATE LESS"
+
+legacy:
+  source_system: "Monroe H-PLUS"
+  name: "TEMPLATE"
+  commands:
+    - "PLUS-TEMPLATE"
+  command_status: "unchanged" # unchanged | normalized | proposed | review-required
+  source_availability: "pending-source-review" # available | unavailable | pending-source-review
+
+ocf:
+  reimplementation_status: "planned" # planned | draft | in-progress | complete | released
+  command_review: "needs-review" # pending | approved | needs-review | review-required | superseded
+
+aliases:
+  names: []
+  commands: []
+
+classification:
+  primary_domain: "foundation"
+  secondary_domains: []
+
+compatibility:
+  state: "unchanged" # unchanged | alias-listed | bridge-trainable | canonical-first | legacy-first | none
+  rationale: null
+  legacy_commands: []
+
+status:
+  maturity: "community-proposed" # legacy-mapped | community-proposed | experimental | accepted | deprecated
+  implementation: "specification-only"
+  evidence: "unverified" # source-described | community-hypothesis | anecdotal | experimental | externally-supported | unverified
+
+lifecycle:
+  persistence: "temporary" # temporary | permanent | persistent | conditional
+  activation: "manual" # manual | automatic | conditional | continuous
+  trigger_conditions: []
+  release:
+    required: false
+    command: null
+
+purpose:
+  summary: "One-sentence purpose of the function."
+  source_description: null
+  community_description: ""
+
+applications: []
+use_cases: []
+companions: []
+incompatible_functions: []
+chains: []
+
+safety:
+  level: "general" # general | health | emergency | experimental
+  notes: []
+  medical_relevance: false
+
+claims:
+  intended_effects: []
+  prohibited_claims:
+    - "No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed."
+
+audio:
+  script_status: "not-started"
+  implementation_status: "not-started"
+  background_audio:
+    strategy: "optional" # optional | required | none
+    engine: "farfield"
+    preset: null
+
+sources:
+  - type: "pending-source-review"
+    title: "pending-source-review"
+    locator: null
+    url: null
+
+attribution:
+  original_authors: []
+  ocf_contributors: []
+
+version:
+  current: "0.1.0"
+  created: "YYYY-MM-DD"
+  updated: "YYYY-MM-DD"
+
+history: []

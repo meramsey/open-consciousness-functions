@@ -1,0 +1,34 @@
+schema_version: "1.0"
+id: "OCF-BG-0008"
+name: "Focus 11 — older-FLAC measured sustained state (SBaGenX)"
+author: "OCF"
+engine: "sbagenx"
+engine_source:
+  repository: "https://github.com/lm7137/SBaGenX"
+  version: "3.9.0-alpha.15"
+preset:
+  file: "audio/background/presets/sbagenx/focus-11-a.sbg"
+render:
+  output: "audio/background/rendered/focus-11-a-sbagenx.wav"
+  seed: null
+  deterministic: true
+usage:
+  functions:
+  - "OCF-FND-002"
+  audio_implementations: []
+provenance:
+  design: "derived"
+  notes: |
+    OCF-authored SBaGenX sequence measured from the operator-supplied older
+    Focus 11 FLAC (06:54-12:27, citation-only, never vendored): binaural
+    4.0 Hz pair (169.35-4.00) and ~7.4 Hz pair (408.60+7.40) over a pink
+    bed, 30-minute sustained state. The .sbg file is OCF's own parametric
+    representation of the measurement; it contains no recording audio.
+    Mirrors presets/sbagenx/focus-11-a.sbg (upstream contribution staging).
+safety:
+  headphone_notice: true
+  driving_warning: true
+  notes:
+  - "Binaural pairs require headphones to be heard as intended."
+  - "Background audio is not sleep/medical/performance therapy."
+license: "Apache-2.0 (OCF-authored preset); measurement source citation-only"

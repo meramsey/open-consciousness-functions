@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/background-audio.schema.json",
+  "title": "OCF Background Audio Preset Manifest",
+  "description": "Manifest for an optional background-audio synthesis preset. A background preset is modeled independently from functions and training scripts; one function may use several backgrounds and one background may be reused by several functions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "name",
+    "engine",
+    "engine_source",
+    "preset",
+    "render",
+    "usage",
+    "provenance",
+    "safety",
+    "license"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0" },
+    "id": { "type": "string", "pattern": "^OCF-BG-[0-9]{4}$" },
+    "name": { "type": "string", "minLength": 1 },
+    "author": { "type": ["string", "null"] },
+    "engine": { "type": "string", "enum": ["farfield", "sbagenx", "custom", "none", "reference-master"] },
+    "engine_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "version"],
+      "properties": {
+        "repository": { "type": ["string", "null"] },
+        "version": { "type": ["string", "null"] }
+      }
+    },
+    "preset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file"],
+      "properties": {
+        "file": { "type": ["string", "null"] }
+      }
+    },
+    "reference": {
+      "type": ["object", "null"],
+      "default": null,
+      "additionalProperties": false,
+      "required": ["source", "splices"],
+      "properties": {
+        "source": { "type": "string", "minLength": 1 },
+        "format": { "type": ["string", "null"] },
+        "splices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["source", "slice_start", "slice_length", "target_start"],
+            "properties": {
+              "source": { "type": "string", "minLength": 1 },
+              "format": { "type": ["string", "null"] },
+              "slice_start": { "type": "number", "minimum": 0 },
+              "slice_length": { "type": "number", "minimum": 0 },
+              "target_start": { "type": "number", "minimum": 0 },
+              "crossfade": { "type": "number", "minimum": 0 },
+              "note": { "type": ["string", "null"] }
+            }
+          }
+        }
+      }
+    },
+    "render": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["output", "seed", "deterministic"],
+      "properties": {
+        "output": { "type": ["string", "null"] },
+        "seed": { "type": ["integer", "null"] },
+        "deterministic": { "type": "boolean" }
+      }
+    },
+    "usage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["functions", "audio_implementations"],
+      "properties": {
+        "functions": { "type": "array", "items": { "type": "string" } },
+        "audio_implementations": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["design", "notes"],
+      "properties": {
+        "design": { "type": "string", "enum": ["original-ocf", "community", "third-party", "derived"] },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "safety": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["headphone_notice", "driving_warning"],
+      "properties": {
+        "headphone_notice": { "type": "boolean" },
+        "driving_warning": { "type": "boolean" },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "license": { "type": ["string", "null"] }
+  }
+}

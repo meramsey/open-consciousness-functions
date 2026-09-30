@@ -1,0 +1,13 @@
+# OCF Voice Profile — Piper en_US lessac medium (higher quality)
+# Requires the piper CLI (`pip install piper-tts`) and a local .onnx model.
+# The model itself is never committed; the path is expanded (~ and $VAR) at use time.
+schema_version: "1.0"
+id: "OCF-VOICE-0002"
+slug: "piper-lessac"
+name: "Piper en_US lessac medium"
+backend: "piper"
+language: "en_US"
+words_per_min: null
+piper_model: "~/.ocf/piper/en_US-lessac-medium.onnx"
+gain_db: null
+notes: "Neural TTS (~63MB model, Apache-2.0). OCF never vendors the model; edit piper_model to point at your own copy (tilde and $VAR are expanded)."

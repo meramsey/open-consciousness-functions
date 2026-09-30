@@ -1,0 +1,74 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Virtual environments
+.venv/
+venv/
+
+# Rendered background audio (large generated binaries)
+audio/background/rendered/*
+!audio/background/rendered/.gitkeep
+
+# Rendered audio (large generated binaries) plus per-build OCF-RENDER-* records.
+# These stay local; the committed audio/manifests/OCF-AUDIO-*.yaml carry the
+# provenance (checksums) for masters that are not vendored either. Keep the
+# directory alive so a fresh clone has the expected tree.
+audio/rendered/*
+!audio/rendered/.gitkeep
+
+# Timed scripts whose wording is imported from third-party narration (citation-only;
+# keep local, do not commit). Timing-only structural templates in audio/scripts are fine.
+audio/scripts/attention.yaml
+
+# Legacy references may be large / licensed; keep them local
+references/*.pdf
+references/*.mp3
+references/*.wav
+!references/.gitkeep
+!references/README.md
+
+# Local copies of third-party source files
+references/uploads/*
+!references/uploads/.gitkeep
+
+# Operator-supplied reference masters used by reference-master beds. These are
+# third-party audio and stay local: OCF-BG-0004 cites them but never vendors
+# them. The OCF-authored replacements are OCF-BG-0002/0011 under
+# audio/background/.
+/F10 V4 Volume Adjusted.flac
+/F11 V4.flac
+/*.flac
+/*.mp3
+/*.wav
+/*.ogg
+/*.aiff
+
+# Operator delivery archives. The committed content lives in
+# audio/background/presets/ (farfield/ + sbagenx/) and presets/ is the
+# upstream-contribution staging copy.
+/*.zip
+/presets/
+
+# Secrets
+.env
+*.key
+*.pem

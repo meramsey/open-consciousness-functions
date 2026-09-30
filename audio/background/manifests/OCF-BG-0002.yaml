@@ -1,0 +1,41 @@
+schema_version: "1.0"
+
+id: "OCF-BG-0002"
+name: "Attention focus arc (binaural 10-16 Hz, SBaGenX)"
+author: "pending-source-review"
+engine: "sbagenx"
+
+engine_source:
+  repository: "https://github.com/lm7137/SBaGenX"
+  version: "3.9.0-alpha.15"
+
+preset:
+  file: "audio/background/presets/attention-focus-arc.sbg"
+
+render:
+  output: "audio/background/rendered/attention-focus-bed-sbagenx.wav"
+  seed: null
+  deterministic: true
+
+usage:
+  functions: ["OCF-FND-002"]
+  audio_implementations: ["OCF-AUDIO-0001"]
+
+provenance:
+  design: "original-ocf"
+  notes: "OCF-authored .sbg arc mirroring the requested Attention focus arc:
+    alpha ~10 Hz hold 0-3:18, smooth slide to beta 16 Hz 3:18-6:31, 16 Hz hold
+    6:31-13:20, slide back to 10 Hz 13:20-16:54, then 10 Hz hold to the end.
+    Same carrier (200 Hz) so the beat frequency itself slides. SBaGenX is a
+    GPL-2.0 fork of SBaGen+ (Ruan Klein) of original SBaGen (uazu.net);
+    OCF invokes only its public CLI, no source is vendored."
+
+safety:
+  headphone_notice: true
+  driving_warning: true
+  notes:
+    - "Binaural beats require headphones; isochronic does not."
+    - "Binaural tones are low-level (30%) under a pink-noise bed; OCF makes no
+      psychoacoustic or health claims."
+
+license: "GPL-2.0"

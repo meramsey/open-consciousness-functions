@@ -1,0 +1,33 @@
+schema_version: "1.0"
+
+id: "OCF-BG-0000"
+name: "Neutral focus bed"
+author: "pending-source-review"
+engine: "farfield" # farfield | sbagenx | custom | none
+
+engine_source:
+  repository: "https://github.com/txus/farfield"
+  version: null
+
+preset:
+  file: "audio/background/presets/example.yaml"
+
+render:
+  output: "audio/background/rendered/example.wav"
+  seed: 12345
+  deterministic: true
+
+usage:
+  functions: []
+  audio_implementations: []
+
+provenance:
+  design: "original-ocf" # original-ocf | community | third-party | derived
+  notes: ""
+
+safety:
+  headphone_notice: true
+  driving_warning: true
+  notes: []
+
+license: "pending-source-review"

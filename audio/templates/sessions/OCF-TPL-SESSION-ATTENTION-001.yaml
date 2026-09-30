@@ -1,0 +1,199 @@
+schema_version: "1.0"
+id: "OCF-TPL-SESSION-ATTENTION-001"
+name: "Attention (PLUS-FOCUS) learning session — adapted legacy-arc shell"
+author: "OCF"
+origin: "reference-derived"
+license: "Apache-2.0"
+description: |
+  Session shell for the Attention function (PLUS-FOCUS) adapted from the
+  legacy Monroe H-PLUS Attention exercise arc (length 29:53): settle and
+  prepare, the tenth state, the access state, the instruction, closing the
+  channel, deep sleep to the twentieth state, the return, and the close.
+  All boilerplate — opening, access-open, access-close, sleep-induction,
+  count-to-twenty, return, and closing — is authored in the template from
+  converted legacy wording. The single contributor slot is:
+
+  1. focus11 - the PLUS-FOCUS instruction, five lines read twice in the
+               wakeful instruction window (mirroring the legacy double-read)
+               and re-run twice more as a barely audible underlay during the
+               twentieth-state hold (mixed at gain_db -24, ~17:41-26:22).
+
+  Contributor wording is placed verbatim and never rewritten. The composed
+  script is an adapted-from-legacy narration: its wording is citation-only
+  with respect to the source transcript, not original OCF prose.
+source:
+  format: ocf-timed-yaml
+  filename: "audio/scripts/attention.yaml"
+  sha256: "f12e20c5ef3020bef08563ad305d5c34fac9e6285f85c4808fe12607da6f21b6"
+  notes:
+    - "Adapted from the legacy Monroe H-PLUS Attention transcript (citation-only reference retained unchanged at audio/scripts/attention.yaml)."
+    - "The legacy arc, wording, and timing are preserved, with OCF function terminology substituted (PLUS-FOCUS, Knowledge -> knowledge function, session -> function learning exercise, access channel)."
+    - "The stray legacy '12' at 07:19.60 is dropped; the access-state count is a single '11' before the instruction."
+    - "The twentieth-state hold repeats the focus-11 instruction as a barely-audible underlay (~17:41-26:22, gain_db -24)."
+    - "Slot prose lives in audio/slots/attention/focus11.txt; bridge prose lives in this template."
+slots:
+  required: ["focus11"]
+  optional: []
+defaults:
+  line_seconds: 3.0
+  duration: 1800.0
+sections:
+  - id: opening
+    type: preparation
+    role: settle and reach the tenth state
+    start: 0.0
+    lines:
+      - at: 0.0
+        text: "This is your Open Consciousness function exercise to focus your attention."
+      - at: 29.88
+        text: "To prepare for this Open Consciousness function exercise, move now to make your body comfortable, whatever is best for you."
+      - at: 48.80
+        text: "You have made sure that you will not be interrupted during this learning period, and now get your body into your most relaxed position."
+      - at: 62.12
+        text: "Loosen any tight clothing. Stretch your arms and legs and let them droop, limp and relaxed."
+      - at: 69.44
+        text: "Turn your head slowly from side to side."
+      - at: 78.16
+        text: "Breathe easily and deeply. I will wait while you do this."
+      - at: 108.60
+        text: "Turn now to your energy conversion box and raise the heavy lid."
+      - at: 119.20
+        text: "Place inside it any worries, anxieties and concerns you are carrying right now."
+      - at: 126.36
+        text: "You do not need them now, and they will only get in the way of this session. Do this now."
+      - at: 168.16
+        text: "Close the lid of your energy conversion box. Close it tightly. Turn away. Breathe slowly and deeply and relax."
+      - at: 198.16
+        text: "Move now to the tenth state of total relaxation as I guide you."
+      - at: 222.00
+        text: "2"
+      - at: 235.32
+        text: "3"
+      - at: 250.60
+        text: "4"
+      - at: 252.00
+        text: "5"
+      - at: 282.00
+        text: "6"
+      - at: 301.36
+        text: "7"
+      - at: 312.00
+        text: "8"
+      - at: 334.96
+        text: "9"
+      - at: 342.00
+        text: "10"
+      - at: 361.20
+        text: "10"
+      - at: 361.88
+        text: "Relax calmly and serenely in the tenth state."
+  - id: access-open
+    type: access-open
+    role: open the access channel
+    start: 391.0
+    lines:
+      - at: 0.88
+        text: "You will open your access channel now, as I guide you."
+      - at: 20.88
+        text: "11"
+      - at: 24.56
+        text: "All parts of your being, from your conscious waking mind down to every living cell, are open to understand and act upon the instruction you are about to receive, to let it become the knowledge, the knowing, of your entire living system."
+      - at: 69.72
+        text: "Here is the instruction to all of you."
+  - id: focus11
+    type: function-intro
+    role: PLUS-FOCUS function material
+    slot: focus11
+    repeat: 2
+    start: 464.28
+  - id: access-close
+    type: access-close
+    role: close the access channel
+    start: 614.32
+    lines:
+      - at: 76.12
+        text: "You will remember and act upon this knowledge function at any point from this moment on. You will so act with your entire being when your conscious waking self gives the correct action signal, the one you have just learned. The more you use this signal and function, the smoother and easier it will become. You will close your Access Channel now as I guide you."
+      - at: 116.84
+        text: "Ten. Ten. You are moving back to the tenth state of total relaxation as the access signal goes away. Ten. The access signal is fading more and more. Ten. The access signal, the access channel is closed. It will stay closed until your next function learning exercise."
+      - at: 156.16
+        text: "Relax and feel calm and serene in the tenth state."
+  - id: sleep-induction
+    type: state-transition
+    start: 800.48
+    lines:
+      - at: 0.0
+        text: "You will move now into easy and normal, restful sleep as I guide you. When I reach the count of twenty, you will be in normal, natural, restful sleep."
+      - at: 24.52
+        text: "Remember, the higher the number, the more deeply relaxed you become, and the more you drift easily and calmly into natural, complete sleep."
+      - at: 31.84
+        text: "I'm going to count now."
+  - id: count-to-twenty
+    type: state-transition
+    start: 834.32
+    lines:
+      - at: 0.0
+        text: "Ten."
+      - at: 18.0
+        text: "Eleven."
+      - at: 36.0
+        text: "Twelve."
+      - at: 54.0
+        text: "Thirteen."
+      - at: 72.0
+        text: "Fourteen."
+      - at: 90.0
+        text: "Fifteen."
+      - at: 108.0
+        text: "Sixteen."
+      - at: 126.0
+        text: "Seventeen."
+      - at: 144.0
+        text: "Eighteen."
+      - at: 162.0
+        text: "Nineteen."
+      - at: 180.0
+        text: "Twenty. Twenty."
+  - id: sleep20
+    type: sleep
+    role: twentieth-state reinforcement
+    from_slot: focus11
+    repeat: 2
+    gain_db: -24
+    start: 1014.32
+  - id: return
+    type: return
+    start: 1582.64
+    lines:
+      - at: 0.0
+        text: "I'm going to count now from twenty down to one, and when I reach the count of one, you will be completely wide awake and rested both physically and mentally."
+      - at: 18.92
+        text: "All of your senses will be operating clearly, cleanly, strongly, sharply, and beautifully. All when I reach the count of one."
+      - at: 31.24
+        text: "I'm going to count now. Twenty. Nineteen. Eighteen."
+      - at: 50.32
+        text: "Seventeen. Sixteen."
+      - at: 64.28
+        text: "Fifteen. Fourteen."
+      - at: 76.76
+        text: "Thirteen. Twelve."
+      - at: 88.04
+        text: "Eleven. Ten."
+      - at: 107.64
+        text: "Nine. Eight. Seven."
+      - at: 119.04
+        text: "When I reach the count of one, you will be completely wide awake both physically and mentally, and completely refreshed and full of new energy, with all of your five physical senses operating clearly, cleanly, sharply, and beautifully."
+      - at: 129.88
+        text: "All when I reach the count of one. Seven. Six. Five. Four. Three. Two. One."
+      - at: 135.60
+        text: "Wake up. Wake up. Open your eyes."
+      - at: 158.96
+        text: "You're completely wide awake and full of new energy."
+  - id: closing
+    type: outro
+    role: closing reminder
+    start: 1748.24
+    lines:
+      - at: 0.0
+        text: "Remember, whenever you wish to focus your attention completely, all you need to do is inhale, hold your breath, and say or think in your mind, PLUS-FOCUS."
+      - at: 9.08
+        text: "Then exhale slowly, like blowing out a candle. Use it. This is the end of this Open Consciousness function exercise."

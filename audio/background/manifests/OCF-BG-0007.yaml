@@ -1,0 +1,38 @@
+schema_version: "1.0"
+id: "OCF-BG-0007"
+name: "Focus 11 — gamma + theta + pink (canonical access state, Farfield)"
+author: "OCF"
+engine: "farfield"
+engine_source:
+  repository: "https://github.com/txus/farfield"
+  version: "0.1.0"
+preset:
+  file: "audio/background/presets/farfield/focus-11-c.yaml"
+render:
+  output: "audio/background/rendered/focus-11-c-farfield.wav"
+  seed: null
+  deterministic: true
+usage:
+  functions:
+  - "OCF-FND-002"
+  audio_implementations:
+  - "OCF-AUDIO-0001"
+provenance:
+  design: "derived"
+  notes: |
+    OCF-authored Farfield preset measured from the operator-supplied newer
+    Focus 11 recording (16:00-27:00, citation-only, never vendored):
+    40 Hz SAM gamma family (256.869 / 323.625 / 384.875 Hz carriers, closed
+    path) plus the intermittent 175/179 Hz binaural pair, over a pink bed,
+    30-minute sustained state. This is the canonical focus-11 access-state
+    bed used by the OCF-AUDIO-0001 attention build (via OCF-BG-0011). The
+    preset is OCF's own parametric representation of the measurement; it
+    contains no recording audio.
+    Mirrors presets/farfield/focus-11-c.yaml (upstream contribution staging).
+safety:
+  headphone_notice: true
+  driving_warning: true
+  notes:
+  - "Binaural/lateralized content requires headphones to be heard as intended."
+  - "Background audio is not sleep/medical/performance therapy."
+license: "Apache-2.0 (OCF-authored preset); measurement source citation-only"

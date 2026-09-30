@@ -1,0 +1,33 @@
+schema_version: "1.0"
+id: "OCF-AUDIO-0001"
+function_id: "OCF-FND-002"
+title: "Attention (PLUS-FOCUS) — adapted legacy-arc training narration + Focus-11 (gamma+theta+pink) access-state bed, Piper lessac"
+version: "0.6.0"
+contributor: "OCF"
+narrator: "Piper TTS — en_US lessac medium"
+language: "en"
+license: "Apache-2.0 (bed presets; narration adapted from a citation-only legacy transcript; Piper TTS voice model license applies)"
+training_type: "training"
+duration_minutes: 29.39
+induction: "tenth-state relaxation (body settle, set-aside ritual, guided count to the 10th state)"
+command_rehearsal: "PLUS-FOCUS"
+legacy_bridge: "PLUS-FOCUS"
+mode_rehearsal: null
+release_rehearsal: null
+safety_intro: "This exercise is not medical advice and does not replace professional care."
+transcript_path: "audio/scripts/attention-ocf.yaml"
+background_audio:
+  strategy: "optional"
+  preset: "OCF-BG-0011"
+technical:
+  sample_rate: 44100
+  channels: 2
+  format: "wav"
+  formats:
+  - "wav"
+  - "flac"
+  - "mp3"
+  loudness_notes: "Narration rendered from the adapted legacy-arc session script (reference-derived OCF-TPL-SESSION-ATTENTION-001, citation-only wording) with flowing sentences and even-spaced count cues (timing_mode natural+even-counts, ocf audio build --flow --even-counts); mixed with the OCF-BG-0011 bed (OCF-authored 10-16 Hz binaural arc with the OCF-authored Focus-11 gamma+theta+pink access state spliced into the 6:31-12:50 access window) into a stereo 44.1 kHz master. The twentieth-state sleep reinforcement repeats the focus-11 instruction and is mixed at gain_db -24 (barely-audible underlay, ~17:41-26:22). 0.15 bed gain; amix duration=first, alimiter, no sustained clipping."
+  checksum_sha256: "9be398c76828f7d6867a593f327d189fefbf5a591c4634eb6d5ce4dd760fddf7"
+testing_notes: "Rebuilt 2026-09-29 from audio/scripts/attention-ocf.yaml (OCF-TPL-SESSION-ATTENTION-001, reference-derived template, adapted-from-legacy citation-only wording; 77 timeline cues across 9 sections, 1765.83 s = 29:25.8) with the Piper lessac medium profile (OCF-VOICE-0002), --flow --even-counts. Verified: (1) one narration gain window applied and recorded in the render manifest: 1061.68-1582.64 s at -24 dB, so the twentieth-state hold re-runs the five-line focus-11 instruction twice (17:41-20:51, 22:25-25:35) as a faint underlay. (2) Speech-band (300-3400 Hz) RMS measured on the master via ffmpeg bandpass+astats: about -68 dB during the instruction phase (8:00-9:00) and -72 dB during the return countdown (26:40-28:20); during the hold the underlay reads about -91.7 dB versus -91.9 dB in the bed-only gap between passes, i.e. at the OCF-BG-0011 bed floor and only barely audible, as intended. (3) Whole-master volumedetect: mean -26.2 dB, max -2.2 dB, no clipping; master verified stereo 44.1 kHz PCM s16le (77873128 frames). (4) WAV/FLAC/MP3 all written with the full OCF tag set including OCF_SESSION_TEMPLATE=OCF-TPL-SESSION-ATTENTION-001, OCF_NARRATOR, OCF_TIMING_MODE=natural+even-counts; narration tag policy is citation-only (source format ocf-timed-yaml -> audio/scripts/attention.yaml, template origin reference-derived), so no OCF-authorship is claimed. (5) The checksum above identifies this master file only: Piper narration is not bit-exact, so a rebuild of the same script yields a different digest; see docs/AUDIO_STANDARD.md. Render manifest: audio/rendered/OCF-RENDER-0001.yaml. Legacy import audio/scripts/attention.yaml retained unchanged as citation-only reference."
+review_state: "draft"

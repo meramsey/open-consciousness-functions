@@ -1,0 +1,35 @@
+schema_version: "1.0"
+id: "OCF-BG-0009"
+name: "Focus 11 — gamma + pink, newer measured (SBaGenX)"
+author: "OCF"
+engine: "sbagenx"
+engine_source:
+  repository: "https://github.com/lm7137/SBaGenX"
+  version: "3.9.0-alpha.15"
+preset:
+  file: "audio/background/presets/sbagenx/focus-11-b.sbg"
+render:
+  output: "audio/background/rendered/focus-11-b-sbagenx.wav"
+  seed: null
+  deterministic: true
+usage:
+  functions:
+  - "OCF-FND-002"
+  audio_implementations: []
+provenance:
+  design: "derived"
+  notes: |
+    OCF-authored SBaGenX sequence measured from the operator-supplied newer
+    Focus 11 recording (16:00-27:00, citation-only, never vendored):
+    40 Hz SAM-style sideband structure around 256.869 / 323.625 / 384.875 Hz
+    over a pink bed, 30-minute sustained state, without the intermittent
+    175/179 Hz pair. The .sbg file is OCF's own parametric representation of
+    the measurement; it contains no recording audio.
+    Mirrors presets/sbagenx/focus-11-b.sbg (upstream contribution staging).
+safety:
+  headphone_notice: true
+  driving_warning: true
+  notes:
+  - "Binaural/lateralized content requires headphones to be heard as intended."
+  - "Background audio is not sleep/medical/performance therapy."
+license: "Apache-2.0 (OCF-authored preset); measurement source citation-only"

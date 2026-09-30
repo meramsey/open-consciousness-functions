@@ -1,0 +1,16 @@
+# Default owners for everything in the repo
+* @ocf-maintainers
+
+# Schemas and core data model are owned conservatively
+/schemas/ @ocf-maintainers
+/templates/ @ocf-maintainers
+
+# Generated files must not be hand-edited; the generator is owned
+/scripts/ocf_tools/generators.py @ocf-maintainers
+/scripts/ocf_tools/indexes.py @ocf-maintainers
+
+# Audio tooling
+/audio/ @ocf-maintainers
+
+# CI changes need maintainer review
+/.github/ @ocf-maintainers

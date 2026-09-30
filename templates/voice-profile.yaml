@@ -1,0 +1,14 @@
+# OCF Voice Profile
+# Copy to audio/voices/profiles/<slug>.yaml and adjust. `ocf voice` and
+# `ocf audio build` resolve backends by id, slug, or name.
+# Backends are optional external CLIs (espeak-ng/espeak/piper) already on PATH.
+schema_version: "1.0"
+id: "OCF-VOICE-0001"
+slug: "espeak-en"
+name: "eSpeak English (default)"
+backend: "espeak-ng"
+language: "en-us"
+words_per_min: 175
+piper_model: null
+gain_db: null
+notes: "Neutral default voice; suitable for draft narration stems. Replace with a legally held licensed voice for production builds."

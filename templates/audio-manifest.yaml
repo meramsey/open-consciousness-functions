@@ -1,0 +1,37 @@
+schema_version: "1.0"
+
+id: "OCF-AUDIO-0000"
+function_id: "OCF-XXX-000"
+title: "Function title — basic training"
+version: "0.1.0"
+contributor: "pending-source-review"
+narrator: null
+language: "en"
+license: "pending-source-review"
+
+training_type: "training" # training | reinforcement | quick | sleep | extended | voice-only | background-only | experimental
+duration_minutes: null
+
+induction: "pending-source-review"
+command_rehearsal: "pending-source-review"
+legacy_bridge: null
+mode_rehearsal: null
+release_rehearsal: null
+safety_intro: "This exercise is not medical advice and does not replace professional care."
+
+transcript_path: null
+
+background_audio:
+  strategy: "optional" # optional | required | none
+  preset: null
+
+technical:
+  sample_rate: null
+  channels: null
+  format: "wav"
+  loudness_notes: null
+  checksum_sha256: null
+
+testing_notes: null
+
+review_state: "draft"

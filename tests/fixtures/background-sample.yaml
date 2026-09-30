@@ -1,0 +1,33 @@
+# Minimal valid background manifest used only in tests.
+schema_version: "1.0"
+
+id: "OCF-BG-0000"
+name: "Test bed"
+author: "fixture"
+engine: "farfield"
+
+engine_source:
+  repository: "https://github.com/txus/farfield"
+  version: null
+
+preset:
+  file: "audio/background/presets/fixture.yaml"
+
+render:
+  output: "audio/background/rendered/fixture.wav"
+  seed: 1
+  deterministic: true
+
+usage:
+  functions: []
+  audio_implementations: []
+
+provenance:
+  design: "original-ocf"
+  notes: "fixture"
+
+safety:
+  headphone_notice: true
+  driving_warning: true
+
+license: "CC-BY-4.0"

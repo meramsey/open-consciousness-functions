@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/voice-profile.schema.json",
+  "title": "OCF Voice Profile",
+  "description": "Named voice/backend configuration used by `ocf voice` and `ocf audio build` to render narration cues. Profiles only select optional external TTS engines already installed by the operator; OCF never vendors or downloads speech models.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "slug", "name", "backend"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0" },
+    "id": { "type": "string", "pattern": "^OCF-VOICE-[0-9]{4}$" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "name": { "type": "string", "minLength": 1 },
+    "backend": { "type": "string", "enum": ["espeak-ng", "espeak", "piper"] },
+    "language": { "type": ["string", "null"], "default": null },
+    "words_per_min": { "type": ["integer", "null"], "minimum": 40, "default": null },
+    "piper_model": { "type": ["string", "null"], "default": null },
+    "gain_db": { "type": ["number", "null"], "default": null },
+    "notes": { "type": ["string", "null"], "default": null }
+  }
+}

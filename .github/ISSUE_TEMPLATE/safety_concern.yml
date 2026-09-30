@@ -1,0 +1,37 @@
+name: Safety concern
+description: Report a safety or claims concern (overclaiming, unsafe wording).
+title: "[Safety] "
+labels: ["safety"]
+body:
+  - type: markdown
+    attributes:
+      value: "Sensitive safety issues may be reported privately via SECURITY.md instead. Public reports are fine for wording/claims defects in non-sensitive records."
+  - type: input
+    id: location
+    attributes:
+      label: Location
+      description: "Function ID, document, or file path."
+    validations:
+      required: true
+  - type: textarea
+    id: concern
+    attributes:
+      label: What concerns you?
+      description: "Overclaiming? Missing emergency disclaimer? Medical claim without evidence?"
+    validations:
+      required: true
+  - type: dropdown
+    id: classification
+    attributes:
+      label: Classification
+      options:
+        - "effect guarantee"
+        - "missing health/emergency statement"
+        - "unsafe guidance"
+        - "other"
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: Suggested correction (optional)

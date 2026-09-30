@@ -1,0 +1,86 @@
+aliases:
+  commands:
+  - PLUS-FADE, FADE
+  names:
+  - Off-Loading
+applications: []
+attribution:
+  ocf_contributors: []
+  original_authors: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: not-started
+canonical:
+  command:
+    modes: []
+    primary: PLUS-CLEAR
+  name: Off-Loading
+chains: []
+claims:
+  intended_effects: []
+  prohibited_claims:
+  - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+classification:
+  primary_domain: emotion
+  secondary_domains:
+  - foundation
+companions: []
+compatibility:
+  legacy_commands:
+  - PLUS-FADE, FADE
+  rationale: Legacy two-word cue PLUS-FADE, FADE is retained; concise cue PLUS-CLEAR is proposed for review.
+  state: bridge-trainable
+contributor:
+  contact: null
+  name: null
+history:
+- date: '2026-09-12'
+  note: Initial legacy mapping record created by bootstrap generator.
+  version: 0.1.0
+id: OCF-EMO-002
+incompatible_functions: []
+legacy:
+  command_status: proposed
+  commands:
+  - PLUS-FADE, FADE
+  name: OFF-LOADING
+  source_availability: available
+  source_system: Monroe H-PLUS
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+ocf:
+  command_review: review-required
+  reimplementation_status: planned
+purpose:
+  community_description: Fades and off-loads unhelpful mental load or charge; proposed concise cue PLUS-CLEAR.
+  source_description: null
+  summary: Fades and off-loads unhelpful mental load or charge; proposed concise cue PLUS-CLEAR.
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+schema_version: '1.0'
+slug: off-loading
+sources:
+- locator: null
+  title: OCF Bootstrap Specification — Legacy Function Index
+  type: legacy-reference
+  url: null
+status:
+  evidence: community-hypothesis
+  implementation: specification-only
+  maturity: legacy-mapped
+use_cases: []
+version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'

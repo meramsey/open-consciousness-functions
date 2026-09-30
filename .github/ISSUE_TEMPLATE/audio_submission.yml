@@ -1,0 +1,63 @@
+name: Audio submission
+description: Submit an audio implementation, background preset, or script.
+title: "[Audio] <title>"
+labels: ["audio"]
+body:
+  - type: markdown
+    attributes:
+      value: "Only community-authored original audio. Third-party copyrighted audio (including Monroe material) is citation-only and must never be uploaded."
+  - type: input
+    id: function
+    attributes:
+      label: OCF function ID
+      placeholder: OCF-XXX-000
+    validations:
+      required: true
+  - type: input
+    id: title
+    attributes:
+      label: Implementation title
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Training type
+      options:
+        - training
+        - reinforcement
+        - quick
+        - sleep
+        - extended
+        - voice-only
+        - background-only
+        - experimental
+    validations:
+      required: true
+  - type: input
+    id: author
+    attributes:
+      label: Author / narrator
+    validations:
+      required: true
+  - type: input
+    id: license
+    attributes:
+      label: License
+      placeholder: CC-BY-4.0
+    validations:
+      required: true
+  - type: textarea
+    id: transcript
+    attributes:
+      label: Transcript / script path
+      description: "Link the original community transcript (required for review)."
+  - type: input
+    id: background
+    attributes:
+      label: Background preset ID (optional)
+      placeholder: OCF-BG-0001
+  - type: textarea
+    id: checksum
+    attributes:
+      label: SHA-256 of rendered artifact (optional)

@@ -1,0 +1,37 @@
+schema_version: "1.0"
+id: "OCF-BG-0003"
+name: "Attention focus arc + F11 access excerpt (composite)"
+author: "pending-source-review"
+engine: "sbagenx"
+engine_source:
+  repository: "https://github.com/lm7137/SBaGenX"
+  version: "3.9.0-alpha.15"
+preset:
+  file: "audio/background/presets/attention-focus-arc.sbg"
+render:
+  output: "audio/background/rendered/attention-focus-bed-v2.wav"
+  seed: null
+  deterministic: false
+usage:
+  functions:
+  - "OCF-FND-002"
+  audio_implementations:
+  - "OCF-AUDIO-0001"
+provenance:
+  design: "derived"
+  notes: |
+    Composite bed: the OCF-authored SBaGenX binaural 10-16 Hz arc (arc preset
+    above) with an operator-supplied Focus 11 excerpt spliced into the access
+    window. Excerpt: "F11 V4.flac" (local file, kept out of the repository,
+    citation-only), slice 47:30-52:57 (327 s), gain-matched to the bed RMS,
+    30 s linear crossfades at 6:31 and 11:58. The excerpt's spectrum is the
+    classic access-channel stack: a phase-locked ~50 Hz mono anchor, a ~99 Hz
+    delta pair, and a ~400 Hz theta carrier, with no spoken content. License
+    reported by the operator as open source; verify before any redistribution.
+safety:
+  headphone_notice: true
+  driving_warning: true
+  notes:
+  - "Binaural/lateralized content requires headphones to be heard as intended."
+  - "Background audio is not sleep/medical/performance therapy."
+license: "GPL-2.0 (SBaGenX arc); excerpt license reported open source (operator); verify before redistribution"

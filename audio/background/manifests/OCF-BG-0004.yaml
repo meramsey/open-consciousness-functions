@@ -1,0 +1,50 @@
+schema_version: "1.0"
+id: "OCF-BG-0004"
+name: "Attention focus arc: operator reference master (F10 bed + F11 access excerpt)"
+author: "pending-source-review"
+engine: "reference-master"
+engine_source:
+  repository: null
+  version: null
+preset:
+  file: null
+reference:
+  source: "F10 V4 Volume Adjusted.flac"
+  format: "flac"
+  splices:
+  - source: "F11 V4.flac"
+    format: "flac"
+    slice_start: 2850
+    slice_length: 327
+    target_start: 391
+    crossfade: 30
+    note: "Access-channel excerpt 47:30-52:57 (327 s) spliced into the 6:31-11:58 access window, gain-matched to the bed RMS with 30 s linear crossfades at both edges."
+render:
+  output: "audio/background/rendered/attention-focus-bed-v3.wav"
+  seed: null
+  deterministic: true
+usage:
+  functions:
+  - "OCF-FND-002"
+  audio_implementations:
+  - "OCF-AUDIO-0001"
+provenance:
+  design: "derived"
+  notes: |
+    Background bed built from an operator-supplied reference master instead of
+    a synthesized backend: "F10 V4 Volume Adjusted.flac" is the full-length
+    (3900 s) tonal focus bed with no spoken content, and "F11 V4.flac" is the
+    operator's access-channel excerpt source (local files kept out of the
+    repository, citation-only). The engine decodes the reference (truncated to
+    the narration duration), splices the F11 access excerpt into the 6:31-11:58
+    access window with gain-matching and 30 s linear crossfades, and mixes the
+    result under the narration.
+    Requires ffmpeg for decoding. License reported by the operator as open
+    source; verify before any redistribution.
+safety:
+  headphone_notice: true
+  driving_warning: true
+  notes:
+  - "Lateralized access-channel content requires headphones for intended stereo imaging."
+  - "Background audio is not sleep/medical/performance therapy."
+license: "reference bed citation-only (operator-supplied files, not for redistribution)"

@@ -1,0 +1,75 @@
+name: Function proposal
+description: Propose a new OCF function (original or legacy reimplementation).
+title: "[Function] <name>"
+labels: ["function-proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For multimethod discussion use the submission guidelines
+        (`docs/SUBMISSION_GUIDELINES.md`), then fill a `templates/proposal.md`.
+        The 16 legacy source-unavailable functions are first-class targets.
+  - type: input
+    id: name
+    attributes:
+      label: Proposed name
+    validations:
+      required: true
+  - type: input
+    id: command
+    attributes:
+      label: Proposed canonical command
+      placeholder: PLUS-...
+    validations:
+      required: true
+  - type: input
+    id: wordcount
+    attributes:
+      label: Command-length rationale
+      description: "How many post-PLUS spoken words, and why is that right?"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / purpose
+    validations:
+      required: true
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Primary domain
+      options:
+        - foundation
+        - cognition
+        - emotion
+        - communication
+        - body
+        - performance
+        - sensory
+        - sleep
+        - lifestyle
+        - emergency
+        - automation
+        - experimental
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: Legacy source availability
+      options:
+        - "available"
+        - "unavailable (OCF reimplementation target)"
+        - "none (original community function)"
+    validations:
+      required: true
+  - type: textarea
+    id: safety
+    attributes:
+      label: Safety / evidence
+      description: "Safety level, medical relevance, evidence state."
+  - type: textarea
+    id: extra
+    attributes:
+      label: Implementation and testing notes

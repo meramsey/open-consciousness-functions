@@ -1,0 +1,28 @@
+# OCF Attention (PLUS-FOCUS, OCF-FND-002) background arc — SBaGenX binaural bed.
+# Original OCF-authored sequence.
+#
+# Timeline mirrors the bespoke focus-3 -> focus-10 -> focus-3 arc requested for
+# Attention training audio (see OCF-BG-0002 provenance.notes):
+#   0:00-3:18    alpha ~10 Hz hold
+#   3:18-6:31    smooth slide 10 Hz -> 16 Hz
+#   6:31-13:20   beta 16 Hz hold
+#   13:20-16:54  smooth slide 16 Hz -> 10 Hz
+#   16:54-30:00  alpha ~10 Hz hold (delivery trims to the narration length)
+#
+# 200 Hz carrier binaural beats with a soft pink-noise bed. Binaural tones
+# require headphones. None of OCF's promises are psychoacoustic; this is a
+# low-level tonal bed under narration.
+-S
+-E
+-Q
+-V 60
+
+alpha-10: 200+10/30 pink/25
+beta-16:  200+16/30 pink/25
+
+NOW+00:00:00 == alpha-10 ->
+NOW+00:03:18 == alpha-10 ->
+NOW+00:06:31 == beta-16 ->
+NOW+00:13:20 == beta-16 ->
+NOW+00:16:54 == alpha-10 ->
+NOW+00:30:00 == alpha-10

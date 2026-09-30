@@ -1,0 +1,48 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install PyYAML jsonschema
+      - name: Schema + rule validation
+        run: python scripts/ocf.py validate --all
+      - name: Exactly 55 legacy mappings
+        run: |
+          python - <<'EOF'
+          import sys
+          sys.path.insert(0, "scripts")
+          from ocf_tools.indexes import load_all_functions
+          recs = load_all_functions()
+          assert len(recs) == 55, len(recs)
+          av = [r for r in recs if r.source_availability == "available"]
+          un = [r for r in recs if r.source_availability == "unavailable"]
+          assert len(av) == 39, len(av)
+          assert len(un) == 16, len(un)
+          assert all(r.reimplementation_status == "planned" for r in un)
+          print("55 mapped: 39 available / 16 unavailable, all reimplementation targets")
+          EOF
+      - name: PLUS-THINK and PLUS-FOCUS invariants
+        run: |
+          python - <<'EOF'
+          import sys
+          sys.path.insert(0, "scripts")
+          from ocf_tools.indexes import load_all_functions
+          by_name = {r.legacy_name: r for r in load_all_functions()}
+          assert by_name["THINK FAST"].canonical_command == "PLUS-THINK"
+          assert by_name["ATTENTION"].canonical_command == "PLUS-FOCUS"
+          print("PLUS-THINK / PLUS-FOCUS canonical commands verified")
+          EOF

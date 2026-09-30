@@ -1,0 +1,39 @@
+schema_version: "1.0"
+id: "OCF-BG-0001"
+name: "Attention focus arc (focus-3 → focus-10 → focus-3)"
+author: "pending-source-review"
+engine: "farfield"
+engine_source:
+  repository: "https://github.com/txus/farfield"
+  version: "0.1.0"
+preset:
+  file: null
+render:
+  output: "audio/background/rendered/attention-focus-bed.wav"
+  seed: null
+  deterministic: true
+usage:
+  functions:
+  - "OCF-FND-002"
+  audio_implementations:
+  - "OCF-AUDIO-0001"
+provenance:
+  design: "derived"
+  notes: |
+    Not a single Farfield session: a derived composite built from two measured
+    stems rendered by the Farfield engine (focus-3 and focus-10, seeds 101/202,
+    --fade 0). Splice timeline matches the Attention narration:
+      0:00-3:18  focus-3 (induction)
+      3:18-6:31  linear crossfade focus-3 -> focus-10 (build)
+      6:31-13:20 focus-10 hold (access channel opens ~6:31, closes ~12:50)
+      13:20-16:54 linear crossfade focus-10 -> focus-3 (taper)
+      16:54-29:33 focus-3 (sleep -> wake)
+    A future focus-11 preset can be spliced into the 6:31-13:20 hold window.
+    Sources: presets/focus-3.yaml and presets/focus-10.yaml of farfield 0.1.0.
+safety:
+  headphone_notice: true
+  driving_warning: true
+  notes:
+  - Binaural-beat bed requires headphones to be heard as intended.
+  - Background audio is not sleep/medical/performance therapy.
+license: "Apache-2.0 (Farfield presets); derived local bed is citation-only, not for redistribution"

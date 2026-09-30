@@ -1,0 +1,51 @@
+name: Bug report
+description: Report a defect in OCF tooling, schemas, or documentation.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for reporting. Security issues should go through SECURITY.md instead."
+  - type: input
+    id: command
+    attributes:
+      label: Command / context
+      description: "Which command or file misbehaves? (e.g. `ocf validate --all`)"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Run ...
+        2. See ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - Linux
+        - macOS
+        - Windows
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Environment details
+      description: "Python version, `python3 scripts/ocf.py doctor` output if relevant."

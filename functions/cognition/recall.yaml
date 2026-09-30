@@ -1,0 +1,81 @@
+aliases:
+  commands: []
+  names:
+  - Recall
+applications: []
+attribution:
+  ocf_contributors: []
+  original_authors: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: not-started
+canonical:
+  command:
+    modes: []
+    primary: PLUS-RECALL
+  name: Recall
+chains: []
+claims:
+  intended_effects: []
+  prohibited_claims:
+  - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+classification:
+  primary_domain: cognition
+  secondary_domains: []
+companions: []
+compatibility:
+  state: unchanged
+contributor:
+  contact: null
+  name: null
+history:
+- date: '2026-09-12'
+  note: Initial legacy mapping record created by bootstrap generator.
+  version: 0.1.0
+id: OCF-COG-006
+incompatible_functions: []
+legacy:
+  command_status: unchanged
+  commands:
+  - PLUS-RECALL
+  name: RECALL
+  source_availability: available
+  source_system: Monroe H-PLUS
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+ocf:
+  command_review: approved
+  reimplementation_status: planned
+purpose:
+  community_description: Brings specific memories or learned material to mind on request.
+  source_description: null
+  summary: Brings specific memories or learned material to mind on request.
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+schema_version: '1.0'
+slug: recall
+sources:
+- locator: null
+  title: OCF Bootstrap Specification — Legacy Function Index
+  type: legacy-reference
+  url: null
+status:
+  evidence: source-described
+  implementation: specification-only
+  maturity: legacy-mapped
+use_cases: []
+version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'

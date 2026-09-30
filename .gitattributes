@@ -1,0 +1,62 @@
+# Normalize line endings for everything git can safely treat as text.
+* text=auto
+
+# --- Text types (explicit, so no heuristic surprises) ------------------------
+*.md text
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
+*.py text eol=lf
+*.toml text eol=lf
+*.txt text eol=lf
+# Timed-transcript interchange formats are text and may be committed
+# (citation-only wording stays gitignored; see .gitignore).
+*.lrc text eol=lf
+*.srt text eol=lf
+*.vtt text eol=lf
+# SBaGenX beds are text programs, not binaries.
+*.sbg text eol=lf
+Makefile text eol=lf
+
+# --- Binaries that are NEVER committed ---------------------------------------
+# Reference PDFs are citation-only and stay local (see .gitignore /
+# docs/SOURCE_ATTRIBUTION.md). If a lawfully redistributable PDF ever has to be
+# vendored, add an LFS line for it in the proposal that introduces it.
+*.pdf binary
+
+# --- Committable binaries: Git LFS ------------------------------------------
+# OCF does not vendor rendered masters, operator reference audio, or any
+# third-party audio — those paths are gitignored on licensing grounds, not size
+# grounds. LFS is for content OCF *may* redistribute and that is genuinely
+# binary: original OCF-authored or clearly licensed community assets such as
+# focus-state cue sounds, bundled chant/affirmation audio, or large lawful
+# reference material a proposal has approved for redistribution.
+#
+# These rules make such files LFS objects automatically: no `git lfs track`
+# needed, and no contributor can accidentally commit a multi-hundred-MB WAV
+# as a normal git blob.
+*.wav filter=lfs diff=lfs merge=lfs -text
+*.flac filter=lfs diff=lfs merge=lfs -text
+*.mp3 filter=lfs diff=lfs merge=lfs -text
+*.m4a filter=lfs diff=lfs merge=lfs -text
+*.ogg filter=lfs diff=lfs merge=lfs -text
+*.opus filter=lfs diff=lfs merge=lfs -text
+*.aif filter=lfs diff=lfs merge=lfs -text
+*.aiff filter=lfs diff=lfs merge=lfs -text
+# Images (waveform/spectrogram figures, diagrams) travel the same path.
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.gif filter=lfs diff=lfs merge=lfs -text
+*.webp filter=lfs diff=lfs merge=lfs -text
+#
+# Escape hatch: a later rule wins per attribute, so a specific small file can
+# be kept as a normal git object, e.g.
+#   docs/img/logo.png -filter -lfs -diff
+# Do that for small icons; never do it to dodge the LFS quota for real audio.
+#
+# Contributors: run `git lfs install` once after cloning, then
+# `git lfs ls-files` to list LFS-tracked files and
+# `git lfs env` to confirm the filters are active. See CONTRIBUTING.md
+# ("Large files and Git LFS") and docs/SUBMISSION_GUIDELINES.md.

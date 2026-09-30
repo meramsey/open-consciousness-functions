@@ -1,0 +1,188 @@
+schema_version: "1.0"
+id: "OCF-TPL-SESSION-LEARN-001"
+name: "Learn-function session shell (Attention-style arc)"
+author: "OCF"
+origin: "original-ocf"
+license: "Apache-2.0"
+description: |
+  Standard arc for a learning session with four required pieces of contributor
+  wording:
+
+  1. opener        — the opening (e.g. a Focus-11 opener), spoken as the
+                     session settles;
+  2. focus11       — the actual function material delivered while in the
+                     focus-11 access state (function intro, installation, and
+                     cue rehearsal);
+  3. sleep20       — the function reinforcement spoken while in the
+                     twentieth/sleep state;
+  4. closer        — the closing wording, spoken after returning from the
+                     twentieth state to the tenth state, before the track ends.
+
+  The bridge is original OCF placeholder material: open the channel, close
+  access, consolidate, count to the twentieth state, hold, count back to the
+  tenth state, and wake. Slot files are plain text (one spoken line per line);
+  an optional "[MM:SS.xx]" LRC timestamp is honoured as an absolute track
+  time. The sleep20 slot is paced across the whole sleep hold (even-span)
+  unless lines carry explicit timestamps.
+slots:
+  required: ["opener", "focus11", "sleep20", "closer"]
+  optional: []
+defaults:
+  line_seconds: 3.0
+  duration: 1800.0
+sections:
+  - id: opening
+    type: freeform
+    role: opener
+    slot: opener
+    start: 0.0
+    lines:
+      - at: 0.0
+        text: "Take a slow breath in."
+      - at: 12.0
+        text: "And let it go."
+      - at: 24.0
+        text: "This is a learning session, and it begins easily."
+      - at: 38.0
+        text: "There is no effort required."
+      - at: 54.0
+        text: "Let your attention rest on each word as it unfolds."
+      - at: 90.0
+        text: "You are ready, comfortable, and at ease."
+  - id: access-open
+    type: access-open
+    start: 222.0
+    lines:
+      - at: 0.0
+        text: "Your attention has settled into a calm, even rhythm."
+      - at: 10.0
+        text: "The channel beneath ordinary waking thought is opening now."
+      - at: 22.0
+        text: "There is nothing to figure out and nothing to control."
+      - at: 36.0
+        text: "Every word is received easily by your mind."
+      - at: 54.0
+        text: "The channel is open."
+  - id: focus11
+    type: function-intro
+    role: focus-11 function material
+    slot: focus11
+    start: 300.0
+    lines:
+      - at: 0.0
+        text: "The function of this session is presented now, at the focus eleven level."
+      - at: 14.0
+        text: "Hear its name clearly, and let your mind accept it fully."
+      - at: 30.0
+        text: "This function is being installed beneath conscious effort."
+      - at: 46.0
+        text: "Repeat the cue within, without strain."
+      - at: 62.0
+        text: "Whenever you need this function, it will arise gently and surely."
+  - id: access-close
+    type: access-close
+    start: 560.0
+    lines:
+      - at: 0.0
+        text: "The learning is complete. The channel is closing now."
+      - at: 10.0
+        text: "Let everything you have learned settle where it belongs."
+      - at: 26.0
+        text: "You are slipping naturally into a deeper resting pass."
+      - at: 44.0
+        text: "The pass deepens now."
+  - id: consolidation
+    type: consolidation
+    start: 660.0
+    lines:
+      - at: 0.0
+        text: "You are moving into deep rest."
+      - at: 12.0
+        text: "All that you have absorbed is being integrated beneath awareness."
+  - id: count-to-twenty
+    type: state-transition
+    start: 834.0
+    lines:
+      - at: 30.32
+        text: "Ten."
+      - at: 46.987
+        text: "Eleven."
+      - at: 63.654
+        text: "Twelve."
+      - at: 80.321
+        text: "Thirteen."
+      - at: 96.988
+        text: "Fourteen."
+      - at: 113.655
+        text: "Fifteen."
+      - at: 130.322
+        text: "Sixteen."
+      - at: 146.989
+        text: "Seventeen."
+      - at: 163.656
+        text: "Eighteen."
+      - at: 180.32
+        text: "Nineteen."
+      - at: 196.987
+        text: "Twenty."
+  - id: sleep20
+    type: sleep
+    role: twentieth-state reinforcement
+    slot: sleep20
+    pace: "even-span"
+    start: 1014.32
+    lines:
+      - at: 0.0
+        text: "Sleeping."
+      - at: 20.0
+        text: "You are resting in the twentieth state."
+      - at: 200.0
+        text: "The twentieth state holds you in calm, even rest."
+      - at: 320.0
+        text: "Your function remains with you, held firmly while you rest."
+  - id: return
+    type: return
+    start: 1613.0
+    lines:
+      - at: 0.0
+        text: "Now we return from the twentieth state."
+      - at: 20.0
+        text: "Twenty."
+      - at: 25.7
+        text: "Nineteen."
+      - at: 31.4
+        text: "Eighteen."
+      - at: 37.1
+        text: "Seventeen."
+      - at: 42.8
+        text: "Sixteen."
+      - at: 48.5
+        text: "Fifteen."
+      - at: 54.2
+        text: "Fourteen."
+      - at: 59.9
+        text: "Thirteen."
+      - at: 65.6
+        text: "Twelve."
+      - at: 71.3
+        text: "Eleven."
+      - at: 77.0
+        text: "Ten."
+      - at: 80.0
+        text: "You are awake now, back to the tenth state, alert and comfortable."
+      - at: 92.0
+        text: "Your eyes feel light. Energy returns to your body and mind."
+  - id: closing
+    type: outro
+    role: closer
+    slot: closer
+    start: 1740.0
+    lines:
+      - at: 0.0
+        text: "You are wide awake, comfortable, and fully alert."
+      - at: 12.0
+        text: "The function you learned is now part of you, ready whenever you call it."
+      - at: 28.0
+        text: "Stretch gently, and carry your renewed attention into the rest of your day."
+      - at: 46.0
+        text: "Closed."

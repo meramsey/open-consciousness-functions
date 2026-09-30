@@ -1,0 +1,59 @@
+# OCF timed-transcript template
+#
+# Canonical editable narration document. Provide EITHER a flat `timeline`
+# (below) OR `sections` (each with its own `timeline`), not both.
+# Imported source text is preserved verbatim under `source.snapshot`;
+# importers never rewrite wording — edit text here only for new narration.
+#
+# Example commands:
+#   ocf transcript import sample.lrc --output audio/scripts/sample.yaml
+#   ocf transcript analyze audio/scripts/sample.yaml --interactive
+#   ocf transcript segment audio/scripts/sample.yaml --apply
+#   ocf transcript review audio/scripts/sample.yaml --write
+#   ocf transcript export audio/scripts/sample.yaml --format vtt --output sample.vtt
+#   ocf transcript extract-template audio/scripts/sample.yaml --timing-only
+
+schema_version: "1.0"
+title: "Example script"
+state_profile: null
+timing_mode: "natural" # natural | fit-soft | fit-strict | timeline-shift
+
+source:
+  format: "manual" # lrc | srt | vtt | txt | md | ocf-timed-yaml | manual
+  filename: null
+  sha256: null
+  metadata: {}
+  notes: []
+  snapshot: null
+
+timeline:
+  - id: "e001"
+    text: "Settle in and relax."
+    at: "00:00:05.000" # absolute start; null when untimed
+    timing:
+      preferred_duration: 8.0
+  - id: "e002"
+    text: "Now we open the access state."
+    after: "e001"
+    offset: 15.0 # relative to e001 ('after' + 'offset' alternates with 'at')
+    state:
+      to: "access-open"
+  - id: "e003"
+    text: "Pause, breathe, and notice."
+    at: "00:00:40.000"
+    state:
+      from: "access-open"
+      to: "integrate"
+
+# Alternative layout: group events into sections instead of a flat timeline.
+# sections:
+#   - id: "sec-001"
+#     type: "preparation" # preparation | induction | access-open | function-intro |
+#                         # installation | rehearsal | integration | access-close |
+#                         # consolidation | sleep | return | outro | state-transition |
+#                         # freeform | custom
+#     role: null
+#     timeline:
+#       - id: "e001"
+#         text: "Settle in and relax."
+#         at: "00:00:05.000"
