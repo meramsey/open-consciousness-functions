@@ -1,0 +1,29 @@
+schema_version: "1.0"
+locale: "es"
+domain: "narration"
+entries:
+  function.intro.name:
+    text: "Este ejercicio es para la función {function_name}."
+    variables: ["function_name"]
+    version: "1.0.0"
+  function.activation.command:
+    text: "El comando de activación es {command}."
+    variables: ["command"]
+    version: "1.0.0"
+    pronunciation:
+      PLUS-FOCUS:
+        espeak-ng: "[[p l Q s f Q k]]"
+        notes: >
+          Same hint as the canonical pack: the command is language-independent
+          metadata, so its pronunciation does not change per locale.
+  function.repetition.count:
+    text: "Repite el comando {count, plural, =0 {ninguna vez más} one {# vez más} other {# veces más}}."
+    variables: ["count"]
+    version: "1.0.0"
+    notes: >
+      Spanish needs the explicit "=0" branch ("ninguna vez") because the one/
+      other split alone would produce "0 veces".
+  function.state.eleven.material:
+    text: "En el undécimo estado, el material de {function_name} es tuyo para leer."
+    variables: ["function_name"]
+    version: "1.0.0"

@@ -1,0 +1,59 @@
+schema_version: "1.0"
+locale: "en-US"
+domain: "ui"
+entries:
+  # Simple form: a message with no variables stays a bare string.
+  locale.list.header: "Locale packs"
+  locale.validate.header: "Locale validation"
+  locale.validate.ok: "All locale packs validate."
+  locale.validate.failed: "Locale validation failed."
+  locale.resolve.header: "Resolved narration"
+
+  # Structured form: declared variables make the contract checkable.
+  locale.resolve.wrote:
+    text: "Wrote {path} for locale {locale} ({keys} keys resolved)."
+    variables: ["path", "locale", "keys"]
+    version: "1.0.0"
+  locale.coverage.line:
+    text: "{locale}: {covered} of {total} canonical keys ({percent}%)"
+    variables: ["locale", "covered", "total", "percent"]
+    version: "1.0.0"
+  locale.coverage.narration:
+    text: "{locale} narration: {covered} of {total} canonical spoken keys"
+    variables: ["locale", "covered", "total"]
+    version: "1.0.0"
+  locale.missing.keys:
+    text: "{locale} is missing {count, plural, one {# canonical key} other {# canonical keys}}: {keys}"
+    variables: ["locale", "count", "keys"]
+    version: "1.0.0"
+  locale.unknown.keys:
+    text: "{locale} defines keys the canonical pack does not: {keys}"
+    variables: ["locale", "keys"]
+    version: "1.0.0"
+  locale.stale.translation:
+    text: "{locale} was translated from {source}@{version}; canonical is now {canonical}"
+    variables: ["locale", "source", "version", "canonical"]
+    version: "1.0.0"
+  locale.pseudo.built:
+    text: "Built pseudo-locale {locale} from {source}@{version} ({count} keys)."
+    variables: ["locale", "source", "version", "count"]
+    version: "1.0.0"
+  locale.unavailable:
+    text: "No locale pack for {locale}. Available: {available}"
+    variables: ["locale", "available"]
+    version: "1.0.0"
+  voice.locale.mismatch:
+    text: "Voice profile {profile} is set to {profile_language}; rendering {locale}."
+    variables: ["profile", "profile_language", "locale"]
+    version: "1.0.0"
+  voice.locale.phonemes:
+    text: "Applied {count, plural, one {# pronunciation hint} other {# pronunciation hints}} to {locale} narration."
+    variables: ["count", "locale"]
+    version: "1.0.0"
+  export.locale.measured:
+    text: "Subtitle timings taken from the rendered speech of {backend} ({cues} cues)."
+    variables: ["backend", "cues"]
+    version: "1.0.0"
+  export.locale.semantic:
+    text: "Subtitle timings taken from the semantic timeline; localized speech may run longer."
+    version: "1.0.0"

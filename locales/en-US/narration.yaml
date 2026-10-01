@@ -1,0 +1,78 @@
+schema_version: "1.0"
+locale: "en-US"
+domain: "narration"
+entries:
+  # -- semantic session: focus cycle (original OCF wording) ----------------
+  # Authored for this repository to demonstrate a language-independent session.
+  # Not derived from the legacy H-PLUS transcript, whose wording stays
+  # citation-only in audio/scripts/attention.yaml.
+  session.focus-cycle.opener:
+    text: "Welcome to the Open Consciousness attention function."
+    version: "1.0.0"
+    timing:
+      preferred_duration: 5.0
+  session.focus-cycle.settle:
+    text: "Let the body find its most comfortable position and let the shoulders drop."
+    version: "1.0.0"
+    timing:
+      preferred_duration: 8.0
+  session.focus-cycle.tenth-state.enter:
+    text: "Move now to the tenth state of deep relaxation."
+    version: "1.0.0"
+    timing:
+      preferred_duration: 6.0
+  session.focus-cycle.tenth-state.hold:
+    text: "Stay here while the count begins. Nothing further is required of you."
+    version: "1.0.0"
+    timing:
+      preferred_duration: 8.0
+  session.focus-cycle.eleventh-state.enter:
+    text: "Raise the focus to the eleventh state."
+    version: "1.0.0"
+    timing:
+      preferred_duration: 6.0
+  session.focus-cycle.instruction:
+    text: "Hold this state and keep attention on one chosen object."
+    version: "1.0.0"
+    timing:
+      preferred_duration: 8.0
+  session.focus-cycle.return:
+    text: "Return now to the tenth state, then rise."
+    version: "1.0.0"
+    timing:
+      preferred_duration: 7.0
+  session.focus-cycle.close:
+    text: "The function stays yours until you release it. The session closes."
+    version: "1.0.0"
+    timing:
+      preferred_duration: 8.0
+
+  # -- preparation module (v0.5 design; not yet shipped) -------------------
+  # Keys exist so the preparation toolchain can be localized when it ships.
+  # No Preparation Learning or Focus 10/11 wording was migrated to prove this.
+  preparation.settle.body:
+    text: "Adjust the body until nothing needs to be held."
+    version: "1.0.0"
+  preparation.interruption.check:
+    text: "Check that this stretch of time will not be interrupted."
+    version: "1.0.0"
+  preparation.breathe.slowly:
+    text: "Breathe slowly and evenly, without forcing any depth."
+    version: "1.0.0"
+  preparation.release.tension:
+    text: "Let go of the tension you are carrying."
+    version: "1.0.0"
+  preparation.ready:
+    text: "The preparation is complete. The channel is open."
+    version: "1.0.0"
+
+  # -- focus states ------------------------------------------------------
+  focus.eleven.hold:
+    text: "The eleventh state holds while attention stays on one object."
+    version: "1.0.0"
+    notes: |
+      Focus-state hold wording. Deliberately not the Focus 11 function material,
+      which remains unmigrated.
+  focus.eleven.release:
+    text: "Release the eleventh state when you are ready."
+    version: "1.0.0"

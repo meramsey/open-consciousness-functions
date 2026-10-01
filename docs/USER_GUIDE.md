@@ -106,10 +106,23 @@ ocf preparation edit|validate|build OCF-PREP-0001
 
 The preparation design (composable stages, optional affirmation, optional
 oHm/resonant-tuning chant) is in
-[`docs/PREPARATION_MODULE.md`](PREPARATION_MODULE.md); planned localization of
-the whole pipeline is in [`docs/LOCALIZATION.md`](LOCALIZATION.md). Both are
-forward-looking design (v0.5) and are deliberately not presented as usable
-commands yet.
+[`docs/PREPARATION_MODULE.md`](PREPARATION_MODULE.md) and is deliberately not
+presented as usable commands yet.
+
+Localization *is* shipped:
+
+```bash
+ocf locale list                       # installed packs and their provenance
+ocf locale validate                   # contracts, coverage, stale versions
+ocf locale resolve --file DOC --locale es   # resolve narration keys
+ocf voice render DOC --locale es       # language-aware render
+ocf transcript export DOC --format srt --locale es
+```
+
+Spoken narration fails loudly when a translation is missing rather than
+dropping English into a translated session; `--allow-fallback` is the explicit
+override. See [`docs/LOCALIZATION.md`](LOCALIZATION.md) and
+[`locales/README.md`](../locales/README.md).
 
 Narration pacing flags on `ocf voice render` / `ocf audio build`:
 - `--fit` — adaptive per-cue pacing (`timing_mode fit-soft`): trim TTS trailing

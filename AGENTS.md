@@ -7,11 +7,13 @@ in this repository.
 
 - **Inspect schemas first.** `schemas/*.schema.json` define the canonical data
   model. Never change the YAML function format without updating the schema.
-- **Treat design docs as not-shipped.** `docs/PREPARATION_MODULE.md`,
-  `docs/LOCALIZATION.md`, and the "Planned: focus-state auditory cue events"
-  section of `docs/TIMED_TRANSCRIPTS.md` are forward-looking designs (v0.5).
-  Never mark anything implemented that has no live `ocf` command; schema/data
-  changes implied by those docs still require a proposal. The exact marker
+- **Treat design docs as not-shipped.** `docs/PREPARATION_MODULE.md` and the
+  "Planned: focus-state auditory cue events" section of
+  `docs/TIMED_TRANSCRIPTS.md` are forward-looking designs (v0.5). Never mark
+  anything implemented that has no live `ocf` command; schema/data changes
+  implied by those docs still require a proposal. `docs/LOCALIZATION.md` *is*
+  shipped (`ocf locale …`, `--locale` on render/export/build) and its
+  `Not yet done` section still requires the same discipline. The exact marker
   `TODO: Finalize focus-state auditory cue sound design.` must remain in
   `docs/TIMED_TRANSCRIPTS.md` until a cue design is accepted.
 - **Preserve legacy mappings.** Historical commands, names, and source

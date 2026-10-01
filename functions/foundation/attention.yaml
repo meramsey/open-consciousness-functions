@@ -34,6 +34,9 @@ contributor:
   contact: null
   name: null
 history:
+- date: '2026-09-30'
+  note: "Corrected the background Focus-state design. OCF-BG-0001 metadata described a 'focus-3 -> focus-10 -> focus-3' arc; the analyzed Human Plus / Focus 11 Access Channel source establishes Focus 10 -> Focus 11 -> Focus 10. OCF-BG-0001 now records that sequence with a machine-readable focus_sequence; the superseded arc is no longer authoritative. Focus 3 remains available only as an optional induction/preparation mechanism. The dated 2026-09-20 entry above is left as the historical record of the bed that was actually built at that time."
+  version: 0.11.0
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
   version: 0.1.0
@@ -105,5 +108,5 @@ status:
 use_cases: []
 version:
   created: '2026-09-12'
-  current: 0.10.0
-  updated: '2026-09-29'
+  current: 0.11.0
+  updated: '2026-09-30'

@@ -202,14 +202,19 @@ def _slot_text(section: dict[str, Any], slots: dict[str, str]) -> tuple[str | No
     return None, ""
 
 
-def resolve_section(
+def resolve_section_events(
     section: dict[str, Any],
     slots: dict[str, str],
     *,
     line_seconds: float,
     section_end: float | None = None,
-) -> list[tuple[float, str]]:
-    """Return the scheduled (at, text) events for one template section."""
+) -> list[dict[str, Any]]:
+    """Return the scheduled event dicts for one template section.
+
+    Authored lines carry ``text``; keyed lines carry ``narration_key`` (plus any
+    ``variables``) and are language-independent, so one template composes into
+    different narration per locale.
+    """
     slot_name, slot_text = _slot_text(section, slots)
     start = float(section["start"])
     if slot_name or section.get("from_slot"):
@@ -219,22 +224,51 @@ def resolve_section(
                     f"section {section['id']} has repeat but no section window "
                     "(missing following section start or template duration)"
                 )
-            return _parse_repeated(
+            return [
+                {"at": at, "text": text}
+                for at, text in _parse_repeated(
+                    slot_text,
+                    section_start=start,
+                    section_end=float(section_end),
+                    repeat=int(section["repeat"]),
+                )
+            ]
+        return [
+            {"at": at, "text": text}
+            for at, text in _parse_slot(
                 slot_text,
                 section_start=start,
-                section_end=float(section_end),
-                repeat=int(section["repeat"]),
+                section_end=section_end,
+                line_seconds=line_seconds,
+                pace=str(section.get("pace", "sequential")),
             )
-        return _parse_slot(
-            slot_text,
-            section_start=start,
-            section_end=section_end,
-            line_seconds=line_seconds,
-            pace=str(section.get("pace", "sequential")),
-        )
+        ]
+    events: list[dict[str, Any]] = []
+    for line in section.get("lines", []):
+        event: dict[str, Any] = {"at": start + float(line.get("at", 0.0))}
+        if line.get("narration_key"):
+            event["narration_key"] = str(line["narration_key"])
+            if line.get("variables"):
+                event["variables"] = dict(line["variables"])
+        else:
+            event["text"] = str(line["text"])
+        events.append(event)
+    return events
+
+
+def resolve_section(
+    section: dict[str, Any],
+    slots: dict[str, str],
+    *,
+    line_seconds: float,
+    section_end: float | None = None,
+) -> list[tuple[float, str]]:
+    """Return the scheduled (at, text) events for one template section."""
     return [
-        (start + float(line.get("at", 0.0)), str(line["text"]))
-        for line in section.get("lines", [])
+        (float(event["at"]), str(event.get("text", "")))
+        for event in resolve_section_events(
+            section, slots, line_seconds=line_seconds, section_end=section_end
+        )
     ]
 
 
@@ -281,11 +315,12 @@ def compose(
     for index, section in enumerate(template["sections"]):
         slot_name = section.get("slot")
         section_end = starts[index + 1] if index + 1 < len(starts) else float(duration)
-        events = resolve_section(
+        events = resolve_section_events(
             section, slots, line_seconds=line_seconds, section_end=section_end
         )
         timeline: list[dict[str, Any]] = []
-        for at_seconds, text in events:
+        for event in events:
+            at_seconds = float(event["at"])
             if at_seconds > duration:
                 print(
                     f"Warning: {section['id']} event at {format_timestamp(at_seconds)} "
@@ -296,11 +331,15 @@ def compose(
                 {
                     "id": f"e{counter:03d}",
                     "at": format_timestamp(at_seconds),
-                    "text": text,
+                    **{
+                        key: value
+                        for key, value in event.items()
+                        if key in ("text", "narration_key", "variables")
+                    },
                 }
             )
         if slot_name and slot_name in slots:
-            used_slots[slot_name] = [t for _, t in events]
+            used_slots[slot_name] = [str(event.get("text", "")) for event in events]
         section_doc: dict[str, Any] = {"id": section["id"], "type": section["type"]}
         if section.get("role"):
             section_doc["role"] = section["role"]
@@ -320,6 +359,8 @@ def compose(
         },
         "slots": used_slots,
     }
+    if template.get("locale"):
+        doc["locale"] = str(template["locale"])
     template_source = template.get("source")
     if isinstance(template_source, dict):
         doc["source"] = dict(template_source)
@@ -363,6 +404,16 @@ def run_compose(args: Any) -> int:
         duration=getattr(args, "duration", None),
     )
 
+    locale = getattr(args, "locale", None)
+    if locale:
+        from .locale import resolve_document
+
+        doc = resolve_document(
+            doc,
+            locale,
+            strict=not getattr(args, "allow_fallback", False),
+        )
+
     if args.output:
         output = Path(args.output)
     else:
@@ -374,6 +425,8 @@ def run_compose(args: Any) -> int:
     body = yaml_safe_dump(doc)
     write_text_atomic(output, body)
     print(f"Composed {template['id']} -> {output} ({len(doc['sections'])} sections)")
+    if locale:
+        print(f"Locale: {doc.get('locale')}")
     if slots:
         print(f"Slots used: {', '.join(sorted(slots))}")
     return 0

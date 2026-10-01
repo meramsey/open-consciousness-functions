@@ -8,6 +8,9 @@ Farfield APIs are hardcoded.
 
 from __future__ import annotations
 
+import json
+import os
+import re
 import shutil
 import subprocess
 from dataclasses import dataclass
@@ -69,6 +72,111 @@ def run_farfield(args: list[str]) -> subprocess.CompletedProcess[str]:
 
 class OCFFarfieldMissing(RuntimeError):
     """Raised when a command requires Farfield but it is not installed."""
+
+
+def farfield_preset_dirs() -> list[Path]:
+    """Directories holding Farfield session YAMLs, in priority order.
+
+    Farfield's wheel ships no presets (``RECORD`` has zero entries for them);
+    they live in the source checkout that PEP 610 ``direct_url.json`` records.
+    OCF therefore resolves a preset name against, in order:
+
+   1. ``OCF_FARFIELD_PRESETS_DIR`` (``os.pathsep``-separated), when set;
+   2. ``audio/background/presets/farfield/`` - the upstream-mirrored presets OCF
+       commits, so a build depends on nothing outside the repository;
+   3. ``audio/background/presets/`` - OCF-authored sessions composed from those
+       mirrors (searched after the mirrors, so a mirror always wins a name
+       clash);
+   4. ``<farfield source checkout>/presets`` - an extension tier that supplies
+      any name the repository does not carry.
+
+    The committed copies are authoritative because a build must be
+    reproducible from the repository alone; the checkout can differ between
+    machines or Farfield versions. ``OCF_FARFIELD_PRESETS_DIR`` only *raises*
+    priority - the committed tier always stays in the chain, so an override can
+    shadow a preset but never make a committed one unreachable.
+    """
+    override = os.environ.get("OCF_FARFIELD_PRESETS_DIR", "")
+    dirs = [
+        Path(part).expanduser()
+        for part in override.split(os.pathsep)
+        if part.strip()
+    ]
+    presets_root = REPO_ROOT / "audio" / "background" / "presets"
+    dirs.append(presets_root / "farfield")
+    dirs.append(presets_root)
+    dirs.extend(_source_preset_dirs())
+    return dirs
+
+
+def _source_preset_dirs() -> list[Path]:
+    """`<farfield source checkout>/presets` for the installed distribution.
+
+    The wheel excludes presets, so they only exist in the checkout Farfield was
+    installed from. ``direct_url.json`` (PEP 610) records that checkout. The
+    launcher script's shebang points at the venv interpreter, whose
+    ``lib/python*/site-packages`` holds the dist-info.
+    """
+    executable = shutil.which("farfield")
+    if not executable:
+        return []
+    try:
+        first = Path(executable).read_text(encoding="utf-8", errors="replace").splitlines()[0]
+    except (OSError, IndexError):
+        return []
+    match = re.match(r"#!\s*(\S+)", first)
+    if not match:
+        return []
+    interpreter = Path(match.group(1))
+    # <venv>/bin/python -> <venv>
+    prefixes = [interpreter.parent.parent] if interpreter.parent.name == "bin" else []
+    for prefix in prefixes:
+        for dist in sorted(
+            (prefix / "lib").glob("python*/site-packages/farfield-*.dist-info")
+        ):
+            record = dist / "direct_url.json"
+            if not record.is_file():
+                continue
+            try:
+                url = json.loads(record.read_text(encoding="utf-8")).get("url", "")
+            except (OSError, ValueError):
+                continue
+            if not url.startswith("file://"):
+                continue
+            presets = Path(url[len("file://") :]) / "presets"
+            if presets.is_dir():
+                return [presets]
+    return []
+
+
+def resolve_preset(name: str) -> Path | None:
+    """Resolve a Farfield preset name or path to a session YAML on disk.
+
+    A value that is already a path is used as-is. Otherwise ``name`` is looked
+    up by stem across :func:`farfield_preset_dirs`, Farfield's own presets
+    first and OCF's committed copies last.
+    """
+    candidate = Path(name).expanduser()
+    if candidate.suffix == ".yaml" and candidate.is_file():
+        return candidate
+    for directory in farfield_preset_dirs():
+        for suffix in (".yaml", ".yml"):
+            hit = directory / f"{name}{suffix}"
+            if hit.is_file():
+                return hit
+    return None
+
+
+def preset_search_report(name: str) -> str:
+    """Human-readable account of where a preset name was looked for."""
+    lines = [f"preset {name!r} was not found. Searched:"]
+    for directory in farfield_preset_dirs():
+        lines.append(f"  {directory}{' (exists)' if directory.is_dir() else ' (missing)'}")
+    lines.append(
+        "Set OCF_FARFIELD_PRESETS_DIR to a directory of Farfield session YAMLs, "
+        "or add the preset under audio/background/presets/farfield/."
+    )
+    return "\n".join(lines)
 
 
 def describe_preset(preset: str) -> str:

@@ -76,12 +76,18 @@ Future audio synthesis adds an `audio/scripts/` pipeline that consumes
 checksums recorded back into manifests. Farfield is invoked only via its
 public CLI.
 
+Shipped:
+
+- **Localization layer** — semantic `narration_key`s resolve through locale
+  packs with a BCP-47 fallback chain (es-MX → es → en-US); spoken narration
+  fails loudly instead of falling back to English. Language-aware TTS
+  selection, pronunciation hints, and measured localized subtitle export.
+  Text is resolved at render time; DSP, session structure, and timing stay
+  language-independent. See `docs/LOCALIZATION.md` and
+  `proposals/draft/ocfp-0001-semantic-narration-keys-and-locale-packs.md`.
+
 Planned (designed, not shipped — see `ROADMAP.md` v0.5):
 
-- **Localization layer** — locale packs with a fallback chain
-  (es-MX → es → en) and language-aware TTS selection. Text is resolved at
-  render time; DSP, session structure, and timing stay language-independent.
-  See `docs/LOCALIZATION.md`.
 - **Preparation stage composer** — optional, composable preparation stages
   (relaxation · Energy Conversion Box · affirmation · oHm · focus
   transitions) built on the shipped session-composition mechanics. See

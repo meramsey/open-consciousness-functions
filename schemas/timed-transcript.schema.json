@@ -23,6 +23,14 @@
    "type": "string",
    "minLength": 1
   },
+  "locale": {
+   "description": "BCP-47 locale this document is authored in, and the locale resolved narration is expected in. Defaults to en-US when absent. Narration keyed with 'narration_key' is language-independent; 'text' inline narration is retained for backward compatibility and is deprecated for new work.",
+   "type": [
+    "string",
+    "null"
+   ],
+   "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?$"
+  },
   "state_profile": {
    "type": [
     "string",
@@ -103,6 +111,89 @@
    "type": "array",
    "items": {
     "$ref": "#/definitions/section"
+   }
+  },
+  "narration": {
+   "type": "object",
+   "description": "Narration resolution provenance written by `ocf locale resolve`: the target locale, its direction, whether the run was strict, and which resource supplied each keyed event. Present on resolved documents so spoken text stays traceable back to its locale resource.",
+   "additionalProperties": false,
+   "required": [
+    "locale",
+    "keys"
+   ],
+   "properties": {
+    "locale": {
+     "type": "string"
+    },
+    "direction": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "enum": [
+      "ltr",
+      "rtl",
+      null
+     ]
+    },
+    "strict": {
+     "type": "boolean"
+    },
+    "keys": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "inline_events": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "resolved": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+       "key",
+       "locale"
+      ],
+      "properties": {
+       "id": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "key": {
+        "type": "string"
+       },
+       "locale": {
+        "type": "string",
+        "description": "Locale the text actually came from; differs from the target when an explicit fallback override was used."
+       },
+       "resource_file": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "version": {
+        "type": [
+         "string",
+         "number",
+         "null"
+        ]
+       },
+       "status": {
+        "type": [
+         "string",
+         "null"
+        ]
+       }
+      }
+     }
+    }
    }
   },
   "template": {
@@ -241,8 +332,7 @@
   "timelineEvent": {
    "type": "object",
    "required": [
-    "id",
-    "text"
+    "id"
    ],
    "properties": {
     "id": {
@@ -263,7 +353,25 @@
      "type": "number"
     },
     "text": {
+     "description": "Inline narration text. Retained for backward compatibility and for citation-only imported sources; deprecated for new authoring in favour of 'narration_key'.",
      "type": "string"
+    },
+    "narration_key": {
+     "description": "Semantic key into locales/<locale>/*.yaml. Language-independent: the same key resolves to different narration in each locale without any change to the semantic session. Required for spoken narration to be localizable.",
+     "type": "string",
+     "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"
+    },
+    "variables": {
+     "description": "Values for the template variables declared by the narration resource. The set must match the declared set exactly.",
+     "type": "object",
+     "additionalProperties": {
+      "type": [
+       "string",
+       "number",
+       "integer",
+       "boolean"
+      ]
+     }
     },
     "state": {
      "$ref": "#/definitions/stateSpec"
@@ -274,26 +382,38 @@
     "timing": {
      "$ref": "#/definitions/timingSpec"
     },
-    "cue_id": {
-     "type": [
-      "string",
-      "null"
-     ]
-    }
+   "cue_id": {
+    "type": [
+     "string",
+     "null"
+    ]
+   }
+  },
+  "anyOf": [
+   {
+    "required": [
+     "text"
+    ]
    },
-   "oneOf": [
-    {
-     "required": [
-      "at"
-     ]
-    },
-    {
-     "required": [
-      "after",
-      "offset"
-     ]
-    }
-   ]
+   {
+    "required": [
+     "narration_key"
+    ]
+   }
+  ],
+  "oneOf": [
+   {
+    "required": [
+     "at"
+    ]
+   },
+   {
+    "required": [
+     "after",
+     "offset"
+    ]
+   }
+  ]
   },
   "section": {
    "type": "object",

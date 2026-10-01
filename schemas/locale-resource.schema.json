@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/locale-resource.schema.json",
+  "title": "OCF Locale Resource File",
+  "description": "One domain of one locale pack: a flat map of semantic keys to translatable messages. Keys are language-independent identifiers; values are messages. A value is either a bare string (the simple case) or an object carrying the message plus its declared template variables, pronunciation hints, timing hints, translator notes, and review status. Messages use the ICU MessageFormat subset documented in docs/LOCALIZATION.md (simple {placeholders}, plural, selectordinal, select, #, offset).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "locale", "domain", "entries"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0" },
+    "locale": { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?$" },
+    "domain": { "type": "string", "enum": ["ui", "narration"] },
+    "entries": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "description": "Semantic key: lowercase dotted namespace in kebab-case, carrying no English words (e.g. focus.eleven.instruction). Segment shape is checked further by `ocf locale validate`.",
+        "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"
+      },
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "string", "minLength": 1 },
+          { "$ref": "#/definitions/entry" }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text"],
+      "properties": {
+        "text": { "type": "string", "minLength": 1 },
+        "variables": {
+          "description": "Declared template variables. Must list exactly the variables the message uses. A caller that supplies a different set is a validation error, which is what catches missing, unknown, and cross-locale mismatched variables.",
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+          "uniqueItems": true
+        },
+        "status": {
+          "type": "string",
+          "enum": ["canonical", "draft", "machine", "reviewed"]
+        },
+        "version": {
+          "description": "Entry version. Bump the minor part for cosmetic rewordings, the major part when the meaning changes.",
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "pronunciation": {
+          "description": "Pronunciation hints keyed by the token they apply to, then by backend. Hints are applied only when a TTS backend requests them; they never change visible text, subtitles, or the source transcript.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "espeak-ng": { "type": "string", "minLength": 1 },
+              "espeak": { "type": "string", "minLength": 1 },
+              "piper": { "type": "string", "minLength": 1 },
+              "phoneme": { "type": "string", "minLength": 1 },
+              "notes": { "type": ["string", "null"] }
+            }
+          }
+        },
+        "timing": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "preferred_duration": { "type": "number", "exclusiveMinimum": 0 },
+            "min_duration": { "type": "number", "exclusiveMinimum": 0 },
+            "max_duration": { "type": "number", "exclusiveMinimum": 0 },
+            "notes": { "type": ["string", "null"] }
+          }
+        },
+        "notes": {
+          "description": "Translator note: context, register decisions, terminology, or anything a reviewer needs.",
+          "type": ["string", "null"]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+schema_version: "1.0"
+locale: "es"
+domain: "ui"
+entries:
+  locale.list.header: "Paquetes de idioma"
+  locale.validate.header: "Validación de idiomas"
+  locale.validate.ok: "Todos los paquetes de idioma son válidos."
+  locale.validate.failed: "La validación de idiomas ha fallado."
+  locale.resolve.header: "Narración resuelta"
+  locale.resolve.wrote:
+    text: "Se escribió {path} para el idioma {locale} ({keys} claves resueltas)."
+    variables: ["path", "locale", "keys"]
+    version: "1.0.0"
+  locale.coverage.line:
+    text: "{locale}: {covered} de {total} claves canónicas ({percent} %)"
+    variables: ["locale", "covered", "total", "percent"]
+    version: "1.0.0"
+  locale.coverage.narration:
+    text: "Narración {locale}: {covered} de {total} claves canónicas habladas"
+    variables: ["locale", "covered", "total"]
+    version: "1.0.0"
+  locale.missing.keys:
+    text: "A {locale} le faltan {count, plural, one {# clave canónica} other {# claves canónicas}}: {keys}"
+    variables: ["locale", "count", "keys"]
+    version: "1.0.0"
+  locale.unknown.keys:
+    text: "{locale} define claves que el paquete canónico no tiene: {keys}"
+    variables: ["locale", "keys"]
+    version: "1.0.0"
+  locale.stale.translation:
+    text: "{locale} se tradujo desde {source}@{version}; la versión canónica ahora es {canonical}"
+    variables: ["locale", "source", "version", "canonical"]
+    version: "1.0.0"
+  locale.pseudo.built:
+    text: "Se creó el pseudo-idioma {locale} desde {source}@{version} ({count} claves)."
+    variables: ["locale", "source", "version", "count"]
+    version: "1.0.0"
+  locale.unavailable:
+    text: "No hay paquete de idioma para {locale}. Disponibles: {available}"
+    variables: ["locale", "available"]
+    version: "1.0.0"
+  voice.locale.mismatch:
+    text: "El perfil de voz {profile} está en {profile_language}; renderizando {locale}."
+    variables: ["profile", "profile_language", "locale"]
+    version: "1.0.0"
+  voice.locale.phonemes:
+    text: "Se aplicó {count, plural, one {# indicio de pronunciación} other {# indicios de pronunciación}} a la narración {locale}."
+    variables: ["count", "locale"]
+    version: "1.0.0"
+  export.locale.measured:
+    text: "Los tiempos de los subtítulos vienen del habla renderizada de {backend} ({cues} señales)."
+    variables: ["backend", "cues"]
+    version: "1.0.0"

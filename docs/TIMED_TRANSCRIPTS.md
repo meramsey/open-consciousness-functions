@@ -37,7 +37,9 @@ claims a tool exists until it does.
 | Preparation Module (learn-once, `OCF-PREP-*`)            | specified   |
 | Composable preparation stages (relaxation · ECB · optional affirmation · optional oHm · focus transitions) | planned (see [`PREPARATION_MODULE.md`](PREPARATION_MODULE.md)) |
 | Focus-state auditory cue events (`focus11_open` / `focus11_ready` / `focus11_close` / `session_complete`) | planned (see below) |
-| Localization / locale packs / language-aware TTS (incl. translated timed text) | planned (see [`LOCALIZATION.md`](LOCALIZATION.md)) |
+| Semantic narration keys + locale packs + fallback (`ocf locale …`) | implemented |
+| Language-aware TTS and localized export (`--locale` on render/export/build) | implemented |
+| Translations on *function records* (one source language + a translation list) | planned (see [`LOCALIZATION.md`](LOCALIZATION.md)) |
 
 The normative sections are **§32, §44–50** (transcripts, states, sections) and
 **§27–43, §51–61** (voices, mixing, preparation) of the v3 bootstrap prompt.
@@ -513,8 +515,8 @@ Current docs:
 - [`PREPARATION_MODULE.md`](PREPARATION_MODULE.md) — planned preparation-stage
   design (relaxation · ECB · optional affirmation · optional oHm · focus
   transitions).
-- [`LOCALIZATION.md`](LOCALIZATION.md) — planned locale packs, language
-  fallback, and language-aware TTS.
+- [`LOCALIZATION.md`](LOCALIZATION.md) — semantic narration keys, locale packs,
+  fallback, language-aware TTS, and localized subtitle export.
 
 Specified in the v3 bootstrap prompt, to be authored alongside the remaining
 (specification-only) toolchain: `STATE_AND_FOCUS_LEVELS.md`,

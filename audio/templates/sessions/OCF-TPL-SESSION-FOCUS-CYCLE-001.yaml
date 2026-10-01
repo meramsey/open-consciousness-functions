@@ -1,0 +1,70 @@
+schema_version: "1.0"
+id: "OCF-TPL-SESSION-FOCUS-CYCLE-001"
+name: "Focus cycle — language-independent semantic session"
+author: "OCF"
+origin: "original-ocf"
+license: "Apache-2.0"
+description: |
+  A short demonstration session authored for this repository to prove that a
+  session is language-independent. Every line is a `narration_key`, so the
+  composed document is identical in every locale; the words come from the
+  locale pack:
+
+    ocf session compose --template OCF-TPL-SESSION-FOCUS-CYCLE-001
+    ocf locale resolve --file <composed>.yaml --locale es
+
+  The composed document keeps semantic timing. Localized speech may take longer
+  than the slot it is scheduled in, which is what `ocf audio build --fit`
+  absorbs; subtitle export can optionally use the measured speech instead.
+
+  Original OCF wording, written for this file. No Preparation Learning, Focus
+  10, or Focus 11 material was migrated here, and no legacy H-PLUS transcript
+  wording is used.
+slots:
+  required: []
+  optional: []
+defaults:
+  line_seconds: 3.0
+  duration: 420.0
+sections:
+  - id: opening
+    type: preparation
+    role: announce the function and settle the body
+    start: 0.0
+    lines:
+      - at: 0.0
+        narration_key: "session.focus-cycle.opener"
+      - at: 12.0
+        narration_key: "session.focus-cycle.settle"
+  - id: induction
+    type: induction
+    role: reach the tenth state
+    start: 60.0
+    lines:
+      - at: 0.0
+        narration_key: "session.focus-cycle.tenth-state.enter"
+      - at: 20.0
+        narration_key: "session.focus-cycle.tenth-state.hold"
+  - id: access-open
+    type: access-open
+    role: raise focus to the eleventh state
+    start: 180.0
+    lines:
+      - at: 0.0
+        narration_key: "session.focus-cycle.eleventh-state.enter"
+      - at: 16.0
+        narration_key: "session.focus-cycle.instruction"
+  - id: access-close
+    type: access-close
+    role: release the state
+    start: 300.0
+    lines:
+      - at: 0.0
+        narration_key: "session.focus-cycle.return"
+  - id: outro
+    type: outro
+    role: close the session
+    start: 360.0
+    lines:
+      - at: 0.0
+        narration_key: "session.focus-cycle.close"

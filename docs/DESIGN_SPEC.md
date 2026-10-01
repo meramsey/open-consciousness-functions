@@ -84,15 +84,23 @@ Covered by `COMMAND_GRAMMAR.md`. Enforced by `ocf review commands` and
 
 ## 9. Planned extensions (v0.5, not shipped)
 
-Designed in `docs/PREPARATION_MODULE.md`, `docs/LOCALIZATION.md`, and
-`docs/TIMED_TRANSCRIPTS.md`; tracked in `ROADMAP.md`. None are data-model
-today — each requires a proposal (`OCFP-*`) plus coordinated schema, template,
-generator, and test updates.
+Designed in `docs/PREPARATION_MODULE.md` and `docs/TIMED_TRANSCRIPTS.md`;
+tracked in `ROADMAP.md`. Each requires a proposal (`OCFP-*`) plus coordinated
+schema, template, generator, and test updates.
 
-- **Language identifiers** — a locale/language field on timed transcripts and
-  translated function narration (audio implementation and voice profiles
-  already carry `language`).
-- **Pronunciation / locale TTS hints** on voice specs.
+Shipped since the previous revision, by
+`proposals/draft/ocfp-0001-semantic-narration-keys-and-locale-packs.md`:
+
+- **Language identifiers** — `locale` on timed transcripts, session templates,
+  and locale packs; `narration_key` + `variables` on timed events and template
+  lines; narration resolution provenance on resolved documents.
+- **Locale packs** — `locales/<tag>/` with manifest + resource files, plural
+  rules, translation provenance, and semantic versioning.
+- **Pronunciation / locale TTS hints** — per-entry `pronunciation` metadata
+  applied to TTS input only.
+
+Still planned:
+
 - **Composable preparation stages** — optional stage roles
   (`affirmation`, `ohm`, …) with default-skipped semantics.
 - **Focus-state auditory cue events** — semantic transition events mapped to

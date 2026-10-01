@@ -1,0 +1,156 @@
+# OCF-authored Farfield session: the canonical Focus 11 Access Channel program.
+#
+#   Focus 10  ->  Focus 11  ->  Focus 10
+#   pre-access   access window   return
+#
+# COMPOSED, NOT MEASURED AS A WHOLE. Every parameter below is either copied
+# from a committed upstream Farfield preset or derived from one by arithmetic;
+# no carrier frequency, level, bed colour, or trajectory endpoint is invented.
+# Specifically:
+#
+#   * The Focus-10 programme is upstream `presets/farfield/focus-10.yaml`
+#     (measured Gateway "Free Flow 10"). Its third segment ("resolved
+#     5:20-21:10", the full A+B+C stack) is the only part this session reuses,
+#     because both access-window boundaries fall inside it. That segment is
+#     split into three pieces at 6:31 and 12:50; each piece keeps the upstream
+#     glide's true value at its own boundaries (see the comments below), so
+#     the re-split trajectory is continuous to within ~0.0002 Hz.
+#   * The Focus-11 access state is upstream `presets/farfield/focus-11-c.yaml`
+#     (measured Focus 11 newer, 16:00-27:00), carrying its three measured
+#     40 Hz-SAM gamma carriers and the 175/179 Hz theta pair.
+#   * The one free parameter is COMPOSITION_GAIN_DB below: the Focus-11 block
+#     is attenuated so its strongest carrier (323.625 Hz) sits two-thirds of
+#     the power of the Focus-10 A carrier, rather than dominating the mix.
+#     It is derived from measured narrow-band levels of the two upstream
+#     renders, not chosen by ear:
+#       focus-10   A carrier 102.0 Hz    -25.7 dB
+#       focus-11-c gamma324 323.625 Hz   -20.8 dB
+#       target = -25.7 + 10*log10(2/3) = -27.5 dB  =>  -6.7 dB
+#   * Only the GROUPS of focus-11-c are layered; its pink bed is used for the
+#     access segment, so the bed follows the active state instead of two beds
+#     summing to a doubled noise floor.
+#
+# Timings are the measured `OCF-BG-0011` splice values and are the ONLY ones
+# asserted: the access window opens at 391.0 s (6:31) and closes at 770.0 s
+# (12:50), each with a 30 s crossfade. No other boundary is claimed; the
+# session runs 30:00 and a build trims the bed to the narration length.
+name: attention-focus-10-11-10
+title: "Attention — Focus 10 to Focus 11 access channel and back"
+fidelity: original
+notes: |
+  OCF-composed from upstream Farfield 0.1.0 presets focus-10.yaml and
+  focus-11-c.yaml; see the header comment for the composition gain and the
+  provenance of every value. The canonical Focus 11 Access Channel sequence is
+  Focus 10 -> Focus 11 -> Focus 10. Focus 3 is NOT part of this sequence; it
+  remains available as an optional induction in presets/farfield/focus-3.yaml.
+sample_rate: 48000
+output:
+  peak_dbfs: -3.0
+
+defaults:
+  harmonics: [1.0]
+
+# 30:00 total. Segment starts follow farfield's rule
+# start[n+1] = start[n] + duration[n] - overlap[n].
+segments:
+  # 0:00-4:25 — upstream focus-10 segment 1, Group A alone. Unchanged.
+  - duration: "4:25"
+    overlap: "0:15"
+    groups:
+      - {name: A, level_db: 0.0,
+         pairs: [{center: 102.0, beat: {from: 4.115, to: 4.070}}]}
+    bed: &brown_bed
+      level_db: -4.1
+      color: brown
+      slope_db_per_decade: -22.0
+      stereo: {mode: static, interaural_delay_us: 145.0}
+
+  # 4:25-5:35 — upstream focus-10 segment 2, Group B enters. Unchanged.
+  - duration: "1:25"
+    overlap: "0:15"
+    groups:
+      - {name: A, level_db: 0.0,
+         pairs: [{center: 102.0, beat: {from: 4.070, to: 4.057}}]}
+      - {name: B, level_db: -0.5,
+         pairs: [{center: 300.5, beat: {from: 3.867, to: 3.859}}],
+         tremolo: {rate_hz: {from: 0.580, to: 0.575}, depth: 0.22}}
+    bed: *brown_bed
+
+  # 5:35-6:31 — first part of upstream focus-10 segment 3, still Focus 10 only.
+  # Glide endpoints are the upstream values at this piece's own boundaries.
+  - duration: "1:11"
+    overlap: "0:30"
+    groups:
+      - {name: A, level_db: 0.0,
+         pairs: [{center: 102.0, beat: {from: 4.0570, to: 4.0444}}]}
+      - {name: B, level_db: -0.5,
+         pairs: [{center: 300.5, beat: {from: 3.8590, to: 3.8511}}],
+         tremolo: {rate_hz: {from: 0.5750, to: 0.5705}, depth: 0.22}}
+      - {name: C, level_db: -6.0,
+         pairs: [{left: 497.0, right: 493.3}]}
+    bed: *brown_bed
+
+  # 6:31-12:50 — the Focus 11 access window. Focus-10 A+B+C keep sounding
+  # underneath; the Focus-11 access state is layered on top and rides in and
+  # out over the 30 s crossfades either side. COMPOSITION_GAIN_DB (-6.7 dB) is
+  # folded into each focus-11-c level below.
+  - duration: "6:49"
+    overlap: "0:30"
+    groups:
+      - {name: A, level_db: 0.0,
+         pairs: [{center: 102.0, beat: {from: 4.0497, to: 3.9773}}]}
+      - {name: B, level_db: -0.5,
+         pairs: [{center: 300.5, beat: {from: 3.8544, to: 3.8086}}],
+         tremolo: {rate_hz: {from: 0.5724, to: 0.5466}, depth: 0.22}}
+      - {name: C, level_db: -6.0,
+         pairs: [{left: 497.0, right: 493.3}]}
+      # --- Focus 11 access state, from focus-11-c.yaml, -6.7 dB ---
+      - {name: theta4, level_db: -13.7,
+         pairs: [{left: 175.0, right: 179.0}]}
+      - {name: gamma257, level_db: -10.7,
+         sam: {carrier_hz: 256.869, rate_hz: 40.0, depth_rad: 0.442, path: closed}}
+      - {name: gamma324, level_db: -6.7,
+         sam: {carrier_hz: 323.625, rate_hz: 40.0, depth_rad: 0.568, path: closed}}
+      - {name: gamma385, level_db: -8.1,
+         sam: {carrier_hz: 384.875, rate_hz: 40.0, depth_rad: 0.716, path: closed}}
+    # focus-11-c's pink bed, so the bed follows the active state.
+    bed: &pink_bed
+      level_db: -7.4
+      color: pink
+      slope_db_per_decade: -10.0
+
+  # 12:50-21:25 — remainder of upstream focus-10 segment 3: back to Focus 10.
+  # Spans 12:20-21:25 so that its own 0:15 overlap puts the next segment
+  # (upstream segment 4) back at its upstream start of 21:10.
+  - duration: "9:05"
+    overlap: "0:15"
+    groups:
+      - {name: A, level_db: 0.0,
+         pairs: [{center: 102.0, beat: {from: 3.9826, to: 3.8860}}]}
+      - {name: B, level_db: -0.5,
+         pairs: [{center: 300.5, beat: {from: 3.8120, to: 3.7510}}],
+         tremolo: {rate_hz: {from: 0.5485, to: 0.5140}, depth: 0.22}}
+      - {name: C, level_db: -6.0,
+         pairs: [{left: 497.0, right: 493.3}]}
+    bed: *brown_bed
+
+  # 21:25-24:45 — upstream focus-10 segment 4, Group A exits. Unchanged.
+  - duration: "3:35"
+    overlap: "0:15"
+    groups:
+      - {name: B, level_db: -0.5,
+         pairs: [{center: 300.5, beat: {from: 3.751, to: 3.728}}],
+         tremolo: {rate_hz: {from: 0.514, to: 0.501}, depth: 0.22}}
+      - {name: C, level_db: -6.0,
+         pairs: [{left: 497.0, right: 493.3}]}
+    bed: *brown_bed
+
+  # 24:45-30:00 — upstream focus-10 segment 5, Group B alone to the end.
+  - duration: "5:30"
+    groups:
+      - {name: B, level_db: -0.5,
+         pairs: [{center: 300.5, beat: {from: 3.728, to: 3.691}}],
+         tremolo: {rate_hz: {from: 0.501, to: 0.480}, depth: 0.22}}
+    bed: *brown_bed
+
+emerge: false

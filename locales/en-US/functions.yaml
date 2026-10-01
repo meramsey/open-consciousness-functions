@@ -1,0 +1,33 @@
+schema_version: "1.0"
+locale: "en-US"
+domain: "narration"
+entries:
+  # Function narration is parameterized by the function record. `command` holds a
+  # canonical OCF command (PLUS-...), which is language-independent metadata and
+  # is never translated: a localized pack may explain the command in its own
+  # grammar, but the command string itself stays as authored. `ocf locale
+  # validate` rejects a template whose `command` value is not a real command.
+  function.intro.name:
+    text: "This exercise is for the {function_name} function."
+    variables: ["function_name"]
+    version: "1.0.0"
+  function.activation.command:
+    text: "The activation command is {command}."
+    variables: ["command"]
+    version: "1.0.0"
+    pronunciation:
+      PLUS-FOCUS:
+        espeak-ng: "[[p l Q s f Q k]]"
+        notes: "Compound command spoken letter by letter; hint only, never visible text."
+  function.repetition.count:
+    text: "Repeat the command {count, plural, one {# more time} other {# more times}}."
+    variables: ["count"]
+    version: "1.0.0"
+  function.release.command:
+    text: "Release with {command} when the exercise is complete."
+    variables: ["command"]
+    version: "1.0.0"
+  function.state.eleven.material:
+    text: "In the eleventh state, the material for {function_name} is yours to read."
+    variables: ["function_name"]
+    version: "1.0.0"

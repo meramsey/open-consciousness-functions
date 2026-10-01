@@ -60,10 +60,12 @@ FLAC/MP3 encode via ffmpeg/flac when available — otherwise everything
 degrades gracefully with install guidance. Only the **preparation** module
 (`ocf preparation …`) remains specified (v0.4+, not yet shipped).
 `docs/TIMED_TRANSCRIPTS.md` marks each capability as *implemented*, *specified*,
-or *planned*. Planned v0.5 work — localization/locale packs, composable
-preparation stages (optional affirmation, oHm/resonant-tuning), and
-focus-state auditory cue events — is designed (not shipped) in
-`docs/PREPARATION_MODULE.md`, `docs/LOCALIZATION.md`, and `ROADMAP.md`.
+or *planned*. Localization is shipped (`ocf locale …`, plus `--locale` on
+render/export/build) and documented in `docs/LOCALIZATION.md` and
+`locales/README.md`. Remaining planned v0.5 work — composable preparation
+stages (optional affirmation, oHm/resonant-tuning) and focus-state auditory cue
+events — is designed (not shipped) in `docs/PREPARATION_MODULE.md` and
+`ROADMAP.md`.
 
 ## Quick start
 

@@ -8,6 +8,7 @@ duplicate ids, and legacy compatibility invariants.
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -22,6 +23,17 @@ from .indexes import (
     load_all_functions,
     load_voice_profiles,
     load_yaml_file,
+)
+from .locale import (
+    LocaleCatalog,
+    LocalizationError,
+    document_key_usage,
+    document_locale,
+    iter_events,
+    locale_direction,
+    locale_language,
+    message_variables,
+    missing_narration_keys,
 )
 from .models import FunctionRecord
 from .paths import schema_path
@@ -358,7 +370,242 @@ def validate_timed_transcript(data: dict[str, Any], path: Path) -> ValidationRes
     _events, problems = resolve_timeline(data)
     for problem in problems:
         result.add("error", "timed-timeline", problem, str(path))
+    result.extend(validate_narration_usage(data, path))
     return result
+
+
+def validate_narration_usage(
+    data: dict[str, Any], path: Path, catalog: LocaleCatalog | None = None
+) -> ValidationResult:
+    """Check narration keys against the locale packs.
+
+    Catches inline listener-facing English left behind on a keyed event, keys the
+    canonical pack does not define, and variable-contract mismatches.
+    """
+    result = ValidationResult()
+    catalog = catalog or LocaleCatalog()
+    usage = document_key_usage(data)
+    if not usage["keyed"]:
+        return result
+    canonical = catalog.canonical
+    commands = known_commands()
+    for event in iter_events(data):
+        event_id = str(event.get("id", "?"))
+        key = event.get("narration_key")
+        if not key:
+            continue
+        if event.get("text"):
+            result.add(
+                "warning",
+                "narration-inline-text",
+                f"event {event_id} carries both narration_key {key!r} and inline text; "
+                "the inline wording overrides the locale pack and will not localize",
+                str(path),
+            )
+        if canonical is not None and canonical.get(str(key)) is None:
+            result.add(
+                "error",
+                "narration-unknown-key",
+                f"event {event_id} references {key!r}, which the canonical locale "
+                f"{catalog.canonical_locale} does not define",
+                str(path),
+            )
+        for name, value in (event.get("variables") or {}).items():
+            if name in ("command", "release_command") and commands and value not in commands:
+                result.add(
+                    "error",
+                    "narration-command-invalid",
+                    f"event {event_id} passes {value!r} for {name}, which is not a "
+                    "canonical OCF command",
+                    str(path),
+                )
+    locale = document_locale(data)
+    if catalog.get(locale) is None:
+        result.add(
+            "error",
+            "locale-unavailable",
+            f"document declares locale {locale!r} but no locale pack provides it",
+            str(path),
+        )
+    else:
+        missing = missing_narration_keys(data, locale, catalog)
+        if missing:
+            result.add(
+                "error",
+                "narration-missing-key",
+                f"document needs spoken narration in {locale} that the pack does not "
+                f"provide: {', '.join(missing)}",
+                str(path),
+            )
+    return result
+
+
+def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationResult:
+    """Validate every locale pack: schema, contracts, coverage, and provenance."""
+    result = ValidationResult()
+    catalog = catalog or LocaleCatalog()
+    for problem in catalog.problems:
+        result.add("error", "locale-pack-malformed", problem)
+    if not catalog.locales():
+        result.add("warning", "locale-pack-none", f"no locale packs found in {catalog.root}")
+        return result
+
+    manifest_schema = _load_schema("locale-manifest.schema.json")
+    resource_schema = _load_schema("locale-resource.schema.json")
+    canonical = catalog.canonical
+    commands = known_commands()
+
+    for locale in catalog.locales():
+        pack = catalog.require(locale)
+        target = str(pack.path) if pack.path else f"locales/{locale}"
+        for message in validate_against_schema(pack.manifest, manifest_schema):
+            result.add("error", "locale-manifest-schema", message, target)
+        if pack.manifest.get("status") != "canonical":
+            translation = pack.translation
+            if not translation.get("source_locale"):
+                result.add(
+                    "error",
+                    "locale-provenance-missing",
+                    f"{locale} is not canonical but declares no translation.source_locale",
+                    target,
+                )
+            if translation.get("source_locale") == locale:
+                result.add(
+                    "error",
+                    "locale-provenance-self",
+                    f"{locale} records itself as its own translation source",
+                    target,
+                )
+        for resource in pack.manifest.get("resources") or []:
+            filename = str(resource.get("file", ""))
+            data = load_yaml_file(Path(pack.path) / filename) if pack.path else {}
+            for message in validate_against_schema(data, resource_schema):
+                result.add("error", "locale-resource-schema", message, f"{target}/{filename}")
+
+        for key, entry in pack.entries.items():
+            where = f"{target}/{entry.file or '?'}#{key}"
+            for problem in entry.check_contract():
+                result.add("error", "locale-variable-contract", f"{key}: {problem}", where)
+            try:
+                message_variables(entry.text)
+            except LocalizationError as exc:
+                result.add("error", "locale-message-syntax", f"{key}: {exc}", where)
+            if canonical is not None and canonical.locale == locale:
+                continue
+            source = canonical.get(key) if canonical else None
+            if source is not None:
+                missing_variables = sorted(set(source.variables) - set(entry.variables))
+                extra_variables = sorted(set(entry.variables) - set(source.variables))
+                if missing_variables or extra_variables:
+                    detail = []
+                    if missing_variables:
+                        detail.append(f"missing {', '.join(missing_variables)}")
+                    if extra_variables:
+                        detail.append(f"extra {', '.join(extra_variables)}")
+                    result.add(
+                        "error",
+                        "locale-variable-mismatch",
+                        f"{key}: declares different template variables than "
+                        f"{canonical.locale} ({'; '.join(detail)})",
+                        where,
+                    )
+            declared_commands = [
+                name for name in ("command", "release_command") if name in entry.variables
+            ]
+            for token in re.findall(r"\bPLUS-[A-Z-]+\b", entry.text):
+                if token not in commands:
+                    result.add(
+                        "error",
+                        "locale-command-invalid",
+                        f"{key}: references command {token!r}, which is not a canonical "
+                        "OCF command (see legacy/hplus-command-map.json)",
+                        where,
+                    )
+            if declared_commands:
+                result.add(
+                    "info",
+                    "locale-command-placeholder",
+                    f"{key}: takes a command value; documents that reference it are "
+                    "checked against the canonical command list",
+                    where,
+                )
+            for token in entry.pronunciation:
+                if token not in entry.text and not entry.variables:
+                    result.add(
+                        "warning",
+                        "locale-pronunciation-unused",
+                        f"{key}: pronunciation hint for {token!r}, which the message "
+                        "neither contains nor can receive as a variable",
+                        where,
+                    )
+
+        if not pack.is_canonical and canonical is not None:
+            missing_keys = catalog.missing_keys(locale)
+            if missing_keys:
+                shown = ", ".join(missing_keys[:8])
+                if len(missing_keys) > 8:
+                    shown += f", +{len(missing_keys) - 8} more"
+                result.add(
+                    "warning",
+                    "locale-partial",
+                    f"{locale} is missing {len(missing_keys)} canonical key(s): {shown}",
+                    target,
+                )
+            unknown = catalog.unknown_keys(locale)
+            if unknown:
+                result.add(
+                    "error",
+                    "locale-unknown-keys",
+                    f"{locale} defines keys the canonical pack does not: "
+                    f"{', '.join(unknown)}",
+                    target,
+                )
+            if catalog.stale_translations(locale):
+                result.add(
+                    "warning",
+                    "locale-stale",
+                    f"{locale} was translated from "
+                    f"{pack.translation.get('source_locale')}@"
+                    f"{pack.translation.get('source_semantic_version')}; canonical is now "
+                    f"{canonical.semantic_version} (retranslate or re-verify)",
+                    target,
+                )
+            for key in catalog.stale_keys(locale):
+                result.add(
+                    "info",
+                    "locale-entry-stale",
+                    f"{key}: canonical entry version is newer than the translation's",
+                    target,
+                )
+        if pack.direction != locale_direction(locale):
+            result.add(
+                "warning",
+                "locale-direction",
+                f"{locale} declares direction {pack.direction!r} but "
+                f"{locale_direction(locale)} is expected for {locale_language(locale)}",
+                target,
+            )
+    result.add(
+        "info",
+        "locale-count",
+        f"validated {len(catalog.locales())} locale pack(s): "
+        f"{', '.join(catalog.locales())}",
+    )
+    return result
+
+
+def known_commands() -> set[str]:
+    """Canonical OCF commands, for validating command references in resources."""
+    commands: set[str] = set()
+    for record in load_all_functions():
+        command = record.canonical_command
+        if command:
+            commands.add(str(command))
+        for mode in record.command_modes:
+            if mode:
+                commands.add(str(mode))
+    return commands
+
 
 
 def validate_timed_transcript_file(path: Path) -> ValidationResult:
@@ -419,6 +666,7 @@ def validate_all() -> ValidationResult:
     result.extend(validate_background_manifests())
     result.extend(validate_timed_transcripts())
     result.extend(validate_voice_profiles())
+    result.extend(validate_locale_packs())
     return result
 
 

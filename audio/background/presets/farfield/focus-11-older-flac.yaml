@@ -1,0 +1,39 @@
+name: focus-11-older-flac
+title: Focus 11 — older FLAC measured sustained state
+fidelity: measured-tape
+notes: "MEASURED from 06:54-12:27 of the supplied 44.1 kHz / 24-bit stereo FLAC.\n\
+  \nTwo persistent conventional binaural systems dominate the confirmed Focus 11 interval:\n\
+  \  A: L 167.35 Hz / R 171.35 Hz = 4.00 Hz beat, right ear high.\n  B: L ~412.3 Hz\
+  \ / R ~404.9 Hz = ~7.40 Hz beat, left ear high.\n\nPair B's absolute carrier drifts\
+  \ by roughly +/-0.5 Hz over the measured interval,\nwhile its interaural separation\
+  \ remains close to 7.4 Hz. This sustained-state\npreset uses the median center (~408.6\
+  \ Hz) rather than reproducing the small,\nnon-monotonic carrier drift.\n\nThe broadband\
+  \ bed measures approximately pink-like through the useful midband\n(~ -11.6 dB/decade\
+  \ over 1-5 kHz), with stronger high-frequency rolloff.\nNarration/program audio\
+  \ prevents a sample-perfect isolation of the bed, so its\nlevel is an evidence-based\
+  \ approximation.\n\nNo persistent 40-Hz SAM family comparable to the newer Focus\
+  \ 11 recording was\ndetected in this older Focus-11 window; none is invented here.\n"
+sample_rate: 48000
+output:
+  peak_dbfs: -3.0
+defaults:
+  harmonics:
+  - 1.0
+segments:
+- duration: '30:00'
+  groups:
+  - name: theta4
+    level_db: -1.1
+    pairs:
+    - left: 167.35
+      right: 171.35
+  - name: upper74
+    level_db: 0.0
+    pairs:
+    - left: 412.3
+      right: 404.9
+  bed:
+    level_db: -4.0
+    color: pink
+    slope_db_per_decade: -11.6
+emerge: false

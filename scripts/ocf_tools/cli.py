@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import sys
 from pathlib import Path
+from typing import Any
 
 from . import audio as audio_mod
 from . import farfield as farfield_mod
@@ -73,6 +74,11 @@ Usage:
   ocf transcript review FILE [--state-profile NAME] [--write] [--output]
   ocf transcript export FILE --format srt|vtt|lrc [--output] [--force]
   ocf transcript extract-template FILE --timing-only [--output] [--force]
+  ocf locale list              List locale packs with provenance and coverage
+  ocf locale coverage [--locale TAG] [--domain ui|narration]
+  ocf locale validate [--locale TAG] [--file DOC] [--json]
+  ocf locale resolve (--file DOC | --session TEMPLATE) --locale TAG [--no-strict] [--output YAML]
+  ocf locale pseudo [--from TAG] [--locale TAG] [--output DIR]
   ocf doctor                  Show environment health
   ocf help                    Show this help
 
@@ -133,6 +139,8 @@ def _build_parser() -> argparse.ArgumentParser:
     render_speech = audio_sub.add_parser("render-speech", help="render narration speech to WAV")
     render_speech.add_argument("file", help="OCF timed YAML document")
     render_speech.add_argument("--voice", help="voice profile id/slug or backend name")
+    render_speech.add_argument("--locale", help="target locale (BCP-47); resolves narration keys and retargets the voice")
+    render_speech.add_argument("--allow-fallback", action="store_true", help="permit fallback across the locale chain instead of failing on missing spoken narration")
     render_speech.add_argument("--output", help="output WAV path")
     render_speech.add_argument("--rate", type=int, default=44100, help="sample rate (Hz)")
     render_speech.add_argument("--force", action="store_true", help="overwrite an existing file")
@@ -158,6 +166,8 @@ def _build_parser() -> argparse.ArgumentParser:
         help="metadata tag override KEY=VALUE applied to FLAC/MP3 outputs (repeatable)",
     )
     build_cmd.add_argument("--voice", help="voice profile id/slug or backend name")
+    build_cmd.add_argument("--locale", help="target locale (BCP-47) for narration rendering")
+    build_cmd.add_argument("--allow-fallback", action="store_true", help="permit fallback across the locale chain instead of failing on missing spoken narration")
     build_cmd.add_argument("--output", help="output directory (default audio/rendered)")
     build_cmd.add_argument("--rate", type=int, default=44100, help="sample rate (Hz)")
     build_cmd.add_argument("--background-gain", type=float, default=0.25)
@@ -176,6 +186,8 @@ def _build_parser() -> argparse.ArgumentParser:
     voice_render = voice_sub.add_parser("render", help="render narration speech to WAV")
     voice_render.add_argument("file", help="OCF timed YAML document")
     voice_render.add_argument("--voice", help="voice profile id/slug or backend name")
+    voice_render.add_argument("--locale", help="target locale (BCP-47); resolves narration keys and retargets the voice")
+    voice_render.add_argument("--allow-fallback", action="store_true", help="permit fallback across the locale chain instead of failing on missing spoken narration")
     voice_render.add_argument("--output", help="output WAV path")
     voice_render.add_argument("--rate", type=int, default=44100, help="sample rate (Hz)")
     voice_render.add_argument("--fit", action="store_true", help="adaptive per-cue pacing (trim TTS pads, fill short slots)")
@@ -217,6 +229,9 @@ def _build_parser() -> argparse.ArgumentParser:
     exp = ts.add_parser("export", help="export to SRT/VTT/LRC")
     exp.add_argument("file", help="OCF timed YAML document")
     exp.add_argument("--format", required=True, choices=["srt", "vtt", "lrc"], help="export format")
+    exp.add_argument("--locale", help="resolve narration keys into this locale before exporting")
+    exp.add_argument("--allow-fallback", action="store_true", help="permit fallback across the locale chain instead of failing on missing spoken narration")
+    exp.add_argument("--render-manifest", help="use the measured speech timings from a render manifest (OCF-RENDER-*.yaml) for cue ends")
     exp.add_argument("--output", help="output file path (default: stdout)")
     exp.add_argument("--force", action="store_true", help="overwrite an existing output file")
     xt = ts.add_parser("extract-template", help="timing-only structural template")
@@ -246,8 +261,42 @@ def _build_parser() -> argparse.ArgumentParser:
     compose_cmd.add_argument("--id", help="document/slug id (default: none)")
     compose_cmd.add_argument("--duration", type=float, help="total track length in seconds")
     compose_cmd.add_argument("--line-seconds", type=float, help="pace untimed slot lines every N seconds")
+    compose_cmd.add_argument("--locale", help="compose directly in this locale (BCP-47), resolving narration keys")
+    compose_cmd.add_argument("--allow-fallback", action="store_true", help="permit fallback across the locale chain instead of failing on missing spoken narration")
     compose_cmd.add_argument("--output", help="output YAML path (default audio/scripts/<id>.yaml)")
     compose_cmd.add_argument("--force", action="store_true", help="overwrite an existing output file")
+
+    locale = sub.add_parser("locale", help="locale packs and localized narration")
+    locale_sub = locale.add_subparsers(dest="locale_kind")
+    locale_sub.add_parser("list", help="list locale packs, provenance, and coverage")
+    cov = locale_sub.add_parser(
+        "coverage", help="report a locale's key coverage against the canonical pack"
+    )
+    cov.add_argument("--locale", help="locale to report (default: every installed pack)")
+    cov.add_argument("--domain", choices=["ui", "narration"], help="restrict to one domain")
+    loc_validate = locale_sub.add_parser("validate", help="validate locale packs")
+    loc_validate.add_argument("--locale", help="validate only this pack")
+    loc_validate.add_argument(
+        "--file", help="also resolve this timed document strictly (pre-render check)"
+    )
+    loc_validate.add_argument("--json", action="store_true", help="emit issues as JSON")
+    loc_resolve = locale_sub.add_parser(
+        "resolve", help="resolve a document's narration keys into one locale"
+    )
+    loc_resolve.add_argument("--file", help="OCF timed YAML document to resolve")
+    loc_resolve.add_argument("--session", help="session template id/path to compose, then resolve")
+    loc_resolve.add_argument("--locale", required=True, help="target locale (BCP-47)")
+    loc_resolve.add_argument(
+        "--no-strict",
+        action="store_true",
+        help="fall back through the locale chain instead of failing on missing spoken narration",
+    )
+    loc_resolve.add_argument("--output", help="output YAML path (default stdout)")
+    loc_resolve.add_argument("--force", action="store_true", help="overwrite an existing output file")
+    pseudo = locale_sub.add_parser("pseudo", help="derive a pseudo-locale pack from another pack")
+    pseudo.add_argument("--from", dest="source_locale", help="source locale (default: canonical)")
+    pseudo.add_argument("--locale", help="pseudo-locale tag (default: en-XA)")
+    pseudo.add_argument("--output", help="write the pack here (default: print a sample)")
 
     sub.add_parser("doctor", help="environment health check")
     return parser
@@ -277,6 +326,235 @@ def cmd_build_index(args: argparse.Namespace) -> int:
         return 1
     refresh_indexes()
     print("Generated indexes updated.")
+    return 0
+
+
+def _locale_catalog() -> Any:
+    from .locale import LocaleCatalog
+
+    return LocaleCatalog()
+
+
+def _locale_ui(
+    catalog: Any, key: str, target: str | None = None, /, **variables: Any
+) -> str:
+    """Format an operator-facing string from the pack, falling back to English.
+
+    Only the variables the resource declares are passed through, so a caller can
+    hand over every value it has without tripping the variable contract.
+    """
+    from .locale import LocalizationError
+
+    lookup = target or catalog.canonical_locale
+    try:
+        entry, _resolution = catalog.resource(key, lookup)
+        supplied = {name: value for name, value in variables.items() if name in entry.variables}
+        return entry.render(supplied, plural_rules=catalog.plural_rules_for(lookup))
+    except LocalizationError:
+        return ", ".join(f"{name}={value}" for name, value in variables.items())
+
+
+def cmd_locale_list() -> int:
+    """Route `locale list`."""
+    catalog = _locale_catalog()
+    print(f"{_locale_ui(catalog, 'locale.list.header')} ({catalog.root})")
+    for locale in catalog.locales():
+        pack = catalog.require(locale)
+        coverage = catalog.coverage(locale)
+        print(f"  {pack.describe()}  {coverage['percent']}% of canonical keys")
+        translation = pack.translation
+        if translation:
+            print(
+                f"      source {translation.get('source_locale')}@"
+                f"{translation.get('source_semantic_version')}  "
+                f"translator {translation.get('translator')}  "
+                f"direction {pack.direction}"
+            )
+    for problem in catalog.problems:
+        print(f"  [ERROR] {problem}")
+    return 1 if catalog.problems else 0
+
+
+def cmd_locale_coverage(args: argparse.Namespace) -> int:
+    """Route `locale coverage`."""
+    catalog = _locale_catalog()
+    locales = [args.locale] if args.locale else catalog.locales()
+    for locale in locales:
+        domain = getattr(args, "domain", None)
+        stats = catalog.coverage(locale, domain=domain)
+        key = "locale.coverage.narration" if domain == "narration" else "locale.coverage.line"
+        print(
+            _locale_ui(
+                catalog,
+                key,
+                locale,
+                locale=locale,
+                covered=stats["covered"],
+                total=stats["total"],
+                percent=stats["percent"],
+            )
+        )
+        for missing in catalog.missing_keys(locale, domain=domain):
+            print(f"    missing {missing}")
+    return 0
+
+
+def cmd_locale_validate(args: argparse.Namespace) -> int:
+    """Route `locale validate`."""
+    import json as json_module
+
+    from .indexes import load_yaml_file
+    from .locale import LocalizationError, resolve_document
+    from .validators import ValidationResult, validate_locale_packs, validate_narration_usage
+
+    catalog = _locale_catalog()
+    full = validate_locale_packs(catalog)
+    result = full
+    if getattr(args, "locale", None):
+        wanted = args.locale
+        result = ValidationResult()
+        for issue in full.issues:
+            if issue.code == "locale-count" or wanted in (issue.target or ""):
+                result.add(issue.severity, issue.code, issue.message, issue.target)
+    if getattr(args, "file", None):
+        path = Path(args.file)
+        document = load_yaml_file(path)
+        result.extend(validate_narration_usage(document, path, catalog))
+        try:
+            resolve_document(
+                document, getattr(args, "locale", None), catalog=catalog, strict=True
+            )
+        except LocalizationError as exc:
+            result.add("error", "narration-strict-missing", str(exc), str(path))
+    if getattr(args, "json", False):
+        print(
+            json_module.dumps(
+                {
+                    "issues": [
+                        {
+                            "severity": issue.severity,
+                            "code": issue.code,
+                            "message": issue.message,
+                            "target": issue.target,
+                        }
+                        for issue in result.issues
+                    ]
+                },
+                indent=2,
+                ensure_ascii=False,
+            )
+        )
+    else:
+        print_result(result)
+    return 0 if result.ok else 1
+
+
+def cmd_locale_resolve(args: argparse.Namespace) -> int:
+    """Route `locale resolve`."""
+    from .indexes import load_yaml_file
+    from .locale import ResolutionReport, resolve_document
+    from .session import compose, load_template
+    from .utils import write_text_atomic, yaml_safe_dump
+
+    catalog = _locale_catalog()
+    if args.file and args.session:
+        raise OCFError("pass either --file or --session, not both")
+    if args.session:
+        template = load_template(args.session)
+        document = compose(
+            template,
+            {},
+            title=str(template.get("name", template["id"])),
+            document_id=f"{str(template['id']).lower()}-{args.locale.lower()}",
+        )
+        source = f"template {template['id']}"
+    elif args.file:
+        document = load_yaml_file(Path(args.file))
+        source = str(args.file)
+    else:
+        raise OCFError("pass --file DOC or --session TEMPLATE")
+
+    report = ResolutionReport()
+    resolved = resolve_document(
+        document,
+        args.locale,
+        catalog=catalog,
+        strict=not args.no_strict,
+        report=report,
+    )
+    body = yaml_safe_dump(resolved).rstrip() + "\n"
+    if args.output:
+        write_text_atomic(Path(args.output), body, overwrite=args.force)
+        print(
+            _locale_ui(
+                catalog,
+                "locale.resolve.wrote",
+                args.locale,
+                path=args.output,
+                locale=args.locale,
+                keys=len(report.keys),
+            )
+        )
+        print(f"  from {source}")
+    else:
+        print(body.rstrip())
+    return 0
+
+
+def cmd_locale_pseudo(args: argparse.Namespace) -> int:
+    """Route `locale pseudo`."""
+    from .locale import PSEUDO_LOCALE, build_pseudo_pack
+    from .paths import ensure_dir
+    from .utils import yaml_safe_dump
+
+    catalog = _locale_catalog()
+    pack = build_pseudo_pack(
+        catalog, args.source_locale, locale=args.locale or PSEUDO_LOCALE
+    )
+    source = catalog.require(args.source_locale or catalog.canonical_locale)
+    if args.output:
+        root = ensure_dir(Path(args.output))
+        (root / "manifest.yaml").write_text(
+            yaml_safe_dump(pack.manifest), encoding="utf-8"
+        )
+        for filename in sorted({entry.file for entry in pack.entries.values() if entry.file}):
+            by_domain: dict[str, dict[str, Any]] = {}
+            for key, entry in sorted(pack.entries.items()):
+                if entry.file != filename:
+                    continue
+                by_domain.setdefault(entry.domain, {})[key] = {
+                    "text": entry.text,
+                    "variables": sorted(entry.variables),
+                    "status": entry.status,
+                    "version": entry.version,
+                    "pronunciation": dict(entry.pronunciation),
+                }
+            for domain, entries in sorted(by_domain.items()):
+                (root / filename).write_text(
+                    yaml_safe_dump(
+                        {
+                            "schema_version": "1.0",
+                            "locale": pack.locale,
+                            "domain": domain,
+                            "entries": entries,
+                        }
+                    ),
+                    encoding="utf-8",
+                )
+        print(
+            _locale_ui(
+                catalog,
+                "locale.pseudo.built",
+                pack.locale,
+                locale=pack.locale,
+                source=source.locale,
+                version=source.semantic_version,
+                count=len(pack.entries),
+            )
+        )
+        return 0
+    for key in pack.keys("narration")[:8]:
+        print(f"{key}\n  {pack.entries[key].text}")
     return 0
 
 
@@ -412,6 +690,8 @@ def main(argv: list[str] | None = None) -> int:
                     backend=args.voice,
                     sample_rate=args.rate,
                     force=args.force,
+                    locale=getattr(args, "locale", None),
+                    strict=not getattr(args, "allow_fallback", False),
                 )
             if args.audio_kind == "mix":
                 from .audio_build import mix as mix_tracks
@@ -475,6 +755,8 @@ def main(argv: list[str] | None = None) -> int:
                     fit=bool(getattr(args, "fit", False)),
                     flow=bool(getattr(args, "flow", False)),
                     even_counts=bool(getattr(args, "even_counts", False)),
+                    locale=getattr(args, "locale", None),
+                    strict=not getattr(args, "allow_fallback", False),
                 )
             print(HELP_TEXT)
             return 0
@@ -489,6 +771,19 @@ def main(argv: list[str] | None = None) -> int:
                 return run_list_templates()
             if args.session_kind == "compose":
                 return run_compose(args)
+            print(HELP_TEXT)
+            return 0
+        if args.command == "locale":
+            if args.locale_kind == "list" or args.locale_kind is None:
+                return cmd_locale_list()
+            if args.locale_kind == "coverage":
+                return cmd_locale_coverage(args)
+            if args.locale_kind == "validate":
+                return cmd_locale_validate(args)
+            if args.locale_kind == "resolve":
+                return cmd_locale_resolve(args)
+            if args.locale_kind == "pseudo":
+                return cmd_locale_pseudo(args)
             print(HELP_TEXT)
             return 0
         if args.command == "doctor":

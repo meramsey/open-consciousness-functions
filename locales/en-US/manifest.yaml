@@ -1,0 +1,23 @@
+schema_version: "1.0"
+locale: "en-US"
+language_name: "English (United States)"
+direction: "ltr"
+status: "canonical"
+semantic_version: "1.0.0"
+resources:
+  - file: "ui.yaml"
+    domain: "ui"
+    description: "Operator- and player-facing strings. May fall back to this locale."
+  - file: "narration.yaml"
+    domain: "narration"
+    description: "Listener-facing spoken narration. Never falls back: a missing key is a pre-render error."
+  - file: "functions.yaml"
+    domain: "narration"
+    description: "Per-function narration templates. Command wording is metadata, never translated."
+notes: |
+  Canonical locale. New narration keys are authored here first; a derived pack
+  is then filled from this one, recording its source semantic version.
+
+  Versioning: bump `semantic_version` minor for cosmetic rewordings (no stale
+  translations), major when the meaning of a key changes (translations go stale
+  and `ocf locale validate` reports them).

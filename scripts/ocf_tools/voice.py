@@ -44,12 +44,13 @@ import shutil
 import subprocess
 import tempfile
 import wave
-from collections.abc import Callable
-from dataclasses import replace
+from collections.abc import Callable, Mapping
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Any
 
 from .indexes import load_voice_profiles
+from .locale import document_key_usage, iter_events, locale_language, normalize_tag
 from .paths import ensure_dir
 from .transcript import load_timed_doc, resolve_timeline
 from .utils import OCFError, OCFFileExistsError
@@ -250,6 +251,10 @@ BACKENDS: dict[str, dict[str, Any]] = {
         "default_language": "en-us",
         "default_wpm": 175,
         "mode": "file",
+        # espeak-ng carries a large multilingual voice set and names voices in
+        # lowercase with a region suffix (en-us, es, de, zh-cmn).
+        "locale_style": "language-region",
+        "phonemes": "[[...]]",
         "render": lambda exe, voice, wpm, model, text, out=None: [
             exe,
             "-w",
@@ -266,6 +271,8 @@ BACKENDS: dict[str, dict[str, Any]] = {
         "default_language": "en",
         "default_wpm": 175,
         "mode": "file",
+        "locale_style": "language-only",
+        "phonemes": None,
         "render": lambda exe, voice, wpm, model, text, out=None: [
             exe,
             "-w",
@@ -282,12 +289,96 @@ BACKENDS: dict[str, dict[str, Any]] = {
         "default_language": "en_US",
         "default_wpm": None,
         "mode": "file",
+        # A piper voice is whatever model is installed, so the locale is carried
+        # as metadata and a mismatch is reported rather than silently rendered.
+        "locale_style": "model-bound",
+        "phonemes": None,
         "render": lambda exe, voice, wpm, model, text, out=None: (
             [exe, "--model", model, "-f", str(out), "--sentence-silence", "0.4"]
             if model and out is not None
             else [exe, text]
         ),
     },
+}
+
+LOCALE_STYLES = ("lower-hyphen", "language-only", "model")
+
+
+@dataclass
+class NarrationRequest:
+    """Everything a TTS backend needs for one cue, in one place.
+
+    Carries the target locale, the text already resolved from the locale pack
+    (never raw English defaults), the selected backend and voice, the timing
+    options the backend honours, and any pronunciation hints. Keeping this
+    explicit is what stops a render from quietly picking the wrong language.
+    """
+
+    locale: str
+    text: str
+    backend: str
+    voice: str | None = None
+    sample_rate: int = DEFAULT_SAMPLE_RATE
+    words_per_min: int | None = None
+    preferred_duration: float | None = None
+    pronunciation: Mapping[str, Mapping[str, str]] = field(default_factory=dict)
+    narration_key: str | None = None
+    event_id: str | None = None
+    profile_id: str | None = None
+
+    def backend_text(self, backend: str | None = None) -> str:
+        """Text as the backend should receive it, with hints applied.
+
+        Pronunciation hints are applied only when the backend understands the
+        syntax. The visible text, subtitles, and transcript are never touched.
+        """
+        name = backend or self.backend
+        return apply_pronunciation(self.text, self.pronunciation, name)
+
+    def as_metadata(self) -> dict[str, Any]:
+        """Serializable description for render manifests."""
+        return {
+            "locale": self.locale,
+            "backend": self.backend,
+            "voice": self.voice,
+            "words_per_min": self.words_per_min,
+            "preferred_duration": self.preferred_duration,
+            "narration_key": self.narration_key,
+            "profile_id": self.profile_id,
+            "pronunciation_hints": sorted(self.pronunciation),
+        }
+
+
+def apply_pronunciation(
+    text: str, hints: Mapping[str, Mapping[str, str]] | None, backend: str
+) -> str:
+    """Substitute pronunciation hints into ``text`` for ``backend``.
+
+    A hint is written for one backend syntax; backends that do not support that
+    syntax get the plain text back, unchanged.
+    """
+    if not hints:
+        return text
+    syntax = BACKENDS.get(backend, {}).get("phonemes")
+    if not syntax:
+        return text
+    out = text
+    applied = 0
+    for token, per_backend in hints.items():
+        hint = per_backend.get(backend)
+        if not hint or token not in out:
+            continue
+        out = out.replace(token, f"{token} {hint}")
+        applied += 1
+    return out
+
+# How each backend wants to be told which language to speak. Surfaced by
+# `ocf voice list-backends` so an operator knows before rendering whether a
+# backend can follow a locale at all.
+LOCALE_STYLE_LABELS = {
+    "language-only": "language only (en, es) - any regional tag narrows to it",
+    "language-region": "language-region (en-us, pt-br)",
+    "model-bound": "bound to its voice model - a locale needs a matching model",
 }
 
 INSTALL_GUIDANCE = (
@@ -353,23 +444,58 @@ def _load_profile(profile: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _locale_voice_name(backend: str, locale: str | None) -> str | None:
+    """Map a BCP-47 locale onto a backend voice name.
+
+    ``en-US`` -> ``en-us`` for espeak-ng, ``en`` for espeak, and nothing at all
+    for piper, whose voice is whichever model the operator installed.
+    """
+    if not locale:
+        return None
+    style = BACKENDS.get(backend, {}).get("locale_style", "language-only")
+    if style == "model":
+        return None
+    language = locale_language(locale)
+    if style == "language-only":
+        return language
+    return locale.replace("-", "-").lower()
+
+
+def backend_locale_support(backend: str) -> dict[str, Any]:
+    """Report what a backend can do with locales and pronunciation."""
+    spec = BACKENDS.get(backend, {})
+    return {
+        "backend": backend,
+        "locale_style": spec.get("locale_style", "language-only"),
+        "pronunciation_syntax": spec.get("phonemes"),
+        "default_language": spec.get("default_language"),
+    }
+
+
 def resolve_backend(
-    spec: str | dict[str, Any] | None, profiles: list[dict[str, Any]] | None = None
+    spec: str | dict[str, Any] | None,
+    profiles: list[dict[str, Any]] | None = None,
+    *,
+    locale: str | None = None,
+    catalog: Any = None,
 ) -> dict[str, Any]:
     """Resolve a backend name or voice-profile into an executable spec.
 
     If ``spec`` matches a voice profile (by id, slug, or name) that profile
     wins; otherwise it is treated as a backend name. ``None`` picks the first
-    detected backend.
+    detected backend. When ``locale`` is given, the voice is retargeted at it:
+    a profile whose language already matches is preferred, and any mismatch is
+    reported in ``notes`` rather than silently rendering the wrong language.
     """
     profiles = profiles if profiles is not None else load_voice_profiles()
     if isinstance(spec, dict):
-        return _load_profile(spec)
+        resolved = _load_profile(spec)
+        return _retarget_locale(resolved, locale, catalog)
     if spec:
         lowered = spec.strip().lower()
         for profile in profiles:
             if any(str(profile.get(key, "")).lower() == lowered for key in ("id", "slug", "name")):
-                return _load_profile(profile)
+                return _retarget_locale(_load_profile(profile), locale, catalog)
         if lowered not in BACKENDS:
             raise OCFError(
                 f"unknown voice/backend {spec!r} (expected a voice profile "
@@ -377,18 +503,59 @@ def resolve_backend(
             )
         name = lowered
         spec_entry = BACKENDS[name]
-        return {
-            "name": name,
-            "binary": spec_entry["binary"],
-            "language": spec_entry["default_language"],
-            "wpm": spec_entry["default_wpm"],
-            "model": None,
-            "profile_id": None,
-        }
+        return _retarget_locale(
+            {
+                "name": name,
+                "binary": spec_entry["binary"],
+                "language": spec_entry["default_language"],
+                "wpm": spec_entry["default_wpm"],
+                "model": None,
+                "profile_id": None,
+            },
+            locale,
+            catalog,
+        )
     first = first_available_backend()
     if first is None:
         raise OCFError(INSTALL_GUIDANCE)
-    return resolve_backend(first, profiles)
+    return resolve_backend(first, profiles, locale=locale, catalog=catalog)
+
+
+def _retarget_locale(spec: dict[str, Any], locale: str | None, catalog: Any) -> dict[str, Any]:
+    """Point a resolved backend spec at ``locale``, recording any caveats."""
+    if not locale:
+        return spec
+    from .locale import LocalizationError, normalize_tag
+    from .locale import locale_language as language_of
+
+    try:
+        normalized = normalize_tag(locale) or locale
+    except LocalizationError:
+        normalized = str(locale)
+    spec["locale"] = normalized
+    spec["notes"] = []
+    voice_name = _locale_voice_name(spec["name"], normalized)
+    configured = str(spec.get("language") or "")
+    configured_language = language_of(configured) if configured else ""
+    if voice_name:
+        if configured and configured.lower() != voice_name:
+            subject = spec.get("profile_id") or f"backend {spec['name']} default"
+            spec["notes"].append(
+                f"{subject} is set to {configured!r}; rendering {normalized} with voice "
+                f"{voice_name!r}"
+            )
+        spec["language"] = voice_name
+    else:
+        # Model-bound backend: report the gap instead of pretending it is fine.
+        if configured_language and configured_language != language_of(normalized):
+            spec["notes"].append(
+                f"{spec['name']} voice is bound to {configured!r} and cannot render "
+                f"{normalized}; install a matching model"
+            )
+        spec["locale"] = normalized
+    if catalog is not None and normalized not in getattr(catalog, "packs", {}):
+        spec["notes"].append(f"no locale pack provides {normalized}")
+    return spec
 
 
 def render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes:
@@ -542,6 +709,31 @@ def _fit_line(cue_samples: list[int], slot: float, sample_rate: int) -> list[int
     return _resample(trimmed, sample_rate, max(1, int(sample_rate * ratio)))
 
 
+def _pronunciation_hints(doc: dict[str, Any], locale: str | None) -> dict[str, dict[str, Any]]:
+    """Map event id -> backend hints from the resolved document's resources.
+
+    Hints live in the locale pack beside the message, so a translator can fix a
+    pronunciation without touching the document or the render code.
+    """
+    if not locale:
+        return {}
+    from .locale import LocaleCatalog
+
+    catalog = LocaleCatalog()
+    pack = catalog.get(locale)
+    if pack is None:
+        return {}
+    hints: dict[str, dict[str, Any]] = {}
+    for event in iter_events(doc):
+        key = event.get("narration_key")
+        if not key:
+            continue
+        entry = pack.get(str(key))
+        if entry is not None and entry.pronunciation:
+            hints[str(event.get("id", ""))] = dict(entry.pronunciation)
+    return hints
+
+
 def _clip(value: int) -> int:
     return max(-32768, min(32767, value))
 
@@ -557,6 +749,9 @@ def render_narration(
     fit: bool = False,
     flow: bool = False,
     even_counts: bool = False,
+    locale: str | None = None,
+    catalog: Any = None,
+    strict: bool = True,
 ) -> dict[str, Any]:
     """Render a timed document into a mono 16-bit WAV narration stem.
 
@@ -568,7 +763,22 @@ def render_narration(
     splits never become unnatural mid-sentence pauses; countdown markers stay
     spaced as authored. ``even_counts`` re-times each run of consecutive
     pure-count cues onto an even grid (see ``_even_counts``).
+
+    ``locale`` selects and records the target language. A document that uses
+    ``narration_key`` is resolved against that locale first, strictly by
+    default: rendering must not start when required spoken narration is missing.
     """
+    if locale is not None or document_key_usage(doc)["keyed"]:
+        from .locale import LocaleCatalog, document_locale, resolve_document
+
+        catalog = catalog or LocaleCatalog()
+        target = normalize_tag(locale) if locale else document_locale(doc)
+        doc = resolve_document(doc, target, catalog=catalog, strict=strict)
+        locale = target
+    spec = resolve_backend(backend, locale=locale, catalog=catalog)
+    for note in spec.get("notes") or []:
+        print(f"Warning: {note}")
+
     events, problems = resolve_timeline(doc)
     untimed = [event for event in events if event.at is None]
     if untimed:
@@ -579,7 +789,7 @@ def render_narration(
     if problems:
         raise OCFError("timeline problems; fix before rendering: " + " | ".join(problems[:3]))
 
-    spec = resolve_backend(backend)
+    hints_by_event = _pronunciation_hints(doc, locale)
     timed = sorted(events, key=lambda event: event.at or 0.0)
     even_counts_info: dict[str, Any] | None = None
     if even_counts:
@@ -588,8 +798,17 @@ def render_narration(
 
     track: list[int] = []
     cue_stats: list[dict[str, Any]] = []
+    hints_applied = 0
     for group_index, group in enumerate(utterances):
         text = " ".join((e.text or "").strip() for e in group).strip()
+        hints: dict[str, Any] = {}
+        for event in group:
+            hints.update(hints_by_event.get(event.id, {}))
+        if hints:
+            before = text
+            text = apply_pronunciation(text, hints, spec["name"])
+            if text != before:
+                hints_applied += 1
         wav_bytes = render_cue(text) if render_cue is not None else render_cue_wav(spec, text)
         rate, cue_samples = _read_pcm_from_bytes(wav_bytes)
         cue_samples = _resample(cue_samples, rate, sample_rate)
@@ -612,6 +831,7 @@ def render_narration(
                 "cues": len(group),
                 "text": text,
                 "samples": len(cue_samples),
+                "duration": round(len(cue_samples) / sample_rate, 3),
                 "cut_previous": bool(cut),
             }
         )
@@ -628,6 +848,10 @@ def render_narration(
     return {
         "backend": spec["name"],
         "profile_id": spec.get("profile_id"),
+        "locale": spec.get("locale"),
+        "voice": spec.get("language"),
+        "locale_notes": list(spec.get("notes") or []),
+        "pronunciation_hints": hints_applied,
         "sample_rate": sample_rate,
         "channels": 1,
         "duration": round(len(track) / sample_rate, 3),
@@ -669,8 +893,10 @@ def render_script(
     fit: bool = False,
     flow: bool = False,
     even_counts: bool = False,
+    locale: str | None = None,
+    strict: bool = True,
 ) -> int:
-    """`ocf voice render SCRIPT [--voice] [--output] [--fit] [--flow] [--even-counts]`."""
+    """`ocf voice render SCRIPT [--voice] [--locale] [--output] [--fit] [--flow] [--even-counts]`."""
     doc = load_timed_doc(Path(script))
     try:
         metadata = render_narration(
@@ -683,6 +909,8 @@ def render_script(
             fit=fit,
             flow=flow,
             even_counts=even_counts,
+            locale=locale,
+            strict=strict,
         )
     except OCFFileExistsError as exc:
         raise OCFError(f"{exc} (use --force to overwrite)") from exc
@@ -691,6 +919,10 @@ def render_script(
         f"Rendered {metadata['cues']} cue(s) with backend {named!r} "
         f"({metadata['duration']}s, {metadata['sample_rate']} Hz mono) to {out_path}"
     )
+    if metadata.get("locale"):
+        print(f"  locale {metadata['locale']} (voice {metadata.get('voice')})")
+    if metadata.get("pronunciation_hints"):
+        print(f"  applied {metadata['pronunciation_hints']} pronunciation hint(s)")
     return 0
 
 
@@ -719,6 +951,14 @@ def list_backends_cmd() -> int:
     for entry in detect_backends():
         state = f"{entry['executable']}" if entry["available"] else "not installed"
         print(f"{entry['name']}: {state}")
+        support = backend_locale_support(entry["name"])
+        style = LOCALE_STYLE_LABELS.get(
+            support.get("locale_style"), support.get("locale_style", "language-only")
+        )
+        syntax = support.get("pronunciation_syntax")
+        detail = f"    locale: {style}; default language {support.get('default_language')}"
+        detail += f"; pronunciation syntax {syntax!r}" if syntax else "; no pronunciation input"
+        print(detail)
     return 0
 
 

@@ -394,12 +394,70 @@ def _render_farfield(preset: str, strategy: str) -> tuple[Path | None, str]:
                 + farfield_mod.installation_guidance()
             )
         return None, "farfield-unavailable (narration only)"
+    source = _farfield_preset_file(preset, strategy)
     tmp = tempfile.mkdtemp(prefix="ocf-farfield-")
-    out = Path(tmp) / f"{preset.replace(':', '-')}.wav"
-    result = farfield_mod.render_preset(preset, output=out)
+    out = Path(tmp) / f"{_preset_stem(source)}.wav"
+    result = farfield_mod.render_preset(source, output=out)
     if not out.exists():
         raise OCFError(f"farfield render produced no file for preset {preset!r}\n{result}")
     return out, "farfield"
+
+
+def _preset_stem(preset: str) -> str:
+    """A filesystem-safe stem for `preset`, which may be an id or a path."""
+    stem = Path(preset).stem or preset
+    return "".join(c if c.isalnum() or c in "-_" else "-" for c in stem) or "preset"
+
+
+def _farfield_preset_file(preset: str, strategy: str = "optional") -> str:
+    """Resolve a background preset id/name to its Farfield session file.
+
+    Mirrors :func:`_sbagenx_sequence_file`: an audio manifest may name the
+    background by id (``OCF-BG-0007``) while Farfield only accepts a session
+    YAML path.
+
+    Resolution order, most preferred first:
+
+    1. a literal path, used as given;
+    2. the preset *name* across the Farfield search path - Farfield's own
+       presets (``focus-10``, ``attention``) before OCF's committed copies;
+    3. the background manifest's declared ``preset.file``.
+
+    Farfield's wheel ships no presets, so tier 2 finds them in the source
+    checkout recorded by PEP 610 and falls back to
+    ``audio/background/presets/farfield/`` for names only OCF carries.
+    """
+    explicit = Path(preset).expanduser()
+    if explicit.is_file():
+        return str(explicit)
+    declared = _declared_background_file(preset)
+    for name in (Path(preset).stem, Path(declared).stem if declared else None):
+        if not name:
+            continue
+        resolved = farfield_mod.resolve_preset(name)
+        if resolved is not None:
+            return str(resolved)
+    if declared:
+        return declared
+    if strategy == "required":
+        raise OCFError(farfield_mod.preset_search_report(preset))
+    return preset
+
+
+def _declared_background_file(preset: str) -> str | None:
+    """The `preset.file` a Farfield background manifest declares, if usable."""
+    for manifest in load_background_manifests():
+        if not (manifest.get("id") == preset or manifest.get("name") == preset):
+            continue
+        if manifest.get("engine") != "farfield":
+            break
+        file_rel = (manifest.get("preset") or {}).get("file")
+        if file_rel:
+            candidate = REPO_ROOT / str(file_rel)
+            if candidate.is_file():
+                return str(candidate)
+        break
+    return None
 
 
 def _render_sbagenx(preset: str, strategy: str) -> tuple[Path | None, str]:
@@ -618,6 +676,8 @@ def build(
     fit: bool = False,
     flow: bool = False,
     even_counts: bool = False,
+    locale: str | None = None,
+    strict: bool = True,
 ) -> dict[str, Any]:
     """`ocf audio build <AUDIO_ID|MANIFEST>` — render narration, mix, master.
 
@@ -654,6 +714,8 @@ def build(
         fit=fit,
         flow=flow,
         even_counts=even_counts,
+        locale=locale,
+        strict=strict,
     )
 
     background_conf = manifest.get("background_audio", {})
@@ -676,8 +738,10 @@ def build(
     out_root = Path(out_root)
     ensure_dir(out_root)
     master_path = out_root / f"{audio_id}-master.wav"
-    bg_manifest = _resolve_background_manifest(bg_preset) or {}
-    if bg_manifest.get("engine") == "reference-master" and bg_path is not None:
+    if bg_path is not None:
+        # Any engine-rendered bed (Farfield, SBaGenX, reference-master) goes
+        # through ffmpeg: those stems are long, stereo, and often 24-bit, which
+        # the pure-stdlib PCM path cannot decode or hold in memory.
         _mix_master_ffmpeg(
             narration_wav,
             bg_path,
@@ -688,9 +752,8 @@ def build(
     else:
         mix(
             narration_wav,
-            bg_path,
+            None,
             master_path,
-            background_gain=background_gain,
             speech_gain_windows=gain_windows,
             overwrite=overwrite,
         )
@@ -757,6 +820,32 @@ def build(
             "profile_id": narration_meta.get("profile_id"),
             "sample_rate": narration_meta["sample_rate"],
             "channels": narration_meta["channels"],
+            "locale": narration_meta.get("locale"),
+            "locale_notes": narration_meta.get("locale_notes", []),
+            "pronunciation_hints": narration_meta.get("pronunciation_hints", 0),
+        },
+        "narration_timing": {
+            "mode": narration_meta.get("timing_mode", "explicit-at-timestamps"),
+            "measured": True,
+            "note": (
+                "Per-cue speech durations measured from the rendered stem. Subtitle "
+                "export can use these instead of the semantic timeline."
+            ),
+            "cues": [
+                {
+                    "id": cue["id"],
+                    "at": round(float(cue["at"]), 3),
+                    # `duration` is seconds when the renderer recorded it, and
+                    # otherwise derived from the sample count.
+                    "duration": round(
+                        float(cue["duration"])
+                        if cue.get("duration") is not None
+                        else float(cue["samples"]) / narration_meta["sample_rate"],
+                        3,
+                    ),
+                }
+                for cue in narration_meta.get("cue_stats", [])
+            ],
         },
         "cues": narration_meta["cues"],
         "overlap_mode": narration_meta["overlap_mode"],

@@ -1,0 +1,19 @@
+# Test fixture: a keyed session that is deliberately unresolvable in `es`.
+#
+# `focus.eleven.hold` exists in the canonical en-US pack but not in the es test
+# pack, so `ocf locale resolve --locale es --file <this>` must fail loudly
+# instead of falling back to an English sentence.
+schema_version: "1.0"
+id: "focus-cycle-partial"
+title: "Focus cycle with an eleventh-state hold (fixture)"
+locale: "en-US"
+timeline:
+  - id: e001
+    at: "00:00:00.000"
+    narration_key: "session.focus-cycle.opener"
+  - id: e002
+    at: "00:00:20.000"
+    narration_key: "focus.eleven.hold"
+  - id: e003
+    at: "00:01:00.000"
+    narration_key: "focus.eleven.release"

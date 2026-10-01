@@ -41,6 +41,30 @@
         "file": { "type": ["string", "null"] }
       }
     },
+    "focus_sequence": {
+      "type": "array",
+      "description": "Language-independent Focus-state progression of a background bed, in order. The canonical Focus 11 Access Channel sequence is Focus 10 -> Focus 11 -> Focus 10. Focus 3 is an optional induction only and is deliberately not an allowed state here. Omit when the engine already defines the progression.",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["state", "role"],
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": ["focus-10", "focus-11", "focus-12", "focus-15", "focus-21"],
+            "description": "Focus level of the background program."
+          },
+          "role": {
+            "type": "string",
+            "enum": ["preparation", "pre-access", "access-channel", "return", "closing"]
+          },
+          "start_s": { "type": "number", "minimum": 0 },
+          "end_s": { "type": "number", "minimum": 0 },
+          "crossfade_s": { "type": "number", "minimum": 0 }
+        }
+      }
+    },
     "reference": {
       "type": ["object", "null"],
       "default": null,

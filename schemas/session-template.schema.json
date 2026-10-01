@@ -48,6 +48,14 @@
         "null"
       ]
     },
+    "locale": {
+      "description": "Locale of the template's authored inline `text` (default en-US). Templates built from `narration_key` lines are language-independent and need no locale.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?$"
+    },
     "source": {
       "$ref": "#/$defs/source"
     },
@@ -177,9 +185,11 @@
       }
     },
     "templateLine": {
+      "description": "A single authored or keyed line. Authored OCF prose uses `text`; a language-independent semantic session uses `narration_key` plus `variables`, so one session composes to different narration per locale.",
       "type": "object",
-      "required": [
-        "text"
+      "anyOf": [
+        { "required": ["text"] },
+        { "required": ["narration_key"] }
       ],
       "properties": {
         "at": {
@@ -189,6 +199,21 @@
         "text": {
           "type": "string",
           "minLength": 1
+        },
+        "narration_key": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "number",
+              "integer",
+              "boolean"
+            ]
+          }
         }
       }
     }

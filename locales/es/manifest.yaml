@@ -1,0 +1,33 @@
+schema_version: "1.0"
+locale: "es"
+language_name: "esañol"
+direction: "ltr"
+status: "machine"
+semantic_version: "1.0.0"
+translation:
+  source_locale: "en-US"
+  source_semantic_version: "1.0.0"
+  translation_version: "1.0.0"
+  translator: "OCF test fixture"
+  reviewed_on: null
+  notes: |
+    Illustrative machine draft used to exercise non-ASCII handling, plural
+    selection, and the strict spoken-narration rule. It is a test fixture, not a
+    shipped translation: wording has not been reviewed by a Spanish speaker and
+    must not be treated as authoritative. Deliberately incomplete.
+resources:
+  - file: "ui.yaml"
+    domain: "ui"
+    description: "Illustrative Spanish CLI labels (test fixture)."
+  - file: "narration.yaml"
+    domain: "narration"
+    description: "Illustrative Spanish session narration (test fixture)."
+  - file: "functions.yaml"
+    domain: "narration"
+    description: "Illustrative Spanish function templates (test fixture)."
+notes: |
+  TEST FIXTURE. Coverage is intentionally partial: `focus.eleven.hold`,
+  `focus.eleven.release`, and `function.release.command` are absent so the
+  strict spoken-narration check and the missing-key report both have something
+  real to fail on. `ocf locale validate` reports them; resolving a document that
+  needs them in `es` fails loudly instead of dropping English into the session.

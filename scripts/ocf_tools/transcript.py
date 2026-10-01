@@ -20,11 +20,13 @@ from __future__ import annotations
 
 import re
 import sys
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from pathlib import Path
 
 import yaml
 
+from .indexes import load_yaml_file
 from .paths import AUDIO_SCRIPTS_DIR
 from .utils import (
     OCFError,
@@ -577,22 +579,41 @@ def _export_events(doc: dict) -> list[ResolvedEvent]:
     return sorted(events, key=lambda e: e.at or 0.0)
 
 
-def export_srt(doc: dict) -> str:
+def measured_durations(render_manifest: dict, events: list[ResolvedEvent]) -> dict[str, float]:
+    """Map event id -> measured speech seconds from a render manifest.
+
+    Localized speech rarely matches the semantic timing: a Spanish line can run
+    longer than the English one it replaced. When a render manifest carries the
+    measured per-cue durations, subtitle export can use them instead of guessing
+    from word counts.
+    """
+    timing = render_manifest.get("narration_timing") or {}
+    durations: dict[str, float] = {}
+    for cue in timing.get("cues") or []:
+        cue_id = str(cue.get("id", ""))
+        duration = cue.get("duration")
+        if cue_id and isinstance(duration, (int, float)):
+            durations[cue_id] = float(duration)
+    known = {event.id for event in events}
+    return {cue_id: seconds for cue_id, seconds in durations.items() if cue_id in known}
+
+
+def export_srt(doc: dict, *, measured: Mapping[str, float] | None = None) -> str:
     """Convert a timed document to SRT subtitle text."""
     events = _export_events(doc)
     cues: list[str] = []
     for index, event in enumerate(events, start=1):
-        end = event.at + estimate_duration(events, index - 1)
+        end = event.at + _cue_duration(event, events, index - 1, measured)
         cues.append(f"{index}\n{format_srt_ts(event.at)} --> {format_srt_ts(end)}\n{event.text}")
     return "\n\n".join(cues) + "\n"
 
 
-def export_vtt(doc: dict) -> str:
+def export_vtt(doc: dict, *, measured: Mapping[str, float] | None = None) -> str:
     """Convert a timed document to WebVTT text."""
     events = _export_events(doc)
     cues: list[str] = ["WEBVTT", ""]
     for index, event in enumerate(events, start=1):
-        end = event.at + estimate_duration(events, index - 1)
+        end = event.at + _cue_duration(event, events, index - 1, measured)
         start_ts = format_timestamp(event.at)
         cue = f"{start_ts} --> {format_timestamp(end)}"
         if event.cue_id:
@@ -600,6 +621,20 @@ def export_vtt(doc: dict) -> str:
         cue += f"\n{event.text}"
         cues.append(cue)
     return "\n\n".join(cues) + "\n"
+
+
+def _cue_duration(
+    event: ResolvedEvent,
+    events: list[ResolvedEvent],
+    index: int,
+    measured: Mapping[str, float] | None,
+) -> float:
+    """Measured speech duration when available, else the word-count estimate."""
+    if measured:
+        seconds = measured.get(event.id)
+        if seconds is not None:
+            return max(0.1, seconds)
+    return estimate_duration(events, index)
 
 
 def export_lrc(doc: dict) -> str:
@@ -1079,18 +1114,59 @@ def run_review(args) -> int:
 
 
 def run_export(args) -> int:
-    """`ocf transcript export FILE --format srt|vtt|lrc`."""
+    """`ocf transcript export FILE --format srt|vtt|lrc [--locale TAG]`."""
     try:
         doc = load_timed_doc(args.file)
     except OCFError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
+
+    locale_arg = getattr(args, "locale", None)
+    strict = not getattr(args, "allow_fallback", False)
+    if locale_arg:
+        from .locale import LocalizationError, resolve_document
+
+        try:
+            doc = resolve_document(
+                doc, locale_arg, strict=strict
+            )
+        except LocalizationError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 1
+
     exporter = {"srt": export_srt, "vtt": export_vtt, "lrc": export_lrc}.get(args.format)
     if exporter is None:
         print(f"error: unsupported export format {args.format!r}", file=sys.stderr)
         return 1
+
+    measured = None
+    manifest_arg = getattr(args, "render_manifest", None)
+    if manifest_arg:
+        try:
+            render_doc = load_yaml_file(Path(manifest_arg))
+            events = _export_events(doc)
+            measured = measured_durations(render_doc, events)
+        except (OCFError, KeyError) as exc:
+            print(f"error: cannot read render manifest {manifest_arg}: {exc}", file=sys.stderr)
+            return 1
+        if measured:
+            backend = (render_doc.get("voice") or {}).get("backend", "tts")
+            print(
+                f"Note: {len(measured)} cue end(s) measured from the rendered {backend} speech.",
+                file=sys.stderr,
+            )
+        else:
+            print(
+                "Note: render manifest has no usable cue timings; using the semantic timeline.",
+                file=sys.stderr,
+            )
+
     try:
-        content = exporter(doc)
+        content = (
+            exporter(doc, measured=measured)
+            if exporter is not export_lrc and measured is not None
+            else exporter(doc)
+        )
     except OCFError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1

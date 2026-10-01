@@ -14,6 +14,7 @@ from .paths import (
     AUDIO_MANIFESTS_DIR,
     AUDIO_SCRIPTS_DIR,
     FUNCTIONS_DIR,
+    GENERATED_HEADER,
     REPO_ROOT,
     VOICES_PROFILES_DIR,
 )
@@ -40,9 +41,18 @@ PROPOSAL_DIR_STATE_MAP = {
 
 
 def load_yaml_file(path: Path) -> dict[str, Any]:
-    """Parse a YAML file into a dict, raising a helpful error on failure."""
+    """Parse a YAML file into a dict, raising a helpful error on failure.
+
+    Generated files carry the mandatory ``GENERATED FILE — DO NOT EDIT
+    DIRECTLY`` banner as their first line, which YAML reads as a bare scalar
+    and then rejects once the mapping starts. The banner is stripped here so a
+    generated file can be read back by any tool.
+    """
+    text = read_text(path)
+    if text.startswith(GENERATED_HEADER):
+        _, _, text = text.partition("\n")
     try:
-        data = yaml_safe_load(read_text(path))
+        data = yaml_safe_load(text)
     except yaml.YAMLError as exc:  # pragma: no cover - defensive
         raise OCFError(f"Invalid YAML in {path}: {exc}") from exc
     if not isinstance(data, dict):

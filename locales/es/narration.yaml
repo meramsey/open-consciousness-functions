@@ -1,0 +1,50 @@
+schema_version: "1.0"
+locale: "es"
+domain: "narration"
+entries:
+  session.focus-cycle.opener:
+    text: "Bienvenido a la función de atención de Conciencia Abierta."
+    version: "1.0.0"
+    notes: >
+      Machine draft (test fixture). Gendered address is not resolvable from a
+      neutral key; a reviewer must choose one form and document it here.
+  session.focus-cycle.settle:
+    text: "Deja que el cuerpo encuentre la posición más cómoda y suelta los hombros."
+    version: "1.0.0"
+  session.focus-cycle.tenth-state.enter:
+    text: "Pasa ahora al décimo estado de relajación profunda."
+    version: "1.0.0"
+    notes: >
+      CLDR "many" form is not reachable at small counts here; the canonical
+      message uses an exact "=0" branch instead.
+  session.focus-cycle.tenth-state.hold:
+    text: "Quédate aquí mientras empieza la cuenta. No se te exige nada más."
+    version: "1.0.0"
+  session.focus-cycle.eleventh-state.enter:
+    text: "Eleva el foco al undécimo estado."
+    version: "1.0.0"
+  session.focus-cycle.instruction:
+    text: "Mantén este estado y conserva la atención en un solo objeto elegido."
+    version: "1.0.0"
+  session.focus-cycle.return:
+    text: "Vuelve ahora al décimo estado y después levántate."
+    version: "1.0.0"
+  session.focus-cycle.close:
+    text: "La función sigue siendo tuya hasta que la sueltes. La sesión se cierra."
+    version: "1.0.0"
+
+  preparation.settle.body:
+    text: "Ajusta el cuerpo hasta que no tengas que sostener nada."
+    version: "1.0.0"
+  preparation.interruption.check:
+    text: "Comprueba que este tramo de tiempo no se va a interrumpir."
+    version: "1.0.0"
+  preparation.breathe.slowly:
+    text: "Respira despacio y de forma regular, sin forzar la profundidad."
+    version: "1.0.0"
+  preparation.release.tension:
+    text: "Suelta la tensión que cargas."
+    version: "1.0.0"
+  preparation.ready:
+    text: "La preparación está completa. El canal está abierto."
+    version: "1.0.0"

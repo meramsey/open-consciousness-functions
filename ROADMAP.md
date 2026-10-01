@@ -68,9 +68,9 @@ the "Planned: focus-state auditory cue events" section of
 
 ## v0.5 — Localization, preparation stages, and focus-state cues
 
-Planned (TODOs, not shipped). All items default to zero behavior change for
-existing presets; schema additions require a proposal per
-`docs/DESIGN_SPEC.md`.
+Localization shipped (see below); preparation stages and focus-state cues are
+still planned. All items default to zero behavior change for existing presets;
+schema additions require a proposal per `docs/DESIGN_SPEC.md`.
 
 ### Focus-state and transition audio cues
 
@@ -105,33 +105,37 @@ existing presets; schema additions require a proposal per
 
 ### Localization
 
-- [ ] Project-wide localization of the full session pipeline (UI, CLI,
-      wizard, validation messages, preparation narration, affirmations,
-      function-install narration, focus-state and Access Channel
-      instructions, exit/return instructions, reusable spoken templates,
-      metadata, subtitles/SRT/lyrics, TTS, docs).
-- [ ] Locale packs + fallback chain (es-MX → es → en); missing **required**
-      localization fails clearly before render; optional resources may fall
-      back.
-- [ ] Language-aware TTS: locale, text, voice, backend, rate, pronunciation
-      hints, timing in the render request; backends report supported
-      languages/voices; wizard filters accordingly.
-- [ ] Timed-text separation: semantic event/timing, source-language text,
-      translated text, and generated speech timing stay distinct; translations
-      re-time against semantic events and never inherit English word-level
-      timestamps.
-- [ ] User-created functions localizable: one source language + zero or more
-      translations; session/DSP structure language-independent.
-- [ ] DSP language-independence: binaural/SAM config, background, transitions,
+Shipped by `proposals/draft/ocfp-0001-semantic-narration-keys-and-locale-packs.md`;
+documented in `docs/LOCALIZATION.md` and `locales/README.md`.
+
+- [x] Session-pipeline localization: semantic `narration_key`s for spoken
+      narration, locale packs for UI/CLI/validation strings, and `--locale`
+      on compose/resolve/render/export/build.
+- [x] Locale packs + fallback chain (es-MX → es → en-US); missing **spoken**
+      localization fails clearly before render, UI text may fall back, and an
+      explicit override is available.
+- [x] Language-aware TTS: locale, text, voice, backend, rate, pronunciation
+      hints, and timing in the render request; backends report what they
+      support; voice mismatch is reported instead of silently mis-rendering.
+- [x] Timed-text separation: semantic event/timing, source text, resolved
+      text, and measured speech timing stay distinct; measured per-cue
+      durations in the render manifest drive localized subtitles, so
+      translations never inherit English word-level timestamps.
+- [x] DSP language-independence: binaural/SAM config, background, transitions,
       crossfades, and cue events are never duplicated per language.
+- [ ] Translations on *function records* (one source language + zero or more
+      translations); per-function narration is keyed and localizable today,
+      but a translated function record needs its own schema change.
+- [ ] Remaining surface: the preparation toolchain, RTL layout, translator
+      review tooling, and a real ICU runtime.
 
 ### Versioning and backward compatibility
 
-- [ ] New optional fields/stages default to no behavior change; validate that
-      existing presets rebuild identically.
-- [ ] Versioning policy for locale packs, preparation templates, and function
-      definitions (source language / translations).
-- [ ] Schema/data-model additions flow through the proposal process
+- [x] New optional fields/stages default to no behavior change; locale fields
+      are additive and existing English scripts validate and render unchanged.
+- [x] Versioning policy for locale packs (semantic version + translation
+      provenance); preparation templates and function definitions follow.
+- [x] Schema/data-model additions flow through the proposal process
       (`proposals/`, `OCFP-*`) before freeze; see `docs/DESIGN_SPEC.md`.
 
 ## v1.0 — Stable

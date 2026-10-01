@@ -6,7 +6,7 @@ Optional background presets. A preset is not a function and is not a training sc
 
 | BG ID | Name | Engine | Seed | Deterministic | Functions |
 |---|---|---|---|---|---|
-| `OCF-BG-0001` | Attention focus arc (focus-3 → focus-10 → focus-3) | farfield |  | yes | OCF-FND-002 |
+| `OCF-BG-0001` | Attention access-channel bed (Focus 10 → Focus 11 → Focus 10) | farfield |  | yes | OCF-FND-002 |
 | `OCF-BG-0002` | Attention focus arc (binaural 10-16 Hz, SBaGenX) | sbagenx |  | yes | OCF-FND-002 |
 | `OCF-BG-0003` | Attention focus arc + F11 access excerpt (composite) | sbagenx |  | no | OCF-FND-002 |
 | `OCF-BG-0004` | Attention focus arc: operator reference master (F10 bed + F11 access excerpt) | reference-master |  | yes | OCF-FND-002 |
