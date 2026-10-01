@@ -1057,7 +1057,10 @@ class LocaleCatalog:
         spoken rule exists to prevent.
         """
         normalized = normalize_tag(requested) or self.canonical_locale
-        parents = [locale for locale in self.chain(normalized) if locale != self.canonical_locale]
+        parents = [
+            locale for locale in self.chain(normalized)
+            if locale_language(locale) == locale_language(normalized)
+        ]
         if not parents:
             raise LocalizationError(
                 f"no locale pack for spoken narration in {normalized!r} "
@@ -1084,16 +1087,7 @@ class LocaleCatalog:
     ) -> Resolution:
         """Find ``key`` for ``locale``, optionally walking the fallback chain."""
         normalized = normalize_tag(locale) or self.canonical_locale
-        if self.packs.get(normalized) is None:
-            # No pack for the tag itself: serve it from an installed parent
-            # locale. With the fallback override the chain may reach canonical;
-            # strict lookups stop at the last installed parent.
-            if not fallback:
-                consulted = self.spoken_chain(normalized)
-            else:
-                consulted = self.chain(normalized) or self.spoken_chain(normalized)
-        else:
-            consulted = self.chain(normalized) if fallback else [normalized]
+        consulted = self.chain(normalized) if fallback else self.spoken_chain(normalized)
         for candidate in consulted:
             pack = self.packs.get(candidate)
             if pack is None:
@@ -1198,7 +1192,7 @@ class LocaleCatalog:
         recorded = str(pack.translation.get("source_semantic_version") or "")
         if not recorded:
             return True
-        return _version_tuple(recorded) < _version_tuple(canonical.semantic_version)
+        return _version_tuple(recorded)[0] < _version_tuple(canonical.semantic_version)[0]
 
     def stale_keys(self, locale: str) -> list[str]:
         """Keys whose canonical entry version is newer than the translation's."""
@@ -1211,7 +1205,7 @@ class LocaleCatalog:
             if source is None:
                 continue
             source_version = str(source.version or canonical.semantic_version)
-            if entry.version and _version_tuple(entry.version) < _version_tuple(source_version):
+            if entry.version and _version_tuple(entry.version)[0] < _version_tuple(source_version)[0]:
                 stale.append(key)
         return sorted(stale)
 
@@ -1399,11 +1393,24 @@ def resolve_document(
     keys: list[str] = []
     inline_events = 0
     provenance: list[dict[str, Any]] = []
+    previous_origins = {
+        item.get("id"): item.get("locale")
+        for item in (doc.get("narration") or {}).get("resolved", [])
+    }
 
     for event in iter_events(resolved):
         key = event.get("narration_key")
         if not key:
+            if not event.get("text"):
+                continue
             inline_events += 1
+            origin = previous_origins.get(event.get("id")) or document_locale(doc)
+            if locale_language(origin) != locale_language(target) and strict:
+                issues.append(
+                    f"inline event {event.get('id', '?')} is authored in {origin}, "
+                    f"not {target}; explicitly allow fallback to retain this wording"
+                )
+            provenance.append({"id": event.get("id"), "key": "inline", "locale": origin})
             continue
         try:
             entry, resolution = catalog.resource(
@@ -1474,7 +1481,10 @@ def missing_narration_keys(
 ) -> list[str]:
     """Keys the document requires that ``locale`` does not provide."""
     catalog = catalog or LocaleCatalog()
-    pack = catalog.get(locale)
-    if pack is None:
-        return []
-    return sorted({key for key in document_key_usage(doc)["keys"] if pack.get(key) is None})
+    missing = set()
+    for key in document_key_usage(doc)["keys"]:
+        try:
+            catalog.lookup(key, locale, domain=NARRATION_DOMAIN, fallback=False)
+        except LocalizationError:
+            missing.add(key)
+    return sorted(missing)

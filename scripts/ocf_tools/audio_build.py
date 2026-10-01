@@ -834,6 +834,7 @@ def build(
             "cues": [
                 {
                     "id": cue["id"],
+                    "source_ids": cue.get("source_ids", [cue["id"]]),
                     "at": round(float(cue["at"]), 3),
                     # `duration` is seconds when the renderer recorded it, and
                     # otherwise derived from the sample count.

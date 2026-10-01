@@ -21,6 +21,7 @@ from __future__ import annotations
 import re
 import sys
 from collections.abc import Mapping
+from copy import deepcopy
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -591,11 +592,48 @@ def measured_durations(render_manifest: dict, events: list[ResolvedEvent]) -> di
     durations: dict[str, float] = {}
     for cue in timing.get("cues") or []:
         cue_id = str(cue.get("id", ""))
+        source_ids = cue.get("source_ids") or cue_id.split("+")
         duration = cue.get("duration")
-        if cue_id and isinstance(duration, (int, float)):
-            durations[cue_id] = float(duration)
+        if source_ids and isinstance(duration, (int, float)):
+            durations[str(source_ids[0])] = float(duration)
     known = {event.id for event in events}
     return {cue_id: seconds for cue_id, seconds in durations.items() if cue_id in known}
+
+
+def apply_render_timing(doc: dict, render_manifest: dict) -> dict:
+    """Create an export view of measured utterances, without guessing word timing.
+
+    A flow group is one subtitle, retaining its source event IDs in the render
+    ledger. This view never changes the authored semantic document.
+    """
+    by_id = {event["id"]: event for _, event in flatten_event_dicts(doc)}
+    consumed: set[str] = set()
+    measured = []
+    for cue in (render_manifest.get("narration_timing") or {}).get("cues") or []:
+        source_ids = cue.get("source_ids") or str(cue.get("id", "")).split("+")
+        if not source_ids or not all(identifier in by_id for identifier in source_ids):
+            continue
+        if not isinstance(cue.get("duration"), (int, float)):
+            continue
+        originals = [by_id[identifier] for identifier in source_ids]
+        event = deepcopy(originals[0])
+        at = cue.get("at")
+        start = float(at) if isinstance(at, (int, float)) else parse_timestamp(str(event.get("at")))
+        if start is None:
+            continue
+        event.update(
+            at=format_timestamp(start),
+            ends_at=format_timestamp(start + float(cue["duration"])),
+            text=" ".join(str(original.get("text", "")).strip() for original in originals),
+        )
+        measured.append(event)
+        consumed.update(source_ids)
+    if not consumed:
+        return doc
+    view = deepcopy(doc)
+    view.pop("sections", None)
+    view["timeline"] = measured + [deepcopy(event) for identifier, event in by_id.items() if identifier not in consumed]
+    return view
 
 
 def export_srt(doc: dict, *, measured: Mapping[str, float] | None = None) -> str:
@@ -1123,8 +1161,9 @@ def run_export(args) -> int:
 
     locale_arg = getattr(args, "locale", None)
     strict = not getattr(args, "allow_fallback", False)
-    if locale_arg:
-        from .locale import LocalizationError, resolve_document
+    from .locale import LocalizationError, document_key_usage, resolve_document
+
+    if locale_arg or document_key_usage(doc)["keyed"]:
 
         try:
             doc = resolve_document(
@@ -1146,6 +1185,7 @@ def run_export(args) -> int:
             render_doc = load_yaml_file(Path(manifest_arg))
             events = _export_events(doc)
             measured = measured_durations(render_doc, events)
+            doc = apply_render_timing(doc, render_doc)
         except (OCFError, KeyError) as exc:
             print(f"error: cannot read render manifest {manifest_arg}: {exc}", file=sys.stderr)
             return 1

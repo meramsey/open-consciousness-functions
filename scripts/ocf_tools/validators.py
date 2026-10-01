@@ -420,7 +420,9 @@ def validate_narration_usage(
                     str(path),
                 )
     locale = document_locale(data)
-    if catalog.get(locale) is None:
+    try:
+        catalog.spoken_chain(locale)
+    except LocalizationError:
         result.add(
             "error",
             "locale-unavailable",

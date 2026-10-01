@@ -453,7 +453,7 @@ def _locale_voice_name(backend: str, locale: str | None) -> str | None:
     if not locale:
         return None
     style = BACKENDS.get(backend, {}).get("locale_style", "language-only")
-    if style == "model":
+    if style == "model-bound":
         return None
     language = locale_language(locale)
     if style == "language-only":
@@ -548,9 +548,9 @@ def _retarget_locale(spec: dict[str, Any], locale: str | None, catalog: Any) -> 
     else:
         # Model-bound backend: report the gap instead of pretending it is fine.
         if configured_language and configured_language != language_of(normalized):
-            spec["notes"].append(
-                f"{spec['name']} voice is bound to {configured!r} and cannot render "
-                f"{normalized}; install a matching model"
+            raise LocalizationError(
+                f"{spec['name']} model is bound to {configured!r} and cannot render "
+                f"{normalized}; select a matching model"
             )
         spec["locale"] = normalized
     if catalog is not None and normalized not in getattr(catalog, "packs", {}):
@@ -827,6 +827,7 @@ def render_narration(
         cue_stats.append(
             {
                 "id": "+".join(e.id for e in group),
+                "source_ids": [e.id for e in group],
                 "at": at,
                 "cues": len(group),
                 "text": text,

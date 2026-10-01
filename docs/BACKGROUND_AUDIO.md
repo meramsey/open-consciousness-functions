@@ -138,11 +138,11 @@ bed is trimmed to the narration length.
 
 Earlier metadata described a `focus-3 -> focus-10 -> focus-3` arc for
 `OCF-BG-0001`. That framing was wrong and is superseded — see its provenance
-notes. `OCF-BG-0001` records the canonical sequence but is not directly
-renderable (a single Farfield session is a sequential segment list and cannot
-express a spliced middle state), so `preset.file` stays null; `OCF-BG-0011` is
-the operational realization. `tests/test_focus_sequence.py` fails if Focus 3
-returns.
+notes. `OCF-BG-0001` now directly renders the OCF-composed Farfield session
+`audio/background/presets/attention-focus-10-11-10.yaml`. It layers the
+Focus-11 groups over the continuing Focus-10 groups during the access window.
+`OCF-BG-0011` remains the reference-master alternative.
+`tests/test_focus_sequence.py` fails if Focus 3 returns.
 
 ## Where preset files live
 

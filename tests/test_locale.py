@@ -270,7 +270,7 @@ def test_resolve_document_keeps_keys_and_records_provenance():
             {"id": "e2", "at": 2.0, "text": "inline narration stays put"},
         ],
     }
-    resolved = resolve_document(doc, "es")
+    resolved = resolve_document(doc, "es", strict=False)
     events = list(iter_events(resolved))
     assert events[0]["narration_key"] == "session.focus-cycle.opener"
     assert events[0]["text"]
