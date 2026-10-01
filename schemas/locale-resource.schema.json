@@ -14,7 +14,7 @@
       "type": "object",
       "minProperties": 1,
       "propertyNames": {
-        "description": "Semantic key: lowercase dotted namespace in kebab-case, carrying no English words (e.g. focus.eleven.instruction). Segment shape is checked further by `ocf locale validate`.",
+        "description": "Semantic key: lowercase dotted namespace in kebab-case, independent of listener wording (e.g. focus.eleven.instruction). Segment shape is checked further by `ocf locale validate`.",
         "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"
       },
       "additionalProperties": {
@@ -31,6 +31,8 @@
       "additionalProperties": false,
       "required": ["text"],
       "properties": {
+        "requires_events": {"type": "array", "items": {"type": "string", "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"}, "uniqueItems": true},
+        "required_pronunciation": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
         "text": { "type": "string", "minLength": 1 },
         "variables": {
           "description": "Declared template variables. Must list exactly the variables the message uses. A caller that supplies a different set is a validation error, which is what catches missing, unknown, and cross-locale mismatched variables.",

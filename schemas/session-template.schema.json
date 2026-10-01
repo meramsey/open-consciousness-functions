@@ -116,10 +116,19 @@
         "id"
       ],
       "anyOf": [{"required": ["stage"]}, {"required": ["type", "start"]}],
+      "allOf": [{"if": {"required": ["stage"]}, "then": {"oneOf": [{"required": ["start"]}, {"required": ["after"]}]}}],
       "properties": {
         "stage": {"type": "string", "minLength": 1},
         "after": {"type": "string", "minLength": 1},
         "enabled_by": {"type": "string", "minLength": 1},
+        "narration": {
+          "description": "Per-local-event listener content overrides; cannot alter semantic/DSP/cue structure.",
+          "type": "object", "additionalProperties": {
+            "type": "object", "additionalProperties": false,
+            "oneOf": [{"required": ["narration_key"]}, {"required": ["text"]}],
+            "properties": {"narration_key": {"type": "string"}, "text": {"type": "string"}, "locale": {"type": "string"}, "variables": {"type": "object"}}
+          }
+        },
         "id": {
           "type": "string",
           "minLength": 1

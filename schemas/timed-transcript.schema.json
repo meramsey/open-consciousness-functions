@@ -346,6 +346,8 @@
    ],
     "properties": {
      "semantic": {"$ref": "#/definitions/semanticIdentity"},
+     "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
+     "locale": {"type": "string", "minLength": 1},
      "auditory_cue": {"$ref": "#/definitions/semanticIdentity"},
      "dsp": {"$ref": "#/definitions/dspSpec"},
      "narration_required": {"type": "boolean"},

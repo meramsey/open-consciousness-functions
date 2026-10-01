@@ -166,10 +166,10 @@ class TestBackendLocale:
         spec = resolve_backend({"name": "espeak", "language": "en"}, [], locale="pt-BR")
         assert spec["language"] == "pt"
 
-    def test_apply_pronunciation_appends_the_hint_for_espeak(self):
-        # espeak-ng has no IPA input: the hint rides along as trailing text.
+    def test_apply_pronunciation_substitutes_the_hint_for_espeak(self):
+        # A pronunciation override replaces the token; it must not repeat it.
         assert apply_pronunciation("hola", {"hola": {"espeak-ng": "hola"}}, "espeak-ng") == (
-            "hola hola"
+            "hola"
         )
 
     def test_apply_pronunciation_leaves_other_backends_alone(self):

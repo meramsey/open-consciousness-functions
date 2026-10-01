@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://open-consciousness-functions.dev/schemas/locale-manifest.schema.json",
   "title": "OCF Locale Pack Manifest",
-  "description": "Manifest for a data-driven language pack under locales/<locale>/. A pack holds one locale's UI strings and listener narration, plus the translation provenance that makes staleness detectable: status, canonical source locale, source semantic version, and translation version. Cosmetic wording changes must not bump `semantic_version`; meaning changes must.",
+  "description": "Manifest for a data-driven language pack under locales/<locale>/. A pack holds one locale's UI strings and listener narration, plus translation provenance: status, source locale/version, and translation version. Major revisions track meaning changes; minor/patch revisions are cosmetic and do not stale translations.",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "locale", "language_name", "status", "semantic_version", "resources"],

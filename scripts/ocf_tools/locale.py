@@ -560,6 +560,8 @@ class _Parser:
             raise LocalizationError(
                 f"invalid variable name {name!r} in message (expected snake_case)"
             )
+        if self.pos >= len(self.text):
+            raise LocalizationError(f"unterminated argument in message: {self.text!r}")
         if self.text[self.pos] == "}":
             self.pos += 1
             return _Placeholder(name)
@@ -738,6 +740,8 @@ class NarrationResource:
     timing: Mapping[str, Any] = field(default_factory=dict)
     notes: str | None = None
     file: str | None = None
+    requires_events: tuple[str, ...] = ()
+    required_pronunciation: tuple[str, ...] = ()
 
     @property
     def used_variables(self) -> set[str]:
@@ -917,6 +921,8 @@ def _entry_from_value(
         timing=dict(value.get("timing") or {}),
         notes=value.get("notes"),
         file=filename,
+        requires_events=tuple(value.get("requires_events") or ()),
+        required_pronunciation=tuple(value.get("required_pronunciation") or ()),
     )
 
 
@@ -1285,6 +1291,8 @@ def build_pseudo_pack(
             timing=entry.timing,
             notes=f"pseudo-locale derived from {source.locale}@{source.semantic_version}",
             file=entry.file,
+            requires_events=entry.requires_events,
+            required_pronunciation=entry.required_pronunciation,
         )
         for key, entry in source.entries.items()
     }
@@ -1404,7 +1412,7 @@ def resolve_document(
             if not event.get("text"):
                 continue
             inline_events += 1
-            origin = previous_origins.get(event.get("id")) or document_locale(doc)
+            origin = event.get("locale") or previous_origins.get(event.get("id")) or document_locale(doc)
             if locale_language(origin) != locale_language(target) and strict:
                 issues.append(
                     f"inline event {event.get('id', '?')} is authored in {origin}, "

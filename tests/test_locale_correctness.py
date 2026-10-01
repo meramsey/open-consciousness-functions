@@ -5,7 +5,6 @@ from pathlib import Path
 
 import pytest
 import yaml
-
 from ocf_tools.cli import main
 from ocf_tools.locale import LocaleCatalog, LocalePack, LocalizationError, resolve_document
 from ocf_tools.transcript import measured_durations, resolve_timeline

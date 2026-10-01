@@ -9,10 +9,10 @@ guidance when none is available.
 Timing model (v0.4 - original, deterministic, and documented in the render
 manifest):
 
-- every cue is placed at its ``at`` timestamp;
+- fixed cues retain their timestamps; end-relative cues follow measured speech;
 - cues are rendered independently so wording and pacing are never rewritten;
-- when a cue's start falls inside the previous cue's speech, the previous cue
-  is cut at that point (``overlap_mode: cut-at-cue-start``);
+- fixed speech overlaps fail before artifact writing; explicit reflow delays
+  eligible narration instead of overwriting previous speech;
 - optionally (``flow=True``) consecutive fragments of the same sentence (the
   previous cue ends without sentence-final punctuation) are merged into a
   single utterance placed at the first fragment's timestamp, so whisper line
@@ -38,6 +38,7 @@ operator supplies their own lawfully held source material.
 from __future__ import annotations
 
 import io
+import json
 import os
 import re
 import shutil
@@ -45,6 +46,7 @@ import subprocess
 import tempfile
 import wave
 from collections.abc import Callable, Mapping
+from copy import deepcopy
 from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Any
@@ -368,7 +370,7 @@ def apply_pronunciation(
         hint = per_backend.get(backend)
         if not hint or token not in out:
             continue
-        out = out.replace(token, f"{token} {hint}")
+        out = out.replace(token, hint)
         applied += 1
     return out
 
@@ -547,6 +549,16 @@ def _retarget_locale(spec: dict[str, Any], locale: str | None, catalog: Any) -> 
         spec["language"] = voice_name
     else:
         # Model-bound backend: report the gap instead of pretending it is fine.
+        model = spec.get("model")
+        if model:
+            config = Path(str(model) + ".json")
+            if config.is_file():
+                try:
+                    configured = str((json.loads(config.read_text(encoding="utf-8")).get("language") or {}).get("code") or configured)
+                except (ValueError, OSError) as exc:
+                    raise LocalizationError(f"cannot read Piper model locale: {config}: {exc}") from exc
+                configured_language = language_of(configured)
+                spec["language"] = configured
         if configured_language and configured_language != language_of(normalized):
             raise LocalizationError(
                 f"{spec['name']} model is bound to {configured!r} and cannot render "
@@ -556,6 +568,19 @@ def _retarget_locale(spec: dict[str, Any], locale: str | None, catalog: Any) -> 
     if catalog is not None and normalized not in getattr(catalog, "packs", {}):
         spec["notes"].append(f"no locale pack provides {normalized}")
     return spec
+
+
+def check_backend_locale(spec: dict[str, Any]) -> None:
+    """Probe an installed language-switchable backend before synthesizing speech."""
+    if not spec.get("locale") or spec["name"] == "piper":
+        return
+    executable = shutil.which(spec["binary"])
+    if not executable:
+        raise OCFError(INSTALL_GUIDANCE)
+    result = subprocess.run([executable, f"--voices={spec['language']}"],
+                            capture_output=True, text=True, timeout=15)
+    if result.returncode or len(result.stdout.strip().splitlines()) < 2:
+        raise OCFError(f"backend {spec['name']} does not support requested TTS locale {spec['locale']}")
 
 
 def render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes:
@@ -709,7 +734,8 @@ def _fit_line(cue_samples: list[int], slot: float, sample_rate: int) -> list[int
     return _resample(trimmed, sample_rate, max(1, int(sample_rate * ratio)))
 
 
-def _pronunciation_hints(doc: dict[str, Any], locale: str | None) -> dict[str, dict[str, Any]]:
+def _pronunciation_hints(doc: dict[str, Any], locale: str | None, catalog: Any = None,
+                         backend: str | None = None) -> dict[str, dict[str, Any]]:
     """Map event id -> backend hints from the resolved document's resources.
 
     Hints live in the locale pack beside the message, so a translator can fix a
@@ -719,16 +745,19 @@ def _pronunciation_hints(doc: dict[str, Any], locale: str | None) -> dict[str, d
         return {}
     from .locale import LocaleCatalog
 
-    catalog = LocaleCatalog()
-    pack = catalog.get(locale)
-    if pack is None:
-        return {}
+    catalog = catalog or LocaleCatalog()
+    origins = {item.get("id"): item.get("locale") for item in (doc.get("narration") or {}).get("resolved", [])}
     hints: dict[str, dict[str, Any]] = {}
     for event in iter_events(doc):
         key = event.get("narration_key")
         if not key:
             continue
-        entry = pack.get(str(key))
+        entry, _ = catalog.resource(str(key), origins.get(event.get("id")) or locale,
+                                    domain="narration", fallback=False)
+        for requirement in entry.required_pronunciation:
+            token = str((event.get("variables") or {}).get(requirement, requirement))
+            if not backend or not entry.hint_for(backend, token) or not BACKENDS[backend].get("phonemes"):
+                raise OCFError(f"event {event.get('id')}: required pronunciation for {token!r} is unavailable on {backend}")
         if entry is not None and entry.pronunciation:
             hints[str(event.get("id", ""))] = dict(entry.pronunciation)
     return hints
@@ -775,7 +804,18 @@ def render_narration(
         target = normalize_tag(locale) if locale else document_locale(doc)
         doc = resolve_document(doc, target, catalog=catalog, strict=strict)
         locale = target
+    from .validators import validate_command_ownership, validate_narration_hygiene
+
+    validation = validate_command_ownership(doc, Path(out_path))
+    validation.extend(validate_narration_hygiene(doc, Path(out_path), catalog))
+    if validation.errors:
+        raise OCFError("pre-render validation: " + " | ".join(issue.message for issue in validation.errors))
+    from .semantics import bind_document_cues
+
+    auditory_cues = bind_document_cues(doc)
     spec = resolve_backend(backend, locale=locale, catalog=catalog)
+    if render_cue is None:
+        check_backend_locale(spec)
     for note in spec.get("notes") or []:
         print(f"Warning: {note}")
 
@@ -789,18 +829,28 @@ def render_narration(
     if problems:
         raise OCFError("timeline problems; fix before rendering: " + " | ".join(problems[:3]))
 
-    hints_by_event = _pronunciation_hints(doc, locale)
+    hints_by_event = _pronunciation_hints(doc, locale, catalog, spec["name"])
     timed = sorted(events, key=lambda event: event.at or 0.0)
+    originals = {event["id"]: event for event in iter_events(doc)}
+    has_semantics = any(event.get("semantic") or event.get("after") for event in originals.values())
     even_counts_info: dict[str, Any] | None = None
-    if even_counts:
+    if even_counts and not has_semantics:
         timed, even_counts_info = _even_counts(timed)
-    utterances = _flow_groups(timed) if flow else [[e] for e in timed]
+    elif even_counts:
+        even_counts_info = {"runs": [], "note": "semantic anchors preserved; legacy number-word retiming skipped"}
+    # Semantic boundaries must not be merged by punctuation heuristics.
+    spoken = [event for event in timed if (event.text or "").strip()]
+    utterances = _flow_groups(spoken) if flow and not has_semantics else [[event] for event in spoken]
 
-    track: list[int] = []
     cue_stats: list[dict[str, Any]] = []
     hints_applied = 0
+    rendered = {}
+    scheduling_events = []
+    event_to_group = {}
+    source_to_groups = {}
     for group_index, group in enumerate(utterances):
         text = " ".join((e.text or "").strip() for e in group).strip()
+        display_text = text
         hints: dict[str, Any] = {}
         for event in group:
             hints.update(hints_by_event.get(event.id, {}))
@@ -816,26 +866,69 @@ def render_narration(
         if fit and group_index + 1 < len(utterances):
             next_at = utterances[group_index + 1][0].at or 0.0
             cue_samples = _fit_line(cue_samples, next_at - at, sample_rate)
-        offset = int(at * sample_rate)
-        needed = offset + len(cue_samples)
-        preexisting = len(track)
-        cut = offset < preexisting
-        if needed > preexisting:
-            track.extend(_silence(needed - preexisting))
-        for index_of_sample, sample in enumerate(cue_samples):
-            track[offset + index_of_sample] = sample
+        group_id = "+".join(event.id for event in group)
+        source_ids = list(dict.fromkeys(event.id if event.id in originals else event.id.rsplit("#", 1)[0] for event in group))
+        first = deepcopy(originals[source_ids[0]])
+        first["id"] = group_id
+        if "at" in first:
+            first["at"] = at
+        first["text"] = display_text
+        scheduling_events.append(first)
+        rendered[group_id] = cue_samples
+        for event in group:
+            event_to_group[event.id] = group_id
+        for identifier in source_ids:
+            event_to_group[identifier] = group_id
+            source_to_groups.setdefault(identifier, []).append(group_id)
         cue_stats.append(
             {
-                "id": "+".join(e.id for e in group),
-                "source_ids": [e.id for e in group],
+                "id": group_id,
+                "source_ids": source_ids,
                 "at": at,
                 "cues": len(group),
                 "text": text,
+                "display_text": display_text,
                 "samples": len(cue_samples),
                 "duration": round(len(cue_samples) / sample_rate, 3),
-                "cut_previous": bool(cut),
+                "cut_previous": False,
             }
         )
+
+    for event in iter_events(doc):
+        if event["id"] not in event_to_group:
+            scheduling_events.append(deepcopy(event))
+    for event in scheduling_events:
+        if event.get("after"):
+            event["after"] = event_to_group.get(event["after"], event["after"])
+    from .timing import schedule_timeline
+
+    durations = {identifier: len(samples) / sample_rate for identifier, samples in rendered.items()}
+    scheduled = schedule_timeline({"timeline": scheduling_events}, durations)
+    actual = {event["id"]: event for event in scheduled}
+    track: list[int] = _silence(int(max((event["end"] for event in scheduled), default=0) * sample_rate))
+    for cue in cue_stats:
+        cue["at"] = actual[cue["id"]]["at"]
+        offset = int(round(cue["at"] * sample_rate))
+        samples = rendered[cue["id"]]
+        if offset + len(samples) > len(track):
+            track.extend(_silence(offset + len(samples) - len(track)))
+        track[offset:offset + len(samples)] = samples
+    for binding in auditory_cues:
+        identifier = event_to_group.get(binding["event_id"], binding["event_id"])
+        binding["at"] = actual[identifier]["at"]
+    seen_bindings = set()
+    for binding in auditory_cues:
+        signature = (binding["identity"], binding["at"])
+        if signature in seen_bindings and not originals[binding["event_id"]].get("intentional_repeat"):
+            raise OCFError(f"duplicate auditory cue at resolved anchor: {binding['identity']}")
+        seen_bindings.add(signature)
+    event_timing = []
+    for original in iter_events(doc):
+        identifier = event_to_group.get(original["id"], original["id"])
+        groups = source_to_groups.get(original["id"], [identifier])
+        event_timing.append({**actual[identifier], "id": original["id"], "utterance_id": identifier,
+                             "utterance_ids": groups, "at": min(actual[group]["at"] for group in groups),
+                             "end": max(actual[group]["end"] for group in groups)})
 
     tail = int(1.0 * sample_rate)
     track.extend(_silence(tail))
@@ -858,9 +951,12 @@ def render_narration(
         "duration": round(len(track) / sample_rate, 3),
         "cues": len(cue_stats),
         "utterances": len(cue_stats),
-        "overlap_mode": "cut-at-cue-start",
+        "overlap_mode": "reject-fixed-overlap",
         "timing_mode": timing_mode,
         "cue_stats": cue_stats,
+        "event_timing": event_timing,
+        "auditory_cues": auditory_cues,
+        "narration_resolution": doc.get("narration"),
         "even_counts": even_counts_info,
     }
 

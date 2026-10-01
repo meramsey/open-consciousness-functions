@@ -263,6 +263,7 @@ def _build_parser() -> argparse.ArgumentParser:
     compose_cmd.add_argument("--line-seconds", type=float, help="pace untimed slot lines every N seconds")
     compose_cmd.add_argument("--locale", help="compose directly in this locale (BCP-47), resolving narration keys")
     compose_cmd.add_argument("--enable-stage", action="append", help="enable an optional semantic stage feature (repeatable)")
+    compose_cmd.add_argument("--function", help="function identity owning activation-command narration")
     compose_cmd.add_argument("--allow-fallback", action="store_true", help="permit fallback across the locale chain instead of failing on missing spoken narration")
     compose_cmd.add_argument("--output", help="output YAML path (default audio/scripts/<id>.yaml)")
     compose_cmd.add_argument("--force", action="store_true", help="overwrite an existing output file")
@@ -406,7 +407,12 @@ def cmd_locale_validate(args: argparse.Namespace) -> int:
 
     from .indexes import load_yaml_file
     from .locale import LocalizationError, resolve_document
-    from .validators import ValidationResult, validate_locale_packs, validate_narration_usage
+    from .validators import (
+        ValidationResult,
+        validate_locale_packs,
+        validate_narration_hygiene,
+        validate_narration_usage,
+    )
 
     catalog = _locale_catalog()
     full = validate_locale_packs(catalog)
@@ -414,17 +420,24 @@ def cmd_locale_validate(args: argparse.Namespace) -> int:
     if getattr(args, "locale", None):
         wanted = args.locale
         result = ValidationResult()
-        for issue in full.issues:
-            if issue.code == "locale-count" or wanted in (issue.target or ""):
-                result.add(issue.severity, issue.code, issue.message, issue.target)
+        try:
+            serving = catalog.spoken_chain(wanted)
+        except LocalizationError as exc:
+            result.add("error", "locale-unavailable", str(exc), wanted)
+        else:
+            paths = [str(catalog.require(tag).path) for tag in serving]
+            for issue in full.issues:
+                if issue.code == "locale-count" or any((issue.target or "").startswith(path) for path in paths):
+                    result.add(issue.severity, issue.code, issue.message, issue.target)
     if getattr(args, "file", None):
         path = Path(args.file)
         document = load_yaml_file(path)
         result.extend(validate_narration_usage(document, path, catalog))
         try:
-            resolve_document(
+            localized = resolve_document(
                 document, getattr(args, "locale", None), catalog=catalog, strict=True
             )
+            result.extend(validate_narration_hygiene(localized, path, catalog))
         except LocalizationError as exc:
             result.add("error", "narration-strict-missing", str(exc), str(path))
     if getattr(args, "json", False):
@@ -529,6 +542,8 @@ def cmd_locale_pseudo(args: argparse.Namespace) -> int:
                     "status": entry.status,
                     "version": entry.version,
                     "pronunciation": dict(entry.pronunciation),
+                    "requires_events": list(entry.requires_events),
+                    "required_pronunciation": list(entry.required_pronunciation),
                 }
             for domain, entries in sorted(by_domain.items()):
                 (root / filename).write_text(

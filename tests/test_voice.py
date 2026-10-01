@@ -171,7 +171,7 @@ class TestRenderNarration:
         )
         assert metadata["cues"] == 2
         assert metadata["channels"] == 1
-        assert metadata["overlap_mode"] == "cut-at-cue-start"
+        assert metadata["overlap_mode"] == "reject-fixed-overlap"
 
         out_rate, samples = _read_samples(out)
         assert out_rate == rate
@@ -185,21 +185,34 @@ class TestRenderNarration:
 
 
 class TestOverlapPolicy:
-    def test_cut_at_cue_start(self, tmp_path):
+    def test_fixed_overlap_is_rejected_instead_of_cutting_speech(self, tmp_path):
         rate = 44100
         out = tmp_path / "cut.wav"
+        with pytest.raises(OCFError, match="fixed speech overlap"):
+            render_narration(
+                simple_timed_doc([0.0, 0.05]), out, backend=FAKE_BACKEND,
+                sample_rate=rate, render_cue=fixed_length_cue(100, rate),
+            )
+        assert not out.exists()
+
+    def test_explicit_reflow_preserves_both_utterances(self, tmp_path):
+        rate = 44100
+        out = tmp_path / "reflow.wav"
+        doc = simple_timed_doc([0.0, 0.05])
+        doc["timeline"][1]["timing"] = {"policy": "reflow"}
         metadata = render_narration(
-            simple_timed_doc([0.0, 0.05]),
+            doc,
             out,
             backend=FAKE_BACKEND,
             sample_rate=rate,
             render_cue=fixed_length_cue(100, rate),
         )
         assert metadata["cue_stats"][0]["cut_previous"] is False
-        assert metadata["cue_stats"][1]["cut_previous"] is True
+        assert metadata["cue_stats"][1]["cut_previous"] is False
+        assert metadata["cue_stats"][1]["at"] == pytest.approx(0.1)
 
         _, samples = _read_samples(out)
-        start_two = int(0.05 * rate)
+        start_two = int(0.1 * rate)
         cue_len = int(rate * 0.1)
         assert samples[start_two] == 9500
         assert samples[start_two + cue_len - 1] == 9500

@@ -17,10 +17,11 @@ timeline are never duplicated per language.
 
 ## What this is not
 
-Localization changes **which words are spoken**, never **when they are spoken**.
-The event timeline, section boundaries, state transitions, `gain_db` windows,
-and background cues are language-neutral by design, and no tool may rewrite an
-authored sentence, in any language.
+Localization changes words and measured speech duration. **Explicit semantic
+anchors remain fixed**; declared speech-end/event-end dependencies follow the
+localized render. Reflow is opt-in, not an arbitrary stretching of every track.
+Semantic identity, ordering and DSP/cue references are language-independent.
+No tool rewrites authored sentences or imported source wording.
 
 ## The model in one example
 
@@ -166,6 +167,11 @@ mode, and pronunciation hints.
   manifest. A hint written for a backend that cannot use that syntax is ignored
   rather than corrupting the text.
 
+Piper keeps its model language; an incompatible requested language is a
+pre-render error. When available, the model's JSON sidecar supplies its actual
+language instead of trusting a mislabeled profile. Language-switchable backends
+are probed for the requested voice before real speech synthesis.
+
 ## Subtitles follow speech, not the source words
 
 A translated line rarely takes the same time as the English one it replaced.
@@ -184,6 +190,20 @@ narration_timing:
 durations for cue ends instead of estimating from the word count. Semantic
 anchors (event ids, section boundaries) are preserved; English word timestamps
 are never copied onto translated text.
+
+The render manifest also records `source_ids`, unmodified `display_text`, and
+`event_timing` (including semantic/DSP/cue coordination). A grouped utterance is
+one subtitle; count splits retain their source identity. SRT, VTT **and LRC**
+use actual localized starts when a render manifest is supplied. A manifest's
+locale is used by default and a conflicting requested locale is rejected.
+Speech-dependent subtitle anchors require measured render data.
+
+Default keyed subtitle export resolves `en-US` (or the document locale) even
+without `--locale`. Fixed speech overlaps now fail rather than silently cutting
+previous narration. Use `after` plus `timing: {anchor: speech-end}`, or explicitly
+set `timing: {policy: reflow}` on an elastic narration event. Numeric
+`pause_after` is part of end-dependent timing. Fixed independent markers remain
+fixed. See [semantic sessions](SEMANTIC_SESSIONS.md).
 
 Without a render manifest, export falls back to the estimated durations and says
 so on stderr.
@@ -220,6 +240,14 @@ Checked automatically:
 - stale translations (source semantic version behind);
 - variable-contract drift between canonical and derived packs;
 - invalid command references in narration text.
+
+Pre-render checks additionally cover command ownership by `function_id`, empty
+or required-but-absent narration, unresolved variables/placeholders, malformed
+pause directives, structural duplicate narration/cues, semantic resource
+references, required pronunciation and incompatible TTS models. Repetition at
+different anchors is valid; `intentional_repeat: true` makes deliberate
+same-anchor structural repetition explicit (spoken overlaps still need valid
+timing). These checks do not judge writing style or hypnotic effectiveness.
 
 The repository's own English scripts under `audio/scripts/` stay inline and are
 not flagged: inline `text` remains valid, and the check exists to catch a keyed

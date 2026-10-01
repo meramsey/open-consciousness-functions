@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import json
 import re
+from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
@@ -288,6 +289,7 @@ def compose(
     line_seconds: float | None = None,
     duration: float | None = None,
     enabled_stages: list[str] | None = None,
+    function_id: str | None = None,
 ) -> dict[str, Any]:
     """Resolve a session template into a canonical timed-transcript document.
 
@@ -335,6 +337,20 @@ def compose(
             from .semantics import load_stage, stage_events
 
             stage = load_stage(section["stage"])
+            stage = deepcopy(stage)
+            overrides = section.get("narration") or {}
+            unknown_events = set(overrides) - {event["id"] for event in stage["events"]}
+            if unknown_events:
+                raise OCFError(f"stage {section['id']}: unknown narration override event(s): {', '.join(sorted(unknown_events))}")
+            for event in stage["events"]:
+                if event["id"] in overrides:
+                    if set(overrides[event["id"]]) - {"text", "narration_key", "variables", "locale"}:
+                        raise OCFError("narration override cannot alter semantic, DSP, cue or timing fields")
+                    if ("text" in overrides[event["id"]]) == ("narration_key" in overrides[event["id"]]):
+                        raise OCFError("narration override needs exactly one text or narration_key")
+                    event.pop("text", None)
+                    event.pop("narration_key", None)
+                    event.update(overrides[event["id"]])
             events = stage_events(stage, section["id"], start=float(section.get("start", 0)),
                                   after=section.get("after"), previous=previous)
             stage_provenance.append({"id": stage["id"], "version": stage["version"], "instance": section["id"]})
@@ -362,6 +378,7 @@ def compose(
                         if key in ("text", "narration_key", "variables", "after", "offset",
                                    "semantic", "dsp", "auditory_cue", "timing", "state",
                                    "cue_id", "narration_required", "intentional_repeat")
+                        or key in ("function_id", "locale")
                     },
                 }
             )
@@ -392,6 +409,8 @@ def compose(
     for key in ("function_id", "cue_profile"):
         if template.get(key):
             doc[key] = template[key]
+    if function_id:
+        doc["function_id"] = function_id
     if template.get("locale"):
         doc["locale"] = str(template["locale"])
     template_source = template.get("source")
@@ -399,6 +418,23 @@ def compose(
         doc["source"] = dict(template_source)
     if document_id:
         doc["id"] = document_id
+
+    if doc.get("function_id"):
+        from .indexes import load_all_functions
+        from .locale import LocaleCatalog, iter_events
+
+        owner = next((record for record in load_all_functions() if record.id == doc["function_id"]), None)
+        if owner is None:
+            raise OCFError(f"unknown function_id: {doc['function_id']}")
+        catalog = LocaleCatalog()
+        for event in iter_events(doc):
+            entry = catalog.canonical.get(event.get("narration_key")) if catalog.canonical else None
+            if entry:
+                metadata = {"command": owner.canonical_command, "function_name": owner.canonical_name}
+                values = event.setdefault("variables", {})
+                for name in entry.variables:
+                    if name in metadata:
+                        values.setdefault(name, metadata[name])
 
     schema = _load_schema("timed-transcript.schema.json")
     errors = validate_against_schema(doc, schema)
@@ -436,6 +472,7 @@ def run_compose(args: Any) -> int:
         line_seconds=getattr(args, "line_seconds", None),
         duration=getattr(args, "duration", None),
         enabled_stages=getattr(args, "enable_stage", None),
+        function_id=getattr(args, "function", None),
     )
 
     locale = getattr(args, "locale", None)
@@ -459,6 +496,8 @@ def run_compose(args: Any) -> int:
     body = yaml_safe_dump(doc)
     write_text_atomic(output, body)
     print(f"Composed {template['id']} -> {output} ({len(doc['sections'])} sections)")
+    if template.get("content_status") == "architecture-draft":
+        print("Architecture draft: original narration/timing is pending; missing required narration blocks rendering.")
     if locale:
         print(f"Locale: {doc.get('locale')}")
     if slots:

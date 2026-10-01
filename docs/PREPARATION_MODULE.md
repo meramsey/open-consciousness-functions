@@ -9,6 +9,12 @@ Conversion Box, optional affirmation, optional oHm / resonant-tuning chant,
 Focus 10 transition, `focus11_open` / `focus11_ready`). Nothing here is
 implemented until a live command exists.
 
+The existing `ocf session compose` now supports [reusable semantic stages](SEMANTIC_SESSIONS.md).
+Preparation Learning/Routine/Function Installation compositions are present as
+**architecture drafts**, without approved narration or finalized timing. This
+does not ship the separate `ocf preparation …` command group or a finished
+listener exercise.
+
 ## Normative anchors
 
 - §51 — preparation track as a first-class artifact
@@ -42,15 +48,18 @@ composition of them.
 2. **Canonical stage order** for the standard track:
 
    ```text
-   relaxation → Energy Conversion Box (set aside distractions)
-   → [optional affirmation] → [optional oHm / resonant-tuning chant]
-   → Focus 10 transition → focus11_open → focus11_ready → function/exercise
+    orientation (learning only) → temporary setting-aside of distractions
+    → [optional affirmation] → [optional oHm / resonant-tuning chant]
+    → progressive relaxation → Focus 10 transition
+    → focus11_open → focus11_ready → function/exercise
    ```
 
-   The template builder supplies relaxation and Energy Conversion Box
-   mechanics today (`OCF-TPL-SESSION-ATTENTION-001` already contains
-   Energy Conversion Box wording); the optional affirmation and oHm stages
-   slot in *between* the Energy Conversion Box and the Focus 10 transition.
+    The adapted Attention template contains legacy-derived container wording,
+    not an original OCF narration resource. Native stage definitions use the
+    neutral `preparation.setting-aside` identity; Energy Conversion Box and
+    Access Channel terminology remain reviewable. Routine preparation recalls
+    learned concepts; the full Learning composition also teaches recognition,
+    cue associations, function/command concepts and waking return.
 3. **Affirmation stage** (optional). Supports: disabled / built-in default
    text / user-supplied text / multi-block affirmation / TTS via the
    configured backend / pre-recorded (user or bundled) audio / configurable

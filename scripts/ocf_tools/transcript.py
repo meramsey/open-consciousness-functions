@@ -440,7 +440,8 @@ def write_timed_doc(path: str | Path, doc: dict, *, overwrite: bool = True) -> N
 # ---------------------------------------------------------------------------
 
 
-def resolve_timeline(doc: dict) -> tuple[list[ResolvedEvent], list[str]]:
+def resolve_timeline(doc: dict, *, speech_durations: Mapping[str, float] | None = None,
+                     start_overrides: Mapping[str, float] | None = None) -> tuple[list[ResolvedEvent], list[str]]:
     """Resolve a timed document into absolute-time events.
 
     Supports a flat top-level ``timeline`` or section-grouped transcripts.
@@ -467,16 +468,18 @@ def resolve_timeline(doc: dict) -> tuple[list[ResolvedEvent], list[str]]:
             for event in section.get("timeline", []):
                 flat.append(event)
                 owners[event.get("id")] = section_id
-        events.extend(_resolve_event_list(flat, None, problems))
+        events.extend(_resolve_event_list(flat, None, problems, speech_durations, start_overrides))
         for event in events:
             event.section = owners.get(event.id)
     if timeline is not None:
-        events.extend(_resolve_event_list(timeline, None, problems))
+        events.extend(_resolve_event_list(timeline, None, problems, speech_durations, start_overrides))
     return events, problems
 
 
 def _resolve_event_list(
-    events: list[dict], section: str | None, problems: list[str]
+    events: list[dict], section: str | None, problems: list[str],
+    speech_durations: Mapping[str, float] | None = None,
+    start_overrides: Mapping[str, float] | None = None,
 ) -> list[ResolvedEvent]:
     by_id: dict[str, dict] = {}
     seen: set[str] = set()
@@ -492,6 +495,8 @@ def _resolve_event_list(
 
     def absolute(event: dict) -> float | None:
         event_id = event.get("id")
+        if start_overrides and event_id in start_overrides:
+            return start_overrides[event_id]
         if event_id in memo:
             return memo[event_id]
         if event_id in path:
@@ -518,6 +523,12 @@ def _resolve_event_list(
                 offset = event.get("offset")
                 if not isinstance(offset, (int, float)):
                     offset = 0.0
+                anchor = (event.get("timing") or {}).get("anchor", "start")
+                if anchor in ("speech-end", "event-end"):
+                    duration = float((speech_durations or {}).get(target, 0))
+                    if anchor == "event-end":
+                        duration = max(duration, float((by_id[target].get("dsp") or {}).get("transition_s", 0)))
+                    offset += duration + float((by_id[target].get("timing") or {}).get("pause_after", 0))
                 value = base + offset if base is not None else None
         else:
             value = None  # untimed / unassigned
@@ -575,6 +586,10 @@ def estimate_duration(events: list[ResolvedEvent], index: int) -> float:
 
 
 def _export_events(doc: dict) -> list[ResolvedEvent]:
+    from .locale import document_key_usage, resolve_document
+
+    if document_key_usage(doc)["keyed"]:
+        doc = resolve_document(doc, strict=(doc.get("narration") or {}).get("strict", True))
     events, problems = resolve_timeline(doc)
     untimed = [e for e in events if e.at is None]
     if untimed:
@@ -584,7 +599,7 @@ def _export_events(doc: dict) -> list[ResolvedEvent]:
         )
     if problems:
         raise OCFError("timeline problems; fix before exporting: " + " | ".join(problems[:3]))
-    return sorted(events, key=lambda e: e.at or 0.0)
+    return sorted((event for event in events if event.text.strip()), key=lambda e: e.at or 0.0)
 
 
 def measured_durations(render_manifest: dict, events: list[ResolvedEvent]) -> dict[str, float]:
@@ -629,10 +644,16 @@ def apply_render_timing(doc: dict, render_manifest: dict) -> dict:
         if start is None:
             continue
         event.update(
+            id=str(cue.get("id")) if "#" in str(cue.get("id", "")) else event["id"],
             at=format_timestamp(start),
             ends_at=format_timestamp(start + float(cue["duration"])),
-            text=" ".join(str(original.get("text", "")).strip() for original in originals),
+            text=cue.get("display_text") or " ".join(str(original.get("text", "")).strip() for original in originals),
         )
+        event.pop("after", None)
+        event.pop("offset", None)
+        event.pop("narration_key", None)
+        if event.get("timing"):
+            event["timing"].pop("anchor", None)
         measured.append(event)
         consumed.update(source_ids)
     if not consumed:
@@ -1167,6 +1188,26 @@ def run_export(args) -> int:
         return 1
 
     locale_arg = getattr(args, "locale", None)
+    render_doc = None
+    manifest_arg = getattr(args, "render_manifest", None)
+    if manifest_arg:
+        try:
+            render_doc = load_yaml_file(Path(manifest_arg))
+        except OCFError as exc:
+            print(f"error: cannot read render manifest: {exc}", file=sys.stderr)
+            return 1
+        recorded_locale = (render_doc.get("voice") or {}).get("locale") or (render_doc.get("narration_resolution") or {}).get("locale")
+        if recorded_locale:
+            from .locale import normalize_tag
+
+            if locale_arg and normalize_tag(locale_arg) != normalize_tag(recorded_locale):
+                print("error: render manifest locale does not match requested subtitle locale", file=sys.stderr)
+                return 1
+            locale_arg = locale_arg or recorded_locale
+    elif any((event.get("timing") or {}).get("anchor", "start") != "start"
+             for _, event in flatten_event_dicts(doc)):
+        print("error: speech-dependent subtitle anchors require a render manifest", file=sys.stderr)
+        return 1
     strict = not getattr(args, "allow_fallback", False)
     from .locale import LocalizationError, document_key_usage, resolve_document
 
@@ -1186,10 +1227,8 @@ def run_export(args) -> int:
         return 1
 
     measured = None
-    manifest_arg = getattr(args, "render_manifest", None)
     if manifest_arg:
         try:
-            render_doc = load_yaml_file(Path(manifest_arg))
             events = _export_events(doc)
             measured = measured_durations(render_doc, events)
             doc = apply_render_timing(doc, render_doc)

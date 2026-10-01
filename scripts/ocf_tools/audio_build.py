@@ -88,7 +88,7 @@ def _db_gain_factor(db: float) -> float:
 
 
 def _narration_gain_windows(
-    doc: dict[str, Any], duration: float
+    doc: dict[str, Any], duration: float, event_timing: list[dict] | None = None
 ) -> list[tuple[float, float, float]]:
     """Return (start, end, gain_db) windows from sections declaring ``gain_db``.
 
@@ -100,10 +100,11 @@ def _narration_gain_windows(
     from .transcript import parse_timestamp
 
     bounds: list[tuple[float, str]] = []
+    actual = {event["id"]: event["at"] for event in event_timing or []}
     for section in doc.get("sections") or []:
         first_at: float | None = None
         for event in section.get("timeline") or []:
-            at = event.get("at")
+            at = actual.get(event.get("id"), event.get("at"))
             if isinstance(at, str):
                 at = parse_timestamp(at)
             if at is not None:
@@ -702,6 +703,10 @@ def build(
         raise OCFError(f"transcript referenced by {audio_id} not found: {transcript_path}")
 
     doc = load_timed_doc(transcript_path)
+    if doc.get("function_id") and doc["function_id"] != manifest.get("function_id"):
+        raise OCFError("audio manifest and transcript disagree about command-owning function_id")
+    if manifest.get("function_id"):
+        doc["function_id"] = manifest["function_id"]
     stage_dir = Path(tempfile.mkdtemp(prefix=f"ocf-build-{audio_id}-"))
     narration_wav = stage_dir / "narration.wav"
     narration_meta = render_narration(
@@ -731,7 +736,7 @@ def build(
     ):
         print(f"Note: {bg_note}")
 
-    gain_windows = _narration_gain_windows(doc, narration_meta["duration"])
+    gain_windows = _narration_gain_windows(doc, narration_meta["duration"], narration_meta.get("event_timing"))
 
     if out_root is None:
         out_root = AUDIO_RENDERED_DIR
@@ -835,6 +840,7 @@ def build(
                 {
                     "id": cue["id"],
                     "source_ids": cue.get("source_ids", [cue["id"]]),
+                    "display_text": cue.get("display_text", cue.get("text", "")),
                     "at": round(float(cue["at"]), 3),
                     # `duration` is seconds when the renderer recorded it, and
                     # otherwise derived from the sample count.
@@ -848,6 +854,9 @@ def build(
                 for cue in narration_meta.get("cue_stats", [])
             ],
         },
+        "event_timing": narration_meta.get("event_timing", []),
+        "auditory_cues": narration_meta.get("auditory_cues", []),
+        "narration_resolution": narration_meta.get("narration_resolution"),
         "cues": narration_meta["cues"],
         "overlap_mode": narration_meta["overlap_mode"],
         "timing_mode": narration_meta.get("timing_mode", "explicit-at-timestamps"),

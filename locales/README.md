@@ -64,7 +64,8 @@ entries:
     status: machine
     version: "1.0.0"
     pronunciation:
-      espeak-ng: "repetitshon"
+      repetition:
+        espeak-ng: "[[r E p @ t I S @ n]]"
     notes: "Translator: check the stress on the second syllable."
 ```
 
@@ -89,6 +90,19 @@ A documented subset of ICU MessageFormat:
 Branches are always whole sentences. Word order, punctuation, and gender all
 come from the message; the runtime never assembles a sentence from fragments,
 because that is how languages with different word order get mangled.
+
+Optional `requires_events` lists semantic identities needed by the resource.
+Optional `required_pronunciation` lists tokens (or variable names resolving to
+tokens) whose pronunciation metadata must be usable by the chosen backend.
+Translations preserve these contracts. Hints replace tokens in **TTS input
+only**; visible text and activation command metadata are never rewritten.
+Pronunciation comes from the resource that actually supplied the text, including
+regional-parent and explicitly allowed fallback resources.
+
+For testing a translated composition, resolve it strictly, choose an appropriate
+voice/model, render, then export subtitles with the generated render manifest.
+End-dependent anchors follow actual localized duration; fixed conflicts fail
+instead of truncating speech. See [semantic sessions](../docs/SEMANTIC_SESSIONS.md).
 
 `variables` must list exactly what the message uses. A mismatch is an error, not
 a warning: it is the difference between a translated line and a line with a

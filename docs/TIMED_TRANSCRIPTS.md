@@ -276,7 +276,8 @@ legacy-cue bridge and release rehearsal design.
 
 The shipped toolchain detects optional TTS backends on PATH and renders each
 cue independently (placement is **exact**: every cue sits at its `at`
-timestamp; an overlapping cue cuts the previous one at that point — see the
+timestamp; overlapping fixed speech is now rejected before writing a master.
+Speech-end dependencies or explicit narration reflow preserve complete speech — see the
 *Import invariants* section). Wording is never rewritten.
 
 ```bash
@@ -418,6 +419,11 @@ lines (see `technical.loudness_notes` in `OCF-AUDIO-0001.yaml`).
 Status: **planned** (v0.5, `ROADMAP.md`). Not shipped. Cue events are the
 non-narration layer of the same timeline: an audio event fired at a
 focus-state transition, independent of the TTS wording.
+
+The additive [semantic binding architecture](SEMANTIC_SESSIONS.md) is now
+available through `ocf session compose` and render metadata (`auditory_cue`,
+cue profiles, measured event anchors). Actual cue synthesis/playback and final
+sounds remain unshipped. `cue_id` retains its subtitle/import meaning.
 
 - Semantic event ids (extensible per focus level/state profile):
   `focus11_open`, `focus11_ready`, `focus11_close`, `session_complete`.
