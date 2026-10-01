@@ -17,6 +17,11 @@ locales/
 and every other pack is filled from it. That is why English is *data* here too,
 not a special case baked into the code.
 
+Listener resources follow [the narration standard](../docs/NARRATION_STANDARD.md).
+Translations preserve intent, autonomy, cue associations and pacing, using
+natural target-language phrasing rather than word-for-word English syntax.
+Canonical commands remain metadata and are never automatically translated.
+
 ## Adding a language
 
 1. Copy `locales/en-US/` to `locales/<tag>/`.
@@ -95,7 +100,7 @@ stray `{count}` still in it.
   same thing): keep `semantic_version` unchanged and update the entry
   `version`. No translation goes stale.
 - **Semantic** change — the meaning of a key changes, or a variable is added or
-  removed: bump `semantic_version`. Packs built from an older source version are
+  removed: bump the major entry and pack `semantic_version`. Packs built from an older source major are
   reported as stale by `ocf locale validate` until they record the new version.
 
 ## Fallback

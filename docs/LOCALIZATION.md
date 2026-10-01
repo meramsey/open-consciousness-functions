@@ -6,6 +6,10 @@ compose --locale`, `ocf transcript export --locale`, `ocf voice render
 [`proposals/draft/ocfp-0001-semantic-narration-keys-and-locale-packs.md`](../proposals/draft/ocfp-0001-semantic-narration-keys-and-locale-packs.md);
 `locales/README.md` is the authoring reference.
 
+Listener-facing content follows the [OCF Narration Standard — English](NARRATION_STANDARD.md).
+The [migration inventory](NARRATION_MIGRATION.md) identifies existing material
+awaiting the separately approved narration-writing phase.
+
 The pipeline is **language-independent by structure**: one session definition
 describes what happens and when, and the words a listener hears come from a
 locale pack resolved at render time. The binaural/SAM/background DSP and the
@@ -191,10 +195,10 @@ Each pack declares `status` (`canonical`, `draft`, `machine`, `reviewed`) and a
 `translation.source_semantic_version` / `translation.translator` /
 `translation.reviewed_on`.
 
-- A **cosmetic** rewording keeps `semantic_version` and updates the entry
-  `version`: no translation goes stale.
+- A **cosmetic** rewording keeps the major version and updates the entry
+  minor/patch revision: no translation goes stale.
 - A **semantic** change — different meaning, added or removed variable — bumps
-  `semantic_version`, and packs built from the older version are reported stale
+  the major `semantic_version`, and packs built from an older major are reported stale
   until they record the new one.
 
 `ocf locale validate` reports stale translations, unknown keys, variable-contract
