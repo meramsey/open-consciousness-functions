@@ -1,8 +1,10 @@
 schema_version: "1.0"
 id: OCF-TPL-STAGE-TUNING-001
-version: "0.1.0"
+version: "0.2.0"
 origin: original-ocf
 type: preparation
 description: Optional resonant-tuning concept; oHm implementation and timing remain TBD.
 events:
-  - {id: begin, at: 0, semantic: preparation.tuning.begin, narration_required: true}
+  - {id: begin, at: 0, semantic: preparation.tuning.begin, timing: {pause_after: 2}, narration_required: true}
+  - {id: practice, after: begin, offset: 0, timing: {anchor: speech-end, pause_after: 20}, semantic: preparation.tuning.practice}
+  - {id: complete, after: practice, offset: 0, timing: {anchor: event-end, pause_after: 3}, semantic: preparation.tuning.complete, narration_required: true}

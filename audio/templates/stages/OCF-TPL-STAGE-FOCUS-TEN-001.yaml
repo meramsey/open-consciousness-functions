@@ -1,12 +1,21 @@
 schema_version: "1.0"
 id: OCF-TPL-STAGE-FOCUS-TEN-001
-version: "0.2.0"
+version: "0.3.1"
 origin: original-ocf
 type: induction
 description: Learn Focus 10; no neurological outcome is implied by the state label.
 events:
-  - {id: learn, at: 0, semantic: focus.ten.learning, narration_required: true}
-  - {id: enter, after: learn, offset: 0, timing: {anchor: speech-end}, semantic: focus.ten.enter, narration_required: true, auditory_cue: focus.ten.enter}
+  - {id: learn, at: 0, semantic: focus.ten.learning, timing: {pause_after: 3}, narration_required: true}
+  - {id: count-one, after: learn, offset: 0, timing: {anchor: speech-end, pause_after: 5}, semantic: focus.ten.count, narration_required: true}
+  - {id: count-two, after: count-one, offset: 0, timing: {anchor: speech-end, pause_after: 5}, semantic: focus.ten.count, narration_required: true}
+  - {id: count-three, after: count-two, offset: 0, timing: {anchor: speech-end, pause_after: 5}, semantic: focus.ten.count, narration_required: true}
+  - {id: count-four, after: count-three, offset: 0, timing: {anchor: speech-end, pause_after: 5}, semantic: focus.ten.count, narration_required: true}
+  - {id: count-five, after: count-four, offset: 0, timing: {anchor: speech-end, pause_after: 5}, semantic: focus.ten.count, narration_required: true}
+  - {id: count-six, after: count-five, offset: 0, timing: {anchor: speech-end, pause_after: 5}, semantic: focus.ten.count, narration_required: true}
+  - {id: count-seven, after: count-six, offset: 0, timing: {anchor: speech-end, pause_after: 5}, semantic: focus.ten.count, narration_required: true}
+  - {id: count-eight, after: count-seven, offset: 0, timing: {anchor: speech-end, pause_after: 5}, semantic: focus.ten.count, narration_required: true}
+  - {id: count-nine, after: count-eight, offset: 0, timing: {anchor: speech-end, pause_after: 5}, semantic: focus.ten.count, narration_required: true}
+  - {id: enter, after: count-nine, offset: 0, timing: {anchor: speech-end}, semantic: focus.ten.enter, narration_required: true, auditory_cue: focus.ten.enter}
   - id: transition
     after: enter
     offset: 0
@@ -16,7 +25,7 @@ events:
   - id: ready
     after: transition
     offset: 0
-    timing: {anchor: event-end}
+    timing: {anchor: event-end, pause_after: 40}
     semantic: focus.ten.ready
     auditory_cue: focus.ten.ready
     narration_required: true

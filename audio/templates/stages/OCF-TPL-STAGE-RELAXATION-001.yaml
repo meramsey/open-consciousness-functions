@@ -1,8 +1,15 @@
 schema_version: "1.0"
 id: OCF-TPL-STAGE-RELAXATION-001
-version: "0.1.0"
+version: "0.2.1"
 origin: original-ocf
 type: induction
 description: Progressive relaxation; imagery is not a semantic prerequisite.
 events:
-  - {id: begin, at: 0, semantic: preparation.relaxation.begin, narration_required: true}
+  - {id: begin, at: 0, semantic: preparation.relaxation.begin, timing: {pause_after: 5}, narration_required: true}
+  - {id: breath, after: begin, offset: 0, timing: {anchor: speech-end, pause_after: 15}, semantic: preparation.relaxation.breath, narration_required: true}
+  - {id: face, after: breath, offset: 0, timing: {anchor: speech-end, pause_after: 10}, semantic: preparation.relaxation.face, narration_required: true}
+  - {id: shoulders, after: face, offset: 0, timing: {anchor: speech-end, pause_after: 10}, semantic: preparation.relaxation.shoulders, narration_required: true}
+  - {id: hands, after: shoulders, offset: 0, timing: {anchor: speech-end, pause_after: 10}, semantic: preparation.relaxation.hands, narration_required: true}
+  - {id: torso, after: hands, offset: 0, timing: {anchor: speech-end, pause_after: 10}, semantic: preparation.relaxation.torso, narration_required: true}
+  - {id: legs, after: torso, offset: 0, timing: {anchor: speech-end, pause_after: 10}, semantic: preparation.relaxation.legs, narration_required: true}
+  - {id: whole, after: legs, offset: 0, timing: {anchor: speech-end, pause_after: 30}, semantic: preparation.relaxation.whole, narration_required: true}

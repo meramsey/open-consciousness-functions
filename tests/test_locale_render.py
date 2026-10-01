@@ -274,7 +274,7 @@ class TestLocaleCli:
     def test_coverage_accepts_domain_filter(self, capsys):
         assert main(["locale", "coverage", "--locale", "es", "--domain", "narration"]) == 0
         # The es pack localizes the CLI itself, which is the point of the pack.
-        assert "17 de 20" in capsys.readouterr().out
+        assert "17 de 89" in capsys.readouterr().out
 
     def test_validate_passes_on_the_repository_packs(self, capsys):
         assert main(["locale", "validate"]) == 0

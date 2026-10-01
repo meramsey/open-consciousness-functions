@@ -1,8 +1,8 @@
 schema_version: "1.0"
 id: OCF-TPL-STAGE-FUNCTION-CONCEPT-001
-version: "0.1.0"
+version: "0.1.2"
 origin: original-ocf
 type: function-intro
 description: Teach OCF function and voluntary activation-command concepts.
 events:
-  - {id: concept, at: 0, semantic: function.concept, narration_required: true}
+  - {id: concept, at: 0, semantic: function.concept, timing: {pause_after: 10}, narration_required: true}

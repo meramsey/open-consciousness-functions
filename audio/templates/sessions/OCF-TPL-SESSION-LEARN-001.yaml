@@ -1,4 +1,5 @@
 schema_version: "1.0"
+version: "0.2.0"
 id: "OCF-TPL-SESSION-LEARN-001"
 name: "Learn-function session shell (Attention-style arc)"
 author: "OCF"
@@ -60,7 +61,7 @@ sections:
       - at: 22.0
         text: "There is nothing to figure out and nothing to control."
       - at: 36.0
-        text: "Every word is received easily by your mind."
+        narration_key: function.learning.attend
       - at: 54.0
         text: "The channel is open."
   - id: focus11
@@ -74,7 +75,7 @@ sections:
       - at: 14.0
         text: "Hear its name clearly, and let your mind accept it fully."
       - at: 30.0
-        text: "This function is being installed beneath conscious effort."
+        narration_key: function.learning.rehearse
       - at: 46.0
         text: "Repeat the cue within, without strain."
       - at: 62.0
@@ -98,7 +99,7 @@ sections:
       - at: 0.0
         text: "You are moving into deep rest."
       - at: 12.0
-        text: "All that you have absorbed is being integrated beneath awareness."
+        narration_key: function.learning.reflect
   - id: count-to-twenty
     type: state-transition
     start: 834.0

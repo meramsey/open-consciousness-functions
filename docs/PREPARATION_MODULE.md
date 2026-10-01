@@ -10,10 +10,11 @@ Focus 10 transition, `focus11_open` / `focus11_ready`). Nothing here is
 implemented until a live command exists.
 
 The existing `ocf session compose` now supports [reusable semantic stages](SEMANTIC_SESSIONS.md).
-Preparation Learning/Routine/Function Installation compositions are present as
-**architecture drafts**, without approved narration or finalized timing. This
-does not ship the separate `ocf preparation …` command group or a finished
-listener exercise.
+Preparation Learning has approved original **OCF Preparation Learning en-US RC1** narration;
+Routine Preparation/Function Installation remain **architecture drafts**. All
+retain provisional or pending production timing. See the
+[text-only review views](drafts/README.md). This does not ship the separate
+`ocf preparation …` command group or a finished production listener exercise.
 
 ## Normative anchors
 

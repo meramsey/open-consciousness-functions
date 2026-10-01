@@ -1,0 +1,501 @@
+# OCF Preparation Learning en-US RC1: approved original narration. Authored from
+# the project requirements and NARRATION_STANDARD.md, not source transcripts.
+# Approval covers fixed RC1 words/semantic composition, not production audio.
+schema_version: "1.0"
+locale: en-US
+domain: narration
+entries:
+  preparation.learning.orientation.begin:
+    text: >-
+      Welcome to Preparation Learning from Open Consciousness Functions, or OCF.
+      Today you'll practice settling the body, opening a working period,
+      and returning from it. Find a position with enough support to rest.
+      Your eyes can close or stay open. Notice where your weight is already
+      being received, and let yourself arrive here, one ordinary breath
+      at a time.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Learning-only orientation. OCF is a proper name. Invite exploration, not an outcome test."
+  preparation.learning.orientation.control:
+    text: >-
+      You remain in charge. Adjust your position, move as needed, open your
+      eyes, pause, or stop. Let those choices support the practice. Once
+      you're comfortable enough to begin, give yourself this stretch of
+      time without having to keep checking what comes next.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Establish autonomy early; do not turn this into repeated disclaimers later."
+  preparation.learning.orientation.method:
+    text: >-
+      When an instruction invites imagination, use your own way of knowing.
+      That might be a picture, a sound, a felt quality, a sense of space,
+      or simply understanding what you mean. No image is required.
+      Let this apply throughout: OCF offers the structure and cues;
+      you bring the experience that makes them yours.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Aphantasia inclusion is essential. Do not translate knowing into an instruction to visualize."
+  preparation.learning.setting-aside.begin:
+    text: >-
+      Make a temporary place for whatever can wait during this exercise.
+      We'll call it your Focus Container. Give it a shape, a location,
+      a sense of a boundary, or simply a meaning you recognize. Let it
+      be a place you trust to keep things available for later.
+      Take a moment to find your own sense of it.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Focus Container is replaceable display terminology for preparation.setting-aside. Not a function command."
+  preparation.learning.setting-aside.place:
+    text: >-
+      Notice a plan, a concern, an unfinished conversation, or some restless
+      checking that can wait. Acknowledge it and let it belong in your
+      container for now. Then another, if one comes to mind. Nothing is
+      erased or forced away. You're giving these things a temporary place
+      while your attention has somewhere else to go. Spend a little quiet
+      time setting aside what can comfortably wait. As a thought gets
+      a place to wait, notice the attention that becomes available here.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Temporary attentional setting-aside, never suppression or a claim that a concern is permanently resolved."
+  preparation.learning.setting-aside.complete:
+    text: >-
+      Let the container be complete for now, in whatever way closing it
+      makes sense to you. Everything remains available afterward.
+      If a thought returns, you can acknowledge it and set it aside again.
+      Turn toward the support beneath you and the time you've made for yourself.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Reusable completion intent; this learning explanation is not automatically routine wording."
+  preparation.affirmation.learning.begin:
+    text: >-
+      An affirmation is an optional statement you choose to support your
+      approach. If you've selected one, listen to it or recall its meaning
+      now. Spend a few breaths with that direction, keeping what fits.
+      If you haven't chosen words, enjoy the quiet space instead.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Optional introduction only. No default affirmation is selected; configured wording may follow at the practice event."
+  preparation.affirmation.words:
+    text: "{affirmation}"
+    variables: [affirmation]
+    status: draft
+    version: "1.0.0"
+    notes: "Configured OCF/user text, with no default value. Custom supplied words are outside RC1 wording approval; caller must declare appropriate locale and provenance. Not used by the unconfigured preview."
+  preparation.affirmation.complete:
+    text: >-
+      Let that moment finish. Keep any useful direction with you,
+      and let the words rest while you continue.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Reusable optional affirmation conclusion; does not guarantee belief or an effect."
+  preparation.tuning.learning.begin:
+    text: >-
+      Resonant tuning is optional too: a little time with breath, listening,
+      and a comfortable sound. Listen first if a tone is offered. Join
+      with a gentle hum during part of an out-breath, if comfortable,
+      choosing your own pitch. Let the next breath arrive freely.
+      Quiet listening is participation too. Allow a simple rhythm to develop.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Introduction, not an oHm audio implementation. No pitch/frequency or physiological effect is prescribed."
+  preparation.tuning.complete:
+    text: >-
+      Let any sound you've been making finish. Ordinary breathing continues.
+      Notice the quiet around you and return to the support beneath your body.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Reusable optional tuning conclusion. Do not imply that a particular sound must have been generated."
+  preparation.relaxation.begin:
+    text: >-
+      Give the body some unhurried attention. Find one place where support
+      is clear, and let that be the beginning. Rest can grow from noticing
+      what is already carrying you.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Progressive relaxation introduction; no forced breathing or required imagery."
+  preparation.relaxation.breath:
+    text: >-
+      Follow an ordinary breath as it arrives and leaves. Let the next
+      one happen with a little less supervision. Feel how breathing can
+      keep moving while the rest of you has less to do. Follow two more
+      breaths this way. Let the points of contact beneath you remain
+      part of what you notice.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Experience ordinary breathing. Do not imply required breath-holding or a physiological mechanism."
+  preparation.relaxation.face:
+    text: >-
+      Let your expression take a break. Give the forehead room,
+      let the eyes rest in the way you've chosen, and find an easier
+      arrangement for the jaw and tongue.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Concrete bodily noticing; eyes may remain open."
+  preparation.relaxation.shoulders:
+    text: >-
+      Notice your neck and shoulders. Make a small adjustment if it helps.
+      Then let support take over some of the work, leaving your shoulders
+      somewhere comfortable to rest.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Comfortable adjustment is permitted; do not translate into enforced immobility."
+  preparation.relaxation.hands:
+    text: >-
+      Follow the weight of your arms toward your hands. Let the fingers
+      find a resting shape. Notice the contact beneath them and leave
+      them free of any task for a while.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Sensory options, not sensations every listener must experience."
+  preparation.relaxation.torso:
+    text: >-
+      Let the back meet its support. Notice the small movements of
+      breathing through the chest and abdomen. Allow movement and rest
+      to coexist, with a little less bracing around them.
+    status: reviewed
+    version: "1.1.0"
+    notes: "See whether means explore, not visualize. Breathing remains free."
+  preparation.relaxation.legs:
+    text: >-
+      Bring attention through your hips and legs to the feet. Let their
+      weight be received. Where comfort is already present, rest with it;
+      where an adjustment would help, give yourself that adjustment.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Utilize uneven comfort; no requirement of total relaxation."
+  preparation.relaxation.whole:
+    text: >-
+      Now include the body as a whole. Notice the support, the movement
+      of breathing, and the awareness that can follow both. Let those
+      belong together. Give yourself a quiet stretch in which to enjoy
+      doing a little less. Let awareness linger where resting is clearest,
+      then include nearby areas in that same quiet attention.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Deepening through experience, not an assertion that a state has been achieved."
+  focus.ten.learning.introduction:
+    text: >-
+      In OCF, we call deep physical relaxation with comfortable awareness
+      Focus Ten. We'll let the count gather the resting you've begun,
+      one part of the body at a time. Let each number accompany a small
+      easing, while awareness stays with you. Ten and its state signal
+      will be reminders of this practice when you choose to use them
+      in an OCF exercise.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Learning explanation only; Ten is an intentional state association, not a function activation command."
+  focus.ten.learning.count.one:
+    text: "One. Let the surface beneath you receive a little more of your weight. Settle into that support."
+    status: reviewed
+    version: "1.0.0"
+    notes: "Learning-specific count: support and settling. Bare number resources remain separate."
+  focus.ten.learning.count.two:
+    text: "Two. Ease the expression around your eyes, and let the jaw find a softer resting place."
+    status: reviewed
+    version: "1.0.0"
+    notes: "Learning-specific count: face and jaw; no required mental image."
+  focus.ten.learning.count.three:
+    text: "Three. Give the neck room and let the shoulders rest, without holding them in position."
+    status: reviewed
+    version: "1.0.0"
+    notes: "Learning-specific count: neck and shoulders; voluntary movement remains available."
+  focus.ten.learning.count.four:
+    text: "Four. Let the arms be carried by their support, with the hands quiet and the fingers at ease."
+    status: reviewed
+    version: "1.0.0"
+    notes: "Learning-specific count: arms and hands."
+  focus.ten.learning.count.five:
+    text: "Five. Follow an easy breath. Let it arrive, move, and leave in its own comfortable rhythm."
+    status: reviewed
+    version: "1.0.0"
+    notes: "Learning-specific count: ordinary comfortable breathing, not prescribed depth or breath holding."
+  focus.ten.learning.count.six:
+    text: "Six. Let the back rest and the center of the body soften around the movement of breathing."
+    status: reviewed
+    version: "1.0.0"
+    notes: "Learning-specific count: torso/center, an experiential reference rather than an energy or neurological claim."
+  focus.ten.learning.count.seven:
+    text: "Seven. Allow the hips and legs to settle into the places that receive their weight."
+    status: reviewed
+    version: "1.0.0"
+    notes: "Learning-specific count: hips and legs."
+  focus.ten.learning.count.eight:
+    text: "Eight. Let the feet rest. For now, there's nowhere they need to take you."
+    status: reviewed
+    version: "1.0.0"
+    notes: "Learning-specific count: feet at rest, not inability to move."
+  focus.ten.learning.count.nine:
+    text: "Nine. Gather the body into one sense of resting support, with awareness comfortably here."
+    status: reviewed
+    version: "1.0.0"
+    notes: "Learning-specific count: whole-body resting; knowing or sensing is sufficient."
+  focus.ten.learning.count.ten:
+    text: "Ten. Physical relaxation and comfortable awareness, together. Rest with that combination. Focus Ten."
+    status: reviewed
+    version: "1.0.0"
+    requires_events: [focus.ten.enter]
+    notes: "Learning-specific count culmination. State/cue/DSP identity remains separate; closing still uses the plain Ten resource."
+  focus.count.one: {text: "One.", status: draft, version: "1.0.0", notes: "Spoken learning count; state transitions remain separate semantic events."}
+  focus.count.two: {text: "Two.", status: draft, version: "1.0.0", notes: "Spoken learning count, localizable independently of semantic ordering."}
+  focus.count.three: {text: "Three.", status: draft, version: "1.0.0", notes: "Spoken learning count."}
+  focus.count.four: {text: "Four.", status: draft, version: "1.0.0", notes: "Spoken learning count."}
+  focus.count.five: {text: "Five.", status: draft, version: "1.0.0", notes: "Spoken learning count."}
+  focus.count.six: {text: "Six.", status: draft, version: "1.0.0", notes: "Spoken learning count."}
+  focus.count.seven: {text: "Seven.", status: draft, version: "1.0.0", notes: "Spoken learning count."}
+  focus.count.eight: {text: "Eight.", status: draft, version: "1.0.0", notes: "Spoken learning count."}
+  focus.count.nine: {text: "Nine.", status: draft, version: "1.0.0", notes: "Spoken learning count."}
+  focus.anchor.ten:
+    text: "Ten."
+    status: reviewed
+    version: "1.0.0"
+    notes: "Reusable spoken association at a separately defined Focus-10 entry/return event. Not an activation command; no change is inferred from the word itself."
+  focus.ten.learning.ready:
+    text: >-
+      Let the count go quiet. Keep the body's rest and the awareness
+      that notices it together. Spend a little time here, letting
+      the experience become familiar without following more words.
+    status: reviewed
+    version: "1.1.0"
+    requires_events: [focus.ten.ready]
+    notes: "Ready-state recognition after the semantic transition, not a guaranteed internal result."
+  focus.ten.learning.recognize:
+    text: >-
+      Notice one detail that makes this resting way recognizable:
+      the contact beneath you, the ease of a breath, or awareness
+      with less to do. Choose what stands out naturally. Rest with
+      that detail and let it belong with Ten in an intentional OCF
+      exercise. This is your personal reference for returning to
+      the practice. Keep that detail gently in the background as breathing
+      continues. Let rest make its easy way through the next few moments.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Recognition/reinforcement of a personally chosen detail; no imposed universal sensation."
+  focus.eleven.learning.introduction:
+    text: >-
+      Focus Eleven is OCF's working state for learning, rehearsal,
+      and directed attention. We also call this working state
+      your Access Channel. The body can keep resting while attention
+      becomes available for a chosen task.
+    status: reviewed
+    version: "1.1.1"
+    notes: "Access Channel is replaceable display terminology. Focus Eleven is an operational/experiential label, not a neurological assertion."
+  focus.eleven.learning.prime:
+    text: >-
+      The opening signal with Eleven begins your intentional transition.
+      A separate ready signal marks the working period ready.
+      You'll have time between them to settle into the change.
+    status: reviewed
+    version: "1.1.0"
+    requires_events: [focus.eleven.open, focus.eleven.ready]
+    notes: "Prime opening versus readiness associations. Describe signal roles, never an unapproved sound's timbre, pitch or frequency."
+  focus.eleven.learning.open.prepare:
+    text: >-
+      Keep the body's rest with you. The opening signal comes next.
+      Let Eleven mark your choice to begin.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Precedes the separately bound opening cue and Eleven."
+  focus.anchor.eleven:
+    text: "Eleven."
+    status: reviewed
+    version: "1.0.0"
+    notes: "Reusable spoken association at an intentional opening event. No state change is inferred by parsing this word."
+  focus.eleven.learning.transition:
+    text: >-
+      Let attention gather while the body stays supported.
+      Keep one resting detail with you, and let the quiet
+      give this transition room.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Spoken during the independently defined opening transition, followed by an experiential pause."
+  focus.eleven.learning.ready:
+    text: >-
+      Focus Eleven. The Access Channel is ready for working attention.
+      Let the body's rest stay in the background while you
+      bring attention to one ordinary breath.
+    status: reviewed
+    version: "1.1.0"
+    requires_events: [focus.eleven.ready]
+    notes: "Ready describes the session's coordination point, not proof of a particular mental state."
+  focus.eleven.learning.recognize:
+    text: >-
+      Follow that breath from beginning to finish. Let the next one
+      become your chosen point of attention too. If attention wanders,
+      noticing brings you back to the choice. Explore a few breaths
+      this way, with the body resting and attention engaged.
+      Notice what helps you recognize this working combination.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Experiential attentional practice, not a particular function installation."
+  focus.eleven.learning.practice:
+    text: >-
+      Widen attention to include your support and the sounds around
+      you. Then return to one breath. Move between the single point
+      and the wider field at your own pace. Keep the body's rest
+      available through both. Give yourself several quiet turns
+      of choosing, noticing, and choosing again. When the field widens,
+      notice how several sensations can belong. With a single breath,
+      notice what comes forward.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Longer practice space follows. Narrowing/broadening is voluntary and accommodates absent imagery."
+  focus.eleven.learning.practice.complete:
+    text: >-
+      Let attention become still for a moment. Notice a recognizable
+      part of working this way, and let that detail belong with
+      Focus Eleven. Rest with the association you've begun.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Recognition/reinforcement without a guaranteed repeatable state."
+  preparation.learning.function.concept:
+    text: >-
+      An OCF function is a mental process you learn and rehearse
+      for a chosen use. Consider a future exercise for becoming
+      settled before a demanding task. Its purpose would be to
+      help you begin with a steadier approach. The process might
+      be simple: notice your support, take a comfortable breath,
+      and choose one manageable first step. Try those parts now.
+      Let support, breath, and the intention to begin belong together,
+      and notice a useful detail of that experience.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Neutral hypothetical future process, not a registered function or a promised performance effect. Experience follows purpose; no command is assigned."
+  preparation.learning.command.explain:
+    text: >-
+      Each function can have its own activation command: a short,
+      deliberate cue that reminds you of the process you've practiced.
+      You rehearse the command alongside the steps, so it has
+      something recognizable to recall. We leave that command
+      unassigned here. Focus-state signals open, ready, and close
+      the working period; a function command recalls its particular
+      process. You choose when that process is useful.
+    status: reviewed
+    version: "1.1.1"
+    notes: "Teach the command concept, not PLUS THINK or any other activation command. Canonical commands remain function metadata and are not translated."
+  preparation.learning.command.rehearse:
+    text: >-
+      Practice the brief sequence again: support, a comfortable
+      breath, and one manageable first step. Notice what becomes
+      familiar as you repeat it. Now consider a task you'll begin
+      later. Rehearse bringing that familiar sequence to its
+      beginning. Choose a first step small enough to begin comfortably.
+      Notice how it feels to start with that intention, rather than
+      rushing into the whole task. In a future function exercise, you'd also learn
+      its command, pairing it deliberately with this practiced
+      process. Later, before a suitable task, you'd choose to
+      recall the command and use the steps. For now, leave the command
+      open. Let the steps and the useful detail you've noticed come
+      together, then rehearse choosing a moment to use them.
+      Let that rehearsal have some quiet time.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Concrete rehearsal of a neutral hypothetical sequence. Command remains unassigned; the five-part model is reusable, not an activation phrase."
+  focus.eleven.learning.close.prepare:
+    text: >-
+      Set the practice down for now, keeping it available for
+      later. The closing signal comes next, with Ten. Let it
+      mark your return from working attention to physical rest
+      with comfortable awareness. Give the settling its own time.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Prime the closing cue, then Ten, then the separate F11-to-F10 DSP transition."
+  focus.ten.learning.return.transition:
+    text: >-
+      Let the task recede. Notice the support beneath you,
+      ordinary breathing, and awareness with less to do.
+      Allow the body to rest through this quiet return.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Accompanies the independently defined closing transition."
+  focus.ten.learning.return.ready:
+    text: >-
+      Focus Ten. Your Access Channel is now closed.
+      Rest with the body supported and awareness comfortably here.
+    status: reviewed
+    version: "1.1.1"
+    requires_events: [focus.ten.ready]
+    notes: "Closing is not the end of the session and does not leave the listener permanently in Focus Ten."
+  focus.ten.learning.return.recognize:
+    text: >-
+      Notice a familiar detail of resting this way. Let it
+      connect this return with the Focus Ten you explored
+      earlier. You've practiced opening a working period and
+      closing it again. Spend a little time recognizing the
+      return, letting the sequence become more familiar.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Learning-specific return recognition, distinct from the initial recognition resource."
+  preparation.learning.cues.review:
+    text: >-
+      Carry these associations forward: Ten for physical rest
+      with comfortable awareness; the opening signal with Eleven
+      for a deliberate transition; ready for the working period;
+      closing with Ten for the return. Function activation
+      commands remain separate, belonging to their learned
+      processes. Hearing a number in another setting needn't
+      change anything. Context and deliberate use matter.
+      Later exercises can use familiar cues more briefly,
+      and you can return here whenever you'd like to refresh them.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Review/future pacing, not another firing of auditory cues. Intentional context is essential."
+  session.return.learning.begin:
+    text: >-
+      Now leave the resting practice of Focus Ten and return
+      to ordinary waking awareness. Let the room and the rest
+      of your day become more available. What you set aside
+      remains yours to take up when you choose.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Explicit waking return. Setting-aside is temporary; no instruction to remain in Focus Ten."
+  session.return.breath:
+    text: >-
+      Notice breathing as part of being here in the room.
+      Let its movement bring the present moment closer.
+      Take a fuller breath if comfortable, or continue
+      with the breath you're already taking.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Reusable waking-return step, no required depth."
+  session.return.body:
+    text: >-
+      Feel your hands, your feet, and the places meeting
+      your support. Notice the position you're in, and
+      let the body become more available for movement.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Reusable body orientation; a conceptual sense of position is sufficient."
+  session.return.surroundings:
+    text: >-
+      Include the sounds and space around you.
+      Remember where you are and what part of your day
+      this is. Let the wider surroundings matter again.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Reusable ordinary orientation, not a visualization request."
+  session.return.movement:
+    text: >-
+      Begin with a comfortable movement of fingers or toes,
+      or a change of position. Let another movement follow
+      as you become comfortably active again.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Reusable gradual movement, no claim of prior inability to move."
+  session.return.eyes:
+    text: >-
+      Open your eyes when you're ready, if they've been
+      closed. Otherwise, look around with a little more
+      interest. Let familiar details help you get oriented.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Accommodate both open- and closed-eye participation."
+  session.return.learning.complete:
+    text: >-
+      Take a moment to be here before moving on.
+      Keep one useful part of today's practice in mind.
+      These associations are available for your deliberate
+      use in later OCF exercises. For now, the learning
+      session is complete. Return to your day at a comfortable pace.
+    status: reviewed
+    version: "1.1.0"
+    notes: "Last spoken block; the session-complete semantic cue follows. No final cue sound is selected."

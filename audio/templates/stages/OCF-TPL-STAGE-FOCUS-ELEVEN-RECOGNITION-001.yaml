@@ -1,8 +1,10 @@
 schema_version: "1.0"
 id: OCF-TPL-STAGE-FOCUS-ELEVEN-RECOGNITION-001
-version: "0.1.0"
+version: "0.2.1"
 origin: original-ocf
 type: rehearsal
 description: Recognize and voluntarily practice the working state.
 events:
-  - {id: recognize, at: 0, semantic: focus.eleven.recognize, narration_required: true}
+  - {id: recognize, at: 0, semantic: focus.eleven.recognize, timing: {pause_after: 20}, narration_required: true}
+  - {id: practice, after: recognize, offset: 0, timing: {anchor: speech-end, pause_after: 60}, semantic: focus.eleven.practice, narration_required: true}
+  - {id: complete, after: practice, offset: 0, timing: {anchor: speech-end, pause_after: 15}, semantic: focus.eleven.practice.complete, narration_required: true}

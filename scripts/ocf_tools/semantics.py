@@ -17,6 +17,26 @@ from .validators import _load_schema, validate_against_schema
 STAGES_DIR = REPO_ROOT / "audio" / "templates" / "stages"
 CUE_PROFILES_DIR = REPO_ROOT / "audio" / "cues" / "profiles"
 DEFAULT_CUE_PROFILE = "OCF-CUE-PROFILE-DEFAULT"
+OPERATIONAL_CUES = frozenset({
+    "focus.ten.enter", "focus.ten.ready", "focus.eleven.open",
+    "focus.eleven.ready", "focus.eleven.close", "session.complete",
+})
+
+
+def operational_cue_error(event: dict) -> str | None:
+    """A current operational signal announces that operation, not its explanation.
+
+    Check disabled bindings too, so enabling a later profile cannot change the
+    meaning of a lesson. Future sound-recognition training needs a separate,
+    deliberately designed rehearsal operation; repetition is not a bypass.
+    """
+    identity = event.get("auditory_cue")
+    if isinstance(identity, str) and identity in OPERATIONAL_CUES and event.get("semantic") != identity:
+        return (
+            f"event {event.get('id')}: operational auditory cue {identity!r} "
+            f"requires its matching semantic operation, not {event.get('semantic')!r}"
+        )
+    return None
 
 
 def _load_record(reference: str, directory: Path, schema: str) -> dict:
@@ -78,6 +98,9 @@ def bind_document_cues(doc: dict, profile: dict | None = None) -> list[dict]:
         identity = event.get("auditory_cue")
         if not identity:
             continue
+        problem = operational_cue_error(event)
+        if problem:
+            raise OCFError(problem)
         if identity not in profile["bindings"]:
             raise OCFError(f"event {event['id']}: auditory cue {identity!r} is unbound")
         binding = deepcopy(profile["bindings"][identity])

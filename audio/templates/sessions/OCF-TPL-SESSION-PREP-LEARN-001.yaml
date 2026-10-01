@@ -1,29 +1,141 @@
 schema_version: "1.0"
 id: OCF-TPL-SESSION-PREP-LEARN-001
-version: "0.1.0"
-name: Preparation Learning — architecture draft
+version: "0.3.0"
+name: OCF Preparation Learning en-US RC1
 author: OCF
 origin: original-ocf
 license: Apache-2.0
 composition_kind: preparation-learning
-content_status: architecture-draft
+content_status: reviewed
 cue_profile: OCF-CUE-PROFILE-DEFAULT
-description: Semantic stage composition only; required narration and finalized timing await approval.
+description: |
+  Approved original en-US RC1 narration is bound by localization keys.
+  Optional affirmation/tuning remain off unless enabled. Pauses are provisional
+  review pacing, not final production timing. Cue sounds, DSP production and
+  artwork remain TBD. Within-event cue/speech synchronization belongs to the
+  audio renderer, not separate semantic events. Teaching bindings here do not populate routine or
+  function-installation compositions automatically.
 slots: {required: [], optional: []}
 sections:
-  - {id: orientation, stage: OCF-TPL-STAGE-ORIENTATION-001, start: 0}
-  - {id: setting-aside, stage: OCF-TPL-STAGE-SETTING-ASIDE-001, after: "$previous"}
-  - {id: affirmation, stage: OCF-TPL-STAGE-AFFIRMATION-001, after: "$previous", enabled_by: affirmation}
-  - {id: tuning, stage: OCF-TPL-STAGE-TUNING-001, after: "$previous", enabled_by: tuning}
-  - {id: relaxation, stage: OCF-TPL-STAGE-RELAXATION-001, after: "$previous"}
-  - {id: focus-ten, stage: OCF-TPL-STAGE-FOCUS-TEN-001, after: "$previous"}
-  - {id: recognize-ten, stage: OCF-TPL-STAGE-FOCUS-TEN-RECOGNITION-001, after: "$previous"}
-  - {id: learn-working-state, stage: OCF-TPL-STAGE-WORKING-STATE-LEARNING-001, after: "$previous"}
-  - {id: open, stage: OCF-TPL-STAGE-FOCUS-ELEVEN-OPEN-001, after: "$previous"}
-  - {id: recognize-eleven, stage: OCF-TPL-STAGE-FOCUS-ELEVEN-RECOGNITION-001, after: "$previous"}
-  - {id: function-concept, stage: OCF-TPL-STAGE-FUNCTION-CONCEPT-001, after: "$previous"}
-  - {id: command-learning, stage: OCF-TPL-STAGE-COMMAND-LEARNING-001, after: "$previous"}
-  - {id: close, stage: OCF-TPL-STAGE-FOCUS-ELEVEN-CLOSE-001, after: "$previous"}
-  - {id: recognize-return, stage: OCF-TPL-STAGE-FOCUS-TEN-RECOGNITION-001, after: "$previous"}
-  - {id: cue-review, stage: OCF-TPL-STAGE-CUE-REVIEW-001, after: "$previous"}
-  - {id: return, stage: OCF-TPL-STAGE-RETURN-001, after: "$previous"}
+  - id: orientation
+    stage: OCF-TPL-STAGE-ORIENTATION-001
+    start: 0
+    narration:
+      begin: {narration_key: preparation.learning.orientation.begin}
+      control: {narration_key: preparation.learning.orientation.control}
+      method: {narration_key: preparation.learning.orientation.method}
+  - id: setting-aside
+    stage: OCF-TPL-STAGE-SETTING-ASIDE-001
+    after: "$previous"
+    narration:
+      begin: {narration_key: preparation.learning.setting-aside.begin}
+      place: {narration_key: preparation.learning.setting-aside.place}
+      complete: {narration_key: preparation.learning.setting-aside.complete}
+  - id: affirmation
+    stage: OCF-TPL-STAGE-AFFIRMATION-001
+    after: "$previous"
+    enabled_by: affirmation
+    narration:
+      begin: {narration_key: preparation.affirmation.learning.begin}
+      complete: {narration_key: preparation.affirmation.complete}
+  - id: tuning
+    stage: OCF-TPL-STAGE-TUNING-001
+    after: "$previous"
+    enabled_by: tuning
+    narration:
+      begin: {narration_key: preparation.tuning.learning.begin}
+      complete: {narration_key: preparation.tuning.complete}
+  - id: relaxation
+    stage: OCF-TPL-STAGE-RELAXATION-001
+    after: "$previous"
+    narration:
+      begin: {narration_key: preparation.relaxation.begin}
+      breath: {narration_key: preparation.relaxation.breath}
+      face: {narration_key: preparation.relaxation.face}
+      shoulders: {narration_key: preparation.relaxation.shoulders}
+      hands: {narration_key: preparation.relaxation.hands}
+      torso: {narration_key: preparation.relaxation.torso}
+      legs: {narration_key: preparation.relaxation.legs}
+      whole: {narration_key: preparation.relaxation.whole}
+  - id: focus-ten
+    stage: OCF-TPL-STAGE-FOCUS-TEN-001
+    after: "$previous"
+    narration:
+      learn: {narration_key: focus.ten.learning.introduction}
+      count-one: {narration_key: focus.ten.learning.count.one}
+      count-two: {narration_key: focus.ten.learning.count.two}
+      count-three: {narration_key: focus.ten.learning.count.three}
+      count-four: {narration_key: focus.ten.learning.count.four}
+      count-five: {narration_key: focus.ten.learning.count.five}
+      count-six: {narration_key: focus.ten.learning.count.six}
+      count-seven: {narration_key: focus.ten.learning.count.seven}
+      count-eight: {narration_key: focus.ten.learning.count.eight}
+      count-nine: {narration_key: focus.ten.learning.count.nine}
+      enter: {narration_key: focus.ten.learning.count.ten}
+      ready: {narration_key: focus.ten.learning.ready}
+  - id: recognize-ten
+    stage: OCF-TPL-STAGE-FOCUS-TEN-RECOGNITION-001
+    after: "$previous"
+    narration:
+      recognize: {narration_key: focus.ten.learning.recognize}
+  - id: learn-working-state
+    stage: OCF-TPL-STAGE-WORKING-STATE-LEARNING-001
+    after: "$previous"
+    narration:
+      learn: {narration_key: focus.eleven.learning.introduction}
+      prime: {narration_key: focus.eleven.learning.prime}
+  - id: open
+    stage: OCF-TPL-STAGE-FOCUS-ELEVEN-OPEN-001
+    after: "$previous"
+    narration:
+      prepare: {narration_key: focus.eleven.learning.open.prepare}
+      open: {narration_key: focus.anchor.eleven}
+      transition: {narration_key: focus.eleven.learning.transition}
+      ready: {narration_key: focus.eleven.learning.ready}
+  - id: recognize-eleven
+    stage: OCF-TPL-STAGE-FOCUS-ELEVEN-RECOGNITION-001
+    after: "$previous"
+    narration:
+      recognize: {narration_key: focus.eleven.learning.recognize}
+      practice: {narration_key: focus.eleven.learning.practice}
+      complete: {narration_key: focus.eleven.learning.practice.complete}
+  - id: function-concept
+    stage: OCF-TPL-STAGE-FUNCTION-CONCEPT-001
+    after: "$previous"
+    narration:
+      concept: {narration_key: preparation.learning.function.concept}
+  - id: command-learning
+    stage: OCF-TPL-STAGE-COMMAND-LEARNING-001
+    after: "$previous"
+    narration:
+      explain: {narration_key: preparation.learning.command.explain}
+      rehearse: {narration_key: preparation.learning.command.rehearse}
+  - id: close
+    stage: OCF-TPL-STAGE-FOCUS-ELEVEN-CLOSE-001
+    after: "$previous"
+    narration:
+      prepare: {narration_key: focus.eleven.learning.close.prepare}
+      close: {narration_key: focus.anchor.ten}
+      transition: {narration_key: focus.ten.learning.return.transition}
+      ready: {narration_key: focus.ten.learning.return.ready}
+  - id: recognize-return
+    stage: OCF-TPL-STAGE-FOCUS-TEN-RECOGNITION-001
+    after: "$previous"
+    narration:
+      recognize: {narration_key: focus.ten.learning.return.recognize}
+  - id: cue-review
+    stage: OCF-TPL-STAGE-CUE-REVIEW-001
+    after: "$previous"
+    narration:
+      review: {narration_key: preparation.learning.cues.review}
+  - id: return
+    stage: OCF-TPL-STAGE-RETURN-001
+    after: "$previous"
+    narration:
+      begin: {narration_key: session.return.learning.begin}
+      breath: {narration_key: session.return.breath}
+      body: {narration_key: session.return.body}
+      surroundings: {narration_key: session.return.surroundings}
+      movement: {narration_key: session.return.movement}
+      eyes: {narration_key: session.return.eyes}
+      complete: {narration_key: session.return.learning.complete}

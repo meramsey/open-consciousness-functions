@@ -56,7 +56,7 @@ def test_bad_command_blocks_tts_before_any_synthesis(tmp_path):
 
 
 def test_architecture_draft_missing_required_narration_blocks_tts(tmp_path):
-    doc = compose(load_template("OCF-TPL-SESSION-PREP-LEARN-001"), {}, title="Draft")
+    doc = compose(load_template("OCF-TPL-SESSION-PREP-ROUTINE-001"), {}, title="Draft")
     with pytest.raises(OCFError, match="required narration"):
         render_narration(doc, tmp_path / "out.wav", backend={"backend": "espeak-ng"}, render_cue=lambda text: b"")
     assert not (tmp_path / "out.wav").exists()

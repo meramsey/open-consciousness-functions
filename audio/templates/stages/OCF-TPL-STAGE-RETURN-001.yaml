@@ -1,15 +1,20 @@
 schema_version: "1.0"
 id: OCF-TPL-STAGE-RETURN-001
-version: "0.1.0"
+version: "0.2.0"
 origin: original-ocf
 type: return
 description: Ordinary waking return; finalized narration and pacing await approval.
 events:
-  - {id: begin, at: 0, semantic: session.return.begin, narration_required: true}
+  - {id: begin, at: 0, semantic: session.return.begin, timing: {pause_after: 4}, narration_required: true}
+  - {id: breath, after: begin, offset: 0, timing: {anchor: speech-end, pause_after: 5}, semantic: session.return.breath, narration_required: true}
+  - {id: body, after: breath, offset: 0, timing: {anchor: speech-end, pause_after: 5}, semantic: session.return.body, narration_required: true}
+  - {id: surroundings, after: body, offset: 0, timing: {anchor: speech-end, pause_after: 4}, semantic: session.return.surroundings, narration_required: true}
+  - {id: movement, after: surroundings, offset: 0, timing: {anchor: speech-end, pause_after: 5}, semantic: session.return.movement, narration_required: true}
+  - {id: eyes, after: movement, offset: 0, timing: {anchor: speech-end, pause_after: 5}, semantic: session.return.eyes, narration_required: true}
   - id: complete
-    after: begin
+    after: eyes
     offset: 0
-    timing: {anchor: speech-end}
+    timing: {anchor: speech-end, pause_after: 3}
     semantic: session.return.complete
     dsp: {state: ordinary-waking}
     narration_required: true

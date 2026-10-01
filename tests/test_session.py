@@ -195,7 +195,7 @@ def test_compose_records_template_provenance_and_slots():
     doc = session.compose(tpl, dict(SLOTS), title="t")
     assert doc["template"] == {
         "id": TEMPLATE_ID,
-        "version": "1.0",
+        "version": "0.2.0",
         "origin": "original-ocf",
     }
     assert doc["slots"]["opener"] == [

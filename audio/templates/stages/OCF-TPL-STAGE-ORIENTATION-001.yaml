@@ -1,8 +1,10 @@
 schema_version: "1.0"
 id: OCF-TPL-STAGE-ORIENTATION-001
-version: "0.1.0"
+version: "0.2.0"
 origin: original-ocf
 type: preparation
 description: Architecture only; orientation and voluntary control narration awaits approval.
 events:
-  - {id: begin, at: 0, semantic: preparation.orientation.begin, narration_required: true}
+  - {id: begin, at: 0, semantic: preparation.orientation.begin, timing: {pause_after: 2}, narration_required: true}
+  - {id: control, after: begin, offset: 0, timing: {anchor: speech-end, pause_after: 3}, semantic: preparation.orientation.control, narration_required: true}
+  - {id: method, after: control, offset: 0, timing: {anchor: speech-end, pause_after: 5}, semantic: preparation.orientation.method, narration_required: true}

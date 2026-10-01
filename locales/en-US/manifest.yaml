@@ -3,7 +3,7 @@ locale: "en-US"
 language_name: "English (United States)"
 direction: "ltr"
 status: "canonical"
-semantic_version: "1.0.0"
+semantic_version: "1.2.1"
 resources:
   - file: "ui.yaml"
     domain: "ui"
@@ -14,6 +14,9 @@ resources:
   - file: "functions.yaml"
     domain: "narration"
     description: "Per-function narration templates. Command wording is metadata, never translated."
+  - file: "preparation-learning.yaml"
+    domain: "narration"
+    description: "Approved OCF Preparation Learning en-US RC1 fixed narration and reusable state/count/return resources; production audio remains separate."
 notes: |
   Canonical locale. New narration keys are authored here first; a derived pack
   is then filled from this one, recording its source semantic version.

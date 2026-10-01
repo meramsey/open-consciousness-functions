@@ -1,9 +1,12 @@
 # Semantic sessions, reusable stages and auditory bindings
 
 Status: additive architecture supported by **`ocf session compose`**. The new
-Preparation Learning, Routine Preparation and Function Installation records
-are **architecture drafts, not listener-ready exercises**. Required original
-narration and finalized timing await Phase 8 approval. The separate
+Routine Preparation and Function Installation records remain **architecture
+drafts**. Preparation Learning is now **OCF Preparation Learning en-US RC1**,
+approved through Phase 8C, with provisional pauses and disabled cue sounds; it is not a
+final production exercise. Its [listener/developer views](drafts/README.md)
+are text-only. Routine/function wording and final production timing await
+separate approval. The separate
 `ocf preparation …` toolchain remains specified but not shipped.
 
 ## Semantic coordination
@@ -98,7 +101,59 @@ playback contract, not an implemented player.
 Changing profile assets does not change semantic sessions or translations.
 Activation commands stay function metadata and are never cue-profile bindings.
 
-## Architecture inspection
+### Operational cue meaning
+
+**Playback of an operational state cue means its semantic event is actually
+occurring.** OPEN, READY, CLOSE, Focus-Ten and session-complete signals are not
+illustrative sound effects. Explanation, priming and verbal review do not
+replay them. This is a statement about the session's operation, not a claim
+that a listener has reached a scientifically measured internal state.
+
+The current operational identities (`focus.ten.enter`, `focus.ten.ready`,
+`focus.eleven.open`, `focus.eleven.ready`, `focus.eleven.close`,
+`session.complete`) require the same `semantic` identity on their owning event.
+The binder and narration validation enforce this even while bindings are
+disabled. Neither `intentional_repeat` nor a casual rehearsal label bypasses
+the contract. Future community cue identities remain extensible.
+
+If sound-recognition training is needed later, it must be a deliberately
+specified **cue-rehearsal semantic operation** with an explicit training
+context and validation policy. That workflow is not shipped. Do not alias an
+operational sound under another name merely to evade the operational rule.
+Actual playback remains unshipped; a future player must emit a binding only
+when it dispatches the owning semantic event.
+
+### Preparation Learning event grammar
+
+The composed event data, rather than the prose, gives this order:
+
+```text
+learn-working-state.prime → open.prepare
+→ open.open [focus.eleven.open cue reference + spoken Eleven, one event]
+→ open.transition [F10→F11 DSP directive + transition guide]
+→ 25s pause after the guide
+→ open.ready [focus.eleven.ready cue reference + Focus Eleven identification]
+→ recognize-eleven recognition/practice
+
+close.prepare
+→ close.close [focus.eleven.close cue reference + spoken Ten, one event]
+→ close.transition [F11→F10 DSP directive + settling guide]
+→ 25s pause after the guide
+→ close.ready [focus.ten.ready cue reference + Focus Ten identification]
+→ recognize-return recognition
+```
+
+Cue references and their words/identification share a coordination event.
+There is no separate authored sound-before-word sub-event or guaranteed cue
+lead-in. Binding metadata is not evidence of physical playback. Whether the
+future audio player emits a cue before its event's narration is a production
+alignment decision still to be made; changing the text composition is not
+needed for RC1. The shared coordination model is approved. Exact within-event
+cue/speech synchronization is an audio-rendering decision: cue onset can be
+0ms with configurable speech onset, without changing semantic identity or
+introducing separate semantic events.
+
+## Draft inspection
 
 ```bash
 ocf session compose --template OCF-TPL-SESSION-PREP-LEARN-001 \
@@ -106,9 +161,11 @@ ocf session compose --template OCF-TPL-SESSION-PREP-LEARN-001 \
 ocf locale resolve --file /tmp/preparation-architecture.yaml --locale en-US
 ```
 
-This produces/inspects structural data only; it does not claim the draft can
-produce a completed listener track. Follow the [narration standard](NARRATION_STANDARD.md)
-and [migration inventory](NARRATION_MIGRATION.md) before writing any resources.
+These commands compose and resolve the en-US text draft, not production audio.
+The complete review transcript and developer event/pause view can be regenerated
+with `python3 scripts/tools/preview_preparation_learning.py`. Follow the
+[narration standard](NARRATION_STANDARD.md) and [migration inventory](NARRATION_MIGRATION.md)
+when reviewing or changing resources.
 
 ## Validation and compatibility
 

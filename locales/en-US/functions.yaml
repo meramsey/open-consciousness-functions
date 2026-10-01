@@ -2,6 +2,21 @@ schema_version: "1.0"
 locale: "en-US"
 domain: "narration"
 entries:
+  function.learning.attend:
+    text: "Listen for what is useful to you, and give yourself room to make sense of it."
+    version: "1.0.0"
+    status: draft
+    notes: "Replaces guaranteed reception in the OCF-owned historical learn shell; deliberate participation, not unconscious reception."
+  function.learning.rehearse:
+    text: "Treat this as a skill to practice: try the steps deliberately and notice what you can recognize and repeat."
+    version: "1.0.0"
+    status: draft
+    notes: "Replaces automatic installation beneath conscious effort. This repairs the old shell, not final Function Installation wording."
+  function.learning.reflect:
+    text: "Let the practice rest for now. You can return to it later, recall the steps, and decide how you want to use them."
+    version: "1.0.0"
+    status: draft
+    notes: "Replaces automatic integration beneath awareness with rest, recall and intentional use."
   # Function narration is parameterized by the function record. `command` holds a
   # canonical OCF command (PLUS-...), which is language-independent metadata and
   # is never translated: a localized pack may explain the command in its own

@@ -3,7 +3,7 @@
 from copy import deepcopy
 
 import pytest
-from ocf_tools.locale import iter_events, resolve_document
+from ocf_tools.locale import LocalizationError, iter_events, resolve_document
 from ocf_tools.semantics import (
     bind_document_cues,
     load_cue_profile,
@@ -42,14 +42,18 @@ def test_stage_instances_keep_unique_ids_and_version_provenance():
     ids = [event["id"] for event in iter_events(doc)]
     assert len(ids) == len(set(ids))
     assert "recognize-ten.recognize" in ids and "recognize-return.recognize" in ids
-    assert doc["stages"][0] == {"id": "OCF-TPL-STAGE-ORIENTATION-001", "version": "0.1.0", "instance": "orientation"}
+    assert doc["stages"][0] == {"id": "OCF-TPL-STAGE-ORIENTATION-001", "version": "0.2.0", "instance": "orientation"}
 
 
 def test_locale_resolution_cannot_change_semantics_dsp_or_cues():
     doc = preparation()
-    english, spanish = resolve_document(doc, "en-US"), resolve_document(doc, "es")
-    assert english["sections"] == spanish["sections"] == doc["sections"]
+    english = resolve_document(doc, "en-US")
+    assert [{key: value for key, value in event.items() if key != "text"} for event in iter_events(english)] == list(iter_events(doc))
     assert all("text" not in event for event in iter_events(doc))
+    # The new content is en-US only. Missing real translations must remain
+    # a strict failure, not be manufactured to keep an old demo assertion green.
+    with pytest.raises(LocalizationError, match="required spoken narration"):
+        resolve_document(doc, "es")
 
 
 def test_opening_coordinates_narration_then_dsp_then_ready():

@@ -1,16 +1,16 @@
 schema_version: "1.0"
 id: OCF-TPL-STAGE-FOCUS-ELEVEN-CLOSE-001
-version: "0.1.0"
+version: "0.1.2"
 origin: original-ocf
 type: access-close
 description: Closing signal/narration precede the return DSP transition.
 events:
-  - {id: prepare, at: 0, semantic: focus.eleven.close.prepare, narration_required: true}
+  - {id: prepare, at: 0, semantic: focus.eleven.close.prepare, timing: {pause_after: 3}, narration_required: true}
   - {id: close, after: prepare, offset: 0, timing: {anchor: speech-end}, semantic: focus.eleven.close, auditory_cue: focus.eleven.close, narration_required: true}
   - id: transition
     after: close
     offset: 0
-    timing: {anchor: speech-end}
+    timing: {anchor: speech-end, pause_after: 25}
     semantic: focus.eleven.transition.close
     dsp: {state: {from: focus-11, to: focus-10}}
-  - {id: ready, after: transition, offset: 0, timing: {anchor: event-end}, semantic: focus.ten.ready, auditory_cue: focus.ten.ready}
+  - {id: ready, after: transition, offset: 0, timing: {anchor: event-end, pause_after: 2}, semantic: focus.ten.ready, auditory_cue: focus.ten.ready}

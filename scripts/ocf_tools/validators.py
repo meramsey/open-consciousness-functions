@@ -501,6 +501,8 @@ def validate_command_ownership(data: dict[str, Any], path: Path) -> ValidationRe
 def validate_narration_hygiene(data: dict[str, Any], path: Path = Path("session"),
                                catalog: LocaleCatalog | None = None) -> ValidationResult:
     """Structural mistakes only; intentional repetition is supported."""
+    from .semantics import operational_cue_error
+
     result = ValidationResult()
     seen_narration = set()
     seen_cues = set()
@@ -508,6 +510,9 @@ def validate_narration_hygiene(data: dict[str, Any], path: Path = Path("session"
     origins = {entry.get("id"): entry.get("locale") for entry in (data.get("narration") or {}).get("resolved", [])}
     for event in iter_events(data):
         event_id = event.get("id")
+        cue_problem = operational_cue_error(event)
+        if cue_problem:
+            result.add("error", "semantic-cue-operation", cue_problem, str(path))
         text = event.get("text")
         key = event.get("narration_key")
         if event.get("narration_required") and not (key or (isinstance(text, str) and text.strip())):
