@@ -1,0 +1,12 @@
+schema_version: "1.0"
+id: OCF-CUE-PROFILE-DEFAULT
+notes: |
+  Binding architecture only. All final cue sounds remain TBD; no prototype
+  frequencies or recordings are chosen. Disabled is explicit, not a sound.
+bindings:
+  focus.ten.enter: {mode: disabled}
+  focus.ten.ready: {mode: disabled}
+  focus.eleven.open: {mode: disabled}
+  focus.eleven.ready: {mode: disabled}
+  focus.eleven.close: {mode: disabled}
+  session.complete: {mode: disabled}

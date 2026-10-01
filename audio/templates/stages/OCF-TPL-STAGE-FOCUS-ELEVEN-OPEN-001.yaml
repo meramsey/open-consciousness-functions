@@ -1,0 +1,27 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-FOCUS-ELEVEN-OPEN-001
+version: "0.1.0"
+origin: original-ocf
+type: access-open
+description: Opening signal/narration precede DSP; ready signal follows the transition.
+events:
+  - {id: prepare, at: 0, semantic: focus.eleven.open.prepare, narration_required: true}
+  - id: open
+    after: prepare
+    offset: 0
+    timing: {anchor: speech-end}
+    semantic: focus.eleven.open
+    auditory_cue: focus.eleven.open
+    narration_required: true
+  - id: transition
+    after: open
+    offset: 0
+    timing: {anchor: speech-end}
+    semantic: focus.eleven.transition.open
+    dsp: {state: {from: focus-10, to: focus-11}}
+  - id: ready
+    after: transition
+    offset: 0
+    timing: {anchor: event-end}
+    semantic: focus.eleven.ready
+    auditory_cue: focus.eleven.ready

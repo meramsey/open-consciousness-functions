@@ -10,10 +10,12 @@ from __future__ import annotations
 import json
 import re
 from dataclasses import dataclass, field
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
 from jsonschema import Draft7Validator
+from referencing import Registry, Resource
 
 from .indexes import (
     discover_background_manifests,
@@ -97,9 +99,19 @@ def _load_schema(name: str) -> dict[str, Any]:
 
 def validate_against_schema(data: dict[str, Any], schema: dict[str, Any]) -> list[str]:
     """Return a list of schema error messages (empty if valid)."""
-    validator = Draft7Validator(schema)
+    validator = Draft7Validator(schema, registry=_schema_registry())
     errors = sorted(validator.iter_errors(data), key=lambda e: list(e.path))
     return [f"{'.'.join(map(str, e.path))}: {e.message}" for e in errors]
+
+
+@lru_cache(maxsize=1)
+def _schema_registry() -> Registry:
+    """Resolve shared schema definitions locally, never by network."""
+    resources = []
+    for path in schema_path("timed-transcript.schema.json").parent.glob("*.schema.json"):
+        schema = json.loads(path.read_text(encoding="utf-8"))
+        resources.append((schema["$id"], Resource.from_contents(schema)))
+    return Registry().with_resources(resources)
 
 
 def spoken_word_count(command: str) -> int:

@@ -1,0 +1,9 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-COMMAND-LEARNING-001
+version: "0.1.0"
+origin: original-ocf
+type: rehearsal
+description: Deliberate command association/rehearsal; actual command is function-owned metadata.
+events:
+  - {id: explain, at: 0, semantic: function.command.explain, narration_required: true}
+  - {id: rehearse, after: explain, offset: 0, timing: {anchor: speech-end}, semantic: function.command.rehearse, narration_required: true}

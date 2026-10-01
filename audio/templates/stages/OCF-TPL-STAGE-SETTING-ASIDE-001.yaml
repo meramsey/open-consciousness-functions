@@ -1,0 +1,14 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-SETTING-ASIDE-001
+version: "0.1.0"
+origin: original-ocf
+type: preparation
+description: Temporary setting-aside concept; container/display terminology remains under review.
+events:
+  - {id: begin, at: 0, semantic: preparation.setting-aside.begin, narration_required: true}
+  - id: complete
+    after: begin
+    offset: 0
+    timing: {anchor: speech-end}
+    semantic: preparation.setting-aside.complete
+    narration_required: true

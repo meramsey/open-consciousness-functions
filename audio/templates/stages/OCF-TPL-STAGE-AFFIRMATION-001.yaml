@@ -1,0 +1,8 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-AFFIRMATION-001
+version: "0.1.0"
+origin: original-ocf
+type: preparation
+description: Optional affirmation concept only; no final default affirmation is selected.
+events:
+  - {id: begin, at: 0, semantic: preparation.affirmation.begin, narration_required: true}

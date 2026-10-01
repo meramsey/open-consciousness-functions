@@ -8,7 +8,15 @@
   "schema_version",
   "title"
  ],
- "properties": {
+  "properties": {
+   "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
+   "cue_profile": {"type": "string", "minLength": 1},
+   "stages": {
+    "type": "array", "items": {
+     "type": "object", "required": ["id", "version", "instance"],
+     "properties": {"id": {"type": "string"}, "version": {"type": "string"}, "instance": {"type": "string"}}
+    }
+   },
   "schema_version": {
    "type": "string",
    "const": "1.0"
@@ -287,15 +295,17 @@
    "type": "object",
    "additionalProperties": true,
    "properties": {
-    "preferred_duration": {
+     "preferred_duration": {
      "type": "number"
     },
     "maximum_duration": {
      "type": "number"
     },
-    "pause_after": {
-     "type": "number"
-    }
+     "pause_after": {
+      "type": "number", "minimum": 0
+     },
+     "anchor": {"type": "string", "enum": ["start", "speech-end", "event-end"]},
+     "policy": {"type": "string", "enum": ["fixed", "reflow"]}
    }
   },
   "voiceSpec": {
@@ -334,7 +344,12 @@
    "required": [
     "id"
    ],
-   "properties": {
+    "properties": {
+     "semantic": {"$ref": "#/definitions/semanticIdentity"},
+     "auditory_cue": {"$ref": "#/definitions/semanticIdentity"},
+     "dsp": {"$ref": "#/definitions/dspSpec"},
+     "narration_required": {"type": "boolean"},
+     "intentional_repeat": {"type": "boolean"},
     "id": {
      "type": "string",
      "minLength": 1
@@ -389,7 +404,8 @@
     ]
    }
   },
-  "anyOf": [
+   "anyOf": [
+    {"required": ["semantic"]},
    {
     "required": [
      "text"
@@ -474,6 +490,19 @@
      "description": "Whole-section narration gain offset in dB applied during the mix (e.g. barely-audible sleep reinforcement)."
     }
    }
+  },
+   "semanticIdentity": {
+    "description": "Extensible semantic identity, independent of wording and sound assets.",
+    "type": "string", "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"
+   },
+   "dspSpec": {
+    "type": "object", "additionalProperties": false,
+    "properties": {
+     "state": {"$ref": "#/definitions/stateSpec"},
+     "preset": {"type": "string", "minLength": 1},
+     "transition_s": {"type": "number", "minimum": 0}
+    },
+    "minProperties": 1
   }
- }
+}
 }

@@ -1,0 +1,21 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-FOCUS-TEN-001
+version: "0.1.0"
+origin: original-ocf
+type: induction
+description: Learn Focus 10; no neurological outcome is implied by the state label.
+events:
+  - {id: enter, at: 0, semantic: focus.ten.enter, narration_required: true, auditory_cue: focus.ten.enter}
+  - id: transition
+    after: enter
+    offset: 0
+    timing: {anchor: speech-end}
+    semantic: focus.ten.transition
+    dsp: {state: focus-10}
+  - id: ready
+    after: transition
+    offset: 0
+    timing: {anchor: event-end}
+    semantic: focus.ten.ready
+    auditory_cue: focus.ten.ready
+    narration_required: true

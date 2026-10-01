@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/cue-profile.schema.json",
+  "title": "OCF auditory cue bindings (not subtitle cue_id)",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "id", "bindings"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "id": {"type": "string", "minLength": 1},
+    "notes": {"type": "string"},
+    "bindings": {
+      "type": "object",
+      "propertyNames": {"$ref": "https://open-consciousness-functions.dev/schemas/timed-transcript.schema.json#/definitions/semanticIdentity"},
+      "additionalProperties": {
+        "type": "object", "additionalProperties": false,
+        "required": ["mode"],
+        "properties": {
+          "mode": {"enum": ["disabled", "asset", "generator"]},
+          "file": {"type": "string", "minLength": 1},
+          "generator": {"type": "string", "minLength": 1},
+          "parameters": {"type": "object"},
+          "license": {"type": "string", "minLength": 1}
+        },
+        "allOf": [
+          {"if": {"properties": {"mode": {"const": "asset"}}}, "then": {"required": ["file", "license"]}},
+          {"if": {"properties": {"mode": {"const": "generator"}}}, "then": {"required": ["generator", "license"]}}
+        ]
+      }
+    }
+  }
+}

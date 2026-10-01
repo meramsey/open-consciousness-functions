@@ -1,0 +1,9 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-WORKING-STATE-LEARNING-001
+version: "0.1.0"
+origin: original-ocf
+type: access-open
+description: Explain Focus 11 / working-state intent; Access Channel terminology is reviewable.
+events:
+  - {id: learn, at: 0, semantic: focus.eleven.learning, narration_required: true}
+  - {id: prime, after: learn, offset: 0, timing: {anchor: speech-end}, semantic: focus.eleven.open.prime, narration_required: true}

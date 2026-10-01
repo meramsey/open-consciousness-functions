@@ -15,6 +15,12 @@
   ],
   "additionalProperties": false,
   "properties": {
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "composition_kind": {"type": "string", "enum": ["preparation-learning", "routine-preparation", "function-installation"]},
+    "content_status": {"type": "string", "enum": ["architecture-draft", "draft", "reviewed"]},
+    "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
+    "cue_profile": {"type": "string", "minLength": 1},
+    "features": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
     "schema_version": {
       "type": "string",
       "const": "1.0"
@@ -107,11 +113,13 @@
     "section": {
       "type": "object",
       "required": [
-        "id",
-        "type",
-        "start"
+        "id"
       ],
+      "anyOf": [{"required": ["stage"]}, {"required": ["type", "start"]}],
       "properties": {
+        "stage": {"type": "string", "minLength": 1},
+        "after": {"type": "string", "minLength": 1},
+        "enabled_by": {"type": "string", "minLength": 1},
         "id": {
           "type": "string",
           "minLength": 1
@@ -188,10 +196,20 @@
       "description": "A single authored or keyed line. Authored OCF prose uses `text`; a language-independent semantic session uses `narration_key` plus `variables`, so one session composes to different narration per locale.",
       "type": "object",
       "anyOf": [
+        { "required": ["semantic"] },
         { "required": ["text"] },
         { "required": ["narration_key"] }
       ],
       "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "semantic": {"$ref": "https://open-consciousness-functions.dev/schemas/timed-transcript.schema.json#/definitions/semanticIdentity"},
+        "auditory_cue": {"$ref": "https://open-consciousness-functions.dev/schemas/timed-transcript.schema.json#/definitions/semanticIdentity"},
+        "dsp": {"$ref": "https://open-consciousness-functions.dev/schemas/timed-transcript.schema.json#/definitions/dspSpec"},
+        "timing": {"$ref": "https://open-consciousness-functions.dev/schemas/timed-transcript.schema.json#/definitions/timingSpec"},
+        "narration_required": {"type": "boolean"},
+        "intentional_repeat": {"type": "boolean"},
+        "after": {"type": "string", "minLength": 1},
+        "offset": {"type": "number", "minimum": 0},
         "at": {
           "type": "number",
           "minimum": 0

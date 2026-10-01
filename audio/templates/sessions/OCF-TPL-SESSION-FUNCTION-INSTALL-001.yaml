@@ -1,0 +1,19 @@
+schema_version: "1.0"
+id: OCF-TPL-SESSION-FUNCTION-INSTALL-001
+version: "0.1.0"
+name: Function Installation — architecture draft
+author: OCF
+origin: original-ocf
+license: Apache-2.0
+composition_kind: function-installation
+content_status: architecture-draft
+cue_profile: OCF-CUE-PROFILE-DEFAULT
+description: Function-specific purpose/practice plus reusable command learning; choose return or continuation. Narration awaits approval.
+slots: {required: [], optional: []}
+sections:
+  - {id: purpose, stage: OCF-TPL-STAGE-FUNCTION-PURPOSE-001, start: 0}
+  - {id: examples, stage: OCF-TPL-STAGE-FUNCTION-EXAMPLES-001, after: "$previous", enabled_by: examples}
+  - {id: command-learning, stage: OCF-TPL-STAGE-COMMAND-LEARNING-001, after: "$previous"}
+  - {id: future-use, stage: OCF-TPL-STAGE-FUTURE-USE-001, after: "$previous"}
+  - {id: close, stage: OCF-TPL-STAGE-FOCUS-ELEVEN-CLOSE-001, after: "$previous", enabled_by: return}
+  - {id: return, stage: OCF-TPL-STAGE-RETURN-001, after: "$previous", enabled_by: return}

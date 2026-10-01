@@ -262,6 +262,7 @@ def _build_parser() -> argparse.ArgumentParser:
     compose_cmd.add_argument("--duration", type=float, help="total track length in seconds")
     compose_cmd.add_argument("--line-seconds", type=float, help="pace untimed slot lines every N seconds")
     compose_cmd.add_argument("--locale", help="compose directly in this locale (BCP-47), resolving narration keys")
+    compose_cmd.add_argument("--enable-stage", action="append", help="enable an optional semantic stage feature (repeatable)")
     compose_cmd.add_argument("--allow-fallback", action="store_true", help="permit fallback across the locale chain instead of failing on missing spoken narration")
     compose_cmd.add_argument("--output", help="output YAML path (default audio/scripts/<id>.yaml)")
     compose_cmd.add_argument("--force", action="store_true", help="overwrite an existing output file")

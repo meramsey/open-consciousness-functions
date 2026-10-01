@@ -444,7 +444,7 @@ def resolve_timeline(doc: dict) -> tuple[list[ResolvedEvent], list[str]]:
     """Resolve a timed document into absolute-time events.
 
     Supports a flat top-level ``timeline`` or section-grouped transcripts.
-    ``after`` references are resolved within their own timeline only; circular
+    ``after`` references may cross sections through unique event IDs; circular
     references and unknown targets are reported as problems (never guessed).
     """
     problems: list[str] = []
@@ -457,12 +457,19 @@ def resolve_timeline(doc: dict) -> tuple[list[ResolvedEvent], list[str]]:
 
     if sections is not None:
         seen_sections: set[str] = set()
+        flat = []
+        owners = {}
         for section in sections:
             section_id = section.get("id")
             if section_id in seen_sections:
                 problems.append(f"duplicate section id '{section_id}'")
             seen_sections.add(section_id)
-            events.extend(_resolve_event_list(section.get("timeline", []), section_id, problems))
+            for event in section.get("timeline", []):
+                flat.append(event)
+                owners[event.get("id")] = section_id
+        events.extend(_resolve_event_list(flat, None, problems))
+        for event in events:
+            event.section = owners.get(event.id)
     if timeline is not None:
         events.extend(_resolve_event_list(timeline, None, problems))
     return events, problems

@@ -1,0 +1,9 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-FOCUS-TEN-REMINDER-001
+version: "0.1.0"
+origin: original-ocf
+type: induction
+description: Concise routine reminder, not the complete Focus 10 learning explanation.
+events:
+  - {id: recall, at: 0, semantic: focus.ten.recall, narration_required: true, dsp: {state: focus-10}}
+  - {id: ready, after: recall, offset: 0, timing: {anchor: speech-end}, semantic: focus.ten.ready, auditory_cue: focus.ten.ready}

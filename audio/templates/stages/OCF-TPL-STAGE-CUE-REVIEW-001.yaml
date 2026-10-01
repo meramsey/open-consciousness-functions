@@ -1,0 +1,8 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-CUE-REVIEW-001
+version: "0.1.0"
+origin: original-ocf
+type: rehearsal
+description: Review associations without accidentally firing learned state signals again.
+events:
+  - {id: review, at: 0, semantic: preparation.cues.review, narration_required: true}

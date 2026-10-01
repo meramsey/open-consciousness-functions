@@ -1,0 +1,9 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-FUTURE-USE-001
+version: "0.1.0"
+origin: original-ocf
+type: integration
+description: Voluntary future use and a return/continuation choice.
+events:
+  - {id: future, at: 0, semantic: function.future-use, narration_required: true}
+  - {id: complete, after: future, offset: 0, timing: {anchor: speech-end}, semantic: function.complete, narration_required: true}

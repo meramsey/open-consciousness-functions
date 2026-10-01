@@ -1,0 +1,29 @@
+schema_version: "1.0"
+id: OCF-TPL-SESSION-PREP-LEARN-001
+version: "0.1.0"
+name: Preparation Learning — architecture draft
+author: OCF
+origin: original-ocf
+license: Apache-2.0
+composition_kind: preparation-learning
+content_status: architecture-draft
+cue_profile: OCF-CUE-PROFILE-DEFAULT
+description: Semantic stage composition only; required narration and finalized timing await approval.
+slots: {required: [], optional: []}
+sections:
+  - {id: orientation, stage: OCF-TPL-STAGE-ORIENTATION-001, start: 0}
+  - {id: setting-aside, stage: OCF-TPL-STAGE-SETTING-ASIDE-001, after: "$previous"}
+  - {id: affirmation, stage: OCF-TPL-STAGE-AFFIRMATION-001, after: "$previous", enabled_by: affirmation}
+  - {id: tuning, stage: OCF-TPL-STAGE-TUNING-001, after: "$previous", enabled_by: tuning}
+  - {id: relaxation, stage: OCF-TPL-STAGE-RELAXATION-001, after: "$previous"}
+  - {id: focus-ten, stage: OCF-TPL-STAGE-FOCUS-TEN-001, after: "$previous"}
+  - {id: recognize-ten, stage: OCF-TPL-STAGE-FOCUS-TEN-RECOGNITION-001, after: "$previous"}
+  - {id: learn-working-state, stage: OCF-TPL-STAGE-WORKING-STATE-LEARNING-001, after: "$previous"}
+  - {id: open, stage: OCF-TPL-STAGE-FOCUS-ELEVEN-OPEN-001, after: "$previous"}
+  - {id: recognize-eleven, stage: OCF-TPL-STAGE-FOCUS-ELEVEN-RECOGNITION-001, after: "$previous"}
+  - {id: function-concept, stage: OCF-TPL-STAGE-FUNCTION-CONCEPT-001, after: "$previous"}
+  - {id: command-learning, stage: OCF-TPL-STAGE-COMMAND-LEARNING-001, after: "$previous"}
+  - {id: close, stage: OCF-TPL-STAGE-FOCUS-ELEVEN-CLOSE-001, after: "$previous"}
+  - {id: recognize-return, stage: OCF-TPL-STAGE-FOCUS-TEN-RECOGNITION-001, after: "$previous"}
+  - {id: cue-review, stage: OCF-TPL-STAGE-CUE-REVIEW-001, after: "$previous"}
+  - {id: return, stage: OCF-TPL-STAGE-RETURN-001, after: "$previous"}

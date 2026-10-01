@@ -1,0 +1,8 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-FOCUS-TEN-RECOGNITION-001
+version: "0.1.0"
+origin: original-ocf
+type: rehearsal
+description: Recognize/practice the subjective convention, not prove a neurological state.
+events:
+  - {id: recognize, at: 0, semantic: focus.ten.recognize, narration_required: true}

@@ -245,12 +245,19 @@ def resolve_section_events(
         ]
     events: list[dict[str, Any]] = []
     for line in section.get("lines", []):
-        event: dict[str, Any] = {"at": start + float(line.get("at", 0.0))}
+        event: dict[str, Any] = {
+            key: value for key, value in line.items()
+            if key not in ("at", "text", "narration_key", "variables")
+        }
+        if "after" in line:
+            event.setdefault("offset", 0)
+        else:
+            event["at"] = start + float(line.get("at", 0.0))
         if line.get("narration_key"):
             event["narration_key"] = str(line["narration_key"])
             if line.get("variables"):
                 event["variables"] = dict(line["variables"])
-        else:
+        elif "text" in line:
             event["text"] = str(line["text"])
         events.append(event)
     return events
@@ -280,6 +287,7 @@ def compose(
     document_id: str | None = None,
     line_seconds: float | None = None,
     duration: float | None = None,
+    enabled_stages: list[str] | None = None,
 ) -> dict[str, Any]:
     """Resolve a session template into a canonical timed-transcript document.
 
@@ -310,18 +318,35 @@ def compose(
     sections_out: list[dict[str, Any]] = []
     used_slots: dict[str, list[str]] = {}
     counter = 0
-    starts = [float(section.get("start", 0.0)) for section in template["sections"]]
+    features = set(template.get("features") or []) | set(enabled_stages or [])
+    available = {section["enabled_by"] for section in template["sections"] if section.get("enabled_by")}
+    if features - available:
+        raise OCFError(f"unknown optional stage feature(s): {', '.join(sorted(features - available))}")
+    sections = [section for section in template["sections"]
+                if not section.get("enabled_by") or section["enabled_by"] in features]
+    starts = [float(section.get("start", 0.0)) for section in sections]
+    stage_provenance = []
+    previous = None
 
-    for index, section in enumerate(template["sections"]):
+    for index, section in enumerate(sections):
         slot_name = section.get("slot")
         section_end = starts[index + 1] if index + 1 < len(starts) else float(duration)
-        events = resolve_section_events(
-            section, slots, line_seconds=line_seconds, section_end=section_end
-        )
+        if section.get("stage"):
+            from .semantics import load_stage, stage_events
+
+            stage = load_stage(section["stage"])
+            events = stage_events(stage, section["id"], start=float(section.get("start", 0)),
+                                  after=section.get("after"), previous=previous)
+            stage_provenance.append({"id": stage["id"], "version": stage["version"], "instance": section["id"]})
+        else:
+            stage = None
+            events = resolve_section_events(
+                section, slots, line_seconds=line_seconds, section_end=section_end
+            )
         timeline: list[dict[str, Any]] = []
         for event in events:
-            at_seconds = float(event["at"])
-            if at_seconds > duration:
+            at_seconds = float(event["at"]) if "at" in event else None
+            if at_seconds is not None and at_seconds > duration:
                 print(
                     f"Warning: {section['id']} event at {format_timestamp(at_seconds)} "
                     f"exceeds template duration {duration}s"
@@ -329,18 +354,21 @@ def compose(
             counter += 1
             timeline.append(
                 {
-                    "id": f"e{counter:03d}",
-                    "at": format_timestamp(at_seconds),
+                    "id": event.get("id", f"e{counter:03d}"),
+                    **({"at": format_timestamp(at_seconds)} if at_seconds is not None else {}),
                     **{
                         key: value
                         for key, value in event.items()
-                        if key in ("text", "narration_key", "variables")
+                        if key in ("text", "narration_key", "variables", "after", "offset",
+                                   "semantic", "dsp", "auditory_cue", "timing", "state",
+                                   "cue_id", "narration_required", "intentional_repeat")
                     },
                 }
             )
+            previous = timeline[-1]["id"]
         if slot_name and slot_name in slots:
             used_slots[slot_name] = [str(event.get("text", "")) for event in events]
-        section_doc: dict[str, Any] = {"id": section["id"], "type": section["type"]}
+        section_doc: dict[str, Any] = {"id": section["id"], "type": section.get("type") or (stage or {}).get("type", "custom")}
         if section.get("role"):
             section_doc["role"] = section["role"]
         if section.get("gain_db") is not None:
@@ -354,11 +382,16 @@ def compose(
         "sections": sections_out,
         "template": {
             "id": template["id"],
-            "version": template.get("schema_version"),
+            "version": template.get("version") or template.get("schema_version"),
             "origin": template.get("origin", "original-ocf"),
         },
         "slots": used_slots,
     }
+    if stage_provenance:
+        doc["stages"] = stage_provenance
+    for key in ("function_id", "cue_profile"):
+        if template.get(key):
+            doc[key] = template[key]
     if template.get("locale"):
         doc["locale"] = str(template["locale"])
     template_source = template.get("source")
@@ -402,6 +435,7 @@ def run_compose(args: Any) -> int:
         document_id=args.id,
         line_seconds=getattr(args, "line_seconds", None),
         duration=getattr(args, "duration", None),
+        enabled_stages=getattr(args, "enable_stage", None),
     )
 
     locale = getattr(args, "locale", None)

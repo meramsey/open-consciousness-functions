@@ -1,0 +1,8 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-FUNCTION-EXAMPLES-001
+version: "0.1.0"
+origin: original-ocf
+type: rehearsal
+description: Optional function-specific examples; no universal listener prose is imposed.
+events:
+  - {id: examples, at: 0, semantic: function.examples, narration_required: true}
