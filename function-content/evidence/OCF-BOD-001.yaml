@@ -82,25 +82,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
   path: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.lrc
+  related_sha256:
+  - 86ef59aaa83ac888b5c3bc460c146433e592b91f50d31f4a41008a455fab4672
+  - b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
   sha256: 12b20436a846b122eb674d898b951c33abec542ba28cdd56003e1292d0bef839
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
   path: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.srt
+  related_sha256:
+  - 12b20436a846b122eb674d898b951c33abec542ba28cdd56003e1292d0bef839
+  - b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
   sha256: 86ef59aaa83ac888b5c3bc460c146433e592b91f50d31f4a41008a455fab4672
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
   path: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+  related_sha256:
+  - 12b20436a846b122eb674d898b951c33abec542ba28cdd56003e1292d0bef839
+  - 86ef59aaa83ac888b5c3bc460c146433e592b91f50d31f4a41008a455fab4672
   sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Brain Support and Maintenance/Brain-Repair and Maintenance.ocr.pdf
+  related_sha256: []
   sha256: 09d4245ba9ffd7c7dcc8951253fc5d5d58069dc2132442ad045bb55230e66c31
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Brain Support and Maintenance/folder.jpg
+  related_sha256: []
   sha256: 43966744aae274ca84941fb270546b3feef1ee8ceef477619782a1253c7849de

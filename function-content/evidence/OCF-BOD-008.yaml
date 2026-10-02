@@ -80,30 +80,45 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
   path: +Transcripts From available tapes/Immunizing/Immunizing.lrc
+  related_sha256:
+  - 0ed530a1ec99cd14dfd4950e86c2a9f77c78a876d8a9a8e7ec2130f143b028ec
+  - 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
   sha256: 906b2271a6ad38971daef683fccc87c4294d0906ed6335653e15a1c84887b17c
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Immunizing/Immunizing.ocr.pdf
+  related_sha256: []
   sha256: 391ef98a568caef41ffcf9ea7bc321a2089cd5c51d73f4d050ce14464a3b53be
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
   path: +Transcripts From available tapes/Immunizing/Immunizing.srt
+  related_sha256:
+  - 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+  - 906b2271a6ad38971daef683fccc87c4294d0906ed6335653e15a1c84887b17c
   sha256: 0ed530a1ec99cd14dfd4950e86c2a9f77c78a876d8a9a8e7ec2130f143b028ec
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
   path: +Transcripts From available tapes/Immunizing/Immunizing.txt
+  related_sha256:
+  - 0ed530a1ec99cd14dfd4950e86c2a9f77c78a876d8a9a8e7ec2130f143b028ec
+  - 906b2271a6ad38971daef683fccc87c4294d0906ed6335653e15a1c84887b17c
   sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Immunizing/folder.jpg
+  related_sha256: []
   sha256: 5e406b0cd5869af4af59d6b0f42e03a3879a956f38900648a1890b41bcc69d5c
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Immunizing/release_info.nfo
+  related_sha256: []
   sha256: ea49f015655c7f3dfadcfc8737dc546d66db50a597918d693f42689ba44dc4f8

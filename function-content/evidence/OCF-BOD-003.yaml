@@ -84,25 +84,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
   path: +Transcripts From available tapes/De-Discomfort/De-Discomfort.lrc
+  related_sha256:
+  - 1b46619ad21f3ebb55c382c75da200416050fd0273f282c8bab1c468f201448e
+  - bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
   sha256: 44eba0dc46a9eff52887ed6c2b806664502cb64a4e136c35ea4a47ab8befc203
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/De-Discomfort/De-Discomfort.ocr.pdf
+  related_sha256: []
   sha256: 746b224e70f1ea4fa1216662ec3b59d0c521404bf40f26753f9642f05e137a0b
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
   path: +Transcripts From available tapes/De-Discomfort/De-Discomfort.srt
+  related_sha256:
+  - 44eba0dc46a9eff52887ed6c2b806664502cb64a4e136c35ea4a47ab8befc203
+  - bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
   sha256: 1b46619ad21f3ebb55c382c75da200416050fd0273f282c8bab1c468f201448e
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
   path: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+  related_sha256:
+  - 1b46619ad21f3ebb55c382c75da200416050fd0273f282c8bab1c468f201448e
+  - 44eba0dc46a9eff52887ed6c2b806664502cb64a4e136c35ea4a47ab8befc203
   sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/De-Discomfort/folder.jpg
+  related_sha256: []
   sha256: 97bff944c0bb6552284ff4310458fb85f6bf9ae4b3147798ac0fb58995b730ca

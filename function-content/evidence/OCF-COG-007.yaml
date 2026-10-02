@@ -87,25 +87,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
   path: +Transcripts From available tapes/Think Fast/Think Fast.lrc
+  related_sha256:
+  - 4aced82d08628f891b470d66cfb068a5236ec4386ecf48fa1cc3dc0db4df04fc
+  - 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
   sha256: e62e770f7ce6ebc050b6c02f97bab5c153f013c7cf44e541fbecea9efa0083f1
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Think Fast/Think Fast.ocr.pdf
+  related_sha256: []
   sha256: b224b06d89114cc03f644922e7dcfc6e07d57a8a39cec0318fd3c0ebc7ab2763
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
   path: +Transcripts From available tapes/Think Fast/Think Fast.srt
+  related_sha256:
+  - 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+  - e62e770f7ce6ebc050b6c02f97bab5c153f013c7cf44e541fbecea9efa0083f1
   sha256: 4aced82d08628f891b470d66cfb068a5236ec4386ecf48fa1cc3dc0db4df04fc
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
   path: +Transcripts From available tapes/Think Fast/Think Fast.txt
+  related_sha256:
+  - 4aced82d08628f891b470d66cfb068a5236ec4386ecf48fa1cc3dc0db4df04fc
+  - e62e770f7ce6ebc050b6c02f97bab5c153f013c7cf44e541fbecea9efa0083f1
   sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Think Fast/folder.jpg
+  related_sha256: []
   sha256: f8346a8534008e4c88c66b88c4491b48a73b10e3ebdc488fd52113269c65d7c2

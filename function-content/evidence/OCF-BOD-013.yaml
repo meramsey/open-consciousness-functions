@@ -83,25 +83,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
   path: +Transcripts From available tapes/Tune-Up/Tune-Up.lrc
+  related_sha256:
+  - 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+  - 5a509429d916e45ecc32f6ab8e7bab6f24514b68202410df202313562fcab0a1
   sha256: e02dd9a8ca5fe2da036fe235afb306ab9266ec4a96e84f468e4bbb291b0bb282
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Tune-Up/Tune-Up.ocr.pdf
+  related_sha256: []
   sha256: d6f515053978a02e91e301d3c8adade42c4f70e98be4fc4d151bd68c5ba25610
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
   path: +Transcripts From available tapes/Tune-Up/Tune-Up.srt
+  related_sha256:
+  - 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+  - e02dd9a8ca5fe2da036fe235afb306ab9266ec4a96e84f468e4bbb291b0bb282
   sha256: 5a509429d916e45ecc32f6ab8e7bab6f24514b68202410df202313562fcab0a1
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
   path: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+  related_sha256:
+  - 5a509429d916e45ecc32f6ab8e7bab6f24514b68202410df202313562fcab0a1
+  - e02dd9a8ca5fe2da036fe235afb306ab9266ec4a96e84f468e4bbb291b0bb282
   sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Tune-Up/folder.jpg
+  related_sha256: []
   sha256: 95a1d6cef74aba5e8c2a0c3180cdfff14c82f878f537d2d34e04d7709c2d7e87

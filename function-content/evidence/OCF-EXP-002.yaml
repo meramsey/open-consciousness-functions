@@ -156,31 +156,39 @@ schema_version: '1.0'
 sources:
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: Zoning/Zoning.ocr.pdf
+  related_sha256: []
   sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: Zoning/Zoning_881033_README.md
+  related_sha256: []
   sha256: 4e20d728b59e7b45d65c9c22e33fba3cff9d27e468c7fcc03cffbbf78699c611
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
   path: Zoning/Zoning_881033_reconstructed_annotated.txt
+  related_sha256: []
   sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: f83f233def607a11e78280cea30a5110023741a94baac45398f399f8abc594ed
   path: Zoning/Zoning_881033_reconstructed_clean.txt
+  related_sha256: []
   sha256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: Zoning/Zoning_881033_reconstruction_bundle.zip
+  related_sha256: []
   sha256: 1a76508234d5d755475b12ae97b992ed39ccbff558ca748333f2ea09451d4d2c
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: Zoning/Zoning_881033_reconstruction_notes.md
+  related_sha256: []
   sha256: 1d5bbed924f949b4025b0ffaf61ac8949eec395a18bc8d3e0328efbab376bac6

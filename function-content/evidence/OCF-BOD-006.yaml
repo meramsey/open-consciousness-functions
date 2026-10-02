@@ -77,25 +77,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
   path: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.lrc
+  related_sha256:
+  - d6341565f0520b52fcadf007710771b3f025ba960541a7454e76d8f66c59aedc
+  - f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
   sha256: c1b9a96b3937424418549aa7f21d46292a71b7ad86268bbe1c6fd23d2f8752cf
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.ocr.pdf
+  related_sha256: []
   sha256: d654bd10b2f6cc6ea2d326525d0d5077bda4f06ea3ed1cb3e64fbd1365d33e12
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
   path: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.srt
+  related_sha256:
+  - c1b9a96b3937424418549aa7f21d46292a71b7ad86268bbe1c6fd23d2f8752cf
+  - f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
   sha256: d6341565f0520b52fcadf007710771b3f025ba960541a7454e76d8f66c59aedc
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
   path: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+  related_sha256:
+  - c1b9a96b3937424418549aa7f21d46292a71b7ad86268bbe1c6fd23d2f8752cf
+  - d6341565f0520b52fcadf007710771b3f025ba960541a7454e76d8f66c59aedc
   sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Heart Support and Maintenance/folder.jpg
+  related_sha256: []
   sha256: af27a7c98ffe3e7f9802f081d51db9490ea51ef2942eb3311bfa0fec3831e45d

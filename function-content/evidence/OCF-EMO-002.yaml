@@ -80,25 +80,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
   path: +Transcripts From available tapes/Off-Loading/Off-Loading.lrc
+  related_sha256:
+  - 75a9a3f961cbb11c3525deea765942bedafb0af332f8508bf5aa47c37b21a585
+  - cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
   sha256: 0f5c7bc3f86461f9c0bd7a72d5975f249f7f4757c2b211d572728b33abf21c20
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Off-Loading/Off-Loading.ocr.pdf
+  related_sha256: []
   sha256: 63134e9f492167ba923da1487083009fad73053559dbf40101b798c908bd9f16
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
   path: +Transcripts From available tapes/Off-Loading/Off-Loading.srt
+  related_sha256:
+  - 0f5c7bc3f86461f9c0bd7a72d5975f249f7f4757c2b211d572728b33abf21c20
+  - cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
   sha256: 75a9a3f961cbb11c3525deea765942bedafb0af332f8508bf5aa47c37b21a585
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
   path: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+  related_sha256:
+  - 0f5c7bc3f86461f9c0bd7a72d5975f249f7f4757c2b211d572728b33abf21c20
+  - 75a9a3f961cbb11c3525deea765942bedafb0af332f8508bf5aa47c37b21a585
   sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Off-Loading/folder.jpg
+  related_sha256: []
   sha256: e012e6f566709aa99bb1cc816ce9039361ae0ec1eaa623dfdb1229cc04815768

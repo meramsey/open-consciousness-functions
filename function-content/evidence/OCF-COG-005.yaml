@@ -77,25 +77,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
   path: +Transcripts From available tapes/Options/Options.lrc
+  related_sha256:
+  - 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+  - 7e53c471ec9a9965bf07fd27acf21c3c0879cafeb5af9553d3424f06c603ec65
   sha256: 8bab079e156d915ee13677ca878fbcef17141a5417d30c3b324bc816e3fe546a
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Options/Options.ocr.pdf
+  related_sha256: []
   sha256: 18e573515cd1cde9cbea27a7a64a0d4fd7e01ddb3160f19991b4bc9055352cb3
 - authentication: operator-designated
   completeness: explicit gaps
   evidence_class: partial_source_transcript
+  normalized_content_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
   path: +Transcripts From available tapes/Options/Options.srt
+  related_sha256:
+  - 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+  - 8bab079e156d915ee13677ca878fbcef17141a5417d30c3b324bc816e3fe546a
   sha256: 7e53c471ec9a9965bf07fd27acf21c3c0879cafeb5af9553d3424f06c603ec65
 - authentication: operator-designated
   completeness: explicit gaps
   evidence_class: partial_source_transcript
+  normalized_content_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
   path: +Transcripts From available tapes/Options/Options.txt
+  related_sha256:
+  - 7e53c471ec9a9965bf07fd27acf21c3c0879cafeb5af9553d3424f06c603ec65
+  - 8bab079e156d915ee13677ca878fbcef17141a5417d30c3b324bc816e3fe546a
   sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Options/folder.jpg
+  related_sha256: []
   sha256: cf943b4b7bcb8a3d821d38d4f4d0270bf0b45859feb08b38db501b486af3a7c1

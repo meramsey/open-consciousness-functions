@@ -79,25 +79,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
   path: +Transcripts From available tapes/Circulation/Circulation.lrc
+  related_sha256:
+  - 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+  - d6becaaf9d35b5480a5a937c4fed757feb8016d15123f052bf644313d46bbdb1
   sha256: 6870bbc82f1a88a7629f46dbe7d27318a9d1d1020c7ab91922ec1bb73af12789
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Circulation/Circulation.ocr.pdf
+  related_sha256: []
   sha256: 6257b40548e0d92605adad0589e0b07234939e43e50120c589a3201f3995924e
 - authentication: operator-designated
   completeness: explicit gaps
   evidence_class: partial_source_transcript
+  normalized_content_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
   path: +Transcripts From available tapes/Circulation/Circulation.srt
+  related_sha256:
+  - 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+  - 6870bbc82f1a88a7629f46dbe7d27318a9d1d1020c7ab91922ec1bb73af12789
   sha256: d6becaaf9d35b5480a5a937c4fed757feb8016d15123f052bf644313d46bbdb1
 - authentication: operator-designated
   completeness: explicit gaps
   evidence_class: partial_source_transcript
+  normalized_content_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
   path: +Transcripts From available tapes/Circulation/Circulation.txt
+  related_sha256:
+  - 6870bbc82f1a88a7629f46dbe7d27318a9d1d1020c7ab91922ec1bb73af12789
+  - d6becaaf9d35b5480a5a937c4fed757feb8016d15123f052bf644313d46bbdb1
   sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Circulation/folder.jpg
+  related_sha256: []
   sha256: e6ec4255bc06e362a2419e410bf5a1c71752973c7d1d23681bf214795e152853

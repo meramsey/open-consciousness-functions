@@ -87,25 +87,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
   path: +Transcripts From available tapes/Recharge/Recharge.lrc
+  related_sha256:
+  - 4e74e767c817e7913083508eb62ba8c48737cbad959007c84b747ee40ed844c0
+  - 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
   sha256: 0080e866dc5a36589bc5fb1f0518e424074081e2236fb06ae66f26b4213ce543
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Recharge/Recharge.ocr.pdf
+  related_sha256: []
   sha256: 2ce14ddb74a4d1fdbcc50a134ac69ea949aa1a090bcb4c52de0349b5f5079f61
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
   path: +Transcripts From available tapes/Recharge/Recharge.srt
+  related_sha256:
+  - 0080e866dc5a36589bc5fb1f0518e424074081e2236fb06ae66f26b4213ce543
+  - 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
   sha256: 4e74e767c817e7913083508eb62ba8c48737cbad959007c84b747ee40ed844c0
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
   path: +Transcripts From available tapes/Recharge/Recharge.txt
+  related_sha256:
+  - 0080e866dc5a36589bc5fb1f0518e424074081e2236fb06ae66f26b4213ce543
+  - 4e74e767c817e7913083508eb62ba8c48737cbad959007c84b747ee40ed844c0
   sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Recharge/folder.jpg
+  related_sha256: []
   sha256: 3e1b9d3d5997a0e6bbef00dd78f02945eea64ab1b41e24367b9e98c4ceb2a77b

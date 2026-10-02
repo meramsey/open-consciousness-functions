@@ -104,26 +104,33 @@ schema_version: '1.0'
 sources:
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: See-Be/See-Be.ocr.pdf
+  related_sha256: []
   sha256: 6386d2651bb9c6b47ea4bfb995d1bb629487f73758d3c8a30d76d0d61c0b6231
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: See-Be/See_Be_881044_README.md
+  related_sha256: []
   sha256: b69ab8fff44baa12ab3ec72e94b88c4bfbfa6d23fdb8e2c57eee764d7ae37ded
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
   path: See-Be/See_Be_881044_reconstructed_annotated.txt
+  related_sha256: []
   sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: acbda946745d9c0c7c74855c20110f59d7a92a31acd0e793b15b888855ef3bea
   path: See-Be/See_Be_881044_reconstructed_clean.txt
+  related_sha256: []
   sha256: 574d8a0921cd4cd91b6a3e5794510dbeecfd06838cb5569123b14e6777e6df5c
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: See-Be/See_Be_881044_reconstruction_notes.md
+  related_sha256: []
   sha256: 1475f59c3df637ba2a991da5c505afee1734dc7c0b51c945916e3beecced7e32

@@ -26,20 +26,33 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
   path: +Transcripts From available tapes/Do This Now/Do This Now.lrc
+  related_sha256:
+  - 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+  - 2ca81bc8f759708d6a5267ff8ddd8090828657338ec5cfc142c12a60394fa646
   sha256: cc67f9a04b676b74deb4e9e86b11c2df0118182adb73ffc03c8e262a16b80902
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
   path: +Transcripts From available tapes/Do This Now/Do This Now.srt
+  related_sha256:
+  - 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+  - cc67f9a04b676b74deb4e9e86b11c2df0118182adb73ffc03c8e262a16b80902
   sha256: 2ca81bc8f759708d6a5267ff8ddd8090828657338ec5cfc142c12a60394fa646
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
   path: +Transcripts From available tapes/Do This Now/Do This Now.txt
+  related_sha256:
+  - 2ca81bc8f759708d6a5267ff8ddd8090828657338ec5cfc142c12a60394fa646
+  - cc67f9a04b676b74deb4e9e86b11c2df0118182adb73ffc03c8e262a16b80902
   sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Do This Now/folder.jpg
+  related_sha256: []
   sha256: 97ade0be6832b1472566c555d66fbb3f8c8e1fada0d050dcb7dc6b915a007abd

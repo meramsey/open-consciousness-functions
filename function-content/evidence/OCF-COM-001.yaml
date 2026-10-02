@@ -81,25 +81,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
   path: +Transcripts From available tapes/Speak Up/Speak Up.lrc
+  related_sha256:
+  - 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+  - b673d4d405cb41b97c059a41f2bf55ea81f00540d216abfd19d1464abedba2b9
   sha256: c33026b49364a0c5681af6b2ad5be68b1d31e5737ce8d25b1df8c8a7f23f184c
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Speak Up/Speak Up.ocr.pdf
+  related_sha256: []
   sha256: be030b10f16cce5ba3fca0dc4b2a40ac446e34e7d555360a921d6640c9055eaf
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
   path: +Transcripts From available tapes/Speak Up/Speak Up.srt
+  related_sha256:
+  - 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+  - c33026b49364a0c5681af6b2ad5be68b1d31e5737ce8d25b1df8c8a7f23f184c
   sha256: b673d4d405cb41b97c059a41f2bf55ea81f00540d216abfd19d1464abedba2b9
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
   path: +Transcripts From available tapes/Speak Up/Speak Up.txt
+  related_sha256:
+  - b673d4d405cb41b97c059a41f2bf55ea81f00540d216abfd19d1464abedba2b9
+  - c33026b49364a0c5681af6b2ad5be68b1d31e5737ce8d25b1df8c8a7f23f184c
   sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Speak Up/folder.jpg
+  related_sha256: []
   sha256: bdb153c9778a6a54b69eea7bd6517c9bd70f941bd8808cb5383f4074d3b15fea

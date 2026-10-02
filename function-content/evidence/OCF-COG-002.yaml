@@ -65,25 +65,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
   path: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.lrc
+  related_sha256:
+  - 5a202fe66d9e16be0a2a8a4fd342921abfef44882e3e97b65ca45ce4776f5463
+  - d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
   sha256: 5ba477f0677c7f988bc89c862347c7224188559ec2a6d1d1f523179e716efbeb
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.ocr.pdf
+  related_sha256: []
   sha256: 6caa90e2c1fa97d6f96ef69f3025be71cfe8f5413cb7ab858dfd62f51958c2c2
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
   path: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.srt
+  related_sha256:
+  - 5ba477f0677c7f988bc89c862347c7224188559ec2a6d1d1f523179e716efbeb
+  - d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
   sha256: 5a202fe66d9e16be0a2a8a4fd342921abfef44882e3e97b65ca45ce4776f5463
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
   path: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+  related_sha256:
+  - 5a202fe66d9e16be0a2a8a4fd342921abfef44882e3e97b65ca45ce4776f5463
+  - 5ba477f0677c7f988bc89c862347c7224188559ec2a6d1d1f523179e716efbeb
   sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Buy the Numbers/folder.jpg
+  related_sha256: []
   sha256: 7113b7fdfdcdaa4f6327ed2dbfcdabc11807a5aad4ec8b2e7400a6cc7e1dba31

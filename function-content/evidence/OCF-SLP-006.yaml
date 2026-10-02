@@ -152,26 +152,33 @@ schema_version: '1.0'
 sources:
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: Stay Awake/Stay Awake.ocr.pdf
+  related_sha256: []
   sha256: 2e2e0231d1b6499479d9a5116335aa765fa8b8ecf805858a1616caa898b6e23b
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: Stay Awake/Stay_Awake_881001_README.md
+  related_sha256: []
   sha256: 88af9074d82bfc5b1cc754879c68f375e2d396fad637d03880a2ba7fc5e72bf1
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
   path: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+  related_sha256: []
   sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: a504764fa8057a73b7ef343ebd7055fe80eb49e652633a26a2e78f073dbc11cd
   path: Stay Awake/Stay_Awake_881001_reconstructed_clean.txt
+  related_sha256: []
   sha256: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: Stay Awake/Stay_Awake_881001_reconstruction_notes.md
+  related_sha256: []
   sha256: ef3d92ce07e38004578372ade16ad00d7ef3d344eb47aa53b17007704315fdea

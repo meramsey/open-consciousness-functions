@@ -73,25 +73,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
   path: +Transcripts From available tapes/De-Hab/De-Hab.lrc
+  related_sha256:
+  - 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+  - bea2d2791d0b885e6368540b6f9038ae8a2410cb07604f21cd52631c87ef963d
   sha256: 0e36818885f96ee26386c08f34b78c33597b246f8b2b83de5490be9cc5ecfff8
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/De-Hab/De-Hab.ocr.pdf
+  related_sha256: []
   sha256: 6bf70de4cd63ff17efaf730f54f9fd8dbea205fdb3da554aa24fcdcdb4ea5d14
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
   path: +Transcripts From available tapes/De-Hab/De-Hab.srt
+  related_sha256:
+  - 0e36818885f96ee26386c08f34b78c33597b246f8b2b83de5490be9cc5ecfff8
+  - 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
   sha256: bea2d2791d0b885e6368540b6f9038ae8a2410cb07604f21cd52631c87ef963d
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
   path: +Transcripts From available tapes/De-Hab/De-Hab.txt
+  related_sha256:
+  - 0e36818885f96ee26386c08f34b78c33597b246f8b2b83de5490be9cc5ecfff8
+  - bea2d2791d0b885e6368540b6f9038ae8a2410cb07604f21cd52631c87ef963d
   sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/De-Hab/folder.jpg
+  related_sha256: []
   sha256: 0cd01a8acab3e191103e78941b56fbcc658a3c09838b3e7e3f83c9d575f8498e

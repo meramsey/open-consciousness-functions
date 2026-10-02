@@ -74,25 +74,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
   path: +Transcripts From available tapes/Recall/Recall.lrc
+  related_sha256:
+  - 7788c429c68a7f67c60c2a009b8317e3381591ab8061e2959afdc259433d7116
+  - db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
   sha256: 7aa0ea7075432c1e46b4eab57ff9104fbc00a028b138ccff1c798409b938b18e
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Recall/Recall.ocr.pdf
+  related_sha256: []
   sha256: 82f3ce302167d33f146f09b6ff42cc95e94adc5d65894c7d5edd780093582339
 - authentication: operator-designated
   completeness: explicit gaps
   evidence_class: partial_source_transcript
+  normalized_content_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
   path: +Transcripts From available tapes/Recall/Recall.srt
+  related_sha256:
+  - 7aa0ea7075432c1e46b4eab57ff9104fbc00a028b138ccff1c798409b938b18e
+  - db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
   sha256: 7788c429c68a7f67c60c2a009b8317e3381591ab8061e2959afdc259433d7116
 - authentication: operator-designated
   completeness: explicit gaps
   evidence_class: partial_source_transcript
+  normalized_content_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
   path: +Transcripts From available tapes/Recall/Recall.txt
+  related_sha256:
+  - 7788c429c68a7f67c60c2a009b8317e3381591ab8061e2959afdc259433d7116
+  - 7aa0ea7075432c1e46b4eab57ff9104fbc00a028b138ccff1c798409b938b18e
   sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Recall/folder.jpg
+  related_sha256: []
   sha256: a7302eed57b25cf1dc25dc6f6a449237df79cca20554bdaac79f6c9dc1572480

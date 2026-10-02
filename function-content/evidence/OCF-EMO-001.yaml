@@ -84,26 +84,40 @@ schema_version: '1.0'
 sources:
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Let-Go/Let Go.ocr.pdf
+  related_sha256: []
   sha256: 8bf6d770accd9f62ce662344046d5323c4e8a103c70773305958a8b2c819a2cf
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
   path: +Transcripts From available tapes/Let-Go/Let-Go.lrc
+  related_sha256:
+  - 0b014a2a25aa1709ceae480eb1856eb556f7c0e19ee0e4f3b35f973e7f63abcd
+  - 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
   sha256: 8ef7012ca56531b9524fcd2efd7963581b67cab3a9db10a70f8e648c2a1aeeb4
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
   path: +Transcripts From available tapes/Let-Go/Let-Go.srt
+  related_sha256:
+  - 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+  - 8ef7012ca56531b9524fcd2efd7963581b67cab3a9db10a70f8e648c2a1aeeb4
   sha256: 0b014a2a25aa1709ceae480eb1856eb556f7c0e19ee0e4f3b35f973e7f63abcd
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
   path: +Transcripts From available tapes/Let-Go/Let-Go.txt
+  related_sha256:
+  - 0b014a2a25aa1709ceae480eb1856eb556f7c0e19ee0e4f3b35f973e7f63abcd
+  - 8ef7012ca56531b9524fcd2efd7963581b67cab3a9db10a70f8e648c2a1aeeb4
   sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Let-Go/folder.jpg
+  related_sha256: []
   sha256: 0f5389c83bef4831b3be50a382cda341c657c217a0f151599811da8ce8272822

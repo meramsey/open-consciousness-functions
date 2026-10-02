@@ -84,20 +84,33 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
   path: +Transcripts From available tapes/Hypertension/Hypertension.lrc
+  related_sha256:
+  - 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+  - b05e079f3d957f2c7a14145218891288cc44eb7680363f7cade3e43a5010b291
   sha256: a0eb4bfc2df155db7fba48759a6983b49a5b25d3d9ea025c75b3c86a9d232df6
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
   path: +Transcripts From available tapes/Hypertension/Hypertension.srt
+  related_sha256:
+  - 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+  - a0eb4bfc2df155db7fba48759a6983b49a5b25d3d9ea025c75b3c86a9d232df6
   sha256: b05e079f3d957f2c7a14145218891288cc44eb7680363f7cade3e43a5010b291
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
   path: +Transcripts From available tapes/Hypertension/Hypertension.txt
+  related_sha256:
+  - a0eb4bfc2df155db7fba48759a6983b49a5b25d3d9ea025c75b3c86a9d232df6
+  - b05e079f3d957f2c7a14145218891288cc44eb7680363f7cade3e43a5010b291
   sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Hypertension/folder.jpg
+  related_sha256: []
   sha256: 573788e259f81399073d90833ab660024db496ef8a811ad58b244aeb66556f38

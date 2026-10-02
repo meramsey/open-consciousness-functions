@@ -72,25 +72,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
   path: +Transcripts From available tapes/Sleep/Sleep.lrc
+  related_sha256:
+  - 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+  - 2aca1f1992c9750dec96f009c1e468a74354c33045f89fc889bd00ec2b5ce236
   sha256: f60a3bb24203dcf4ba79f48ed5365a512b72f2dda84108ef3eb512be0d44a306
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Sleep/Sleep.ocr.pdf
+  related_sha256: []
   sha256: 192f4ad852e22a67a3057f6cff27e886c6c65f869f32923604d99154cf96b8d7
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
   path: +Transcripts From available tapes/Sleep/Sleep.srt
+  related_sha256:
+  - 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+  - f60a3bb24203dcf4ba79f48ed5365a512b72f2dda84108ef3eb512be0d44a306
   sha256: 2aca1f1992c9750dec96f009c1e468a74354c33045f89fc889bd00ec2b5ce236
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
   path: +Transcripts From available tapes/Sleep/Sleep.txt
+  related_sha256:
+  - 2aca1f1992c9750dec96f009c1e468a74354c33045f89fc889bd00ec2b5ce236
+  - f60a3bb24203dcf4ba79f48ed5365a512b72f2dda84108ef3eb512be0d44a306
   sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Sleep/folder.jpg
+  related_sha256: []
   sha256: 1f5d1f5c2ab8ddbfcc556be4abae873bf68e5bc377605fda417540239b284280

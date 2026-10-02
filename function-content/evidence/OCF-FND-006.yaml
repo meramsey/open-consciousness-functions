@@ -156,26 +156,33 @@ schema_version: '1.0'
 sources:
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: Release/Release.ocr.pdf
+  related_sha256: []
   sha256: 192e9d1aad9aa8366e2804116daafad4983e94ece2a0e0a288112cef5194164d
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: Release/Release_881002_README.md
+  related_sha256: []
   sha256: a9baf124428bfaeb4a807af30b867a69b3f20c1016e7f14152691293130341f1
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: e04d43c60b39278a0e49aef9ac4a9dc6992aa3231e757b50c8965c72d36b7af2
   path: Release/Release_881002_reconstructed_annotated.txt
+  related_sha256: []
   sha256: 22e30e36196a7ed181f67cbc37f77b3c7ef6bb9f3d0ee7b48d21e4422c6a262c
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: bb25bd97dedb5ecc65239f609cc0b8b936808c422edc7809dac2ea37d2b22e86
   path: Release/Release_881002_reconstructed_clean.txt
+  related_sha256: []
   sha256: 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: Release/Release_881002_reconstruction_notes.md
+  related_sha256: []
   sha256: 4dec89cbe07d25e5debbf6e72e27d5958151a47d41531099ffa7df93c6b95b52

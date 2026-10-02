@@ -85,30 +85,45 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
   path: +Transcripts From available tapes/Reset/Reset.lrc
+  related_sha256:
+  - 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+  - e797d342208474f4d3025f789032ff8251782447e62f60a9bc1f435205cb5289
   sha256: cbf2f89334e5618592c781f1b8b2460ebd9d35fe3dab800447e926c4f1fd292d
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Reset/Reset.ocr.pdf
+  related_sha256: []
   sha256: d333e6a7df2afaa0b25b89ad57fc1781dadda2902784a6d3b7f9744c27f84494
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
   path: +Transcripts From available tapes/Reset/Reset.srt
+  related_sha256:
+  - 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+  - cbf2f89334e5618592c781f1b8b2460ebd9d35fe3dab800447e926c4f1fd292d
   sha256: e797d342208474f4d3025f789032ff8251782447e62f60a9bc1f435205cb5289
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
   path: +Transcripts From available tapes/Reset/Reset.txt
+  related_sha256:
+  - cbf2f89334e5618592c781f1b8b2460ebd9d35fe3dab800447e926c4f1fd292d
+  - e797d342208474f4d3025f789032ff8251782447e62f60a9bc1f435205cb5289
   sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Reset/folder.jpg
+  related_sha256: []
   sha256: c2aaa9fb44cb10f12da629f91ad100c821b4602153f50b492fdf0b36c4e9286e
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Reset/release_info.nfo
+  related_sha256: []
   sha256: b619fc431674de901258ef88d8fcf8430873c3e2572459592dd37923918af6c0

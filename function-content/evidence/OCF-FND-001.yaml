@@ -48,20 +48,33 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
   path: +Transcripts From available tapes/Access to Energy/Access to Energy.lrc
+  related_sha256:
+  - 9069cc4073e3e71c7fca207e1ef73e7514109a270f23adda09aa13475f46feb2
+  - a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
   sha256: c04536fedd5eba592fda4a7cbc6d595b4668df6a663dd7f826aaa65f38837933
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
   path: +Transcripts From available tapes/Access to Energy/Access to Energy.srt
+  related_sha256:
+  - a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+  - c04536fedd5eba592fda4a7cbc6d595b4668df6a663dd7f826aaa65f38837933
   sha256: 9069cc4073e3e71c7fca207e1ef73e7514109a270f23adda09aa13475f46feb2
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
   path: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+  related_sha256:
+  - 9069cc4073e3e71c7fca207e1ef73e7514109a270f23adda09aa13475f46feb2
+  - c04536fedd5eba592fda4a7cbc6d595b4668df6a663dd7f826aaa65f38837933
   sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Access to Energy/folder.jpg
+  related_sha256: []
   sha256: dd4d869bce574585cf3cfb1dd54c24d933ee0427734f51c28cc12d45a64a3bb1

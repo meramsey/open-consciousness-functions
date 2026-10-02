@@ -60,25 +60,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
   path: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.lrc
+  related_sha256:
+  - 03d1aa45d604e86961decf2664b73a618d5baced3078fac39c0b193bc9b14187
+  - beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
   sha256: 0365b1af66862faca7a058bd4ae3c40dbc1755cbf381ced9f9057af5cd2f58fa
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.ocr.pdf
+  related_sha256: []
   sha256: 285396127215c2ca824be8d01ba58b62942a63118818b06ccf7497eef3226611
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
   path: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.srt
+  related_sha256:
+  - 0365b1af66862faca7a058bd4ae3c40dbc1755cbf381ced9f9057af5cd2f58fa
+  - beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
   sha256: 03d1aa45d604e86961decf2664b73a618d5baced3078fac39c0b193bc9b14187
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
   path: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+  related_sha256:
+  - 0365b1af66862faca7a058bd4ae3c40dbc1755cbf381ced9f9057af5cd2f58fa
+  - 03d1aa45d604e86961decf2664b73a618d5baced3078fac39c0b193bc9b14187
   sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Eat-No Eat/folder.jpg
+  related_sha256: []
   sha256: ecd0ac6cb831bfe77adf1245398db0cab01320097de7b2b395a6823f319b5ddd

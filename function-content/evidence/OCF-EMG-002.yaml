@@ -104,26 +104,33 @@ schema_version: '1.0'
 sources:
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: 'Emergency: Toxic/Emergency-Toxin.ocr.pdf'
+  related_sha256: []
   sha256: 0e38c9db39edd4263b8bebd8e5cc6e783944bf4ddb87b6a0ecbb7142fec4be7d
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: 'Emergency: Toxic/Emergency_Toxic_881041_README.md'
+  related_sha256: []
   sha256: 27c47d571894c6c040dabe8ba165d10311d8a2527b4640d5e9b2ca4f76967d67
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
   path: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+  related_sha256: []
   sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: d28d5a35f401c36a113437e940f5b235fb8373b2568a1a826305fb0d54e305c0
   path: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_clean.txt'
+  related_sha256: []
   sha256: 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: 'Emergency: Toxic/Emergency_Toxic_881041_reconstruction_notes.md'
+  related_sha256: []
   sha256: ef72dc8598738fdd21eedc580c344cf097498fd0454f9a4448946b1d565673ec

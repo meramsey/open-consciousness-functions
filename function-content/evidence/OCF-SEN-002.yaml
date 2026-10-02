@@ -77,25 +77,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
   path: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).lrc
+  related_sha256:
+  - 2dce03496fbc30b525dd04591bfa4cac6e784f17a90bd87934c5459c8c25f4d6
+  - 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
   sha256: ecfe6bc6c1d0a1831fa394e7cf589f68edd73766d76ae6aac0d12f2e7ec02b8e
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
   path: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).srt
+  related_sha256:
+  - 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+  - ecfe6bc6c1d0a1831fa394e7cf589f68edd73766d76ae6aac0d12f2e7ec02b8e
   sha256: 2dce03496fbc30b525dd04591bfa4cac6e784f17a90bd87934c5459c8c25f4d6
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
   path: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+  related_sha256:
+  - 2dce03496fbc30b525dd04591bfa4cac6e784f17a90bd87934c5459c8c25f4d6
+  - ecfe6bc6c1d0a1831fa394e7cf589f68edd73766d76ae6aac0d12f2e7ec02b8e
   sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Sensory (Seeing)/Sensory-Seeing.ocr.pdf
+  related_sha256: []
   sha256: 7e9246efc7174e4a7b385df2dd2b4957b43e707224d29e2d8f2ba1799aa7fbd8
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Sensory (Seeing)/folder.jpg
+  related_sha256: []
   sha256: 05b832a1fed0f90676f40182c3184e02fa35c242c49ef60da06364804a9473ab

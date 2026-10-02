@@ -90,25 +90,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
   path: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.lrc
+  related_sha256:
+  - 2c8c38d878302314618cc2005bb77e078ef068f7691da42f0ab36487a3935ac2
+  - 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
   sha256: 5c03fd2f1e9a3448de4b85255e5bb1e62ef7aae10d04e1b43a82b049d4aeb586
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.ocr.pdf
+  related_sha256: []
   sha256: cf049709e4d8488095567b5cfa89d4766f379f3718659a04eb65a7ad42508ddf
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
   path: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.srt
+  related_sha256:
+  - 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+  - 5c03fd2f1e9a3448de4b85255e5bb1e62ef7aae10d04e1b43a82b049d4aeb586
   sha256: 2c8c38d878302314618cc2005bb77e078ef068f7691da42f0ab36487a3935ac2
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
   path: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+  related_sha256:
+  - 2c8c38d878302314618cc2005bb77e078ef068f7691da42f0ab36487a3935ac2
+  - 5c03fd2f1e9a3448de4b85255e5bb1e62ef7aae10d04e1b43a82b049d4aeb586
   sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Sweet Dreams/folder.jpg
+  related_sha256: []
   sha256: 847d375cc5975eaed2a97e24906ad9c8a5aa55c70c709985c5a2c374bbf81c14

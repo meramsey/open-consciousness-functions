@@ -106,26 +106,33 @@ schema_version: '1.0'
 sources:
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: Light Foot/Light Foot.ocr.pdf
+  related_sha256: []
   sha256: 70f40710b84c5ce114061c065fb5d957f99ada7f1d343c6b3ff32ffac203bfa1
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: Light Foot/Light_Foot_881047_README.md
+  related_sha256: []
   sha256: eb709474c5eb4405e7d60e309d09740df91865e12ef161ea3b7088c7cfff34d9
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
   path: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+  related_sha256: []
   sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: 0979f0c7c66d487a91f56fa26606ecadc75bfd6251f0cca84d90361a01a0164b
   path: Light Foot/Light_Foot_881047_reconstructed_clean.txt
+  related_sha256: []
   sha256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: Light Foot/Light_Foot_881047_reconstruction_notes.md
+  related_sha256: []
   sha256: 522aeb90cfbe94e32f04f5411505876593c8569f0059f65121c74777e4abed1f

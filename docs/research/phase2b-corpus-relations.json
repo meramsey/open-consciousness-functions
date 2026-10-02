@@ -1,0 +1,3389 @@
+{
+  "schema_version": "1.0",
+  "method": "case-folded word sequence after format parsing; punctuation/layout ignored, never semantic or historical equivalence",
+  "files": [
+    {
+      "sha256": "c04536fedd5eba592fda4a7cbc6d595b4668df6a663dd7f826aaa65f38837933",
+      "path": "+Transcripts From available tapes/Access to Energy/Access to Energy.lrc",
+      "function_id": "OCF-FND-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "9069cc4073e3e71c7fca207e1ef73e7514109a270f23adda09aa13475f46feb2",
+      "path": "+Transcripts From available tapes/Access to Energy/Access to Energy.srt",
+      "function_id": "OCF-FND-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a",
+      "path": "+Transcripts From available tapes/Access to Energy/Access to Energy.txt",
+      "function_id": "OCF-FND-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "command_association",
+        "future_use",
+        "main",
+        "preparation"
+      ],
+      "word_count": 864
+    },
+    {
+      "sha256": "dd4d869bce574585cf3cfb1dd54c24d933ee0427734f51c28cc12d45a64a3bb1",
+      "path": "+Transcripts From available tapes/Access to Energy/folder.jpg",
+      "function_id": "OCF-FND-001",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "7414cbe861aa8d7e18df1da8d7607235df1b8f6968ac01ab18f085eb2d2ea735",
+      "path": "+Transcripts From available tapes/Access to Information/Access to Information.lrc",
+      "function_id": "OCF-COG-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "4ae2e83c07220e728061c0dc77a18caf1b0b3fb957e3c284af6f81998bf01177",
+      "path": "+Transcripts From available tapes/Access to Information/Access to Information.srt",
+      "function_id": "OCF-COG-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14",
+      "path": "+Transcripts From available tapes/Access to Information/Access to Information.txt",
+      "function_id": "OCF-COG-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "command_association",
+        "preparation"
+      ],
+      "word_count": 634
+    },
+    {
+      "sha256": "a5e61729221674dda386a98d06507d1a8867907150167c6e5838fe63a7250a96",
+      "path": "+Transcripts From available tapes/Access to Information/folder.jpg",
+      "function_id": "OCF-COG-001",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "f12e20c5ef3020bef08563ad305d5c34fac9e6285f85c4808fe12607da6f21b6",
+      "path": "+Transcripts From available tapes/Attention/Attention.lrc",
+      "function_id": "OCF-FND-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "7ead8c8f9df76d179810855f5e4c3f4b218b646dc6ecef7aaab98d32b056d96b",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "4247e474e015772b0af2328938bbcffae1ad15a44d089206b3c7654841909f71",
+      "path": "+Transcripts From available tapes/Attention/Attention.ocr.pdf",
+      "function_id": "OCF-FND-002",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "4521bc85e45926e66fd073988a54d39dbd1ad43a3c1a3f4255178917bcbc903d",
+      "path": "+Transcripts From available tapes/Attention/Attention.srt",
+      "function_id": "OCF-FND-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "7ead8c8f9df76d179810855f5e4c3f4b218b646dc6ecef7aaab98d32b056d96b",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5",
+      "path": "+Transcripts From available tapes/Attention/Attention.txt",
+      "function_id": "OCF-FND-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 923
+    },
+    {
+      "sha256": "e9e8b798868135365ea1702c699daf849c9e78f467ab3d89663f87d177e9f8e6",
+      "path": "+Transcripts From available tapes/Attention/folder.jpg",
+      "function_id": "OCF-FND-002",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "12b20436a846b122eb674d898b951c33abec542ba28cdd56003e1292d0bef839",
+      "path": "+Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.lrc",
+      "function_id": "OCF-BOD-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "86ef59aaa83ac888b5c3bc460c146433e592b91f50d31f4a41008a455fab4672",
+      "path": "+Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.srt",
+      "function_id": "OCF-BOD-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf",
+      "path": "+Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt",
+      "function_id": "OCF-BOD-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 1067
+    },
+    {
+      "sha256": "09d4245ba9ffd7c7dcc8951253fc5d5d58069dc2132442ad045bb55230e66c31",
+      "path": "+Transcripts From available tapes/Brain Support and Maintenance/Brain-Repair and Maintenance.ocr.pdf",
+      "function_id": "OCF-BOD-001",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "43966744aae274ca84941fb270546b3feef1ee8ceef477619782a1253c7849de",
+      "path": "+Transcripts From available tapes/Brain Support and Maintenance/folder.jpg",
+      "function_id": "OCF-BOD-001",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "5ba477f0677c7f988bc89c862347c7224188559ec2a6d1d1f523179e716efbeb",
+      "path": "+Transcripts From available tapes/Buy the Numbers/Buy the Numbers.lrc",
+      "function_id": "OCF-COG-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "6caa90e2c1fa97d6f96ef69f3025be71cfe8f5413cb7ab858dfd62f51958c2c2",
+      "path": "+Transcripts From available tapes/Buy the Numbers/Buy the Numbers.ocr.pdf",
+      "function_id": "OCF-COG-002",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "5a202fe66d9e16be0a2a8a4fd342921abfef44882e3e97b65ca45ce4776f5463",
+      "path": "+Transcripts From available tapes/Buy the Numbers/Buy the Numbers.srt",
+      "function_id": "OCF-COG-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b",
+      "path": "+Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt",
+      "function_id": "OCF-COG-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation"
+      ],
+      "word_count": 817
+    },
+    {
+      "sha256": "7113b7fdfdcdaa4f6327ed2dbfcdabc11807a5aad4ec8b2e7400a6cc7e1dba31",
+      "path": "+Transcripts From available tapes/Buy the Numbers/folder.jpg",
+      "function_id": "OCF-COG-002",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "6870bbc82f1a88a7629f46dbe7d27318a9d1d1020c7ab91922ec1bb73af12789",
+      "path": "+Transcripts From available tapes/Circulation/Circulation.lrc",
+      "function_id": "OCF-BOD-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "6257b40548e0d92605adad0589e0b07234939e43e50120c589a3201f3995924e",
+      "path": "+Transcripts From available tapes/Circulation/Circulation.ocr.pdf",
+      "function_id": "OCF-BOD-002",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "d6becaaf9d35b5480a5a937c4fed757feb8016d15123f052bf644313d46bbdb1",
+      "path": "+Transcripts From available tapes/Circulation/Circulation.srt",
+      "function_id": "OCF-BOD-002",
+      "evidence_class": "partial_source_transcript",
+      "content_sha256": "5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38",
+      "path": "+Transcripts From available tapes/Circulation/Circulation.txt",
+      "function_id": "OCF-BOD-002",
+      "evidence_class": "partial_source_transcript",
+      "content_sha256": "5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 1092
+    },
+    {
+      "sha256": "e6ec4255bc06e362a2419e410bf5a1c71752973c7d1d23681bf214795e152853",
+      "path": "+Transcripts From available tapes/Circulation/folder.jpg",
+      "function_id": "OCF-BOD-002",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "180e3e396b4a9cad876f31fffb6ecac190affe2e41404a68a903b289efb5e983",
+      "path": "+Transcripts From available tapes/Contemplation/Contemplation.lrc",
+      "function_id": "OCF-COG-003",
+      "evidence_class": "source_transcript",
+      "content_sha256": "469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "9216c8866fb002b76f55a4f84d68824100b5ab2075640eccc6aba9270dae76de",
+      "path": "+Transcripts From available tapes/Contemplation/Contemplation.ocr.pdf",
+      "function_id": "OCF-COG-003",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "92c459fe6011833dc9a82c405330201c58edb52d24abf02d060ce97c07bc57c0",
+      "path": "+Transcripts From available tapes/Contemplation/Contemplation.srt",
+      "function_id": "OCF-COG-003",
+      "evidence_class": "source_transcript",
+      "content_sha256": "469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d",
+      "path": "+Transcripts From available tapes/Contemplation/Contemplation.txt",
+      "function_id": "OCF-COG-003",
+      "evidence_class": "source_transcript",
+      "content_sha256": "469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 966
+    },
+    {
+      "sha256": "5cb49051aab363fd73b8e8fb6648222a9822bdb0bf1b2f6c640fa0b13e900c36",
+      "path": "+Transcripts From available tapes/Contemplation/folder.jpg",
+      "function_id": "OCF-COG-003",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "44eba0dc46a9eff52887ed6c2b806664502cb64a4e136c35ea4a47ab8befc203",
+      "path": "+Transcripts From available tapes/De-Discomfort/De-Discomfort.lrc",
+      "function_id": "OCF-BOD-003",
+      "evidence_class": "source_transcript",
+      "content_sha256": "3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "746b224e70f1ea4fa1216662ec3b59d0c521404bf40f26753f9642f05e137a0b",
+      "path": "+Transcripts From available tapes/De-Discomfort/De-Discomfort.ocr.pdf",
+      "function_id": "OCF-BOD-003",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "1b46619ad21f3ebb55c382c75da200416050fd0273f282c8bab1c468f201448e",
+      "path": "+Transcripts From available tapes/De-Discomfort/De-Discomfort.srt",
+      "function_id": "OCF-BOD-003",
+      "evidence_class": "source_transcript",
+      "content_sha256": "3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae",
+      "path": "+Transcripts From available tapes/De-Discomfort/De-Discomfort.txt",
+      "function_id": "OCF-BOD-003",
+      "evidence_class": "source_transcript",
+      "content_sha256": "3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 996
+    },
+    {
+      "sha256": "97bff944c0bb6552284ff4310458fb85f6bf9ae4b3147798ac0fb58995b730ca",
+      "path": "+Transcripts From available tapes/De-Discomfort/folder.jpg",
+      "function_id": "OCF-BOD-003",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "0e36818885f96ee26386c08f34b78c33597b246f8b2b83de5490be9cc5ecfff8",
+      "path": "+Transcripts From available tapes/De-Hab/De-Hab.lrc",
+      "function_id": "OCF-LIF-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "6bf70de4cd63ff17efaf730f54f9fd8dbea205fdb3da554aa24fcdcdb4ea5d14",
+      "path": "+Transcripts From available tapes/De-Hab/De-Hab.ocr.pdf",
+      "function_id": "OCF-LIF-001",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "bea2d2791d0b885e6368540b6f9038ae8a2410cb07604f21cd52631c87ef963d",
+      "path": "+Transcripts From available tapes/De-Hab/De-Hab.srt",
+      "function_id": "OCF-LIF-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6",
+      "path": "+Transcripts From available tapes/De-Hab/De-Hab.txt",
+      "function_id": "OCF-LIF-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 1149
+    },
+    {
+      "sha256": "0cd01a8acab3e191103e78941b56fbcc658a3c09838b3e7e3f83c9d575f8498e",
+      "path": "+Transcripts From available tapes/De-Hab/folder.jpg",
+      "function_id": "OCF-LIF-001",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "afb55ad44396eb21d51fac0ec8477b623b0ef57823e2d571acf03735a2264255",
+      "path": "+Transcripts From available tapes/De-Tox Body/De-Tox - Body.ocr.pdf",
+      "function_id": "OCF-BOD-004",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "4a6423be9ac6cee29466049f0d12c89f8e69cf7343bf7e180334031aa35c2244",
+      "path": "+Transcripts From available tapes/De-Tox Body/De-Tox Body.lrc",
+      "function_id": "OCF-BOD-004",
+      "evidence_class": "source_transcript",
+      "content_sha256": "f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "54cdd690b3e51711a8447ae32dbaa9d4e687ebd1a30a983886ea78ab684e8e5f",
+      "path": "+Transcripts From available tapes/De-Tox Body/De-Tox Body.srt",
+      "function_id": "OCF-BOD-004",
+      "evidence_class": "partial_source_transcript",
+      "content_sha256": "f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc",
+      "path": "+Transcripts From available tapes/De-Tox Body/De-Tox Body.txt",
+      "function_id": "OCF-BOD-004",
+      "evidence_class": "partial_source_transcript",
+      "content_sha256": "f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation"
+      ],
+      "word_count": 789
+    },
+    {
+      "sha256": "a4a148355e370f9f1ae3e81c9db20651cefda7aa3068af78df624e64587c32c0",
+      "path": "+Transcripts From available tapes/De-Tox Body/folder.jpg",
+      "function_id": "OCF-BOD-004",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "cc67f9a04b676b74deb4e9e86b11c2df0118182adb73ffc03c8e262a16b80902",
+      "path": "+Transcripts From available tapes/Do This Now/Do This Now.lrc",
+      "function_id": "OCF-PRF-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "2ca81bc8f759708d6a5267ff8ddd8090828657338ec5cfc142c12a60394fa646",
+      "path": "+Transcripts From available tapes/Do This Now/Do This Now.srt",
+      "function_id": "OCF-PRF-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2",
+      "path": "+Transcripts From available tapes/Do This Now/Do This Now.txt",
+      "function_id": "OCF-PRF-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "future_use",
+        "preparation"
+      ],
+      "word_count": 1113
+    },
+    {
+      "sha256": "97ade0be6832b1472566c555d66fbb3f8c8e1fada0d050dcb7dc6b915a007abd",
+      "path": "+Transcripts From available tapes/Do This Now/folder.jpg",
+      "function_id": "OCF-PRF-001",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "0365b1af66862faca7a058bd4ae3c40dbc1755cbf381ced9f9057af5cd2f58fa",
+      "path": "+Transcripts From available tapes/Eat-No Eat/Eat-No Eat.lrc",
+      "function_id": "OCF-BOD-005",
+      "evidence_class": "source_transcript",
+      "content_sha256": "98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "285396127215c2ca824be8d01ba58b62942a63118818b06ccf7497eef3226611",
+      "path": "+Transcripts From available tapes/Eat-No Eat/Eat-No Eat.ocr.pdf",
+      "function_id": "OCF-BOD-005",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "03d1aa45d604e86961decf2664b73a618d5baced3078fac39c0b193bc9b14187",
+      "path": "+Transcripts From available tapes/Eat-No Eat/Eat-No Eat.srt",
+      "function_id": "OCF-BOD-005",
+      "evidence_class": "source_transcript",
+      "content_sha256": "98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9",
+      "path": "+Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt",
+      "function_id": "OCF-BOD-005",
+      "evidence_class": "source_transcript",
+      "content_sha256": "98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 719
+    },
+    {
+      "sha256": "ecd0ac6cb831bfe77adf1245398db0cab01320097de7b2b395a6823f319b5ddd",
+      "path": "+Transcripts From available tapes/Eat-No Eat/folder.jpg",
+      "function_id": "OCF-BOD-005",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "cdf2d2b43c4ad16b5212fa77083d4808a639061419d84a24a7c6c19f801428ea",
+      "path": "+Transcripts From available tapes/Eight-Great/Eight-Great.lrc",
+      "function_id": "OCF-PRF-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "defa97c8964de539965d3ab973114d7fa2da57542ceca5e975707fee3b740986",
+      "path": "+Transcripts From available tapes/Eight-Great/Eight-Great.ocr.pdf",
+      "function_id": "OCF-PRF-002",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "2a28498bfc332ec1eb83164795be43324bdc4fa02596ef7d019bcce4b24a48de",
+      "path": "+Transcripts From available tapes/Eight-Great/Eight-Great.srt",
+      "function_id": "OCF-PRF-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f",
+      "path": "+Transcripts From available tapes/Eight-Great/Eight-Great.txt",
+      "function_id": "OCF-PRF-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 1004
+    },
+    {
+      "sha256": "f75d6a65f728de08acf24770e8e9423de8e61617e44fa36dc6368aa8a0bb4852",
+      "path": "+Transcripts From available tapes/Eight-Great/folder.jpg",
+      "function_id": "OCF-PRF-002",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "c1b9a96b3937424418549aa7f21d46292a71b7ad86268bbe1c6fd23d2f8752cf",
+      "path": "+Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.lrc",
+      "function_id": "OCF-BOD-006",
+      "evidence_class": "source_transcript",
+      "content_sha256": "0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "d654bd10b2f6cc6ea2d326525d0d5077bda4f06ea3ed1cb3e64fbd1365d33e12",
+      "path": "+Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.ocr.pdf",
+      "function_id": "OCF-BOD-006",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "d6341565f0520b52fcadf007710771b3f025ba960541a7454e76d8f66c59aedc",
+      "path": "+Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.srt",
+      "function_id": "OCF-BOD-006",
+      "evidence_class": "source_transcript",
+      "content_sha256": "0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31",
+      "path": "+Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt",
+      "function_id": "OCF-BOD-006",
+      "evidence_class": "source_transcript",
+      "content_sha256": "0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 1014
+    },
+    {
+      "sha256": "af27a7c98ffe3e7f9802f081d51db9490ea51ef2942eb3311bfa0fec3831e45d",
+      "path": "+Transcripts From available tapes/Heart Support and Maintenance/folder.jpg",
+      "function_id": "OCF-BOD-006",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "a0eb4bfc2df155db7fba48759a6983b49a5b25d3d9ea025c75b3c86a9d232df6",
+      "path": "+Transcripts From available tapes/Hypertension/Hypertension.lrc",
+      "function_id": "OCF-BOD-007",
+      "evidence_class": "source_transcript",
+      "content_sha256": "6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "b05e079f3d957f2c7a14145218891288cc44eb7680363f7cade3e43a5010b291",
+      "path": "+Transcripts From available tapes/Hypertension/Hypertension.srt",
+      "function_id": "OCF-BOD-007",
+      "evidence_class": "source_transcript",
+      "content_sha256": "6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a",
+      "path": "+Transcripts From available tapes/Hypertension/Hypertension.txt",
+      "function_id": "OCF-BOD-007",
+      "evidence_class": "source_transcript",
+      "content_sha256": "6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 1236
+    },
+    {
+      "sha256": "573788e259f81399073d90833ab660024db496ef8a811ad58b244aeb66556f38",
+      "path": "+Transcripts From available tapes/Hypertension/folder.jpg",
+      "function_id": "OCF-BOD-007",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "906b2271a6ad38971daef683fccc87c4294d0906ed6335653e15a1c84887b17c",
+      "path": "+Transcripts From available tapes/Immunizing/Immunizing.lrc",
+      "function_id": "OCF-BOD-008",
+      "evidence_class": "source_transcript",
+      "content_sha256": "e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "391ef98a568caef41ffcf9ea7bc321a2089cd5c51d73f4d050ce14464a3b53be",
+      "path": "+Transcripts From available tapes/Immunizing/Immunizing.ocr.pdf",
+      "function_id": "OCF-BOD-008",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "0ed530a1ec99cd14dfd4950e86c2a9f77c78a876d8a9a8e7ec2130f143b028ec",
+      "path": "+Transcripts From available tapes/Immunizing/Immunizing.srt",
+      "function_id": "OCF-BOD-008",
+      "evidence_class": "source_transcript",
+      "content_sha256": "e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4",
+      "path": "+Transcripts From available tapes/Immunizing/Immunizing.txt",
+      "function_id": "OCF-BOD-008",
+      "evidence_class": "source_transcript",
+      "content_sha256": "e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 873
+    },
+    {
+      "sha256": "5e406b0cd5869af4af59d6b0f42e03a3879a956f38900648a1890b41bcc69d5c",
+      "path": "+Transcripts From available tapes/Immunizing/folder.jpg",
+      "function_id": "OCF-BOD-008",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "ea49f015655c7f3dfadcfc8737dc546d66db50a597918d693f42689ba44dc4f8",
+      "path": "+Transcripts From available tapes/Immunizing/release_info.nfo",
+      "function_id": "OCF-BOD-008",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "97133fe82cd64df199750e2b7331d468b02dcff2c7e740a4dbc27ad80fbd899f",
+      "path": "+Transcripts From available tapes/Imprint/Imprint.lrc",
+      "function_id": "OCF-COG-004",
+      "evidence_class": "source_transcript",
+      "content_sha256": "9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "7e82dd7172c41ccb219970dd598486825868b590b22a3cd926301856b60d05d8",
+      "path": "+Transcripts From available tapes/Imprint/Imprint.ocr.pdf",
+      "function_id": "OCF-COG-004",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "ab8de4e160d2ac2c511e5f486fc1097a873e94fd9a9f8908aef1edb90684852d",
+      "path": "+Transcripts From available tapes/Imprint/Imprint.srt",
+      "function_id": "OCF-COG-004",
+      "evidence_class": "source_transcript",
+      "content_sha256": "9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9",
+      "path": "+Transcripts From available tapes/Imprint/Imprint.txt",
+      "function_id": "OCF-COG-004",
+      "evidence_class": "source_transcript",
+      "content_sha256": "9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 934
+    },
+    {
+      "sha256": "9d96aacfaf9283e0df265fe2919a8449ebe4fd3257456043dc8b446841989500",
+      "path": "+Transcripts From available tapes/Imprint/folder.jpg",
+      "function_id": "OCF-COG-004",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "8bf6d770accd9f62ce662344046d5323c4e8a103c70773305958a8b2c819a2cf",
+      "path": "+Transcripts From available tapes/Let-Go/Let Go.ocr.pdf",
+      "function_id": "OCF-EMO-001",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "8ef7012ca56531b9524fcd2efd7963581b67cab3a9db10a70f8e648c2a1aeeb4",
+      "path": "+Transcripts From available tapes/Let-Go/Let-Go.lrc",
+      "function_id": "OCF-EMO-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "0b014a2a25aa1709ceae480eb1856eb556f7c0e19ee0e4f3b35f973e7f63abcd",
+      "path": "+Transcripts From available tapes/Let-Go/Let-Go.srt",
+      "function_id": "OCF-EMO-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9",
+      "path": "+Transcripts From available tapes/Let-Go/Let-Go.txt",
+      "function_id": "OCF-EMO-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 994
+    },
+    {
+      "sha256": "0f5389c83bef4831b3be50a382cda341c657c217a0f151599811da8ce8272822",
+      "path": "+Transcripts From available tapes/Let-Go/folder.jpg",
+      "function_id": "OCF-EMO-001",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "9071bddef2bad2136923e783c2e0e319f22ab2f5f26fcc5f10daf141aaab2ccf",
+      "path": "+Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.lrc",
+      "function_id": "OCF-BOD-009",
+      "evidence_class": "source_transcript",
+      "content_sha256": "5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "35826c5d3642b6759099b2809399f118dbcf9e88135a20c326d87135b80f5a19",
+      "path": "+Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.ocr.pdf",
+      "function_id": "OCF-BOD-009",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "f2c55427d6d91153c1bc29410429c5bca5cf9df61b655bb9b3a6eafb7197047b",
+      "path": "+Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.srt",
+      "function_id": "OCF-BOD-009",
+      "evidence_class": "partial_source_transcript",
+      "content_sha256": "5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87",
+      "path": "+Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt",
+      "function_id": "OCF-BOD-009",
+      "evidence_class": "partial_source_transcript",
+      "content_sha256": "5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 1062
+    },
+    {
+      "sha256": "e2c1882797ac25de7e6cb1d5a9cc8674a231c8a1dd945526b17dfa505cad9a29",
+      "path": "+Transcripts From available tapes/Lung Support and Maintenance/folder.jpg",
+      "function_id": "OCF-BOD-009",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "9a4611e8df6066bbf7a3e6fde5a56a35a0cefaac3a15e63aafe97ad99371b86e",
+      "path": "+Transcripts From available tapes/Möbius West/Moebius West.ocr.pdf",
+      "function_id": "OCF-EXP-001",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "ff2b4b3db8606e96e591c88bccc41a95ba439f53bb384e453d6ba65384045e06",
+      "path": "+Transcripts From available tapes/Möbius West/Möbius West.lrc",
+      "function_id": "OCF-EXP-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "cf5ee3c1fad7e9c4f4def8d27d06c4e689bb611c6d4c37bdbb50532d42c73fd0",
+      "path": "+Transcripts From available tapes/Möbius West/Möbius West.srt",
+      "function_id": "OCF-EXP-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78",
+      "path": "+Transcripts From available tapes/Möbius West/Möbius West.txt",
+      "function_id": "OCF-EXP-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 983
+    },
+    {
+      "sha256": "c35a25b6ae30e756b996c2b1a2388fb8fd4f9d46846aee075b067639fd3112be",
+      "path": "+Transcripts From available tapes/Möbius West/folder.jpg",
+      "function_id": "OCF-EXP-001",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "20d515d74eddaa25f957c96fb9839c990c261709879ff1b58b7ff4232b1c82ae",
+      "path": "+Transcripts From available tapes/Nutricia/Nutricia.lrc",
+      "function_id": "OCF-BOD-010",
+      "evidence_class": "source_transcript",
+      "content_sha256": "a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "285d226e3a57f6988003d70a30fa145c92ee628d6f4f99b2609efb960035f45e",
+      "path": "+Transcripts From available tapes/Nutricia/Nutricia.ocr.pdf",
+      "function_id": "OCF-BOD-010",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "17226b5e7ec35c4a7f771f090b6a2f8c2ec9d771706324ec9ec163b86c2c53db",
+      "path": "+Transcripts From available tapes/Nutricia/Nutricia.srt",
+      "function_id": "OCF-BOD-010",
+      "evidence_class": "source_transcript",
+      "content_sha256": "a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6",
+      "path": "+Transcripts From available tapes/Nutricia/Nutricia.txt",
+      "function_id": "OCF-BOD-010",
+      "evidence_class": "source_transcript",
+      "content_sha256": "a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 1132
+    },
+    {
+      "sha256": "6caa9ac63c8118466ef96f9ae7f0f5d143da7df2b467a79517a2afcda9835cd6",
+      "path": "+Transcripts From available tapes/Nutricia/folder.jpg",
+      "function_id": "OCF-BOD-010",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "0f5c7bc3f86461f9c0bd7a72d5975f249f7f4757c2b211d572728b33abf21c20",
+      "path": "+Transcripts From available tapes/Off-Loading/Off-Loading.lrc",
+      "function_id": "OCF-EMO-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "63134e9f492167ba923da1487083009fad73053559dbf40101b798c908bd9f16",
+      "path": "+Transcripts From available tapes/Off-Loading/Off-Loading.ocr.pdf",
+      "function_id": "OCF-EMO-002",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "75a9a3f961cbb11c3525deea765942bedafb0af332f8508bf5aa47c37b21a585",
+      "path": "+Transcripts From available tapes/Off-Loading/Off-Loading.srt",
+      "function_id": "OCF-EMO-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48",
+      "path": "+Transcripts From available tapes/Off-Loading/Off-Loading.txt",
+      "function_id": "OCF-EMO-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 921
+    },
+    {
+      "sha256": "e012e6f566709aa99bb1cc816ce9039361ae0ec1eaa623dfdb1229cc04815768",
+      "path": "+Transcripts From available tapes/Off-Loading/folder.jpg",
+      "function_id": "OCF-EMO-002",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "8bab079e156d915ee13677ca878fbcef17141a5417d30c3b324bc816e3fe546a",
+      "path": "+Transcripts From available tapes/Options/Options.lrc",
+      "function_id": "OCF-COG-005",
+      "evidence_class": "source_transcript",
+      "content_sha256": "c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "18e573515cd1cde9cbea27a7a64a0d4fd7e01ddb3160f19991b4bc9055352cb3",
+      "path": "+Transcripts From available tapes/Options/Options.ocr.pdf",
+      "function_id": "OCF-COG-005",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "7e53c471ec9a9965bf07fd27acf21c3c0879cafeb5af9553d3424f06c603ec65",
+      "path": "+Transcripts From available tapes/Options/Options.srt",
+      "function_id": "OCF-COG-005",
+      "evidence_class": "partial_source_transcript",
+      "content_sha256": "c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195",
+      "path": "+Transcripts From available tapes/Options/Options.txt",
+      "function_id": "OCF-COG-005",
+      "evidence_class": "partial_source_transcript",
+      "content_sha256": "c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 950
+    },
+    {
+      "sha256": "cf943b4b7bcb8a3d821d38d4f4d0270bf0b45859feb08b38db501b486af3a7c1",
+      "path": "+Transcripts From available tapes/Options/folder.jpg",
+      "function_id": "OCF-COG-005",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "1be14d7210af703f0ccadf16802253399540cfac3bb0f64a8a5b68f5c7123b03",
+      "path": "+Transcripts From available tapes/Passages/Passages.lrc",
+      "function_id": "OCF-BOD-011",
+      "evidence_class": "source_transcript",
+      "content_sha256": "71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "5e62b5d2207e4507b13bcba6911685c64643b4ab5e4b99b2863d233dbb3d4e85",
+      "path": "+Transcripts From available tapes/Passages/Passages.srt",
+      "function_id": "OCF-BOD-011",
+      "evidence_class": "source_transcript",
+      "content_sha256": "71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88",
+      "path": "+Transcripts From available tapes/Passages/Passages.txt",
+      "function_id": "OCF-BOD-011",
+      "evidence_class": "source_transcript",
+      "content_sha256": "71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "preparation",
+        "return"
+      ],
+      "word_count": 1304
+    },
+    {
+      "sha256": "e7df09f56add830d7e44044d6214da954ee354d7315153b2fe415db397698683",
+      "path": "+Transcripts From available tapes/Passages/folder.jpg",
+      "function_id": "OCF-BOD-011",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "7aa0ea7075432c1e46b4eab57ff9104fbc00a028b138ccff1c798409b938b18e",
+      "path": "+Transcripts From available tapes/Recall/Recall.lrc",
+      "function_id": "OCF-COG-006",
+      "evidence_class": "source_transcript",
+      "content_sha256": "442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "82f3ce302167d33f146f09b6ff42cc95e94adc5d65894c7d5edd780093582339",
+      "path": "+Transcripts From available tapes/Recall/Recall.ocr.pdf",
+      "function_id": "OCF-COG-006",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "7788c429c68a7f67c60c2a009b8317e3381591ab8061e2959afdc259433d7116",
+      "path": "+Transcripts From available tapes/Recall/Recall.srt",
+      "function_id": "OCF-COG-006",
+      "evidence_class": "partial_source_transcript",
+      "content_sha256": "442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3",
+      "path": "+Transcripts From available tapes/Recall/Recall.txt",
+      "function_id": "OCF-COG-006",
+      "evidence_class": "partial_source_transcript",
+      "content_sha256": "442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation"
+      ],
+      "word_count": 843
+    },
+    {
+      "sha256": "a7302eed57b25cf1dc25dc6f6a449237df79cca20554bdaac79f6c9dc1572480",
+      "path": "+Transcripts From available tapes/Recall/folder.jpg",
+      "function_id": "OCF-COG-006",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "0080e866dc5a36589bc5fb1f0518e424074081e2236fb06ae66f26b4213ce543",
+      "path": "+Transcripts From available tapes/Recharge/Recharge.lrc",
+      "function_id": "OCF-FND-003",
+      "evidence_class": "source_transcript",
+      "content_sha256": "57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "2ce14ddb74a4d1fdbcc50a134ac69ea949aa1a090bcb4c52de0349b5f5079f61",
+      "path": "+Transcripts From available tapes/Recharge/Recharge.ocr.pdf",
+      "function_id": "OCF-FND-003",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "4e74e767c817e7913083508eb62ba8c48737cbad959007c84b747ee40ed844c0",
+      "path": "+Transcripts From available tapes/Recharge/Recharge.srt",
+      "function_id": "OCF-FND-003",
+      "evidence_class": "source_transcript",
+      "content_sha256": "57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4",
+      "path": "+Transcripts From available tapes/Recharge/Recharge.txt",
+      "function_id": "OCF-FND-003",
+      "evidence_class": "source_transcript",
+      "content_sha256": "57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 963
+    },
+    {
+      "sha256": "3e1b9d3d5997a0e6bbef00dd78f02945eea64ab1b41e24367b9e98c4ceb2a77b",
+      "path": "+Transcripts From available tapes/Recharge/folder.jpg",
+      "function_id": "OCF-FND-003",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "f1ac45a76aa43a7647b9fe83033bc04d6b97cf616885bcea18efa827dec8d2fb",
+      "path": "+Transcripts From available tapes/Relax/Relax.lrc",
+      "function_id": "OCF-FND-004",
+      "evidence_class": "source_transcript",
+      "content_sha256": "592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "ce6de3e5dbba2cf93626da37e4157303caca345953d0990b5f21504a469a41e6",
+      "path": "+Transcripts From available tapes/Relax/Relax.ocr.pdf",
+      "function_id": "OCF-FND-004",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "ceb0f64951e935652c198bdd436b8aa8322f296625aaa38779fc0638964b30c4",
+      "path": "+Transcripts From available tapes/Relax/Relax.srt",
+      "function_id": "OCF-FND-004",
+      "evidence_class": "source_transcript",
+      "content_sha256": "592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209",
+      "path": "+Transcripts From available tapes/Relax/Relax.txt",
+      "function_id": "OCF-FND-004",
+      "evidence_class": "source_transcript",
+      "content_sha256": "592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 1241
+    },
+    {
+      "sha256": "2dafabac162157573f5e6dd81885562368c2115e8e6f9244cf353223a6c0c081",
+      "path": "+Transcripts From available tapes/Relax/folder.jpg",
+      "function_id": "OCF-FND-004",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "cbf2f89334e5618592c781f1b8b2460ebd9d35fe3dab800447e926c4f1fd292d",
+      "path": "+Transcripts From available tapes/Reset/Reset.lrc",
+      "function_id": "OCF-FND-005",
+      "evidence_class": "source_transcript",
+      "content_sha256": "be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "d333e6a7df2afaa0b25b89ad57fc1781dadda2902784a6d3b7f9744c27f84494",
+      "path": "+Transcripts From available tapes/Reset/Reset.ocr.pdf",
+      "function_id": "OCF-FND-005",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "e797d342208474f4d3025f789032ff8251782447e62f60a9bc1f435205cb5289",
+      "path": "+Transcripts From available tapes/Reset/Reset.srt",
+      "function_id": "OCF-FND-005",
+      "evidence_class": "source_transcript",
+      "content_sha256": "be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2",
+      "path": "+Transcripts From available tapes/Reset/Reset.txt",
+      "function_id": "OCF-FND-005",
+      "evidence_class": "source_transcript",
+      "content_sha256": "be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 916
+    },
+    {
+      "sha256": "c2aaa9fb44cb10f12da629f91ad100c821b4602153f50b492fdf0b36c4e9286e",
+      "path": "+Transcripts From available tapes/Reset/folder.jpg",
+      "function_id": "OCF-FND-005",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "b619fc431674de901258ef88d8fcf8430873c3e2572459592dd37923918af6c0",
+      "path": "+Transcripts From available tapes/Reset/release_info.nfo",
+      "function_id": "OCF-FND-005",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "85c661baeb865f229d8c5ad1bdda074253652573fba23b6a900c94f285606701",
+      "path": "+Transcripts From available tapes/Restorative Sleep/Restorative Sleep.lrc",
+      "function_id": "OCF-SLP-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "53eda45365d92bb4cb5adb600c860503c32ee71e590b59a7848d48ea6ce00924",
+      "path": "+Transcripts From available tapes/Restorative Sleep/Restorative Sleep.ocr.pdf",
+      "function_id": "OCF-SLP-001",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "87159852728cc959461f68b48bfe248023a9426dda2693c967cf20790a06b25b",
+      "path": "+Transcripts From available tapes/Restorative Sleep/Restorative Sleep.srt",
+      "function_id": "OCF-SLP-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411",
+      "path": "+Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt",
+      "function_id": "OCF-SLP-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 896
+    },
+    {
+      "sha256": "7c770cc9c1ea5ec8042ac3eeed6dc6d2cb7fb3dbf91fb7273c2e6eabb4601ae3",
+      "path": "+Transcripts From available tapes/Restorative Sleep/folder.jpg",
+      "function_id": "OCF-SLP-001",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "1928511754326b06c12b02e48a2cd7d692ac17397bb3a95ff8e49742561b4779",
+      "path": "+Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).lrc",
+      "function_id": "OCF-SEN-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "29a06bb1920f96537f77a6f769877e2f41c59ef9d8798ba12aa6fee6c7794894",
+      "path": "+Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).srt",
+      "function_id": "OCF-SEN-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e",
+      "path": "+Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt",
+      "function_id": "OCF-SEN-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 870
+    },
+    {
+      "sha256": "375444ca4c16e6f05be2bb434f8ae288ac6ad7c15967675d9ea82d5a29a116d5",
+      "path": "+Transcripts From available tapes/Sensory (Hearing)/Sensory-Hearing.ocr.pdf",
+      "function_id": "OCF-SEN-001",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "593ee57ebb28f4b2a0c0a0b7d504e6d07cfcd28bed1cd2dd57e94a21400b4fe9",
+      "path": "+Transcripts From available tapes/Sensory (Hearing)/folder.jpg",
+      "function_id": "OCF-SEN-001",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "ecfe6bc6c1d0a1831fa394e7cf589f68edd73766d76ae6aac0d12f2e7ec02b8e",
+      "path": "+Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).lrc",
+      "function_id": "OCF-SEN-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "2dce03496fbc30b525dd04591bfa4cac6e784f17a90bd87934c5459c8c25f4d6",
+      "path": "+Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).srt",
+      "function_id": "OCF-SEN-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c",
+      "path": "+Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt",
+      "function_id": "OCF-SEN-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 984
+    },
+    {
+      "sha256": "7e9246efc7174e4a7b385df2dd2b4957b43e707224d29e2d8f2ba1799aa7fbd8",
+      "path": "+Transcripts From available tapes/Sensory (Seeing)/Sensory-Seeing.ocr.pdf",
+      "function_id": "OCF-SEN-002",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "05b832a1fed0f90676f40182c3184e02fa35c242c49ef60da06364804a9473ab",
+      "path": "+Transcripts From available tapes/Sensory (Seeing)/folder.jpg",
+      "function_id": "OCF-SEN-002",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "a3dba2ba552b5ceb2945e43577710d348470863c6bfa5c496cbb67b6390d9b02",
+      "path": "+Transcripts From available tapes/Sex Drive/Sex Drive.lrc",
+      "function_id": "OCF-BOD-012",
+      "evidence_class": "source_transcript",
+      "content_sha256": "53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "7519222764a2be252dc6614ec73cfcf26c5a370d3c49ca95bab22245ba0f5f5d",
+      "path": "+Transcripts From available tapes/Sex Drive/Sex Drive.ocr.pdf",
+      "function_id": "OCF-BOD-012",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "a325b3a03869ad8467931aa62a4dcd9dbb0d09f2dd49e8296b543bd6e4110530",
+      "path": "+Transcripts From available tapes/Sex Drive/Sex Drive.srt",
+      "function_id": "OCF-BOD-012",
+      "evidence_class": "source_transcript",
+      "content_sha256": "53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76",
+      "path": "+Transcripts From available tapes/Sex Drive/Sex Drive.txt",
+      "function_id": "OCF-BOD-012",
+      "evidence_class": "source_transcript",
+      "content_sha256": "53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 1001
+    },
+    {
+      "sha256": "34f6554b760e8ca33b1c2ae10eac8b1056cfc0e7213452816a07118cf5bd731c",
+      "path": "+Transcripts From available tapes/Sex Drive/folder.jpg",
+      "function_id": "OCF-BOD-012",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "f60a3bb24203dcf4ba79f48ed5365a512b72f2dda84108ef3eb512be0d44a306",
+      "path": "+Transcripts From available tapes/Sleep/Sleep.lrc",
+      "function_id": "OCF-SLP-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "192f4ad852e22a67a3057f6cff27e886c6c65f869f32923604d99154cf96b8d7",
+      "path": "+Transcripts From available tapes/Sleep/Sleep.ocr.pdf",
+      "function_id": "OCF-SLP-002",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "2aca1f1992c9750dec96f009c1e468a74354c33045f89fc889bd00ec2b5ce236",
+      "path": "+Transcripts From available tapes/Sleep/Sleep.srt",
+      "function_id": "OCF-SLP-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd",
+      "path": "+Transcripts From available tapes/Sleep/Sleep.txt",
+      "function_id": "OCF-SLP-002",
+      "evidence_class": "source_transcript",
+      "content_sha256": "440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 1167
+    },
+    {
+      "sha256": "1f5d1f5c2ab8ddbfcc556be4abae873bf68e5bc377605fda417540239b284280",
+      "path": "+Transcripts From available tapes/Sleep/folder.jpg",
+      "function_id": "OCF-SLP-002",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "c33026b49364a0c5681af6b2ad5be68b1d31e5737ce8d25b1df8c8a7f23f184c",
+      "path": "+Transcripts From available tapes/Speak Up/Speak Up.lrc",
+      "function_id": "OCF-COM-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "be030b10f16cce5ba3fca0dc4b2a40ac446e34e7d555360a921d6640c9055eaf",
+      "path": "+Transcripts From available tapes/Speak Up/Speak Up.ocr.pdf",
+      "function_id": "OCF-COM-001",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "b673d4d405cb41b97c059a41f2bf55ea81f00540d216abfd19d1464abedba2b9",
+      "path": "+Transcripts From available tapes/Speak Up/Speak Up.srt",
+      "function_id": "OCF-COM-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc",
+      "path": "+Transcripts From available tapes/Speak Up/Speak Up.txt",
+      "function_id": "OCF-COM-001",
+      "evidence_class": "source_transcript",
+      "content_sha256": "c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 914
+    },
+    {
+      "sha256": "bdb153c9778a6a54b69eea7bd6517c9bd70f941bd8808cb5383f4074d3b15fea",
+      "path": "+Transcripts From available tapes/Speak Up/folder.jpg",
+      "function_id": "OCF-COM-001",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "5c03fd2f1e9a3448de4b85255e5bb1e62ef7aae10d04e1b43a82b049d4aeb586",
+      "path": "+Transcripts From available tapes/Sweet Dreams/Sweet Dreams.lrc",
+      "function_id": "OCF-SLP-003",
+      "evidence_class": "source_transcript",
+      "content_sha256": "83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "cf049709e4d8488095567b5cfa89d4766f379f3718659a04eb65a7ad42508ddf",
+      "path": "+Transcripts From available tapes/Sweet Dreams/Sweet Dreams.ocr.pdf",
+      "function_id": "OCF-SLP-003",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "2c8c38d878302314618cc2005bb77e078ef068f7691da42f0ab36487a3935ac2",
+      "path": "+Transcripts From available tapes/Sweet Dreams/Sweet Dreams.srt",
+      "function_id": "OCF-SLP-003",
+      "evidence_class": "source_transcript",
+      "content_sha256": "83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3",
+      "path": "+Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt",
+      "function_id": "OCF-SLP-003",
+      "evidence_class": "source_transcript",
+      "content_sha256": "83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 1046
+    },
+    {
+      "sha256": "847d375cc5975eaed2a97e24906ad9c8a5aa55c70c709985c5a2c374bbf81c14",
+      "path": "+Transcripts From available tapes/Sweet Dreams/folder.jpg",
+      "function_id": "OCF-SLP-003",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "934e8a438579187e79d0aff34fe232d8d57a7cfa6244d583f7e68dffbb3f424e",
+      "path": "+Transcripts From available tapes/Synchronizing/Synchronizing.lrc",
+      "function_id": "OCF-PRF-003",
+      "evidence_class": "source_transcript",
+      "content_sha256": "5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "7aaa9a8d96f0e2d8dec6dca0a65a18de415b3a06a814daff759a309328c877f1",
+      "path": "+Transcripts From available tapes/Synchronizing/Synchronizing.ocr.pdf",
+      "function_id": "OCF-PRF-003",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "6aa7d73e1a812fd67d1c62fca150518a06824c84c615ed2a91386200723c19d6",
+      "path": "+Transcripts From available tapes/Synchronizing/Synchronizing.srt",
+      "function_id": "OCF-PRF-003",
+      "evidence_class": "source_transcript",
+      "content_sha256": "5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248",
+      "path": "+Transcripts From available tapes/Synchronizing/Synchronizing.txt",
+      "function_id": "OCF-PRF-003",
+      "evidence_class": "source_transcript",
+      "content_sha256": "5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 979
+    },
+    {
+      "sha256": "74b4e85915e862a9881fc936b2b93475c3a69eddc046b3b5a91e507b6b11857b",
+      "path": "+Transcripts From available tapes/Synchronizing/folder.jpg",
+      "function_id": "OCF-PRF-003",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "e62e770f7ce6ebc050b6c02f97bab5c153f013c7cf44e541fbecea9efa0083f1",
+      "path": "+Transcripts From available tapes/Think Fast/Think Fast.lrc",
+      "function_id": "OCF-COG-007",
+      "evidence_class": "source_transcript",
+      "content_sha256": "8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "b224b06d89114cc03f644922e7dcfc6e07d57a8a39cec0318fd3c0ebc7ab2763",
+      "path": "+Transcripts From available tapes/Think Fast/Think Fast.ocr.pdf",
+      "function_id": "OCF-COG-007",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "4aced82d08628f891b470d66cfb068a5236ec4386ecf48fa1cc3dc0db4df04fc",
+      "path": "+Transcripts From available tapes/Think Fast/Think Fast.srt",
+      "function_id": "OCF-COG-007",
+      "evidence_class": "source_transcript",
+      "content_sha256": "8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2",
+      "path": "+Transcripts From available tapes/Think Fast/Think Fast.txt",
+      "function_id": "OCF-COG-007",
+      "evidence_class": "source_transcript",
+      "content_sha256": "8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 944
+    },
+    {
+      "sha256": "f8346a8534008e4c88c66b88c4491b48a73b10e3ebdc488fd52113269c65d7c2",
+      "path": "+Transcripts From available tapes/Think Fast/folder.jpg",
+      "function_id": "OCF-COG-007",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "e02dd9a8ca5fe2da036fe235afb306ab9266ec4a96e84f468e4bbb291b0bb282",
+      "path": "+Transcripts From available tapes/Tune-Up/Tune-Up.lrc",
+      "function_id": "OCF-BOD-013",
+      "evidence_class": "source_transcript",
+      "content_sha256": "e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "d6f515053978a02e91e301d3c8adade42c4f70e98be4fc4d151bd68c5ba25610",
+      "path": "+Transcripts From available tapes/Tune-Up/Tune-Up.ocr.pdf",
+      "function_id": "OCF-BOD-013",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "5a509429d916e45ecc32f6ab8e7bab6f24514b68202410df202313562fcab0a1",
+      "path": "+Transcripts From available tapes/Tune-Up/Tune-Up.srt",
+      "function_id": "OCF-BOD-013",
+      "evidence_class": "source_transcript",
+      "content_sha256": "e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1",
+      "path": "+Transcripts From available tapes/Tune-Up/Tune-Up.txt",
+      "function_id": "OCF-BOD-013",
+      "evidence_class": "source_transcript",
+      "content_sha256": "e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation",
+        "return"
+      ],
+      "word_count": 1083
+    },
+    {
+      "sha256": "95a1d6cef74aba5e8c2a0c3180cdfff14c82f878f537d2d34e04d7709c2d7e87",
+      "path": "+Transcripts From available tapes/Tune-Up/folder.jpg",
+      "function_id": "OCF-BOD-013",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "cedd3969fa7c501c35286821ad2a1a53cd3e1cdab2c2f8624b0d666fda54fe52",
+      "path": "+Transcripts From available tapes/Wake Know/Wake Know.lrc",
+      "function_id": "OCF-SLP-004",
+      "evidence_class": "source_transcript",
+      "content_sha256": "14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "c4665cf9a768f19c7ddd88fd509191f819b3496a2f337a4c69860004a4fc79e6",
+      "path": "+Transcripts From available tapes/Wake Know/Wake Know.srt",
+      "function_id": "OCF-SLP-004",
+      "evidence_class": "source_transcript",
+      "content_sha256": "14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745",
+      "path": "+Transcripts From available tapes/Wake Know/Wake Know.txt",
+      "function_id": "OCF-SLP-004",
+      "evidence_class": "source_transcript",
+      "content_sha256": "14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval",
+      "candidate_categories": [
+        "closer",
+        "command_association",
+        "future_use",
+        "main",
+        "opener",
+        "preparation"
+      ],
+      "word_count": 1043
+    },
+    {
+      "sha256": "1e3d3d17a8bde2474b4059bd8015b61ac05b38692be3fc0d86864228c9d0a2d6",
+      "path": "+Transcripts From available tapes/Wake Know/Wake-Know.ocr.pdf",
+      "function_id": "OCF-SLP-004",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "12eeee310958848c5925ff21010880e2b29775f55519d6df32e83fb10e8df225",
+      "path": "+Transcripts From available tapes/Wake Know/folder.jpg",
+      "function_id": "OCF-SLP-004",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "7de6393c13f73e159efe56faf547a87b594c7e37527aaed0f84290aeecc0f447",
+      "path": "Emergency: Injury/Emergency-Injury.ocr.pdf",
+      "function_id": "OCF-EMG-001",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "6043b8dc04e263a7210e38646c9847005bfa30d1e9315ac32c25fb19d0a05dca",
+      "path": "Emergency: Injury/Emergency_Injury_88R1040_README.md",
+      "function_id": "OCF-EMG-001",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2",
+      "path": "Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt",
+      "function_id": "OCF-EMG-001",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276",
+      "path": "Emergency: Injury/Emergency_Injury_88R1040_reconstructed_clean.txt",
+      "function_id": "OCF-EMG-001",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "0952a33d80ef91f11c9ba733cf85b7debb172aca171bd7ea1731aa2bbc3ceca9",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "fa8a256470d110fc3eced0b79ce2edb9dd5db03f4f7630e26d237f561eb9f3ea",
+      "path": "Emergency: Injury/Emergency_Injury_88R1040_reconstruction_notes.md",
+      "function_id": "OCF-EMG-001",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "0e38c9db39edd4263b8bebd8e5cc6e783944bf4ddb87b6a0ecbb7142fec4be7d",
+      "path": "Emergency: Toxic/Emergency-Toxin.ocr.pdf",
+      "function_id": "OCF-EMG-002",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "27c47d571894c6c040dabe8ba165d10311d8a2527b4640d5e9b2ca4f76967d67",
+      "path": "Emergency: Toxic/Emergency_Toxic_881041_README.md",
+      "function_id": "OCF-EMG-002",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254",
+      "path": "Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt",
+      "function_id": "OCF-EMG-002",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510",
+      "path": "Emergency: Toxic/Emergency_Toxic_881041_reconstructed_clean.txt",
+      "function_id": "OCF-EMG-002",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "d28d5a35f401c36a113437e940f5b235fb8373b2568a1a826305fb0d54e305c0",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "ef72dc8598738fdd21eedc580c344cf097498fd0454f9a4448946b1d565673ec",
+      "path": "Emergency: Toxic/Emergency_Toxic_881041_reconstruction_notes.md",
+      "function_id": "OCF-EMG-002",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "d3f5d00703ec224776b58f46c1a8eece71de60e167629314b21cae101499a92e",
+      "path": "Empathizing/Empathizing_881049_README.md",
+      "function_id": "OCF-EMO-003",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc",
+      "path": "Empathizing/Empathizing_881049_reconstructed_annotated.txt",
+      "function_id": "OCF-EMO-003",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06",
+      "path": "Empathizing/Empathizing_881049_reconstructed_clean.txt",
+      "function_id": "OCF-EMO-003",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "67fdc1370339811b644f3d5a4ffcd603ac33a57123fe4f49f06246316425e315",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "ebb8f03b467bfa412cf24b600a9774ceedc3a99c38d2c39a0d5f39e78542119f",
+      "path": "Empathizing/Empathizing_881049_reconstruction_bundle.zip",
+      "function_id": "OCF-EMO-003",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "ZIP members hashed/read in memory; never extracted to filesystem",
+      "members": [
+        {
+          "name": "Empathizing_881049_reconstructed_clean.txt",
+          "sha256": "423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06",
+          "bytes": 8747,
+          "evidence_class": "reconstructed_mockup",
+          "equal_local_files": [
+            "Empathizing/Empathizing_881049_reconstructed_clean.txt"
+          ]
+        },
+        {
+          "name": "Empathizing_881049_reconstructed_annotated.txt",
+          "sha256": "0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc",
+          "bytes": 4165,
+          "evidence_class": "reconstructed_mockup",
+          "equal_local_files": [
+            "Empathizing/Empathizing_881049_reconstructed_annotated.txt"
+          ]
+        },
+        {
+          "name": "Empathizing_881049_reconstruction_notes.md",
+          "sha256": "09cc4d696efbea0c199fc2aa1f58158e94695cdc5c30c4419ee54327593143d2",
+          "bytes": 6029,
+          "evidence_class": "secondary_description",
+          "equal_local_files": [
+            "Empathizing/Empathizing_881049_reconstruction_notes.md"
+          ]
+        },
+        {
+          "name": "Empathizing_881049_README.md",
+          "sha256": "d3f5d00703ec224776b58f46c1a8eece71de60e167629314b21cae101499a92e",
+          "bytes": 1266,
+          "evidence_class": "secondary_description",
+          "equal_local_files": [
+            "Empathizing/Empathizing_881049_README.md"
+          ]
+        }
+      ]
+    },
+    {
+      "sha256": "09cc4d696efbea0c199fc2aa1f58158e94695cdc5c30c4419ee54327593143d2",
+      "path": "Empathizing/Empathizing_881049_reconstruction_notes.md",
+      "function_id": "OCF-EMO-003",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "3b2216f844e33572ad3bea7a16e9f1b586e78ba5a5c2bb45c288d8f4800cd04a",
+      "path": "Empathizing/Emphathizing.ocr.pdf",
+      "function_id": "OCF-EMO-003",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "3ce6572d36c2f21fc92bf5485e8c0e221928e8c36fb01a56d59090b04ff63b7c",
+      "path": "HPLUS_missing_audio_reconstruction_prompt.md",
+      "function_id": null,
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "70f40710b84c5ce114061c065fb5d957f99ada7f1d343c6b3ff32ffac203bfa1",
+      "path": "Light Foot/Light Foot.ocr.pdf",
+      "function_id": "OCF-PRF-004",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "eb709474c5eb4405e7d60e309d09740df91865e12ef161ea3b7088c7cfff34d9",
+      "path": "Light Foot/Light_Foot_881047_README.md",
+      "function_id": "OCF-PRF-004",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70",
+      "path": "Light Foot/Light_Foot_881047_reconstructed_annotated.txt",
+      "function_id": "OCF-PRF-004",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73",
+      "path": "Light Foot/Light_Foot_881047_reconstructed_clean.txt",
+      "function_id": "OCF-PRF-004",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "0979f0c7c66d487a91f56fa26606ecadc75bfd6251f0cca84d90361a01a0164b",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "522aeb90cfbe94e32f04f5411505876593c8569f0059f65121c74777e4abed1f",
+      "path": "Light Foot/Light_Foot_881047_reconstruction_notes.md",
+      "function_id": "OCF-PRF-004",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031",
+      "path": "Make Your Day/Make Your Day.ocr.pdf",
+      "function_id": "OCF-PRF-005",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "00524607a1437b74448526cc5cbc5f3cc73d075dccbc9bc0e6114c714d2c369c",
+      "path": "Make Your Day/Make_Your_Day_881042_README.md",
+      "function_id": "OCF-PRF-005",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101",
+      "path": "Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt",
+      "function_id": "OCF-PRF-005",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "465e38a658e6a3a7abf3b8693714d8f3c297eb68c5e1f030ccb1f84a3d2da44e",
+      "path": "Make Your Day/Make_Your_Day_881042_reconstructed_clean.txt",
+      "function_id": "OCF-PRF-005",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "3177a89a3c8c96fac842461cf51e5c22adb54954bd0cc80b95b11743b9ccbc9f",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "1bbeeb6c5a9c2bba8ca1091559699481ae3d67db86081d2d89a70e49665af389",
+      "path": "Make Your Day/Make_Your_Day_881042_reconstruction_notes.md",
+      "function_id": "OCF-PRF-005",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "ff029fcabc407d3d9577466eba86288a5b59188fc470cc04a05c42007560fe3d",
+      "path": "Quoth_notes.txt",
+      "function_id": null,
+      "evidence_class": "secondary_description",
+      "content_sha256": "52ca0870993a65de7afd09bfdc5a8f94f6d451598fb28b69f34a87f3317cf549",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "a8de0c4d72ed5241b026da0e23f41a39547a4dfc031a03878fb6c6ebc112b655",
+      "path": "Regenerate/Regenerate.ocr.pdf",
+      "function_id": "OCF-BOD-014",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "638830ecc132b2bf73a762861d64c977f1f7f534c9143689f1ac2f5eb34f9c2c",
+      "path": "Regenerate/Regenerate_881050P_README.md",
+      "function_id": "OCF-BOD-014",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e",
+      "path": "Regenerate/Regenerate_881050P_reconstructed_annotated.txt",
+      "function_id": "OCF-BOD-014",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1",
+      "path": "Regenerate/Regenerate_881050P_reconstructed_clean.txt",
+      "function_id": "OCF-BOD-014",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "8f3de7d09bb197a30300fbe524b07c7bc979512fe04fc946193f30d5f063b0f7",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "35e456ef36522d806da2974462e2955743e03ecb02b7228e2f799e7382921a7e",
+      "path": "Regenerate/Regenerate_881050P_reconstruction_notes.md",
+      "function_id": "OCF-BOD-014",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "192e9d1aad9aa8366e2804116daafad4983e94ece2a0e0a288112cef5194164d",
+      "path": "Release/Release.ocr.pdf",
+      "function_id": "OCF-FND-006",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "a9baf124428bfaeb4a807af30b867a69b3f20c1016e7f14152691293130341f1",
+      "path": "Release/Release_881002_README.md",
+      "function_id": "OCF-FND-006",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "22e30e36196a7ed181f67cbc37f77b3c7ef6bb9f3d0ee7b48d21e4422c6a262c",
+      "path": "Release/Release_881002_reconstructed_annotated.txt",
+      "function_id": "OCF-FND-006",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "e04d43c60b39278a0e49aef9ac4a9dc6992aa3231e757b50c8965c72d36b7af2",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf",
+      "path": "Release/Release_881002_reconstructed_clean.txt",
+      "function_id": "OCF-FND-006",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "bb25bd97dedb5ecc65239f609cc0b8b936808c422edc7809dac2ea37d2b22e86",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "4dec89cbe07d25e5debbf6e72e27d5958151a47d41531099ffa7df93c6b95b52",
+      "path": "Release/Release_881002_reconstruction_notes.md",
+      "function_id": "OCF-FND-006",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "6386d2651bb9c6b47ea4bfb995d1bb629487f73758d3c8a30d76d0d61c0b6231",
+      "path": "See-Be/See-Be.ocr.pdf",
+      "function_id": "OCF-AUT-001",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "b69ab8fff44baa12ab3ec72e94b88c4bfbfa6d23fdb8e2c57eee764d7ae37ded",
+      "path": "See-Be/See_Be_881044_README.md",
+      "function_id": "OCF-AUT-001",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948",
+      "path": "See-Be/See_Be_881044_reconstructed_annotated.txt",
+      "function_id": "OCF-AUT-001",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "574d8a0921cd4cd91b6a3e5794510dbeecfd06838cb5569123b14e6777e6df5c",
+      "path": "See-Be/See_Be_881044_reconstructed_clean.txt",
+      "function_id": "OCF-AUT-001",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "acbda946745d9c0c7c74855c20110f59d7a92a31acd0e793b15b888855ef3bea",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "1475f59c3df637ba2a991da5c505afee1734dc7c0b51c945916e3beecced7e32",
+      "path": "See-Be/See_Be_881044_reconstruction_notes.md",
+      "function_id": "OCF-AUT-001",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "e29281de2c8f742195b53556352b9d141cc679bd0e7d97ea524eeade74e98858",
+      "path": "Sensory (Smell)/Sensory-Smell.ocr.pdf",
+      "function_id": "OCF-SEN-003",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "29736f3270cc07a61c852c50a25d1f67e925998b78f52f4641da48b52f9e708f",
+      "path": "Sensory (Smell)/Sensory_Smell_and_Taste_README.md",
+      "function_id": "OCF-SEN-003",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6",
+      "path": "Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt",
+      "function_id": "OCF-SEN-003",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "7a1b03b324f5842b5e0c9f4c0a4ae7febaa1a1edfa0c096cf37638c3f3923873",
+      "path": "Sensory (Smell)/Sensory_Smell_reconstructed_clean.txt",
+      "function_id": "OCF-SEN-003",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "9ae38f1025b7002a646e84c562eed5f6335ca5e164f6f2e923a6ddeb91b5556d",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "d07adaba5fddf42a5a347286ac2c236d326a292d3931de85c8b071cf4eeb19b6",
+      "path": "Sensory (Smell)/Sensory_Smell_reconstruction_notes.md",
+      "function_id": "OCF-SEN-003",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "0dbde9cb73c84519256f8ca0bbc63af0c766e2e665ccb72d9055341246e307ba",
+      "path": "Sensory (Taste)/Sensory-Taste.ocr.pdf",
+      "function_id": "OCF-SEN-004",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "29736f3270cc07a61c852c50a25d1f67e925998b78f52f4641da48b52f9e708f",
+      "path": "Sensory (Taste)/Sensory_Smell_and_Taste_README.md",
+      "function_id": "OCF-SEN-004",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "ac4101ce28b0d67b33d03fe7777dd17c6d77e0ba82f12aaec6094473c05fc97d",
+      "path": "Sensory (Taste)/Sensory_Taste_reconstructed_annotated.txt",
+      "function_id": "OCF-SEN-004",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "d21c463fb0540d0067510d969508f40b419f66b6c6258aeb84b7bdf9154cc9c4",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13",
+      "path": "Sensory (Taste)/Sensory_Taste_reconstructed_clean.txt",
+      "function_id": "OCF-SEN-004",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "13b484363dd047127ac2c6d676cc721fee72e1b9bd673a50c5c2515eab398b66",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "66a4b080501cc2edb334e1b7baafe407f6bc676d1db1776d47410c561bc3a361",
+      "path": "Sensory (Taste)/Sensory_Taste_reconstruction_notes.md",
+      "function_id": "OCF-SEN-004",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "5cb32e5762a041e9bd778631fe3c63bf46d3c2014f95237edab9e8a0295abb38",
+      "path": "Sensory (Touch)/Sensory-Touch.ocr.pdf",
+      "function_id": "OCF-SEN-005",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "6ccb94a5d6f7b5abc78335cdc9a45c4bb30306996877d5eeb2ca724387dc5097",
+      "path": "Sensory (Touch)/Sensory_Touch_README.md",
+      "function_id": "OCF-SEN-005",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9",
+      "path": "Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt",
+      "function_id": "OCF-SEN-005",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066",
+      "path": "Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt",
+      "function_id": "OCF-SEN-005",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "dc03d6ab3f56a8a79f01c0000981166c24260a6cf8c2744270684e35012b4df1",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405",
+      "path": "Sensory (Touch)/Sensory_Touch_reconstructed_script.txt",
+      "function_id": "OCF-SEN-005",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "fe8061f829ab5320629fa36e1962006bce4600ffe1e943f0ca613f6214d34fc2",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "28c78adcf1b005e4f25cbef44ae918a0721e210a81782540fbe17e237ad7e909",
+      "path": "Sensory (Touch)/Sensory_Touch_reconstruction_notes.md",
+      "function_id": "OCF-SEN-005",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "ad546da097973b21ab42fc58e5e31e4a2a5aadfb7a364ea70881b3f9a316a4d1",
+      "path": "Short Fix/Short Fix.ocr.pdf",
+      "function_id": "OCF-BOD-015",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "a1e2d857326e3203b4a998f3b556cf5bebec040e2297c499e6f4158c6fcc0298",
+      "path": "Short Fix/Short_Fix_881039_README.md",
+      "function_id": "OCF-BOD-015",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "74c0e454c93b9633f2d6ee65d42db44bac0ccf99198f8733c49e9d31be4807ed",
+      "path": "Short Fix/Short_Fix_881039_reconstructed_annotated.txt",
+      "function_id": "OCF-BOD-015",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "6d4063d3171051f524453a2a88536acaae6520025063e0c05c459c41d5574d0e",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "c4c9889958374fa4ea8e8971418c79764cfeb6e841bd3eabd7581bd06b1bc074",
+      "path": "Short Fix/Short_Fix_881039_reconstructed_clean.txt",
+      "function_id": "OCF-BOD-015",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "39032739f1a05a9088c8ee02f7fcd8ad24cf893225f971935b8524d00e62367d",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "7bc7773efd96848e896652cb25ec4b7c7d77eafd577a2cc43ee017c990f850da",
+      "path": "Short Fix/Short_Fix_881039_reconstruction_notes.md",
+      "function_id": "OCF-BOD-015",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "498903accdd807bab5dbf62d914881bb686bc0a3fe0fea6fa12c8c1d8090c0b6",
+      "path": "Sleep Easy/Sleep Easy.ocr.pdf",
+      "function_id": "OCF-SLP-005",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "fe37ba5e0c1adbc493bbaa374116a062dcf44345810c14817a563bba9a1d30b5",
+      "path": "Sleep Easy/Sleep_Easy_README.md",
+      "function_id": "OCF-SLP-005",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322",
+      "path": "Sleep Easy/Sleep_Easy_reconstructed_annotated.txt",
+      "function_id": "OCF-SLP-005",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309",
+      "path": "Sleep Easy/Sleep_Easy_reconstructed_clean.txt",
+      "function_id": "OCF-SLP-005",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "39544bbc0eda8784785a2b194e17204821778add58f9cb1ca605a83f36b0c6b2",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "757384a1027eb348fa2198badcf6d8474861fda48d5c58b08a1eea1236f92f61",
+      "path": "Sleep Easy/Sleep_Easy_reconstruction_notes.md",
+      "function_id": "OCF-SLP-005",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "2e2e0231d1b6499479d9a5116335aa765fa8b8ecf805858a1616caa898b6e23b",
+      "path": "Stay Awake/Stay Awake.ocr.pdf",
+      "function_id": "OCF-SLP-006",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "88af9074d82bfc5b1cc754879c68f375e2d396fad637d03880a2ba7fc5e72bf1",
+      "path": "Stay Awake/Stay_Awake_881001_README.md",
+      "function_id": "OCF-SLP-006",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54",
+      "path": "Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt",
+      "function_id": "OCF-SLP-006",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e",
+      "path": "Stay Awake/Stay_Awake_881001_reconstructed_clean.txt",
+      "function_id": "OCF-SLP-006",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "a504764fa8057a73b7ef343ebd7055fe80eb49e652633a26a2e78f073dbc11cd",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "ef3d92ce07e38004578372ade16ad00d7ef3d344eb47aa53b17007704315fdea",
+      "path": "Stay Awake/Stay_Awake_881001_reconstruction_notes.md",
+      "function_id": "OCF-SLP-006",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f",
+      "path": "Strong Quick/Strong-Quick.ocr.pdf",
+      "function_id": "OCF-PRF-006",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "b6cd5d3d03ff554f7082dbc5c3f00dab957340b3f997fd3b3531a82e9cdd7b7c",
+      "path": "Strong Quick/Strong_Quick_88R1006_README.md",
+      "function_id": "OCF-PRF-006",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb",
+      "path": "Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt",
+      "function_id": "OCF-PRF-006",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32",
+      "path": "Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt",
+      "function_id": "OCF-PRF-006",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "b401f042178748214274f9eaff0af463a26e56c283f2ae3b82ae6fd6b905eed8",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "89621014fb20232dbb791433e6317030f1a07715fd3372e629e13d77d5a5e694",
+      "path": "Strong Quick/Strong_Quick_88R1006_reconstruction_notes.md",
+      "function_id": "OCF-PRF-006",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065",
+      "path": "Zoning/Zoning.ocr.pdf",
+      "function_id": "OCF-EXP-002",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "complete extracted PDF text read; source text not redistributed",
+      "heading_categories": [
+        "command",
+        "purpose",
+        "application"
+      ],
+      "classification_basis": "command and purpose/description headings in extracted PDF; pamphlet candidate, not transcript authentication"
+    },
+    {
+      "sha256": "4e20d728b59e7b45d65c9c22e33fba3cff9d27e468c7fcc03cffbbf78699c611",
+      "path": "Zoning/Zoning_881033_README.md",
+      "function_id": "OCF-EXP-002",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    },
+    {
+      "sha256": "7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7",
+      "path": "Zoning/Zoning_881033_reconstructed_annotated.txt",
+      "function_id": "OCF-EXP-002",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a",
+      "path": "Zoning/Zoning_881033_reconstructed_clean.txt",
+      "function_id": "OCF-EXP-002",
+      "evidence_class": "reconstructed_mockup",
+      "content_sha256": "f83f233def607a11e78280cea30a5110023741a94baac45398f399f8abc594ed",
+      "inspection": "complete text read; structure candidate census, not manual semantic approval"
+    },
+    {
+      "sha256": "1a76508234d5d755475b12ae97b992ed39ccbff558ca748333f2ea09451d4d2c",
+      "path": "Zoning/Zoning_881033_reconstruction_bundle.zip",
+      "function_id": "OCF-EXP-002",
+      "evidence_class": "unknown",
+      "content_sha256": null,
+      "inspection": "ZIP members hashed/read in memory; never extracted to filesystem",
+      "members": [
+        {
+          "name": "Zoning_881033_reconstructed_clean.txt",
+          "sha256": "9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a",
+          "bytes": 8407,
+          "evidence_class": "reconstructed_mockup",
+          "equal_local_files": [
+            "Zoning/Zoning_881033_reconstructed_clean.txt"
+          ]
+        },
+        {
+          "name": "Zoning_881033_reconstructed_annotated.txt",
+          "sha256": "7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7",
+          "bytes": 7562,
+          "evidence_class": "reconstructed_mockup",
+          "equal_local_files": [
+            "Zoning/Zoning_881033_reconstructed_annotated.txt"
+          ]
+        },
+        {
+          "name": "Zoning_881033_reconstruction_notes.md",
+          "sha256": "1d5bbed924f949b4025b0ffaf61ac8949eec395a18bc8d3e0328efbab376bac6",
+          "bytes": 6058,
+          "evidence_class": "secondary_description",
+          "equal_local_files": [
+            "Zoning/Zoning_881033_reconstruction_notes.md"
+          ]
+        },
+        {
+          "name": "Zoning_881033_README.md",
+          "sha256": "4e20d728b59e7b45d65c9c22e33fba3cff9d27e468c7fcc03cffbbf78699c611",
+          "bytes": 1582,
+          "evidence_class": "secondary_description",
+          "equal_local_files": [
+            "Zoning/Zoning_881033_README.md"
+          ]
+        }
+      ]
+    },
+    {
+      "sha256": "1d5bbed924f949b4025b0ffaf61ac8949eec395a18bc8d3e0328efbab376bac6",
+      "path": "Zoning/Zoning_881033_reconstruction_notes.md",
+      "function_id": "OCF-EXP-002",
+      "evidence_class": "secondary_description",
+      "content_sha256": null,
+      "inspection": "binary metadata only"
+    }
+  ],
+  "content_equivalence_groups": [
+    {
+      "function_id": "OCF-FND-001",
+      "content_sha256": "b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f",
+      "representations": [
+        "9069cc4073e3e71c7fca207e1ef73e7514109a270f23adda09aa13475f46feb2",
+        "a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a",
+        "c04536fedd5eba592fda4a7cbc6d595b4668df6a663dd7f826aaa65f38837933"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-COG-001",
+      "content_sha256": "aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478",
+      "representations": [
+        "4ae2e83c07220e728061c0dc77a18caf1b0b3fb957e3c284af6f81998bf01177",
+        "7414cbe861aa8d7e18df1da8d7607235df1b8f6968ac01ab18f085eb2d2ea735",
+        "f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-FND-002",
+      "content_sha256": "7ead8c8f9df76d179810855f5e4c3f4b218b646dc6ecef7aaab98d32b056d96b",
+      "representations": [
+        "4521bc85e45926e66fd073988a54d39dbd1ad43a3c1a3f4255178917bcbc903d",
+        "f12e20c5ef3020bef08563ad305d5c34fac9e6285f85c4808fe12607da6f21b6"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-BOD-001",
+      "content_sha256": "bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569",
+      "representations": [
+        "12b20436a846b122eb674d898b951c33abec542ba28cdd56003e1292d0bef839",
+        "86ef59aaa83ac888b5c3bc460c146433e592b91f50d31f4a41008a455fab4672",
+        "b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-COG-002",
+      "content_sha256": "5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e",
+      "representations": [
+        "5a202fe66d9e16be0a2a8a4fd342921abfef44882e3e97b65ca45ce4776f5463",
+        "5ba477f0677c7f988bc89c862347c7224188559ec2a6d1d1f523179e716efbeb",
+        "d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-BOD-002",
+      "content_sha256": "5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961",
+      "representations": [
+        "58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38",
+        "6870bbc82f1a88a7629f46dbe7d27318a9d1d1020c7ab91922ec1bb73af12789",
+        "d6becaaf9d35b5480a5a937c4fed757feb8016d15123f052bf644313d46bbdb1"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-COG-003",
+      "content_sha256": "469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75",
+      "representations": [
+        "0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d",
+        "180e3e396b4a9cad876f31fffb6ecac190affe2e41404a68a903b289efb5e983",
+        "92c459fe6011833dc9a82c405330201c58edb52d24abf02d060ce97c07bc57c0"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-BOD-003",
+      "content_sha256": "3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de",
+      "representations": [
+        "1b46619ad21f3ebb55c382c75da200416050fd0273f282c8bab1c468f201448e",
+        "44eba0dc46a9eff52887ed6c2b806664502cb64a4e136c35ea4a47ab8befc203",
+        "bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-LIF-001",
+      "content_sha256": "b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9",
+      "representations": [
+        "0e36818885f96ee26386c08f34b78c33597b246f8b2b83de5490be9cc5ecfff8",
+        "77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6",
+        "bea2d2791d0b885e6368540b6f9038ae8a2410cb07604f21cd52631c87ef963d"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-BOD-004",
+      "content_sha256": "f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47",
+      "representations": [
+        "2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc",
+        "4a6423be9ac6cee29466049f0d12c89f8e69cf7343bf7e180334031aa35c2244",
+        "54cdd690b3e51711a8447ae32dbaa9d4e687ebd1a30a983886ea78ab684e8e5f"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-PRF-001",
+      "content_sha256": "b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece",
+      "representations": [
+        "24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2",
+        "2ca81bc8f759708d6a5267ff8ddd8090828657338ec5cfc142c12a60394fa646",
+        "cc67f9a04b676b74deb4e9e86b11c2df0118182adb73ffc03c8e262a16b80902"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-BOD-005",
+      "content_sha256": "98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5",
+      "representations": [
+        "0365b1af66862faca7a058bd4ae3c40dbc1755cbf381ced9f9057af5cd2f58fa",
+        "03d1aa45d604e86961decf2664b73a618d5baced3078fac39c0b193bc9b14187",
+        "beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-PRF-002",
+      "content_sha256": "0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2",
+      "representations": [
+        "2a28498bfc332ec1eb83164795be43324bdc4fa02596ef7d019bcce4b24a48de",
+        "7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f",
+        "cdf2d2b43c4ad16b5212fa77083d4808a639061419d84a24a7c6c19f801428ea"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-BOD-006",
+      "content_sha256": "0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6",
+      "representations": [
+        "c1b9a96b3937424418549aa7f21d46292a71b7ad86268bbe1c6fd23d2f8752cf",
+        "d6341565f0520b52fcadf007710771b3f025ba960541a7454e76d8f66c59aedc",
+        "f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-BOD-007",
+      "content_sha256": "6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7",
+      "representations": [
+        "3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a",
+        "a0eb4bfc2df155db7fba48759a6983b49a5b25d3d9ea025c75b3c86a9d232df6",
+        "b05e079f3d957f2c7a14145218891288cc44eb7680363f7cade3e43a5010b291"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-BOD-008",
+      "content_sha256": "e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140",
+      "representations": [
+        "0ed530a1ec99cd14dfd4950e86c2a9f77c78a876d8a9a8e7ec2130f143b028ec",
+        "30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4",
+        "906b2271a6ad38971daef683fccc87c4294d0906ed6335653e15a1c84887b17c"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-COG-004",
+      "content_sha256": "9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421",
+      "representations": [
+        "679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9",
+        "97133fe82cd64df199750e2b7331d468b02dcff2c7e740a4dbc27ad80fbd899f",
+        "ab8de4e160d2ac2c511e5f486fc1097a873e94fd9a9f8908aef1edb90684852d"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-EMO-001",
+      "content_sha256": "03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2",
+      "representations": [
+        "0b014a2a25aa1709ceae480eb1856eb556f7c0e19ee0e4f3b35f973e7f63abcd",
+        "604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9",
+        "8ef7012ca56531b9524fcd2efd7963581b67cab3a9db10a70f8e648c2a1aeeb4"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-BOD-009",
+      "content_sha256": "5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6",
+      "representations": [
+        "9071bddef2bad2136923e783c2e0e319f22ab2f5f26fcc5f10daf141aaab2ccf",
+        "f2c55427d6d91153c1bc29410429c5bca5cf9df61b655bb9b3a6eafb7197047b",
+        "f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-EXP-001",
+      "content_sha256": "d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8",
+      "representations": [
+        "9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78",
+        "cf5ee3c1fad7e9c4f4def8d27d06c4e689bb611c6d4c37bdbb50532d42c73fd0",
+        "ff2b4b3db8606e96e591c88bccc41a95ba439f53bb384e453d6ba65384045e06"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-BOD-010",
+      "content_sha256": "a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b",
+      "representations": [
+        "17226b5e7ec35c4a7f771f090b6a2f8c2ec9d771706324ec9ec163b86c2c53db",
+        "20d515d74eddaa25f957c96fb9839c990c261709879ff1b58b7ff4232b1c82ae",
+        "c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-EMO-002",
+      "content_sha256": "dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485",
+      "representations": [
+        "0f5c7bc3f86461f9c0bd7a72d5975f249f7f4757c2b211d572728b33abf21c20",
+        "75a9a3f961cbb11c3525deea765942bedafb0af332f8508bf5aa47c37b21a585",
+        "cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-COG-005",
+      "content_sha256": "c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77",
+      "representations": [
+        "355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195",
+        "7e53c471ec9a9965bf07fd27acf21c3c0879cafeb5af9553d3424f06c603ec65",
+        "8bab079e156d915ee13677ca878fbcef17141a5417d30c3b324bc816e3fe546a"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-BOD-011",
+      "content_sha256": "71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641",
+      "representations": [
+        "1be14d7210af703f0ccadf16802253399540cfac3bb0f64a8a5b68f5c7123b03",
+        "5e62b5d2207e4507b13bcba6911685c64643b4ab5e4b99b2863d233dbb3d4e85",
+        "d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-COG-006",
+      "content_sha256": "442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9",
+      "representations": [
+        "7788c429c68a7f67c60c2a009b8317e3381591ab8061e2959afdc259433d7116",
+        "7aa0ea7075432c1e46b4eab57ff9104fbc00a028b138ccff1c798409b938b18e",
+        "db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-FND-003",
+      "content_sha256": "57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33",
+      "representations": [
+        "0080e866dc5a36589bc5fb1f0518e424074081e2236fb06ae66f26b4213ce543",
+        "4e74e767c817e7913083508eb62ba8c48737cbad959007c84b747ee40ed844c0",
+        "56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-FND-004",
+      "content_sha256": "592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb",
+      "representations": [
+        "c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209",
+        "ceb0f64951e935652c198bdd436b8aa8322f296625aaa38779fc0638964b30c4",
+        "f1ac45a76aa43a7647b9fe83033bc04d6b97cf616885bcea18efa827dec8d2fb"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-FND-005",
+      "content_sha256": "be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f",
+      "representations": [
+        "7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2",
+        "cbf2f89334e5618592c781f1b8b2460ebd9d35fe3dab800447e926c4f1fd292d",
+        "e797d342208474f4d3025f789032ff8251782447e62f60a9bc1f435205cb5289"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-SLP-001",
+      "content_sha256": "b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8",
+      "representations": [
+        "059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411",
+        "85c661baeb865f229d8c5ad1bdda074253652573fba23b6a900c94f285606701",
+        "87159852728cc959461f68b48bfe248023a9426dda2693c967cf20790a06b25b"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-SEN-001",
+      "content_sha256": "7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29",
+      "representations": [
+        "1928511754326b06c12b02e48a2cd7d692ac17397bb3a95ff8e49742561b4779",
+        "29a06bb1920f96537f77a6f769877e2f41c59ef9d8798ba12aa6fee6c7794894",
+        "5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-SEN-002",
+      "content_sha256": "a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7",
+      "representations": [
+        "2dce03496fbc30b525dd04591bfa4cac6e784f17a90bd87934c5459c8c25f4d6",
+        "54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c",
+        "ecfe6bc6c1d0a1831fa394e7cf589f68edd73766d76ae6aac0d12f2e7ec02b8e"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-BOD-012",
+      "content_sha256": "53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4",
+      "representations": [
+        "a325b3a03869ad8467931aa62a4dcd9dbb0d09f2dd49e8296b543bd6e4110530",
+        "a3dba2ba552b5ceb2945e43577710d348470863c6bfa5c496cbb67b6390d9b02",
+        "ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-SLP-002",
+      "content_sha256": "440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab",
+      "representations": [
+        "0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd",
+        "2aca1f1992c9750dec96f009c1e468a74354c33045f89fc889bd00ec2b5ce236",
+        "f60a3bb24203dcf4ba79f48ed5365a512b72f2dda84108ef3eb512be0d44a306"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-COM-001",
+      "content_sha256": "c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9",
+      "representations": [
+        "92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc",
+        "b673d4d405cb41b97c059a41f2bf55ea81f00540d216abfd19d1464abedba2b9",
+        "c33026b49364a0c5681af6b2ad5be68b1d31e5737ce8d25b1df8c8a7f23f184c"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-SLP-003",
+      "content_sha256": "83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74",
+      "representations": [
+        "2c8c38d878302314618cc2005bb77e078ef068f7691da42f0ab36487a3935ac2",
+        "5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3",
+        "5c03fd2f1e9a3448de4b85255e5bb1e62ef7aae10d04e1b43a82b049d4aeb586"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-PRF-003",
+      "content_sha256": "5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236",
+      "representations": [
+        "6aa7d73e1a812fd67d1c62fca150518a06824c84c615ed2a91386200723c19d6",
+        "934e8a438579187e79d0aff34fe232d8d57a7cfa6244d583f7e68dffbb3f424e",
+        "9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-COG-007",
+      "content_sha256": "8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394",
+      "representations": [
+        "4aced82d08628f891b470d66cfb068a5236ec4386ecf48fa1cc3dc0db4df04fc",
+        "94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2",
+        "e62e770f7ce6ebc050b6c02f97bab5c153f013c7cf44e541fbecea9efa0083f1"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-BOD-013",
+      "content_sha256": "e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0",
+      "representations": [
+        "1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1",
+        "5a509429d916e45ecc32f6ab8e7bab6f24514b68202410df202313562fcab0a1",
+        "e02dd9a8ca5fe2da036fe235afb306ab9266ec4a96e84f468e4bbb291b0bb282"
+      ],
+      "independent_authentication": false
+    },
+    {
+      "function_id": "OCF-SLP-004",
+      "content_sha256": "14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098",
+      "representations": [
+        "8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745",
+        "c4665cf9a768f19c7ddd88fd509191f819b3496a2f337a4c69860004a4fc79e6",
+        "cedd3969fa7c501c35286821ad2a1a53cd3e1cdab2c2f8624b0d666fda54fe52"
+      ],
+      "independent_authentication": false
+    }
+  ],
+  "classification_counts": {
+    "source_transcript": 107,
+    "unknown": 43,
+    "secondary_description": 84,
+    "partial_source_transcript": 10,
+    "reconstructed_mockup": 33
+  },
+  "grammar_candidates": {
+    "command_association": {
+      "source_functions_with_candidate": 38
+    },
+    "future_use": {
+      "source_functions_with_candidate": 37
+    },
+    "main": {
+      "source_functions_with_candidate": 34
+    },
+    "preparation": {
+      "source_functions_with_candidate": 39
+    },
+    "closer": {
+      "source_functions_with_candidate": 36
+    },
+    "opener": {
+      "source_functions_with_candidate": 35
+    },
+    "return": {
+      "source_functions_with_candidate": 32
+    }
+  },
+  "independently_authenticated_recordings": 0,
+  "semantic_extraction_status": "partial; candidate patterns require source review"
+}

@@ -104,26 +104,33 @@ schema_version: '1.0'
 sources:
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: 'Emergency: Injury/Emergency-Injury.ocr.pdf'
+  related_sha256: []
   sha256: 7de6393c13f73e159efe56faf547a87b594c7e37527aaed0f84290aeecc0f447
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: 'Emergency: Injury/Emergency_Injury_88R1040_README.md'
+  related_sha256: []
   sha256: 6043b8dc04e263a7210e38646c9847005bfa30d1e9315ac32c25fb19d0a05dca
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
   path: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+  related_sha256: []
   sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: 0952a33d80ef91f11c9ba733cf85b7debb172aca171bd7ea1731aa2bbc3ceca9
   path: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_clean.txt'
+  related_sha256: []
   sha256: e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: 'Emergency: Injury/Emergency_Injury_88R1040_reconstruction_notes.md'
+  related_sha256: []
   sha256: fa8a256470d110fc3eced0b79ce2edb9dd5db03f4f7630e26d237f561eb9f3ea

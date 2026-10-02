@@ -74,25 +74,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
   path: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.lrc
+  related_sha256:
+  - 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+  - 87159852728cc959461f68b48bfe248023a9426dda2693c967cf20790a06b25b
   sha256: 85c661baeb865f229d8c5ad1bdda074253652573fba23b6a900c94f285606701
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.ocr.pdf
+  related_sha256: []
   sha256: 53eda45365d92bb4cb5adb600c860503c32ee71e590b59a7848d48ea6ce00924
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
   path: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.srt
+  related_sha256:
+  - 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+  - 85c661baeb865f229d8c5ad1bdda074253652573fba23b6a900c94f285606701
   sha256: 87159852728cc959461f68b48bfe248023a9426dda2693c967cf20790a06b25b
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
   path: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+  related_sha256:
+  - 85c661baeb865f229d8c5ad1bdda074253652573fba23b6a900c94f285606701
+  - 87159852728cc959461f68b48bfe248023a9426dda2693c967cf20790a06b25b
   sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Restorative Sleep/folder.jpg
+  related_sha256: []
   sha256: 7c770cc9c1ea5ec8042ac3eeed6dc6d2cb7fb3dbf91fb7273c2e6eabb4601ae3

@@ -95,26 +95,33 @@ schema_version: '1.0'
 sources:
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: Make Your Day/Make Your Day.ocr.pdf
+  related_sha256: []
   sha256: fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: Make Your Day/Make_Your_Day_881042_README.md
+  related_sha256: []
   sha256: 00524607a1437b74448526cc5cbc5f3cc73d075dccbc9bc0e6114c714d2c369c
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
   path: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+  related_sha256: []
   sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: 3177a89a3c8c96fac842461cf51e5c22adb54954bd0cc80b95b11743b9ccbc9f
   path: Make Your Day/Make_Your_Day_881042_reconstructed_clean.txt
+  related_sha256: []
   sha256: 465e38a658e6a3a7abf3b8693714d8f3c297eb68c5e1f030ccb1f84a3d2da44e
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: Make Your Day/Make_Your_Day_881042_reconstruction_notes.md
+  related_sha256: []
   sha256: 1bbeeb6c5a9c2bba8ca1091559699481ae3d67db86081d2d89a70e49665af389

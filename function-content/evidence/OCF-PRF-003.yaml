@@ -83,25 +83,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
   path: +Transcripts From available tapes/Synchronizing/Synchronizing.lrc
+  related_sha256:
+  - 6aa7d73e1a812fd67d1c62fca150518a06824c84c615ed2a91386200723c19d6
+  - 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
   sha256: 934e8a438579187e79d0aff34fe232d8d57a7cfa6244d583f7e68dffbb3f424e
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Synchronizing/Synchronizing.ocr.pdf
+  related_sha256: []
   sha256: 7aaa9a8d96f0e2d8dec6dca0a65a18de415b3a06a814daff759a309328c877f1
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
   path: +Transcripts From available tapes/Synchronizing/Synchronizing.srt
+  related_sha256:
+  - 934e8a438579187e79d0aff34fe232d8d57a7cfa6244d583f7e68dffbb3f424e
+  - 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
   sha256: 6aa7d73e1a812fd67d1c62fca150518a06824c84c615ed2a91386200723c19d6
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
   path: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+  related_sha256:
+  - 6aa7d73e1a812fd67d1c62fca150518a06824c84c615ed2a91386200723c19d6
+  - 934e8a438579187e79d0aff34fe232d8d57a7cfa6244d583f7e68dffbb3f424e
   sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Synchronizing/folder.jpg
+  related_sha256: []
   sha256: 74b4e85915e862a9881fc936b2b93475c3a69eddc046b3b5a91e507b6b11857b

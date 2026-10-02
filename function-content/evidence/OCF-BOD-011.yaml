@@ -77,20 +77,33 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
   path: +Transcripts From available tapes/Passages/Passages.lrc
+  related_sha256:
+  - 5e62b5d2207e4507b13bcba6911685c64643b4ab5e4b99b2863d233dbb3d4e85
+  - d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
   sha256: 1be14d7210af703f0ccadf16802253399540cfac3bb0f64a8a5b68f5c7123b03
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
   path: +Transcripts From available tapes/Passages/Passages.srt
+  related_sha256:
+  - 1be14d7210af703f0ccadf16802253399540cfac3bb0f64a8a5b68f5c7123b03
+  - d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
   sha256: 5e62b5d2207e4507b13bcba6911685c64643b4ab5e4b99b2863d233dbb3d4e85
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
   path: +Transcripts From available tapes/Passages/Passages.txt
+  related_sha256:
+  - 1be14d7210af703f0ccadf16802253399540cfac3bb0f64a8a5b68f5c7123b03
+  - 5e62b5d2207e4507b13bcba6911685c64643b4ab5e4b99b2863d233dbb3d4e85
   sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Passages/folder.jpg
+  related_sha256: []
   sha256: e7df09f56add830d7e44044d6214da954ee354d7315153b2fe415db397698683

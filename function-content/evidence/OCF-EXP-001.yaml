@@ -74,26 +74,40 @@ schema_version: '1.0'
 sources:
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Möbius West/Moebius West.ocr.pdf
+  related_sha256: []
   sha256: 9a4611e8df6066bbf7a3e6fde5a56a35a0cefaac3a15e63aafe97ad99371b86e
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
   path: +Transcripts From available tapes/Möbius West/Möbius West.lrc
+  related_sha256:
+  - 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+  - cf5ee3c1fad7e9c4f4def8d27d06c4e689bb611c6d4c37bdbb50532d42c73fd0
   sha256: ff2b4b3db8606e96e591c88bccc41a95ba439f53bb384e453d6ba65384045e06
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
   path: +Transcripts From available tapes/Möbius West/Möbius West.srt
+  related_sha256:
+  - 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+  - ff2b4b3db8606e96e591c88bccc41a95ba439f53bb384e453d6ba65384045e06
   sha256: cf5ee3c1fad7e9c4f4def8d27d06c4e689bb611c6d4c37bdbb50532d42c73fd0
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
   path: +Transcripts From available tapes/Möbius West/Möbius West.txt
+  related_sha256:
+  - cf5ee3c1fad7e9c4f4def8d27d06c4e689bb611c6d4c37bdbb50532d42c73fd0
+  - ff2b4b3db8606e96e591c88bccc41a95ba439f53bb384e453d6ba65384045e06
   sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Möbius West/folder.jpg
+  related_sha256: []
   sha256: c35a25b6ae30e756b996c2b1a2388fb8fd4f9d46846aee075b067639fd3112be

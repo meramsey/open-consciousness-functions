@@ -115,26 +115,33 @@ schema_version: '1.0'
 sources:
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: Short Fix/Short Fix.ocr.pdf
+  related_sha256: []
   sha256: ad546da097973b21ab42fc58e5e31e4a2a5aadfb7a364ea70881b3f9a316a4d1
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: Short Fix/Short_Fix_881039_README.md
+  related_sha256: []
   sha256: a1e2d857326e3203b4a998f3b556cf5bebec040e2297c499e6f4158c6fcc0298
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: 6d4063d3171051f524453a2a88536acaae6520025063e0c05c459c41d5574d0e
   path: Short Fix/Short_Fix_881039_reconstructed_annotated.txt
+  related_sha256: []
   sha256: 74c0e454c93b9633f2d6ee65d42db44bac0ccf99198f8733c49e9d31be4807ed
 - authentication: unverified
   completeness: reconstruction; historical completeness not applicable
   evidence_class: reconstructed_mockup
+  normalized_content_sha256: 39032739f1a05a9088c8ee02f7fcd8ad24cf893225f971935b8524d00e62367d
   path: Short Fix/Short_Fix_881039_reconstructed_clean.txt
+  related_sha256: []
   sha256: c4c9889958374fa4ea8e8971418c79764cfeb6e841bd3eabd7581bd06b1bc074
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: secondary_description
   path: Short Fix/Short_Fix_881039_reconstruction_notes.md
+  related_sha256: []
   sha256: 7bc7773efd96848e896652cb25ec4b7c7d77eafd577a2cc43ee017c990f850da

@@ -81,25 +81,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
   path: +Transcripts From available tapes/Eight-Great/Eight-Great.lrc
+  related_sha256:
+  - 2a28498bfc332ec1eb83164795be43324bdc4fa02596ef7d019bcce4b24a48de
+  - 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
   sha256: cdf2d2b43c4ad16b5212fa77083d4808a639061419d84a24a7c6c19f801428ea
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Eight-Great/Eight-Great.ocr.pdf
+  related_sha256: []
   sha256: defa97c8964de539965d3ab973114d7fa2da57542ceca5e975707fee3b740986
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
   path: +Transcripts From available tapes/Eight-Great/Eight-Great.srt
+  related_sha256:
+  - 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+  - cdf2d2b43c4ad16b5212fa77083d4808a639061419d84a24a7c6c19f801428ea
   sha256: 2a28498bfc332ec1eb83164795be43324bdc4fa02596ef7d019bcce4b24a48de
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
   path: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+  related_sha256:
+  - 2a28498bfc332ec1eb83164795be43324bdc4fa02596ef7d019bcce4b24a48de
+  - cdf2d2b43c4ad16b5212fa77083d4808a639061419d84a24a7c6c19f801428ea
   sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Eight-Great/folder.jpg
+  related_sha256: []
   sha256: f75d6a65f728de08acf24770e8e9423de8e61617e44fa36dc6368aa8a0bb4852

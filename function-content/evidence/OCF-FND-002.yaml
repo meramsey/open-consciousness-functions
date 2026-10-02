@@ -82,25 +82,35 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 7ead8c8f9df76d179810855f5e4c3f4b218b646dc6ecef7aaab98d32b056d96b
   path: +Transcripts From available tapes/Attention/Attention.lrc
+  related_sha256:
+  - 4521bc85e45926e66fd073988a54d39dbd1ad43a3c1a3f4255178917bcbc903d
   sha256: f12e20c5ef3020bef08563ad305d5c34fac9e6285f85c4808fe12607da6f21b6
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Attention/Attention.ocr.pdf
+  related_sha256: []
   sha256: 4247e474e015772b0af2328938bbcffae1ad15a44d089206b3c7654841909f71
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 7ead8c8f9df76d179810855f5e4c3f4b218b646dc6ecef7aaab98d32b056d96b
   path: +Transcripts From available tapes/Attention/Attention.srt
+  related_sha256:
+  - f12e20c5ef3020bef08563ad305d5c34fac9e6285f85c4808fe12607da6f21b6
   sha256: 4521bc85e45926e66fd073988a54d39dbd1ad43a3c1a3f4255178917bcbc903d
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
   path: +Transcripts From available tapes/Attention/Attention.txt
+  related_sha256: []
   sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Attention/folder.jpg
+  related_sha256: []
   sha256: e9e8b798868135365ea1702c699daf849c9e78f467ab3d89663f87d177e9f8e6

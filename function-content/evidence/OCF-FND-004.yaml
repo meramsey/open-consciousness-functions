@@ -87,25 +87,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
   path: +Transcripts From available tapes/Relax/Relax.lrc
+  related_sha256:
+  - c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+  - ceb0f64951e935652c198bdd436b8aa8322f296625aaa38779fc0638964b30c4
   sha256: f1ac45a76aa43a7647b9fe83033bc04d6b97cf616885bcea18efa827dec8d2fb
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Relax/Relax.ocr.pdf
+  related_sha256: []
   sha256: ce6de3e5dbba2cf93626da37e4157303caca345953d0990b5f21504a469a41e6
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
   path: +Transcripts From available tapes/Relax/Relax.srt
+  related_sha256:
+  - c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+  - f1ac45a76aa43a7647b9fe83033bc04d6b97cf616885bcea18efa827dec8d2fb
   sha256: ceb0f64951e935652c198bdd436b8aa8322f296625aaa38779fc0638964b30c4
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
   path: +Transcripts From available tapes/Relax/Relax.txt
+  related_sha256:
+  - ceb0f64951e935652c198bdd436b8aa8322f296625aaa38779fc0638964b30c4
+  - f1ac45a76aa43a7647b9fe83033bc04d6b97cf616885bcea18efa827dec8d2fb
   sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Relax/folder.jpg
+  related_sha256: []
   sha256: 2dafabac162157573f5e6dd81885562368c2115e8e6f9244cf353223a6c0c081

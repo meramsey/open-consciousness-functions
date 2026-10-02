@@ -82,25 +82,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
   path: +Transcripts From available tapes/Imprint/Imprint.lrc
+  related_sha256:
+  - 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+  - ab8de4e160d2ac2c511e5f486fc1097a873e94fd9a9f8908aef1edb90684852d
   sha256: 97133fe82cd64df199750e2b7331d468b02dcff2c7e740a4dbc27ad80fbd899f
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Imprint/Imprint.ocr.pdf
+  related_sha256: []
   sha256: 7e82dd7172c41ccb219970dd598486825868b590b22a3cd926301856b60d05d8
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
   path: +Transcripts From available tapes/Imprint/Imprint.srt
+  related_sha256:
+  - 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+  - 97133fe82cd64df199750e2b7331d468b02dcff2c7e740a4dbc27ad80fbd899f
   sha256: ab8de4e160d2ac2c511e5f486fc1097a873e94fd9a9f8908aef1edb90684852d
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
   path: +Transcripts From available tapes/Imprint/Imprint.txt
+  related_sha256:
+  - 97133fe82cd64df199750e2b7331d468b02dcff2c7e740a4dbc27ad80fbd899f
+  - ab8de4e160d2ac2c511e5f486fc1097a873e94fd9a9f8908aef1edb90684852d
   sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Imprint/folder.jpg
+  related_sha256: []
   sha256: 9d96aacfaf9283e0df265fe2919a8449ebe4fd3257456043dc8b446841989500

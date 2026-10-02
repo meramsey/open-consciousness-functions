@@ -63,26 +63,40 @@ schema_version: '1.0'
 sources:
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/De-Tox Body/De-Tox - Body.ocr.pdf
+  related_sha256: []
   sha256: afb55ad44396eb21d51fac0ec8477b623b0ef57823e2d571acf03735a2264255
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
   path: +Transcripts From available tapes/De-Tox Body/De-Tox Body.lrc
+  related_sha256:
+  - 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+  - 54cdd690b3e51711a8447ae32dbaa9d4e687ebd1a30a983886ea78ab684e8e5f
   sha256: 4a6423be9ac6cee29466049f0d12c89f8e69cf7343bf7e180334031aa35c2244
 - authentication: operator-designated
   completeness: explicit gaps
   evidence_class: partial_source_transcript
+  normalized_content_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
   path: +Transcripts From available tapes/De-Tox Body/De-Tox Body.srt
+  related_sha256:
+  - 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+  - 4a6423be9ac6cee29466049f0d12c89f8e69cf7343bf7e180334031aa35c2244
   sha256: 54cdd690b3e51711a8447ae32dbaa9d4e687ebd1a30a983886ea78ab684e8e5f
 - authentication: operator-designated
   completeness: explicit gaps
   evidence_class: partial_source_transcript
+  normalized_content_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
   path: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+  related_sha256:
+  - 4a6423be9ac6cee29466049f0d12c89f8e69cf7343bf7e180334031aa35c2244
+  - 54cdd690b3e51711a8447ae32dbaa9d4e687ebd1a30a983886ea78ab684e8e5f
   sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/De-Tox Body/folder.jpg
+  related_sha256: []
   sha256: a4a148355e370f9f1ae3e81c9db20651cefda7aa3068af78df624e64587c32c0

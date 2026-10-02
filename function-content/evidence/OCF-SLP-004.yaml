@@ -69,25 +69,39 @@ sources:
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
   path: +Transcripts From available tapes/Wake Know/Wake Know.lrc
+  related_sha256:
+  - 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+  - c4665cf9a768f19c7ddd88fd509191f819b3496a2f337a4c69860004a4fc79e6
   sha256: cedd3969fa7c501c35286821ad2a1a53cd3e1cdab2c2f8624b0d666fda54fe52
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
   path: +Transcripts From available tapes/Wake Know/Wake Know.srt
+  related_sha256:
+  - 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+  - cedd3969fa7c501c35286821ad2a1a53cd3e1cdab2c2f8624b0d666fda54fe52
   sha256: c4665cf9a768f19c7ddd88fd509191f819b3496a2f337a4c69860004a4fc79e6
 - authentication: operator-designated
   completeness: pending-source-review; apparent boundaries do not prove completeness
   evidence_class: source_transcript
+  normalized_content_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
   path: +Transcripts From available tapes/Wake Know/Wake Know.txt
+  related_sha256:
+  - c4665cf9a768f19c7ddd88fd509191f819b3496a2f337a4c69860004a4fc79e6
+  - cedd3969fa7c501c35286821ad2a1a53cd3e1cdab2c2f8624b0d666fda54fe52
   sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
 - authentication: unverified
   completeness: pending-source-review
-  evidence_class: unknown
+  evidence_class: secondary_description
   path: +Transcripts From available tapes/Wake Know/Wake-Know.ocr.pdf
+  related_sha256: []
   sha256: 1e3d3d17a8bde2474b4059bd8015b61ac05b38692be3fc0d86864228c9d0a2d6
 - authentication: unverified
   completeness: pending-source-review
   evidence_class: unknown
   path: +Transcripts From available tapes/Wake Know/folder.jpg
+  related_sha256: []
   sha256: 12eeee310958848c5925ff21010880e2b29775f55519d6df32e83fb10e8df225
