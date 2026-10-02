@@ -129,10 +129,7 @@ def _parse_slot(
         end = section_end if section_end is not None else section_start + line_seconds
         count = len(untimed)
         gap = (end - section_start) / (count + 1) if count else 0.0
-        events = [
-            (section_start + gap * (index + 1), line)
-            for index, line in enumerate(untimed)
-        ]
+        events = [(section_start + gap * (index + 1), line) for index, line in enumerate(untimed)]
         events.extend(timed)
         return sorted(events, key=lambda item: item[0])
 
@@ -196,8 +193,7 @@ def _slot_text(section: dict[str, Any], slots: dict[str, str]) -> tuple[str | No
     if from_slot:
         if from_slot not in slots:
             raise OCFError(
-                f"section {section['id']} reuses slot {from_slot!r} "
-                f"but it was not supplied"
+                f"section {section['id']} reuses slot {from_slot!r} but it was not supplied"
             )
         return None, slots[from_slot]
     return None, ""
@@ -247,7 +243,8 @@ def resolve_section_events(
     events: list[dict[str, Any]] = []
     for line in section.get("lines", []):
         event: dict[str, Any] = {
-            key: value for key, value in line.items()
+            key: value
+            for key, value in line.items()
             if key not in ("at", "text", "narration_key", "variables")
         }
         if "after" in line:
@@ -304,7 +301,9 @@ def compose(
     declared += list(template.get("slots", {}).get("optional", []))
     unknown = set(slots) - set(declared)
     if unknown:
-        raise OCFError(f"unknown slot(s) for template {template['id']}: {', '.join(sorted(unknown))}")
+        raise OCFError(
+            f"unknown slot(s) for template {template['id']}: {', '.join(sorted(unknown))}"
+        )
     defaults = template.get("defaults") or {}
     missing = [s for s in template.get("slots", {}).get("required", []) if s not in slots]
     if missing:
@@ -321,11 +320,18 @@ def compose(
     used_slots: dict[str, list[str]] = {}
     counter = 0
     features = set(template.get("features") or []) | set(enabled_stages or [])
-    available = {section["enabled_by"] for section in template["sections"] if section.get("enabled_by")}
+    available = {
+        section["enabled_by"] for section in template["sections"] if section.get("enabled_by")
+    }
     if features - available:
-        raise OCFError(f"unknown optional stage feature(s): {', '.join(sorted(features - available))}")
-    sections = [section for section in template["sections"]
-                if not section.get("enabled_by") or section["enabled_by"] in features]
+        raise OCFError(
+            f"unknown optional stage feature(s): {', '.join(sorted(features - available))}"
+        )
+    sections = [
+        section
+        for section in template["sections"]
+        if not section.get("enabled_by") or section["enabled_by"] in features
+    ]
     starts = [float(section.get("start", 0.0)) for section in sections]
     stage_provenance = []
     previous = None
@@ -341,19 +347,37 @@ def compose(
             overrides = section.get("narration") or {}
             unknown_events = set(overrides) - {event["id"] for event in stage["events"]}
             if unknown_events:
-                raise OCFError(f"stage {section['id']}: unknown narration override event(s): {', '.join(sorted(unknown_events))}")
+                raise OCFError(
+                    f"stage {section['id']}: unknown narration override event(s): {', '.join(sorted(unknown_events))}"
+                )
             for event in stage["events"]:
                 if event["id"] in overrides:
-                    if set(overrides[event["id"]]) - {"text", "narration_key", "variables", "locale"}:
-                        raise OCFError("narration override cannot alter semantic, DSP, cue or timing fields")
-                    if ("text" in overrides[event["id"]]) == ("narration_key" in overrides[event["id"]]):
+                    if set(overrides[event["id"]]) - {
+                        "text",
+                        "narration_key",
+                        "variables",
+                        "locale",
+                    }:
+                        raise OCFError(
+                            "narration override cannot alter semantic, DSP, cue or timing fields"
+                        )
+                    if ("text" in overrides[event["id"]]) == (
+                        "narration_key" in overrides[event["id"]]
+                    ):
                         raise OCFError("narration override needs exactly one text or narration_key")
                     event.pop("text", None)
                     event.pop("narration_key", None)
                     event.update(overrides[event["id"]])
-            events = stage_events(stage, section["id"], start=float(section.get("start", 0)),
-                                  after=section.get("after"), previous=previous)
-            stage_provenance.append({"id": stage["id"], "version": stage["version"], "instance": section["id"]})
+            events = stage_events(
+                stage,
+                section["id"],
+                start=float(section.get("start", 0)),
+                after=section.get("after"),
+                previous=previous,
+            )
+            stage_provenance.append(
+                {"id": stage["id"], "version": stage["version"], "instance": section["id"]}
+            )
         else:
             stage = None
             events = resolve_section_events(
@@ -375,9 +399,22 @@ def compose(
                     **{
                         key: value
                         for key, value in event.items()
-                        if key in ("text", "narration_key", "variables", "after", "offset",
-                                   "semantic", "dsp", "auditory_cue", "timing", "state",
-                                   "cue_id", "narration_required", "intentional_repeat")
+                        if key
+                        in (
+                            "text",
+                            "narration_key",
+                            "variables",
+                            "after",
+                            "offset",
+                            "semantic",
+                            "dsp",
+                            "auditory_cue",
+                            "timing",
+                            "state",
+                            "cue_id",
+                            "narration_required",
+                            "intentional_repeat",
+                        )
                         or key in ("function_id", "locale")
                     },
                 }
@@ -385,7 +422,10 @@ def compose(
             previous = timeline[-1]["id"]
         if slot_name and slot_name in slots:
             used_slots[slot_name] = [str(event.get("text", "")) for event in events]
-        section_doc: dict[str, Any] = {"id": section["id"], "type": section.get("type") or (stage or {}).get("type", "custom")}
+        section_doc: dict[str, Any] = {
+            "id": section["id"],
+            "type": section.get("type") or (stage or {}).get("type", "custom"),
+        }
         if section.get("role"):
             section_doc["role"] = section["role"]
         if section.get("gain_db") is not None:
@@ -423,14 +463,19 @@ def compose(
         from .indexes import load_all_functions
         from .locale import LocaleCatalog, iter_events
 
-        owner = next((record for record in load_all_functions() if record.id == doc["function_id"]), None)
+        owner = next(
+            (record for record in load_all_functions() if record.id == doc["function_id"]), None
+        )
         if owner is None:
             raise OCFError(f"unknown function_id: {doc['function_id']}")
         catalog = LocaleCatalog()
         for event in iter_events(doc):
             entry = catalog.canonical.get(event.get("narration_key")) if catalog.canonical else None
             if entry:
-                metadata = {"command": owner.canonical_command, "function_name": owner.canonical_name}
+                metadata = {
+                    "command": owner.canonical_command,
+                    "function_name": owner.canonical_name,
+                }
                 values = event.setdefault("variables", {})
                 for name in entry.variables:
                     if name in metadata:
@@ -497,7 +542,9 @@ def run_compose(args: Any) -> int:
     write_text_atomic(output, body)
     print(f"Composed {template['id']} -> {output} ({len(doc['sections'])} sections)")
     if template.get("content_status") == "architecture-draft":
-        print("Architecture draft: original narration/timing is pending; missing required narration blocks rendering.")
+        print(
+            "Architecture draft: original narration/timing is pending; missing required narration blocks rendering."
+        )
     if locale:
         print(f"Locale: {doc.get('locale')}")
     if slots:

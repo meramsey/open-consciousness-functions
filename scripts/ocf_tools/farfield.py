@@ -65,9 +65,7 @@ def run_farfield(args: list[str]) -> subprocess.CompletedProcess[str]:
     status = check_farfield()
     if not status.available or not status.executable:
         raise OCFFarfieldMissing(installation_guidance())
-    return subprocess.run(
-        [status.executable, *args], check=False, text=True, capture_output=True
-    )
+    return subprocess.run([status.executable, *args], check=False, text=True, capture_output=True)
 
 
 class OCFFarfieldMissing(RuntimeError):
@@ -77,31 +75,27 @@ class OCFFarfieldMissing(RuntimeError):
 def farfield_preset_dirs() -> list[Path]:
     """Directories holding Farfield session YAMLs, in priority order.
 
-    Farfield's wheel ships no presets (``RECORD`` has zero entries for them);
-    they live in the source checkout that PEP 610 ``direct_url.json`` records.
-    OCF therefore resolves a preset name against, in order:
+     Farfield's wheel ships no presets (``RECORD`` has zero entries for them);
+     they live in the source checkout that PEP 610 ``direct_url.json`` records.
+     OCF therefore resolves a preset name against, in order:
 
-   1. ``OCF_FARFIELD_PRESETS_DIR`` (``os.pathsep``-separated), when set;
-   2. ``audio/background/presets/farfield/`` - the upstream-mirrored presets OCF
-       commits, so a build depends on nothing outside the repository;
-   3. ``audio/background/presets/`` - OCF-authored sessions composed from those
-       mirrors (searched after the mirrors, so a mirror always wins a name
-       clash);
-   4. ``<farfield source checkout>/presets`` - an extension tier that supplies
-      any name the repository does not carry.
+    1. ``OCF_FARFIELD_PRESETS_DIR`` (``os.pathsep``-separated), when set;
+    2. ``audio/background/presets/farfield/`` - the upstream-mirrored presets OCF
+        commits, so a build depends on nothing outside the repository;
+    3. ``audio/background/presets/`` - OCF-authored sessions composed from those
+        mirrors (searched after the mirrors, so a mirror always wins a name
+        clash);
+    4. ``<farfield source checkout>/presets`` - an extension tier that supplies
+       any name the repository does not carry.
 
-    The committed copies are authoritative because a build must be
-    reproducible from the repository alone; the checkout can differ between
-    machines or Farfield versions. ``OCF_FARFIELD_PRESETS_DIR`` only *raises*
-    priority - the committed tier always stays in the chain, so an override can
-    shadow a preset but never make a committed one unreachable.
+     The committed copies are authoritative because a build must be
+     reproducible from the repository alone; the checkout can differ between
+     machines or Farfield versions. ``OCF_FARFIELD_PRESETS_DIR`` only *raises*
+     priority - the committed tier always stays in the chain, so an override can
+     shadow a preset but never make a committed one unreachable.
     """
     override = os.environ.get("OCF_FARFIELD_PRESETS_DIR", "")
-    dirs = [
-        Path(part).expanduser()
-        for part in override.split(os.pathsep)
-        if part.strip()
-    ]
+    dirs = [Path(part).expanduser() for part in override.split(os.pathsep) if part.strip()]
     presets_root = REPO_ROOT / "audio" / "background" / "presets"
     dirs.append(presets_root / "farfield")
     dirs.append(presets_root)
@@ -131,9 +125,7 @@ def _source_preset_dirs() -> list[Path]:
     # <venv>/bin/python -> <venv>
     prefixes = [interpreter.parent.parent] if interpreter.parent.name == "bin" else []
     for prefix in prefixes:
-        for dist in sorted(
-            (prefix / "lib").glob("python*/site-packages/farfield-*.dist-info")
-        ):
+        for dist in sorted((prefix / "lib").glob("python*/site-packages/farfield-*.dist-info")):
             record = dist / "direct_url.json"
             if not record.is_file():
                 continue

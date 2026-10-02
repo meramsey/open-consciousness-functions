@@ -88,9 +88,7 @@ def test_plural_and_selectordinal():
 
 
 def test_plural_offset_uses_offset_value():
-    message = (
-        "{count, plural, offset:1 =0 {nobody} one {you and # other} other {you and # others}}"
-    )
+    message = "{count, plural, offset:1 =0 {nobody} one {you and # other} other {you and # others}}"
     assert format_message(message, {"count": 0}) == "nobody"
     # CLDR selects the branch for (count - offset), and '#' prints that value.
     assert format_message(message, {"count": 1}) == "you and 0 others"
@@ -202,9 +200,7 @@ def test_pseudo_pack_files_round_trip(tmp_path: Path):
             "locale": pseudo.locale,
             "domain": "ui" if filename == "ui.yaml" else "narration",
             "entries": {
-                key: entry.text
-                for key, entry in pseudo.entries.items()
-                if entry.file == filename
+                key: entry.text for key, entry in pseudo.entries.items() if entry.file == filename
             },
         }
         (root / filename).write_text(yaml.safe_dump(payload), encoding="utf-8")
@@ -239,9 +235,7 @@ def test_regional_tag_is_served_by_installed_parent():
     assert catalog.spoken("session.focus-cycle.opener", "es-MX") == catalog.spoken(
         "session.focus-cycle.opener", "es"
     )
-    assert catalog.text("locale.list.header", "es-MX") == catalog.text(
-        "locale.list.header", "es"
-    )
+    assert catalog.text("locale.list.header", "es-MX") == catalog.text("locale.list.header", "es")
 
 
 def test_strict_spoken_without_any_pack_names_the_override():
@@ -254,9 +248,7 @@ def test_strict_spoken_without_any_pack_names_the_override():
 
 def test_ui_may_fall_back_to_canonical():
     catalog = LocaleCatalog()
-    assert catalog.text("locale.list.header", "fr") == catalog.text(
-        "locale.list.header", "en-US"
-    )
+    assert catalog.text("locale.list.header", "fr") == catalog.text("locale.list.header", "en-US")
 
 
 def test_resolve_document_keeps_keys_and_records_provenance():

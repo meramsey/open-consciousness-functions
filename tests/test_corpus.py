@@ -10,11 +10,22 @@ from ocf_tools.validators import _load_schema, validate_against_schema
 
 
 def test_mockup_statement_outranks_source_folder():
-    assert classify(Path("+Transcripts From available tapes/Test/complete.txt"), "A reconstructed transcript, not a recovered transcript.")[0] == "reconstructed_mockup"
+    assert (
+        classify(
+            Path("+Transcripts From available tapes/Test/complete.txt"),
+            "A reconstructed transcript, not a recovered transcript.",
+        )[0]
+        == "reconstructed_mockup"
+    )
     assert classify(Path("complete.txt"), "A very fluent complete instruction.")[0] == "unknown"
     assert classify(Path("notes.md"), "Research about a function")[0] == "secondary_description"
     assert classify(Path("function.pdf"), None)[0] == "unknown"
-    assert classify(Path("annotated.txt"), "This is a reconstruction, not a recovered original transcript.")[0] == "reconstructed_mockup"
+    assert (
+        classify(
+            Path("annotated.txt"), "This is a reconstruction, not a recovered original transcript."
+        )[0]
+        == "reconstructed_mockup"
+    )
 
 
 def test_partial_source_and_locator_candidates_not_verbatim_exports():
@@ -55,5 +66,17 @@ def test_cli_json_and_protect_reference_output(tmp_path, capsys):
     (tmp_path / "unknown.txt").write_text("No provenance statement")
     assert main(["corpus", "inventory", "--root", str(tmp_path)]) == 0
     assert json.loads(capsys.readouterr().out)["counts"]["file_count"] == 1
-    assert main(["corpus", "inventory", "--root", str(tmp_path), "--output", str(tmp_path / "derived.json")]) == 1
+    assert (
+        main(
+            [
+                "corpus",
+                "inventory",
+                "--root",
+                str(tmp_path),
+                "--output",
+                str(tmp_path / "derived.json"),
+            ]
+        )
+        == 1
+    )
     assert not (tmp_path / "derived.json").exists()

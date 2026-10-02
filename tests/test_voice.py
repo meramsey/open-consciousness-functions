@@ -122,9 +122,7 @@ class TestModelPathExpansion:
 
     def test_expands_tilde_and_env(self, monkeypatch):
         monkeypatch.setenv("OCF_PIPER_DIR", "/opt/piper")
-        assert voice_mod._expand_model_path("~/.ocf/piper/m.onnx").endswith(
-            "/.ocf/piper/m.onnx"
-        )
+        assert voice_mod._expand_model_path("~/.ocf/piper/m.onnx").endswith("/.ocf/piper/m.onnx")
         assert not voice_mod._expand_model_path("~/.ocf/piper/m.onnx").startswith("~")
         assert voice_mod._expand_model_path("$OCF_PIPER_DIR/m.onnx") == "/opt/piper/m.onnx"
 
@@ -190,8 +188,11 @@ class TestOverlapPolicy:
         out = tmp_path / "cut.wav"
         with pytest.raises(OCFError, match="fixed speech overlap"):
             render_narration(
-                simple_timed_doc([0.0, 0.05]), out, backend=FAKE_BACKEND,
-                sample_rate=rate, render_cue=fixed_length_cue(100, rate),
+                simple_timed_doc([0.0, 0.05]),
+                out,
+                backend=FAKE_BACKEND,
+                sample_rate=rate,
+                render_cue=fixed_length_cue(100, rate),
             )
         assert not out.exists()
 
@@ -685,7 +686,11 @@ class TestAudioBuild:
             "schema_version": "1.0",
             "title": "t",
             "sections": [],
-            "template": {"id": "OCF-TPL-SESSION-LEARN-001", "version": "1.0", "origin": "original-ocf"},
+            "template": {
+                "id": "OCF-TPL-SESSION-LEARN-001",
+                "version": "1.0",
+                "origin": "original-ocf",
+            },
         }
         tags = build_mod._resolve_tags(
             {

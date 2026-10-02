@@ -13,7 +13,6 @@ import wave
 from array import array
 
 import pytest
-
 from ocf_tools import audio_build as ab
 from ocf_tools.utils import OCFError
 
@@ -164,7 +163,9 @@ class TestReferenceMasterRender:
         monkeypatch.setattr(
             ab,
             "_decode_to_s16le",
-            lambda path, start=None, seconds=None: _constant_stereo_bytes(seconds or 60.0, 5000, rate),
+            lambda path, start=None, seconds=None: _constant_stereo_bytes(
+                seconds or 60.0, 5000, rate
+            ),
         )
         out, note = ab._render_reference_master("OCF-BG-T", "optional", max_seconds=2.0)
         assert note == "reference-master"
@@ -269,7 +270,7 @@ class TestNarrationGainWindows:
         samples = array("h")
         samples.frombytes(raw)
         loud = samples[0:1000]
-        quiet = samples[rate: rate + 1000]
+        quiet = samples[rate : rate + 1000]
         assert abs(loud[0]) == pytest.approx(10000, abs=2)
         assert abs(quiet[0]) == pytest.approx(631, abs=5)
 

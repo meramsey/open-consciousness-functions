@@ -2,7 +2,9 @@
 
 ## TD-001 — inherited repository-wide lint findings
 
-Status: open; baseline checkpoint `4093063`. The Phase 8C audit compared rule,
+Status: resolved in Phase2B (annotation import, redundant checksum removal,
+import ordering and final newlines; no rule suppressed). Baseline checkpoint
+`4093063`. The Phase 8C audit compared rule,
 file and message signatures against that checkpoint: **15 before, 15 after,
 zero introduced findings**. User approval explicitly excludes this debt as a
 blocker for **OCF Preparation Learning en-US RC1**.

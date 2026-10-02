@@ -440,8 +440,12 @@ def write_timed_doc(path: str | Path, doc: dict, *, overwrite: bool = True) -> N
 # ---------------------------------------------------------------------------
 
 
-def resolve_timeline(doc: dict, *, speech_durations: Mapping[str, float] | None = None,
-                     start_overrides: Mapping[str, float] | None = None) -> tuple[list[ResolvedEvent], list[str]]:
+def resolve_timeline(
+    doc: dict,
+    *,
+    speech_durations: Mapping[str, float] | None = None,
+    start_overrides: Mapping[str, float] | None = None,
+) -> tuple[list[ResolvedEvent], list[str]]:
     """Resolve a timed document into absolute-time events.
 
     Supports a flat top-level ``timeline`` or section-grouped transcripts.
@@ -472,12 +476,16 @@ def resolve_timeline(doc: dict, *, speech_durations: Mapping[str, float] | None 
         for event in events:
             event.section = owners.get(event.id)
     if timeline is not None:
-        events.extend(_resolve_event_list(timeline, None, problems, speech_durations, start_overrides))
+        events.extend(
+            _resolve_event_list(timeline, None, problems, speech_durations, start_overrides)
+        )
     return events, problems
 
 
 def _resolve_event_list(
-    events: list[dict], section: str | None, problems: list[str],
+    events: list[dict],
+    section: str | None,
+    problems: list[str],
     speech_durations: Mapping[str, float] | None = None,
     start_overrides: Mapping[str, float] | None = None,
 ) -> list[ResolvedEvent]:
@@ -527,8 +535,12 @@ def _resolve_event_list(
                 if anchor in ("speech-end", "event-end"):
                     duration = float((speech_durations or {}).get(target, 0))
                     if anchor == "event-end":
-                        duration = max(duration, float((by_id[target].get("dsp") or {}).get("transition_s", 0)))
-                    offset += duration + float((by_id[target].get("timing") or {}).get("pause_after", 0))
+                        duration = max(
+                            duration, float((by_id[target].get("dsp") or {}).get("transition_s", 0))
+                        )
+                    offset += duration + float(
+                        (by_id[target].get("timing") or {}).get("pause_after", 0)
+                    )
                 value = base + offset if base is not None else None
         else:
             value = None  # untimed / unassigned
@@ -647,7 +659,8 @@ def apply_render_timing(doc: dict, render_manifest: dict) -> dict:
             id=str(cue.get("id")) if "#" in str(cue.get("id", "")) else event["id"],
             at=format_timestamp(start),
             ends_at=format_timestamp(start + float(cue["duration"])),
-            text=cue.get("display_text") or " ".join(str(original.get("text", "")).strip() for original in originals),
+            text=cue.get("display_text")
+            or " ".join(str(original.get("text", "")).strip() for original in originals),
         )
         event.pop("after", None)
         event.pop("offset", None)
@@ -660,7 +673,9 @@ def apply_render_timing(doc: dict, render_manifest: dict) -> dict:
         return doc
     view = deepcopy(doc)
     view.pop("sections", None)
-    view["timeline"] = measured + [deepcopy(event) for identifier, event in by_id.items() if identifier not in consumed]
+    view["timeline"] = measured + [
+        deepcopy(event) for identifier, event in by_id.items() if identifier not in consumed
+    ]
     return view
 
 
@@ -1196,27 +1211,31 @@ def run_export(args) -> int:
         except OCFError as exc:
             print(f"error: cannot read render manifest: {exc}", file=sys.stderr)
             return 1
-        recorded_locale = (render_doc.get("voice") or {}).get("locale") or (render_doc.get("narration_resolution") or {}).get("locale")
+        recorded_locale = (render_doc.get("voice") or {}).get("locale") or (
+            render_doc.get("narration_resolution") or {}
+        ).get("locale")
         if recorded_locale:
             from .locale import normalize_tag
 
             if locale_arg and normalize_tag(locale_arg) != normalize_tag(recorded_locale):
-                print("error: render manifest locale does not match requested subtitle locale", file=sys.stderr)
+                print(
+                    "error: render manifest locale does not match requested subtitle locale",
+                    file=sys.stderr,
+                )
                 return 1
             locale_arg = locale_arg or recorded_locale
-    elif any((event.get("timing") or {}).get("anchor", "start") != "start"
-             for _, event in flatten_event_dicts(doc)):
+    elif any(
+        (event.get("timing") or {}).get("anchor", "start") != "start"
+        for _, event in flatten_event_dicts(doc)
+    ):
         print("error: speech-dependent subtitle anchors require a render manifest", file=sys.stderr)
         return 1
     strict = not getattr(args, "allow_fallback", False)
     from .locale import LocalizationError, document_key_usage, resolve_document
 
     if locale_arg or document_key_usage(doc)["keyed"]:
-
         try:
-            doc = resolve_document(
-                doc, locale_arg, strict=strict
-            )
+            doc = resolve_document(doc, locale_arg, strict=strict)
         except LocalizationError as exc:
             print(f"error: {exc}", file=sys.stderr)
             return 1

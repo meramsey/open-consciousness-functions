@@ -21,11 +21,22 @@ def enrich(layers: dict, report: dict) -> dict:
         if item is None:
             continue
         # Only known documentary type refinement, never authentication promotion.
-        if source["evidence_class"] == "unknown" and item["evidence_class"] == "secondary_description":
+        if (
+            source["evidence_class"] == "unknown"
+            and item["evidence_class"] == "secondary_description"
+        ):
             source["evidence_class"] = "secondary_description"
         if item.get("content_sha256"):
             source["normalized_content_sha256"] = item["content_sha256"]
-        source["related_sha256"] = sorted({digest for group in report["content_equivalence_groups"] if source["sha256"] in group["representations"] for digest in group["representations"] if digest != source["sha256"]})
+        source["related_sha256"] = sorted(
+            {
+                digest
+                for group in report["content_equivalence_groups"]
+                if source["sha256"] in group["representations"]
+                for digest in group["representations"]
+                if digest != source["sha256"]
+            }
+        )
     return layers
 
 
@@ -41,7 +52,10 @@ def main():
         if errors:
             raise OCFError(" | ".join(errors))
         if args.apply:
-            write_text_atomic(ROOT / "function-content/evidence" / f"{record.id}.yaml", yaml_safe_dump(layers["evidence"]))
+            write_text_atomic(
+                ROOT / "function-content/evidence" / f"{record.id}.yaml",
+                yaml_safe_dump(layers["evidence"]),
+            )
     print("Validated documentary refinements for55 functions; no authentication or wording changes")
 
 

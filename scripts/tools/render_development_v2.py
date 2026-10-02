@@ -40,7 +40,14 @@ def main():
     prefix = "DEVELOPMENT-AUDITION-V2-OCF-Preparation-Learning-en-US-RC1"
     speech = args.output / f"{prefix}-narration.wav"
     shutil.copyfile(source, speech)
-    for name in ("session-semantic.yaml", "session-resolved.en-US.yaml", "resolved-semantic-event-ledger.yaml", "narration-render-metadata.yaml", "timing-report.yaml", "utterance-timing.csv"):
+    for name in (
+        "session-semantic.yaml",
+        "session-resolved.en-US.yaml",
+        "resolved-semantic-event-ledger.yaml",
+        "narration-render-metadata.yaml",
+        "timing-report.yaml",
+        "utterance-timing.csv",
+    ):
         shutil.copyfile(args.v1 / name, args.output / name)
     for suffix in ("srt", "lrc"):
         shutil.copyfile(next(args.v1.glob(f"*.{suffix}")), args.output / f"{prefix}.{suffix}")
@@ -63,12 +70,78 @@ def main():
 
     master = args.output / f"{prefix}-master.wav"
     mix = "[0:a]aformat=channel_layouts=stereo[n];[1:a]volume=0.15[b];[n][b]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.97:latency=1:level=0[out]"
-    run(["ffmpeg", "-hide_banner", "-y", "-i", str(speech), "-i", str(bed), "-filter_complex", mix, "-map", "[out]", "-ar", "44100", "-ac", "2", "-c:a", "pcm_s24le", "-metadata", "comment=DEVELOPMENT AUDITION V2 — NOT PRODUCTION MASTER", str(master)])
-    for suffix, codec in [("flac", ["-c:a", "flac", "-compression_level", "5"]), ("mp3", ["-c:a", "libmp3lame", "-b:a", "192k"])]:
-        run(["ffmpeg", "-hide_banner", "-y", "-i", str(master), *codec, str(args.output / f"{prefix}-listening.{suffix}")])
-    sources = [ROOT / "scripts/tools/render_development_v2.py", ROOT / "scripts/ocf_tools/semantic_dsp.py", ROOT / "audio/background/state-profiles/OCF-DSP-DEVELOPMENT-V4-001.yaml"]
-    sources += [ROOT / selection["preset_file"] for selection in program["selections"].values() if selection["mode"] == "preset"]
-    result = {"designation": "DEVELOPMENT AUDITION V2 — NOT PRODUCTION MASTER", "git_base": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(), "source_sha256": {str(path.relative_to(ROOT)): _sha(path) for path in sources}, "speech_reused_byte_for_byte": _sha(speech) == _sha(source), "v1_speech_sha256": _sha(source), "v1_render_manifest_sha256": _sha(args.v1 / "render-manifest.yaml"), "total_duration_s": duration, "event_timing": manifest["event_timing"], "narration_timing": manifest["narration_timing"], "DSP": program, "background_gain": .15, "mix_filter": mix, "external_commands": commands, "operational_cues_enabled": False, "artifacts": {path.name: {"sha256": _sha(path), "bytes": path.stat().st_size} for path in args.output.iterdir() if path.is_file() and path.name != "engine.log"}}
+    run(
+        [
+            "ffmpeg",
+            "-hide_banner",
+            "-y",
+            "-i",
+            str(speech),
+            "-i",
+            str(bed),
+            "-filter_complex",
+            mix,
+            "-map",
+            "[out]",
+            "-ar",
+            "44100",
+            "-ac",
+            "2",
+            "-c:a",
+            "pcm_s24le",
+            "-metadata",
+            "comment=DEVELOPMENT AUDITION V2 — NOT PRODUCTION MASTER",
+            str(master),
+        ]
+    )
+    for suffix, codec in [
+        ("flac", ["-c:a", "flac", "-compression_level", "5"]),
+        ("mp3", ["-c:a", "libmp3lame", "-b:a", "192k"]),
+    ]:
+        run(
+            [
+                "ffmpeg",
+                "-hide_banner",
+                "-y",
+                "-i",
+                str(master),
+                *codec,
+                str(args.output / f"{prefix}-listening.{suffix}"),
+            ]
+        )
+    sources = [
+        ROOT / "scripts/tools/render_development_v2.py",
+        ROOT / "scripts/ocf_tools/semantic_dsp.py",
+        ROOT / "audio/background/state-profiles/OCF-DSP-DEVELOPMENT-V4-001.yaml",
+    ]
+    sources += [
+        ROOT / selection["preset_file"]
+        for selection in program["selections"].values()
+        if selection["mode"] == "preset"
+    ]
+    result = {
+        "designation": "DEVELOPMENT AUDITION V2 — NOT PRODUCTION MASTER",
+        "git_base": subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
+        ).strip(),
+        "source_sha256": {str(path.relative_to(ROOT)): _sha(path) for path in sources},
+        "speech_reused_byte_for_byte": _sha(speech) == _sha(source),
+        "v1_speech_sha256": _sha(source),
+        "v1_render_manifest_sha256": _sha(args.v1 / "render-manifest.yaml"),
+        "total_duration_s": duration,
+        "event_timing": manifest["event_timing"],
+        "narration_timing": manifest["narration_timing"],
+        "DSP": program,
+        "background_gain": 0.15,
+        "mix_filter": mix,
+        "external_commands": commands,
+        "operational_cues_enabled": False,
+        "artifacts": {
+            path.name: {"sha256": _sha(path), "bytes": path.stat().st_size}
+            for path in args.output.iterdir()
+            if path.is_file() and path.name != "engine.log"
+        },
+    }
     (args.output / "render-manifest.yaml").write_text(yaml.safe_dump(result, sort_keys=False))
     print(f"Completed V2: {duration:.6f}s -> {args.output}")
 

@@ -26,7 +26,11 @@ def preserve(source: Path, output: Path) -> dict:
     if not files:
         raise ValueError(f"no audition artifacts available: {source}")
     output.mkdir(parents=True, exist_ok=True)
-    manifest = {"schema_version": "1.0", "operation": "byte-preservation; no generation or approval", "files": []}
+    manifest = {
+        "schema_version": "1.0",
+        "operation": "byte-preservation; no generation or approval",
+        "files": [],
+    }
     for path in files:
         relative = path.relative_to(source) if source.is_dir() else Path(path.name)
         target = output / relative
@@ -39,7 +43,9 @@ def preserve(source: Path, output: Path) -> dict:
         after = fingerprint(target)
         if before != after or fingerprint(path) != before:
             raise ValueError(f"source/copy identity changed: {path}")
-        manifest["files"].append({"file": relative.as_posix(), "sha256": after, "bytes": target.stat().st_size})
+        manifest["files"].append(
+            {"file": relative.as_posix(), "sha256": after, "bytes": target.stat().st_size}
+        )
     return manifest
 
 
@@ -50,7 +56,9 @@ def main() -> None:
     args = parser.parse_args()
     data = preserve(args.source, args.output)
     name = args.source.name if args.source.is_file() else "directory"
-    (args.output / f"preservation-{name}.json").write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    (args.output / f"preservation-{name}.json").write_text(
+        json.dumps(data, indent=2) + "\n", encoding="utf-8"
+    )
     print(f"Verified {len(data['files'])} preserved artifact(s)")
 
 

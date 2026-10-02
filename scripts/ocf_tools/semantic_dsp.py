@@ -65,12 +65,18 @@ def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: 
         if not target:
             raise OCFError(f"state event {event['id']} has no target state")
         if stated_from and stated_from != current:
-            raise OCFError(f"state event {event['id']}: from {stated_from} disagrees with active {current}")
+            raise OCFError(
+                f"state event {event['id']}: from {stated_from} disagrees with active {current}"
+            )
         start = float(timing[event["id"]]["at"])
-        candidates = [float(timing[child["id"]]["at"]) for child in events
-                      if child.get("after") == event["id"] and child["id"] in timing
-                      and (child.get("timing") or {}).get("anchor") in ("speech-end", "event-end")
-                      and float(timing[child["id"]]["at"]) > start]
+        candidates = [
+            float(timing[child["id"]]["at"])
+            for child in events
+            if child.get("after") == event["id"]
+            and child["id"] in timing
+            and (child.get("timing") or {}).get("anchor") in ("speech-end", "event-end")
+            and float(timing[child["id"]]["at"]) > start
+        ]
         declared = (event.get("dsp") or {}).get("transition_s")
         if declared is not None:
             end = start + float(declared)
@@ -84,10 +90,20 @@ def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: 
         if not (math.isfinite(start) and math.isfinite(end) and 0 <= start <= end <= duration):
             raise OCFError(f"invalid state transition window: {event['id']}")
         if transitions and start < transitions[-1]["end_s"] - 1e-6:
-            raise OCFError("overlapping state transition windows; configure explicitly rather than silently retime")
-        transitions.append({"event_id": event["id"], "semantic": event.get("semantic"),
-                            "from": current, "to": target, "start_s": start, "end_s": end,
-                            "envelope_provenance": provenance})
+            raise OCFError(
+                "overlapping state transition windows; configure explicitly rather than silently retime"
+            )
+        transitions.append(
+            {
+                "event_id": event["id"],
+                "semantic": event.get("semantic"),
+                "from": current,
+                "to": target,
+                "start_s": start,
+                "end_s": end,
+                "envelope_provenance": provenance,
+            }
+        )
         required.update((current, target))
         current = target
     if not transitions:
@@ -105,34 +121,59 @@ def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: 
             continue
         manifest = _resolve_background_manifest(choice["preset"])
         if not manifest:
-            raise OCFError(f"required state {state}: unknown background manifest {choice['preset']}")
+            raise OCFError(
+                f"required state {state}: unknown background manifest {choice['preset']}"
+            )
         if manifest["engine"] in ("farfield", "sbagenx"):
             preset = (manifest.get("preset") or {}).get("file")
             if not preset or not (REPO_ROOT / preset).is_file():
                 raise OCFError(f"required state {state}: declared preset file unavailable")
-        selections[state] = {"mode": "preset", "preset_id": manifest["id"], "backend": manifest["engine"],
-                             "preset_file": (manifest.get("preset") or {}).get("file"),
-                             "provenance": manifest.get("provenance")}
+        selections[state] = {
+            "mode": "preset",
+            "preset_id": manifest["id"],
+            "backend": manifest["engine"],
+            "preset_file": (manifest.get("preset") or {}).get("file"),
+            "provenance": manifest.get("provenance"),
+        }
         if selections[state]["preset_file"]:
             selections[state]["preset_sha256"] = _sha(REPO_ROOT / selections[state]["preset_file"])
-    return {"profile_id": profile["id"], "profile_version": profile["version"], "seed": profile["seed"],
-            "initial_state": profile["initial_state"], "curve": profile["transitions"]["curve"],
-            "duration_s": duration, "selections": selections, "transitions": transitions}
+    return {
+        "profile_id": profile["id"],
+        "profile_version": profile["version"],
+        "seed": profile["seed"],
+        "initial_state": profile["initial_state"],
+        "curve": profile["transitions"]["curve"],
+        "duration_s": duration,
+        "selections": selections,
+        "transitions": transitions,
+    }
 
 
 def gain_at(program: dict, state: str, time: float) -> float:
     gain = float(program["initial_state"] == state)
     for transition in program["transitions"]:
         start, end = transition["start_s"], transition["end_s"]
-        u = min(1.0, max(0.0, (time-start)/(end-start))) if end > start else float(time >= start)
-        incoming = (math.sin(math.pi*u/2) if u < 1 else 1.0) if program["curve"] == "equal-power" else u
-        outgoing = (math.cos(math.pi*u/2) if u < 1 else 0.0) if program["curve"] == "equal-power" else 1-u
+        u = (
+            min(1.0, max(0.0, (time - start) / (end - start)))
+            if end > start
+            else float(time >= start)
+        )
+        incoming = (
+            (math.sin(math.pi * u / 2) if u < 1 else 1.0)
+            if program["curve"] == "equal-power"
+            else u
+        )
+        outgoing = (
+            (math.cos(math.pi * u / 2) if u < 1 else 0.0)
+            if program["curve"] == "equal-power"
+            else 1 - u
+        )
         if transition["to"] == transition["from"]:
             continue
         if transition["to"] == state:
             gain += incoming
         if transition["from"] == state:
-            gain -= 1-outgoing
+            gain -= 1 - outgoing
     return max(0.0, min(1.0, gain))
 
 
@@ -142,9 +183,15 @@ def _gain_expression(program: dict, state: str) -> str:
         if transition["to"] == transition["from"]:
             continue
         start, end = transition["start_s"], transition["end_s"]
-        u = f"clip((t-{start:.9f})/{end-start:.9f},0,1)" if end > start else f"gte(t,{start:.9f})"
-        incoming = f"if(gte(t,{end:.9f}),1,sin(PI/2*{u}))" if program["curve"] == "equal-power" else u
-        outgoing = f"if(gte(t,{end:.9f}),0,cos(PI/2*{u}))" if program["curve"] == "equal-power" else f"(1-{u})"
+        u = f"clip((t-{start:.9f})/{end - start:.9f},0,1)" if end > start else f"gte(t,{start:.9f})"
+        incoming = (
+            f"if(gte(t,{end:.9f}),1,sin(PI/2*{u}))" if program["curve"] == "equal-power" else u
+        )
+        outgoing = (
+            f"if(gte(t,{end:.9f}),0,cos(PI/2*{u}))"
+            if program["curve"] == "equal-power"
+            else f"(1-{u})"
+        )
         if transition["to"] == state:
             pieces.append(f"+({incoming})")
         if transition["from"] == state:
@@ -159,8 +206,15 @@ def _command(command: list[str]) -> subprocess.CompletedProcess:
     return result
 
 
-def render_program(doc: dict, event_timing: list[dict], duration: float, profile: dict,
-                   output: Path, *, render_state: Any = None) -> dict:
+def render_program(
+    doc: dict,
+    event_timing: list[dict],
+    duration: float,
+    profile: dict,
+    output: Path,
+    *,
+    render_state: Any = None,
+) -> dict:
     """Render selected independent states and continuous envelopes; never source audio fallback."""
     program = plan_program(doc, event_timing, duration, profile)
     ffmpeg = shutil.which("ffmpeg")
@@ -182,7 +236,16 @@ def render_program(doc: dict, event_timing: list[dict], duration: float, profile
 
             stem = output.parent / f"{state}-state-seed{program['seed']}.wav"
             source = REPO_ROOT / selection["preset_file"]
-            args = ["render", str(source), "--output", str(stem), "--seed", str(program["seed"]), "--fade", "0"]
+            args = [
+                "render",
+                str(source),
+                "--output",
+                str(stem),
+                "--seed",
+                str(program["seed"]),
+                "--fade",
+                "0",
+            ]
             try:
                 result = farfield.run_farfield(args)
             except farfield.OCFFarfieldMissing as exc:
@@ -193,22 +256,30 @@ def render_program(doc: dict, event_timing: list[dict], duration: float, profile
         else:
             from .audio_build import _render_background
 
-            stem, note = _render_background(selection["preset_id"], "required", selection["backend"], max_seconds=duration)
+            stem, note = _render_background(
+                selection["preset_id"], "required", selection["backend"], max_seconds=duration
+            )
             if stem is None:
                 raise OCFError(f"required state {state}: {note}")
-        metadata = _command([ffprobe, "-v", "error", "-show_entries", "format=duration", "-of", "json", str(stem)])
+        metadata = _command(
+            [ffprobe, "-v", "error", "-show_entries", "format=duration", "-of", "json", str(stem)]
+        )
         import json
 
-        if float(json.loads(metadata.stdout)["format"]["duration"]) + .001 < duration:
-            raise OCFError(f"state {state} stem is shorter than the session; refusing a silent loop/fallback")
+        if float(json.loads(metadata.stdout)["format"]["duration"]) + 0.001 < duration:
+            raise OCFError(
+                f"state {state} stem is shorter than the session; refusing a silent loop/fallback"
+            )
         calibration = 1.0
         if profile.get("target_state_rms_dbfs") is not None:
-            stats = _command([ffmpeg, "-hide_banner", "-i", str(stem), "-af", "volumedetect", "-f", "null", "-"])
+            stats = _command(
+                [ffmpeg, "-hide_banner", "-i", str(stem), "-af", "volumedetect", "-f", "null", "-"]
+            )
             match = re.search(r"mean_volume: ([-0-9.]+) dB", stats.stderr)
             if not match:
                 raise OCFError(f"cannot calibrate state {state} RMS")
             selection["raw_rms_dbfs"] = float(match.group(1))
-            calibration = 10 ** ((profile["target_state_rms_dbfs"]-float(match.group(1)))/20)
+            calibration = 10 ** ((profile["target_state_rms_dbfs"] - float(match.group(1))) / 20)
             selection["target_rms_dbfs"] = profile["target_state_rms_dbfs"]
         selection["renderer_gain"] = calibration
         selection["stem_sha256"] = _sha(stem)
@@ -218,7 +289,9 @@ def render_program(doc: dict, event_timing: list[dict], duration: float, profile
     for index, (state, stem, calibration) in enumerate(sources):
         command += ["-i", str(stem)]
         envelope = _gain_expression(program, state)
-        chains.append(f"[{index}:a]aresample=44100,aformat=channel_layouts=stereo,atrim=duration={duration:.9f},volume={calibration:.9f},aeval='val(0)*({envelope})|val(1)*({envelope})'[s{index}]")
+        chains.append(
+            f"[{index}:a]aresample=44100,aformat=channel_layouts=stereo,atrim=duration={duration:.9f},volume={calibration:.9f},aeval='val(0)*({envelope})|val(1)*({envelope})'[s{index}]"
+        )
     if not sources:
         command += ["-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo", "-t", str(duration)]
     else:
@@ -230,7 +303,9 @@ def render_program(doc: dict, event_timing: list[dict], duration: float, profile
     commands.append(command)
     program["external_commands"] = commands
     program["output_sha256"] = _sha(output)
-    program["envelope_note"] = "OCF renderer crossfades across different measured generations, not a measured source morph; continuous state oscillators run on session time"
+    program["envelope_note"] = (
+        "OCF renderer crossfades across different measured generations, not a measured source morph; continuous state oscillators run on session time"
+    )
     return program
 
 

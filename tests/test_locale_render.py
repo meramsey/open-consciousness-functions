@@ -79,9 +79,7 @@ class TestLocalizedRender:
         assert metadata.get("locale") is None
 
     def test_strict_render_fails_loudly_on_a_missing_translation(self, tmp_path):
-        path = write_doc(
-            tmp_path, keyed_doc(keys=("focus.eleven.hold",))
-        )
+        path = write_doc(tmp_path, keyed_doc(keys=("focus.eleven.hold",)))
         with pytest.raises(LocalizationError):
             render_narration(
                 load_timed_doc(path),
@@ -168,9 +166,7 @@ class TestBackendLocale:
 
     def test_apply_pronunciation_substitutes_the_hint_for_espeak(self):
         # A pronunciation override replaces the token; it must not repeat it.
-        assert apply_pronunciation("hola", {"hola": {"espeak-ng": "hola"}}, "espeak-ng") == (
-            "hola"
-        )
+        assert apply_pronunciation("hola", {"hola": {"espeak-ng": "hola"}}, "espeak-ng") == ("hola")
 
     def test_apply_pronunciation_leaves_other_backends_alone(self):
         # Piper takes a sentence, not a hint: a wrong-backend hint is ignored.
@@ -238,9 +234,7 @@ class TestLocalizedExport:
             yaml.safe_dump(
                 {
                     "voice": {"backend": "fake-tts"},
-                    "narration_timing": {
-                        "cues": [{"id": "e0", "at": 0.0, "duration": 3.25}]
-                    },
+                    "narration_timing": {"cues": [{"id": "e0", "at": 0.0, "duration": 3.25}]},
                 }
             ),
             encoding="utf-8",
@@ -301,9 +295,7 @@ class TestLocaleCli:
         assert resolved["timeline"][0]["narration_key"]
 
     def test_resolve_from_a_session_template(self, tmp_path, capsys):
-        template = (
-            REPO_ROOT / "audio/templates/sessions/OCF-TPL-SESSION-FOCUS-CYCLE-001.yaml"
-        )
+        template = REPO_ROOT / "audio/templates/sessions/OCF-TPL-SESSION-FOCUS-CYCLE-001.yaml"
         assert (
             main(
                 [
@@ -331,17 +323,14 @@ class TestLocaleCli:
 
     def test_pseudo_writes_a_loadable_pack(self, tmp_path, capsys):
         root = tmp_path / "en-XA"
-        assert (
-            main(["locale", "pseudo", "--from", "en-US", "--output", str(root)]) == 0
-        )
+        assert main(["locale", "pseudo", "--from", "en-US", "--output", str(root)]) == 0
         manifest = yaml.safe_load((root / "manifest.yaml").read_text(encoding="utf-8"))
         assert manifest["locale"] == "en-XA"
         assert {r["domain"] for r in manifest["resources"]} == {"ui", "narration"}
         narration = yaml.safe_load((root / "narration.yaml").read_text(encoding="utf-8"))
         assert narration["domain"] == "narration"
         assert any(
-            isinstance(value, dict) and value.get("text")
-            for value in narration["entries"].values()
+            isinstance(value, dict) and value.get("text") for value in narration["entries"].values()
         )
 
     def test_voice_render_accepts_a_locale(self, tmp_path, capsys):
@@ -427,19 +416,22 @@ class TestBuildManifest:
             overwrite=True,
         )
         render_manifest = next(out_root.glob("OCF-RENDER-*.yaml"))
-        assert main(
-            [
-                "transcript",
-                "export",
-                str(transcript),
-                "--format",
-                "srt",
-                "--locale",
-                "es",
-                "--render-manifest",
-                str(render_manifest),
-            ]
-        ) == 0
+        assert (
+            main(
+                [
+                    "transcript",
+                    "export",
+                    str(transcript),
+                    "--format",
+                    "srt",
+                    "--locale",
+                    "es",
+                    "--render-manifest",
+                    str(render_manifest),
+                ]
+            )
+            == 0
+        )
 
 
 # ---------------------------------------------------------------------------

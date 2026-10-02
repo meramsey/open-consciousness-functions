@@ -114,18 +114,14 @@ class TestLocalPresetResolution:
         resolved = _preset_engine_file("OCF-BG-0007")
         assert resolved is not None
         assert Path(resolved).is_file()
-        assert Path(resolved) == (
-            REPO_ROOT / "audio/background/presets/farfield/focus-11-c.yaml"
-        )
+        assert Path(resolved) == (REPO_ROOT / "audio/background/presets/farfield/focus-11-c.yaml")
 
     def test_sbagenx_manifest_resolves_local_sequence(self):
         from ocf_tools.audio import _preset_engine_file
         from ocf_tools.paths import REPO_ROOT
 
         resolved = _preset_engine_file("OCF-BG-0010")
-        assert Path(resolved) == (
-            REPO_ROOT / "audio/background/presets/sbagenx/focus-11-c.sbg"
-        )
+        assert Path(resolved) == (REPO_ROOT / "audio/background/presets/sbagenx/focus-11-c.sbg")
 
     def test_unknown_preset_returns_none(self):
         from ocf_tools.audio import _preset_engine_file
@@ -157,8 +153,6 @@ def test_sbagenx_presets_use_supported_rate():
     from ocf_tools.paths import REPO_ROOT
 
     for name in ("a", "b", "c"):
-        text = (
-            REPO_ROOT / "audio/background/presets/sbagenx" / f"focus-11-{name}.sbg"
-        ).read_text()
+        text = (REPO_ROOT / "audio/background/presets/sbagenx" / f"focus-11-{name}.sbg").read_text()
         assert "-R 10" in text
         assert "-R 1000" not in text

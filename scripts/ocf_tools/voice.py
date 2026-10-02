@@ -54,7 +54,7 @@ from typing import Any
 from .indexes import load_voice_profiles
 from .locale import document_key_usage, iter_events, locale_language, normalize_tag
 from .paths import ensure_dir
-from .transcript import load_timed_doc, resolve_timeline
+from .transcript import ResolvedEvent, load_timed_doc, resolve_timeline
 from .utils import OCFError, OCFFileExistsError
 
 DEFAULT_SAMPLE_RATE = 44100
@@ -145,7 +145,7 @@ def _count_token_texts(text: str) -> list[tuple[str, int]]:
     return pairs
 
 
-def _detect_count_runs(timed: list["ResolvedEvent"]) -> list[tuple[int, int]]:
+def _detect_count_runs(timed: list[ResolvedEvent]) -> list[tuple[int, int]]:
     """Maximal consecutive index runs of pure-count cues in the sorted timeline."""
     runs: list[list[int]] = []
     for index, event in enumerate(timed):
@@ -159,8 +159,8 @@ def _detect_count_runs(timed: list["ResolvedEvent"]) -> list[tuple[int, int]]:
 
 
 def _even_counts(
-    timed: list["ResolvedEvent"],
-) -> tuple[list["ResolvedEvent"], dict[str, Any]]:
+    timed: list[ResolvedEvent],
+) -> tuple[list[ResolvedEvent], dict[str, Any]]:
     """Re-time runs of consecutive pure-count cues onto even grids.
 
     Each run keeps its first and last count as grid anchors; every spoken
@@ -218,7 +218,7 @@ def _even_counts(
     return events, info
 
 
-def _flow_groups(timed: list["ResolvedEvent"]) -> list[list["ResolvedEvent"]]:
+def _flow_groups(timed: list[ResolvedEvent]) -> list[list[ResolvedEvent]]:
     """Group consecutive sentence-fragment cues into single spoken utterances.
 
     Consecutive cues are joined while the previous cue's text does not end
@@ -241,6 +241,7 @@ def _flow_groups(timed: list["ResolvedEvent"]) -> list[list["ResolvedEvent"]]:
     if current:
         groups.append(current)
     return groups
+
 
 # Probe + invocation metadata for supported TTS binaries. Each entry declares
 # how the binary produces audio: "stdout" backends write WAV to stdout with the
@@ -373,6 +374,7 @@ def apply_pronunciation(
         out = out.replace(token, hint)
         applied += 1
     return out
+
 
 # How each backend wants to be told which language to speak. Surfaced by
 # `ocf voice list-backends` so an operator knows before rendering whether a
@@ -554,9 +556,16 @@ def _retarget_locale(spec: dict[str, Any], locale: str | None, catalog: Any) -> 
             config = Path(str(model) + ".json")
             if config.is_file():
                 try:
-                    configured = str((json.loads(config.read_text(encoding="utf-8")).get("language") or {}).get("code") or configured)
+                    configured = str(
+                        (json.loads(config.read_text(encoding="utf-8")).get("language") or {}).get(
+                            "code"
+                        )
+                        or configured
+                    )
                 except (ValueError, OSError) as exc:
-                    raise LocalizationError(f"cannot read Piper model locale: {config}: {exc}") from exc
+                    raise LocalizationError(
+                        f"cannot read Piper model locale: {config}: {exc}"
+                    ) from exc
                 configured_language = language_of(configured)
                 spec["language"] = configured
         if configured_language and configured_language != language_of(normalized):
@@ -577,10 +586,13 @@ def check_backend_locale(spec: dict[str, Any]) -> None:
     executable = shutil.which(spec["binary"])
     if not executable:
         raise OCFError(INSTALL_GUIDANCE)
-    result = subprocess.run([executable, f"--voices={spec['language']}"],
-                            capture_output=True, text=True, timeout=15)
+    result = subprocess.run(
+        [executable, f"--voices={spec['language']}"], capture_output=True, text=True, timeout=15
+    )
     if result.returncode or len(result.stdout.strip().splitlines()) < 2:
-        raise OCFError(f"backend {spec['name']} does not support requested TTS locale {spec['locale']}")
+        raise OCFError(
+            f"backend {spec['name']} does not support requested TTS locale {spec['locale']}"
+        )
 
 
 def render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes:
@@ -734,8 +746,9 @@ def _fit_line(cue_samples: list[int], slot: float, sample_rate: int) -> list[int
     return _resample(trimmed, sample_rate, max(1, int(sample_rate * ratio)))
 
 
-def _pronunciation_hints(doc: dict[str, Any], locale: str | None, catalog: Any = None,
-                         backend: str | None = None) -> dict[str, dict[str, Any]]:
+def _pronunciation_hints(
+    doc: dict[str, Any], locale: str | None, catalog: Any = None, backend: str | None = None
+) -> dict[str, dict[str, Any]]:
     """Map event id -> backend hints from the resolved document's resources.
 
     Hints live in the locale pack beside the message, so a translator can fix a
@@ -746,18 +759,28 @@ def _pronunciation_hints(doc: dict[str, Any], locale: str | None, catalog: Any =
     from .locale import LocaleCatalog
 
     catalog = catalog or LocaleCatalog()
-    origins = {item.get("id"): item.get("locale") for item in (doc.get("narration") or {}).get("resolved", [])}
+    origins = {
+        item.get("id"): item.get("locale")
+        for item in (doc.get("narration") or {}).get("resolved", [])
+    }
     hints: dict[str, dict[str, Any]] = {}
     for event in iter_events(doc):
         key = event.get("narration_key")
         if not key:
             continue
-        entry, _ = catalog.resource(str(key), origins.get(event.get("id")) or locale,
-                                    domain="narration", fallback=False)
+        entry, _ = catalog.resource(
+            str(key), origins.get(event.get("id")) or locale, domain="narration", fallback=False
+        )
         for requirement in entry.required_pronunciation:
             token = str((event.get("variables") or {}).get(requirement, requirement))
-            if not backend or not entry.hint_for(backend, token) or not BACKENDS[backend].get("phonemes"):
-                raise OCFError(f"event {event.get('id')}: required pronunciation for {token!r} is unavailable on {backend}")
+            if (
+                not backend
+                or not entry.hint_for(backend, token)
+                or not BACKENDS[backend].get("phonemes")
+            ):
+                raise OCFError(
+                    f"event {event.get('id')}: required pronunciation for {token!r} is unavailable on {backend}"
+                )
         if entry is not None and entry.pronunciation:
             hints[str(event.get("id", ""))] = dict(entry.pronunciation)
     return hints
@@ -810,7 +833,9 @@ def render_narration(
     validation = validate_command_ownership(doc, Path(out_path))
     validation.extend(validate_narration_hygiene(doc, Path(out_path), catalog))
     if validation.errors:
-        raise OCFError("pre-render validation: " + " | ".join(issue.message for issue in validation.errors))
+        raise OCFError(
+            "pre-render validation: " + " | ".join(issue.message for issue in validation.errors)
+        )
     from .semantics import bind_document_cues
 
     auditory_cues = bind_document_cues(doc)
@@ -818,7 +843,9 @@ def render_narration(
     recording_provenance = None
     if recordings is not None:
         if backend is not None or render_cue is not None or fit or flow or even_counts:
-            raise OCFError("recordings are an independent voice source; omit TTS backend and speech-retiming flags")
+            raise OCFError(
+                "recordings are an independent voice source; omit TTS backend and speech-retiming flags"
+            )
         from .locale import document_locale
         from .recordings import prepare_recordings
 
@@ -842,7 +869,11 @@ def render_narration(
     if problems:
         raise OCFError("timeline problems; fix before rendering: " + " | ".join(problems[:3]))
 
-    hints_by_event = {} if recording_audio is not None else _pronunciation_hints(doc, locale, catalog, spec["name"])
+    hints_by_event = (
+        {}
+        if recording_audio is not None
+        else _pronunciation_hints(doc, locale, catalog, spec["name"])
+    )
     timed = sorted(events, key=lambda event: event.at or 0.0)
     originals = {event["id"]: event for event in iter_events(doc)}
     has_semantics = any(event.get("semantic") or event.get("after") for event in originals.values())
@@ -850,10 +881,15 @@ def render_narration(
     if even_counts and not has_semantics:
         timed, even_counts_info = _even_counts(timed)
     elif even_counts:
-        even_counts_info = {"runs": [], "note": "semantic anchors preserved; legacy number-word retiming skipped"}
+        even_counts_info = {
+            "runs": [],
+            "note": "semantic anchors preserved; legacy number-word retiming skipped",
+        }
     # Semantic boundaries must not be merged by punctuation heuristics.
     spoken = [event for event in timed if (event.text or "").strip()]
-    utterances = _flow_groups(spoken) if flow and not has_semantics else [[event] for event in spoken]
+    utterances = (
+        _flow_groups(spoken) if flow and not has_semantics else [[event] for event in spoken]
+    )
 
     cue_stats: list[dict[str, Any]] = []
     hints_applied = 0
@@ -883,7 +919,11 @@ def render_narration(
             next_at = utterances[group_index + 1][0].at or 0.0
             cue_samples = _fit_line(cue_samples, next_at - at, sample_rate)
         group_id = "+".join(event.id for event in group)
-        source_ids = list(dict.fromkeys(event.id if event.id in originals else event.id.rsplit("#", 1)[0] for event in group))
+        source_ids = list(
+            dict.fromkeys(
+                event.id if event.id in originals else event.id.rsplit("#", 1)[0] for event in group
+            )
+        )
         first = deepcopy(originals[source_ids[0]])
         first["id"] = group_id
         if "at" in first:
@@ -921,30 +961,41 @@ def render_narration(
     durations = {identifier: len(samples) / sample_rate for identifier, samples in rendered.items()}
     scheduled = schedule_timeline({"timeline": scheduling_events}, durations)
     actual = {event["id"]: event for event in scheduled}
-    track: list[int] = _silence(int(max((event["end"] for event in scheduled), default=0) * sample_rate))
+    track: list[int] = _silence(
+        int(max((event["end"] for event in scheduled), default=0) * sample_rate)
+    )
     for cue in cue_stats:
         cue["at"] = actual[cue["id"]]["at"]
         offset = int(round(cue["at"] * sample_rate))
         samples = rendered[cue["id"]]
         if offset + len(samples) > len(track):
             track.extend(_silence(offset + len(samples) - len(track)))
-        track[offset:offset + len(samples)] = samples
+        track[offset : offset + len(samples)] = samples
     for binding in auditory_cues:
         identifier = event_to_group.get(binding["event_id"], binding["event_id"])
         binding["at"] = actual[identifier]["at"]
     seen_bindings = set()
     for binding in auditory_cues:
         signature = (binding["identity"], binding["at"])
-        if signature in seen_bindings and not originals[binding["event_id"]].get("intentional_repeat"):
+        if signature in seen_bindings and not originals[binding["event_id"]].get(
+            "intentional_repeat"
+        ):
             raise OCFError(f"duplicate auditory cue at resolved anchor: {binding['identity']}")
         seen_bindings.add(signature)
     event_timing = []
     for original in iter_events(doc):
         identifier = event_to_group.get(original["id"], original["id"])
         groups = source_to_groups.get(original["id"], [identifier])
-        event_timing.append({**actual[identifier], "id": original["id"], "utterance_id": identifier,
-                             "utterance_ids": groups, "at": min(actual[group]["at"] for group in groups),
-                             "end": max(actual[group]["end"] for group in groups)})
+        event_timing.append(
+            {
+                **actual[identifier],
+                "id": original["id"],
+                "utterance_id": identifier,
+                "utterance_ids": groups,
+                "at": min(actual[group]["at"] for group in groups),
+                "end": max(actual[group]["end"] for group in groups),
+            }
+        )
 
     tail = int(1.0 * sample_rate)
     track.extend(_silence(tail))
@@ -1035,14 +1086,34 @@ def render_script(
         raise OCFError(f"{exc} (use --force to overwrite)") from exc
     from .utils import sha256_of_file, write_text_atomic, yaml_safe_dump
 
-    cues = [{**cue, "duration": cue["samples"]/metadata["sample_rate"],
-             "end": cue["at"]+cue["samples"]/metadata["sample_rate"]} for cue in metadata["cue_stats"]]
+    cues = [
+        {
+            **cue,
+            "duration": cue["samples"] / metadata["sample_rate"],
+            "end": cue["at"] + cue["samples"] / metadata["sample_rate"],
+        }
+        for cue in metadata["cue_stats"]
+    ]
     with wave.open(str(out_path)) as reader:
-        total = reader.getnframes()/reader.getframerate()
-    write_text_atomic(sidecar, yaml_safe_dump({**metadata, "source_script_sha256": sha256_of_file(Path(script)),
-                                            "voice": {"backend": metadata["backend"], "locale": metadata["locale"], "language": metadata["voice"], "profile_id": metadata["profile_id"]},
-                                            "output_sha256": sha256_of_file(Path(out_path)), "total_duration_s": total,
-                                            "narration_timing": {"measured": True, "cues": cues}}))
+        total = reader.getnframes() / reader.getframerate()
+    write_text_atomic(
+        sidecar,
+        yaml_safe_dump(
+            {
+                **metadata,
+                "source_script_sha256": sha256_of_file(Path(script)),
+                "voice": {
+                    "backend": metadata["backend"],
+                    "locale": metadata["locale"],
+                    "language": metadata["voice"],
+                    "profile_id": metadata["profile_id"],
+                },
+                "output_sha256": sha256_of_file(Path(out_path)),
+                "total_duration_s": total,
+                "narration_timing": {"measured": True, "cues": cues},
+            }
+        ),
+    )
     named = metadata["profile_id"] or metadata["backend"]
     print(
         f"Rendered {metadata['cues']} cue(s) with backend {named!r} "

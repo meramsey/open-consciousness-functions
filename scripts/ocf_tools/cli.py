@@ -99,22 +99,32 @@ def _build_parser() -> argparse.ArgumentParser:
     sub.add_parser("help", help="show help")
     capabilities = sub.add_parser("capabilities", help="machine-readable live CLI discovery")
     capabilities.add_argument("--json", action="store_true")
-    author_plan = sub.add_parser("plan", help="validate a structured authoring request without rendering")
+    author_plan = sub.add_parser(
+        "plan", help="validate a structured authoring request without rendering"
+    )
     author_plan.add_argument("file")
     author_plan.add_argument("--json", action="store_true")
     functions = sub.add_parser("functions", help="canonical function metadata discovery")
     function_sub = functions.add_subparsers(dest="function_kind", required=True)
     function_list = function_sub.add_parser("list", help="list all function records")
     function_list.add_argument("--json", action="store_true")
-    function_list.add_argument("--rich", action="store_true", help="include separate content/evidence/runtime capabilities")
-    function_describe = function_sub.add_parser("describe", help="describe a canonical function ID or slug")
+    function_list.add_argument(
+        "--rich", action="store_true", help="include separate content/evidence/runtime capabilities"
+    )
+    function_describe = function_sub.add_parser(
+        "describe", help="describe a canonical function ID or slug"
+    )
     function_describe.add_argument("id")
     function_describe.add_argument("--json", action="store_true")
     function_describe.add_argument("--rich", action="store_true")
 
-    corpus = sub.add_parser("corpus", help="citation-only research inventory; no source wording copied")
+    corpus = sub.add_parser(
+        "corpus", help="citation-only research inventory; no source wording copied"
+    )
     corpus_sub = corpus.add_subparsers(dest="corpus_kind")
-    inventory_cmd = corpus_sub.add_parser("inventory", help="fingerprint all corpus files and map all legacy targets")
+    inventory_cmd = corpus_sub.add_parser(
+        "inventory", help="fingerprint all corpus files and map all legacy targets"
+    )
     inventory_cmd.add_argument("--root", default=str(REPO_ROOT / "references/HumanPlusTranscripts"))
     inventory_cmd.add_argument("--format", choices=["json", "md"], default="json")
     inventory_cmd.add_argument("--output")
@@ -149,24 +159,42 @@ def _build_parser() -> argparse.ArgumentParser:
 
     audio = sub.add_parser("audio", help="audio tooling")
     audio_sub = audio.add_subparsers(dest="audio_kind")
-    audio_sub.add_parser("check-engine", help="check optional background synthesis engines (Farfield, SBaGenX)")
+    audio_sub.add_parser(
+        "check-engine", help="check optional background synthesis engines (Farfield, SBaGenX)"
+    )
     audio_sub.add_parser("list-background", help="list background presets")
     describe = audio_sub.add_parser("describe-background", help="describe a background preset")
     describe.add_argument("preset", help="preset id or name")
-    describe.add_argument("--engine", default="farfield", choices=["farfield", "sbagenx", "reference-master"],
-                          help="engine to describe (default farfield)")
+    describe.add_argument(
+        "--engine",
+        default="farfield",
+        choices=["farfield", "sbagenx", "reference-master"],
+        help="engine to describe (default farfield)",
+    )
     render = audio_sub.add_parser("render-background", help="render a background preset")
     render.add_argument("preset", help="preset id or name")
     render.add_argument("--output", help="output file path")
-    render.add_argument("--engine", default="farfield", choices=["farfield", "sbagenx", "reference-master"],
-                        help="engine to render with (default farfield)")
+    render.add_argument(
+        "--engine",
+        default="farfield",
+        choices=["farfield", "sbagenx", "reference-master"],
+        help="engine to render with (default farfield)",
+    )
 
     render_speech = audio_sub.add_parser("render-speech", help="render narration speech to WAV")
     render_speech.add_argument("file", help="OCF timed YAML document")
     render_speech.add_argument("--voice", help="voice profile id/slug or backend name")
-    render_speech.add_argument("--recordings", help="event-mapped prerecorded narration package (instead of TTS)")
-    render_speech.add_argument("--locale", help="target locale (BCP-47); resolves narration keys and retargets the voice")
-    render_speech.add_argument("--allow-fallback", action="store_true", help="permit fallback across the locale chain instead of failing on missing spoken narration")
+    render_speech.add_argument(
+        "--recordings", help="event-mapped prerecorded narration package (instead of TTS)"
+    )
+    render_speech.add_argument(
+        "--locale", help="target locale (BCP-47); resolves narration keys and retargets the voice"
+    )
+    render_speech.add_argument(
+        "--allow-fallback",
+        action="store_true",
+        help="permit fallback across the locale chain instead of failing on missing spoken narration",
+    )
     render_speech.add_argument("--output", help="output WAV path")
     render_speech.add_argument("--rate", type=int, default=44100, help="sample rate (Hz)")
     render_speech.add_argument("--force", action="store_true", help="overwrite an existing file")
@@ -192,22 +220,45 @@ def _build_parser() -> argparse.ArgumentParser:
         help="metadata tag override KEY=VALUE applied to FLAC/MP3 outputs (repeatable)",
     )
     build_cmd.add_argument("--voice", help="voice profile id/slug or backend name")
-    build_cmd.add_argument("--recordings", help="event-mapped prerecorded narration package (instead of TTS)")
+    build_cmd.add_argument(
+        "--recordings", help="event-mapped prerecorded narration package (instead of TTS)"
+    )
     build_cmd.add_argument("--locale", help="target locale (BCP-47) for narration rendering")
-    build_cmd.add_argument("--allow-fallback", action="store_true", help="permit fallback across the locale chain instead of failing on missing spoken narration")
+    build_cmd.add_argument(
+        "--allow-fallback",
+        action="store_true",
+        help="permit fallback across the locale chain instead of failing on missing spoken narration",
+    )
     build_cmd.add_argument("--output", help="output directory (default audio/rendered)")
     build_cmd.add_argument("--rate", type=int, default=44100, help="sample rate (Hz)")
     build_cmd.add_argument("--background-gain", type=float, default=0.25)
-    build_cmd.add_argument("--dsp-profile", help="semantic DSP state-selection profile (explicitly overrides a static bed)")
-    build_cmd.add_argument("--fit", action="store_true", help="adaptive per-cue narration pacing (timing_mode fit-soft)")
-    build_cmd.add_argument("--flow", action="store_true", help="flow-merge sentence fragments (timing_mode natural)")
-    build_cmd.add_argument("--even-counts", action="store_true", help="re-time count cues onto even grids (timing_mode ...+even-counts)")
+    build_cmd.add_argument(
+        "--dsp-profile",
+        help="semantic DSP state-selection profile (explicitly overrides a static bed)",
+    )
+    build_cmd.add_argument(
+        "--fit",
+        action="store_true",
+        help="adaptive per-cue narration pacing (timing_mode fit-soft)",
+    )
+    build_cmd.add_argument(
+        "--flow", action="store_true", help="flow-merge sentence fragments (timing_mode natural)"
+    )
+    build_cmd.add_argument(
+        "--even-counts",
+        action="store_true",
+        help="re-time count cues onto even grids (timing_mode ...+even-counts)",
+    )
     build_cmd.add_argument("--force", action="store_true", help="overwrite master file")
     inspect_cmd = audio_sub.add_parser("inspect", help="show audio file metadata")
     inspect_cmd.add_argument("file", help="audio file")
-    state_render = audio_sub.add_parser("render-state-program", help="render configured DSP from a measured semantic ledger")
+    state_render = audio_sub.add_parser(
+        "render-state-program", help="render configured DSP from a measured semantic ledger"
+    )
     state_render.add_argument("file", help="semantic timed script")
-    state_render.add_argument("--render-manifest", required=True, help="measured event timing and duration")
+    state_render.add_argument(
+        "--render-manifest", required=True, help="measured event timing and duration"
+    )
     state_render.add_argument("--dsp-profile", required=True)
     state_render.add_argument("--output", required=True)
     state_render.add_argument("--force", action="store_true")
@@ -220,14 +271,32 @@ def _build_parser() -> argparse.ArgumentParser:
     voice_render = voice_sub.add_parser("render", help="render narration speech to WAV")
     voice_render.add_argument("file", help="OCF timed YAML document")
     voice_render.add_argument("--voice", help="voice profile id/slug or backend name")
-    voice_render.add_argument("--recordings", help="event-mapped prerecorded narration package (instead of TTS)")
-    voice_render.add_argument("--locale", help="target locale (BCP-47); resolves narration keys and retargets the voice")
-    voice_render.add_argument("--allow-fallback", action="store_true", help="permit fallback across the locale chain instead of failing on missing spoken narration")
+    voice_render.add_argument(
+        "--recordings", help="event-mapped prerecorded narration package (instead of TTS)"
+    )
+    voice_render.add_argument(
+        "--locale", help="target locale (BCP-47); resolves narration keys and retargets the voice"
+    )
+    voice_render.add_argument(
+        "--allow-fallback",
+        action="store_true",
+        help="permit fallback across the locale chain instead of failing on missing spoken narration",
+    )
     voice_render.add_argument("--output", help="output WAV path")
     voice_render.add_argument("--rate", type=int, default=44100, help="sample rate (Hz)")
-    voice_render.add_argument("--fit", action="store_true", help="adaptive per-cue pacing (trim TTS pads, fill short slots)")
-    voice_render.add_argument("--flow", action="store_true", help="flow-merge sentence fragments into single utterances")
-    voice_render.add_argument("--even-counts", action="store_true", help="re-time count cues onto even grids (no transcript rewrite)")
+    voice_render.add_argument(
+        "--fit",
+        action="store_true",
+        help="adaptive per-cue pacing (trim TTS pads, fill short slots)",
+    )
+    voice_render.add_argument(
+        "--flow", action="store_true", help="flow-merge sentence fragments into single utterances"
+    )
+    voice_render.add_argument(
+        "--even-counts",
+        action="store_true",
+        help="re-time count cues onto even grids (no transcript rewrite)",
+    )
     voice_render.add_argument("--force", action="store_true", help="overwrite an existing file")
 
     transcript = sub.add_parser("transcript", help="timed-transcript tooling")
@@ -265,8 +334,15 @@ def _build_parser() -> argparse.ArgumentParser:
     exp.add_argument("file", help="OCF timed YAML document")
     exp.add_argument("--format", required=True, choices=["srt", "vtt", "lrc"], help="export format")
     exp.add_argument("--locale", help="resolve narration keys into this locale before exporting")
-    exp.add_argument("--allow-fallback", action="store_true", help="permit fallback across the locale chain instead of failing on missing spoken narration")
-    exp.add_argument("--render-manifest", help="use the measured speech timings from a render manifest (OCF-RENDER-*.yaml) for cue ends")
+    exp.add_argument(
+        "--allow-fallback",
+        action="store_true",
+        help="permit fallback across the locale chain instead of failing on missing spoken narration",
+    )
+    exp.add_argument(
+        "--render-manifest",
+        help="use the measured speech timings from a render manifest (OCF-RENDER-*.yaml) for cue ends",
+    )
     exp.add_argument("--output", help="output file path (default: stdout)")
     exp.add_argument("--force", action="store_true", help="overwrite an existing output file")
     xt = ts.add_parser("extract-template", help="timing-only structural template")
@@ -284,24 +360,59 @@ def _build_parser() -> argparse.ArgumentParser:
         "compose",
         help="resolve a session template with contributor wording into canonical timed YAML",
     )
-    compose_cmd.add_argument("--template", default="OCF-TPL-SESSION-LEARN-001",
-                             help="template id or local template file path")
-    compose_cmd.add_argument("--opener", help="text file with the opener wording (required only by templates that declare it)")
-    compose_cmd.add_argument("--focus11", help="text file with the function material spoken while in the focus-11 state (required only by templates that declare it)")
-    compose_cmd.add_argument("--sleep20", help="text file with the sleep-20 function reinforcement (required only by templates that declare it)")
-    compose_cmd.add_argument("--closer", help="text file with the closer wording (required only by templates that declare it)")
-    compose_cmd.add_argument("--slot", action="append", default=[],
-                             help="fill a template slot NAME=PATH (repeatable; only slots the template declares are accepted)")
+    compose_cmd.add_argument(
+        "--template",
+        default="OCF-TPL-SESSION-LEARN-001",
+        help="template id or local template file path",
+    )
+    compose_cmd.add_argument(
+        "--opener",
+        help="text file with the opener wording (required only by templates that declare it)",
+    )
+    compose_cmd.add_argument(
+        "--focus11",
+        help="text file with the function material spoken while in the focus-11 state (required only by templates that declare it)",
+    )
+    compose_cmd.add_argument(
+        "--sleep20",
+        help="text file with the sleep-20 function reinforcement (required only by templates that declare it)",
+    )
+    compose_cmd.add_argument(
+        "--closer",
+        help="text file with the closer wording (required only by templates that declare it)",
+    )
+    compose_cmd.add_argument(
+        "--slot",
+        action="append",
+        default=[],
+        help="fill a template slot NAME=PATH (repeatable; only slots the template declares are accepted)",
+    )
     compose_cmd.add_argument("--title", help="document title (default: template name)")
     compose_cmd.add_argument("--id", help="document/slug id (default: none)")
     compose_cmd.add_argument("--duration", type=float, help="total track length in seconds")
-    compose_cmd.add_argument("--line-seconds", type=float, help="pace untimed slot lines every N seconds")
-    compose_cmd.add_argument("--locale", help="compose directly in this locale (BCP-47), resolving narration keys")
-    compose_cmd.add_argument("--enable-stage", action="append", help="enable an optional semantic stage feature (repeatable)")
-    compose_cmd.add_argument("--function", help="function identity owning activation-command narration")
-    compose_cmd.add_argument("--allow-fallback", action="store_true", help="permit fallback across the locale chain instead of failing on missing spoken narration")
+    compose_cmd.add_argument(
+        "--line-seconds", type=float, help="pace untimed slot lines every N seconds"
+    )
+    compose_cmd.add_argument(
+        "--locale", help="compose directly in this locale (BCP-47), resolving narration keys"
+    )
+    compose_cmd.add_argument(
+        "--enable-stage",
+        action="append",
+        help="enable an optional semantic stage feature (repeatable)",
+    )
+    compose_cmd.add_argument(
+        "--function", help="function identity owning activation-command narration"
+    )
+    compose_cmd.add_argument(
+        "--allow-fallback",
+        action="store_true",
+        help="permit fallback across the locale chain instead of failing on missing spoken narration",
+    )
     compose_cmd.add_argument("--output", help="output YAML path (default audio/scripts/<id>.yaml)")
-    compose_cmd.add_argument("--force", action="store_true", help="overwrite an existing output file")
+    compose_cmd.add_argument(
+        "--force", action="store_true", help="overwrite an existing output file"
+    )
 
     locale = sub.add_parser("locale", help="locale packs and localized narration")
     locale_sub = locale.add_subparsers(dest="locale_kind")
@@ -329,7 +440,9 @@ def _build_parser() -> argparse.ArgumentParser:
         help="fall back through the locale chain instead of failing on missing spoken narration",
     )
     loc_resolve.add_argument("--output", help="output YAML path (default stdout)")
-    loc_resolve.add_argument("--force", action="store_true", help="overwrite an existing output file")
+    loc_resolve.add_argument(
+        "--force", action="store_true", help="overwrite an existing output file"
+    )
     pseudo = locale_sub.add_parser("pseudo", help="derive a pseudo-locale pack from another pack")
     pseudo.add_argument("--from", dest="source_locale", help="source locale (default: canonical)")
     pseudo.add_argument("--locale", help="pseudo-locale tag (default: en-XA)")
@@ -372,9 +485,7 @@ def _locale_catalog() -> Any:
     return LocaleCatalog()
 
 
-def _locale_ui(
-    catalog: Any, key: str, target: str | None = None, /, **variables: Any
-) -> str:
+def _locale_ui(catalog: Any, key: str, target: str | None = None, /, **variables: Any) -> str:
     """Format an operator-facing string from the pack, falling back to English.
 
     Only the variables the resource declares are passed through, so a caller can
@@ -462,7 +573,9 @@ def cmd_locale_validate(args: argparse.Namespace) -> int:
         else:
             paths = [str(catalog.require(tag).path) for tag in serving]
             for issue in full.issues:
-                if issue.code == "locale-count" or any((issue.target or "").startswith(path) for path in paths):
+                if issue.code == "locale-count" or any(
+                    (issue.target or "").startswith(path) for path in paths
+                ):
                     result.add(issue.severity, issue.code, issue.message, issue.target)
     if getattr(args, "file", None):
         path = Path(args.file)
@@ -557,15 +670,11 @@ def cmd_locale_pseudo(args: argparse.Namespace) -> int:
     from .utils import yaml_safe_dump
 
     catalog = _locale_catalog()
-    pack = build_pseudo_pack(
-        catalog, args.source_locale, locale=args.locale or PSEUDO_LOCALE
-    )
+    pack = build_pseudo_pack(catalog, args.source_locale, locale=args.locale or PSEUDO_LOCALE)
     source = catalog.require(args.source_locale or catalog.canonical_locale)
     if args.output:
         root = ensure_dir(Path(args.output))
-        (root / "manifest.yaml").write_text(
-            yaml_safe_dump(pack.manifest), encoding="utf-8"
-        )
+        (root / "manifest.yaml").write_text(yaml_safe_dump(pack.manifest), encoding="utf-8")
         for filename in sorted({entry.file for entry in pack.entries.values() if entry.file}):
             by_domain: dict[str, dict[str, Any]] = {}
             for key, entry in sorted(pack.entries.items()):
@@ -676,15 +785,29 @@ def capability_manifest(parser: argparse.ArgumentParser) -> dict:
     commands = []
 
     def walk(node: argparse.ArgumentParser, prefix: list[str]) -> None:
-        subparsers = [action for action in node._actions if isinstance(action, argparse._SubParsersAction)]
+        subparsers = [
+            action for action in node._actions if isinstance(action, argparse._SubParsersAction)
+        ]
         if not subparsers:
-            commands.append({"path": prefix, "description": node.description or "Use --help for arguments"})
+            commands.append(
+                {"path": prefix, "description": node.description or "Use --help for arguments"}
+            )
         for action in subparsers:
             for name, child in action.choices.items():
                 walk(child, [*prefix, name])
 
     walk(parser, [])
-    return {"schema_version": "1.0", "commands": commands, "schemas": sorted(path.name for path in SCHEMAS_DIR.glob("*.schema.json")), "boundaries": ["Agent reasons; OCF validates and executes", "English narration does not define semantic identity", "Source derivatives and reconstructions remain citation-only research", "Preparation CLI and auditory cue playback remain unshipped"]}
+    return {
+        "schema_version": "1.0",
+        "commands": commands,
+        "schemas": sorted(path.name for path in SCHEMAS_DIR.glob("*.schema.json")),
+        "boundaries": [
+            "Agent reasons; OCF validates and executes",
+            "English narration does not define semantic identity",
+            "Source derivatives and reconstructions remain citation-only research",
+            "Preparation CLI and auditory cue playback remain unshipped",
+        ],
+    }
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -721,13 +844,21 @@ def main(argv: list[str] | None = None) -> int:
                     raise
                 print(json.dumps({"schema_version": "1.0", "valid": False, "errors": [str(exc)]}))
                 return 1
-            print(json.dumps(result, indent=2) if args.json else f"Valid dry-run plan: {result['template_id']} / {result['locale']} / {result['content_status']}")
+            print(
+                json.dumps(result, indent=2)
+                if args.json
+                else f"Valid dry-run plan: {result['template_id']} / {result['locale']} / {result['content_status']}"
+            )
             return 0
         if args.command == "capabilities":
             import json
 
             data = capability_manifest(parser)
-            print(json.dumps(data, indent=2) if args.json else "\n".join("ocf " + " ".join(row["path"]) for row in data["commands"]))
+            print(
+                json.dumps(data, indent=2)
+                if args.json
+                else "\n".join("ocf " + " ".join(row["path"]) for row in data["commands"])
+            )
             return 0
         if args.command == "functions":
             import json
@@ -736,21 +867,37 @@ def main(argv: list[str] | None = None) -> int:
             from .indexes import load_function_by_slug_or_id
 
             if args.function_kind == "list":
-                data = [discover(record) if args.rich else record.data for record in load_all_functions()]
+                data = [
+                    discover(record) if args.rich else record.data
+                    for record in load_all_functions()
+                ]
             else:
                 record = load_function_by_slug_or_id(args.id)
                 if record is None:
                     raise OCFError(f"unknown function {args.id}; use ocf functions list")
                 data = discover(record) if args.rich else record.data
             if args.json:
-                print(json.dumps({"schema_version": "1.0", "functions": data if isinstance(data, list) else [data]}, indent=2, ensure_ascii=False))
+                print(
+                    json.dumps(
+                        {
+                            "schema_version": "1.0",
+                            "functions": data if isinstance(data, list) else [data],
+                        },
+                        indent=2,
+                        ensure_ascii=False,
+                    )
+                )
             else:
                 records = data if isinstance(data, list) else [data]
                 for record in records:
                     if args.rich:
-                        print(f"{record['function_id']}: {record['title']} — {record['activation']['primary']} — {record['extraction_status']} / review {record['human_review']}")
+                        print(
+                            f"{record['function_id']}: {record['title']} — {record['activation']['primary']} — {record['extraction_status']} / review {record['human_review']}"
+                        )
                     else:
-                        print(f"{record['id']}: {record['canonical']['name']} — {record['canonical']['command']['primary']} — {record['purpose']['summary']}")
+                        print(
+                            f"{record['id']}: {record['canonical']['name']} — {record['canonical']['command']['primary']} — {record['purpose']['summary']}"
+                        )
             return 0
         if args.command == "corpus" and args.corpus_kind == "inventory":
             import json
@@ -764,11 +911,17 @@ def main(argv: list[str] | None = None) -> int:
             errors = validate_against_schema(data, _load_schema("corpus-inventory.schema.json"))
             if errors:
                 raise OCFError("corpus inventory: " + " | ".join(errors))
-            text = markdown(data) if args.format == "md" else json.dumps(data, indent=2, ensure_ascii=False) + "\n"
+            text = (
+                markdown(data)
+                if args.format == "md"
+                else json.dumps(data, indent=2, ensure_ascii=False) + "\n"
+            )
             if args.output:
                 output = Path(args.output).expanduser().resolve()
                 if output.is_relative_to(root):
-                    raise OCFError("derived inventory must be outside the reference corpus; originals are read-only")
+                    raise OCFError(
+                        "derived inventory must be outside the reference corpus; originals are read-only"
+                    )
                 write_text_atomic(output, text)
             else:
                 print(text, end="")

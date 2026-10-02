@@ -466,13 +466,20 @@ def validate_command_ownership(data: dict[str, Any], path: Path) -> ValidationRe
     catalog = None
     for event in iter_events(data):
         variables = event.get("variables") or {}
-        commands = {name: variables[name] for name in ("command", "release_command") if name in variables}
+        commands = {
+            name: variables[name] for name in ("command", "release_command") if name in variables
+        }
         text = event.get("text", "")
         if event.get("narration_key") and not text:
             catalog = catalog or LocaleCatalog()
             entry = catalog.canonical.get(event["narration_key"]) if catalog.canonical else None
             text = entry.text if entry else ""
-        if data.get("function_id") or event.get("function_id") or event.get("narration_key") or str(event.get("semantic", "")).startswith("function.command."):
+        if (
+            data.get("function_id")
+            or event.get("function_id")
+            or event.get("narration_key")
+            or str(event.get("semantic", "")).startswith("function.command.")
+        ):
             remaining = text
             for index, command in enumerate(vocabulary):
                 if re.search(r"(?<![A-Z0-9-])" + re.escape(command) + r"(?![A-Z0-9-])", remaining):
@@ -483,23 +490,35 @@ def validate_command_ownership(data: dict[str, Any], path: Path) -> ValidationRe
         owner = event.get("function_id") or data.get("function_id")
         record = records.get(owner)
         if record is None:
-            result.add("error", "narration-command-owner",
-                       f"event {event.get('id')}: command owner requires a known function_id, got {owner!r}", str(path))
+            result.add(
+                "error",
+                "narration-command-owner",
+                f"event {event.get('id')}: command owner requires a known function_id, got {owner!r}",
+                str(path),
+            )
             continue
         for name, command in commands.items():
-            is_release = name == "release_command" or event.get("narration_key") == "function.release.command"
+            is_release = (
+                name == "release_command"
+                or event.get("narration_key") == "function.release.command"
+            )
             if is_release:
                 allowed = [(record.data.get("lifecycle", {}).get("release") or {}).get("command")]
             else:
                 allowed = [record.canonical_command] + record.command_modes
             if command not in allowed:
-                result.add("error", "narration-command-owner",
-                           f"event {event.get('id')}: command {command!r} does not belong to owner {owner}", str(path))
+                result.add(
+                    "error",
+                    "narration-command-owner",
+                    f"event {event.get('id')}: command {command!r} does not belong to owner {owner}",
+                    str(path),
+                )
     return result
 
 
-def validate_narration_hygiene(data: dict[str, Any], path: Path = Path("session"),
-                               catalog: LocaleCatalog | None = None) -> ValidationResult:
+def validate_narration_hygiene(
+    data: dict[str, Any], path: Path = Path("session"), catalog: LocaleCatalog | None = None
+) -> ValidationResult:
     """Structural mistakes only; intentional repetition is supported."""
     from .semantics import operational_cue_error
 
@@ -507,7 +526,10 @@ def validate_narration_hygiene(data: dict[str, Any], path: Path = Path("session"
     seen_narration = set()
     seen_cues = set()
     semantics = {event.get("semantic") for event in iter_events(data)}
-    origins = {entry.get("id"): entry.get("locale") for entry in (data.get("narration") or {}).get("resolved", [])}
+    origins = {
+        entry.get("id"): entry.get("locale")
+        for entry in (data.get("narration") or {}).get("resolved", [])
+    }
     for event in iter_events(data):
         event_id = event.get("id")
         cue_problem = operational_cue_error(event)
@@ -515,51 +537,129 @@ def validate_narration_hygiene(data: dict[str, Any], path: Path = Path("session"
             result.add("error", "semantic-cue-operation", cue_problem, str(path))
         text = event.get("text")
         key = event.get("narration_key")
-        if event.get("narration_required") and not (key or (isinstance(text, str) and text.strip())):
-            result.add("error", "narration-required", f"event {event_id}: missing required narration", str(path))
+        if event.get("narration_required") and not (
+            key or (isinstance(text, str) and text.strip())
+        ):
+            result.add(
+                "error",
+                "narration-required",
+                f"event {event_id}: missing required narration",
+                str(path),
+            )
         if "text" in event and not key and (not isinstance(text, str) or not text.strip()):
             result.add("error", "narration-empty", f"event {event_id}: empty narration", str(path))
         if isinstance(text, str):
             if re.search(r"\{[a-z][a-z0-9_]*(?:[,}])", text):
-                result.add("error", "narration-variable", f"event {event_id}: unresolved template variables", str(path))
+                result.add(
+                    "error",
+                    "narration-variable",
+                    f"event {event_id}: unresolved template variables",
+                    str(path),
+                )
             if re.search(r"\b(?:TODO|TBD|TRANSLATE-ME|pending-source-review)\b", text, re.I):
-                result.add("error", "narration-placeholder", f"event {event_id}: untranslated placeholder", str(path))
+                result.add(
+                    "error",
+                    "narration-placeholder",
+                    f"event {event_id}: untranslated placeholder",
+                    str(path),
+                )
             if re.search(r"\[(?:pause|silence)\b", text, re.I):
-                result.add("error", "narration-pause", f"event {event_id}: pause directives belong in timing.pause_after", str(path))
+                result.add(
+                    "error",
+                    "narration-pause",
+                    f"event {event_id}: pause directives belong in timing.pause_after",
+                    str(path),
+                )
         timing = event.get("timing") or {}
         if not isinstance(timing, dict):
-            result.add("error", "narration-timing", f"event {event_id}: timing must be an object", str(path))
+            result.add(
+                "error",
+                "narration-timing",
+                f"event {event_id}: timing must be an object",
+                str(path),
+            )
             continue
         for name in ("preferred_duration", "maximum_duration"):
             value = timing.get(name)
-            if value is not None and (not isinstance(value, (int, float)) or isinstance(value, bool) or not math.isfinite(value) or value <= 0):
-                result.add("error", "narration-timing", f"event {event_id}: malformed {name}", str(path))
+            if value is not None and (
+                not isinstance(value, (int, float))
+                or isinstance(value, bool)
+                or not math.isfinite(value)
+                or value <= 0
+            ):
+                result.add(
+                    "error", "narration-timing", f"event {event_id}: malformed {name}", str(path)
+                )
         pause = timing.get("pause_after", 0)
-        if not isinstance(pause, (int, float)) or isinstance(pause, bool) or not math.isfinite(pause) or pause < 0:
-            result.add("error", "narration-pause", f"event {event_id}: malformed pause_after", str(path))
+        if (
+            not isinstance(pause, (int, float))
+            or isinstance(pause, bool)
+            or not math.isfinite(pause)
+            or pause < 0
+        ):
+            result.add(
+                "error", "narration-pause", f"event {event_id}: malformed pause_after", str(path)
+            )
         if timing.get("anchor", "start") != "start" and "after" not in event:
-            result.add("error", "semantic-anchor", f"event {event_id}: end anchor requires an after reference", str(path))
+            result.add(
+                "error",
+                "semantic-anchor",
+                f"event {event_id}: end anchor requires an after reference",
+                str(path),
+            )
         for field_name in ("semantic", "auditory_cue"):
-            if event.get(field_name) and not re.fullmatch(r"[a-z][a-z0-9-]*(\.[a-z0-9-]+)+", str(event[field_name])):
-                result.add("error", "semantic-identity", f"event {event_id}: invalid {field_name} identity", str(path))
-        anchor = (event.get("at"), event.get("after"), event.get("offset", 0), timing.get("anchor", "start"))
+            if event.get(field_name) and not re.fullmatch(
+                r"[a-z][a-z0-9-]*(\.[a-z0-9-]+)+", str(event[field_name])
+            ):
+                result.add(
+                    "error",
+                    "semantic-identity",
+                    f"event {event_id}: invalid {field_name} identity",
+                    str(path),
+                )
+        anchor = (
+            event.get("at"),
+            event.get("after"),
+            event.get("offset", 0),
+            timing.get("anchor", "start"),
+        )
         narration = (str(key or text), repr(sorted((event.get("variables") or {}).items())), anchor)
         cue = (event.get("auditory_cue"), anchor)
         if not event.get("intentional_repeat"):
             if (key or text) and narration in seen_narration:
-                result.add("error", "narration-duplicate", f"event {event_id}: duplicate narration at the same anchor", str(path))
+                result.add(
+                    "error",
+                    "narration-duplicate",
+                    f"event {event_id}: duplicate narration at the same anchor",
+                    str(path),
+                )
             if event.get("auditory_cue") and cue in seen_cues:
-                result.add("error", "semantic-cue-duplicate", f"event {event_id}: duplicate auditory cue at the same anchor", str(path))
+                result.add(
+                    "error",
+                    "semantic-cue-duplicate",
+                    f"event {event_id}: duplicate auditory cue at the same anchor",
+                    str(path),
+                )
         if key or text:
             seen_narration.add(narration)
         if event.get("auditory_cue"):
             seen_cues.add(cue)
         if key and catalog:
             try:
-                entry, _ = catalog.resource(key, origins.get(event_id) or document_locale(data), domain="narration", fallback=False)
+                entry, _ = catalog.resource(
+                    key,
+                    origins.get(event_id) or document_locale(data),
+                    domain="narration",
+                    fallback=False,
+                )
                 for reference in entry.requires_events:
                     if reference not in semantics:
-                        result.add("error", "narration-event-reference", f"event {event_id}: narration requires absent semantic event {reference}", str(path))
+                        result.add(
+                            "error",
+                            "narration-event-reference",
+                            f"event {event_id}: narration requires absent semantic event {reference}",
+                            str(path),
+                        )
             except LocalizationError as exc:
                 result.add("error", "narration-resource", str(exc), str(path))
     return result
@@ -611,7 +711,9 @@ def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationRes
             where = f"{target}/{entry.file or '?'}#{key}"
             if not entry.text.strip():
                 result.add("error", "locale-empty", f"{key}: empty narration/resource", where)
-            if entry.domain == "narration" and re.search(r"\b(?:TODO|TBD|TRANSLATE-ME|pending-source-review)\b", entry.text, re.I):
+            if entry.domain == "narration" and re.search(
+                r"\b(?:TODO|TBD|TRANSLATE-ME|pending-source-review)\b", entry.text, re.I
+            ):
                 result.add("error", "locale-placeholder", f"{key}: untranslated placeholder", where)
             try:
                 for problem in entry.check_contract():
@@ -624,9 +726,19 @@ def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationRes
             source = canonical.get(key) if canonical else None
             if source is not None:
                 if set(source.requires_events) != set(entry.requires_events):
-                    result.add("error", "locale-event-contract", f"{key}: translation changed required semantic events", where)
+                    result.add(
+                        "error",
+                        "locale-event-contract",
+                        f"{key}: translation changed required semantic events",
+                        where,
+                    )
                 if set(source.required_pronunciation) != set(entry.required_pronunciation):
-                    result.add("error", "locale-pronunciation-contract", f"{key}: translation changed required pronunciation tokens", where)
+                    result.add(
+                        "error",
+                        "locale-pronunciation-contract",
+                        f"{key}: translation changed required pronunciation tokens",
+                        where,
+                    )
                 missing_variables = sorted(set(source.variables) - set(entry.variables))
                 extra_variables = sorted(set(entry.variables) - set(source.variables))
                 if missing_variables or extra_variables:
@@ -689,8 +801,7 @@ def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationRes
                 result.add(
                     "error",
                     "locale-unknown-keys",
-                    f"{locale} defines keys the canonical pack does not: "
-                    f"{', '.join(unknown)}",
+                    f"{locale} defines keys the canonical pack does not: {', '.join(unknown)}",
                     target,
                 )
             if catalog.stale_translations(locale):
@@ -721,8 +832,7 @@ def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationRes
     result.add(
         "info",
         "locale-count",
-        f"validated {len(catalog.locales())} locale pack(s): "
-        f"{', '.join(catalog.locales())}",
+        f"validated {len(catalog.locales())} locale pack(s): {', '.join(catalog.locales())}",
     )
     return result
 
@@ -741,7 +851,6 @@ def known_commands() -> set[str]:
         if release:
             commands.add(str(release))
     return commands
-
 
 
 def validate_timed_transcript_file(path: Path) -> ValidationResult:
@@ -824,7 +933,9 @@ def validate_semantic_dsp_profiles() -> ValidationResult:
             if profile["initial_state"] not in profile["states"]:
                 raise OCFError("initial state must be configured or explicitly disabled")
             for state, choice in profile["states"].items():
-                if choice["mode"] == "preset" and not _resolve_background_manifest(choice["preset"]):
+                if choice["mode"] == "preset" and not _resolve_background_manifest(
+                    choice["preset"]
+                ):
                     raise OCFError(f"state {state}: unknown background {choice['preset']}")
         except OCFError as exc:
             result.add("error", "semantic-dsp-profile", str(exc), str(path))
@@ -879,7 +990,12 @@ def validate_session_library() -> ValidationResult:
                 for issue in structural.issues:
                     if issue.code != "narration-required":
                         result.issues.append(issue)
-                result.add("info", "template-narration-pending", "architecture draft: required original narration is not authored; not render-ready", str(path))
+                result.add(
+                    "info",
+                    "template-narration-pending",
+                    "architecture draft: required original narration is not authored; not render-ready",
+                    str(path),
+                )
             else:
                 result.extend(validate_narration_usage(doc, path))
                 result.extend(validate_narration_hygiene(doc, path, LocaleCatalog()))

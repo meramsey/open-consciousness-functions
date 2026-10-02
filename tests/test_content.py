@@ -9,7 +9,19 @@ from tools.extract_function_content import initialize
 
 def layers():
     record = load_function_by_id("OCF-FND-004")
-    inventory = {"files": [{"function_id": record.id, "sha256": "a"*64, "path": "mockup.txt", "evidence_class": "reconstructed_mockup", "completeness": "not applicable", "candidate_locators": {"main": [3]}, "source_type": "txt"}]}
+    inventory = {
+        "files": [
+            {
+                "function_id": record.id,
+                "sha256": "a" * 64,
+                "path": "mockup.txt",
+                "evidence_class": "reconstructed_mockup",
+                "completeness": "not applicable",
+                "candidate_locators": {"main": [3]},
+                "source_type": "txt",
+            }
+        ]
+    }
     return initialize(inventory, record, [])
 
 
@@ -29,14 +41,25 @@ def test_locale_binding_cannot_redefine_provenance_and_decisions_cannot_be_facts
     data["bindings"]["evidence_class"] = "source_transcript"
     assert validate_layers(data, "OCF-FND-004")
     data = layers()
-    data["decisions"]["decisions"] = [{"id": "test", "kind": "source-fact", "description": "Choice", "status": "provisional", "material_change": True, "human_review": "required"}]
+    data["decisions"]["decisions"] = [
+        {
+            "id": "test",
+            "kind": "source-fact",
+            "description": "Choice",
+            "status": "provisional",
+            "material_change": True,
+            "human_review": "required",
+        }
+    ]
     assert validate_layers(data, "OCF-FND-004")
 
 
 def test_references_unknown_blocks_and_review_promotion_rejected():
     data = layers()
     data["specifications"]["blocks"]["main"]["evidence_refs"] = ["invented"]
-    assert "specification references unknown evidence observation" in validate_layers(data, "OCF-FND-004")
+    assert "specification references unknown evidence observation" in validate_layers(
+        data, "OCF-FND-004"
+    )
     data = layers()
     data["specifications"]["human_review"] = "approved"
     assert validate_layers(data, "OCF-FND-004")

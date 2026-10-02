@@ -41,7 +41,9 @@ def test_focus_3_is_never_part_of_a_canonical_focus_sequence():
     offenders = [
         path.name
         for path in sorted(directory.glob("OCF-BG-*.yaml"))
-        for sequence in [yaml.safe_load(path.read_text(encoding="utf-8")).get("focus_sequence") or []]
+        for sequence in [
+            yaml.safe_load(path.read_text(encoding="utf-8")).get("focus_sequence") or []
+        ]
         if any("focus-3" in str(entry.get("state", "")) for entry in sequence)
     ]
     assert offenders == [], f"Focus 3 leaked into a Focus-state program: {offenders}"

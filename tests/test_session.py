@@ -124,9 +124,7 @@ def test_load_template_rejects_bad_origin(tmp_path):
 def test_compose_requires_declared_slots():
     tpl = session.load_template(TEMPLATE_ID)
     with pytest.raises(OCFError, match="missing required slot.*opener"):
-        session.compose(
-            tpl, {"focus11": "x", "sleep20": "y", "closer": "Done."}, title="t"
-        )
+        session.compose(tpl, {"focus11": "x", "sleep20": "y", "closer": "Done."}, title="t")
 
 
 def test_compose_lists_every_missing_slot():

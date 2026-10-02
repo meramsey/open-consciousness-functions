@@ -16,14 +16,27 @@ def plan(request: dict, base: Path = Path(".")) -> dict:
     if errors:
         raise OCFError("authoring plan: " + " | ".join(errors))
     template = load_template(request["template"])
-    if request.get("function_id") and template.get("function_id") and request["function_id"] != template["function_id"]:
+    if (
+        request.get("function_id")
+        and template.get("function_id")
+        and request["function_id"] != template["function_id"]
+    ):
         raise OCFError("authoring plan function does not own the selected fixed-function template")
     if request.get("voice"):
         from .voice import resolve_backend
 
         resolve_backend(request["voice"], locale=request["locale"])
-    slots = {key: (base / path).read_text(encoding="utf-8") for key, path in request.get("slots", {}).items()}
-    doc = compose(template, slots, title=template["name"], function_id=request.get("function_id"), enabled_stages=request.get("enabled_stages", []))
+    slots = {
+        key: (base / path).read_text(encoding="utf-8")
+        for key, path in request.get("slots", {}).items()
+    }
+    doc = compose(
+        template,
+        slots,
+        title=template["name"],
+        function_id=request.get("function_id"),
+        enabled_stages=request.get("enabled_stages", []),
+    )
     resolved = resolve_document(doc, request["locale"], strict=True)
     events = list(iter_events(resolved))
     if request.get("dsp_profile"):
@@ -38,7 +51,10 @@ def plan(request: dict, base: Path = Path(".")) -> dict:
             elif isinstance(directive, dict):
                 required.update(value for key, value in directive.items() if key in ("from", "to"))
         if required - profile["states"].keys():
-            raise OCFError("authoring DSP profile lacks required state bindings: " + ", ".join(sorted(required-profile["states"].keys())))
+            raise OCFError(
+                "authoring DSP profile lacks required state bindings: "
+                + ", ".join(sorted(required - profile["states"].keys()))
+            )
     if request["narration_source"] != "tts":
         package = load_yaml_file(base / request["recordings"])
         problems = validate_against_schema(package, _load_schema("narration-package.schema.json"))
@@ -46,10 +62,32 @@ def plan(request: dict, base: Path = Path(".")) -> dict:
             raise OCFError("recording package schema/locale does not match the authoring plan")
         wanted = {event["id"] for event in events if event.get("text", "").strip()}
         if wanted != set(package["recordings"]):
-            raise OCFError("recording package does not match this session's spoken event occurrences")
-    return {"schema_version": "1.0", "valid": True, "dry_run": True, "template_id": template["id"], "template_version": template.get("version"),
-            "content_status": template.get("content_status", "unknown"), "human_review": "required" if template.get("content_status") != "reviewed" else "recorded template status; no new approval",
-            "locale": request["locale"], "function_id": doc.get("function_id"), "narration_source": request["narration_source"],
-            "spoken_events": sum(bool(event.get("text", "").strip()) for event in events), "semantic_events": [{"id": event["id"], "semantic": event.get("semantic"), "narration_key": event.get("narration_key")} for event in events],
-            "target_duration_s": request.get("target_duration_s"), "duration_status": "requires measured speech and explicit timing design; no automatic stretching",
-            "effects": "no audio, files, model download, cue playback or wording generation"}
+            raise OCFError(
+                "recording package does not match this session's spoken event occurrences"
+            )
+    return {
+        "schema_version": "1.0",
+        "valid": True,
+        "dry_run": True,
+        "template_id": template["id"],
+        "template_version": template.get("version"),
+        "content_status": template.get("content_status", "unknown"),
+        "human_review": "required"
+        if template.get("content_status") != "reviewed"
+        else "recorded template status; no new approval",
+        "locale": request["locale"],
+        "function_id": doc.get("function_id"),
+        "narration_source": request["narration_source"],
+        "spoken_events": sum(bool(event.get("text", "").strip()) for event in events),
+        "semantic_events": [
+            {
+                "id": event["id"],
+                "semantic": event.get("semantic"),
+                "narration_key": event.get("narration_key"),
+            }
+            for event in events
+        ],
+        "target_duration_s": request.get("target_duration_s"),
+        "duration_status": "requires measured speech and explicit timing design; no automatic stretching",
+        "effects": "no audio, files, model download, cue playback or wording generation",
+    }

@@ -47,9 +47,7 @@ def check_sbagenx() -> SbagenxStatus:
         return SbagenxStatus(available=False)
     version: str | None = None
     try:
-        result = subprocess.run(
-            [executable, "-h"], capture_output=True, text=True, timeout=8
-        )
+        result = subprocess.run([executable, "-h"], capture_output=True, text=True, timeout=8)
         head = (result.stdout or result.stderr).splitlines()[:4]
         for line in head:
             match = re.search(
@@ -83,9 +81,7 @@ def run_sbagenx(args: list[str]) -> subprocess.CompletedProcess[str]:
     status = check_sbagenx()
     if not status.available or not status.executable:
         raise OCFSbagenxMissing(installation_guidance())
-    return subprocess.run(
-        [status.executable, *args], check=False, text=True, capture_output=True
-    )
+    return subprocess.run([status.executable, *args], check=False, text=True, capture_output=True)
 
 
 class OCFSbagenxMissing(RuntimeError):
@@ -100,9 +96,7 @@ def list_programs() -> str:
     lines = [f"SBaGenX built-in programs ({status.executable}):"]
     for name, note in BUILTIN_PROGRAMS.items():
         lines.append(f"  -p {name:<9} {note}")
-    lines.append(
-        "  sequence   .sbg session files; OCF presets live in audio/background/presets/"
-    )
+    lines.append("  sequence   .sbg session files; OCF presets live in audio/background/presets/")
     return "\n".join(lines)
 
 

@@ -20,16 +20,22 @@ def schedule_timeline(doc: dict, speech_durations: dict[str, float]) -> list[dic
     rows = []
     speech_available = 0.0
     while pending:
-        events, problems = resolve_timeline(doc, speech_durations=speech_durations,
-                                           start_overrides=starts)
+        events, problems = resolve_timeline(
+            doc, speech_durations=speech_durations, start_overrides=starts
+        )
         if problems:
             raise OCFError("timeline problems: " + " | ".join(problems))
         times = {event.id: event.at for event in events}
-        eligible = [event for event in pending.values()
-                    if not event.get("after") or event["after"] in starts]
+        eligible = [
+            event
+            for event in pending.values()
+            if not event.get("after") or event["after"] in starts
+        ]
         if not eligible:
             raise OCFError("circular or missing semantic timing dependency")
-        event = min(eligible, key=lambda item: times[item["id"]] if times[item["id"]] is not None else -1)
+        event = min(
+            eligible, key=lambda item: times[item["id"]] if times[item["id"]] is not None else -1
+        )
         identifier = event["id"]
         at = times[identifier]
         if at is None:
@@ -54,8 +60,14 @@ def schedule_timeline(doc: dict, speech_durations: dict[str, float]) -> list[dic
         if duration:
             speech_available = at + duration + pause
         event_duration = max(duration, float((event.get("dsp") or {}).get("transition_s", 0)))
-        rows.append({"id": identifier, "at": round(at, 6), "speech_duration": duration,
-                     "end": round(at + event_duration + pause, 6),
-                     **{key: event[key] for key in ("semantic", "dsp", "auditory_cue") if key in event}})
+        rows.append(
+            {
+                "id": identifier,
+                "at": round(at, 6),
+                "speech_duration": duration,
+                "end": round(at + event_duration + pause, 6),
+                **{key: event[key] for key in ("semantic", "dsp", "auditory_cue") if key in event},
+            }
+        )
         pending.pop(identifier)
     return sorted(rows, key=lambda row: row["at"])

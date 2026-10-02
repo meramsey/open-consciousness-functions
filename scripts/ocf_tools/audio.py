@@ -73,9 +73,7 @@ def describe_background(preset: str, engine: str = "farfield") -> int:
     return 0
 
 
-def render_background(
-    preset: str, output: str | None = None, engine: str = "farfield"
-) -> int:
+def render_background(preset: str, output: str | None = None, engine: str = "farfield") -> int:
     """`ocf audio render-background <preset> [--output FILE] [--engine ...]`."""
     manifest = _find_manifest(preset)
     out_path = Path(output) if output else None

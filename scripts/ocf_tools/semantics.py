@@ -17,10 +17,16 @@ from .validators import _load_schema, validate_against_schema
 STAGES_DIR = REPO_ROOT / "audio" / "templates" / "stages"
 CUE_PROFILES_DIR = REPO_ROOT / "audio" / "cues" / "profiles"
 DEFAULT_CUE_PROFILE = "OCF-CUE-PROFILE-DEFAULT"
-OPERATIONAL_CUES = frozenset({
-    "focus.ten.enter", "focus.ten.ready", "focus.eleven.open",
-    "focus.eleven.ready", "focus.eleven.close", "session.complete",
-})
+OPERATIONAL_CUES = frozenset(
+    {
+        "focus.ten.enter",
+        "focus.ten.ready",
+        "focus.eleven.open",
+        "focus.eleven.ready",
+        "focus.eleven.close",
+        "session.complete",
+    }
+)
 
 
 def operational_cue_error(event: dict) -> str | None:
@@ -31,7 +37,11 @@ def operational_cue_error(event: dict) -> str | None:
     deliberately designed rehearsal operation; repetition is not a bypass.
     """
     identity = event.get("auditory_cue")
-    if isinstance(identity, str) and identity in OPERATIONAL_CUES and event.get("semantic") != identity:
+    if (
+        isinstance(identity, str)
+        and identity in OPERATIONAL_CUES
+        and event.get("semantic") != identity
+    ):
         return (
             f"event {event.get('id')}: operational auditory cue {identity!r} "
             f"requires its matching semantic operation, not {event.get('semantic')!r}"
@@ -59,8 +69,14 @@ def load_stage(reference: str) -> dict:
     return stage
 
 
-def stage_events(stage: dict, instance: str, *, start: float = 0,
-                 after: str | None = None, previous: str | None = None) -> list[dict]:
+def stage_events(
+    stage: dict,
+    instance: str,
+    *,
+    start: float = 0,
+    after: str | None = None,
+    previous: str | None = None,
+) -> list[dict]:
     """Namespace local IDs/references; attach a stage to a semantic anchor."""
     events = []
     local_ids = {event["id"] for event in stage["events"]}
@@ -106,6 +122,13 @@ def bind_document_cues(doc: dict, profile: dict | None = None) -> list[dict]:
         binding = deepcopy(profile["bindings"][identity])
         if binding["mode"] == "asset" and not (REPO_ROOT / binding["file"]).is_file():
             raise OCFError(f"cue {identity}: asset not found: {binding['file']}")
-        bindings.append({"event_id": event["id"], "semantic": event.get("semantic"),
-                         "identity": identity, "profile": profile["id"], "binding": binding})
+        bindings.append(
+            {
+                "event_id": event["id"],
+                "semantic": event.get("semantic"),
+                "identity": identity,
+                "profile": profile["id"],
+                "binding": binding,
+            }
+        )
     return bindings

@@ -14,7 +14,9 @@ from ocf_tools.session import compose, load_template
 from ocf_tools.timing import schedule_timeline
 from ocf_tools.validators import validate_timed_transcript
 
-spec = importlib.util.spec_from_file_location("preparation_preview", REPO_ROOT / "scripts/tools/preview_preparation_learning.py")
+spec = importlib.util.spec_from_file_location(
+    "preparation_preview", REPO_ROOT / "scripts/tools/preview_preparation_learning.py"
+)
 preview = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(preview)
 
@@ -22,11 +24,17 @@ spec.loader.exec_module(preview)
 @pytest.mark.parametrize("optional", [False, True])
 def test_complete_native_learning_composes_and_resolves_without_inline_english(optional):
     template = load_template("OCF-TPL-SESSION-PREP-LEARN-001")
-    doc = compose(template, {}, title="Learning", enabled_stages=["affirmation", "tuning"] if optional else [])
+    doc = compose(
+        template, {}, title="Learning", enabled_stages=["affirmation", "tuning"] if optional else []
+    )
     assert all("text" not in event for event in iter_events(doc))
     resolved = resolve_document(doc, "en-US")
     assert not validate_timed_transcript(resolved, Path("learning.yaml")).errors
-    assert all(event.get("text", "").strip() for event in iter_events(resolved) if event.get("narration_required"))
+    assert all(
+        event.get("text", "").strip()
+        for event in iter_events(resolved)
+        if event.get("narration_required")
+    )
     assert all(item["locale"] == "en-US" for item in resolved["narration"]["resolved"])
 
 
@@ -43,7 +51,15 @@ def test_count_open_close_and_waking_completion_have_semantic_order():
     by_id = {event["id"]: event for event in events}
     guided = [event["text"] for event in events if event["id"].startswith("focus-ten.count-")]
     assert [text.split(".", 1)[0] + "." for text in guided] == [
-        "One.", "Two.", "Three.", "Four.", "Five.", "Six.", "Seven.", "Eight.", "Nine.",
+        "One.",
+        "Two.",
+        "Three.",
+        "Four.",
+        "Five.",
+        "Six.",
+        "Seven.",
+        "Eight.",
+        "Nine.",
     ]
     assert all(len(text.split()) > 5 for text in guided)
     assert by_id["focus-ten.enter"]["text"].startswith("Ten.")
@@ -56,12 +72,17 @@ def test_count_open_close_and_waking_completion_have_semantic_order():
     assert by_id["return.complete"]["dsp"]["state"] == "ordinary-waking"
     assert events[-1]["semantic"] == "session.complete"
     assert events[-1]["after"] == "return.complete"
-    assert all(binding["binding"]["mode"] == "disabled" for binding in bind_document_cues(result["document"]))
+    assert all(
+        binding["binding"]["mode"] == "disabled"
+        for binding in bind_document_cues(result["document"])
+    )
 
 
 def test_optional_affirmation_has_no_default_but_accepts_explicit_configuration():
     default = preview.build_preview()
-    practice = next(event for event in iter_events(default["document"]) if event["id"] == "affirmation.practice")
+    practice = next(
+        event for event in iter_events(default["document"]) if event["id"] == "affirmation.practice"
+    )
     assert "narration_key" not in practice and "text" not in practice
     configured = preview.build_preview(affirmation="I choose to explore this practice.")
     assert "I choose to explore this practice." in configured["listener"]
@@ -84,18 +105,34 @@ def test_no_real_translation_is_generated_or_silently_substituted():
 
 def test_three_automatic_learning_claims_are_removed_from_owned_shell():
     template = load_template("OCF-TPL-SESSION-LEARN-001")
-    old = {"This function is being installed beneath conscious effort.",
-           "Every word is received easily by your mind.",
-           "All that you have absorbed is being integrated beneath awareness."}
-    assert not any(line.get("text") in old for section in template["sections"] for line in section.get("lines", []))
-    keys = {line.get("narration_key") for section in template["sections"] for line in section.get("lines", [])}
-    assert {"function.learning.attend", "function.learning.rehearse", "function.learning.reflect"} <= keys
+    old = {
+        "This function is being installed beneath conscious effort.",
+        "Every word is received easily by your mind.",
+        "All that you have absorbed is being integrated beneath awareness.",
+    }
+    assert not any(
+        line.get("text") in old
+        for section in template["sections"]
+        for line in section.get("lines", [])
+    )
+    keys = {
+        line.get("narration_key")
+        for section in template["sections"]
+        for line in section.get("lines", [])
+    }
+    assert {
+        "function.learning.attend",
+        "function.learning.rehearse",
+        "function.learning.reflect",
+    } <= keys
 
 
 def test_review_views_are_fresh_and_do_not_invent_measured_speech():
     result = preview.build_preview()
     for name in ("listener", "developer"):
-        assert (REPO_ROOT / f"docs/drafts/preparation-learning.en-US.{name}.md").read_text() == result[name]
+        assert (
+            REPO_ROOT / f"docs/drafts/preparation-learning.en-US.{name}.md"
+        ).read_text() == result[name]
     assert "estimates" in result["developer"]
     assert "measured TTS" in result["developer"]
     assert result["stats"]["explicit_pause_s"] > 300
@@ -110,8 +147,11 @@ def test_editorial_word_budget_replaces_explanation_with_practice_time():
     assert result["stats"]["explicit_pause_s"] >= 540
     assert result["stats"]["estimated_session_s"] >= 0.95 * 1381
     catalog = LocaleCatalog()
-    assert all(catalog.canonical.entries[event["narration_key"]].status == "reviewed"
-               for event in iter_events(result["document"]) if event.get("narration_key"))
+    assert all(
+        catalog.canonical.entries[event["narration_key"]].status == "reviewed"
+        for event in iter_events(result["document"])
+        if event.get("narration_key")
+    )
 
 
 def test_access_channel_context_and_unassigned_hypothetical_are_preserved():
@@ -152,13 +192,20 @@ def test_composed_open_close_grammar_and_closing_line_are_explicit():
 
     # Text-review estimates prove the dependency arithmetic, not physical cue
     # playback. Cue + word/identification share their owning coordination event.
-    durations = {identifier: len(preview.WORD.findall(event.get("text", ""))) * 60 / 140
-                 for identifier, event in events.items() if event.get("text")}
+    durations = {
+        identifier: len(preview.WORD.findall(event.get("text", ""))) * 60 / 140
+        for identifier, event in events.items()
+        if event.get("text")
+    }
     schedule = {row["id"]: row for row in schedule_timeline(doc, durations)}
     for prefix in ("open", "close"):
         transition, ready = f"{prefix}.transition", f"{prefix}.ready"
-        assert schedule[ready]["at"] == pytest.approx(schedule[transition]["at"] + durations[transition] + 25, abs=1e-5)
-    assert schedule["close.close"]["at"] == pytest.approx(schedule["close.prepare"]["at"] + durations["close.prepare"] + 3, abs=1e-5)
+        assert schedule[ready]["at"] == pytest.approx(
+            schedule[transition]["at"] + durations[transition] + 25, abs=1e-5
+        )
+    assert schedule["close.close"]["at"] == pytest.approx(
+        schedule["close.prepare"]["at"] + durations["close.prepare"] + 3, abs=1e-5
+    )
 
 
 def test_rc1_is_reviewed_without_approving_arbitrary_user_affirmation():

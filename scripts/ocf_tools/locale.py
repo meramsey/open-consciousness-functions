@@ -128,9 +128,35 @@ BUILTIN_ORDINAL_RULES: dict[str, dict[str, str]] = {
 
 # Languages whose message numbers use a decimal comma.
 _DECIMAL_COMMA = {
-    "es", "de", "fr", "it", "pt", "nl", "ru", "uk", "pl", "cs", "sk", "tr",
-    "id", "vi", "da", "nb", "fi", "ro", "hu", "bg", "el", "ca", "hr", "sr",
-    "lt", "lv", "et", "sl", "is",
+    "es",
+    "de",
+    "fr",
+    "it",
+    "pt",
+    "nl",
+    "ru",
+    "uk",
+    "pl",
+    "cs",
+    "sk",
+    "tr",
+    "id",
+    "vi",
+    "da",
+    "nb",
+    "fi",
+    "ro",
+    "hu",
+    "bg",
+    "el",
+    "ca",
+    "hr",
+    "sr",
+    "lt",
+    "lv",
+    "et",
+    "sl",
+    "is",
 }
 
 _RTL_LANGUAGES = {"ar", "he", "fa", "ur", "ps", "yi", "dv", "ku", "sd"}
@@ -257,10 +283,30 @@ def fallback_chain(requested: str | None, *, default: str = CANONICAL_LOCALE) ->
 # ---------------------------------------------------------------------------
 
 _ALLOWED_PLANE = (
-    ast.Expression, ast.BoolOp, ast.And, ast.Or, ast.UnaryOp, ast.Not,
-    ast.USub, ast.UAdd, ast.BinOp, ast.Mod, ast.Name, ast.Load, ast.Constant,
-    ast.Tuple, ast.List, ast.Compare, ast.Eq, ast.NotEq, ast.Lt, ast.LtE,
-    ast.Gt, ast.GtE, ast.In, ast.NotIn,
+    ast.Expression,
+    ast.BoolOp,
+    ast.And,
+    ast.Or,
+    ast.UnaryOp,
+    ast.Not,
+    ast.USub,
+    ast.UAdd,
+    ast.BinOp,
+    ast.Mod,
+    ast.Name,
+    ast.Load,
+    ast.Constant,
+    ast.Tuple,
+    ast.List,
+    ast.Compare,
+    ast.Eq,
+    ast.NotEq,
+    ast.Lt,
+    ast.LtE,
+    ast.Gt,
+    ast.GtE,
+    ast.In,
+    ast.NotIn,
 )
 
 
@@ -388,9 +434,7 @@ def plural_category(
             )
         )
     else:
-        table = dict(
-            BUILTIN_PLURAL_RULES.get(locale_language(language), DEFAULT_PLURAL_RULES)
-        )
+        table = dict(BUILTIN_PLURAL_RULES.get(locale_language(language), DEFAULT_PLURAL_RULES))
     absolute = abs(float(count))
     if absolute != int(absolute):
         # CLDR: a language that defines "many" uses it for fractional counts.
@@ -575,9 +619,7 @@ class _Parser:
         self.pos += 1  # consume ','
         offset = 0.0
         if kind != "select":
-            offset_match = re.match(
-                r"\s*offset\s*:\s*(-?\d+(?:\.\d+)?)", self.text[self.pos :]
-            )
+            offset_match = re.match(r"\s*offset\s*:\s*(-?\d+(?:\.\d+)?)", self.text[self.pos :])
             if offset_match:
                 offset = float(offset_match.group(1))
                 self.pos += offset_match.end()
@@ -758,9 +800,7 @@ class NarrationResource:
                 f"uses undeclared variable(s) {', '.join(undeclared)}; add them to `variables`"
             )
         if unused:
-            problems.append(
-                f"declares variable(s) {', '.join(unused)} that the message never uses"
-            )
+            problems.append(f"declares variable(s) {', '.join(unused)} that the message never uses")
         return problems
 
     def sample_variables(self) -> dict[str, Any]:
@@ -857,9 +897,7 @@ class LocalePack:
 
     def keys(self, domain: str | None = None) -> list[str]:
         return sorted(
-            key
-            for key, entry in self.entries.items()
-            if domain is None or entry.domain == domain
+            key for key, entry in self.entries.items() if domain is None or entry.domain == domain
         )
 
     def domains(self) -> set[str]:
@@ -895,9 +933,7 @@ def _entry_from_value(
     key: str, value: Any, locale: str, domain: str, filename: str
 ) -> NarrationResource:
     if isinstance(value, str):
-        return NarrationResource(
-            key=key, locale=locale, domain=domain, text=value, file=filename
-        )
+        return NarrationResource(key=key, locale=locale, domain=domain, text=value, file=filename)
     if not isinstance(value, dict):
         raise LocalizationError(f"{locale} {filename}: entry {key!r} must be a string or object")
     text = value.get("text")
@@ -969,9 +1005,7 @@ def load_pack(path: Path) -> LocalePack:
                 )
             if str(key) in entries:
                 raise LocalizationError(f"{locale}: duplicate key {str(key)!r} in {filename}")
-            entries[str(key)] = _entry_from_value(
-                str(key), value, locale, file_domain, filename
-            )
+            entries[str(key)] = _entry_from_value(str(key), value, locale, file_domain, filename)
     return LocalePack(manifest, entries, path)
 
 
@@ -1048,9 +1082,7 @@ class LocaleCatalog:
         """Installed locales consulted for ``requested``, canonical last."""
         fallback = normalize_tag(default) or CANONICAL_LOCALE
         return [
-            locale
-            for locale in fallback_chain(requested, default=fallback)
-            if locale in self.packs
+            locale for locale in fallback_chain(requested, default=fallback) if locale in self.packs
         ]
 
     def spoken_chain(self, requested: str | None) -> list[str]:
@@ -1064,7 +1096,8 @@ class LocaleCatalog:
         """
         normalized = normalize_tag(requested) or self.canonical_locale
         parents = [
-            locale for locale in self.chain(normalized)
+            locale
+            for locale in self.chain(normalized)
             if locale_language(locale) == locale_language(normalized)
         ]
         if not parents:
@@ -1211,7 +1244,10 @@ class LocaleCatalog:
             if source is None:
                 continue
             source_version = str(source.version or canonical.semantic_version)
-            if entry.version and _version_tuple(entry.version)[0] < _version_tuple(source_version)[0]:
+            if (
+                entry.version
+                and _version_tuple(entry.version)[0] < _version_tuple(source_version)[0]
+            ):
                 stale.append(key)
         return sorted(stale)
 
@@ -1243,9 +1279,26 @@ def _version_tuple(value: str) -> tuple[int, int, int]:
 # ---------------------------------------------------------------------------
 
 _PSEUDO_ACCENTS = {
-    "a": "á", "e": "é", "i": "í", "o": "ö", "u": "ú", "y": "ý",
-    "c": "ç", "n": "ñ", "s": "š", "z": "ž", "A": "Á", "E": "É", "I": "Í",
-    "O": "Ö", "U": "Ú", "Y": "Ý", "C": "Ç", "N": "Ñ", "S": "Š", "Z": "Ž",
+    "a": "á",
+    "e": "é",
+    "i": "í",
+    "o": "ö",
+    "u": "ú",
+    "y": "ý",
+    "c": "ç",
+    "n": "ñ",
+    "s": "š",
+    "z": "ž",
+    "A": "Á",
+    "E": "É",
+    "I": "Í",
+    "O": "Ö",
+    "U": "Ú",
+    "Y": "Ý",
+    "C": "Ç",
+    "N": "Ñ",
+    "S": "Š",
+    "Z": "Ž",
 }
 
 
@@ -1412,7 +1465,9 @@ def resolve_document(
             if not event.get("text"):
                 continue
             inline_events += 1
-            origin = event.get("locale") or previous_origins.get(event.get("id")) or document_locale(doc)
+            origin = (
+                event.get("locale") or previous_origins.get(event.get("id")) or document_locale(doc)
+            )
             if locale_language(origin) != locale_language(target) and strict:
                 issues.append(
                     f"inline event {event.get('id', '?')} is authored in {origin}, "
@@ -1440,8 +1495,7 @@ def resolve_document(
                 "locale": resolution.origin_locale,
                 "resource_file": entry.file,
                 "version": entry.version,
-                "status": entry.status
-                or (catalog.get(resolution.origin_locale) or pack).status,
+                "status": entry.status or (catalog.get(resolution.origin_locale) or pack).status,
             }
         )
 
