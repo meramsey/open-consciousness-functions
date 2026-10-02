@@ -145,6 +145,7 @@ def discover(record) -> dict:
         "safety": record.data["safety"],
         "claim_review": "pending-source-review",
         "layers": list(layers),
+        "extraction_review": spec.get("analysis_review") if spec else None,
     }
 
 

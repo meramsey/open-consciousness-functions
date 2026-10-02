@@ -478,7 +478,61 @@ def generate_all_content() -> list[tuple[str, str]]:
         ("docs/SAFETY_MATRIX.md", safety_matrix_markdown()),
         ("docs/AUDIO_IMPLEMENTATION_INDEX.md", audio_implementation_index_markdown()),
         ("docs/BACKGROUND_AUDIO_INDEX.md", background_audio_index_markdown()),
+        ("docs/FUNCTION_EXTRACTION_REVIEW.md", extraction_review_markdown()),
     ]
+
+
+def extraction_review_markdown() -> str:
+    from .content import load_layers
+
+    headers = [
+        "ID",
+        "Basis",
+        "Extraction",
+        "Command",
+        "Runtime state",
+        "Opener",
+        "Main",
+        "Rehearsal",
+        "Future use",
+        "Suspend/reset",
+        "Closer",
+        "Claims / design review",
+    ]
+    rows = []
+    for record in load_all_functions():
+        layers = load_layers(record.id)
+        spec = layers.get("specifications", {})
+        review = spec.get("analysis_review", {})
+        sources = {item["sha256"]: item for item in layers.get("evidence", {}).get("sources", [])}
+        primary = sources.get(review.get("source_extent", {}).get("source_sha256"), {})
+        sections = review.get("sections", {})
+        statuses = [
+            sections.get(section, {}).get("status", "unknown")
+            for section in (
+                "opener",
+                "main",
+                "rehearsal",
+                "future_use",
+                "suspend_cancel_reset",
+                "closer",
+            )
+        ]
+        rows.append(
+            [
+                record.id,
+                primary.get("evidence_class", "unknown"),
+                spec.get("extraction_status", "unknown"),
+                record.command_review,
+                spec.get("states", {}).get("status", "unknown"),
+                *statuses,
+                ", ".join(review.get("claim_categories", [])) + "; HUMAN CONTENT REVIEW REQUIRED",
+            ]
+        )
+    return generated_content(
+        "# Functional extraction review matrix\n\nAnalytical completeness includes investigated unknowns; it is not historical authentication, runtime readiness or editorial approval. Runtime state requirements remain separate from reference training states. Full source/hash/line/page locators and conversion questions are in each specification's analysis_review.\n\n"
+        + _markdown_table(headers, rows)
+    )
 
 
 def build_all_generated_files() -> list[Path]:

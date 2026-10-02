@@ -14,7 +14,7 @@
       "locales": {"type": "array", "items": {"type": "string"}}, "narration_resources": {"type": "array"},
       "duration": {"type": ["object", "null"]}, "voice_sources": {"type": ["array", "null"]}, "background": {"type": "object"},
       "source_availability": {"type": "string"}, "evidence_classes": {"type": "array", "items": {"type": "string"}},
-      "safety": {"type": "object"}, "claim_review": {"type": "string"}, "layers": {"type": "array", "items": {"type": "string"}}
+      "safety": {"type": "object"}, "claim_review": {"type": "string"}, "layers": {"type": "array", "items": {"type": "string"}}, "extraction_review": {"type": ["object", "null"]}
     }
   }}}
 }
