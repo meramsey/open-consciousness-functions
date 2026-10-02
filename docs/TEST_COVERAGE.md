@@ -4,6 +4,33 @@ Target: **100% lines and 100% branches** of first-party testable application
 and library code. No reachable branch is excluded merely because it is hard to
 test. Coverage is not a claim that the complete system is bug-free.
 
+## Phase2B test taxonomy and expanded denominator
+
+`pytest -m unit` selects audited isolated contracts using memory/temp data and
+versioned declarative fixtures; native subprocess execution is prohibited by an
+autouse boundary guard. Real ffmpeg tests carry`audio_integration`, `external_tool`
+and`integration`. Repository/multi-component tests conservatively remain
+`integration` until a finer audit; this classification does not inflate unit
+coverage based on speed. `e2e` and`platform` markers are available for those tests.
+
+The measured denominator now includes **all executable Python under both
+`scripts/ocf_tools/` and `scripts/tools/`**, including research drivers, link
+checking, preservation and extraction. No reachable logic is excluded. The tiny
+`scripts/ocf.py`/shell launcher wrappers only establish import paths and delegate
+to the measured CLI; they are entrypoint boilerplate, exercised by workflow tests,
+not application/library behavior in this denominator. Generated data, vendored
+engines and declarative assets are not Python statements in it.
+
+```bash
+python -m coverage run -m pytest -m unit
+python -m coverage json -o unit-coverage.json
+python -m pytest -m integration
+```
+
+The earlier narrower combined snapshots below are historical, not current unit
+results. The100% unit gate is enabled only after both real metrics reach100%;
+classification changes do not remove application/tool modules from measurement.
+
 Initial measurable denominator: every executable statement and branch under
 `scripts/ocf_tools/`, including CLI, validators, localization, loaders, paths,
 semantics, DSP, voice/audio planning, wizards and error handling. No modules are

@@ -47,6 +47,14 @@ packages = ["ocf_tools"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+markers = [
+  "unit: isolated application/library behavior; external process boundary stubbed",
+  "integration: repository or multi-component integration",
+  "audio_integration: actual audio engine/codec integration",
+  "external_tool: invokes an external executable",
+  "e2e: full workflow/CLI artifact integration",
+  "platform: operating-system or installed-package integration",
+]
 
 [tool.ruff]
 line-length = 100
@@ -59,7 +67,7 @@ ignore = ["E501"]
 
 [tool.coverage.run]
 branch = true
-source = ["scripts/ocf_tools"]
+source = ["scripts/ocf_tools", "scripts/tools"]
 
 [tool.coverage.report]
 # Include reachable error paths even when old code carries pragma: no cover.
