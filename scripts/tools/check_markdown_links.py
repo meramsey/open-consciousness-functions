@@ -27,6 +27,17 @@ def iter_markdown() -> list[Path]:
         p
         for p in REPO_ROOT.rglob("*.md")
         if not any(part.startswith(".") for part in p.relative_to(REPO_ROOT).parts)
+        and p.relative_to(REPO_ROOT).parts[0] not in ("build", "dist", "venv")
+        and not p.relative_to(REPO_ROOT)
+        .as_posix()
+        .startswith(
+            (
+                "audio/rendered/",
+                "audio/background/rendered/",
+                "references/HumanPlusTranscripts/",
+                "ReusablePrompts/",
+            )
+        )
     )
 
 

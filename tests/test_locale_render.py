@@ -333,7 +333,14 @@ class TestLocaleCli:
             isinstance(value, dict) and value.get("text") for value in narration["entries"].values()
         )
 
-    def test_voice_render_accepts_a_locale(self, tmp_path, capsys):
+    @pytest.mark.unit
+    def test_voice_render_accepts_a_locale(self, tmp_path, capsys, monkeypatch):
+        from ocf_tools import voice
+
+        captured = {}
+        monkeypatch.setattr(
+            voice, "render_script", lambda *args, **kwargs: captured.update(kwargs) or 0
+        )
         doc = write_doc(tmp_path, keyed_doc())
         out = tmp_path / "narration.wav"
         code = main(
@@ -345,12 +352,13 @@ class TestLocaleCli:
                 "en-US",
                 "--output",
                 str(out),
-                "--backend",
+                "--voice",
                 "fake-tts",
                 "--force",
             ]
         )
-        assert code in (0, 1)  # backend availability is machine-specific
+        assert code == 0
+        assert captured["locale"] == "en-US" and captured["backend"] == "fake-tts"
         assert "--locale" in capsys.readouterr().out or code == 0
 
 

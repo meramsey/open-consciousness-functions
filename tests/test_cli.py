@@ -68,7 +68,7 @@ def test_review_commands_does_not_crash(capsys):
 def test_unknown_audio_subcommand_prints_help(capsys):
     from ocf_tools.cli import main
 
-    assert main(["audio", "bogus"]) == 0
+    assert main(["audio", "bogus"]) == 2
     assert "ocf new function" in capsys.readouterr().out
 
 

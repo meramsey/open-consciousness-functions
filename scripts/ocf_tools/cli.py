@@ -806,11 +806,11 @@ def main(argv: list[str] | None = None) -> int:
     parser = _build_parser()
     try:
         args = parser.parse_args(argv)
-    except SystemExit:
+    except SystemExit as exc:
         # argparse exits on unknown subcommands or missing required arguments;
         # degrade gracefully to the help text instead.
         print(HELP_TEXT)
-        return 0
+        return int(exc.code or 0)
 
     try:
         if args.command == "help" or args.command is None:

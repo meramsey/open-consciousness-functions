@@ -194,7 +194,7 @@ def import_directory(
     selected = set()
     for identifier, name in mapping.items():
         source = (directory / name).resolve()
-        if not source.is_relative_to(directory) or not source.is_file():
+        if Path(name).is_absolute() or not source.is_relative_to(directory) or not source.is_file():
             raise OCFError(f"recording {identifier}: missing or escaping file {name}")
         selected.add(source)
         entries[identifier] = {
