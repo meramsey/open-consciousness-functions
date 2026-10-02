@@ -46,3 +46,73 @@ entries:
     text: "In the eleventh state, the material for {function_name} is yours to read."
     variables: ["function_name"]
     version: "1.0.0"
+  pilot.relax.purpose:
+    text: "Practice releasing effort you no longer need. Choose a supported position where you can pause for a few minutes. Keep breathing normally."
+    version: "1.0.0"
+    status: draft
+  pilot.relax.practice:
+    text: "Let the surface beneath you carry your weight. Pick one place you can soften without moving it. Reduce the effort there for two breaths. Notice the difference between holding and resting."
+    version: "1.0.0"
+    status: draft
+  pilot.relax.associate:
+    text: "Use {command} as a deliberate reminder to check for unnecessary effort and release a little of it. The words cue an action you choose."
+    variables: [command]
+    version: "1.0.0"
+    status: draft
+  pilot.relax.rehearse:
+    text: "Think {command} once. Find one small effort you can set down. Let it ease, and keep breathing at your usual pace."
+    variables: [command]
+    version: "1.0.0"
+    status: draft
+  pilot.relax.future:
+    text: "Choose an ordinary moment when a brief pause would help. Rehearse noticing that moment, using your command, and softening one unnecessary effort."
+    version: "1.0.0"
+    status: draft
+  pilot.hearing.purpose:
+    text: "Practice choosing how much attention to give a sound. This changes your task, not the sound level or your hearing ability. Keep important signals available to your attention."
+    version: "1.0.0"
+    status: draft
+  pilot.hearing.practice:
+    text: "Choose a sound that is easy to hear. Attend to its changes for three breaths. Then let it become one part of the room while you notice another sound. Compare those two ways of attending."
+    version: "1.0.0"
+    status: draft
+  pilot.hearing.associate:
+    text: "{command} is your reminder to examine a chosen sound more closely. PLUS-HEAR LESS is your reminder to reduce its priority and broaden attention again. Neither command changes the volume."
+    variables: [command]
+    version: "1.0.0"
+    status: draft
+  pilot.hearing.rehearse:
+    text: "Think {command} and follow one sound for a breath. Think PLUS-HEAR LESS and include the room again. Finish by listening normally, without selecting a sound."
+    variables: [command]
+    version: "1.0.0"
+    status: draft
+  pilot.hearing.future:
+    text: "Recall a situation where you want to listen closely, then one where a harmless background sound needs less attention. Rehearse choosing the appropriate reminder. Stop the exercise whenever a sound needs a real-world response."
+    version: "1.0.0"
+    status: draft
+  pilot.sleep-easy.purpose:
+    text: "Practice making room for rest in an unfamiliar place. Begin only where resting is actually safe and nobody depends on your attention. This short rehearsal ends awake; you can use the routine later when you choose to sleep."
+    version: "1.0.0"
+    status: draft
+  pilot.sleep-easy.practice:
+    text: "Think of a safe place where you might rest away from home. Choose one practical adjustment: support your head, change the light, or put aside a task until morning. Make that adjustment in your rehearsal. Let your body rest on its support for three breaths."
+    version: "1.0.0"
+    status: draft
+  pilot.sleep-easy.associate:
+    text: "Associate {command} with checking that rest is safe, making one useful adjustment, and setting down the effort to solve tomorrow's tasks now. It is a reminder to follow those steps, not a guarantee of sleep."
+    variables: [command]
+    version: "1.0.0"
+    status: draft
+  pilot.sleep-easy.rehearse:
+    text: "Think {command}. Check the imagined setting. Make your chosen adjustment. Give yourself three breaths without trying to produce sleep. Then bring attention back to this room."
+    variables: [command]
+    version: "1.0.0"
+    status: draft
+  pilot.sleep-easy.future:
+    text: "When you use this routine for sleep, respond first to any practical problem that needs attention. Once rest is safe, take the steps you practiced and leave the result open. You can stop or change the routine whenever you need to."
+    version: "1.0.0"
+    status: draft
+  pilot.function.complete:
+    text: "The rehearsal is finished. Notice the room and the support beneath you. Move your hands and feet, and look around before returning to your next activity."
+    version: "1.0.0"
+    status: draft

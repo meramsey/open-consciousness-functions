@@ -1,0 +1,32 @@
+schema_version: "1.0"
+id: OCF-TPL-SESSION-PILOT-HEARING-001
+version: "0.1.0"
+name: "Sensory Hearing — DRAFT PILOT / REQUIRES HUMAN CONTENT REVIEW"
+author: OCF
+origin: original-ocf
+license: Apache-2.0
+composition_kind: function-installation
+content_status: draft
+function_id: OCF-SEN-001
+cue_profile: OCF-CUE-PROFILE-DEFAULT
+description: "Attention-to-sound reinterpretation; explicitly changes unsupported hearing-range claims. Ordinary-waking rehearsal only."
+slots: {required: [], optional: []}
+sections:
+  - id: purpose
+    stage: OCF-TPL-STAGE-FUNCTION-PURPOSE-001
+    start: 0
+    narration:
+      purpose: {narration_key: pilot.hearing.purpose}
+      practice: {narration_key: pilot.hearing.practice}
+  - id: command
+    stage: OCF-TPL-STAGE-COMMAND-LEARNING-001
+    after: "$previous"
+    narration:
+      explain: {narration_key: pilot.hearing.associate}
+      rehearse: {narration_key: pilot.hearing.rehearse}
+  - id: closer
+    stage: OCF-TPL-STAGE-FUTURE-USE-001
+    after: "$previous"
+    narration:
+      future: {narration_key: pilot.hearing.future}
+      complete: {narration_key: pilot.function.complete}
