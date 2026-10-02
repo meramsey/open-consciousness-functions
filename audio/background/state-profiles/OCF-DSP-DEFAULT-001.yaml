@@ -1,0 +1,13 @@
+schema_version: "1.0"
+id: OCF-DSP-DEFAULT-001
+version: "0.1.0"
+initial_state: ordinary-waking
+seed: 0
+states:
+  ordinary-waking: {mode: disabled}
+  focus-11: {mode: preset, preset: OCF-BG-0006}
+transitions: {curve: equal-power, fallback_seconds: 5}
+notes: |
+  Canonical newer F11 is pure antiphase-SAM, not theta-enhanced OCF-BG-0007.
+  Focus Ten is deliberately not assigned universally. A session requiring it
+  must select an explicit candidate/reference profile or explicitly disable it.

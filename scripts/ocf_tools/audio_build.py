@@ -679,6 +679,7 @@ def build(
     even_counts: bool = False,
     locale: str | None = None,
     strict: bool = True,
+    dsp_profile: str | Path | dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """`ocf audio build <AUDIO_ID|MANIFEST>` — render narration, mix, master.
 
@@ -725,12 +726,24 @@ def build(
 
     background_conf = manifest.get("background_audio", {})
     bg_preset = background_conf.get("preset")
-    bg_path, bg_note = _render_background(
-        bg_preset,
-        background_conf.get("strategy", "optional"),
-        background_conf.get("engine", "farfield"),
-        max_seconds=narration_meta["duration"],
-    )
+    selected_profile = dsp_profile or background_conf.get("semantic_profile")
+    state_program = None
+    if selected_profile:
+        from .semantic_dsp import load_profile, render_program
+
+        if bg_preset and dsp_profile is None:
+            raise OCFError("manifest must choose static preset or semantic DSP profile, not both")
+        profile = selected_profile if isinstance(selected_profile, dict) else load_profile(selected_profile)
+        bg_path = stage_dir / "semantic-state-bed.wav"
+        state_program = render_program(doc, narration_meta["event_timing"], narration_meta["duration"], profile, bg_path)
+        bg_note = "semantic-state-program"
+    else:
+        bg_path, bg_note = _render_background(
+            bg_preset,
+            background_conf.get("strategy", "optional"),
+            background_conf.get("engine", "farfield"),
+            max_seconds=narration_meta["duration"],
+        )
     if bg_note.startswith(
         ("farfield-unavailable", "sbagenx-unavailable", "reference-master-unavailable")
     ):
@@ -855,6 +868,7 @@ def build(
             ],
         },
         "event_timing": narration_meta.get("event_timing", []),
+        "semantic_dsp": state_program,
         "auditory_cues": narration_meta.get("auditory_cues", []),
         "narration_resolution": narration_meta.get("narration_resolution"),
         "cues": narration_meta["cues"],

@@ -804,6 +804,26 @@ def validate_all() -> ValidationResult:
     result.extend(validate_voice_profiles())
     result.extend(validate_locale_packs())
     result.extend(validate_session_library())
+    result.extend(validate_semantic_dsp_profiles())
+    return result
+
+
+def validate_semantic_dsp_profiles() -> ValidationResult:
+    from .audio_build import _resolve_background_manifest
+    from .semantic_dsp import PROFILES_DIR, load_profile
+    from .utils import OCFError
+
+    result = ValidationResult()
+    for path in PROFILES_DIR.glob("*.yaml"):
+        try:
+            profile = load_profile(path)
+            if profile["initial_state"] not in profile["states"]:
+                raise OCFError("initial state must be configured or explicitly disabled")
+            for state, choice in profile["states"].items():
+                if choice["mode"] == "preset" and not _resolve_background_manifest(choice["preset"]):
+                    raise OCFError(f"state {state}: unknown background {choice['preset']}")
+        except OCFError as exc:
+            result.add("error", "semantic-dsp-profile", str(exc), str(path))
     return result
 
 

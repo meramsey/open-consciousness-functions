@@ -171,12 +171,19 @@ def _build_parser() -> argparse.ArgumentParser:
     build_cmd.add_argument("--output", help="output directory (default audio/rendered)")
     build_cmd.add_argument("--rate", type=int, default=44100, help="sample rate (Hz)")
     build_cmd.add_argument("--background-gain", type=float, default=0.25)
+    build_cmd.add_argument("--dsp-profile", help="semantic DSP state-selection profile (explicitly overrides a static bed)")
     build_cmd.add_argument("--fit", action="store_true", help="adaptive per-cue narration pacing (timing_mode fit-soft)")
     build_cmd.add_argument("--flow", action="store_true", help="flow-merge sentence fragments (timing_mode natural)")
     build_cmd.add_argument("--even-counts", action="store_true", help="re-time count cues onto even grids (timing_mode ...+even-counts)")
     build_cmd.add_argument("--force", action="store_true", help="overwrite master file")
     inspect_cmd = audio_sub.add_parser("inspect", help="show audio file metadata")
     inspect_cmd.add_argument("file", help="audio file")
+    state_render = audio_sub.add_parser("render-state-program", help="render configured DSP from a measured semantic ledger")
+    state_render.add_argument("file", help="semantic timed script")
+    state_render.add_argument("--render-manifest", required=True, help="measured event timing and duration")
+    state_render.add_argument("--dsp-profile", required=True)
+    state_render.add_argument("--output", required=True)
+    state_render.add_argument("--force", action="store_true")
 
     voice = sub.add_parser("voice", help="narration (TTS) tooling")
     voice_sub = voice.add_subparsers(dest="voice_kind")
@@ -720,6 +727,10 @@ def main(argv: list[str] | None = None) -> int:
                     overwrite=args.force,
                 )
                 return 0
+            if args.audio_kind == "render-state-program":
+                from .semantic_dsp import run_render_program
+
+                return run_render_program(args)
             if args.audio_kind == "build":
                 from .audio_build import build as run_build
 
@@ -741,6 +752,7 @@ def main(argv: list[str] | None = None) -> int:
                     fit=bool(getattr(args, "fit", False)),
                     flow=bool(getattr(args, "flow", False)),
                     even_counts=bool(getattr(args, "even_counts", False)),
+                    dsp_profile=getattr(args, "dsp_profile", None),
                 )
                 return 0
             if args.audio_kind == "inspect":

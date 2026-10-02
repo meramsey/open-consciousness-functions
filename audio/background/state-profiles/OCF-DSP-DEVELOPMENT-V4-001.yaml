@@ -1,0 +1,19 @@
+schema_version: "1.0"
+id: OCF-DSP-DEVELOPMENT-V4-001
+version: "0.1.0"
+initial_state: ordinary-waking
+seed: 0
+target_state_rms_dbfs: -18.0
+states:
+  ordinary-waking: {mode: disabled}
+  focus-10: {mode: preset, preset: OCF-BG-0012}
+  focus-11: {mode: preset, preset: OCF-BG-0006}
+transitions: {curve: equal-power, fallback_seconds: 5}
+notes: |
+  DEVELOPMENT AUDITION V2 — NOT PRODUCTION MASTER. Explicit V4-derived F10
+  approximation candidate plus canonical newer pure-SAM F11, different source
+  generations. Transitions are OCF rendering choices, not measured source morphs.
+  F10 starts at its explicit state directive; fallback 5s onset is selected,
+  not inferred from sustained reference. End-relative semantic dependencies
+  determine the F10/F11/ordinary ramps. No F3, induction bed or spectral gap.
+  Per-state -18dBFS RMS calibration is a provisional continuity design choice.
