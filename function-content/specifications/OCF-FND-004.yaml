@@ -1,65 +1,256 @@
+analysis_review:
+  claim_categories:
+  - guaranteed-total-tension-release
+  - nervous-system-signal-mechanism
+  - automatic-whole-system-learning
+  family: relaxation-release
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+        end_line: 42
+        file: +Transcripts From available tapes/Relax/Relax.txt
+        source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+        start_line: 34
+      status: supported
+      summary: Pair the deliberately selected legacy cue with the target response and breathing procedure;
+        canonical spelling/compatibility remains separate metadata.
+    closer:
+      locators:
+      - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+        end_line: 50
+        file: +Transcripts From available tapes/Relax/Relax.txt
+        source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+        start_line: 43
+      status: supported
+      summary: Reinforce future remembering/use and close the learning context to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+        end_line: 153
+        file: +Transcripts From available tapes/Relax/Relax.txt
+        source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+        start_line: 51
+      status: supported
+      summary: Counted sleep-to-twenty segment is present; automatic integration is a source assertion,
+        not established mechanism.
+    conversion:
+      locators:
+      - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+        end_line: 42
+        file: +Transcripts From available tapes/Relax/Relax.txt
+        source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+        start_line: 34
+      status: inferred
+      summary: Existing Relax pilot remains frozen/provisional; this documents legacy breath/cue and physiological
+        claims without approving that pilot's reframing or source mechanism.
+    future_use:
+      locators:
+      - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+        end_line: 44
+        file: +Transcripts From available tapes/Relax/Relax.txt
+        source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+        start_line: 34
+      status: supported
+      summary: Use the breathing/cue routine when relaxation is desired; repeated use is asserted to increase
+        ease.
+    handoff:
+      locators:
+      - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+        end_line: 188
+        file: +Transcripts From available tapes/Relax/Relax.txt
+        source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+        start_line: 154
+      status: supported
+      summary: Waking countdown and eyes-open return, followed by target cue reminder.
+    identity:
+      locators:
+      - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+        end_line: 42
+        file: +Transcripts From available tapes/Relax/Relax.txt
+        source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+        start_line: 34
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+        end_line: 42
+        file: +Transcripts From available tapes/Relax/Relax.txt
+        source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+        start_line: 34
+      status: supported
+      summary: inhale-and-hold; internally-issue-legacy-relax-cue; exhale-through-mouth; associate-exhalation-with-release-of-tension
+    opener:
+      locators:
+      - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+        end_line: 33
+        file: +Transcripts From available tapes/Relax/Relax.txt
+        source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+        start_line: 30
+      status: supported
+      summary: Orient to the target function and establish receptive learning context before the instruction.
+    preparation:
+      locators:
+      - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+        end_line: 29
+        file: +Transcripts From available tapes/Relax/Relax.txt
+        source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+        start_line: 2
+      status: supported
+      summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary setting-aside
+        in repository representation and counted ten-state entry.
+    provenance:
+      locators:
+      - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+        end_line: 188
+        file: +Transcripts From available tapes/Relax/Relax.txt
+        source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Apparent underlay/ASR content
+        at120-153 is not authenticated reinforcement wording. Canonical cue shortening is metadata, not
+        a rewritten reference.
+    purpose:
+      locators:
+      - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+        end_line: 2
+        file: +Transcripts From available tapes/Relax/Relax.txt
+        source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+        start_line: 1
+      status: supported
+      summary: Relax body/mind by associating a breathing/cue routine with tension release.
+    rehearsal:
+      locators:
+      - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+        end_line: 44
+        file: +Transcripts From available tapes/Relax/Relax.txt
+        source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+        start_line: 33
+      status: not-present
+      summary: Repeated instruction does not establish a distinct listener performance trial; apparent
+        ambient transcription artifacts are not practice evidence.
+    safety_claims:
+      locators:
+      - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+        end_line: 42
+        file: +Transcripts From available tapes/Relax/Relax.txt
+        source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+        start_line: 31
+      status: supported
+      summary: guaranteed-total-tension-release; nervous-system-signal-mechanism; automatic-whole-system-learning.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+        end_line: 32
+        file: +Transcripts From available tapes/Relax/Relax.txt
+        source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+        start_line: 30
+      status: supported
+      summary: Reference learning shell uses ten preparation, eleven opening, ten closure, sleep-to-twenty
+        and waking return where the available ending supports it; not an OCF runtime requirement.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+        end_line: 188
+        file: +Transcripts From available tapes/Relax/Relax.txt
+        source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Apparent underlay/ASR
+        content at120-153 is not authenticated reinforcement wording. Canonical cue shortening is metadata,
+        not a rewritten reference.
+  source_extent:
+    content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+    end_line: 188
+    file: +Transcripts From available tapes/Relax/Relax.txt
+    source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209:command_association
-    operations: []
+    - review:OCF-FND-004:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209:closer
-    operations: []
+    - review:OCF-FND-004:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-FND-004:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209:future_use
-    operations: []
+    - review:OCF-FND-004:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209:return
-    operations: []
+    - review:OCF-FND-004:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209:main
-    operations: []
+    - review:OCF-FND-004:main
+    operations:
+    - inhale-and-hold
+    - internally-issue-legacy-relax-cue
+    - exhale-through-mouth
+    - associate-exhalation-with-release-of-tension
     status: inferred
   opener:
     evidence_refs:
-    - c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209:opener
-    operations: []
+    - review:OCF-FND-004:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-FND-004:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-FND-004:rehearsal
     operations: []
-    status: unknown
+    status: not-present
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-FND-004:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-FND-004:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-FND-004
 human_review: required
 maturity: pilot
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Apparent underlay/ASR content at120-153 is not authenticated reinforcement wording. Canonical cue shortening
+  is metadata, not a rewritten reference.
+- Existing Relax pilot remains frozen/provisional; this documents legacy breath/cue and physiological
+  claims without approving that pilot's reframing or source mechanism.
 schema_version: '1.0'
 states:
   preferred: []

@@ -1,65 +1,261 @@
+analysis_review:
+  claim_categories:
+  - guaranteed-rapid-sleep
+  - physiological-balance-restoration
+  - automatic-minutes-later-awakening
+  - automatic-whole-system-learning
+  family: short-sleep-restoration
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+        end_line: 48
+        file: +Transcripts From available tapes/Recharge/Recharge.txt
+        source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+        start_line: 38
+      status: supported
+      summary: Pair the deliberately selected legacy cue with the target response and breathing procedure;
+        canonical spelling/compatibility remains separate metadata.
+    closer:
+      locators:
+      - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+        end_line: 80
+        file: +Transcripts From available tapes/Recharge/Recharge.txt
+        source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+        start_line: 63
+      status: supported
+      summary: Reinforce future remembering/use and close the learning context to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+        end_line: 173
+        file: +Transcripts From available tapes/Recharge/Recharge.txt
+        source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+        start_line: 81
+      status: supported
+      summary: Counted sleep-to-twenty segment is present; automatic integration is a source assertion,
+        not established mechanism.
+    conversion:
+      locators:
+      - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+        end_line: 60
+        file: +Transcripts From available tapes/Recharge/Recharge.txt
+        source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+        start_line: 38
+      status: inferred
+      summary: Safe short-rest planning is useful but source restoration/timing claims are not guarantees.
+        Rest context and breath holding require review.
+    future_use:
+      locators:
+      - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+        end_line: 68
+        file: +Transcripts From available tapes/Recharge/Recharge.txt
+        source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+        start_line: 38
+      status: supported
+      summary: Breathing/cue routine for a short sleep; source claims automatic restoration and waking
+        within minutes, not an explicit programmable timer.
+    handoff:
+      locators:
+      - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+        end_line: 190
+        file: +Transcripts From available tapes/Recharge/Recharge.txt
+        source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+        start_line: 174
+      status: supported
+      summary: Waking countdown and eyes-open return, followed by target cue reminder.
+    identity:
+      locators:
+      - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+        end_line: 48
+        file: +Transcripts From available tapes/Recharge/Recharge.txt
+        source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+        start_line: 38
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+        end_line: 60
+        file: +Transcripts From available tapes/Recharge/Recharge.txt
+        source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+        start_line: 38
+      status: supported
+      summary: select-safe-short-rest-period; inhale-and-hold; internally-issue-recharge-cue; exhale;
+        enter-sleep; anticipate-near-term-waking
+    opener:
+      locators:
+      - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+        end_line: 37
+        file: +Transcripts From available tapes/Recharge/Recharge.txt
+        source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+        start_line: 32
+      status: supported
+      summary: Orient to the target function and establish receptive learning context before the instruction.
+    preparation:
+      locators:
+      - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+        end_line: 31
+        file: +Transcripts From available tapes/Recharge/Recharge.txt
+        source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+        start_line: 3
+      status: supported
+      summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary setting-aside
+        in repository representation and counted ten-state entry.
+    provenance:
+      locators:
+      - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+        end_line: 190
+        file: +Transcripts From available tapes/Recharge/Recharge.txt
+        source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Generic video sign-off insertions
+        at61-62 and ASR repetition are not historical instructions; no user-set wake duration or suspend
+        cue established.
+    purpose:
+      locators:
+      - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+        end_line: 2
+        file: +Transcripts From available tapes/Recharge/Recharge.txt
+        source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+        start_line: 2
+      status: supported
+      summary: Enter a short nap with claimed rapid restoration and awakening after minutes.
+    rehearsal:
+      locators:
+      - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+        end_line: 60
+        file: +Transcripts From available tapes/Recharge/Recharge.txt
+        source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+        start_line: 38
+      status: not-present
+      summary: Repeated instruction does not establish a distinct listener performance trial; apparent
+        ambient transcription artifacts are not practice evidence.
+    safety_claims:
+      locators:
+      - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+        end_line: 60
+        file: +Transcripts From available tapes/Recharge/Recharge.txt
+        source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+        start_line: 34
+      status: supported
+      summary: guaranteed-rapid-sleep; physiological-balance-restoration; automatic-minutes-later-awakening;
+        automatic-whole-system-learning. Claims are classified as source assertions, not accepted OCF
+        mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+        end_line: 37
+        file: +Transcripts From available tapes/Recharge/Recharge.txt
+        source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+        start_line: 32
+      status: supported
+      summary: Reference learning shell uses ten preparation, eleven opening, ten closure, sleep-to-twenty
+        and waking return where the available ending supports it; not an OCF runtime requirement.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+        end_line: 190
+        file: +Transcripts From available tapes/Recharge/Recharge.txt
+        source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Generic video
+        sign-off insertions at61-62 and ASR repetition are not historical instructions; no user-set wake
+        duration or suspend cue established.
+  source_extent:
+    content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+    end_line: 190
+    file: +Transcripts From available tapes/Recharge/Recharge.txt
+    source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:command_association
-    operations: []
+    - review:OCF-FND-003:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:closer
-    operations: []
+    - review:OCF-FND-003:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-FND-003:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:future_use
-    operations: []
+    - review:OCF-FND-003:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:return
-    operations: []
+    - review:OCF-FND-003:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:main
-    operations: []
+    - review:OCF-FND-003:main
+    operations:
+    - select-safe-short-rest-period
+    - inhale-and-hold
+    - internally-issue-recharge-cue
+    - exhale
+    - enter-sleep
+    - anticipate-near-term-waking
     status: inferred
   opener:
     evidence_refs:
-    - 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:opener
-    operations: []
+    - review:OCF-FND-003:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-FND-003:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-FND-003:rehearsal
     operations: []
-    status: unknown
+    status: not-present
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-FND-003:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-FND-003:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-FND-003
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Generic video sign-off insertions at61-62 and ASR repetition are not historical instructions; no user-set
+  wake duration or suspend cue established.
+- Safe short-rest planning is useful but source restoration/timing claims are not guarantees. Rest context
+  and breath holding require review.
 schema_version: '1.0'
 states:
   preferred: []

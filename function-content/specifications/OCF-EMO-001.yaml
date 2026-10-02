@@ -1,65 +1,260 @@
+analysis_review:
+  claim_categories:
+  - guaranteed-emotion-removal
+  - exhaled-emotion-metaphor
+  - total-emotional-control
+  - automatic-whole-system-learning
+  family: emotional-release
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
+        end_line: 54
+        file: +Transcripts From available tapes/Let-Go/Let-Go.txt
+        source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+        start_line: 45
+      status: supported
+      summary: Pair the deliberately selected legacy cue with the target response and breathing procedure;
+        canonical spelling/compatibility remains separate metadata.
+    closer:
+      locators:
+      - content_group_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
+        end_line: 85
+        file: +Transcripts From available tapes/Let-Go/Let-Go.txt
+        source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+        start_line: 69
+      status: supported
+      summary: Reinforce future remembering/use and close the learning context to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
+        end_line: 157
+        file: +Transcripts From available tapes/Let-Go/Let-Go.txt
+        source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+        start_line: 86
+      status: supported
+      summary: Counted sleep-to-twenty segment is present; automatic integration is a source assertion,
+        not established mechanism.
+    conversion:
+      locators:
+      - content_group_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
+        end_line: 64
+        file: +Transcripts From available tapes/Let-Go/Let-Go.txt
+        source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+        start_line: 45
+      status: inferred
+      summary: Preserve voluntary target selection and learned association where appropriate; breath holding,
+        guaranteed response and automatic whole-system learning require editorial review rather than scientific
+        endorsement.
+    future_use:
+      locators:
+      - content_group_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
+        end_line: 74
+        file: +Transcripts From available tapes/Let-Go/Let-Go.txt
+        source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+        start_line: 45
+      status: supported
+      summary: Use for an emotion one wishes to release; source promises reduced importance and voluntary
+        emotional control.
+    handoff:
+      locators:
+      - content_group_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
+        end_line: 228
+        file: +Transcripts From available tapes/Let-Go/Let-Go.txt
+        source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+        start_line: 158
+      status: supported
+      summary: Waking countdown and eyes-open return, followed by target cue reminder.
+    identity:
+      locators:
+      - content_group_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
+        end_line: 54
+        file: +Transcripts From available tapes/Let-Go/Let-Go.txt
+        source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+        start_line: 45
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
+        end_line: 64
+        file: +Transcripts From available tapes/Let-Go/Let-Go.txt
+        source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+        start_line: 45
+      status: supported
+      summary: choose-to-release-interfering-emotion; inhale-and-hold; internally-issue-let-go-cue; exhale;
+        associate-emotion-with-moving-out-of-salience
+    opener:
+      locators:
+      - content_group_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
+        end_line: 44
+        file: +Transcripts From available tapes/Let-Go/Let-Go.txt
+        source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+        start_line: 39
+      status: supported
+      summary: Orient to the target function and establish receptive learning context before the instruction.
+    preparation:
+      locators:
+      - content_group_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
+        end_line: 38
+        file: +Transcripts From available tapes/Let-Go/Let-Go.txt
+        source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+        start_line: 6
+      status: supported
+      summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary setting-aside
+        in repository representation and counted ten-state entry.
+    provenance:
+      locators:
+      - content_group_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
+        end_line: 228
+        file: +Transcripts From available tapes/Let-Go/Let-Go.txt
+        source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Unrelated video/copyright insertions
+        at1-4 and65-68 indicate contamination; they are not source identity or OCF doctrine. Mechanism
+        and whole recording accuracy unverified.
+    purpose:
+      locators:
+      - content_group_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
+        end_line: 5
+        file: +Transcripts From available tapes/Let-Go/Let-Go.txt
+        source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+        start_line: 5
+      status: supported
+      summary: Release a selected interfering/distressing emotion and retain alertness/readiness.
+    rehearsal:
+      locators:
+      - content_group_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
+        end_line: 64
+        file: +Transcripts From available tapes/Let-Go/Let-Go.txt
+        source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+        start_line: 45
+      status: not-present
+      summary: Repeated instruction does not establish a distinct listener performance trial; apparent
+        ambient transcription artifacts are not practice evidence.
+    safety_claims:
+      locators:
+      - content_group_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
+        end_line: 68
+        file: +Transcripts From available tapes/Let-Go/Let-Go.txt
+        source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+        start_line: 41
+      status: supported
+      summary: guaranteed-emotion-removal; exhaled-emotion-metaphor; total-emotional-control; automatic-whole-system-learning.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
+        end_line: 44
+        file: +Transcripts From available tapes/Let-Go/Let-Go.txt
+        source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+        start_line: 39
+      status: supported
+      summary: Reference learning shell uses ten preparation, eleven opening, ten closure, sleep-to-twenty
+        and waking return where the available ending supports it; not an OCF runtime requirement.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
+        end_line: 228
+        file: +Transcripts From available tapes/Let-Go/Let-Go.txt
+        source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Unrelated video/copyright
+        insertions at1-4 and65-68 indicate contamination; they are not source identity or OCF doctrine.
+        Mechanism and whole recording accuracy unverified.
+  source_extent:
+    content_group_sha256: 03350df42756a0fd81ad48221fe198530757ffc6b22be76887447915dd1969f2
+    end_line: 228
+    file: +Transcripts From available tapes/Let-Go/Let-Go.txt
+    source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9:command_association
-    operations: []
+    - review:OCF-EMO-001:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9:closer
-    operations: []
+    - review:OCF-EMO-001:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-EMO-001:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9:future_use
-    operations: []
+    - review:OCF-EMO-001:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9:return
-    operations: []
+    - review:OCF-EMO-001:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9:main
-    operations: []
+    - review:OCF-EMO-001:main
+    operations:
+    - choose-to-release-interfering-emotion
+    - inhale-and-hold
+    - internally-issue-let-go-cue
+    - exhale
+    - associate-emotion-with-moving-out-of-salience
     status: inferred
   opener:
     evidence_refs:
-    - 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9:opener
-    operations: []
+    - review:OCF-EMO-001:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-EMO-001:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-EMO-001:rehearsal
     operations: []
-    status: unknown
+    status: not-present
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-EMO-001:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-EMO-001:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-EMO-001
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Unrelated video/copyright insertions at1-4 and65-68 indicate contamination; they are not source identity
+  or OCF doctrine. Mechanism and whole recording accuracy unverified.
+- Preserve voluntary target selection and learned association where appropriate; breath holding, guaranteed
+  response and automatic whole-system learning require editorial review rather than scientific endorsement.
 schema_version: '1.0'
 states:
   preferred: []

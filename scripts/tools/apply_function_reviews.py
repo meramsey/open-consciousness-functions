@@ -152,6 +152,7 @@ def main():
     args = parser.parse_args()
     reviews = load_yaml_file(args.notes)
     for function_id, notes in reviews["functions"].items():
+        notes = {**reviews.get("defaults", {}), **notes}
         layers = apply_review(function_id, notes, args.corpus)
         if args.apply:
             for layer in ("evidence", "specifications"):

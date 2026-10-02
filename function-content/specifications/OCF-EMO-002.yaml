@@ -1,65 +1,259 @@
+analysis_review:
+  claim_categories:
+  - guaranteed-thought-or-emotion-erasure
+  - persistent-suppression
+  - automatic-whole-system-learning
+  family: selective-thought-emotion-reduction
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
+        end_line: 52
+        file: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+        source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+        start_line: 45
+      status: supported
+      summary: Pair the deliberately selected legacy cue with the target response and breathing procedure;
+        canonical spelling/compatibility remains separate metadata.
+    closer:
+      locators:
+      - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
+        end_line: 74
+        file: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+        source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+        start_line: 66
+      status: supported
+      summary: Reinforce future remembering/use and close the learning context to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
+        end_line: 88
+        file: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+        source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+        start_line: 75
+      status: supported
+      summary: Counted sleep-to-twenty segment is present; automatic integration is a source assertion,
+        not established mechanism.
+    conversion:
+      locators:
+      - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
+        end_line: 65
+        file: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+        source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+        start_line: 45
+      status: inferred
+      summary: Preserve voluntary target selection and learned association where appropriate; breath holding,
+        guaranteed response and automatic whole-system learning require editorial review rather than scientific
+        endorsement.
+    future_use:
+      locators:
+      - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
+        end_line: 69
+        file: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+        source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+        start_line: 45
+      status: supported
+      summary: Selective target/cue routine, with claimed continued absence from awareness until desired
+        otherwise.
+    handoff:
+      locators:
+      - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
+        end_line: 102
+        file: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+        source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+        start_line: 89
+      status: supported
+      summary: Waking countdown and eyes-open return, followed by target cue reminder.
+    identity:
+      locators:
+      - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
+        end_line: 52
+        file: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+        source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+        start_line: 45
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
+        end_line: 65
+        file: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+        source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+        start_line: 45
+      status: supported
+      summary: identify-unwanted-thought-or-emotion; inhale-and-hold; internally-issue-legacy-fade-cue;
+        exhale-and-breathe-easily; associate-target-with-reduced-salience
+    opener:
+      locators:
+      - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
+        end_line: 44
+        file: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+        source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+        start_line: 40
+      status: supported
+      summary: Orient to the target function and establish receptive learning context before the instruction.
+    preparation:
+      locators:
+      - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
+        end_line: 39
+        file: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+        source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+        start_line: 10
+      status: supported
+      summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary setting-aside
+        in repository representation and counted ten-state entry.
+    provenance:
+      locators:
+      - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
+        end_line: 102
+        file: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+        source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Interleaved inhale/exhale tokens53-57
+        are ambiguous practice versus ASR material; explicit listener rehearsal remains unknown. Legacy
+        fade cue and canonical CLEAR differ and require compatibility review.
+    purpose:
+      locators:
+      - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
+        end_line: 7
+        file: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+        source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+        start_line: 7
+      status: supported
+      summary: Reduce/remove a chosen recurring thought or emotion from conscious salience.
+    rehearsal:
+      locators:
+      - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
+        end_line: 65
+        file: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+        source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+        start_line: 53
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Interleaved
+        inhale/exhale tokens53-57 are ambiguous practice versus ASR material; explicit listener rehearsal
+        remains unknown. Legacy fade cue and canonical CLEAR differ and require compatibility review.
+    safety_claims:
+      locators:
+      - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
+        end_line: 65
+        file: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+        source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+        start_line: 42
+      status: supported
+      summary: guaranteed-thought-or-emotion-erasure; persistent-suppression; automatic-whole-system-learning.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
+        end_line: 44
+        file: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+        source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+        start_line: 40
+      status: supported
+      summary: Reference learning shell uses ten preparation, eleven opening, ten closure, sleep-to-twenty
+        and waking return where the available ending supports it; not an OCF runtime requirement.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
+        end_line: 65
+        file: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+        source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+        start_line: 50
+      status: supported
+      summary: Return is described as desire-dependent, but no specific undo/restore command is established.
+  source_extent:
+    content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
+    end_line: 102
+    file: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+    source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:command_association
-    operations: []
+    - review:OCF-EMO-002:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:closer
-    operations: []
+    - review:OCF-EMO-002:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-EMO-002:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:future_use
-    operations: []
+    - review:OCF-EMO-002:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:return
-    operations: []
+    - review:OCF-EMO-002:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:main
-    operations: []
+    - review:OCF-EMO-002:main
+    operations:
+    - identify-unwanted-thought-or-emotion
+    - inhale-and-hold
+    - internally-issue-legacy-fade-cue
+    - exhale-and-breathe-easily
+    - associate-target-with-reduced-salience
     status: inferred
   opener:
     evidence_refs:
-    - cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:opener
-    operations: []
+    - review:OCF-EMO-002:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-EMO-002:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-EMO-002:rehearsal
     operations: []
     status: unknown
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-EMO-002:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-EMO-002:suspend_cancel_reset
+    operations:
+    - documented-suspend-cancel-reset
+    status: inferred
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-EMO-002
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Interleaved inhale/exhale tokens53-57 are ambiguous practice versus ASR material; explicit listener
+  rehearsal remains unknown. Legacy fade cue and canonical CLEAR differ and require compatibility review.
+- Preserve voluntary target selection and learned association where appropriate; breath holding, guaranteed
+  response and automatic whole-system learning require editorial review rather than scientific endorsement.
 schema_version: '1.0'
 states:
   preferred: []

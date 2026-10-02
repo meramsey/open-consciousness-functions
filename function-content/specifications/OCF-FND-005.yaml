@@ -1,65 +1,262 @@
+analysis_review:
+  claim_categories:
+  - guaranteed-fatigue-removal
+  - incoming-energy-metaphor-or-mechanism
+  - immediate-cognitive-and-emotional-improvement
+  - automatic-whole-system-learning
+  family: fatigue-emotion-pattern-change
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
+        end_line: 40
+        file: +Transcripts From available tapes/Reset/Reset.txt
+        source_sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+        start_line: 30
+      status: supported
+      summary: Pair the deliberately selected legacy cue with the target response and breathing procedure;
+        canonical spelling/compatibility remains separate metadata.
+    closer:
+      locators:
+      - content_group_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
+        end_line: 61
+        file: +Transcripts From available tapes/Reset/Reset.txt
+        source_sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+        start_line: 52
+      status: supported
+      summary: Reinforce future remembering/use and close the learning context to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
+        end_line: 139
+        file: +Transcripts From available tapes/Reset/Reset.txt
+        source_sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+        start_line: 62
+      status: supported
+      summary: Counted sleep-to-twenty segment is present; automatic integration is a source assertion,
+        not established mechanism.
+    conversion:
+      locators:
+      - content_group_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
+        end_line: 51
+        file: +Transcripts From available tapes/Reset/Reset.txt
+        source_sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+        start_line: 30
+      status: inferred
+      summary: Preserve voluntary target selection and learned association where appropriate; breath holding,
+        guaranteed response and automatic whole-system learning require editorial review rather than scientific
+        endorsement.
+    future_use:
+      locators:
+      - content_group_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
+        end_line: 55
+        file: +Transcripts From available tapes/Reset/Reset.txt
+        source_sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+        start_line: 30
+      status: supported
+      summary: On-demand pattern-change routine, with asserted fatigue release and growing effectiveness
+        from repeated use.
+    handoff:
+      locators:
+      - content_group_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
+        end_line: 171
+        file: +Transcripts From available tapes/Reset/Reset.txt
+        source_sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+        start_line: 140
+      status: supported
+      summary: Waking countdown and eyes-open return, followed by target cue reminder.
+    identity:
+      locators:
+      - content_group_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
+        end_line: 40
+        file: +Transcripts From available tapes/Reset/Reset.txt
+        source_sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+        start_line: 30
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
+        end_line: 51
+        file: +Transcripts From available tapes/Reset/Reset.txt
+        source_sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+        start_line: 30
+      status: supported
+      summary: notice-tired-or-emotionally-low-condition; choose-change; inhale-close-eyes-and-hold; internally-issue-reset-cue;
+        exhale-and-open-eyes
+    opener:
+      locators:
+      - content_group_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
+        end_line: 29
+        file: +Transcripts From available tapes/Reset/Reset.txt
+        source_sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+        start_line: 25
+      status: supported
+      summary: Orient to the target function and establish receptive learning context before the instruction.
+    preparation:
+      locators:
+      - content_group_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
+        end_line: 24
+        file: +Transcripts From available tapes/Reset/Reset.txt
+        source_sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+        start_line: 2
+      status: supported
+      summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary setting-aside
+        in repository representation and counted ten-state entry.
+    provenance:
+      locators:
+      - content_group_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
+        end_line: 171
+        file: +Transcripts From available tapes/Reset/Reset.txt
+        source_sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. No evidence here that RESET
+        cancels other function commands. Sleep/health-related fatigue cannot be assumed resolved by a
+        cue.
+    purpose:
+      locators:
+      - content_group_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
+        end_line: 2
+        file: +Transcripts From available tapes/Reset/Reset.txt
+        source_sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+        start_line: 1
+      status: supported
+      summary: Change an unwanted tired/emotionally-low pattern into an asserted energetic/confident one;
+        not a generic software reset for all functions.
+    rehearsal:
+      locators:
+      - content_group_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
+        end_line: 51
+        file: +Transcripts From available tapes/Reset/Reset.txt
+        source_sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+        start_line: 30
+      status: not-present
+      summary: Repeated instruction does not establish a distinct listener performance trial; apparent
+        ambient transcription artifacts are not practice evidence.
+    safety_claims:
+      locators:
+      - content_group_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
+        end_line: 51
+        file: +Transcripts From available tapes/Reset/Reset.txt
+        source_sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+        start_line: 26
+      status: supported
+      summary: guaranteed-fatigue-removal; incoming-energy-metaphor-or-mechanism; immediate-cognitive-and-emotional-improvement;
+        automatic-whole-system-learning. Claims are classified as source assertions, not accepted OCF
+        mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
+        end_line: 29
+        file: +Transcripts From available tapes/Reset/Reset.txt
+        source_sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+        start_line: 25
+      status: supported
+      summary: Reference learning shell uses ten preparation, eleven opening, ten closure, sleep-to-twenty
+        and waking return where the available ending supports it; not an OCF runtime requirement.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
+        end_line: 171
+        file: +Transcripts From available tapes/Reset/Reset.txt
+        source_sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. No evidence
+        here that RESET cancels other function commands. Sleep/health-related fatigue cannot be assumed
+        resolved by a cue.
+  source_extent:
+    content_group_sha256: be7ab29d56522cbc9ff76e957248ab106350d338a7e323cfdbfd3240d89d113f
+    end_line: 171
+    file: +Transcripts From available tapes/Reset/Reset.txt
+    source_sha256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2:command_association
-    operations: []
+    - review:OCF-FND-005:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2:closer
-    operations: []
+    - review:OCF-FND-005:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-FND-005:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2:future_use
-    operations: []
+    - review:OCF-FND-005:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2:return
-    operations: []
+    - review:OCF-FND-005:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2:main
-    operations: []
+    - review:OCF-FND-005:main
+    operations:
+    - notice-tired-or-emotionally-low-condition
+    - choose-change
+    - inhale-close-eyes-and-hold
+    - internally-issue-reset-cue
+    - exhale-and-open-eyes
     status: inferred
   opener:
     evidence_refs:
-    - 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2:opener
-    operations: []
+    - review:OCF-FND-005:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-FND-005:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-FND-005:rehearsal
     operations: []
-    status: unknown
+    status: not-present
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-FND-005:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-FND-005:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-FND-005
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- No evidence here that RESET cancels other function commands. Sleep/health-related fatigue cannot be
+  assumed resolved by a cue.
+- Preserve voluntary target selection and learned association where appropriate; breath holding, guaranteed
+  response and automatic whole-system learning require editorial review rather than scientific endorsement.
 schema_version: '1.0'
 states:
   preferred: []
