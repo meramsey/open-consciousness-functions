@@ -82,8 +82,8 @@ def ask(
     if allow_skip:
         controls.append("skip")
     controls.append("quit")
-    if controls:
-        suffixes.append("(" + ", ".join(controls) + ")")
+    # Quit is always available, so this control list can never be empty.
+    suffixes.append("(" + ", ".join(controls) + ")")
     full_prompt = f"{prompt} {' '.join(suffixes)}\n> " if default else f"{prompt}\n> "
 
     while True:
@@ -151,7 +151,7 @@ def multi_ask(prompt: str, *, help_text: str = "", allow_empty: bool = True) -> 
     result = ask(
         prompt,
         help_text=help_text + " (comma-separated)",
-        validator=(lambda v: None if v else "empty list"),
+        validator=None if allow_empty else (lambda v: None if v else "empty list"),
     )
     if result.intent == "quit":
         raise WizardQuit()
