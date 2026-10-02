@@ -1,8 +1,9 @@
-# OCF Narration Standard — English
+# OCF Authoring and Narration Standard
 
-Status: canonical writing contract. Applies to **listener-facing experiential
-narration**, including future community contributions. This document does not
-finalize Preparation Learning wording, timing, cues, or terminology.
+Status: canonical authoring contract. Applies to **listener-facing experiential
+narration**, including human/AI-assisted new functions and community contributions.
+English is the first language pack; the operational principles apply across locales.
+This revision does not rewrite approved Preparation Learning RC1 narration.
 
 > OCF provides the structure and cues. The listener provides the experience.
 
@@ -31,6 +32,58 @@ and any wizard-generated experiential narration. Technical documentation,
 operator diagnostics and source transcripts are not rewritten in this style.
 
 ## Writing principles
+
+### Every sentence performs an operation
+
+Assign each draft sentence one or more editorial purposes: **ORIENT, EXPLAIN,
+PREPARE, DIRECT, NOTICE, ASSOCIATE, REHEARSE, CONFIRM, TRANSITION, RETURN**.
+**WAIT** normally belongs to a declared silence, not extra narration.
+These are authoring annotations, not new runtime event identities. An explanation
+earns its place when it makes the next operation clearer. Remove sentences that
+only add a meditative atmosphere or repeat reassurance without changing the task.
+
+Prefer **instruction → experience → recognition → association**. Specify what
+the listener does and what category of experience they attend to; do not dictate
+the experience they must have. Use concrete verbs: select, place, release, attend,
+compare, recall, rehearse. Be confident about the operation and modest about its
+outcome. Direct instructions are compatible with voluntary participation.
+
+For example, original OCF wording might say: “Choose one sound. Follow it for
+three breaths. Then let your attention include the room again.” Each sentence
+changes the task. Repeated “you may perhaps find yourself becoming more aware”
+obscures both the action and the endpoint.
+
+Establish sensory flexibility once, then use concise representation-neutral
+language. A mental construct may be seen, heard, felt, located, described, or
+simply understood. Do not enumerate those options in every step. Visualization
+is required only when it is genuinely the skill being practiced, with that
+requirement and an alternative documented.
+
+Use neutral/secular operational language. “Energy” may mean available effort or
+a felt quality; define that use instead of claiming an unseen mechanism. Neither
+religious nor anti-religious doctrine is required. A listener's interpretation
+may be psychological, metaphorical, contemplative or spiritual without the
+exercise asserting one interpretation as fact.
+
+### Original function conversion
+
+Read the complete source before conversion. Extract opener/main/closer operations,
+command association, rehearsal, future use and release/return separately from
+expression. Write from that semantic specification, not by replacing synonyms
+in source sentences. Distinguish experiential instruction, metaphor, learned
+association, practical strategy, unsupported mechanism and ambiguous claims.
+If operationalizing a claim materially changes the intended function, record
+the change and require human content review.
+
+Before acceptance, compare the independent draft against all consulted sources
+for distinctive phrases, metaphors and unnecessary passage ordering. Revise from
+purpose rather than mechanically changing words. Common functional concepts and
+canonical command identities do not license copying distinctive expression.
+Reconstruction/mockup material is never recovered historical narration.
+
+Draft pilots remain **DRAFT / PILOT / REQUIRES HUMAN CONTENT REVIEW**. Automated
+validation and originality checks support review but do not approve style,
+historical authenticity, clinical effects or legal redistribution rights.
 
 - **Permissive suggestion:** invite participation; avoid commands that imply
   involuntary obedience. The listener can adapt, pause, decline or end an exercise.
@@ -142,7 +195,8 @@ rewritten. See [source attribution](SOURCE_ATTRIBUTION.md).
 - Final default affirmation.
 - Final oHm/resonant-tuning implementation.
 - Broader activation-command localization policy.
-- Exact finalized Preparation Learning narration and timing.
+- Final production Preparation Learning timing/mastering (en-US RC1 wording is
+  approved; its audio remains a development audition).
 
 Cue identities may exist before sounds are designed. No experimental
 sounding-bowl frequency or prototype asset is a permanent semantic definition.
