@@ -99,6 +99,9 @@ def _build_parser() -> argparse.ArgumentParser:
     sub.add_parser("help", help="show help")
     capabilities = sub.add_parser("capabilities", help="machine-readable live CLI discovery")
     capabilities.add_argument("--json", action="store_true")
+    author_plan = sub.add_parser("plan", help="validate a structured authoring request without rendering")
+    author_plan.add_argument("file")
+    author_plan.add_argument("--json", action="store_true")
     functions = sub.add_parser("functions", help="canonical function metadata discovery")
     function_sub = functions.add_subparsers(dest="function_kind", required=True)
     function_list = function_sub.add_parser("list", help="list all function records")
@@ -704,6 +707,21 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if args.command == "help" or args.command is None:
             print(HELP_TEXT)
+            return 0
+        if args.command == "plan":
+            import json
+
+            from .indexes import load_yaml_file
+            from .planning import plan
+
+            try:
+                result = plan(load_yaml_file(Path(args.file)), Path(args.file).resolve().parent)
+            except OCFError as exc:
+                if not args.json:
+                    raise
+                print(json.dumps({"schema_version": "1.0", "valid": False, "errors": [str(exc)]}))
+                return 1
+            print(json.dumps(result, indent=2) if args.json else f"Valid dry-run plan: {result['template_id']} / {result['locale']} / {result['content_status']}")
             return 0
         if args.command == "capabilities":
             import json

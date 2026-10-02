@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/authoring-plan.schema.json",
+  "title": "Deterministic authoring request (not natural-language understanding)",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "template", "locale", "narration_source"],
+  "properties": {
+    "schema_version": {"const": "1.0"}, "template": {"type": "string", "minLength": 1},
+    "locale": {"type": "string", "minLength": 2}, "function_id": {"type": "string"},
+    "narration_source": {"enum": ["tts", "prerecorded-user", "externally-generated"]},
+    "voice": {"type": "string"}, "recordings": {"type": "string"}, "dsp_profile": {"type": "string"},
+    "enabled_stages": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "slots": {"type": "object", "additionalProperties": {"type": "string"}},
+    "target_duration_s": {"type": "number", "exclusiveMinimum": 0}
+  },
+  "allOf": [
+    {"if": {"properties": {"narration_source": {"const": "tts"}}}, "then": {"not": {"required": ["recordings"]}}},
+    {"if": {"properties": {"narration_source": {"enum": ["prerecorded-user", "externally-generated"]}}}, "then": {"required": ["recordings"], "not": {"required": ["voice"]}}}
+  ]
+}
