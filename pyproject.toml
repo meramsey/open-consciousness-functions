@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=68", "PyYAML>=6.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -30,6 +30,7 @@ dev = [
   "pytest>=8.0",
   "ruff>=0.5",
   "coverage>=7.6",
+  "setuptools>=68",
 ]
 farfield = [
   "PyYAML>=6.0",
