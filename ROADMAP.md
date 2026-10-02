@@ -19,8 +19,9 @@ Legend: `[x] done · [~] in progress · [ ] planned`
 - [x] `capabilities --json`, `functions list|describe --json`, concise agent entry.
 - [x] Combined-suite coverage audit; see `docs/TEST_COVERAGE.md` for the actual gap.
 - [x] Separate function evidence/specification/decision/binding schemas and rich
-      discovery; all55 specs remain explicitly partial, with unknown values preserved.
-- [ ] Complete manual functional extraction and cross-corpus semantic review.
+      discovery; uncertain values remain explicit and separate from runtime defaults.
+- [x] Complete available-evidence analytical extraction for all55 specifications,
+      full-source reviews and source locators; no historical/narration approval implied.
 - [ ] Unit-only100% lines/branches and CI gates across the documented testable scope.
 - [x] Cross-OS core CI configuration, installed-wheel data discovery and Linux smoke.
 - [ ] Actual macOS/Windows runtime verification and remaining process adapters.

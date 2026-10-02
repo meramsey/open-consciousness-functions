@@ -19,12 +19,15 @@ authenticated source records. Mockups cannot authenticate themselves. Bindings
 cannot inject historical fields. Cross-layer identities/references and actual
 locale/template availability are checked by `validate --all`.
 
-All55 initial sidecar sets are **partial research records**, not completed semantic
-specifications. Keyword line candidates are low-confidence structural inference;
-they do not establish a function's operations or runtime state. Unknown,
-not-present, not-applicable and inferred are different statuses. The initializer
-refuses to overwrite customized records. It authors no English narration and
-changes no frozen pilot or RC1 content.
+The initial55 partial sidecars now have **complete available-evidence analytical
+reviews**. Completion requires every analytical question, a full inspected source
+extent, substantive answers (including investigated unknowns) and hash-addressed
+line/page locators. It does not authenticate historical recordings, bind runtime
+states or approve narration. Keyword candidates are preserved separately and do
+not establish absence. Unknown/not-present/not-applicable/inferred remain distinct.
+The initializer refuses customized-record overwrite; the review applicator consumes
+manually authored analysis, never keyword-derived semantics. No final narration or
+frozen pilot/RC1 wording changes. See[review matrix](FUNCTION_EXTRACTION_REVIEW.md).
 
 `functions list|describe --rich --json` exposes these capabilities using
 `schemas/function-discovery.schema.json`. `build-index` adds the same capabilities

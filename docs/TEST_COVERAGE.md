@@ -106,3 +106,17 @@ path is hidden by no-cover markers. Native-bootstrap's minimum-version guard has
 a narrowly documented UP036 lint exception because the standalone setup script
 may be invoked before a supported interpreter is established; it is not excluded
 from coverage.
+
+## Phase2C unit-only measurement
+
+Fresh baseline reproduced119 unit tests over6671 statements/2580 branches.
+After isolated parser audit, synthetic research tests, completeness/failure and
+prompt-control tests: **147 unit tests passed;283 integration tests passed**.
+Current denominator6788 statements/2628 branches;3654 covered lines
+(**53.83028874484384%**) and1126 covered branches (**42.84627092846271%**).
+Remaining **3134 lines /1502 branches**, zero excluded statements. Exact per-file
+results:`audio/rendered/phase2c-unit-final.json` (gitignored).
+No100% gate enabled because the target remains unmet. Twelve parser/timeline tests
+were individually reviewed as isolated string/in-memory contracts; CLI/schema/
+repository workflows were not blanket reclassified. Numerical fixtures use
+synthetic signals/noise and explicit dev math dependencies, never reference audio.
