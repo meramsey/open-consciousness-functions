@@ -44,6 +44,8 @@ UNIT_MODULES = {
     "test_planning",
     "test_diagnostics",
     "test_packaged_data",
+    "test_bootstrap",
+    "test_container_config",
 }
 REAL_AUDIO_TESTS = {
     "test_actual_ffmpeg_envelopes_and_seeded_output",
