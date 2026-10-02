@@ -146,10 +146,13 @@ def function_index_csv() -> str:
 
 
 def function_index_json() -> str:
+    from .content import discover
+
+    rows = [{**row_for(record), "capabilities": discover(record)} for record in load_all_functions()]
     payload = {
         "generated": True,
-        "count": len(build_function_index_data()),
-        "functions": build_function_index_data(),
+        "count": len(rows),
+        "functions": rows,
     }
     return generated_content(
         json.dumps(payload, indent=2, ensure_ascii=False, sort_keys=True) + "\n"

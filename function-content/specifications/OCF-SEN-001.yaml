@@ -1,0 +1,67 @@
+blocks:
+  association:
+    evidence_refs:
+    - 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:command_association
+    operations: []
+    status: inferred
+  closer:
+    evidence_refs:
+    - 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:closer
+    operations: []
+    status: inferred
+  consolidation:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  future_use:
+    evidence_refs:
+    - 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:future_use
+    operations: []
+    status: inferred
+  handoff:
+    evidence_refs:
+    - 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:return
+    operations: []
+    status: inferred
+  main:
+    evidence_refs:
+    - 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:main
+    operations: []
+    status: inferred
+  opener:
+    evidence_refs:
+    - 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:opener
+    operations: []
+    status: inferred
+  purpose:
+    evidence_refs: []
+    operations:
+    - consult-canonical-purpose-metadata
+    status: specified
+  rehearsal:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  safety_claims:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  suspend_cancel_reset:
+    evidence_refs: []
+    operations: []
+    status: unknown
+command_ref: canonical.command
+extraction_status: partial
+function_id: OCF-SEN-001
+human_review: required
+maturity: pilot
+metadata_ref: canonical-function-record
+preparation: []
+questions:
+- Function-specific operations, state requirements and claim transformations require source review; no
+  inferred runtime state binding
+schema_version: '1.0'
+states:
+  preferred: []
+  required: []
+  status: unknown

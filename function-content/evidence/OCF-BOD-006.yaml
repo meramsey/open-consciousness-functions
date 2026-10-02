@@ -1,0 +1,101 @@
+function_id: OCF-BOD-006
+observations:
+- category: opener
+  confidence: low
+  id: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31:opener
+  kind: structural-inference
+  line_candidates:
+  - 2
+  - 63
+  - 169
+  scope: document
+  source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+- category: main
+  confidence: low
+  id: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31:main
+  kind: structural-inference
+  line_candidates:
+  - 36
+  - 50
+  scope: document
+  source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+- category: closer
+  confidence: low
+  id: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31:closer
+  kind: structural-inference
+  line_candidates:
+  - 60
+  - 169
+  scope: document
+  source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+- category: preparation
+  confidence: low
+  id: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31:preparation
+  kind: structural-inference
+  line_candidates:
+  - 2
+  - 10
+  - 16
+  - 31
+  scope: document
+  source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+- category: command_association
+  confidence: low
+  id: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31:command_association
+  kind: structural-inference
+  line_candidates:
+  - 53
+  - 58
+  - 166
+  scope: document
+  source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+- category: future_use
+  confidence: low
+  id: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31:future_use
+  kind: structural-inference
+  line_candidates:
+  - 55
+  - 59
+  scope: document
+  source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+- category: return
+  confidence: low
+  id: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31:return
+  kind: structural-inference
+  line_candidates:
+  - 135
+  - 136
+  - 154
+  scope: document
+  source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.lrc
+  sha256: c1b9a96b3937424418549aa7f21d46292a71b7ad86268bbe1c6fd23d2f8752cf
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.ocr.pdf
+  sha256: d654bd10b2f6cc6ea2d326525d0d5077bda4f06ea3ed1cb3e64fbd1365d33e12
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.srt
+  sha256: d6341565f0520b52fcadf007710771b3f025ba960541a7454e76d8f66c59aedc
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+  sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Heart Support and Maintenance/folder.jpg
+  sha256: af27a7c98ffe3e7f9802f081d51db9490ea51ef2942eb3311bfa0fec3831e45d

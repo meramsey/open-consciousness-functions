@@ -1,0 +1,98 @@
+function_id: OCF-COG-006
+observations:
+- category: opener
+  confidence: low
+  id: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3:opener
+  kind: structural-inference
+  line_candidates:
+  - 1
+  - 2
+  - 56
+  scope: document
+  source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+- category: main
+  confidence: low
+  id: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3:main
+  kind: structural-inference
+  line_candidates:
+  - 31
+  - 32
+  - 41
+  scope: document
+  source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+- category: closer
+  confidence: low
+  id: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3:closer
+  kind: structural-inference
+  line_candidates:
+  - 53
+  scope: document
+  source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+- category: preparation
+  confidence: low
+  id: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3:preparation
+  kind: structural-inference
+  line_candidates:
+  - 3
+  - 8
+  - 12
+  - 25
+  - 54
+  - 57
+  scope: document
+  source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+- category: command_association
+  confidence: low
+  id: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3:command_association
+  kind: structural-inference
+  line_candidates:
+  - 33
+  - 35
+  - 42
+  - 44
+  - 52
+  scope: document
+  source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+- category: future_use
+  confidence: low
+  id: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3:future_use
+  kind: structural-inference
+  line_candidates:
+  - 32
+  - 38
+  - 41
+  - 47
+  - 52
+  scope: document
+  source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Recall/Recall.lrc
+  sha256: 7aa0ea7075432c1e46b4eab57ff9104fbc00a028b138ccff1c798409b938b18e
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Recall/Recall.ocr.pdf
+  sha256: 82f3ce302167d33f146f09b6ff42cc95e94adc5d65894c7d5edd780093582339
+- authentication: operator-designated
+  completeness: explicit gaps
+  evidence_class: partial_source_transcript
+  path: +Transcripts From available tapes/Recall/Recall.srt
+  sha256: 7788c429c68a7f67c60c2a009b8317e3381591ab8061e2959afdc259433d7116
+- authentication: operator-designated
+  completeness: explicit gaps
+  evidence_class: partial_source_transcript
+  path: +Transcripts From available tapes/Recall/Recall.txt
+  sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Recall/folder.jpg
+  sha256: a7302eed57b25cf1dc25dc6f6a449237df79cca20554bdaac79f6c9dc1572480

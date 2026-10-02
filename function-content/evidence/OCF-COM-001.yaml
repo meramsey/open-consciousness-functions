@@ -1,0 +1,105 @@
+function_id: OCF-COM-001
+observations:
+- category: opener
+  confidence: low
+  id: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc:opener
+  kind: structural-inference
+  line_candidates:
+  - 2
+  - 87
+  scope: document
+  source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+- category: main
+  confidence: low
+  id: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc:main
+  kind: structural-inference
+  line_candidates:
+  - 33
+  scope: document
+  source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+- category: closer
+  confidence: low
+  id: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc:closer
+  kind: structural-inference
+  line_candidates:
+  - 47
+  - 87
+  scope: document
+  source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+- category: preparation
+  confidence: low
+  id: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc:preparation
+  kind: structural-inference
+  line_candidates:
+  - 2
+  - 10
+  - 15
+  - 48
+  - 51
+  scope: document
+  source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+- category: command_association
+  confidence: low
+  id: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc:command_association
+  kind: structural-inference
+  line_candidates:
+  - 40
+  - 46
+  - 85
+  scope: document
+  source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+- category: future_use
+  confidence: low
+  id: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc:future_use
+  kind: structural-inference
+  line_candidates:
+  - 41
+  - 42
+  - 43
+  - 46
+  scope: document
+  source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+- category: return
+  confidence: low
+  id: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc:return
+  kind: structural-inference
+  line_candidates:
+  - 53
+  - 66
+  - 67
+  - 69
+  - 80
+  - 84
+  scope: document
+  source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Speak Up/Speak Up.lrc
+  sha256: c33026b49364a0c5681af6b2ad5be68b1d31e5737ce8d25b1df8c8a7f23f184c
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Speak Up/Speak Up.ocr.pdf
+  sha256: be030b10f16cce5ba3fca0dc4b2a40ac446e34e7d555360a921d6640c9055eaf
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Speak Up/Speak Up.srt
+  sha256: b673d4d405cb41b97c059a41f2bf55ea81f00540d216abfd19d1464abedba2b9
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Speak Up/Speak Up.txt
+  sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Speak Up/folder.jpg
+  sha256: bdb153c9778a6a54b69eea7bd6517c9bd70f941bd8808cb5383f4074d3b15fea

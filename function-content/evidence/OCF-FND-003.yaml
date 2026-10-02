@@ -1,0 +1,111 @@
+function_id: OCF-FND-003
+observations:
+- category: opener
+  confidence: low
+  id: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:opener
+  kind: structural-inference
+  line_candidates:
+  - 2
+  - 3
+  - 79
+  - 190
+  scope: document
+  source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+- category: main
+  confidence: low
+  id: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:main
+  kind: structural-inference
+  line_candidates:
+  - 37
+  - 38
+  - 49
+  scope: document
+  source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+- category: closer
+  confidence: low
+  id: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:closer
+  kind: structural-inference
+  line_candidates:
+  - 69
+  - 190
+  scope: document
+  source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+- category: preparation
+  confidence: low
+  id: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:preparation
+  kind: structural-inference
+  line_candidates:
+  - 3
+  - 11
+  - 17
+  - 72
+  - 80
+  scope: document
+  source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+- category: command_association
+  confidence: low
+  id: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:command_association
+  kind: structural-inference
+  line_candidates:
+  - 40
+  - 51
+  - 66
+  - 188
+  scope: document
+  source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+- category: future_use
+  confidence: low
+  id: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:future_use
+  kind: structural-inference
+  line_candidates:
+  - 38
+  - 47
+  - 49
+  - 59
+  - 67
+  scope: document
+  source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+- category: return
+  confidence: low
+  id: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:return
+  kind: structural-inference
+  line_candidates:
+  - 82
+  - 174
+  - 175
+  - 178
+  - 181
+  - 186
+  scope: document
+  source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Recharge/Recharge.lrc
+  sha256: 0080e866dc5a36589bc5fb1f0518e424074081e2236fb06ae66f26b4213ce543
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Recharge/Recharge.ocr.pdf
+  sha256: 2ce14ddb74a4d1fdbcc50a134ac69ea949aa1a090bcb4c52de0349b5f5079f61
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Recharge/Recharge.srt
+  sha256: 4e74e767c817e7913083508eb62ba8c48737cbad959007c84b747ee40ed844c0
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Recharge/Recharge.txt
+  sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Recharge/folder.jpg
+  sha256: 3e1b9d3d5997a0e6bbef00dd78f02945eea64ab1b41e24367b9e98c4ceb2a77b

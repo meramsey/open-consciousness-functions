@@ -1,0 +1,62 @@
+blocks:
+  association:
+    evidence_refs:
+    - f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14:command_association
+    operations: []
+    status: inferred
+  closer:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  consolidation:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  future_use:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  handoff:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  main:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  opener:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  purpose:
+    evidence_refs: []
+    operations:
+    - consult-canonical-purpose-metadata
+    status: specified
+  rehearsal:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  safety_claims:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  suspend_cancel_reset:
+    evidence_refs: []
+    operations: []
+    status: unknown
+command_ref: canonical.command
+extraction_status: partial
+function_id: OCF-COG-001
+human_review: required
+maturity: draft
+metadata_ref: canonical-function-record
+preparation: []
+questions:
+- Function-specific operations, state requirements and claim transformations require source review; no
+  inferred runtime state binding
+schema_version: '1.0'
+states:
+  preferred: []
+  required: []
+  status: unknown

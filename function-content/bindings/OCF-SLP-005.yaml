@@ -1,0 +1,22 @@
+duration: null
+function_id: OCF-SLP-005
+narration_resources:
+- key: pilot.function.complete
+  locale: en-US
+- key: pilot.sleep-easy.associate
+  locale: en-US
+- key: pilot.sleep-easy.future
+  locale: en-US
+- key: pilot.sleep-easy.practice
+  locale: en-US
+- key: pilot.sleep-easy.purpose
+  locale: en-US
+- key: pilot.sleep-easy.rehearse
+  locale: en-US
+schema_version: '1.0'
+session_templates:
+- OCF-TPL-SESSION-PILOT-SLEEP-EASY-001
+voice_sources:
+- tts
+- prerecorded-user
+- externally-generated

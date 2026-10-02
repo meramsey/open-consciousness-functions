@@ -1,0 +1,141 @@
+function_id: OCF-SEN-004
+observations:
+- category: main
+  confidence: low
+  id: ac4101ce28b0d67b33d03fe7777dd17c6d77e0ba82f12aaec6094473c05fc97d:main
+  kind: structural-inference
+  line_candidates:
+  - 22
+  - 25
+  scope: document
+  source_sha256: ac4101ce28b0d67b33d03fe7777dd17c6d77e0ba82f12aaec6094473c05fc97d
+- category: preparation
+  confidence: low
+  id: ac4101ce28b0d67b33d03fe7777dd17c6d77e0ba82f12aaec6094473c05fc97d:preparation
+  kind: structural-inference
+  line_candidates:
+  - 16
+  scope: document
+  source_sha256: ac4101ce28b0d67b33d03fe7777dd17c6d77e0ba82f12aaec6094473c05fc97d
+- category: command_association
+  confidence: low
+  id: ac4101ce28b0d67b33d03fe7777dd17c6d77e0ba82f12aaec6094473c05fc97d:command_association
+  kind: structural-inference
+  line_candidates:
+  - 27
+  - 51
+  - 56
+  scope: document
+  source_sha256: ac4101ce28b0d67b33d03fe7777dd17c6d77e0ba82f12aaec6094473c05fc97d
+- category: future_use
+  confidence: low
+  id: ac4101ce28b0d67b33d03fe7777dd17c6d77e0ba82f12aaec6094473c05fc97d:future_use
+  kind: structural-inference
+  line_candidates:
+  - 45
+  scope: document
+  source_sha256: ac4101ce28b0d67b33d03fe7777dd17c6d77e0ba82f12aaec6094473c05fc97d
+- category: opener
+  confidence: low
+  id: c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13:opener
+  kind: structural-inference
+  line_candidates:
+  - 39
+  - 172
+  - 260
+  scope: document
+  source_sha256: c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13
+- category: main
+  confidence: low
+  id: c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13:main
+  kind: structural-inference
+  line_candidates:
+  - 125
+  - 128
+  scope: document
+  source_sha256: c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13
+- category: closer
+  confidence: low
+  id: c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13:closer
+  kind: structural-inference
+  line_candidates:
+  - 158
+  - 260
+  scope: document
+  source_sha256: c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13
+- category: preparation
+  confidence: low
+  id: c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13:preparation
+  kind: structural-inference
+  line_candidates:
+  - 19
+  - 20
+  - 39
+  - 55
+  - 67
+  - 77
+  - 113
+  - 162
+  - 174
+  scope: document
+  source_sha256: c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13
+- category: command_association
+  confidence: low
+  id: c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13:command_association
+  kind: structural-inference
+  line_candidates:
+  - 130
+  - 154
+  - 256
+  scope: document
+  source_sha256: c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13
+- category: future_use
+  confidence: low
+  id: c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13:future_use
+  kind: structural-inference
+  line_candidates:
+  - 148
+  - 156
+  scope: document
+  source_sha256: c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13
+- category: return
+  confidence: low
+  id: c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13:return
+  kind: structural-inference
+  line_candidates:
+  - 180
+  - 236
+  - 252
+  scope: document
+  source_sha256: c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: Sensory (Taste)/Sensory-Taste.ocr.pdf
+  sha256: 0dbde9cb73c84519256f8ca0bbc63af0c766e2e665ccb72d9055341246e307ba
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: secondary_description
+  path: Sensory (Taste)/Sensory_Smell_and_Taste_README.md
+  sha256: 29736f3270cc07a61c852c50a25d1f67e925998b78f52f4641da48b52f9e708f
+- authentication: unverified
+  completeness: reconstruction; historical completeness not applicable
+  evidence_class: reconstructed_mockup
+  path: Sensory (Taste)/Sensory_Taste_reconstructed_annotated.txt
+  sha256: ac4101ce28b0d67b33d03fe7777dd17c6d77e0ba82f12aaec6094473c05fc97d
+- authentication: unverified
+  completeness: reconstruction; historical completeness not applicable
+  evidence_class: reconstructed_mockup
+  path: Sensory (Taste)/Sensory_Taste_reconstructed_clean.txt
+  sha256: c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: secondary_description
+  path: Sensory (Taste)/Sensory_Taste_reconstruction_notes.md
+  sha256: 66a4b080501cc2edb334e1b7baafe407f6bc676d1db1776d47410c561bc3a361

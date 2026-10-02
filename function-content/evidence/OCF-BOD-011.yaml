@@ -1,0 +1,96 @@
+function_id: OCF-BOD-011
+observations:
+- category: main
+  confidence: low
+  id: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88:main
+  kind: structural-inference
+  line_candidates:
+  - 41
+  - 42
+  - 49
+  - 106
+  - 116
+  - 184
+  scope: document
+  source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+- category: closer
+  confidence: low
+  id: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88:closer
+  kind: structural-inference
+  line_candidates:
+  - 56
+  scope: document
+  source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+- category: preparation
+  confidence: low
+  id: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88:preparation
+  kind: structural-inference
+  line_candidates:
+  - 4
+  - 5
+  - 6
+  - 58
+  scope: document
+  source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+- category: command_association
+  confidence: low
+  id: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88:command_association
+  kind: structural-inference
+  line_candidates:
+  - 43
+  - 50
+  - 108
+  - 117
+  - 187
+  scope: document
+  source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+- category: future_use
+  confidence: low
+  id: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88:future_use
+  kind: structural-inference
+  line_candidates:
+  - 42
+  - 49
+  - 106
+  - 116
+  - 184
+  scope: document
+  source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+- category: return
+  confidence: low
+  id: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88:return
+  kind: structural-inference
+  line_candidates:
+  - 79
+  - 130
+  - 164
+  - 172
+  - 183
+  scope: document
+  source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Passages/Passages.lrc
+  sha256: 1be14d7210af703f0ccadf16802253399540cfac3bb0f64a8a5b68f5c7123b03
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Passages/Passages.srt
+  sha256: 5e62b5d2207e4507b13bcba6911685c64643b4ab5e4b99b2863d233dbb3d4e85
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Passages/Passages.txt
+  sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Passages/folder.jpg
+  sha256: e7df09f56add830d7e44044d6214da954ee354d7315153b2fe415db397698683

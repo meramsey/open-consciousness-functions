@@ -1,0 +1,129 @@
+function_id: OCF-EMG-002
+observations:
+- category: main
+  confidence: low
+  id: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254:main
+  kind: structural-inference
+  line_candidates:
+  - 30
+  scope: document
+  source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+- category: preparation
+  confidence: low
+  id: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254:preparation
+  kind: structural-inference
+  line_candidates:
+  - 25
+  scope: document
+  source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+- category: command_association
+  confidence: low
+  id: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254:command_association
+  kind: structural-inference
+  line_candidates:
+  - 44
+  scope: document
+  source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+- category: opener
+  confidence: low
+  id: 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510:opener
+  kind: structural-inference
+  line_candidates:
+  - 51
+  - 235
+  - 338
+  scope: document
+  source_sha256: 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510
+- category: main
+  confidence: low
+  id: 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510:main
+  kind: structural-inference
+  line_candidates:
+  - 144
+  - 148
+  scope: document
+  source_sha256: 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510
+- category: closer
+  confidence: low
+  id: 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510:closer
+  kind: structural-inference
+  line_candidates:
+  - 220
+  - 338
+  scope: document
+  source_sha256: 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510
+- category: preparation
+  confidence: low
+  id: 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510:preparation
+  kind: structural-inference
+  line_candidates:
+  - 29
+  - 30
+  - 52
+  - 69
+  - 83
+  - 93
+  - 129
+  - 224
+  - 237
+  scope: document
+  source_sha256: 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510
+- category: command_association
+  confidence: low
+  id: 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510:command_association
+  kind: structural-inference
+  line_candidates:
+  - 158
+  - 215
+  - 332
+  scope: document
+  source_sha256: 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510
+- category: future_use
+  confidence: low
+  id: 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510:future_use
+  kind: structural-inference
+  line_candidates:
+  - 217
+  scope: document
+  source_sha256: 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510
+- category: return
+  confidence: low
+  id: 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510:return
+  kind: structural-inference
+  line_candidates:
+  - 243
+  - 302
+  - 325
+  scope: document
+  source_sha256: 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: 'Emergency: Toxic/Emergency-Toxin.ocr.pdf'
+  sha256: 0e38c9db39edd4263b8bebd8e5cc6e783944bf4ddb87b6a0ecbb7142fec4be7d
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: secondary_description
+  path: 'Emergency: Toxic/Emergency_Toxic_881041_README.md'
+  sha256: 27c47d571894c6c040dabe8ba165d10311d8a2527b4640d5e9b2ca4f76967d67
+- authentication: unverified
+  completeness: reconstruction; historical completeness not applicable
+  evidence_class: reconstructed_mockup
+  path: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+  sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+- authentication: unverified
+  completeness: reconstruction; historical completeness not applicable
+  evidence_class: reconstructed_mockup
+  path: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_clean.txt'
+  sha256: 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: secondary_description
+  path: 'Emergency: Toxic/Emergency_Toxic_881041_reconstruction_notes.md'
+  sha256: ef72dc8598738fdd21eedc580c344cf097498fd0454f9a4448946b1d565673ec

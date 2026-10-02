@@ -1,0 +1,134 @@
+function_id: OCF-EMO-003
+observations:
+- category: main
+  confidence: low
+  id: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc:main
+  kind: structural-inference
+  line_candidates:
+  - 30
+  scope: document
+  source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+- category: preparation
+  confidence: low
+  id: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc:preparation
+  kind: structural-inference
+  line_candidates:
+  - 25
+  scope: document
+  source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+- category: command_association
+  confidence: low
+  id: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc:command_association
+  kind: structural-inference
+  line_candidates:
+  - 69
+  scope: document
+  source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+- category: opener
+  confidence: low
+  id: 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06:opener
+  kind: structural-inference
+  line_candidates:
+  - 51
+  - 252
+  - 359
+  scope: document
+  source_sha256: 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06
+- category: main
+  confidence: low
+  id: 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06:main
+  kind: structural-inference
+  line_candidates:
+  - 144
+  - 148
+  scope: document
+  source_sha256: 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06
+- category: closer
+  confidence: low
+  id: 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06:closer
+  kind: structural-inference
+  line_candidates:
+  - 237
+  - 359
+  scope: document
+  source_sha256: 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06
+- category: preparation
+  confidence: low
+  id: 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06:preparation
+  kind: structural-inference
+  line_candidates:
+  - 29
+  - 30
+  - 52
+  - 69
+  - 83
+  - 93
+  - 129
+  - 241
+  - 254
+  scope: document
+  source_sha256: 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06
+- category: command_association
+  confidence: low
+  id: 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06:command_association
+  kind: structural-inference
+  line_candidates:
+  - 176
+  - 232
+  - 350
+  scope: document
+  source_sha256: 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06
+- category: future_use
+  confidence: low
+  id: 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06:future_use
+  kind: structural-inference
+  line_candidates:
+  - 234
+  scope: document
+  source_sha256: 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06
+- category: return
+  confidence: low
+  id: 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06:return
+  kind: structural-inference
+  line_candidates:
+  - 260
+  - 319
+  - 342
+  scope: document
+  source_sha256: 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: secondary_description
+  path: Empathizing/Empathizing_881049_README.md
+  sha256: d3f5d00703ec224776b58f46c1a8eece71de60e167629314b21cae101499a92e
+- authentication: unverified
+  completeness: reconstruction; historical completeness not applicable
+  evidence_class: reconstructed_mockup
+  path: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+  sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+- authentication: unverified
+  completeness: reconstruction; historical completeness not applicable
+  evidence_class: reconstructed_mockup
+  path: Empathizing/Empathizing_881049_reconstructed_clean.txt
+  sha256: 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: Empathizing/Empathizing_881049_reconstruction_bundle.zip
+  sha256: ebb8f03b467bfa412cf24b600a9774ceedc3a99c38d2c39a0d5f39e78542119f
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: secondary_description
+  path: Empathizing/Empathizing_881049_reconstruction_notes.md
+  sha256: 09cc4d696efbea0c199fc2aa1f58158e94695cdc5c30c4419ee54327593143d2
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: Empathizing/Emphathizing.ocr.pdf
+  sha256: 3b2216f844e33572ad3bea7a16e9f1b586e78ba5a5c2bb45c288d8f4800cd04a

@@ -1,0 +1,98 @@
+function_id: OCF-BOD-009
+observations:
+- category: opener
+  confidence: low
+  id: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87:opener
+  kind: structural-inference
+  line_candidates:
+  - 2
+  - 72
+  scope: document
+  source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+- category: main
+  confidence: low
+  id: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87:main
+  kind: structural-inference
+  line_candidates:
+  - 30
+  - 54
+  scope: document
+  source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+- category: closer
+  confidence: low
+  id: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87:closer
+  kind: structural-inference
+  line_candidates:
+  - 64
+  scope: document
+  source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+- category: preparation
+  confidence: low
+  id: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87:preparation
+  kind: structural-inference
+  line_candidates:
+  - 2
+  - 10
+  - 16
+  - 67
+  - 73
+  scope: document
+  source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+- category: command_association
+  confidence: low
+  id: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87:command_association
+  kind: structural-inference
+  line_candidates:
+  - 55
+  - 61
+  scope: document
+  source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+- category: future_use
+  confidence: low
+  id: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87:future_use
+  kind: structural-inference
+  line_candidates:
+  - 54
+  - 59
+  - 63
+  scope: document
+  source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+- category: return
+  confidence: low
+  id: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87:return
+  kind: structural-inference
+  line_candidates:
+  - 76
+  scope: document
+  source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.lrc
+  sha256: 9071bddef2bad2136923e783c2e0e319f22ab2f5f26fcc5f10daf141aaab2ccf
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.ocr.pdf
+  sha256: 35826c5d3642b6759099b2809399f118dbcf9e88135a20c326d87135b80f5a19
+- authentication: operator-designated
+  completeness: explicit gaps
+  evidence_class: partial_source_transcript
+  path: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.srt
+  sha256: f2c55427d6d91153c1bc29410429c5bca5cf9df61b655bb9b3a6eafb7197047b
+- authentication: operator-designated
+  completeness: explicit gaps
+  evidence_class: partial_source_transcript
+  path: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+  sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Lung Support and Maintenance/folder.jpg
+  sha256: e2c1882797ac25de7e6cb1d5a9cc8674a231c8a1dd945526b17dfa505cad9a29

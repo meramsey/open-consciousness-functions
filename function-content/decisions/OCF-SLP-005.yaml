@@ -1,0 +1,10 @@
+decisions:
+- id: sleep-easy-pilot-safe-rest-inference
+  kind: ocf-design-choice
+  scope: pilot
+  status: provisional
+  description: Existing frozen pilot uses safe-context rest adjustments informed by a reconstruction; these are OCF design inferences, not recovered Human Plus behavior.
+  material_change: true
+  human_review: required
+function_id: OCF-SLP-005
+schema_version: '1.0'

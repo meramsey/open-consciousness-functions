@@ -1,0 +1,67 @@
+blocks:
+  association:
+    evidence_refs:
+    - cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:command_association
+    operations: []
+    status: inferred
+  closer:
+    evidence_refs:
+    - cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:closer
+    operations: []
+    status: inferred
+  consolidation:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  future_use:
+    evidence_refs:
+    - cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:future_use
+    operations: []
+    status: inferred
+  handoff:
+    evidence_refs:
+    - cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:return
+    operations: []
+    status: inferred
+  main:
+    evidence_refs:
+    - cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:main
+    operations: []
+    status: inferred
+  opener:
+    evidence_refs:
+    - cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:opener
+    operations: []
+    status: inferred
+  purpose:
+    evidence_refs: []
+    operations:
+    - consult-canonical-purpose-metadata
+    status: specified
+  rehearsal:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  safety_claims:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  suspend_cancel_reset:
+    evidence_refs: []
+    operations: []
+    status: unknown
+command_ref: canonical.command
+extraction_status: partial
+function_id: OCF-EMO-002
+human_review: required
+maturity: draft
+metadata_ref: canonical-function-record
+preparation: []
+questions:
+- Function-specific operations, state requirements and claim transformations require source review; no
+  inferred runtime state binding
+schema_version: '1.0'
+states:
+  preferred: []
+  required: []
+  status: unknown

@@ -1,0 +1,10 @@
+decisions:
+- id: hearing-pilot-attention-reinterpretation
+  kind: ocf-design-choice
+  scope: pilot
+  status: provisional
+  description: Existing frozen pilot reframes physical hearing enhancement as attention practice. This material reinterpretation is not approved policy for Hearing or other functions.
+  material_change: true
+  human_review: required
+function_id: OCF-SEN-001
+schema_version: '1.0'

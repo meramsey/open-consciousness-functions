@@ -1,0 +1,70 @@
+blocks:
+  association:
+    evidence_refs:
+    - 74c0e454c93b9633f2d6ee65d42db44bac0ccf99198f8733c49e9d31be4807ed:command_association
+    - c4c9889958374fa4ea8e8971418c79764cfeb6e841bd3eabd7581bd06b1bc074:command_association
+    operations: []
+    status: inferred
+  closer:
+    evidence_refs:
+    - c4c9889958374fa4ea8e8971418c79764cfeb6e841bd3eabd7581bd06b1bc074:closer
+    operations: []
+    status: inferred
+  consolidation:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  future_use:
+    evidence_refs:
+    - 74c0e454c93b9633f2d6ee65d42db44bac0ccf99198f8733c49e9d31be4807ed:future_use
+    - c4c9889958374fa4ea8e8971418c79764cfeb6e841bd3eabd7581bd06b1bc074:future_use
+    operations: []
+    status: inferred
+  handoff:
+    evidence_refs:
+    - c4c9889958374fa4ea8e8971418c79764cfeb6e841bd3eabd7581bd06b1bc074:return
+    operations: []
+    status: inferred
+  main:
+    evidence_refs:
+    - 74c0e454c93b9633f2d6ee65d42db44bac0ccf99198f8733c49e9d31be4807ed:main
+    - c4c9889958374fa4ea8e8971418c79764cfeb6e841bd3eabd7581bd06b1bc074:main
+    operations: []
+    status: inferred
+  opener:
+    evidence_refs:
+    - c4c9889958374fa4ea8e8971418c79764cfeb6e841bd3eabd7581bd06b1bc074:opener
+    operations: []
+    status: inferred
+  purpose:
+    evidence_refs: []
+    operations:
+    - consult-canonical-purpose-metadata
+    status: specified
+  rehearsal:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  safety_claims:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  suspend_cancel_reset:
+    evidence_refs: []
+    operations: []
+    status: unknown
+command_ref: canonical.command
+extraction_status: partial
+function_id: OCF-BOD-015
+human_review: required
+maturity: draft
+metadata_ref: canonical-function-record
+preparation: []
+questions:
+- Function-specific operations, state requirements and claim transformations require source review; no
+  inferred runtime state binding
+schema_version: '1.0'
+states:
+  preferred: []
+  required: []
+  status: unknown

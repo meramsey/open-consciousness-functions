@@ -1,0 +1,97 @@
+function_id: OCF-LIF-001
+observations:
+- category: opener
+  confidence: low
+  id: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6:opener
+  kind: structural-inference
+  line_candidates:
+  - 8
+  - 174
+  scope: document
+  source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+- category: closer
+  confidence: low
+  id: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6:closer
+  kind: structural-inference
+  line_candidates:
+  - 171
+  scope: document
+  source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+- category: preparation
+  confidence: low
+  id: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6:preparation
+  kind: structural-inference
+  line_candidates:
+  - 8
+  - 16
+  - 22
+  - 143
+  - 172
+  - 175
+  scope: document
+  source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+- category: command_association
+  confidence: low
+  id: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6:command_association
+  kind: structural-inference
+  line_candidates:
+  - 150
+  - 160
+  - 169
+  - 220
+  scope: document
+  source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+- category: future_use
+  confidence: low
+  id: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6:future_use
+  kind: structural-inference
+  line_candidates:
+  - 155
+  - 165
+  - 170
+  scope: document
+  source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+- category: return
+  confidence: low
+  id: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6:return
+  kind: structural-inference
+  line_candidates:
+  - 177
+  - 208
+  - 209
+  - 211
+  - 214
+  - 218
+  scope: document
+  source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/De-Hab/De-Hab.lrc
+  sha256: 0e36818885f96ee26386c08f34b78c33597b246f8b2b83de5490be9cc5ecfff8
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/De-Hab/De-Hab.ocr.pdf
+  sha256: 6bf70de4cd63ff17efaf730f54f9fd8dbea205fdb3da554aa24fcdcdb4ea5d14
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/De-Hab/De-Hab.srt
+  sha256: bea2d2791d0b885e6368540b6f9038ae8a2410cb07604f21cd52631c87ef963d
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/De-Hab/De-Hab.txt
+  sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/De-Hab/folder.jpg
+  sha256: 0cd01a8acab3e191103e78941b56fbcc658a3c09838b3e7e3f83c9d575f8498e

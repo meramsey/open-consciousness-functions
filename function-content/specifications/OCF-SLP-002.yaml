@@ -1,0 +1,66 @@
+blocks:
+  association:
+    evidence_refs:
+    - 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd:command_association
+    operations: []
+    status: inferred
+  closer:
+    evidence_refs:
+    - 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd:closer
+    operations: []
+    status: inferred
+  consolidation:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  future_use:
+    evidence_refs:
+    - 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd:future_use
+    operations: []
+    status: inferred
+  handoff:
+    evidence_refs:
+    - 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd:return
+    operations: []
+    status: inferred
+  main:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  opener:
+    evidence_refs:
+    - 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd:opener
+    operations: []
+    status: inferred
+  purpose:
+    evidence_refs: []
+    operations:
+    - consult-canonical-purpose-metadata
+    status: specified
+  rehearsal:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  safety_claims:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  suspend_cancel_reset:
+    evidence_refs: []
+    operations: []
+    status: unknown
+command_ref: canonical.command
+extraction_status: partial
+function_id: OCF-SLP-002
+human_review: required
+maturity: draft
+metadata_ref: canonical-function-record
+preparation: []
+questions:
+- Function-specific operations, state requirements and claim transformations require source review; no
+  inferred runtime state binding
+schema_version: '1.0'
+states:
+  preferred: []
+  required: []
+  status: unknown

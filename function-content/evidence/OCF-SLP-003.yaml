@@ -1,0 +1,114 @@
+function_id: OCF-SLP-003
+observations:
+- category: opener
+  confidence: low
+  id: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3:opener
+  kind: structural-inference
+  line_candidates:
+  - 6
+  - 7
+  - 83
+  - 163
+  scope: document
+  source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+- category: main
+  confidence: low
+  id: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3:main
+  kind: structural-inference
+  line_candidates:
+  - 36
+  - 37
+  - 49
+  - 61
+  - 66
+  scope: document
+  source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+- category: closer
+  confidence: low
+  id: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3:closer
+  kind: structural-inference
+  line_candidates:
+  - 75
+  - 163
+  scope: document
+  source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+- category: preparation
+  confidence: low
+  id: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3:preparation
+  kind: structural-inference
+  line_candidates:
+  - 7
+  - 12
+  - 15
+  - 17
+  - 18
+  scope: document
+  source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+- category: command_association
+  confidence: low
+  id: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3:command_association
+  kind: structural-inference
+  line_candidates:
+  - 40
+  - 52
+  - 63
+  - 68
+  - 73
+  - 161
+  scope: document
+  source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+- category: future_use
+  confidence: low
+  id: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3:future_use
+  kind: structural-inference
+  line_candidates:
+  - 37
+  - 46
+  - 49
+  - 58
+  - 61
+  - 66
+  - 74
+  scope: document
+  source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+- category: return
+  confidence: low
+  id: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3:return
+  kind: structural-inference
+  line_candidates:
+  - 125
+  - 143
+  - 157
+  scope: document
+  source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.lrc
+  sha256: 5c03fd2f1e9a3448de4b85255e5bb1e62ef7aae10d04e1b43a82b049d4aeb586
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.ocr.pdf
+  sha256: cf049709e4d8488095567b5cfa89d4766f379f3718659a04eb65a7ad42508ddf
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.srt
+  sha256: 2c8c38d878302314618cc2005bb77e078ef068f7691da42f0ab36487a3935ac2
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+  sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Sweet Dreams/folder.jpg
+  sha256: 847d375cc5975eaed2a97e24906ad9c8a5aa55c70c709985c5a2c374bbf81c14

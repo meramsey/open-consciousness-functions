@@ -1,0 +1,181 @@
+function_id: OCF-FND-006
+observations:
+- category: opener
+  confidence: low
+  id: 22e30e36196a7ed181f67cbc37f77b3c7ef6bb9f3d0ee7b48d21e4422c6a262c:opener
+  kind: structural-inference
+  line_candidates:
+  - 25
+  - 172
+  - 231
+  scope: document
+  source_sha256: 22e30e36196a7ed181f67cbc37f77b3c7ef6bb9f3d0ee7b48d21e4422c6a262c
+- category: main
+  confidence: low
+  id: 22e30e36196a7ed181f67cbc37f77b3c7ef6bb9f3d0ee7b48d21e4422c6a262c:main
+  kind: structural-inference
+  line_candidates:
+  - 77
+  - 80
+  scope: document
+  source_sha256: 22e30e36196a7ed181f67cbc37f77b3c7ef6bb9f3d0ee7b48d21e4422c6a262c
+- category: closer
+  confidence: low
+  id: 22e30e36196a7ed181f67cbc37f77b3c7ef6bb9f3d0ee7b48d21e4422c6a262c:closer
+  kind: structural-inference
+  line_candidates:
+  - 159
+  - 231
+  scope: document
+  source_sha256: 22e30e36196a7ed181f67cbc37f77b3c7ef6bb9f3d0ee7b48d21e4422c6a262c
+- category: preparation
+  confidence: low
+  id: 22e30e36196a7ed181f67cbc37f77b3c7ef6bb9f3d0ee7b48d21e4422c6a262c:preparation
+  kind: structural-inference
+  line_candidates:
+  - 26
+  - 41
+  - 52
+  - 56
+  - 62
+  - 162
+  - 175
+  scope: document
+  source_sha256: 22e30e36196a7ed181f67cbc37f77b3c7ef6bb9f3d0ee7b48d21e4422c6a262c
+- category: command_association
+  confidence: low
+  id: 22e30e36196a7ed181f67cbc37f77b3c7ef6bb9f3d0ee7b48d21e4422c6a262c:command_association
+  kind: structural-inference
+  line_candidates:
+  - 91
+  - 152
+  - 219
+  scope: document
+  source_sha256: 22e30e36196a7ed181f67cbc37f77b3c7ef6bb9f3d0ee7b48d21e4422c6a262c
+- category: future_use
+  confidence: low
+  id: 22e30e36196a7ed181f67cbc37f77b3c7ef6bb9f3d0ee7b48d21e4422c6a262c:future_use
+  kind: structural-inference
+  line_candidates:
+  - 114
+  - 140
+  - 155
+  - 228
+  scope: document
+  source_sha256: 22e30e36196a7ed181f67cbc37f77b3c7ef6bb9f3d0ee7b48d21e4422c6a262c
+- category: return
+  confidence: low
+  id: 22e30e36196a7ed181f67cbc37f77b3c7ef6bb9f3d0ee7b48d21e4422c6a262c:return
+  kind: structural-inference
+  line_candidates:
+  - 181
+  - 199
+  - 208
+  scope: document
+  source_sha256: 22e30e36196a7ed181f67cbc37f77b3c7ef6bb9f3d0ee7b48d21e4422c6a262c
+- category: opener
+  confidence: low
+  id: 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf:opener
+  kind: structural-inference
+  line_candidates:
+  - 41
+  - 214
+  - 320
+  scope: document
+  source_sha256: 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf
+- category: main
+  confidence: low
+  id: 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf:main
+  kind: structural-inference
+  line_candidates:
+  - 134
+  - 138
+  scope: document
+  source_sha256: 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf
+- category: closer
+  confidence: low
+  id: 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf:closer
+  kind: structural-inference
+  line_candidates:
+  - 199
+  - 320
+  scope: document
+  source_sha256: 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf
+- category: preparation
+  confidence: low
+  id: 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf:preparation
+  kind: structural-inference
+  line_candidates:
+  - 20
+  - 21
+  - 42
+  - 59
+  - 73
+  - 83
+  - 119
+  - 203
+  - 216
+  scope: document
+  source_sha256: 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf
+- category: command_association
+  confidence: low
+  id: 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf:command_association
+  kind: structural-inference
+  line_candidates:
+  - 146
+  - 194
+  - 311
+  scope: document
+  source_sha256: 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf
+- category: future_use
+  confidence: low
+  id: 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf:future_use
+  kind: structural-inference
+  line_candidates:
+  - 163
+  - 184
+  - 196
+  - 318
+  scope: document
+  source_sha256: 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf
+- category: return
+  confidence: low
+  id: 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf:return
+  kind: structural-inference
+  line_candidates:
+  - 222
+  - 281
+  - 304
+  scope: document
+  source_sha256: 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: Release/Release.ocr.pdf
+  sha256: 192e9d1aad9aa8366e2804116daafad4983e94ece2a0e0a288112cef5194164d
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: secondary_description
+  path: Release/Release_881002_README.md
+  sha256: a9baf124428bfaeb4a807af30b867a69b3f20c1016e7f14152691293130341f1
+- authentication: unverified
+  completeness: reconstruction; historical completeness not applicable
+  evidence_class: reconstructed_mockup
+  path: Release/Release_881002_reconstructed_annotated.txt
+  sha256: 22e30e36196a7ed181f67cbc37f77b3c7ef6bb9f3d0ee7b48d21e4422c6a262c
+- authentication: unverified
+  completeness: reconstruction; historical completeness not applicable
+  evidence_class: reconstructed_mockup
+  path: Release/Release_881002_reconstructed_clean.txt
+  sha256: 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: secondary_description
+  path: Release/Release_881002_reconstruction_notes.md
+  sha256: 4dec89cbe07d25e5debbf6e72e27d5958151a47d41531099ffa7df93c6b95b52

@@ -1,0 +1,66 @@
+blocks:
+  association:
+    evidence_refs:
+    - 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc:command_association
+    operations: []
+    status: inferred
+  closer:
+    evidence_refs:
+    - 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc:closer
+    operations: []
+    status: inferred
+  consolidation:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  future_use:
+    evidence_refs:
+    - 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc:future_use
+    operations: []
+    status: inferred
+  handoff:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  main:
+    evidence_refs:
+    - 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc:main
+    operations: []
+    status: inferred
+  opener:
+    evidence_refs:
+    - 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc:opener
+    operations: []
+    status: inferred
+  purpose:
+    evidence_refs: []
+    operations:
+    - consult-canonical-purpose-metadata
+    status: specified
+  rehearsal:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  safety_claims:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  suspend_cancel_reset:
+    evidence_refs: []
+    operations: []
+    status: unknown
+command_ref: canonical.command
+extraction_status: partial
+function_id: OCF-BOD-004
+human_review: required
+maturity: draft
+metadata_ref: canonical-function-record
+preparation: []
+questions:
+- Function-specific operations, state requirements and claim transformations require source review; no
+  inferred runtime state binding
+schema_version: '1.0'
+states:
+  preferred: []
+  required: []
+  status: unknown

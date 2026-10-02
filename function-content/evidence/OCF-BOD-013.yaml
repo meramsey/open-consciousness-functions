@@ -1,0 +1,107 @@
+function_id: OCF-BOD-013
+observations:
+- category: opener
+  confidence: low
+  id: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1:opener
+  kind: structural-inference
+  line_candidates:
+  - 3
+  - 60
+  - 196
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- category: main
+  confidence: low
+  id: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1:main
+  kind: structural-inference
+  line_candidates:
+  - 30
+  - 31
+  - 40
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- category: closer
+  confidence: low
+  id: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1:closer
+  kind: structural-inference
+  line_candidates:
+  - 52
+  - 196
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- category: preparation
+  confidence: low
+  id: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1:preparation
+  kind: structural-inference
+  line_candidates:
+  - 3
+  - 8
+  - 11
+  - 13
+  - 55
+  - 61
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- category: command_association
+  confidence: low
+  id: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1:command_association
+  kind: structural-inference
+  line_candidates:
+  - 34
+  - 43
+  - 50
+  - 194
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- category: future_use
+  confidence: low
+  id: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1:future_use
+  kind: structural-inference
+  line_candidates:
+  - 39
+  - 48
+  - 51
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- category: return
+  confidence: low
+  id: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1:return
+  kind: structural-inference
+  line_candidates:
+  - 63
+  - 160
+  - 161
+  - 181
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Tune-Up/Tune-Up.lrc
+  sha256: e02dd9a8ca5fe2da036fe235afb306ab9266ec4a96e84f468e4bbb291b0bb282
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Tune-Up/Tune-Up.ocr.pdf
+  sha256: d6f515053978a02e91e301d3c8adade42c4f70e98be4fc4d151bd68c5ba25610
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Tune-Up/Tune-Up.srt
+  sha256: 5a509429d916e45ecc32f6ab8e7bab6f24514b68202410df202313562fcab0a1
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+  sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Tune-Up/folder.jpg
+  sha256: 95a1d6cef74aba5e8c2a0c3180cdfff14c82f878f537d2d34e04d7709c2d7e87

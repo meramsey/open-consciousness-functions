@@ -1,0 +1,109 @@
+function_id: OCF-EMO-001
+observations:
+- category: opener
+  confidence: low
+  id: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9:opener
+  kind: structural-inference
+  line_candidates:
+  - 5
+  - 6
+  - 84
+  - 228
+  scope: document
+  source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+- category: main
+  confidence: low
+  id: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9:main
+  kind: structural-inference
+  line_candidates:
+  - 44
+  - 45
+  - 55
+  scope: document
+  source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+- category: closer
+  confidence: low
+  id: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9:closer
+  kind: structural-inference
+  line_candidates:
+  - 75
+  - 228
+  scope: document
+  source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+- category: preparation
+  confidence: low
+  id: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9:preparation
+  kind: structural-inference
+  line_candidates:
+  - 6
+  - 14
+  - 19
+  - 21
+  - 78
+  - 85
+  scope: document
+  source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+- category: command_association
+  confidence: low
+  id: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9:command_association
+  kind: structural-inference
+  line_candidates:
+  - 46
+  - 56
+  - 72
+  - 226
+  scope: document
+  source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+- category: future_use
+  confidence: low
+  id: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9:future_use
+  kind: structural-inference
+  line_candidates:
+  - 45
+  - 53
+  - 55
+  - 63
+  - 73
+  scope: document
+  source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+- category: return
+  confidence: low
+  id: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9:return
+  kind: structural-inference
+  line_candidates:
+  - 87
+  - 217
+  - 225
+  scope: document
+  source_sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Let-Go/Let Go.ocr.pdf
+  sha256: 8bf6d770accd9f62ce662344046d5323c4e8a103c70773305958a8b2c819a2cf
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Let-Go/Let-Go.lrc
+  sha256: 8ef7012ca56531b9524fcd2efd7963581b67cab3a9db10a70f8e648c2a1aeeb4
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Let-Go/Let-Go.srt
+  sha256: 0b014a2a25aa1709ceae480eb1856eb556f7c0e19ee0e4f3b35f973e7f63abcd
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Let-Go/Let-Go.txt
+  sha256: 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Let-Go/folder.jpg
+  sha256: 0f5389c83bef4831b3be50a382cda341c657c217a0f151599811da8ce8272822

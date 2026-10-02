@@ -1,0 +1,104 @@
+function_id: OCF-EMO-002
+observations:
+- category: opener
+  confidence: low
+  id: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:opener
+  kind: structural-inference
+  line_candidates:
+  - 10
+  - 73
+  - 102
+  scope: document
+  source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+- category: main
+  confidence: low
+  id: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:main
+  kind: structural-inference
+  line_candidates:
+  - 44
+  scope: document
+  source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+- category: closer
+  confidence: low
+  id: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:closer
+  kind: structural-inference
+  line_candidates:
+  - 70
+  - 102
+  scope: document
+  source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+- category: preparation
+  confidence: low
+  id: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:preparation
+  kind: structural-inference
+  line_candidates:
+  - 11
+  - 18
+  - 23
+  - 28
+  - 39
+  - 71
+  - 74
+  scope: document
+  source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+- category: command_association
+  confidence: low
+  id: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:command_association
+  kind: structural-inference
+  line_candidates:
+  - 48
+  - 61
+  - 68
+  - 101
+  scope: document
+  source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+- category: future_use
+  confidence: low
+  id: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:future_use
+  kind: structural-inference
+  line_candidates:
+  - 52
+  - 64
+  scope: document
+  source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+- category: return
+  confidence: low
+  id: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48:return
+  kind: structural-inference
+  line_candidates:
+  - 76
+  - 90
+  - 95
+  scope: document
+  source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Off-Loading/Off-Loading.lrc
+  sha256: 0f5c7bc3f86461f9c0bd7a72d5975f249f7f4757c2b211d572728b33abf21c20
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Off-Loading/Off-Loading.ocr.pdf
+  sha256: 63134e9f492167ba923da1487083009fad73053559dbf40101b798c908bd9f16
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Off-Loading/Off-Loading.srt
+  sha256: 75a9a3f961cbb11c3525deea765942bedafb0af332f8508bf5aa47c37b21a585
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Off-Loading/Off-Loading.txt
+  sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Off-Loading/folder.jpg
+  sha256: e012e6f566709aa99bb1cc816ce9039361ae0ec1eaa623dfdb1229cc04815768

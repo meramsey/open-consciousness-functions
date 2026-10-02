@@ -1,0 +1,181 @@
+function_id: OCF-SLP-005
+observations:
+- category: opener
+  confidence: low
+  id: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322:opener
+  kind: structural-inference
+  line_candidates:
+  - 38
+  - 199
+  - 255
+  scope: document
+  source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+- category: main
+  confidence: low
+  id: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322:main
+  kind: structural-inference
+  line_candidates:
+  - 90
+  - 93
+  scope: document
+  source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+- category: closer
+  confidence: low
+  id: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322:closer
+  kind: structural-inference
+  line_candidates:
+  - 186
+  - 255
+  scope: document
+  source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+- category: preparation
+  confidence: low
+  id: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322:preparation
+  kind: structural-inference
+  line_candidates:
+  - 39
+  - 54
+  - 65
+  - 69
+  - 75
+  - 95
+  - 189
+  - 202
+  - 240
+  scope: document
+  source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+- category: command_association
+  confidence: low
+  id: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322:command_association
+  kind: structural-inference
+  line_candidates:
+  - 101
+  - 179
+  - 246
+  scope: document
+  source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+- category: future_use
+  confidence: low
+  id: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322:future_use
+  kind: structural-inference
+  line_candidates:
+  - 167
+  - 182
+  scope: document
+  source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+- category: return
+  confidence: low
+  id: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322:return
+  kind: structural-inference
+  line_candidates:
+  - 208
+  - 226
+  - 235
+  scope: document
+  source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+- category: opener
+  confidence: low
+  id: 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309:opener
+  kind: structural-inference
+  line_candidates:
+  - 52
+  - 235
+  - 341
+  scope: document
+  source_sha256: 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309
+- category: main
+  confidence: low
+  id: 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309:main
+  kind: structural-inference
+  line_candidates:
+  - 145
+  - 149
+  scope: document
+  source_sha256: 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309
+- category: closer
+  confidence: low
+  id: 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309:closer
+  kind: structural-inference
+  line_candidates:
+  - 220
+  - 341
+  scope: document
+  source_sha256: 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309
+- category: preparation
+  confidence: low
+  id: 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309:preparation
+  kind: structural-inference
+  line_candidates:
+  - 31
+  - 32
+  - 53
+  - 70
+  - 84
+  - 94
+  - 130
+  - 151
+  - 224
+  - 237
+  - 328
+  scope: document
+  source_sha256: 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309
+- category: command_association
+  confidence: low
+  id: 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309:command_association
+  kind: structural-inference
+  line_candidates:
+  - 157
+  - 215
+  - 334
+  scope: document
+  source_sha256: 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309
+- category: future_use
+  confidence: low
+  id: 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309:future_use
+  kind: structural-inference
+  line_candidates:
+  - 205
+  - 217
+  scope: document
+  source_sha256: 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309
+- category: return
+  confidence: low
+  id: 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309:return
+  kind: structural-inference
+  line_candidates:
+  - 243
+  - 302
+  - 325
+  scope: document
+  source_sha256: 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: Sleep Easy/Sleep Easy.ocr.pdf
+  sha256: 498903accdd807bab5dbf62d914881bb686bc0a3fe0fea6fa12c8c1d8090c0b6
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: secondary_description
+  path: Sleep Easy/Sleep_Easy_README.md
+  sha256: fe37ba5e0c1adbc493bbaa374116a062dcf44345810c14817a563bba9a1d30b5
+- authentication: unverified
+  completeness: reconstruction; historical completeness not applicable
+  evidence_class: reconstructed_mockup
+  path: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+  sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+- authentication: unverified
+  completeness: reconstruction; historical completeness not applicable
+  evidence_class: reconstructed_mockup
+  path: Sleep Easy/Sleep_Easy_reconstructed_clean.txt
+  sha256: 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: secondary_description
+  path: Sleep Easy/Sleep_Easy_reconstruction_notes.md
+  sha256: 757384a1027eb348fa2198badcf6d8474861fda48d5c58b08a1eea1236f92f61

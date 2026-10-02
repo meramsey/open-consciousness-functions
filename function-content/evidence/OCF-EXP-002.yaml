@@ -1,0 +1,186 @@
+function_id: OCF-EXP-002
+observations:
+- category: opener
+  confidence: low
+  id: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:opener
+  kind: structural-inference
+  line_candidates:
+  - 26
+  - 175
+  - 229
+  scope: document
+  source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+- category: main
+  confidence: low
+  id: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:main
+  kind: structural-inference
+  line_candidates:
+  - 68
+  - 71
+  scope: document
+  source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+- category: closer
+  confidence: low
+  id: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:closer
+  kind: structural-inference
+  line_candidates:
+  - 163
+  - 229
+  scope: document
+  source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+- category: preparation
+  confidence: low
+  id: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:preparation
+  kind: structural-inference
+  line_candidates:
+  - 26
+  - 38
+  - 47
+  - 50
+  - 56
+  - 166
+  - 178
+  scope: document
+  source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+- category: command_association
+  confidence: low
+  id: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:command_association
+  kind: structural-inference
+  line_candidates:
+  - 74
+  - 111
+  - 131
+  - 157
+  - 211
+  scope: document
+  source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+- category: future_use
+  confidence: low
+  id: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:future_use
+  kind: structural-inference
+  line_candidates:
+  - 139
+  - 160
+  scope: document
+  source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+- category: return
+  confidence: low
+  id: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:return
+  kind: structural-inference
+  line_candidates:
+  - 184
+  - 199
+  - 205
+  scope: document
+  source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+- category: opener
+  confidence: low
+  id: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:opener
+  kind: structural-inference
+  line_candidates:
+  - 55
+  - 249
+  - 358
+  scope: document
+  source_sha256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
+- category: main
+  confidence: low
+  id: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:main
+  kind: structural-inference
+  line_candidates:
+  - 148
+  - 152
+  scope: document
+  source_sha256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
+- category: closer
+  confidence: low
+  id: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:closer
+  kind: structural-inference
+  line_candidates:
+  - 234
+  - 358
+  scope: document
+  source_sha256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
+- category: preparation
+  confidence: low
+  id: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:preparation
+  kind: structural-inference
+  line_candidates:
+  - 34
+  - 35
+  - 56
+  - 73
+  - 87
+  - 97
+  - 133
+  - 238
+  - 251
+  scope: document
+  source_sha256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
+- category: command_association
+  confidence: low
+  id: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:command_association
+  kind: structural-inference
+  line_candidates:
+  - 156
+  - 189
+  - 204
+  - 229
+  - 344
+  scope: document
+  source_sha256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
+- category: future_use
+  confidence: low
+  id: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:future_use
+  kind: structural-inference
+  line_candidates:
+  - 210
+  - 231
+  scope: document
+  source_sha256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
+- category: return
+  confidence: low
+  id: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:return
+  kind: structural-inference
+  line_candidates:
+  - 257
+  - 316
+  - 339
+  scope: document
+  source_sha256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: Zoning/Zoning.ocr.pdf
+  sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: secondary_description
+  path: Zoning/Zoning_881033_README.md
+  sha256: 4e20d728b59e7b45d65c9c22e33fba3cff9d27e468c7fcc03cffbbf78699c611
+- authentication: unverified
+  completeness: reconstruction; historical completeness not applicable
+  evidence_class: reconstructed_mockup
+  path: Zoning/Zoning_881033_reconstructed_annotated.txt
+  sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+- authentication: unverified
+  completeness: reconstruction; historical completeness not applicable
+  evidence_class: reconstructed_mockup
+  path: Zoning/Zoning_881033_reconstructed_clean.txt
+  sha256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: Zoning/Zoning_881033_reconstruction_bundle.zip
+  sha256: 1a76508234d5d755475b12ae97b992ed39ccbff558ca748333f2ea09451d4d2c
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: secondary_description
+  path: Zoning/Zoning_881033_reconstruction_notes.md
+  sha256: 1d5bbed924f949b4025b0ffaf61ac8949eec395a18bc8d3e0328efbab376bac6

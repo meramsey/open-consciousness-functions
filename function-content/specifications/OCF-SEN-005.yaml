@@ -1,0 +1,76 @@
+blocks:
+  association:
+    evidence_refs:
+    - 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9:command_association
+    - 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:command_association
+    - 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:command_association
+    operations: []
+    status: inferred
+  closer:
+    evidence_refs:
+    - 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:closer
+    - 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:closer
+    operations: []
+    status: inferred
+  consolidation:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  future_use:
+    evidence_refs:
+    - 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9:future_use
+    - 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:future_use
+    - 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:future_use
+    operations: []
+    status: inferred
+  handoff:
+    evidence_refs:
+    - 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:return
+    - 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:return
+    operations: []
+    status: inferred
+  main:
+    evidence_refs:
+    - 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9:main
+    - 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:main
+    - 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:main
+    operations: []
+    status: inferred
+  opener:
+    evidence_refs:
+    - 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:opener
+    - 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:opener
+    operations: []
+    status: inferred
+  purpose:
+    evidence_refs: []
+    operations:
+    - consult-canonical-purpose-metadata
+    status: specified
+  rehearsal:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  safety_claims:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  suspend_cancel_reset:
+    evidence_refs: []
+    operations: []
+    status: unknown
+command_ref: canonical.command
+extraction_status: partial
+function_id: OCF-SEN-005
+human_review: required
+maturity: draft
+metadata_ref: canonical-function-record
+preparation: []
+questions:
+- Function-specific operations, state requirements and claim transformations require source review; no
+  inferred runtime state binding
+schema_version: '1.0'
+states:
+  preferred: []
+  required: []
+  status: unknown

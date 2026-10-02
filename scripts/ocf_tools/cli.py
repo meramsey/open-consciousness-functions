@@ -103,9 +103,11 @@ def _build_parser() -> argparse.ArgumentParser:
     function_sub = functions.add_subparsers(dest="function_kind", required=True)
     function_list = function_sub.add_parser("list", help="list all function records")
     function_list.add_argument("--json", action="store_true")
+    function_list.add_argument("--rich", action="store_true", help="include separate content/evidence/runtime capabilities")
     function_describe = function_sub.add_parser("describe", help="describe a canonical function ID or slug")
     function_describe.add_argument("id")
     function_describe.add_argument("--json", action="store_true")
+    function_describe.add_argument("--rich", action="store_true")
 
     corpus = sub.add_parser("corpus", help="citation-only research inventory; no source wording copied")
     corpus_sub = corpus.add_subparsers(dest="corpus_kind")
@@ -712,21 +714,25 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "functions":
             import json
 
+            from .content import discover
             from .indexes import load_function_by_slug_or_id
 
             if args.function_kind == "list":
-                data = [record.data for record in load_all_functions()]
+                data = [discover(record) if args.rich else record.data for record in load_all_functions()]
             else:
                 record = load_function_by_slug_or_id(args.id)
                 if record is None:
                     raise OCFError(f"unknown function {args.id}; use ocf functions list")
-                data = record.data
+                data = discover(record) if args.rich else record.data
             if args.json:
                 print(json.dumps({"schema_version": "1.0", "functions": data if isinstance(data, list) else [data]}, indent=2, ensure_ascii=False))
             else:
                 records = data if isinstance(data, list) else [data]
                 for record in records:
-                    print(f"{record['id']}: {record['canonical']['name']} — {record['canonical']['command']['primary']} — {record['purpose']['summary']}")
+                    if args.rich:
+                        print(f"{record['function_id']}: {record['title']} — {record['activation']['primary']} — {record['extraction_status']} / review {record['human_review']}")
+                    else:
+                        print(f"{record['id']}: {record['canonical']['name']} — {record['canonical']['command']['primary']} — {record['purpose']['summary']}")
             return 0
         if args.command == "corpus" and args.corpus_kind == "inventory":
             import json

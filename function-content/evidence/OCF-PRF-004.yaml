@@ -1,0 +1,131 @@
+function_id: OCF-PRF-004
+observations:
+- category: main
+  confidence: low
+  id: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70:main
+  kind: structural-inference
+  line_candidates:
+  - 36
+  scope: document
+  source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+- category: preparation
+  confidence: low
+  id: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70:preparation
+  kind: structural-inference
+  line_candidates:
+  - 31
+  - 71
+  scope: document
+  source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+- category: command_association
+  confidence: low
+  id: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70:command_association
+  kind: structural-inference
+  line_candidates:
+  - 41
+  scope: document
+  source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+- category: opener
+  confidence: low
+  id: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73:opener
+  kind: structural-inference
+  line_candidates:
+  - 49
+  - 228
+  - 331
+  scope: document
+  source_sha256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
+- category: main
+  confidence: low
+  id: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73:main
+  kind: structural-inference
+  line_candidates:
+  - 142
+  - 146
+  scope: document
+  source_sha256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
+- category: closer
+  confidence: low
+  id: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73:closer
+  kind: structural-inference
+  line_candidates:
+  - 213
+  - 331
+  scope: document
+  source_sha256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
+- category: preparation
+  confidence: low
+  id: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73:preparation
+  kind: structural-inference
+  line_candidates:
+  - 28
+  - 29
+  - 50
+  - 67
+  - 81
+  - 91
+  - 127
+  - 172
+  - 217
+  - 230
+  scope: document
+  source_sha256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
+- category: command_association
+  confidence: low
+  id: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73:command_association
+  kind: structural-inference
+  line_candidates:
+  - 150
+  - 208
+  - 323
+  scope: document
+  source_sha256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
+- category: future_use
+  confidence: low
+  id: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73:future_use
+  kind: structural-inference
+  line_candidates:
+  - 210
+  scope: document
+  source_sha256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
+- category: return
+  confidence: low
+  id: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73:return
+  kind: structural-inference
+  line_candidates:
+  - 236
+  - 295
+  - 318
+  scope: document
+  source_sha256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: Light Foot/Light Foot.ocr.pdf
+  sha256: 70f40710b84c5ce114061c065fb5d957f99ada7f1d343c6b3ff32ffac203bfa1
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: secondary_description
+  path: Light Foot/Light_Foot_881047_README.md
+  sha256: eb709474c5eb4405e7d60e309d09740df91865e12ef161ea3b7088c7cfff34d9
+- authentication: unverified
+  completeness: reconstruction; historical completeness not applicable
+  evidence_class: reconstructed_mockup
+  path: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+  sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+- authentication: unverified
+  completeness: reconstruction; historical completeness not applicable
+  evidence_class: reconstructed_mockup
+  path: Light Foot/Light_Foot_881047_reconstructed_clean.txt
+  sha256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: secondary_description
+  path: Light Foot/Light_Foot_881047_reconstruction_notes.md
+  sha256: 522aeb90cfbe94e32f04f5411505876593c8569f0059f65121c74777e4abed1f

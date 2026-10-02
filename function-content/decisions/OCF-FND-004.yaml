@@ -1,0 +1,10 @@
+decisions:
+- id: relax-pilot-operationalization
+  kind: ocf-design-choice
+  scope: pilot
+  status: provisional
+  description: Existing frozen pilot uses voluntary effort reduction instead of automatic physiological-release claims; applies only to that pilot.
+  material_change: true
+  human_review: required
+function_id: OCF-FND-004
+schema_version: '1.0'

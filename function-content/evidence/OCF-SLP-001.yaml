@@ -1,0 +1,98 @@
+function_id: OCF-SLP-001
+observations:
+- category: opener
+  confidence: low
+  id: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411:opener
+  kind: structural-inference
+  line_candidates:
+  - 3
+  scope: document
+  source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+- category: main
+  confidence: low
+  id: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411:main
+  kind: structural-inference
+  line_candidates:
+  - 33
+  - 43
+  scope: document
+  source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+- category: closer
+  confidence: low
+  id: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411:closer
+  kind: structural-inference
+  line_candidates:
+  - 57
+  scope: document
+  source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+- category: preparation
+  confidence: low
+  id: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411:preparation
+  kind: structural-inference
+  line_candidates:
+  - 3
+  - 8
+  - 12
+  - 58
+  - 61
+  scope: document
+  source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+- category: command_association
+  confidence: low
+  id: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411:command_association
+  kind: structural-inference
+  line_candidates:
+  - 35
+  - 45
+  - 55
+  scope: document
+  source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+- category: future_use
+  confidence: low
+  id: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411:future_use
+  kind: structural-inference
+  line_candidates:
+  - 41
+  - 51
+  - 56
+  scope: document
+  source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+- category: return
+  confidence: low
+  id: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411:return
+  kind: structural-inference
+  line_candidates:
+  - 63
+  scope: document
+  source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.lrc
+  sha256: 85c661baeb865f229d8c5ad1bdda074253652573fba23b6a900c94f285606701
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.ocr.pdf
+  sha256: 53eda45365d92bb4cb5adb600c860503c32ee71e590b59a7848d48ea6ce00924
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.srt
+  sha256: 87159852728cc959461f68b48bfe248023a9426dda2693c967cf20790a06b25b
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+  sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Restorative Sleep/folder.jpg
+  sha256: 7c770cc9c1ea5ec8042ac3eeed6dc6d2cb7fb3dbf91fb7273c2e6eabb4601ae3

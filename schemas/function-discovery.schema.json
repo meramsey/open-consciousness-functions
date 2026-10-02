@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/function-discovery.schema.json",
+  "title": "Rich function discovery envelope",
+  "type": "object", "additionalProperties": false, "required": ["schema_version", "functions"],
+  "properties": {"schema_version": {"const": "1.0"}, "functions": {"type": "array", "items": {
+    "type": "object", "additionalProperties": false,
+    "required": ["function_id", "title", "purpose", "activation", "status", "content_maturity", "human_review", "extraction_status", "states", "preparation", "session_templates", "locales", "narration_resources", "duration", "voice_sources", "background", "source_availability", "evidence_classes", "safety", "claim_review", "layers"],
+    "properties": {
+      "function_id": {"type": "string"}, "title": {"type": "string"}, "purpose": {"type": "string"},
+      "activation": {"type": "object"}, "status": {"type": "object"}, "content_maturity": {"type": ["string", "null"]},
+      "human_review": {"type": "string"}, "extraction_status": {"type": "string"}, "states": {"type": ["object", "null"]},
+      "preparation": {"type": ["array", "null"]}, "session_templates": {"type": "array", "items": {"type": "string"}},
+      "locales": {"type": "array", "items": {"type": "string"}}, "narration_resources": {"type": "array"},
+      "duration": {"type": ["object", "null"]}, "voice_sources": {"type": ["array", "null"]}, "background": {"type": "object"},
+      "source_availability": {"type": "string"}, "evidence_classes": {"type": "array", "items": {"type": "string"}},
+      "safety": {"type": "object"}, "claim_review": {"type": "string"}, "layers": {"type": "array", "items": {"type": "string"}}
+    }
+  }}}
+}

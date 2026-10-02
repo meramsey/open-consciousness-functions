@@ -1,0 +1,215 @@
+function_id: OCF-SEN-005
+observations:
+- category: main
+  confidence: low
+  id: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9:main
+  kind: structural-inference
+  line_candidates:
+  - 29
+  scope: document
+  source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+- category: preparation
+  confidence: low
+  id: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9:preparation
+  kind: structural-inference
+  line_candidates:
+  - 24
+  scope: document
+  source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+- category: command_association
+  confidence: low
+  id: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9:command_association
+  kind: structural-inference
+  line_candidates:
+  - 34
+  scope: document
+  source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+- category: future_use
+  confidence: low
+  id: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9:future_use
+  kind: structural-inference
+  line_candidates:
+  - 66
+  scope: document
+  source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+- category: opener
+  confidence: low
+  id: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:opener
+  kind: structural-inference
+  line_candidates:
+  - 33
+  - 165
+  - 253
+  scope: document
+  source_sha256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
+- category: main
+  confidence: low
+  id: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:main
+  kind: structural-inference
+  line_candidates:
+  - 119
+  - 123
+  scope: document
+  source_sha256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
+- category: closer
+  confidence: low
+  id: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:closer
+  kind: structural-inference
+  line_candidates:
+  - 151
+  - 253
+  scope: document
+  source_sha256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
+- category: preparation
+  confidence: low
+  id: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:preparation
+  kind: structural-inference
+  line_candidates:
+  - 33
+  - 49
+  - 61
+  - 71
+  - 107
+  - 155
+  - 167
+  scope: document
+  source_sha256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
+- category: command_association
+  confidence: low
+  id: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:command_association
+  kind: structural-inference
+  line_candidates:
+  - 125
+  - 147
+  - 249
+  scope: document
+  source_sha256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
+- category: future_use
+  confidence: low
+  id: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:future_use
+  kind: structural-inference
+  line_candidates:
+  - 141
+  - 149
+  scope: document
+  source_sha256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
+- category: return
+  confidence: low
+  id: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:return
+  kind: structural-inference
+  line_candidates:
+  - 173
+  - 229
+  - 245
+  scope: document
+  source_sha256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
+- category: opener
+  confidence: low
+  id: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:opener
+  kind: structural-inference
+  line_candidates:
+  - 55
+  - 187
+  - 275
+  scope: document
+  source_sha256: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405
+- category: main
+  confidence: low
+  id: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:main
+  kind: structural-inference
+  line_candidates:
+  - 141
+  - 145
+  scope: document
+  source_sha256: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405
+- category: closer
+  confidence: low
+  id: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:closer
+  kind: structural-inference
+  line_candidates:
+  - 173
+  - 275
+  scope: document
+  source_sha256: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405
+- category: preparation
+  confidence: low
+  id: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:preparation
+  kind: structural-inference
+  line_candidates:
+  - 35
+  - 36
+  - 55
+  - 71
+  - 83
+  - 93
+  - 129
+  - 177
+  - 189
+  - 290
+  scope: document
+  source_sha256: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405
+- category: command_association
+  confidence: low
+  id: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:command_association
+  kind: structural-inference
+  line_candidates:
+  - 147
+  - 169
+  - 271
+  scope: document
+  source_sha256: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405
+- category: future_use
+  confidence: low
+  id: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:future_use
+  kind: structural-inference
+  line_candidates:
+  - 163
+  - 171
+  scope: document
+  source_sha256: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405
+- category: return
+  confidence: low
+  id: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:return
+  kind: structural-inference
+  line_candidates:
+  - 195
+  - 251
+  - 267
+  scope: document
+  source_sha256: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: Sensory (Touch)/Sensory-Touch.ocr.pdf
+  sha256: 5cb32e5762a041e9bd778631fe3c63bf46d3c2014f95237edab9e8a0295abb38
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: secondary_description
+  path: Sensory (Touch)/Sensory_Touch_README.md
+  sha256: 6ccb94a5d6f7b5abc78335cdc9a45c4bb30306996877d5eeb2ca724387dc5097
+- authentication: unverified
+  completeness: reconstruction; historical completeness not applicable
+  evidence_class: reconstructed_mockup
+  path: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+  sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+- authentication: unverified
+  completeness: reconstruction; historical completeness not applicable
+  evidence_class: reconstructed_mockup
+  path: Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt
+  sha256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
+- authentication: unverified
+  completeness: reconstruction; historical completeness not applicable
+  evidence_class: reconstructed_mockup
+  path: Sensory (Touch)/Sensory_Touch_reconstructed_script.txt
+  sha256: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: secondary_description
+  path: Sensory (Touch)/Sensory_Touch_reconstruction_notes.md
+  sha256: 28c78adcf1b005e4f25cbef44ae918a0721e210a81782540fbe17e237ad7e909

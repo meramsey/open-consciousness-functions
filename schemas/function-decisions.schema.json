@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/function-decisions.schema.json",
+  "title": "OCF design choices and claim transformations; never source evidence",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "function_id", "decisions"],
+  "properties": {
+    "schema_version": {"const": "1.0"}, "function_id": {"type": "string"},
+    "decisions": {"type": "array", "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "kind", "status", "description", "material_change", "human_review"],
+      "properties": {"id": {"type": "string"}, "kind": {"const": "ocf-design-choice"}, "status": {"enum": ["provisional", "accepted"]}, "scope": {"enum": ["pilot", "function", "session"]}, "description": {"type": "string"}, "material_change": {"type": "boolean"}, "human_review": {"enum": ["required", "approved"]}},
+      "allOf": [{"if": {"properties": {"status": {"const": "provisional"}}}, "then": {"properties": {"human_review": {"const": "required"}}}}]
+    }}
+  }
+}

@@ -1,0 +1,88 @@
+function_id: OCF-BOD-004
+observations:
+- category: opener
+  confidence: low
+  id: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc:opener
+  kind: structural-inference
+  line_candidates:
+  - 10
+  - 144
+  scope: document
+  source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+- category: main
+  confidence: low
+  id: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc:main
+  kind: structural-inference
+  line_candidates:
+  - 88
+  - 89
+  - 97
+  scope: document
+  source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+- category: closer
+  confidence: low
+  id: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc:closer
+  kind: structural-inference
+  line_candidates:
+  - 136
+  scope: document
+  source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+- category: preparation
+  confidence: low
+  id: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc:preparation
+  kind: structural-inference
+  line_candidates:
+  - 11
+  - 18
+  - 24
+  scope: document
+  source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+- category: command_association
+  confidence: low
+  id: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc:command_association
+  kind: structural-inference
+  line_candidates:
+  - 99
+  scope: document
+  source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+- category: future_use
+  confidence: low
+  id: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc:future_use
+  kind: structural-inference
+  line_candidates:
+  - 97
+  - 101
+  - 135
+  scope: document
+  source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/De-Tox Body/De-Tox - Body.ocr.pdf
+  sha256: afb55ad44396eb21d51fac0ec8477b623b0ef57823e2d571acf03735a2264255
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/De-Tox Body/De-Tox Body.lrc
+  sha256: 4a6423be9ac6cee29466049f0d12c89f8e69cf7343bf7e180334031aa35c2244
+- authentication: operator-designated
+  completeness: explicit gaps
+  evidence_class: partial_source_transcript
+  path: +Transcripts From available tapes/De-Tox Body/De-Tox Body.srt
+  sha256: 54cdd690b3e51711a8447ae32dbaa9d4e687ebd1a30a983886ea78ab684e8e5f
+- authentication: operator-designated
+  completeness: explicit gaps
+  evidence_class: partial_source_transcript
+  path: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+  sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/De-Tox Body/folder.jpg
+  sha256: a4a148355e370f9f1ae3e81c9db20651cefda7aa3068af78df624e64587c32c0

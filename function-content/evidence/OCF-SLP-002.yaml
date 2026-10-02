@@ -1,0 +1,96 @@
+function_id: OCF-SLP-002
+observations:
+- category: opener
+  confidence: low
+  id: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd:opener
+  kind: structural-inference
+  line_candidates:
+  - 7
+  - 10
+  - 132
+  - 317
+  scope: document
+  source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+- category: closer
+  confidence: low
+  id: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd:closer
+  kind: structural-inference
+  line_candidates:
+  - 124
+  - 317
+  scope: document
+  source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+- category: preparation
+  confidence: low
+  id: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd:preparation
+  kind: structural-inference
+  line_candidates:
+  - 11
+  - 18
+  - 24
+  - 127
+  - 134
+  scope: document
+  source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+- category: command_association
+  confidence: low
+  id: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd:command_association
+  kind: structural-inference
+  line_candidates:
+  - 76
+  - 101
+  - 121
+  - 315
+  scope: document
+  source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+- category: future_use
+  confidence: low
+  id: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd:future_use
+  kind: structural-inference
+  line_candidates:
+  - 122
+  scope: document
+  source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+- category: return
+  confidence: low
+  id: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd:return
+  kind: structural-inference
+  line_candidates:
+  - 91
+  - 115
+  - 138
+  - 306
+  - 314
+  scope: document
+  source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Sleep/Sleep.lrc
+  sha256: f60a3bb24203dcf4ba79f48ed5365a512b72f2dda84108ef3eb512be0d44a306
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Sleep/Sleep.ocr.pdf
+  sha256: 192f4ad852e22a67a3057f6cff27e886c6c65f869f32923604d99154cf96b8d7
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Sleep/Sleep.srt
+  sha256: 2aca1f1992c9750dec96f009c1e468a74354c33045f89fc889bd00ec2b5ce236
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Sleep/Sleep.txt
+  sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Sleep/folder.jpg
+  sha256: 1f5d1f5c2ab8ddbfcc556be4abae873bf68e5bc377605fda417540239b284280

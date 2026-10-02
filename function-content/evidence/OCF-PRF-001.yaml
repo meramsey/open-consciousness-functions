@@ -1,0 +1,45 @@
+function_id: OCF-PRF-001
+observations:
+- category: preparation
+  confidence: low
+  id: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2:preparation
+  kind: structural-inference
+  line_candidates:
+  - 6
+  scope: document
+  source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+- category: future_use
+  confidence: low
+  id: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2:future_use
+  kind: structural-inference
+  line_candidates:
+  - 77
+  - 89
+  scope: document
+  source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Do This Now/Do This Now.lrc
+  sha256: cc67f9a04b676b74deb4e9e86b11c2df0118182adb73ffc03c8e262a16b80902
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Do This Now/Do This Now.srt
+  sha256: 2ca81bc8f759708d6a5267ff8ddd8090828657338ec5cfc142c12a60394fa646
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Do This Now/Do This Now.txt
+  sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Do This Now/folder.jpg
+  sha256: 97ade0be6832b1472566c555d66fbb3f8c8e1fada0d050dcb7dc6b915a007abd

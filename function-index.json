@@ -8,6 +8,57 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-AUTOMATE",
       "canonical_name": "See-Be",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-AUTOMATE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "reconstructed_mockup",
+          "secondary_description",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-AUT-001",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Automates a desired way of being so it runs without active effort.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "unavailable",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "unverified",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "See-Be",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "automation",
@@ -24,6 +75,58 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-FLOW BETTER",
       "canonical_name": "Brain: Repairs & Maintenance",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-FLOW BETTER"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-BOD-001",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Self-directed wellness practice supporting a felt sense of comfortable, balanced brain function.",
+        "safety": {
+          "level": "health",
+          "medical_relevance": true,
+          "notes": [
+            "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
+          ]
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Brain: Repairs & Maintenance",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "body;foundation",
@@ -40,6 +143,59 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-FLOW SMOOTH",
       "canonical_name": "Circulation",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-FLOW SMOOTH"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "partial_source_transcript",
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-BOD-002",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Promotes a felt sense of smooth, comfortable circulation.",
+        "safety": {
+          "level": "health",
+          "medical_relevance": true,
+          "notes": [
+            "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
+          ]
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Circulation",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "body;foundation",
@@ -56,6 +212,58 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-COMFORT",
       "canonical_name": "De-Discomfort",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-COMFORT"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-BOD-003",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT.",
+        "safety": {
+          "level": "health",
+          "medical_relevance": true,
+          "notes": [
+            "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
+          ]
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "De-Discomfort",
+        "voice_sources": null
+      },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
       "domains": "body",
@@ -72,6 +280,59 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-DETOX",
       "canonical_name": "De-Tox: Body",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-DETOX"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "partial_source_transcript",
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-BOD-004",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Supports a perceived sense of bodily cleansing and clarity.",
+        "safety": {
+          "level": "health",
+          "medical_relevance": true,
+          "notes": [
+            "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
+          ]
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "De-Tox: Body",
+        "voice_sources": null
+      },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
       "domains": "body;lifestyle",
@@ -88,6 +349,58 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-SATISFIED, SUPPLIED",
       "canonical_name": "Eat/No Eat",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-SATISFIED, SUPPLIED"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-BOD-005",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Adjusts appetite signals in either direction.",
+        "safety": {
+          "level": "health",
+          "medical_relevance": true,
+          "notes": [
+            "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
+          ]
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Eat/No Eat",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "body;lifestyle",
@@ -104,6 +417,58 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-HEART, BETTER, BETTER",
       "canonical_name": "Heart: Repairs & Maintenance",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-HEART, BETTER, BETTER"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-BOD-006",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Self-directed wellness practice supporting a felt sense of calm, steady heart function.",
+        "safety": {
+          "level": "health",
+          "medical_relevance": true,
+          "notes": [
+            "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
+          ]
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Heart: Repairs & Maintenance",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "body",
@@ -120,6 +485,58 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-BALANCE-BLOODPRESSURE",
       "canonical_name": "Hypertension",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-BALANCE-BLOODPRESSURE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-BOD-007",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for medical care.",
+        "safety": {
+          "level": "health",
+          "medical_relevance": true,
+          "notes": [
+            "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
+          ]
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Hypertension",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "body",
@@ -136,6 +553,58 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-ALERT, DESTROY",
       "canonical_name": "Immunizing",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-ALERT, DESTROY"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-BOD-008",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Supports a felt sense of alertness and preparedness; not a medical claim.",
+        "safety": {
+          "level": "health",
+          "medical_relevance": true,
+          "notes": [
+            "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
+          ]
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Immunizing",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "body",
@@ -152,6 +621,59 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-BREATH BETTER",
       "canonical_name": "Lungs: Repairs & Maintenance",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-BREATH BETTER"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "partial_source_transcript",
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-BOD-009",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Self-directed wellness practice supporting easy, comfortable breathing.",
+        "safety": {
+          "level": "health",
+          "medical_relevance": true,
+          "notes": [
+            "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
+          ]
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Lungs: Repairs & Maintenance",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "body",
@@ -168,6 +690,60 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-FOOD MORE",
       "canonical_name": "Nutricia",
+      "capabilities": {
+        "activation": {
+          "modes": [
+            "PLUS-FOOD LESS"
+          ],
+          "primary": "PLUS-FOOD MORE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-BOD-010",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Adjusts appetite and food drive in either direction using the MORE/LESS grammar.",
+        "safety": {
+          "level": "health",
+          "medical_relevance": true,
+          "notes": [
+            "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
+          ]
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Nutricia",
+        "voice_sources": null
+      },
       "command_review": "needs-review",
       "compatibility": "alias-listed",
       "domains": "body;lifestyle",
@@ -184,6 +760,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-EQUALIZE-HARMONIZE",
       "canonical_name": "Passages",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-EQUALIZE-HARMONIZE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-BOD-011",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Supports graceful passage through internal transitions.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Passages",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "body;lifestyle",
@@ -200,6 +826,60 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-SEX MORE",
       "canonical_name": "Sex Drive",
+      "capabilities": {
+        "activation": {
+          "modes": [
+            "PLUS-SEX LESS"
+          ],
+          "primary": "PLUS-SEX MORE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-BOD-012",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Adjusts felt sexual drive in either direction using the MORE/LESS grammar.",
+        "safety": {
+          "level": "health",
+          "medical_relevance": true,
+          "notes": [
+            "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
+          ]
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Sex Drive",
+        "voice_sources": null
+      },
       "command_review": "needs-review",
       "compatibility": "alias-listed",
       "domains": "body;sensory",
@@ -216,6 +896,58 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-BALANCE, HEAL",
       "canonical_name": "Tune-Up",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-BALANCE, HEAL"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-BOD-013",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "A general self-directed balance-and-heal tune-up practice.",
+        "safety": {
+          "level": "health",
+          "medical_relevance": true,
+          "notes": [
+            "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
+          ]
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Tune-Up",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "body",
@@ -232,6 +964,59 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-REGENERATE",
       "canonical_name": "Regenerate",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-REGENERATE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "reconstructed_mockup",
+          "secondary_description",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-BOD-014",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Supports a felt sense of body-wide regeneration and renewal; proposed concise cue PLUS-REGENERATE for review.",
+        "safety": {
+          "level": "health",
+          "medical_relevance": true,
+          "notes": [
+            "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
+          ]
+        },
+        "session_templates": [],
+        "source_availability": "unavailable",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Regenerate",
+        "voice_sources": null
+      },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
       "domains": "body",
@@ -248,6 +1033,59 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-NUMB",
       "canonical_name": "Short Fix",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-NUMB"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "reconstructed_mockup",
+          "secondary_description",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-BOD-015",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB.",
+        "safety": {
+          "level": "health",
+          "medical_relevance": true,
+          "notes": [
+            "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
+          ]
+        },
+        "session_templates": [],
+        "source_availability": "unavailable",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Short Fix",
+        "voice_sources": null
+      },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
       "domains": "body",
@@ -264,6 +1102,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-RETRIEVE",
       "canonical_name": "Access to Information",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-RETRIEVE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-COG-001",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Accesses intuition, memory, and inner knowledge on demand.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Access to Information",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "cognition;experimental",
@@ -280,6 +1168,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-CALCULATE",
       "canonical_name": "Buy the Numbers",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-CALCULATE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-COG-002",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Speeds mental arithmetic and number processing.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Buy the Numbers",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "cognition",
@@ -296,6 +1234,58 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-OPEN",
       "canonical_name": "Contemplation",
+      "capabilities": {
+        "activation": {
+          "modes": [
+            "PLUS-CLOSED"
+          ],
+          "primary": "PLUS-OPEN"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-COG-003",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Opens an internal space for quiet reflection; closes it again on completion.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Contemplation",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "cognition",
@@ -312,6 +1302,58 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-IMPRINT",
       "canonical_name": "Imprint",
+      "capabilities": {
+        "activation": {
+          "modes": [
+            "PLUS-RECALL"
+          ],
+          "primary": "PLUS-IMPRINT"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-COG-004",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Imprints a chosen suggestion or intention using the IMPRINT rehearsal.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Imprint",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "cognition",
@@ -328,6 +1370,57 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-OPTIONS",
       "canonical_name": "Options",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-OPTIONS"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "partial_source_transcript",
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-COG-005",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Opens perception of choices and alternatives.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Options",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "cognition",
@@ -344,6 +1437,57 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-RECALL",
       "canonical_name": "Recall",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-RECALL"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "partial_source_transcript",
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-COG-006",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Brings specific memories or learned material to mind on request.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Recall",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "cognition",
@@ -360,6 +1504,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-THINK",
       "canonical_name": "Think Fast",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-THINK"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-COG-007",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Accelerates thinking speed and mental processing.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Think Fast",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "cognition;performance",
@@ -376,6 +1570,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-SPEAK UP",
       "canonical_name": "Speak Up",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-SPEAK UP"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-COM-001",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Supports confident, clear verbal expression.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Speak Up",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "communication",
@@ -392,6 +1636,60 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-CONTROL, BALANCE, RESTORE",
       "canonical_name": "Emergency: Injury",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-CONTROL, BALANCE, RESTORE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "reconstructed_mockup",
+          "secondary_description",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-EMG-001",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Emergency-oriented practice to stay calm and take helpful action. Does NOT replace emergency services, first aid, or professional care.",
+        "safety": {
+          "level": "emergency",
+          "medical_relevance": true,
+          "notes": [
+            "Does NOT replace emergency services, first aid, poison control, or medical evaluation.",
+            "If you believe you have an emergency or poisoning, call your local emergency number first."
+          ]
+        },
+        "session_templates": [],
+        "source_availability": "unavailable",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "unverified",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Emergency: Injury",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "emergency;foundation",
@@ -408,6 +1706,60 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-CLEAR, REMOVE",
       "canonical_name": "Emergency: Toxic",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-CLEAR, REMOVE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "reconstructed_mockup",
+          "secondary_description",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-EMG-002",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Emergency-oriented practice for toxic-exposure situations. Does NOT replace poison control, emergency services, or medical evaluation.",
+        "safety": {
+          "level": "emergency",
+          "medical_relevance": true,
+          "notes": [
+            "Does NOT replace emergency services, first aid, poison control, or medical evaluation.",
+            "If you believe you have an emergency or poisoning, call your local emergency number first."
+          ]
+        },
+        "session_templates": [],
+        "source_availability": "unavailable",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "unverified",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Emergency: Toxic",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "emergency",
@@ -424,6 +1776,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-LET GO",
       "canonical_name": "Let Go",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-LET GO"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-EMO-001",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Releases clinging, tension, or unwanted mental objects.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Let Go",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "emotion;foundation",
@@ -440,6 +1842,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-CLEAR",
       "canonical_name": "Off-Loading",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-CLEAR"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-EMO-002",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Fades and off-loads unhelpful mental load or charge; proposed concise cue PLUS-CLEAR.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Off-Loading",
+        "voice_sources": null
+      },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
       "domains": "emotion;foundation",
@@ -456,6 +1908,57 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-PROFILE, PROFILE",
       "canonical_name": "Empathizing",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-PROFILE, PROFILE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "reconstructed_mockup",
+          "secondary_description",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-EMO-003",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Builds a felt profile of another person's experience.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "unavailable",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "unverified",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Empathizing",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "emotion;communication",
@@ -472,6 +1975,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-PROGRAM",
       "canonical_name": "Mobius West",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-PROGRAM"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-EXP-001",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Legacy 'change' practice for breaking personal loops; proposed concise cue PLUS-PROGRAM.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Mobius West",
+        "voice_sources": null
+      },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
       "domains": "experimental;foundation",
@@ -488,6 +2041,59 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-ZONE",
       "canonical_name": "Zoning",
+      "capabilities": {
+        "activation": {
+          "modes": [
+            "PLUS-CANCEL"
+          ],
+          "primary": "PLUS-ZONE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "reconstructed_mockup",
+          "secondary_description",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-EXP-002",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Insulates against unwanted influence; cancels the zoning state via PLUS-CANCEL.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "unavailable",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Zoning",
+        "voice_sources": null
+      },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
       "domains": "experimental",
@@ -504,6 +2110,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-ENERGIZE",
       "canonical_name": "Access to Energy",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-ENERGIZE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-FND-001",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Restores a felt sense of available energy on demand.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Access to Energy",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "foundation;performance",
@@ -520,6 +2176,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 11,
       "canonical_command": "PLUS-FOCUS",
       "canonical_name": "Attention",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-FOCUS"
+        },
+        "background": {
+          "engine": "reference-master",
+          "preset": "OCF-BG-0011",
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-FND-002",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Directs and sustains focused attention.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "implemented",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Attention",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "foundation;cognition",
@@ -536,6 +2242,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-RECHARGE",
       "canonical_name": "Recharge",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-RECHARGE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-FND-003",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Replenishes a felt sense of energy and freshness.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Recharge",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "foundation;body",
@@ -552,6 +2308,89 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-RELAX",
       "canonical_name": "Relax",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-RELAX"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "pilot",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-FND-004",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [
+          "en-US"
+        ],
+        "narration_resources": [
+          {
+            "key": "pilot.function.complete",
+            "locale": "en-US"
+          },
+          {
+            "key": "pilot.relax.associate",
+            "locale": "en-US"
+          },
+          {
+            "key": "pilot.relax.future",
+            "locale": "en-US"
+          },
+          {
+            "key": "pilot.relax.practice",
+            "locale": "en-US"
+          },
+          {
+            "key": "pilot.relax.purpose",
+            "locale": "en-US"
+          },
+          {
+            "key": "pilot.relax.rehearse",
+            "locale": "en-US"
+          }
+        ],
+        "preparation": [],
+        "purpose": "Deepens physical and mental relaxation.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [
+          "OCF-TPL-SESSION-PILOT-RELAX-001"
+        ],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Relax",
+        "voice_sources": [
+          "tts",
+          "prerecorded-user",
+          "externally-generated"
+        ]
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "foundation;body",
@@ -568,6 +2407,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-RESET",
       "canonical_name": "Reset",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-RESET"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-FND-005",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Returns mind and body to a neutral, settled baseline.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Reset",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "foundation",
@@ -584,6 +2473,57 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-RELEASE",
       "canonical_name": "Release",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-RELEASE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "reconstructed_mockup",
+          "secondary_description",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-FND-006",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Releases unhelpful states, prompts, or lingering experiences.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "unavailable",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "unverified",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Release",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "foundation",
@@ -600,6 +2540,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-NO MORE, NO MORE",
       "canonical_name": "De-Hab",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-NO MORE, NO MORE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-LIF-001",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Supports stepping away from habitual, repeated behavior patterns.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "De-Hab",
+        "voice_sources": null
+      },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
       "domains": "lifestyle;emotion",
@@ -616,6 +2606,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-DO-THIS-NOW",
       "canonical_name": "Do This Now",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-DO-THIS-NOW"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-PRF-001",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Moves from deliberation into immediate, present action.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Do This Now",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "performance",
@@ -632,6 +2672,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-STRONG",
       "canonical_name": "Eight-Great",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-STRONG"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-PRF-002",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Legacy vitality practice associated with the phrase EIGHT, GREAT; proposed concise cue PLUS-STRONG.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Eight-Great",
+        "voice_sources": null
+      },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
       "domains": "performance;body",
@@ -648,6 +2738,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-SMOOTH, FAST",
       "canonical_name": "Synchronizing",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-SMOOTH, FAST"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-PRF-003",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Aligns and smooths internal rhythms toward feeling faster and steadier.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "source-described",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Synchronizing",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "performance;body",
@@ -664,6 +2804,57 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-LIGHT",
       "canonical_name": "Light Foot",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-LIGHT"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "reconstructed_mockup",
+          "secondary_description",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-PRF-004",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "unavailable",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Light Foot",
+        "voice_sources": null
+      },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
       "domains": "performance;body",
@@ -680,6 +2871,57 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-THIS DAY",
       "canonical_name": "Make Your Day",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-THIS DAY"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "reconstructed_mockup",
+          "secondary_description",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-PRF-005",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Sets a deliberate tone for the day ahead.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "unavailable",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "unverified",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Make Your Day",
+        "voice_sources": null
+      },
       "command_review": "approved",
       "compatibility": "unchanged",
       "domains": "performance",
@@ -696,6 +2938,57 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-STRONG QUICK",
       "canonical_name": "Strong-Quick",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-STRONG QUICK"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "reconstructed_mockup",
+          "secondary_description",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-PRF-006",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "unavailable",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Strong-Quick",
+        "voice_sources": null
+      },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
       "domains": "performance;body",
@@ -712,6 +3005,91 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-HEAR MORE",
       "canonical_name": "Sensory: Hearing",
+      "capabilities": {
+        "activation": {
+          "modes": [
+            "PLUS-HEAR LESS"
+          ],
+          "primary": "PLUS-HEAR MORE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "pilot",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-SEN-001",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [
+          "en-US"
+        ],
+        "narration_resources": [
+          {
+            "key": "pilot.function.complete",
+            "locale": "en-US"
+          },
+          {
+            "key": "pilot.hearing.associate",
+            "locale": "en-US"
+          },
+          {
+            "key": "pilot.hearing.future",
+            "locale": "en-US"
+          },
+          {
+            "key": "pilot.hearing.practice",
+            "locale": "en-US"
+          },
+          {
+            "key": "pilot.hearing.purpose",
+            "locale": "en-US"
+          },
+          {
+            "key": "pilot.hearing.rehearse",
+            "locale": "en-US"
+          }
+        ],
+        "preparation": [],
+        "purpose": "Adjusts inward listening and perception in either direction using the MORE/LESS grammar.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [
+          "OCF-TPL-SESSION-PILOT-HEARING-001"
+        ],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Sensory: Hearing",
+        "voice_sources": [
+          "tts",
+          "prerecorded-user",
+          "externally-generated"
+        ]
+      },
       "command_review": "needs-review",
       "compatibility": "alias-listed",
       "domains": "sensory",
@@ -728,6 +3106,58 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-SEE MORE",
       "canonical_name": "Sensory: Seeing",
+      "capabilities": {
+        "activation": {
+          "modes": [
+            "PLUS-SEE LESS"
+          ],
+          "primary": "PLUS-SEE MORE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-SEN-002",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Improves the felt sense of inner vision and clarity; directional magnitudes use MORE/LESS.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Sensory: Seeing",
+        "voice_sources": null
+      },
       "command_review": "needs-review",
       "compatibility": "alias-listed",
       "domains": "sensory",
@@ -744,6 +3174,59 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-SMELL MORE",
       "canonical_name": "Sensory: Smell",
+      "capabilities": {
+        "activation": {
+          "modes": [
+            "PLUS-SMELL LESS"
+          ],
+          "primary": "PLUS-SMELL MORE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "reconstructed_mockup",
+          "secondary_description",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-SEN-003",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Adjusts the felt sense of smell in either direction using the MORE/LESS grammar.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "unavailable",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Sensory: Smell",
+        "voice_sources": null
+      },
       "command_review": "needs-review",
       "compatibility": "alias-listed",
       "domains": "sensory",
@@ -760,6 +3243,59 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-TASTE MORE",
       "canonical_name": "Sensory: Taste",
+      "capabilities": {
+        "activation": {
+          "modes": [
+            "PLUS-TASTE LESS"
+          ],
+          "primary": "PLUS-TASTE MORE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "reconstructed_mockup",
+          "secondary_description",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-SEN-004",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Adjusts the felt sense of taste in either direction using the MORE/LESS grammar.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "unavailable",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Sensory: Taste",
+        "voice_sources": null
+      },
       "command_review": "needs-review",
       "compatibility": "alias-listed",
       "domains": "sensory",
@@ -776,6 +3312,59 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-TOUCH MORE",
       "canonical_name": "Sensory: Touch",
+      "capabilities": {
+        "activation": {
+          "modes": [
+            "PLUS-TOUCH LESS"
+          ],
+          "primary": "PLUS-TOUCH MORE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "reconstructed_mockup",
+          "secondary_description",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-SEN-005",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Adjusts the felt sense of touch or skin sensation using the MORE/LESS grammar.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "unavailable",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Sensory: Touch",
+        "voice_sources": null
+      },
       "command_review": "needs-review",
       "compatibility": "alias-listed",
       "domains": "sensory",
@@ -792,6 +3381,58 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-RESTORE",
       "canonical_name": "Restorative Sleep",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-RESTORE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-SLP-001",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE.",
+        "safety": {
+          "level": "health",
+          "medical_relevance": true,
+          "notes": [
+            "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
+          ]
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Restorative Sleep",
+        "voice_sources": null
+      },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
       "domains": "sleep;body",
@@ -808,6 +3449,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-SLEEP",
       "canonical_name": "Sleep",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-SLEEP"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-SLP-002",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Sleep",
+        "voice_sources": null
+      },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
       "domains": "sleep",
@@ -824,6 +3515,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-DREAM",
       "canonical_name": "Sweet Dreams",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-DREAM"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-SLP-003",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Sweet Dreams",
+        "voice_sources": null
+      },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
       "domains": "sleep",
@@ -840,6 +3581,56 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-KNOW",
       "canonical_name": "Wake/Know",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-KNOW"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "source_transcript",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-SLP-004",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Requests help with sleep and with knowing the right time to wake; proposed concise cue PLUS-KNOW.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "available",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Wake/Know",
+        "voice_sources": null
+      },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
       "domains": "sleep",
@@ -856,6 +3647,90 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-SLEEP EASY",
       "canonical_name": "Sleep Easy",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-SLEEP EASY"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "pilot",
+        "duration": null,
+        "evidence_classes": [
+          "reconstructed_mockup",
+          "secondary_description",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-SLP-005",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [
+          "en-US"
+        ],
+        "narration_resources": [
+          {
+            "key": "pilot.function.complete",
+            "locale": "en-US"
+          },
+          {
+            "key": "pilot.sleep-easy.associate",
+            "locale": "en-US"
+          },
+          {
+            "key": "pilot.sleep-easy.future",
+            "locale": "en-US"
+          },
+          {
+            "key": "pilot.sleep-easy.practice",
+            "locale": "en-US"
+          },
+          {
+            "key": "pilot.sleep-easy.purpose",
+            "locale": "en-US"
+          },
+          {
+            "key": "pilot.sleep-easy.rehearse",
+            "locale": "en-US"
+          }
+        ],
+        "preparation": [],
+        "purpose": "Promotes easy, quiet transition into sleep; proposed concise cue PLUS-SLEEP EASY.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [
+          "OCF-TPL-SESSION-PILOT-SLEEP-EASY-001"
+        ],
+        "source_availability": "unavailable",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Sleep Easy",
+        "voice_sources": [
+          "tts",
+          "prerecorded-user",
+          "externally-generated"
+        ]
+      },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
       "domains": "sleep",
@@ -872,6 +3747,57 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "background_preset_count": 0,
       "canonical_command": "PLUS-AWAKE",
       "canonical_name": "Stay Awake",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-AWAKE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "content_maturity": "draft",
+        "duration": null,
+        "evidence_classes": [
+          "reconstructed_mockup",
+          "secondary_description",
+          "unknown"
+        ],
+        "extraction_status": "partial",
+        "function_id": "OCF-SLP-006",
+        "human_review": "required",
+        "layers": [
+          "evidence",
+          "specifications",
+          "decisions",
+          "bindings"
+        ],
+        "locales": [],
+        "narration_resources": [],
+        "preparation": [],
+        "purpose": "Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE.",
+        "safety": {
+          "level": "general",
+          "medical_relevance": false,
+          "notes": []
+        },
+        "session_templates": [],
+        "source_availability": "unavailable",
+        "states": {
+          "preferred": [],
+          "required": [],
+          "status": "unknown"
+        },
+        "status": {
+          "evidence": "community-hypothesis",
+          "implementation": "specification-only",
+          "maturity": "legacy-mapped"
+        },
+        "title": "Stay Awake",
+        "voice_sources": null
+      },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
       "domains": "sleep;performance",

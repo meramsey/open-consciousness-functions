@@ -805,6 +805,10 @@ def validate_all() -> ValidationResult:
     result.extend(validate_locale_packs())
     result.extend(validate_session_library())
     result.extend(validate_semantic_dsp_profiles())
+    from .content import validate_library
+
+    for error in validate_library():
+        result.add("error", "function-content", error)
     return result
 
 

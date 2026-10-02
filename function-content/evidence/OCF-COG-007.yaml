@@ -1,0 +1,111 @@
+function_id: OCF-COG-007
+observations:
+- category: opener
+  confidence: low
+  id: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2:opener
+  kind: structural-inference
+  line_candidates:
+  - 2
+  - 56
+  - 135
+  scope: document
+  source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+- category: main
+  confidence: low
+  id: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2:main
+  kind: structural-inference
+  line_candidates:
+  - 34
+  - 35
+  - 38
+  - 43
+  scope: document
+  source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+- category: closer
+  confidence: low
+  id: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2:closer
+  kind: structural-inference
+  line_candidates:
+  - 48
+  - 135
+  scope: document
+  source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+- category: preparation
+  confidence: low
+  id: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2:preparation
+  kind: structural-inference
+  line_candidates:
+  - 2
+  - 10
+  - 15
+  - 51
+  - 57
+  scope: document
+  source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+- category: command_association
+  confidence: low
+  id: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2:command_association
+  kind: structural-inference
+  line_candidates:
+  - 38
+  - 43
+  - 46
+  - 133
+  scope: document
+  source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+- category: future_use
+  confidence: low
+  id: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2:future_use
+  kind: structural-inference
+  line_candidates:
+  - 38
+  - 39
+  - 40
+  - 43
+  - 44
+  - 47
+  scope: document
+  source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+- category: return
+  confidence: low
+  id: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2:return
+  kind: structural-inference
+  line_candidates:
+  - 59
+  - 101
+  - 102
+  - 120
+  - 130
+  scope: document
+  source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Think Fast/Think Fast.lrc
+  sha256: e62e770f7ce6ebc050b6c02f97bab5c153f013c7cf44e541fbecea9efa0083f1
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Think Fast/Think Fast.ocr.pdf
+  sha256: b224b06d89114cc03f644922e7dcfc6e07d57a8a39cec0318fd3c0ebc7ab2763
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Think Fast/Think Fast.srt
+  sha256: 4aced82d08628f891b470d66cfb068a5236ec4386ecf48fa1cc3dc0db4df04fc
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Think Fast/Think Fast.txt
+  sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Think Fast/folder.jpg
+  sha256: f8346a8534008e4c88c66b88c4491b48a73b10e3ebdc488fd52113269c65d7c2

@@ -1,0 +1,105 @@
+function_id: OCF-PRF-002
+observations:
+- category: opener
+  confidence: low
+  id: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f:opener
+  kind: structural-inference
+  line_candidates:
+  - 2
+  - 63
+  - 215
+  scope: document
+  source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+- category: main
+  confidence: low
+  id: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f:main
+  kind: structural-inference
+  line_candidates:
+  - 33
+  - 42
+  scope: document
+  source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+- category: closer
+  confidence: low
+  id: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f:closer
+  kind: structural-inference
+  line_candidates:
+  - 54
+  - 215
+  scope: document
+  source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+- category: preparation
+  confidence: low
+  id: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f:preparation
+  kind: structural-inference
+  line_candidates:
+  - 2
+  - 10
+  - 16
+  - 57
+  - 64
+  scope: document
+  source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+- category: command_association
+  confidence: low
+  id: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f:command_association
+  kind: structural-inference
+  line_candidates:
+  - 44
+  - 52
+  - 212
+  scope: document
+  source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+- category: future_use
+  confidence: low
+  id: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f:future_use
+  kind: structural-inference
+  line_candidates:
+  - 42
+  - 48
+  - 53
+  scope: document
+  source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+- category: return
+  confidence: low
+  id: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f:return
+  kind: structural-inference
+  line_candidates:
+  - 66
+  - 178
+  - 179
+  - 197
+  - 208
+  scope: document
+  source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Eight-Great/Eight-Great.lrc
+  sha256: cdf2d2b43c4ad16b5212fa77083d4808a639061419d84a24a7c6c19f801428ea
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Eight-Great/Eight-Great.ocr.pdf
+  sha256: defa97c8964de539965d3ab973114d7fa2da57542ceca5e975707fee3b740986
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Eight-Great/Eight-Great.srt
+  sha256: 2a28498bfc332ec1eb83164795be43324bdc4fa02596ef7d019bcce4b24a48de
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+  sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Eight-Great/folder.jpg
+  sha256: f75d6a65f728de08acf24770e8e9423de8e61617e44fa36dc6368aa8a0bb4852

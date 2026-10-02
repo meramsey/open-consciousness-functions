@@ -1,0 +1,49 @@
+function_id: OCF-COG-001
+observations:
+- category: preparation
+  confidence: low
+  id: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14:preparation
+  kind: structural-inference
+  line_candidates:
+  - 2
+  - 4
+  - 5
+  scope: document
+  source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+- category: command_association
+  confidence: low
+  id: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14:command_association
+  kind: structural-inference
+  line_candidates:
+  - 27
+  - 43
+  - 45
+  - 48
+  scope: document
+  source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Access to Information/Access to Information.lrc
+  sha256: 7414cbe861aa8d7e18df1da8d7607235df1b8f6968ac01ab18f085eb2d2ea735
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Access to Information/Access to Information.srt
+  sha256: 4ae2e83c07220e728061c0dc77a18caf1b0b3fb957e3c284af6f81998bf01177
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Access to Information/Access to Information.txt
+  sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Access to Information/folder.jpg
+  sha256: a5e61729221674dda386a98d06507d1a8867907150167c6e5838fe63a7250a96

@@ -1,0 +1,108 @@
+function_id: OCF-BOD-003
+observations:
+- category: opener
+  confidence: low
+  id: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:opener
+  kind: structural-inference
+  line_candidates:
+  - 1
+  - 2
+  - 3
+  - 57
+  - 108
+  scope: document
+  source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+- category: main
+  confidence: low
+  id: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:main
+  kind: structural-inference
+  line_candidates:
+  - 29
+  - 30
+  - 37
+  - 44
+  scope: document
+  source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+- category: closer
+  confidence: low
+  id: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:closer
+  kind: structural-inference
+  line_candidates:
+  - 54
+  - 108
+  scope: document
+  source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+- category: preparation
+  confidence: low
+  id: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:preparation
+  kind: structural-inference
+  line_candidates:
+  - 3
+  - 8
+  - 11
+  - 55
+  - 58
+  scope: document
+  source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+- category: command_association
+  confidence: low
+  id: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:command_association
+  kind: structural-inference
+  line_candidates:
+  - 33
+  - 40
+  - 47
+  - 53
+  - 106
+  scope: document
+  source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+- category: future_use
+  confidence: low
+  id: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:future_use
+  kind: structural-inference
+  line_candidates:
+  - 42
+  - 49
+  - 53
+  scope: document
+  source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+- category: return
+  confidence: low
+  id: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:return
+  kind: structural-inference
+  line_candidates:
+  - 85
+  - 100
+  scope: document
+  source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/De-Discomfort/De-Discomfort.lrc
+  sha256: 44eba0dc46a9eff52887ed6c2b806664502cb64a4e136c35ea4a47ab8befc203
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/De-Discomfort/De-Discomfort.ocr.pdf
+  sha256: 746b224e70f1ea4fa1216662ec3b59d0c521404bf40f26753f9642f05e137a0b
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/De-Discomfort/De-Discomfort.srt
+  sha256: 1b46619ad21f3ebb55c382c75da200416050fd0273f282c8bab1c468f201448e
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+  sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/De-Discomfort/folder.jpg
+  sha256: 97bff944c0bb6552284ff4310458fb85f6bf9ae4b3147798ac0fb58995b730ca

@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/function-evidence.schema.json",
+  "title": "Function reference evidence (not runtime narration)",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "function_id", "sources", "observations", "questions"],
+  "properties": {
+    "schema_version": {"const": "1.0"}, "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
+    "sources": {"type": "array", "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sha256", "path", "evidence_class", "authentication", "completeness"],
+      "properties": {
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "path": {"type": "string"},
+        "evidence_class": {"enum": ["source_transcript", "partial_source_transcript", "reconstructed_mockup", "inferred_missing_function", "secondary_description", "unknown"]},
+        "authentication": {"enum": ["unverified", "operator-designated", "authenticated"]},
+        "completeness": {"type": "string"}, "authentication_record": {"type": "string", "minLength": 1},
+        "normalized_content_sha256": {"type": ["string", "null"]},
+        "related_sha256": {"type": "array", "items": {"type": "string"}}
+      },
+      "allOf": [
+        {"if": {"properties": {"authentication": {"const": "authenticated"}}}, "then": {"required": ["authentication_record"], "properties": {"evidence_class": {"enum": ["source_transcript", "partial_source_transcript"]}}}},
+        {"if": {"properties": {"evidence_class": {"enum": ["reconstructed_mockup", "inferred_missing_function", "unknown"]}}}, "then": {"properties": {"authentication": {"const": "unverified"}}}}
+      ]
+    }},
+    "observations": {"type": "array", "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "kind", "scope", "source_sha256", "category", "line_candidates", "confidence"],
+      "properties": {
+        "id": {"type": "string"}, "kind": {"enum": ["source-fact", "structural-inference", "function-specification-inference"]},
+        "scope": {"enum": ["document", "historical"]}, "source_sha256": {"type": "string"},
+        "category": {"type": "string"}, "line_candidates": {"type": "array", "items": {"type": "integer", "minimum": 1}},
+        "confidence": {"enum": ["high", "medium", "low", "unknown"]}
+      }
+    }},
+    "questions": {"type": "array", "items": {"type": "string"}}
+  }
+}

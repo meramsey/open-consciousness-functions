@@ -1,0 +1,73 @@
+blocks:
+  association:
+    evidence_refs:
+    - f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54:command_association
+    - f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e:command_association
+    operations: []
+    status: inferred
+  closer:
+    evidence_refs:
+    - f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54:closer
+    - f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e:closer
+    operations: []
+    status: inferred
+  consolidation:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  future_use:
+    evidence_refs:
+    - f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54:future_use
+    - f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e:future_use
+    operations: []
+    status: inferred
+  handoff:
+    evidence_refs:
+    - f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54:return
+    - f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e:return
+    operations: []
+    status: inferred
+  main:
+    evidence_refs:
+    - f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54:main
+    - f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e:main
+    operations: []
+    status: inferred
+  opener:
+    evidence_refs:
+    - f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54:opener
+    - f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e:opener
+    operations: []
+    status: inferred
+  purpose:
+    evidence_refs: []
+    operations:
+    - consult-canonical-purpose-metadata
+    status: specified
+  rehearsal:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  safety_claims:
+    evidence_refs: []
+    operations: []
+    status: unknown
+  suspend_cancel_reset:
+    evidence_refs: []
+    operations: []
+    status: unknown
+command_ref: canonical.command
+extraction_status: partial
+function_id: OCF-SLP-006
+human_review: required
+maturity: draft
+metadata_ref: canonical-function-record
+preparation: []
+questions:
+- Function-specific operations, state requirements and claim transformations require source review; no
+  inferred runtime state binding
+schema_version: '1.0'
+states:
+  preferred: []
+  required: []
+  status: unknown

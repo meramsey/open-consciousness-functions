@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/function-binding.schema.json",
+  "title": "Runtime references to templates/localized expression; no historical claims",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "function_id", "session_templates", "narration_resources", "voice_sources", "duration"],
+  "properties": {
+    "schema_version": {"const": "1.0"}, "function_id": {"type": "string"},
+    "session_templates": {"type": "array", "items": {"type": "string"}},
+    "narration_resources": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["locale", "key"], "properties": {"locale": {"type": "string"}, "key": {"type": "string"}}}},
+    "voice_sources": {"type": ["array", "null"], "items": {"enum": ["tts", "prerecorded-user", "externally-generated"]}},
+    "duration": {"type": ["object", "null"], "additionalProperties": false, "required": ["seconds", "basis"], "properties": {"seconds": {"type": "number", "exclusiveMinimum": 0}, "basis": {"enum": ["measured", "estimated"]}}}
+  }
+}

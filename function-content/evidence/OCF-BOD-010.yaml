@@ -1,0 +1,109 @@
+function_id: OCF-BOD-010
+observations:
+- category: opener
+  confidence: low
+  id: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6:opener
+  kind: structural-inference
+  line_candidates:
+  - 2
+  - 3
+  - 64
+  - 199
+  scope: document
+  source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+- category: main
+  confidence: low
+  id: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6:main
+  kind: structural-inference
+  line_candidates:
+  - 32
+  scope: document
+  source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+- category: closer
+  confidence: low
+  id: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6:closer
+  kind: structural-inference
+  line_candidates:
+  - 60
+  - 199
+  scope: document
+  source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+- category: preparation
+  confidence: low
+  id: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6:preparation
+  kind: structural-inference
+  line_candidates:
+  - 3
+  - 8
+  - 12
+  - 14
+  - 26
+  - 61
+  - 64
+  scope: document
+  source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+- category: command_association
+  confidence: low
+  id: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6:command_association
+  kind: structural-inference
+  line_candidates:
+  - 36
+  - 48
+  - 59
+  - 197
+  scope: document
+  source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+- category: future_use
+  confidence: low
+  id: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6:future_use
+  kind: structural-inference
+  line_candidates:
+  - 43
+  - 55
+  - 59
+  scope: document
+  source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+- category: return
+  confidence: low
+  id: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6:return
+  kind: structural-inference
+  line_candidates:
+  - 66
+  - 182
+  - 183
+  - 186
+  - 189
+  - 194
+  scope: document
+  source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Nutricia/Nutricia.lrc
+  sha256: 20d515d74eddaa25f957c96fb9839c990c261709879ff1b58b7ff4232b1c82ae
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Nutricia/Nutricia.ocr.pdf
+  sha256: 285d226e3a57f6988003d70a30fa145c92ee628d6f4f99b2609efb960035f45e
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Nutricia/Nutricia.srt
+  sha256: 17226b5e7ec35c4a7f771f090b6a2f8c2ec9d771706324ec9ec163b86c2c53db
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Nutricia/Nutricia.txt
+  sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Nutricia/folder.jpg
+  sha256: 6caa9ac63c8118466ef96f9ae7f0f5d143da7df2b467a79517a2afcda9835cd6

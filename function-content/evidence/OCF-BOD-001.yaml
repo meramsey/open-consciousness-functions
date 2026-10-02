@@ -1,0 +1,106 @@
+function_id: OCF-BOD-001
+observations:
+- category: opener
+  confidence: low
+  id: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf:opener
+  kind: structural-inference
+  line_candidates:
+  - 2
+  - 3
+  - 55
+  - 164
+  scope: document
+  source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+- category: main
+  confidence: low
+  id: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf:main
+  kind: structural-inference
+  line_candidates:
+  - 35
+  - 36
+  - 41
+  scope: document
+  source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+- category: closer
+  confidence: low
+  id: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf:closer
+  kind: structural-inference
+  line_candidates:
+  - 50
+  - 164
+  scope: document
+  source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+- category: preparation
+  confidence: low
+  id: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf:preparation
+  kind: structural-inference
+  line_candidates:
+  - 3
+  - 9
+  - 14
+  - 52
+  - 56
+  scope: document
+  source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+- category: command_association
+  confidence: low
+  id: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf:command_association
+  kind: structural-inference
+  line_candidates:
+  - 43
+  - 48
+  - 162
+  scope: document
+  source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+- category: future_use
+  confidence: low
+  id: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf:future_use
+  kind: structural-inference
+  line_candidates:
+  - 43
+  - 49
+  scope: document
+  source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+- category: return
+  confidence: low
+  id: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf:return
+  kind: structural-inference
+  line_candidates:
+  - 58
+  - 128
+  - 129
+  - 147
+  - 158
+  scope: document
+  source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.lrc
+  sha256: 12b20436a846b122eb674d898b951c33abec542ba28cdd56003e1292d0bef839
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.srt
+  sha256: 86ef59aaa83ac888b5c3bc460c146433e592b91f50d31f4a41008a455fab4672
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+  sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Brain Support and Maintenance/Brain-Repair and Maintenance.ocr.pdf
+  sha256: 09d4245ba9ffd7c7dcc8951253fc5d5d58069dc2132442ad045bb55230e66c31
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Brain Support and Maintenance/folder.jpg
+  sha256: 43966744aae274ca84941fb270546b3feef1ee8ceef477619782a1253c7849de

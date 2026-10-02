@@ -1,0 +1,107 @@
+function_id: OCF-PRF-003
+observations:
+- category: opener
+  confidence: low
+  id: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248:opener
+  kind: structural-inference
+  line_candidates:
+  - 2
+  - 75
+  - 155
+  scope: document
+  source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+- category: main
+  confidence: low
+  id: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248:main
+  kind: structural-inference
+  line_candidates:
+  - 43
+  - 49
+  scope: document
+  source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+- category: closer
+  confidence: low
+  id: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248:closer
+  kind: structural-inference
+  line_candidates:
+  - 70
+  - 155
+  scope: document
+  source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+- category: preparation
+  confidence: low
+  id: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248:preparation
+  kind: structural-inference
+  line_candidates:
+  - 2
+  - 10
+  - 16
+  - 72
+  - 76
+  scope: document
+  source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+- category: command_association
+  confidence: low
+  id: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248:command_association
+  kind: structural-inference
+  line_candidates:
+  - 51
+  - 68
+  - 153
+  scope: document
+  source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+- category: future_use
+  confidence: low
+  id: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248:future_use
+  kind: structural-inference
+  line_candidates:
+  - 49
+  - 53
+  - 55
+  - 57
+  - 69
+  scope: document
+  source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+- category: return
+  confidence: low
+  id: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248:return
+  kind: structural-inference
+  line_candidates:
+  - 78
+  - 122
+  - 123
+  - 140
+  - 151
+  scope: document
+  source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Synchronizing/Synchronizing.lrc
+  sha256: 934e8a438579187e79d0aff34fe232d8d57a7cfa6244d583f7e68dffbb3f424e
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Synchronizing/Synchronizing.ocr.pdf
+  sha256: 7aaa9a8d96f0e2d8dec6dca0a65a18de415b3a06a814daff759a309328c877f1
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Synchronizing/Synchronizing.srt
+  sha256: 6aa7d73e1a812fd67d1c62fca150518a06824c84c615ed2a91386200723c19d6
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+  sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Synchronizing/folder.jpg
+  sha256: 74b4e85915e862a9881fc936b2b93475c3a69eddc046b3b5a91e507b6b11857b

@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/function-specification.schema.json",
+  "title": "Extracted functional specification, independent of localized expression",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "function_id", "metadata_ref", "command_ref", "extraction_status", "maturity", "human_review", "states", "preparation", "blocks", "questions"],
+  "properties": {
+    "schema_version": {"const": "1.0"}, "function_id": {"type": "string"},
+    "metadata_ref": {"const": "canonical-function-record"}, "command_ref": {"const": "canonical.command"},
+    "extraction_status": {"enum": ["complete", "partial", "unknown", "blocked"]},
+    "maturity": {"enum": ["draft", "pilot", "reviewed"]}, "human_review": {"enum": ["required", "approved"]},
+    "states": {"type": "object", "additionalProperties": false, "required": ["status", "required", "preferred"], "properties": {"status": {"enum": ["unknown", "inferred", "specified"]}, "required": {"type": "array", "items": {"type": "string"}}, "preferred": {"type": "array", "items": {"type": "string"}}}},
+    "preparation": {"type": "array", "items": {"type": "string"}},
+    "blocks": {"type": "object", "additionalProperties": {"$ref": "#/definitions/block"}, "required": ["purpose", "opener", "main", "association", "rehearsal", "future_use", "suspend_cancel_reset", "closer", "consolidation", "handoff", "safety_claims"]},
+    "questions": {"type": "array", "items": {"type": "string"}}
+  },
+  "allOf": [{"if": {"properties": {"maturity": {"enum": ["draft", "pilot"]}}}, "then": {"properties": {"human_review": {"const": "required"}}}}],
+  "definitions": {"block": {
+    "type": "object", "additionalProperties": false, "required": ["status", "operations", "evidence_refs"],
+    "properties": {"status": {"enum": ["unknown", "not-present", "not-applicable", "inferred", "specified"]},
+      "operations": {"type": "array", "items": {"type": "string"}},
+      "evidence_refs": {"type": "array", "items": {"type": "string"}}
+    },
+    "allOf": [{"if": {"properties": {"status": {"enum": ["unknown", "not-present", "not-applicable"]}}}, "then": {"properties": {"operations": {"maxItems": 0}}}}]
+  }}
+}

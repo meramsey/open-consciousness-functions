@@ -1,0 +1,105 @@
+function_id: OCF-BOD-012
+observations:
+- category: opener
+  confidence: low
+  id: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:opener
+  kind: structural-inference
+  line_candidates:
+  - 3
+  - 84
+  scope: document
+  source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+- category: main
+  confidence: low
+  id: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:main
+  kind: structural-inference
+  line_candidates:
+  - 29
+  - 38
+  scope: document
+  source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+- category: closer
+  confidence: low
+  id: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:closer
+  kind: structural-inference
+  line_candidates:
+  - 51
+  scope: document
+  source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+- category: preparation
+  confidence: low
+  id: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:preparation
+  kind: structural-inference
+  line_candidates:
+  - 3
+  - 11
+  - 17
+  - 52
+  - 55
+  scope: document
+  source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+- category: command_association
+  confidence: low
+  id: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:command_association
+  kind: structural-inference
+  line_candidates:
+  - 30
+  - 39
+  - 50
+  - 82
+  scope: document
+  source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+- category: future_use
+  confidence: low
+  id: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:future_use
+  kind: structural-inference
+  line_candidates:
+  - 29
+  - 38
+  - 46
+  - 50
+  scope: document
+  source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+- category: return
+  confidence: low
+  id: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:return
+  kind: structural-inference
+  line_candidates:
+  - 69
+  - 70
+  - 72
+  - 76
+  - 80
+  scope: document
+  source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Sex Drive/Sex Drive.lrc
+  sha256: a3dba2ba552b5ceb2945e43577710d348470863c6bfa5c496cbb67b6390d9b02
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Sex Drive/Sex Drive.ocr.pdf
+  sha256: 7519222764a2be252dc6614ec73cfcf26c5a370d3c49ca95bab22245ba0f5f5d
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Sex Drive/Sex Drive.srt
+  sha256: a325b3a03869ad8467931aa62a4dcd9dbb0d09f2dd49e8296b543bd6e4110530
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+  sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Sex Drive/folder.jpg
+  sha256: 34f6554b760e8ca33b1c2ae10eac8b1056cfc0e7213452816a07118cf5bd731c

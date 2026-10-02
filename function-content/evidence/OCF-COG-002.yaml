@@ -1,0 +1,89 @@
+function_id: OCF-COG-002
+observations:
+- category: opener
+  confidence: low
+  id: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b:opener
+  kind: structural-inference
+  line_candidates:
+  - 7
+  - 9
+  - 123
+  scope: document
+  source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+- category: main
+  confidence: low
+  id: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b:main
+  kind: structural-inference
+  line_candidates:
+  - 65
+  scope: document
+  source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+- category: closer
+  confidence: low
+  id: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b:closer
+  kind: structural-inference
+  line_candidates:
+  - 115
+  scope: document
+  source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+- category: preparation
+  confidence: low
+  id: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b:preparation
+  kind: structural-inference
+  line_candidates:
+  - 10
+  - 16
+  - 23
+  - 117
+  - 125
+  scope: document
+  source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+- category: command_association
+  confidence: low
+  id: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b:command_association
+  kind: structural-inference
+  line_candidates:
+  - 90
+  - 111
+  scope: document
+  source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+- category: future_use
+  confidence: low
+  id: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b:future_use
+  kind: structural-inference
+  line_candidates:
+  - 91
+  - 112
+  scope: document
+  source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.lrc
+  sha256: 5ba477f0677c7f988bc89c862347c7224188559ec2a6d1d1f523179e716efbeb
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.ocr.pdf
+  sha256: 6caa90e2c1fa97d6f96ef69f3025be71cfe8f5413cb7ab858dfd62f51958c2c2
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.srt
+  sha256: 5a202fe66d9e16be0a2a8a4fd342921abfef44882e3e97b65ca45ce4776f5463
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+  sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Buy the Numbers/folder.jpg
+  sha256: 7113b7fdfdcdaa4f6327ed2dbfcdabc11807a5aad4ec8b2e7400a6cc7e1dba31

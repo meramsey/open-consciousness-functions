@@ -1,0 +1,84 @@
+function_id: OCF-BOD-005
+observations:
+- category: opener
+  confidence: low
+  id: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9:opener
+  kind: structural-inference
+  line_candidates:
+  - 1
+  - 2
+  - 152
+  - 350
+  scope: document
+  source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+- category: closer
+  confidence: low
+  id: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9:closer
+  kind: structural-inference
+  line_candidates:
+  - 143
+  - 350
+  scope: document
+  source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+- category: preparation
+  confidence: low
+  id: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9:preparation
+  kind: structural-inference
+  line_candidates:
+  - 2
+  - 10
+  - 16
+  - 70
+  - 146
+  - 154
+  scope: document
+  source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+- category: command_association
+  confidence: low
+  id: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9:command_association
+  kind: structural-inference
+  line_candidates:
+  - 347
+  scope: document
+  source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+- category: return
+  confidence: low
+  id: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9:return
+  kind: structural-inference
+  line_candidates:
+  - 158
+  - 335
+  - 345
+  scope: document
+  source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+questions:
+- Source derivatives are not independently authenticated recordings
+- Keyword candidate locators require full semantic review; absence of a match does not establish absence
+  of an operation
+schema_version: '1.0'
+sources:
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.lrc
+  sha256: 0365b1af66862faca7a058bd4ae3c40dbc1755cbf381ced9f9057af5cd2f58fa
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.ocr.pdf
+  sha256: 285396127215c2ca824be8d01ba58b62942a63118818b06ccf7497eef3226611
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.srt
+  sha256: 03d1aa45d604e86961decf2664b73a618d5baced3078fac39c0b193bc9b14187
+- authentication: operator-designated
+  completeness: pending-source-review; apparent boundaries do not prove completeness
+  evidence_class: source_transcript
+  path: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+  sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+- authentication: unverified
+  completeness: pending-source-review
+  evidence_class: unknown
+  path: +Transcripts From available tapes/Eat-No Eat/folder.jpg
+  sha256: ecd0ac6cb831bfe77adf1245398db0cab01320097de7b2b395a6823f319b5ddd

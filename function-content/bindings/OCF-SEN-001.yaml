@@ -1,0 +1,22 @@
+duration: null
+function_id: OCF-SEN-001
+narration_resources:
+- key: pilot.function.complete
+  locale: en-US
+- key: pilot.hearing.associate
+  locale: en-US
+- key: pilot.hearing.future
+  locale: en-US
+- key: pilot.hearing.practice
+  locale: en-US
+- key: pilot.hearing.purpose
+  locale: en-US
+- key: pilot.hearing.rehearse
+  locale: en-US
+schema_version: '1.0'
+session_templates:
+- OCF-TPL-SESSION-PILOT-HEARING-001
+voice_sources:
+- tts
+- prerecorded-user
+- externally-generated
