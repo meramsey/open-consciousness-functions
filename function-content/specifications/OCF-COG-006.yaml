@@ -1,64 +1,256 @@
+analysis_review:
+  claim_categories:
+  - guaranteed-immediate-detailed-memory
+  - automatic-whole-system-learning
+  - ambiguous-religious-insertion
+  family: cognitive-retrieval
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+        end_line: 40
+        file: +Transcripts From available tapes/Recall/Recall.txt
+        source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+        start_line: 32
+      status: supported
+      summary: Recall cue plus specified target is associated with immediate conscious detailed remembering.
+    closer:
+      locators:
+      - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+        end_line: 57
+        file: +Transcripts From available tapes/Recall/Recall.txt
+        source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+        start_line: 50
+      status: supported
+      summary: Reinforce future remembering and close learning context to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+        end_line: 189
+        file: +Transcripts From available tapes/Recall/Recall.txt
+        source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+        start_line: 58
+      status: supported
+      summary: Sleep-to-twenty explanation/count is present; later gap is not evidence of a particular
+        reinforcement segment.
+    conversion:
+      locators:
+      - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+        end_line: 49
+        file: +Transcripts From available tapes/Recall/Recall.txt
+        source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+        start_line: 32
+      status: inferred
+      summary: Preserve voluntary retrieval strategy without asserting remembered material is necessarily
+        accurate. Religious sentence in derivative is not a verified legacy instruction or OCF requirement.
+    future_use:
+      locators:
+      - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+        end_line: 53
+        file: +Transcripts From available tapes/Recall/Recall.txt
+        source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+        start_line: 32
+      status: supported
+      summary: Target-selective recall procedure, with asserted ease from repeated use.
+    handoff:
+      locators:
+      - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+        end_line: 189
+        file: +Transcripts From available tapes/Recall/Recall.txt
+        source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+        start_line: 88
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Line26 religious
+        insertion and numerous count/gap artifacts require audio authentication; final return missing.
+        Do not silently correct the reference.
+    identity:
+      locators:
+      - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+        end_line: 40
+        file: +Transcripts From available tapes/Recall/Recall.txt
+        source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+        start_line: 32
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+        end_line: 49
+        file: +Transcripts From available tapes/Recall/Recall.txt
+        source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+        start_line: 32
+      status: supported
+      summary: select-past-experience; inhale-and-hold; internally-issue-recall-cue; attend-to-target-area;
+        exhale
+    opener:
+      locators:
+      - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+        end_line: 31
+        file: +Transcripts From available tapes/Recall/Recall.txt
+        source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+        start_line: 27
+      status: supported
+      summary: Introduce remembering and receptive learning context.
+    preparation:
+      locators:
+      - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+        end_line: 25
+        file: +Transcripts From available tapes/Recall/Recall.txt
+        source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+        start_line: 2
+      status: supported
+      summary: Supported uninterrupted relaxation, temporary setting-aside and counted ten-state entry.
+    provenance:
+      locators:
+      - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+        end_line: 189
+        file: +Transcripts From available tapes/Recall/Recall.txt
+        source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+        start_line: 1
+      status: supported
+      summary: Complete available partial_source_transcript text inspected; shared representations are
+        not independent corroboration. Source accuracy/authentication remains unresolved. Line26 religious
+        insertion and numerous count/gap artifacts require audio authentication; final return missing.
+        Do not silently correct the reference.
+    purpose:
+      locators:
+      - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+        end_line: 2
+        file: +Transcripts From available tapes/Recall/Recall.txt
+        source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+        start_line: 1
+      status: supported
+      summary: Recall a chosen past experience/information in detail.
+    rehearsal:
+      locators:
+      - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+        end_line: 49
+        file: +Transcripts From available tapes/Recall/Recall.txt
+        source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+        start_line: 32
+      status: supported
+      summary: Two teaching presentations; no distinct explicit listener recall trial is established.
+    safety_claims:
+      locators:
+      - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+        end_line: 49
+        file: +Transcripts From available tapes/Recall/Recall.txt
+        source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+        start_line: 26
+      status: supported
+      summary: guaranteed-immediate-detailed-memory; automatic-whole-system-learning; ambiguous-religious-insertion.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+        end_line: 31
+        file: +Transcripts From available tapes/Recall/Recall.txt
+        source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+        start_line: 27
+      status: supported
+      summary: Eleven opening, ten close, sleep-to-twenty shell; waking ending absent in the inspected
+        derivative.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+        end_line: 189
+        file: +Transcripts From available tapes/Recall/Recall.txt
+        source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Line26 religious
+        insertion and numerous count/gap artifacts require audio authentication; final return missing.
+        Do not silently correct the reference.
+  source_extent:
+    content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+    end_line: 189
+    file: +Transcripts From available tapes/Recall/Recall.txt
+    source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3:command_association
-    operations: []
+    - review:OCF-COG-006:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3:closer
-    operations: []
+    - review:OCF-COG-006:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-COG-006:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3:future_use
-    operations: []
+    - review:OCF-COG-006:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-COG-006:handoff
     operations: []
     status: unknown
   main:
     evidence_refs:
-    - db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3:main
-    operations: []
+    - review:OCF-COG-006:main
+    operations:
+    - select-past-experience
+    - inhale-and-hold
+    - internally-issue-recall-cue
+    - attend-to-target-area
+    - exhale
     status: inferred
   opener:
     evidence_refs:
-    - db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3:opener
-    operations: []
+    - review:OCF-COG-006:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-COG-006:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-COG-006:rehearsal
+    operations:
+    - documented-rehearsal
+    status: inferred
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-COG-006:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-COG-006:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-COG-006
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Line26 religious insertion and numerous count/gap artifacts require audio authentication; final return
+  missing. Do not silently correct the reference.
+- Preserve voluntary retrieval strategy without asserting remembered material is necessarily accurate.
+  Religious sentence in derivative is not a verified legacy instruction or OCF requirement.
 schema_version: '1.0'
 states:
   preferred: []

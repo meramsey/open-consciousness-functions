@@ -1,64 +1,259 @@
+analysis_review:
+  claim_categories:
+  - guaranteed-persistent-cognitive-improvement
+  - broad-mathematical-accuracy
+  - automatic-whole-system-learning
+  family: cognitive-enhancement
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+        end_line: 92
+        file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+        source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+        start_line: 88
+      status: supported
+      summary: Inhale/hold, internally issue calculation cue, exhale; cue intensifies an otherwise asserted
+        persistent improvement.
+    closer:
+      locators:
+      - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+        end_line: 125
+        file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+        source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+        start_line: 109
+      status: supported
+      summary: Reinforce future remembering, close the learning channel and return to ten-state rest.
+    consolidation:
+      locators:
+      - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+        end_line: 330
+        file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+        source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+        start_line: 126
+      status: supported
+      summary: A subsequent numbered interval is present, but its complete sleep-entry explanation and
+        final exit are not preserved here.
+    conversion:
+      locators:
+      - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+        end_line: 92
+        file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+        source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+        start_line: 67
+      status: inferred
+      summary: Distinguish a deliberate math-task cue from promises of permanent ability; concrete rehearsal
+        must be an explicit OCF design, not recovered content.
+    future_use:
+      locators:
+      - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+        end_line: 113
+        file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+        source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+        start_line: 88
+      status: supported
+      summary: Use the cue to focus/intensify mathematical ability; repeated use is asserted to improve
+        efficiency.
+    handoff:
+      locators:
+      - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+        end_line: 330
+        file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+        source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+        start_line: 126
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. ASR count artifacts
+        and missing later content do not establish timing, deliberate repetition or a complete return
+        sequence.
+    identity:
+      locators:
+      - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+        end_line: 92
+        file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+        source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+        start_line: 88
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+        end_line: 92
+        file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+        source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+        start_line: 67
+      status: supported
+      summary: associate-number-perception-with-memory; associate-arithmetic-with-speed-and-accuracy;
+        associate-symbols-with-understanding-and-expression; intensify-via-breath-and-calculation-cue
+    opener:
+      locators:
+      - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+        end_line: 66
+        file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+        source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+        start_line: 54
+      status: supported
+      summary: Establish learning receptivity before broad mathematical-ability suggestions.
+    preparation:
+      locators:
+      - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+        end_line: 25
+        file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+        source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+        start_line: 9
+      status: supported
+      summary: Comfortable uninterrupted posture, ordinary settling movements/breathing and temporary
+        setting-aside in a repository representation.
+    provenance:
+      locators:
+      - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+        end_line: 330
+        file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+        source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. ASR count artifacts and missing
+        later content do not establish timing, deliberate repetition or a complete return sequence.
+    purpose:
+      locators:
+      - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+        end_line: 8
+        file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+        source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+        start_line: 7
+      status: supported
+      summary: Improve numerical memory, arithmetic, symbolic understanding and mathematical expression,
+        with an optional intensification cue.
+    rehearsal:
+      locators:
+      - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+        end_line: 114
+        file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+        source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+        start_line: 67
+      status: supported
+      summary: Instruction describes the procedure but no distinct listener practice trial is established
+        in the inspected intelligible portion.
+    safety_claims:
+      locators:
+      - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+        end_line: 92
+        file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+        source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+        start_line: 59
+      status: supported
+      summary: guaranteed-persistent-cognitive-improvement; broad-mathematical-accuracy; automatic-whole-system-learning.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+        end_line: 64
+        file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+        source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+        start_line: 26
+      status: supported
+      summary: Ten-state entry, eleven learning opening, ten-state closing; subsequent numbered sleep-like
+        progression is incomplete and final return unavailable.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+        end_line: 330
+        file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+        source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. ASR count artifacts
+        and missing later content do not establish timing, deliberate repetition or a complete return
+        sequence.
+  source_extent:
+    content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+    end_line: 330
+    file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+    source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b:command_association
-    operations: []
+    - review:OCF-COG-002:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b:closer
-    operations: []
+    - review:OCF-COG-002:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-COG-002:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b:future_use
-    operations: []
+    - review:OCF-COG-002:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-COG-002:handoff
     operations: []
     status: unknown
   main:
     evidence_refs:
-    - d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b:main
-    operations: []
+    - review:OCF-COG-002:main
+    operations:
+    - associate-number-perception-with-memory
+    - associate-arithmetic-with-speed-and-accuracy
+    - associate-symbols-with-understanding-and-expression
+    - intensify-via-breath-and-calculation-cue
     status: inferred
   opener:
     evidence_refs:
-    - d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b:opener
-    operations: []
+    - review:OCF-COG-002:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-COG-002:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-COG-002:rehearsal
+    operations:
+    - documented-rehearsal
+    status: inferred
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-COG-002:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-COG-002:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-COG-002
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- ASR count artifacts and missing later content do not establish timing, deliberate repetition or a complete
+  return sequence.
+- Distinguish a deliberate math-task cue from promises of permanent ability; concrete rehearsal must be
+  an explicit OCF design, not recovered content.
 schema_version: '1.0'
 states:
   preferred: []

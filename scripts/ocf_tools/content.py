@@ -66,6 +66,23 @@ def validate_layers(layers: dict, function_id: str) -> list[str]:
     for block in layers.get("specifications", {}).get("blocks", {}).values():
         if set(block["evidence_refs"]) - set(identifiers):
             errors.append("specification references unknown evidence observation")
+    review = layers.get("specifications", {}).get("analysis_review")
+    if review:
+        extent = review["source_extent"]
+        locators = [extent] + [
+            locator for answer in review["sections"].values() for locator in answer["locators"]
+        ]
+        for locator in locators:
+            source = sources.get(locator["source_sha256"])
+            if source is None or source["path"] != locator["file"]:
+                errors.append("review locator references unknown/mismatched source identity")
+            if (
+                locator["end_line"] < locator["start_line"]
+                or locator["end_line"] > extent["end_line"]
+            ):
+                errors.append("review locator has invalid/incomplete source range")
+        if extent["start_line"] != 1:
+            errors.append("completed review must inspect the full available source from line1")
     binding = layers.get("bindings", {})
     if binding.get("session_templates"):
         from .session import load_template

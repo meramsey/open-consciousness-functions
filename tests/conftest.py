@@ -50,6 +50,7 @@ UNIT_MODULES = {
     "test_disabled_narration",
     "test_voice_registry",
     "test_boundary_coverage",
+    "test_extraction_completion",
 }
 REAL_AUDIO_TESTS = {
     "test_actual_ffmpeg_envelopes_and_seeded_output",

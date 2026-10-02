@@ -1,65 +1,261 @@
+analysis_review:
+  claim_categories:
+  - guaranteed-detailed-sensory-encoding
+  - indefinite-retention
+  - immediate-perfect-retrieval
+  - automatic-whole-system-learning
+  family: cognitive-encoding-retrieval
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+        end_line: 40
+        file: +Transcripts From available tapes/Imprint/Imprint.txt
+        source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+        start_line: 32
+      status: supported
+      summary: Imprint cue is paired with attention/encoding; recall cue retrieves the selected sensory
+        record. Legacy repeated imprint command differs from the canonical shortened metadata.
+    closer:
+      locators:
+      - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+        end_line: 64
+        file: +Transcripts From available tapes/Imprint/Imprint.txt
+        source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+        start_line: 52
+      status: supported
+      summary: Reinforce remembered use, close learning context to ten, sleep interval and waking return;
+        final encoding reminder.
+    consolidation:
+      locators:
+      - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+        end_line: 119
+        file: +Transcripts From available tapes/Imprint/Imprint.txt
+        source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+        start_line: 65
+      status: supported
+      summary: Sleep-to-twenty interval described; repeated ASR twenties are not intelligible reinforcement
+        evidence.
+    conversion:
+      locators:
+      - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+        end_line: 51
+        file: +Transcripts From available tapes/Imprint/Imprint.txt
+        source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+        start_line: 32
+      status: inferred
+      summary: Preserve selection/attention/recall linkage; guarantees and implied anatomical storage
+        cannot be accepted as mechanisms. Do not invent an erase command.
+    future_use:
+      locators:
+      - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+        end_line: 54
+        file: +Transcripts From available tapes/Imprint/Imprint.txt
+        source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+        start_line: 39
+      status: supported
+      summary: Encode a chosen target on demand; invoke recall for the whole retained record or selected
+        parts.
+    handoff:
+      locators:
+      - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+        end_line: 145
+        file: +Transcripts From available tapes/Imprint/Imprint.txt
+        source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+        start_line: 120
+      status: supported
+      summary: Waking countdown/eyes open and final reminder.
+    identity:
+      locators:
+      - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+        end_line: 40
+        file: +Transcripts From available tapes/Imprint/Imprint.txt
+        source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+        start_line: 32
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+        end_line: 51
+        file: +Transcripts From available tapes/Imprint/Imprint.txt
+        source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+        start_line: 32
+      status: supported
+      summary: select-information-or-experience; inhale-and-hold; internally-issue-imprint-cue; focus-attention-on-target;
+        exhale; later-issue-recall-cue
+    opener:
+      locators:
+      - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+        end_line: 31
+        file: +Transcripts From available tapes/Imprint/Imprint.txt
+        source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+        start_line: 26
+      status: supported
+      summary: Introduce memory placement and receptivity before target attention/cue association.
+    preparation:
+      locators:
+      - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+        end_line: 25
+        file: +Transcripts From available tapes/Imprint/Imprint.txt
+        source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+        start_line: 3
+      status: supported
+      summary: Supported uninterrupted relaxation, temporary setting-aside and counted ten-state entry.
+    provenance:
+      locators:
+      - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+        end_line: 145
+        file: +Transcripts From available tapes/Imprint/Imprint.txt
+        source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Source precision/retention claims
+        and legacy versus canonical command shortening require review; no confirmed automatic subconscious
+        process.
+    purpose:
+      locators:
+      - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+        end_line: 2
+        file: +Transcripts From available tapes/Imprint/Imprint.txt
+        source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+        start_line: 1
+      status: supported
+      summary: Deliberately encode selected experience/information and later retrieve it using a separate
+        recall cue.
+    rehearsal:
+      locators:
+      - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+        end_line: 51
+        file: +Transcripts From available tapes/Imprint/Imprint.txt
+        source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+        start_line: 32
+      status: not-present
+      summary: Two instruction presentations; no distinct explicit encoding-and-retrieval listener trial
+        is established.
+    safety_claims:
+      locators:
+      - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+        end_line: 51
+        file: +Transcripts From available tapes/Imprint/Imprint.txt
+        source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+        start_line: 28
+      status: supported
+      summary: guaranteed-detailed-sensory-encoding; indefinite-retention; immediate-perfect-retrieval;
+        automatic-whole-system-learning. Claims are classified as source assertions, not accepted OCF
+        mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+        end_line: 31
+        file: +Transcripts From available tapes/Imprint/Imprint.txt
+        source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+        start_line: 26
+      status: supported
+      summary: Eleven learning context, ten-state close, sleep-to-twenty interval, waking return.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+        end_line: 40
+        file: +Transcripts From available tapes/Imprint/Imprint.txt
+        source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+        start_line: 36
+      status: supported
+      summary: Retention is said to persist until directed otherwise, but no specific erase/reset command
+        is supplied.
+  source_extent:
+    content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+    end_line: 145
+    file: +Transcripts From available tapes/Imprint/Imprint.txt
+    source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9:command_association
-    operations: []
+    - review:OCF-COG-004:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9:closer
-    operations: []
+    - review:OCF-COG-004:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-COG-004:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9:future_use
-    operations: []
+    - review:OCF-COG-004:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9:return
-    operations: []
+    - review:OCF-COG-004:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9:main
-    operations: []
+    - review:OCF-COG-004:main
+    operations:
+    - select-information-or-experience
+    - inhale-and-hold
+    - internally-issue-imprint-cue
+    - focus-attention-on-target
+    - exhale
+    - later-issue-recall-cue
     status: inferred
   opener:
     evidence_refs:
-    - 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9:opener
-    operations: []
+    - review:OCF-COG-004:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-COG-004:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-COG-004:rehearsal
     operations: []
-    status: unknown
+    status: not-present
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-COG-004:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-COG-004:suspend_cancel_reset
+    operations:
+    - documented-suspend-cancel-reset
+    status: inferred
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-COG-004
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Source precision/retention claims and legacy versus canonical command shortening require review; no
+  confirmed automatic subconscious process.
+- Preserve selection/attention/recall linkage; guarantees and implied anatomical storage cannot be accepted
+  as mechanisms. Do not invent an erase command.
 schema_version: '1.0'
 states:
   preferred: []

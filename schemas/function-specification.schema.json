@@ -12,10 +12,23 @@
     "states": {"type": "object", "additionalProperties": false, "required": ["status", "required", "preferred"], "properties": {"status": {"enum": ["unknown", "inferred", "specified"]}, "required": {"type": "array", "items": {"type": "string"}}, "preferred": {"type": "array", "items": {"type": "string"}}}},
     "preparation": {"type": "array", "items": {"type": "string"}},
     "blocks": {"type": "object", "additionalProperties": {"$ref": "#/definitions/block"}, "required": ["purpose", "opener", "main", "association", "rehearsal", "future_use", "suspend_cancel_reset", "closer", "consolidation", "handoff", "safety_claims"]},
-    "questions": {"type": "array", "items": {"type": "string"}}
+    "questions": {"type": "array", "items": {"type": "string"}},
+    "analysis_review": {"$ref": "#/definitions/review"}
   },
-  "allOf": [{"if": {"properties": {"maturity": {"enum": ["draft", "pilot"]}}}, "then": {"properties": {"human_review": {"const": "required"}}}}],
-  "definitions": {"block": {
+  "allOf": [
+    {"if": {"properties": {"maturity": {"enum": ["draft", "pilot"]}}}, "then": {"properties": {"human_review": {"const": "required"}}}},
+    {"if": {"properties": {"extraction_status": {"const": "complete"}}}, "then": {"required": ["analysis_review"]}}
+  ],
+  "definitions": {
+    "locator": {"type": "object", "additionalProperties": false, "required": ["source_sha256", "file", "start_line", "end_line"], "properties": {"source_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "file": {"type": "string"}, "content_group_sha256": {"type": ["string", "null"]}, "start_line": {"type": "integer", "minimum": 1}, "end_line": {"type": "integer", "minimum": 1}}},
+    "answer": {"type": "object", "additionalProperties": false, "required": ["status", "summary", "locators"], "properties": {"status": {"enum": ["supported", "unknown", "not-present", "not-applicable", "inferred"]}, "summary": {"type": "string", "minLength": 1}, "locators": {"type": "array", "minItems": 1, "items": {"$ref": "#/definitions/locator"}}}},
+    "review": {"type": "object", "additionalProperties": false, "required": ["method", "family", "source_extent", "sections", "claim_categories", "scope"], "properties": {
+      "method": {"const": "complete-available-source-content-review"}, "family": {"type": "string"}, "source_extent": {"$ref": "#/definitions/locator"},
+      "scope": {"const": "documentary extraction; not narration approval, historical authentication or runtime state binding"},
+      "claim_categories": {"type": "array", "items": {"type": "string"}},
+      "sections": {"type": "object", "additionalProperties": {"$ref": "#/definitions/answer"}, "required": ["identity", "purpose", "preparation", "state", "opener", "main", "association", "rehearsal", "future_use", "suspend_cancel_reset", "closer", "consolidation", "handoff", "safety_claims", "conversion", "provenance"]}
+    }},
+    "block": {
     "type": "object", "additionalProperties": false, "required": ["status", "operations", "evidence_refs"],
     "properties": {"status": {"enum": ["unknown", "not-present", "not-applicable", "inferred", "specified"]},
       "operations": {"type": "array", "items": {"type": "string"}},

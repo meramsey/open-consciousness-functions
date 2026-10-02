@@ -1,0 +1,154 @@
+schema_version: "1.0"
+method: complete-source-text-inspection
+notes: Original analytical summaries, not narration or authenticated historical transcripts. Runtime states and editorial approval remain separate.
+functions:
+  OCF-COG-001:
+    title: Access to Information
+    source: "+Transcripts From available tapes/Access to Information/Access to Information.txt"
+    inspected_lines: [1, 147]
+    family: cognitive-retrieval
+    purpose: Access one's personal information/experience library; the source promises immediate availability rather than verification of accuracy.
+    preparation: Comfortable supported position, loosen clothing, eyes closed; count to ten; no repository-box step in this inspected version.
+    state: Ten-state preparation, eleven/access opening, then unspecified deeper learning position; later return is missing in the available derivative.
+    opener: Frame the information-retrieval task and enter a receptive learning context.
+    main: [request-personal-information, internally-state-retrieval-cue, specify-information-target, attend-to-words-images-feelings-or-sensations]
+    association: Cue is paired with selection of desired information and an asserted immediate response.
+    rehearsal: Explicitly recall a prior moment of knowledge/certainty, use the cue and explore information while awaiting the narrator's return call.
+    future_use: Retrieval cue plus chosen information target; no breath-hold condition is specified in the main instruction.
+    suspend_cancel_reset: unknown
+    closer: unknown
+    consolidation: unknown
+    handoff: unknown
+    claims: [guaranteed-immediate-memory-access, unverified-complete-personal-library, experiential-multimodal-retrieval]
+    conversion: Preserve voluntary recall/search and modality flexibility; perfect/immediate answers require review and accuracy caveats, not equivalence claims.
+    uncertainties: Closing/return and end conditions unavailable after the practice invitation; do not invent them. Source derivative accuracy and generation unverified.
+    locators: {purpose: [1, 1], preparation: [2, 24], state: [25, 38], opener: [25, 38], main: [39, 46], association: [43, 46], rehearsal: [47, 50], future_use: [43, 49], suspend_cancel_reset: [1, 147], closer: [50, 147], consolidation: [50, 147], handoff: [50, 147], safety_claims: [31, 49]}
+  OCF-COG-002:
+    title: Buy the Numbers
+    source: "+Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt"
+    inspected_lines: [1, 330]
+    family: cognitive-enhancement
+    purpose: Improve numerical memory, arithmetic, symbolic understanding and mathematical expression, with an optional intensification cue.
+    preparation: Comfortable uninterrupted posture, ordinary settling movements/breathing and temporary setting-aside in a repository representation.
+    state: Ten-state entry, eleven learning opening, ten-state closing; subsequent numbered sleep-like progression is incomplete and final return unavailable.
+    opener: Establish learning receptivity before broad mathematical-ability suggestions.
+    main: [associate-number-perception-with-memory, associate-arithmetic-with-speed-and-accuracy, associate-symbols-with-understanding-and-expression, intensify-via-breath-and-calculation-cue]
+    association: Inhale/hold, internally issue calculation cue, exhale; cue intensifies an otherwise asserted persistent improvement.
+    rehearsal: Instruction describes the procedure but no distinct listener practice trial is established in the inspected intelligible portion.
+    future_use: Use the cue to focus/intensify mathematical ability; repeated use is asserted to improve efficiency.
+    suspend_cancel_reset: unknown
+    closer: Reinforce future remembering, close the learning channel and return to ten-state rest.
+    consolidation: A subsequent numbered interval is present, but its complete sleep-entry explanation and final exit are not preserved here.
+    handoff: unknown
+    claims: [guaranteed-persistent-cognitive-improvement, broad-mathematical-accuracy, automatic-whole-system-learning]
+    conversion: Distinguish a deliberate math-task cue from promises of permanent ability; concrete rehearsal must be an explicit OCF design, not recovered content.
+    uncertainties: ASR count artifacts and missing later content do not establish timing, deliberate repetition or a complete return sequence.
+    locators: {purpose: [7, 8], preparation: [9, 25], state: [26, 64], opener: [54, 66], main: [67, 92], association: [88, 92], rehearsal: [67, 114], future_use: [88, 113], suspend_cancel_reset: [1, 330], closer: [109, 125], consolidation: [126, 330], handoff: [126, 330], safety_claims: [59, 92]}
+  OCF-COG-003:
+    statuses: {rehearsal: not-present}
+    title: Contemplation
+    source: "+Transcripts From available tapes/Contemplation/Contemplation.txt"
+    inspected_lines: [1, 93]
+    family: cognitive-open-close
+    purpose: Enter a voluntary contemplative communication/recall context described as communion with a greater/total self.
+    preparation: Supported uninterrupted relaxation and temporary setting-aside; counted ten-state preparation.
+    state: Eleven learning context closes to ten; sleep-to-twenty and waking-to-one shell are present. Future contemplative state is described separately.
+    opener: Prepare receptivity and distinguish learning context from future contemplation activation.
+    main: [close-eyes, inhale-and-hold, internally-issue-open-cue, exhale-and-rest-with-mind-awake, attend-to-remembered-experience-or-self-communication]
+    association: Open cue initiates contemplation; closed cue terminates it and is paired with ordinary waking return.
+    rehearsal: Two full instruction presentations are present; they are repeated teaching, not proof of two explicit listener performance trials.
+    future_use: Activate and communicate/recall as desired; terminate deliberately with the closed cue.
+    suspend_cancel_reset: Internal closed cue explicitly ends the activated context.
+    closer: Future-use reinforcement, learning-channel closure to ten, sleep/consolidation and waking return with open-cue reminder.
+    consolidation: Counted sleep-to-twenty shell present; effectiveness/automatic consolidation not established.
+    handoff: Counted waking return, eyes open; final reminder of future contemplation procedure.
+    claims: [greater-self-communication, guaranteed-memory-availability, physiological-relaxation, automatic-whole-system-learning]
+    conversion: Preserve deliberate open/close control; metaphysical and perfect-memory interpretations require explicit review rather than automatic secular equivalence.
+    uncertainties: Transcript is source-designated but not authenticated; breath holding and automatic outcome claims need content review.
+    locators: {purpose: [1, 2], preparation: [2, 24], state: [25, 30], opener: [25, 30], main: [31, 54], association: [31, 41], rehearsal: [31, 54], future_use: [31, 58], suspend_cancel_reset: [39, 41], closer: [55, 62], consolidation: [63, 75], handoff: [76, 93], safety_claims: [27, 54]}
+  OCF-COG-004:
+    statuses: {rehearsal: not-present}
+    title: Imprint
+    source: "+Transcripts From available tapes/Imprint/Imprint.txt"
+    inspected_lines: [1, 145]
+    family: cognitive-encoding-retrieval
+    purpose: Deliberately encode selected experience/information and later retrieve it using a separate recall cue.
+    preparation: Supported uninterrupted relaxation, temporary setting-aside and counted ten-state entry.
+    state: Eleven learning context, ten-state close, sleep-to-twenty interval, waking return.
+    opener: Introduce memory placement and receptivity before target attention/cue association.
+    main: [select-information-or-experience, inhale-and-hold, internally-issue-imprint-cue, focus-attention-on-target, exhale, later-issue-recall-cue]
+    association: Imprint cue is paired with attention/encoding; recall cue retrieves the selected sensory record. Legacy repeated imprint command differs from the canonical shortened metadata.
+    rehearsal: Two instruction presentations; no distinct explicit encoding-and-retrieval listener trial is established.
+    future_use: Encode a chosen target on demand; invoke recall for the whole retained record or selected parts.
+    suspend_cancel_reset: Retention is said to persist until directed otherwise, but no specific erase/reset command is supplied.
+    closer: Reinforce remembered use, close learning context to ten, sleep interval and waking return; final encoding reminder.
+    consolidation: Sleep-to-twenty interval described; repeated ASR twenties are not intelligible reinforcement evidence.
+    handoff: Waking countdown/eyes open and final reminder.
+    claims: [guaranteed-detailed-sensory-encoding, indefinite-retention, immediate-perfect-retrieval, automatic-whole-system-learning]
+    conversion: Preserve selection/attention/recall linkage; guarantees and implied anatomical storage cannot be accepted as mechanisms. Do not invent an erase command.
+    uncertainties: Source precision/retention claims and legacy versus canonical command shortening require review; no confirmed automatic subconscious process.
+    locators: {purpose: [1, 2], preparation: [3, 25], state: [26, 31], opener: [26, 31], main: [32, 51], association: [32, 40], rehearsal: [32, 51], future_use: [39, 54], suspend_cancel_reset: [36, 40], closer: [52, 64], consolidation: [65, 119], handoff: [120, 145], safety_claims: [28, 51]}
+  OCF-COG-005:
+    title: Options
+    source: "+Transcripts From available tapes/Options/Options.txt"
+    inspected_lines: [1, 183]
+    family: cognitive-alternatives
+    purpose: Consider possibilities/probabilities for a chosen life activity, including claimed information beyond personal experience.
+    preparation: Supported uninterrupted relaxation, temporary setting-aside and counted ten-state entry; ASR counts are corrupted.
+    state: Eleven learning opening, ten close, sleep-to-twenty instructions; final waking return unavailable in this derivative.
+    opener: Establish learning context before defining an activity-specific options request.
+    main: [select-life-activity, close-eyes-and-hold-breath, internally-issue-options-cue, exhale-with-eyes-closed, attend-to-presented-possibilities]
+    association: Cue plus chosen activity is associated with clear detailed options, purportedly supplied by a greater self.
+    rehearsal: Two teaching presentations; no separate explicit practice/selection trial is established.
+    future_use: Request alternatives for a chosen activity; repeated use is asserted to improve effectiveness.
+    suspend_cancel_reset: unknown
+    closer: Future-use reinforcement and learning-channel close to ten.
+    consolidation: Sleep-to-twenty explanation/count is present, followed by uninterpretable gaps/repetition.
+    handoff: unknown
+    claims: [accurate-probability-foresight, beyond-experience-information, greater-self-agency, automatic-whole-system-learning]
+    conversion: Deliberate option generation may be useful but is not equivalent to verified foresight; material purpose/claim changes require editorial review.
+    uncertainties: Missing ending and ASR artifacts preclude exact return/timing claims. No suspend/reset cue established.
+    locators: {purpose: [38, 46], preparation: [11, 33], state: [34, 37], opener: [34, 37], main: [38, 56], association: [38, 45], rehearsal: [38, 56], future_use: [38, 60], suspend_cancel_reset: [1, 183], closer: [57, 70], consolidation: [71, 183], handoff: [100, 183], safety_claims: [35, 56]}
+  OCF-COG-006:
+    title: Recall
+    source: "+Transcripts From available tapes/Recall/Recall.txt"
+    inspected_lines: [1, 189]
+    family: cognitive-retrieval
+    purpose: Recall a chosen past experience/information in detail.
+    preparation: Supported uninterrupted relaxation, temporary setting-aside and counted ten-state entry.
+    state: Eleven opening, ten close, sleep-to-twenty shell; waking ending absent in the inspected derivative.
+    opener: Introduce remembering and receptive learning context.
+    main: [select-past-experience, inhale-and-hold, internally-issue-recall-cue, attend-to-target-area, exhale]
+    association: Recall cue plus specified target is associated with immediate conscious detailed remembering.
+    rehearsal: Two teaching presentations; no distinct explicit listener recall trial is established.
+    future_use: Target-selective recall procedure, with asserted ease from repeated use.
+    suspend_cancel_reset: unknown
+    closer: Reinforce future remembering and close learning context to ten.
+    consolidation: Sleep-to-twenty explanation/count is present; later gap is not evidence of a particular reinforcement segment.
+    handoff: unknown
+    claims: [guaranteed-immediate-detailed-memory, automatic-whole-system-learning, ambiguous-religious-insertion]
+    conversion: Preserve voluntary retrieval strategy without asserting remembered material is necessarily accurate. Religious sentence in derivative is not a verified legacy instruction or OCF requirement.
+    uncertainties: Line26 religious insertion and numerous count/gap artifacts require audio authentication; final return missing. Do not silently correct the reference.
+    locators: {purpose: [1, 2], preparation: [2, 25], state: [27, 31], opener: [27, 31], main: [32, 49], association: [32, 40], rehearsal: [32, 49], future_use: [32, 53], suspend_cancel_reset: [1, 189], closer: [50, 57], consolidation: [58, 189], handoff: [88, 189], safety_claims: [26, 49]}
+  OCF-COG-007:
+    statuses: {rehearsal: not-present}
+    title: Think Fast
+    source: "+Transcripts From available tapes/Think Fast/Think Fast.txt"
+    inspected_lines: [1, 135]
+    family: cognitive-enhancement
+    purpose: Improve clarity, speed, observation and problem-solving with optional on-demand intensification.
+    preparation: Supported uninterrupted relaxation, temporary setting-aside and counted ten-state entry.
+    state: Eleven learning opening, ten close, sleep-to-twenty interval and waking return.
+    opener: Frame cognitive improvement and establish receptive learning context.
+    main: [associate-cognition-with-alertness-and-clarity, associate-problem-solving-with-calm-accuracy, intensify-via-inhale-hold-think-cue-and-exhale]
+    association: PLUS-THINK intensifies the asserted persistent improvement; canonical command remains unchanged.
+    rehearsal: Repeated teaching propositions/procedure, without a distinct explicit problem-solving practice trial.
+    future_use: Use thought cue with breathing procedure when more mental ability is desired; ongoing improvement is claimed.
+    suspend_cancel_reset: unknown
+    closer: Future-use reinforcement, learning-context close to ten, sleep interval and waking return with reminder.
+    consolidation: Sleep-to-twenty segment present; repetitive transcription tokens are not accepted as intentional underlay.
+    handoff: Counted waking return and eyes open; final reminder has apparent ASR cue corruption, not an accepted command variant.
+    claims: [guaranteed-persistent-cognitive-improvement, accuracy-and-speed, automatic-whole-system-learning]
+    conversion: A deliberate task-focus cue can be considered, but permanent improvement/accuracy claims and breath holding require review; no canonical command renaming.
+    uncertainties: Repeated ASR material and garbled final cue need source authentication; suspend/reset not specified in intelligible content.
+    locators: {purpose: [1, 1], preparation: [2, 29], state: [30, 34], opener: [30, 34], main: [35, 44], association: [38, 44], rehearsal: [35, 44], future_use: [38, 47], suspend_cancel_reset: [1, 135], closer: [45, 57], consolidation: [58, 100], handoff: [101, 135], safety_claims: [32, 44]}

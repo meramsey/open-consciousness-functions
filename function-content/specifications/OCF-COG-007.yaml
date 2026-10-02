@@ -1,65 +1,254 @@
+analysis_review:
+  claim_categories:
+  - guaranteed-persistent-cognitive-improvement
+  - accuracy-and-speed
+  - automatic-whole-system-learning
+  family: cognitive-enhancement
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
+        end_line: 44
+        file: +Transcripts From available tapes/Think Fast/Think Fast.txt
+        source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+        start_line: 38
+      status: supported
+      summary: PLUS-THINK intensifies the asserted persistent improvement; canonical command remains unchanged.
+    closer:
+      locators:
+      - content_group_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
+        end_line: 57
+        file: +Transcripts From available tapes/Think Fast/Think Fast.txt
+        source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+        start_line: 45
+      status: supported
+      summary: Future-use reinforcement, learning-context close to ten, sleep interval and waking return
+        with reminder.
+    consolidation:
+      locators:
+      - content_group_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
+        end_line: 100
+        file: +Transcripts From available tapes/Think Fast/Think Fast.txt
+        source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+        start_line: 58
+      status: supported
+      summary: Sleep-to-twenty segment present; repetitive transcription tokens are not accepted as intentional
+        underlay.
+    conversion:
+      locators:
+      - content_group_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
+        end_line: 44
+        file: +Transcripts From available tapes/Think Fast/Think Fast.txt
+        source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+        start_line: 35
+      status: inferred
+      summary: A deliberate task-focus cue can be considered, but permanent improvement/accuracy claims
+        and breath holding require review; no canonical command renaming.
+    future_use:
+      locators:
+      - content_group_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
+        end_line: 47
+        file: +Transcripts From available tapes/Think Fast/Think Fast.txt
+        source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+        start_line: 38
+      status: supported
+      summary: Use thought cue with breathing procedure when more mental ability is desired; ongoing improvement
+        is claimed.
+    handoff:
+      locators:
+      - content_group_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
+        end_line: 135
+        file: +Transcripts From available tapes/Think Fast/Think Fast.txt
+        source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+        start_line: 101
+      status: supported
+      summary: Counted waking return and eyes open; final reminder has apparent ASR cue corruption, not
+        an accepted command variant.
+    identity:
+      locators:
+      - content_group_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
+        end_line: 44
+        file: +Transcripts From available tapes/Think Fast/Think Fast.txt
+        source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+        start_line: 38
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
+        end_line: 44
+        file: +Transcripts From available tapes/Think Fast/Think Fast.txt
+        source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+        start_line: 35
+      status: supported
+      summary: associate-cognition-with-alertness-and-clarity; associate-problem-solving-with-calm-accuracy;
+        intensify-via-inhale-hold-think-cue-and-exhale
+    opener:
+      locators:
+      - content_group_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
+        end_line: 34
+        file: +Transcripts From available tapes/Think Fast/Think Fast.txt
+        source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+        start_line: 30
+      status: supported
+      summary: Frame cognitive improvement and establish receptive learning context.
+    preparation:
+      locators:
+      - content_group_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
+        end_line: 29
+        file: +Transcripts From available tapes/Think Fast/Think Fast.txt
+        source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+        start_line: 2
+      status: supported
+      summary: Supported uninterrupted relaxation, temporary setting-aside and counted ten-state entry.
+    provenance:
+      locators:
+      - content_group_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
+        end_line: 135
+        file: +Transcripts From available tapes/Think Fast/Think Fast.txt
+        source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Repeated ASR material and garbled
+        final cue need source authentication; suspend/reset not specified in intelligible content.
+    purpose:
+      locators:
+      - content_group_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
+        end_line: 1
+        file: +Transcripts From available tapes/Think Fast/Think Fast.txt
+        source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+        start_line: 1
+      status: supported
+      summary: Improve clarity, speed, observation and problem-solving with optional on-demand intensification.
+    rehearsal:
+      locators:
+      - content_group_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
+        end_line: 44
+        file: +Transcripts From available tapes/Think Fast/Think Fast.txt
+        source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+        start_line: 35
+      status: not-present
+      summary: Repeated teaching propositions/procedure, without a distinct explicit problem-solving practice
+        trial.
+    safety_claims:
+      locators:
+      - content_group_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
+        end_line: 44
+        file: +Transcripts From available tapes/Think Fast/Think Fast.txt
+        source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+        start_line: 32
+      status: supported
+      summary: guaranteed-persistent-cognitive-improvement; accuracy-and-speed; automatic-whole-system-learning.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
+        end_line: 34
+        file: +Transcripts From available tapes/Think Fast/Think Fast.txt
+        source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+        start_line: 30
+      status: supported
+      summary: Eleven learning opening, ten close, sleep-to-twenty interval and waking return.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
+        end_line: 135
+        file: +Transcripts From available tapes/Think Fast/Think Fast.txt
+        source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Repeated ASR
+        material and garbled final cue need source authentication; suspend/reset not specified in intelligible
+        content.
+  source_extent:
+    content_group_sha256: 8df5bc5406f26b27be39b145d5101acc281de3a6a5dd19174e0bb1deff63f394
+    end_line: 135
+    file: +Transcripts From available tapes/Think Fast/Think Fast.txt
+    source_sha256: 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2:command_association
-    operations: []
+    - review:OCF-COG-007:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2:closer
-    operations: []
+    - review:OCF-COG-007:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-COG-007:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2:future_use
-    operations: []
+    - review:OCF-COG-007:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2:return
-    operations: []
+    - review:OCF-COG-007:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2:main
-    operations: []
+    - review:OCF-COG-007:main
+    operations:
+    - associate-cognition-with-alertness-and-clarity
+    - associate-problem-solving-with-calm-accuracy
+    - intensify-via-inhale-hold-think-cue-and-exhale
     status: inferred
   opener:
     evidence_refs:
-    - 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2:opener
-    operations: []
+    - review:OCF-COG-007:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-COG-007:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-COG-007:rehearsal
     operations: []
-    status: unknown
+    status: not-present
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-COG-007:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-COG-007:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-COG-007
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Repeated ASR material and garbled final cue need source authentication; suspend/reset not specified
+  in intelligible content.
+- A deliberate task-focus cue can be considered, but permanent improvement/accuracy claims and breath
+  holding require review; no canonical command renaming.
 schema_version: '1.0'
 states:
   preferred: []
