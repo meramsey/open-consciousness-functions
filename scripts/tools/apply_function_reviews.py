@@ -34,6 +34,19 @@ SECTIONS = (
 
 
 def apply_review(function_id: str, notes: dict, corpus: Path) -> dict:
+    required = (set(SECTIONS) - {"identity", "provenance", "safety_claims"}) | {
+        "family",
+        "source",
+        "inspected_lines",
+        "claims",
+        "locators",
+        "uncertainties",
+    }
+    if required - notes.keys():
+        raise OCFError(
+            "manual review skipped required analytical questions: "
+            + ", ".join(sorted(required - notes.keys()))
+        )
     layers = load_layers(function_id)
     data = (corpus / notes["source"]).read_bytes()
     sha = hashlib.sha256(data).hexdigest()
