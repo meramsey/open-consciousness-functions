@@ -1,65 +1,258 @@
+analysis_review:
+  claim_categories:
+  - expanded-physical-hearing-range
+  - softest-sound-perception
+  - repeated-sound-reduction
+  - persistent-until-desired-return
+  family: adjustable-sensory-perception
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+        end_line: 47
+        file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+        source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+        start_line: 36
+      status: supported
+      summary: MORE claims sharper/clearer and newly perceived high/low sounds; LESS reduces disturbing
+        sound importance, continuing until voluntary normal return.
+    closer:
+      locators:
+      - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+        end_line: 56
+        file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+        source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+        start_line: 48
+      status: supported
+      summary: Future-use reinforcement and learning-context closure to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+        end_line: 154
+        file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+        source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+        start_line: 57
+      status: supported
+      summary: Sleep-to-twenty shell present; repeated ASR numbers do not establish reinforcement or measured
+        timing.
+    conversion:
+      locators:
+      - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+        end_line: 47
+        file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+        source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+        start_line: 36
+      status: inferred
+      summary: Physical-hearing enhancement and attention allocation are not equivalent. Existing Hearing
+        pilot reinterpretation remains frozen/provisional and is not propagated as policy.
+    future_use:
+      locators:
+      - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+        end_line: 51
+        file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+        source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+        start_line: 36
+      status: supported
+      summary: Choose a mode and use its cue/procedure; source says effect continues until desire for
+        normal hearing, without an explicit reset phrase.
+    handoff:
+      locators:
+      - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+        end_line: 175
+        file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+        source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+        start_line: 155
+      status: supported
+      summary: Waking countdown, eyes-open return and target reminder where preserved.
+    identity:
+      locators:
+      - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+        end_line: 47
+        file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+        source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+        start_line: 36
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+        end_line: 47
+        file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+        source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+        start_line: 36
+      status: supported
+      summary: choose-hearing-direction; close-eyes-inhale-and-hold; issue-more-or-less-hearing-cue; exhale-and-open-eyes;
+        repeat-less-mode-if-desired
+    opener:
+      locators:
+      - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+        end_line: 35
+        file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+        source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+        start_line: 31
+      status: supported
+      summary: Orient to the function and establish receptive learning context before the target instruction.
+    preparation:
+      locators:
+      - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+        end_line: 30
+        file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+        source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+        start_line: 2
+      status: supported
+      summary: Supported uninterrupted relaxation, temporary repository setting-aside and counted ten-state
+        entry where described.
+    provenance:
+      locators:
+      - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+        end_line: 175
+        file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+        source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Source-designated text is unauthenticated;
+        corrupted counts/ambient material cannot establish original repetition, timing or mechanism.
+    purpose:
+      locators:
+      - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+        end_line: 1
+        file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+        source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+        start_line: 1
+      status: supported
+      summary: Regulate perceived sound with more/less modes, including claimed physical sensitivity/frequency-range
+        enhancement.
+    rehearsal:
+      locators:
+      - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+        end_line: 51
+        file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+        source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+        start_line: 36
+      status: not-present
+      summary: Repeated teaching does not prove an explicit listener performance trial; no distinct intelligible
+        trial established in the available text.
+    safety_claims:
+      locators:
+      - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+        end_line: 47
+        file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+        source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+        start_line: 36
+      status: supported
+      summary: expanded-physical-hearing-range; softest-sound-perception; repeated-sound-reduction; persistent-until-desired-return.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+        end_line: 35
+        file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+        source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+        start_line: 31
+      status: supported
+      summary: Reference learning shell uses ten preparation, eleven opening, ten close and sleep-to-twenty/waking
+        return where preserved; not runtime OCF state requirements.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+        end_line: 47
+        file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+        source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+        start_line: 46
+      status: supported
+      summary: Voluntary return to normal hearing is described, but no specific reset command is given.
+  source_extent:
+    content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+    end_line: 175
+    file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+    source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:command_association
-    operations: []
+    - review:OCF-SEN-001:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:closer
-    operations: []
+    - review:OCF-SEN-001:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-SEN-001:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:future_use
-    operations: []
+    - review:OCF-SEN-001:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:return
-    operations: []
+    - review:OCF-SEN-001:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:main
-    operations: []
+    - review:OCF-SEN-001:main
+    operations:
+    - choose-hearing-direction
+    - close-eyes-inhale-and-hold
+    - issue-more-or-less-hearing-cue
+    - exhale-and-open-eyes
+    - repeat-less-mode-if-desired
     status: inferred
   opener:
     evidence_refs:
-    - 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:opener
-    operations: []
+    - review:OCF-SEN-001:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SEN-001:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SEN-001:rehearsal
     operations: []
-    status: unknown
+    status: not-present
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-SEN-001:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-SEN-001:suspend_cancel_reset
+    operations:
+    - documented-suspend-cancel-reset
+    status: inferred
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-SEN-001
 human_review: required
 maturity: pilot
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Source-designated text is unauthenticated; corrupted counts/ambient material cannot establish original
+  repetition, timing or mechanism.
+- Physical-hearing enhancement and attention allocation are not equivalent. Existing Hearing pilot reinterpretation
+  remains frozen/provisional and is not propagated as policy.
 schema_version: '1.0'
 states:
   preferred: []

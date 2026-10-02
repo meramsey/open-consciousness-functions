@@ -1,65 +1,256 @@
+analysis_review:
+  claim_categories:
+  - tear-and-eyelid-regulation
+  - optical-focus-improvement
+  - eye-brain-signal-accuracy
+  - persistent-physiological-improvement
+  family: sensory-organ-improvement-intensification
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+        end_line: 58
+        file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+        source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+        start_line: 55
+      status: supported
+      summary: One intensification cue is in this source; canonical MORE/LESS metadata does not establish
+        a historical two-mode seeing instruction here.
+    closer:
+      locators:
+      - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+        end_line: 72
+        file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+        source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+        start_line: 59
+      status: supported
+      summary: Future-use reinforcement and learning-context closure to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+        end_line: 212
+        file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+        source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+        start_line: 73
+      status: supported
+      summary: Sleep-to-twenty shell present; repeated ASR numbers do not establish reinforcement or measured
+        timing.
+    conversion:
+      locators:
+      - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+        end_line: 58
+        file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+        source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+        start_line: 35
+      status: inferred
+      summary: Do not propagate Hearing's attention reinterpretation to Seeing. Ongoing physical sight
+        claims and canonical mode differences require independent review.
+    future_use:
+      locators:
+      - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+        end_line: 63
+        file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+        source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+        start_line: 53
+      status: supported
+      summary: Cue intensifies asserted continued seeing improvement toward a desired condition.
+    handoff:
+      locators:
+      - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+        end_line: 235
+        file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+        source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+        start_line: 213
+      status: supported
+      summary: Waking countdown, eyes-open return and target reminder where preserved.
+    identity:
+      locators:
+      - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+        end_line: 58
+        file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+        source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+        start_line: 55
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+        end_line: 58
+        file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+        source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+        start_line: 35
+      status: supported
+      summary: represent-tear-glands-eyelids-light-adaptation-and-focus; imagine-eye-to-brain-signal-improvement;
+        inhale-hold-and-issue-legacy-see-better-cue; exhale
+    opener:
+      locators:
+      - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+        end_line: 34
+        file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+        source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+        start_line: 30
+      status: supported
+      summary: Orient to the function and establish receptive learning context before the target instruction.
+    preparation:
+      locators:
+      - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+        end_line: 29
+        file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+        source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+        start_line: 2
+      status: supported
+      summary: Supported uninterrupted relaxation, temporary repository setting-aside and counted ten-state
+        entry where described.
+    provenance:
+      locators:
+      - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+        end_line: 235
+        file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+        source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Source-designated text is unauthenticated;
+        corrupted counts/ambient material cannot establish original repetition, timing or mechanism.
+    purpose:
+      locators:
+      - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+        end_line: 1
+        file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+        source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+        start_line: 1
+      status: supported
+      summary: Claimed ongoing improvement of physical sight and seeing-system function.
+    rehearsal:
+      locators:
+      - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+        end_line: 63
+        file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+        source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+        start_line: 35
+      status: not-present
+      summary: Repeated teaching does not prove an explicit listener performance trial; no distinct intelligible
+        trial established in the available text.
+    safety_claims:
+      locators:
+      - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+        end_line: 58
+        file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+        source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+        start_line: 35
+      status: supported
+      summary: tear-and-eyelid-regulation; optical-focus-improvement; eye-brain-signal-accuracy; persistent-physiological-improvement.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+        end_line: 34
+        file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+        source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+        start_line: 30
+      status: supported
+      summary: Reference learning shell uses ten preparation, eleven opening, ten close and sleep-to-twenty/waking
+        return where preserved; not runtime OCF state requirements.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+        end_line: 235
+        file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+        source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Source-designated
+        text is unauthenticated; corrupted counts/ambient material cannot establish original repetition,
+        timing or mechanism.
+  source_extent:
+    content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+    end_line: 235
+    file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+    source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c:command_association
-    operations: []
+    - review:OCF-SEN-002:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c:closer
-    operations: []
+    - review:OCF-SEN-002:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-SEN-002:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c:future_use
-    operations: []
+    - review:OCF-SEN-002:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c:return
-    operations: []
+    - review:OCF-SEN-002:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c:main
-    operations: []
+    - review:OCF-SEN-002:main
+    operations:
+    - represent-tear-glands-eyelids-light-adaptation-and-focus
+    - imagine-eye-to-brain-signal-improvement
+    - inhale-hold-and-issue-legacy-see-better-cue
+    - exhale
     status: inferred
   opener:
     evidence_refs:
-    - 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c:opener
-    operations: []
+    - review:OCF-SEN-002:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SEN-002:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SEN-002:rehearsal
     operations: []
-    status: unknown
+    status: not-present
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-SEN-002:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SEN-002:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-SEN-002
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Source-designated text is unauthenticated; corrupted counts/ambient material cannot establish original
+  repetition, timing or mechanism.
+- Do not propagate Hearing's attention reinterpretation to Seeing. Ongoing physical sight claims and canonical
+  mode differences require independent review.
 schema_version: '1.0'
 states:
   preferred: []

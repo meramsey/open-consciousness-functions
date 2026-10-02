@@ -1,65 +1,259 @@
+analysis_review:
+  claim_categories:
+  - guaranteed-dream-content-control
+  - guaranteed-dream-recall
+  - automatic-whole-system-learning
+  family: selected-dream-experience
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
+        end_line: 47
+        file: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+        source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+        start_line: 37
+      status: supported
+      summary: Deliberate legacy cue paired with selected goal and breathing; canonical variants/aliases
+        are separate identity metadata, not silently changed source speech.
+    closer:
+      locators:
+      - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
+        end_line: 84
+        file: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+        source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+        start_line: 71
+      status: supported
+      summary: Future-use reinforcement and learning-context closure to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
+        end_line: 123
+        file: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+        source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+        start_line: 86
+      status: supported
+      summary: Sleep-to-twenty shell present; repeated ASR numbers do not establish reinforcement or measured
+        timing.
+    conversion:
+      locators:
+      - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
+        end_line: 69
+        file: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+        source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+        start_line: 37
+      status: inferred
+      summary: Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding
+        and automatic whole-system learning need review. Reframing a physical/metaphysical goal is a material
+        choice, not assumed equivalence.
+    future_use:
+      locators:
+      - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
+        end_line: 74
+        file: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+        source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+        start_line: 37
+      status: supported
+      summary: Target-selective dream cue with claimed similar dream composition and joyful detailed waking
+        recall.
+    handoff:
+      locators:
+      - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
+        end_line: 164
+        file: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+        source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+        start_line: 124
+      status: supported
+      summary: Waking countdown, eyes-open return and target reminder where preserved.
+    identity:
+      locators:
+      - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
+        end_line: 47
+        file: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+        source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+        start_line: 37
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
+        end_line: 69
+        file: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+        source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+        start_line: 37
+      status: supported
+      summary: select-desired-dream-pattern; inhale-and-hold; issue-legacy-theme-dream-sleep-cue; exhale-and-breathe-slowly;
+        enter-sleep
+    opener:
+      locators:
+      - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
+        end_line: 36
+        file: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+        source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+        start_line: 30
+      status: supported
+      summary: Orient to the function and establish receptive learning context before the target instruction.
+    preparation:
+      locators:
+      - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
+        end_line: 29
+        file: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+        source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+        start_line: 7
+      status: supported
+      summary: Supported uninterrupted relaxation, temporary repository setting-aside and counted ten-state
+        entry where described.
+    provenance:
+      locators:
+      - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
+        end_line: 164
+        file: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+        source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Source-designated text is unauthenticated;
+        corrupted counts/ambient material cannot establish original repetition, timing or mechanism.
+    purpose:
+      locators:
+      - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
+        end_line: 6
+        file: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+        source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+        start_line: 6
+      status: supported
+      summary: Choose a desired dream pattern and remember a corresponding dream on waking.
+    rehearsal:
+      locators:
+      - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
+        end_line: 69
+        file: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+        source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+        start_line: 37
+      status: not-present
+      summary: Repeated teaching does not prove an explicit listener performance trial; no distinct intelligible
+        trial established in the available text.
+    safety_claims:
+      locators:
+      - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
+        end_line: 69
+        file: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+        source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+        start_line: 37
+      status: supported
+      summary: guaranteed-dream-content-control; guaranteed-dream-recall; automatic-whole-system-learning.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
+        end_line: 36
+        file: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+        source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+        start_line: 30
+      status: supported
+      summary: Reference learning shell uses ten preparation, eleven opening, ten close and sleep-to-twenty/waking
+        return where preserved; not runtime OCF state requirements.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
+        end_line: 164
+        file: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+        source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Source-designated
+        text is unauthenticated; corrupted counts/ambient material cannot establish original repetition,
+        timing or mechanism.
+  source_extent:
+    content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
+    end_line: 164
+    file: +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt
+    source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3:command_association
-    operations: []
+    - review:OCF-SLP-003:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3:closer
-    operations: []
+    - review:OCF-SLP-003:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-SLP-003:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3:future_use
-    operations: []
+    - review:OCF-SLP-003:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3:return
-    operations: []
+    - review:OCF-SLP-003:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3:main
-    operations: []
+    - review:OCF-SLP-003:main
+    operations:
+    - select-desired-dream-pattern
+    - inhale-and-hold
+    - issue-legacy-theme-dream-sleep-cue
+    - exhale-and-breathe-slowly
+    - enter-sleep
     status: inferred
   opener:
     evidence_refs:
-    - 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3:opener
-    operations: []
+    - review:OCF-SLP-003:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SLP-003:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SLP-003:rehearsal
     operations: []
-    status: unknown
+    status: not-present
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-SLP-003:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SLP-003:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-SLP-003
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Source-designated text is unauthenticated; corrupted counts/ambient material cannot establish original
+  repetition, timing or mechanism.
+- Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and automatic
+  whole-system learning need review. Reframing a physical/metaphysical goal is a material choice, not
+  assumed equivalence.
 schema_version: '1.0'
 states:
   preferred: []

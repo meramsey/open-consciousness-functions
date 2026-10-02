@@ -1,65 +1,261 @@
+analysis_review:
+  claim_categories:
+  - guaranteed-sleep-entry
+  - physiological-healing-regeneration
+  - guaranteed-refreshed-waking
+  family: sleep-restoration-claims
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
+        end_line: 42
+        file: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+        source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+        start_line: 33
+      status: supported
+      summary: Deliberate legacy cue paired with selected goal and breathing; canonical variants/aliases
+        are separate identity metadata, not silently changed source speech.
+    closer:
+      locators:
+      - content_group_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
+        end_line: 61
+        file: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+        source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+        start_line: 53
+      status: supported
+      summary: Future-use reinforcement and learning-context closure to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
+        end_line: 250
+        file: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+        source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+        start_line: 62
+      status: supported
+      summary: Sleep-to-twenty shell present; repeated ASR numbers do not establish reinforcement or measured
+        timing.
+    conversion:
+      locators:
+      - content_group_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
+        end_line: 52
+        file: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+        source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+        start_line: 33
+      status: inferred
+      summary: Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding
+        and automatic whole-system learning need review. Reframing a physical/metaphysical goal is a material
+        choice, not assumed equivalence.
+    future_use:
+      locators:
+      - content_group_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
+        end_line: 57
+        file: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+        source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+        start_line: 33
+      status: supported
+      summary: Sleep activation with claimed overnight restoration and refreshed waking; no user-specified
+        waking interval established.
+    handoff:
+      locators:
+      - content_group_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
+        end_line: 250
+        file: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+        source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+        start_line: 79
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Final waking
+        ending is absent after repetitive twenties; don't infer intended session termination from function
+        title. Canonical RESTORE differs from source cue.
+    identity:
+      locators:
+      - content_group_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
+        end_line: 42
+        file: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+        source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+        start_line: 33
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
+        end_line: 52
+        file: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+        source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+        start_line: 33
+      status: supported
+      summary: choose-sleep-restoration-goal; inhale-and-hold; issue-legacy-heal-heal-cue; exhale; enter-sleep
+    opener:
+      locators:
+      - content_group_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
+        end_line: 33
+        file: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+        source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+        start_line: 28
+      status: supported
+      summary: Orient to the function and establish receptive learning context before the target instruction.
+    preparation:
+      locators:
+      - content_group_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
+        end_line: 27
+        file: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+        source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+        start_line: 3
+      status: supported
+      summary: Supported uninterrupted relaxation, temporary repository setting-aside and counted ten-state
+        entry where described.
+    provenance:
+      locators:
+      - content_group_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
+        end_line: 250
+        file: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+        source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Final waking ending is absent
+        after repetitive twenties; don't infer intended session termination from function title. Canonical
+        RESTORE differs from source cue.
+    purpose:
+      locators:
+      - content_group_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
+        end_line: 2
+        file: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+        source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+        start_line: 1
+      status: supported
+      summary: Sleep with claimed body restoration/healing/regeneration.
+    rehearsal:
+      locators:
+      - content_group_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
+        end_line: 57
+        file: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+        source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+        start_line: 33
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Final waking
+        ending is absent after repetitive twenties; don't infer intended session termination from function
+        title. Canonical RESTORE differs from source cue.
+    safety_claims:
+      locators:
+      - content_group_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
+        end_line: 52
+        file: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+        source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+        start_line: 33
+      status: supported
+      summary: guaranteed-sleep-entry; physiological-healing-regeneration; guaranteed-refreshed-waking.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
+        end_line: 33
+        file: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+        source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+        start_line: 28
+      status: supported
+      summary: Reference learning shell uses ten preparation, eleven opening, ten close and sleep-to-twenty/waking
+        return where preserved; not runtime OCF state requirements.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
+        end_line: 250
+        file: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+        source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Final waking
+        ending is absent after repetitive twenties; don't infer intended session termination from function
+        title. Canonical RESTORE differs from source cue.
+  source_extent:
+    content_group_sha256: b58bbe16b2153dfda65cb0f401d262dded7e4c8bae428b9758f9651403f4f4c8
+    end_line: 250
+    file: +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt
+    source_sha256: 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411:command_association
-    operations: []
+    - review:OCF-SLP-001:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411:closer
-    operations: []
+    - review:OCF-SLP-001:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-SLP-001:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411:future_use
-    operations: []
+    - review:OCF-SLP-001:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411:return
+    - review:OCF-SLP-001:handoff
     operations: []
-    status: inferred
+    status: unknown
   main:
     evidence_refs:
-    - 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411:main
-    operations: []
+    - review:OCF-SLP-001:main
+    operations:
+    - choose-sleep-restoration-goal
+    - inhale-and-hold
+    - issue-legacy-heal-heal-cue
+    - exhale
+    - enter-sleep
     status: inferred
   opener:
     evidence_refs:
-    - 059b990045c92c24597d27bba2795a4c825f5113799809cbba4101428f7d9411:opener
-    operations: []
+    - review:OCF-SLP-001:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SLP-001:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SLP-001:rehearsal
     operations: []
     status: unknown
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-SLP-001:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SLP-001:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-SLP-001
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Final waking ending is absent after repetitive twenties; don't infer intended session termination from
+  function title. Canonical RESTORE differs from source cue.
+- Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and automatic
+  whole-system learning need review. Reframing a physical/metaphysical goal is a material choice, not
+  assumed equivalence.
 schema_version: '1.0'
 states:
   preferred: []

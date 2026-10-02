@@ -1,64 +1,259 @@
+analysis_review:
+  claim_categories:
+  - guaranteed-habit-erasure
+  - whole-system-pattern-removal
+  - automatic-whole-system-learning
+  family: habit-pattern-reduction
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+        end_line: 156
+        file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+        source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+        start_line: 148
+      status: supported
+      summary: Deliberate legacy cue paired with selected goal and breathing; canonical variants/aliases
+        are separate identity metadata, not silently changed source speech.
+    closer:
+      locators:
+      - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+        end_line: 175
+        file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+        source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+        start_line: 167
+      status: supported
+      summary: Future-use reinforcement and learning-context closure to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+        end_line: 207
+        file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+        source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+        start_line: 176
+      status: supported
+      summary: Sleep-to-twenty shell present; repeated ASR numbers do not establish reinforcement or measured
+        timing.
+    conversion:
+      locators:
+      - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+        end_line: 166
+        file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+        source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+        start_line: 148
+      status: inferred
+      summary: Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding
+        and automatic whole-system learning need review. Reframing a physical/metaphysical goal is a material
+        choice, not assumed equivalence.
+    future_use:
+      locators:
+      - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+        end_line: 170
+        file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+        source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+        start_line: 148
+      status: supported
+      summary: Conditional use when selected habit appears; deliberate desire/recognition matters, not
+        any accidental cue occurrence.
+    handoff:
+      locators:
+      - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+        end_line: 222
+        file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+        source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+        start_line: 208
+      status: supported
+      summary: Waking countdown, eyes-open return and target reminder where preserved.
+    identity:
+      locators:
+      - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+        end_line: 156
+        file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+        source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+        start_line: 148
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+        end_line: 166
+        file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+        source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+        start_line: 148
+      status: supported
+      summary: recognize-unwanted-pattern-as-it-arises; inhale-and-hold; issue-no-more-cue; exhale; associate-pattern-with-progressive-reduction
+    opener:
+      locators:
+      - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+        end_line: 147
+        file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+        source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+        start_line: 144
+      status: supported
+      summary: Orient to the function and establish receptive learning context before the target instruction.
+    preparation:
+      locators:
+      - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+        end_line: 143
+        file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+        source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+        start_line: 8
+      status: supported
+      summary: Supported uninterrupted relaxation, temporary repository setting-aside and counted ten-state
+        entry where described.
+    provenance:
+      locators:
+      - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+        end_line: 222
+        file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+        source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Corrupted counts and possible
+        underlay196-207 are not authenticated reinforcement. No specific undo/reversal or habit-type exception
+        is supplied.
+    purpose:
+      locators:
+      - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+        end_line: 7
+        file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+        source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+        start_line: 6
+      status: supported
+      summary: Reduce/remove an unwanted physical or mental habit pattern when it arises.
+    rehearsal:
+      locators:
+      - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+        end_line: 166
+        file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+        source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+        start_line: 148
+      status: not-present
+      summary: Repeated teaching does not prove an explicit listener performance trial; no distinct intelligible
+        trial established in the available text.
+    safety_claims:
+      locators:
+      - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+        end_line: 166
+        file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+        source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+        start_line: 148
+      status: supported
+      summary: guaranteed-habit-erasure; whole-system-pattern-removal; automatic-whole-system-learning.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+        end_line: 147
+        file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+        source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+        start_line: 144
+      status: supported
+      summary: Reference learning shell uses ten preparation, eleven opening, ten close and sleep-to-twenty/waking
+        return where preserved; not runtime OCF state requirements.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+        end_line: 222
+        file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+        source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Corrupted counts
+        and possible underlay196-207 are not authenticated reinforcement. No specific undo/reversal or
+        habit-type exception is supplied.
+  source_extent:
+    content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+    end_line: 222
+    file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+    source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6:command_association
-    operations: []
+    - review:OCF-LIF-001:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6:closer
-    operations: []
+    - review:OCF-LIF-001:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-LIF-001:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6:future_use
-    operations: []
+    - review:OCF-LIF-001:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6:return
-    operations: []
+    - review:OCF-LIF-001:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-LIF-001:main
+    operations:
+    - recognize-unwanted-pattern-as-it-arises
+    - inhale-and-hold
+    - issue-no-more-cue
+    - exhale
+    - associate-pattern-with-progressive-reduction
+    status: inferred
   opener:
     evidence_refs:
-    - 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6:opener
-    operations: []
+    - review:OCF-LIF-001:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-LIF-001:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-LIF-001:rehearsal
     operations: []
-    status: unknown
+    status: not-present
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-LIF-001:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-LIF-001:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-LIF-001
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Corrupted counts and possible underlay196-207 are not authenticated reinforcement. No specific undo/reversal
+  or habit-type exception is supplied.
+- Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and automatic
+  whole-system learning need review. Reframing a physical/metaphysical goal is a material choice, not
+  assumed equivalence.
 schema_version: '1.0'
 states:
   preferred: []

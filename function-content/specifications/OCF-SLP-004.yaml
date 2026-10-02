@@ -1,64 +1,264 @@
+analysis_review:
+  claim_categories:
+  - guaranteed-sleep-entry
+  - automatic-optimal-problem-solution
+  - guaranteed-waking-answer
+  family: sleep-problem-incubation
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
+        end_line: 39
+        file: +Transcripts From available tapes/Wake Know/Wake Know.txt
+        source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+        start_line: 32
+      status: supported
+      summary: Deliberate legacy cue paired with selected goal and breathing; canonical variants/aliases
+        are separate identity metadata, not silently changed source speech.
+    closer:
+      locators:
+      - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
+        end_line: 56
+        file: +Transcripts From available tapes/Wake Know/Wake Know.txt
+        source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+        start_line: 48
+      status: supported
+      summary: Future-use reinforcement and learning-context closure to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
+        end_line: 157
+        file: +Transcripts From available tapes/Wake Know/Wake Know.txt
+        source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+        start_line: 57
+      status: supported
+      summary: Sleep-to-twenty shell present; repeated ASR numbers do not establish reinforcement or measured
+        timing.
+    conversion:
+      locators:
+      - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
+        end_line: 47
+        file: +Transcripts From available tapes/Wake Know/Wake Know.txt
+        source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+        start_line: 32
+      status: inferred
+      summary: Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding
+        and automatic whole-system learning need review. Reframing a physical/metaphysical goal is a material
+        choice, not assumed equivalence.
+    future_use:
+      locators:
+      - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
+        end_line: 51
+        file: +Transcripts From available tapes/Wake Know/Wake Know.txt
+        source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+        start_line: 32
+      status: supported
+      summary: Problem-targeted sleep routine; solution/answer is asserted, not a verified decision method
+        or guaranteed insight.
+    handoff:
+      locators:
+      - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
+        end_line: 194
+        file: +Transcripts From available tapes/Wake Know/Wake Know.txt
+        source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+        start_line: 158
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Final waking
+        ending absent; religious and repeated speech at158-194 is contaminated/unverified and cannot become
+        historical doctrine or OCF requirement.
+    identity:
+      locators:
+      - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
+        end_line: 39
+        file: +Transcripts From available tapes/Wake Know/Wake Know.txt
+        source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+        start_line: 32
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
+        end_line: 47
+        file: +Transcripts From available tapes/Wake Know/Wake Know.txt
+        source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+        start_line: 32
+      status: supported
+      summary: select-question-or-problem; inhale-and-hold; issue-legacy-sleep-help-cue; exhale-and-breathe-slowly;
+        enter-sleep; anticipate-waking-recall
+    opener:
+      locators:
+      - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
+        end_line: 31
+        file: +Transcripts From available tapes/Wake Know/Wake Know.txt
+        source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+        start_line: 27
+      status: supported
+      summary: Orient to the function and establish receptive learning context before the target instruction.
+    preparation:
+      locators:
+      - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
+        end_line: 26
+        file: +Transcripts From available tapes/Wake Know/Wake Know.txt
+        source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+        start_line: 3
+      status: supported
+      summary: Supported uninterrupted relaxation, temporary repository setting-aside and counted ten-state
+        entry where described.
+    provenance:
+      locators:
+      - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
+        end_line: 194
+        file: +Transcripts From available tapes/Wake Know/Wake Know.txt
+        source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Final waking ending absent;
+        religious and repeated speech at158-194 is contaminated/unverified and cannot become historical
+        doctrine or OCF requirement.
+    purpose:
+      locators:
+      - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
+        end_line: 2
+        file: +Transcripts From available tapes/Wake Know/Wake Know.txt
+        source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+        start_line: 1
+      status: supported
+      summary: Select a question/problem before sleep and remember an asserted constructive solution on
+        waking.
+    rehearsal:
+      locators:
+      - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
+        end_line: 51
+        file: +Transcripts From available tapes/Wake Know/Wake Know.txt
+        source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+        start_line: 32
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Final waking
+        ending absent; religious and repeated speech at158-194 is contaminated/unverified and cannot become
+        historical doctrine or OCF requirement.
+    safety_claims:
+      locators:
+      - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
+        end_line: 47
+        file: +Transcripts From available tapes/Wake Know/Wake Know.txt
+        source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+        start_line: 32
+      status: supported
+      summary: guaranteed-sleep-entry; automatic-optimal-problem-solution; guaranteed-waking-answer. Claims
+        are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
+        end_line: 31
+        file: +Transcripts From available tapes/Wake Know/Wake Know.txt
+        source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+        start_line: 27
+      status: supported
+      summary: Reference learning shell uses ten preparation, eleven opening, ten close and sleep-to-twenty/waking
+        return where preserved; not runtime OCF state requirements.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
+        end_line: 194
+        file: +Transcripts From available tapes/Wake Know/Wake Know.txt
+        source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Final waking
+        ending absent; religious and repeated speech at158-194 is contaminated/unverified and cannot become
+        historical doctrine or OCF requirement.
+  source_extent:
+    content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
+    end_line: 194
+    file: +Transcripts From available tapes/Wake Know/Wake Know.txt
+    source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745:command_association
-    operations: []
+    - review:OCF-SLP-004:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745:closer
-    operations: []
+    - review:OCF-SLP-004:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-SLP-004:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745:future_use
-    operations: []
+    - review:OCF-SLP-004:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SLP-004:handoff
     operations: []
     status: unknown
   main:
     evidence_refs:
-    - 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745:main
-    operations: []
+    - review:OCF-SLP-004:main
+    operations:
+    - select-question-or-problem
+    - inhale-and-hold
+    - issue-legacy-sleep-help-cue
+    - exhale-and-breathe-slowly
+    - enter-sleep
+    - anticipate-waking-recall
     status: inferred
   opener:
     evidence_refs:
-    - 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745:opener
-    operations: []
+    - review:OCF-SLP-004:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SLP-004:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SLP-004:rehearsal
     operations: []
     status: unknown
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-SLP-004:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SLP-004:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-SLP-004
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Final waking ending absent; religious and repeated speech at158-194 is contaminated/unverified and cannot
+  become historical doctrine or OCF requirement.
+- Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and automatic
+  whole-system learning need review. Reframing a physical/metaphysical goal is a material choice, not
+  assumed equivalence.
 schema_version: '1.0'
 states:
   preferred: []

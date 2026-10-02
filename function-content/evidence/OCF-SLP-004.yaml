@@ -60,6 +60,105 @@ observations:
   - 50
   scope: document
   source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+- category: purpose
+  confidence: medium
+  id: review:OCF-SLP-004:purpose
+  kind: function-specification-inference
+  line_candidates:
+  - 1
+  - 2
+  scope: document
+  source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+- category: opener
+  confidence: medium
+  id: review:OCF-SLP-004:opener
+  kind: function-specification-inference
+  line_candidates:
+  - 27
+  - 31
+  scope: document
+  source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+- category: main
+  confidence: medium
+  id: review:OCF-SLP-004:main
+  kind: function-specification-inference
+  line_candidates:
+  - 32
+  - 47
+  scope: document
+  source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+- category: association
+  confidence: medium
+  id: review:OCF-SLP-004:association
+  kind: function-specification-inference
+  line_candidates:
+  - 32
+  - 39
+  scope: document
+  source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+- category: rehearsal
+  confidence: unknown
+  id: review:OCF-SLP-004:rehearsal
+  kind: function-specification-inference
+  line_candidates:
+  - 32
+  - 51
+  scope: document
+  source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+- category: future_use
+  confidence: medium
+  id: review:OCF-SLP-004:future_use
+  kind: function-specification-inference
+  line_candidates:
+  - 32
+  - 51
+  scope: document
+  source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+- category: suspend_cancel_reset
+  confidence: unknown
+  id: review:OCF-SLP-004:suspend_cancel_reset
+  kind: function-specification-inference
+  line_candidates:
+  - 1
+  - 194
+  scope: document
+  source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+- category: closer
+  confidence: medium
+  id: review:OCF-SLP-004:closer
+  kind: function-specification-inference
+  line_candidates:
+  - 48
+  - 56
+  scope: document
+  source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+- category: consolidation
+  confidence: medium
+  id: review:OCF-SLP-004:consolidation
+  kind: function-specification-inference
+  line_candidates:
+  - 57
+  - 157
+  scope: document
+  source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+- category: handoff
+  confidence: unknown
+  id: review:OCF-SLP-004:handoff
+  kind: function-specification-inference
+  line_candidates:
+  - 158
+  - 194
+  scope: document
+  source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+- category: safety_claims
+  confidence: medium
+  id: review:OCF-SLP-004:safety_claims
+  kind: function-specification-inference
+  line_candidates:
+  - 32
+  - 47
+  scope: document
+  source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
 questions:
 - Source derivatives are not independently authenticated recordings
 - Keyword candidate locators require full semantic review; absence of a match does not establish absence
