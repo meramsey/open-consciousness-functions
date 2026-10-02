@@ -55,3 +55,8 @@ Prerecorded-narration checkpoint:385 tests passed;5544 statements/2198 branches,
 4473 covered lines (**80.6818%**) and1564 covered branches (**71.1556%**),
 zero excluded statements. This supersedes the previous snapshot in the same local
 `ocf-foundation-coverage-final.json` path; it is still combined-suite coverage.
+
+Final supported Linux/Python3.12 snapshot after voice timing-sidecar support:
+385 tests passed;5555 statements/2200 branches;4485 covered lines
+(**80.7381%**) and1567 covered branches (**71.2273%**), zero excluded statements.
+This is the current snapshot at the same local JSON path.

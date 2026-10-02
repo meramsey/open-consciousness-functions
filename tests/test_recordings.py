@@ -82,6 +82,14 @@ def test_cli_recording_render_and_build_locale_forwarding(tmp_path, monkeypatch)
     script = tmp_path/"session.yaml"
     script.write_text(yaml_safe_dump(doc))
     assert main(["voice", "render", str(script), "--recordings", str(path), "--locale", "en-US", "--output", str(tmp_path/"voice.wav")]) == 0
+    from ocf_tools.indexes import load_yaml_file
+
+    measured = load_yaml_file(tmp_path/"voice.render.yaml")
+    assert measured["narration_timing"]["measured"]
+    assert measured["narration_source"]["package_id"] == "user-recordings"
+    assert measured["total_duration_s"] == 5
+    assert main(["transcript", "export", str(script), "--format", "srt", "--render-manifest", str(tmp_path/"voice.render.yaml"), "--output", str(tmp_path/"voice.srt")]) == 0
+    assert "00:00:02,000 --> 00:00:04,000" in (tmp_path/"voice.srt").read_text()
     captured = {}
     monkeypatch.setattr(audio_build, "build", lambda query, **kwargs: captured.update(kwargs))
     assert main(["audio", "build", "OCF-AUDIO-0001", "--recordings", str(path), "--locale", "es", "--allow-fallback"]) == 0

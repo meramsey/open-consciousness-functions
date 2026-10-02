@@ -41,6 +41,9 @@ duration is measured. Sample-rate conversion/downmix occurs in build output,
 without speech time-stretch or automatic loudness normalization. Original hashes,
 author/license/permission, package identity, measured duration and decoder use
 are recorded under `narration_source` in voice/build metadata.
+Voice/render-speech commands write a sibling`narration.render.yaml` measured
+manifest; pass it to transcript export with`--render-manifest`. Existing output
+or manifest files require explicit`--force` to replace.
 
 Existing end-relative anchors, explicit pauses and opt-in `timing.policy: reflow`
 follow **actual recording duration**. Fixed overlaps still fail. `--fit`, `--flow`,

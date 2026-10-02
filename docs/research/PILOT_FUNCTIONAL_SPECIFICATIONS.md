@@ -92,6 +92,8 @@ python scripts/ocf.py voice render relax-pilot.yaml --voice OCF-VOICE-0002 --loc
 
 Text previews are the resolved YAML documents. Local Piper development voice
 previews are in `/tmp/opencode/relax-pilot.wav`, `hearing-pilot.wav`, and
-`sleep-easy-pilot.wav`; associated render metadata measures actual speech.
+`sleep-easy-pilot.wav`; actual total durations were printed by voice rendering.
+These early pilot previews did not retain per-event manifests; subsequent voice
+renders now write measured sidecars automatically.
 No human listener approval is claimed. Full remaining-corpus semantic extraction, permanent
 function-content/provenance schema and rich function index integration are follow-up.

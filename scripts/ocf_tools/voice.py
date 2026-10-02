@@ -1013,6 +1013,9 @@ def render_script(
 ) -> int:
     """`ocf voice render SCRIPT [--voice] [--locale] [--output] [--fit] [--flow] [--even-counts]`."""
     doc = load_timed_doc(Path(script))
+    sidecar = Path(out_path).with_suffix(".render.yaml")
+    if sidecar.exists() and not force:
+        raise OCFError(f"Refusing to overwrite existing timing manifest: {sidecar} (use --force)")
     try:
         metadata = render_narration(
             doc,
@@ -1030,6 +1033,16 @@ def render_script(
         )
     except OCFFileExistsError as exc:
         raise OCFError(f"{exc} (use --force to overwrite)") from exc
+    from .utils import sha256_of_file, write_text_atomic, yaml_safe_dump
+
+    cues = [{**cue, "duration": cue["samples"]/metadata["sample_rate"],
+             "end": cue["at"]+cue["samples"]/metadata["sample_rate"]} for cue in metadata["cue_stats"]]
+    with wave.open(str(out_path)) as reader:
+        total = reader.getnframes()/reader.getframerate()
+    write_text_atomic(sidecar, yaml_safe_dump({**metadata, "source_script_sha256": sha256_of_file(Path(script)),
+                                            "voice": {"backend": metadata["backend"], "locale": metadata["locale"], "language": metadata["voice"], "profile_id": metadata["profile_id"]},
+                                            "output_sha256": sha256_of_file(Path(out_path)), "total_duration_s": total,
+                                            "narration_timing": {"measured": True, "cues": cues}}))
     named = metadata["profile_id"] or metadata["backend"]
     print(
         f"Rendered {metadata['cues']} cue(s) with backend {named!r} "
