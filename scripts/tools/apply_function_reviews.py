@@ -77,11 +77,11 @@ def apply_review(function_id: str, notes: dict, corpus: Path) -> dict:
                 "; ".join(notes["claims"])
                 + ". Claims are classified as source assertions, not accepted OCF mechanisms/outcomes."
             )
-            bounds = notes["locators"][section]
+            bounds = notes["locators"].get(section, notes["inspected_lines"])
         else:
             value = notes[section]
             summary = "; ".join(value) if isinstance(value, list) else value
-            bounds = notes["locators"].get(section, notes["locators"]["main"])
+            bounds = notes["locators"].get(section, notes["inspected_lines"])
         status = (
             "unknown"
             if summary == "unknown"
@@ -96,6 +96,35 @@ def apply_review(function_id: str, notes: dict, corpus: Path) -> dict:
         if section == "conversion":
             status = "inferred"
         answers[section] = {"status": status, "summary": summary, "locators": [locator(bounds)]}
+    if notes.get("brochure"):
+        brochure_data = (corpus / notes["brochure"]).read_bytes()
+        brochure_sha = hashlib.sha256(brochure_data).hexdigest()
+        brochure = next(
+            (
+                item
+                for item in layers["evidence"]["sources"]
+                if item["sha256"] == brochure_sha and item["path"] == notes["brochure"]
+            ),
+            None,
+        )
+        if brochure is None:
+            raise OCFError("brochure does not match known evidence fingerprint")
+        brochure["evidence_class"] = "secondary_description"
+        for section in (
+            "identity",
+            "purpose",
+            "preparation",
+            "future_use",
+            "safety_claims",
+            "provenance",
+        ):
+            answers[section]["locators"] += [
+                {"source_sha256": brochure_sha, "file": brochure["path"], "page": page}
+                for page in (1, 2)
+            ]
+        answers["provenance"]["summary"] += (
+            " Both brochure pages inspected separately; catalogue assertions are documentary evidence, not recovered audio instructions."
+        )
     review = {
         "method": "complete-available-source-content-review",
         "family": notes["family"],

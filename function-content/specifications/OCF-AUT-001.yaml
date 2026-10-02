@@ -1,67 +1,304 @@
+analysis_review:
+  claim_categories:
+  - conditioned-reflex-automation
+  - autonomic-transfer
+  - improved-skill-efficiency
+  family: learned-action-automation
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
+        end_line: 93
+        file: See-Be/See_Be_881044_reconstructed_annotated.txt
+        source_sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
+        start_line: 54
+      status: inferred
+      summary: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath
+        procedure; the exact historical association wording/method is unknown.
+    closer:
+      locators:
+      - content_group_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
+        end_line: 129
+        file: See-Be/See_Be_881044_reconstructed_annotated.txt
+        source_sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
+        start_line: 126
+      status: inferred
+      summary: Historical closer unknown; annotated mockup borrows remember/use, access close and return
+        shell from related transcripts.
+    consolidation:
+      locators:
+      - content_group_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
+        end_line: 129
+        file: See-Be/See_Be_881044_reconstructed_annotated.txt
+        source_sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
+        start_line: 126
+      status: inferred
+      summary: Historical target consolidation unknown; proposed sleep/ambient segment is related-function
+        inference, never measured target timing.
+    conversion:
+      locators:
+      - content_group_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
+        end_line: 129
+        file: See-Be/See_Be_881044_reconstructed_annotated.txt
+        source_sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
+        start_line: 1
+      status: inferred
+      summary: Original OCF design is still required; do not convert mockup expression by synonyms or
+        adopt unsupported mechanisms. Any safer/material reframing needs explicit human review, not historical
+        promotion.
+    future_use:
+      locators:
+      - content_group_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
+        end_line: 124
+        file: See-Be/See_Be_881044_reconstructed_annotated.txt
+        source_sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
+        start_line: 95
+      - file: See-Be/See-Be.ocr.pdf
+        page: 1
+        source_sha256: 6386d2651bb9c6b47ea4bfb995d1bb629487f73758d3c8a30d76d0d61c0b6231
+      - file: See-Be/See-Be.ocr.pdf
+        page: 2
+        source_sha256: 6386d2651bb9c6b47ea4bfb995d1bb629487f73758d3c8a30d76d0d61c0b6231
+      status: inferred
+      summary: Brochure names skill efficiency and companions; mockup adds explicit chunk/order/correct-practice
+        safeguards, not recovered installation steps.
+    handoff:
+      locators:
+      - content_group_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
+        end_line: 129
+        file: See-Be/See_Be_881044_reconstructed_annotated.txt
+        source_sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
+        start_line: 126
+      status: inferred
+      summary: Historical handoff unknown; mockup's waking return/reminder is inferred, not recovered.
+    identity:
+      locators:
+      - content_group_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
+        end_line: 93
+        file: See-Be/See_Be_881044_reconstructed_annotated.txt
+        source_sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
+        start_line: 54
+      - file: See-Be/See-Be.ocr.pdf
+        page: 1
+        source_sha256: 6386d2651bb9c6b47ea4bfb995d1bb629487f73758d3c8a30d76d0d61c0b6231
+      - file: See-Be/See-Be.ocr.pdf
+        page: 2
+        source_sha256: 6386d2651bb9c6b47ea4bfb995d1bb629487f73758d3c8a30d76d0d61c0b6231
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
+        end_line: 105
+        file: See-Be/See_Be_881044_reconstructed_annotated.txt
+        source_sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
+        start_line: 29
+      status: inferred
+      summary: select-learned-activity; represent-ordered-correct-action; proposed-breath-and-automate-cue;
+        repeat-correct-pattern
+    opener:
+      locators:
+      - content_group_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
+        end_line: 129
+        file: See-Be/See_Be_881044_reconstructed_annotated.txt
+        source_sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
+        start_line: 1
+      status: inferred
+      summary: Historical opener unknown; mockup supplies purpose orientation and related-function learning
+        shell as structural inference.
+    preparation:
+      locators:
+      - content_group_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
+        end_line: 129
+        file: See-Be/See_Be_881044_reconstructed_annotated.txt
+        source_sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
+        start_line: 1
+      - file: See-Be/See-Be.ocr.pdf
+        page: 1
+        source_sha256: 6386d2651bb9c6b47ea4bfb995d1bb629487f73758d3c8a30d76d0d61c0b6231
+      - file: See-Be/See-Be.ocr.pdf
+        page: 2
+        source_sha256: 6386d2651bb9c6b47ea4bfb995d1bb629487f73758d3c8a30d76d0d61c0b6231
+      status: supported
+      summary: Brochure gives prior Preparation Exercise or prior H-PLUS learning, a quiet supported position,
+        soft stereo/headphone listening and next-day target exercise. Exact lost narration procedure is
+        unknown; mockup shell is related-function inference.
+    provenance:
+      locators:
+      - content_group_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
+        end_line: 129
+        file: See-Be/See_Be_881044_reconstructed_annotated.txt
+        source_sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
+        start_line: 1
+      - file: See-Be/See-Be.ocr.pdf
+        page: 1
+        source_sha256: 6386d2651bb9c6b47ea4bfb995d1bb629487f73758d3c8a30d76d0d61c0b6231
+      - file: See-Be/See-Be.ocr.pdf
+        page: 2
+        source_sha256: 6386d2651bb9c6b47ea4bfb995d1bb629487f73758d3c8a30d76d0d61c0b6231
+      status: inferred
+      summary: Complete available reconstructed_mockup text inspected; shared representations are not
+        independent corroboration. Source accuracy/authentication remains unresolved. Annotated VERIFIED
+        labels are reconstruction-author assertions, not independent authentication. Catalogue purpose/command/use
+        limits and proposed mockup operations are separate evidence axes. Missing historical operations
+        remain unknown. Both brochure pages inspected separately; catalogue assertions are documentary
+        evidence, not recovered audio instructions.
+    purpose:
+      locators:
+      - content_group_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
+        end_line: 22
+        file: See-Be/See_Be_881044_reconstructed_annotated.txt
+        source_sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
+        start_line: 20
+      - file: See-Be/See-Be.ocr.pdf
+        page: 1
+        source_sha256: 6386d2651bb9c6b47ea4bfb995d1bb629487f73758d3c8a30d76d0d61c0b6231
+      - file: See-Be/See-Be.ocr.pdf
+        page: 2
+        source_sha256: 6386d2651bb9c6b47ea4bfb995d1bb629487f73758d3c8a30d76d0d61c0b6231
+      status: supported
+      summary: Brochure describes moving a learned thought/action or mental-motor skill toward automatic
+        conditioned performance.
+    rehearsal:
+      locators:
+      - content_group_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
+        end_line: 129
+        file: See-Be/See_Be_881044_reconstructed_annotated.txt
+        source_sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Annotated VERIFIED
+        labels are reconstruction-author assertions, not independent authentication. Catalogue purpose/command/use
+        limits and proposed mockup operations are separate evidence axes. Missing historical operations
+        remain unknown.
+    safety_claims:
+      locators:
+      - content_group_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
+        end_line: 129
+        file: See-Be/See_Be_881044_reconstructed_annotated.txt
+        source_sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
+        start_line: 1
+      - file: See-Be/See-Be.ocr.pdf
+        page: 1
+        source_sha256: 6386d2651bb9c6b47ea4bfb995d1bb629487f73758d3c8a30d76d0d61c0b6231
+      - file: See-Be/See-Be.ocr.pdf
+        page: 2
+        source_sha256: 6386d2651bb9c6b47ea4bfb995d1bb629487f73758d3c8a30d76d0d61c0b6231
+      status: inferred
+      summary: conditioned-reflex-automation; autonomic-transfer; improved-skill-efficiency. Claims are
+        classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
+        end_line: 129
+        file: See-Be/See_Be_881044_reconstructed_annotated.txt
+        source_sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
+        start_line: 1
+      status: inferred
+      summary: Historical target recording's exact state sequence remains unknown. Mockup imports ten/eleven/ten/sleep/waking
+        grammar from surviving Hearing/Seeing, not recovered target audio.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
+        end_line: 129
+        file: See-Be/See_Be_881044_reconstructed_annotated.txt
+        source_sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Annotated VERIFIED
+        labels are reconstruction-author assertions, not independent authentication. Catalogue purpose/command/use
+        limits and proposed mockup operations are separate evidence axes. Missing historical operations
+        remain unknown.
+  source_extent:
+    content_group_sha256: 9ce6ed9da1aa2a9d6eea8b333f8cb52f4c5fd786f8994d4eaaac302f949eaf9b
+    end_line: 129
+    file: See-Be/See_Be_881044_reconstructed_annotated.txt
+    source_sha256: 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948:command_association
-    - 574d8a0921cd4cd91b6a3e5794510dbeecfd06838cb5569123b14e6777e6df5c:command_association
-    operations: []
+    - review:OCF-AUT-001:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 574d8a0921cd4cd91b6a3e5794510dbeecfd06838cb5569123b14e6777e6df5c:closer
-    operations: []
+    - review:OCF-AUT-001:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-AUT-001:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 574d8a0921cd4cd91b6a3e5794510dbeecfd06838cb5569123b14e6777e6df5c:future_use
-    operations: []
+    - review:OCF-AUT-001:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 574d8a0921cd4cd91b6a3e5794510dbeecfd06838cb5569123b14e6777e6df5c:return
-    operations: []
+    - review:OCF-AUT-001:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - 9efb1a15bcf3fd31e8a3fb5747b1759a124ac9e73c5306618cc10d1156f93948:main
-    - 574d8a0921cd4cd91b6a3e5794510dbeecfd06838cb5569123b14e6777e6df5c:main
-    operations: []
+    - review:OCF-AUT-001:main
+    operations:
+    - select-learned-activity
+    - represent-ordered-correct-action
+    - proposed-breath-and-automate-cue
+    - repeat-correct-pattern
     status: inferred
   opener:
     evidence_refs:
-    - 574d8a0921cd4cd91b6a3e5794510dbeecfd06838cb5569123b14e6777e6df5c:opener
-    operations: []
+    - review:OCF-AUT-001:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-AUT-001:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-AUT-001:rehearsal
     operations: []
     status: unknown
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-AUT-001:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-AUT-001:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-AUT-001
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+  purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing historical
+  operations remain unknown.
+- Original OCF design is still required; do not convert mockup expression by synonyms or adopt unsupported
+  mechanisms. Any safer/material reframing needs explicit human review, not historical promotion.
 schema_version: '1.0'
 states:
   preferred: []

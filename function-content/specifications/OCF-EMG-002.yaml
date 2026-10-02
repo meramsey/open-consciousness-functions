@@ -1,67 +1,298 @@
+analysis_review:
+  claim_categories:
+  - toxin-control-or-elimination
+  - venom-or-poison-response
+  - natural-defense-potentiation
+  family: toxic-exposure-response-claims
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
+        end_line: 78
+        file: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+        source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+        start_line: 40
+      status: inferred
+      summary: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath
+        procedure; the exact historical association wording/method is unknown.
+    closer:
+      locators:
+      - content_group_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
+        end_line: 113
+        file: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+        source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+        start_line: 110
+      status: inferred
+      summary: Historical closer unknown; annotated mockup borrows remember/use, access close and return
+        shell from related transcripts.
+    consolidation:
+      locators:
+      - content_group_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
+        end_line: 113
+        file: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+        source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+        start_line: 110
+      status: inferred
+      summary: Historical target consolidation unknown; proposed sleep/ambient segment is related-function
+        inference, never measured target timing.
+    conversion:
+      locators:
+      - content_group_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
+        end_line: 113
+        file: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+        source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+        start_line: 1
+      status: inferred
+      summary: Original OCF design is still required; do not convert mockup expression by synonyms or
+        adopt unsupported mechanisms. Any safer/material reframing needs explicit human review, not historical
+        promotion.
+    future_use:
+      locators:
+      - content_group_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
+        end_line: 108
+        file: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+        source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+        start_line: 80
+      - file: 'Emergency: Toxic/Emergency-Toxin.ocr.pdf'
+        page: 1
+        source_sha256: 0e38c9db39edd4263b8bebd8e5cc6e783944bf4ddb87b6a0ecbb7142fec4be7d
+      - file: 'Emergency: Toxic/Emergency-Toxin.ocr.pdf'
+        page: 2
+        source_sha256: 0e38c9db39edd4263b8bebd8e5cc6e783944bf4ddb87b6a0ecbb7142fec4be7d
+      status: inferred
+      summary: Catalogue immediate/as-needed toxic-exposure use; repeat-command guidance is creative reconstruction,
+        not a recovered requirement.
+    handoff:
+      locators:
+      - content_group_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
+        end_line: 113
+        file: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+        source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+        start_line: 110
+      status: inferred
+      summary: Historical handoff unknown; mockup's waking return/reminder is inferred, not recovered.
+    identity:
+      locators:
+      - content_group_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
+        end_line: 78
+        file: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+        source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+        start_line: 40
+      - file: 'Emergency: Toxic/Emergency-Toxin.ocr.pdf'
+        page: 1
+        source_sha256: 0e38c9db39edd4263b8bebd8e5cc6e783944bf4ddb87b6a0ecbb7142fec4be7d
+      - file: 'Emergency: Toxic/Emergency-Toxin.ocr.pdf'
+        page: 2
+        source_sha256: 0e38c9db39edd4263b8bebd8e5cc6e783944bf4ddb87b6a0ecbb7142fec4be7d
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
+        end_line: 78
+        file: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+        source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+        start_line: 29
+      status: inferred
+      summary: identify-toxic-exposure-condition; proposed-clear-remove-breath-cue; proposed-body-protection-and-discharge-association
+    opener:
+      locators:
+      - content_group_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
+        end_line: 113
+        file: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+        source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+        start_line: 1
+      status: inferred
+      summary: Historical opener unknown; mockup supplies purpose orientation and related-function learning
+        shell as structural inference.
+    preparation:
+      locators:
+      - content_group_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
+        end_line: 113
+        file: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+        source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+        start_line: 1
+      - file: 'Emergency: Toxic/Emergency-Toxin.ocr.pdf'
+        page: 1
+        source_sha256: 0e38c9db39edd4263b8bebd8e5cc6e783944bf4ddb87b6a0ecbb7142fec4be7d
+      - file: 'Emergency: Toxic/Emergency-Toxin.ocr.pdf'
+        page: 2
+        source_sha256: 0e38c9db39edd4263b8bebd8e5cc6e783944bf4ddb87b6a0ecbb7142fec4be7d
+      status: supported
+      summary: Brochure gives prior Preparation Exercise or prior H-PLUS learning, a quiet supported position,
+        soft stereo/headphone listening and next-day target exercise. Exact lost narration procedure is
+        unknown; mockup shell is related-function inference.
+    provenance:
+      locators:
+      - content_group_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
+        end_line: 113
+        file: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+        source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+        start_line: 1
+      - file: 'Emergency: Toxic/Emergency-Toxin.ocr.pdf'
+        page: 1
+        source_sha256: 0e38c9db39edd4263b8bebd8e5cc6e783944bf4ddb87b6a0ecbb7142fec4be7d
+      - file: 'Emergency: Toxic/Emergency-Toxin.ocr.pdf'
+        page: 2
+        source_sha256: 0e38c9db39edd4263b8bebd8e5cc6e783944bf4ddb87b6a0ecbb7142fec4be7d
+      status: inferred
+      summary: Complete available reconstructed_mockup text inspected; shared representations are not
+        independent corroboration. Source accuracy/authentication remains unresolved. No target-specific
+        automatic activation, antidote mechanism, duration or release is established. Treatment limitations
+        must not become efficacy promises. Both brochure pages inspected separately; catalogue assertions
+        are documentary evidence, not recovered audio instructions.
+    purpose:
+      locators:
+      - content_group_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
+        end_line: 22
+        file: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+        source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+        start_line: 20
+      - file: 'Emergency: Toxic/Emergency-Toxin.ocr.pdf'
+        page: 1
+        source_sha256: 0e38c9db39edd4263b8bebd8e5cc6e783944bf4ddb87b6a0ecbb7142fec4be7d
+      - file: 'Emergency: Toxic/Emergency-Toxin.ocr.pdf'
+        page: 2
+        source_sha256: 0e38c9db39edd4263b8bebd8e5cc6e783944bf4ddb87b6a0ecbb7142fec4be7d
+      status: supported
+      summary: Brochure claims control/removal of harmful foreign substances and immediate use during
+        toxic/chemical exposure, alongside appropriate treatment.
+    rehearsal:
+      locators:
+      - content_group_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
+        end_line: 113
+        file: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+        source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. No target-specific
+        automatic activation, antidote mechanism, duration or release is established. Treatment limitations
+        must not become efficacy promises.
+    safety_claims:
+      locators:
+      - content_group_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
+        end_line: 113
+        file: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+        source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+        start_line: 1
+      - file: 'Emergency: Toxic/Emergency-Toxin.ocr.pdf'
+        page: 1
+        source_sha256: 0e38c9db39edd4263b8bebd8e5cc6e783944bf4ddb87b6a0ecbb7142fec4be7d
+      - file: 'Emergency: Toxic/Emergency-Toxin.ocr.pdf'
+        page: 2
+        source_sha256: 0e38c9db39edd4263b8bebd8e5cc6e783944bf4ddb87b6a0ecbb7142fec4be7d
+      status: inferred
+      summary: toxin-control-or-elimination; venom-or-poison-response; natural-defense-potentiation. Claims
+        are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
+        end_line: 113
+        file: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+        source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+        start_line: 1
+      status: inferred
+      summary: Historical target recording's exact state sequence remains unknown. Mockup imports ten/eleven/ten/sleep/waking
+        grammar from surviving Hearing/Seeing, not recovered target audio.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
+        end_line: 113
+        file: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+        source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. No target-specific
+        automatic activation, antidote mechanism, duration or release is established. Treatment limitations
+        must not become efficacy promises.
+  source_extent:
+    content_group_sha256: 2619a823215215193f991c6d9303ebd9680ee217d6f926ee9db1589420314ba0
+    end_line: 113
+    file: 'Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt'
+    source_sha256: 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254:command_association
-    - 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510:command_association
-    operations: []
+    - review:OCF-EMG-002:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510:closer
-    operations: []
+    - review:OCF-EMG-002:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-EMG-002:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510:future_use
-    operations: []
+    - review:OCF-EMG-002:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510:return
-    operations: []
+    - review:OCF-EMG-002:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - 869192d77165c73e51ba0c3e7ac05769aca807b9fc80b93f722259632a749254:main
-    - 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510:main
-    operations: []
+    - review:OCF-EMG-002:main
+    operations:
+    - identify-toxic-exposure-condition
+    - proposed-clear-remove-breath-cue
+    - proposed-body-protection-and-discharge-association
     status: inferred
   opener:
     evidence_refs:
-    - 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510:opener
-    operations: []
+    - review:OCF-EMG-002:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-EMG-002:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-EMG-002:rehearsal
     operations: []
     status: unknown
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-EMG-002:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-EMG-002:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-EMG-002
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- No target-specific automatic activation, antidote mechanism, duration or release is established. Treatment
+  limitations must not become efficacy promises.
+- Original OCF design is still required; do not convert mockup expression by synonyms or adopt unsupported
+  mechanisms. Any safer/material reframing needs explicit human review, not historical promotion.
 schema_version: '1.0'
 states:
   preferred: []

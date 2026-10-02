@@ -1,71 +1,301 @@
+analysis_review:
+  claim_categories:
+  - beyond-typical-muscular-capability
+  - momentary-energy-enhancement
+  - injury-risk-and-example-tension
+  family: momentary-emergency-strength-claims
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+        end_line: 134
+        file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+        source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+        start_line: 90
+      status: inferred
+      summary: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath
+        procedure; the exact historical association wording/method is unknown.
+    closer:
+      locators:
+      - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+        end_line: 209
+        file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+        source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+        start_line: 180
+      status: inferred
+      summary: Historical closer unknown; annotated mockup borrows remember/use, access close and return
+        shell from related transcripts.
+    consolidation:
+      locators:
+      - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+        end_line: 227
+        file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+        source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+        start_line: 211
+      status: inferred
+      summary: Historical target consolidation unknown; proposed sleep/ambient segment is related-function
+        inference, never measured target timing.
+    conversion:
+      locators:
+      - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+        end_line: 269
+        file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+        source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+        start_line: 1
+      status: inferred
+      summary: Original OCF design is still required; do not convert mockup expression by synonyms or
+        adopt unsupported mechanisms. Any safer/material reframing needs explicit human review, not historical
+        promotion.
+    future_use:
+      locators:
+      - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+        end_line: 175
+        file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+        source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+        start_line: 136
+      - file: Strong Quick/Strong-Quick.ocr.pdf
+        page: 1
+        source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+      - file: Strong Quick/Strong-Quick.ocr.pdf
+        page: 2
+        source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+      status: inferred
+      summary: Brief/as-needed use with RELEASE after need; precise action, selection and duration remain
+        unknown/reconstructed, not recreational performance policy.
+    handoff:
+      locators:
+      - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+        end_line: 269
+        file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+        source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+        start_line: 229
+      status: inferred
+      summary: Historical handoff unknown; mockup's waking return/reminder is inferred, not recovered.
+    identity:
+      locators:
+      - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+        end_line: 134
+        file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+        source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+        start_line: 90
+      - file: Strong Quick/Strong-Quick.ocr.pdf
+        page: 1
+        source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+      - file: Strong Quick/Strong-Quick.ocr.pdf
+        page: 2
+        source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+        end_line: 134
+        file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+        source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+        start_line: 90
+      status: inferred
+      summary: identify-emergency-exertion-need; proposed-strong-quick-breath-cue; proposed-coordinated-immediate-action
+    opener:
+      locators:
+      - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+        end_line: 269
+        file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+        source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+        start_line: 1
+      status: inferred
+      summary: Historical opener unknown; mockup supplies purpose orientation and related-function learning
+        shell as structural inference.
+    preparation:
+      locators:
+      - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+        end_line: 269
+        file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+        source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+        start_line: 1
+      - file: Strong Quick/Strong-Quick.ocr.pdf
+        page: 1
+        source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+      - file: Strong Quick/Strong-Quick.ocr.pdf
+        page: 2
+        source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+      status: supported
+      summary: Brochure gives prior Preparation Exercise or prior H-PLUS learning, a quiet supported position,
+        soft stereo/headphone listening and next-day target exercise. Exact lost narration procedure is
+        unknown; mockup shell is related-function inference.
+    provenance:
+      locators:
+      - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+        end_line: 269
+        file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+        source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+        start_line: 1
+      - file: Strong Quick/Strong-Quick.ocr.pdf
+        page: 1
+        source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+      - file: Strong Quick/Strong-Quick.ocr.pdf
+        page: 2
+        source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+      status: inferred
+      summary: Complete available reconstructed_mockup text inspected; shared representations are not
+        independent corroboration. Source accuracy/authentication remains unresolved. Annotated VERIFIED
+        labels are reconstruction-author assertions, not independent authentication. Catalogue purpose/command/use
+        limits and proposed mockup operations are separate evidence axes. Missing historical operations
+        remain unknown. Both brochure pages inspected separately; catalogue assertions are documentary
+        evidence, not recovered audio instructions.
+    purpose:
+      locators:
+      - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+        end_line: 33
+        file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+        source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+        start_line: 32
+      - file: Strong Quick/Strong-Quick.ocr.pdf
+        page: 1
+        source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+      - file: Strong Quick/Strong-Quick.ocr.pdf
+        page: 2
+        source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+      status: supported
+      summary: Brochure limits unusual muscular energy/speed to instant momentary emergency use, despite
+        examples that include exertion contexts.
+    rehearsal:
+      locators:
+      - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+        end_line: 269
+        file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+        source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Annotated VERIFIED
+        labels are reconstruction-author assertions, not independent authentication. Catalogue purpose/command/use
+        limits and proposed mockup operations are separate evidence axes. Missing historical operations
+        remain unknown.
+    safety_claims:
+      locators:
+      - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+        end_line: 269
+        file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+        source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+        start_line: 1
+      - file: Strong Quick/Strong-Quick.ocr.pdf
+        page: 1
+        source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+      - file: Strong Quick/Strong-Quick.ocr.pdf
+        page: 2
+        source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+      status: inferred
+      summary: beyond-typical-muscular-capability; momentary-energy-enhancement; injury-risk-and-example-tension.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+        end_line: 269
+        file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+        source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+        start_line: 1
+      status: inferred
+      summary: Historical target recording's exact state sequence remains unknown. Mockup imports ten/eleven/ten/sleep/waking
+        grammar from surviving Hearing/Seeing, not recovered target audio.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+        end_line: 171
+        file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+        source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+        start_line: 148
+      status: inferred
+      summary: Catalogue advises RELEASE after need; exact selection and normalization sequence is inferred
+        from Release research.
+  source_extent:
+    content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+    end_line: 269
+    file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+    source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb:command_association
-    - e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32:command_association
-    operations: []
+    - review:OCF-PRF-006:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb:closer
-    - e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32:closer
-    operations: []
+    - review:OCF-PRF-006:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-PRF-006:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb:future_use
-    - e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32:future_use
-    operations: []
+    - review:OCF-PRF-006:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb:return
-    - e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32:return
-    operations: []
+    - review:OCF-PRF-006:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb:main
-    - e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32:main
-    operations: []
+    - review:OCF-PRF-006:main
+    operations:
+    - identify-emergency-exertion-need
+    - proposed-strong-quick-breath-cue
+    - proposed-coordinated-immediate-action
     status: inferred
   opener:
     evidence_refs:
-    - 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb:opener
-    - e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32:opener
-    operations: []
+    - review:OCF-PRF-006:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-PRF-006:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-PRF-006:rehearsal
     operations: []
     status: unknown
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-PRF-006:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-PRF-006:suspend_cancel_reset
+    operations:
+    - documented-suspend-cancel-reset
+    status: inferred
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-PRF-006
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+  purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing historical
+  operations remain unknown.
+- Original OCF design is still required; do not convert mockup expression by synonyms or adopt unsupported
+  mechanisms. Any safer/material reframing needs explicit human review, not historical promotion.
 schema_version: '1.0'
 states:
   preferred: []

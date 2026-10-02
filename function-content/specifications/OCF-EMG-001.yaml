@@ -1,67 +1,300 @@
+analysis_review:
+  claim_categories:
+  - autonomic-healing-enhancement
+  - unconscious-injury-triggered-activation
+  - medical-defense-potentiation
+  family: conditional-injury-response-claims
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
+        end_line: 91
+        file: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+        source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+        start_line: 60
+      status: inferred
+      summary: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath
+        procedure; the exact historical association wording/method is unknown.
+    closer:
+      locators:
+      - content_group_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
+        end_line: 113
+        file: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+        source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+        start_line: 109
+      status: inferred
+      summary: Historical closer unknown; annotated mockup borrows remember/use, access close and return
+        shell from related transcripts.
+    consolidation:
+      locators:
+      - content_group_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
+        end_line: 113
+        file: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+        source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+        start_line: 109
+      status: inferred
+      summary: Historical target consolidation unknown; proposed sleep/ambient segment is related-function
+        inference, never measured target timing.
+    conversion:
+      locators:
+      - content_group_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
+        end_line: 128
+        file: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+        source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+        start_line: 1
+      status: inferred
+      summary: Original OCF design is still required; do not convert mockup expression by synonyms or
+        adopt unsupported mechanisms. Any safer/material reframing needs explicit human review, not historical
+        promotion.
+    future_use:
+      locators:
+      - content_group_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
+        end_line: 107
+        file: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+        source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+        start_line: 85
+      - file: 'Emergency: Injury/Emergency-Injury.ocr.pdf'
+        page: 1
+        source_sha256: 7de6393c13f73e159efe56faf547a87b594c7e37527aaed0f84290aeecc0f447
+      - file: 'Emergency: Injury/Emergency-Injury.ocr.pdf'
+        page: 2
+        source_sha256: 7de6393c13f73e159efe56faf547a87b594c7e37527aaed0f84290aeecc0f447
+      status: inferred
+      summary: Injury-specific condition and conscious/unconscious distinction are catalogue assertions.
+        Exact breath/selection/control instruction and outcome remain unknown/inferred.
+    handoff:
+      locators:
+      - content_group_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
+        end_line: 113
+        file: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+        source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+        start_line: 109
+      status: inferred
+      summary: Historical handoff unknown; mockup's waking return/reminder is inferred, not recovered.
+    identity:
+      locators:
+      - content_group_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
+        end_line: 91
+        file: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+        source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+        start_line: 60
+      - file: 'Emergency: Injury/Emergency-Injury.ocr.pdf'
+        page: 1
+        source_sha256: 7de6393c13f73e159efe56faf547a87b594c7e37527aaed0f84290aeecc0f447
+      - file: 'Emergency: Injury/Emergency-Injury.ocr.pdf'
+        page: 2
+        source_sha256: 7de6393c13f73e159efe56faf547a87b594c7e37527aaed0f84290aeecc0f447
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
+        end_line: 95
+        file: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+        source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+        start_line: 36
+      status: inferred
+      summary: injury-condition-recognition; proposed-control-balance-restoration-association; conscious-cue-intensification;
+        injury-caused-unconsciousness-autoactivation-claim
+    opener:
+      locators:
+      - content_group_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
+        end_line: 128
+        file: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+        source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+        start_line: 1
+      status: inferred
+      summary: Historical opener unknown; mockup supplies purpose orientation and related-function learning
+        shell as structural inference.
+    preparation:
+      locators:
+      - content_group_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
+        end_line: 128
+        file: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+        source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+        start_line: 1
+      - file: 'Emergency: Injury/Emergency-Injury.ocr.pdf'
+        page: 1
+        source_sha256: 7de6393c13f73e159efe56faf547a87b594c7e37527aaed0f84290aeecc0f447
+      - file: 'Emergency: Injury/Emergency-Injury.ocr.pdf'
+        page: 2
+        source_sha256: 7de6393c13f73e159efe56faf547a87b594c7e37527aaed0f84290aeecc0f447
+      status: supported
+      summary: Brochure gives prior Preparation Exercise or prior H-PLUS learning, a quiet supported position,
+        soft stereo/headphone listening and next-day target exercise. Exact lost narration procedure is
+        unknown; mockup shell is related-function inference.
+    provenance:
+      locators:
+      - content_group_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
+        end_line: 128
+        file: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+        source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+        start_line: 1
+      - file: 'Emergency: Injury/Emergency-Injury.ocr.pdf'
+        page: 1
+        source_sha256: 7de6393c13f73e159efe56faf547a87b594c7e37527aaed0f84290aeecc0f447
+      - file: 'Emergency: Injury/Emergency-Injury.ocr.pdf'
+        page: 2
+        source_sha256: 7de6393c13f73e159efe56faf547a87b594c7e37527aaed0f84290aeecc0f447
+      status: inferred
+      summary: Complete available reconstructed_mockup text inspected; shared representations are not
+        independent corroboration. Source accuracy/authentication remains unresolved. Do not generalize
+        automatic activation to all emergencies or invent bleeding/shock/survival outcomes. Brochure says
+        not a substitute for treatment; mockup adds modern safety wording. Both brochure pages inspected
+        separately; catalogue assertions are documentary evidence, not recovered audio instructions.
+    purpose:
+      locators:
+      - content_group_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
+        end_line: 28
+        file: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+        source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+        start_line: 27
+      - file: 'Emergency: Injury/Emergency-Injury.ocr.pdf'
+        page: 1
+        source_sha256: 7de6393c13f73e159efe56faf547a87b594c7e37527aaed0f84290aeecc0f447
+      - file: 'Emergency: Injury/Emergency-Injury.ocr.pdf'
+        page: 2
+        source_sha256: 7de6393c13f73e159efe56faf547a87b594c7e37527aaed0f84290aeecc0f447
+      status: supported
+      summary: Brochure claims healing/balancing support after injury, including automatic operation specifically
+        when unconscious due to injury; conscious cue intensifies it.
+    rehearsal:
+      locators:
+      - content_group_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
+        end_line: 128
+        file: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+        source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Do not generalize
+        automatic activation to all emergencies or invent bleeding/shock/survival outcomes. Brochure says
+        not a substitute for treatment; mockup adds modern safety wording.
+    safety_claims:
+      locators:
+      - content_group_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
+        end_line: 128
+        file: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+        source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+        start_line: 1
+      - file: 'Emergency: Injury/Emergency-Injury.ocr.pdf'
+        page: 1
+        source_sha256: 7de6393c13f73e159efe56faf547a87b594c7e37527aaed0f84290aeecc0f447
+      - file: 'Emergency: Injury/Emergency-Injury.ocr.pdf'
+        page: 2
+        source_sha256: 7de6393c13f73e159efe56faf547a87b594c7e37527aaed0f84290aeecc0f447
+      status: inferred
+      summary: autonomic-healing-enhancement; unconscious-injury-triggered-activation; medical-defense-potentiation.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
+        end_line: 128
+        file: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+        source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+        start_line: 1
+      status: inferred
+      summary: Historical target recording's exact state sequence remains unknown. Mockup imports ten/eleven/ten/sleep/waking
+        grammar from surviving Hearing/Seeing, not recovered target audio.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
+        end_line: 128
+        file: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+        source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+        start_line: 119
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Do not generalize
+        automatic activation to all emergencies or invent bleeding/shock/survival outcomes. Brochure says
+        not a substitute for treatment; mockup adds modern safety wording.
+  source_extent:
+    content_group_sha256: 73ed45c74eb982acc0718166d236be83f240e712d7953c9ebaa796657c1662e0
+    end_line: 128
+    file: 'Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt'
+    source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2:command_association
-    - e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276:command_association
-    operations: []
+    - review:OCF-EMG-001:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276:closer
-    operations: []
+    - review:OCF-EMG-001:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-EMG-001:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276:future_use
-    operations: []
+    - review:OCF-EMG-001:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276:return
-    operations: []
+    - review:OCF-EMG-001:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2:main
-    - e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276:main
-    operations: []
+    - review:OCF-EMG-001:main
+    operations:
+    - injury-condition-recognition
+    - proposed-control-balance-restoration-association
+    - conscious-cue-intensification
+    - injury-caused-unconsciousness-autoactivation-claim
     status: inferred
   opener:
     evidence_refs:
-    - e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276:opener
-    operations: []
+    - review:OCF-EMG-001:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-EMG-001:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-EMG-001:rehearsal
     operations: []
     status: unknown
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-EMG-001:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-EMG-001:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-EMG-001
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Do not generalize automatic activation to all emergencies or invent bleeding/shock/survival outcomes.
+  Brochure says not a substitute for treatment; mockup adds modern safety wording.
+- Original OCF design is still required; do not convert mockup expression by synonyms or adopt unsupported
+  mechanisms. Any safer/material reframing needs explicit human review, not historical promotion.
 schema_version: '1.0'
 states:
   preferred: []

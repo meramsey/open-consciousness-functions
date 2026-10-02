@@ -1,67 +1,303 @@
+analysis_review:
+  claim_categories:
+  - nonconscious-other-being-state-perception
+  - accurate-inner-condition-knowledge
+  - reconstructed-physical-signal-integration
+  family: other-being-perception-claims
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
+        end_line: 105
+        file: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+        source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+        start_line: 64
+      status: inferred
+      summary: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath
+        procedure; the exact historical association wording/method is unknown.
+    closer:
+      locators:
+      - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
+        end_line: 139
+        file: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+        source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+        start_line: 136
+      status: inferred
+      summary: Historical closer unknown; annotated mockup borrows remember/use, access close and return
+        shell from related transcripts.
+    consolidation:
+      locators:
+      - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
+        end_line: 139
+        file: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+        source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+        start_line: 136
+      status: inferred
+      summary: Historical target consolidation unknown; proposed sleep/ambient segment is related-function
+        inference, never measured target timing.
+    conversion:
+      locators:
+      - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
+        end_line: 139
+        file: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+        source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+        start_line: 1
+      status: inferred
+      summary: Original OCF design is still required; do not convert mockup expression by synonyms or
+        adopt unsupported mechanisms. Any safer/material reframing needs explicit human review, not historical
+        promotion.
+    future_use:
+      locators:
+      - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
+        end_line: 134
+        file: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+        source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+        start_line: 107
+      - file: Empathizing/Emphathizing.ocr.pdf
+        page: 1
+        source_sha256: 3b2216f844e33572ad3bea7a16e9f1b586e78ba5a5c2bb45c288d8f4800cd04a
+      - file: Empathizing/Emphathizing.ocr.pdf
+        page: 2
+        source_sha256: 3b2216f844e33572ad3bea7a16e9f1b586e78ba5a5c2bb45c288d8f4800cd04a
+      status: inferred
+      summary: As-needed communication context and companions are catalogue material; observation/checking/anti-manipulation
+        procedure is mockup design, not proof of accurate profiling.
+    handoff:
+      locators:
+      - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
+        end_line: 139
+        file: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+        source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+        start_line: 136
+      status: inferred
+      summary: Historical handoff unknown; mockup's waking return/reminder is inferred, not recovered.
+    identity:
+      locators:
+      - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
+        end_line: 105
+        file: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+        source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+        start_line: 64
+      - file: Empathizing/Emphathizing.ocr.pdf
+        page: 1
+        source_sha256: 3b2216f844e33572ad3bea7a16e9f1b586e78ba5a5c2bb45c288d8f4800cd04a
+      - file: Empathizing/Emphathizing.ocr.pdf
+        page: 2
+        source_sha256: 3b2216f844e33572ad3bea7a16e9f1b586e78ba5a5c2bb45c288d8f4800cd04a
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
+        end_line: 105
+        file: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+        source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+        start_line: 29
+      status: inferred
+      summary: select-other-being; proposed-observation-and-self-regulation; proposed-profile-cue; proposed-integration-of-impressions
+    opener:
+      locators:
+      - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
+        end_line: 139
+        file: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+        source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+        start_line: 1
+      status: inferred
+      summary: Historical opener unknown; mockup supplies purpose orientation and related-function learning
+        shell as structural inference.
+    preparation:
+      locators:
+      - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
+        end_line: 139
+        file: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+        source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+        start_line: 1
+      - file: Empathizing/Emphathizing.ocr.pdf
+        page: 1
+        source_sha256: 3b2216f844e33572ad3bea7a16e9f1b586e78ba5a5c2bb45c288d8f4800cd04a
+      - file: Empathizing/Emphathizing.ocr.pdf
+        page: 2
+        source_sha256: 3b2216f844e33572ad3bea7a16e9f1b586e78ba5a5c2bb45c288d8f4800cd04a
+      status: supported
+      summary: Brochure gives prior Preparation Exercise or prior H-PLUS learning, a quiet supported position,
+        soft stereo/headphone listening and next-day target exercise. Exact lost narration procedure is
+        unknown; mockup shell is related-function inference.
+    provenance:
+      locators:
+      - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
+        end_line: 139
+        file: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+        source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+        start_line: 1
+      - file: Empathizing/Emphathizing.ocr.pdf
+        page: 1
+        source_sha256: 3b2216f844e33572ad3bea7a16e9f1b586e78ba5a5c2bb45c288d8f4800cd04a
+      - file: Empathizing/Emphathizing.ocr.pdf
+        page: 2
+        source_sha256: 3b2216f844e33572ad3bea7a16e9f1b586e78ba5a5c2bb45c288d8f4800cd04a
+      status: inferred
+      summary: Complete available reconstructed_mockup text inspected; shared representations are not
+        independent corroboration. Source accuracy/authentication remains unresolved. Annotated VERIFIED
+        labels are reconstruction-author assertions, not independent authentication. Catalogue purpose/command/use
+        limits and proposed mockup operations are separate evidence axes. Missing historical operations
+        remain unknown. Both brochure pages inspected separately; catalogue assertions are documentary
+        evidence, not recovered audio instructions.
+    purpose:
+      locators:
+      - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
+        end_line: 22
+        file: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+        source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+        start_line: 20
+      - file: Empathizing/Emphathizing.ocr.pdf
+        page: 1
+        source_sha256: 3b2216f844e33572ad3bea7a16e9f1b586e78ba5a5c2bb45c288d8f4800cd04a
+      - file: Empathizing/Emphathizing.ocr.pdf
+        page: 2
+        source_sha256: 3b2216f844e33572ad3bea7a16e9f1b586e78ba5a5c2bb45c288d8f4800cd04a
+      status: supported
+      summary: Brochure describes nonconscious perception of another being's drives/emotional/mental/physical
+        state in communication situations.
+    rehearsal:
+      locators:
+      - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
+        end_line: 139
+        file: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+        source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Annotated VERIFIED
+        labels are reconstruction-author assertions, not independent authentication. Catalogue purpose/command/use
+        limits and proposed mockup operations are separate evidence axes. Missing historical operations
+        remain unknown.
+    safety_claims:
+      locators:
+      - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
+        end_line: 139
+        file: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+        source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+        start_line: 1
+      - file: Empathizing/Emphathizing.ocr.pdf
+        page: 1
+        source_sha256: 3b2216f844e33572ad3bea7a16e9f1b586e78ba5a5c2bb45c288d8f4800cd04a
+      - file: Empathizing/Emphathizing.ocr.pdf
+        page: 2
+        source_sha256: 3b2216f844e33572ad3bea7a16e9f1b586e78ba5a5c2bb45c288d8f4800cd04a
+      status: inferred
+      summary: nonconscious-other-being-state-perception; accurate-inner-condition-knowledge; reconstructed-physical-signal-integration.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
+        end_line: 139
+        file: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+        source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+        start_line: 1
+      status: inferred
+      summary: Historical target recording's exact state sequence remains unknown. Mockup imports ten/eleven/ten/sleep/waking
+        grammar from surviving Hearing/Seeing, not recovered target audio.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
+        end_line: 139
+        file: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+        source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Annotated VERIFIED
+        labels are reconstruction-author assertions, not independent authentication. Catalogue purpose/command/use
+        limits and proposed mockup operations are separate evidence axes. Missing historical operations
+        remain unknown.
+  source_extent:
+    content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
+    end_line: 139
+    file: Empathizing/Empathizing_881049_reconstructed_annotated.txt
+    source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc:command_association
-    - 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06:command_association
-    operations: []
+    - review:OCF-EMO-003:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06:closer
-    operations: []
+    - review:OCF-EMO-003:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-EMO-003:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06:future_use
-    operations: []
+    - review:OCF-EMO-003:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06:return
-    operations: []
+    - review:OCF-EMO-003:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc:main
-    - 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06:main
-    operations: []
+    - review:OCF-EMO-003:main
+    operations:
+    - select-other-being
+    - proposed-observation-and-self-regulation
+    - proposed-profile-cue
+    - proposed-integration-of-impressions
     status: inferred
   opener:
     evidence_refs:
-    - 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06:opener
-    operations: []
+    - review:OCF-EMO-003:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-EMO-003:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-EMO-003:rehearsal
     operations: []
     status: unknown
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-EMO-003:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-EMO-003:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-EMO-003
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+  purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing historical
+  operations remain unknown.
+- Original OCF design is still required; do not convert mockup expression by synonyms or adopt unsupported
+  mechanisms. Any safer/material reframing needs explicit human review, not historical promotion.
 schema_version: '1.0'
 states:
   preferred: []

@@ -76,7 +76,7 @@ def validate_layers(layers: dict, function_id: str) -> list[str]:
             source = sources.get(locator["source_sha256"])
             if source is None or source["path"] != locator["file"]:
                 errors.append("review locator references unknown/mismatched source identity")
-            if (
+            if "start_line" in locator and (
                 locator["end_line"] < locator["start_line"]
                 or locator["end_line"] > extent["end_line"]
             ):

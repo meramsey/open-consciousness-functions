@@ -96,6 +96,105 @@ observations:
   - 319
   scope: document
   source_sha256: e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276
+- category: purpose
+  confidence: medium
+  id: review:OCF-EMG-001:purpose
+  kind: function-specification-inference
+  line_candidates:
+  - 27
+  - 28
+  scope: document
+  source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+- category: opener
+  confidence: medium
+  id: review:OCF-EMG-001:opener
+  kind: function-specification-inference
+  line_candidates:
+  - 1
+  - 128
+  scope: document
+  source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+- category: main
+  confidence: medium
+  id: review:OCF-EMG-001:main
+  kind: function-specification-inference
+  line_candidates:
+  - 36
+  - 95
+  scope: document
+  source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+- category: association
+  confidence: medium
+  id: review:OCF-EMG-001:association
+  kind: function-specification-inference
+  line_candidates:
+  - 60
+  - 91
+  scope: document
+  source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+- category: rehearsal
+  confidence: unknown
+  id: review:OCF-EMG-001:rehearsal
+  kind: function-specification-inference
+  line_candidates:
+  - 1
+  - 128
+  scope: document
+  source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+- category: future_use
+  confidence: medium
+  id: review:OCF-EMG-001:future_use
+  kind: function-specification-inference
+  line_candidates:
+  - 85
+  - 107
+  scope: document
+  source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+- category: suspend_cancel_reset
+  confidence: unknown
+  id: review:OCF-EMG-001:suspend_cancel_reset
+  kind: function-specification-inference
+  line_candidates:
+  - 119
+  - 128
+  scope: document
+  source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+- category: closer
+  confidence: medium
+  id: review:OCF-EMG-001:closer
+  kind: function-specification-inference
+  line_candidates:
+  - 109
+  - 113
+  scope: document
+  source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+- category: consolidation
+  confidence: medium
+  id: review:OCF-EMG-001:consolidation
+  kind: function-specification-inference
+  line_candidates:
+  - 109
+  - 113
+  scope: document
+  source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+- category: handoff
+  confidence: medium
+  id: review:OCF-EMG-001:handoff
+  kind: function-specification-inference
+  line_candidates:
+  - 109
+  - 113
+  scope: document
+  source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
+- category: safety_claims
+  confidence: medium
+  id: review:OCF-EMG-001:safety_claims
+  kind: function-specification-inference
+  line_candidates:
+  - 1
+  - 128
+  scope: document
+  source_sha256: affe05f7efce4d04ee0ed6e166af1f1861c8a128bb529697c39e72a01b8148e2
 questions:
 - Source derivatives are not independently authenticated recordings
 - Keyword candidate locators require full semantic review; absence of a match does not establish absence

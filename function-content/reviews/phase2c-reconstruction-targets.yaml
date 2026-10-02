@@ -1,0 +1,203 @@
+schema_version: "1.0"
+method: complete-source-text-inspection
+defaults:
+  preparation: Brochure gives prior Preparation Exercise or prior H-PLUS learning, a quiet supported position, soft stereo/headphone listening and next-day target exercise. Exact lost narration procedure is unknown; mockup shell is related-function inference.
+  state: Historical target recording's exact state sequence remains unknown. Mockup imports ten/eleven/ten/sleep/waking grammar from surviving Hearing/Seeing, not recovered target audio.
+  opener: Historical opener unknown; mockup supplies purpose orientation and related-function learning shell as structural inference.
+  association: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath procedure; the exact historical association wording/method is unknown.
+  rehearsal: unknown
+  suspend_cancel_reset: unknown
+  closer: Historical closer unknown; annotated mockup borrows remember/use, access close and return shell from related transcripts.
+  consolidation: Historical target consolidation unknown; proposed sleep/ambient segment is related-function inference, never measured target timing.
+  handoff: Historical handoff unknown; mockup's waking return/reminder is inferred, not recovered.
+  conversion: Original OCF design is still required; do not convert mockup expression by synonyms or adopt unsupported mechanisms. Any safer/material reframing needs explicit human review, not historical promotion.
+  uncertainties: Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing historical operations remain unknown.
+  statuses: {identity: supported, purpose: supported, preparation: supported}
+functions:
+  OCF-AUT-001:
+    title: See-Be
+    source: "See-Be/See_Be_881044_reconstructed_annotated.txt"
+    brochure: "See-Be/See-Be.ocr.pdf"
+    inspected_lines: [1, 129]
+    family: learned-action-automation
+    purpose: Brochure describes moving a learned thought/action or mental-motor skill toward automatic conditioned performance.
+    main: [select-learned-activity, represent-ordered-correct-action, proposed-breath-and-automate-cue, repeat-correct-pattern]
+    future_use: Brochure names skill efficiency and companions; mockup adds explicit chunk/order/correct-practice safeguards, not recovered installation steps.
+    claims: [conditioned-reflex-automation, autonomic-transfer, improved-skill-efficiency]
+    locators: {purpose: [20, 22], main: [29, 105], association: [54, 93], future_use: [95, 124], closer: [126, 129], consolidation: [126, 129], handoff: [126, 129]}
+  OCF-BOD-014:
+    title: Regenerate
+    source: "Regenerate/Regenerate_881050P_reconstructed_annotated.txt"
+    brochure: "Regenerate/Regenerate.ocr.pdf"
+    inspected_lines: [1, 147]
+    family: body-reconstruction-claims
+    purpose: Brochure claims assistance with healing/replacement of body parts, permanently installed with command intensification; it explicitly does not replace medical care.
+    main: [identify-body-area, proposed-representation-of-normal-function, proposed-build-live-breath-cue, proposed-repair-and-adaptation-association]
+    future_use: Brochure marks permanence/intensification and related functions; detailed repair/representation procedure is mockup inference.
+    claims: [body-part-reconstruction, tissue-replacement-regeneration, persistent-healing-pattern]
+    locators: {purpose: [30, 31], main: [39, 111], association: [60, 111], future_use: [113, 138], closer: [144, 147], consolidation: [144, 147], handoff: [144, 147]}
+  OCF-BOD-015:
+    title: Short Fix
+    source: "Short Fix/Short_Fix_881039_reconstructed_annotated.txt"
+    brochure: "Short Fix/Short Fix.ocr.pdf"
+    inspected_lines: [1, 129]
+    family: temporary-distress-signal-reduction
+    purpose: Brochure describes temporary analgesia/de-tuning of new non-chronic discomfort and lists activation plus RELEASE commands.
+    main: [select-new-discomfort-location, proposed-breath-and-go-numb-cue, proposed-reduced-signal-importance]
+    future_use: Immediate temporary use for new/non-chronic signals; exact localization/breath sequence remains reconstructed.
+    suspend_cancel_reset: Brochure lists RELEASE; exact selection/return procedure is inferred using Release research, not recovered Short Fix narration.
+    claims: [temporary-analgesia, sensory-de-tuning, restored-sensitivity-after-release-inference]
+    locators: {purpose: [28, 29], main: [36, 84], association: [45, 80], future_use: [82, 123], suspend_cancel_reset: [90, 115], closer: [125, 129], consolidation: [125, 129], handoff: [125, 129]}
+  OCF-EMG-001:
+    title: Emergency Injury
+    source: "Emergency: Injury/Emergency_Injury_88R1040_reconstructed_annotated.txt"
+    brochure: "Emergency: Injury/Emergency-Injury.ocr.pdf"
+    inspected_lines: [1, 128]
+    family: conditional-injury-response-claims
+    purpose: Brochure claims healing/balancing support after injury, including automatic operation specifically when unconscious due to injury; conscious cue intensifies it.
+    main: [injury-condition-recognition, proposed-control-balance-restoration-association, conscious-cue-intensification, injury-caused-unconsciousness-autoactivation-claim]
+    future_use: Injury-specific condition and conscious/unconscious distinction are catalogue assertions. Exact breath/selection/control instruction and outcome remain unknown/inferred.
+    claims: [autonomic-healing-enhancement, unconscious-injury-triggered-activation, medical-defense-potentiation]
+    uncertainties: Do not generalize automatic activation to all emergencies or invent bleeding/shock/survival outcomes. Brochure says not a substitute for treatment; mockup adds modern safety wording.
+    locators: {purpose: [27, 28], main: [36, 95], association: [60, 91], future_use: [85, 107], suspend_cancel_reset: [119, 128], closer: [109, 113], consolidation: [109, 113], handoff: [109, 113]}
+  OCF-EMG-002:
+    title: Emergency Toxic
+    source: "Emergency: Toxic/Emergency_Toxic_881041_reconstructed_annotated.txt"
+    brochure: "Emergency: Toxic/Emergency-Toxin.ocr.pdf"
+    inspected_lines: [1, 113]
+    family: toxic-exposure-response-claims
+    purpose: Brochure claims control/removal of harmful foreign substances and immediate use during toxic/chemical exposure, alongside appropriate treatment.
+    main: [identify-toxic-exposure-condition, proposed-clear-remove-breath-cue, proposed-body-protection-and-discharge-association]
+    future_use: Catalogue immediate/as-needed toxic-exposure use; repeat-command guidance is creative reconstruction, not a recovered requirement.
+    claims: [toxin-control-or-elimination, venom-or-poison-response, natural-defense-potentiation]
+    uncertainties: No target-specific automatic activation, antidote mechanism, duration or release is established. Treatment limitations must not become efficacy promises.
+    locators: {purpose: [20, 22], main: [29, 78], association: [40, 78], future_use: [80, 108], closer: [110, 113], consolidation: [110, 113], handoff: [110, 113]}
+  OCF-EMO-003:
+    title: Empathizing
+    source: "Empathizing/Empathizing_881049_reconstructed_annotated.txt"
+    brochure: "Empathizing/Emphathizing.ocr.pdf"
+    inspected_lines: [1, 139]
+    family: other-being-perception-claims
+    purpose: Brochure describes nonconscious perception of another being's drives/emotional/mental/physical state in communication situations.
+    main: [select-other-being, proposed-observation-and-self-regulation, proposed-profile-cue, proposed-integration-of-impressions]
+    future_use: As-needed communication context and companions are catalogue material; observation/checking/anti-manipulation procedure is mockup design, not proof of accurate profiling.
+    claims: [nonconscious-other-being-state-perception, accurate-inner-condition-knowledge, reconstructed-physical-signal-integration]
+    locators: {purpose: [20, 22], main: [29, 105], association: [64, 105], future_use: [107, 134], closer: [136, 139], consolidation: [136, 139], handoff: [136, 139]}
+  OCF-EXP-002:
+    title: Zoning
+    source: "Zoning/Zoning_881033_reconstructed_annotated.txt"
+    brochure: "Zoning/Zoning.ocr.pdf"
+    inspected_lines: [1, 232]
+    family: temperature-comfort-field-claims
+    purpose: Brochure claims a body-surrounding temperature-comfort field; lists INSULATE and CANCEL and advises RELEASE when need passes.
+    main: [select-temperature-comfort-goal, proposed-insulate-breath-cue, proposed-surrounding-zone-representation, proposed-adaptation-to-environment]
+    future_use: As-needed environment compensation; physical insulation/protection is a claim, not evidence of safety in heat/cold.
+    suspend_cancel_reset: Catalogue CANCEL is listed but precise role is ambiguous; RELEASE-after-need is explicit. Mockup's distinct cancel/hold sequence is not authenticated.
+    claims: [static-temperature-field, heat-or-cold-resistance, subjective-versus-physical-comfort-ambiguity]
+    locators: {purpose: [22, 23], main: [70, 105], association: [71, 105], future_use: [141, 148], suspend_cancel_reset: [107, 139], closer: [153, 178], consolidation: [180, 193], handoff: [195, 232]}
+  OCF-FND-006:
+    title: Release
+    source: "Release/Release_881002_reconstructed_annotated.txt"
+    brochure: "Release/Release.ocr.pdf"
+    inspected_lines: [1, 234]
+    family: targeted-function-suspension
+    purpose: Brochure explicitly distinguishes ending a selected temporary application from erasing learned function knowledge, including temporary groupings.
+    main: [select-active-temporary-function-or-group, proposed-release-breath-cue, suspend-current-application-with-learning-retained]
+    future_use: After temporary need is accomplished, place selected application on hold for later recall; selection/breath details remain reconstructed.
+    suspend_cancel_reset: Suspension is the target purpose, not universal erasure/reset. Group-selection implementation and temporary effects require explicit future OCF design.
+    claims: [normalization-after-suspension, learned-function-retention, inferred-group-suspension-procedure]
+    locators: {purpose: [21, 22], main: [79, 137], association: [87, 137], future_use: [109, 141], suspend_cancel_reset: [98, 132], closer: [146, 175], consolidation: [177, 193], handoff: [195, 234]}
+  OCF-PRF-004:
+    title: Light Foot
+    source: "Light Foot/Light_Foot_881047_reconstructed_annotated.txt"
+    brochure: "Light Foot/Light Foot.ocr.pdf"
+    inspected_lines: [1, 112]
+    family: movement-conditioned-ease
+    purpose: Brochure describes easier walking/jogging/running and explicitly limits operation to actually moving the feet.
+    main: [select-ongoing-foot-movement, proposed-lighter-breath-cue, proposed-smoother-less-effortful-movement-association]
+    future_use: Cue intensifies the movement-conditioned pattern; catalogue foot-motion restriction is separate from reconstructed gait/rhythm/awareness details.
+    suspend_cancel_reset: Operation while moving is catalogue-limited; precise stop/resume process is inferred, not a documented reset cue.
+    claims: [easier-locomotion, recovery-from-leg-or-foot-dysfunction, motion-conditioned-operation]
+    locators: {purpose: [27, 28], main: [35, 84], association: [35, 84], future_use: [86, 107], suspend_cancel_reset: [86, 96], closer: [109, 112], consolidation: [109, 112], handoff: [109, 112]}
+  OCF-PRF-005:
+    title: Make Your Day
+    source: "Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt"
+    brochure: "Make Your Day/Make Your Day.ocr.pdf"
+    inspected_lines: [1, 127]
+    family: daily-pattern-intention
+    purpose: Brochure describes morning self-programming of desired physical/mental/emotional daily patterns, emphasizing clear verbal/visual desire expression.
+    main: [select-day-goal, proposed-representation-and-verbal-expression-of-pattern, proposed-this-day-breath-cue, proposed-opportunity-recognition]
+    future_use: First morning activity and clear expression are catalogue assertions; detailed visualization, flexibility and recognition procedure are reconstructed.
+    claims: [daily-pattern-control, reversal-of-anticipated-negative-patterns, inferred-opportunity-recognition]
+    locators: {purpose: [18, 19], main: [26, 97], association: [55, 97], future_use: [99, 122], closer: [124, 127], consolidation: [124, 127], handoff: [124, 127]}
+  OCF-PRF-006:
+    title: Strong Quick
+    source: "Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt"
+    brochure: "Strong Quick/Strong-Quick.ocr.pdf"
+    inspected_lines: [1, 269]
+    family: momentary-emergency-strength-claims
+    purpose: Brochure limits unusual muscular energy/speed to instant momentary emergency use, despite examples that include exertion contexts.
+    main: [identify-emergency-exertion-need, proposed-strong-quick-breath-cue, proposed-coordinated-immediate-action]
+    future_use: Brief/as-needed use with RELEASE after need; precise action, selection and duration remain unknown/reconstructed, not recreational performance policy.
+    suspend_cancel_reset: Catalogue advises RELEASE after need; exact selection and normalization sequence is inferred from Release research.
+    claims: [beyond-typical-muscular-capability, momentary-energy-enhancement, injury-risk-and-example-tension]
+    locators: {purpose: [32, 33], main: [90, 134], association: [90, 134], future_use: [136, 175], suspend_cancel_reset: [148, 171], closer: [180, 209], consolidation: [211, 227], handoff: [229, 269]}
+  OCF-SEN-003:
+    title: Sensory Smell
+    source: "Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt"
+    brochure: "Sensory (Smell)/Sensory-Smell.ocr.pdf"
+    inspected_lines: [1, 60]
+    family: adjustable-sensory-perception
+    purpose: Brochure specifies smell identification/sensitivity increase or reduced input; GREATER/LESSER are legacy commands, not an approved physiological mechanism.
+    main: [select-smell-direction, proposed-internal-mode-cue-and-breathing, proposed-sensitivity-or-salience-adjustment]
+    future_use: As-needed mode choice is catalogue-supported; persistence until desire-normal from Hearing is explicitly related-function inference, not target evidence.
+    claims: [enhanced-odor-detection-and-identification, sensory-input-suppression, inferred-persistence-until-return]
+    locators: {purpose: [9, 13], main: [21, 43], association: [21, 43], future_use: [39, 46], closer: [48, 49], consolidation: [48, 49], handoff: [51, 60]}
+  OCF-SEN-004:
+    title: Sensory Taste
+    source: "Sensory (Taste)/Sensory_Taste_reconstructed_annotated.txt"
+    brochure: "Sensory (Taste)/Sensory-Taste.ocr.pdf"
+    inspected_lines: [1, 62]
+    family: adjustable-sensory-perception
+    purpose: Brochure describes directing taste sensitivity/identification and reducing pleasant or unpleasant taste salience.
+    main: [select-taste-direction, proposed-internal-mode-cue-and-breathing, proposed-sensitivity-or-salience-adjustment]
+    future_use: As-needed taste mode is catalogue-supported; precise activation/duration/reset comes from analogical reconstruction and remains historically unknown.
+    claims: [enhanced-flavor-identification, taste-input-reduction, inferred-persistence-until-return]
+    locators: {purpose: [9, 13], main: [21, 45], association: [21, 45], future_use: [39, 48], closer: [50, 51], consolidation: [50, 51], handoff: [53, 62]}
+  OCF-SEN-005:
+    title: Sensory Touch
+    source: "Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt"
+    brochure: "Sensory (Touch)/Sensory-Touch.ocr.pdf"
+    inspected_lines: [1, 84]
+    family: adjustable-sensory-perception
+    purpose: Brochure describes tactile sensitivity and pressure/texture/temperature identification, including pain/itch reduction assertions.
+    main: [select-tactile-direction, proposed-internal-mode-cue-and-breathing, proposed-pressure-texture-temperature-attention]
+    future_use: Catalogue mode directions are known; precise breath/association, persistence and state handoff remain target-audio unknowns despite mockup analogue.
+    suspend_cancel_reset: No separate termination cue established in the inspected brochure; historical audio may contain more, so absence there remains unknown.
+    claims: [physical-tactile-sensitivity-change, pain-and-itch-reduction, inferred-duration]
+    locators: {purpose: [20, 21], main: [28, 66], association: [28, 66], future_use: [61, 80], suspend_cancel_reset: [72, 76], closer: [23, 26], consolidation: [23, 26], handoff: [23, 26]}
+  OCF-SLP-005:
+    title: Sleep Easy
+    source: "Sleep Easy/Sleep_Easy_reconstructed_annotated.txt"
+    brochure: "Sleep Easy/Sleep Easy.ocr.pdf"
+    inspected_lines: [1, 258]
+    family: sleep-in-adverse-or-unfamiliar-settings
+    purpose: Brochure claims normal sleep in unusual/adverse settings with QUIET SLEEP; this is not the frozen OCF pilot's safe-rest design as historical behavior.
+    main: [select-sleep-in-unfamiliar-context, proposed-comfort-and-breath-cue, proposed-reduced-environmental-salience, proposed-sleep-entry]
+    future_use: Catalogue adverse/unfamiliar context and companions are separate from reconstructed specific environmental/acceptance instructions; duration/reset remain unknown.
+    claims: [sleep-under-adverse-conditions, reduced-environmental-salience-inference, guaranteed-sleep-entry]
+    conversion: Existing Sleep Easy pilot remains frozen. Its practical adjustments are OCF choices, not evidence about this missing recording; catalogue-versus-safety reframing is material and requires review.
+    uncertainties: Annotated claim that catalogue number was unrecovered is superseded only by this inspected PDF footer88R1015; this does not authenticate audio or justify rewriting original reconstruction files.
+    locators: {purpose: [34, 35], main: [92, 168], association: [97, 152], future_use: [154, 168], closer: [173, 202], consolidation: [204, 220], handoff: [222, 258]}
+  OCF-SLP-006:
+    title: Stay Awake
+    source: "Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt"
+    brochure: "Stay Awake/Stay Awake.ocr.pdf"
+    inspected_lines: [1, 268]
+    family: temporary-essential-alertness-claims
+    purpose: Brochure describes immediate temporary alertness only for essential need, includes driving examples and prohibits continuous application.
+    main: [identify-essential-alertness-need, proposed-awake-alert-breath-cue, proposed-attention-and-waking-association]
+    future_use: Temporary essential use is catalogue-described; exact restored-alertness duration, safe-driving efficacy and cancellation are not established.
+    claims: [immediate-alertness-restoration, temporary-waking-maintenance, unsafe-driving-efficacy-implication]
+    conversion: Driving examples are historical catalogue assertions, not advice or evidence of safe alertness. Modern stop/rest safeguards are OCF/reconstruction clarification, not recovered audio wording.
+    locators: {purpose: [32, 33], main: [120, 178], association: [120, 164], future_use: [166, 178], closer: [183, 212], consolidation: [214, 230], handoff: [232, 268]}

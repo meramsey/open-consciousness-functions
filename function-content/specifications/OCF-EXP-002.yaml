@@ -1,71 +1,303 @@
+analysis_review:
+  claim_categories:
+  - static-temperature-field
+  - heat-or-cold-resistance
+  - subjective-versus-physical-comfort-ambiguity
+  family: temperature-comfort-field-claims
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+        end_line: 105
+        file: Zoning/Zoning_881033_reconstructed_annotated.txt
+        source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+        start_line: 71
+      status: inferred
+      summary: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath
+        procedure; the exact historical association wording/method is unknown.
+    closer:
+      locators:
+      - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+        end_line: 178
+        file: Zoning/Zoning_881033_reconstructed_annotated.txt
+        source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+        start_line: 153
+      status: inferred
+      summary: Historical closer unknown; annotated mockup borrows remember/use, access close and return
+        shell from related transcripts.
+    consolidation:
+      locators:
+      - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+        end_line: 193
+        file: Zoning/Zoning_881033_reconstructed_annotated.txt
+        source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+        start_line: 180
+      status: inferred
+      summary: Historical target consolidation unknown; proposed sleep/ambient segment is related-function
+        inference, never measured target timing.
+    conversion:
+      locators:
+      - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+        end_line: 232
+        file: Zoning/Zoning_881033_reconstructed_annotated.txt
+        source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+        start_line: 1
+      status: inferred
+      summary: Original OCF design is still required; do not convert mockup expression by synonyms or
+        adopt unsupported mechanisms. Any safer/material reframing needs explicit human review, not historical
+        promotion.
+    future_use:
+      locators:
+      - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+        end_line: 148
+        file: Zoning/Zoning_881033_reconstructed_annotated.txt
+        source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+        start_line: 141
+      - file: Zoning/Zoning.ocr.pdf
+        page: 1
+        source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+      - file: Zoning/Zoning.ocr.pdf
+        page: 2
+        source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+      status: inferred
+      summary: As-needed environment compensation; physical insulation/protection is a claim, not evidence
+        of safety in heat/cold.
+    handoff:
+      locators:
+      - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+        end_line: 232
+        file: Zoning/Zoning_881033_reconstructed_annotated.txt
+        source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+        start_line: 195
+      status: inferred
+      summary: Historical handoff unknown; mockup's waking return/reminder is inferred, not recovered.
+    identity:
+      locators:
+      - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+        end_line: 105
+        file: Zoning/Zoning_881033_reconstructed_annotated.txt
+        source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+        start_line: 71
+      - file: Zoning/Zoning.ocr.pdf
+        page: 1
+        source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+      - file: Zoning/Zoning.ocr.pdf
+        page: 2
+        source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+        end_line: 105
+        file: Zoning/Zoning_881033_reconstructed_annotated.txt
+        source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+        start_line: 70
+      status: inferred
+      summary: select-temperature-comfort-goal; proposed-insulate-breath-cue; proposed-surrounding-zone-representation;
+        proposed-adaptation-to-environment
+    opener:
+      locators:
+      - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+        end_line: 232
+        file: Zoning/Zoning_881033_reconstructed_annotated.txt
+        source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+        start_line: 1
+      status: inferred
+      summary: Historical opener unknown; mockup supplies purpose orientation and related-function learning
+        shell as structural inference.
+    preparation:
+      locators:
+      - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+        end_line: 232
+        file: Zoning/Zoning_881033_reconstructed_annotated.txt
+        source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+        start_line: 1
+      - file: Zoning/Zoning.ocr.pdf
+        page: 1
+        source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+      - file: Zoning/Zoning.ocr.pdf
+        page: 2
+        source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+      status: supported
+      summary: Brochure gives prior Preparation Exercise or prior H-PLUS learning, a quiet supported position,
+        soft stereo/headphone listening and next-day target exercise. Exact lost narration procedure is
+        unknown; mockup shell is related-function inference.
+    provenance:
+      locators:
+      - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+        end_line: 232
+        file: Zoning/Zoning_881033_reconstructed_annotated.txt
+        source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+        start_line: 1
+      - file: Zoning/Zoning.ocr.pdf
+        page: 1
+        source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+      - file: Zoning/Zoning.ocr.pdf
+        page: 2
+        source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+      status: inferred
+      summary: Complete available reconstructed_mockup text inspected; shared representations are not
+        independent corroboration. Source accuracy/authentication remains unresolved. Annotated VERIFIED
+        labels are reconstruction-author assertions, not independent authentication. Catalogue purpose/command/use
+        limits and proposed mockup operations are separate evidence axes. Missing historical operations
+        remain unknown. Both brochure pages inspected separately; catalogue assertions are documentary
+        evidence, not recovered audio instructions.
+    purpose:
+      locators:
+      - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+        end_line: 23
+        file: Zoning/Zoning_881033_reconstructed_annotated.txt
+        source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+        start_line: 22
+      - file: Zoning/Zoning.ocr.pdf
+        page: 1
+        source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+      - file: Zoning/Zoning.ocr.pdf
+        page: 2
+        source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+      status: supported
+      summary: Brochure claims a body-surrounding temperature-comfort field; lists INSULATE and CANCEL
+        and advises RELEASE when need passes.
+    rehearsal:
+      locators:
+      - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+        end_line: 232
+        file: Zoning/Zoning_881033_reconstructed_annotated.txt
+        source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Annotated VERIFIED
+        labels are reconstruction-author assertions, not independent authentication. Catalogue purpose/command/use
+        limits and proposed mockup operations are separate evidence axes. Missing historical operations
+        remain unknown.
+    safety_claims:
+      locators:
+      - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+        end_line: 232
+        file: Zoning/Zoning_881033_reconstructed_annotated.txt
+        source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+        start_line: 1
+      - file: Zoning/Zoning.ocr.pdf
+        page: 1
+        source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+      - file: Zoning/Zoning.ocr.pdf
+        page: 2
+        source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+      status: inferred
+      summary: static-temperature-field; heat-or-cold-resistance; subjective-versus-physical-comfort-ambiguity.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+        end_line: 232
+        file: Zoning/Zoning_881033_reconstructed_annotated.txt
+        source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+        start_line: 1
+      status: inferred
+      summary: Historical target recording's exact state sequence remains unknown. Mockup imports ten/eleven/ten/sleep/waking
+        grammar from surviving Hearing/Seeing, not recovered target audio.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+        end_line: 139
+        file: Zoning/Zoning_881033_reconstructed_annotated.txt
+        source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+        start_line: 107
+      status: inferred
+      summary: Catalogue CANCEL is listed but precise role is ambiguous; RELEASE-after-need is explicit.
+        Mockup's distinct cancel/hold sequence is not authenticated.
+  source_extent:
+    content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+    end_line: 232
+    file: Zoning/Zoning_881033_reconstructed_annotated.txt
+    source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:command_association
-    - 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:command_association
-    operations: []
+    - review:OCF-EXP-002:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:closer
-    - 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:closer
-    operations: []
+    - review:OCF-EXP-002:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-EXP-002:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:future_use
-    - 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:future_use
-    operations: []
+    - review:OCF-EXP-002:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:return
-    - 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:return
-    operations: []
+    - review:OCF-EXP-002:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:main
-    - 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:main
-    operations: []
+    - review:OCF-EXP-002:main
+    operations:
+    - select-temperature-comfort-goal
+    - proposed-insulate-breath-cue
+    - proposed-surrounding-zone-representation
+    - proposed-adaptation-to-environment
     status: inferred
   opener:
     evidence_refs:
-    - 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:opener
-    - 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:opener
-    operations: []
+    - review:OCF-EXP-002:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-EXP-002:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-EXP-002:rehearsal
     operations: []
     status: unknown
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-EXP-002:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-EXP-002:suspend_cancel_reset
+    operations:
+    - documented-suspend-cancel-reset
+    status: inferred
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-EXP-002
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+  purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing historical
+  operations remain unknown.
+- Original OCF design is still required; do not convert mockup expression by synonyms or adopt unsupported
+  mechanisms. Any safer/material reframing needs explicit human review, not historical promotion.
 schema_version: '1.0'
 states:
   preferred: []

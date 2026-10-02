@@ -1,71 +1,301 @@
+analysis_review:
+  claim_categories:
+  - sleep-under-adverse-conditions
+  - reduced-environmental-salience-inference
+  - guaranteed-sleep-entry
+  family: sleep-in-adverse-or-unfamiliar-settings
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2
+        end_line: 152
+        file: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+        source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+        start_line: 97
+      status: inferred
+      summary: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath
+        procedure; the exact historical association wording/method is unknown.
+    closer:
+      locators:
+      - content_group_sha256: 580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2
+        end_line: 202
+        file: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+        source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+        start_line: 173
+      status: inferred
+      summary: Historical closer unknown; annotated mockup borrows remember/use, access close and return
+        shell from related transcripts.
+    consolidation:
+      locators:
+      - content_group_sha256: 580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2
+        end_line: 220
+        file: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+        source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+        start_line: 204
+      status: inferred
+      summary: Historical target consolidation unknown; proposed sleep/ambient segment is related-function
+        inference, never measured target timing.
+    conversion:
+      locators:
+      - content_group_sha256: 580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2
+        end_line: 258
+        file: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+        source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+        start_line: 1
+      status: inferred
+      summary: Existing Sleep Easy pilot remains frozen. Its practical adjustments are OCF choices, not
+        evidence about this missing recording; catalogue-versus-safety reframing is material and requires
+        review.
+    future_use:
+      locators:
+      - content_group_sha256: 580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2
+        end_line: 168
+        file: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+        source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+        start_line: 154
+      - file: Sleep Easy/Sleep Easy.ocr.pdf
+        page: 1
+        source_sha256: 498903accdd807bab5dbf62d914881bb686bc0a3fe0fea6fa12c8c1d8090c0b6
+      - file: Sleep Easy/Sleep Easy.ocr.pdf
+        page: 2
+        source_sha256: 498903accdd807bab5dbf62d914881bb686bc0a3fe0fea6fa12c8c1d8090c0b6
+      status: inferred
+      summary: Catalogue adverse/unfamiliar context and companions are separate from reconstructed specific
+        environmental/acceptance instructions; duration/reset remain unknown.
+    handoff:
+      locators:
+      - content_group_sha256: 580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2
+        end_line: 258
+        file: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+        source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+        start_line: 222
+      status: inferred
+      summary: Historical handoff unknown; mockup's waking return/reminder is inferred, not recovered.
+    identity:
+      locators:
+      - content_group_sha256: 580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2
+        end_line: 152
+        file: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+        source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+        start_line: 97
+      - file: Sleep Easy/Sleep Easy.ocr.pdf
+        page: 1
+        source_sha256: 498903accdd807bab5dbf62d914881bb686bc0a3fe0fea6fa12c8c1d8090c0b6
+      - file: Sleep Easy/Sleep Easy.ocr.pdf
+        page: 2
+        source_sha256: 498903accdd807bab5dbf62d914881bb686bc0a3fe0fea6fa12c8c1d8090c0b6
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2
+        end_line: 168
+        file: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+        source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+        start_line: 92
+      status: inferred
+      summary: select-sleep-in-unfamiliar-context; proposed-comfort-and-breath-cue; proposed-reduced-environmental-salience;
+        proposed-sleep-entry
+    opener:
+      locators:
+      - content_group_sha256: 580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2
+        end_line: 258
+        file: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+        source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+        start_line: 1
+      status: inferred
+      summary: Historical opener unknown; mockup supplies purpose orientation and related-function learning
+        shell as structural inference.
+    preparation:
+      locators:
+      - content_group_sha256: 580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2
+        end_line: 258
+        file: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+        source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+        start_line: 1
+      - file: Sleep Easy/Sleep Easy.ocr.pdf
+        page: 1
+        source_sha256: 498903accdd807bab5dbf62d914881bb686bc0a3fe0fea6fa12c8c1d8090c0b6
+      - file: Sleep Easy/Sleep Easy.ocr.pdf
+        page: 2
+        source_sha256: 498903accdd807bab5dbf62d914881bb686bc0a3fe0fea6fa12c8c1d8090c0b6
+      status: supported
+      summary: Brochure gives prior Preparation Exercise or prior H-PLUS learning, a quiet supported position,
+        soft stereo/headphone listening and next-day target exercise. Exact lost narration procedure is
+        unknown; mockup shell is related-function inference.
+    provenance:
+      locators:
+      - content_group_sha256: 580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2
+        end_line: 258
+        file: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+        source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+        start_line: 1
+      - file: Sleep Easy/Sleep Easy.ocr.pdf
+        page: 1
+        source_sha256: 498903accdd807bab5dbf62d914881bb686bc0a3fe0fea6fa12c8c1d8090c0b6
+      - file: Sleep Easy/Sleep Easy.ocr.pdf
+        page: 2
+        source_sha256: 498903accdd807bab5dbf62d914881bb686bc0a3fe0fea6fa12c8c1d8090c0b6
+      status: inferred
+      summary: Complete available reconstructed_mockup text inspected; shared representations are not
+        independent corroboration. Source accuracy/authentication remains unresolved. Annotated claim
+        that catalogue number was unrecovered is superseded only by this inspected PDF footer88R1015;
+        this does not authenticate audio or justify rewriting original reconstruction files. Both brochure
+        pages inspected separately; catalogue assertions are documentary evidence, not recovered audio
+        instructions.
+    purpose:
+      locators:
+      - content_group_sha256: 580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2
+        end_line: 35
+        file: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+        source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+        start_line: 34
+      - file: Sleep Easy/Sleep Easy.ocr.pdf
+        page: 1
+        source_sha256: 498903accdd807bab5dbf62d914881bb686bc0a3fe0fea6fa12c8c1d8090c0b6
+      - file: Sleep Easy/Sleep Easy.ocr.pdf
+        page: 2
+        source_sha256: 498903accdd807bab5dbf62d914881bb686bc0a3fe0fea6fa12c8c1d8090c0b6
+      status: supported
+      summary: Brochure claims normal sleep in unusual/adverse settings with QUIET SLEEP; this is not
+        the frozen OCF pilot's safe-rest design as historical behavior.
+    rehearsal:
+      locators:
+      - content_group_sha256: 580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2
+        end_line: 258
+        file: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+        source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Annotated claim
+        that catalogue number was unrecovered is superseded only by this inspected PDF footer88R1015;
+        this does not authenticate audio or justify rewriting original reconstruction files.
+    safety_claims:
+      locators:
+      - content_group_sha256: 580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2
+        end_line: 258
+        file: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+        source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+        start_line: 1
+      - file: Sleep Easy/Sleep Easy.ocr.pdf
+        page: 1
+        source_sha256: 498903accdd807bab5dbf62d914881bb686bc0a3fe0fea6fa12c8c1d8090c0b6
+      - file: Sleep Easy/Sleep Easy.ocr.pdf
+        page: 2
+        source_sha256: 498903accdd807bab5dbf62d914881bb686bc0a3fe0fea6fa12c8c1d8090c0b6
+      status: inferred
+      summary: sleep-under-adverse-conditions; reduced-environmental-salience-inference; guaranteed-sleep-entry.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2
+        end_line: 258
+        file: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+        source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+        start_line: 1
+      status: inferred
+      summary: Historical target recording's exact state sequence remains unknown. Mockup imports ten/eleven/ten/sleep/waking
+        grammar from surviving Hearing/Seeing, not recovered target audio.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2
+        end_line: 258
+        file: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+        source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Annotated claim
+        that catalogue number was unrecovered is superseded only by this inspected PDF footer88R1015;
+        this does not authenticate audio or justify rewriting original reconstruction files.
+  source_extent:
+    content_group_sha256: 580017422a5ae486f92760e3951e197f20229e7a9c548d7d5af675049e9886d2
+    end_line: 258
+    file: Sleep Easy/Sleep_Easy_reconstructed_annotated.txt
+    source_sha256: b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322:command_association
-    - 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309:command_association
-    operations: []
+    - review:OCF-SLP-005:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322:closer
-    - 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309:closer
-    operations: []
+    - review:OCF-SLP-005:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-SLP-005:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322:future_use
-    - 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309:future_use
-    operations: []
+    - review:OCF-SLP-005:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322:return
-    - 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309:return
-    operations: []
+    - review:OCF-SLP-005:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322:main
-    - 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309:main
-    operations: []
+    - review:OCF-SLP-005:main
+    operations:
+    - select-sleep-in-unfamiliar-context
+    - proposed-comfort-and-breath-cue
+    - proposed-reduced-environmental-salience
+    - proposed-sleep-entry
     status: inferred
   opener:
     evidence_refs:
-    - b36c46a6f9d49897015eb905b64944601b21e3cecc5ec964e1ae2e017467a322:opener
-    - 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309:opener
-    operations: []
+    - review:OCF-SLP-005:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SLP-005:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SLP-005:rehearsal
     operations: []
     status: unknown
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-SLP-005:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SLP-005:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-SLP-005
 human_review: required
 maturity: pilot
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Annotated claim that catalogue number was unrecovered is superseded only by this inspected PDF footer88R1015;
+  this does not authenticate audio or justify rewriting original reconstruction files.
+- Existing Sleep Easy pilot remains frozen. Its practical adjustments are OCF choices, not evidence about
+  this missing recording; catalogue-versus-safety reframing is material and requires review.
 schema_version: '1.0'
 states:
   preferred: []

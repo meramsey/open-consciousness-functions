@@ -1,68 +1,302 @@
+analysis_review:
+  claim_categories:
+  - enhanced-odor-detection-and-identification
+  - sensory-input-suppression
+  - inferred-persistence-until-return
+  family: adjustable-sensory-perception
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
+        end_line: 43
+        file: Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt
+        source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
+        start_line: 21
+      status: inferred
+      summary: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath
+        procedure; the exact historical association wording/method is unknown.
+    closer:
+      locators:
+      - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
+        end_line: 49
+        file: Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt
+        source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
+        start_line: 48
+      status: inferred
+      summary: Historical closer unknown; annotated mockup borrows remember/use, access close and return
+        shell from related transcripts.
+    consolidation:
+      locators:
+      - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
+        end_line: 49
+        file: Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt
+        source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
+        start_line: 48
+      status: inferred
+      summary: Historical target consolidation unknown; proposed sleep/ambient segment is related-function
+        inference, never measured target timing.
+    conversion:
+      locators:
+      - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
+        end_line: 60
+        file: Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt
+        source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
+        start_line: 1
+      status: inferred
+      summary: Original OCF design is still required; do not convert mockup expression by synonyms or
+        adopt unsupported mechanisms. Any safer/material reframing needs explicit human review, not historical
+        promotion.
+    future_use:
+      locators:
+      - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
+        end_line: 46
+        file: Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt
+        source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
+        start_line: 39
+      - file: Sensory (Smell)/Sensory-Smell.ocr.pdf
+        page: 1
+        source_sha256: e29281de2c8f742195b53556352b9d141cc679bd0e7d97ea524eeade74e98858
+      - file: Sensory (Smell)/Sensory-Smell.ocr.pdf
+        page: 2
+        source_sha256: e29281de2c8f742195b53556352b9d141cc679bd0e7d97ea524eeade74e98858
+      status: inferred
+      summary: As-needed mode choice is catalogue-supported; persistence until desire-normal from Hearing
+        is explicitly related-function inference, not target evidence.
+    handoff:
+      locators:
+      - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
+        end_line: 60
+        file: Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt
+        source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
+        start_line: 51
+      status: inferred
+      summary: Historical handoff unknown; mockup's waking return/reminder is inferred, not recovered.
+    identity:
+      locators:
+      - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
+        end_line: 43
+        file: Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt
+        source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
+        start_line: 21
+      - file: Sensory (Smell)/Sensory-Smell.ocr.pdf
+        page: 1
+        source_sha256: e29281de2c8f742195b53556352b9d141cc679bd0e7d97ea524eeade74e98858
+      - file: Sensory (Smell)/Sensory-Smell.ocr.pdf
+        page: 2
+        source_sha256: e29281de2c8f742195b53556352b9d141cc679bd0e7d97ea524eeade74e98858
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
+        end_line: 43
+        file: Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt
+        source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
+        start_line: 21
+      status: inferred
+      summary: select-smell-direction; proposed-internal-mode-cue-and-breathing; proposed-sensitivity-or-salience-adjustment
+    opener:
+      locators:
+      - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
+        end_line: 60
+        file: Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt
+        source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
+        start_line: 1
+      status: inferred
+      summary: Historical opener unknown; mockup supplies purpose orientation and related-function learning
+        shell as structural inference.
+    preparation:
+      locators:
+      - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
+        end_line: 60
+        file: Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt
+        source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
+        start_line: 1
+      - file: Sensory (Smell)/Sensory-Smell.ocr.pdf
+        page: 1
+        source_sha256: e29281de2c8f742195b53556352b9d141cc679bd0e7d97ea524eeade74e98858
+      - file: Sensory (Smell)/Sensory-Smell.ocr.pdf
+        page: 2
+        source_sha256: e29281de2c8f742195b53556352b9d141cc679bd0e7d97ea524eeade74e98858
+      status: supported
+      summary: Brochure gives prior Preparation Exercise or prior H-PLUS learning, a quiet supported position,
+        soft stereo/headphone listening and next-day target exercise. Exact lost narration procedure is
+        unknown; mockup shell is related-function inference.
+    provenance:
+      locators:
+      - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
+        end_line: 60
+        file: Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt
+        source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
+        start_line: 1
+      - file: Sensory (Smell)/Sensory-Smell.ocr.pdf
+        page: 1
+        source_sha256: e29281de2c8f742195b53556352b9d141cc679bd0e7d97ea524eeade74e98858
+      - file: Sensory (Smell)/Sensory-Smell.ocr.pdf
+        page: 2
+        source_sha256: e29281de2c8f742195b53556352b9d141cc679bd0e7d97ea524eeade74e98858
+      status: inferred
+      summary: Complete available reconstructed_mockup text inspected; shared representations are not
+        independent corroboration. Source accuracy/authentication remains unresolved. Annotated VERIFIED
+        labels are reconstruction-author assertions, not independent authentication. Catalogue purpose/command/use
+        limits and proposed mockup operations are separate evidence axes. Missing historical operations
+        remain unknown. Both brochure pages inspected separately; catalogue assertions are documentary
+        evidence, not recovered audio instructions.
+    purpose:
+      locators:
+      - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
+        end_line: 13
+        file: Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt
+        source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
+        start_line: 9
+      - file: Sensory (Smell)/Sensory-Smell.ocr.pdf
+        page: 1
+        source_sha256: e29281de2c8f742195b53556352b9d141cc679bd0e7d97ea524eeade74e98858
+      - file: Sensory (Smell)/Sensory-Smell.ocr.pdf
+        page: 2
+        source_sha256: e29281de2c8f742195b53556352b9d141cc679bd0e7d97ea524eeade74e98858
+      status: supported
+      summary: Brochure specifies smell identification/sensitivity increase or reduced input; GREATER/LESSER
+        are legacy commands, not an approved physiological mechanism.
+    rehearsal:
+      locators:
+      - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
+        end_line: 60
+        file: Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt
+        source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Annotated VERIFIED
+        labels are reconstruction-author assertions, not independent authentication. Catalogue purpose/command/use
+        limits and proposed mockup operations are separate evidence axes. Missing historical operations
+        remain unknown.
+    safety_claims:
+      locators:
+      - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
+        end_line: 60
+        file: Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt
+        source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
+        start_line: 1
+      - file: Sensory (Smell)/Sensory-Smell.ocr.pdf
+        page: 1
+        source_sha256: e29281de2c8f742195b53556352b9d141cc679bd0e7d97ea524eeade74e98858
+      - file: Sensory (Smell)/Sensory-Smell.ocr.pdf
+        page: 2
+        source_sha256: e29281de2c8f742195b53556352b9d141cc679bd0e7d97ea524eeade74e98858
+      status: inferred
+      summary: enhanced-odor-detection-and-identification; sensory-input-suppression; inferred-persistence-until-return.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
+        end_line: 60
+        file: Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt
+        source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
+        start_line: 1
+      status: inferred
+      summary: Historical target recording's exact state sequence remains unknown. Mockup imports ten/eleven/ten/sleep/waking
+        grammar from surviving Hearing/Seeing, not recovered target audio.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
+        end_line: 60
+        file: Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt
+        source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Annotated VERIFIED
+        labels are reconstruction-author assertions, not independent authentication. Catalogue purpose/command/use
+        limits and proposed mockup operations are separate evidence axes. Missing historical operations
+        remain unknown.
+  source_extent:
+    content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
+    end_line: 60
+    file: Sensory (Smell)/Sensory_Smell_reconstructed_annotated.txt
+    source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6:command_association
-    - 7a1b03b324f5842b5e0c9f4c0a4ae7febaa1a1edfa0c096cf37638c3f3923873:command_association
-    operations: []
+    - review:OCF-SEN-003:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 7a1b03b324f5842b5e0c9f4c0a4ae7febaa1a1edfa0c096cf37638c3f3923873:closer
-    operations: []
+    - review:OCF-SEN-003:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-SEN-003:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6:future_use
-    - 7a1b03b324f5842b5e0c9f4c0a4ae7febaa1a1edfa0c096cf37638c3f3923873:future_use
-    operations: []
+    - review:OCF-SEN-003:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 7a1b03b324f5842b5e0c9f4c0a4ae7febaa1a1edfa0c096cf37638c3f3923873:return
-    operations: []
+    - review:OCF-SEN-003:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6:main
-    - 7a1b03b324f5842b5e0c9f4c0a4ae7febaa1a1edfa0c096cf37638c3f3923873:main
-    operations: []
+    - review:OCF-SEN-003:main
+    operations:
+    - select-smell-direction
+    - proposed-internal-mode-cue-and-breathing
+    - proposed-sensitivity-or-salience-adjustment
     status: inferred
   opener:
     evidence_refs:
-    - 7a1b03b324f5842b5e0c9f4c0a4ae7febaa1a1edfa0c096cf37638c3f3923873:opener
-    operations: []
+    - review:OCF-SEN-003:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SEN-003:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SEN-003:rehearsal
     operations: []
     status: unknown
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-SEN-003:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-SEN-003:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-SEN-003
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+  purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing historical
+  operations remain unknown.
+- Original OCF design is still required; do not convert mockup expression by synonyms or adopt unsupported
+  mechanisms. Any safer/material reframing needs explicit human review, not historical promotion.
 schema_version: '1.0'
 states:
   preferred: []

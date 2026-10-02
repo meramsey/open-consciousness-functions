@@ -1,66 +1,304 @@
+analysis_review:
+  claim_categories:
+  - daily-pattern-control
+  - reversal-of-anticipated-negative-patterns
+  - inferred-opportunity-recognition
+  family: daily-pattern-intention
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
+        end_line: 97
+        file: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+        source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
+        start_line: 55
+      status: inferred
+      summary: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath
+        procedure; the exact historical association wording/method is unknown.
+    closer:
+      locators:
+      - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
+        end_line: 127
+        file: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+        source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
+        start_line: 124
+      status: inferred
+      summary: Historical closer unknown; annotated mockup borrows remember/use, access close and return
+        shell from related transcripts.
+    consolidation:
+      locators:
+      - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
+        end_line: 127
+        file: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+        source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
+        start_line: 124
+      status: inferred
+      summary: Historical target consolidation unknown; proposed sleep/ambient segment is related-function
+        inference, never measured target timing.
+    conversion:
+      locators:
+      - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
+        end_line: 127
+        file: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+        source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
+        start_line: 1
+      status: inferred
+      summary: Original OCF design is still required; do not convert mockup expression by synonyms or
+        adopt unsupported mechanisms. Any safer/material reframing needs explicit human review, not historical
+        promotion.
+    future_use:
+      locators:
+      - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
+        end_line: 122
+        file: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+        source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
+        start_line: 99
+      - file: Make Your Day/Make Your Day.ocr.pdf
+        page: 1
+        source_sha256: fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031
+      - file: Make Your Day/Make Your Day.ocr.pdf
+        page: 2
+        source_sha256: fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031
+      status: inferred
+      summary: First morning activity and clear expression are catalogue assertions; detailed visualization,
+        flexibility and recognition procedure are reconstructed.
+    handoff:
+      locators:
+      - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
+        end_line: 127
+        file: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+        source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
+        start_line: 124
+      status: inferred
+      summary: Historical handoff unknown; mockup's waking return/reminder is inferred, not recovered.
+    identity:
+      locators:
+      - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
+        end_line: 97
+        file: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+        source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
+        start_line: 55
+      - file: Make Your Day/Make Your Day.ocr.pdf
+        page: 1
+        source_sha256: fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031
+      - file: Make Your Day/Make Your Day.ocr.pdf
+        page: 2
+        source_sha256: fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
+        end_line: 97
+        file: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+        source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
+        start_line: 26
+      status: inferred
+      summary: select-day-goal; proposed-representation-and-verbal-expression-of-pattern; proposed-this-day-breath-cue;
+        proposed-opportunity-recognition
+    opener:
+      locators:
+      - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
+        end_line: 127
+        file: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+        source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
+        start_line: 1
+      status: inferred
+      summary: Historical opener unknown; mockup supplies purpose orientation and related-function learning
+        shell as structural inference.
+    preparation:
+      locators:
+      - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
+        end_line: 127
+        file: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+        source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
+        start_line: 1
+      - file: Make Your Day/Make Your Day.ocr.pdf
+        page: 1
+        source_sha256: fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031
+      - file: Make Your Day/Make Your Day.ocr.pdf
+        page: 2
+        source_sha256: fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031
+      status: supported
+      summary: Brochure gives prior Preparation Exercise or prior H-PLUS learning, a quiet supported position,
+        soft stereo/headphone listening and next-day target exercise. Exact lost narration procedure is
+        unknown; mockup shell is related-function inference.
+    provenance:
+      locators:
+      - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
+        end_line: 127
+        file: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+        source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
+        start_line: 1
+      - file: Make Your Day/Make Your Day.ocr.pdf
+        page: 1
+        source_sha256: fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031
+      - file: Make Your Day/Make Your Day.ocr.pdf
+        page: 2
+        source_sha256: fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031
+      status: inferred
+      summary: Complete available reconstructed_mockup text inspected; shared representations are not
+        independent corroboration. Source accuracy/authentication remains unresolved. Annotated VERIFIED
+        labels are reconstruction-author assertions, not independent authentication. Catalogue purpose/command/use
+        limits and proposed mockup operations are separate evidence axes. Missing historical operations
+        remain unknown. Both brochure pages inspected separately; catalogue assertions are documentary
+        evidence, not recovered audio instructions.
+    purpose:
+      locators:
+      - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
+        end_line: 19
+        file: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+        source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
+        start_line: 18
+      - file: Make Your Day/Make Your Day.ocr.pdf
+        page: 1
+        source_sha256: fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031
+      - file: Make Your Day/Make Your Day.ocr.pdf
+        page: 2
+        source_sha256: fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031
+      status: supported
+      summary: Brochure describes morning self-programming of desired physical/mental/emotional daily
+        patterns, emphasizing clear verbal/visual desire expression.
+    rehearsal:
+      locators:
+      - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
+        end_line: 127
+        file: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+        source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Annotated VERIFIED
+        labels are reconstruction-author assertions, not independent authentication. Catalogue purpose/command/use
+        limits and proposed mockup operations are separate evidence axes. Missing historical operations
+        remain unknown.
+    safety_claims:
+      locators:
+      - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
+        end_line: 127
+        file: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+        source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
+        start_line: 1
+      - file: Make Your Day/Make Your Day.ocr.pdf
+        page: 1
+        source_sha256: fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031
+      - file: Make Your Day/Make Your Day.ocr.pdf
+        page: 2
+        source_sha256: fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031
+      status: inferred
+      summary: daily-pattern-control; reversal-of-anticipated-negative-patterns; inferred-opportunity-recognition.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
+        end_line: 127
+        file: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+        source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
+        start_line: 1
+      status: inferred
+      summary: Historical target recording's exact state sequence remains unknown. Mockup imports ten/eleven/ten/sleep/waking
+        grammar from surviving Hearing/Seeing, not recovered target audio.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
+        end_line: 127
+        file: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+        source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Annotated VERIFIED
+        labels are reconstruction-author assertions, not independent authentication. Catalogue purpose/command/use
+        limits and proposed mockup operations are separate evidence axes. Missing historical operations
+        remain unknown.
+  source_extent:
+    content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
+    end_line: 127
+    file: Make Your Day/Make_Your_Day_881042_reconstructed_annotated.txt
+    source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101:command_association
-    - 465e38a658e6a3a7abf3b8693714d8f3c297eb68c5e1f030ccb1f84a3d2da44e:command_association
-    operations: []
+    - review:OCF-PRF-005:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 465e38a658e6a3a7abf3b8693714d8f3c297eb68c5e1f030ccb1f84a3d2da44e:closer
-    operations: []
+    - review:OCF-PRF-005:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-PRF-005:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 465e38a658e6a3a7abf3b8693714d8f3c297eb68c5e1f030ccb1f84a3d2da44e:future_use
-    operations: []
+    - review:OCF-PRF-005:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 465e38a658e6a3a7abf3b8693714d8f3c297eb68c5e1f030ccb1f84a3d2da44e:return
-    operations: []
+    - review:OCF-PRF-005:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - 465e38a658e6a3a7abf3b8693714d8f3c297eb68c5e1f030ccb1f84a3d2da44e:main
-    operations: []
+    - review:OCF-PRF-005:main
+    operations:
+    - select-day-goal
+    - proposed-representation-and-verbal-expression-of-pattern
+    - proposed-this-day-breath-cue
+    - proposed-opportunity-recognition
     status: inferred
   opener:
     evidence_refs:
-    - 465e38a658e6a3a7abf3b8693714d8f3c297eb68c5e1f030ccb1f84a3d2da44e:opener
-    operations: []
+    - review:OCF-PRF-005:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-PRF-005:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-PRF-005:rehearsal
     operations: []
     status: unknown
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-PRF-005:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-PRF-005:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-PRF-005
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+  purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing historical
+  operations remain unknown.
+- Original OCF design is still required; do not convert mockup expression by synonyms or adopt unsupported
+  mechanisms. Any safer/material reframing needs explicit human review, not historical promotion.
 schema_version: '1.0'
 states:
   preferred: []
