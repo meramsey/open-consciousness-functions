@@ -17,8 +17,10 @@ Authoring contract: `docs/NARRATION_STANDARD.md`. Compose with `session compose`
 resolve/validate locale resources, then preview/export before voice/audio build.
 `audio render-state-program` reuses measured speech timing independently of TTS.
 Research `corpus inventory` fingerprints local references without copying text;
-mockups stay reconstructions. Prerecorded narration, full authoring wizard,
-community voice registry, setup/container workflow and GUI remain roadmap work.
+mockups stay reconstructions. User narration uses event-mapped packages via
+`voice render --recordings` and `audio build --recordings` (see `docs/USER_NARRATION.md`).
+Full authoring wizard, community voice registry, setup/container workflow and GUI
+remain roadmap work.
 See `docs/SEMANTIC_DSP.md`, `docs/LOCALIZATION.md`, `docs/USER_GUIDE.md` and
 `docs/TEST_COVERAGE.md` for current contracts and limitations.
 

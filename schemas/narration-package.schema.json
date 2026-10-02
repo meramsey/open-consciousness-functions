@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/narration-package.schema.json",
+  "title": "OCF user-provided narration package",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "id", "source_type", "locale", "author", "license", "redistribution_permission", "recordings"],
+  "properties": {
+    "schema_version": {"const": "1.0"}, "id": {"type": "string", "minLength": 1},
+    "source_type": {"enum": ["prerecorded-user", "externally-generated"]},
+    "locale": {"type": "string", "minLength": 2}, "author": {"type": "string", "minLength": 1},
+    "license": {"type": "string", "minLength": 1}, "redistribution_permission": {"type": "boolean"},
+    "notes": {"type": "string"},
+    "recordings": {"type": "object", "minProperties": 1, "additionalProperties": {
+      "type": "object", "additionalProperties": false, "required": ["file", "sha256"],
+      "properties": {"file": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+    }}
+  }
+}

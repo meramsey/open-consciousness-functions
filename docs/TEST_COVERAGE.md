@@ -50,3 +50,8 @@ Latest combined suite:375 tests passed,5467 statements/2168 branches,
 zero excluded statements. Raw report:
 `/tmp/opencode/ocf-foundation-coverage-final.json`. Requested unit-only100%
 coverage and CI enforcement remain incomplete.
+
+Prerecorded-narration checkpoint:385 tests passed;5544 statements/2198 branches,
+4473 covered lines (**80.6818%**) and1564 covered branches (**71.1556%**),
+zero excluded statements. This supersedes the previous snapshot in the same local
+`ocf-foundation-coverage-final.json` path; it is still combined-suite coverage.

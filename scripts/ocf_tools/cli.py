@@ -159,6 +159,7 @@ def _build_parser() -> argparse.ArgumentParser:
     render_speech = audio_sub.add_parser("render-speech", help="render narration speech to WAV")
     render_speech.add_argument("file", help="OCF timed YAML document")
     render_speech.add_argument("--voice", help="voice profile id/slug or backend name")
+    render_speech.add_argument("--recordings", help="event-mapped prerecorded narration package (instead of TTS)")
     render_speech.add_argument("--locale", help="target locale (BCP-47); resolves narration keys and retargets the voice")
     render_speech.add_argument("--allow-fallback", action="store_true", help="permit fallback across the locale chain instead of failing on missing spoken narration")
     render_speech.add_argument("--output", help="output WAV path")
@@ -186,6 +187,7 @@ def _build_parser() -> argparse.ArgumentParser:
         help="metadata tag override KEY=VALUE applied to FLAC/MP3 outputs (repeatable)",
     )
     build_cmd.add_argument("--voice", help="voice profile id/slug or backend name")
+    build_cmd.add_argument("--recordings", help="event-mapped prerecorded narration package (instead of TTS)")
     build_cmd.add_argument("--locale", help="target locale (BCP-47) for narration rendering")
     build_cmd.add_argument("--allow-fallback", action="store_true", help="permit fallback across the locale chain instead of failing on missing spoken narration")
     build_cmd.add_argument("--output", help="output directory (default audio/rendered)")
@@ -213,6 +215,7 @@ def _build_parser() -> argparse.ArgumentParser:
     voice_render = voice_sub.add_parser("render", help="render narration speech to WAV")
     voice_render.add_argument("file", help="OCF timed YAML document")
     voice_render.add_argument("--voice", help="voice profile id/slug or backend name")
+    voice_render.add_argument("--recordings", help="event-mapped prerecorded narration package (instead of TTS)")
     voice_render.add_argument("--locale", help="target locale (BCP-47); resolves narration keys and retargets the voice")
     voice_render.add_argument("--allow-fallback", action="store_true", help="permit fallback across the locale chain instead of failing on missing spoken narration")
     voice_render.add_argument("--output", help="output WAV path")
@@ -797,6 +800,7 @@ def main(argv: list[str] | None = None) -> int:
                     force=args.force,
                     locale=getattr(args, "locale", None),
                     strict=not getattr(args, "allow_fallback", False),
+                    recordings=getattr(args, "recordings", None),
                 )
             if args.audio_kind == "mix":
                 from .audio_build import mix as mix_tracks
@@ -835,6 +839,9 @@ def main(argv: list[str] | None = None) -> int:
                     flow=bool(getattr(args, "flow", False)),
                     even_counts=bool(getattr(args, "even_counts", False)),
                     dsp_profile=getattr(args, "dsp_profile", None),
+                    recordings=getattr(args, "recordings", None),
+                    locale=getattr(args, "locale", None),
+                    strict=not getattr(args, "allow_fallback", False),
                 )
                 return 0
             if args.audio_kind == "inspect":
@@ -867,6 +874,7 @@ def main(argv: list[str] | None = None) -> int:
                     even_counts=bool(getattr(args, "even_counts", False)),
                     locale=getattr(args, "locale", None),
                     strict=not getattr(args, "allow_fallback", False),
+                    recordings=getattr(args, "recordings", None),
                 )
             print(HELP_TEXT)
             return 0

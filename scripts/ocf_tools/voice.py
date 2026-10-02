@@ -781,6 +781,7 @@ def render_narration(
     locale: str | None = None,
     catalog: Any = None,
     strict: bool = True,
+    recordings: str | Path | None = None,
 ) -> dict[str, Any]:
     """Render a timed document into a mono 16-bit WAV narration stem.
 
@@ -813,8 +814,20 @@ def render_narration(
     from .semantics import bind_document_cues
 
     auditory_cues = bind_document_cues(doc)
-    spec = resolve_backend(backend, locale=locale, catalog=catalog)
-    if render_cue is None:
+    recording_audio = None
+    recording_provenance = None
+    if recordings is not None:
+        if backend is not None or render_cue is not None or fit or flow or even_counts:
+            raise OCFError("recordings are an independent voice source; omit TTS backend and speech-retiming flags")
+        from .locale import document_locale
+        from .recordings import prepare_recordings
+
+        locale = locale or document_locale(doc)
+        recording_audio, recording_provenance = prepare_recordings(recordings, doc, locale)
+        spec = {"name": "prerecorded", "locale": locale, "language": locale, "notes": []}
+    else:
+        spec = resolve_backend(backend, locale=locale, catalog=catalog)
+    if render_cue is None and recording_audio is None:
         check_backend_locale(spec)
     for note in spec.get("notes") or []:
         print(f"Warning: {note}")
@@ -829,7 +842,7 @@ def render_narration(
     if problems:
         raise OCFError("timeline problems; fix before rendering: " + " | ".join(problems[:3]))
 
-    hints_by_event = _pronunciation_hints(doc, locale, catalog, spec["name"])
+    hints_by_event = {} if recording_audio is not None else _pronunciation_hints(doc, locale, catalog, spec["name"])
     timed = sorted(events, key=lambda event: event.at or 0.0)
     originals = {event["id"]: event for event in iter_events(doc)}
     has_semantics = any(event.get("semantic") or event.get("after") for event in originals.values())
@@ -859,7 +872,10 @@ def render_narration(
             text = apply_pronunciation(text, hints, spec["name"])
             if text != before:
                 hints_applied += 1
-        wav_bytes = render_cue(text) if render_cue is not None else render_cue_wav(spec, text)
+        if recording_audio is not None:
+            wav_bytes = recording_audio[group[0].id]
+        else:
+            wav_bytes = render_cue(text) if render_cue is not None else render_cue_wav(spec, text)
         rate, cue_samples = _read_pcm_from_bytes(wav_bytes)
         cue_samples = _resample(cue_samples, rate, sample_rate)
         at = group[0].at or 0.0
@@ -941,6 +957,7 @@ def render_narration(
         timing_mode = f"{timing_mode}+even-counts"
     return {
         "backend": spec["name"],
+        "narration_source": recording_provenance,
         "profile_id": spec.get("profile_id"),
         "locale": spec.get("locale"),
         "voice": spec.get("language"),
@@ -992,6 +1009,7 @@ def render_script(
     even_counts: bool = False,
     locale: str | None = None,
     strict: bool = True,
+    recordings: str | Path | None = None,
 ) -> int:
     """`ocf voice render SCRIPT [--voice] [--locale] [--output] [--fit] [--flow] [--even-counts]`."""
     doc = load_timed_doc(Path(script))
@@ -1008,6 +1026,7 @@ def render_script(
             even_counts=even_counts,
             locale=locale,
             strict=strict,
+            recordings=recordings,
         )
     except OCFFileExistsError as exc:
         raise OCFError(f"{exc} (use --force to overwrite)") from exc

@@ -680,6 +680,7 @@ def build(
     locale: str | None = None,
     strict: bool = True,
     dsp_profile: str | Path | dict[str, Any] | None = None,
+    recordings: str | Path | None = None,
 ) -> dict[str, Any]:
     """`ocf audio build <AUDIO_ID|MANIFEST>` — render narration, mix, master.
 
@@ -722,6 +723,7 @@ def build(
         even_counts=even_counts,
         locale=locale,
         strict=strict,
+        recordings=recordings,
     )
 
     background_conf = manifest.get("background_audio", {})
@@ -871,6 +873,7 @@ def build(
         "semantic_dsp": state_program,
         "auditory_cues": narration_meta.get("auditory_cues", []),
         "narration_resolution": narration_meta.get("narration_resolution"),
+        "narration_source": narration_meta.get("narration_source"),
         "cues": narration_meta["cues"],
         "overlap_mode": narration_meta["overlap_mode"],
         "timing_mode": narration_meta.get("timing_mode", "explicit-at-timestamps"),

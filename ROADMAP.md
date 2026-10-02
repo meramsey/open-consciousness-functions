@@ -22,7 +22,9 @@ Legend: `[x] done · [~] in progress · [ ] planned`
       extraction; rich locale/state/voice/DSP function index.
 - [ ] Unit-only100% lines/branches and CI gates across the documented testable scope.
 - [ ] Linux/macOS/Windows execution and installed-package path audit.
-- [ ] Idempotent setup, optional non-root containers, prerecorded narration.
+- [x] Event-mapped prerecorded narration alternative to TTS, measured timing and
+      original-file provenance; directory import/GUI recording still planned.
+- [ ] Idempotent setup and optional non-root containers.
 - [ ] Community voice/asset registry with model/software/data/voice rights and
       explicit redistribution/attribution metadata; downloadability is not licensing.
 - [ ] Desktop/mobile GUI using the same schemas/APIs; no framework selected.

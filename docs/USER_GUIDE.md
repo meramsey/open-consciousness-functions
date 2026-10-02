@@ -21,6 +21,10 @@ classes. Measured speech can drive independent DSP with
 The three [function pilots](research/PILOT_FUNCTIONAL_SPECIFICATIONS.md) are
 draft rehearsals, not approved production installations.
 
+Use [`--recordings package.yaml`](USER_NARRATION.md) on voice rendering or audio
+build for user-provided narration without TTS. Timings come from the recordings;
+missing files or mismatched locales fail before output.
+
 | Command                                  | Purpose                                   |
 | ---------------------------------------- | ----------------------------------------- |
 | `ocf help`                               | command reference                         |
