@@ -87,3 +87,22 @@ Final supported Linux/Python3.12 snapshot after voice timing-sidecar support:
 385 tests passed;5555 statements/2200 branches;4485 covered lines
 (**80.7381%**) and1567 covered branches (**71.2273%**), zero excluded statements.
 This is the current snapshot at the same local JSON path.
+
+## Phase2B unit-only checkpoint (expanded scope)
+
+Actual supported Linux/Python3.12 run: **119 unit tests passed**,295 integration
+tests deselected. Covered3306/6671lines (**49.55778743816519%**) and991/2580branches
+(**38.41085271317829%**). Remaining: **3365 lines and1589 branches**, zero excluded
+statements. Exact per-file missing lines/branches are recorded in the gitignored
+`audio/rendered/phase2b-unit-coverage.json`; regenerate with the unit command above.
+
+These are unit-only metrics over application **and tool** code, not comparable
+to the previous narrower combined-suite80.7381%/71.2273% snapshot.100% is not
+achieved and CI enforcement is deliberately pending. Core unit CI is configured
+on three OSes; remote macOS/Windows results are not claimed from this Linux run.
+Root`setup.py` and`scripts/setup_ocf.py` are delegating build/bootstrap wrappers;
+their business logic is measured in tool/application modules. No reachable error
+path is hidden by no-cover markers. Native-bootstrap's minimum-version guard has
+a narrowly documented UP036 lint exception because the standalone setup script
+may be invoked before a supported interpreter is established; it is not excluded
+from coverage.

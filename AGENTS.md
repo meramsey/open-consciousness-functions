@@ -19,8 +19,15 @@ resolve/validate locale resources, then preview/export before voice/audio build.
 Research `corpus inventory` fingerprints local references without copying text;
 mockups stay reconstructions. User narration uses event-mapped packages via
 `voice render --recordings` and `audio build --recordings` (see `docs/USER_NARRATION.md`).
-Full authoring wizard, community voice registry, setup/container workflow and GUI
-remain roadmap work.
+Phase2B adds separate `function-content/` evidence/specification/decision/binding
+layers; `functions ... --rich --json` exposes capabilities without promoting
+unknown evidence or frozen pilots. `plan FILE --json` validates a structured
+authoring request without generating wording/audio. `doctor --json --workflow ...`
+distinguishes core and optional tools. `voice import-recordings` builds explicitly
+event-mapped packages; `voice packs --json` lists metadata-only community records.
+Native bootstrap is `python scripts/setup_ocf.py` (dry-run unless `--apply`);
+optional Docker workflow is in `docs/CONTAINERS.md`. Full authoring wizard and GUI
+remain roadmap work. Never imply licensing/authentication from asset availability.
 See `docs/SEMANTIC_DSP.md`, `docs/LOCALIZATION.md`, `docs/USER_GUIDE.md` and
 `docs/TEST_COVERAGE.md` for current contracts and limitations.
 
@@ -139,3 +146,8 @@ docs/BACKGROUND_AUDIO_INDEX.md
 Run `python3 -m pytest` from the repository root. The suite covers the CLI,
 wizards, schema and command validation, index generation, audio manifests, and
 Farfield graceful degradation.
+
+`pytest -m unit` selects audited isolated contracts and forbids native process
+execution; integration/audio/external/platform markers are separate. Coverage
+includes application and tool Python, with no reachable no-cover exclusions.
+See `docs/TEST_COVERAGE.md`; 100% unit coverage is a target, not yet achieved.

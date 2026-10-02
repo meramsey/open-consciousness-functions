@@ -21,6 +21,14 @@ classes. Measured speech can drive independent DSP with
 The three [function pilots](research/PILOT_FUNCTIONAL_SPECIFICATIONS.md) are
 draft rehearsals, not approved production installations.
 
+Phase2B workflows: [`functions ... --rich --json`](FUNCTION_CONTENT.md),
+[`plan FILE --json`](AUTHORING_PLANS.md),
+[`doctor --json --workflow ...`](DOCTOR.md),
+[`native setup`](SETUP.md), [`wheel data`](INSTALLED_DATA.md),
+[`optional containers`](CONTAINERS.md), and
+[`community voice metadata`](COMMUNITY_VOICES.md). These deterministic interfaces
+support agents/GUI clients while keeping reasoning and editorial approval external.
+
 Use [`--recordings package.yaml`](USER_NARRATION.md) on voice rendering or audio
 build for user-provided narration without TTS. Timings come from the recordings;
 missing files or mismatched locales fail before output.

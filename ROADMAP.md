@@ -18,15 +18,20 @@ Legend: `[x] done · [~] in progress · [ ] planned`
       no mass conversion or human content approval implied.
 - [x] `capabilities --json`, `functions list|describe --json`, concise agent entry.
 - [x] Combined-suite coverage audit; see `docs/TEST_COVERAGE.md` for the actual gap.
-- [ ] Full corpus review, permanent function-content/provenance model and semantic
-      extraction; rich locale/state/voice/DSP function index.
+- [x] Separate function evidence/specification/decision/binding schemas and rich
+      discovery; all55 specs remain explicitly partial, with unknown values preserved.
+- [ ] Complete manual functional extraction and cross-corpus semantic review.
 - [ ] Unit-only100% lines/branches and CI gates across the documented testable scope.
-- [ ] Linux/macOS/Windows execution and installed-package path audit.
+- [x] Cross-OS core CI configuration, installed-wheel data discovery and Linux smoke.
+- [ ] Actual macOS/Windows runtime verification and remaining process adapters.
 - [x] Event-mapped prerecorded narration alternative to TTS, measured timing and
       original-file provenance; directory import/GUI recording still planned.
-- [ ] Idempotent setup and optional non-root containers.
-- [ ] Community voice/asset registry with model/software/data/voice rights and
-      explicit redistribution/attribution metadata; downloadability is not licensing.
+- [x] Idempotent native core setup planner and optional non-root CPU container;
+      actual Linux setup/reuse/build/recording-render smoke checks completed.
+- [x] Metadata-only community voice registry with separate model/software/data/voice
+      rights; no models bundled/downloaded. Distribution/install service still planned.
+- [x] Deterministic structured authoring-plan preflight; no natural-language engine
+      or mass wording generator. Full guided wizard remains planned.
 - [ ] Desktop/mobile GUI using the same schemas/APIs; no framework selected.
 - [ ] Approximately ten high-impact languages chosen from speaker/digital/
       geographic reach, accessibility, TTS/review capacity and script support.

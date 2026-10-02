@@ -21,6 +21,7 @@ COPY audio/templates/sessions/OCF-TPL-SESSION-PILOT-HEARING-001.yaml audio/templ
 COPY audio/templates/sessions/OCF-TPL-SESSION-PILOT-SLEEP-EASY-001.yaml audio/templates/sessions/
 COPY audio/cues/profiles/ audio/cues/profiles/
 COPY audio/voices/profiles/ audio/voices/profiles/
+COPY audio/voices/registry/ audio/voices/registry/
 COPY audio/background/manifests/ audio/background/manifests/
 COPY audio/background/presets/ audio/background/presets/
 COPY audio/background/state-profiles/ audio/background/state-profiles/

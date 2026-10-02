@@ -18,6 +18,7 @@ DIRECTORIES = (
     "audio/templates/sessions",
     "audio/cues/profiles",
     "audio/voices/profiles",
+    "audio/voices/registry",
     "audio/background/manifests",
     "audio/background/presets",
     "audio/background/state-profiles",
