@@ -10,9 +10,11 @@
     "locale": {"type": "string", "minLength": 2}, "author": {"type": "string", "minLength": 1},
     "license": {"type": "string", "minLength": 1}, "redistribution_permission": {"type": "boolean"},
     "notes": {"type": "string"},
+    "session_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "session_id": {"type": ["string", "null"]},
     "recordings": {"type": "object", "minProperties": 1, "additionalProperties": {
       "type": "object", "additionalProperties": false, "required": ["file", "sha256"],
-      "properties": {"file": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+      "properties": {"file": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "text_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "narration_key": {"type": ["string", "null"]}, "original_filename": {"type": "string"}, "measured_duration_s": {"type": "number", "exclusiveMinimum": 0}, "sample_rate": {"type": "integer", "minimum": 1}, "channels": {"type": "integer", "minimum": 1}, "codec": {"type": "string"}, "speaker": {"type": ["string", "null"]}, "validation_status": {"enum": ["pending-content-review", "measured"]}}
     }}
   }
 }

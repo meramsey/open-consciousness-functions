@@ -900,6 +900,8 @@ def validate_voice_profiles() -> ValidationResult:
 
 def validate_all() -> ValidationResult:
     """Run every validation pass over the repository."""
+    from .utils import OCFError
+
     result = ValidationResult()
     for record in load_all_functions():
         result.extend(validate_function_schema(record))
@@ -918,6 +920,12 @@ def validate_all() -> ValidationResult:
 
     for error in validate_library():
         result.add("error", "function-content", error)
+    from .voice_registry import load_registry
+
+    try:
+        load_registry()
+    except OCFError as exc:
+        result.add("error", "voice-registry", str(exc))
     return result
 
 

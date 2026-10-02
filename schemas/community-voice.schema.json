@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/community-voice.schema.json",
+  "title": "Declarative community voice registry metadata; no asset download",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "id", "version", "display_name", "locales", "backend", "model_format", "provider", "source", "software_license", "model_license", "redistribution_permission", "attribution", "voice_rights", "training_terms", "model_sha256", "sample_rate", "settings", "pronunciation_notes", "install_status", "bundled"],
+  "properties": {
+    "schema_version": {"const": "1.0"}, "id": {"type": "string", "pattern": "^OCF-VOICEPACK-[A-Z0-9-]+$"}, "version": {"type": "string"}, "display_name": {"type": "string"},
+    "locales": {"type": "array", "items": {"type": "string"}}, "backend": {"type": ["string", "null"]}, "model_format": {"type": ["string", "null"]},
+    "provider": {"type": ["string", "null"]}, "source": {"type": ["string", "null"]},
+    "software_license": {"$ref": "#/definitions/terms"}, "model_license": {"$ref": "#/definitions/terms"},
+    "redistribution_permission": {"type": ["boolean", "null"]}, "attribution": {"type": "array", "items": {"type": "string"}},
+    "voice_rights": {"$ref": "#/definitions/rights"}, "training_terms": {"$ref": "#/definitions/terms"},
+    "model_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"}, "sample_rate": {"type": ["integer", "null"], "minimum": 1},
+    "settings": {"type": "object"}, "pronunciation_notes": {"type": "array", "items": {"type": "string"}},
+    "install_status": {"enum": ["not-installed", "user-installed", "bundled"]}, "bundled": {"type": "boolean"}, "profile_id": {"type": ["string", "null"]}
+  },
+  "allOf": [
+    {"if": {"properties": {"bundled": {"const": true}}}, "then": {"properties": {"redistribution_permission": {"const": true}, "install_status": {"const": "bundled"}, "model_sha256": {"type": "string"}, "model_license": {"properties": {"status": {"const": "recorded"}}}, "voice_rights": {"properties": {"status": {"const": "recorded"}, "consent_status": {"enum": ["granted", "not-applicable"]}}}}}},
+    {"if": {"properties": {"install_status": {"const": "bundled"}}}, "then": {"properties": {"bundled": {"const": true}}}}
+  ],
+  "definitions": {
+    "terms": {"type": "object", "additionalProperties": false, "required": ["status", "reference", "description"], "properties": {"status": {"enum": ["unknown", "recorded"]}, "reference": {"type": ["string", "null"]}, "description": {"type": ["string", "null"]}}, "allOf": [{"if": {"properties": {"status": {"const": "recorded"}}}, "then": {"properties": {"reference": {"type": "string", "minLength": 1}, "description": {"type": "string", "minLength": 1}}}}]},
+    "rights": {"type": "object", "additionalProperties": false, "required": ["status", "reference", "description", "consent_status"], "properties": {"status": {"enum": ["unknown", "recorded"]}, "reference": {"type": ["string", "null"]}, "description": {"type": ["string", "null"]}, "consent_status": {"enum": ["unknown", "granted", "denied", "not-applicable"]}}, "allOf": [{"if": {"properties": {"status": {"const": "recorded"}}}, "then": {"properties": {"reference": {"type": "string", "minLength": 1}, "description": {"type": "string", "minLength": 1}}}}]}
+  }
+}

@@ -52,7 +52,24 @@ recordings never fall back to TTS. Export subtitles using canonical localized te
 and the measured render manifest, not timestamps borrowed from another voice.
 Semantic DSP consumes this same measured ledger independently.
 
-Current limitations: no directory-to-manifest import wizard, narration-key alias
+Directory import now ships:
+
+```bash
+python scripts/ocf.py voice import-recordings session.yaml --directory recordings \
+  --mapping events-to-files.json --locale en-US --author me --license "private use only" \
+  --output recordings/package.yaml
+```
+
+The JSON map explicitly assigns occurrence IDs to relative filenames. Missing/
+unknown IDs, duplicate JSON keys, escaping/missing files and unmapped audio are
+diagnosed; filenames never determine semantic identity. The package records
+session/text fingerprints, narration keys, original filenames, measured duration,
+sample metadata, optional speaker and pending content-review status. Changing the
+session or canonical text requires review/re-mapping. Older packages without these
+additive fingerprints remain supported. Original compressed codec is not inferred
+when only ffmpeg-decoded PCM metadata is available.
+
+Current limitations: no interactive recording wizard, narration-key alias
 mapping, speech-recognition/content verification, normalization controls or GUI
 recorder. Disabled narration and community voice-pack distribution remain planned.
 Do not relabel reference-derived wording as original OCF because a user recorded it.

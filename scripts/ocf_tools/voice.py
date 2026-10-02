@@ -852,6 +852,14 @@ def render_narration(
         locale = locale or document_locale(doc)
         recording_audio, recording_provenance = prepare_recordings(recordings, doc, locale)
         spec = {"name": "prerecorded", "locale": locale, "language": locale, "notes": []}
+    elif backend == "disabled":
+        if any(event.get("text", "").strip() for event in iter_events(doc)):
+            raise OCFError(
+                "disabled narration requires a speech-free semantic document; required speech cannot be silently dropped"
+            )
+        recording_audio = {}
+        recording_provenance = {"source_type": "disabled", "explicit": True}
+        spec = {"name": "disabled", "locale": locale, "language": None, "notes": []}
     else:
         spec = resolve_backend(backend, locale=locale, catalog=catalog)
     if render_cue is None and recording_audio is None:

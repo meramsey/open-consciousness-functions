@@ -46,6 +46,9 @@ UNIT_MODULES = {
     "test_packaged_data",
     "test_bootstrap",
     "test_container_config",
+    "test_recording_import",
+    "test_disabled_narration",
+    "test_voice_registry",
 }
 REAL_AUDIO_TESTS = {
     "test_actual_ffmpeg_envelopes_and_seeded_output",

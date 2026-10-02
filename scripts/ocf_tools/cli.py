@@ -259,6 +259,24 @@ def _build_parser() -> argparse.ArgumentParser:
 
     voice = sub.add_parser("voice", help="narration (TTS) tooling")
     voice_sub = voice.add_subparsers(dest="voice_kind")
+    voice_packs = voice_sub.add_parser(
+        "packs", help="list declarative community voice metadata; no downloads"
+    )
+    voice_packs.add_argument("--json", action="store_true")
+    recording_import = voice_sub.add_parser(
+        "import-recordings",
+        help="create a measured package from an explicitly mapped recordings directory",
+    )
+    recording_import.add_argument("file", help="semantic session document")
+    recording_import.add_argument("--directory", required=True)
+    recording_import.add_argument(
+        "--mapping", required=True, help="JSON occurrence/event ID to filename map"
+    )
+    recording_import.add_argument("--locale", required=True)
+    recording_import.add_argument("--author", required=True)
+    recording_import.add_argument("--license", required=True)
+    recording_import.add_argument("--speaker")
+    recording_import.add_argument("--output", required=True)
     voice_sub.add_parser("list-backends", help="list detected TTS backends")
     voice_sub.add_parser("doctor", help="backend + profile health check")
     voice_sub.add_parser("list", help="list voice profiles")
@@ -997,6 +1015,45 @@ def main(argv: list[str] | None = None) -> int:
             print(HELP_TEXT)
             return 0
         if args.command == "voice":
+            if args.voice_kind == "packs":
+                import json
+
+                from .voice_registry import load_registry
+
+                entries = load_registry()
+                print(
+                    json.dumps({"schema_version": "1.0", "voices": entries}, indent=2)
+                    if args.json
+                    else "\n".join(
+                        f"{entry['id']}: {entry['display_name']} / {entry['install_status']}"
+                        for entry in entries
+                    )
+                    or "No community voice packs registered"
+                )
+                return 0
+            if args.voice_kind == "import-recordings":
+                import json
+
+                from .recordings import import_directory, unique_mapping
+                from .transcript import load_timed_doc
+
+                mapping = json.loads(
+                    Path(args.mapping).read_text(encoding="utf-8"), object_pairs_hook=unique_mapping
+                )
+                result = import_directory(
+                    load_timed_doc(Path(args.file)),
+                    Path(args.directory),
+                    mapping,
+                    Path(args.output),
+                    locale=args.locale,
+                    author=args.author,
+                    license=args.license,
+                    speaker=args.speaker,
+                )
+                print(
+                    f"Imported {len(result['recordings'])} measured recordings; originals preserved -> {args.output}"
+                )
+                return 0
             if args.voice_kind == "list-backends":
                 return voice_mod.list_backends_cmd()
             if args.voice_kind == "doctor":
