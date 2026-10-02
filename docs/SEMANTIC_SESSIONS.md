@@ -36,7 +36,8 @@ Existing inline text, slots, absolute anchors, and start-relative `after`
 references remain supported. `timing.anchor` distinguishes `start`,
 `speech-end`, and `event-end` dependencies. End-dependent anchors are finalized
 from measured speech and declared DSP transition duration, not English words.
-Binding architecture does not yet synthesize state-aware DSP or play cues.
+Measured-ledger state-aware DSP now ships separately through
+[`audio render-state-program`](SEMANTIC_DSP.md); cue playback remains unshipped.
 
 The speech renderer implements end-relative scheduling. It first synthesizes
 the localized utterances, measures their durations, then resolves dependencies.

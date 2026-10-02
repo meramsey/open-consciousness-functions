@@ -1,10 +1,38 @@
 # Roadmap
 
-Current status: **early bootstrap** — v0.3/v0.4 transcript + audio toolchain
-shipping; v0.5 (localization, preparation stages, focus-state cues) designed,
-not shipped.
+Current status: **authoring/content/platform foundation in progress**. Transcript,
+voice/audio build, localization, reusable semantic stages, cue-binding validation
+and measured-ledger DSP dispatch are shipped. Cue playback and the dedicated
+preparation CLI remain unshipped. Preparation Learning en-US RC1 has a verified
+development audition; three function rehearsals are draft pilots requiring review.
 
 Legend: `[x] done · [~] in progress · [ ] planned`
+
+## Current foundation checkpoints
+
+- [x] Extend permanent `docs/NARRATION_STANDARD.md` with purposeful operations,
+      sensory flexibility, secular framing, silence and original expression.
+- [x] `corpus inventory`:277 local files/all55 targets; fingerprints and candidate
+      locators, no reference wording redistributed or mockups promoted.
+- [x] Relax/Hearing/Sleep Easy DRAFT PILOT rehearsals and local voice previews;
+      no mass conversion or human content approval implied.
+- [x] `capabilities --json`, `functions list|describe --json`, concise agent entry.
+- [x] Combined-suite coverage audit; see `docs/TEST_COVERAGE.md` for the actual gap.
+- [ ] Full corpus review, permanent function-content/provenance model and semantic
+      extraction; rich locale/state/voice/DSP function index.
+- [ ] Unit-only100% lines/branches and CI gates across the documented testable scope.
+- [ ] Linux/macOS/Windows execution and installed-package path audit.
+- [ ] Idempotent setup, optional non-root containers, prerecorded narration.
+- [ ] Community voice/asset registry with model/software/data/voice rights and
+      explicit redistribution/attribution metadata; downloadability is not licensing.
+- [ ] Desktop/mobile GUI using the same schemas/APIs; no framework selected.
+- [ ] Approximately ten high-impact languages chosen from speaker/digital/
+      geographic reach, accessibility, TTS/review capacity and script support.
+      No population-only ranking or fixed final list; translate semantic purpose.
+- [ ] Community functions/meditations/languages/narration/voices/backgrounds/cues
+      with provenance, licensing and compatibility validation.
+- [ ] Mobile/GUI recording per semantic utterance, playback/re-record/trim, exporting
+      the same future prerecorded package as the CLI.
 
 Planned items below are TODOs, not shipped features. Design notes for the
 v0.5 items live in `docs/PREPARATION_MODULE.md`, `docs/LOCALIZATION.md`, and

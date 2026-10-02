@@ -29,6 +29,7 @@ dependencies = [
 dev = [
   "pytest>=8.0",
   "ruff>=0.5",
+  "coverage>=7.6",
 ]
 farfield = [
   "PyYAML>=6.0",
@@ -55,3 +56,12 @@ exclude = ["audio/background/rendered"]
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "UP"]
 ignore = ["E501"]
+
+[tool.coverage.run]
+branch = true
+source = ["scripts/ocf_tools"]
+
+[tool.coverage.report]
+# Include reachable error paths even when old code carries pragma: no cover.
+exclude_lines = []
+show_missing = true

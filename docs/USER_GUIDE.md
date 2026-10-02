@@ -12,6 +12,15 @@ ocf                      # if installed: pip install .
 
 ## Everyday commands
 
+For machine/agent discovery, start with `ocf capabilities --json`,
+`ocf functions list --json`, and `ocf functions describe OCF-FND-002 --json`.
+These expose live commands and canonical metadata, not inferred semantic identities.
+`ocf corpus inventory` fingerprints citation-only research with explicit evidence
+classes. Measured speech can drive independent DSP with
+[`ocf audio render-state-program`](SEMANTIC_DSP.md).
+The three [function pilots](research/PILOT_FUNCTIONAL_SPECIFICATIONS.md) are
+draft rehearsals, not approved production installations.
+
 | Command                                  | Purpose                                   |
 | ---------------------------------------- | ----------------------------------------- |
 | `ocf help`                               | command reference                         |
