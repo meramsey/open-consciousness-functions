@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/doctor.schema.json",
+  "title": "OCF required versus optional diagnostics",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "workflow", "platform", "ok", "failures", "checks", "notes"],
+  "properties": {
+    "schema_version": {"const": "1.0"}, "workflow": {"type": "string"}, "platform": {"type": "string"}, "ok": {"type": "boolean"},
+    "failures": {"type": "array", "items": {"type": "string"}}, "notes": {"type": "array", "items": {"type": "string"}},
+    "checks": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["id", "status", "requirement", "detail"], "properties": {"id": {"type": "string"}, "status": {"enum": ["available", "missing", "unsupported"]}, "requirement": {"enum": ["core", "workflow", "optional"]}, "detail": {"type": "string"}}}}
+  }
+}

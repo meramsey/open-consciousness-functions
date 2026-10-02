@@ -29,9 +29,11 @@ def test_doctor_reports_environment(capsys):
 
     code = main(["doctor"])
     out = capsys.readouterr().out
-    assert "repository root" in out
-    assert "farfield engine" in out
-    assert code in (0, 1)  # farfield missing may or may not be counted
+    assert "core/workflow health" in out
+    assert "farfield (optional)" in out
+    import sys
+
+    assert code == (0 if sys.version_info >= (3, 11) else 1)
 
 
 def test_validate_all_returns_success(capsys):

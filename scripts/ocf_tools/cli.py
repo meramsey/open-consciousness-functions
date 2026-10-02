@@ -14,14 +14,8 @@ from pathlib import Path
 from typing import Any
 
 from . import audio as audio_mod
-from . import farfield as farfield_mod
 from . import voice as voice_mod
-from .indexes import (
-    count_proposals,
-    load_all_functions,
-    load_audio_manifests,
-    load_background_manifests,
-)
+from .indexes import load_all_functions
 from .paths import REPO_ROOT, SCHEMAS_DIR
 from .prompts import (
     run_audio_wizard,
@@ -448,7 +442,13 @@ def _build_parser() -> argparse.ArgumentParser:
     pseudo.add_argument("--locale", help="pseudo-locale tag (default: en-XA)")
     pseudo.add_argument("--output", help="write the pack here (default: print a sample)")
 
-    sub.add_parser("doctor", help="environment health check")
+    doctor = sub.add_parser("doctor", help="core/workflow health; optional tools do not fail core")
+    doctor.add_argument("--json", action="store_true")
+    doctor.add_argument(
+        "--workflow",
+        choices=["core", "encode", "farfield", "sbagenx", "piper", "container"],
+        default="core",
+    )
     return parser
 
 
@@ -732,52 +732,19 @@ def cmd_review_commands() -> int:
     return 0
 
 
-def cmd_doctor() -> int:
-    """Environment health check."""
-    checks: list[tuple[str, bool, str]] = []
-    checks.append(("repository root", True, str(REPO_ROOT)))
-    python = f"{sys.version_info.major}.{sys.version_info.minor}"
-    fits = sys.version_info >= (3, 11)
-    checks.append(("python (need >=3.11)", fits, python))
+def cmd_doctor(args=None) -> int:
+    import json
 
-    try:
-        import yaml  # noqa: F401
+    from .diagnostics import diagnose
 
-        checks.append(("PyYAML", True, "available"))
-    except ImportError:
-        checks.append(("PyYAML", False, "missing — pip install PyYAML"))
-
-    try:
-        import jsonschema  # noqa: F401
-
-        checks.append(("jsonschema", True, "available"))
-    except ImportError:
-        checks.append(("jsonschema", False, "missing — pip install jsonschema"))
-
-    checks.append(("schemas present", SCHEMAS_DIR.is_dir(), str(SCHEMAS_DIR)))
-    functions = load_all_functions()
-    checks.append(("function records", functions is not None, f"{len(functions)} loaded"))
-    checks.append(("proposals", True, f"{count_proposals()} files"))
-    checks.append(("audio manifests", True, f"{len(load_audio_manifests())} files"))
-    checks.append(("background manifests", True, f"{len(load_background_manifests())} files"))
-
-    far_status = farfield_mod.check_farfield()
-    checks.append(
-        (
-            "farfield engine",
-            far_status.available,
-            far_status.executable or "NOT installed (optional)",
-        )
-    )
-
-    failed = 0
-    for label, ok, detail in checks:
-        mark = "[ok] " if ok else "[!!] "
-        print(f"{mark}{label}: {detail}")
-        if not ok:
-            failed += 1
-    print(f"\n{len(checks) - failed}/{len(checks)} checks passed.")
-    return 0 if failed == 0 else 1
+    result = diagnose(getattr(args, "workflow", "core"))
+    if getattr(args, "json", False):
+        print(json.dumps(result, indent=2))
+    else:
+        print(f"OCF core/workflow health: {result['workflow']}")
+        for row in result["checks"]:
+            print(f"[{row['status']}] {row['id']} ({row['requirement']}): {row['detail']}")
+    return 0 if result["ok"] else 1
 
 
 def capability_manifest(parser: argparse.ArgumentParser) -> dict:
@@ -1082,7 +1049,7 @@ def main(argv: list[str] | None = None) -> int:
             print(HELP_TEXT)
             return 0
         if args.command == "doctor":
-            return cmd_doctor()
+            return cmd_doctor(args)
         print(HELP_TEXT)
         return 0
     except OCFError as exc:
