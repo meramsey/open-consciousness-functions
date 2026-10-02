@@ -3,6 +3,25 @@
 This file instructs future coding agents and LLM-assisted contributors working
 in this repository.
 
+## Agent entry point
+
+OCF is a declarative function/session authoring and audio toolchain. **The agent
+reasons; OCF validates and executes.** Start with `python scripts/ocf.py
+capabilities --json`, `functions list --json`, `functions describe ID --json`,
+and `doctor`. Schemas and function YAML are authoritative; use locale resources
+for wording, session/stage templates for operations, voice profiles for TTS,
+and background/state profiles for DSP. Never infer semantic/state identity from
+English strings, filenames or frequencies, or repurpose subtitle `cue_id`.
+
+Authoring contract: `docs/NARRATION_STANDARD.md`. Compose with `session compose`,
+resolve/validate locale resources, then preview/export before voice/audio build.
+`audio render-state-program` reuses measured speech timing independently of TTS.
+Research `corpus inventory` fingerprints local references without copying text;
+mockups stay reconstructions. Prerecorded narration, full authoring wizard,
+community voice registry, setup/container workflow and GUI remain roadmap work.
+See `docs/SEMANTIC_DSP.md`, `docs/LOCALIZATION.md`, `docs/USER_GUIDE.md` and
+`docs/TEST_COVERAGE.md` for current contracts and limitations.
+
 ## Mandatory rules
 
 - **Inspect schemas first.** `schemas/*.schema.json` define the canonical data

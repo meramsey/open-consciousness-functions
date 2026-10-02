@@ -80,6 +80,10 @@ Usage:
   ocf locale resolve (--file DOC | --session TEMPLATE) --locale TAG [--no-strict] [--output YAML]
   ocf locale pseudo [--from TAG] [--locale TAG] [--output DIR]
   ocf doctor                  Show environment health
+  ocf capabilities --json    Discover live command paths and schemas
+  ocf functions list --json  Discover canonical function records
+  ocf functions describe ID --json
+  ocf corpus inventory [--root DIR] [--format json|md] [--output FILE]
   ocf help                    Show this help
 
 Global flags:
@@ -93,6 +97,22 @@ def _build_parser() -> argparse.ArgumentParser:
     sub = parser.add_subparsers(dest="command")
 
     sub.add_parser("help", help="show help")
+    capabilities = sub.add_parser("capabilities", help="machine-readable live CLI discovery")
+    capabilities.add_argument("--json", action="store_true")
+    functions = sub.add_parser("functions", help="canonical function metadata discovery")
+    function_sub = functions.add_subparsers(dest="function_kind", required=True)
+    function_list = function_sub.add_parser("list", help="list all function records")
+    function_list.add_argument("--json", action="store_true")
+    function_describe = function_sub.add_parser("describe", help="describe a canonical function ID or slug")
+    function_describe.add_argument("id")
+    function_describe.add_argument("--json", action="store_true")
+
+    corpus = sub.add_parser("corpus", help="citation-only research inventory; no source wording copied")
+    corpus_sub = corpus.add_subparsers(dest="corpus_kind")
+    inventory_cmd = corpus_sub.add_parser("inventory", help="fingerprint all corpus files and map all legacy targets")
+    inventory_cmd.add_argument("--root", default=str(REPO_ROOT / "references/HumanPlusTranscripts"))
+    inventory_cmd.add_argument("--format", choices=["json", "md"], default="json")
+    inventory_cmd.add_argument("--output")
 
     new = sub.add_parser("new", help="create a new record")
     new_sub = new.add_subparsers(dest="new_kind")
@@ -643,6 +663,22 @@ def cmd_doctor() -> int:
     return 0 if failed == 0 else 1
 
 
+def capability_manifest(parser: argparse.ArgumentParser) -> dict:
+    """Derive discovery from registered parsers, never advertise planned commands."""
+    commands = []
+
+    def walk(node: argparse.ArgumentParser, prefix: list[str]) -> None:
+        subparsers = [action for action in node._actions if isinstance(action, argparse._SubParsersAction)]
+        if not subparsers:
+            commands.append({"path": prefix, "description": node.description or "Use --help for arguments"})
+        for action in subparsers:
+            for name, child in action.choices.items():
+                walk(child, [*prefix, name])
+
+    walk(parser, [])
+    return {"schema_version": "1.0", "commands": commands, "schemas": sorted(path.name for path in SCHEMAS_DIR.glob("*.schema.json")), "boundaries": ["Agent reasons; OCF validates and executes", "English narration does not define semantic identity", "Source derivatives and reconstructions remain citation-only research", "Preparation CLI and auditory cue playback remain unshipped"]}
+
+
 def main(argv: list[str] | None = None) -> int:
     """CLI entry point."""
     if argv is None:
@@ -663,6 +699,52 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if args.command == "help" or args.command is None:
             print(HELP_TEXT)
+            return 0
+        if args.command == "capabilities":
+            import json
+
+            data = capability_manifest(parser)
+            print(json.dumps(data, indent=2) if args.json else "\n".join("ocf " + " ".join(row["path"]) for row in data["commands"]))
+            return 0
+        if args.command == "functions":
+            import json
+
+            from .indexes import load_function_by_slug_or_id
+
+            if args.function_kind == "list":
+                data = [record.data for record in load_all_functions()]
+            else:
+                record = load_function_by_slug_or_id(args.id)
+                if record is None:
+                    raise OCFError(f"unknown function {args.id}; use ocf functions list")
+                data = record.data
+            if args.json:
+                print(json.dumps({"schema_version": "1.0", "functions": data if isinstance(data, list) else [data]}, indent=2, ensure_ascii=False))
+            else:
+                records = data if isinstance(data, list) else [data]
+                for record in records:
+                    print(f"{record['id']}: {record['canonical']['name']} — {record['canonical']['command']['primary']} — {record['purpose']['summary']}")
+            return 0
+        if args.command == "corpus" and args.corpus_kind == "inventory":
+            import json
+
+            from .corpus import inventory, markdown
+            from .utils import write_text_atomic
+            from .validators import _load_schema, validate_against_schema
+
+            root = Path(args.root).expanduser().resolve()
+            data = inventory(root)
+            errors = validate_against_schema(data, _load_schema("corpus-inventory.schema.json"))
+            if errors:
+                raise OCFError("corpus inventory: " + " | ".join(errors))
+            text = markdown(data) if args.format == "md" else json.dumps(data, indent=2, ensure_ascii=False) + "\n"
+            if args.output:
+                output = Path(args.output).expanduser().resolve()
+                if output.is_relative_to(root):
+                    raise OCFError("derived inventory must be outside the reference corpus; originals are read-only")
+                write_text_atomic(output, text)
+            else:
+                print(text, end="")
             return 0
         if args.command == "new":
             if args.new_kind == "function":

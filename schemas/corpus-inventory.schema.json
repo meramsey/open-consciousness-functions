@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/corpus-inventory.schema.json",
+  "title": "OCF citation-only corpus inventory",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "root", "counts", "files", "functions"],
+  "properties": {
+    "schema_version": {"const": "1.0"}, "root": {"type": "string"},
+    "counts": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+    "files": {"type": "array", "items": {"$ref": "#/definitions/file"}},
+    "functions": {"type": "array", "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["function_id", "legacy_name", "canonical_command", "legacy_source_availability", "files", "source_derivative_available", "mockup_available", "conversion_status", "human_review_required"],
+      "properties": {
+        "function_id": {"type": "string"}, "legacy_name": {"type": "string"},
+        "canonical_command": {"type": ["string", "null"]}, "legacy_source_availability": {"type": "string"},
+        "files": {"type": "array", "items": {"type": "string"}},
+        "source_derivative_available": {"type": "boolean"}, "mockup_available": {"type": "boolean"},
+        "conversion_status": {"type": "string"}, "human_review_required": {"const": true}
+      }
+    }}
+  },
+  "definitions": {
+    "file": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256", "bytes", "title", "function_id", "source_type", "evidence_class", "classification_basis", "completeness", "confidence", "verification", "candidate_locators", "related_files", "uncertainties"],
+      "properties": {
+        "path": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "bytes": {"type": "integer", "minimum": 0}, "title": {"type": "string"},
+        "function_id": {"type": ["string", "null"]}, "source_type": {"type": "string"},
+        "evidence_class": {"enum": ["source_transcript", "partial_source_transcript", "reconstructed_mockup", "inferred_missing_function", "secondary_description", "unknown"]},
+        "classification_basis": {"type": "string"}, "completeness": {"type": "string"},
+        "confidence": {"type": "string"}, "verification": {"const": "not independently authenticated against original recording"},
+        "candidate_locators": {"type": "object", "additionalProperties": {"type": "array", "items": {"type": "integer", "minimum": 1}}},
+        "related_files": {"type": "array", "items": {"type": "string"}},
+        "uncertainties": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/capabilities.schema.json",
+  "title": "OCF CLI discovery",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "commands", "schemas", "boundaries"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "commands": {"type": "array", "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "description"],
+      "properties": {"path": {"type": "array", "items": {"type": "string"}}, "description": {"type": "string"}}
+    }},
+    "schemas": {"type": "array", "items": {"type": "string"}},
+    "boundaries": {"type": "array", "items": {"type": "string"}}
+  }
+}
