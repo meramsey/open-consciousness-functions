@@ -8,6 +8,7 @@ section segmentation, and CLI wiring.
 
 from __future__ import annotations
 
+import pytest
 import yaml
 from conftest import REPO_ROOT
 from ocf_tools.cli import main
@@ -49,6 +50,7 @@ VTT = (
 # ---------------------------------------------------------------------------
 
 
+@pytest.mark.unit
 def test_parse_lrc_events_and_metadata():
     parsed = parse_lrc(LRC)
     assert len(parsed.events) == 2
@@ -58,12 +60,14 @@ def test_parse_lrc_events_and_metadata():
     assert parsed.fmt == "lrc"
 
 
+@pytest.mark.unit
 def test_parse_lrc_multiple_timestamps_expand():
     parsed = parse_lrc("[00:01.00][00:02.00]echo\n")
     assert [e.at for e in parsed.events] == [1.0, 2.0]
     assert [e.text for e in parsed.events] == ["echo", "echo"]
 
 
+@pytest.mark.unit
 def test_parse_srt_blocks_and_ends():
     parsed = parse_srt(SRT)
     assert len(parsed.events) == 2
@@ -73,6 +77,7 @@ def test_parse_srt_blocks_and_ends():
     assert parsed.events[1].text.strip() == "Second cue"
 
 
+@pytest.mark.unit
 def test_parse_vtt_strips_header_and_keeps_cue_ids():
     parsed = parse_vtt(VTT)
     assert len(parsed.events) == 2
@@ -82,12 +87,14 @@ def test_parse_vtt_strips_header_and_keeps_cue_ids():
     assert any("NOTE comment" in note for note in parsed.notes)
 
 
+@pytest.mark.unit
 def test_parse_plain_paragraphs_untimed():
     parsed = parse_plain("One.\n\nTwo.\n\nThree.", "txt")
     assert [e.text for e in parsed.events] == ["One.", "Two.", "Three."]
     assert all(e.at is None for e in parsed.events)
 
 
+@pytest.mark.unit
 def test_parse_timestamp_variants():
     assert parse_timestamp("00:01:02.500") == 62.5
     assert parse_timestamp("01:02,500") == 62.5
@@ -96,6 +103,7 @@ def test_parse_timestamp_variants():
     assert parse_timestamp(None) is None
 
 
+@pytest.mark.unit
 def test_detect_format_from_content_and_argument():
     assert detect_format("sample.lrc", LRC) == "lrc"
     assert detect_format("sample.srt", SRT) == "srt"
@@ -106,6 +114,7 @@ def test_detect_format_from_content_and_argument():
     assert detect_format("sample.txt", LRC, explicit="md") == "md"
 
 
+@pytest.mark.unit
 def test_parse_transcript_rejects_unknown_format():
     try:
         parse_transcript("x", fmt="nope")
@@ -127,6 +136,7 @@ def _schema():
         return json.load(fh)
 
 
+@pytest.mark.unit
 def test_timed_yaml_doc_deterministic_and_verbatim_snapshot():
     parsed = parse_transcript(LRC, fmt="lrc", filename="sample.lrc", sha256="abc123")
     doc = timed_yaml_doc(parsed)
@@ -153,6 +163,7 @@ def test_untimed_import_matches_schema():
 # ---------------------------------------------------------------------------
 
 
+@pytest.mark.unit
 def test_resolve_after_offset():
     doc = {
         "schema_version": "1.0",
@@ -168,6 +179,7 @@ def test_resolve_after_offset():
     assert [e.at for e in events] == [10.0, 15.0, 15.0]
 
 
+@pytest.mark.unit
 def test_resolve_sections_flat_mixed_is_a_problem():
     doc = {
         "schema_version": "1.0",
@@ -179,6 +191,7 @@ def test_resolve_sections_flat_mixed_is_a_problem():
     assert any("both" in p for p in problems)
 
 
+@pytest.mark.unit
 def test_resolve_unknown_after_and_cycle_flagged():
     doc = {
         "schema_version": "1.0",
