@@ -1,65 +1,260 @@
+analysis_review:
+  claim_categories:
+  - intuitive-vascular-condition-diagnosis
+  - blood-pressure-normalization
+  - automatic-self-regulation
+  family: targeted-body-perception-and-balance
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
+        end_line: 64
+        file: +Transcripts From available tapes/Hypertension/Hypertension.txt
+        source_sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+        start_line: 51
+      status: supported
+      summary: Pair source cue/breathing with the selected body-related response; actual canonical and
+        legacy command variants stay in identity metadata.
+    closer:
+      locators:
+      - content_group_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
+        end_line: 95
+        file: +Transcripts From available tapes/Hypertension/Hypertension.txt
+        source_sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+        start_line: 84
+      status: supported
+      summary: Reinforce remembered future use and close the learning context to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
+        end_line: 142
+        file: +Transcripts From available tapes/Hypertension/Hypertension.txt
+        source_sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+        start_line: 97
+      status: supported
+      summary: Sleep-to-twenty shell present; physiological/automatic integration is not established by
+        that instruction.
+    conversion:
+      locators:
+      - content_group_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
+        end_line: 81
+        file: +Transcripts From available tapes/Hypertension/Hypertension.txt
+        source_sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+        start_line: 51
+      status: inferred
+      summary: Subjective awareness cannot diagnose vascular state or establish blood-pressure treatment.
+        Any safer body-awareness design would materially alter those claims and needs review.
+    future_use:
+      locators:
+      - content_group_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
+        end_line: 87
+        file: +Transcripts From available tapes/Hypertension/Hypertension.txt
+        source_sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+        start_line: 51
+      status: supported
+      summary: Use the cue/breathing procedure as described for the selected response; asserted effectiveness
+        is a claim, not an observed result.
+    handoff:
+      locators:
+      - content_group_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
+        end_line: 204
+        file: +Transcripts From available tapes/Hypertension/Hypertension.txt
+        source_sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+        start_line: 143
+      status: supported
+      summary: Counted waking/eyes-open return with target command reminder where intelligible.
+    identity:
+      locators:
+      - content_group_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
+        end_line: 64
+        file: +Transcripts From available tapes/Hypertension/Hypertension.txt
+        source_sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+        start_line: 51
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
+        end_line: 81
+        file: +Transcripts From available tapes/Hypertension/Hypertension.txt
+        source_sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+        start_line: 51
+      status: supported
+      summary: choose-heart-or-vessel-region; close-eyes-inhale-and-hold; direct-inner-attention-to-region;
+        issue-balance-blood-pressure-cue; exhale-and-open-eyes
+    opener:
+      locators:
+      - content_group_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
+        end_line: 50
+        file: +Transcripts From available tapes/Hypertension/Hypertension.txt
+        source_sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+        start_line: 43
+      status: supported
+      summary: Introduce a body-oriented intended response and receptive learning context, not evidence
+        that the physiology changed.
+    preparation:
+      locators:
+      - content_group_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
+        end_line: 42
+        file: +Transcripts From available tapes/Hypertension/Hypertension.txt
+        source_sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+        start_line: 5
+      status: supported
+      summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+        for temporary setting-aside and counted ten-state preparation.
+    provenance:
+      locators:
+      - content_group_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
+        end_line: 204
+        file: +Transcripts From available tapes/Hypertension/Hypertension.txt
+        source_sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Source-designated derivative
+        is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing or original
+        underlay; unspecified cancellation remains unknown.
+    purpose:
+      locators:
+      - content_group_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
+        end_line: 4
+        file: +Transcripts From available tapes/Hypertension/Hypertension.txt
+        source_sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+        start_line: 3
+      status: supported
+      summary: Claimed perception and adjustment of a selected heart/vessel condition, framed for high
+        blood pressure.
+    rehearsal:
+      locators:
+      - content_group_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
+        end_line: 81
+        file: +Transcripts From available tapes/Hypertension/Hypertension.txt
+        source_sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+        start_line: 51
+      status: not-present
+      summary: No distinct listener test of physiological outcome is established; teaching repetition
+        and ASR ambient tokens are not outcome verification.
+    safety_claims:
+      locators:
+      - content_group_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
+        end_line: 81
+        file: +Transcripts From available tapes/Hypertension/Hypertension.txt
+        source_sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+        start_line: 51
+      status: supported
+      summary: intuitive-vascular-condition-diagnosis; blood-pressure-normalization; automatic-self-regulation.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
+        end_line: 50
+        file: +Transcripts From available tapes/Hypertension/Hypertension.txt
+        source_sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+        start_line: 43
+      status: supported
+      summary: Reference learning shell prepares ten, opens eleven, closes to ten and uses sleep-to-twenty
+        plus waking return where preserved; runtime OCF requirements remain separate and unknown.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
+        end_line: 204
+        file: +Transcripts From available tapes/Hypertension/Hypertension.txt
+        source_sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Source-designated
+        derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
+        or original underlay; unspecified cancellation remains unknown.
+  source_extent:
+    content_group_sha256: 6f407e876aa7b93275165b395dfb13bc301f75315583e5436577111bb9894bb7
+    end_line: 204
+    file: +Transcripts From available tapes/Hypertension/Hypertension.txt
+    source_sha256: 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a:command_association
-    operations: []
+    - review:OCF-BOD-007:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a:closer
-    operations: []
+    - review:OCF-BOD-007:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-007:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a:future_use
-    operations: []
+    - review:OCF-BOD-007:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a:return
-    operations: []
+    - review:OCF-BOD-007:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a:main
-    operations: []
+    - review:OCF-BOD-007:main
+    operations:
+    - choose-heart-or-vessel-region
+    - close-eyes-inhale-and-hold
+    - direct-inner-attention-to-region
+    - issue-balance-blood-pressure-cue
+    - exhale-and-open-eyes
     status: inferred
   opener:
     evidence_refs:
-    - 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a:opener
-    operations: []
+    - review:OCF-BOD-007:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-007:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-007:rehearsal
     operations: []
-    status: unknown
+    status: not-present
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-007:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-007:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-BOD-007
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Source-designated derivative is unauthenticated. Count/repetition/ambient artifacts do not establish
+  exact timing or original underlay; unspecified cancellation remains unknown.
+- Subjective awareness cannot diagnose vascular state or establish blood-pressure treatment. Any safer
+  body-awareness design would materially alter those claims and needs review.
 schema_version: '1.0'
 states:
   preferred: []

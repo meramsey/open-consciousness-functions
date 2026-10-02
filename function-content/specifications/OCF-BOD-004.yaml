@@ -1,64 +1,264 @@
+analysis_review:
+  claim_categories:
+  - physiological-detoxification
+  - guaranteed-material-removal-and-balance
+  - automatic-whole-system-learning
+  family: body-cleansing-intensification
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
+        end_line: 103
+        file: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+        source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+        start_line: 97
+      status: supported
+      summary: Pair source cue/breathing with the selected body-related response; actual canonical and
+        legacy command variants stay in identity metadata.
+    closer:
+      locators:
+      - content_group_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
+        end_line: 146
+        file: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+        source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+        start_line: 131
+      status: supported
+      summary: Reinforce remembered future use and close the learning context to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
+        end_line: 352
+        file: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+        source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+        start_line: 152
+      status: supported
+      summary: Sleep-to-twenty shell present; physiological/automatic integration is not established by
+        that instruction.
+    conversion:
+      locators:
+      - content_group_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
+        end_line: 103
+        file: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+        source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+        start_line: 89
+      status: inferred
+      summary: Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
+        reinterpretation is equivalent. Useful experiential operations and material purpose changes require
+        explicit content review; medical management and breath-hold issues remain outside software efficacy
+        claims.
+    future_use:
+      locators:
+      - content_group_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
+        end_line: 135
+        file: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+        source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+        start_line: 97
+      status: supported
+      summary: Use the cue/breathing procedure as described for the selected response; asserted effectiveness
+        is a claim, not an observed result.
+    handoff:
+      locators:
+      - content_group_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
+        end_line: 352
+        file: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+        source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+        start_line: 193
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Opening explanation
+        and final waking ending are missing/unclear; later numeric-only material cannot establish additional
+        functions or reinforcement. DETOX metadata is not rewritten legacy speech.
+    identity:
+      locators:
+      - content_group_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
+        end_line: 103
+        file: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+        source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+        start_line: 97
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
+        end_line: 103
+        file: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+        source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+        start_line: 89
+      status: supported
+      summary: associate-body-with-automatic-material-elimination; optionally-close-eyes-inhale-and-hold;
+        issue-legacy-clean-clear-cue; exhale
+    opener:
+      locators:
+      - content_group_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
+        end_line: 88
+        file: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+        source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+        start_line: 72
+      status: supported
+      summary: Intelligible target instruction follows ten/eleven count material; a complete opening explanation
+        is not preserved, so its missing wording remains unknown.
+    preparation:
+      locators:
+      - content_group_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
+        end_line: 71
+        file: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+        source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+        start_line: 10
+      status: supported
+      summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+        for temporary setting-aside and counted ten-state preparation.
+    provenance:
+      locators:
+      - content_group_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
+        end_line: 352
+        file: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+        source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+        start_line: 1
+      status: supported
+      summary: Complete available partial_source_transcript text inspected; shared representations are
+        not independent corroboration. Source accuracy/authentication remains unresolved. Opening explanation
+        and final waking ending are missing/unclear; later numeric-only material cannot establish additional
+        functions or reinforcement. DETOX metadata is not rewritten legacy speech.
+    purpose:
+      locators:
+      - content_group_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
+        end_line: 8
+        file: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+        source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+        start_line: 8
+      status: supported
+      summary: Claimed removal of harmful/obstructing material and body equalization, optionally accelerated
+        by a cue.
+    rehearsal:
+      locators:
+      - content_group_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
+        end_line: 135
+        file: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+        source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+        start_line: 89
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Opening explanation
+        and final waking ending are missing/unclear; later numeric-only material cannot establish additional
+        functions or reinforcement. DETOX metadata is not rewritten legacy speech.
+    safety_claims:
+      locators:
+      - content_group_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
+        end_line: 103
+        file: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+        source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+        start_line: 89
+      status: supported
+      summary: physiological-detoxification; guaranteed-material-removal-and-balance; automatic-whole-system-learning.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
+        end_line: 88
+        file: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+        source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+        start_line: 72
+      status: supported
+      summary: Reference learning shell prepares ten, opens eleven, closes to ten and uses sleep-to-twenty
+        plus waking return where preserved; runtime OCF requirements remain separate and unknown.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
+        end_line: 352
+        file: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+        source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Opening explanation
+        and final waking ending are missing/unclear; later numeric-only material cannot establish additional
+        functions or reinforcement. DETOX metadata is not rewritten legacy speech.
+  source_extent:
+    content_group_sha256: f37942ad56ee007db6c49222e0397788c150b79559ee582e4c4b26cc8aef4a47
+    end_line: 352
+    file: +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt
+    source_sha256: 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc:command_association
-    operations: []
+    - review:OCF-BOD-004:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc:closer
-    operations: []
+    - review:OCF-BOD-004:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-004:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc:future_use
-    operations: []
+    - review:OCF-BOD-004:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-004:handoff
     operations: []
     status: unknown
   main:
     evidence_refs:
-    - 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc:main
-    operations: []
+    - review:OCF-BOD-004:main
+    operations:
+    - associate-body-with-automatic-material-elimination
+    - optionally-close-eyes-inhale-and-hold
+    - issue-legacy-clean-clear-cue
+    - exhale
     status: inferred
   opener:
     evidence_refs:
-    - 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc:opener
-    operations: []
+    - review:OCF-BOD-004:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-004:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-004:rehearsal
     operations: []
     status: unknown
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-004:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-004:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-BOD-004
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Opening explanation and final waking ending are missing/unclear; later numeric-only material cannot
+  establish additional functions or reinforcement. DETOX metadata is not rewritten legacy speech.
+- Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological reinterpretation
+  is equivalent. Useful experiential operations and material purpose changes require explicit content
+  review; medical management and breath-hold issues remain outside software efficacy claims.
 schema_version: '1.0'
 states:
   preferred: []

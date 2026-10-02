@@ -1,65 +1,266 @@
+analysis_review:
+  claim_categories:
+  - vascular-renewal-and-obstruction-removal
+  - new-vessel-generation
+  - cognitive-improvement-via-blood-flow
+  - automatic-whole-system-learning
+  family: body-renewal-with-targeted-intensification
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
+        end_line: 43
+        file: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+        source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+        start_line: 42
+      status: supported
+      summary: Pair source cue/breathing with the selected body-related response; actual canonical and
+        legacy command variants stay in identity metadata.
+    closer:
+      locators:
+      - content_group_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
+        end_line: 56
+        file: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+        source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+        start_line: 48
+      status: supported
+      summary: Reinforce remembered future use and close the learning context to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
+        end_line: 127
+        file: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+        source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+        start_line: 57
+      status: supported
+      summary: Sleep-to-twenty shell present; physiological/automatic integration is not established by
+        that instruction.
+    conversion:
+      locators:
+      - content_group_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
+        end_line: 43
+        file: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+        source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+        start_line: 36
+      status: inferred
+      summary: Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
+        reinterpretation is equivalent. Useful experiential operations and material purpose changes require
+        explicit content review; medical management and breath-hold issues remain outside software efficacy
+        claims.
+    future_use:
+      locators:
+      - content_group_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
+        end_line: 49
+        file: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+        source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+        start_line: 42
+      status: supported
+      summary: Use the cue/breathing procedure as described for the selected response; asserted effectiveness
+        is a claim, not an observed result.
+    handoff:
+      locators:
+      - content_group_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
+        end_line: 165
+        file: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+        source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+        start_line: 128
+      status: supported
+      summary: Counted waking/eyes-open return with target command reminder where intelligible.
+    identity:
+      locators:
+      - content_group_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
+        end_line: 43
+        file: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+        source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+        start_line: 42
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
+        end_line: 43
+        file: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+        source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+        start_line: 36
+      status: supported
+      summary: represent-brain-and-neck-vessels; imagine-strength-and-flexibility; imagine-obstruction-removal-and-new-vessels;
+        select-brain-area; inhale-hold-and-issue-flow-better-cue; exhale
+    opener:
+      locators:
+      - content_group_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
+        end_line: 35
+        file: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+        source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+        start_line: 32
+      status: supported
+      summary: Introduce a body-oriented intended response and receptive learning context, not evidence
+        that the physiology changed.
+    preparation:
+      locators:
+      - content_group_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
+        end_line: 31
+        file: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+        source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+        start_line: 3
+      status: supported
+      summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+        for temporary setting-aside and counted ten-state preparation.
+    provenance:
+      locators:
+      - content_group_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
+        end_line: 165
+        file: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+        source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Breathing tokens44-47 and video
+        insertions1/165 are ambiguous contamination, not proven rehearsal. Anatomy/medical guarantees
+        need review.
+    purpose:
+      locators:
+      - content_group_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
+        end_line: 2
+        file: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+        source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+        start_line: 2
+      status: supported
+      summary: Claimed brain/neck blood-supply renewal to improve thinking/action.
+    rehearsal:
+      locators:
+      - content_group_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
+        end_line: 47
+        file: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+        source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+        start_line: 44
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Breathing tokens44-47
+        and video insertions1/165 are ambiguous contamination, not proven rehearsal. Anatomy/medical guarantees
+        need review.
+    safety_claims:
+      locators:
+      - content_group_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
+        end_line: 43
+        file: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+        source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+        start_line: 34
+      status: supported
+      summary: vascular-renewal-and-obstruction-removal; new-vessel-generation; cognitive-improvement-via-blood-flow;
+        automatic-whole-system-learning. Claims are classified as source assertions, not accepted OCF
+        mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
+        end_line: 35
+        file: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+        source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+        start_line: 32
+      status: supported
+      summary: Reference learning shell prepares ten, opens eleven, closes to ten and uses sleep-to-twenty
+        plus waking return where preserved; runtime OCF requirements remain separate and unknown.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
+        end_line: 165
+        file: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+        source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Breathing tokens44-47
+        and video insertions1/165 are ambiguous contamination, not proven rehearsal. Anatomy/medical guarantees
+        need review.
+  source_extent:
+    content_group_sha256: bf2db953c43d8d97209b649989584ca87de5c1bede312ed74f7798d08db08569
+    end_line: 165
+    file: +Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt
+    source_sha256: b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf:command_association
-    operations: []
+    - review:OCF-BOD-001:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf:closer
-    operations: []
+    - review:OCF-BOD-001:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-001:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf:future_use
-    operations: []
+    - review:OCF-BOD-001:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf:return
-    operations: []
+    - review:OCF-BOD-001:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf:main
-    operations: []
+    - review:OCF-BOD-001:main
+    operations:
+    - represent-brain-and-neck-vessels
+    - imagine-strength-and-flexibility
+    - imagine-obstruction-removal-and-new-vessels
+    - select-brain-area
+    - inhale-hold-and-issue-flow-better-cue
+    - exhale
     status: inferred
   opener:
     evidence_refs:
-    - b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf:opener
-    operations: []
+    - review:OCF-BOD-001:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-001:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-001:rehearsal
     operations: []
     status: unknown
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-001:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-001:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-BOD-001
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Breathing tokens44-47 and video insertions1/165 are ambiguous contamination, not proven rehearsal. Anatomy/medical
+  guarantees need review.
+- Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological reinterpretation
+  is equivalent. Useful experiential operations and material purpose changes require explicit content
+  review; medical management and breath-hold issues remain outside software efficacy claims.
 schema_version: '1.0'
 states:
   preferred: []

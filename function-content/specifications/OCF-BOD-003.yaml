@@ -1,65 +1,260 @@
+analysis_review:
+  claim_categories:
+  - guaranteed-discomfort-reduction
+  - altered-signal-importance
+  - automatic-whole-system-learning
+  family: targeted-sensation-reduction
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+        end_line: 36
+        file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+        source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+        start_line: 30
+      status: supported
+      summary: Pair source cue/breathing with the selected body-related response; actual canonical and
+        legacy command variants stay in identity metadata.
+    closer:
+      locators:
+      - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+        end_line: 58
+        file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+        source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+        start_line: 51
+      status: supported
+      summary: Reinforce remembered future use and close the learning context to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+        end_line: 83
+        file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+        source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+        start_line: 59
+      status: supported
+      summary: Sleep-to-twenty shell present; physiological/automatic integration is not established by
+        that instruction.
+    conversion:
+      locators:
+      - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+        end_line: 50
+        file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+        source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+        start_line: 30
+      status: inferred
+      summary: Pain/discomfort modulation is not treatment or proof of safety. Legacy numeric cue differs
+        from canonical COMFORT; preserve compatibility metadata and flag mechanism/purpose review.
+    future_use:
+      locators:
+      - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+        end_line: 54
+        file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+        source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+        start_line: 30
+      status: supported
+      summary: Use the cue/breathing procedure as described for the selected response; asserted effectiveness
+        is a claim, not an observed result.
+    handoff:
+      locators:
+      - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+        end_line: 109
+        file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+        source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+        start_line: 84
+      status: supported
+      summary: Counted waking/eyes-open return with target command reminder where intelligible.
+    identity:
+      locators:
+      - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+        end_line: 36
+        file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+        source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+        start_line: 30
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+        end_line: 50
+        file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+        source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+        start_line: 30
+      status: supported
+      summary: select-discomfort-source; close-eyes-inhale-and-hold; direct-internal-attention-to-location;
+        issue-legacy-numeric-cue; exhale; associate-signals-with-reduced-importance
+    opener:
+      locators:
+      - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+        end_line: 29
+        file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+        source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+        start_line: 25
+      status: supported
+      summary: Introduce a body-oriented intended response and receptive learning context, not evidence
+        that the physiology changed.
+    preparation:
+      locators:
+      - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+        end_line: 24
+        file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+        source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+        start_line: 3
+      status: supported
+      summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+        for temporary setting-aside and counted ten-state preparation.
+    provenance:
+      locators:
+      - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+        end_line: 109
+        file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+        source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Source-designated derivative
+        is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing or original
+        underlay; unspecified cancellation remains unknown.
+    purpose:
+      locators:
+      - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+        end_line: 2
+        file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+        source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+        start_line: 1
+      status: supported
+      summary: Reduce the importance of discomfort signals from a selected body location.
+    rehearsal:
+      locators:
+      - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+        end_line: 50
+        file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+        source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+        start_line: 30
+      status: not-present
+      summary: No distinct listener test of physiological outcome is established; teaching repetition
+        and ASR ambient tokens are not outcome verification.
+    safety_claims:
+      locators:
+      - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+        end_line: 50
+        file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+        source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+        start_line: 30
+      status: supported
+      summary: guaranteed-discomfort-reduction; altered-signal-importance; automatic-whole-system-learning.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+        end_line: 29
+        file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+        source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+        start_line: 25
+      status: supported
+      summary: Reference learning shell prepares ten, opens eleven, closes to ten and uses sleep-to-twenty
+        plus waking return where preserved; runtime OCF requirements remain separate and unknown.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+        end_line: 109
+        file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+        source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Source-designated
+        derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
+        or original underlay; unspecified cancellation remains unknown.
+  source_extent:
+    content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+    end_line: 109
+    file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+    source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:command_association
-    operations: []
+    - review:OCF-BOD-003:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:closer
-    operations: []
+    - review:OCF-BOD-003:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-003:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:future_use
-    operations: []
+    - review:OCF-BOD-003:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:return
-    operations: []
+    - review:OCF-BOD-003:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:main
-    operations: []
+    - review:OCF-BOD-003:main
+    operations:
+    - select-discomfort-source
+    - close-eyes-inhale-and-hold
+    - direct-internal-attention-to-location
+    - issue-legacy-numeric-cue
+    - exhale
+    - associate-signals-with-reduced-importance
     status: inferred
   opener:
     evidence_refs:
-    - bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:opener
-    operations: []
+    - review:OCF-BOD-003:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-003:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-003:rehearsal
     operations: []
-    status: unknown
+    status: not-present
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-003:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-003:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-BOD-003
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Source-designated derivative is unauthenticated. Count/repetition/ambient artifacts do not establish
+  exact timing or original underlay; unspecified cancellation remains unknown.
+- Pain/discomfort modulation is not treatment or proof of safety. Legacy numeric cue differs from canonical
+  COMFORT; preserve compatibility metadata and flag mechanism/purpose review.
 schema_version: '1.0'
 states:
   preferred: []

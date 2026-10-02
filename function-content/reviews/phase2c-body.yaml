@@ -1,0 +1,170 @@
+schema_version: "1.0"
+method: complete-source-text-inspection
+defaults:
+  preparation: Supported uninterrupted posture, settling movements/breathing, repository representation for temporary setting-aside and counted ten-state preparation.
+  state: Reference learning shell prepares ten, opens eleven, closes to ten and uses sleep-to-twenty plus waking return where preserved; runtime OCF requirements remain separate and unknown.
+  opener: Introduce a body-oriented intended response and receptive learning context, not evidence that the physiology changed.
+  association: Pair source cue/breathing with the selected body-related response; actual canonical and legacy command variants stay in identity metadata.
+  rehearsal: No distinct listener test of physiological outcome is established; teaching repetition and ASR ambient tokens are not outcome verification.
+  future_use: Use the cue/breathing procedure as described for the selected response; asserted effectiveness is a claim, not an observed result.
+  suspend_cancel_reset: unknown
+  closer: Reinforce remembered future use and close the learning context to ten.
+  consolidation: Sleep-to-twenty shell present; physiological/automatic integration is not established by that instruction.
+  handoff: Counted waking/eyes-open return with target command reminder where intelligible.
+  conversion: Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological reinterpretation is equivalent. Useful experiential operations and material purpose changes require explicit content review; medical management and breath-hold issues remain outside software efficacy claims.
+  uncertainties: Source-designated derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing or original underlay; unspecified cancellation remains unknown.
+functions:
+  OCF-BOD-001:
+    title: Brain Support and Maintenance
+    source: "+Transcripts From available tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt"
+    inspected_lines: [1, 165]
+    family: body-renewal-with-targeted-intensification
+    purpose: Claimed brain/neck blood-supply renewal to improve thinking/action.
+    main: [represent-brain-and-neck-vessels, imagine-strength-and-flexibility, imagine-obstruction-removal-and-new-vessels, select-brain-area, inhale-hold-and-issue-flow-better-cue, exhale]
+    rehearsal: unknown
+    claims: [vascular-renewal-and-obstruction-removal, new-vessel-generation, cognitive-improvement-via-blood-flow, automatic-whole-system-learning]
+    uncertainties: Breathing tokens44-47 and video insertions1/165 are ambiguous contamination, not proven rehearsal. Anatomy/medical guarantees need review.
+    locators: {purpose: [2, 2], preparation: [3, 31], state: [32, 35], opener: [32, 35], main: [36, 43], association: [42, 43], rehearsal: [44, 47], future_use: [42, 49], suspend_cancel_reset: [1, 165], closer: [48, 56], consolidation: [57, 127], handoff: [128, 165], safety_claims: [34, 43]}
+  OCF-BOD-002:
+    title: Circulation
+    source: "+Transcripts From available tapes/Circulation/Circulation.txt"
+    inspected_lines: [1, 166]
+    family: body-renewal-with-targeted-intensification
+    purpose: Claimed smooth balanced circulation and vessel renewal across the body.
+    main: [represent-body-vessels-and-flow, imagine-obstructions-dissolving, imagine-intake-and-elimination-improving, select-circulatory-area, close-eyes-inhale-hold-and-issue-flow-smooth-cue, exhale]
+    claims: [vascular-obstruction-removal, blood-intake-and-elimination-perfection, organism-exclusion, persistent-physiological-improvement]
+    uncertainties: Content112-118 and count anomalies are contaminated/unverified. No direct circulatory measurement or reset behavior is established.
+    statuses: {rehearsal: not-present}
+    locators: {purpose: [2, 2], preparation: [3, 40], state: [41, 46], opener: [41, 46], main: [47, 74], association: [69, 74], rehearsal: [47, 79], future_use: [69, 79], suspend_cancel_reset: [1, 166], closer: [75, 89], consolidation: [90, 129], handoff: [130, 166], safety_claims: [47, 74]}
+  OCF-BOD-003:
+    title: De-Discomfort
+    source: "+Transcripts From available tapes/De-Discomfort/De-Discomfort.txt"
+    inspected_lines: [1, 109]
+    family: targeted-sensation-reduction
+    purpose: Reduce the importance of discomfort signals from a selected body location.
+    main: [select-discomfort-source, close-eyes-inhale-and-hold, direct-internal-attention-to-location, issue-legacy-numeric-cue, exhale, associate-signals-with-reduced-importance]
+    claims: [guaranteed-discomfort-reduction, altered-signal-importance, automatic-whole-system-learning]
+    conversion: Pain/discomfort modulation is not treatment or proof of safety. Legacy numeric cue differs from canonical COMFORT; preserve compatibility metadata and flag mechanism/purpose review.
+    statuses: {rehearsal: not-present}
+    locators: {purpose: [1, 2], preparation: [3, 24], state: [25, 29], opener: [25, 29], main: [30, 50], association: [30, 36], rehearsal: [30, 50], future_use: [30, 54], suspend_cancel_reset: [1, 109], closer: [51, 58], consolidation: [59, 83], handoff: [84, 109], safety_claims: [30, 50]}
+  OCF-BOD-004:
+    title: De-Tox Body
+    source: "+Transcripts From available tapes/De-Tox Body/De-Tox Body.txt"
+    inspected_lines: [1, 352]
+    family: body-cleansing-intensification
+    purpose: Claimed removal of harmful/obstructing material and body equalization, optionally accelerated by a cue.
+    main: [associate-body-with-automatic-material-elimination, optionally-close-eyes-inhale-and-hold, issue-legacy-clean-clear-cue, exhale]
+    opener: Intelligible target instruction follows ten/eleven count material; a complete opening explanation is not preserved, so its missing wording remains unknown.
+    handoff: unknown
+    rehearsal: unknown
+    claims: [physiological-detoxification, guaranteed-material-removal-and-balance, automatic-whole-system-learning]
+    uncertainties: Opening explanation and final waking ending are missing/unclear; later numeric-only material cannot establish additional functions or reinforcement. DETOX metadata is not rewritten legacy speech.
+    locators: {purpose: [8, 8], preparation: [10, 71], state: [72, 88], opener: [72, 88], main: [89, 103], association: [97, 103], rehearsal: [89, 135], future_use: [97, 135], suspend_cancel_reset: [1, 352], closer: [131, 146], consolidation: [152, 352], handoff: [193, 352], safety_claims: [89, 103]}
+  OCF-BOD-005:
+    title: Eat-No Eat
+    source: "+Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt"
+    inspected_lines: [1, 351]
+    family: appetite-direction-incomplete-main
+    purpose: Direct desire/appetite for food; the main installation instruction is not preserved in this derivative.
+    state: Ten-state preparation, later closure to ten, sleep-to-twenty and waking return are present; explicit learning-context opening is not preserved.
+    opener: unknown
+    main: [remember-appetite-direction-goal, hold-breath-and-issue-satisfied-supplied-cue, exhale]
+    association: Only final cue reminder supports a breathing/cue association; do not invent the missing main response or mode behavior.
+    rehearsal: unknown
+    future_use: Final reminder gives a cue/exhale routine for appetite direction; precise intended response/duration remains unknown.
+    claims: [appetite-direction, missing-main-claim-content]
+    uncertainties: Large numeric segment replaces expected access/main material; full physiological/behavioral claim and activation conditions cannot be recovered from this TXT. Analytical completeness retains these unknowns.
+    locators: {purpose: [1, 1], preparation: [2, 142], state: [143, 154], opener: [18, 142], main: [346, 349], association: [346, 349], rehearsal: [18, 142], future_use: [346, 349], suspend_cancel_reset: [1, 351], closer: [143, 154], consolidation: [155, 316], handoff: [317, 351], safety_claims: [1, 351]}
+  OCF-BOD-006:
+    title: Heart Support and Maintenance
+    source: "+Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt"
+    inspected_lines: [1, 171]
+    family: organ-renewal-intensification
+    purpose: Claimed heart muscle/nerve/vessel renewal with optional acceleration.
+    main: [represent-heart-muscle-vessels-and-nerves, imagine-strength-flexibility-and-obstruction-removal, associate-heart-with-renewal, close-eyes-inhale-hold-and-issue-heart-better-cue, exhale]
+    claims: [heart-renewal, vascular-obstruction-removal, improved-heart-nerve-signalling, persistent-physiological-perfection]
+    statuses: {rehearsal: not-present}
+    locators: {purpose: [1, 1], preparation: [2, 31], state: [32, 35], opener: [32, 35], main: [36, 55], association: [52, 55], rehearsal: [36, 59], future_use: [52, 59], suspend_cancel_reset: [1, 171], closer: [56, 64], consolidation: [65, 134], handoff: [135, 171], safety_claims: [36, 55]}
+  OCF-BOD-007:
+    title: Hypertension
+    source: "+Transcripts From available tapes/Hypertension/Hypertension.txt"
+    inspected_lines: [1, 204]
+    family: targeted-body-perception-and-balance
+    purpose: Claimed perception and adjustment of a selected heart/vessel condition, framed for high blood pressure.
+    main: [choose-heart-or-vessel-region, close-eyes-inhale-and-hold, direct-inner-attention-to-region, issue-balance-blood-pressure-cue, exhale-and-open-eyes]
+    claims: [intuitive-vascular-condition-diagnosis, blood-pressure-normalization, automatic-self-regulation]
+    conversion: Subjective awareness cannot diagnose vascular state or establish blood-pressure treatment. Any safer body-awareness design would materially alter those claims and needs review.
+    statuses: {rehearsal: not-present}
+    locators: {purpose: [3, 4], preparation: [5, 42], state: [43, 50], opener: [43, 50], main: [51, 81], association: [51, 64], rehearsal: [51, 81], future_use: [51, 87], suspend_cancel_reset: [1, 204], closer: [84, 95], consolidation: [97, 142], handoff: [143, 204], safety_claims: [51, 81]}
+  OCF-BOD-008:
+    title: Immunizing
+    source: "+Transcripts From available tapes/Immunizing/Immunizing.txt"
+    inspected_lines: [1, 208]
+    family: immune-enhancement-intensification
+    purpose: Claimed ongoing strengthening of organism-control systems, optionally intensified by a cue.
+    main: [associate-body-protection-with-increased-strength, imagine-organism-control-and-removal, inhale-hold-and-issue-alert-destroy-cue, exhale]
+    claims: [immune-system-strengthening, destructive-organism-elimination, persistent-medical-protection]
+    conversion: Immune efficacy/infection prevention cannot transfer as factual OCF outcomes. No universal wellness substitute is asserted; mechanism/purpose and safety need review.
+    statuses: {rehearsal: not-present}
+    locators: {purpose: [51, 56], preparation: [11, 43], state: [44, 50], opener: [44, 50], main: [51, 59], association: [57, 59], rehearsal: [51, 74], future_use: [57, 74], suspend_cancel_reset: [1, 208], closer: [72, 84], consolidation: [85, 165], handoff: [166, 208], safety_claims: [51, 59]}
+  OCF-BOD-009:
+    title: Lung Support and Maintenance
+    source: "+Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt"
+    inspected_lines: [1, 219]
+    family: organ-renewal-intensification
+    purpose: Claimed improvement/renewal of breathing structures and oxygen/waste exchange.
+    main: [represent-nose-throat-lungs-diaphragm, imagine-opening-cleaning-and-airflow, imagine-oxygen-exchange-and-cell-renewal, inhale-hold-and-issue-breathing-improvement-cue, exhale]
+    handoff: unknown
+    claims: [lung-and-airway-renewal, tissue-regeneration, improved-oxygen-exchange, persistent-physiological-perfection]
+    uncertainties: Final waking ending absent. Source ASR renders breathe-better while canonical metadata uses BREATH BETTER; command provenance needs audio review, not silent correction.
+    rehearsal: unknown
+    locators: {purpose: [1, 1], preparation: [2, 25], state: [26, 30], opener: [26, 30], main: [31, 59], association: [54, 59], rehearsal: [31, 63], future_use: [54, 63], suspend_cancel_reset: [1, 219], closer: [60, 74], consolidation: [75, 219], handoff: [117, 219], safety_claims: [31, 59]}
+  OCF-BOD-010:
+    title: Nutricia
+    source: "+Transcripts From available tapes/Nutricia/Nutricia.txt"
+    inspected_lines: [1, 199]
+    family: adjustable-food-energy-claims
+    purpose: Claimed control of food energy absorption/use rather than merely food desire.
+    main: [choose-more-or-less-food-energy-use, close-eyes-inhale-and-hold, represent-food-processing-region, issue-selected-food-mode-cue, exhale-and-open-eyes]
+    association: MORE cue claims maximal energy extraction; LESS cue claims only maintenance needs with excess passing out. Opposing modes are not inferred from the title.
+    future_use: Select food-energy mode with the same procedure; source does not supply a mode-reset phrase or measured nutritional effect.
+    claims: [voluntary-caloric-absorption-control, excess-energy-elimination, perfect-nutritional-balance]
+    statuses: {rehearsal: not-present}
+    locators: {purpose: [1, 2], preparation: [3, 26], state: [27, 32], opener: [27, 32], main: [33, 56], association: [33, 44], rehearsal: [33, 56], future_use: [33, 60], suspend_cancel_reset: [1, 199], closer: [57, 64], consolidation: [65, 181], handoff: [182, 199], safety_claims: [33, 56]}
+  OCF-BOD-011:
+    title: Passages
+    source: "+Transcripts From available tapes/Passages/Passages.txt"
+    inspected_lines: [1, 191]
+    family: hormone-related-symptom-support-claims
+    purpose: Claimed relief/support for physical/mental/emotional effects of hormonal transitions.
+    main: [identify-desired-hormonal-symptom-relief, inhale-and-hold, issue-equalize-harmonize-cue, exhale, optionally-express-gratitude]
+    closer: Access closes to ten until listener chooses to reopen; no standard remember-and-act paragraph is established here.
+    handoff: Initial waking count is followed by body/spiritual equalization suggestions and a second ten-to-one waking return; final cue/gratitude reminder.
+    claims: [hormonal-symptom-relief, organ-and-circulatory-equalization, spiritual-physical-mechanism, gratitude-amplification]
+    conversion: Symptom-support and physiological regulation are different claims. Optional gratitude is documented, not a required religious/metaphysical interpretation or OCF mechanism.
+    statuses: {rehearsal: not-present}
+    locators: {purpose: [1, 3], preparation: [4, 35], state: [36, 41], opener: [36, 41], main: [42, 55], association: [42, 54], rehearsal: [42, 55], future_use: [184, 190], suspend_cancel_reset: [1, 191], closer: [56, 77], consolidation: [78, 128], handoff: [129, 191], safety_claims: [42, 55]}
+  OCF-BOD-012:
+    title: Sex Drive
+    source: "+Transcripts From available tapes/Sex Drive/Sex Drive.txt"
+    inspected_lines: [1, 84]
+    family: adjustable-personal-arousal
+    purpose: Voluntarily regulate one's own sexual arousal in stronger/weaker directions.
+    main: [choose-personal-arousal-direction, inhale-and-hold, issue-selected-legacy-greater-or-lesser-cue, exhale-and-breathe-normally]
+    association: Opposing cues are associated with increased sensitivity versus reduced arousal/claimed energy conversion; canonical MORE/LESS normalizes magnitude metadata only.
+    future_use: Intentionally select an arousal direction; no involuntary trigger, effect on another person or cancellation phrase established.
+    claims: [guaranteed-arousal-control, sexual-energy-conversion, automatic-whole-system-learning]
+    conversion: Preserve self-directed agency and avoid guaranteed physiological effects; canonical normalization does not prove equivalence or historical wording change.
+    statuses: {rehearsal: not-present}
+    locators: {purpose: [2, 2], preparation: [3, 24], state: [25, 28], opener: [25, 28], main: [29, 47], association: [29, 37], rehearsal: [29, 47], future_use: [29, 51], suspend_cancel_reset: [1, 84], closer: [48, 55], consolidation: [56, 68], handoff: [69, 84], safety_claims: [29, 47]}
+  OCF-BOD-013:
+    title: Tune-Up
+    source: "+Transcripts From available tapes/Tune-Up/Tune-Up.txt"
+    inspected_lines: [1, 196]
+    family: targeted-body-perception-and-balance
+    purpose: Claimed intuitive perception and balance/regeneration of a selected body part.
+    main: [choose-body-region, close-eyes-inhale-and-hold, direct-inner-attention-to-region, issue-balance-heal-cue, exhale-and-open-eyes]
+    claims: [intuitive-body-condition-diagnosis, regeneration-and-normalization, automatic-self-regulation]
+    conversion: Body awareness can be investigated, but diagnosis/healing/regeneration is not established; reframing would materially change the claim and requires review.
+    statuses: {rehearsal: not-present}
+    locators: {purpose: [1, 2], preparation: [3, 25], state: [26, 30], opener: [26, 30], main: [31, 48], association: [31, 39], rehearsal: [31, 48], future_use: [31, 51], suspend_cancel_reset: [1, 196], closer: [49, 61], consolidation: [62, 159], handoff: [160, 196], safety_claims: [31, 48]}

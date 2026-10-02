@@ -1,64 +1,262 @@
+analysis_review:
+  claim_categories:
+  - hormonal-symptom-relief
+  - organ-and-circulatory-equalization
+  - spiritual-physical-mechanism
+  - gratitude-amplification
+  family: hormone-related-symptom-support-claims
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+        end_line: 54
+        file: +Transcripts From available tapes/Passages/Passages.txt
+        source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+        start_line: 42
+      status: supported
+      summary: Pair source cue/breathing with the selected body-related response; actual canonical and
+        legacy command variants stay in identity metadata.
+    closer:
+      locators:
+      - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+        end_line: 77
+        file: +Transcripts From available tapes/Passages/Passages.txt
+        source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+        start_line: 56
+      status: supported
+      summary: Access closes to ten until listener chooses to reopen; no standard remember-and-act paragraph
+        is established here.
+    consolidation:
+      locators:
+      - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+        end_line: 128
+        file: +Transcripts From available tapes/Passages/Passages.txt
+        source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+        start_line: 78
+      status: supported
+      summary: Sleep-to-twenty shell present; physiological/automatic integration is not established by
+        that instruction.
+    conversion:
+      locators:
+      - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+        end_line: 55
+        file: +Transcripts From available tapes/Passages/Passages.txt
+        source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+        start_line: 42
+      status: inferred
+      summary: Symptom-support and physiological regulation are different claims. Optional gratitude is
+        documented, not a required religious/metaphysical interpretation or OCF mechanism.
+    future_use:
+      locators:
+      - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+        end_line: 190
+        file: +Transcripts From available tapes/Passages/Passages.txt
+        source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+        start_line: 184
+      status: supported
+      summary: Use the cue/breathing procedure as described for the selected response; asserted effectiveness
+        is a claim, not an observed result.
+    handoff:
+      locators:
+      - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+        end_line: 191
+        file: +Transcripts From available tapes/Passages/Passages.txt
+        source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+        start_line: 129
+      status: supported
+      summary: Initial waking count is followed by body/spiritual equalization suggestions and a second
+        ten-to-one waking return; final cue/gratitude reminder.
+    identity:
+      locators:
+      - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+        end_line: 54
+        file: +Transcripts From available tapes/Passages/Passages.txt
+        source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+        start_line: 42
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+        end_line: 55
+        file: +Transcripts From available tapes/Passages/Passages.txt
+        source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+        start_line: 42
+      status: supported
+      summary: identify-desired-hormonal-symptom-relief; inhale-and-hold; issue-equalize-harmonize-cue;
+        exhale; optionally-express-gratitude
+    opener:
+      locators:
+      - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+        end_line: 41
+        file: +Transcripts From available tapes/Passages/Passages.txt
+        source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+        start_line: 36
+      status: supported
+      summary: Introduce a body-oriented intended response and receptive learning context, not evidence
+        that the physiology changed.
+    preparation:
+      locators:
+      - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+        end_line: 35
+        file: +Transcripts From available tapes/Passages/Passages.txt
+        source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+        start_line: 4
+      status: supported
+      summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+        for temporary setting-aside and counted ten-state preparation.
+    provenance:
+      locators:
+      - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+        end_line: 191
+        file: +Transcripts From available tapes/Passages/Passages.txt
+        source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Source-designated derivative
+        is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing or original
+        underlay; unspecified cancellation remains unknown.
+    purpose:
+      locators:
+      - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+        end_line: 3
+        file: +Transcripts From available tapes/Passages/Passages.txt
+        source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+        start_line: 1
+      status: supported
+      summary: Claimed relief/support for physical/mental/emotional effects of hormonal transitions.
+    rehearsal:
+      locators:
+      - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+        end_line: 55
+        file: +Transcripts From available tapes/Passages/Passages.txt
+        source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+        start_line: 42
+      status: not-present
+      summary: No distinct listener test of physiological outcome is established; teaching repetition
+        and ASR ambient tokens are not outcome verification.
+    safety_claims:
+      locators:
+      - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+        end_line: 55
+        file: +Transcripts From available tapes/Passages/Passages.txt
+        source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+        start_line: 42
+      status: supported
+      summary: hormonal-symptom-relief; organ-and-circulatory-equalization; spiritual-physical-mechanism;
+        gratitude-amplification. Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+        end_line: 41
+        file: +Transcripts From available tapes/Passages/Passages.txt
+        source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+        start_line: 36
+      status: supported
+      summary: Reference learning shell prepares ten, opens eleven, closes to ten and uses sleep-to-twenty
+        plus waking return where preserved; runtime OCF requirements remain separate and unknown.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+        end_line: 191
+        file: +Transcripts From available tapes/Passages/Passages.txt
+        source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Source-designated
+        derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
+        or original underlay; unspecified cancellation remains unknown.
+  source_extent:
+    content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+    end_line: 191
+    file: +Transcripts From available tapes/Passages/Passages.txt
+    source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88:command_association
-    operations: []
+    - review:OCF-BOD-011:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88:closer
-    operations: []
+    - review:OCF-BOD-011:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-011:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88:future_use
-    operations: []
+    - review:OCF-BOD-011:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88:return
-    operations: []
+    - review:OCF-BOD-011:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88:main
-    operations: []
+    - review:OCF-BOD-011:main
+    operations:
+    - identify-desired-hormonal-symptom-relief
+    - inhale-and-hold
+    - issue-equalize-harmonize-cue
+    - exhale
+    - optionally-express-gratitude
     status: inferred
   opener:
-    evidence_refs: []
-    operations: []
-    status: unknown
-  purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-011:opener
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-opener
+    status: inferred
+  purpose:
+    evidence_refs:
+    - review:OCF-BOD-011:purpose
+    operations:
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-011:rehearsal
     operations: []
-    status: unknown
+    status: not-present
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-011:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-011:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-BOD-011
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Source-designated derivative is unauthenticated. Count/repetition/ambient artifacts do not establish
+  exact timing or original underlay; unspecified cancellation remains unknown.
+- Symptom-support and physiological regulation are different claims. Optional gratitude is documented,
+  not a required religious/metaphysical interpretation or OCF mechanism.
 schema_version: '1.0'
 states:
   preferred: []

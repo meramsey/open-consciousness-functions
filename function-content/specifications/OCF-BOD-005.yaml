@@ -1,63 +1,260 @@
+analysis_review:
+  claim_categories:
+  - appetite-direction
+  - missing-main-claim-content
+  family: appetite-direction-incomplete-main
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+        end_line: 349
+        file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+        source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+        start_line: 346
+      status: supported
+      summary: Only final cue reminder supports a breathing/cue association; do not invent the missing
+        main response or mode behavior.
+    closer:
+      locators:
+      - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+        end_line: 154
+        file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+        source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+        start_line: 143
+      status: supported
+      summary: Reinforce remembered future use and close the learning context to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+        end_line: 316
+        file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+        source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+        start_line: 155
+      status: supported
+      summary: Sleep-to-twenty shell present; physiological/automatic integration is not established by
+        that instruction.
+    conversion:
+      locators:
+      - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+        end_line: 349
+        file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+        source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+        start_line: 346
+      status: inferred
+      summary: Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
+        reinterpretation is equivalent. Useful experiential operations and material purpose changes require
+        explicit content review; medical management and breath-hold issues remain outside software efficacy
+        claims.
+    future_use:
+      locators:
+      - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+        end_line: 349
+        file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+        source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+        start_line: 346
+      status: supported
+      summary: Final reminder gives a cue/exhale routine for appetite direction; precise intended response/duration
+        remains unknown.
+    handoff:
+      locators:
+      - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+        end_line: 351
+        file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+        source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+        start_line: 317
+      status: supported
+      summary: Counted waking/eyes-open return with target command reminder where intelligible.
+    identity:
+      locators:
+      - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+        end_line: 349
+        file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+        source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+        start_line: 346
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+        end_line: 349
+        file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+        source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+        start_line: 346
+      status: supported
+      summary: remember-appetite-direction-goal; hold-breath-and-issue-satisfied-supplied-cue; exhale
+    opener:
+      locators:
+      - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+        end_line: 142
+        file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+        source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+        start_line: 18
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Large numeric
+        segment replaces expected access/main material; full physiological/behavioral claim and activation
+        conditions cannot be recovered from this TXT. Analytical completeness retains these unknowns.
+    preparation:
+      locators:
+      - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+        end_line: 142
+        file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+        source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+        start_line: 2
+      status: supported
+      summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+        for temporary setting-aside and counted ten-state preparation.
+    provenance:
+      locators:
+      - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+        end_line: 351
+        file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+        source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Large numeric segment replaces
+        expected access/main material; full physiological/behavioral claim and activation conditions cannot
+        be recovered from this TXT. Analytical completeness retains these unknowns.
+    purpose:
+      locators:
+      - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+        end_line: 1
+        file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+        source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+        start_line: 1
+      status: supported
+      summary: Direct desire/appetite for food; the main installation instruction is not preserved in
+        this derivative.
+    rehearsal:
+      locators:
+      - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+        end_line: 142
+        file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+        source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+        start_line: 18
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Large numeric
+        segment replaces expected access/main material; full physiological/behavioral claim and activation
+        conditions cannot be recovered from this TXT. Analytical completeness retains these unknowns.
+    safety_claims:
+      locators:
+      - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+        end_line: 351
+        file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+        source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+        start_line: 1
+      status: supported
+      summary: appetite-direction; missing-main-claim-content. Claims are classified as source assertions,
+        not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+        end_line: 154
+        file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+        source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+        start_line: 143
+      status: supported
+      summary: Ten-state preparation, later closure to ten, sleep-to-twenty and waking return are present;
+        explicit learning-context opening is not preserved.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+        end_line: 351
+        file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+        source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Large numeric
+        segment replaces expected access/main material; full physiological/behavioral claim and activation
+        conditions cannot be recovered from this TXT. Analytical completeness retains these unknowns.
+  source_extent:
+    content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+    end_line: 351
+    file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+    source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9:command_association
-    operations: []
+    - review:OCF-BOD-005:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9:closer
-    operations: []
+    - review:OCF-BOD-005:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-005:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-005:future_use
+    operations:
+    - documented-future-use
+    status: inferred
   handoff:
     evidence_refs:
-    - beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9:return
-    operations: []
+    - review:OCF-BOD-005:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-005:main
+    operations:
+    - remember-appetite-direction-goal
+    - hold-breath-and-issue-satisfied-supplied-cue
+    - exhale
+    status: inferred
   opener:
     evidence_refs:
-    - beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9:opener
+    - review:OCF-BOD-005:opener
     operations: []
-    status: inferred
+    status: unknown
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-005:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-005:rehearsal
     operations: []
     status: unknown
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-005:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-005:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-BOD-005
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Large numeric segment replaces expected access/main material; full physiological/behavioral claim and
+  activation conditions cannot be recovered from this TXT. Analytical completeness retains these unknowns.
+- Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological reinterpretation
+  is equivalent. Useful experiential operations and material purpose changes require explicit content
+  review; medical management and breath-hold issues remain outside software efficacy claims.
 schema_version: '1.0'
 states:
   preferred: []

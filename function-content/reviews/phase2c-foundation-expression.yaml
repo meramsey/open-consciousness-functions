@@ -49,7 +49,7 @@ functions:
     inspected_lines: [1, 190]
     family: short-sleep-restoration
     purpose: Enter a short nap with claimed rapid restoration and awakening after minutes.
-    main: [select-safe-short-rest-period, inhale-and-hold, internally-issue-recharge-cue, exhale, enter-sleep, anticipate-near-term-waking]
+    main: [select-short-rest-period, inhale-and-hold, internally-issue-recharge-cue, exhale, enter-sleep, anticipate-near-term-waking]
     future_use: Breathing/cue routine for a short sleep; source claims automatic restoration and waking within minutes, not an explicit programmable timer.
     claims: [guaranteed-rapid-sleep, physiological-balance-restoration, automatic-minutes-later-awakening, automatic-whole-system-learning]
     conversion: Safe short-rest planning is useful but source restoration/timing claims are not guarantees. Rest context and breath holding require review.

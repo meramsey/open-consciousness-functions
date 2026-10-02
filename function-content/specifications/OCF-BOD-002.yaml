@@ -1,65 +1,265 @@
+analysis_review:
+  claim_categories:
+  - vascular-obstruction-removal
+  - blood-intake-and-elimination-perfection
+  - organism-exclusion
+  - persistent-physiological-improvement
+  family: body-renewal-with-targeted-intensification
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+        end_line: 74
+        file: +Transcripts From available tapes/Circulation/Circulation.txt
+        source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+        start_line: 69
+      status: supported
+      summary: Pair source cue/breathing with the selected body-related response; actual canonical and
+        legacy command variants stay in identity metadata.
+    closer:
+      locators:
+      - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+        end_line: 89
+        file: +Transcripts From available tapes/Circulation/Circulation.txt
+        source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+        start_line: 75
+      status: supported
+      summary: Reinforce remembered future use and close the learning context to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+        end_line: 129
+        file: +Transcripts From available tapes/Circulation/Circulation.txt
+        source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+        start_line: 90
+      status: supported
+      summary: Sleep-to-twenty shell present; physiological/automatic integration is not established by
+        that instruction.
+    conversion:
+      locators:
+      - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+        end_line: 74
+        file: +Transcripts From available tapes/Circulation/Circulation.txt
+        source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+        start_line: 47
+      status: inferred
+      summary: Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
+        reinterpretation is equivalent. Useful experiential operations and material purpose changes require
+        explicit content review; medical management and breath-hold issues remain outside software efficacy
+        claims.
+    future_use:
+      locators:
+      - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+        end_line: 79
+        file: +Transcripts From available tapes/Circulation/Circulation.txt
+        source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+        start_line: 69
+      status: supported
+      summary: Use the cue/breathing procedure as described for the selected response; asserted effectiveness
+        is a claim, not an observed result.
+    handoff:
+      locators:
+      - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+        end_line: 166
+        file: +Transcripts From available tapes/Circulation/Circulation.txt
+        source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+        start_line: 130
+      status: supported
+      summary: Counted waking/eyes-open return with target command reminder where intelligible.
+    identity:
+      locators:
+      - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+        end_line: 74
+        file: +Transcripts From available tapes/Circulation/Circulation.txt
+        source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+        start_line: 69
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+        end_line: 74
+        file: +Transcripts From available tapes/Circulation/Circulation.txt
+        source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+        start_line: 47
+      status: supported
+      summary: represent-body-vessels-and-flow; imagine-obstructions-dissolving; imagine-intake-and-elimination-improving;
+        select-circulatory-area; close-eyes-inhale-hold-and-issue-flow-smooth-cue; exhale
+    opener:
+      locators:
+      - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+        end_line: 46
+        file: +Transcripts From available tapes/Circulation/Circulation.txt
+        source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+        start_line: 41
+      status: supported
+      summary: Introduce a body-oriented intended response and receptive learning context, not evidence
+        that the physiology changed.
+    preparation:
+      locators:
+      - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+        end_line: 40
+        file: +Transcripts From available tapes/Circulation/Circulation.txt
+        source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+        start_line: 3
+      status: supported
+      summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+        for temporary setting-aside and counted ten-state preparation.
+    provenance:
+      locators:
+      - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+        end_line: 166
+        file: +Transcripts From available tapes/Circulation/Circulation.txt
+        source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+        start_line: 1
+      status: supported
+      summary: Complete available partial_source_transcript text inspected; shared representations are
+        not independent corroboration. Source accuracy/authentication remains unresolved. Content112-118
+        and count anomalies are contaminated/unverified. No direct circulatory measurement or reset behavior
+        is established.
+    purpose:
+      locators:
+      - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+        end_line: 2
+        file: +Transcripts From available tapes/Circulation/Circulation.txt
+        source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+        start_line: 2
+      status: supported
+      summary: Claimed smooth balanced circulation and vessel renewal across the body.
+    rehearsal:
+      locators:
+      - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+        end_line: 79
+        file: +Transcripts From available tapes/Circulation/Circulation.txt
+        source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+        start_line: 47
+      status: not-present
+      summary: No distinct listener test of physiological outcome is established; teaching repetition
+        and ASR ambient tokens are not outcome verification.
+    safety_claims:
+      locators:
+      - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+        end_line: 74
+        file: +Transcripts From available tapes/Circulation/Circulation.txt
+        source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+        start_line: 47
+      status: supported
+      summary: vascular-obstruction-removal; blood-intake-and-elimination-perfection; organism-exclusion;
+        persistent-physiological-improvement. Claims are classified as source assertions, not accepted
+        OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+        end_line: 46
+        file: +Transcripts From available tapes/Circulation/Circulation.txt
+        source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+        start_line: 41
+      status: supported
+      summary: Reference learning shell prepares ten, opens eleven, closes to ten and uses sleep-to-twenty
+        plus waking return where preserved; runtime OCF requirements remain separate and unknown.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+        end_line: 166
+        file: +Transcripts From available tapes/Circulation/Circulation.txt
+        source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Content112-118
+        and count anomalies are contaminated/unverified. No direct circulatory measurement or reset behavior
+        is established.
+  source_extent:
+    content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+    end_line: 166
+    file: +Transcripts From available tapes/Circulation/Circulation.txt
+    source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38:command_association
-    operations: []
+    - review:OCF-BOD-002:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38:closer
-    operations: []
+    - review:OCF-BOD-002:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-002:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38:future_use
-    operations: []
+    - review:OCF-BOD-002:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38:return
-    operations: []
+    - review:OCF-BOD-002:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38:main
-    operations: []
+    - review:OCF-BOD-002:main
+    operations:
+    - represent-body-vessels-and-flow
+    - imagine-obstructions-dissolving
+    - imagine-intake-and-elimination-improving
+    - select-circulatory-area
+    - close-eyes-inhale-hold-and-issue-flow-smooth-cue
+    - exhale
     status: inferred
   opener:
     evidence_refs:
-    - 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38:opener
-    operations: []
+    - review:OCF-BOD-002:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-002:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-002:rehearsal
     operations: []
-    status: unknown
+    status: not-present
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-002:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-002:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-BOD-002
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Content112-118 and count anomalies are contaminated/unverified. No direct circulatory measurement or
+  reset behavior is established.
+- Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological reinterpretation
+  is equivalent. Useful experiential operations and material purpose changes require explicit content
+  review; medical management and breath-hold issues remain outside software efficacy claims.
 schema_version: '1.0'
 states:
   preferred: []

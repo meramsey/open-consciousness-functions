@@ -74,6 +74,105 @@ observations:
   - 181
   scope: document
   source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- category: purpose
+  confidence: medium
+  id: review:OCF-BOD-013:purpose
+  kind: function-specification-inference
+  line_candidates:
+  - 1
+  - 2
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- category: opener
+  confidence: medium
+  id: review:OCF-BOD-013:opener
+  kind: function-specification-inference
+  line_candidates:
+  - 26
+  - 30
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- category: main
+  confidence: medium
+  id: review:OCF-BOD-013:main
+  kind: function-specification-inference
+  line_candidates:
+  - 31
+  - 48
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- category: association
+  confidence: medium
+  id: review:OCF-BOD-013:association
+  kind: function-specification-inference
+  line_candidates:
+  - 31
+  - 39
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- category: rehearsal
+  confidence: medium
+  id: review:OCF-BOD-013:rehearsal
+  kind: function-specification-inference
+  line_candidates:
+  - 31
+  - 48
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- category: future_use
+  confidence: medium
+  id: review:OCF-BOD-013:future_use
+  kind: function-specification-inference
+  line_candidates:
+  - 31
+  - 51
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- category: suspend_cancel_reset
+  confidence: unknown
+  id: review:OCF-BOD-013:suspend_cancel_reset
+  kind: function-specification-inference
+  line_candidates:
+  - 1
+  - 196
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- category: closer
+  confidence: medium
+  id: review:OCF-BOD-013:closer
+  kind: function-specification-inference
+  line_candidates:
+  - 49
+  - 61
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- category: consolidation
+  confidence: medium
+  id: review:OCF-BOD-013:consolidation
+  kind: function-specification-inference
+  line_candidates:
+  - 62
+  - 159
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- category: handoff
+  confidence: medium
+  id: review:OCF-BOD-013:handoff
+  kind: function-specification-inference
+  line_candidates:
+  - 160
+  - 196
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+- category: safety_claims
+  confidence: medium
+  id: review:OCF-BOD-013:safety_claims
+  kind: function-specification-inference
+  line_candidates:
+  - 31
+  - 48
+  scope: document
+  source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
 questions:
 - Source derivatives are not independently authenticated recordings
 - Keyword candidate locators require full semantic review; absence of a match does not establish absence

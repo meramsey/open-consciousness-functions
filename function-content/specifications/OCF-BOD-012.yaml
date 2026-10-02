@@ -1,65 +1,258 @@
+analysis_review:
+  claim_categories:
+  - guaranteed-arousal-control
+  - sexual-energy-conversion
+  - automatic-whole-system-learning
+  family: adjustable-personal-arousal
+  method: complete-available-source-content-review
+  scope: documentary extraction; not narration approval, historical authentication or runtime state binding
+  sections:
+    association:
+      locators:
+      - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+        end_line: 37
+        file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+        source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+        start_line: 29
+      status: supported
+      summary: Opposing cues are associated with increased sensitivity versus reduced arousal/claimed
+        energy conversion; canonical MORE/LESS normalizes magnitude metadata only.
+    closer:
+      locators:
+      - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+        end_line: 55
+        file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+        source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+        start_line: 48
+      status: supported
+      summary: Reinforce remembered future use and close the learning context to ten.
+    consolidation:
+      locators:
+      - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+        end_line: 68
+        file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+        source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+        start_line: 56
+      status: supported
+      summary: Sleep-to-twenty shell present; physiological/automatic integration is not established by
+        that instruction.
+    conversion:
+      locators:
+      - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+        end_line: 47
+        file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+        source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+        start_line: 29
+      status: inferred
+      summary: Preserve self-directed agency and avoid guaranteed physiological effects; canonical normalization
+        does not prove equivalence or historical wording change.
+    future_use:
+      locators:
+      - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+        end_line: 51
+        file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+        source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+        start_line: 29
+      status: supported
+      summary: Intentionally select an arousal direction; no involuntary trigger, effect on another person
+        or cancellation phrase established.
+    handoff:
+      locators:
+      - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+        end_line: 84
+        file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+        source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+        start_line: 69
+      status: supported
+      summary: Counted waking/eyes-open return with target command reminder where intelligible.
+    identity:
+      locators:
+      - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+        end_line: 37
+        file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+        source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+        start_line: 29
+      status: supported
+      summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+        cue association inspected without inventing a new command.
+    main:
+      locators:
+      - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+        end_line: 47
+        file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+        source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+        start_line: 29
+      status: supported
+      summary: choose-personal-arousal-direction; inhale-and-hold; issue-selected-legacy-greater-or-lesser-cue;
+        exhale-and-breathe-normally
+    opener:
+      locators:
+      - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+        end_line: 28
+        file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+        source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+        start_line: 25
+      status: supported
+      summary: Introduce a body-oriented intended response and receptive learning context, not evidence
+        that the physiology changed.
+    preparation:
+      locators:
+      - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+        end_line: 24
+        file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+        source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+        start_line: 3
+      status: supported
+      summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+        for temporary setting-aside and counted ten-state preparation.
+    provenance:
+      locators:
+      - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+        end_line: 84
+        file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+        source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+        start_line: 1
+      status: supported
+      summary: Complete available source_transcript text inspected; shared representations are not independent
+        corroboration. Source accuracy/authentication remains unresolved. Source-designated derivative
+        is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing or original
+        underlay; unspecified cancellation remains unknown.
+    purpose:
+      locators:
+      - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+        end_line: 2
+        file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+        source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+        start_line: 2
+      status: supported
+      summary: Voluntarily regulate one's own sexual arousal in stronger/weaker directions.
+    rehearsal:
+      locators:
+      - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+        end_line: 47
+        file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+        source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+        start_line: 29
+      status: not-present
+      summary: No distinct listener test of physiological outcome is established; teaching repetition
+        and ASR ambient tokens are not outcome verification.
+    safety_claims:
+      locators:
+      - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+        end_line: 47
+        file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+        source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+        start_line: 29
+      status: supported
+      summary: guaranteed-arousal-control; sexual-energy-conversion; automatic-whole-system-learning.
+        Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+    state:
+      locators:
+      - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+        end_line: 28
+        file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+        source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+        start_line: 25
+      status: supported
+      summary: Reference learning shell prepares ten, opens eleven, closes to ten and uses sleep-to-twenty
+        plus waking return where preserved; runtime OCF requirements remain separate and unknown.
+    suspend_cancel_reset:
+      locators:
+      - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+        end_line: 84
+        file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+        source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+        start_line: 1
+      status: unknown
+      summary: Investigated the full available source; this operation is not established. Source-designated
+        derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
+        or original underlay; unspecified cancellation remains unknown.
+  source_extent:
+    content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+    end_line: 84
+    file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+    source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    start_line: 1
 blocks:
   association:
     evidence_refs:
-    - ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:command_association
-    operations: []
+    - review:OCF-BOD-012:association
+    operations:
+    - documented-association
     status: inferred
   closer:
     evidence_refs:
-    - ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:closer
-    operations: []
+    - review:OCF-BOD-012:closer
+    operations:
+    - documented-closer
     status: inferred
   consolidation:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-012:consolidation
+    operations:
+    - documented-consolidation
+    status: inferred
   future_use:
     evidence_refs:
-    - ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:future_use
-    operations: []
+    - review:OCF-BOD-012:future_use
+    operations:
+    - documented-future-use
     status: inferred
   handoff:
     evidence_refs:
-    - ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:return
-    operations: []
+    - review:OCF-BOD-012:handoff
+    operations:
+    - documented-handoff
     status: inferred
   main:
     evidence_refs:
-    - ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:main
-    operations: []
+    - review:OCF-BOD-012:main
+    operations:
+    - choose-personal-arousal-direction
+    - inhale-and-hold
+    - issue-selected-legacy-greater-or-lesser-cue
+    - exhale-and-breathe-normally
     status: inferred
   opener:
     evidence_refs:
-    - ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:opener
-    operations: []
+    - review:OCF-BOD-012:opener
+    operations:
+    - documented-opener
     status: inferred
   purpose:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-012:purpose
     operations:
-    - consult-canonical-purpose-metadata
-    status: specified
+    - documented-purpose
+    status: inferred
   rehearsal:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-012:rehearsal
     operations: []
-    status: unknown
+    status: not-present
   safety_claims:
-    evidence_refs: []
-    operations: []
-    status: unknown
+    evidence_refs:
+    - review:OCF-BOD-012:safety_claims
+    operations:
+    - documented-safety-claims
+    status: inferred
   suspend_cancel_reset:
-    evidence_refs: []
+    evidence_refs:
+    - review:OCF-BOD-012:suspend_cancel_reset
     operations: []
     status: unknown
 command_ref: canonical.command
-extraction_status: partial
+extraction_status: complete
 function_id: OCF-BOD-012
 human_review: required
 maturity: draft
 metadata_ref: canonical-function-record
 preparation: []
 questions:
-- Function-specific operations, state requirements and claim transformations require source review; no
-  inferred runtime state binding
+- Source-designated derivative is unauthenticated. Count/repetition/ambient artifacts do not establish
+  exact timing or original underlay; unspecified cancellation remains unknown.
+- Preserve self-directed agency and avoid guaranteed physiological effects; canonical normalization does
+  not prove equivalence or historical wording change.
 schema_version: '1.0'
 states:
   preferred: []

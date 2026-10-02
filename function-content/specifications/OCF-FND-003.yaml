@@ -84,8 +84,8 @@ analysis_review:
         source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
         start_line: 38
       status: supported
-      summary: select-safe-short-rest-period; inhale-and-hold; internally-issue-recharge-cue; exhale;
-        enter-sleep; anticipate-near-term-waking
+      summary: select-short-rest-period; inhale-and-hold; internally-issue-recharge-cue; exhale; enter-sleep;
+        anticipate-near-term-waking
     opener:
       locators:
       - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
@@ -209,7 +209,7 @@ blocks:
     evidence_refs:
     - review:OCF-FND-003:main
     operations:
-    - select-safe-short-rest-period
+    - select-short-rest-period
     - inhale-and-hold
     - internally-issue-recharge-cue
     - exhale
