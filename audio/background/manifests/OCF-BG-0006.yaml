@@ -1,6 +1,6 @@
 schema_version: "1.0"
 id: "OCF-BG-0006"
-name: "Focus 11 — gamma + pink, newer measured (Farfield)"
+name: "Focus 11 — canonical newer pure-SAM + pink (Farfield)"
 author: "OCF"
 engine: "farfield"
 engine_source:
@@ -26,6 +26,10 @@ provenance:
     175/179 Hz pair. Preset is OCF's own parametric representation of the
     measurement; it contains no recording audio.
     Mirrors presets/farfield/focus-11-b.yaml (upstream contribution staging).
+    Canonical newer F11 state selection follows the original archive/history:
+    three antiphase-SAM families, without persistent 175/179Hz theta. Pink-bed
+    level is audition-calibrated, not exact recovered mastering. Older F11 and
+    theta-enhanced variants remain separate. See docs/research/FOCUS_STATE_EVIDENCE_AUDIT.md.
 safety:
   headphone_notice: true
   driving_warning: true

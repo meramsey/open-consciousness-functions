@@ -11,12 +11,13 @@ Optional background presets. A preset is not a function and is not a training sc
 | `OCF-BG-0003` | Attention focus arc + F11 access excerpt (composite) | sbagenx |  | no | OCF-FND-002 |
 | `OCF-BG-0004` | Attention focus arc: operator reference master (F10 bed + F11 access excerpt) | reference-master |  | yes | OCF-FND-002 |
 | `OCF-BG-0005` | Focus 11 — older-FLAC measured sustained state (Farfield) | farfield |  | yes | OCF-FND-002 |
-| `OCF-BG-0006` | Focus 11 — gamma + pink, newer measured (Farfield) | farfield |  | yes | OCF-FND-002 |
-| `OCF-BG-0007` | Focus 11 — gamma + theta + pink (canonical access state, Farfield) | farfield |  | yes | OCF-FND-002 |
+| `OCF-BG-0006` | Focus 11 — canonical newer pure-SAM + pink (Farfield) | farfield |  | yes | OCF-FND-002 |
+| `OCF-BG-0007` | Focus 11 — theta-enhanced alternate / audition variant (Farfield) | farfield |  | yes | OCF-FND-002 |
 | `OCF-BG-0008` | Focus 11 — older-FLAC measured sustained state (SBaGenX) | sbagenx |  | yes | OCF-FND-002 |
 | `OCF-BG-0009` | Focus 11 — gamma + pink, newer measured (SBaGenX) | sbagenx |  | yes | OCF-FND-002 |
 | `OCF-BG-0010` | Focus 11 — gamma + theta + pink (canonical access state, SBaGenX) | sbagenx |  | yes | OCF-FND-002 |
 | `OCF-BG-0011` | Attention focus arc + Focus-11 (gamma+theta+pink) access state — OCF-authored | reference-master |  | yes | OCF-FND-002 |
+| `OCF-BG-0012` | Focus Ten — V4-derived development candidate (Farfield approximation) | farfield |  | yes |  |
 
 
-11 background presets recorded.
+12 background presets recorded.

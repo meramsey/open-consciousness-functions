@@ -1,0 +1,39 @@
+# Independently generated V4-derived development candidate, not universal F10.
+# Reference: supplied 399.530249s V4-short; see the measurement report.
+# Primary pairs/relative total family powers are measured; symmetric ears,
+# shaped-bed fit and output peak are reconstruction/design choices.
+# IMPORTANT approximation: Farfield 0.1.0 cannot express common-mode PM on
+# different per-ear carriers or arbitrary staggered tremolo phase. The measured
+# ~2Hz PM and 30s staggered AM are OMITTED, not substituted with a binaural beat
+# or a false 2Hz AM interpretation. The candidate preserves the dominant pairs.
+name: focus-10-v4-candidate
+title: "OCF Focus Ten V4 candidate — measured pairs, shaped-bed approximation"
+fidelity: original
+notes: |
+  Measured directly from supplied V4-short reference excerpt, not from the
+  historical tape/MSS time axes. Five persistent pairs include an additional
+  39.75/40.25Hz ground pair found in direct analysis. Relative total resolved
+  tone powers use 80Hz family as reference: +3.9, 0, -4.8, -8.2, -10.9dB.
+  Source narrowband R gain is ~1.94dB; equal ear amplitudes are an OCF design
+  choice, not a claim about the reference's mastering intent.
+  The mono bed is a fitted main-band approximation: a smooth two-slope hump
+  fitted over 100-800Hz, not generic pink/brown. Source notches, high-frequency
+  residual texture and measured carrier modulation are not reproduced exactly.
+  No reference audio is loaded at runtime. Production/mastering remains TBD.
+sample_rate: 48000
+default_total: "30:00"
+output: {peak_dbfs: -6.0}
+defaults: {harmonics: [1.0]}
+segments:
+  - duration: hold
+    groups:
+      - {name: ground40, level_db: 3.9, pairs: [{left: 39.75, right: 40.25}]}
+      - {name: pair80, level_db: 0.0, pairs: [{left: 79.25, right: 80.75}]}
+      - {name: pair160, level_db: -4.8, pairs: [{left: 158.05, right: 161.95}]}
+      - {name: pair200, level_db: -8.2, pairs: [{left: 198.0, right: 202.0}]}
+      - {name: pair320, level_db: -10.9, pairs: [{left: 317.95, right: 322.05}]}
+    bed:
+      level_db: -0.8
+      shape: {peak_hz: 241.1, rise_db_per_decade: 20.2, fall_db_per_decade: -48.0}
+      stereo: {mode: static, interaural_delay_us: 0.0}
+emerge: false

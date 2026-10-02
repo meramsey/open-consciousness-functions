@@ -1,6 +1,6 @@
 schema_version: "1.0"
 id: "OCF-BG-0007"
-name: "Focus 11 — gamma + theta + pink (canonical access state, Farfield)"
+name: "Focus 11 — theta-enhanced alternate / audition variant (Farfield)"
 author: "OCF"
 engine: "farfield"
 engine_source:
@@ -24,11 +24,16 @@ provenance:
     Focus 11 recording (16:00-27:00, citation-only, never vendored):
     40 Hz SAM gamma family (256.869 / 323.625 / 384.875 Hz carriers, closed
     path) plus the intermittent 175/179 Hz binaural pair, over a pink bed,
-    30-minute sustained state. This is the canonical focus-11 access-state
-    bed used by the OCF-AUDIO-0001 attention build (via OCF-BG-0011). The
+    30-minute sustained arrangement. This alternate renders 175/179Hz
+    CONTINUOUSLY although the measured source component was intermittent.
+    It was historically labelled canonical and used by Attention/V1; those
+    mappings remain compatibility metadata. Canonical newer state dispatch now
+    selects OCF-BG-0006, not this theta-enhanced alternate. The
     preset is OCF's own parametric representation of the measurement; it
     contains no recording audio.
     Mirrors presets/farfield/focus-11-c.yaml (upstream contribution staging).
+    See docs/research/FOCUS_STATE_EVIDENCE_AUDIT.md for the original alternate
+    designation and its later accidental promotion. The preset is preserved.
 safety:
   headphone_notice: true
   driving_warning: true

@@ -21,6 +21,7 @@
   "properties": {
     "schema_version": { "type": "string", "const": "1.0" },
     "id": { "type": "string", "pattern": "^OCF-BG-[0-9]{4}$" },
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
     "name": { "type": "string", "minLength": 1 },
     "author": { "type": ["string", "null"] },
     "engine": { "type": "string", "enum": ["farfield", "sbagenx", "custom", "none", "reference-master"] },
@@ -117,7 +118,13 @@
       "required": ["design", "notes"],
       "properties": {
         "design": { "type": "string", "enum": ["original-ocf", "community", "third-party", "derived"] },
-        "notes": { "type": ["string", "null"] }
+        "notes": { "type": ["string", "null"] },
+        "evidence_class": {"type": "string"},
+        "source_family": {"type": "string"},
+        "reference_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "measurement_report": {"type": "string"},
+        "status": {"enum": ["candidate", "reference", "canonical", "alternate"]},
+        "confidence": {"type": "object", "additionalProperties": {"type": "string"}}
       }
     },
     "safety": {

@@ -1,0 +1,44 @@
+schema_version: "1.0"
+id: OCF-BG-0012
+version: "0.1.0"
+name: "Focus Ten — V4-derived development candidate (Farfield approximation)"
+author: OCF
+engine: farfield
+engine_source: {repository: "https://github.com/txus/farfield", version: "0.1.0"}
+preset: {file: audio/background/presets/focus-10-v4-candidate.yaml}
+render: {output: audio/background/rendered/focus-10-v4-candidate.wav, seed: 0, deterministic: true}
+usage: {functions: [], audio_implementations: []}
+provenance:
+  design: derived
+  evidence_class: measured directly from supplied V4-short reference excerpt
+  source_family: F10 V4-short
+  reference_sha256: dad8dd1a6e96bc1c1ccb6c42cce3306c1893e4edc749c710fdf36159577a2519
+  measurement_report: docs/research/V4_SHORT_MEASUREMENTS.md
+  status: candidate
+  confidence:
+    frequencies_and_orientation: high
+    relative_family_power: medium-high
+    mastering_intent: unresolved
+    common_mode_2Hz_PM: high for ground40/pair80; medium for upper families
+    bed_reconstruction: approximate main-band fit; disclosed residuals
+  notes: |
+    Original parametric synthesis, not source audio. Reference runtime dependency
+    is prohibited. Frequencies are sensible rounded direct measurements, all
+    right-high; relative total family powers are rounded long-window measurements.
+    Equal ear levels remove source ~1.94dB narrowband R bias as an explicit OCF
+    design choice. The extra 39.75/40.25 pair is directly measured, not folklore.
+    Bed fit 241.1Hz / +20.2 / -48dB per decade is derived over 100-800Hz, ~1.57dB
+    fit RMS residual, constrained by Farfield's supported -48dB fall limit.
+    The unconstrained fit is 262.5Hz/+15.3/-56.0; neither fitted peak is the
+    measured continuum's literal peak at ~200Hz. Residuals are not hidden.
+    Bed -0.8dB is rounded masked continuum/tone energy-ratio calibration; output -6dBFS peak
+    is a provisional audition choice, not recovered mastering.
+    Farfield cannot exactly express different-carrier common-mode PM or the
+    measured 30s family-staggered common AM phases. Both are explicitly omitted;
+    no false 2Hz AM, spatial rotation, or extra binaural mechanism is substituted.
+    This is an approximation candidate, not universally canonical Focus Ten.
+safety:
+  headphone_notice: true
+  driving_warning: true
+  notes: ["State labels describe OCF practice, not measured neurological outcomes."]
+license: "Apache-2.0 (OCF parametric preset); supplied reference citation-only"
