@@ -43,6 +43,9 @@ audio/scripts/attention.yaml
 references/*.pdf
 references/*.mp3
 references/*.wav
+# Supplied V4-short research excerpts are citation-only, never runtime assets.
+references/F10 V4 Volume Adjusted-short.flac
+references/F11 V4-short.flac
 !references/.gitkeep
 !references/README.md
 

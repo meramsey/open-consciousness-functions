@@ -1,0 +1,293 @@
+{
+  "evidence_class": "measured directly from supplied V4-short reference excerpt",
+  "offset_transfer_to_other_sources": false,
+  "method": {
+    "tone_windows": "20s centered at 20,60,100,140,180,220,260,300,340s; edges 0-10 and final10s; high-resolution20-140,140-260,260-380s",
+    "tone_estimator": "Hann FFT log-quadratic peaks; coherent nominal-frequency projections in global excerpt time; AM/PM from upper and conjugate lower sideband ratios",
+    "bed_estimator": "Welch PSD; >8dB local narrow peaks masked; band and third-octave continuum saved; fits reported per band, not a global color",
+    "phase_caveat": "Different-frequency interaural carrier phase is time/beat dependent; meaningful comparisons are same-frequency leakage and modulation phase. Carrier phases saved, not claimed fixed IPD."
+  },
+  "F10": {
+    "source_file": "references/F10 V4 Volume Adjusted-short.flac",
+    "sha256": "dad8dd1a6e96bc1c1ccb6c42cce3306c1893e4edc749c710fdf36159577a2519",
+    "sample_rate": 44100,
+    "channels": 2,
+    "encoding": "PCM_16",
+    "duration_s": 399.5302494331066,
+    "peak_dbfs": -4.851289804042969,
+    "full_rms_dbfs_L_R": [
+      -17.428174128912637,
+      -16.293519303818336
+    ],
+    "delay_fits": [
+      {
+        "start_s": 20,
+        "delay_fit": {
+          "R_lag_us": -0.079706174979891,
+          "residual_deg_rms": 1.9762928536714413,
+          "coherent_bins": 6128
+        }
+      },
+      {
+        "start_s": 140,
+        "delay_fit": {
+          "R_lag_us": 0.1382795437391214,
+          "residual_deg_rms": 2.002260925013803,
+          "coherent_bins": 6098
+        }
+      },
+      {
+        "start_s": 260,
+        "delay_fit": {
+          "R_lag_us": 0.03681828460608817,
+          "residual_deg_rms": 2.007122350112964,
+          "coherent_bins": 6102
+        }
+      }
+    ],
+    "bed_shape_fit": {
+      "fit_band_hz": [
+        100,
+        800
+      ],
+      "model": "smooth power-domain joined two slopes, peak-corrected",
+      "fits": {
+        "unconstrained": {
+          "peak_hz": 262.51730686604935,
+          "rise_db_per_decade": 15.333665721423744,
+          "fall_db_per_decade": -55.97175980427346,
+          "density_offset": -47.52222912016957,
+          "residual_rms_db": 1.513949222413651
+        },
+        "farfield_supported": {
+          "peak_hz": 241.12568891453566,
+          "rise_db_per_decade": 20.218877918588166,
+          "fall_db_per_decade": -47.99999999999999,
+          "density_offset": -46.81625600634666,
+          "residual_rms_db": 1.5726249007660806
+        }
+      }
+    },
+    "masked_continuum_rms": [
+      {
+        "start_s": 20,
+        "L_R_dbfs": [
+          -25.98197049492168,
+          -25.966614562077588
+        ]
+      },
+      {
+        "start_s": 140,
+        "L_R_dbfs": [
+          -25.989522784413946,
+          -25.976110269054594
+        ]
+      },
+      {
+        "start_s": 260,
+        "L_R_dbfs": [
+          -25.978472422227252,
+          -25.960821275937533
+        ]
+      }
+    ],
+    "tone_aggregates": [
+      {
+        "center_hz": 40.0,
+        "channels": [
+          {
+            "ear": "L",
+            "frequency_mean_hz": 39.75000094144346,
+            "frequency_peak_to_peak_hz": 1.0774468492513734e-05,
+            "carrier_rms_mean_dbfs": -22.33263735885015,
+            "carrier_level_peak_to_peak_db": 0.0017358740092632274,
+            "AM_depth_median": 0.0005868890149509525,
+            "PM_rad_median": 0.06279316290819659,
+            "phase_closure_median_deg": -177.76340234455895
+          },
+          {
+            "ear": "R",
+            "frequency_mean_hz": 40.25000084574966,
+            "frequency_peak_to_peak_hz": 8.036000181732561e-06,
+            "carrier_rms_mean_dbfs": -20.394030847270653,
+            "carrier_level_peak_to_peak_db": 0.0008118131221905855,
+            "AM_depth_median": 0.0006731056037272417,
+            "PM_rad_median": 0.06277895660853372,
+            "phase_closure_median_deg": 178.38280662710176
+          }
+        ]
+      },
+      {
+        "center_hz": 80.0,
+        "channels": [
+          {
+            "ear": "L",
+            "frequency_mean_hz": 79.25000393490865,
+            "frequency_peak_to_peak_hz": 3.0795660023841265e-05,
+            "carrier_rms_mean_dbfs": -26.213393443430984,
+            "carrier_level_peak_to_peak_db": 0.007565411405593636,
+            "AM_depth_median": 0.0009172666314895162,
+            "PM_rad_median": 0.06288898903724545,
+            "phase_closure_median_deg": 176.06712101844352
+          },
+          {
+            "ear": "R",
+            "frequency_mean_hz": 80.75000101175597,
+            "frequency_peak_to_peak_hz": 2.976348343963764e-05,
+            "carrier_rms_mean_dbfs": -24.274862915020034,
+            "carrier_level_peak_to_peak_db": 0.0037831660841476378,
+            "AM_depth_median": 0.0006084847603930265,
+            "PM_rad_median": 0.06305604936124111,
+            "phase_closure_median_deg": 176.43436323681433
+          }
+        ]
+      },
+      {
+        "center_hz": 160.0,
+        "channels": [
+          {
+            "ear": "L",
+            "frequency_mean_hz": 158.05088540228746,
+            "frequency_peak_to_peak_hz": 0.0028041943133700897,
+            "carrier_rms_mean_dbfs": -31.330051969681854,
+            "carrier_level_peak_to_peak_db": 3.3226166191459967,
+            "AM_depth_median": 0.030042440446466916,
+            "PM_rad_median": 0.13310812871708602,
+            "phase_closure_median_deg": -116.31999608954597
+          },
+          {
+            "ear": "R",
+            "frequency_mean_hz": 161.9498509796898,
+            "frequency_peak_to_peak_hz": 0.0032032081567479054,
+            "carrier_rms_mean_dbfs": -29.33918588492426,
+            "carrier_level_peak_to_peak_db": 3.200524668178012,
+            "AM_depth_median": 0.032554481848651916,
+            "PM_rad_median": 0.11727260771796716,
+            "phase_closure_median_deg": 125.6142512945549
+          }
+        ]
+      },
+      {
+        "center_hz": 200.0,
+        "channels": [
+          {
+            "ear": "L",
+            "frequency_mean_hz": 198.0007938316482,
+            "frequency_peak_to_peak_hz": 0.0037894768933313117,
+            "carrier_rms_mean_dbfs": -34.816003403737305,
+            "carrier_level_peak_to_peak_db": 3.9714150987691568,
+            "AM_depth_median": 0.04104728985697338,
+            "PM_rad_median": 0.14306097022926995,
+            "phase_closure_median_deg": -149.60544041027882
+          },
+          {
+            "ear": "R",
+            "frequency_mean_hz": 202.0005509139292,
+            "frequency_peak_to_peak_hz": 0.004470185930614434,
+            "carrier_rms_mean_dbfs": -32.932516503344075,
+            "carrier_level_peak_to_peak_db": 3.3274405849079294,
+            "AM_depth_median": 0.04860181355749851,
+            "PM_rad_median": 0.14011083633204552,
+            "phase_closure_median_deg": -153.05177284178342
+          }
+        ]
+      },
+      {
+        "center_hz": 320.0,
+        "channels": [
+          {
+            "ear": "L",
+            "frequency_mean_hz": 317.94911566350083,
+            "frequency_peak_to_peak_hz": 0.0061996453480333,
+            "carrier_rms_mean_dbfs": -37.36830359269531,
+            "carrier_level_peak_to_peak_db": 3.3668302696621524,
+            "AM_depth_median": 0.06477444028266037,
+            "PM_rad_median": 0.14342800928998908,
+            "phase_closure_median_deg": 124.63577284402741
+          },
+          {
+            "ear": "R",
+            "frequency_mean_hz": 322.05000533358316,
+            "frequency_peak_to_peak_hz": 0.003350743308942583,
+            "carrier_rms_mean_dbfs": -35.4509228851754,
+            "carrier_level_peak_to_peak_db": 3.8398232805713306,
+            "AM_depth_median": 0.03788747551757083,
+            "PM_rad_median": 0.12521634720137081,
+            "phase_closure_median_deg": 130.68374502576512
+          }
+        ]
+      }
+    ],
+    "long_window_family_power": [
+      {
+        "center_hz": 40.0,
+        "mean_family_power_dbfs": -21.35495095430262,
+        "carrier_power_dbfs": -21.363462962351132,
+        "relative_family_power_db": 3.8804662080367223
+      },
+      {
+        "center_hz": 80.0,
+        "mean_family_power_dbfs": -25.235417162339342,
+        "carrier_power_dbfs": -25.24396293871162,
+        "relative_family_power_db": 0.0
+      },
+      {
+        "center_hz": 160.0,
+        "mean_family_power_dbfs": -29.99048200757174,
+        "carrier_power_dbfs": -30.26696226331336,
+        "relative_family_power_db": -4.755064845232397
+      },
+      {
+        "center_hz": 200.0,
+        "mean_family_power_dbfs": -33.43835862524598,
+        "carrier_power_dbfs": -33.702842839442845,
+        "relative_family_power_db": -8.20294146290664
+      },
+      {
+        "center_hz": 320.0,
+        "mean_family_power_dbfs": -36.104864789230824,
+        "carrier_power_dbfs": -36.389967216049364,
+        "relative_family_power_db": -10.869447626891482
+      }
+    ]
+  },
+  "F11": {
+    "source_file": "references/F11 V4-short.flac",
+    "sha256": "3d1cef6a633f85024d90d93a4c42d6ac4eef0d98c0858bbadd18d6a6272e497b",
+    "sample_rate": 44100,
+    "channels": 2,
+    "encoding": "PCM_16",
+    "duration_s": 564.5885714285714,
+    "peak_dbfs": -6.402077532225966,
+    "full_rms_dbfs_L_R": [
+      -20.354429226060926,
+      -20.567766932468455
+    ],
+    "delay_fits": [
+      {
+        "start_s": 20,
+        "delay_fit": {
+          "R_lag_us": 0.26466355246113854,
+          "residual_deg_rms": 2.460206050244083,
+          "coherent_bins": 2865
+        }
+      },
+      {
+        "start_s": 180,
+        "delay_fit": {
+          "R_lag_us": 0.1898382999718275,
+          "residual_deg_rms": 2.32740333048786,
+          "coherent_bins": 2834
+        }
+      },
+      {
+        "start_s": 340,
+        "delay_fit": {
+          "R_lag_us": -0.4465512431563751,
+          "residual_deg_rms": 2.354997387575038,
+          "coherent_bins": 2845
+        }
+      }
+    ]
+  }
+}

@@ -48,3 +48,10 @@ fields. Background presets carry `author`, `provenance`, and `license`.
 Source reviews are recorded in `legacy/source-notes/` using
 `templates/source-review.md`, keeping the reviewed evidence separate from
 inference.
+
+Focus-state acoustic evidence is additionally inventoried in
+[`docs/research/`](research/README.md), including source fingerprints, the
+unresolved Focus Ten V4 timeline mismatch and F11 canonical/alternate preset
+provenance. These research records distinguish measured facts from derived
+reconstructions and design choices; they do not override historical mappings
+or runtime preset selection.
