@@ -504,7 +504,8 @@ def _resolve_event_list(
     def absolute(event: dict) -> float | None:
         event_id = event.get("id")
         if start_overrides and event_id in start_overrides:
-            return start_overrides[event_id]
+            memo[event_id] = start_overrides[event_id]
+            return memo[event_id]
         if event_id in memo:
             return memo[event_id]
         if event_id in path:
