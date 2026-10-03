@@ -20,6 +20,7 @@ unchanged at the end. No listening audio/model/private asset staged or history r
 | `d35450ae14ea826a43f4f922b7ad081de396b5ed` | Full-review source/hash/extent/missing-question failure tests |
 | `460e1121f13b2be668701031ba4d2794391ce7e0` | Prompt-control tests, ignored empty-list policy fix and unreachable condition removal |
 | `8d1f9ea343ce4f9bdc3918da69e84601d89b1c1b` | Completion/coverage documentation and additive proposal |
+| `c3dda9613f8626afab241c76a3e607837ee71e72` | V2 listening finding, semantic DSP approach windows, induction profile, V2.1 render/verification |
 
 Report commit hash is returned in the session and resolvable with
 `git log -1 --format=%H -- docs/releases/OCF_PHASE2C_CHECKPOINT_2026-10-02.md`.
@@ -165,20 +166,74 @@ Lint/import issues in new tests were corrected before commit. No unresolved test
 regression observed. Source authentication, precise original timing and clinical
 efficacy remain unknown rather than masquerading as successful validation.
 
+## Addendum: human V2 listening finding and Development Audition V2.1
+
+Human listening review of V2 arrived after the extraction work above. Finding:
+roughly the first eight minutes were narration without F10 DSP, so the program
+sounded like a late introduction instead of support for the relaxation that
+precedes it. V2's first F10 gain window was `494.645533–499.645533s`, after the
+spoken arrival line.
+
+Reading the unchanged RC1 ledger located the semantic anchors, so the fix is
+scheduling rather than guessing: `preparation.relaxation.begin` 179.127891s,
+`focus-ten.learn` 372.038005s, `focus-ten.count-one` 394.779138s,
+`focus.ten.enter` (spoken Ten starts) 487.570884s, `focus-ten.transition`
+494.645533s. Both stages are already declared `type: induction`. No eight-minute
+threshold was introduced.
+
+Accepted architecture: **semantic state is not DSP onset.** Profiles may add an
+`approaches` entry binding a selected program to three existing measured event
+occurrences — begin, established, owning state directive — rising from zero to
+sustained level on a disclosed raised-cosine envelope. The state directive is
+unmoved, so support precedes arrival and arrival remains meaningful. Anchors come
+from each locale/recording's measured ledger, never English wording, filenames or a
+fixed duration. Missing, late, duplicated, disabled, overlapping, non-numeric or
+contradictory approaches fail loudly, and profiles without the field keep their
+previous gain behavior exactly.
+
+Delivered: `OCF-DSP-DEVELOPMENT-V4-INDUCTION-001` (identical states, seed, curves,
+fallback, RMS target and F10/F11 selection as the V2 profile, plus one approach
+entry), additive `OCFP-0004`, `docs/research/V2_LISTENING_FINDING_F10_ONSET.md`,
+`docs/releases/OCF_PREPARATION_LEARNING_DEV_V2_1.md`, and a documented
+`--label`/`--profile` interface on the existing development-audition tool rather
+than a duplicate script.
+
+Rendered and objectively checked: `audio/rendered/auditions/preparation-learning-v2.1/`
+reuses V1 speech byte-for-byte into its own directory, so V2 remains the untouched
+comparison reference. Silence before induction, measured rise within 0.65dB of the
+declared curve at four fractions, full sustained level already at the established
+anchor with no second ramp or jump at arrival, and the selected F10 program's first
+pair 27.7dB below sustained a twelfth of the way in. Duration, zero clipping,
+sustained F10 relative levels and F11 SAM/theta bounds match V2. Eleven new unit
+tests and one ffmpeg PCM-versus-planned-gain integration test were added; the
+verifier still accepts V2 without approaches and reproduced V2's checks on a copy
+without modifying the preserved directory.
+
+Scope discipline: this finding authorized an objective scheduling change only. RC1
+narration, editorial decisions, cue assets, carriers, beats, modulations and the
+canonical/alternate F11 mapping are unchanged, and F10 PM/staggered-AM
+reconstruction remains omitted. The raised-cosine curve is an OCF design choice,
+not a recovered V4 morph. Envelope checks confirm the declared design and arrival
+hold; they do not establish perceptual appropriateness. **Listener comparison of
+V2 against V2.1 is the outstanding review step**, and no subjective approval is
+claimed.
+
 ## Exact next actions
 
-1. Continue reachable gap audit from the exact per-file JSON. Prioritize transcript,
+1. Compare V2 and V2.1 by ear for whether pre-arrival support suits the
+   relaxation; only that review can approve or reject the curve and level.
+2. Continue reachable gap audit from the exact per-file JSON. Prioritize transcript,
    prompts, validators and CLI isolation, then rendering command-planning/error
    boundaries and remaining numerical tool entrypoints. Keep process guard and
    synthetic fixtures; no source audio dependency or denominator shrink.
-2. Finish honest100% line/branch target before enabling CI gate. Review individual
+3. Finish honest 100% line/branch target before enabling CI gate. Review individual
    conservative integration classifications, not module-wide automatic promotion.
-3. Review the generated matrix and full analytical summaries for source accuracy;
+4. Review the generated matrix and full analytical summaries for source accuracy;
    complete extraction does not eliminate uncertainty or replace editorial gates.
    Do not propagate frozen pilot policy or mass-author final English narration.
-4. Obtain actual macOS/Windows CI evidence when tooling/access exists; continue
+5. Obtain actual macOS/Windows CI evidence when tooling/access exists; continue
    injected platform/error tests independently meanwhile.
-5. Refine disputed source/cue/ASR details only against matching reference evidence,
+6. Refine disputed source/cue/ASR details only against matching reference evidence,
    preserving current files and qualification. Keep existing setup/container/voice
    infrastructure stable unless objective tests find a defect.
 
