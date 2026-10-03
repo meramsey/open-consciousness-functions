@@ -73,6 +73,71 @@ def amplitudes(path, start, seconds, frequencies):
     }
 
 
+def window_rms(path, start, seconds):
+    data, _ = block(path, start, seconds)
+    return db(np.sqrt((data * data).sum(axis=1).mean()))
+
+
+def approach_rise(bed, approaches, duration):
+    """Objective acceptance of pre-arrival emergence and arrival hold."""
+    results = []
+    for approach in approaches:
+        start = approach["start_s"]
+        established = approach["established_s"]
+        arrival = approach["arrival_s"]
+        assert 0 <= start < established < arrival <= duration
+        span = established - start
+        window = max(2.0, span / 100)
+        sustained = window_rms(bed, arrival + 2, 30)
+        probes = []
+        for fraction in (0.125, 0.25, 0.5, 0.75):
+            expected = db((1 - np.cos(np.pi * fraction)) / 2)
+            measured = window_rms(bed, start + span * fraction, window) - sustained
+            assert abs(measured - expected) < 1.5, (fraction, measured, expected)
+            probes.append(
+                {
+                    "approach_fraction": fraction,
+                    "offset_s": span * fraction,
+                    "measured_relative_db": measured,
+                    "declared_raised_cosine_relative_db": expected,
+                }
+            )
+        # Full sustained level already before the arrival directive, and no
+        # second ramp or level jump when the state is committed at arrival.
+        assert abs(window_rms(bed, established, window) - sustained) < 0.5
+        assert abs(window_rms(bed, arrival - 4, window) - sustained) < 0.5
+        assert abs(window_rms(bed, arrival + 0.5, window) - sustained) < 0.5
+        onset, later = (
+            amplitudes(bed, start + span * 0.125, window, [39.75, 40.25]),
+            amplitudes(bed, arrival + 2, 30, [39.75, 40.25]),
+        )
+        emergence = []
+        for frequency, ear in ((39.75, 0), (40.25, 1)):
+            # The intended ear is already inaudible this early in induction; a
+            # cross-ear ratio at that level would only measure quantization noise.
+            assert db(onset[frequency][ear] / later[frequency][ear]) < -24
+            emergence.append(
+                {
+                    "frequency_hz": frequency,
+                    "ear": ["left", "right"][ear],
+                    "emergence_db": db(onset[frequency][ear] / later[frequency][ear]),
+                }
+            )
+        results.append(
+            {
+                "approach": approach["begin_semantic"],
+                "state": approach["state"],
+                "begin_s": start,
+                "established_s": established,
+                "arrival_s": arrival,
+                "probes": probes,
+                "sustained_relative_dbfs": sustained,
+                "first_pair_carrier_emergence": emergence,
+            }
+        )
+    return results
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("directory", type=Path)
@@ -80,6 +145,7 @@ def main():
     directory = args.directory
     manifest = yaml.safe_load((directory / "render-manifest.yaml").read_text())
     program = manifest["DSP"]
+    duration = manifest["total_duration_s"]
     bed = next(directory.glob("*-DSP-bed.wav"))
     master = next(directory.glob("*-master.wav"))
     flac = next(directory.glob("*-listening.flac"))
@@ -92,10 +158,20 @@ def main():
     assert abs(results["master"]["duration_s"] - manifest["total_duration_s"]) < 1 / 44100
     assert _sha(next(directory.glob("*-narration.wav"))) == manifest["v1_speech_sha256"]
     checks = []
-    for start, seconds in [(0, 490), (1237.4, 0.5)]:
+    approaches = program.get("approaches") or []
+    tail = max(transition["end_s"] for transition in program["transitions"])
+    silent = [(0, 490), (1237.4, 0.5)]
+    for approach in approaches:
+        # The whole point of the induction change: the selected program is
+        # already audibly present long before the arrival directive.
+        silent[0] = (0, approach["start_s"] - 0.5)
+    for start, seconds in silent:
         data, _ = block(bed, start, seconds)
         assert np.max(abs(data)) == 0
         checks.append({"silence_start_s": start, "duration_s": seconds, "peak": 0})
+    assert np.max(abs(block(bed, tail, max(0.25, duration - tail - 0.1))[0])) < 1e-4
+    if approaches:
+        checks.extend(approach_rise(bed, approaches, duration))
     pairs = [(39.75, 40.25), (79.25, 80.75), (158.05, 161.95), (198, 202), (317.95, 322.05)]
     expected = [3.9, 0, -4.8, -8.2, -10.9]
     frequencies = [frequency for pair in pairs for frequency in pair]
@@ -150,21 +226,27 @@ def main():
         {"F11_start_s": 720, "duration_s": 120, "SAM": sam, "theta175_179_relative_db": theta}
     )
     boundaries = []
-    for transition in program["transitions"]:
-        for time in [transition["start_s"], transition["end_s"]]:
-            data, fs = block(bed, time - 0.02, 0.04)
-            derivative = np.max(abs(np.diff(data, axis=0)), axis=1)
-            index = round(0.02 * fs) - 1
-            jump = float(derivative[index])
-            surrounding = np.concatenate((derivative[: index - 2], derivative[index + 3 :]))
-            assert jump <= 3 * float(np.max(surrounding)) + 1e-7
-            boundaries.append(
-                {
-                    "time_s": time,
-                    "boundary_sample_step": jump,
-                    "surrounding_max_sample_step": float(np.max(surrounding)),
-                }
-            )
+    points = [
+        time
+        for transition in program["transitions"]
+        for time in (transition["start_s"], transition["end_s"])
+    ]
+    for approach in approaches:
+        points += [approach["start_s"], approach["established_s"]]
+    for time in sorted(set(points)):
+        data, fs = block(bed, time - 0.02, 0.04)
+        derivative = np.max(abs(np.diff(data, axis=0)), axis=1)
+        index = round(0.02 * fs) - 1
+        jump = float(derivative[index])
+        surrounding = np.concatenate((derivative[: index - 2], derivative[index + 3 :]))
+        assert jump <= 3 * float(np.max(surrounding)) + 1e-7
+        boundaries.append(
+            {
+                "time_s": time,
+                "boundary_sample_step": jump,
+                "surrounding_max_sample_step": float(np.max(surrounding)),
+            }
+        )
     results.update(
         {
             "acceptance": "passed",
@@ -177,6 +259,7 @@ def main():
                 "Frequency localization probes bound error, not a new source identification",
                 "Sample-step checks and analytic envelopes do not prove perceptual seamlessness",
                 "Cues disabled; no production mastering",
+                "Approach windows check declared OCF envelope design and arrival hold, not perceived appropriateness of level or curve",
             ],
         }
     )

@@ -1,7 +1,9 @@
-"""Reuse a frozen V1 speech/ledger for the RC1 DSP-only development audition.
+"""Reuse a frozen V1 speech/ledger for an RC1 DSP-only development audition.
 
 Not a production mastering workflow. Inputs and outputs are explicit paths;
 source speech, subtitles and session data are copied without regeneration.
+``--label``/``--profile`` select the audition version and DSP profile; each
+version keeps its own preserved directory so earlier auditions stay comparable.
 """
 
 from __future__ import annotations
@@ -25,6 +27,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--v1", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--label", default="V2", help="audition version, e.g. V2 or V2.1")
+    parser.add_argument("--profile", default="OCF-DSP-DEVELOPMENT-V4-001")
     args = parser.parse_args()
     manifest = yaml.safe_load((args.v1 / "render-manifest.yaml").read_text())
     for relative, expected in manifest["rc1_source_sha256"].items():
@@ -37,7 +41,8 @@ def main():
     if args.output.exists():
         raise RuntimeError(f"refusing to overwrite {args.output}")
     args.output.mkdir(parents=True)
-    prefix = "DEVELOPMENT-AUDITION-V2-OCF-Preparation-Learning-en-US-RC1"
+    prefix = f"DEVELOPMENT-AUDITION-{args.label}-OCF-Preparation-Learning-en-US-RC1"
+    designation = f"DEVELOPMENT AUDITION {args.label} — NOT PRODUCTION MASTER"
     speech = args.output / f"{prefix}-narration.wav"
     shutil.copyfile(source, speech)
     for name in (
@@ -55,7 +60,7 @@ def main():
     with wave.open(str(speech)) as reader:
         duration = reader.getnframes() / reader.getframerate()
     bed = args.output / f"{prefix}-DSP-bed.wav"
-    profile = load_profile("OCF-DSP-DEVELOPMENT-V4-001")
+    profile = load_profile(args.profile)
     program = render_program(doc, manifest["event_timing"], duration, profile, bed)
     (args.output / "semantic-dsp-render.yaml").write_text(yaml.safe_dump(program, sort_keys=False))
     commands = []
@@ -90,7 +95,7 @@ def main():
             "-c:a",
             "pcm_s24le",
             "-metadata",
-            "comment=DEVELOPMENT AUDITION V2 — NOT PRODUCTION MASTER",
+            f"comment={designation}",
             str(master),
         ]
     )
@@ -112,7 +117,7 @@ def main():
     sources = [
         ROOT / "scripts/tools/render_development_v2.py",
         ROOT / "scripts/ocf_tools/semantic_dsp.py",
-        ROOT / "audio/background/state-profiles/OCF-DSP-DEVELOPMENT-V4-001.yaml",
+        ROOT / f"audio/background/state-profiles/{program['profile_id']}.yaml",
     ]
     sources += [
         ROOT / selection["preset_file"]
@@ -120,7 +125,9 @@ def main():
         if selection["mode"] == "preset"
     ]
     result = {
-        "designation": "DEVELOPMENT AUDITION V2 — NOT PRODUCTION MASTER",
+        "designation": designation,
+        "audition_label": args.label,
+        "dsp_profile": program["profile_id"],
         "git_base": subprocess.check_output(
             ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
         ).strip(),
@@ -143,7 +150,7 @@ def main():
         },
     }
     (args.output / "render-manifest.yaml").write_text(yaml.safe_dump(result, sort_keys=False))
-    print(f"Completed V2: {duration:.6f}s -> {args.output}")
+    print(f"Completed {args.label}: {duration:.6f}s -> {args.output}")
 
 
 if __name__ == "__main__":

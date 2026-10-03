@@ -9,6 +9,17 @@
     "version": {"type": "string"}, "notes": {"type": "string"},
     "initial_state": {"type": "string"}, "seed": {"type": "integer"},
     "target_state_rms_dbfs": {"type": "number", "maximum": -3},
+    "approaches": {"type": "array", "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["state", "begin_event", "established_event", "state_event", "curve"],
+      "properties": {
+        "state": {"type": "string", "minLength": 1},
+        "begin_event": {"type": "string", "minLength": 1},
+        "established_event": {"type": "string", "minLength": 1},
+        "state_event": {"type": "string", "minLength": 1},
+        "curve": {"enum": ["raised-cosine"]}
+      }
+    }},
     "states": {
       "type": "object", "additionalProperties": {
         "type": "object", "additionalProperties": false, "required": ["mode"],

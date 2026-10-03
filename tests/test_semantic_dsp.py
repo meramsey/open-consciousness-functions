@@ -198,6 +198,40 @@ def test_repeated_state_is_noop_not_a_gain_swell():
     assert gain_at(program, "ordinary-waking", 12) == 1
 
 
+def constant_stem(directory, state, level):
+    """A flat calibrated probe stem; output level then reads out the envelope."""
+    path = directory / f"{state}.wav"
+    with wave.open(str(path), "wb") as writer:
+        writer.setparams((2, 2, 8000, 0, "NONE", "not compressed"))
+        writer.writeframes(array("h", [level, level] * 80000).tobytes())
+    return path
+
+
+def approach_doc():
+    doc = state_doc()
+    doc["timeline"][:0] = [
+        {"id": "preparation", "at": 1, "semantic": "preparation.relaxation.begin"},
+        {"id": "arrival-word", "at": 8, "semantic": "focus.ten.enter"},
+    ]
+    return doc
+
+
+def approach_profile():
+    profile = load_profile("OCF-DSP-DEVELOPMENT-V4-001")
+    profile.pop("target_state_rms_dbfs")
+    profile["transitions"]["fallback_seconds"] = 0.5
+    profile["approaches"] = [
+        {
+            "state": "focus-10",
+            "begin_event": "preparation",
+            "established_event": "arrival-word",
+            "state_event": "ten",
+            "curve": "raised-cosine",
+        }
+    ]
+    return profile
+
+
 def test_actual_ffmpeg_envelopes_and_seeded_output(tmp_path):
     """Integration: independently check PCM, including both state morphs."""
     from ocf_tools.semantic_dsp import render_program
@@ -208,13 +242,10 @@ def test_actual_ffmpeg_envelopes_and_seeded_output(tmp_path):
     profile.pop("target_state_rms_dbfs")
     profile["transitions"]["fallback_seconds"] = 0.5
     times = [{**row, "at": row["at"] / 10} for row in TIMES]
-    stems = {}
-    for state, level in [("focus-10", 3277), ("focus-11", 6554)]:
-        path = tmp_path / f"{state}.wav"
-        with wave.open(str(path), "wb") as writer:
-            writer.setparams((2, 2, 8000, 0, "NONE", "not compressed"))
-            writer.writeframes(array("h", [level, level] * 80000).tobytes())
-        stems[state] = path
+    stems = {
+        state: constant_stem(tmp_path, state, level)
+        for state, level in [("focus-10", 3277), ("focus-11", 6554)]
+    }
     outputs = []
     for number in range(2):
         path = tmp_path / f"bed-{number}.wav"
@@ -246,6 +277,55 @@ def test_actual_ffmpeg_envelopes_and_seeded_output(tmp_path):
             sample = int.from_bytes(raw[index : index + 3], "little", signed=True) / 8388608
             assert sample == pytest.approx(expected, abs=3e-6)
     assert outputs[0] == outputs[1]
+
+
+def test_actual_ffmpeg_approach_envelope_matches_planned_gain(tmp_path):
+    """Integration: rendered PCM follows the pre-arrival approach envelope."""
+    from ocf_tools.semantic_dsp import render_program
+
+    if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
+        pytest.skip("ffmpeg/ffprobe integration dependency unavailable")
+    times = [{"id": "preparation", "at": 0.1}, {"id": "arrival-word", "at": 0.9}]
+    times += [{**row, "at": row["at"] / 10} for row in TIMES]
+    stems = {
+        state: constant_stem(tmp_path, state, level)
+        for state, level in [("focus-10", 3277), ("focus-11", 6554)]
+    }
+    path = tmp_path / "approach-bed.wav"
+    program = render_program(
+        approach_doc(),
+        times,
+        10,
+        approach_profile(),
+        path,
+        render_state=lambda state, selection, seed, duration: stems[state],
+    )
+    assert program["transitions"][0]["end_s"] == 1.0
+    assert program["approaches"][0]["start_s"] == 0.1
+    raw = subprocess.run(
+        ["ffmpeg", "-v", "error", "-i", str(path), "-f", "s24le", "-c:a", "pcm_s24le", "-"],
+        capture_output=True,
+        check=True,
+    ).stdout
+    assert len(raw) == 441000 * 6
+    for time in [0.05, 0.1, 0.2, 0.5, 0.7, 0.9, 0.99, 1.0, 1.4, 2.5, 3.5, 5.0, 6.5, 8.0, 9.5]:
+        index = round(time * 44100) * 6
+        sample = int.from_bytes(raw[index : index + 3], "little", signed=True) / 8388608
+        expected = (
+            3277 * gain_at(program, "focus-10", time) + 6554 * gain_at(program, "focus-11", time)
+        ) / 32768
+        assert sample == pytest.approx(expected, abs=3e-6)
+    # Nothing before induction, full F10 well before arrival, silence after exit.
+    assert int.from_bytes(raw[0:3], "little", signed=True) == 0
+    assert int.from_bytes(
+        raw[round(1.4 * 44100) * 6 : round(1.4 * 44100) * 6 + 3], "little", signed=True
+    ) == pytest.approx(3277 * 256, abs=1)
+    assert (
+        int.from_bytes(
+            raw[round(9.99 * 44100) * 6 : round(9.99 * 44100) * 6 + 3], "little", signed=True
+        )
+        == 0
+    )
 
 
 def test_cli_state_program_uses_existing_measured_ledger(monkeypatch, tmp_path):

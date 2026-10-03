@@ -29,6 +29,38 @@ Linear/equal-power curves operate on continuous session-time state oscillators.
 Repeated same-state directives leave gain unchanged. Disabled states produce
 silence; they remain explicit selections in the render metadata.
 
+## Supporting a state before arrival
+
+A profile may add an `approaches` entry so a selected program becomes audible
+before the listener's semantic state is declared. The entry names three existing
+measured event occurrences — `begin_event`, `established_event` and the owning
+`state_event` — and a `raised-cosine` `curve`. The program then rises from zero at
+the begin anchor, reaches sustained level at the established anchor, and the
+owning directive commits the state without replaying a ramp. The previous state
+recedes across the same window using the profile's normal curve. Semantic state,
+narration and cue identity are unchanged: support is not arrival.
+
+All three anchors must exist in both the session and the measured ledger, stay in
+order inside the session duration, avoid other transitions and approaches, and
+name a directive that actually selects the declared target from a different
+state. A disabled state, an unknown or non-numeric anchor, a duplicate arrival
+directive, or a second nonzero ramp at arrival is an error, never a silent
+substitution. Profiles without `approaches` keep their previous behavior exactly.
+
+```yaml
+approaches:
+  - state: focus-10
+    begin_event: relaxation.begin
+    established_event: focus-ten.enter
+    state_event: focus-ten.transition
+    curve: raised-cosine
+```
+
+Anchor identity is declarative: times come from each locale/recording's measured
+ledger, so the same profile follows different narration durations and languages.
+See [the V2 listening finding](research/V2_LISTENING_FINDING_F10_ONSET.md) and the
+[V2.1 report](releases/OCF_PREPARATION_LEARNING_DEV_V2_1.md).
+
 The default profile selects **newer pure-SAM F11** but deliberately has no
 universal F10 binding. A session requiring F10 must choose a profile with an
 appropriate F10 binding or explicitly disable it. The development V4 profile

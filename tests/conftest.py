@@ -54,6 +54,7 @@ UNIT_MODULES = {
 }
 REAL_AUDIO_TESTS = {
     "test_actual_ffmpeg_envelopes_and_seeded_output",
+    "test_actual_ffmpeg_approach_envelope_matches_planned_gain",
     "test_actual_pcm24_conversion_preserves_duration_and_original",
 }
 

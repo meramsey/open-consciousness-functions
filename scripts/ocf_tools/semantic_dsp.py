@@ -78,7 +78,10 @@ def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: 
             and float(timing[child["id"]]["at"]) > start
         ]
         declared = (event.get("dsp") or {}).get("transition_s")
-        if declared is not None:
+        if any(item["state_event"] == event["id"] for item in profile.get("approaches", [])):
+            end = start
+            provenance = "configured approach arrival; anchor validation follows"
+        elif declared is not None:
             end = start + float(declared)
             provenance = "explicit DSP transition duration"
         elif candidates:
@@ -111,6 +114,59 @@ def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: 
     missing = required - profile["states"].keys()
     if missing:
         raise OCFError("required state DSP is not configured: " + ", ".join(sorted(missing)))
+    approaches = []
+    by_id = {event["id"]: event for event in events}
+    for declaration in profile.get("approaches", []):
+        state_event = declaration["state_event"]
+        owning = next((row for row in transitions if row["event_id"] == state_event), None)
+        if owning is None or owning["to"] != declaration["state"] or owning["to"] == owning["from"]:
+            raise OCFError(
+                "DSP approach must own a distinct arrival directive selecting its target state"
+            )
+        if any(row["state_event"] == state_event for row in approaches):
+            raise OCFError("duplicate DSP approach for the same arrival directive")
+        anchors = [declaration[key] for key in ("begin_event", "established_event", "state_event")]
+        if any(anchor not in by_id or anchor not in timing for anchor in anchors):
+            raise OCFError("DSP approach anchor missing from session/measured ledger")
+        try:
+            start, established, arrival = [float(timing[anchor]["at"]) for anchor in anchors]
+        except (TypeError, ValueError, KeyError) as exc:
+            raise OCFError("DSP approach anchors require measured numeric times") from exc
+        if not (
+            all(math.isfinite(value) for value in (start, established, arrival))
+            and 0 <= start < established <= arrival <= duration
+        ):
+            raise OCFError("invalid DSP approach window: begin < established <= arrival required")
+        if any(
+            row is not owning and row["start_s"] < arrival and row["end_s"] > start
+            for row in transitions
+        ):
+            raise OCFError("DSP approach overlaps another state transition")
+        if any(start < row["arrival_s"] and arrival > row["start_s"] for row in approaches):
+            raise OCFError("overlapping DSP approaches are not supported")
+        if profile["states"][declaration["state"]]["mode"] != "preset":
+            raise OCFError(
+                "DSP approach requires an explicitly selected program, not disabled state audio"
+            )
+        if (by_id[state_event].get("dsp") or {}).get("transition_s") not in (None, 0):
+            raise OCFError("approach arrival cannot also declare a second nonzero DSP ramp")
+        approach = {
+            **declaration,
+            "start_s": start,
+            "established_s": established,
+            "arrival_s": arrival,
+            "begin_semantic": by_id[declaration["begin_event"]].get("semantic"),
+            "established_semantic": by_id[declaration["established_event"]].get("semantic"),
+            "timing_provenance": "explicit approach event bindings resolved from measured narration ledger; state unchanged until arrival directive",
+        }
+        owning["approach"] = approach
+        owning["end_s"] = owning["start_s"]
+        owning["envelope_provenance"] = (
+            "already established approach: target gain rises across the approach window, the "
+            "previous state recedes across the same window, and arrival commits state without "
+            "replaying a fallback ramp"
+        )
+        approaches.append(approach)
     selections = {}
     from .audio_build import _resolve_background_manifest
 
@@ -137,7 +193,7 @@ def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: 
         }
         if selections[state]["preset_file"]:
             selections[state]["preset_sha256"] = _sha(REPO_ROOT / selections[state]["preset_file"])
-    return {
+    program = {
         "profile_id": profile["id"],
         "profile_version": profile["version"],
         "seed": profile["seed"],
@@ -147,29 +203,46 @@ def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: 
         "selections": selections,
         "transitions": transitions,
     }
+    if approaches:
+        program["approaches"] = approaches
+    return program
 
 
 def gain_at(program: dict, state: str, time: float) -> float:
     gain = float(program["initial_state"] == state)
     for transition in program["transitions"]:
+        if transition["to"] == transition["from"]:
+            continue
+        approach = transition.get("approach")
         start, end = transition["start_s"], transition["end_s"]
+        if approach:
+            start, end = approach["start_s"], approach["arrival_s"]
         u = (
             min(1.0, max(0.0, (time - start) / (end - start)))
             if end > start
             else float(time >= start)
         )
-        incoming = (
-            (math.sin(math.pi * u / 2) if u < 1 else 1.0)
-            if program["curve"] == "equal-power"
-            else u
-        )
+        if approach:
+            progress = min(
+                1.0,
+                max(
+                    0.0,
+                    (time - approach["start_s"])
+                    / (approach["established_s"] - approach["start_s"]),
+                ),
+            )
+            incoming = (1 - math.cos(math.pi * progress)) / 2
+        else:
+            incoming = (
+                (math.sin(math.pi * u / 2) if u < 1 else 1.0)
+                if program["curve"] == "equal-power"
+                else u
+            )
         outgoing = (
             (math.cos(math.pi * u / 2) if u < 1 else 0.0)
             if program["curve"] == "equal-power"
             else 1 - u
         )
-        if transition["to"] == transition["from"]:
-            continue
         if transition["to"] == state:
             gain += incoming
         if transition["from"] == state:
@@ -182,11 +255,18 @@ def _gain_expression(program: dict, state: str) -> str:
     for transition in program["transitions"]:
         if transition["to"] == transition["from"]:
             continue
+        approach = transition.get("approach")
         start, end = transition["start_s"], transition["end_s"]
+        if approach:
+            start, end = approach["start_s"], approach["arrival_s"]
         u = f"clip((t-{start:.9f})/{end - start:.9f},0,1)" if end > start else f"gte(t,{start:.9f})"
-        incoming = (
-            f"if(gte(t,{end:.9f}),1,sin(PI/2*{u}))" if program["curve"] == "equal-power" else u
-        )
+        if approach:
+            progress = f"clip((t-{approach['start_s']:.9f})/{approach['established_s'] - approach['start_s']:.9f},0,1)"
+            incoming = f"(1-cos(PI*{progress}))/2"
+        else:
+            incoming = (
+                f"if(gte(t,{end:.9f}),1,sin(PI/2*{u}))" if program["curve"] == "equal-power" else u
+            )
         outgoing = (
             f"if(gte(t,{end:.9f}),0,cos(PI/2*{u}))"
             if program["curve"] == "equal-power"

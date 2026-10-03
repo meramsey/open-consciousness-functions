@@ -1,0 +1,25 @@
+schema_version: "1.0"
+id: OCF-DSP-DEVELOPMENT-V4-INDUCTION-001
+version: "0.1.0"
+initial_state: ordinary-waking
+seed: 0
+target_state_rms_dbfs: -18.0
+states:
+  ordinary-waking: {mode: disabled}
+  focus-10: {mode: preset, preset: OCF-BG-0012}
+  focus-11: {mode: preset, preset: OCF-BG-0006}
+transitions: {curve: equal-power, fallback_seconds: 5}
+approaches:
+  - state: focus-10
+    begin_event: relaxation.begin
+    established_event: focus-ten.enter
+    state_event: focus-ten.transition
+    curve: raised-cosine
+notes: |
+  DEVELOPMENT AUDITION V2.1 — NOT PRODUCTION MASTER. Selected F10 program
+  supports progressive induction without claiming the listener is already in
+  F10. Gain starts at zero at relaxation.begin and reaches full sustained level
+  by the start of spoken Ten. Arrival/state directives are unchanged. These
+  explicit occurrence bindings are Preparation Learning configuration; timing
+  comes from each locale/recording's measured semantic ledger, not English.
+  Existing F10/F11/exit windows, candidate components, seed and levels preserved.

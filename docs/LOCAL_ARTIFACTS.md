@@ -17,3 +17,8 @@ available V2 directory; the latter preserves the three available WAV/YAML pairs.
 Early pilot renders had no per-event manifest. Their exact bytes are preserved;
 historical production details not present in the checkpoint are not invented.
 Local README files record the checkpoint and provenance limitations.
+
+`audio/rendered/auditions/preparation-learning-v2.1/` preserves the Development
+Audition V2.1 comparison render for the F10 induction finding. It reuses V1 speech
+byte-for-byte and keeps its own directory so V2 remains the reference: see
+`docs/releases/OCF_PREPARATION_LEARNING_DEV_V2_1.md`.
