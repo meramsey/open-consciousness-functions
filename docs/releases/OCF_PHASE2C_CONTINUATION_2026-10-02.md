@@ -8,6 +8,9 @@ for the intentional untracked `ReusablePrompts/` and
 modified, staged, or committed. No audition audio, reference input, secret, or
 private material was staged.
 
+This report is recorded by the subsequent checkpoint commit
+`85c6601` (`Record Phase2C coverage continuation`).
+
 ## Work completed
 
 - Preserved the Phase2C extraction result: **55 complete, 0 partial, 0 unknown,
