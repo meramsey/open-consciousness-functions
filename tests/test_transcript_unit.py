@@ -3,13 +3,11 @@
 from __future__ import annotations
 
 import pytest
-
 from ocf_tools.transcript import (
     ResolvedEvent,
-    TranscriptEvent,
+    analyze_transcript,
     apply_render_timing,
     apply_sections,
-    analyze_transcript,
     detect_format,
     estimate_duration,
     export_lrc,
@@ -28,7 +26,6 @@ from ocf_tools.transcript import (
     parse_vtt,
     resolve_timeline,
     state_cue_score,
-    suggest_boundaries,
     timed_yaml_doc,
 )
 
@@ -85,7 +82,13 @@ def test_timeline_resolves_speech_end_event_end_and_overrides():
 def test_timeline_event_end_uses_dsp_transition_and_pause():
     doc = {
         "timeline": [
-            {"id": "a", "at": 1, "text": "a", "timing": {"pause_after": 2}, "dsp": {"transition_s": 4}},
+            {
+                "id": "a",
+                "at": 1,
+                "text": "a",
+                "timing": {"pause_after": 2},
+                "dsp": {"transition_s": 4},
+            },
             {"id": "duplicate", "at": 3, "text": "duplicate"},
             {"id": "b", "after": "a", "timing": {"anchor": "event-end"}},
         ]
@@ -107,12 +110,29 @@ def test_estimate_duration_covers_untimed_preferred_and_short_gap():
 
 
 def test_measured_render_timing_preserves_unconsumed_events():
-    doc = {"timeline": [{"id": "a", "at": "00:01.000", "text": "one"}, {"id": "b", "at": "00:03.000", "text": "two"}]}
+    doc = {
+        "timeline": [
+            {"id": "a", "at": "00:01.000", "text": "one"},
+            {"id": "b", "at": "00:03.000", "text": "two"},
+        ]
+    }
     unchanged = apply_render_timing(doc, {"narration_timing": {"cues": []}})
     assert unchanged == doc
     view = apply_render_timing(
         doc,
-        {"narration_timing": {"cues": [{"id": "a#1", "source_ids": ["a"], "at": 2, "duration": 1.5, "display_text": "ONE"}]}},
+        {
+            "narration_timing": {
+                "cues": [
+                    {
+                        "id": "a#1",
+                        "source_ids": ["a"],
+                        "at": 2,
+                        "duration": 1.5,
+                        "display_text": "ONE",
+                    }
+                ]
+            }
+        },
     )
     assert [event["id"] for event in view["timeline"]] == ["a#1", "b"]
     assert view["timeline"][0]["ends_at"] == "00:00:03.500"
@@ -122,12 +142,14 @@ def test_structural_analysis_and_formatting_cover_suggestions():
     assert is_countdown("5 4 3 2 1")
     assert not is_countdown("5 3 9")
     assert state_cue_score("Enter focus and return to the state") >= 2
-    doc = {"timeline": [
-        {"id": "a", "at": 1, "ends_at": 2, "text": "5 4 3 2 1"},
-        {"id": "b", "at": 20, "text": "Enter focus and practice"},
-        {"id": "c", "at": 21, "text": "repeat this phrase"},
-        {"id": "d", "at": 22, "text": "repeat this phrase"},
-    ]}
+    doc = {
+        "timeline": [
+            {"id": "a", "at": 1, "ends_at": 2, "text": "5 4 3 2 1"},
+            {"id": "b", "at": 20, "text": "Enter focus and practice"},
+            {"id": "c", "at": 21, "text": "repeat this phrase"},
+            {"id": "d", "at": 22, "text": "repeat this phrase"},
+        ]
+    }
     analysis = analyze_transcript(doc)
     rendered = format_analysis(analysis)
     assert analysis["silence_count"] == 1
@@ -137,10 +159,14 @@ def test_structural_analysis_and_formatting_cover_suggestions():
 
 
 def test_sections_and_timing_template_keep_text_out_of_template():
-    doc = {"title": "Demo", "source": {"filename": "demo.yaml", "sha256": "hash"}, "timeline": [
-        {"id": "a", "at": 1, "text": "relax"},
-        {"id": "b", "at": 20, "text": "open access"},
-    ]}
+    doc = {
+        "title": "Demo",
+        "source": {"filename": "demo.yaml", "sha256": "hash"},
+        "timeline": [
+            {"id": "a", "at": 1, "text": "relax"},
+            {"id": "b", "at": 20, "text": "open access"},
+        ],
+    }
     updated = apply_sections(doc, [-1, 1, 999])
     assert "timeline" not in updated and len(flatten_event_dicts(updated)) == 2
     template = extract_timing_template(doc, title="Custom")
