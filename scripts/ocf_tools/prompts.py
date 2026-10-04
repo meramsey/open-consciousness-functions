@@ -7,6 +7,7 @@ write the resulting record and validate it immediately.
 
 from __future__ import annotations
 
+import re
 import subprocess
 import tempfile
 from collections.abc import Callable
@@ -194,7 +195,9 @@ def next_function_id(primary_domain: str) -> str:
 
 def next_proposal_id() -> str:
     existing = [p.stem for p in (REPO_ROOT / "proposals").rglob("ocfp-*.md")]
-    numbers = [int(p.split("-")[-1]) for p in existing] or [0]
+    numbers = [
+        int(match.group(1)) for p in existing if (match := re.match(r"^ocfp-([0-9]+)(?:-|$)", p))
+    ] or [0]
     return f"OCFP-{max(numbers) + 1:04d}"
 
 

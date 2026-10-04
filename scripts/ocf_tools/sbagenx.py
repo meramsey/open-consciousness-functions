@@ -146,7 +146,7 @@ def render_preset(
         return str(exc)
     stdout = (result.stdout or "").strip()
     stderr = (result.stderr or "").strip()
-    if not output.exists():
+    if result.returncode != 0 or not output.is_file():
         return (
             f"sbagenx render failed (exit {result.returncode}):\n"
             f"{stderr or stdout}\n$ sbagenx {' '.join(command)}"

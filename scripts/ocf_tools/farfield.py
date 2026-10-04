@@ -15,6 +15,7 @@ import shutil
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
+from urllib.parse import unquote, urlparse
 
 from .paths import REPO_ROOT
 
@@ -42,7 +43,7 @@ def check_farfield() -> FarfieldStatus:
             timeout=8,
         )
         if result.returncode == 0:
-            version = (result.stdout or result.stderr).strip()
+            version = (result.stdout or result.stderr).strip() or None
     except (OSError, subprocess.TimeoutExpired):
         pass
     return FarfieldStatus(available=True, executable=executable, version=version)
@@ -130,12 +131,18 @@ def _source_preset_dirs() -> list[Path]:
             if not record.is_file():
                 continue
             try:
-                url = json.loads(record.read_text(encoding="utf-8")).get("url", "")
+                metadata = json.loads(record.read_text(encoding="utf-8"))
             except (OSError, ValueError):
                 continue
-            if not url.startswith("file://"):
+            if not isinstance(metadata, dict) or not isinstance(metadata.get("url"), str):
                 continue
-            presets = Path(url[len("file://") :]) / "presets"
+            try:
+                url = urlparse(metadata["url"])
+            except ValueError:
+                continue
+            if url.scheme != "file" or url.netloc not in ("", "localhost"):
+                continue
+            presets = Path(unquote(url.path)) / "presets"
             if presets.is_dir():
                 return [presets]
     return []
@@ -145,11 +152,11 @@ def resolve_preset(name: str) -> Path | None:
     """Resolve a Farfield preset name or path to a session YAML on disk.
 
     A value that is already a path is used as-is. Otherwise ``name`` is looked
-    up by stem across :func:`farfield_preset_dirs`, Farfield's own presets
-    first and OCF's committed copies last.
+    up by stem across :func:`farfield_preset_dirs`: explicit overrides, committed
+    OCF presets, then optional source-checkout extensions.
     """
     candidate = Path(name).expanduser()
-    if candidate.suffix == ".yaml" and candidate.is_file():
+    if candidate.suffix in (".yaml", ".yml") and candidate.is_file():
         return candidate
     for directory in farfield_preset_dirs():
         for suffix in (".yaml", ".yml"):
