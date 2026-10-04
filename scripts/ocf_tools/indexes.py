@@ -115,13 +115,21 @@ def count_proposals() -> int:
 
 def discover_audio_manifests() -> list[Path]:
     """Return audio implementation manifests (audio/manifests/*.yaml)."""
-    if not AUDIO_MANIFESTS_DIR.is_dir():
-        return []
-    files = [p for p in AUDIO_MANIFESTS_DIR.rglob("*") if p.suffix.lower() in (".yaml", ".yml")]
+    files = (
+        [
+            p
+            for p in AUDIO_MANIFESTS_DIR.rglob("*")
+            if p.is_file() and p.suffix.lower() in (".yaml", ".yml")
+        ]
+        if AUDIO_MANIFESTS_DIR.is_dir()
+        else []
+    )
     # Fall back to a companion directory if present
     if not files and AUDIO_IMPLEMENTATIONS_DIR.is_dir():
         files = [
-            p for p in AUDIO_IMPLEMENTATIONS_DIR.rglob("*") if p.suffix.lower() in (".yaml", ".yml")
+            p
+            for p in AUDIO_IMPLEMENTATIONS_DIR.rglob("*")
+            if p.is_file() and p.suffix.lower() in (".yaml", ".yml")
         ]
     return sorted(files)
 
@@ -131,14 +139,20 @@ def discover_background_manifests() -> list[Path]:
     base = REPO_ROOT / "audio" / "background" / "manifests"
     if not base.is_dir():
         return []
-    return sorted(p for p in base.rglob("*") if p.suffix.lower() in (".yaml", ".yml"))
+    return sorted(
+        p for p in base.rglob("*") if p.is_file() and p.suffix.lower() in (".yaml", ".yml")
+    )
 
 
 def discover_timed_transcripts() -> list[Path]:
     """Return OCF timed-transcript documents (audio/scripts/*.yaml)."""
     if not AUDIO_SCRIPTS_DIR.is_dir():
         return []
-    return sorted(p for p in AUDIO_SCRIPTS_DIR.rglob("*") if p.suffix.lower() in (".yaml", ".yml"))
+    return sorted(
+        p
+        for p in AUDIO_SCRIPTS_DIR.rglob("*")
+        if p.is_file() and p.suffix.lower() in (".yaml", ".yml")
+    )
 
 
 def discover_voice_profiles() -> list[Path]:
@@ -146,7 +160,9 @@ def discover_voice_profiles() -> list[Path]:
     if not VOICES_PROFILES_DIR.is_dir():
         return []
     return sorted(
-        p for p in VOICES_PROFILES_DIR.rglob("*") if p.suffix.lower() in (".yaml", ".yml")
+        p
+        for p in VOICES_PROFILES_DIR.rglob("*")
+        if p.is_file() and p.suffix.lower() in (".yaml", ".yml")
     )
 
 

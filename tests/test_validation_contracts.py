@@ -205,3 +205,25 @@ def test_bootstrap_requires_checkout_supported_runtime_and_reports_step_failure(
                 "Result", (), {"returncode": 1, "stderr": "synthetic failure"}
             )(),
         )
+
+
+def test_stage_record_loading_errors_and_local_id_integrity(monkeypatch, tmp_path):
+    import yaml
+
+    monkeypatch.setattr(semantics, "STAGES_DIR", tmp_path)
+    monkeypatch.setattr(semantics, "_load_schema", lambda name: {})
+    monkeypatch.setattr(
+        semantics,
+        "validate_against_schema",
+        lambda data, schema: ["invalid fixture"] if data.get("invalid") else [],
+    )
+    with pytest.raises(OCFError, match="record not found"):
+        semantics.load_stage("missing")
+    path = tmp_path / "fixture.yaml"
+    path.write_text(yaml.safe_dump({"invalid": True}))
+    with pytest.raises(OCFError, match="invalid fixture"):
+        semantics.load_stage(str(path))
+    for events in ([{"id": "a"}, {"id": "a"}], [{"semantic": "fixture.begin"}]):
+        path.write_text(yaml.safe_dump({"id": "fixture", "events": events}))
+        with pytest.raises(OCFError, match="unique local event ids"):
+            semantics.load_stage("fixture")

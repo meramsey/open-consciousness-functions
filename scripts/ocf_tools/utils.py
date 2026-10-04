@@ -43,7 +43,10 @@ def read_text(path: Path) -> str:
     """Read a UTF-8 text file, raising a clear error if missing."""
     if not path.exists():
         raise OCFError(f"File not found: {path}")
-    return path.read_text(encoding=UTF8)
+    try:
+        return path.read_text(encoding=UTF8)
+    except (OSError, UnicodeError) as exc:
+        raise OCFError(f"Cannot read UTF-8 text from {path}: {exc}") from exc
 
 
 def write_text_atomic(path: Path, content: str, *, overwrite: bool = True) -> None:

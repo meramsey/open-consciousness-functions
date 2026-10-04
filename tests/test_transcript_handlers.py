@@ -274,3 +274,57 @@ def test_export_failure_and_empty_manifest_boundaries(monkeypatch, capsys, failu
     assert (
         "no usable cue timings" in text.err if failure == "empty-manifest" else "error:" in text.err
     )
+
+
+def test_parser_dispatch_empty_paragraphs_and_optional_snapshot():
+    source = "WEBVTT\n\ncue\n00:01.000 --> 00:02.000\nwords\n"
+    parsed = t.parse_transcript(source, fmt="vtt", filename="fixture.vtt", sha256="hash")
+    assert parsed.snapshot == source and parsed.filename == "fixture.vtt"
+    assert "cue\n00:00:01.000 --> 00:00:02.000\nwords" in t.export_vtt(t.timed_yaml_doc(parsed))
+    assert [e.text for e in t.parse_plain("one\n\n\n\ntwo", "txt").events] == ["one", "two"]
+    manual = t.ParsedTranscript("txt", [], snapshot=None)
+    assert "snapshot" not in t.timed_yaml_doc(manual)["source"]
+
+
+def test_duplicate_sections_events_and_first_boundary_are_reported():
+    events, problems = t.resolve_timeline(
+        {
+            "sections": [
+                {"id": "same", "timeline": [{"id": "a", "at": 0}]},
+                {"id": "same", "timeline": [{"id": "a", "at": 1}]},
+            ]
+        }
+    )
+    assert len(events) == 2
+    assert any("duplicate section" in p for p in problems)
+    assert any("duplicate event" in p for p in problems)
+    template = t.extract_timing_template({"timeline": [{"id": "a", "at": 0, "text": "5 4 3"}]})
+    assert len(template["sections"]) == 1
+    assert template["sections"][0]["type"] == "state-transition"
+
+
+def test_validation_bridge_and_export_error_translation(monkeypatch, capsys):
+    from ocf_tools import locale, validators
+
+    result = object()
+    monkeypatch.setattr(
+        validators,
+        "validate_timed_transcript_file",
+        lambda path: result if path == Path("fixture") else None,
+    )
+    monkeypatch.setattr(validators, "print_result", lambda value: 9 if value is result else 0)
+    assert t._validate_file("fixture") == 9
+    monkeypatch.setattr(t, "load_timed_doc", lambda path: doc())
+
+    def missing_translation(*a, **kw):
+        raise locale.LocalizationError("missing translated words")
+
+    monkeypatch.setattr(locale, "resolve_document", missing_translation)
+    assert t.run_export(args(format="srt", locale="fr")) == 1
+    assert "missing translated words" in capsys.readouterr().err
+    monkeypatch.setattr(
+        t, "load_timed_doc", lambda path: {"timeline": [{"at": 0, "text": "no id"}]}
+    )
+    monkeypatch.setattr(t, "load_yaml_file", lambda path: {})
+    assert t.run_export(args(format="srt", render_manifest="render.yaml")) == 1
+    assert "cannot read render manifest" in capsys.readouterr().err

@@ -123,7 +123,7 @@ class ParsedTranscript:
     events: list[TranscriptEvent]
     metadata: dict[str, str] = field(default_factory=dict)
     notes: list[str] = field(default_factory=list)
-    snapshot: str = ""
+    snapshot: str | None = ""
     filename: str = ""
     sha256: str = ""
 
