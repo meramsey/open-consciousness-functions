@@ -148,3 +148,16 @@ No integration case was reclassified and no reachable code was excluded. Exact
 missing statements/branches: `audio/rendered/coverage-overnight-2026-10-04.json`.
 See the [coverage checkpoint](releases/OCF_UNIT_COVERAGE_CHECKPOINT_2026-10-04.md)
 for fixes, reachability decisions, scope, tests and next gaps.
+
+## CLI/wizard/generator continuation — 2026-10-04
+
+Actual Linux/Python 3.12: **449 unit / 286 integration cases passed**.
+Unit-only **5616/7352 lines (76.38737758433079%)** and **1986/2908 branches
+(68.29436038514443%)**. Remaining **1736 lines / 922 branches**, zero excluded
+statements. CLI, prompts and generators join the fully covered modules (17 total,
+including `__init__`); the overall 100% target/gate remains unmet/disabled.
+
+Exact report: `audio/rendered/coverage-cli-wizard-2026-10-04.json` (gitignored).
+No integration cases were reclassified. See the
+[continuation checkpoint](releases/OCF_CLI_WIZARD_COVERAGE_CHECKPOINT_2026-10-04.md)
+for failure-path fixes, reachability decisions and remaining priorities.
