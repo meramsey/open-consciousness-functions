@@ -270,6 +270,11 @@ def skeletonize(source_root: Path, workspace: Path, records: list, content_root:
     combined = {}
     for path, doc in pending:
         if path in combined and "working" in doc:
+            if "transcript_uncertain" in (
+                combined[path]["working"]["review_status"],
+                doc["working"]["review_status"],
+            ):
+                doc["working"]["review_status"] = "transcript_uncertain"
             doc["working"]["flags"] = list(
                 dict.fromkeys(combined[path]["working"]["flags"] + doc["working"]["flags"])
             )
@@ -281,6 +286,15 @@ def skeletonize(source_root: Path, workspace: Path, records: list, content_root:
         if path.exists():
             existing = load_yaml_file(path)
             if "working" in doc and "working" in existing:
+                if (
+                    existing["working"]["reviewer"] is None
+                    and "transcript_uncertain"
+                    in (existing["working"]["review_status"], doc["working"]["review_status"])
+                    and existing["working"]["review_status"]
+                    in ("inherited", "transcript_uncertain")
+                ):
+                    existing["working"]["review_status"] = "transcript_uncertain"
+                    doc["working"]["review_status"] = "transcript_uncertain"
                 flags = list(dict.fromkeys(existing["working"]["flags"] + doc["working"]["flags"]))
                 doc["working"]["flags"] = flags
                 existing["working"]["flags"] = flags

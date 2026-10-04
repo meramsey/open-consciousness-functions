@@ -862,3 +862,31 @@ def test_inserted_semantics_cannot_change_after_text_review(authoring):
     write_yaml(f.workspace / "functions" / f"{f.id}.yaml", doc)
     with pytest.raises(OCFError, match="inserted semantic identity"):
         editorial.load_function(f.workspace, f.id)
+
+
+def test_full_synthetic_39_plus_16_batch_preserves_shared_uncertainty(authoring):
+    fixtures = [
+        authoring(
+            f"OCF-TST-{i:03}",
+            availability="available" if i <= 39 else "unavailable",
+            evidence_class="partial_source_transcript" if i <= 5 else "source_transcript",
+            skeletonize=False,
+        )
+        for i in range(1, 56)
+    ]
+    f = fixtures[0]
+    records = [item.record for item in fixtures]
+    editorial.skeletonize(f.source_root, f.workspace, records, f.content_root)
+    report = editorial.dashboard(f.workspace)
+    assert len(report["functions"]) == 55
+    assert sum(row["source_availability"] == "available" for row in report["functions"]) == 39
+    assert sum(row["source_availability"] == "unavailable" for row in report["functions"]) == 16
+    assert report["totals"]["unchanged"] == 117
+    assert report["totals"]["release_approved"] == 0
+    assert report["totals"]["uncertain"] == 83
+    assert all(
+        not editorial.load_function(f.workspace, item.id)["blocks"] for item in fixtures[39:]
+    )
+    before = {path: path.read_bytes() for path in f.workspace.rglob("*.yaml")}
+    editorial.skeletonize(f.source_root, f.workspace, records, f.content_root)
+    assert before == {path: path.read_bytes() for path in f.workspace.rglob("*.yaml")}
