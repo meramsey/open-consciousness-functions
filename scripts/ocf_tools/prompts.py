@@ -11,11 +11,13 @@ import re
 import subprocess
 import tempfile
 from collections.abc import Callable
+from contextvars import ContextVar
 from dataclasses import dataclass
+from functools import wraps
 from pathlib import Path
 from typing import Any
 
-from .indexes import load_all_functions
+from .indexes import load_all_functions, load_yaml_file
 from .models import DOMAINS
 from .paths import (
     AUDIO_MANIFESTS_DIR,
@@ -26,6 +28,7 @@ from .paths import (
     ensure_dir,
 )
 from .utils import (
+    OCFError,
     OCFFileExistsError,
     current_date,
     read_text,
@@ -42,6 +45,7 @@ from .validators import print_result, validate_background_manifests, validate_fu
 BACK = "__BACK__"
 SKIP_CONST = "__SKIP__"
 QUIT = "__QUIT__"
+_WIZARD_ACTIVE: ContextVar[bool] = ContextVar("ocf_wizard_active", default=False)
 
 DOMAIN_ABBR: dict[str, str] = {
     "foundation": "FND",
@@ -92,10 +96,14 @@ def ask(
             raw = input(full_prompt).strip()
         except (EOFError, KeyboardInterrupt):
             print()
+            if _WIZARD_ACTIVE.get():
+                raise WizardQuit()
             return PromptResult(QUIT, "quit")
 
         lower = raw.lower()
         if lower == "quit":
+            if _WIZARD_ACTIVE.get():
+                raise WizardQuit()
             return PromptResult(QUIT, "quit")
         if lower == "back" and allow_back:
             return PromptResult(BACK, "back")
@@ -165,6 +173,23 @@ class WizardQuit(Exception):
     """Raised when the user quits a wizard mid-way."""
 
 
+def _wizard(function):
+    """Honor cancellation at every prompt without changing standalone ask()."""
+
+    @wraps(function)
+    def guarded(*args, **kwargs):
+        token = _WIZARD_ACTIVE.set(True)
+        try:
+            return function(*args, **kwargs)
+        except WizardQuit:
+            print("Wizard quit; nothing written.")
+            return None
+        finally:
+            _WIZARD_ACTIVE.reset(token)
+
+    return guarded
+
+
 def _confirm_write(path: Path) -> bool:
     if path.exists():
         resp = ask_yes_no(f"{path} already exists. Overwrite?", default=False)
@@ -202,16 +227,25 @@ def next_proposal_id() -> str:
 
 
 def next_audio_id() -> str:
-    files = [p for p in AUDIO_MANIFESTS_DIR.rglob("*.yaml")] if AUDIO_MANIFESTS_DIR.is_dir() else []
-    numbers = [int(p.stem.split("-")[-1]) for p in files if p.stem.startswith("OCF-AUDIO-")] or [0]
-    return f"OCF-AUDIO-{max(numbers) + 1:04d}"
+    return _next_manifest_id(AUDIO_MANIFESTS_DIR, "OCF-AUDIO-")
 
 
 def next_background_id() -> str:
     base = REPO_ROOT / "audio" / "background" / "manifests"
-    files = [p for p in base.rglob("*.yaml")] if base.is_dir() else []
-    numbers = [int(p.stem.split("-")[-1]) for p in files if p.stem.startswith("OCF-BG-")] or [0]
-    return f"OCF-BG-{max(numbers) + 1:04d}"
+    return _next_manifest_id(base, "OCF-BG-")
+
+
+def _next_manifest_id(directory: Path, prefix: str) -> str:
+    """Read declared identities; wizard filenames are lower-case, not identity."""
+    numbers = []
+    for path in directory.rglob("*") if directory.is_dir() else []:
+        if not path.is_file() or path.suffix.lower() not in (".yaml", ".yml"):
+            continue
+        identity = str(load_yaml_file(path).get("id", ""))
+        match = re.fullmatch(re.escape(prefix) + r"([0-9]+)", identity)
+        if match:
+            numbers.append(int(match.group(1)))
+    return f"{prefix}{max(numbers, default=0) + 1:04d}"
 
 
 # ---------------------------------------------------------------------------
@@ -219,6 +253,7 @@ def next_background_id() -> str:
 # ---------------------------------------------------------------------------
 
 
+@_wizard
 def run_function_wizard() -> None:
     """Interactive `ocf new function` wizard."""
     print("OCF new function wizard — press ? for help, back to go back, quit to exit.\n")
@@ -237,8 +272,6 @@ def run_function_wizard() -> None:
             fields["contributor_contact"] = contact.value
 
         name = ask("Function name", help_text="Human-readable name, e.g. 'Attention'.")
-        if name.intent == "quit":
-            return
         short_name = ask(
             "Short descriptive name",
             default=name.value,
@@ -257,8 +290,6 @@ def run_function_wizard() -> None:
             default="foundation",
             help_text="The domain folder this function lives in.",
         )
-        if domain.intent == "quit":
-            return
         primary_domain = str(domain.value)
         secondary = multi_ask(
             "Secondary domains (optional)", help_text="Other domains this touches."
@@ -584,13 +615,12 @@ def build_function_yaml(**kwargs: Any) -> dict[str, Any]:
 # ---------------------------------------------------------------------------
 
 
+@_wizard
 def run_proposal_wizard() -> None:
     """Interactive `ocf new proposal` wizard (produces a draft markdown)."""
     print("OCF new proposal wizard — press ? for help, quit to exit.\n")
     try:
         title = ask("Proposal title", help_text="A short descriptive title.")
-        if title.intent == "quit":
-            return
         authors = multi_ask("Authors (comma-separated)", help_text="Your name(s).")
         problem = ask("Problem", help_text="What problem does this address?")
         purpose = ask("Purpose", help_text="What is being proposed?")
@@ -771,6 +801,7 @@ def proposal_markdown(
 # ---------------------------------------------------------------------------
 
 
+@_wizard
 def run_audio_wizard() -> None:
     """Interactive `ocf new audio` wizard."""
     print("OCF new audio implementation wizard — press ? for help, quit to exit.\n")
@@ -784,8 +815,6 @@ def run_audio_wizard() -> None:
             [f.id for f in functions],
             help_text="Which function does this implement?",
         )
-        if fn_choice.intent == "quit":
-            return
         function_id = str(fn_choice.value)
         title = ask("Implementation title", help_text="e.g. 'Attention basic training'.")
         author = ask("Author/contributor", default="")
@@ -948,6 +977,7 @@ def validate_audio_output(path: Path) -> None:
     print("Next steps: ./scripts/ocf validate --all && ./scripts/ocf build-index")
 
 
+@_wizard
 def run_background_wizard() -> None:
     """Interactive `ocf new background` wizard."""
     print("OCF new background preset wizard — press ? for help, quit to exit.\n")
@@ -1069,6 +1099,7 @@ def background_manifest_yaml(
 # ---------------------------------------------------------------------------
 
 
+@_wizard
 def run_test_report_wizard() -> None:
     """Interactive `ocf new test-report` wizard."""
     print("OCF new test-report wizard — press ? for help, quit to exit.\n")
@@ -1104,6 +1135,7 @@ def run_test_report_wizard() -> None:
     print("Next steps: attach this report to the relevant PR or proposal.")
 
 
+@_wizard
 def run_import_source() -> None:
     """Interactive `ocf import source`: hash a local file, citation-only by default."""
     print("OCF source import — computes a SHA-256 fingerprint and offers citation-only or copy.\n")
@@ -1112,8 +1144,6 @@ def run_import_source() -> None:
         allow_skip=False,
         help_text="Absolute or relative path (spaces are fine).",
     )
-    if path_raw.intent == "quit":
-        return
     path = Path(path_raw.value).expanduser()
     if not path.exists():
         print(f"error: no such file: {path}")
@@ -1131,6 +1161,9 @@ def run_import_source() -> None:
         default=True,
         help_text="Citation-only records the file reference without copying it.",
     )
+    if citation_only.intent != "value":
+        print("Copy cancelled; source left in place.")
+        return
     if citation_only.intent == "value" and str(citation_only.value).lower() == "yes":
         print(f"\nRecorded fingerprint; file left in place at {path}")
         print("Add a citation in the function record under 'sources' with url/locator.")
@@ -1169,7 +1202,12 @@ def run_edit_function(query: str | None) -> None:
 
     editor = os.environ.get("EDITOR") or ("notepad" if os.name == "nt" else "vi")
 
-    subprocess.call([editor, str(record.path)])
+    try:
+        status = subprocess.call([editor, str(record.path)])
+    except OSError as exc:
+        raise OCFError(f"cannot start editor {editor!r}: {exc}") from exc
+    if status:
+        raise OCFError(f"editor {editor!r} failed with exit {status}")
     result = validate_function_file(record.path)
     print_result(result)
 

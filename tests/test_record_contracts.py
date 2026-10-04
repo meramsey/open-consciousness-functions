@@ -151,13 +151,13 @@ def test_next_ids_use_canonical_records_and_named_proposal_prefix(monkeypatch, t
     assert prompts.next_audio_id() == "OCF-AUDIO-0001"
     assert prompts.next_background_id() == "OCF-BG-0001"
     manifests.mkdir(parents=True)
-    (manifests / "OCF-AUDIO-0009.yaml").write_text("fixture")
-    (manifests / "README.yaml").write_text("fixture")
+    (manifests / "OCF-AUDIO-0009.yaml").write_text("id: OCF-AUDIO-0009")
+    (manifests / "README.yaml").write_text("title: fixture")
     assert prompts.next_audio_id() == "OCF-AUDIO-0010"
     backgrounds = tmp_path / "audio/background/manifests"
     backgrounds.mkdir(parents=True)
-    (backgrounds / "OCF-BG-0012.yaml").write_text("fixture")
-    (backgrounds / "README.yaml").write_text("fixture")
+    (backgrounds / "OCF-BG-0012.yaml").write_text("id: OCF-BG-0012")
+    (backgrounds / "README.yaml").write_text("title: fixture")
     assert prompts.next_background_id() == "OCF-BG-0013"
 
 
