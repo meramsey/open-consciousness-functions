@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import ast
 import copy
+import math
 import re
 from collections.abc import Iterable, Iterator, Mapping, Sequence
 from dataclasses import dataclass, field
@@ -409,7 +410,21 @@ def _eval_rule(expression: str, n: float) -> bool:
             return node.value
         raise LocalizationError(f"unsupported construct in plural rule {expression!r}")
 
-    return bool(evaluate(tree))
+    try:
+        return bool(evaluate(tree))
+    except (ArithmeticError, TypeError, ValueError) as exc:
+        raise LocalizationError(f"invalid arithmetic in plural rule {expression!r}: {exc}") from exc
+
+
+def _finite_number(value: Any) -> float:
+    """Reject malformed/non-finite numeric message inputs with a locale error."""
+    try:
+        number = float(value)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise LocalizationError(f"message number must be finite: {value!r}") from exc
+    if not math.isfinite(number):
+        raise LocalizationError(f"message number must be finite: {value!r}")
+    return number
 
 
 def plural_category(
@@ -435,7 +450,7 @@ def plural_category(
         )
     else:
         table = dict(BUILTIN_PLURAL_RULES.get(locale_language(language), DEFAULT_PLURAL_RULES))
-    absolute = abs(float(count))
+    absolute = abs(_finite_number(count))
     if absolute != int(absolute):
         # CLDR: a language that defines "many" uses it for fractional counts.
         return "many" if "many" in table else "other"
@@ -484,7 +499,7 @@ def format_number(value: float | int, language: str = CANONICAL_LOCALE) -> str:
     decimals at most, use the locale's decimal separator, and gain the locale's
     digit grouping.
     """
-    number = float(value)
+    number = _finite_number(value)
     if number == int(number):
         return _group(str(int(number)), language)
     text = f"{number:.2f}".rstrip("0").rstrip(".")
@@ -734,7 +749,7 @@ def _render_choice(choice: _Choice, values: Mapping[str, Any], ctx: _Context) ->
         selector = _stringify(value)
         branch = choice.options.get(selector) or choice.options["other"]
         return _render(branch, values, ctx)
-    count = float(value)
+    count = _finite_number(value)
     selector = f"={int(count)}" if count == int(count) else format_number(count, ctx.language)
     branch = choice.options.get(selector)
     if branch is None:
