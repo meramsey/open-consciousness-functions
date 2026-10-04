@@ -378,15 +378,36 @@ def validate_timed_transcript(data: dict[str, Any], path: Path) -> ValidationRes
     schema = _load_schema("timed-transcript.schema.json")
     for message in validate_against_schema(data, schema):
         result.add("error", "timed-schema", message, str(path))
+    schema_failed = bool(result.errors)
 
     from .transcript import resolve_timeline
 
-    _events, problems = resolve_timeline(data)
-    for problem in problems:
-        result.add("error", "timed-timeline", problem, str(path))
-    result.extend(validate_narration_usage(data, path))
-    result.extend(validate_narration_hygiene(data, path, LocaleCatalog()))
+    try:
+        _events, problems = resolve_timeline(data)
+        for problem in problems:
+            result.add("error", "timed-timeline", problem, str(path))
+        result.extend(validate_narration_usage(data, path))
+        result.extend(validate_narration_hygiene(data, path, LocaleCatalog()))
+    except (AttributeError, KeyError, TypeError, ValueError, LocalizationError):
+        # Shape errors already reported by the schema must remain diagnostics,
+        # not crashes. Still collect runtime findings when invalid data is usable;
+        # never conceal an interpreter defect for schema-valid input.
+        if not schema_failed:
+            raise
     return result
+
+
+def _event_variables(event: dict, result: ValidationResult, path: Path) -> dict:
+    values = event.get("variables", {})
+    if not isinstance(values, dict) or any(not isinstance(key, str) for key in values):
+        result.add(
+            "error",
+            "narration-variables",
+            f"event {event.get('id')}: variables must be a string-keyed object",
+            str(path),
+        )
+        return {}
+    return values
 
 
 def validate_narration_usage(
@@ -426,8 +447,12 @@ def validate_narration_usage(
                 f"{catalog.canonical_locale} does not define",
                 str(path),
             )
-        for name, value in (event.get("variables") or {}).items():
-            if name in ("command", "release_command") and commands and value not in commands:
+        for name, value in _event_variables(event, result, path).items():
+            if (
+                name in ("command", "release_command")
+                and commands
+                and (not isinstance(value, str) or value not in commands)
+            ):
                 result.add(
                     "error",
                     "narration-command-invalid",
@@ -465,11 +490,12 @@ def validate_command_ownership(data: dict[str, Any], path: Path) -> ValidationRe
     vocabulary = sorted(known_commands(), key=len, reverse=True)
     catalog = None
     for event in iter_events(data):
-        variables = event.get("variables") or {}
+        variables = _event_variables(event, result, path)
         commands = {
             name: variables[name] for name in ("command", "release_command") if name in variables
         }
         text = event.get("text", "")
+        text = text if isinstance(text, str) else ""
         if event.get("narration_key") and not text:
             catalog = catalog or LocaleCatalog()
             entry = catalog.canonical.get(event["narration_key"]) if catalog.canonical else None
@@ -488,7 +514,7 @@ def validate_command_ownership(data: dict[str, Any], path: Path) -> ValidationRe
         if not commands:
             continue
         owner = event.get("function_id") or data.get("function_id")
-        record = records.get(owner)
+        record = records.get(owner) if isinstance(owner, str) else None
         if record is None:
             result.add(
                 "error",
@@ -525,7 +551,9 @@ def validate_narration_hygiene(
     result = ValidationResult()
     seen_narration = set()
     seen_cues = set()
-    semantics = {event.get("semantic") for event in iter_events(data)}
+    semantics = {
+        event["semantic"] for event in iter_events(data) if isinstance(event.get("semantic"), str)
+    }
     origins = {
         entry.get("id"): entry.get("locale")
         for entry in (data.get("narration") or {}).get("resolved", [])
@@ -570,7 +598,7 @@ def validate_narration_hygiene(
                     f"event {event_id}: pause directives belong in timing.pause_after",
                     str(path),
                 )
-        timing = event.get("timing") or {}
+        timing = event.get("timing", {})
         if not isinstance(timing, dict):
             result.add(
                 "error",
@@ -608,7 +636,7 @@ def validate_narration_hygiene(
                 str(path),
             )
         for field_name in ("semantic", "auditory_cue"):
-            if event.get(field_name) and not re.fullmatch(
+            if field_name in event and not re.fullmatch(
                 r"[a-z][a-z0-9-]*(\.[a-z0-9-]+)+", str(event[field_name])
             ):
                 result.add(
@@ -617,14 +645,36 @@ def validate_narration_hygiene(
                     f"event {event_id}: invalid {field_name} identity",
                     str(path),
                 )
-        anchor = (
-            event.get("at"),
-            event.get("after"),
-            event.get("offset", 0),
-            timing.get("anchor", "start"),
+        variables = _event_variables(event, result, path)
+        if "after" in event and (not isinstance(event["after"], str) or not event["after"]):
+            result.add(
+                "error",
+                "semantic-anchor",
+                f"event {event_id}: after must be a nonempty event ID",
+                str(path),
+            )
+        if (
+            "at" in event
+            and event["at"] is not None
+            and not isinstance(event["at"], (str, int, float))
+        ):
+            result.add(
+                "error",
+                "semantic-anchor",
+                f"event {event_id}: at must be a timestamp or seconds",
+                str(path),
+            )
+        anchor = tuple(
+            repr(value)
+            for value in (
+                event.get("at"),
+                event.get("after"),
+                event.get("offset", 0),
+                timing.get("anchor", "start"),
+            )
         )
-        narration = (str(key or text), repr(sorted((event.get("variables") or {}).items())), anchor)
-        cue = (event.get("auditory_cue"), anchor)
+        narration = (str(key or text), repr(sorted(variables.items())), anchor)
+        cue = (repr(event.get("auditory_cue")), anchor)
         if not event.get("intentional_repeat"):
             if (key or text) and narration in seen_narration:
                 result.add(
@@ -757,15 +807,22 @@ def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationRes
             declared_commands = [
                 name for name in ("command", "release_command") if name in entry.variables
             ]
-            for token in re.findall(r"\bPLUS-[A-Z-]+\b", entry.text):
-                if token not in commands:
-                    result.add(
-                        "error",
-                        "locale-command-invalid",
-                        f"{key}: references command {token!r}, which is not a canonical "
-                        "OCF command (see legacy/hplus-command-map.json)",
-                        where,
-                    )
+            remaining = entry.text
+            for command in sorted(commands, key=len, reverse=True):
+                remaining = re.sub(
+                    r"(?<![A-Z0-9-])" + re.escape(command) + r"(?![A-Z0-9-])", "", remaining
+                )
+            # Use the same boundaries as canonical matching. Every remaining
+            # standalone PLUS token is unknown; known complete commands were
+            # removed above without changing the resource itself.
+            for token in re.findall(r"(?<![A-Z0-9-])PLUS-[A-Z-]+(?![A-Z0-9-])", remaining):
+                result.add(
+                    "error",
+                    "locale-command-invalid",
+                    f"{key}: references command {token!r}, which is not a canonical "
+                    "OCF command (see legacy/hplus-command-map.json)",
+                    where,
+                )
             if declared_commands:
                 result.add(
                     "info",
