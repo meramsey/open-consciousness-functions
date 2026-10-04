@@ -1110,10 +1110,9 @@ def main(argv: list[str] | None = None) -> int:
                 return cmd_locale_validate(args)
             if args.locale_kind == "resolve":
                 return cmd_locale_resolve(args)
-            if args.locale_kind == "pseudo":
-                return cmd_locale_pseudo(args)
-            # argparse permits only the registered locale kinds; None is handled
-            # by list above. Unknown kinds exit during parsing, before dispatch.
+            # All other registered kinds return above; the remaining kind is
+            # pseudo. Unknown kinds exit during argparse validation.
+            return cmd_locale_pseudo(args)
         if args.command == "doctor":
             return cmd_doctor(args)
         print(HELP_TEXT)

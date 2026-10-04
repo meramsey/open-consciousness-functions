@@ -658,3 +658,10 @@ def test_module_entrypoint_isolated_in_process(monkeypatch, capsys):
             runpy.run_module("ocf_tools.cli", run_name="__main__")
     assert exit_status.value.code == 0
     assert "ocf new function" in capsys.readouterr().out
+
+
+def test_unknown_locale_kind_cannot_fall_through_to_pseudo(monkeypatch):
+    monkeypatch.setattr(
+        cli, "cmd_locale_pseudo", lambda args: pytest.fail("unknown command must be rejected")
+    )
+    assert cli.main(["locale", "unknown-kind"]) == 2

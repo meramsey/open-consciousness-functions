@@ -438,7 +438,7 @@ def background_audio_index_markdown() -> str:
                 f"`{manifest.get('id')}`",
                 str(manifest.get("name", "")),
                 str(manifest.get("engine", "")),
-                str(render.get("seed") or ""),
+                str(render["seed"]) if render.get("seed") is not None else "",
                 "yes" if render.get("deterministic") else "no",
                 ", ".join(usage.get("functions", [])),
             ]
