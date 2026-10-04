@@ -269,13 +269,13 @@ def parse_srt(text: str) -> ParsedTranscript:
             int(match.group(1)) * 3600
             + int(match.group(2)) * 60
             + int(match.group(3))
-            + int(match.group(4)) / 1000
+            + int(match.group(4).ljust(3, "0")) / 1000
         )
         end = (
             int(match.group(5)) * 3600
             + int(match.group(6)) * 60
             + int(match.group(7))
-            + int(match.group(8)) / 1000
+            + int(match.group(8).ljust(3, "0")) / 1000
         )
         events.append(TranscriptEvent(text="\n".join(lines[cue_idx + 1 :]), at=start, ends_at=end))
     return ParsedTranscript(fmt="srt", events=events, notes=notes, snapshot=text)
@@ -303,7 +303,7 @@ def parse_vtt(text: str) -> ParsedTranscript:
         normalized = normalized[1:]
     first = next((line for line in normalized.splitlines() if line.strip()), "")
     if first.upper().startswith("WEBVTT"):
-        normalized = normalized.split("\n", 1)[1]
+        normalized = normalized.partition("\n")[2]
     for block_index, block in enumerate(re.split(r"\n[ \t]*\n", normalized), start=1):
         stripped = block.strip()
         if not stripped:
@@ -1136,7 +1136,7 @@ def _segment_apply_flow(
         f"Applied {len(boundaries)} suggested boundary/boundaries "
         "(suggestions — review with `ocf transcript review`)."
     )
-    return _validate_file(path)
+    return _validate_file(output or path)
 
 
 def _segment_interactive_flow(path: str, doc: dict, *, apply_all: bool) -> int:
