@@ -101,7 +101,7 @@ def generated_content(body: str) -> str:
 
 
 def current_date() -> str:
-    """Return today's ISO date (UTC)."""
+    """Return today's local calendar date in ISO format."""
     import datetime
 
     return datetime.date.today().isoformat()

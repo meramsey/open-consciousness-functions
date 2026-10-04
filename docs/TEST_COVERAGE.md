@@ -135,3 +135,16 @@ lines (57.80481137233461%) / 1441 covered branches (49.55295735900963%)**.
 Remaining **3087 lines / 1467 branches**, zero excluded statements. Exact report:
 `audio/rendered/source-first-unit-2026-10-03.json` (gitignored). The 100% gate
 remains disabled. See the [migration checkpoint](releases/OCF_SOURCE_FIRST_CHECKPOINT_2026-10-03.md).
+
+## Unit-contract continuation — 2026-10-04
+
+Actual Linux/Python 3.12: **357 unit / 286 integration cases passed**.
+Unit-only **4897/7325 lines (66.8532423208191%)** and **1765/2908 branches
+(60.694635488308116%)**. Remaining **2428 lines / 1143 branches**, zero excluded
+statements. Fourteen measured modules (including `__init__`) now have 100% unit
+lines/branches; the repository-wide target and CI gate remain unmet/disabled.
+
+No integration case was reclassified and no reachable code was excluded. Exact
+missing statements/branches: `audio/rendered/coverage-overnight-2026-10-04.json`.
+See the [coverage checkpoint](releases/OCF_UNIT_COVERAGE_CHECKPOINT_2026-10-04.md)
+for fixes, reachability decisions, scope, tests and next gaps.

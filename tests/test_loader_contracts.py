@@ -74,6 +74,7 @@ def test_manifest_fallback_primary_precedence_and_directory_exclusion(tree):
     assert indexes.discover_audio_manifests() == [primary]
     assert indexes.load_audio_manifests()[0]["id"] == "OCF-AUDIO-9002"
     assert indexes.find_audio_manifest("OCF-AUDIO-9002.yaml")["id"] == "OCF-AUDIO-9002"
+    assert indexes.find_audio_manifest("OCF-AUDIO-9002")["id"] == "OCF-AUDIO-9002"
     assert indexes.find_audio_manifest("audio/manifests/primary.yaml")["id"] == "OCF-AUDIO-9002"
     assert indexes.find_audio_manifest(str(primary))["id"] == "OCF-AUDIO-9002"
     assert indexes.find_audio_manifest("no/file.yaml") is None
@@ -154,3 +155,17 @@ def test_atomic_write_collision_and_failure_keeps_old_bytes(tree, monkeypatch):
     assert path.read_text() == "old"
     assert list(tree.glob("*.tmp")) == []
     assert utils.sha256_of_file(path) == hashlib.sha256(b"old").hexdigest()
+
+
+def test_authoring_date_is_iso_calendar_date(monkeypatch):
+    import sys
+    from datetime import date
+    from types import SimpleNamespace
+
+    class Calendar:
+        @staticmethod
+        def today():
+            return date(2000, 2, 29)
+
+    monkeypatch.setitem(sys.modules, "datetime", SimpleNamespace(date=Calendar))
+    assert utils.current_date() == "2000-02-29"
