@@ -31,8 +31,8 @@ def schedule_timeline(doc: dict, speech_durations: dict[str, float]) -> list[dic
             for event in pending.values()
             if not event.get("after") or event["after"] in starts
         ]
-        if not eligible:
-            raise OCFError("circular or missing semantic timing dependency")
+        # resolve_timeline already rejects missing targets and cycles. The
+        # remaining dependency graph is a DAG, so it always has an eligible node.
         event = min(
             eligible, key=lambda item: times[item["id"]] if times[item["id"]] is not None else -1
         )
@@ -43,6 +43,8 @@ def schedule_timeline(doc: dict, speech_durations: dict[str, float]) -> list[dic
         if not math.isfinite(at) or at < 0:
             raise OCFError(f"event {identifier} has an invalid resolved timestamp")
         duration = speech_durations.get(identifier, 0.0)
+        if not math.isfinite(duration) or duration < 0:
+            raise OCFError(f"event {identifier} has an invalid measured speech duration")
         timing = event.get("timing") or {}
         if timing.get("maximum_duration") is not None and duration > timing["maximum_duration"]:
             raise OCFError(f"event {identifier}: measured speech exceeds explicit maximum_duration")
