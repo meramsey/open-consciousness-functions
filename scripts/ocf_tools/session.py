@@ -24,6 +24,7 @@ Contributor wording is placed verbatim and never rewritten.
 from __future__ import annotations
 
 import json
+import math
 import re
 from copy import deepcopy
 from pathlib import Path
@@ -86,7 +87,7 @@ def list_templates() -> list[dict[str, Any]]:
                 "id": data["id"],
                 "name": data.get("name", ""),
                 "origin": data.get("origin", ""),
-                "description": (data.get("description") or "").splitlines()[0].strip(),
+                "description": next(iter((data.get("description") or "").splitlines()), "").strip(),
             }
         )
     return rows
@@ -169,7 +170,17 @@ def _parse_repeated(
     """
     if repeat < 1:
         raise OCFError(f"repeat must be a positive integer, got {repeat!r}")
-    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    lines = []
+    for raw in text.splitlines():
+        line = raw.strip()
+        if not line:
+            continue
+        match = _LRC_LINE.match(line)
+        if match:
+            if parse_timestamp(match.group(1)) is None or not match.group(2).strip():
+                raise OCFError(f"unusable LRC timestamp in line: {line!r}")
+            line = match.group(2).strip()
+        lines.append(line)
     if not lines:
         raise OCFError("repeated section has no slot lines to schedule")
     if section_end <= section_start:
@@ -313,8 +324,16 @@ def compose(
             "(use --slot NAME=PATH or the matching --NAME FILE flag)"
         )
 
-    line_seconds = line_seconds or float(defaults.get("line_seconds", 3.0))
-    duration = duration or float(defaults.get("duration", 1800.0))
+    line_seconds = (
+        float(defaults.get("line_seconds", 3.0)) if line_seconds is None else line_seconds
+    )
+    duration = float(defaults.get("duration", 1800.0)) if duration is None else duration
+    if not math.isfinite(line_seconds) or line_seconds <= 0:
+        raise OCFError("line_seconds must be positive and finite")
+    if not math.isfinite(duration) or duration < 0:
+        raise OCFError("duration must be nonnegative and finite")
+    if function_id and template.get("function_id") and function_id != template["function_id"]:
+        raise OCFError("function_id conflicts with the template's command owner")
 
     sections_out: list[dict[str, Any]] = []
     used_slots: dict[str, list[str]] = {}
