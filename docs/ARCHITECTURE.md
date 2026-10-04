@@ -71,10 +71,13 @@ OCF separates the **specification** (schemas + YAML records) from the
 
 ## Extensions
 
-Future audio synthesis adds an `audio/scripts/` pipeline that consumes
-*manifests* (not function records) and produces *rendered* artifacts with
-checksums recorded back into manifests. Farfield is invoked only via its
-public CLI.
+The shipped audio pipeline uses `audio/scripts/` timed documents and audio
+implementation manifests (not function records) to produce local rendered
+artifacts. `ocf voice` renders narration with measured timing; `ocf audio build`
+selects static background or semantic DSP, mixes/encodes outputs, and writes a
+render manifest with provenance and checksums. Farfield and SBaGenX are optional
+adapters invoked through their public CLIs. See [`AUDIO_PIPELINE.md`](AUDIO_PIPELINE.md)
+for the actual sequence and precedence rules.
 
 Shipped:
 

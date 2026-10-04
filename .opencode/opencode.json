@@ -1,0 +1,15 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "watcher": {
+    "ignore": [
+      "build/**",
+      "dist/**",
+      "audio/rendered/**",
+      "audio/background/rendered/**",
+      "**/.pytest_cache/**",
+      "**/.ruff_cache/**",
+      "**/__pycache__/**",
+      "**/*.egg-info/**"
+    ]
+  }
+}
