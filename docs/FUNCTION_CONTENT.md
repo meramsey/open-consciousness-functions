@@ -34,3 +34,30 @@ frozen pilot/RC1 wording changes. See[review matrix](FUNCTION_EXTRACTION_REVIEW.
 to generated JSON while retaining existing CSV and raw CLI output compatibility.
 Missing durations, requirements and compatibility remain null/unknown. A locale
 binding indicates available draft resources, not approval or scientific evidence.
+
+## Source-first working authoring (planned CLI)
+
+[Source-first authoring](SOURCE_FIRST_AUTHORING.md) defines a separate local
+workspace: immutable SOURCE → exact initial WORKING → HUMAN edits → explicit
+RELEASE → measured timing. The content CLI described there is planned, not part
+of the shipped sidecar validation/discovery described above. Its workspace review
+and release statuses do not replace existing schema fields or analytical reviews.
+
+Existing hash-addressed analytical locators seed **CANDIDATE** semantic block
+boundaries only. A complete analytical review does not validate original section
+order, approve narration, or authorize rewriting. Preserve exact selected text,
+ranged source extents and originating locators for referenced shared blocks.
+Shared source/working registry chunks remain local and are not packaged.
+
+Claims, accessibility concerns, transcript uncertainty and proposed corrections
+are separate review metadata. They never trigger automatic source rewriting;
+human edits need no paraphrasing, distancing or automatic originality gate.
+Release narration must satisfy the release claims/accessibility contract and
+explicit text-hash approval with recorded rights clearance. Rights gate
+release/package inclusion, not working edits; source availability is not clearance.
+
+Preserve `previous_candidates` paths as review context, never automatic runtime
+choices. This workflow does not change the 55 legacy mappings, the 16
+source-unavailable planned reimplementations, Attention scripts, existing
+candidates, RC1, frozen pilots or V2/V2.1 DSP/audition decisions. Draft preview is
+untimed textual review, not final audio or a measured timing source.

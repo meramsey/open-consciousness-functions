@@ -48,8 +48,9 @@ Rules that always apply:
   and timestamps; you edit deliberately.
 - **Imported thirds-party/reference transcripts stay citation-only.** Timing
   may be reused; wording must be original or clearly lawful to redistribute.
-  Local generation from a lawfully held file is permitted; committing the
-  transcript wording is not.
+   Local source-first WORKING may retain exact wording for human comparison;
+   redistribution requires explicit review and rights clearance. See
+   [source-first authoring](docs/SOURCE_FIRST_AUTHORING.md).
 - **Internally honest status** — the transcript pipeline (`ocf transcript …`)
   and the voice/audio-build steps (`ocf voice …`, `ocf audio build …`) are
   shipped; the preparation module (`ocf preparation …`) is specified but not
@@ -164,3 +165,9 @@ ruff check scripts tests          # lint
 
 Filter code through `docs/ARCHITECTURE.md` and `GOVERNANCE.md` before
 submitting.
+
+For narration editing, start with `ocf content skeletonize` and
+`ocf content diff`; do not edit subtitles or measured render manifests. SOURCE
+stays immutable, WORKING starts exact, and humans decide changes. Review and
+release-rights status are separate; no paraphrasing/originality gate is required
+to edit. Only explicitly approved release text feeds distribution artifacts.

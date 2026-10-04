@@ -1,4 +1,20 @@
 # Local research/editorial inputs never enter source distributions.
+include scripts/tools/build_package_data.py
+recursive-include schemas *.json
+recursive-include functions *.yaml
+recursive-include function-content *.yaml
+recursive-include locales *.yaml
+recursive-include templates *.yaml *.md
+recursive-include audio/templates/stages *.yaml
+recursive-include audio/templates/sessions *.yaml
+recursive-include audio/cues/profiles *.yaml
+recursive-include audio/voices/profiles *.yaml
+recursive-include audio/voices/registry *.yaml
+recursive-include audio/background/manifests *.yaml
+recursive-include audio/background/presets *.yaml *.sbg
+recursive-include audio/background/state-profiles *.yaml
+exclude audio/templates/sessions/OCF-TPL-SESSION-ATTENTION-001.yaml
+exclude function-content/bindings/OCF-FND-002.yaml
 prune .ocf-authoring
 prune references
 prune ReusablePrompts

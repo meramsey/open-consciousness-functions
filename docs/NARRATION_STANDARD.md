@@ -1,7 +1,9 @@
 # OCF Authoring and Narration Standard
 
-Status: canonical authoring contract. Applies to **listener-facing experiential
-narration**, including human/AI-assisted new functions and community contributions.
+Status: canonical **release narration** contract. Applies to approved
+listener-facing experiential narration, including human/AI-assisted new functions
+and community contributions. Source-first working review is governed by
+[source-first authoring](SOURCE_FIRST_AUTHORING.md), not by a rewrite gate.
 English is the first language pack; the operational principles apply across locales.
 This revision does not rewrite approved Preparation Learning RC1 narration.
 
@@ -30,6 +32,10 @@ function installation, Focus-state and working-state instructions, optional
 affirmations, resonant-tuning instructions, exit sequences, command learning,
 and any wizard-generated experiential narration. Technical documentation,
 operator diagnostics and source transcripts are not rewritten in this style.
+Immutable SOURCE and the exact initial WORKING copy may contain wording that
+does not meet this release contract. Record claims/accessibility flags for human
+review separately; never automatically rewrite that wording to resolve a flag.
+Editing and untimed draft preview do not constitute release approval.
 
 ## Writing principles
 
@@ -65,25 +71,28 @@ religious nor anti-religious doctrine is required. A listener's interpretation
 may be psychological, metaphorical, contemplative or spiritual without the
 exercise asserting one interpretation as fact.
 
-### Original function conversion
+### Source-first human review and release
 
-Read the complete source before conversion. Extract opener/main/closer operations,
-command association, rehearsal, future use and release/return separately from
-expression. Write from that semantic specification, not by replacing synonyms
-in source sentences. Distinguish experiential instruction, metaphor, learned
-association, practical strategy, unsupported mechanism and ambiguous claims.
-If operationalizing a claim materially changes the intended function, record
-the change and require human content review.
+Read the available source before review. Preserve SOURCE bytes and provenance;
+WORKING starts with the exact selected source text. Existing analytical locators
+provide CANDIDATE semantic boundaries, not validated original section order.
+Distinguish experiential instruction, metaphor, learned association, practical
+strategy, unsupported mechanism and ambiguous claims in review metadata.
+Human editors decide what to retain or change. Record material changes to the
+intended function and require human content review; corrections remain separate
+from the immutable source.
 
-Before acceptance, compare the independent draft against all consulted sources
-for distinctive phrases, metaphors and unnecessary passage ordering. Revise from
-purpose rather than mechanically changing words. Common functional concepts and
-canonical command identities do not license copying distinctive expression.
+Paraphrasing, distancing from source expression and automatic originality checks
+are not prerequisites for working authoring. Unchanged text can be reviewed;
+review alone does not approve release. Release requires explicit approval of the
+current text hash, human review against this narration contract, and recorded
+rights clearance. Rights gate release/package inclusion, not working edits;
+neither text similarity nor tool validation establishes a legal conclusion.
 Reconstruction/mockup material is never recovered historical narration.
 
 Draft pilots remain **DRAFT / PILOT / REQUIRES HUMAN CONTENT REVIEW**. Automated
-validation and originality checks support review but do not approve style,
-historical authenticity, clinical effects or legal redistribution rights.
+validation does not approve style, historical authenticity, clinical effects or
+legal redistribution rights. Existing candidates and RC1 remain frozen.
 
 - **Permissive suggestion:** invite participation; avoid commands that imply
   involuntary obedience. The listener can adapt, pause, decline or end an exercise.
@@ -115,15 +124,18 @@ ambiguous references. Do not attempt to score hypnotic effectiveness.
 
 ## Claims and experience
 
-Do not write coercive language, guaranteed outcomes, unsupported biological or
-medical claims, guaranteed unconscious learning, narrator dependency, or claims
+For approved release narration, do not use coercive language, guaranteed outcomes,
+unsupported biological or medical claims, guaranteed unconscious learning,
+narrator dependency, or claims
 that commands override voluntary control. Focus labels describe subjective
 practice conventions, not scientifically verified neurological states. DSP
 parameters describe audio, not proof that a listener has reached a state.
 
 Installation means deliberate learning, association and rehearsal in OCF. It
 does not assert automatic learning beneath awareness. Existing contrary
-statements are listed for replacement in the [migration inventory](NARRATION_MIGRATION.md).
+statements are listed for human release review in the
+[migration inventory](NARRATION_MIGRATION.md); this is not permission to rewrite
+SOURCE or automatically transform WORKING.
 
 ## Learning, routine preparation and function installation
 
@@ -181,10 +193,13 @@ Pack source-semantic versions and entry versions report meaning changes as
 potentially stale; punctuation alone does not invalidate translations. Keep
 source attribution and translation review information with resources.
 
-Reference material may inform functional structure only. Do not copy or closely
-paraphrase H+/Monroe narration into OCF resources. Imported transcripts remain
-verbatim and citation-only; contributor/free-form narration is not automatically
-rewritten. See [source attribution](SOURCE_ATTRIBUTION.md).
+Reference material can supply exact local working text under the source-first
+workflow. Imported sources remain immutable and attributed; contributor/free-form
+narration is not automatically rewritten. Source/working registry chunks are not
+packaged or promoted into locale/runtime resources. Approved release expression
+is a separate artifact with text-hash approval and recorded rights clearance;
+retaining source expression does not make it OCF-original. See
+[source attribution](SOURCE_ATTRIBUTION.md).
 
 ## Explicit TBD decisions
 

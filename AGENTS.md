@@ -3,6 +3,17 @@
 This file instructs future coding agents and LLM-assisted contributors working
 in this repository.
 
+## Source-first authoring
+
+Follow `docs/SOURCE_FIRST_AUTHORING.md`: immutable SOURCE -> exact initial
+WORKING -> HUMAN edits -> explicit RELEASE approval -> measured timing.
+Do not require paraphrasing, distancing or automatic originality checks to edit.
+Never automatically rewrite source claims or accessibility wording; record flags
+and proposed corrections separately. Preserve provenance and source availability.
+Keep source/working chunks local and out of packages. Rights clearance gates
+release/package inclusion, not working edits; it is not an automated legal
+conclusion. Preserve previous candidates and never promote them automatically.
+
 ## Agent entry point
 
 OCF is a declarative function/session authoring and audio toolchain. **The agent
