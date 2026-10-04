@@ -208,7 +208,7 @@ def _build_parser() -> argparse.ArgumentParser:
         "--format",
         action="append",
         choices=["wav", "flac", "mp3"],
-        default=["wav", "flac", "mp3"],
+        default=None,
         help="output format(s) (repeatable; default: all three)",
     )
     build_cmd.add_argument(
@@ -479,10 +479,7 @@ def cmd_validate(args: argparse.Namespace) -> int:
     if args.path:
         result = validate_function_file(Path(args.path))
         return print_result(result)
-    if args.all:
-        result = validate_all()
-    else:
-        result = validate_all()
+    result = validate_all()
     return print_result(result)
 
 
@@ -596,7 +593,7 @@ def cmd_locale_validate(args: argparse.Namespace) -> int:
             paths = [str(catalog.require(tag).path) for tag in serving]
             for issue in full.issues:
                 if issue.code == "locale-count" or any(
-                    (issue.target or "").startswith(path) for path in paths
+                    Path(issue.target or "").is_relative_to(Path(path)) for path in paths
                 ):
                     result.add(issue.severity, issue.code, issue.message, issue.target)
     if getattr(args, "file", None):
@@ -999,7 +996,7 @@ def main(argv: list[str] | None = None) -> int:
                 run_build(
                     args.query,
                     out_root=getattr(args, "output", None),
-                    formats=args.format,
+                    formats=args.format or ["wav", "flac", "mp3"],
                     tag_overrides=tag_overrides,
                     voice=args.voice,
                     background_gain=args.background_gain,
@@ -1044,10 +1041,14 @@ def main(argv: list[str] | None = None) -> int:
 
                 from .recordings import import_directory, unique_mapping
                 from .transcript import load_timed_doc
+                from .utils import read_text
 
-                mapping = json.loads(
-                    Path(args.mapping).read_text(encoding="utf-8"), object_pairs_hook=unique_mapping
-                )
+                try:
+                    mapping = json.loads(
+                        read_text(Path(args.mapping)), object_pairs_hook=unique_mapping
+                    )
+                except json.JSONDecodeError as exc:
+                    raise OCFError(f"invalid recording mapping JSON: {exc}") from exc
                 result = import_directory(
                     load_timed_doc(Path(args.file)),
                     Path(args.directory),
@@ -1111,8 +1112,8 @@ def main(argv: list[str] | None = None) -> int:
                 return cmd_locale_resolve(args)
             if args.locale_kind == "pseudo":
                 return cmd_locale_pseudo(args)
-            print(HELP_TEXT)
-            return 0
+            # argparse permits only the registered locale kinds; None is handled
+            # by list above. Unknown kinds exit during parsing, before dispatch.
         if args.command == "doctor":
             return cmd_doctor(args)
         print(HELP_TEXT)
