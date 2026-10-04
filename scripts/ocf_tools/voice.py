@@ -639,13 +639,14 @@ def render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes:
     if result.returncode != 0:
         if out_path is not None:
             out_path.unlink(missing_ok=True)
-        detail = (result.stderr or result.stdout or "").decode("utf-8", "replace").strip()
+        detail = (result.stderr or result.stdout or b"").decode("utf-8", "replace").strip()
         raise OCFError(
             f"{spec['binary']} failed (exit {result.returncode})"
             + (f": {detail[:160]}" if detail else "")
         )
     if spec_mode == "file":
-        if out_path is None or not out_path.is_file():
+        assert out_path is not None  # allocated above for every file-mode request
+        if not out_path.is_file():
             raise OCFError(f"{spec['binary']} produced no audio file for a cue")
         try:
             if out_path.stat().st_size == 0:
@@ -718,8 +719,7 @@ def _active_bounds(samples: list[int], sample_rate: int, threshold: int = 400) -
     last = -1
     for start in range(0, len(samples), block):
         chunk = samples[start : start + block]
-        if not chunk:
-            break
+        # Positive block size and start < len(samples) guarantee a nonempty slice.
         energy = 0
         for value in chunk:
             energy += value * value

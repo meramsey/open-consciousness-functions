@@ -244,3 +244,266 @@ def test_voice_status_commands_have_no_execution_or_downloads(monkeypatch, capsy
     )
     assert v.voice_doctor() == 0 and v.list_profiles_cmd() == 0
     assert "profile" in capsys.readouterr().out
+
+
+@pytest.mark.parametrize("case", ["ok", "empty", "nonzero", "oserror", "timeout"])
+def test_stdout_backend_protocol_has_no_file_or_stdin(monkeypatch, case):
+    monkeypatch.setitem(
+        v.BACKENDS,
+        "fixture",
+        {"mode": "stdout", "render": lambda exe, voice, wpm, model, text, out: [exe, text]},
+    )
+    monkeypatch.setattr(v.shutil, "which", lambda name: "engine")
+    payload = wav([100, 100])
+
+    def run(argv, **kw):
+        assert argv == ["engine", "Café"] and kw["input"] is None
+        if case == "oserror":
+            raise OSError("gone")
+        if case == "timeout":
+            raise subprocess.TimeoutExpired(argv, 60)
+        return subprocess.CompletedProcess(
+            argv, 1 if case == "nonzero" else 0, payload if case == "ok" else b"", b""
+        )
+
+    monkeypatch.setattr(v.subprocess, "run", run)
+    spec = {"name": "fixture", "binary": "fixture", "language": "en", "wpm": 100}
+    if case == "ok":
+        assert v.render_cue_wav(spec, "Café") == payload
+    else:
+        with pytest.raises(OCFError):
+            v.render_cue_wav(spec, "Café")
+
+
+def test_pronunciation_requirements_and_resource_origin_are_explicit():
+    from types import SimpleNamespace as NS
+
+    calls = []
+    entry = NS(
+        required_pronunciation=["command"],
+        pronunciation={"PLUS-FOCUS": {"espeak-ng": "[[hint]]"}},
+        hint_for=lambda backend, token: "[[hint]]" if backend == "espeak-ng" else None,
+    )
+    catalog = NS(resource=lambda key, tag, **kw: calls.append((key, tag, kw)) or (entry, None))
+    doc = {
+        "timeline": [
+            {"id": "a", "narration_key": "fixture.key", "variables": {"command": "PLUS-FOCUS"}}
+        ],
+        "narration": {"resolved": [{"id": "a", "locale": "fr"}]},
+    }
+    assert v._pronunciation_hints(doc, None, catalog, "espeak-ng") == {}
+    assert v._pronunciation_hints(doc, "en-US", catalog, "espeak-ng")["a"] == entry.pronunciation
+    assert calls[-1][1] == "fr" and calls[-1][2]["fallback"] is False
+    with pytest.raises(OCFError, match="required pronunciation"):
+        v._pronunciation_hints(doc, "en-US", catalog, "piper")
+    entry.required_pronunciation = []
+    entry.pronunciation = {}
+    assert v._pronunciation_hints(doc, "en-US", catalog, "espeak-ng") == {}
+    assert v.apply_pronunciation("plain", None, "espeak-ng") == "plain"
+
+
+def test_backend_locale_notes_and_invalid_tags_are_not_silent(monkeypatch):
+    from types import SimpleNamespace as NS
+
+    result = v.resolve_backend({"backend": "espeak"}, [], locale="fr", catalog=NS(packs={}))
+    assert result["language"] == "fr" and any("no locale pack" in note for note in result["notes"])
+    with pytest.raises(LocalizationError):
+        v.resolve_backend({"backend": "espeak"}, [], locale="bad!tag")
+
+
+@pytest.fixture
+def narration_boundary(monkeypatch):
+    from ocf_tools import semantics, validators
+
+    monkeypatch.setattr(
+        v,
+        "resolve_backend",
+        lambda *a, **kw: {"name": "espeak-ng", "language": "en-us", "notes": []},
+    )
+    monkeypatch.setattr(v, "check_backend_locale", lambda spec: None)
+    monkeypatch.setattr(semantics, "bind_document_cues", lambda doc: [])
+    monkeypatch.setattr(
+        validators, "validate_command_ownership", lambda *a: validators.ValidationResult()
+    )
+    monkeypatch.setattr(
+        validators, "validate_narration_hygiene", lambda *a: validators.ValidationResult()
+    )
+    return validators, semantics
+
+
+@pytest.mark.parametrize("case", ["validation", "untimed", "duplicate-id", "disabled-speech"])
+def test_narration_preflight_rejects_before_native_render(
+    monkeypatch, tmp_path, narration_boundary, case
+):
+    validators, _ = narration_boundary
+    doc = {"timeline": [{"id": "a", "at": 0, "text": "Fixture"}]}
+    if case == "validation":
+        error = validators.ValidationResult()
+        error.add("error", "fixture", "invalid narration")
+        monkeypatch.setattr(validators, "validate_narration_hygiene", lambda *a: error)
+    elif case == "untimed":
+        doc["timeline"][0].pop("at")
+    elif case == "duplicate-id":
+        doc["timeline"].append({"id": "a", "at": 1, "text": "Duplicate"})
+    monkeypatch.setattr(v, "render_cue_wav", lambda *a: pytest.fail("must not synthesize"))
+    with pytest.raises(OCFError):
+        v.render_narration(
+            doc,
+            tmp_path / "out.wav",
+            backend="disabled" if case == "disabled-speech" else "espeak-ng",
+        )
+    assert not (tmp_path / "out.wav").exists()
+
+
+def test_narration_hints_fit_and_semantic_counts_keep_display_text(
+    monkeypatch, tmp_path, narration_boundary
+):
+    doc = {
+        "timeline": [
+            {"id": "a", "at": 0, "text": "PLUS-FOCUS", "semantic": "fixture.start"},
+            {"id": "b", "at": 2, "text": "Other", "semantic": "fixture.continue"},
+        ]
+    }
+    monkeypatch.setattr(
+        v, "_pronunciation_hints", lambda *a: {"a": {"PLUS-FOCUS": {"espeak-ng": "[[hint]]"}}}
+    )
+    rendered = []
+    metadata = v.render_narration(
+        doc,
+        tmp_path / "out.wav",
+        backend="espeak-ng",
+        sample_rate=100,
+        render_cue=lambda text: rendered.append(text) or wav([1000] * 10),
+        fit=True,
+        flow=True,
+        even_counts=True,
+    )
+    assert rendered == ["[[hint]]", "Other"]
+    assert metadata["cue_stats"][0]["display_text"] == "PLUS-FOCUS"
+    assert metadata["pronunciation_hints"] == 1
+    assert metadata["timing_mode"] == "timeline-shift+even-counts"
+    assert metadata["even_counts"]["runs"] == []
+    assert [e["id"] for e in metadata["event_timing"]] == ["a", "b"]
+    monkeypatch.setattr(v, "render_cue_wav", lambda spec, text: wav([1000] * 10))
+    metadata = v.render_narration(
+        {"timeline": [{"id": "a", "at": 0, "text": "Native stub"}]},
+        tmp_path / "native.wav",
+        backend="espeak-ng",
+        sample_rate=100,
+    )
+    assert metadata["cues"] == 1
+
+
+def test_duplicate_resolved_cues_fail_without_output(tmp_path, narration_boundary, monkeypatch):
+    _, semantics = narration_boundary
+    doc = {
+        "timeline": [
+            {"id": "a", "at": 0, "semantic": "fixture.start"},
+            {"id": "b", "at": 0, "semantic": "fixture.start"},
+        ]
+    }
+    monkeypatch.setattr(
+        semantics,
+        "bind_document_cues",
+        lambda doc: [
+            {"event_id": "a", "identity": "fixture.cue"},
+            {"event_id": "b", "identity": "fixture.cue"},
+        ],
+    )
+    with pytest.raises(OCFError, match="duplicate auditory cue"):
+        v.render_narration(doc, tmp_path / "out.wav", backend="disabled", sample_rate=100)
+    assert not (tmp_path / "out.wav").exists()
+
+
+def test_render_script_reports_sidecar_and_output_collision(monkeypatch, tmp_path, capsys):
+    from ocf_tools.utils import OCFFileExistsError
+
+    monkeypatch.setattr(v, "load_timed_doc", lambda path: {"id": "fixture"})
+    out = tmp_path / "speech.wav"
+    source = tmp_path / "source.yaml"
+    source.write_text("synthetic source")
+    sidecar = out.with_suffix(".render.yaml")
+    sidecar.write_text("old timing")
+    with pytest.raises(OCFError, match="timing manifest"):
+        v.render_script(source, out)
+
+    def collision(*a, **kw):
+        raise OCFFileExistsError("old audio exists")
+
+    monkeypatch.setattr(v, "render_narration", collision)
+    with pytest.raises(OCFError, match="--force"):
+        v.render_script(source, out, force=True)
+
+    def render(doc, path, **kw):
+        path.write_bytes(wav([1000] * 10))
+        return {
+            "profile_id": None,
+            "backend": "fixture",
+            "cues": 1,
+            "duration": 0.1,
+            "sample_rate": 100,
+            "cue_stats": [{"id": "a", "at": 0, "samples": 10}],
+            "locale": "fr",
+            "voice": "fr",
+            "pronunciation_hints": 1,
+        }
+
+    monkeypatch.setattr(v, "render_narration", render)
+    assert v.render_script(source, out, force=True) == 0
+    assert "applied 1 pronunciation" in capsys.readouterr().out
+    assert sidecar.read_text() != "old timing"
+    with pytest.raises(OCFFileExistsError):
+        v._write_wav(out, [0], 100, overwrite=False)
+
+
+def test_sample_rounding_retains_every_pcm_frame(tmp_path, narration_boundary):
+    metadata = v.render_narration(
+        {"timeline": [{"id": "a", "at": 0, "text": "Fixture"}]},
+        tmp_path / "out.wav",
+        backend="espeak-ng",
+        render_cue=lambda text: wav([1000] * 21, rate=44100),
+        sample_rate=44100,
+    )
+    with wave.open(str(tmp_path / "out.wav"), "rb") as reader:
+        assert reader.getnframes() == 44121
+    assert metadata["cue_stats"][0]["samples"] == 21
+
+
+def test_model_bound_locale_without_sidecar_and_script_without_locale(
+    monkeypatch, tmp_path, capsys
+):
+    assert (
+        v.resolve_backend({"backend": "piper", "language": "en_US"}, [], locale="en-US")["language"]
+        == "en_US"
+    )
+    missing_model = tmp_path / "missing.onnx"
+    assert (
+        v.resolve_backend(
+            {"backend": "piper", "language": "en_US", "piper_model": str(missing_model)},
+            [],
+            locale="en-US",
+        )["language"]
+        == "en_US"
+    )
+    source = tmp_path / "source.yaml"
+    source.write_text("synthetic source")
+    out = tmp_path / "speech.wav"
+    monkeypatch.setattr(v, "load_timed_doc", lambda path: {})
+
+    def render(doc, path, **kw):
+        path.write_bytes(wav([1000] * 10))
+        return {
+            "profile_id": "fixture-profile",
+            "backend": "fixture",
+            "cues": 1,
+            "duration": 0.1,
+            "sample_rate": 100,
+            "cue_stats": [{"id": "a", "at": 0, "samples": 10}],
+            "locale": None,
+            "voice": None,
+            "pronunciation_hints": 0,
+        }
+
+    monkeypatch.setattr(v, "render_narration", render)
+    assert v.render_script(source, out) == 0
+    assert "locale " not in capsys.readouterr().out

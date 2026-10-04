@@ -590,3 +590,17 @@ def test_build_without_owner_or_format_collisions_preserves_narration_contract(b
     f.manifest.pop("function_id")
     result = ab.build("fixture", out_root=f.root / "chosen", formats=["wav"], overwrite=False)
     assert result["audio_manifest"]["function_id"] is None
+
+
+def test_background_sbagenx_dispatch_isolated(monkeypatch):
+    monkeypatch.setattr(ab, "_resolve_background_manifest", lambda preset: {"engine": "sbagenx"})
+    calls = []
+    monkeypatch.setattr(ab, "_render_sbagenx", lambda *a: calls.append(a) or (None, "fixture"))
+    assert ab._render_background("preset", "optional") == (None, "fixture")
+    assert calls == [("preset", "optional")]
+    monkeypatch.setattr(ab, "_resolve_background_manifest", lambda preset: {"engine": "farfield"})
+    monkeypatch.setattr(
+        ab, "_render_farfield", lambda *a: calls.append(a) or (None, "farfield-fixture")
+    )
+    assert ab._render_background("preset", "optional") == (None, "farfield-fixture")
+    assert calls[-1] == ("preset", "optional")
