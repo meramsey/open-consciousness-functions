@@ -120,3 +120,18 @@ No100% gate enabled because the target remains unmet. Twelve parser/timeline tes
 were individually reviewed as isolated string/in-memory contracts; CLI/schema/
 repository workflows were not blanket reclassified. Numerical fixtures use
 synthetic signals/noise and explicit dev math dependencies, never reference audio.
+
+## Source-first authoring checkpoint — 2026-10-03
+
+Actual Linux/Python 3.12 selection: **229 unit / 286 integration tests passed**.
+The new editorial contracts retain exact source text, distinguish human review
+from release approval, and test hash staleness, template provenance, source
+uncertainty, package exclusion and failure paths. Two new multi-component
+CLI/timing cases remain integration; synthetic fixtures alone do not redefine
+test taxonomy.
+
+Unit-only denominator: **7316 statements / 2908 branches**, with **4229 covered
+lines (57.80481137233461%) / 1441 covered branches (49.55295735900963%)**.
+Remaining **3087 lines / 1467 branches**, zero excluded statements. Exact report:
+`audio/rendered/source-first-unit-2026-10-03.json` (gitignored). The 100% gate
+remains disabled. See the [migration checkpoint](releases/OCF_SOURCE_FIRST_CHECKPOINT_2026-10-03.md).
