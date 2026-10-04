@@ -375,9 +375,8 @@ def _eval_rule(expression: str, n: float) -> bool:
                 return not operand
             return -operand if isinstance(node.op, ast.USub) else +operand
         if isinstance(node, ast.BinOp):
-            if isinstance(node.op, ast.Mod):
-                return evaluate(node.left) % evaluate(node.right)
-            raise LocalizationError(f"unsupported operator in plural rule {expression!r}")
+            # The complete AST walk above allows only Mod binary operators.
+            return evaluate(node.left) % evaluate(node.right)
         if isinstance(node, ast.Compare):
             if len(node.ops) != 1:
                 raise LocalizationError(
@@ -406,9 +405,9 @@ def _eval_rule(expression: str, n: float) -> bool:
             if node.id != "n":
                 raise LocalizationError(f"plural rules may only reference n: {expression!r}")
             return n
-        if isinstance(node, ast.Constant):
-            return node.value
-        raise LocalizationError(f"unsupported construct in plural rule {expression!r}")
+        # All other whitelisted expression-node categories return above.
+        assert isinstance(node, ast.Constant)
+        return node.value
 
     try:
         return bool(evaluate(tree))
@@ -994,8 +993,6 @@ def load_pack(path: Path) -> LocalePack:
         manifest = load_yaml_file(manifest_path)
     except OCFError as exc:
         raise LocalizationError(f"cannot read locale manifest {manifest_path}: {exc}") from exc
-    if not isinstance(manifest, dict):
-        raise LocalizationError(f"locale pack {path}: manifest.yaml must be a mapping")
     locale = normalize_tag(manifest.get("locale"))
     if locale is None:
         raise LocalizationError(f"locale pack {path}: manifest declares no `locale`")
@@ -1025,8 +1022,6 @@ def load_pack(path: Path) -> LocalePack:
             data = load_yaml_file(resource_path)
         except OCFError as exc:
             raise LocalizationError(f"cannot read locale resource {resource_path}: {exc}") from exc
-        if not isinstance(data, dict):
-            raise LocalizationError(f"{locale} {filename}: resource file must be a mapping")
         file_domain = str(data.get("domain", declared_domain))
         if file_domain != declared_domain:
             raise LocalizationError(

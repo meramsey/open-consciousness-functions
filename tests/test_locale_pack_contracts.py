@@ -157,3 +157,49 @@ def test_catalog_without_canonical_and_version_gaps_are_explicit(tmp_path):
     assert catalog.canonical.plural_rules() is None
     catalog.canonical.manifest["plural_rules"] = {"one": "n == 1"}
     assert catalog.plural_rules_for("en-US") == {"one": "n == 1"}
+
+
+def test_resource_render_metadata_pseudo_grammar_and_missing_pack(tmp_path):
+    path, _ = make_pack(tmp_path)
+    catalog = l.LocaleCatalog(tmp_path)
+    catalog.canonical.manifest["plural_rules"] = {"one": "n == 1", "other": "*"}
+    pseudo = l.build_pseudo_pack(catalog, "en-US")
+    assert pseudo.manifest["plural_rules"] == catalog.canonical.plural_rules()
+    resource = l.NarrationResource(
+        "fixture.key", "en-US", "narration", "Words", pronunciation={"token": {"espeak-ng": "hint"}}
+    )
+    assert resource.hint_for("espeak-ng", "token") == "hint"
+    assert resource.hint_for("piper", "token") is None
+    assert "canonical" in catalog.canonical.describe()
+    with pytest.raises(l.LocalizationError, match="no locale pack"):
+        catalog.require("de")
+    translated, _ = make_pack(tmp_path, "fr")
+    data = {
+        "locale": "fr",
+        "domain": "narration",
+        "entries": {"unknown.key": {"text": "Words", "version": "1.0.0"}},
+    }
+    write(translated / "words.yaml", data)
+    catalog = l.LocaleCatalog(tmp_path)
+    assert catalog.stale_keys("fr") == []
+
+
+def test_document_reports_explicit_fallback_missing_keys_and_inline_origins(tmp_path):
+    make_pack(tmp_path)
+    catalog = l.LocaleCatalog(tmp_path)
+    doc = {"timeline": [{"id": "a", "narration_key": "missing.key"}, {"id": "b", "text": "Inline"}]}
+    report = l.ResolutionReport()
+    resolved = l.resolve_document(doc, "en-US", catalog=catalog, strict=False, report=report)
+    assert report.issues and report.inline_events == 1
+    assert report.as_dict()["locale"] == "en-US"
+    assert resolved["timeline"][0].get("text") is None
+    assert l.missing_narration_keys(doc, "en-US", catalog) == ["missing.key"]
+    resolved = l.resolve_document(
+        {"timeline": [{"id": "a", "narration_key": "fixture.key"}]},
+        "de",
+        catalog=catalog,
+        strict=False,
+    )
+    assert resolved["narration"]["resolved"][0]["locale"] == "en-US"
+    bad_shape = {"timeline": [1, {"id": "a"}], "sections": [1, {"timeline": [1, {"id": "b"}]}]}
+    assert [event["id"] for event in l.iter_events(bad_shape)] == ["a", "b"]
