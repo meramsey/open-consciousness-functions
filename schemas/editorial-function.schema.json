@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/editorial-function.schema.json",
+  "title": "Local editorial function skeleton, separate from semantic specification",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "function_id", "source_availability", "source_status", "skeletonization_status", "extraction_method", "sections", "blocks", "previous_candidates", "source"],
+  "properties": {
+    "schema_version": {"const": "1.0"}, "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
+    "source_availability": {"enum": ["available", "unavailable"]},
+    "source_status": {"enum": ["transcript_unverified", "partial_transcript", "unavailable"]},
+    "skeletonization_status": {"enum": ["candidate", "source_unavailable"]},
+    "extraction_method": {"const": "exact-text-locator-guided-candidate-partition"},
+    "source": {"type": ["object", "null"], "additionalProperties": false, "required": ["file", "sha256", "evidence_class", "line_count"], "properties": {
+      "file": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+      "evidence_class": {"enum": ["source_transcript", "partial_source_transcript"]}, "line_count": {"type": "integer", "minimum": 1}
+    }},
+    "sections": {"type": "object", "additionalProperties": {"enum": ["present", "absent", "unknown", "not_applicable"]}},
+    "previous_candidates": {"type": "array", "items": {"type": "string"}},
+    "blocks": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["id", "ref", "role", "semantic", "reusable", "start_line", "end_line"], "properties": {
+      "id": {"type": "string", "pattern": "^b[0-9]{3}$"}, "ref": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+      "role": {"type": "string"}, "semantic": {"type": "string"}, "reusable": {"type": "boolean"},
+      "inserted": {"type": "boolean"},
+      "start_line": {"type": "integer", "minimum": 0}, "end_line": {"type": "integer", "minimum": 0}
+    }}}
+  },
+  "allOf": [{"if": {"properties": {"source_availability": {"const": "unavailable"}}}, "then": {"properties": {"source": {"type": "null"}, "blocks": {"maxItems": 0}, "source_status": {"const": "unavailable"}, "skeletonization_status": {"const": "source_unavailable"}}}}]
+}

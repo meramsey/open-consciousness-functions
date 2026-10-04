@@ -1,0 +1,6 @@
+# Local research/editorial inputs never enter source distributions.
+prune .ocf-authoring
+prune references
+prune ReusablePrompts
+prune audio/rendered
+prune audio/background/rendered

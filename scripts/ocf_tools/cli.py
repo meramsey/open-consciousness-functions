@@ -112,6 +112,10 @@ def _build_parser() -> argparse.ArgumentParser:
     function_describe.add_argument("--json", action="store_true")
     function_describe.add_argument("--rich", action="store_true")
 
+    from .editorial import add_parser as add_content_parser
+
+    add_content_parser(sub)
+
     corpus = sub.add_parser(
         "corpus", help="citation-only research inventory; no source wording copied"
     )
@@ -884,6 +888,10 @@ def main(argv: list[str] | None = None) -> int:
                             f"{record['id']}: {record['canonical']['name']} — {record['canonical']['command']['primary']} — {record['purpose']['summary']}"
                         )
             return 0
+        if args.command == "content":
+            from .editorial import run as run_content
+
+            return run_content(args)
         if args.command == "corpus" and args.corpus_kind == "inventory":
             import json
 

@@ -32,6 +32,7 @@ def sample_background_path() -> Path:
 # Conservative audited classifications, not speed-based guesses. Remaining
 # repository/workflow tests stay integration until individually audited.
 UNIT_MODULES = {
+    "test_editorial",
     "test_locale",
     "test_locale_correctness",
     "test_localized_timing",

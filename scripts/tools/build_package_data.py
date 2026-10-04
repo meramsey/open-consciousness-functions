@@ -26,10 +26,29 @@ DIRECTORIES = (
 
 
 def stage_data(root: Path, target: Path) -> dict:
+    # This is generated staging output, not a contributor working directory.
+    # Reconcile the entire tree so previously eligible citation-only resources
+    # cannot survive a later exclusion or removal from the source whitelist.
+    if root.resolve().is_relative_to(target.resolve()):
+        raise ValueError("package staging target must not contain the source root")
+    if target.is_symlink():
+        raise ValueError("package staging target must not be a symlink")
+    if target.exists():
+        shutil.rmtree(target)
+    target.mkdir(parents=True, exist_ok=True)
     copied = []
     omitted = []
     for directory in DIRECTORIES:
         for path in sorted((root / directory).rglob("*")):
+            if (
+                path.is_symlink()
+                or not path.resolve().is_relative_to(root.resolve())
+                or any(
+                    parent.is_symlink() for parent in path.parents if parent.is_relative_to(root)
+                )
+            ):
+                omitted.append(path.relative_to(root).as_posix())
+                continue
             if not path.is_file() or path.suffix not in (
                 ".json",
                 ".yaml",

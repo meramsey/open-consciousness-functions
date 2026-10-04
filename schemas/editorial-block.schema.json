@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/editorial-block.schema.json",
+  "title": "Local source-first editorial block (not runtime package data)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "semantic", "source", "working", "release"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "id": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "semantic": {"type": "string", "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"},
+    "source": {"type": "object", "additionalProperties": false, "required": ["text", "text_sha256"], "properties": {
+      "text": {"type": "string"}, "text_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+    }},
+    "working": {"type": "object", "additionalProperties": false, "required": ["text", "review_status", "reviewer", "review_sha256", "flags", "corrections", "history"], "properties": {
+      "text": {"type": "string"},
+      "template_ref": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+      "review_status": {"enum": ["inherited", "needs_review", "reviewed_unchanged", "reviewed_modified", "transcript_uncertain", "blocked"]},
+      "reviewer": {"type": ["string", "null"]},
+      "review_sha256": {"type": ["string", "null"]},
+      "flags": {"type": "array", "items": {"type": "string"}},
+      "corrections": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["original", "proposed", "status", "reason"], "properties": {
+        "original": {"type": "string"}, "proposed": {"type": "string"},
+        "status": {"enum": ["pending", "applied", "rejected"]}, "reason": {"type": "string"}
+      }}},
+      "history": {"type": "array", "items": {"type": "object"}}
+    }},
+    "release": {"type": "object", "additionalProperties": false, "required": ["status", "rights", "rights_evidence", "reviewer", "text_sha256"], "properties": {
+      "status": {"enum": ["pending", "approved"]},
+      "rights": {"enum": ["verified_redistributable", "user_cleared", "review_required", "unknown", "restricted"]},
+      "rights_evidence": {"type": ["string", "null"]}, "reviewer": {"type": ["string", "null"]},
+      "text_sha256": {"type": ["string", "null"]}
+    }}
+  }
+}
