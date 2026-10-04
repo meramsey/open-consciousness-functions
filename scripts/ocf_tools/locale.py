@@ -954,6 +954,14 @@ def _entry_from_value(
     text = value.get("text")
     if not isinstance(text, str) or not text.strip():
         raise LocalizationError(f"{locale} {filename}: entry {key!r} needs non-empty `text`")
+    for name in ("variables", "requires_events", "required_pronunciation"):
+        declared = value.get(name)
+        if declared is not None and not isinstance(declared, (list, tuple)):
+            raise LocalizationError(f"{locale} {filename}: entry {key!r} {name} must be an array")
+    for name in ("pronunciation", "timing"):
+        declared = value.get(name)
+        if declared is not None and not isinstance(declared, dict):
+            raise LocalizationError(f"{locale} {filename}: entry {key!r} {name} must be an object")
     variables = tuple(value.get("variables") or ())
     for name in variables:
         if not isinstance(name, str) or not VARIABLE_RE.match(name):
@@ -982,23 +990,41 @@ def load_pack(path: Path) -> LocalePack:
     manifest_path = path / "manifest.yaml"
     if not manifest_path.is_file():
         raise LocalizationError(f"locale pack {path} has no manifest.yaml")
-    manifest = load_yaml_file(manifest_path)
+    try:
+        manifest = load_yaml_file(manifest_path)
+    except OCFError as exc:
+        raise LocalizationError(f"cannot read locale manifest {manifest_path}: {exc}") from exc
     if not isinstance(manifest, dict):
         raise LocalizationError(f"locale pack {path}: manifest.yaml must be a mapping")
     locale = normalize_tag(manifest.get("locale"))
     if locale is None:
         raise LocalizationError(f"locale pack {path}: manifest declares no `locale`")
     entries: dict[str, NarrationResource] = {}
-    for resource in manifest.get("resources") or []:
+    resources = manifest.get("resources")
+    resources = [] if resources is None else resources
+    if not isinstance(resources, list) or any(
+        not isinstance(resource, dict) for resource in resources
+    ):
+        raise LocalizationError(f"{locale}: resources must be an array of objects")
+    for resource in resources:
         filename = str(resource.get("file", ""))
+        if not re.fullmatch(r"[A-Za-z0-9._-]+\.yaml", filename):
+            raise LocalizationError(
+                f"{locale}: resource file must be a local .yaml filename: {filename!r}"
+            )
         declared_domain = str(resource.get("domain", UI_DOMAIN))
         resource_path = path / filename
+        if not resource_path.resolve().is_relative_to(path.resolve()):
+            raise LocalizationError(f"{locale}: resource escapes locale pack: {filename!r}")
         if not resource_path.is_file():
             raise LocalizationError(
                 f"{locale} pack {path.name}: manifest declares resource {filename!r} "
                 "but the file is missing"
             )
-        data = load_yaml_file(resource_path)
+        try:
+            data = load_yaml_file(resource_path)
+        except OCFError as exc:
+            raise LocalizationError(f"cannot read locale resource {resource_path}: {exc}") from exc
         if not isinstance(data, dict):
             raise LocalizationError(f"{locale} {filename}: resource file must be a mapping")
         file_domain = str(data.get("domain", declared_domain))
@@ -1012,7 +1038,11 @@ def load_pack(path: Path) -> LocalePack:
                 f"{locale} {filename}: resource locale {data.get('locale')!r} does not match "
                 f"pack locale {locale!r}"
             )
-        for key, value in (data.get("entries") or {}).items():
+        values = data.get("entries")
+        values = {} if values is None else values
+        if not isinstance(values, dict):
+            raise LocalizationError(f"{locale} {filename}: entries must be an object")
+        for key, value in values.items():
             if not KEY_RE.match(str(key)):
                 raise LocalizationError(
                     f"{locale} {filename}: invalid key {key!r} (expected a lowercase dotted "
@@ -1021,7 +1051,8 @@ def load_pack(path: Path) -> LocalePack:
             if str(key) in entries:
                 raise LocalizationError(f"{locale}: duplicate key {str(key)!r} in {filename}")
             entries[str(key)] = _entry_from_value(str(key), value, locale, file_domain, filename)
-    return LocalePack(manifest, entries, path)
+    # Normalize identity in memory without rewriting the operator's manifest.
+    return LocalePack({**manifest, "locale": locale}, entries, path)
 
 
 @dataclass(frozen=True)
