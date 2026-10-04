@@ -556,12 +556,16 @@ def _retarget_locale(spec: dict[str, Any], locale: str | None, catalog: Any) -> 
             config = Path(str(model) + ".json")
             if config.is_file():
                 try:
-                    configured = str(
-                        (json.loads(config.read_text(encoding="utf-8")).get("language") or {}).get(
-                            "code"
-                        )
-                        or configured
-                    )
+                    metadata = json.loads(config.read_text(encoding="utf-8"))
+                    if not isinstance(metadata, dict):
+                        raise ValueError("model metadata must be an object")
+                    language = metadata.get("language") or {}
+                    if not isinstance(language, dict):
+                        raise ValueError("model language metadata must be an object")
+                    code = language.get("code")
+                    if code is not None and not isinstance(code, str):
+                        raise ValueError("model language code must be text")
+                    configured = code or configured
                 except (ValueError, OSError) as exc:
                     raise LocalizationError(
                         f"cannot read Piper model locale: {config}: {exc}"
@@ -606,7 +610,9 @@ def render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes:
     spec_mode = BACKENDS[spec["name"]]["mode"]
     out_path: Path | None = None
     if spec_mode == "file":
-        out_path = Path(tempfile.mkstemp(suffix=".wav")[1])
+        descriptor, filename = tempfile.mkstemp(suffix=".wav")
+        os.close(descriptor)
+        out_path = Path(filename)
     command = BACKENDS[spec["name"]]["render"](
         executable,
         spec["language"],
@@ -642,6 +648,8 @@ def render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes:
         if out_path is None or not out_path.is_file():
             raise OCFError(f"{spec['binary']} produced no audio file for a cue")
         try:
+            if out_path.stat().st_size == 0:
+                raise OCFError(f"{spec['binary']} produced empty audio for a cue")
             return out_path.read_bytes()
         finally:
             out_path.unlink(missing_ok=True)
