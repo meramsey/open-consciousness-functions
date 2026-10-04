@@ -161,3 +161,17 @@ Exact report: `audio/rendered/coverage-cli-wizard-2026-10-04.json` (gitignored).
 No integration cases were reclassified. See the
 [continuation checkpoint](releases/OCF_CLI_WIZARD_COVERAGE_CHECKPOINT_2026-10-04.md)
 for failure-path fixes, reachability decisions and remaining priorities.
+
+## Rendering/session continuation — 2026-10-04
+
+Actual Linux/Python 3.12: **575 unit / 286 integration cases passed**.
+Unit-only **6244/7385 lines (84.54976303317535%)** and **2366/2928 branches
+(80.80601092896175%)**. Remaining **1141 lines / 562 branches**, zero excluded
+statements. Voice, audio-build and session join the fully covered modules (20 total,
+including `__init__`). The repository-wide 100% target/gate remains unmet/disabled.
+
+Exact missing-line/branch report:
+`audio/rendered/coverage-rendering-session-2026-10-04.json` (ignored).
+No integration case was reclassified. See the
+[rendering checkpoint](releases/OCF_RENDERING_SESSION_COVERAGE_CHECKPOINT_2026-10-04.md)
+for fixes, reachability decisions, validation and remaining priorities.
