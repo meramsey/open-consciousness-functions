@@ -2,11 +2,18 @@
 
 from dataclasses import replace
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 import yaml
 from ocf_tools.cli import main
-from ocf_tools.locale import LocaleCatalog, LocalePack, LocalizationError, resolve_document
+from ocf_tools.locale import (
+    LocaleCatalog,
+    LocalePack,
+    LocalizationError,
+    format_number,
+    resolve_document,
+)
 from ocf_tools.transcript import measured_durations, resolve_timeline
 from ocf_tools.validators import validate_narration_usage
 from ocf_tools.voice import resolve_backend
@@ -130,3 +137,29 @@ def test_grouped_cli_subtitle_is_one_utterance_not_invented_word_timing(tmp_path
     output = capsys.readouterr().out
     assert "00:00:00,000 --> 00:00:03,000\nA sentence continued." in output
     assert output.count(" --> ") == 1
+
+
+def test_catalog_handles_missing_roots_packs_and_domain_mismatch(monkeypatch, tmp_path):
+    empty = LocaleCatalog(tmp_path / "not-installed")
+    assert empty.locales() == []
+    with pytest.raises(LocalizationError, match="no locale pack"):
+        empty.require("en-US")
+
+    catalog = LocaleCatalog()
+    monkeypatch.setattr(catalog, "chain", lambda _requested: ["ghost", "en-US"])
+    with pytest.raises(LocalizationError, match="missing resource"):
+        catalog.lookup("missing.resource", "en-US")
+    with pytest.raises(LocalizationError, match="missing resource"):
+        catalog.lookup(KEY, "en-US", domain="ui")
+
+
+def test_locale_number_grouping_short_values_and_nonstrict_report():
+    assert format_number(123, "en-US") == "123"
+    assert format_number(1234, "en-US") == "1,234"
+    report = SimpleNamespace(issues=[])
+    missing = {"timeline": [{"id": "missing", "narration_key": "not.present"}]}
+    resolve_document(missing, "es", strict=False, report=report)
+    assert report.issues and "missing" in report.issues[0]
+    resolve_document(missing, "es", strict=False)
+    empty_inline = {"timeline": [{"id": "empty", "text": ""}]}
+    assert resolve_document(empty_inline, "en-US")["narration"]["inline_events"] == 0

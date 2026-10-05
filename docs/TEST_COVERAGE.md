@@ -252,3 +252,15 @@ slot files, profile state compatibility, and matching/mismatched recorded-event
 packages. `ocf_tools/planning.py` measures **100% unit line and branch
 coverage**; its focused module passed **5 tests**. Report:
 `/tmp/opencode/planning.json` (temporary, not committed).
+
+## Locale catalog edge contracts — 2026-10-04
+
+Locale unit coverage now exercises absent catalog roots, stale/missing pack
+entries, domain mismatch, non-strict issue reporting, empty inline events, and
+number-grouping edges. Removed two guards unreachable for normalized locale
+truncations and the formatter's prevalidated grouped-integer domain; behavior
+is preserved because each candidate is a strict prefix and grouped input
+always has at least one leading digit. The focused locale selection passed
+**104 tests**. `ocf_tools/locale.py` measures **100% unit line and branch
+coverage**, with no exclusions. Report:
+`/tmp/opencode/locale-final.json` (temporary, not committed).

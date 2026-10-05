@@ -271,8 +271,9 @@ def fallback_chain(requested: str | None, *, default: str = CANONICAL_LOCALE) ->
     parts = normalized.split("-")
     for index in range(len(parts) - 1, 0, -1):
         candidate = "-".join(parts[:index])
-        if candidate not in chain:
-            chain.append(candidate)
+        # Each candidate is a strict truncation of the previous locale, so it
+        # cannot already occur in this ordered chain.
+        chain.append(candidate)
     fallback = normalize_tag(default) or CANONICAL_LOCALE
     if fallback not in chain:
         chain.append(fallback)
@@ -485,8 +486,9 @@ def _group(digits: str, language: str) -> str:
     while len(head) > size:
         chunks.insert(0, head[-size:])
         head = head[:-size]
-    if head:
-        chunks.insert(0, head)
+    # The early length guard guarantees a non-empty head whenever grouping is
+    # reached (at least one digit precedes the final three).
+    chunks.insert(0, head)
     chunks.append(tail)
     return sign + separator.join(chunks)
 
