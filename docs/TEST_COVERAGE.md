@@ -226,3 +226,12 @@ tests**. Both `ocf_tools/corpus.py` and `tools/analyze_corpus_relations.py`
 measure **100% unit line and branch coverage**, with no exclusions. No corpus
 reference material was read or changed. Detailed report:
 `/tmp/opencode/corpus-rel.json` (temporary, not committed).
+
+## Separated content and extraction driver — 2026-10-04
+
+Added source/observation/locator validation failures, template and locale binding
+outcomes, unknown library records, extracted-layer preflight/idempotence, and
+the executable extraction entrypoint. The focused unit module passed **14
+tests**. Both `ocf_tools/content.py` and `tools/extract_function_content.py`
+measure **100% unit line and branch coverage**, with no exclusions. Report:
+`/tmp/opencode/content-unit.json` (temporary, not committed).
