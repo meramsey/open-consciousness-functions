@@ -264,3 +264,17 @@ always has at least one leading digit. The focused locale selection passed
 **104 tests**. `ocf_tools/locale.py` measures **100% unit line and branch
 coverage**, with no exclusions. Report:
 `/tmp/opencode/locale-final.json` (temporary, not committed).
+
+## Deterministic first-party tools — 2026-10-04
+
+Added filesystem-backed unit checks for Markdown link policy, synthetic
+container fixture generation, and all 55 legacy bootstrap mappings using an
+isolated temporary root. The link scanner now recognizes empty Markdown link
+targets so its existing empty-target handling is actually reachable. The
+focused tool tests pass; `tools/check_markdown_links.py` and
+`tools/container_smoke_fixture.py` measure **100% unit line and branch
+coverage**. The legacy bootstrap writer's callable `main()` is tested against
+temporary roots for both 55-record and unexpected-count outcomes; its
+`__main__` dispatch guard is left unexecuted because it would target and rewrite
+the canonical tracked function corpus. Detailed report:
+`/tmp/opencode/tool-contracts.json` (temporary, not committed).
