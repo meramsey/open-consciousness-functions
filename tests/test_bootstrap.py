@@ -20,7 +20,13 @@ def test_dry_run_and_windows_adapter_do_not_create_files(tmp_path):
     assert setup_plan(target)["reuse"]
 
 
-def test_applied_setup_checks_reused_runtime_and_fails_clearly(tmp_path):
+def test_applied_setup_checks_reused_runtime_and_fails_clearly(tmp_path, monkeypatch):
+    from ocf_tools import bootstrap
+
+    # This contract simulates a supported setup interpreter regardless of the
+    # Python version running pytest; the separate compatibility check below
+    # exercises rejection of a too-old created environment.
+    monkeypatch.setattr(bootstrap, "sys", SimpleNamespace(version_info=(3, 12, 0)))
     target = tmp_path / "env"
     target.mkdir()
     (target / "pyvenv.cfg").write_text("home = custom\n")
