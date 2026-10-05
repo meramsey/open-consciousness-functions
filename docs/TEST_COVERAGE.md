@@ -178,19 +178,20 @@ for fixes, reachability decisions, validation and remaining priorities.
 
 ## Semantic DSP unit-gap audit — 2026-10-04
 
-The `semantic_dsp.py` audit added deterministic unit contracts for invalid
-transition directives/windows, missing state implementations, empty plans,
-approach ownership/anchor failures, linear/equal-power gain expressions, and
-renderer/CLI preflight failures. Focused unit selection: **25 passed**; the full
-semantic DSP test module: **27 passed**. Focused unit coverage reports
-**210/261 statements and 97/126 branches** (80.46% statement coverage, 76.98%
-branch coverage). Remaining renderer execution paths still require separately
-isolated coverage; this audit does not claim full-module coverage. The full unit suite could not collect in this
-environment: Python 3.9.6 lacks the `soundfile` dependency required by a
-research-driver test. System Python 3.12.3 is present but has no pytest
-installation. `make check` passed with 0 errors and the same 7 existing
-warnings.
+The `semantic_dsp.py` audit added deterministic unit contracts for profile and
+timing validation, transition/approach boundaries, gain expressions, renderer
+engine dispatch, duration verification, RMS calibration, command failures, and
+CLI preflight. Focused unit selection: **34 passed**; the full semantic DSP test
+module: **36 passed**. Focused coverage reports **261/261 statements and
+126/126 branches (100% line and branch coverage)** with no exclusions.
 
-Focused coverage report: `/tmp/opencode/semantic-dsp-focused-final.json`
-(temporary, not committed). Next audit: remaining `semantic_dsp.py` reachable
-renderer execution paths, then `editorial.py`.
+The repository-wide unit suite could not collect in this environment: Python
+3.9.6 lacks `scipy` and `soundfile`, required by a synthetic research-driver
+test. System Python 3.12.3 is present but has no pytest installation. The focused
+module ran on Linux/Python 3.9.6; this runtime is below the package's declared
+minimum Python 3.11, so no native supported-runtime claim is made. `make check`
+passed with 0 errors and the same 7 existing warnings.
+
+Focused coverage report: `/tmp/opencode/semantic-dsp-final.json`
+(temporary, not committed). Next audit: `editorial.py`, then research drivers and
+remaining first-party tools/modules.

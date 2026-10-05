@@ -170,6 +170,35 @@ def test_unknown_timing_and_wrong_from_state_do_not_silently_fall_back():
     doc["timeline"][1]["dsp"]["state"]["from"] = "focus-3"
     with pytest.raises(OCFError, match="disagrees"):
         plan_program(doc, TIMES, 100, profile)
+    profile["unexpected"] = True
+    with pytest.raises(OCFError, match="semantic DSP profile:"):
+        plan_program(state_doc(), TIMES, 100, profile)
+
+
+def test_profile_load_and_declared_preset_file_failures_are_explicit(monkeypatch, tmp_path):
+    from ocf_tools import audio_build, semantic_dsp
+
+    with pytest.raises(OCFError, match="profile not found"):
+        load_profile("missing-semantic-profile-for-test")
+
+    invalid = tmp_path / "invalid.yaml"
+    invalid.write_text("{}\n")
+    with pytest.raises(OCFError, match="semantic DSP profile:"):
+        load_profile(invalid)
+
+    monkeypatch.setattr(semantic_dsp, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(
+        audio_build,
+        "_resolve_background_manifest",
+        lambda _preset: {
+            "id": "TEST-PRESET",
+            "engine": "farfield",
+            "preset": {"file": "missing.preset"},
+            "provenance": {},
+        },
+    )
+    with pytest.raises(OCFError, match="preset file unavailable"):
+        plan_program(state_doc(), TIMES, 100, load_profile("OCF-DSP-DEVELOPMENT-V4-001"))
 
 
 def test_dispatch_plan_is_deterministic_and_does_not_mutate_source():
@@ -256,6 +285,7 @@ def test_repeated_state_is_noop_not_a_gain_swell():
     doc["timeline"][1]["dsp"]["state"]["from"] = "ordinary-waking"
     program = plan_program(doc, TIMES, 100, load_profile("OCF-DSP-DEVELOPMENT-V4-001"))
     assert gain_at(program, "ordinary-waking", 12) == 1
+    assert "(t-10.000000000)" not in _gain_expression(program, "ordinary-waking")
 
 
 def constant_stem(directory, state, level):
@@ -309,6 +339,10 @@ def test_measured_approach_ownership_and_anchor_failures_are_unit_contracts():
             [dict(row, at=0) if row["id"] == "ten" else row for row in times],
             "invalid DSP approach window",
         ),
+        (
+            [dict(row, at="bad") if row["id"] == "arrival-word" else row for row in times],
+            "numeric times",
+        ),
     ]:
         with pytest.raises(OCFError, match=message):
             plan_program(doc, bad_times, 100, approach_profile())
@@ -322,6 +356,49 @@ def test_measured_approach_ownership_and_anchor_failures_are_unit_contracts():
     duplicate["approaches"].append(dict(duplicate["approaches"][0]))
     with pytest.raises(OCFError, match="duplicate DSP approach"):
         plan_program(doc, times, 100, duplicate)
+
+    interleaved = approach_doc()
+    interleaved["timeline"].insert(
+        2,
+        {"id": "intermediate", "at": 5, "dsp": {"state": "focus-11"}},
+    )
+    interleaved_times = times + [{"id": "intermediate", "at": 5}]
+    with pytest.raises(OCFError, match="approach overlaps another state transition"):
+        plan_program(interleaved, interleaved_times, 100, approach_profile())
+
+    overlapping_doc = {
+        "timeline": [
+            {"id": "preparation", "at": 1},
+            {"id": "arrival-word", "at": 8},
+            {"id": "arrival-ten", "at": 10, "dsp": {"state": "focus-10"}},
+            {"id": "arrival-eleven", "at": 10, "dsp": {"state": "focus-11"}},
+        ]
+    }
+    overlapping_times = [
+        {"id": "preparation", "at": 1},
+        {"id": "arrival-word", "at": 8},
+        {"id": "arrival-ten", "at": 10},
+        {"id": "arrival-eleven", "at": 10},
+    ]
+    overlapping = approach_profile()
+    overlapping["approaches"][0]["state_event"] = "arrival-ten"
+    overlapping["approaches"].append(
+        {
+            "state": "focus-11",
+            "begin_event": "preparation",
+            "established_event": "arrival-word",
+            "state_event": "arrival-eleven",
+            "curve": "raised-cosine",
+        }
+    )
+    with pytest.raises(OCFError, match="overlapping DSP approaches"):
+        plan_program(overlapping_doc, overlapping_times, 100, overlapping)
+
+    double_ramp = approach_profile()
+    doc_with_ramp = approach_doc()
+    doc_with_ramp["timeline"][2]["dsp"]["transition_s"] = 1
+    with pytest.raises(OCFError, match="second nonzero DSP ramp"):
+        plan_program(doc_with_ramp, times, 100, double_ramp)
 
 
 @pytest.mark.parametrize(
@@ -369,6 +446,198 @@ def test_disabled_renderer_emits_deterministic_silence_without_state_sources(mon
     assert commands[0][-1] == str(output)
 
 
+def test_renderer_verifies_rendered_state_duration_before_mixing(monkeypatch, tmp_path):
+    import json
+
+    from ocf_tools import semantic_dsp
+
+    profile = load_profile("OCF-DSP-DEVELOPMENT-V4-001")
+    profile.pop("target_state_rms_dbfs", None)
+    commands = []
+    monkeypatch.setattr(semantic_dsp.shutil, "which", lambda name: f"/usr/bin/{name}")
+
+    def command(args):
+        commands.append(args)
+        stdout = json.dumps({"format": {"duration": "100"}}) if "ffprobe" in args[0] else ""
+        return subprocess.CompletedProcess(args, 0, stdout, "")
+
+    monkeypatch.setattr(semantic_dsp, "_command", command)
+    monkeypatch.setattr(semantic_dsp, "_sha", lambda _path: "b" * 64)
+    stem = tmp_path / "rendered.wav"
+
+    def render_state(_state, _selection, _seed, _duration):
+        stem.touch()
+        return stem
+
+    result = semantic_dsp.render_program(
+        state_doc(), TIMES, 100, profile, tmp_path / "mix.wav", render_state=render_state
+    )
+    assert len([args for args in commands if "ffprobe" in args[0]]) == sum(
+        choice["mode"] == "preset" for choice in result["selections"].values()
+    )
+    assert any("-filter_complex" in args for args in commands)
+    assert all(
+        selection["stem_sha256"] == "b" * 64
+        for selection in result["selections"].values()
+        if selection["mode"] == "preset"
+    )
+
+
+def test_renderer_rejects_short_state_stem_without_silent_extension(monkeypatch, tmp_path):
+    import json
+
+    from ocf_tools import semantic_dsp
+
+    profile = load_profile("OCF-DSP-DEVELOPMENT-V4-001")
+    monkeypatch.setattr(semantic_dsp.shutil, "which", lambda name: f"/usr/bin/{name}")
+    monkeypatch.setattr(
+        semantic_dsp,
+        "_command",
+        lambda args: subprocess.CompletedProcess(
+            args, 0, json.dumps({"format": {"duration": "1"}}), ""
+        ),
+    )
+    stem = tmp_path / "short.wav"
+    stem.touch()
+    with pytest.raises(OCFError, match="shorter than the session"):
+        semantic_dsp.render_program(
+            state_doc(),
+            TIMES,
+            100,
+            profile,
+            tmp_path / "mix.wav",
+            render_state=lambda *_args: stem,
+        )
+
+
+def test_farfield_render_boundary_records_commands_and_validates_outputs(monkeypatch, tmp_path):
+    import json
+
+    from ocf_tools import farfield, semantic_dsp
+
+    profile = load_profile("OCF-DSP-DEVELOPMENT-V4-001")
+    profile.pop("target_state_rms_dbfs", None)
+    monkeypatch.setattr(semantic_dsp.shutil, "which", lambda name: f"/usr/bin/{name}")
+
+    def render(args):
+        output = Path(args[args.index("--output") + 1])
+        output.touch()
+        return subprocess.CompletedProcess(args, 0, "", "")
+
+    from pathlib import Path
+
+    monkeypatch.setattr(farfield, "run_farfield", render)
+    monkeypatch.setattr(
+        semantic_dsp,
+        "_command",
+        lambda args: subprocess.CompletedProcess(
+            args, 0, json.dumps({"format": {"duration": "100"}}) if "ffprobe" in args[0] else "", ""
+        ),
+    )
+    monkeypatch.setattr(semantic_dsp, "_sha", lambda _path: "c" * 64)
+    output = tmp_path / "bed.wav"
+    result = semantic_dsp.render_program(state_doc(), TIMES, 100, profile, output)
+    assert (
+        len([command for command in result["external_commands"] if command[0] == "farfield"]) == 2
+    )
+    assert all(
+        selection["stem_sha256"] == "c" * 64
+        for selection in result["selections"].values()
+        if selection["mode"] == "preset"
+    )
+
+
+@pytest.mark.parametrize("outcome", ["failure", "missing-output", "missing-engine"])
+def test_farfield_render_boundary_fails_closed(monkeypatch, tmp_path, outcome):
+    from ocf_tools import farfield, semantic_dsp
+
+    profile = load_profile("OCF-DSP-DEVELOPMENT-V4-001")
+    monkeypatch.setattr(semantic_dsp.shutil, "which", lambda name: f"/usr/bin/{name}")
+
+    def render(args):
+        if outcome == "missing-engine":
+            raise farfield.OCFFarfieldMissing("install Farfield")
+        if outcome == "missing-output":
+            return subprocess.CompletedProcess(args, 0, "", "")
+        return subprocess.CompletedProcess(args, 1, "", "render failed")
+
+    monkeypatch.setattr(farfield, "run_farfield", render)
+    with pytest.raises(
+        OCFError, match="required state focus-10: (install Farfield|Farfield render failed)"
+    ):
+        semantic_dsp.render_program(state_doc(), TIMES, 100, profile, tmp_path / "bed.wav")
+
+
+def test_other_backend_render_and_calibration_are_validated(monkeypatch, tmp_path):
+    import json
+
+    from ocf_tools import audio_build, semantic_dsp
+
+    profile = load_profile("OCF-DSP-DEVELOPMENT-V4-001")
+    preset = {
+        "id": "TEST-REFERENCE-MASTER",
+        "engine": "reference-master",
+        "preset": {},
+        "provenance": {},
+    }
+    monkeypatch.setattr(audio_build, "_resolve_background_manifest", lambda _reference: preset)
+    monkeypatch.setattr(semantic_dsp.shutil, "which", lambda name: f"/usr/bin/{name}")
+    stem = tmp_path / "reference-master.wav"
+    stem.touch()
+    monkeypatch.setattr(audio_build, "_render_background", lambda *_args, **_kwargs: (stem, None))
+    commands = []
+
+    def command(args):
+        commands.append(args)
+        if "ffprobe" in args[0]:
+            stdout, stderr = json.dumps({"format": {"duration": "100"}}), ""
+        elif "volumedetect" in args:
+            stdout, stderr = "", "mean_volume: -20.0 dB"
+        else:
+            stdout, stderr = "", ""
+        return subprocess.CompletedProcess(args, 0, stdout, stderr)
+
+    monkeypatch.setattr(semantic_dsp, "_command", command)
+    monkeypatch.setattr(semantic_dsp, "_sha", lambda _path: "d" * 64)
+    result = semantic_dsp.render_program(state_doc(), TIMES, 100, profile, tmp_path / "mix.wav")
+    preset_selection = result["selections"]["focus-10"]
+    expected_gain = 10 ** ((profile["target_state_rms_dbfs"] - (-20.0)) / 20)
+    assert preset_selection["raw_rms_dbfs"] == -20
+    assert preset_selection["renderer_gain"] == pytest.approx(expected_gain)
+    assert any("volumedetect" in args for args in commands)
+
+
+def test_other_backend_missing_output_and_unparseable_calibration_fail(monkeypatch, tmp_path):
+    from ocf_tools import audio_build, semantic_dsp
+
+    profile = load_profile("OCF-DSP-DEVELOPMENT-V4-001")
+    preset = {
+        "id": "TEST",
+        "engine": "reference-master",
+        "preset": {},
+        "provenance": {},
+    }
+    monkeypatch.setattr(audio_build, "_resolve_background_manifest", lambda _reference: preset)
+    monkeypatch.setattr(semantic_dsp.shutil, "which", lambda name: f"/usr/bin/{name}")
+    monkeypatch.setattr(
+        audio_build, "_render_background", lambda *_args, **_kwargs: (None, "engine failed")
+    )
+    with pytest.raises(OCFError, match="required state focus-10: engine failed"):
+        semantic_dsp.render_program(state_doc(), TIMES, 100, profile, tmp_path / "mix.wav")
+
+    stem = tmp_path / "bed.wav"
+    stem.touch()
+    monkeypatch.setattr(audio_build, "_render_background", lambda *_args, **_kwargs: (stem, None))
+
+    def uncalibratable(args):
+        stdout = '{"format":{"duration":"100"}}' if "ffprobe" in args[0] else ""
+        return subprocess.CompletedProcess(args, 0, stdout, "no volume measurement")
+
+    monkeypatch.setattr(semantic_dsp, "_command", uncalibratable)
+    with pytest.raises(OCFError, match="cannot calibrate state focus-10 RMS"):
+        semantic_dsp.render_program(state_doc(), TIMES, 100, profile, tmp_path / "mix.wav")
+
+
 def test_external_command_errors_include_command_and_stderr(monkeypatch):
     from ocf_tools import semantic_dsp
 
@@ -379,6 +648,10 @@ def test_external_command_errors_include_command_and_stderr(monkeypatch):
     )
     with pytest.raises(OCFError, match=r"semantic DSP engine failed: engine --flag\nengine detail"):
         semantic_dsp._command(["engine", "--flag"])
+
+    success = subprocess.CompletedProcess(["engine"], 0, "ok", "")
+    monkeypatch.setattr(semantic_dsp.subprocess, "run", lambda *_args, **_kwargs: success)
+    assert semantic_dsp._command(["engine"]) is success
 
 
 def test_render_command_refuses_overwrite_before_loading_inputs(monkeypatch, tmp_path):
