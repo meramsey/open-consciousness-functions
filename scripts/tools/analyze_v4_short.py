@@ -119,8 +119,9 @@ def tone_rows(x, fs, windows):
 
 def continuum(x, fs, start, length):
     block = x[round(start * fs) : round((start + length) * fs)]
-    f, p = signal.welch(block, fs, nperseg=131072, axis=0)
-    _, cross = signal.csd(block[:, 0], block[:, 1], fs, nperseg=131072)
+    nperseg = min(131072, len(block))
+    f, p = signal.welch(block, fs, nperseg=nperseg, axis=0)
+    _, cross = signal.csd(block[:, 0], block[:, 1], fs, nperseg=nperseg)
     coherence = abs(cross) ** 2 / np.maximum(p[:, 0] * p[:, 1], 1e-30)
     # Auto-mask narrow peaks against a robust local spectral floor. Mask data
     # is saved; remaining smooth spectral humps are not forced to a color law.
@@ -210,7 +211,11 @@ def continuum(x, fs, start, length):
     # trajectories from masquerading as a broadband interaural delay.
     good = (f >= 500) & (f <= 5000) & ~mask & (coherence > 0.8)
     delay = None
-    if good.sum() > 20:
+    segment_hop = nperseg - nperseg // 2
+    segment_count = 1 + (len(block) - nperseg) // segment_hop
+    # Magnitude-squared coherence is spuriously near one with only one or two
+    # Welch segments. Do not fit an interaural delay without enough averages.
+    if good.sum() > 20 and segment_count >= 8:
         phase = np.unwrap(np.angle(cross))
         fit = np.polyfit(f[good], phase[good], 1, w=np.sqrt(coherence[good]))
         delay = {

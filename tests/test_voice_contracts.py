@@ -45,6 +45,7 @@ def test_count_tokens_are_textual_hints_not_state_identity(token, value):
     assert v._count_token_texts("one hello") == []
 
 
+@pytest.mark.unit
 def test_count_grids_and_flow_groups_preserve_source_text():
     rows = [
         ResolvedEvent("a", "One. Two.", 0),
@@ -58,6 +59,11 @@ def test_count_grids_and_flow_groups_preserve_source_text():
     assert rows[0].text == "One. Two." and rows[1].at == 6
     assert stats["runs"][0]["values"] == [1, 2, 3]
     assert v._even_counts([ResolvedEvent("none", "plain", 0)])[1] == {"runs": []}
+    unanchored, no_anchor_stats = v._even_counts(
+        [ResolvedEvent("one", "One.", None), ResolvedEvent("two", "Two.", None)]
+    )
+    assert unanchored == [ResolvedEvent("one", "One.", None), ResolvedEvent("two", "Two.", None)]
+    assert no_anchor_stats == {"runs": []}
     fragments = [
         ResolvedEvent("a", "first", 0),
         ResolvedEvent("b", "second.", 1),

@@ -288,3 +288,23 @@ brochure, validation, CLI-default, and explicit `--apply` boundaries. Focused
 reports: `/tmp/opencode/package-final.json`,
 `/tmp/opencode/preserve-final.json`, and `/tmp/opencode/review-tool.json`
 (temporary, not committed).
+
+The same continuation now measures **100% focused unit line and branch
+coverage** for `tools/analyze_v4_short.py`, `tools/preview_preparation_learning.py`,
+and `tools/bootstrap_legacy_map.py`. `analyze_v4_short.py` is tested with
+synthetic signals only; an independent-noise boundary test exposed that short
+Welch windows could yield spuriously high coherence from too few averages, so
+delay fitting now requires at least eight Welch segments. The 100-second
+research windows retain their existing estimator. Preparation preview tests
+use synthetic text and do not load or rewrite frozen RC1 wording. Bootstrap
+writer/entrypoint tests route all generated records to temporary roots or an
+injected writer. Reports: `/tmp/opencode/analyze-v4.json` and
+`/tmp/opencode/tool-contracts-py312.json` (temporary, not committed).
+
+`tools/verify_development_v2.py` has deterministic synthetic-PCM coverage for
+hashing, block reads, RMS/peak statistics, spectral amplitude, and declared
+approach acceptance. Its remaining full-audition acceptance flow reads V2/V2.1
+audition files and writes an acceptance report; that flow remains frozen until
+the pending human V2-versus-V2.1 comparison. Likewise, the full
+`render_development_v2.py` path creates DSP beds and listening masters; only its
+input-integrity/overwrite preflight is exercised while that review is pending.

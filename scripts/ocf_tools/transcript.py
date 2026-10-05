@@ -217,27 +217,27 @@ def parse_lrc(text: str) -> ParsedTranscript:
         if not tokens:
             if rest.strip():
                 notes.append(f"line {lineno}: line without a timestamp bracket was skipped")
-            continue
-        times: list[float] = []
-        for token in tokens:
-            parsed = parse_timestamp(token)
-            if parsed is not None:
-                times.append(parsed)
-            elif ":" in token:
-                key, _, value = token.partition(":")
-                key = key.strip()
-                if key in metadata and metadata[key] != value:
-                    metadata[key] = f"{metadata[key]}; {value}"
+        else:
+            times: list[float] = []
+            for token in tokens:
+                parsed = parse_timestamp(token)
+                if parsed is not None:
+                    times.append(parsed)
+                elif ":" in token:
+                    key, _, value = token.partition(":")
+                    key = key.strip()
+                    if key in metadata and metadata[key] != value:
+                        metadata[key] = f"{metadata[key]}; {value}"
+                    else:
+                        metadata[key] = value
                 else:
-                    metadata[key] = value
+                    notes.append(f"line {lineno}: unrecognized tag '[{token}]'")
+            if not times:
+                if rest.strip():
+                    notes.append(f"line {lineno}: bracket tag without a timestamp was skipped")
             else:
-                notes.append(f"line {lineno}: unrecognized tag '[{token}]'")
-        if not times:
-            if rest.strip():
-                notes.append(f"line {lineno}: bracket tag without a timestamp was skipped")
-            continue
-        for t in times:
-            events.append(TranscriptEvent(text=rest, at=t))
+                for t in times:
+                    events.append(TranscriptEvent(text=rest, at=t))
     events.sort(key=lambda event: event.at)
     return ParsedTranscript(fmt="lrc", events=events, metadata=metadata, notes=notes, snapshot=text)
 

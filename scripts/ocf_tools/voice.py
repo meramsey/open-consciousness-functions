@@ -185,36 +185,35 @@ def _even_counts(
         count = len(parts)
         first_at = parts[0]["source"].at
         last_at = parts[-1]["source"].at
-        if count < 2 or first_at is None or last_at is None:
-            continue
-        gap = (last_at - first_at) / (count - 1)
-        total: dict[str, int] = {}
-        for part in parts:
-            total[part["source"].id] = total.get(part["source"].id, 0) + 1
-        replaced: list[Any] = []
-        seen: dict[str, int] = {}
-        for offset, part in enumerate(parts):
-            source = part["source"]
-            seen[source.id] = seen.get(source.id, 0) + 1
-            new_id = source.id if total[source.id] == 1 else f"{source.id}#{seen[source.id]}"
-            replaced.append(
-                replace(
-                    source,
-                    id=new_id,
-                    text=part["text"],
-                    at=round(first_at + offset * gap, 6),
+        if count >= 2 and first_at is not None and last_at is not None:
+            gap = (last_at - first_at) / (count - 1)
+            total: dict[str, int] = {}
+            for part in parts:
+                total[part["source"].id] = total.get(part["source"].id, 0) + 1
+            replaced: list[Any] = []
+            seen: dict[str, int] = {}
+            for offset, part in enumerate(parts):
+                source = part["source"]
+                seen[source.id] = seen.get(source.id, 0) + 1
+                new_id = source.id if total[source.id] == 1 else f"{source.id}#{seen[source.id]}"
+                replaced.append(
+                    replace(
+                        source,
+                        id=new_id,
+                        text=part["text"],
+                        at=round(first_at + offset * gap, 6),
+                    )
                 )
+            events[start : end + 1] = replaced
+            info["runs"].append(
+                {
+                    "count": count,
+                    "values": [part["value"] for part in parts],
+                    "anchor_start": first_at,
+                    "anchor_end": last_at,
+                    "gap": round(gap, 6),
+                }
             )
-        events[start : end + 1] = replaced
-        info["runs"].append(
-            {
-                "count": count,
-                "values": [part["value"] for part in parts],
-                "anchor_start": first_at,
-                "anchor_end": last_at,
-                "gap": round(gap, 6),
-            }
-        )
     return events, info
 
 

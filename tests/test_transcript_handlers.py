@@ -52,6 +52,17 @@ def test_invalid_blocks_diagnostics_and_vtt_without_header():
         t._vtt_time("bad")
 
 
+def test_lrc_skips_empty_and_untimed_bracket_lines_with_distinct_diagnostics():
+    parsed = t.parse_lrc("\n[broken\n[unknown] \n[unknown] text\n")
+    assert parsed.events == []
+    assert parsed.notes == [
+        "line 2: line without a timestamp bracket was skipped",
+        "line 3: unrecognized tag '[unknown]'",
+        "line 4: unrecognized tag '[unknown]'",
+        "line 4: bracket tag without a timestamp was skipped",
+    ]
+
+
 @pytest.mark.parametrize(
     "text,expected",
     [
