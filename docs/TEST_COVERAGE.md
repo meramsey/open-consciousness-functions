@@ -215,3 +215,14 @@ the contract validator. The schema test continues to enforce this invariant.
 Focused coverage report: `/tmp/opencode/editorial-unit.json` (temporary, not
 committed). Next audit: research drivers, then remaining first-party tools and
 modules.
+
+## Corpus inventory and relation tooling — 2026-10-04
+
+Synthetic fixtures now cover corpus inventory/classification, candidate
+locators, the generated evidence matrix, text-format equivalence, changed-input
+refusal, PDF extraction outcomes, ZIP member hashing/size limits, reporting,
+and read-only output-path enforcement. The focused unit module passed **11
+tests**. Both `ocf_tools/corpus.py` and `tools/analyze_corpus_relations.py`
+measure **100% unit line and branch coverage**, with no exclusions. No corpus
+reference material was read or changed. Detailed report:
+`/tmp/opencode/corpus-rel.json` (temporary, not committed).

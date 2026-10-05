@@ -76,7 +76,7 @@ The 100% unit line/branch gate remains disabled. The repository still contains s
 
 ## Exact next actions
 
-1. Continue the exact per-module unit-gap audit. `semantic_dsp.py` and `editorial.py` now have 100% focused unit line/branch coverage, recorded in `docs/TEST_COVERAGE.md`; continue with research drivers and remaining tools/modules.
+1. Continue the exact per-module unit-gap audit. `semantic_dsp.py`, `editorial.py`, `corpus.py`, and `analyze_corpus_relations.py` now have 100% focused unit line/branch coverage, recorded in `docs/TEST_COVERAGE.md`; continue with remaining research drivers and tools/modules.
 2. Add deterministic failure-path tests and fix discovered root causes.
 3. Re-run the full unit and integration suites after each coherent coverage checkpoint.
 4. Preserve the human-review freeze and do not promote working drafts to release.
