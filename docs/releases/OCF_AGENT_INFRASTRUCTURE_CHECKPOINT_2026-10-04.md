@@ -76,7 +76,7 @@ The 100% unit line/branch gate remains disabled. The repository still contains s
 
 ## Exact next actions
 
-1. Continue the exact per-module unit-gap audit. `semantic_dsp.py` has a focused unit audit recorded in `docs/TEST_COVERAGE.md`; its isolated renderer/CLI paths remain, followed by `editorial.py`, research drivers, and remaining tools.
+1. Continue the exact per-module unit-gap audit. `semantic_dsp.py` has a focused unit audit, including isolated renderer/CLI preflight failure paths, recorded in `docs/TEST_COVERAGE.md`; remaining renderer execution paths and `editorial.py`, research drivers, and tools follow.
 2. Add deterministic failure-path tests and fix discovered root causes.
 3. Re-run the full unit and integration suites after each coherent coverage checkpoint.
 4. Preserve the human-review freeze and do not promote working drafts to release.

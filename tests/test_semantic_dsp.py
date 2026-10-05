@@ -324,6 +324,96 @@ def test_measured_approach_ownership_and_anchor_failures_are_unit_contracts():
         plan_program(doc, times, 100, duplicate)
 
 
+@pytest.mark.parametrize(
+    ("available", "message"),
+    [
+        ({"ffprobe": "/usr/bin/ffprobe"}, "requires ffmpeg"),
+        ({"ffmpeg": "/usr/bin/ffmpeg"}, "requires ffprobe"),
+    ],
+)
+def test_renderer_requires_both_verification_tools(monkeypatch, tmp_path, available, message):
+    from ocf_tools import semantic_dsp
+
+    monkeypatch.setattr(semantic_dsp.shutil, "which", lambda name: available.get(name))
+    with pytest.raises(OCFError, match=message):
+        semantic_dsp.render_program(
+            state_doc(),
+            TIMES,
+            100,
+            load_profile("OCF-DSP-DEVELOPMENT-V4-001"),
+            tmp_path / "bed.wav",
+        )
+
+
+def test_disabled_renderer_emits_deterministic_silence_without_state_sources(monkeypatch, tmp_path):
+    from ocf_tools import semantic_dsp
+
+    profile = load_profile("OCF-DSP-DEVELOPMENT-V4-001")
+    profile["states"] = {state: {"mode": "disabled"} for state in profile["states"]}
+    commands = []
+    monkeypatch.setattr(semantic_dsp.shutil, "which", lambda name: f"/usr/bin/{name}")
+    monkeypatch.setattr(
+        semantic_dsp,
+        "_command",
+        lambda command: commands.append(command) or subprocess.CompletedProcess(command, 0, "", ""),
+    )
+    monkeypatch.setattr(semantic_dsp, "_sha", lambda path: "a" * 64)
+
+    output = tmp_path / "nested" / "silence.wav"
+    program = semantic_dsp.render_program(state_doc(), TIMES, 100, profile, output)
+
+    assert output.parent.is_dir()
+    assert program["output_sha256"] == "a" * 64
+    assert len(program["external_commands"]) == 1
+    assert "anullsrc=r=44100:cl=stereo" in commands[0]
+    assert commands[0][-1] == str(output)
+
+
+def test_external_command_errors_include_command_and_stderr(monkeypatch):
+    from ocf_tools import semantic_dsp
+
+    monkeypatch.setattr(
+        semantic_dsp.subprocess,
+        "run",
+        lambda command, **kwargs: subprocess.CompletedProcess(command, 9, "", "engine detail"),
+    )
+    with pytest.raises(OCFError, match=r"semantic DSP engine failed: engine --flag\nengine detail"):
+        semantic_dsp._command(["engine", "--flag"])
+
+
+def test_render_command_refuses_overwrite_before_loading_inputs(monkeypatch, tmp_path):
+    from types import SimpleNamespace
+
+    from ocf_tools import semantic_dsp
+
+    output = tmp_path / "existing.wav"
+    output.touch()
+    monkeypatch.setattr(
+        semantic_dsp, "load_profile", lambda _reference: pytest.fail("loaded profile")
+    )
+    args = SimpleNamespace(output=output, force=False)
+    with pytest.raises(OCFError, match="refusing to overwrite"):
+        semantic_dsp.run_render_program(args)
+
+
+def test_render_command_requires_measured_timing_ledger(monkeypatch, tmp_path):
+    from types import SimpleNamespace
+
+    from ocf_tools import semantic_dsp, transcript
+
+    monkeypatch.setattr(transcript, "load_timed_doc", lambda _path: state_doc())
+    monkeypatch.setattr(semantic_dsp, "load_yaml_file", lambda _path: {})
+    args = SimpleNamespace(
+        output=tmp_path / "bed.wav",
+        force=False,
+        file=tmp_path / "session.yaml",
+        render_manifest=tmp_path / "ledger.yaml",
+        dsp_profile="profile",
+    )
+    with pytest.raises(OCFError, match="measured event_timing ledger"):
+        semantic_dsp.run_render_program(args)
+
+
 def test_actual_ffmpeg_envelopes_and_seeded_output(tmp_path):
     """Integration: independently check PCM, including both state morphs."""
     from ocf_tools.semantic_dsp import render_program
