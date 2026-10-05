@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import copy
 import hashlib
 import io
@@ -42,6 +43,10 @@ def test_human_insertion_has_no_invented_source_range(authoring):
         "A new human-authored trial.",
         "Human editor",
     )
+    assert any(
+        occurrence.get("inserted")
+        for occurrence in editorial.load_function(f.workspace, f.id)["blocks"]
+    )
     rows = editorial.diff(f.workspace, f.id)["blocks"]
     inserted = next(row for row in rows if row["id"] == "b900")
     assert inserted["category"] == "inserted-ocf-only"
@@ -67,6 +72,268 @@ def test_diff_filters_and_immutable_semantic_identity(authoring):
     store_block(f, block)
     with pytest.raises(OCFError, match="semantic identity changed"):
         editorial.load_function(f.workspace, f.id)
+
+
+def test_editorial_path_and_runtime_output_boundaries(monkeypatch, tmp_path):
+    monkeypatch.setattr(editorial, "REPO_ROOT", tmp_path)
+    assert (
+        editorial.checked_path(tmp_path, "working/functions.yaml")
+        == tmp_path / "working/functions.yaml"
+    )
+    for path in ("../outside.yaml", str(tmp_path / "absolute.yaml")):
+        with pytest.raises(OCFError, match="escapes"):
+            editorial.checked_path(tmp_path / "workspace", path)
+    with pytest.raises(OCFError, match="runtime resource roots"):
+        editorial.require_local_output(tmp_path / "locales" / "draft.yaml")
+    editorial.require_local_output(tmp_path / "working" / "draft.yaml")
+
+
+def test_candidate_partition_ignores_foreign_and_full_document_locators(authoring):
+    f = authoring(skeletonize=False)
+    sections = f.review["sections"]
+    sections["purpose"] = {
+        "status": "supported",
+        "locators": [
+            {"file": "another-source.txt", "start_line": 1, "end_line": 2},
+            {"file": f"{f.id}.txt", "start_line": 1, "end_line": 4},
+        ],
+    }
+    doc, chunks = editorial.build_skeleton(f.id, "available", f.review, f.evidence, f.raw)
+    assert doc["blocks"][0]["role"] == "preparation"
+    assert (
+        chunks[doc["blocks"][1]["ref"]]["source"]["text"]
+        == SOURCE.splitlines(keepends=True)[1] + SOURCE.splitlines(keepends=True)[2]
+    )
+
+
+def test_locator_without_line_numbers_does_not_create_candidate_range(authoring):
+    f = authoring(skeletonize=False)
+    f.review["sections"]["purpose"] = {
+        "status": "supported",
+        "locators": [{"file": f"{f.id}.txt"}],
+    }
+    doc, _ = editorial.build_skeleton(f.id, "available", f.review, f.evidence, f.raw)
+    assert all(block["role"] != "purpose" for block in doc["blocks"])
+
+
+def test_repeated_batch_skeletonization_preserves_new_shared_claim_flags(authoring):
+    first = authoring()
+    second = authoring("OCF-TST-002", skeletonize=False)
+    (first.source_root / f"{second.id}.txt").write_bytes(second.raw)
+    review = copy.deepcopy(second.review)
+    review["claim_categories"] = ["new-second-source-flag"]
+    write_yaml(
+        first.content_root / "specifications" / f"{second.id}.yaml", {"analysis_review": review}
+    )
+    write_yaml(first.content_root / "evidence" / f"{second.id}.yaml", second.evidence)
+
+    editorial.skeletonize(first.source_root, first.workspace, [first.record], first.content_root)
+    editorial.skeletonize(
+        first.source_root, first.workspace, [first.record, second.record], first.content_root
+    )
+    shared = block_at(first, 0)[1]
+    assert "new-second-source-flag" in shared["working"]["flags"]
+    assert all(flag in shared["working"]["flags"] for flag in FLAGS)
+
+
+def test_skeletonization_reports_missing_selected_source_before_writes(authoring):
+    f = authoring(skeletonize=False)
+    (f.source_root / f"{f.id}.txt").unlink()
+    with pytest.raises(OCFError, match="cannot read selected source"):
+        editorial.skeletonize(f.source_root, f.workspace, [f.record], f.content_root)
+    assert not f.workspace.exists()
+
+
+def test_loaders_reject_invalid_ids_identity_and_block_references(authoring):
+    f = authoring()
+    with pytest.raises(OCFError, match="invalid function ID"):
+        editorial.load_function(f.workspace, "not-an-ocf-id")
+    with pytest.raises(OCFError, match="invalid block reference"):
+        editorial.load_block(f.workspace, "../block")
+    path = f.workspace / "functions" / f"{f.id}.yaml"
+    doc = yaml.safe_load(path.read_text(encoding="utf-8"))
+    doc["function_id"] = "OCF-TST-999"
+    write_yaml(path, doc)
+    with pytest.raises(OCFError, match="identity mismatch"):
+        editorial.load_function(f.workspace, f.id)
+
+
+def test_review_requires_existing_block_and_nonblank_human(authoring):
+    f = authoring()
+    with pytest.raises(OCFError, match="known block and named human"):
+        editorial.mark_review(f.workspace, f.id, "missing", "reviewed_unchanged", "Editor")
+    with pytest.raises(OCFError, match="known block and named human"):
+        editorial.mark_review(f.workspace, f.id, "b001", "reviewed_unchanged", "  ")
+
+
+@pytest.mark.parametrize("kind", ["variants", "dashboard"])
+def test_editorial_run_rejects_unsafe_export_destinations(authoring, tmp_path, kind):
+    f = authoring()
+    args = SimpleNamespace(
+        content_kind=kind,
+        workspace=f.workspace,
+        id=None,
+        json=False,
+        filter=None,
+        output=tmp_path / "outside.json",
+    )
+    if kind == "variants":
+        with pytest.raises(OCFError, match="must stay inside the local workspace"):
+            editorial.run(args)
+    else:
+        # Dashboard output is deliberately allowed outside the editorial workspace,
+        # but still cannot land in a packaged runtime tree.
+        editorial.run(args)
+        assert args.output.is_file()
+
+
+def test_empty_working_chunks_are_omitted_from_preview(authoring):
+    f = authoring()
+    _, block = block_at(f)
+    block["working"]["text"] = ""
+    store_block(f, block)
+    preview = editorial.preview(f.workspace, f.id)
+    assert [event["id"] for event in preview["timeline"]] == ["b002", "b003"]
+    assert preview["timeline"][0]["at"] == 0
+
+
+def test_insert_rejects_unknown_anchor_and_unknown_semantic(authoring):
+    f = authoring()
+    with pytest.raises(OCFError, match="unknown insertion anchor"):
+        editorial.insert(
+            f.workspace, f.id, "b900", "missing", "function.instruction", "Text", "Editor"
+        )
+    with pytest.raises(OCFError, match="unique block ID"):
+        editorial.insert(f.workspace, f.id, "b900", "b001", "english.label", "Text", "Editor")
+
+
+@pytest.mark.parametrize(
+    "arguments",
+    [
+        ["skeletonize", "--source-root", "source", "--function", "OCF-TST-001"],
+        ["diff", "OCF-TST-001", "--filter", "changed", "--json"],
+        ["dashboard", "--output", "dashboard.json"],
+        ["variants", "--output", "variants.json"],
+        [
+            "review",
+            "OCF-TST-001",
+            "--block",
+            "b001",
+            "--reviewer",
+            "Human",
+            "--status",
+            "reviewed_unchanged",
+        ],
+        [
+            "approve",
+            "OCF-TST-001",
+            "--block",
+            "b001",
+            "--reviewer",
+            "Human",
+            "--rights",
+            "user_cleared",
+            "--rights-evidence",
+            "receipt",
+        ],
+        ["preview", "OCF-TST-001", "--release", "--output", "preview.yaml"],
+        [
+            "insert",
+            "OCF-TST-001",
+            "--block",
+            "b900",
+            "--before",
+            "b001",
+            "--semantic",
+            "function.instruction",
+            "--text-file",
+            "insert.txt",
+            "--reviewer",
+            "Human",
+        ],
+    ],
+)
+def test_editorial_parser_exposes_explicit_workflow_options(arguments):
+    parser = argparse.ArgumentParser()
+    subparsers = parser.add_subparsers()
+    editorial.add_parser(subparsers)
+    parsed = parser.parse_args(["content", *arguments])
+    assert parsed.content_kind == arguments[0]
+
+
+def test_editorial_run_dispatches_workflows_and_persists_local_exports(
+    authoring, tmp_path, capsys, monkeypatch
+):
+    f = authoring(skeletonize=False)
+    from ocf_tools import content, indexes
+
+    monkeypatch.setattr(content, "CONTENT_DIR", f.content_root)
+    monkeypatch.setattr(indexes, "load_all_functions", lambda: [f.record])
+
+    def run(kind, **options):
+        json_output = options.pop("json", False)
+        args = SimpleNamespace(
+            content_kind=kind,
+            workspace=f.workspace,
+            id=f.id,
+            json=json_output,
+            **options,
+        )
+        return editorial.run(args)
+
+    assert run("skeletonize", source_root=f.source_root, function=f.id) == 0
+    assert json.loads(capsys.readouterr().out)["skeletonized"] == [f.id]
+    with pytest.raises(OCFError, match="unknown function"):
+        run("skeletonize", source_root=f.source_root, function="OCF-TST-999")
+    assert run("diff", filter=None) == 0
+    assert "b001 preparation" in capsys.readouterr().out
+    assert run("diff", filter=None, json=True) == 0
+    assert json.loads(capsys.readouterr().out)["function_id"] == f.id
+
+    dashboard_path = f.workspace / "dashboard.json"
+    assert run("dashboard", filter="changed", output=dashboard_path) == 0
+    assert json.loads(dashboard_path.read_text())["functions"] == []
+    assert "Totals:" in capsys.readouterr().out
+
+    variants_path = f.workspace / "variants.json"
+    assert run("variants", output=variants_path) == 0
+    assert json.loads(variants_path.read_text()) == json.loads(capsys.readouterr().out)
+
+    inserted_text = tmp_path / "inserted.txt"
+    inserted_text.write_text("Human insertion", encoding="utf-8")
+    assert (
+        run(
+            "insert",
+            block="b900",
+            before="b002",
+            semantic="function.instruction",
+            text_file=inserted_text,
+            reviewer="Human reviewer",
+        )
+        == 0
+    )
+    assert json.loads(capsys.readouterr().out)["action"] == "insert"
+
+    assert run("review", block="b001", status="reviewed_unchanged", reviewer="Human reviewer") == 0
+    assert json.loads(capsys.readouterr().out)["action"] == "review"
+    assert (
+        run(
+            "approve",
+            block="b001",
+            reviewer="Rights reviewer",
+            rights="user_cleared",
+            rights_evidence="Synthetic rights record",
+        )
+        == 0
+    )
+    assert json.loads(capsys.readouterr().out)["action"] == "approve"
+
+    preview_path = tmp_path / "preview.yaml"
+    assert run("preview", release=False, output=preview_path) == 0
+    assert "Prépare yourself" in capsys.readouterr().out
+    assert "WORKING REVIEW" in preview_path.read_text(encoding="utf-8")
+    assert run("preview", release=False, output=None) == 0
+    assert "Prépare yourself" in capsys.readouterr().out
 
 
 def write_yaml(path, data):
@@ -862,6 +1129,98 @@ def test_inserted_semantics_cannot_change_after_text_review(authoring):
     write_yaml(f.workspace / "functions" / f"{f.id}.yaml", doc)
     with pytest.raises(OCFError, match="inserted semantic identity"):
         editorial.load_function(f.workspace, f.id)
+
+
+def test_function_loader_rejects_duplicate_occurrence_ids(authoring):
+    f = authoring()
+    path = f.workspace / "functions" / f"{f.id}.yaml"
+    doc = yaml.safe_load(path.read_text(encoding="utf-8"))
+    doc["blocks"].append(copy.deepcopy(doc["blocks"][0]))
+    write_yaml(path, doc)
+    with pytest.raises(OCFError, match="duplicate editorial block occurrence"):
+        editorial.load_function(f.workspace, f.id)
+
+
+@pytest.mark.parametrize("tamper", ["semantic-key", "source-line-count"])
+def test_function_loader_verifies_content_address_and_complete_line_count(authoring, tamper):
+    f = authoring()
+    path = f.workspace / "functions" / f"{f.id}.yaml"
+    doc = yaml.safe_load(path.read_text(encoding="utf-8"))
+    occurrence = doc["blocks"][0]
+    block = editorial.load_block(f.workspace, occurrence["ref"])
+    if tamper == "semantic-key":
+        occurrence["semantic"] = block["semantic"] = "function.future-use"
+        store_block(f, block)
+        message = "source/semantic block identity changed"
+    else:
+        doc["source"]["line_count"] += 1
+        message = "cover the entire available transcript"
+    write_yaml(path, doc)
+    with pytest.raises(OCFError, match=message):
+        editorial.load_function(f.workspace, f.id)
+
+
+@pytest.mark.parametrize("tamper", ["range", "source-text", "semantic", "reusable", "identity"])
+def test_inserted_occurrence_cannot_claim_historical_ranges(authoring, tamper):
+    f = authoring()
+    editorial.insert(
+        f.workspace, f.id, "b900", "b002", "function.command.rehearsal", "New words", "Editor"
+    )
+    path = f.workspace / "functions" / f"{f.id}.yaml"
+    doc = yaml.safe_load(path.read_text(encoding="utf-8"))
+    occurrence = next(row for row in doc["blocks"] if row["id"] == "b900")
+    block = editorial.load_block(f.workspace, occurrence["ref"])
+    if tamper == "range":
+        occurrence["start_line"] = 1
+    elif tamper == "source-text":
+        block["source"]["text"] = "fabricated"
+        block["source"]["text_sha256"] = editorial.fingerprint("fabricated")
+    elif tamper == "semantic":
+        occurrence["semantic"] = "function.future-use"
+    elif tamper == "reusable":
+        occurrence["reusable"] = True
+    else:
+        occurrence["id"] = "b901"
+    if tamper == "source-text":
+        store_block(f, block)
+    write_yaml(path, doc)
+    with pytest.raises(
+        OCFError,
+        match="inserted OCF-only block cannot claim source wording|inserted semantic identity",
+    ):
+        editorial.load_function(f.workspace, f.id)
+
+
+def test_template_origin_queries_reject_or_report_cycles(authoring):
+    f = authoring()
+    _, block = block_at(f)
+    with pytest.raises(OCFError, match="no validated source/working origin"):
+        editorial.block_origins(f.workspace, "f" * 64)
+    block["working"]["template_ref"] = block["id"]
+    store_block(f, block)
+    with pytest.raises(OCFError, match="circular reusable-template"):
+        editorial.substitution_origins(f.workspace, block)
+
+
+@pytest.mark.parametrize(
+    ("name", "expected"),
+    [
+        (None, True),
+        ("unknown-filter", True),
+        ("function-specific", False),
+        ("reusable", True),
+        ("uncertain", False),
+    ],
+)
+def test_editorial_filter_default_and_semantic_categories(authoring, name, expected):
+    f = authoring()
+    row = editorial.diff(f.workspace, f.id)["blocks"][0]
+    assert editorial.matches_filter(row, name) is expected
+    if name == "uncertain":
+        block = block_at(f)[1]
+        block["working"]["review_status"] = "transcript_uncertain"
+        store_block(f, block)
+        assert editorial.diff(f.workspace, f.id, name)["blocks"]
 
 
 def test_full_synthetic_39_plus_16_batch_preserves_shared_uncertainty(authoring):

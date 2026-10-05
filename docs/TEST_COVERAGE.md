@@ -195,3 +195,23 @@ passed with 0 errors and the same 7 existing warnings.
 Focused coverage report: `/tmp/opencode/semantic-dsp-final.json`
 (temporary, not committed). Next audit: `editorial.py`, then research drivers and
 remaining first-party tools/modules.
+
+## Editorial unit-gap audit — 2026-10-04
+
+The editorial audit added contracts for path/package boundaries, locator
+partitioning, source I/O and identity failures, shared-chunk flag merging,
+inserted-block and reusable-origin invariants, filters, review requirements,
+parser options, and all workflow dispatch/export paths. The focused unit
+selection passed **92 tests**; the complete editorial test module passed **94
+tests** (including its two integration cases). `editorial.py` measured
+**417/417 statements and 228/228 branches (100% line and branch coverage)**,
+with zero excluded lines.
+
+Removed one redundant defensive branch that rejected blocks on unavailable
+sources after schema validation: `editorial-function.schema.json` already
+requires `blocks.maxItems: 0` for unavailable sources, so that branch was
+unreachable for every valid document and could not execute without bypassing
+the contract validator. The schema test continues to enforce this invariant.
+Focused coverage report: `/tmp/opencode/editorial-unit.json` (temporary, not
+committed). Next audit: research drivers, then remaining first-party tools and
+modules.

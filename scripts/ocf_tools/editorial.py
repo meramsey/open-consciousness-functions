@@ -343,25 +343,23 @@ def load_function(workspace: Path, function_id: str) -> dict:
                 )
                 if occurrence["ref"] != expected:
                     raise OCFError("inserted semantic identity changed")
-                continue
-            if occurrence["start_line"] != cursor or occurrence["end_line"] < cursor:
-                raise OCFError("source ranges must be contiguous and exhaustive")
-            chunk = load_block(workspace, occurrence["ref"])
-            exact = "".join(lines[cursor - 1 : occurrence["end_line"]])
-            if chunk["source"]["text"] != exact or chunk["semantic"] != occurrence["semantic"]:
-                raise OCFError("source wording or semantic identity changed")
-            semantic_key = (
-                occurrence["semantic"]
-                if occurrence["reusable"]
-                else function_id + ":" + occurrence["semantic"]
-            )
-            if fingerprint(semantic_key + "\0" + exact) != occurrence["ref"]:
-                raise OCFError("immutable source/semantic block identity changed")
-            cursor = occurrence["end_line"] + 1
+            else:
+                if occurrence["start_line"] != cursor or occurrence["end_line"] < cursor:
+                    raise OCFError("source ranges must be contiguous and exhaustive")
+                chunk = load_block(workspace, occurrence["ref"])
+                exact = "".join(lines[cursor - 1 : occurrence["end_line"]])
+                if chunk["source"]["text"] != exact or chunk["semantic"] != occurrence["semantic"]:
+                    raise OCFError("source wording or semantic identity changed")
+                semantic_key = (
+                    occurrence["semantic"]
+                    if occurrence["reusable"]
+                    else function_id + ":" + occurrence["semantic"]
+                )
+                if fingerprint(semantic_key + "\0" + exact) != occurrence["ref"]:
+                    raise OCFError("immutable source/semantic block identity changed")
+                cursor = occurrence["end_line"] + 1
         if cursor != len(lines) + 1 or len(lines) != doc["source"]["line_count"]:
             raise OCFError("source ranges must cover the entire available transcript")
-    elif doc["blocks"]:
-        raise OCFError("unavailable source cannot have inherited blocks")
     return doc
 
 
