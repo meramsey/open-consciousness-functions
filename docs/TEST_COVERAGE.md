@@ -278,3 +278,13 @@ temporary roots for both 55-record and unexpected-count outcomes; its
 `__main__` dispatch guard is left unexecuted because it would target and rewrite
 the canonical tracked function corpus. Detailed report:
 `/tmp/opencode/tool-contracts.json` (temporary, not committed).
+
+Additional filesystem-tool audits reached **100% unit line and branch
+coverage** for `tools/build_package_data.py`, `tools/preserve_auditions.py`,
+and `tools/apply_function_reviews.py`. Synthetic tests exercise package
+exclusions/symlinks/build-manifest staging, byte-preserving/idempotent
+preservation including source mutation during copy, and manual review source,
+brochure, validation, CLI-default, and explicit `--apply` boundaries. Focused
+reports: `/tmp/opencode/package-final.json`,
+`/tmp/opencode/preserve-final.json`, and `/tmp/opencode/review-tool.json`
+(temporary, not committed).
