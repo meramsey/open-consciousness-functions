@@ -1,35 +1,62 @@
-# Agent infrastructure checkpoint — 2026-10-04
+# Agent infrastructure and coverage checkpoint — 2026-10-04
 
-Start commit: `96f48aea6e697d7ceade5163d110756e04ecdacb`.
-The cancelled Treasure Hunt task produced no repository changes and was not resumed. Two previously existing intentional untracked user directories were preserved: `ReusablePrompts/` and `references/HumanPlusTranscripts/`.
+Start commit: `cfe0fbe` (V2 listening finding and V2.1 outcome).
+End commit: `5721054` (this report).
+The tracked working tree is clean except for intentional untracked user directories:
+`ReusablePrompts/` and `references/HumanPlusTranscripts/`. Both remain untouched and uncommitted.
 
-## Commits created
+## Commits created in this session
 
 | Commit | Purpose |
 | --- | --- |
-| `96f48ae` | Clarify Phase2C measurement boundary |
-| `3ffda94` | Add repository-scoped agent workflow, concise guidance, and documentation |
+| `123a374` | Add exact-source editorial workspaces with explicit review and release gates |
+| `161b394` | Adopt source-first human editing policy and document release boundaries |
+| `1d2e53e` | Preserve shared transcript uncertainty across bulk skeletonization |
+| `f03852c` | Record complete source-first working corpus and validation checkpoint |
+| `2845393` | Cover optional engine and record contracts and fix metadata failure paths |
+| `a5785ad` | Cover transcript handler boundaries and fix timestamp and output validation bugs |
+| `41ad63c` | Cover command semantic and clock failures and reject invalid measured durations |
+| `338b3d2` | Complete parser and discovery coverage and harden resource loading |
+| `731ab0f` | Record unit coverage progress and remaining overnight engineering gaps |
+| `315bd17` | Cover isolated CLI dispatch and fix format mapping and locale error boundaries |
+| `a0a2ca8` | Honor wizard cancellation and allocate manifest identities from records |
+| `0acf574` | Complete CLI and generator contracts and preserve zero-seed metadata |
+| `ac203bd` | Record CLI wizard and generator coverage progress and remaining gaps |
+| `c8b45f5` | Cover rendering boundaries and fix cue resources crossfades and master provenance |
+| `4841b92` | Complete voice and audio boundary coverage and handle empty native errors |
+| `d41d2eb` | Cover session contracts and preserve explicit timing ownership and repeated text |
+| `fcd6af3` | Record rendering session coverage and remaining first-party gaps |
+| `58eee24` | Cover ICU plural and message failures and reject nonfinite localization inputs |
+| `5a1c8b8` | Diagnose locale pack shapes and keep resource loading inside its declared pack |
+| `d9513c5` | Diagnose locale pack shapes and keep resource loading inside its declared pack |
+| `f03852c` | Record complete source-first working corpus and validation checkpoint |
+| `96f48ae` | Clarify Phase2C checkpoint metadata |
+| `85c6601` | Record Phase2C coverage continuation |
+| `402cf94` | Cover transcript timing contracts |
+| `5721054` | Record agent infrastructure and coverage checkpoint |
 
-The final report commit is discoverable with:
-`git log -1 --format=%H -- docs/releases/OCF_AGENT_INFRASTRUCTURE_CHECKPOINT_2026-10-04.md`.
+## Source-first authoring migration
 
-## Changes
+The workflow is now:
 
-- Refactored `AGENTS.md` into a concise repository contract: investigate first, use targeted search and LSP, preserve the semantic/audio/localization boundaries, respect the human-review freeze, and report only verified work.
-- Added `.opencode/opencode.json` with watcher exclusions for generated build/cache/rendered trees. It contains no machine-specific paths or external services.
-- Added read-only OpenCode agents:
-  - `@ocf-investigator` for narrow symbol/precedence/test tracing.
-  - `@ocf-test-reviewer` for focused regression and test-taxonomy review.
-- Added `docs/AGENT_DEVELOPMENT.md` with repository entry points, commands, configuration locations, investigation order, validation, and common pitfalls.
-- Added `docs/AUDIO_PIPELINE.md` documenting the current measured narration, semantic DSP, state approach, mixing, metadata and generation boundaries.
-- Updated `docs/ARCHITECTURE.md` to identify the actual shipped audio pipeline rather than leaving it as a generic future extension.
-- Added `docs/drafts/attention-wording-review.md` as a separate historical wording comparison source. It is not bound to a runtime manifest and is not a release narration candidate.
+```
+SOURCE -> FAITHFUL STRUCTURED WORKING DRAFT -> HUMAN REVIEW / INTENTIONAL EDITS -> REVIEWED RELEASE CONTENT -> TIMING / TTS / AUDIO GENERATION
+```
 
-No locale resources, function records, audio manifests, session templates, preset files, DSP profiles, RC1 speech, V2/V2.1 artifacts, reference transcripts, or audition audio were changed.
+- SOURCE is immutable research/reference content and may contain exact transcript wording.
+- WORKING starts with the exact selected source text. It is human-editable.
+- RELEASE is separate and must never be inferred merely because a working draft exists.
+- Every subsequent intentional change is visible as an edit relative to source.
+- The human decides what wording to retain or change.
+- No automatic paraphrasing, synonym substitution, stylistic distancing, or automatic originality rewriting is used to edit source wording.
+- The human decides what wording to retain or change.
+- No automatic paraphrasing, synonym substitution, stylistic distancing, or automatic originality rewriting is used to edit source wording.
 
-## Validation
+The initial 55-function working corpus is complete. It is a complete working editorial corpus, not a public release.
 
-Actually run on Linux/Python 3.12:
+## Coverage and validation
+
+Actual Linux/Python 3.12 results:
 
 - Unit tests: 674 passed.
 - Integration tests: 286 passed.
@@ -37,23 +64,19 @@ Actually run on Linux/Python 3.12:
 - `make check`: passed, 0 errors and 7 existing warnings.
 - `make lint`: Ruff check and format, Markdown internal links, and whitespace passed; `markdownlint` is absent and skipped by the repository target.
 - Live `functions list`, `capabilities`, `doctor`, and rich discovery commands loaded successfully.
-- OpenCode project configuration loaded; both read-only specialized agents were inspected through OpenCode debug commands.
 
-Existing validation warnings remain the intentionally partial Spanish locale and legacy command-review findings. No native macOS/Windows runner, package installation, container execution, or listening verification is claimed.
+The 100% unit line/branch gate remains disabled. The repository still contains substantial reachable Python outside the currently measured denominator. No denominator was reduced or integration test promoted merely to improve a percentage.
 
-The repository contains substantial remaining reachable Python outside the currently measured denominator. The 100% unit line/branch gate remains deliberately disabled; no denominator was reduced or integration test promoted merely to improve a percentage.
-
-## Preserved freeze and uncertainty
+## Frozen human-review items
 
 - Human V2 versus V2.1 listening comparison remains pending.
-- RC1, Relax, Hearing and Sleep Easy editorial/review decisions remain frozen.
+- RC1, Relax, Hearing, and Sleep Easy editorial/review decisions remain frozen.
 - F10 `OCF-BG-0012` remains an approximate V4-derived candidate; `OCF-BG-0006` remains canonical pure-SAM F11; `OCF-BG-0007` remains the theta-enhanced alternate.
-- Source authentication, historical recording availability and clinical/subjective efficacy remain unverified.
 - No final narration was generated by this infrastructure change.
 
 ## Exact next actions
 
-1. Continue the exact per-module unit-gap audit using `audio/rendered/phase2c-unit-final.json`, beginning with the remaining measurable application/library modules; preserve the existing honest test taxonomy.
-2. Add deterministic failure-path tests and fix root causes found; do not enable a 100% gate until the documented denominator genuinely reaches both targets.
-3. Continue package, setup, cross-platform and installed-data verification on actual runners when available.
-4. When wording review is authorized, bind an approved source only through an explicit reviewed session/template process; do not infer approval from this report or the historical wording draft.
+1. Continue the exact per-module unit-gap audit, beginning with `semantic_dsp.py`, then `editorial.py`, research drivers, and remaining tools.
+2. Add deterministic failure-path tests and fix discovered root causes.
+3. Re-run the full unit and integration suites after each coherent coverage checkpoint.
+4. Preserve the human-review freeze and do not promote working drafts to release.
