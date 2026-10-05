@@ -312,3 +312,38 @@ test found that missing copied files could leave a partially-created audition
 directory, so the renderer now preflights all V1 assets and subtitles before
 creating output. The remaining verifier main path's V2 audio acceptance report
 is intentionally unexecuted under the human listening freeze.
+
+## Phase2C final unit-scope checkpoint — 2026-10-04
+
+Linux/Python 3.12.3 full unit selection: **804 passed**. Full integration
+selection: **286 passed**. Combined complete suite: **1,090 passed**. Coverage
+ran with `branch = true`, `source = [scripts/ocf_tools, scripts/tools]`, and
+`exclude_lines = []`; no lines were excluded and no denominator was reduced.
+The measured denominator is **7,440 statements and 2,946 branches**: **7,375
+covered statements (99.13% line coverage)** and **2,928 covered branches
+(99.52%)**. Coverage.py's combined report is 99.24%. The exact remaining 65
+lines and 14 branches are all in `scripts/tools/verify_development_v2.py`'s
+full V2 acoustic acceptance flow:
+
+- Lines: `145-153`, `156-164`, `167-183`, `185-186`, `191`, `201-211`, `218`,
+  `224-225`, `228-243`, `250`, `266-267`.
+- Branch arcs: `164→167`, `164→168`, `168→169`, `168→172`, `173→174`,
+  `173→175`, `178→179`, `178→201`, `207→208`, `207→218`, `234→235`,
+  `234→236`, `236→237`, `236→250`.
+
+The remaining code reads a V2 DSP bed/master/listening encode, asserts specific
+F10/F11 spectral and temporal acceptance conditions, and writes an
+`acceptance: passed` report. The human V2-versus-V2.1 comparison remains
+pending. Exercising these lines with fabricated acceptance measurements or
+using frozen audition artifacts would cross that human-review boundary. Its
+independent PCM/statistics, spectral amplitude, and raised-cosine approach
+helpers are covered with synthetic fixtures; the full acceptance flow is the
+sole objectively blocked residual. Exact JSON report:
+`/tmp/opencode/phase2c-unit-final.json` (temporary, not committed).
+
+This concludes the Phase2C coverage continuation at **804 unit / 286
+integration / 1,090 total tests passed**. The honest full first-party unit
+scope remains **99.13% line / 99.52% branch coverage** for the one documented
+human-review blocker; no coverage gate or measured denominator was weakened.
+See [the final engineering checkpoint](releases/OCF_PHASE2C_UNIT_COVERAGE_FINAL_2026-10-04.md)
+for commits, platform/dependency details, TODO audit, and final validation.

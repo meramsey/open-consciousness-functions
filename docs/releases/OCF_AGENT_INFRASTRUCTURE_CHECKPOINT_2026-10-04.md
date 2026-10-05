@@ -76,7 +76,6 @@ The 100% unit line/branch gate remains disabled. The repository still contains s
 
 ## Exact next actions
 
-1. Continue the exact per-module unit-gap audit. 100% focused coverage is recorded for `semantic_dsp.py`, `editorial.py`, `corpus.py`, `analyze_corpus_relations.py`, `content.py`, `extract_function_content.py`, `planning.py`, `recordings.py`, `locale.py`, `check_markdown_links.py`, `container_smoke_fixture.py`, `build_package_data.py`, `preserve_auditions.py`, `apply_function_reviews.py`, `analyze_v4_short.py`, `preview_preparation_learning.py`, `bootstrap_legacy_map.py`, and `render_development_v2.py`; investigate only the remaining V2 audio acceptance boundary under the active human-listening freeze.
-2. Add deterministic failure-path tests and fix discovered root causes.
-3. Re-run the full unit and integration suites after each coherent coverage checkpoint.
-4. Preserve the human-review freeze and do not promote working drafts to release.
+1. Preserve the human V2-versus-V2.1 listening freeze. After human comparison, apply `scripts/tools/verify_development_v2.py` only to the selected audition artifact and record its measured acceptance report.
+2. Keep RC1, Relax, Hearing, Sleep Easy, rights, cue aesthetics, and source-derived RELEASE decisions frozen pending their respective human approvals.
+3. Do not promote working drafts or generate final narration/audio merely because infrastructure and coverage work are complete.
