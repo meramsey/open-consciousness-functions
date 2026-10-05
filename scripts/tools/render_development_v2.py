@@ -38,6 +38,23 @@ def main():
     source = next(args.v1.glob("*-narration.wav"))
     if _sha(source) != manifest["artifacts"][source.name]["sha256"]:
         raise RuntimeError("V1 speech checksum mismatch")
+    copy_names = (
+        "session-semantic.yaml",
+        "session-resolved.en-US.yaml",
+        "resolved-semantic-event-ledger.yaml",
+        "narration-render-metadata.yaml",
+        "timing-report.yaml",
+        "utterance-timing.csv",
+    )
+    missing = [name for name in copy_names if not (args.v1 / name).is_file()]
+    if missing:
+        raise RuntimeError("V1 artifact unavailable: " + ", ".join(missing))
+    subtitles = {}
+    for suffix in ("srt", "lrc"):
+        matches = sorted(args.v1.glob(f"*.{suffix}"))
+        if not matches:
+            raise RuntimeError(f"V1 subtitle unavailable: *.{suffix}")
+        subtitles[suffix] = matches[0]
     if args.output.exists():
         raise RuntimeError(f"refusing to overwrite {args.output}")
     args.output.mkdir(parents=True)
@@ -45,17 +62,10 @@ def main():
     designation = f"DEVELOPMENT AUDITION {args.label} — NOT PRODUCTION MASTER"
     speech = args.output / f"{prefix}-narration.wav"
     shutil.copyfile(source, speech)
-    for name in (
-        "session-semantic.yaml",
-        "session-resolved.en-US.yaml",
-        "resolved-semantic-event-ledger.yaml",
-        "narration-render-metadata.yaml",
-        "timing-report.yaml",
-        "utterance-timing.csv",
-    ):
+    for name in copy_names:
         shutil.copyfile(args.v1 / name, args.output / name)
     for suffix in ("srt", "lrc"):
-        shutil.copyfile(next(args.v1.glob(f"*.{suffix}")), args.output / f"{prefix}.{suffix}")
+        shutil.copyfile(subtitles[suffix], args.output / f"{prefix}.{suffix}")
     doc = yaml.safe_load((args.v1 / "session-semantic.yaml").read_text())
     with wave.open(str(speech)) as reader:
         duration = reader.getnframes() / reader.getframerate()

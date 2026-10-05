@@ -275,8 +275,8 @@ focused tool tests pass; `tools/check_markdown_links.py` and
 `tools/container_smoke_fixture.py` measure **100% unit line and branch
 coverage**. The legacy bootstrap writer's callable `main()` is tested against
 temporary roots for both 55-record and unexpected-count outcomes; its
-`__main__` dispatch guard is left unexecuted because it would target and rewrite
-the canonical tracked function corpus. Detailed report:
+`__main__` dispatch is exercised with writes redirected to a synthetic writer,
+so canonical records remain untouched. Detailed report:
 `/tmp/opencode/tool-contracts.json` (temporary, not committed).
 
 Additional filesystem-tool audits reached **100% unit line and branch
@@ -307,4 +307,7 @@ approach acceptance. Its remaining full-audition acceptance flow reads V2/V2.1
 audition files and writes an acceptance report; that flow remains frozen until
 the pending human V2-versus-V2.1 comparison. Likewise, the full
 `render_development_v2.py` path creates DSP beds and listening masters; only its
-input-integrity/overwrite preflight is exercised while that review is pending.
+input-integrity, complete-source-set, and overwrite preflight is exercised while
+that review is pending. Preflight now validates all required V1 files and both
+subtitle sources before creating the output directory; a synthetic missing-file
+case exposed that the former order left a partial audition directory.

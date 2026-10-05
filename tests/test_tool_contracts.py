@@ -202,6 +202,17 @@ def test_frozen_audition_renderer_preflights_inputs_before_any_output(
         manifest["artifacts"][source.name]["sha256"] = "0" * 64
     else:
         output.mkdir()
+        for name in (
+            "session-semantic.yaml",
+            "session-resolved.en-US.yaml",
+            "resolved-semantic-event-ledger.yaml",
+            "narration-render-metadata.yaml",
+            "timing-report.yaml",
+            "utterance-timing.csv",
+            "subtitle.srt",
+            "subtitle.lrc",
+        ):
+            (v1 / name).write_text("synthetic input", encoding="utf-8")
     (v1 / "render-manifest.yaml").write_text(yaml.safe_dump(manifest), encoding="utf-8")
     monkeypatch.setattr(render_development_v2, "ROOT", tmp_path)
     monkeypatch.setattr(
@@ -218,6 +229,76 @@ def test_frozen_audition_renderer_preflights_inputs_before_any_output(
         render_development_v2.main()
     if failure != "output-exists":
         assert not output.exists()
+
+
+@pytest.mark.unit
+def test_frozen_audition_renderer_preflights_all_copied_files_before_creating_output(
+    monkeypatch, tmp_path
+):
+    import hashlib
+    import sys
+
+    import yaml
+
+    v1 = tmp_path / "v1"
+    v1.mkdir()
+    source = v1 / "V1-narration.wav"
+    source.write_bytes(b"preserved V1 bytes")
+    expected = hashlib.sha256(source.read_bytes()).hexdigest()
+    (v1 / "render-manifest.yaml").write_text(
+        yaml.safe_dump({"rc1_source_sha256": {}, "artifacts": {source.name: {"sha256": expected}}}),
+        encoding="utf-8",
+    )
+    output = tmp_path / "audition"
+    monkeypatch.setattr(render_development_v2, "ROOT", tmp_path)
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["render_development_v2", "--v1", str(v1), "--output", str(output)],
+    )
+    with pytest.raises(RuntimeError, match="V1 artifact unavailable: session-semantic.yaml"):
+        render_development_v2.main()
+    assert not output.exists()
+
+
+@pytest.mark.unit
+def test_frozen_audition_renderer_preflights_subtitles_before_creating_output(
+    monkeypatch, tmp_path
+):
+    import hashlib
+    import sys
+
+    import yaml
+
+    v1 = tmp_path / "v1"
+    v1.mkdir()
+    source = v1 / "V1-narration.wav"
+    source.write_bytes(b"preserved V1 bytes")
+    for name in (
+        "session-semantic.yaml",
+        "session-resolved.en-US.yaml",
+        "resolved-semantic-event-ledger.yaml",
+        "narration-render-metadata.yaml",
+        "timing-report.yaml",
+        "utterance-timing.csv",
+        "existing.srt",
+    ):
+        (v1 / name).write_text("synthetic V1 input", encoding="utf-8")
+    expected = hashlib.sha256(source.read_bytes()).hexdigest()
+    (v1 / "render-manifest.yaml").write_text(
+        yaml.safe_dump({"rc1_source_sha256": {}, "artifacts": {source.name: {"sha256": expected}}}),
+        encoding="utf-8",
+    )
+    output = tmp_path / "audition"
+    monkeypatch.setattr(render_development_v2, "ROOT", tmp_path)
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["render_development_v2", "--v1", str(v1), "--output", str(output)],
+    )
+    with pytest.raises(RuntimeError, match=r"V1 subtitle unavailable: \*\.lrc"):
+        render_development_v2.main()
+    assert not output.exists()
 
 
 @pytest.mark.unit
