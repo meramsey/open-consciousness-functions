@@ -235,3 +235,20 @@ the executable extraction entrypoint. The focused unit module passed **14
 tests**. Both `ocf_tools/content.py` and `tools/extract_function_content.py`
 measure **100% unit line and branch coverage**, with no exclusions. Report:
 `/tmp/opencode/content-unit.json` (temporary, not committed).
+
+## Prerecorded narration recording contracts — 2026-10-04
+
+Recording coverage now includes session/text fingerprints, schema/locale and
+text-hash mismatches, decode errors and empty decoded audio, explicit event
+mapping, path containment, overwrite refusal, unmapped assets, and successful
+package creation with originals preserved. The unit selection passed **21
+tests**; the complete module passed **22 tests**, including the available
+ffmpeg conversion integration. `ocf_tools/recordings.py` measures **100% unit
+line and branch coverage**, with no exclusions. Report:
+`/tmp/opencode/recordings.json` (temporary, not committed).
+
+The same focused pass expanded authoring-plan contracts for voice selection,
+slot files, profile state compatibility, and matching/mismatched recorded-event
+packages. `ocf_tools/planning.py` measures **100% unit line and branch
+coverage**; its focused module passed **5 tests**. Report:
+`/tmp/opencode/planning.json` (temporary, not committed).
