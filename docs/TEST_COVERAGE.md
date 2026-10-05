@@ -175,3 +175,22 @@ Exact missing-line/branch report:
 No integration case was reclassified. See the
 [rendering checkpoint](releases/OCF_RENDERING_SESSION_COVERAGE_CHECKPOINT_2026-10-04.md)
 for fixes, reachability decisions, validation and remaining priorities.
+
+## Semantic DSP unit-gap audit — 2026-10-04
+
+The `semantic_dsp.py` audit added deterministic unit contracts for invalid
+transition directives/windows, missing state implementations, empty plans,
+approach ownership/anchor failures, and linear/equal-power gain expressions.
+Focused unit selection: **19 passed**; the full semantic DSP test module:
+**21 passed**. Focused unit coverage now reports **180/261 statements and
+85/126 branches** (68.48% lines, 67.46% branches). Remaining renderer and CLI
+paths in this module require separately isolated coverage; this audit does not
+claim full-module coverage. The full unit suite could not collect in this
+environment: Python 3.9.6 lacks the `soundfile` dependency required by a
+research-driver test. System Python 3.12.3 is present but has no pytest
+installation. `make check` passed with 0 errors and the same 7 existing
+warnings.
+
+Focused coverage report: `/tmp/opencode/semantic-dsp-focused-final.json`
+(temporary, not committed). Next audit: remaining `semantic_dsp.py` reachable
+renderer/CLI paths, then `editorial.py`.

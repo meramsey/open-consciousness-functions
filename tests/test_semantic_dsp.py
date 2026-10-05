@@ -1,5 +1,6 @@
 """Configured state dispatch, source confidence and non-silent transition contracts."""
 
+import math
 import shutil
 import subprocess
 import wave
@@ -9,7 +10,7 @@ from copy import deepcopy
 import pytest
 from conftest import REPO_ROOT
 from ocf_tools.indexes import load_yaml_file
-from ocf_tools.semantic_dsp import gain_at, load_profile, plan_program
+from ocf_tools.semantic_dsp import _gain_expression, gain_at, load_profile, plan_program
 from ocf_tools.utils import OCFError
 
 
@@ -190,6 +191,65 @@ def test_invalid_duration_duplicate_ledger_and_overlapping_windows():
         plan_program(doc, TIMES, 100, profile)
 
 
+@pytest.mark.parametrize(
+    ("mutate", "message"),
+    [
+        (lambda doc, profile: doc["timeline"][0]["dsp"].update(transition_s=200), "window"),
+        (lambda doc, profile: doc["timeline"][0]["dsp"].update(transition_s=-1), "window"),
+        (
+            lambda doc, profile: doc["timeline"][0]["dsp"].update(state={"from": "focus-10"}),
+            "no target",
+        ),
+        (lambda doc, profile: profile["states"].pop("ordinary-waking"), "required state DSP"),
+    ],
+)
+def test_transition_directive_boundaries_fail_closed(mutate, message):
+    doc, profile = state_doc(), load_profile("OCF-DSP-DEVELOPMENT-V4-001")
+    mutate(doc, profile)
+    with pytest.raises(OCFError, match=message):
+        plan_program(doc, TIMES, 100, profile)
+
+
+@pytest.mark.parametrize(
+    ("change", "message"),
+    [
+        (lambda doc, profile: doc["timeline"].clear(), "no state directives"),
+        (lambda doc, profile: profile.update(initial_state="not-configured"), "required state DSP"),
+        (
+            lambda doc, profile: profile.update(
+                approaches=[
+                    {
+                        "state_event": "ten",
+                        "state": "focus-11",
+                        "begin_event": "ten",
+                        "established_event": "ten",
+                        "curve": "raised-cosine",
+                    }
+                ]
+            ),
+            "distinct arrival directive",
+        ),
+    ],
+)
+def test_empty_or_invalid_approach_configuration_is_rejected(change, message):
+    doc, profile = state_doc(), load_profile("OCF-DSP-DEVELOPMENT-V4-001")
+    change(doc, profile)
+    with pytest.raises(OCFError, match=message):
+        plan_program(doc, TIMES, 100, profile)
+
+
+def test_linear_gain_and_ffmpeg_expression_cover_transition_shapes():
+    profile = load_profile("OCF-DSP-DEVELOPMENT-V4-001")
+    profile["transitions"]["curve"] = "linear"
+    program = plan_program(state_doc(), TIMES, 100, profile)
+    assert gain_at(program, "focus-10", 35) == pytest.approx(0.5)
+    assert gain_at(program, "focus-11", 35) == pytest.approx(0.5)
+    expression = _gain_expression(program, "focus-10")
+    assert "clip(" in expression and "cos(PI/2*" not in expression
+    equal_power = plan_program(state_doc(), TIMES, 100, load_profile("OCF-DSP-DEVELOPMENT-V4-001"))
+    assert "cos(PI/2*" in _gain_expression(equal_power, "focus-10")
+
+
 def test_repeated_state_is_noop_not_a_gain_swell():
     doc = state_doc()
     doc["timeline"][0]["dsp"]["state"] = "ordinary-waking"
@@ -230,6 +290,38 @@ def approach_profile():
         }
     ]
     return profile
+
+
+def test_measured_approach_ownership_and_anchor_failures_are_unit_contracts():
+    doc = approach_doc()
+    times = [{"id": "preparation", "at": 1}, {"id": "arrival-word", "at": 8}]
+    times += TIMES
+    program = plan_program(doc, times, 100, approach_profile())
+    assert program["transitions"][0]["end_s"] == program["transitions"][0]["start_s"]
+    assert program["approaches"][0]["arrival_s"] == 10
+    assert gain_at(program, "focus-10", 5) == pytest.approx((1 - math.cos(4 * math.pi / 7)) / 2)
+    assert gain_at(program, "focus-11", 35) > 0
+    assert "(1-cos(PI*" in _gain_expression(program, "focus-10")
+
+    for bad_times, message in [
+        ([row for row in times if row["id"] != "preparation"], "anchor missing"),
+        (
+            [dict(row, at=0) if row["id"] == "ten" else row for row in times],
+            "invalid DSP approach window",
+        ),
+    ]:
+        with pytest.raises(OCFError, match=message):
+            plan_program(doc, bad_times, 100, approach_profile())
+
+    disabled = approach_profile()
+    disabled["states"]["focus-10"] = {"mode": "disabled"}
+    with pytest.raises(OCFError, match="explicitly selected program"):
+        plan_program(doc, times, 100, disabled)
+
+    duplicate = approach_profile()
+    duplicate["approaches"].append(dict(duplicate["approaches"][0]))
+    with pytest.raises(OCFError, match="duplicate DSP approach"):
+        plan_program(doc, times, 100, duplicate)
 
 
 def test_actual_ffmpeg_envelopes_and_seeded_output(tmp_path):
