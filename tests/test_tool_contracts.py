@@ -202,6 +202,7 @@ def test_frozen_audition_renderer_preflights_inputs_before_any_output(
         manifest["artifacts"][source.name]["sha256"] = "0" * 64
     else:
         output.mkdir()
+        manifest["rc1_source_sha256"]["docs/research.md"] = "0" * 64
         for name in (
             "session-semantic.yaml",
             "session-resolved.en-US.yaml",
@@ -299,6 +300,172 @@ def test_frozen_audition_renderer_preflights_subtitles_before_creating_output(
     with pytest.raises(RuntimeError, match=r"V1 subtitle unavailable: \*\.lrc"):
         render_development_v2.main()
     assert not output.exists()
+
+
+@pytest.mark.unit
+def test_frozen_audition_renderer_copies_only_synthetic_sources_before_dsp_boundary(
+    monkeypatch, tmp_path
+):
+    import hashlib
+    import sys
+    import wave
+
+    import yaml
+    from ocf_tools.utils import OCFError
+
+    v1 = tmp_path / "v1"
+    v1.mkdir()
+    source = v1 / "V1-narration.wav"
+    with wave.open(str(source), "wb") as writer:
+        writer.setparams((1, 2, 8000, 0, "NONE", "not compressed"))
+        writer.writeframes(b"\x00\x10" * 800)
+    manifest = {
+        "rc1_source_sha256": {},
+        "artifacts": {source.name: {"sha256": hashlib.sha256(source.read_bytes()).hexdigest()}},
+        "event_timing": [],
+        "narration_timing": {},
+    }
+    (v1 / "render-manifest.yaml").write_text(yaml.safe_dump(manifest), encoding="utf-8")
+    for name, content in {
+        "session-semantic.yaml": {"timeline": []},
+        "session-resolved.en-US.yaml": {},
+        "resolved-semantic-event-ledger.yaml": {},
+        "narration-render-metadata.yaml": {},
+        "timing-report.yaml": {},
+        "utterance-timing.csv": "synthetic timing\n",
+        "source.srt": "synthetic subtitle\n",
+        "source.lrc": "synthetic subtitle\n",
+    }.items():
+        (v1 / name).write_text(
+            content if isinstance(content, str) else yaml.safe_dump(content), encoding="utf-8"
+        )
+
+    output = tmp_path / "audition"
+    monkeypatch.setattr(render_development_v2, "ROOT", tmp_path)
+    monkeypatch.setattr(
+        render_development_v2,
+        "render_program",
+        lambda *_args: (_ for _ in ()).throw(OCFError("stop before DSP generation")),
+    )
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["render_development_v2", "--v1", str(v1), "--output", str(output)],
+    )
+    with pytest.raises(OCFError, match="stop before DSP generation"):
+        render_development_v2.main()
+
+    copied_speech = output / (
+        "DEVELOPMENT-AUDITION-V2-OCF-Preparation-Learning-en-US-RC1-narration.wav"
+    )
+    assert copied_speech.read_bytes() == source.read_bytes()
+    assert (output / "session-semantic.yaml").is_file()
+    assert not list(output.glob("*-DSP-bed.wav"))
+    assert not list(output.glob("*-master.wav"))
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize("engine_failure", [False, True])
+def test_frozen_audition_renderer_orchestrates_only_synthetic_outputs(
+    monkeypatch, tmp_path, capsys, engine_failure
+):
+    import hashlib
+    import subprocess
+    import sys
+    import wave
+
+    import yaml
+
+    v1 = tmp_path / "v1"
+    v1.mkdir()
+    source = v1 / "V1-narration.wav"
+    with wave.open(str(source), "wb") as writer:
+        writer.setparams((1, 2, 8000, 0, "NONE", "not compressed"))
+        writer.writeframes(b"\x00\x10" * 800)
+    expected = hashlib.sha256(source.read_bytes()).hexdigest()
+    relative_resource = "locales/en-US/functions.yaml"
+    resource = tmp_path / relative_resource
+    resource.parent.mkdir(parents=True)
+    resource.write_text("synthetic frozen resource", encoding="utf-8")
+    for relative in (
+        "scripts/tools/render_development_v2.py",
+        "scripts/ocf_tools/semantic_dsp.py",
+        "audio/background/state-profiles/OCF-DSP-DEVELOPMENT-V4-001.yaml",
+    ):
+        target = tmp_path / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text("synthetic source", encoding="utf-8")
+    (v1 / "render-manifest.yaml").write_text(
+        yaml.safe_dump(
+            {
+                "rc1_source_sha256": {
+                    relative_resource: hashlib.sha256(resource.read_bytes()).hexdigest()
+                },
+                "artifacts": {source.name: {"sha256": expected}},
+                "event_timing": [],
+                "narration_timing": {},
+                "total_duration_s": 0.1,
+            }
+        ),
+        encoding="utf-8",
+    )
+    for name, data in {
+        "session-semantic.yaml": {"timeline": []},
+        "session-resolved.en-US.yaml": {},
+        "resolved-semantic-event-ledger.yaml": {},
+        "narration-render-metadata.yaml": {},
+        "timing-report.yaml": {},
+        "utterance-timing.csv": "synthetic timing",
+        "source.srt": "synthetic subtitle",
+        "source.lrc": "synthetic subtitle",
+    }.items():
+        (v1 / name).write_text(
+            data if isinstance(data, str) else yaml.safe_dump(data), encoding="utf-8"
+        )
+
+    output = tmp_path / "audition"
+    monkeypatch.setattr(render_development_v2, "ROOT", tmp_path)
+    monkeypatch.setattr(render_development_v2, "load_profile", lambda reference: {"id": reference})
+
+    def render_program(_doc, _timing, _duration, profile, bed):
+        bed.write_bytes(b"synthetic DSP output")
+        return {"profile_id": profile["id"], "selections": {}}
+
+    monkeypatch.setattr(render_development_v2, "render_program", render_program)
+    commands = []
+
+    def run(command, **_kwargs):
+        commands.append(command)
+        if engine_failure and len(commands) == 1:
+            return subprocess.CompletedProcess(command, 1, "", "synthetic encoder failure")
+        Path(command[-1]).write_bytes(b"synthetic encoded fixture")
+        return subprocess.CompletedProcess(command, 0, "ok", "")
+
+    monkeypatch.setattr(render_development_v2.subprocess, "run", run)
+    monkeypatch.setattr(
+        render_development_v2.subprocess, "check_output", lambda *_a, **_k: "fixture-base\n"
+    )
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["render_development_v2", "--v1", str(v1), "--output", str(output)],
+    )
+
+    if engine_failure:
+        with pytest.raises(RuntimeError, match="synthetic encoder failure"):
+            render_development_v2.main()
+        assert len(commands) == 1 and not (output / "render-manifest.yaml").exists()
+        assert "synthetic encoder failure" in (output / "engine.log").read_text()
+    else:
+        render_development_v2.main()
+        result = yaml.safe_load((output / "render-manifest.yaml").read_text())
+        assert result["git_base"] == "fixture-base"
+        assert result["speech_reused_byte_for_byte"]
+        assert result["external_commands"] == commands and len(commands) == 3
+        assert any("alimiter" in argument for argument in commands[0])
+        assert any(path.name.endswith(".flac") for path in output.iterdir())
+        assert any(path.name.endswith(".mp3") for path in output.iterdir())
+        assert "Completed V2" in capsys.readouterr().out
 
 
 @pytest.mark.unit

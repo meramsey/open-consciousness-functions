@@ -305,9 +305,10 @@ injected writer. Reports: `/tmp/opencode/analyze-v4.json` and
 hashing, block reads, RMS/peak statistics, spectral amplitude, and declared
 approach acceptance. Its remaining full-audition acceptance flow reads V2/V2.1
 audition files and writes an acceptance report; that flow remains frozen until
-the pending human V2-versus-V2.1 comparison. Likewise, the full
-`render_development_v2.py` path creates DSP beds and listening masters; only its
-input-integrity, complete-source-set, and overwrite preflight is exercised while
-that review is pending. Preflight now validates all required V1 files and both
-subtitle sources before creating the output directory; a synthetic missing-file
-case exposed that the former order left a partial audition directory.
+the pending human V2-versus-V2.1 comparison. `tools/render_development_v2.py`
+reaches **100% focused unit line and branch coverage** using only synthetic V1
+files and fake DSP/ffmpeg boundaries; no listening audio is generated. A failure
+test found that missing copied files could leave a partially-created audition
+directory, so the renderer now preflights all V1 assets and subtitles before
+creating output. The remaining verifier main path's V2 audio acceptance report
+is intentionally unexecuted under the human listening freeze.
