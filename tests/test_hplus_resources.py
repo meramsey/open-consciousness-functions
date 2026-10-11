@@ -30,7 +30,7 @@ def test_cli_binds_function_keys_and_fails_for_unauthored_function(tmp_path):
 
 SELECTIONS = yaml.safe_load((REPO_ROOT / "function-content/hplus-review-selections.yaml").read_text())["selections"]
 PROPOSALS = yaml.safe_load((REPO_ROOT / "function-content/hplus-proposed-review-selections.yaml").read_text())["proposals"]
-SUPPLEMENTARY_CLOSERS = {"OCF-BOD-004", "OCF-BOD-009", "OCF-COG-001"}
+SUPPLEMENTARY_CLOSERS = {"OCF-BOD-004", "OCF-BOD-009", "OCF-COG-001", "OCF-COG-002"}
 SUPPLEMENTARY_OPENERS = {"OCF-BOD-008"}
 COMPLETE_OWNERS = sorted(
     owner
@@ -72,7 +72,7 @@ def test_standard_shared_and_function_resources_resolve_without_local_sources(ow
 def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
     owners = load_all_functions()
     assert len(owners) == 55
-    assert len(COMPLETE_OWNERS) == 48
+    assert len(COMPLETE_OWNERS) == 49
     unavailable = [owner for owner in owners if owner.source_availability == "unavailable"]
     assert len(unavailable) == 16
     for owner in owners:
@@ -96,10 +96,14 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
                 if owner.id in SUPPLEMENTARY_CLOSERS and slot == "closer":
                     assert slot in selection["missing"]
                     assert prefix + slot in doc["entries"]
-                    assert doc["entries"][prefix + slot]["status"] == "reviewed"
+                    assert doc["entries"][prefix + slot]["status"] == (
+                        "draft" if owner.id == "OCF-COG-002" else "reviewed"
+                    )
                     assert (
                         "not historical wording" in doc["entries"][prefix + slot]["notes"]
                         if owner.id == "OCF-COG-001"
+                        else "not historical transcript wording" in doc["entries"][prefix + slot]["notes"]
+                        if owner.id == "OCF-COG-002"
                         else "not transcript wording" in doc["entries"][prefix + slot]["notes"]
                         if owner.id == "OCF-BOD-004"
                         else "not historical transcript wording" in doc["entries"][prefix + slot]["notes"]

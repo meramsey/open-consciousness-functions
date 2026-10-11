@@ -176,8 +176,8 @@ remains unverified. All 55 function-specific English review files are now presen
 see [the review list](HPLUS_FUNCTION_REVIEW.md). Of the 39 source-available
 functions, 28 have all three historical extents selected and 11 have historical
 source gaps. The 16 source-unavailable functions have separately labeled
-user-proposed reconstruction drafts. Four OCF-authored suggestions separately
-address source gaps, giving 48 files with all three review slots populated; the
+user-proposed reconstruction drafts. Five OCF-authored suggestions separately
+address source gaps, giving 49 files with all three review slots populated; the
 Access to Information closer remains pending approval. Historical source
 availability and planned reimplementation status are unchanged. Human wording
 review remains pending for entries marked draft.

@@ -8,16 +8,16 @@ locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-cog-002.opener:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt; SHA-256 d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b; lines 7–8. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Punctuation-only future-use extent 93–108 excluded.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt; SHA-256 d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b; lines 7–8. User approved opener with H Plus changed to OCF; original SOURCE remains unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
-      This is your H Plus function exercise to improve your ability
+      This is your OCF function exercise to improve your ability
       to calculate, remember, and work with numbers.
   hplus.function.ocf-cog-002.function-body:
-    status: draft
+    status: reviewed
     version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt; SHA-256 d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b; lines 67–92. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Punctuation-only future-use extent 93–108 excluded.'
+    notes: 'Reference-derived wording; transcript_unverified. SOURCE +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt; SHA-256 d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b; lines 67–92. Human wording review: user approved body unchanged. Shared preparation/state/return wording excluded. Source claims and transcription uncertainties remain explicit; not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
       From
       this moment forward, your ability to understand
@@ -45,3 +45,18 @@ entries:
       say in your mind, plus calculate, then exhale
       slowly through your mouth. The more you perform this function
       the easier and more efficient it will become.
+  hplus.function.ocf-cog-002.closer:
+    status: draft
+    version: 1.0.0
+    notes: >-
+      OCF-authored closer suggestion, requested for this source gap. The
+      transcript has shared channel closing followed by punctuation-only lines
+      and no function-specific closer. This wording repeats the number-calculation
+      command in a concise closing form; it is not historical transcript wording.
+      User approval pending. Rights: user_cleared attestation. Finished-session
+      release pending.
+    text: |-
+      Remember, to focus your number-calculation ability more intensely, inhale and hold your breath.
+      Say in your mind, plus calculate.
+      Then exhale slowly through your mouth.
+      This is the end of your OCF function exercise.

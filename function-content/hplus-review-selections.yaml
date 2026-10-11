@@ -111,7 +111,11 @@ selections:
     slots:
       opener: [{start_line: 7, end_line: 8}]
       function-body: [{start_line: 67, end_line: 92}]
-    missing: {closer: Source has shared channel closing followed by punctuation runs; no final function-specific closer.}
+    missing:
+      closer: >-
+        Historical source has no function-specific closer; an OCF-authored
+        number-calculation command reminder is stored separately pending user
+        approval.
     notes: [Punctuation-only future-use extent 93–108 excluded.]
   OCF-COG-003:
     slots:
