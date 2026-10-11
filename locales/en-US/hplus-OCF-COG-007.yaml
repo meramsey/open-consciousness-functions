@@ -7,32 +7,27 @@ locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-cog-007.opener:
-    status: draft
+    status: reviewed
     version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Think Fast/Think Fast.txt; SHA-256 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2; lines 1–1. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. The closer''s If you must think wording is retained as transcription uncertainty; canonical PLUS-THINK is unchanged.'
+    notes: 'Reference-derived wording; transcript_unverified. SOURCE +Transcripts From available tapes/Think Fast/Think Fast.txt; SHA-256 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2; line 1. Human wording review: user approved opener unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: Now, learn to think quickly and with all of your mental ability.
   hplus.function.ocf-cog-007.function-body:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Think Fast/Think Fast.txt; SHA-256 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2; lines 35–44. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. The closer''s If you must think wording is retained as transcription uncertainty; canonical PLUS-THINK is unchanged.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived wording with human edits; transcript_unverified. Original SOURCE +Transcripts From available tapes/Think Fast/Think Fast.txt; SHA-256 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2; lines 35–44. Human wording review: user approved a single body pass, removed the duplicated source passage, and changed the cue wording to “say or think in my mind”; original SOURCE remains unchanged. Source efficacy statements remain claims, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
       Beginning now, right at this moment and from this moment forward, more and more your entire mental process is becoming much more alert, much more capable.
       Your entire mind-brain system is helping you more in solving problems, finding correct answers to questions, and observing in great detail and understanding what you perceive quickly, calmly, surely.
       This process is improving and will continue to improve with each day, each week, each month, each year in the time to come.
-      Also, at any time in the future when you desire to increase even more this mental ability, this total improvement, all you need do is inhale deeply, hold your breath, and say in your mind, plus, think, then exhale slowly.
-      The more you use this method to sharpen and smooth your mental process, the easier and more effective it will become.
-      The more you use this method to sharpen and smooth your mental process, the easier and more effective it will become.
-      Your entire mind-brain system is helping you more in solving problems, finding correct answers to questions, and observing in great detail and understanding what you perceive quickly, calmly, surely.
-      This process is improving and will continue to improve with each day, each week, each month, each year in the time to come.
-      Also, at any time in the future when you desire to increase even more this mental ability, this total improvement, all you need do is inhale deeply, hold your breath, and say in your mind, plus, think, then exhale slowly.
+      Also, at any time in the future when you desire to increase even more this mental ability, this total improvement, all you need do is inhale deeply, hold your breath, and say or think in your mind, plus, think, then exhale slowly.
       The more you use this method to sharpen and smooth your mental process, the easier and more effective it will become.
   hplus.function.ocf-cog-007.closer:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Think Fast/Think Fast.txt; SHA-256 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2; lines 131–135. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. The closer''s If you must think wording is retained as transcription uncertainty; canonical PLUS-THINK is unchanged.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived wording with human edits; transcript_unverified. Original SOURCE +Transcripts From available tapes/Think Fast/Think Fast.txt; SHA-256 94570e2471474723f07afcb483e0128beed7fe476a060438298ee249f4fc9df2; lines 131–135. User supplied and approved closer, replacing “If you must think” with “plus, think” and H-PLUS with OCF; original SOURCE remains unchanged. Spoken example does not alter canonical PLUS-THINK metadata. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
       Remember, whenever you wish to increase even more, your growing ability to think clearly, completely, fully, and rapidly.
       All you need to do is inhale deeply and hold your breath.
       Say or think in your mind.
-      If you must think, then exhale slowly through your mouth.
-      This is the end of this function learning exercise.
+      plus, think, then exhale slowly through your mouth.
+      This is the end of this OCF function learning exercise.
