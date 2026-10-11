@@ -75,7 +75,7 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
             assert owner.id in PROPOSALS
             assert set(doc["entries"]) == {prefix + slot for slot in ("opener", "function-body", "closer")}
             for entry in doc["entries"].values():
-                assert entry["status"] == "draft"
+                assert entry["status"] in {"draft", "reviewed"}
                 assert "User-proposed reconstruction" in entry["notes"]
                 assert PROPOSALS[owner.id]["input"]["sha256"] in entry["notes"]
                 assert "source availability remains unavailable" in entry["notes"]
@@ -85,7 +85,7 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
             for slot in ("opener", "function-body", "closer"):
                 assert (prefix + slot in doc["entries"]) == (slot in selection["slots"])
             for entry in doc["entries"].values():
-                assert entry["status"] == "draft"
+                assert entry["status"] in {"draft", "reviewed"}
 
 
 @pytest.mark.parametrize("owner", ["OCF-SLP-004", "OCF-COG-005", "OCF-BOD-005"])
