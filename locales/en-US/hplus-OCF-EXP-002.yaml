@@ -1,15 +1,114 @@
 # OCF-EXP-002 — Zoning
 # English function-specific review candidate; edit this file as the wording source of truth.
 # Source status: unavailable; authentication remains unverified.
-# Missing opener: Historical source unavailable; reimplementation planned.
-# Missing function-body: Historical source unavailable; reimplementation planned.
-# Missing closer: Historical source unavailable; reimplementation planned.
+# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+# Review note: Proposed input: Zoning/Zoning_881033_reconstructed_clean.txt; SHA-256 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a; header 'ZONING (881033) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+# Review note: Proposed temperature-comfort mechanism and outcomes retained as claims for review.
 schema_version: '1.0'
 locale: en-US
-domain: ui
+domain: narration
 entries:
-  hplus.review.ocf-exp-002.availability:
-    text: Historical source unavailable. Opener, function body and closer are not authored; reimplementation remains planned.
+  hplus.function.ocf-exp-002.opener:
     status: draft
     version: 1.0.0
-    notes: Review status only, not spoken narration. No reconstruction or previous candidate has been substituted for SOURCE.
+    text: Now, learn to create a zone of comfort around your physical body.
+    notes: 'User-proposed reconstruction draft; input lines 53–53. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Zoning/Zoning_881033_reconstructed_clean.txt; SHA-256 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a; header ''ZONING (881033) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed temperature-comfort mechanism and outcomes retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-exp-002.function-body:
+    status: draft
+    version: 1.0.0
+    text: |-
+      At any time from this moment forward, whenever the temperature of the
+      environment moves beyond your normal comfort area and you desire to adjust
+      and compensate, inhale deeply and hold your breath.
+
+      Then say or think in your mind:
+
+      PLUS-INSULATE, INSULATE.
+
+      Then exhale slowly through your mouth.
+
+      When you do this, an operating zone of temperature comfort will begin to
+      form evenly around your entire physical body.
+
+      The zone will adjust to the environmental condition surrounding you.
+
+      When the environment is colder than your normal comfort area, the zone will
+      resist the movement of excessive cold toward your physical body.
+
+      When the environment is warmer than your normal comfort area, the zone will
+      resist the movement of excessive heat toward your physical body.
+
+      The adjustment will move toward the normal comfort area that is best for
+      you.
+
+      The zone will remain balanced and equalized around your entire physical
+      body.
+
+      It will continue to adjust and compensate as the surrounding temperature
+      changes.
+
+      All when you state:
+
+      PLUS-INSULATE, INSULATE.
+
+      If you desire to cancel the present ZONING adjustment, inhale deeply and
+      hold your breath.
+
+      Then say or think in your mind:
+
+      PLUS-CANCEL.
+
+      Then exhale slowly through your mouth.
+
+      The present adjustment will cease, and your normal response to the
+      surrounding temperature will return.
+
+      When the entire need for ZONING has passed, use the RELEASE Function.
+
+      Bring ZONING clearly into your mind.
+
+      Inhale deeply and hold your breath.
+
+      Say or think in your mind:
+
+      PLUS-RELEASE.
+
+      Then exhale slowly through your mouth.
+
+      The present application of ZONING will be placed on hold, ready for future
+      recall and use when the proper command is given again.
+
+      Use ZONING as needed to adjust and compensate for the environment around
+      you.
+
+      Combine it with other H-PLUS Functions only as the particular situation
+      requires.
+
+      The more correctly you use this method, the easier and more effective it
+      will become.
+    notes: 'User-proposed reconstruction draft; input lines 152–220. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Zoning/Zoning_881033_reconstructed_clean.txt; SHA-256 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a; header ''ZONING (881033) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed temperature-comfort mechanism and outcomes retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-exp-002.closer:
+    status: draft
+    version: 1.0.0
+    text: |-
+      Remember, when you desire to create a zone of temperature comfort around
+      your physical body, inhale deeply and hold your breath.
+
+      Say in your mind:
+
+      PLUS-INSULATE, INSULATE.
+
+      Then exhale slowly through your mouth.
+
+      To cancel the present ZONING adjustment, use:
+
+      PLUS-CANCEL.
+
+      When the entire need has passed, use the RELEASE Function:
+
+      PLUS-RELEASE.
+
+      This is the end of your H-PLUS Function learning exercise.
+    notes: 'User-proposed reconstruction draft; input lines 341–358. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Zoning/Zoning_881033_reconstructed_clean.txt; SHA-256 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a; header ''ZONING (881033) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed temperature-comfort mechanism and outcomes retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'

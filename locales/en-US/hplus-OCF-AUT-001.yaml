@@ -1,15 +1,116 @@
 # OCF-AUT-001 — See-Be
 # English function-specific review candidate; edit this file as the wording source of truth.
 # Source status: unavailable; authentication remains unverified.
-# Missing opener: Historical source unavailable; reimplementation planned.
-# Missing function-body: Historical source unavailable; reimplementation planned.
-# Missing closer: Historical source unavailable; reimplementation planned.
+# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+# Review note: Proposed input: See-Be/See_Be_881044_reconstructed_clean.txt; SHA-256 574d8a0921cd4cd91b6a3e5794510dbeecfd06838cb5569123b14e6777e6df5c; header 'SEE-BE (881044) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
 schema_version: '1.0'
 locale: en-US
-domain: ui
+domain: narration
 entries:
-  hplus.review.ocf-aut-001.availability:
-    text: Historical source unavailable. Opener, function body and closer are not authored; reimplementation remains planned.
+  hplus.function.ocf-aut-001.opener:
     status: draft
     version: 1.0.0
-    notes: Review status only, not spoken narration. No reconstruction or previous candidate has been substituted for SOURCE.
+    text: |-
+      Now, learn to develop or change a part of your physical activity into an
+      automatic life pattern.
+    notes: 'User-proposed reconstruction draft; input lines 39–40. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: See-Be/See_Be_881044_reconstructed_clean.txt; SHA-256 574d8a0921cd4cd91b6a3e5794510dbeecfd06838cb5569123b14e6777e6df5c; header ''SEE-BE (881044) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-aut-001.function-body:
+    status: draft
+    version: 1.0.0
+    text: |-
+      At any time from this moment forward, when you desire to make a learned
+      physical action or mental-motor skill more automatic, first select one clear
+      activity.
+
+      Know exactly the action you desire to develop or change.
+
+      See yourself performing the action correctly.
+
+      Feel the movement and sequence as clearly as you can.
+
+      Know the beginning of the action.
+
+      Know each important part of the action.
+
+      Know the completion of the action.
+
+      If the action has several parts, place them in their proper order.
+
+      Practice or review the correct form until you can recognize the pattern you
+      desire.
+
+      Then bring the complete action clearly into your mind.
+
+      Inhale deeply and hold your breath.
+
+      Then say or think in your mind:
+
+      PLUS-AUTOMATE.
+
+      Then exhale slowly through your mouth.
+
+      When you do this, the thought and action pattern you have selected will
+      begin to move from deliberate, conscious control toward an easier and more
+      automatic response.
+
+      Each correct repetition will strengthen the selected pattern.
+
+      The parts of the action will begin to join together more smoothly.
+
+      Unnecessary effort and hesitation will become less important.
+
+      Your conscious mind will remain free to observe the situation while the
+      well-learned parts of the activity proceed more easily.
+
+      The selected mental-motor pattern will become more efficient through correct
+      practice and use.
+
+      All when you state:
+
+      PLUS-AUTOMATE.
+
+      Use SEE-BE only with an action or pattern you understand and desire to
+      perform correctly.
+
+      If the activity is new, learn and practice the correct form before you
+      automate it.
+
+      If the activity is complex, begin with one clear part and add other parts
+      only after each is learned accurately.
+
+      Use ATTENTION to hold the selected action clearly in mind.
+
+      Use RELAX to reduce unnecessary tension.
+
+      Use SYNCHRONIZING when smooth and rapid mind-body coordination is desired.
+
+      Use SPEAK UP when the activity involves clear and easy verbal expression.
+
+      Use STRONG-QUICK only for its separate emergency purpose.
+
+      The more accurately you select and practice the desired pattern, the easier
+      and more effective SEE-BE will become.
+    notes: 'User-proposed reconstruction draft; input lines 139–210. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: See-Be/See_Be_881044_reconstructed_clean.txt; SHA-256 574d8a0921cd4cd91b6a3e5794510dbeecfd06838cb5569123b14e6777e6df5c; header ''SEE-BE (881044) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-aut-001.closer:
+    status: draft
+    version: 1.0.0
+    text: |-
+      Remember, when you desire to develop a correctly learned physical action or
+      mental-motor skill into a more automatic pattern, bring the complete action
+      clearly into your mind.
+
+      Inhale deeply and hold your breath.
+
+      Say in your mind:
+
+      PLUS-AUTOMATE.
+
+      Then exhale slowly through your mouth.
+
+      Continue correct practice and repetition so the desired pattern may become
+      smoother and more automatic.
+
+      This is the end of your H-PLUS Function learning exercise.
+    notes: 'User-proposed reconstruction draft; input lines 331–346. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: See-Be/See_Be_881044_reconstructed_clean.txt; SHA-256 574d8a0921cd4cd91b6a3e5794510dbeecfd06838cb5569123b14e6777e6df5c; header ''SEE-BE (881044) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'

@@ -1,15 +1,100 @@
 # OCF-EMG-002 — Emergency: Toxic
 # English function-specific review candidate; edit this file as the wording source of truth.
 # Source status: unavailable; authentication remains unverified.
-# Missing opener: Historical source unavailable; reimplementation planned.
-# Missing function-body: Historical source unavailable; reimplementation planned.
-# Missing closer: Historical source unavailable; reimplementation planned.
+# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+# Review note: Proposed input: Emergency: Toxic/Emergency_Toxic_881041_reconstructed_clean.txt; SHA-256 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510; header 'EMERGENCY: TOXIC (881041) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+# Review note: Proposed physiological and efficacy assertions retained as claims for review.
 schema_version: '1.0'
 locale: en-US
-domain: ui
+domain: narration
 entries:
-  hplus.review.ocf-emg-002.availability:
-    text: Historical source unavailable. Opener, function body and closer are not authored; reimplementation remains planned.
+  hplus.function.ocf-emg-002.opener:
     status: draft
     version: 1.0.0
-    notes: Review status only, not spoken narration. No reconstruction or previous candidate has been substituted for SOURCE.
+    text: |-
+      Now, learn to help your physical body rid itself of harmful foreign
+      substances.
+    notes: 'User-proposed reconstruction draft; input lines 48–49. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Emergency: Toxic/Emergency_Toxic_881041_reconstructed_clean.txt; SHA-256 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510; header ''EMERGENCY: TOXIC (881041) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed physiological and efficacy assertions retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-emg-002.function-body:
+    status: draft
+    version: 1.0.0
+    text: |-
+      At any time from this moment forward, when a harmful foreign substance has
+      entered or contacted your physical body, use this Function immediately.
+
+      Such a substance may be a chemical, poison, pesticide, herbicide, venom,
+      or the result of an insect sting or bite.
+
+      Obtain appropriate first aid and treatment without delay.
+
+      Then inhale deeply and hold your breath.
+
+      Say or think in your mind:
+
+      PLUS-CLEAR, REMOVE.
+
+      Then exhale slowly through your mouth.
+
+      When you do this, all parts of your physical system that normally protect,
+      control and discharge harmful foreign substances will respond more quickly
+      and efficiently.
+
+      Your physical system will move to recognize the foreign substance and the
+      area affected.
+
+      It will act to control and limit the harmful effect as much as it is able.
+
+      It will begin to clear and remove what does not belong within your normal
+      physical operation.
+
+      The protective and balancing patterns of your physical body will move into
+      action.
+
+      The affected area and the rest of your physical system will work together
+      toward greater balance and equalization.
+
+      All when you state:
+
+      PLUS-CLEAR, REMOVE.
+
+      Use EMERGENCY: TOXIC immediately at the time of the chemical or poisonous
+      insult.
+
+      Repeat the command as needed while appropriate treatment is being obtained
+      and followed.
+
+      Use RELAX to reduce unnecessary tension.
+
+      Use SHORT FIX only for its separate temporary purpose when appropriate.
+
+      Use TUNE-UP, CIRCULATION and RESTORATIVE SLEEP as their separate purposes
+      may assist the recovery process.
+
+      This Function assists and potentiates the natural protective mechanisms of
+      your physical body.
+
+      It is not a substitute for first aid, medical diagnosis, antidote,
+      decontamination or other treatment.
+
+      The more correctly you use this method together with appropriate care, the
+      easier and more effective the learned response will become.
+    notes: 'User-proposed reconstruction draft; input lines 148–206. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Emergency: Toxic/Emergency_Toxic_881041_reconstructed_clean.txt; SHA-256 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510; header ''EMERGENCY: TOXIC (881041) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed physiological and efficacy assertions retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-emg-002.closer:
+    status: draft
+    version: 1.0.0
+    text: |-
+      Remember, when a harmful foreign substance has entered or contacted your
+      physical body, obtain appropriate treatment immediately.
+
+      Inhale deeply and hold your breath.
+
+      Say in your mind:
+
+      PLUS-CLEAR, REMOVE.
+
+      Then exhale slowly through your mouth.
+
+      This is the end of your H-PLUS Function learning exercise.
+    notes: 'User-proposed reconstruction draft; input lines 327–338. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Emergency: Toxic/Emergency_Toxic_881041_reconstructed_clean.txt; SHA-256 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510; header ''EMERGENCY: TOXIC (881041) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed physiological and efficacy assertions retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'

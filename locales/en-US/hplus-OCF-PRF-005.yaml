@@ -1,15 +1,110 @@
 # OCF-PRF-005 — Make Your Day
 # English function-specific review candidate; edit this file as the wording source of truth.
 # Source status: unavailable; authentication remains unverified.
-# Missing opener: Historical source unavailable; reimplementation planned.
-# Missing function-body: Historical source unavailable; reimplementation planned.
-# Missing closer: Historical source unavailable; reimplementation planned.
+# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+# Review note: Proposed input: Make Your Day/Make_Your_Day_881042_reconstructed_clean.txt; SHA-256 465e38a658e6a3a7abf3b8693714d8f3c297eb68c5e1f030ccb1f84a3d2da44e; header 'MAKE YOUR DAY (881042) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+# Review note: Proposed visual-imagery requirements retained for human accessibility/wording review.
 schema_version: '1.0'
 locale: en-US
-domain: ui
+domain: narration
 entries:
-  hplus.review.ocf-prf-005.availability:
-    text: Historical source unavailable. Opener, function body and closer are not authored; reimplementation remains planned.
+  hplus.function.ocf-prf-005.opener:
     status: draft
     version: 1.0.0
-    notes: Review status only, not spoken narration. No reconstruction or previous candidate has been substituted for SOURCE.
+    text: Now, learn to make each day what you desire it to be.
+    notes: 'User-proposed reconstruction draft; input lines 39–39. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Make Your Day/Make_Your_Day_881042_reconstructed_clean.txt; SHA-256 465e38a658e6a3a7abf3b8693714d8f3c297eb68c5e1f030ccb1f84a3d2da44e; header ''MAKE YOUR DAY (881042) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed visual-imagery requirements retained for human accessibility/wording review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-prf-005.function-body:
+    status: draft
+    version: 1.0.0
+    text: |-
+      At the beginning of each morning, before the activities of the day have
+      begun, decide clearly what you desire this day to be.
+
+      Bring the day ahead into your mind.
+
+      See and know the physical pattern you desire for yourself during this day.
+
+      See and know the mental pattern you desire for yourself during this day.
+
+      See and know the emotional pattern you desire for yourself during this day.
+
+      Form a clear picture of yourself moving through the activities before you.
+
+      See yourself acting easily, calmly and effectively.
+
+      See yourself meeting each important event in the way you desire.
+
+      State clearly in your mind the results and experience you desire for
+      yourself during this day.
+
+      When the verbal and visual expression of your desires is clear, inhale
+      deeply and hold your breath.
+
+      Then say or think in your mind:
+
+      PLUS-THIS DAY.
+
+      Then exhale slowly through your mouth.
+
+      When you do this, the physical, mental and emotional patterns you have
+      clearly selected will begin to move into place for your daily activities.
+
+      Your conscious mind and all other parts of you will remember the direction
+      you have chosen.
+
+      As each part of the day arrives, you will recognize opportunities to act in
+      accord with the pattern you have set.
+
+      Your thoughts, feelings and actions will move more smoothly toward the
+      experience you have pictured and stated.
+
+      Anticipated negative patterns will become less important.
+
+      You will remain open to useful changes and better possibilities that may
+      appear during the day.
+
+      You will act upon such opportunities when they are in harmony with the
+      direction you have selected.
+
+      All when you state:
+
+      PLUS-THIS DAY.
+
+      Use MAKE YOUR DAY as the first item of the morning.
+
+      Clear verbal and visual expression of your desires is essential to the
+      operation of this Function.
+
+      Use OPTIONS when you desire to examine possible directions.
+
+      Use MÖBIUS WEST when you desire to establish a broader pattern.
+
+      Use EIGHT-GREAT when you desire to apply the strength of your total inner
+      self to the course you have chosen.
+
+      The pattern you establish is for your own physical, mental and emotional
+      activity during this day.
+
+      The more clearly you know and express what you desire, the easier and more
+      effective this Function will become.
+    notes: 'User-proposed reconstruction draft; input lines 138–207. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Make Your Day/Make_Your_Day_881042_reconstructed_clean.txt; SHA-256 465e38a658e6a3a7abf3b8693714d8f3c297eb68c5e1f030ccb1f84a3d2da44e; header ''MAKE YOUR DAY (881042) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed visual-imagery requirements retained for human accessibility/wording review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-prf-005.closer:
+    status: draft
+    version: 1.0.0
+    text: |-
+      Remember, as the first item of each morning, form a clear verbal and visual
+      expression of the physical, mental and emotional pattern you desire for the
+      day.
+
+      Inhale deeply and hold your breath.
+
+      Say in your mind:
+
+      PLUS-THIS DAY.
+
+      Then exhale slowly through your mouth.
+
+      This is the end of your H-PLUS Function learning exercise.
+    notes: 'User-proposed reconstruction draft; input lines 328–340. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Make Your Day/Make_Your_Day_881042_reconstructed_clean.txt; SHA-256 465e38a658e6a3a7abf3b8693714d8f3c297eb68c5e1f030ccb1f84a3d2da44e; header ''MAKE YOUR DAY (881042) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed visual-imagery requirements retained for human accessibility/wording review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'

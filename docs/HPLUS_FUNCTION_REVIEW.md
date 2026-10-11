@@ -1,74 +1,75 @@
 # English HPlus function review
 
-Initial source selections prepared for human review; no narration has been approved or rendered by this importer.
+Historical source selections and separately labeled user-proposed reconstructions prepared for human review; no narration has been approved or rendered by this importer.
 
 Edit the linked YAML file: its entries are the wording source of truth. Shared narration stays in the separate `hplus-*.yaml` resources.
-Missing spoken keys are omitted, not filled with placeholders. Source-unavailable files contain UI review status only and cannot compose as spoken sessions.
+Missing spoken keys are omitted. User-proposed reconstructions are labeled separately from historical SOURCE; historical source-unavailable records remain unavailable and planned.
 
-| Function | Name | Source status | Opener | Body | Closer | Editable English file |
-| --- | --- | --- | --- | --- | --- | --- |
-| OCF-AUT-001 | See-Be | unavailable | missing | missing | missing | [hplus-OCF-AUT-001.yaml](../locales/en-US/hplus-OCF-AUT-001.yaml) |
-| OCF-BOD-001 | Brain: Repairs & Maintenance | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-BOD-001.yaml](../locales/en-US/hplus-OCF-BOD-001.yaml) |
-| OCF-BOD-002 | Circulation | partial_transcript | candidate | candidate | candidate | [hplus-OCF-BOD-002.yaml](../locales/en-US/hplus-OCF-BOD-002.yaml) |
-| OCF-BOD-003 | De-Discomfort | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-BOD-003.yaml](../locales/en-US/hplus-OCF-BOD-003.yaml) |
-| OCF-BOD-004 | De-Tox: Body | partial_transcript | candidate | candidate | missing | [hplus-OCF-BOD-004.yaml](../locales/en-US/hplus-OCF-BOD-004.yaml) |
-| OCF-BOD-005 | Eat/No Eat | transcript_unverified | candidate | missing | candidate | [hplus-OCF-BOD-005.yaml](../locales/en-US/hplus-OCF-BOD-005.yaml) |
-| OCF-BOD-006 | Heart: Repairs & Maintenance | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-BOD-006.yaml](../locales/en-US/hplus-OCF-BOD-006.yaml) |
-| OCF-BOD-007 | Hypertension | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-BOD-007.yaml](../locales/en-US/hplus-OCF-BOD-007.yaml) |
-| OCF-BOD-008 | Immunizing | transcript_unverified | missing | candidate | candidate | [hplus-OCF-BOD-008.yaml](../locales/en-US/hplus-OCF-BOD-008.yaml) |
-| OCF-BOD-009 | Lungs: Repairs & Maintenance | partial_transcript | candidate | candidate | missing | [hplus-OCF-BOD-009.yaml](../locales/en-US/hplus-OCF-BOD-009.yaml) |
-| OCF-BOD-010 | Nutricia | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-BOD-010.yaml](../locales/en-US/hplus-OCF-BOD-010.yaml) |
-| OCF-BOD-011 | Passages | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-BOD-011.yaml](../locales/en-US/hplus-OCF-BOD-011.yaml) |
-| OCF-BOD-012 | Sex Drive | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-BOD-012.yaml](../locales/en-US/hplus-OCF-BOD-012.yaml) |
-| OCF-BOD-013 | Tune-Up | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-BOD-013.yaml](../locales/en-US/hplus-OCF-BOD-013.yaml) |
-| OCF-BOD-014 | Regenerate | unavailable | missing | missing | missing | [hplus-OCF-BOD-014.yaml](../locales/en-US/hplus-OCF-BOD-014.yaml) |
-| OCF-BOD-015 | Short Fix | unavailable | missing | missing | missing | [hplus-OCF-BOD-015.yaml](../locales/en-US/hplus-OCF-BOD-015.yaml) |
-| OCF-COG-001 | Access to Information | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-COG-001.yaml](../locales/en-US/hplus-OCF-COG-001.yaml) |
-| OCF-COG-002 | Buy the Numbers | transcript_unverified | candidate | candidate | missing | [hplus-OCF-COG-002.yaml](../locales/en-US/hplus-OCF-COG-002.yaml) |
-| OCF-COG-003 | Contemplation | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-COG-003.yaml](../locales/en-US/hplus-OCF-COG-003.yaml) |
-| OCF-COG-004 | Imprint | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-COG-004.yaml](../locales/en-US/hplus-OCF-COG-004.yaml) |
-| OCF-COG-005 | Options | partial_transcript | missing | candidate | missing | [hplus-OCF-COG-005.yaml](../locales/en-US/hplus-OCF-COG-005.yaml) |
-| OCF-COG-006 | Recall | partial_transcript | candidate | candidate | missing | [hplus-OCF-COG-006.yaml](../locales/en-US/hplus-OCF-COG-006.yaml) |
-| OCF-COG-007 | Think Fast | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-COG-007.yaml](../locales/en-US/hplus-OCF-COG-007.yaml) |
-| OCF-COM-001 | Speak Up | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-COM-001.yaml](../locales/en-US/hplus-OCF-COM-001.yaml) |
-| OCF-EMG-001 | Emergency: Injury | unavailable | missing | missing | missing | [hplus-OCF-EMG-001.yaml](../locales/en-US/hplus-OCF-EMG-001.yaml) |
-| OCF-EMG-002 | Emergency: Toxic | unavailable | missing | missing | missing | [hplus-OCF-EMG-002.yaml](../locales/en-US/hplus-OCF-EMG-002.yaml) |
-| OCF-EMO-001 | Let Go | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-EMO-001.yaml](../locales/en-US/hplus-OCF-EMO-001.yaml) |
-| OCF-EMO-002 | Off-Loading | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-EMO-002.yaml](../locales/en-US/hplus-OCF-EMO-002.yaml) |
-| OCF-EMO-003 | Empathizing | unavailable | missing | missing | missing | [hplus-OCF-EMO-003.yaml](../locales/en-US/hplus-OCF-EMO-003.yaml) |
-| OCF-EXP-001 | Mobius West | transcript_unverified | candidate | candidate | missing | [hplus-OCF-EXP-001.yaml](../locales/en-US/hplus-OCF-EXP-001.yaml) |
-| OCF-EXP-002 | Zoning | unavailable | missing | missing | missing | [hplus-OCF-EXP-002.yaml](../locales/en-US/hplus-OCF-EXP-002.yaml) |
-| OCF-FND-001 | Access to Energy | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-FND-001.yaml](../locales/en-US/hplus-OCF-FND-001.yaml) |
-| OCF-FND-002 | Attention | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-FND-002.yaml](../locales/en-US/hplus-OCF-FND-002.yaml) |
-| OCF-FND-003 | Recharge | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-FND-003.yaml](../locales/en-US/hplus-OCF-FND-003.yaml) |
-| OCF-FND-004 | Relax | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-FND-004.yaml](../locales/en-US/hplus-OCF-FND-004.yaml) |
-| OCF-FND-005 | Reset | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-FND-005.yaml](../locales/en-US/hplus-OCF-FND-005.yaml) |
-| OCF-FND-006 | Release | unavailable | missing | missing | missing | [hplus-OCF-FND-006.yaml](../locales/en-US/hplus-OCF-FND-006.yaml) |
-| OCF-LIF-001 | De-Hab | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-LIF-001.yaml](../locales/en-US/hplus-OCF-LIF-001.yaml) |
-| OCF-PRF-001 | Do This Now | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-PRF-001.yaml](../locales/en-US/hplus-OCF-PRF-001.yaml) |
-| OCF-PRF-002 | Eight-Great | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-PRF-002.yaml](../locales/en-US/hplus-OCF-PRF-002.yaml) |
-| OCF-PRF-003 | Synchronizing | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-PRF-003.yaml](../locales/en-US/hplus-OCF-PRF-003.yaml) |
-| OCF-PRF-004 | Light Foot | unavailable | missing | missing | missing | [hplus-OCF-PRF-004.yaml](../locales/en-US/hplus-OCF-PRF-004.yaml) |
-| OCF-PRF-005 | Make Your Day | unavailable | missing | missing | missing | [hplus-OCF-PRF-005.yaml](../locales/en-US/hplus-OCF-PRF-005.yaml) |
-| OCF-PRF-006 | Strong-Quick | unavailable | missing | missing | missing | [hplus-OCF-PRF-006.yaml](../locales/en-US/hplus-OCF-PRF-006.yaml) |
-| OCF-SEN-001 | Sensory: Hearing | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-SEN-001.yaml](../locales/en-US/hplus-OCF-SEN-001.yaml) |
-| OCF-SEN-002 | Sensory: Seeing | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-SEN-002.yaml](../locales/en-US/hplus-OCF-SEN-002.yaml) |
-| OCF-SEN-003 | Sensory: Smell | unavailable | missing | missing | missing | [hplus-OCF-SEN-003.yaml](../locales/en-US/hplus-OCF-SEN-003.yaml) |
-| OCF-SEN-004 | Sensory: Taste | unavailable | missing | missing | missing | [hplus-OCF-SEN-004.yaml](../locales/en-US/hplus-OCF-SEN-004.yaml) |
-| OCF-SEN-005 | Sensory: Touch | unavailable | missing | missing | missing | [hplus-OCF-SEN-005.yaml](../locales/en-US/hplus-OCF-SEN-005.yaml) |
-| OCF-SLP-001 | Restorative Sleep | transcript_unverified | candidate | candidate | missing | [hplus-OCF-SLP-001.yaml](../locales/en-US/hplus-OCF-SLP-001.yaml) |
-| OCF-SLP-002 | Sleep | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-SLP-002.yaml](../locales/en-US/hplus-OCF-SLP-002.yaml) |
-| OCF-SLP-003 | Sweet Dreams | transcript_unverified | candidate | candidate | candidate | [hplus-OCF-SLP-003.yaml](../locales/en-US/hplus-OCF-SLP-003.yaml) |
-| OCF-SLP-004 | Wake/Know | transcript_unverified | candidate | candidate | missing | [hplus-OCF-SLP-004.yaml](../locales/en-US/hplus-OCF-SLP-004.yaml) |
-| OCF-SLP-005 | Sleep Easy | unavailable | missing | missing | missing | [hplus-OCF-SLP-005.yaml](../locales/en-US/hplus-OCF-SLP-005.yaml) |
-| OCF-SLP-006 | Stay Awake | unavailable | missing | missing | missing | [hplus-OCF-SLP-006.yaml](../locales/en-US/hplus-OCF-SLP-006.yaml) |
+| Function | Name | Historical source status | Wording basis | Opener | Body | Closer | Editable English file |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| OCF-AUT-001 | See-Be | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-AUT-001.yaml](../locales/en-US/hplus-OCF-AUT-001.yaml) |
+| OCF-BOD-001 | Brain: Repairs & Maintenance | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-001.yaml](../locales/en-US/hplus-OCF-BOD-001.yaml) |
+| OCF-BOD-002 | Circulation | partial_transcript | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-002.yaml](../locales/en-US/hplus-OCF-BOD-002.yaml) |
+| OCF-BOD-003 | De-Discomfort | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-003.yaml](../locales/en-US/hplus-OCF-BOD-003.yaml) |
+| OCF-BOD-004 | De-Tox: Body | partial_transcript | historical source selection | candidate | candidate | missing | [hplus-OCF-BOD-004.yaml](../locales/en-US/hplus-OCF-BOD-004.yaml) |
+| OCF-BOD-005 | Eat/No Eat | transcript_unverified | historical source selection | candidate | missing | candidate | [hplus-OCF-BOD-005.yaml](../locales/en-US/hplus-OCF-BOD-005.yaml) |
+| OCF-BOD-006 | Heart: Repairs & Maintenance | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-006.yaml](../locales/en-US/hplus-OCF-BOD-006.yaml) |
+| OCF-BOD-007 | Hypertension | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-007.yaml](../locales/en-US/hplus-OCF-BOD-007.yaml) |
+| OCF-BOD-008 | Immunizing | transcript_unverified | historical source selection | missing | candidate | candidate | [hplus-OCF-BOD-008.yaml](../locales/en-US/hplus-OCF-BOD-008.yaml) |
+| OCF-BOD-009 | Lungs: Repairs & Maintenance | partial_transcript | historical source selection | candidate | candidate | missing | [hplus-OCF-BOD-009.yaml](../locales/en-US/hplus-OCF-BOD-009.yaml) |
+| OCF-BOD-010 | Nutricia | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-010.yaml](../locales/en-US/hplus-OCF-BOD-010.yaml) |
+| OCF-BOD-011 | Passages | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-011.yaml](../locales/en-US/hplus-OCF-BOD-011.yaml) |
+| OCF-BOD-012 | Sex Drive | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-012.yaml](../locales/en-US/hplus-OCF-BOD-012.yaml) |
+| OCF-BOD-013 | Tune-Up | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-013.yaml](../locales/en-US/hplus-OCF-BOD-013.yaml) |
+| OCF-BOD-014 | Regenerate | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-BOD-014.yaml](../locales/en-US/hplus-OCF-BOD-014.yaml) |
+| OCF-BOD-015 | Short Fix | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-BOD-015.yaml](../locales/en-US/hplus-OCF-BOD-015.yaml) |
+| OCF-COG-001 | Access to Information | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-001.yaml](../locales/en-US/hplus-OCF-COG-001.yaml) |
+| OCF-COG-002 | Buy the Numbers | transcript_unverified | historical source selection | candidate | candidate | missing | [hplus-OCF-COG-002.yaml](../locales/en-US/hplus-OCF-COG-002.yaml) |
+| OCF-COG-003 | Contemplation | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-003.yaml](../locales/en-US/hplus-OCF-COG-003.yaml) |
+| OCF-COG-004 | Imprint | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-004.yaml](../locales/en-US/hplus-OCF-COG-004.yaml) |
+| OCF-COG-005 | Options | partial_transcript | historical source selection | missing | candidate | missing | [hplus-OCF-COG-005.yaml](../locales/en-US/hplus-OCF-COG-005.yaml) |
+| OCF-COG-006 | Recall | partial_transcript | historical source selection | candidate | candidate | missing | [hplus-OCF-COG-006.yaml](../locales/en-US/hplus-OCF-COG-006.yaml) |
+| OCF-COG-007 | Think Fast | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-007.yaml](../locales/en-US/hplus-OCF-COG-007.yaml) |
+| OCF-COM-001 | Speak Up | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COM-001.yaml](../locales/en-US/hplus-OCF-COM-001.yaml) |
+| OCF-EMG-001 | Emergency: Injury | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EMG-001.yaml](../locales/en-US/hplus-OCF-EMG-001.yaml) |
+| OCF-EMG-002 | Emergency: Toxic | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EMG-002.yaml](../locales/en-US/hplus-OCF-EMG-002.yaml) |
+| OCF-EMO-001 | Let Go | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-EMO-001.yaml](../locales/en-US/hplus-OCF-EMO-001.yaml) |
+| OCF-EMO-002 | Off-Loading | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-EMO-002.yaml](../locales/en-US/hplus-OCF-EMO-002.yaml) |
+| OCF-EMO-003 | Empathizing | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EMO-003.yaml](../locales/en-US/hplus-OCF-EMO-003.yaml) |
+| OCF-EXP-001 | Mobius West | transcript_unverified | historical source selection | candidate | candidate | missing | [hplus-OCF-EXP-001.yaml](../locales/en-US/hplus-OCF-EXP-001.yaml) |
+| OCF-EXP-002 | Zoning | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EXP-002.yaml](../locales/en-US/hplus-OCF-EXP-002.yaml) |
+| OCF-FND-001 | Access to Energy | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-001.yaml](../locales/en-US/hplus-OCF-FND-001.yaml) |
+| OCF-FND-002 | Attention | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-002.yaml](../locales/en-US/hplus-OCF-FND-002.yaml) |
+| OCF-FND-003 | Recharge | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-003.yaml](../locales/en-US/hplus-OCF-FND-003.yaml) |
+| OCF-FND-004 | Relax | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-004.yaml](../locales/en-US/hplus-OCF-FND-004.yaml) |
+| OCF-FND-005 | Reset | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-005.yaml](../locales/en-US/hplus-OCF-FND-005.yaml) |
+| OCF-FND-006 | Release | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-FND-006.yaml](../locales/en-US/hplus-OCF-FND-006.yaml) |
+| OCF-LIF-001 | De-Hab | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-LIF-001.yaml](../locales/en-US/hplus-OCF-LIF-001.yaml) |
+| OCF-PRF-001 | Do This Now | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-PRF-001.yaml](../locales/en-US/hplus-OCF-PRF-001.yaml) |
+| OCF-PRF-002 | Eight-Great | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-PRF-002.yaml](../locales/en-US/hplus-OCF-PRF-002.yaml) |
+| OCF-PRF-003 | Synchronizing | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-PRF-003.yaml](../locales/en-US/hplus-OCF-PRF-003.yaml) |
+| OCF-PRF-004 | Light Foot | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-PRF-004.yaml](../locales/en-US/hplus-OCF-PRF-004.yaml) |
+| OCF-PRF-005 | Make Your Day | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-PRF-005.yaml](../locales/en-US/hplus-OCF-PRF-005.yaml) |
+| OCF-PRF-006 | Strong-Quick | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-PRF-006.yaml](../locales/en-US/hplus-OCF-PRF-006.yaml) |
+| OCF-SEN-001 | Sensory: Hearing | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-SEN-001.yaml](../locales/en-US/hplus-OCF-SEN-001.yaml) |
+| OCF-SEN-002 | Sensory: Seeing | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-SEN-002.yaml](../locales/en-US/hplus-OCF-SEN-002.yaml) |
+| OCF-SEN-003 | Sensory: Smell | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-SEN-003.yaml](../locales/en-US/hplus-OCF-SEN-003.yaml) |
+| OCF-SEN-004 | Sensory: Taste | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-SEN-004.yaml](../locales/en-US/hplus-OCF-SEN-004.yaml) |
+| OCF-SEN-005 | Sensory: Touch | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-SEN-005.yaml](../locales/en-US/hplus-OCF-SEN-005.yaml) |
+| OCF-SLP-001 | Restorative Sleep | transcript_unverified | historical source selection | candidate | candidate | missing | [hplus-OCF-SLP-001.yaml](../locales/en-US/hplus-OCF-SLP-001.yaml) |
+| OCF-SLP-002 | Sleep | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-SLP-002.yaml](../locales/en-US/hplus-OCF-SLP-002.yaml) |
+| OCF-SLP-003 | Sweet Dreams | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-SLP-003.yaml](../locales/en-US/hplus-OCF-SLP-003.yaml) |
+| OCF-SLP-004 | Wake/Know | transcript_unverified | historical source selection | candidate | candidate | missing | [hplus-OCF-SLP-004.yaml](../locales/en-US/hplus-OCF-SLP-004.yaml) |
+| OCF-SLP-005 | Sleep Easy | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-SLP-005.yaml](../locales/en-US/hplus-OCF-SLP-005.yaml) |
+| OCF-SLP-006 | Stay Awake | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-SLP-006.yaml](../locales/en-US/hplus-OCF-SLP-006.yaml) |
 
 ## Boundary and uncertainty notes
 
 ### OCF-AUT-001 — See-Be
-- Missing opener: Historical source unavailable; reimplementation planned.
-- Missing function-body: Historical source unavailable; reimplementation planned.
-- Missing closer: Historical source unavailable; reimplementation planned.
+- User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+- Proposed input: See-Be/See_Be_881044_reconstructed_clean.txt; SHA-256 574d8a0921cd4cd91b6a3e5794510dbeecfd06838cb5569123b14e6777e6df5c; header 'SEE-BE (881044) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+- Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+- Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
 
 ### OCF-BOD-001 — Brain: Repairs & Maintenance
 - Shared consolidation at 48–49 and trailing video text at 165 excluded.
@@ -108,14 +109,18 @@ Missing spoken keys are omitted, not filled with placeholders. Source-unavailabl
 - Embedded numeric labels are preserved as transcription uncertainty; they are not semantic count events.
 
 ### OCF-BOD-014 — Regenerate
-- Missing opener: Historical source unavailable; reimplementation planned.
-- Missing function-body: Historical source unavailable; reimplementation planned.
-- Missing closer: Historical source unavailable; reimplementation planned.
+- User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+- Proposed input: Regenerate/Regenerate_881050P_reconstructed_clean.txt; SHA-256 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1; header 'REGENERATE (881050P) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+- Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+- Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+- Proposed physiological and efficacy wording retained for review; no mechanism or outcome is established.
 
 ### OCF-BOD-015 — Short Fix
-- Missing opener: Historical source unavailable; reimplementation planned.
-- Missing function-body: Historical source unavailable; reimplementation planned.
-- Missing closer: Historical source unavailable; reimplementation planned.
+- User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+- Proposed input: Short Fix/Short_Fix_881039_reconstructed_clean.txt; SHA-256 c4c9889958374fa4ea8e8971418c79764cfeb6e841bd3eabd7581bd06b1bc074; header 'SHORT FIX (881039) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+- Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+- Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+- Proposed sensory/physiological assertions retained for review.
 
 ### OCF-COG-001 — Access to Information
 - The last specific spoken line is an exploration handoff rather than a final waking closer; no waking return or exercise-ending text is available.
@@ -143,14 +148,18 @@ Missing spoken keys are omitted, not filled with placeholders. Source-unavailabl
 - Waking words sharing line 84 are excluded from the closer.
 
 ### OCF-EMG-001 — Emergency: Injury
-- Missing opener: Historical source unavailable; reimplementation planned.
-- Missing function-body: Historical source unavailable; reimplementation planned.
-- Missing closer: Historical source unavailable; reimplementation planned.
+- User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+- Proposed input: Emergency: Injury/Emergency_Injury_88R1040_reconstructed_clean.txt; SHA-256 e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276; header 'EMERGENCY: INJURY (88R1040) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+- Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+- Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+- Proposed automatic/unconscious activation and physiological assertions retained as claims for review.
 
 ### OCF-EMG-002 — Emergency: Toxic
-- Missing opener: Historical source unavailable; reimplementation planned.
-- Missing function-body: Historical source unavailable; reimplementation planned.
-- Missing closer: Historical source unavailable; reimplementation planned.
+- User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+- Proposed input: Emergency: Toxic/Emergency_Toxic_881041_reconstructed_clean.txt; SHA-256 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510; header 'EMERGENCY: TOXIC (881041) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+- Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+- Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+- Proposed physiological and efficacy assertions retained as claims for review.
 
 ### OCF-EMO-001 — Let Go
 - Website and copyright text at 65–68 is not narration and stays in SOURCE; unrelated opening video text excluded.
@@ -159,17 +168,21 @@ Missing spoken keys are omitted, not filled with placeholders. Source-unavailabl
 - Waking words sharing line 99 are excluded from the closer.
 
 ### OCF-EMO-003 — Empathizing
-- Missing opener: Historical source unavailable; reimplementation planned.
-- Missing function-body: Historical source unavailable; reimplementation planned.
-- Missing closer: Historical source unavailable; reimplementation planned.
+- User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+- Proposed input: Empathizing/Empathizing_881049_reconstructed_clean.txt; SHA-256 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06; header 'EMPATHIZING (881049) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+- Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+- Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+- Proposed perception/knowing assertions retained as claims for review.
 
 ### OCF-EXP-001 — Mobius West
 - Missing closer: Source ends in numeric runs; no function-specific final closer is recoverable.
 
 ### OCF-EXP-002 — Zoning
-- Missing opener: Historical source unavailable; reimplementation planned.
-- Missing function-body: Historical source unavailable; reimplementation planned.
-- Missing closer: Historical source unavailable; reimplementation planned.
+- User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+- Proposed input: Zoning/Zoning_881033_reconstructed_clean.txt; SHA-256 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a; header 'ZONING (881033) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+- Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+- Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+- Proposed temperature-comfort mechanism and outcomes retained as claims for review.
 
 ### OCF-FND-001 — Access to Energy
 - The final specific passage is an exploration invitation in Ten rather than a waking closer; no final waking return is available.
@@ -186,9 +199,10 @@ Missing spoken keys are omitted, not filled with placeholders. Source-unavailabl
 - Function-specific introduction at 33 belongs to the body; source numeric labels retained. This is a separate source-derived draft and does not alter frozen Relax pilot resources.
 
 ### OCF-FND-006 — Release
-- Missing opener: Historical source unavailable; reimplementation planned.
-- Missing function-body: Historical source unavailable; reimplementation planned.
-- Missing closer: Historical source unavailable; reimplementation planned.
+- User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+- Proposed input: Release/Release_881002_reconstructed_clean.txt; SHA-256 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf; header 'RELEASE (881002) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+- Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+- Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
 
 ### OCF-LIF-001 — De-Hab
 - Waking words sharing line 218 excluded; source numeric labels retained.
@@ -203,19 +217,25 @@ Missing spoken keys are omitted, not filled with placeholders. Source-unavailabl
 - Repeated breathing/rehearsal wording within the function instruction is retained.
 
 ### OCF-PRF-004 — Light Foot
-- Missing opener: Historical source unavailable; reimplementation planned.
-- Missing function-body: Historical source unavailable; reimplementation planned.
-- Missing closer: Historical source unavailable; reimplementation planned.
+- User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+- Proposed input: Light Foot/Light_Foot_881047_reconstructed_clean.txt; SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73; header 'LIGHT FOOT (881047) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+- Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+- Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+- The supplied body contains an extra leading space on one wrapped line; it is preserved.
 
 ### OCF-PRF-005 — Make Your Day
-- Missing opener: Historical source unavailable; reimplementation planned.
-- Missing function-body: Historical source unavailable; reimplementation planned.
-- Missing closer: Historical source unavailable; reimplementation planned.
+- User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+- Proposed input: Make Your Day/Make_Your_Day_881042_reconstructed_clean.txt; SHA-256 465e38a658e6a3a7abf3b8693714d8f3c297eb68c5e1f030ccb1f84a3d2da44e; header 'MAKE YOUR DAY (881042) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+- Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+- Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+- Proposed visual-imagery requirements retained for human accessibility/wording review.
 
 ### OCF-PRF-006 — Strong-Quick
-- Missing opener: Historical source unavailable; reimplementation planned.
-- Missing function-body: Historical source unavailable; reimplementation planned.
-- Missing closer: Historical source unavailable; reimplementation planned.
+- User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+- Proposed input: Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt; SHA-256 e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32; header 'STRONG-QUICK (88R1006) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+- Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+- Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+- Legacy PLUS-STRONG-QUICK wording retained; canonical PLUS-STRONG QUICK metadata is unchanged.
 
 ### OCF-SEN-001 — Sensory: Hearing
 - Source here less wording retained as transcription uncertainty. This separate source-derived draft does not change frozen Hearing pilot resources.
@@ -224,19 +244,26 @@ Missing spoken keys are omitted, not filled with placeholders. Source-unavailabl
 - Consolidation at 59–63 and trailing Thank you at 235 excluded.
 
 ### OCF-SEN-003 — Sensory: Smell
-- Missing opener: Historical source unavailable; reimplementation planned.
-- Missing function-body: Historical source unavailable; reimplementation planned.
-- Missing closer: Historical source unavailable; reimplementation planned.
+- User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+- Proposed input: Sensory (Smell)/Sensory_Smell_reconstructed_clean.txt; SHA-256 7a1b03b324f5842b5e0c9f4c0a4ae7febaa1a1edfa0c096cf37638c3f3923873; header 'SENSORY: SMELL — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+- Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+- Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+- Legacy GREATER/LESSER wording retained; canonical MORE/LESS metadata is unchanged.
 
 ### OCF-SEN-004 — Sensory: Taste
-- Missing opener: Historical source unavailable; reimplementation planned.
-- Missing function-body: Historical source unavailable; reimplementation planned.
-- Missing closer: Historical source unavailable; reimplementation planned.
+- User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+- Proposed input: Sensory (Taste)/Sensory_Taste_reconstructed_clean.txt; SHA-256 c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13; header 'SENSORY: TASTE — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+- Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+- Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+- Legacy GREATER/LESSER wording retained; canonical MORE/LESS metadata is unchanged.
 
 ### OCF-SEN-005 — Sensory: Touch
-- Missing opener: Historical source unavailable; reimplementation planned.
-- Missing function-body: Historical source unavailable; reimplementation planned.
-- Missing closer: Historical source unavailable; reimplementation planned.
+- User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+- Proposed input: Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt; SHA-256 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066; header 'SENSORY: TOUCH — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT, VERSION 2'.
+- Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+- Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+- The clean Version 2 is selected; the annotated/script variants remain separate local comparison material.
+- Legacy GREATER/LESSER wording retained; canonical MORE/LESS metadata is unchanged.
 
 ### OCF-SLP-001 — Restorative Sleep
 - Missing closer: No function-specific final closer is recoverable; source ends in repeated Twenty.
@@ -253,17 +280,22 @@ Missing spoken keys are omitted, not filled with placeholders. Source-unavailabl
 - Unassigned tail at 158–194 is not promoted into a closing instruction. Source numeric labels retained.
 
 ### OCF-SLP-005 — Sleep Easy
-- Missing opener: Historical source unavailable; reimplementation planned.
-- Missing function-body: Historical source unavailable; reimplementation planned.
-- Missing closer: Historical source unavailable; reimplementation planned.
+- User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+- Proposed input: Sleep Easy/Sleep_Easy_reconstructed_clean.txt; SHA-256 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309; header 'SLEEP EASY — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+- Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+- Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+- Legacy PLUS-QUIET, SLEEP wording retained; canonical PLUS-SLEEP EASY metadata is unchanged.
+- This separate user-proposed draft does not alter frozen Sleep Easy pilot resources or editorial decisions.
 
 ### OCF-SLP-006 — Stay Awake
-- Missing opener: Historical source unavailable; reimplementation planned.
-- Missing function-body: Historical source unavailable; reimplementation planned.
-- Missing closer: Historical source unavailable; reimplementation planned.
+- User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+- Proposed input: Stay Awake/Stay_Awake_881001_reconstructed_clean.txt; SHA-256 f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e; header 'STAY AWAKE (881001) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+- Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+- Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+- Proposed alertness/driving-use assertions retained as claims for wording review; no outcome is established.
 
 ## Import behavior
 
-`scripts/tools/prepare_hplus_function_review.py` reads the explicit extent recipe in `function-content/hplus-review-selections.yaml` and the local SOURCE records only during editorial preparation. It verifies each source hash and never overwrites an existing locale file. Runtime composition reads committed locale resources only.
+`scripts/tools/prepare_hplus_function_review.py` reads the historical selection recipe and the separately labeled proposal recipe in `function-content/hplus-proposed-review-selections.yaml` only during offline editorial preparation. It verifies input hashes and identities. `--apply-proposals` replaces only untouched status-only placeholders; existing narration/human edits are preserved. Runtime composition reads committed locale resources only.
 
-These are separate source-derived candidates. Existing Relax, Hearing and Sleep Easy pilot editorial resources and RC1/V2/V2.1 material remain frozen.
+These are separate draft candidates with their wording basis recorded. Existing Relax, Hearing and Sleep Easy pilot editorial resources and RC1/V2/V2.1 material remain frozen.

@@ -1,15 +1,104 @@
 # OCF-SLP-005 — Sleep Easy
 # English function-specific review candidate; edit this file as the wording source of truth.
 # Source status: unavailable; authentication remains unverified.
-# Missing opener: Historical source unavailable; reimplementation planned.
-# Missing function-body: Historical source unavailable; reimplementation planned.
-# Missing closer: Historical source unavailable; reimplementation planned.
+# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+# Review note: Proposed input: Sleep Easy/Sleep_Easy_reconstructed_clean.txt; SHA-256 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309; header 'SLEEP EASY — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+# Review note: Legacy PLUS-QUIET, SLEEP wording retained; canonical PLUS-SLEEP EASY metadata is unchanged.
+# Review note: This separate user-proposed draft does not alter frozen Sleep Easy pilot resources or editorial decisions.
 schema_version: '1.0'
 locale: en-US
-domain: ui
+domain: narration
 entries:
-  hplus.review.ocf-slp-005.availability:
-    text: Historical source unavailable. Opener, function body and closer are not authored; reimplementation remains planned.
+  hplus.function.ocf-slp-005.opener:
     status: draft
     version: 1.0.0
-    notes: Review status only, not spoken narration. No reconstruction or previous candidate has been substituted for SOURCE.
+    text: Now, learn to sleep any time, any place.
+    notes: 'User-proposed reconstruction draft; input lines 50–50. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sleep Easy/Sleep_Easy_reconstructed_clean.txt; SHA-256 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309; header ''SLEEP EASY — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Legacy PLUS-QUIET, SLEEP wording retained; canonical PLUS-SLEEP EASY metadata is unchanged. This separate user-proposed draft does not alter frozen Sleep Easy pilot resources or editorial decisions. Rights: user_cleared, per
+      user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-slp-005.function-body:
+    status: draft
+    version: 1.0.0
+    text: |-
+      At any time from this moment forward, whenever you desire normal sleep and
+      the place or conditions are different, difficult or disturbing, first make
+      your physical body as comfortable and secure as the situation permits.
+
+      Close your eyes.
+
+      Inhale deeply and hold your breath.
+
+      Then say or think in your mind:
+
+      PLUS-QUIET, SLEEP.
+
+      Then exhale slowly through your mouth and continue to breathe easily and
+      normally.
+
+      When you do this, your physical body and mind will begin to move quickly and
+      easily toward normal, natural sleep.
+
+      Your physical body will loosen and relax.
+
+      Your breathing will become slow, easy and even.
+
+      Your thoughts will become quieter and quieter.
+
+      Events and concerns that do not require your attention will move into the
+      background.
+
+      The unfamiliar place will become less important.
+
+      Outside sound, light, movement and other surrounding conditions will become
+      less and less important to your sleeping process.
+
+      Such conditions may continue around you, but they will no longer hold your
+      attention or prevent normal sleep.
+
+      Your awareness of the outer environment will fade in the natural way of
+      sleep.
+
+      Your mind and body will accept the present place as a place where normal
+      sleep can occur.
+
+      You will drift easily and calmly into normal, natural, restful sleep.
+
+      All when you state:
+
+      PLUS-QUIET, SLEEP.
+
+      Use this Function when normal sleep is desired under extreme, adverse or
+      unfamiliar conditions.
+
+      The Function will support normal sleep. It will not change the surrounding
+      environment itself.
+
+      Other sleep-related H-PLUS Functions may be used with SLEEP EASY when their
+      separate purposes are desired.
+
+      The more you use this method correctly, the easier and more effective it
+      will become.
+    notes: 'User-proposed reconstruction draft; input lines 149–206. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sleep Easy/Sleep_Easy_reconstructed_clean.txt; SHA-256 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309; header ''SLEEP EASY — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Legacy PLUS-QUIET, SLEEP wording retained; canonical PLUS-SLEEP EASY metadata is unchanged. This separate user-proposed draft does not alter frozen Sleep Easy pilot resources or editorial decisions. Rights: user_cleared,
+      per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-slp-005.closer:
+    status: draft
+    version: 1.0.0
+    text: |-
+      Remember, when you desire normal sleep in a difficult or unfamiliar place,
+      make yourself as comfortable and secure as possible.
+
+      Close your eyes.
+
+      Inhale deeply and hold your breath.
+
+      Say in your mind:
+
+      PLUS-QUIET, SLEEP.
+
+      Then exhale slowly through your mouth and continue to breathe normally as
+      you drift into sleep.
+
+      This is the end of your H-PLUS Function learning exercise.
+    notes: 'User-proposed reconstruction draft; input lines 327–341. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sleep Easy/Sleep_Easy_reconstructed_clean.txt; SHA-256 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309; header ''SLEEP EASY — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Legacy PLUS-QUIET, SLEEP wording retained; canonical PLUS-SLEEP EASY metadata is unchanged. This separate user-proposed draft does not alter frozen Sleep Easy pilot resources or editorial decisions. Rights: user_cleared,
+      per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'

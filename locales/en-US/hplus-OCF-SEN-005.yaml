@@ -1,15 +1,57 @@
 # OCF-SEN-005 — Sensory: Touch
 # English function-specific review candidate; edit this file as the wording source of truth.
 # Source status: unavailable; authentication remains unverified.
-# Missing opener: Historical source unavailable; reimplementation planned.
-# Missing function-body: Historical source unavailable; reimplementation planned.
-# Missing closer: Historical source unavailable; reimplementation planned.
+# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+# Review note: Proposed input: Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt; SHA-256 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066; header 'SENSORY: TOUCH — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT, VERSION 2'.
+# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+# Review note: The clean Version 2 is selected; the annotated/script variants remain separate local comparison material.
+# Review note: Legacy GREATER/LESSER wording retained; canonical MORE/LESS metadata is unchanged.
 schema_version: '1.0'
 locale: en-US
-domain: ui
+domain: narration
 entries:
-  hplus.review.ocf-sen-005.availability:
-    text: Historical source unavailable. Opener, function body and closer are not authored; reimplementation remains planned.
+  hplus.function.ocf-sen-005.opener:
     status: draft
     version: 1.0.0
-    notes: Review status only, not spoken narration. No reconstruction or previous candidate has been substituted for SOURCE.
+    text: Now, learn to direct your sense of touch.
+    notes: 'User-proposed reconstruction draft; input lines 31–31. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt; SHA-256 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066; header ''SENSORY: TOUCH — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT, VERSION 2''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. The clean Version 2 is selected; the annotated/script variants remain separate local comparison material. Legacy GREATER/LESSER wording retained; canonical MORE/LESS metadata is unchanged. Rights: user_cleared,
+      per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-sen-005.function-body:
+    status: draft
+    version: 1.0.0
+    text: |-
+      At any time from this moment forward, whenever you desire to control the way you feel and perceive touch, all you need do is close your eyes, inhale deeply, and hold your breath.
+
+      Then say or think in your mind, PLUS-TOUCH GREATER, or PLUS-TOUCH LESSER.
+
+      Then exhale slowly through your mouth and open your eyes.
+
+      When you do this, if you state GREATER, your sense of touch will become much sharper and clearer.
+
+      You will perceive and identify even the lightest touch to enter your system.
+
+      You will perceive differences in pressure, texture, and temperature more clearly and accurately.
+
+      All when you state PLUS-TOUCH GREATER.
+
+      When you state PLUS-TOUCH LESSER, your tactile sensitivity will become lower and lower each time you state PLUS-TOUCH LESSER, until any distracting, irritating, or unpleasant touch sensation is no longer important.
+
+      Whenever you use this method of touch control, it will continue until you desire to return to your normal touch condition.
+
+      The more you use this method, the easier and more effective it will become.
+    notes: 'User-proposed reconstruction draft; input lines 123–141. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt; SHA-256 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066; header ''SENSORY: TOUCH — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT, VERSION 2''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. The clean Version 2 is selected; the annotated/script variants remain separate local comparison material. Legacy GREATER/LESSER wording retained; canonical MORE/LESS metadata is unchanged. Rights: user_cleared,
+      per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-sen-005.closer:
+    status: draft
+    version: 1.0.0
+    text: |-
+      Remember, to direct your sense of touch, close your eyes, inhale deeply, and hold your breath.
+
+      Then say in your mind, PLUS-TOUCH GREATER, if you wish to increase your tactile sensitivity, or PLUS-TOUCH LESSER, if you want to turn down what and how you feel.
+
+      Then exhale through your mouth as if you are blowing out a candle, and open your eyes.
+
+      This is the end of your H-PLUS Function learning exercise.
+    notes: 'User-proposed reconstruction draft; input lines 247–253. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt; SHA-256 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066; header ''SENSORY: TOUCH — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT, VERSION 2''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. The clean Version 2 is selected; the annotated/script variants remain separate local comparison material. Legacy GREATER/LESSER wording retained; canonical MORE/LESS metadata is unchanged. Rights: user_cleared,
+      per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'

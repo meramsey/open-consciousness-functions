@@ -1,15 +1,108 @@
 # OCF-BOD-015 — Short Fix
 # English function-specific review candidate; edit this file as the wording source of truth.
 # Source status: unavailable; authentication remains unverified.
-# Missing opener: Historical source unavailable; reimplementation planned.
-# Missing function-body: Historical source unavailable; reimplementation planned.
-# Missing closer: Historical source unavailable; reimplementation planned.
+# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+# Review note: Proposed input: Short Fix/Short_Fix_881039_reconstructed_clean.txt; SHA-256 c4c9889958374fa4ea8e8971418c79764cfeb6e841bd3eabd7581bd06b1bc074; header 'SHORT FIX (881039) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+# Review note: Proposed sensory/physiological assertions retained for review.
 schema_version: '1.0'
 locale: en-US
-domain: ui
+domain: narration
 entries:
-  hplus.review.ocf-bod-015.availability:
-    text: Historical source unavailable. Opener, function body and closer are not authored; reimplementation remains planned.
+  hplus.function.ocf-bod-015.opener:
     status: draft
     version: 1.0.0
-    notes: Review status only, not spoken narration. No reconstruction or previous candidate has been substituted for SOURCE.
+    text: Now, learn to quickly de-tune distress signals in your physical body.
+    notes: 'User-proposed reconstruction draft; input lines 48–48. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Short Fix/Short_Fix_881039_reconstructed_clean.txt; SHA-256 c4c9889958374fa4ea8e8971418c79764cfeb6e841bd3eabd7581bd06b1bc074; header ''SHORT FIX (881039) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed sensory/physiological assertions retained for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-bod-015.function-body:
+    status: draft
+    version: 1.0.0
+    text: |-
+      At any time from this moment forward, when a new and non-chronic discomfort
+      or pain signal appears in a particular part of your physical body, and
+      immediate temporary reduction of that signal is desired, bring the exact
+      body area clearly into your mind.
+
+      Know the particular area in which you desire the temporary change.
+
+      Inhale deeply and hold your breath.
+
+      Then say or think in your mind:
+
+      PLUS-GO NUMB, GO NUMB.
+
+      Then exhale slowly through your mouth.
+
+      When you do this, the distress signals coming from the selected body area
+      will begin immediately to de-tune.
+
+      The signals will become less intense and less important.
+
+      The selected area will become less sensitive to the new discomfort or pain
+      signal.
+
+      Your mind will remain clear and alert.
+
+      You will remember that the selected area still requires proper attention,
+      care and evaluation.
+
+      The temporary change will apply to the body area you selected.
+
+      All when you state:
+
+      PLUS-GO NUMB, GO NUMB.
+
+      SHORT FIX is for immediate and temporary use with discomfort or pain signals
+      that are new and not chronic.
+
+      It does not remove the cause of the signal or repair the condition producing
+      it.
+
+      When the temporary reduction is no longer desired, or when the need for
+      SHORT FIX has passed, bring the selected body area and SHORT FIX clearly
+      into your mind.
+
+      Inhale deeply and hold your breath.
+
+      Then say or think in your mind:
+
+      PLUS-RELEASE.
+
+      Then exhale slowly through your mouth.
+
+      The present application of SHORT FIX will end.
+
+      Normal sensitivity and signal awareness will return smoothly to the selected
+      body area.
+
+      The learning of SHORT FIX will remain within you, ready for future recall
+      and use when the proper command is given again.
+
+      Use TUNE-UP, RESTORATIVE SLEEP or RESET with SHORT FIX when their separate
+      purposes are appropriate.
+
+      The more correctly you use this method, the easier and more effective it
+      will become.
+    notes: 'User-proposed reconstruction draft; input lines 147–211. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Short Fix/Short_Fix_881039_reconstructed_clean.txt; SHA-256 c4c9889958374fa4ea8e8971418c79764cfeb6e841bd3eabd7581bd06b1bc074; header ''SHORT FIX (881039) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed sensory/physiological assertions retained for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-bod-015.closer:
+    status: draft
+    version: 1.0.0
+    text: |-
+      Remember, for immediate and temporary de-tuning of a new, non-chronic
+      discomfort or pain signal, bring the exact body area clearly into your mind.
+
+      Inhale deeply and hold your breath.
+
+      Say in your mind:
+
+      PLUS-GO NUMB, GO NUMB.
+
+      Then exhale slowly through your mouth.
+
+      When the temporary effect is no longer desired, use:
+
+      PLUS-RELEASE.
+
+      This is the end of your H-PLUS Function learning exercise.
+    notes: 'User-proposed reconstruction draft; input lines 332–347. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Short Fix/Short_Fix_881039_reconstructed_clean.txt; SHA-256 c4c9889958374fa4ea8e8971418c79764cfeb6e841bd3eabd7581bd06b1bc074; header ''SHORT FIX (881039) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed sensory/physiological assertions retained for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'

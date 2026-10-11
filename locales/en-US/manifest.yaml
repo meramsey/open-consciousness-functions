@@ -3,7 +3,7 @@ locale: en-US
 language_name: English (United States)
 direction: ltr
 status: canonical
-semantic_version: 1.4.0
+semantic_version: 1.5.0
 resources:
 - file: ui.yaml
   domain: ui
@@ -51,8 +51,8 @@ resources:
   domain: narration
   description: Sleep-specific opener body and closer candidates
 - file: hplus-OCF-AUT-001.yaml
-  domain: ui
-  description: 'See-Be: function-specific English review status'
+  domain: narration
+  description: 'See-Be: user-proposed reconstruction draft; historical source unavailable'
 - file: hplus-OCF-BOD-001.yaml
   domain: narration
   description: 'Brain: Repairs & Maintenance: function-specific English review candidate'
@@ -90,11 +90,11 @@ resources:
   domain: narration
   description: 'Tune-Up: function-specific English review candidate'
 - file: hplus-OCF-BOD-014.yaml
-  domain: ui
-  description: 'Regenerate: function-specific English review status'
+  domain: narration
+  description: 'Regenerate: user-proposed reconstruction draft; historical source unavailable'
 - file: hplus-OCF-BOD-015.yaml
-  domain: ui
-  description: 'Short Fix: function-specific English review status'
+  domain: narration
+  description: 'Short Fix: user-proposed reconstruction draft; historical source unavailable'
 - file: hplus-OCF-COG-001.yaml
   domain: narration
   description: 'Access to Information: function-specific English review candidate'
@@ -120,11 +120,11 @@ resources:
   domain: narration
   description: 'Speak Up: function-specific English review candidate'
 - file: hplus-OCF-EMG-001.yaml
-  domain: ui
-  description: 'Emergency: Injury: function-specific English review status'
+  domain: narration
+  description: 'Emergency: Injury: user-proposed reconstruction draft; historical source unavailable'
 - file: hplus-OCF-EMG-002.yaml
-  domain: ui
-  description: 'Emergency: Toxic: function-specific English review status'
+  domain: narration
+  description: 'Emergency: Toxic: user-proposed reconstruction draft; historical source unavailable'
 - file: hplus-OCF-EMO-001.yaml
   domain: narration
   description: 'Let Go: function-specific English review candidate'
@@ -132,14 +132,14 @@ resources:
   domain: narration
   description: 'Off-Loading: function-specific English review candidate'
 - file: hplus-OCF-EMO-003.yaml
-  domain: ui
-  description: 'Empathizing: function-specific English review status'
+  domain: narration
+  description: 'Empathizing: user-proposed reconstruction draft; historical source unavailable'
 - file: hplus-OCF-EXP-001.yaml
   domain: narration
   description: 'Mobius West: function-specific English review candidate'
 - file: hplus-OCF-EXP-002.yaml
-  domain: ui
-  description: 'Zoning: function-specific English review status'
+  domain: narration
+  description: 'Zoning: user-proposed reconstruction draft; historical source unavailable'
 - file: hplus-OCF-FND-001.yaml
   domain: narration
   description: 'Access to Energy: function-specific English review candidate'
@@ -153,8 +153,8 @@ resources:
   domain: narration
   description: 'Reset: function-specific English review candidate'
 - file: hplus-OCF-FND-006.yaml
-  domain: ui
-  description: 'Release: function-specific English review status'
+  domain: narration
+  description: 'Release: user-proposed reconstruction draft; historical source unavailable'
 - file: hplus-OCF-LIF-001.yaml
   domain: narration
   description: 'De-Hab: function-specific English review candidate'
@@ -168,14 +168,14 @@ resources:
   domain: narration
   description: 'Synchronizing: function-specific English review candidate'
 - file: hplus-OCF-PRF-004.yaml
-  domain: ui
-  description: 'Light Foot: function-specific English review status'
+  domain: narration
+  description: 'Light Foot: user-proposed reconstruction draft; historical source unavailable'
 - file: hplus-OCF-PRF-005.yaml
-  domain: ui
-  description: 'Make Your Day: function-specific English review status'
+  domain: narration
+  description: 'Make Your Day: user-proposed reconstruction draft; historical source unavailable'
 - file: hplus-OCF-PRF-006.yaml
-  domain: ui
-  description: 'Strong-Quick: function-specific English review status'
+  domain: narration
+  description: 'Strong-Quick: user-proposed reconstruction draft; historical source unavailable'
 - file: hplus-OCF-SEN-001.yaml
   domain: narration
   description: 'Sensory: Hearing: function-specific English review candidate'
@@ -183,14 +183,14 @@ resources:
   domain: narration
   description: 'Sensory: Seeing: function-specific English review candidate'
 - file: hplus-OCF-SEN-003.yaml
-  domain: ui
-  description: 'Sensory: Smell: function-specific English review status'
+  domain: narration
+  description: 'Sensory: Smell: user-proposed reconstruction draft; historical source unavailable'
 - file: hplus-OCF-SEN-004.yaml
-  domain: ui
-  description: 'Sensory: Taste: function-specific English review status'
+  domain: narration
+  description: 'Sensory: Taste: user-proposed reconstruction draft; historical source unavailable'
 - file: hplus-OCF-SEN-005.yaml
-  domain: ui
-  description: 'Sensory: Touch: function-specific English review status'
+  domain: narration
+  description: 'Sensory: Touch: user-proposed reconstruction draft; historical source unavailable'
 - file: hplus-OCF-SLP-001.yaml
   domain: narration
   description: 'Restorative Sleep: function-specific English review candidate'
@@ -201,11 +201,11 @@ resources:
   domain: narration
   description: 'Wake/Know: function-specific English review candidate'
 - file: hplus-OCF-SLP-005.yaml
-  domain: ui
-  description: 'Sleep Easy: function-specific English review status'
+  domain: narration
+  description: 'Sleep Easy: user-proposed reconstruction draft; historical source unavailable'
 - file: hplus-OCF-SLP-006.yaml
-  domain: ui
-  description: 'Stay Awake: function-specific English review status'
+  domain: narration
+  description: 'Stay Awake: user-proposed reconstruction draft; historical source unavailable'
 notes: |
   Canonical locale. New narration keys are authored here first; a derived pack
   is then filled from this one, recording its source semantic version.

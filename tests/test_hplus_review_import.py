@@ -92,3 +92,77 @@ def test_manifest_domain_conflict_fails_before_creating_the_resource(importer):
     with pytest.raises(ValueError, match="manifest domain mismatch"):
         run(importer, True)
     assert not (output / "hplus-OCF-COG-001.yaml").exists()
+
+
+@pytest.fixture
+def proposal_importer(importer, monkeypatch):
+    workspace, sources, output, plan, report = importer
+    historical = {"function_id": "OCF-COG-001", "source_availability": "unavailable", "source_status": "unavailable", "source": None}
+    (workspace / "functions/OCF-COG-001.yaml").write_text(yaml.safe_dump(historical))
+    plan.write_text(yaml.safe_dump({"schema_version": "1.0", "selections": {}}))
+    raw = ("FIXTURE (test) — RECONSTRUCTED SCRIPT\nPLUS-FIXTURE\nCLEAN RECORDING SCRIPT\n"
+           "Proposed opener.\nProposed body.\nProposed closer.\nEND OF RECONSTRUCTED SCRIPT\n").encode()
+    (sources / "proposal.txt").write_bytes(raw)
+    proposal_plan = sources / "proposals.yaml"
+    proposal_plan.write_text(yaml.safe_dump({"schema_version": "1.0", "selections": {}, "proposals": {
+        "OCF-COG-001": {"input": {"file": "proposal.txt", "header": raw.decode().splitlines()[0], "sha256": hashlib.sha256(raw).hexdigest()},
+                        "selection": {"slots": {slot: [{"start_line": line, "end_line": line}]
+                                                  for line, slot in enumerate(("opener", "function-body", "closer"), 4)},
+                                      "missing": {}, "notes": []}},
+    }}))
+    target = output / "hplus-OCF-COG-001.yaml"
+    target.write_text(yaml.safe_dump(review.resource_for(historical, None, None)[0]))
+    manifest = yaml.safe_load((output / "manifest.yaml").read_text())
+    manifest["resources"] = [{"file": target.name, "domain": "ui"}]
+    (output / "manifest.yaml").write_text(yaml.safe_dump(manifest))
+    monkeypatch.setattr(review, "load_all_functions", lambda: [SimpleNamespace(
+        id="OCF-COG-001", canonical_name="Synthetic fixture",
+        data={"legacy": {"name": "FIXTURE", "commands": ["PLUS-FIXTURE"]}},
+    )])
+    return importer, proposal_plan
+
+
+def apply_proposal(inputs, write, apply=True):
+    importer, proposal_plan = inputs
+    workspace, sources, output, plan, report = importer
+    return review.prepare(workspace, sources, output, plan, write=write, report_path=report,
+                          proposal_plan=proposal_plan, apply_proposals=apply)
+
+
+def test_explicit_proposal_upgrade_changes_only_the_placeholder_and_preserves_later_edits(proposal_importer):
+    importer, _ = proposal_importer
+    workspace, _, output, _, _ = importer
+    target = output / "hplus-OCF-COG-001.yaml"
+    original = target.read_bytes()
+    historical_bytes = (workspace / "functions/OCF-COG-001.yaml").read_bytes()
+    apply_proposal(proposal_importer, True, apply=False)
+    assert target.read_bytes() == original
+    apply_proposal(proposal_importer, False)
+    assert target.read_bytes() == original
+    apply_proposal(proposal_importer, True)
+    data = yaml.safe_load(target.read_text())
+    assert data["domain"] == "narration"
+    manifest = yaml.safe_load((output / "manifest.yaml").read_text())
+    assert manifest["resources"][0]["domain"] == "narration"
+    assert manifest["semantic_version"] == "1.5.0"
+    assert (workspace / "functions/OCF-COG-001.yaml").read_bytes() == historical_bytes
+    data["entries"]["hplus.function.ocf-cog-001.opener"]["text"] = "Human edit after proposal import."
+    target.write_text(yaml.safe_dump(data))
+    edited = target.read_bytes()
+    apply_proposal(proposal_importer, True)
+    assert target.read_bytes() == edited
+
+
+def test_proposal_import_does_not_overwrite_a_human_edited_status_file(proposal_importer):
+    importer, _ = proposal_importer
+    _, _, output, _, _ = importer
+    target = output / "hplus-OCF-COG-001.yaml"
+    data = yaml.safe_load(target.read_text())
+    next(iter(data["entries"].values()))["notes"] = "User's own review note."
+    target.write_text(yaml.safe_dump(data))
+    before = target.read_bytes()
+    manifest = (output / "manifest.yaml").read_bytes()
+    with pytest.raises(ValueError, match="human edits"):
+        apply_proposal(proposal_importer, True)
+    assert target.read_bytes() == before
+    assert (output / "manifest.yaml").read_bytes() == manifest

@@ -1,15 +1,55 @@
 # OCF-SEN-004 — Sensory: Taste
 # English function-specific review candidate; edit this file as the wording source of truth.
 # Source status: unavailable; authentication remains unverified.
-# Missing opener: Historical source unavailable; reimplementation planned.
-# Missing function-body: Historical source unavailable; reimplementation planned.
-# Missing closer: Historical source unavailable; reimplementation planned.
+# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+# Review note: Proposed input: Sensory (Taste)/Sensory_Taste_reconstructed_clean.txt; SHA-256 c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13; header 'SENSORY: TASTE — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+# Review note: Legacy GREATER/LESSER wording retained; canonical MORE/LESS metadata is unchanged.
 schema_version: '1.0'
 locale: en-US
-domain: ui
+domain: narration
 entries:
-  hplus.review.ocf-sen-004.availability:
-    text: Historical source unavailable. Opener, function body and closer are not authored; reimplementation remains planned.
+  hplus.function.ocf-sen-004.opener:
     status: draft
     version: 1.0.0
-    notes: Review status only, not spoken narration. No reconstruction or previous candidate has been substituted for SOURCE.
+    text: Now, learn to direct your physical sense of taste.
+    notes: 'User-proposed reconstruction draft; input lines 37–37. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sensory (Taste)/Sensory_Taste_reconstructed_clean.txt; SHA-256 c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13; header ''SENSORY: TASTE — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Legacy GREATER/LESSER wording retained; canonical MORE/LESS metadata is unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-sen-004.function-body:
+    status: draft
+    version: 1.0.0
+    text: |-
+      At any time from this moment forward, whenever you desire to control the way you taste and perceive flavor, all you need do is close your eyes, inhale deeply, and hold your breath.
+
+      Then say or think in your mind, PLUS-TASTE GREATER, or PLUS-TASTE LESSER.
+
+      Then exhale slowly through your mouth and open your eyes.
+
+      When you do this, if you state GREATER, your physical sense of taste will become much sharper and clearer.
+
+      You will perceive and identify even the most subtle taste to enter your system.
+
+      You will perceive and enjoy pleasant tastes more fully.
+
+      All when you state PLUS-TASTE GREATER.
+
+      When you state PLUS-TASTE LESSER, your sense of taste will become less and less sensitive each time you state PLUS-TASTE LESSER, until any unwanted, distracting, or unpleasant taste sensation is no longer important.
+
+      You will also be able to tune down enjoyable taste sensations whenever you desire to do so.
+
+      Whenever you use this method of taste control, it will continue until you desire to return your sense of taste to its normal condition.
+
+      The more you use this method, the easier and more effective it will become.
+    notes: 'User-proposed reconstruction draft; input lines 128–148. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sensory (Taste)/Sensory_Taste_reconstructed_clean.txt; SHA-256 c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13; header ''SENSORY: TASTE — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Legacy GREATER/LESSER wording retained; canonical MORE/LESS metadata is unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-sen-004.closer:
+    status: draft
+    version: 1.0.0
+    text: |-
+      Remember, to direct your physical sense of taste, inhale deeply and hold your breath.
+
+      Say in your mind, PLUS-TASTE GREATER, if you wish to increase your sense of taste, or PLUS-TASTE LESSER, if you want to tune down what and how you taste.
+
+      Then exhale slowly through your mouth as if you are blowing out a candle.
+
+      This is the end of your Function learning exercise.
+    notes: 'User-proposed reconstruction draft; input lines 254–260. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sensory (Taste)/Sensory_Taste_reconstructed_clean.txt; SHA-256 c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13; header ''SENSORY: TASTE — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Legacy GREATER/LESSER wording retained; canonical MORE/LESS metadata is unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'

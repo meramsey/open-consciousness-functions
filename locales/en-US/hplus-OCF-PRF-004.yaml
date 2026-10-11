@@ -1,15 +1,93 @@
 # OCF-PRF-004 — Light Foot
 # English function-specific review candidate; edit this file as the wording source of truth.
 # Source status: unavailable; authentication remains unverified.
-# Missing opener: Historical source unavailable; reimplementation planned.
-# Missing function-body: Historical source unavailable; reimplementation planned.
-# Missing closer: Historical source unavailable; reimplementation planned.
+# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+# Review note: Proposed input: Light Foot/Light_Foot_881047_reconstructed_clean.txt; SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73; header 'LIGHT FOOT (881047) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+# Review note: The supplied body contains an extra leading space on one wrapped line; it is preserved.
 schema_version: '1.0'
 locale: en-US
-domain: ui
+domain: narration
 entries:
-  hplus.review.ocf-prf-004.availability:
-    text: Historical source unavailable. Opener, function body and closer are not authored; reimplementation remains planned.
+  hplus.function.ocf-prf-004.opener:
     status: draft
     version: 1.0.0
-    notes: Review status only, not spoken narration. No reconstruction or previous candidate has been substituted for SOURCE.
+    text: Now, learn to move more lightly when you walk, jog or run.
+    notes: 'User-proposed reconstruction draft; input lines 47–47. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Light Foot/Light_Foot_881047_reconstructed_clean.txt; SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73; header ''LIGHT FOOT (881047) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. The supplied body contains an extra leading space on one wrapped line; it is preserved. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-prf-004.function-body:
+    status: draft
+    version: 1.0.0
+    text: |-
+      At any time from this moment forward, whenever you are walking, jogging or
+      running and desire your movement to become lighter, easier and more
+       effortless, inhale deeply and hold your breath.
+
+      Then say or think in your mind:
+
+      PLUS-LIGHTER, LIGHTER.
+
+      Then exhale slowly through your mouth.
+
+      When you do this, the learned LIGHT FOOT pattern will begin to operate more
+      strongly while you are moving your feet.
+
+      Your steps will become lighter and easier.
+
+      The movement of your feet and legs will become smoother and more efficient.
+
+      Your physical body will use less unnecessary effort in the act of walking,
+      jogging or running.
+
+      The separate movements required for each step will join together more
+      smoothly.
+
+      Your feet will lift, move and return in a more even rhythm.
+
+      Your balance and direction will remain clear as your movement becomes more
+      comfortable and more effortless.
+
+      Unnecessary heaviness and strain in the act of moving your feet will become
+      less important.
+
+      You will remain aware of the ground, the surrounding conditions and the
+      proper action required for safe movement.
+
+      All when you state:
+
+      PLUS-LIGHTER, LIGHTER.
+
+      The learned LIGHT FOOT pattern is available only while you are actually
+      moving your feet.
+
+      When you stop walking, jogging or running, the present action of LIGHT FOOT
+      will cease until you begin moving your feet again.
+
+      Use the Function Command whenever you desire to improve and intensify the
+      LIGHT FOOT pattern during movement.
+
+      Use TUNE-UP or RESTORATIVE SLEEP when their separate purposes are appropriate
+      for recovery and physical balance.
+
+      Use SYNCHRONIZING when smooth, rapid and coordinated movement is desired.
+
+      The more correctly you use this method while moving your feet, the easier
+      and more effective it will become.
+    notes: 'User-proposed reconstruction draft; input lines 146–199. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Light Foot/Light_Foot_881047_reconstructed_clean.txt; SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73; header ''LIGHT FOOT (881047) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. The supplied body contains an extra leading space on one wrapped line; it is preserved. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+  hplus.function.ocf-prf-004.closer:
+    status: draft
+    version: 1.0.0
+    text: |-
+      Remember, when you are walking, jogging or running and desire to move more
+      lightly and effortlessly, inhale deeply and hold your breath.
+
+      Say in your mind:
+
+      PLUS-LIGHTER, LIGHTER.
+
+      Then exhale slowly through your mouth.
+
+      LIGHT FOOT operates only while you are actually moving your feet.
+
+      This is the end of your H-PLUS Function learning exercise.
+    notes: 'User-proposed reconstruction draft; input lines 320–331. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Light Foot/Light_Foot_881047_reconstructed_clean.txt; SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73; header ''LIGHT FOOT (881047) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. The supplied body contains an extra leading space on one wrapped line; it is preserved. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'

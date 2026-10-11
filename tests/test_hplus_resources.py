@@ -29,7 +29,8 @@ def test_cli_binds_function_keys_and_fails_for_unauthored_function(tmp_path):
 
 
 SELECTIONS = yaml.safe_load((REPO_ROOT / "function-content/hplus-review-selections.yaml").read_text())["selections"]
-COMPLETE_OWNERS = sorted(owner for owner, selection in SELECTIONS.items() if not selection["missing"])
+PROPOSALS = yaml.safe_load((REPO_ROOT / "function-content/hplus-proposed-review-selections.yaml").read_text())["proposals"]
+COMPLETE_OWNERS = sorted([owner for owner, selection in SELECTIONS.items() if not selection["missing"]] + list(PROPOSALS))
 
 
 @pytest.mark.parametrize("owner", COMPLETE_OWNERS)
@@ -61,7 +62,7 @@ def test_standard_shared_and_function_resources_resolve_without_local_sources(ow
 def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
     owners = load_all_functions()
     assert len(owners) == 55
-    assert len(COMPLETE_OWNERS) == 29
+    assert len(COMPLETE_OWNERS) == 45
     unavailable = [owner for owner in owners if owner.source_availability == "unavailable"]
     assert len(unavailable) == 16
     for owner in owners:
@@ -70,8 +71,14 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
         prefix = f"hplus.function.{owner.id.lower()}."
         if owner.source_availability == "unavailable":
             assert owner.reimplementation_status == "planned"
-            assert doc["domain"] == "ui"
-            assert not any(key.startswith(prefix) for key in doc["entries"])
+            assert doc["domain"] == "narration"
+            assert owner.id in PROPOSALS
+            assert set(doc["entries"]) == {prefix + slot for slot in ("opener", "function-body", "closer")}
+            for entry in doc["entries"].values():
+                assert entry["status"] == "draft"
+                assert "User-proposed reconstruction" in entry["notes"]
+                assert PROPOSALS[owner.id]["input"]["sha256"] in entry["notes"]
+                assert "source availability remains unavailable" in entry["notes"]
         else:
             assert doc["domain"] == "narration"
             selection = SELECTIONS[owner.id]
@@ -81,7 +88,7 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
                 assert entry["status"] == "draft"
 
 
-@pytest.mark.parametrize("owner", ["OCF-AUT-001", "OCF-COG-005", "OCF-BOD-005"])
+@pytest.mark.parametrize("owner", ["OCF-SLP-004", "OCF-COG-005", "OCF-BOD-005"])
 def test_missing_source_sections_cannot_be_spoken_as_review_status(owner, tmp_path):
     args = SimpleNamespace(
         template="OCF-TPL-SESSION-HPLUS-STANDARD-001",

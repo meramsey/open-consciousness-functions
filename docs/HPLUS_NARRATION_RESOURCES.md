@@ -22,14 +22,25 @@ The same body key supplies both Focus 11 passes and both Focus 20 underlay passe
 All 55 functions now have an English review file, linked in
 [English HPlus function review](HPLUS_FUNCTION_REVIEW.md). The 39 source-available
 files contain the identifiable function-specific wording: 29 have all three
-ordinary sections and 10 have explicitly recorded source gaps. Attention,
+ordinary sections and 10 have explicitly recorded source gaps. Sixteen additional
+files now contain the user's proposed reconstruction wording, making **45 complete
+opener/body/closer drafts**. Attention,
 Circulation and Sleep retain their initial file selections. Entry status remains
 `draft` for human wording review; a translatable candidate does not authenticate
 its transcript or certify its efficacy claims.
 
-The 16 source-unavailable files contain **UI review status only**, with no
-invented spoken opener/body/closer. Their canonical records remain planned
-reimplementation targets. Missing spoken sections fail clearly during composition.
+The sixteen historical source-unavailable records remain unavailable and planned
+reimplementation targets. Their English files now contain **user-proposed
+reconstruction drafts**, selected from the supplied clean scripts in
+`references/HumanPlusTranscripts/`. They are not recovered historical transcripts.
+The separate proposal recipe records input hashes, exact document headers and
+opener/body/closer line extents in `function-content/hplus-proposed-review-selections.yaml`.
+Identity was checked against document titles and listed legacy commands, not
+inferred from filenames. Sensory: Touch uses the clean Version 2; annotated
+variants remain local comparison material. Sleep Easy's unknown catalogue number
+is not filled in. Canonical commands and frozen Sleep Easy pilot wording remain
+unchanged. Missing spoken sections in the ten incomplete transcripts still fail
+clearly during composition.
 Access to Energy also preserves its distinct source-specific access-close command
 in a separate review entry; the standard template does not consume that extra
 entry automatically. Some final passages are exploration/integration handoffs
@@ -86,8 +97,19 @@ preparer verifies local source hashes and creates only missing files:
 PYTHONPATH=scripts python3 scripts/tools/prepare_hplus_function_review.py --write
 ```
 
-It never overwrites an existing English resource. Edit the locale file directly
-for wording review and translation; source files stay immutable.
+To populate untouched status-only placeholders from the supplied proposals:
+
+```bash
+PYTHONPATH=scripts python3 scripts/tools/prepare_hplus_function_review.py --apply-proposals --write
+```
+
+The explicit proposal option replaces only the original status-only placeholders;
+existing narration and human edits are preserved. Prefatory material, production
+directions and shared script passages are not included in the three function
+entries. Proposed words and punctuation are retained, including legacy command
+spellings. Input timing suggestions are not measured timing or verified evidence.
+Edit the locale file directly for wording review and translation; reference
+files stay immutable.
 
 ```bash
 python3 scripts/ocf.py session compose \

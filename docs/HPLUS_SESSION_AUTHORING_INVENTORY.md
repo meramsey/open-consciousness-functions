@@ -175,7 +175,10 @@ body-part relaxation segmentation. Rights are user-cleared; authentication
 remains unverified. All 55 function-specific English review files are now present;
 see [the review list](HPLUS_FUNCTION_REVIEW.md). The 39 source-available functions
 have selected candidate wording with explicit missing sections; the 16
-source-unavailable files contain review status only. Human wording review remains
+historical source-unavailable functions now have separately labeled user-proposed
+reconstruction drafts. There are 45 complete opener/body/closer drafts and ten
+source-available files with recorded gaps. Historical source availability and
+planned reimplementation status are unchanged. Human wording review remains
 pending.
 Focus 20 underlay audibility, long holds, and localized speech timing need
 measurement/listening review before finished audio release.

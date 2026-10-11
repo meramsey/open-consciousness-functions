@@ -1,15 +1,100 @@
 # OCF-EMG-001 — Emergency: Injury
 # English function-specific review candidate; edit this file as the wording source of truth.
 # Source status: unavailable; authentication remains unverified.
-# Missing opener: Historical source unavailable; reimplementation planned.
-# Missing function-body: Historical source unavailable; reimplementation planned.
-# Missing closer: Historical source unavailable; reimplementation planned.
+# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
+# Review note: Proposed input: Emergency: Injury/Emergency_Injury_88R1040_reconstructed_clean.txt; SHA-256 e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276; header 'EMERGENCY: INJURY (88R1040) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
+# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
+# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
+# Review note: Proposed automatic/unconscious activation and physiological assertions retained as claims for review.
 schema_version: '1.0'
 locale: en-US
-domain: ui
+domain: narration
 entries:
-  hplus.review.ocf-emg-001.availability:
-    text: Historical source unavailable. Opener, function body and closer are not authored; reimplementation remains planned.
+  hplus.function.ocf-emg-001.opener:
     status: draft
     version: 1.0.0
-    notes: Review status only, not spoken narration. No reconstruction or previous candidate has been substituted for SOURCE.
+    text: Now, learn to direct body healing in response to injury.
+    notes: 'User-proposed reconstruction draft; input lines 48–48. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Emergency: Injury/Emergency_Injury_88R1040_reconstructed_clean.txt; SHA-256 e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276; header ''EMERGENCY: INJURY (88R1040) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed automatic/unconscious activation and physiological assertions retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and
+      finished-session release pending.'
+  hplus.function.ocf-emg-001.function-body:
+    status: draft
+    version: 1.0.0
+    text: |-
+      From this moment forward, whenever physical injury occurs, all parts of your
+      living system will begin immediately to increase their natural patterns of
+      control, balance and restoration.
+
+      Your autonomic system will respond to the injury and will direct the actions
+      of your physical body toward the best balance available under the condition.
+
+      The injured area and all related parts of your physical system will work
+      together more smoothly and completely.
+
+      Protective and balancing patterns will move into operation.
+
+      Repair and restoration patterns will begin and will continue in the natural
+      way of your physical body.
+
+      Your physical system will use the strength and resources available to it to
+      support control, balance and restoration.
+
+      If you are conscious when an injury occurs, inhale deeply and hold your
+      breath.
+
+      Then say or think in your mind:
+
+      PLUS-CONTROL, BALANCE, RESTORE.
+
+      Then exhale slowly through your mouth.
+
+      When you do this, the natural healing and balancing response of your physical
+      body will be strengthened and enhanced.
+
+      Your mind will remain as clear and calm as the condition permits so that you
+      can obtain help, apply first aid and take the action that is needed.
+
+      All when you state:
+
+      PLUS-CONTROL, BALANCE, RESTORE.
+
+      If injury causes you to become unconscious and you cannot give the command,
+      this Function will move into application without the command.
+
+      If you are conscious, use of the command will speed up and enhance the
+      process.
+
+      This Function assists and potentiates the natural defense mechanisms of your
+      physical body.
+
+      It does not replace first aid, emergency assistance or other methods of
+      treatment.
+
+      Use THINK FAST, RELAX, SHORT FIX and RESTORATIVE SLEEP with EMERGENCY:
+      INJURY when their separate purposes are appropriate.
+
+      The more correctly you use this method, the smoother and easier it will
+      become.
+    notes: 'User-proposed reconstruction draft; input lines 147–200. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Emergency: Injury/Emergency_Injury_88R1040_reconstructed_clean.txt; SHA-256 e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276; header ''EMERGENCY: INJURY (88R1040) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed automatic/unconscious activation and physiological assertions retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and
+      finished-session release pending.'
+  hplus.function.ocf-emg-001.closer:
+    status: draft
+    version: 1.0.0
+    text: |-
+      Remember, when physical injury occurs and you are conscious, inhale deeply
+      and hold your breath.
+
+      Say in your mind:
+
+      PLUS-CONTROL, BALANCE, RESTORE.
+
+      Then exhale slowly through your mouth.
+
+      If injury makes you unconscious and you cannot give the command, the Function
+      will move into application without the command.
+
+      Use the command when conscious to speed up and enhance the process, while you
+      obtain appropriate first aid and treatment.
+
+      This is the end of your H-PLUS Function learning exercise.
+    notes: 'User-proposed reconstruction draft; input lines 321–336. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Emergency: Injury/Emergency_Injury_88R1040_reconstructed_clean.txt; SHA-256 e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276; header ''EMERGENCY: INJURY (88R1040) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed automatic/unconscious activation and physiological assertions retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and
+      finished-session release pending.'

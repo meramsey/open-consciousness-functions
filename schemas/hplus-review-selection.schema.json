@@ -7,6 +7,26 @@
   "required": ["schema_version", "selections"],
   "properties": {
     "schema_version": {"const": "1.0"},
+    "proposals": {
+      "type": "object",
+      "propertyNames": {"pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
+      "additionalProperties": {
+        "type": "object", "additionalProperties": false,
+        "required": ["input", "selection"],
+        "properties": {
+          "input": {
+            "type": "object", "additionalProperties": false,
+            "required": ["file", "sha256", "header"],
+            "properties": {
+              "file": {"type": "string", "minLength": 1},
+              "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+              "header": {"type": "string", "minLength": 1}
+            }
+          },
+          "selection": {"$ref": "#/properties/selections/additionalProperties"}
+        }
+      }
+    },
     "selections": {
       "type": "object",
       "propertyNames": {"pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
