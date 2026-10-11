@@ -1,20 +1,21 @@
 # OCF-FND-003 — Recharge
 # English function-specific review candidate; edit this file as the wording source of truth.
 # Source status: transcript_unverified; authentication remains unverified.
+# Human review update: user approved all three sections and requested removal of the second repeated body pass.
 # Review note: Unrelated Thank you for watching and Good night at 61–62 excluded.
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-fnd-003.opener:
-    status: draft
+    status: reviewed
     version: 1.1.0
-    notes: 'Reference-derived candidate with user-directed OCF terminology edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Recharge/Recharge.txt; SHA-256 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4; line 2. “H-plus” changed to “OCF” per user''s standing instruction; original SOURCE remains unchanged. Shared preparation/state/return wording excluded. Claims remain source claims, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review pending; unrelated Thank you for watching and Good night at 61–62 excluded.'
+    notes: 'Reference-derived wording with user-directed OCF terminology edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Recharge/Recharge.txt; SHA-256 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4; line 2. “H-plus” changed to “OCF” per user''s standing instruction; original SOURCE remains unchanged. User approved opener unchanged. Claims remain source claims, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: This is your OCF function exercise to learn to recharge quickly during cat nap sleep.
   hplus.function.ocf-fnd-003.function-body:
-    status: draft
+    status: reviewed
     version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Recharge/Recharge.txt; SHA-256 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4; lines 38–60. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Unrelated Thank you for watching and Good night at 61–62 excluded.'
+    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Recharge/Recharge.txt; SHA-256 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4; lines 38–60. User approved the body with its repeated second pass removed; first pass retained. Original SOURCE remains unchanged. Sleep/efficacy statements remain source claims, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
       At any point in the future, when you wish to recharge and re-energize quickly during
       a very short sleep period, all you need do is inhale deeply, hold your breath,
@@ -27,22 +28,10 @@ entries:
       And then you will awaken calm and sure and alert only minutes thereafter.
       The more you use this method of quick restoration during a short sleep,
       the easier it will become.
-      At any point in the future, when you wish to recharge and re-energize quickly
-      during a very short sleep period, all you need do is inhale deeply, hold
-      your breath, and say or think in your mind, plus recharge.
-      Then exhale as if you were blowing out a candle.
-      When you do this, you will move easily and quickly into a normal, natural
-      sleep.
-      And during such sleep, your total self will smoothly and rapidly establish
-      total balance and equalization throughout your entire system, bringing new vitality
-      and freshness.
-      And then you will awaken calm and sure and alert only minutes thereafter.
-      The more you use this method of quick restoration during a short sleep,
-      the easier it will become.
   hplus.function.ocf-fnd-003.closer:
-    status: draft
+    status: reviewed
     version: 1.1.0
-    notes: 'Reference-derived candidate with user-directed OCF sign-off edit; transcript_unverified. SOURCE +Transcripts From available tapes/Recharge/Recharge.txt; SHA-256 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4; lines 187–190. The final exercise label uses OCF function wording per user''s standing instruction; original SOURCE remains unchanged. Shared preparation/state/return wording excluded. Claims remain source claims, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review pending.'
+    notes: 'Reference-derived wording with user-directed OCF sign-off edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Recharge/Recharge.txt; SHA-256 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4; lines 187–190. User approved closer with OCF function wording; original SOURCE remains unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
       Remember, to sleep and get new energy in only a few minutes, all you need to do is
       inhale deeply, hold your breath and say in your mind, plus, recharge, then exhale
