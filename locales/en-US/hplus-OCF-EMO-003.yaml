@@ -1,6 +1,7 @@
 # OCF-EMO-003 — Empathizing
 # English function-specific review candidate; edit this file as the wording source of truth.
 # Source status: unavailable; authentication remains unverified.
+# Human review update: user approved all sections; body tail standardized to the shared “more you use this Function” line.
 # Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
 # Review note: Proposed input: Empathizing/Empathizing_881049_reconstructed_clean.txt; SHA-256 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06; header 'EMPATHIZING (881049) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
 # Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
@@ -11,15 +12,15 @@ locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-emo-003.opener:
-    status: draft
+    status: reviewed
     version: 1.0.0
     text: |-
       Now, learn to perceive and know more accurately the condition of another
       living physical being.
-    notes: 'User-proposed reconstruction draft; input lines 48–49. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Empathizing/Empathizing_881049_reconstructed_clean.txt; SHA-256 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06; header ''EMPATHIZING (881049) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed perception/knowing assertions retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+    notes: 'User-proposed reconstruction; not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input Empathizing/Empathizing_881049_reconstructed_clean.txt, SHA-256 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06. User approved opener. Source identity and header claims remain unverified. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
   hplus.function.ocf-emo-003.function-body:
-    status: draft
-    version: 1.0.0
+    status: reviewed
+    version: 1.1.0
     text: |-
       At any time from this moment forward, when you desire greater awareness of
       another living physical being in a situation requiring clear communication,
@@ -94,13 +95,11 @@ entries:
       communicates.
 
       Use the Function to improve understanding, not to control or manipulate.
-
-      The more calmly and accurately you observe, the easier and more effective
-      this Function will become.
-    notes: 'User-proposed reconstruction draft; input lines 148–223. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Empathizing/Empathizing_881049_reconstructed_clean.txt; SHA-256 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06; header ''EMPATHIZING (881049) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed perception/knowing assertions retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+      The more you use this Function, the easier and more effective it will become.
+    notes: 'User-proposed reconstruction with human edits; not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input Empathizing/Empathizing_881049_reconstructed_clean.txt, SHA-256 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06. User approved body, with its closing line changed to the reusable “The more you use this Function, the easier and more effective it will become” pattern. Claims remain proposals, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
   hplus.function.ocf-emo-003.closer:
-    status: draft
-    version: 1.0.0
+    status: reviewed
+    version: 1.1.0
     text: |-
       Remember, when you desire greater awareness of another living physical
       being in a situation requiring clear communication, relax, let go of your
@@ -117,5 +116,5 @@ entries:
       Observe calmly and compare each impression with direct communication and
       what you can verify.
 
-      This is the end of your H-PLUS Function learning exercise.
-    notes: 'User-proposed reconstruction draft; input lines 344–359. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Empathizing/Empathizing_881049_reconstructed_clean.txt; SHA-256 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06; header ''EMPATHIZING (881049) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed perception/knowing assertions retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+      This is the end of your OCF Function learning exercise.
+    notes: 'User-proposed reconstruction with OCF-authored closer; not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input Empathizing/Empathizing_881049_reconstructed_clean.txt, SHA-256 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06. User approved closer and OCF sign-off. The source handoff remains distinct. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
