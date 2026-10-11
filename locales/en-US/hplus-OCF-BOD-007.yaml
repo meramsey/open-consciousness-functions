@@ -7,16 +7,15 @@ locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-bod-007.opener:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Hypertension/Hypertension.txt; SHA-256 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a; lines 3–4. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Repeated pressure wording and isolated You inside the selected body are preserved for review; trailing video text excluded.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Hypertension/Hypertension.txt; SHA-256 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a; lines 3–4. User supplied and approved opener with H-plus changed to OCF and source duplication removed; original SOURCE remains unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
-      This is your h plus function exercise for reducing the effects of high blood pressure
-      pressure
+      This is your OCF function exercise for reducing the effects of high blood pressure
   hplus.function.ocf-bod-007.function-body:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Hypertension/Hypertension.txt; SHA-256 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a; lines 51–81. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Repeated pressure wording and isolated You inside the selected body are preserved for review; trailing video text excluded.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived wording with human edits; transcript_unverified. Original SOURCE +Transcripts From available tapes/Hypertension/Hypertension.txt; SHA-256 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a; lines 51–81. User supplied and approved this two-pass body, removing two isolated You tokens and preserving the two full repeated instruction passes; original SOURCE remains unchanged. Source count/transcription anomalies and efficacy claims remain review flags. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending. Trailing video text excluded.'
     text: |-
       At any point from this moment on
       Whenever you desire to know the condition of any part of your heart or blood vessel system and then to balance and adjust such
@@ -31,14 +30,12 @@ entries:
       Your entire system will quickly and smoothly move to bring that portion into a normal natural and equalized state of being
       Your system knows and remembers how to do this and will so perform when you instructed by this method
       The more you perform this function of perceiving and balancing any portion of your system
-      The easier and more effective it will become
-      You
-      You
+      The easier and more effective it will become.
       At any point from this moment on
       Whenever you desire to know the condition of any part of your heart or blood vessel system and then to balance and adjust such
       Part all you need to is close your eyes
       Inhale deeply and hold your breath
-      Look with your closed eyes at that portion of the heart and blood vessel system that you wish to know and direct and
+      Look with your closed eyes at that portion of the heart or blood vessel system that you wish to know and direct and
       Then say in your mind
       plus
       balance blood pressure
@@ -50,14 +47,12 @@ entries:
       The more you perform this function of perceiving and balancing any portion of your system
       The easier and more effective it will become
   hplus.function.ocf-bod-007.closer:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Hypertension/Hypertension.txt; SHA-256 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a; lines 190–202. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Repeated pressure wording and isolated You inside the selected body are preserved for review; trailing video text excluded.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Hypertension/Hypertension.txt; SHA-256 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a; lines 190–202. User supplied and approved closer with H Plus changed to OCF, duplicate general reminder removed, and wording ''heart original blood vessel system'' retained exactly as supplied for possible later clarification. Original SOURCE remains unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending. Trailing video text excluded.'
     text: |-
       Remember
-      To improve any part of your body
-      Remember
-      To improve any part of your heart or blood vessel system
+      To improve any part of your heart original blood vessel system
       All you need to do is close your eyes
       Inhale deeply and hold your breath
       Look with your closed eyes at that part that you wish to improve
@@ -66,4 +61,4 @@ entries:
       Balance
       Blood pressure
       Then exhale slowly through your mouth
-      This is the end of your H Plus function exercise
+      This is the end of your OCF function exercise
