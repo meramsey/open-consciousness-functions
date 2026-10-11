@@ -2,17 +2,18 @@
 # English function-specific review candidate; edit this file as the wording source of truth.
 # Source status: transcript_unverified; authentication remains unverified.
 # Review note: Waking words sharing line 84 are excluded from the closer.
+# Human review update: user approved all three sections and requested removal of the two duplicate body-ending lines.
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-com-001.opener:
-    status: draft
+    status: reviewed
     version: 1.0.0
     notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Speak Up/Speak Up.txt; SHA-256 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc; lines 1–1. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Waking words sharing line 84 are excluded from the closer.'
     text: Now, learn to speak and read strongly and effectively to others.
   hplus.function.ocf-com-001.function-body:
-    status: draft
+    status: reviewed
     version: 1.0.0
     notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Speak Up/Speak Up.txt; SHA-256 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc; lines 34–43. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Waking words sharing line 84 are excluded from the closer.'
     text: |-
@@ -24,14 +25,12 @@ entries:
       Also, when you wish to improve this ability even more, all you need do is inhale and hold your breath.
       Say in your mind, plus, speak up, then exhale as if you are blowing out a candle.
       The more you perform this function, the easier and more effective it will become.
-      The more you perform this function, the easier it will become.
-      The more you perform this function, the easier it will become.
   hplus.function.ocf-com-001.closer:
-    status: draft
+    status: reviewed
     version: 1.0.0
     notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Speak Up/Speak Up.txt; SHA-256 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc; lines 84–87 (starts at ''Remember''). Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Waking words sharing line 84 are excluded from the closer.'
     text: |-
       Remember to speak and communicate better with others.
       All you need to do is inhale and hold your breath. Then say in your mind,
       plus speak up. Then exhale through your mouth as if you're blowing out a candle.
-      This is the end of this function learning exercise.
+      This is the end of this OCF function learning exercise.
