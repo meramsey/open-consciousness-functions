@@ -8,10 +8,21 @@ schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
-  hplus.function.ocf-cog-005.function-body:
+  hplus.function.ocf-cog-005.opener:
     status: draft
+    version: "1.0.0"
+    notes: >-
+      OCF-authored opener suggested at the user's request, using a concise
+      function-purpose opening style. The partial Options transcript contains
+      no distinct function-specific opener; this is not historical wording.
+      User wording approval pending. Historical source status remains
+      partial_transcript and unverified. Rights: user_cleared attestation.
+      Finished-session release pending.
+    text: This OCF function exercise is to explore the options available to you in a life activity.
+  hplus.function.ocf-cog-005.function-body:
+    status: reviewed
     version: 1.0.0
-    notes: 'Reference-derived review candidate; partial_transcript. SOURCE +Transcripts From available tapes/Options/Options.txt; SHA-256 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195; lines 38–56. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Line 46 is retained in its body position.'
+    notes: 'Reference-derived wording; partial_transcript. SOURCE +Transcripts From available tapes/Options/Options.txt; SHA-256 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195; lines 38–56. Human wording review: user approved the body unchanged. Shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain explicit, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending. Line 46 remains in the body.'
     text: |-
       At any point in the future when you desire to see with your mind's eye what options you do have in any of your life activity,
       all you need to do is close your eyes and hold your breath.
@@ -22,6 +33,22 @@ entries:
       Your greater self will do so by reaching into your own life experience and gathering other information beyond the pattern of your own experience
       and will present such options to your conscious awareness in a manner and form you will understand clearly.
       The more you perform this method of seeing ahead, the easier and more effective it will become.
+  hplus.function.ocf-cog-005.closer:
+    status: draft
+    version: "1.0.0"
+    notes: >-
+      OCF-authored closer suggested at the user's request, modeled on other
+      function-specific closers and the PLUS OPTIONS, CHOICES cue in the approved
+      body. The partial Options transcript contains no distinct function-specific
+      closer; this is not historical wording. User wording approval pending.
+      Historical source status remains partial_transcript and unverified. Rights:
+      user_cleared attestation. Finished-session release pending.
+    text: |-
+      Remember, when you wish to explore options for a life activity, think of the activity you want information about.
+      Close your eyes and hold your breath.
+      Say in your mind, plus options, choices.
+      Then exhale slowly and leave your eyes closed.
+      This is the end of your OCF function exercise.
       At any point in the future when you desire to see with your mind's eye what options you do have in any of your life activity,
       all you need to do is close your eyes and hold your breath.
       Then think of the life activity on which you desire information.

@@ -30,8 +30,8 @@ def test_cli_binds_function_keys_and_fails_for_unauthored_function(tmp_path):
 
 SELECTIONS = yaml.safe_load((REPO_ROOT / "function-content/hplus-review-selections.yaml").read_text())["selections"]
 PROPOSALS = yaml.safe_load((REPO_ROOT / "function-content/hplus-proposed-review-selections.yaml").read_text())["proposals"]
-SUPPLEMENTARY_CLOSERS = {"OCF-BOD-004", "OCF-BOD-009", "OCF-COG-001", "OCF-COG-002"}
-SUPPLEMENTARY_OPENERS = {"OCF-BOD-008"}
+SUPPLEMENTARY_CLOSERS = {"OCF-BOD-004", "OCF-BOD-009", "OCF-COG-001", "OCF-COG-002", "OCF-COG-005"}
+SUPPLEMENTARY_OPENERS = {"OCF-BOD-008", "OCF-COG-005"}
 COMPLETE_OWNERS = sorted(
     owner
     for owner in [record.id for record in load_all_functions()]
@@ -72,7 +72,7 @@ def test_standard_shared_and_function_resources_resolve_without_local_sources(ow
 def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
     owners = load_all_functions()
     assert len(owners) == 55
-    assert len(COMPLETE_OWNERS) == 49
+    assert len(COMPLETE_OWNERS) == 50
     unavailable = [owner for owner in owners if owner.source_availability == "unavailable"]
     assert len(unavailable) == 16
     for owner in owners:
@@ -97,13 +97,15 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
                     assert slot in selection["missing"]
                     assert prefix + slot in doc["entries"]
                     assert doc["entries"][prefix + slot]["status"] == (
-                        "draft" if owner.id == "OCF-COG-002" else "reviewed"
+                        "draft" if owner.id in {"OCF-COG-002", "OCF-COG-005"} else "reviewed"
                     )
                     assert (
                         "not historical wording" in doc["entries"][prefix + slot]["notes"]
                         if owner.id == "OCF-COG-001"
                         else "not historical transcript wording" in doc["entries"][prefix + slot]["notes"]
                         if owner.id == "OCF-COG-002"
+                        else "not historical wording" in doc["entries"][prefix + slot]["notes"]
+                        if owner.id == "OCF-COG-005"
                         else "not transcript wording" in doc["entries"][prefix + slot]["notes"]
                         if owner.id == "OCF-BOD-004"
                         else "not historical transcript wording" in doc["entries"][prefix + slot]["notes"]
@@ -111,15 +113,21 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
                 elif owner.id in SUPPLEMENTARY_OPENERS and slot == "opener":
                     assert slot in selection["missing"]
                     assert prefix + slot in doc["entries"]
-                    assert doc["entries"][prefix + slot]["status"] == "reviewed"
-                    assert "User approved this opener" in doc["entries"][prefix + slot]["notes"]
+                    assert doc["entries"][prefix + slot]["status"] == (
+                        "draft" if owner.id == "OCF-COG-005" else "reviewed"
+                    )
+                    assert (
+                        "not historical wording" in doc["entries"][prefix + slot]["notes"]
+                        if owner.id == "OCF-COG-005"
+                        else "User approved this opener" in doc["entries"][prefix + slot]["notes"]
+                    )
                 else:
                     assert (prefix + slot in doc["entries"]) == (slot in selection["slots"])
             for entry in doc["entries"].values():
                 assert entry["status"] in {"draft", "reviewed"}
 
 
-@pytest.mark.parametrize("owner", ["OCF-SLP-004", "OCF-COG-005", "OCF-BOD-005"])
+@pytest.mark.parametrize("owner", ["OCF-SLP-004", "OCF-BOD-005"])
 def test_missing_source_sections_cannot_be_spoken_as_review_status(owner, tmp_path):
     args = SimpleNamespace(
         template="OCF-TPL-SESSION-HPLUS-STANDARD-001",

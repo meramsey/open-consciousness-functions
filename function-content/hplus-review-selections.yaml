@@ -135,9 +135,9 @@ selections:
     slots:
       function-body: [{start_line: 38, end_line: 56}]
     missing:
-      opener: Source begins with Music and shared preparation; the partition's purpose at line 46 belongs to the body.
-      closer: No final function-specific closer is recoverable; source ends in ellipsis runs.
-    notes: [Line 46 is retained in its body position.]
+      opener: No distinct source opener; an OCF-authored purpose opener is pending user wording approval.
+      closer: No source closer; an OCF-authored function-command closer is pending user wording approval.
+    notes: [Source begins with Music/shared preparation. The purpose statement at line 46 belongs to the body. Ellipsis-only source tail is not treated as a closer.]
   OCF-COG-006:
     slots:
       opener: [{start_line: 1, end_line: 2, end_before: To prepare}]

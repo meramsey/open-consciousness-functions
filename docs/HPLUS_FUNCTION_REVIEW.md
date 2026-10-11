@@ -27,7 +27,7 @@ Missing spoken keys are omitted. User-proposed reconstructions are labeled separ
 | OCF-COG-002 | Buy the Numbers | transcript_unverified | historical source selection | candidate | candidate | suggestion pending approval | [hplus-OCF-COG-002.yaml](../locales/en-US/hplus-OCF-COG-002.yaml) |
 | OCF-COG-003 | Contemplation | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-003.yaml](../locales/en-US/hplus-OCF-COG-003.yaml) |
 | OCF-COG-004 | Imprint | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-004.yaml](../locales/en-US/hplus-OCF-COG-004.yaml) |
-| OCF-COG-005 | Options | partial_transcript | historical source selection | missing | candidate | missing | [hplus-OCF-COG-005.yaml](../locales/en-US/hplus-OCF-COG-005.yaml) |
+| OCF-COG-005 | Options | partial_transcript | historical source selection | suggestion pending approval | candidate | suggestion pending approval | [hplus-OCF-COG-005.yaml](../locales/en-US/hplus-OCF-COG-005.yaml) |
 | OCF-COG-006 | Recall | partial_transcript | historical source selection | candidate | candidate | missing | [hplus-OCF-COG-006.yaml](../locales/en-US/hplus-OCF-COG-006.yaml) |
 | OCF-COG-007 | Think Fast | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-007.yaml](../locales/en-US/hplus-OCF-COG-007.yaml) |
 | OCF-COM-001 | Speak Up | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COM-001.yaml](../locales/en-US/hplus-OCF-COM-001.yaml) |
@@ -145,9 +145,23 @@ This is the end of your OCF function exercise.
 - Source wording stay in your mind in the closer is retained rather than corrected.
 
 ### OCF-COG-005 — Options
-- Missing opener: Source begins with Music and shared preparation; the partition's purpose at line 46 belongs to the body.
-- Missing closer: No final function-specific closer is recoverable; source ends in ellipsis runs.
-- Line 46 is retained in its body position.
+- Historical source is missing opener; OCF-authored suggestion (draft) is not SOURCE: This OCF function exercise is to explore the options available to you in a life activity.
+- Historical source is missing closer; OCF-authored suggestion (draft) is not SOURCE: Remember, when you wish to explore options for a life activity, think of the activity you want information about.
+Close your eyes and hold your breath.
+Say in your mind, plus options, choices.
+Then exhale slowly and leave your eyes closed.
+This is the end of your OCF function exercise.
+At any point in the future when you desire to see with your mind's eye what options you do have in any of your life activity,
+all you need to do is close your eyes and hold your breath.
+Then think of the life activity on which you desire information.
+Then say in your mind, plus options, choices.
+Then exhale slowly and leave your eyes closed.
+When you do this, your total self will clearly and accurately present to your waking consciousness in great detail
+each possibility and probability related to the life activity in question.
+Your greater self will do so by reaching into your own life experience and gathering other information beyond the pattern of your own experience
+and will present such options to your conscious awareness in a manner and form you will understand clearly.
+The more you perform this method of seeing ahead, the easier and more effective it will become.
+- Source begins with Music/shared preparation. The purpose statement at line 46 belongs to the body. Ellipsis-only source tail is not treated as a closer.
 
 ### OCF-COG-006 — Recall
 - Missing closer: No final function-specific closer is recoverable; source ends in ellipsis runs.
