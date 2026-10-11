@@ -11,12 +11,12 @@ Missing spoken keys are omitted. User-proposed reconstructions are labeled separ
 | OCF-BOD-001 | Brain: Repairs & Maintenance | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-001.yaml](../locales/en-US/hplus-OCF-BOD-001.yaml) |
 | OCF-BOD-002 | Circulation | partial_transcript | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-002.yaml](../locales/en-US/hplus-OCF-BOD-002.yaml) |
 | OCF-BOD-003 | De-Discomfort | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-003.yaml](../locales/en-US/hplus-OCF-BOD-003.yaml) |
-| OCF-BOD-004 | De-Tox: Body | partial_transcript | historical source selection | candidate | candidate | suggestion pending approval | [hplus-OCF-BOD-004.yaml](../locales/en-US/hplus-OCF-BOD-004.yaml) |
+| OCF-BOD-004 | De-Tox: Body | partial_transcript | historical source selection | candidate | candidate | reviewed OCF suggestion | [hplus-OCF-BOD-004.yaml](../locales/en-US/hplus-OCF-BOD-004.yaml) |
 | OCF-BOD-005 | Eat/No Eat | transcript_unverified | historical source selection | candidate | missing | candidate | [hplus-OCF-BOD-005.yaml](../locales/en-US/hplus-OCF-BOD-005.yaml) |
 | OCF-BOD-006 | Heart: Repairs & Maintenance | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-006.yaml](../locales/en-US/hplus-OCF-BOD-006.yaml) |
 | OCF-BOD-007 | Hypertension | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-007.yaml](../locales/en-US/hplus-OCF-BOD-007.yaml) |
-| OCF-BOD-008 | Immunizing | transcript_unverified | historical source selection | suggestion pending approval | candidate | candidate | [hplus-OCF-BOD-008.yaml](../locales/en-US/hplus-OCF-BOD-008.yaml) |
-| OCF-BOD-009 | Lungs: Repairs & Maintenance | partial_transcript | historical source selection | candidate | candidate | missing | [hplus-OCF-BOD-009.yaml](../locales/en-US/hplus-OCF-BOD-009.yaml) |
+| OCF-BOD-008 | Immunizing | transcript_unverified | historical source selection | reviewed OCF suggestion | candidate | candidate | [hplus-OCF-BOD-008.yaml](../locales/en-US/hplus-OCF-BOD-008.yaml) |
+| OCF-BOD-009 | Lungs: Repairs & Maintenance | partial_transcript | historical source selection | candidate | candidate | suggestion pending approval | [hplus-OCF-BOD-009.yaml](../locales/en-US/hplus-OCF-BOD-009.yaml) |
 | OCF-BOD-010 | Nutricia | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-010.yaml](../locales/en-US/hplus-OCF-BOD-010.yaml) |
 | OCF-BOD-011 | Passages | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-011.yaml](../locales/en-US/hplus-OCF-BOD-011.yaml) |
 | OCF-BOD-012 | Sex Drive | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-012.yaml](../locales/en-US/hplus-OCF-BOD-012.yaml) |
@@ -81,7 +81,7 @@ Missing spoken keys are omitted. User-proposed reconstructions are labeled separ
 - Waking text sharing line 104 stays in the shared return; trailing Thank you at 109 excluded.
 
 ### OCF-BOD-004 — De-Tox: Body
-- Historical source is missing closer; an OCF-authored suggestion is pending human approval: Remember, when you want to use the De-Tox function, inhale deeply and hold your breath.
+- Historical source is missing closer; OCF-authored suggestion (reviewed) is not SOURCE: Remember, when you want to use the De-Tox function, inhale deeply and hold your breath.
 Say or think in your mind, plus, clean, clear.
 Then exhale slowly and easily.
 This is the end of your OCF function exercise.
@@ -98,11 +98,14 @@ This is the end of your OCF function exercise.
 - Repeated pressure wording and isolated You inside the selected body are preserved for review; trailing video text excluded.
 
 ### OCF-BOD-008 — Immunizing
-- Historical source is missing opener; an OCF-authored suggestion is pending human approval: Now, learn to direct your body's natural protective systems.
+- Historical source is missing opener; OCF-authored suggestion (reviewed) is not SOURCE: Now, learn to direct your body's natural protective systems.
 - Do not move the body into the opener; Music runs and trailing website text excluded.
 
 ### OCF-BOD-009 — Lungs: Repairs & Maintenance
-- Missing closer: No final function-specific closer is recoverable; transcript ends in ellipsis runs.
+- Historical source is missing closer; OCF-authored suggestion (draft) is not SOURCE: Remember, when you wish to use this breathing function, inhale and hold your breath.
+Say or think in your mind, plus, breathe better.
+Then exhale slowly through your mouth.
+This is the end of your OCF function exercise.
 - Shared consolidation at 60–63 excluded.
 
 ### OCF-BOD-011 — Passages

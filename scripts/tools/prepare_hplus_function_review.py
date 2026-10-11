@@ -250,7 +250,7 @@ def prepare(workspace: Path, source_root: Path, output: Path, plan_path: Path, *
                   "", "| Function | Name | Historical source status | Wording basis | Opener | Body | Closer | Editable English file |", "| --- | --- | --- | --- | --- | --- | --- | --- |"]
         for owner, name, record, data, missing, notes, target, existing, upgrade in products:
             cells = [
-                "suggestion pending approval"
+                ("reviewed OCF suggestion" if data["entries"][f"hplus.function.{owner.lower()}.{slot}"].get("status") == "reviewed" else "suggestion pending approval")
                 if slot in missing and f"hplus.function.{owner.lower()}.{slot}" in data["entries"]
                 else "missing"
                 if slot in missing
@@ -264,7 +264,7 @@ def prepare(workspace: Path, source_root: Path, output: Path, plan_path: Path, *
             if missing or notes:
                 report.append(f"### {owner} — {name}")
                 report += [
-                    f"- Historical source is missing {slot}; an OCF-authored suggestion is pending human approval: {data['entries'][f'hplus.function.{owner.lower()}.{slot}']['text']}"
+                    f"- Historical source is missing {slot}; OCF-authored suggestion ({data['entries'][f'hplus.function.{owner.lower()}.{slot}'].get('status')}) is not SOURCE: {data['entries'][f'hplus.function.{owner.lower()}.{slot}']['text']}"
                     if f"hplus.function.{owner.lower()}.{slot}" in data["entries"]
                     else f"- Missing {slot}: {reason}"
                     for slot, reason in missing.items()

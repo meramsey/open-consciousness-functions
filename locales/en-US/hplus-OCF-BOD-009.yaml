@@ -8,14 +8,14 @@ locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-bod-009.opener:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; partial_transcript. SOURCE +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt; SHA-256 f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87; lines 1–1. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Shared consolidation at 60–63 excluded.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived wording; partial_transcript. SOURCE +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt; SHA-256 f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87; line 1. Human wording review: user approved the opener unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: Now, learn to improve the condition and performance of your breathing system.
   hplus.function.ocf-bod-009.function-body:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; partial_transcript. SOURCE +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt; SHA-256 f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87; lines 31–59. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Shared consolidation at 60–63 excluded.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived wording; partial_transcript. SOURCE +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt; SHA-256 f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87; lines 31–59. Human wording review: user approved the body unchanged. Shared preparation/state/return wording excluded. Physiological/efficacy statements remain source claims, not established outcomes; original source repetitions and uncertainty remain in SOURCE. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
       From this moment on, your lungs, your throat, your nose complex, all of the units that
       make up the system you have and use to intake ingredients and energy from the air around
@@ -46,3 +46,18 @@ entries:
       When you do this, this improving change in your breathing system will become much more rapid
       in its progress to perfection.
       The more you use this function, the easier and more effective it will become.
+  hplus.function.ocf-bod-009.closer:
+    status: draft
+    version: 1.0.0
+    notes: >-
+      OCF-authored closer suggestion, modeled on the function-command reminder
+      and ending form used by other function-specific closers. It is not source
+      wording: the available partial Lungs transcript has no identifiable
+      function-specific closer. User requested a suggestion; approval pending.
+      Historical source remains partial_transcript and unverified. Rights:
+      user_cleared attestation. Finished-session release pending.
+    text: |-
+      Remember, when you wish to use this breathing function, inhale and hold your breath.
+      Say or think in your mind, plus, breathe better.
+      Then exhale slowly through your mouth.
+      This is the end of your OCF function exercise.

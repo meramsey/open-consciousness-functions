@@ -27,7 +27,7 @@ selections:
     slots:
       opener: [{start_line: 8, end_line: 8}]
       function-body: [{start_line: 89, end_line: 103}]
-    missing: {closer: Historical source has no function-specific final closer; OCF-authored suggestion is stored separately as a draft pending human approval.}
+    missing: {closer: Historical source has no function-specific final closer; the OCF-authored closer suggestion was approved as working wording and remains distinct from SOURCE.}
     notes: [Standalone numeric transcription runs at 104–130 are not function instructions.]
   OCF-BOD-005:
     slots:
@@ -63,7 +63,10 @@ selections:
     slots:
       opener: [{start_line: 1, end_line: 1}]
       function-body: [{start_line: 31, end_line: 59}]
-    missing: {closer: No final function-specific closer is recoverable; transcript ends in ellipsis runs.}
+    missing:
+      closer: >-
+        Historical source has no identifiable function-specific closer; an
+        OCF-authored suggestion is stored separately pending human approval.
     notes: [Shared consolidation at 60–63 excluded.]
   OCF-BOD-010:
     slots:
