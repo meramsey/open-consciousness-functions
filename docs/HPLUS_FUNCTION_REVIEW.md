@@ -11,7 +11,7 @@ Missing spoken keys are omitted. User-proposed reconstructions are labeled separ
 | OCF-BOD-001 | Brain: Repairs & Maintenance | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-001.yaml](../locales/en-US/hplus-OCF-BOD-001.yaml) |
 | OCF-BOD-002 | Circulation | partial_transcript | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-002.yaml](../locales/en-US/hplus-OCF-BOD-002.yaml) |
 | OCF-BOD-003 | De-Discomfort | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-003.yaml](../locales/en-US/hplus-OCF-BOD-003.yaml) |
-| OCF-BOD-004 | De-Tox: Body | partial_transcript | historical source selection | candidate | candidate | missing | [hplus-OCF-BOD-004.yaml](../locales/en-US/hplus-OCF-BOD-004.yaml) |
+| OCF-BOD-004 | De-Tox: Body | partial_transcript | historical source selection | candidate | candidate | suggestion pending approval | [hplus-OCF-BOD-004.yaml](../locales/en-US/hplus-OCF-BOD-004.yaml) |
 | OCF-BOD-005 | Eat/No Eat | transcript_unverified | historical source selection | candidate | missing | candidate | [hplus-OCF-BOD-005.yaml](../locales/en-US/hplus-OCF-BOD-005.yaml) |
 | OCF-BOD-006 | Heart: Repairs & Maintenance | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-006.yaml](../locales/en-US/hplus-OCF-BOD-006.yaml) |
 | OCF-BOD-007 | Hypertension | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-007.yaml](../locales/en-US/hplus-OCF-BOD-007.yaml) |
@@ -81,7 +81,10 @@ Missing spoken keys are omitted. User-proposed reconstructions are labeled separ
 - Waking text sharing line 104 stays in the shared return; trailing Thank you at 109 excluded.
 
 ### OCF-BOD-004 — De-Tox: Body
-- Missing closer: No function-specific final closer is recoverable; transcript ends in repeated numbers.
+- Historical source is missing closer; an OCF-authored suggestion is pending human approval: Remember, when you want to use the De-Tox function, inhale deeply and hold your breath.
+Say or think in your mind, plus, clean, clear.
+Then exhale slowly and easily.
+This is the end of your OCF function exercise.
 - Standalone numeric transcription runs at 104–130 are not function instructions.
 
 ### OCF-BOD-005 — Eat/No Eat

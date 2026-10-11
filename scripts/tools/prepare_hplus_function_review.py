@@ -249,14 +249,26 @@ def prepare(workspace: Path, source_root: Path, output: Path, plan_path: Path, *
                   "Missing spoken keys are omitted. User-proposed reconstructions are labeled separately from historical SOURCE; historical source-unavailable records remain unavailable and planned.",
                   "", "| Function | Name | Historical source status | Wording basis | Opener | Body | Closer | Editable English file |", "| --- | --- | --- | --- | --- | --- | --- | --- |"]
         for owner, name, record, data, missing, notes, target, existing, upgrade in products:
-            cells = ["missing" if slot in missing else "candidate" for slot in SLOTS]
+            cells = [
+                "suggestion pending approval"
+                if slot in missing and f"hplus.function.{owner.lower()}.{slot}" in data["entries"]
+                else "missing"
+                if slot in missing
+                else "candidate"
+                for slot in SLOTS
+            ]
             basis = "user-proposed reconstruction" if owner in proposals and data["domain"] == "narration" else "historical source selection" if record["source"] else "status only"
             report.append(f"| {owner} | {name} | {record['source_status']} | {basis} | {' | '.join(cells)} | [{target.name}](../locales/en-US/{target.name}) |")
         report += ["", "## Boundary and uncertainty notes", ""]
         for owner, name, record, data, missing, notes, target, existing, upgrade in products:
             if missing or notes:
                 report.append(f"### {owner} — {name}")
-                report += [f"- Missing {slot}: {reason}" for slot, reason in missing.items()]
+                report += [
+                    f"- Historical source is missing {slot}; an OCF-authored suggestion is pending human approval: {data['entries'][f'hplus.function.{owner.lower()}.{slot}']['text']}"
+                    if f"hplus.function.{owner.lower()}.{slot}" in data["entries"]
+                    else f"- Missing {slot}: {reason}"
+                    for slot, reason in missing.items()
+                ]
                 report += [f"- {note}" for note in notes]
                 report.append("")
         report += ["## Import behavior", "", "`scripts/tools/prepare_hplus_function_review.py` reads the historical selection recipe and the separately labeled proposal recipe in `function-content/hplus-proposed-review-selections.yaml` only during offline editorial preparation. It verifies input hashes and identities. `--apply-proposals` replaces only untouched status-only placeholders; existing narration/human edits are preserved. Runtime composition reads committed locale resources only.", "",

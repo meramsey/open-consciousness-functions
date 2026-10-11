@@ -8,14 +8,14 @@ locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-bod-004.opener:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; partial_transcript. SOURCE +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt; SHA-256 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc; lines 8–8. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Standalone numeric transcription runs at 104–130 are not function instructions.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived wording; partial_transcript. SOURCE +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt; SHA-256 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc; lines 8–8. Human wording review: user approved the opener unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: Now, learn to cleanse your physical system.
   hplus.function.ocf-bod-004.function-body:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; partial_transcript. SOURCE +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt; SHA-256 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc; lines 89–103. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Standalone numeric transcription runs at 104–130 are not function instructions.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived wording; partial_transcript. SOURCE +Transcripts From available tapes/De-Tox Body/De-Tox Body.txt; SHA-256 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc; lines 89–103. Human wording review: user approved the body unchanged. Shared preparation/state/return wording excluded. Transcription remains partial and unverified; efficacy statements are source claims, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
       Beginning now, more and more, from this moment forward,
       when your physical body is blocked or distorted by materials,
@@ -32,3 +32,19 @@ entries:
       The more you perform this method of cleansing
       and keeping clean your physical body,
       the easier and more effective it will become.
+  hplus.function.ocf-bod-004.closer:
+    status: draft
+    version: 1.0.0
+    notes: >-
+      OCF-authored closer suggestion for review, based on the form of other
+      function-specific closers and the PLUS-CLEAN, CLEAR command in function
+      metadata. This is not transcript wording: the available partial De-Tox
+      transcript ends in repeated numbers and supplies no function-specific
+      closer. User requested a suggested closer; wording approval pending.
+      Historical source remains partial_transcript and unverified. Rights:
+      user_cleared attestation. Finished-session release pending.
+    text: |-
+      Remember, when you want to use the De-Tox function, inhale deeply and hold your breath.
+      Say or think in your mind, plus, clean, clear.
+      Then exhale slowly and easily.
+      This is the end of your OCF function exercise.

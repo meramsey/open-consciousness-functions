@@ -83,7 +83,13 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
             assert doc["domain"] == "narration"
             selection = SELECTIONS[owner.id]
             for slot in ("opener", "function-body", "closer"):
-                assert (prefix + slot in doc["entries"]) == (slot in selection["slots"])
+                if owner.id == "OCF-BOD-004" and slot == "closer":
+                    assert slot in selection["missing"]
+                    assert prefix + slot in doc["entries"]
+                    assert doc["entries"][prefix + slot]["status"] == "draft"
+                    assert "not transcript wording" in doc["entries"][prefix + slot]["notes"]
+                else:
+                    assert (prefix + slot in doc["entries"]) == (slot in selection["slots"])
             for entry in doc["entries"].values():
                 assert entry["status"] in {"draft", "reviewed"}
 

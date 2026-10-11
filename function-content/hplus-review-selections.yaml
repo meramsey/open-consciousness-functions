@@ -27,7 +27,7 @@ selections:
     slots:
       opener: [{start_line: 8, end_line: 8}]
       function-body: [{start_line: 89, end_line: 103}]
-    missing: {closer: No function-specific final closer is recoverable; transcript ends in repeated numbers.}
+    missing: {closer: Historical source has no function-specific final closer; OCF-authored suggestion is stored separately as a draft pending human approval.}
     notes: [Standalone numeric transcription runs at 104–130 are not function instructions.]
   OCF-BOD-005:
     slots:
