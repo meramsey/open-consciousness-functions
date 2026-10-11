@@ -6,17 +6,18 @@
 # Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
 # Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
 # Review note: Proposed sensory/physiological assertions retained for review.
+# Human review update: user approved opener, body and closer and requested H-PLUS changed to OCF; the unchanged-content notes below are historical import metadata.
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-bod-015.opener:
-    status: draft
+    status: reviewed
     version: 1.0.0
     text: Now, learn to quickly de-tune distress signals in your physical body.
     notes: 'User-proposed reconstruction draft; input lines 48–48. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Short Fix/Short_Fix_881039_reconstructed_clean.txt; SHA-256 c4c9889958374fa4ea8e8971418c79764cfeb6e841bd3eabd7581bd06b1bc074; header ''SHORT FIX (881039) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed sensory/physiological assertions retained for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
   hplus.function.ocf-bod-015.function-body:
-    status: draft
+    status: reviewed
     version: 1.0.0
     text: |-
       At any time from this moment forward, when a new and non-chronic discomfort
@@ -86,8 +87,8 @@ entries:
       will become.
     notes: 'User-proposed reconstruction draft; input lines 147–211. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Short Fix/Short_Fix_881039_reconstructed_clean.txt; SHA-256 c4c9889958374fa4ea8e8971418c79764cfeb6e841bd3eabd7581bd06b1bc074; header ''SHORT FIX (881039) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed sensory/physiological assertions retained for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
   hplus.function.ocf-bod-015.closer:
-    status: draft
-    version: 1.0.0
+    status: reviewed
+    version: 1.1.0
     text: |-
       Remember, for immediate and temporary de-tuning of a new, non-chronic
       discomfort or pain signal, bring the exact body area clearly into your mind.
@@ -104,5 +105,5 @@ entries:
 
       PLUS-RELEASE.
 
-      This is the end of your H-PLUS Function learning exercise.
+      This is the end of your OCF Function learning exercise.
     notes: 'User-proposed reconstruction draft; input lines 332–347. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Short Fix/Short_Fix_881039_reconstructed_clean.txt; SHA-256 c4c9889958374fa4ea8e8971418c79764cfeb6e841bd3eabd7581bd06b1bc074; header ''SHORT FIX (881039) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed sensory/physiological assertions retained for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
