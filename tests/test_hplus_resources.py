@@ -86,13 +86,11 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
                 if owner.id in {"OCF-BOD-004", "OCF-BOD-009"} and slot == "closer":
                     assert slot in selection["missing"]
                     assert prefix + slot in doc["entries"]
-                    assert doc["entries"][prefix + slot]["status"] == (
-                        "reviewed" if owner.id == "OCF-BOD-004" else "draft"
-                    )
+                    assert doc["entries"][prefix + slot]["status"] == "reviewed"
                     assert (
                         "not transcript wording" in doc["entries"][prefix + slot]["notes"]
                         if owner.id == "OCF-BOD-004"
-                        else "not source wording" in doc["entries"][prefix + slot]["notes"]
+                        else "not historical transcript wording" in doc["entries"][prefix + slot]["notes"]
                     )
                 elif owner.id == "OCF-BOD-008" and slot == "opener":
                     assert slot in selection["missing"]
