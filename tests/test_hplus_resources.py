@@ -91,8 +91,8 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
                 elif owner.id == "OCF-BOD-008" and slot == "opener":
                     assert slot in selection["missing"]
                     assert prefix + slot in doc["entries"]
-                    assert doc["entries"][prefix + slot]["status"] == "draft"
-                    assert "not represented as historical wording" in doc["entries"][prefix + slot]["notes"]
+                    assert doc["entries"][prefix + slot]["status"] == "reviewed"
+                    assert "User approved this opener" in doc["entries"][prefix + slot]["notes"]
                 else:
                     assert (prefix + slot in doc["entries"]) == (slot in selection["slots"])
             for entry in doc["entries"].values():
