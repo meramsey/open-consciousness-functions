@@ -8,18 +8,18 @@ locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-cog-006.opener:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; partial_transcript. SOURCE +Transcripts From available tapes/Recall/Recall.txt; SHA-256 db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3; lines 1–2 (ends before ''To prepare''). Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Unassigned religious line at 26 is outside the selected instruction; embedded numeric labels in the body remain flagged.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived candidate with user-directed OCF terminology edit; partial_transcript. Original SOURCE +Transcripts From available tapes/Recall/Recall.txt; SHA-256 db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3; lines 1–2 (ends before ''To prepare''). “H-plus” changed to “OCF” per user''s standing instruction; original SOURCE remains unchanged. User approved opener unchanged. Shared preparation/state/return wording excluded. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
-      This is your H-plus function exercise to learn to
+      This is your OCF function exercise to learn to
       remember.
   hplus.function.ocf-cog-006.function-body:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; partial_transcript. SOURCE +Transcripts From available tapes/Recall/Recall.txt; SHA-256 db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3; lines 32–49. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Unassigned religious line at 26 is outside the selected instruction; embedded numeric labels in the body remain flagged.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived wording with human edit; partial_transcript. Original SOURCE +Transcripts From available tapes/Recall/Recall.txt; SHA-256 db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3; lines 32–49. Human wording review: user approved the body with transcript labels “13.” and “15.” removed and the duplicated second pass omitted. Other wording retained; original SOURCE remains unchanged. Efficacy statements remain source claims, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
-      13. At any point in the future when you desire to remember in great detail any part of your
+      At any point in the future when you desire to remember in great detail any part of your
       life experience, all you need do is inhale, hold your breath, and say in your mind,
       plus recall. And think of that area you want to remember. Inhale, hold your breath,
       say in your mind, plus recall. Then exhale through your mouth as it blowing out a candle.
@@ -28,12 +28,17 @@ entries:
       and great detail the information or experience that you desire. The more you perform this
       method of remembering by inhaling, holding your breath, and saying, plus recall in your
       mind, the easier and more effective it will become.
-      15. At any point in the future when you desire to remember in great detail any part
-      of your life experience, all you need do is inhale, hold your breath, and say in your mind,
-      plus recall. And think of that area you want to remember. Inhale, hold your breath,
-      say in your mind, plus recall. Then exhale through your mouth as it blowing out a candle.
-      When you do this, you will remember immediately in full consciousness and great detail the
-      information or experience that you desire. You will recall immediately in full consciousness
-      and great detail the information or experience that you desire. The more you perform this
-      method of remembering by inhaling, holding your breath, and saying, plus recall in your mind,
-      the easier and more effective it will become.
+  hplus.function.ocf-cog-006.closer:
+    status: reviewed
+    version: 1.0.0
+    notes: >-
+      OCF-authored closer suggestion prompted by the current source gap and
+      modeled on other function-command reminders. The partial Recall transcript
+      ends in ellipses and contains no recoverable function-specific closer; this
+       is not historical wording. User approved the closer. Rights: user_cleared
+      attestation. Finished-session release pending.
+    text: |-
+      Remember, when you wish to recall information or an experience, inhale and hold your breath.
+      Say in your mind, plus recall.
+      Then think of the information you desire.
+      This is the end of your OCF function exercise.
