@@ -28,7 +28,7 @@ Missing spoken keys are omitted. User-proposed reconstructions are labeled separ
 | OCF-COG-003 | Contemplation | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-003.yaml](../locales/en-US/hplus-OCF-COG-003.yaml) |
 | OCF-COG-004 | Imprint | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-004.yaml](../locales/en-US/hplus-OCF-COG-004.yaml) |
 | OCF-COG-005 | Options | partial_transcript | historical source selection | reviewed OCF suggestion | candidate | reviewed OCF suggestion | [hplus-OCF-COG-005.yaml](../locales/en-US/hplus-OCF-COG-005.yaml) |
-| OCF-COG-006 | Recall | partial_transcript | historical source selection | candidate | candidate | suggestion pending approval | [hplus-OCF-COG-006.yaml](../locales/en-US/hplus-OCF-COG-006.yaml) |
+| OCF-COG-006 | Recall | partial_transcript | historical source selection | candidate | candidate | reviewed OCF suggestion | [hplus-OCF-COG-006.yaml](../locales/en-US/hplus-OCF-COG-006.yaml) |
 | OCF-COG-007 | Think Fast | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-007.yaml](../locales/en-US/hplus-OCF-COG-007.yaml) |
 | OCF-COM-001 | Speak Up | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COM-001.yaml](../locales/en-US/hplus-OCF-COM-001.yaml) |
 | OCF-EMG-001 | Emergency: Injury | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EMG-001.yaml](../locales/en-US/hplus-OCF-EMG-001.yaml) |
@@ -36,7 +36,7 @@ Missing spoken keys are omitted. User-proposed reconstructions are labeled separ
 | OCF-EMO-001 | Let Go | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-EMO-001.yaml](../locales/en-US/hplus-OCF-EMO-001.yaml) |
 | OCF-EMO-002 | Off-Loading | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-EMO-002.yaml](../locales/en-US/hplus-OCF-EMO-002.yaml) |
 | OCF-EMO-003 | Empathizing | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EMO-003.yaml](../locales/en-US/hplus-OCF-EMO-003.yaml) |
-| OCF-EXP-001 | Mobius West | transcript_unverified | historical source selection | candidate | candidate | missing | [hplus-OCF-EXP-001.yaml](../locales/en-US/hplus-OCF-EXP-001.yaml) |
+| OCF-EXP-001 | Mobius West | transcript_unverified | historical source selection | candidate | candidate | suggestion pending approval | [hplus-OCF-EXP-001.yaml](../locales/en-US/hplus-OCF-EXP-001.yaml) |
 | OCF-EXP-002 | Zoning | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EXP-002.yaml](../locales/en-US/hplus-OCF-EXP-002.yaml) |
 | OCF-FND-001 | Access to Energy | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-001.yaml](../locales/en-US/hplus-OCF-FND-001.yaml) |
 | OCF-FND-002 | Attention | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-002.yaml](../locales/en-US/hplus-OCF-FND-002.yaml) |
@@ -154,7 +154,7 @@ This is the end of your OCF function exercise.
 - Source begins with Music/shared preparation. The purpose statement at line 46 belongs to the body. Ellipsis-only source tail is not treated as a closer.
 
 ### OCF-COG-006 — Recall
-- Historical source is missing closer; OCF-authored suggestion (draft) is not SOURCE: Remember, when you wish to recall information or an experience, inhale and hold your breath.
+- Historical source is missing closer; OCF-authored suggestion (reviewed) is not SOURCE: Remember, when you wish to recall information or an experience, inhale and hold your breath.
 Say in your mind, plus recall.
 Then think of the information you desire.
 This is the end of your OCF function exercise.
@@ -194,7 +194,11 @@ This is the end of your OCF function exercise.
 - Proposed perception/knowing assertions retained as claims for review.
 
 ### OCF-EXP-001 — Mobius West
-- Missing closer: Source ends in numeric runs; no function-specific final closer is recoverable.
+- Historical source is missing closer; OCF-authored suggestion (draft) is not SOURCE: Remember, when you desire to establish a different state of being for yourself, think of the condition you desire and when you want it to be complete.
+Inhale and hold your breath.
+Say or think in your mind, plus, change, change.
+Then exhale slowly through your mouth.
+This is the end of your OCF function exercise.
 
 ### OCF-EXP-002 — Zoning
 - User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.

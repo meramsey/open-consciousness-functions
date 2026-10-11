@@ -179,7 +179,10 @@ selections:
     slots:
       opener: [{start_line: 1, end_line: 1}]
       function-body: [{start_line: 55, end_line: 84}]
-    missing: {closer: Source ends in numeric runs; no function-specific final closer is recoverable.}
+    missing:
+      closer: >-
+        Historical source ends in numeric runs without a function-specific
+        closer; an OCF-authored suggestion is stored separately pending approval.
     notes: []
   OCF-FND-001:
     slots:
