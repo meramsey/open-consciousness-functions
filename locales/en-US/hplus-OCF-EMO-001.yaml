@@ -7,25 +7,15 @@ locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-emo-001.opener:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Let-Go/Let-Go.txt; SHA-256 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9; lines 5–5. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Website and copyright text at 65–68 is not narration and stays in SOURCE; unrelated opening video text excluded.'
-    text: This is the H-plus function exercise so you can release a disturbing emotion whenever you so desire.
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived wording with user-directed OCF terminology edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Let-Go/Let-Go.txt; SHA-256 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9; line 5. “H-plus” changed to “OCF” per user''s standing instruction; original SOURCE remains unchanged. Human wording review: user approved opener. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    text: This is the OCF function exercise so you can release a disturbing emotion whenever you so desire.
   hplus.function.ocf-emo-001.function-body:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Let-Go/Let-Go.txt; SHA-256 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9; lines 45–64. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Website and copyright text at 65–68 is not narration and stays in SOURCE; unrelated opening video text excluded.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Let-Go/Let-Go.txt; SHA-256 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9; lines 45–64. Human wording review: user approved the body with its repeated second pass removed; original SOURCE remains unchanged. Source effect statements remain claims, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending. Website/copyright text at 65–68 remains excluded from narration.'
     text: |-
-      At any point in the future, when you desire to be free of any emotion,
-      all you need do is simply inhale, hold your breath, and say in your mind,
-      plus let go, then exhale as if you would blow out a candle.
-      When you do this, any interfering emotion will flow out of you with the air that you exhale,
-      out and away from you, so far that it will no longer be important,
-      so far that it will no longer get in your way.
-      You can be calm and serene with your mind brightly alert
-      and your physical body relaxed and ready.
-      The more you perform this pattern of letting go,
-      the easier and more effective it will become.
       At any point in the future, when you desire to be free of any emotion,
       all you need do is simply inhale, hold your breath, and say in your mind,
       plus let go, then exhale as if you would blow out a candle.
@@ -37,10 +27,10 @@ entries:
       The more you perform this pattern of letting go,
       the easier and more effective it will become.
   hplus.function.ocf-emo-001.closer:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Let-Go/Let-Go.txt; SHA-256 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9; lines 226–228. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Website and copyright text at 65–68 is not narration and stays in SOURCE; unrelated opening video text excluded.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived wording with user-directed OCF terminology edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Let-Go/Let-Go.txt; SHA-256 604577ac7659c62380fa72f94501f8407172965942e22944d33774835c3e95a9; lines 226–228. Human wording review: user approved closer and requested H-plus changed to OCF; original SOURCE remains unchanged. Waking text sharing line 226 remains in the shared return; website/copyright text remains excluded. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
       Remember, to release any distressing emotion from your mind and body, all you need do is inhale deeply, hold your breath, and say or think in your mind, plus let go, then exhale as you would blow out a candle.
       Thus you can now control your emotions rather than your emotions controlling you.
-      This is the end of this H-plus function exercise.
+      This is the end of this OCF function exercise.
