@@ -7,16 +7,16 @@ locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-bod-012.opener:
-    status: draft
+    status: reviewed
     version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Sex Drive/Sex Drive.txt; SHA-256 ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76; lines 2–2. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Embedded numeric labels are preserved as transcription uncertainty; they are not semantic count events.'
+    notes: 'Reference-derived wording; transcript_unverified. SOURCE +Transcripts From available tapes/Sex Drive/Sex Drive.txt; SHA-256 ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76; lines 2–2. Human wording review: user approved opener unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: Now, learn to control and direct your sexual reproductive drive.
   hplus.function.ocf-bod-012.function-body:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Sex Drive/Sex Drive.txt; SHA-256 ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76; lines 29–47. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Embedded numeric labels are preserved as transcription uncertainty; they are not semantic count events.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Sex Drive/Sex Drive.txt; SHA-256 ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76; lines 29–47. Human wording review: user approved body with leading transcript label “12.” removed as an artifact; remaining text retained. Original SOURCE remains unchanged. Other embedded number labels and efficacy claims remain source uncertainties/claims, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
-      12. At any point in the future when you consciously desire to regulate your own personal sexual
+      At any point in the future when you consciously desire to regulate your own personal sexual
       arousal, all you need do is inhale deeply and hold your breath, then say or think
       in your mind plus sex greater if you wish stronger, more sensitive arousal, or plus
       sex lesser if you wish your arousal to diminish and fade away, then exhale slowly and breathe
@@ -36,9 +36,9 @@ entries:
       your physical body. The more you perform this function of regulating your physical sexual
       arousal, the easier it will become.
   hplus.function.ocf-bod-012.closer:
-    status: draft
+    status: reviewed
     version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Sex Drive/Sex Drive.txt; SHA-256 ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76; lines 81–84. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Embedded numeric labels are preserved as transcription uncertainty; they are not semantic count events.'
+    notes: 'Reference-derived wording; transcript_unverified. SOURCE +Transcripts From available tapes/Sex Drive/Sex Drive.txt; SHA-256 ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76; lines 81–84. Human wording review: user approved closer unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
       Remember, to regulate your own sexual arousal, all you need do is inhale and hold your breath,
       and say in your mind, for a stronger sex drive plus sex greater, or for diverting your sex
