@@ -21,9 +21,9 @@ Each function has one locale resource file, named
 The same body key supplies both Focus 11 passes and both Focus 20 underlay passes.
 All 55 functions now have an English review file, linked in
 [English HPlus function review](HPLUS_FUNCTION_REVIEW.md). Of 39 source-available
-functions, 28 have all three opener/body/closer extents selected directly from
-their transcripts and 11 have historical source gaps. Sixteen additional files
-contain the user's proposed reconstruction wording. Eight source-gap functions
+functions, 27 have all three opener/body/closer extents selected directly from
+their transcripts and 12 have historical source gaps. Sixteen additional files
+contain the user's proposed reconstruction wording. Nine source-gap functions
 also have separate OCF-authored opener/closer suggestions, giving **52 files with
 all three review slots populated**. Several of these suggestions remain pending
 approval and are distinguished from transcript wording in the review list.

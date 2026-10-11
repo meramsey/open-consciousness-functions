@@ -174,9 +174,9 @@ Shared wording uses the approved Transmutation Box edit and the user's
 body-part relaxation segmentation. Rights are user-cleared; authentication
 remains unverified. All 55 function-specific English review files are now present;
 see [the review list](HPLUS_FUNCTION_REVIEW.md). Of the 39 source-available
-functions, 28 have all three historical extents selected and 11 have historical
+functions, 27 have all three historical extents selected and 12 have historical
 source gaps. The 16 source-unavailable functions have separately labeled
-user-proposed reconstruction drafts. Eight OCF-authored suggestions separately
+user-proposed reconstruction drafts. Nine OCF-authored suggestions separately
 address source gaps, giving 52 files with all three review slots populated.
 Several OCF-authored additions remain pending wording approval. Historical source
 availability and planned reimplementation status are unchanged. Human wording

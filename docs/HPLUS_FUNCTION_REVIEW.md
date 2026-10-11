@@ -36,9 +36,9 @@ Missing spoken keys are omitted. User-proposed reconstructions are labeled separ
 | OCF-EMO-001 | Let Go | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-EMO-001.yaml](../locales/en-US/hplus-OCF-EMO-001.yaml) |
 | OCF-EMO-002 | Off-Loading | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-EMO-002.yaml](../locales/en-US/hplus-OCF-EMO-002.yaml) |
 | OCF-EMO-003 | Empathizing | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EMO-003.yaml](../locales/en-US/hplus-OCF-EMO-003.yaml) |
-| OCF-EXP-001 | Mobius West | transcript_unverified | historical source selection | candidate | candidate | suggestion pending approval | [hplus-OCF-EXP-001.yaml](../locales/en-US/hplus-OCF-EXP-001.yaml) |
+| OCF-EXP-001 | Mobius West | transcript_unverified | historical source selection | candidate | candidate | reviewed OCF suggestion | [hplus-OCF-EXP-001.yaml](../locales/en-US/hplus-OCF-EXP-001.yaml) |
 | OCF-EXP-002 | Zoning | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EXP-002.yaml](../locales/en-US/hplus-OCF-EXP-002.yaml) |
-| OCF-FND-001 | Access to Energy | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-001.yaml](../locales/en-US/hplus-OCF-FND-001.yaml) |
+| OCF-FND-001 | Access to Energy | transcript_unverified | historical source selection | candidate | candidate | suggestion pending approval | [hplus-OCF-FND-001.yaml](../locales/en-US/hplus-OCF-FND-001.yaml) |
 | OCF-FND-002 | Attention | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-002.yaml](../locales/en-US/hplus-OCF-FND-002.yaml) |
 | OCF-FND-003 | Recharge | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-003.yaml](../locales/en-US/hplus-OCF-FND-003.yaml) |
 | OCF-FND-004 | Relax | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-004.yaml](../locales/en-US/hplus-OCF-FND-004.yaml) |
@@ -194,8 +194,7 @@ This is the end of your OCF function exercise.
 - Proposed perception/knowing assertions retained as claims for review.
 
 ### OCF-EXP-001 — Mobius West
-- Historical source is missing closer; OCF-authored suggestion (draft) is not SOURCE: Remember, when you desire to establish a different state of being for yourself, think of the condition you desire and when you want it to be complete.
-Inhale and hold your breath.
+- Historical source is missing closer; OCF-authored suggestion (reviewed) is not SOURCE: Remember, when you wish to set in motion a different state of being for yourself, think of the condition you desire and when you want it to be complete.
 Say or think in your mind, plus, change, change.
 Then exhale slowly through your mouth.
 This is the end of your OCF function exercise.
@@ -208,7 +207,11 @@ This is the end of your OCF function exercise.
 - Proposed temperature-comfort mechanism and outcomes retained as claims for review.
 
 ### OCF-FND-001 — Access to Energy
-- The final specific passage is an exploration invitation in Ten rather than a waking closer; no final waking return is available.
+- Historical source is missing closer; OCF-authored suggestion (draft) is not SOURCE: Remember, when you wish to direct your M energy, think of the form in which you desire to use it.
+Say in your mind, plus, energize.
+Then picture that form.
+This is the end of your OCF function exercise.
+- The final specific passage is an exploration invitation in Ten and is assigned to the body by user direction; no source waking closer is available.
 - The distinct PLUS RELEASE ELEVEN ACCESS instruction is preserved in a separate access-close review entry; the standard template does not consume it automatically.
 - Music markers separating specific speech are omitted with exact disjoint source ranges recorded.
 
