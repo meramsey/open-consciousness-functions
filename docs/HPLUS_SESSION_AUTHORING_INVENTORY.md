@@ -178,7 +178,7 @@ functions, 28 have all three historical extents selected and 11 have historical
 source gaps. The 16 source-unavailable functions have separately labeled
 user-proposed reconstruction drafts. Six OCF-authored suggestions separately
 address source gaps, giving 50 files with all three review slots populated; the
-Access to Information closer and Options opener/closer remain pending approval. Historical source
+Access to Information and Buy the Numbers closers remain pending approval. Historical source
 availability and planned reimplementation status are unchanged. Human wording
 review remains pending for entries marked draft.
 Focus 20 underlay audibility, long holds, and localized speech timing need

@@ -97,14 +97,14 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
                     assert slot in selection["missing"]
                     assert prefix + slot in doc["entries"]
                     assert doc["entries"][prefix + slot]["status"] == (
-                        "draft" if owner.id in {"OCF-COG-002", "OCF-COG-005"} else "reviewed"
+                        "draft" if owner.id == "OCF-COG-002" else "reviewed"
                     )
                     assert (
                         "not historical wording" in doc["entries"][prefix + slot]["notes"]
                         if owner.id == "OCF-COG-001"
                         else "not historical transcript wording" in doc["entries"][prefix + slot]["notes"]
                         if owner.id == "OCF-COG-002"
-                        else "not historical wording" in doc["entries"][prefix + slot]["notes"]
+                        else "User approved this OCF-authored wording" in doc["entries"][prefix + slot]["notes"]
                         if owner.id == "OCF-COG-005"
                         else "not transcript wording" in doc["entries"][prefix + slot]["notes"]
                         if owner.id == "OCF-BOD-004"
@@ -113,11 +113,9 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
                 elif owner.id in SUPPLEMENTARY_OPENERS and slot == "opener":
                     assert slot in selection["missing"]
                     assert prefix + slot in doc["entries"]
-                    assert doc["entries"][prefix + slot]["status"] == (
-                        "draft" if owner.id == "OCF-COG-005" else "reviewed"
-                    )
+                    assert doc["entries"][prefix + slot]["status"] == "reviewed"
                     assert (
-                        "not historical wording" in doc["entries"][prefix + slot]["notes"]
+                        "User approved this OCF-authored wording" in doc["entries"][prefix + slot]["notes"]
                         if owner.id == "OCF-COG-005"
                         else "User approved this opener" in doc["entries"][prefix + slot]["notes"]
                     )

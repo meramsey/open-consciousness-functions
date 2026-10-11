@@ -135,8 +135,8 @@ selections:
     slots:
       function-body: [{start_line: 38, end_line: 56}]
     missing:
-      opener: No distinct source opener; an OCF-authored purpose opener is pending user wording approval.
-      closer: No source closer; an OCF-authored function-command closer is pending user wording approval.
+      opener: No distinct source opener; the OCF-authored purpose opener is approved as WORKING wording, separate from SOURCE.
+      closer: No source closer; the OCF-authored function-command closer is approved as WORKING wording, separate from SOURCE.
     notes: [Source begins with Music/shared preparation. The purpose statement at line 46 belongs to the body. Ellipsis-only source tail is not treated as a closer.]
   OCF-COG-006:
     slots:
