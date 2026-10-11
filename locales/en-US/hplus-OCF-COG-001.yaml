@@ -7,14 +7,14 @@ locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-cog-001.opener:
-    status: draft
+    status: reviewed
     version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Access to Information/Access to Information.txt; SHA-256 f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14; lines 1–1. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. The last specific spoken line is an exploration handoff rather than a final waking closer; no waking return or exercise-ending text is available.'
+    notes: 'Reference-derived wording; transcript_unverified. SOURCE +Transcripts From available tapes/Access to Information/Access to Information.txt; SHA-256 f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14; line 1. Human wording review: user approved opener unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: The purpose of this exercise is to assist you in accessing your own personal library of information and knowledge.
   hplus.function.ocf-cog-001.function-body:
-    status: draft
+    status: reviewed
     version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Access to Information/Access to Information.txt; SHA-256 f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14; lines 39–49. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. The last specific spoken line is an exploration handoff rather than a final waking closer; no waking return or exercise-ending text is available.'
+    notes: 'Reference-derived wording; transcript_unverified. SOURCE +Transcripts From available tapes/Access to Information/Access to Information.txt; SHA-256 f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14; lines 39–49. Human wording review: user approved body unchanged. Shared preparation/state/return wording excluded. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
       Here you can take information from your access channel, all of that which is you and yours, piece by piece, and place it in your waking conscious memory.
       It may be in the form of words or in pictures in your mind or emotions or feelings and sensations or all of these at once.
@@ -30,5 +30,14 @@ entries:
   hplus.function.ocf-cog-001.closer:
     status: draft
     version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Access to Information/Access to Information.txt; SHA-256 f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14; lines 50–50. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. The last specific spoken line is an exploration handoff rather than a final waking closer; no waking return or exercise-ending text is available.'
-    text: I will call you when it's time to return.
+    notes: >-
+      OCF-authored closer suggestion, requested for this source gap. The source's
+      line 50 “I will call you when it's time to return” is a session handoff,
+      not a function-specific closer; it remains in SOURCE and is not relabeled.
+      This proposed closer repeats the retrieval cue and adds a function sign-off.
+      It is not historical wording. User approval pending. Rights: user_cleared
+      attestation. Finished-session release pending.
+    text: |-
+      When you wish to retrieve information from your personal library, think of the information you desire.
+      Say to yourself, plus, retrieve.
+      This is the end of your OCF function exercise.

@@ -30,7 +30,17 @@ def test_cli_binds_function_keys_and_fails_for_unauthored_function(tmp_path):
 
 SELECTIONS = yaml.safe_load((REPO_ROOT / "function-content/hplus-review-selections.yaml").read_text())["selections"]
 PROPOSALS = yaml.safe_load((REPO_ROOT / "function-content/hplus-proposed-review-selections.yaml").read_text())["proposals"]
-COMPLETE_OWNERS = sorted([owner for owner, selection in SELECTIONS.items() if not selection["missing"]] + list(PROPOSALS))
+SUPPLEMENTARY_CLOSERS = {"OCF-BOD-004", "OCF-BOD-009", "OCF-COG-001"}
+SUPPLEMENTARY_OPENERS = {"OCF-BOD-008"}
+COMPLETE_OWNERS = sorted(
+    owner
+    for owner in [record.id for record in load_all_functions()]
+    if all(
+        f"hplus.function.{owner.lower()}.{slot}"
+        in yaml.safe_load((REPO_ROOT / "locales/en-US" / f"hplus-{owner}.yaml").read_text())["entries"]
+        for slot in ("opener", "function-body", "closer")
+    )
+)
 
 
 @pytest.mark.parametrize("owner", COMPLETE_OWNERS)
@@ -62,7 +72,7 @@ def test_standard_shared_and_function_resources_resolve_without_local_sources(ow
 def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
     owners = load_all_functions()
     assert len(owners) == 55
-    assert len(COMPLETE_OWNERS) == 45
+    assert len(COMPLETE_OWNERS) == 48
     unavailable = [owner for owner in owners if owner.source_availability == "unavailable"]
     assert len(unavailable) == 16
     for owner in owners:
@@ -83,16 +93,19 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
             assert doc["domain"] == "narration"
             selection = SELECTIONS[owner.id]
             for slot in ("opener", "function-body", "closer"):
-                if owner.id in {"OCF-BOD-004", "OCF-BOD-009"} and slot == "closer":
+                if owner.id in SUPPLEMENTARY_CLOSERS and slot == "closer":
                     assert slot in selection["missing"]
                     assert prefix + slot in doc["entries"]
-                    assert doc["entries"][prefix + slot]["status"] == "reviewed"
+                    expected_proposal_status = "draft" if owner.id == "OCF-COG-001" else "reviewed"
+                    assert doc["entries"][prefix + slot]["status"] == expected_proposal_status
                     assert (
-                        "not transcript wording" in doc["entries"][prefix + slot]["notes"]
+                        "not historical wording" in doc["entries"][prefix + slot]["notes"]
+                        if owner.id == "OCF-COG-001"
+                        else "not transcript wording" in doc["entries"][prefix + slot]["notes"]
                         if owner.id == "OCF-BOD-004"
                         else "not historical transcript wording" in doc["entries"][prefix + slot]["notes"]
                     )
-                elif owner.id == "OCF-BOD-008" and slot == "opener":
+                elif owner.id in SUPPLEMENTARY_OPENERS and slot == "opener":
                     assert slot in selection["missing"]
                     assert prefix + slot in doc["entries"]
                     assert doc["entries"][prefix + slot]["status"] == "reviewed"

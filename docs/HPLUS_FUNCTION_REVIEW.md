@@ -23,7 +23,7 @@ Missing spoken keys are omitted. User-proposed reconstructions are labeled separ
 | OCF-BOD-013 | Tune-Up | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-013.yaml](../locales/en-US/hplus-OCF-BOD-013.yaml) |
 | OCF-BOD-014 | Regenerate | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-BOD-014.yaml](../locales/en-US/hplus-OCF-BOD-014.yaml) |
 | OCF-BOD-015 | Short Fix | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-BOD-015.yaml](../locales/en-US/hplus-OCF-BOD-015.yaml) |
-| OCF-COG-001 | Access to Information | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-001.yaml](../locales/en-US/hplus-OCF-COG-001.yaml) |
+| OCF-COG-001 | Access to Information | transcript_unverified | historical source selection | candidate | candidate | suggestion pending approval | [hplus-OCF-COG-001.yaml](../locales/en-US/hplus-OCF-COG-001.yaml) |
 | OCF-COG-002 | Buy the Numbers | transcript_unverified | historical source selection | candidate | candidate | missing | [hplus-OCF-COG-002.yaml](../locales/en-US/hplus-OCF-COG-002.yaml) |
 | OCF-COG-003 | Contemplation | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-003.yaml](../locales/en-US/hplus-OCF-COG-003.yaml) |
 | OCF-COG-004 | Imprint | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-004.yaml](../locales/en-US/hplus-OCF-COG-004.yaml) |
@@ -129,7 +129,10 @@ This is the end of your OCF function exercise.
 - Proposed sensory/physiological assertions retained for review.
 
 ### OCF-COG-001 — Access to Information
-- The last specific spoken line is an exploration handoff rather than a final waking closer; no waking return or exercise-ending text is available.
+- Historical source is missing closer; OCF-authored suggestion (draft) is not SOURCE: When you wish to retrieve information from your personal library, think of the information you desire.
+Say to yourself, plus, retrieve.
+This is the end of your OCF function exercise.
+- The source's “I will call you when it's time to return” handoff remains SOURCE and is not copied into the function closer.
 
 ### OCF-COG-002 — Buy the Numbers
 - Missing closer: Source has shared channel closing followed by punctuation runs; no final function-specific closer.

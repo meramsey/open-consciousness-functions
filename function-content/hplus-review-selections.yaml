@@ -101,9 +101,12 @@ selections:
     slots:
       opener: [{start_line: 1, end_line: 1}]
       function-body: [{start_line: 39, end_line: 49}]
-      closer: [{start_line: 50, end_line: 50}]
-    missing: {}
-    notes: [The last specific spoken line is an exploration handoff rather than a final waking closer; no waking return or exercise-ending text is available.]
+    missing:
+      closer: >-
+        Source line 50 is a return handoff rather than a function-specific
+        closer; an OCF-authored retrieval reminder is stored separately pending
+        human approval.
+    notes: [The source's “I will call you when it's time to return” handoff remains SOURCE and is not copied into the function closer.]
   OCF-COG-002:
     slots:
       opener: [{start_line: 7, end_line: 8}]

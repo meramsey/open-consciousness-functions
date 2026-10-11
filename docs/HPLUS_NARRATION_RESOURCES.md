@@ -20,11 +20,13 @@ Each function has one locale resource file, named
 `hplus.function.<lowercase-function-id>.opener`, `.function-body`, and `.closer`.
 The same body key supplies both Focus 11 passes and both Focus 20 underlay passes.
 All 55 functions now have an English review file, linked in
-[English HPlus function review](HPLUS_FUNCTION_REVIEW.md). The 39 source-available
-files contain the identifiable function-specific wording: 29 have all three
-ordinary sections and 10 have explicitly recorded source gaps. Sixteen additional
-files now contain the user's proposed reconstruction wording, making **45 complete
-opener/body/closer drafts**. Attention,
+[English HPlus function review](HPLUS_FUNCTION_REVIEW.md). Of 39 source-available
+functions, 28 have all three opener/body/closer extents selected directly from
+their transcripts and 11 have historical source gaps. Sixteen additional files
+contain the user's proposed reconstruction wording. Four source gaps also have
+separate OCF-authored opener/closer suggestions, giving **48 files with all three
+review slots populated**; the Access to Information closer remains pending approval.
+Attention,
 Circulation and Sleep retain their initial file selections. Entry status remains
 `draft` for human wording review; a translatable candidate does not authenticate
 its transcript or certify its efficacy claims.
