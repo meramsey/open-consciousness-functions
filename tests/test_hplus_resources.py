@@ -97,7 +97,7 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
                     assert slot in selection["missing"]
                     assert prefix + slot in doc["entries"]
                     assert doc["entries"][prefix + slot]["status"] == (
-                        "draft" if owner.id in {"OCF-COG-002", "OCF-EXP-001"} else "reviewed"
+                        "draft" if owner.id == "OCF-COG-002" else "reviewed"
                     )
                     assert (
                         "not historical wording" in doc["entries"][prefix + slot]["notes"]
