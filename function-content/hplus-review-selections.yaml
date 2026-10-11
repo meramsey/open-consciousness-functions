@@ -1,0 +1,272 @@
+# Initial source extent decisions only. Editable narration lives in locales/en-US/hplus-OCF-*.yaml.
+# Re-running the preparer never overwrites an existing locale file.
+schema_version: "1.0"
+selections:
+  OCF-BOD-001:
+    slots:
+      opener: [{start_line: 2, end_line: 2}]
+      function-body: [{start_line: 36, end_line: 47}]
+      closer: [{start_line: 159, end_line: 164}]
+    missing: {}
+    notes: [Shared consolidation at 48–49 and trailing video text at 165 excluded.]
+  OCF-BOD-002:
+    slots:
+      opener: [{start_line: 2, end_line: 2}]
+      function-body: [{start_line: 47, end_line: 74}]
+      closer: [{start_line: 161, end_line: 166}]
+    missing: {}
+    notes: [Existing review resource preserved.]
+  OCF-BOD-003:
+    slots:
+      opener: [{start_line: 1, end_line: 2, end_before: To prepare}]
+      function-body: [{start_line: 30, end_line: 50}]
+      closer: [{start_line: 104, end_line: 108, start_at: Remember}]
+    missing: {}
+    notes: [Waking text sharing line 104 stays in the shared return; trailing Thank you at 109 excluded.]
+  OCF-BOD-004:
+    slots:
+      opener: [{start_line: 8, end_line: 8}]
+      function-body: [{start_line: 89, end_line: 103}]
+    missing: {closer: No function-specific final closer is recoverable; transcript ends in repeated numbers.}
+    notes: [Standalone numeric transcription runs at 104–130 are not function instructions.]
+  OCF-BOD-005:
+    slots:
+      opener: [{start_line: 1, end_line: 1}]
+      closer: [{start_line: 346, end_line: 350}]
+    missing: {function-body: The source jumps from repeated state counts to channel closing; the only specific instruction is the final reminder at 346–349.}
+    notes: [Do not duplicate the final reminder as an invented body; trailing video text at 351 excluded.]
+  OCF-BOD-006:
+    slots:
+      opener: [{start_line: 1, end_line: 1}]
+      function-body: [{start_line: 36, end_line: 55}]
+      closer: [{start_line: 165, end_line: 169}]
+    missing: {}
+    notes: [Closer begins mid-thought with More and more; retained as source uncertainty. Shared consolidation at 56–59 excluded.]
+  OCF-BOD-007:
+    slots:
+      opener: [{start_line: 3, end_line: 4}]
+      function-body: [{start_line: 51, end_line: 81}]
+      closer: [{start_line: 190, end_line: 202}]
+    missing: {}
+    notes: [Repeated pressure wording and isolated You inside the selected body are preserved for review; trailing video text excluded.]
+  OCF-BOD-008:
+    slots:
+      function-body: [{start_line: 51, end_line: 59}]
+      closer: [{start_line: 202, end_line: 207}]
+    missing: {opener: Source begins with Music then shared preparation; the partition's purpose at 51–56 is actually the body instruction.}
+    notes: [Do not move the body into the opener; Music runs and trailing website text excluded.]
+  OCF-BOD-009:
+    slots:
+      opener: [{start_line: 1, end_line: 1}]
+      function-body: [{start_line: 31, end_line: 59}]
+    missing: {closer: No final function-specific closer is recoverable; transcript ends in ellipsis runs.}
+    notes: [Shared consolidation at 60–63 excluded.]
+  OCF-BOD-010:
+    slots:
+      opener: [{start_line: 1, end_line: 2}]
+      function-body: [{start_line: 33, end_line: 56}]
+      closer: [{start_line: 195, end_line: 199}]
+    missing: {}
+    notes: []
+  OCF-BOD-011:
+    slots:
+      opener: [{start_line: 1, end_line: 3}]
+      function-body: [{start_line: 42, end_line: 55}]
+      closer: [{start_line: 184, end_line: 191}]
+    missing: {}
+    notes: [Function-specific gratitude instruction belongs to the final reminder rather than being repeated in the body.]
+  OCF-BOD-012:
+    slots:
+      opener: [{start_line: 2, end_line: 2}]
+      function-body: [{start_line: 29, end_line: 47}]
+      closer: [{start_line: 81, end_line: 84}]
+    missing: {}
+    notes: [Embedded numeric labels are preserved as transcription uncertainty; they are not semantic count events.]
+  OCF-BOD-013:
+    slots:
+      opener: [{start_line: 1, end_line: 2}]
+      function-body: [{start_line: 31, end_line: 48}]
+      closer: [{start_line: 190, end_line: 196}]
+    missing: {}
+    notes: []
+  OCF-COG-001:
+    slots:
+      opener: [{start_line: 1, end_line: 1}]
+      function-body: [{start_line: 39, end_line: 49}]
+      closer: [{start_line: 50, end_line: 50}]
+    missing: {}
+    notes: [The last specific spoken line is an exploration handoff rather than a final waking closer; no waking return or exercise-ending text is available.]
+  OCF-COG-002:
+    slots:
+      opener: [{start_line: 7, end_line: 8}]
+      function-body: [{start_line: 67, end_line: 92}]
+    missing: {closer: Source has shared channel closing followed by punctuation runs; no final function-specific closer.}
+    notes: [Punctuation-only future-use extent 93–108 excluded.]
+  OCF-COG-003:
+    slots:
+      opener: [{start_line: 1, end_line: 2, end_before: To prepare}]
+      function-body: [{start_line: 31, end_line: 54}]
+      closer: [{start_line: 90, end_line: 93}]
+    missing: {}
+    notes: []
+  OCF-COG-004:
+    slots:
+      opener: [{start_line: 1, end_line: 2}]
+      function-body: [{start_line: 32, end_line: 51}]
+      closer: [{start_line: 144, end_line: 145}]
+    missing: {}
+    notes: [Source wording stay in your mind in the closer is retained rather than corrected.]
+  OCF-COG-005:
+    slots:
+      function-body: [{start_line: 38, end_line: 56}]
+    missing:
+      opener: Source begins with Music and shared preparation; the partition's purpose at line 46 belongs to the body.
+      closer: No final function-specific closer is recoverable; source ends in ellipsis runs.
+    notes: [Line 46 is retained in its body position.]
+  OCF-COG-006:
+    slots:
+      opener: [{start_line: 1, end_line: 2, end_before: To prepare}]
+      function-body: [{start_line: 32, end_line: 49}]
+    missing: {closer: No final function-specific closer is recoverable; source ends in ellipsis runs.}
+    notes: [Unassigned religious line at 26 is outside the selected instruction; embedded numeric labels in the body remain flagged.]
+  OCF-COG-007:
+    slots:
+      opener: [{start_line: 1, end_line: 1}]
+      function-body: [{start_line: 35, end_line: 44}]
+      closer: [{start_line: 131, end_line: 135}]
+    missing: {}
+    notes: [The closer's If you must think wording is retained as transcription uncertainty; canonical PLUS-THINK is unchanged.]
+  OCF-COM-001:
+    slots:
+      opener: [{start_line: 1, end_line: 1}]
+      function-body: [{start_line: 34, end_line: 43}]
+      closer: [{start_line: 84, end_line: 87, start_at: Remember}]
+    missing: {}
+    notes: [Waking words sharing line 84 are excluded from the closer.]
+  OCF-EMO-001:
+    slots:
+      opener: [{start_line: 5, end_line: 5}]
+      function-body: [{start_line: 45, end_line: 64}]
+      closer: [{start_line: 226, end_line: 228}]
+    missing: {}
+    notes: [Website and copyright text at 65–68 is not narration and stays in SOURCE; unrelated opening video text excluded.]
+  OCF-EMO-002:
+    slots:
+      opener: [{start_line: 7, end_line: 7}]
+      function-body: [{start_line: 45, end_line: 65}]
+      closer: [{start_line: 99, end_line: 102, start_at: Remember}]
+    missing: {}
+    notes: [Waking words sharing line 99 are excluded from the closer.]
+  OCF-EXP-001:
+    slots:
+      opener: [{start_line: 1, end_line: 1}]
+      function-body: [{start_line: 55, end_line: 84}]
+    missing: {closer: Source ends in numeric runs; no function-specific final closer is recoverable.}
+    notes: []
+  OCF-FND-001:
+    slots:
+      opener: [{start_line: 1, end_line: 2}]
+      function-body: [{start_line: 66, end_line: 96}, {start_line: 202, end_line: 212}, {start_line: 214, end_line: 214}]
+      access-close: [{start_line: 228, end_line: 228}]
+      closer: [{start_line: 244, end_line: 246}, {start_line: 249, end_line: 251}]
+    missing: {}
+    notes:
+      - The final specific passage is an exploration invitation in Ten rather than a waking closer; no final waking return is available.
+      - The distinct PLUS RELEASE ELEVEN ACCESS instruction is preserved in a separate access-close review entry; the standard template does not consume it automatically.
+      - Music markers separating specific speech are omitted with exact disjoint source ranges recorded.
+  OCF-FND-002:
+    slots:
+      opener: [{start_line: 1, end_line: 2, end_before: To prepare}]
+      function-body: [{start_line: 31, end_line: 40}, {start_line: 41, end_line: 50}]
+      closer: [{start_line: 84, end_line: 86}]
+    missing: {}
+    notes: [Existing review resource preserved.]
+  OCF-FND-003:
+    slots:
+      opener: [{start_line: 2, end_line: 2}]
+      function-body: [{start_line: 38, end_line: 60}]
+      closer: [{start_line: 187, end_line: 190}]
+    missing: {}
+    notes: [Unrelated Thank you for watching and Good night at 61–62 excluded.]
+  OCF-FND-004:
+    slots:
+      opener: [{start_line: 1, end_line: 2, end_before: To prepare}]
+      function-body: [{start_line: 33, end_line: 42}]
+      closer: [{start_line: 186, end_line: 188}]
+    missing: {}
+    notes: [Function-specific introduction at 33 belongs to the body; source numeric labels retained. This is a separate source-derived draft and does not alter frozen Relax pilot resources.]
+  OCF-FND-005:
+    slots:
+      opener: [{start_line: 1, end_line: 2, end_before: To prepare}]
+      function-body: [{start_line: 30, end_line: 51}]
+      closer: [{start_line: 167, end_line: 171}]
+    missing: {}
+    notes: []
+  OCF-LIF-001:
+    slots:
+      opener: [{start_line: 6, end_line: 7}]
+      function-body: [{start_line: 148, end_line: 166}]
+      closer: [{start_line: 218, end_line: 222, start_at: Remember}]
+    missing: {}
+    notes: [Waking words sharing line 218 excluded; source numeric labels retained.]
+  OCF-PRF-001:
+    slots:
+      opener: [{start_line: 1, end_line: 5}]
+      function-body: [{start_line: 64, end_line: 89}]
+      closer: [{start_line: 97, end_line: 97}]
+    missing: {}
+    notes: [The final specific line is a Ten-state integration invitation rather than a waking closer; source has no final waking passage. Introductory explanation remains a function-source variant.]
+  OCF-PRF-002:
+    slots:
+      opener: [{start_line: 1, end_line: 1}]
+      function-body: [{start_line: 33, end_line: 49, start_at: beginning now}]
+      closer: [{start_line: 210, end_line: 215}]
+    missing: {}
+    notes: [Body begins with the function-specific continuation on the same line as the shared opening; consolidation at 50–53 excluded.]
+  OCF-PRF-003:
+    slots:
+      opener: [{start_line: 1, end_line: 1}]
+      function-body: [{start_line: 44, end_line: 66}]
+      closer: [{start_line: 152, end_line: 155}]
+    missing: {}
+    notes: [Repeated breathing/rehearsal wording within the function instruction is retained.]
+  OCF-SEN-001:
+    slots:
+      opener: [{start_line: 1, end_line: 1}]
+      function-body: [{start_line: 36, end_line: 47}]
+      closer: [{start_line: 168, end_line: 173}]
+    missing: {}
+    notes: [Source here less wording retained as transcription uncertainty. This separate source-derived draft does not change frozen Hearing pilot resources.]
+  OCF-SEN-002:
+    slots:
+      opener: [{start_line: 1, end_line: 1}]
+      function-body: [{start_line: 35, end_line: 58}]
+      closer: [{start_line: 232, end_line: 234}]
+    missing: {}
+    notes: [Consolidation at 59–63 and trailing Thank you at 235 excluded.]
+  OCF-SLP-001:
+    slots:
+      opener: [{start_line: 1, end_line: 2}]
+      function-body: [{start_line: 33, end_line: 52, start_at: At any time}]
+    missing: {closer: No function-specific final closer is recoverable; source ends in repeated Twenty.}
+    notes: [Body starts within the shared-opening line so the complete instruction is retained; frozen Sleep Easy pilot decisions are unchanged.]
+  OCF-SLP-002:
+    slots:
+      opener: [{start_line: 7, end_line: 8}]
+      function-body: [{start_line: 72, end_line: 79}, {start_line: 80, end_line: 116}]
+      closer: [{start_line: 315, end_line: 317}]
+    missing: {}
+    notes: [Existing review resource preserved.]
+  OCF-SLP-003:
+    slots:
+      opener: [{start_line: 6, end_line: 6}]
+      function-body: [{start_line: 37, end_line: 69}]
+      closer: [{start_line: 158, end_line: 163}]
+    missing: {}
+    notes: [Numeric transcript labels inside the selected body are retained for review; trailing Thank you excluded.]
+  OCF-SLP-004:
+    slots:
+      opener: [{start_line: 1, end_line: 2}]
+      function-body: [{start_line: 32, end_line: 47}]
+    missing: {closer: No identifiable final function-specific closer; tail contains unrelated or uncertain repeated speech.}
+    notes: [Unassigned tail at 158–194 is not promoted into a closing instruction. Source numeric labels retained.]

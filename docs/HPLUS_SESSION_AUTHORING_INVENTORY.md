@@ -172,7 +172,10 @@ remain local review artifacts; their editable wording now lives in locale files.
 
 Shared wording uses the approved Transmutation Box edit and the user's
 body-part relaxation segmentation. Rights are user-cleared; authentication
-remains unverified. The three representative function-specific resource files
-are draft candidates. The remaining functions still need reviewed selections.
+remains unverified. All 55 function-specific English review files are now present;
+see [the review list](HPLUS_FUNCTION_REVIEW.md). The 39 source-available functions
+have selected candidate wording with explicit missing sections; the 16
+source-unavailable files contain review status only. Human wording review remains
+pending.
 Focus 20 underlay audibility, long holds, and localized speech timing need
 measurement/listening review before finished audio release.

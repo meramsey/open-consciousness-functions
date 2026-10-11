@@ -19,11 +19,21 @@ Each function has one locale resource file, named
 `locales/<locale>/hplus-<FUNCTION-ID>.yaml`. It owns only the keys
 `hplus.function.<lowercase-function-id>.opener`, `.function-body`, and `.closer`.
 The same body key supplies both Focus 11 passes and both Focus 20 underlay passes.
-Attention, Circulation and Sleep are the initial three migrated review candidates.
-Their entry status remains `draft`: committing a translatable candidate does not
-authenticate its transcript or certify its efficacy claims. Other functions need
-explicitly reviewed function-specific selections; missing resources fail clearly.
-The 16 source-unavailable records remain planned reimplementation targets.
+All 55 functions now have an English review file, linked in
+[English HPlus function review](HPLUS_FUNCTION_REVIEW.md). The 39 source-available
+files contain the identifiable function-specific wording: 29 have all three
+ordinary sections and 10 have explicitly recorded source gaps. Attention,
+Circulation and Sleep retain their initial file selections. Entry status remains
+`draft` for human wording review; a translatable candidate does not authenticate
+its transcript or certify its efficacy claims.
+
+The 16 source-unavailable files contain **UI review status only**, with no
+invented spoken opener/body/closer. Their canonical records remain planned
+reimplementation targets. Missing spoken sections fail clearly during composition.
+Access to Energy also preserves its distinct source-specific access-close command
+in a separate review entry; the standard template does not consume that extra
+entry automatically. Some final passages are exploration/integration handoffs
+rather than waking closers; the per-file notes identify these cases.
 
 ## Rights and provenance
 
@@ -67,6 +77,17 @@ extra learning section that would duplicate it. The waking passage is one
 utterance followed by a silent ordinary-waking completion marker.
 
 ## Compose and translate
+
+For initial source extent decisions see `function-content/hplus-review-selections.yaml`.
+It is an import recipe, not the current wording source of truth. The offline
+preparer verifies local source hashes and creates only missing files:
+
+```bash
+PYTHONPATH=scripts python3 scripts/tools/prepare_hplus_function_review.py --write
+```
+
+It never overwrites an existing English resource. Edit the locale file directly
+for wording review and translation; source files stay immutable.
 
 ```bash
 python3 scripts/ocf.py session compose \

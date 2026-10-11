@@ -3,7 +3,10 @@
 from types import SimpleNamespace
 
 import pytest
+import yaml
 
+from ocf_tools.indexes import load_all_functions
+from ocf_tools.paths import REPO_ROOT
 from ocf_tools.locale import LocalizationError, iter_events, resolve_document
 from ocf_tools.session import compose, load_template, run_compose
 from ocf_tools.utils import OCFError
@@ -18,14 +21,18 @@ def test_cli_binds_function_keys_and_fails_for_unauthored_function(tmp_path):
         locale="en-US", output=tmp_path / "review.yaml", force=False,
     )
     assert run_compose(args) == 0
-    args.function = "OCF-COG-001"
+    args.function = "OCF-BOD-005"
     args.output = tmp_path / "missing.yaml"
     with pytest.raises(OCFError, match="function narration is not authored"):
         run_compose(args)
     assert not args.output.exists()
 
 
-@pytest.mark.parametrize("owner", ["OCF-FND-002", "OCF-BOD-002", "OCF-SLP-002"])
+SELECTIONS = yaml.safe_load((REPO_ROOT / "function-content/hplus-review-selections.yaml").read_text())["selections"]
+COMPLETE_OWNERS = sorted(owner for owner, selection in SELECTIONS.items() if not selection["missing"])
+
+
+@pytest.mark.parametrize("owner", COMPLETE_OWNERS)
 def test_standard_shared_and_function_resources_resolve_without_local_sources(owner):
     template = load_template("OCF-TPL-SESSION-HPLUS-STANDARD-001")
     keys = {
@@ -49,6 +56,41 @@ def test_standard_shared_and_function_resources_resolve_without_local_sources(ow
     assert relaxation["timeline"][-1]["narration_required"] is False
     with pytest.raises(LocalizationError):
         resolve_document(doc, "es")
+
+
+def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
+    owners = load_all_functions()
+    assert len(owners) == 55
+    assert len(COMPLETE_OWNERS) == 29
+    unavailable = [owner for owner in owners if owner.source_availability == "unavailable"]
+    assert len(unavailable) == 16
+    for owner in owners:
+        path = REPO_ROOT / "locales/en-US" / f"hplus-{owner.id}.yaml"
+        doc = yaml.safe_load(path.read_text())
+        prefix = f"hplus.function.{owner.id.lower()}."
+        if owner.source_availability == "unavailable":
+            assert owner.reimplementation_status == "planned"
+            assert doc["domain"] == "ui"
+            assert not any(key.startswith(prefix) for key in doc["entries"])
+        else:
+            assert doc["domain"] == "narration"
+            selection = SELECTIONS[owner.id]
+            for slot in ("opener", "function-body", "closer"):
+                assert (prefix + slot in doc["entries"]) == (slot in selection["slots"])
+            for entry in doc["entries"].values():
+                assert entry["status"] == "draft"
+
+
+@pytest.mark.parametrize("owner", ["OCF-AUT-001", "OCF-COG-005", "OCF-BOD-005"])
+def test_missing_source_sections_cannot_be_spoken_as_review_status(owner, tmp_path):
+    args = SimpleNamespace(
+        template="OCF-TPL-SESSION-HPLUS-STANDARD-001",
+        function=owner, slot=[], title=None, id=None,
+        locale="en-US", output=tmp_path / "missing.yaml", force=False,
+    )
+    with pytest.raises(OCFError, match="function narration is not authored"):
+        run_compose(args)
+    assert not args.output.exists()
 
 
 def test_keyed_slot_rejects_ambiguous_or_unknown_inputs():

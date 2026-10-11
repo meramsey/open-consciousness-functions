@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/hplus-review-selection.schema.json",
+  "title": "Initial HPlus function review source selections",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "selections"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "selections": {
+      "type": "object",
+      "propertyNames": {"pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
+      "additionalProperties": {
+        "type": "object", "additionalProperties": false,
+        "required": ["slots", "missing", "notes"],
+        "properties": {
+          "slots": {
+            "type": "object",
+            "propertyNames": {"enum": ["opener", "function-body", "closer", "access-close"]},
+            "additionalProperties": {"type": "array", "minItems": 1, "items": {"$ref": "#/definitions/range"}}
+          },
+          "missing": {
+            "type": "object", "additionalProperties": false,
+            "properties": {"opener": {"type": "string", "minLength": 1}, "function-body": {"type": "string", "minLength": 1}, "closer": {"type": "string", "minLength": 1}}
+          },
+          "notes": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  },
+  "definitions": {
+    "range": {
+      "type": "object", "additionalProperties": false,
+      "required": ["start_line", "end_line"],
+      "properties": {
+        "start_line": {"type": "integer", "minimum": 1},
+        "end_line": {"type": "integer", "minimum": 1},
+        "start_at": {"type": "string", "minLength": 1},
+        "end_before": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}
