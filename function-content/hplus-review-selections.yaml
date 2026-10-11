@@ -142,7 +142,10 @@ selections:
     slots:
       opener: [{start_line: 1, end_line: 2, end_before: To prepare}]
       function-body: [{start_line: 32, end_line: 49}]
-    missing: {closer: No final function-specific closer is recoverable; source ends in ellipsis runs.}
+    missing:
+      closer: >-
+        Partial source ends in ellipses without a function-specific closer; an
+        OCF-authored closer suggestion is stored separately pending user approval.
     notes: [Unassigned religious line at 26 is outside the selected instruction; embedded numeric labels in the body remain flagged.]
   OCF-COG-007:
     slots:

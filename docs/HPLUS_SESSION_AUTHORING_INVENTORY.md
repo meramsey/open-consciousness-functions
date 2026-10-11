@@ -176,9 +176,9 @@ remains unverified. All 55 function-specific English review files are now presen
 see [the review list](HPLUS_FUNCTION_REVIEW.md). Of the 39 source-available
 functions, 28 have all three historical extents selected and 11 have historical
 source gaps. The 16 source-unavailable functions have separately labeled
-user-proposed reconstruction drafts. Six OCF-authored suggestions separately
-address source gaps, giving 50 files with all three review slots populated; the
-Access to Information and Buy the Numbers closers remain pending approval. Historical source
+user-proposed reconstruction drafts. Seven OCF-authored suggestions separately
+address source gaps, giving 51 files with all three review slots populated; the
+Access to Information, Buy the Numbers and Recall closers remain pending approval. Historical source
 availability and planned reimplementation status are unchanged. Human wording
 review remains pending for entries marked draft.
 Focus 20 underlay audibility, long holds, and localized speech timing need

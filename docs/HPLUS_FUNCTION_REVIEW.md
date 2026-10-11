@@ -28,7 +28,7 @@ Missing spoken keys are omitted. User-proposed reconstructions are labeled separ
 | OCF-COG-003 | Contemplation | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-003.yaml](../locales/en-US/hplus-OCF-COG-003.yaml) |
 | OCF-COG-004 | Imprint | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-004.yaml](../locales/en-US/hplus-OCF-COG-004.yaml) |
 | OCF-COG-005 | Options | partial_transcript | historical source selection | reviewed OCF suggestion | candidate | reviewed OCF suggestion | [hplus-OCF-COG-005.yaml](../locales/en-US/hplus-OCF-COG-005.yaml) |
-| OCF-COG-006 | Recall | partial_transcript | historical source selection | candidate | candidate | missing | [hplus-OCF-COG-006.yaml](../locales/en-US/hplus-OCF-COG-006.yaml) |
+| OCF-COG-006 | Recall | partial_transcript | historical source selection | candidate | candidate | suggestion pending approval | [hplus-OCF-COG-006.yaml](../locales/en-US/hplus-OCF-COG-006.yaml) |
 | OCF-COG-007 | Think Fast | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-007.yaml](../locales/en-US/hplus-OCF-COG-007.yaml) |
 | OCF-COM-001 | Speak Up | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COM-001.yaml](../locales/en-US/hplus-OCF-COM-001.yaml) |
 | OCF-EMG-001 | Emergency: Injury | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EMG-001.yaml](../locales/en-US/hplus-OCF-EMG-001.yaml) |
@@ -154,7 +154,10 @@ This is the end of your OCF function exercise.
 - Source begins with Music/shared preparation. The purpose statement at line 46 belongs to the body. Ellipsis-only source tail is not treated as a closer.
 
 ### OCF-COG-006 — Recall
-- Missing closer: No final function-specific closer is recoverable; source ends in ellipsis runs.
+- Historical source is missing closer; OCF-authored suggestion (draft) is not SOURCE: Remember, when you wish to recall information or an experience, inhale and hold your breath.
+Say in your mind, plus recall.
+Then think of the information you desire.
+This is the end of your OCF function exercise.
 - Unassigned religious line at 26 is outside the selected instruction; embedded numeric labels in the body remain flagged.
 
 ### OCF-COG-007 — Think Fast

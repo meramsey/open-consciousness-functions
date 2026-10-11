@@ -23,10 +23,10 @@ All 55 functions now have an English review file, linked in
 [English HPlus function review](HPLUS_FUNCTION_REVIEW.md). Of 39 source-available
 functions, 28 have all three opener/body/closer extents selected directly from
 their transcripts and 11 have historical source gaps. Sixteen additional files
-contain the user's proposed reconstruction wording. Six source gaps also have
-separate OCF-authored opener/closer suggestions, giving **50 files with all three
-review slots populated**; the Access to Information closer and the Buy the Numbers
-closer remain pending approval.
+contain the user's proposed reconstruction wording. Seven source gaps also have
+separate OCF-authored opener/closer suggestions, giving **51 files with all three
+review slots populated**; the Access to Information, Buy the Numbers and Recall
+closers remain pending approval.
 Attention,
 Circulation and Sleep retain their initial file selections. Entry status remains
 `draft` for human wording review; a translatable candidate does not authenticate
