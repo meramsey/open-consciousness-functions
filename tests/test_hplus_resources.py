@@ -86,7 +86,7 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
                 if owner.id == "OCF-BOD-004" and slot == "closer":
                     assert slot in selection["missing"]
                     assert prefix + slot in doc["entries"]
-                    assert doc["entries"][prefix + slot]["status"] == "draft"
+                    assert doc["entries"][prefix + slot]["status"] == "reviewed"
                     assert "not transcript wording" in doc["entries"][prefix + slot]["notes"]
                 else:
                     assert (prefix + slot in doc["entries"]) == (slot in selection["slots"])
