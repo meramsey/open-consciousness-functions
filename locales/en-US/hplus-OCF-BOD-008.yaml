@@ -7,10 +7,22 @@ schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
-  hplus.function.ocf-bod-008.function-body:
+  hplus.function.ocf-bod-008.opener:
     status: draft
+    version: "1.0.0"
+    notes: >-
+      OCF-authored opener proposal, prompted by the user's request and modeled on
+      the concise “Now, learn to...” opening form in other local Human Plus
+      references. This exact opener does not appear in the available Immunizing
+      transcript, which begins with music and shared preparation; it is not
+      represented as historical wording. User review pending.
+      Source status remains transcript_unverified; rights user_cleared attestation.
+      Finished-session release pending.
+    text: Now, learn to direct your body's natural protective systems.
+  hplus.function.ocf-bod-008.function-body:
+    status: reviewed
     version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Immunizing/Immunizing.txt; SHA-256 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4; lines 51–59. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Do not move the body into the opener; Music runs and trailing website text excluded.'
+    notes: 'Reference-derived wording; transcript_unverified. SOURCE +Transcripts From available tapes/Immunizing/Immunizing.txt; SHA-256 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4; lines 51–59. Human wording review: user approved the body unchanged. Shared preparation/state/return wording excluded. Claims remain source-derived statements, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
       Beginning now, right at this moment, more and more, the forces and systems in your physical body that attack and destroy
       and remove all harmful organisms that enter your body, such forces and systems are becoming stronger and stronger.
@@ -22,9 +34,9 @@ entries:
       Plus, alert, destroy, then exhale slowly through your mouth.
       The more you use this function, the easier and more effective it will become.
   hplus.function.ocf-bod-008.closer:
-    status: draft
+    status: reviewed
     version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Immunizing/Immunizing.txt; SHA-256 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4; lines 202–207. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Do not move the body into the opener; Music runs and trailing website text excluded.'
+    notes: 'Reference-derived wording; transcript_unverified. SOURCE +Transcripts From available tapes/Immunizing/Immunizing.txt; SHA-256 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4; lines 202–207. Human wording review: user approved the closer unchanged. Shared preparation/state/return wording excluded. Claims remain source-derived statements, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
       Remember, to increase your body effectiveness in controlling harmful organisms,
       all you need to do is inhale, hold your breath,

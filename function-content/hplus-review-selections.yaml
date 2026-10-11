@@ -53,7 +53,11 @@ selections:
     slots:
       function-body: [{start_line: 51, end_line: 59}]
       closer: [{start_line: 202, end_line: 207}]
-    missing: {opener: Source begins with Music then shared preparation; the partition's purpose at 51–56 is actually the body instruction.}
+    missing:
+      opener: >-
+        No transcript opener is available; the locale file has a separate
+        OCF-authored proposal modeled on other function openings, pending user
+        approval.
     notes: [Do not move the body into the opener; Music runs and trailing website text excluded.]
   OCF-BOD-009:
     slots:

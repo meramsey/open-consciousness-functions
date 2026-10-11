@@ -15,7 +15,7 @@ Missing spoken keys are omitted. User-proposed reconstructions are labeled separ
 | OCF-BOD-005 | Eat/No Eat | transcript_unverified | historical source selection | candidate | missing | candidate | [hplus-OCF-BOD-005.yaml](../locales/en-US/hplus-OCF-BOD-005.yaml) |
 | OCF-BOD-006 | Heart: Repairs & Maintenance | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-006.yaml](../locales/en-US/hplus-OCF-BOD-006.yaml) |
 | OCF-BOD-007 | Hypertension | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-007.yaml](../locales/en-US/hplus-OCF-BOD-007.yaml) |
-| OCF-BOD-008 | Immunizing | transcript_unverified | historical source selection | missing | candidate | candidate | [hplus-OCF-BOD-008.yaml](../locales/en-US/hplus-OCF-BOD-008.yaml) |
+| OCF-BOD-008 | Immunizing | transcript_unverified | historical source selection | suggestion pending approval | candidate | candidate | [hplus-OCF-BOD-008.yaml](../locales/en-US/hplus-OCF-BOD-008.yaml) |
 | OCF-BOD-009 | Lungs: Repairs & Maintenance | partial_transcript | historical source selection | candidate | candidate | missing | [hplus-OCF-BOD-009.yaml](../locales/en-US/hplus-OCF-BOD-009.yaml) |
 | OCF-BOD-010 | Nutricia | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-010.yaml](../locales/en-US/hplus-OCF-BOD-010.yaml) |
 | OCF-BOD-011 | Passages | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-011.yaml](../locales/en-US/hplus-OCF-BOD-011.yaml) |
@@ -98,7 +98,7 @@ This is the end of your OCF function exercise.
 - Repeated pressure wording and isolated You inside the selected body are preserved for review; trailing video text excluded.
 
 ### OCF-BOD-008 — Immunizing
-- Missing opener: Source begins with Music then shared preparation; the partition's purpose at 51–56 is actually the body instruction.
+- Historical source is missing opener; an OCF-authored suggestion is pending human approval: Now, learn to direct your body's natural protective systems.
 - Do not move the body into the opener; Music runs and trailing website text excluded.
 
 ### OCF-BOD-009 — Lungs: Repairs & Maintenance
