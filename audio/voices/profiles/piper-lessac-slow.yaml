@@ -1,0 +1,14 @@
+# Session-specific Piper pacing used by the local human-plus working auditions.
+# The model remains operator-supplied and is never committed.
+schema_version: "1.0"
+id: "OCF-VOICE-0003"
+slug: "piper-lessac-slow"
+name: "Piper en_US lessac medium — slow session pace"
+backend: "piper"
+language: "en_US"
+words_per_min: null
+piper_model: "~/.ocf/piper/en_US-lessac-medium.onnx"
+piper_length_scale: 1.12
+piper_sentence_silence_s: 0.4
+gain_db: null
+notes: "Local Human Plus working-session pace selected by the user; length scale and sentence silence are renderer settings, not source timing evidence."

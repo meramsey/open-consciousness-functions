@@ -295,6 +295,7 @@ BACKENDS: dict[str, dict[str, Any]] = {
         # as metadata and a mismatch is reported rather than silently rendered.
         "locale_style": "model-bound",
         "phonemes": None,
+        "default_sentence_silence_s": 0.4,
         "render": lambda exe, voice, wpm, model, text, out=None: (
             [exe, "--model", model, "-f", str(out), "--sentence-silence", "0.4"]
             if model and out is not None
@@ -443,6 +444,8 @@ def _load_profile(profile: dict[str, Any]) -> dict[str, Any]:
         "language": profile.get("language") or BACKENDS[name]["default_language"],
         "wpm": profile.get("words_per_min") or BACKENDS[name]["default_wpm"],
         "model": _expand_model_path(profile.get("piper_model")),
+        "piper_length_scale": profile.get("piper_length_scale"),
+        "piper_sentence_silence_s": profile.get("piper_sentence_silence_s"),
         "profile_id": profile.get("id"),
     }
 
@@ -513,6 +516,8 @@ def resolve_backend(
                 "language": spec_entry["default_language"],
                 "wpm": spec_entry["default_wpm"],
                 "model": None,
+                "piper_length_scale": None,
+                "piper_sentence_silence_s": None,
                 "profile_id": None,
             },
             locale,
@@ -620,6 +625,14 @@ def render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes:
         text,
         out=out_path,
     )
+    if spec["name"] == "piper":
+        length_scale = spec.get("piper_length_scale")
+        if length_scale is not None:
+            command.extend(["--length-scale", str(length_scale)])
+        sentence_silence = spec.get("piper_sentence_silence_s")
+        if sentence_silence is not None:
+            silence_index = command.index("--sentence-silence")
+            command[silence_index + 1] = str(sentence_silence)
     try:
         result = subprocess.run(
             command,
@@ -828,6 +841,7 @@ def render_narration(
     ``narration_key`` is resolved against that locale first, strictly by
     default: rendering must not start when required spoken narration is missing.
     """
+    backend = backend or doc.get("voice_profile")
     if locale is not None or document_key_usage(doc)["keyed"]:
         from .locale import LocaleCatalog, document_locale, resolve_document
 
@@ -1027,6 +1041,18 @@ def render_narration(
         "profile_id": spec.get("profile_id"),
         "locale": spec.get("locale"),
         "voice": spec.get("language"),
+        "voice_options": (
+            {
+                "piper_length_scale": spec.get("piper_length_scale"),
+                "piper_sentence_silence_s": (
+                    spec.get("piper_sentence_silence_s")
+                    if spec.get("piper_sentence_silence_s") is not None
+                    else BACKENDS[spec["name"]].get("default_sentence_silence_s")
+                ),
+            }
+            if spec["name"] == "piper"
+            else {}
+        ),
         "locale_notes": list(spec.get("notes") or []),
         "pronunciation_hints": hints_applied,
         "sample_rate": sample_rate,
@@ -1122,6 +1148,7 @@ def render_script(
                     "locale": metadata["locale"],
                     "language": metadata["voice"],
                     "profile_id": metadata["profile_id"],
+                    "options": metadata.get("voice_options", {}),
                 },
                 "output_sha256": sha256_of_file(Path(out_path)),
                 "total_duration_s": total,

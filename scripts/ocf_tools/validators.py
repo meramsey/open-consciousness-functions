@@ -1043,7 +1043,35 @@ def validate_session_library() -> ValidationResult:
             structural_template = deepcopy(template)
             structural_template["slots"] = {"required": [], "optional": []}
             for section in structural_template["sections"]:
+                if (
+                    section.get("pace") == "block"
+                    and (section.get("slot") or section.get("from_slot"))
+                ):
+                    # Validate the semantic/relative placement contract without
+                    # fabricating or copying contributor wording into this
+                    # structural-only pass.
+                    semantic = section.get("semantic") or "authoring.unassigned"
+                    section["lines"] = [
+                        {
+                            "id": f"structural-slot-marker-{section['id']}",
+                            "semantic": semantic,
+                            "narration_required": False,
+                        }
+                    ]
+                    section.setdefault("type", "custom")
+                    section.setdefault("start", 0.0)
+                    section.pop("after", None)
                 for field_name in ("slot", "from_slot", "repeat", "pace"):
+                    section.pop(field_name, None)
+                for field_name in (
+                    "pacing_key",
+                    "repeat_pacing_key",
+                    "repeat_gap_pacing_key",
+                    "pause_after_pacing_key",
+                    "gain_db_pacing_key",
+                    "pause_before_s",
+                    "after_anchor",
+                ):
                     section.pop(field_name, None)
             doc = compose(structural_template, {}, title=template["name"])
             _, problems = resolve_timeline(doc)

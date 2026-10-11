@@ -1,0 +1,21 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-HPLUS-WAKING-RETURN-001
+version: "0.1.0"
+origin: original-ocf
+type: return
+description: "HPlus architecture-draft Focus 10 to ordinary waking return; final function-specific closer follows this stage."
+events:
+  - id: begin
+    at: 0
+    semantic: session.return.begin
+    narration_key: hplus.shared.waking.begin
+    pacing_key: pauses.waking_begin_s
+    narration_required: true
+  - id: complete
+    after: begin
+    offset: 0
+    timing: {anchor: speech-end}
+    semantic: session.return.complete
+    pacing_key: pauses.waking_complete_s
+    dsp: {state: ordinary-waking}
+    narration_required: false

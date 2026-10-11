@@ -1,0 +1,26 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-HPLUS-FOCUS-TWENTY-ENTER-001
+version: "0.1.0"
+origin: original-ocf
+type: state-transition
+description: "HPlus architecture-draft transition into sleep-oriented Focus 20. No Focus 20 DSP is presumed."
+events:
+  - id: enter
+    at: 0
+    semantic: focus.twenty.enter
+    narration_key: hplus.shared.focus20.enter
+    narration_required: true
+  - id: transition
+    after: enter
+    offset: 0
+    timing: {anchor: speech-end}
+    semantic: focus.twenty.transition.open
+    dsp: {state: {from: focus-10, to: focus-20}}
+    pacing_key: transitions.focus10_to_focus20_s
+  - id: wait
+    after: transition
+    offset: 0
+    timing: {anchor: event-end}
+    semantic: focus.twenty.hold
+    pacing_key: pauses.sleep20_pre_repeat_s
+    narration_required: false

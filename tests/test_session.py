@@ -45,6 +45,7 @@ SLOTS = {
 }
 
 ATTENTION_TEMPLATE_ID = "OCF-TPL-SESSION-ATTENTION-001"
+HPLUS_TEMPLATE_ID = "OCF-TPL-SESSION-HPLUS-STANDARD-001"
 
 
 def attention_slots() -> dict[str, str]:
@@ -305,6 +306,87 @@ def test_attention_template_starts_match_legacy_arc():
     assert starts["sleep20"] == 1014.32
     assert starts["return"] == 1582.64
     assert starts["closing"] == 1748.24
+
+
+def test_hplus_standard_reuses_one_body_slot_and_resolves_shared_pacing():
+    tpl = session.load_template(HPLUS_TEMPLATE_ID)
+    body = "Function-specific first line.\nFunction-specific second line."
+    provenance = {
+        "function_body": {
+            "source_status": "candidate",
+            "text_sha256": "a" * 64,
+        }
+    }
+    doc = session.compose(
+        tpl,
+        {"opener": "Purpose.", "function_body": body, "closer": "Function close."},
+        title="HPlus composition fixture",
+        function_id="OCF-FND-002",
+        document_id="hplus-fixture",
+        slot_provenance=provenance,
+    )
+
+    assert [section["id"] for section in doc["sections"]] == [
+        "function-opener",
+        "body-comfort",
+        "transmutation-box",
+        "relaxation",
+        "focus-ten",
+        "open",
+        "focus11-body",
+        "close",
+        "focus10-hold",
+        "focus20-enter",
+        "sleep20-body",
+        "focus20-close",
+        "return",
+        "function-closer",
+        "session-complete",
+    ]
+    assert doc["slots"]["function_body"] == [body]
+    assert doc["slot_provenance"] == provenance
+
+    focus11 = next(section for section in doc["sections"] if section["id"] == "focus11-body")
+    sleep20 = next(section for section in doc["sections"] if section["id"] == "sleep20-body")
+    assert [event["id"] for event in focus11["timeline"]] == [
+        "focus11-body.pass-1",
+        "focus11-body.pass-2",
+    ]
+    assert [event["text"] for event in focus11["timeline"]] == [body, body]
+    assert focus11["timeline"][0]["after"] == "open.ready"
+    assert focus11["timeline"][0]["timing"]["anchor"] == "event-end"
+    assert focus11["timeline"][1]["after"] == "focus11-body.pass-1"
+    assert [event["text"] for event in sleep20["timeline"]] == [body, body]
+    assert sleep20["timeline"][0]["after"] == "focus20-enter.wait"
+    assert sleep20["timeline"][0]["timing"]["anchor"] == "event-end"
+    assert sleep20["gain_db"] == -24.0
+    assert doc["pacing_profile"]["id"] == "OCF-PACING-HPLUS-STANDARD-001"
+
+
+def test_hplus_optional_stages_are_off_until_explicitly_enabled():
+    tpl = session.load_template(HPLUS_TEMPLATE_ID)
+    slots = {
+        "opener": "Purpose.",
+        "function_body": "Body.",
+        "closer": "Close.",
+        "affirmation": "Optional affirmation candidate.",
+    }
+    default_doc = session.compose(tpl, slots, title="HPlus default")
+    assert "affirmation" not in {section["id"] for section in default_doc["sections"]}
+
+    enabled_doc = session.compose(
+        tpl,
+        slots,
+        title="HPlus optional stage",
+        enabled_stages=["affirmation"],
+    )
+    affirmation = next(
+        section for section in enabled_doc["sections"] if section["id"] == "affirmation"
+    )
+    practice = next(
+        event for event in affirmation["timeline"] if event["id"] == "affirmation.practice"
+    )
+    assert practice["text"] == "Optional affirmation candidate."
 
 
 class TestSessionCli:

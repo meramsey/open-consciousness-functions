@@ -1,0 +1,14 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-HPLUS-RELAXATION-001
+version: "1.0.0"
+origin: original-ocf
+type: induction
+description: User-selected progressive relaxation segmented by body part; no additional breath or whole-body narration is inserted.
+events:
+  - {id: begin, at: 0, semantic: preparation.relaxation.begin, narration_key: hplus.shared.relaxation.begin, pacing_key: pauses.relaxation_begin_s, narration_required: true}
+  - {id: face, after: begin, offset: 0, timing: {anchor: speech-end}, semantic: preparation.relaxation.face, narration_key: hplus.shared.relaxation.face, pacing_key: pauses.relaxation_step_s, narration_required: true}
+  - {id: shoulders, after: face, offset: 0, timing: {anchor: speech-end}, semantic: preparation.relaxation.shoulders, narration_key: hplus.shared.relaxation.shoulders, pacing_key: pauses.relaxation_step_s, narration_required: true}
+  - {id: hands, after: shoulders, offset: 0, timing: {anchor: speech-end}, semantic: preparation.relaxation.hands, narration_key: hplus.shared.relaxation.hands, pacing_key: pauses.relaxation_step_s, narration_required: true}
+  - {id: torso, after: hands, offset: 0, timing: {anchor: speech-end}, semantic: preparation.relaxation.torso, narration_key: hplus.shared.relaxation.torso, pacing_key: pauses.relaxation_step_s, narration_required: true}
+  - {id: legs, after: torso, offset: 0, timing: {anchor: speech-end}, semantic: preparation.relaxation.legs, narration_key: hplus.shared.relaxation.legs, pacing_key: pauses.relaxation_step_s, narration_required: true}
+  - {id: whole, after: legs, offset: 0, timing: {anchor: speech-end}, semantic: preparation.relaxation.whole, pacing_key: pauses.relaxation_whole_s, narration_required: false}

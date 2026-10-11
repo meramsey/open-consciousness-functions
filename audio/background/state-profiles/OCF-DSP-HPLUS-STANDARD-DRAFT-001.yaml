@@ -1,0 +1,27 @@
+schema_version: "1.0"
+id: OCF-DSP-HPLUS-STANDARD-DRAFT-001
+version: "0.1.0"
+initial_state: ordinary-waking
+seed: 0
+target_state_rms_dbfs: -18.0
+states:
+  ordinary-waking: {mode: disabled}
+  focus-10: {mode: preset, preset: OCF-BG-0012}
+  focus-11: {mode: preset, preset: OCF-BG-0006}
+  focus-20: {mode: disabled}
+transitions: {curve: equal-power, fallback_seconds: 5}
+approaches:
+  - state: focus-10
+    begin_event: relaxation.begin
+    established_event: focus-ten.enter
+    state_event: focus-ten.transition
+    curve: raised-cosine
+notes: |
+  Draft HPlus standard-session selection for internal composition review only.
+  OCF-BG-0012 remains an approximate V4-derived Focus 10 candidate; OCF-BG-0006
+  is the canonical newer pure-SAM Focus 11 selection. Focus 20 explicitly has
+  no binaural preset because no such evidence-backed binding is established.
+  Focus 20 may receive only the separately declared low-gain function narration
+  underlay. This does not assert subliminal efficacy or a neurological state.
+  This profile copies no V2/V2.1 induction curve or level into those frozen
+  auditions and is not a production/mastering profile.

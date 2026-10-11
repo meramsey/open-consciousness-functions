@@ -16,10 +16,12 @@
   "additionalProperties": false,
   "properties": {
     "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
-    "composition_kind": {"type": "string", "enum": ["preparation-learning", "routine-preparation", "function-installation"]},
+    "composition_kind": {"type": "string", "enum": ["preparation-learning", "routine-preparation", "function-installation", "human-plus-function"]},
     "content_status": {"type": "string", "enum": ["architecture-draft", "draft", "reviewed"]},
     "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
     "cue_profile": {"type": "string", "minLength": 1},
+    "pacing_profile": {"type": "string", "minLength": 1},
+    "voice_profile": {"type": "string", "minLength": 1},
     "features": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
     "schema_version": {
       "type": "string",
@@ -115,19 +117,33 @@
       "required": [
         "id"
       ],
-      "anyOf": [{"required": ["stage"]}, {"required": ["type", "start"]}],
+      "anyOf": [
+        {"required": ["stage"]},
+        {"required": ["type", "start"]},
+        {"required": ["type", "after"]}
+      ],
       "allOf": [{"if": {"required": ["stage"]}, "then": {"oneOf": [{"required": ["start"]}, {"required": ["after"]}]}}],
       "properties": {
         "stage": {"type": "string", "minLength": 1},
         "after": {"type": "string", "minLength": 1},
+        "after_anchor": {"type": "string", "enum": ["speech-end", "event-end"]},
         "enabled_by": {"type": "string", "minLength": 1},
         "narration": {
           "description": "Per-local-event listener content overrides; cannot alter semantic/DSP/cue structure.",
           "type": "object", "additionalProperties": {
             "type": "object", "additionalProperties": false,
-            "oneOf": [{"required": ["narration_key"]}, {"required": ["text"]}],
-            "properties": {"narration_key": {"type": "string"}, "text": {"type": "string"}, "locale": {"type": "string"}, "variables": {"type": "object"}}
+            "oneOf": [
+              {"required": ["narration_key"]},
+              {"required": ["text"]},
+              {"required": ["slot"]}
+            ],
+            "properties": {"narration_key": {"type": "string"}, "text": {"type": "string"}, "slot": {"type": "string"}, "locale": {"type": "string"}, "variables": {"type": "object"}}
           }
+        },
+        "pacing_overrides": {
+          "type": "object",
+          "additionalProperties": {"type": "string", "minLength": 1},
+          "description": "Local stage event id to versioned pacing-profile key. This changes timing only, never wording/semantics/DSP identity."
         },
         "id": {
           "type": "string",
@@ -169,6 +185,12 @@
           "minLength": 1,
           "description": "Reuse the wording of another declared slot (e.g. the twentieth-state reinforcement repeating the focus-11 instruction). Not a declared slot itself."
         },
+        "semantic": {"$ref": "https://open-consciousness-functions.dev/schemas/timed-transcript.schema.json#/definitions/semanticIdentity"},
+        "pacing_key": {"type": "string", "minLength": 1, "description": "Pacing-policy value used as the section's offset after its anchor."},
+        "repeat_pacing_key": {"type": "string", "minLength": 1, "description": "Pacing-policy value for how many times a reusable block is repeated."},
+        "repeat_gap_pacing_key": {"type": "string", "minLength": 1, "description": "Pacing-policy pause between repeated whole-block utterances."},
+        "pause_after_pacing_key": {"type": "string", "minLength": 1, "description": "Pacing-policy pause applied after a whole-block utterance."},
+        "pause_before_s": {"type": "number", "minimum": 0},
         "repeat": {
           "type": "integer",
           "minimum": 1,
@@ -178,7 +200,8 @@
           "type": "string",
           "enum": [
             "sequential",
-            "even-span"
+            "even-span",
+            "block"
           ]
         },
         "start": {
@@ -198,6 +221,11 @@
           ],
           "default": null,
           "description": "Whole-section narration gain offset in dB applied during the mix; the composer records it on the composed section."
+        },
+        "gain_db_pacing_key": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Resolve the whole-section narration gain from the versioned pacing profile."
         }
       }
     },
@@ -215,6 +243,7 @@
         "auditory_cue": {"$ref": "https://open-consciousness-functions.dev/schemas/timed-transcript.schema.json#/definitions/semanticIdentity"},
         "dsp": {"$ref": "https://open-consciousness-functions.dev/schemas/timed-transcript.schema.json#/definitions/dspSpec"},
         "timing": {"$ref": "https://open-consciousness-functions.dev/schemas/timed-transcript.schema.json#/definitions/timingSpec"},
+        "pacing_key": {"type": "string", "minLength": 1},
         "narration_required": {"type": "boolean"},
         "intentional_repeat": {"type": "boolean"},
         "after": {"type": "string", "minLength": 1},

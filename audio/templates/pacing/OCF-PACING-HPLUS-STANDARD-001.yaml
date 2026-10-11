@@ -1,0 +1,60 @@
+schema_version: "1.0"
+id: OCF-PACING-HPLUS-STANDARD-001
+version: "0.1.0"
+status: draft
+voice_profile_id: OCF-VOICE-0003
+estimate:
+  words_per_minute: 160
+  basis: "Planning estimate only, based on prior local Piper audition durations; final starts/ends come from measured TTS."
+repetitions:
+  focus11: 2
+  focus20: 2
+pauses:
+  transmutation_box_begin_s: 5
+  transmutation_box_place_s: 40
+  transmutation_box_complete_s: 8
+  optional_stage_begin_s: 3
+  optional_stage_practice_s: 15
+  optional_stage_complete_s: 3
+  relaxation_begin_s: 5
+  relaxation_breath_s: 15
+  relaxation_step_s: 10
+  relaxation_whole_s: 30
+  focus10_learn_s: 3
+  focus10_count_s: 5
+  focus10_initial_hold_s: 40
+  focus11_learning_s: 4
+  focus11_prime_s: 6
+  focus11_open_prepare_s: 2
+  focus11_ready_s: 2
+  focus11_close_prepare_s: 3
+  focus10_return_ready_s: 2
+  focus10_hold_s: 60
+  focus11_repeat_gap_s: 15
+  sleep20_pre_repeat_s: 600
+  sleep20_repeat_gap_s: 60
+  sleep20_post_repeat_s: 30
+  waking_begin_s: 4
+  waking_step_s: 5
+  waking_complete_s: 3
+transitions:
+  fallback_seconds: 5
+  focus10_to_focus11_s: 25
+  focus11_to_focus10_s: 25
+  focus10_to_focus20_s: 5
+  focus20_to_focus10_s: 5
+underlay:
+  gain_db: -24
+  audibility_note: "Barely-audible narration underlay; verify measured speech-band level in each mix."
+  efficacy_claim: false
+optional_stages:
+  affirmation: false
+  resonant_tuning: false
+  energy_ball: false
+evidence_notes:
+  - "Focus 10 hold: user-requested 60-second default."
+  - "Focus 11 and Focus 20 body repetitions: user-requested twice each."
+  - "Focus 20 pre-repeat pause: draft 600-second design choice, informed by the existing generic Learn shell's approximately 599-second sleep window; not a recovered source timing."
+  - "Focus 20 underlay gain: draft value reused from the Attention reference-derived template; not an efficacy or subliminal claim."
+  - "15/60/30-second repetition gaps and 5-second fallback transitions are design-selected defaults pending review."
+  - "Optional preparation stages default off. Their inclusion does not make Preparation Module features production-ready."

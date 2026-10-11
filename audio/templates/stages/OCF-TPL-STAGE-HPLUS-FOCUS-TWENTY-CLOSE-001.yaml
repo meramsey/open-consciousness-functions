@@ -1,0 +1,25 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-HPLUS-FOCUS-TWENTY-CLOSE-001
+version: "0.1.0"
+origin: original-ocf
+type: state-transition
+description: "HPlus architecture-draft return from Focus 20 to Focus 10. The prepare event is a silent semantic marker; the approved ready line follows the transition. The state name is a session convention, not a neurological claim."
+events:
+  - id: prepare
+    at: 0
+    semantic: focus.twenty.close.prepare
+    narration_required: false
+  - id: transition
+    after: prepare
+    offset: 0
+    timing: {anchor: speech-end}
+    semantic: focus.twenty.transition.close
+    dsp: {state: {from: focus-20, to: focus-10}}
+    pacing_key: transitions.focus20_to_focus10_s
+  - id: ready
+    after: transition
+    offset: 0
+    timing: {anchor: event-end}
+    semantic: focus.ten.ready
+    narration_key: hplus.shared.focus10.return.ready
+    narration_required: true

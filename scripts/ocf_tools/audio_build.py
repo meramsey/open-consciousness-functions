@@ -290,6 +290,9 @@ def _resolve_tags(
     doc_template = doc.get("template") if isinstance(doc, dict) else None
     if isinstance(doc_template, dict) and doc_template.get("id"):
         extra["OCF_SESSION_TEMPLATE"] = str(doc_template["id"])
+    pacing_profile = doc.get("pacing_profile") if isinstance(doc, dict) else None
+    if isinstance(pacing_profile, dict) and pacing_profile.get("id"):
+        extra["OCF_PACING_PROFILE"] = str(pacing_profile["id"])
     tags = {
         "title": title,
         "artist": "Open Consciousness Functions",
@@ -706,6 +709,7 @@ def build(
         raise OCFError("audio manifest and transcript disagree about command-owning function_id")
     if manifest.get("function_id"):
         doc["function_id"] = manifest["function_id"]
+    selected_voice = voice or manifest.get("voice_profile") or doc.get("voice_profile")
     formats = list(dict.fromkeys((fmt,) if formats is None else formats))
     if any(value not in ("wav", "flac", "mp3") for value in formats):
         raise OCFError("output formats must be wav, flac or mp3")
@@ -725,7 +729,7 @@ def build(
     narration_meta = render_narration(
         doc,
         narration_wav,
-        backend=voice,
+        backend=selected_voice,
         sample_rate=sample_rate,
         render_cue=render_cue,
         overwrite=True,
@@ -848,11 +852,15 @@ def build(
             "title": manifest.get("title"),
             "narrator": manifest.get("narrator"),
             "language": manifest.get("language"),
+            "voice_profile": manifest.get("voice_profile") or doc.get("voice_profile"),
         },
         "transcript_path": str(transcript_rel),
+        "pacing_profile": doc.get("pacing_profile"),
+        "slot_provenance": doc.get("slot_provenance", {}),
         "voice": {
             "backend": narration_meta["backend"],
             "profile_id": narration_meta.get("profile_id"),
+            "options": narration_meta.get("voice_options", {}),
             "sample_rate": narration_meta["sample_rate"],
             "channels": narration_meta["channels"],
             "locale": narration_meta.get("locale"),

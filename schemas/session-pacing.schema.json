@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/session-pacing.schema.json",
+  "title": "Versioned OCF session pacing policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "version", "status", "voice_profile_id", "estimate", "repetitions", "pauses", "transitions", "underlay"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "id": {"type": "string", "pattern": "^OCF-PACING-[A-Z0-9-]+-[0-9]{3}$"},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "status": {"enum": ["draft", "needs_review", "reviewed", "approved_for_internal_composition", "approved_for_release"]},
+    "voice_profile_id": {"type": "string", "pattern": "^OCF-VOICE-[0-9]{4}$"},
+    "estimate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["words_per_minute", "basis"],
+      "properties": {
+        "words_per_minute": {"type": "number", "minimum": 40, "maximum": 300},
+        "basis": {"type": "string", "minLength": 1}
+      }
+    },
+    "repetitions": {
+      "type": "object", "additionalProperties": false,
+      "required": ["focus11", "focus20"],
+      "properties": {
+        "focus11": {"type": "integer", "minimum": 1},
+        "focus20": {"type": "integer", "minimum": 1}
+      }
+    },
+    "pauses": {
+      "type": "object", "additionalProperties": {"type": "number", "minimum": 0},
+      "required": ["focus10_hold_s", "focus11_repeat_gap_s", "sleep20_pre_repeat_s", "sleep20_repeat_gap_s", "sleep20_post_repeat_s"]
+    },
+    "transitions": {
+      "type": "object", "additionalProperties": {"type": "number", "minimum": 0},
+      "required": ["fallback_seconds"]
+    },
+    "underlay": {
+      "type": "object", "additionalProperties": false,
+      "required": ["gain_db", "audibility_note", "efficacy_claim"],
+      "properties": {
+        "gain_db": {"type": "number", "maximum": 0},
+        "audibility_note": {"type": "string", "minLength": 1},
+        "efficacy_claim": {"const": false}
+      }
+    },
+    "optional_stages": {
+      "type": "object", "additionalProperties": {"type": "boolean"}
+    },
+    "evidence_notes": {"type": "array", "items": {"type": "string"}}
+  }
+}

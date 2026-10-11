@@ -1,0 +1,35 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-HPLUS-FOCUS-ELEVEN-CLOSE-001
+version: "0.1.0"
+origin: original-ocf
+type: access-close
+description: "HPlus architecture-draft Focus 11 close and return to Focus 10 with replaceable wording and centralized timing."
+events:
+  - id: prepare
+    at: 0
+    semantic: focus.eleven.close.prepare
+    narration_key: hplus.shared.focus11.close.prepare
+    pacing_key: pauses.focus11_close_prepare_s
+    narration_required: true
+  - id: close
+    after: prepare
+    offset: 0
+    timing: {anchor: speech-end}
+    semantic: focus.eleven.close
+    narration_key: hplus.shared.focus11.close
+    narration_required: true
+  - id: transition
+    after: close
+    offset: 0
+    timing: {anchor: speech-end}
+    semantic: focus.eleven.transition.close
+    dsp: {state: {from: focus-11, to: focus-10}}
+    pacing_key: transitions.focus11_to_focus10_s
+  - id: ready
+    after: transition
+    offset: 0
+    timing: {anchor: event-end}
+    semantic: focus.ten.ready
+    narration_key: hplus.shared.focus10.return.ready
+    pacing_key: pauses.focus10_return_ready_s
+    narration_required: true

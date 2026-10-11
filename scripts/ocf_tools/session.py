@@ -23,6 +23,7 @@ Contributor wording is placed verbatim and never rewritten.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 import re
@@ -36,6 +37,7 @@ from .utils import OCFError, read_text, write_text_atomic, yaml_safe_dump, yaml_
 from .validators import validate_against_schema
 
 TEMPLATES_DIR = REPO_ROOT / "audio" / "templates" / "sessions"
+PACING_DIR = REPO_ROOT / "audio" / "templates" / "pacing"
 DEFAULT_TEMPLATE_ID = "OCF-TPL-SESSION-LEARN-001"
 
 _LRC_LINE = re.compile(r"^\s*\[(\d{1,2}:\d{2}(?:[.,]\d{1,3})?)\]\s*(.*?)\s*$")
@@ -69,7 +71,81 @@ def load_template(template_ref: str) -> dict[str, Any]:
     errors = validate_against_schema(data, schema)
     if errors:
         raise OCFError(f"session template {path.name} fails its schema:\n" + "\n".join(errors))
+    if data.get("pacing_profile"):
+        load_pacing_profile(str(data["pacing_profile"]))
     return data
+
+
+def load_pacing_profile(profile_ref: str) -> dict[str, Any]:
+    """Load one versioned session pacing policy by id or local YAML path."""
+    candidate = Path(profile_ref).expanduser()
+    if profile_ref and (candidate.is_file() or "/" in profile_ref or "\\" in profile_ref):
+        path = candidate
+    else:
+        path = PACING_DIR / f"{profile_ref}.yaml"
+    if not path.is_file():
+        raise OCFError(
+            f"session pacing profile not found: {profile_ref} (looked in {PACING_DIR})"
+        )
+    try:
+        data = yaml_safe_load(read_text(path))
+    except Exception as exc:  # pragma: no cover - defensive
+        raise OCFError(f"invalid YAML in pacing profile {path.name}: {exc}") from exc
+    if not isinstance(data, dict):
+        raise OCFError(f"session pacing profile {path.name} is not a mapping")
+    problems = validate_against_schema(data, _load_schema("session-pacing.schema.json"))
+    if problems:
+        raise OCFError(f"session pacing profile {path.name} fails its schema:\n" + "\n".join(problems))
+    return data
+
+
+def _pacing_value(
+    profile: dict[str, Any] | None,
+    key: str | None,
+    *,
+    allow_negative: bool = False,
+) -> float | None:
+    """Resolve a dotted key in a pacing profile without guessing a default."""
+    if not key:
+        return None
+    if profile is None:
+        raise OCFError(f"pacing key {key!r} requires a session pacing profile")
+    value: Any = profile
+    for component in key.split("."):
+        if not isinstance(value, dict) or component not in value:
+            raise OCFError(f"pacing profile has no value for {key!r}")
+        value = value[component]
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise OCFError(f"pacing profile value {key!r} must be numeric")
+    if not math.isfinite(float(value)) or (float(value) < 0 and not allow_negative):
+        qualifier = "finite" if allow_negative else "finite and nonnegative"
+        raise OCFError(f"pacing profile value {key!r} must be {qualifier}")
+    return float(value)
+
+
+def _slot_file_provenance(path: Path, text: str) -> dict[str, Any]:
+    """Describe a slot input without copying or relocating its source text."""
+    try:
+        relative = path.resolve().relative_to(REPO_ROOT.resolve()).as_posix()
+    except ValueError:
+        relative = None
+    raw = path.read_bytes()
+    provenance: dict[str, Any] = {
+        "file": relative,
+        "filename": path.name,
+        "sha256": hashlib.sha256(raw).hexdigest(),
+        "text_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+    }
+    sidecar = path.with_suffix(".provenance.yaml")
+    if sidecar.is_file():
+        sidecar_doc = yaml_safe_load(read_text(sidecar))
+        if not isinstance(sidecar_doc, dict):
+            raise OCFError(f"slot provenance sidecar must be a mapping: {sidecar}")
+        provenance.update(sidecar_doc)
+        provenance["slot_file"] = relative
+        provenance["slot_sha256"] = hashlib.sha256(raw).hexdigest()
+        provenance["text_sha256"] = hashlib.sha256(text.encode("utf-8")).hexdigest()
+    return provenance
 
 
 def list_templates() -> list[dict[str, Any]]:
@@ -216,6 +292,8 @@ def resolve_section_events(
     *,
     line_seconds: float,
     section_end: float | None = None,
+    previous: str | None = None,
+    pacing_profile: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     """Return the scheduled event dicts for one template section.
 
@@ -224,8 +302,90 @@ def resolve_section_events(
     different narration per locale.
     """
     slot_name, slot_text = _slot_text(section, slots)
-    start = float(section["start"])
     if slot_name or section.get("from_slot"):
+        if section.get("pace") == "block":
+            if not slot_text.strip():
+                raise OCFError(f"section {section['id']} has an empty block slot")
+            if section.get("repeat") is not None and section.get("repeat_pacing_key"):
+                raise OCFError(
+                    f"section {section['id']} cannot set both repeat and repeat_pacing_key"
+                )
+            repeat = section.get("repeat", 1)
+            if section.get("repeat_pacing_key"):
+                repeat_value = _pacing_value(pacing_profile, section["repeat_pacing_key"])
+                repeat = int(repeat_value or 0)
+                if repeat_value != repeat or repeat < 1:
+                    raise OCFError(
+                        f"section {section['id']} pacing repeat count must be a positive integer"
+                    )
+            repeat = int(repeat)
+            if repeat < 1:
+                raise OCFError(f"section {section['id']} repeat must be positive")
+
+            if section.get("pacing_key") and "pause_before_s" in section:
+                raise OCFError(
+                    f"section {section['id']} cannot set both pacing_key and pause_before_s"
+                )
+            first_offset = section.get("pause_before_s", 0.0)
+            if section.get("pacing_key"):
+                first_offset = _pacing_value(pacing_profile, section["pacing_key"])
+            first_offset = float(first_offset or 0.0)
+            repeat_gap = 0.0
+            if section.get("repeat_gap_pacing_key"):
+                repeat_gap = float(
+                    _pacing_value(pacing_profile, section["repeat_gap_pacing_key"]) or 0.0
+                )
+            pause_after = None
+            if section.get("pause_after_pacing_key"):
+                pause_after = _pacing_value(pacing_profile, section["pause_after_pacing_key"])
+
+            after = section.get("after")
+            if after == "$previous":
+                after = previous
+            if section.get("after") == "$previous" and after is None:
+                raise OCFError(
+                    f"section {section['id']} follows $previous but has no preceding event"
+                )
+            if after is None and "start" not in section:
+                raise OCFError(f"block section {section['id']} needs start or after")
+
+            events: list[dict[str, Any]] = []
+            prior_id = after
+            for repeat_index in range(repeat):
+                event_id = (
+                    f"{section['id']}.pass-{repeat_index + 1}"
+                    if repeat > 1
+                    else f"{section['id']}.block"
+                )
+                event: dict[str, Any] = {"id": event_id, "text": slot_text}
+                event["slot_ref"] = slot_name or str(section.get("from_slot"))
+                if section.get("semantic"):
+                    event["semantic"] = section["semantic"]
+                if prior_id:
+                    event["after"] = prior_id
+                    event["offset"] = first_offset if repeat_index == 0 else repeat_gap
+                    event["timing"] = {
+                        "anchor": (
+                            str(section.get("after_anchor", "speech-end"))
+                            if repeat_index == 0
+                            else "speech-end"
+                        )
+                    }
+                elif repeat_index == 0:
+                    event["at"] = float(section["start"]) + first_offset
+                if repeat_index == repeat - 1 and pause_after is not None:
+                    event.setdefault("timing", {"anchor": "speech-end"})[
+                        "pause_after"
+                    ] = pause_after
+                events.append(event)
+                prior_id = event_id
+            return events
+
+        if "start" not in section:
+            raise OCFError(
+                f"line-paced slot section {section['id']} requires an absolute start"
+            )
+        start = float(section["start"])
         if section.get("repeat"):
             if section_end is None:
                 raise OCFError(
@@ -251,6 +411,9 @@ def resolve_section_events(
                 pace=str(section.get("pace", "sequential")),
             )
         ]
+    if "start" not in section:
+        raise OCFError(f"section {section['id']} without a slot or stage requires start")
+    start = float(section["start"])
     events: list[dict[str, Any]] = []
     for line in section.get("lines", []):
         event: dict[str, Any] = {
@@ -270,6 +433,23 @@ def resolve_section_events(
             event["text"] = str(line["text"])
         events.append(event)
     return events
+
+
+def _apply_pacing_keys(
+    events: list[dict[str, Any]], pacing_profile: dict[str, Any] | None
+) -> None:
+    """Resolve authored pacing keys into numeric event timing/DSP fields."""
+    for event in events:
+        key = event.pop("pacing_key", None)
+        if not key:
+            continue
+        value = _pacing_value(pacing_profile, str(key))
+        if value is None:
+            raise OCFError(f"pacing key {key!r} did not resolve")
+        if event.get("dsp"):
+            event["dsp"]["transition_s"] = value
+        else:
+            event.setdefault("timing", {})["pause_after"] = value
 
 
 def resolve_section(
@@ -298,16 +478,33 @@ def compose(
     duration: float | None = None,
     enabled_stages: list[str] | None = None,
     function_id: str | None = None,
+    pacing_profile: dict[str, Any] | str | None = None,
+    slot_provenance: dict[str, Any] | None = None,
+    slot_keys: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     """Resolve a session template into a canonical timed-transcript document.
 
-    ``slots`` maps slot names to plain text. Only slots declared by the
+    ``slots`` maps slot names to plain text; ``slot_keys`` supplies localized
+    whole-block narration by key. Only slots declared by the
     template are accepted. Every declared required slot must be present;
     optional slots keep the template placeholder wording when omitted. The
     returned document records ``template`` provenance and the exact slot
     wording used (``slots``), so artifacts can be traced back to the source
     without rewriting it.
     """
+    slot_keys = dict(slot_keys or {})
+    if set(slot_keys) & set(slots):
+        raise OCFError("a slot cannot supply both plain text and a narration key")
+    slots = {**slots, **slot_keys}
+    for section in template["sections"]:
+        slot = section.get("slot") or section.get("from_slot")
+        if slot in slot_keys and section.get("pace") != "block":
+            raise OCFError("keyed slots require whole-block pacing")
+    if isinstance(pacing_profile, str):
+        pacing_profile = load_pacing_profile(pacing_profile)
+    if pacing_profile is None and template.get("pacing_profile"):
+        pacing_profile = load_pacing_profile(str(template["pacing_profile"]))
+
     declared: list[str] = list(template.get("slots", {}).get("required", []))
     declared += list(template.get("slots", {}).get("optional", []))
     unknown = set(slots) - set(declared)
@@ -374,19 +571,48 @@ def compose(
                     if set(overrides[event["id"]]) - {
                         "text",
                         "narration_key",
+                        "slot",
                         "variables",
                         "locale",
                     }:
                         raise OCFError(
                             "narration override cannot alter semantic, DSP, cue or timing fields"
                         )
-                    if ("text" in overrides[event["id"]]) == (
-                        "narration_key" in overrides[event["id"]]
-                    ):
-                        raise OCFError("narration override needs exactly one text or narration_key")
-                    event.pop("text", None)
-                    event.pop("narration_key", None)
-                    event.update(overrides[event["id"]])
+                    override = overrides[event["id"]]
+                    content_fields = [
+                        field
+                        for field in ("text", "narration_key", "slot")
+                        if field in override
+                    ]
+                    if len(content_fields) != 1:
+                        raise OCFError(
+                            "narration override needs exactly one text, narration_key, or slot"
+                        )
+                    if "slot" in override:
+                        slot = str(override["slot"])
+                        if slot not in slots:
+                            # An optional slot may override a stage's shared
+                            # default narration. If no default exists, enabling
+                            # the stage without its custom resource is an error.
+                            if not event.get("narration_key") and not event.get("text"):
+                                raise OCFError(
+                                    f"stage section {section['id']} requires supplied slot {slot!r}"
+                                )
+                            continue
+                        event.pop("text", None)
+                        event.pop("narration_key", None)
+                        if slot in slot_keys:
+                            event["narration_key"] = slot_keys[slot]
+                        else:
+                            event["text"] = slots[slot]
+                        used_slots.setdefault(slot, [slots[slot]])
+                        event.update(
+                            {key: value for key, value in override.items() if key != "slot"}
+                        )
+                    else:
+                        event.pop("text", None)
+                        event.pop("narration_key", None)
+                        event.update(override)
             events = stage_events(
                 stage,
                 section["id"],
@@ -394,14 +620,40 @@ def compose(
                 after=section.get("after"),
                 previous=previous,
             )
+            pacing_overrides = section.get("pacing_overrides") or {}
+            if pacing_overrides:
+                event_by_local_id = {
+                    event["id"][len(section["id"]) + 1 :]: event
+                    for event in events
+                    if event["id"].startswith(section["id"] + ".")
+                }
+                unknown_pacing = set(pacing_overrides) - set(event_by_local_id)
+                if unknown_pacing:
+                    raise OCFError(
+                        f"stage section {section['id']}: unknown pacing event(s): "
+                        + ", ".join(sorted(unknown_pacing))
+                    )
+                for local_id, key in pacing_overrides.items():
+                    if event_by_local_id[local_id].get("pacing_key"):
+                        raise OCFError(
+                            f"stage section {section['id']} sets pacing twice for {local_id}"
+                        )
+                    event_by_local_id[local_id]["pacing_key"] = key
+            _apply_pacing_keys(events, pacing_profile)
             stage_provenance.append(
                 {"id": stage["id"], "version": stage["version"], "instance": section["id"]}
             )
         else:
             stage = None
             events = resolve_section_events(
-                section, slots, line_seconds=line_seconds, section_end=section_end
+                section,
+                slots,
+                line_seconds=line_seconds,
+                section_end=section_end,
+                previous=previous,
+                pacing_profile=pacing_profile,
             )
+            _apply_pacing_keys(events, pacing_profile)
         timeline: list[dict[str, Any]] = []
         for event in events:
             at_seconds = float(event["at"]) if "at" in event else None
@@ -429,6 +681,7 @@ def compose(
                             "dsp",
                             "auditory_cue",
                             "timing",
+                            "slot_ref",
                             "state",
                             "cue_id",
                             "narration_required",
@@ -440,14 +693,26 @@ def compose(
             )
             previous = timeline[-1]["id"]
         if slot_name and slot_name in slots:
-            used_slots[slot_name] = [str(event.get("text", "")) for event in events]
+            if section.get("pace") == "block":
+                used_slots.setdefault(slot_name, [slots[slot_name]])
+            else:
+                used_slots[slot_name] = [str(event.get("text", "")) for event in events]
         section_doc: dict[str, Any] = {
             "id": section["id"],
             "type": section.get("type") or (stage or {}).get("type", "custom"),
         }
         if section.get("role"):
             section_doc["role"] = section["role"]
-        if section.get("gain_db") is not None:
+        if section.get("gain_db") is not None and section.get("gain_db_pacing_key"):
+            raise OCFError(
+                f"section {section['id']} cannot set both gain_db and gain_db_pacing_key"
+            )
+        if section.get("gain_db_pacing_key"):
+            gain = _pacing_value(
+                pacing_profile, section["gain_db_pacing_key"], allow_negative=True
+            )
+            section_doc["gain_db"] = float(gain)
+        elif section.get("gain_db") is not None:
             section_doc["gain_db"] = float(section["gain_db"])
         section_doc["timeline"] = timeline
         sections_out.append(section_doc)
@@ -461,11 +726,33 @@ def compose(
             "version": template.get("version") or template.get("schema_version"),
             "origin": template.get("origin", "original-ocf"),
         },
-        "slots": used_slots,
+        "slots": {name: text for name, text in used_slots.items() if name not in slot_keys},
     }
     if stage_provenance:
         doc["stages"] = stage_provenance
-    for key in ("function_id", "cue_profile"):
+    if pacing_profile:
+        doc["pacing_profile"] = {
+            "id": pacing_profile["id"],
+            "version": pacing_profile["version"],
+            "status": pacing_profile["status"],
+        }
+        doc["template"]["pacing_profile"] = {
+            "id": pacing_profile["id"],
+            "version": pacing_profile["version"],
+        }
+    if slot_provenance:
+        unknown_provenance = set(slot_provenance) - set(declared)
+        if unknown_provenance:
+            raise OCFError(
+                "slot provenance names undeclared slot(s): "
+                + ", ".join(sorted(unknown_provenance))
+            )
+        used_provenance = {
+            slot: value for slot, value in slot_provenance.items() if slot in used_slots
+        }
+        if used_provenance:
+            doc["slot_provenance"] = deepcopy(used_provenance)
+    for key in ("function_id", "cue_profile", "voice_profile"):
         if template.get(key):
             doc[key] = template[key]
     if function_id:
@@ -477,6 +764,15 @@ def compose(
         doc["source"] = dict(template_source)
     if document_id:
         doc["id"] = document_id
+
+    if slot_keys:
+        from .locale import iter_events
+
+        for event in iter_events(doc):
+            slot = event.get("slot_ref")
+            if slot in slot_keys:
+                event.pop("text", None)
+                event["narration_key"] = slot_keys[slot]
 
     if doc.get("function_id"):
         from .indexes import load_all_functions
@@ -513,6 +809,7 @@ def run_compose(args: Any) -> int:
 
     template = load_template(args.template)
     slots: dict[str, str] = {}
+    slot_provenance: dict[str, Any] = {}
     for flag, name in (
         (getattr(args, "opener", None), "opener"),
         (getattr(args, "focus11", None), "focus11"),
@@ -520,14 +817,33 @@ def run_compose(args: Any) -> int:
         (getattr(args, "closer", None), "closer"),
     ):
         if flag:
-            slots[name] = read_text(Path(flag))
+            path = Path(flag)
+            slots[name] = read_text(path)
+            slot_provenance[name] = _slot_file_provenance(path, slots[name])
     for spec in args.slot or []:
         if "=" not in spec:
             raise OCFError(f"--slot expects NAME=PATH, got {spec!r}")
         name, path_text = spec.split("=", 1)
-        slots[name.strip()] = read_text(Path(path_text))
+        slot_name = name.strip()
+        slot_path = Path(path_text)
+        slots[slot_name] = read_text(slot_path)
+        slot_provenance[slot_name] = _slot_file_provenance(slot_path, slots[slot_name])
 
     title = args.title or template.get("name", "OCF session")
+    slot_keys = {}
+    owner = getattr(args, "function", None)
+    if owner and template.get("composition_kind") == "human-plus-function":
+        from .locale import LocaleCatalog
+
+        catalog = LocaleCatalog()
+        for name in ("opener", "function_body", "closer"):
+            if name not in slots:
+                key = f"hplus.function.{owner.lower()}.{name.replace('_', '-')}"
+                if not catalog.canonical or catalog.canonical.get(key) is None:
+                    raise OCFError(f"function narration is not authored: {key}")
+                slot_keys[name] = key
+    pacing_ref = getattr(args, "pacing_profile", None) or template.get("pacing_profile")
+    pacing_profile = load_pacing_profile(str(pacing_ref)) if pacing_ref else None
     doc = compose(
         template,
         slots,
@@ -537,6 +853,9 @@ def run_compose(args: Any) -> int:
         duration=getattr(args, "duration", None),
         enabled_stages=getattr(args, "enable_stage", None),
         function_id=getattr(args, "function", None),
+        pacing_profile=pacing_profile,
+        slot_provenance=slot_provenance,
+        slot_keys=slot_keys,
     )
 
     locale = getattr(args, "locale", None)

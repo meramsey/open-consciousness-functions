@@ -1,0 +1,8 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-HPLUS-BODY-COMFORT-001
+version: "1.0.0"
+origin: original-ocf
+type: preparation
+description: Shared body-comfort narration with measured speech-end chaining.
+events:
+  - {id: begin, at: 0, semantic: preparation.orientation.begin, narration_key: hplus.shared.body-comfort, narration_required: true}

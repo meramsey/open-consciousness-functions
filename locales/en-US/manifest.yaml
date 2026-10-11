@@ -3,7 +3,7 @@ locale: "en-US"
 language_name: "English (United States)"
 direction: "ltr"
 status: "canonical"
-semantic_version: "1.2.1"
+semantic_version: "1.3.0"
 resources:
   - file: "ui.yaml"
     domain: "ui"
@@ -17,6 +17,17 @@ resources:
   - file: "preparation-learning.yaml"
     domain: "narration"
     description: "Approved OCF Preparation Learning en-US RC1 fixed narration and reusable state/count/return resources; production audio remains separate."
+  - {file: hplus-body-comfort.yaml, domain: narration, description: Shared HPlus body comfort}
+  - {file: hplus-transmutation-box.yaml, domain: narration, description: Shared Transmutation Box}
+  - {file: hplus-relaxation.yaml, domain: narration, description: Shared segmented progressive relaxation}
+  - {file: hplus-focus10.yaml, domain: narration, description: Shared Focus 10 induction and return-ready wording}
+  - {file: hplus-focus11-open.yaml, domain: narration, description: Shared Focus 11 opening and learning explanation}
+  - {file: hplus-focus11-close.yaml, domain: narration, description: Shared Focus 11 consolidation and close}
+  - {file: hplus-focus20.yaml, domain: narration, description: Shared Focus 20 entry}
+  - {file: hplus-waking-return.yaml, domain: narration, description: Shared twenty-to-one waking return}
+  - {file: hplus-OCF-FND-002.yaml, domain: narration, description: Attention-specific opener body and closer candidates}
+  - {file: hplus-OCF-BOD-002.yaml, domain: narration, description: Circulation-specific opener body and closer candidates}
+  - {file: hplus-OCF-SLP-002.yaml, domain: narration, description: Sleep-specific opener body and closer candidates}
 notes: |
   Canonical locale. New narration keys are authored here first; a derived pack
   is then filled from this one, recording its source semantic version.

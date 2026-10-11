@@ -183,8 +183,9 @@ def test_pseudo_pack_preserves_icu_syntax_and_shape():
         assert sorted(entry.variables) == sorted(original.variables)
         assert message_variables(entry.text) == message_variables(original.text)
         if entry.text == original.text:
-            # Variable-only configured content has no literal words to accent.
-            assert original.render({name: "" for name in original.variables}) == ""
+            # Variable-only or numeral-only content has no letters to accent.
+            rendered = original.render({name: "" for name in original.variables})
+            assert rendered == "" or rendered.isdecimal()
     assert build_pseudo_pack(catalog, CANONICAL_LOCALE, locale="en-XB").locale == "en-XB"
 
 

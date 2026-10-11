@@ -11,6 +11,27 @@
   "properties": {
    "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
    "cue_profile": {"type": "string", "minLength": 1},
+   "voice_profile": {"type": "string", "minLength": 1},
+   "pacing_profile": {
+    "type": "object", "additionalProperties": false,
+    "required": ["id", "version", "status"],
+    "properties": {
+     "id": {"type": "string", "minLength": 1},
+     "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+     "status": {"type": "string"}
+    }
+   },
+   "slot_provenance": {
+    "type": "object",
+    "additionalProperties": {
+     "type": "object", "additionalProperties": true,
+     "properties": {
+      "file": {"type": ["string", "null"]},
+      "sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+      "text_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"}
+     }
+    }
+   },
    "stages": {
     "type": "array", "items": {
      "type": "object", "required": ["id", "version", "instance"],
@@ -232,6 +253,14 @@
       "original-ocf",
       "reference-derived"
      ]
+    },
+    "pacing_profile": {
+     "type": "object", "additionalProperties": false,
+     "required": ["id", "version"],
+     "properties": {
+      "id": {"type": "string", "minLength": 1},
+      "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}
+     }
     }
    }
   },
@@ -348,6 +377,7 @@
      "semantic": {"$ref": "#/definitions/semanticIdentity"},
      "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
      "locale": {"type": "string", "minLength": 1},
+      "slot_ref": {"type": "string", "minLength": 1},
      "auditory_cue": {"$ref": "#/definitions/semanticIdentity"},
      "dsp": {"$ref": "#/definitions/dspSpec"},
      "narration_required": {"type": "boolean"},

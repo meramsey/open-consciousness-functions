@@ -1,0 +1,12 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-HPLUS-SESSION-COMPLETE-001
+version: "0.1.0"
+origin: original-ocf
+type: outro
+description: "HPlus architecture-draft operational completion marker. Playback remains disabled until cue design is approved."
+events:
+  - id: signal
+    at: 0
+    semantic: session.complete
+    auditory_cue: session.complete
+    narration_required: false

@@ -1,0 +1,25 @@
+schema_version: "1.0"
+locale: en-US
+domain: narration
+entries:
+  hplus.shared.focus10.learn:
+    status: reviewed
+    version: "1.0.0"
+    text: Move now to the 10th state of total relaxation as I guide you.
+  hplus.shared.focus10.count:
+    status: reviewed
+    version: "1.0.0"
+    variables: [count]
+    text: "{count}"
+  hplus.shared.focus10.enter:
+    status: reviewed
+    version: "1.0.0"
+    text: "10"
+  hplus.shared.focus10.ready:
+    status: reviewed
+    version: "1.0.0"
+    text: Relax calmly and serenely in the 10th state.
+  hplus.shared.focus10.return.ready:
+    status: reviewed
+    version: "1.0.0"
+    text: Relax and feel calm and serene in the ten state.

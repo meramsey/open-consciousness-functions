@@ -1,0 +1,28 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-HPLUS-ENERGY-BALL-001
+version: "0.1.0"
+origin: original-ocf
+type: preparation
+description: "Architecture-draft optional sensory-flexible Energy Ball stage. The imagery/representation wording and its provenance await human review; disabled by default."
+events:
+  - id: begin
+    at: 0
+    semantic: preparation.energy-ball.begin
+    narration_key: hplus.optional.energy-ball.begin
+    pacing_key: pauses.optional_stage_begin_s
+    narration_required: true
+  - id: practice
+    after: begin
+    offset: 0
+    timing: {anchor: speech-end}
+    semantic: preparation.energy-ball.practice
+    narration_key: hplus.optional.energy-ball.default
+    pacing_key: pauses.optional_stage_practice_s
+  - id: complete
+    after: practice
+    offset: 0
+    timing: {anchor: speech-end}
+    semantic: preparation.energy-ball.complete
+    narration_key: hplus.optional.energy-ball.complete
+    pacing_key: pauses.optional_stage_complete_s
+    narration_required: true

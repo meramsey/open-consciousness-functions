@@ -13,6 +13,29 @@ from ocf_tools.utils import OCFError
 pytestmark = pytest.mark.unit
 
 
+def test_keyed_stage_slot_keeps_locale_key_instead_of_speaking_it(boundary, monkeypatch):
+    monkeypatch.setattr(
+        semantics,
+        "load_stage",
+        lambda ref: {
+            "id": "OCF-TPL-STAGE-FIXTURE-001", "version": "1.0.0",
+            "events": [{"id": "line", "at": 0, "semantic": "function.instruction"}],
+        },
+    )
+    doc = s.compose(
+        template(
+            [{"id": "practice", "stage": "fixture", "start": 0,
+              "narration": {"line": {"slot": "body"}}}],
+            slots={"required": ["body"], "optional": []},
+        ),
+        {}, title="fixture", slot_keys={"body": "function.fixture.body"},
+    )
+    event = doc["sections"][0]["timeline"][0]
+    assert event["narration_key"] == "function.fixture.body"
+    assert "text" not in event
+    assert doc["slots"] == {}
+
+
 def template(sections=None, **extra):
     return {
         "id": "OCF-TPL-SESSION-FIXTURE-001",
@@ -263,6 +286,11 @@ def test_compose_handler_forwards_slots_locale_and_protects_output(boundary, mon
     root = template(content_status="architecture-draft")
     monkeypatch.setattr(s, "load_template", lambda ref: root)
     monkeypatch.setattr(s, "read_text", lambda path: "words from " + path.name)
+    monkeypatch.setattr(
+        s,
+        "_slot_file_provenance",
+        lambda path, text: {"filename": path.name, "text_sha256": "fixture"},
+    )
     captured = []
     monkeypatch.setattr(s, "compose", lambda *a, **kw: captured.append((a, kw)) or {"sections": []})
     monkeypatch.setattr(locale, "resolve_document", lambda doc, tag, **kw: {**doc, "locale": tag})

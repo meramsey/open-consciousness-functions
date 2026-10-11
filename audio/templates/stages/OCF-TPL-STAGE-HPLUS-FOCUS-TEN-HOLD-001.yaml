@@ -1,0 +1,12 @@
+schema_version: "1.0"
+id: OCF-TPL-STAGE-HPLUS-FOCUS-TEN-HOLD-001
+version: "0.1.0"
+origin: original-ocf
+type: state-transition
+description: "HPlus architecture-draft Focus 10 hold marker; duration is supplied by the versioned pacing policy."
+events:
+  - id: hold
+    at: 0
+    semantic: focus.ten.hold
+    pacing_key: pauses.focus10_hold_s
+    narration_required: false

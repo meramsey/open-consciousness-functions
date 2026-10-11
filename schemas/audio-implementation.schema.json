@@ -37,6 +37,7 @@
     "version": { "type": "string" },
     "contributor": { "type": "string" },
     "narrator": { "type": ["string", "null"] },
+    "voice_profile": { "type": ["string", "null"], "pattern": "^OCF-VOICE-[0-9]{4}$" },
     "language": { "type": "string" },
     "license": { "type": "string" },
     "training_type": {

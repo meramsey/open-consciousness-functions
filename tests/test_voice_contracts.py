@@ -400,6 +400,54 @@ def test_narration_hints_fit_and_semantic_counts_keep_display_text(
     assert metadata["cues"] == 1
 
 
+def test_measured_body_duration_moves_the_following_repetition(
+    tmp_path, narration_boundary
+):
+    def render_body(body: str, output: str) -> dict:
+        doc = {
+            "timeline": [
+                {"id": "open", "at": 0, "text": "Opening cue."},
+                {
+                    "id": "body.pass-1",
+                    "after": "open",
+                    "offset": 0,
+                    "timing": {"anchor": "speech-end"},
+                    "text": body,
+                },
+                {
+                    "id": "body.pass-2",
+                    "after": "body.pass-1",
+                    "offset": 15,
+                    "timing": {"anchor": "speech-end"},
+                    "text": body,
+                },
+            ]
+        }
+        return v.render_narration(
+            doc,
+            tmp_path / output,
+            backend="espeak-ng",
+            sample_rate=100,
+            render_cue=lambda text: wav(
+                [1000] * (100 if text == "Opening cue." else len(text) * 10)
+            ),
+        )
+
+    short = render_body("Short body.", "short.wav")
+    long = render_body("A substantially longer function-specific body.", "long.wav")
+    short_events = {event["id"]: event for event in short["event_timing"]}
+    long_events = {event["id"]: event for event in long["event_timing"]}
+
+    assert short_events["body.pass-1"]["at"] == long_events["body.pass-1"]["at"] == 1.0
+    assert short_events["body.pass-2"]["at"] == pytest.approx(
+        short_events["body.pass-1"]["end"] + 15
+    )
+    assert long_events["body.pass-2"]["at"] == pytest.approx(
+        long_events["body.pass-1"]["end"] + 15
+    )
+    assert long_events["body.pass-2"]["at"] > short_events["body.pass-2"]["at"]
+
+
 def test_duplicate_resolved_cues_fail_without_output(tmp_path, narration_boundary, monkeypatch):
     _, semantics = narration_boundary
     doc = {

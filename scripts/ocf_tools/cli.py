@@ -60,8 +60,11 @@ Usage:
   ocf audio build <AUDIO_ID> [--format wav|flac|mp3]... [--tag KEY=VALUE]... [--voice NAME] [--output DIR] [--fit] [--flow] [--even-counts] [--background-gain 0.25] [--force]
   ocf audio inspect FILE      Show audio file metadata + sha256
   ocf session list-templates  List session-composition templates (audio/templates/sessions/)
-  ocf session compose [--template ID|FILE] [--opener FILE] [--focus11 FILE] [--sleep20 FILE] [--closer FILE] [--slot NAME=PATH]... [--title TITLE] [--id SLUG] [--duration SECONDS] [--output YAML] [--force]
-                             Compose a learn-session script (opener + focus-11 function + sleep-20 reinforcement + closer) into canonical timed YAML
+  ocf session compose [--template ID|FILE] [--pacing-profile ID|FILE]
+                      [--opener FILE] [--focus11 FILE] [--sleep20 FILE] [--closer FILE]
+                      [--slot NAME=PATH]... [--function FUNCTION_ID] [--locale LOCALE] [--title TITLE] [--id SLUG]
+                      [--duration SECONDS] [--output YAML] [--force]
+                             Compose a session template into canonical timed YAML
   ocf transcript import FILE [--format auto|lrc|srt|vtt|txt|md] [--output] [--title] [--force]
   ocf transcript analyze FILE [--interactive]
   ocf transcript segment FILE [--apply] [--output]
@@ -380,6 +383,10 @@ def _build_parser() -> argparse.ArgumentParser:
         "--template",
         default="OCF-TPL-SESSION-LEARN-001",
         help="template id or local template file path",
+    )
+    compose_cmd.add_argument(
+        "--pacing-profile",
+        help="override the template's versioned pacing policy",
     )
     compose_cmd.add_argument(
         "--opener",
