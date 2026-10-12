@@ -11,14 +11,13 @@ locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-prf-006.opener:
-    status: draft
+    status: reviewed
     version: 1.0.0
     text: Now, learn to be much stronger, much quicker than you ever thought possible.
-    notes: 'User-proposed reconstruction draft; input lines 47–47. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt; SHA-256 e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32; header ''STRONG-QUICK (88R1006) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Legacy PLUS-STRONG-QUICK wording retained; canonical PLUS-STRONG QUICK metadata is unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release
-      pending.'
+    notes: 'User-proposed reconstruction; input lines 47–47. Not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt; SHA-256 e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32. Human wording review: user approved opener unchanged. Legacy PLUS-STRONG-QUICK wording retained; canonical PLUS-STRONG QUICK metadata is unchanged. Confirmation/authenticity claims remain unverified. Suggested timing is not measured evidence. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
   hplus.function.ocf-prf-006.function-body:
-    status: draft
-    version: 1.0.0
+    status: reviewed
+    version: 1.1.0
     text: |-
       At any time from this moment forward, when an emergency situation requires
       an instant and momentary application of unusual muscular strength and
@@ -80,12 +79,10 @@ entries:
       The learning of STRONG-QUICK will remain within you, ready for use again if
       a true emergency need arises.
 
-      The more correctly you use this method, the easier and more effective it
-      will become.
-    notes: 'User-proposed reconstruction draft; input lines 146–207. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt; SHA-256 e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32; header ''STRONG-QUICK (88R1006) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Legacy PLUS-STRONG-QUICK wording retained; canonical PLUS-STRONG QUICK metadata is unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release
-      pending.'
+      The more you use this Function, the easier and more effective it will become.
+    notes: 'User-proposed reconstruction with human edit; original input lines 146–207. Not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt; SHA-256 e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32. Human wording review: user approved the body with its final sentence changed to the consistent more-you-use-this-Function formulation without correctly; remaining wording retained. Original reference remains unchanged. Effect statements remain proposed claims, not established outcomes. Legacy PLUS-STRONG-QUICK wording retained; canonical PLUS-STRONG QUICK metadata is unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
   hplus.function.ocf-prf-006.closer:
-    status: draft
+    status: reviewed
     version: 1.1.0
     text: |-
       Remember, when a true emergency requires instant and momentary strength and
@@ -104,4 +101,4 @@ entries:
       PLUS-RELEASE.
 
       This is the end of your OCF Function learning exercise.
-    notes: 'User-proposed reconstruction draft with user-directed terminology edit; original input lines 328–343. Not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt; SHA-256 e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32. H-PLUS changed to OCF per user''s standing instruction; original reference remains unchanged. Legacy PLUS-STRONG-QUICK wording retained; canonical PLUS-STRONG QUICK metadata is unchanged. Identity checked against the document title and listed legacy commands; confirmation/authenticity claims remain unverified. Suggested timing is not measured evidence. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+    notes: 'User-proposed reconstruction with user-directed terminology edit; original input lines 328–343. Not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt; SHA-256 e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32. H-PLUS changed to OCF per user''s standing instruction; original reference remains unchanged. Human wording review: user approved closer unchanged. Legacy PLUS-STRONG-QUICK wording retained; canonical PLUS-STRONG QUICK metadata is unchanged. Identity checked against the document title and listed legacy commands; confirmation/authenticity claims remain unverified. Suggested timing is not measured evidence. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
