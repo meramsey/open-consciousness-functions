@@ -32,9 +32,10 @@ selections:
   OCF-BOD-005:
     slots:
       opener: [{start_line: 1, end_line: 1}]
-      closer: [{start_line: 346, end_line: 350}]
-    missing: {function-body: The source jumps from repeated state counts to channel closing; the only specific instruction is the final reminder at 346–349.}
-    notes: [Do not duplicate the final reminder as an invented body; trailing video text at 351 excluded.]
+      function-body: [{start_line: 17, end_line: 35}]
+      closer: [{start_line: 63, end_line: 66}]
+    missing: {}
+    notes: [Replacement transcript is 66 lines; selected body at 17–35 contains a repeated/incomplete instruction and apparent ASR errors, retained exactly for human review. Closer is the final reminder at 63–66; subsequent count/return material is not present in this transcript.]
   OCF-BOD-006:
     slots:
       opener: [{start_line: 1, end_line: 1}]

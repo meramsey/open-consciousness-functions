@@ -1,8 +1,8 @@
 # OCF-BOD-005 — Eat/No Eat
 # English function-specific review candidate; edit this file as the wording source of truth.
 # Source status: transcript_unverified; authentication remains unverified.
-# Missing function-body: The source jumps from repeated state counts to channel closing; the only specific instruction is the final reminder at 346–349.
-# Review note: Do not duplicate the final reminder as an invented body; trailing video text at 351 excluded.
+# Review note: Reprocessed from the replacement 66-line transcript; selected instruction at lines 17–35 remains transcription-uncertain and includes repeated/incomplete wording.
+# Review note: Transcript derivatives agree on the passage but contain apparent omissions and ASR errors; do not infer missing cue words from canonical metadata.
 schema_version: '1.0'
 locale: en-US
 domain: narration
@@ -10,12 +10,23 @@ entries:
   hplus.function.ocf-bod-005.opener:
     status: reviewed
     version: 1.1.0
-    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt; SHA-256 beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9; line 1. User-approved edit: H-plus changed to OCF; original SOURCE remains unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt; SHA-256 3e39ac300dbbb7d9b1d1f659f1d238147283a5ca0a602767a7f275eaaf09292f; line 1. User-approved edit: H-plus changed to OCF; original SOURCE remains unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: This is your OCF function exercise to learn to direct your desire for food.
+  hplus.function.ocf-bod-005.function-body:
+    status: reviewed
+    version: 1.1.0
+    notes: 'User-provided human wording based on the transcript_unverified candidate. Original SOURCE +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt; SHA-256 3e39ac300dbbb7d9b1d1f659f1d238147283a5ca0a602767a7f275eaaf09292f; candidate lines 17–35. The transcript passage contains omissions and apparent ASR errors; this approved working wording is not a verbatim transcript or a correction to SOURCE. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    text: |-
+      At any point from this moment on, whenever you feel hungry for food and you consciously desire not to eat, all you need do is inhale and hold your breath, then say or think in your mind plus, satisfied, supplied and exhale slowly and easily.
+      When you do this, your system will quickly and easily turn down
+      and diminish all signals of hunger or food that may be reaching your brain.
+      Your sense of smell will reject any aroma of food.
+      Your sense of taste will turn off any response to food that may reach it, and your entire system will seek and obtain new energy by other means, other ways.
+      The more you use this method of directing your appetite for food, the easier it will become.
   hplus.function.ocf-bod-005.closer:
     status: reviewed
     version: 1.1.0
-    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt; SHA-256 beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9; lines 346–350. User-approved edit: H plus changed to OCF; original SOURCE remains unchanged. Function body remains intentionally unfilled for later user review. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt; SHA-256 3e39ac300dbbb7d9b1d1f659f1d238147283a5ca0a602767a7f275eaaf09292f; lines 63–66. User-approved edit: H plus changed to OCF; original SOURCE remains unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
       remember to direct your appetite for food
       hold your breath and say in your mind

@@ -14,7 +14,7 @@ from ocf_tools.utils import OCFError
 pytestmark = pytest.mark.integration
 
 
-def test_cli_binds_function_keys_and_fails_for_unauthored_function(tmp_path):
+def test_cli_binds_function_keys_and_composes_eat_no_eat_body(tmp_path):
     args = SimpleNamespace(
         template="OCF-TPL-SESSION-HPLUS-STANDARD-001",
         function="OCF-FND-002", slot=[], title=None, id=None,
@@ -23,9 +23,8 @@ def test_cli_binds_function_keys_and_fails_for_unauthored_function(tmp_path):
     assert run_compose(args) == 0
     args.function = "OCF-BOD-005"
     args.output = tmp_path / "missing.yaml"
-    with pytest.raises(OCFError, match="function narration is not authored"):
-        run_compose(args)
-    assert not args.output.exists()
+    assert run_compose(args) == 0
+    assert args.output.exists()
 
 
 SELECTIONS = yaml.safe_load((REPO_ROOT / "function-content/hplus-review-selections.yaml").read_text())["selections"]
@@ -72,7 +71,7 @@ def test_standard_shared_and_function_resources_resolve_without_local_sources(ow
 def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
     owners = load_all_functions()
     assert len(owners) == 55
-    assert len(COMPLETE_OWNERS) == 54
+    assert len(COMPLETE_OWNERS) == 55
     unavailable = [owner for owner in owners if owner.source_availability == "unavailable"]
     assert len(unavailable) == 16
     for owner in owners:
@@ -127,18 +126,6 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
                     assert (prefix + slot in doc["entries"]) == (slot in selection["slots"])
             for entry in doc["entries"].values():
                 assert entry["status"] in {"draft", "reviewed"}
-
-
-@pytest.mark.parametrize("owner", ["OCF-BOD-005"])
-def test_missing_source_sections_cannot_be_spoken_as_review_status(owner, tmp_path):
-    args = SimpleNamespace(
-        template="OCF-TPL-SESSION-HPLUS-STANDARD-001",
-        function=owner, slot=[], title=None, id=None,
-        locale="en-US", output=tmp_path / "missing.yaml", force=False,
-    )
-    with pytest.raises(OCFError, match="function narration is not authored"):
-        run_compose(args)
-    assert not args.output.exists()
 
 
 def test_keyed_slot_rejects_ambiguous_or_unknown_inputs():
