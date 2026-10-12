@@ -31,8 +31,8 @@ phrase registry. Each row will contain:
 
 - globally unique, stable command ID and the owning `function_id`;
 - a typed `phrase_ref` to the existing primary, a mode identified through a
-  stable mode ID, an existing lifecycle release phrase, or a separately
-  identified special phrase when no existing field can own it;
+  stable mode ID, an existing lifecycle release phrase, a legacy alias, or a
+  separately identified special phrase when no existing field can own it;
 - role and primary/secondary designation;
 - an effect-scope reference to the function lifecycle, not a copied lifecycle
   value;
@@ -46,14 +46,20 @@ so a structured record refers to a stable mode identity rather than relying on
 an unprotected numeric position. If there is no evidence for a procedure or
 effect relationship, the field stays unspecified. Legacy commands and aliases
 remain in their existing fields and are shown separately as compatibility
-phrases, not silently promoted to canonical activation commands.
+phrases, not silently promoted to canonical activation commands. Where an
+approved narration explicitly speaks a phrase different from the canonical
+phrase, the guide will identify the narration key and the observed phrase as a
+separate script form; it will not silently substitute it for the canonical.
 
 The function ID scopes command IDs: the same phrase (for example `PLUS-RELEASE`)
 can have different command identities and roles on different functions. The
 canonical phrase remains stored once in its existing source field; the command
 record points to it. A special phrase with no existing source field gets one
 explicit phrase owner and a provenance reference rather than a second copy in
-the command record.
+the command record. If an approved script speaks a different legacy or
+transcribed form, the command may carry a separate **observed spoken form** with
+its narration-key provenance and an explicit noncanonical relationship. That
+form never replaces the canonical phrase.
 
 ## Procedure and localization data
 
@@ -109,6 +115,13 @@ Known conflicts to carry explicitly rather than silently decide:
   close cue in approved narration, not the function's primary activation phrase.
 - `PLUS-RELEASE` is also a canonical primary phrase for the separate Release
   function. Command IDs therefore must remain function-scoped.
+- Several approved function narrations retain a phrase represented by a legacy
+  command while the registry has a different canonical phrase, including
+  De-Discomfort, De-Tox: Body, Regenerate, Short Fix, Off-Loading, Mobius West,
+  Eight-Great, Sensory: Seeing, Restorative Sleep, Sleep, Sweet Dreams,
+  Wake/Know, and Stay Awake. These are cross-layer differences, not permission
+  to rename registry commands or rewrite reviewed text. Preserve both records
+  and show their source/role distinction in the guide.
 - Contemplation's `PLUS-CLOSED` and Imprint's `PLUS-RECALL` are secondary modes
   with different purposes; neither should be flattened into an interchangeable
   generic release command.
@@ -116,6 +129,19 @@ Known conflicts to carry explicitly rather than silently decide:
 These unresolved semantics remain visible in command metadata and generated
 guides until a human decision is recorded. They do not block generation of the
 known canonical and compatibility data.
+
+A phrase comparison of approved English resources against the registry also
+found canonical-versus-script wording that must be surfaced, not harmonized.
+Examples include De-Discomfort (`PLUS-COMFORT` vs “Plus Five Five Five One
+Five”), De-Tox Body (`PLUS-DETOX` vs “Plus Clean Clear”), Hypertension
+(`PLUS-BALANCE-BLOODPRESSURE` vs “Plus Balance Blood Pressure”), Lungs
+(`PLUS-BREATH BETTER` vs “Plus Breathe Better”), Regenerate (`PLUS-REGENERATE`
+vs “Plus Build Live”), and the source-spoken forms for Nutricia, Sex Drive,
+Imprint, Off-Loading, Mobius West, Eight-Great, Sensory: Seeing, Restorative
+Sleep, Sleep, Sweet Dreams, Wake/Know, and Stay Awake. Some are represented by
+preserved legacy aliases; others are script-only spelling/wording distinctions.
+Migration must record the source basis and relationship for each, or leave it
+unresolved when the current metadata and approved wording do not establish one.
 
 ## Implementation checkpoints
 
