@@ -1,39 +1,122 @@
 # OCF-SLP-004 — Wake/Know
-# English function-specific review candidate; edit this file as the wording source of truth.
+# English function-specific OCF-adapted narration; wording source of truth.
 # Source status: transcript_unverified; authentication remains unverified.
-# Missing closer: No identifiable final function-specific closer; tail contains unrelated or uncertain repeated speech.
-# Review note: Unassigned tail at 158–194 is not promoted into a closing instruction. Source numeric labels retained.
+# Original SOURCE: +Transcripts From available tapes/Wake Know/Wake Know.txt
+# SHA-256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
+# Source ranges: opener lines 1–2; body lines 32–47.
+# Review note: No identifiable historical function-specific closer exists;
+# uncertain/unrelated tail at lines 158–194 is not used as closing speech.
+# Review note: Duplicate source passage, numeric labels, and shared session
+# preparation/state/return narration remain excluded.
+# Review note: Exact Plus Sleep Help cue and sequence of question, inhale,
+# hold, command, exhale, then slow deep breathing are preserved.
+# Review note: Broader intuitive and total-self insight and multiple ways an
+# answer may appear are OCF editorial enhancements, not recovered source text.
+# Review note: One state-independent body supports four-pass playback.
+# Review note: Answers and insights are intended contemplative experiences,
+# not guaranteed correct knowledge or independently verified information.
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-slp-004.opener:
     status: reviewed
-    version: 1.1.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Wake Know/Wake Know.txt; SHA-256 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745; lines 1–2. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. H-plus→OCF terminology applied per user directive. Numeric transcript labels removed per user preference.'
+    version: 1.2.0
+    notes: >-
+      OCF adaptation of the unverified Wake Know transcript;
+      SOURCE +Transcripts From available tapes/Wake Know/Wake Know.txt;
+      SHA-256 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745;
+      lines 1–2. Original source remains unchanged. Introduces receiving
+      answers and constructive guidance from the total self through sleep.
+      Rights: user_cleared per user's lawyer-clearance attestation.
+      Revised wording awaits editorial approval; finished-session release pending.
     text: |-
-      This OCF function exercise is to learn to wake up
-      and know the answer.
+      This OCF exercise will teach you to seek an answer
+      or solution from your total self during sleep,
+      and awaken with the knowledge and guidance you desire.
+
   hplus.function.ocf-slp-004.function-body:
     status: reviewed
-    version: 1.1.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Wake Know/Wake Know.txt; SHA-256 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745; lines 32–47. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Duplicate passage removed per user preference. Numeric transcript labels removed per user preference.'
+    version: 1.2.0
+    notes: >-
+      OCF adaptation of the unverified Wake Know transcript;
+      SOURCE +Transcripts From available tapes/Wake Know/Wake Know.txt;
+      SHA-256 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745;
+      lines 32–47. Original source remains unchanged; duplicate narration,
+      numeric transcript labels, and shared session instructions are excluded.
+      Preserves choosing a question, the exact Plus Sleep Help command,
+      inhale-hold-command-exhale followed by slow deep breathing, natural
+      sleep, total-self participation, constructive solutions, and recall
+      on awakening. OCF editorial additions invite subconscious, higher-self,
+      and intuitive insight and allow answers to emerge as knowing, words,
+      imagery, dream memory, or a clear next step without insisting on one
+      format. Intended answer and correctness claims are exercise suggestions.
+      One reusable body serves four passes across Focus 11 and Focus 20.
+      Rights: user_cleared per user's lawyer-clearance attestation.
+      Revised wording awaits editorial approval; finished-session release pending.
     text: |-
-      At any point in the future, whenever you wish your total self to provide a solution or answer
-      after sleep, all you need do is think of the problem or question, then inhale deeply
-      and hold your breath, then say in your mind or think, plus, sleep, help, then exhale
-      and breathe slowly and deeply. When you do this, you will move easily and calmly into normal,
-      natural, restful sleep. And while you sleep, your entire being will determine and decide the
-      most constructive solution or answer to your question or problem. And you will remember it
-      when you awaken. The more you use this way to obtain help from your total self,
-      the easier and more selective and effective it will become.
+      From this moment forward, whenever you desire
+      an answer, understanding, or a constructive solution,
+      you can invite your total self to help you during sleep.
+
+      Bring your question or problem clearly into your mind.
+      Know what you wish to understand or resolve.
+      State your intention simply and directly,
+      then allow the question to rest within you.
+
+      Inhale deeply and gently hold your breath.
+      Think or say in your mind, "Plus Sleep Help."
+      Then exhale and breathe slowly and deeply.
+
+      You will move calmly and easily into
+      normal, natural, restful sleep.
+      Your conscious mind can rest while your
+      subconscious awareness, higher self,
+      and total being work together on your request.
+
+      You will draw upon your experience, memory,
+      deeper understanding, and the wider awareness
+      available through your total self.
+      Connections and possibilities will come together,
+      revealing the most constructive answer or direction.
+
+      The answer may emerge as clear inner knowing,
+      a remembered dream, a picture, a phrase,
+      a feeling of certainty, or a practical next step.
+      You need not control how it arrives.
+      Your total self will bring forward what is useful
+      in a form you can recognize and understand.
+
+      When you awaken, the answer or guidance
+      will come clearly into your awareness.
+      You will remember what matters, recognize
+      its meaning, and know how to begin using it.
+
+      This ability to seek help through sleep
+      will remain permanently available to you.
+      Each time you use Plus Sleep Help,
+      receiving and remembering useful insight
+      will become easier, clearer, and more effective.
+
   hplus.function.ocf-slp-004.closer:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF-authored closer, not a recovered historical passage. The unverified
+      Wake Know source has no identifiable final function-specific closer;
+      unrelated or uncertain speech at lines 158–194 is excluded.
+      SOURCE +Transcripts From available tapes/Wake Know/Wake Know.txt;
+      SHA-256 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745.
+      Preserves one purpose reminder, exact Plus Sleep Help cue, question
+      selection, inhale-hold-command-exhale followed by slow deep breathing,
+      and standard OCF sign-off. Rights: user_cleared per user's
+      lawyer-clearance attestation. Revised wording awaits editorial approval;
+      finished-session release pending.
     text: |-
-      Remember, to wake and know the answer, think of your question,
-      inhale deeply and hold your breath, then say in your mind, plus, sleep, help.
-      Then exhale and breathe slowly and deeply as you drift into sleep.
-      The more you use this Function, the easier and more effective it will become.
-      This is the end of your OCF Function learning exercise.
-    notes: 'OCF-authored closer; no historical closer recoverable from source (tail contains unrelated/uncertain repeated speech). Summarizes the function cue per standard pattern. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+      Remember, when you wish to receive an answer
+      or solution through sleep, bring your question to mind.
+      Inhale deeply and hold your breath.
+      Think or say in your mind, "Plus Sleep Help."
+      Then exhale and breathe slowly and deeply.
+
+      This concludes your OCF Wake/Know exercise.

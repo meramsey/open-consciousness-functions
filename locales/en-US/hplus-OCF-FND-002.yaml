@@ -1,32 +1,124 @@
-schema_version: "1.0"
+# OCF-FND-002 — Attention
+# English function-specific OCF-adapted narration.
+# Edit this file as the wording source of truth.
+# Source status: transcript_unverified; authentication remains unverified.
+# Review note: Original transcript reference ranges: opener lines 1–2,
+# body lines 31–50, and closer lines 84–86.
+# Review note: Shared preparation, state, and return wording excluded.
+# Review note: Duplicate historical body passage remains excluded.
+# Review note: Plus Focus and its inhale-hold-command-exhale sequence preserved.
+# Review note: Attention remains consciously directed, with lasting availability
+# and increasingly automatic concentration on the selected activity.
+# Review note: One concise body supports four-pass playback.
+schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-fnd-002.opener:
     status: reviewed
-    version: "1.1.0"
-    notes: Reference-derived candidate; Attention lines 1–2 (shared preparation removed at the existing preview boundary). Wording review pending. H plus→OCF terminology applied per user directive.
-    text: This is your OCF function exercise to focus your attention.
+    version: 1.3.0
+    notes: >-
+      OCF-adapted opener based on the unverified Attention transcript,
+      lines 1–2. Shared preparation remains excluded. Previously
+      reviewed wording retained with a concise emphasis on consciously
+      directed attention. Revised wording awaits final editorial approval.
+    text: |-
+      This OCF exercise will strengthen your ability
+      to focus your attention completely,
+      whenever and wherever you choose.
+
   hplus.function.ocf-fnd-002.function-body:
     status: reviewed
-    version: "1.1.0"
-    notes: Reference-derived candidate; Attention lines 31–50. Both source repetitions retained. Reuse this one key for all session passes. Wording review pending. Duplicate passage removed per user preference.
+    version: 1.3.0
+    notes: >-
+      OCF-adapted narration based on the unverified Attention transcript,
+      lines 31–50. Original source remains unchanged; duplicate source
+      passage and shared preparation, state, and return wording excluded.
+      The exact Plus Focus command and breath sequence are preserved.
+      Repeated activation instructions have been removed. Revisions
+      establish lasting availability, increasingly automatic maintenance
+      of selected attention, flexible conscious direction, sensory clarity,
+      detailed memory, and calm confidence. One reusable body supports
+      four playback passes across Focus 11 and Focus 20. Affirmative
+      effects are intended exercise suggestions. Revised wording awaits
+      final editorial approval.
     text: |-
-      From this moment on, when you want to focus your attention narrowly and closely,
-      all you need do is inhale, hold your breath, and say in your mind,
-      plus focus. When you do this, your mind and body will direct and hold all your senses,
-      all your thoughts, and all of your thinking into one area of activity, whatever you so desire.
-      When you do focus your attention by this method, you will remember in great detail
-      all of that which you perceive and experience, and you will feel good,
-      bright, and calmly sure. All of these will be yours when you inhale deeply and hold your
-      breath and say, plus, focus in your mind, and then exhale through your mouth as if you
-      were blowing out a candle. The more you perform this exercise of focusing your attention,
-      the easier and more effective it will become.
+      From this moment forward, your ability to direct
+      and sustain your attention is becoming stronger,
+      clearer, and more effective.
+
+      Whenever you wish to focus completely,
+      choose the activity, thought, or experience
+      to which you desire to give your attention.
+
+      Inhale deeply and gently hold your breath.
+
+      Think or say in your mind, "Plus Focus."
+
+      Then exhale slowly through your mouth,
+      as though gently blowing out a candle.
+
+      Your mind, body, and senses will immediately
+      bring their attention together, directing
+      your awareness toward the purpose you have chosen.
+
+      Your concentration will become clear,
+      steady, and unwavering.
+
+      Unnecessary distractions will fade away,
+      and your attention will remain naturally
+      centered on what matters to you.
+
+      You will perceive important details clearly,
+      understanding what you see, hear, feel,
+      and experience with greater awareness.
+
+      The information you attend to will become
+      vivid and distinct in your memory,
+      ready for clear and accurate recall.
+
+      You will remain bright, alert, calm,
+      confident, and completely at ease.
+
+      From this moment forward, this ability
+      to focus your attention is permanently
+      available to you whenever you desire.
+
+      Once you select your focus, your mind
+      will maintain it smoothly and naturally,
+      without unnecessary strain or effort.
+
+      You remain in complete control,
+      able to direct or shift your attention
+      whenever you choose.
+
+      Each time you use Plus Focus,
+      concentration becomes easier, stronger,
+      and more effective.
+
+      Your natural ability to focus will continue
+      improving through every experience,
+      becoming an effortless part of your daily life.
+
   hplus.function.ocf-fnd-002.closer:
     status: reviewed
-    version: "1.1.0"
-    notes: Reference-derived candidate; Attention lines 84–86. Wording review pending. H-plus→OCF terminology applied per user directive.
+    version: 1.3.0
+    notes: >-
+      OCF-adapted closer based on the unverified Attention transcript,
+      lines 84–86. The previously approved activation and breathing
+      sequence remains unchanged. Removed extra reinforcement so the
+      closer contains one purpose reminder, the exact Plus Focus command,
+      and the standard OCF ending. Revised wording awaits final
+      editorial approval.
     text: |-
-      Remember, whenever you wish to focus your attention completely, all you need to do is
-      inhale, hold your breath, and say or think in your mind, plus. Focus. Then exhale slowly,
-      like blowing out a candle. Use it. This is the end of this OCF function exercise.
+      Remember, whenever you wish to focus your attention
+      completely, choose what you desire to concentrate on.
+
+      Inhale deeply and hold your breath.
+
+      Think or say in your mind, "Plus Focus."
+
+      Then exhale slowly through your mouth,
+      as though gently blowing out a candle.
+
+      This concludes your OCF Attention exercise.

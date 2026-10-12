@@ -1,113 +1,146 @@
 # OCF-EXP-002 — Zoning
-# English function-specific review candidate; edit this file as the wording source of truth.
+# English function-specific OCF-adapted narration.
+# Edit this file as the wording source of truth.
 # Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
-# Review note: Proposed input: Zoning/Zoning_881033_reconstructed_clean.txt; SHA-256 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a; header 'ZONING (881033) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
-# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
-# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
-# Review note: Proposed temperature-comfort mechanism and outcomes retained as claims for review.
+# Review note: User-proposed reconstruction, not a recovered historical transcript.
+# Review note: Historical source remains unavailable; reimplementation remains planned.
+# Review note: Proposed input: Zoning/Zoning_881033_reconstructed_clean.txt
+# SHA-256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
+# Review note: Proposed header: ZONING (881033) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT.
+# Review note: Document identity and historical authenticity remain unverified.
+# Review note: Shared preparation, state, return, and production directions excluded.
+# Review note: Exact commands preserved: Plus Insulate Insulate,
+# Plus Cancel, and Plus Release; their distinct purposes remain explicit.
+# Review note: The insulating-zone mechanism is an intended visualization,
+# not a verified physical barrier or established temperature-protection effect.
+# Review note: One function body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-exp-002.opener:
     status: reviewed
-    version: 1.1.0
-    text: Now, learn to create a zone of comfort around your physical body.
-    notes: 'User-proposed reconstruction draft; input lines 53–53. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Zoning/Zoning_881033_reconstructed_clean.txt; SHA-256 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a; header ''ZONING (881033) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed temperature-comfort mechanism and outcomes retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+    version: 1.2.0
+    notes: >-
+      OCF-adapted opener based on the user-proposed Zoning reconstruction.
+      Proposed input: Zoning/Zoning_881033_reconstructed_clean.txt;
+      SHA-256 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a;
+      line 53. Original reconstruction remains unchanged. Historical
+      source availability and authenticity remain unverified. Wording
+      emphasizes a consciously created, adjustable zone of temperature
+      comfort surrounding the entire physical body. Rights: user_cleared,
+      per user's lawyer-clearance attestation. Revised wording awaits
+      final editorial approval. Finished-session release pending.
+    text: |-
+      This OCF exercise will teach you to establish
+      an insulating zone around your physical body,
+      adjusting it to maintain your desired comfort
+      as the surrounding temperature changes.
+
   hplus.function.ocf-exp-002.function-body:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF-adapted function body based on the user-proposed Zoning
+      reconstruction. Proposed input:
+      Zoning/Zoning_881033_reconstructed_clean.txt;
+      SHA-256 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a;
+      lines 152–220. Original reconstruction remains unchanged; source
+      authenticity is unverified. Preserves a continuous, adjustable
+      whole-body insulating-zone visualization, response to heat and cold,
+      and the original inhale-hold-command-exhale method. Plus Cancel
+      ends the current adjustment; Plus Release places the current
+      application on hold without removing the learned ability. The
+      function is consciously established and its intended regulation
+      adjusts as circumstances change. Redundant command repetitions
+      and companion-function references are omitted. Intended protection
+      and temperature outcomes are narration suggestions, not verified
+      physical insulation. One body supports four playback passes.
+      Shared preparation, state, and return material remain excluded.
+      Rights: user_cleared, per user's lawyer-clearance attestation.
+      Revised wording awaits final editorial approval.
+      Finished-session release pending.
     text: |-
-      At any time from this moment forward, whenever the temperature of the
-      environment moves beyond your normal comfort area and you desire to adjust
-      and compensate, inhale deeply and hold your breath.
+      From this moment forward, you have the ability
+      to create a balanced zone of temperature comfort
+      surrounding your entire physical body.
 
-      Then say or think in your mind:
+      Whenever you desire this protection,
+      imagine a continuous, even layer of insulation
+      extending around you from head to toe.
 
-      PLUS-INSULATE, INSULATE.
+      Inhale deeply and gently hold your breath.
 
-      Then exhale slowly through your mouth.
-
-      When you do this, an operating zone of temperature comfort will begin to
-      form evenly around your entire physical body.
-
-      The zone will adjust to the environmental condition surrounding you.
-
-      When the environment is colder than your normal comfort area, the zone will
-      resist the movement of excessive cold toward your physical body.
-
-      When the environment is warmer than your normal comfort area, the zone will
-      resist the movement of excessive heat toward your physical body.
-
-      The adjustment will move toward the normal comfort area that is best for
-      you.
-
-      The zone will remain balanced and equalized around your entire physical
-      body.
-
-      It will continue to adjust and compensate as the surrounding temperature
-      changes.
-
-      All when you state:
-
-      PLUS-INSULATE, INSULATE.
-
-      If you desire to cancel the present ZONING adjustment, inhale deeply and
-      hold your breath.
-
-      Then say or think in your mind:
-
-      PLUS-CANCEL.
+      Think or say in your mind, "Plus Insulate Insulate."
 
       Then exhale slowly through your mouth.
 
-      The present adjustment will cease, and your normal response to the
-      surrounding temperature will return.
+      Your zone will immediately begin to form,
+      surrounding you in a smooth, balanced field
+      adjusted to the comfort you desire.
 
-      When the entire need for ZONING has passed, use the RELEASE Function.
+      When the surroundings are cold,
+      the zone will resist excessive cooling,
+      conserving comfortable warmth around your body.
 
-      Bring ZONING clearly into your mind.
+      When the surroundings are hot,
+      the zone will resist excessive heating,
+      maintaining a comfortable, balanced condition.
 
-      Inhale deeply and hold your breath.
+      As the environment changes, your zone
+      will adjust continuously and evenly,
+      strengthening or easing its insulating effect
+      according to what is needed.
 
-      Say or think in your mind:
+      Your physical body and your total self
+      will work together in this pattern of balance,
+      maintaining the zone without constant attention.
 
-      PLUS-RELEASE.
+      The ability to establish Zoning is now
+      permanently available whenever you choose,
+      and the selected zone continues operating
+      until you consciously change or release it.
 
-      Then exhale slowly through your mouth.
+      To cancel the current temperature adjustment,
+      inhale, hold your breath, think or say
+      in your mind, "Plus Cancel," then exhale.
 
-      The present application of ZONING will be placed on hold, ready for future
-      recall and use when the proper command is given again.
+      That adjustment will end, leaving you free
+      to establish a different one whenever desired.
 
-      Use ZONING as needed to adjust and compensate for the environment around
-      you.
+      When you wish to place the entire Zoning
+      application on hold, bring Zoning into your mind.
+      Inhale, hold your breath, think or say
+      in your mind, "Plus Release," then exhale.
 
-      Combine it with other OCF Functions only as the particular situation
-      requires.
+      The present zone will rest, while your ability
+      to create it remains ready for future use.
 
-      The more you use this Function, the easier and more effective it will become.
-    notes: 'User-proposed reconstruction draft; input lines 152–220. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Zoning/Zoning_881033_reconstructed_clean.txt; SHA-256 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a; header ''ZONING (881033) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed temperature-comfort mechanism and outcomes retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. H-PLUS→OCF terminology applied; standard ending formula applied.'
+      Each time you use Zoning, establishing
+      and adjusting your zone will become
+      easier, smoother, and more effective.
+
   hplus.function.ocf-exp-002.closer:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF-adapted closer based on the user-proposed Zoning reconstruction.
+      Proposed input: Zoning/Zoning_881033_reconstructed_clean.txt;
+      SHA-256 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a;
+      lines 341–358. Original reconstruction remains unchanged; historical
+      authenticity remains unverified. Closer includes one purpose reminder,
+      the exact activation and adjustment/release commands, and the standard
+      OCF ending. Rights: user_cleared, per user's lawyer-clearance
+      attestation. Revised wording awaits final editorial approval.
+      Finished-session release pending.
     text: |-
-      Remember, when you desire to create a zone of temperature comfort around
-      your physical body, inhale deeply and hold your breath.
-
-      Say in your mind:
-
-      PLUS-INSULATE, INSULATE.
+      Remember, to establish your zone of temperature comfort,
+      inhale deeply, hold your breath, and think
+      or say in your mind, "Plus Insulate Insulate."
 
       Then exhale slowly through your mouth.
 
-      To cancel the present ZONING adjustment, use:
+      Use "Plus Cancel" to end the current adjustment,
+      or "Plus Release" to place Zoning on hold.
 
-      PLUS-CANCEL.
-
-      When the entire need has passed, use the RELEASE Function:
-
-      PLUS-RELEASE.
-
-      This is the end of your OCF Function learning exercise.
-    notes: 'User-proposed reconstruction draft; input lines 341–358. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Zoning/Zoning_881033_reconstructed_clean.txt; SHA-256 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a; header ''ZONING (881033) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed temperature-comfort mechanism and outcomes retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. H-PLUS→OCF terminology applied.'
+      This concludes your OCF Zoning exercise.

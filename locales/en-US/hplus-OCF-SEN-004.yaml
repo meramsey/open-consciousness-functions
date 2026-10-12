@@ -1,55 +1,129 @@
 # OCF-SEN-004 — Sensory: Taste
-# English function-specific review candidate; edit this file as the wording source of truth.
+# English function-specific OCF-adapted narration; wording source of truth.
 # Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
-# Review note: Proposed input: Sensory (Taste)/Sensory_Taste_reconstructed_clean.txt; SHA-256 c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13; header 'SENSORY: TASTE — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
-# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
-# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
-# Review note: User-directed terminology edit: proposed GREATER/LESSER cue wording changed to canonical MORE/LESS; original reference remains unchanged.
+# Review note: User-proposed reconstruction, not a recovered historical transcript.
+# Review note: Historical source unavailable; reimplementation remains planned.
+# Proposed input: Sensory (Taste)/Sensory_Taste_reconstructed_clean.txt
+# SHA-256: c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13
+# Proposed header: SENSORY: TASTE — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT.
+# Review note: Original input ranges: opener line 37; body lines 128–148;
+# closer lines 254–260. Authenticity and proposed timing remain unverified.
+# Review note: Canonical MORE/LESS commands are user-directed replacements for
+# proposed GREATER/LESSER wording; the original reference remains unchanged.
+# Review note: Permanent inner flavor imagery is a user-directed OCF enhancement,
+# not recovered historical wording. Physical taste adjustments are voluntary.
+# Review note: Shared session and production material remain excluded.
+# Review note: One state-independent function body supports four-pass playback.
+# Review note: Suggested effects are experiential, not verified physiological changes.
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-sen-004.opener:
     status: reviewed
-    version: 1.1.0
-    text: Now, learn to direct your physical sense of taste.
-    notes: 'User-proposed reconstruction draft; input lines 37–37. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sensory (Taste)/Sensory_Taste_reconstructed_clean.txt; SHA-256 c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13; header ''SENSORY: TASTE — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. User-directed terminology edit: proposed GREATER/LESSER cue wording changed to canonical MORE/LESS; original reference remains unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+    version: 1.2.0
+    notes: >-
+      OCF adaptation of the user-proposed Sensory: Taste reconstruction;
+      proposed input Sensory (Taste)/Sensory_Taste_reconstructed_clean.txt;
+      SHA-256 c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13;
+      source line 37. Historical source unavailable and authenticity unverified.
+      Adds permanent mental flavor imagery alongside physical taste regulation.
+      Rights: user_cleared per user's lawyer-clearance attestation.
+      Revised wording awaits editorial approval; finished-session release pending.
+    text: |-
+      This OCF exercise will teach you to regulate your
+      physical sense of taste and strengthen your ability
+      to remember, imagine, and experience flavors within your mind.
+
   hplus.function.ocf-sen-004.function-body:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF adaptation of the user-proposed Sensory: Taste reconstruction;
+      proposed input Sensory (Taste)/Sensory_Taste_reconstructed_clean.txt;
+      SHA-256 c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13;
+      source lines 128–148. Reconstruction unchanged; historical authenticity
+      unverified. Retains canonical Plus Taste More and Plus Taste Less in
+      place of proposed GREATER/LESSER terms, with close-eyes-inhale-hold-
+      command-exhale-open-eyes activation. Preserves enhancement of subtle
+      tastes, voluntary reduction of unpleasant or pleasant taste sensations,
+      and return to usual taste perception by conscious choice. User-requested
+      OCF expansion establishes ongoing inner flavor recall, imagined tasting
+      without physical food or drink, and creative modification and combination
+      of flavors. The same commands may intensify or soften an imagined flavor
+      according to intention; no third command is invented. The learned
+      imagery ability is lasting while selected sensory adjustments are
+      consciously controlled. One reusable body supports four passes across
+      Focus 11 and Focus 20. Intended experiences are not verified changes
+      in physiological taste sensitivity. Rights: user_cleared per user's
+      lawyer-clearance attestation. Revised wording awaits editorial approval;
+      finished-session release pending.
     text: |-
-      At any time from this moment forward, whenever you desire to control the way you taste and perceive flavor, all you need do is close your eyes, inhale deeply, and hold your breath.
+      From this moment forward, you have the ability
+      to regulate your sense of taste and develop
+      the vividness of flavors within your imagination.
 
-      Then say or think in your mind, PLUS-TASTE MORE, or PLUS-TASTE LESS.
+      Your sense of taste will respond to your intention.
+      You can notice delicate flavors more clearly,
+      or allow unwanted taste sensations to fade.
 
+      To enhance your physical sense of taste,
+      close your eyes, inhale deeply, and hold your breath.
+      Think or say in your mind, "Plus Taste More."
       Then exhale slowly through your mouth and open your eyes.
 
-      When you do this, if you state more, your physical sense of taste will become much sharper and clearer.
+      Subtle flavors will become more distinct.
+      You will recognize their sweetness, sourness,
+      saltiness, bitterness, and savory qualities,
+      appreciating their richness and differences.
 
-      You will perceive and identify even the most subtle taste to enter your system.
+      To reduce a taste you do not wish to experience
+      as strongly, use the same eye and breath sequence,
+      thinking or saying, "Plus Taste Less."
+      The selected sensation will become less prominent.
+      You can soften even an enjoyable flavor when desired,
+      and return to your usual sense of taste at will.
 
-      You will perceive and enjoy pleasant tastes more fully.
+      Your inner sense of taste will also grow stronger.
+      You will remember familiar flavors and imagine new ones,
+      even when no food or drink is present.
+      You can bring a flavor into your awareness,
+      experience its distinct qualities, and hold it clearly.
 
-      All when you state PLUS-TASTE MORE.
+      You can imagine combinations of flavors,
+      changing their intensity, balance, or character.
+      Taste memories will connect more vividly with
+      places, experiences, aromas, and inner images.
 
-      When you state PLUS-TASTE LESS, your sense of taste will become less and less sensitive each time you state PLUS-TASTE LESS, until any unwanted, distracting, or unpleasant taste sensation is no longer important.
+      This ability to recall and create flavors in your mind
+      will become a lasting, natural part of your total self.
+      Whenever you choose, your intention and these commands
+      can strengthen an imagined flavor or let it gently fade.
 
-      You will also be able to tune down enjoyable taste sensations whenever you desire to do so.
+      Each time you use this function, physical taste regulation
+      and inner flavor imagery will become easier,
+      clearer, and more effective.
 
-      Whenever you use this method of taste control, it will continue until you desire to return your sense of taste to its normal condition.
-
-      The more you use this method, the easier and more effective it will become.
-    notes: 'User-proposed reconstruction draft; input lines 128–148. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sensory (Taste)/Sensory_Taste_reconstructed_clean.txt; SHA-256 c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13; header ''SENSORY: TASTE — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. User-directed terminology edit: proposed GREATER/LESSER cue wording changed to canonical MORE/LESS; original reference remains unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
   hplus.function.ocf-sen-004.closer:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF-adapted concise closer based on the user-proposed Sensory: Taste
+      reconstruction; proposed input
+      Sensory (Taste)/Sensory_Taste_reconstructed_clean.txt;
+      SHA-256 c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13;
+      source lines 254–260. Historical authenticity unverified. Includes
+      both physical taste and newly requested inner flavor imagery,
+      canonical Plus Taste More and Plus Taste Less commands, and the
+      complete source eye-and-breath sequence. Rights: user_cleared per
+      user's lawyer-clearance attestation. Revised wording awaits editorial
+      approval; finished-session release pending.
     text: |-
-      Remember, to direct your physical sense of taste, inhale deeply and hold your breath.
+      Remember, to regulate your sense of taste
+      or strengthen your inner experience of flavor,
+      close your eyes, inhale deeply, and hold your breath.
+      Think or say in your mind, "Plus Taste More"
+      or "Plus Taste Less," according to your intention.
+      Then exhale slowly through your mouth and open your eyes.
 
-      Say in your mind, PLUS-TASTE MORE, if you wish to increase your sense of taste, or PLUS-TASTE LESS, if you want to tune down what and how you taste.
-
-      Then exhale slowly through your mouth as if you are blowing out a candle.
-
-      This is the end of your Function learning exercise.
-    notes: 'User-proposed reconstruction draft; input lines 254–260. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sensory (Taste)/Sensory_Taste_reconstructed_clean.txt; SHA-256 c54c04e19d6a7e395133e8d4059f61fecf80d21eb6ccedd591bacf8258f29e13; header ''SENSORY: TASTE — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. User-directed terminology edit: proposed GREATER/LESSER cue wording changed to canonical MORE/LESS; original reference remains unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+      This concludes your OCF Sensory: Taste exercise.

@@ -1,103 +1,130 @@
 # OCF-SLP-005 — Sleep Easy
-# English function-specific review candidate; edit this file as the wording source of truth.
-# Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
-# Review note: Proposed input: Sleep Easy/Sleep_Easy_reconstructed_clean.txt; SHA-256 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309; header 'SLEEP EASY — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
-# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
-# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
-# Review note: Legacy PLUS-QUIET, SLEEP wording retained; canonical PLUS-SLEEP EASY metadata is unchanged.
-# Review note: This separate user-proposed draft does not alter frozen Sleep Easy pilot resources or editorial decisions.
+# English function-specific OCF-adapted narration; wording source of truth.
+# Source status: unavailable; historical authentication remains unverified.
+# Review note: User-proposed reconstruction, not a recovered historical transcript.
+# Proposed input: Sleep Easy/Sleep_Easy_reconstructed_clean.txt
+# SHA-256: 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309
+# Proposed header: SLEEP EASY — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT.
+# Proposed source ranges: opener line 50; body lines 149–206; closer lines 327–341.
+# Review note: Identity checked against title and listed legacy cue, not authenticated.
+# Review note: Spoken reconstruction cue is Plus Quiet Sleep; canonical registry
+# metadata Plus Sleep Easy differs. Do not silently substitute one for the other.
+# Review note: Historical source remains unavailable; reimplementation is planned.
+# Review note: Source timings are proposed, not measured; shared sections excluded.
+# Review note: User-directed OCF additions develop sleep amid unpredictable sounds,
+# motion, unfamiliar places, and recovery from ordinary interruptions.
+# Review note: Maintains responsiveness to genuinely important cues without
+# adding an alarm or safety guarantee; efficacy is not scientifically established.
+# Review note: Separate narration draft; frozen Sleep Easy pilot remains unchanged.
+# Review note: One state-independent function body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-slp-005.opener:
     status: reviewed
-    version: 1.1.0
-    text: Now, learn to sleep any time, any place.
-    notes: 'User-proposed reconstruction draft; input lines 50–50. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sleep Easy/Sleep_Easy_reconstructed_clean.txt; SHA-256 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309; header ''SLEEP EASY — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Legacy PLUS-QUIET, SLEEP wording retained; canonical PLUS-SLEEP EASY metadata is unchanged. This separate user-proposed draft does not alter frozen Sleep Easy pilot resources or editorial decisions. Rights: user_cleared, per
-      user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+    version: 1.2.0
+    notes: >-
+      OCF adaptation of user-proposed reconstruction; input
+      Sleep Easy/Sleep_Easy_reconstructed_clean.txt;
+      SHA-256 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309;
+      proposed line 50. Source unavailable and historical authenticity unverified.
+      Expands the original any-time, any-place purpose to include changing,
+      distracting, and unfamiliar conditions. Spoken cue remains Plus Quiet Sleep;
+      canonical Plus Sleep Easy registry naming is not asserted as source speech.
+      Rights: user_cleared per user's lawyer-clearance attestation.
+      Revised wording awaits editorial approval; finished-session release pending.
+      Frozen Sleep Easy pilot resources and decisions remain unchanged.
+    text: |-
+      This OCF exercise will teach you to enter and remain in
+      peaceful, natural sleep, even when your surroundings
+      are unfamiliar, noisy, changing, or distracting.
+
   hplus.function.ocf-slp-005.function-body:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF adaptation of user-proposed reconstruction; input
+      Sleep Easy/Sleep_Easy_reconstructed_clean.txt;
+      SHA-256 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309;
+      proposed lines 149–206. Original reference unchanged; authentication unverified.
+      Preserves spoken Plus Quiet Sleep, which differs from canonical registry
+      Plus Sleep Easy, and close-eyes-inhale-hold-command-exhale-normal-breathing
+      sequence. Retains natural sleep in difficult or unfamiliar surroundings.
+      User-directed OCF enhancements explicitly address unpredictable noises,
+      shifting motion, renewed alertness after brief ordinary interruptions,
+      adaptable attention, and a persistent learned ability invoked when desired.
+      No promise that external sounds or conditions are physically altered;
+      awareness of genuinely relevant signals is not intentionally disabled.
+      No duplicated cue rehearsal or other function references. One body supports
+      four passes across Focus 11 and Focus 20, with no session-return language.
+      Effects are experiential suggestions, not verified outcomes. Rights:
+      user_cleared per user's lawyer-clearance attestation. Revised wording
+      awaits editorial approval; finished-session release pending. Frozen pilot
+      resources and editorial decisions remain unchanged.
     text: |-
-      At any time from this moment forward, whenever you desire normal sleep and
-      the place or conditions are different, difficult or disturbing, first make
-      your physical body as comfortable and secure as the situation permits.
+      From this moment forward, you have the ability
+      to enter natural, restful sleep wherever you choose,
+      even when the place around you is unfamiliar
+      or the conditions are changing and distracting.
 
-      Close your eyes.
-
-      Inhale deeply and hold your breath.
-
-      Then say or think in your mind:
-
-      PLUS-QUIET, SLEEP.
-
-      Then exhale slowly through your mouth and continue to breathe easily and
-      normally.
-
-      When you do this, your physical body and mind will begin to move quickly and
-      easily toward normal, natural sleep.
+      Make yourself as comfortable as the situation permits.
+      Close your eyes, inhale deeply, and hold your breath.
+      Think or say in your mind, "Plus Quiet Sleep."
+      Then exhale slowly through your mouth
+      and allow your breathing to become easy and natural.
 
       Your physical body will loosen and relax.
+      Your thoughts will become quiet and unhurried.
+      The unfamiliar place will begin to feel ordinary,
+      and your mind will accept it as a place for sleep.
 
-      Your breathing will become slow, easy and even.
+      Sounds may rise and fade around you.
+      Some may be sudden, irregular, or unexpected.
+      Movement, voices, light, and changing conditions
+      will no longer need to capture your attention.
 
-      Your thoughts will become quieter and quieter.
+      Your total self will distinguish what matters
+      from ordinary background activity.
+      Unimportant disturbances will pass through awareness
+      without drawing you away from your chosen rest.
 
-      Events and concerns that do not require your attention will move into the
-      background.
+      If a passing sound or movement briefly stirs you,
+      your body will settle again naturally.
+      Your mind will release the interruption,
+      your breathing will remain comfortable,
+      and sleep will return smoothly and easily.
 
-      The unfamiliar place will become less important.
+      You will no longer need perfect silence,
+      familiar surroundings, or unchanging conditions
+      to allow yourself peaceful, natural sleep.
 
-      Outside sound, light, movement and other surrounding conditions will become
-      less and less important to your sleeping process.
+      This ability will remain permanently available,
+      ready whenever you choose to rest.
+      Each use of Plus Quiet Sleep will make it easier
+      to fall asleep, remain asleep, and settle again
+      amid the ordinary changes around you.
 
-      Such conditions may continue around you, but they will no longer hold your
-      attention or prevent normal sleep.
-
-      Your awareness of the outer environment will fade in the natural way of
-      sleep.
-
-      Your mind and body will accept the present place as a place where normal
-      sleep can occur.
-
-      You will drift easily and calmly into normal, natural, restful sleep.
-
-      All when you state:
-
-      PLUS-QUIET, SLEEP.
-
-      Use this Function when normal sleep is desired under extreme, adverse or
-      unfamiliar conditions.
-
-      The Function will support normal sleep. It will not change the surrounding
-      environment itself.
-
-      Other sleep-related OCF Functions may be used with SLEEP EASY when their
-      separate purposes are desired.
-
-      The more you use this Function, the easier and more effective it will become.
-    notes: 'User-proposed reconstruction draft; input lines 149–206. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sleep Easy/Sleep_Easy_reconstructed_clean.txt; SHA-256 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309; header ''SLEEP EASY — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Legacy PLUS-QUIET, SLEEP wording retained; canonical PLUS-SLEEP EASY metadata is unchanged. This separate user-proposed draft does not alter frozen Sleep Easy pilot resources or editorial decisions. Rights: user_cleared,
-      per user''s lawyer-clearance attestation. Wording review and finished-session release pending. H-PLUS→OCF terminology applied; standard ending formula applied.'
   hplus.function.ocf-slp-005.closer:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF-authored concise closer based on user-proposed reconstruction;
+      input Sleep Easy/Sleep_Easy_reconstructed_clean.txt;
+      SHA-256 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309;
+      proposed lines 327–341. Historical source unavailable and unverified.
+      One purpose reminder, original close-eyes-inhale-hold-Plus Quiet Sleep-
+      exhale-normal-breathing sequence, and standard OCF closing. Canonical
+      Plus Sleep Easy registry name is not silently substituted for the spoken
+      cue. Rights: user_cleared per user's lawyer-clearance attestation.
+      Revised wording awaits editorial approval; finished-session release pending.
+      Frozen pilot resources remain unchanged.
     text: |-
-      Remember, when you desire normal sleep in a difficult or unfamiliar place,
-      make yourself as comfortable and secure as possible.
+      Remember, when you wish to sleep in unfamiliar
+      or distracting surroundings, make yourself comfortable,
+      close your eyes, inhale deeply, and hold your breath.
+      Think or say in your mind, "Plus Quiet Sleep."
+      Then exhale slowly through your mouth
+      and continue breathing naturally.
 
-      Close your eyes.
-
-      Inhale deeply and hold your breath.
-
-      Say in your mind:
-
-      PLUS-QUIET, SLEEP.
-
-      Then exhale slowly through your mouth and continue to breathe normally as
-      you drift into sleep.
-
-      This is the end of your OCF Function learning exercise.
-    notes: 'User-proposed reconstruction draft; input lines 327–341. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sleep Easy/Sleep_Easy_reconstructed_clean.txt; SHA-256 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309; header ''SLEEP EASY — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Legacy PLUS-QUIET, SLEEP wording retained; canonical PLUS-SLEEP EASY metadata is unchanged. This separate user-proposed draft does not alter frozen Sleep Easy pilot resources or editorial decisions. Rights: user_cleared,
-      per user''s lawyer-clearance attestation. Wording review and finished-session release pending. H-PLUS→OCF terminology applied.'
+      This concludes your OCF Sleep Easy exercise.

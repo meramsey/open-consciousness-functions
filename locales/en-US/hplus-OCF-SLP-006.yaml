@@ -1,88 +1,126 @@
 # OCF-SLP-006 — Stay Awake
-# English function-specific review candidate; edit this file as the wording source of truth.
+# English function-specific OCF-adapted narration; wording source of truth.
 # Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
-# Review note: Proposed input: Stay Awake/Stay_Awake_881001_reconstructed_clean.txt; SHA-256 f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e; header 'STAY AWAKE (881001) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
-# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
-# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
-# Review note: Proposed alertness/driving-use assertions retained as claims for wording review; no outcome is established.
+# Review note: User-proposed reconstruction, not a recovered historical transcript.
+# Review note: Historical source unavailable; reimplementation remains planned.
+# Proposed input: Stay Awake/Stay_Awake_881001_reconstructed_clean.txt
+# SHA-256: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e
+# Proposed header: STAY AWAKE (881001) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT.
+# Review note: Source ranges: opener line 47; body lines 146–191; closer lines 312–324.
+# Review note: Title and commands checked against proposed reconstruction;
+# authenticity claims and proposed timing are not independently verified.
+# Review note: Preserves exact Plus One Awake Alert One One command and
+# inhale-hold-command-exhale sequence; no scenario examples in narration.
+# Review note: Temporary emergency alertness application is distinct from
+# permanent availability of the learned command.
+# Review note: Described alertness effects are exercise intentions, not verified
+# protection against involuntary sleep or impairment.
+# Review note: Shared preparation, production, state, and return material excluded.
+# Review note: One state-independent function body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-slp-006.opener:
     status: reviewed
-    version: 1.1.0
-    text: Now, learn to stay awake.
-    notes: 'User-proposed reconstruction draft; input lines 47–47. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Stay Awake/Stay_Awake_881001_reconstructed_clean.txt; SHA-256 f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e; header ''STAY AWAKE (881001) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed alertness/driving-use assertions retained as claims for wording review; no outcome is established. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session
-      release pending.'
+    version: 1.2.0
+    notes: >-
+      OCF adaptation of user-proposed Stay Awake reconstruction; proposed input
+      Stay Awake/Stay_Awake_881001_reconstructed_clean.txt; SHA-256
+      f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e;
+      input line 47. Source unavailable and authenticity unverified. Emphasizes
+      consciously invoked, temporary alertness for an essential immediate need.
+      Rights: user_cleared per user's lawyer-clearance attestation. Revised
+      wording awaits editorial approval; finished-session release pending.
+    text: |-
+      This OCF exercise will teach you to call upon
+      immediate mental and physical alertness when
+      an essential need requires you to remain awake.
+
   hplus.function.ocf-slp-006.function-body:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF adaptation of user-proposed Stay Awake reconstruction; proposed input
+      Stay Awake/Stay_Awake_881001_reconstructed_clean.txt; SHA-256
+      f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e;
+      input lines 146–191. Historical transcript not recovered and authenticity
+      unverified. Preserves the exact five-part spoken command Plus One Awake
+      Alert One One, inhale-hold-command-exhale sequence, immediate temporary
+      alertness intention, clear cognition and senses, and focused responsive
+      movement. OCF adaptation strengthens coordinated total-self wakeful
+      awareness and the distinction between a temporary invocation and the
+      learned ability remaining available. Specific scenarios, repeated command
+      rehearsal, and non-narrative precaution language omitted. The exercise
+      does not establish verified resistance to sleep deprivation or involuntary
+      sleep. One reusable body supports four passes across Focus 11 and Focus 20.
+      Rights: user_cleared per user's lawyer-clearance attestation. Revised
+      wording awaits editorial approval; finished-session release pending.
     text: |-
-      At any time from this moment forward, whenever an essential need exists for
-      you to restore full mental and physical alertness, inhale deeply and hold
-      your breath.
+      From this moment forward, you have the ability
+      to call upon a powerful state of waking alertness
+      whenever an essential, immediate need arises.
 
-      Then say or think in your mind:
+      When you must remain awake and responsive,
+      bring the present need clearly into your awareness.
+      Know what requires your attention and action.
 
-      PLUS-ONE, AWAKE, ALERT, ONE, ONE.
-
+      Inhale deeply and gently hold your breath.
+      Think or say in your mind,
+      "Plus One Awake Alert One One."
       Then exhale slowly through your mouth.
 
-      When you do this, your mind and physical body will begin immediately to
-      move into full waking alertness.
+      Immediately, your total self will begin to shift
+      into clear, active, focused wakefulness.
+      Your thoughts will become sharp and orderly.
+      Your awareness will brighten and become steady.
+      Your mind will recognize what matters now.
 
-      Your mind will become clear, quick and awake.
+      Your eyes, hearing, and other senses will work
+      together in clear awareness of your surroundings.
+      Your physical body will become responsive,
+      coordinated, and ready for the action required.
 
-      Your thoughts will move cleanly and easily.
+      Feel heaviness and mental dullness receding.
+      Your attention will gather around the present need.
+      Unnecessary thoughts will fall away,
+      leaving calm, decisive, wakeful awareness.
 
-      Your attention will remain upon the act, event or condition before you.
+      Your conscious mind, subconscious awareness,
+      and physical body will cooperate as one,
+      directing their available strength and energy
+      toward remaining alert in this essential moment.
 
-      Your physical body will become awake, active and responsive.
+      This response is temporary and purposeful.
+      It will serve the immediate need for wakefulness,
+      then give way naturally when that need has passed
+      and you can allow yourself to rest.
 
-      Your eyes will see clearly.
+      The ability to call upon this alertness
+      will remain permanently available within you,
+      without keeping you continually stimulated.
+      Each time you use this function,
+      the response will become clearer,
+      easier, and more effective.
 
-      Your hearing and all of your other physical senses will operate cleanly
-      and sharply.
-
-      Heaviness and dullness will fade.
-
-      The impulse to drift into sleep will move into the background.
-
-      You will remain mentally and physically alert for the essential activity
-      before you.
-
-      All when you state:
-
-      PLUS-ONE, AWAKE, ALERT, ONE, ONE.
-
-      This restoration of alertness is immediate and temporary.
-
-      Use it only when the need is essential, such as when driving or in a
-      similar situation.
-
-      This Function is not for continuous application.
-
-      The more you use this Function, the easier and more effective it will become.
-    notes: 'User-proposed reconstruction draft; input lines 146–191. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Stay Awake/Stay_Awake_881001_reconstructed_clean.txt; SHA-256 f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e; header ''STAY AWAKE (881001) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed alertness/driving-use assertions retained as claims for wording review; no outcome is established. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session
-      release pending. Standard ending formula applied.'
   hplus.function.ocf-slp-006.closer:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF-adapted closer based on user-proposed Stay Awake reconstruction;
+      proposed input Stay Awake/Stay_Awake_881001_reconstructed_clean.txt;
+      SHA-256 f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e;
+      input lines 312–324. Historical source unavailable and authenticity
+      unverified. Contains one purpose reminder, exact command and breathing
+      sequence, and standard OCF ending. Rights: user_cleared per user's
+      lawyer-clearance attestation. Revised wording awaits editorial approval;
+      finished-session release pending.
     text: |-
-      Remember, when an essential need exists to restore full mental and physical
-      alertness, inhale deeply and hold your breath.
-
-      Say in your mind:
-
-      PLUS-ONE, AWAKE, ALERT, ONE, ONE.
-
+      Remember, when an essential need requires
+      immediate waking alertness, inhale deeply
+      and hold your breath.
+      Think or say in your mind,
+      "Plus One Awake Alert One One."
       Then exhale slowly through your mouth.
 
-      Use this Function only for immediate and temporary alertness, not for
-      continuous application.
-
-      This is the end of your OCF Function learning exercise.
-    notes: 'User-proposed reconstruction draft; input lines 312–324. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Stay Awake/Stay_Awake_881001_reconstructed_clean.txt; SHA-256 f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e; header ''STAY AWAKE (881001) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed alertness/driving-use assertions retained as claims for wording review; no outcome is established. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session
-      release pending. H-PLUS→OCF terminology applied.'
+      This concludes your OCF Stay Awake exercise.

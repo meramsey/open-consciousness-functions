@@ -1,57 +1,137 @@
 # OCF-SEN-005 — Sensory: Touch
-# English function-specific review candidate; edit this file as the wording source of truth.
+# English function-specific OCF-adapted narration; wording source of truth.
 # Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
-# Review note: Proposed input: Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt; SHA-256 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066; header 'SENSORY: TOUCH — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT, VERSION 2'.
-# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
-# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
-# Review note: The clean Version 2 is selected; the annotated/script variants remain separate local comparison material.
-# Review note: User-directed terminology edit: proposed GREATER/LESSER cue wording changed to canonical MORE/LESS; original reference remains unchanged.
+# Review note: User-proposed reconstruction, not a recovered historical transcript.
+# Review note: Historical source unavailable; reimplementation remains planned.
+# Proposed input: Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt
+# SHA-256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
+# Proposed header: SENSORY: TOUCH — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT, VERSION 2.
+# Review note: Input ranges: opener line 31; body lines 123–141; closer lines 247–253.
+# Review note: Clean Version 2 selected; annotated and script variants remain separate.
+# Review note: Authentication claims and proposed timings are not independently verified.
+# Review note: Canonical MORE/LESS cues replace proposed GREATER/LESSER wording;
+# original source reference remains unchanged.
+# Review note: Lasting tactile imagination is a user-requested OCF addition,
+# not recovered historical source text.
+# Review note: Shared production, state, and return material excluded.
+# Review note: One reusable function body supports four-pass playback.
+# Review note: Physical sensitivity changes are intended exercise suggestions,
+# not established biological effects or protection against injury.
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-sen-005.opener:
     status: reviewed
-    version: 1.1.0
-    text: Now, learn to direct your sense of touch.
-    notes: 'User-proposed reconstruction draft; input lines 31–31. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt; SHA-256 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066; header ''SENSORY: TOUCH — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT, VERSION 2''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. The clean Version 2 is selected; the annotated/script variants remain separate local comparison material. User-directed terminology edit: proposed GREATER/LESSER cue wording changed to canonical MORE/LESS; original reference remains unchanged. Rights: user_cleared,
-      per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+    version: 1.2.0
+    notes: >-
+      OCF adaptation of user-proposed Sensory: Touch reconstruction,
+      proposed input Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt;
+      SHA-256 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066;
+      source line 31. Clean Version 2 selected; other variants remain separate.
+      Historical source unavailable and authenticity unverified. Adds permanent
+      inner tactile imagination alongside deliberate physical touch regulation.
+      Rights: user_cleared per user's lawyer-clearance attestation.
+      Revised wording awaits editorial approval; finished-session release pending.
+    text: |-
+      This OCF exercise will teach you to regulate
+      your physical sense of touch and strengthen your ability
+      to remember, imagine, and experience touch within your mind.
+
   hplus.function.ocf-sen-005.function-body:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF adaptation of user-proposed Sensory: Touch reconstruction,
+      proposed input Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt;
+      SHA-256 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066;
+      source lines 123–141. Clean Version 2 selected; original reference
+      unchanged and historical authenticity unverified. Retains the user-canonical
+      Plus Touch More and Plus Touch Less commands instead of proposed
+      GREATER/LESSER cues, and the close-eyes-inhale-hold-command-exhale-open-eyes
+      sequence. Physical adjustments to pressure, texture, temperature, and
+      other touch perceptions remain consciously selected and reversible.
+      User-directed OCF expansion establishes lasting internal tactile imagery,
+      sensory recall, imagined contact, and deliberate modification of texture,
+      pressure, warmth, coolness, and movement without actual contact. Existing
+      commands can reinforce or diminish an intended imagined sensation without
+      introducing an unverified third command. Imagined sensations remain
+      distinguishable from physical contact. One body supports four passes
+      across Focus 11 and Focus 20. Intended sensory effects are exercise
+      suggestions rather than established physiological outcomes. Rights:
+      user_cleared per user's lawyer-clearance attestation. Revised wording
+      awaits editorial approval; finished-session release pending.
     text: |-
-      At any time from this moment forward, whenever you desire to control the way you feel and perceive touch, all you need do is close your eyes, inhale deeply, and hold your breath.
+      From this moment forward, you have the ability
+      to regulate your sense of touch and develop
+      a clear, vivid sense of touch within your mind.
 
-      Then say or think in your mind, PLUS-TOUCH MORE, or PLUS-TOUCH LESS.
+      Your physical sense of touch will respond to your intention.
+      You can notice delicate sensations more clearly,
+      or allow unwanted sensations to fade into the background.
 
+      To increase your awareness of touch, close your eyes,
+      inhale deeply, and gently hold your breath.
+      Think or say in your mind, "Plus Touch More."
       Then exhale slowly through your mouth and open your eyes.
 
-      When you do this, if you state more, your sense of touch will become much sharper and clearer.
+      The lightest contact will become more distinct.
+      You will recognize subtle differences in texture,
+      pressure, warmth, coolness, and movement across your skin.
 
-      You will perceive and identify even the lightest touch to enter your system.
+      To reduce the prominence of an unwanted sensation,
+      use the same eye and breathing sequence,
+      thinking or saying, "Plus Touch Less."
+      The selected feeling will become less distracting,
+      and you can return to your usual sense of touch
+      whenever you consciously choose.
 
-      You will perceive differences in pressure, texture, and temperature more clearly and accurately.
+      Your inner sense of touch will also grow stronger.
+      You will remember the softness of fabric,
+      the smoothness of stone, the warmth of sunlight,
+      and the gentle pressure of a familiar touch.
 
-      All when you state PLUS-TOUCH MORE.
+      Even without physical contact, you can imagine
+      these sensations clearly, hold them in awareness,
+      and change their texture, pressure, temperature,
+      location, or movement through intention.
 
-      When you state PLUS-TOUCH LESS, your tactile sensitivity will become lower and lower each time you state PLUS-TOUCH LESS, until any distracting, irritating, or unpleasant touch sensation is no longer important.
+      Your tactile imagination will work naturally
+      with remembered sights, sounds, smells, and tastes,
+      allowing you to create richer inner experiences.
+      You will know the difference between an imagined
+      sensation and what your physical body is feeling.
 
-      Whenever you use this method of touch control, it will continue until you desire to return to your normal touch condition.
+      This ability to recall and create touch within your mind
+      will become a lasting part of your total self.
+      When desired, the same commands can make an imagined
+      sensation more vivid or allow it to fade.
 
-      The more you use this method, the easier and more effective it will become.
-    notes: 'User-proposed reconstruction draft; input lines 123–141. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt; SHA-256 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066; header ''SENSORY: TOUCH — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT, VERSION 2''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. The clean Version 2 is selected; the annotated/script variants remain separate local comparison material. User-directed terminology edit: proposed GREATER/LESSER cue wording changed to canonical MORE/LESS; original reference remains unchanged. Rights: user_cleared,
-      per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+      Each time you use this function, physical touch regulation
+      and inner tactile imagery will become clearer,
+      easier, and more effective.
+
   hplus.function.ocf-sen-005.closer:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF-adapted closer based on user-proposed Sensory: Touch reconstruction,
+      proposed input Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt;
+      SHA-256 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066;
+      source lines 247–253. Original historical source unavailable and
+      authenticity unverified. Preserves canonical Plus Touch More and Plus
+      Touch Less commands and close-eyes-inhale-hold-command-candle-exhale-
+      open-eyes sequence. Includes one reminder of physical and imagined
+      touch and the standard OCF sign-off. Rights: user_cleared per user's
+      lawyer-clearance attestation. Revised wording awaits editorial
+      approval; finished-session release pending.
     text: |-
-      Remember, to direct your sense of touch, close your eyes, inhale deeply, and hold your breath.
+      Remember, to regulate your physical sense of touch
+      or strengthen your inner experience of it, close your eyes,
+      inhale deeply, and hold your breath.
+      Think or say in your mind, "Plus Touch More"
+      or "Plus Touch Less," according to your intention.
+      Then exhale through your mouth as though gently
+      blowing out a candle, and open your eyes.
 
-      Then say in your mind, PLUS-TOUCH MORE, if you wish to increase your tactile sensitivity, or PLUS-TOUCH LESS, if you want to turn down what and how you feel.
-
-      Then exhale through your mouth as if you are blowing out a candle, and open your eyes.
-
-      This is the end of your OCF Function learning exercise.
-    notes: 'User-proposed reconstruction draft; input lines 247–253. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt; SHA-256 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066; header ''SENSORY: TOUCH — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT, VERSION 2''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. The clean Version 2 is selected; the annotated/script variants remain separate local comparison material. User-directed terminology edit: proposed GREATER/LESSER cue wording changed to canonical MORE/LESS; original reference remains unchanged. Rights: user_cleared,
-      per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+      This concludes your OCF Sensory: Touch exercise.

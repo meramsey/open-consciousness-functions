@@ -1,44 +1,152 @@
 # OCF-COG-006 — Recall
-# English function-specific review candidate; edit this file as the wording source of truth.
+# English function-specific OCF-adapted narration.
+# Edit this file as the wording source of truth.
 # Source status: partial_transcript; authentication remains unverified.
-# Missing closer: No final function-specific closer is recoverable; source ends in ellipsis runs.
-# Review note: Unassigned religious line at 26 is outside the selected instruction; embedded numeric labels in the body remain flagged.
+# Missing closer: No final function-specific closer is recoverable;
+# the historical source ends in ellipsis runs.
+# Review note: The unassigned religious line at 26 remains excluded.
+# Review note: Embedded transcript labels 13 and 15 and the
+# duplicate source instruction pass remain excluded.
+# Review note: The exact Plus Recall activation command is preserved.
+# Review note: OCF adaptation establishes lasting availability
+# of detailed memory retrieval and automatic memory organization.
+# Review note: Recall remains consciously directed rather than
+# continuously bringing memories into waking awareness.
+# Review note: One concise function body supports four-pass playback.
+# Review note: Closer follows the standardized OCF reminder format.
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-cog-006.opener:
     status: reviewed
-    version: 1.1.0
-    notes: 'Reference-derived candidate with user-directed OCF terminology edit; partial_transcript. Original SOURCE +Transcripts From available tapes/Recall/Recall.txt; SHA-256 db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3; lines 1–2 (ends before ''To prepare''). “H-plus” changed to “OCF” per user''s standing instruction; original SOURCE remains unchanged. User approved opener unchanged. Shared preparation/state/return wording excluded. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    version: 1.2.0
+    notes: >-
+      OCF-adapted narration based on the partial, unverified Recall
+      transcript. Original SOURCE +Transcripts From available
+      tapes/Recall/Recall.txt;
+      SHA-256 db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3;
+      lines 1–2, ending before shared preparation.
+      Original reference remains unchanged.
+      H-plus terminology changed to OCF.
+      Previously approved wording has been revised to emphasize
+      clear, accurate, detailed, and consciously directed recall.
+      This is adapted narration, not a verbatim transcription.
+      Shared preparation, state, and return wording excluded.
+      Rights: user_cleared, per user's lawyer-clearance
+      attestation. Revised wording awaits final editorial
+      approval. Finished-session release pending.
     text: |-
-      This is your OCF function exercise to learn to
-      remember.
+      This OCF exercise will strengthen your ability
+      to recall information and past experiences
+      clearly, accurately, and in great detail,
+      whenever you desire.
+
   hplus.function.ocf-cog-006.function-body:
     status: reviewed
-    version: 1.1.0
-    notes: 'Reference-derived wording with human edit; partial_transcript. Original SOURCE +Transcripts From available tapes/Recall/Recall.txt; SHA-256 db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3; lines 32–49. Human wording review: user approved the body with transcript labels “13.” and “15.” removed and the duplicated second pass omitted. Other wording retained; original SOURCE remains unchanged. Efficacy statements remain source claims, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    version: 1.2.0
+    notes: >-
+      OCF-adapted narration based on the partial, unverified Recall
+      transcript. Original SOURCE +Transcripts From available
+      tapes/Recall/Recall.txt;
+      SHA-256 db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3;
+      lines 32–49. Original reference remains unchanged.
+      The narration has been reorganized into automatic memory
+      organization, conscious selection, breathing and activation,
+      detailed retrieval, permanent availability, and reinforcement.
+      Embedded transcript labels 13 and 15 and the duplicated
+      historical instruction pass remain excluded.
+      The exact Plus Recall command and original breathing
+      sequence are preserved.
+      OCF-authored additions establish lasting availability of
+      conscious memory retrieval and automatic organization
+      of personal knowledge and experiences.
+      Recall remains consciously directed rather than
+      continuously activating without the listener's intention.
+      Affirmative suggestions preserve the intended certainty
+      of immediate, clear, vivid, and detailed recall.
+      One reusable body supports repeated playback across
+      Focus 11 and Focus 20.
+      Shared preparation, state, and return wording excluded.
+      Suggested outcomes are exercise intentions rather than
+      independently verified memory capabilities.
+      Rights: user_cleared, per user's lawyer-clearance
+      attestation. Revised wording awaits final editorial
+      approval. Finished-session release pending.
     text: |-
-      At any point in the future when you desire to remember in great detail any part of your
-      life experience, all you need do is inhale, hold your breath, and say in your mind,
-      plus recall. And think of that area you want to remember. Inhale, hold your breath,
-      say in your mind, plus recall. Then exhale through your mouth as it blowing out a candle.
-      When you do this, you will remember immediately in full consciousness and great detail the
-      information or experience that you desire. You will recall immediately in full consciousness
-      and great detail the information or experience that you desire. The more you perform this
-      method of remembering by inhaling, holding your breath, and saying, plus recall in your
-      mind, the easier and more effective it will become.
+      From this moment forward, your ability to remember
+      and recall information and experiences is becoming
+      stronger, clearer, and more effective.
+
+      Your mind naturally organizes and preserves your memories,
+      keeping the knowledge and experiences of your life
+      available whenever you wish to remember them.
+
+      Whenever you desire to recall something,
+      begin by focusing on the information
+      or experience you wish to remember.
+
+      Inhale deeply and gently hold your breath.
+
+      Think or say in your mind, "Plus Recall."
+
+      Then exhale slowly through your mouth,
+      as though gently blowing out a candle.
+
+      The memory you seek will immediately come into
+      your conscious awareness, clear, vivid, and complete.
+
+      You will remember the details of the experience,
+      including the images, words, sounds, feelings,
+      and sensations associated with it.
+
+      The information will return naturally and effortlessly,
+      allowing you to recognize and understand
+      what you remember.
+
+      From this moment forward, this ability to recall
+      information and experiences is permanently
+      established within you.
+
+      Whenever you use Plus Recall, your mind will bring
+      the desired information into your awareness
+      quickly, clearly, and in great detail.
+
+      Each time you use this function, recalling
+      information becomes easier, faster,
+      and more effective.
+
+      Your memories remain available to you,
+      ready to return to your conscious awareness
+      whenever you desire.
+
   hplus.function.ocf-cog-006.closer:
     status: reviewed
-    version: 1.0.0
+    version: 1.2.0
     notes: >-
-      OCF-authored closer suggestion prompted by the current source gap and
-      modeled on other function-command reminders. The partial Recall transcript
-      ends in ellipses and contains no recoverable function-specific closer; this
-       is not historical wording. User approved the closer. Rights: user_cleared
-      attestation. Finished-session release pending.
+      OCF-authored closer adapted from the previously approved
+      Recall function reminder. Original SOURCE +Transcripts
+      From available tapes/Recall/Recall.txt;
+      SHA-256 db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3.
+      The partial historical transcript ends in ellipsis runs
+      and provides no recoverable function-specific closer.
+      The closer has been shortened to one purpose reminder,
+      the exact Plus Recall activation command, the original
+      breathing sequence, and the standard OCF ending.
+      Additional reinforcement remains in the function body.
+      This is OCF-authored wording, not historical transcript text.
+      Rights: user_cleared, per user's lawyer-clearance
+      attestation. Revised wording awaits final editorial
+      approval. Finished-session release pending.
     text: |-
-      Remember, when you wish to recall information or an experience, inhale and hold your breath.
-      Say in your mind, plus recall.
-      Then think of the information you desire.
-      This is the end of your OCF function exercise.
+      Remember, whenever you wish to recall
+      information or a past experience,
+      focus on what you desire to remember.
+
+      Inhale deeply and hold your breath.
+
+      Think or say in your mind, "Plus Recall."
+
+      Then exhale slowly through your mouth.
+
+      This concludes your OCF Recall exercise.

@@ -1,43 +1,161 @@
 # OCF-COG-001 — Access to Information
-# English function-specific review candidate; edit this file as the wording source of truth.
+# English function-specific OCF-adapted narration.
+# Edit this file as the wording source of truth.
 # Source status: transcript_unverified; authentication remains unverified.
-# Review note: The last specific spoken line is an exploration handoff rather than a final waking closer; no waking return or exercise-ending text is available.
+# Review note: The final historical function-specific passage is an
+# exploration handoff, not a waking closer.
+# Review note: Source line 50 remains outside the function closer.
+# Review note: The Plus Retrieve activation command is preserved.
+# Review note: OCF adaptation establishes lasting access to personal
+# knowledge, automatic information organization, and retrieval.
+# Review note: One concise function body supports four-pass playback.
+# Review note: The closer follows the standardized OCF reminder format.
+
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-cog-001.opener:
     status: reviewed
-    version: 1.0.0
-    notes: 'Reference-derived wording; transcript_unverified. SOURCE +Transcripts From available tapes/Access to Information/Access to Information.txt; SHA-256 f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14; line 1. Human wording review: user approved opener unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
-    text: The purpose of this exercise is to assist you in accessing your own personal library of information and knowledge.
+    version: 1.2.0
+    notes: >-
+      OCF-adapted narration based on the unverified Access to
+      Information transcript. Original SOURCE +Transcripts From
+      available tapes/Access to Information/Access to Information.txt;
+      SHA-256 f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14;
+      line 1. Original reference remains unchanged.
+      Previously approved wording has been revised to emphasize
+      direct access to the listener's personal library of
+      knowledge, information, and experience.
+      This is adapted narration, not a verbatim transcription.
+      Rights: user_cleared, per user's lawyer-clearance
+      attestation. Revised wording awaits final editorial
+      approval. Finished-session release pending.
+    text: |-
+      This OCF exercise will teach you to access your
+      personal library of information, knowledge,
+      and experience, bringing the information
+      you desire directly into your conscious awareness.
+
   hplus.function.ocf-cog-001.function-body:
     status: reviewed
-    version: 1.0.0
-    notes: 'Reference-derived wording; transcript_unverified. SOURCE +Transcripts From available tapes/Access to Information/Access to Information.txt; SHA-256 f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14; lines 39–49. Human wording review: user approved body unchanged. Shared preparation/state/return wording excluded. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    version: 1.2.0
+    notes: >-
+      OCF-adapted narration based on the unverified Access to
+      Information transcript. Original SOURCE +Transcripts From
+      available tapes/Access to Information/Access to Information.txt;
+      SHA-256 f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14;
+      lines 39–49. Original reference remains unchanged.
+      The narration has been reorganized into personal knowledge
+      awareness, forms of information, permanent availability,
+      automatic organization, conscious retrieval, and affirmative
+      reinforcement. The exact Plus Retrieve command is preserved.
+      The original command-first, information-selection sequence
+      remains supported. Duplicate activation instructions have
+      been removed. OCF-authored suggestions establish lasting
+      access and automatic organization of personal knowledge.
+      No breathing instruction is added because the source
+      function does not specify one. One reusable body supports
+      four playback passes across Focus 11 and Focus 20.
+      Shared preparation, state, and return wording remains
+      excluded. Suggested outcomes are exercise intentions,
+      not independently verified retrieval capabilities.
+      Rights: user_cleared, per user's lawyer-clearance
+      attestation. Revised wording awaits final editorial
+      approval. Finished-session release pending.
     text: |-
-      Here you can take information from your access channel, all of that which is you and yours, piece by piece, and place it in your waking conscious memory.
-      It may be in the form of words or in pictures in your mind or emotions or feelings and sensations or all of these at once.
-      These are a part of you and your life experiences.
-      This is your personal library of knowledge and it is all available to you.
-      To obtain knowledge from it, all you need do is say in your mind, say to yourself, plus retrieve and then think of the information you desire and the answer will come to you immediately.
-      Here it is again.
-      To access your own personal library of knowledge, all you need do is say in your mind, say to yourself, plus retrieve and then think of the information you desire.
-      The information will then move immediately into your conscious awareness.
-      To help you begin this process, recall a time in your life when you felt great wisdom, knowledge, or certainty.
-      Right now, confidently say in your mind, plus retrieve.
-      Explore now any information you desire to retrieve.
+      From this moment forward, your ability to access
+      your personal library of information and knowledge
+      is becoming stronger, faster, and more effective.
+
+      Everything you have learned, experienced,
+      observed, and understood contributes
+      to this vast library within you.
+
+      Information may come into your awareness
+      as words, images, memories, feelings,
+      sensations, or sudden understanding.
+
+      Your mind recognizes these different forms
+      and brings them together to provide
+      the knowledge and understanding you seek.
+
+      Your personal library is always available,
+      ready to provide the information you desire.
+
+      From this moment forward, this ability
+      to access your knowledge is permanently
+      established within you.
+
+      Your mind will continue organizing
+      information automatically, connecting
+      related ideas and experiences,
+      even when you are not consciously
+      thinking about them.
+
+      Whenever you desire information
+      from your personal library,
+      simply think or say in your mind,
+      "Plus Retrieve."
+
+      Then focus clearly on the information,
+      knowledge, or understanding you desire.
+
+      The information you seek will immediately
+      begin moving into your conscious awareness.
+
+      The answer will become clear to you,
+      arriving naturally in whatever form
+      best communicates the knowledge you need.
+
+      Words, images, feelings, and understanding
+      will come together, allowing you
+      to recognize and use the information.
+
+      The more you use Plus Retrieve,
+      the easier, faster, and more effective
+      this process will become.
+
+      Your personal library of knowledge
+      will remain available to you
+      whenever you desire to access it.
+
+      Now think of something you wish to know
+      or understand more clearly.
+
+      Silently say, "Plus Retrieve."
+
+      Allow the information to come
+      into your conscious awareness.
+
+      Begin exploring your personal
+      library of knowledge now.
+
   hplus.function.ocf-cog-001.closer:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
     notes: >-
-      OCF-authored closer suggestion, requested for this source gap. The source's
-      line 50 “I will call you when it's time to return” is a session handoff,
-      not a function-specific closer; it remains in SOURCE and is not relabeled.
-      This proposed closer repeats the retrieval cue and adds a function sign-off.
-      It is not historical wording. User approved this closer. Rights: user_cleared
-      attestation. Finished-session release pending.
+      OCF-authored closer adapted from the previously approved
+      proposal. The historical Access to Information transcript
+      contains a session exploration handoff at line 50 rather
+      than a complete function-specific waking closer.
+      Original SOURCE +Transcripts From available
+      tapes/Access to Information/Access to Information.txt;
+      SHA-256 f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14;
+      line 50 remains outside the function closer.
+      The closer contains one purpose reminder, the exact
+      Plus Retrieve activation command, and the standard
+      OCF ending. No additional reinforcement is included.
+      This is OCF-authored wording, not historical transcript
+      text. Rights: user_cleared, per user's lawyer-clearance
+      attestation. Revised wording awaits final editorial
+      approval. Finished-session release pending.
     text: |-
-      When you wish to retrieve information from your personal library, think of the information you desire.
-      Say to yourself, plus, retrieve.
-      This is the end of your OCF function exercise.
+      Remember, whenever you wish to access
+      your personal library of knowledge,
+      think or say in your mind, "Plus Retrieve."
+
+      Then focus on the information you desire,
+      and allow it to enter your conscious awareness.
+
+      This concludes your OCF Access to Information exercise.

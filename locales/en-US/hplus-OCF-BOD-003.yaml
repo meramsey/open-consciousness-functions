@@ -1,37 +1,157 @@
 # OCF-BOD-003 — De-Discomfort
-# English function-specific review candidate; edit this file as the wording source of truth.
+# English function-specific OCF-adapted narration.
+# Edit this file as the wording source of truth.
 # Source status: transcript_unverified; authentication remains unverified.
-# Review note: Waking text sharing line 104 stays in the shared return; trailing Thank you at 109 excluded.
+# Review note: Waking text sharing line 104 stays in the shared return;
+# trailing Thank you at line 109 remains excluded.
+# Review note: The exact Plus Five Five Five One Five activation
+# sequence is preserved and written as spoken words for TTS clarity.
+# Review note: One reusable function body supports repeated playback
+# across Focus 11 and Focus 20.
+
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-bod-003.opener:
     status: reviewed
-    version: 1.1.0
-    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt; SHA-256 bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae; lines 1–2 (ends before ''To prepare''). Human wording review: user supplied and approved the opener with H-plus changed to OCF; stored verbatim. Original reference remains unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending. Waking text sharing line 104 stays in the shared return; trailing Thank you at 109 excluded.'
+    version: 1.2.0
+    notes: >-
+      OCF-adapted narration based on the unverified De-Discomfort
+      transcript. Original SOURCE +Transcripts From available
+      tapes/De-Discomfort/De-Discomfort.txt;
+      SHA-256 bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae;
+      lines 1–2 (ends before 'To prepare'). Original reference
+      remains unchanged. H-plus terminology changed to OCF.
+      Wording simplified to emphasize conscious reduction of
+      physical discomfort signals. This is adapted narration,
+      not a verbatim source transcription.
+      Rights: user_cleared, per user's lawyer-clearance attestation.
+      Finished-session release pending.
     text: |-
-      This OCF function exercise is to learn control of physical body
-      discomfort signals whenever and wherever you so desire.
+      This OCF exercise will teach you to reduce and control
+      physical discomfort signals within your body,
+      whenever and wherever you choose.
+
   hplus.function.ocf-bod-003.function-body:
     status: reviewed
-    version: 1.1.0
-    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt; SHA-256 bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae; lines 30–50. Human wording review: user selected the first complete source repetition as body; the second repetition remains in SOURCE, not this selected function body. Shared preparation/state/return wording excluded. Physiological/effect claims remain source claims, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending. Waking text sharing line 104 stays in the shared return; trailing Thank you at 109 excluded.'
+    version: 1.2.0
+    notes: >-
+      OCF-adapted narration based on the unverified De-Discomfort
+      transcript. Original SOURCE +Transcripts From available
+      tapes/De-Discomfort/De-Discomfort.txt;
+      SHA-256 bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae;
+      lines 30–50. Original reference remains unchanged.
+      The first complete source repetition remains the basis
+      for this reusable function body; the second source repetition
+      is not duplicated here. Instructions have been simplified
+      into awareness, breathing, activation, release, and
+      reinforcement. The exact Plus Five Five Five One Five
+      activation sequence is preserved, with digits written
+      as spoken words to ensure consistent TTS pronunciation.
+      Affirmative suggestions concerning reduced discomfort
+      and increasing effectiveness are retained and strengthened.
+      One reusable body is intended for repeated playback across
+      Focus 11 and Focus 20. Shared preparation, state, and
+      return wording remains excluded. Waking text sharing
+      line 104 stays in the shared return; trailing Thank you
+      at line 109 remains excluded. The adapted narration
+      expresses the intended suggestion, not an established
+      medical effect.
+      Rights: user_cleared, per user's lawyer-clearance attestation.
+      Finished-session release pending.
     text: |-
-      At any point in your life from this moment forward, if you wish to reduce discomfort
-      signals from any part of your body, all you need do is close your eyes, inhale deeply,
-      and hold your breath. Then look with your closed eyes at that part of your physical
-      body from which such signals begin, and say or think in your mind, plus five five five
-      one five. Then exhale slowly. When you do this, such signals will quickly become less
-      and less, less and less, until they are no longer important to you. The more you
-      use this function of reducing discomfort signals, the easier and smoother it will become.
+      From this moment forward, whenever you wish to reduce
+      physical discomfort in any part of your body,
+      you can do so quickly and easily.
+
+      Begin by bringing your awareness to the area
+      where the discomfort begins.
+
+      Close your eyes and focus your attention on that area.
+
+      Take a deep breath in and gently hold it.
+
+      While holding your breath, silently say to yourself,
+      "Plus Five Five Five One Five."
+
+      Then slowly exhale through your mouth,
+      as though gently blowing out a candle.
+
+      As you exhale, the discomfort signals will begin
+      to diminish, becoming weaker and weaker.
+
+      Feel the discomfort fading away,
+      less and less, until it no longer demands
+      your attention.
+
+      Your body will become more comfortable,
+      calm, and relaxed.
+
+      Your mind will become clear and peaceful,
+      free to focus on whatever you choose.
+
+      You will remain aware of your body's needs
+      while experiencing greater comfort and ease.
+
+      Whenever you wish to reduce discomfort,
+      simply close your eyes, inhale deeply,
+      and gently hold your breath.
+
+      Focus on the area of discomfort and silently
+      say to yourself, "Plus Five Five Five One Five."
+
+      Then exhale slowly through your mouth.
+
+      The discomfort will quickly become less and less,
+      fading into the background until it is
+      no longer important to you.
+
+      Each time you use Plus Five Five Five One Five,
+      this process becomes easier, smoother,
+      faster, and more effective.
+
+      You are in control of your response to discomfort.
+
+      You can return to a state of calm,
+      comfort, and relaxation whenever you desire.
+
   hplus.function.ocf-bod-003.closer:
     status: reviewed
-    version: 1.1.0
-    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt; SHA-256 bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae; lines 104–108 (starts at ''Remember''). Human wording review: user supplied and approved the closer with H-plus changed to OCF; stored verbatim. Original reference remains unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending. Waking text sharing line 104 stays in the shared return; trailing Thank you at 109 excluded.'
+    version: 1.2.0
+    notes: >-
+      OCF-adapted narration based on the unverified De-Discomfort
+      transcript. Original SOURCE +Transcripts From available
+      tapes/De-Discomfort/De-Discomfort.txt;
+      SHA-256 bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae;
+      lines 104–108 (starts at 'Remember'). Original reference
+      remains unchanged. H-plus terminology changed to OCF.
+      The activation instructions have been simplified and aligned
+      with the revised function body. The exact Plus Five Five
+      Five One Five sequence is preserved as spoken words.
+      Affirmative reinforcement of reduced discomfort and
+      increasing effectiveness is retained. Waking text sharing
+      line 104 remains in the shared return; trailing Thank you
+      at line 109 remains excluded. This is adapted narration,
+      not a verbatim source transcription.
+      Rights: user_cleared, per user's lawyer-clearance attestation.
+      Finished-session release pending.
     text: |-
-      Remember to reduce discomfort signals in your
-      physical body. Inhale deeply and slowly. Hold your breath. Look with your
-      closed eyes at the source of such discomfort, and say or think in your
-      mind, plus 5, 5, 5, 1, 5. Then exhale deeply and slowly. Use it as you need it.
-      This is the end of this OCF function exercise.
+      Remember, whenever you wish to reduce discomfort
+      in any part of your body, simply close your eyes.
+
+      Bring your attention to the area
+      where the discomfort begins.
+
+      Inhale deeply and gently hold your breath.
+
+      Silently say to yourself,
+      "Plus Five Five Five One Five."
+
+      Then slowly exhale through your mouth,
+      as though gently blowing out a candle.
+
+      The discomfort will diminish,
+      becoming less and less important to you.
+
+      This concludes your OCF De-Discomfort exercise.

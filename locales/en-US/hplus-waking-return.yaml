@@ -1,22 +1,46 @@
-schema_version: "1.0"
+
+# OCF shared — Waking countdown from twenty to one
+# English reusable waking narration; original entry key preserved.
+# Source status: user-supplied review candidate; historical authentication unverified.
+# Review note: No original source path, line range, or checksum was supplied.
+# Review note: Removes a duplicated seven and repeated countdown preamble.
+# Review note: Preserves every count from twenty through one in descending order,
+# complete physical and mental wakefulness, refreshed energy, and clear senses.
+# Review note: This shared waking passage is for sessions intended to end awake;
+# sleep-intended sessions may use a different ending in the assembly layer.
+schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.shared.waking.begin:
     status: reviewed
-    version: "1.0.0"
+    version: 1.1.0
+    notes: >-
+      OCF editorial adaptation of the supplied shared waking countdown.
+      Historical source provenance was not supplied, so the wording is not
+      presented as an authenticated transcript. Preserves a full twenty-to-one
+      return, increasing waking awareness, restored physical and mental energy,
+      clear sensory perception, and explicit eye-opening at one. Removes the
+      repeated seven and redundant midway instruction, retaining a single
+      uninterrupted count in the existing shared entry. Intended for session
+      endings that explicitly return the listener to waking awareness.
+      Revised wording awaits editorial approval.
     text: |-
-      I'm going to count now from twenty down to one, and when I reach the count of one,
-      you will be completely wide awake and rested both physically and mentally. All of your
-      senses will be operating clearly, cleanly, strongly, sharply, and beautifully. All when
-      I reach the count of one. I'm going to count now. Twenty. Nineteen. Eighteen.
-      Seventeen. Sixteen.
-      Fifteen. Fourteen.
-      Thirteen. Twelve.
-      Eleven. Ten.
-      Nine. Eight. Seven.
-      When I reach the count of one, you will be completely wide awake both physically
-      and mentally, and completely refreshed and full of new energy, with all of your five
-      physical senses operating clearly, cleanly, sharply, and beautifully. All when I reach
-      the count of one. Seven. Six. Five. Four. Three. Two. One. Wake up. Wake up. Open
-      your eyes. You're completely wide awake and full of new energy.
+      I will now count from twenty down to one.
+      With each number, you will become more fully awake,
+      refreshed, and aware of your physical body and surroundings.
+
+      When I reach one, you will be completely wide awake,
+      rested and renewed, both physically and mentally.
+      Your senses will be clear, sharp, and fully available to you.
+
+      Twenty. Nineteen. Eighteen. Seventeen. Sixteen.
+      Fifteen. Fourteen. Thirteen. Twelve. Eleven.
+      Ten. Nine. Eight. Seven. Six.
+      Five. Four. Three. Two.
+
+      One. Wake up. Wake up.
+      Open your eyes.
+      You are completely wide awake, clear and alert,
+      refreshed and full of new energy,
+      ready to continue your day.

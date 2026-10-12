@@ -1,92 +1,131 @@
 # OCF-PRF-004 — Light Foot
-# English function-specific review candidate; edit this file as the wording source of truth.
+# English function-specific OCF-adapted narration; wording source of truth.
 # Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
-# Review note: Proposed input: Light Foot/Light_Foot_881047_reconstructed_clean.txt; SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73; header 'LIGHT FOOT (881047) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
-# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
-# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
-# Review note: The supplied body contains an extra leading space on one wrapped line; it is preserved.
+# Review note: User-proposed reconstruction, not a recovered historical transcript.
+# Review note: Historical source unavailable; reimplementation remains planned.
+# Proposed input: Light Foot/Light_Foot_881047_reconstructed_clean.txt
+# SHA-256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
+# Proposed header: LIGHT FOOT (881047) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT.
+# Review note: Identity checked against proposed title and legacy commands;
+# historical authenticity and input timing claims remain unverified.
+# Review note: Selected narration only; shared sections and production notes excluded.
+# Review note: Prior source-specific restriction to active walking/jogging/running
+# is intentionally expanded into permanent learned efficiency of everyday gait.
+# Review note: Plus Lighter Lighter remains an optional reinforcement command.
+# Review note: One body supports four-pass playback; no state-specific instructions.
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-prf-004.opener:
     status: reviewed
-    version: 1.0.0
-    text: Now, learn to move more lightly when you walk, jog or run.
-    notes: 'User-proposed reconstruction; input lines 47–47. Not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Light Foot/Light_Foot_881047_reconstructed_clean.txt; SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73. Human wording review: user approved opener unchanged. Identity checked against the document title and listed legacy commands; confirmation/authenticity claims remain unverified. Suggested timing is not measured evidence. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    version: 1.1.0
+    notes: >-
+      OCF adaptation of the user-proposed Light Foot reconstruction;
+      proposed input Light Foot/Light_Foot_881047_reconstructed_clean.txt;
+      SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73;
+      original input line 47. Historical source remains unavailable and
+      authenticity unverified. The scope is deliberately expanded from
+      walking, jogging, and running on command to a learned, lasting pattern
+      of quiet, light, efficient daily movement. Rights: user_cleared per
+      user's lawyer-clearance attestation. Revised wording awaits editorial
+      approval; finished-session release pending.
+    text: |-
+      This OCF exercise will teach you to move with lightness,
+      quiet precision, and natural efficiency, making smooth,
+      effortless steps an increasingly permanent part of the way you move.
+
   hplus.function.ocf-prf-004.function-body:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF adaptation of the user-proposed Light Foot reconstruction;
+      proposed input Light Foot/Light_Foot_881047_reconstructed_clean.txt;
+      SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73;
+      original input lines 146–199. Original reference unchanged;
+      historical source unavailable and authenticity unverified.
+      Deliberately replaces the reconstruction's restriction to an
+      active-on-command movement-only pattern with a lasting baseline
+      for quiet, economical gait in daily life; optional Plus Lighter Lighter
+      intensifies the learned pattern. Retains exact inhale-hold-command-
+      exhale sequence. Covers lifting the feet cleanly, reducing dragging
+      and impact, controlled foot placement, balanced posture, natural
+      rhythm, and adaptable surface awareness. No companion-function
+      recommendations or duplicated commands. The previously preserved
+      accidental indentation in the draft body is not carried into the
+      new narration. One body supports four passes across Focus 11 and
+      Focus 20. Intended effects are suggestions, not established outcomes.
+      Rights: user_cleared per user's lawyer-clearance attestation.
+      Revised wording awaits editorial approval; finished-session release pending.
     text: |-
-      At any time from this moment forward, whenever you are walking, jogging or
-      running and desire your movement to become lighter, easier and more
-       effortless, inhale deeply and hold your breath.
+      From this moment forward, your body will learn
+      a lighter, quieter, and more efficient way of moving.
 
-      Then say or think in your mind:
+      Whether walking through daily life, climbing steps,
+      jogging, or running, your feet and legs will work
+      together with natural ease and precision.
 
-      PLUS-LIGHTER, LIGHTER.
+      Your feet will lift cleanly from the ground,
+      moving forward without dragging or scraping.
+      Each foot will return gently and deliberately,
+      with just the pressure needed for stable support.
+
+      Your steps will grow quieter, smoother, and lighter.
+      Unnecessary impact, tension, and wasted motion
+      will fade from the way you move.
+
+      Your posture, balance, and rhythm will adjust together.
+      You will place each foot where you intend,
+      adapting naturally to the ground beneath you
+      and the movement you have chosen.
+
+      Your total self will learn this pattern so thoroughly
+      that it becomes your natural way of walking,
+      without needing to think about each separate step.
+
+      This improvement will remain part of your everyday
+      movement, even when you are not consciously
+      using the Light Foot command.
+
+      Whenever you wish to strengthen this lightness
+      and efficiency even further, inhale deeply
+      and gently hold your breath.
+
+      Think or say in your mind, "Plus Lighter Lighter."
 
       Then exhale slowly through your mouth.
 
-      When you do this, the learned LIGHT FOOT pattern will begin to operate more
-      strongly while you are moving your feet.
+      Your movement will immediately become lighter,
+      quieter, more balanced, and more economical,
+      while maintaining the awareness and control
+      appropriate to your surroundings.
 
-      Your steps will become lighter and easier.
+      Each time you move, your body will reinforce
+      this effortless pattern. Each time you use
+      Plus Lighter Lighter, it will become easier
+      and more effective to express at will.
 
-      The movement of your feet and legs will become smoother and more efficient.
-
-      Your physical body will use less unnecessary effort in the act of walking,
-      jogging or running.
-
-      The separate movements required for each step will join together more
-      smoothly.
-
-      Your feet will lift, move and return in a more even rhythm.
-
-      Your balance and direction will remain clear as your movement becomes more
-      comfortable and more effortless.
-
-      Unnecessary heaviness and strain in the act of moving your feet will become
-      less important.
-
-      You will remain aware of the ground, the surrounding conditions and the
-      proper action required for safe movement.
-
-      All when you state:
-
-      PLUS-LIGHTER, LIGHTER.
-
-      The learned LIGHT FOOT pattern is available only while you are actually
-      moving your feet.
-
-      When you stop walking, jogging or running, the present action of LIGHT FOOT
-      will cease until you begin moving your feet again.
-
-      Use the Function Command whenever you desire to improve and intensify the
-      LIGHT FOOT pattern during movement.
-
-      Use TUNE-UP or RESTORATIVE SLEEP when their separate purposes are appropriate
-      for recovery and physical balance.
-
-      Use SYNCHRONIZING when smooth, rapid and coordinated movement is desired.
-
-      The more you use this Function, the easier and more effective it will become.
-    notes: 'User-proposed reconstruction with human edit; original input lines 146–199. Not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Light Foot/Light_Foot_881047_reconstructed_clean.txt; SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73. Human wording review: user approved body with its final sentence changed to the shared more-you-use-this-Function formulation, removing correctly and while-moving-your-feet from that sentence. Remaining wording and the supplied leading space on one wrapped line retained. Original reference remains unchanged. Effect statements remain proposed claims, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
   hplus.function.ocf-prf-004.closer:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF-authored concise closer based on the user-proposed reconstruction;
+      proposed input Light Foot/Light_Foot_881047_reconstructed_clean.txt;
+      SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73;
+      original input lines 320–331. Historical source unavailable;
+      authenticity unverified. Reminds the listener of lasting everyday
+      light-footed movement and optional command reinforcement, preserves
+      the original inhale-hold-command-exhale sequence, and uses standard
+      OCF sign-off. Rights: user_cleared per user's lawyer-clearance
+      attestation. Revised wording awaits editorial approval;
+      finished-session release pending.
     text: |-
-      Remember, when you are walking, jogging or running and desire to move more
-      lightly and effortlessly, inhale deeply and hold your breath.
-
-      Say in your mind:
-
-      PLUS-LIGHTER, LIGHTER.
+      Remember, your lighter, quieter, more efficient way
+      of moving will continue naturally, and whenever
+      you wish to strengthen it, inhale deeply,
+      hold your breath, and think or say in your mind,
+      "Plus Lighter Lighter."
 
       Then exhale slowly through your mouth.
 
-      LIGHT FOOT operates only while you are actually moving your feet.
-
-      This is the end of your OCF Function learning exercise.
-    notes: 'User-proposed reconstruction with user-directed terminology edit; original input lines 320–331. Not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Light Foot/Light_Foot_881047_reconstructed_clean.txt; SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73. H-PLUS changed to OCF per user''s standing instruction; original reference remains unchanged. Human wording review: user approved closer unchanged. Identity checked against the document title and listed legacy commands; confirmation/authenticity claims remain unverified. Suggested timing is not measured evidence. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+      This concludes your OCF Light Foot exercise.

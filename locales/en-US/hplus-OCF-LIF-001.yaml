@@ -1,39 +1,136 @@
 # OCF-LIF-001 — De-Hab
-# English function-specific review candidate; edit this file as the wording source of truth.
+# English function-specific OCF-adapted narration.
+# Edit this file as the wording source of truth.
 # Source status: transcript_unverified; authentication remains unverified.
-# Review note: Waking words sharing line 218 excluded; the user removed the source's leading 12 label from the WORKING body.
+# Review note: Original SOURCE +Transcripts From available tapes/De-Hab/De-Hab.txt
+# SHA-256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+# Review note: Opener lines 6–7; body lines 148–166; closer lines 218–222.
+# Review note: The duplicated source body passage and leading numeric label 12
+# remain excluded; shared waking words on line 218 remain excluded.
+# Review note: Plus No More No More and its breath sequence are preserved.
+# Review note: De-Hab targets selected physical and mental habit patterns,
+# not ordinary memories, desired skills, or all automatic behaviors.
+# Review note: One concise function body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-lif-001.opener:
     status: reviewed
-    version: 1.0.0
-    notes: 'Reference-derived wording; transcript_unverified. SOURCE +Transcripts From available tapes/De-Hab/De-Hab.txt; SHA-256 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6; lines 6–7. Human wording review: user approved opener unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    version: 1.1.0
+    notes: >-
+      OCF-adapted opener based on the unverified De-Hab transcript.
+      Original SOURCE +Transcripts From available tapes/De-Hab/De-Hab.txt;
+      SHA-256 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6;
+      lines 6–7. Original reference remains unchanged. Wording clarifies
+      conscious elimination of unwanted physical and mental habit patterns
+      that interfere with well-being and growth. This is adapted narration,
+      not a verbatim historical transcription. Rights: user_cleared, per
+      user's lawyer-clearance attestation. Revised wording awaits final
+      editorial approval. Finished-session release pending.
     text: |-
-      Now, learn to release any physical and mental imprints that restrict and interfere in your
-      well-being and growth.
+      This OCF exercise will teach you to release
+      and eliminate unwanted physical and mental
+      habit patterns that interfere with your
+      well-being, freedom, and growth.
+
   hplus.function.ocf-lif-001.function-body:
     status: reviewed
-    version: 1.2.0
-    notes: 'Reference-derived wording with human edits; transcript_unverified. Original SOURCE +Transcripts From available tapes/De-Hab/De-Hab.txt; SHA-256 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6; lines 148–166. Human wording review: user approved the body with its duplicated second passage removed, then explicitly requested removal of the leading transcript label 12. Remaining first-passage wording retained verbatim. Original SOURCE remains unchanged. Source claims and transcription uncertainty remain explicit, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    version: 1.3.0
+    notes: >-
+      OCF-adapted function body based on the unverified De-Hab transcript.
+      Original SOURCE +Transcripts From available tapes/De-Hab/De-Hab.txt;
+      SHA-256 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6;
+      lines 148–166. Original reference remains unchanged. The duplicated
+      source passage and leading transcript label 12 remain excluded.
+      The exact Plus No More No More command and inhale-hold-command-
+      candle-exhale sequence are preserved. The adaptation emphasizes
+      consciously selected habitual responses, their progressive weakening
+      and lasting elimination throughout the total self, and greater freedom
+      to choose constructive responses. Useful memory, learning, and wanted
+      automatic abilities remain available. Activation is deliberate when
+      the pattern arises; it does not indiscriminately suppress behavior.
+      One body supports four playback passes across Focus 11 and Focus 20.
+      Affirmative effects describe intended exercise suggestions rather
+      than independently verified outcomes. Rights: user_cleared, per
+      user's lawyer-clearance attestation. Revised wording awaits final
+      editorial approval. Finished-session release pending.
     text: |-
-      From this point forward, whenever you wish to reduce or eliminate any physical and mental
-      habit pattern, all you need do when the pattern arises is to inhale deeply, hold your breath,
-      and say or think in your mind, plus, no more, no more, then exhale slowly through your mouth
-      as if you're blowing out a candle. When you do this, the unwanted pattern,
-      the one you desire to eliminate, will become less and less, less and less throughout your entire system,
-      less and less in every part of your total being until you no longer notice it, until it has
-      been erased completely from all of your conscious awareness and your total system.
-      The more you use this function of reducing and erasing unwanted patterns,
-      the easier and more effective it will become.
+      From this moment forward, you have the ability
+      to eliminate any unwanted physical or mental
+      habit pattern that you choose to release.
+
+      A habit is a pattern repeated until it begins
+      to operate automatically. You can recognize
+      such a pattern and change it at its source.
+
+      Whenever the unwanted habit begins to arise,
+      recognize the particular pattern you wish
+      to eliminate and bring it clearly into your mind.
+
+      Inhale deeply and gently hold your breath.
+
+      Think or say in your mind, "Plus No More No More."
+
+      Then exhale slowly through your mouth,
+      as though gently blowing out a candle.
+
+      The unwanted pattern will immediately
+      begin to weaken throughout your entire system.
+
+      Its familiar impulse will become smaller,
+      quieter, and less compelling, until it
+      no longer directs your thoughts or actions.
+
+      Your conscious mind, subconscious mind,
+      physical body, and total self will release
+      the old pattern together, completely.
+
+      Each time the pattern would once have occurred,
+      your freedom to choose will grow stronger.
+      Your mind and body will respond naturally
+      in the way you now desire.
+
+      The unwanted habit will continue fading
+      until it is completely eliminated
+      from your automatic responses.
+
+      Your useful memories, knowledge, and skills
+      will remain intact, while the unwanted
+      pattern loses its place in your life.
+
+      From this moment forward, this ability
+      to change and eliminate unwanted habits
+      is permanently available whenever you choose.
+
+      The more you use Plus No More No More,
+      the easier, faster, and more effective
+      this lasting change will become.
+
   hplus.function.ocf-lif-001.closer:
     status: reviewed
-    version: 1.1.0
-    notes: 'Reference-derived wording with user-directed OCF terminology edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/De-Hab/De-Hab.txt; SHA-256 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6; lines 218–222 (starts at ''Remember''). H-plus changed to OCF per user''s standing instruction; original SOURCE remains unchanged. Human wording review: user approved closer unchanged. Waking words sharing line 218 remain excluded. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    version: 1.2.0
+    notes: >-
+      OCF-adapted closer based on the unverified De-Hab transcript.
+      Original SOURCE +Transcripts From available tapes/De-Hab/De-Hab.txt;
+      SHA-256 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6;
+      lines 218–222. Shared waking words on line 218 remain excluded.
+      The closer contains one purpose reminder, the exact Plus No More
+      No More command, the original breathing sequence, and the standard
+      OCF ending. This is adapted narration, not verbatim source wording.
+      Rights: user_cleared, per user's lawyer-clearance attestation.
+      Revised wording awaits final editorial approval.
+      Finished-session release pending.
     text: |-
-      Remember to reduce and
-      eliminate unwanted physical and mental habit patterns. All you need do is inhale slowly and
-      deeply. Hold your breath and say or think in your mind, plus no more, no more. Then exhale
-      through your mouth as if you're blowing out a candle. This is the end of this OCF function
-      learning exercise.
+      Remember, whenever an unwanted physical
+      or mental habit begins to arise, bring
+      that pattern clearly into your awareness.
+
+      Inhale deeply and hold your breath.
+
+      Think or say in your mind, "Plus No More No More."
+
+      Then exhale slowly through your mouth,
+      as though gently blowing out a candle.
+
+      This concludes your OCF De-Hab exercise.

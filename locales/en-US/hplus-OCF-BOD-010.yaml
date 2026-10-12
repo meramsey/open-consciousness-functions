@@ -1,31 +1,162 @@
+
 # OCF-BOD-010 — Nutricia
-# English function-specific review candidate; edit this file as the wording source of truth.
+# English function-specific OCF-adapted narration.
+# Edit this file as the wording source of truth.
 # Source status: transcript_unverified; authentication remains unverified.
+# Review note: Both activation commands are preserved:
+# Plus Food More and Plus Food Less.
+# Review note: Function concerns the body's use and retention
+# of food energy, not appetite suppression.
+# Review note: Automatic baseline supports balanced nourishment
+# and metabolism. More and Less are consciously selected.
+# Review note: Suggested selective energy utilization and disposal
+# are exercise claims, not established physiological effects.
+# Review note: One reusable body supports four-pass playback.
+
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-bod-010.opener:
     status: reviewed
-    version: 1.1.0
-    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Nutricia/Nutricia.txt; SHA-256 c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6; lines 1–2. User supplied and approved opener with H-plus changed to OCF and transcript line-wrap joined; original SOURCE remains unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    version: 1.3.0
+    notes: >-
+      OCF-adapted narration based on the unverified Nutricia
+      transcript. Original SOURCE +Transcripts From available
+      tapes/Nutricia/Nutricia.txt;
+      SHA-256 c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6;
+      lines 1–2. Original reference remains unchanged.
+      H-plus terminology changed to OCF. Wording emphasizes
+      conscious direction of food energy utilization and
+      retention rather than appetite control.
+      This is adapted narration, not a verbatim transcription.
+      Rights: user_cleared, per user's lawyer-clearance
+      attestation. Revised wording awaits final editorial
+      approval. Finished-session release pending.
     text: |-
-      This is your OCF function exercise to learn to control your use of the food you eat.
+      This OCF exercise will teach you to direct how your
+      body extracts, uses, and retains energy and nourishment
+      from the food you eat.
+
   hplus.function.ocf-bod-010.function-body:
     status: reviewed
-    version: 1.1.0
-    notes: 'Reference-derived wording with human edits; transcript_unverified. Original SOURCE +Transcripts From available tapes/Nutricia/Nutricia.txt; SHA-256 c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6; lines 33–56. User supplied and approved one body passage, consolidating the source repeat and wording the command cue as supplied; original SOURCE remains unchanged. Physiological/efficacy statements remain source claims, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    version: 1.3.0
+    notes: >-
+      OCF-adapted narration based on the unverified Nutricia
+      transcript. Original SOURCE +Transcripts From available
+      tapes/Nutricia/Nutricia.txt;
+      SHA-256 c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6;
+      lines 33–56. Original reference remains unchanged.
+      One body passage consolidates the historical repetition.
+      Both Plus Food More and Plus Food Less remain distinct
+      conscious activation commands. The Plus Food More
+      suggestion emphasizes maximum useful energy extraction.
+      Plus Food Less emphasizes sufficient nourishment,
+      reduced unnecessary energy retention, and efficient
+      elimination of unneeded excess, preserving the source's
+      intended suggestion. The latter is not an established
+      physiological mechanism for selectively discarding
+      absorbable calories. OCF-authored wording reinforces
+      a lasting automatic baseline of balanced metabolism.
+      Neither conscious mode is permanently active.
+      Appetite and craving control are reserved for Eat/No Eat.
+      One reusable body supports four playback passes across
+      Focus 11 and Focus 20.
+      Rights: user_cleared, per user's lawyer-clearance
+      attestation. Revised wording awaits final editorial
+      approval. Finished-session release pending.
     text: |-
-      From this moment on, whenever you wish to control your use of the food you eat,
-      all you need do is close your eyes, inhale and hold your breath. Then say or think in your mind, plus food more or plus food less.
-      Then exhale slowly through your mouth and open your eyes. When you do this, when you state plus food more, your body system will take from any food you eat the greatest possible energy and translate it quickly and efficiently into your bloodstream.
-      When you state plus food less, your body system will take only that energy from the food you eat needed for proper balance and maintenance and pass any excess that is not so needed easily and smoothly out of your system. Your body knows how to do this perfectly and will do so upon
-      your stated command. The more you use this method of controlling your food energy intake, the easier and more effective it will become.
+      From this moment forward, your body's natural processes
+      of digestion, nourishment, and energy utilization
+      are becoming more efficient and balanced.
+
+      Your body knows how to obtain the nourishment it needs,
+      use that nourishment effectively, and maintain
+      its natural balance.
+
+      This healthy pattern is becoming a permanent,
+      automatic part of your body's everyday function.
+
+      Whenever you wish to direct how your body
+      uses the food you eat, you have two commands.
+
+      The first is "Plus Food More."
+
+      When you use Plus Food More, your body will
+      extract the greatest possible useful nourishment
+      and energy from the food you eat.
+
+      It will convert and distribute that nourishment
+      quickly and efficiently, making the fullest
+      possible use of the food available.
+
+      The second command is "Plus Food Less."
+
+      When you use Plus Food Less, your body will
+      recognize that nourishment is plentiful
+      and there is no need to store unnecessary excess.
+
+      Your body will take from the food you eat
+      exactly what it needs for healthy energy,
+      balance, and maintenance.
+
+      Any excess that is not needed will be
+      safely and efficiently processed and released
+      through your body's natural systems,
+      rather than unnecessarily retained or stored.
+
+      Your body will maintain the nourishment it needs
+      while releasing what serves no useful purpose.
+
+      Your body's natural intelligence knows the difference
+      between what is needed and what is unnecessary.
+
+      To activate either function, close your eyes.
+
+      Inhale deeply and gently hold your breath.
+
+      Think or say in your mind, "Plus Food More"
+      or "Plus Food Less," according to your desire.
+
+      Then exhale slowly through your mouth
+      and open your eyes.
+
+      Your body will respond to your chosen command,
+      directing its use of food energy accordingly.
+
+      The more you use these functions,
+      the easier and more effective they will become.
+
+      Your body's natural processes of nourishment,
+      energy utilization, and metabolic balance
+      will continue working automatically,
+      every day and every night.
+
   hplus.function.ocf-bod-010.closer:
     status: reviewed
-    version: 1.1.0
-    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Nutricia/Nutricia.txt; SHA-256 c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6; lines 195–199. User supplied and approved closer with H Plus changed to OCF and connective wording edited; original SOURCE remains unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    version: 1.3.0
+    notes: >-
+      OCF-adapted closer based on the unverified Nutricia
+      transcript. Original SOURCE +Transcripts From available
+      tapes/Nutricia/Nutricia.txt;
+      SHA-256 c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6;
+      lines 195–199. Original reference remains unchanged.
+      Closer retains one purpose reminder, both exact activation
+      commands, the breathing sequence, and the standard
+      OCF ending. Additional reinforcement is omitted.
+      This is adapted narration, not verbatim source wording.
+      Rights: user_cleared, per user's lawyer-clearance
+      attestation. Revised wording awaits final editorial
+      approval. Finished-session release pending.
     text: |-
-      Remember, to control your food energy intake and conversion, all you need do is close your eyes, inhale deeply and hold your breath, and
-      say or think in your mind, plus food more, or plus food less, then exhale through your mouth and open your eyes.
-      This is the end of your OCF function exercise.
+      Remember, whenever you wish to direct how your body
+      uses food energy, close your eyes, inhale deeply,
+      and hold your breath.
+
+      Think or say in your mind, "Plus Food More"
+      or "Plus Food Less," according to your desire.
+
+      Then exhale slowly through your mouth
+      and open your eyes.
+
+      This concludes your OCF Nutricia exercise.

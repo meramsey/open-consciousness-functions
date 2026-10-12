@@ -1,104 +1,136 @@
 # OCF-PRF-006 — Strong-Quick
-# English function-specific review candidate; edit this file as the wording source of truth.
+# English function-specific OCF-adapted narration; wording source of truth.
 # Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
-# Review note: Proposed input: Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt; SHA-256 e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32; header 'STRONG-QUICK (88R1006) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
-# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
-# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
-# Review note: Legacy PLUS-STRONG-QUICK wording retained; canonical PLUS-STRONG QUICK metadata is unchanged.
+# Review note: User-proposed reconstruction, not a recovered historical transcript.
+# Review note: Historical source unavailable; reimplementation remains planned.
+# Proposed input: Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt
+# SHA-256: e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32
+# Proposed header: STRONG-QUICK (88R1006) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT.
+# Review note: Identity checked against proposed title and command; authenticity
+# and suggested timing are not independently verified.
+# Review note: Opener input line 47; body lines 146–207; closer lines 328–343.
+# Review note: Shared preparation, state, return, and production material excluded.
+# Review note: Legacy PLUS-STRONG-QUICK and canonical PLUS-STRONG QUICK represent
+# the same spoken activation cue: Plus Strong Quick.
+# Review note: Exceptional strength and speed are the intended experiential aim,
+# not verified physiological capabilities or guaranteed external outcomes.
+# Review note: Temporary application with separate Plus Release instruction.
+# Review note: One function body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-prf-006.opener:
     status: reviewed
-    version: 1.0.0
-    text: Now, learn to be much stronger, much quicker than you ever thought possible.
-    notes: 'User-proposed reconstruction; input lines 47–47. Not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt; SHA-256 e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32. Human wording review: user approved opener unchanged. Legacy PLUS-STRONG-QUICK wording retained; canonical PLUS-STRONG QUICK metadata is unchanged. Confirmation/authenticity claims remain unverified. Suggested timing is not measured evidence. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    version: 1.1.0
+    notes: >-
+      OCF adaptation of the user-proposed Strong-Quick reconstruction;
+      proposed input Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt;
+      SHA-256 e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32;
+      original input line 47. Historical source unavailable and authenticity
+      unverified. Preserves the intended exceptional, momentary strength
+      and quickness rather than reframing the function as ordinary training.
+      Rights: user_cleared per user's lawyer-clearance attestation.
+      Revised wording awaits editorial approval; finished-session release pending.
+    text: |-
+      This OCF exercise will teach you to call upon
+      extraordinary strength and quickness within your total self,
+      bringing them into action immediately when they are needed most.
+
   hplus.function.ocf-prf-006.function-body:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF adaptation of the user-proposed Strong-Quick reconstruction;
+      proposed input Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt;
+      SHA-256 e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32;
+      original input lines 146–207. Historical source remains unavailable;
+      original reconstruction unchanged. Preserves an immediate and momentary
+      response to urgent necessity, intended unusual muscular strength and
+      speed, whole-body coordination, clear awareness, and the separate
+      Plus Release command. Spoken activation is Plus Strong Quick, reflecting
+      legacy PLUS-STRONG-QUICK and canonical PLUS-STRONG QUICK metadata.
+      The inhale-hold-command-exhale pattern is preserved for activation
+      and release. Repetitions, scenario examples, and companion-function
+      material removed. Exceptional performance and the suggested response
+      are intended experiences, not verified or guaranteed effects.
+      One body supports four passes across Focus 11 and Focus 20.
+      Rights: user_cleared per user's lawyer-clearance attestation.
+      Revised wording awaits editorial approval; finished-session release pending.
     text: |-
-      At any time from this moment forward, when an emergency situation requires
-      an instant and momentary application of unusual muscular strength and
-      quickness, inhale deeply and hold your breath.
+      From this moment forward, within your total self
+      there is an exceptional reserve of strength and quickness,
+      ready to be called upon when an immediate need arises.
 
-      Then say or think in your mind:
+      You will recognize the moment that calls for action.
+      Your awareness will become clear and direct.
+      Your mind and body will unite around what must be done.
 
-      PLUS-STRONG-QUICK.
+      When you need this extraordinary response,
+      bring the necessary action clearly into your awareness.
+      Inhale deeply and gently hold your breath.
 
-      Then exhale slowly through your mouth.
-
-      When you do this, your physical body will respond immediately to the action
-      that is required.
-
-      Your conscious mind will remain clear and alert.
-
-      Your attention will move directly to the immediate need.
-
-      All parts of your physical body involved in the action will work together
-      more smoothly and completely.
-
-      Your movement will become quicker, stronger and more coordinated.
-
-      Your muscles will apply the greatest strength and speed readily available
-      to them for the immediate action.
-
-      Unrelated thought and hesitation will move into the background.
-
-      You will know what action is needed, and your physical body will respond
-      quickly and directly.
-
-      All when you state:
-
-      PLUS-STRONG-QUICK.
-
-      This Function is for an emergency need only.
-
-      Its application is instant and momentary.
-
-      Use it only as needed and only for a short duration.
-
-      It is not for practice, display, competition or continuous application.
-
-      When the emergency need has passed, use the RELEASE Function.
-
-      Bring STRONG-QUICK clearly into your mind.
-
-      Inhale deeply and hold your breath.
-
-      Say or think in your mind:
-
-      PLUS-RELEASE.
+      Think or say in your mind, "Plus Strong Quick."
 
       Then exhale slowly through your mouth.
 
-      The present application of STRONG-QUICK will end, and your physical system
-      will return smoothly to its normal condition.
+      Immediately, your total self will respond as one.
+      Your conscious mind, subconscious mind, nervous system,
+      and muscles will work together in complete coordination.
 
-      The learning of STRONG-QUICK will remain within you, ready for use again if
-      a true emergency need arises.
+      Hesitation and unnecessary thought will fall away.
+      Your movements will become direct, rapid, and precise.
+      Every part of your body needed for the action
+      will contribute its strength in perfect timing.
 
-      The more you use this Function, the easier and more effective it will become.
-    notes: 'User-proposed reconstruction with human edit; original input lines 146–207. Not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt; SHA-256 e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32. Human wording review: user approved the body with its final sentence changed to the consistent more-you-use-this-Function formulation without correctly; remaining wording retained. Original reference remains unchanged. Effect statements remain proposed claims, not established outcomes. Legacy PLUS-STRONG-QUICK wording retained; canonical PLUS-STRONG QUICK metadata is unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+      You will draw upon reserves of power and speed
+      beyond what you ordinarily recognize within yourself,
+      concentrating your entire capacity into the moment.
+
+      Your awareness will remain clear.
+      Your action will be decisive.
+      The strength and quickness you call upon
+      will be directed toward the immediate purpose.
+
+      This exceptional response is temporary,
+      arising when you deliberately call upon it.
+      When its purpose is complete, bring Strong-Quick
+      clearly into your awareness.
+
+      Inhale deeply, hold your breath,
+      think or say in your mind, "Plus Release,"
+      and exhale slowly through your mouth.
+
+      The present application will end,
+      and your physical system will return smoothly to balance.
+      Your learned ability will remain available
+      whenever another need arises.
+
+      Each time you use this function,
+      your total self will recognize and respond
+      to your intention more readily and effectively.
+
   hplus.function.ocf-prf-006.closer:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF-adapted closer based on the user-proposed Strong-Quick reconstruction;
+      proposed input Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt;
+      SHA-256 e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32;
+      original input lines 328–343. Historical source unavailable and
+      authenticity unverified. Retains one purpose reminder, the activation
+      breathing sequence and exact spoken Plus Strong Quick command, the
+      separate Plus Release cue, and standard OCF sign-off. Rights:
+      user_cleared per user's lawyer-clearance attestation. Revised wording
+      awaits editorial approval; finished-session release pending.
     text: |-
-      Remember, when a true emergency requires instant and momentary strength and
-      quickness, inhale deeply and hold your breath.
-
-      Say in your mind:
-
-      PLUS-STRONG-QUICK.
-
+      Remember, when an immediate need calls for extraordinary
+      strength and quickness, inhale deeply, hold your breath,
+      and think or say in your mind, "Plus Strong Quick."
       Then exhale slowly through your mouth.
 
-      Use it only as needed and for a short duration.
+      When the need has passed, bring Strong-Quick to mind,
+      inhale, hold your breath, think or say "Plus Release,"
+      and exhale slowly through your mouth.
 
-      When the need has passed, use the RELEASE Function:
-
-      PLUS-RELEASE.
-
-      This is the end of your OCF Function learning exercise.
-    notes: 'User-proposed reconstruction with user-directed terminology edit; original input lines 328–343. Not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt; SHA-256 e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32. H-PLUS changed to OCF per user''s standing instruction; original reference remains unchanged. Human wording review: user approved closer unchanged. Legacy PLUS-STRONG-QUICK wording retained; canonical PLUS-STRONG QUICK metadata is unchanged. Identity checked against the document title and listed legacy commands; confirmation/authenticity claims remain unverified. Suggested timing is not measured evidence. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+      This concludes your OCF Strong-Quick exercise.

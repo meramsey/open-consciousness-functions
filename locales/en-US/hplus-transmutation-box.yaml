@@ -1,16 +1,59 @@
-schema_version: "1.0"
+# OCF shared — Transmutation Box
+# English reusable preparation narration; three entry keys preserved.
+# Source status: user-supplied review candidate; historical source not verified.
+# Review note: No source path, checksum, or line ranges were supplied.
+# Review note: The box is a reusable mental preparation device, not a command
+# to erase memories, suppress feelings permanently, or lose useful information.
+# Review note: Three segments play consecutively: begin, place, complete.
+# Review note: No function-specific activation or session-state cue added.
+schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.shared.transmutation-box.begin:
     status: reviewed
-    version: "1.0.0"
-    text: Turn now to your transmutation box. Raise the heavy lid.
+    version: 1.1.0
+    notes: >-
+      OCF editorial revision of the user-supplied shared opening. Preserves the
+      transmutation box and its heavy lid, with a brief invitation to visualize
+      opening it. No authenticated historical source was supplied. Revised
+      wording awaits editorial approval.
+    text: |-
+      Turn now to your transmutation box.
+      See it clearly before you, strong and secure.
+      Raise its heavy lid, and open it completely.
+
   hplus.shared.transmutation-box.place:
     status: reviewed
-    version: "1.0.0"
-    text: Place in the box any worries, anxieties, and concerns that you may have right at this moment. You don't need them now, and they will simply get in the way of your learning process. Do this now....
+    version: 1.1.0
+    notes: >-
+      OCF editorial revision of the user-supplied shared placement passage.
+      Preserves setting aside present worries, anxieties, and concerns while
+      including distractions and unnecessary demands on attention. Items are
+      set aside for the exercise, not erased or permanently discarded. No
+      authenticated historical source was supplied. Revised wording awaits
+      editorial approval.
+    text: |-
+      Place inside your box any worries, anxieties,
+      concerns, or distractions you carry at this moment.
+      Whatever is asking for your attention can rest here.
+      You do not need to carry it into this experience.
+      Let each concern take a form, and place it in the box.
+      Take your time. Set it all aside for now.
+
   hplus.shared.transmutation-box.complete:
     status: reviewed
-    version: "1.0.0"
-    text: Close the lid of your transmutation box. Close it tightly. Turn away. Breathe slowly and deeply and relax.
+    version: 1.1.0
+    notes: >-
+      OCF editorial revision of the user-supplied closing passage. Preserves
+      tightly closing the heavy lid, turning away, and slow deep breathing.
+      Clarifies that concerns can remain in the box for the duration of the
+      exercise while attention becomes available for learning. No historical
+      source was authenticated. Revised wording awaits editorial approval.
+    text: |-
+      Now close the heavy lid of your transmutation box.
+      Close it tightly, knowing that everything inside
+      can remain there while you continue.
+      Turn away from the box.
+      Breathe slowly and deeply.
+      Let your mind become quiet, open, and ready.

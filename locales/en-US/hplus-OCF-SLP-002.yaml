@@ -1,70 +1,122 @@
-schema_version: "1.0"
+# OCF-SLP-002 — Sleep
+# English function-specific OCF-adapted narration; wording source of truth.
+# Source status: transcript_unverified; authentication remains unverified.
+# Review note: Source identified as Sleep; opener lines 7–8, body lines 72–116,
+# and closer lines 315–317, according to the supplied review candidate.
+# Review note: No original source path or SHA-256 was supplied for this review;
+# neither is invented. The repeated source body passage has been consolidated.
+# Review note: The exact spoken cue is Plus Twenty Twenty (source: PLUS-20, 20).
+# Review note: Unlike other functions, activation happens DURING the exhale
+# after slow, deep breathing; no breath hold or candle exhale is introduced.
+# Review note: Sleep enables consciously chosen natural sleep with waking at the
+# desired time; restoration during normal sleep is a supporting feature.
+# Review note: Distinct from Recharge (brief nap) and Restorative Sleep (healing).
+# Review note: One body supports four-pass playback across Focus 11 and Focus 20.
+# Review note: Sleep and bodily effects are intended exercise suggestions,
+# not independently established physiological outcomes.
+schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-slp-002.opener:
     status: reviewed
-    version: 1.1.0
-    notes: Reference-derived candidate; Sleep lines 7–8. Wording review pending. H Plus→OCF terminology applied per user directive.
+    version: 1.2.0
+    notes: >-
+      OCF-adapted opener based on the supplied unverified Sleep candidate,
+      source lines 7–8. Source document path and SHA-256 were not supplied.
+      Clarifies the core purpose of deliberately entering ordinary natural,
+      restful sleep and awakening at the desired time. This wording is an
+      adaptation, not a verified historical transcript. Rights: user_cleared
+      per user's lawyer-clearance attestation. Revised wording awaits final
+      editorial approval; finished-session release pending.
     text: |-
-      This is your OCF function exercise so that you can learn to sleep
-      whenever you so desire.
+      This OCF exercise will teach you to enter normal,
+      natural, restful sleep whenever you choose,
+      and awaken at the time you desire.
+
   hplus.function.ocf-slp-002.function-body:
     status: reviewed
-    version: 1.1.0
-    notes: Reference-derived candidate; Sleep lines 72–116. Physiological and efficacy claims retained for human review. Reuse this one key for all session passes. PLUS-20 terminology made consistent throughout.
+    version: 1.2.0
+    notes: >-
+      OCF-adapted function body based on the supplied unverified Sleep candidate,
+      source lines 72–116. Source document path and SHA-256 were not supplied.
+      The repeated second passage is removed. Preserves the exact spoken cue
+      Plus Twenty Twenty, slow deep breathing with the command thought or said
+      during exhalation, repeated breath cycles as sleep deepens, consciously
+      chosen sleep, desired awakening, and the source's suggestions of bodily
+      equalization, nervous-system harmony, restoration, and refreshment.
+      No inhale-hold sequence is added. The learned sleep ability remains
+      available without causing unwanted sleepiness when not invoked.
+      One body is reused for four passes in Focus 11 and Focus 20, without
+      session-specific references or return instructions. Effects are intended
+      narration suggestions rather than independently verified outcomes.
+      Rights: user_cleared per user's lawyer-clearance attestation. Revised
+      wording awaits final editorial approval; finished-session release pending.
     text: |-
-      At any point
-      from this moment on
-      whenever you desire to move into normal, natural, restful sleep
-      all you need do is breathe slowly and deeply
-      and as you exhale think or say in your mind
-      plus 20, 20.
-      The more you do this the deeper and deeper you will move into calm,
-      relaxing, restful sleep and you will awaken when you desire to do so.
+      From this moment forward, you have the ability
+      to enter normal, natural, restful sleep
+      whenever you consciously desire.
 
-      When you sleep this normal sleep
-      your body will become so equalized as to overcome all those things
-      that may hinder or prevent it from being and giving its normal
-      and natural total self.
-      The mental will send those signals as to create harmony and balance to the entire self.
-      The nerve system will carry such signals as to direct
-      each portion of the body to restore and operate smoothly and easily
-      that which it was designed to perform.
-      Perfectly normal, perfectly balanced, perfectly equalized will be the result
-      whenever you sleep this normal, natural, restful sleep.
-      When you awaken you will be completely refreshed
-      full of new energy, wide awake both physically and mentally
-      and better in every way.
-      At any point
-      from this moment on
-      whenever you desire to move
-      into normal, restful sleep
-      you will be able to do so.
-      At any point from this moment on
-      whenever you desire to move into normal, natural, restful sleep
-      all you need to do is breathe slowly and deeply
-      and as you exhale think or say in your mind
-      plus 20, 20.
-      Whenever you will move into calm, relaxing, restful sleep
-      and you will awaken when you desire to do so.
-      When you sleep this normal sleep
-      your body will become so equalized as to overcome all those things
-      that may hinder or prevent it from being and giving its normal, natural, total self.
-      The mental will send those signals as to create harmony and balance to the entire self.
-      The nerve system will carry such signals
-      as to direct each portion of the body to restore
-      and operate smoothly and easily that which it was designed to perform.
-      Perfectly normal, perfectly balanced, perfectly equalized
-      will be the result whenever you sleep this normal, natural, restful sleep.
-      When you awaken you will be completely refreshed
-      full of new energy, wide awake both physically and mentally
-      and better in every way.
+      When you choose to sleep, allow your body
+      to settle comfortably and begin breathing
+      slowly, deeply, and easily.
+
+      As you exhale, think or say in your mind,
+      "Plus Twenty Twenty."
+
+      With each gentle breath and each repetition
+      of this command, you will move more deeply
+      into calm, peaceful, natural sleep.
+
+      Your thoughts will become quiet.
+      Unnecessary effort and tension will fade.
+      Your mind and body will recognize that
+      the time for comfortable sleep has arrived.
+
+      You will fall asleep smoothly and naturally,
+      without needing to force or follow the process.
+
+      During sleep, your total self will work
+      toward harmony, balance, and equalization.
+      Your nervous system and physical body
+      will cooperate in their natural patterns
+      of rest, maintenance, and renewal.
+
+      Each part of your system will settle
+      into the rhythms appropriate for sleep,
+      allowing your body and mind to recover
+      and restore their natural vitality.
+
+      You will remain peacefully asleep for
+      the rest you desire, and awaken at the
+      time you have chosen, refreshed, alert,
+      and ready to begin again.
+
+      This ability to enter restful sleep
+      will remain permanently available to you.
+      It begins when you choose to use it,
+      leaving your ordinary waking state
+      clear and active at other times.
+
+      Each time you use Plus Twenty Twenty,
+      entering natural sleep and awakening
+      refreshed will become easier and more effective.
+
   hplus.function.ocf-slp-002.closer:
     status: reviewed
-    version: 1.1.0
-    notes: Reference-derived candidate; Sleep lines 315–317. Wording review pending. H-plus→OCF terminology applied per user directive.
+    version: 1.2.0
+    notes: >-
+      OCF-adapted closer based on the supplied unverified Sleep candidate,
+      source lines 315–317. Source document path and SHA-256 were not supplied.
+      Preserves one purpose reminder, slow deep breathing, Plus Twenty Twenty
+      during the exhale, and the standard OCF ending. No inhale-hold or
+      candle-blowing instruction has been added. Rights: user_cleared per
+      user's lawyer-clearance attestation. Revised wording awaits final
+      editorial approval; finished-session release pending.
     text: |-
-      Remember, whenever you wish to move into normal, natural, restful sleep, all you need do is breathe slowly and deeply, and say or think, plus twenty, twenty, in your mind.
-      The more you give this signal, the deeper you will move into normal, restful sleep.
-      This is the end of this OCF function exercise.
+      Remember, whenever you wish to enter normal,
+      natural, restful sleep, breathe slowly and deeply.
+      As you exhale, think or say in your mind,
+      "Plus Twenty Twenty."
+
+      This concludes your OCF Sleep exercise.

@@ -1,89 +1,162 @@
-schema_version: "1.0"
+# OCF shared — Ten-point total relaxation
+# English reusable narration; six entry keys preserved.
+# Source status: reference-derived user-supplied draft; historical authentication unverified.
+# Review note: Original source path, line ranges, and checksum were not provided.
+# Review note: Editorial adaptation restores one continuous count from one to ten.
+# Review note: Count mapping: one face/head; two neck/shoulders; three arms/hands;
+# four upper back; five lower back; six chest/breath; seven abdomen/organs;
+# eight hips; nine legs; ten feet/toes and whole-body integration.
+# Review note: The six separate entries are intended to play consecutively in order.
+# Review note: No function-specific command or session-state/return instructions added.
+schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.shared.relaxation.begin:
     status: reviewed
-    version: "1.0.0"
+    version: 1.1.0
+    notes: >-
+      Editorial adaptation of the user-supplied ten-point relaxation opening.
+      The original text is preserved in the supplied review candidate; source
+      provenance was not provided. Establishes a gradual one-to-ten descent
+      without beginning the count in this introductory entry. Revised wording
+      awaits editorial approval.
     text: |-
-      Now you will begin the 10-point system of total relaxation.
-      By the time you reach the count of ten, your body will be totally and completely relaxed
+      Now you will begin the ten-point system of total relaxation.
+      With each number, your body and mind will become more deeply relaxed.
+      As you move from one to ten, relaxation will spread naturally
+      through every part of your physical body.
+      By the count of ten, you will be totally and completely relaxed,
       in all parts, in all ways.
-      The higher the number, the more deeply relaxed you will become.
+
   hplus.shared.relaxation.face:
     status: reviewed
-    version: "1.0.0"
+    version: 1.1.0
+    notes: >-
+      Editorial adaptation of the user-supplied facial and head relaxation
+      passage. Assigns count one explicitly; preserves the gradual progression
+      through jaw, eyelids, lips, forehead, cheeks, scalp, neck, and eyes,
+      followed by relaxation sinking inward toward the brain. Neck is revisited
+      at count two as part of the neck-and-shoulder transition. Repeated
+      transcription fragments condensed for natural speech. Revised wording
+      awaits editorial approval.
     text: |-
-      First, let your jaw, the muscles of your jaw, let them go limp.
+      One.
+      Begin with your face and head.
+      Let your jaw loosen. Let the muscles of your jaw go limp.
       Relax.
-      Let the muscles and nerves of your jaw go limp.
-      Relax.
-      Now your eyelids.
-      Let your eyelids relax.
-      Go limp.
-      Now your lips.
-      Let the muscles and nerves of your lips relax.
-      Relax easily and go limp.
-      Now the muscles in your forehead.
-      let the muscles in your forehead relax go limp now the muscles in your cheeks
-      in each cheek let them relax the muscles in your cheeks relax and go limp
-      now the muscles in your scalp over the top of your head in your scalp let the
-      muscles in your scalp relax, relax. Now the muscles in your neck, let the muscles in your
-      neck relax, relax. Now your eyes, let the muscles in your eyes, the muscles that control
-      your eyes, let them relax, relax. Now let this relaxation of the nerves and muscles
-      in your head. Let this relaxation sink inward. Let it sink inward. Let it flow into your
-      brain. Let it flow into your brain. Let this relaxation flow into your brain. Let it flow
-      and sink easily and deeply into your brain feel it sinking inward easily and
-      calmly until your entire brain feels more and more relaxed more and more
-      relaxed now that your brain feels and understands this relaxation now that it
-      feels and understands this relaxation.
+      Let your eyelids soften, resting easily and naturally.
+      Let your lips and the muscles around your mouth relax.
+      Relax and let go.
+      Let the muscles of your forehead become smooth and calm.
+      Let your cheeks relax, one cheek and then the other.
+      Feel relaxation spreading over your scalp,
+      across the top and back of your head.
+      Let the muscles around your eyes release all unnecessary effort.
+      Now feel this relaxation sinking inward,
+      flowing gently from your head into your brain.
+      Your brain feels and understands this relaxation.
+      Allow it to deepen, easily and calmly.
+
   hplus.shared.relaxation.shoulders:
     status: reviewed
-    version: "1.0.0"
+    version: 1.1.0
+    notes: >-
+      Editorial adaptation of the user-supplied count-two passage. Keeps
+      the original notion of relaxation flowing from the brain into the body
+      and the repeated release cadence. Introduces the neck and shoulders
+      as the first major body area. Revised wording awaits editorial approval.
     text: |-
-      As I count to 10, let this relaxation flow from your brain.
-      Flow from your brain into every part of your physical body.
-      Two, your relaxed brain tells your neck and shoulders to relax.
-      Let go.
-      Sleep.
+      Now let this relaxation flow outward from your brain
+      and down through every part of your body.
+      Two.
+      Your brain sends the signal for your neck and shoulders to relax.
+      Let the muscles of your neck soften.
+      Feel your shoulders settling, releasing their weight.
+      Relax. Let go. Sleep.
+
   hplus.shared.relaxation.hands:
     status: reviewed
-    version: "1.0.0"
+    version: 1.1.0
+    notes: >-
+      Editorial adaptation of the user-supplied count-three passage.
+      Preserves arms, hands, individual fingers, and the relax-let-go-sleep
+      pattern while removing duplicate broken phrasing. Revised wording
+      awaits editorial approval.
     text: |-
-      Three. Your arms. Your brain tells your arms to relax. Let go. Sleep. Your brain tells
-      your hands and fingers. Each hand and each finger. Relax. Let go. Sleep.
+      Three.
+      Your brain tells your arms to relax.
+      Feel the muscles of both arms loosening,
+      from your shoulders down through your elbows and wrists.
+      Your hands relax. Every finger relaxes.
+      Each hand and each finger, completely at ease.
+      Relax. Let go. Sleep.
+
   hplus.shared.relaxation.torso:
     status: reviewed
-    version: "1.0.0"
+    version: 1.1.0
+    notes: >-
+      Editorial adaptation of the user-supplied back, chest, and lower-body
+      passage. Assigns previously missing counts four and five to the upper
+      and lower back, retaining the supplied six for the chest and breathing
+      structures and seven for the abdomen and internal organs. Organ references
+      express relaxation as guided imagery rather than literal voluntary control.
+      Revised wording awaits editorial approval.
     text: |-
-      Your brain
-      tells your back, up and down your back, each muscle and nerve in your back to relax, let
-      go, sleep.
+      Four.
+      Your brain tells your upper back to relax.
+      Feel the muscles between your shoulders softening,
+      releasing tension across your upper back.
+      Relax. Let go. Sleep.
+
+      Five.
+      Relax the middle and lower parts of your back.
+      Each muscle and nerve along your back can settle more deeply.
+      Your whole back rests comfortably.
+      Relax. Let go. Sleep.
+
       Six.
-      Your brain tells your upper body, your chest, your heart, your lungs, your diaphragm.
-      Your brain tells this part and these parts of your physical body to relax.
-      Let go.
-      Sleep.
+      Your brain sends this relaxation through your chest,
+      around your heart and lungs, and into your diaphragm.
+      Your breathing remains smooth, easy, and natural.
+      Your upper body becomes quiet and deeply relaxed.
+      Relax. Let go. Sleep.
+
       Seven.
-      Your brain tells your lower body.
-      Your abdomen.
-      Your abdomen down to your hips.
-      Your kidneys.
-      Your liver.
-      Your stomach.
-      your intestines, your genitals.
-      Your brain tells all of these parts in your lower body to relax and let go.
-      Sleep.
+      Relax your abdomen and the whole of your lower torso.
+      Feel this calm spreading through your stomach,
+      your liver, kidneys, intestines, and the organs of your lower body.
+      Every part settles into comfortable balance.
+      Relax. Let go. Sleep.
+
   hplus.shared.relaxation.legs:
     status: reviewed
-    version: "1.0.0"
+    version: 1.1.0
+    notes: >-
+      Editorial adaptation of the user-supplied hips, legs, feet, and toes
+      passage. Completes the missing count sequence with eight for hips,
+      nine for legs, and ten for feet and toes, then explicitly integrates
+      full-body relaxation. Preserves the repeated relaxation cadence.
+      Revised wording awaits editorial approval.
     text: |-
-      Your brain tells your hips, each hip, the muscles and nerves in each hip, to relax.
-      Let go, sleep.
-      Your brain tells your legs, each leg from your hip down to your foot, your legs.
-      Your brain tells the muscles and nerves in your legs to relax.
-      Let go, sleep.
-      Your feet and your toes.
-      Your brain tells the muscles and nerves in each foot and each toe to relax.
-      Let go.
-      Sleep.
+      Eight.
+      Your brain tells your hips to relax.
+      Each hip, and the muscles surrounding it, releases and lets go.
+      Relax. Let go. Sleep.
+
+      Nine.
+      Relax both legs, from your hips down through your thighs,
+      your knees, your calves, and your ankles.
+      Every muscle in each leg becomes quiet and at ease.
+      Relax. Let go. Sleep.
+
+      Ten.
+      Let your feet relax completely.
+      Feel the muscles of each foot softening,
+      and let every toe release its last unnecessary effort.
+      Relax. Let go. Sleep.
+
+      Now your whole body is deeply relaxed,
+      from the top of your head to the tips of your toes.
+      Every part is calm, comfortable, and at ease.
+      Rest in this total relaxation.

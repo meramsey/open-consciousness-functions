@@ -1,99 +1,209 @@
 # OCF-EMG-002 — Emergency: Toxic
-# English function-specific review candidate; edit this file as the wording source of truth.
+# English function-specific OCF-adapted narration.
+# Edit this file as the wording source of truth.
 # Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned.
-# Review note: Proposed input: Emergency: Toxic/Emergency_Toxic_881041_reconstructed_clean.txt; SHA-256 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510; header 'EMERGENCY: TOXIC (881041) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT'.
-# Review note: Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified.
-# Review note: Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence.
-# Review note: Proposed physiological and efficacy assertions retained as claims for review.
+# Review note: User-proposed reconstruction, not a recovered
+# historical Human Plus transcript.
+# Review note: Historical source availability remains unavailable;
+# reimplementation remains planned.
+# Review note: Proposed input:
+# Emergency: Toxic/Emergency_Toxic_881041_reconstructed_clean.txt
+# SHA-256:
+# 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510
+# Review note: Source identity was checked against the document
+# title and listed legacy commands, not inferred from filename.
+# Claims of historical authenticity remain unverified.
+# Review note: Shared preparation, state, return, production
+# directions, and non-narration notes remain excluded.
+# Review note: The exact Plus Clear Remove command and the
+# original breathing sequence are preserved.
+# Review note: OCF adaptation introduces intended automatic
+# activation during harmful exposure, including when conscious
+# invocation is impossible; this is not an established capability.
+# Review note: Protective and elimination processes are intended
+# to be self-regulating rather than continuously elevated.
+# Review note: Emergency treatment remains complementary;
+# exposure-specific care belongs in supporting documentation.
+# Review note: One concise body supports four-pass playback.
+# Review note: Closer follows the standardized OCF reminder format.
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-emg-002.opener:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF-adapted opener based on the user-proposed Emergency:
+      Toxic reconstruction. Proposed input:
+      Emergency: Toxic/Emergency_Toxic_881041_reconstructed_clean.txt;
+      SHA-256 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510;
+      lines 48–49. Original reconstruction remains unchanged.
+      Historical source availability remains unavailable.
+      Wording expanded to emphasize immediate protection,
+      recognition, balanced detoxification, and elimination
+      of harmful foreign substances. This is OCF-authored
+      adapted narration, not a recovered historical transcript.
+      Rights: user_cleared, per user's lawyer-clearance
+      attestation. Revised wording awaits final editorial
+      approval. Finished-session release pending.
     text: |-
-      Now, learn to help your physical body rid itself of harmful foreign
-      substances.
-    notes: 'User-proposed reconstruction draft; input lines 48–49. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Emergency: Toxic/Emergency_Toxic_881041_reconstructed_clean.txt; SHA-256 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510; header ''EMERGENCY: TOXIC (881041) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed physiological and efficacy assertions retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+      This OCF exercise will strengthen your body's
+      protective response to harmful foreign substances,
+      directing its natural abilities toward recognition,
+      protection, detoxification, and safe elimination.
+
   hplus.function.ocf-emg-002.function-body:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF-adapted narration based on the user-proposed
+      Emergency: Toxic reconstruction. Proposed input:
+      Emergency: Toxic/Emergency_Toxic_881041_reconstructed_clean.txt;
+      SHA-256 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510;
+      proposed extent lines 148–206. Original reconstruction
+      remains unchanged. Historical source availability remains
+      unavailable and reimplementation remains planned.
+      Narration reorganized into automatic recognition of
+      harmful exposure, coordinated protective responses,
+      physiological regulation, detoxification, elimination,
+      conscious activation, and continuing recovery.
+      Source examples of chemicals, poisons, pesticides,
+      herbicides, venom, bites, and stings are preserved.
+      OCF-authored additions establish intended automatic
+      activation, including when conscious invocation is
+      impossible, and coordinated action of the liver,
+      kidneys, lungs, digestive system, circulation, and
+      immune defenses. Automatic activation and enhanced
+      elimination remain exercise suggestions, not
+      independently verified toxicological capabilities.
+      Physiological responses are framed as appropriate
+      to the actual substance and exposure.
+      The exact Plus Clear Remove command and original
+      inhale, hold, command, and exhale sequence are preserved.
+      Permanent availability applies to the proposed
+      protective response, not chronic emergency activity.
+      Redundant activation instructions, companion-function
+      references, and extended treatment disclaimers are
+      omitted from spoken narration.
+      One reusable body supports repeated playback
+      across Focus 11 and Focus 20.
+      Shared preparation, state, and return wording excluded.
+      Rights: user_cleared, per user's lawyer-clearance
+      attestation. Revised wording awaits final editorial
+      approval. Finished-session release pending.
     text: |-
-      At any time from this moment forward, when a harmful foreign substance has
-      entered or contacted your physical body, use this Function immediately.
+      From this moment forward, whenever a harmful
+      foreign substance enters or contacts your body,
+      your natural protective systems will immediately
+      begin responding with greater speed,
+      coordination, and effectiveness.
 
-      Such a substance may be a chemical, poison, pesticide, herbicide, venom,
-      or the result of an insect sting or bite.
+      Whether the substance is a chemical,
+      poison, pesticide, herbicide, venom,
+      or something introduced through a bite
+      or sting, your body will recognize
+      the disturbance and respond appropriately.
 
-      Obtain appropriate first aid and treatment without delay.
+      Your protective systems will work together
+      to limit the harmful substance's effects
+      and maintain the best possible balance.
 
-      Then inhale deeply and hold your breath.
+      Your circulation, immune defenses,
+      liver, kidneys, lungs, and digestive system
+      will coordinate their natural functions
+      according to what your body requires.
 
-      Say or think in your mind:
+      Harmful substances will be identified,
+      contained where appropriate,
+      processed and neutralized when possible,
+      and directed toward safe elimination
+      through the proper pathways.
 
-      PLUS-CLEAR, REMOVE.
+      Your body's natural protective responses
+      will operate in intelligent balance,
+      responding only as strongly
+      and for as long as needed.
+
+      The affected areas will receive
+      the protection and support needed
+      to restore healthy function.
+
+      From this moment forward, this automatic
+      protective response is permanently
+      established within you.
+
+      Whether awake, asleep, or unable
+      to consciously direct the response,
+      your body's protective systems
+      will activate whenever harmful
+      exposure is recognized.
+
+      Whenever you are conscious and able,
+      you can strengthen this response
+      through a simple command.
+
+      Inhale deeply and gently hold your breath.
+
+      Think or say in your mind,
+      "Plus Clear Remove."
 
       Then exhale slowly through your mouth.
 
-      When you do this, all parts of your physical system that normally protect,
-      control and discharge harmful foreign substances will respond more quickly
-      and efficiently.
+      Your body's protective and elimination
+      processes will become more coordinated,
+      directing their efforts toward
+      controlling and clearing the disturbance.
 
-      Your physical system will move to recognize the foreign substance and the
-      area affected.
+      Your mind will remain as calm,
+      clear, and responsive as possible,
+      allowing you to recognize what is needed
+      and take appropriate action.
 
-      It will act to control and limit the harmful effect as much as it is able.
+      As the harmful exposure is addressed,
+      your body will continue working
+      toward balance, recovery,
+      and restoration of normal function.
 
-      It will begin to clear and remove what does not belong within your normal
-      physical operation.
+      Each time you use Plus Clear Remove,
+      consciously reinforcing this protective
+      response becomes easier and more effective.
 
-      The protective and balancing patterns of your physical body will move into
-      action.
+      Your body's natural intelligence
+      remains ready to protect, balance,
+      and restore your physical system
+      whenever such a response is needed.
 
-      The affected area and the rest of your physical system will work together
-      toward greater balance and equalization.
-
-      All when you state:
-
-      PLUS-CLEAR, REMOVE.
-
-      Use EMERGENCY: TOXIC immediately at the time of the chemical or poisonous
-      insult.
-
-      Repeat the command as needed while appropriate treatment is being obtained
-      and followed.
-
-      Use RELAX to reduce unnecessary tension.
-
-      Use SHORT FIX only for its separate temporary purpose when appropriate.
-
-      Use TUNE-UP, CIRCULATION and RESTORATIVE SLEEP as their separate purposes
-      may assist the recovery process.
-
-      This Function assists and potentiates the natural protective mechanisms of
-      your physical body.
-
-      It is not a substitute for first aid, medical diagnosis, antidote,
-      decontamination or other treatment.
-
-      The more you use this Function, the easier and more effective it will become.
-    notes: 'User-proposed reconstruction draft; input lines 148–206. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Emergency: Toxic/Emergency_Toxic_881041_reconstructed_clean.txt; SHA-256 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510; header ''EMERGENCY: TOXIC (881041) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed physiological and efficacy assertions retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Standard ending formula applied.'
   hplus.function.ocf-emg-002.closer:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
+    notes: >-
+      OCF-adapted closer based on the user-proposed Emergency:
+      Toxic reconstruction. Proposed input:
+      Emergency: Toxic/Emergency_Toxic_881041_reconstructed_clean.txt;
+      SHA-256 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510;
+      proposed extent lines 327–338. Original reconstruction
+      remains unchanged. Historical source availability
+      remains unavailable. Closer shortened to one purpose
+      reminder, the exact Plus Clear Remove command, the
+      original breathing sequence, and the standard OCF ending.
+      Automatic activation and protective mechanisms are taught
+      in the body rather than repeated in the closer.
+      This is OCF-authored adapted narration, not historical
+      transcript wording.
+      Rights: user_cleared, per user's lawyer-clearance
+      attestation. Revised wording awaits final editorial
+      approval. Finished-session release pending.
     text: |-
-      Remember, when a harmful foreign substance has entered or contacted your
-      physical body, obtain appropriate treatment immediately.
+      Remember, whenever harmful foreign substances
+      enter or contact your body, you can consciously
+      reinforce its natural protective response.
 
       Inhale deeply and hold your breath.
 
-      Say in your mind:
-
-      PLUS-CLEAR, REMOVE.
+      Think or say in your mind,
+      "Plus Clear Remove."
 
       Then exhale slowly through your mouth.
 
-      This is the end of your OCF Function learning exercise.
-    notes: 'User-proposed reconstruction draft; input lines 327–338. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Emergency: Toxic/Emergency_Toxic_881041_reconstructed_clean.txt; SHA-256 293b747802140186df761250a4bc7b8ea2b8d8a13b85d51a353d038e4e5aa510; header ''EMERGENCY: TOXIC (881041) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. Proposed physiological and efficacy assertions retained as claims for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. H-PLUS→OCF terminology applied.'
+      This concludes your OCF Emergency: Toxic exercise.

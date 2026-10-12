@@ -1,41 +1,136 @@
+
 # OCF-SEN-001 — Sensory: Hearing
-# English function-specific review candidate; edit this file as the wording source of truth.
+# English function-specific OCF-adapted narration; wording source of truth.
 # Source status: transcript_unverified; authentication remains unverified.
-# Human review update: the user corrected body cue spellings from here to hear. Original SOURCE remains unchanged; this separate draft does not change frozen Hearing pilot resources.
+# Original SOURCE: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+# SHA-256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+# Source ranges: opener line 1; body lines 36–47; closer lines 168–173.
+# Review note: All commands use 'hear', not the erroneous 'here'.
+# Review note: Plus Hear More and Plus Hear Less remain separate canonical cues.
+# Review note: Close eyes, inhale, hold, command, exhale, open eyes preserved.
+# Review note: No historical command for returning to normal hearing is established;
+# none is invented in this adaptation.
+# Review note: Permanent auditory imagery is a user-directed OCF enhancement,
+# not recovered historical transcript wording.
+# Review note: Physical sound adjustments are consciously selected, while inner
+# auditory imagery becomes an increasingly available baseline capability.
+# Review note: Subjective hearing changes are exercise suggestions, not verified
+# changes to hearing acuity or physical protection from sound exposure.
+# Review note: Shared session speech excluded; one body supports four passes.
+# Review note: Frozen Hearing pilot resources are not modified by this draft.
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-sen-001.opener:
     status: reviewed
-    version: 1.0.0
-    notes: 'Reference-derived wording; transcript_unverified. SOURCE +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt; SHA-256 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e; line 1. Human wording review: user approved opener unchanged. This separate draft does not change frozen Hearing pilot resources. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
-    text: Now, learn to regulate your hearing of sound.
+    version: 1.2.0
+    notes: >-
+      OCF adaptation of the unverified Sensory (Hearing) transcript;
+      SOURCE +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt;
+      SHA-256 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e;
+      source line 1. Original source unchanged. User-directed addition establishes
+      lasting inner auditory imagery alongside voluntary regulation of physical
+      sound perception; this addition is not historical transcript wording.
+      Rights: user_cleared per user's lawyer-clearance attestation.
+      Revised wording awaits editorial approval; finished-session release pending.
+      Frozen Hearing pilot resources remain separate and unchanged.
+    text: |-
+      This OCF exercise will teach you to regulate
+      your sense of hearing and strengthen your ability
+      to remember, imagine, and experience sounds within your mind.
+
   hplus.function.ocf-sen-001.function-body:
     status: reviewed
-    version: 1.1.0
-    notes: 'Reference-derived wording with human correction; transcript_unverified. Original SOURCE +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt; SHA-256 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e; lines 36–47. Human wording review: user approved body with all five here cue spellings corrected to hear; remaining wording retained. Original SOURCE remains unchanged. Effect statements remain source claims, not established outcomes. This separate draft does not change frozen Hearing pilot resources. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    version: 1.3.0
+    notes: >-
+      OCF adaptation of the unverified Sensory (Hearing) transcript;
+      SOURCE +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt;
+      SHA-256 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e;
+      source lines 36–47. Original source unchanged. Preserves corrected
+      'hear' spelling, canonical Plus Hear More and Plus Hear Less commands,
+      closing the eyes, inhaling, holding, choosing a command, exhaling through
+      the mouth, and opening the eyes. Retains enhanced perception of faint,
+      high, and low sounds and reduced prominence of distracting sound, with
+      conscious choice to change or return to usual hearing. Adds user-directed
+      permanent inner auditory imagery: familiar and novel voices, music,
+      pitch, rhythm, timbre, spatial position, and auditory memory. The same
+      existing commands can intensify or soften intended imagined sounds;
+      no additional command is invented. Imagined and externally heard sounds
+      remain distinguishable. The physical adjustment is selected, not a
+      continuous default; the auditory imagination is a lasting learned ability.
+      Effects are experiential suggestions, not verified physiological changes.
+      One reusable body supports four passes across Focus 11 and Focus 20.
+      Rights: user_cleared per user's lawyer-clearance attestation.
+      Revised wording awaits editorial approval; finished-session release pending.
+      Frozen Hearing pilot resources remain unchanged.
     text: |-
-      At any time from this moment forward, whenever you desire to control the way you hear,
-      and perceive sound, all you need do is close your eyes, inhale deeply, and hold your breath.
-      Then say or think in your mind, plus hear more, or plus hear less.
+      From this moment forward, you have the ability
+      to regulate your hearing and develop vivid,
+      clear sound within your imagination.
+
+      Your hearing will respond to your intention.
+      You can bring subtle sounds into clearer awareness
+      or allow unwanted sounds to fade into the background.
+
+      To enhance your hearing, close your eyes,
+      inhale deeply, and gently hold your breath.
+      Think or say in your mind, "Plus Hear More."
       Then exhale slowly through your mouth and open your eyes.
-      When you do this, if you state more, your hearing system will become much sharper and clearer.
-      You will perceive and understand even the softest sound to enter your system.
-      You will perceive both higher and lower sounds that you have never heard before.
-      All when you state plus hear more.
-      When you state plus hear less, your hearing will become quieter and quieter each time you state
-      plus hear less, until any distracting or disturbing sound is no longer important.
-      Whenever you use this method of hearing control, it will continue until you desire to return to your
-      normal hearing condition. The more you use this method, the easier and more effective it will become.
+
+      Faint sounds will become clearer and more distinct.
+      You will notice delicate differences in pitch,
+      tone, rhythm, and sounds both high and low.
+      Your awareness will recognize the sounds
+      you wish to hear with greater ease.
+
+      To reduce unwanted sound, use the same eye
+      and breathing sequence, thinking or saying,
+      "Plus Hear Less."
+      Distracting sounds will become less prominent,
+      while you remain free to change the adjustment
+      or return to your usual hearing condition.
+
+      Your inner sense of hearing will also grow stronger.
+      You will recall familiar voices, melodies,
+      conversations, and sounds of places you remember.
+      Even in silence, you can imagine a voice speaking,
+      music playing, or a sound moving through space.
+
+      You can hold an inner sound clearly, hear its
+      pitch and rhythm, change its volume or tone,
+      and create new combinations through imagination.
+      You will recognize the difference between sounds
+      you imagine and sounds around your physical body.
+
+      This ability to remember and create sound within
+      your mind will become a permanent part of your total self.
+      Whenever you choose, these commands can strengthen
+      an imagined sound or allow it to gently fade.
+
+      Each time you use this function, your hearing regulation
+      and inner auditory imagery will become easier,
+      clearer, and more effective.
+
   hplus.function.ocf-sen-001.closer:
     status: reviewed
-    version: 1.0.0
-    notes: 'Reference-derived wording; transcript_unverified. SOURCE +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt; SHA-256 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e; lines 168–173. Human wording review: user approved closer unchanged. This separate draft does not change frozen Hearing pilot resources. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    version: 1.2.0
+    notes: >-
+      OCF-authored concise closer adapted from the unverified Sensory (Hearing)
+      transcript; SOURCE +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt;
+      SHA-256 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e;
+      source lines 168–173. Includes the user-directed inner auditory imagery
+      enhancement, both exact commands, complete eye-and-breath sequence,
+      and standard OCF ending. No new reset command is introduced.
+      Rights: user_cleared per user's lawyer-clearance attestation.
+      Revised wording awaits editorial approval; finished-session release pending.
+      Frozen Hearing pilot resources remain unchanged.
     text: |-
-      Remember, to regulate your sense of hearing,
-      relax your breath, then say in your mind, plus, hear more,
-      if you wish to increase your hearing, or plus, hear less,
-      if you want to tune down what and how you hear.
-      Then, exhale through your mouth as if you're blowing out a candle.
-      This is the end of your function learning exercise.
+      Remember, to regulate your hearing or strengthen
+      your inner experience of sound, close your eyes,
+      inhale deeply, and hold your breath.
+      Think or say in your mind, "Plus Hear More"
+      or "Plus Hear Less," according to your intention.
+      Then exhale slowly through your mouth and open your eyes.
+
+      This concludes your OCF Sensory: Hearing exercise.
