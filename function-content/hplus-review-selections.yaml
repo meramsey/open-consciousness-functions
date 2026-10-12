@@ -278,8 +278,9 @@ selections:
     slots:
       opener: [{start_line: 1, end_line: 2}]
       function-body: [{start_line: 33, end_line: 52, start_at: At any time}]
-    missing: {closer: No function-specific final closer is recoverable; source ends in repeated Twenty.}
-    notes: [Body starts within the shared-opening line so the complete instruction is retained; frozen Sleep Easy pilot decisions are unchanged.]
+      closer: [{start_line: 0, end_line: 0, note: OCF-authored; no transcript source}]
+    missing: {}
+    notes: [Body starts within the shared-opening line so the complete instruction is retained; frozen Sleep Easy pilot decisions are unchanged. Closer is OCF-authored; no transcript source.]
   OCF-SLP-002:
     slots:
       opener: [{start_line: 7, end_line: 8}]

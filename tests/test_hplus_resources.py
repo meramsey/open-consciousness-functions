@@ -72,7 +72,7 @@ def test_standard_shared_and_function_resources_resolve_without_local_sources(ow
 def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
     owners = load_all_functions()
     assert len(owners) == 55
-    assert len(COMPLETE_OWNERS) == 52
+    assert len(COMPLETE_OWNERS) == 53
     unavailable = [owner for owner in owners if owner.source_availability == "unavailable"]
     assert len(unavailable) == 16
     for owner in owners:
