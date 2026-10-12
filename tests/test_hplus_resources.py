@@ -96,9 +96,7 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
                 if owner.id in SUPPLEMENTARY_CLOSERS and slot == "closer":
                     assert slot in selection["missing"]
                     assert prefix + slot in doc["entries"]
-                    assert doc["entries"][prefix + slot]["status"] == (
-                        "draft" if owner.id in {"OCF-FND-001"} else "reviewed"
-                    )
+                    assert doc["entries"][prefix + slot]["status"] == "reviewed"
                     assert (
                         "not historical wording" in doc["entries"][prefix + slot]["notes"]
                         if owner.id == "OCF-COG-001"
@@ -110,7 +108,7 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
                         if owner.id == "OCF-COG-006"
                         else "not historical wording" in doc["entries"][prefix + slot]["notes"]
                         if owner.id == "OCF-EXP-001"
-                        else "not transcript wording" in doc["entries"][prefix + slot]["notes"]
+                        else "User approved this OCF-authored wording" in doc["entries"][prefix + slot]["notes"]
                         if owner.id == "OCF-FND-001"
                         else "not transcript wording" in doc["entries"][prefix + slot]["notes"]
                         if owner.id == "OCF-BOD-004"
