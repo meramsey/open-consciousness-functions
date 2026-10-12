@@ -1,20 +1,20 @@
 # OCF-PRF-003 — Synchronizing
 # English function-specific review candidate; edit this file as the wording source of truth.
 # Source status: transcript_unverified; authentication remains unverified.
-# Review note: Repeated breathing/rehearsal wording within the function instruction is retained.
+# Human review update: repeated ending sentences and extra inhale/exhale rehearsal lines removed from the WORKING body at the user's request.
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-prf-003.opener:
-    status: draft
+    status: reviewed
     version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Synchronizing/Synchronizing.txt; SHA-256 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248; lines 1–1. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Repeated breathing/rehearsal wording within the function instruction is retained.'
+    notes: 'Reference-derived wording; transcript_unverified. SOURCE +Transcripts From available tapes/Synchronizing/Synchronizing.txt; SHA-256 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248; line 1. Human wording review: user approved opener unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: Now, learn rapid and smooth body-mind coordination.
   hplus.function.ocf-prf-003.function-body:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Synchronizing/Synchronizing.txt; SHA-256 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248; lines 44–66. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Repeated breathing/rehearsal wording within the function instruction is retained.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Synchronizing/Synchronizing.txt; SHA-256 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248; original candidate lines 44–66. Human wording review: user approved the body with duplicated material removed. Main instruction sequence retained verbatim once; repeated ending sentences and extra inhale/exhale rehearsal lines omitted. Original SOURCE remains unchanged. Effect statements remain source claims, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
       Beginning now, from this moment on, more and more your nerve system is responding
       more rapidly and evenly to coordinate signals to your muscles.
@@ -26,23 +26,10 @@ entries:
       hold your breath, and say in your mind,
       Plus, smooth, fast, then exhale slowly through your mouth as if you're blowing out a candle.
       The more you use this method of smooth and even body movement, the easier it will become.
-      Inhale, exhale slowly through your mouth as if you're blowing out a candle.
-      The more you use this method of smooth and even body movement, the easier it will become.
-      Inhale, exhale slowly through your mouth as if you're blowing out a candle.
-      The more you use this method of smooth and even body movement, the easier it will become.
-      Inhale, exhale slowly through your mouth as if you're blowing out a candle.
-      Inhale, exhale slowly through your mouth as if you're blowing out a candle.
-      Inhale, exhale slowly through your mouth as if you're blowing out a candle.
-      Inhale, exhale slowly through your mouth as if you're blowing out a candle.
-      Inhale, exhale slowly through your mouth as if you're blowing out a candle.
-      Inhale, exhale slowly through your mouth as if you're blowing out a candle.
-      Inhale, exhale slowly through your mouth as if you're blowing out a candle.
-      Inhale, exhale slowly through your mouth as if you're blowing out a candle.
-      Inhale, exhale slowly through your mouth as if you're blowing out a candle.
   hplus.function.ocf-prf-003.closer:
-    status: draft
+    status: reviewed
     version: 1.1.0
-    notes: 'Reference-derived candidate with user-directed OCF terminology edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Synchronizing/Synchronizing.txt; SHA-256 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248; lines 152–155. H Plus changed to OCF per user''s standing instruction; original SOURCE remains unchanged. Shared preparation/state/return wording excluded. Repeated breathing/rehearsal wording within the function body is retained for review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+    notes: 'Reference-derived wording with user-directed OCF terminology edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Synchronizing/Synchronizing.txt; SHA-256 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248; lines 152–155. H Plus changed to OCF per user''s standing instruction; original SOURCE remains unchanged. Human wording review: user approved closer unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
       Remember, for even more smooth and rapid body movement, all you need do is inhale.
       Hold your breath. Say in your mind, plus, smooth, fast.
