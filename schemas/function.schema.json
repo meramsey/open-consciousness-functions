@@ -62,6 +62,12 @@
               "type": "array",
               "items": { "type": "string" },
               "uniqueItems": true
+            },
+            "mode_ids": {
+              "description": "Stable command IDs parallel to `modes`; an optional compatibility-safe reference map.",
+              "type": "array",
+              "items": { "$ref": "#/definitions/commandId" },
+              "uniqueItems": true
             }
           }
         }
@@ -77,6 +83,12 @@
         "commands": {
           "type": "array",
           "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "command_ids": {
+          "description": "Stable IDs parallel to legacy.commands when legacy phrases are exposed as command references.",
+          "type": "array",
+          "items": { "$ref": "#/definitions/commandId" },
           "uniqueItems": true
         },
         "command_status": {
@@ -115,7 +127,13 @@
       "required": ["names", "commands"],
       "properties": {
         "names": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-        "commands": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+        "commands": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "command_ids": {
+          "description": "Stable IDs parallel to aliases.commands when aliases are exposed as command references.",
+          "type": "array",
+          "items": { "$ref": "#/definitions/commandId" },
+          "uniqueItems": true
+        }
       }
     },
     "classification": {
@@ -232,7 +250,8 @@
           "required": ["required", "command"],
           "properties": {
             "required": { "type": "boolean" },
-            "command": { "type": ["string", "null"] }
+            "command": { "type": ["string", "null"] },
+            "command_id": { "$ref": "#/definitions/commandId" }
           }
         }
       }
@@ -314,6 +333,18 @@
         }
       }
     },
+    "commands": {
+      "description": "Structured command metadata. Phrase text remains in the referenced compatibility fields or in command_phrases for a documented special phrase.",
+      "type": "array",
+      "items": { "$ref": "#/definitions/commandRecord" },
+      "uniqueItems": true
+    },
+    "command_phrases": {
+      "description": "Phrase owners for special commands that have no existing primary, mode, legacy, alias, or lifecycle phrase field.",
+      "type": "array",
+      "items": { "$ref": "#/definitions/specialCommandPhrase" },
+      "uniqueItems": true
+    },
     "sources": {
       "type": "array",
       "items": {
@@ -358,6 +389,180 @@
           "date": { "type": "string" },
           "note": { "type": "string" }
         }
+      }
+    }
+  },
+  "definitions": {
+    "commandId": {
+      "type": "string",
+      "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+    },
+    "localizationKey": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"
+    },
+    "phraseReference": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source"],
+          "properties": { "source": { "const": "canonical-primary" } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source", "command_id"],
+          "properties": {
+            "source": { "const": "canonical-mode" },
+            "command_id": { "$ref": "#/definitions/commandId" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source"],
+          "properties": { "source": { "const": "lifecycle-release" } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source", "command_id"],
+          "properties": {
+            "source": { "const": "legacy-command" },
+            "command_id": { "$ref": "#/definitions/commandId" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source", "command_id"],
+          "properties": {
+            "source": { "const": "alias-command" },
+            "command_id": { "$ref": "#/definitions/commandId" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source", "phrase_id"],
+          "properties": {
+            "source": { "const": "special-phrase" },
+            "phrase_id": { "$ref": "#/definitions/commandId" }
+          }
+        }
+      ]
+    },
+    "procedureStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "operation"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+        "operation": {
+          "type": "string",
+          "enum": [
+            "select-intention",
+            "select-question",
+            "select-purpose",
+            "close-eyes",
+            "open-eyes",
+            "inhale",
+            "hold-breath",
+            "think-command",
+            "say-command",
+            "think-command-during-exhale",
+            "say-command-during-exhale",
+            "exhale",
+            "breathe-normally",
+            "release-temporary-application",
+            "other"
+          ]
+        },
+        "localization_key": { "$ref": "#/definitions/localizationKey" }
+      }
+    },
+    "commandRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "function_id", "phrase_ref", "role", "designation"],
+      "properties": {
+        "id": { "$ref": "#/definitions/commandId" },
+        "function_id": { "type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$" },
+        "phrase_ref": { "$ref": "#/definitions/phraseReference" },
+        "role": {
+          "type": "string",
+          "enum": ["activation", "mode", "retrieval", "close", "cancel", "release", "access-close", "auxiliary"]
+        },
+        "designation": { "type": "string", "enum": ["primary", "secondary", "special"] },
+        "effect_scope_ref": { "type": "string", "const": "lifecycle.persistence" },
+        "procedure": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status"],
+          "properties": {
+            "ref": { "type": "string", "pattern": "^OCF-PROC-[A-Z0-9-]+$" },
+            "override_steps": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/procedureStep" }
+            },
+            "evidence_keys": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/localizationKey" },
+              "uniqueItems": true
+            },
+            "status": { "type": "string", "enum": ["documented", "not-specified", "unresolved"] }
+          }
+        },
+        "relationships": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "releases": { "type": "array", "items": { "$ref": "#/definitions/commandId" }, "uniqueItems": true },
+            "cancels": { "type": "array", "items": { "$ref": "#/definitions/commandId" }, "uniqueItems": true },
+            "retrieves": { "type": "array", "items": { "$ref": "#/definitions/commandId" }, "uniqueItems": true },
+            "closes": { "type": "array", "items": { "$ref": "#/definitions/commandId" }, "uniqueItems": true }
+          }
+        },
+        "localization": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "label_key": { "$ref": "#/definitions/localizationKey" },
+            "usage_key": { "$ref": "#/definitions/localizationKey" },
+            "purpose_key": { "$ref": "#/definitions/localizationKey" },
+            "explanation_key": { "$ref": "#/definitions/localizationKey" }
+          }
+        },
+        "documentation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "visible": { "type": "boolean" },
+            "order": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "observed_phrase": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["text", "narration_key", "relationship"],
+          "properties": {
+            "text": { "type": "string", "minLength": 1 },
+            "narration_key": { "$ref": "#/definitions/localizationKey" },
+            "relationship": { "type": "string", "enum": ["canonical-match", "legacy-form", "variant", "conflict"] }
+          }
+        }
+      }
+    },
+    "specialCommandPhrase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "phrase", "source_narration_key", "status"],
+      "properties": {
+        "id": { "$ref": "#/definitions/commandId" },
+        "phrase": { "type": "string", "minLength": 1 },
+        "source_narration_key": { "$ref": "#/definitions/localizationKey" },
+        "status": { "type": "string", "enum": ["approved-special", "observed", "unresolved"] }
       }
     }
   }

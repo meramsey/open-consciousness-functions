@@ -46,6 +46,49 @@ class Source:
     url: str | None = None
 
 
+@dataclass(frozen=True)
+class FunctionCommand:
+    """Structured command identity with a reference to its authoritative phrase."""
+
+    id: str
+    function_id: str
+    phrase_ref: dict[str, str]
+    role: str
+    designation: str
+    data: dict[str, Any] = field(default_factory=dict)
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> FunctionCommand:
+        return cls(
+            id=str(data["id"]),
+            function_id=str(data["function_id"]),
+            phrase_ref=dict(data["phrase_ref"]),
+            role=str(data["role"]),
+            designation=str(data["designation"]),
+            data=dict(data),
+        )
+
+    @property
+    def procedure(self) -> dict[str, Any] | None:
+        value = self.data.get("procedure")
+        return dict(value) if isinstance(value, dict) else None
+
+    @property
+    def relationships(self) -> dict[str, list[str]]:
+        value = self.data.get("relationships")
+        return dict(value) if isinstance(value, dict) else {}
+
+    @property
+    def localization(self) -> dict[str, str]:
+        value = self.data.get("localization")
+        return dict(value) if isinstance(value, dict) else {}
+
+    @property
+    def documentation(self) -> dict[str, Any]:
+        value = self.data.get("documentation")
+        return dict(value) if isinstance(value, dict) else {}
+
+
 @dataclass
 class FunctionRecord:
     """A parsed OCF function record plus its source path."""
@@ -67,6 +110,20 @@ class FunctionRecord:
     @property
     def command_modes(self) -> list[str]:
         return list(self.data.get("canonical", {}).get("command", {}).get("modes", []))
+
+    @property
+    def command_records(self) -> list[FunctionCommand]:
+        """Structured commands, if migrated; legacy command accessors stay unchanged."""
+        values = self.data.get("commands")
+        if not isinstance(values, list):
+            return []
+        return [
+            FunctionCommand.from_dict(item)
+            for item in values
+            if isinstance(item, dict)
+            and isinstance(item.get("phrase_ref"), dict)
+            and all(name in item for name in ("id", "function_id", "role", "designation"))
+        ]
 
     @property
     def legacy_name(self) -> str:

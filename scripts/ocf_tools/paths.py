@@ -38,6 +38,8 @@ SCHEMAS_DIR = REPO_ROOT / "schemas"
 FUNCTIONS_DIR = REPO_ROOT / "functions"
 LEGACY_DIR = REPO_ROOT / "legacy"
 PROPOSALS_DIR = REPO_ROOT / "proposals"
+FUNCTION_CONTENT_DIR = REPO_ROOT / "function-content"
+COMMAND_PROCEDURES_FILE = FUNCTION_CONTENT_DIR / "command-procedures.yaml"
 AUDIO_DIR = REPO_ROOT / "audio"
 AUDIO_BACKGROUND_DIR = AUDIO_DIR / "background"
 AUDIO_IMPLEMENTATIONS_DIR = AUDIO_DIR / "implementations"
@@ -52,6 +54,7 @@ TEMPLATES_DIR = REPO_ROOT / "templates"
 REFERENCES_DIR = REPO_ROOT / "references"
 DOCS_DIR = REPO_ROOT / "docs"
 LOCALES_DIR = REPO_ROOT / "locales"
+COMMAND_PROCEDURES_FILE = REPO_ROOT / "function-content" / "command-procedures.yaml"
 
 GENERATED_FILES = (
     "FUNCTION_INDEX.md",

@@ -250,6 +250,48 @@ def validate_command_rules(record: FunctionRecord) -> ValidationResult:
     return result
 
 
+def validate_command_metadata(records: list[FunctionRecord]) -> ValidationResult:
+    """Validate structured command references without requiring migrated records."""
+    from .commands import (
+        CommandMetadataError,
+        load_procedure_catalog,
+        resolve_procedure,
+        validate_command_records,
+    )
+
+    result = ValidationResult()
+    try:
+        procedures = load_procedure_catalog()
+    except (CommandMetadataError, OSError) as exc:
+        result.add(
+            "error",
+            "command-procedure-catalog",
+            str(exc),
+            "function-content/command-procedures.yaml",
+        )
+        procedures = {}
+
+    seen_ids: dict[str, str] = {}
+    for record in records:
+        for message in validate_command_records(record):
+            result.add("error", "command-metadata", message, record.id)
+        for command in record.command_records:
+            if command.id in seen_ids:
+                result.add(
+                    "error",
+                    "duplicate-command-id",
+                    f"command ID {command.id} is used by {seen_ids[command.id]} and {record.id}",
+                    command.id,
+                )
+            else:
+                seen_ids[command.id] = record.id
+            try:
+                resolve_procedure(command, procedures)
+            except CommandMetadataError as exc:
+                result.add("error", "command-procedure-reference", str(exc), command.id)
+    return result
+
+
 def validate_collection() -> ValidationResult:
     """Cross-record rules: duplicate ids and duplicate canonical commands."""
     result = ValidationResult()
@@ -960,9 +1002,11 @@ def validate_all() -> ValidationResult:
     from .utils import OCFError
 
     result = ValidationResult()
-    for record in load_all_functions():
+    records = load_all_functions()
+    for record in records:
         result.extend(validate_function_schema(record))
         result.extend(validate_command_rules(record))
+    result.extend(validate_command_metadata(records))
     result.extend(validate_collection())
     result.extend(validate_legacy_invariants())
     result.extend(validate_proposals())
@@ -1043,9 +1087,8 @@ def validate_session_library() -> ValidationResult:
             structural_template = deepcopy(template)
             structural_template["slots"] = {"required": [], "optional": []}
             for section in structural_template["sections"]:
-                if (
-                    section.get("pace") == "block"
-                    and (section.get("slot") or section.get("from_slot"))
+                if section.get("pace") == "block" and (
+                    section.get("slot") or section.get("from_slot")
                 ):
                     # Validate the semantic/relative placement contract without
                     # fabricating or copying contributor wording into this
@@ -1109,6 +1152,7 @@ def validate_function_file(path: Path) -> ValidationResult:
     )
     result.extend(validate_function_schema(record))
     result.extend(validate_command_rules(record))
+    result.extend(validate_command_metadata([record]))
     return result
 
 

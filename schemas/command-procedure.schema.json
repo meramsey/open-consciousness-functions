@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/command-procedure.schema.json",
+  "title": "OCF reusable command procedure catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "procedures"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0" },
+    "procedures": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/procedure" }
+    }
+  },
+  "definitions": {
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "operation"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+        "operation": { "$ref": "function.schema.json#/definitions/procedureStep/properties/operation" },
+        "localization_key": { "$ref": "function.schema.json#/definitions/localizationKey" }
+      }
+    },
+    "procedure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "steps", "source_narration_keys"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^OCF-PROC-[A-Z0-9]+(?:-[A-Z0-9]+)*$" },
+        "steps": { "type": "array", "items": { "$ref": "#/definitions/step" } },
+        "source_narration_keys": {
+          "type": "array",
+          "items": { "$ref": "function.schema.json#/definitions/localizationKey" },
+          "uniqueItems": true
+        },
+        "notes": { "type": ["string", "null"] }
+      }
+    }
+  }
+}
