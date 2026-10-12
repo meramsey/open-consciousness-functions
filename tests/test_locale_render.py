@@ -9,7 +9,7 @@ import pytest
 import yaml
 from conftest import REPO_ROOT
 from ocf_tools.cli import main
-from ocf_tools.locale import LocalizationError
+from ocf_tools.locale import LocaleCatalog, LocalizationError
 from ocf_tools.transcript import export_srt, load_timed_doc
 from ocf_tools.voice import (
     apply_pronunciation,
@@ -267,8 +267,10 @@ class TestLocaleCli:
 
     def test_coverage_accepts_domain_filter(self, capsys):
         assert main(["locale", "coverage", "--locale", "es", "--domain", "narration"]) == 0
-        # The es pack localizes the CLI itself, which is the point of the pack.
-        assert "17 de 105" in capsys.readouterr().out  # includes sixteen draft pilot keys
+        catalog = LocaleCatalog()
+        translated = len(catalog.require("es").by_domain("narration"))
+        canonical = len(catalog.canonical.by_domain("narration"))
+        assert f"{translated} de {canonical} claves canónicas habladas" in capsys.readouterr().out
 
     def test_validate_passes_on_the_repository_packs(self, capsys):
         assert main(["locale", "validate"]) == 0
