@@ -30,7 +30,7 @@ def test_cli_binds_function_keys_and_fails_for_unauthored_function(tmp_path):
 
 SELECTIONS = yaml.safe_load((REPO_ROOT / "function-content/hplus-review-selections.yaml").read_text())["selections"]
 PROPOSALS = yaml.safe_load((REPO_ROOT / "function-content/hplus-proposed-review-selections.yaml").read_text())["proposals"]
-SUPPLEMENTARY_CLOSERS = {"OCF-BOD-004", "OCF-BOD-009", "OCF-COG-001", "OCF-COG-002", "OCF-COG-005", "OCF-COG-006", "OCF-EXP-001", "OCF-FND-001"}
+SUPPLEMENTARY_CLOSERS = {"OCF-BOD-004", "OCF-BOD-009", "OCF-COG-001", "OCF-COG-002", "OCF-COG-005", "OCF-COG-006", "OCF-EXP-001", "OCF-FND-001", "OCF-PRF-001"}
 SUPPLEMENTARY_OPENERS = {"OCF-BOD-008", "OCF-COG-005"}
 COMPLETE_OWNERS = sorted(
     owner
@@ -97,7 +97,7 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
                     assert slot in selection["missing"]
                     assert prefix + slot in doc["entries"]
                     assert doc["entries"][prefix + slot]["status"] == (
-                        "draft" if owner.id in {"OCF-COG-002", "OCF-FND-001"} else "reviewed"
+                        "draft" if owner.id in {"OCF-COG-002", "OCF-FND-001", "OCF-PRF-001"} else "reviewed"
                     )
                     assert (
                         "not historical wording" in doc["entries"][prefix + slot]["notes"]

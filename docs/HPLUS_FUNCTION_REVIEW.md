@@ -45,7 +45,7 @@ Missing spoken keys are omitted. User-proposed reconstructions are labeled separ
 | OCF-FND-005 | Reset | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-005.yaml](../locales/en-US/hplus-OCF-FND-005.yaml) |
 | OCF-FND-006 | Release | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-FND-006.yaml](../locales/en-US/hplus-OCF-FND-006.yaml) |
 | OCF-LIF-001 | De-Hab | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-LIF-001.yaml](../locales/en-US/hplus-OCF-LIF-001.yaml) |
-| OCF-PRF-001 | Do This Now | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-PRF-001.yaml](../locales/en-US/hplus-OCF-PRF-001.yaml) |
+| OCF-PRF-001 | Do This Now | transcript_unverified | historical source selection | candidate | candidate | suggestion pending approval | [hplus-OCF-PRF-001.yaml](../locales/en-US/hplus-OCF-PRF-001.yaml) |
 | OCF-PRF-002 | Eight-Great | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-PRF-002.yaml](../locales/en-US/hplus-OCF-PRF-002.yaml) |
 | OCF-PRF-003 | Synchronizing | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-PRF-003.yaml](../locales/en-US/hplus-OCF-PRF-003.yaml) |
 | OCF-PRF-004 | Light Foot | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-PRF-004.yaml](../locales/en-US/hplus-OCF-PRF-004.yaml) |
@@ -234,6 +234,11 @@ This is the end of your OCF function exercise.
 - Waking words sharing line 218 excluded; source numeric labels retained.
 
 ### OCF-PRF-001 — Do This Now
+- Historical source is missing closer; OCF-authored suggestion (draft) is not SOURCE: Remember, when you wish to begin, continue, or complete an activity, think of the activity you want to perform.
+Inhale and hold your breath.
+Say or think in your mind, plus, do this now.
+Then exhale as if you were blowing out a candle.
+This is the end of your OCF function exercise.
 - The final specific line is a Ten-state integration invitation rather than a waking closer; source has no final waking passage. Introductory explanation remains a function-source variant.
 
 ### OCF-PRF-002 — Eight-Great

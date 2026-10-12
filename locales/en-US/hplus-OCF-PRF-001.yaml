@@ -7,18 +7,18 @@ locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-prf-001.opener:
-    status: draft
+    status: reviewed
     version: 1.1.0
-    notes: 'Reference-derived candidate adapted to OCF terminology for review; transcript_unverified. Original SOURCE +Transcripts From available tapes/Do This Now/Do This Now.txt; SHA-256 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2; lines 1–5. Human Plus/H Plus naming in the first sentence changed to OCF per user''s standing instruction. Source line 2 attributes Human Plus to Robert Monroe; this historical attribution is retained only as source context in metadata and omitted from the adapted narration, not reassigned to OCF. Original SOURCE remains unchanged. Remaining selected sentences retained. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+    notes: 'Reference-derived wording adapted to OCF terminology; transcript_unverified. Original SOURCE +Transcripts From available tapes/Do This Now/Do This Now.txt; SHA-256 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2; lines 1–5. Human Plus/H Plus naming in the first sentence changed to OCF per user''s standing instruction. Source line 2 attributes Human Plus to Robert Monroe; this attribution remains source context in metadata, omitted from narration and not reassigned to OCF. Human wording review: user approved opener unchanged. Original SOURCE remains unchanged. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
       In this exercise, you will be guided to consciously use a self-programming process called OCF.
       After I guide you to a place of deep relaxation, you will activate within yourself a zone that is called the access channel.
       In this place of heightened receptivity, you will receive a verbal command that will help you whenever you wish to begin to move forward and increase your energy and enthusiasm for starting, continuing, or completing something in your life, at any time in the conscious waking state.
       Once you have received this instruction, you can call on it at any time and bring more power and awareness toward your stated goals.
   hplus.function.ocf-prf-001.function-body:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Do This Now/Do This Now.txt; SHA-256 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2; lines 64–89. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. The final specific line is a Ten-state integration invitation rather than a waking closer; source has no final waking passage. Introductory explanation remains a function-source variant.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/Do This Now/Do This Now.txt; SHA-256 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2; original candidate lines 64–89. Human wording review: user requested removal of the duplicated second passage; first complete pass retained verbatim, with the repeat marker omitted. Original SOURCE remains unchanged. Effect statements remain source claims, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
       And now in this open 11 state, here is the new function command for you to move yourself forward and take action in any area or activity in your life whenever you so desire.
       From this moment on,
@@ -34,20 +34,21 @@ entries:
       You will touch into the positive life force flow of your being and use this energy to be all of who you are and do and create all that you desire.
       You will have all of the readiness and willingness you need to develop and carry out all positive patterns you are creating in your life.
       The more you use this command, plus, do this now, the more easily and readily you will be able to create the reality you desire for yourself.
-      Here it is again.
-      From this moment on, whenever you wish to begin to move forward and increase your energy and enthusiasm for starting, continuing, or completing something in your life, think of the activity you would like to perform.
-      Then inhale, hold your breath, and say, plus, do this now.
-      Then exhale as if you were blowing out a candle.
-      And all parts of your total self will act in unison to move you into your desired activity with enthusiasm, ease, and readiness.
-      All blocks within you that resist beginning, continuing, or completing anything you desire will be released.
-      Your total self will do this by creating the natural momentum within to get you moving easily and swiftly in your desired area.
-      You will feel the pleasure of acting in a positive way to achieve your desired goals.
-      You will understand on all levels the importance for your creation activity.
-      You will touch into the positive life force flow of your being and use this energy to be all of who you are and do and create all that you desire.
-      You will have all of the readiness and willingness you need to develop and carry out all positive patterns you are creating in your life.
-      The more you use this command, plus, do this now, the more easily and readily you will be able to create the reality you desire for yourself.
   hplus.function.ocf-prf-001.closer:
     status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Do This Now/Do This Now.txt; SHA-256 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2; lines 97–97. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. The final specific line is a Ten-state integration invitation rather than a waking closer; source has no final waking passage. Introductory explanation remains a function-source variant.'
-    text: Here now in the 10 state of deep relaxation, enjoy feeling the new pattern you have created for yourself.
+    version: 1.1.0
+    notes: >-
+      OCF-authored closer suggestion requested by the user, based on the
+      activity-selection and PLUS DO THIS NOW command reminder in the body.
+      Original SOURCE +Transcripts From available tapes/Do This Now/Do This Now.txt,
+      SHA-256 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2,
+      line 97 is a Focus 10 integration invitation, not a waking closer; it
+      remains in SOURCE and is not relabeled as this suggestion. This is not
+      historical transcript wording. User wording approval pending. Rights:
+      user_cleared attestation. Finished-session release pending.
+    text: |-
+      Remember, when you wish to begin, continue, or complete an activity, think of the activity you want to perform.
+      Inhale and hold your breath.
+      Say or think in your mind, plus, do this now.
+      Then exhale as if you were blowing out a candle.
+      This is the end of your OCF function exercise.

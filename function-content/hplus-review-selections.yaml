@@ -238,8 +238,11 @@ selections:
     slots:
       opener: [{start_line: 1, end_line: 5}]
       function-body: [{start_line: 64, end_line: 89}]
-      closer: [{start_line: 97, end_line: 97}]
-    missing: {}
+    missing:
+      closer: >-
+        Source line 97 is a Focus 10 integration invitation rather than a
+        function-specific waking closer. The user requested a new OCF-authored
+        closer, stored separately pending wording approval.
     notes: [The final specific line is a Ten-state integration invitation rather than a waking closer; source has no final waking passage. Introductory explanation remains a function-source variant.]
   OCF-PRF-002:
     slots:
