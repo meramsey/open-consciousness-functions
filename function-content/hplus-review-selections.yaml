@@ -233,7 +233,9 @@ selections:
       function-body: [{start_line: 148, end_line: 166}]
       closer: [{start_line: 218, end_line: 222, start_at: Remember}]
     missing: {}
-    notes: [Waking words sharing line 218 excluded; source numeric labels retained.]
+    notes:
+      - Waking words sharing line 218 excluded.
+      - The user removed the source's leading 12 label from the WORKING body; original SOURCE remains unchanged.
   OCF-PRF-001:
     slots:
       opener: [{start_line: 1, end_line: 5}]
@@ -242,7 +244,7 @@ selections:
       closer: >-
         Source line 97 is a Focus 10 integration invitation rather than a
         function-specific waking closer. The user requested a new OCF-authored
-        closer, stored separately pending wording approval.
+        closer and approved it as WORKING wording; it is stored separately from SOURCE.
     notes: [The final specific line is a Ten-state integration invitation rather than a waking closer; source has no final waking passage. Introductory explanation remains a function-source variant.]
   OCF-PRF-002:
     slots:

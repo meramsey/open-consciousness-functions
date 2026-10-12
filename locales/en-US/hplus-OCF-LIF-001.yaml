@@ -1,7 +1,7 @@
 # OCF-LIF-001 — De-Hab
 # English function-specific review candidate; edit this file as the wording source of truth.
 # Source status: transcript_unverified; authentication remains unverified.
-# Review note: Waking words sharing line 218 excluded; source numeric labels retained.
+# Review note: Waking words sharing line 218 excluded; the user removed the source's leading 12 label from the WORKING body.
 schema_version: '1.0'
 locale: en-US
 domain: narration
@@ -15,10 +15,10 @@ entries:
       well-being and growth.
   hplus.function.ocf-lif-001.function-body:
     status: reviewed
-    version: 1.1.0
-    notes: 'Reference-derived wording with human edit; transcript_unverified. Original SOURCE +Transcripts From available tapes/De-Hab/De-Hab.txt; SHA-256 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6; lines 148–166. Human wording review: user approved the body with the duplicated second passage removed; first passage retained verbatim, including leading transcript label 12. Original SOURCE remains unchanged. Source claims and transcription uncertainty remain explicit, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
+    version: 1.2.0
+    notes: 'Reference-derived wording with human edits; transcript_unverified. Original SOURCE +Transcripts From available tapes/De-Hab/De-Hab.txt; SHA-256 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6; lines 148–166. Human wording review: user approved the body with its duplicated second passage removed, then explicitly requested removal of the leading transcript label 12. Remaining first-passage wording retained verbatim. Original SOURCE remains unchanged. Source claims and transcription uncertainty remain explicit, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
     text: |-
-      12. From this point forward, whenever you wish to reduce or eliminate any physical and mental
+      From this point forward, whenever you wish to reduce or eliminate any physical and mental
       habit pattern, all you need do when the pattern arises is to inhale deeply, hold your breath,
       and say or think in your mind, plus, no more, no more, then exhale slowly through your mouth
       as if you're blowing out a candle. When you do this, the unwanted pattern,
