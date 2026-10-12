@@ -11,13 +11,13 @@ locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-prf-004.opener:
-    status: draft
+    status: reviewed
     version: 1.0.0
     text: Now, learn to move more lightly when you walk, jog or run.
-    notes: 'User-proposed reconstruction draft; input lines 47–47. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Light Foot/Light_Foot_881047_reconstructed_clean.txt; SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73; header ''LIGHT FOOT (881047) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. The supplied body contains an extra leading space on one wrapped line; it is preserved. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+    notes: 'User-proposed reconstruction; input lines 47–47. Not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Light Foot/Light_Foot_881047_reconstructed_clean.txt; SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73. Human wording review: user approved opener unchanged. Identity checked against the document title and listed legacy commands; confirmation/authenticity claims remain unverified. Suggested timing is not measured evidence. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
   hplus.function.ocf-prf-004.function-body:
-    status: draft
-    version: 1.0.0
+    status: reviewed
+    version: 1.1.0
     text: |-
       At any time from this moment forward, whenever you are walking, jogging or
       running and desire your movement to become lighter, easier and more
@@ -71,11 +71,10 @@ entries:
 
       Use SYNCHRONIZING when smooth, rapid and coordinated movement is desired.
 
-      The more correctly you use this method while moving your feet, the easier
-      and more effective it will become.
-    notes: 'User-proposed reconstruction draft; input lines 146–199. User-proposed reconstruction, not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Light Foot/Light_Foot_881047_reconstructed_clean.txt; SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73; header ''LIGHT FOOT (881047) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT''. Identity checked against the document title and listed legacy commands, not inferred from the filename. Header claims of confirmation/authenticity are not independently verified. Only selected narration is reused; shared sections, production directions and non-narration prefatory notes remain separate. Suggested input timings are not measured evidence. The supplied body contains an extra leading space on one wrapped line; it is preserved. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+      The more you use this Function, the easier and more effective it will become.
+    notes: 'User-proposed reconstruction with human edit; original input lines 146–199. Not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Light Foot/Light_Foot_881047_reconstructed_clean.txt; SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73. Human wording review: user approved body with its final sentence changed to the shared more-you-use-this-Function formulation, removing correctly and while-moving-your-feet from that sentence. Remaining wording and the supplied leading space on one wrapped line retained. Original reference remains unchanged. Effect statements remain proposed claims, not established outcomes. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
   hplus.function.ocf-prf-004.closer:
-    status: draft
+    status: reviewed
     version: 1.1.0
     text: |-
       Remember, when you are walking, jogging or running and desire to move more
@@ -90,4 +89,4 @@ entries:
       LIGHT FOOT operates only while you are actually moving your feet.
 
       This is the end of your OCF Function learning exercise.
-    notes: 'User-proposed reconstruction draft with user-directed terminology edit; original input lines 320–331. Not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Light Foot/Light_Foot_881047_reconstructed_clean.txt; SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73. H-PLUS changed to OCF per user''s standing instruction; original reference remains unchanged. Identity checked against the document title and listed legacy commands; confirmation/authenticity claims remain unverified. Suggested timing is not measured evidence. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'
+    notes: 'User-proposed reconstruction with user-directed terminology edit; original input lines 320–331. Not a recovered historical transcript. Historical source availability remains unavailable; reimplementation remains planned. Proposed input: Light Foot/Light_Foot_881047_reconstructed_clean.txt; SHA-256 b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73. H-PLUS changed to OCF per user''s standing instruction; original reference remains unchanged. Human wording review: user approved closer unchanged. Identity checked against the document title and listed legacy commands; confirmation/authenticity claims remain unverified. Suggested timing is not measured evidence. Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release pending.'
