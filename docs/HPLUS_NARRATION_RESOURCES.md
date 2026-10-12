@@ -19,22 +19,20 @@ Each function has one locale resource file, named
 `locales/<locale>/hplus-<FUNCTION-ID>.yaml`. It owns only the keys
 `hplus.function.<lowercase-function-id>.opener`, `.function-body`, and `.closer`.
 The same body key supplies both Focus 11 passes and both Focus 20 underlay passes.
-All 55 functions now have an English review file, linked in
-[English HPlus function review](HPLUS_FUNCTION_REVIEW.md). Of 39 source-available
-functions, 26 have all three opener/body/closer extents selected directly from
-their transcripts and 13 have historical source gaps. Sixteen additional files
-contain the user's proposed reconstruction wording. Ten source-gap functions
-also have separate OCF-authored opener/closer suggestions, giving **52 files with
-all three review slots populated**. Several of these suggestions remain pending
-approval and are distinguished from transcript wording in the review list.
-Attention,
-Circulation and Sleep retain their initial file selections. Entry status remains
-`draft` for human wording review; a translatable candidate does not authenticate
-its transcript or certify its efficacy claims.
+All 55 functions have English resource files with human-approved wording, linked
+in [English HPlus function review](HPLUS_FUNCTION_REVIEW.md). Resource status
+`reviewed` records wording review; it does not authenticate historical sources or
+certify efficacy claims. Of 39 source-available functions, 26 have all three
+opener/body/closer extents selected directly from transcripts and 13 have
+historical source gaps. Sixteen resources adapt user-proposed reconstruction
+inputs; these are not recovered historical transcripts. Ten source-gap functions
+also have separate OCF-authored opener/closer suggestions, giving **52 files
+with all three review slots populated**. Source-gap and OCF-authored additions
+remain distinguished from historical transcript wording in each resource note.
 
 The sixteen historical source-unavailable records remain unavailable and planned
-reimplementation targets. Their English files now contain **user-proposed
-reconstruction drafts**, selected from the supplied clean scripts in
+reimplementation targets. Their English files contain human-approved OCF
+adaptations based on **user-proposed reconstruction inputs** from
 `references/HumanPlusTranscripts/`. They are not recovered historical transcripts.
 The separate proposal recipe records input hashes, exact document headers and
 opener/body/closer line extents in `function-content/hplus-proposed-review-selections.yaml`.
@@ -57,8 +55,8 @@ for the selected shared wording and migrated function candidates. The lawyer's
 identity, legal documents and license terms were not supplied; this record is
 the user's attestation, not an independent legal finding. Shared wording had
 already been human-approved and the instruction authorizes its reusable resource
-selection. Function-specific wording review and finished audio release remain
-separate from rights clearance.
+selection. Human editorial approval and finished-session release remain separate
+from rights clearance.
 
 Source authentication remains unverified. Source locators (local references are
 not runtime dependencies):

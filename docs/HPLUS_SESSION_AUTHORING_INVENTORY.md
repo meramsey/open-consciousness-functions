@@ -143,13 +143,14 @@ estimate, and gain are draft design values, not recovered historical timings or
 efficacy claims. The Piper session profile records the locally selected 1.12 /
 0.4 slow settings.
 
-The shared narration is now selected in one canonical locale file per reused
+The shared narration is selected in one canonical locale file per reused
 section; see [HPlus narration resources](HPLUS_NARRATION_RESOURCES.md) for the
-editable files, source locators and user-cleared rights attestation. The
-standard template is version 1.0.0 with `content_status: draft`, because
-function-specific review and measured timing remain pending. Optional stages
-remain disabled. `ocf session compose --function ID --locale TAG` binds the
-function's three locale keys; `--pacing-profile` overrides the versioned policy.
+editable files, source locators and user-cleared rights attestation. The 55
+function-specific resources and four revised shared resources have human-approved
+wording. The standard template remains version 1.0.0 with `content_status: draft`
+pending separate session timing and listening review. Optional stages remain
+disabled. `ocf session compose --function ID --locale TAG` binds the function's
+three locale keys; `--pacing-profile` overrides the versioned policy.
 
 Three local preview/ledger pairs were generated for representative cases:
 
@@ -172,14 +173,14 @@ remain local review artifacts; their editable wording now lives in locale files.
 
 Shared wording uses the approved Transmutation Box edit and the user's
 body-part relaxation segmentation. Rights are user-cleared; authentication
-remains unverified. All 55 function-specific English review files are now present;
-see [the review list](HPLUS_FUNCTION_REVIEW.md). Of the 39 source-available
+remains unverified. All 55 function-specific English resources have approved
+wording; see [the review list](HPLUS_FUNCTION_REVIEW.md) for source selection
+and reconstruction provenance. Of the 39 source-available
 functions, 26 have all three historical extents selected and 13 have historical
 source gaps. The 16 source-unavailable functions have separately labeled
-user-proposed reconstruction drafts. Ten OCF-authored suggestions separately
+user-proposed reconstruction inputs; the approved OCF narration is not represented
+as recovered historical wording. Ten OCF-authored suggestions separately
 address source gaps, giving 52 files with all three review slots populated.
-Several OCF-authored additions remain pending wording approval. Historical source
-availability and planned reimplementation status are unchanged. Human wording
-review remains pending for entries marked draft.
+Historical source availability and planned reimplementation status are unchanged.
 Focus 20 underlay audibility, long holds, and localized speech timing need
 measurement/listening review before finished audio release.

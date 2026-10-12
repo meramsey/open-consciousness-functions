@@ -97,6 +97,7 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
     unavailable = [owner for owner in owners if owner.source_availability == "unavailable"]
     assert len(unavailable) == 16
     for owner in owners:
+        assert owner.audio_script_status == "approved"
         path = REPO_ROOT / "locales/en-US" / f"hplus-{owner.id}.yaml"
         doc = yaml.safe_load(path.read_text())
         prefix = f"hplus.function.{owner.id.lower()}."
@@ -113,7 +114,7 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
                 prefix + slot for slot in ("opener", "function-body", "closer")
             }
             for entry in doc["entries"].values():
-                assert entry["status"] in {"draft", "reviewed"}
+                assert entry["status"] == "reviewed"
                 # The resource notes must bind this narration to the structured
                 # reconstruction record, without making prose capitalization or
                 # one preferred description part of the provenance contract.
@@ -140,7 +141,21 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
                         slot in selection["slots"] or slot in selection["missing"]
                     )
             for entry in doc["entries"].values():
-                assert entry["status"] in {"draft", "reviewed"}
+                assert entry["status"] == "reviewed"
+
+
+def test_four_reviewed_shared_resources_keep_reviewed_entry_status():
+    shared_files = (
+        "hplus-focus20.yaml",
+        "hplus-relaxation.yaml",
+        "hplus-transmutation-box.yaml",
+        "hplus-waking-return.yaml",
+    )
+    for filename in shared_files:
+        data = yaml.safe_load((REPO_ROOT / "locales/en-US" / filename).read_text())
+        assert data["domain"] == "narration"
+        assert data["entries"]
+        assert all(entry["status"] == "reviewed" for entry in data["entries"].values())
 
 
 def test_keyed_slot_rejects_ambiguous_or_unknown_inputs():
