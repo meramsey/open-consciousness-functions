@@ -299,5 +299,6 @@ selections:
     slots:
       opener: [{start_line: 1, end_line: 2}]
       function-body: [{start_line: 32, end_line: 47}]
-    missing: {closer: No identifiable final function-specific closer; tail contains unrelated or uncertain repeated speech.}
-    notes: [Unassigned tail at 158–194 is not promoted into a closing instruction. Source numeric labels retained.]
+      closer: [{start_line: 0, end_line: 0, note: OCF-authored; no transcript source}]
+    missing: {}
+    notes: [Unassigned tail at 158–194 is not promoted into a closing instruction. Source numeric labels retained. Closer is OCF-authored; no transcript source.]

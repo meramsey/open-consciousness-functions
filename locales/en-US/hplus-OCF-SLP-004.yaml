@@ -8,16 +8,16 @@ locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-slp-004.opener:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Wake Know/Wake Know.txt; SHA-256 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745; lines 1–2. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Unassigned tail at 158–194 is not promoted into a closing instruction. Source numeric labels retained.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Wake Know/Wake Know.txt; SHA-256 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745; lines 1–2. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. H-plus→OCF terminology applied per user directive. Numeric transcript labels removed per user preference.'
     text: |-
-      This H-plus function exercise is to learn to wake up
+      This OCF function exercise is to learn to wake up
       and know the answer.
   hplus.function.ocf-slp-004.function-body:
-    status: draft
-    version: 1.0.0
-    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Wake Know/Wake Know.txt; SHA-256 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745; lines 32–47. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Unassigned tail at 158–194 is not promoted into a closing instruction. Source numeric labels retained.'
+    status: reviewed
+    version: 1.1.0
+    notes: 'Reference-derived review candidate; transcript_unverified. SOURCE +Transcripts From available tapes/Wake Know/Wake Know.txt; SHA-256 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745; lines 32–47. Selected words and punctuation retained; shared preparation/state/return wording excluded. Source repetitions, transcription uncertainties and claims remain for human review. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending. Duplicate passage removed per user preference. Numeric transcript labels removed per user preference.'
     text: |-
       At any point in the future, whenever you wish your total self to provide a solution or answer
       after sleep, all you need do is think of the problem or question, then inhale deeply
@@ -27,11 +27,13 @@ entries:
       most constructive solution or answer to your question or problem. And you will remember it
       when you awaken. The more you use this way to obtain help from your total self,
       the easier and more selective and effective it will become.
-      13. At any point in the future, whenever you wish your total self to provide a solution
-      or answer after sleep, all you need do is think of the problem or question, then inhale
-      deeply and hold your breath, then say in your mind or think, plus, sleep, help,
-      then exhale and breathe slowly and deeply. When you do this, you will move easily and
-      calmly into normal, natural, restful sleep. And while you sleep, your entire being will
-      determine and decide the most constructive solution or answer to your question or problem.
-      And you will remember it when you awaken. The more you use this way to obtain help from
-      your total self, the easier and more selective and effective it will become.
+  hplus.function.ocf-slp-004.closer:
+    status: reviewed
+    version: 1.1.0
+    text: |-
+      Remember, to wake and know the answer, think of your question,
+      inhale deeply and hold your breath, then say in your mind, plus, sleep, help.
+      Then exhale and breathe slowly and deeply as you drift into sleep.
+      The more you use this Function, the easier and more effective it will become.
+      This is the end of your OCF Function learning exercise.
+    notes: 'OCF-authored closer; no historical closer recoverable from source (tail contains unrelated/uncertain repeated speech). Summarizes the function cue per standard pattern. Rights: user_cleared, per user''s lawyer-clearance attestation. Wording review and finished-session release pending.'

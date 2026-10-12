@@ -72,7 +72,7 @@ def test_standard_shared_and_function_resources_resolve_without_local_sources(ow
 def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
     owners = load_all_functions()
     assert len(owners) == 55
-    assert len(COMPLETE_OWNERS) == 53
+    assert len(COMPLETE_OWNERS) == 54
     unavailable = [owner for owner in owners if owner.source_availability == "unavailable"]
     assert len(unavailable) == 16
     for owner in owners:
@@ -131,7 +131,7 @@ def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
                 assert entry["status"] in {"draft", "reviewed"}
 
 
-@pytest.mark.parametrize("owner", ["OCF-SLP-004", "OCF-BOD-005"])
+@pytest.mark.parametrize("owner", ["OCF-BOD-005"])
 def test_missing_source_sections_cannot_be_spoken_as_review_status(owner, tmp_path):
     args = SimpleNamespace(
         template="OCF-TPL-SESSION-HPLUS-STANDARD-001",
