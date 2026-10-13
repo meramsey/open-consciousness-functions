@@ -150,6 +150,11 @@ class FunctionRecord:
         return str(self.data.get("ocf", {}).get("command_review", ""))
 
     @property
+    def documentation(self) -> dict[str, str]:
+        value = self.data.get("documentation")
+        return dict(value) if isinstance(value, dict) else {}
+
+    @property
     def compatibility(self) -> str:
         state = self.data.get("compatibility", {}).get("state")
         if state:

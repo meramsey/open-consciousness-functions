@@ -193,6 +193,26 @@ procedures:
     )
     assert [step["operation"] for step in steps] == ["breathe-normally"]
 
+    extended = FunctionCommand.from_dict(
+        {
+            **command_record(PRIMARY_ID, {"source": "canonical-primary"}, "activation", "primary"),
+            "procedure": {
+                "ref": "OCF-PROC-INHALE-HOLD-EXHALE",
+                "status": "documented",
+                "before_steps": [{"id": "purpose", "operation": "select-purpose"}],
+                "after_steps": [{"id": "release", "operation": "release-temporary-application"}],
+            },
+        }
+    )
+    steps = resolve_procedure(extended, catalog)
+    assert [step["operation"] for step in steps] == [
+        "select-purpose",
+        "inhale",
+        "hold-breath",
+        "exhale",
+        "release-temporary-application",
+    ]
+
 
 def test_legacy_function_records_still_expose_existing_command_accessors():
     data = {

@@ -140,7 +140,13 @@ def resolve_procedure(
         steps = list(procedure["override_steps"])
     if steps is None:
         return None
-    return steps
+    if "override_steps" in procedure and (
+        procedure.get("before_steps") or procedure.get("after_steps")
+    ):
+        raise CommandMetadataError(
+            f"command {command.id} cannot combine override_steps with before/after steps"
+        )
+    return list(procedure.get("before_steps", [])) + steps + list(procedure.get("after_steps", []))
 
 
 def validate_command_records(owner: FunctionRecord) -> list[str]:
@@ -286,9 +292,20 @@ def validate_command_records(owner: FunctionRecord) -> list[str]:
         if procedure.get("status") == "not-specified" and procedure.get("override_steps"):
             errors.append(f"command {command.id} cannot override steps with not-specified status")
         if procedure.get("status") == "documented" and not (
-            procedure.get("ref") or procedure.get("override_steps")
+            procedure.get("ref")
+            or procedure.get("override_steps")
+            or procedure.get("before_steps")
+            or procedure.get("after_steps")
         ):
             errors.append(f"command {command.id} documents a procedure without steps")
+        if (procedure.get("before_steps") or procedure.get("after_steps")) and not procedure.get(
+            "ref"
+        ):
+            errors.append(f"command {command.id} procedure extensions require a reusable ref")
+        if procedure.get("override_steps") and (
+            procedure.get("before_steps") or procedure.get("after_steps")
+        ):
+            errors.append(f"command {command.id} cannot combine override_steps with extensions")
     return errors
 
 

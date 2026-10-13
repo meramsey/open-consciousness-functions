@@ -345,6 +345,17 @@
       "items": { "$ref": "#/definitions/specialCommandPhrase" },
       "uniqueItems": true
     },
+    "documentation": {
+      "description": "Locale-resource references for localized function titles and descriptions; function identity and English source summaries remain in the canonical record.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title_key": { "$ref": "#/definitions/localizationKey" },
+        "short_description_key": { "$ref": "#/definitions/localizationKey" },
+        "purpose_key": { "$ref": "#/definitions/localizationKey" },
+        "effect_key": { "$ref": "#/definitions/localizationKey" }
+      }
+    },
     "sources": {
       "type": "array",
       "items": {
@@ -465,17 +476,26 @@
             "select-intention",
             "select-question",
             "select-purpose",
+            "select-target-area",
+            "select-activity",
+            "select-memory",
+            "select-dream-theme",
             "close-eyes",
             "open-eyes",
             "inhale",
             "hold-breath",
             "think-command",
             "say-command",
+            "think-or-say-command",
             "think-command-during-exhale",
             "say-command-during-exhale",
             "exhale",
             "breathe-normally",
+            "breathe-slowly-deeply",
+            "focus-target",
+            "represent-result",
             "release-temporary-application",
+            "allow-sleep",
             "other"
           ]
         },
@@ -492,7 +512,7 @@
         "phrase_ref": { "$ref": "#/definitions/phraseReference" },
         "role": {
           "type": "string",
-          "enum": ["activation", "mode", "increase", "decrease", "retrieval", "close", "cancel", "release", "access-close", "auxiliary"]
+          "enum": ["activation", "mode", "increase", "decrease", "retrieval", "close", "cancel", "release", "access-close", "legacy-alias", "auxiliary"]
         },
         "designation": { "type": "string", "enum": ["primary", "secondary", "special"] },
         "effect_scope_ref": { "type": "string", "const": "lifecycle.persistence" },
@@ -502,6 +522,14 @@
           "required": ["status"],
           "properties": {
             "ref": { "type": "string", "pattern": "^OCF-PROC-[A-Z0-9-]+$" },
+            "before_steps": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/procedureStep" }
+            },
+            "after_steps": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/procedureStep" }
+            },
             "override_steps": {
               "type": "array",
               "items": { "$ref": "#/definitions/procedureStep" }
