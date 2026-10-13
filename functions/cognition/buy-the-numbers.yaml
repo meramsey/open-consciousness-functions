@@ -1,5 +1,6 @@
 aliases:
   commands: []
+  command_ids: []
   names:
   - Buy the Numbers
 applications: []
@@ -16,8 +17,35 @@ audio:
 canonical:
   command:
     modes: []
+    mode_ids: []
     primary: PLUS-CALCULATE
   name: Buy the Numbers
+commands:
+- id: OCF-CMD-COG-002-PRIMARY
+  function_id: OCF-COG-002
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-cog-002-primary.label
+    usage_key: commands.ocf-cmd-cog-002-primary.usage
+    purpose_key: functions.ocf-cog-002.purpose
+    explanation_key: commands.ocf-cmd-cog-002-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-cog-002.function-body
+    before_steps:
+    - id: select-mathematical-task
+      operation: select-purpose
+      localization_key: command.procedure.select-purpose
+  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -32,6 +60,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-cog-002.title
+  short_description_key: functions.ocf-cog-002.short-description
+  purpose_key: functions.ocf-cog-002.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -39,6 +71,8 @@ history:
 id: OCF-COG-002
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-COG-002-PRIMARY
   command_status: unchanged
   commands:
   - PLUS-CALCULATE

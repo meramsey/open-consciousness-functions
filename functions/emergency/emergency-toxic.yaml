@@ -1,5 +1,6 @@
 aliases:
   commands: []
+  command_ids: []
   names:
   - 'Emergency: Toxic'
 applications: []
@@ -16,8 +17,32 @@ audio:
 canonical:
   command:
     modes: []
+    mode_ids: []
     primary: PLUS-CLEAR, REMOVE
   name: 'Emergency: Toxic'
+commands:
+- id: OCF-CMD-EMG-002-PRIMARY
+  function_id: OCF-EMG-002
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-emg-002-primary.label
+    usage_key: commands.ocf-cmd-emg-002-primary.usage
+    purpose_key: functions.ocf-emg-002.purpose
+    explanation_key: commands.ocf-cmd-emg-002-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-emg-002.function-body
+    before_steps: []
+  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -32,6 +57,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-emg-002.title
+  short_description_key: functions.ocf-emg-002.short-description
+  purpose_key: functions.ocf-emg-002.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -39,6 +68,8 @@ history:
 id: OCF-EMG-002
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-EMG-002-PRIMARY
   command_status: unchanged
   commands:
   - PLUS-CLEAR, REMOVE

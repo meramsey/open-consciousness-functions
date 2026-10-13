@@ -1,6 +1,8 @@
 aliases:
   commands:
   - PLUS-SEE BETTER
+  command_ids:
+  - OCF-CMD-SEN-002-LEGACY-01
   names:
   - 'Sensory: Seeing'
 applications: []
@@ -18,8 +20,83 @@ canonical:
   command:
     modes:
     - PLUS-SEE LESS
+    mode_ids:
+    - OCF-CMD-SEN-002-SEE-LESS
     primary: PLUS-SEE MORE
   name: 'Sensory: Seeing'
+commands:
+- id: OCF-CMD-SEN-002-PRIMARY
+  function_id: OCF-SEN-002
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-sen-002-primary.label
+    usage_key: commands.ocf-cmd-sen-002-primary.usage
+    purpose_key: functions.ocf-sen-002.purpose
+    explanation_key: commands.ocf-cmd-sen-002-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-sen-002.function-body
+    before_steps: []
+  relationships:
+    pairs_with:
+    - OCF-CMD-SEN-002-SEE-LESS
+  observed_phrase:
+    text: Plus See Better
+    narration_key: hplus.function.ocf-sen-002.function-body
+    relationship: legacy-form
+- id: OCF-CMD-SEN-002-SEE-LESS
+  function_id: OCF-SEN-002
+  phrase_ref:
+    source: canonical-mode
+    command_id: OCF-CMD-SEN-002-SEE-LESS
+  role: decrease
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-sen-002-see-less.label
+    usage_key: commands.ocf-cmd-sen-002-see-less.usage
+    purpose_key: functions.ocf-sen-002.purpose
+    explanation_key: commands.ocf-cmd-sen-002-see-less.explanation
+  documentation:
+    visible: true
+    order: 11
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-sen-002.function-body
+    before_steps: []
+  relationships:
+    pairs_with:
+    - OCF-CMD-SEN-002-PRIMARY
+    modifies:
+    - OCF-CMD-SEN-002-PRIMARY
+- id: OCF-CMD-SEN-002-LEGACY-01
+  function_id: OCF-SEN-002
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-SEN-002-LEGACY-01
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-sen-002-legacy-01.label
+    usage_key: commands.ocf-cmd-sen-002-legacy-01.usage
+    purpose_key: functions.ocf-sen-002.purpose
+    explanation_key: commands.ocf-cmd-sen-002-legacy-01.explanation
+  documentation:
+    visible: true
+    order: 101
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -38,6 +115,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-sen-002.title
+  short_description_key: functions.ocf-sen-002.short-description
+  purpose_key: functions.ocf-sen-002.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -45,6 +126,8 @@ history:
 id: OCF-SEN-002
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-SEN-002-LEGACY-01
   command_status: normalized
   commands:
   - PLUS-SEE BETTER

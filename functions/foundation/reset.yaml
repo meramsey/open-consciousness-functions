@@ -1,6 +1,8 @@
 aliases:
   commands:
   - PLUS-RESET, RESET
+  command_ids:
+  - OCF-CMD-FND-005-LEGACY-01
   names:
   - Reset
 applications: []
@@ -17,8 +19,53 @@ audio:
 canonical:
   command:
     modes: []
+    mode_ids: []
     primary: PLUS-RESET
   name: Reset
+commands:
+- id: OCF-CMD-FND-005-PRIMARY
+  function_id: OCF-FND-005
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-fnd-005-primary.label
+    usage_key: commands.ocf-cmd-fnd-005-primary.usage
+    purpose_key: functions.ocf-fnd-005.purpose
+    explanation_key: commands.ocf-cmd-fnd-005-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-INHALE-CLOSE-OPEN
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-fnd-005.function-body
+    before_steps: []
+  relationships: {}
+  observed_phrase:
+    text: Plus Reset Reset
+    narration_key: hplus.function.ocf-fnd-005.function-body
+    relationship: legacy-form
+- id: OCF-CMD-FND-005-LEGACY-01
+  function_id: OCF-FND-005
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-FND-005-LEGACY-01
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-fnd-005-legacy-01.label
+    usage_key: commands.ocf-cmd-fnd-005-legacy-01.usage
+    purpose_key: functions.ocf-fnd-005.purpose
+    explanation_key: commands.ocf-cmd-fnd-005-legacy-01.explanation
+  documentation:
+    visible: true
+    order: 101
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -33,6 +80,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-fnd-005.title
+  short_description_key: functions.ocf-fnd-005.short-description
+  purpose_key: functions.ocf-fnd-005.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -40,6 +91,8 @@ history:
 id: OCF-FND-005
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-FND-005-LEGACY-01
   command_status: unchanged
   commands:
   - PLUS-RESET, RESET

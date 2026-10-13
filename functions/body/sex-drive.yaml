@@ -2,6 +2,9 @@ aliases:
   commands:
   - PLUS-SEX GREATER
   - PLUS-SEX LESSER
+  command_ids:
+  - OCF-CMD-BOD-012-LEGACY-01
+  - OCF-CMD-BOD-012-LEGACY-02
   names:
   - Sex Drive
 applications: []
@@ -19,8 +22,102 @@ canonical:
   command:
     modes:
     - PLUS-SEX LESS
+    mode_ids:
+    - OCF-CMD-BOD-012-SEX-LESS
     primary: PLUS-SEX MORE
   name: Sex Drive
+commands:
+- id: OCF-CMD-BOD-012-PRIMARY
+  function_id: OCF-BOD-012
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-bod-012-primary.label
+    usage_key: commands.ocf-cmd-bod-012-primary.usage
+    purpose_key: functions.ocf-bod-012.purpose
+    explanation_key: commands.ocf-cmd-bod-012-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-INHALE-HOLD-NATURAL
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-bod-012.function-body
+    before_steps:
+    - id: select-arousal-response
+      operation: select-intention
+      localization_key: command.procedure.select-intention
+  relationships:
+    pairs_with:
+    - OCF-CMD-BOD-012-SEX-LESS
+- id: OCF-CMD-BOD-012-SEX-LESS
+  function_id: OCF-BOD-012
+  phrase_ref:
+    source: canonical-mode
+    command_id: OCF-CMD-BOD-012-SEX-LESS
+  role: decrease
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-bod-012-sex-less.label
+    usage_key: commands.ocf-cmd-bod-012-sex-less.usage
+    purpose_key: functions.ocf-bod-012.purpose
+    explanation_key: commands.ocf-cmd-bod-012-sex-less.explanation
+  documentation:
+    visible: true
+    order: 11
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-INHALE-HOLD-NATURAL
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-bod-012.function-body
+    before_steps:
+    - id: select-arousal-response
+      operation: select-intention
+      localization_key: command.procedure.select-intention
+  relationships:
+    pairs_with:
+    - OCF-CMD-BOD-012-PRIMARY
+    modifies:
+    - OCF-CMD-BOD-012-PRIMARY
+- id: OCF-CMD-BOD-012-LEGACY-01
+  function_id: OCF-BOD-012
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-BOD-012-LEGACY-01
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-bod-012-legacy-01.label
+    usage_key: commands.ocf-cmd-bod-012-legacy-01.usage
+    purpose_key: functions.ocf-bod-012.purpose
+    explanation_key: commands.ocf-cmd-bod-012-legacy-01.explanation
+  documentation:
+    visible: true
+    order: 101
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
+- id: OCF-CMD-BOD-012-LEGACY-02
+  function_id: OCF-BOD-012
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-BOD-012-LEGACY-02
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-bod-012-legacy-02.label
+    usage_key: commands.ocf-cmd-bod-012-legacy-02.usage
+    purpose_key: functions.ocf-bod-012.purpose
+    explanation_key: commands.ocf-cmd-bod-012-legacy-02.explanation
+  documentation:
+    visible: true
+    order: 102
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -40,6 +137,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-bod-012.title
+  short_description_key: functions.ocf-bod-012.short-description
+  purpose_key: functions.ocf-bod-012.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -47,6 +148,9 @@ history:
 id: OCF-BOD-012
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-BOD-012-LEGACY-01
+  - OCF-CMD-BOD-012-LEGACY-02
   command_status: normalized
   commands:
   - PLUS-SEX GREATER

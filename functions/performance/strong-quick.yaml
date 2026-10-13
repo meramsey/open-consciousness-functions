@@ -1,6 +1,8 @@
 aliases:
   commands:
   - PLUS-STRONG-QUICK
+  command_ids:
+  - OCF-CMD-PRF-006-LEGACY-01
   names:
   - Strong-Quick
 applications: []
@@ -17,8 +19,85 @@ audio:
 canonical:
   command:
     modes: []
+    mode_ids: []
     primary: PLUS-STRONG QUICK
   name: Strong-Quick
+commands:
+- id: OCF-CMD-PRF-006-PRIMARY
+  function_id: OCF-PRF-006
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-prf-006-primary.label
+    usage_key: commands.ocf-cmd-prf-006-primary.usage
+    purpose_key: functions.ocf-prf-006.purpose
+    explanation_key: commands.ocf-cmd-prf-006-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-prf-006.function-body
+    before_steps:
+    - id: select-immediate-action
+      operation: select-activity
+      localization_key: command.procedure.select-activity
+  relationships: {}
+- id: OCF-CMD-PRF-006-LEGACY-01
+  function_id: OCF-PRF-006
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-PRF-006-LEGACY-01
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-prf-006-legacy-01.label
+    usage_key: commands.ocf-cmd-prf-006-legacy-01.usage
+    purpose_key: functions.ocf-prf-006.purpose
+    explanation_key: commands.ocf-cmd-prf-006-legacy-01.explanation
+  documentation:
+    visible: true
+    order: 101
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
+- id: OCF-CMD-PRF-006-RELEASE
+  function_id: OCF-PRF-006
+  phrase_ref:
+    source: special-phrase
+    phrase_id: OCF-CMD-PRF-006-RELEASE
+  role: release
+  designation: special
+  localization:
+    label_key: commands.ocf-cmd-prf-006-release.label
+    usage_key: commands.ocf-cmd-prf-006-release.usage
+    purpose_key: functions.ocf-prf-006.purpose
+    explanation_key: commands.ocf-cmd-prf-006-release.explanation
+  documentation:
+    visible: true
+    order: 200
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-prf-006.function-body
+    before_steps:
+    - id: select-immediate-action
+      operation: select-activity
+      localization_key: command.procedure.select-activity
+  relationships:
+    releases:
+    - OCF-CMD-PRF-006-PRIMARY
+command_phrases:
+- id: OCF-CMD-PRF-006-RELEASE
+  phrase: Plus Release
+  source_narration_key: hplus.function.ocf-prf-006.function-body
+  status: observed
 chains: []
 claims:
   intended_effects: []
@@ -38,6 +117,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-prf-006.title
+  short_description_key: functions.ocf-prf-006.short-description
+  purpose_key: functions.ocf-prf-006.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -45,6 +128,8 @@ history:
 id: OCF-PRF-006
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-PRF-006-LEGACY-01
   command_status: proposed
   commands:
   - PLUS-STRONG-QUICK
@@ -56,6 +141,7 @@ lifecycle:
   persistence: temporary
   release:
     command: null
+    command_id: OCF-CMD-PRF-006-RELEASE
     required: false
   trigger_conditions: []
 ocf:

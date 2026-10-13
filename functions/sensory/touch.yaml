@@ -2,6 +2,9 @@ aliases:
   commands:
   - PLUS-TOUCH GREATER
   - PLUS-TOUCH LESSER
+  command_ids:
+  - OCF-CMD-SEN-005-LEGACY-01
+  - OCF-CMD-SEN-005-LEGACY-02
   names:
   - 'Sensory: Touch'
 applications: []
@@ -19,8 +22,96 @@ canonical:
   command:
     modes:
     - PLUS-TOUCH LESS
+    mode_ids:
+    - OCF-CMD-SEN-005-TOUCH-LESS
     primary: PLUS-TOUCH MORE
   name: 'Sensory: Touch'
+commands:
+- id: OCF-CMD-SEN-005-PRIMARY
+  function_id: OCF-SEN-005
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-sen-005-primary.label
+    usage_key: commands.ocf-cmd-sen-005-primary.usage
+    purpose_key: functions.ocf-sen-005.purpose
+    explanation_key: commands.ocf-cmd-sen-005-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-CLOSE-OPEN
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-sen-005.function-body
+    before_steps: []
+  relationships:
+    pairs_with:
+    - OCF-CMD-SEN-005-TOUCH-LESS
+- id: OCF-CMD-SEN-005-TOUCH-LESS
+  function_id: OCF-SEN-005
+  phrase_ref:
+    source: canonical-mode
+    command_id: OCF-CMD-SEN-005-TOUCH-LESS
+  role: decrease
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-sen-005-touch-less.label
+    usage_key: commands.ocf-cmd-sen-005-touch-less.usage
+    purpose_key: functions.ocf-sen-005.purpose
+    explanation_key: commands.ocf-cmd-sen-005-touch-less.explanation
+  documentation:
+    visible: true
+    order: 11
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-CLOSE-OPEN
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-sen-005.function-body
+    before_steps: []
+  relationships:
+    pairs_with:
+    - OCF-CMD-SEN-005-PRIMARY
+    modifies:
+    - OCF-CMD-SEN-005-PRIMARY
+- id: OCF-CMD-SEN-005-LEGACY-01
+  function_id: OCF-SEN-005
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-SEN-005-LEGACY-01
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-sen-005-legacy-01.label
+    usage_key: commands.ocf-cmd-sen-005-legacy-01.usage
+    purpose_key: functions.ocf-sen-005.purpose
+    explanation_key: commands.ocf-cmd-sen-005-legacy-01.explanation
+  documentation:
+    visible: true
+    order: 101
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
+- id: OCF-CMD-SEN-005-LEGACY-02
+  function_id: OCF-SEN-005
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-SEN-005-LEGACY-02
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-sen-005-legacy-02.label
+    usage_key: commands.ocf-cmd-sen-005-legacy-02.usage
+    purpose_key: functions.ocf-sen-005.purpose
+    explanation_key: commands.ocf-cmd-sen-005-legacy-02.explanation
+  documentation:
+    visible: true
+    order: 102
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -39,6 +130,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-sen-005.title
+  short_description_key: functions.ocf-sen-005.short-description
+  purpose_key: functions.ocf-sen-005.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -46,6 +141,9 @@ history:
 id: OCF-SEN-005
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-SEN-005-LEGACY-01
+  - OCF-CMD-SEN-005-LEGACY-02
   command_status: normalized
   commands:
   - PLUS-TOUCH GREATER

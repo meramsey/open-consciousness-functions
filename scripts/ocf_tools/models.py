@@ -88,6 +88,11 @@ class FunctionCommand:
         value = self.data.get("documentation")
         return dict(value) if isinstance(value, dict) else {}
 
+    @property
+    def observed_phrase(self) -> dict[str, str] | None:
+        value = self.data.get("observed_phrase")
+        return dict(value) if isinstance(value, dict) else None
+
 
 @dataclass
 class FunctionRecord:

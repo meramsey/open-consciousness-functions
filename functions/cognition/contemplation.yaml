@@ -1,5 +1,6 @@
 aliases:
   commands: []
+  command_ids: []
   names:
   - Contemplation
 applications: []
@@ -17,8 +18,58 @@ canonical:
   command:
     modes:
     - PLUS-CLOSED
+    mode_ids:
+    - OCF-CMD-COG-003-CLOSED
     primary: PLUS-OPEN
   name: Contemplation
+commands:
+- id: OCF-CMD-COG-003-PRIMARY
+  function_id: OCF-COG-003
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-cog-003-primary.label
+    usage_key: commands.ocf-cmd-cog-003-primary.usage
+    purpose_key: functions.ocf-cog-003.purpose
+    explanation_key: commands.ocf-cmd-cog-003-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-CLOSE-NATURAL
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-cog-003.function-body
+    before_steps: []
+  relationships: {}
+- id: OCF-CMD-COG-003-CLOSED
+  function_id: OCF-COG-003
+  phrase_ref:
+    source: canonical-mode
+    command_id: OCF-CMD-COG-003-CLOSED
+  role: close
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-cog-003-closed.label
+    usage_key: commands.ocf-cmd-cog-003-closed.usage
+    purpose_key: functions.ocf-cog-003.purpose
+    explanation_key: commands.ocf-cmd-cog-003-closed.explanation
+  documentation:
+    visible: true
+    order: 11
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-THINK-COMMAND
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-cog-003.function-body
+    before_steps: []
+  relationships:
+    closes:
+    - OCF-CMD-COG-003-PRIMARY
 chains: []
 claims:
   intended_effects: []
@@ -33,6 +84,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-cog-003.title
+  short_description_key: functions.ocf-cog-003.short-description
+  purpose_key: functions.ocf-cog-003.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -40,6 +95,9 @@ history:
 id: OCF-COG-003
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-COG-003-PRIMARY
+  - OCF-CMD-COG-003-CLOSED
   command_status: unchanged
   commands:
   - PLUS-OPEN
@@ -52,6 +110,7 @@ lifecycle:
   persistence: temporary
   release:
     command: null
+    command_id: OCF-CMD-COG-003-CLOSED
     required: false
   trigger_conditions: []
 ocf:

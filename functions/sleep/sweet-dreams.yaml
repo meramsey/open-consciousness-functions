@@ -1,6 +1,8 @@
 aliases:
   commands:
   - PLUS-THEME, DREAM, SLEEP
+  command_ids:
+  - OCF-CMD-SLP-003-LEGACY-01
   names:
   - Sweet Dreams
 applications: []
@@ -17,8 +19,56 @@ audio:
 canonical:
   command:
     modes: []
+    mode_ids: []
     primary: PLUS-DREAM
   name: Sweet Dreams
+commands:
+- id: OCF-CMD-SLP-003-PRIMARY
+  function_id: OCF-SLP-003
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-slp-003-primary.label
+    usage_key: commands.ocf-cmd-slp-003-primary.usage
+    purpose_key: functions.ocf-slp-003.purpose
+    explanation_key: commands.ocf-cmd-slp-003-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-SLOW-BREATH
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-slp-003.function-body
+    before_steps:
+    - id: select-dream-theme
+      operation: select-dream-theme
+      localization_key: command.procedure.select-dream-theme
+  relationships: {}
+  observed_phrase:
+    text: Plus Theme Dream Sleep
+    narration_key: hplus.function.ocf-slp-003.function-body
+    relationship: legacy-form
+- id: OCF-CMD-SLP-003-LEGACY-01
+  function_id: OCF-SLP-003
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-SLP-003-LEGACY-01
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-slp-003-legacy-01.label
+    usage_key: commands.ocf-cmd-slp-003-legacy-01.usage
+    purpose_key: functions.ocf-slp-003.purpose
+    explanation_key: commands.ocf-cmd-slp-003-legacy-01.explanation
+  documentation:
+    visible: true
+    order: 101
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -37,6 +87,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-slp-003.title
+  short_description_key: functions.ocf-slp-003.short-description
+  purpose_key: functions.ocf-slp-003.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -44,6 +98,8 @@ history:
 id: OCF-SLP-003
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-SLP-003-LEGACY-01
   command_status: proposed
   commands:
   - PLUS-THEME, DREAM, SLEEP

@@ -1,6 +1,8 @@
 aliases:
   commands:
   - PLUS-IMPRINT, IMPRINT
+  command_ids:
+  - OCF-CMD-COG-004-LEGACY-01
   names:
   - Imprint
 applications: []
@@ -18,8 +20,79 @@ canonical:
   command:
     modes:
     - PLUS-RECALL
+    mode_ids:
+    - OCF-CMD-COG-004-RECALL
     primary: PLUS-IMPRINT
   name: Imprint
+commands:
+- id: OCF-CMD-COG-004-PRIMARY
+  function_id: OCF-COG-004
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-cog-004-primary.label
+    usage_key: commands.ocf-cmd-cog-004-primary.usage
+    purpose_key: functions.ocf-cog-004.purpose
+    explanation_key: commands.ocf-cmd-cog-004-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-IMPRINT
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-cog-004.function-body
+    before_steps: []
+  relationships: {}
+  observed_phrase:
+    text: Plus Imprint Imprint
+    narration_key: hplus.function.ocf-cog-004.function-body
+    relationship: legacy-form
+- id: OCF-CMD-COG-004-RECALL
+  function_id: OCF-COG-004
+  phrase_ref:
+    source: canonical-mode
+    command_id: OCF-CMD-COG-004-RECALL
+  role: retrieval
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-cog-004-recall.label
+    usage_key: commands.ocf-cmd-cog-004-recall.usage
+    purpose_key: functions.ocf-cog-004.purpose
+    explanation_key: commands.ocf-cmd-cog-004-recall.explanation
+  documentation:
+    visible: true
+    order: 11
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-THINK-COMMAND
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-cog-004.function-body
+    before_steps: []
+  relationships:
+    retrieves:
+    - OCF-CMD-COG-004-PRIMARY
+- id: OCF-CMD-COG-004-LEGACY-01
+  function_id: OCF-COG-004
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-COG-004-LEGACY-01
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-cog-004-legacy-01.label
+    usage_key: commands.ocf-cmd-cog-004-legacy-01.usage
+    purpose_key: functions.ocf-cog-004.purpose
+    explanation_key: commands.ocf-cmd-cog-004-legacy-01.explanation
+  documentation:
+    visible: true
+    order: 101
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -34,6 +107,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-cog-004.title
+  short_description_key: functions.ocf-cog-004.short-description
+  purpose_key: functions.ocf-cog-004.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -41,6 +118,9 @@ history:
 id: OCF-COG-004
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-COG-004-LEGACY-01
+  - OCF-CMD-COG-004-RECALL
   command_status: unchanged
   commands:
   - PLUS-IMPRINT, IMPRINT

@@ -1,6 +1,8 @@
 aliases:
   commands:
   - PLUS-SLEEP, HELP
+  command_ids:
+  - OCF-CMD-SLP-004-LEGACY-01
   names:
   - Wake/Know
 applications: []
@@ -17,8 +19,56 @@ audio:
 canonical:
   command:
     modes: []
+    mode_ids: []
     primary: PLUS-KNOW
   name: Wake/Know
+commands:
+- id: OCF-CMD-SLP-004-PRIMARY
+  function_id: OCF-SLP-004
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-slp-004-primary.label
+    usage_key: commands.ocf-cmd-slp-004-primary.usage
+    purpose_key: functions.ocf-slp-004.purpose
+    explanation_key: commands.ocf-cmd-slp-004-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-SLOW-BREATH
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-slp-004.function-body
+    before_steps:
+    - id: select-question
+      operation: select-question
+      localization_key: command.procedure.select-question
+  relationships: {}
+  observed_phrase:
+    text: Plus Sleep Help
+    narration_key: hplus.function.ocf-slp-004.function-body
+    relationship: legacy-form
+- id: OCF-CMD-SLP-004-LEGACY-01
+  function_id: OCF-SLP-004
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-SLP-004-LEGACY-01
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-slp-004-legacy-01.label
+    usage_key: commands.ocf-cmd-slp-004-legacy-01.usage
+    purpose_key: functions.ocf-slp-004.purpose
+    explanation_key: commands.ocf-cmd-slp-004-legacy-01.explanation
+  documentation:
+    visible: true
+    order: 101
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -36,6 +86,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-slp-004.title
+  short_description_key: functions.ocf-slp-004.short-description
+  purpose_key: functions.ocf-slp-004.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -43,6 +97,8 @@ history:
 id: OCF-SLP-004
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-SLP-004-LEGACY-01
   command_status: proposed
   commands:
   - PLUS-SLEEP, HELP

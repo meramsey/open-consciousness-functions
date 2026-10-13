@@ -1,6 +1,8 @@
 aliases:
   commands:
   - PLUS-EIGHT, GREAT
+  command_ids:
+  - OCF-CMD-PRF-002-LEGACY-01
   names:
   - Eight-Great
 applications: []
@@ -17,8 +19,56 @@ audio:
 canonical:
   command:
     modes: []
+    mode_ids: []
     primary: PLUS-STRONG
   name: Eight-Great
+commands:
+- id: OCF-CMD-PRF-002-PRIMARY
+  function_id: OCF-PRF-002
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-prf-002-primary.label
+    usage_key: commands.ocf-cmd-prf-002-primary.usage
+    purpose_key: functions.ocf-prf-002.purpose
+    explanation_key: commands.ocf-cmd-prf-002-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-prf-002.function-body
+    before_steps:
+    - id: select-quality
+      operation: select-purpose
+      localization_key: command.procedure.select-purpose
+  relationships: {}
+  observed_phrase:
+    text: Plus Eight Great
+    narration_key: hplus.function.ocf-prf-002.function-body
+    relationship: legacy-form
+- id: OCF-CMD-PRF-002-LEGACY-01
+  function_id: OCF-PRF-002
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-PRF-002-LEGACY-01
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-prf-002-legacy-01.label
+    usage_key: commands.ocf-cmd-prf-002-legacy-01.usage
+    purpose_key: functions.ocf-prf-002.purpose
+    explanation_key: commands.ocf-cmd-prf-002-legacy-01.explanation
+  documentation:
+    visible: true
+    order: 101
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -37,6 +87,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-prf-002.title
+  short_description_key: functions.ocf-prf-002.short-description
+  purpose_key: functions.ocf-prf-002.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -44,6 +98,8 @@ history:
 id: OCF-PRF-002
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-PRF-002-LEGACY-01
   command_status: proposed
   commands:
   - PLUS-EIGHT, GREAT

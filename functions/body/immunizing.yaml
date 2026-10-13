@@ -1,5 +1,6 @@
 aliases:
   commands: []
+  command_ids: []
   names:
   - Immunizing
 applications: []
@@ -16,8 +17,32 @@ audio:
 canonical:
   command:
     modes: []
+    mode_ids: []
     primary: PLUS-ALERT, DESTROY
   name: Immunizing
+commands:
+- id: OCF-CMD-BOD-008-PRIMARY
+  function_id: OCF-BOD-008
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-bod-008-primary.label
+    usage_key: commands.ocf-cmd-bod-008-primary.usage
+    purpose_key: functions.ocf-bod-008.purpose
+    explanation_key: commands.ocf-cmd-bod-008-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-bod-008.function-body
+    before_steps: []
+  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -32,6 +57,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-bod-008.title
+  short_description_key: functions.ocf-bod-008.short-description
+  purpose_key: functions.ocf-bod-008.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -39,6 +68,8 @@ history:
 id: OCF-BOD-008
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-BOD-008-PRIMARY
   command_status: unchanged
   commands:
   - PLUS-ALERT, DESTROY

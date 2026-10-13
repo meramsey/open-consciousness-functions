@@ -1,6 +1,8 @@
 aliases:
   commands:
   - PLUS-ONE, AWAKE, ALERT, ONE, ONE
+  command_ids:
+  - OCF-CMD-SLP-006-LEGACY-01
   names:
   - Stay Awake
 applications: []
@@ -17,8 +19,56 @@ audio:
 canonical:
   command:
     modes: []
+    mode_ids: []
     primary: PLUS-AWAKE
   name: Stay Awake
+commands:
+- id: OCF-CMD-SLP-006-PRIMARY
+  function_id: OCF-SLP-006
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-slp-006-primary.label
+    usage_key: commands.ocf-cmd-slp-006-primary.usage
+    purpose_key: functions.ocf-slp-006.purpose
+    explanation_key: commands.ocf-cmd-slp-006-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-slp-006.function-body
+    before_steps:
+    - id: select-immediate-need
+      operation: select-purpose
+      localization_key: command.procedure.select-purpose
+  relationships: {}
+  observed_phrase:
+    text: Plus One Awake Alert One One
+    narration_key: hplus.function.ocf-slp-006.function-body
+    relationship: legacy-form
+- id: OCF-CMD-SLP-006-LEGACY-01
+  function_id: OCF-SLP-006
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-SLP-006-LEGACY-01
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-slp-006-legacy-01.label
+    usage_key: commands.ocf-cmd-slp-006-legacy-01.usage
+    purpose_key: functions.ocf-slp-006.purpose
+    explanation_key: commands.ocf-cmd-slp-006-legacy-01.explanation
+  documentation:
+    visible: true
+    order: 101
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -37,6 +87,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-slp-006.title
+  short_description_key: functions.ocf-slp-006.short-description
+  purpose_key: functions.ocf-slp-006.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -44,6 +98,8 @@ history:
 id: OCF-SLP-006
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-SLP-006-LEGACY-01
   command_status: proposed
   commands:
   - PLUS-ONE, AWAKE, ALERT, ONE, ONE

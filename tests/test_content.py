@@ -300,6 +300,8 @@ def test_library_and_rich_discovery_keep_unknown_requirements_explicit():
     assert validate_library() == []
     data = discover(load_function_by_id("OCF-FND-004"))
     assert data["activation"]["primary"] == "PLUS-RELAX"
+    assert {command["phrase"] for command in data["commands"]} >= {"PLUS-RELAX"}
+    assert data["commands"]
     assert data["duration"] is None
     assert data["human_review"] in ("unknown", "required")
 

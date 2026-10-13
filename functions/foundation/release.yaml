@@ -1,5 +1,6 @@
 aliases:
   commands: []
+  command_ids: []
   names:
   - Release
 applications: []
@@ -16,8 +17,35 @@ audio:
 canonical:
   command:
     modes: []
+    mode_ids: []
     primary: PLUS-RELEASE
   name: Release
+commands:
+- id: OCF-CMD-FND-006-PRIMARY
+  function_id: OCF-FND-006
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-fnd-006-primary.label
+    usage_key: commands.ocf-cmd-fnd-006-primary.usage
+    purpose_key: functions.ocf-fnd-006.purpose
+    explanation_key: commands.ocf-cmd-fnd-006-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-fnd-006.function-body
+    before_steps:
+    - id: select-temporary-application
+      operation: select-purpose
+      localization_key: command.procedure.select-purpose
+  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -32,6 +60,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-fnd-006.title
+  short_description_key: functions.ocf-fnd-006.short-description
+  purpose_key: functions.ocf-fnd-006.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -39,6 +71,8 @@ history:
 id: OCF-FND-006
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-FND-006-PRIMARY
   command_status: unchanged
   commands:
   - PLUS-RELEASE

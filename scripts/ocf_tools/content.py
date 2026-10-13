@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from .commands import command_view
 from .indexes import load_all_functions, load_yaml_file
 from .paths import REPO_ROOT
 from .utils import OCFError
@@ -121,11 +122,15 @@ def discover(record) -> dict:
     layers = load_layers(record.id)
     spec = layers.get("specifications")
     bindings = layers.get("bindings", {})
+    command = record.data["canonical"]["command"]
     return {
         "function_id": record.id,
         "title": record.canonical_name,
         "purpose": record.data["purpose"]["summary"],
-        "activation": record.data["canonical"]["command"],
+        # Keep the historic response shape; stable mode IDs are added only in
+        # the separate structured commands view below.
+        "activation": {key: command[key] for key in ("primary", "modes") if key in command},
+        "commands": [command_view(record, item) for item in record.command_records],
         "status": record.data["status"],
         "content_maturity": spec["maturity"] if spec else None,
         "human_review": spec["human_review"] if spec else "unknown",

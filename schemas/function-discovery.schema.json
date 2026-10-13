@@ -2,19 +2,73 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://open-consciousness-functions.dev/schemas/function-discovery.schema.json",
   "title": "Rich function discovery envelope",
-  "type": "object", "additionalProperties": false, "required": ["schema_version", "functions"],
-  "properties": {"schema_version": {"const": "1.0"}, "functions": {"type": "array", "items": {
-    "type": "object", "additionalProperties": false,
-    "required": ["function_id", "title", "purpose", "activation", "status", "content_maturity", "human_review", "extraction_status", "states", "preparation", "session_templates", "locales", "narration_resources", "duration", "voice_sources", "background", "source_availability", "evidence_classes", "safety", "claim_review", "layers"],
-    "properties": {
-      "function_id": {"type": "string"}, "title": {"type": "string"}, "purpose": {"type": "string"},
-      "activation": {"type": "object"}, "status": {"type": "object"}, "content_maturity": {"type": ["string", "null"]},
-      "human_review": {"type": "string"}, "extraction_status": {"type": "string"}, "states": {"type": ["object", "null"]},
-      "preparation": {"type": ["array", "null"]}, "session_templates": {"type": "array", "items": {"type": "string"}},
-      "locales": {"type": "array", "items": {"type": "string"}}, "narration_resources": {"type": "array"},
-      "duration": {"type": ["object", "null"]}, "voice_sources": {"type": ["array", "null"]}, "background": {"type": "object"},
-      "source_availability": {"type": "string"}, "evidence_classes": {"type": "array", "items": {"type": "string"}},
-      "safety": {"type": "object"}, "claim_review": {"type": "string"}, "layers": {"type": "array", "items": {"type": "string"}}, "extraction_review": {"type": ["object", "null"]}
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "functions"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "functions": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/function" }
     }
-  }}}
+  },
+  "definitions": {
+    "function": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "function_id", "title", "purpose", "activation", "commands", "status",
+        "content_maturity", "human_review", "extraction_status", "states",
+        "preparation", "session_templates", "locales", "narration_resources",
+        "duration", "voice_sources", "background", "source_availability",
+        "evidence_classes", "safety", "claim_review", "layers"
+      ],
+      "properties": {
+        "function_id": { "type": "string" },
+        "title": { "type": "string" },
+        "purpose": { "type": "string" },
+        "activation": { "type": "object" },
+        "commands": { "type": "array", "items": { "$ref": "#/definitions/command" } },
+        "status": { "type": "object" },
+        "content_maturity": { "type": ["string", "null"] },
+        "human_review": { "type": "string" },
+        "extraction_status": { "type": "string" },
+        "states": { "type": ["object", "null"] },
+        "preparation": { "type": ["array", "null"] },
+        "session_templates": { "type": "array", "items": { "type": "string" } },
+        "locales": { "type": "array", "items": { "type": "string" } },
+        "narration_resources": { "type": "array" },
+        "duration": { "type": ["object", "null"] },
+        "voice_sources": { "type": ["array", "null"] },
+        "background": { "type": "object" },
+        "source_availability": { "type": "string" },
+        "evidence_classes": { "type": "array", "items": { "type": "string" } },
+        "safety": { "type": "object" },
+        "claim_review": { "type": "string" },
+        "layers": { "type": "array", "items": { "type": "string" } },
+        "extraction_review": { "type": ["object", "null"] }
+      }
+    },
+    "command": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "function_id", "phrase_ref", "phrase", "role", "designation"],
+      "properties": {
+        "id": { "$ref": "function.schema.json#/definitions/commandId" },
+        "function_id": { "type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$" },
+        "phrase_ref": { "$ref": "function.schema.json#/definitions/phraseReference" },
+        "phrase": { "type": "string", "minLength": 1 },
+        "role": { "type": "string", "enum": ["activation", "mode", "increase", "decrease", "retrieval", "close", "cancel", "release", "access-close", "legacy-alias", "auxiliary"] },
+        "designation": { "type": "string", "enum": ["primary", "secondary", "special"] },
+        "effect_scope_ref": { "type": "string", "const": "lifecycle.persistence" },
+        "effect_scope": { "type": "string", "enum": ["temporary", "permanent", "persistent", "conditional"] },
+        "procedure": { "$ref": "function.schema.json#/definitions/commandRecord/properties/procedure" },
+        "resolved_procedure_steps": { "type": ["array", "null"], "items": { "$ref": "function.schema.json#/definitions/procedureStep" } },
+        "relationships": { "$ref": "function.schema.json#/definitions/commandRecord/properties/relationships" },
+        "localization": { "$ref": "function.schema.json#/definitions/commandRecord/properties/localization" },
+        "documentation": { "$ref": "function.schema.json#/definitions/commandRecord/properties/documentation" },
+        "observed_phrase": { "$ref": "function.schema.json#/definitions/commandRecord/properties/observed_phrase" }
+      }
+    }
+  }
 }

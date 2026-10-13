@@ -2,6 +2,9 @@ aliases:
   commands:
   - PLUS-GO NUMB, GO NUMB
   - PLUS-RELEASE
+  command_ids:
+  - OCF-CMD-BOD-015-LEGACY-01
+  - OCF-CMD-BOD-015-LEGACY-02
   names:
   - Short Fix
 applications: []
@@ -18,8 +21,78 @@ audio:
 canonical:
   command:
     modes: []
+    mode_ids: []
     primary: PLUS-NUMB
   name: Short Fix
+commands:
+- id: OCF-CMD-BOD-015-PRIMARY
+  function_id: OCF-BOD-015
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-bod-015-primary.label
+    usage_key: commands.ocf-cmd-bod-015-primary.usage
+    purpose_key: functions.ocf-bod-015.purpose
+    explanation_key: commands.ocf-cmd-bod-015-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-CLOSE-FOCUS
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-bod-015.function-body
+    before_steps: []
+  relationships: {}
+  observed_phrase:
+    text: Plus Go Numb Go Numb
+    narration_key: hplus.function.ocf-bod-015.function-body
+    relationship: legacy-form
+- id: OCF-CMD-BOD-015-LEGACY-01
+  function_id: OCF-BOD-015
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-BOD-015-LEGACY-01
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-bod-015-legacy-01.label
+    usage_key: commands.ocf-cmd-bod-015-legacy-01.usage
+    purpose_key: functions.ocf-bod-015.purpose
+    explanation_key: commands.ocf-cmd-bod-015-legacy-01.explanation
+  documentation:
+    visible: true
+    order: 101
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
+- id: OCF-CMD-BOD-015-LEGACY-02
+  function_id: OCF-BOD-015
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-BOD-015-LEGACY-02
+  role: release
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-bod-015-legacy-02.label
+    usage_key: commands.ocf-cmd-bod-015-legacy-02.usage
+    purpose_key: functions.ocf-bod-015.purpose
+    explanation_key: commands.ocf-cmd-bod-015-legacy-02.explanation
+  documentation:
+    visible: true
+    order: 102
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-CLOSE-FOCUS
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-bod-015.function-body
+    before_steps: []
+  relationships:
+    releases:
+    - OCF-CMD-BOD-015-PRIMARY
 chains: []
 claims:
   intended_effects: []
@@ -39,6 +112,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-bod-015.title
+  short_description_key: functions.ocf-bod-015.short-description
+  purpose_key: functions.ocf-bod-015.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -46,6 +123,9 @@ history:
 id: OCF-BOD-015
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-BOD-015-LEGACY-01
+  - OCF-CMD-BOD-015-LEGACY-02
   command_status: proposed
   commands:
   - PLUS-GO NUMB, GO NUMB
@@ -58,6 +138,7 @@ lifecycle:
   persistence: temporary
   release:
     command: null
+    command_id: OCF-CMD-BOD-015-LEGACY-02
     required: false
   trigger_conditions: []
 ocf:

@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+from copy import deepcopy
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -97,6 +99,18 @@ def resolve_phrase(owner: FunctionRecord, command: FunctionCommand) -> str:
     return phrase
 
 
+def command_view(owner: FunctionRecord, command: FunctionCommand) -> dict[str, Any]:
+    """Return a rich, derived view without duplicating phrase authority in YAML."""
+    result = deepcopy(command.data)
+    result["phrase"] = resolve_phrase(owner, command)
+    if command.data.get("effect_scope_ref") == "lifecycle.persistence":
+        result["effect_scope"] = owner.persistence
+    if command.procedure:
+        result["resolved_procedure_steps"] = resolve_procedure(command, load_procedure_catalog())
+    return result
+
+
+@lru_cache(maxsize=4)
 def load_procedure_catalog(path: str | Path | None = None) -> dict[str, dict[str, Any]]:
     """Load reusable ordered procedures, validating their schema and identities."""
     source = Path(path) if path is not None else COMMAND_PROCEDURES_FILE

@@ -2,6 +2,9 @@ aliases:
   commands:
   - PLUS-SMELL GREATER
   - PLUS-SMELL LESSER
+  command_ids:
+  - OCF-CMD-SEN-003-LEGACY-01
+  - OCF-CMD-SEN-003-LEGACY-02
   names:
   - 'Sensory: Smell'
 applications: []
@@ -19,8 +22,96 @@ canonical:
   command:
     modes:
     - PLUS-SMELL LESS
+    mode_ids:
+    - OCF-CMD-SEN-003-SMELL-LESS
     primary: PLUS-SMELL MORE
   name: 'Sensory: Smell'
+commands:
+- id: OCF-CMD-SEN-003-PRIMARY
+  function_id: OCF-SEN-003
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-sen-003-primary.label
+    usage_key: commands.ocf-cmd-sen-003-primary.usage
+    purpose_key: functions.ocf-sen-003.purpose
+    explanation_key: commands.ocf-cmd-sen-003-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-CLOSE-OPEN
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-sen-003.function-body
+    before_steps: []
+  relationships:
+    pairs_with:
+    - OCF-CMD-SEN-003-SMELL-LESS
+- id: OCF-CMD-SEN-003-SMELL-LESS
+  function_id: OCF-SEN-003
+  phrase_ref:
+    source: canonical-mode
+    command_id: OCF-CMD-SEN-003-SMELL-LESS
+  role: decrease
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-sen-003-smell-less.label
+    usage_key: commands.ocf-cmd-sen-003-smell-less.usage
+    purpose_key: functions.ocf-sen-003.purpose
+    explanation_key: commands.ocf-cmd-sen-003-smell-less.explanation
+  documentation:
+    visible: true
+    order: 11
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-CLOSE-OPEN
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-sen-003.function-body
+    before_steps: []
+  relationships:
+    pairs_with:
+    - OCF-CMD-SEN-003-PRIMARY
+    modifies:
+    - OCF-CMD-SEN-003-PRIMARY
+- id: OCF-CMD-SEN-003-LEGACY-01
+  function_id: OCF-SEN-003
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-SEN-003-LEGACY-01
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-sen-003-legacy-01.label
+    usage_key: commands.ocf-cmd-sen-003-legacy-01.usage
+    purpose_key: functions.ocf-sen-003.purpose
+    explanation_key: commands.ocf-cmd-sen-003-legacy-01.explanation
+  documentation:
+    visible: true
+    order: 101
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
+- id: OCF-CMD-SEN-003-LEGACY-02
+  function_id: OCF-SEN-003
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-SEN-003-LEGACY-02
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-sen-003-legacy-02.label
+    usage_key: commands.ocf-cmd-sen-003-legacy-02.usage
+    purpose_key: functions.ocf-sen-003.purpose
+    explanation_key: commands.ocf-cmd-sen-003-legacy-02.explanation
+  documentation:
+    visible: true
+    order: 102
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -39,6 +130,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-sen-003.title
+  short_description_key: functions.ocf-sen-003.short-description
+  purpose_key: functions.ocf-sen-003.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -46,6 +141,9 @@ history:
 id: OCF-SEN-003
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-SEN-003-LEGACY-01
+  - OCF-CMD-SEN-003-LEGACY-02
   command_status: normalized
   commands:
   - PLUS-SMELL GREATER

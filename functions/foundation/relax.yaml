@@ -1,6 +1,8 @@
 aliases:
   commands:
   - PLUS-RELAX, RELAX
+  command_ids:
+  - OCF-CMD-FND-004-LEGACY-01
   names:
   - Relax
 applications: []
@@ -17,8 +19,53 @@ audio:
 canonical:
   command:
     modes: []
+    mode_ids: []
     primary: PLUS-RELAX
   name: Relax
+commands:
+- id: OCF-CMD-FND-004-PRIMARY
+  function_id: OCF-FND-004
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-fnd-004-primary.label
+    usage_key: commands.ocf-cmd-fnd-004-primary.usage
+    purpose_key: functions.ocf-fnd-004.purpose
+    explanation_key: commands.ocf-cmd-fnd-004-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-fnd-004.function-body
+    before_steps: []
+  relationships: {}
+  observed_phrase:
+    text: Plus Relax Relax
+    narration_key: hplus.function.ocf-fnd-004.function-body
+    relationship: legacy-form
+- id: OCF-CMD-FND-004-LEGACY-01
+  function_id: OCF-FND-004
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-FND-004-LEGACY-01
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-fnd-004-legacy-01.label
+    usage_key: commands.ocf-cmd-fnd-004-legacy-01.usage
+    purpose_key: functions.ocf-fnd-004.purpose
+    explanation_key: commands.ocf-cmd-fnd-004-legacy-01.explanation
+  documentation:
+    visible: true
+    order: 101
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -34,6 +81,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-fnd-004.title
+  short_description_key: functions.ocf-fnd-004.short-description
+  purpose_key: functions.ocf-fnd-004.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -41,6 +92,8 @@ history:
 id: OCF-FND-004
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-FND-004-LEGACY-01
   command_status: unchanged
   commands:
   - PLUS-RELAX, RELAX

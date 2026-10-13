@@ -1,5 +1,6 @@
 aliases:
   commands: []
+  command_ids: []
   names:
   - 'Sensory: Hearing'
 applications: []
@@ -17,8 +18,62 @@ canonical:
   command:
     modes:
     - PLUS-HEAR LESS
+    mode_ids:
+    - OCF-CMD-SEN-001-HEAR-LESS
     primary: PLUS-HEAR MORE
   name: 'Sensory: Hearing'
+commands:
+- id: OCF-CMD-SEN-001-PRIMARY
+  function_id: OCF-SEN-001
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-sen-001-primary.label
+    usage_key: commands.ocf-cmd-sen-001-primary.usage
+    purpose_key: functions.ocf-sen-001.purpose
+    explanation_key: commands.ocf-cmd-sen-001-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-CLOSE-OPEN
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-sen-001.function-body
+    before_steps: []
+  relationships:
+    pairs_with:
+    - OCF-CMD-SEN-001-HEAR-LESS
+- id: OCF-CMD-SEN-001-HEAR-LESS
+  function_id: OCF-SEN-001
+  phrase_ref:
+    source: canonical-mode
+    command_id: OCF-CMD-SEN-001-HEAR-LESS
+  role: decrease
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-sen-001-hear-less.label
+    usage_key: commands.ocf-cmd-sen-001-hear-less.usage
+    purpose_key: functions.ocf-sen-001.purpose
+    explanation_key: commands.ocf-cmd-sen-001-hear-less.explanation
+  documentation:
+    visible: true
+    order: 11
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-CLOSE-OPEN
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-sen-001.function-body
+    before_steps: []
+  relationships:
+    pairs_with:
+    - OCF-CMD-SEN-001-PRIMARY
+    modifies:
+    - OCF-CMD-SEN-001-PRIMARY
 chains: []
 claims:
   intended_effects: []
@@ -37,6 +92,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-sen-001.title
+  short_description_key: functions.ocf-sen-001.short-description
+  purpose_key: functions.ocf-sen-001.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -44,6 +103,9 @@ history:
 id: OCF-SEN-001
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-SEN-001-PRIMARY
+  - OCF-CMD-SEN-001-HEAR-LESS
   command_status: normalized
   commands:
   - PLUS-HEAR MORE

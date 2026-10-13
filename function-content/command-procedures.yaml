@@ -1,2 +1,293 @@
-schema_version: "1.0"
-procedures: []
+schema_version: '1.0'
+procedures:
+- id: OCF-PROC-INHALE-HOLD
+  steps:
+  - id: inhale
+    operation: inhale
+    localization_key: command.procedure.inhale
+  - id: hold
+    operation: hold-breath
+    localization_key: command.procedure.hold-breath
+  - id: command
+    operation: think-or-say-command
+    localization_key: command.procedure.think-or-say-command
+  - id: exhale
+    operation: exhale
+    localization_key: command.procedure.exhale
+  source_narration_keys:
+  - hplus.function.ocf-aut-001.function-body
+  notes: Semantic sequence abstracted from approved English narration; function-specific evidence is linked on each command record.
+- id: OCF-PROC-CLOSE-FOCUS
+  steps:
+  - id: close-eyes
+    operation: close-eyes
+    localization_key: command.procedure.close-eyes
+  - id: focus-target
+    operation: focus-target
+    localization_key: command.procedure.focus-target
+  - id: inhale
+    operation: inhale
+    localization_key: command.procedure.inhale
+  - id: hold
+    operation: hold-breath
+    localization_key: command.procedure.hold-breath
+  - id: command
+    operation: think-or-say-command
+    localization_key: command.procedure.think-or-say-command
+  - id: exhale
+    operation: exhale
+    localization_key: command.procedure.exhale
+  source_narration_keys:
+  - hplus.function.ocf-bod-001.function-body
+  notes: Semantic sequence abstracted from approved English narration; function-specific evidence is linked on each command record.
+- id: OCF-PROC-CLOSE-FOCUS-OPEN
+  steps:
+  - id: close-eyes
+    operation: close-eyes
+    localization_key: command.procedure.close-eyes
+  - id: focus-target
+    operation: focus-target
+    localization_key: command.procedure.focus-target
+  - id: inhale
+    operation: inhale
+    localization_key: command.procedure.inhale
+  - id: hold
+    operation: hold-breath
+    localization_key: command.procedure.hold-breath
+  - id: command
+    operation: think-or-say-command
+    localization_key: command.procedure.think-or-say-command
+  - id: exhale
+    operation: exhale
+    localization_key: command.procedure.exhale
+  - id: open-eyes
+    operation: open-eyes
+    localization_key: command.procedure.open-eyes
+  source_narration_keys:
+  - hplus.function.ocf-bod-014.function-body
+  notes: Semantic sequence abstracted from approved English narration; function-specific evidence is linked on each command record.
+- id: OCF-PROC-CLOSE-INHALE-HOLD
+  steps:
+  - id: close-eyes
+    operation: close-eyes
+    localization_key: command.procedure.close-eyes
+  - id: inhale
+    operation: inhale
+    localization_key: command.procedure.inhale
+  - id: hold
+    operation: hold-breath
+    localization_key: command.procedure.hold-breath
+  - id: command
+    operation: think-or-say-command
+    localization_key: command.procedure.think-or-say-command
+  - id: exhale
+    operation: exhale
+    localization_key: command.procedure.exhale
+  source_narration_keys:
+  - hplus.function.ocf-bod-010.function-body
+  notes: Semantic sequence abstracted from approved English narration; function-specific evidence is linked on each command record.
+- id: OCF-PROC-CLOSE-NATURAL
+  steps:
+  - id: close-eyes
+    operation: close-eyes
+    localization_key: command.procedure.close-eyes
+  - id: inhale
+    operation: inhale
+    localization_key: command.procedure.inhale
+  - id: hold
+    operation: hold-breath
+    localization_key: command.procedure.hold-breath
+  - id: command
+    operation: think-or-say-command
+    localization_key: command.procedure.think-or-say-command
+  - id: exhale
+    operation: exhale
+    localization_key: command.procedure.exhale
+  - id: breathe-normally
+    operation: breathe-normally
+    localization_key: command.procedure.breathe-normally
+  source_narration_keys:
+  - hplus.function.ocf-cog-003.function-body
+  notes: Semantic sequence abstracted from approved English narration; function-specific evidence is linked on each command record.
+- id: OCF-PROC-CLOSE-OPEN
+  steps:
+  - id: close-eyes
+    operation: close-eyes
+    localization_key: command.procedure.close-eyes
+  - id: inhale
+    operation: inhale
+    localization_key: command.procedure.inhale
+  - id: hold
+    operation: hold-breath
+    localization_key: command.procedure.hold-breath
+  - id: command
+    operation: think-or-say-command
+    localization_key: command.procedure.think-or-say-command
+  - id: exhale
+    operation: exhale
+    localization_key: command.procedure.exhale
+  - id: open-eyes
+    operation: open-eyes
+    localization_key: command.procedure.open-eyes
+  source_narration_keys:
+  - hplus.function.ocf-sen-001.function-body
+  notes: Semantic sequence abstracted from approved English narration; function-specific evidence is linked on each command record.
+- id: OCF-PROC-INHALE-CLOSE-OPEN
+  steps:
+  - id: inhale
+    operation: inhale
+    localization_key: command.procedure.inhale
+  - id: close-eyes
+    operation: close-eyes
+    localization_key: command.procedure.close-eyes
+  - id: hold
+    operation: hold-breath
+    localization_key: command.procedure.hold-breath
+  - id: command
+    operation: think-or-say-command
+    localization_key: command.procedure.think-or-say-command
+  - id: exhale
+    operation: exhale
+    localization_key: command.procedure.exhale
+  - id: open-eyes
+    operation: open-eyes
+    localization_key: command.procedure.open-eyes
+  source_narration_keys:
+  - hplus.function.ocf-fnd-005.function-body
+  notes: Semantic sequence abstracted from approved English narration; function-specific evidence is linked on each command record.
+- id: OCF-PROC-THINK-COMMAND
+  steps:
+  - id: command
+    operation: think-or-say-command
+    localization_key: command.procedure.think-or-say-command
+  source_narration_keys:
+  - hplus.function.ocf-cog-001.function-body
+  notes: Semantic sequence abstracted from approved English narration; function-specific evidence is linked on each command record.
+- id: OCF-PROC-QUESTION
+  steps:
+  - id: question
+    operation: select-question
+    localization_key: command.procedure.select-question
+  - id: command
+    operation: think-or-say-command
+    localization_key: command.procedure.think-or-say-command
+  source_narration_keys:
+  - hplus.function.ocf-cog-001.function-body
+  notes: Semantic sequence abstracted from approved English narration; function-specific evidence is linked on each command record.
+- id: OCF-PROC-M-ENERGY
+  steps:
+  - id: purpose
+    operation: select-purpose
+    localization_key: command.procedure.select-purpose
+  - id: command
+    operation: think-or-say-command
+    localization_key: command.procedure.think-or-say-command
+  - id: result
+    operation: represent-result
+    localization_key: command.procedure.represent-result
+  source_narration_keys:
+  - hplus.function.ocf-fnd-001.function-body
+  notes: Semantic sequence abstracted from approved English narration; function-specific evidence is linked on each command record.
+- id: OCF-PROC-IMPRINT
+  steps:
+  - id: memory
+    operation: select-memory
+    localization_key: command.procedure.select-memory
+  - id: inhale
+    operation: inhale
+    localization_key: command.procedure.inhale
+  - id: hold
+    operation: hold-breath
+    localization_key: command.procedure.hold-breath
+  - id: command
+    operation: think-or-say-command
+    localization_key: command.procedure.think-or-say-command
+  - id: focus-memory
+    operation: focus-target
+    localization_key: command.procedure.focus-target
+  - id: exhale
+    operation: exhale
+    localization_key: command.procedure.exhale
+  source_narration_keys:
+  - hplus.function.ocf-cog-004.function-body
+  notes: Semantic sequence abstracted from approved English narration; function-specific evidence is linked on each command record.
+- id: OCF-PROC-OPTIONS
+  steps:
+  - id: close-eyes
+    operation: close-eyes
+    localization_key: command.procedure.close-eyes
+  - id: inhale
+    operation: inhale
+    localization_key: command.procedure.inhale
+  - id: hold
+    operation: hold-breath
+    localization_key: command.procedure.hold-breath
+  - id: focus-situation
+    operation: focus-target
+    localization_key: command.procedure.focus-target
+  - id: command
+    operation: think-or-say-command
+    localization_key: command.procedure.think-or-say-command
+  - id: exhale
+    operation: exhale
+    localization_key: command.procedure.exhale
+  source_narration_keys:
+  - hplus.function.ocf-cog-005.function-body
+  notes: Semantic sequence abstracted from approved English narration; function-specific evidence is linked on each command record.
+- id: OCF-PROC-SLEEP-EXHALE
+  steps:
+  - id: sleep-intention
+    operation: select-purpose
+    localization_key: command.procedure.select-purpose
+  - id: breathe-slowly
+    operation: breathe-slowly-deeply
+    localization_key: command.procedure.breathe-slowly-deeply
+  - id: command-during-exhale
+    operation: think-command-during-exhale
+    localization_key: command.procedure.think-command-during-exhale
+  - id: continue-breathing
+    operation: breathe-normally
+    localization_key: command.procedure.breathe-normally
+  source_narration_keys:
+  - hplus.function.ocf-slp-002.function-body
+  notes: Semantic sequence abstracted from approved English narration; function-specific evidence is linked on each command record.
+- id: OCF-PROC-INHALE-HOLD-NATURAL
+  steps:
+  - id: inhale
+    operation: inhale
+    localization_key: command.procedure.inhale
+  - id: hold
+    operation: hold-breath
+    localization_key: command.procedure.hold-breath
+  - id: command
+    operation: think-or-say-command
+    localization_key: command.procedure.think-or-say-command
+  - id: exhale
+    operation: exhale
+    localization_key: command.procedure.exhale
+  - id: breathe-normally
+    operation: breathe-normally
+    localization_key: command.procedure.breathe-normally
+  source_narration_keys:
+  - hplus.function.ocf-bod-012.function-body
+  notes: Semantic sequence abstracted from approved English narration; function-specific evidence is linked on each command record.
+- id: OCF-PROC-SLOW-BREATH
+  steps:
+  - id: inhale
+    operation: inhale
+    localization_key: command.procedure.inhale
+  - id: hold
+    operation: hold-breath
+    localization_key: command.procedure.hold-breath
+  - id: command
+    operation: think-or-say-command
+    localization_key: command.procedure.think-or-say-command
+  - id: exhale
+    operation: exhale
+    localization_key: command.procedure.exhale
+  - id: breathe-slowly
+    operation: breathe-slowly-deeply
+    localization_key: command.procedure.breathe-slowly-deeply
+  source_narration_keys:
+  - hplus.function.ocf-slp-003.function-body
+  notes: Semantic sequence abstracted from approved English narration; function-specific evidence is linked on each command record.

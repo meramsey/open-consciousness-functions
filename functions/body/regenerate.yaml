@@ -1,6 +1,8 @@
 aliases:
   commands:
   - PLUS-BUILD, LIVE
+  command_ids:
+  - OCF-CMD-BOD-014-LEGACY-01
   names:
   - Regenerate
 applications: []
@@ -17,8 +19,53 @@ audio:
 canonical:
   command:
     modes: []
+    mode_ids: []
     primary: PLUS-REGENERATE
   name: Regenerate
+commands:
+- id: OCF-CMD-BOD-014-PRIMARY
+  function_id: OCF-BOD-014
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-bod-014-primary.label
+    usage_key: commands.ocf-cmd-bod-014-primary.usage
+    purpose_key: functions.ocf-bod-014.purpose
+    explanation_key: commands.ocf-cmd-bod-014-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-CLOSE-FOCUS-OPEN
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-bod-014.function-body
+    before_steps: []
+  relationships: {}
+  observed_phrase:
+    text: Plus Build Live
+    narration_key: hplus.function.ocf-bod-014.function-body
+    relationship: legacy-form
+- id: OCF-CMD-BOD-014-LEGACY-01
+  function_id: OCF-BOD-014
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-BOD-014-LEGACY-01
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-bod-014-legacy-01.label
+    usage_key: commands.ocf-cmd-bod-014-legacy-01.usage
+    purpose_key: functions.ocf-bod-014.purpose
+    explanation_key: commands.ocf-cmd-bod-014-legacy-01.explanation
+  documentation:
+    visible: true
+    order: 101
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -37,6 +84,10 @@ compatibility:
 contributor:
   contact: null
   name: null
+documentation:
+  title_key: functions.ocf-bod-014.title
+  short_description_key: functions.ocf-bod-014.short-description
+  purpose_key: functions.ocf-bod-014.purpose
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -44,6 +95,8 @@ history:
 id: OCF-BOD-014
 incompatible_functions: []
 legacy:
+  command_ids:
+  - OCF-CMD-BOD-014-LEGACY-01
   command_status: proposed
   commands:
   - PLUS-BUILD, LIVE
