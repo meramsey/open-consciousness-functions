@@ -1092,6 +1092,25 @@ class LocaleCatalog:
                 continue
             self.packs[normalized] = pack
 
+    @classmethod
+    def from_packs(cls, packs: list[tuple[str, LocalePack]]) -> "LocaleCatalog":
+        """Create a catalog from an explicit list of (locale, pack) tuples.
+
+        Intended for testing: bypasses filesystem discovery and normalizes
+        keys with the same logic as the filesystem constructor.
+        """
+        instance = cls.__new__(cls)
+        instance.root = Path()
+        instance.packs = {}
+        instance.problems = []
+        for locale, pack in packs:
+            normalized = normalize_tag(locale)
+            if normalized in instance.packs:
+                instance.problems.append(f"duplicate locale pack: {normalized}")
+                continue
+            instance.packs[normalized] = pack
+        return instance
+
     # -- lookups ----------------------------------------------------------
 
     @property

@@ -16,6 +16,7 @@ import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 from urllib.parse import unquote, urlparse
+from urllib.request import url2pathname
 
 from .paths import REPO_ROOT
 
@@ -142,7 +143,9 @@ def _source_preset_dirs() -> list[Path]:
                 continue
             if url.scheme != "file" or url.netloc not in ("", "localhost"):
                 continue
-            presets = Path(unquote(url.path)) / "presets"
+            # Use url2pathname to correctly handle Windows file URIs (e.g., file:///C:/path)
+            path = url2pathname(url.path)
+            presets = Path(path) / "presets"
             if presets.is_dir():
                 return [presets]
     return []

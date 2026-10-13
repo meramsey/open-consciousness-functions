@@ -143,6 +143,31 @@ def test_catalog_directory_variants_duplicates_and_provenance(tmp_path):
     assert pack.domains() == {"narration"} and "from en-US" in pack.describe()
 
 
+def test_catalog_duplicate_detection_via_normalized_keys():
+    """Test duplicate locale detection via normalized keys, independent of filesystem."""
+    from pathlib import Path
+    from ocf_tools.locale import LocaleCatalog, LocalePack
+
+    # Create two packs that normalize to the same locale
+    pack1 = LocalePack(
+        {"locale": "en-US", "status": "canonical", "semantic_version": "1.0.0", "resources": []},
+        {"test.key": {"text": "Pack 1"}},
+        Path("en-US"),
+    )
+    pack2 = LocalePack(
+        {"locale": "en-us", "status": "draft", "semantic_version": "1.0.0", "resources": []},
+        {"test.key": {"text": "Pack 2"}},
+        Path("en-us"),
+    )
+
+    # Use from_packs to test duplicate detection logic directly
+    catalog = l.LocaleCatalog.from_packs([("en-US", pack1), ("en-us", pack2)])
+
+    # The normalized key "en-US" should be registered once with a duplicate error
+    assert catalog.locales() == ["en-US"]
+    assert any("duplicate locale" in error for error in catalog.problems)
+
+
 def test_catalog_without_canonical_and_version_gaps_are_explicit(tmp_path):
     path, _ = make_pack(tmp_path, "fr")
     catalog = l.LocaleCatalog(tmp_path)
