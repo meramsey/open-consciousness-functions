@@ -192,7 +192,14 @@ def validate_command_records(owner: FunctionRecord) -> list[str]:
         except CommandMetadataError as exc:
             errors.append(str(exc))
         relationships = record.relationships
-        for relation in ("releases", "cancels", "retrieves", "closes"):
+        for relation in (
+            "pairs_with",
+            "modifies",
+            "releases",
+            "cancels",
+            "retrieves",
+            "closes",
+        ):
             targets = relationships.get(relation, [])
             if not isinstance(targets, list):
                 errors.append(f"command {record.id} relationship {relation} must be an array")

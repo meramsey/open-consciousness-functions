@@ -14,7 +14,7 @@ from ocf_tools.commands import (
 )
 from ocf_tools.models import FunctionCommand, FunctionRecord
 from ocf_tools.paths import REPO_ROOT, schema_path
-from ocf_tools.validators import validate_against_schema
+from ocf_tools.validators import validate_against_schema, validate_command_metadata
 
 pytestmark = pytest.mark.unit
 
@@ -227,12 +227,10 @@ def test_function_schema_accepts_optional_structured_commands():
             "documentation": {"visible": True, "order": 1},
         }
     ]
-    assert (
-        validate_against_schema(
-            data, yaml.safe_load(schema_path("function.schema.json").read_text())
-        )
-        == []
-    )
+    schema = yaml.safe_load(schema_path("function.schema.json").read_text())
+    assert validate_against_schema(data, schema) == []
+    invalid = {**data, "commands": [{**data["commands"][0], "designation": "tertiary"}]}
+    assert validate_against_schema(invalid, schema)
 
 
 def test_command_collection_rejects_duplicate_ids_across_functions():
@@ -249,3 +247,15 @@ def test_command_collection_rejects_duplicate_ids_across_functions():
 
     errors = validate_command_collection(records)
     assert any(f"duplicate command ID {PRIMARY_ID}" in error for error in errors)
+
+
+def test_unknown_procedure_reference_is_reported_by_command_validation():
+    data = structured_owner_data()
+    data["commands"][0]["procedure"] = {
+        "ref": "OCF-PROC-MISSING",
+        "status": "documented",
+    }
+    record = FunctionRecord(FUNCTION_ID, "command-fixture", Path("fixture.yaml"), data)
+
+    result = validate_command_metadata([record])
+    assert any(issue.code == "command-procedure-reference" for issue in result.errors)

@@ -492,7 +492,7 @@
         "phrase_ref": { "$ref": "#/definitions/phraseReference" },
         "role": {
           "type": "string",
-          "enum": ["activation", "mode", "retrieval", "close", "cancel", "release", "access-close", "auxiliary"]
+          "enum": ["activation", "mode", "increase", "decrease", "retrieval", "close", "cancel", "release", "access-close", "auxiliary"]
         },
         "designation": { "type": "string", "enum": ["primary", "secondary", "special"] },
         "effect_scope_ref": { "type": "string", "const": "lifecycle.persistence" },
@@ -518,6 +518,8 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "pairs_with": { "type": "array", "items": { "$ref": "#/definitions/commandId" }, "uniqueItems": true },
+            "modifies": { "type": "array", "items": { "$ref": "#/definitions/commandId" }, "uniqueItems": true },
             "releases": { "type": "array", "items": { "$ref": "#/definitions/commandId" }, "uniqueItems": true },
             "cancels": { "type": "array", "items": { "$ref": "#/definitions/commandId" }, "uniqueItems": true },
             "retrieves": { "type": "array", "items": { "$ref": "#/definitions/commandId" }, "uniqueItems": true },
