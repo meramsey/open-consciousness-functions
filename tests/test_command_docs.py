@@ -30,8 +30,14 @@ def test_localized_command_data_preserves_canonical_phrases_and_fallback_provena
     assert activation["observed_phrase"]["text"] == "Plus Quiet Sleep"
 
     rendered = render_command_index(index)
-    assert "locale fallback chain" in rendered
+    fallback_key = "command.guide.fallback-note"
+    fallback_text = index["guide_strings"][fallback_key]["text"]
+    assert fallback_key in {row["key"] for row in index["fallbacks"]}
+    assert fallback_text in rendered
     assert "PLUS-SLEEP EASY" in rendered
+
+    index["guide_strings"][fallback_key]["text"] = "Localized fallback marker"
+    assert "Localized fallback marker" in render_command_index(index)
 
 
 def test_generated_command_documents_are_deterministic_and_include_function_sheets():
@@ -45,8 +51,8 @@ def test_generated_command_documents_are_deterministic_and_include_function_shee
     assert "function-command-index.json" in paths
     assert "docs/functions/OCF-SLP-005.md" in paths
     export = next(content for path, content in first if path == "function-command-index.json")
-    payload = export.split("\n\n", 1)[1]
-    assert json.loads(payload)["command_count"] > 0
+    assert export.startswith("{")
+    assert json.loads(export)["command_count"] > 0
 
 
 def test_reference_renders_scope_secondary_roles_and_role_specific_procedures():

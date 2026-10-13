@@ -295,7 +295,8 @@ def render_command_index(index: dict) -> str:
     functions = index["functions"]
     note = ""
     if index["fallback_count"]:
-        note = "\n> Some UI text uses the locale fallback chain; see the JSON export's `fallbacks` list.\n"
+        fallback_note = _localized_from_index(index, "command.guide.fallback-note")
+        note = f"\n> {fallback_note}\n"
     rows = []
     for function in functions:
         for command in function["commands"]:
@@ -504,7 +505,13 @@ def generated_command_documents() -> list[tuple[str, str]]:
         )
         for function in index["functions"]
     )
-    return [(path, generated_content(text)) for path, text in outputs]
+    return [
+        (
+            path,
+            text if path == "function-command-index.json" else generated_content(text),
+        )
+        for path, text in outputs
+    ]
 
 
 def run_cli(args: Any) -> int:
