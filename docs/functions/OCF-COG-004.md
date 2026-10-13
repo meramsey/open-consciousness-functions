@@ -16,7 +16,7 @@ Source availability does not establish historical authentication or provenance.
 
 ## PLUS-IMPRINT
 
-**Primary activation command**
+### Primary activation command
 
 Use only when you choose to activate the documented function.
 
@@ -24,7 +24,8 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Imprint Imprint `(legacy-form; hplus.function.ocf-cog-004.function-body)`
 
-**Activation sequence**
+### Activation sequence
+
 1. Select information or an experience to remember.
 2. Inhale.
 3. Hold your breath.
@@ -34,21 +35,23 @@ This is the primary command for the function.
 
 ## PLUS-RECALL
 
-**Retrieval command**
+### Retrieval command
 
 Use to retrieve information or experience selected or imprinted with this function.
 
 This command retrieves selected or imprinted information.
 
-**Retrieval sequence**
+### Retrieval sequence
+
 1. Think or say the command.
 
-**Related commands**
+### Related commands
+
 - retrieves from: `PLUS-IMPRINT`
 
 ## PLUS-IMPRINT, IMPRINT
 
-**Legacy compatibility phrase**
+### Legacy compatibility phrase
 
 Compatibility phrase retained by the registry; historical authentication is not implied.
 

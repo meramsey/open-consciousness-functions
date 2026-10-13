@@ -16,13 +16,14 @@ Source availability does not establish historical authentication or provenance.
 
 ## PLUS-OPEN
 
-**Primary activation command**
+### Primary activation command
 
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Activation sequence**
+### Activation sequence
+
 1. Close your eyes.
 2. Inhale.
 3. Hold your breath.
@@ -32,16 +33,18 @@ This is the primary command for the function.
 
 ## PLUS-CLOSED
 
-**Close command**
+### Close command
 
 Use to close the current function state; session return remains separate.
 
 This command closes the current function state.
 
-**Close sequence**
+### Close sequence
+
 1. Think or say the command.
 
-**Related commands**
+### Related commands
+
 - closes: `PLUS-OPEN`
 
 Canonical command phrases are shown exactly as registered and are not translated. Script and legacy phrase differences are shown separately.

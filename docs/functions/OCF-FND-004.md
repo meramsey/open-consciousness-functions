@@ -16,7 +16,7 @@ Source availability does not establish historical authentication or provenance.
 
 ## PLUS-RELAX
 
-**Primary activation command**
+### Primary activation command
 
 Use only when you choose to activate the documented function.
 
@@ -24,7 +24,8 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Relax Relax `(legacy-form; hplus.function.ocf-fnd-004.function-body)`
 
-**Activation sequence**
+### Activation sequence
+
 1. Inhale.
 2. Hold your breath.
 3. Think or say the command.
@@ -32,7 +33,7 @@ This is the primary command for the function.
 
 ## PLUS-RELAX, RELAX
 
-**Legacy compatibility phrase**
+### Legacy compatibility phrase
 
 Compatibility phrase retained by the registry; historical authentication is not implied.
 

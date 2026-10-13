@@ -16,13 +16,14 @@ Source availability does not establish historical authentication or provenance.
 
 ## PLUS-PROFILE, PROFILE
 
-**Primary activation command**
+### Primary activation command
 
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Activation sequence**
+### Activation sequence
+
 1. Inhale.
 2. Hold your breath.
 3. Think or say the command.

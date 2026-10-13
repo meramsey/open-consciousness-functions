@@ -84,9 +84,7 @@ def load_pacing_profile(profile_ref: str) -> dict[str, Any]:
     else:
         path = PACING_DIR / f"{profile_ref}.yaml"
     if not path.is_file():
-        raise OCFError(
-            f"session pacing profile not found: {profile_ref} (looked in {PACING_DIR})"
-        )
+        raise OCFError(f"session pacing profile not found: {profile_ref} (looked in {PACING_DIR})")
     try:
         data = yaml_safe_load(read_text(path))
     except Exception as exc:  # pragma: no cover - defensive
@@ -95,7 +93,9 @@ def load_pacing_profile(profile_ref: str) -> dict[str, Any]:
         raise OCFError(f"session pacing profile {path.name} is not a mapping")
     problems = validate_against_schema(data, _load_schema("session-pacing.schema.json"))
     if problems:
-        raise OCFError(f"session pacing profile {path.name} fails its schema:\n" + "\n".join(problems))
+        raise OCFError(
+            f"session pacing profile {path.name} fails its schema:\n" + "\n".join(problems)
+        )
     return data
 
 
@@ -374,17 +374,15 @@ def resolve_section_events(
                 elif repeat_index == 0:
                     event["at"] = float(section["start"]) + first_offset
                 if repeat_index == repeat - 1 and pause_after is not None:
-                    event.setdefault("timing", {"anchor": "speech-end"})[
-                        "pause_after"
-                    ] = pause_after
+                    event.setdefault("timing", {"anchor": "speech-end"})["pause_after"] = (
+                        pause_after
+                    )
                 events.append(event)
                 prior_id = event_id
             return events
 
         if "start" not in section:
-            raise OCFError(
-                f"line-paced slot section {section['id']} requires an absolute start"
-            )
+            raise OCFError(f"line-paced slot section {section['id']} requires an absolute start")
         start = float(section["start"])
         if section.get("repeat"):
             if section_end is None:
@@ -435,9 +433,7 @@ def resolve_section_events(
     return events
 
 
-def _apply_pacing_keys(
-    events: list[dict[str, Any]], pacing_profile: dict[str, Any] | None
-) -> None:
+def _apply_pacing_keys(events: list[dict[str, Any]], pacing_profile: dict[str, Any] | None) -> None:
     """Resolve authored pacing keys into numeric event timing/DSP fields."""
     for event in events:
         key = event.pop("pacing_key", None)
@@ -580,9 +576,7 @@ def compose(
                         )
                     override = overrides[event["id"]]
                     content_fields = [
-                        field
-                        for field in ("text", "narration_key", "slot")
-                        if field in override
+                        field for field in ("text", "narration_key", "slot") if field in override
                     ]
                     if len(content_fields) != 1:
                         raise OCFError(
@@ -708,9 +702,7 @@ def compose(
                 f"section {section['id']} cannot set both gain_db and gain_db_pacing_key"
             )
         if section.get("gain_db_pacing_key"):
-            gain = _pacing_value(
-                pacing_profile, section["gain_db_pacing_key"], allow_negative=True
-            )
+            gain = _pacing_value(pacing_profile, section["gain_db_pacing_key"], allow_negative=True)
             section_doc["gain_db"] = float(gain)
         elif section.get("gain_db") is not None:
             section_doc["gain_db"] = float(section["gain_db"])
@@ -744,8 +736,7 @@ def compose(
         unknown_provenance = set(slot_provenance) - set(declared)
         if unknown_provenance:
             raise OCFError(
-                "slot provenance names undeclared slot(s): "
-                + ", ".join(sorted(unknown_provenance))
+                "slot provenance names undeclared slot(s): " + ", ".join(sorted(unknown_provenance))
             )
         used_provenance = {
             slot: value for slot, value in slot_provenance.items() if slot in used_slots

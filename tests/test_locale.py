@@ -196,16 +196,16 @@ def test_pseudo_pack_files_round_trip(tmp_path: Path):
     root.mkdir()
     (root / "manifest.yaml").write_text(yaml.safe_dump(pseudo.manifest), encoding="utf-8")
     for filename in sorted({e.file for e in pseudo.entries.values() if e.file}):
-        file_entries = {key: entry for key, entry in pseudo.entries.items() if entry.file == filename}
+        file_entries = {
+            key: entry for key, entry in pseudo.entries.items() if entry.file == filename
+        }
         domains = {entry.domain for entry in file_entries.values()}
         assert len(domains) == 1
         payload = {
             "schema_version": "1.0",
             "locale": pseudo.locale,
             "domain": domains.pop(),
-            "entries": {
-                key: entry.text for key, entry in file_entries.items()
-            },
+            "entries": {key: entry.text for key, entry in file_entries.items()},
         }
         (root / filename).write_text(yaml.safe_dump(payload), encoding="utf-8")
     reloaded = load_pack(root)

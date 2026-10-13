@@ -16,7 +16,7 @@ Source availability does not establish historical authentication or provenance.
 
 ## PLUS-CLEAR
 
-**Primary activation command**
+### Primary activation command
 
 Use only when you choose to activate the documented function.
 
@@ -24,7 +24,8 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Fade Fade `(legacy-form; hplus.function.ocf-emo-002.function-body)`
 
-**Activation sequence**
+### Activation sequence
+
 1. Choose an intention.
 2. Inhale.
 3. Hold your breath.
@@ -34,7 +35,7 @@ This is the primary command for the function.
 
 ## PLUS-FADE, FADE
 
-**Legacy compatibility phrase**
+### Legacy compatibility phrase
 
 Compatibility phrase retained by the registry; historical authentication is not implied.
 

@@ -16,7 +16,7 @@ Source availability does not establish historical authentication or provenance.
 
 ## PLUS-BREATH BETTER
 
-**Primary activation command**
+### Primary activation command
 
 Use only when you choose to activate the documented function.
 
@@ -24,7 +24,8 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Breathe Better `(variant; hplus.function.ocf-bod-009.function-body)`
 
-**Activation sequence**
+### Activation sequence
+
 1. Inhale.
 2. Hold your breath.
 3. Think or say the command.

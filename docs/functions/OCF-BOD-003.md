@@ -16,7 +16,7 @@ Source availability does not establish historical authentication or provenance.
 
 ## PLUS-COMFORT
 
-**Primary activation command**
+### Primary activation command
 
 Use only when you choose to activate the documented function.
 
@@ -24,7 +24,8 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Five Five Five One Five `(legacy-form; hplus.function.ocf-bod-003.function-body)`
 
-**Activation sequence**
+### Activation sequence
+
 1. Close your eyes.
 2. Focus attention on the selected target.
 3. Inhale.
@@ -34,7 +35,7 @@ This is the primary command for the function.
 
 ## PLUS-55515
 
-**Legacy compatibility phrase**
+### Legacy compatibility phrase
 
 Compatibility phrase retained by the registry; historical authentication is not implied.
 

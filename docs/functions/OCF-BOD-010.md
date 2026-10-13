@@ -16,13 +16,14 @@ Source availability does not establish historical authentication or provenance.
 
 ## PLUS-FOOD MORE
 
-**Primary activation command**
+### Primary activation command
 
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Activation sequence**
+### Activation sequence
+
 1. Choose an intention.
 2. Close your eyes.
 3. Inhale.
@@ -30,18 +31,20 @@ This is the primary command for the function.
 5. Think or say the command.
 6. Exhale.
 
-**Related commands**
+### Related commands
+
 - paired with: `PLUS-FOOD LESS`
 
 ## PLUS-FOOD LESS
 
-**Decrease mode**
+### Decrease mode
 
 Use when you choose to decrease the selected function response.
 
 This command selects the decrease mode.
 
-**Decrease-mode sequence**
+### Decrease-mode sequence
+
 1. Choose an intention.
 2. Close your eyes.
 3. Inhale.
@@ -49,7 +52,8 @@ This command selects the decrease mode.
 5. Think or say the command.
 6. Exhale.
 
-**Related commands**
+### Related commands
+
 - paired with: `PLUS-FOOD MORE`
 - modifies: `PLUS-FOOD MORE`
 

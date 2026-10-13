@@ -16,13 +16,14 @@ Source availability does not establish historical authentication or provenance.
 
 ## PLUS-DO-THIS-NOW
 
-**Primary activation command**
+### Primary activation command
 
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Activation sequence**
+### Activation sequence
+
 1. Choose an activity.
 2. Inhale.
 3. Hold your breath.

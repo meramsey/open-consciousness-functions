@@ -16,13 +16,14 @@ Source availability does not establish historical authentication or provenance.
 
 ## PLUS-HEAR MORE
 
-**Primary activation command**
+### Primary activation command
 
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Activation sequence**
+### Activation sequence
+
 1. Close your eyes.
 2. Inhale.
 3. Hold your breath.
@@ -30,18 +31,20 @@ This is the primary command for the function.
 5. Exhale.
 6. Open your eyes.
 
-**Related commands**
+### Related commands
+
 - paired with: `PLUS-HEAR LESS`
 
 ## PLUS-HEAR LESS
 
-**Decrease mode**
+### Decrease mode
 
 Use when you choose to decrease the selected function response.
 
 This command selects the decrease mode.
 
-**Decrease-mode sequence**
+### Decrease-mode sequence
+
 1. Close your eyes.
 2. Inhale.
 3. Hold your breath.
@@ -49,7 +52,8 @@ This command selects the decrease mode.
 5. Exhale.
 6. Open your eyes.
 
-**Related commands**
+### Related commands
+
 - paired with: `PLUS-HEAR MORE`
 - modifies: `PLUS-HEAR MORE`
 

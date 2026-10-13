@@ -18,17 +18,26 @@ def test_keyed_stage_slot_keeps_locale_key_instead_of_speaking_it(boundary, monk
         semantics,
         "load_stage",
         lambda ref: {
-            "id": "OCF-TPL-STAGE-FIXTURE-001", "version": "1.0.0",
+            "id": "OCF-TPL-STAGE-FIXTURE-001",
+            "version": "1.0.0",
             "events": [{"id": "line", "at": 0, "semantic": "function.instruction"}],
         },
     )
     doc = s.compose(
         template(
-            [{"id": "practice", "stage": "fixture", "start": 0,
-              "narration": {"line": {"slot": "body"}}}],
+            [
+                {
+                    "id": "practice",
+                    "stage": "fixture",
+                    "start": 0,
+                    "narration": {"line": {"slot": "body"}},
+                }
+            ],
             slots={"required": ["body"], "optional": []},
         ),
-        {}, title="fixture", slot_keys={"body": "function.fixture.body"},
+        {},
+        title="fixture",
+        slot_keys={"body": "function.fixture.body"},
     )
     event = doc["sections"][0]["timeline"][0]
     assert event["narration_key"] == "function.fixture.body"

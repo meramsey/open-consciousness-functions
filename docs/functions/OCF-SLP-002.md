@@ -16,7 +16,7 @@ Source availability does not establish historical authentication or provenance.
 
 ## PLUS-SLEEP
 
-**Primary activation command**
+### Primary activation command
 
 Use only when you choose to activate the documented function.
 
@@ -24,7 +24,8 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Twenty Twenty `(legacy-form; hplus.function.ocf-slp-002.function-body)`
 
-**Activation sequence**
+### Activation sequence
+
 1. Choose the purpose for using this function.
 2. Choose the purpose for using this function.
 3. Breathe slowly and deeply.
@@ -33,7 +34,7 @@ This is the primary command for the function.
 
 ## PLUS-20-20
 
-**Legacy compatibility phrase**
+### Legacy compatibility phrase
 
 Compatibility phrase retained by the registry; historical authentication is not implied.
 

@@ -16,7 +16,7 @@ Source availability does not establish historical authentication or provenance.
 
 ## PLUS-REGENERATE
 
-**Primary activation command**
+### Primary activation command
 
 Use only when you choose to activate the documented function.
 
@@ -24,7 +24,8 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Build Live `(legacy-form; hplus.function.ocf-bod-014.function-body)`
 
-**Activation sequence**
+### Activation sequence
+
 1. Close your eyes.
 2. Focus attention on the selected target.
 3. Inhale.
@@ -35,7 +36,7 @@ This is the primary command for the function.
 
 ## PLUS-BUILD, LIVE
 
-**Legacy compatibility phrase**
+### Legacy compatibility phrase
 
 Compatibility phrase retained by the registry; historical authentication is not implied.
 

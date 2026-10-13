@@ -16,7 +16,7 @@ Source availability does not establish historical authentication or provenance.
 
 ## PLUS-NUMB
 
-**Primary activation command**
+### Primary activation command
 
 Use only when you choose to activate the documented function.
 
@@ -24,7 +24,8 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Go Numb Go Numb `(legacy-form; hplus.function.ocf-bod-015.function-body)`
 
-**Activation sequence**
+### Activation sequence
+
 1. Close your eyes.
 2. Focus attention on the selected target.
 3. Inhale.
@@ -34,7 +35,7 @@ This is the primary command for the function.
 
 ## PLUS-GO NUMB, GO NUMB
 
-**Legacy compatibility phrase**
+### Legacy compatibility phrase
 
 Compatibility phrase retained by the registry; historical authentication is not implied.
 
@@ -42,20 +43,22 @@ This is a compatibility phrase, not a new canonical command.
 
 ## PLUS-RELEASE
 
-**Release command**
+### Release command
 
 Ends the temporary numbing response; normal sensitivity returns while the learned ability remains available.
 
 This command releases or suspends the current application as documented.
 
-**Release sequence**
+### Release sequence
+
 1. Focus attention on the selected target.
 2. Inhale.
 3. Hold your breath.
 4. Think or say the command.
 5. Exhale.
 
-**Related commands**
+### Related commands
+
 - releases: `PLUS-NUMB`
 
 Canonical command phrases are shown exactly as registered and are not translated. Script and legacy phrase differences are shown separately.

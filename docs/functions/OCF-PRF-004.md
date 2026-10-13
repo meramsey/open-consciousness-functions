@@ -16,7 +16,7 @@ Source availability does not establish historical authentication or provenance.
 
 ## PLUS-LIGHT
 
-**Primary activation command**
+### Primary activation command
 
 Use only when you choose to activate the documented function.
 
@@ -24,7 +24,8 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Lighter Lighter `(legacy-form; hplus.function.ocf-prf-004.function-body)`
 
-**Activation sequence**
+### Activation sequence
+
 1. Choose the purpose for using this function.
 2. Inhale.
 3. Hold your breath.
@@ -33,7 +34,7 @@ This is the primary command for the function.
 
 ## PLUS-LIGHTER, LIGHTER
 
-**Legacy compatibility phrase**
+### Legacy compatibility phrase
 
 Compatibility phrase retained by the registry; historical authentication is not implied.
 

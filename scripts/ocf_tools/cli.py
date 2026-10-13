@@ -120,10 +120,14 @@ def _build_parser() -> argparse.ArgumentParser:
 
     commands = sub.add_parser("commands", help="localized command documentation and export")
     command_sub = commands.add_subparsers(dest="command_kind", required=True)
-    command_list = command_sub.add_parser("list", help="list primary function commands (use --all-roles for all)")
+    command_list = command_sub.add_parser(
+        "list", help="list primary function commands (use --all-roles for all)"
+    )
     command_list.add_argument("--locale")
     command_list.add_argument("--json", action="store_true")
-    command_list.add_argument("--all-roles", action="store_true", help="list all command roles, not just primary")
+    command_list.add_argument(
+        "--all-roles", action="store_true", help="list all command roles, not just primary"
+    )
     command_describe = command_sub.add_parser("describe", help="describe one function's commands")
     command_describe.add_argument("function")
     command_describe.add_argument("--locale")

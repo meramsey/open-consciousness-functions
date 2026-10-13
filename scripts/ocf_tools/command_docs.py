@@ -387,14 +387,19 @@ def render_function_sheet(function: dict, index: dict) -> str:
                 "",
             ]
         )
+    seen_phrases = set()
     for command in function["commands"]:
         if not command.get("documentation", {}).get("visible", True):
             continue
+        phrase = command["phrase"]
+        if phrase in seen_phrases:
+            continue
+        seen_phrases.add(phrase)
         lines.extend(
             [
-                f"## {command['phrase']}",
+                f"## {phrase}",
                 "",
-                f"**{command['label']['text']}**",
+                f"### {command['label']['text']}",
                 "",
                 command["usage"]["text"],
                 "",
@@ -415,7 +420,8 @@ def render_function_sheet(function: dict, index: dict) -> str:
             heading = strings.get(role_key)
             if heading is None:
                 raise CommandDocumentationError(f"command guide UI key {role_key!r} is unavailable")
-            lines.append(f"**{heading['text']}**")
+            lines.append(f"### {heading['text']}")
+            lines.append("")
             lines.extend(
                 f"{index_step}. {step['instruction']['text']}"
                 for index_step, step in enumerate(command["procedure_steps"], start=1)
@@ -430,7 +436,8 @@ def render_function_sheet(function: dict, index: dict) -> str:
             )
         relation_rows = command.get("related_commands", [])
         if relation_rows:
-            lines.append(f"**{strings['command.guide.relationships']['text']}**")
+            lines.append(f"### {strings['command.guide.relationships']['text']}")
+            lines.append("")
             for relation in relation_rows:
                 targets = ", ".join(f"`{item['phrase']}`" for item in relation["commands"])
                 lines.append(f"- {relation['label']['text']}: {targets}")
@@ -541,7 +548,9 @@ def run_cli(args: Any) -> int:
                 if getattr(args, "all_roles", False):
                     for command in visible:
                         role_text = command.get("label", {}).get("text", command["role"])
-                        print(f"{function['function_id']}: {function['title']['text']} — {command['phrase']} [{role_text}]")
+                        print(
+                            f"{function['function_id']}: {function['title']['text']} — {command['phrase']} [{role_text}]"
+                        )
                 else:
                     primary = next(
                         (

@@ -16,7 +16,7 @@ Source availability does not establish historical authentication or provenance.
 
 ## PLUS-ZONE
 
-**Primary activation command**
+### Primary activation command
 
 Use only when you choose to activate the documented function.
 
@@ -24,7 +24,8 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Insulate Insulate `(legacy-form; hplus.function.ocf-exp-002.function-body)`
 
-**Activation sequence**
+### Activation sequence
+
 1. Choose the purpose for using this function.
 2. Inhale.
 3. Hold your breath.
@@ -33,24 +34,26 @@ This is the primary command for the function.
 
 ## PLUS-CANCEL
 
-**Cancellation command**
+### Cancellation command
 
 Use to cancel the current adjustment.
 
 This command cancels the current adjustment.
 
-**Cancellation sequence**
+### Cancellation sequence
+
 1. Inhale.
 2. Hold your breath.
 3. Think or say the command.
 4. Exhale.
 
-**Related commands**
+### Related commands
+
 - cancels: `PLUS-ZONE`
 
 ## PLUS-INSULATE, INSULATE
 
-**Legacy compatibility phrase**
+### Legacy compatibility phrase
 
 Compatibility phrase retained by the registry; historical authentication is not implied.
 
@@ -58,20 +61,22 @@ This is a compatibility phrase, not a new canonical command.
 
 ## Plus Release
 
-**Release command**
+### Release command
 
 Places Zoning on hold; PLUS-CANCEL ends the current adjustment.
 
 This command releases or suspends the current application as documented.
 
-**Release sequence**
+### Release sequence
+
 1. Focus attention on the selected target.
 2. Inhale.
 3. Hold your breath.
 4. Think or say the command.
 5. Exhale.
 
-**Related commands**
+### Related commands
+
 - releases: `PLUS-ZONE`
 
 Canonical command phrases are shown exactly as registered and are not translated. Script and legacy phrase differences are shown separately.

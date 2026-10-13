@@ -400,9 +400,7 @@ def test_narration_hints_fit_and_semantic_counts_keep_display_text(
     assert metadata["cues"] == 1
 
 
-def test_measured_body_duration_moves_the_following_repetition(
-    tmp_path, narration_boundary
-):
+def test_measured_body_duration_moves_the_following_repetition(tmp_path, narration_boundary):
     def render_body(body: str, output: str) -> dict:
         doc = {
             "timeline": [
@@ -442,9 +440,7 @@ def test_measured_body_duration_moves_the_following_repetition(
     assert short_events["body.pass-2"]["at"] == pytest.approx(
         short_events["body.pass-1"]["end"] + 15
     )
-    assert long_events["body.pass-2"]["at"] == pytest.approx(
-        long_events["body.pass-1"]["end"] + 15
-    )
+    assert long_events["body.pass-2"]["at"] == pytest.approx(long_events["body.pass-1"]["end"] + 15)
     assert long_events["body.pass-2"]["at"] > short_events["body.pass-2"]["at"]
 
 
