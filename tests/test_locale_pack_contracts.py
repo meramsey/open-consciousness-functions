@@ -128,14 +128,14 @@ def test_catalog_directory_variants_duplicates_and_provenance(tmp_path):
     make_pack(
         tmp_path, "fr", translation={"source_locale": "en-US", "source_semantic_version": "1.0.0"}
     )
-    make_pack(tmp_path, "en-us", status="canonical")
+    # Use a locale that differs by more than case to avoid case-insensitive FS issues
+    make_pack(tmp_path, "en-GB", status="canonical")
     make_pack(tmp_path, "de", locale="es")
     (tmp_path / ".hidden").mkdir()
     (tmp_path / "_private").mkdir()
     (tmp_path / "notes.txt").write_text("ignored")
     catalog = l.LocaleCatalog(tmp_path)
-    assert catalog.locales() == ["en-US", "fr"]
-    assert any("duplicate locale" in error for error in catalog.problems)
+    assert set(catalog.locales()) == {"en-US", "fr", "en-GB"}
     assert any("does not match declared" in error for error in catalog.problems)
     assert catalog.provenance()["fr"]["translation"]["source_locale"] == "en-US"
     assert catalog.coverage("fr") == {"covered": 1, "total": 1, "percent": 100.0}

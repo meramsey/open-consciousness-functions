@@ -169,7 +169,7 @@ def test_legacy_bootstrap_script_guard_routes_only_to_injected_writer(monkeypatc
         runpy.run_path(bootstrap_legacy_map.__file__, run_name="__main__")
     assert exit_info.value.code == 0
     assert len(writes) == 55
-    assert all("/functions/" in str(path) for path, _ in writes)
+    assert all("functions" in path.parts for path, _ in writes)
 
 
 @pytest.mark.unit
