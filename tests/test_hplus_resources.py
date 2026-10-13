@@ -32,10 +32,10 @@ def test_cli_binds_function_keys_and_composes_eat_no_eat_body(tmp_path):
 
 
 SELECTIONS = yaml.safe_load(
-    (REPO_ROOT / "function-content/hplus-review-selections.yaml").read_text()
+    (REPO_ROOT / "function-content/hplus-review-selections.yaml").read_text(encoding="utf-8")
 )["selections"]
 PROPOSALS = yaml.safe_load(
-    (REPO_ROOT / "function-content/hplus-proposed-review-selections.yaml").read_text()
+    (REPO_ROOT / "function-content/hplus-proposed-review-selections.yaml").read_text(encoding="utf-8")
 )["proposals"]
 SUPPLEMENTARY_CLOSERS = {
     "OCF-BOD-004",
