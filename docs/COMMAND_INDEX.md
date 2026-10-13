@@ -77,8 +77,7 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Strong-Quick](functions/OCF-PRF-006.md) | Plus Release | Release command | Ends the temporary Strong-Quick application; the learned ability remains available. | Temporary |
 | [Sensory: Hearing](functions/OCF-SEN-001.md) | PLUS-HEAR MORE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Sensory: Hearing](functions/OCF-SEN-001.md) | PLUS-HEAR LESS | Decrease mode | Use when you choose to decrease the selected function response. | Temporary |
-| [Sensory: Seeing](functions/OCF-SEN-002.md) | PLUS-SEE MORE | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
-| [Sensory: Seeing](functions/OCF-SEN-002.md) | PLUS-SEE LESS | Decrease mode | Use when you choose to decrease the selected function response. | Permanent |
+| [Sensory: Seeing](functions/OCF-SEN-002.md) | PLUS-SEE BETTER | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Sensory: Seeing](functions/OCF-SEN-002.md) | PLUS-SEE BETTER | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Permanent |
 | [Sensory: Smell](functions/OCF-SEN-003.md) | PLUS-SMELL MORE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Sensory: Smell](functions/OCF-SEN-003.md) | PLUS-SMELL LESS | Decrease mode | Use when you choose to decrease the selected function response. | Temporary |
@@ -105,4 +104,4 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Stay Awake](functions/OCF-SLP-006.md) | PLUS-AWAKE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Stay Awake](functions/OCF-SLP-006.md) | PLUS-ONE, AWAKE, ALERT, ONE, ONE | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
 
-55 functions; 98 structured command records.
+55 functions; 97 structured command records.

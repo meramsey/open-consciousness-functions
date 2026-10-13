@@ -1,6 +1,6 @@
 {
   "canonical_locale": "en-US",
-  "command_count": 98,
+  "command_count": 97,
   "fallback_count": 0,
   "fallbacks": [],
   "function_count": 55,
@@ -10840,10 +10840,10 @@
           },
           "observed_phrase": {
             "narration_key": "hplus.function.ocf-sen-002.function-body",
-            "relationship": "legacy-form",
+            "relationship": "canonical-match",
             "text": "Plus See Better"
           },
-          "phrase": "PLUS-SEE MORE",
+          "phrase": "PLUS-SEE BETTER",
           "phrase_ref": {
             "source": "canonical-primary"
           },
@@ -10907,31 +10907,10 @@
             "key": "functions.ocf-sen-002.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Improves the felt sense of inner vision and clarity; directional magnitudes use MORE/LESS."
+            "text": "Improves the felt sense of inner vision and clarity."
           },
-          "related_commands": [
-            {
-              "commands": [
-                {
-                  "id": "OCF-CMD-SEN-002-SEE-LESS",
-                  "phrase": "PLUS-SEE LESS"
-                }
-              ],
-              "kind": "pairs_with",
-              "label": {
-                "fallback": false,
-                "key": "command.relationship.pairs-with",
-                "requested_locale": "en-US",
-                "resolved_locale": "en-US",
-                "text": "paired with"
-              }
-            }
-          ],
-          "relationships": {
-            "pairs_with": [
-              "OCF-CMD-SEN-002-SEE-LESS"
-            ]
-          },
+          "related_commands": [],
+          "relationships": {},
           "role": "activation",
           "scope_label": {
             "fallback": false,
@@ -10946,161 +10925,6 @@
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
             "text": "Use only when you choose to activate the documented function."
-          }
-        },
-        {
-          "designation": "secondary",
-          "documentation": {
-            "order": 11,
-            "visible": true
-          },
-          "effect_scope": "permanent",
-          "effect_scope_ref": "lifecycle.persistence",
-          "explanation": {
-            "fallback": false,
-            "key": "commands.ocf-cmd-sen-002-see-less.explanation",
-            "requested_locale": "en-US",
-            "resolved_locale": "en-US",
-            "text": "This command selects the decrease mode."
-          },
-          "function_id": "OCF-SEN-002",
-          "id": "OCF-CMD-SEN-002-SEE-LESS",
-          "label": {
-            "fallback": false,
-            "key": "commands.ocf-cmd-sen-002-see-less.label",
-            "requested_locale": "en-US",
-            "resolved_locale": "en-US",
-            "text": "Decrease mode"
-          },
-          "localization": {
-            "explanation_key": "commands.ocf-cmd-sen-002-see-less.explanation",
-            "label_key": "commands.ocf-cmd-sen-002-see-less.label",
-            "purpose_key": "functions.ocf-sen-002.purpose",
-            "usage_key": "commands.ocf-cmd-sen-002-see-less.usage"
-          },
-          "phrase": "PLUS-SEE LESS",
-          "phrase_ref": {
-            "command_id": "OCF-CMD-SEN-002-SEE-LESS",
-            "source": "canonical-mode"
-          },
-          "procedure": {
-            "before_steps": [],
-            "evidence_keys": [
-              "hplus.function.ocf-sen-002.function-body"
-            ],
-            "ref": "OCF-PROC-INHALE-HOLD",
-            "status": "documented"
-          },
-          "procedure_status": "documented",
-          "procedure_steps": [
-            {
-              "id": "inhale",
-              "instruction": {
-                "fallback": false,
-                "key": "command.procedure.inhale",
-                "requested_locale": "en-US",
-                "resolved_locale": "en-US",
-                "text": "Inhale."
-              },
-              "operation": "inhale"
-            },
-            {
-              "id": "hold",
-              "instruction": {
-                "fallback": false,
-                "key": "command.procedure.hold-breath",
-                "requested_locale": "en-US",
-                "resolved_locale": "en-US",
-                "text": "Hold your breath."
-              },
-              "operation": "hold-breath"
-            },
-            {
-              "id": "command",
-              "instruction": {
-                "fallback": false,
-                "key": "command.procedure.think-or-say-command",
-                "requested_locale": "en-US",
-                "resolved_locale": "en-US",
-                "text": "Think or say the command."
-              },
-              "operation": "think-or-say-command"
-            },
-            {
-              "id": "exhale",
-              "instruction": {
-                "fallback": false,
-                "key": "command.procedure.exhale",
-                "requested_locale": "en-US",
-                "resolved_locale": "en-US",
-                "text": "Exhale."
-              },
-              "operation": "exhale"
-            }
-          ],
-          "purpose": {
-            "fallback": false,
-            "key": "functions.ocf-sen-002.purpose",
-            "requested_locale": "en-US",
-            "resolved_locale": "en-US",
-            "text": "Improves the felt sense of inner vision and clarity; directional magnitudes use MORE/LESS."
-          },
-          "related_commands": [
-            {
-              "commands": [
-                {
-                  "id": "OCF-CMD-SEN-002-PRIMARY",
-                  "phrase": "PLUS-SEE MORE"
-                }
-              ],
-              "kind": "pairs_with",
-              "label": {
-                "fallback": false,
-                "key": "command.relationship.pairs-with",
-                "requested_locale": "en-US",
-                "resolved_locale": "en-US",
-                "text": "paired with"
-              }
-            },
-            {
-              "commands": [
-                {
-                  "id": "OCF-CMD-SEN-002-PRIMARY",
-                  "phrase": "PLUS-SEE MORE"
-                }
-              ],
-              "kind": "modifies",
-              "label": {
-                "fallback": false,
-                "key": "command.relationship.modifies",
-                "requested_locale": "en-US",
-                "resolved_locale": "en-US",
-                "text": "modifies"
-              }
-            }
-          ],
-          "relationships": {
-            "modifies": [
-              "OCF-CMD-SEN-002-PRIMARY"
-            ],
-            "pairs_with": [
-              "OCF-CMD-SEN-002-PRIMARY"
-            ]
-          },
-          "role": "decrease",
-          "scope_label": {
-            "fallback": false,
-            "key": "command.scope.permanent",
-            "requested_locale": "en-US",
-            "resolved_locale": "en-US",
-            "text": "Permanent"
-          },
-          "usage": {
-            "fallback": false,
-            "key": "commands.ocf-cmd-sen-002-see-less.usage",
-            "requested_locale": "en-US",
-            "resolved_locale": "en-US",
-            "text": "Use when you choose to decrease the selected function response."
           }
         },
         {
@@ -11145,7 +10969,7 @@
             "key": "functions.ocf-sen-002.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Improves the felt sense of inner vision and clarity; directional magnitudes use MORE/LESS."
+            "text": "Improves the felt sense of inner vision and clarity."
           },
           "related_commands": [],
           "relationships": {},
@@ -11181,7 +11005,7 @@
         "key": "functions.ocf-sen-002.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Improves the felt sense of inner vision and clarity; directional magnitudes use MORE/LESS."
+        "text": "Improves the felt sense of inner vision and clarity."
       },
       "reimplementation_status": "planned",
       "short_description": {
@@ -11189,7 +11013,7 @@
         "key": "functions.ocf-sen-002.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Improves the felt sense of inner vision and clarity; directional magnitudes use MORE/LESS."
+        "text": "Improves the felt sense of inner vision and clarity."
       },
       "slug": "seeing",
       "source_availability": "available",

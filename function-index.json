@@ -17985,14 +17985,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-SEE MORE",
+      "canonical_command": "PLUS-SEE BETTER",
       "canonical_name": "Sensory: Seeing",
       "capabilities": {
         "activation": {
-          "modes": [
-            "PLUS-SEE LESS"
-          ],
-          "primary": "PLUS-SEE MORE"
+          "modes": [],
+          "primary": "PLUS-SEE BETTER"
         },
         "background": {
           "engine": "farfield",
@@ -18019,10 +18017,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-sen-002.function-body",
-              "relationship": "legacy-form",
+              "relationship": "canonical-match",
               "text": "Plus See Better"
             },
-            "phrase": "PLUS-SEE MORE",
+            "phrase": "PLUS-SEE BETTER",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -18034,11 +18032,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "ref": "OCF-PROC-INHALE-HOLD",
               "status": "documented"
             },
-            "relationships": {
-              "pairs_with": [
-                "OCF-CMD-SEN-002-SEE-LESS"
-              ]
-            },
+            "relationships": {},
             "resolved_procedure_steps": [
               {
                 "id": "inhale",
@@ -18062,67 +18056,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation"
-          },
-          {
-            "designation": "secondary",
-            "documentation": {
-              "order": 11,
-              "visible": true
-            },
-            "effect_scope": "permanent",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-SEN-002",
-            "id": "OCF-CMD-SEN-002-SEE-LESS",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-sen-002-see-less.explanation",
-              "label_key": "commands.ocf-cmd-sen-002-see-less.label",
-              "purpose_key": "functions.ocf-sen-002.purpose",
-              "usage_key": "commands.ocf-cmd-sen-002-see-less.usage"
-            },
-            "phrase": "PLUS-SEE LESS",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-SEN-002-SEE-LESS",
-              "source": "canonical-mode"
-            },
-            "procedure": {
-              "before_steps": [],
-              "evidence_keys": [
-                "hplus.function.ocf-sen-002.function-body"
-              ],
-              "ref": "OCF-PROC-INHALE-HOLD",
-              "status": "documented"
-            },
-            "relationships": {
-              "modifies": [
-                "OCF-CMD-SEN-002-PRIMARY"
-              ],
-              "pairs_with": [
-                "OCF-CMD-SEN-002-PRIMARY"
-              ]
-            },
-            "resolved_procedure_steps": [
-              {
-                "id": "inhale",
-                "localization_key": "command.procedure.inhale",
-                "operation": "inhale"
-              },
-              {
-                "id": "hold",
-                "localization_key": "command.procedure.hold-breath",
-                "operation": "hold-breath"
-              },
-              {
-                "id": "command",
-                "localization_key": "command.procedure.think-or-say-command",
-                "operation": "think-or-say-command"
-              },
-              {
-                "id": "exhale",
-                "localization_key": "command.procedure.exhale",
-                "operation": "exhale"
-              }
-            ],
-            "role": "decrease"
           },
           {
             "designation": "secondary",
@@ -18396,7 +18329,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Improves the felt sense of inner vision and clarity; directional magnitudes use MORE/LESS.",
+        "purpose": "Improves the felt sense of inner vision and clarity.",
         "safety": {
           "level": "general",
           "medical_relevance": false,

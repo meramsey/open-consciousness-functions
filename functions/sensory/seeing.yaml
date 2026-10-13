@@ -18,11 +18,9 @@ audio:
   script_status: approved
 canonical:
   command:
-    modes:
-    - PLUS-SEE LESS
-    mode_ids:
-    - OCF-CMD-SEN-002-SEE-LESS
-    primary: PLUS-SEE MORE
+    modes: []
+    mode_ids: []
+    primary: PLUS-SEE BETTER
   name: 'Sensory: Seeing'
 commands:
 - id: OCF-CMD-SEN-002-PRIMARY
@@ -46,40 +44,11 @@ commands:
     evidence_keys:
     - hplus.function.ocf-sen-002.function-body
     before_steps: []
-  relationships:
-    pairs_with:
-    - OCF-CMD-SEN-002-SEE-LESS
+  relationships: {}
   observed_phrase:
     text: Plus See Better
     narration_key: hplus.function.ocf-sen-002.function-body
-    relationship: legacy-form
-- id: OCF-CMD-SEN-002-SEE-LESS
-  function_id: OCF-SEN-002
-  phrase_ref:
-    source: canonical-mode
-    command_id: OCF-CMD-SEN-002-SEE-LESS
-  role: decrease
-  designation: secondary
-  localization:
-    label_key: commands.ocf-cmd-sen-002-see-less.label
-    usage_key: commands.ocf-cmd-sen-002-see-less.usage
-    purpose_key: functions.ocf-sen-002.purpose
-    explanation_key: commands.ocf-cmd-sen-002-see-less.explanation
-  documentation:
-    visible: true
-    order: 11
-  effect_scope_ref: lifecycle.persistence
-  procedure:
-    ref: OCF-PROC-INHALE-HOLD
-    status: documented
-    evidence_keys:
-    - hplus.function.ocf-sen-002.function-body
-    before_steps: []
-  relationships:
-    pairs_with:
-    - OCF-CMD-SEN-002-PRIMARY
-    modifies:
-    - OCF-CMD-SEN-002-PRIMARY
+    relationship: canonical-match
 - id: OCF-CMD-SEN-002-LEGACY-01
   function_id: OCF-SEN-002
   phrase_ref:
@@ -109,8 +78,7 @@ companions: []
 compatibility:
   legacy_commands:
   - PLUS-SEE BETTER
-  rationale: 'Vocabulary normalization: the permanent SEE-BETTER cue keeps its meaning; directional magnitudes
-    standardize on MORE/LESS.'
+  rationale: 'The canonical activation command is PLUS-SEE BETTER, matching the approved narration. The previous MORE/LESS directional pair (PLUS-SEE MORE / PLUS-SEE LESS) is superseded and preserved as historical provenance.'
   state: alias-listed
 contributor:
   contact: null
@@ -145,10 +113,9 @@ ocf:
   command_review: needs-review
   reimplementation_status: planned
 purpose:
-  community_description: Improves the felt sense of inner vision and clarity; directional magnitudes use
-    MORE/LESS.
+  community_description: Improves the felt sense of inner vision and clarity.
   source_description: null
-  summary: Improves the felt sense of inner vision and clarity; directional magnitudes use MORE/LESS.
+  summary: Improves the felt sense of inner vision and clarity.
 safety:
   level: general
   medical_relevance: false
@@ -169,3 +136,4 @@ version:
   created: '2026-09-12'
   current: 0.1.0
   updated: '2026-09-12'
+command_phrases: []

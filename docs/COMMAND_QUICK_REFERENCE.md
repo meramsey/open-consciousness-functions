@@ -51,7 +51,7 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Make Your Day](functions/OCF-PRF-005.md) | PLUS-THIS DAY |  | Temporary | Sets a deliberate tone for the day ahead. |
 | [Strong-Quick](functions/OCF-PRF-006.md) | PLUS-STRONG QUICK | Release command: Plus Release | Temporary | Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK. |
 | [Sensory: Hearing](functions/OCF-SEN-001.md) | PLUS-HEAR MORE | Decrease mode: PLUS-HEAR LESS | Temporary | Adjusts inward listening and perception in either direction using the MORE/LESS grammar. |
-| [Sensory: Seeing](functions/OCF-SEN-002.md) | PLUS-SEE MORE | Decrease mode: PLUS-SEE LESS | Permanent | Improves the felt sense of inner vision and clarity; directional magnitudes use MORE/LESS. |
+| [Sensory: Seeing](functions/OCF-SEN-002.md) | PLUS-SEE BETTER |  | Permanent | Improves the felt sense of inner vision and clarity. |
 | [Sensory: Smell](functions/OCF-SEN-003.md) | PLUS-SMELL MORE | Decrease mode: PLUS-SMELL LESS | Temporary | Adjusts the felt sense of smell in either direction using the MORE/LESS grammar. |
 | [Sensory: Taste](functions/OCF-SEN-004.md) | PLUS-TASTE MORE | Decrease mode: PLUS-TASTE LESS | Temporary | Adjusts the felt sense of taste in either direction using the MORE/LESS grammar. |
 | [Sensory: Touch](functions/OCF-SEN-005.md) | PLUS-TOUCH MORE | Decrease mode: PLUS-TOUCH LESS | Temporary | Adjusts the felt sense of touch or skin sensation using the MORE/LESS grammar. |

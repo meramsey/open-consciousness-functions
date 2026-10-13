@@ -65,9 +65,9 @@ def test_all_55_function_commands_resolve_with_legacy_fields_unchanged():
         command_ids.extend(by_id)
 
     assert primary_count == 55
-    assert mode_count == 10
+    assert mode_count == 9
     assert legacy_phrase_count == 65
-    assert len(command_ids) == len(set(command_ids)) == 98
+    assert len(command_ids) == len(set(command_ids)) == 97
     assert not validate_command_collection(functions)
     assert validate_command_metadata(functions).ok
 
@@ -78,7 +78,6 @@ def test_directional_modes_and_relationships_are_structured():
         "OCF-BOD-010": ("OCF-CMD-BOD-010-FOOD-LESS", "decrease"),
         "OCF-BOD-012": ("OCF-CMD-BOD-012-SEX-LESS", "decrease"),
         "OCF-SEN-001": ("OCF-CMD-SEN-001-HEAR-LESS", "decrease"),
-        "OCF-SEN-002": ("OCF-CMD-SEN-002-SEE-LESS", "decrease"),
         "OCF-SEN-003": ("OCF-CMD-SEN-003-SMELL-LESS", "decrease"),
         "OCF-SEN-004": ("OCF-CMD-SEN-004-TASTE-LESS", "decrease"),
         "OCF-SEN-005": ("OCF-CMD-SEN-005-TOUCH-LESS", "decrease"),

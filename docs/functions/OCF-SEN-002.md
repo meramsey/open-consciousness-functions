@@ -2,7 +2,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Sensory: Seeing
 
-**Purpose**: Improves the felt sense of inner vision and clarity; directional magnitudes use MORE/LESS.
+**Purpose**: Improves the felt sense of inner vision and clarity.
 
 **Function persistence**: Permanent (`permanent`)
 
@@ -14,7 +14,7 @@ Source availability does not establish historical authentication or provenance.
 
 [Command index](../COMMAND_INDEX.md)
 
-## PLUS-SEE MORE
+## PLUS-SEE BETTER
 
 **Primary activation command**
 
@@ -22,34 +22,13 @@ Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Recorded source phrase (not the canonical phrase)**: Plus See Better `(legacy-form; hplus.function.ocf-sen-002.function-body)`
+**Recorded source phrase (not the canonical phrase)**: Plus See Better `(canonical-match; hplus.function.ocf-sen-002.function-body)`
 
 **Activation sequence**
 1. Inhale.
 2. Hold your breath.
 3. Think or say the command.
 4. Exhale.
-
-**Related commands**
-- paired with: `PLUS-SEE LESS`
-
-## PLUS-SEE LESS
-
-**Decrease mode**
-
-Use when you choose to decrease the selected function response.
-
-This command selects the decrease mode.
-
-**Decrease-mode sequence**
-1. Inhale.
-2. Hold your breath.
-3. Think or say the command.
-4. Exhale.
-
-**Related commands**
-- paired with: `PLUS-SEE MORE`
-- modifies: `PLUS-SEE MORE`
 
 ## PLUS-SEE BETTER
 

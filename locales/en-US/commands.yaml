@@ -1156,18 +1156,6 @@ entries:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
-  commands.ocf-cmd-sen-002-see-less.explanation:
-    text: This command selects the decrease mode.
-    status: canonical
-    version: 1.0.0
-  commands.ocf-cmd-sen-002-see-less.label:
-    text: Decrease mode
-    status: canonical
-    version: 1.0.0
-  commands.ocf-cmd-sen-002-see-less.usage:
-    text: Use when you choose to decrease the selected function response.
-    status: canonical
-    version: 1.0.0
   commands.ocf-cmd-sen-003-legacy-01.explanation:
     text: This is a compatibility phrase, not a new canonical command.
     status: canonical
@@ -2005,11 +1993,11 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-sen-002.purpose:
-    text: Improves the felt sense of inner vision and clarity; directional magnitudes use MORE/LESS.
+    text: Improves the felt sense of inner vision and clarity.
     status: canonical
     version: 1.0.0
   functions.ocf-sen-002.short-description:
-    text: Improves the felt sense of inner vision and clarity; directional magnitudes use MORE/LESS.
+    text: Improves the felt sense of inner vision and clarity.
     status: canonical
     version: 1.0.0
   functions.ocf-sen-002.title:

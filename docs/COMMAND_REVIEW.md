@@ -56,7 +56,7 @@ Adjustable-magnitude commands are normalized to the MORE/LESS grammar `N`.
 | `OCF-BOD-010` | NUTRICIA | `PLUS-FOOD MORE` / `PLUS-FOOD LESS` | `PLUS-FOOD MORE` | `PLUS-FOOD LESS` | needs-review | alias-listed |
 | `OCF-BOD-012` | SEX DRIVE | `PLUS-SEX GREATER` / `PLUS-SEX LESSER` | `PLUS-SEX MORE` | `PLUS-SEX LESS` | needs-review | alias-listed |
 | `OCF-SEN-001` | SENSORY: HEARING | `PLUS-HEAR MORE` / `PLUS-HEAR LESS` | `PLUS-HEAR MORE` | `PLUS-HEAR LESS` | needs-review | alias-listed |
-| `OCF-SEN-002` | SENSORY: SEEING | `PLUS-SEE BETTER` | `PLUS-SEE MORE` | `PLUS-SEE LESS` | needs-review | alias-listed |
+| `OCF-SEN-002` | SENSORY: SEEING | `PLUS-SEE BETTER` | `PLUS-SEE BETTER` |  | needs-review | alias-listed |
 | `OCF-SEN-003` | SENSORY: SMELL | `PLUS-SMELL GREATER` / `PLUS-SMELL LESSER` | `PLUS-SMELL MORE` | `PLUS-SMELL LESS` | needs-review | alias-listed |
 | `OCF-SEN-004` | SENSORY: TASTE | `PLUS-TASTE GREATER` / `PLUS-TASTE LESSER` | `PLUS-TASTE MORE` | `PLUS-TASTE LESS` | needs-review | alias-listed |
 | `OCF-SEN-005` | SENSORY: TOUCH | `PLUS-TOUCH GREATER` / `PLUS-TOUCH LESSER` | `PLUS-TOUCH MORE` | `PLUS-TOUCH LESS` | needs-review | alias-listed |
