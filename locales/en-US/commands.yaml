@@ -1156,6 +1156,30 @@ entries:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  commands.ocf-cmd-sen-002-superseded-more.explanation:
+    text: This superseded command was the previous primary activation command; use PLUS-SEE BETTER instead.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-002-superseded-more.label:
+    text: Superseded primary command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-002-superseded-more.usage:
+    text: This command is superseded; use PLUS-SEE BETTER.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-002-superseded-less.explanation:
+    text: This superseded command was the previous decrease mode; the function no longer uses MORE/LESS directional modes.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-002-superseded-less.label:
+    text: Superseded decrease mode
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-002-superseded-less.usage:
+    text: This command is superseded; the function no longer uses directional modes.
+    status: canonical
+    version: 1.0.0
   commands.ocf-cmd-sen-003-legacy-01.explanation:
     text: This is a compatibility phrase, not a new canonical command.
     status: canonical

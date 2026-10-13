@@ -14,7 +14,6 @@ from pathlib import Path
 
 import jsonschema
 import yaml
-
 from ocf_tools.indexes import load_all_functions
 from ocf_tools.paths import REPO_ROOT
 
