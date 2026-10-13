@@ -533,6 +533,7 @@ def extraction_review_markdown() -> str:
     return generated_content(
         "# Functional extraction review matrix\n\nAnalytical completeness includes investigated unknowns; it is not historical authentication, runtime readiness or editorial approval. Runtime state requirements remain separate from reference training states. Full source/hash/line/page locators and conversion questions are in each specification's analysis_review.\n\n"
         + _markdown_table(headers, rows)
+        + "\n"
     )
 
 
