@@ -533,15 +533,25 @@ def run_cli(args: Any) -> int:
             print(json.dumps(index, indent=2, ensure_ascii=False, sort_keys=True))
         else:
             for function in index["functions"]:
-                primary = next(
-                    (
-                        command["phrase"]
-                        for command in function["commands"]
-                        if command["designation"] == "primary"
-                    ),
-                    "(no primary command)",
-                )
-                print(f"{function['function_id']}: {function['title']['text']} — {primary}")
+                visible = [
+                    command
+                    for command in function["commands"]
+                    if command.get("documentation", {}).get("visible", True)
+                ]
+                if getattr(args, "all_roles", False):
+                    for command in visible:
+                        role_text = command.get("label", {}).get("text", command["role"])
+                        print(f"{function['function_id']}: {function['title']['text']} — {command['phrase']} [{role_text}]")
+                else:
+                    primary = next(
+                        (
+                            command["phrase"]
+                            for command in visible
+                            if command["designation"] == "primary"
+                        ),
+                        "(no primary command)",
+                    )
+                    print(f"{function['function_id']}: {function['title']['text']} — {primary}")
         return 0
     if args.command_kind == "describe":
         from .indexes import load_function_by_slug_or_id
