@@ -1093,7 +1093,7 @@ class LocaleCatalog:
             self.packs[normalized] = pack
 
     @classmethod
-    def from_packs(cls, packs: list[tuple[str, LocalePack]]) -> "LocaleCatalog":
+    def from_packs(cls, packs: list[tuple[str, LocalePack]]) -> LocaleCatalog:
         """Create a catalog from an explicit list of (locale, pack) tuples.
 
         Intended for testing: bypasses filesystem discovery and normalizes

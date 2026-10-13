@@ -146,7 +146,8 @@ def test_catalog_directory_variants_duplicates_and_provenance(tmp_path):
 def test_catalog_duplicate_detection_via_normalized_keys():
     """Test duplicate locale detection via normalized keys, independent of filesystem."""
     from pathlib import Path
-    from ocf_tools.locale import LocaleCatalog, LocalePack
+
+    from ocf_tools.locale import LocalePack
 
     # Create two packs that normalize to the same locale
     pack1 = LocalePack(

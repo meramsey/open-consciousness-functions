@@ -622,9 +622,9 @@ def test_pseudo_locale_serialization_uses_pack_metadata_not_engine_calls(
     import yaml
 
     assert (
-        yaml.safe_load((target / "narration.yaml").read_text(encoding="utf-8"))["entries"]["narration.fixture"][
-            "text"
-        ]
+        yaml.safe_load((target / "narration.yaml").read_text(encoding="utf-8"))["entries"][
+            "narration.fixture"
+        ]["text"]
         == "Café"
     )
     assert yaml.safe_load((target / "ui.yaml").read_text(encoding="utf-8"))["domain"] == "ui"

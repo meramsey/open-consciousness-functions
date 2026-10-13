@@ -15,7 +15,7 @@ import shutil
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
-from urllib.parse import unquote, urlparse
+from urllib.parse import urlparse
 from urllib.request import url2pathname
 
 from .paths import REPO_ROOT
