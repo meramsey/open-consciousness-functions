@@ -19,5 +19,4 @@ Optional background presets. A preset is not a function and is not a training sc
 | `OCF-BG-0011` | Attention focus arc + Focus-11 (gamma+theta+pink) access state — OCF-authored | reference-master |  | yes | OCF-FND-002 |
 | `OCF-BG-0012` | Focus Ten — V4-derived development candidate (Farfield approximation) | farfield | 0 | yes |  |
 
-
 12 background presets recorded.

@@ -44,7 +44,6 @@ Command-design review generated from the canonical function records.
 | `OCF-PRF-003` | SYNCHRONIZING | `PLUS-SMOOTH, FAST` | `PLUS-SMOOTH, FAST` |  | approved | unchanged |
 | `OCF-PRF-005` | MAKE YOUR DAY | `PLUS-THIS DAY` | `PLUS-THIS DAY` |  | approved | unchanged |
 
-
 ## Commands normalized (proposed vocabulary)
 
 Adjustable-magnitude commands are normalized to the MORE/LESS grammar `N`.
@@ -60,7 +59,6 @@ Adjustable-magnitude commands are normalized to the MORE/LESS grammar `N`.
 | `OCF-SEN-003` | SENSORY: SMELL | `PLUS-SMELL GREATER` / `PLUS-SMELL LESSER` | `PLUS-SMELL MORE` | `PLUS-SMELL LESS` | needs-review | alias-listed |
 | `OCF-SEN-004` | SENSORY: TASTE | `PLUS-TASTE GREATER` / `PLUS-TASTE LESSER` | `PLUS-TASTE MORE` | `PLUS-TASTE LESS` | needs-review | alias-listed |
 | `OCF-SEN-005` | SENSORY: TOUCH | `PLUS-TOUCH GREATER` / `PLUS-TOUCH LESSER` | `PLUS-TOUCH MORE` | `PLUS-TOUCH LESS` | needs-review | alias-listed |
-
 
 ## Commands still requiring review
 
@@ -87,6 +85,5 @@ These commands have a proposed canonical form that has not been approved. Legacy
 | `OCF-SLP-004` | WAKE/KNOW | `PLUS-SLEEP, HELP` | `PLUS-KNOW` |  | review-required | bridge-trainable |
 | `OCF-SLP-005` | SLEEP EASY | `PLUS-QUIET, SLEEP` | `PLUS-SLEEP EASY` |  | review-required | bridge-trainable |
 | `OCF-SLP-006` | STAY AWAKE | `PLUS-ONE, AWAKE, ALERT, ONE, ONE` | `PLUS-AWAKE` |  | review-required | bridge-trainable |
-
 
 Review guidance: `docs/COMMAND_GRAMMAR.md` and `docs/NAMING_GUIDELINES.md`.

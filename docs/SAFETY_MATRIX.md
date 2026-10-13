@@ -61,4 +61,3 @@ Safety classification of every function. Health and emergency functions carry ex
 | `OCF-SLP-004` | WAKE/KNOW | general |  |  |
 | `OCF-SLP-005` | SLEEP EASY | general |  |  |
 | `OCF-SLP-006` | STAY AWAKE | general |  |  |
-

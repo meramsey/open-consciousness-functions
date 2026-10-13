@@ -61,5 +61,4 @@ Every function either has source material available (`available`) or is a full O
 | `OCF-SLP-005` | Sleep Easy | SLEEP EASY | unavailable | proposal pathway |
 | `OCF-SLP-006` | Stay Awake | STAY AWAKE | unavailable | proposal pathway |
 
-
 54 functions currently marked as OCF reimplementation targets.

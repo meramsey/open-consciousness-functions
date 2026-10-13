@@ -83,7 +83,7 @@ def _markdown_table(headers: list[str], rows: list[list[str]]) -> str:
     out.append("|" + "|".join(["---"] * len(headers)) + "|")
     for row in rows:
         out.append("| " + " | ".join(str(cell).replace("|", "\\|") for cell in row) + " |")
-    return "\n".join(out) + "\n"
+    return "\n".join(out)
 
 
 def function_index_markdown() -> str:

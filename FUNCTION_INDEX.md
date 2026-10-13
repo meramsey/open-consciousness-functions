@@ -62,5 +62,4 @@ Complete index of every OCF function record. Sorted by OCF ID.
 | `OCF-SLP-005` | Sleep Easy | SLEEP EASY | `PLUS-SLEEP EASY` | `PLUS-QUIET, SLEEP` | sleep | temporary | unavailable | planned | review-required | bridge-trainable | 0 | 0 | functions/sleep/sleep-easy.yaml |
 | `OCF-SLP-006` | Stay Awake | STAY AWAKE | `PLUS-AWAKE` | `PLUS-ONE, AWAKE, ALERT, ONE, ONE` | sleep | temporary | unavailable | planned | review-required | bridge-trainable | 0 | 0 | functions/sleep/stay-awake.yaml |
 
-
 55 functions listed.
