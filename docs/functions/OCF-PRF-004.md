@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Light Foot
 
-**Short description**: Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.
-
 **Purpose**: Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.
 
 **Function persistence**: Temporary (`temporary`)

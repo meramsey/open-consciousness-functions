@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Attention
 
-**Short description**: Directs and sustains focused attention.
-
 **Purpose**: Directs and sustains focused attention.
 
 **Function persistence**: Temporary (`temporary`)

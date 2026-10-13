@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Relax
 
-**Short description**: Deepens physical and mental relaxation.
-
 **Purpose**: Deepens physical and mental relaxation.
 
 **Function persistence**: Temporary (`temporary`)

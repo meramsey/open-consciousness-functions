@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Wake/Know
 
-**Short description**: Requests help with sleep and with knowing the right time to wake; proposed concise cue PLUS-KNOW.
-
 **Purpose**: Requests help with sleep and with knowing the right time to wake; proposed concise cue PLUS-KNOW.
 
 **Function persistence**: Temporary (`temporary`)

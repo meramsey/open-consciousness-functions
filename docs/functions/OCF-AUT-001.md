@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # See-Be
 
-**Short description**: Automates a desired way of being so it runs without active effort.
-
 **Purpose**: Automates a desired way of being so it runs without active effort.
 
 **Function persistence**: Temporary (`temporary`)

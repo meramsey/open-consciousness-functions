@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Lungs: Repairs & Maintenance
 
-**Short description**: Self-directed wellness practice supporting easy, comfortable breathing.
-
 **Purpose**: Self-directed wellness practice supporting easy, comfortable breathing.
 
 **Function persistence**: Permanent (`permanent`)

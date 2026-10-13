@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Sensory: Taste
 
-**Short description**: Adjusts the felt sense of taste in either direction using the MORE/LESS grammar.
-
 **Purpose**: Adjusts the felt sense of taste in either direction using the MORE/LESS grammar.
 
 **Function persistence**: Temporary (`temporary`)

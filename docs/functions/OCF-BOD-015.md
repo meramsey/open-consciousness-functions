@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Short Fix
 
-**Short description**: Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB.
-
 **Purpose**: Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB.
 
 **Function persistence**: Temporary (`temporary`)

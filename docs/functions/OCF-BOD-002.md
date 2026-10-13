@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Circulation
 
-**Short description**: Promotes a felt sense of smooth, comfortable circulation.
-
 **Purpose**: Promotes a felt sense of smooth, comfortable circulation.
 
 **Function persistence**: Permanent (`permanent`)

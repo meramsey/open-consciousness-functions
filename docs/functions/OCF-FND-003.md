@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Recharge
 
-**Short description**: Replenishes a felt sense of energy and freshness.
-
 **Purpose**: Replenishes a felt sense of energy and freshness.
 
 **Function persistence**: Temporary (`temporary`)

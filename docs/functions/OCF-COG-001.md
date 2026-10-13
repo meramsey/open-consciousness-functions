@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Access to Information
 
-**Short description**: Accesses intuition, memory, and inner knowledge on demand.
-
 **Purpose**: Accesses intuition, memory, and inner knowledge on demand.
 
 **Function persistence**: Temporary (`temporary`)

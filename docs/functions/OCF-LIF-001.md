@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # De-Hab
 
-**Short description**: Supports stepping away from habitual, repeated behavior patterns.
-
 **Purpose**: Supports stepping away from habitual, repeated behavior patterns.
 
 **Function persistence**: Temporary (`temporary`)

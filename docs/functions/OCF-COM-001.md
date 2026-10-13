@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Speak Up
 
-**Short description**: Supports confident, clear verbal expression.
-
 **Purpose**: Supports confident, clear verbal expression.
 
 **Function persistence**: Permanent (`permanent`)

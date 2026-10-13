@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Tune-Up
 
-**Short description**: A general self-directed balance-and-heal tune-up practice.
-
 **Purpose**: A general self-directed balance-and-heal tune-up practice.
 
 **Function persistence**: Temporary (`temporary`)

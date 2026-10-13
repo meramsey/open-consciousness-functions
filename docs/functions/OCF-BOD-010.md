@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Nutricia
 
-**Short description**: Adjusts appetite and food drive in either direction using the MORE/LESS grammar.
-
 **Purpose**: Adjusts appetite and food drive in either direction using the MORE/LESS grammar.
 
 **Function persistence**: Temporary (`temporary`)

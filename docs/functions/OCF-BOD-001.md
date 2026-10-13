@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Brain: Repairs & Maintenance
 
-**Short description**: Self-directed wellness practice supporting a felt sense of comfortable, balanced brain function.
-
 **Purpose**: Self-directed wellness practice supporting a felt sense of comfortable, balanced brain function.
 
 **Function persistence**: Permanent (`permanent`)

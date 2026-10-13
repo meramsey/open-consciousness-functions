@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Stay Awake
 
-**Short description**: Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE.
-
 **Purpose**: Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE.
 
 **Function persistence**: Temporary (`temporary`)

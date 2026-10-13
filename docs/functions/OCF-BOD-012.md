@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Sex Drive
 
-**Short description**: Adjusts felt sexual drive in either direction using the MORE/LESS grammar.
-
 **Purpose**: Adjusts felt sexual drive in either direction using the MORE/LESS grammar.
 
 **Function persistence**: Temporary (`temporary`)

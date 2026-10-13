@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Let Go
 
-**Short description**: Releases clinging, tension, or unwanted mental objects.
-
 **Purpose**: Releases clinging, tension, or unwanted mental objects.
 
 **Function persistence**: Temporary (`temporary`)

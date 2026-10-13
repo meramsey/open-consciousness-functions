@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Zoning
 
-**Short description**: Insulates against unwanted influence; cancels the zoning state via PLUS-CANCEL.
-
 **Purpose**: Insulates against unwanted influence; cancels the zoning state via PLUS-CANCEL.
 
 **Function persistence**: Temporary (`temporary`)

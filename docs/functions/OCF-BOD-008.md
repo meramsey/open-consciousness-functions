@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Immunizing
 
-**Short description**: Supports a felt sense of alertness and preparedness; not a medical claim.
-
 **Purpose**: Supports a felt sense of alertness and preparedness; not a medical claim.
 
 **Function persistence**: Permanent (`permanent`)

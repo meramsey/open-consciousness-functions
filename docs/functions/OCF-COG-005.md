@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Options
 
-**Short description**: Opens perception of choices and alternatives.
-
 **Purpose**: Opens perception of choices and alternatives.
 
 **Function persistence**: Temporary (`temporary`)

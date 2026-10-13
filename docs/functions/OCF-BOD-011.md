@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Passages
 
-**Short description**: Supports graceful passage through internal transitions.
-
 **Purpose**: Supports graceful passage through internal transitions.
 
 **Function persistence**: Temporary (`temporary`)

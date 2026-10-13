@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Think Fast
 
-**Short description**: Accelerates thinking speed and mental processing.
-
 **Purpose**: Accelerates thinking speed and mental processing.
 
 **Function persistence**: Permanent (`permanent`)

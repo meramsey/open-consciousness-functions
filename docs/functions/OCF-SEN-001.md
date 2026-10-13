@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Sensory: Hearing
 
-**Short description**: Adjusts inward listening and perception in either direction using the MORE/LESS grammar.
-
 **Purpose**: Adjusts inward listening and perception in either direction using the MORE/LESS grammar.
 
 **Function persistence**: Temporary (`temporary`)

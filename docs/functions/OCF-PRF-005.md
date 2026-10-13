@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Make Your Day
 
-**Short description**: Sets a deliberate tone for the day ahead.
-
 **Purpose**: Sets a deliberate tone for the day ahead.
 
 **Function persistence**: Temporary (`temporary`)

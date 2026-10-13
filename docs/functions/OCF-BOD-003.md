@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # De-Discomfort
 
-**Short description**: Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT.
-
 **Purpose**: Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT.
 
 **Function persistence**: Temporary (`temporary`)

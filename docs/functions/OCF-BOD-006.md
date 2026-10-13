@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Heart: Repairs & Maintenance
 
-**Short description**: Self-directed wellness practice supporting a felt sense of calm, steady heart function.
-
 **Purpose**: Self-directed wellness practice supporting a felt sense of calm, steady heart function.
 
 **Function persistence**: Permanent (`permanent`)

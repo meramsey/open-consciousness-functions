@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Eat/No Eat
 
-**Short description**: Adjusts appetite signals in either direction.
-
 **Purpose**: Adjusts appetite signals in either direction.
 
 **Function persistence**: Temporary (`temporary`)

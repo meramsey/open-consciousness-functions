@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Sleep Easy
 
-**Short description**: Promotes easy, quiet transition into sleep; proposed concise cue PLUS-SLEEP EASY.
-
 **Purpose**: Promotes easy, quiet transition into sleep; proposed concise cue PLUS-SLEEP EASY.
 
 **Function persistence**: Temporary (`temporary`)

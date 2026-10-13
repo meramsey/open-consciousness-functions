@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Contemplation
 
-**Short description**: Opens an internal space for quiet reflection; closes it again on completion.
-
 **Purpose**: Opens an internal space for quiet reflection; closes it again on completion.
 
 **Function persistence**: Temporary (`temporary`)

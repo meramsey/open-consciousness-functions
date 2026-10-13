@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Imprint
 
-**Short description**: Imprints a chosen suggestion or intention using the IMPRINT rehearsal.
-
 **Purpose**: Imprints a chosen suggestion or intention using the IMPRINT rehearsal.
 
 **Function persistence**: Temporary (`temporary`)

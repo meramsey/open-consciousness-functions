@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Sensory: Seeing
 
-**Short description**: Improves the felt sense of inner vision and clarity; directional magnitudes use MORE/LESS.
-
 **Purpose**: Improves the felt sense of inner vision and clarity; directional magnitudes use MORE/LESS.
 
 **Function persistence**: Permanent (`permanent`)

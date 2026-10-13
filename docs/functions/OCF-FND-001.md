@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Access to Energy
 
-**Short description**: Restores a felt sense of available energy on demand.
-
 **Purpose**: Restores a felt sense of available energy on demand.
 
 **Function persistence**: Temporary (`temporary`)

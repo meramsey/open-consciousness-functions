@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Synchronizing
 
-**Short description**: Aligns and smooths internal rhythms toward feeling faster and steadier.
-
 **Purpose**: Aligns and smooths internal rhythms toward feeling faster and steadier.
 
 **Function persistence**: Permanent (`permanent`)

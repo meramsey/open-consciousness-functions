@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Hypertension
 
-**Short description**: Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for medical care.
-
 **Purpose**: Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for medical care.
 
 **Function persistence**: Temporary (`temporary`)

@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Reset
 
-**Short description**: Returns mind and body to a neutral, settled baseline.
-
 **Purpose**: Returns mind and body to a neutral, settled baseline.
 
 **Function persistence**: Temporary (`temporary`)

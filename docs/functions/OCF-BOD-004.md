@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # De-Tox: Body
 
-**Short description**: Supports a perceived sense of bodily cleansing and clarity.
-
 **Purpose**: Supports a perceived sense of bodily cleansing and clarity.
 
 **Function persistence**: Permanent (`permanent`)

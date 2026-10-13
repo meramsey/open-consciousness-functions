@@ -351,13 +351,24 @@ def _localized_from_index(index: dict, key: str) -> str:
 
 def render_function_sheet(function: dict, index: dict) -> str:
     strings = index["guide_strings"]
+    description_lines = []
+    if function["short_description"]["text"] != function["purpose"]["text"]:
+        description_lines.extend(
+            [
+                f"**{strings['command.guide.summary']['text']}**: {function['short_description']['text']}",
+                "",
+            ]
+        )
+    description_lines.extend(
+        [
+            f"**{strings['command.guide.purpose']['text']}**: {function['purpose']['text']}",
+            "",
+        ]
+    )
     lines = [
         f"# {function['title']['text']}",
         "",
-        f"**{strings['command.guide.summary']['text']}**: {function['short_description']['text']}",
-        "",
-        f"**{strings['command.guide.purpose']['text']}**: {function['purpose']['text']}",
-        "",
+        *description_lines,
         f"**{strings['command.guide.scope']['text']}**: {function['persistence_label']['text']} (`{function['persistence']}`)",
         "",
         f"**{strings['command.guide.source-status']['text']}**: {function['source_availability_label']['text']} (`{function['source_availability']}`)",

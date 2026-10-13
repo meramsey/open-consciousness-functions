@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Release
 
-**Short description**: Releases unhelpful states, prompts, or lingering experiences.
-
 **Purpose**: Releases unhelpful states, prompts, or lingering experiences.
 
 **Function persistence**: Temporary (`temporary`)

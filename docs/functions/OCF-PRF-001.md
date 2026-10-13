@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Do This Now
 
-**Short description**: Moves from deliberation into immediate, present action.
-
 **Purpose**: Moves from deliberation into immediate, present action.
 
 **Function persistence**: Temporary (`temporary`)

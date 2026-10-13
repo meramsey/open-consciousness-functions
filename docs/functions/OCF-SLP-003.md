@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Sweet Dreams
 
-**Short description**: Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM.
-
 **Purpose**: Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM.
 
 **Function persistence**: Temporary (`temporary`)

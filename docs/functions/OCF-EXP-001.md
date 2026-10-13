@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Mobius West
 
-**Short description**: Legacy 'change' practice for breaking personal loops; proposed concise cue PLUS-PROGRAM.
-
 **Purpose**: Legacy 'change' practice for breaking personal loops; proposed concise cue PLUS-PROGRAM.
 
 **Function persistence**: Temporary (`temporary`)

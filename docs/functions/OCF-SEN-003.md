@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Sensory: Smell
 
-**Short description**: Adjusts the felt sense of smell in either direction using the MORE/LESS grammar.
-
 **Purpose**: Adjusts the felt sense of smell in either direction using the MORE/LESS grammar.
 
 **Function persistence**: Temporary (`temporary`)

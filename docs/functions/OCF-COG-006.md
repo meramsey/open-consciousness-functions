@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Recall
 
-**Short description**: Brings specific memories or learned material to mind on request.
-
 **Purpose**: Brings specific memories or learned material to mind on request.
 
 **Function persistence**: Temporary (`temporary`)

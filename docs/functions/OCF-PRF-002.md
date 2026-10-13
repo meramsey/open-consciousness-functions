@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Eight-Great
 
-**Short description**: Legacy vitality practice associated with the phrase EIGHT, GREAT; proposed concise cue PLUS-STRONG.
-
 **Purpose**: Legacy vitality practice associated with the phrase EIGHT, GREAT; proposed concise cue PLUS-STRONG.
 
 **Function persistence**: Permanent (`permanent`)

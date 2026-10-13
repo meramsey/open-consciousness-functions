@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Buy the Numbers
 
-**Short description**: Speeds mental arithmetic and number processing.
-
 **Purpose**: Speeds mental arithmetic and number processing.
 
 **Function persistence**: Permanent (`permanent`)

@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Empathizing
 
-**Short description**: Builds a felt profile of another person's experience.
-
 **Purpose**: Builds a felt profile of another person's experience.
 
 **Function persistence**: Temporary (`temporary`)

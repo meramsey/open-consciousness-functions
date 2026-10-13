@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Regenerate
 
-**Short description**: Supports a felt sense of body-wide regeneration and renewal; proposed concise cue PLUS-REGENERATE for review.
-
 **Purpose**: Supports a felt sense of body-wide regeneration and renewal; proposed concise cue PLUS-REGENERATE for review.
 
 **Function persistence**: Permanent (`permanent`)

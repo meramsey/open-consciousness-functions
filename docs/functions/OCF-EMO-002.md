@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Off-Loading
 
-**Short description**: Fades and off-loads unhelpful mental load or charge; proposed concise cue PLUS-CLEAR.
-
 **Purpose**: Fades and off-loads unhelpful mental load or charge; proposed concise cue PLUS-CLEAR.
 
 **Function persistence**: Temporary (`temporary`)

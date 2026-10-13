@@ -2,8 +2,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Sensory: Touch
 
-**Short description**: Adjusts the felt sense of touch or skin sensation using the MORE/LESS grammar.
-
 **Purpose**: Adjusts the felt sense of touch or skin sensation using the MORE/LESS grammar.
 
 **Function persistence**: Temporary (`temporary`)
