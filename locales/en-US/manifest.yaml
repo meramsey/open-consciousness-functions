@@ -3,11 +3,14 @@ locale: en-US
 language_name: English (United States)
 direction: ltr
 status: canonical
-semantic_version: 1.5.0
+semantic_version: 1.6.0
 resources:
 - file: ui.yaml
   domain: ui
   description: Operator- and player-facing strings. May fall back to this locale.
+- file: commands.yaml
+  domain: ui
+  description: Localized function and structured-command reference text; canonical command phrases remain untranslated.
 - file: narration.yaml
   domain: narration
   description: 'Listener-facing spoken narration. Never falls back: a missing key is a pre-render error.'

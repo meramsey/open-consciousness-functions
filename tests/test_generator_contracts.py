@@ -59,6 +59,7 @@ def records(monkeypatch, tmp_path):
     monkeypatch.setattr(g, "DOCS_DIR", tmp_path / "docs")
     monkeypatch.setattr(g, "LEGACY_DIR", tmp_path / "legacy")
     monkeypatch.setattr(g, "load_all_functions", lambda: rows)
+    monkeypatch.setattr(g, "generated_command_documents", lambda: [])
     monkeypatch.setattr(g, "audio_implementations_for", lambda id: [{}] if id == rows[0].id else [])
     monkeypatch.setattr(
         g, "background_presets_for", lambda id: [{}, {}] if id == rows[0].id else []

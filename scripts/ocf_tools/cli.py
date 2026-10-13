@@ -80,6 +80,9 @@ Usage:
   ocf capabilities --json    Discover live command paths and schemas
   ocf functions list --json  Discover canonical function records
   ocf functions describe ID --json
+  ocf commands list [--locale TAG] [--json]
+  ocf commands describe ID [--locale TAG] [--json]
+  ocf commands export [--locale TAG] [--format json|md] [--output FILE] [--force]
   ocf corpus inventory [--root DIR] [--format json|md] [--output FILE]
   ocf help                    Show this help
 
@@ -114,6 +117,21 @@ def _build_parser() -> argparse.ArgumentParser:
     function_describe.add_argument("id")
     function_describe.add_argument("--json", action="store_true")
     function_describe.add_argument("--rich", action="store_true")
+
+    commands = sub.add_parser("commands", help="localized command documentation and export")
+    command_sub = commands.add_subparsers(dest="command_kind", required=True)
+    command_list = command_sub.add_parser("list", help="list registered function commands")
+    command_list.add_argument("--locale")
+    command_list.add_argument("--json", action="store_true")
+    command_describe = command_sub.add_parser("describe", help="describe one function's commands")
+    command_describe.add_argument("function")
+    command_describe.add_argument("--locale")
+    command_describe.add_argument("--json", action="store_true")
+    command_export = command_sub.add_parser("export", help="export the localized command guide")
+    command_export.add_argument("--locale")
+    command_export.add_argument("--format", choices=["json", "md"], default="json")
+    command_export.add_argument("--output")
+    command_export.add_argument("--force", action="store_true")
 
     from .editorial import add_parser as add_content_parser
 
@@ -947,6 +965,10 @@ def main(argv: list[str] | None = None) -> int:
             return cmd_validate(args)
         if args.command == "build-index":
             return cmd_build_index(args)
+        if args.command == "commands":
+            from .command_docs import run_cli
+
+            return run_cli(args)
         if args.command == "review" and args.review_kind == "commands":
             return cmd_review_commands()
         if args.command == "audio":

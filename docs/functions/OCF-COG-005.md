@@ -1,0 +1,43 @@
+GENERATED FILE — DO NOT EDIT DIRECTLY
+
+# Options
+
+**Short description**: Opens perception of choices and alternatives.
+
+**Purpose**: Opens perception of choices and alternatives.
+
+**Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
+
+Source availability does not establish historical authentication or provenance.
+
+**Command review state**: Approved (`approved`)
+
+[Command index](../COMMAND_INDEX.md)
+
+## PLUS-OPTIONS
+
+**Primary activation command**
+
+Use only when you choose to activate the documented function.
+
+This is the primary command for the function.
+
+**Recorded source phrase (not the canonical phrase)**: Plus Options Choices `(legacy-form; hplus.function.ocf-cog-005.function-body)`
+
+**Activation procedure**
+1. Close your eyes.
+2. Inhale.
+3. Hold your breath.
+4. Focus attention on the selected target.
+5. Think or say the command.
+6. Exhale.
+
+## PLUS-OPTIONS, CHOICES
+
+**Legacy compatibility phrase**
+
+Compatibility phrase retained by the registry; historical authentication is not implied.
+
+This is a compatibility phrase, not a new canonical command.
+
+Canonical command phrases are shown exactly as registered and are not translated. Script and legacy phrase differences are shown separately.

@@ -1,0 +1,2070 @@
+schema_version: '1.0'
+locale: en-US
+domain: ui
+entries:
+  command.guide.canonical-note:
+    text: Canonical command phrases are shown exactly as registered and are not translated. Script and
+      legacy phrase differences are shown separately.
+    status: canonical
+    version: 1.0.0
+  command.guide.command-review:
+    text: Command review state
+    status: canonical
+    version: 1.0.0
+  command.guide.effects:
+    text: Intended effects (not established outcomes)
+    status: canonical
+    version: 1.0.0
+  command.guide.fallback-note:
+    text: Some explanatory text uses the fallback locale recorded in the machine-readable export.
+    status: canonical
+    version: 1.0.0
+  command.guide.function:
+    text: Function
+    status: canonical
+    version: 1.0.0
+  command.guide.function-count:
+    text: functions
+    status: canonical
+    version: 1.0.0
+  command.guide.command-count:
+    text: structured command records
+    status: canonical
+    version: 1.0.0
+  command.guide.index-title:
+    text: OCF Function Command Index
+    status: canonical
+    version: 1.0.0
+  command.guide.no-procedure:
+    text: No activation steps are structured for this command; refer to its documented source and review status.
+    status: canonical
+    version: 1.0.0
+  command.guide.observed:
+    text: Recorded source phrase (not the canonical phrase)
+    status: canonical
+    version: 1.0.0
+  command.guide.other-commands:
+    text: Modes and special commands
+    status: canonical
+    version: 1.0.0
+  command.guide.phrase:
+    text: Command phrase
+    status: canonical
+    version: 1.0.0
+  command.guide.procedure:
+    text: Activation procedure
+    status: canonical
+    version: 1.0.0
+  command.guide.purpose:
+    text: Purpose
+    status: canonical
+    version: 1.0.0
+  command.guide.quick-title:
+    text: OCF Function Commands — Quick Reference
+    status: canonical
+    version: 1.0.0
+  command.guide.relationships:
+    text: Related commands
+    status: canonical
+    version: 1.0.0
+  command.guide.role:
+    text: Role
+    status: canonical
+    version: 1.0.0
+  command.guide.source-status:
+    text: Legacy source availability
+    status: canonical
+    version: 1.0.0
+  command.guide.source-auth-note:
+    text: Source availability does not establish historical authentication or provenance.
+    status: canonical
+    version: 1.0.0
+  command.guide.scope:
+    text: Command scope
+    status: canonical
+    version: 1.0.0
+  command.guide.summary:
+    text: Short description
+    status: canonical
+    version: 1.0.0
+  command.guide.usage:
+    text: Usage
+    status: canonical
+    version: 1.0.0
+  command.procedure.breathe-normally:
+    text: Continue breathing normally.
+    status: canonical
+    version: 1.0.0
+  command.procedure.breathe-slowly-deeply:
+    text: Breathe slowly and deeply.
+    status: canonical
+    version: 1.0.0
+  command.procedure.close-eyes:
+    text: Close your eyes.
+    status: canonical
+    version: 1.0.0
+  command.procedure.exhale:
+    text: Exhale.
+    status: canonical
+    version: 1.0.0
+  command.procedure.focus-target:
+    text: Focus attention on the selected target.
+    status: canonical
+    version: 1.0.0
+  command.procedure.hold-breath:
+    text: Hold your breath.
+    status: canonical
+    version: 1.0.0
+  command.procedure.inhale:
+    text: Inhale.
+    status: canonical
+    version: 1.0.0
+  command.procedure.open-eyes:
+    text: Open your eyes.
+    status: canonical
+    version: 1.0.0
+  command.procedure.other:
+    text: Follow the function-specific instruction recorded for this step.
+    status: canonical
+    version: 1.0.0
+  command.procedure.represent-result:
+    text: Represent the intended result in your own way.
+    status: canonical
+    version: 1.0.0
+  command.procedure.select-memory:
+    text: Select information or an experience to remember.
+    status: canonical
+    version: 1.0.0
+  command.procedure.select-activity:
+    text: Choose an activity.
+    status: canonical
+    version: 1.0.0
+  command.procedure.select-intention:
+    text: Choose an intention.
+    status: canonical
+    version: 1.0.0
+  command.procedure.select-target-area:
+    text: Choose a target area.
+    status: canonical
+    version: 1.0.0
+  command.procedure.select-dream-theme:
+    text: Choose a dream theme.
+    status: canonical
+    version: 1.0.0
+  command.procedure.select-purpose:
+    text: Choose the purpose for using this function.
+    status: canonical
+    version: 1.0.0
+  command.procedure.select-question:
+    text: Choose a question to explore.
+    status: canonical
+    version: 1.0.0
+  command.procedure.think-command-during-exhale:
+    text: Think the command during exhalation.
+    status: canonical
+    version: 1.0.0
+  command.procedure.think-or-say-command:
+    text: Think or say the command.
+    status: canonical
+    version: 1.0.0
+  command.relationship.cancels:
+    text: cancels
+    status: canonical
+    version: 1.0.0
+  command.relationship.closes:
+    text: closes
+    status: canonical
+    version: 1.0.0
+  command.relationship.modifies:
+    text: modifies
+    status: canonical
+    version: 1.0.0
+  command.relationship.pairs-with:
+    text: paired with
+    status: canonical
+    version: 1.0.0
+  command.relationship.releases:
+    text: releases
+    status: canonical
+    version: 1.0.0
+  command.relationship.retrieves:
+    text: retrieves from
+    status: canonical
+    version: 1.0.0
+  command.review.approved:
+    text: Approved
+    status: canonical
+    version: 1.0.0
+  command.review.needs-review:
+    text: Needs review
+    status: canonical
+    version: 1.0.0
+  command.review.pending:
+    text: Pending review
+    status: canonical
+    version: 1.0.0
+  command.review.review-required:
+    text: Review required
+    status: canonical
+    version: 1.0.0
+  command.review.superseded:
+    text: Superseded
+    status: canonical
+    version: 1.0.0
+  command.source.available:
+    text: Available source material; historical authentication remains separately recorded.
+    status: canonical
+    version: 1.0.0
+  command.source.pending-source-review:
+    text: Source availability is pending review.
+    status: canonical
+    version: 1.0.0
+  command.source.unavailable:
+    text: Historical source unavailable.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-aut-001-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-aut-001-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-aut-001-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-001-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-001-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-001-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-002-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-002-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-002-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-003-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-003-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-003-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-003-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-003-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-003-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-004-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-004-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-004-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-004-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-004-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-004-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-005-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-005-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-005-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-006-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-006-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-006-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-007-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-007-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-007-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-008-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-008-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-008-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-009-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-009-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-009-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-010-food-less.explanation:
+    text: This command selects the decrease mode.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-010-food-less.label:
+    text: Decrease mode
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-010-food-less.usage:
+    text: Use when you choose to decrease the selected function response.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-010-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-010-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-010-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-011-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-011-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-011-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-012-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-012-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-012-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-012-legacy-02.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-012-legacy-02.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-012-legacy-02.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-012-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-012-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-012-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-012-sex-less.explanation:
+    text: This command selects the decrease mode.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-012-sex-less.label:
+    text: Decrease mode
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-012-sex-less.usage:
+    text: Use when you choose to decrease the selected function response.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-013-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-013-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-013-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-014-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-014-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-014-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-014-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-014-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-014-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-015-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-015-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-015-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-015-legacy-02.explanation:
+    text: This command releases or suspends the current application as documented.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-015-legacy-02.label:
+    text: Release command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-015-legacy-02.usage:
+    text: Ends the temporary numbing response; normal sensitivity returns while the learned ability remains
+      available.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-015-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-015-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-bod-015-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-001-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-001-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-001-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-002-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-002-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-002-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-003-closed.explanation:
+    text: This command closes the current function state.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-003-closed.label:
+    text: Close command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-003-closed.usage:
+    text: Use to close the current function state; session return remains separate.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-003-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-003-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-003-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-004-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-004-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-004-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-004-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-004-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-004-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-004-recall.explanation:
+    text: This command retrieves selected or imprinted information.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-004-recall.label:
+    text: Retrieval command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-004-recall.usage:
+    text: Use to retrieve information or experience selected or imprinted with this function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-005-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-005-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-005-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-005-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-005-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-005-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-006-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-006-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-006-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-007-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-007-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-cog-007-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-com-001-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-com-001-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-com-001-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emg-001-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emg-001-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emg-001-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emg-002-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emg-002-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emg-002-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emo-001-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emo-001-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emo-001-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emo-002-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emo-002-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emo-002-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emo-002-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emo-002-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emo-002-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emo-003-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emo-003-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-emo-003-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-001-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-001-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-001-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-001-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-001-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-001-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-002-cancel.explanation:
+    text: This command cancels the current adjustment.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-002-cancel.label:
+    text: Cancellation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-002-cancel.usage:
+    text: Use to cancel the current adjustment.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-002-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-002-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-002-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-002-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-002-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-002-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-002-release.explanation:
+    text: This command releases or suspends the current application as documented.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-002-release.label:
+    text: Release command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-exp-002-release.usage:
+    text: Places Zoning on hold; PLUS-CANCEL ends the current adjustment.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-001-access-close.explanation:
+    text: This distinct cue closes the Access Channel.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-001-access-close.label:
+    text: Access-channel close cue
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-001-access-close.usage:
+    text: Use to close the Access Channel; this cue is distinct from function activation.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-001-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-001-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-001-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-002-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-002-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-002-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-003-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-003-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-003-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-004-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-004-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-004-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-004-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-004-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-004-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-005-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-005-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-005-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-005-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-005-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-005-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-006-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-006-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-fnd-006-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-lif-001-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-lif-001-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-lif-001-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-001-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-001-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-001-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-002-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-002-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-002-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-002-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-002-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-002-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-003-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-003-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-003-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-004-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-004-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-004-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-004-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-004-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-004-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-005-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-005-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-005-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-006-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-006-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-006-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-006-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-006-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-006-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-006-release.explanation:
+    text: This command releases or suspends the current application as documented.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-006-release.label:
+    text: Release command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-prf-006-release.usage:
+    text: Ends the temporary Strong-Quick application; the learned ability remains available.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-001-hear-less.explanation:
+    text: This command selects the decrease mode.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-001-hear-less.label:
+    text: Decrease mode
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-001-hear-less.usage:
+    text: Use when you choose to decrease the selected function response.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-001-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-001-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-001-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-002-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-002-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-002-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-002-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-002-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-002-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-002-see-less.explanation:
+    text: This command selects the decrease mode.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-002-see-less.label:
+    text: Decrease mode
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-002-see-less.usage:
+    text: Use when you choose to decrease the selected function response.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-003-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-003-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-003-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-003-legacy-02.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-003-legacy-02.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-003-legacy-02.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-003-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-003-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-003-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-003-smell-less.explanation:
+    text: This command selects the decrease mode.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-003-smell-less.label:
+    text: Decrease mode
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-003-smell-less.usage:
+    text: Use when you choose to decrease the selected function response.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-004-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-004-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-004-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-004-legacy-02.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-004-legacy-02.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-004-legacy-02.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-004-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-004-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-004-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-004-taste-less.explanation:
+    text: This command selects the decrease mode.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-004-taste-less.label:
+    text: Decrease mode
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-004-taste-less.usage:
+    text: Use when you choose to decrease the selected function response.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-005-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-005-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-005-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-005-legacy-02.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-005-legacy-02.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-005-legacy-02.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-005-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-005-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-005-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-005-touch-less.explanation:
+    text: This command selects the decrease mode.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-005-touch-less.label:
+    text: Decrease mode
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-sen-005-touch-less.usage:
+    text: Use when you choose to decrease the selected function response.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-001-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-001-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-001-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-001-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-001-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-001-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-002-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-002-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-002-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-002-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-002-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-002-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-003-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-003-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-003-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-003-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-003-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-003-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-004-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-004-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-004-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-004-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-004-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-004-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-005-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-005-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-005-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-005-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-005-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-005-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-006-legacy-01.explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-006-legacy-01.label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-006-legacy-01.usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-006-primary.explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-006-primary.label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  commands.ocf-cmd-slp-006-primary.usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-aut-001.purpose:
+    text: Automates a desired way of being so it runs without active effort.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-aut-001.short-description:
+    text: Automates a desired way of being so it runs without active effort.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-aut-001.title:
+    text: See-Be
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-001.purpose:
+    text: Self-directed wellness practice supporting a felt sense of comfortable, balanced brain function.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-001.short-description:
+    text: Self-directed wellness practice supporting a felt sense of comfortable, balanced brain function.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-001.title:
+    text: 'Brain: Repairs & Maintenance'
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-002.purpose:
+    text: Promotes a felt sense of smooth, comfortable circulation.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-002.short-description:
+    text: Promotes a felt sense of smooth, comfortable circulation.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-002.title:
+    text: Circulation
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-003.purpose:
+    text: Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-003.short-description:
+    text: Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-003.title:
+    text: De-Discomfort
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-004.purpose:
+    text: Supports a perceived sense of bodily cleansing and clarity.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-004.short-description:
+    text: Supports a perceived sense of bodily cleansing and clarity.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-004.title:
+    text: 'De-Tox: Body'
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-005.purpose:
+    text: Adjusts appetite signals in either direction.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-005.short-description:
+    text: Adjusts appetite signals in either direction.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-005.title:
+    text: Eat/No Eat
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-006.purpose:
+    text: Self-directed wellness practice supporting a felt sense of calm, steady heart function.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-006.short-description:
+    text: Self-directed wellness practice supporting a felt sense of calm, steady heart function.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-006.title:
+    text: 'Heart: Repairs & Maintenance'
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-007.purpose:
+    text: Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute
+      for medical care.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-007.short-description:
+    text: Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute
+      for medical care.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-007.title:
+    text: Hypertension
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-008.purpose:
+    text: Supports a felt sense of alertness and preparedness; not a medical claim.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-008.short-description:
+    text: Supports a felt sense of alertness and preparedness; not a medical claim.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-008.title:
+    text: Immunizing
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-009.purpose:
+    text: Self-directed wellness practice supporting easy, comfortable breathing.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-009.short-description:
+    text: Self-directed wellness practice supporting easy, comfortable breathing.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-009.title:
+    text: 'Lungs: Repairs & Maintenance'
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-010.purpose:
+    text: Adjusts appetite and food drive in either direction using the MORE/LESS grammar.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-010.short-description:
+    text: Adjusts appetite and food drive in either direction using the MORE/LESS grammar.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-010.title:
+    text: Nutricia
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-011.purpose:
+    text: Supports graceful passage through internal transitions.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-011.short-description:
+    text: Supports graceful passage through internal transitions.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-011.title:
+    text: Passages
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-012.purpose:
+    text: Adjusts felt sexual drive in either direction using the MORE/LESS grammar.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-012.short-description:
+    text: Adjusts felt sexual drive in either direction using the MORE/LESS grammar.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-012.title:
+    text: Sex Drive
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-013.purpose:
+    text: A general self-directed balance-and-heal tune-up practice.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-013.short-description:
+    text: A general self-directed balance-and-heal tune-up practice.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-013.title:
+    text: Tune-Up
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-014.purpose:
+    text: Supports a felt sense of body-wide regeneration and renewal; proposed concise cue PLUS-REGENERATE
+      for review.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-014.short-description:
+    text: Supports a felt sense of body-wide regeneration and renewal; proposed concise cue PLUS-REGENERATE
+      for review.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-014.title:
+    text: Regenerate
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-015.purpose:
+    text: Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-015.short-description:
+    text: Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-bod-015.title:
+    text: Short Fix
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-001.purpose:
+    text: Accesses intuition, memory, and inner knowledge on demand.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-001.short-description:
+    text: Accesses intuition, memory, and inner knowledge on demand.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-001.title:
+    text: Access to Information
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-002.purpose:
+    text: Speeds mental arithmetic and number processing.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-002.short-description:
+    text: Speeds mental arithmetic and number processing.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-002.title:
+    text: Buy the Numbers
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-003.purpose:
+    text: Opens an internal space for quiet reflection; closes it again on completion.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-003.short-description:
+    text: Opens an internal space for quiet reflection; closes it again on completion.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-003.title:
+    text: Contemplation
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-004.purpose:
+    text: Imprints a chosen suggestion or intention using the IMPRINT rehearsal.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-004.short-description:
+    text: Imprints a chosen suggestion or intention using the IMPRINT rehearsal.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-004.title:
+    text: Imprint
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-005.purpose:
+    text: Opens perception of choices and alternatives.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-005.short-description:
+    text: Opens perception of choices and alternatives.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-005.title:
+    text: Options
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-006.purpose:
+    text: Brings specific memories or learned material to mind on request.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-006.short-description:
+    text: Brings specific memories or learned material to mind on request.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-006.title:
+    text: Recall
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-007.purpose:
+    text: Accelerates thinking speed and mental processing.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-007.short-description:
+    text: Accelerates thinking speed and mental processing.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-cog-007.title:
+    text: Think Fast
+    status: canonical
+    version: 1.0.0
+  functions.ocf-com-001.purpose:
+    text: Supports confident, clear verbal expression.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-com-001.short-description:
+    text: Supports confident, clear verbal expression.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-com-001.title:
+    text: Speak Up
+    status: canonical
+    version: 1.0.0
+  functions.ocf-emg-001.purpose:
+    text: Emergency-oriented practice to stay calm and take helpful action. Does NOT replace emergency
+      services, first aid, or professional care.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-emg-001.short-description:
+    text: Emergency-oriented practice to stay calm and take helpful action. Does NOT replace emergency
+      services, first aid, or professional care.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-emg-001.title:
+    text: 'Emergency: Injury'
+    status: canonical
+    version: 1.0.0
+  functions.ocf-emg-002.purpose:
+    text: Emergency-oriented practice for toxic-exposure situations. Does NOT replace poison control,
+      emergency services, or medical evaluation.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-emg-002.short-description:
+    text: Emergency-oriented practice for toxic-exposure situations. Does NOT replace poison control,
+      emergency services, or medical evaluation.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-emg-002.title:
+    text: 'Emergency: Toxic'
+    status: canonical
+    version: 1.0.0
+  functions.ocf-emo-001.purpose:
+    text: Releases clinging, tension, or unwanted mental objects.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-emo-001.short-description:
+    text: Releases clinging, tension, or unwanted mental objects.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-emo-001.title:
+    text: Let Go
+    status: canonical
+    version: 1.0.0
+  functions.ocf-emo-002.purpose:
+    text: Fades and off-loads unhelpful mental load or charge; proposed concise cue PLUS-CLEAR.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-emo-002.short-description:
+    text: Fades and off-loads unhelpful mental load or charge; proposed concise cue PLUS-CLEAR.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-emo-002.title:
+    text: Off-Loading
+    status: canonical
+    version: 1.0.0
+  functions.ocf-emo-003.purpose:
+    text: Builds a felt profile of another person's experience.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-emo-003.short-description:
+    text: Builds a felt profile of another person's experience.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-emo-003.title:
+    text: Empathizing
+    status: canonical
+    version: 1.0.0
+  functions.ocf-exp-001.purpose:
+    text: Legacy 'change' practice for breaking personal loops; proposed concise cue PLUS-PROGRAM.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-exp-001.short-description:
+    text: Legacy 'change' practice for breaking personal loops; proposed concise cue PLUS-PROGRAM.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-exp-001.title:
+    text: Mobius West
+    status: canonical
+    version: 1.0.0
+  functions.ocf-exp-002.purpose:
+    text: Insulates against unwanted influence; cancels the zoning state via PLUS-CANCEL.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-exp-002.short-description:
+    text: Insulates against unwanted influence; cancels the zoning state via PLUS-CANCEL.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-exp-002.title:
+    text: Zoning
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-001.purpose:
+    text: Restores a felt sense of available energy on demand.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-001.short-description:
+    text: Restores a felt sense of available energy on demand.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-001.title:
+    text: Access to Energy
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-002.purpose:
+    text: Directs and sustains focused attention.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-002.short-description:
+    text: Directs and sustains focused attention.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-002.title:
+    text: Attention
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-003.purpose:
+    text: Replenishes a felt sense of energy and freshness.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-003.short-description:
+    text: Replenishes a felt sense of energy and freshness.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-003.title:
+    text: Recharge
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-004.purpose:
+    text: Deepens physical and mental relaxation.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-004.short-description:
+    text: Deepens physical and mental relaxation.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-004.title:
+    text: Relax
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-005.purpose:
+    text: Returns mind and body to a neutral, settled baseline.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-005.short-description:
+    text: Returns mind and body to a neutral, settled baseline.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-005.title:
+    text: Reset
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-006.purpose:
+    text: Releases unhelpful states, prompts, or lingering experiences.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-006.short-description:
+    text: Releases unhelpful states, prompts, or lingering experiences.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-fnd-006.title:
+    text: Release
+    status: canonical
+    version: 1.0.0
+  functions.ocf-lif-001.purpose:
+    text: Supports stepping away from habitual, repeated behavior patterns.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-lif-001.short-description:
+    text: Supports stepping away from habitual, repeated behavior patterns.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-lif-001.title:
+    text: De-Hab
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-001.purpose:
+    text: Moves from deliberation into immediate, present action.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-001.short-description:
+    text: Moves from deliberation into immediate, present action.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-001.title:
+    text: Do This Now
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-002.purpose:
+    text: Legacy vitality practice associated with the phrase EIGHT, GREAT; proposed concise cue PLUS-STRONG.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-002.short-description:
+    text: Legacy vitality practice associated with the phrase EIGHT, GREAT; proposed concise cue PLUS-STRONG.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-002.title:
+    text: Eight-Great
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-003.purpose:
+    text: Aligns and smooths internal rhythms toward feeling faster and steadier.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-003.short-description:
+    text: Aligns and smooths internal rhythms toward feeling faster and steadier.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-003.title:
+    text: Synchronizing
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-004.purpose:
+    text: Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-004.short-description:
+    text: Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-004.title:
+    text: Light Foot
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-005.purpose:
+    text: Sets a deliberate tone for the day ahead.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-005.short-description:
+    text: Sets a deliberate tone for the day ahead.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-005.title:
+    text: Make Your Day
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-006.purpose:
+    text: Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-006.short-description:
+    text: Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-prf-006.title:
+    text: Strong-Quick
+    status: canonical
+    version: 1.0.0
+  functions.ocf-sen-001.purpose:
+    text: Adjusts inward listening and perception in either direction using the MORE/LESS grammar.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-sen-001.short-description:
+    text: Adjusts inward listening and perception in either direction using the MORE/LESS grammar.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-sen-001.title:
+    text: 'Sensory: Hearing'
+    status: canonical
+    version: 1.0.0
+  functions.ocf-sen-002.purpose:
+    text: Improves the felt sense of inner vision and clarity; directional magnitudes use MORE/LESS.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-sen-002.short-description:
+    text: Improves the felt sense of inner vision and clarity; directional magnitudes use MORE/LESS.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-sen-002.title:
+    text: 'Sensory: Seeing'
+    status: canonical
+    version: 1.0.0
+  functions.ocf-sen-003.purpose:
+    text: Adjusts the felt sense of smell in either direction using the MORE/LESS grammar.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-sen-003.short-description:
+    text: Adjusts the felt sense of smell in either direction using the MORE/LESS grammar.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-sen-003.title:
+    text: 'Sensory: Smell'
+    status: canonical
+    version: 1.0.0
+  functions.ocf-sen-004.purpose:
+    text: Adjusts the felt sense of taste in either direction using the MORE/LESS grammar.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-sen-004.short-description:
+    text: Adjusts the felt sense of taste in either direction using the MORE/LESS grammar.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-sen-004.title:
+    text: 'Sensory: Taste'
+    status: canonical
+    version: 1.0.0
+  functions.ocf-sen-005.purpose:
+    text: Adjusts the felt sense of touch or skin sensation using the MORE/LESS grammar.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-sen-005.short-description:
+    text: Adjusts the felt sense of touch or skin sensation using the MORE/LESS grammar.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-sen-005.title:
+    text: 'Sensory: Touch'
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-001.purpose:
+    text: Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-001.short-description:
+    text: Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-001.title:
+    text: Restorative Sleep
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-002.purpose:
+    text: Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-002.short-description:
+    text: Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-002.title:
+    text: Sleep
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-003.purpose:
+    text: Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-003.short-description:
+    text: Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-003.title:
+    text: Sweet Dreams
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-004.purpose:
+    text: Requests help with sleep and with knowing the right time to wake; proposed concise cue PLUS-KNOW.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-004.short-description:
+    text: Requests help with sleep and with knowing the right time to wake; proposed concise cue PLUS-KNOW.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-004.title:
+    text: Wake/Know
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-005.purpose:
+    text: Promotes easy, quiet transition into sleep; proposed concise cue PLUS-SLEEP EASY.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-005.short-description:
+    text: Promotes easy, quiet transition into sleep; proposed concise cue PLUS-SLEEP EASY.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-005.title:
+    text: Sleep Easy
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-006.purpose:
+    text: Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-006.short-description:
+    text: Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE.
+    status: canonical
+    version: 1.0.0
+  functions.ocf-slp-006.title:
+    text: Stay Awake
+    status: canonical
+    version: 1.0.0

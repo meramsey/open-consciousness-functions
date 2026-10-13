@@ -12,6 +12,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+from .command_docs import generated_command_documents
 from .indexes import (
     audio_implementations_for,
     background_presets_for,
@@ -479,7 +480,7 @@ def generate_all_content() -> list[tuple[str, str]]:
         ("docs/AUDIO_IMPLEMENTATION_INDEX.md", audio_implementation_index_markdown()),
         ("docs/BACKGROUND_AUDIO_INDEX.md", background_audio_index_markdown()),
         ("docs/FUNCTION_EXTRACTION_REVIEW.md", extraction_review_markdown()),
-    ]
+    ] + generated_command_documents()
 
 
 def extraction_review_markdown() -> str:
