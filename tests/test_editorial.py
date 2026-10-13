@@ -465,7 +465,7 @@ def test_exact_utf8_crlf_source_working_snapshot_and_flags(authoring):
         assert block["release"]["status"] == "pending"
     assert "".join(source).encode("utf-8") == f.raw
     assert "".join(working).encode("utf-8") == f.raw
-    snapshot = yaml.safe_load((f.workspace / "sources" / f"{sha(f.raw)}.yaml").read_text())
+    snapshot = yaml.safe_load((f.workspace / "sources" / f"{sha(f.raw)}.yaml").read_text(encoding="utf-8"))
     assert snapshot == {"text": SOURCE, "sha256": sha(f.raw)}
     assert (f.source_root / f"{f.id}.txt").read_bytes() == f.raw
     assert all(
@@ -1056,7 +1056,7 @@ def test_package_staging_excludes_exact_authoring_source_even_from_existing_targ
         SOURCE.encode("utf-8") not in p.read_bytes() for p in target.rglob("*") if p.is_file()
     )
     assert (
-        yaml.safe_load((root / ".ocf-authoring" / "sources" / "exact.yaml").read_text())["text"]
+        yaml.safe_load((root / ".ocf-authoring" / "sources" / "exact.yaml").read_text(encoding="utf-8"))["text"]
         == SOURCE
     )
 

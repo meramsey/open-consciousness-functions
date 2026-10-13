@@ -92,16 +92,16 @@ def test_dry_run_and_reimport_preserve_human_wording_and_versions(importer):
     assert not target.exists() and not report.exists()
     assert (output / "manifest.yaml").read_bytes() == before
     run(importer, True)
-    data = yaml.safe_load(target.read_text())
+    data = yaml.safe_load(target.read_text(encoding="utf-8"))
     data["entries"]["hplus.function.ocf-cog-001.opener"]["text"] = "Human-edited opener."
     target.write_text(yaml.safe_dump(data))
     edited = target.read_bytes()
-    manifest = yaml.safe_load((output / "manifest.yaml").read_text())
+    manifest = yaml.safe_load((output / "manifest.yaml").read_text(encoding="utf-8"))
     manifest["semantic_version"] = "2.0.0"
     (output / "manifest.yaml").write_text(yaml.safe_dump(manifest))
     run(importer, True)
     assert target.read_bytes() == edited
-    manifest = yaml.safe_load((output / "manifest.yaml").read_text())
+    manifest = yaml.safe_load((output / "manifest.yaml").read_text(encoding="utf-8"))
     assert len(manifest["resources"]) == 1 and manifest["semantic_version"] == "2.0.0"
 
 
@@ -117,7 +117,7 @@ def test_hash_mismatch_fails_before_any_output_is_written(importer):
 
 def test_manifest_domain_conflict_fails_before_creating_the_resource(importer):
     _, _, output, _, _ = importer
-    manifest = yaml.safe_load((output / "manifest.yaml").read_text())
+    manifest = yaml.safe_load((output / "manifest.yaml").read_text(encoding="utf-8"))
     manifest["resources"] = [{"file": "hplus-OCF-COG-001.yaml", "domain": "ui"}]
     (output / "manifest.yaml").write_text(yaml.safe_dump(manifest))
     with pytest.raises(ValueError, match="manifest domain mismatch"):
@@ -171,7 +171,7 @@ def proposal_importer(importer, monkeypatch):
     )
     target = output / "hplus-OCF-COG-001.yaml"
     target.write_text(yaml.safe_dump(review.resource_for(historical, None, None)[0]))
-    manifest = yaml.safe_load((output / "manifest.yaml").read_text())
+    manifest = yaml.safe_load((output / "manifest.yaml").read_text(encoding="utf-8"))
     manifest["resources"] = [{"file": target.name, "domain": "ui"}]
     (output / "manifest.yaml").write_text(yaml.safe_dump(manifest))
     monkeypatch.setattr(
@@ -216,9 +216,9 @@ def test_explicit_proposal_upgrade_changes_only_the_placeholder_and_preserves_la
     apply_proposal(proposal_importer, False)
     assert target.read_bytes() == original
     apply_proposal(proposal_importer, True)
-    data = yaml.safe_load(target.read_text())
+    data = yaml.safe_load(target.read_text(encoding="utf-8"))
     assert data["domain"] == "narration"
-    manifest = yaml.safe_load((output / "manifest.yaml").read_text())
+    manifest = yaml.safe_load((output / "manifest.yaml").read_text(encoding="utf-8"))
     assert manifest["resources"][0]["domain"] == "narration"
     assert manifest["semantic_version"] == "1.5.0"
     assert (workspace / "functions/OCF-COG-001.yaml").read_bytes() == historical_bytes
@@ -235,7 +235,7 @@ def test_proposal_import_does_not_overwrite_a_human_edited_status_file(proposal_
     importer, _ = proposal_importer
     _, _, output, _, _ = importer
     target = output / "hplus-OCF-COG-001.yaml"
-    data = yaml.safe_load(target.read_text())
+    data = yaml.safe_load(target.read_text(encoding="utf-8"))
     next(iter(data["entries"].values()))["notes"] = "User's own review note."
     target.write_text(yaml.safe_dump(data))
     before = target.read_bytes()

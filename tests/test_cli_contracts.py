@@ -622,12 +622,12 @@ def test_pseudo_locale_serialization_uses_pack_metadata_not_engine_calls(
     import yaml
 
     assert (
-        yaml.safe_load((target / "narration.yaml").read_text())["entries"]["narration.fixture"][
+        yaml.safe_load((target / "narration.yaml").read_text(encoding="utf-8"))["entries"]["narration.fixture"][
             "text"
         ]
         == "Café"
     )
-    assert yaml.safe_load((target / "ui.yaml").read_text())["domain"] == "ui"
+    assert yaml.safe_load((target / "ui.yaml").read_text(encoding="utf-8"))["domain"] == "ui"
 
 
 def test_review_commands_and_capabilities_delegate_to_injected_data(monkeypatch, tmp_path, capsys):
