@@ -254,8 +254,10 @@ validation plus index freshness in one step.
 
 ## Contribution path
 
-1. Draft (`proposals/draft/`) → 2. Review (`proposals/review/`) →
-3. Experimental → 4. Accepted. Legacy compatibility is always preserved.
+1. Draft (`proposals/draft/`)
+2. Review (`proposals/review/`)
+3. Experimental
+4. Accepted. Legacy compatibility is always preserved.
 See `CONTRIBUTING.md`, `docs/SUBMISSION_GUIDELINES.md`,
 `docs/FUNCTION_LIFECYCLE.md`.
 

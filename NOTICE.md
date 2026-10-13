@@ -18,7 +18,7 @@ text.
 | Legacy factual metadata (`legacy/`)             | Apache-2.0 (facts are not copyrightable expressions) |
 | Community-authored training scripts and audio   | Contributor-chosen, must be recorded per item      |
 | Third-party source material (e.g. PDFs/audio)   | Not redistributed; citation-only by default        |
-| Farfield (https://github.com/txus/farfield)     | Optional external dependency; see its own license  |
+| Farfield (<https://github.com/txus/farfield>)     | Optional external dependency; see its own license  |
 
 Nothing in this project promises, claims, or guarantees a psychological,
 physiological, medical, paranormal, or behavioral result. See

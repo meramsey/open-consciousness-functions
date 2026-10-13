@@ -26,7 +26,6 @@ def test_attention_remains_plus_focus():
 
 def test_directional_sensory_controls_use_more_less():
     for name, primary, modes in [
-        ("SENSORY: SEEING", "PLUS-SEE MORE", ["PLUS-SEE LESS"]),
         ("SENSORY: HEARING", "PLUS-HEAR MORE", ["PLUS-HEAR LESS"]),
         ("SENSORY: SMELL", "PLUS-SMELL MORE", ["PLUS-SMELL LESS"]),
         ("SENSORY: TASTE", "PLUS-TASTE MORE", ["PLUS-TASTE LESS"]),

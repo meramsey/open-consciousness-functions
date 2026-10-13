@@ -9,15 +9,15 @@
 
 ## Results
 
-__RESULTS__
+{{RESULTS}}
 
 ## Issues found
 
-__ISSUES__
+{{ISSUES}}
 
 ## Overall verdict
 
-__VERDICT__
+{{VERDICT}}
 
 ## Notes
 

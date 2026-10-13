@@ -39,7 +39,7 @@ The tracked working tree is clean except for intentional untracked user director
 
 The workflow is now:
 
-```
+```text
 SOURCE -> FAITHFUL STRUCTURED WORKING DRAFT -> HUMAN REVIEW / INTENTIONAL EDITS -> REVIEWED RELEASE CONTENT -> TIMING / TTS / AUDIO GENERATION
 ```
 

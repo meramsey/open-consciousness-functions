@@ -4,7 +4,7 @@ OCF separates the **specification** (schemas + YAML records) from the
 **tooling** (validation, generation, wizards, audio) and the **provenance**
 (legacy metadata, attribution, evidence).
 
-```
+```text
 ┌─────────────────────────── SPECIFICATION ───────────────────────────┐
 │ schemas/*.schema.json          canonical data model                │
 │ functions/<domain>/*.yaml      canonical editable records          │

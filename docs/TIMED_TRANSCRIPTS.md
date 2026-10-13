@@ -71,7 +71,7 @@ text and timestamps, and OCF timed YAML becomes the working document.
 | Input format      | Role                                    | Notes |
 | ----------------- | --------------------------------------- | ----- |
 | `.lrc`            | timed lyrics (import)                   | handles metadata tags, centisecond/millisecond timestamps |
-| `.srt`            | interoperability (import + export)      | | 
+| `.srt`            | interoperability (import + export)      | |
 | `.vtt`            | interoperability (import + export)      | |
 | `.txt` / `.md`    | plain transcript (import)               | untimed; becomes a schedule-less script |
 | `OCF timed YAML`  | canonical editable format               | also importable to re-bootstrap a session |

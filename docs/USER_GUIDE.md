@@ -146,6 +146,7 @@ override. See [`docs/LOCALIZATION.md`](LOCALIZATION.md) and
 [`locales/README.md`](../locales/README.md).
 
 Narration pacing flags on `ocf voice render` / `ocf audio build`:
+
 - `--fit` — adaptive per-cue pacing (`timing_mode fit-soft`): trim TTS trailing
   pads, stretch short flow slots up to a cap, preserve deliberate pauses.
 - `--flow` — flow-merge consecutive whisper sentence fragments into single

@@ -5,7 +5,7 @@ implementations, and policy.
 
 ## Status workflow
 
-```
+```text
 draft -> review -> experimental -> accepted
                 \-> rejected / withdrawn
 accepted -> deprecated -> superseded

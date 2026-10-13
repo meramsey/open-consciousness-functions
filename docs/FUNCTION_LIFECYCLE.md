@@ -5,7 +5,7 @@ style lifecycle.
 
 ## States
 
-```
+```text
         ┌──────────────────────────────────────────┐
         │                                          ▼
    draft ──► review ──► experimental ──► accepted ──► deprecated ──► superseded

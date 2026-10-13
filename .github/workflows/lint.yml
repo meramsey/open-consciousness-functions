@@ -32,6 +32,7 @@ jobs:
         with:
           config: .markdownlint.json
           globs: "**/*.md"
+          ignore: "**/node_modules/**/*.md **/.opencode/**/*.md"
       - name: Check generated-file headers
         run: |
           for f in FUNCTION_INDEX.md legacy/hplus-command-map.csv docs/COMMAND_REVIEW.md; do

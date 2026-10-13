@@ -2,7 +2,7 @@
 
 Each locale is one directory holding a manifest and one or more resource files:
 
-```
+```text
 locales/
   en-US/
     manifest.yaml

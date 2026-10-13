@@ -161,6 +161,7 @@ mode, and pronunciation hints.
   piper: /home/you/.local/bin/piper
       locale: bound to its voice model - a locale needs a matching model; default language en_US; no pronunciation input
   ```
+
 - **Pronunciation hints affect TTS input only.** A pack can carry
   `pronunciation: {espeak-ng: …}` per entry; the hint is applied to the text
   handed to the backend and never to the transcript, the subtitle track, or the

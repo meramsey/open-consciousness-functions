@@ -106,7 +106,7 @@ an OCF-authored arc plus the OCF-authored Focus-11 access state.
 
 The Focus 11 Access Channel background program is:
 
-```
+```text
 Focus 10  ->  Focus 11  ->  Focus 10
   pre-access   access window   return
 ```

@@ -91,5 +91,8 @@ def test_indexes_are_fresh_in_repository():
 
 def test_generated_files_carry_header(repo_root):
     for relative, _ in generate_all_content():
+        if relative == "function-command-index.json":
+            # JSON artifact is emitted as valid JSON without the prose header
+            continue
         text = (repo_root / relative).read_text(encoding="utf-8")
         assert text.startswith(GENERATED_HEADER), relative
