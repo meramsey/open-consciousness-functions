@@ -82,3 +82,133 @@ authoritative. The agent reasons; OCF validates and executes.
 Report changed files, focused/full tests, validation warnings/failures,
 platforms actually run, unresolved uncertainty, and remaining follow-up work.
 Do not claim native OS, package, audio, or MCP verification unless it ran.
+
+## Task workflows
+
+Use the built-in CLI and wizards as the authoritative workflows. Do not create
+agent-specific scripts that duplicate their decisions. Python 3.11+ and the
+project dependencies are required; optional audio engines/codecs are detected
+by `doctor` and `voice doctor`. Run commands from the repository root.
+
+### Add a function
+
+Prerequisites: review `docs/FUNCTION_LIFECYCLE.md`, `docs/NAMING_GUIDELINES.md`,
+and `schemas/function.schema.json`; determine a unique function identity and
+provide source/evidence or explicitly record unknown provenance. Run
+`python3 scripts/ocf.py new function`, complete the prompts, then
+`python3 scripts/ocf.py validate --all` and `python3 scripts/ocf.py build-index`.
+Expected outputs are a canonical record in `functions/` and refreshed generated
+indexes/docs. For an audio implementation, compose or author a timed script
+using `python3 scripts/ocf.py session compose --help` and then follow “Render an
+audition.” Common failures are duplicate IDs/commands, missing required schema
+fields, or unavailable evidence; do not invent provenance. Relevant sources:
+`schemas/function.schema.json`, `scripts/ocf_tools/wizards.py`,
+`scripts/ocf_tools/validators.py`, and `scripts/ocf_tools/indexes.py`.
+
+### Edit a function
+
+Inspect the record and schema first. Run
+`python3 scripts/ocf.py edit function <ID-or-slug>` (uses `$EDITOR`), review the
+diff, then run `python3 scripts/ocf.py validate --all` and
+`python3 scripts/ocf.py build-index`. Preserve historical mappings, command
+provenance, and protected narration. Generated indexes are outputs, not edit
+targets. See `docs/SOURCE_FIRST_AUTHORING.md` and `docs/FUNCTION_LIFECYCLE.md`.
+
+### Add a locale
+
+Read `docs/LOCALIZATION.md` and `locales/README.md`. Add a pack under
+`locales/<BCP-47-tag>/` using the locale schemas and stable resource IDs; do
+not synthesize English from identifiers. Run
+`python3 scripts/ocf.py locale validate --locale <tag>` and
+`python3 scripts/ocf.py locale coverage --locale <tag>`. Missing spoken
+resources can fail strict rendering even when UI fallback is available.
+
+### Add or review a command
+
+Read `docs/COMMAND_GRAMMAR.md` and `docs/COMMAND_REVIEW.md`; update canonical
+command data with its source/provenance and rationale. Run
+`python3 scripts/ocf.py validate --all` and
+`python3 scripts/ocf.py review commands`. Never alter historical command
+records to make the validator pass. `PLUS-SEE BETTER` remains canonical for
+Sensory: Seeing; MORE/LESS modes are not active.
+
+### Render an audition
+
+Prerequisites: a timed script under `audio/scripts/`, a valid audio
+implementation manifest, a compatible voice profile, and any selected optional
+engine. Run `python3 scripts/ocf.py voice doctor` and
+`python3 scripts/ocf.py audio build <AUDIO_ID> --output <working-dir> --format wav`
+(add `--voice <profile>` and `--locale <tag>` as appropriate). Outputs are
+local rendered masters and render metadata; existing outputs are protected
+unless `--force` is specified. Missing TTS, codec, locale resources, or required
+background engines produces a failure or documented degradation. See
+`docs/AUDIO_PIPELINE.md`, `docs/LOCALIZATION.md`, and voice profiles in
+`audio/voices/`.
+
+### Produce audio files
+
+`python3 scripts/ocf.py audio build <AUDIO_ID> --output <working-dir> --format
+wav --format flac --format mp3` renders audio derivatives and a YAML render
+manifest where requested encoders are available. `--tag KEY=VALUE` overrides
+supported tag values and `--force` permits replacement. This is not yet a
+self-contained final-release packager: artwork embedding, release transcript,
+localized release naming, and release manifest verification are not provided
+by this command. Do not publish its outputs as a complete release without those
+separate requirements being met. See `docs/AUDIO_PIPELINE.md`.
+
+### Add a voice preset
+
+Read `docs/COMMUNITY_VOICES.md`, `docs/LOCALIZATION.md`, and
+`audio/voices/README.md`. Add a profile following
+`audio/voices/profiles/` and its schema, record only verified attribution and
+dependency/licensing information, then run `python3 scripts/ocf.py voice doctor`
+and focused voice tests. Keep private samples/weights local; never infer voice
+identity from filenames. Missing optional providers should remain optional.
+
+### Diagnose a failed render
+
+Run `python3 scripts/ocf.py doctor --json` and
+`python3 scripts/ocf.py voice doctor`; validate the function and locale, then
+retry with an output path in a writable temporary/work directory. Inspect the
+render manifest and captured backend error before changing configuration.
+Check codec availability (`ffmpeg`/`flac`), voice backend and locale coverage,
+and whether the manifest requires a background engine. See `docs/DOCTOR.md` and
+`docs/AUDIO_PIPELINE.md`.
+
+### Validate and refresh generated docs
+
+Run `python3 scripts/ocf.py validate --all`,
+`python3 scripts/ocf.py locale validate --locale en-US`,
+`python3 scripts/ocf.py build-index --check`, and `make check`; run
+`make lint` and `python3 -m pytest` for the complete local checks. If generated
+indexes are stale, run `python3 scripts/ocf.py build-index`, inspect the diff,
+then rerun `--check`. Never hand-edit generated command/function references.
+See `docs/TEST_COVERAGE.md`, `Makefile`, and `.github/workflows/`.
+
+### Agent discovery examples
+
+These requests should lead an assistant to the built-in commands above; they
+are guidance prompts, not separate executable interfaces:
+
+- “Add a new function using the existing wizard.”
+- “Show me how to localize a function into Spanish.”
+- “Validate the command phrases for Nutricia.”
+- “Render an audition using my selected voice preset.”
+- “Package a release with MP3, FLAC, transcript, and artwork.” (Explain that
+  complete release packaging is not implemented; show the available audio build
+  command without claiming it creates the requested package.)
+- “Explain how to add a reusable voice preset.”
+- “Check whether generated documentation is up to date.”
+
+README and this file are provider-neutral repository discovery conventions;
+they do not imply that every assistant product automatically reads them.
+
+## Required task result format
+
+For every task, report results inside one fenced plain-text code block. Include
+completion status; branch, local commit and remote synchronization; completed
+work and changed files; focused/full tests and exact counts; lint/validation
+results; platforms actually exercised; warnings, failures, uncertainty, and
+blockers; and a recommended next milestone. Include workflow URLs and commit/push
+status only when those operations were actually performed and verified. Mark
+unrun checks as SKIP or BLOCKED rather than implying success.

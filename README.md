@@ -150,8 +150,9 @@ ocf:
   `ATTENTION` stays `PLUS-FOCUS`. No artificial uniformity.
 - **Keep commands short.** One word after `PLUS` preferred, two acceptable,
   three exceptional. No filler (`NOW`, `SYSTEM`, `ACTIVATE`).
-- **MORE/LESS, not UP/DOWN.** Adjustable magnitudes use
-  `PLUS-SEE MORE` / `PLUS-SEE LESS`.
+- **Preserve canonical sensory commands.** `PLUS-SEE BETTER` is the canonical
+  Sensory: Seeing command. `PLUS-SEE MORE` and `PLUS-SEE LESS` are not active
+  modes.
 - Every changed command retains its legacy command as metadata/alias with a
   documented rationale.
 
@@ -175,7 +176,7 @@ future audio — never presented as reconstructed original Monroe audio.
 - `legacy/hplus-command-map.json` / `.csv`
 - `docs/AVAILABILITY_MATRIX.md` and `docs/REIMPLEMENTATION_ROADMAP.md`
 
-## Audio architecture
+## Audio architecture and release status
 
 Audio is modeled independently from functions. A spoken session is produced
 by layered, independent artifacts:
@@ -197,6 +198,14 @@ A function is never tied to a single recording: one function may have several
 audio implementations, several transcripts, and several background presets.
 See `docs/AUDIO_STANDARD.md`, `docs/BACKGROUND_AUDIO.md`, and
 `docs/TIMED_TRANSCRIPTS.md`.
+
+The implemented `ocf audio build` command creates local rendered masters,
+optional MP3/FLAC derivatives, embedded codec tags, checksums, and a YAML render
+manifest. It is a rendering workflow, not a complete portable release packager:
+localized title-based naming, verified embedded artwork, release transcript,
+and a self-contained release manifest are not currently provided as one
+release operation. Do not treat a render manifest as proof of a cleared or
+published release. See `docs/AUDIO_PIPELINE.md` for the implemented workflow.
 
 ## Transcript & audio pipeline — what is supported
 
