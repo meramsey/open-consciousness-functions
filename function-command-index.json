@@ -133,6 +133,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-aut-001-primary.usage",
@@ -144,6 +151,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-AUT-001",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-aut-001.purpose",
@@ -307,6 +322,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-001-primary.usage",
@@ -318,6 +340,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-BOD-001",
+      "persistence": "permanent",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.permanent",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Permanent"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-bod-001.purpose",
@@ -481,6 +511,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-002-primary.usage",
@@ -492,6 +529,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-BOD-002",
+      "persistence": "permanent",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.permanent",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Permanent"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-bod-002.purpose",
@@ -660,6 +705,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-003-primary.usage",
@@ -715,6 +767,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-003-legacy-01.usage",
@@ -726,6 +785,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-BOD-003",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-bod-003.purpose",
@@ -894,6 +961,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-004-primary.usage",
@@ -949,6 +1023,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-004-legacy-01.usage",
@@ -960,6 +1041,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-BOD-004",
+      "persistence": "permanent",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.permanent",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Permanent"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-bod-004.purpose",
@@ -1118,6 +1207,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-005-primary.usage",
@@ -1129,6 +1225,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-BOD-005",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-bod-005.purpose",
@@ -1292,6 +1396,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-006-primary.usage",
@@ -1303,6 +1414,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-BOD-006",
+      "persistence": "permanent",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.permanent",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Permanent"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-bod-006.purpose",
@@ -1471,6 +1590,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-007-primary.usage",
@@ -1482,6 +1608,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-BOD-007",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-bod-007.purpose",
@@ -1623,6 +1757,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-008-primary.usage",
@@ -1634,6 +1775,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-BOD-008",
+      "persistence": "permanent",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.permanent",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Permanent"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-bod-008.purpose",
@@ -1780,6 +1929,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-009-primary.usage",
@@ -1791,6 +1947,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-BOD-009",
+      "persistence": "permanent",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.permanent",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Permanent"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-bod-009.purpose",
@@ -1981,6 +2145,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-010-primary.usage",
@@ -2157,6 +2328,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "decrease",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-010-food-less.usage",
@@ -2168,6 +2346,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-BOD-010",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-bod-010.purpose",
@@ -2309,6 +2495,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-011-primary.usage",
@@ -2320,6 +2513,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-BOD-011",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-bod-011.purpose",
@@ -2510,6 +2711,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-012-primary.usage",
@@ -2686,6 +2894,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "decrease",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-012-sex-less.usage",
@@ -2741,6 +2956,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-012-legacy-01.usage",
@@ -2796,6 +3018,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-012-legacy-02.usage",
@@ -2807,6 +3036,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-BOD-012",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-bod-012.purpose",
@@ -2981,6 +3218,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-013-primary.usage",
@@ -2992,6 +3236,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-BOD-013",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-bod-013.purpose",
@@ -3171,6 +3423,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-014-primary.usage",
@@ -3226,6 +3485,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-014-legacy-01.usage",
@@ -3237,6 +3503,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-BOD-014",
+      "persistence": "permanent",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.permanent",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Permanent"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-bod-014.purpose",
@@ -3405,6 +3679,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-015-primary.usage",
@@ -3460,6 +3741,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-015-legacy-01.usage",
@@ -3626,6 +3914,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "release",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-015-legacy-02.usage",
@@ -3637,6 +3932,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-BOD-015",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-bod-015.purpose",
@@ -3756,6 +4059,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-001-primary.usage",
@@ -3767,6 +4077,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-COG-001",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-cog-001.purpose",
@@ -3925,6 +4243,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-002-primary.usage",
@@ -3936,6 +4261,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-COG-002",
+      "persistence": "permanent",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.permanent",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Permanent"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-cog-002.purpose",
@@ -4099,6 +4432,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-003-primary.usage",
@@ -4195,6 +4535,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "close",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-003-closed.usage",
@@ -4206,6 +4553,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-COG-003",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-cog-003.purpose",
@@ -4374,6 +4729,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-004-primary.usage",
@@ -4470,6 +4832,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "retrieval",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-004-recall.usage",
@@ -4525,6 +4894,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-004-legacy-01.usage",
@@ -4536,6 +4912,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-COG-004",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-cog-004.purpose",
@@ -4704,6 +5088,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-005-primary.usage",
@@ -4759,6 +5150,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-005-legacy-01.usage",
@@ -4770,6 +5168,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-COG-005",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-cog-005.purpose",
@@ -4928,6 +5334,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-006-primary.usage",
@@ -4939,6 +5352,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-COG-006",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-cog-006.purpose",
@@ -5097,6 +5518,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-007-primary.usage",
@@ -5108,6 +5536,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-COG-007",
+      "persistence": "permanent",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.permanent",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Permanent"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-cog-007.purpose",
@@ -5266,6 +5702,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-com-001-primary.usage",
@@ -5277,6 +5720,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-COM-001",
+      "persistence": "permanent",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.permanent",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Permanent"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-com-001.purpose",
@@ -5418,6 +5869,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-emg-001-primary.usage",
@@ -5429,6 +5887,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-EMG-001",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-emg-001.purpose",
@@ -5570,6 +6036,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-emg-002-primary.usage",
@@ -5581,6 +6054,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-EMG-002",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-emg-002.purpose",
@@ -5739,6 +6220,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-emo-001-primary.usage",
@@ -5750,6 +6238,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-EMO-001",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-emo-001.purpose",
@@ -5924,6 +6420,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-emo-002-primary.usage",
@@ -5979,6 +6482,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-emo-002-legacy-01.usage",
@@ -5990,6 +6500,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-EMO-002",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-emo-002.purpose",
@@ -6131,6 +6649,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-emo-003-primary.usage",
@@ -6142,6 +6667,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-EMO-003",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-emo-003.purpose",
@@ -6305,6 +6838,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-exp-001-primary.usage",
@@ -6360,6 +6900,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-exp-001-legacy-01.usage",
@@ -6371,6 +6918,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-EXP-001",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-exp-001.purpose",
@@ -6534,6 +7089,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-exp-002-primary.usage",
@@ -6663,6 +7225,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "cancel",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-exp-002-cancel.usage",
@@ -6718,6 +7287,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-exp-002-legacy-01.usage",
@@ -6864,6 +7440,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "release",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-exp-002-release.usage",
@@ -6875,6 +7458,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-EXP-002",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-exp-002.purpose",
@@ -7005,6 +7596,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-fnd-001-primary.usage",
@@ -7078,6 +7676,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "access-close",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.access-channel-close",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Access channel (separate from function persistence)"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-fnd-001-access-close.usage",
@@ -7089,6 +7694,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-FND-001",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-fnd-001.purpose",
@@ -7247,6 +7860,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-fnd-002-primary.usage",
@@ -7258,6 +7878,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-FND-002",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-fnd-002.purpose",
@@ -7416,6 +8044,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-fnd-003-primary.usage",
@@ -7427,6 +8062,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-FND-003",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-fnd-003.purpose",
@@ -7573,6 +8216,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-fnd-004-primary.usage",
@@ -7628,6 +8278,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-fnd-004-legacy-01.usage",
@@ -7639,6 +8296,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-FND-004",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-fnd-004.purpose",
@@ -7807,6 +8472,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-fnd-005-primary.usage",
@@ -7862,6 +8534,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-fnd-005-legacy-01.usage",
@@ -7873,6 +8552,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-FND-005",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-fnd-005.purpose",
@@ -8031,6 +8718,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-fnd-006-primary.usage",
@@ -8042,6 +8736,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-FND-006",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-fnd-006.purpose",
@@ -8200,6 +8902,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-lif-001-primary.usage",
@@ -8211,6 +8920,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-LIF-001",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-lif-001.purpose",
@@ -8369,6 +9086,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-prf-001-primary.usage",
@@ -8380,6 +9104,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-PRF-001",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-prf-001.purpose",
@@ -8543,6 +9275,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-prf-002-primary.usage",
@@ -8598,6 +9337,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-prf-002-legacy-01.usage",
@@ -8609,6 +9355,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-PRF-002",
+      "persistence": "permanent",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.permanent",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Permanent"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-prf-002.purpose",
@@ -8767,6 +9521,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-prf-003-primary.usage",
@@ -8778,6 +9539,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-PRF-003",
+      "persistence": "permanent",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.permanent",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Permanent"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-prf-003.purpose",
@@ -8941,6 +9710,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-prf-004-primary.usage",
@@ -8996,6 +9772,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-prf-004-legacy-01.usage",
@@ -9007,6 +9790,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-PRF-004",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-prf-004.purpose",
@@ -9165,6 +9956,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-prf-005-primary.usage",
@@ -9176,6 +9974,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-PRF-005",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-prf-005.purpose",
@@ -9334,6 +10140,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-prf-006-primary.usage",
@@ -9389,6 +10202,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-prf-006-legacy-01.usage",
@@ -9535,6 +10355,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "release",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-prf-006-release.usage",
@@ -9546,6 +10373,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-PRF-006",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-prf-006.purpose",
@@ -9730,6 +10565,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-sen-001-primary.usage",
@@ -9900,6 +10742,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "decrease",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-sen-001-hear-less.usage",
@@ -9911,6 +10760,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-SEN-001",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-sen-001.purpose",
@@ -10078,6 +10935,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-sen-002-primary.usage",
@@ -10226,6 +11090,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "decrease",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-sen-002-see-less.usage",
@@ -10281,6 +11152,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-sen-002-legacy-01.usage",
@@ -10292,6 +11170,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-SEN-002",
+      "persistence": "permanent",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.permanent",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Permanent"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-sen-002.purpose",
@@ -10476,6 +11362,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-sen-003-primary.usage",
@@ -10646,6 +11539,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "decrease",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-sen-003-smell-less.usage",
@@ -10701,6 +11601,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-sen-003-legacy-01.usage",
@@ -10756,6 +11663,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-sen-003-legacy-02.usage",
@@ -10767,6 +11681,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-SEN-003",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-sen-003.purpose",
@@ -10951,6 +11873,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-sen-004-primary.usage",
@@ -11121,6 +12050,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "decrease",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-sen-004-taste-less.usage",
@@ -11176,6 +12112,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-sen-004-legacy-01.usage",
@@ -11231,6 +12174,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-sen-004-legacy-02.usage",
@@ -11242,6 +12192,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-SEN-004",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-sen-004.purpose",
@@ -11426,6 +12384,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-sen-005-primary.usage",
@@ -11596,6 +12561,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ]
           },
           "role": "decrease",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-sen-005-touch-less.usage",
@@ -11651,6 +12623,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-sen-005-legacy-01.usage",
@@ -11706,6 +12685,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-sen-005-legacy-02.usage",
@@ -11717,6 +12703,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-SEN-005",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-sen-005.purpose",
@@ -11880,6 +12874,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-slp-001-primary.usage",
@@ -11935,6 +12936,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-slp-001-legacy-01.usage",
@@ -11946,6 +12954,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-SLP-001",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-slp-001.purpose",
@@ -12109,6 +13125,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-slp-002-primary.usage",
@@ -12164,6 +13187,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-slp-002-legacy-01.usage",
@@ -12175,6 +13205,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-SLP-002",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-slp-002.purpose",
@@ -12349,6 +13387,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-slp-003-primary.usage",
@@ -12404,6 +13449,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-slp-003-legacy-01.usage",
@@ -12415,6 +13467,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-SLP-003",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-slp-003.purpose",
@@ -12589,6 +13649,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-slp-004-primary.usage",
@@ -12644,6 +13711,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-slp-004-legacy-01.usage",
@@ -12655,6 +13729,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-SLP-004",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-slp-004.purpose",
@@ -12840,6 +13922,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-slp-005-primary.usage",
@@ -12895,6 +13984,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-slp-005-legacy-01.usage",
@@ -12906,6 +14002,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-SLP-005",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-slp-005.purpose",
@@ -13069,6 +14173,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-slp-006-primary.usage",
@@ -13124,6 +14235,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "related_commands": [],
           "relationships": {},
           "role": "legacy-alias",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.temporary",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Temporary"
+          },
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-slp-006-legacy-01.usage",
@@ -13135,6 +14253,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       ],
       "effects": null,
       "function_id": "OCF-SLP-006",
+      "persistence": "temporary",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.temporary",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Temporary"
+      },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-slp-006.purpose",
@@ -13231,7 +14357,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "key": "command.guide.no-procedure",
       "requested_locale": "en-US",
       "resolved_locale": "en-US",
-      "text": "No activation steps are structured for this command; refer to its documented source and review status."
+      "text": "No procedure steps are structured for this command; refer to its documented source and review status."
     },
     "command.guide.observed": {
       "fallback": false,
@@ -13259,7 +14385,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "key": "command.guide.procedure",
       "requested_locale": "en-US",
       "resolved_locale": "en-US",
-      "text": "Activation procedure"
+      "text": "Procedure steps"
     },
     "command.guide.purpose": {
       "fallback": false,
@@ -13294,7 +14420,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "key": "command.guide.scope",
       "requested_locale": "en-US",
       "resolved_locale": "en-US",
-      "text": "Command scope"
+      "text": "Function persistence"
     },
     "command.guide.source-auth-note": {
       "fallback": false,
@@ -13323,6 +14449,83 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "requested_locale": "en-US",
       "resolved_locale": "en-US",
       "text": "Usage"
+    },
+    "command.procedure-heading.access-close": {
+      "fallback": false,
+      "key": "command.procedure-heading.access-close",
+      "requested_locale": "en-US",
+      "resolved_locale": "en-US",
+      "text": "Access-channel close sequence"
+    },
+    "command.procedure-heading.activation": {
+      "fallback": false,
+      "key": "command.procedure-heading.activation",
+      "requested_locale": "en-US",
+      "resolved_locale": "en-US",
+      "text": "Activation sequence"
+    },
+    "command.procedure-heading.auxiliary": {
+      "fallback": false,
+      "key": "command.procedure-heading.auxiliary",
+      "requested_locale": "en-US",
+      "resolved_locale": "en-US",
+      "text": "Auxiliary command sequence"
+    },
+    "command.procedure-heading.cancel": {
+      "fallback": false,
+      "key": "command.procedure-heading.cancel",
+      "requested_locale": "en-US",
+      "resolved_locale": "en-US",
+      "text": "Cancellation sequence"
+    },
+    "command.procedure-heading.close": {
+      "fallback": false,
+      "key": "command.procedure-heading.close",
+      "requested_locale": "en-US",
+      "resolved_locale": "en-US",
+      "text": "Close sequence"
+    },
+    "command.procedure-heading.decrease": {
+      "fallback": false,
+      "key": "command.procedure-heading.decrease",
+      "requested_locale": "en-US",
+      "resolved_locale": "en-US",
+      "text": "Decrease-mode sequence"
+    },
+    "command.procedure-heading.increase": {
+      "fallback": false,
+      "key": "command.procedure-heading.increase",
+      "requested_locale": "en-US",
+      "resolved_locale": "en-US",
+      "text": "Increase-mode sequence"
+    },
+    "command.procedure-heading.legacy-alias": {
+      "fallback": false,
+      "key": "command.procedure-heading.legacy-alias",
+      "requested_locale": "en-US",
+      "resolved_locale": "en-US",
+      "text": "Legacy-alias sequence"
+    },
+    "command.procedure-heading.mode": {
+      "fallback": false,
+      "key": "command.procedure-heading.mode",
+      "requested_locale": "en-US",
+      "resolved_locale": "en-US",
+      "text": "Mode sequence"
+    },
+    "command.procedure-heading.release": {
+      "fallback": false,
+      "key": "command.procedure-heading.release",
+      "requested_locale": "en-US",
+      "resolved_locale": "en-US",
+      "text": "Release sequence"
+    },
+    "command.procedure-heading.retrieval": {
+      "fallback": false,
+      "key": "command.procedure-heading.retrieval",
+      "requested_locale": "en-US",
+      "resolved_locale": "en-US",
+      "text": "Retrieval sequence"
     },
     "command.relationship.cancels": {
       "fallback": false,
@@ -13400,6 +14603,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "requested_locale": "en-US",
       "resolved_locale": "en-US",
       "text": "Superseded"
+    },
+    "command.scope.access-channel-close": {
+      "fallback": false,
+      "key": "command.scope.access-channel-close",
+      "requested_locale": "en-US",
+      "resolved_locale": "en-US",
+      "text": "Access channel (separate from function persistence)"
+    },
+    "command.scope.permanent": {
+      "fallback": false,
+      "key": "command.scope.permanent",
+      "requested_locale": "en-US",
+      "resolved_locale": "en-US",
+      "text": "Permanent"
+    },
+    "command.scope.temporary": {
+      "fallback": false,
+      "key": "command.scope.temporary",
+      "requested_locale": "en-US",
+      "resolved_locale": "en-US",
+      "text": "Temporary"
     },
     "command.source.available": {
       "fallback": false,

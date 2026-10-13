@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Imprints a chosen suggestion or intention using the IMPRINT rehearsal.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
 Source availability does not establish historical authentication or provenance.
@@ -24,7 +26,7 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Imprint Imprint `(legacy-form; hplus.function.ocf-cog-004.function-body)`
 
-**Activation procedure**
+**Activation sequence**
 1. Select information or an experience to remember.
 2. Inhale.
 3. Hold your breath.
@@ -40,7 +42,7 @@ Use to retrieve information or experience selected or imprinted with this functi
 
 This command retrieves selected or imprinted information.
 
-**Activation procedure**
+**Retrieval sequence**
 1. Think or say the command.
 
 **Related commands**

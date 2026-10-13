@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Opens perception of choices and alternatives.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
 Source availability does not establish historical authentication or provenance.
@@ -24,7 +26,7 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Options Choices `(legacy-form; hplus.function.ocf-cog-005.function-body)`
 
-**Activation procedure**
+**Activation sequence**
 1. Close your eyes.
 2. Inhale.
 3. Hold your breath.

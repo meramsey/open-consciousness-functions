@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Self-directed wellness practice supporting easy, comfortable breathing.
 
+**Function persistence**: Permanent (`permanent`)
+
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
 Source availability does not establish historical authentication or provenance.
@@ -24,7 +26,7 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Breathe Better `(variant; hplus.function.ocf-bod-009.function-body)`
 
-**Activation procedure**
+**Activation sequence**
 1. Inhale.
 2. Hold your breath.
 3. Think or say the command.

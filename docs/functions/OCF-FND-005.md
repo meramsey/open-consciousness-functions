@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Returns mind and body to a neutral, settled baseline.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
 Source availability does not establish historical authentication or provenance.
@@ -24,7 +26,7 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Reset Reset `(legacy-form; hplus.function.ocf-fnd-005.function-body)`
 
-**Activation procedure**
+**Activation sequence**
 1. Inhale.
 2. Close your eyes.
 3. Hold your breath.

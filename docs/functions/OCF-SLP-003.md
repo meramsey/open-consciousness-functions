@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
 Source availability does not establish historical authentication or provenance.
@@ -24,7 +26,7 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Theme Dream Sleep `(legacy-form; hplus.function.ocf-slp-003.function-body)`
 
-**Activation procedure**
+**Activation sequence**
 1. Choose a dream theme.
 2. Inhale.
 3. Hold your breath.

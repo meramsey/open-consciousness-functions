@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Requests help with sleep and with knowing the right time to wake; proposed concise cue PLUS-KNOW.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
 Source availability does not establish historical authentication or provenance.
@@ -24,7 +26,7 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Sleep Help `(legacy-form; hplus.function.ocf-slp-004.function-body)`
 
-**Activation procedure**
+**Activation sequence**
 1. Choose a question to explore.
 2. Inhale.
 3. Hold your breath.

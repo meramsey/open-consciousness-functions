@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Legacy vitality practice associated with the phrase EIGHT, GREAT; proposed concise cue PLUS-STRONG.
 
+**Function persistence**: Permanent (`permanent`)
+
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
 Source availability does not establish historical authentication or provenance.
@@ -24,7 +26,7 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Eight Great `(legacy-form; hplus.function.ocf-prf-002.function-body)`
 
-**Activation procedure**
+**Activation sequence**
 1. Choose the purpose for using this function.
 2. Inhale.
 3. Hold your breath.

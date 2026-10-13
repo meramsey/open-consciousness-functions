@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Insulates against unwanted influence; cancels the zoning state via PLUS-CANCEL.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Historical source unavailable. (`unavailable`)
 
 Source availability does not establish historical authentication or provenance.
@@ -24,7 +26,7 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Insulate Insulate `(legacy-form; hplus.function.ocf-exp-002.function-body)`
 
-**Activation procedure**
+**Activation sequence**
 1. Choose the purpose for using this function.
 2. Inhale.
 3. Hold your breath.
@@ -39,7 +41,7 @@ Use to cancel the current adjustment.
 
 This command cancels the current adjustment.
 
-**Activation procedure**
+**Cancellation sequence**
 1. Inhale.
 2. Hold your breath.
 3. Think or say the command.
@@ -64,7 +66,7 @@ Places Zoning on hold; PLUS-CANCEL ends the current adjustment.
 
 This command releases or suspends the current application as documented.
 
-**Activation procedure**
+**Release sequence**
 1. Focus attention on the selected target.
 2. Inhale.
 3. Hold your breath.

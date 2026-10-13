@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
 Source availability does not establish historical authentication or provenance.
@@ -24,7 +26,7 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Heal Heal `(legacy-form; hplus.function.ocf-slp-001.function-body)`
 
-**Activation procedure**
+**Activation sequence**
 1. Choose a target area.
 2. Inhale.
 3. Hold your breath.

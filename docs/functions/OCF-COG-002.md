@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Speeds mental arithmetic and number processing.
 
+**Function persistence**: Permanent (`permanent`)
+
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
 Source availability does not establish historical authentication or provenance.
@@ -22,7 +24,7 @@ Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Activation procedure**
+**Activation sequence**
 1. Choose the purpose for using this function.
 2. Inhale.
 3. Hold your breath.

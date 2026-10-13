@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
 Source availability does not establish historical authentication or provenance.
@@ -24,7 +26,7 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Twenty Twenty `(legacy-form; hplus.function.ocf-slp-002.function-body)`
 
-**Activation procedure**
+**Activation sequence**
 1. Choose the purpose for using this function.
 2. Choose the purpose for using this function.
 3. Breathe slowly and deeply.

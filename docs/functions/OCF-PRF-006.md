@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Historical source unavailable. (`unavailable`)
 
 Source availability does not establish historical authentication or provenance.
@@ -22,7 +24,7 @@ Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Activation procedure**
+**Activation sequence**
 1. Choose an activity.
 2. Inhale.
 3. Hold your breath.
@@ -45,7 +47,7 @@ Ends the temporary Strong-Quick application; the learned ability remains availab
 
 This command releases or suspends the current application as documented.
 
-**Activation procedure**
+**Release sequence**
 1. Focus attention on the selected target.
 2. Inhale.
 3. Hold your breath.

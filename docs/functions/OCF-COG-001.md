@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Accesses intuition, memory, and inner knowledge on demand.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
 Source availability does not establish historical authentication or provenance.
@@ -22,7 +24,7 @@ Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Activation procedure**
+**Activation sequence**
 1. Choose a question to explore.
 2. Think or say the command.
 

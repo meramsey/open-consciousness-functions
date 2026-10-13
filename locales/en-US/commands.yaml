@@ -36,7 +36,7 @@ entries:
     status: canonical
     version: 1.0.0
   command.guide.no-procedure:
-    text: No activation steps are structured for this command; refer to its documented source and review status.
+    text: No procedure steps are structured for this command; refer to its documented source and review status.
     status: canonical
     version: 1.0.0
   command.guide.observed:
@@ -52,7 +52,51 @@ entries:
     status: canonical
     version: 1.0.0
   command.guide.procedure:
-    text: Activation procedure
+    text: Procedure steps
+    status: canonical
+    version: 1.0.0
+  command.procedure-heading.activation:
+    text: Activation sequence
+    status: canonical
+    version: 1.0.0
+  command.procedure-heading.mode:
+    text: Mode sequence
+    status: canonical
+    version: 1.0.0
+  command.procedure-heading.increase:
+    text: Increase-mode sequence
+    status: canonical
+    version: 1.0.0
+  command.procedure-heading.decrease:
+    text: Decrease-mode sequence
+    status: canonical
+    version: 1.0.0
+  command.procedure-heading.retrieval:
+    text: Retrieval sequence
+    status: canonical
+    version: 1.0.0
+  command.procedure-heading.close:
+    text: Close sequence
+    status: canonical
+    version: 1.0.0
+  command.procedure-heading.cancel:
+    text: Cancellation sequence
+    status: canonical
+    version: 1.0.0
+  command.procedure-heading.release:
+    text: Release sequence
+    status: canonical
+    version: 1.0.0
+  command.procedure-heading.access-close:
+    text: Access-channel close sequence
+    status: canonical
+    version: 1.0.0
+  command.procedure-heading.legacy-alias:
+    text: Legacy-alias sequence
+    status: canonical
+    version: 1.0.0
+  command.procedure-heading.auxiliary:
+    text: Auxiliary command sequence
     status: canonical
     version: 1.0.0
   command.guide.purpose:
@@ -80,7 +124,19 @@ entries:
     status: canonical
     version: 1.0.0
   command.guide.scope:
-    text: Command scope
+    text: Function persistence
+    status: canonical
+    version: 1.0.0
+  command.scope.temporary:
+    text: Temporary
+    status: canonical
+    version: 1.0.0
+  command.scope.permanent:
+    text: Permanent
+    status: canonical
+    version: 1.0.0
+  command.scope.access-channel-close:
+    text: Access channel (separate from function persistence)
     status: canonical
     version: 1.0.0
   command.guide.summary:

@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Promotes easy, quiet transition into sleep; proposed concise cue PLUS-SLEEP EASY.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Historical source unavailable. (`unavailable`)
 
 Source availability does not establish historical authentication or provenance.
@@ -24,7 +26,7 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Quiet Sleep `(conflict; hplus.function.ocf-slp-005.function-body)`
 
-**Activation procedure**
+**Activation sequence**
 1. Choose the purpose for using this function.
 2. Close your eyes.
 3. Inhale.

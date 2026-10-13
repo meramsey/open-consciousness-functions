@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Automates a desired way of being so it runs without active effort.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Historical source unavailable. (`unavailable`)
 
 Source availability does not establish historical authentication or provenance.
@@ -22,7 +24,7 @@ Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Activation procedure**
+**Activation sequence**
 1. Choose an activity.
 2. Inhale.
 3. Hold your breath.

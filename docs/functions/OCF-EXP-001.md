@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Legacy 'change' practice for breaking personal loops; proposed concise cue PLUS-PROGRAM.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
 Source availability does not establish historical authentication or provenance.
@@ -24,7 +26,7 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Change Change `(legacy-form; hplus.function.ocf-exp-001.function-body)`
 
-**Activation procedure**
+**Activation sequence**
 1. Choose an intention.
 2. Inhale.
 3. Hold your breath.

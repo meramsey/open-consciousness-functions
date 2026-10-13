@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Opens an internal space for quiet reflection; closes it again on completion.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
 Source availability does not establish historical authentication or provenance.
@@ -22,7 +24,7 @@ Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Activation procedure**
+**Activation sequence**
 1. Close your eyes.
 2. Inhale.
 3. Hold your breath.
@@ -38,7 +40,7 @@ Use to close the current function state; session return remains separate.
 
 This command closes the current function state.
 
-**Activation procedure**
+**Close sequence**
 1. Think or say the command.
 
 **Related commands**

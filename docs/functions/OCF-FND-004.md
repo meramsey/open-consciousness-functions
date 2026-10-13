@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Deepens physical and mental relaxation.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
 Source availability does not establish historical authentication or provenance.
@@ -24,7 +26,7 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Relax Relax `(legacy-form; hplus.function.ocf-fnd-004.function-body)`
 
-**Activation procedure**
+**Activation sequence**
 1. Inhale.
 2. Hold your breath.
 3. Think or say the command.

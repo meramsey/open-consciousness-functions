@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Adjusts appetite and food drive in either direction using the MORE/LESS grammar.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
 Source availability does not establish historical authentication or provenance.
@@ -22,7 +24,7 @@ Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Activation procedure**
+**Activation sequence**
 1. Choose an intention.
 2. Close your eyes.
 3. Inhale.
@@ -41,7 +43,7 @@ Use when you choose to decrease the selected function response.
 
 This command selects the decrease mode.
 
-**Activation procedure**
+**Decrease-mode sequence**
 1. Choose an intention.
 2. Close your eyes.
 3. Inhale.

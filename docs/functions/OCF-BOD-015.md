@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Historical source unavailable. (`unavailable`)
 
 Source availability does not establish historical authentication or provenance.
@@ -24,7 +26,7 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Go Numb Go Numb `(legacy-form; hplus.function.ocf-bod-015.function-body)`
 
-**Activation procedure**
+**Activation sequence**
 1. Close your eyes.
 2. Focus attention on the selected target.
 3. Inhale.
@@ -48,7 +50,7 @@ Ends the temporary numbing response; normal sensitivity returns while the learne
 
 This command releases or suspends the current application as documented.
 
-**Activation procedure**
+**Release sequence**
 1. Focus attention on the selected target.
 2. Inhale.
 3. Hold your breath.

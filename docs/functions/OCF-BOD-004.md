@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Supports a perceived sense of bodily cleansing and clarity.
 
+**Function persistence**: Permanent (`permanent`)
+
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
 Source availability does not establish historical authentication or provenance.
@@ -24,7 +26,7 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Clean Clear `(legacy-form; hplus.function.ocf-bod-004.function-body)`
 
-**Activation procedure**
+**Activation sequence**
 1. Close your eyes.
 2. Focus attention on the selected target.
 3. Inhale.

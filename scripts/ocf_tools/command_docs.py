@@ -37,6 +37,9 @@ GUIDE_KEYS = (
     "command.guide.source-auth-note",
     "command.guide.command-review",
     "command.guide.scope",
+    "command.scope.temporary",
+    "command.scope.permanent",
+    "command.scope.access-channel-close",
     "command.guide.fallback-note",
     "command.guide.canonical-note",
     "command.guide.no-procedure",
@@ -54,6 +57,21 @@ GUIDE_KEYS = (
     "command.relationship.cancels",
     "command.relationship.retrieves",
     "command.relationship.closes",
+) + tuple(
+    f"command.procedure-heading.{role}"
+    for role in (
+        "activation",
+        "mode",
+        "increase",
+        "decrease",
+        "retrieval",
+        "close",
+        "cancel",
+        "release",
+        "access-close",
+        "legacy-alias",
+        "auxiliary",
+    )
 )
 
 
@@ -102,6 +120,8 @@ def _function_document(
     source_label = _localized(catalog, source_key, locale)
     review_key = f"command.review.{record.command_review}"
     review_label = _localized(catalog, review_key, locale)
+    scope_key = f"command.scope.{record.persistence}"
+    persistence_label = _localized(catalog, scope_key, locale)
 
     commands = []
     for metadata in sorted(
@@ -161,6 +181,11 @@ def _function_document(
                 {"kind": relation, "label": relation_label, "commands": targets}
             )
         view["related_commands"] = related_commands
+        if metadata.role == "access-close" and not view.get("effect_scope"):
+            command_scope_key = "command.scope.access-channel-close"
+        else:
+            command_scope_key = f"command.scope.{view.get('effect_scope', record.persistence)}"
+        view["scope_label"] = _localized(catalog, command_scope_key, locale)
         commands.append(view)
 
     return {
@@ -174,6 +199,8 @@ def _function_document(
         "source_availability": record.source_availability,
         "source_availability_label": source_label,
         "command_review_label": review_label,
+        "persistence": record.persistence,
+        "persistence_label": persistence_label,
         "reimplementation_status": record.reimplementation_status,
         "commands": commands,
     }
@@ -200,6 +227,7 @@ def build_command_index(locale: str | None = None, catalog: LocaleCatalog | None
             "effects",
             "source_availability_label",
             "command_review_label",
+            "persistence_label",
         ):
             value = function.get(field)
             if isinstance(value, dict) and value.get("fallback"):
@@ -211,7 +239,7 @@ def build_command_index(locale: str | None = None, catalog: LocaleCatalog | None
                     }
                 )
         for command in function["commands"]:
-            for field in ("label", "usage", "explanation", "purpose"):
+            for field in ("label", "usage", "explanation", "purpose", "scope_label"):
                 value = command.get(field)
                 if isinstance(value, dict) and value.get("fallback"):
                     fallback_rows.append(
@@ -282,6 +310,7 @@ def render_command_index(index: dict) -> str:
                         command["phrase"],
                         command["label"]["text"],
                         command["usage"]["text"],
+                        command["scope_label"]["text"],
                     )
                 )
                 + " |"
@@ -295,9 +324,12 @@ def render_command_index(index: dict) -> str:
             "command.guide.phrase",
             "command.guide.role",
             "command.guide.usage",
+            "command.guide.scope",
         )
     ]
-    table = "\n".join(["| " + " | ".join(headings) + " |", "| --- | --- | --- | --- |", *rows])
+    table = "\n".join(
+        ["| " + " | ".join(headings) + " |", "| --- | --- | --- | --- | --- |", *rows]
+    )
     canonical_note = _localized_from_index(index, "command.guide.canonical-note")
     return (
         f"# {_markdown_cell(_localized_from_index(index, 'command.guide.index-title'))}\n\n"
@@ -324,6 +356,8 @@ def render_function_sheet(function: dict, index: dict) -> str:
         f"**{strings['command.guide.summary']['text']}**: {function['short_description']['text']}",
         "",
         f"**{strings['command.guide.purpose']['text']}**: {function['purpose']['text']}",
+        "",
+        f"**{strings['command.guide.scope']['text']}**: {function['persistence_label']['text']} (`{function['persistence']}`)",
         "",
         f"**{strings['command.guide.source-status']['text']}**: {function['source_availability_label']['text']} (`{function['source_availability']}`)",
         "",
@@ -365,7 +399,11 @@ def render_function_sheet(function: dict, index: dict) -> str:
                 ]
             )
         if command.get("procedure_steps"):
-            lines.append(f"**{strings['command.guide.procedure']['text']}**")
+            role_key = f"command.procedure-heading.{command['role']}"
+            heading = strings.get(role_key)
+            if heading is None:
+                raise CommandDocumentationError(f"command guide UI key {role_key!r} is unavailable")
+            lines.append(f"**{heading['text']}**")
             lines.extend(
                 f"{index_step}. {step['instruction']['text']}"
                 for index_step, step in enumerate(command["procedure_steps"], start=1)
@@ -405,7 +443,11 @@ def render_quick_reference(index: dict) -> str:
             (command for command in visible if command["designation"] == "primary"), None
         )
         if primary:
-            modes = "; ".join(command["phrase"] for command in visible if command is not primary)
+            modes = "; ".join(
+                f"{command['label']['text']}: {command['phrase']}"
+                for command in visible
+                if command is not primary
+            )
             rows.append(
                 "| "
                 + " | ".join(
@@ -414,6 +456,7 @@ def render_quick_reference(index: dict) -> str:
                         f"[{function['title']['text']}](functions/{function['function_id']}.md)",
                         primary["phrase"],
                         modes,
+                        function["persistence_label"]["text"],
                         function["short_description"]["text"],
                     )
                 )
@@ -428,11 +471,12 @@ def render_quick_reference(index: dict) -> str:
                     "command.guide.function",
                     "command.guide.phrase",
                     "command.guide.other-commands",
+                    "command.guide.scope",
                     "command.guide.summary",
                 )
             )
             + " |",
-            "| --- | --- | --- | --- |",
+            "| --- | --- | --- | --- | --- |",
             *rows,
         ]
     )

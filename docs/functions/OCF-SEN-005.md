@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Adjusts the felt sense of touch or skin sensation using the MORE/LESS grammar.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Historical source unavailable. (`unavailable`)
 
 Source availability does not establish historical authentication or provenance.
@@ -22,7 +24,7 @@ Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Activation procedure**
+**Activation sequence**
 1. Close your eyes.
 2. Inhale.
 3. Hold your breath.
@@ -41,7 +43,7 @@ Use when you choose to decrease the selected function response.
 
 This command selects the decrease mode.
 
-**Activation procedure**
+**Decrease-mode sequence**
 1. Close your eyes.
 2. Inhale.
 3. Hold your breath.

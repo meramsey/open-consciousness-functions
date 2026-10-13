@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Supports a felt sense of body-wide regeneration and renewal; proposed concise cue PLUS-REGENERATE for review.
 
+**Function persistence**: Permanent (`permanent`)
+
 **Legacy source availability**: Historical source unavailable. (`unavailable`)
 
 Source availability does not establish historical authentication or provenance.
@@ -24,7 +26,7 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Build Live `(legacy-form; hplus.function.ocf-bod-014.function-body)`
 
-**Activation procedure**
+**Activation sequence**
 1. Close your eyes.
 2. Focus attention on the selected target.
 3. Inhale.

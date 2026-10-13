@@ -8,6 +8,8 @@ from ocf_tools.command_docs import (
     build_command_index,
     generated_command_documents,
     render_command_index,
+    render_function_sheet,
+    render_quick_reference,
 )
 
 pytestmark = pytest.mark.unit
@@ -45,6 +47,31 @@ def test_generated_command_documents_are_deterministic_and_include_function_shee
     export = next(content for path, content in first if path == "function-command-index.json")
     payload = export.split("\n\n", 1)[1]
     assert json.loads(payload)["command_count"] > 0
+
+
+def test_reference_renders_scope_secondary_roles_and_role_specific_procedures():
+    index = build_command_index("en-US")
+    functions = {item["function_id"]: item for item in index["functions"]}
+
+    zoning = render_function_sheet(functions["OCF-EXP-002"], index)
+    assert "Function persistence**: Temporary" in zoning
+    assert "Cancellation sequence" in zoning
+    assert "Release sequence" in zoning
+    assert "**Activation procedure**" not in zoning
+
+    short_fix = render_function_sheet(functions["OCF-BOD-015"], index)
+    release_section = short_fix.split("## PLUS-RELEASE", 1)[1]
+    assert "Release sequence" in release_section
+    assert "Close your eyes" not in release_section
+
+    access = render_function_sheet(functions["OCF-FND-001"], index)
+    assert "Access-channel close cue" in access
+    assert "Access channel (separate from function persistence)" in render_command_index(index)
+
+    quick_reference = render_quick_reference(index)
+    assert "Release command: Plus Release" in quick_reference
+    assert "Function persistence" in quick_reference
+    assert "Permanent" in quick_reference
 
 
 def test_commands_cli_parser_keeps_list_describe_and_export_interfaces():

@@ -6,6 +6,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.
 
+**Function persistence**: Temporary (`temporary`)
+
 **Legacy source availability**: Historical source unavailable. (`unavailable`)
 
 Source availability does not establish historical authentication or provenance.
@@ -24,7 +26,7 @@ This is the primary command for the function.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Lighter Lighter `(legacy-form; hplus.function.ocf-prf-004.function-body)`
 
-**Activation procedure**
+**Activation sequence**
 1. Choose the purpose for using this function.
 2. Inhale.
 3. Hold your breath.
