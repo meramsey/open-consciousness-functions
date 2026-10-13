@@ -258,6 +258,7 @@ def validate_command_metadata(records: list[FunctionRecord]) -> ValidationResult
         resolve_procedure,
         validate_command_records,
     )
+    from .locale import NARRATION_DOMAIN, LocaleCatalog
 
     result = ValidationResult()
     try:
@@ -271,10 +272,44 @@ def validate_command_metadata(records: list[FunctionRecord]) -> ValidationResult
         )
         procedures = {}
 
+    locale_catalog = LocaleCatalog()
+    canonical_locale = locale_catalog.canonical
+
+    def has_narration_key(key: str) -> bool:
+        entry = canonical_locale.get(key) if canonical_locale else None
+        return entry is not None and entry.domain == NARRATION_DOMAIN
+
+    def narration_contains_phrase(phrase: str, key: str) -> bool:
+        entry = canonical_locale.get(key) if canonical_locale else None
+        if entry is None or entry.domain != NARRATION_DOMAIN:
+            return False
+        phrase_words = re.findall(r"[A-Z0-9]+", phrase.upper())
+        spoken_words = re.findall(r"[A-Z0-9]+", entry.text.upper())
+        width = len(phrase_words)
+        return bool(phrase_words) and any(
+            spoken_words[index : index + width] == phrase_words
+            for index in range(len(spoken_words) - width + 1)
+        )
+
+    for procedure in procedures.values():
+        for key in procedure.get("source_narration_keys", []):
+            if not has_narration_key(key):
+                result.add(
+                    "error",
+                    "command-procedure-evidence",
+                    f"procedure {procedure['id']} references unavailable narration key {key!r}",
+                    procedure["id"],
+                )
+
     seen_ids: dict[str, str] = {}
     for record in records:
         for message in validate_command_records(record):
             result.add("error", "command-metadata", message, record.id)
+        special_phrases = {
+            phrase.get("id"): phrase
+            for phrase in record.data.get("command_phrases", [])
+            if isinstance(phrase, dict)
+        }
         for command in record.command_records:
             if command.id in seen_ids:
                 result.add(
@@ -289,6 +324,49 @@ def validate_command_metadata(records: list[FunctionRecord]) -> ValidationResult
                 resolve_procedure(command, procedures)
             except CommandMetadataError as exc:
                 result.add("error", "command-procedure-reference", str(exc), command.id)
+            procedure = command.procedure
+            if procedure:
+                for key in procedure.get("evidence_keys", []):
+                    if not has_narration_key(key):
+                        result.add(
+                            "error",
+                            "command-procedure-evidence",
+                            f"command {command.id} references unavailable narration key {key!r}",
+                            command.id,
+                        )
+            observed = command.observed_phrase
+            if observed:
+                key = observed.get("narration_key", "")
+                if not has_narration_key(key):
+                    result.add(
+                        "error",
+                        "command-observed-phrase-evidence",
+                        f"command {command.id} references unavailable narration key {key!r}",
+                        command.id,
+                    )
+                elif not narration_contains_phrase(observed.get("text", ""), key):
+                    result.add(
+                        "error",
+                        "command-observed-phrase-mismatch",
+                        f"command {command.id} observed phrase is absent from narration {key!r}",
+                        command.id,
+                    )
+        for phrase in special_phrases.values():
+            key = phrase.get("source_narration_key", "")
+            if not has_narration_key(key):
+                result.add(
+                    "error",
+                    "special-command-phrase-evidence",
+                    f"special command phrase {phrase.get('id')} references unavailable narration key {key!r}",
+                    record.id,
+                )
+            elif not narration_contains_phrase(phrase.get("phrase", ""), key):
+                result.add(
+                    "error",
+                    "special-command-phrase-mismatch",
+                    f"special command phrase {phrase.get('id')} is absent from narration {key!r}",
+                    record.id,
+                )
     return result
 
 

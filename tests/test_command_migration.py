@@ -134,3 +134,16 @@ def test_all_source_unavailable_functions_remain_planned():
     ]
     assert len(unavailable) == 16
     assert all(function.reimplementation_status == "planned" for function in unavailable)
+
+
+def test_observed_spoken_form_must_be_present_in_its_cited_narration_resource():
+    sleep_easy = next(function for function in load_all_functions() if function.id == "OCF-SLP-005")
+    primary = next(
+        command
+        for command in sleep_easy.data["commands"]
+        if command["phrase_ref"]["source"] == "canonical-primary"
+    )
+    primary["observed_phrase"]["text"] = "Plus Not A Real Narration Phrase"
+
+    result = validate_command_metadata([sleep_easy])
+    assert any(issue.code == "command-observed-phrase-mismatch" for issue in result.errors)
