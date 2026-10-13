@@ -99,7 +99,9 @@ def test_backend_profile_precedence_detection_and_model_expansion(monkeypatch, t
     assert v.first_available_backend() == "espeak"
     assert [item["name"] for item in v.detect_backends()] == ["espeak-ng", "espeak", "piper"]
     monkeypatch.setenv("MODEL_DIR", str(tmp_path))
-    assert v._expand_model_path("$MODEL_DIR/voice.onnx") == str((tmp_path / "voice.onnx").resolve())
+    expected = str((tmp_path / "voice.onnx").resolve())
+    actual = v._expand_model_path("$MODEL_DIR/voice.onnx")
+    assert os.path.normpath(actual) == os.path.normpath(expected)
     assert v._expand_model_path(1) is None
     profile = {"id": "fixture", "slug": "profile", "name": "Name", "backend": "espeak"}
     for reference in ("fixture", "profile", "Name", profile):
