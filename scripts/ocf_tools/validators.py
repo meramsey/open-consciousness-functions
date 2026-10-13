@@ -186,8 +186,30 @@ def validate_command_rules(record: FunctionRecord) -> ValidationResult:
 
     # MORE/LESS pair consistency.
     cmds = [record.canonical_command or ""] + record.command_modes
-    has_more = any("MORE" in c.upper().replace(",", " ").split() for c in cmds)
-    has_less = any("LESS" in c.upper().replace(",", " ").split() for c in cmds)
+    # Exclude negated MORE/LESS (e.g., "NO MORE", "NOT MORE", "PLUS-NO MORE") from detection
+    def has_meaningful_more(cmd: str) -> bool:
+        words = cmd.upper().replace(",", " ").split()
+        for i, word in enumerate(words):
+            if word == "MORE":
+                # Check if preceded by negation words or prefixes
+                if i > 0:
+                    prev = words[i - 1]
+                    if prev in ("NO", "NOT", "NEVER") or prev.endswith("-NO") or prev.endswith("_NO"):
+                        continue
+                return True
+        return False
+    def has_meaningful_less(cmd: str) -> bool:
+        words = cmd.upper().replace(",", " ").split()
+        for i, word in enumerate(words):
+            if word == "LESS":
+                if i > 0:
+                    prev = words[i - 1]
+                    if prev in ("NO", "NOT", "NEVER") or prev.endswith("-NO") or prev.endswith("_NO"):
+                        continue
+                return True
+        return False
+    has_more = any(has_meaningful_more(c) for c in cmds)
+    has_less = any(has_meaningful_less(c) for c in cmds)
     if has_more and not has_less:
         result.add(
             "warning",
