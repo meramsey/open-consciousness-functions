@@ -89,7 +89,22 @@ commands:
     status: documented
     evidence_keys:
     - hplus.function.ocf-bod-015.function-body
-    before_steps: []
+    override_steps:
+    - id: focus-selected-area
+      operation: focus-target
+      localization_key: command.procedure.focus-target
+    - id: inhale
+      operation: inhale
+      localization_key: command.procedure.inhale
+    - id: hold
+      operation: hold-breath
+      localization_key: command.procedure.hold-breath
+    - id: command
+      operation: think-or-say-command
+      localization_key: command.procedure.think-or-say-command
+    - id: exhale
+      operation: exhale
+      localization_key: command.procedure.exhale
   relationships:
     releases:
     - OCF-CMD-BOD-015-PRIMARY

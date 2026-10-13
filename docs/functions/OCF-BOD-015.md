@@ -49,12 +49,11 @@ Ends the temporary numbing response; normal sensitivity returns while the learne
 This command releases or suspends the current application as documented.
 
 **Activation procedure**
-1. Close your eyes.
-2. Focus attention on the selected target.
-3. Inhale.
-4. Hold your breath.
-5. Think or say the command.
-6. Exhale.
+1. Focus attention on the selected target.
+2. Inhale.
+3. Hold your breath.
+4. Think or say the command.
+5. Exhale.
 
 **Related commands**
 - releases: `PLUS-NUMB`

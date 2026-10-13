@@ -40,11 +40,10 @@ Use to cancel the current adjustment.
 This command cancels the current adjustment.
 
 **Activation procedure**
-1. Choose the purpose for using this function.
-2. Inhale.
-3. Hold your breath.
-4. Think or say the command.
-5. Exhale.
+1. Inhale.
+2. Hold your breath.
+3. Think or say the command.
+4. Exhale.
 
 **Related commands**
 - cancels: `PLUS-ZONE`
@@ -66,7 +65,7 @@ Places Zoning on hold; PLUS-CANCEL ends the current adjustment.
 This command releases or suspends the current application as documented.
 
 **Activation procedure**
-1. Choose the purpose for using this function.
+1. Focus attention on the selected target.
 2. Inhale.
 3. Hold your breath.
 4. Think or say the command.

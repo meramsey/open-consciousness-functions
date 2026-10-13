@@ -126,6 +126,55 @@ def test_sleep_easy_and_special_release_commands_preserve_semantic_conflicts():
     assert releases[0].id == "OCF-CMD-PRF-006-RELEASE"
 
 
+def test_release_and_cancel_procedures_match_their_command_context():
+    functions = {function.id: function for function in load_all_functions()}
+    procedures = load_procedure_catalog()
+
+    strong_quick = functions["OCF-PRF-006"]
+    strong_release = next(
+        command for command in strong_quick.command_records if command.role == "release"
+    )
+    assert [step["operation"] for step in resolve_procedure(strong_release, procedures)] == [
+        "focus-target",
+        "inhale",
+        "hold-breath",
+        "think-or-say-command",
+        "exhale",
+    ]
+
+    zoning = functions["OCF-EXP-002"]
+    zoning_commands = {command.role: command for command in zoning.command_records}
+    assert [
+        step["operation"] for step in resolve_procedure(zoning_commands["cancel"], procedures)
+    ] == [
+        "inhale",
+        "hold-breath",
+        "think-or-say-command",
+        "exhale",
+    ]
+    assert [
+        step["operation"] for step in resolve_procedure(zoning_commands["release"], procedures)
+    ] == [
+        "focus-target",
+        "inhale",
+        "hold-breath",
+        "think-or-say-command",
+        "exhale",
+    ]
+
+    short_fix = functions["OCF-BOD-015"]
+    short_fix_release = next(
+        command for command in short_fix.command_records if command.role == "release"
+    )
+    assert [step["operation"] for step in resolve_procedure(short_fix_release, procedures)] == [
+        "focus-target",
+        "inhale",
+        "hold-breath",
+        "think-or-say-command",
+        "exhale",
+    ]
+
+
 def test_all_source_unavailable_functions_remain_planned():
     unavailable = [
         function

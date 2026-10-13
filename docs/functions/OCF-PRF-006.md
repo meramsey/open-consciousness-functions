@@ -46,7 +46,7 @@ Ends the temporary Strong-Quick application; the learned ability remains availab
 This command releases or suspends the current application as documented.
 
 **Activation procedure**
-1. Choose an activity.
+1. Focus attention on the selected target.
 2. Inhale.
 3. Hold your breath.
 4. Think or say the command.

@@ -75,10 +75,7 @@ commands:
     status: documented
     evidence_keys:
     - hplus.function.ocf-exp-002.function-body
-    before_steps:
-    - id: select-comfort-zone
-      operation: select-purpose
-      localization_key: command.procedure.select-purpose
+    before_steps: []
   relationships:
     cancels:
     - OCF-CMD-EXP-002-PRIMARY
@@ -121,9 +118,9 @@ commands:
     evidence_keys:
     - hplus.function.ocf-exp-002.function-body
     before_steps:
-    - id: select-comfort-zone
-      operation: select-purpose
-      localization_key: command.procedure.select-purpose
+    - id: focus-zoning
+      operation: focus-target
+      localization_key: command.procedure.focus-target
   relationships:
     releases:
     - OCF-CMD-EXP-002-PRIMARY

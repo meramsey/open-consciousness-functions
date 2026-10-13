@@ -87,9 +87,9 @@ commands:
     evidence_keys:
     - hplus.function.ocf-prf-006.function-body
     before_steps:
-    - id: select-immediate-action
-      operation: select-activity
-      localization_key: command.procedure.select-activity
+    - id: focus-strong-quick
+      operation: focus-target
+      localization_key: command.procedure.focus-target
   relationships:
     releases:
     - OCF-CMD-PRF-006-PRIMARY

@@ -3504,9 +3504,35 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "source": "legacy-command"
           },
           "procedure": {
-            "before_steps": [],
             "evidence_keys": [
               "hplus.function.ocf-bod-015.function-body"
+            ],
+            "override_steps": [
+              {
+                "id": "focus-selected-area",
+                "localization_key": "command.procedure.focus-target",
+                "operation": "focus-target"
+              },
+              {
+                "id": "inhale",
+                "localization_key": "command.procedure.inhale",
+                "operation": "inhale"
+              },
+              {
+                "id": "hold",
+                "localization_key": "command.procedure.hold-breath",
+                "operation": "hold-breath"
+              },
+              {
+                "id": "command",
+                "localization_key": "command.procedure.think-or-say-command",
+                "operation": "think-or-say-command"
+              },
+              {
+                "id": "exhale",
+                "localization_key": "command.procedure.exhale",
+                "operation": "exhale"
+              }
             ],
             "ref": "OCF-PROC-CLOSE-FOCUS",
             "status": "documented"
@@ -3514,18 +3540,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "procedure_status": "documented",
           "procedure_steps": [
             {
-              "id": "close-eyes",
-              "instruction": {
-                "fallback": false,
-                "key": "command.procedure.close-eyes",
-                "requested_locale": "en-US",
-                "resolved_locale": "en-US",
-                "text": "Close your eyes."
-              },
-              "operation": "close-eyes"
-            },
-            {
-              "id": "focus-target",
+              "id": "focus-selected-area",
               "instruction": {
                 "fallback": false,
                 "key": "command.procedure.focus-target",
@@ -6563,13 +6578,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "source": "canonical-mode"
           },
           "procedure": {
-            "before_steps": [
-              {
-                "id": "select-comfort-zone",
-                "localization_key": "command.procedure.select-purpose",
-                "operation": "select-purpose"
-              }
-            ],
+            "before_steps": [],
             "evidence_keys": [
               "hplus.function.ocf-exp-002.function-body"
             ],
@@ -6578,17 +6587,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           },
           "procedure_status": "documented",
           "procedure_steps": [
-            {
-              "id": "select-comfort-zone",
-              "instruction": {
-                "fallback": false,
-                "key": "command.procedure.select-purpose",
-                "requested_locale": "en-US",
-                "resolved_locale": "en-US",
-                "text": "Choose the purpose for using this function."
-              },
-              "operation": "select-purpose"
-            },
             {
               "id": "inhale",
               "instruction": {
@@ -6766,9 +6764,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "procedure": {
             "before_steps": [
               {
-                "id": "select-comfort-zone",
-                "localization_key": "command.procedure.select-purpose",
-                "operation": "select-purpose"
+                "id": "focus-zoning",
+                "localization_key": "command.procedure.focus-target",
+                "operation": "focus-target"
               }
             ],
             "evidence_keys": [
@@ -6780,15 +6778,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "procedure_status": "documented",
           "procedure_steps": [
             {
-              "id": "select-comfort-zone",
+              "id": "focus-zoning",
               "instruction": {
                 "fallback": false,
-                "key": "command.procedure.select-purpose",
+                "key": "command.procedure.focus-target",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "text": "Choose the purpose for using this function."
+                "text": "Focus attention on the selected target."
               },
-              "operation": "select-purpose"
+              "operation": "focus-target"
             },
             {
               "id": "inhale",
@@ -9437,9 +9435,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "procedure": {
             "before_steps": [
               {
-                "id": "select-immediate-action",
-                "localization_key": "command.procedure.select-activity",
-                "operation": "select-activity"
+                "id": "focus-strong-quick",
+                "localization_key": "command.procedure.focus-target",
+                "operation": "focus-target"
               }
             ],
             "evidence_keys": [
@@ -9451,15 +9449,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "procedure_status": "documented",
           "procedure_steps": [
             {
-              "id": "select-immediate-action",
+              "id": "focus-strong-quick",
               "instruction": {
                 "fallback": false,
-                "key": "command.procedure.select-activity",
+                "key": "command.procedure.focus-target",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "text": "Choose an activity."
+                "text": "Focus attention on the selected target."
               },
-              "operation": "select-activity"
+              "operation": "focus-target"
             },
             {
               "id": "inhale",
