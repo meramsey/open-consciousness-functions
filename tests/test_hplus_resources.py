@@ -35,7 +35,9 @@ SELECTIONS = yaml.safe_load(
     (REPO_ROOT / "function-content/hplus-review-selections.yaml").read_text(encoding="utf-8")
 )["selections"]
 PROPOSALS = yaml.safe_load(
-    (REPO_ROOT / "function-content/hplus-proposed-review-selections.yaml").read_text(encoding="utf-8")
+    (REPO_ROOT / "function-content/hplus-proposed-review-selections.yaml").read_text(
+        encoding="utf-8"
+    )
 )["proposals"]
 SUPPLEMENTARY_CLOSERS = {
     "OCF-BOD-004",
