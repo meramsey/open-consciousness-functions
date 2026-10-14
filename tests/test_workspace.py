@@ -3,6 +3,7 @@ from __future__ import annotations
 import errno
 import os
 import subprocess
+import time
 from pathlib import Path
 
 import pytest
@@ -78,6 +79,9 @@ def test_temp_paths_are_marked_scoped_collision_safe_and_recoverable(monkeypatch
     assert (first / ".ocf-owned").is_file()
     (first / "render-context.json").write_text('{"status":"interrupted"}\n')
     assert (first / "render-context.json").is_file()
+    old_time = time.time() - 60
+    for scratch in (first, second):
+        os.utime(scratch, (old_time, old_time))
     preview = paths.cleanup_workspace(older_than_seconds=0, dry_run=True)
     assert first in preview and first.is_dir()
     removed = paths.cleanup_workspace(older_than_seconds=0)
