@@ -349,7 +349,10 @@ def package_release(
     if final_dir.exists() and not overwrite:
         raise OCFError(f"release already exists: {final_dir} (use --force to replace it)")
 
-    final_dir.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        final_dir.parent.mkdir(parents=True, exist_ok=True)
+    except OSError as exc:
+        raise OCFError(f"cannot create release output directory {final_dir.parent}: {exc}") from exc
     if not overwrite:
         collision = next(
             (
@@ -363,7 +366,12 @@ def package_release(
             raise OCFError(
                 f"release path collides case-insensitively with existing directory: {collision}"
             )
-    stage = Path(tempfile.mkdtemp(prefix=".ocf-release-stage-", dir=final_dir.parent))
+    try:
+        stage = Path(tempfile.mkdtemp(prefix=".ocf-release-stage-", dir=final_dir.parent))
+    except OSError as exc:
+        raise OCFError(
+            f"cannot create release staging directory in {final_dir.parent}: {exc}"
+        ) from exc
     backup: Path | None = None
     try:
         render_dir = stage / "render"
@@ -514,6 +522,10 @@ def package_release(
                 backup = None
             raise
         return {"dry_run": False, **planned, "manifest": manifest}
+    except OSError as exc:
+        if stage.exists():
+            shutil.rmtree(stage, ignore_errors=True)
+        raise OCFError(f"release packaging failed because of a filesystem error: {exc}") from exc
     except BaseException:
         if stage.exists():
             shutil.rmtree(stage, ignore_errors=True)
