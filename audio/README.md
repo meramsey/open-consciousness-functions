@@ -70,6 +70,22 @@ transcript wording to this repo is restricted.
 ./scripts/ocf audio inspect audio/rendered/OCF-AUDIO-0001-master.wav
 ```
 
+Functions with an explicit `narration_plan` in their function-content binding
+can also use the narration-first audition path, which synthesizes reviewed
+locale resources and links segments by measured speech end:
+
+```bash
+./scripts/ocf audio render OCF-SLP-005 --locale en-US \
+    --voice OCF-VOICE-0002 --pacing sleep --dry-run
+./scripts/ocf audio render OCF-SLP-005 --locale en-US \
+    --voice OCF-VOICE-0002 --pacing sleep --output /tmp/sleep-easy-audition
+```
+
+It writes only a new local audition directory (WAV, transcript, plan, manifest).
+It does not rewrite narration or change review/release approval states. See
+[`docs/AUDIO_PIPELINE.md`](../docs/AUDIO_PIPELINE.md#narration-first-auditions)
+for pacing values and verification details.
+
 TTS backends and FLAC/MP3 encoders (ffmpeg/flac) are optional; when missing,
 the toolchain degrades gracefully with install guidance.
 

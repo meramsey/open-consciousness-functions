@@ -1,5 +1,16 @@
 duration: null
 function_id: OCF-SLP-005
+narration_plan:
+  sequence:
+  - key: hplus.function.ocf-slp-005.opener
+    role: opener
+    repetitions: 1
+  - key: hplus.function.ocf-slp-005.function-body
+    role: function-body
+    repetitions: 4
+  - key: hplus.function.ocf-slp-005.closer
+    role: closer
+    repetitions: 1
 narration_resources:
 - key: pilot.function.complete
   locale: en-US

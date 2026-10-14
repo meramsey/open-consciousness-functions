@@ -38,6 +38,7 @@
         "session_templates": { "type": "array", "items": { "type": "string" } },
         "locales": { "type": "array", "items": { "type": "string" } },
         "narration_resources": { "type": "array" },
+        "narration_plan": { "type": ["object", "null"] },
         "duration": { "type": ["object", "null"] },
         "voice_sources": { "type": ["array", "null"] },
         "background": { "type": "object" },

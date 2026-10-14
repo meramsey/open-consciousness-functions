@@ -318,3 +318,13 @@ def test_rich_cli_schema_and_pilot_freeze(capsys):
     assert row["content_maturity"] == "pilot" and row["human_review"] == "required"
     assert row["states"]["status"] == "unknown"
     assert row["locales"] == ["en-US"]
+
+
+def test_sleep_easy_discovery_exposes_reviewed_narration_playback_binding():
+    data = discover(load_function_by_id("OCF-SLP-005"))
+    sequence = data["narration_plan"]["sequence"]
+    assert [(item["role"], item["repetitions"]) for item in sequence] == [
+        ("opener", 1),
+        ("function-body", 4),
+        ("closer", 1),
+    ]

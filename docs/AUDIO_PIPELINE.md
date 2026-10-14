@@ -21,6 +21,9 @@ The main implementation modules are:
   analysis, and subtitle export;
 - `scripts/ocf_tools/locale.py`: locale resolution and provenance;
 - `scripts/ocf_tools/voice.py`: recording, disabled narration, or TTS rendering;
+- `scripts/ocf_tools/narration_first.py`: explicit resource-bound narration
+  plans, pacing presets, dynamically measured segment timing, and safe local
+  audition publication;
 - `scripts/ocf_tools/semantic_dsp.py`: measured-ledger state dispatch;
 - `scripts/ocf_tools/audio_build.py`: background selection, mixing, encoding,
   tags, and render manifests;
@@ -112,6 +115,51 @@ unavailable. They verify packaging, encoding, tags, and artwork but do not claim
 successful natural-language synthesis. Function records without a registered
 audio implementation cannot be released until an implementation and timed
 narration are authored.
+
+## Narration-first auditions
+
+`python3 scripts/ocf.py audio render <FUNCTION_ID> --locale en-US --voice
+<VOICE_PROFILE> --pacing sleep --dry-run` previews a function's explicit
+`function-content/bindings/<FUNCTION_ID>.yaml` narration plan. Remove
+`--dry-run` and provide a new `--output DIR` to synthesize a WAV audition. This
+path does not require an audio implementation manifest, fixed source timestamps,
+artwork, or release metadata.
+
+The binding lists source resource keys, their order and role, and explicit
+repetition counts. The resolver uses the existing `LocaleCatalog`, requires the
+function's existing `audio.script_status: approved` and reviewed/canonical
+spoken resources for TTS readiness, and records function-level human review and
+release readiness separately. It does not alter either approval state. Sleep
+Easy's plan is opener → function body four times → closer; its spoken
+`Plus Quiet Sleep` wording is preserved as written and is not replaced with the
+different canonical registry phrase `PLUS-SLEEP EASY`.
+
+Pacing presets are configuration only: NORMAL uses 0.8 s paragraph/2 s section
+pauses, RELAXED uses 1.5 s/4 s, and SLEEP uses 2 s/6 s; SLEEP includes 2 s
+leading and 6 s ending silence. Piper length scale is multiplied by 1.08 for
+SLEEP and a fixed -3 dB TTS headroom gain is applied before assembly. These
+documented defaults are engineering settings, not therapeutic claims. The
+timeline chains each event to the preceding measured speech end plus its
+configured pause. Duration derives from actual synthesized segment durations;
+there is no target-duration stretch or arbitrary fixed anchor.
+
+The audition directory contains a WAV, UTF-8 transcript, `tts-plan.json`, and
+`render-manifest.json`. The manifest records function/script review state,
+resource and locale provenance, voice profile/options, pacing values, segment
+durations, duration/sample/channel measurements, peak/RMS/clipping, artifact
+hashes, and release readiness. Existing audition directories are never
+overwritten. The renderer verifies expected segment count and text, dynamic
+non-overlap, WAV decoding/format, duration, silence boundaries, and clipping
+before publication.
+
+Sleep Easy's committed function record has `audio.script_status: approved` and
+the selected narration resources are reviewed, so a local TTS audition is
+permitted. Its function-content `human_review` remains `required`, and the
+resources mark finished-session release as pending. The narration-first
+workflow reports TTS readiness separately and does not make Sleep Easy
+release-ready. A production package still requires the applicable human review,
+release clearance, registered audio implementation, and explicitly approved
+artwork.
 
 Preparation stages such as optional affirmation and oHm/resonant tuning remain
 specified but not shipped. Focus-state auditory cue sound design also remains

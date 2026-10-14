@@ -134,14 +134,20 @@ Sensory: Seeing; MORE/LESS modes are not active.
 
 ### Render an audition
 
-Prerequisites: a timed script under `audio/scripts/`, a valid audio
-implementation manifest, a compatible voice profile, and any selected optional
-engine. Run `python3 scripts/ocf.py voice doctor` and
+For an existing timed script, prerequisites are a valid audio implementation
+manifest, compatible voice profile, and selected optional engine. Run
+`python3 scripts/ocf.py voice doctor` then
 `python3 scripts/ocf.py audio build <AUDIO_ID> --output <working-dir> --format wav`
-(add `--voice <profile>` and `--locale <tag>` as appropriate). Outputs are
-local rendered masters and render metadata; existing outputs are protected
-unless `--force` is specified. Missing TTS, codec, locale resources, or required
-background engines produces a failure or documented degradation. See
+(add `--voice <profile>` and `--locale <tag>` as appropriate). For a function
+with a committed `function-content/bindings/<FUNCTION_ID>.yaml` narration plan,
+run `python3 scripts/ocf.py audio render <FUNCTION_ID> --locale en-US --voice
+<profile> --pacing sleep --dry-run`, inspect the resolved segments and approval
+state, then repeat with a new `--output <working-dir>`. The narration-first
+workflow measures speech and schedules every following segment after the prior
+speech end. Outputs are local, non-overwriting auditions with a transcript and
+render manifest; no cover or release approval is needed for an audition. The
+workflow does not change approval metadata. Missing TTS, voice models, locale
+resources, or valid narration plan produces a clear error. See
 `docs/AUDIO_PIPELINE.md`, `docs/LOCALIZATION.md`, and voice profiles in
 `audio/voices/`.
 
@@ -200,6 +206,7 @@ are guidance prompts, not separate executable interfaces:
 - “Show me how to localize a function into Spanish.”
 - “Validate the command phrases for Nutricia.”
 - “Render an audition using my selected voice preset.”
+- “Render Sleep Easy with Piper and sleep pacing.”
 - “Package a release with MP3, FLAC, transcript, and artwork.” (Use
   `ocf audio release`; require an explicitly approved PNG/JPEG artwork file and
   do not infer rights clearance from successful packaging.)

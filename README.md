@@ -78,6 +78,21 @@ python3 scripts/ocf.py validate --all         # validate every record
 python3 -m pytest                             # run the test suite
 ```
 
+Functions with an explicit narration plan binding can be rendered without an
+authored fixed-time script. For example, Sleep Easy resolves its reviewed
+English narration resources and measures the selected Piper voice dynamically:
+
+```bash
+python3 scripts/ocf.py audio render OCF-SLP-005 --locale en-US \
+  --voice OCF-VOICE-0002 --pacing sleep --dry-run
+python3 scripts/ocf.py audio render OCF-SLP-005 --locale en-US \
+  --voice OCF-VOICE-0002 --pacing sleep --output /tmp/sleep-easy-audition
+```
+
+This creates a local WAV audition and transcript. It does not approve function
+content or make the result release-ready; use `ocf audio release` only when a
+registered implementation, release approval, and approved artwork are available.
+
 ## Contributor wizard
 
 ```bash
@@ -223,6 +238,15 @@ replaced release is retained in a sibling hidden archive directory. Artwork is
 required and never generated or inferred from reference material. A successful
 package is not an automatic rights-clearance decision. See
 `docs/AUDIO_PIPELINE.md` for metadata, manifest, and verification details.
+
+Functions with a narration-plan binding can also render an untimed, measured
+audition directly from canonical locale resources, without an audio manifest,
+artwork, or release metadata (see the Sleep Easy quick-start command above).
+This preserves the bound narration wording and schedules each segment after
+the prior segment's measured speech end. It does not change function review or
+release approval; the render manifest reports those states separately. The
+Sleep Easy function-content review remains required, so its audition is not a
+release approval.
 
 ## Transcript & audio pipeline — what is supported
 

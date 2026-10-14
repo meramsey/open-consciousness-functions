@@ -103,6 +103,14 @@ def validate_layers(layers: dict, function_id: str) -> list[str]:
             pack = catalog.packs.get(resource["locale"])
             if pack is None or pack.get(resource["key"]) is None:
                 errors.append("binding refers to an unavailable locale resource")
+    if binding.get("narration_plan"):
+        from .locale import LocaleCatalog
+
+        canonical = LocaleCatalog().canonical
+        for step in binding["narration_plan"].get("sequence", []):
+            entry = canonical.get(step["key"]) if canonical else None
+            if entry is None or entry.domain != "narration":
+                errors.append("narration plan refers to an unavailable canonical spoken resource")
     return errors
 
 
@@ -140,6 +148,7 @@ def discover(record) -> dict:
         "session_templates": bindings.get("session_templates", []),
         "locales": sorted({item["locale"] for item in bindings.get("narration_resources", [])}),
         "narration_resources": bindings.get("narration_resources", []),
+        "narration_plan": bindings.get("narration_plan"),
         "duration": bindings.get("duration"),
         "voice_sources": bindings.get("voice_sources"),
         "background": record.data["audio"]["background_audio"],

@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Narration-first `ocf audio render FUNCTION_ID --locale TAG --voice PROFILE
+  --pacing normal|relaxed|sleep` auditions for functions with explicit
+  function-content narration-plan bindings. Segments are synthesized from the
+  selected canonical locale resources and scheduled after measured speech ends;
+  function review and release readiness remain separate.
 - Initial repository scaffold for **Open Consciousness Functions (OCF)**.
 - Canonical YAML function format and JSON Schema validation.
 - All 55 documented legacy H-PLUS function mappings as OCF reimplementation

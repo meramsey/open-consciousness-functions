@@ -56,6 +56,7 @@ Usage:
   ocf voice list              List voice profiles (audio/voices/profiles/)
   ocf voice render SCRIPT [--voice NAME] [--output WAV] [--fit] [--flow] [--even-counts] [--force]
   ocf audio render-speech SCRIPT [--voice NAME] [--output WAV] [--force]
+  ocf audio render FUNCTION_ID --locale TAG --voice PROFILE [--pacing normal|relaxed|sleep] [--output DIR] [--dry-run]
   ocf audio mix --speech A.wav [--background B.wav] --output MIX.wav [--background-gain 0.25] [--force]
   ocf audio build <AUDIO_ID> [--format wav|flac|mp3]... [--tag KEY=VALUE]... [--voice NAME] [--output DIR] [--fit] [--flow] [--even-counts] [--background-gain 0.25] [--force]
   ocf audio release <AUDIO_ID|FUNCTION_ID> --artwork IMAGE [--locale TAG] [--format mp3|flac]... [--voice NAME] [--output DIR] [--version VERSION] [--tag KEY=VALUE]... [--dry-run] [--force]
@@ -223,6 +224,20 @@ def _build_parser() -> argparse.ArgumentParser:
     render_speech.add_argument("--output", help="output WAV path")
     render_speech.add_argument("--rate", type=int, default=44100, help="sample rate (Hz)")
     render_speech.add_argument("--force", action="store_true", help="overwrite an existing file")
+    narration_render = audio_sub.add_parser(
+        "render", help="render canonical localized narration with dynamic speech timing"
+    )
+    narration_render.add_argument("function_id", help="canonical function ID")
+    narration_render.add_argument("--locale", help="requested BCP-47 locale")
+    narration_render.add_argument("--voice", required=True, help="configured voice profile ID/slug")
+    narration_render.add_argument(
+        "--pacing", choices=["normal", "relaxed", "sleep"], default="normal"
+    )
+    narration_render.add_argument("--output", help="new audition directory (never overwritten)")
+    narration_render.add_argument("--rate", type=int, default=44100, help="sample rate (Hz)")
+    narration_render.add_argument(
+        "--dry-run", action="store_true", help="print the resolved TTS plan"
+    )
     mix = audio_sub.add_parser("mix", help="mix narration with background audio")
     mix.add_argument("--speech", required=True, help="narration WAV")
     mix.add_argument("--background", help="optional background WAV")
@@ -1017,6 +1032,38 @@ def main(argv: list[str] | None = None) -> int:
                 return audio_mod.render_background(
                     args.preset, getattr(args, "output", None), getattr(args, "engine", "farfield")
                 )
+            if args.audio_kind == "render":
+                import json
+
+                from .narration_first import render_narration_first
+
+                result = render_narration_first(
+                    args.function_id,
+                    locale=args.locale,
+                    voice=args.voice,
+                    pacing=args.pacing,
+                    output=args.output,
+                    dry_run=args.dry_run,
+                    sample_rate=args.rate,
+                )
+                if args.dry_run:
+                    print(json.dumps(result, ensure_ascii=False, indent=2))
+                else:
+                    manifest = result["manifest"]
+                    print(
+                        json.dumps(
+                            {
+                                "output_directory": result["output_directory"],
+                                "artifacts": manifest["artifacts"],
+                                "measurements": manifest["measurements"],
+                                "approval_state": manifest["approval_state"],
+                                "release_ready": manifest["release_ready"],
+                            },
+                            ensure_ascii=False,
+                            indent=2,
+                        )
+                    )
+                return 0
             if args.audio_kind == "render-speech":
                 from .audio_build import default_narration_output
 
