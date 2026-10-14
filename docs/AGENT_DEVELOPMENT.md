@@ -17,6 +17,8 @@ map for targeted investigation, not a replacement for schemas or tests.
   session composition and timed narration inputs.
 - `audio/background/`: committed background manifests and authoritative preset
   files; `audio/rendered/` is local generated output.
+- `.ocf-work/`: gitignored runtime scratch, caches, audition renders, and logs;
+  `OCF_WORK_DIR` is the validated workspace override.
 - `scripts/ocf_tools/`: shipped library and CLI implementation.
 - `scripts/tools/`: research, extraction, preservation, packaging, and local
   development drivers.
@@ -44,6 +46,7 @@ python3 scripts/ocf.py capabilities --json
 python3 scripts/ocf.py functions list --rich --json
 python3 scripts/ocf.py functions describe OCF-FND-002 --rich --json
 python3 scripts/ocf.py doctor --json
+python3 scripts/ocf.py workspace clean --older-than-hours 24 --dry-run
 python3 scripts/ocf.py validate --all
 python3 scripts/ocf.py build-index --check
 python3 -m pytest -m unit
@@ -84,6 +87,19 @@ its own provenance; English word timing is never reused.
 
 Consult `docs/LOCALIZATION.md` for fallback and TTS details and
 `locales/README.md` for pack authoring.
+
+## Local render workspace
+
+All default OCF scratch and audition outputs belong under `.ocf-work/`, resolved
+from the repository root. Subprocesses receive `.ocf-work/tmp/` through
+`TMPDIR`, `TMP`, and `TEMP`, and `.ocf-work/cache/` through `XDG_CACHE_HOME`;
+the invoking process environment is not modified. Successful scratch is removed
+unless `OCF_KEEP_WORK=1`; interrupted/failed stages retain context/scratch under
+`tmp/`, and subprocess/render diagnostics are recorded under `logs/`. Default audition outputs are collision-resistant and
+retained under `renders/`. Set `OCF_WORK_DIR` to a dedicated writable
+directory; relative values resolve from the repository root. Inspect and remove
+only stale marked scratch by running `ocf workspace clean --dry-run` before
+`ocf workspace clean`. Never clean unmarked files or unrelated directories.
 
 ## Testing and verification
 

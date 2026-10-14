@@ -1,8 +1,9 @@
 # Persistent local auditions
 
-Use the existing gitignored **`audio/rendered/auditions/`** tree for listening
-and review artifacts. It follows the repository's local rendered-audio policy;
-audition audio and machine-local provenance are not staged or redistributed.
+New default OCF auditions and their local reports are retained under the
+gitignored **`.ocf-work/renders/auditions/`** tree. Historical frozen artifacts
+described below remain in their original `audio/rendered/auditions/` locations.
+Audition audio and machine-local provenance are not staged or redistributed.
 
 `scripts/tools/preserve_auditions.py SOURCE OUTPUT` copies existing artifacts,
 compares SHA256 before/after, reuses identical copies and refuses to overwrite

@@ -65,26 +65,30 @@ transcript wording to this repo is restricted.
 ./scripts/ocf voice list-backends          # espeak-ng / espeak / piper
 ./scripts/ocf voice doctor
 ./scripts/ocf voice render audio/scripts/<slug>.yaml \
-    --voice espeak-en --output audio/rendered/<slug>-narration.wav
+    --voice espeak-en --output .ocf-work/renders/<slug>-narration.wav
 ./scripts/ocf audio build OCF-AUDIO-0001 [--format wav|flac|mp3]
-./scripts/ocf audio inspect audio/rendered/OCF-AUDIO-0001-master.wav
+./scripts/ocf audio inspect .ocf-work/renders/OCF-AUDIO-0001-master.wav
 ```
 
-Functions with an explicit `narration_plan` in their function-content binding
-can also use the narration-first audition path, which synthesizes reviewed
-locale resources and links segments by measured speech end:
+Function `audio render` defaults to a bound complete session when one is
+available. Preview the resolved stage/background plan before rendering:
 
 ```bash
 ./scripts/ocf audio render OCF-SLP-005 --locale en-US \
     --voice OCF-VOICE-0002 --pacing sleep --dry-run
 ./scripts/ocf audio render OCF-SLP-005 --locale en-US \
-    --voice OCF-VOICE-0002 --pacing sleep --output /tmp/sleep-easy-audition
+    --voice OCF-VOICE-0002 --pacing sleep
 ```
 
-It writes only a new local audition directory (WAV, transcript, plan, manifest).
-It does not rewrite narration or change review/release approval states. See
-[`docs/AUDIO_PIPELINE.md`](../docs/AUDIO_PIPELINE.md#narration-first-auditions)
-for pacing values and verification details.
+For a narration-plan-only audition, pass `--mode narration-only` explicitly.
+Default scratch and audition outputs use the gitignored `.ocf-work/` workspace;
+set `OCF_WORK_DIR` to choose another dedicated local workspace. Successful
+scratch is cleaned by default, failures retain diagnostics, and
+`OCF_KEEP_WORK=1` retains successful scratch. Use `ocf workspace clean --dry-run`
+before cleaning stale marked scratch. See
+[`docs/AUDIO_PIPELINE.md`](../docs/AUDIO_PIPELINE.md#complete-session-and-narration-only-auditions)
+for the Focus 10 default policy, Focus 11 exception, sleep background behavior,
+fade, and verification details.
 
 TTS backends and FLAC/MP3 encoders (ffmpeg/flac) are optional; when missing,
 the toolchain degrades gracefully with install guidance.

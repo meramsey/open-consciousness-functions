@@ -51,6 +51,12 @@ authoritative. The agent reasons; OCF validates and executes.
   `docs/LOCALIZATION.md` and `docs/NARRATION_STANDARD.md`.
 - Keep Farfield/SBaGenX/TTS optional and degrade clearly. Resolve committed
   presets deterministically; never infer identity from filenames or frequencies.
+- Keep OCF scratch, local render caches, logs, and default audition outputs under
+  the gitignored repository-local `.ocf-work/` workspace. Resolve it from the
+  repository root; honor validated `OCF_WORK_DIR` overrides and pass workspace
+  TMPDIR/TMP/TEMP only to OCF-launched subprocesses. Preserve failed-run
+  diagnostics; use `ocf workspace clean --dry-run` before removing stale marked
+  scratch. See `docs/AUDIO_PIPELINE.md`.
 - Respect security and licensing: do not expose secrets, execute arbitrary
   downloaded code, upload reference material, or commit ignored/private audio.
 - Debug root causes rather than weakening validators, shrinking coverage, or
@@ -139,15 +145,17 @@ manifest, compatible voice profile, and selected optional engine. Run
 `python3 scripts/ocf.py voice doctor` then
 `python3 scripts/ocf.py audio build <AUDIO_ID> --output <working-dir> --format wav`
 (add `--voice <profile>` and `--locale <tag>` as appropriate). For a function
-with a committed `function-content/bindings/<FUNCTION_ID>.yaml` narration plan,
-run `python3 scripts/ocf.py audio render <FUNCTION_ID> --locale en-US --voice
-<profile> --pacing sleep --dry-run`, inspect the resolved segments and approval
-state, then repeat with a new `--output <working-dir>`. The narration-first
-workflow measures speech and schedules every following segment after the prior
-speech end. Outputs are local, non-overwriting auditions with a transcript and
-render manifest; no cover or release approval is needed for an audition. The
-workflow does not change approval metadata. Missing TTS, voice models, locale
-resources, or valid narration plan produces a clear error. See
+For a function with a bound complete session template, `audio render` defaults
+to the full template/DSP session. Run
+`python3 scripts/ocf.py audio render <FUNCTION_ID> --locale en-US --voice
+<profile> --pacing sleep --dry-run` first, inspect every stage/background and
+effective/ignored DSP directive, then render to a new output or let OCF select a
+unique workspace-local audition path. Use `--mode narration-only` explicitly
+for the narration-plan-only workflow; it measures speech and schedules each
+following segment after the prior speech end. Both workflows create local,
+non-overwriting auditions and do not change approval metadata. Missing TTS,
+voice models, locale resources, or a bound complete template produces a clear
+error. See
 `docs/AUDIO_PIPELINE.md`, `docs/LOCALIZATION.md`, and voice profiles in
 `audio/voices/`.
 
@@ -181,8 +189,9 @@ identity from filenames. Missing optional providers should remain optional.
 
 Run `python3 scripts/ocf.py doctor --json` and
 `python3 scripts/ocf.py voice doctor`; validate the function and locale, then
-retry with an output path in a writable temporary/work directory. Inspect the
-render manifest and captured backend error before changing configuration.
+inspect `.ocf-work/logs/` and retained scratch under `.ocf-work/tmp/` before
+changing configuration. Default renders stay in `.ocf-work/renders/`; use
+`OCF_WORK_DIR` to select another dedicated writable workspace.
 Check codec availability (`ffmpeg`/`flac`), voice backend and locale coverage,
 and whether the manifest requires a background engine. See `docs/DOCTOR.md` and
 `docs/AUDIO_PIPELINE.md`.

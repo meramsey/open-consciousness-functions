@@ -116,14 +116,94 @@ successful natural-language synthesis. Function records without a registered
 audio implementation cannot be released until an implementation and timed
 narration are authored.
 
-## Narration-first auditions
+## Complete-session and narration-only auditions
 
-`python3 scripts/ocf.py audio render <FUNCTION_ID> --locale en-US --voice
-<VOICE_PROFILE> --pacing sleep --dry-run` previews a function's explicit
-`function-content/bindings/<FUNCTION_ID>.yaml` narration plan. Remove
-`--dry-run` and provide a new `--output DIR` to synthesize a WAV audition. This
-path does not require an audio implementation manifest, fixed source timestamps,
-artwork, or release metadata.
+`audio render` defaults to a complete session and requires a bound template that
+declares `session_completeness: complete` and selects a semantic DSP profile.
+It composes the template with the function's bound canonical narration, measures
+the spoken events, renders the state program, and verifies the stereo WAV,
+background activity, stage/state report, transcript, and artifact checksums.
+Preview the plan, then render to a new audition directory:
+
+```bash
+python3 scripts/ocf.py audio render OCF-SLP-005 --locale en-US \
+  --voice OCF-VOICE-0002 --pacing sleep --dry-run
+python3 scripts/ocf.py audio render OCF-SLP-005 --locale en-US \
+  --voice OCF-VOICE-0002 --pacing sleep
+```
+
+Sleep Easy uses `OCF-TPL-SESSION-HPLUS-STANDARD-001` and
+`OCF-DSP-HPLUS-STANDARD-DRAFT-001` by default. The DSP profile selects the
+Focus 10 candidate OCF-BG-0012 as the default bed from the opening. The only
+DSP exception is the explicit Focus 10 → Focus 11 entry, two-pass function
+programming section, and Focus 11 → Focus 10 close, using canonical newer Focus
+11 preset OCF-BG-0006. Preparation narration and logical sleep/return labels do
+not select different audio states: Focus 10 remains active through sleep entry,
+the hold, both low-level function-body passes, return, closer, and outro. The
+existing sleep-body gain remains configurable as `underlay.gain_db` in the
+pacing profile (currently -24 dB). The Focus 10 bed receives a 10-second
+raised-cosine ending fade; there is no delayed Focus 10 onset or ordinary-waking
+silence before the closer. Logical Focus 20/ordinary-waking directives are
+listed as ignored DSP directives in this selected profile; no Focus 20 DSP
+state or preset is generated. Stage labels, logical state, and selected audio
+background remain separate.
+
+If a selected steady Farfield preset is shorter than the measured session, the
+renderer may continue that single segment in a temporary variant without
+changing its audio parameters; the duration extension is recorded in the
+audition report. Other preset segment layouts are not silently retimed or
+looped.
+
+The complete-session output contains a stereo master WAV, retained background
+stem, UTF-8 transcript, composed session plan, and JSON report. It does not
+require an audio implementation manifest, artwork, or release metadata. The
+report marks the draft template and function review state and never approves a
+release. Existing audition directories are never overwritten.
+
+### Local OCF workspace
+
+OCF scratch, caches, render staging, diagnostic logs, and default audition
+outputs use `.ocf-work/` at the repository root. The root is gitignored and is
+resolved from the repository layout, not the invoking shell's current
+directory. Its standard areas are `tmp/`, `cache/`, `renders/`, and `logs/`.
+Piper, Farfield, FFmpeg, and other OCF-launched subprocesses receive
+`TMPDIR`, `TMP`, `TEMP`, and `XDG_CACHE_HOME` pointing into this workspace; OCF
+does not change the parent process environment. Successful scratch directories
+are removed by default; interrupted/failed render stages retain their context
+and scratch, and subprocess failures retain captured diagnostics in `logs/`.
+`OCF_KEEP_WORK=1` retains successful scratch for diagnosis. Complete and
+narration-only auditions are published under the stable ignored `renders/`
+area with collision-resistant run IDs; explicit output paths are never
+overwritten.
+
+Set `OCF_WORK_DIR` to select another dedicated workspace. Relative overrides
+resolve from the repository root; the target must be a dedicated writable
+directory. Stale scratch cleanup is scoped to marked OCF-created temporary
+directories only:
+
+```bash
+python3 scripts/ocf.py workspace clean --older-than-hours 24 --dry-run
+python3 scripts/ocf.py workspace clean --older-than-hours 24
+```
+
+Use `OCF_KEEP_WORK=1` to retain successful intermediates, or set
+`OCF_WORK_DIR=/path/to/private-work` for a local override. Do not point the
+workspace at a repository root, reference corpus, or directory containing
+unrelated data.
+
+For the narration-only workflow, which does not compose a complete session,
+select it explicitly:
+
+```bash
+python3 scripts/ocf.py audio render OCF-SLP-005 --mode narration-only \
+  --locale en-US --voice OCF-VOICE-0002 --pacing sleep --dry-run
+```
+
+This previews or renders the function's explicit
+`function-content/bindings/<FUNCTION_ID>.yaml` narration plan and does not
+require a complete-session template, audio implementation manifest, fixed
+source timestamps, artwork, or release metadata. Remove `--dry-run` to render;
+the default output is a unique retained audition under `.ocf-work/renders/`.
 
 The binding lists source resource keys, their order and role, and explicit
 repetition counts. The resolver uses the existing `LocaleCatalog`, requires the
@@ -143,8 +223,9 @@ timeline chains each event to the preceding measured speech end plus its
 configured pause. Duration derives from actual synthesized segment durations;
 there is no target-duration stretch or arbitrary fixed anchor.
 
-The audition directory contains a WAV, UTF-8 transcript, `tts-plan.json`, and
-`render-manifest.json`. The manifest records function/script review state,
+The narration-only audition directory contains a WAV, UTF-8 transcript,
+`tts-plan.json`, and `render-manifest.json`. The manifest records
+function/script review state,
 resource and locale provenance, voice profile/options, pacing values, segment
 durations, duration/sample/channel measurements, peak/RMS/clipping, artifact
 hashes, and release readiness. Existing audition directories are never
