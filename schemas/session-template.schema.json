@@ -18,6 +18,8 @@
     "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
     "composition_kind": {"type": "string", "enum": ["preparation-learning", "routine-preparation", "function-installation", "human-plus-function"]},
     "content_status": {"type": "string", "enum": ["architecture-draft", "draft", "reviewed"]},
+    "session_completeness": {"type": "string", "enum": ["complete", "partial"]},
+    "dsp_profile": {"type": "string", "minLength": 1},
     "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
     "cue_profile": {"type": "string", "minLength": 1},
     "pacing_profile": {"type": "string", "minLength": 1},

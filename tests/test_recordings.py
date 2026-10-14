@@ -174,8 +174,8 @@ def test_recording_preflight_rejects_malformed_packages_and_audio(tmp_path, monk
     monkeypatch.setattr(recordings.shutil, "which", lambda _name: "/usr/bin/ffmpeg")
     if failure == "decode-error":
         monkeypatch.setattr(
-            recordings.subprocess,
-            "run",
+            recordings,
+            "workspace_run",
             lambda *_args, **_kwargs: SimpleNamespace(
                 returncode=1, stderr=b"decoder error", stdout=b""
             ),
@@ -187,8 +187,8 @@ def test_recording_preflight_rejects_malformed_packages_and_audio(tmp_path, monk
         with wave.open(empty, "wb") as writer:
             writer.setparams((1, 2, 8000, 0, "NONE", "not compressed"))
         monkeypatch.setattr(
-            recordings.subprocess,
-            "run",
+            recordings,
+            "workspace_run",
             lambda *_args, **_kwargs: SimpleNamespace(
                 returncode=0, stderr=b"", stdout=empty.getvalue()
             ),

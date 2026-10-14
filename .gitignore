@@ -10,6 +10,9 @@ dist/
 .coverage
 htmlcov/
 
+# OCF local scratch, caches, audition renders, and diagnostic logs
+.ocf-work/
+
 # Editors
 .vscode/
 .idea/

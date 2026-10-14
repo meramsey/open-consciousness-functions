@@ -12,9 +12,9 @@ the toolchain degrades gracefully.
 from __future__ import annotations
 
 import io
+import json
+import math
 import shutil
-import subprocess
-import tempfile
 import wave
 from collections.abc import Callable
 from pathlib import Path
@@ -24,7 +24,15 @@ from . import __version__ as OCF_VERSION
 from . import farfield as farfield_mod
 from . import sbagenx as sbagenx_mod
 from .indexes import find_audio_manifest, load_background_manifests, load_function_by_id
-from .paths import AUDIO_RENDERED_DIR, REPO_ROOT, ensure_dir
+from .paths import (
+    AUDIO_RENDERED_DIR,
+    REPO_ROOT,
+    cleanup_workspace_temp,
+    ensure_dir,
+    unique_run_id,
+    workspace_run,
+    workspace_temp_directory,
+)
 from .transcript import load_timed_doc
 from .utils import (
     OCFError,
@@ -219,7 +227,7 @@ def _encode(
         if fmt == "mp3":
             cmd += ["-id3v2_version", "3", "-write_id3v1", "1"]
         cmd.append(str(out_path))
-        result = subprocess.run(cmd, capture_output=True, text=True)
+        result = workspace_run(cmd, capture_output=True, text=True)
         if result.returncode == 0:
             return "ffmpeg"
         raise OCFError(f"ffmpeg encode to {fmt} failed: {result.stderr[-200:]}")
@@ -232,7 +240,7 @@ def _encode(
             cmd = [flac, "-f", "-o", str(out_path), str(intermediate)]
             for key, value in tags.items():
                 cmd += ["-T", f"{key}={value}"]
-            result = subprocess.run(cmd, capture_output=True, text=True)
+            result = workspace_run(cmd, capture_output=True, text=True)
             if result.returncode == 0:
                 return "flac"
     raise OCFError(
@@ -365,7 +373,7 @@ def _mix_master_ffmpeg(
         "-filter_complex",
         f"[0:a]{narration_chain}"
         f"[1:a]volume={background_gain:.6f}[b];"
-        "[n][b]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.97[out]",
+        "[n][b]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.97:level=false[out]",
         "-map",
         "[out]",
         "-ar",
@@ -375,7 +383,7 @@ def _mix_master_ffmpeg(
         str(out_path),
     ]
     ensure_dir(out_path.parent)
-    result = subprocess.run(cmd, capture_output=True)
+    result = workspace_run(cmd, capture_output=True)
     if result.returncode != 0:
         raise OCFError(f"ffmpeg master mix failed: {result.stderr.decode(errors='replace')[-200:]}")
 
@@ -386,6 +394,7 @@ def _render_background(
     engine: str = "farfield",
     *,
     max_seconds: float | None = None,
+    scratch_dir: Path | None = None,
 ) -> tuple[Path | None, str]:
     """Render the configured background preset; degrade gracefully when absent.
 
@@ -401,13 +410,17 @@ def _render_background(
     if manifest and manifest.get("engine") and engine == "farfield":
         effective = str(manifest.get("engine"))
     if effective == "sbagenx":
-        return _render_sbagenx(preset, strategy)
+        return _render_sbagenx(preset, strategy, scratch_dir=scratch_dir)
     if effective == "reference-master":
-        return _render_reference_master(preset, strategy, max_seconds=max_seconds)
-    return _render_farfield(preset, strategy)
+        return _render_reference_master(
+            preset, strategy, max_seconds=max_seconds, scratch_dir=scratch_dir
+        )
+    return _render_farfield(preset, strategy, scratch_dir=scratch_dir)
 
 
-def _render_farfield(preset: str, strategy: str) -> tuple[Path | None, str]:
+def _render_farfield(
+    preset: str, strategy: str, *, scratch_dir: Path | None = None
+) -> tuple[Path | None, str]:
     status = farfield_mod.check_farfield()
     if not status.available:
         if strategy == "required":
@@ -417,8 +430,8 @@ def _render_farfield(preset: str, strategy: str) -> tuple[Path | None, str]:
             )
         return None, "farfield-unavailable (narration only)"
     source = _farfield_preset_file(preset, strategy)
-    tmp = tempfile.mkdtemp(prefix="ocf-farfield-")
-    out = Path(tmp) / f"{_preset_stem(source)}.wav"
+    tmp = scratch_dir or workspace_temp_directory(prefix="ocf-farfield-")
+    out = tmp / f"farfield-{_preset_stem(source)}-{unique_run_id('stem')}.wav"
     result = farfield_mod.render_preset(source, output=out)
     if not out.is_file():
         raise OCFError(f"farfield render produced no file for preset {preset!r}\n{result}")
@@ -482,7 +495,9 @@ def _declared_background_file(preset: str) -> str | None:
     return None
 
 
-def _render_sbagenx(preset: str, strategy: str) -> tuple[Path | None, str]:
+def _render_sbagenx(
+    preset: str, strategy: str, *, scratch_dir: Path | None = None
+) -> tuple[Path | None, str]:
     status = sbagenx_mod.check_sbagenx()
     if not status.available:
         if strategy == "required":
@@ -492,8 +507,8 @@ def _render_sbagenx(preset: str, strategy: str) -> tuple[Path | None, str]:
             )
         return None, "sbagenx-unavailable (narration only)"
     sb_seq = _sbagenx_sequence_file(preset)
-    tmp = tempfile.mkdtemp(prefix="ocf-sbagenx-")
-    out = Path(tmp) / f"{_preset_stem(preset)}.wav"
+    tmp = scratch_dir or workspace_temp_directory(prefix="ocf-sbagenx-")
+    out = tmp / f"sbagenx-{_preset_stem(preset)}-{unique_run_id('stem')}.wav"
     result = sbagenx_mod.render_preset(sb_seq, output=out, sample_rate=DEFAULT_SAMPLE_RATE)
     if not out.is_file():
         raise OCFError(f"sbagenx render produced no file for preset {preset!r}\n{result}")
@@ -550,7 +565,7 @@ def _decode_to_s16le(
     if seconds is not None:
         cmd += ["-t", str(seconds)]
     cmd += ["-ar", str(sample_rate), "-ac", "2", "-f", "s16le", "-"]
-    result = subprocess.run(cmd, capture_output=True)
+    result = workspace_run(cmd, capture_output=True)
     if result.returncode != 0:
         raise OCFError(
             f"ffmpeg decode failed for {path.name}: {result.stderr.decode(errors='replace')[-200:]}"
@@ -563,6 +578,7 @@ def _render_reference_master(
     strategy: str,
     *,
     max_seconds: float | None = None,
+    scratch_dir: Path | None = None,
 ) -> tuple[Path | None, str]:
     """Composite a background bed from an operator-supplied reference master.
 
@@ -672,8 +688,8 @@ def _render_reference_master(
     if max_seconds is not None and max_seconds > 0:
         base = base[: int(max_seconds * DEFAULT_SAMPLE_RATE) * channels]
 
-    tmp = tempfile.mkdtemp(prefix="ocf-reference-")
-    out = Path(tmp) / f"{_preset_stem(preset)}.wav"
+    tmp = scratch_dir or workspace_temp_directory(prefix="ocf-reference-")
+    out = tmp / f"reference-{_preset_stem(preset)}-{unique_run_id('stem')}.wav"
     ensure_dir(out.parent)
     buffer = io.BytesIO()
     with wave.open(buffer, "wb") as writer:
@@ -688,12 +704,16 @@ def _render_reference_master(
 def build(
     query: str,
     *,
+    manifest_override: dict[str, Any] | None = None,
+    document_override: dict[str, Any] | None = None,
+    render_label: str | None = None,
     out_root: str | Path | None = None,
     fmt: str = "wav",
     formats: list[str] | tuple[str, ...] | None = None,
     tag_overrides: dict[str, str] | None = None,
     voice: str | dict[str, Any] | None = None,
     background_gain: float = 0.25,
+    voice_gain: float = 1.0,
     sample_rate: int = DEFAULT_SAMPLE_RATE,
     render_cue: Callable[[str], bytes] | None = None,
     overwrite: bool = True,
@@ -705,6 +725,7 @@ def build(
     dsp_profile: str | Path | dict[str, Any] | None = None,
     recordings: str | Path | None = None,
     artwork: str | Path | None = None,
+    retain_background_stem: bool = False,
 ) -> dict[str, Any]:
     """`ocf audio build <AUDIO_ID|MANIFEST>` — render narration, mix, master.
 
@@ -714,26 +735,38 @@ def build(
     with metadata derived from the manifests (see ``_resolve_tags``), plus any
     ``tag_overrides``.
     """
-    manifest = find_audio_manifest(query)
+    if manifest_override is not None and document_override is None:
+        raise OCFError("manifest_override requires document_override")
+    manifest = manifest_override if manifest_override is not None else find_audio_manifest(query)
     if manifest is None:
         raise OCFError(f"audio implementation manifest not found: {query}")
-    audio_id = str(manifest.get("id", ""))
+    registered_audio_id = manifest.get("id")
+    audio_id = str(registered_audio_id or render_label or "")
+    if not audio_id:
+        raise OCFError("an unregistered document render requires a nonempty render_label")
     transcript_rel = manifest.get("transcript_path")
-    if not transcript_rel:
+    if document_override is None and not transcript_rel:
         raise OCFError(
             f"audio manifest {audio_id} has no transcript_path; add a timed-transcript "
             "script (audio/scripts/*.yaml) and record it first"
         )
-    transcript_path = (REPO_ROOT / str(transcript_rel)).resolve()
-    if not transcript_path.is_file():
+    transcript_path = (REPO_ROOT / str(transcript_rel)).resolve() if transcript_rel else None
+    if transcript_path is not None and not transcript_path.is_file():
         raise OCFError(f"transcript referenced by {audio_id} not found: {transcript_path}")
 
-    doc = load_timed_doc(transcript_path)
+    doc = document_override if document_override is not None else load_timed_doc(transcript_path)
     if doc.get("function_id") and doc["function_id"] != manifest.get("function_id"):
         raise OCFError("audio manifest and transcript disagree about command-owning function_id")
     if manifest.get("function_id"):
         doc["function_id"] = manifest["function_id"]
     selected_voice = voice or manifest.get("voice_profile") or doc.get("voice_profile")
+    if (
+        not isinstance(voice_gain, (int, float))
+        or isinstance(voice_gain, bool)
+        or not math.isfinite(float(voice_gain))
+        or voice_gain < 0
+    ):
+        raise OCFError("voice_gain must be a finite nonnegative linear gain")
     formats = list(dict.fromkeys((fmt,) if formats is None else formats))
     if any(value not in ("wav", "flac", "mp3") for value in formats):
         raise OCFError("output formats must be wav, flac or mp3")
@@ -741,14 +774,21 @@ def build(
     master_path = out_root / f"{audio_id}-master.wav"
     render_name = f"OCF-RENDER-{audio_id.split('-')[-1]}"
     render_manifest = out_root / f"{render_name}.yaml"
-    planned_outputs = [master_path, render_manifest] + [
-        out_root / f"{audio_id}-master.{value}" for value in formats if value != "wav"
-    ]
+    background_stem_path = out_root / f"{audio_id}-background.wav"
+    planned_outputs = (
+        [master_path, render_manifest]
+        + ([background_stem_path] if retain_background_stem else [])
+        + [out_root / f"{audio_id}-master.{value}" for value in formats if value != "wav"]
+    )
     if not overwrite:
         occupied = next((path for path in planned_outputs if path.exists()), None)
         if occupied is not None:
             raise OCFError(f"refusing to overwrite existing output: {occupied}; use --force")
-    stage_dir = Path(tempfile.mkdtemp(prefix=f"ocf-build-{audio_id}-"))
+    stage_dir = workspace_temp_directory(prefix=f"ocf-build-{audio_id}-")
+    (stage_dir / "build-context.json").write_text(
+        json.dumps({"audio_id": audio_id, "query": query, "status": "rendering"}, indent=2) + "\n",
+        encoding="utf-8",
+    )
     narration_wav = stage_dir / "narration.wav"
     narration_meta = render_narration(
         doc,
@@ -767,7 +807,9 @@ def build(
 
     background_conf = manifest.get("background_audio", {})
     bg_preset = background_conf.get("preset")
-    selected_profile = dsp_profile or background_conf.get("semantic_profile")
+    selected_profile = (
+        dsp_profile or background_conf.get("semantic_profile") or doc.get("semantic_dsp_profile")
+    )
     state_program = None
     if selected_profile:
         from .semantic_dsp import load_profile, render_program
@@ -779,9 +821,18 @@ def build(
             if isinstance(selected_profile, dict)
             else load_profile(selected_profile)
         )
-        bg_path = stage_dir / "semantic-state-bed.wav"
+        if retain_background_stem:
+            ensure_dir(out_root)
+            bg_path = background_stem_path
+        else:
+            bg_path = stage_dir / "semantic-state-bed.wav"
         state_program = render_program(
-            doc, narration_meta["event_timing"], narration_meta["duration"], profile, bg_path
+            doc,
+            narration_meta["event_timing"],
+            narration_meta["duration"],
+            profile,
+            bg_path,
+            scratch_dir=stage_dir,
         )
         bg_note = "semantic-state-program"
     else:
@@ -790,6 +841,7 @@ def build(
             background_conf.get("strategy", "optional"),
             background_conf.get("engine", "farfield"),
             max_seconds=narration_meta["duration"],
+            scratch_dir=stage_dir,
         )
     if bg_note.startswith(
         ("farfield-unavailable", "sbagenx-unavailable", "reference-master-unavailable")
@@ -810,6 +862,7 @@ def build(
             bg_path,
             master_path,
             background_gain=background_gain,
+            speech_gain=float(voice_gain),
             speech_gain_windows=gain_windows,
         )
     else:
@@ -817,6 +870,7 @@ def build(
             narration_wav,
             None,
             master_path,
+            speech_gain=float(voice_gain),
             speech_gain_windows=gain_windows,
             overwrite=overwrite,
         )
@@ -874,14 +928,14 @@ def build(
         "schema_version": "1.0",
         "generated": current_date(),
         "audio_manifest": {
-            "id": audio_id,
+            "id": registered_audio_id,
             "function_id": manifest.get("function_id"),
             "title": manifest.get("title"),
             "narrator": manifest.get("narrator"),
             "language": manifest.get("language"),
             "voice_profile": manifest.get("voice_profile") or doc.get("voice_profile"),
         },
-        "transcript_path": str(transcript_rel),
+        "transcript_path": str(transcript_rel) if transcript_rel else None,
         "pacing_profile": doc.get("pacing_profile"),
         "slot_provenance": doc.get("slot_provenance", {}),
         "voice": {
@@ -929,6 +983,11 @@ def build(
         "overlap_mode": narration_meta["overlap_mode"],
         "timing_mode": narration_meta.get("timing_mode", "explicit-at-timestamps"),
         "background": {"preset": background_conf.get("preset"), "engine": bg_note},
+        "mixing": {
+            "voice_gain": float(voice_gain),
+            "background_gain": float(background_gain) if bg_path is not None else 0.0,
+            "method": "ffmpeg-stereo" if bg_path is not None else "pcm-mono",
+        },
         "narration_gain_windows": [
             {"start": start, "end": end, "gain_db": db} for start, end, db in gain_windows
         ],
@@ -955,12 +1014,27 @@ def build(
             "checksum_sha256": master_entry["checksum_sha256"],
         },
     }
+    if retain_background_stem and bg_path is not None:
+        if bg_path != background_stem_path:
+            shutil.copy2(bg_path, background_stem_path)
+        render_doc["background_stem"] = {
+            "file": background_stem_path.name,
+            "format": "wav",
+            "sample_rate": DEFAULT_SAMPLE_RATE,
+            "channels": 2,
+            "checksum_sha256": sha256_of_file(background_stem_path),
+        }
     write_text_atomic(render_manifest, generated_content(yaml_safe_dump(render_doc)))
 
     print(
         f"Built {', '.join(o['file'] for o in outputs)} from {audio_id}: "
         f"{narration_meta['cues']} cue(s), {duration}s, background={bg_note.split(' ')[0]}"
     )
+    (stage_dir / "build-context.json").write_text(
+        json.dumps({"audio_id": audio_id, "query": query, "status": "completed"}, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    cleanup_workspace_temp(stage_dir)
     return render_doc
 
 

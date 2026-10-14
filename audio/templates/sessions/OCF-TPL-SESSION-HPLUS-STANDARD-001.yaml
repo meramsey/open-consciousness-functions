@@ -7,13 +7,17 @@ origin: reference-derived
 license: "User reports all rights cleared by lawyer; recorded as user clearance, not an independently verified license grant."
 composition_kind: human-plus-function
 content_status: draft
+session_completeness: complete
+dsp_profile: OCF-DSP-HPLUS-STANDARD-DRAFT-001
 cue_profile: OCF-CUE-PROFILE-DEFAULT
 pacing_profile: OCF-PACING-HPLUS-STANDARD-001
 voice_profile: OCF-VOICE-0003
 description: >-
   One reusable session structure. Ordinary functions supply only an opener,
   one function_body resource and a closer. The body is referenced twice in
-  Focus 11 and twice via from_slot in the Focus 20 underlay. Shared HPlus
+  the Focus 11 programming section and twice via from_slot in the low-level
+  sleep section. The selected standard DSP profile keeps the Focus 10 bed
+  through sleep. Shared HPlus
   narration is maintained in locales/<locale>/hplus-*.yaml. Shared wording is
   approved for reuse; function-specific candidates and measured audio timing
   still require review before a finished session release.
@@ -151,12 +155,12 @@ sections:
 
   - id: focus20-enter
     stage: OCF-TPL-STAGE-HPLUS-FOCUS-TWENTY-ENTER-001
-    role: shared sleep-oriented Focus 20 transition; Focus 20 DSP is disabled by default
+    role: shared sleep-entry narration; the standard DSP profile keeps the Focus 10 bed
     after: "$previous"
 
   - id: sleep20-body
     type: sleep
-    role: same function_body slot, two low-level Focus 20 repetitions
+    role: same function_body slot, two low-level sleep repetitions
     after: "$previous"
     after_anchor: event-end
     from_slot: function_body
@@ -169,7 +173,7 @@ sections:
 
   - id: focus20-close
     stage: OCF-TPL-STAGE-HPLUS-FOCUS-TWENTY-CLOSE-001
-    role: shared Focus 20 to Focus 10 transition
+    role: shared sleep-section close narration; background remains Focus 10
     after: "$previous"
     narration:
       ready: {narration_key: hplus.shared.focus10.return.ready}
@@ -178,7 +182,7 @@ sections:
 
   - id: return
     stage: OCF-TPL-STAGE-HPLUS-WAKING-RETURN-001
-    role: shared Focus 10 to ordinary waking
+    role: shared return-to-waking narration; the selected profile keeps Focus 10
     after: "$previous"
 
   - id: function-closer

@@ -91,8 +91,25 @@ def validate_layers(layers: dict, function_id: str) -> list[str]:
         for reference in binding["session_templates"]:
             try:
                 template = load_template(reference)
-                if template.get("function_id") != function_id:
+                if template.get("function_id") not in (None, function_id):
                     errors.append("template binding has a different function identity")
+            except OCFError as exc:
+                errors.append(str(exc))
+    default_template = binding.get("default_session_template")
+    if default_template:
+        if default_template not in binding.get("session_templates", []):
+            errors.append("default_session_template must also be listed in session_templates")
+        else:
+            try:
+                template = load_template(default_template)
+                if template.get("session_completeness") != "complete":
+                    errors.append(
+                        "default_session_template must declare session_completeness: complete"
+                    )
+                if not template.get("dsp_profile"):
+                    errors.append(
+                        "complete default session template must select an explicit DSP profile"
+                    )
             except OCFError as exc:
                 errors.append(str(exc))
     if binding.get("narration_resources"):
@@ -146,6 +163,7 @@ def discover(record) -> dict:
         "states": spec["states"] if spec else None,
         "preparation": spec["preparation"] if spec else None,
         "session_templates": bindings.get("session_templates", []),
+        "default_session_template": bindings.get("default_session_template"),
         "locales": sorted({item["locale"] for item in bindings.get("narration_resources", [])}),
         "narration_resources": bindings.get("narration_resources", []),
         "narration_plan": bindings.get("narration_plan"),

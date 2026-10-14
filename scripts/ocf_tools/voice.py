@@ -43,7 +43,6 @@ import os
 import re
 import shutil
 import subprocess
-import tempfile
 import wave
 from collections.abc import Callable, Mapping
 from copy import deepcopy
@@ -53,7 +52,13 @@ from typing import Any
 
 from .indexes import load_voice_profiles
 from .locale import document_key_usage, iter_events, locale_language, normalize_tag
-from .paths import ensure_dir
+from .paths import (
+    cleanup_workspace_temp,
+    ensure_dir,
+    record_workspace_failure,
+    workspace_run,
+    workspace_temp_file,
+)
 from .transcript import ResolvedEvent, load_timed_doc, resolve_timeline
 from .utils import OCFError, OCFFileExistsError
 
@@ -594,7 +599,7 @@ def check_backend_locale(spec: dict[str, Any]) -> None:
     executable = shutil.which(spec["binary"])
     if not executable:
         raise OCFError(INSTALL_GUIDANCE)
-    result = subprocess.run(
+    result = workspace_run(
         [executable, f"--voices={spec['language']}"], capture_output=True, text=True, timeout=15
     )
     if result.returncode or len(result.stdout.strip().splitlines()) < 2:
@@ -614,9 +619,8 @@ def render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes:
     spec_mode = BACKENDS[spec["name"]]["mode"]
     out_path: Path | None = None
     if spec_mode == "file":
-        descriptor, filename = tempfile.mkstemp(suffix=".wav")
+        descriptor, out_path = workspace_temp_file(prefix="ocf-voice-cue-", suffix=".wav")
         os.close(descriptor)
-        out_path = Path(filename)
     command = BACKENDS[spec["name"]]["render"](
         executable,
         spec["language"],
@@ -634,7 +638,7 @@ def render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes:
             silence_index = command.index("--sentence-silence")
             command[silence_index + 1] = str(sentence_silence)
     try:
-        result = subprocess.run(
+        result = workspace_run(
             command,
             input=text.encode("utf-8") if spec_mode == "file" else None,
             capture_output=True,
@@ -642,16 +646,19 @@ def render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes:
         )
     except OSError as exc:
         if out_path is not None:
-            out_path.unlink(missing_ok=True)
+            record_workspace_failure(out_path.stem, f"{spec['binary']} cue render failed: {exc}")
         raise OCFError(f"failed to run {spec['binary']}: {exc}") from exc
     except subprocess.TimeoutExpired as exc:
         if out_path is not None:
-            out_path.unlink(missing_ok=True)
+            record_workspace_failure(out_path.stem, f"{spec['binary']} cue render timed out")
         raise OCFError(f"{spec['binary']} timed out rendering a cue") from exc
     if result.returncode != 0:
-        if out_path is not None:
-            out_path.unlink(missing_ok=True)
         detail = (result.stderr or result.stdout or b"").decode("utf-8", "replace").strip()
+        if out_path is not None:
+            record_workspace_failure(
+                out_path.stem,
+                f"{spec['binary']} failed (exit {result.returncode}): {detail[:1000]}",
+            )
         raise OCFError(
             f"{spec['binary']} failed (exit {result.returncode})"
             + (f": {detail[:160]}" if detail else "")
@@ -659,13 +666,22 @@ def render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes:
     if spec_mode == "file":
         assert out_path is not None  # allocated above for every file-mode request
         if not out_path.is_file():
+            record_workspace_failure(
+                out_path.stem, f"{spec['binary']} produced no audio file for a cue"
+            )
             raise OCFError(f"{spec['binary']} produced no audio file for a cue")
         try:
             if out_path.stat().st_size == 0:
                 raise OCFError(f"{spec['binary']} produced empty audio for a cue")
-            return out_path.read_bytes()
-        finally:
+            audio = out_path.read_bytes()
+        except BaseException as exc:
+            record_workspace_failure(out_path.stem, f"cue output verification failed: {exc}")
+            raise
+        else:
             out_path.unlink(missing_ok=True)
+            if (out_path.parent / ".ocf-owned").is_file():
+                cleanup_workspace_temp(out_path.parent)
+            return audio
     if not result.stdout:
         raise OCFError(f"{spec['binary']} produced no audio for a cue")
     return result.stdout

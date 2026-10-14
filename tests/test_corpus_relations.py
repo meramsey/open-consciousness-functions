@@ -65,7 +65,7 @@ def test_analyze_text_binary_pdf_and_format_equivalence(monkeypatch, tmp_path):
         "tools.analyze_corpus_relations.shutil.which", lambda name: "/usr/bin/pdftotext"
     )
     monkeypatch.setattr(
-        "tools.analyze_corpus_relations.subprocess.run",
+        "tools.analyze_corpus_relations.workspace_run",
         lambda *_args, **_kwargs: SimpleNamespace(
             returncode=0,
             stdout="Function Command\nPurpose: details\n",
@@ -108,7 +108,7 @@ def test_pdf_extraction_unavailable_or_failed_stays_unclassified(
         lambda _name: "/usr/bin/pdftotext" if executable else None,
     )
     monkeypatch.setattr(
-        "tools.analyze_corpus_relations.subprocess.run",
+        "tools.analyze_corpus_relations.workspace_run",
         lambda *_args, **_kwargs: SimpleNamespace(
             returncode=returncode, stdout="", stderr="failure"
         ),
@@ -254,8 +254,8 @@ def test_pdf_without_relevant_headings_remains_unknown(monkeypatch, tmp_path):
     }
     monkeypatch.setattr(analyze_corpus_relations.shutil, "which", lambda _name: "pdftotext")
     monkeypatch.setattr(
-        analyze_corpus_relations.subprocess,
-        "run",
+        analyze_corpus_relations,
+        "workspace_run",
         lambda *_args, **_kwargs: SimpleNamespace(returncode=0, stdout="unrelated page", stderr=""),
     )
     result = analyze(tmp_path, {"files": [row]})["files"][0]

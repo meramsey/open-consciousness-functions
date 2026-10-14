@@ -441,10 +441,12 @@ def test_frozen_audition_renderer_orchestrates_only_synthetic_outputs(
         Path(command[-1]).write_bytes(b"synthetic encoded fixture")
         return subprocess.CompletedProcess(command, 0, "ok", "")
 
-    monkeypatch.setattr(render_development_v2.subprocess, "run", run)
-    monkeypatch.setattr(
-        render_development_v2.subprocess, "check_output", lambda *_a, **_k: "fixture-base\n"
-    )
+    def workspace_run(command, **kwargs):
+        if command[0] == "git":
+            return subprocess.CompletedProcess(command, 0, "fixture-base\n", "")
+        return run(command, **kwargs)
+
+    monkeypatch.setattr(render_development_v2, "workspace_run", workspace_run)
     monkeypatch.setattr(
         sys,
         "argv",

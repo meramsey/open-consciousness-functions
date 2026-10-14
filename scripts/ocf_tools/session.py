@@ -722,6 +722,10 @@ def compose(
     }
     if stage_provenance:
         doc["stages"] = stage_provenance
+    if template.get("session_completeness"):
+        doc["session_completeness"] = template["session_completeness"]
+    if template.get("dsp_profile"):
+        doc["semantic_dsp_profile"] = template["dsp_profile"]
     if pacing_profile:
         doc["pacing_profile"] = {
             "id": pacing_profile["id"],

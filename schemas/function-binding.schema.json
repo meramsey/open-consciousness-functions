@@ -29,6 +29,7 @@
         }
       }
     },
+    "default_session_template": {"type": "string", "minLength": 1},
     "voice_sources": {"type": ["array", "null"], "items": {"enum": ["tts", "prerecorded-user", "externally-generated"]}},
     "duration": {"type": ["object", "null"], "additionalProperties": false, "required": ["seconds", "basis"], "properties": {"seconds": {"type": "number", "exclusiveMinimum": 0}, "basis": {"enum": ["measured", "estimated"]}}}
   }

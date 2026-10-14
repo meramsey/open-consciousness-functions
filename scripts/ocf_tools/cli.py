@@ -56,9 +56,9 @@ Usage:
   ocf voice list              List voice profiles (audio/voices/profiles/)
   ocf voice render SCRIPT [--voice NAME] [--output WAV] [--fit] [--flow] [--even-counts] [--force]
   ocf audio render-speech SCRIPT [--voice NAME] [--output WAV] [--force]
-  ocf audio render FUNCTION_ID --locale TAG --voice PROFILE [--pacing normal|relaxed|sleep] [--output DIR] [--dry-run]
+  ocf audio render FUNCTION_ID [--mode session|narration-only] [--locale TAG] [--voice PROFILE] [--pacing normal|relaxed|sleep] [--template ID] [--output DIR] [--dry-run]
   ocf audio mix --speech A.wav [--background B.wav] --output MIX.wav [--background-gain 0.25] [--force]
-  ocf audio build <AUDIO_ID> [--format wav|flac|mp3]... [--tag KEY=VALUE]... [--voice NAME] [--output DIR] [--fit] [--flow] [--even-counts] [--background-gain 0.25] [--force]
+  ocf audio build <AUDIO_ID> [--format wav|flac|mp3]... [--tag KEY=VALUE]... [--voice NAME] [--output DIR] [--voice-gain 1.0] [--background-gain 0.25] [--fit] [--flow] [--even-counts] [--force]
   ocf audio release <AUDIO_ID|FUNCTION_ID> --artwork IMAGE [--locale TAG] [--format mp3|flac]... [--voice NAME] [--output DIR] [--version VERSION] [--tag KEY=VALUE]... [--dry-run] [--force]
   ocf audio inspect FILE      Show audio file metadata + sha256
   ocf session list-templates  List session-composition templates (audio/templates/sessions/)
@@ -80,6 +80,7 @@ Usage:
   ocf locale pseudo [--from TAG] [--locale TAG] [--output DIR]
   ocf doctor                  Show environment health
   ocf capabilities --json    Discover live command paths and schemas
+  ocf workspace clean [--older-than-hours N] [--dry-run]
   ocf functions list --json  Discover canonical function records
   ocf functions describe ID --json
   ocf commands list [--locale TAG] [--json]
@@ -101,6 +102,13 @@ def _build_parser() -> argparse.ArgumentParser:
     sub.add_parser("help", help="show help")
     capabilities = sub.add_parser("capabilities", help="machine-readable live CLI discovery")
     capabilities.add_argument("--json", action="store_true")
+    workspace = sub.add_parser("workspace", help="clean OCF-owned local scratch safely")
+    workspace_sub = workspace.add_subparsers(dest="workspace_kind", required=True)
+    workspace_clean = workspace_sub.add_parser(
+        "clean", help="remove stale marked scratch directories under OCF_WORK_DIR/tmp"
+    )
+    workspace_clean.add_argument("--older-than-hours", type=float, default=24.0)
+    workspace_clean.add_argument("--dry-run", action="store_true")
     author_plan = sub.add_parser(
         "plan", help="validate a structured authoring request without rendering"
     )
@@ -225,16 +233,36 @@ def _build_parser() -> argparse.ArgumentParser:
     render_speech.add_argument("--rate", type=int, default=44100, help="sample rate (Hz)")
     render_speech.add_argument("--force", action="store_true", help="overwrite an existing file")
     narration_render = audio_sub.add_parser(
-        "render", help="render canonical localized narration with dynamic speech timing"
+        "render", help="render a complete bound session or explicit narration-only audition"
     )
     narration_render.add_argument("function_id", help="canonical function ID")
+    narration_render.add_argument(
+        "--mode",
+        choices=["session", "narration-only"],
+        default="session",
+        help="complete template session by default; choose narration-only explicitly",
+    )
     narration_render.add_argument("--locale", help="requested BCP-47 locale")
     narration_render.add_argument("--voice", required=True, help="configured voice profile ID/slug")
     narration_render.add_argument(
         "--pacing", choices=["normal", "relaxed", "sleep"], default="normal"
     )
+    narration_render.add_argument(
+        "--template", help="complete session template ID (must be bound to the function)"
+    )
+    narration_render.add_argument(
+        "--dsp-profile", help="explicit state/background profile override"
+    )
     narration_render.add_argument("--output", help="new audition directory (never overwritten)")
     narration_render.add_argument("--rate", type=int, default=44100, help="sample rate (Hz)")
+    narration_render.add_argument(
+        "--voice-gain", type=float, default=1.0, help="linear narration gain"
+    )
+    narration_render.add_argument(
+        "--background-gain",
+        type=float,
+        help="linear background gain (default 1.0 for calibrated state profiles)",
+    )
     narration_render.add_argument(
         "--dry-run", action="store_true", help="print the resolved TTS plan"
     )
@@ -269,8 +297,9 @@ def _build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="permit fallback across the locale chain instead of failing on missing spoken narration",
     )
-    build_cmd.add_argument("--output", help="output directory (default audio/rendered)")
+    build_cmd.add_argument("--output", help="output directory (default .ocf-work/renders)")
     build_cmd.add_argument("--rate", type=int, default=44100, help="sample rate (Hz)")
+    build_cmd.add_argument("--voice-gain", type=float, default=1.0, help="linear narration gain")
     build_cmd.add_argument("--background-gain", type=float, default=0.25)
     build_cmd.add_argument(
         "--dsp-profile",
@@ -919,6 +948,20 @@ def main(argv: list[str] | None = None) -> int:
                 else "\n".join("ocf " + " ".join(row["path"]) for row in data["commands"])
             )
             return 0
+        if args.command == "workspace" and args.workspace_kind == "clean":
+            import math
+
+            from .paths import cleanup_workspace
+
+            if not math.isfinite(args.older_than_hours) or args.older_than_hours < 0:
+                raise OCFError("--older-than-hours must be finite and nonnegative")
+            candidates = cleanup_workspace(args.older_than_hours * 3600, dry_run=args.dry_run)
+            action = "Would clean" if args.dry_run else "Cleaned"
+            for path in candidates:
+                print(f"{action} {path}")
+            if not candidates:
+                print("No stale OCF scratch directories found.")
+            return 0
         if args.command == "functions":
             import json
 
@@ -1035,17 +1078,34 @@ def main(argv: list[str] | None = None) -> int:
             if args.audio_kind == "render":
                 import json
 
-                from .narration_first import render_narration_first
+                if args.mode == "narration-only":
+                    from .narration_first import render_narration_first
 
-                result = render_narration_first(
-                    args.function_id,
-                    locale=args.locale,
-                    voice=args.voice,
-                    pacing=args.pacing,
-                    output=args.output,
-                    dry_run=args.dry_run,
-                    sample_rate=args.rate,
-                )
+                    result = render_narration_first(
+                        args.function_id,
+                        locale=args.locale,
+                        voice=args.voice,
+                        pacing=args.pacing,
+                        output=args.output,
+                        dry_run=args.dry_run,
+                        sample_rate=args.rate,
+                    )
+                else:
+                    from .complete_session import render_complete_session
+
+                    result = render_complete_session(
+                        args.function_id,
+                        locale=args.locale,
+                        voice=args.voice,
+                        pacing=args.pacing,
+                        template=args.template,
+                        dsp_profile=args.dsp_profile,
+                        voice_gain=args.voice_gain,
+                        background_gain=args.background_gain,
+                        output=args.output,
+                        dry_run=args.dry_run,
+                        sample_rate=args.rate,
+                    )
                 if args.dry_run:
                     print(json.dumps(result, ensure_ascii=False, indent=2))
                 else:
@@ -1115,6 +1175,7 @@ def main(argv: list[str] | None = None) -> int:
                     flow=bool(getattr(args, "flow", False)),
                     even_counts=bool(getattr(args, "even_counts", False)),
                     dsp_profile=getattr(args, "dsp_profile", None),
+                    voice_gain=getattr(args, "voice_gain", 1.0),
                     recordings=getattr(args, "recordings", None),
                     locale=getattr(args, "locale", None),
                     strict=not getattr(args, "allow_fallback", False),

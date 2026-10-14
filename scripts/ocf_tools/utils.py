@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import errno
 import hashlib
 import os
 import tempfile
@@ -10,7 +11,12 @@ from typing import Any
 
 import yaml
 
-from .paths import GENERATED_HEADER
+from .paths import (
+    GENERATED_HEADER,
+    cleanup_workspace_temp,
+    record_workspace_failure,
+    workspace_temp_file,
+)
 
 UTF8 = "utf-8"
 
@@ -57,18 +63,35 @@ def write_text_atomic(path: Path, content: str, *, overwrite: bool = True) -> No
     if path.exists() and not overwrite:
         raise OCFFileExistsError(f"Refusing to overwrite existing file: {path}")
     path.parent.mkdir(parents=True, exist_ok=True)
-    fd, tmp = tempfile.mkstemp(dir=str(path.parent), prefix=f".{path.name}.", suffix=".tmp")
+    fd, tmp = workspace_temp_file(prefix="ocf-atomic-write-", suffix=".tmp")
+    fallback: str | None = None
     try:
         with os.fdopen(fd, "w", encoding=UTF8, newline="\n") as handle:
             handle.write(content)
             handle.flush()
             os.fsync(handle.fileno())
-        os.replace(tmp, path)
-    except BaseException:
         try:
-            os.unlink(tmp)
-        except OSError:
-            pass
+            os.replace(tmp, path)
+        except OSError as exc:
+            if exc.errno != errno.EXDEV:
+                raise
+            # Atomic rename is only possible within the explicitly selected
+            # output filesystem; this fallback is confined to that target.
+            descriptor, fallback = tempfile.mkstemp(
+                dir=str(path.parent), prefix=f".{path.name}.", suffix=".tmp"
+            )
+            with os.fdopen(descriptor, "w", encoding=UTF8, newline="\n") as handle:
+                handle.write(content)
+                handle.flush()
+                os.fsync(handle.fileno())
+            os.replace(fallback, path)
+            fallback = None
+            tmp.unlink(missing_ok=True)
+        cleanup_workspace_temp(tmp.parent)
+    except BaseException as exc:
+        if fallback is not None:
+            Path(fallback).unlink(missing_ok=True)
+        record_workspace_failure(tmp.stem, f"atomic write failed for {path}: {exc}")
         raise
 
 

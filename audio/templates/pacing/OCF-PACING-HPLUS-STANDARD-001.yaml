@@ -53,8 +53,8 @@ optional_stages:
   energy_ball: false
 evidence_notes:
   - "Focus 10 hold: user-requested 60-second default."
-  - "Focus 11 and Focus 20 body repetitions: user-requested twice each."
+  - "Focus 11 programming and low-level sleep body repetitions: user-requested twice each."
   - "Focus 20 pre-repeat pause: draft 600-second design choice, informed by the existing generic Learn shell's approximately 599-second sleep window; not a recovered source timing."
-  - "Focus 20 underlay gain: draft value reused from the Attention reference-derived template; not an efficacy or subliminal claim."
+  - "Low-level sleep-body narration gain: configurable at underlay.gain_db; current draft value is -24 dB, reused from the Attention reference-derived template; not an efficacy or subliminal claim."
   - "15/60/30-second repetition gaps and 5-second fallback transitions are design-selected defaults pending review."
   - "Optional preparation stages default off. Their inclusion does not make Preparation Module features production-ready."

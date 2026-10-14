@@ -1,27 +1,33 @@
 schema_version: "1.0"
 id: OCF-DSP-HPLUS-STANDARD-DRAFT-001
 version: "0.1.0"
-initial_state: ordinary-waking
+initial_state: focus-10
+default_background_state: focus-10
 seed: 0
 target_state_rms_dbfs: -18.0
 states:
-  ordinary-waking: {mode: disabled}
   focus-10: {mode: preset, preset: OCF-BG-0012}
   focus-11: {mode: preset, preset: OCF-BG-0006}
-  focus-20: {mode: disabled}
 transitions: {curve: equal-power, fallback_seconds: 5}
-approaches:
-  - state: focus-10
-    begin_event: relaxation.begin
-    established_event: focus-ten.enter
-    state_event: focus-ten.transition
-    curve: raised-cosine
+ignored_state_events:
+  - focus-ten.transition
+  - focus20-enter.transition
+  - focus20-close.transition
+  - return.complete
+stage_backgrounds:
+  open: [focus-10, focus-11]
+  focus11-body: [focus-11]
+  close: [focus-11, focus-10]
+ending_fade_seconds: 10
 notes: |
   Draft HPlus standard-session selection for internal composition review only.
-  OCF-BG-0012 remains an approximate V4-derived Focus 10 candidate; OCF-BG-0006
-  is the canonical newer pure-SAM Focus 11 selection. Focus 20 explicitly has
-  no binaural preset because no such evidence-backed binding is established.
-  Focus 20 may receive only the separately declared low-gain function narration
-  underlay. This does not assert subliminal efficacy or a neurological state.
-  This profile copies no V2/V2.1 induction curve or level into those frozen
-  auditions and is not a production/mastering profile.
+  Focus 10 (OCF-BG-0012) is the continuous default bed from session start,
+  through sleep narration/holds, return, closer, and outro. The ten-second
+  raised-cosine ending fade applies to the Focus 10 bed at the session end.
+  Focus 11 (OCF-BG-0006) is selected only during the explicit open/programming/
+  close window. Logical Focus 10 induction and sleep-oriented Focus 20/waking
+  instructions do not override this background policy. No Focus 20 DSP is
+  generated. The Focus 10 preset remains an approximate V4-derived candidate;
+  Focus 11 remains the canonical newer pure-SAM selection. This profile copies
+  no V2/V2.1 induction curve or level into those frozen auditions and is not a
+  production/mastering profile.

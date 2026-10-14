@@ -7,7 +7,6 @@ import hashlib
 import json
 import re
 import shutil
-import subprocess
 import sys
 import zipfile
 from collections import Counter, defaultdict
@@ -16,6 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 from ocf_tools.corpus import candidate_locators, classify  # noqa: E402
+from ocf_tools.paths import workspace_run  # noqa: E402
 from ocf_tools.transcript import parse_transcript  # noqa: E402
 from ocf_tools.utils import OCFError  # noqa: E402
 
@@ -71,7 +71,7 @@ def analyze(root: Path, inventory: dict) -> dict:
         elif fmt == "pdf":
             executable = shutil.which("pdftotext")
             if executable:
-                process = subprocess.run(
+                process = workspace_run(
                     [executable, "-layout", str(path), "-"],
                     capture_output=True,
                     text=True,

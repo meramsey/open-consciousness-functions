@@ -57,8 +57,8 @@ def test_encoding_plans_argv_tags_and_translates_failures(monkeypatch, tmp_path,
     monkeypatch.setattr(ab.shutil, "which", lambda name: "ffmpeg" if name == "ffmpeg" else None)
     calls = []
     monkeypatch.setattr(
-        ab.subprocess,
-        "run",
+        ab,
+        "workspace_run",
         lambda cmd, **kw: calls.append((cmd, kw)) or subprocess.CompletedProcess(cmd, 0, "", ""),
     )
     assert ab._encode(source, fmt, out, {"comment": "a=b"}) == (
@@ -67,14 +67,12 @@ def test_encoding_plans_argv_tags_and_translates_failures(monkeypatch, tmp_path,
     if fmt == "wav":
         assert out.read_bytes() == b"source bytes" and not calls
     else:
-        assert "comment=a=b" in calls[0][0] and calls[0][1] == {
-            "capture_output": True,
-            "text": True,
-        }
+        assert "comment=a=b" in calls[0][0]
+        assert calls[0][1]["capture_output"] is True and calls[0][1]["text"] is True
         assert ("-id3v2_version" in calls[0][0]) is (fmt == "mp3")
         monkeypatch.setattr(
-            ab.subprocess,
-            "run",
+            ab,
+            "workspace_run",
             lambda *a, **kw: subprocess.CompletedProcess([], 1, "", "failed encode"),
         )
         with pytest.raises(OCFError, match="ffmpeg encode"):
@@ -90,8 +88,8 @@ def test_flac_fallback_and_absence_keep_wav(monkeypatch, tmp_path, available, co
     )
     calls = []
     monkeypatch.setattr(
-        ab.subprocess,
-        "run",
+        ab,
+        "workspace_run",
         lambda cmd, **kw: (
             calls.append(cmd) or subprocess.CompletedProcess(cmd, code, "", "failure")
         ),
@@ -112,8 +110,8 @@ def test_decode_and_mix_command_boundaries(monkeypatch, tmp_path):
         ab._decode_to_s16le(tmp_path / "input")
     monkeypatch.setattr(ab.shutil, "which", lambda name: "ffmpeg")
     monkeypatch.setattr(
-        ab.subprocess,
-        "run",
+        ab,
+        "workspace_run",
         lambda cmd, **kw: (
             calls.append((cmd, kw)) or subprocess.CompletedProcess(cmd, 0, b"pcm", b"")
         ),
@@ -128,8 +126,9 @@ def test_decode_and_mix_command_boundaries(monkeypatch, tmp_path):
     )
     graph = calls[-1][0][calls[-1][0].index("-filter_complex") + 1]
     assert "[n];[1:a]" in graph and "between(t,1.000,2.000)" in graph
+    assert "alimiter=limit=0.97:level=false" in graph
     monkeypatch.setattr(
-        ab.subprocess, "run", lambda *a, **kw: subprocess.CompletedProcess([], 1, b"", b"failure")
+        ab, "workspace_run", lambda *a, **kw: subprocess.CompletedProcess([], 1, b"", b"failure")
     )
     with pytest.raises(OCFError, match="decode failed"):
         ab._decode_to_s16le(tmp_path / "input")
@@ -140,9 +139,7 @@ def test_decode_and_mix_command_boundaries(monkeypatch, tmp_path):
 @pytest.mark.parametrize("engine", ["farfield", "sbagenx"])
 @pytest.mark.parametrize("case", ["absent", "missing-output", "directory-output", "ok"])
 def test_background_native_planning_stays_in_scratch_directory(monkeypatch, tmp_path, engine, case):
-    scratch = tmp_path / "scratch"
-    scratch.mkdir()
-    monkeypatch.setattr(ab.tempfile, "mkdtemp", lambda **kw: str(scratch))
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "ocf-work"))
     module = ab.farfield_mod if engine == "farfield" else ab.sbagenx_mod
     monkeypatch.setattr(module, "check_" + engine, lambda: NS(available=case != "absent"))
     monkeypatch.setattr(ab, "_farfield_preset_file", lambda *a: "fixture.yaml")
@@ -165,12 +162,12 @@ def test_background_native_planning_stays_in_scratch_directory(monkeypatch, tmp_
             function("preset", "required")
     elif case == "ok":
         path, selected = function(str(tmp_path / "source/preset.sbg"), "required")
-        assert path.parent == scratch and selected == engine
+        assert path.is_relative_to(tmp_path / "ocf-work" / "tmp") and selected == engine
     else:
         with pytest.raises(OCFError, match="produced no file"):
             function("preset", "required")
     if seen:
-        assert seen[0][1]["output"].parent == scratch
+        assert seen[0][1]["output"].is_relative_to(tmp_path / "ocf-work" / "tmp")
 
 
 def test_manifest_file_lookup_preserves_declared_paths_and_precedence(monkeypatch, tmp_path):
@@ -242,8 +239,6 @@ def build_boundary(monkeypatch, tmp_path):
 
     source = tmp_path / "script.yaml"
     source.write_text("synthetic source reference")
-    scratch = tmp_path / "scratch"
-    scratch.mkdir()
     manifest = {
         "id": "OCF-AUDIO-9999",
         "title": "Fixture",
@@ -253,6 +248,7 @@ def build_boundary(monkeypatch, tmp_path):
     }
     document = {"function_id": "OCF-FND-999", "source": {"format": "manual"}, "timeline": []}
     calls = []
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "ocf-work"))
     monkeypatch.setattr(ab, "REPO_ROOT", tmp_path)
     monkeypatch.setattr(ab, "AUDIO_RENDERED_DIR", tmp_path / "outputs")
     monkeypatch.setattr(ab, "find_audio_manifest", lambda query: manifest)
@@ -262,7 +258,7 @@ def build_boundary(monkeypatch, tmp_path):
         "load_function_by_id",
         lambda id: NS(canonical_name="Fixture", canonical_command="PLUS-TEST"),
     )
-    monkeypatch.setattr(ab.tempfile, "mkdtemp", lambda **kw: str(scratch))
+    (tmp_path / "ocf-work").mkdir()
 
     def write_wav(path, rate=100, channels=1):
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -305,7 +301,7 @@ def build_boundary(monkeypatch, tmp_path):
     monkeypatch.setattr(ab, "_narration_gain_windows", lambda *a: [(0, 0.5, -6)])
     monkeypatch.setattr(semantic_dsp, "load_profile", lambda ref: {"id": ref})
 
-    def program(*args):
+    def program(*args, **kwargs):
         calls.append(("state", args))
         args[-1].write_bytes(b"fixture bed")
         return {"profile_id": args[-2]["id"]}
@@ -521,7 +517,7 @@ def test_manifest_lookup_no_match_missing_fields_and_override_tier(monkeypatch, 
         ab, "_render_reference_master", lambda *a, **kw: calls.append((a, kw)) or (None, "fixture")
     )
     assert ab._render_background("preset", "optional", max_seconds=2) == (None, "fixture")
-    assert calls[-1] == (("preset", "optional"), {"max_seconds": 2})
+    assert calls[-1] == (("preset", "optional"), {"max_seconds": 2, "scratch_dir": None})
     monkeypatch.setattr(ab.shutil, "which", lambda name: None)
     with pytest.raises(OCFError):
         ab._encode(tmp_path / "unused", "mp3", tmp_path / "out.mp3")
@@ -595,12 +591,14 @@ def test_build_without_owner_or_format_collisions_preserves_narration_contract(b
 def test_background_sbagenx_dispatch_isolated(monkeypatch):
     monkeypatch.setattr(ab, "_resolve_background_manifest", lambda preset: {"engine": "sbagenx"})
     calls = []
-    monkeypatch.setattr(ab, "_render_sbagenx", lambda *a: calls.append(a) or (None, "fixture"))
+    monkeypatch.setattr(
+        ab, "_render_sbagenx", lambda *a, **kw: calls.append((a, kw)) or (None, "fixture")
+    )
     assert ab._render_background("preset", "optional") == (None, "fixture")
-    assert calls == [("preset", "optional")]
+    assert calls == [(("preset", "optional"), {"scratch_dir": None})]
     monkeypatch.setattr(ab, "_resolve_background_manifest", lambda preset: {"engine": "farfield"})
     monkeypatch.setattr(
-        ab, "_render_farfield", lambda *a: calls.append(a) or (None, "farfield-fixture")
+        ab, "_render_farfield", lambda *a, **kw: calls.append((a, kw)) or (None, "farfield-fixture")
     )
     assert ab._render_background("preset", "optional") == (None, "farfield-fixture")
-    assert calls[-1] == ("preset", "optional")
+    assert calls[-1] == (("preset", "optional"), {"scratch_dir": None})

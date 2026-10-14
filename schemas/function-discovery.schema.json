@@ -36,6 +36,7 @@
         "states": { "type": ["object", "null"] },
         "preparation": { "type": ["array", "null"] },
         "session_templates": { "type": "array", "items": { "type": "string" } },
+        "default_session_template": { "type": ["string", "null"] },
         "locales": { "type": "array", "items": { "type": "string" } },
         "narration_resources": { "type": "array" },
         "narration_plan": { "type": ["object", "null"] },

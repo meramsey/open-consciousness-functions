@@ -6,13 +6,14 @@ import hashlib
 import io
 import json
 import shutil
-import subprocess
+import tempfile
 import wave
 from copy import deepcopy
 from pathlib import Path
 
 from .indexes import load_yaml_file
 from .locale import iter_events, normalize_tag
+from .paths import workspace_run
 from .utils import OCFError
 from .validators import _load_schema, validate_against_schema
 
@@ -116,7 +117,7 @@ def prepare_recordings(reference: str | Path, doc: dict, locale: str) -> tuple[d
                 raise OCFError(
                     f"recording {identifier}: install ffmpeg for this format, or supply PCM16 mono/stereo WAV; no TTS fallback"
                 )
-            result = subprocess.run(
+            result = workspace_run(
                 [
                     ffmpeg,
                     "-v",
@@ -230,8 +231,6 @@ def import_directory(
     }
     # Validate/decode through the same engine preflight using a temporary package;
     # only derived metadata is written, originals remain untouched.
-    import tempfile
-
     with tempfile.NamedTemporaryFile(dir=output.parent, suffix=".yaml", delete=False) as stream:
         temporary = Path(stream.name)
     try:

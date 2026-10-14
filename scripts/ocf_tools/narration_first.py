@@ -7,7 +7,6 @@ import json
 import math
 import os
 import shutil
-import tempfile
 import wave
 from array import array
 from collections.abc import Mapping
@@ -19,7 +18,13 @@ from .artifact_names import ArtifactNamer, safe_component
 from .content import load_layers
 from .indexes import load_function_by_id, load_voice_profiles
 from .locale import LocaleCatalog, normalize_tag
-from .paths import AUDIO_RENDERED_DIR
+from .paths import (
+    AUDIO_RENDERED_DIR,
+    publish_workspace_temp_directory,
+    record_workspace_failure,
+    unique_run_id,
+    workspace_temp_directory,
+)
 from .utils import OCFError, sha256_of_file
 
 PACING_PRESETS: dict[str, dict[str, float | str]] = {
@@ -536,16 +541,29 @@ def render_narration_first(
                 safe_component(pacing, max_length=16),
             )
         )
+        / unique_run_id(function_id)
     )
     output_dir = Path(output or default_dir).expanduser().resolve()
     if output_dir.exists():
         raise OCFError(f"refusing to overwrite existing audition: {output_dir}")
     try:
         output_dir.parent.mkdir(parents=True, exist_ok=True)
-        stage = Path(tempfile.mkdtemp(prefix=".ocf-narration-stage-", dir=output_dir.parent))
+        stage = workspace_temp_directory(prefix="ocf-narration-stage-")
     except OSError as exc:
         raise OCFError(f"cannot create audition staging directory: {exc}") from exc
 
+    (stage / "render-context.json").write_text(
+        json.dumps(
+            {
+                "function_id": function_id,
+                "output_directory": str(output_dir),
+                "status": "rendering",
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     try:
         wav_name = ArtifactNamer().filename(
             function_id,
@@ -700,13 +718,19 @@ def render_narration_first(
                 raise OCFError(f"render artifact is missing or empty: {artifact.name}")
         if sha256_of_file(output_wav) != manifest["artifacts"]["wav"]["sha256"]:
             raise OCFError("WAV checksum changed during render publication")
-        os.replace(stage, output_dir)
+        (stage / "render-context.json").unlink(missing_ok=True)
+        publish_workspace_temp_directory(stage, output_dir)
         return {"dry_run": False, "output_directory": str(output_dir), "manifest": manifest}
     except OSError as exc:
         if stage.exists():
-            shutil.rmtree(stage, ignore_errors=True)
+            record_workspace_failure(
+                stage.name, f"filesystem failure: {exc}; retained scratch: {stage}"
+            )
         raise OCFError(f"narration-first render failed due to a filesystem error: {exc}") from exc
-    except BaseException:
+    except BaseException as exc:
         if stage.exists():
-            shutil.rmtree(stage, ignore_errors=True)
+            record_workspace_failure(
+                stage.name,
+                f"render failure: {type(exc).__name__}: {exc}; retained scratch: {stage}",
+            )
         raise

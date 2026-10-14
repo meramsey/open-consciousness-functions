@@ -1,5 +1,6 @@
 duration: null
 function_id: OCF-SLP-005
+default_session_template: OCF-TPL-SESSION-HPLUS-STANDARD-001
 narration_plan:
   sequence:
   - key: hplus.function.ocf-slp-005.opener
@@ -26,6 +27,7 @@ narration_resources:
   locale: en-US
 schema_version: '1.0'
 session_templates:
+- OCF-TPL-SESSION-HPLUS-STANDARD-001
 - OCF-TPL-SESSION-PILOT-SLEEP-EASY-001
 voice_sources:
 - tts

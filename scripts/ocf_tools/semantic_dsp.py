@@ -4,16 +4,18 @@ from __future__ import annotations
 
 import hashlib
 import math
+import os
 import re
 import shutil
 import subprocess
+import tempfile
 from pathlib import Path
 from typing import Any
 
 from .indexes import load_yaml_file
 from .locale import iter_events
-from .paths import REPO_ROOT
-from .utils import OCFError
+from .paths import REPO_ROOT, cleanup_workspace_temp, workspace_run, workspace_temp_directory
+from .utils import OCFError, yaml_safe_dump
 from .validators import _load_schema, validate_against_schema
 
 PROFILES_DIR = REPO_ROOT / "audio/background/state-profiles"
@@ -25,6 +27,71 @@ def _sha(path: Path) -> str:
         for block in iter(lambda: stream.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def _duration_seconds(value: Any) -> float | None:
+    """Parse the numeric/M:SS duration subset used by committed Farfield presets."""
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        return float(value)
+    if not isinstance(value, str):
+        return None
+    pieces = value.strip().split(":")
+    try:
+        if len(pieces) == 1:
+            return float(pieces[0])
+        if len(pieces) == 2:
+            return float(pieces[0]) * 60.0 + float(pieces[1])
+        if len(pieces) == 3:
+            return float(pieces[0]) * 3600.0 + float(pieces[1]) * 60.0 + float(pieces[2])
+    except ValueError:
+        return None
+    return None
+
+
+def _farfield_source_for_duration(
+    source: Path, duration: float, staging_dir: Path
+) -> tuple[Path, dict[str, Any] | None, Path | None]:
+    """Extend only a single steady Farfield layer when a session exceeds its preset length.
+
+    Frequencies, noise, levels, and channel parameters are copied unchanged. A
+    preset with multiple fixed segments is never re-timed; the renderer will
+    report that as a genuine session-duration blocker.
+    """
+    preset = load_yaml_file(source)
+    segments = preset.get("segments") or []
+    if len(segments) != 1:
+        return source, None, None
+    segment = segments[0]
+    configured = segment.get("duration")
+    if configured == "hold":
+        return source, None, None
+    fixed_duration = _duration_seconds(configured)
+    if fixed_duration is None or duration <= fixed_duration + 0.001:
+        return source, None, None
+    emerge = preset.get("emerge")
+    if emerge not in (None, False):
+        emerge_duration = _duration_seconds((emerge or {}).get("duration_s"))
+        if emerge_duration not in (None, 0.0):
+            return source, None, None
+
+    derived = dict(preset)
+    derived["segments"] = [dict(segment, duration="hold")]
+    derived["default_total"] = float(duration)
+    descriptor, filename = tempfile.mkstemp(
+        prefix=".ocf-farfield-session-duration-", suffix=".yaml", dir=staging_dir
+    )
+    os.close(descriptor)
+    variant = Path(filename)
+    variant.write_text(yaml_safe_dump(derived), encoding="utf-8", newline="\n")
+    adjustment = {
+        "preset_source": source.relative_to(REPO_ROOT).as_posix(),
+        "configured_single_segment_duration_seconds": fixed_duration,
+        "session_duration_seconds": round(duration, 3),
+        "extended_seconds": round(duration - fixed_duration, 3),
+        "method": "continued the existing single steady segment; preset audio parameters unchanged",
+        "temporary_variant_sha256": _sha(variant),
+    }
+    return variant, adjustment, variant
 
 
 def load_profile(reference: str | Path) -> dict:
@@ -47,6 +114,14 @@ def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: 
         raise OCFError("semantic DSP profile: " + " | ".join(errors))
     if not math.isfinite(duration) or duration <= 0:
         raise OCFError("semantic DSP requires a finite positive session duration")
+    default_background = profile.get("default_background_state", profile["initial_state"])
+    if default_background != profile["initial_state"]:
+        raise OCFError("semantic DSP default background must be active at the initial state")
+    if profile["initial_state"] not in profile["states"]:
+        raise OCFError("required state DSP: initial state has no configured background selection")
+    fade_seconds = float(profile.get("ending_fade_seconds", 0))
+    if not math.isfinite(fade_seconds) or fade_seconds < 0:
+        raise OCFError("semantic DSP ending fade must be finite and nonnegative")
     events = list(iter_events(doc))
     timing = {row["id"]: row for row in event_timing}
     if len(timing) != len(event_timing):
@@ -54,9 +129,23 @@ def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: 
     current = profile["initial_state"]
     required = {current}
     transitions = []
+    ignored_state_events = set(profile.get("ignored_state_events", []))
+    ignored_directives = []
+    observed_directives = set()
     for event in events:
         directive = (event.get("dsp") or {}).get("state")
         if directive is None:
+            continue
+        observed_directives.add(event["id"])
+        if event["id"] in ignored_state_events:
+            ignored_directives.append(
+                {
+                    "event_id": event["id"],
+                    "semantic": event.get("semantic"),
+                    "directive": directive,
+                    "reason": "explicitly ignored by selected DSP profile; logical narration state is retained",
+                }
+            )
             continue
         if event["id"] not in timing:
             raise OCFError(f"state event {event['id']} has no measured semantic timing")
@@ -111,6 +200,12 @@ def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: 
         current = target
     if not transitions:
         raise OCFError("semantic DSP requested but session contains no state directives")
+    unknown_ignored = ignored_state_events - observed_directives
+    if unknown_ignored:
+        raise OCFError(
+            "DSP profile ignores state event(s) absent from this session: "
+            + ", ".join(sorted(unknown_ignored))
+        )
     missing = required - profile["states"].keys()
     if missing:
         raise OCFError("required state DSP is not configured: " + ", ".join(sorted(missing)))
@@ -198,10 +293,16 @@ def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: 
         "profile_version": profile["version"],
         "seed": profile["seed"],
         "initial_state": profile["initial_state"],
+        "default_background_state": profile.get(
+            "default_background_state", profile["initial_state"]
+        ),
         "curve": profile["transitions"]["curve"],
         "duration_s": duration,
+        "ending_fade_seconds": min(fade_seconds, duration),
         "selections": selections,
         "transitions": transitions,
+        "ignored_state_directives": ignored_directives,
+        "stage_backgrounds": profile.get("stage_backgrounds", {}),
     }
     if approaches:
         program["approaches"] = approaches
@@ -247,6 +348,12 @@ def gain_at(program: dict, state: str, time: float) -> float:
             gain += incoming
         if transition["from"] == state:
             gain -= 1 - outgoing
+    fade_seconds = float(program.get("ending_fade_seconds", 0))
+    if fade_seconds > 0:
+        progress = min(
+            1.0, max(0.0, (time - (program["duration_s"] - fade_seconds)) / fade_seconds)
+        )
+        gain = 0.0 if progress >= 1 else gain * math.cos(math.pi * progress / 2)
     return max(0.0, min(1.0, gain))
 
 
@@ -276,11 +383,19 @@ def _gain_expression(program: dict, state: str) -> str:
             pieces.append(f"+({incoming})")
         if transition["from"] == state:
             pieces.append(f"-(1-({outgoing}))")
-    return "clip(" + "".join(pieces) + ",0,1)"
+    envelope = "clip(" + "".join(pieces) + ",0,1)"
+    fade_seconds = float(program.get("ending_fade_seconds", 0))
+    if fade_seconds > 0:
+        fade_start = float(program["duration_s"]) - fade_seconds
+        envelope += (
+            f"*if(gte(t,{program['duration_s']:.9f}),0,"
+            f"cos(PI/2*clip((t-{fade_start:.9f})/{fade_seconds:.9f},0,1)))"
+        )
+    return envelope
 
 
 def _command(command: list[str]) -> subprocess.CompletedProcess:
-    result = subprocess.run(command, capture_output=True, text=True, timeout=600)
+    result = workspace_run(command, capture_output=True, text=True, timeout=600)
     if result.returncode:
         raise OCFError(f"semantic DSP engine failed: {' '.join(command)}\n{result.stderr[-1200:]}")
     return result
@@ -294,6 +409,7 @@ def render_program(
     output: Path,
     *,
     render_state: Any = None,
+    scratch_dir: Path | None = None,
 ) -> dict:
     """Render selected independent states and continuous envelopes; never source audio fallback."""
     program = plan_program(doc, event_timing, duration, profile)
@@ -303,9 +419,12 @@ def render_program(
     ffprobe = shutil.which("ffprobe")
     if not ffprobe:
         raise OCFError("semantic DSP requires ffprobe to verify actual state duration")
+    own_scratch = scratch_dir is None
+    scratch_dir = scratch_dir or workspace_temp_directory(prefix="ocf-dsp-render-")
     output.parent.mkdir(parents=True, exist_ok=True)
     sources = []
     commands = []
+    duration_extensions = []
     for state, selection in program["selections"].items():
         if selection["mode"] == "disabled":
             continue
@@ -314,13 +433,18 @@ def render_program(
         elif selection["backend"] == "farfield":
             from . import farfield
 
-            stem = output.parent / f"{state}-state-seed{program['seed']}.wav"
-            source = REPO_ROOT / selection["preset_file"]
+            stem = scratch_dir / f"{state}-state-seed{program['seed']}.wav"
+            configured_source = REPO_ROOT / selection["preset_file"]
+            source, duration_adjustment, temporary_source = _farfield_source_for_duration(
+                configured_source, duration, scratch_dir
+            )
             args = [
                 "render",
                 str(source),
                 "--output",
                 str(stem),
+                "--duration",
+                f"{duration:.3f}",
                 "--seed",
                 str(program["seed"]),
                 "--fade",
@@ -330,14 +454,24 @@ def render_program(
                 result = farfield.run_farfield(args)
             except farfield.OCFFarfieldMissing as exc:
                 raise OCFError(f"required state {state}: {exc}") from exc
+            finally:
+                if temporary_source is not None:
+                    temporary_source.unlink(missing_ok=True)
             commands.append(["farfield", *args])
             if result.returncode or not stem.is_file():
                 raise OCFError(f"required state {state}: Farfield render failed: {result.stderr}")
+            if duration_adjustment:
+                selection["duration_extension"] = duration_adjustment
+                duration_extensions.append({"state": state, **duration_adjustment})
         else:
             from .audio_build import _render_background
 
             stem, note = _render_background(
-                selection["preset_id"], "required", selection["backend"], max_seconds=duration
+                selection["preset_id"],
+                "required",
+                selection["backend"],
+                max_seconds=duration,
+                scratch_dir=scratch_dir,
             )
             if stem is None:
                 raise OCFError(f"required state {state}: {note}")
@@ -346,9 +480,11 @@ def render_program(
         )
         import json
 
-        if float(json.loads(metadata.stdout)["format"]["duration"]) + 0.001 < duration:
+        state_duration = float(json.loads(metadata.stdout)["format"]["duration"])
+        if state_duration + 0.001 < duration:
             raise OCFError(
-                f"state {state} stem is shorter than the session; refusing a silent loop/fallback"
+                f"state {state} stem ({state_duration:.3f}s) is shorter than the session "
+                f"({duration:.3f}s); refusing a silent loop/fallback"
             )
         calibration = 1.0
         if profile.get("target_state_rms_dbfs") is not None:
@@ -383,9 +519,13 @@ def render_program(
     commands.append(command)
     program["external_commands"] = commands
     program["output_sha256"] = _sha(output)
+    if duration_extensions:
+        program["duration_extensions"] = duration_extensions
     program["envelope_note"] = (
-        "OCF renderer crossfades across different measured generations, not a measured source morph; continuous state oscillators run on session time"
+        "OCF renderer crossfades across different measured generations, not a measured source morph; continuous state oscillators run on session time; the configured ending fade is applied to the active bed"
     )
+    if own_scratch:
+        cleanup_workspace_temp(scratch_dir)
     return program
 
 

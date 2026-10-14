@@ -7,9 +7,8 @@ write the resulting record and validate it immediately.
 
 from __future__ import annotations
 
+import os
 import re
-import subprocess
-import tempfile
 from collections.abc import Callable
 from contextvars import ContextVar
 from dataclasses import dataclass
@@ -26,6 +25,8 @@ from .paths import (
     REPO_ROOT,
     TEMPLATES_DIR,
     ensure_dir,
+    workspace_run,
+    workspace_temp_file,
 )
 from .utils import (
     OCFError,
@@ -1203,7 +1204,7 @@ def run_edit_function(query: str | None) -> None:
     editor = os.environ.get("EDITOR") or ("notepad" if os.name == "nt" else "vi")
 
     try:
-        status = subprocess.call([editor, str(record.path)])
+        status = workspace_run([editor, str(record.path)]).returncode
     except OSError as exc:
         raise OCFError(f"cannot start editor {editor!r}: {exc}") from exc
     if status:
@@ -1214,7 +1215,7 @@ def run_edit_function(query: str | None) -> None:
 
 def tmp_dump(content: str) -> Path:
     """Write content to a temp file and return its path (for editor flows)."""
-    handle = tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False, encoding="utf-8")
-    handle.write(content)
-    handle.close()
-    return Path(handle.name)
+    descriptor, path = workspace_temp_file(prefix="ocf-editor-", suffix=".yaml")
+    with os.fdopen(descriptor, "w", encoding="utf-8", newline="\n") as handle:
+        handle.write(content)
+    return path

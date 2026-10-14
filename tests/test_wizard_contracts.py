@@ -267,7 +267,11 @@ def test_editor_planning_errors_do_not_claim_validation(monkeypatch, tmp_path, c
     monkeypatch.setattr(indexes, "load_function_by_slug_or_id", lambda q: NS(path=path))
     calls = []
     monkeypatch.setenv("EDITOR", "fixture-editor")
-    monkeypatch.setattr(prompts.subprocess, "call", lambda argv: calls.append(argv) or 0)
+    monkeypatch.setattr(
+        prompts,
+        "workspace_run",
+        lambda argv: calls.append(argv) or NS(returncode=0),
+    )
     monkeypatch.setattr(prompts, "validate_function_file", lambda p: calls.append(p) or "validated")
     monkeypatch.setattr(prompts, "print_result", lambda result: calls.append(result))
     prompts.run_edit_function("fixture")
@@ -275,34 +279,23 @@ def test_editor_planning_errors_do_not_claim_validation(monkeypatch, tmp_path, c
     monkeypatch.delenv("EDITOR")
     prompts.run_edit_function("fixture")
     assert calls[-3][0] in ("vi", "notepad")
-    monkeypatch.setattr(prompts.subprocess, "call", lambda argv: 7)
+    monkeypatch.setattr(prompts, "workspace_run", lambda argv: NS(returncode=7))
     with pytest.raises(utils.OCFError, match="exit 7"):
         prompts.run_edit_function("fixture")
 
     def missing(argv):
         raise OSError("missing executable")
 
-    monkeypatch.setattr(prompts.subprocess, "call", missing)
+    monkeypatch.setattr(prompts, "workspace_run", missing)
     with pytest.raises(utils.OCFError, match="cannot start editor"):
         prompts.run_edit_function("fixture")
 
 
 def test_temporary_editor_document_preserves_unicode_and_is_closed(monkeypatch, tmp_path):
-    calls = []
-    handle = NS(
-        name=str(tmp_path / "temporary.yaml"),
-        write=lambda text: calls.append(text),
-        close=lambda: calls.append("closed"),
-    )
-    monkeypatch.setattr(
-        prompts.tempfile, "NamedTemporaryFile", lambda **kw: calls.append(kw) or handle
-    )
-    assert prompts.tmp_dump("Café\n") == Path(handle.name)
-    assert calls == [
-        {"mode": "w", "suffix": ".yaml", "delete": False, "encoding": "utf-8"},
-        "Café\n",
-        "closed",
-    ]
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "ocf-work"))
+    path = prompts.tmp_dump("Café\n")
+    assert path.is_relative_to(tmp_path / "ocf-work" / "tmp")
+    assert path.read_text(encoding="utf-8") == "Café\n"
 
 
 def test_manifest_id_allocation_reads_metadata_not_filename(monkeypatch, tmp_path):

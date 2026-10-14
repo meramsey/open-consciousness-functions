@@ -3,6 +3,7 @@
 import json
 import os
 import subprocess
+from pathlib import Path
 
 import pytest
 from ocf_tools import audio, farfield, sbagenx
@@ -24,7 +25,8 @@ def result(code=0, stdout="", stderr=""):
 @pytest.mark.parametrize(
     "outcome", ["missing", "stdout", "stderr", "nonzero", "empty", "oserror", "timeout"]
 )
-def test_detection_probes_and_failures(monkeypatch, module, status_cls, probe, outcome):
+def test_detection_probes_and_failures(monkeypatch, tmp_path, module, status_cls, probe, outcome):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "ocf-work"))
     name = "farfield" if module is farfield else "sbagenx"
     monkeypatch.setattr(
         module.shutil, "which", lambda requested: None if outcome == "missing" else "engine"
@@ -51,7 +53,12 @@ def test_detection_probes_and_failures(monkeypatch, module, status_cls, probe, o
     if outcome == "missing":
         assert not calls and status.executable is None
     else:
-        assert calls == [(["engine", probe], {"capture_output": True, "text": True, "timeout": 8})]
+        argv, kwargs = calls[0]
+        assert argv == ["engine", probe]
+        assert kwargs["capture_output"] is True and kwargs["text"] is True
+        assert kwargs["timeout"] == 8
+        temporary_path = Path(kwargs["env"]["TMPDIR"])
+        assert temporary_path.parent == (tmp_path / "ocf-work" / "tmp").resolve()
         expected = "farfield 1.2" if module is farfield else "2.3"
         assert status.version == (
             expected
@@ -67,7 +74,10 @@ def test_detection_probes_and_failures(monkeypatch, module, status_cls, probe, o
         (sbagenx, sbagenx.SbagenxStatus, sbagenx.OCFSbagenxMissing, "sbagenx"),
     ],
 )
-def test_public_run_missing_and_argv_boundary(monkeypatch, module, status_cls, error_cls, name):
+def test_public_run_missing_and_argv_boundary(
+    monkeypatch, tmp_path, module, status_cls, error_cls, name
+):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "ocf-work"))
     monkeypatch.setattr(module, "check_" + name, lambda: status_cls(True, None))
     with pytest.raises(error_cls, match="optional"):
         getattr(module, "run_" + name)(["anything"])
@@ -78,12 +88,10 @@ def test_public_run_missing_and_argv_boundary(monkeypatch, module, status_cls, e
         module.subprocess, "run", lambda argv, **kwargs: calls.append((argv, kwargs)) or response
     )
     assert getattr(module, "run_" + name)(["--fixture", "with spaces"]) is response
-    assert calls == [
-        (
-            ["engine", "--fixture", "with spaces"],
-            {"check": False, "text": True, "capture_output": True},
-        )
-    ]
+    argv, kwargs = calls[0]
+    assert argv == ["engine", "--fixture", "with spaces"]
+    assert kwargs["check"] is False and kwargs["text"] is True and kwargs["capture_output"] is True
+    assert Path(kwargs["env"]["TMPDIR"]).parent == (tmp_path / "ocf-work" / "tmp").resolve()
 
 
 @pytest.mark.parametrize(

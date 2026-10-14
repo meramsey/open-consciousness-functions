@@ -8,6 +8,7 @@ from array import array
 from copy import deepcopy
 
 import pytest
+import yaml
 from conftest import REPO_ROOT
 from ocf_tools.indexes import load_yaml_file
 from ocf_tools.semantic_dsp import _gain_expression, gain_at, load_profile, plan_program
@@ -133,6 +134,30 @@ def test_measured_timing_resolves_backend_without_session_filenames():
         (90, 98),
     ]
     assert program["transitions"][0]["envelope_provenance"].startswith("profile design-selected")
+
+
+def test_profile_ignored_logical_events_keep_default_bed_and_apply_ending_fade():
+    profile = load_profile("OCF-DSP-DEVELOPMENT-V4-001")
+    profile["initial_state"] = "focus-10"
+    profile["default_background_state"] = "focus-10"
+    profile["states"].pop("ordinary-waking")
+    profile["ignored_state_events"] = ["ten", "wake"]
+    profile["ending_fade_seconds"] = 10
+    program = plan_program(state_doc(), TIMES, 100, profile)
+    assert program["initial_state"] == "focus-10"
+    assert program["selections"].keys() == {"focus-10", "focus-11"}
+    assert [(row["from"], row["to"]) for row in program["transitions"]] == [
+        ("focus-10", "focus-11"),
+        ("focus-11", "focus-10"),
+    ]
+    assert {row["event_id"] for row in program["ignored_state_directives"]} == {"ten", "wake"}
+    assert gain_at(program, "focus-10", 0) == 1
+    assert gain_at(program, "focus-10", 80) == 1
+    assert gain_at(program, "focus-10", 95) == pytest.approx(math.sqrt(0.5))
+    assert gain_at(program, "focus-10", 100) == 0
+    assert "cos(PI/2*clip((t-90.000000000)/10.000000000,0,1))" in _gain_expression(
+        program, "focus-10"
+    )
 
 
 def test_continuous_equal_power_morph_without_an_intermediate_state():
@@ -537,14 +562,41 @@ def test_farfield_render_boundary_records_commands_and_validates_outputs(monkeyp
     monkeypatch.setattr(semantic_dsp, "_sha", lambda _path: "c" * 64)
     output = tmp_path / "bed.wav"
     result = semantic_dsp.render_program(state_doc(), TIMES, 100, profile, output)
-    assert (
-        len([command for command in result["external_commands"] if command[0] == "farfield"]) == 2
+    farfield_commands = [
+        command for command in result["external_commands"] if command[0] == "farfield"
+    ]
+    assert all(
+        "--duration" in command and command[command.index("--duration") + 1] == "100.000"
+        for command in farfield_commands
     )
+    assert len(farfield_commands) == 2
     assert all(
         selection["stem_sha256"] == "c" * 64
         for selection in result["selections"].values()
         if selection["mode"] == "preset"
     )
+
+
+def test_farfield_session_extension_changes_only_single_steady_segment_duration(tmp_path):
+    from ocf_tools import semantic_dsp
+    from ocf_tools.paths import REPO_ROOT
+
+    source = REPO_ROOT / "audio/background/presets/farfield/focus-11-b.yaml"
+    before = semantic_dsp._sha(source)
+    temporary, extension, temporary_file = semantic_dsp._farfield_source_for_duration(
+        source, 1867.672, tmp_path
+    )
+    assert temporary_file == temporary and temporary != source
+    changed = yaml.safe_load(temporary.read_text(encoding="utf-8"))
+    original = yaml.safe_load(source.read_text(encoding="utf-8"))
+    assert changed["segments"][0]["duration"] == "hold"
+    assert changed["default_total"] == pytest.approx(1867.672)
+    assert {
+        key: value for key, value in changed.items() if key not in {"segments", "default_total"}
+    } == {key: value for key, value in original.items() if key not in {"segments", "default_total"}}
+    assert changed["segments"][0]["groups"] == original["segments"][0]["groups"]
+    assert extension["extended_seconds"] == pytest.approx(67.672)
+    assert semantic_dsp._sha(source) == before
 
 
 @pytest.mark.parametrize("outcome", ["failure", "missing-output", "missing-engine"])

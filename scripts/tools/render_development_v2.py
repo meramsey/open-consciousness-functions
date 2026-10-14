@@ -11,7 +11,6 @@ from __future__ import annotations
 import argparse
 import json
 import shutil
-import subprocess
 import sys
 import wave
 from pathlib import Path
@@ -20,6 +19,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
+from ocf_tools.paths import workspace_run  # noqa: E402
 from ocf_tools.semantic_dsp import _sha, load_profile, render_program  # noqa: E402
 
 
@@ -76,7 +76,7 @@ def main():
     commands = []
 
     def run(command):
-        result = subprocess.run(command, text=True, capture_output=True, timeout=600)
+        result = workspace_run(command, text=True, capture_output=True, timeout=600)
         commands.append(command)
         with (args.output / "engine.log").open("a") as log:
             log.write(json.dumps(command) + "\n" + result.stdout + result.stderr + "\n")
@@ -138,9 +138,9 @@ def main():
         "designation": designation,
         "audition_label": args.label,
         "dsp_profile": program["profile_id"],
-        "git_base": subprocess.check_output(
-            ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
-        ).strip(),
+        "git_base": workspace_run(
+            ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True, capture_output=True, check=True
+        ).stdout.strip(),
         "source_sha256": {str(path.relative_to(ROOT)): _sha(path) for path in sources},
         "speech_reused_byte_for_byte": _sha(speech) == _sha(source),
         "v1_speech_sha256": _sha(source),

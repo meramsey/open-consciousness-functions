@@ -662,7 +662,7 @@ class TestAudioBuild:
             return type("R", (), {"returncode": 0, "stderr": ""})()
 
         monkeypatch.setattr(build_mod.shutil, "which", lambda name: "/usr/bin/ffmpeg")
-        monkeypatch.setattr(build_mod.subprocess, "run", fake_run)
+        monkeypatch.setattr(build_mod, "workspace_run", fake_run)
         encoder = build_mod._encode(
             wav,
             "mp3",

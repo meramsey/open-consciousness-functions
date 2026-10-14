@@ -7,8 +7,6 @@ import os
 import re
 import shutil
 import struct
-import subprocess
-import tempfile
 from datetime import UTC, datetime
 from pathlib import Path, PureWindowsPath
 from typing import Any
@@ -16,7 +14,14 @@ from typing import Any
 from .artifact_names import ArtifactNamer, safe_component
 from .indexes import find_audio_manifest, load_audio_manifests, load_function_by_id
 from .locale import LocaleCatalog, normalize_tag
-from .paths import REPO_ROOT, SCHEMAS_DIR
+from .paths import (
+    REPO_ROOT,
+    SCHEMAS_DIR,
+    publish_workspace_temp_directory,
+    record_workspace_failure,
+    workspace_run,
+    workspace_temp_directory,
+)
 from .utils import OCFError, sha256_of_file
 
 MAX_ARTWORK_BYTES = 20 * 1024 * 1024
@@ -133,14 +138,14 @@ def _verify_audio(
     ffprobe = shutil.which("ffprobe")
     if not ffprobe:
         raise OCFError("ffprobe is required to verify release metadata and embedded artwork")
-    decode = subprocess.run(
+    decode = workspace_run(
         [ffmpeg, "-v", "error", "-i", str(path), "-f", "null", "-"],
         capture_output=True,
         text=True,
     )
     if decode.returncode:
         raise OCFError(f"audio decode verification failed for {path.name}: {decode.stderr[-400:]}")
-    probe = subprocess.run(
+    probe = workspace_run(
         [ffprobe, "-v", "error", "-show_format", "-show_streams", "-of", "json", str(path)],
         capture_output=True,
         text=True,
@@ -170,7 +175,7 @@ def _verify_audio(
         raise OCFError(f"{path.name}: embedded cover artwork was not found")
     extracted = path.with_name(f".{path.stem}.cover{artwork.suffix}")
     try:
-        result = subprocess.run(
+        result = workspace_run(
             [
                 ffmpeg,
                 "-v",
@@ -367,7 +372,7 @@ def package_release(
                 f"release path collides case-insensitively with existing directory: {collision}"
             )
     try:
-        stage = Path(tempfile.mkdtemp(prefix=".ocf-release-stage-", dir=final_dir.parent))
+        stage = workspace_temp_directory(prefix="ocf-release-stage-")
     except OSError as exc:
         raise OCFError(
             f"cannot create release staging directory in {final_dir.parent}: {exc}"
@@ -515,7 +520,7 @@ def package_release(
             )
             os.replace(final_dir, backup)
         try:
-            os.replace(stage, final_dir)
+            publish_workspace_temp_directory(stage, final_dir)
         except BaseException:
             if backup is not None and backup.exists() and not final_dir.exists():
                 os.replace(backup, final_dir)
@@ -524,11 +529,16 @@ def package_release(
         return {"dry_run": False, **planned, "manifest": manifest}
     except OSError as exc:
         if stage.exists():
-            shutil.rmtree(stage, ignore_errors=True)
+            record_workspace_failure(
+                stage.name, f"release filesystem failure: {exc}; retained scratch: {stage}"
+            )
         raise OCFError(f"release packaging failed because of a filesystem error: {exc}") from exc
-    except BaseException:
+    except BaseException as exc:
         if stage.exists():
-            shutil.rmtree(stage, ignore_errors=True)
+            record_workspace_failure(
+                stage.name,
+                f"release failure: {type(exc).__name__}: {exc}; retained scratch: {stage}",
+            )
         raise
 
 

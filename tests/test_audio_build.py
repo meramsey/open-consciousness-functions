@@ -177,14 +177,18 @@ class TestBackgroundEngineResolution:
     def test_manifest_engine_wins_over_auto_farfield(self, monkeypatch):
         manifest = {"id": "OCF-BG-X", "name": "x", "engine": "sbagenx"}
         monkeypatch.setattr(ab, "_resolve_background_manifest", lambda preset: manifest)
-        monkeypatch.setattr(ab, "_render_sbagenx", lambda preset, strategy: ("bed.wav", "sbagenx"))
+        monkeypatch.setattr(
+            ab, "_render_sbagenx", lambda preset, strategy, **kwargs: ("bed.wav", "sbagenx")
+        )
         out, note = ab._render_background("OCF-BG-X", "optional", engine="farfield")
         assert (out, note) == ("bed.wav", "sbagenx")
 
     def test_explicit_engine_requested_overrides_manifest(self, monkeypatch):
         manifest = {"id": "OCF-BG-X", "name": "x", "engine": "reference-master"}
         monkeypatch.setattr(ab, "_resolve_background_manifest", lambda preset: manifest)
-        monkeypatch.setattr(ab, "_render_sbagenx", lambda preset, strategy: ("sb.bed", "sbagenx"))
+        monkeypatch.setattr(
+            ab, "_render_sbagenx", lambda preset, strategy, **kwargs: ("sb.bed", "sbagenx")
+        )
         # The ``farfield`` default acts as "auto"; an explicit non-default
         # engine request overrides the manifest's engine.
         out, note = ab._render_background("OCF-BG-X", "optional", engine="sbagenx")
@@ -289,7 +293,7 @@ class TestNarrationGainWindows:
             return _Result()
 
         monkeypatch.setattr(ab.shutil, "which", lambda name: "ffmpeg")
-        monkeypatch.setattr(ab.subprocess, "run", fake_run)
+        monkeypatch.setattr(ab, "workspace_run", fake_run)
         ab._mix_master_ffmpeg(
             tmp_path / "speech.wav",
             tmp_path / "bed.wav",

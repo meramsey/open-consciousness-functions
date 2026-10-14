@@ -9,7 +9,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from .paths import REPO_ROOT
+from .paths import REPO_ROOT, workspace_run
 
 CORE_REQUIREMENTS = ["PyYAML>=6.0", "jsonschema>=4.18", "referencing>=0.30"]
 
@@ -49,7 +49,7 @@ def setup_plan(prefix: Path, *, system: str | None = None, root: Path = REPO_ROO
 
 
 def apply_setup(plan: dict, *, runner=None) -> dict:
-    runner = runner or subprocess.run
+    runner = runner or workspace_run
     if sys.version_info < (3, 11):  # noqa: UP036 - standalone bootstrap can start on an older interpreter
         raise ValueError("run native setup using Python>=3.11")
     commands = plan["commands"]

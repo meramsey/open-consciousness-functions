@@ -9,4 +9,6 @@ def test_image_does_not_copy_reference_or_user_audio():
     assert "COPY . " not in dockerfile and "COPY references" not in dockerfile
     assert "USER ocf" in dockerfile and "ffmpeg" in dockerfile
     assert "references" in ignored and "audio/rendered" in ignored and "**/*.onnx" in ignored
+    assert ".ocf-work" in (REPO_ROOT / ".dockerignore").read_text()
+    assert ".ocf-work/" in (REPO_ROOT / ".gitignore").read_text()
     assert "OCF-TPL-SESSION-ATTENTION-001" not in dockerfile

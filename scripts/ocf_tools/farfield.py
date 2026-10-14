@@ -18,7 +18,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 from urllib.request import url2pathname
 
-from .paths import REPO_ROOT
+from .paths import REPO_ROOT, workspace_run
 
 FARFIELD_REPOSITORY = "https://github.com/txus/farfield"
 
@@ -37,7 +37,7 @@ def check_farfield() -> FarfieldStatus:
         return FarfieldStatus(available=False)
     version: str | None = None
     try:
-        result = subprocess.run(
+        result = workspace_run(
             [executable, "--version"],
             capture_output=True,
             text=True,
@@ -67,7 +67,7 @@ def run_farfield(args: list[str]) -> subprocess.CompletedProcess[str]:
     status = check_farfield()
     if not status.available or not status.executable:
         raise OCFFarfieldMissing(installation_guidance())
-    return subprocess.run([status.executable, *args], check=False, text=True, capture_output=True)
+    return workspace_run([status.executable, *args], check=False, text=True, capture_output=True)
 
 
 class OCFFarfieldMissing(RuntimeError):

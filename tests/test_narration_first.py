@@ -289,6 +289,8 @@ def test_audio_render_cli_routes_function_locale_voice_and_sleep_pacing(monkeypa
                 "audio",
                 "render",
                 "OCF-SLP-005",
+                "--mode",
+                "narration-only",
                 "--locale",
                 "en-US",
                 "--voice",

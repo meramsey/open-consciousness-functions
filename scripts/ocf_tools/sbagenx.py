@@ -20,7 +20,7 @@ import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 
-from .paths import REPO_ROOT
+from .paths import REPO_ROOT, workspace_run
 
 SBAGENX_REPOSITORY = "https://github.com/lm7137/SBaGenX"
 
@@ -47,7 +47,7 @@ def check_sbagenx() -> SbagenxStatus:
         return SbagenxStatus(available=False)
     version: str | None = None
     try:
-        result = subprocess.run([executable, "-h"], capture_output=True, text=True, timeout=8)
+        result = workspace_run([executable, "-h"], capture_output=True, text=True, timeout=8)
         head = (result.stdout or result.stderr).splitlines()[:4]
         for line in head:
             match = re.search(
@@ -81,7 +81,7 @@ def run_sbagenx(args: list[str]) -> subprocess.CompletedProcess[str]:
     status = check_sbagenx()
     if not status.available or not status.executable:
         raise OCFSbagenxMissing(installation_guidance())
-    return subprocess.run([status.executable, *args], check=False, text=True, capture_output=True)
+    return workspace_run([status.executable, *args], check=False, text=True, capture_output=True)
 
 
 class OCFSbagenxMissing(RuntimeError):

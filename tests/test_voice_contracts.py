@@ -157,9 +157,10 @@ def test_language_probe_plans_command_and_rejects_unsupported(monkeypatch, case)
     )
     if case == "ok":
         v.check_backend_locale(spec)
-        assert calls == [
-            (["engine", "--voices=fr"], {"capture_output": True, "text": True, "timeout": 15})
-        ]
+        assert calls[0][0] == ["engine", "--voices=fr"]
+        assert calls[0][1]["capture_output"] is True
+        assert calls[0][1]["text"] is True and calls[0][1]["timeout"] == 15
+        assert calls[0][1]["env"]["TMPDIR"] == calls[0][1]["env"]["TMP"]
     else:
         with pytest.raises(OCFError):
             v.check_backend_locale(spec)
@@ -176,11 +177,13 @@ def test_native_cue_boundary_closes_descriptor_and_cleans_every_outcome(
 ):
     spec = v.resolve_backend({"backend": backend, "piper_model": "model.onnx"}, [])
     monkeypatch.setattr(v.shutil, "which", lambda name: None if case == "missing" else "engine")
-    original_mkstemp, original_close = v.tempfile.mkstemp, os.close
+    original_temp_file, original_close = v.workspace_temp_file, os.close
     closed, allocated, calls = [], [], []
 
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "ocf-work"))
+
     def allocate(**kw):
-        fd, path = original_mkstemp(dir=tmp_path, **kw)
+        fd, path = original_temp_file(**kw)
         allocated.append((fd, Path(path)))
         return fd, path
 
@@ -188,7 +191,7 @@ def test_native_cue_boundary_closes_descriptor_and_cleans_every_outcome(
         closed.append(fd)
         original_close(fd)
 
-    monkeypatch.setattr(v.tempfile, "mkstemp", allocate)
+    monkeypatch.setattr(v, "workspace_temp_file", allocate)
     monkeypatch.setattr(v.os, "close", close)
     payload = wav([100, -100])
 
@@ -210,12 +213,20 @@ def test_native_cue_boundary_closes_descriptor_and_cleans_every_outcome(
     monkeypatch.setattr(v.subprocess, "run", run)
     if case == "ok":
         assert v.render_cue_wav(spec, "Café", timeout=10) == payload
-        assert calls[0][1] == {"input": "Café".encode(), "capture_output": True, "timeout": 10}
+        assert calls[0][1]["input"] == "Café".encode()
+        assert calls[0][1]["capture_output"] is True and calls[0][1]["timeout"] == 10
+        assert (
+            Path(calls[0][1]["env"]["TMPDIR"]).parent == (tmp_path / "ocf-work" / "tmp").resolve()
+        )
         assert "engine" == calls[0][0][0]
     else:
         with pytest.raises(OCFError):
             v.render_cue_wav(spec, "Café", timeout=10)
-    assert list(tmp_path.iterdir()) == []
+    if allocated:
+        if case == "ok":
+            assert not allocated[0][1].exists() and not allocated[0][1].parent.exists()
+        else:
+            assert allocated[0][1].parent.exists()
     if case == "missing":
         assert not calls and not allocated
 
