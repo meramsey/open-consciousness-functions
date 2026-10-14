@@ -106,10 +106,12 @@ python3 scripts/ocf.py audio release OCF-AUDIO-0001 --locale en-US \
   --output ./releases
 ```
 
-Packaging fixture tests use synthetic PCM and real FFmpeg codecs; they verify
-packaging, encoding, tags, and artwork but do not claim successful natural
-language synthesis. Function records without a registered audio implementation
-cannot be released until an implementation and timed narration are authored.
+Packaging fixture tests use synthetic PCM and real FFmpeg codecs when FFmpeg and
+ffprobe are installed; codec round-trip cases skip when those optional tools are
+unavailable. They verify packaging, encoding, tags, and artwork but do not claim
+successful natural-language synthesis. Function records without a registered
+audio implementation cannot be released until an implementation and timed
+narration are authored.
 
 Preparation stages such as optional affirmation and oHm/resonant tuning remain
 specified but not shipped. Focus-state auditory cue sound design also remains

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import shutil
 import struct
 import zlib
 from datetime import UTC, datetime
@@ -250,6 +251,8 @@ def _valid_manifest(artifact):
 @pytest.mark.external_tool
 @pytest.mark.parametrize("fmt", ["mp3", "flac"])
 def test_real_codec_metadata_and_artwork_round_trip(tmp_path, fmt):
+    if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
+        pytest.skip("real codec round-trip requires optional ffmpeg and ffprobe")
     cover = _png(tmp_path / "cover.png")
     source = _wav(tmp_path / "source.wav")
     output = tmp_path / f"roundtrip.{fmt}"
@@ -287,6 +290,8 @@ def test_real_codec_metadata_and_artwork_round_trip(tmp_path, fmt):
 @pytest.mark.audio_integration
 @pytest.mark.external_tool
 def test_package_publishes_complete_verified_release_and_blocks_collision(tmp_path, monkeypatch):
+    if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
+        pytest.skip("real package verification requires optional ffmpeg and ffprobe")
     audio_manifest = {
         "id": "OCF-AUDIO-9910",
         "function_id": "OCF-BOD-010",
@@ -378,11 +383,8 @@ def test_failed_manifest_validation_never_publishes_partial_release(tmp_path, mo
     def fake_build(query, *, out_root, formats, tag_overrides, artwork, **kwargs):
         out_root = Path(out_root)
         out_root.mkdir(parents=True)
-        source = _wav(tmp_path / "render.wav")
         for fmt in formats:
-            audio_build._encode(
-                source, fmt, out_root / f"{query}-master.{fmt}", tag_overrides, artwork
-            )
+            (out_root / f"{query}-master.{fmt}").write_bytes(b"fixture")
         render = {
             "voice": {},
             "master": {"sample_rate": 16000, "channels": 1},
@@ -392,6 +394,18 @@ def test_failed_manifest_validation_never_publishes_partial_release(tmp_path, mo
         return render
 
     monkeypatch.setattr(audio_build, "build", fake_build)
+    monkeypatch.setattr(
+        rel,
+        "_verify_audio",
+        lambda path, **kwargs: {
+            "codec": path.suffix.lstrip("."),
+            "sample_rate": 16000,
+            "channels": 1,
+            "duration_seconds": 1.0,
+            "bit_rate": None,
+            "tags": {},
+        },
+    )
     monkeypatch.setattr(
         rel, "_verify_manifest", lambda *_args: (_ for _ in ()).throw(OCFError("injected"))
     )
