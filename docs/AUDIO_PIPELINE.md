@@ -24,6 +24,10 @@ The main implementation modules are:
 - `scripts/ocf_tools/semantic_dsp.py`: measured-ledger state dispatch;
 - `scripts/ocf_tools/audio_build.py`: background selection, mixing, encoding,
   tags, and render manifests;
+- `scripts/ocf_tools/artifact_names.py`: safe deterministic localized artifact
+  filenames;
+- `scripts/ocf_tools/release.py`: release artwork validation, metadata read-back,
+  transcript export, manifest validation, and staged publication;
 - `scripts/ocf_tools/farfield.py` and `sbagenx.py`: optional external adapters.
 
 ## Current sequence
@@ -46,6 +50,66 @@ The main implementation modules are:
    or silent source-loop substitution is allowed.
 7. Encode requested outputs and emit the render manifest with timing, source
    provenance, preset/engine information, tags, and artifact checksums.
+
+## Final release packages
+
+`python3 scripts/ocf.py audio release <AUDIO_ID|FUNCTION_ID> --artwork
+<approved-cover.png> --locale en-US --format flac --format mp3 --output
+<release-root> --dry-run` previews package paths. Remove `--dry-run` to render
+and publish after verification. A function ID is accepted only when exactly
+one audio implementation is registered; otherwise select an audio ID. The
+command requires a PNG or JPEG image supplied explicitly by the operator. OCF
+does not generate artwork or infer it from reference-corpus files.
+
+Each release directory contains localized audio filenames, a UTF-8 text
+transcript, `cover.png` or `cover.jpg`, and `manifest.json`. Filenames use
+`<FUNCTION_ID> - <localized title> - <requested locale>` with optional voice
+variant and explicit version components. Names use Unicode NFC, remove unsafe
+path characters, guard Windows device names, and truncate long components.
+Locale title fallback is resolved through `LocaleCatalog` and recorded in
+`title_resolution`; spoken narration resolution and fallback provenance are
+preserved separately in `narration_resolution`. Duplicate case-insensitive
+filenames are disambiguated.
+
+The transcript is assembled from each utterance's final `spoken_text` in the
+measured render ledger, after locale resolution and voice-specific
+pronunciation transformations. It is not reconstructed from source YAML or
+speech recognition. Empty narration yields a UTF-8 transcript containing its
+required final newline.
+
+MP3 uses FFmpeg's ID3v2.3 metadata mapping and an attached front-cover picture;
+FLAC uses Vorbis comments and a native embedded picture. Release metadata
+includes localized title, album, configured narrator/artist, OCF album artist,
+language, and function/release IDs, with date or additional known fields only
+when configured. No personal narrator, copyright, or license attribution is
+invented. The packager decodes each file with FFmpeg, reads tags with ffprobe,
+extracts the cover image, and compares the extracted bytes before publication.
+
+`schemas/audio-release.schema.json` defines manifest version 1.0. The manifest
+records requested and resolved locale provenance, voice and render settings,
+source narration reference, file metadata, relative filenames, byte sizes, and
+SHA-256 checksums. It never contains its own checksum or machine-specific
+artifact paths. `--force` is required to replace an existing release; the prior
+directory is archived beside the new package. Staging is cleaned up on failure
+and a failed validation never publishes a partial directory.
+
+Reproduce with an existing audio implementation and locally available TTS and
+codec tools:
+
+```bash
+python3 scripts/ocf.py voice doctor
+python3 scripts/ocf.py audio release OCF-AUDIO-0001 --locale en-US \
+  --format flac --format mp3 --artwork /path/to/approved-cover.png \
+  --output ./releases --dry-run
+python3 scripts/ocf.py audio release OCF-AUDIO-0001 --locale en-US \
+  --format flac --format mp3 --artwork /path/to/approved-cover.png \
+  --output ./releases
+```
+
+Packaging fixture tests use synthetic PCM and real FFmpeg codecs; they verify
+packaging, encoding, tags, and artwork but do not claim successful natural
+language synthesis. Function records without a registered audio implementation
+cannot be released until an implementation and timed narration are authored.
 
 Preparation stages such as optional affirmation and oHm/resonant tuning remain
 specified but not shipped. Focus-state auditory cue sound design also remains

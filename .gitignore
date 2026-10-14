@@ -35,6 +35,9 @@ audio/background/rendered/*
 audio/rendered/*
 !audio/rendered/.gitkeep
 
+# Final release packages are generated deliverables, not canonical source data.
+/releases/
+
 # Timed scripts whose wording is imported from third-party narration (citation-only;
 # keep local, do not commit). Timing-only structural templates in audio/scripts are fine.
 audio/scripts/attention.yaml

@@ -201,11 +201,28 @@ See `docs/AUDIO_STANDARD.md`, `docs/BACKGROUND_AUDIO.md`, and
 
 The implemented `ocf audio build` command creates local rendered masters,
 optional MP3/FLAC derivatives, embedded codec tags, checksums, and a YAML render
-manifest. It is a rendering workflow, not a complete portable release packager:
-localized title-based naming, verified embedded artwork, release transcript,
-and a self-contained release manifest are not currently provided as one
-release operation. Do not treat a render manifest as proof of a cleared or
-published release. See `docs/AUDIO_PIPELINE.md` for the implemented workflow.
+manifest. For a self-contained localized package, use `ocf audio release` with
+an explicitly approved PNG/JPEG cover image:
+
+```bash
+python3 scripts/ocf.py audio release OCF-BOD-010 \
+  --locale en-US --format flac --format mp3 \
+  --artwork /path/to/approved-cover.png --output ./release-output --dry-run
+python3 scripts/ocf.py audio release OCF-BOD-010 \
+  --locale en-US --format flac --format mp3 \
+  --artwork /path/to/approved-cover.png --output ./release-output
+```
+
+The command selects the unique registered audio implementation for a function
+ID (or accepts an audio implementation ID directly), renders into staging,
+creates localized title-based filenames and a UTF-8 transcript from final
+synthesis text, embeds and verifies MP3/FLAC metadata and artwork, writes a
+checksummed JSON manifest, and publishes the release directory only after
+validation. Existing releases are preserved unless `--force` is provided; a
+replaced release is retained in a sibling hidden archive directory. Artwork is
+required and never generated or inferred from reference material. A successful
+package is not an automatic rights-clearance decision. See
+`docs/AUDIO_PIPELINE.md` for metadata, manifest, and verification details.
 
 ## Transcript & audio pipeline — what is supported
 

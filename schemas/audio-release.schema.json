@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-consciousness-functions.org/schemas/audio-release.schema.json",
+  "title": "OCF Audio Release Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "function_id", "audio_id", "title", "requested_locale",
+    "title_resolution", "release_version", "voice_profile_id", "narrator", "narration_resolution",
+    "source_narration", "rendering", "created_at", "artifacts"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[A-Z0-9]{3,4}$"},
+    "audio_id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "requested_locale": {"type": "string", "minLength": 2},
+    "title_resolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requested_locale", "resolved_locale", "fallback", "resource_key"],
+      "properties": {
+        "requested_locale": {"type": "string"},
+        "resolved_locale": {"type": "string"},
+        "fallback": {"type": "boolean"},
+        "resource_key": {"type": ["string", "null"]}
+      }
+    },
+    "release_version": {"type": "string", "minLength": 1},
+    "voice_profile_id": {"type": ["string", "null"]},
+    "narrator": {"type": ["string", "null"]},
+    "source_narration": {"type": "string"},
+    "narration_resolution": {"type": ["object", "null"]},
+    "rendering": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["backend", "locale", "sample_rate", "channels", "timing_mode"],
+      "properties": {
+        "backend": {"type": ["string", "null"]},
+        "locale": {"type": ["string", "null"]},
+        "voice_options": {"type": "object"},
+        "sample_rate": {"type": ["integer", "null"], "minimum": 1},
+        "channels": {"type": ["integer", "null"], "minimum": 1},
+        "timing_mode": {"type": ["string", "null"]},
+        "background": {"type": ["object", "null"]},
+        "narration_gain_windows": {"type": "array", "items": {"type": "object"}}
+      }
+    },
+    "created_at": {"type": "string", "format": "date-time"},
+    "artifacts": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["path", "format", "size_bytes", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "format": {"type": "string"},
+          "size_bytes": {"type": "integer", "minimum": 0},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "codec": {"type": "string"},
+          "sample_rate": {"type": "integer", "minimum": 1},
+          "channels": {"type": "integer", "minimum": 1},
+          "duration_seconds": {"type": "number", "minimum": 0},
+          "bit_rate": {"type": ["integer", "null"], "minimum": 1},
+          "width": {"type": "integer", "minimum": 1},
+          "height": {"type": "integer", "minimum": 1},
+          "tags": {"type": "object", "additionalProperties": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

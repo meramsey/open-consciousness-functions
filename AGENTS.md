@@ -148,13 +148,19 @@ background engines produces a failure or documented degradation. See
 ### Produce audio files
 
 `python3 scripts/ocf.py audio build <AUDIO_ID> --output <working-dir> --format
-wav --format flac --format mp3` renders audio derivatives and a YAML render
-manifest where requested encoders are available. `--tag KEY=VALUE` overrides
-supported tag values and `--force` permits replacement. This is not yet a
-self-contained final-release packager: artwork embedding, release transcript,
-localized release naming, and release manifest verification are not provided
-by this command. Do not publish its outputs as a complete release without those
-separate requirements being met. See `docs/AUDIO_PIPELINE.md`.
+wav --format flac --format mp3` renders audition/master artifacts. For a complete
+localized package, run
+`python3 scripts/ocf.py audio release <AUDIO_ID-or-FUNCTION_ID> --locale en-US
+--format flac --format mp3 --artwork <approved-cover.png> --output <release-root>
+--dry-run`, inspect intended paths, then repeat without `--dry-run`. Use
+`--voice <profile>`, `--version <version>`, repeatable `--tag KEY=VALUE`, and
+`--force` as needed. Release metadata override keys are title, album, artist,
+album_artist, date, track, language, comment, publisher, copyright, and label.
+The command requires explicit PNG/JPEG artwork and ffmpeg/ffprobe for embedded
+picture verification. It publishes only after codec decode, metadata, artwork,
+transcript, manifest, and checksum checks. A forced replacement retains the
+previous package in a sibling hidden archive directory. See
+`docs/AUDIO_PIPELINE.md` and `schemas/audio-release.schema.json`.
 
 ### Add a voice preset
 
@@ -194,9 +200,9 @@ are guidance prompts, not separate executable interfaces:
 - “Show me how to localize a function into Spanish.”
 - “Validate the command phrases for Nutricia.”
 - “Render an audition using my selected voice preset.”
-- “Package a release with MP3, FLAC, transcript, and artwork.” (Explain that
-  complete release packaging is not implemented; show the available audio build
-  command without claiming it creates the requested package.)
+- “Package a release with MP3, FLAC, transcript, and artwork.” (Use
+  `ocf audio release`; require an explicitly approved PNG/JPEG artwork file and
+  do not infer rights clearance from successful packaging.)
 - “Explain how to add a reusable voice preset.”
 - “Check whether generated documentation is up to date.”
 

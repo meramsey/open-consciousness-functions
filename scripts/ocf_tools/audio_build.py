@@ -186,6 +186,7 @@ def _encode(
     fmt: str,
     out_path: Path,
     tags: dict[str, str] | None = None,
+    artwork: str | Path | None = None,
 ) -> str:
     """Encode a WAV to another format; returns encoder name.
 
@@ -200,7 +201,19 @@ def _encode(
     ffmpeg = shutil.which("ffmpeg")
     if ffmpeg:
         codec = {"flac": "flac", "mp3": "libmp3lame"}.get(fmt)
-        cmd = [ffmpeg, "-y", "-i", str(intermediate), "-vn", "-codec:a", codec]
+        cmd = [ffmpeg, "-y", "-i", str(intermediate)]
+        if artwork is not None:
+            cmd += ["-i", str(artwork)]
+        cmd += ["-map", "0:a:0"]
+        if artwork is not None:
+            cmd += ["-map", "1:v:0", "-c:v", "copy", "-disposition:v:0", "attached_pic"]
+            cmd += [
+                "-metadata:s:v:0",
+                "title=Album cover",
+                "-metadata:s:v:0",
+                "comment=Cover (front)",
+            ]
+        cmd += ["-codec:a", codec]
         for key, value in tags.items():
             cmd += ["-metadata", f"{key}={value}"]
         if fmt == "mp3":
@@ -212,6 +225,8 @@ def _encode(
         raise OCFError(f"ffmpeg encode to {fmt} failed: {result.stderr[-200:]}")
 
     if fmt == "flac":
+        if artwork is not None:
+            raise OCFError("embedding release artwork requires ffmpeg; install ffmpeg")
         flac = shutil.which("flac")
         if flac:
             cmd = [flac, "-f", "-o", str(out_path), str(intermediate)]
@@ -283,6 +298,9 @@ def _resolve_tags(
         "OCF_FUNCTION": function_name,
         "OCF_COMMAND": command,
         "OCF_AUDIO_VERSION": str(manifest.get("version") or ""),
+        "OCF_RELEASE_VERSION": str(
+            manifest.get("release_version") or manifest.get("version") or ""
+        ),
         "OCF_NARRATOR": str(manifest.get("narrator") or ""),
         "OCF_GENERATOR": f"OCF audio build v{OCF_VERSION}",
         "OCF_TIMING_MODE": str(narration_meta.get("timing_mode") or ""),
@@ -293,12 +311,17 @@ def _resolve_tags(
     pacing_profile = doc.get("pacing_profile") if isinstance(doc, dict) else None
     if isinstance(pacing_profile, dict) and pacing_profile.get("id"):
         extra["OCF_PACING_PROFILE"] = str(pacing_profile["id"])
+    artist = str(manifest.get("narrator") or "Open Consciousness Functions")
     tags = {
         "title": title,
-        "artist": "Open Consciousness Functions",
+        "artist": artist,
+        "album_artist": "Open Consciousness Functions",
         "album": album,
         "track": track,
         "comment": comment,
+        "language": str(manifest.get("language") or ""),
+        "OCF_FUNCTION_ID": str(function_id or ""),
+        "date": str(manifest.get("release_date") or ""),
     }
     tags.update(extra)
     for key, value in (tag_overrides or {}).items():
@@ -681,6 +704,7 @@ def build(
     strict: bool = True,
     dsp_profile: str | Path | dict[str, Any] | None = None,
     recordings: str | Path | None = None,
+    artwork: str | Path | None = None,
 ) -> dict[str, Any]:
     """`ocf audio build <AUDIO_ID|MANIFEST>` — render narration, mix, master.
 
@@ -813,7 +837,10 @@ def build(
             continue
         encoded = out_root / f"{audio_id}-master.{out_fmt}"
         try:
-            encoder = _encode(master_path, out_fmt, encoded, tags=tags)
+            if artwork is None:
+                encoder = _encode(master_path, out_fmt, encoded, tags=tags)
+            else:
+                encoder = _encode(master_path, out_fmt, encoded, tags=tags, artwork=artwork)
         except OCFError as exc:
             print(f"Warning: {exc}")
             continue
@@ -879,6 +906,7 @@ def build(
                     "id": cue["id"],
                     "source_ids": cue.get("source_ids", [cue["id"]]),
                     "display_text": cue.get("display_text", cue.get("text", "")),
+                    "spoken_text": cue.get("text", cue.get("display_text", "")),
                     "at": round(float(cue["at"]), 3),
                     # `duration` is seconds when the renderer recorded it, and
                     # otherwise derived from the sample count.

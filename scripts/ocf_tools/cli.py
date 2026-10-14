@@ -58,6 +58,7 @@ Usage:
   ocf audio render-speech SCRIPT [--voice NAME] [--output WAV] [--force]
   ocf audio mix --speech A.wav [--background B.wav] --output MIX.wav [--background-gain 0.25] [--force]
   ocf audio build <AUDIO_ID> [--format wav|flac|mp3]... [--tag KEY=VALUE]... [--voice NAME] [--output DIR] [--fit] [--flow] [--even-counts] [--background-gain 0.25] [--force]
+  ocf audio release <AUDIO_ID|FUNCTION_ID> --artwork IMAGE [--locale TAG] [--format mp3|flac]... [--voice NAME] [--output DIR] [--version VERSION] [--tag KEY=VALUE]... [--dry-run] [--force]
   ocf audio inspect FILE      Show audio file metadata + sha256
   ocf session list-templates  List session-composition templates (audio/templates/sessions/)
   ocf session compose [--template ID|FILE] [--pacing-profile ID|FILE]
@@ -274,6 +275,33 @@ def _build_parser() -> argparse.ArgumentParser:
         help="re-time count cues onto even grids (timing_mode ...+even-counts)",
     )
     build_cmd.add_argument("--force", action="store_true", help="overwrite master file")
+    release_cmd = audio_sub.add_parser(
+        "release", help="render, verify, and package a localized function release"
+    )
+    release_cmd.add_argument("query", help="audio implementation ID or function ID")
+    release_cmd.add_argument("--locale", help="requested BCP-47 locale (default canonical locale)")
+    release_cmd.add_argument(
+        "--format",
+        action="append",
+        choices=["mp3", "flac"],
+        default=None,
+        help="release format(s), repeatable (default: flac and mp3)",
+    )
+    release_cmd.add_argument("--voice", help="voice profile ID/slug or backend name")
+    release_cmd.add_argument(
+        "--artwork", required=True, help="explicitly approved PNG/JPEG cover artwork"
+    )
+    release_cmd.add_argument("--output", help="release root directory (default: releases/)")
+    release_cmd.add_argument("--version", help="explicit release version")
+    release_cmd.add_argument(
+        "--tag", action="append", default=[], help="metadata override KEY=VALUE"
+    )
+    release_cmd.add_argument(
+        "--dry-run", action="store_true", help="show planned paths without rendering"
+    )
+    release_cmd.add_argument(
+        "--force", action="store_true", help="replace an existing release directory"
+    )
     inspect_cmd = audio_sub.add_parser("inspect", help="show audio file metadata")
     inspect_cmd.add_argument("file", help="audio file")
     state_render = audio_sub.add_parser(
@@ -1044,6 +1072,33 @@ def main(argv: list[str] | None = None) -> int:
                     locale=getattr(args, "locale", None),
                     strict=not getattr(args, "allow_fallback", False),
                 )
+                return 0
+            if args.audio_kind == "release":
+                import json
+
+                from .release import package_release
+
+                metadata_overrides: dict[str, str] = {}
+                for spec in args.tag:
+                    if "=" not in spec:
+                        raise OCFError(f"--tag expects KEY=VALUE, got {spec!r}")
+                    key, value = spec.split("=", 1)
+                    if not key.strip():
+                        raise OCFError("--tag key cannot be empty")
+                    metadata_overrides[key.strip()] = value.strip()
+                result = package_release(
+                    args.query,
+                    locale=args.locale,
+                    formats=args.format,
+                    voice=args.voice,
+                    artwork=args.artwork,
+                    output=args.output,
+                    version=args.version,
+                    metadata_overrides=metadata_overrides,
+                    dry_run=args.dry_run,
+                    overwrite=args.force,
+                )
+                print(json.dumps(result, ensure_ascii=False, indent=2))
                 return 0
             if args.audio_kind == "inspect":
                 from .audio_build import inspect as inspect_file
