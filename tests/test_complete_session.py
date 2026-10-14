@@ -8,7 +8,23 @@ from ocf_tools import cli
 from ocf_tools.complete_session import build_complete_session_plan
 
 
-def test_sleep_easy_complete_template_expands_existing_focus_and_sleep_sequence():
+def test_sleep_easy_complete_template_expands_existing_focus_and_sleep_sequence(monkeypatch):
+    from ocf_tools import narration_first
+
+    monkeypatch.setattr(
+        narration_first,
+        "_voice_profile",
+        lambda query, locale, catalog: (
+            {
+                "id": "OCF-VOICE-0002",
+                "slug": "piper-lessac",
+                "name": "Piper en_US lessac medium",
+                "backend": "piper",
+                "piper_length_scale": 1.0,
+            },
+            {"name": "piper", "language": "en_US", "binary": "piper", "wpm": None},
+        ),
+    )
     plan = build_complete_session_plan(
         "OCF-SLP-005", locale="en-US", voice="OCF-VOICE-0002", pacing="sleep"
     )
