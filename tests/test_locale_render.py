@@ -572,7 +572,7 @@ class TestBackgroundPresetResolution:
         from ocf_tools.audio_build import _farfield_preset_file
 
         direct = "audio/background/presets/farfield/focus-11-c.yaml"
-        assert _farfield_preset_file(direct) == direct
+        assert Path(_farfield_preset_file(direct)) == Path(direct)
 
     def test_non_farfield_id_is_not_rewritten_to_a_session_file(self):
         from ocf_tools.audio_build import _farfield_preset_file
