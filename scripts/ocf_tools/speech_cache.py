@@ -38,6 +38,31 @@ def voice_identity(spec: dict) -> dict:
     if not binary:
         raise OCFError(f"voice backend is unavailable: {spec['binary']}")
     assets = {"binary": sha256_of_file(Path(binary))}
+    # Console scripts may run in a different venv from the OCF process (e.g.
+    # pipx/uv-installed Piper). Fingerprint that environment's package records,
+    # rather than attributing the OCF interpreter's packages to the backend.
+    executable = Path(binary).resolve()
+    environment = executable.parent.parent
+    with executable.open("rb") as handle:
+        first_line = handle.read(512).split(b"\n", 1)[0]
+    if first_line.startswith(b"#!"):
+        interpreter = Path(first_line[2:].decode("utf-8", "replace").strip())
+        if interpreter.is_absolute() and interpreter.is_file():
+            environment = interpreter.parent.parent
+    runtime_records = {}
+    if spec.get("name") == "piper":
+        for library in (environment / "lib", environment / "Lib"):
+            for pattern in (
+                "python*/site-packages/*piper*.dist-info/*",
+                "python*/site-packages/onnxruntime*.dist-info/*",
+                "site-packages/*piper*.dist-info/*",
+                "site-packages/onnxruntime*.dist-info/*",
+            ):
+                for record in library.glob(pattern):
+                    if record.name in {"METADATA", "RECORD"}:
+                        runtime_records[record.relative_to(environment).as_posix()] = (
+                            sha256_of_file(record)
+                        )
     if spec.get("model"):
         model = Path(spec["model"])
         if not model.is_file():
@@ -55,6 +80,7 @@ def voice_identity(spec: dict) -> dict:
         "assets": assets,
         "settings": spec,
         "packages": packages,
+        "backend_environment": runtime_records,
         "renderer": sha256_of_file(Path(__file__).with_name("voice.py")),
         "cache_version": CACHE_VERSION,
     }

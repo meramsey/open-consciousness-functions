@@ -33,6 +33,24 @@ exact-content caching, bounded to 128 small entries. Files are still read;
 same-size rewrites, schema-reference edits, mutation isolation and safe-loader
 fallback are covered by tests. No cached validation success replaces a final gate.
 
+## Real synthesis and full-suite checks
+
+An explicit real Piper smoke used the existing reviewed
+`hplus.shared.focus11.open` resource. First synthesis/cache miss: 0.7571 s;
+verified cache hit: 0.0448 s, byte-identical output. Counters: 1 miss, 1 hit,
+0 invalidations, 0 bypasses; one backend synthesis was actually avoided.
+Output: 0.673379 s mono PCM at 22,050 Hz; SHA-256
+`7ffafd3e1d20d7dc77bc6f5a1dfd8ee2ccd9523064da8f1d19fe1665780a01a0`.
+The WAV remains under `.ocf-work/renders/`; no listening approval is implied.
+Reproduce explicitly with `python scripts/tools/smoke_agent_speech.py` when
+the configured Piper voice is installed. Backend-environment package records
+are fingerprinted separately from the OCF interpreter (including pipx/uv venvs).
+
+Final pre-SDK-patch full suite: 1292 passed, 2 skipped in 129.76 s with two
+workers; peak GNU-time RSS 1,212,864 KiB, not summed worker memory. This run
+included the optional SDK and new workflow/lifecycle tests. Subsequent SDK and
+backend-identity changes receive fresh focused/full checks in the final report.
+
 ## Documentation audit scope
 
 The generated inventory covers tracked Markdown, schema descriptions, CLI help

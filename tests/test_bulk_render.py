@@ -150,3 +150,21 @@ def test_concurrent_cache_publish_reserves_capacity(monkeypatch, tmp_path):
     with ThreadPoolExecutor(max_workers=2) as pool:
         results = list(pool.map(publish, ["a" * 64, "b" * 64]))
     assert sorted(results) == [False, True]
+
+
+@pytest.mark.unit
+def test_piper_cache_tracks_backend_venv_instead_of_host_package_versions(monkeypatch, tmp_path):
+    environment = tmp_path / "backend"
+    executable = environment / "bin/piper"
+    executable.parent.mkdir(parents=True)
+    executable.write_bytes(b"console wrapper")
+    metadata = environment / "lib/python3.12/site-packages/piper_tts-1.dist-info/METADATA"
+    metadata.parent.mkdir(parents=True)
+    metadata.write_text("Version: 1\n")
+    monkeypatch.setattr(speech_cache.shutil, "which", lambda _: str(executable))
+    spec = {"binary": "piper", "name": "piper", "locale": "en-US"}
+    first = speech_cache.voice_identity(spec)
+    metadata.write_text("Version: 2\n")
+    second = speech_cache.voice_identity(spec)
+    assert first["assets"] == second["assets"]
+    assert first["backend_environment"] != second["backend_environment"]
