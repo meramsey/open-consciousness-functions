@@ -1,0 +1,8 @@
+schema_version: "1.0"
+id: OCF-TPL-SESSION-HPLUS-LOCKED-001
+version: "1.0.0"
+extends: OCF-TPL-SESSION-HPLUS-STANDARD-001
+name: Human Plus shared locked engineering baseline
+pacing_profile: OCF-PACING-HPLUS-LOCKED-001
+dsp_profile: OCF-DSP-HPLUS-LOCKED-001
+content_status: draft

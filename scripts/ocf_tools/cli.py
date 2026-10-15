@@ -193,6 +193,12 @@ def _build_parser() -> argparse.ArgumentParser:
 
     audio = sub.add_parser("audio", help="audio tooling")
     audio_sub = audio.add_subparsers(dest="audio_kind")
+    defaults_cmd = audio_sub.add_parser(
+        "defaults", help="verify the immutable shared audio defaults lock"
+    )
+    defaults_cmd.add_argument(
+        "--create-lock", action="store_true", help="create the initial lock; refuses replacement"
+    )
     audio_sub.add_parser(
         "check-engine", help="check optional background synthesis engines (Farfield, SBaGenX)"
     )
@@ -1063,6 +1069,15 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "review" and args.review_kind == "commands":
             return cmd_review_commands()
         if args.command == "audio":
+            if args.audio_kind == "defaults":
+                import json
+
+                from .audio_defaults import check_lock, create_lock
+
+                if args.create_lock:
+                    create_lock()
+                print(json.dumps(check_lock(), indent=2, ensure_ascii=False))
+                return 0
             if args.audio_kind == "check-engine":
                 return audio_mod.check_engine()
             if args.audio_kind == "list-background":

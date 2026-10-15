@@ -43,7 +43,7 @@ DEFAULT_TEMPLATE_ID = "OCF-TPL-SESSION-LEARN-001"
 _LRC_LINE = re.compile(r"^\s*\[(\d{1,2}:\d{2}(?:[.,]\d{1,3})?)\]\s*(.*?)\s*$")
 
 
-def load_template(template_ref: str) -> dict[str, Any]:
+def load_template(template_ref: str, *, _parents: tuple[str, ...] = ()) -> dict[str, Any]:
     """Load and validate a session template by id or by local file path.
 
     A bare id (e.g. ``OCF-TPL-SESSION-LEARN-001``) resolves from
@@ -67,6 +67,13 @@ def load_template(template_ref: str) -> dict[str, Any]:
         raise OCFError(f"invalid YAML in session template {path.name}: {exc}") from exc
     if not isinstance(data, dict):
         raise OCFError(f"session template {path.name} is not a mapping")
+    if data.get("extends"):
+        identity = str(path.resolve())
+        if identity in _parents:
+            raise OCFError("cyclic session template inheritance")
+        from .audio_defaults import overlay
+
+        data = overlay(load_template(data["extends"], _parents=(*_parents, identity)), data)
     schema = _load_schema("session-template.schema.json")
     errors = validate_against_schema(data, schema)
     if errors:
@@ -76,7 +83,7 @@ def load_template(template_ref: str) -> dict[str, Any]:
     return data
 
 
-def load_pacing_profile(profile_ref: str) -> dict[str, Any]:
+def load_pacing_profile(profile_ref: str, *, _parents: tuple[str, ...] = ()) -> dict[str, Any]:
     """Load one versioned session pacing policy by id or local YAML path."""
     candidate = Path(profile_ref).expanduser()
     if profile_ref and (candidate.is_file() or "/" in profile_ref or "\\" in profile_ref):
@@ -91,6 +98,13 @@ def load_pacing_profile(profile_ref: str) -> dict[str, Any]:
         raise OCFError(f"invalid YAML in pacing profile {path.name}: {exc}") from exc
     if not isinstance(data, dict):
         raise OCFError(f"session pacing profile {path.name} is not a mapping")
+    if data.get("extends"):
+        identity = str(path.resolve())
+        if identity in _parents:
+            raise OCFError("cyclic pacing profile inheritance")
+        from .audio_defaults import overlay
+
+        data = overlay(load_pacing_profile(data["extends"], _parents=(*_parents, identity)), data)
     problems = validate_against_schema(data, _load_schema("session-pacing.schema.json"))
     if problems:
         raise OCFError(
