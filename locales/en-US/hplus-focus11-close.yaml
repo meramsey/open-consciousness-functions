@@ -5,6 +5,8 @@ entries:
   hplus.shared.focus11.close.prepare:
     status: reviewed
     version: "1.0.0"
+    timing:
+      pacing_units: [instruction, instruction, instruction]
     text: |-
       You will remember and act upon this knowledge function at any point from this moment on.
       You will so act with your entire being when your conscious waking self gives the
@@ -13,6 +15,8 @@ entries:
   hplus.shared.focus11.close:
     status: reviewed
     version: "1.0.0"
+    timing:
+      pacing_units: [instruction, count, count, instruction, count, instruction, count, instruction, instruction]
     text: |-
       You will close your plus access channel now as
       I guide you. Ten. Ten. You are moving back to the ten state of total relaxation as the

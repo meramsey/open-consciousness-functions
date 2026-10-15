@@ -24,6 +24,8 @@ The main implementation modules are:
 - `scripts/ocf_tools/narration_first.py`: explicit resource-bound narration
   plans, pacing presets, dynamically measured segment timing, and safe local
   audition publication;
+- `scripts/ocf_tools/narration_pacing.py`: Unicode sentence-unit segmentation
+  and resolution of entry-specific semantic timing roles;
 - `scripts/ocf_tools/semantic_dsp.py`: measured-ledger state dispatch;
 - `scripts/ocf_tools/audio_build.py`: background selection, mixing, encoding,
   tags, and render manifests;
@@ -155,10 +157,12 @@ audition report. Other preset segment layouts are not silently retimed or
 looped.
 
 The complete-session output contains a stereo master WAV, retained background
-stem, UTF-8 transcript, composed session plan, and JSON report. It does not
-require an audio implementation manifest, artwork, or release metadata. The
-report marks the draft template and function review state and never approves a
-release. Existing audition directories are never overwritten.
+stem, UTF-8 transcript, composed session plan, measured session timing report,
+and JSON report. Profile-declared pacing excerpts and per-excerpt timing reports
+are written under `pacing-auditions/`. It does not require an audio
+implementation manifest, artwork, or release metadata. The report marks the
+draft template and function review state and never approves a release. Existing
+audition directories are never overwritten.
 
 ### Local OCF workspace
 
@@ -222,6 +226,55 @@ documented defaults are engineering settings, not therapeutic claims. The
 timeline chains each event to the preceding measured speech end plus its
 configured pause. Duration derives from actual synthesized segment durations;
 there is no target-duration stretch or arbitrary fixed anchor.
+
+### Semantic narration pacing
+
+The rushed delivery came from the unit boundary: each keyed locale entry was
+synthesized as one TTS utterance, while the configured pause was scheduled only
+after that whole event. Newlines inside a locale entry were not audio pauses;
+Piper's small built-in sentence padding and the session's 1.08 sleep length
+scale did not provide the intended instruction-level timing.
+
+The H-Plus session pacing profile (`audio/templates/pacing/`) selects a named
+narration pacing profile per stable resource key. Each resolved locale entry may
+declare `timing.pacing_units`, one semantic role per sentence unit (for example
+`count`, `instruction`, `phrase`, or `landing`). The sentence splitter uses
+Unicode sentence-ending punctuation and blank paragraphs; it does not infer
+English count words. A translation can declare its own unit roles when its
+sentence boundaries differ. Dry-run fails if the locale's role list does not
+match its resolved sentence units; count-sensitive profiles can also require
+locale-specific unit roles rather than guessing count words from English.
+
+Each selected unit is synthesized separately. OCF inserts real PCM silence
+between units, fades each unit edge over 8 ms to avoid clicks, and records the
+unit text, actual start/end, configured following pause, selected profile, and
+rate scale. This backend-neutral path does not require SSML: Piper receives an
+adjusted `length_scale` and zero built-in sentence padding so OCF owns the gap;
+espeak/espeak-ng receive an adjusted WPM where available. Other backends still
+receive the sentence units and real silence, and report when no rate control is
+available. The current Piper and eSpeak adapters do not expose an OCF SSML
+input path. No visible punctuation or markup is added to approved narration.
+
+Tune named profiles under `narration_pacing.profiles` in the versioned session
+pacing YAML; map resource keys to profiles under `narration_pacing.entries`.
+Tune locale-specific sentence roles only in that locale resource's
+`timing.pacing_units`. Sentence and paragraph pauses are profile values; count
+and landing roles let the entry express its meaning without English-string
+rules. The current H-Plus relaxation profile uses 3.5 s between guided
+instructions, 6 s after each numbered stage, 1.25 s within “Relax. Let go.
+Sleep.”, and a 5 s landing after “Sleep.” where the event continues. The
+10-to-20 counter uses 5 s between every number; the waking counter uses 3 s
+between counts, 4 s after “One.”, and a measured Piper rate scale that eases
+from 0.90 to 0.97 for a gradually more alert cadence.
+
+`audio render --dry-run` lists each resolved sentence unit, semantic role,
+pause, and rate scale before TTS. Rendering inserts the pauses into the audio
+track, so following speech-end anchors move naturally; it never compresses a
+fixed stage to make room. Existing `maximum_duration` and fixed-anchor overlap
+checks fail rather than silently shorten narration. Complete auditions include
+`session-timing-report.json` plus configured short pacing WAVs and per-excerpt
+JSON reports under `pacing-auditions/`. Use the complete-session `--dry-run`
+first, then render the full session to obtain comparable excerpts.
 
 The narration-only audition directory contains a WAV, UTF-8 transcript,
 `tts-plan.json`, and `render-manifest.json`. The manifest records

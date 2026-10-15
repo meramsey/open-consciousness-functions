@@ -20,6 +20,8 @@ entries:
       The original text is preserved in the supplied review candidate; source
       provenance was not provided. Establishes a gradual one-to-ten descent
       without beginning the count in this introductory entry.
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction]
     text: |-
       Now you will begin the ten-point system of total relaxation.
       With each number, your body and mind will become more deeply relaxed.
@@ -38,6 +40,8 @@ entries:
       followed by relaxation sinking inward toward the brain. Neck is revisited
       at count two as part of the neck-and-shoulder transition. Repeated
       transcription fragments condensed for natural speech.
+    timing:
+      pacing_units: [count, instruction, instruction, instruction, phrase, instruction, instruction, phrase, instruction, instruction, instruction, instruction, instruction, instruction, instruction]
     text: |-
       One.
       Begin with your face and head.
@@ -64,6 +68,8 @@ entries:
       the original notion of relaxation flowing from the brain into the body
       and the repeated release cadence. Introduces the neck and shoulders
       as the first major body area.
+    timing:
+      pacing_units: [instruction, count, instruction, instruction, instruction, phrase, phrase, landing]
     text: |-
       Now let this relaxation flow outward from your brain
       and down through every part of your body.
@@ -80,6 +86,8 @@ entries:
       Editorial adaptation of the user-supplied count-three passage.
       Preserves arms, hands, individual fingers, and the relax-let-go-sleep
       pattern while removing duplicate broken phrasing.
+    timing:
+      pacing_units: [count, instruction, instruction, instruction, instruction, instruction, phrase, phrase, landing]
     text: |-
       Three.
       Your brain tells your arms to relax.
@@ -98,6 +106,8 @@ entries:
       and lower back, retaining the supplied six for the chest and breathing
       structures and seven for the abdomen and internal organs. Organ references
       express relaxation as guided imagery rather than literal voluntary control.
+    timing:
+      pacing_units: [count, instruction, instruction, phrase, phrase, landing, count, instruction, instruction, instruction, phrase, phrase, landing, count, instruction, instruction, instruction, phrase, phrase, landing, count, instruction, instruction, instruction, phrase, phrase, landing]
 
     text: |-
       Four.
@@ -134,6 +144,8 @@ entries:
       passage. Completes the missing count sequence with eight for hips,
       nine for legs, and ten for feet and toes, then explicitly integrates
       full-body relaxation. Preserves the repeated relaxation cadence.
+    timing:
+      pacing_units: [count, instruction, instruction, phrase, phrase, landing, count, instruction, instruction, phrase, phrase, landing, count, instruction, instruction, phrase, phrase, landing, instruction, instruction, instruction]
 
     text: |-
       Eight.

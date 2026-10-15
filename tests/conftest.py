@@ -48,6 +48,7 @@ UNIT_MODULES = {
     "test_bootstrap",
     "test_container_config",
     "test_workspace",
+    "test_pacing_auditions",
     "test_recording_import",
     "test_disabled_narration",
     "test_voice_registry",

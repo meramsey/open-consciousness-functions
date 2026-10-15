@@ -39,6 +39,7 @@ from __future__ import annotations
 
 import io
 import json
+import math
 import os
 import re
 import shutil
@@ -52,6 +53,7 @@ from typing import Any
 
 from .indexes import load_voice_profiles
 from .locale import document_key_usage, iter_events, locale_language, normalize_tag
+from .narration_pacing import plan_event_pacing
 from .paths import (
     cleanup_workspace_temp,
     ensure_dir,
@@ -826,6 +828,53 @@ def _clip(value: int) -> int:
     return max(-32768, min(32767, value))
 
 
+def _fade_spoken_unit(
+    samples: list[int], sample_rate: int, fade_seconds: float = 0.008
+) -> list[int]:
+    """Fade short TTS unit edges to/from digital silence without clicks."""
+    result = list(samples)
+    count = min(int(round(sample_rate * fade_seconds)), len(result) // 2)
+    if count <= 1:
+        return result
+    for index in range(count):
+        fade_in = math.sin(math.pi * index / (2 * (count - 1)))
+        fade_out = math.cos(math.pi * index / (2 * (count - 1)))
+        result[index] = _clip(round(result[index] * fade_in))
+        result[-count + index] = _clip(round(result[-count + index] * fade_out))
+    result[0] = 0
+    result[-1] = 0
+    return result
+
+
+def _paced_voice_spec(
+    spec: dict[str, Any], rate_scale: float
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Apply a relative slower-rate scale using only controls supported by a backend."""
+    paced = dict(spec)
+    backend = str(spec["name"])
+    supported = False
+    if backend == "piper":
+        length_scale = float(spec.get("piper_length_scale") or 1.0)
+        paced["piper_length_scale"] = round(length_scale / rate_scale, 4)
+        # Sentence padding is supplied by OCF's measured digital silence instead.
+        paced["piper_sentence_silence_s"] = 0.0
+        supported = True
+        method = "Piper length_scale inverse to requested speech-rate ratio"
+    elif spec.get("wpm"):
+        paced["wpm"] = max(80, round(float(spec["wpm"]) * rate_scale))
+        supported = True
+        method = "backend words-per-minute control"
+    else:
+        method = "backend exposes no supported speech-rate control"
+    return paced, {
+        "requested_rate_scale": rate_scale,
+        "rate_control_applied": supported,
+        "method": method,
+        "effective_piper_length_scale": paced.get("piper_length_scale"),
+        "effective_wpm": paced.get("wpm"),
+    }
+
+
 def render_narration(
     doc: dict[str, Any],
     out_path: str | Path,
@@ -833,6 +882,7 @@ def render_narration(
     backend: str | dict[str, Any] | None = None,
     sample_rate: int = DEFAULT_SAMPLE_RATE,
     render_cue: Callable[[str], bytes] | None = None,
+    render_cue_with_profile: Callable[[str, dict[str, Any]], bytes] | None = None,
     overwrite: bool = True,
     fit: bool = False,
     flow: bool = False,
@@ -939,6 +989,7 @@ def render_narration(
     cue_stats: list[dict[str, Any]] = []
     hints_applied = 0
     rendered = {}
+    pacing_applications = {}
     scheduling_events = []
     event_to_group = {}
     source_to_groups = {}
@@ -953,12 +1004,113 @@ def render_narration(
             text = apply_pronunciation(text, hints, spec["name"])
             if text != before:
                 hints_applied += 1
-        if recording_audio is not None:
+        source_event = originals.get(group[0].id, {})
+        pacing = plan_event_pacing(doc, source_event)
+        if pacing is not None and len(group) != 1:
+            raise OCFError(
+                "semantic narration pacing requires one locale resource per timeline event"
+            )
+        if pacing is not None:
+            if fit or flow or even_counts:
+                raise OCFError(
+                    "semantic narration pacing cannot be combined with fit, flow, or legacy even-count retiming"
+                )
+            if recording_audio is not None:
+                raise OCFError(
+                    "semantic narration pacing requires TTS; prerecorded packages are not resegmented"
+                )
+            if render_cue is not None and render_cue_with_profile is None:
+                raise OCFError(
+                    "semantic narration pacing needs a backend-aware renderer; custom render_cue cannot apply rate_scale"
+                )
+            unit_rows = []
+            cue_samples = []
+            speech_samples = 0
+            silence_samples = 0
+            cursor_samples = 0
+            rate_report = None
+            rate_scales = []
+            for unit_index, unit in enumerate(pacing["units"]):
+                unit_text = (
+                    apply_pronunciation(unit["text"], hints, spec["name"])
+                    if hints
+                    else unit["text"]
+                )
+                rate_scale = unit["rate_scale"]
+                effective_spec, rate_report = _paced_voice_spec(spec, rate_scale)
+                rate_scales.append(rate_scale)
+                if render_cue_with_profile is not None:
+                    wav_bytes = render_cue_with_profile(unit_text, effective_spec)
+                elif render_cue is not None:
+                    wav_bytes = render_cue(unit_text)
+                else:
+                    wav_bytes = render_cue_wav(effective_spec, unit_text)
+                rate, unit_samples = _read_pcm_from_bytes(wav_bytes)
+                unit_samples = _fade_spoken_unit(
+                    _resample(unit_samples, rate, sample_rate), sample_rate
+                )
+                unit_start = cursor_samples / sample_rate
+                unit_duration = len(unit_samples) / sample_rate
+                cue_samples.extend(unit_samples)
+                speech_samples += len(unit_samples)
+                cursor_samples += len(unit_samples)
+                pause_after = unit["pause_after_s"]
+                pause_inside_event = unit["pause_inside_event"]
+                if pause_inside_event:
+                    pause_samples = int(round(pause_after * sample_rate))
+                    cue_samples.extend(_silence(pause_samples))
+                    silence_samples += pause_samples
+                    cursor_samples += pause_samples
+                unit_rows.append(
+                    {
+                        "unit_index": unit_index + 1,
+                        "text": unit_text,
+                        "kind": unit["pause_kind"],
+                        "semantic_kind": unit["kind"],
+                        "rate_scale": round(rate_scale, 4),
+                        "rate_control": rate_report["method"],
+                        "rate_control_applied": rate_report["rate_control_applied"],
+                        "effective_piper_length_scale": effective_spec.get("piper_length_scale"),
+                        "effective_wpm": effective_spec.get("wpm"),
+                        "start_offset_s": round(unit_start, 6),
+                        "speech_duration_s": round(unit_duration, 6),
+                        "end_offset_s": round(unit_start + unit_duration, 6),
+                        "pause_after_s": round(pause_after, 6),
+                        "pause_inside_event": pause_inside_event,
+                    }
+                )
+            pacing_applications[pacing["profile_id"]] = {
+                **(pacing_applications.get(pacing["profile_id"]) or {}),
+                **(rate_report or {}),
+                "event_count": int(
+                    (pacing_applications.get(pacing["profile_id"]) or {}).get("event_count", 0)
+                )
+                + 1,
+                "unit_count": int(
+                    (pacing_applications.get(pacing["profile_id"]) or {}).get("unit_count", 0)
+                )
+                + len(unit_rows),
+                "minimum_rate_scale": min(rate_scales),
+                "maximum_rate_scale": max(rate_scales),
+            }
+            pacing_summary = {
+                "profile_id": pacing["profile_id"],
+                "rate_scale": pacing["rate_scale"],
+                "speech_duration_s": round(speech_samples / sample_rate, 6),
+                "internal_pause_s": round(silence_samples / sample_rate, 6),
+            }
+        elif recording_audio is not None:
             wav_bytes = recording_audio[group[0].id]
+            rate, cue_samples = _read_pcm_from_bytes(wav_bytes)
+            cue_samples = _resample(cue_samples, rate, sample_rate)
+            unit_rows = []
+            pacing_summary = None
         else:
             wav_bytes = render_cue(text) if render_cue is not None else render_cue_wav(spec, text)
-        rate, cue_samples = _read_pcm_from_bytes(wav_bytes)
-        cue_samples = _resample(cue_samples, rate, sample_rate)
+            rate, cue_samples = _read_pcm_from_bytes(wav_bytes)
+            cue_samples = _resample(cue_samples, rate, sample_rate)
+            unit_rows = []
+            pacing_summary = None
         at = group[0].at or 0.0
         if fit and group_index + 1 < len(utterances):
             next_at = utterances[group_index + 1][0].at or 0.0
@@ -991,6 +1143,13 @@ def render_narration(
                 "display_text": display_text,
                 "samples": len(cue_samples),
                 "duration": round(len(cue_samples) / sample_rate, 3),
+                "speech_duration": round(
+                    (speech_samples if pacing_summary is not None else len(cue_samples))
+                    / sample_rate,
+                    3,
+                ),
+                "pacing": pacing_summary,
+                "spoken_units": unit_rows,
                 "cut_previous": False,
             }
         )
@@ -1011,6 +1170,9 @@ def render_narration(
     )
     for cue in cue_stats:
         cue["at"] = actual[cue["id"]]["at"]
+        for unit in cue.get("spoken_units", []):
+            unit["start_seconds"] = round(cue["at"] + unit.pop("start_offset_s"), 6)
+            unit["end_seconds"] = round(cue["at"] + unit.pop("end_offset_s"), 6)
         offset = int(round(cue["at"] * sample_rate))
         samples = rendered[cue["id"]]
         if offset + len(samples) > len(track):
@@ -1079,6 +1241,10 @@ def render_narration(
         "overlap_mode": "reject-fixed-overlap",
         "timing_mode": timing_mode,
         "cue_stats": cue_stats,
+        "narration_pacing": {
+            "policy_id": (doc.get("pacing_profile") or {}).get("id"),
+            "profiles": pacing_applications,
+        },
         "event_timing": event_timing,
         "auditory_cues": auditory_cues,
         "narration_resolution": doc.get("narration"),

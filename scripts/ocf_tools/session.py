@@ -96,6 +96,15 @@ def load_pacing_profile(profile_ref: str) -> dict[str, Any]:
         raise OCFError(
             f"session pacing profile {path.name} fails its schema:\n" + "\n".join(problems)
         )
+    narration_pacing = data.get("narration_pacing") or {}
+    unknown_profiles = set(narration_pacing.get("entries", {}).values()) - set(
+        narration_pacing.get("profiles", {})
+    )
+    if unknown_profiles:
+        raise OCFError(
+            "session narration pacing references unknown profile(s): "
+            + ", ".join(sorted(unknown_profiles))
+        )
     return data
 
 
@@ -732,6 +741,8 @@ def compose(
             "version": pacing_profile["version"],
             "status": pacing_profile["status"],
         }
+        if pacing_profile.get("narration_pacing"):
+            doc["narration_pacing"] = deepcopy(pacing_profile["narration_pacing"])
         doc["template"]["pacing_profile"] = {
             "id": pacing_profile["id"],
             "version": pacing_profile["version"],

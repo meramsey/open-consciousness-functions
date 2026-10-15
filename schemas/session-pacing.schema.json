@@ -44,9 +44,58 @@
         "efficacy_claim": {"const": false}
       }
     },
+    "narration_pacing": {
+      "type": "object", "additionalProperties": false,
+      "required": ["profiles", "entries"],
+      "properties": {
+        "profiles": {
+          "type": "object", "minProperties": 1,
+          "propertyNames": {"pattern": "^[a-z][a-z0-9-]*$"},
+          "additionalProperties": {"$ref": "#/definitions/narrationPacingProfile"}
+        },
+        "entries": {
+          "type": "object",
+          "propertyNames": {"pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"},
+          "additionalProperties": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "pacing_auditions": {
+      "type": "object", "additionalProperties": {"$ref": "#/definitions/pacingAuditionWindow"}
+    },
     "optional_stages": {
       "type": "object", "additionalProperties": {"type": "boolean"}
     },
     "evidence_notes": {"type": "array", "items": {"type": "string"}}
+  },
+  "definitions": {
+    "narrationPacingProfile": {
+      "type": "object", "additionalProperties": false,
+      "required": ["rate_scale", "default_unit", "pauses"],
+      "properties": {
+        "rate_scale": {"type": "number", "minimum": 0.5, "maximum": 1.0},
+        "countdown_rate_scale_end": {"type": "number", "minimum": 0.5, "maximum": 1.0},
+        "default_unit": {"enum": ["sentence", "instruction", "phrase", "count", "countdown"]},
+        "require_unit_kinds": {"type": "boolean"},
+        "pauses": {
+          "type": "object", "minProperties": 1,
+          "additionalProperties": {"type": "number", "minimum": 0}
+        }
+      }
+    },
+    "pacingAuditionWindow": {
+      "type": "object", "additionalProperties": false,
+      "required": ["label"],
+      "properties": {
+        "label": {"type": "string", "minLength": 1},
+        "file_name": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "stage_id": {"type": "string", "minLength": 1},
+        "event_id": {"type": "string", "minLength": 1}
+      },
+      "oneOf": [
+        {"required": ["stage_id"], "not": {"required": ["event_id"]}},
+        {"required": ["event_id"], "not": {"required": ["stage_id"]}}
+      ]
+    }
   }
 }

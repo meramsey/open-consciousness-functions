@@ -1549,6 +1549,9 @@ def resolve_document(
             issues.append(f"event {event.get('id', '?')}: {exc}")
             continue
         event["text"] = text
+        pacing_units = entry.timing.get("pacing_units")
+        if pacing_units:
+            event.setdefault("timing", {})["narration_pacing_units"] = list(pacing_units)
         keys.append(str(key))
         provenance.append(
             {
@@ -1558,6 +1561,7 @@ def resolve_document(
                 "resource_file": entry.file,
                 "version": entry.version,
                 "status": entry.status or (catalog.get(resolution.origin_locale) or pack).status,
+                "pacing_units": list(pacing_units) if pacing_units else None,
             }
         )
 

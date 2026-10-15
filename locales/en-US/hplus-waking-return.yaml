@@ -24,6 +24,8 @@ entries:
       repeated seven and redundant midway instruction, retaining a single
       uninterrupted count in the existing shared entry. Intended for session
       endings that explicitly return the listener to waking awareness.
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, final_countdown, phrase, phrase, instruction, instruction]
 
     text: |-
       I will now count from twenty down to one.

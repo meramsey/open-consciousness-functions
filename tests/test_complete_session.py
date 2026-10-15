@@ -86,6 +86,86 @@ def test_sleep_easy_complete_template_expands_existing_focus_and_sleep_sequence(
     assert plan["approval_state"]["release_ready"] is False
     sleep_stage = next(stage for stage in plan["stages"] if stage["id"] == "sleep20-body")
     assert len(sleep_stage["event_ids"]) == 2
+    assert set(plan["pacing_auditions"]) == {
+        "relaxation-1-to-10",
+        "focus20-countdown-10-to-20",
+        "waking-countdown-20-to-1",
+    }
+    paced = {item["event_id"]: item for item in plan["narration_pacing_plan"]}
+    relaxation_counts = [
+        unit["text"]
+        for item in plan["narration_pacing_plan"]
+        if item["narration_key"].startswith("hplus.shared.relaxation.")
+        for unit in item["units"]
+        if unit["kind"] == "count"
+    ]
+    assert relaxation_counts == [
+        "One.",
+        "Two.",
+        "Three.",
+        "Four.",
+        "Five.",
+        "Six.",
+        "Seven.",
+        "Eight.",
+        "Nine.",
+        "Ten.",
+    ]
+    torso = next(
+        item
+        for item in plan["narration_pacing_plan"]
+        if item["narration_key"] == "hplus.shared.relaxation.torso"
+    )
+    sleep_landings = [unit for unit in torso["units"] if unit["text"] == "Sleep."]
+    assert [unit["kind"] for unit in sleep_landings] == ["landing"] * 4
+    assert [unit["pause_after_s"] for unit in sleep_landings] == [5.0, 5.0, 5.0, 6.0]
+    focus20 = paced["focus20-enter.enter"]["units"]
+    assert [unit["text"] for unit in focus20[4:]] == [
+        "Ten.",
+        "Eleven.",
+        "Twelve.",
+        "Thirteen.",
+        "Fourteen.",
+        "Fifteen.",
+        "Sixteen.",
+        "Seventeen.",
+        "Eighteen.",
+        "Nineteen.",
+        "Twenty.",
+        "Twenty.",
+    ]
+    assert all(unit["pause_after_s"] == 5 for unit in focus20[4:-1])
+    assert all(unit["rate_scale"] == 0.88 for unit in focus20)
+    waking = paced["return.begin"]["units"]
+    assert [unit["text"] for unit in waking[4:24]] == [
+        "Twenty.",
+        "Nineteen.",
+        "Eighteen.",
+        "Seventeen.",
+        "Sixteen.",
+        "Fifteen.",
+        "Fourteen.",
+        "Thirteen.",
+        "Twelve.",
+        "Eleven.",
+        "Ten.",
+        "Nine.",
+        "Eight.",
+        "Seven.",
+        "Six.",
+        "Five.",
+        "Four.",
+        "Three.",
+        "Two.",
+        "One.",
+    ]
+    assert [unit["pause_after_s"] for unit in waking[4:23]] == [3] * 19
+    assert waking[23]["pause_after_s"] == 4
+    assert waking[4]["rate_scale"] == 0.9 and waking[23]["rate_scale"] == 0.97
+    assert all(
+        left["rate_scale"] <= right["rate_scale"]
+        for left, right in zip(waking[4:23], waking[5:24], strict=True)
+    )
 
 
 def test_audio_render_defaults_to_complete_session_and_narration_only_is_explicit(
@@ -241,3 +321,17 @@ def test_optional_complete_farfield_piper_session():
         "function-closer-midpoint",
         "ending-fade-end",
     }
+    assert set(manifest["pacing_auditions"]) == {
+        "relaxation-1-to-10",
+        "focus20-countdown-10-to-20",
+        "waking-countdown-20-to-1",
+    }
+    for audition in manifest["pacing_auditions"].values():
+        wav_artifact = audition["wav"]
+        report_artifact = audition["timing_report"]
+        assert (output_directory / wav_artifact["path"]).stat().st_size == wav_artifact[
+            "size_bytes"
+        ]
+        timing = json.loads((output_directory / report_artifact["path"]).read_text())
+        assert timing["total_duration_seconds"] == audition["duration_seconds"]
+        assert timing["segments"]

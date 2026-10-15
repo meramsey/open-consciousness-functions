@@ -69,7 +69,8 @@ dependencies, not unit-test dependencies.
 - Composition: `session.py` loads templates and resolves locale resources;
   `transcript.py` resolves timed events and measured dependencies.
 - Voice: `voice.py` selects explicit recording, disabled narration, or TTS and
-  returns measured cue/event timing.
+  returns measured cue/event timing; `narration_pacing.py` splits semantic
+  sentence units and resolves locale/profile timing roles.
 - Build: `audio_build.py` renders narration, selects background/DSP, mixes,
   encodes, and writes render metadata.
 
@@ -116,6 +117,9 @@ For architecture-sensitive changes, verify at least the relevant combination of:
   localized build behavior;
 - `tests/test_semantic_dsp.py` and `tests/test_dsp_approach.py` for state/DSP
   timing and approach invariants;
+- `tests/test_voice_contracts.py`, `tests/test_complete_session.py`, and
+  `tests/test_pacing_auditions.py` for sentence pacing, countdowns, and timing
+  reports;
 - `tests/test_locale.py` and `tests/test_locale_correctness.py` for fallback;
 - `tests/test_transcript.py` and `tests/test_transcript_unit.py` for timed data;
 - `tests/test_packaged_data.py`, `test_bootstrap.py`, and `test_container_config.py`

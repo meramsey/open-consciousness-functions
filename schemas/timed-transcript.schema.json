@@ -21,6 +21,11 @@
      "status": {"type": "string"}
     }
    },
+   "narration_pacing": {
+    "description": "Resolved versioned session policy selecting backend-neutral sentence-unit timing for keyed narration.",
+    "type": "object",
+    "additionalProperties": true
+   },
    "slot_provenance": {
     "type": "object",
     "additionalProperties": {
@@ -334,6 +339,11 @@
     },
      "pause_after": {
       "type": "number", "minimum": 0
+     },
+     "narration_pacing_units": {
+      "description": "Resolved locale-specific sentence unit roles for rendering; unit count must match punctuation segmentation.",
+      "type": "array", "minItems": 1,
+      "items": {"enum": ["sentence", "instruction", "phrase", "landing", "count", "countdown", "pre_countdown", "final_countdown"]}
      },
      "anchor": {"type": "string", "enum": ["start", "speech-end", "event-end"]},
      "policy": {"type": "string", "enum": ["fixed", "reflow"]}

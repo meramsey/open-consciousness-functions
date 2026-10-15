@@ -716,6 +716,7 @@ def build(
     voice_gain: float = 1.0,
     sample_rate: int = DEFAULT_SAMPLE_RATE,
     render_cue: Callable[[str], bytes] | None = None,
+    render_cue_with_profile: Callable[[str, dict[str, Any]], bytes] | None = None,
     overwrite: bool = True,
     fit: bool = False,
     flow: bool = False,
@@ -796,6 +797,7 @@ def build(
         backend=selected_voice,
         sample_rate=sample_rate,
         render_cue=render_cue,
+        render_cue_with_profile=render_cue_with_profile,
         overwrite=True,
         fit=fit,
         flow=flow,
@@ -951,6 +953,7 @@ def build(
         "narration_timing": {
             "mode": narration_meta.get("timing_mode", "explicit-at-timestamps"),
             "measured": True,
+            "duration_seconds": narration_meta["duration"],
             "note": (
                 "Per-cue speech durations measured from the rendered stem. Subtitle "
                 "export can use these instead of the semantic timeline."
@@ -970,6 +973,11 @@ def build(
                         else float(cue["samples"]) / narration_meta["sample_rate"],
                         3,
                     ),
+                    "speech_duration": round(
+                        float(cue.get("speech_duration", cue.get("duration", 0))), 3
+                    ),
+                    "pacing": cue.get("pacing"),
+                    "spoken_units": cue.get("spoken_units", []),
                 }
                 for cue in narration_meta.get("cue_stats", [])
             ],
@@ -978,6 +986,7 @@ def build(
         "semantic_dsp": state_program,
         "auditory_cues": narration_meta.get("auditory_cues", []),
         "narration_resolution": narration_meta.get("narration_resolution"),
+        "narration_pacing": narration_meta.get("narration_pacing", {}),
         "narration_source": narration_meta.get("narration_source"),
         "cues": narration_meta["cues"],
         "overlap_mode": narration_meta["overlap_mode"],

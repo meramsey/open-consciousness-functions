@@ -223,6 +223,8 @@ def _session_plan_summary(
     template: dict[str, Any],
     resources: list[dict[str, Any]],
     dsp_profile: dict[str, Any],
+    narration_pacing_plan: list[dict[str, Any]],
+    session_pacing_profile: dict[str, Any] | None,
 ) -> dict[str, Any]:
     ignored = set(dsp_profile.get("ignored_state_events", []))
     directives = _state_directives(doc)
@@ -235,6 +237,8 @@ def _session_plan_summary(
             "content_status": template.get("content_status"),
         },
         "pacing_profile": doc.get("pacing_profile"),
+        "narration_pacing_policy": doc.get("narration_pacing", {}),
+        "pacing_auditions": (session_pacing_profile or {}).get("pacing_auditions", {}),
         "dsp_profile": {
             "id": dsp_profile["id"],
             "version": dsp_profile.get("version"),
@@ -271,6 +275,7 @@ def _session_plan_summary(
             item for item in directives if item["event_id"] not in ignored
         ],
         "ignored_state_directives": [item for item in directives if item["event_id"] in ignored],
+        "narration_pacing_plan": narration_pacing_plan,
         "narration_resources": resources,
     }
 
@@ -287,7 +292,7 @@ def build_complete_session_plan(
     """Resolve a bound complete session and prove stage/state completeness before synthesis."""
     from .narration_first import plan_narration
     from .semantic_dsp import load_profile
-    from .session import compose
+    from .session import compose, load_pacing_profile
     from .validators import validate_timed_transcript
 
     plan = plan_narration(function_id, locale=locale, voice=voice, pacing=pacing)
@@ -299,6 +304,11 @@ def build_complete_session_plan(
     if not selected_dsp:
         raise OCFError(f"complete session template {selected_template} has no explicit DSP profile")
     dsp = load_profile(selected_dsp)
+    selected_pacing = (
+        load_pacing_profile(str(template_record["pacing_profile"]))
+        if template_record.get("pacing_profile")
+        else None
+    )
 
     slot_names = {"opener": "opener", "function-body": "function_body", "closer": "closer"}
     slot_keys = {}
@@ -322,6 +332,7 @@ def build_complete_session_plan(
         title=plan["title"],
         document_id=f"{function_id.lower()}-{plan['requested_locale'].lower()}-complete-session",
         function_id=function_id,
+        pacing_profile=selected_pacing,
         slot_keys=slot_keys,
     )
     doc["semantic_dsp_profile"] = selected_dsp
@@ -335,6 +346,7 @@ def build_complete_session_plan(
     resolved = resolve_document(doc, plan["requested_locale"], strict=True)
     resolved_resources = list((resolved.get("narration") or {}).get("resolved", []))
     from .locale import NARRATION_DOMAIN
+    from .narration_pacing import plan_event_pacing
 
     catalog = LocaleCatalog()
     for item in resolved_resources:
@@ -349,7 +361,31 @@ def build_complete_session_plan(
             raise OCFError(
                 f"required complete-session narration {item['key']!r} is not review-ready: {entry.status!r}"
             )
-    section_report = _session_plan_summary(doc, template_record, resolved_resources, dsp)
+    narration_pacing_plan = []
+    for event in iter_events(resolved):
+        event_pacing = plan_event_pacing(resolved, event)
+        if event_pacing is None:
+            continue
+        narration_pacing_plan.append(
+            {
+                "event_id": event["id"],
+                "narration_key": event.get("narration_key"),
+                "profile_id": event_pacing["profile_id"],
+                "rate_scale": event_pacing["rate_scale"],
+                "units": event_pacing["units"],
+                "internal_pause_seconds": round(
+                    sum(
+                        unit["pause_after_s"]
+                        for unit in event_pacing["units"]
+                        if unit["pause_inside_event"]
+                    ),
+                    3,
+                ),
+            }
+        )
+    section_report = _session_plan_summary(
+        doc, template_record, resolved_resources, dsp, narration_pacing_plan, selected_pacing
+    )
     function_review = (layers.get("specifications") or {}).get("human_review", "unknown")
     return {
         "schema_version": "1.0",
@@ -366,6 +402,9 @@ def build_complete_session_plan(
         "state_directives": section_report["state_directives"],
         "effective_state_directives": section_report["effective_state_directives"],
         "ignored_state_directives": section_report["ignored_state_directives"],
+        "narration_pacing_plan": section_report["narration_pacing_plan"],
+        "narration_pacing_policy": section_report["narration_pacing_policy"],
+        "pacing_auditions": section_report["pacing_auditions"],
         "narration_resources": resolved_resources,
         "approval_state": {
             "script_status": plan["approval_state"]["script_status"],
@@ -850,7 +889,7 @@ def render_complete_session(
     from . import audio_build
     from .narration_first import _adjusted_profile, _voice_profile
     from .semantic_dsp import load_profile
-    from .session import load_template
+    from .session import load_pacing_profile, load_template
 
     session_plan = build_complete_session_plan(
         function_id,
@@ -867,6 +906,7 @@ def render_complete_session(
     session_template = load_template(session_plan["template"]["id"])
     selected_dsp = dsp_profile or session_template.get("dsp_profile")
     load_profile(selected_dsp)
+    session_pacing_profile = load_pacing_profile(str(session_template["pacing_profile"]))
 
     default_dir = (
         AUDIO_RENDERED_DIR
@@ -1005,6 +1045,23 @@ def render_complete_session(
         )
         transcript_path.write_text(transcript, encoding="utf-8", newline="\n")
 
+        from .pacing_auditions import write_timing_reports_and_auditions
+
+        timing_artifact, pacing_auditions, timing_report = write_timing_reports_and_auditions(
+            stage=stage,
+            master_path=master_path,
+            function_id=function_id,
+            title=tts_plan["title"],
+            locale=tts_plan["requested_locale"],
+            voice=tts_plan["voice_profile"],
+            session_pacing=tts_plan["pacing"],
+            pacing_profile=session_pacing_profile,
+            document=doc,
+            render=built,
+            session_duration=float(built["master"]["duration"]),
+            sample_rate=sample_rate,
+        )
+
         created = datetime.now(UTC)
         manifest = {
             "schema_version": "1.0",
@@ -1015,6 +1072,12 @@ def render_complete_session(
             "requested_locale": tts_plan["requested_locale"],
             "voice_profile": tts_plan["voice_profile"],
             "pacing": tts_plan["pacing"],
+            "session_pacing_profile": {
+                "id": session_pacing_profile["id"],
+                "version": session_pacing_profile["version"],
+                "status": session_pacing_profile["status"],
+            },
+            "narration_pacing": built.get("narration_pacing", {}),
             "template": session_plan["template"],
             "dsp_profile": {
                 key: value
@@ -1047,10 +1110,15 @@ def render_complete_session(
                 "background_duration_seconds": round(background_probe["duration_seconds"], 3),
                 "spoken_segment_count": len(cues),
                 "spoken_duration_seconds": round(
-                    sum(float(cue.get("duration", 0)) for cue in cues), 3
+                    sum(float(cue.get("speech_duration", cue.get("duration", 0))) for cue in cues),
+                    3,
+                ),
+                "narration_audio_duration_seconds": float(
+                    built.get("narration_timing", {}).get("duration_seconds", 0)
                 ),
             },
             "narration_resources": session_plan["narration_resources"],
+            "pacing_auditions": pacing_auditions,
             "artifacts": {
                 "wav": {
                     "path": master_name,
@@ -1075,6 +1143,13 @@ def render_complete_session(
                     "format": "application/yaml",
                     "size_bytes": script_path.stat().st_size,
                     "sha256": sha256_of_file(script_path),
+                },
+                "timing_report": timing_artifact,
+                **{
+                    f"pacing_{audition_id}_{artifact_name}": artifact
+                    for audition_id, audition in pacing_auditions.items()
+                    for artifact_name, artifact in audition.items()
+                    if artifact_name in {"wav", "timing_report"}
                 },
             },
             "created_at": created.isoformat().replace("+00:00", "Z"),

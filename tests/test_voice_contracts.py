@@ -5,6 +5,7 @@ import json
 import os
 import subprocess
 import wave
+from array import array
 from pathlib import Path
 
 import pytest
@@ -411,6 +412,185 @@ def test_narration_hints_fit_and_semantic_counts_keep_display_text(
         sample_rate=100,
     )
     assert metadata["cues"] == 1
+
+
+def test_semantic_narration_pacing_splits_units_measures_pauses_and_slows_native_voice(
+    monkeypatch, tmp_path, narration_boundary
+):
+    from copy import deepcopy
+
+    from ocf_tools import locale
+
+    doc = {
+        "pacing_profile": {"id": "fixture-pacing", "version": "1.0.0", "status": "draft"},
+        "narration_pacing": {
+            "profiles": {
+                "guided": {
+                    "rate_scale": 0.88,
+                    "countdown_rate_scale_end": 0.88,
+                    "default_unit": "instruction",
+                    "pauses": {"sentence": 2.0, "instruction": 3.0, "landing": 5.0},
+                }
+            },
+            "entries": {"test.shared.guidance": "guided"},
+        },
+        "timeline": [
+            {
+                "id": "guidance",
+                "at": 0,
+                "narration_key": "test.shared.guidance",
+                "timing": {
+                    "pause_after": 2.0,
+                    "narration_pacing_units": ["instruction", "landing"],
+                },
+            }
+        ],
+    }
+
+    def resolve(document, *_args, **_kwargs):
+        result = deepcopy(document)
+        result["timeline"][0]["text"] = "Alpha. Omega."
+        return result
+
+    monkeypatch.setattr(locale, "resolve_document", resolve)
+    monkeypatch.setattr(v, "_pronunciation_hints", lambda *_args: {})
+    monkeypatch.setattr(
+        v,
+        "resolve_backend",
+        lambda *_args, **_kwargs: {
+            "name": "piper",
+            "binary": "piper",
+            "language": "en_US",
+            "locale": "en-US",
+            "piper_model": "fixture.onnx",
+            "piper_length_scale": 1.08,
+            "piper_sentence_silence_s": 0.4,
+            "notes": [],
+        },
+    )
+    seen = []
+    metadata = v.render_narration(
+        doc,
+        tmp_path / "paced.wav",
+        backend="fixture",
+        sample_rate=100,
+        render_cue_with_profile=lambda text, profile: (
+            seen.append((text, profile)) or wav([1000] * 100)
+        ),
+    )
+    assert [text for text, _ in seen] == ["Alpha.", "Omega."]
+    assert all(profile["piper_sentence_silence_s"] == 0 for _, profile in seen)
+    assert all(profile["piper_length_scale"] == pytest.approx(1.2273) for _, profile in seen)
+    cue = metadata["cue_stats"][0]
+    assert cue["speech_duration"] == 2.0
+    assert cue["pacing"]["internal_pause_s"] == 3.0
+    assert cue["duration"] == 5.0
+    assert cue["spoken_units"][0]["pause_after_s"] == 3.0
+    assert cue["spoken_units"][0]["pause_inside_event"] is True
+    assert cue["spoken_units"][1]["pause_after_s"] == 2.0
+    assert cue["spoken_units"][1]["pause_inside_event"] is False
+    assert cue["spoken_units"][1]["end_seconds"] == 5.0
+    with wave.open(str(tmp_path / "paced.wav"), "rb") as reader:
+        reader.setpos(100)
+        inserted = array("h", reader.readframes(300))
+    assert inserted == array("h", [0] * 300)
+
+
+def test_unicode_sentence_segmentation_and_click_safe_unit_edges():
+    from ocf_tools.narration_pacing import split_speech_units
+
+    units = split_speech_units("One. 二。三！四？\n\nFive?")
+    assert [unit["text"] for unit in units] == ["One.", "二。", "三！", "四？", "Five?"]
+    assert units[3]["paragraph_after"] is True
+    faded = v._fade_spoken_unit([1000] * 100, 1000)
+    assert faded[0] == 0 and faded[-1] == 0
+    assert faded[10] > 0 and faded[-11] > 0
+
+
+def test_inserted_narration_pauses_respect_fixed_event_windows(
+    monkeypatch, tmp_path, narration_boundary
+):
+    from copy import deepcopy
+
+    from ocf_tools import locale
+
+    doc = {
+        "narration_pacing": {
+            "profiles": {
+                "guided": {
+                    "rate_scale": 0.9,
+                    "default_unit": "instruction",
+                    "pauses": {"sentence": 2.0, "instruction": 3.0},
+                }
+            },
+            "entries": {"test.shared.guidance": "guided"},
+        },
+        "timeline": [
+            {
+                "id": "guidance",
+                "at": 0,
+                "narration_key": "test.shared.guidance",
+                "timing": {
+                    "narration_pacing_units": ["instruction", "instruction"],
+                    "maximum_duration": 3.0,
+                },
+            }
+        ],
+    }
+
+    def resolve(document, *_args, **_kwargs):
+        result = deepcopy(document)
+        result["timeline"][0]["text"] = "Alpha. Omega."
+        return result
+
+    monkeypatch.setattr(locale, "resolve_document", resolve)
+    monkeypatch.setattr(v, "_pronunciation_hints", lambda *_args: {})
+    monkeypatch.setattr(
+        v,
+        "resolve_backend",
+        lambda *_args, **_kwargs: {"name": "espeak-ng", "language": "en-us", "notes": []},
+    )
+    with pytest.raises(OCFError, match="exceeds explicit maximum_duration"):
+        v.render_narration(
+            doc,
+            tmp_path / "must-not-publish.wav",
+            backend="espeak-ng",
+            sample_rate=100,
+            render_cue_with_profile=lambda *_args: wav([1000] * 100),
+        )
+    assert not (tmp_path / "must-not-publish.wav").exists()
+
+
+def test_backend_rate_scale_is_inverse_for_piper_and_direct_for_wpm():
+    piper, _metadata = v._paced_voice_spec(
+        {"name": "piper", "piper_length_scale": 1.08, "piper_sentence_silence_s": 0.4},
+        0.88,
+    )
+    espeak, _metadata = v._paced_voice_spec({"name": "espeak-ng", "wpm": 175}, 0.88)
+    assert piper["piper_length_scale"] == pytest.approx(1.2273)
+    assert piper["piper_sentence_silence_s"] == 0
+    assert espeak["wpm"] == 154
+
+
+def test_count_sensitive_pacing_requires_locale_unit_roles():
+    from ocf_tools.narration_pacing import event_pacing
+
+    document = {
+        "narration_pacing": {
+            "entries": {"hplus.shared.count": "counting"},
+            "profiles": {
+                "counting": {
+                    "rate_scale": 0.9,
+                    "default_unit": "sentence",
+                    "require_unit_kinds": True,
+                    "pauses": {"sentence": 2.0, "countdown": 4.0},
+                }
+            },
+        }
+    }
+    event = {"id": "count", "narration_key": "hplus.shared.count", "text": "Ten. Eleven."}
+    with pytest.raises(OCFError, match="requires locale-specific timing.pacing_units"):
+        event_pacing(document, event, 2)
 
 
 def test_measured_body_duration_moves_the_following_repetition(tmp_path, narration_boundary):

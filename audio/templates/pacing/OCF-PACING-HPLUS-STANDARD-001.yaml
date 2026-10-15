@@ -1,6 +1,6 @@
 schema_version: "1.0"
 id: OCF-PACING-HPLUS-STANDARD-001
-version: "0.1.0"
+version: "0.3.0"
 status: draft
 voice_profile_id: OCF-VOICE-0003
 estimate:
@@ -18,7 +18,7 @@ pauses:
   optional_stage_complete_s: 3
   relaxation_begin_s: 5
   relaxation_breath_s: 15
-  relaxation_step_s: 10
+  relaxation_step_s: 6
   relaxation_whole_s: 30
   focus10_learn_s: 3
   focus10_count_s: 5
@@ -47,6 +47,74 @@ underlay:
   gain_db: -24
   audibility_note: "Barely-audible narration underlay; verify measured speech-band level in each mix."
   efficacy_claim: false
+narration_pacing:
+  profiles:
+    relaxation-opening:
+      rate_scale: 0.88
+      default_unit: instruction
+      require_unit_kinds: true
+      pauses: {sentence: 2.0, instruction: 3.0, paragraph: 4.0}
+    relaxation-body:
+      rate_scale: 0.88
+      default_unit: instruction
+      require_unit_kinds: true
+      pauses:
+        sentence: 2.0
+        instruction: 3.5
+        count: 6.0
+        phrase: 1.25
+        landing: 5.0
+        paragraph: 4.0
+    focus20-countdown:
+      rate_scale: 0.88
+      default_unit: sentence
+      require_unit_kinds: true
+      pauses: {sentence: 2.0, instruction: 2.5, pre_countdown: 2.5, countdown: 5.0, paragraph: 4.0}
+    waking-countdown:
+      rate_scale: 0.90
+      countdown_rate_scale_end: 0.97
+      default_unit: sentence
+      require_unit_kinds: true
+      pauses:
+        sentence: 2.0
+        instruction: 2.5
+        pre_countdown: 2.5
+        countdown: 3.0
+        final_countdown: 4.0
+        phrase: 1.5
+        landing: 3.0
+        paragraph: 3.5
+    guided-transition:
+      rate_scale: 0.90
+      default_unit: instruction
+      pauses: {sentence: 2.0, instruction: 2.5, count: 2.5, phrase: 1.5, paragraph: 3.0}
+    single-count:
+      rate_scale: 0.90
+      default_unit: count
+      pauses: {count: 1.0}
+  entries:
+    hplus.shared.relaxation.begin: relaxation-opening
+    hplus.shared.relaxation.face: relaxation-body
+    hplus.shared.relaxation.shoulders: relaxation-body
+    hplus.shared.relaxation.hands: relaxation-body
+    hplus.shared.relaxation.torso: relaxation-body
+    hplus.shared.relaxation.legs: relaxation-body
+    hplus.shared.focus10.learn: guided-transition
+    hplus.shared.focus10.count: single-count
+    hplus.shared.focus10.enter: single-count
+    hplus.shared.focus10.ready: guided-transition
+    hplus.shared.focus10.return.ready: guided-transition
+    hplus.shared.focus11.open.prepare: guided-transition
+    hplus.shared.focus11.open: single-count
+    hplus.shared.focus11.ready: guided-transition
+    hplus.shared.focus11.close.prepare: guided-transition
+    hplus.shared.focus11.close: guided-transition
+    hplus.shared.focus20.enter: focus20-countdown
+    hplus.shared.waking.begin: waking-countdown
+pacing_auditions:
+  relaxation-1-to-10: {label: Ten-point relaxation 1-10, file_name: relaxation-1-to-10, stage_id: relaxation}
+  focus20-countdown-10-to-20: {label: Sleep entry countdown 10-20, file_name: focus20-10-to-20, event_id: focus20-enter.enter}
+  waking-countdown-20-to-1: {label: Waking countdown 20-1, file_name: waking-20-to-1, event_id: return.begin}
 optional_stages:
   affirmation: false
   resonant_tuning: false

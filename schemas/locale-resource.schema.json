@@ -71,6 +71,11 @@
             "preferred_duration": { "type": "number", "exclusiveMinimum": 0 },
             "min_duration": { "type": "number", "exclusiveMinimum": 0 },
             "max_duration": { "type": "number", "exclusiveMinimum": 0 },
+            "pacing_units": {
+              "description": "Locale-specific semantic classification for each sentence unit, in order. It supplies timing intent only; it never replaces or edits the spoken text.",
+              "type": "array", "minItems": 1,
+              "items": { "enum": ["sentence", "instruction", "phrase", "landing", "count", "countdown", "pre_countdown", "final_countdown"] }
+            },
             "notes": { "type": ["string", "null"] }
           }
         },
