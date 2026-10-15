@@ -109,3 +109,44 @@ def test_bulk_dry_run_needs_no_engine_and_writes_nothing(monkeypatch, tmp_path):
     result = bulk_render.render_many(["fixture"], voice="unavailable", dry_run=True)
     assert result["results"][0]["status"] == "planned"
     assert not (tmp_path / "work").exists()
+
+
+@pytest.mark.unit
+def test_speech_quota_counts_abandoned_staging_and_preserves_pcm(monkeypatch, tmp_path):
+    from ocf_tools.paths import work_path
+
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    monkeypatch.setattr(speech_cache, "voice_identity", lambda spec: {})
+    monkeypatch.setattr(speech_cache, "MAX_CACHE_BYTES", 100)
+    abandoned = work_path("cache", "tts", "a" * 64)
+    abandoned.mkdir(parents=True)
+    (abandoned / ".ocf-cache-owned").write_text("a" * 64)
+    (abandoned / ".abandoned.wav").write_bytes(b"x" * 100)
+    with speech_cache.enabled():
+        assert speech_cache.cached_cue({}, "fixture", pcm) == pcm()
+    assert not list(work_path("cache", "tts").glob("*/speech.wav"))
+    from ocf_tools.agent_api import cache_clean
+
+    assert cache_clean(0, dry_run=False, confirmed=True)["selected_count"] == 1
+    assert not abandoned.exists()
+
+
+@pytest.mark.unit
+def test_concurrent_cache_publish_reserves_capacity(monkeypatch, tmp_path):
+    from concurrent.futures import ThreadPoolExecutor
+
+    from ocf_tools.paths import work_path
+
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    monkeypatch.setattr(speech_cache, "MAX_CACHE_BYTES", 4400)
+
+    def publish(key):
+        try:
+            speech_cache._publish(work_path("cache", "tts", key), key, b"x" * 200)
+            return True
+        except OCFError:
+            return False
+
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        results = list(pool.map(publish, ["a" * 64, "b" * 64]))
+    assert sorted(results) == [False, True]

@@ -106,14 +106,26 @@ def validate_against_schema(data: dict[str, Any], schema: dict[str, Any]) -> lis
     return [f"{'.'.join(map(str, e.path))}: {e.message}" for e in errors]
 
 
-@lru_cache(maxsize=1)
 def _schema_registry() -> Registry:
     """Resolve shared schema definitions locally, never by network."""
+    contents = tuple(
+        path.read_text(encoding="utf-8")
+        for path in sorted(schema_path("timed-transcript.schema.json").parent.glob("*.schema.json"))
+    )
+    return _registry_from_contents(contents)
+
+
+@lru_cache(maxsize=4)
+def _registry_from_contents(contents: tuple[str, ...]) -> Registry:
     resources = []
-    for path in schema_path("timed-transcript.schema.json").parent.glob("*.schema.json"):
-        schema = json.loads(path.read_text(encoding="utf-8"))
+    for text in contents:
+        schema = json.loads(text)
         resources.append((schema["$id"], Resource.from_contents(schema)))
     return Registry().with_resources(resources)
+
+
+# Preserve the existing explicit test/tool cache reset API.
+_schema_registry.cache_clear = _registry_from_contents.cache_clear
 
 
 def spoken_word_count(command: str) -> int:

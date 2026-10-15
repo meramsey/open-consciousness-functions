@@ -18,6 +18,8 @@ from .paths import work_path
 from .utils import OCFError, sha256_of_file
 
 CACHE_VERSION = "ocf-tts-pcm/1"
+MAX_CACHE_BYTES = 2 * 1024**3
+STATS = {"hit": 0, "miss": 0, "invalidated": 0, "bypassed": 0}
 _active: ContextVar[bool] = ContextVar("ocf_speech_cache", default=False)
 
 
@@ -75,6 +77,7 @@ def _valid_pcm(data: bytes) -> bool:
 
 def cached_cue(spec: dict, text: str, render) -> bytes:
     if not _active.get():
+        STATS["bypassed"] += 1
         return render()
     identity = {
         "voice": voice_identity(spec),
@@ -94,26 +97,45 @@ def cached_cue(spec: dict, text: str, render) -> bytes:
             and info["sha256"] == hashlib.sha256(data).hexdigest()
             and _valid_pcm(data)
         ):
+            STATS["hit"] += 1
             return data
     except (OSError, ValueError, KeyError, TypeError):
         pass
+    STATS["invalidated" if manifest.exists() else "miss"] += 1
     data = render()
     if not _valid_pcm(data):
         raise OCFError("TTS cache refuses incomplete or invalid PCM output")
-    root.mkdir(parents=True, exist_ok=True)
-    # Unique staging and atomic replace: concurrent readers see either a valid
-    # matching pair or a miss. A crash never makes partial PCM a cache hit.
-    token = uuid4().hex
-    wav_temp = root / f".{token}.wav"
-    json_temp = root / f".{token}.json"
     try:
-        wav_temp.write_bytes(data)
-        json_temp.write_text(
-            json.dumps({"key": key, "sha256": hashlib.sha256(data).hexdigest()}), encoding="utf-8"
-        )
-        os.replace(wav_temp, root / "speech.wav")
-        os.replace(json_temp, manifest)
-    finally:
-        wav_temp.unlink(missing_ok=True)
-        json_temp.unlink(missing_ok=True)
+        _publish(root, key, data)
+    except (OSError, OCFError):
+        # Caching is optional. Keep valid synthesized PCM if storage/cleanup
+        # contention prevents a cache write; do not turn it into a render failure.
+        STATS["bypassed"] += 1
     return data
+
+
+def _publish(root: Path, key: str, data: bytes):
+    from .dev_jobs import lock
+
+    with lock("speech-cache", wait=True):
+        used = sum(
+            path.lstat().st_size for path in work_path("cache", "tts").glob("*/*") if path.is_file()
+        )
+        if used + len(data) + 4096 > MAX_CACHE_BYTES:
+            raise OCFError("speech cache capacity reached")
+        root.mkdir(parents=True, exist_ok=True)
+        (root / ".ocf-cache-owned").write_text(key, encoding="ascii")
+        token = uuid4().hex
+        wav_temp = root / f".{token}.wav"
+        json_temp = root / f".{token}.json"
+        try:
+            wav_temp.write_bytes(data)
+            json_temp.write_text(
+                json.dumps({"key": key, "sha256": hashlib.sha256(data).hexdigest()}),
+                encoding="utf-8",
+            )
+            os.replace(wav_temp, root / "speech.wav")
+            os.replace(json_temp, root / "manifest.json")
+        finally:
+            wav_temp.unlink(missing_ok=True)
+            json_temp.unlink(missing_ok=True)

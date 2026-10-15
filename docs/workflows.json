@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "workflows": {
+    "add-function": {"guide": "docs/FUNCTION_LIFECYCLE.md", "commands": ["new function", "validate --all", "build-index"], "note": "Wizard creates a record. Author actual narration and explicit bindings before planning; never fabricate missing narration."},
+    "review-narration": {"guide": "docs/SOURCE_FIRST_AUTHORING.md", "commands": ["functions describe OCF-FND-002 --rich --json", "review commands", "validate --all"], "note": "Preserve protected wording, provenance and canonical commands; record human review separately."},
+    "add-locale": {"guide": "docs/LOCALIZATION.md", "commands": ["locale validate --locale en-US", "locale coverage --locale en-US"], "note": "Replace en-US with the authored locale. Spoken fallback stays strict."},
+    "plan-all": {"guide": "docs/BULK_SESSIONS.md", "commands": ["audio plan --all --locale en-US --dry-run", "audio plan --all --locale en-US", "audio plan --all --locale en-US --check"], "note": "No synthesis; generated source plans inherit the shared configuration."},
+    "render-audition": {"guide": "docs/BULK_SESSIONS.md", "commands": ["voice doctor", "audio plan OCF-SLP-005 --locale en-US --expand", "audio render-many OCF-SLP-005 --voice OCF-VOICE-0002 --dry-run", "audio render-many OCF-SLP-005 --voice OCF-VOICE-0002 --resume"], "note": "Real rendering requires explicit start. Review timing reports and listen before approval."},
+    "debug-render": {"guide": "docs/DOCTOR.md", "commands": ["doctor --json", "voice doctor", "audio eligibility OCF-SLP-005 --locale en-US"], "note": "Inspect retained job logs and scratch; never silently rerun an expensive failed job."},
+    "package-release": {"guide": "docs/AUDIO_PIPELINE.md", "commands": ["audio release --help"], "note": "Select a registered implementation and explicit approved PNG/JPEG artwork. Use --dry-run first; packaging success is not rights clearance."},
+    "validate-pr": {"guide": "docs/TEST_COVERAGE.md", "commands": ["validate --all", "build-index --check", "audio plan --all --locale en-US --check"], "note": "Run focused tests while editing, then make check, make lint and the full pytest suite before completion."}
+  }
+}

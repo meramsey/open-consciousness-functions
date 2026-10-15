@@ -103,6 +103,17 @@ def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="ocf", description=HELP_TEXT, add_help=False)
     parser.add_argument("--quiet", action="store_true", help="suppress informational output")
     sub = parser.add_subparsers(dest="command")
+    dev = sub.add_parser(
+        "dev",
+        help="compact provider-neutral tools and persistent jobs (same services as optional MCP)",
+    )
+    dev.add_argument(
+        "operation", help="allowlisted ocf_* operation; ocf_project_overview lists tools"
+    )
+    dev.add_argument("--arguments", default="{}", help="JSON object of typed operation arguments")
+    sub.add_parser("mcp", help="start optional local stdio MCP server")
+    docs_cmd = sub.add_parser("docs-inventory", help="inventory tracked documentation surfaces")
+    docs_cmd.add_argument("--check", action="store_true")
 
     sub.add_parser("help", help="show help")
     capabilities = sub.add_parser("capabilities", help="machine-readable live CLI discovery")
@@ -978,10 +989,34 @@ def main(argv: list[str] | None = None) -> int:
     except SystemExit as exc:
         # argparse exits on unknown subcommands or missing required arguments;
         # degrade gracefully to the help text instead.
-        print(HELP_TEXT)
+        if exc.code:
+            print(HELP_TEXT)
         return int(exc.code or 0)
 
     try:
+        if args.command == "dev":
+            import json
+
+            from .agent_api import dispatch
+
+            try:
+                arguments = json.loads(args.arguments)
+            except ValueError as exc:
+                raise OCFError("--arguments must be valid JSON") from exc
+            if not isinstance(arguments, dict):
+                raise OCFError("--arguments must be a JSON object")
+            result = dispatch(args.operation, arguments)
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+            return 1 if result.get("status") == "failed" else 0
+        if args.command == "mcp":
+            from .mcp_server import main as mcp_main
+
+            mcp_main()
+            return 0
+        if args.command == "docs-inventory":
+            from .doc_inventory import main as inventory_main
+
+            return inventory_main(["--check"] if args.check else [])
         if args.command == "help" or args.command is None:
             print(HELP_TEXT)
             return 0

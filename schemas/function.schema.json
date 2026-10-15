@@ -96,6 +96,7 @@
           "enum": ["unchanged", "normalized", "proposed", "review-required"]
         },
         "source_availability": {
+          "description": "Historical source availability only; derive modern TTS eligibility from validated narration and session bindings, never this field.",
           "type": "string",
           "enum": ["available", "unavailable", "pending-source-review"]
         },

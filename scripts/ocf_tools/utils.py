@@ -6,6 +6,8 @@ import errno
 import hashlib
 import os
 import tempfile
+from copy import deepcopy
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -30,8 +32,16 @@ class OCFFileExistsError(OCFError):
 
 
 def yaml_safe_load(data: str) -> Any:
-    """Parse YAML with safe loader."""
-    return yaml.load(data, Loader=getattr(yaml, "CSafeLoader", yaml.SafeLoader))
+    """Parse fresh file content safely; never share mutable parsed objects."""
+    loader = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
+    if isinstance(data, str) and len(data) <= 262144:
+        return deepcopy(_parsed_yaml(data, loader))
+    return yaml.load(data, Loader=loader)
+
+
+@lru_cache(maxsize=128)
+def _parsed_yaml(data: str, loader) -> Any:
+    return yaml.load(data, Loader=loader)
 
 
 def yaml_safe_dump(data: Any) -> str:

@@ -28,7 +28,7 @@ def overlay(parent: dict, child: dict) -> dict:
     return result
 
 
-def configuration_lock() -> dict:
+def configuration_lock(dependency_names: list[str] | None = None) -> dict:
     from .semantic_dsp import load_profile
     from .session import load_pacing_profile, load_template
 
@@ -51,6 +51,13 @@ def configuration_lock() -> dict:
         "locales/en-US/hplus-*.yaml",
     ):
         paths.update(REPO_ROOT.glob(pattern))
+    if dependency_names is not None:
+        paths = set()
+        for name in dependency_names:
+            path = (REPO_ROOT / name).resolve()
+            if Path(name).is_absolute() or not path.is_relative_to(REPO_ROOT):
+                raise OCFError("audio defaults dependency escapes repository")
+            paths.add(path)
     return {
         "schema_version": "1.0",
         "id": BASELINE_ID,
@@ -74,8 +81,11 @@ def configuration_lock() -> dict:
 
 
 def check_lock(path: Path = LOCK_PATH) -> dict:
-    expected = configuration_lock()
-    if not path.is_file() or json.loads(path.read_text(encoding="utf-8")) != expected:
+    recorded = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
+    # New unrelated functions/locales do not mutate an existing baseline.
+    # A change to a locked input still fails exact content verification.
+    expected = configuration_lock(list(recorded.get("files", {})))
+    if recorded != expected:
         raise OCFError(
             "shared audio defaults lock is stale; create a new baseline version deliberately"
         )

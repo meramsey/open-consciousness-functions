@@ -11,7 +11,7 @@ from .locale import LocaleCatalog
 from .narration_first import _voice_profile
 from .paths import work_path
 from .session_plans import digest, source_plan
-from .speech_cache import enabled, voice_identity
+from .speech_cache import STATS, enabled, voice_identity
 from .utils import OCFError, sha256_of_file, write_text_atomic
 
 
@@ -125,6 +125,7 @@ def render_many(
             )
     return {
         "workers": 1,
+        "speech_cache": dict(STATS),
         "dry_run": dry_run,
         "results": statuses,
         "failed": sum(row["status"] == "failed" for row in statuses),
