@@ -316,7 +316,25 @@ def _kill_tree(process):
             os.killpg(process.pid, signal.SIGKILL)
         except ProcessLookupError:
             pass
+        except PermissionError:
+            # Darwin may return EPERM, rather than ESRCH, when only zombies
+            # remain in the group. Never swallow a real live-process failure.
+            if not _finished(process) or _group_has_live_members(process.pid):
+                raise
     process.wait(timeout=10)
+
+
+def _group_has_live_members(group_id: int) -> bool:
+    result = subprocess.run(
+        ["ps", "-A", "-o", "pgid=", "-o", "stat="], capture_output=True, text=True, check=False
+    )
+    if result.returncode:
+        raise OCFError("could not verify process-group termination")
+    for line in result.stdout.splitlines():
+        fields = line.split()
+        if len(fields) >= 2 and fields[0] == str(group_id) and not fields[1].startswith("Z"):
+            return True
+    return False
 
 
 def _finished(process):
@@ -368,10 +386,20 @@ def worker(job_id: str):
                 break
             time.sleep(0.2)
     finally:
-        _kill_tree(child)
+        cleanup_error = None
+        try:
+            _kill_tree(child)
+        except (OSError, OCFError, subprocess.SubprocessError) as exc:
+            cleanup_error = str(exc)
         reader.join(timeout=10)
         state = json.loads((root / "state.json").read_text(encoding="utf-8"))
-        if stopped:
+        if cleanup_error:
+            state.update(
+                state="failed",
+                progress="process cleanup could not be verified",
+                error=cleanup_error,
+            )
+        elif stopped:
             state.update(state=stopped, progress="owned process tree stopped")
         elif state["state"] not in TERMINAL:
             state.update(

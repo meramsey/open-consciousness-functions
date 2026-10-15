@@ -104,6 +104,45 @@ def test_log_capture_drains_but_bounds_retained_bytes(tmp_path):
 
 
 @pytest.mark.unit
+def test_darwin_zombie_group_permission_error_requires_no_live_members(monkeypatch):
+    from types import SimpleNamespace
+
+    monkeypatch.setattr(jobs, "signal", SimpleNamespace(SIGTERM=15, SIGKILL=9))
+    calls = []
+
+    def killpg(pid, sig):
+        calls.append(sig)
+        if sig == jobs.signal.SIGKILL:
+            raise PermissionError("zombie group")
+
+    monkeypatch.setattr(jobs, "os", SimpleNamespace(name="posix", killpg=killpg))
+    monkeypatch.setattr(jobs.time, "sleep", lambda _: None)
+    monkeypatch.setattr(jobs, "_finished", lambda _: True)
+    monkeypatch.setattr(jobs, "_group_has_live_members", lambda _: False)
+    waits = []
+    process = SimpleNamespace(pid=123, wait=lambda **kwargs: waits.append(kwargs))
+    jobs._kill_tree(process)
+    assert calls == [jobs.signal.SIGTERM, jobs.signal.SIGKILL]
+    assert waits == [{"timeout": 10}]
+    monkeypatch.setattr(jobs, "_group_has_live_members", lambda _: True)
+    with pytest.raises(PermissionError):
+        jobs._kill_tree(process)
+
+
+@pytest.mark.unit
+def test_process_group_verification_distinguishes_zombies_and_running_descendants(monkeypatch):
+    from types import SimpleNamespace
+
+    monkeypatch.setattr(
+        jobs.subprocess,
+        "run",
+        lambda *args, **kwargs: SimpleNamespace(returncode=0, stdout="123 Z\n456 S\n"),
+    )
+    assert not jobs._group_has_live_members(123)
+    assert jobs._group_has_live_members(456)
+
+
+@pytest.mark.unit
 def test_queued_input_change_fails_explicitly_before_execution(monkeypatch, tmp_path):
     monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
     root = jobs.directory("c" * 32)
