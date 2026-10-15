@@ -252,11 +252,25 @@ def _draw_emblem(draw, scale: float, brand: dict, data: dict):
                 for j in (0, 1)
             )
         )
-    draw.line(
-        points, fill=p["secondary"], width=max(1, round(g["path_width"] * scale)), joint="curve"
-    )
+
+    def stroke(color, width):
+        # A filled normal-offset outline avoids Pillow's short-segment joint
+        # artifacts on a densely sampled, wide curved stroke.
+        left, right = [], []
+        for i, (x, y) in enumerate(points):
+            before, after = points[max(0, i - 1)], points[min(len(points) - 1, i + 1)]
+            dx, dy = after[0] - before[0], after[1] - before[1]
+            length = math.hypot(dx, dy) or 1
+            nx, ny = -dy / length * width / 2, dx / length * width / 2
+            left.append((x + nx, y + ny))
+            right.append((x - nx, y - ny))
+        draw.polygon(left + list(reversed(right)), fill=color)
+        for x, y in (points[0], points[-1]):
+            draw.ellipse((x - width / 2, y - width / 2, x + width / 2, y + width / 2), fill=color)
+
+    stroke(p["secondary"], g["path_width"] * scale)
     if data["effects"]["glow"]:
-        draw.line(points, fill=p["highlight"], width=max(1, round(5 * scale)), joint="curve")
+        stroke(p["highlight"], 5 * scale)
     draw.polygon([(a * scale, b * scale) for a, b in _star(g)], fill=p["highlight"])
 
 
