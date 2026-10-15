@@ -439,13 +439,17 @@ def _expand_model_path(value: Any) -> str | None:
 
 
 def _load_profile(profile: dict[str, Any]) -> dict[str, Any]:
+    if profile.get("voice_kind") == "cloned":
+        from .custom_voices import validate_profile
+
+        validate_profile(profile, assets=False)
     name = profile.get("backend") or profile.get("name")
     if name not in BACKENDS:
         raise OCFError(
             f"voice profile backend {name!r} is not supported "
             f"(expected one of {', '.join(sorted(BACKENDS))})"
         )
-    return {
+    resolved = {
         "name": name,
         "binary": BACKENDS[name]["binary"],
         "language": profile.get("language") or BACKENDS[name]["default_language"],
@@ -455,6 +459,15 @@ def _load_profile(profile: dict[str, Any]) -> dict[str, Any]:
         "piper_sentence_silence_s": profile.get("piper_sentence_silence_s"),
         "profile_id": profile.get("id"),
     }
+    if profile.get("model"):
+        from .custom_voices import model_path
+
+        resolved["model"] = model_path(profile)
+    if "speaker_id" in profile:
+        resolved["speaker_id"] = profile["speaker_id"]
+    if profile.get("pronunciation"):
+        resolved["pronunciation"] = profile["pronunciation"]
+    return resolved
 
 
 def _locale_voice_name(backend: str, locale: str | None) -> str | None:
@@ -638,6 +651,8 @@ def _render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes
         out=out_path,
     )
     if spec["name"] == "piper":
+        if spec.get("speaker_id") is not None:
+            command.extend(["--speaker", str(spec["speaker_id"])])
         length_scale = spec.get("piper_length_scale")
         if length_scale is not None:
             command.extend(["--length-scale", str(length_scale)])
@@ -975,6 +990,11 @@ def render_narration(
         if recording_audio is not None
         else _pronunciation_hints(doc, locale, catalog, spec["name"])
     )
+    if spec.get("pronunciation") and recording_audio is None:
+        hints_by_event = {
+            event.id: {**hints_by_event.get(event.id, {}), **spec["pronunciation"]}
+            for event in events
+        }
     timed = sorted(events, key=lambda event: event.at or 0.0)
     originals = {event["id"]: event for event in iter_events(doc)}
     has_semantics = any(event.get("semantic") or event.get("after") for event in originals.values())

@@ -508,6 +508,47 @@ def run_session_plan_wizard() -> None:
         print(f"Generated. Inspect: ocf audio plan {owner} --locale {locale} --expand")
 
 
+@_wizard
+def run_voice_profile_wizard() -> None:
+    """Create a private profile through the same model import/validation service."""
+    from .custom_voices import import_model
+
+    identifier = str(ask("Stable voice ID", default="OCF-VOICE-9001").value)
+    name = str(ask("Voice display name").value)
+    model = Path(str(ask("Installed local Piper ONNX model path").value)).expanduser()
+    kind = str(
+        ask_pick(
+            "Voice kind", ["installed-model", "custom", "cloned"], default="installed-model"
+        ).value
+    )
+    consent, record = "unknown", None
+    if kind == "cloned":
+        consent = str(
+            ask_pick(
+                "Documented authorization",
+                ["self-recorded", "authorized-contributor", "unknown"],
+                default="unknown",
+            ).value
+        )
+        record = str(ask("Consent record reference (portable, no private recording data)").value)
+    license_text = str(ask("Known model license", default="unknown").value)
+    confirm = ask_yes_no(
+        "Import privately? This does not publish the model or change the default voice.",
+        default=False,
+    )
+    if confirm.intent == "value" and str(confirm.value).lower() == "yes":
+        result = import_model(
+            model,
+            voice_id=identifier,
+            name=name,
+            voice_kind=kind,
+            consent_status=consent,
+            consent_record=record,
+            license=license_text,
+        )
+        print(f"Created private profile: {result['path']}. Run: ocf voice audition {identifier}")
+
+
 def build_function_yaml(**kwargs: Any) -> dict[str, Any]:
     """Assemble a canonical function YAML dict from wizard fields."""
     today = current_date()
