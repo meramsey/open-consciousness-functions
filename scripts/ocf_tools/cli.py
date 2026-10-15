@@ -109,6 +109,9 @@ def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="ocf", description=HELP_TEXT, add_help=False)
     parser.add_argument("--quiet", action="store_true", help="suppress informational output")
     sub = parser.add_subparsers(dest="command")
+    from .narration_cli import add_commands as add_narration_commands
+
+    add_narration_commands(sub)
     art = sub.add_parser(
         "artwork",
         help="original candidate OCF brand, independent themes and offline localized covers",
@@ -248,6 +251,9 @@ def _build_parser() -> argparse.ArgumentParser:
 
     new = sub.add_parser("new", help="create a new record")
     new_sub = new.add_subparsers(dest="new_kind")
+    from .voice_engine_cli import add_new_commands
+
+    add_new_commands(new_sub)
     new_sub.add_parser("function", help="new function record")
     new_sub.add_parser("proposal", help="new proposal")
     new_sub.add_parser("audio", help="new audio implementation manifest")
@@ -403,6 +409,12 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     narration_render.add_argument("--locale", help="requested BCP-47 locale")
     narration_render.add_argument(
+        "--narration-sources", type=Path, help="explicit recorded/hybrid source manifest"
+    )
+    narration_render.add_argument(
+        "--narration-source", choices=("tts", "recording", "hybrid", "silence")
+    )
+    narration_render.add_argument(
         "--voice", help="voice profile ID/slug; otherwise explicit function/template selection"
     )
     narration_render.add_argument(
@@ -534,6 +546,9 @@ def _build_parser() -> argparse.ArgumentParser:
 
     voice = sub.add_parser("voice", help="narration (TTS) tooling")
     voice_sub = voice.add_subparsers(dest="voice_kind")
+    from .voice_engine_cli import add_commands as add_voice_engine_commands
+
+    add_voice_engine_commands(voice_sub)
     inspect_voice = voice_sub.add_parser(
         "inspect", help="inspect a built-in or private reusable voice profile"
     )
@@ -1334,6 +1349,13 @@ def main(argv: list[str] | None = None) -> int:
                 print(text, end="")
             return 0
         if args.command == "new":
+            if args.new_kind == "voice-dataset":
+                import json
+
+                from .voice_engine_cli import dispatch
+
+                print(json.dumps(dispatch(args), ensure_ascii=False, indent=2))
+                return 0
             if args.new_kind == "function":
                 run_function_wizard()
             elif args.new_kind == "proposal":
@@ -1495,7 +1517,12 @@ def main(argv: list[str] | None = None) -> int:
                 if args.mode == "narration-only":
                     from .narration_first import render_narration_first
 
-                    if args.overrides or not args.voice:
+                    if (
+                        args.overrides
+                        or args.narration_sources
+                        or args.narration_source
+                        or not args.voice
+                    ):
                         raise OCFError(
                             "narration-only requires --voice and does not apply complete-session overrides"
                         )
@@ -1525,6 +1552,15 @@ def main(argv: list[str] | None = None) -> int:
                         output=args.output,
                         dry_run=args.dry_run,
                         sample_rate=args.rate,
+                        **(
+                            {
+                                "narration_sources": args.narration_sources,
+                                "narration_source": args.narration_source,
+                            }
+                            if args.narration_sources is not None
+                            or args.narration_source is not None
+                            else {}
+                        ),
                     )
                 if args.dry_run:
                     print(json.dumps(result, ensure_ascii=False, indent=2))
@@ -1644,7 +1680,28 @@ def main(argv: list[str] | None = None) -> int:
                 return 0
             print(HELP_TEXT)
             return 0
+        if args.command == "narration":
+            import json
+
+            from .narration_cli import dispatch
+
+            print(json.dumps(dispatch(args), ensure_ascii=False, indent=2))
+            return 0
         if args.command == "voice":
+            if args.voice_kind in {
+                "capabilities",
+                "export-profile",
+                "import-profile",
+                "dataset-record",
+                "dataset-guide",
+            }:
+                import json
+
+                from .voice_engine_cli import dispatch
+
+                result = dispatch(args)
+                print(json.dumps(result, ensure_ascii=False, indent=2))
+                return 1 if result.get("status") == "failed" else 0
             if args.voice_kind in {
                 "inspect",
                 "validate-profile",

@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/narration-sources.schema.json",
+  "title": "OCF explicit narration source selection",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "id", "locale", "mode"],
+  "properties": {
+    "schema_version": {"const": "2.0"}, "id": {"type": "string", "minLength": 1},
+    "locale": {"type": "string", "minLength": 2},
+    "mode": {"enum": ["tts", "recording", "hybrid", "silence"]},
+    "fallback": {"enum": ["tts", "error"]},
+    "default_voice": {"type": "string", "minLength": 1},
+    "output_channels": {"enum": [1, 2]},
+    "speaker_consistency": {"enum": ["report", "require-single"]},
+    "speaker_gain_db": {"type": "object", "additionalProperties": {"type": "number", "minimum": -60, "maximum": 24}},
+    "stage_gain_db": {"type": "object", "additionalProperties": {"type": "number", "minimum": -60, "maximum": 24}},
+    "speaker_processing": {"type": "object", "additionalProperties": {"$ref": "recording-processing.schema.json"}},
+    "recordings": {"type": "object", "additionalProperties": {"$ref": "#/definitions/recording"}},
+    "events": {"type": "object", "additionalProperties": {"$ref": "#/definitions/choice"}},
+    "resources": {"type": "object", "additionalProperties": {"$ref": "#/definitions/choice"}},
+    "stages": {"type": "object", "additionalProperties": {"$ref": "#/definitions/choice"}},
+    "functions": {"type": "object", "additionalProperties": {"$ref": "#/definitions/choice"}}
+  },
+  "allOf": [{"if": {"properties": {"mode": {"const": "hybrid"}}}, "then": {"required": ["fallback"]}}],
+  "definitions": {
+    "choice": {"type": "object", "additionalProperties": false, "required": ["source"], "properties": {
+      "source": {"enum": ["tts", "recording", "silence"]}, "recording_id": {"type": "string"},
+      "voice": {"type": "string", "minLength": 1}, "speaker": {"type": "string", "minLength": 1},
+      "gain_db": {"type": "number", "minimum": -60, "maximum": 24},
+      "rate_scale": {"type": "number", "minimum": 0.5, "maximum": 2},
+      "processing": {"$ref": "recording-processing.schema.json"}
+    }},
+    "recording": {"type": "object", "additionalProperties": false,
+      "required": ["file", "sha256", "text_sha256", "locale", "speaker", "version", "target"],
+      "properties": {
+        "file": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "text_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "locale": {"type": "string"}, "speaker": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1}, "session_id": {"type": "string"},
+        "transcription_reference": {"type": "string"}, "original_format": {"type": "string"},
+        "approval": {"enum": ["pending", "reviewed", "approved"]},
+        "rights": {"type": "object", "additionalProperties": false, "properties": {
+          "consent": {"enum": ["unknown", "self-recorded", "authorized-contributor", "synthetic-fixture"]},
+          "license": {"type": "string"}, "redistribution_permission": {"type": "boolean"}
+        }},
+        "gain_db": {"type": "number", "minimum": -60, "maximum": 24},
+        "processing": {"$ref": "recording-processing.schema.json"},
+        "target": {"type": "object", "additionalProperties": false, "minProperties": 1, "properties": {
+          "event_id": {"type": "string"}, "narration_key": {"type": "string"},
+          "function_id": {"type": "string"}, "stage_id": {"type": "string"},
+          "unit_index": {"type": "integer", "minimum": 1}
+        }}
+      }
+    }
+  }
+}

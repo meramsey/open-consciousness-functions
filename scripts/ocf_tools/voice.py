@@ -438,7 +438,41 @@ def _expand_model_path(value: Any) -> str | None:
     return os.path.expanduser(os.path.expandvars(value))
 
 
+def effective_profile_defaults(profile: dict[str, Any]) -> dict[str, Any]:
+    """Resolve reusable defaults once, before session-specific pacing adjustments."""
+    profile = dict(profile)
+    defaults = profile.pop("rate_defaults", {})
+    for key in ("words_per_min", "piper_length_scale"):
+        if profile.get(key) is None and key in defaults:
+            profile[key] = defaults[key]
+    if profile.get("piper_sentence_silence_s") is None and "sentence_silence_s" in defaults:
+        profile["piper_sentence_silence_s"] = defaults["sentence_silence_s"]
+    speed = defaults.get("speed", 1)
+    if not isinstance(speed, (float, int)) or not math.isfinite(speed) or not 0.5 <= speed <= 2:
+        raise OCFError("voice default speed must be finite and 0.5..2")
+    if speed != 1:
+        if profile.get("backend") == "piper":
+            profile["piper_length_scale"] = float(profile.get("piper_length_scale") or 1) / speed
+        else:
+            profile["words_per_min"] = max(
+                40, round(float(profile.get("words_per_min") or 175) * speed)
+            )
+    return profile
+
+
 def _load_profile(profile: dict[str, Any]) -> dict[str, Any]:
+    profile = effective_profile_defaults(profile)
+    if profile.get("customization_method"):
+        from .voice_capabilities import profile_capability
+
+        capability = profile_capability(profile)
+        if (
+            profile["customization_method"]
+            not in capability["capability"]["ocf"]["customization_methods"]
+        ):
+            raise OCFError(
+                f"unsupported voice customization method {profile['customization_method']!r} for {profile['backend']}; no ordinary-TTS substitution"
+            )
     if profile.get("voice_kind") == "cloned":
         from .custom_voices import validate_profile
 
@@ -458,6 +492,8 @@ def _load_profile(profile: dict[str, Any]) -> dict[str, Any]:
         "piper_length_scale": profile.get("piper_length_scale"),
         "piper_sentence_silence_s": profile.get("piper_sentence_silence_s"),
         "profile_id": profile.get("id"),
+        "gain_db": profile.get("gain_db") or 0,
+        "processing_defaults": profile.get("processing_defaults", {}),
     }
     if profile.get("model"):
         from .custom_voices import model_path
@@ -915,6 +951,8 @@ def render_narration(
     catalog: Any = None,
     strict: bool = True,
     recordings: str | Path | None = None,
+    narration_sources: str | Path | None = None,
+    narration_source: str | None = None,
 ) -> dict[str, Any]:
     """Render a timed document into a mono 16-bit WAV narration stem.
 
@@ -931,6 +969,7 @@ def render_narration(
     ``narration_key`` is resolved against that locale first, strictly by
     default: rendering must not start when required spoken narration is missing.
     """
+    explicit_backend = backend
     backend = backend or doc.get("voice_profile")
     if locale is not None or document_key_usage(doc)["keyed"]:
         from .locale import LocaleCatalog, document_locale, resolve_document
@@ -952,7 +991,58 @@ def render_narration(
     auditory_cues = bind_document_cues(doc)
     recording_audio = None
     recording_provenance = None
-    if recordings is not None:
+    source_resolver = None
+    channels = 1
+    if narration_sources is None and any(event.get("voice") for event in iter_events(doc)):
+        from .locale import document_locale
+
+        narration_sources = {
+            "schema_version": "2.0",
+            "id": "event-voice-controls",
+            "locale": locale or document_locale(doc),
+            "mode": "tts",
+            **({"default_voice": backend} if isinstance(backend, str) else {}),
+        }
+    if narration_sources is not None:
+        if recordings is not None or fit or flow or even_counts:
+            raise OCFError(
+                "narration sources cannot be combined with legacy recordings/retiming flags"
+            )
+        from .narration_sources import SourceResolver
+
+        source_resolver = SourceResolver(
+            doc,
+            narration_sources,
+            locale=locale,
+            mode=narration_source,
+            default_voice=explicit_backend,
+        )
+        locale = source_resolver.locale
+        channels = source_resolver.channels
+        recording_provenance = source_resolver.report
+        tts_rows = [
+            row
+            for event in source_resolver.rows.values()
+            for row in event.get("units", [event])
+            if row["source"] == "tts"
+        ]
+        spec = (
+            resolve_backend(tts_rows[0]["voice"], locale=locale, catalog=catalog)
+            if tts_rows
+            else {"name": "prerecorded", "locale": locale, "language": locale, "notes": []}
+        )
+    elif narration_source is not None:
+        if narration_source not in ("tts", "recording", "hybrid", "silence"):
+            raise OCFError("unknown narration source mode")
+        if narration_source in ("recording", "hybrid"):
+            raise OCFError(
+                "recording/hybrid mode requires --narration-sources with explicit mappings"
+            )
+        if narration_source == "silence":
+            backend = "disabled"
+    if source_resolver is not None:
+        pass
+    elif recordings is not None:
         if backend is not None or render_cue is not None or fit or flow or even_counts:
             raise OCFError(
                 "recordings are an independent voice source; omit TTS backend and speech-retiming flags"
@@ -973,7 +1063,12 @@ def render_narration(
         spec = {"name": "disabled", "locale": locale, "language": None, "notes": []}
     else:
         spec = resolve_backend(backend, locale=locale, catalog=catalog)
-    if render_cue is None and recording_audio is None:
+    if (
+        render_cue is None
+        and render_cue_with_profile is None
+        and recording_audio is None
+        and spec["name"] not in ("prerecorded", "disabled")
+    ):
         check_backend_locale(spec)
     for note in spec.get("notes") or []:
         print(f"Warning: {note}")
@@ -988,12 +1083,28 @@ def render_narration(
     if problems:
         raise OCFError("timeline problems; fix before rendering: " + " | ".join(problems[:3]))
 
+    if source_resolver is None and (spec.get("gain_db") or spec.get("processing_defaults")):
+        from .locale import document_locale
+        from .narration_sources import SourceResolver
+
+        source_resolver = SourceResolver(
+            doc,
+            {
+                "schema_version": "2.0",
+                "id": "profile-processing",
+                "locale": locale or document_locale(doc),
+                "mode": "tts",
+            },
+            locale=locale,
+            default_voice=backend,
+        )
+        recording_provenance = source_resolver.report
     hints_by_event = (
         {}
-        if recording_audio is not None
+        if recording_audio is not None or source_resolver is not None
         else _pronunciation_hints(doc, locale, catalog, spec["name"])
     )
-    if spec.get("pronunciation") and recording_audio is None:
+    if spec.get("pronunciation") and recording_audio is None and source_resolver is None:
         hints_by_event = {
             event.id: {**hints_by_event.get(event.id, {}), **spec["pronunciation"]}
             for event in events
@@ -1022,19 +1133,40 @@ def render_narration(
     scheduling_events = []
     event_to_group = {}
     source_to_groups = {}
+    default_spec = spec
+    source_spec_cache = {}
     for group_index, group in enumerate(utterances):
+        source_event = originals.get(group[0].id, {})
+        source_row = source_resolver.rows[group[0].id] if source_resolver else None
+        spec = default_spec
+        if source_row and source_row["source"] == "tts":
+            query = source_row.get("voice")
+            cache_key = json.dumps(query, sort_keys=True)
+            if cache_key not in source_spec_cache:
+                chosen = resolve_backend(query, locale=locale, catalog=catalog)
+                if render_cue is None and render_cue_with_profile is None:
+                    check_backend_locale(chosen)
+                source_spec_cache[cache_key] = chosen
+            spec = source_spec_cache[cache_key]
         text = " ".join((e.text or "").strip() for e in group).strip()
         display_text = text
         hints: dict[str, Any] = {}
         for event in group:
             hints.update(hints_by_event.get(event.id, {}))
+        if source_row and source_row["source"] == "tts":
+            hints.update(_source_hints(doc, source_event, locale, catalog, spec["name"]))
+            hints.update(spec.get("pronunciation") or {})
         if hints:
             before = text
             text = apply_pronunciation(text, hints, spec["name"])
             if text != before:
                 hints_applied += 1
-        source_event = originals.get(group[0].id, {})
         pacing = plan_event_pacing(doc, source_event)
+        recorded_event = source_row and source_row["source"] == "recording"
+        if recorded_event or (recording_audio is not None and pacing is not None):
+            # A whole resource already contains its natural internal cadence.
+            # Retain only the authored outer pause, handled by schedule_timeline.
+            pacing = None
         if pacing is not None and len(group) != 1:
             raise OCFError(
                 "semantic narration pacing requires one locale resource per timeline event"
@@ -1060,33 +1192,77 @@ def render_narration(
             rate_report = None
             rate_scales = []
             for unit_index, unit in enumerate(pacing["units"]):
+                unit_source = (
+                    source_row["units"][unit_index]
+                    if source_row and source_row["source"] == "hybrid-units"
+                    else source_row
+                )
+                unit_spec = spec
+                if unit_source and unit_source["source"] == "tts":
+                    unit_spec = resolve_backend(
+                        unit_source.get("voice"), locale=locale, catalog=catalog
+                    )
+                    if render_cue is None and render_cue_with_profile is None:
+                        check_backend_locale(unit_spec)
                 unit_text = (
-                    apply_pronunciation(unit["text"], hints, spec["name"])
+                    apply_pronunciation(unit["text"], hints, unit_spec["name"])
                     if hints
                     else unit["text"]
                 )
+                if unit_source and unit_source["source"] == "tts":
+                    unit_hints = _source_hints(
+                        doc, source_event, locale, catalog, unit_spec["name"]
+                    )
+                    unit_hints = {**unit_hints, **(unit_spec.get("pronunciation") or {})}
+                    unit_text = (
+                        apply_pronunciation(unit["text"], unit_hints, unit_spec["name"])
+                        if unit_hints
+                        else unit["text"]
+                    )
                 rate_scale = unit["rate_scale"]
-                effective_spec, rate_report = _paced_voice_spec(spec, rate_scale)
+                if unit_source and unit_source["source"] == "tts":
+                    rate_scale *= unit_source["rate_scale"]
+                effective_spec, rate_report = (
+                    _paced_voice_spec(unit_spec, rate_scale)
+                    if not unit_source or unit_source["source"] == "tts"
+                    else (
+                        unit_spec,
+                        {"method": "recorded-natural-cadence", "rate_control_applied": False},
+                    )
+                )
                 rate_scales.append(rate_scale)
-                if render_cue_with_profile is not None:
+                preparation = None
+                if unit_source and unit_source["source"] == "recording":
+                    wav_bytes, preparation = source_resolver.prepare(
+                        unit_source, sample_rate=sample_rate
+                    )
+                elif render_cue_with_profile is not None:
                     wav_bytes = render_cue_with_profile(unit_text, effective_spec)
                 elif render_cue is not None:
                     wav_bytes = render_cue(unit_text)
                 else:
                     wav_bytes = render_cue_wav(effective_spec, unit_text)
-                rate, unit_samples = _read_pcm_from_bytes(wav_bytes)
-                unit_samples = _fade_spoken_unit(
-                    _resample(unit_samples, rate, sample_rate), sample_rate
-                )
-                unit_start = cursor_samples / sample_rate
-                unit_duration = len(unit_samples) / sample_rate
+                if unit_source and unit_source["source"] == "tts":
+                    wav_bytes, preparation = _source_processing(
+                        wav_bytes, unit_source, unit_spec, sample_rate, channels
+                    )
+                unit_samples = _source_pcm(wav_bytes, sample_rate, channels)
+                unit_samples = _source_fade(unit_samples, sample_rate, channels)
+                if unit_source:
+                    unit_samples = _source_gain(
+                        unit_samples,
+                        unit_source["gain_db"]
+                        + (unit_spec.get("gain_db", 0) if unit_source["source"] == "tts" else 0),
+                    )
+                unit_start = cursor_samples / (sample_rate * channels)
+                unit_duration = len(unit_samples) / (sample_rate * channels)
                 cue_samples.extend(unit_samples)
                 speech_samples += len(unit_samples)
                 cursor_samples += len(unit_samples)
                 pause_after = unit["pause_after_s"]
                 pause_inside_event = unit["pause_inside_event"]
                 if pause_inside_event:
-                    pause_samples = int(round(pause_after * sample_rate))
+                    pause_samples = int(round(pause_after * sample_rate)) * channels
                     cue_samples.extend(_silence(pause_samples))
                     silence_samples += pause_samples
                     cursor_samples += pause_samples
@@ -1106,6 +1282,22 @@ def render_narration(
                         "end_offset_s": round(unit_start + unit_duration, 6),
                         "pause_after_s": round(pause_after, 6),
                         "pause_inside_event": pause_inside_event,
+                        **(
+                            {
+                                "narration_source": {
+                                    **unit_source,
+                                    "preparation": preparation,
+                                    "backend": unit_spec["name"]
+                                    if unit_source["source"] == "tts"
+                                    else None,
+                                    "profile_id": unit_spec.get("profile_id")
+                                    if unit_source["source"] == "tts"
+                                    else None,
+                                }
+                            }
+                            if unit_source
+                            else {}
+                        ),
                     }
                 )
             pacing_applications[pacing["profile_id"]] = {
@@ -1125,9 +1317,21 @@ def render_narration(
             pacing_summary = {
                 "profile_id": pacing["profile_id"],
                 "rate_scale": pacing["rate_scale"],
-                "speech_duration_s": round(speech_samples / sample_rate, 6),
-                "internal_pause_s": round(silence_samples / sample_rate, 6),
+                "speech_duration_s": round(speech_samples / (sample_rate * channels), 6),
+                "internal_pause_s": round(silence_samples / (sample_rate * channels), 6),
             }
+        elif recorded_event:
+            wav_bytes, preparation = source_resolver.prepare(source_row, sample_rate=sample_rate)
+            cue_samples = _source_gain(
+                _source_pcm(wav_bytes, sample_rate, channels), source_row["gain_db"]
+            )
+            source_row = {
+                **source_row,
+                "preparation": preparation,
+                "internal_cadence": "preserved-no-inserted-semantic-pauses",
+            }
+            unit_rows = []
+            pacing_summary = None
         elif recording_audio is not None:
             wav_bytes = recording_audio[group[0].id]
             rate, cue_samples = _read_pcm_from_bytes(wav_bytes)
@@ -1135,9 +1339,39 @@ def render_narration(
             unit_rows = []
             pacing_summary = None
         else:
-            wav_bytes = render_cue(text) if render_cue is not None else render_cue_wav(spec, text)
-            rate, cue_samples = _read_pcm_from_bytes(wav_bytes)
-            cue_samples = _resample(cue_samples, rate, sample_rate)
+            if source_row and source_row["rate_scale"] != 1:
+                spec, _ = _paced_voice_spec(spec, source_row["rate_scale"])
+            wav_bytes = (
+                render_cue_with_profile(text, spec)
+                if render_cue_with_profile is not None
+                else render_cue(text)
+                if render_cue is not None
+                else render_cue_wav(spec, text)
+            )
+            if source_row:
+                wav_bytes, preparation = _source_processing(
+                    wav_bytes, source_row, spec, sample_rate, channels
+                )
+                source_row = {
+                    **source_row,
+                    "preparation": preparation,
+                    "effective_voice": {
+                        key: spec.get(key)
+                        for key in (
+                            "name",
+                            "profile_id",
+                            "speaker_id",
+                            "wpm",
+                            "piper_length_scale",
+                            "model_identity",
+                        )
+                    },
+                }
+            cue_samples = _source_pcm(wav_bytes, sample_rate, channels)
+            if source_row:
+                cue_samples = _source_gain(
+                    cue_samples, source_row["gain_db"] + spec.get("gain_db", 0)
+                )
             unit_rows = []
             pacing_summary = None
         at = group[0].at or 0.0
@@ -1170,16 +1404,29 @@ def render_narration(
                 "cues": len(group),
                 "text": text,
                 "display_text": display_text,
-                "samples": len(cue_samples),
-                "duration": round(len(cue_samples) / sample_rate, 3),
+                "samples": len(cue_samples) // channels,
+                "duration": round(len(cue_samples) / (sample_rate * channels), 3),
                 "speech_duration": round(
                     (speech_samples if pacing_summary is not None else len(cue_samples))
-                    / sample_rate,
+                    / (sample_rate * channels),
                     3,
                 ),
                 "pacing": pacing_summary,
                 "spoken_units": unit_rows,
                 "cut_previous": False,
+                **(
+                    {
+                        "narration_source": {
+                            **source_row,
+                            "backend": spec["name"] if source_row["source"] == "tts" else None,
+                            "profile_id": spec.get("profile_id")
+                            if source_row["source"] == "tts"
+                            else None,
+                        }
+                    }
+                    if source_row
+                    else {}
+                ),
             }
         )
 
@@ -1191,18 +1438,21 @@ def render_narration(
             event["after"] = event_to_group.get(event["after"], event["after"])
     from .timing import schedule_timeline
 
-    durations = {identifier: len(samples) / sample_rate for identifier, samples in rendered.items()}
+    durations = {
+        identifier: len(samples) / (sample_rate * channels)
+        for identifier, samples in rendered.items()
+    }
     scheduled = schedule_timeline({"timeline": scheduling_events}, durations)
     actual = {event["id"]: event for event in scheduled}
     track: list[int] = _silence(
-        int(max((event["end"] for event in scheduled), default=0) * sample_rate)
+        int(max((event["end"] for event in scheduled), default=0) * sample_rate) * channels
     )
     for cue in cue_stats:
         cue["at"] = actual[cue["id"]]["at"]
         for unit in cue.get("spoken_units", []):
             unit["start_seconds"] = round(cue["at"] + unit.pop("start_offset_s"), 6)
             unit["end_seconds"] = round(cue["at"] + unit.pop("end_offset_s"), 6)
-        offset = int(round(cue["at"] * sample_rate))
+        offset = int(round(cue["at"] * sample_rate)) * channels
         samples = rendered[cue["id"]]
         if offset + len(samples) > len(track):
             track.extend(_silence(offset + len(samples) - len(track)))
@@ -1233,10 +1483,11 @@ def render_narration(
             }
         )
 
-    tail = int(1.0 * sample_rate)
+    tail = int(1.0 * sample_rate) * channels
     track.extend(_silence(tail))
 
-    _write_wav(out_path, track, sample_rate, overwrite=overwrite)
+    _write_wav(out_path, track, sample_rate, overwrite=overwrite, channels=channels)
+    spec = default_spec
     timing_mode = "fit-soft" if fit else "explicit-at-timestamps"
     if flow:
         timing_mode = "timeline-shift" if fit else "natural"
@@ -1267,8 +1518,8 @@ def render_narration(
         "locale_notes": list(spec.get("notes") or []),
         "pronunciation_hints": hints_applied,
         "sample_rate": sample_rate,
-        "channels": 1,
-        "duration": round(len(track) / sample_rate, 3),
+        "channels": channels,
+        "duration": round(len(track) / (sample_rate * channels), 3),
         "cues": len(cue_stats),
         "utterances": len(cue_stats),
         "overlap_mode": "reject-fixed-overlap",
@@ -1285,11 +1536,93 @@ def render_narration(
     }
 
 
-def _write_wav(path: str | Path, samples: list[int], sample_rate: int, *, overwrite: bool) -> None:
+def _source_hints(doc, event, locale, catalog, backend):
+    scoped = {**doc, "timeline": [event]}
+    scoped.pop("sections", None)
+    return _pronunciation_hints(scoped, locale, catalog, backend).get(event["id"], {})
+
+
+def _source_pcm(data, sample_rate, channels):
+    if channels == 1:
+        rate, samples = _read_pcm_from_bytes(data)
+        return _resample(samples, rate, sample_rate)
+    with wave.open(io.BytesIO(data)) as reader:
+        if reader.getsampwidth() != 2 or reader.getnchannels() not in (1, 2):
+            raise OCFError("narration source requires mono/stereo PCM16")
+        rate, count = reader.getframerate(), reader.getnchannels()
+        samples = struct_unpack_le16(reader.readframes(reader.getnframes()))
+    left = _resample(samples[::count], rate, sample_rate)
+    right = _resample(samples[1::2], rate, sample_rate) if count == 2 else left
+    return [v for pair in zip(left, right, strict=True) for v in pair]
+
+
+def _source_fade(samples, sample_rate, channels):
+    if channels == 1:
+        return _fade_spoken_unit(samples, sample_rate)
+    left = _fade_spoken_unit(samples[::2], sample_rate)
+    right = _fade_spoken_unit(samples[1::2], sample_rate)
+    return [v for pair in zip(left, right, strict=True) for v in pair]
+
+
+def _source_gain(samples, db):
+    factor = 10 ** (db / 20)
+    if any(not -32768 <= round(sample * factor) <= 32767 for sample in samples):
+        raise OCFError("narration source gain would clip; reduce gain or normalize recording")
+    return [round(sample * factor) for sample in samples] if db else samples
+
+
+def _source_processing(wav_bytes, row, spec, sample_rate, channels):
+    from .paths import work_path
+    from .recording_audio import process_recording
+    from .utils import sha256_of_file
+
+    defaults = spec.get("processing_defaults") or {}
+    if defaults.get("denoise"):
+        raise OCFError(
+            "voice denoising is unsupported; configure explicit narration filters instead"
+        )
+    processing = {key: value for key, value in defaults.items() if key in ("gain_db",)}
+    if "peak_normalization_dbfs" in defaults:
+        processing["peak_target_dbfs"] = defaults["peak_normalization_dbfs"]
+    if defaults.get("trim_silence"):
+        processing["trim_silence"] = {}
+    if defaults.get("sample_rate") not in (None, sample_rate):
+        raise OCFError("voice processing sample rate conflicts with session working rate")
+    processing.update(row.get("processing") or {})
+    if not processing:
+        return wav_bytes, None
+    import hashlib
+
+    checksum = hashlib.sha256(wav_bytes).hexdigest()
+    path = work_path("cache", "narration-processing-inputs", checksum + ".wav")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if not path.is_file() or sha256_of_file(path) != checksum:
+        descriptor, temporary = workspace_temp_file(prefix="ocf-tts-processing-", suffix=".wav")
+        os.close(descriptor)
+        try:
+            temporary.write_bytes(wav_bytes)
+            os.replace(temporary, path)
+        except BaseException as exc:
+            record_workspace_failure("tts-processing-input", str(exc))
+            raise
+        else:
+            cleanup_workspace_temp(temporary.parent)
+    return process_recording(
+        path,
+        sample_rate=sample_rate,
+        channels=channels,
+        processing=processing,
+        expected_sha256=checksum,
+    )
+
+
+def _write_wav(
+    path: str | Path, samples: list[int], sample_rate: int, *, overwrite: bool, channels: int = 1
+) -> None:
     """Atomically write a mono 16-bit PCM WAV file."""
     buffer = io.BytesIO()
     with wave.open(buffer, "wb") as writer:
-        writer.setnchannels(1)
+        writer.setnchannels(channels)
         writer.setsampwidth(2)
         writer.setframerate(sample_rate)
         frames = bytearray()

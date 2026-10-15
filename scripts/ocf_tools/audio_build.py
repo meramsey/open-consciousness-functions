@@ -75,13 +75,15 @@ def _read_mono_pcm(path: Path, target_rate: int | None = None) -> tuple[int, lis
     return rate, samples
 
 
-def _write_wav(path: Path, samples: list[int], sample_rate: int, *, overwrite: bool) -> None:
+def _write_wav(
+    path: Path, samples: list[int], sample_rate: int, *, overwrite: bool, channels: int = 1
+) -> None:
     if path.exists() and not overwrite:
         raise OCFError(f"Refusing to overwrite existing file: {path} (use --force)")
     ensure_dir(path.parent)
     buffer = io.BytesIO()
     with wave.open(buffer, "wb") as writer:
-        writer.setnchannels(1)
+        writer.setnchannels(channels)
         writer.setsampwidth(2)
         writer.setframerate(sample_rate)
         frames = bytearray()
@@ -150,21 +152,32 @@ def mix(
     """
     target = Path(out_path)
     speech_path = Path(speech_path)
-    speech_rate, speech_samples = _read_mono_pcm(speech_path)
+    with wave.open(str(speech_path), "rb") as reader:
+        speech_rate, channels = reader.getframerate(), reader.getnchannels()
+    if background_path is not None:
+        with wave.open(str(background_path), "rb") as reader:
+            channels = max(channels, reader.getnchannels())
+    if channels not in (1, 2):
+        raise OCFError("mixer requires mono/stereo audio")
+    from .voice import _source_pcm
+
+    speech_samples = _source_pcm(speech_path.read_bytes(), speech_rate, channels)
 
     windows: list[tuple[int, int, float]] = []
     for start, end, db in speech_gain_windows or []:
         if end <= start:
             continue
         factor = _db_gain_factor(db)
-        windows.append((int(start * speech_rate), int(end * speech_rate), factor))
+        windows.append(
+            (int(start * speech_rate) * channels, int(end * speech_rate) * channels, factor)
+        )
     windows.sort(key=lambda item: item[0])
 
     length = len(speech_samples)
     bg_mono: list[int] = []
     if background_path is not None:
         bg_path = Path(background_path)
-        _rate, bg_mono = _read_mono_pcm(bg_path, speech_rate)
+        bg_mono = _source_pcm(bg_path.read_bytes(), speech_rate, channels)
         length = max(length, len(bg_mono))
 
     combined: list[int] = []
@@ -181,11 +194,11 @@ def mix(
         speech = speech_samples[index] if index < len(speech_samples) else 0
         bg = bg_mono[index] if index < len(bg_mono) else 0
         combined.append(_clip(int(speech * factor + bg * background_gain)))
-    _write_wav(target, combined, speech_rate, overwrite=overwrite)
+    _write_wav(target, combined, speech_rate, overwrite=overwrite, channels=channels)
     return {
-        "channels": 1,
+        "channels": channels,
         "sample_rate": speech_rate,
-        "duration": round(length / speech_rate, 3),
+        "duration": round(length / (speech_rate * channels), 3),
     }
 
 
@@ -725,6 +738,8 @@ def build(
     strict: bool = True,
     dsp_profile: str | Path | dict[str, Any] | None = None,
     recordings: str | Path | None = None,
+    narration_sources: str | Path | None = None,
+    narration_source: str | None = None,
     artwork: str | Path | None = None,
     retain_background_stem: bool = False,
 ) -> dict[str, Any]:
@@ -805,6 +820,11 @@ def build(
         locale=locale,
         strict=strict,
         recordings=recordings,
+        **(
+            {"narration_sources": narration_sources, "narration_source": narration_source}
+            if narration_sources is not None or narration_source is not None
+            else {}
+        ),
     )
 
     background_conf = manifest.get("background_audio", {})
@@ -978,6 +998,11 @@ def build(
                     ),
                     "pacing": cue.get("pacing"),
                     "spoken_units": cue.get("spoken_units", []),
+                    **(
+                        {"narration_source": cue["narration_source"]}
+                        if "narration_source" in cue
+                        else {}
+                    ),
                 }
                 for cue in narration_meta.get("cue_stats", [])
             ],

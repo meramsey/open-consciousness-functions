@@ -5,6 +5,9 @@
  "properties":{
   "schema_version":{"const":"1.0"},"id":{"type":"string","pattern":"^[a-z][a-z0-9-]+$"},"locale":{"type":"string"},"sample_rate":{"enum":[22050,24000,44100,48000]},
   "consent_status":{"enum":["unknown","self-recorded","authorized-contributor"]},"consent_record":{"type":"string"},"license":{"type":"string"},
-  "records":{"type":"array","minItems":1,"maxItems":10000,"items":{"type":"object","additionalProperties":false,"required":["id","audio","text","split"],"properties":{"id":{"type":"string","pattern":"^[a-z0-9][a-z0-9-]*$"},"audio":{"type":"string","pattern":"^[a-zA-Z0-9_/-]+\\.wav$"},"text":{"type":"string","minLength":1},"split":{"enum":["train","validation","test"]}}}}
+  "privacy":{"const":"private"},
+  "speaker":{"type":"string","minLength":1},
+  "sessions":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["id","speaker"],"properties":{"id":{"type":"string","pattern":"^[a-z0-9][a-z0-9-]*$"},"speaker":{"type":"string","minLength":1},"recorded_at":{"type":"string"},"room_notes":{"type":"string"},"microphone":{"type":"string"},"gain_notes":{"type":"string"}}}},
+  "records":{"type":"array","minItems":1,"maxItems":10000,"items":{"type":"object","additionalProperties":false,"required":["id","audio","text","split"],"properties":{"id":{"type":"string","pattern":"^[a-z0-9][a-z0-9-]*$"},"audio":{"type":"string","pattern":"^[a-zA-Z0-9_/-]+\\.wav$"},"text":{"type":"string","minLength":1},"split":{"enum":["train","validation","test"]},"prompt_id":{"type":"string","pattern":"^[a-z0-9][a-z0-9-]*$"},"session_id":{"type":"string","pattern":"^[a-z0-9][a-z0-9-]*$"},"speaker":{"type":"string","minLength":1},"sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},"source_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},"text_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},"source_name":{"type":"string","pattern":"^[^/\\\\]+$"},"imported_at":{"type":"string"}}}}
  }
 }

@@ -896,6 +896,8 @@ def render_complete_session(
     sample_rate: int = 44100,
     created_at: datetime | None = None,
     overrides: dict | None = None,
+    narration_sources: str | Path | None = None,
+    narration_source: str | None = None,
 ) -> dict[str, Any]:
     """Expand the bound complete session and render/mix it using OCF's engines."""
     from . import audio_build
@@ -904,6 +906,12 @@ def render_complete_session(
     from .session_overrides import verify_stage_limits
 
     selected_template, binding = _resolve_template(function_id, template)
+    if narration_source not in (None, "tts", "recording", "hybrid", "silence"):
+        raise OCFError("unknown narration source mode")
+    if narration_source == "silence":
+        raise OCFError(
+            "silence narration cannot suppress required spoken complete-session narration"
+        )
     explicit_voice = voice
     options, _ = resolve_overrides(binding, overrides)
     voice = voice or options.get("voice_profile") or selected_template.get("voice_profile")
@@ -915,7 +923,7 @@ def render_complete_session(
     session_plan = build_complete_session_plan(
         function_id,
         locale=locale,
-        voice=voice,
+        voice=voice if narration_sources is None else None,
         pacing=pacing,
         template=template,
         dsp_profile=dsp_profile,
@@ -932,6 +940,32 @@ def render_complete_session(
             else "selected-template"
         )
     )
+    if narration_sources is not None:
+        from .narration_sources import preview_sources
+
+        # Source preflight remains independent of synthesis availability for recorded-only sessions.
+        source_preview = preview_sources(
+            session_plan["template_plan"],
+            narration_sources,
+            locale=session_plan["locale"],
+            mode=narration_source,
+            default_voice=explicit_voice,
+        )
+        session_plan["narration_sources"] = source_preview
+        source_voice = {
+            "id": source_preview["mode"],
+            "backend": "source-resolved",
+            "name": "Explicit narration sources",
+        }
+        session_plan["tts_plan"]["voice_profile"] = source_voice
+        session_plan["voice"] = source_voice
+        session_plan["voice_selection"] = {
+            "profile_id": source_preview["mode"],
+            "source": "narration-source-manifest",
+            "backend_verified": False,
+        }
+    elif narration_source in ("recording", "hybrid"):
+        raise OCFError("recording/hybrid mode requires --narration-sources")
     if dry_run:
         return {"dry_run": True, "session_plan": session_plan}
     tts_plan = session_plan["tts_plan"]
@@ -985,8 +1019,13 @@ def render_complete_session(
         from .narration_first import _adjusted_profile, _voice_profile
 
         catalog = LocaleCatalog()
-        profile_data, _resolved_voice = _voice_profile(voice, tts_plan["requested_locale"], catalog)
-        adjusted_voice = _adjusted_profile(tts_plan, profile_data)
+        if narration_sources is None:
+            profile_data, _resolved_voice = _voice_profile(
+                voice, tts_plan["requested_locale"], catalog
+            )
+            adjusted_voice = _adjusted_profile(tts_plan, profile_data)
+        else:
+            adjusted_voice = explicit_voice
         script_path = stage / "session-plan.yaml"
         script_path.write_text(yaml_safe_dump(doc), encoding="utf-8", newline="\n")
         render_dir = stage / "engine-render"
@@ -1018,6 +1057,11 @@ def render_complete_session(
             overwrite=False,
             dsp_profile=selected_dsp,
             retain_background_stem=True,
+            **(
+                {"narration_sources": narration_sources, "narration_source": narration_source}
+                if narration_sources is not None
+                else {}
+            ),
         )
         verify_stage_limits(doc, built["event_timing"], options.get("stage_maximum_seconds", {}))
         render_master = render_dir / built["master"]["file"]
@@ -1116,6 +1160,8 @@ def render_complete_session(
                 "status": session_pacing_profile["status"],
             },
             "narration_pacing": built.get("narration_pacing", {}),
+            "narration_source": built.get("narration_source"),
+            "narration_timing": built.get("narration_timing", {}),
             "template": session_plan["template"],
             "dsp_profile": {
                 key: value

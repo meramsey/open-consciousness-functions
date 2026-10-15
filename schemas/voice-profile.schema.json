@@ -11,6 +11,60 @@
     "locale": {"type":"string"},
     "sample_rate": {"type":"integer","minimum":8000,"maximum":192000},
     "speaker_id": {"type":"integer","minimum":0},
+    "customization_method": {"enum":["installed-model","reference-audio","trained-adapted"]},
+    "reference_audio": {
+      "type":"object","additionalProperties":false,
+      "required":["asset","sha256","reference_text","locale","speaker","consent_status"],
+      "properties":{
+        "asset":{"type":"string","pattern":"^[A-Za-z0-9][A-Za-z0-9._/-]*$"},
+        "sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+        "reference_text":{"type":"string","minLength":1},
+        "locale":{"type":"string","minLength":1},
+        "speaker":{"type":"string","minLength":1},
+        "sample_rate":{"type":"integer","minimum":8000,"maximum":192000},
+        "consent_status":{"enum":["unknown","self-recorded","authorized-contributor"]},
+        "consent_record":{"type":"string","minLength":1},
+        "config_asset":{"type":"string","pattern":"^[A-Za-z0-9][A-Za-z0-9._/-]*$"},
+        "config_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"}
+      },
+      "dependencies":{"config_asset":["config_sha256"],"config_sha256":["config_asset"]}
+    },
+    "training_provenance": {
+      "type":"object","additionalProperties":false,
+      "required":["dataset_id","dataset_sha256","backend_version","training_config_sha256"],
+      "properties":{
+        "dataset_id":{"type":"string","minLength":1},
+        "dataset_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+        "backend_version":{"type":"string","minLength":1},
+        "base_model_identifier":{"type":"string"},
+        "base_model_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+        "training_config_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+        "adapter_version":{"type":"string"},
+        "run_id":{"type":"string"},
+        "completed_at":{"type":"string"},
+        "seed":{"type":"integer","minimum":0},
+        "epochs":{"type":"number","exclusiveMinimum":0}
+      }
+    },
+    "processing_defaults": {
+      "type":"object","additionalProperties":false,
+      "properties":{
+        "gain_db":{"type":"number"},
+        "peak_normalization_dbfs":{"type":"number","maximum":0},
+        "trim_silence":{"type":"boolean"},
+        "denoise":{"type":"boolean"},
+        "sample_rate":{"type":"integer","minimum":8000,"maximum":192000}
+      }
+    },
+    "rate_defaults": {
+      "type":"object","additionalProperties":false,
+      "properties":{
+        "speed":{"type":"number","exclusiveMinimum":0},
+        "words_per_min":{"type":"integer","minimum":40},
+        "piper_length_scale":{"type":"number","exclusiveMinimum":0},
+        "sentence_silence_s":{"type":"number","minimum":0}
+      }
+    },
     "model": {"type":"object","additionalProperties":false,"required":["asset","sha256","version"],"properties":{"asset":{"type":"string","pattern":"^[A-Za-z0-9][A-Za-z0-9._/-]*$"},"sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},"config_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},"version":{"type":"string"},"identifier":{"type":"string"}}},
     "pronunciation": {"type":"object","additionalProperties":{"type":"object","additionalProperties":{"type":"string"}}},
     "pacing_compatibility": {"type":"array","items":{"type":"string"}},
@@ -26,7 +80,7 @@
     "id": { "type": "string", "pattern": "^OCF-VOICE-[0-9]{4}$" },
     "slug": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
     "name": { "type": "string", "minLength": 1 },
-    "backend": { "type": "string", "enum": ["espeak-ng", "espeak", "piper"] },
+    "backend": { "type": "string", "enum": ["espeak-ng", "espeak", "piper", "f5-tts"] },
     "language": { "type": ["string", "null"], "default": null },
     "words_per_min": { "type": ["integer", "null"], "minimum": 40, "default": null },
     "piper_model": { "type": ["string", "null"], "default": null },
@@ -34,5 +88,11 @@
     "piper_sentence_silence_s": { "type": ["number", "null"], "minimum": 0, "default": null },
     "gain_db": { "type": ["number", "null"], "default": null },
     "notes": { "type": ["string", "null"], "default": null }
-  }
+  },
+  "allOf":[
+    {"if":{"required":["reference_audio"]},"then":{"required":["customization_method"],"properties":{"customization_method":{"const":"reference-audio"}}}},
+    {"if":{"required":["training_provenance"]},"then":{"required":["customization_method"],"properties":{"customization_method":{"const":"trained-adapted"}}}},
+    {"if":{"properties":{"customization_method":{"const":"reference-audio"}},"required":["customization_method"]},"then":{"required":["reference_audio"]}},
+    {"if":{"properties":{"customization_method":{"const":"trained-adapted"}},"required":["customization_method"]},"then":{"required":["training_provenance","model"]}}
+  ]
 }

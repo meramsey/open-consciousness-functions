@@ -357,7 +357,9 @@ def _dynamic_document(plan: dict[str, Any]) -> dict[str, Any]:
 
 
 def _adjusted_profile(plan: dict[str, Any], voice_profile: dict[str, Any]) -> dict[str, Any]:
-    profile = dict(voice_profile)
+    from .voice import effective_profile_defaults
+
+    profile = effective_profile_defaults(voice_profile)
     factor = float(plan["pacing"]["speech_rate_scale"])
     if plan["voice_profile"]["backend"] == "piper":
         profile["piper_length_scale"] = round(

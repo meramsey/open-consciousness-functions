@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/recording-processing.schema.json",
+  "title": "Explicit recorded narration processing",
+  "description": "All effects are opt-in. Order: channel/rate conversion, DC removal, edge trim, highpass, gain, compression, loudness, peak target, fades. No denoising or speech/content inference.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "remove_dc": {"type": "boolean", "default": false},
+    "trim_silence": {
+      "type": "object", "additionalProperties": false,
+      "description": "Trim only leading/trailing frames below the threshold on every channel; preserve interior silence.",
+      "properties": {
+        "threshold_dbfs": {"type": "number", "minimum": -100, "maximum": -20, "default": -60},
+        "leading": {"type": "boolean", "default": true},
+        "trailing": {"type": "boolean", "default": true}
+      }
+    },
+    "highpass_hz": {"type": "number", "minimum": 10, "maximum": 1000},
+    "gain_db": {"type": "number", "minimum": -60, "maximum": 24, "default": 0},
+    "peak_target_dbfs": {"type": "number", "minimum": -30, "maximum": 0},
+    "loudness": {
+      "type": "object", "additionalProperties": false,
+      "description": "FFmpeg single-pass dynamic EBU R128 loudnorm, not a guarantee of exact final loudness after subsequent effects.",
+      "properties": {
+        "integrated_lufs": {"type": "number", "minimum": -36, "maximum": -10, "default": -23},
+        "true_peak_dbfs": {"type": "number", "minimum": -9, "maximum": -1, "default": -2},
+        "range_lu": {"type": "number", "minimum": 1, "maximum": 20, "default": 7}
+      }
+    },
+    "compression": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "threshold_dbfs": {"type": "number", "minimum": -40, "maximum": -6, "default": -18},
+        "ratio": {"type": "number", "minimum": 1, "maximum": 3, "default": 2},
+        "attack_ms": {"type": "number", "minimum": 1, "maximum": 100, "default": 20},
+        "release_ms": {"type": "number", "minimum": 20, "maximum": 1000, "default": 200}
+      }
+    },
+    "fade_in_s": {"type": "number", "minimum": 0, "maximum": 10, "default": 0},
+    "fade_out_s": {"type": "number", "minimum": 0, "maximum": 10, "default": 0},
+    "measure_loudness": {"type": "boolean", "default": false}
+  }
+}
