@@ -1,5 +1,73 @@
 # Original candidate OCF visual identity
 
+## Supplied Cosmic Path import 0.3.0
+
+The [offline comparison gallery](../brand/versions/0.3.0/gallery/index.html)
+compares the actual supplied artwork with 0.2.0, including 32/64/128-pixel app
+icons, full-resolution 1200 × 1200 albums and 1280 × 640 GitHub social artwork.
+The six cinematic reference images are retained and explicitly labeled.
+This is an unapproved candidate; existing 0.1.0/0.2.0 and surface defaults remain.
+
+Original files live unchanged in
+`brand/imports/ocf-cosmic-path-brand-kit-v1/`: 10 SVGs, 14 deployable PNGs,
+six reference PNGs, one review sheet and two instruction documents, plus the
+manifest. `brand/versions/0.3.0/identity.json` pins that manifest's SHA-256.
+`artwork import-review` checks all 33 supplied entries, byte counts, dimensions,
+inventory completeness and checksums. PNGs are stored through existing Git LFS;
+use `git lfs pull` after cloning. The supplied ZIP is local staging only.
+
+Fidelity limitation: the supplied SVG/PNG companions are a vector interpretation,
+not exact copies of the richer cinematic board. Original brand exports copy
+supplied bytes, without redrawing or recoloring. SVG text uses system fallback
+fonts; the kit contains no fonts, so its text appearance can vary by viewer.
+References are comparison material, not production album masters. A cinematic
+production identity needs separately supplied high-resolution masters and human
+visual approval. No claim of identical cinematic reproduction is made.
+
+Opt in with `ocf-cosmic-dark`, `ocf-cosmic-light` or `ocf-cosmic-minimal`.
+Custom JSON themes can extend any of them. Interface CSS palette/font tokens
+and album theme choices remain independent; custom palette changes affect the
+interface and cover framing/text, not the immutable supplied emblem pixels.
+The kit has one dark app icon and one social design; selecting light/minimal
+does not invent new versions of those supplied compositions.
+
+Localized album generation uses the established OCF title-layout machinery
+with the supplied emblem PNG, not a procedural replacement. It includes the
+localized function title, function ID, requested locale and release version.
+UI-title fallback, Unicode/font validation, layout bounds, cache integrity and
+operator title overrides use the existing contracts. These are clearly labeled
+derived compositions, separate from the unchanged supplied Sleep Easy albums.
+The original placeholder SVG template is retained as source material; it is
+never passed directly to the release encoder with unresolved placeholders.
+`artwork brand --variant album` exports the unchanged supplied example album;
+use `artwork generate FUNCTION_ID` for actual localized function covers.
+
+```bash
+python scripts/ocf.py artwork import-review
+python scripts/ocf.py artwork import-review --output .ocf-work/renders/cosmic-review
+python scripts/ocf.py artwork import-review --output brand/versions/0.3.0/gallery --check
+python scripts/ocf.py artwork theme --surface ui --theme ocf-cosmic-light
+python scripts/ocf.py artwork generate OCF-SLP-005 --locale es --theme ocf-cosmic-dark --resolution 1200
+python scripts/ocf.py artwork brand --variant app --theme ocf-cosmic-dark --resolution 32 --output .ocf-work/renders/cosmic-app-32.png
+```
+
+`import-review --ui-theme FILE --artwork-theme FILE` also supports independent
+custom review choices. Comparison generation refuses an existing directory.
+Brand exports keep the supplied native dimensions (the app icon selects an
+exact supplied size when available); `--resolution` does not resample originals.
+Generated localized covers support PNG/JPEG and the existing resolution range,
+with at least 320 pixels for legible typography.
+
+Existing `audio release --artwork-theme` integration records candidate brand
+0.3.0 and configuration fingerprints. Explicit custom `--artwork` still wins.
+Approval remains false. Embedding verification uses local synthetic audio with
+real MP3/FLAC encoding, metadata read-back and byte-identical cover extraction;
+it does not require packaging or publishing a public release:
+
+```bash
+python -m pytest tests/test_brand_import.py tests/test_artwork.py tests/test_brand_refinement.py tests/test_release.py
+```
+
 ## Visual refinement 0.2.0
 
 The new [comparison gallery](../brand/versions/0.2.0/gallery/index.html) retains
@@ -101,6 +169,7 @@ of silently drawing tofu. RTL text requires Pillow's RAQM shaping support.
 Text wraps and scales within reserved title bounds. Rendering never invents a
 translation; UI title fallback is recorded in the artifact settings.
 
-Geometry/code follow the repository's Apache-2.0 license. Fonts and optional
+Baseline geometry/code follow the repository's Apache-2.0 license. Fonts and optional
 raster artwork retain their separate licenses and review requirements. No
-proprietary fonts, historical covers or third-party brand assets are bundled.
+proprietary fonts or historical third-party covers are bundled. The supplied
+0.3.0 kit retains its own candidate provenance and human release-review status.

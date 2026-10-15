@@ -254,12 +254,22 @@ def _valid_manifest(artifact):
 @pytest.mark.external_tool
 @pytest.mark.parametrize("fmt", ["mp3", "flac"])
 @pytest.mark.parametrize(
-    "cover_kind", ["fixture", "generated", "generated-jpeg", "refined", "refined-jpeg"]
+    "cover_kind",
+    [
+        "fixture",
+        "generated",
+        "generated-jpeg",
+        "refined",
+        "refined-jpeg",
+        "imported",
+        "imported-jpeg",
+        "supplied",
+    ],
 )
 def test_real_codec_metadata_and_artwork_round_trip(tmp_path, fmt, cover_kind, monkeypatch):
     if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
         pytest.skip("real codec round-trip requires optional ffmpeg and ffprobe")
-    if cover_kind.startswith(("generated", "refined")):
+    if cover_kind.startswith(("generated", "refined", "imported")):
         pytest.importorskip("PIL")
         pytest.importorskip("fontTools")
         from ocf_tools.artwork import generate_cover
@@ -268,11 +278,20 @@ def test_real_codec_metadata_and_artwork_round_trip(tmp_path, fmt, cover_kind, m
         cover = Path(
             generate_cover(
                 "OCF-BOD-010",
-                theme="ocf-refined-dark" if cover_kind.startswith("refined") else "ocf-light",
-                resolution=320 if cover_kind.startswith("refined") else 256,
+                theme="ocf-cosmic-dark"
+                if cover_kind.startswith("imported")
+                else "ocf-refined-dark"
+                if cover_kind.startswith("refined")
+                else "ocf-light",
+                resolution=320 if cover_kind.startswith(("refined", "imported")) else 256,
                 format="jpeg" if cover_kind.endswith("jpeg") else "png",
             )["path"]
         )
+    elif cover_kind == "supplied":
+        from ocf_tools.brand_import import source_root, verify
+
+        verify()
+        cover = source_root() / "png/ocf-album-sleep-easy-dark-1200.png"
     else:
         cover = _png(tmp_path / "cover.png")
     source = _wav(tmp_path / "source.wav")

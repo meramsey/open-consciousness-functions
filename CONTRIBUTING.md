@@ -96,6 +96,20 @@ Manual YAML editing, schema conformance, and generated-index discipline.
 
 ## Large files and Git LFS
 
+### Supplied branding candidates
+
+See [branding](docs/BRANDING.md) for the 0.3.0 supplied Cosmic Path import.
+Keep imported originals and their checksum manifest immutable; introduce a new
+version for a replacement kit. Run `ocf artwork import-review` and review the
+offline comparison gallery before proposing changes. Preserve cinematic
+reference labels and do not describe companion vectors as exact raster copies.
+Do not promote candidates to final branding without explicit human approval.
+Keep UI and cover theme selections independent and preserve custom cover
+overrides. Use `.ocf-work/` for new review exports and local codec checks.
+PNG assets use Git LFS: fetch them with `git lfs pull` before verification.
+
+### Binary storage policy
+
 OCF may one day need to commit genuinely binary content: original OCF-authored
 or clearly licensed community assets (for example focus-state cue sounds,
 bundled chant/affirmation audio, large lawful reference material a proposal

@@ -138,6 +138,7 @@
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "Contributing",
       "related_commands": [
+        "artwork import-review",
         "audio build",
         "audio render-background",
         "build-index",
@@ -160,7 +161,7 @@
         "voice"
       ],
       "related_schemas": [],
-      "sha256": "64f8b36f95f58cbcd111cca07a2c378b36977f9b3f73bdcb49d45d5dc4af58dd",
+      "sha256": "d8e772ed4d22fe462dc71295a85b9a1faced3f188f7a34d7de6e701bc4d99205",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -368,10 +369,29 @@
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "OCF candidate asset sources",
       "related_commands": [
-        "artwork brand"
+        "artwork brand",
+        "artwork import-review"
       ],
       "related_schemas": [],
-      "sha256": "94c51fd42b34ded163bd606fcc7487663d89adf4e6a7b5475099024bd8d00ae7",
+      "sha256": "4fd513f237da5b0f372841fd676f1b1c985b0e255c8b8944c6795bcccd1ed471",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "brand/imports/ocf-cosmic-path-brand-kit-v1/README.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "OCF Cosmic Path + Resonance Rings — Brand Kit v1",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "5a888257cbd803eadeade02a758dbf528b5b4901bb42d62fce26f295956b177d",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -410,6 +430,24 @@
       "related_commands": [],
       "related_schemas": [],
       "sha256": "1d92305ac5bd320dae9ceed884cad49007d4381c5bd777b713727229e0146a8a",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "generated",
+      "missing_information": [],
+      "path": "brand/versions/0.3.0/gallery/index.html",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "OCF supplied Cosmic Path candidate comparison",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "b69656c966928c0c5ed030b33813f2655da7c33766535af5aa2e5b321c4b0a43",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -629,12 +667,13 @@
         "artwork brand",
         "artwork gallery",
         "artwork generate",
+        "artwork import-review",
         "artwork refine",
         "artwork theme",
         "artwork themes"
       ],
       "related_schemas": [],
-      "sha256": "34208f7a73e925d1f50ed37a990a242cf94b35a7328c1fafad1b527456e5192c",
+      "sha256": "32fc1d96ea85ba90dd0cef7d6fd0ec75030faf9726b98f681d03d73faeaf6824",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1228,7 +1267,7 @@
       "purpose": "Documentation map",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "4f33e5531c29cdbd7c8e962cc7f20b53c178c312097ba37068869408625c98c8",
+      "sha256": "7c6836d37446e5f4c1cd445d5850cbd949c771c180e499dff8d518566827a6d7",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -3570,6 +3609,26 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "schemas/brand-import.schema.json",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "brand-import.schema",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/brand-import.schema.json"
+      ],
+      "sha256": "e152f47e9e49daf1d118e9f2a61ecdcc8fe5429e7a9983bde534e255d3cdb801",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "schemas/brand-refinement.schema.json",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "brand-refinement.schema",
@@ -4123,7 +4182,7 @@
       "related_schemas": [
         "schemas/theme.schema.json"
       ],
-      "sha256": "73f981defc1390f5832fce6dfa0e128863bf682fe9d71e909697523a17a947d4",
+      "sha256": "e4316f7acbd55c53c255d06efba8ecd8d3f7b69541219ee360d24f4779ccb6fb",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4267,7 +4326,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "fe443990b3c2dcbe1566d31030c624f8501ee59db22b52deba6141293b6491da",
+      "sha256": "992932c10cd93b9ee86d32df203c77c1a918e6a2c3ca1918ffd4ac77b5b3a800",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4380,5 +4439,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 211
+  "total": 214
 }

@@ -61,7 +61,7 @@ def stage_data(root: Path, target: Path) -> dict:
                     ".md",
                     ".svg",
                 )
-                and not (directory == "brand" and path.suffix == ".html")
+                and not (directory == "brand" and path.suffix in (".html", ".png"))
             ):
                 continue
             relative = path.relative_to(root)

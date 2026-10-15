@@ -598,9 +598,11 @@ def list_artwork_themes() -> dict:
 @public
 def inspect_brand() -> dict:
     from .artwork import identity
+    from .brand_import import identity as imported_identity
 
     data = identity()
     return {key: value for key, value in data.items() if key != "geometry"} | {
+        "imported_candidate": imported_identity(),
         "source": "brand/identity.json",
         "guide": "docs/BRANDING.md",
     }

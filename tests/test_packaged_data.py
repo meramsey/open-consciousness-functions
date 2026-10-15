@@ -32,11 +32,16 @@ def test_packaging_excludes_source_wording_and_binary_assets(tmp_path):
     (directory / "original.yaml").write_text("origin: original-ocf\n")
     (directory / "reference.yaml").write_text("origin: reference-derived\n")
     (root / "functions/audio.wav").write_bytes(b"never bundled")
+    (root / "functions/cover.png").write_bytes(b"not brand data")
+    (root / "brand").mkdir()
+    (root / "brand/candidate.png").write_bytes(b"unchanged supplied pixels")
     output = tmp_path / "staged"
     report = stage_data(root, output)
     assert (output / "audio/templates/sessions/original.yaml").exists()
     assert not (output / "audio/templates/sessions/reference.yaml").exists()
     assert not (output / "functions/audio.wav").exists()
+    assert not (output / "functions/cover.png").exists()
+    assert (output / "brand/candidate.png").read_bytes() == b"unchanged supplied pixels"
     assert report["omitted_citation_only_bindings"] == ["audio/templates/sessions/reference.yaml"]
 
 

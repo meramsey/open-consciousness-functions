@@ -1,0 +1,172 @@
+{
+  "kit": "ocf-cosmic-path-v1",
+  "status": "candidate-unapproved",
+  "description": "Cosmic Path + Resonance Rings hybrid; cinematic reference and editable vector companions",
+  "files": [
+    {
+      "path": "OPENCODE_IMPORT_PROMPT.txt",
+      "sha256": "7be8919058916ada4288c6d7f6814cc0cc81b58ce5f1319a263bdbfc4177d32e",
+      "bytes": 3435
+    },
+    {
+      "path": "README.md",
+      "sha256": "5a888257cbd803eadeade02a758dbf528b5b4901bb42d62fce26f295956b177d",
+      "bytes": 2178
+    },
+    {
+      "path": "docs/quick-review.png",
+      "sha256": "49ccfe8780bdf01ca93ca8a14ca007b5cc529698f0717c9d9aeb6ff64165db7e",
+      "bytes": 380706
+    },
+    {
+      "path": "png/ocf-album-sleep-easy-dark-1200.png",
+      "sha256": "9c64cc17021bb52d6bd835f4df2fbe00fd4ebde799efe4dc577d95e4d5bca695",
+      "bytes": 395902
+    },
+    {
+      "path": "png/ocf-album-sleep-easy-light-1200.png",
+      "sha256": "363db5fcee4d9b5197eb69e4ccb983a8e30d84e6129c647b6de17571d3aa3527",
+      "bytes": 120009
+    },
+    {
+      "path": "png/ocf-app-icon-1024.png",
+      "sha256": "0ce55e43680eade9df8fb111caf4bfbcfc82a9f451cbfecece554cb042ca595d",
+      "bytes": 271197
+    },
+    {
+      "path": "png/ocf-app-icon-128.png",
+      "sha256": "ba05e269981efc0ab527fa891ce18d88f985cb0fcb599781474b4bb21626d92a",
+      "bytes": 19210
+    },
+    {
+      "path": "png/ocf-app-icon-256.png",
+      "sha256": "2327d3d9cce05378f2e137a29f51e41f769278bf443206d018468b6b31c72e24",
+      "bytes": 50875
+    },
+    {
+      "path": "png/ocf-app-icon-32.png",
+      "sha256": "2d80f54e057cfad23800cb1285d5e82fa58ffbb88f2704c6cc03675d07a7a35a",
+      "bytes": 1997
+    },
+    {
+      "path": "png/ocf-app-icon-512.png",
+      "sha256": "6c536adb5db122934dbb800e6fccde2700102197b8274f7026f3d4c2f3c0d1b0",
+      "bytes": 133030
+    },
+    {
+      "path": "png/ocf-app-icon-64.png",
+      "sha256": "81bc110885dfb46dfb965c9460c67ad727743502154d4c5707901a742ebe57a6",
+      "bytes": 6290
+    },
+    {
+      "path": "png/ocf-emblem-dark-1024.png",
+      "sha256": "148685ca166d79132cd99a8efad04d2cd0bccbb01299898fe203c130bcc684d8",
+      "bytes": 236214
+    },
+    {
+      "path": "png/ocf-emblem-light-1024.png",
+      "sha256": "4aa0f570700fe94d7e67718c7114893ca1213715eff5d95bc52ac33a1a4d541b",
+      "bytes": 115435
+    },
+    {
+      "path": "png/ocf-emblem-minimal-1024.png",
+      "sha256": "10c65b83308593ac0570caa2ac72b5304eb2bf5cb9c8f775edf25e9819573e7c",
+      "bytes": 104783
+    },
+    {
+      "path": "png/ocf-github-social-1280x640.png",
+      "sha256": "1e3f8c6b3e9e7d417452a8706ae3424cfa45da2b9f117064df719a427b7acc25",
+      "bytes": 186321
+    },
+    {
+      "path": "png/ocf-primary-dark-1600x600.png",
+      "sha256": "0d49f21cdb937c0a8ae0a5b4f6c7cad536591940c77e34e0369595b795c8166c",
+      "bytes": 193838
+    },
+    {
+      "path": "png/ocf-primary-light-1600x600.png",
+      "sha256": "6d9177b38f14a61e49b6e616ade0cdfb3ac6263048a678f382661be338b2255c",
+      "bytes": 80619
+    },
+    {
+      "path": "reference/cinematic-dark-album-reference.png",
+      "sha256": "743c5143bd7810da806054503f74e79c53685bc94cbd779d07ce4fc4e809fd23",
+      "bytes": 214428
+    },
+    {
+      "path": "reference/cinematic-dark-logo-reference.png",
+      "sha256": "d1a492af0eebe679ed0b1c9bfdd6923937ee8d485149afe8431a7fda7256dc6c",
+      "bytes": 276809
+    },
+    {
+      "path": "reference/cinematic-light-album-reference.png",
+      "sha256": "ee88794b2cdc8c436dc7c3a633fb5670977e304ba1a474cffa7dac8839072815",
+      "bytes": 189068
+    },
+    {
+      "path": "reference/cinematic-light-logo-reference.png",
+      "sha256": "d63a408ca7059f1dfff751a6cf80e1553d538301abec3f1112f17ae4ab89bb02",
+      "bytes": 160384
+    },
+    {
+      "path": "reference/cinematic-social-reference.png",
+      "sha256": "0a6f9e65ec439614b96c1229d69bea42423afbe0e73213818e23310a32dc517e",
+      "bytes": 116253
+    },
+    {
+      "path": "reference/generated-art-direction-board.png",
+      "sha256": "92686bc50e0f676364d1983d1b2dccaa41bd91ac405870cdfaad3c9064dafa65",
+      "bytes": 2173646
+    },
+    {
+      "path": "svg/ocf-album-sleep-easy-dark-1200.svg",
+      "sha256": "801cc7cc4e78ccbb6b96ed52a47fab26c6e5d83fbd566d34793b7a242b7cc48f",
+      "bytes": 15653
+    },
+    {
+      "path": "svg/ocf-album-sleep-easy-light-1200.svg",
+      "sha256": "2c07c4f55877b66f63e0717f9aedd7a89592f53cf621d7aa44438ec06ce2114f",
+      "bytes": 3422
+    },
+    {
+      "path": "svg/ocf-album-template-dark.svg",
+      "sha256": "50faa87328f42e978baf60ff6de9638bf117f926631d1458c33aacd7c5428d2c",
+      "bytes": 15676
+    },
+    {
+      "path": "svg/ocf-app-icon-1024.svg",
+      "sha256": "bc0b7a3db8acf86ff0937c47b8cf8aa388463ee9c584daaf5a3921f66df34749",
+      "bytes": 9323
+    },
+    {
+      "path": "svg/ocf-emblem-dark-1024.svg",
+      "sha256": "05b2893d15909878c599b6a27c15e98405c210cb162084d0a10291c4936bab56",
+      "bytes": 13229
+    },
+    {
+      "path": "svg/ocf-emblem-light-1024.svg",
+      "sha256": "0e5c18d351c6d21600089596fb22485ecc3b3a660a30f99b287ea99decf70d2f",
+      "bytes": 2912
+    },
+    {
+      "path": "svg/ocf-emblem-minimal-1024.svg",
+      "sha256": "a7fe66b96bfcf2dfa0c61094622d18bd693f66f93536a716653177b606cffb46",
+      "bytes": 2848
+    },
+    {
+      "path": "svg/ocf-github-social-1280x640.svg",
+      "sha256": "46f09d567ea511d6f82d0bf3f9ce96ac82c5b0b948bfe9ececfe3b1530ab9705",
+      "bytes": 11648
+    },
+    {
+      "path": "svg/ocf-primary-dark-1600x600.svg",
+      "sha256": "18e1296e3c79f476c03f559d30a351690430158a01e06000c17d74b2bb611998",
+      "bytes": 10079
+    },
+    {
+      "path": "svg/ocf-primary-light-1600x600.svg",
+      "sha256": "d00b9336ee4aabe4fb9354a6316bbf9656bca3f479338956e33a36133333b7fc",
+      "bytes": 3271
+    }
+  ]
+}

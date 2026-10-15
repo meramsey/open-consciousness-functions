@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/brand-import.schema.json",
+  "title": "Immutable supplied OCF brand candidate",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "id", "name", "version", "review_status", "human_approval", "source", "source_manifest_sha256", "fidelity"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "id": {"const": "ocf-cosmic-path-import-v1"},
+    "name": {"const": "Open Consciousness Functions"},
+    "version": {"const": "0.3.0"},
+    "review_status": {"const": "candidate"},
+    "human_approval": {"type": "null"},
+    "source": {"const": "imports/ocf-cosmic-path-brand-kit-v1"},
+    "source_manifest_sha256": {"const": "0980501faba103ed5fdaad6108a47e3a86860f53b9d34c10a06847bb12348e01"},
+    "fidelity": {"type": "string", "minLength": 1}
+  }
+}

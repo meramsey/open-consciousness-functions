@@ -175,6 +175,11 @@ def brand_svg(variant: str = "primary", theme: str | None = None) -> str:
         else "ocf-dark"
     )
     data = load_theme(theme)
+    if data.get("brand_revision") == "0.3.0":
+        from .brand_import import asset, verify
+
+        verify()
+        return asset(variant, data).read_text(encoding="utf-8")
     if data.get("brand_revision") == "0.2.0":
         from . import brand_refinement
 
@@ -298,6 +303,10 @@ def export_brand(
             else "ocf-dark"
         )
     )
+    if selected.get("brand_revision") == "0.3.0":
+        from .brand_import import export
+
+        return export(output, variant, selected, resolution)
     if selected.get("brand_revision") == "0.2.0":
         from .brand_refinement import export
 
@@ -395,12 +404,16 @@ def generate_cover(
     if any(word in title.casefold() for word in ("hemi-sync", "human plus", "monroe")):
         raise OCFError("OCF artwork cannot include third-party brand names")
     data = load_theme(theme, overrides=overrides)
-    if data.get("brand_revision") == "0.2.0" and resolution < 320:
+    if data.get("brand_revision") in ("0.2.0", "0.3.0") and resolution < 320:
         raise OCFError("refined covers require at least 320 pixels for legible typography")
     if data.get("brand_revision") == "0.2.0":
         from .brand_refinement import identity as refined_identity
 
         brand = refined_identity()
+    elif data.get("brand_revision") == "0.3.0":
+        from .brand_import import identity as imported_identity
+
+        brand = imported_identity()
     else:
         brand = identity()
     font_bytes, glyphs = _font_assets(data["font"])
@@ -439,6 +452,22 @@ def generate_cover(
         "raqm": features.version("raqm"),
         "renderer_sha256": sha256_of_file(Path(__file__)),
     }
+    if data.get("brand_revision") == "0.3.0":
+        from .brand_import import asset, verify
+
+        settings["import_provenance"] = verify()
+        settings["import_renderer_sha256"] = sha256_of_file(
+            Path(__file__).with_name("brand_import.py")
+        )
+        settings["supplied_emblem"] = asset("icon", data, "png").name
+        settings["composition"] = "supplied-emblem-with-localized-ocf-layout"
+        footer = function_id + " / " + locale + (f" - {version}" if version else "")
+        # Validate the final footer, including the locale, through the same font contract.
+        if any(ord(c) not in glyphs for c in footer if not c.isspace()):
+            raise OCFError("font lacks required Unicode glyphs for cover metadata")
+        from .brand_import import cover_layout
+
+        imported_layout = cover_layout(title, footer, font_bytes, resolution)
     if data.get("brand_revision") == "0.2.0":
         settings["refinement_renderer_sha256"] = sha256_of_file(
             Path(__file__).with_name("brand_refinement.py")
@@ -488,6 +517,19 @@ def generate_cover(
                 return _publish_cover(path, report, output)
         except (ValueError, OSError, AttributeError):
             pass
+    if data.get("brand_revision") == "0.3.0":
+        from .brand_import import cover_raster
+
+        return _save_cover(
+            cover_raster(imported_layout, data, font_bytes, resolution),
+            settings,
+            fingerprint,
+            path,
+            report_path,
+            output,
+            imported_layout["title_lines"],
+            imported_layout["bounds"],
+        )
     if data.get("brand_revision") == "0.2.0":
         from .brand_refinement import _text_layout, raster, scene
 

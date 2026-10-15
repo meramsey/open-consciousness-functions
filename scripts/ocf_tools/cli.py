@@ -115,6 +115,14 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     art_sub = art.add_subparsers(dest="artwork_kind", required=True)
     art_sub.add_parser("themes")
+    import_cmd = art_sub.add_parser(
+        "import-review",
+        help="verify supplied Cosmic Path assets or create their offline comparison",
+    )
+    import_cmd.add_argument("--output", type=Path)
+    import_cmd.add_argument("--check", action="store_true")
+    import_cmd.add_argument("--ui-theme")
+    import_cmd.add_argument("--artwork-theme")
     refinement_cmd = art_sub.add_parser(
         "refine",
         help="create a new baseline/refined comparison gallery; never overwrite an existing gallery",
@@ -1140,6 +1148,19 @@ def main(argv: list[str] | None = None) -> int:
                     "themes": [p.stem for p in sorted((artwork.BRAND / "themes").glob("*.json"))],
                     "brand": artwork.identity(),
                 }
+            elif args.artwork_kind == "import-review":
+                from .brand_import import comparison_gallery, verify
+
+                result = (
+                    comparison_gallery(
+                        args.output,
+                        check=args.check,
+                        ui_theme=args.ui_theme,
+                        artwork_theme=args.artwork_theme,
+                    )
+                    if args.output
+                    else verify()
+                )
             elif args.artwork_kind == "refine":
                 from .brand_refinement import comparison_gallery
 
