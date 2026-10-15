@@ -28,6 +28,7 @@ def _portable_relative(value: str) -> Path:
         or not relative.parts
         or any(ord(character) < 32 for character in value)
         or relative.is_absolute()
+        or PureWindowsPath(value).root
         or PureWindowsPath(value).drive
         or ".." in relative.parts
         or "\\" in value

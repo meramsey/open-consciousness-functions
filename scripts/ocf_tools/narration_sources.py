@@ -36,6 +36,7 @@ def _safe_source(root, name):
     relative = Path(name)
     if (
         relative.is_absolute()
+        or PureWindowsPath(name).root
         or PureWindowsPath(name).drive
         or "\\" in name
         or ".." in relative.parts
