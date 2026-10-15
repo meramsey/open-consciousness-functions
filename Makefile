@@ -24,6 +24,7 @@ lint: ## Lint Python (ruff), Markdown, and internal links
 check: ## Full check: validate + refresh indexes + verify freshness
 	$(OCF) validate --all
 	$(OCF) build-index --check
+	$(OCF) audio plan --all --locale en-US --check
 
 doctor: ## Run the environment doctor
 	$(OCF) doctor

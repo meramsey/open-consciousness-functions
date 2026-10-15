@@ -193,6 +193,23 @@ def _build_parser() -> argparse.ArgumentParser:
 
     audio = sub.add_parser("audio", help="audio tooling")
     audio_sub = audio.add_subparsers(dest="audio_kind")
+    plan_cmd = audio_sub.add_parser(
+        "plan", help="generate compact voice-independent complete-session source plans"
+    )
+    plan_cmd.add_argument("function_id", nargs="?")
+    plan_cmd.add_argument("--all", action="store_true")
+    plan_cmd.add_argument("--locale", default="en-US")
+    plan_cmd.add_argument(
+        "--output", type=Path, help="source-plan root (default audio/session-plans)"
+    )
+    plan_mode = plan_cmd.add_mutually_exclusive_group()
+    plan_mode.add_argument("--dry-run", action="store_true")
+    plan_mode.add_argument("--check", action="store_true")
+    plan_cmd.add_argument(
+        "--expand",
+        action="store_true",
+        help="print expanded single-function pacing/DSP preview without writing",
+    )
     migrate_cmd = audio_sub.add_parser(
         "migrate-bindings",
         help="explicitly bind existing HPlus narration to shared sessions; preserve custom bindings",
@@ -1092,6 +1109,27 @@ def main(argv: list[str] | None = None) -> int:
                 if args.create_lock:
                     create_lock()
                 print(json.dumps(check_lock(), indent=2, ensure_ascii=False))
+                return 0
+            if args.audio_kind == "plan":
+                import json
+
+                from .session_plans import generate_plans, source_plan
+
+                if bool(args.function_id) == args.all:
+                    raise OCFError("select FUNCTION_ID or --all")
+                if args.expand:
+                    if args.all or args.check:
+                        raise OCFError("--expand requires a single function and cannot use --check")
+                    result = source_plan(args.function_id, args.locale)[2]
+                else:
+                    result = generate_plans(
+                        None if args.all else [args.function_id],
+                        locale=args.locale,
+                        output=args.output,
+                        check=args.check,
+                        dry_run=args.dry_run,
+                    )
+                print(json.dumps(result, ensure_ascii=False, indent=2))
                 return 0
             if args.audio_kind in {"migrate-bindings", "eligibility"}:
                 import json

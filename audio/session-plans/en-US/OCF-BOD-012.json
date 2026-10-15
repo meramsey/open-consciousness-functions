@@ -1,0 +1,53 @@
+{
+  "approval": {
+    "human_review": "required",
+    "release_ready": false
+  },
+  "defaults": {
+    "file": "_shared.json",
+    "sha256": "cbe06d1f862a4e1e3fbb6f48e9c05b770c88fa9fc40e30a007a4c25f6d38f1f2"
+  },
+  "function_id": "OCF-BOD-012",
+  "generation": {
+    "binding_sha256": "d1e4980f31afe85f05c349aaeb79b3aa89e174e3e6a5079d3885fb809cf34bbf",
+    "semantic_plan_sha256": "412c48e7ac4400f7821b34268f51237ec0250f4e711dc01ba03583c8a34bd8f0"
+  },
+  "generator": "ocf.audio.plan/1",
+  "locale": "en-US",
+  "resources": [
+    {
+      "fallback": false,
+      "key": "hplus.function.ocf-bod-012.closer",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "e1f629ed566de38ae2239b9a492e9381688143fb95db2c290e8c9fd3733f1761",
+      "version": "1.1.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.function.ocf-bod-012.function-body",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "64484719dcac932574c8278d9ceac6e688c979547485ee081cab03f5464d066d",
+      "version": "1.2.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.function.ocf-bod-012.opener",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "24731382e02a30d13f5d998bdefd0cccc469f43869f5217aa6d38487c45b8b20",
+      "version": "1.1.0"
+    }
+  ],
+  "schema_version": "1.0",
+  "slots": {
+    "closer": "hplus.function.ocf-bod-012.closer",
+    "function_body": "hplus.function.ocf-bod-012.function-body",
+    "opener": "hplus.function.ocf-bod-012.opener"
+  },
+  "timing": "measured-speech-relative; expand template at render time"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/session-plan.schema.json",
+  "title": "Generated voice-independent complete-session declaration",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "generator", "function_id", "locale", "defaults", "slots", "resources", "timing", "generation", "approval"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "generator": {"const": "ocf.audio.plan/1"},
+    "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
+    "locale": {"type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]+)*$"},
+    "defaults": {"type": "object", "additionalProperties": false, "required": ["file", "sha256"], "properties": {"file": {"const": "_shared.json"}, "sha256": {"$ref": "#/definitions/hash"}}},
+    "slots": {"type": "object", "additionalProperties": false, "required": ["opener", "function_body", "closer"], "properties": {"opener": {"type": "string"}, "function_body": {"type": "string"}, "closer": {"type": "string"}}},
+    "resources": {"type": "array", "minItems": 3, "items": {"type": "object", "required": ["key", "locale", "version", "status", "text_sha256"]}},
+    "timing": {"const": "measured-speech-relative; expand template at render time"},
+    "generation": {"type": "object", "additionalProperties": false, "required": ["binding_sha256", "semantic_plan_sha256"], "properties": {"binding_sha256": {"$ref": "#/definitions/hash"}, "semantic_plan_sha256": {"$ref": "#/definitions/hash"}}},
+    "approval": {"type": "object", "additionalProperties": false, "required": ["human_review", "release_ready"], "properties": {"human_review": {"type": "string"}, "release_ready": {"const": false}}}
+  },
+  "definitions": {"hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

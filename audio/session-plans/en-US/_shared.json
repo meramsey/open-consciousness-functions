@@ -1,0 +1,228 @@
+{
+  "defaults_lock": "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-001.json",
+  "defaults_sha256": "49ab147aa58e9715e6d26f4abf0cfd4a2b6394e8dd0dc1684dac6623e0109d15",
+  "generator": "ocf.audio.plan/1",
+  "profiles": {
+    "dsp": {
+      "id": "OCF-DSP-HPLUS-LOCKED-001",
+      "version": "1.0.0"
+    },
+    "pacing": {
+      "id": "OCF-PACING-HPLUS-LOCKED-001",
+      "version": "1.0.0"
+    },
+    "template": {
+      "id": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
+      "version": "1.0.0"
+    }
+  },
+  "resources": [
+    {
+      "fallback": false,
+      "key": "hplus.shared.body-comfort",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "f72265b8dd3d5e073b7feea3f5e97a05c1c6a06fdf8278a74bc3d4b7221f7c5f",
+      "version": "1.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.focus10.count",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "9307b2fa13235f04188526d9413a2c0d2a4b28425726f01b95bdfcde4c79e943",
+      "version": "1.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.focus10.enter",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5",
+      "version": "1.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.focus10.learn",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "70a7df9ac41f3898191394122df62fb16438e65653224e00ba38b5461a9cf53d",
+      "version": "1.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.focus10.ready",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "926223f9c62e765aa31627ef5fb071fc685ddbe69b1c6757ca8bb3c490cd5a2a",
+      "version": "1.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.focus10.return.ready",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "97f3f0590d4e137222aa0147b34f01e115cc8dd2405fb063b3f7ae98ddc0bd3c",
+      "version": "1.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.focus11.close",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "4dbbf15e61e38b2bd14e670f4146cc19db0a5e553384e568b71e6bc94eb117a8",
+      "version": "1.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.focus11.close.prepare",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "910990ef4c81daeda952abfbb81b9055efae2f6c9fbecbcfc34666402c4e86d6",
+      "version": "1.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.focus11.open",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8",
+      "version": "1.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.focus11.open.prepare",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "2bfcdff75326ea76e9edf955844db3e5e41b0dfd56471001f46958239203a892",
+      "version": "1.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.focus11.ready",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "1b1117a21a0b6ec991e91976642e636938c5b13e27e0933285fb4e95bef15ec0",
+      "version": "1.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.focus20.enter",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "d69c94869d29965a742ed40d4747ba9fc62c3ed61b7f4416065ae72b9b9f5e77",
+      "version": "1.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.relaxation.begin",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "e53ae6871d1b075f6658ac7091e3a5590034f399b35733f80947b07caeccdd95",
+      "version": "1.1.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.relaxation.face",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "24511349423e69dab6a14a1f3aa9dbcebf83840ea7ffbff3d0504f9a75e45339",
+      "version": "1.1.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.relaxation.hands",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "14ca4b469a3922d815847202f1ea7bbba450708b01774102aa9efadf873f520b",
+      "version": "1.1.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.relaxation.legs",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "2ae472aa7758e18a640c0193c89bfafd4f4b4f55eabcb7f763e7a5bf83845aeb",
+      "version": "1.1.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.relaxation.shoulders",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "2377049f930b06833eb3caba3d5757aa358c19e994025903f864124297a887bf",
+      "version": "1.1.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.relaxation.torso",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "bc9905ba9824a1eabf035b9567d78b9b27c923cacc3b522317258dd2e8d537f7",
+      "version": "1.1.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.transmutation-box.begin",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "5f49e4be789204ff66dc3ba1598349ad5c2670cdabc3a5102c1e5819cd3d3b79",
+      "version": "1.1.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.transmutation-box.complete",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "15c650cd9f61b85618ef4bb77e44376ea31295e9667230735cc6f98c56f710c0",
+      "version": "1.1.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.transmutation-box.place",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "3a23aed02ed3842562bcdf42b62938f6063a1c5323891eeb147823100974a6b8",
+      "version": "1.1.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.waking.begin",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "9b44a4562d6e6f12b22b85072a468eda6f67cdebdc72dee70095c365e63005e0",
+      "version": "1.1.0"
+    }
+  ],
+  "schema_version": "1.0",
+  "timing": {
+    "anchor_basis": "measured-speech-end/event-end",
+    "body_repetitions": {
+      "programming": 2,
+      "sleep": 2
+    },
+    "fixed_speech_timestamps": false
+  }
+}
