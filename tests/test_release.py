@@ -134,7 +134,10 @@ def test_manifest_checks_relative_files_and_hashes(tmp_path):
             rel._verify_manifest(tmp_path, _valid_manifest(artifact))
 
 
-def test_dry_run_reports_paths_without_rendering_or_writing(tmp_path, monkeypatch):
+def test_dry_run_reports_paths_without_rendering_or_writing(tmp_path_factory, monkeypatch):
+    # Repository-local scratch includes the checkout path on CI. Keep this
+    # success fixture short; the explicit overlong-path regression stays below.
+    tmp_path = tmp_path_factory.mktemp("release")
     monkeypatch.setattr(
         rel,
         "_select_audio_manifest",
