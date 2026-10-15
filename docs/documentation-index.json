@@ -1010,7 +1010,7 @@
         "mcp"
       ],
       "related_schemas": [],
-      "sha256": "10ceba0e5034bd7b092200ebd6fd01ae3d350403aa44d4e7f0e25062eb1dfc0a",
+      "sha256": "4e861c10daa70621dd36d30b4f84ac376f606754a4fd258d26333ed7f5ae37aa",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -2627,6 +2627,26 @@
       "missing_information": [
         "per-document semantic review not recorded"
       ],
+      "path": "docs/releases/OCF_BRAND_VOICE_BASELINE.md",
+      "proposed_correction": "retain historical claims; consult current workflow guides",
+      "purpose": "Brand, voice and multi-function milestone baseline",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "d91edb70734defe64d39b29e34cf7bc01288bd89a59e0c9c597139fa3f78d555",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "maintainers/research reviewers",
+      "broken_references": [],
+      "canonical_source": "historical checkpoint (not current implementation)",
+      "duplicate_or_contradictory_information": [],
+      "historical": true,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [
+        "per-document semantic review not recorded"
+      ],
       "path": "docs/releases/OCF_BULK_SESSION_BASELINE.md",
       "proposed_correction": "retain historical claims; consult current workflow guides",
       "purpose": "Bulk session enablement baseline",
@@ -4058,5 +4078,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 196
+  "total": 197
 }

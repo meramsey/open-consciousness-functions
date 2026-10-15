@@ -140,6 +140,13 @@ OpenCode project `opencode.json` (merge with your existing configuration):
 Quit and restart OpenCode after changing configuration. Set `enabled: false`
 to disable this server; existing CLI workflows remain available.
 
+The repository now supplies a working project-local entry in
+`.opencode/opencode.json`: `python scripts/start_ocf_mcp.py`. The launcher
+selects `.venv/bin/python` or `.venv/Scripts/python.exe`. Native OpenCode
+1.18.35 connection and tool/job execution were exercised; see the
+[milestone baseline](releases/OCF_BRAND_VOICE_BASELINE.md). This is separate
+from SDK protocol verification and does not claim native Claude/Codex testing.
+
 Claude Code, from the checkout root:
 
 ```bash

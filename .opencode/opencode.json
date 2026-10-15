@@ -1,5 +1,12 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "ocf": {
+      "type": "local",
+      "command": ["python", "scripts/start_ocf_mcp.py"],
+      "enabled": true
+    }
+  },
   "watcher": {
     "ignore": [
       "build/**",
