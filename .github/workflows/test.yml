@@ -24,6 +24,15 @@ jobs:
       - run: python -m pip install -e ".[mcp]"
       - name: Optional SDK protocol and persistent job integration
         run: python -m pytest tests/test_agent_api.py tests/test_agent_workflows.py tests/test_dev_jobs.py tests/test_mcp_protocol.py
+      - name: Retain failed job diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-job-diagnostics-${{ matrix.os }}
+          include-hidden-files: true
+          path: |
+            .ocf-work/tmp/pytest-run-*/**/logs/jobs/**/worker.log
+            .ocf-work/tmp/pytest-run-*/**/logs/jobs/**/state.json
   unit:
     strategy:
       fail-fast: false

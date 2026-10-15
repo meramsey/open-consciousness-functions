@@ -11,6 +11,14 @@ def wait(job_id, timeout=90):
     while time.monotonic() < deadline:
         state = jobs.status(job_id)
         if state["state"] in jobs.TERMINAL:
+            if state["state"] == "failed":
+                for name in ("worker.log", "job.log"):
+                    path = jobs.directory(job_id) / name
+                    if path.is_file():
+                        print(
+                            f"{name}: {path.read_text(encoding='utf-8', errors='replace')[-4000:]}"
+                        )
+                print(state)
             return state
         time.sleep(0.1)
     jobs.cancel(job_id)
