@@ -428,6 +428,15 @@ def build_complete_session_plan(
         "title": plan["title"],
         "locale": plan["requested_locale"],
         "voice": plan["voice_profile"],
+        "voice_selection": {
+            "profile_id": plan["voice_profile"]["id"]
+            if plan["voice_profile"]
+            else options.get("voice_profile", template_record.get("voice_profile")),
+            "source": "cli"
+            if voice
+            else option_provenance.get("voice_profile", "selected-template"),
+            "backend_verified": voice is not None,
+        },
         "pacing": plan["pacing"],
         "template": section_report["template"],
         "session_completeness": "complete",
@@ -895,6 +904,7 @@ def render_complete_session(
     from .session_overrides import verify_stage_limits
 
     selected_template, binding = _resolve_template(function_id, template)
+    explicit_voice = voice
     options, _ = resolve_overrides(binding, overrides)
     voice = voice or options.get("voice_profile") or selected_template.get("voice_profile")
     voice_gain = voice_gain if voice_gain is not None else options.get("narration_gain", 1.0)
@@ -910,6 +920,17 @@ def render_complete_session(
         template=template,
         dsp_profile=dsp_profile,
         overrides=overrides,
+    )
+    session_plan["voice_selection"]["source"] = (
+        "cli"
+        if explicit_voice
+        else (
+            "cli"
+            if (overrides or {}).get("voice_profile")
+            else "function-binding"
+            if binding.get("session_overrides", {}).get("voice_profile")
+            else "selected-template"
+        )
     )
     if dry_run:
         return {"dry_run": True, "session_plan": session_plan}

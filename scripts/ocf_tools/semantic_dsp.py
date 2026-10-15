@@ -198,8 +198,10 @@ def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: 
         )
         required.update((current, target))
         current = target
-    if not transitions:
+    if not transitions and not profile.get("allow_static", False):
         raise OCFError("semantic DSP requested but session contains no state directives")
+    if not transitions and profile["states"][current].get("mode") != "preset":
+        raise OCFError("explicit static DSP requires an audible initial-state preset")
     unknown_ignored = ignored_state_events - observed_directives
     if unknown_ignored:
         raise OCFError(
@@ -426,6 +428,7 @@ def render_program(
     commands = []
     duration_extensions = []
     for state, selection in program["selections"].items():
+        cache_key, cached_stem = None, None
         if selection["mode"] == "disabled":
             continue
         if render_state:
@@ -435,6 +438,10 @@ def render_program(
 
             stem = scratch_dir / f"{state}-state-seed{program['seed']}.wav"
             configured_source = REPO_ROOT / selection["preset_file"]
+            from . import dsp_cache
+
+            cache_key = dsp_cache.cache_key(configured_source, program["seed"], duration)
+            cached_stem = dsp_cache.lookup(cache_key)
             source, duration_adjustment, temporary_source = _farfield_source_for_duration(
                 configured_source, duration, scratch_dir
             )
@@ -451,13 +458,19 @@ def render_program(
                 "0",
             ]
             try:
-                result = farfield.run_farfield(args)
+                if cached_stem is None:
+                    result = farfield.run_farfield(args)
+                else:
+                    shutil.copyfile(cached_stem, stem)
+                    result = subprocess.CompletedProcess([], 0, "", "")
             except farfield.OCFFarfieldMissing as exc:
                 raise OCFError(f"required state {state}: {exc}") from exc
             finally:
                 if temporary_source is not None:
                     temporary_source.unlink(missing_ok=True)
-            commands.append(["farfield", *args])
+            if cached_stem is None:
+                commands.append(["farfield", *args])
+            selection["stem_cache"] = "hit" if cached_stem else "miss" if cache_key else "bypassed"
             if result.returncode or not stem.is_file():
                 raise OCFError(f"required state {state}: Farfield render failed: {result.stderr}")
             if duration_adjustment:
@@ -499,6 +512,10 @@ def render_program(
             selection["target_rms_dbfs"] = profile["target_state_rms_dbfs"]
         selection["renderer_gain"] = calibration
         selection["stem_sha256"] = _sha(stem)
+        if cache_key and cached_stem is None:
+            from . import dsp_cache
+
+            selection["stem_cache_stored"] = dsp_cache.store(cache_key, stem)
         sources.append((state, stem, calibration))
     command = [ffmpeg, "-hide_banner", "-y"]
     chains = []

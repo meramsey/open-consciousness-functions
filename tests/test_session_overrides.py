@@ -26,6 +26,8 @@ def test_explicit_ending_and_repetition_overrides_do_not_change_shared_defaults(
 
 
 def test_precedence_conflicts_and_duration_failure_are_explicit():
+    ending, origin = resolve({"session_overrides": {"ending": "waking"}}, {"waking_return": False})
+    assert ending["ending"] == "sleep" and origin["ending"] == "cli"
     value, provenance = resolve(
         {"session_overrides": {"background_gain": 0.5, "repetitions": {"sleep": 1}}},
         {"background_gain": 0.25},
@@ -53,3 +55,30 @@ def test_representatives_use_actual_bindings_instead_of_category_heuristics():
     assert all(
         row["dsp"]["states"]["focus-10"]["preset"] == "OCF-BG-0012" for row in report["functions"]
     )
+
+
+def test_explicit_single_state_variant_plans_a_continuous_bed_without_fake_transition():
+    from ocf_tools.semantic_dsp import gain_at, plan_program
+
+    plan = build_complete_session_plan("OCF-COG-006", overrides={"focus_stages": ["focus-10"]})
+    dsp = plan_program(plan["template_plan"], [], 100, plan["resolved_dsp_profile"])
+    assert dsp["transitions"] == []
+    assert set(dsp["selections"]) == {"focus-10"}
+    assert gain_at(dsp, "focus-10", 50) == 1
+
+
+def test_voice_override_is_reported_without_loading_an_engine(monkeypatch):
+    from ocf_tools import narration_first
+
+    monkeypatch.setattr(
+        narration_first,
+        "_voice_profile",
+        lambda *args: pytest.fail("source planning must not load engines"),
+    )
+    plan = build_complete_session_plan("OCF-SLP-005", overrides={"voice_profile": "OCF-VOICE-0002"})
+    assert plan["voice"] is None
+    assert plan["voice_selection"] == {
+        "profile_id": "OCF-VOICE-0002",
+        "source": "cli",
+        "backend_verified": False,
+    }

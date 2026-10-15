@@ -109,6 +109,14 @@ Release packaging uses `audio release` with explicit PNG/JPEG artwork and an
 eligible registered implementation. Preserve review/rights metadata and inspect
 the dry-run. Packaging success is not release approval.
 
+Original brand geometry/palettes live in `brand/`; generated visual assets are
+candidates until human approval. UI/artwork/documentation themes are independent.
+Explicit `--artwork-theme` may generate a local release cover, with candidate
+provenance retained. Private voice models/datasets stay in `.ocf-work/`; portable
+metadata does not grant distribution rights. Training is unsupported until an
+adapter actually produces and verifies a model. See [branding](docs/BRANDING.md),
+[voice workflows](docs/VOICE_WORKFLOWS.md) and [session overrides](docs/SESSION_OVERRIDES.md).
+
 Optional [local MCP](docs/MCP.md) is a compact adapter, not another OCF engine.
 Use discovery summaries, pagination and targeted validation. Expensive tools
 return job IDs; poll/cancel rather than starting duplicates. Full tests require

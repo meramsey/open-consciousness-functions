@@ -463,6 +463,9 @@ def _load_profile(profile: dict[str, Any]) -> dict[str, Any]:
         from .custom_voices import model_path
 
         resolved["model"] = model_path(profile)
+        resolved["model_identity"] = {
+            key: value for key, value in profile["model"].items() if key != "asset"
+        }
     if "speaker_id" in profile:
         resolved["speaker_id"] = profile["speaker_id"]
     if profile.get("pronunciation"):
@@ -1248,6 +1251,10 @@ def render_narration(
         "voice_options": (
             {
                 "piper_length_scale": spec.get("piper_length_scale"),
+                **({"model": spec["model_identity"]} if spec.get("model_identity") else {}),
+                **(
+                    {"speaker_id": spec["speaker_id"]} if spec.get("speaker_id") is not None else {}
+                ),
                 "piper_sentence_silence_s": (
                     spec.get("piper_sentence_silence_s")
                     if spec.get("piper_sentence_silence_s") is not None

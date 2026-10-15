@@ -346,6 +346,14 @@ def package_release(
     if record is None:
         raise OCFError(f"audio implementation references unknown function {function_id}")
     title = str(overrides.get("title", title))
+    if "title" in overrides:
+        title_provenance = {
+            "requested_locale": requested_locale,
+            "resolved_locale": "operator-supplied",
+            "fallback": False,
+            "resource_key": None,
+            "source": "operator-title-override",
+        }
     release_version = version or str(
         audio_manifest.get("version") or record.data.get("version", {}).get("current") or "1.0.0"
     )
@@ -555,6 +563,10 @@ def package_release(
         _verify_manifest(stage, manifest)
         shutil.rmtree(render_dir)
         if final_dir.exists():
+            if not overwrite:
+                raise OCFError(
+                    "release appeared during rendering; refusing to replace it without --force"
+                )
             backup = final_dir.with_name(
                 f".{final_dir.name}.previous-{datetime.now(UTC).strftime('%Y%m%dT%H%M%S%fZ')}-{os.getpid()}"
             )

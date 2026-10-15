@@ -75,7 +75,7 @@
         "dev ocf"
       ],
       "related_schemas": [],
-      "sha256": "87e6c64d0939d702afc7912693615c96ee847117fab5499b3ea0748d95142820",
+      "sha256": "1fcef35bf5b8e54dfdf60ce9e51c3a8dff79c3833067c1676c41222328d5b17e",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -250,7 +250,7 @@
         "voice doctor"
       ],
       "related_schemas": [],
-      "sha256": "6f7eb5371074e7b2d9fccd66551cc831a04af643c611365765787da6aa9c8c53",
+      "sha256": "c80a93cb3cd945c243557751e808201972f8643c0ca5bb3be01c632e590dad2a",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -364,6 +364,26 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "brand/README.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "OCF candidate asset sources",
+      "related_commands": [
+        "artwork brand"
+      ],
+      "related_schemas": [],
+      "sha256": "e538fd1f5e23ee17a52f453e0e1a333d4c45051331ec52a5157681910be9fe25",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "docs/AGENT_DEVELOPMENT.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "Agent Development Guide",
@@ -378,7 +398,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "2097834526f5512ff47e7b370970393b43e918104f0f3809405b6527bf2dee4e",
+      "sha256": "97a7f1552c23abac036c05905242df49f59a891df2003641c177bc9aeeb243ba",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -445,7 +465,7 @@
       "related_schemas": [
         "schemas/audio-release.schema.json"
       ],
-      "sha256": "7fdba947c70e31c372effd49bfbd5def6c434d0ec987aeaf277b0277eefb510c",
+      "sha256": "aace0cee59bc857d3501b45815b3e1c9891360197e068be7a8cdd2991d42c495",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -552,6 +572,30 @@
       "related_commands": [],
       "related_schemas": [],
       "sha256": "1e6e2e6135a3dedfa9254db3b1169ef70a5ce5091a821c41b6c119367f86aa5a",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "docs/BRANDING.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Original candidate OCF visual identity",
+      "related_commands": [
+        "artwork brand",
+        "artwork gallery",
+        "artwork generate",
+        "artwork theme",
+        "artwork themes"
+      ],
+      "related_schemas": [],
+      "sha256": "4a218f041c2d396ce6f039af2ccede238d103ba868996937cea0d4602af7e861",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1010,7 +1054,7 @@
         "mcp"
       ],
       "related_schemas": [],
-      "sha256": "4e861c10daa70621dd36d30b4f84ac376f606754a4fd258d26333ed7f5ae37aa",
+      "sha256": "035634d69333c3159f05efae3d1fdc5e1c39b142a193e25cfa9c48681357fc3b",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1145,7 +1189,7 @@
       "purpose": "Documentation map",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "162b21c243153280c31d7fa4e8233ae1b9097e34e5835939156387c23872a8cd",
+      "sha256": "4f33e5531c29cdbd7c8e962cc7f20b53c178c312097ba37068869408625c98c8",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1245,6 +1289,26 @@
       ],
       "related_schemas": [],
       "sha256": "406b5df3289b7e1fd3e9e530a67056e2256e196372012910fc7d131e06130f73",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "docs/SESSION_OVERRIDES.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Explicit function session variants",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/session-overrides.schema.json"
+      ],
+      "sha256": "cf9ebdf6c2a5b174e941b217e3513529bd73d18731b219cce5c5278730e29394",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1503,6 +1567,35 @@
         "schemas/narration-package.schema.json"
       ],
       "sha256": "0537c282f7dd8e461d7572d129e5281e1cac9c94c3f3b2534b12c3f92ef1f3c6",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "docs/VOICE_WORKFLOWS.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Private voices, recording datasets and short comparisons",
+      "related_commands": [
+        "audio render",
+        "new voice",
+        "voice audition",
+        "voice dataset-init",
+        "voice import-model",
+        "voice inspect",
+        "voice list",
+        "voice training-plan",
+        "voice validate-dataset",
+        "voice validate-profile"
+      ],
+      "related_schemas": [],
+      "sha256": "8616eee79672fbfc9a574131d8cd2be445b4fb44bdb143d02b42100990d030cf",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -2707,6 +2800,48 @@
       "missing_information": [
         "per-document semantic review not recorded"
       ],
+      "path": "docs/releases/OCF_MEDIA_VERIFICATION.md",
+      "proposed_correction": "retain historical claims; consult current workflow guides",
+      "purpose": "Media workflow verification and cache measurements",
+      "related_commands": [
+        "dev ocf"
+      ],
+      "related_schemas": [],
+      "sha256": "1223842e0606c610cdf724c3c6564760481289d30ea336454bcd777f31c68068",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "maintainers/research reviewers",
+      "broken_references": [],
+      "canonical_source": "historical checkpoint (not current implementation)",
+      "duplicate_or_contradictory_information": [],
+      "historical": true,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [
+        "per-document semantic review not recorded"
+      ],
+      "path": "docs/releases/OCF_MULTI_FUNCTION_REVIEW.md",
+      "proposed_correction": "retain historical claims; consult current workflow guides",
+      "purpose": "Representative multi-function audio review",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "0afac81278eed3787a3aa71907081a56b9d53694d1a8aa39d3ce9947e5b3a2a0",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "maintainers/research reviewers",
+      "broken_references": [],
+      "canonical_source": "historical checkpoint (not current implementation)",
+      "duplicate_or_contradictory_information": [],
+      "historical": true,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [
+        "per-document semantic review not recorded"
+      ],
       "path": "docs/releases/OCF_OVERNIGHT_CHECKPOINT_2026-10-02.md",
       "proposed_correction": "retain historical claims; consult current workflow guides",
       "purpose": "OCF unattended run — audio completion and foundation checkpoint",
@@ -3323,7 +3458,7 @@
       "related_schemas": [
         "schemas/audio-release.schema.json"
       ],
-      "sha256": "f4823da994f7d60ff9e8585a17099179e9e7d2cea3a7cb2e5d7dc809a649cd08",
+      "sha256": "66b708e5a7dc282557a5aa718b133940b45c1d34420183f5d421eb338b196a9a",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -3364,6 +3499,26 @@
         "schemas/background-audio.schema.json"
       ],
       "sha256": "3155cbc979820b16f746a0ff93a8c829a861134cfd334a59489dff6f92f44dca",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "schemas/brand.schema.json",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "brand.schema",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/brand.schema.json"
+      ],
+      "sha256": "24bc85b77437021c01e20b60442c796e2faf55dd6f6e1f68341f955f4837f3c1",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -3542,9 +3697,10 @@
       "purpose": "function-binding.schema",
       "related_commands": [],
       "related_schemas": [
-        "schemas/function-binding.schema.json"
+        "schemas/function-binding.schema.json",
+        "schemas/session-overrides.schema.json"
       ],
-      "sha256": "23ee4f1aaeb36e4222310546b573f3250bc5ef5290505a7634ecd1afdf0ead8d",
+      "sha256": "d3095a31cf1edf746a9d6ec230b7a545765774be446a4028d8b03519df6fb33f",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -3766,7 +3922,27 @@
       "related_schemas": [
         "schemas/semantic-dsp-profile.schema.json"
       ],
-      "sha256": "69050fe33636e5ae1c82dc4fe54e178154ac37f3b463772044e177b6df42e5b0",
+      "sha256": "6e4782d6c775da1494196d72d12f155739acf9336fe1c145080c3016ffcfec1f",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "schemas/session-overrides.schema.json",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "session-overrides.schema",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/session-overrides.schema.json"
+      ],
+      "sha256": "e2a8867050ebfd3ff2f974cb5b588012047bf196ee0280469a5cedbbea6eeade",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -3806,7 +3982,7 @@
       "related_schemas": [
         "schemas/session-plan.schema.json"
       ],
-      "sha256": "b83a572b9c9c56236c3a65b53863ffa364a4c98909145ec4e1aaae371dc2871c",
+      "sha256": "824a833d7751536b8a1ded3784d6268847bc3bc101b06d8b649b25c163487805",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -3861,6 +4037,26 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "schemas/theme.schema.json",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "theme.schema",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/theme.schema.json"
+      ],
+      "sha256": "158a544b07a3477ca18d562f52c23ecccc9b1f60149104028b3a37e8f474dd19",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "schemas/timed-transcript.schema.json",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "timed-transcript.schema",
@@ -3883,6 +4079,26 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "schemas/voice-dataset.schema.json",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "voice-dataset.schema",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/voice-dataset.schema.json"
+      ],
+      "sha256": "33d1eb6deb6188c2ce59a80b398b2770aea577e4b633fbc06b959932e3880c37",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "schemas/voice-profile.schema.json",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "voice-profile.schema",
@@ -3893,7 +4109,7 @@
       "related_schemas": [
         "schemas/voice-profile.schema.json"
       ],
-      "sha256": "03e3a228273c81a750971bad487ea679c2870152db9a644eb611fcd9044439be",
+      "sha256": "498ec08b72627e5a12f95a13e6a66a5cf95b10de8f0f7793f3701aaf2e878408",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -3910,6 +4126,7 @@
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "cli",
       "related_commands": [
+        "artwork",
         "audio build",
         "audio check-engine",
         "audio defaults",
@@ -3924,12 +4141,14 @@
         "audio render-background",
         "audio render-many",
         "audio render-speech",
+        "audio review-sessions",
         "build-index",
         "capabilities",
         "commands describe",
         "commands export",
         "commands list",
         "corpus inventory",
+        "dev",
         "doctor",
         "edit function",
         "functions describe",
@@ -3947,6 +4166,7 @@
         "new proposal",
         "new session-plan",
         "new test-report",
+        "new voice",
         "ocf",
         "python",
         "review commands",
@@ -3959,14 +4179,16 @@
         "transcript review",
         "transcript segment",
         "validate",
+        "voice audition",
         "voice doctor",
         "voice list",
         "voice list-backends",
         "voice render",
+        "voice training-plan",
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "686bcc9d9ac4e04e6f0b64839308322124310e7e3eac17467056f8962462cb93",
+      "sha256": "8da55fee453cb911e8274ee5752d9cceab2a955befc1612f29b90cff38bb964e",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -3995,10 +4217,11 @@
         "new proposal",
         "new session-plan",
         "new test-report",
-        "validate"
+        "validate",
+        "voice audition"
       ],
       "related_schemas": [],
-      "sha256": "db1cd067e942305dfceb5c504a8c575f0bcdadb7c9aca92fbbf860937c339ac0",
+      "sha256": "968a77a45feb25b292a05e50041a40930756096474adca46138c30332efbd739",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4078,5 +4301,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 197
+  "total": 207
 }

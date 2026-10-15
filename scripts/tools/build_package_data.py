@@ -9,6 +9,7 @@ import yaml
 from setuptools.command.build_py import build_py
 
 DIRECTORIES = (
+    "brand",
     "schemas",
     "functions",
     "function-content",
@@ -56,6 +57,7 @@ def stage_data(root: Path, target: Path) -> dict:
                 ".sbg",
                 ".txt",
                 ".md",
+                ".svg",
             ):
                 continue
             relative = path.relative_to(root)
@@ -75,6 +77,20 @@ def stage_data(root: Path, target: Path) -> dict:
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(path, destination)
             copied.append(relative.as_posix())
+    for name in ("audio/voices/recording-script.json",):
+        path = root / name
+        if (
+            path.is_file()
+            and not path.is_symlink()
+            and path.resolve().is_relative_to(root.resolve())
+            and not any(
+                parent.is_symlink() for parent in path.parents if parent.is_relative_to(root)
+            )
+        ):
+            destination = target / name
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(path, destination)
+            copied.append(name)
     return {"included": copied, "omitted_citation_only_bindings": omitted}
 
 

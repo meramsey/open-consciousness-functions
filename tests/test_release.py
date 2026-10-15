@@ -253,17 +253,24 @@ def _valid_manifest(artifact):
 @pytest.mark.audio_integration
 @pytest.mark.external_tool
 @pytest.mark.parametrize("fmt", ["mp3", "flac"])
-@pytest.mark.parametrize("cover_kind", ["fixture", "generated"])
+@pytest.mark.parametrize("cover_kind", ["fixture", "generated", "generated-jpeg"])
 def test_real_codec_metadata_and_artwork_round_trip(tmp_path, fmt, cover_kind, monkeypatch):
     if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
         pytest.skip("real codec round-trip requires optional ffmpeg and ffprobe")
-    if cover_kind == "generated":
+    if cover_kind.startswith("generated"):
         pytest.importorskip("PIL")
         pytest.importorskip("fontTools")
         from ocf_tools.artwork import generate_cover
 
         monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
-        cover = Path(generate_cover("OCF-BOD-010", theme="ocf-light", resolution=256)["path"])
+        cover = Path(
+            generate_cover(
+                "OCF-BOD-010",
+                theme="ocf-light",
+                resolution=256,
+                format="jpeg" if cover_kind.endswith("jpeg") else "png",
+            )["path"]
+        )
     else:
         cover = _png(tmp_path / "cover.png")
     source = _wav(tmp_path / "source.wav")
@@ -378,6 +385,19 @@ def test_package_publishes_complete_verified_release_and_blocks_collision(tmp_pa
     previous = list(release_dir.parent.glob(f".{release_dir.name}.previous-*"))
     assert Path(replaced["release_directory"]) == release_dir
     assert len(previous) == 1 and (previous[0] / "manifest.json").is_file()
+    late_root = tmp_path / "late"
+    late_dir = late_root / "en-US" / "OCF-BOD-010-Nutricia"
+
+    def racing_build(*args, **kwargs):
+        result = fake_build(*args, **kwargs)
+        late_dir.mkdir(parents=True)
+        (late_dir / "operator.txt").write_text("preserve me")
+        return result
+
+    monkeypatch.setattr(audio_build, "build", racing_build)
+    with pytest.raises(OCFError, match="appeared during rendering"):
+        rel.package_release("OCF-BOD-010", formats=["flac"], artwork=cover, output=late_root)
+    assert (late_dir / "operator.txt").read_text() == "preserve me"
 
 
 @pytest.mark.integration

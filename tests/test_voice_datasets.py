@@ -90,3 +90,17 @@ def test_private_model_import_is_portable_and_detects_changed_model(monkeypatch,
     installed.write_bytes(b"changed")
     with pytest.raises(OCFError, match="checksum mismatch"):
         validate_profile(profile)
+
+
+@pytest.mark.parametrize("config", [None, "{", "[]", '{"language":null,"audio":{}}'])
+def test_bad_model_configuration_is_actionable_and_publishes_nothing(monkeypatch, tmp_path, config):
+    from ocf_tools.custom_voices import import_model
+
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    model = tmp_path / "bad.onnx"
+    model.write_bytes(b"fixture")
+    if config is not None:
+        model.with_suffix(".onnx.json").write_text(config)
+    with pytest.raises(OCFError):
+        import_model(model, voice_id="OCF-VOICE-9010", name="Invalid")
+    assert not (tmp_path / "work/cache/voices").exists()

@@ -1,5 +1,6 @@
 """Explicit precedence and safe structural overrides; shared locked files are immutable."""
 
+import math
 from copy import deepcopy
 
 from .audio_defaults import overlay
@@ -8,18 +9,33 @@ from .validators import _load_schema, validate_against_schema
 
 
 def resolve(binding: dict, cli: dict | None = None) -> tuple[dict, dict]:
-    function = binding.get("session_overrides", {})
-    for data in (function, cli or {}):
+    function = deepcopy(binding.get("session_overrides", {}))
+    cli = deepcopy(cli or {})
+    for data in (function, cli):
+
+        def finite(value):
+            if isinstance(value, float) and not math.isfinite(value):
+                raise OCFError("session override numbers must be finite")
+            if isinstance(value, dict):
+                for child in value.values():
+                    finite(child)
+            elif isinstance(value, list):
+                for child in value:
+                    finite(child)
+
+        finite(data)
         errors = validate_against_schema(data, _load_schema("session-overrides.schema.json"))
         if errors:
             raise OCFError("session overrides: " + " | ".join(errors))
-    resolved = overlay(function, cli or {})
-    if "ending" in resolved:
-        wake = resolved["ending"] == "waking"
-        if "waking_return" in resolved and resolved["waking_return"] != wake:
-            raise OCFError("ending and waking_return conflict")
-        resolved["waking_return"] = wake
-    return resolved, {key: "cli" if key in (cli or {}) else "function-binding" for key in resolved}
+        if "ending" in data:
+            wake = data["ending"] == "waking"
+            if "waking_return" in data and data["waking_return"] != wake:
+                raise OCFError("ending and waking_return conflict")
+            data["waking_return"] = wake
+        elif "waking_return" in data:
+            data["ending"] = "waking" if data["waking_return"] else "sleep"
+    resolved = overlay(function, cli)
+    return resolved, {key: "cli" if key in cli else "function-binding" for key in resolved}
 
 
 def apply(
@@ -47,6 +63,7 @@ def apply(
             removed.add("focus-ten")
         if "focus-11" not in options["focus_stages"]:
             removed.update(("open", "focus11-body", "close"))
+            dsp["allow_static"] = True
     template["sections"] = [s for s in template["sections"] if s["id"] not in removed]
     unknown = set(options.get("stage_maximum_seconds", {})) - {
         s["id"] for s in template["sections"]

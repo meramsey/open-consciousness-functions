@@ -74,10 +74,21 @@ variables are never discovery output. Error responses include codes and actions.
 
 Resources: `ocf://overview`, `ocf://functions`, `ocf://schemas`,
 `ocf://audio-defaults`, `ocf://documentation`, `ocf://validation`,
-`ocf://artifacts`. The `workflow` prompt accepts the eight workflow names in
+`ocf://artifacts`. The `workflow` prompt accepts the versioned workflow names in
 `docs/workflows.json`; it links canonical guides rather than duplicating them.
 
 ## Job lifecycle and limits
+
+Media extensions reuse the same executor: `ocf_generate_artwork_preview`,
+`ocf_start_voice_audition`, and `ocf_validate_voice_dataset` return persistent
+job IDs and artifact references, never binary data. `ocf_list_artwork_themes`,
+`ocf_inspect_brand`, `ocf_validate_theme`, `ocf_list_voice_profiles`,
+`ocf_plan_voice_training`, and `ocf_inspect_release_artwork` provide bounded
+metadata. Training planning reports unsupported status; no unverified training
+start tool is advertised. MCP artwork jobs select registered themes; custom
+file/font rendering remains an explicit CLI workflow. Dataset manifests must
+be inside the workspace; validation reads audio at execution and reports PCM
+fingerprints rather than caching a success claim about later recordings.
 
 Records/logs live under `.ocf-work/logs/jobs/<job-id>/`; cache/audio remains
 under the standard workspace. `OCF_WORK_DIR` honors the existing validated
@@ -107,6 +118,8 @@ worker stops the owned process tree. Completed jobs are never reclassified as
 canceled. No tool overrides a client's host permission policy.
 
 Speech cache is content-addressed, PCM/checksum-verified and capped at 2 GiB;
+the separately bounded DSP stem cache uses verified engine/preset/seed/duration
+identity and is selected by `ocf_cache_clean` with `kind="dsp"` (default is `tts`).
 new writes bypass at capacity. No automatic cache eviction or workspace cleanup
 occurs. A cache entry preserves one realized waveform; it does not assert that
 an unseeded TTS backend produces identical samples on regeneration. Parser caching

@@ -9,6 +9,9 @@ loading the entire documentation tree:
 - Plan and audition: [bulk sessions](BULK_SESSIONS.md), then
   [audio pipeline](AUDIO_PIPELINE.md).
 - Choose a voice: [community voices](COMMUNITY_VOICES.md).
+- Import/record/compare private voices: [voice workflows](VOICE_WORKFLOWS.md).
+- Brand, UI themes and album covers: [original candidates](BRANDING.md).
+- Configure intentional session variants: [override precedence](SESSION_OVERRIDES.md).
 - Understand state audio: [semantic DSP](SEMANTIC_DSP.md) and
   [background audio](../audio/background/README.md).
 - Package: [verified releases](AUDIO_PIPELINE.md#final-release-packages).

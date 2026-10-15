@@ -26,7 +26,7 @@ from .prompts import (
     run_proposal_wizard,
     run_test_report_wizard,
 )
-from .utils import OCFError
+from .utils import OCFError, read_json_object
 from .validators import (
     print_result,
     validate_all,
@@ -43,6 +43,12 @@ Usage:
   ocf new background          Register a background preset (wizard)
   ocf new test-report         Create a testing report (wizard)
   ocf new session-plan        Generate a bound complete-session source plan (wizard)
+  ocf new voice               Create a private reusable voice profile (wizard)
+  ocf artwork --help          Original candidate brand, themes, gallery and covers
+  ocf voice audition VOICE... Compare original short passages across selected profiles
+  ocf voice training-plan     Report verified capabilities and unsupported training blockers
+  ocf audio review-sessions FUNCTION_ID... [--voice PROFILE]
+  ocf dev OPERATION --arguments JSON  Compact agent APIs and persistent jobs
   ocf audio eligibility [FUNCTION_ID|--all] --locale en-US
   ocf audio plan [FUNCTION_ID|--all] [--locale TAG] [--dry-run|--check]
   ocf audio render-many [FUNCTION_ID ...|--all] --voice PROFILE [--dry-run|--resume|--force]
@@ -103,6 +109,39 @@ def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="ocf", description=HELP_TEXT, add_help=False)
     parser.add_argument("--quiet", action="store_true", help="suppress informational output")
     sub = parser.add_subparsers(dest="command")
+    art = sub.add_parser(
+        "artwork",
+        help="original candidate OCF brand, independent themes and offline localized covers",
+    )
+    art_sub = art.add_subparsers(dest="artwork_kind", required=True)
+    art_sub.add_parser("themes")
+    gallery_cmd = art_sub.add_parser(
+        "gallery",
+        help="create a local offline candidate review UI with independent interface/artwork themes",
+    )
+    gallery_cmd.add_argument("--output", type=Path, required=True)
+    gallery_cmd.add_argument("--ui-theme")
+    gallery_cmd.add_argument("--artwork-theme")
+    brand_cmd = art_sub.add_parser("brand", help="export an original candidate vector variant")
+    brand_cmd.add_argument("--variant", default="primary")
+    brand_cmd.add_argument("--theme")
+    brand_cmd.add_argument("--output", type=Path, required=True)
+    theme_cmd = art_sub.add_parser(
+        "theme", help="validate/resolve a built-in or custom theme; emit independent surface tokens"
+    )
+    theme_cmd.add_argument("--theme")
+    theme_cmd.add_argument("--surface", choices=["ui", "artwork", "documentation"], default="ui")
+    cover_cmd = art_sub.add_parser(
+        "generate", help="create a candidate localized PNG/JPEG cover, never publication approval"
+    )
+    cover_cmd.add_argument("function_id")
+    cover_cmd.add_argument("--locale", default="en-US")
+    cover_cmd.add_argument("--theme")
+    cover_cmd.add_argument("--resolution", type=int, default=1400)
+    cover_cmd.add_argument("--format", choices=["png", "jpeg"], default="png")
+    cover_cmd.add_argument("--version")
+    cover_cmd.add_argument("--font", help="explicit installed licensed TTF/OTF override")
+    cover_cmd.add_argument("--output", type=Path)
     dev = sub.add_parser(
         "dev",
         help="compact provider-neutral tools and persistent jobs (same services as optional MCP)",
@@ -187,6 +226,9 @@ def _build_parser() -> argparse.ArgumentParser:
     new_sub.add_parser("background", help="new background preset manifest")
     new_sub.add_parser("test-report", help="new testing report")
     new_sub.add_parser(
+        "voice", help="privately import a supported model through the voice profile wizard"
+    )
+    new_sub.add_parser(
         "session-plan", help="generate a complete session plan from existing narration"
     )
 
@@ -212,6 +254,15 @@ def _build_parser() -> argparse.ArgumentParser:
 
     audio = sub.add_parser("audio", help="audio tooling")
     audio_sub = audio.add_subparsers(dest="audio_kind")
+    review_sessions_cmd = audio_sub.add_parser(
+        "review-sessions",
+        help="compare 1..8 actual session bindings; optional short exact-sentence speech excerpts",
+    )
+    review_sessions_cmd.add_argument("function_ids", nargs="+")
+    review_sessions_cmd.add_argument("--locale", default="en-US")
+    review_sessions_cmd.add_argument(
+        "--voice", help="explicitly synthesize short excerpts with this voice"
+    )
     bulk_cmd = audio_sub.add_parser(
         "render-many",
         help="explicit resumable bulk complete-session auditions (one memory-bounded job at a time)",
@@ -238,6 +289,9 @@ def _build_parser() -> argparse.ArgumentParser:
     plan_cmd.add_argument("function_id", nargs="?")
     plan_cmd.add_argument("--all", action="store_true")
     plan_cmd.add_argument("--locale", default="en-US")
+    plan_cmd.add_argument(
+        "--overrides", type=Path, help="explicit JSON session overrides; preview with --expand"
+    )
     plan_cmd.add_argument(
         "--output", type=Path, help="source-plan root (default audio/session-plans)"
     )
@@ -320,7 +374,14 @@ def _build_parser() -> argparse.ArgumentParser:
         help="complete template session by default; choose narration-only explicitly",
     )
     narration_render.add_argument("--locale", help="requested BCP-47 locale")
-    narration_render.add_argument("--voice", required=True, help="configured voice profile ID/slug")
+    narration_render.add_argument(
+        "--voice", help="voice profile ID/slug; otherwise explicit function/template selection"
+    )
+    narration_render.add_argument(
+        "--overrides",
+        type=Path,
+        help="explicit JSON session overrides, higher priority than function bindings",
+    )
     narration_render.add_argument(
         "--pacing", choices=["normal", "relaxed", "sleep"], default="normal"
     )
@@ -333,7 +394,10 @@ def _build_parser() -> argparse.ArgumentParser:
     narration_render.add_argument("--output", help="new audition directory (never overwritten)")
     narration_render.add_argument("--rate", type=int, default=44100, help="sample rate (Hz)")
     narration_render.add_argument(
-        "--voice-gain", type=float, default=1.0, help="linear narration gain"
+        "--voice-gain",
+        type=float,
+        default=None,
+        help="linear narration gain (overrides function configuration)",
     )
     narration_render.add_argument(
         "--background-gain",
@@ -410,8 +474,12 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     release_cmd.add_argument("--voice", help="voice profile ID/slug or backend name")
     release_cmd.add_argument(
-        "--artwork", required=True, help="explicitly approved PNG/JPEG cover artwork"
+        "--artwork", help="explicit PNG/JPEG cover; takes precedence over generated artwork"
     )
+    release_cmd.add_argument(
+        "--artwork-theme", help="explicitly select an original candidate OCF generated cover"
+    )
+    release_cmd.add_argument("--artwork-resolution", type=int, default=1400)
     release_cmd.add_argument("--output", help="release root directory (default: releases/)")
     release_cmd.add_argument("--version", help="explicit release version")
     release_cmd.add_argument(
@@ -438,6 +506,54 @@ def _build_parser() -> argparse.ArgumentParser:
 
     voice = sub.add_parser("voice", help="narration (TTS) tooling")
     voice_sub = voice.add_subparsers(dest="voice_kind")
+    inspect_voice = voice_sub.add_parser(
+        "inspect", help="inspect a built-in or private reusable voice profile"
+    )
+    inspect_voice.add_argument("voice_id")
+    profile_validate = voice_sub.add_parser(
+        "validate-profile", help="validate portable profile metadata and installed model checksums"
+    )
+    profile_validate.add_argument("file", type=Path)
+    profile_validate.add_argument("--metadata-only", action="store_true")
+    model_import = voice_sub.add_parser(
+        "import-model",
+        help="import an existing local Piper ONNX model privately; never train or publish",
+    )
+    model_import.add_argument("file", type=Path)
+    model_import.add_argument("--id", required=True)
+    model_import.add_argument("--name", required=True)
+    model_import.add_argument("--model-version", default="unversioned-local")
+    model_import.add_argument("--license", default="unknown")
+    model_import.add_argument(
+        "--kind", choices=["installed-model", "custom", "cloned"], default="installed-model"
+    )
+    model_import.add_argument(
+        "--consent",
+        choices=["unknown", "self-recorded", "authorized-contributor"],
+        default="unknown",
+    )
+    model_import.add_argument("--consent-record")
+    dataset_init = voice_sub.add_parser(
+        "dataset-init",
+        help="create original recording prompts and a private manifest; no microphone capture",
+    )
+    dataset_init.add_argument("directory", type=Path)
+    dataset_init.add_argument("--id", default="my-voice")
+    dataset_init.add_argument("--rate", type=int, default=22050)
+    dataset_validate = voice_sub.add_parser(
+        "validate-dataset", help="validate local PCM recordings, transcripts, splits and quality"
+    )
+    dataset_validate.add_argument("file", type=Path)
+    training_plan = voice_sub.add_parser(
+        "training-plan", help="report evaluated adapters and unverified training blockers honestly"
+    )
+    training_plan.add_argument("--dataset", type=Path)
+    training_plan.add_argument("--backend", choices=["piper", "f5-tts"], default="piper")
+    voice_audition = voice_sub.add_parser(
+        "audition", help="explicitly synthesize original short passages for 1..4 voices"
+    )
+    voice_audition.add_argument("voices", nargs="+")
+    voice_audition.add_argument("--locale", default="en-US")
     voice_packs = voice_sub.add_parser(
         "packs", help="list declarative community voice metadata; no downloads"
     )
@@ -994,6 +1110,37 @@ def main(argv: list[str] | None = None) -> int:
         return int(exc.code or 0)
 
     try:
+        if args.command == "artwork":
+            import json
+
+            from . import artwork
+
+            if args.artwork_kind == "themes":
+                result = {
+                    "themes": [p.stem for p in sorted((artwork.BRAND / "themes").glob("*.json"))],
+                    "brand": artwork.identity(),
+                }
+            elif args.artwork_kind == "brand":
+                result = artwork.export_brand(args.output, variant=args.variant, theme=args.theme)
+            elif args.artwork_kind == "gallery":
+                result = artwork.gallery(
+                    args.output, ui_theme=args.ui_theme, artwork_theme=args.artwork_theme
+                )
+            elif args.artwork_kind == "theme":
+                result = artwork.theme_tokens(args.surface, args.theme)
+            else:
+                result = artwork.generate_cover(
+                    args.function_id,
+                    locale=args.locale,
+                    theme=args.theme,
+                    resolution=args.resolution,
+                    format=args.format,
+                    version=args.version,
+                    overrides={"font": args.font} if args.font else None,
+                    output=args.output,
+                )
+            print(json.dumps(result, ensure_ascii=False, indent=2))
+            return 0
         if args.command == "dev":
             import json
 
@@ -1146,6 +1293,10 @@ def main(argv: list[str] | None = None) -> int:
                 from .prompts import run_session_plan_wizard
 
                 run_session_plan_wizard()
+            elif args.new_kind == "voice":
+                from .prompts import run_voice_profile_wizard
+
+                run_voice_profile_wizard()
             elif args.new_kind == "test-report":
                 run_test_report_wizard()
             else:
@@ -1168,6 +1319,19 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "review" and args.review_kind == "commands":
             return cmd_review_commands()
         if args.command == "audio":
+            if args.audio_kind == "review-sessions":
+                import json
+
+                from .session_review import review_sessions
+
+                print(
+                    json.dumps(
+                        review_sessions(args.function_ids, locale=args.locale, voice=args.voice),
+                        ensure_ascii=False,
+                        indent=2,
+                    )
+                )
+                return 0
             if args.audio_kind == "defaults":
                 import json
 
@@ -1206,8 +1370,21 @@ def main(argv: list[str] | None = None) -> int:
                 if args.expand:
                     if args.all or args.check:
                         raise OCFError("--expand requires a single function and cannot use --check")
-                    result = source_plan(args.function_id, args.locale)[2]
+                    if args.overrides:
+                        from .complete_session import build_complete_session_plan
+
+                        result = build_complete_session_plan(
+                            args.function_id,
+                            locale=args.locale,
+                            overrides=read_json_object(args.overrides),
+                        )
+                    else:
+                        result = source_plan(args.function_id, args.locale)[2]
                 else:
+                    if args.overrides:
+                        raise OCFError(
+                            "use --expand for ephemeral CLI overrides; persist deliberate function overrides in its binding for generation"
+                        )
                     result = generate_plans(
                         None if args.all else [args.function_id],
                         locale=args.locale,
@@ -1265,6 +1442,11 @@ def main(argv: list[str] | None = None) -> int:
                 if args.mode == "narration-only":
                     from .narration_first import render_narration_first
 
+                    if args.overrides or not args.voice:
+                        raise OCFError(
+                            "narration-only requires --voice and does not apply complete-session overrides"
+                        )
+
                     result = render_narration_first(
                         args.function_id,
                         locale=args.locale,
@@ -1284,6 +1466,7 @@ def main(argv: list[str] | None = None) -> int:
                         pacing=args.pacing,
                         template=args.template,
                         dsp_profile=args.dsp_profile,
+                        overrides=read_json_object(args.overrides) if args.overrides else None,
                         voice_gain=args.voice_gain,
                         background_gain=args.background_gain,
                         output=args.output,
@@ -1384,6 +1567,14 @@ def main(argv: list[str] | None = None) -> int:
                     formats=args.format,
                     voice=args.voice,
                     artwork=args.artwork,
+                    **(
+                        {
+                            "artwork_theme": args.artwork_theme,
+                            "artwork_resolution": args.artwork_resolution,
+                        }
+                        if args.artwork_theme
+                        else {}
+                    ),
                     output=args.output,
                     version=args.version,
                     metadata_overrides=metadata_overrides,
@@ -1401,6 +1592,58 @@ def main(argv: list[str] | None = None) -> int:
             print(HELP_TEXT)
             return 0
         if args.command == "voice":
+            if args.voice_kind in {
+                "inspect",
+                "validate-profile",
+                "import-model",
+                "dataset-init",
+                "validate-dataset",
+                "training-plan",
+                "audition",
+            }:
+                import json
+
+                from . import custom_voices, voice_datasets
+                from .indexes import load_voice_profiles, load_yaml_file
+
+                if args.voice_kind == "inspect":
+                    result = next(
+                        (
+                            p
+                            for p in load_voice_profiles()
+                            if p["id"] == args.voice_id or p["slug"] == args.voice_id
+                        ),
+                        None,
+                    )
+                    if result is None:
+                        raise OCFError("unknown voice profile")
+                elif args.voice_kind == "validate-profile":
+                    result = custom_voices.validate_profile(
+                        load_yaml_file(args.file), assets=not args.metadata_only
+                    )
+                elif args.voice_kind == "import-model":
+                    result = custom_voices.import_model(
+                        args.file,
+                        voice_id=args.id,
+                        name=args.name,
+                        model_version=args.model_version,
+                        license=args.license,
+                        voice_kind=args.kind,
+                        consent_status=args.consent,
+                        consent_record=args.consent_record,
+                    )
+                elif args.voice_kind == "dataset-init":
+                    result = voice_datasets.initialize(
+                        args.directory, dataset_id=args.id, sample_rate=args.rate
+                    )
+                elif args.voice_kind == "validate-dataset":
+                    result = voice_datasets.validate_dataset(args.file)
+                elif args.voice_kind == "training-plan":
+                    result = voice_datasets.training_plan(args.dataset, backend=args.backend)
+                else:
+                    result = custom_voices.audition(args.voices, locale=args.locale)
+                print(json.dumps(result, ensure_ascii=False, indent=2))
+                return 1 if result.get("status") == "failed" else 0
             if args.voice_kind == "packs":
                 import json
 

@@ -20,6 +20,9 @@ therapeutic efficacy claim.
   auditions and artwork/metadata/transcript/checksum release packaging.
 - Resumable explicit bulk auditions, content-addressed speech cache, local jobs,
   and an optional provider-neutral stdio MCP adapter.
+- Original candidate branding, independent themes and offline localized covers;
+  portable/private voice imports, recording validation and short comparisons.
+  Local voice training remains explicitly unsupported until verified.
 
 The shared LOCKED configuration is an engineering baseline, not human listening
 approval. Human review remains required. Preparation-module designs and final
@@ -110,6 +113,12 @@ happens during planning. See [audio pipeline](docs/AUDIO_PIPELINE.md),
 [semantic DSP](docs/SEMANTIC_DSP.md) and [backgrounds](audio/background/README.md).
 
 ## Package an approved release
+
+See [original OCF artwork and themes](docs/BRANDING.md),
+[private voice workflows](docs/VOICE_WORKFLOWS.md), and
+[function-specific session variants](docs/SESSION_OVERRIDES.md).
+Generated covers require explicit `--artwork-theme` selection and remain
+candidate assets; they are not a user-approved final brand identity.
 
 Use `python scripts/ocf.py audio release --help`. Select a registered audio
 implementation/function, explicit approved PNG/JPEG artwork, locale and formats;

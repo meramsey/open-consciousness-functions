@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import errno
 import hashlib
+import json
 import os
 import tempfile
 from copy import deepcopy
@@ -29,6 +30,21 @@ class OCFError(Exception):
 
 class OCFFileExistsError(OCFError):
     """Raised when an atomic write would overwrite an existing file."""
+
+
+def read_json_object(path: Path) -> dict:
+    """Read operator JSON with the same actionable error boundary as YAML."""
+
+    def reject_constant(token):
+        raise ValueError(f"non-finite JSON number is not permitted: {token}")
+
+    try:
+        value = json.loads(read_text(path), parse_constant=reject_constant)
+    except ValueError as exc:
+        raise OCFError(f"Invalid JSON in {path}: {exc}") from exc
+    if not isinstance(value, dict):
+        raise OCFError(f"{path} must contain a JSON object")
+    return value
 
 
 def yaml_safe_load(data: str) -> Any:

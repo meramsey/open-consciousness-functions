@@ -63,8 +63,12 @@ The main implementation modules are:
 <release-root> --dry-run` previews package paths. Remove `--dry-run` to render
 and publish after verification. A function ID is accepted only when exactly
 one audio implementation is registered; otherwise select an audio ID. The
-command requires a PNG or JPEG image supplied explicitly by the operator. OCF
-does not generate artwork or infer it from reference-corpus files.
+command accepts a PNG/JPEG supplied explicitly by the operator, or an explicitly
+selected `--artwork-theme` for an original OCF candidate cover. Custom artwork
+takes precedence. Generated covers record their brand/theme fingerprint and
+candidate status; they never infer publication approval or use reference-corpus
+artwork. See [branding](BRANDING.md) for offline generation and independent UI/
+artwork themes.
 
 Each release directory contains localized audio filenames, a UTF-8 text
 transcript, `cover.png` or `cover.jpg`, and `manifest.json`. Filenames use
@@ -119,6 +123,10 @@ audio implementation cannot be released until an implementation and timed
 narration are authored.
 
 ## Complete-session and narration-only auditions
+
+Use [explicit session overrides](SESSION_OVERRIDES.md) for reviewed function
+differences. `audio review-sessions` compares actual bindings and optionally
+synthesizes short exact-sentence excerpts; category names never infer endings.
 
 See [bulk sessions](BULK_SESSIONS.md) for engine-independent `audio plan`,
 derived TTS eligibility, configuration locking and resumable `audio render-many`.

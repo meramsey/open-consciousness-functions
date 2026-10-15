@@ -17,7 +17,7 @@ from .indexes import load_function_by_id
 from .locale import LocaleCatalog, normalize_tag
 from .paths import REPO_ROOT, work_path
 from .session_plans import digest
-from .utils import OCFError, sha256_of_file, write_text_atomic
+from .utils import OCFError, read_json_object, sha256_of_file, write_text_atomic
 from .validators import _load_schema, validate_against_schema
 
 BRAND = REPO_ROOT / "brand"
@@ -61,7 +61,7 @@ def load_theme(
     if resolved in _seen or len(_seen) > 8:
         raise OCFError("cyclic/excessive theme inheritance")
     try:
-        data = json.loads(path.read_text(encoding="utf-8"))
+        data = read_json_object(path)
     except (OSError, ValueError) as exc:
         raise OCFError(f"cannot load theme {path.name}: {exc}") from exc
     if not isinstance(data, dict):
@@ -76,7 +76,7 @@ def load_theme(
     if errors:
         raise OCFError("invalid theme: " + " | ".join(errors))
     ratio = contrast(data["palette"]["background"], data["palette"]["foreground"])
-    if ratio < data["minimum_contrast"]:
+    if not math.isfinite(data["minimum_contrast"]) or ratio < data["minimum_contrast"]:
         raise OCFError(f"theme text contrast {ratio:.2f} is below {data['minimum_contrast']}")
     return data
 
@@ -94,7 +94,7 @@ def theme_tokens(surface: str = "ui", theme: str | None = None) -> dict:
     return {"surface": surface, "theme": data, "sha256": digest(data), "css": css}
 
 
-def gallery(output: Path) -> dict:
+def gallery(output: Path, *, ui_theme: str | None = None, artwork_theme: str | None = None) -> dict:
     themes = [p.stem for p in sorted((BRAND / "themes").glob("*.json"))]
     data = {
         name: {
@@ -103,22 +103,41 @@ def gallery(output: Path) -> dict:
         }
         for name in themes
     }
+    selected = {
+        "ui": load_theme(surface="ui")["id"],
+        "artwork": load_theme(surface="artwork")["id"],
+    }
+    for surface, reference in (("ui", ui_theme), ("artwork", artwork_theme)):
+        if reference:
+            value = load_theme(reference, surface=surface)
+            key = reference if reference in themes else surface + "-custom"
+            data[key] = {
+                "palette": value["palette"],
+                "ui_font_family": value.get("ui_font_family", "system-ui, sans-serif"),
+                "variants": {v: brand_svg(v, reference) for v in identity()["variants"]},
+            }
+            selected[surface] = key
     payload = json.dumps(data, ensure_ascii=False).replace("<", "\\u003c")
-    options = "".join(f'<option value="{escape(name)}">{escape(name)}</option>' for name in themes)
+    options = "".join(f'<option value="{escape(name)}">{escape(name)}</option>' for name in data)
     html = """<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
 <title>OCF original candidate review</title><style>
-body{font-family:system-ui,sans-serif;margin:2rem;background:var(--bg);color:var(--fg)}
+body{font-family:var(--font,system-ui),sans-serif;margin:2rem;background:var(--bg);color:var(--fg)}
 select{font:inherit;margin:.5rem;padding:.4rem}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
 article{border:1px solid var(--accent);padding:1rem}svg{width:100%;height:auto}label{display:inline-block}
 </style><h1>OCF candidate review gallery</h1><p>Original procedural candidates. No final human design approval is recorded.</p>
 <label>Interface theme <select id="ui">OPTIONS</select></label><label>Artwork theme <select id="art">OPTIONS</select></label><main id="cards"></main>
 <script>const themes=PAYLOAD; const ui=document.getElementById('ui'),art=document.getElementById('art');
-ui.value='ocf-light'; art.value='ocf-dark';
-function render(){const p=themes[ui.value].palette;document.body.style.setProperty('--bg',p.background);document.body.style.setProperty('--fg',p.foreground);document.body.style.setProperty('--accent',p.accent);
+ui.value=UI_SELECTED; art.value=ART_SELECTED;
+function render(){const p=themes[ui.value].palette;document.body.style.setProperty('--bg',p.background);document.body.style.setProperty('--fg',p.foreground);document.body.style.setProperty('--accent',p.accent);document.body.style.setProperty('--font',themes[ui.value].ui_font_family||'system-ui');
 const cards=document.getElementById('cards');cards.replaceChildren();for(const [name,svg] of Object.entries(themes[art.value].variants)){const card=document.createElement('article');const label=document.createElement('h2');label.textContent=name;card.appendChild(label);const visual=document.createElement('div');visual.innerHTML=svg;card.appendChild(visual);cards.appendChild(card);}}
 ui.addEventListener('change',render);art.addEventListener('change',render);render();</script></html>"""
     write_text_atomic(
-        output, html.replace("OPTIONS", options).replace("PAYLOAD", payload), overwrite=False
+        output,
+        html.replace("OPTIONS", options)
+        .replace("PAYLOAD", payload)
+        .replace("UI_SELECTED", json.dumps(selected["ui"]))
+        .replace("ART_SELECTED", json.dumps(selected["artwork"])),
+        overwrite=False,
     )
     return {
         "path": str(output),
@@ -201,8 +220,13 @@ def _font_assets(font: str):
                 "configured font is unavailable; supply an installed licensed TTF/OTF file"
             )
         raw = path.read_bytes()
-    with TTFont(io.BytesIO(raw)) as parsed:
-        glyphs = set(parsed.getBestCmap() or {})
+    from fontTools.ttLib import TTLibError
+
+    try:
+        with TTFont(io.BytesIO(raw)) as parsed:
+            glyphs = set(parsed.getBestCmap() or {})
+    except (TTLibError, OSError, ValueError) as exc:
+        raise OCFError("configured font is not a readable supported TTF/OTF") from exc
     return raw, glyphs
 
 
@@ -320,17 +344,21 @@ def generate_cover(
         raise OCFError("unknown function")
     locale = normalize_tag(locale)
     catalog = LocaleCatalog()
-    key = record.documentation.get("title_key")
-    entry, provenance = catalog.resource(key, locale, domain="ui", fallback=True)
+    from .release import _function_title
+
+    localized_title, title_resolution = _function_title(function_id, locale, catalog)
     title = unicodedata.normalize(
-        "NFC", title_override if title_override is not None else entry.render({})
+        "NFC", title_override if title_override is not None else localized_title
     )
+    if not title.strip() or title.strip().casefold() == function_id.casefold():
+        raise OCFError("artwork requires a meaningful function title, not only its identifier")
     if any(word in title.casefold() for word in ("hemi-sync", "human plus", "monroe")):
         raise OCFError("OCF artwork cannot include third-party brand names")
     data = load_theme(theme, overrides=overrides)
     brand = identity()
     font_bytes, glyphs = _font_assets(data["font"])
-    texts = [brand["name"], title, function_id] + ([version] if version else [])
+    footer = function_id + (f" - {version}" if version else "")
+    texts = [brand["name"], title, footer]
     missing = sorted(
         {ord(c) for text in texts for c in text if not c.isspace() and ord(c) not in glyphs}
     )
@@ -343,7 +371,9 @@ def generate_cover(
     from PIL import Image, ImageDraw, ImageFont, features
     from PIL import __version__ as pillow_version
 
-    if catalog.packs[provenance.origin_locale].direction == "rtl" and not features.check("raqm"):
+    if any(unicodedata.bidirectional(c) in {"R", "AL", "AN"} for c in title) and not features.check(
+        "raqm"
+    ):
         raise OCFError("RTL artwork requires Pillow with RAQM shaping support")
     settings = {
         "brand": brand,
@@ -351,8 +381,8 @@ def generate_cover(
         "function_id": function_id,
         "title": title,
         "locale": locale,
-        "title_locale": provenance.origin_locale,
-        "title_resolution": {"requested_locale": locale, "resolved_locale": provenance.origin_locale, "fallback": provenance.fallback, "resource_key": key, "version": entry.version},
+        "title_locale": title_resolution["resolved_locale"],
+        "title_resolution": title_resolution,
         "resolution": resolution,
         "format": format,
         "release_version": version,
@@ -362,6 +392,15 @@ def generate_cover(
         "raqm": features.version("raqm"),
         "renderer_sha256": sha256_of_file(Path(__file__)),
     }
+    if title_override is not None:
+        settings["title_locale"] = "operator-supplied"
+        settings["title_resolution"] = {
+            "requested_locale": locale,
+            "resolved_locale": "operator-supplied",
+            "resource_key": None,
+            "fallback": False,
+            "source": "operator-title-override",
+        }
     fingerprint = digest(settings)
     root = work_path("cache", "artwork", fingerprint)
     filename = ArtifactNamer().filename(
@@ -437,15 +476,34 @@ def generate_cover(
                 current += character
         if current:
             lines.append(current)
-        if len(lines) <= 3 and len(lines) * size * 1.2 <= 235:
+        title_y = 650 if data["layout"] == "minimal" else 720
+        title_boxes = [
+            draw.textbbox(
+                (resolution / 2, (title_y + i * size * 1.2) * scale),
+                line,
+                anchor="mt",
+                font=font(size),
+            )
+            for i, line in enumerate(lines)
+        ]
+        if len(lines) <= 3 and all(
+            box[0] >= resolution * 0.08 and box[2] <= resolution * 0.92 and box[3] <= 925 * scale
+            for box in title_boxes
+        ):
             break
     else:
         raise OCFError("localized title cannot fit safely; choose a supported layout/font")
+    header_size = 30
+    while (
+        draw.textlength(brand["name"], font=font(header_size)) > resolution * 0.84
+        and header_size > 12
+    ):
+        header_size -= 1
     draw.text(
         (resolution / 2, 55 * scale),
         brand["name"],
         anchor="mt",
-        font=font(30),
+        font=font(header_size),
         fill=p["foreground"],
     )
     for index, line in enumerate(lines):
@@ -459,10 +517,27 @@ def generate_cover(
             font=font(size),
             fill=p["foreground"],
         )
-    footer = function_id + (f" · {version}" if version else "")
+    footer_size = 25
+    while draw.textlength(footer, font=font(footer_size)) > resolution * 0.84 and footer_size > 12:
+        footer_size -= 1
     draw.text(
-        (resolution / 2, 965 * scale), footer, anchor="mb", font=font(25), fill=p["foreground"]
+        (resolution / 2, 965 * scale),
+        footer,
+        anchor="mb",
+        font=font(footer_size),
+        fill=p["foreground"],
     )
+    header_box = draw.textbbox(
+        (resolution / 2, 55 * scale), brand["name"], anchor="mt", font=font(header_size)
+    )
+    footer_box = draw.textbbox(
+        (resolution / 2, 965 * scale), footer, anchor="mb", font=font(footer_size)
+    )
+    if any(
+        box[0] < 0 or box[2] > resolution or box[1] < 0 or box[3] > resolution
+        for box in (header_box, footer_box)
+    ):
+        raise OCFError("configured font cannot fit cover header/identifier safely")
     root.mkdir(parents=True, exist_ok=True)
     buffer = io.BytesIO()
     image = image.resize((output_resolution, output_resolution), Image.Resampling.LANCZOS)
@@ -490,6 +565,11 @@ def generate_cover(
         "human_approval": None,
         "cache": "miss",
         "title_lines": lines,
+        "layout_bounds": {
+            "title": [[round(v / 2, 2) for v in box] for box in title_boxes],
+            "header": [round(v / 2, 2) for v in header_box],
+            "footer": [round(v / 2, 2) for v in footer_box],
+        },
     }
     write_text_atomic(report_path, json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     return _publish_cover(path, report, output)

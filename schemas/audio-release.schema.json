@@ -22,6 +22,7 @@
       "required": ["requested_locale", "resolved_locale", "fallback", "resource_key"],
       "properties": {
         "requested_locale": {"type": "string"},
+        "source": {"enum":["operator-title-override"]},
         "resolved_locale": {"type": "string"},
         "fallback": {"type": "boolean"},
         "resource_key": {"type": ["string", "null"]}

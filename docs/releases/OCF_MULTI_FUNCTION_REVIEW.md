@@ -23,6 +23,12 @@ WAVs and comparison metadata are local under
 `.ocf-work/renders/category-review-20261015T121925-cfc1d8a6/`.
 These excerpts are speech-only; they do not claim DSP verification.
 
+Because Think Fast is categorized as cognition, an additional actual performance
+representative was checked: Do This Now (OCF-PRF-001). Its explicit binding also
+validated four passes; a real 43.946-second Piper excerpt was generated under
+`.ocf-work/renders/category-review-20261015T143359-bfd41f1d/`. This gives actual
+cognition, body, performance and sleep category coverage without relabeling records.
+
 ## Bounded full-session sample
 
 One full Recall Piper/Farfield render completed in approximately 9 min 26 s.

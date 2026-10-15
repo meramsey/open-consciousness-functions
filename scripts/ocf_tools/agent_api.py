@@ -225,12 +225,21 @@ def get_session_plan(function_id: str, locale: str = "en-US", stages: bool = Fal
         "profiles": shared["profiles"],
         "timing": shared["timing"],
         "approval": compact["approval"],
+        "voice_selection": expanded["voice_selection"],
         "sha256": compact["generation"]["semantic_plan_sha256"],
         "artifact": f"audio/session-plans/{compact['locale']}/{function_id}.json",
     }
     if stages:
         result["stages"] = expanded["stages"]
         result["dsp_transitions"] = expanded["effective_state_directives"]
+    if expanded.get("resolved_overrides"):
+        result["overrides"] = expanded["resolved_overrides"]
+        result["override_provenance"] = expanded["override_provenance"]
+        sections = {s["id"]: s for s in expanded["stages"]}
+        result["timing"]["body_repetitions"] = {
+            "programming": len(sections.get("focus11-body", {}).get("event_ids", [])),
+            "sleep": len(sections.get("sleep20-body", {}).get("event_ids", [])),
+        }
     return result
 
 
@@ -462,16 +471,20 @@ def verify_audio(output_path: str) -> dict:
 @public
 def package_release(
     function_id: str,
-    artwork: str,
+    artwork: str | None = None,
     locale: str = "en-US",
     voice: str | None = None,
     dry_run: bool = True,
     confirmed: bool = False,
+    artwork_theme: str | None = None,
 ) -> dict:
     from .dev_jobs import start
 
     owner(function_id)
-    safe_path(artwork, work_root())
+    if artwork:
+        safe_path(artwork, work_root())
+    elif not artwork_theme:
+        raise OCFError("provide explicit artwork or an artwork theme")
     if not dry_run and not confirmed:
         raise OCFError("explicit confirmed=true is required for release packaging")
     return start(
@@ -479,6 +492,7 @@ def package_release(
         {
             "function_id": function_id,
             "artwork": artwork,
+            "artwork_theme": artwork_theme,
             "locale": locale,
             "voice": voice,
             "dry_run": dry_run,
@@ -492,7 +506,15 @@ def cache_diagnostics() -> dict:
     from .speech_cache import MAX_CACHE_BYTES, STATS
 
     entries = list(work_path("cache", "tts").glob("*/speech.wav"))
+    from .dsp_cache import MAX_BYTES
+
+    dsp_files = [p for p in work_path("cache", "dsp").glob("*/*") if p.is_file()]
     return {
+        "dsp": {
+            "bytes": sum(p.lstat().st_size for p in dsp_files),
+            "max_bytes": MAX_BYTES,
+            "entries": sum(p.name == "manifest.json" for p in dsp_files),
+        },
         "process_counters": dict(STATS),
         "entries": len(entries),
         "bytes": sum(
@@ -505,7 +527,7 @@ def cache_diagnostics() -> dict:
 
 @public
 def cache_clean(
-    older_than_hours: float = 168, dry_run: bool = True, confirmed: bool = False
+    older_than_hours: float = 168, dry_run: bool = True, confirmed: bool = False, kind: str = "tts"
 ) -> dict:
     import math
 
@@ -515,17 +537,19 @@ def cache_clean(
         raise OCFError("cache age must be finite and nonnegative")
     if not dry_run and not confirmed:
         raise OCFError("cache deletion requires confirmed=true; preview with dry_run first")
-    with lock("speech-cache", wait=True):
-        return _clean_speech_cache(older_than_hours, dry_run)
+    if kind not in {"tts", "dsp"}:
+        raise OCFError("cache kind must be tts or dsp")
+    with lock("speech-cache" if kind == "tts" else "dsp-cache", wait=True):
+        return _clean_speech_cache(older_than_hours, dry_run, kind)
 
 
-def _clean_speech_cache(older_than_hours: float, dry_run: bool) -> dict:
+def _clean_speech_cache(older_than_hours: float, dry_run: bool, kind: str = "tts") -> dict:
     import shutil
     import time
 
     from .paths import work_path
 
-    root = work_path("cache", "tts")
+    root = work_path("cache", kind)
     selected = []
     for folder in sorted(root.glob("*")):
         path = folder / ".ocf-cache-owned"
@@ -559,6 +583,127 @@ def _clean_speech_cache(older_than_hours: float, dry_run: bool) -> dict:
     return {"dry_run": dry_run, "selected_count": len(selected), "entries": page(selected, 0, 20)}
 
 
+@public
+def list_artwork_themes() -> dict:
+    from .artwork import BRAND, theme_tokens
+
+    return {
+        "themes": [p.stem for p in sorted((BRAND / "themes").glob("*.json"))],
+        "surfaces": {
+            name: theme_tokens(name)["theme"]["id"] for name in ("ui", "artwork", "documentation")
+        },
+    }
+
+
+@public
+def inspect_brand() -> dict:
+    from .artwork import identity
+
+    data = identity()
+    return {key: value for key, value in data.items() if key != "geometry"} | {
+        "source": "brand/identity.json",
+        "guide": "docs/BRANDING.md",
+    }
+
+
+@public
+def validate_theme(theme: str, surface: str = "artwork") -> dict:
+    from .artwork import BRAND, contrast, load_theme
+
+    known = {p.stem for p in (BRAND / "themes").glob("*.json")}
+    reference = theme
+    if theme not in known:
+        path = safe_path(theme, work_root())
+        if path.stat().st_size > 262144:
+            raise OCFError("custom theme exceeds 256 KiB")
+        raw = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(raw, dict) or raw.get("extends") not in known:
+            raise OCFError(
+                "MCP custom themes must inherit a registered built-in theme; arbitrary file inheritance is CLI-only"
+            )
+        reference = str(path)
+    value = load_theme(reference, surface=surface)
+    return {
+        "status": "passed",
+        "id": value["id"],
+        "surface": surface,
+        "contrast": contrast(value["palette"]["background"], value["palette"]["foreground"]),
+    }
+
+
+@public
+def generate_artwork_preview(
+    function_id: str, locale: str = "en-US", theme: str = "ocf-dark", resolution: int = 1400
+) -> dict:
+    from .dev_jobs import start
+
+    return start(
+        "artwork",
+        {"function_id": function_id, "locale": locale, "theme": theme, "resolution": resolution},
+    )
+
+
+@public
+def list_voice_profiles(offset: int = 0, limit: int = 10) -> dict:
+    from .indexes import load_voice_profiles
+    from .voice import backend_locale_support
+
+    rows = [
+        {
+            "id": p["id"],
+            "name": p["name"],
+            "backend": p["backend"],
+            "language": p.get("language"),
+            "model_sha256": p.get("model", {}).get("sha256"),
+            "version": p.get("version"),
+            "distribution_permission": p.get("distribution_permission", "unknown"),
+            "consent_status": p.get("consent_status", "unknown"),
+            "capabilities": backend_locale_support(p["backend"]),
+        }
+        for p in load_voice_profiles()
+    ]
+    return page(sorted(rows, key=lambda p: p["id"]), offset, limit)
+
+
+@public
+def validate_voice_dataset(manifest: str) -> dict:
+    from .dev_jobs import start
+
+    return start("voice-dataset", {"manifest": manifest})
+
+
+@public
+def plan_voice_training(backend: str = "piper") -> dict:
+    from .voice_datasets import training_plan
+
+    return training_plan(backend=backend)
+
+
+@public
+def start_voice_audition(
+    voices: list[str], locale: str = "en-US", idempotency_key: str | None = None
+) -> dict:
+    from .dev_jobs import start
+
+    return start("voice-audition", {"voices": voices, "locale": locale}, idempotency_key)
+
+
+@public
+def inspect_release_artwork(manifest: str) -> dict:
+    from .release import _validate_manifest
+
+    path = safe_path(manifest, work_root())
+    if path.suffix != ".json" or path.stat().st_size > 4 * 1024**2:
+        raise OCFError("release manifest must be JSON, at most 4 MiB")
+    data = json.loads(path.read_text(encoding="utf-8"))
+    _validate_manifest(data)
+    return {
+        "function_id": data["function_id"],
+        "provenance": data.get("artwork_provenance"),
+        "artifacts": [r for r in data["artifacts"] if r["format"].startswith("image/")],
+    }
+
+
 TOOLS = {
     "ocf_" + f.__name__: f
     for f in (
@@ -585,6 +730,15 @@ TOOLS = {
         package_release,
         cache_diagnostics,
         cache_clean,
+        list_artwork_themes,
+        inspect_brand,
+        validate_theme,
+        generate_artwork_preview,
+        list_voice_profiles,
+        validate_voice_dataset,
+        plan_voice_training,
+        start_voice_audition,
+        inspect_release_artwork,
     )
 }
 READ_ONLY = {
@@ -606,6 +760,12 @@ READ_ONLY = {
         get_job_result,
         verify_audio,
         cache_diagnostics,
+        list_artwork_themes,
+        inspect_brand,
+        validate_theme,
+        list_voice_profiles,
+        plan_voice_training,
+        inspect_release_artwork,
     )
 }
 

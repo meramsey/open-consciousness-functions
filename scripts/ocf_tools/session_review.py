@@ -83,6 +83,16 @@ def review_sessions(
                     backend=voice,
                 )
             row["excerpt"] = {
+                "voice_profile_id": result.get("profile_id"),
+                "source_resources": [
+                    {
+                        "key": r["key"],
+                        "role": r["role"],
+                        "resolved_locale": r["resolved_locale"],
+                        "version": r["version"],
+                    }
+                    for r in plan["tts_plan"]["narration_resources"]
+                ],
                 "path": path.name,
                 "duration_seconds": result["duration"],
                 "sha256": sha256_of_file(path),
@@ -91,6 +101,7 @@ def review_sessions(
         rows.append(row)
     report = {
         "schema_version": "1.0",
+        "voice_selection": voice,
         "locale": locale,
         "functions": rows,
         "policy": "Actual bound template governs repetitions/endings; category names never select a different ending.",

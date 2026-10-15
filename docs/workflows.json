@@ -1,6 +1,9 @@
 {
   "schema_version": "1.0",
   "workflows": {
+    "generate-artwork": {"guide":"docs/BRANDING.md","commands":["artwork themes","artwork theme --surface ui","artwork generate OCF-SLP-005 --theme ocf-dark --resolution 512"],"note":"Original candidate artwork; UI and album themes are independent. No publication approval is inferred."},
+    "custom-voice": {"guide":"docs/VOICE_WORKFLOWS.md","commands":["voice inspect OCF-VOICE-0002","new voice","voice audition OCF-VOICE-0002"],"note":"Private model import and explicit original-passage audition; no automatic voice replacement or model publication."},
+    "record-dataset": {"guide":"docs/VOICE_WORKFLOWS.md","commands":["voice dataset-init --help","voice validate-dataset --help","voice training-plan"],"note":"Record the original prompts locally. Training remains unsupported until an adapter actually produces and verifies a model."},
     "add-function": {"guide": "docs/FUNCTION_LIFECYCLE.md", "commands": ["new function", "validate --all", "build-index"], "note": "Wizard creates a record. Author actual narration and explicit bindings before planning; never fabricate missing narration."},
     "review-narration": {"guide": "docs/SOURCE_FIRST_AUTHORING.md", "commands": ["functions describe OCF-FND-002 --rich --json", "review commands", "validate --all"], "note": "Preserve protected wording, provenance and canonical commands; record human review separately."},
     "add-locale": {"guide": "docs/LOCALIZATION.md", "commands": ["locale validate --locale en-US", "locale coverage --locale en-US"], "note": "Replace en-US with the authored locale. Spoken fallback stays strict."},

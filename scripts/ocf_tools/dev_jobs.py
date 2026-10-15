@@ -86,15 +86,49 @@ def validate_request(operation: str, arguments: dict) -> dict:
     from .locale import normalize_tag
 
     allowed = {
+        "artwork": {"function_id", "locale", "theme", "resolution"},
+        "voice-audition": {"voices", "locale"},
+        "voice-dataset": {"manifest"},
         "tests": {"paths", "full", "workers"},
         "plans": {"function_id", "locale", "generate"},
         "render": {"function_id", "locale", "voice", "pacing", "force"},
-        "release": {"function_id", "locale", "voice", "artwork", "dry_run"},
+        "release": {"function_id", "locale", "voice", "artwork", "artwork_theme", "dry_run"},
         "validate": set(),
     }
     if operation not in allowed or set(arguments) - allowed[operation]:
         raise OCFError("operation or argument is not allowlisted")
     args = dict(arguments)
+    if operation == "voice-dataset":
+        manifest = safe_path(args["manifest"], work_root())
+        if manifest.suffix != ".json" or manifest.stat().st_size > 2 * 1024**2:
+            raise OCFError("dataset manifest must be JSON, at most 2 MiB")
+        return args
+    if operation == "voice-audition":
+        from .indexes import load_voice_profiles
+
+        known = {p["id"] for p in load_voice_profiles()}
+        voices = args.get("voices")
+        if (
+            not isinstance(voices, list)
+            or not 1 <= len(voices) <= 4
+            or any(v not in known for v in voices)
+        ):
+            raise OCFError("select 1..4 installed voice profile IDs")
+        if args.get("locale", "en-US") != "en-US":
+            raise OCFError("the original audition script is currently en-US only")
+        return args
+    if operation == "artwork":
+        from .artwork import BRAND
+
+        owner(args["function_id"])
+        args["locale"] = normalize_tag(args.get("locale", "en-US"))
+        if args.get("theme") not in {p.stem for p in (BRAND / "themes").glob("*.json")}:
+            raise OCFError(
+                "MCP artwork jobs select registered themes; custom file rendering is an explicit CLI workflow"
+            )
+        if type(args.get("resolution")) is not int or not 256 <= args["resolution"] <= 4096:
+            raise OCFError("artwork resolution must be 256..4096")
+        return args
     for key in ("full", "generate", "force", "dry_run"):
         if key in args and not isinstance(args[key], bool):
             raise OCFError(f"{key} must be a boolean")
@@ -120,7 +154,17 @@ def validate_request(operation: str, arguments: dict) -> dict:
             if not args.get("voice") or args.get("pacing") not in ("normal", "relaxed", "sleep"):
                 raise OCFError("voice and valid pacing are required")
         if operation == "release":
-            safe_path(args["artwork"], work_root())
+            if args.get("artwork"):
+                safe_path(args["artwork"], work_root())
+            else:
+                from .artwork import BRAND
+
+                if args.get("artwork_theme") not in {
+                    p.stem for p in (BRAND / "themes").glob("*.json")
+                }:
+                    raise OCFError(
+                        "select explicit workspace artwork or a registered artwork theme"
+                    )
     return args
 
 
@@ -153,6 +197,8 @@ def input_identity(operation: str, args: dict) -> dict:
         "audio/background/presets",
         "audio/background/state-profiles",
         "audio/voices/profiles",
+        "brand",
+        "audio/voices",
     ):
         for path in sorted((REPO_ROOT / directory_name).rglob("*")):
             if (
@@ -163,7 +209,7 @@ def input_identity(operation: str, args: dict) -> dict:
                 sources[path.relative_to(REPO_ROOT).as_posix()] = sha256_of_file(path)
     for name in ("pyproject.toml", "requirements-dev.txt", "function-index.json"):
         sources[name] = sha256_of_file(REPO_ROOT / name)
-    if operation == "release":
+    if operation == "release" and args.get("artwork"):
         from .agent_api import safe_path
 
         sources["artwork"] = sha256_of_file(safe_path(args["artwork"], work_root()))
@@ -174,6 +220,20 @@ def input_identity(operation: str, args: dict) -> dict:
 
         _, spec = _voice_profile(args["voice"], args["locale"], LocaleCatalog())
         sources["voice"] = voice_identity(spec)
+    if operation == "voice-audition":
+        from .locale import LocaleCatalog
+        from .narration_first import _voice_profile
+        from .speech_cache import voice_identity
+
+        sources["voices"] = {
+            name: voice_identity(_voice_profile(name, "en-US", LocaleCatalog())[1])
+            for name in args["voices"]
+        }
+    if operation == "voice-dataset":
+        from .agent_api import safe_path
+
+        manifest = safe_path(args["manifest"], work_root())
+        sources["dataset_manifest"] = sha256_of_file(manifest)
     return sources
 
 
@@ -467,7 +527,43 @@ def execute(job_id: str) -> int:
 
         if digest(input_identity(operation, args)) != request["input_sha256"]:
             raise OCFError("inputs changed since enqueue; explicit new job required")
-        if operation == "render":
+        if operation == "artwork":
+            from .artwork import generate_cover
+
+            result = generate_cover(**args)
+            result = {
+                k: result[k]
+                for k in (
+                    "path",
+                    "sha256",
+                    "fingerprint",
+                    "review_status",
+                    "human_approval",
+                    "cache",
+                    "title_lines",
+                )
+            }
+            passed = True
+        elif operation == "voice-audition":
+            from .custom_voices import audition
+
+            generated = audition(**args)
+            result = {
+                "output_directory": generated["output_directory"],
+                "outputs": [
+                    {k: v for k, v in row.items() if k != "segments"}
+                    for row in generated["report"]["outputs"]
+                ],
+                "listening_approval": None,
+            }
+            passed = True
+        elif operation == "voice-dataset":
+            from .agent_api import safe_path
+            from .voice_datasets import validate_dataset
+
+            result = validate_dataset(safe_path(args["manifest"], work_root()))
+            passed = result["errors"] == 0
+        elif operation == "render":
             from .bulk_render import render_many
 
             result = render_many([args.pop("function_id")], **args)
@@ -505,7 +601,8 @@ def execute(job_id: str) -> int:
 
             result = package_release(
                 args["function_id"],
-                artwork=safe_path(args["artwork"], work_root()),
+                artwork=safe_path(args["artwork"], work_root()) if args.get("artwork") else None,
+                artwork_theme=args.get("artwork_theme"),
                 locale=args["locale"],
                 voice=args.get("voice"),
                 dry_run=args["dry_run"],

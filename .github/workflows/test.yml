@@ -21,9 +21,9 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install -r requirements-dev.txt
-      - run: python -m pip install -e ".[mcp]"
+      - run: python -m pip install -e ".[mcp,artwork]"
       - name: Optional SDK protocol and persistent job integration
-        run: python -m pytest tests/test_agent_api.py tests/test_agent_workflows.py tests/test_dev_jobs.py tests/test_mcp_protocol.py
+        run: python -m pytest tests/test_agent_api.py tests/test_agent_workflows.py tests/test_dev_jobs.py tests/test_mcp_protocol.py tests/test_artwork.py tests/test_voice_datasets.py tests/test_session_overrides.py tests/test_media_tools.py
       - name: Retain failed job diagnostics
         if: failure()
         uses: actions/upload-artifact@v4

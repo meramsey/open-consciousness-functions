@@ -8,7 +8,7 @@ import shutil
 from pathlib import Path
 
 from .paths import REPO_ROOT, unique_run_id, work_path
-from .utils import OCFError, sha256_of_file, write_text_atomic, yaml_safe_dump
+from .utils import OCFError, read_json_object, sha256_of_file, write_text_atomic, yaml_safe_dump
 
 
 def asset_root() -> Path:
@@ -56,6 +56,26 @@ def validate_profile(profile: dict, *, assets: bool = True) -> dict:
                     model.get("config_sha256") and sha256_of_file(config) != model["config_sha256"]
                 ):
                     errors.append("model configuration checksum mismatch")
+                elif config.is_file():
+                    metadata = read_json_object(config)
+                    audio = metadata.get("audio")
+                    if not isinstance(audio, dict):
+                        errors.append("model configuration lacks an audio object")
+                    elif profile.get("sample_rate") and profile["sample_rate"] != audio.get(
+                        "sample_rate"
+                    ):
+                        errors.append("declared sample rate differs from model configuration")
+                    speakers = metadata.get("num_speakers", 1)
+                    if type(speakers) is not int or speakers < 1:
+                        errors.append("model speaker count must be a positive integer")
+                    elif "speaker_id" in profile and profile["speaker_id"] >= speakers:
+                        errors.append("speaker ID is outside the model speaker range")
+    elif assets and profile.get("backend") == "piper":
+        from .voice import _expand_model_path
+
+        legacy = _expand_model_path(profile.get("piper_model"))
+        if not legacy or not Path(legacy).is_file():
+            errors.append("legacy Piper model is not installed")
     if profile.get("voice_kind") == "cloned" and (
         profile.get("consent_status") not in {"self-recorded", "authorized-contributor"}
         or not profile.get("consent_record")
@@ -93,7 +113,9 @@ def import_model(
     if model_path.suffix != ".onnx" or not model_path.is_file():
         raise OCFError("import requires a local Piper .onnx model and its .onnx.json configuration")
     config_path = Path(str(model_path) + ".json")
-    config = json.loads(config_path.read_text(encoding="utf-8"))
+    config = read_json_object(config_path)
+    if not isinstance(config.get("language"), dict) or not isinstance(config.get("audio"), dict):
+        raise OCFError("Piper configuration requires language/audio objects")
     language = config.get("language", {}).get("code")
     rate = config.get("audio", {}).get("sample_rate")
     if not isinstance(language, str) or not language or type(rate) is not int:

@@ -5,6 +5,7 @@
   "type": "object", "additionalProperties": false,
   "required": ["schema_version", "id", "version", "initial_state", "seed", "states", "transitions"],
   "properties": {
+    "allow_static": {"type":"boolean","description":"Explicitly permit a continuous initial-state bed without an effective transition; never inferred from missing directives."},
     "schema_version": {"const": "1.0"}, "id": {"type": "string", "minLength": 1},
     "version": {"type": "string"}, "notes": {"type": "string"},
     "initial_state": {"type": "string"}, "default_background_state": {"type": "string", "minLength": 1},

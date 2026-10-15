@@ -37,7 +37,8 @@ Inference access never implies permission to redistribute recordings or weights.
 The short comparison uses original versioned prompts in
 `audio/voices/recording-script.json`, not protected or historical narration.
 It covers ordinary speech, relaxation, counting, focus terminology and command
-pronunciation. Every voice receives the same text/pacing, silence-only background,
+pronunciation. Every voice receives the same text and semantic unit/gap policy
+(native profile rate controls are recorded), silence-only background,
 44.1 kHz output and -3 dBFS peak target. This is peak normalization, not a claim
 of equal perceived loudness. Reports record actual timing, synthesis controls
 and hashes; listening approval remains unset. Current original prompts are en-US.

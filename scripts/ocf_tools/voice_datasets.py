@@ -12,7 +12,7 @@ from array import array
 from pathlib import Path
 
 from .paths import REPO_ROOT
-from .utils import OCFError, write_text_atomic
+from .utils import OCFError, read_json_object, write_text_atomic
 from .validators import _load_schema, validate_against_schema
 
 
@@ -71,7 +71,7 @@ def initialize(root: Path, *, dataset_id: str = "my-voice", sample_rate: int = 2
 
 
 def validate_dataset(manifest: Path) -> dict:
-    data = json.loads(manifest.read_text(encoding="utf-8"))
+    data = read_json_object(manifest)
     errors = validate_against_schema(data, _load_schema("voice-dataset.schema.json"))
     if errors:
         raise OCFError("dataset schema: " + " | ".join(errors))

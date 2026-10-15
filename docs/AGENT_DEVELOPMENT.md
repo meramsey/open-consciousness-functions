@@ -149,7 +149,7 @@ Never load reference corpora or entire generated indexes for routine discovery.
 Long operations return job IDs. Poll status/results and request cancellation
 rather than starting duplicates. Full-suite testing requires `full=true`;
 focused selection is not a substitute for final gates. See `docs/workflows.json`
-for the eight canonical agent workflows and `documentation-index.json` for the
+for canonical agent workflows and `documentation-index.json` for the
 tracked surface inventory. Its machine findings are not human semantic review.
 
 ## Common pitfalls
