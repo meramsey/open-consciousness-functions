@@ -5,6 +5,7 @@
   "type": "object", "additionalProperties": false,
   "required": ["schema_version", "function_id", "session_templates", "narration_resources", "voice_sources", "duration"],
   "properties": {
+    "session_overrides": {"$ref":"https://open-consciousness-functions.dev/schemas/session-overrides.schema.json"},
     "schema_version": {"const": "1.0"}, "function_id": {"type": "string"},
     "session_templates": {"type": "array", "items": {"type": "string"}},
     "narration_resources": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["locale", "key"], "properties": {"locale": {"type": "string"}, "key": {"type": "string"}}}},

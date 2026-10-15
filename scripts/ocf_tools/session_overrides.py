@@ -1,0 +1,89 @@
+"""Explicit precedence and safe structural overrides; shared locked files are immutable."""
+
+from copy import deepcopy
+
+from .audio_defaults import overlay
+from .utils import OCFError
+from .validators import _load_schema, validate_against_schema
+
+
+def resolve(binding: dict, cli: dict | None = None) -> tuple[dict, dict]:
+    function = binding.get("session_overrides", {})
+    for data in (function, cli or {}):
+        errors = validate_against_schema(data, _load_schema("session-overrides.schema.json"))
+        if errors:
+            raise OCFError("session overrides: " + " | ".join(errors))
+    resolved = overlay(function, cli or {})
+    if "ending" in resolved:
+        wake = resolved["ending"] == "waking"
+        if "waking_return" in resolved and resolved["waking_return"] != wake:
+            raise OCFError("ending and waking_return conflict")
+        resolved["waking_return"] = wake
+    return resolved, {key: "cli" if key in (cli or {}) else "function-binding" for key in resolved}
+
+
+def apply(
+    template: dict, pacing: dict, dsp: dict, options: dict
+) -> tuple[dict, dict, dict, set, int]:
+    template, pacing, dsp = deepcopy(template), deepcopy(pacing), deepcopy(dsp)
+    pacing = overlay(pacing, options.get("pacing", {}))
+    repetitions = options.get("repetitions", {})
+    pacing["repetitions"]["focus11"] = repetitions.get(
+        "programming", pacing["repetitions"]["focus11"]
+    )
+    if repetitions.get("sleep", 1) > 0:
+        pacing["repetitions"]["focus20"] = repetitions.get(
+            "sleep", pacing["repetitions"]["focus20"]
+        )
+    removed = set()
+    if not options.get("sleep_continuation", True):
+        removed.update(("focus20-enter", "sleep20-body", "focus20-close"))
+    elif repetitions.get("sleep") == 0:
+        removed.add("sleep20-body")
+    if not options.get("waking_return", True):
+        removed.add("return")
+    if "focus_stages" in options:
+        if "focus-10" not in options["focus_stages"]:
+            removed.add("focus-ten")
+        if "focus-11" not in options["focus_stages"]:
+            removed.update(("open", "focus11-body", "close"))
+    template["sections"] = [s for s in template["sections"] if s["id"] not in removed]
+    unknown = set(options.get("stage_maximum_seconds", {})) - {
+        s["id"] for s in template["sections"]
+    }
+    if unknown:
+        raise OCFError(
+            "stage duration limit selects absent stage(s): " + ", ".join(sorted(unknown))
+        )
+    dsp["ignored_state_events"] = [
+        e for e in dsp.get("ignored_state_events", []) if e.split(".")[0] not in removed
+    ]
+    dsp["stage_backgrounds"] = {
+        k: v for k, v in dsp.get("stage_backgrounds", {}).items() if k not in removed
+    }
+    pacing["pacing_auditions"] = {
+        k: v
+        for k, v in pacing.get("pacing_auditions", {}).items()
+        if v.get("stage_id", str(v.get("event_id", "")).split(".")[0]) not in removed
+    }
+    count = (0 if "focus11-body" in removed else pacing["repetitions"]["focus11"]) + (
+        0 if "sleep20-body" in removed else pacing["repetitions"]["focus20"]
+    )
+    if count < 1:
+        raise OCFError("complete function session requires at least one function-body pass")
+    errors = validate_against_schema(pacing, _load_schema("session-pacing.schema.json"))
+    if errors:
+        raise OCFError("resolved pacing overrides: " + " | ".join(errors))
+    return template, pacing, dsp, removed, count
+
+
+def verify_stage_limits(document: dict, measured: list[dict], limits: dict):
+    rows = {row["id"]: row for row in measured}
+    for section in document["sections"]:
+        if section["id"] in limits:
+            events = [rows[e["id"]] for e in section["timeline"]]
+            duration = max(e["end"] for e in events) - min(e["at"] for e in events)
+            if duration > limits[section["id"]]:
+                raise OCFError(
+                    f"stage {section['id']} measured {duration:.3f}s exceeds explicit maximum {limits[section['id']]}s; narration was not compressed"
+                )

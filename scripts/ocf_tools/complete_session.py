@@ -114,11 +114,27 @@ def _state_directives(doc: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def _verify_session_structure(
-    doc: dict[str, Any], binding: dict[str, Any], dsp_profile: dict[str, Any]
+    doc: dict[str, Any],
+    binding: dict[str, Any],
+    dsp_profile: dict[str, Any],
+    *,
+    removed: set | None = None,
+    body_passes: int = 4,
 ) -> None:
     events = list(iter_events(doc))
     semantics = {str(event.get("semantic")) for event in events if event.get("semantic")}
-    missing = REQUIRED_SESSION_SEMANTICS - semantics
+    excluded = set()
+    stage_semantics = {
+        "focus-ten": {"focus.ten.enter", "focus.ten.transition"},
+        "open": {"focus.eleven.transition.open"},
+        "close": {"focus.eleven.transition.close"},
+        "focus20-enter": {"focus.twenty.enter"},
+        "focus20-close": {"focus.twenty.transition.close"},
+        "return": {"session.return.complete"},
+    }
+    for stage in removed or ():
+        excluded.update(stage_semantics.get(stage, set()))
+    missing = REQUIRED_SESSION_SEMANTICS - excluded - semantics
     if missing:
         raise OCFError(
             "complete session is missing required semantic stage(s): " + ", ".join(sorted(missing))
@@ -132,12 +148,21 @@ def _verify_session_structure(
         None,
     )
     body_events = [event for event in events if event.get("narration_key") == body_key]
-    if body_key is None or len(body_events) != 4:
+    if body_key is None or len(body_events) != body_passes:
         raise OCFError(
-            f"complete session requires exactly four bound function-body passes; found {len(body_events)}"
+            f"complete session requires exactly {body_passes} bound function-body passes; found {len(body_events)}"
         )
     targets = [item["to"] for item in _state_directives(doc)]
-    if targets != EXPECTED_STATE_TARGETS:
+    expected = [
+        target
+        for stage, target in zip(
+            ("focus-ten", "open", "close", "focus20-enter", "focus20-close", "return"),
+            EXPECTED_STATE_TARGETS,
+            strict=True,
+        )
+        if stage not in (removed or set())
+    ]
+    if targets != expected:
         raise OCFError(
             "complete session Focus progression differs from configured sequence: "
             + " -> ".join(str(target) for target in targets)
@@ -288,6 +313,7 @@ def build_complete_session_plan(
     pacing: str = "normal",
     template: str | None = None,
     dsp_profile: str | None = None,
+    overrides: dict | None = None,
 ) -> dict[str, Any]:
     """Resolve a bound complete session and prove stage/state completeness before synthesis."""
     from .narration_first import plan_narration
@@ -299,15 +325,22 @@ def build_complete_session_plan(
     layers = load_layers(function_id)
     binding = layers.get("bindings", {})
     template_record, _binding = _resolve_template(function_id, template)
+    from .session_overrides import apply as apply_overrides
+    from .session_overrides import resolve as resolve_overrides
+
+    options, option_provenance = resolve_overrides(binding, overrides)
     selected_template = template_record["id"]
-    selected_dsp = dsp_profile or template_record.get("dsp_profile")
+    selected_dsp = dsp_profile or options.get("dsp_profile") or template_record.get("dsp_profile")
     if not selected_dsp:
         raise OCFError(f"complete session template {selected_template} has no explicit DSP profile")
     dsp = load_profile(selected_dsp)
     selected_pacing = (
-        load_pacing_profile(str(template_record["pacing_profile"]))
+        load_pacing_profile(str(options.get("pacing_profile") or template_record["pacing_profile"]))
         if template_record.get("pacing_profile")
         else None
+    )
+    template_record, selected_pacing, dsp, removed, passes = apply_overrides(
+        template_record, selected_pacing, dsp, options
     )
 
     slot_names = {"opener": "opener", "function-body": "function_body", "closer": "closer"}
@@ -338,7 +371,7 @@ def build_complete_session_plan(
     doc["semantic_dsp_profile"] = selected_dsp
     if voice is None:
         doc.pop("voice_profile", None)
-    _verify_session_structure(doc, binding, dsp)
+    _verify_session_structure(doc, binding, dsp, removed=removed, body_passes=passes)
     validation = validate_timed_transcript(doc, Path("complete-session-plan"))
     if validation.errors:
         raise OCFError(
@@ -419,6 +452,10 @@ def build_complete_session_plan(
         "template_plan": doc,
         "tts_plan": plan,
         "dsp_selections": section_report["dsp_profile"]["states"],
+        "resolved_overrides": options,
+        "override_provenance": option_provenance,
+        "resolved_pacing_profile": selected_pacing,
+        "resolved_dsp_profile": dsp,
     }
 
 
@@ -656,77 +693,40 @@ def _representative_audio_analysis(
     transitions = {row["event_id"]: row for row in dsp.get("transitions", [])}
     duration = float(dsp["duration_s"])
     fade = float(dsp.get("ending_fade_seconds", 0))
-    points: list[tuple[str, float, set[str]]] = [
-        ("opening-first-10-seconds", 5.0, {"focus-10"}),
-        (
-            "body-comfort-midpoint",
-            (by_stage["body-comfort"]["start_seconds"] + by_stage["body-comfort"]["end_seconds"])
-            / 2,
-            {"focus-10"},
-        ),
-        (
-            "transmutation-box-midpoint",
-            (
-                by_stage["transmutation-box"]["start_seconds"]
-                + by_stage["transmutation-box"]["end_seconds"]
+    points: list[tuple[str, float, set[str]]] = [("opening-first-10-seconds", 5.0, {"focus-10"})]
+    probes = {
+        "body-comfort": "body-comfort-midpoint",
+        "transmutation-box": "transmutation-box-midpoint",
+        "relaxation": "relaxation-midpoint",
+        "focus-ten": "focus-10-induction",
+        "focus11-body": "focus-11-programming-midpoint",
+        "sleep20-body": "sleep-function-body-midpoint",
+        "return": "return-midpoint",
+        "function-closer": "function-closer-midpoint",
+    }
+    for stage_id, label in probes.items():
+        if stage_id in by_stage:
+            stage = by_stage[stage_id]
+            points.append(
+                (
+                    label,
+                    (stage["start_seconds"] + stage["end_seconds"]) / 2,
+                    {"focus-11" if stage_id == "focus11-body" else "focus-10"},
+                )
             )
-            / 2,
-            {"focus-10"},
-        ),
-        (
-            "relaxation-midpoint",
-            (by_stage["relaxation"]["start_seconds"] + by_stage["relaxation"]["end_seconds"]) / 2,
-            {"focus-10"},
-        ),
-        (
-            "focus-10-induction",
-            (by_stage["focus-ten"]["start_seconds"] + by_stage["focus-ten"]["end_seconds"]) / 2,
-            {"focus-10"},
-        ),
-        (
-            "focus-11-entry-transition",
-            (transitions["open.transition"]["start_s"] + transitions["open.transition"]["end_s"])
-            / 2,
-            {"focus-10", "focus-11"},
-        ),
-        (
-            "focus-11-programming-midpoint",
-            (by_stage["focus11-body"]["start_seconds"] + by_stage["focus11-body"]["end_seconds"])
-            / 2,
-            {"focus-11"},
-        ),
-        (
-            "focus-11-closing-transition",
-            (transitions["close.transition"]["start_s"] + transitions["close.transition"]["end_s"])
-            / 2,
-            {"focus-10", "focus-11"},
-        ),
-        (
-            "sleep-entry",
-            float(event_timing["focus20-enter.enter"]["at"]) + 1.0,
-            {"focus-10"},
-        ),
-        (
-            "sleep-function-body-midpoint",
-            (by_stage["sleep20-body"]["start_seconds"] + by_stage["sleep20-body"]["end_seconds"])
-            / 2,
-            {"focus-10"},
-        ),
-        (
-            "return-midpoint",
-            (by_stage["return"]["start_seconds"] + by_stage["return"]["end_seconds"]) / 2,
-            {"focus-10"},
-        ),
-        (
-            "function-closer-midpoint",
-            (
-                by_stage["function-closer"]["start_seconds"]
-                + by_stage["function-closer"]["end_seconds"]
+    for event_id, label in (
+        ("open.transition", "focus-11-entry-transition"),
+        ("close.transition", "focus-11-closing-transition"),
+    ):
+        if event_id in transitions:
+            transition = transitions[event_id]
+            points.append(
+                (label, (transition["start_s"] + transition["end_s"]) / 2, {"focus-10", "focus-11"})
             )
-            / 2,
-            {"focus-10"},
-        ),
-    ]
+    if "focus20-enter.enter" in event_timing:
+        points.append(
+            ("sleep-entry", float(event_timing["focus20-enter.enter"]["at"]) + 1, {"focus-10"})
+        )
     if fade > 0:
         fade_start = duration - fade
         points.extend(
@@ -876,22 +876,31 @@ def render_complete_session(
     function_id: str,
     *,
     locale: str | None = None,
-    voice: str,
+    voice: str | None = None,
     pacing: str = "normal",
     template: str | None = None,
     dsp_profile: str | None = None,
-    voice_gain: float = 1.0,
+    voice_gain: float | None = None,
     background_gain: float | None = None,
     output: str | Path | None = None,
     dry_run: bool = False,
     sample_rate: int = 44100,
     created_at: datetime | None = None,
+    overrides: dict | None = None,
 ) -> dict[str, Any]:
     """Expand the bound complete session and render/mix it using OCF's engines."""
     from . import audio_build
     from .narration_first import _adjusted_profile, _voice_profile
-    from .semantic_dsp import load_profile
-    from .session import load_pacing_profile, load_template
+    from .session_overrides import resolve as resolve_overrides
+    from .session_overrides import verify_stage_limits
+
+    selected_template, binding = _resolve_template(function_id, template)
+    options, _ = resolve_overrides(binding, overrides)
+    voice = voice or options.get("voice_profile") or selected_template.get("voice_profile")
+    voice_gain = voice_gain if voice_gain is not None else options.get("narration_gain", 1.0)
+    background_gain = (
+        background_gain if background_gain is not None else options.get("background_gain")
+    )
 
     session_plan = build_complete_session_plan(
         function_id,
@@ -900,15 +909,14 @@ def render_complete_session(
         pacing=pacing,
         template=template,
         dsp_profile=dsp_profile,
+        overrides=overrides,
     )
     if dry_run:
         return {"dry_run": True, "session_plan": session_plan}
     tts_plan = session_plan["tts_plan"]
     doc = session_plan["template_plan"]
-    session_template = load_template(session_plan["template"]["id"])
-    selected_dsp = dsp_profile or session_template.get("dsp_profile")
-    load_profile(selected_dsp)
-    session_pacing_profile = load_pacing_profile(str(session_template["pacing_profile"]))
+    selected_dsp = session_plan["resolved_dsp_profile"]["id"]
+    session_pacing_profile = session_plan["resolved_pacing_profile"]
 
     default_dir = (
         AUDIO_RENDERED_DIR
@@ -933,6 +941,12 @@ def render_complete_session(
         raise OCFError(f"cannot create session audition staging directory: {exc}") from exc
 
     try:
+        if options:
+            resolved_dsp_path = stage / "resolved-dsp.yaml"
+            resolved_dsp_path.write_text(
+                yaml_safe_dump(session_plan["resolved_dsp_profile"]), encoding="utf-8"
+            )
+            selected_dsp = str(resolved_dsp_path)
         (stage / "render-context.json").write_text(
             json.dumps(
                 {
@@ -984,6 +998,7 @@ def render_complete_session(
             dsp_profile=selected_dsp,
             retain_background_stem=True,
         )
+        verify_stage_limits(doc, built["event_timing"], options.get("stage_maximum_seconds", {}))
         render_master = render_dir / built["master"]["file"]
         background_info = built.get("background_stem")
         if not background_info:

@@ -5,6 +5,7 @@
   "type": "object", "additionalProperties": false,
   "required": ["schema_version", "generator", "function_id", "locale", "defaults", "slots", "resources", "timing", "generation", "approval"],
   "properties": {
+    "overrides": {"type":"object"},
     "schema_version": {"const": "1.0"},
     "generator": {"const": "ocf.audio.plan/1"},
     "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},

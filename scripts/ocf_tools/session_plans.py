@@ -40,7 +40,22 @@ def source_plan(function_id: str, locale: str = "en-US") -> tuple[dict, dict, di
         )
     catalog = LocaleCatalog()
     resources = {}
-    for item in expanded["narration_resources"]:
+    reference_resources = expanded["narration_resources"]
+    if expanded.get("resolved_overrides"):
+        from .audio_defaults import PACING_ID, TEMPLATE_ID
+        from .locale import resolve_document
+        from .session import compose, load_pacing_profile
+
+        baseline = compose(
+            load_template(TEMPLATE_ID),
+            {},
+            slot_keys=slots,
+            pacing_profile=load_pacing_profile(PACING_ID),
+        )
+        reference_resources = resolve_document(baseline, locale, strict=True)["narration"][
+            "resolved"
+        ]
+    for item in reference_resources:
         entry, resolution = catalog.resource(
             item["key"], locale, domain="narration", fallback=False
         )
@@ -84,6 +99,13 @@ def source_plan(function_id: str, locale: str = "en-US") -> tuple[dict, dict, di
             "release_ready": False,
         },
     }
+    if expanded.get("resolved_overrides"):
+        plan["overrides"] = {
+            "settings": expanded["resolved_overrides"],
+            "provenance": expanded["override_provenance"],
+            "pacing_sha256": digest(expanded["resolved_pacing_profile"]),
+            "dsp_sha256": digest(expanded["resolved_dsp_profile"]),
+        }
     errors = validate_against_schema(plan, _load_schema("session-plan.schema.json"))
     if errors:
         raise OCFError("invalid generated session declaration: " + " | ".join(errors))
