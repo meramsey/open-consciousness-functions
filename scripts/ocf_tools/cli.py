@@ -193,6 +193,21 @@ def _build_parser() -> argparse.ArgumentParser:
 
     audio = sub.add_parser("audio", help="audio tooling")
     audio_sub = audio.add_subparsers(dest="audio_kind")
+    migrate_cmd = audio_sub.add_parser(
+        "migrate-bindings",
+        help="explicitly bind existing HPlus narration to shared sessions; preserve custom bindings",
+    )
+    migrate_cmd.add_argument("function_ids", nargs="*")
+    migrate_cmd.add_argument("--all", action="store_true")
+    migrate_cmd.add_argument("--dry-run", action="store_true")
+    eligibility_cmd = audio_sub.add_parser(
+        "eligibility",
+        help="derive complete-session TTS eligibility independently of historical sources",
+    )
+    eligibility_cmd.add_argument("function_id", nargs="?")
+    eligibility_cmd.add_argument("--all", action="store_true")
+    eligibility_cmd.add_argument("--locale", default="en-US")
+    eligibility_cmd.add_argument("--output", help="write deterministic migration report JSON")
     defaults_cmd = audio_sub.add_parser(
         "defaults", help="verify the immutable shared audio defaults lock"
     )
@@ -1078,6 +1093,36 @@ def main(argv: list[str] | None = None) -> int:
                     create_lock()
                 print(json.dumps(check_lock(), indent=2, ensure_ascii=False))
                 return 0
+            if args.audio_kind in {"migrate-bindings", "eligibility"}:
+                import json
+
+                from .eligibility import eligibility, migrate_bindings, migration_report
+
+                if args.audio_kind == "migrate-bindings":
+                    if bool(args.function_ids) == args.all:
+                        raise OCFError("select function IDs or --all")
+                    ids = [r.id for r in load_all_functions()] if args.all else args.function_ids
+                    result = migrate_bindings(ids, dry_run=args.dry_run)
+                else:
+                    if bool(args.function_id) == args.all:
+                        raise OCFError("select FUNCTION_ID or --all")
+                    result = (
+                        migration_report(args.locale)
+                        if args.all
+                        else eligibility(args.function_id, args.locale)
+                    )
+                text = json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+                if getattr(args, "output", None):
+                    from .utils import write_text_atomic
+
+                    write_text_atomic(Path(args.output), text)
+                print(text, end="")
+                return (
+                    0
+                    if args.audio_kind == "migrate-bindings"
+                    or (result.get("tts_renderable") == result.get("total", True))
+                    else 1
+                )
             if args.audio_kind == "check-engine":
                 return audio_mod.check_engine()
             if args.audio_kind == "list-background":

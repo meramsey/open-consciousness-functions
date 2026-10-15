@@ -86,7 +86,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "reconstructed_mockup",
@@ -389,7 +389,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-aut-001.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-aut-001.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-aut-001.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Automates a desired way of being so it runs without active effort.",
@@ -398,7 +416,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "unavailable",
         "states": {
           "preferred": [],
@@ -411,7 +431,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "See-Be",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -506,7 +528,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -751,7 +773,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-bod-001.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-bod-001.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-bod-001.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Self-directed wellness practice supporting a felt sense of comfortable, balanced brain function.",
@@ -762,7 +802,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
           ]
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -775,7 +817,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Brain: Repairs & Maintenance",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -870,7 +914,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "partial_source_transcript",
@@ -1116,7 +1160,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-bod-002.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-bod-002.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-bod-002.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Promotes a felt sense of smooth, comfortable circulation.",
@@ -1127,7 +1189,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
           ]
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -1140,7 +1204,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Circulation",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -1264,7 +1330,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -1508,7 +1574,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-bod-003.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-bod-003.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-bod-003.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT.",
@@ -1519,7 +1603,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
           ]
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -1532,7 +1618,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "De-Discomfort",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
@@ -1656,7 +1744,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "partial_source_transcript",
@@ -1901,7 +1989,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-bod-004.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-bod-004.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-bod-004.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Supports a perceived sense of bodily cleansing and clarity.",
@@ -1912,7 +2018,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
           ]
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -1925,7 +2033,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "De-Tox: Body",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
@@ -2021,7 +2131,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -2264,7 +2374,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-bod-005.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-bod-005.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-bod-005.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Adjusts appetite signals in either direction.",
@@ -2275,7 +2403,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
           ]
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -2288,7 +2418,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Eat/No Eat",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -2383,7 +2515,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -2628,7 +2760,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-bod-006.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-bod-006.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-bod-006.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Self-directed wellness practice supporting a felt sense of calm, steady heart function.",
@@ -2639,7 +2789,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
           ]
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -2652,7 +2804,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Heart: Repairs & Maintenance",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -2752,7 +2906,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "source_transcript",
@@ -2995,7 +3149,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-bod-007.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-bod-007.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-bod-007.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for medical care.",
@@ -3006,7 +3178,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
           ]
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -3019,7 +3193,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Hypertension",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -3104,7 +3280,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -3348,7 +3524,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-bod-008.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-bod-008.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-bod-008.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Supports a felt sense of alertness and preparedness; not a medical claim.",
@@ -3359,7 +3553,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
           ]
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -3372,7 +3568,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Immunizing",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -3462,7 +3660,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "partial_source_transcript",
@@ -3708,7 +3906,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-bod-009.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-bod-009.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-bod-009.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Self-directed wellness practice supporting easy, comfortable breathing.",
@@ -3719,7 +3935,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
           ]
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -3732,7 +3950,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Lungs: Repairs & Maintenance",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -3916,7 +4136,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -4160,7 +4380,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-bod-010.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-bod-010.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-bod-010.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Adjusts appetite and food drive in either direction using the MORE/LESS grammar.",
@@ -4171,7 +4409,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
           ]
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -4184,7 +4424,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Nutricia",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "needs-review",
       "compatibility": "alias-listed",
@@ -4269,7 +4511,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "source_transcript",
@@ -4513,7 +4755,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-bod-011.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-bod-011.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-bod-011.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Supports graceful passage through internal transitions.",
@@ -4522,7 +4782,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -4535,7 +4797,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Passages",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -4767,7 +5031,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -5011,7 +5275,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-bod-012.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-bod-012.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-bod-012.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Adjusts felt sexual drive in either direction using the MORE/LESS grammar.",
@@ -5022,7 +5304,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
           ]
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -5035,7 +5319,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Sex Drive",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "needs-review",
       "compatibility": "alias-listed",
@@ -5135,7 +5421,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -5379,7 +5665,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-bod-013.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-bod-013.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-bod-013.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "A general self-directed balance-and-heal tune-up practice.",
@@ -5390,7 +5694,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
           ]
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -5403,7 +5709,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Tune-Up",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -5532,7 +5840,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "reconstructed_mockup",
@@ -5835,7 +6143,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-bod-014.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-bod-014.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-bod-014.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Supports a felt sense of body-wide regeneration and renewal; proposed concise cue PLUS-REGENERATE for review.",
@@ -5846,7 +6172,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
           ]
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "unavailable",
         "states": {
           "preferred": [],
@@ -5859,7 +6187,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Regenerate",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
@@ -6072,7 +6402,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "reconstructed_mockup",
@@ -6375,7 +6705,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-bod-015.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-bod-015.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-bod-015.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB.",
@@ -6386,7 +6734,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
           ]
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "unavailable",
         "states": {
           "preferred": [],
@@ -6399,7 +6749,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Short Fix",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
@@ -6474,7 +6826,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "source_transcript",
@@ -6717,7 +7069,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-cog-001.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-cog-001.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-cog-001.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Accesses intuition, memory, and inner knowledge on demand.",
@@ -6726,7 +7096,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -6739,7 +7111,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Access to Information",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -6835,7 +7209,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -7079,7 +7453,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-cog-002.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-cog-002.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-cog-002.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Speeds mental arithmetic and number processing.",
@@ -7088,7 +7480,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -7101,7 +7495,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Buy the Numbers",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -7241,7 +7637,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -7486,7 +7882,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-cog-003.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-cog-003.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-cog-003.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Opens an internal space for quiet reflection; closes it again on completion.",
@@ -7495,7 +7909,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -7508,7 +7924,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Contemplation",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -7677,7 +8095,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -7922,7 +8340,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-cog-004.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-cog-004.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-cog-004.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Imprints a chosen suggestion or intention using the IMPRINT rehearsal.",
@@ -7931,7 +8367,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -7944,7 +8382,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Imprint",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -8068,7 +8508,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "partial_source_transcript",
@@ -8314,7 +8754,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-cog-005.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-cog-005.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-cog-005.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Opens perception of choices and alternatives.",
@@ -8323,7 +8781,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -8336,7 +8796,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Options",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -8432,7 +8894,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "partial_source_transcript",
@@ -8677,7 +9139,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-cog-006.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-cog-006.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-cog-006.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Brings specific memories or learned material to mind on request.",
@@ -8686,7 +9166,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -8699,7 +9181,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Recall",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -8795,7 +9279,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -9039,7 +9523,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-cog-007.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-cog-007.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-cog-007.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Accelerates thinking speed and mental processing.",
@@ -9048,7 +9550,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -9061,7 +9565,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Think Fast",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -9157,7 +9663,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -9402,7 +9908,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-com-001.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-com-001.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-com-001.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Supports confident, clear verbal expression.",
@@ -9411,7 +9935,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -9424,7 +9950,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Speak Up",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -9509,7 +10037,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "reconstructed_mockup",
@@ -9812,7 +10340,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-emg-001.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-emg-001.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-emg-001.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Emergency-oriented practice to stay calm and take helpful action. Does NOT replace emergency services, first aid, or professional care.",
@@ -9824,7 +10370,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "If you believe you have an emergency or poisoning, call your local emergency number first."
           ]
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "unavailable",
         "states": {
           "preferred": [],
@@ -9837,7 +10385,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Emergency: Injury",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -9922,7 +10472,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "reconstructed_mockup",
@@ -10225,7 +10775,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-emg-002.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-emg-002.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-emg-002.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Emergency-oriented practice for toxic-exposure situations. Does NOT replace poison control, emergency services, or medical evaluation.",
@@ -10237,7 +10805,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "If you believe you have an emergency or poisoning, call your local emergency number first."
           ]
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "unavailable",
         "states": {
           "preferred": [],
@@ -10250,7 +10820,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Emergency: Toxic",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -10346,7 +10918,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -10591,7 +11163,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-emo-001.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-emo-001.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-emo-001.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Releases clinging, tension, or unwanted mental objects.",
@@ -10600,7 +11190,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -10613,7 +11205,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Let Go",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -10743,7 +11337,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -10987,7 +11581,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-emo-002.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-emo-002.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-emo-002.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Fades and off-loads unhelpful mental load or charge; proposed concise cue PLUS-CLEAR.",
@@ -10996,7 +11608,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -11009,7 +11623,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Off-Loading",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
@@ -11094,7 +11710,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "reconstructed_mockup",
@@ -11398,7 +12014,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-emo-003.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-emo-003.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-emo-003.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Builds a felt profile of another person's experience.",
@@ -11407,7 +12041,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "unavailable",
         "states": {
           "preferred": [],
@@ -11420,7 +12056,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Empathizing",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -11545,7 +12183,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -11790,7 +12428,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-exp-001.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-exp-001.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-exp-001.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Legacy 'change' practice for breaking personal loops; proposed concise cue PLUS-PROGRAM.",
@@ -11799,7 +12455,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -11812,7 +12470,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Mobius West",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
@@ -12066,7 +12726,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "reconstructed_mockup",
@@ -12370,7 +13030,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-exp-002.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-exp-002.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-exp-002.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Insulates against unwanted influence; cancels the zoning state via PLUS-CANCEL.",
@@ -12379,7 +13057,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "unavailable",
         "states": {
           "preferred": [],
@@ -12392,7 +13072,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Zoning",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
@@ -12509,7 +13191,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "source_transcript",
@@ -12753,7 +13435,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-fnd-001.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-fnd-001.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-fnd-001.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Restores a felt sense of available energy on demand.",
@@ -12762,7 +13462,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -12775,7 +13477,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Access to Energy",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -12871,7 +13575,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -13115,7 +13819,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-fnd-002.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-fnd-002.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-fnd-002.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Directs and sustains focused attention.",
@@ -13124,7 +13846,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -13137,7 +13861,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Attention",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -13233,7 +13959,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -13478,7 +14204,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-fnd-003.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-fnd-003.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-fnd-003.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Replenishes a felt sense of energy and freshness.",
@@ -13487,7 +14231,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -13500,7 +14246,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Recharge",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -13614,7 +14362,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "pilot",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -13860,7 +14608,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [
           "en-US"
         ],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-fnd-004.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-fnd-004.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-fnd-004.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [
           {
             "key": "pilot.function.complete",
@@ -13895,6 +14661,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "notes": []
         },
         "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001",
           "OCF-TPL-SESSION-PILOT-RELAX-001"
         ],
         "source_availability": "available",
@@ -13910,9 +14677,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "title": "Relax",
         "voice_sources": [
-          "tts",
+          "externally-generated",
           "prerecorded-user",
-          "externally-generated"
+          "tts"
         ]
       },
       "command_review": "approved",
@@ -14037,7 +14804,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -14282,7 +15049,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-fnd-005.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-fnd-005.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-fnd-005.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Returns mind and body to a neutral, settled baseline.",
@@ -14291,7 +15076,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -14304,7 +15091,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Reset",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -14400,7 +15189,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "reconstructed_mockup",
@@ -14703,7 +15492,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-fnd-006.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-fnd-006.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-fnd-006.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Releases unhelpful states, prompts, or lingering experiences.",
@@ -14712,7 +15519,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "unavailable",
         "states": {
           "preferred": [],
@@ -14725,7 +15534,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Release",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -14821,7 +15632,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -15065,7 +15876,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-lif-001.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-lif-001.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-lif-001.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Supports stepping away from habitual, repeated behavior patterns.",
@@ -15074,7 +15903,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -15087,7 +15918,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "De-Hab",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
@@ -15183,7 +16016,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "source_transcript",
@@ -15427,7 +16260,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-prf-001.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-prf-001.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-prf-001.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Moves from deliberation into immediate, present action.",
@@ -15436,7 +16287,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -15449,7 +16302,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Do This Now",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -15574,7 +16429,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -15818,7 +16673,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-prf-002.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-prf-002.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-prf-002.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Legacy vitality practice associated with the phrase EIGHT, GREAT; proposed concise cue PLUS-STRONG.",
@@ -15827,7 +16700,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -15840,7 +16715,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Eight-Great",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
@@ -15936,7 +16813,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -16180,7 +17057,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-prf-003.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-prf-003.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-prf-003.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Aligns and smooths internal rhythms toward feeling faster and steadier.",
@@ -16189,7 +17084,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -16202,7 +17099,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Synchronizing",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -16327,7 +17226,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "reconstructed_mockup",
@@ -16630,7 +17529,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-prf-004.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-prf-004.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-prf-004.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.",
@@ -16639,7 +17556,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "unavailable",
         "states": {
           "preferred": [],
@@ -16652,7 +17571,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Light Foot",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
@@ -16748,7 +17669,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "reconstructed_mockup",
@@ -17051,7 +17972,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-prf-005.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-prf-005.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-prf-005.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Sets a deliberate tone for the day ahead.",
@@ -17060,7 +17999,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "unavailable",
         "states": {
           "preferred": [],
@@ -17073,7 +18014,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Make Your Day",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "approved",
       "compatibility": "unchanged",
@@ -17262,7 +18205,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "reconstructed_mockup",
@@ -17565,7 +18508,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-prf-006.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-prf-006.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-prf-006.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK.",
@@ -17574,7 +18535,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "unavailable",
         "states": {
           "preferred": [],
@@ -17587,7 +18550,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Strong-Quick",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
@@ -17759,7 +18724,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "pilot",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -18006,7 +18971,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [
           "en-US"
         ],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-sen-001.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-sen-001.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-sen-001.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [
           {
             "key": "pilot.function.complete",
@@ -18041,6 +19024,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "notes": []
         },
         "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001",
           "OCF-TPL-SESSION-PILOT-HEARING-001"
         ],
         "source_availability": "available",
@@ -18056,9 +19040,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "title": "Sensory: Hearing",
         "voice_sources": [
-          "tts",
+          "externally-generated",
           "prerecorded-user",
-          "externally-generated"
+          "tts"
         ]
       },
       "command_review": "needs-review",
@@ -18173,7 +19157,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -18418,7 +19402,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-sen-002.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-sen-002.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-sen-002.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Improves the felt sense of inner vision and clarity.",
@@ -18427,7 +19429,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -18440,7 +19444,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Sensory: Seeing",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "needs-review",
       "compatibility": "alias-listed",
@@ -18660,7 +19666,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "reconstructed_mockup",
@@ -18963,7 +19969,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-sen-003.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-sen-003.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-sen-003.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Adjusts the felt sense of smell in either direction using the MORE/LESS grammar.",
@@ -18972,7 +19996,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "unavailable",
         "states": {
           "preferred": [],
@@ -18985,7 +20011,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Sensory: Smell",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "needs-review",
       "compatibility": "alias-listed",
@@ -19205,7 +20233,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "reconstructed_mockup",
@@ -19508,7 +20536,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-sen-004.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-sen-004.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-sen-004.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Adjusts the felt sense of taste in either direction using the MORE/LESS grammar.",
@@ -19517,7 +20563,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "unavailable",
         "states": {
           "preferred": [],
@@ -19530,7 +20578,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Sensory: Taste",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "needs-review",
       "compatibility": "alias-listed",
@@ -19750,7 +20800,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "reconstructed_mockup",
@@ -20053,7 +21103,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-sen-005.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-sen-005.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-sen-005.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Adjusts the felt sense of touch or skin sensation using the MORE/LESS grammar.",
@@ -20062,7 +21130,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "unavailable",
         "states": {
           "preferred": [],
@@ -20075,7 +21145,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Sensory: Touch",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "needs-review",
       "compatibility": "alias-listed",
@@ -20200,7 +21272,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -20444,7 +21516,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-slp-001.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-slp-001.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-slp-001.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE.",
@@ -20455,7 +21545,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "Self-directed wellness practice; not a substitute for professional medical evaluation or treatment. No guaranteed effects are claimed."
           ]
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -20468,7 +21560,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Restorative Sleep",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
@@ -20593,7 +21687,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -20837,7 +21931,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-slp-002.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-slp-002.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-slp-002.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP.",
@@ -20846,7 +21958,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -20859,7 +21973,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Sleep",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
@@ -20989,7 +22105,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -21233,7 +22349,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-slp-003.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-slp-003.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-slp-003.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM.",
@@ -21242,7 +22376,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -21255,7 +22391,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Sweet Dreams",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
@@ -21385,7 +22523,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "secondary_description",
@@ -21629,7 +22767,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-slp-004.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-slp-004.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-slp-004.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Requests help with sleep and with knowing the right time to wake; proposed concise cue PLUS-KNOW.",
@@ -21638,7 +22794,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "available",
         "states": {
           "preferred": [],
@@ -21651,7 +22809,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Wake/Know",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",
@@ -21786,7 +22946,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "pilot",
-        "default_session_template": "OCF-TPL-SESSION-HPLUS-STANDARD-001",
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "reconstructed_mockup",
@@ -22144,6 +23304,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "notes": []
         },
         "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001",
           "OCF-TPL-SESSION-HPLUS-STANDARD-001",
           "OCF-TPL-SESSION-PILOT-SLEEP-EASY-001"
         ],
@@ -22160,9 +23321,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "title": "Sleep Easy",
         "voice_sources": [
-          "tts",
+          "externally-generated",
           "prerecorded-user",
-          "externally-generated"
+          "tts"
         ]
       },
       "command_review": "review-required",
@@ -22288,7 +23449,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "content_maturity": "draft",
-        "default_session_template": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
         "evidence_classes": [
           "reconstructed_mockup",
@@ -22591,7 +23752,25 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "bindings"
         ],
         "locales": [],
-        "narration_plan": null,
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-slp-006.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-slp-006.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-slp-006.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
         "narration_resources": [],
         "preparation": [],
         "purpose": "Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE.",
@@ -22600,7 +23779,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "medical_relevance": false,
           "notes": []
         },
-        "session_templates": [],
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
         "source_availability": "unavailable",
         "states": {
           "preferred": [],
@@ -22613,7 +23794,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "maturity": "legacy-mapped"
         },
         "title": "Stay Awake",
-        "voice_sources": null
+        "voice_sources": [
+          "tts"
+        ]
       },
       "command_review": "review-required",
       "compatibility": "bridge-trainable",

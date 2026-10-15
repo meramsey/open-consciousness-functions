@@ -283,9 +283,9 @@ def _session_plan_summary(
 def build_complete_session_plan(
     function_id: str,
     *,
-    locale: str | None,
-    voice: str,
-    pacing: str,
+    locale: str | None = None,
+    voice: str | None = None,
+    pacing: str = "normal",
     template: str | None = None,
     dsp_profile: str | None = None,
 ) -> dict[str, Any]:
@@ -336,6 +336,8 @@ def build_complete_session_plan(
         slot_keys=slot_keys,
     )
     doc["semantic_dsp_profile"] = selected_dsp
+    if voice is None:
+        doc.pop("voice_profile", None)
     _verify_session_structure(doc, binding, dsp)
     validation = validate_timed_transcript(doc, Path("complete-session-plan"))
     if validation.errors:

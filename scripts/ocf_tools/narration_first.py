@@ -117,7 +117,7 @@ def plan_narration(
     function_id: str,
     *,
     locale: str | None = None,
-    voice: str,
+    voice: str | None = None,
     pacing: str = "normal",
     catalog: LocaleCatalog | None = None,
 ) -> dict[str, Any]:
@@ -146,7 +146,11 @@ def plan_narration(
         raise OCFError(f"invalid locale {locale!r}: {exc}") from exc
     if not requested_locale:
         raise OCFError(f"invalid locale {locale!r}")
-    voice_profile, resolved_voice = _voice_profile(voice, requested_locale, catalog)
+    voice_profile, resolved_voice = (
+        _voice_profile(voice, requested_locale, catalog)
+        if voice is not None
+        else ({}, {"name": "unselected"})
+    )
     layers = load_layers(function_id)
     specification = layers.get("specifications") or {}
     binding = layers.get("bindings") or {}
@@ -167,7 +171,7 @@ def plan_narration(
             raise OCFError(
                 f"narration resource {key!r} is not TTS-ready: status is {entry.status!r}"
             )
-        for token in entry.required_pronunciation:
+        for token in entry.required_pronunciation if voice is not None else ():
             if (
                 resolved_voice["name"] not in BACKENDS
                 or not BACKENDS[resolved_voice["name"]].get("phonemes")
@@ -290,14 +294,16 @@ def plan_narration(
             "name": voice_profile["name"],
             "backend": resolved_voice["name"],
             "language": resolved_voice.get("language"),
-        },
+        }
+        if voice is not None
+        else None,
         "pacing": {"id": pacing, **selected_pacing},
         "approval_state": {
             "script_status": record.data.get("audio", {}).get("script_status"),
             "function_review_status": specification.get("human_review", "unknown"),
             "resource_statuses": {item["key"]: item["status"] for item in resources},
             "tts_ready": True,
-            "release_ready": specification.get("human_review") == "approved",
+            "release_ready": False,
             "release_note": (
                 "Function-content human review remains required; this audition does not approve release."
                 if specification.get("human_review") != "approved"

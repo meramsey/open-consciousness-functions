@@ -1,6 +1,20 @@
+default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-001
 duration: null
 function_id: OCF-BOD-012
+narration_plan:
+  sequence:
+  - key: hplus.function.ocf-bod-012.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-012.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-012.closer
+    repetitions: 1
+    role: closer
 narration_resources: []
 schema_version: '1.0'
-session_templates: []
-voice_sources: null
+session_templates:
+- OCF-TPL-SESSION-HPLUS-LOCKED-001
+voice_sources:
+- tts

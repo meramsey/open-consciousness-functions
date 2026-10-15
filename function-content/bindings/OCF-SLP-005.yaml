@@ -1,17 +1,17 @@
+default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-001
 duration: null
 function_id: OCF-SLP-005
-default_session_template: OCF-TPL-SESSION-HPLUS-STANDARD-001
 narration_plan:
   sequence:
   - key: hplus.function.ocf-slp-005.opener
+    repetitions: 1
     role: opener
-    repetitions: 1
   - key: hplus.function.ocf-slp-005.function-body
-    role: function-body
     repetitions: 4
+    role: function-body
   - key: hplus.function.ocf-slp-005.closer
-    role: closer
     repetitions: 1
+    role: closer
 narration_resources:
 - key: pilot.function.complete
   locale: en-US
@@ -27,9 +27,10 @@ narration_resources:
   locale: en-US
 schema_version: '1.0'
 session_templates:
+- OCF-TPL-SESSION-HPLUS-LOCKED-001
 - OCF-TPL-SESSION-HPLUS-STANDARD-001
 - OCF-TPL-SESSION-PILOT-SLEEP-EASY-001
 voice_sources:
-- tts
-- prerecorded-user
 - externally-generated
+- prerecorded-user
+- tts
