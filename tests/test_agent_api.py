@@ -161,3 +161,23 @@ def test_symlink_escape_and_cache_cleanup_protect_unowned_data(monkeypatch, tmp_
     assert api.cache_clean(0, dry_run=False, confirmed=True)["selected_count"] == 0
     assert unowned.exists()
     assert api.cache_clean(0, dry_run=False)["status"] == "failed"
+
+
+def test_voice_capability_cli_parity_and_dynamic_discovery(capsys):
+    summary = api.inspect_voice_capabilities()
+    assert cli.main(["dev", "ocf_inspect_voice_capabilities"]) == 0
+    assert json.loads(capsys.readouterr().out) == summary
+    assert api.project_overview()["operations"] == sorted(api.TOOLS)
+    assert {"ocf_inspect_narration_sources", "ocf_inspect_voice_capabilities"} <= api.READ_ONLY
+    assert not {"ocf_validate_recordings", "ocf_start_narration_render"} & api.READ_ONLY
+    for name, args in (
+        ("ocf_inspect_voice_capabilities", {"probe_gpu": "true"}),
+        ("ocf_plan_voice_training", {"dataset": 123}),
+        ("ocf_validate_recordings", {"function_id": "OCF-FND-002", "manifest": []}),
+        (
+            "ocf_start_narration_render",
+            {"function_id": "OCF-FND-002", "manifest": "a.json", "voice": False},
+        ),
+    ):
+        with pytest.raises(OCFError, match="invalid argument type"):
+            api.dispatch(name, args)

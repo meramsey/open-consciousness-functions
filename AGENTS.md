@@ -105,6 +105,17 @@ human/source status. Render explicitly with `audio render` or `audio render-many
 use `--dry-run` first. Bulk renders use verified resume and unique output paths.
 `new session-plan` invokes the same generator. See [bulk sessions](docs/BULK_SESSIONS.md).
 
+For [recorded](docs/RECORDED_NARRATION.md) or
+[hybrid narration](docs/HYBRID_NARRATION.md), inspect `narration sources` before
+importing exact event/resource/unit bindings. Render with `audio render FUNCTION
+--narration-sources FILE`; recorded-only needs no TTS voice and never falls back.
+Hybrid requires an explicit fallback policy. CLI `narration validate` is source
+compatibility preflight; use `narration inspect` or queued recording validation
+for technical decode. Text hashes do not verify speech. A complete `session_stem`
+requires all composed event markers, including nonspoken DSP boundaries; never
+infer them or insert extra semantic silence. Preserve originals, declared speaker
+identity and the independent stereo bed; narration processing never touches it.
+
 Release packaging uses `audio release` with explicit PNG/JPEG artwork and an
 eligible registered implementation. Preserve review/rights metadata and inspect
 the dry-run. Packaging success is not release approval.
@@ -116,6 +127,12 @@ provenance retained. Private voice models/datasets stay in `.ocf-work/`; portabl
 metadata does not grant distribution rights. Training is unsupported until an
 adapter actually produces and verifies a model. See [branding](docs/BRANDING.md),
 [voice workflows](docs/VOICE_WORKFLOWS.md) and [session overrides](docs/SESSION_OVERRIDES.md).
+Use `voice capabilities` for shipped/local support, `voice export-profile` /
+`import-profile` for deliberate metadata/private asset portability, and
+`new voice-dataset MANIFEST` for import-first recording slots. See
+[cloning boundaries](docs/VOICE_CLONING.md) and [training preparation](docs/VOICE_TRAINING.md).
+Installed packages, synthetic fixtures and ordinary imported Piper auditions are
+not verified cloning/training or speech-content approval.
 
 Optional [local MCP](docs/MCP.md) is a compact adapter, not another OCF engine.
 Use discovery summaries, pagination and targeted validation. Expensive tools

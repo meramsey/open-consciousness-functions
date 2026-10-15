@@ -10,6 +10,10 @@ loading the entire documentation tree:
   [audio pipeline](AUDIO_PIPELINE.md).
 - Choose a voice: [community voices](COMMUNITY_VOICES.md).
 - Import/record/compare private voices: [voice workflows](VOICE_WORKFLOWS.md).
+- Use existing audio as speech: [recorded narration](RECORDED_NARRATION.md),
+  including complete marked stems; mix sources with [hybrid narration](HYBRID_NARRATION.md).
+- Inspect cloning support/profile portability: [voice capabilities](VOICE_CLONING.md).
+  Prepare external recording imports: [training datasets](VOICE_TRAINING.md).
 - Brand, UI themes and album covers: [original candidates](BRANDING.md).
   The supplied Cosmic Path 0.3.0 kit has an offline comparison gallery and
   SHA-256 import verification; it remains a human-review candidate.

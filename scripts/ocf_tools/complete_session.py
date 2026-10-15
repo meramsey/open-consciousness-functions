@@ -898,6 +898,7 @@ def render_complete_session(
     overrides: dict | None = None,
     narration_sources: str | Path | None = None,
     narration_source: str | None = None,
+    mix_profile: str | Path | dict | None = None,
 ) -> dict[str, Any]:
     """Expand the bound complete session and render/mix it using OCF's engines."""
     from . import audio_build
@@ -906,6 +907,10 @@ def render_complete_session(
     from .session_overrides import verify_stage_limits
 
     selected_template, binding = _resolve_template(function_id, template)
+    if mix_profile is not None:
+        from .mix_profiles import load_mix_profile
+
+        mix_profile = load_mix_profile(mix_profile)
     if narration_source not in (None, "tts", "recording", "hybrid", "silence"):
         raise OCFError("unknown narration source mode")
     if narration_source == "silence":
@@ -967,7 +972,11 @@ def render_complete_session(
     elif narration_source in ("recording", "hybrid"):
         raise OCFError("recording/hybrid mode requires --narration-sources")
     if dry_run:
-        return {"dry_run": True, "session_plan": session_plan}
+        return {
+            "dry_run": True,
+            "session_plan": session_plan,
+            **({"mix_profile": mix_profile} if mix_profile is not None else {}),
+        }
     tts_plan = session_plan["tts_plan"]
     doc = session_plan["template_plan"]
     selected_dsp = session_plan["resolved_dsp_profile"]["id"]
@@ -1041,28 +1050,40 @@ def render_complete_session(
         bg_gain = 1.0 if background_gain is None else float(background_gain)
         if not math.isfinite(bg_gain) or bg_gain < 0:
             raise OCFError("background_gain must be a finite nonnegative linear gain")
-        built = audio_build.build(
-            "complete-session",
-            manifest_override=transient_manifest,
-            document_override=doc,
-            render_label="complete-session",
-            out_root=render_dir,
-            formats=["wav"],
-            voice=adjusted_voice,
-            voice_gain=voice_gain,
-            background_gain=bg_gain,
-            sample_rate=sample_rate,
-            locale=tts_plan["requested_locale"],
-            strict=True,
-            overwrite=False,
-            dsp_profile=selected_dsp,
-            retain_background_stem=True,
-            **(
-                {"narration_sources": narration_sources, "narration_source": narration_source}
-                if narration_sources is not None
-                else {}
-            ),
-        )
+        from .speech_cache import STATS, enabled
+
+        cache_before = dict(STATS)
+        with enabled():
+            built = audio_build.build(
+                "complete-session",
+                manifest_override=transient_manifest,
+                document_override=doc,
+                render_label="complete-session",
+                out_root=render_dir,
+                formats=["wav"],
+                voice=adjusted_voice,
+                voice_gain=voice_gain,
+                background_gain=bg_gain,
+                sample_rate=sample_rate,
+                locale=tts_plan["requested_locale"],
+                strict=True,
+                overwrite=False,
+                dsp_profile=selected_dsp,
+                retain_background_stem=True,
+                **({"mix_profile": mix_profile} if mix_profile is not None else {}),
+                **(
+                    {
+                        "narration_sources": narration_sources,
+                        "narration_source": narration_source,
+                        "source_rate_scale": 1 / float(tts_plan["pacing"]["speech_rate_scale"]),
+                    }
+                    if narration_sources is not None
+                    else {}
+                ),
+            )
+        speech_cache_report = {
+            key: value - cache_before.get(key, 0) for key, value in STATS.items()
+        }
         verify_stage_limits(doc, built["event_timing"], options.get("stage_maximum_seconds", {}))
         render_master = render_dir / built["master"]["file"]
         background_info = built.get("background_stem")
@@ -1161,6 +1182,7 @@ def render_complete_session(
             },
             "narration_pacing": built.get("narration_pacing", {}),
             "narration_source": built.get("narration_source"),
+            "speech_cache": speech_cache_report,
             "narration_timing": built.get("narration_timing", {}),
             "template": session_plan["template"],
             "dsp_profile": {
@@ -1175,6 +1197,14 @@ def render_complete_session(
                 "background_gain": bg_gain,
                 "narration_gain_windows": built.get("narration_gain_windows", []),
                 "limiting": "audio_build FFmpeg limiter (0.97 linear ceiling)",
+                **(
+                    {
+                        "processing": built["mixing"]["processing"],
+                        "limiting": "explicit mix profile; see processing parameters",
+                    }
+                    if mix_profile is not None
+                    else {}
+                ),
                 "ending_fade_seconds": (built.get("semantic_dsp") or {}).get(
                     "ending_fade_seconds", 0
                 ),

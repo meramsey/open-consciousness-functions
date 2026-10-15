@@ -434,6 +434,11 @@ def _build_parser() -> argparse.ArgumentParser:
     narration_render.add_argument("--output", help="new audition directory (never overwritten)")
     narration_render.add_argument("--rate", type=int, default=44100, help="sample rate (Hz)")
     narration_render.add_argument(
+        "--mix-profile",
+        type=Path,
+        help="explicit linked-stereo ducking/headroom/limiter configuration",
+    )
+    narration_render.add_argument(
         "--voice-gain",
         type=float,
         default=None,
@@ -453,8 +458,10 @@ def _build_parser() -> argparse.ArgumentParser:
     mix.add_argument("--output", required=True, help="mixed WAV path")
     mix.add_argument("--background-gain", type=float, default=0.25, help="background level (0-1)")
     mix.add_argument("--force", action="store_true", help="overwrite an existing file")
+    mix.add_argument("--mix-profile", type=Path)
     build_cmd = audio_sub.add_parser("build", help="build a mastered audio implementation")
     build_cmd.add_argument("query", help="audio implementation id or manifest path")
+    build_cmd.add_argument("--mix-profile", type=Path)
     build_cmd.add_argument(
         "--format",
         action="append",
@@ -1521,6 +1528,7 @@ def main(argv: list[str] | None = None) -> int:
                         args.overrides
                         or args.narration_sources
                         or args.narration_source
+                        or args.mix_profile
                         or not args.voice
                     ):
                         raise OCFError(
@@ -1549,6 +1557,11 @@ def main(argv: list[str] | None = None) -> int:
                         overrides=read_json_object(args.overrides) if args.overrides else None,
                         voice_gain=args.voice_gain,
                         background_gain=args.background_gain,
+                        **(
+                            {"mix_profile": args.mix_profile}
+                            if args.mix_profile is not None
+                            else {}
+                        ),
                         output=args.output,
                         dry_run=args.dry_run,
                         sample_rate=args.rate,
@@ -1595,6 +1608,24 @@ def main(argv: list[str] | None = None) -> int:
                     recordings=getattr(args, "recordings", None),
                 )
             if args.audio_kind == "mix":
+                if args.mix_profile is not None:
+                    import json
+
+                    from .mix_profiles import mix_master
+
+                    target = Path(args.output)
+                    if target.exists() and not args.force:
+                        raise OCFError("refusing to overwrite existing mix; use --force")
+                    receipt = mix_master(
+                        Path(args.speech),
+                        Path(args.background) if args.background else None,
+                        target,
+                        mix_profile=args.mix_profile,
+                        sample_rate=44100,
+                        background_gain=args.background_gain,
+                    )
+                    print(json.dumps(receipt, indent=2))
+                    return 0
                 from .audio_build import mix as mix_tracks
 
                 mix_tracks(
@@ -1635,6 +1666,7 @@ def main(argv: list[str] | None = None) -> int:
                     recordings=getattr(args, "recordings", None),
                     locale=getattr(args, "locale", None),
                     strict=not getattr(args, "allow_fallback", False),
+                    **({"mix_profile": args.mix_profile} if args.mix_profile is not None else {}),
                 )
                 return 0
             if args.audio_kind == "release":

@@ -21,6 +21,12 @@ The main implementation modules are:
   analysis, and subtitle export;
 - `scripts/ocf_tools/locale.py`: locale resolution and provenance;
 - `scripts/ocf_tools/voice.py`: recording, disabled narration, or TTS rendering;
+- `scripts/ocf_tools/narration_cli.py` and `narration_sources.py`: private import,
+  compatibility preflight and explicit per-event/resource/unit source selection;
+- `scripts/ocf_tools/recording_audio.py`: non-destructive preparation, objective
+  metrics and verified content-addressed recording receipts;
+- `scripts/ocf_tools/narration_stems.py`: complete recorded stems with explicit
+  all-event marker ledgers and preserved interior cadence;
 - `scripts/ocf_tools/narration_first.py`: explicit resource-bound narration
   plans, pacing presets, dynamically measured segment timing, and safe local
   audition publication;
@@ -41,8 +47,9 @@ The main implementation modules are:
    references.
 2. Resolve keyed narration for the requested locale. Spoken fallback is strict
    by default; an explicit draft fallback is recorded in provenance.
-3. Select one narration source: TTS, an explicitly event-mapped recording
-   package, or explicitly disabled narration for a speech-free document.
+3. Resolve narration sources: TTS, explicitly mapped recordings, declared hybrid
+   recording/TTS selection, or a complete marked recorded stem. Explicitly disabled
+   narration is only for a speech-free document; it cannot suppress required speech.
 4. Resolve event timing, including measured speech-end/event-end dependencies,
    and render a narration stem. Localized speech gets its own measured ledger;
    English timing is never copied into another locale.
@@ -55,6 +62,64 @@ The main implementation modules are:
    or silent source-loop substitution is allowed.
 7. Encode requested outputs and emit the render manifest with timing, source
    provenance, preset/engine information, tags, and artifact checksums.
+
+## Recorded and hybrid source contracts
+
+[Recorded narration](RECORDED_NARRATION.md) covers `narration sources`, `init`,
+`import`, `preview`, `validate`, `inspect` and `preprocess`, plus explicit segment
+cuts after file preparation. [Hybrid narration](HYBRID_NARRATION.md) specifies
+event override → event voice → resource → stage → function → automatic/default
+precedence, whole-take versus unit coverage, and explicit fallback/speaker policy.
+
+Use `audio render FUNCTION --narration-sources FILE` in complete-session mode;
+`--narration-source recording|hybrid` may override the manifest mode. `--voice` is
+optional for recorded-only sessions. Ordinary per-cue `narration validate` is
+source-compatibility preflight, not full audio decode. Use `narration inspect`
+or queued `ocf_validate_recordings` for technical measurements. Complete marked
+stems also prepare/measure audio during preflight. Preview is not successful TTS
+inference, transcript fidelity or listening/release approval.
+
+Whole-event recordings retain interior cadence without inserted sentence gaps;
+unit takes use declared semantic inter-unit gaps. Whole-session stems require
+markers for every composed event, including nonspoken DSP boundaries, and insert
+no extra silence in the stem adapter. State anchors are never guessed from audio.
+Measured source durations/markers feed the same ledger used by TTS and semantic
+DSP; the complete-session renderer's ordinary mix envelope/tail remains separate.
+
+Preparation preserves originals and defaults to format conversion without
+effects. Explicit processing, finite settings, source/processed checksums,
+tool versions and measurements are captured in coherent cache receipts. Source
+`output_channels` selects mono/stereo narration; this never downmixes the stereo
+binaural bed or applies narration filters to it. See the recorded guide for metric
+proxy limits and the `verify_narration_engine2.py` prepare/verify/benchmark driver.
+Its fixtures are synthetic tones, not human narration matching a transcript.
+
+## Explicit source-neutral mix profiles
+
+Complete-session rendering, `audio build` and `audio mix` accept an optional
+`--mix-profile FILE`. Without it, the established engineering mix is preserved.
+The JSON contract is `schemas/mix-profile.schema.json`: optional shared-envelope
+stereo background ducking, headroom attenuation, limiter settings, explicit
+final-mix fades and streamed loudness measurements. Narration preprocessing is
+still separate from the bed. Ducking changes a shared amplitude envelope; it
+does not downmix, crossfeed or phase-process the binaural channels.
+
+For example, a local profile may contain:
+
+```json
+{"output_headroom_db": 3, "measure_loudness": true,
+ "background_ducking": {"enabled": true, "ratio": 2}}
+```
+
+```bash
+python scripts/ocf.py audio render OCF-SLP-005 --voice OCF-VOICE-0002 --mix-profile .ocf-work/my-mix.json --dry-run
+```
+
+The retained background stem and DSP preset selection remain independent of
+final-mix processing. Existing ending fades are not inferred or repeated by a
+mix profile; final-mix fades default to zero. Filter graphs, parameters and
+requested loudness measurements are recorded in the audition report. Sample
+peak limiting is not a guarantee of true-peak compliance or listening approval.
 
 ## Final release packages
 

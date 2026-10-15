@@ -71,6 +71,17 @@ dependencies, not unit-test dependencies.
 - Voice: `voice.py` selects explicit recording, disabled narration, or TTS and
   returns measured cue/event timing; `narration_pacing.py` splits semantic
   sentence units and resolves locale/profile timing roles.
+- Recorded/hybrid sources: `narration_cli.py` owns import/preflight commands;
+  `narration_sources.py` owns deterministic event/resource/unit selection;
+  `recording_audio.py` owns preparation/metrics/cache receipts; `narration_stems.py`
+  owns complete all-event-marked stems. Inspect `narration-sources.schema.json`,
+  `recording-processing.schema.json` and `narration-stem.schema.json` first. See
+  [recorded](RECORDED_NARRATION.md) and [hybrid narration](HYBRID_NARRATION.md).
+- Voice capabilities/portability/datasets: `voice_engine_cli.py` routes shared
+  parser commands and the import-first `new voice-dataset MANIFEST` wizard to
+  `voice_capabilities.py`, `custom_voices.py` and `voice_datasets.py`. See
+  [voice workflows](VOICE_WORKFLOWS.md), [capabilities](VOICE_CLONING.md) and
+  [dataset preparation](VOICE_TRAINING.md).
 - Build: `audio_build.py` renders narration, selects background/DSP, mixes,
   encodes, and writes render metadata.
 - Bulk sessions: `eligibility.py` migrates bindings explicitly and derives
@@ -127,8 +138,22 @@ For architecture-sensitive changes, verify at least the relevant combination of:
   reports;
 - `tests/test_locale.py` and `tests/test_locale_correctness.py` for fallback;
 - `tests/test_transcript.py` and `tests/test_transcript_unit.py` for timed data;
+- `tests/test_narration_sources.py`, `tests/test_narration_stems.py` and
+  `tests/test_narration_jobs.py` for source coverage, marker ledgers and queued
+  identities; `tests/test_narration_demo.py` for the synthetic verification driver;
 - `tests/test_packaged_data.py`, `test_bootstrap.py`, and `test_container_config.py`
   for portability boundaries.
+
+For documentation examples, parse arguments with the shared CLI parser without
+dispatching placeholder imports/renders or authorization declarations. Distinguish
+ordinary `narration validate` compatibility preflight from `narration inspect` or
+queued technical validation. A complete stem preflight additionally prepares and
+measures its source. Text hashes and declared speaker consistency are not ASR or
+biometrics. The [recorded guide](RECORDED_NARRATION.md#cache-and-reproducible-technical-checks)
+documents the real `verify_narration_engine2.py prepare`, `verify` and
+`benchmark-recording` driver: synthetic tones are not human speech matching the
+transcript. Report cold/warm timing scope and receipts, not an extrapolated speed
+claim. Preserve existing caches and all frozen editorial/listening checkpoints.
 
 ## LSP, MCP, and search efficiency
 
@@ -143,6 +168,10 @@ The optional [OCF stdio MCP adapter](MCP.md) reuses application APIs for compact
 discovery, targeted validation and persistent jobs. It is not automatically
 configured in any client. Start with `dev ocf_project_overview`; the same
 `ocf_*` operations work over MCP or `ocf dev OPERATION --arguments JSON`.
+Current CLI discovery advertises 36 operations, including narration inspection,
+queued recording validation/rendering and voice capabilities. Check the running
+server's discovery after restarting it; a stale client tool list is not evidence
+that the current CLI lacks an operation. Job boundaries are in [MCP](MCP.md).
 Use external MCP/web tools only for authoritative information missing locally.
 Never load reference corpora or entire generated indexes for routine discovery.
 

@@ -46,6 +46,12 @@ def add_commands(subparsers):
     target.add_argument("--event")
     target.add_argument("--resource")
     capture.add_argument("--unit", type=int)
+    capture.add_argument(
+        "--start", type=float, help="explicit segment start in seconds after file preparation"
+    )
+    capture.add_argument(
+        "--end", type=float, help="explicit segment end in seconds after file preparation"
+    )
     capture.add_argument("--speaker", required=True)
     capture.add_argument("--session", default="unversioned-session")
     capture.add_argument("--version", default="1")
@@ -107,6 +113,7 @@ def import_recording(
     session_id="unversioned-session",
     version="1",
     consent="unknown",
+    segment=None,
 ):
     """Bind explicit semantic identity and exact text; existence never grants approval."""
     from .narration_pacing import plan_event_pacing
@@ -172,6 +179,10 @@ def import_recording(
         "rights": {"consent": consent, "license": "unknown", "redistribution_permission": False},
     }
     data.setdefault("recordings", {})[recording_id] = entry
+    if segment is not None:
+        if not 0 <= segment["start_s"] < segment["end_s"] <= measured["original"]["duration_s"]:
+            raise OCFError("segment markers are reversed or beyond source audio")
+        entry["segment"] = segment
     errors = validate_against_schema(data, _load_schema("narration-sources.schema.json"))
     if errors:
         raise OCFError("invalid recording metadata: " + " | ".join(errors))
@@ -210,6 +221,8 @@ def dispatch(args):
             "recordings_created": False,
         }
     if args.narration_kind == "import":
+        if (args.start is None) != (args.end is None):
+            raise OCFError("segment import requires both --start and --end")
         return import_recording(
             args.function_id,
             args.sources,
@@ -222,6 +235,7 @@ def dispatch(args):
             session_id=args.session,
             version=args.version,
             consent=args.consent,
+            segment={"start_s": args.start, "end_s": args.end} if args.start is not None else None,
         )
     from .recording_audio import inspect_recording, process_recording
 

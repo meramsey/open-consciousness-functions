@@ -9,7 +9,13 @@ model directory; relative values resolve from the repository root.
 
 ## Supported operations
 
+The shared CLI ships capability discovery, profile export/import and import-first
+dataset commands. Use [capabilities/profile portability](VOICE_CLONING.md) and
+[training preparation](VOICE_TRAINING.md) for their detailed contracts.
+
 ```bash
+python scripts/ocf.py voice capabilities --json
+python scripts/ocf.py voice capabilities --gpu --json
 python scripts/ocf.py voice list
 python scripts/ocf.py voice inspect OCF-VOICE-0002
 python scripts/ocf.py new voice
@@ -34,6 +40,40 @@ only for your genuinely authorized model; authorized contributor voices use
 verified permission. Unknown consent blocks cloned-profile validation.
 Inference access never implies permission to redistribute recordings or weights.
 
+Profiles and Piper configuration must contain finite JSON-compatible values;
+NaN/infinity is rejected. Profile gain, processing defaults, speed and speaker
+selection are explicit controls, not evidence of a trained or cloned identity.
+In this checkout, private `OCF-VOICE-9001` is an ordinary imported Lessac Piper
+installed-model profile used for inference/audition checks. It is not a cloned
+voice or evidence of training.
+
+### Portable metadata and private assets
+
+These examples require an existing private profile and unused destinations:
+
+```bash
+python scripts/ocf.py voice export-profile OCF-VOICE-9001 \
+  --output .ocf-work/portable-voice.json
+python scripts/ocf.py voice import-profile .ocf-work/portable-voice.json --id OCF-VOICE-9002
+python scripts/ocf.py voice export-profile OCF-VOICE-9001 \
+  --output .ocf-work/private-voice-bundle.json --include-assets
+python scripts/ocf.py voice import-profile .ocf-work/private-voice-bundle.json \
+  --include-assets --id OCF-VOICE-9003
+```
+
+Default export is metadata only: machine paths and private consent references
+are redacted, model/reference-audio files are not copied, and exact reference
+transcripts are not rewritten. `--include-assets` exports an adjacent `*-assets`
+directory; keep it with the JSON. Import also requires `--include-assets` to opt
+into checksum-verified private asset copying. Existing IDs/conflicting assets
+are refused; a metadata-only import may remain unavailable until assets exist.
+For profiles requiring authorization metadata, reattach a real local
+`--consent-record` relative to the voice asset root. Portable metadata grants no
+rights to publish weights, reference audio or consent records. Import does not
+verify inference; follow it with profile validation, doctor and an explicit audition.
+
+### Short comparisons
+
 The short comparison uses original versioned prompts in
 `audio/voices/recording-script.json`, not protected or historical narration.
 It covers ordinary speech, relaxation, counting, focus terminology and command
@@ -47,6 +87,10 @@ and hashes; listening approval remains unset. Current original prompts are en-US
 
 ```bash
 python scripts/ocf.py voice dataset-init .ocf-work/voice-dataset --id my-voice --rate 22050
+python scripts/ocf.py voice dataset-guide .ocf-work/voice-dataset/dataset.json --json
+python scripts/ocf.py new voice-dataset .ocf-work/voice-dataset/dataset.json
+python scripts/ocf.py voice dataset-record .ocf-work/voice-dataset/dataset.json normal-001 \
+  --audio recordings/normal-001.wav --session day-one --speaker my-speaker
 python scripts/ocf.py voice validate-dataset .ocf-work/voice-dataset/dataset.json
 python scripts/ocf.py voice training-plan --dataset .ocf-work/voice-dataset/dataset.json --backend piper
 ```
@@ -56,6 +100,16 @@ microphone or fabricate recordings. Use a local recorder/DAW to record each
 prompt into its named mono PCM16 WAV. Maintain unprocessed originals separately.
 The deterministic manifest records exact transcripts and train/validation/test
 splits. Do not put duplicate takes into different splits.
+
+`new voice-dataset MANIFEST` opens an existing manifest and guides external-file
+imports, displaying exact script slots and asking for speaker/session/setup
+notes. It never captures a microphone. Blank paths skip; `:quit` or interrupted
+input retains successful imports. `dataset-record` is the noninteractive path:
+choose the actual prompt ID shown by `dataset-guide` and an existing mono PCM16
+WAV at the manifest rate (at most 120 seconds per take). Imports preserve source
+bytes, text fingerprints and split assignments; another session adds a take.
+Use a new session ID if speaker or setup changes. The wizard does not manufacture
+authorization metadata, resample recordings or rewrite exact transcripts.
 
 - Use a consistent microphone; a cardioid USB/XLR microphone with a pop filter
   is practical, but room noise and positioning matter more than price.
@@ -79,12 +133,27 @@ level, excessive near-silence, missing transcripts/audio, duplicate PCM and
 split coverage. RMS/silence metrics are not an independent room-noise measurement
 or a voice-quality score. No automatic denoising or source rewriting occurs.
 
+## Use recordings in a session
+
+Training datasets and rendered session narration are separate. For event/resource
+and semantic-unit takes, stage-file segment cuts or a whole complete marked stem,
+use [recorded narration](RECORDED_NARRATION.md). For mixed TTS/recordings and
+explicit fallback/speaker policy, use [hybrid narration](HYBRID_NARRATION.md).
+Render via `audio render FUNCTION --narration-sources FILE`; recorded-only needs
+no TTS voice. Preserve originals and the independent stereo bed. Source text
+fingerprints and declared speaker checks do not verify speech content or identity.
+
 ## Training/adaptation status: unsupported until verified
 
 No OCF training adapter has produced and tested a model in this milestone.
 `training-plan` reports this explicitly; there is no fake `train` command or
 successful-cloning claim. No authorized speaker dataset was supplied. The local
-environment has 6 GiB VRAM and no Torch training installation.
+environment observed on 2026-10-15 has neither F5-TTS nor Torch installed; the
+explicit GPU probe reported about 6 GiB total VRAM and about 1 GiB free. These are
+local observations, not future hardware availability or training-memory promises.
+`voice capabilities` distinguishes upstream features, shipped adapters, installed
+packages and unverified inference. Only explicit `--gpu` requests the bounded GPU
+probe; capability discovery itself does not run inference or training.
 
 Evaluated upstream paths:
 

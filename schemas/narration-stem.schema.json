@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/narration-stem.schema.json",
+  "title": "OCF whole-session prerecorded narration stem",
+  "description": "Manual markers identify every composed event, including nonspoken semantic/DSP boundaries. Times are seconds in the original, untrimmed recording. Text fingerprints bind declarations, not verified speech content or release approval.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["file", "sha256", "locale", "speaker", "version", "markers"],
+  "properties": {
+    "file": {"type": "string", "minLength": 1},
+    "sha256": {"$ref": "#/definitions/sha256"},
+    "locale": {"type": "string", "minLength": 2},
+    "speaker": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "minLength": 1},
+    "session_fingerprint": {"$ref": "#/definitions/sha256"},
+    "processing": {
+      "allOf": [
+        {"$ref": "recording-processing.schema.json"},
+        {"not": {"required": ["trim_silence"]}}
+      ],
+      "description": "Explicit non-destructive processing only; silence trimming is forbidden because markers refer to original timestamps. No pause insertion, speed or pitch controls."
+    },
+    "markers": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {"minLength": 1},
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["at", "speech_duration"],
+        "properties": {
+          "at": {"type": "number", "minimum": 0},
+          "speech_duration": {
+            "type": "number", "minimum": 0,
+            "description": "Explicit measured speech duration; exactly zero for a nonspoken event. Interior natural cadence belongs to speech; pause_after belongs to the structural end."
+          },
+          "end": {
+            "type": "number", "minimum": 0,
+            "description": "Optional structural end: at + max(speech_duration, DSP transition_s) + pause_after. Never merely the end of speech."
+          },
+          "text_sha256": {"$ref": "#/definitions/sha256"}
+        }
+      }
+    },
+    "approval": {"enum": ["pending", "reviewed", "approved"]},
+    "rights": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "consent": {"enum": ["unknown", "self-recorded", "authorized-contributor", "synthetic-fixture"]},
+        "license": {"type": "string"},
+        "redistribution_permission": {"type": "boolean"}
+      }
+    }
+  },
+  "definitions": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

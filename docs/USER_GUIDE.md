@@ -2,6 +2,20 @@
 
 Get things done with OCF tooling.
 
+## Current checkpoint
+
+The catalog retains 55 functions/legacy mappings, 97 structured command records,
+55 generated en-US session plans and all 177 protected narration entries.
+Historical source availability remains 39 available / 16 unavailable; it is not
+modern TTS eligibility or release approval. Canonical `PLUS-THINK`, `PLUS-FOCUS`
+and `PLUS-SEE BETTER` remain unchanged. Source wording, review status and measured
+timing are separate contracts; see [source-first authoring](SOURCE_FIRST_AUTHORING.md).
+
+The supplied Cosmic Path brand kit 0.3.0 remains a human-review candidate with
+an offline comparison gallery and pinned import provenance, not an automatically
+approved identity. See [branding](BRANDING.md). Engineering locks, RC1/V2/V2.1
+auditions and frozen editorial/listening decisions retain their existing status.
+
 ## Entry points
 
 ```bash
@@ -38,6 +52,9 @@ support agents/GUI clients while keeping reasoning and editorial approval extern
 Use [`--recordings package.yaml`](USER_NARRATION.md) on voice rendering or audio
 build for user-provided narration without TTS. Timings come from the recordings;
 missing files or mismatched locales fail before output.
+For current complete sessions, use
+[`--narration-sources FILE`](RECORDED_NARRATION.md) for recorded-only or
+[explicit hybrid](HYBRID_NARRATION.md) narration instead.
 
 | Command                                  | Purpose                                   |
 | ---------------------------------------- | ----------------------------------------- |
@@ -59,11 +76,15 @@ ocf new proposal       # marked-down proposal
 ocf new audio          # audio-implementation manifest
 ocf new background     # background preset manifest
 ocf new test-report    # anecdotal report
+ocf new voice          # private model/profile import
+ocf new voice-dataset .ocf-work/voice-dataset/dataset.json  # external recording imports
 ocf import source      # fingerprint / optionally copy a source file
 ```
 
-Every wizard supports `?` (help), `skip`, `back`, and `quit`, shows a final
-review screen, writes atomically, and validates what it wrote.
+The general authoring wizards support `?` (help), `skip`, `back`, and `quit`, show
+a final review screen, write atomically, and validate what they wrote. The
+import-first voice-dataset wizard instead uses blank paths to skip slots and
+`:quit` to finish while retaining earlier imports; it never opens a microphone.
 
 ## Audio
 
@@ -83,6 +104,76 @@ Farfield (synthesis, default), SBaGenX (synthesis), and `reference-master`
 citation-only). A preset's manifest `engine` is used automatically when no
 `--engine` flag is given; when an engine is missing you get install guidance,
 not a traceback. `reference-master` needs ffmpeg.
+
+## Recorded and hybrid complete sessions
+
+First inspect exact composed event/resource IDs, then initialize and import your
+local recordings using [recorded narration](RECORDED_NARRATION.md):
+
+```bash
+python scripts/ocf.py narration sources OCF-SLP-005 --locale en-US
+python scripts/ocf.py narration init OCF-SLP-005 \
+  --output .ocf-work/my-narration/sources.json --mode recording --fallback error
+python scripts/ocf.py narration import OCF-SLP-005 \
+  --sources .ocf-work/my-narration/sources.json --file recordings/opener.wav \
+  --id opener-v1 --event function-opener.block --speaker my-speaker
+```
+
+Use actual file paths and declared speakers. Import each required spoken take
+before preview/render; the single example above is not complete coverage.
+
+```bash
+python scripts/ocf.py narration preview OCF-SLP-005 \
+  --sources .ocf-work/my-narration/sources.json
+python scripts/ocf.py narration validate OCF-SLP-005 \
+  --sources .ocf-work/my-narration/sources.json
+python scripts/ocf.py narration inspect recordings/opener.wav
+python scripts/ocf.py narration preprocess recordings/opener.wav \
+  --rate 44100 --channels 2 --output .ocf-work/opener-prepared.wav
+python scripts/ocf.py audio render OCF-SLP-005 \
+  --narration-sources .ocf-work/my-narration/sources.json \
+  --narration-source recording --dry-run
+```
+
+Remove `--dry-run` for an explicit render. The manifest supplies the source mode;
+`--narration-source recording|hybrid` is optional. Recorded-only needs no TTS voice
+and never falls back. Hybrid requires a declared fallback policy and a compatible
+installed voice for selected TTS; `--voice PROFILE` can supply its default.
+Ordinary CLI `narration validate` checks source compatibility, not full technical
+audio decode; use `inspect` or queued recording validation for that. Text hashes
+do not verify words spoken or grant listening approval.
+
+Import supports `--resource`, 1-based `--unit`, or paired `--start`/`--end` cuts
+after whole-file preparation. There is no automatic speech alignment. A complete
+`session_stem` must manually mark **every composed event**, including nonspoken
+DSP boundaries; OCF never guesses them or inserts extra semantic silence inside
+the stem. Default processing preserves originals without aggressive effects;
+mono/stereo narration output never changes the independent stereo binaural bed.
+The [recorded guide](RECORDED_NARRATION.md) explains reports, cache hashes/tool
+versions, metric proxy limits and the synthetic-tone prepare/verify/benchmark
+driver. Tones are not human narration and do not match the declared transcript.
+
+## Private voice profiles and datasets
+
+```bash
+python scripts/ocf.py voice capabilities --json
+python scripts/ocf.py voice export-profile OCF-VOICE-9001 --output .ocf-work/portable-voice.json
+python scripts/ocf.py voice import-profile .ocf-work/portable-voice.json --id OCF-VOICE-9002
+python scripts/ocf.py voice dataset-init .ocf-work/voice-dataset --id my-voice --rate 22050
+python scripts/ocf.py voice dataset-guide .ocf-work/voice-dataset/dataset.json --json
+python scripts/ocf.py new voice-dataset .ocf-work/voice-dataset/dataset.json
+```
+
+Export assumes an existing private profile and unused destinations. Metadata-only
+is the default; `--include-assets` on both export/import deliberately copies a
+private asset bundle. Profile metadata does not grant redistribution rights or
+verify inference. The local `OCF-VOICE-9001` Lessac example is an ordinary imported
+Piper model, not cloning. The dataset wizard imports externally recorded exact
+prompt WAVs and preserves originals/splits. See [voice workflows](VOICE_WORKFLOWS.md),
+[capability/portability boundaries](VOICE_CLONING.md) and
+[training preparation](VOICE_TRAINING.md). F5/Torch are absent in the observed
+environment; OCF cloning/training remains unsupported until verified. Local GPU
+memory observations do not establish future training readiness.
 
 ## Transcript & audio pipeline
 

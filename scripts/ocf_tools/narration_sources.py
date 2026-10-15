@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import hashlib
+import io
 import json
+import wave
 from copy import deepcopy
 from pathlib import Path, PureWindowsPath
 
@@ -85,7 +87,46 @@ class SourceResolver:
         self.doc = doc
         self.events = {event["id"]: event for event in iter_events(doc)}
         self.catalog = self.config.get("recordings", {})
+        if self.config.get("session_stem"):
+            if (
+                self.mode != "recording"
+                or self.catalog
+                or any(
+                    self.config.get(key)
+                    for key in (
+                        "events",
+                        "resources",
+                        "stages",
+                        "functions",
+                        "speaker_processing",
+                        "speaker_gain_db",
+                        "stage_gain_db",
+                    )
+                )
+            ):
+                raise OCFError(
+                    "a complete marked stem requires recorded-only mode and cannot combine per-cue source/gain overrides"
+                )
+            from .narration_stems import plan_stem
+
+            planned = plan_stem(doc, self.config["session_stem"], self.root, locale=self.locale)
+            self.rows = {row["event_id"]: row for row in planned["narration_source"]["events"]}
+            self.report = {
+                **planned["narration_source"],
+                "id": self.config["id"],
+                "schema_version": "2.0",
+                "manifest_sha256": sha256_of_file(self.path),
+                "output_channels": self.channels,
+            }
+            return
         for identifier, entry in self.catalog.items():
+            target = entry["target"]
+            if target.get("event_id") and target["event_id"] not in self.events:
+                raise OCFError(f"recording {identifier}: unknown narration event ID")
+            if target.get("unit_index") and target.get("event_id") in self.events:
+                pacing = plan_event_pacing(doc, self.events[target["event_id"]])
+                if not pacing or target["unit_index"] > len(pacing["units"]):
+                    raise OCFError(f"recording {identifier}: unknown semantic unit index")
             if normalize_tag(entry["locale"]) != self.locale:
                 raise OCFError(f"recording {identifier}: locale mismatch")
             path = _safe_source(self.root, entry["file"])
@@ -312,6 +353,33 @@ class SourceResolver:
             processing=processing,
             expected_sha256=entry["sha256"],
         )
+        if entry.get("segment"):
+            segment = entry["segment"]
+            with wave.open(io.BytesIO(data)) as reader:
+                start = round(segment["start_s"] * sample_rate)
+                end = round(segment["end_s"] * sample_rate)
+                if not 0 <= start < end <= reader.getnframes():
+                    raise OCFError(
+                        "recording segment markers are empty, reversed or beyond decoded audio"
+                    )
+                reader.setpos(start)
+                frames = reader.readframes(end - start)
+            output = io.BytesIO()
+            with wave.open(output, "wb") as writer:
+                writer.setparams((self.channels, 2, sample_rate, 0, "NONE", "not compressed"))
+                writer.writeframes(frames)
+            data = output.getvalue()
+            report = {
+                **report,
+                "selected_segment": {
+                    **segment,
+                    "start_frame": start,
+                    "end_frame": end,
+                    "duration_s": (end - start) / sample_rate,
+                    "sha256": hashlib.sha256(data).hexdigest(),
+                },
+                "segment_processing_order": "prepare original file, then select explicit frame markers",
+            }
         return data, report
 
 

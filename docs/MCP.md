@@ -54,6 +54,32 @@ JSON, and in cmd.exe escape inner double quotes or use an MCP client.
   word-rate estimates, not measured duration or financial cost.
 - `ocf_start_audio_render`: explicit single-function start, verified bulk-render
   resume/cache behavior, unique output paths. It never selects all functions.
+- `ocf_inspect_narration_sources(function_id, manifest, locale, offset, limit)`:
+  read-only source coverage through the existing narration resolver. The manifest
+  is a workspace-relative JSON/YAML file, at most 2 MiB. Event summaries omit
+  narration text and paginate by event; semantic units have compact source counts.
+- `ocf_validate_recordings(function_id, manifest, locale, idempotency_key)`:
+  explicit `narration-validate` job. Validates the whole chosen source manifest,
+  including unselected catalog checksums and selected text bindings, then measures
+  each selected original once. Results include compact PCM metrics, source counts,
+  and paginated diagnostics. Originals are preserved; no transcript verification,
+  processing, listening approval or release approval is inferred.
+- `ocf_start_narration_render(function_id, manifest, locale, voice, pacing,
+  idempotency_key, mix_profile)`: explicit `narration-render` job calling the existing complete
+  session renderer with `narration_sources`. Voice is optional for recorded-only
+  rendering; an optional workspace-relative `mix_profile` selects explicit
+  linked-stereo ducking/headroom/limiter processing and participates in job identity.
+  Output is unique at `renders/jobs/<job-id>/` within the workspace;
+  no output path or executable can be supplied through this tool.
+- `ocf_inspect_voice_capabilities(probe_gpu=false)`: read-only local adapter and
+  package metadata using the CLI capability service. No GPU query or torch import
+  by default. Explicit `probe_gpu=true` uses the existing two-second NVIDIA query.
+- `ocf_plan_voice_training(backend="piper", dataset=null)`: preserves backend-only
+  calls and optionally checks a workspace-relative JSON dataset (at most 2 MiB),
+  returning compact readiness/quality counts. GPU probing stays disabled here.
+  Training remains unsupported until a verified adapter exists. Profile import
+  remains the explicit `ocf voice import-profile` CLI workflow; MCP advertises no
+  train, clone or profile-import start tool.
 - `ocf_get_job_status`, `ocf_get_job_result`, `ocf_cancel_job`: persistent job
   lifecycle, bounded results and cooperative cancellation of owned processes.
 - `ocf_verify_audio`: verifies contained artifact sizes/checksums against an
@@ -86,9 +112,13 @@ job IDs and artifact references, never binary data. `ocf_list_artwork_themes`,
 `ocf_plan_voice_training`, and `ocf_inspect_release_artwork` provide bounded
 metadata. Training planning reports unsupported status; no unverified training
 start tool is advertised. MCP artwork jobs select registered themes; custom
-file/font rendering remains an explicit CLI workflow. Dataset manifests must
-be inside the workspace; validation reads audio at execution and reports PCM
-fingerprints rather than caching a success claim about later recordings.
+file/font rendering remains an explicit CLI workflow. Dataset and narration
+manifests must be inside the workspace. Job identities hash the manifest and
+every referenced recording's actual bytes (including unselected recordings,
+dataset WAVs, consent records when present, and `session_stem.file` when declared).
+Missing dataset WAVs have explicit missing identities, so recording them after
+enqueue also invalidates the request. Execution checks identity again and fails
+changed inputs instead of implicitly rendering or validating newer audio.
 
 Records/logs live under `.ocf-work/logs/jobs/<job-id>/`; cache/audio remains
 under the standard workspace. `OCF_WORK_DIR` honors the existing validated

@@ -18,6 +18,9 @@ therapeutic efficacy claim.
   timed-transcript import/export; semantic sentence/count pacing.
 - Optional Piper/eSpeak narration, Farfield/SBaGenX backgrounds, verified
   auditions and artwork/metadata/transcript/checksum release packaging.
+- Recorded-only and explicitly hybrid recording/TTS complete sessions, including
+  manual segment cuts and complete all-event-marked narration stems; measured
+  source receipts preserve originals and keep narration processing off the bed.
 - Resumable explicit bulk auditions, content-addressed speech cache, local jobs,
   and an optional provider-neutral stdio MCP adapter.
 - Original candidate branding, independent themes and offline localized covers;
@@ -40,13 +43,18 @@ python -m venv .venv
 # Activate .venv with your shell's standard activation command.
 python -m pip install -e .
 python scripts/ocf.py doctor --json
-python scripts/ocf.py --help
+python scripts/ocf.py help
 ```
 
 Without activation, use `.venv/bin/python` on Linux/macOS or
 `.venv\Scripts\python.exe` on Windows. Native engines, codecs and voice models
 are separate optional installations; `doctor` and `voice doctor` report them.
 See [native setup](docs/USER_GUIDE.md) and [voices](docs/COMMUNITY_VOICES.md).
+For local voice capabilities, portable profiles and import-first datasets, see
+[voice workflows](docs/VOICE_WORKFLOWS.md),
+[cloning capability boundaries](docs/VOICE_CLONING.md) and
+[training preparation](docs/VOICE_TRAINING.md). Cloning/training remains unavailable
+through OCF until a working adapter produces and verifies a model.
 
 ## Find, author and localize
 
@@ -112,6 +120,21 @@ unique paths. Bulk rendering all functions requires explicit `--all` and never
 happens during planning. See [audio pipeline](docs/AUDIO_PIPELINE.md),
 [semantic DSP](docs/SEMANTIC_DSP.md) and [backgrounds](audio/background/README.md).
 
+For your own recordings, follow [recorded narration](docs/RECORDED_NARRATION.md)
+or [hybrid source selection](docs/HYBRID_NARRATION.md):
+
+```bash
+python scripts/ocf.py narration sources OCF-SLP-005 --locale en-US
+python scripts/ocf.py audio render OCF-SLP-005 \
+  --narration-sources .ocf-work/my-narration/sources.json --dry-run
+```
+
+The render example requires your prepared source manifest. Its mode selects
+recording/hybrid; `--voice` is optional for recorded-only sessions. CLI
+`narration validate` checks source compatibility; use `narration inspect FILE`
+or queued recording validation for technical decoding. Text fingerprints do not
+verify the words actually spoken or grant listening approval.
+
 ## Package an approved release
 
 See [original OCF artwork and themes](docs/BRANDING.md),
@@ -158,6 +181,9 @@ The same adapters work through CLI without MCP. Long jobs return persistent IDs
 for polling/cancellation and bounded result summaries. Read
 [MCP setup and job boundaries](docs/MCP.md) for OpenCode, Claude Code and Codex
 configuration. No provider credentials or paid services are required.
+Current CLI discovery lists 36 operations, including source inspection, queued
+recording validation/rendering and voice capabilities; refresh server/client
+discovery after updating the checkout.
 
 ## Documentation
 

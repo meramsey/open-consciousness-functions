@@ -67,7 +67,13 @@ def owner(function_id: str):
 
 
 def safe_path(value: str, root: Path, *, exists: bool = True) -> Path:
-    if "\\" in value or PureWindowsPath(value).drive:
+    if (
+        not value
+        or any(ord(c) < 32 for c in value)
+        or "\\" in value
+        or PureWindowsPath(value).drive
+        or PureWindowsPath(value).root
+    ):
         raise OCFError("use a relative forward-slash path")
     candidate = Path(value)
     if candidate.is_absolute() or ".." in candidate.parts:
@@ -76,6 +82,180 @@ def safe_path(value: str, root: Path, *, exists: bool = True) -> Path:
     if not path.is_relative_to(root.resolve()) or (exists and not path.is_file()):
         raise OCFError("path is unavailable or outside the allowed root")
     return path
+
+
+def workspace_manifest(manifest: str, *, dataset: bool = False) -> tuple[Path, dict]:
+    """Bound private manifest reads before any resolver follows asset references."""
+    import yaml
+
+    from .utils import yaml_safe_load
+
+    path = safe_path(manifest, work_root())
+    if path.suffix.lower() not in ({".json"} if dataset else {".json", ".yaml", ".yml"}):
+        raise OCFError("select a JSON dataset or JSON/YAML narration manifest")
+    with path.open("rb") as handle:
+        raw = handle.read(2 * 1024**2 + 1)
+    if len(raw) > 2 * 1024**2:
+        raise OCFError("manifest exceeds 2 MiB")
+    try:
+        data = (
+            json.loads(raw)
+            if path.suffix.lower() == ".json"
+            else yaml_safe_load(raw.decode("utf-8"))
+        )
+    except yaml.YAMLError as exc:
+        raise OCFError("invalid YAML manifest") from exc
+    if not isinstance(data, dict):
+        raise OCFError("manifest must contain an object")
+    json.dumps(data, allow_nan=False)
+    manifest_assets(path, data, dataset=dataset)
+    return path, data
+
+
+def manifest_assets(path: Path, data: dict, *, dataset: bool = False) -> dict[str, Path]:
+    """Portable references, including unselected takes and future full-session stems."""
+    references = {}
+    if dataset:
+        records = data.get("records", [])
+        if not isinstance(records, list) or any(not isinstance(row, dict) for row in records):
+            raise OCFError("dataset records must be a list of objects")
+        for index, row in enumerate(records):
+            references[f"record:{index}"] = row["audio"]
+        if data.get("consent_record"):
+            references["consent_record"] = data["consent_record"]
+    else:
+        recordings = data.get("recordings", {})
+        if not isinstance(recordings, dict) or any(
+            not isinstance(row, dict) for row in recordings.values()
+        ):
+            raise OCFError("recordings must be an object of recording entries")
+        for name, row in recordings.items():
+            references[f"recording:{name}"] = row["file"]
+        if data.get("session_stem") is not None:
+            if not isinstance(data["session_stem"], dict):
+                raise OCFError("session_stem must be an object")
+            references["session_stem"] = data["session_stem"]["file"]
+    assets = {}
+    for name, value in references.items():
+        if not isinstance(value, str):
+            raise OCFError("asset reference must be a portable relative path")
+        asset = safe_path(value, path.parent, exists=False)
+        if asset.exists() and not asset.is_file():
+            raise OCFError("asset reference must name a file")
+        assets[name] = asset
+    return assets
+
+
+def compact_source_event(row: dict) -> dict:
+    """Event identity/selection only; never return narration or arbitrary metadata."""
+    keys = (
+        "event_id",
+        "narration_key",
+        "stage_id",
+        "source",
+        "speaker",
+        "voice",
+        "selection_scope",
+        "text_sha256",
+        "text_compatibility",
+        "fallback_reason",
+        "recording_id",
+        "gain_db",
+        "rate_scale",
+    )
+    result = {key: row[key] for key in keys if key in row}
+    if "recording" in row:
+        result["recording"] = {
+            key: row["recording"][key]
+            for key in ("sha256", "version", "approval")
+            if key in row["recording"]
+        }
+    if "units" in row:
+        from collections import Counter
+
+        result["units"] = {
+            "total": len(row["units"]),
+            "sources": dict(Counter(unit["source"] for unit in row["units"])),
+        }
+    return result
+
+
+@public
+def inspect_narration_sources(
+    function_id: str, manifest: str, locale: str = "en-US", offset: int = 0, limit: int = 10
+) -> dict:
+    """Read-only source coverage with per-event pagination and no narration text."""
+    from .locale import normalize_tag
+    from .narration_cli import coverage
+
+    owner(function_id)
+    page([], offset, limit)
+    path, _ = workspace_manifest(manifest)
+    report = coverage(function_id, locale=normalize_tag(locale), sources=path)
+    return {
+        key: report[key]
+        for key in (
+            "schema_version",
+            "id",
+            "mode",
+            "manifest_sha256",
+            "locale",
+            "fallback",
+            "speakers",
+            "speaker_consistency",
+            "output_channels",
+            "content_verification",
+        )
+        if key in report
+    } | {
+        "function_id": function_id,
+        "events": page([compact_source_event(row) for row in report["events"]], offset, limit),
+    }
+
+
+@public
+def validate_recordings(
+    function_id: str, manifest: str, locale: str = "en-US", idempotency_key: str | None = None
+) -> dict:
+    """Explicit job: validate the whole source selection and measure selected originals."""
+    from .dev_jobs import start
+
+    return start(
+        "narration-validate",
+        {
+            "function_id": function_id,
+            "manifest": manifest,
+            "locale": locale,
+        },
+        idempotency_key,
+    )
+
+
+@public
+def start_narration_render(
+    function_id: str,
+    manifest: str,
+    locale: str = "en-US",
+    voice: str | None = None,
+    pacing: str = "sleep",
+    idempotency_key: str | None = None,
+    mix_profile: str | None = None,
+) -> dict:
+    """Explicit recorded/hybrid complete-session job; unique workspace output."""
+    from .dev_jobs import start
+
+    return start(
+        "narration-render",
+        {
+            "function_id": function_id,
+            "manifest": manifest,
+            "locale": locale,
+            "voice": voice,
+            "pacing": pacing,
+            **({"mix_profile": mix_profile} if mix_profile is not None else {}),
+        },
+        idempotency_key,
+    )
 
 
 @public
@@ -675,10 +855,34 @@ def validate_voice_dataset(manifest: str) -> dict:
 
 
 @public
-def plan_voice_training(backend: str = "piper") -> dict:
+def inspect_voice_capabilities(probe_gpu: bool = False) -> dict:
+    """Read local adapter metadata; GPU query is opt-in and bounded to two seconds."""
+    from .voice_engine_cli import capabilities_report
+
+    return capabilities_report(probe_gpu=probe_gpu)
+
+
+@public
+def plan_voice_training(backend: str = "piper", dataset: str | None = None) -> dict:
     from .voice_datasets import training_plan
 
-    return training_plan(backend=backend)
+    path = workspace_manifest(dataset, dataset=True)[0] if dataset is not None else None
+    result = training_plan(path, backend=backend)
+    if result.get("dataset"):
+        result["dataset"] = {
+            key: result["dataset"][key]
+            for key in (
+                "status",
+                "dataset_id",
+                "records",
+                "errors",
+                "warnings",
+                "quality_summary",
+                "readiness",
+                "authorization_verified",
+            )
+        }
+    return result
 
 
 @public
@@ -741,6 +945,10 @@ TOOLS = {
         plan_voice_training,
         start_voice_audition,
         inspect_release_artwork,
+        inspect_narration_sources,
+        validate_recordings,
+        start_narration_render,
+        inspect_voice_capabilities,
     )
 }
 READ_ONLY = {
@@ -768,6 +976,8 @@ READ_ONLY = {
         list_voice_profiles,
         plan_voice_training,
         inspect_release_artwork,
+        inspect_narration_sources,
+        inspect_voice_capabilities,
     )
 }
 

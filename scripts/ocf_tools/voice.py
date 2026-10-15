@@ -953,6 +953,7 @@ def render_narration(
     recordings: str | Path | None = None,
     narration_sources: str | Path | None = None,
     narration_source: str | None = None,
+    source_rate_scale: float = 1.0,
 ) -> dict[str, Any]:
     """Render a timed document into a mono 16-bit WAV narration stem.
 
@@ -970,6 +971,12 @@ def render_narration(
     default: rendering must not start when required spoken narration is missing.
     """
     explicit_backend = backend
+    if (
+        not isinstance(source_rate_scale, (int, float))
+        or not math.isfinite(source_rate_scale)
+        or source_rate_scale <= 0
+    ):
+        raise OCFError("source speech rate scale must be finite and positive")
     backend = backend or doc.get("voice_profile")
     if locale is not None or document_key_usage(doc)["keyed"]:
         from .locale import LocaleCatalog, document_locale, resolve_document
@@ -1020,6 +1027,25 @@ def render_narration(
         locale = source_resolver.locale
         channels = source_resolver.channels
         recording_provenance = source_resolver.report
+        recording_provenance["session_rate_scale"] = source_rate_scale
+        if source_resolver.config.get("session_stem"):
+            from .narration_stems import render_stem
+
+            metadata = render_stem(
+                doc,
+                source_resolver.config["session_stem"],
+                source_resolver.root,
+                out_path,
+                locale=locale,
+                sample_rate=sample_rate,
+                channels=channels,
+                overwrite=overwrite,
+            )
+            metadata["narration_source"].update(
+                id=source_resolver.config["id"],
+                manifest_sha256=source_resolver.report["manifest_sha256"],
+            )
+            return metadata
         tts_rows = [
             row
             for event in source_resolver.rows.values()
@@ -1135,19 +1161,23 @@ def render_narration(
     source_to_groups = {}
     default_spec = spec
     source_spec_cache = {}
+
+    def selected_spec(query):
+        cache_key = json.dumps(query, sort_keys=True)
+        if cache_key not in source_spec_cache:
+            chosen = resolve_backend(query, locale=locale, catalog=catalog)
+            if render_cue is None and render_cue_with_profile is None:
+                check_backend_locale(chosen)
+            source_spec_cache[cache_key] = chosen
+        return source_spec_cache[cache_key]
+
     for group_index, group in enumerate(utterances):
         source_event = originals.get(group[0].id, {})
         source_row = source_resolver.rows[group[0].id] if source_resolver else None
         spec = default_spec
         if source_row and source_row["source"] == "tts":
             query = source_row.get("voice")
-            cache_key = json.dumps(query, sort_keys=True)
-            if cache_key not in source_spec_cache:
-                chosen = resolve_backend(query, locale=locale, catalog=catalog)
-                if render_cue is None and render_cue_with_profile is None:
-                    check_backend_locale(chosen)
-                source_spec_cache[cache_key] = chosen
-            spec = source_spec_cache[cache_key]
+            spec = selected_spec(query)
         text = " ".join((e.text or "").strip() for e in group).strip()
         display_text = text
         hints: dict[str, Any] = {}
@@ -1199,11 +1229,7 @@ def render_narration(
                 )
                 unit_spec = spec
                 if unit_source and unit_source["source"] == "tts":
-                    unit_spec = resolve_backend(
-                        unit_source.get("voice"), locale=locale, catalog=catalog
-                    )
-                    if render_cue is None and render_cue_with_profile is None:
-                        check_backend_locale(unit_spec)
+                    unit_spec = selected_spec(unit_source.get("voice"))
                 unit_text = (
                     apply_pronunciation(unit["text"], hints, unit_spec["name"])
                     if hints
@@ -1221,7 +1247,7 @@ def render_narration(
                     )
                 rate_scale = unit["rate_scale"]
                 if unit_source and unit_source["source"] == "tts":
-                    rate_scale *= unit_source["rate_scale"]
+                    rate_scale *= unit_source["rate_scale"] * source_rate_scale
                 effective_spec, rate_report = (
                     _paced_voice_spec(unit_spec, rate_scale)
                     if not unit_source or unit_source["source"] == "tts"
@@ -1339,8 +1365,11 @@ def render_narration(
             unit_rows = []
             pacing_summary = None
         else:
-            if source_row and source_row["rate_scale"] != 1:
-                spec, _ = _paced_voice_spec(spec, source_row["rate_scale"])
+            if source_row and source_row["rate_scale"] * source_rate_scale != 1:
+                padding = spec.get("piper_sentence_silence_s")
+                spec, _ = _paced_voice_spec(spec, source_row["rate_scale"] * source_rate_scale)
+                if spec["name"] == "piper":
+                    spec["piper_sentence_silence_s"] = padding
             wav_bytes = (
                 render_cue_with_profile(text, spec)
                 if render_cue_with_profile is not None

@@ -412,3 +412,69 @@ def test_synth_processing_input_cache_repairs_interrupted_generation(tmp_path):
     repeated, receipt = voice._source_processing(audio, row, {}, 8000, 1)
     assert first == repeated and receipt["cache_hit"] is True
     assert path.read_bytes() == audio
+
+
+def test_marked_complete_stem_integrates_without_tts_or_added_silence(tmp_path, monkeypatch):
+    doc, _config, path = fixture(tmp_path)
+    wav(tmp_path / "stem.wav", frames=24000, stereo=True)
+    source = {
+        "schema_version": "2.0",
+        "id": "complete-stem",
+        "locale": "en-US",
+        "mode": "recording",
+        "output_channels": 2,
+        "session_stem": {
+            "file": "stem.wav",
+            "sha256": sha256_of_file(tmp_path / "stem.wav"),
+            "locale": "en-US",
+            "speaker": "synthetic-fixture",
+            "version": "1",
+            "markers": {
+                "first": {
+                    "at": 0,
+                    "speech_duration": 1,
+                    "end": 2,
+                    "text_sha256": text_fingerprint(doc["timeline"][0]["text"]),
+                },
+                "second": {
+                    "at": 2,
+                    "speech_duration": 1,
+                    "end": 3,
+                    "text_sha256": text_fingerprint(doc["timeline"][1]["text"]),
+                },
+            },
+        },
+    }
+    path.write_text(json.dumps(source), encoding="utf-8")
+    monkeypatch.setattr(
+        voice, "resolve_backend", lambda *_a, **_k: pytest.fail("stem needs no TTS")
+    )
+    output = tmp_path / "complete-stem.wav"
+    result = voice.render_narration(doc, output, narration_sources=path, sample_rate=8000)
+    assert result["duration"] == 3 and result["channels"] == 2
+    assert result["narration_source"]["mode"] == "recording"
+    assert result["cue_stats"][1]["narration_source"]["marker"]["at"] == 2
+    assert output.read_bytes() == (tmp_path / "stem.wav").read_bytes()
+
+
+def test_stage_recording_can_use_explicit_per_event_segments(tmp_path):
+    doc, config, path = fixture(tmp_path, "recording")
+    wav(tmp_path / "take.wav", frames=48000)
+    entry = config["recordings"]["take"]
+    entry["sha256"] = sha256_of_file(tmp_path / "take.wav")
+    entry["segment"] = {"start_s": 0, "end_s": 1}
+    config["recordings"]["second"] = {
+        **entry,
+        "text_sha256": text_fingerprint(doc["timeline"][1]["text"]),
+        "target": {"event_id": "second"},
+        "segment": {"start_s": 2, "end_s": 4},
+    }
+    path.write_text(json.dumps(config), encoding="utf-8")
+    result = voice.render_narration(
+        doc, tmp_path / "segments.wav", narration_sources=path, sample_rate=8000
+    )
+    assert result["duration"] == 5
+    assert result["cue_stats"][1]["at"] == 2
+    assert result["cue_stats"][1]["duration"] == 2
+    receipt = result["cue_stats"][1]["narration_source"]["preparation"]
+    assert receipt["selected_segment"]["duration_s"] == 2

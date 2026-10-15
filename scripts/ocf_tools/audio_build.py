@@ -352,13 +352,14 @@ def _resolve_tags(
 
 def _mix_master_ffmpeg(
     speech_path: Path,
-    background_path: Path,
+    background_path: Path | None,
     out_path: Path,
     *,
     background_gain: float = 0.25,
     speech_gain: float = 1.0,
     speech_gain_windows: list[tuple[float, float, float]] | None = None,
-) -> None:
+    mix_profile: dict[str, Any] | str | Path | None = None,
+) -> dict[str, Any] | None:
     """Mix narration + reference-master bed to a stereo master via ffmpeg.
 
     Mirrors the established stereo master pipeline (narration upmixed to
@@ -369,6 +370,19 @@ def _mix_master_ffmpeg(
     ffmpeg. ``speech_gain_windows`` applies ``volume`` filters gated with
     ``enable='between(t,...)'`` so barely-audible sections stay quiet.
     """
+    from .mix_profiles import MIX_TIMEOUT_SECONDS, mix_master
+
+    if mix_profile is not None:
+        return mix_master(
+            speech_path,
+            background_path,
+            out_path,
+            mix_profile=mix_profile,
+            sample_rate=DEFAULT_SAMPLE_RATE,
+            background_gain=background_gain,
+            speech_gain=speech_gain,
+            speech_gain_windows=speech_gain_windows,
+        )
     ffmpeg = _require_ffmpeg()
     narration_filters = [f"aformat=channel_layouts=stereo,volume={speech_gain:.6f}"]
     for start, end, db in speech_gain_windows or []:
@@ -396,7 +410,7 @@ def _mix_master_ffmpeg(
         str(out_path),
     ]
     ensure_dir(out_path.parent)
-    result = workspace_run(cmd, capture_output=True)
+    result = workspace_run(cmd, capture_output=True, timeout=MIX_TIMEOUT_SECONDS)
     if result.returncode != 0:
         raise OCFError(f"ffmpeg master mix failed: {result.stderr.decode(errors='replace')[-200:]}")
 
@@ -740,8 +754,10 @@ def build(
     recordings: str | Path | None = None,
     narration_sources: str | Path | None = None,
     narration_source: str | None = None,
+    source_rate_scale: float = 1.0,
     artwork: str | Path | None = None,
     retain_background_stem: bool = False,
+    mix_profile: dict[str, Any] | str | Path | None = None,
 ) -> dict[str, Any]:
     """`ocf audio build <AUDIO_ID|MANIFEST>` — render narration, mix, master.
 
@@ -751,6 +767,10 @@ def build(
     with metadata derived from the manifests (see ``_resolve_tags``), plus any
     ``tag_overrides``.
     """
+    if mix_profile is not None:
+        from .mix_profiles import load_mix_profile
+
+        mix_profile = load_mix_profile(mix_profile)
     if manifest_override is not None and document_override is None:
         raise OCFError("manifest_override requires document_override")
     manifest = manifest_override if manifest_override is not None else find_audio_manifest(query)
@@ -821,7 +841,11 @@ def build(
         strict=strict,
         recordings=recordings,
         **(
-            {"narration_sources": narration_sources, "narration_source": narration_source}
+            {
+                "narration_sources": narration_sources,
+                "narration_source": narration_source,
+                "source_rate_scale": source_rate_scale,
+            }
             if narration_sources is not None or narration_source is not None
             else {}
         ),
@@ -875,17 +899,19 @@ def build(
     )
 
     ensure_dir(out_root)
-    if bg_path is not None:
+    mix_processing = None
+    if bg_path is not None or mix_profile is not None:
         # Any engine-rendered bed (Farfield, SBaGenX, reference-master) goes
         # through ffmpeg: those stems are long, stereo, and often 24-bit, which
         # the pure-stdlib PCM path cannot decode or hold in memory.
-        _mix_master_ffmpeg(
+        mix_processing = _mix_master_ffmpeg(
             narration_wav,
             bg_path,
             master_path,
             background_gain=background_gain,
             speech_gain=float(voice_gain),
             speech_gain_windows=gain_windows,
+            **({"mix_profile": mix_profile} if mix_profile is not None else {}),
         )
     else:
         mix(
@@ -1020,7 +1046,10 @@ def build(
         "mixing": {
             "voice_gain": float(voice_gain),
             "background_gain": float(background_gain) if bg_path is not None else 0.0,
-            "method": "ffmpeg-stereo" if bg_path is not None else "pcm-mono",
+            "method": "ffmpeg-stereo"
+            if bg_path is not None or mix_profile is not None
+            else "pcm-mono",
+            **({"processing": mix_processing} if mix_profile is not None else {}),
         },
         "narration_gain_windows": [
             {"start": start, "end": end, "gain_db": db} for start, end, db in gain_windows

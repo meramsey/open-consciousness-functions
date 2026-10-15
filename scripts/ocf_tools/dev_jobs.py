@@ -89,6 +89,8 @@ def validate_request(operation: str, arguments: dict) -> dict:
         "artwork": {"function_id", "locale", "theme", "resolution"},
         "voice-audition": {"voices", "locale"},
         "voice-dataset": {"manifest"},
+        "narration-validate": {"function_id", "manifest", "locale"},
+        "narration-render": {"function_id", "manifest", "locale", "voice", "pacing", "mix_profile"},
         "tests": {"paths", "full", "workers"},
         "plans": {"function_id", "locale", "generate"},
         "render": {"function_id", "locale", "voice", "pacing", "force"},
@@ -99,9 +101,29 @@ def validate_request(operation: str, arguments: dict) -> dict:
         raise OCFError("operation or argument is not allowlisted")
     args = dict(arguments)
     if operation == "voice-dataset":
-        manifest = safe_path(args["manifest"], work_root())
-        if manifest.suffix != ".json" or manifest.stat().st_size > 2 * 1024**2:
-            raise OCFError("dataset manifest must be JSON, at most 2 MiB")
+        from .agent_api import workspace_manifest
+
+        workspace_manifest(args["manifest"], dataset=True)
+        return args
+    if operation in {"narration-validate", "narration-render"}:
+        from .agent_api import workspace_manifest
+
+        owner(args["function_id"])
+        args["locale"] = normalize_tag(args.get("locale", "en-US"))
+        workspace_manifest(args["manifest"])
+        if operation == "narration-render":
+            if args.get("mix_profile") is not None:
+                from .mix_profiles import load_mix_profile
+
+                _mix_path, mix_data = workspace_manifest(args["mix_profile"])
+                load_mix_profile(mix_data)
+            if args.get("voice") is not None and (
+                not isinstance(args["voice"], str) or not args["voice"].strip()
+            ):
+                raise OCFError("voice must be a profile ID or null")
+            if args.get("pacing", "sleep") not in ("normal", "relaxed", "sleep"):
+                raise OCFError("valid pacing is required")
+            args.setdefault("pacing", "sleep")
         return args
     if operation == "voice-audition":
         from .indexes import load_voice_profiles
@@ -233,11 +255,44 @@ def input_identity(operation: str, args: dict) -> dict:
             name: voice_identity(_voice_profile(name, "en-US", LocaleCatalog())[1])
             for name in args["voices"]
         }
-    if operation == "voice-dataset":
-        from .agent_api import safe_path
+    if operation in {"voice-dataset", "narration-validate", "narration-render"}:
+        from .agent_api import manifest_assets, workspace_manifest
 
-        manifest = safe_path(args["manifest"], work_root())
-        sources["dataset_manifest"] = sha256_of_file(manifest)
+        dataset = operation == "voice-dataset"
+        manifest, data = workspace_manifest(args["manifest"], dataset=dataset)
+        sources["dataset_manifest" if dataset else "narration_manifest"] = sha256_of_file(manifest)
+        sources["referenced_assets"] = {
+            name: sha256_of_file(path) if path.is_file() else None
+            for name, path in manifest_assets(manifest, data, dataset=dataset).items()
+        }
+        if operation == "narration-render":
+            from .locale import LocaleCatalog
+            from .narration_cli import session_document
+            from .narration_sources import SourceResolver
+            from .speech_cache import voice_identity
+            from .voice import resolve_backend
+
+            resolver = SourceResolver(
+                session_document(args["function_id"], args["locale"]),
+                manifest,
+                locale=args["locale"],
+                default_voice=args.get("voice"),
+            )
+            voices = {
+                row["voice"]
+                for event in resolver.report["events"]
+                for row in event.get("units", [event])
+                if row["source"] == "tts"
+            }
+            sources["voices"] = {
+                str(name): voice_identity(
+                    resolve_backend(name, locale=args["locale"], catalog=LocaleCatalog())
+                )
+                for name in sorted(voices, key=str)
+            }
+            if args.get("mix_profile"):
+                mix_path, _mix_data = workspace_manifest(args["mix_profile"])
+                sources["mix_profile"] = sha256_of_file(mix_path)
     return sources
 
 
@@ -525,11 +580,17 @@ def execute(job_id: str) -> int:
     root = directory(job_id)
     request = json.loads((root / "request.json").read_text(encoding="utf-8"))
     operation = request["operation"]
-    args = validate_request(operation, request["arguments"])
     try:
         from .session_plans import digest
 
-        if digest(input_identity(operation, args)) != request["input_sha256"]:
+        args = validate_request(operation, request["arguments"])
+        try:
+            identity = input_identity(operation, args)
+        except (OCFError, OSError, ValueError) as exc:
+            raise OCFError(
+                f"inputs changed or unavailable since enqueue; explicit new job required: {exc}"
+            ) from exc
+        if digest(identity) != request["input_sha256"]:
             raise OCFError("inputs changed since enqueue; explicit new job required")
         if operation == "artwork":
             from .artwork import generate_cover
@@ -567,6 +628,30 @@ def execute(job_id: str) -> int:
 
             result = validate_dataset(safe_path(args["manifest"], work_root()))
             passed = result["errors"] == 0
+        elif operation == "narration-validate":
+            result = validate_narration_recordings(**args)
+            passed = result["errors"] == 0
+        elif operation == "narration-render":
+            from .agent_api import workspace_manifest
+            from .complete_session import render_complete_session
+
+            manifest, _ = workspace_manifest(args.pop("manifest"))
+            if args.get("mix_profile"):
+                _mix_path, mix_data = workspace_manifest(args["mix_profile"])
+                args["mix_profile"] = mix_data
+            output = work_path("renders", "jobs", job_id)
+            generated = render_complete_session(
+                **args,
+                narration_sources=manifest,
+                output=output,
+            )
+            result = {
+                "output_directory": output.relative_to(work_root()).as_posix(),
+                "report": (output / "session-report.json").relative_to(work_root()).as_posix(),
+                "dry_run": generated["dry_run"],
+                "listening_approval": None,
+            }
+            passed = True
         elif operation == "render":
             from .bulk_render import render_many
 
@@ -653,9 +738,94 @@ def execute(job_id: str) -> int:
         result["status"] = "passed" if passed else "failed"
     except Exception as exc:
         result = {"status": "failed", "code": "operation-failed", "message": str(exc)[:1500]}
+        if operation in {"narration-validate", "narration-render"}:
+            result.update(
+                errors=1,
+                diagnostics=[
+                    {
+                        "severity": "error",
+                        "code": "narration-operation",
+                        "message": str(exc)[:1000],
+                    }
+                ],
+            )
         passed = False
     save(root / "result.json", result)
     return 0 if passed else 1
+
+
+def validate_narration_recordings(function_id: str, manifest: str, locale: str = "en-US") -> dict:
+    """Validate every source binding, then inspect each selected original once."""
+    from collections import Counter
+
+    from .agent_api import safe_path, workspace_manifest
+    from .narration_cli import coverage
+    from .recording_audio import inspect_recording
+
+    path, _ = workspace_manifest(manifest)
+    report = coverage(function_id, locale=locale, sources=path)
+    rows = [row for event in report["events"] for row in event.get("units", [event])]
+    selected = {}
+    for row in rows:
+        if row["source"] == "recording":
+            entry = row["recording"]
+            selected.setdefault(entry["file"], entry)
+        elif row["source"] == "recorded-stem":
+            selected.setdefault(row["file"], row)
+    diagnostics = []
+    duration = 0.0
+    for name, entry in selected.items():
+        try:
+            measured = inspect_recording(safe_path(name, path.parent))
+            if measured["input_sha256"] != entry["sha256"]:
+                raise OCFError("recording changed during inspection")
+            original = measured["original"]
+            duration += original["duration_s"]
+            diagnostics.append(
+                {
+                    "severity": "info",
+                    "code": "recording-measured",
+                    "file": name,
+                    "input_sha256": measured["input_sha256"],
+                    "metrics": {
+                        key: original[key]
+                        for key in (
+                            "duration_s",
+                            "sample_rate",
+                            "channels",
+                            "format",
+                            "sample_peak",
+                            "per_channel",
+                            "silence_fraction",
+                            "stereo_correlation",
+                            "channel_imbalance_db_left_minus_right",
+                        )
+                    },
+                }
+            )
+        except (OCFError, OSError, ValueError) as exc:
+            diagnostics.append(
+                {
+                    "severity": "error",
+                    "code": "recording-inspection",
+                    "file": name,
+                    "message": str(exc)[:1000],
+                }
+            )
+    return {
+        "function_id": function_id,
+        "locale": locale,
+        "events": len(report["events"]),
+        "sources": dict(Counter(row["source"] for row in rows)),
+        "selected_originals": len(selected),
+        "measured_originals": sum(row["severity"] == "info" for row in diagnostics),
+        "duration_s": duration,
+        "errors": sum(row["severity"] == "error" for row in diagnostics),
+        "diagnostics": diagnostics,
+        "transcript_verified": False,
+        "listening_approval": None,
+        "originals_modified": False,
+    }
 
 
 def main():

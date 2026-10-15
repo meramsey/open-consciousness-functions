@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/mix-profile.schema.json",
+  "title": "Explicit source-neutral final mix profile",
+  "description": "Optional final-mix processing, independent of narration source and semantic DSP. All numbers must be finite. Order: existing narration/background gains and narration windows, optional shared-envelope stereo bed ducking, sum, headroom attenuation, limiter, explicit final-mix fades. Loudness is measurement only. An empty profile retains the established limiter settings; it adds no ducking, attenuation or fades.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "1.0", "default": "1.0"},
+    "background_ducking": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Sidechain from gain/window-adjusted narration. Fixed downward RMS detection, maximum channel link, unity makeup, fully wet; a single gain envelope multiplies both bed channels without crossfeed or phase processing. Requires a background when enabled.",
+      "properties": {
+        "enabled": {"type": "boolean", "default": false},
+        "threshold_dbfs": {"type": "number", "minimum": -60, "maximum": 0, "default": -24},
+        "ratio": {"type": "number", "minimum": 1, "maximum": 20, "default": 2},
+        "attack_ms": {"type": "number", "minimum": 0.01, "maximum": 2000, "default": 20},
+        "release_ms": {"type": "number", "minimum": 0.01, "maximum": 9000, "default": 250},
+        "knee": {"type": "number", "minimum": 1, "maximum": 8, "default": 2.8284271247461903}
+      }
+    },
+    "output_headroom_db": {
+      "type": "number", "minimum": 0, "maximum": 60, "default": 0,
+      "description": "Nonnegative dB attenuation of the sum before limiting; not automatic normalization."
+    },
+    "limiter": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Sample-peak limiter, not a true-peak guarantee. Auto level and latency compensation remain disabled, matching the established master. Ceiling is linear full-scale amplitude.",
+      "properties": {
+        "enabled": {"type": "boolean", "default": true},
+        "ceiling": {"type": "number", "minimum": 0.0625, "maximum": 1, "default": 0.97},
+        "attack_ms": {"type": "number", "minimum": 0.1, "maximum": 80, "default": 5},
+        "release_ms": {"type": "number", "minimum": 1, "maximum": 8000, "default": 50}
+      }
+    },
+    "fade_in_s": {"type": "number", "minimum": 0, "maximum": 30, "default": 0},
+    "fade_out_s": {"type": "number", "minimum": 0, "maximum": 30, "default": 0},
+    "measure_loudness": {"type": "boolean", "default": false}
+  }
+}
