@@ -1,6 +1,6 @@
 # Local research/editorial inputs never enter source distributions.
 include scripts/tools/build_package_data.py
-recursive-include brand *.json *.svg *.md
+recursive-include brand *.json *.svg *.md *.html
 include audio/voices/recording-script.json
 recursive-include schemas *.json
 recursive-include functions *.yaml

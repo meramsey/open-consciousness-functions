@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/brand-refinement.schema.json",
+  "title": "OCF 0.2.0 original visual refinement candidate",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "id", "version", "name", "abbreviation", "review_status", "human_approval", "license", "attribution", "geometry", "compositions", "variants"],
+  "properties": {
+    "schema_version": {"const": "1.0"}, "id": {"const": "ocf-cosmic-resonance"}, "version": {"const": "0.2.0"},
+    "name": {"const": "Open Consciousness Functions"}, "abbreviation": {"const": "OCF"},
+    "review_status": {"const": "candidate"}, "human_approval": {"type": "null"},
+    "license": {"type": "string"}, "attribution": {"type": "string"},
+    "geometry": {"type": "object", "additionalProperties": false,
+      "required": ["center", "rings", "path", "path_base_width", "path_tip_width", "star_radius", "core_radius"],
+      "properties": {
+        "center": {"$ref": "#/definitions/point"},
+        "rings": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "object", "additionalProperties": false, "required": ["radius", "width", "start", "end"], "properties": {"radius": {"type": "number", "minimum": 100, "maximum": 400}, "width": {"type": "number", "minimum": 2, "maximum": 30}, "start": {"type": "number", "minimum": -180, "maximum": 180}, "end": {"type": "number", "minimum": 180, "maximum": 360}}}},
+        "path": {"type": "array", "minItems": 7, "maxItems": 7, "items": {"$ref": "#/definitions/point"}},
+        "path_base_width": {"type": "number", "minimum": 30, "maximum": 100}, "path_tip_width": {"type": "number", "minimum": 1, "maximum": 15},
+        "star_radius": {"type": "number", "minimum": 20, "maximum": 60}, "core_radius": {"type": "number", "minimum": 4, "maximum": 15}
+      }},
+    "compositions": {"type": "object", "additionalProperties": false, "required": ["logo", "icon", "app", "album", "social"], "properties": {"logo": {"$ref": "#/definitions/composition"}, "icon": {"$ref": "#/definitions/composition"}, "app": {"$ref": "#/definitions/composition"}, "album": {"$ref": "#/definitions/composition"}, "social": {"$ref": "#/definitions/composition"}}},
+    "variants": {"type": "array", "uniqueItems": true, "items": {"enum": ["primary", "icon", "monochrome", "light", "dark", "album", "app", "social"]}}
+  },
+  "definitions": {
+    "point": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number", "minimum": 0, "maximum": 1000}},
+    "composition": {"type": "object", "additionalProperties": false, "required": ["width", "height", "emblem"], "properties": {"width": {"type": "integer", "minimum": 500, "maximum": 1600}, "height": {"type": "integer", "minimum": 500, "maximum": 1000}, "emblem": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "number", "minimum": -100, "maximum": 1000}}}}
+  }
+}

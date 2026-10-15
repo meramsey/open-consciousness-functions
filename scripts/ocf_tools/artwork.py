@@ -95,7 +95,11 @@ def theme_tokens(surface: str = "ui", theme: str | None = None) -> dict:
 
 
 def gallery(output: Path, *, ui_theme: str | None = None, artwork_theme: str | None = None) -> dict:
-    themes = [p.stem for p in sorted((BRAND / "themes").glob("*.json"))]
+    themes = [
+        p.stem
+        for p in sorted((BRAND / "themes").glob("*.json"))
+        if load_theme(p.stem).get("brand_revision", "0.1.0") == "0.1.0"
+    ]
     data = {
         name: {
             "palette": load_theme(name)["palette"],
@@ -171,6 +175,13 @@ def brand_svg(variant: str = "primary", theme: str | None = None) -> str:
         else "ocf-dark"
     )
     data = load_theme(theme)
+    if data.get("brand_revision") == "0.2.0":
+        from . import brand_refinement
+
+        raw, _ = _font_assets(data["font"])
+        return brand_refinement.vector(
+            brand_refinement.scene(data, brand_refinement.composition_for(variant)), raw
+        )
     p, g = data["palette"], brand["geometry"]
     width = 1600 if variant == "social" else 1000
     body = [
@@ -277,6 +288,21 @@ def _draw_emblem(draw, scale: float, brand: dict, data: dict):
 def export_brand(
     output: Path, *, variant: str = "primary", theme: str | None = None, resolution: int = 1000
 ) -> dict:
+    selected = load_theme(
+        theme
+        or (
+            "ocf-light"
+            if variant == "light"
+            else "ocf-minimal"
+            if variant == "monochrome"
+            else "ocf-dark"
+        )
+    )
+    if selected.get("brand_revision") == "0.2.0":
+        from .brand_refinement import export
+
+        raw, _ = _font_assets(selected["font"])
+        return export(output, variant, selected, raw, resolution)
     svg = brand_svg(variant, theme)
     if output.exists():
         raise OCFError("refusing to overwrite brand artwork")
@@ -369,7 +395,14 @@ def generate_cover(
     if any(word in title.casefold() for word in ("hemi-sync", "human plus", "monroe")):
         raise OCFError("OCF artwork cannot include third-party brand names")
     data = load_theme(theme, overrides=overrides)
-    brand = identity()
+    if data.get("brand_revision") == "0.2.0" and resolution < 320:
+        raise OCFError("refined covers require at least 320 pixels for legible typography")
+    if data.get("brand_revision") == "0.2.0":
+        from .brand_refinement import identity as refined_identity
+
+        brand = refined_identity()
+    else:
+        brand = identity()
     font_bytes, glyphs = _font_assets(data["font"])
     footer = function_id + (f" - {version}" if version else "")
     texts = [brand["name"], title, footer]
@@ -406,6 +439,13 @@ def generate_cover(
         "raqm": features.version("raqm"),
         "renderer_sha256": sha256_of_file(Path(__file__)),
     }
+    if data.get("brand_revision") == "0.2.0":
+        settings["refinement_renderer_sha256"] = sha256_of_file(
+            Path(__file__).with_name("brand_refinement.py")
+        )
+        from .brand_refinement import fit_title, scene
+
+        refined_graph = fit_title(scene(data, "album", title=title, identifier=footer), font_bytes)
     if title_override is not None:
         settings["title_locale"] = "operator-supplied"
         settings["title_resolution"] = {
@@ -448,6 +488,28 @@ def generate_cover(
                 return _publish_cover(path, report, output)
         except (ValueError, OSError, AttributeError):
             pass
+    if data.get("brand_revision") == "0.2.0":
+        from .brand_refinement import _text_layout, raster, scene
+
+        image, graph = raster(refined_graph, font_bytes, resolution)
+        factor = resolution / graph["width"]
+        text_nodes = [node for node in graph["nodes"] if node["kind"] == "text"]
+        header_boxes = [_text_layout(node, font_bytes)[3] for node in text_nodes[:3]]
+        header_box = [
+            min(box[0] for box in header_boxes),
+            min(box[1] for box in header_boxes),
+            max(box[2] for box in header_boxes),
+            max(box[3] for box in header_boxes),
+        ]
+        footer_box = _text_layout(text_nodes[-1], font_bytes)[3]
+        bounds = {
+            "title": [[round(v * factor, 2) for v in box] for box in graph["title_boxes"]],
+            "header": [round(v * factor, 2) for v in header_box],
+            "footer": [round(v * factor, 2) for v in footer_box],
+        }
+        return _save_cover(
+            image, settings, fingerprint, path, report_path, output, graph["title_lines"], bounds
+        )
     output_resolution = resolution
     resolution *= 2
     image = Image.new("RGB", (resolution, resolution), data["palette"]["background"])
@@ -552,9 +614,21 @@ def generate_cover(
         for box in (header_box, footer_box)
     ):
         raise OCFError("configured font cannot fit cover header/identifier safely")
-    root.mkdir(parents=True, exist_ok=True)
-    buffer = io.BytesIO()
     image = image.resize((output_resolution, output_resolution), Image.Resampling.LANCZOS)
+    bounds = {
+        "title": [[round(v / 2, 2) for v in box] for box in title_boxes],
+        "header": [round(v / 2, 2) for v in header_box],
+        "footer": [round(v / 2, 2) for v in footer_box],
+    }
+    return _save_cover(image, settings, fingerprint, path, report_path, output, lines, bounds)
+
+
+def _save_cover(image, settings, fingerprint, path, report_path, output, lines, bounds):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    format = settings["format"]
+    buffer = io.BytesIO()
+    if format == "jpeg":
+        image = image.convert("RGB")
     image.save(
         buffer,
         format="PNG" if format == "png" else "JPEG",
@@ -579,11 +653,7 @@ def generate_cover(
         "human_approval": None,
         "cache": "miss",
         "title_lines": lines,
-        "layout_bounds": {
-            "title": [[round(v / 2, 2) for v in box] for box in title_boxes],
-            "header": [round(v / 2, 2) for v in header_box],
-            "footer": [round(v / 2, 2) for v in footer_box],
-        },
+        "layout_bounds": bounds,
     }
     write_text_atomic(report_path, json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     return _publish_cover(path, report, output)

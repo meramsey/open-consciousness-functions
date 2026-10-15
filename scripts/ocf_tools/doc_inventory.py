@@ -24,7 +24,7 @@ def build_inventory() -> dict:
         for p in result.stdout.decode("utf-8").split("\0")
         if p
         and (
-            p.endswith(".md")
+            p.endswith((".md", ".html"))
             or p.startswith("schemas/")
             or p in ("scripts/ocf_tools/cli.py", "scripts/ocf_tools/prompts.py")
         )
@@ -35,8 +35,14 @@ def build_inventory() -> dict:
             continue
         path = REPO_ROOT / name
         text = path.read_text(encoding="utf-8")
-        heading = re.search(r"^#\s+(.+)$", text, re.MULTILINE)
-        generated = "GENERATED FILE" in text[:400] or "GENERATED —" in text[:400]
+        heading = re.search(r"^#\s+(.+)$", text, re.MULTILINE) or re.search(
+            r"<title>(.*?)</title>", text
+        )
+        generated = (
+            "GENERATED FILE" in text[:400]
+            or "GENERATED —" in text[:400]
+            or (name.startswith("brand/versions/") and "/gallery/" in name)
+        )
         historical = (
             name.startswith(("docs/releases/", "docs/research/", "docs/drafts/"))
             or "Bootstrap_Prompt" in name

@@ -50,14 +50,18 @@ def stage_data(root: Path, target: Path) -> dict:
             ):
                 omitted.append(path.relative_to(root).as_posix())
                 continue
-            if not path.is_file() or path.suffix not in (
-                ".json",
-                ".yaml",
-                ".yml",
-                ".sbg",
-                ".txt",
-                ".md",
-                ".svg",
+            if not path.is_file() or (
+                path.suffix
+                not in (
+                    ".json",
+                    ".yaml",
+                    ".yml",
+                    ".sbg",
+                    ".txt",
+                    ".md",
+                    ".svg",
+                )
+                and not (directory == "brand" and path.suffix == ".html")
             ):
                 continue
             relative = path.relative_to(root)

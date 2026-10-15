@@ -1,0 +1,83 @@
+{
+  "baseline_version": "0.1.0",
+  "brand_version": "0.2.0",
+  "files": [
+    {
+      "brand_version": "0.1.0",
+      "path": "baseline.svg",
+      "sha256": "ef65b2f4a76cff032f8c915a10e9654af232bf08eac50bb2aa3ab9098bad74ff"
+    },
+    {
+      "brand_version": "0.2.0",
+      "path": "refined-dark.svg",
+      "sha256": "6f2cc1ea4e5c718cb2169df9ad6d4b8ed239b628eeaed27079415216aa08317e"
+    },
+    {
+      "brand_version": "0.2.0",
+      "path": "refined-light.svg",
+      "sha256": "e03039ceb58a707c8781e2bc9e44f712d1c30ce47eff33a1039422aa7616180a"
+    },
+    {
+      "brand_version": "0.2.0",
+      "path": "refined-minimal.svg",
+      "sha256": "c864d617a0caedfc4e87651248190f318473cf855ff2b6c4d53cd217b9e8ba2c"
+    },
+    {
+      "brand_version": "0.2.0",
+      "path": "refined-album.svg",
+      "sha256": "a09a6542a9789e49f435727ba288ac721eda05df3858f472f7a2fc51978dce68"
+    },
+    {
+      "brand_version": "0.2.0",
+      "path": "refined-app.svg",
+      "sha256": "ecc5244ca49a472cdeda569e45742a960afb64735975fbf6c8ee75f6d61b12ca"
+    },
+    {
+      "brand_version": "0.2.0",
+      "path": "refined-social.svg",
+      "sha256": "c331affb04d307cf1235e93ade11a4f5ca28b4e5da51a262ab0144ca0f13b47e"
+    },
+    {
+      "path": "index.html",
+      "sha256": "1d92305ac5bd320dae9ceed884cad49007d4381c5bd777b713727229e0146a8a"
+    }
+  ],
+  "human_approval": null,
+  "inputs": {
+    "artwork_integration_sha256": "6d21aeeed3d810bbc5b46a7a8f615076576c46fad047bffb53104363dfed540f",
+    "baseline_svg_sha256": "ef65b2f4a76cff032f8c915a10e9654af232bf08eac50bb2aa3ab9098bad74ff",
+    "brand_sha256": "830c25dcc2b6947fcb6b634b702627533b2a1d0be934bb7250a08927527ae238",
+    "fonts": {
+      "baseline": "69853909b940023570964e29cffe30da95aea8de3627736b5cd15ab30143169f",
+      "refined-album": "69853909b940023570964e29cffe30da95aea8de3627736b5cd15ab30143169f",
+      "refined-app": "69853909b940023570964e29cffe30da95aea8de3627736b5cd15ab30143169f",
+      "refined-dark": "69853909b940023570964e29cffe30da95aea8de3627736b5cd15ab30143169f",
+      "refined-light": "69853909b940023570964e29cffe30da95aea8de3627736b5cd15ab30143169f",
+      "refined-minimal": "69853909b940023570964e29cffe30da95aea8de3627736b5cd15ab30143169f",
+      "refined-social": "69853909b940023570964e29cffe30da95aea8de3627736b5cd15ab30143169f"
+    },
+    "renderer_sha256": "1da2eb39fb8137d2a8dd83e8b66fbeeb4f0cad9a97f48663aaa3d5447a82fe94",
+    "themes": {
+      "baseline": "744402594f28d1288290957a9f2dfbc8e2f6019879f7dbf9b9b5c7f7e11b9cc3",
+      "refined-album": "b6fb42315f1e1b62061d9a1ed18c9efe81099fd5ac3d6c927ac7fcd65c252bad",
+      "refined-app": "b6fb42315f1e1b62061d9a1ed18c9efe81099fd5ac3d6c927ac7fcd65c252bad",
+      "refined-dark": "b6fb42315f1e1b62061d9a1ed18c9efe81099fd5ac3d6c927ac7fcd65c252bad",
+      "refined-light": "afaf4125978d80ed0aa24a2060b95cf0a28fa0bcb2faa63d580e8b6899f6a940",
+      "refined-minimal": "4f09c4d64468db1eefdb7282a0c76c3175d1eced3d3bd1ba59c963f1a033ad59",
+      "refined-social": "b6fb42315f1e1b62061d9a1ed18c9efe81099fd5ac3d6c927ac7fcd65c252bad"
+    },
+    "ui_theme": {
+      "id": "ocf-light",
+      "palette": {
+        "accent": "#007B94",
+        "background": "#F3F8FF",
+        "foreground": "#10233D",
+        "highlight": "#926100",
+        "secondary": "#6940A5"
+      }
+    },
+    "vector_only": true
+  },
+  "review_status": "candidate",
+  "schema_version": "1.0"
+}

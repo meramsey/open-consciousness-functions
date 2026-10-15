@@ -5,3 +5,8 @@ See [branding and independent themes](../docs/BRANDING.md).
 `surfaces.json` independently selects UI, cover and documentation themes.
 Generate SVG/PNG variants with `ocf artwork brand`. These are original
 review candidates, not a user-approved final public identity.
+
+The baseline remains in `identity.json` and `candidates/`. The independently
+versioned refinement is in `versions/0.2.0/`, with a
+[responsive comparison gallery](versions/0.2.0/gallery/index.html). Refined
+themes are opt-in; they do not change the existing surface defaults.

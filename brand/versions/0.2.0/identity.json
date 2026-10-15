@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "ocf-cosmic-resonance",
+  "version": "0.2.0",
+  "name": "Open Consciousness Functions",
+  "abbreviation": "OCF",
+  "review_status": "candidate",
+  "human_approval": null,
+  "license": "Apache-2.0",
+  "attribution": "Original OCF procedural geometry, evolved from OCF 0.1.0; no third-party artwork used.",
+  "geometry": {
+    "center": [500, 400],
+    "rings": [
+      {"radius": 155, "width": 17, "start": -78, "end": 248},
+      {"radius": 250, "width": 11, "start": -48, "end": 282},
+      {"radius": 350, "width": 6, "start": -94, "end": 230}
+    ],
+    "path": [[210, 930], [570, 865], [710, 790], [500, 650], [260, 490], [350, 465], [500, 400]],
+    "path_base_width": 76,
+    "path_tip_width": 7,
+    "star_radius": 42,
+    "core_radius": 8
+  },
+  "compositions": {
+    "logo": {"width": 1600, "height": 560, "emblem": [0.56, 0.56, 14, 8]},
+    "icon": {"width": 1000, "height": 1000, "emblem": [1.06, 1.02, -30, -2]},
+    "app": {"width": 1000, "height": 1000, "emblem": [1.0, 0.96, 0, 12]},
+    "album": {"width": 1000, "height": 1000, "emblem": [1.08, 0.72, -40, 95]},
+    "social": {"width": 1600, "height": 800, "emblem": [0.8, 0.8, 750, 8]}
+  },
+  "variants": ["primary", "icon", "monochrome", "light", "dark", "album", "app", "social"]
+}

@@ -5,10 +5,13 @@
   "type":"object","additionalProperties":false,
   "required":["schema_version","id","version","palette","logo_variant","font","layout","minimum_contrast","effects"],
   "properties":{
+    "brand_revision":{"enum":["0.1.0","0.2.0"]},"finish":{"enum":["dark","light","minimal"]},
     "schema_version":{"const":"1.0"},"id":{"type":"string","pattern":"^[a-z][a-z0-9-]+$"},"version":{"type":"string"},"extends":{"type":"string"},
-    "palette":{"type":"object","additionalProperties":false,"required":["background","foreground","accent","secondary","highlight"],"properties":{"background":{"$ref":"#/definitions/color"},"foreground":{"$ref":"#/definitions/color"},"accent":{"$ref":"#/definitions/color"},"secondary":{"$ref":"#/definitions/color"},"highlight":{"$ref":"#/definitions/color"}}},
+    "palette":{"type":"object","additionalProperties":false,"required":["background","foreground","accent","secondary","highlight"],"properties":{"background":{"$ref":"#/definitions/color"},"foreground":{"$ref":"#/definitions/color"},"accent":{"$ref":"#/definitions/color"},"secondary":{"$ref":"#/definitions/color"},"highlight":{"$ref":"#/definitions/color"},"surface":{"$ref":"#/definitions/color"},"atmosphere":{"$ref":"#/definitions/color"},"rose":{"$ref":"#/definitions/color"},"gold_shadow":{"$ref":"#/definitions/color"},"ring_shadow":{"$ref":"#/definitions/color"}}},
     "logo_variant":{"enum":["primary","icon","monochrome","light","dark","album","app","social"]},
     "font":{"type":"string","minLength":1},"ui_font_family":{"type":"string","pattern":"^[A-Za-z0-9 ,_-]+$"},"layout":{"enum":["cosmic-path","minimal"]},"minimum_contrast":{"type":"number","minimum":4.5,"maximum":21},
     "effects":{"type":"object","additionalProperties":false,"required":["rings","glow"],"properties":{"rings":{"type":"boolean"},"glow":{"type":"boolean"}}}
-  },"definitions":{"color":{"type":"string","pattern":"^#[0-9A-Fa-f]{6}$"}}
+  },
+  "allOf":[{"if":{"required":["brand_revision"],"properties":{"brand_revision":{"const":"0.2.0"}}},"then":{"required":["finish"],"properties":{"palette":{"required":["surface","atmosphere","rose","gold_shadow","ring_shadow"]}}}}],
+  "definitions":{"color":{"type":"string","pattern":"^#[0-9A-Fa-f]{6}$"}}
 }

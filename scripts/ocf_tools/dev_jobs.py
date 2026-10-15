@@ -128,6 +128,10 @@ def validate_request(operation: str, arguments: dict) -> dict:
             )
         if type(args.get("resolution")) is not int or not 256 <= args["resolution"] <= 4096:
             raise OCFError("artwork resolution must be 256..4096")
+        from .artwork import load_theme
+
+        if load_theme(args["theme"]).get("brand_revision") == "0.2.0" and args["resolution"] < 320:
+            raise OCFError("refined covers require at least 320 pixels for legible typography")
         return args
     for key in ("full", "generate", "force", "dry_run"):
         if key in args and not isinstance(args[key], bool):

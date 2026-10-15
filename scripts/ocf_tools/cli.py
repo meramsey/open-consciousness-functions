@@ -115,6 +115,23 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     art_sub = art.add_subparsers(dest="artwork_kind", required=True)
     art_sub.add_parser("themes")
+    refinement_cmd = art_sub.add_parser(
+        "refine",
+        help="create a new baseline/refined comparison gallery; never overwrite an existing gallery",
+    )
+    refinement_cmd.add_argument("--output", type=Path, required=True)
+    refinement_cmd.add_argument(
+        "--vector-only",
+        action="store_true",
+        help="portable SVG sources/gallery without binary previews",
+    )
+    refinement_cmd.add_argument(
+        "--check", action="store_true", help="verify existing gallery inputs and checksums"
+    )
+    refinement_cmd.add_argument("--ui-theme", default="ocf-light")
+    refinement_cmd.add_argument(
+        "--custom-theme", help="optional custom artwork theme extending an ocf-refined theme"
+    )
     gallery_cmd = art_sub.add_parser(
         "gallery",
         help="create a local offline candidate review UI with independent interface/artwork themes",
@@ -126,6 +143,9 @@ def _build_parser() -> argparse.ArgumentParser:
     brand_cmd.add_argument("--variant", default="primary")
     brand_cmd.add_argument("--theme")
     brand_cmd.add_argument("--output", type=Path, required=True)
+    brand_cmd.add_argument(
+        "--resolution", type=int, default=1000, help="raster width; refined icons allow 32 pixels"
+    )
     theme_cmd = art_sub.add_parser(
         "theme", help="validate/resolve a built-in or custom theme; emit independent surface tokens"
     )
@@ -1120,8 +1140,20 @@ def main(argv: list[str] | None = None) -> int:
                     "themes": [p.stem for p in sorted((artwork.BRAND / "themes").glob("*.json"))],
                     "brand": artwork.identity(),
                 }
+            elif args.artwork_kind == "refine":
+                from .brand_refinement import comparison_gallery
+
+                result = comparison_gallery(
+                    args.output,
+                    vector_only=args.vector_only,
+                    ui_theme=args.ui_theme,
+                    custom_theme=args.custom_theme,
+                    check=args.check,
+                )
             elif args.artwork_kind == "brand":
-                result = artwork.export_brand(args.output, variant=args.variant, theme=args.theme)
+                result = artwork.export_brand(
+                    args.output, variant=args.variant, theme=args.theme, resolution=args.resolution
+                )
             elif args.artwork_kind == "gallery":
                 result = artwork.gallery(
                     args.output, ui_theme=args.ui_theme, artwork_theme=args.artwork_theme
