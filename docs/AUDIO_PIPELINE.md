@@ -120,6 +120,11 @@ narration are authored.
 
 ## Complete-session and narration-only auditions
 
+See [bulk sessions](BULK_SESSIONS.md) for engine-independent `audio plan`,
+derived TTS eligibility, configuration locking and resumable `audio render-many`.
+All current function bindings select the LOCKED shared engineering baseline;
+the earlier STANDARD draft remains available explicitly for comparison.
+
 `audio render` defaults to a complete session and requires a bound template that
 declares `session_completeness: complete` and selects a semantic DSP profile.
 It composes the template with the function's bound canonical narration, measures
@@ -134,8 +139,8 @@ python3 scripts/ocf.py audio render OCF-SLP-005 --locale en-US \
   --voice OCF-VOICE-0002 --pacing sleep
 ```
 
-Sleep Easy uses `OCF-TPL-SESSION-HPLUS-STANDARD-001` and
-`OCF-DSP-HPLUS-STANDARD-DRAFT-001` by default. The DSP profile selects the
+Sleep Easy uses `OCF-TPL-SESSION-HPLUS-LOCKED-001` and
+`OCF-DSP-HPLUS-LOCKED-001` by default. The DSP profile selects the
 Focus 10 candidate OCF-BG-0012 as the default bed from the opening. The only
 DSP exception is the explicit Focus 10 → Focus 11 entry, two-pass function
 programming section, and Focus 11 → Focus 10 close, using canonical newer Focus

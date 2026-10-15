@@ -44,10 +44,11 @@ community-authored consciousness-function training exercises.
 
 ## Maturity
 
-**Early bootstrap.** The schema, CLI, validation, generated indexes, and all
-55 legacy mappings are in place. Function records start at
-`specification-only`; community scripts, audio implementations, and reviews
-are welcome through the proposal workflow.
+**Development toolchain.** All 55 current functions have validated English
+narration bindings and voice-independent complete-session plans. Historical
+source availability (39 available / 16 unavailable) is separate from TTS
+eligibility. Human content and listening review remain required; these are
+auditions, not 55 approved releases.
 
 The **timed-transcript / audio toolchain** has two parts. The **transcript
 pipeline** (`.lrc`/`.srt`/`.vtt`/`.txt`/`.md` → OCF timed YAML, sections,
@@ -78,15 +79,18 @@ python3 scripts/ocf.py validate --all         # validate every record
 python3 -m pytest                             # run the test suite
 ```
 
-Functions with an explicit narration plan binding can be rendered without an
-authored fixed-time script. For example, Sleep Easy resolves its reviewed
-English narration resources and measures the selected Piper voice dynamically:
+Generate plans without Piper, Farfield or FFmpeg, then preview or render with
+your installed voice. Follow [bulk sessions](docs/BULK_SESSIONS.md) for the
+complete workflow, resumable rendering and review boundaries.
 
 ```bash
+python3 scripts/ocf.py audio eligibility --all --locale en-US
+python3 scripts/ocf.py audio plan --all --locale en-US --check
+python3 scripts/ocf.py audio plan OCF-SLP-005 --locale en-US --expand
 python3 scripts/ocf.py audio render OCF-SLP-005 --locale en-US \
   --voice OCF-VOICE-0002 --pacing sleep --dry-run
 python3 scripts/ocf.py audio render OCF-SLP-005 --locale en-US \
-  --voice OCF-VOICE-0002 --pacing sleep --output /tmp/sleep-easy-audition
+  --voice OCF-VOICE-0002 --pacing sleep
 ```
 
 This creates a local WAV audition and transcript. It does not approve function

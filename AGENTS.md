@@ -108,7 +108,7 @@ indexes/docs. For an audio implementation, compose or author a timed script
 using `python3 scripts/ocf.py session compose --help` and then follow “Render an
 audition.” Common failures are duplicate IDs/commands, missing required schema
 fields, or unavailable evidence; do not invent provenance. Relevant sources:
-`schemas/function.schema.json`, `scripts/ocf_tools/wizards.py`,
+`schemas/function.schema.json`, `scripts/ocf_tools/prompts.py`,
 `scripts/ocf_tools/validators.py`, and `scripts/ocf_tools/indexes.py`.
 
 ### Edit a function
@@ -198,6 +198,16 @@ and whether the manifest requires a background engine. See `docs/DOCTOR.md` and
 
 ### Validate and refresh generated docs
 
+For complete-session source plans, use `python3 scripts/ocf.py audio plan --all
+--locale en-US --check`; generate with the same command without `--check`.
+Plans under `audio/session-plans/` are generated, not hand-edit targets.
+`audio eligibility --all` derives renderability independently of historical
+sources. `audio render-many` explicitly selects one/many/all auditions and
+supports verified resume; use `--dry-run` first. The `new session-plan` wizard
+uses the same generator. Shared LOCKED profiles and `audio/defaults/` are an
+immutable engineering baseline, not human listening approval. See
+`docs/BULK_SESSIONS.md` for creation, timing review, caching and release steps.
+
 Run `python3 scripts/ocf.py validate --all`,
 `python3 scripts/ocf.py locale validate --locale en-US`,
 `python3 scripts/ocf.py build-index --check`, and `make check`; run
@@ -226,6 +236,12 @@ README and this file are provider-neutral repository discovery conventions;
 they do not imply that every assistant product automatically reads them.
 
 ## Required task result format
+
+Mobile-friendly reporting is mandatory for every future OCF task: put the
+entire final job report in exactly one plain-text fenced block (triple
+backticks), with compact headings, absolute test counts, commit hashes,
+verified CI URLs and explicit PASS/FAIL/SKIP statuses. No external Markdown
+tables and no split report blocks.
 
 For every task, report results inside one fenced plain-text code block. Include
 completion status; branch, local commit and remote synchronization; completed

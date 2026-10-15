@@ -73,6 +73,11 @@ dependencies, not unit-test dependencies.
   sentence units and resolves locale/profile timing roles.
 - Build: `audio_build.py` renders narration, selects background/DSP, mixes,
   encodes, and writes render metadata.
+- Bulk sessions: `eligibility.py` migrates bindings explicitly and derives
+  capability; `session_plans.py` generates compact declarations using the
+  existing composer; `bulk_render.py` reuses complete rendering with verified
+  receipts; `speech_cache.py` caches exact synthesis inputs. See
+  [bulk workflows](BULK_SESSIONS.md).
 
 Never infer semantic identity from a prose string, filename, carrier frequency,
 or subtitle `cue_id`. Use event IDs, schemas, manifests, and measured ledgers.

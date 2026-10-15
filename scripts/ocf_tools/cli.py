@@ -42,6 +42,11 @@ Usage:
   ocf new audio               Register an audio implementation (wizard)
   ocf new background          Register a background preset (wizard)
   ocf new test-report         Create a testing report (wizard)
+  ocf new session-plan        Generate a bound complete-session source plan (wizard)
+  ocf audio eligibility [FUNCTION_ID|--all] --locale en-US
+  ocf audio plan [FUNCTION_ID|--all] [--locale TAG] [--dry-run|--check]
+  ocf audio render-many [FUNCTION_ID ...|--all] --voice PROFILE [--dry-run|--resume|--force]
+  ocf audio defaults          Verify immutable shared configuration hashes
   ocf import source           Fingerprint (and optionally copy) a source file
   ocf edit function <id|slug> Open a function record in $EDITOR
   ocf validate [--all]        Validate current / all records + rule checks
@@ -170,6 +175,9 @@ def _build_parser() -> argparse.ArgumentParser:
     new_sub.add_parser("audio", help="new audio implementation manifest")
     new_sub.add_parser("background", help="new background preset manifest")
     new_sub.add_parser("test-report", help="new testing report")
+    new_sub.add_parser(
+        "session-plan", help="generate a complete session plan from existing narration"
+    )
 
     importer = sub.add_parser("import", help="import a source file")
     importer_sub = importer.add_subparsers(dest="import_kind")
@@ -1099,6 +1107,10 @@ def main(argv: list[str] | None = None) -> int:
                 run_audio_wizard()
             elif args.new_kind == "background":
                 run_background_wizard()
+            elif args.new_kind == "session-plan":
+                from .prompts import run_session_plan_wizard
+
+                run_session_plan_wizard()
             elif args.new_kind == "test-report":
                 run_test_report_wizard()
             else:

@@ -53,3 +53,12 @@ style lifecycle.
 
 IDs are permanent and survive renames. Historical records are never removed —
 only deprecate, supersede, or reject.
+
+## From a new function to an audition
+
+Use `python3 scripts/ocf.py new function`, then author and review narration
+through [source-first authoring](SOURCE_FIRST_AUTHORING.md). Bind the actual
+opener/body/closer resources and follow [bulk session planning](BULK_SESSIONS.md).
+`python3 scripts/ocf.py new session-plan` delegates to the same generator as
+`audio plan`. Historical source availability does not determine TTS eligibility;
+successful planning does not approve content or authorize release.

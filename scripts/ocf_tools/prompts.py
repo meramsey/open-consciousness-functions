@@ -480,6 +480,32 @@ def run_function_wizard() -> None:
     print("  2. Validate:                        ./scripts/ocf validate --all")
     print("  3. Regenerate indexes:              ./scripts/ocf build-index")
     print("  4. Consider a proposal:             ./scripts/ocf new proposal")
+    print("  5. Author/review locale narration:  docs/SOURCE_FIRST_AUTHORING.md")
+    print(
+        "  6. Bind existing narration:         ./scripts/ocf audio migrate-bindings "
+        + function_id
+        + " --dry-run"
+    )
+    print("  7. Generate a session plan:         ./scripts/ocf new session-plan")
+
+
+@_wizard
+def run_session_plan_wizard() -> None:
+    """Delegate planning to exactly the same API as `audio plan`."""
+    from .session_plans import generate_plans
+
+    functions = load_all_functions()
+    if not functions:
+        print("Create a function and narration binding first: ocf new function")
+        return
+    owner = str(ask_pick("Function ID", [f.id for f in functions]).value)
+    locale = str(ask("Locale", default="en-US").value)
+    preview = generate_plans([owner], locale=locale, dry_run=True)
+    print(f"Validated {preview['validated']} complete-session plan; no audio synthesis.")
+    confirm = ask_yes_no("Write generated plan?", default=True)
+    if confirm.intent == "value" and str(confirm.value).lower() == "yes":
+        generate_plans([owner], locale=locale)
+        print(f"Generated. Inspect: ocf audio plan {owner} --locale {locale} --expand")
 
 
 def build_function_yaml(**kwargs: Any) -> dict[str, Any]:
