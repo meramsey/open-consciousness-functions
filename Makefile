@@ -9,6 +9,9 @@ help: ## Show this help
 test: ## Run the pytest suite
 	$(PY) -m pytest
 
+test-parallel: ## Run the entire suite with two isolated workers (pytest-xdist)
+	$(PY) -m pytest -n 2 --dist loadfile
+
 validate: ## Validate all functions, proposals, and audio manifests
 	$(OCF) validate --all
 

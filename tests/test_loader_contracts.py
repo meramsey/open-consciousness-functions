@@ -59,6 +59,22 @@ def test_yaml_mapping_banner_and_error_translation(tree):
             indexes.load_yaml_file(path)
 
 
+def test_safe_yaml_loader_parity_mutation_isolation_and_python_fallback(monkeypatch):
+    import yaml
+
+    text = "base: &base {name: café, values: [1, true]}\ncopy: *base\ndate: 2026-10-15\n"
+    expected = yaml.load(text, Loader=yaml.SafeLoader)
+    first = utils.yaml_safe_load(text)
+    assert first == expected
+    assert first["base"] is first["copy"]
+    first["base"]["values"].append("mutation")
+    assert utils.yaml_safe_load(text) == expected
+    monkeypatch.delattr(yaml, "CSafeLoader", raising=False)
+    assert utils.yaml_safe_load(text) == expected
+    with pytest.raises(yaml.YAMLError):
+        utils.yaml_safe_load("!!python/object/apply:os.system ['false']")
+
+
 def test_manifest_fallback_primary_precedence_and_directory_exclusion(tree):
     assert indexes.discover_audio_manifests() == []
     fallback = put(

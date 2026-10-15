@@ -31,7 +31,7 @@ class OCFFileExistsError(OCFError):
 
 def yaml_safe_load(data: str) -> Any:
     """Parse YAML with safe loader."""
-    return yaml.safe_load(data)
+    return yaml.load(data, Loader=getattr(yaml, "CSafeLoader", yaml.SafeLoader))
 
 
 def yaml_safe_dump(data: Any) -> str:

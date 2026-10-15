@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import os
 import sys
+import tempfile
 from pathlib import Path
 
 import pytest
@@ -12,6 +14,16 @@ SCRIPTS_DIR = REPO_ROOT / "scripts"
 
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
+
+
+def pytest_configure(config):
+    """Keep pytest and every worker's OCF subprocess scratch local and isolated."""
+    root = REPO_ROOT / ".ocf-work" / "tmp"
+    root.mkdir(parents=True, exist_ok=True)
+    if not config.option.basetemp:
+        config.option.basetemp = tempfile.mkdtemp(prefix="pytest-run-", dir=root)
+    worker = getattr(config, "workerinput", {}).get("workerid", "serial")
+    os.environ["OCF_WORK_DIR"] = str(Path(config.option.basetemp) / f"ocf-{worker}")
 
 
 @pytest.fixture()

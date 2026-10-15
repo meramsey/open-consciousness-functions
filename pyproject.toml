@@ -28,6 +28,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
   "pytest>=8.0",
+  "pytest-xdist==3.8.0",
   "ruff>=0.5",
   "coverage>=7.6",
   "setuptools>=68",
@@ -58,6 +59,7 @@ markers = [
   "external_tool: invokes an external executable",
   "e2e: full workflow/CLI artifact integration",
   "platform: operating-system or installed-package integration",
+  "slow: deliberately long-running integration (not excluded from full checks)",
 ]
 
 [tool.ruff]
