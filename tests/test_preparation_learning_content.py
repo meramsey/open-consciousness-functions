@@ -130,9 +130,9 @@ def test_three_automatic_learning_claims_are_removed_from_owned_shell():
 def test_review_views_are_fresh_and_do_not_invent_measured_speech():
     result = preview.build_preview()
     for name in ("listener", "developer"):
-        assert (
-            REPO_ROOT / f"docs/drafts/preparation-learning.en-US.{name}.md"
-        ).read_text(encoding="utf-8") == result[name]
+        assert (REPO_ROOT / f"docs/drafts/preparation-learning.en-US.{name}.md").read_text(
+            encoding="utf-8"
+        ) == result[name]
     assert "estimates" in result["developer"]
     assert "measured TTS" in result["developer"]
     assert result["stats"]["explicit_pause_s"] > 300
