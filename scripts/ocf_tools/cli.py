@@ -193,6 +193,26 @@ def _build_parser() -> argparse.ArgumentParser:
 
     audio = sub.add_parser("audio", help="audio tooling")
     audio_sub = audio.add_subparsers(dest="audio_kind")
+    bulk_cmd = audio_sub.add_parser(
+        "render-many",
+        help="explicit resumable bulk complete-session auditions (one memory-bounded job at a time)",
+    )
+    bulk_cmd.add_argument("function_ids", nargs="*")
+    bulk_cmd.add_argument("--all", action="store_true")
+    bulk_cmd.add_argument("--locale", default="en-US")
+    bulk_cmd.add_argument("--voice", required=True)
+    bulk_cmd.add_argument("--pacing", choices=["normal", "relaxed", "sleep"], default="sleep")
+    bulk_cmd.add_argument("--rate", type=int, default=44100)
+    bulk_cmd.add_argument("--dry-run", action="store_true")
+    bulk_cmd.add_argument(
+        "--resume",
+        action="store_true",
+        default=True,
+        help="skip only checksum-verified matching renders (default)",
+    )
+    bulk_cmd.add_argument(
+        "--force", action="store_true", help="create new auditions even if verified outputs exist"
+    )
     plan_cmd = audio_sub.add_parser(
         "plan", help="generate compact voice-independent complete-session source plans"
     )
@@ -1110,6 +1130,25 @@ def main(argv: list[str] | None = None) -> int:
                     create_lock()
                 print(json.dumps(check_lock(), indent=2, ensure_ascii=False))
                 return 0
+            if args.audio_kind == "render-many":
+                import json
+
+                from .bulk_render import render_many
+
+                if bool(args.function_ids) == args.all:
+                    raise OCFError("select function IDs or --all")
+                result = render_many(
+                    None if args.all else args.function_ids,
+                    voice=args.voice,
+                    locale=args.locale,
+                    pacing=args.pacing,
+                    dry_run=args.dry_run,
+                    force=args.force,
+                    resume=args.resume,
+                    sample_rate=args.rate,
+                )
+                print(json.dumps(result, ensure_ascii=False, indent=2))
+                return 1 if result["failed"] else 0
             if args.audio_kind == "plan":
                 import json
 

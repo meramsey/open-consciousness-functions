@@ -1,0 +1,119 @@
+"""Opt-in, content-addressed PCM synthesis cache scoped to an OCF render job."""
+
+from __future__ import annotations
+
+import hashlib
+import io
+import json
+import os
+import shutil
+import wave
+from contextlib import contextmanager
+from contextvars import ContextVar
+from importlib.metadata import PackageNotFoundError, version
+from pathlib import Path
+from uuid import uuid4
+
+from .paths import work_path
+from .utils import OCFError, sha256_of_file
+
+CACHE_VERSION = "ocf-tts-pcm/1"
+_active: ContextVar[bool] = ContextVar("ocf_speech_cache", default=False)
+
+
+@contextmanager
+def enabled(active: bool = True):
+    token = _active.set(active)
+    try:
+        yield
+    finally:
+        _active.reset(token)
+
+
+def voice_identity(spec: dict) -> dict:
+    """Fingerprint actual engine/model/config bytes, not filenames or voice labels."""
+    binary = shutil.which(spec["binary"])
+    if not binary:
+        raise OCFError(f"voice backend is unavailable: {spec['binary']}")
+    assets = {"binary": sha256_of_file(Path(binary))}
+    if spec.get("model"):
+        model = Path(spec["model"])
+        if not model.is_file():
+            raise OCFError(f"voice model is unavailable: {model.name}")
+        assets["model"] = sha256_of_file(model)
+        config = Path(str(model) + ".json")
+        assets["model_config"] = sha256_of_file(config) if config.is_file() else None
+    packages = {}
+    for name in ("piper-tts", "onnxruntime", "onnxruntime-gpu"):
+        try:
+            packages[name] = version(name)
+        except PackageNotFoundError:
+            packages[name] = None
+    return {
+        "assets": assets,
+        "settings": spec,
+        "packages": packages,
+        "renderer": sha256_of_file(Path(__file__).with_name("voice.py")),
+        "cache_version": CACHE_VERSION,
+    }
+
+
+def _valid_pcm(data: bytes) -> bool:
+    try:
+        with wave.open(io.BytesIO(data), "rb") as reader:
+            frames = reader.getnframes()
+            return (
+                frames > 0
+                and reader.getsampwidth() == 2
+                and reader.getnchannels() in (1, 2)
+                and len(reader.readframes(frames))
+                == frames * reader.getsampwidth() * reader.getnchannels()
+            )
+    except (wave.Error, EOFError, OSError):
+        return False
+
+
+def cached_cue(spec: dict, text: str, render) -> bytes:
+    if not _active.get():
+        return render()
+    identity = {
+        "voice": voice_identity(spec),
+        "text": text,
+        "locale": spec.get("locale", spec.get("language")),
+    }
+    key = hashlib.sha256(
+        json.dumps(identity, sort_keys=True, ensure_ascii=False).encode("utf-8")
+    ).hexdigest()
+    root = work_path("cache", "tts", key)
+    manifest = root / "manifest.json"
+    try:
+        info = json.loads(manifest.read_text(encoding="utf-8"))
+        data = (root / "speech.wav").read_bytes()
+        if (
+            info["key"] == key
+            and info["sha256"] == hashlib.sha256(data).hexdigest()
+            and _valid_pcm(data)
+        ):
+            return data
+    except (OSError, ValueError, KeyError, TypeError):
+        pass
+    data = render()
+    if not _valid_pcm(data):
+        raise OCFError("TTS cache refuses incomplete or invalid PCM output")
+    root.mkdir(parents=True, exist_ok=True)
+    # Unique staging and atomic replace: concurrent readers see either a valid
+    # matching pair or a miss. A crash never makes partial PCM a cache hit.
+    token = uuid4().hex
+    wav_temp = root / f".{token}.wav"
+    json_temp = root / f".{token}.json"
+    try:
+        wav_temp.write_bytes(data)
+        json_temp.write_text(
+            json.dumps({"key": key, "sha256": hashlib.sha256(data).hexdigest()}), encoding="utf-8"
+        )
+        os.replace(wav_temp, root / "speech.wav")
+        os.replace(json_temp, manifest)
+    finally:
+        wav_temp.unlink(missing_ok=True)
+        json_temp.unlink(missing_ok=True)
+    return data

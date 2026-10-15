@@ -612,6 +612,12 @@ def check_backend_locale(spec: dict[str, Any]) -> None:
 
 def render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes:
     """Render one cue with a detected backend; return raw WAV bytes."""
+    from .speech_cache import cached_cue
+
+    return cached_cue(spec, text, lambda: _render_cue_wav(spec, text, timeout))
+
+
+def _render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes:
     executable = shutil.which(spec["binary"])
     if not executable:
         raise OCFError(

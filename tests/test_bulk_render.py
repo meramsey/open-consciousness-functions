@@ -1,0 +1,111 @@
+import hashlib
+import io
+import json
+import wave
+
+import pytest
+from ocf_tools import bulk_render, speech_cache
+from ocf_tools.utils import OCFError
+
+
+def pcm():
+    result = io.BytesIO()
+    with wave.open(result, "wb") as writer:
+        writer.setnchannels(1)
+        writer.setsampwidth(2)
+        writer.setframerate(8000)
+        writer.writeframes(b"\0\0" * 80)
+    return result.getvalue()
+
+
+@pytest.mark.unit
+def test_speech_cache_identity_corruption_and_failures(monkeypatch, tmp_path):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    binary = tmp_path / "engine"
+    model = tmp_path / "model.onnx"
+    binary.write_bytes(b"binary")
+    model.write_bytes(b"model-1")
+    monkeypatch.setattr(speech_cache.shutil, "which", lambda _: str(binary))
+    spec = {"binary": "fixture", "model": str(model), "locale": "en-US", "piper_length_scale": 1.0}
+    calls = []
+
+    def render():
+        calls.append(1)
+        return pcm()
+
+    with speech_cache.enabled():
+        assert speech_cache.cached_cue(spec, "Exact text.", render) == pcm()
+        speech_cache.cached_cue(spec, "Exact text.", render)
+        assert len(calls) == 1
+        for changed in ({**spec, "locale": "fr"}, {**spec, "piper_length_scale": 1.2}):
+            speech_cache.cached_cue(changed, "Exact text.", render)
+        speech_cache.cached_cue(spec, "Changed text.", render)
+        model.write_bytes(b"model-2")
+        speech_cache.cached_cue(spec, "Exact text.", render)
+        assert len(calls) == 5
+        for path in (tmp_path / "work/cache/tts").glob("*/speech.wav"):
+            path.write_bytes(b"corrupt")
+        speech_cache.cached_cue(spec, "Exact text.", render)
+        assert len(calls) == 6
+        with pytest.raises(OCFError, match="invalid PCM"):
+            speech_cache.cached_cue(spec, "Invalid output", lambda: b"bad")
+
+
+@pytest.mark.unit
+def test_bulk_resume_verifies_artifacts_force_preserves_history_and_failure_continues(
+    monkeypatch, tmp_path
+):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    monkeypatch.setattr(bulk_render, "source_plan", lambda owner, locale: ({"id": owner}, {}, {}))
+    monkeypatch.setattr(bulk_render, "LocaleCatalog", lambda: None)
+    monkeypatch.setattr(bulk_render, "_voice_profile", lambda *_: ({}, {}))
+    monkeypatch.setattr(bulk_render, "voice_identity", lambda _: {"fixture": True})
+    outputs = []
+
+    def render(owner, **kwargs):
+        if owner == "failed":
+            raise OCFError("deliberate failure")
+        root = tmp_path / f"audition-{len(outputs)}"
+        root.mkdir()
+        data = pcm()
+        (root / "master.wav").write_bytes(data)
+        (root / "session-report.json").write_text(
+            json.dumps(
+                {
+                    "artifacts": {
+                        "wav": {
+                            "path": "master.wav",
+                            "size_bytes": len(data),
+                            "sha256": hashlib.sha256(data).hexdigest(),
+                        }
+                    }
+                }
+            )
+        )
+        outputs.append(root)
+        return {"output_directory": str(root)}
+
+    monkeypatch.setattr(bulk_render, "render_complete_session", render)
+    first = bulk_render.render_many(["ok", "failed"], voice="fixture")
+    assert first["failed"] == 1 and len(outputs) == 1
+    assert (
+        bulk_render.render_many(["ok"], voice="fixture")["results"][0]["status"]
+        == "skipped-verified"
+    )
+    bulk_render.render_many(["ok"], voice="fixture", force=True)
+    assert len(outputs) == 2 and outputs[0].exists()
+    (outputs[1] / "master.wav").write_bytes(b"corrupt")
+    bulk_render.render_many(["ok"], voice="fixture")
+    assert len(outputs) == 3
+
+
+@pytest.mark.unit
+def test_bulk_dry_run_needs_no_engine_and_writes_nothing(monkeypatch, tmp_path):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    monkeypatch.setattr(bulk_render, "source_plan", lambda *args: ({}, {}, {}))
+    monkeypatch.setattr(
+        bulk_render, "_voice_profile", lambda *args: pytest.fail("dry-run resolved a backend")
+    )
+    result = bulk_render.render_many(["fixture"], voice="unavailable", dry_run=True)
+    assert result["results"][0]["status"] == "planned"
+    assert not (tmp_path / "work").exists()
