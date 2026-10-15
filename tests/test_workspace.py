@@ -30,6 +30,48 @@ def test_workspace_override_and_joined_paths_are_validated(monkeypatch):
         paths.work_path("arbitrary")
 
 
+@pytest.mark.unit
+def test_workspace_rechecks_canonical_root_after_concurrent_creation(monkeypatch, tmp_path):
+    root = tmp_path / "work"
+    canonical = tmp_path / "canonical-work"
+    monkeypatch.setenv("OCF_WORK_DIR", str(root))
+    original_resolve = Path.resolve
+    created = False
+
+    def resolve(path, *args, **kwargs):
+        nonlocal created
+        if path == root:
+            return canonical if created else root
+        if path == root / "logs" / "jobs":
+            # Model a canonical spelling change while another worker creates
+            # the workspace, between root and descendant resolution.
+            created = True
+            return canonical / "logs" / "jobs"
+        return original_resolve(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "resolve", resolve)
+    assert paths.work_path("logs", "jobs") == canonical / "logs" / "jobs"
+    assert created
+    assert not canonical.exists()  # Path discovery must remain read-only.
+
+
+@pytest.mark.unit
+def test_workspace_recheck_still_rejects_resolved_escape(monkeypatch, tmp_path):
+    root = tmp_path / "work"
+    monkeypatch.setenv("OCF_WORK_DIR", str(root))
+    original_resolve = Path.resolve
+
+    def resolve(path, *args, **kwargs):
+        if path == root / "logs" / "jobs":
+            # Model a descendant symlink resolving outside the configured root.
+            return tmp_path / "outside"
+        return original_resolve(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "resolve", resolve)
+    with pytest.raises(ValueError, match="escapes"):
+        paths.work_path("logs", "jobs")
+
+
 def test_workspace_environment_is_subprocess_only_and_uses_all_temp_variables(
     monkeypatch, tmp_path
 ):

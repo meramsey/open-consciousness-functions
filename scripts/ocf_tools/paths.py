@@ -67,11 +67,15 @@ def work_path(area: str, *parts: str) -> Path:
     """Return a contained path in one of OCF's standard local work areas."""
     if area not in {"tmp", "cache", "renders", "logs"}:
         raise ValueError(f"unknown OCF work area: {area}")
-    root = work_root()
-    result = root.joinpath(area, *parts).resolve()
-    if not result.is_relative_to(root):
-        raise ValueError("OCF workspace path escapes its configured root")
-    return result
+    # Concurrent directory creation can change Windows' canonical spelling
+    # between these resolutions. Retry once with a freshly validated root;
+    # every successful return must still pass the resolved containment check.
+    for _ in range(2):
+        root = work_root()
+        result = root.joinpath(area, *parts).resolve()
+        if result.is_relative_to(root):
+            return result
+    raise ValueError("OCF workspace path escapes its configured root")
 
 
 def ensure_workspace() -> dict[str, Path]:
