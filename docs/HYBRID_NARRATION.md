@@ -85,7 +85,8 @@ strict under [localization](LOCALIZATION.md).
 
 Reports identify source, selection scope, recording/voice/speaker, expected text
 hash, fallback reason and measured timing. `speaker_consistency: report` is the
-default; `require-single` rejects more than one **declared** selected speaker.
+default; `require-single` rejects more than one **declared** selected speaker
+and requires an explicit speaker identity for every spoken source.
 This compares metadata, not voice biometrics, acoustic similarity or identity.
 Use honest speaker declarations when mixing a recording with a TTS profile.
 

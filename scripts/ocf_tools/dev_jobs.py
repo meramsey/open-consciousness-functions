@@ -203,6 +203,14 @@ def status(job_id: str) -> dict:
             "state": "failed",
             "error": "worker interrupted; inspect retained artifacts; explicit new start required",
         }
+    if state["state"] == "running":
+        try:
+            detail = json.loads((root / "progress.json").read_text(encoding="utf-8"))
+            if isinstance(detail, dict) and isinstance(detail.get("phase"), str):
+                state["progress"] = detail["phase"]
+                state["progress_detail"] = detail
+        except (OSError, ValueError):
+            pass
     return {key: value for key, value in state.items() if key not in {"heartbeat", "worker_pid"}}
 
 
@@ -577,6 +585,13 @@ def managed_execute(job_id: str):
 
 
 def execute(job_id: str) -> int:
+    from .progress import observing
+
+    with observing(lambda row: save(directory(job_id) / "progress.json", row)):
+        return _execute(job_id)
+
+
+def _execute(job_id: str) -> int:
     root = directory(job_id)
     request = json.loads((root / "request.json").read_text(encoding="utf-8"))
     operation = request["operation"]

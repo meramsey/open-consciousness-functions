@@ -1110,6 +1110,9 @@ def render_complete_session(
         shutil.copy2(render_background, background_path)
 
         master_probe = _probe_audio(master_path)
+        from .progress import report as report_progress
+
+        report_progress("verifying-session-audio")
         background_probe = _probe_audio(background_path)
         if master_probe["channels"] != 2 or master_probe["sample_rate"] != sample_rate:
             raise OCFError(f"complete session master is not {sample_rate} Hz stereo")

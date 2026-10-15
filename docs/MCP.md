@@ -82,6 +82,9 @@ JSON, and in cmd.exe escape inner double quotes or use an MCP client.
   train, clone or profile-import start tool.
 - `ocf_get_job_status`, `ocf_get_job_result`, `ocf_cancel_job`: persistent job
   lifecycle, bounded results and cooperative cancellation of owned processes.
+  Status includes current synthesis/preparation counters and background/mix/
+  verification phases where available. Progress is stored separately from worker
+  heartbeat/ownership; it never creates another queue or changes audio identity.
 - `ocf_verify_audio`: verifies contained artifact sizes/checksums against an
   audition manifest; codec decode happens during the renderer's publication.
 - `ocf_package_release`: existing release service; artwork must be supplied

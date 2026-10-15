@@ -140,7 +140,7 @@ def test_persistent_recording_validation_metrics_results_and_idempotency(sources
     )
     assert wait(first["job_id"])["state"] == "completed"
     same = api.validate_recordings(FUNCTION, path.name, idempotency_key="validation")
-    assert same["job_id"] == first["job_id"] and same["reused"]
+    assert same.get("job_id") == first["job_id"] and same.get("reused"), same
     result = api.get_job_result(first["job_id"], limit=1)["data"]
     assert result["status"] == "passed" and result["errors"] == 0
     assert result["sources"]["recording"] == len(data["recordings"])

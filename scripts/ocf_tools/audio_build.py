@@ -826,6 +826,9 @@ def build(
         encoding="utf-8",
     )
     narration_wav = stage_dir / "narration.wav"
+    from .progress import report as report_progress
+
+    report_progress("narration")
     narration_meta = render_narration(
         doc,
         narration_wav,
@@ -852,6 +855,7 @@ def build(
     )
 
     background_conf = manifest.get("background_audio", {})
+    report_progress("background-dsp", detail="measured narration complete")
     bg_preset = background_conf.get("preset")
     selected_profile = (
         dsp_profile or background_conf.get("semantic_profile") or doc.get("semantic_dsp_profile")
@@ -900,6 +904,7 @@ def build(
 
     ensure_dir(out_root)
     mix_processing = None
+    report_progress("stereo-mixing")
     if bg_path is not None or mix_profile is not None:
         # Any engine-rendered bed (Farfield, SBaGenX, reference-master) goes
         # through ffmpeg: those stems are long, stereo, and often 24-bit, which
@@ -973,6 +978,7 @@ def build(
         duration = narration_meta["duration"]
 
     render_doc = {
+        # Progress is an observer only and is deliberately absent from artifact identity.
         "schema_version": "1.0",
         "generated": current_date(),
         "audio_manifest": {

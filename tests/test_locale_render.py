@@ -593,14 +593,18 @@ class TestBackgroundPresetResolution:
 
         assert _preset_stem(preset) == expected
 
-    def test_any_engine_bed_uses_the_ffmpeg_master_mix(self, monkeypatch):
+    def test_any_engine_bed_uses_the_ffmpeg_master_mix(self, monkeypatch, tmp_path):
         """24-bit / long engine stems must not reach the pure-stdlib PCM mix."""
-        from ocf_tools import audio_build
+        from ocf_tools import audio_build, dev_jobs
 
         seen = {}
+        before = dev_jobs.input_identity("tests", {})
 
         def fake_ffmpeg(speech, background, out, **kwargs):
             seen["background"] = Path(background)
+            assert dev_jobs.input_identity("tests", {}) == before
+            assert Path(out).is_relative_to(tmp_path)
+            Path(out).write_bytes(fixed_cue("Original technical fixture"))
 
         monkeypatch.setattr(audio_build, "_mix_master_ffmpeg", fake_ffmpeg)
         monkeypatch.setattr(
@@ -616,27 +620,26 @@ class TestBackgroundPresetResolution:
         manifest["transcript_path"] = str(transcript)
         manifest["background_audio"] = {"strategy": "required", "preset": "OCF-BG-0007"}
         manifest["technical"].pop("checksum_sha256", None)
-        manifest_path = REPO_ROOT / "tests" / "fixtures" / "_tmp-audio-9003.yaml"
+        manifest_path = tmp_path / "audio-9003.yaml"
         manifest_path.write_text(yaml.safe_dump(manifest), encoding="utf-8")
         try:
             monkeypatch.setattr(
                 audio_build,
                 "_render_background",
-                lambda *a, **k: (Path("/tmp/bed-24bit.wav"), "farfield"),
+                lambda *a, **k: (tmp_path / "bed-24bit.wav", "farfield"),
             )
             audio_build.build(
                 str(manifest_path),
-                out_root=REPO_ROOT / "tests" / "fixtures" / "_tmp-render",
+                out_root=tmp_path / "rendered",
                 voice=FAKE_BACKEND,
                 render_cue=fixed_cue,
                 locale="en-US",
                 overwrite=True,
             )
-        except Exception:
-            pass  # the mix is what this test asserts on, not the rest of the build
         finally:
             manifest_path.unlink(missing_ok=True)
-        assert seen.get("background") == Path("/tmp/bed-24bit.wav")
+        assert seen.get("background") == tmp_path / "bed-24bit.wav"
+        assert dev_jobs.input_identity("tests", {}) == before
 
 
 class TestFarfieldPresetSearchPath:

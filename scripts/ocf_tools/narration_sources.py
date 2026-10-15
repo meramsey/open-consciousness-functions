@@ -152,6 +152,14 @@ class SourceResolver:
                 "speaker consistency requires a single declared speaker; selected: "
                 + ", ".join(sorted(speakers))
             )
+        if self.config.get("speaker_consistency") == "require-single" and any(
+            row["source"] != "silence" and not row.get("speaker")
+            for event in self.rows.values()
+            for row in event.get("units", [event])
+        ):
+            raise OCFError(
+                "speaker consistency requires an explicit declared speaker for every spoken source"
+            )
         self.report = {
             "schema_version": "2.0",
             "id": self.config["id"],

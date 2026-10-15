@@ -102,6 +102,9 @@ def _valid_pcm(data: bytes) -> bool:
 
 
 def cached_cue(spec: dict, text: str, render) -> bytes:
+    from .progress import advance
+
+    advance("synthesis-cues", detail=spec.get("profile_id") or spec.get("name"))
     if not _active.get():
         STATS["bypassed"] += 1
         return render()

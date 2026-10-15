@@ -478,3 +478,12 @@ def test_stage_recording_can_use_explicit_per_event_segments(tmp_path):
     assert result["cue_stats"][1]["duration"] == 2
     receipt = result["cue_stats"][1]["narration_source"]["preparation"]
     assert receipt["selected_segment"]["duration_s"] == 2
+
+
+def test_strict_speaker_consistency_rejects_unidentified_default_tts(tmp_path):
+    doc, config, path = fixture(tmp_path)
+    config.pop("default_voice")
+    config["speaker_consistency"] = "require-single"
+    path.write_text(json.dumps(config), encoding="utf-8")
+    with pytest.raises(OCFError, match="declared speaker"):
+        SourceResolver(doc, path)

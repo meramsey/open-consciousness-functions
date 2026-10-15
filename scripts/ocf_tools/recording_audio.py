@@ -549,6 +549,9 @@ def process_recording(
     data, sha = _source(source)
     if expected_sha256 is not None and sha != expected_sha256.lower():
         raise OCFError("recording checksum mismatch")
+    from .progress import advance
+
+    advance("recording-preparation", detail=sha[:12])
     native = _native(data)
     needs_tools = (
         native is None
