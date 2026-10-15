@@ -100,7 +100,7 @@ every event to be timed; a schedule-less (untimed) script must be timed first
 | Template                 | `templates/timed-transcript.yaml`             |
 | Function records         | `functions/<domain>/<slug>.yaml`              |
 | Audio manifests          | `audio/manifests/OCF-AUDIO-*.yaml`            |
-| State profiles           | `audio/states/profiles/`                      |
+| DSP state profiles       | `audio/background/state-profiles/`            |
 | Reusable sections        | `audio/templates/`                            |
 | Voice profiles           | `audio/voices/profiles/`                      |
 | Outputs                  | `audio/rendered/`                             |

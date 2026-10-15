@@ -12,6 +12,12 @@ ocf                      # if installed: pip install .
 
 ## Everyday commands
 
+For current complete-session workflows, see [bulk sessions](BULK_SESSIONS.md):
+`audio eligibility`, `audio plan`, `audio defaults`, `audio render-many` and
+`new session-plan`. The [documentation map](README.md) is the shortest route to
+focused guides. Optional [local MCP](MCP.md) and `ocf dev` expose compact
+discovery and persistent jobs while delegating to these same APIs.
+
 For machine/agent discovery, start with `ocf capabilities --json`,
 `ocf functions list --json`, and `ocf functions describe OCF-FND-002 --json`.
 These expose live commands and canonical metadata, not inferred semantic identities.

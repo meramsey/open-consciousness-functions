@@ -139,10 +139,18 @@ environment, so do not claim LSP diagnostics are active; when available, prefer
 Pyright/Based Pyright or another Python server for definitions, references,
 symbols, and diagnostics. Keep LSP configuration portable and optional.
 
-No MCP server is currently configured. Local schemas, source, tests, LSP, and
-OpenCode's built-in repository tools answer repository questions more cheaply.
-Use MCP only for authoritative external research or a deliberately added
-integration; record the reason and avoid secrets or automatic downloads.
+The optional [OCF stdio MCP adapter](MCP.md) reuses application APIs for compact
+discovery, targeted validation and persistent jobs. It is not automatically
+configured in any client. Start with `dev ocf_project_overview`; the same
+`ocf_*` operations work over MCP or `ocf dev OPERATION --arguments JSON`.
+Use external MCP/web tools only for authoritative information missing locally.
+Never load reference corpora or entire generated indexes for routine discovery.
+
+Long operations return job IDs. Poll status/results and request cancellation
+rather than starting duplicates. Full-suite testing requires `full=true`;
+focused selection is not a substitute for final gates. See `docs/workflows.json`
+for the eight canonical agent workflows and `documentation-index.json` for the
+tracked surface inventory. Its machine findings are not human semantic review.
 
 ## Common pitfalls
 

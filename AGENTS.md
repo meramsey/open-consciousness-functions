@@ -1,252 +1,134 @@
 # OCF Agent Contract
 
-OCF is a declarative function/session authoring and audio toolchain. The
-repository, schemas, committed YAML, tests, and cited evidence are
-authoritative. The agent reasons; OCF validates and executes.
+OCF is a declarative function/session authoring and audio toolchain. Schemas,
+canonical YAML, repository tests and cited evidence are authoritative. The
+agent reasons; OCF validates and executes. These instructions are provider-neutral.
 
-## Start here
+## Start small
 
-1. Preserve unrelated working-tree changes; inspect `git status` first.
-2. Read the relevant schema before changing data or a data contract.
-3. Use LSP symbols/definitions/references when available, then targeted
-   `Glob`/`Grep`/file reads. Do not recursively read generated output, audio,
-   caches, or reference corpora to discover ordinary code relationships.
-4. For a subsystem, consult `docs/AGENT_DEVELOPMENT.md` and then the narrower
-   architecture/audio/localization/testing document it points to.
-5. Validate assumptions with focused tests before broad tests. Run `make check`
-   before claiming repository validation.
+1. Inspect `git status`, branch/HEAD and relevant changes. Preserve unrelated
+   work, especially `ReusablePrompts/` and `references/HumanPlusTranscripts/`.
+2. Use `python scripts/ocf.py dev ocf_project_overview`, `capabilities --json`,
+   or the optional MCP equivalents before loading large indexes.
+3. Read the relevant schema before changing data/contracts. Use symbols and
+   targeted reads, not recursive discovery through generated output, audio,
+   caches or reference corpora.
+4. Consult [agent development](docs/AGENT_DEVELOPMENT.md), then the focused guide
+   in [documentation navigation](docs/README.md).
+5. Run meaningful focused tests first. Run `make check` before claiming repository
+   validation; final gates also include `make lint` and the full pytest suite.
 
-## Durable rules
+## Canonical map
 
-- Keep clean-checkout reproducibility: no absolute machine paths, hidden local
-  assets, network-only behavior, vendored optional engines, or undocumented
-  dependencies.
-- Preserve the 55 legacy mappings and the 16 source-unavailable records as OCF
-  reimplementation targets with `reimplementation_status: planned`.
-- Preserve canonical commands `PLUS-THINK` and `PLUS-FOCUS`; use MORE/LESS for
-  new adjustable magnitude commands. Never rewrite historical mappings.
-- Never fabricate evidence, provenance, source wording, locators, translations,
-  licensing, consent, authentication, efficacy, or historical mechanisms.
-  Record unknowns explicitly and keep mockups/reconstructions separate from
-  source facts.
-- Never hand-edit generated indexes or matrices. Regenerate with
-  `python3 scripts/ocf.py build-index`; use `--check` to verify freshness.
-- Follow `docs/SOURCE_FIRST_AUTHORING.md`: immutable SOURCE → exact initial
-  WORKING → HUMAN edits → explicit RELEASE approval → measured timing. Do not
-  require paraphrasing, distancing or automatic originality checks to edit.
-  Never automatically rewrite source claims; record flags and corrections in
-  separate metadata. Provenance and source availability remain explicit.
+- `functions/`: identity, commands, legacy mappings and source availability.
+- `function-content/`: separate evidence, specifications, decisions and bindings.
+- `locales/`: stable localized narration/UI IDs and review/provenance metadata.
+- `schemas/`: contracts; `scripts/ocf_tools/`: implementation and CLI services.
+- `audio/templates/`: session/stage/pacing inheritance; `audio/background/`: DSP
+  profiles and explicit presets; `audio/voices/`: optional voice profiles.
+- `audio/defaults/`: immutable engineering configuration locks, not listening
+  approval. New revisions require a deliberate new baseline.
+- `audio/session-plans/`: generated compact declarations; regenerate using
+  `audio plan --all --locale en-US`, verify with `--check`.
+- Generated function/command indexes and matrices: `build-index`; never hand-edit.
+- `.ocf-work/`: ignored scratch, logs, caches, local jobs and auditions.
+
+## Non-negotiable data and editorial rules
+
+- Preserve the 55 legacy mappings and all 16 source-unavailable planned
+  reimplementation targets. Historical availability is not TTS eligibility.
+- Preserve canonical `PLUS-THINK`, `PLUS-FOCUS` and `PLUS-SEE BETTER`. MORE/LESS
+  is for new adjustable magnitude commands; do not rewrite historical mappings.
+- Preserve all 177 protected narration entries unless explicitly authorized.
+  Never fabricate source wording, evidence, locators, provenance, translations,
+  licensing, consent, authentication, efficacy or historical mechanisms.
+- Follow [source-first authoring](docs/SOURCE_FIRST_AUTHORING.md): immutable
+  SOURCE → exact initial WORKING → HUMAN edits → explicit RELEASE approval →
+  measured timing. Do not require paraphrasing, distancing or automatic
+  originality checks to edit. Record flags/corrections separately from wording.
 - Keep source/working chunks local and out of packages. Rights clearance gates
-  release/package inclusion, not working edits; it is not an automated legal
-  conclusion. Approved release narration follows `docs/NARRATION_STANDARD.md`.
-  Do not mass-generate final narration or promote previous candidates at runtime.
-- Keep narration, semantic state, DSP, cues, TTS, and metadata separate.
-  Semantic state is not DSP onset. Audio sequencing must preserve measured
-  anchors, state transitions, return/reorientation, and no duplicate ramp at
-  state arrival. See `docs/AUDIO_PIPELINE.md` and `docs/SEMANTIC_DSP.md`.
-- Treat localization as data, not English string construction. Preserve stable
-  semantic IDs, strict spoken fallback, measured localized timing, Unicode, and
-  representation-neutral/autonomy-aware wording. Support aphantasia and varied
-  sensory experience without asserting outcomes; see
-  `docs/LOCALIZATION.md` and `docs/NARRATION_STANDARD.md`.
-- Keep Farfield/SBaGenX/TTS optional and degrade clearly. Resolve committed
-  presets deterministically; never infer identity from filenames or frequencies.
-- Keep OCF scratch, local render caches, logs, and default audition outputs under
-  the gitignored repository-local `.ocf-work/` workspace. Resolve it from the
-  repository root; honor validated `OCF_WORK_DIR` overrides and pass workspace
-  TMPDIR/TMP/TEMP only to OCF-launched subprocesses. Preserve failed-run
-  diagnostics; use `ocf workspace clean --dry-run` before removing stale marked
-  scratch. See `docs/AUDIO_PIPELINE.md`.
-- Respect security and licensing: do not expose secrets, execute arbitrary
-  downloaded code, upload reference material, or commit ignored/private audio.
-- Debug root causes rather than weakening validators, shrinking coverage, or
-  reclassifying integration tests as unit tests. Add meaningful failure-path
-  regression coverage for reachable behavior.
-- Use MCP only for authoritative external information that local code, schemas,
-  tests, and LSP cannot provide. Do not add services or downloads by default.
-- Use `.opencode/agents/` for narrow read-only investigations; do not delegate
-  broad repository rereads. The specialized agents return symbols, precedence,
-  evidence, and tests, not speculative edits.
+  release inclusion, not working edits; it is not an automated legal conclusion.
+  Do not mass-generate final narration or promote old candidates at runtime.
+- Narration, semantic state, DSP, cues, TTS and metadata are separate. State
+  identity is not DSP onset; preserve measured anchors, return/reorientation and
+  no duplicate arrival ramp. See [audio pipeline](docs/AUDIO_PIPELINE.md) and
+  [semantic DSP](docs/SEMANTIC_DSP.md).
+- Treat localization as data: stable IDs, strict spoken fallback, Unicode,
+  measured localized timing, representation-neutral/autonomy-aware wording and
+  support for varied sensory experience/aphantasia. See
+  [localization](docs/LOCALIZATION.md) and [narration standard](docs/NARRATION_STANDARD.md).
+
+## Runtime, security and portability
+
+- Python 3.11+; Linux/macOS/Windows. Keep clean-checkout reproducibility: no
+  absolute machine paths, hidden local assets, network-only core behavior,
+  vendored optional engines or undocumented dependencies.
+- Farfield/SBaGenX/TTS remain optional. Resolve committed presets deterministically;
+  never infer identity from filenames or frequencies. Use `doctor`/`voice doctor`.
+- All routine scratch/cache/logs and default auditions use `.ocf-work/`, resolved
+  from the repository root. Honor validated `OCF_WORK_DIR`; TMPDIR/TMP/TEMP
+  overrides apply only to OCF-launched subprocesses. Preserve failed diagnostics.
+  Use `workspace clean --dry-run` before deleting marked scratch.
+- Do not expose secrets, upload references, execute arbitrary downloaded code,
+  or commit ignored/private audio. Never modify/commit reference transcripts.
+- Fix root causes, not validators or test classifications. Unit tests forbid real
+  subprocesses; repository/audio integration remains integration. Never shrink
+  coverage or skip expensive tests merely to improve timing.
+- Commit/push only when requested. Review status/diff/history, stage intended
+  files, preserve unrelated work; no force-push/history rewrite. Verify CI at the
+  exact final commit before claiming success.
 
 ## Frozen boundaries
 
-- `docs/PREPARATION_MODULE.md` and the planned cue section of
-  `docs/TIMED_TRANSCRIPTS.md` are designs, not shipped commands. Keep the exact
-  marker `TODO: Finalize focus-state auditory cue sound design.`.
-- RC1 narration, V2/V2.1 development auditions, and Relax/Hearing/Sleep Easy
-  pilot editorial decisions remain frozen pending human review. Do not alter
-  V2.1 induction curve or level before the V2/V2.1 listening comparison.
-- `OCF-BG-0012` is an approximate V4-derived F10 candidate, `OCF-BG-0006` is
-  canonical newer F11 pure SAM, and `OCF-BG-0007` is its theta-enhanced
-  alternate. Do not relabel these evidence boundaries.
-- Keep `audio/scripts/attention.yaml` untouched; regenerate the adapted script
-  only through session composition. Do not touch
-  `references/HumanPlusTranscripts/` or commit listening audio.
+- `docs/PREPARATION_MODULE.md` and planned cues in `docs/TIMED_TRANSCRIPTS.md`
+  are designs, not shipped commands. Preserve exactly:
+  TODO: Finalize focus-state auditory cue sound design.
+- RC1 narration, V2/V2.1 auditions and Relax/Hearing/Sleep Easy editorial
+  decisions remain frozen pending human review. Do not change V2.1 induction
+  curve/level before the V2/V2.1 listening comparison.
+- OCF-BG-0012 is an approximate V4-derived F10 candidate; OCF-BG-0006 is canonical
+  newer F11 pure SAM; OCF-BG-0007 is its theta-enhanced alternate.
+- Keep `audio/scripts/attention.yaml` untouched. Regenerate adapted scripts only
+  through session composition. Never commit listening audio.
 
-## Completion report
+## Workflows and tools
 
-Report changed files, focused/full tests, validation warnings/failures,
-platforms actually run, unresolved uncertainty, and remaining follow-up work.
-Do not claim native OS, package, audio, or MCP verification unless it ran.
+Use `dev ocf_get_workflow --arguments '{"name":"add-function"}'` or the matching
+MCP tool. [Versioned workflow navigation](docs/workflows.json) covers adding a
+function, reviewing narration, adding a locale, bulk planning, auditions,
+render diagnosis, release packaging and final validation. Wizards use the same
+application APIs as CLI generation; implementation lives in `prompts.py`.
 
-## Task workflows
+Plan first with `audio plan FUNCTION_ID --expand`; generate source plans without
+audio engines. `audio eligibility --all` derives capability without promoting
+human/source status. Render explicitly with `audio render` or `audio render-many`;
+use `--dry-run` first. Bulk renders use verified resume and unique output paths.
+`new session-plan` invokes the same generator. See [bulk sessions](docs/BULK_SESSIONS.md).
 
-Use the built-in CLI and wizards as the authoritative workflows. Do not create
-agent-specific scripts that duplicate their decisions. Python 3.11+ and the
-project dependencies are required; optional audio engines/codecs are detected
-by `doctor` and `voice doctor`. Run commands from the repository root.
+Release packaging uses `audio release` with explicit PNG/JPEG artwork and an
+eligible registered implementation. Preserve review/rights metadata and inspect
+the dry-run. Packaging success is not release approval.
 
-### Add a function
+Optional [local MCP](docs/MCP.md) is a compact adapter, not another OCF engine.
+Use discovery summaries, pagination and targeted validation. Expensive tools
+return job IDs; poll/cancel rather than starting duplicates. Full tests require
+an explicit request. CLI fallback: `python scripts/ocf.py dev OPERATION
+--arguments JSON`; core commands work without MCP. External MCP/web research is
+for authoritative information unavailable locally, not routine repository discovery.
+Use narrow read-only agents in `.opencode/agents/` for subsystem investigations;
+do not delegate broad repository rereads.
 
-Prerequisites: review `docs/FUNCTION_LIFECYCLE.md`, `docs/NAMING_GUIDELINES.md`,
-and `schemas/function.schema.json`; determine a unique function identity and
-provide source/evidence or explicitly record unknown provenance. Run
-`python3 scripts/ocf.py new function`, complete the prompts, then
-`python3 scripts/ocf.py validate --all` and `python3 scripts/ocf.py build-index`.
-Expected outputs are a canonical record in `functions/` and refreshed generated
-indexes/docs. For an audio implementation, compose or author a timed script
-using `python3 scripts/ocf.py session compose --help` and then follow “Render an
-audition.” Common failures are duplicate IDs/commands, missing required schema
-fields, or unavailable evidence; do not invent provenance. Relevant sources:
-`schemas/function.schema.json`, `scripts/ocf_tools/prompts.py`,
-`scripts/ocf_tools/validators.py`, and `scripts/ocf_tools/indexes.py`.
+## Final quality and reporting
 
-### Edit a function
+Run `validate --all`, `locale validate --locale en-US`, `build-index --check`,
+`audio plan --all --locale en-US --check`, `make check`, `make lint` and full
+`python -m pytest` (or `-n 2 --dist loadfile`). Do not repeat broad tests without
+new changes/failures. Record exact counts and optional-tool skips.
 
-Inspect the record and schema first. Run
-`python3 scripts/ocf.py edit function <ID-or-slug>` (uses `$EDITOR`), review the
-diff, then run `python3 scripts/ocf.py validate --all` and
-`python3 scripts/ocf.py build-index`. Preserve historical mappings, command
-provenance, and protected narration. Generated indexes are outputs, not edit
-targets. See `docs/SOURCE_FIRST_AUTHORING.md` and `docs/FUNCTION_LIFECYCLE.md`.
-
-### Add a locale
-
-Read `docs/LOCALIZATION.md` and `locales/README.md`. Add a pack under
-`locales/<BCP-47-tag>/` using the locale schemas and stable resource IDs; do
-not synthesize English from identifiers. Run
-`python3 scripts/ocf.py locale validate --locale <tag>` and
-`python3 scripts/ocf.py locale coverage --locale <tag>`. Missing spoken
-resources can fail strict rendering even when UI fallback is available.
-
-### Add or review a command
-
-Read `docs/COMMAND_GRAMMAR.md` and `docs/COMMAND_REVIEW.md`; update canonical
-command data with its source/provenance and rationale. Run
-`python3 scripts/ocf.py validate --all` and
-`python3 scripts/ocf.py review commands`. Never alter historical command
-records to make the validator pass. `PLUS-SEE BETTER` remains canonical for
-Sensory: Seeing; MORE/LESS modes are not active.
-
-### Render an audition
-
-For an existing timed script, prerequisites are a valid audio implementation
-manifest, compatible voice profile, and selected optional engine. Run
-`python3 scripts/ocf.py voice doctor` then
-`python3 scripts/ocf.py audio build <AUDIO_ID> --output <working-dir> --format wav`
-(add `--voice <profile>` and `--locale <tag>` as appropriate). For a function
-For a function with a bound complete session template, `audio render` defaults
-to the full template/DSP session. Run
-`python3 scripts/ocf.py audio render <FUNCTION_ID> --locale en-US --voice
-<profile> --pacing sleep --dry-run` first, inspect every stage/background and
-effective/ignored DSP directive, then render to a new output or let OCF select a
-unique workspace-local audition path. Use `--mode narration-only` explicitly
-for the narration-plan-only workflow; it measures speech and schedules each
-following segment after the prior speech end. Both workflows create local,
-non-overwriting auditions and do not change approval metadata. Missing TTS,
-voice models, locale resources, or a bound complete template produces a clear
-error. See
-`docs/AUDIO_PIPELINE.md`, `docs/LOCALIZATION.md`, and voice profiles in
-`audio/voices/`.
-
-### Produce audio files
-
-`python3 scripts/ocf.py audio build <AUDIO_ID> --output <working-dir> --format
-wav --format flac --format mp3` renders audition/master artifacts. For a complete
-localized package, run
-`python3 scripts/ocf.py audio release <AUDIO_ID-or-FUNCTION_ID> --locale en-US
---format flac --format mp3 --artwork <approved-cover.png> --output <release-root>
---dry-run`, inspect intended paths, then repeat without `--dry-run`. Use
-`--voice <profile>`, `--version <version>`, repeatable `--tag KEY=VALUE`, and
-`--force` as needed. Release metadata override keys are title, album, artist,
-album_artist, date, track, language, comment, publisher, copyright, and label.
-The command requires explicit PNG/JPEG artwork and ffmpeg/ffprobe for embedded
-picture verification. It publishes only after codec decode, metadata, artwork,
-transcript, manifest, and checksum checks. A forced replacement retains the
-previous package in a sibling hidden archive directory. See
-`docs/AUDIO_PIPELINE.md` and `schemas/audio-release.schema.json`.
-
-### Add a voice preset
-
-Read `docs/COMMUNITY_VOICES.md`, `docs/LOCALIZATION.md`, and
-`audio/voices/README.md`. Add a profile following
-`audio/voices/profiles/` and its schema, record only verified attribution and
-dependency/licensing information, then run `python3 scripts/ocf.py voice doctor`
-and focused voice tests. Keep private samples/weights local; never infer voice
-identity from filenames. Missing optional providers should remain optional.
-
-### Diagnose a failed render
-
-Run `python3 scripts/ocf.py doctor --json` and
-`python3 scripts/ocf.py voice doctor`; validate the function and locale, then
-inspect `.ocf-work/logs/` and retained scratch under `.ocf-work/tmp/` before
-changing configuration. Default renders stay in `.ocf-work/renders/`; use
-`OCF_WORK_DIR` to select another dedicated writable workspace.
-Check codec availability (`ffmpeg`/`flac`), voice backend and locale coverage,
-and whether the manifest requires a background engine. See `docs/DOCTOR.md` and
-`docs/AUDIO_PIPELINE.md`.
-
-### Validate and refresh generated docs
-
-For complete-session source plans, use `python3 scripts/ocf.py audio plan --all
---locale en-US --check`; generate with the same command without `--check`.
-Plans under `audio/session-plans/` are generated, not hand-edit targets.
-`audio eligibility --all` derives renderability independently of historical
-sources. `audio render-many` explicitly selects one/many/all auditions and
-supports verified resume; use `--dry-run` first. The `new session-plan` wizard
-uses the same generator. Shared LOCKED profiles and `audio/defaults/` are an
-immutable engineering baseline, not human listening approval. See
-`docs/BULK_SESSIONS.md` for creation, timing review, caching and release steps.
-
-Run `python3 scripts/ocf.py validate --all`,
-`python3 scripts/ocf.py locale validate --locale en-US`,
-`python3 scripts/ocf.py build-index --check`, and `make check`; run
-`make lint` and `python3 -m pytest` for the complete local checks. If generated
-indexes are stale, run `python3 scripts/ocf.py build-index`, inspect the diff,
-then rerun `--check`. Never hand-edit generated command/function references.
-See `docs/TEST_COVERAGE.md`, `Makefile`, and `.github/workflows/`.
-
-### Agent discovery examples
-
-These requests should lead an assistant to the built-in commands above; they
-are guidance prompts, not separate executable interfaces:
-
-- “Add a new function using the existing wizard.”
-- “Show me how to localize a function into Spanish.”
-- “Validate the command phrases for Nutricia.”
-- “Render an audition using my selected voice preset.”
-- “Render Sleep Easy with Piper and sleep pacing.”
-- “Package a release with MP3, FLAC, transcript, and artwork.” (Use
-  `ocf audio release`; require an explicitly approved PNG/JPEG artwork file and
-  do not infer rights clearance from successful packaging.)
-- “Explain how to add a reusable voice preset.”
-- “Check whether generated documentation is up to date.”
-
-README and this file are provider-neutral repository discovery conventions;
-they do not imply that every assistant product automatically reads them.
-
-## Required task result format
-
-Mobile-friendly reporting is mandatory for every future OCF task: put the
-entire final job report in exactly one plain-text fenced block (triple
-backticks), with compact headings, absolute test counts, commit hashes,
-verified CI URLs and explicit PASS/FAIL/SKIP statuses. No external Markdown
-tables and no split report blocks.
-
-For every task, report results inside one fenced plain-text code block. Include
-completion status; branch, local commit and remote synchronization; completed
-work and changed files; focused/full tests and exact counts; lint/validation
-results; platforms actually exercised; warnings, failures, uncertainty, and
-blockers; and a recommended next milestone. Include workflow URLs and commit/push
-status only when those operations were actually performed and verified. Mark
-unrun checks as SKIP or BLOCKED rather than implying success.
+Every final OCF report MUST be exactly one plain-text fenced block using triple
+backticks. No external Markdown tables or split blocks. Include completion
+status, branch/local commit/remote synchronization, work and changed files,
+focused/full test counts, lint/validation PASS/FAIL/SKIP, platforms actually run,
+warnings/failures/uncertainty/blockers and next milestone. Include verified CI
+URLs and commit/push status only when actually performed. Never claim native
+OS, packaging, listening, audio or MCP verification unless it ran.

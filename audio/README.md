@@ -2,6 +2,13 @@
 
 Tooling and records for audio implementations of OCF functions.
 
+For complete function sessions, start with [bulk planning and auditions](../docs/BULK_SESSIONS.md).
+Source plans in `session-plans/` are generated without audio engines; versioned
+engineering locks live in `defaults/`. Default auditions, scratch and cache
+use ignored `.ocf-work/`, not committed binary directories. See
+[the pipeline](../docs/AUDIO_PIPELINE.md) for narration, measured timing, DSP,
+mixing and verified release packaging.
+
 ## Layout
 
 | Path                 | Purpose                                              |
@@ -10,7 +17,7 @@ Tooling and records for audio implementations of OCF functions.
 | `implementations/`   | Rendered audio files (optional, contributed)         |
 | `manifests/`         | `OCF-AUDIO-*` implementation manifests (YAML)        |
 | `templates/`         | Reusable section templates (preparation, installation, rehearsal, …) |
-| `states/profiles/`   | State/focus profiles for state-aware backgrounds (planned) |
+| `background/state-profiles/` | Implemented semantic state/background selection |
 | `voices/profiles/`   | `OCF-VOICE-*` voice profiles (`voice-profile.schema.json`) |
 | `rendered/`          | Masters + `OCF-RENDER-*` manifests from `ocf audio build` |
 | `background/`        | Background presets (see `background/README.md`)      |

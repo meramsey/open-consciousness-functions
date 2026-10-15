@@ -10,6 +10,7 @@ Exit code: 0 when all internal targets exist, 1 otherwise.
 
 from __future__ import annotations
 
+import os
 import re
 import sys
 from pathlib import Path
@@ -23,22 +24,31 @@ IGNORED_SCHEMES = ("http://", "https://", "mailto:", "tel:", "#", "?")
 
 
 def iter_markdown() -> list[Path]:
-    return sorted(
-        p
-        for p in REPO_ROOT.rglob("*.md")
-        if not any(part.startswith(".") for part in p.relative_to(REPO_ROOT).parts)
-        and p.relative_to(REPO_ROOT).parts[0] not in ("build", "dist", "venv")
-        and not p.relative_to(REPO_ROOT)
-        .as_posix()
-        .startswith(
-            (
-                "audio/rendered/",
-                "audio/background/rendered/",
-                "references/HumanPlusTranscripts/",
-                "ReusablePrompts/",
-            )
+    files = []
+    excluded = {
+        "audio/rendered",
+        "audio/background/rendered",
+        "references/HumanPlusTranscripts",
+        "ReusablePrompts",
+        "build",
+        "dist",
+        "venv",
+    }
+    for directory, children, names in os.walk(REPO_ROOT, followlinks=False):
+        root = Path(directory)
+        children[:] = [
+            name
+            for name in children
+            if not name.startswith(".")
+            and not (root / name).is_symlink()
+            and (root / name).relative_to(REPO_ROOT).as_posix() not in excluded
+        ]
+        files.extend(
+            root / name
+            for name in names
+            if name.endswith(".md") and not name.startswith(".") and not (root / name).is_symlink()
         )
-    )
+    return sorted(files)
 
 
 def check_file(path: Path) -> list[str]:

@@ -4,6 +4,13 @@ Thanks for considering a contribution to **Open Consciousness Functions
 (OCF)**. Two paths exist — one for non-programmers, one for advanced
 contributors.
 
+Start with the [documentation map](docs/README.md). For existing reviewed
+narration, [complete-session planning](docs/BULK_SESSIONS.md) uses compact
+generated declarations and the `new session-plan` wizard. Coding agents can use
+the same services through [optional local MCP](docs/MCP.md) or `ocf dev`.
+Renderability, historical sources, human review and release clearance remain
+separate. Never commit reference material, private audio or `.ocf-work/` outputs.
+
 ## Easy contributor path
 
 You do not need to know YAML, schemas, or git internals:

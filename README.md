@@ -1,335 +1,159 @@
 # Open Consciousness Functions (OCF)
 
-An **open specification plus reference implementation framework** for
-defining, reviewing, documenting, validating, and eventually producing
-community-authored consciousness-function training exercises.
+OCF is a declarative function/session authoring and audio toolchain. Canonical
+YAML, schemas and reviewed locale resources define functions; Python tools
+validate, compose, synthesize and package them. It is an independent community
+project, unaffiliated with The Monroe Institute, Hemi-Sync or related entities.
+It distributes no historical source recordings and makes no medical or
+therapeutic efficacy claim.
 
-> **Independence notice.** OCF is an independent, community-maintained project
-> inspired by the general idea of trainable "functions" used in Monroe
-> Institute Human Plus material. It is **not affiliated with, endorsed by, or
-> owned by** The Monroe Institute, Hemi-Sync, Interstate Industries, or any
-> related entity.
+## Current capabilities
 
-## What OCF is
+- 55 canonical functions, with preserved commands and provenance. Historical
+  sources are available for 39 and unavailable for 16; this is distinct from
+  modern narration availability.
+- All 55 have complete English TTS session bindings and deterministic generated
+  plans. Technical eligibility is not editorial approval or release clearance.
+- Interactive function/proposal/audio wizards; strict spoken localization;
+  timed-transcript import/export; semantic sentence/count pacing.
+- Optional Piper/eSpeak narration, Farfield/SBaGenX backgrounds, verified
+  auditions and artwork/metadata/transcript/checksum release packaging.
+- Resumable explicit bulk auditions, content-addressed speech cache, local jobs,
+  and an optional provider-neutral stdio MCP adapter.
 
-- An open, machine-readable **function specification** (canonical YAML + JSON
-  Schema).
-- A **legacy compatibility map** of 55 documented historical functions, kept
-  as factual research/compatibility metadata.
-- A **reimplementation program** — all 55 functions are OCF reimplementation
-  targets, including the 16 whose legacy training source material is currently
-  unavailable.
-- **Interactive contributor tools** for non-programmers (wizards, validation,
-  generated documentation).
-- A **proposal/review workflow** (RFC/PEP style).
-- An **audio implementation model** with optional generated background audio
-  via the [Farfield](https://github.com/txus/farfield) and
-  [SBaGenX](https://github.com/lm7137/SBaGenX) engines, or even-timbre beds
-  composed from operator-supplied **reference masters** (`reference-master`
-  engine, e.g. `F10`/`F11` bed + access excerpt).
-- A **timed-transcript authoring pipeline** — timed lyrics (`.lrc`), SRT,
-  WebVTT, text, and Markdown become canonical **OCF timed YAML** scripts
-  (`ocf transcript import`); from there, sections/states, analysis, and
-  buildable spoken audio — see `docs/TIMED_TRANSCRIPTS.md`.
+The shared LOCKED configuration is an engineering baseline, not human listening
+approval. Human review remains required. Preparation-module designs and final
+focus-state auditory cue sound design remain planned; see
+[status and architecture](docs/AGENT_DEVELOPMENT.md).
 
-## What OCF is not
+## Install
 
-- Not affiliated with The Monroe Institute, Hemi-Sync, or related entities.
-- Not a medical, psychological, or therapeutic product.
-- Not a guarantee of any psychological, physiological, medical, paranormal, or
-  behavioral result.
-- Not a replacement for emergency services, first aid, poison control, or
-  professional treatment.
-- Not a distributor of Monroe training audio.
-
-## Maturity
-
-**Development toolchain.** All 55 current functions have validated English
-narration bindings and voice-independent complete-session plans. Historical
-source availability (39 available / 16 unavailable) is separate from TTS
-eligibility. Human content and listening review remain required; these are
-auditions, not 55 approved releases.
-
-The **timed-transcript / audio toolchain** has two parts. The **transcript
-pipeline** (`.lrc`/`.srt`/`.vtt`/`.txt`/`.md` → OCF timed YAML, sections,
-state/focus levels, analysis, export, timing-only templates) is **shipped** as
-`ocf transcript …`. The **voice/TTS and mixing/mastering** chain (`ocf voice
-…` and `ocf audio build …`) is also **shipped**: optional TTS backends
-(espeak-ng/espeak/piper) render narration per cue, mixing is pure stdlib PCM
-(Farfield/SBaGenX beds) or ffmpeg `amix` (reference-master beds), and
-FLAC/MP3 encode via ffmpeg/flac when available — otherwise everything
-degrades gracefully with install guidance. Only the **preparation** module
-(`ocf preparation …`) remains specified (v0.4+, not yet shipped).
-`docs/TIMED_TRANSCRIPTS.md` marks each capability as *implemented*, *specified*,
-or *planned*. Localization is shipped (`ocf locale …`, plus `--locale` on
-render/export/build) and documented in `docs/LOCALIZATION.md` and
-`locales/README.md`. Remaining planned v0.5 work — composable preparation
-stages (optional affirmation, oHm/resonant-tuning) and focus-state auditory cue
-events — is designed (not shipped) in `docs/PREPARATION_MODULE.md` and
-`ROADMAP.md`.
-
-## Quick start
+Python **3.11+**; Linux, macOS and Windows. Run commands from the checkout root.
+Use your platform's Python executable (`python3` on many POSIX systems,
+`py -3` on Windows) to create the environment:
 
 ```bash
-# Requirements: Python 3.11+
-pip install PyYAML jsonschema pytest ruff     # or: pip install -r requirements-dev.txt
-
-python3 scripts/ocf.py doctor                  # environment health
-python3 scripts/ocf.py validate --all         # validate every record
-python3 -m pytest                             # run the test suite
+python -m venv .venv
+# Activate .venv with your shell's standard activation command.
+python -m pip install -e .
+python scripts/ocf.py doctor --json
+python scripts/ocf.py --help
 ```
 
-Generate plans without Piper, Farfield or FFmpeg, then preview or render with
-your installed voice. Follow [bulk sessions](docs/BULK_SESSIONS.md) for the
-complete workflow, resumable rendering and review boundaries.
+Without activation, use `.venv/bin/python` on Linux/macOS or
+`.venv\Scripts\python.exe` on Windows. Native engines, codecs and voice models
+are separate optional installations; `doctor` and `voice doctor` report them.
+See [native setup](docs/USER_GUIDE.md) and [voices](docs/COMMUNITY_VOICES.md).
+
+## Find, author and localize
 
 ```bash
-python3 scripts/ocf.py audio eligibility --all --locale en-US
-python3 scripts/ocf.py audio plan --all --locale en-US --check
-python3 scripts/ocf.py audio plan OCF-SLP-005 --locale en-US --expand
-python3 scripts/ocf.py audio render OCF-SLP-005 --locale en-US \
+python scripts/ocf.py functions list --json
+python scripts/ocf.py functions describe OCF-FND-002 --rich --json
+python scripts/ocf.py new function
+python scripts/ocf.py validate --all
+python scripts/ocf.py review commands
+python scripts/ocf.py build-index
+```
+
+Start with [function lifecycle](docs/FUNCTION_LIFECYCLE.md) and
+[source-first authoring](docs/SOURCE_FIRST_AUTHORING.md). Immutable source,
+working edits, human review and explicit release approval are separate stages.
+Never silently rewrite approved narration or canonical activation phrases.
+`PLUS-THINK`, `PLUS-FOCUS` and `PLUS-SEE BETTER` remain canonical.
+
+Translations use stable resource IDs, not constructed English. Follow
+[localization](docs/LOCALIZATION.md) and [locale packs](locales/README.md).
+Spoken fallback is strict; missing Spanish resources are reported rather than
+silently spoken in English. Measured timing is locale- and voice-specific.
+
+## Plan without audio engines
+
+```bash
+python scripts/ocf.py audio eligibility --all --locale en-US
+python scripts/ocf.py audio plan OCF-FND-002 --locale en-US --dry-run
+python scripts/ocf.py audio plan --all --locale en-US
+python scripts/ocf.py audio plan --all --locale en-US --check
+python scripts/ocf.py audio plan OCF-SLP-005 --locale en-US --expand
+python scripts/ocf.py new session-plan
+```
+
+[Bulk sessions](docs/BULK_SESSIONS.md) explains bindings, template inheritance,
+generation and review. Generated declarations live in `audio/session-plans/`;
+never hand-edit them or the generated function/command indexes.
+
+## Audition with your selected voice
+
+```bash
+python scripts/ocf.py voice doctor
+python scripts/ocf.py audio render OCF-SLP-005 --locale en-US \
   --voice OCF-VOICE-0002 --pacing sleep --dry-run
-python3 scripts/ocf.py audio render OCF-SLP-005 --locale en-US \
-  --voice OCF-VOICE-0002 --pacing sleep
+python scripts/ocf.py audio render-many OCF-SLP-005 --locale en-US \
+  --voice OCF-VOICE-0002 --resume
 ```
 
-This creates a local WAV audition and transcript. It does not approve function
-content or make the result release-ready; use `ocf audio release` only when a
-registered implementation, release approval, and approved artwork are available.
+The example voice requires its configured Piper model. Full-session rendering
+uses Focus 10 from the start (OCF-BG-0012, approximate V4-derived candidate),
+Focus 11 during access/programming (OCF-BG-0006, canonical newer pure SAM),
+25-second equal-power transitions, a continuous bed through pauses and sleep,
+and a 10-second ending fade. No automatic Focus 20 DSP substitution occurs.
+There are two programming and two -24 dB sleep body repetitions.
 
-## Contributor wizard
+Semantic pacing synthesizes sentence/count units separately and inserts real
+silence with backend-aware rate controls. Inspect the timing reports and short
+pacing excerpts, then perform a listening review. `--mode narration-only` on
+`audio render` explicitly selects the separate narration-only workflow.
+
+Outputs, cache, logs and scratch stay in ignored `.ocf-work/`; auditions use
+unique paths. Bulk rendering all functions requires explicit `--all` and never
+happens during planning. See [audio pipeline](docs/AUDIO_PIPELINE.md),
+[semantic DSP](docs/SEMANTIC_DSP.md) and [backgrounds](audio/background/README.md).
+
+## Package an approved release
+
+Use `python scripts/ocf.py audio release --help`. Select a registered audio
+implementation/function, explicit approved PNG/JPEG artwork, locale and formats;
+preview with `--dry-run`. Packaging verifies decode, metadata, embedded artwork,
+transcript and checksums. It does not itself establish rights or human approval.
+See [release packaging](docs/AUDIO_PIPELINE.md#final-release-packages).
+
+## Develop and contribute
 
 ```bash
-./scripts/ocf new function      # guided function record
-./scripts/ocf new proposal      # guided proposal
-./scripts/ocf new audio         # register an audio implementation
-./scripts/ocf new background    # register a background preset
+python -m pip install -r requirements-dev.txt
+python -m pytest                         # comprehensive serial suite
+python -m pytest -n 2 --dist loadfile    # same suite, bounded workers
+make check                             # schemas, indexes and all source plans
+make lint                              # Ruff, formatting and internal links
 ```
 
-See `CONTRIBUTING.md` for the easy path, and `docs/USER_GUIDE.md` for the
-full command reference.
+On Windows without make, run the commands listed in `Makefile` individually.
+Markdownlint runs in CI; local absence is reported as a skip. Use focused tests
+while editing and the full gates before completion. See
+[testing](docs/TEST_COVERAGE.md), [measured performance](docs/releases/OCF_BULK_TEST_PERFORMANCE.md)
+and [contributing](CONTRIBUTING.md).
 
-## Adding a function from timed lyrics
+## Coding agents and optional MCP
 
-A *timed-lyrics* file (LRC) is a lyric-style timed transcript whose lines are
-timestamped, e.g. `[00:03:30.00]Let the body settle and relax.`. Many existing
-timed meditation reads exist this way. OCF's transcript pipeline turns such a
-file into a canonical script (live today) and, onward, into a function record
-and a built audio implementation:
-
-```text
-timed lyrics (.lrc)  or  .srt / .vtt / .txt / .md / OCF timed YAML
-        │  ocf transcript import FILE          (live)
-        ▼
-OCF timed YAML  (canonical editable script under audio/scripts/)
-        │  ocf transcript segment/analyze/review FILE   (live)
-        ▼
-function record  (functions/<domain>/<slug>.yaml)
-        │  ocf new audio  (implementation manifest)
-        ▼
-voice (TTS backend: espeak-ng · espeak · piper)     (live; profiles in audio/voices/)
-        +  background (Farfield · SBaGenX · reference-master, optionally state-aware)
-        │  ocf voice render / ocf audio build       (live)
-        ▼
-lossless master (WAV/FLAC) + render manifest + checksums
-```
-
-The step-by-step walkthrough — including sample LRC input, canonical OCF timed
-YAML output, authoring modes, timing rules, and a `supported / specified`
-status matrix — lives in **[`docs/TIMED_TRANSCRIPTS.md`](docs/TIMED_TRANSCRIPTS.md)**.
-The normative specification is
-`OCF_OpenCode_Bootstrap_Prompt_v3_Transcript_Focus_Preparation.md`
-(sections 32, 44–50).
-
-## Example function record
-
-`functions/foundation/attention.yaml` (abridged):
-
-```yaml
-id: "OCF-FND-002"
-slug: "attention"
-canonical:
-  name: "Attention"
-  command:
-    primary: "PLUS-FOCUS"
-legacy:
-  source_system: "Monroe H-PLUS"
-  name: "ATTENTION"
-  commands: ["PLUS-FOCUS"]
-  command_status: "unchanged"
-  source_availability: "available"
-ocf:
-  reimplementation_status: "planned"
-  command_review: "approved"
-```
-
-## Command philosophy
-
-- **Preserve good commands.** `THINK FAST` is and stays `PLUS-THINK`;
-  `ATTENTION` stays `PLUS-FOCUS`. No artificial uniformity.
-- **Keep commands short.** One word after `PLUS` preferred, two acceptable,
-  three exceptional. No filler (`NOW`, `SYSTEM`, `ACTIVATE`).
-- **Preserve canonical sensory commands.** `PLUS-SEE BETTER` is the canonical
-  Sensory: Seeing command. `PLUS-SEE MORE` and `PLUS-SEE LESS` are not active
-  modes.
-- Every changed command retains its legacy command as metadata/alias with a
-  documented rationale.
-
-See `docs/COMMAND_GRAMMAR.md`, `docs/NAMING_GUIDELINES.md`, and the generated
-`docs/COMMAND_REVIEW.md`.
-
-## The 55 legacy functions
-
-All 55 documented functions are first-class OCF records:
-
-| Source material          | Count | Status                          |
-| ------------------------ | ----- | ------------------------------- |
-| Available                | 39    | Legacy-mapped, reimplementation planned |
-| Unavailable (documented) | 16    | Legacy-mapped, reimplementation planned |
-
-The 16 source-unavailable legacy functions are **OCF reimplementation
-targets**, eligible for original scripts, community proposals, review, and
-future audio — never presented as reconstructed original Monroe audio.
-
-- `FUNCTION_INDEX.md` / `function-index.json` / `function-index.csv`
-- `legacy/hplus-command-map.json` / `.csv`
-- `docs/AVAILABILITY_MATRIX.md` and `docs/REIMPLEMENTATION_ROADMAP.md`
-
-## Audio architecture and release status
-
-Audio is modeled independently from functions. A spoken session is produced
-by layered, independent artifacts:
-
-```text
-function capability
-        │
-        ▼
-timed transcript (OCF timed YAML / audio/scripts/)
-        │
-        ├─────────────► spoken narration stem  (TTS backend per cue)
-        └─────────────► background stem       (Farfield · SBaGenX · reference-master)
-                            │
-                            ▼ (mixer — pure stdlib PCM)
-       mastered output (WAV/FLAC) + render manifest + checksums
-```
-
-A function is never tied to a single recording: one function may have several
-audio implementations, several transcripts, and several background presets.
-See `docs/AUDIO_STANDARD.md`, `docs/BACKGROUND_AUDIO.md`, and
-`docs/TIMED_TRANSCRIPTS.md`.
-
-The implemented `ocf audio build` command creates local rendered masters,
-optional MP3/FLAC derivatives, embedded codec tags, checksums, and a YAML render
-manifest. For a self-contained localized package, use `ocf audio release` with
-an explicitly approved PNG/JPEG cover image:
+[AGENTS.md](AGENTS.md) is the provider-neutral entry point. Start with a compact
+query instead of loading large indexes or narration files:
 
 ```bash
-python3 scripts/ocf.py audio release OCF-BOD-010 \
-  --locale en-US --format flac --format mp3 \
-  --artwork /path/to/approved-cover.png --output ./release-output --dry-run
-python3 scripts/ocf.py audio release OCF-BOD-010 \
-  --locale en-US --format flac --format mp3 \
-  --artwork /path/to/approved-cover.png --output ./release-output
+python scripts/ocf.py dev ocf_project_overview
+python scripts/ocf.py dev ocf_get_function --arguments '{"function_id":"OCF-FND-002"}'
+python -m pip install -e '.[mcp]'       # optional official SDK
+python scripts/ocf.py mcp             # local stdio; connect an MCP client
 ```
 
-The command selects the unique registered audio implementation for a function
-ID (or accepts an audio implementation ID directly), renders into staging,
-creates localized title-based filenames and a UTF-8 transcript from final
-synthesis text, embeds and verifies MP3/FLAC metadata and artwork, writes a
-checksummed JSON manifest, and publishes the release directory only after
-validation. Existing releases are preserved unless `--force` is provided; a
-replaced release is retained in a sibling hidden archive directory. Artwork is
-required and never generated or inferred from reference material. A successful
-package is not an automatic rights-clearance decision. See
-`docs/AUDIO_PIPELINE.md` for metadata, manifest, and verification details.
+The same adapters work through CLI without MCP. Long jobs return persistent IDs
+for polling/cancellation and bounded result summaries. Read
+[MCP setup and job boundaries](docs/MCP.md) for OpenCode, Claude Code and Codex
+configuration. No provider credentials or paid services are required.
 
-Functions with a narration-plan binding can also render an untimed, measured
-audition directly from canonical locale resources, without an audio manifest,
-artwork, or release metadata (see the Sleep Easy quick-start command above).
-This preserves the bound narration wording and schedules each segment after
-the prior segment's measured speech end. It does not change function review or
-release approval; the render manifest reports those states separately. The
-Sleep Easy function-content review remains required, so its audition is not a
-release approval.
+## Documentation
 
-## Transcript & audio pipeline — what is supported
-
-| Artifact              | Formats / engines                                   | Status         |
-| --------------------- | --------------------------------------------------- | -------------- |
-| Function records      | canonical YAML (`schemas/function.schema.json`)     | implemented    |
-| Proposals             | Markdown + YAML front matter                        | implemented    |
-| Audio implementations | YAML manifests (`OCF-AUDIO-*`)                      | implemented    |
-| Background presets    | YAML manifests (`OCF-BG-*`), engines: Farfield · SBaGenX · reference-master | implemented    |
-| Timed transcripts     | import LRC/SRT/VTT/txt/md → **OCF timed YAML** (`audio/scripts/`) | implemented    |
-| Sections / states     | role sections, state profiles, analysis, export, timing templates | implemented    |
-| Voices / TTS          | optional backends: espeak-ng · espeak · piper, per-cue WAV render | implemented     |
-| Mixing / mastering    | stdlib PCM mix, WAV/FLAC/MP3 via ffmpeg/flac, `OCF-RENDER-*` manifest | implemented     |
-| Voice cloning         | OpenVoice · Kokoro · pre-recorded narration                        | specified       |
-
-"Specified" means the format and CLI behavior are fully defined in
-`OCF_OpenCode_Bootstrap_Prompt_v3_Transcript_Focus_Preparation.md` and tracked
-in `ROADMAP.md`; the corresponding `ocf preparation …` commands are not yet
-shipped. "Implemented" rows have live, tested commands.
-`ocf voice doctor` checks which optional TTS backends are installed.
-
-**Audio binaries and Git LFS.** The repository vendors no rendered or
-third-party audio: builds and citation-only material stay local
-(`.gitignore`, licensing grounds). Genuinely committable binary assets
-(OCF-owned or clearly licensed community audio, figures) are tracked as
-**Git LFS** objects by `.gitattributes`, so a contributor just adds the file.
-See `CONTRIBUTING.md` ("Large files and Git LFS").
-
-## Farfield integration
-
-Farfield is an **optional external synthesis engine**. OCF detects it on
-PATH and calls only its public CLI (`farfield list|describe|render`).
-If it is missing, commands degrade gracefully with install guidance:
-
-```bash
-./scripts/ocf audio check-engine
-./scripts/ocf audio render-background OCF-BG-0001
-```
-
-## Validation
-
-```json
-python3 scripts/ocf.py validate --all
-```
-
-covers JSON-Schema conformance, duplicate IDs, duplicate commands,
-command-design rules, the 55-function invariants, and 39/16 availability
-counts.
-
-## Testing
-
-`python3 -m pytest` covers the CLI, wizards, schemas, command rules, indexes,
-audio manifests, and Farfield graceful degradation. `make check` runs
-validation plus index freshness in one step.
-
-## Contribution path
-
-1. Draft (`proposals/draft/`)
-2. Review (`proposals/review/`)
-3. Experimental
-4. Accepted. Legacy compatibility is always preserved.
-See `CONTRIBUTING.md`, `docs/SUBMISSION_GUIDELINES.md`,
-`docs/FUNCTION_LIFECYCLE.md`.
-
-## Safety
-
-Functions carry safety levels, and health/emergency functions carry explicit
-statements. OCF makes **no effect guarantees** — see
-`docs/SAFETY_POLICY.md` and `docs/EVIDENCE_AND_CLAIMS.md`.
-
-## Licensing
-
-- OCF code, docs, and field formats: Apache-2.0.
-- Community scripts/audio: license recorded per item.
-- Legacy factual metadata: Apache-2.0 (facts, not expressions).
-- Third-party source material: **not redistributed**.
-
-See `LICENSE`, `NOTICE.md`, and `docs/SOURCE_ATTRIBUTION.md`.
-
-## Roadmap
-
-See `ROADMAP.md`.
+The [documentation map](docs/README.md) routes to canonical guides in two steps.
+`python scripts/ocf.py docs-inventory` generates the tracked documentation
+inventory; historical research/checkpoint pages remain explicitly historical.
+See [governance](GOVERNANCE.md), [licensing](LICENSE) and
+[source attribution](docs/SOURCE_ATTRIBUTION.md).
