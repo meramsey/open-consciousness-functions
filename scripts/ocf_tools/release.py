@@ -250,6 +250,8 @@ def package_release(
     formats: list[str] | None = None,
     voice: str | None = None,
     artwork: str | Path | None = None,
+    artwork_theme: str | None = None,
+    artwork_resolution: int = 1400,
     output: str | Path | None = None,
     version: str | None = None,
     metadata_overrides: dict[str, str] | None = None,
@@ -294,15 +296,47 @@ def package_release(
     formats = list(dict.fromkeys(formats or ["flac", "mp3"]))
     if not formats or any(fmt not in {"flac", "mp3"} for fmt in formats):
         raise OCFError("release formats must contain one or more of: mp3, flac")
-    if artwork is None:
+    if artwork is None and artwork_theme is None:
         raise OCFError("release artwork is required; pass an explicitly approved --artwork image")
-    artwork_path = Path(artwork).expanduser().resolve()
-    mime, width, height = _image_info(artwork_path)
-
     audio_manifest = _select_audio_manifest(query)
     function_id = str(audio_manifest.get("function_id") or "")
     if not function_id:
         raise OCFError(f"audio implementation {audio_manifest.get('id')} has no function_id")
+    if artwork is None:
+        from .artwork import generate_cover
+
+        generated = generate_cover(
+            function_id,
+            locale=locale or "en-US",
+            theme=artwork_theme,
+            resolution=artwork_resolution,
+            version=version,
+            title_override=overrides.get("title"),
+            dry_run=dry_run,
+        )
+        artwork_path = Path(generated["path"])
+        mime, width, height = (
+            ("image/png", artwork_resolution, artwork_resolution)
+            if dry_run
+            else _image_info(artwork_path)
+        )
+        artwork_provenance = {
+            "source": "generated-ocf",
+            "brand_id": generated["settings"]["brand"]["id"],
+            "brand_version": generated["settings"]["brand"]["version"],
+            "theme_id": generated["settings"]["theme"]["id"],
+            "fingerprint": generated["fingerprint"],
+            "review_status": "candidate",
+            "publication_approval": False,
+        }
+    else:
+        artwork_path = Path(artwork).expanduser().resolve()
+        mime, width, height = _image_info(artwork_path)
+        artwork_provenance = {
+            "source": "explicit-user-cover",
+            "sha256": sha256_of_file(artwork_path),
+            "publication_approval": False,
+        }
     catalog = LocaleCatalog()
     requested_locale = normalize_tag(locale) if locale else catalog.canonical_locale
     if not requested_locale:
@@ -350,7 +384,12 @@ def package_release(
         "artifacts": [*artifact_names.values(), transcript_name, cover_name, "manifest.json"],
     }
     if dry_run:
-        return {"dry_run": True, **planned, "title_resolution": title_provenance}
+        return {
+            "dry_run": True,
+            **planned,
+            "title_resolution": title_provenance,
+            "artwork_provenance": artwork_provenance,
+        }
     if final_dir.exists() and not overwrite:
         raise OCFError(f"release already exists: {final_dir} (use --force to replace it)")
 
@@ -463,6 +502,7 @@ def package_release(
             "requested_locale": requested_locale,
             "title_resolution": title_provenance,
             "release_version": release_version,
+            "artwork_provenance": artwork_provenance,
             "voice_profile_id": built.get("voice", {}).get("profile_id")
             or voice
             or audio_manifest.get("voice_profile"),

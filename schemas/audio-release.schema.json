@@ -10,6 +10,7 @@
     "source_narration", "rendering", "created_at", "artifacts"
   ],
   "properties": {
+    "artwork_provenance": {"type":"object","required":["source","publication_approval"],"properties":{"source":{"enum":["generated-ocf","explicit-user-cover"]},"publication_approval":{"const":false}}},
     "schema_version": {"const": "1.0"},
     "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[A-Z0-9]{3,4}$"},
     "audio_id": {"type": "string", "minLength": 1},

@@ -26,6 +26,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+artwork = ["Pillow==12.3.0", "fonttools==4.67.0"]
 mcp = ["mcp==1.28.1"]
 dev = [
   "pytest>=8.0",

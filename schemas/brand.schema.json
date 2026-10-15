@@ -1,0 +1,9 @@
+{
+ "$schema":"http://json-schema.org/draft-07/schema#","$id":"https://open-consciousness-functions.dev/schemas/brand.schema.json","title":"Original candidate OCF procedural identity",
+ "type":"object","additionalProperties":false,"required":["schema_version","id","version","name","abbreviation","review_status","human_approval","license","attribution","geometry","variants"],
+ "properties":{
+ "schema_version":{"const":"1.0"},"id":{"type":"string"},"version":{"type":"string"},"name":{"const":"Open Consciousness Functions"},"abbreviation":{"const":"OCF"},"review_status":{"const":"candidate"},"human_approval":{"type":"null"},"license":{"type":"string"},"attribution":{"type":"string"},
+ "geometry":{"type":"object","additionalProperties":false,"required":["center","rings","path","star_radius","path_width"],"properties":{"center":{"$ref":"#/definitions/point"},"rings":{"type":"array","minItems":1,"items":{"type":"number","exclusiveMinimum":0,"maximum":450}},"path":{"type":"array","minItems":4,"maxItems":4,"items":{"$ref":"#/definitions/point"}},"star_radius":{"type":"number","minimum":1,"maximum":100},"path_width":{"type":"number","minimum":1,"maximum":100}}},
+ "variants":{"type":"array","items":{"enum":["primary","icon","monochrome","light","dark","album","app","social"]},"uniqueItems":true}
+ },"definitions":{"point":{"type":"array","minItems":2,"maxItems":2,"items":{"type":"number","minimum":0,"maximum":1000}}}
+}

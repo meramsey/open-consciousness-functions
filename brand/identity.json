@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0", "id": "ocf-cosmic-resonance", "version": "0.1.0",
+  "name": "Open Consciousness Functions", "abbreviation": "OCF",
+  "review_status": "candidate", "human_approval": null,
+  "license": "Apache-2.0", "attribution": "Original OCF procedural vector geometry; no third-party artwork or source logos used.",
+  "geometry": {
+    "center": [500, 360], "rings": [100, 160, 220],
+    "path": [[310, 690], [740, 570], [240, 480], [500, 360]],
+    "star_radius": 32, "path_width": 24
+  },
+  "variants": ["primary", "icon", "monochrome", "light", "dark", "album", "app", "social"]
+}

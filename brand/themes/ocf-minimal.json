@@ -1,0 +1,5 @@
+{
+  "schema_version": "1.0", "id": "ocf-minimal", "version": "1.0.0", "extends": "ocf-light",
+  "palette": {"background": "#FFFFFF", "foreground": "#13243B", "accent": "#13243B", "secondary": "#13243B", "highlight": "#13243B"},
+  "logo_variant": "monochrome", "layout": "minimal", "effects": {"rings": true, "glow": false}
+}
