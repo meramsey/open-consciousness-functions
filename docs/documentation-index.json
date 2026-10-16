@@ -3025,6 +3025,50 @@
       "missing_information": [
         "per-document semantic review not recorded"
       ],
+      "path": "docs/releases/OCF_COMMAND_NAMING_AUDIT.md",
+      "proposed_correction": "retain historical claims; consult current workflow guides",
+      "purpose": "OCF command and function naming audit",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "75353b3a7200fea6f8515218cb46f7226d654218edbf640cf838ec602146dbce",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "maintainers/research reviewers",
+      "broken_references": [],
+      "canonical_source": "historical checkpoint (not current implementation)",
+      "duplicate_or_contradictory_information": [],
+      "historical": true,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [
+        "per-document semantic review not recorded"
+      ],
+      "path": "docs/releases/OCF_IDENTIFIER_NEUTRALIZATION_AUDIT.md",
+      "proposed_correction": "retain historical claims; consult current workflow guides",
+      "purpose": "OCF identifier neutralization audit",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/hplus-review-selection.schema.json",
+        "schemas/session-template.schema.json",
+        "schemas/source-review-selection.schema.json"
+      ],
+      "sha256": "42af3c8b1cb5c0adc301e50fa868c19d90159b64089487f759063dffeab0c725",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "maintainers/research reviewers",
+      "broken_references": [],
+      "canonical_source": "historical checkpoint (not current implementation)",
+      "duplicate_or_contradictory_information": [],
+      "historical": true,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [
+        "per-document semantic review not recorded"
+      ],
       "path": "docs/releases/OCF_MEDIA_VERIFICATION.md",
       "proposed_correction": "retain historical claims; consult current workflow guides",
       "purpose": "Media workflow verification and cache measurements",
@@ -3033,6 +3077,26 @@
       ],
       "related_schemas": [],
       "sha256": "1223842e0606c610cdf724c3c6564760481289d30ea336454bcd777f31c68068",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "maintainers/research reviewers",
+      "broken_references": [],
+      "canonical_source": "historical checkpoint (not current implementation)",
+      "duplicate_or_contradictory_information": [],
+      "historical": true,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [
+        "per-document semantic review not recorded"
+      ],
+      "path": "docs/releases/OCF_MODERNIZATION_BASELINE.md",
+      "proposed_correction": "retain historical claims; consult current workflow guides",
+      "purpose": "Autonomous modernization baseline",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "0ba4f91f15c92892c4c0a92218a513a79a9dbd248586f1a5ebb243bdef390bf8",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4646,5 +4710,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 222
+  "total": 225
 }
