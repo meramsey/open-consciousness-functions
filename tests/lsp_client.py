@@ -11,12 +11,12 @@ from ocf_tools.paths import REPO_ROOT, workspace_environment
 
 
 class Client:
-    def __init__(self, root, stderr):
+    def __init__(self, root, stderr, *, command=None):
         self.log = stderr.open("wb")
         env = workspace_environment()
         env["PYTHONPATH"] = str(REPO_ROOT / "scripts")
         self.process = subprocess.Popen(
-            [sys.executable, str(REPO_ROOT / "scripts/ocf.py"), "lsp", "--stdio"],
+            command or [sys.executable, str(REPO_ROOT / "scripts/ocf.py"), "lsp", "--stdio"],
             cwd=REPO_ROOT,
             env=env,
             stdin=subprocess.PIPE,

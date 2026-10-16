@@ -2,6 +2,7 @@
 description: Trace a narrow OCF subsystem using symbols, targeted reads, and tests without editing files.
 mode: subagent
 permission:
+  lsp: allow
   edit: deny
   bash: deny
   task: deny

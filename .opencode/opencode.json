@@ -1,5 +1,19 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "lsp": "allow"
+  },
+  "lsp": {
+    "ocf": {
+      "command": ["python3", "scripts/start_ocf_lsp.py", "--stdio"],
+      "extensions": [".yaml", ".yml", ".json"],
+      "initialization": {
+        "diagnosticsDebounceMs": 150
+      }
+    },
+    "yaml-ls": {"disabled": true},
+    "biome": {"disabled": true}
+  },
   "mcp": {
     "ocf": {
       "type": "local",

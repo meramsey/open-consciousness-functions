@@ -22,6 +22,105 @@ on Windows this is typically `.venv/Scripts/ocf-lsp.exe`, and on POSIX
 `.venv/bin/ocf-lsp`. Do not run an interactive shell command inside the protocol
 stream. Logs go to stderr. CLI validation and MCP work without this extra.
 
+For an unactivated checkout, `python3 scripts/start_ocf_lsp.py --stdio` selects
+that checkout's `.venv/bin/python` (POSIX) or `.venv/Scripts/python.exe` (Windows).
+The bootstrap can run on an older Python, but the selected virtual environment
+must use Python 3.11+. It fails with an installation hint rather than falling back
+to a system interpreter. On Windows, use `python scripts/start_ocf_lsp.py --stdio`
+if the bootstrap executable is named `python` instead of `python3`.
+
+## OpenCode project integration
+
+The authoritative project settings are in `.opencode/opencode.json`. They retain
+MCP and watcher settings and register custom server `ocf` for `.yaml`, `.yml` and
+`.json`, using `python3 scripts/start_ocf_lsp.py --stdio` with initialization
+`diagnosticsDebounceMs: 150`. OpenCode runs it from the project directory; start
+OpenCode with this checkout as its project. The launcher's location determines
+the venv independently of shell activation. If Windows only provides `python`,
+change just the command's bootstrap executable to `python`.
+
+An LSP object also enables OpenCode's built-in servers. This project explicitly
+disables `yaml-ls` and `biome` to avoid overlapping YAML/JSON ownership. Other
+installed servers remain available. The project startup launcher suppresses
+automatic LSP downloads; it does not install a separate Python server. OCF's data
+server never handles `.py` files. Pyright/basedpyright is separate, optional setup;
+an installed Python server must be configured with this checkout's `.venv`.
+
+### Start a new OpenCode process
+
+From the checkout, without activating a shell environment:
+
+```bash
+python3 scripts/start_ocf_opencode.py --continue
+```
+
+On POSIX, `./scripts/start_ocf_opencode.py --continue` is equivalent. On Windows
+use `python scripts/start_ocf_opencode.py --continue`. All supplied arguments are
+passed as individual arguments to the existing `opencode` on PATH. No executable,
+router, provider, credential, network binding or authentication is replaced.
+Use `--session SESSION_ID` to resume a specific conversation; diagnostic tool
+runs can become the most recent session, so do not assume `--continue` selects
+the conversation you intend.
+
+The launcher sets `OPENCODE_EXPERIMENTAL_LSP_TOOL=true` for the new OpenCode
+process, and `OPENCODE_DISABLE_LSP_DOWNLOAD=true` to avoid incidental downloads.
+It uses the existing OCF workspace resolver for subprocess temporary/cache paths
+and preserves the rest of the environment. The specific LSP flag is required by
+[OpenCode 1.18.35's tool registry](https://github.com/anomalyco/opencode/blob/v1.18.35/packages/opencode/src/tool/registry.ts)
+and [runtime flags](https://github.com/anomalyco/opencode/blob/v1.18.35/packages/opencode/src/effect/runtime-flags.ts).
+Setting it in a temporary tool shell, LSP subprocess or MCP environment does not
+enable the tool in an already-running parent OpenCode process.
+
+Project permission `lsp: allow` grants the native read-only LSP operations.
+The `ocf-investigator` and `ocf-test-reviewer` agents explicitly allow LSP while
+retaining their shell, edit, delegation and web denials. The OCF server advertises
+no automatic rename or workspace-edit operation.
+
+For an attached client, the environment belongs to the persistent `serve`/`web`
+backend. A new conversation or reconnect alone does not update that process.
+Prepare its positively identified user-owned startup configuration, then let the
+operator restart that backend later with the same arguments/authentication.
+Do not restart a backend or interrupt active jobs during setup. A separate
+standalone TUI can use the project launcher independently; it does not alter an
+already-running service.
+
+### Bounded checks and troubleshooting
+
+Check the installed version's help before using these commands. For OpenCode
+1.18.35, these are short-lived diagnostics and make no model calls:
+
+```bash
+python3 scripts/start_ocf_opencode.py debug config
+python3 scripts/start_ocf_opencode.py debug agent ocf-investigator
+python3 scripts/start_ocf_opencode.py debug lsp diagnostics "$PWD/functions/sleep/sleep-easy.yaml"
+python3 scripts/start_ocf_opencode.py debug lsp diagnostics "$PWD/schemas/function.schema.json"
+python3 scripts/start_ocf_opencode.py debug lsp document-symbols "$(python3 -c 'from pathlib import Path; print(Path("functions/sleep/sleep-easy.yaml").resolve().as_uri())')"
+```
+
+Bound diagnostic processes externally (for example, `subprocess.run` with a
+timeout); do not start a bare stdio server in a terminal and wait indefinitely.
+Keep output private: `debug config` may contain provider secrets. Inspect only its
+LSP subsection and relevant permissions, and redirect large JSON directly to a
+private file rather than relying on buffered CLI output over a pipe.
+
+`debug agent NAME` can verify `tools.lsp` in a fresh process without a model call.
+The installed version also supports `debug agent NAME --tool lsp --params JSON`
+for a direct read-only operation; it creates a diagnostic session in history.
+For example, `goToDefinition` on Sleep Easy line 45, character 7 resolves its
+function-body resource to `locales/en-US/hplus-OCF-SLP-005.yaml`. Native tool
+positions are one-based. Programmatically derive file URIs with `Path.as_uri()`;
+do not concatenate unescaped filesystem paths into `file://` strings.
+
+An empty LSP status before opening a matching document means **not yet started**,
+not necessarily disabled. `lsp: false`, `disabled: true`, environment-injected
+configuration, a wrong project directory, a missing bootstrap executable or an
+unavailable optional extra can actually prevent a connection. `debug config`
+shows the resolved precedence, while document symbols, a cross-file definition
+and an invalid unsaved-buffer diagnostic establish real protocol behavior.
+Empty diagnostics alone are insufficient. Fresh-process tool verification does
+not add a tool to the unchanged current session; interactive verification remains
+an operator check after the manual restart.
+
 ## Editor configuration
 
 These examples use `ocf-lsp` on the editor's PATH. A client must provide the

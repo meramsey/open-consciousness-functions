@@ -36,7 +36,7 @@
       "purpose": "ocf-investigator",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "80328c3d907acc8f2402fbd6fa3698de724f9afb41caf74227f8b7e6495f83d0",
+      "sha256": "cdad3626997c7c494ab96a3d9717bb6f28fd62a584013ade54465de4b2d6f25a",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -54,7 +54,7 @@
       "purpose": "ocf-test-reviewer",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "e018f6e4d1e618f1d9313bafb31f5c666f483710c726a9715c4447153108391a",
+      "sha256": "74c771b181e9b32e69b9d708fb7c413306214a978a564584d45d3b552102a851",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -490,7 +490,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "2c0cbbbd2fd96d51bb0363ed6fbf41ddbda0dd9e2b61be1bf34c44881bd16adb",
+      "sha256": "43c155a5c42deb007ca6a9c4a1ca7433ae37f5ea1b1ff10da1908a091a1a81a8",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1173,8 +1173,10 @@
         "lsp",
         "validate"
       ],
-      "related_schemas": [],
-      "sha256": "c4324a33db09f095060077819e95e9e592bcfc12c9b630eec092f984895a171f",
+      "related_schemas": [
+        "schemas/function.schema.json"
+      ],
+      "sha256": "2ff491cb517e7c0fa4ef37f0f20ffffb84ee04fc25822b3316777a1511cba45b",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {

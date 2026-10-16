@@ -24,8 +24,8 @@ map for targeted investigation, not a replacement for schemas or tests.
   development drivers.
 - `tests/`: audited unit contracts plus repository/external-tool integration.
 - `.github/workflows/`: validation, generated-index, lint, and test jobs.
-- `.opencode/`: repository-local read-only investigation agents and watcher
-  settings; no MCP server is configured here.
+- `.opencode/`: repository-local read-only investigation agents, watcher settings,
+  and the existing MCP/custom OCF LSP registrations.
 
 ## Investigation order
 
@@ -164,6 +164,16 @@ real stdio diagnostics and navigation for YAML/JSON using shared application
 services and unsaved buffers. Install `.[lsp]` and configure a client explicitly;
 its presence does not mean an editor has connected. It is separate from a Python
 server such as Pyright/Based Pyright. Keep client configuration portable and optional.
+
+For OpenCode, use `python3 scripts/start_ocf_opencode.py --session SESSION_ID`
+from the checkout for a new process with the native LSP tool flag. The project
+configuration launches `python3 scripts/start_ocf_lsp.py --stdio` for YAML/JSON
+only; Python LSP is separate. Verify resolved settings and read-only native
+symbols/definitions in bounded diagnostic processes. A missing tool in the
+unchanged parent session is expected until restart. Attached clients need the
+actual persistent backend's startup environment updated and a later operator
+restart, not merely a new conversation. Never restart an active backend during
+preparation. See [OpenCode setup and troubleshooting](LSP.md#opencode-project-integration).
 
 The optional [OCF stdio MCP adapter](MCP.md) reuses application APIs for compact
 discovery, targeted validation and persistent jobs. It is not automatically

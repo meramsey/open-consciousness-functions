@@ -2,6 +2,7 @@
 description: Review a focused OCF change for regression risk, test taxonomy, and missing failure-path coverage without editing files.
 mode: subagent
 permission:
+  lsp: allow
   edit: deny
   bash: deny
   task: deny
