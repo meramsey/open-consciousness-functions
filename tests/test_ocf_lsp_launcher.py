@@ -1,8 +1,12 @@
 """Real launcher and protocol checks without changing canonical documents."""
 
 import json
+import os
+import shutil
 import subprocess
 import sys
+import sysconfig
+import venv
 
 import pytest
 from lsp_client import Client
@@ -13,12 +17,37 @@ pytest.importorskip("pygls")
 pytestmark = [pytest.mark.integration, pytest.mark.external_tool]
 
 
+@pytest.fixture
+def checkout_launcher(repo_root, tmp_path):
+    """Exercise a real checkout venv without depending on a developer's .venv."""
+    root = tmp_path / "checkout with spaces"
+    scripts = root / "scripts"
+    scripts.mkdir(parents=True)
+    for name in ("ocf_launch.py", "start_ocf_lsp.py"):
+        shutil.copy2(repo_root / "scripts" / name, scripts / name)
+    environment = root / ".venv"
+    venv.EnvBuilder(with_pip=False).create(environment)
+    site_packages = environment / (
+        "Lib/site-packages"
+        if os.name == "nt"
+        else f"lib/python{sys.version_info.major}.{sys.version_info.minor}/site-packages"
+    )
+    # Reuse the test runner's already installed optional dependencies, without
+    # installing packages or changing its environment. Source stays explicit on
+    # PYTHONPATH because editable-install .pth hooks are not recursively loaded.
+    dependencies = sorted({sysconfig.get_path("purelib"), sysconfig.get_path("platlib")})
+    (site_packages / "ocf-test-dependencies.pth").write_text(
+        "\n".join(dependencies) + "\n", encoding="utf-8"
+    )
+    return scripts / "start_ocf_lsp.py"
+
+
 def test_launcher_symbols_cross_file_definition_unsaved_error_and_clean_shutdown(
-    repo_root, tmp_path
+    repo_root, tmp_path, checkout_launcher
 ):
     path = repo_root / "functions/sleep/sleep-easy.yaml"
     original = path.read_text(encoding="utf-8")
-    command = [sys.executable, str(repo_root / "scripts/start_ocf_lsp.py"), "--stdio"]
+    command = [sys.executable, str(checkout_launcher), "--stdio"]
     rpc = Client(repo_root, tmp_path / "launcher-stderr.log", command=command)
     try:
         response = rpc.request(
@@ -79,18 +108,19 @@ def test_launcher_symbols_cross_file_definition_unsaved_error_and_clean_shutdown
     assert rpc.process.returncode == 0
 
 
-def test_launcher_propagates_parser_exit_status_and_streams(repo_root):
+def test_launcher_propagates_parser_exit_status_and_streams(repo_root, checkout_launcher):
+    env = workspace_environment({"PYTHONPATH": str(repo_root / "scripts")})
     result = subprocess.run(
-        [sys.executable, str(repo_root / "scripts/start_ocf_lsp.py"), "--not-a-valid-argument"],
-        env=workspace_environment(),
+        [sys.executable, str(checkout_launcher), "--not-a-valid-argument"],
+        env=env,
         capture_output=True,
         timeout=15,
     )
     assert result.returncode == 2 and not result.stdout
     assert b"unrecognized arguments" in result.stderr
     result = subprocess.run(
-        [sys.executable, str(repo_root / "scripts/start_ocf_lsp.py"), "--capabilities"],
-        env=workspace_environment(),
+        [sys.executable, str(checkout_launcher), "--capabilities"],
+        env=env,
         capture_output=True,
         timeout=15,
     )
