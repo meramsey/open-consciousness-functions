@@ -18,6 +18,26 @@ def venv_python(root, *, windows=None):
     return interpreter
 
 
+def python_lsp_command(argv):
+    """Use the installed JS distribution directly; never bootstrap/download Node."""
+    spec = importlib.util.find_spec("pyright")
+    if spec is None or not spec.origin:
+        raise RuntimeError(
+            "Install the optional Python LSP in .venv: python -m pip install -e '.[python-lsp]'"
+        )
+    server = Path(spec.origin).parent / "dist" / "langserver.index.js"
+    if not server.is_file():
+        raise RuntimeError(
+            "Pyright's bundled server is missing; reinstall the pinned .[python-lsp] extra."
+        )
+    node = shutil.which("node")
+    if not node:
+        raise RuntimeError(
+            "Pyright requires Node >=14 on OpenCode's startup PATH; install Node explicitly. No runtime download was attempted."
+        )
+    return [node, str(server), *argv]
+
+
 def launch(kind, script, argv=None):
     """Re-exec into the project venv, then preserve protocol/terminal streams."""
     script = Path(script).resolve()
@@ -46,6 +66,8 @@ def launch(kind, script, argv=None):
                     "-m pip install -e '.[lsp]' from the checkout."
                 )
             command = [str(interpreter), "-m", "ocf_tools.lsp_server", *argv]
+        elif kind == "python-lsp":
+            command = python_lsp_command(argv)
         elif kind == "opencode":
             executable = shutil.which("opencode")
             if not executable:

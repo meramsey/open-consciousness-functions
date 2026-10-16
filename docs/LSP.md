@@ -42,9 +42,91 @@ change just the command's bootstrap executable to `python`.
 An LSP object also enables OpenCode's built-in servers. This project explicitly
 disables `yaml-ls` and `biome` to avoid overlapping YAML/JSON ownership. Other
 installed servers remain available. The project startup launcher suppresses
-automatic LSP downloads; it does not install a separate Python server. OCF's data
-server never handles `.py` files. Pyright/basedpyright is separate, optional setup;
-an installed Python server must be configured with this checkout's `.venv`.
+automatic LSP downloads. OCF's data server never handles `.py` files. The separate
+`pyright` registration handles `.py`/`.pyi` using the optional setup below.
+
+### Optional Python navigation with Pyright
+
+Install into the existing project virtualenv, without upgrading other tools:
+
+```bash
+.venv/bin/python -m pip install -e ".[python-lsp]"
+.venv/bin/python -m pip check
+```
+
+On Windows use `.venv/Scripts/python.exe`. The `python-lsp` extra pins
+`pyright==1.1.408`. This is the community Python distribution/wrapper of
+Microsoft's JavaScript Pyright, not a separate Python implementation. The wheel
+includes the JavaScript server. It remains optional for ordinary OCF users and
+independent of the OCF data-server `lsp` extra.
+
+Node >=14 must already be on OpenCode's startup PATH. Installation here was
+verified with Node 16.14.2; the development-tool CI job explicitly supplies Node
+22. Neither OpenCode nor Node is upgraded by this setup. The project launcher
+`python3 scripts/start_ocf_python_lsp.py --stdio` first selects the checkout's
+venv, resolves its installed Pyright bundle, then execs Node on
+`pyright/dist/langserver.index.js`. It never invokes the wrapper's Node/npm
+bootstrap and cannot install/download runtime components at startup. Missing
+Pyright, its bundled server, or Node produces an actionable stderr error.
+The Node server runtime and the Python environment being analyzed are distinct.
+
+The existing `pyright` server ID is overridden rather than duplicated. Its custom
+command is needed because `.venv/bin` need not be on an unactivated startup PATH;
+the router's PATH is preserved. Windows venv selection uses `Scripts/python.exe`
+through the same launcher helper. Where the bootstrap is named only `python`,
+change the command's first element just as for the OCF data-server launcher.
+
+`[tool.pyright]` in `pyproject.toml` is the sole project analysis configuration:
+
+- `typeCheckingMode = "basic"`; no previous stronger policy existed. This is
+  developer feedback, not a new repository-wide type-check CI gate.
+- `pythonVersion = "3.11"` preserves the supported minimum. It does not assert
+  that the developer interpreter is 3.11; the current venv uses Python 3.12.
+- Relative `venvPath = "."` and `venv = ".venv"` select this checkout's packages
+  portably. No Linux-only interpreter path is committed.
+- `extraPaths = ["scripts", "tests"]` match the real `ocf_tools` package and test
+  helper import layout. Editable installation alone is not assumed sufficient
+  for static import resolution.
+- Real source/tests are included; scratch, venvs, build/dist, node_modules,
+  rendered audio, bytecode and coverage output are excluded from discovery.
+  Exclusions are not filesystem security: imported dependencies remain navigable.
+
+OpenCode's `python.analysis.diagnosticMode = "openFilesOnly"` is delivered through
+`workspace/configuration`, not merely assumed to be an arbitrary initialize
+option. The 1.18.35 client also supplies `workspaceFolders`, which Pyright needs
+for reliable project-config discovery. Direct protocol tests emulate those
+messages and verify config requests, venv resolution, cross-file navigation and
+unsaved diagnostic updates/clearing. Cross-file analysis remains available while
+closed-file diagnostics are not published. Ruff retains formatting/lint ownership;
+startup performs no edits, formatting or import organization.
+
+Verification of the existing `complete_session.py` found five basic-mode
+diagnostics: optional pacing/query arguments and `os.sys` member accesses. These
+are separate existing code-quality findings, not a claim that the entire project
+is type-clean. No blanket ignores, fake stubs or source exclusions were added.
+Missing optional audio/SDK imports in a lean environment should be distinguished
+from an incorrectly selected venv; install only the extras needed for that work.
+
+After changing LSP registration, a running OpenCode process needs an operator
+restart through `scripts/start_ocf_opencode.py --session SESSION_ID`. Bounded fresh
+`debug agent NAME --tool lsp --params JSON` processes can verify Python operations
+before that restart without making model calls. Native tool registration in a
+fresh process does not retrofit the unchanged interactive process. Do not restart
+the separate server service to activate Python in a standalone TUI.
+
+Troubleshooting: check the resolved `lsp.pyright` command and extensions, Node on
+the actual startup PATH, the pinned venv package, and Pyright's project-config
+discovery. Temporarily set `python.analysis.logLevel` to `Trace` in a diagnostic
+client to inspect search paths/configuration requests, then retain normal logging.
+Do not add a competing `pyrightconfig.json`; it would override the TOML policy.
+
+```bash
+python -m pytest tests/test_ocf_launch.py tests/test_python_lsp.py tests/test_ocf_lsp_launcher.py tests/test_lsp_protocol.py
+```
+
+The real Pyright protocol tests skip when this optional tool/Node is absent in an
+ordinary environment. The dedicated Python-LSP CI job installs it explicitly and
+requires those tests on Linux, macOS and Windows; missing tooling fails that job.
 
 ### Start a new OpenCode process
 

@@ -29,6 +29,7 @@ dependencies = [
 artwork = ["Pillow==12.3.0", "fonttools==4.67.0"]
 mcp = ["mcp==1.28.1"]
 lsp = ["pygls==2.1.1", "lsprotocol==2025.0.0"]
+python-lsp = ["pyright==1.1.408"]
 dev = [
   "pytest>=8.0",
   "pytest-xdist==3.8.0",
@@ -75,6 +76,19 @@ exclude = ["audio/background/rendered"]
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "UP"]
 ignore = ["E501"]
+
+[tool.pyright]
+include = ["scripts", "tests", "setup.py"]
+exclude = [
+  ".ocf-work", ".venv", "venv", "build", "dist", "htmlcov",
+  "audio/rendered", "audio/background/rendered", "**/node_modules",
+  "**/__pycache__", ".pytest_cache", ".ruff_cache",
+]
+extraPaths = ["scripts", "tests"]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.11"
+typeCheckingMode = "basic"
 
 [tool.coverage.run]
 branch = true

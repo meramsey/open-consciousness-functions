@@ -11,13 +11,17 @@ from ocf_tools.paths import REPO_ROOT, workspace_environment
 
 
 class Client:
-    def __init__(self, root, stderr, *, command=None):
+    def __init__(self, root, stderr, *, command=None, settings=None, cwd=None):
         self.log = stderr.open("wb")
+        self.root = root
+        self.settings = settings
+        self.server_requests = []
+        self.writer_lock = threading.Lock()
         env = workspace_environment()
         env["PYTHONPATH"] = str(REPO_ROOT / "scripts")
         self.process = subprocess.Popen(
             command or [sys.executable, str(REPO_ROOT / "scripts/ocf.py"), "lsp", "--stdio"],
-            cwd=REPO_ROOT,
+            cwd=cwd or REPO_ROOT,
             env=env,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
@@ -41,7 +45,22 @@ class Client:
                 if not headers:
                     return
                 data = self.process.stdout.read(int(headers["content-length"]))
-                self.messages.put(json.loads(data))
+                message = json.loads(data)
+                if self.settings is not None and "method" in message and "id" in message:
+                    self.server_requests.append(message)
+                    result = None
+                    if message["method"] == "workspace/configuration":
+                        result = []
+                        for item in message["params"]["items"]:
+                            value = self.settings
+                            for part in item.get("section", "").split("."):
+                                value = value.get(part) if isinstance(value, dict) else None
+                            result.append(value)
+                    elif message["method"] == "workspace/workspaceFolders":
+                        result = [{"uri": self.root.as_uri(), "name": "test"}]
+                    self._write({"jsonrpc": "2.0", "id": message["id"], "result": result})
+                else:
+                    self.messages.put(message)
         except BaseException as exc:
             self.messages.put(exc)
 
@@ -49,9 +68,13 @@ class Client:
         message = {"jsonrpc": "2.0", "method": method, "params": params}
         if identifier is not None:
             message["id"] = identifier
+        self._write(message)
+
+    def _write(self, message):
         data = json.dumps(message, ensure_ascii=False).encode("utf-8")
-        self.process.stdin.write(f"Content-Length: {len(data)}\r\n\r\n".encode("ascii") + data)
-        self.process.stdin.flush()
+        with self.writer_lock:
+            self.process.stdin.write(f"Content-Length: {len(data)}\r\n\r\n".encode("ascii") + data)
+            self.process.stdin.flush()
 
     def receive(self, predicate, timeout=15):
         deadline = time.monotonic() + timeout

@@ -168,7 +168,12 @@ server such as Pyright/Based Pyright. Keep client configuration portable and opt
 For OpenCode, use `python3 scripts/start_ocf_opencode.py --session SESSION_ID`
 from the checkout for a new process with the native LSP tool flag. The project
 configuration launches `python3 scripts/start_ocf_lsp.py --stdio` for YAML/JSON
-only; Python LSP is separate. Verify resolved settings and read-only native
+only; `python3 scripts/start_ocf_python_lsp.py --stdio` supplies the separate pinned
+Pyright server for Python after installing `.[python-lsp]` and providing Node.
+The single `[tool.pyright]` policy uses basic checks, Python 3.11 compatibility,
+the checkout's `.venv`, and the real `scripts`/`tests` import paths. Diagnose
+environment/setup errors separately from existing code type findings; do not
+silence them or turn setup into a strict-typing migration. Verify resolved settings and read-only native
 symbols/definitions in bounded diagnostic processes. A missing tool in the
 unchanged parent session is expected until restart. Attached clients need the
 actual persistent backend's startup environment updated and a later operator

@@ -11,6 +11,13 @@
         "diagnosticsDebounceMs": 150
       }
     },
+    "pyright": {
+      "command": ["python3", "scripts/start_ocf_python_lsp.py", "--stdio"],
+      "extensions": [".py", ".pyi"],
+      "initialization": {
+        "python": {"analysis": {"diagnosticMode": "openFilesOnly"}}
+      }
+    },
     "yaml-ls": {"disabled": true},
     "biome": {"disabled": true}
   },

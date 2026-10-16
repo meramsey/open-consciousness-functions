@@ -2,6 +2,7 @@
 
 import os
 import sys
+from types import SimpleNamespace
 
 import ocf_launch
 import pytest
@@ -103,3 +104,39 @@ def test_exec_failure_is_nonzero_without_protocol_stdout(monkeypatch, tmp_path, 
     monkeypatch.setattr(ocf_launch.shutil, "which", lambda name: None)
     assert ocf_launch.launch("opencode", script, []) == 1
     assert "OpenCode is not on PATH" in capsys.readouterr().err
+
+
+def test_python_server_missing_package_bundle_and_node_are_actionable(monkeypatch, tmp_path):
+    monkeypatch.setattr(ocf_launch.importlib.util, "find_spec", lambda name: None)
+    with pytest.raises(RuntimeError, match="python-lsp"):
+        ocf_launch.python_lsp_command(["--stdio"])
+    origin = tmp_path / "package with spaces" / "__init__.py"
+    monkeypatch.setattr(
+        ocf_launch.importlib.util, "find_spec", lambda name: SimpleNamespace(origin=str(origin))
+    )
+    with pytest.raises(RuntimeError, match="bundled server"):
+        ocf_launch.python_lsp_command(["--stdio"])
+    server = origin.parent / "dist/langserver.index.js"
+    server.parent.mkdir(parents=True)
+    server.touch()
+    monkeypatch.setattr(ocf_launch.shutil, "which", lambda name: None)
+    with pytest.raises(RuntimeError, match="No runtime download"):
+        ocf_launch.python_lsp_command(["--stdio"])
+    monkeypatch.setattr(ocf_launch.shutil, "which", lambda name: "/node with spaces/node")
+    assert ocf_launch.python_lsp_command(["--stdio"]) == [
+        "/node with spaces/node",
+        str(server),
+        "--stdio",
+    ]
+
+
+def test_python_lsp_launch_uses_common_venv_and_workspace_without_changing_path(
+    monkeypatch, tmp_path
+):
+    _root, script, _interpreter = prepared(monkeypatch, tmp_path)
+    monkeypatch.setattr(ocf_launch, "python_lsp_command", lambda args: ["node", "server.js", *args])
+    calls = []
+    monkeypatch.setattr(ocf_launch.os, "execve", lambda *args: calls.append(args))
+    assert ocf_launch.launch("python-lsp", script, ["--stdio"]) == 0
+    assert calls[0][1] == ["node", "server.js", "--stdio"]
+    assert calls[0][2]["PATH"] == "unchanged"

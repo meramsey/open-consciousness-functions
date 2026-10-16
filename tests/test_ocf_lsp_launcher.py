@@ -129,6 +129,8 @@ def test_launcher_propagates_parser_exit_status_and_streams(repo_root, checkout_
 
 
 def test_project_configuration_retains_mcp_watchers_and_read_only_agents(repo_root):
+    import tomllib
+
     import yaml
 
     config = json.loads((repo_root / ".opencode/opencode.json").read_text(encoding="utf-8"))
@@ -140,8 +142,20 @@ def test_project_configuration_retains_mcp_watchers_and_read_only_agents(repo_ro
     assert "audio/rendered/**" in config["watcher"]["ignore"]
     assert config["lsp"]["ocf"]["extensions"] == [".yaml", ".yml", ".json"]
     assert config["lsp"]["ocf"]["initialization"] == {"diagnosticsDebounceMs": 150}
+    assert config["lsp"]["pyright"]["extensions"] == [".py", ".pyi"]
+    assert (
+        config["lsp"]["pyright"]["initialization"]["python"]["analysis"]["diagnosticMode"]
+        == "openFilesOnly"
+    )
     assert config["lsp"]["yaml-ls"] == config["lsp"]["biome"] == {"disabled": True}
     assert config["permission"] == {"lsp": "allow"}
+    project = tomllib.loads((repo_root / "pyproject.toml").read_text(encoding="utf-8"))
+    assert project["project"]["optional-dependencies"]["python-lsp"] == ["pyright==1.1.408"]
+    policy = project["tool"]["pyright"]
+    assert policy["typeCheckingMode"] == "basic" and policy["pythonVersion"] == "3.11"
+    assert policy["extraPaths"] == ["scripts", "tests"]
+    assert policy["venvPath"] == "." and policy["venv"] == ".venv"
+    assert not (repo_root / "pyrightconfig.json").exists()
     for name in ("ocf-investigator", "ocf-test-reviewer"):
         text = (repo_root / f".opencode/agents/{name}.md").read_text(encoding="utf-8")
         permissions = yaml.safe_load(text.split("---", 2)[1])["permission"]
