@@ -17,7 +17,7 @@ def test_media_discovery_and_unsupported_training_are_truthful(monkeypatch, tmp_
     assert api.inspect_brand()["human_approval"] is None
     assert api.list_artwork_themes()["surfaces"] == {
         "ui": "ocf-light",
-        "artwork": "ocf-dark",
+        "artwork": "ocf-cosmic-dark",
         "documentation": "ocf-minimal",
     }
     assert api.validate_theme("../outside.json")["status"] == "failed"
@@ -29,7 +29,7 @@ def test_artwork_uses_existing_persistent_job_queue(monkeypatch, tmp_path):
     pytest.importorskip("PIL")
     pytest.importorskip("fontTools")
     monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
-    job = api.generate_artwork_preview("OCF-SLP-005", resolution=256)
+    job = api.generate_artwork_preview("OCF-SLP-005", resolution=320)
     assert "job_id" in job, job
     deadline = time.monotonic() + 60
     while (

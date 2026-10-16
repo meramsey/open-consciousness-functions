@@ -5,7 +5,8 @@ PyYAML>=6.0
 jsonschema>=4.18
 referencing>=0.30
 pre-commit>=3.0
-coverage>=7.6
+coverage==7.16.2
+pytest-cov==7.1.0
 setuptools>=68
 numpy>=2.0
 scipy>=1.13

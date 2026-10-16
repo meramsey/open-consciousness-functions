@@ -12,6 +12,9 @@ test: ## Run the pytest suite
 test-parallel: ## Run the entire suite with two isolated workers (pytest-xdist)
 	$(PY) -m pytest -n 2 --dist loadfile
 
+coverage: ## Measure the complete suite with subprocesses and separate coverage gates
+	$(PY) -m ocf_tools.coverage_report run
+
 validate: ## Validate all functions, proposals, and audio manifests
 	$(OCF) validate --all
 

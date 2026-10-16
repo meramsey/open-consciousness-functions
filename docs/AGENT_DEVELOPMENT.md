@@ -124,8 +124,9 @@ Unit tests are isolated deterministic contracts; the autouse process boundary
 forbids real subprocess execution. Keep ffmpeg, Farfield, SBaGenX, filesystem
 repository workflows, and multi-component CLI tests in integration unless an
 individual test is audited as isolated. Use synthetic signal/noise fixtures for
-research math. Coverage targets 100% lines and branches but the gate is not
-enabled until the real unit denominator reaches it.
+research math. Coverage targets 100% lines and branches. The 100% unit gate
+remains pending; separate measured statement/branch regression floors and a full
+instrumented CI job are documented in [coverage](TEST_COVERAGE.md).
 
 For architecture-sensitive changes, verify at least the relevant combination of:
 

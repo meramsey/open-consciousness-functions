@@ -490,7 +490,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "b67d76023355cb95846b6df349055a8001325bc29d44c84c36be5a19e3c06985",
+      "sha256": "2c0cbbbd2fd96d51bb0363ed6fbf41ddbda0dd9e2b61be1bf34c44881bd16adb",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1606,7 +1606,7 @@
       "purpose": "Unit coverage policy and current gap",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "7a446aca93a57cd5efced7ecc8ca08fc4bf55d409c43b749f18163beffb1823d",
+      "sha256": "273d946d3336e76c97002c858635031d9148de1fd7515608d4d577cdae528bf6",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -3132,6 +3132,26 @@
       "related_commands": [],
       "related_schemas": [],
       "sha256": "0ba4f91f15c92892c4c0a92218a513a79a9dbd248586f1a5ebb243bdef390bf8",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "maintainers/research reviewers",
+      "broken_references": [],
+      "canonical_source": "historical checkpoint (not current implementation)",
+      "duplicate_or_contradictory_information": [],
+      "historical": true,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [
+        "per-document semantic review not recorded"
+      ],
+      "path": "docs/releases/OCF_MODERNIZATION_COVERAGE.md",
+      "proposed_correction": "retain historical claims; consult current workflow guides",
+      "purpose": "Modernization coverage checkpoint",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "f0d6e7025ad73250645d40bc01d5aac4a3da14f79abef6ac8a1ebacbf9e84045",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4776,5 +4796,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 228
+  "total": 229
 }

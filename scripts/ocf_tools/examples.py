@@ -246,7 +246,9 @@ def build():
         ],
         "safe_cli_examples": SAFE_COMMANDS,
         "source_hashes": {
-            str(path.relative_to(REPO_ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()
+            str(path.relative_to(REPO_ROOT)): hashlib.sha256(
+                path.read_text(encoding="utf-8").encode("utf-8")
+            ).hexdigest()
             for path in [
                 REPO_ROOT / "scripts/ocf_tools" / name
                 for name in (

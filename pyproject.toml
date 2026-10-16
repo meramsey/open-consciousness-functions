@@ -33,7 +33,8 @@ dev = [
   "pytest>=8.0",
   "pytest-xdist==3.8.0",
   "ruff>=0.5",
-  "coverage>=7.6",
+  "coverage==7.16.2",
+  "pytest-cov==7.1.0",
   "setuptools>=68",
   "numpy>=2.0",
   "scipy>=1.13",
@@ -78,8 +79,14 @@ ignore = ["E501"]
 [tool.coverage.run]
 branch = true
 source = ["scripts/ocf_tools", "scripts/tools"]
+parallel = true
+relative_files = true
+patch = ["subprocess", "_exit", "execv"]
 
 [tool.coverage.report]
 # Include reachable error paths even when old code carries pragma: no cover.
 exclude_lines = []
 show_missing = true
+
+[tool.coverage.json]
+show_contexts = true

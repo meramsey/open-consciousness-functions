@@ -70,8 +70,8 @@ def _jpeg_dimensions(data: bytes) -> tuple[int, int]:
         if length < 2 or offset + length > len(data):
             break
         if marker in sof_markers and length >= 7:
-            return int.from_bytes(data[offset + 3 : offset + 5], "big"), int.from_bytes(
-                data[offset + 5 : offset + 7], "big"
+            return int.from_bytes(data[offset + 5 : offset + 7], "big"), int.from_bytes(
+                data[offset + 3 : offset + 5], "big"
             )
         offset += length
     raise OCFError("invalid JPEG artwork: dimensions were not found")

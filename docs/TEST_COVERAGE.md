@@ -1,10 +1,55 @@
 # Unit coverage policy and current gap
 
+## Current reproducible measurement
+
+Use Python 3.11+ with `requirements-dev.txt` and any optional extras being tested:
+
+```bash
+python -m pip install -r requirements-dev.txt -e ".[mcp,artwork,lsp]"
+python -m ocf_tools.coverage_report run
+python -m ocf_tools.coverage_report check .ocf-work/logs/coverage/YOUR_RUN/summary.json
+```
+
+The explicit `run` command executes the **full** pytest suite with two `loadfile`
+workers. It measures all executable Python under `scripts/ocf_tools` and
+`scripts/tools`, including unimported modules. Coverage.py 7.16.2 / pytest-cov
+7.1.0 collect branches, subprocesses, `_exit` and `execv` paths with per-test
+contexts. No source omissions or statement exclusions are configured, including
+old `pragma: no cover` annotations. Default output is a unique directory under
+the validated OCF work root's `logs/coverage/`; an existing output directory is
+rejected, preserving failed diagnostics. A short independent pytest basetemp
+retains the production release path-length guard.
+
+Reports include raw combined, unit-context and integration-context JSON, exact
+missing statements/branches, JUnit, collection taxonomy, pytest logs and a compact
+summary with platform/version/counts. Unit/integration rows are **strict
+attributed contributions**, not separate complete process runs: startup and
+unattributed subprocess execution are combined-only. Contributions overlap and
+must not be summed. Hard-killed processes cannot be assumed to flush coverage.
+
+`tests/coverage-floors.json` gates statements and branches independently for the
+combined suite and isolated unit contribution. CI runs the full instrumented
+suite on Linux/Python 3.12 with codecs and optional adapters, retains reports even
+on failure and rejects ambiguous/missing unit/integration classification. The
+floors are measured regression guards, **not a claim of 100% unit coverage**.
+Raise floors from verified measurements as meaningful tests close the remaining
+gap; do not reduce scope, reclassify workflows or exclude branches to pass them.
+
+The [modernization baseline](releases/OCF_MODERNIZATION_BASELINE.md) records the
+unchanged starting commit's 1,779 passing tests and exact statement/branch counts.
+The [modernization measurement](releases/OCF_MODERNIZATION_COVERAGE.md) records
+1,891 passing cases, 89.3367% combined statements / 84.2714% combined branches,
+and the still-incomplete 56.2874% / 61.7286% unit-context contribution.
+New modules expand the denominator, so compare absolute coverage and remaining
+gaps as well as percentages. Historical snapshots below retain their original
+scope/tooling/limitations; their old temporary paths are not current commands or
+evidence that today's repository has 100% unit coverage.
+
 Target: **100% lines and 100% branches** of first-party testable application
 and library code. No reachable branch is excluded merely because it is hard to
 test. Coverage is not a claim that the complete system is bug-free.
 
-## Phase2B test taxonomy and expanded denominator
+## Historical Phase2B test taxonomy and expanded denominator
 
 `pytest -m unit` selects audited isolated contracts using memory/temp data and
 versioned declarative fixtures; native subprocess execution is prohibited by an

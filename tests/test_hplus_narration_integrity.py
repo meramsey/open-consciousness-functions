@@ -3,9 +3,8 @@
 import pytest
 from tools.check_hplus_narration_integrity import check, differences
 
-pytestmark = pytest.mark.integration
 
-
+@pytest.mark.integration
 def test_all_function_and_shared_narration_text_matches_frozen_baseline():
     assert check() == []
 
