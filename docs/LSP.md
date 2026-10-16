@@ -64,11 +64,15 @@ Node >=14 must already be on OpenCode's startup PATH. Installation here was
 verified with Node 16.14.2; the development-tool CI job explicitly supplies Node
 22. Neither OpenCode nor Node is upgraded by this setup. The project launcher
 `python3 scripts/start_ocf_python_lsp.py --stdio` first selects the checkout's
-venv, resolves its installed Pyright bundle, then execs Node on
+venv, resolves its installed Pyright bundle, then launches Node on
 `pyright/dist/langserver.index.js`. It never invokes the wrapper's Node/npm
 bootstrap and cannot install/download runtime components at startup. Missing
 Pyright, its bundled server, or Node produces an actionable stderr error.
 The Node server runtime and the Python environment being analyzed are distinct.
+
+POSIX uses exec for process replacement. Windows inherits the protocol handles
+through a waiting child process so venv redirectors preserve stdin/stdout and the
+actual server exit status. Protocol shutdown is checked on each native CI platform.
 
 The existing `pyright` server ID is overridden rather than duplicated. Its custom
 command is needed because `.venv/bin` need not be on an unactivated startup PATH;

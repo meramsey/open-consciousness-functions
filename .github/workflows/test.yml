@@ -28,6 +28,15 @@ jobs:
         env:
           OCF_REQUIRE_PYTHON_LSP: "1"
         run: python -m pytest tests/test_ocf_launch.py tests/test_python_lsp.py tests/test_ocf_lsp_launcher.py tests/test_lsp_protocol.py
+      - name: Retain language-server failure diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-lsp-diagnostics-${{ matrix.os }}
+          include-hidden-files: true
+          path: |
+            .ocf-work/tmp/pytest-run-*/**/pyright-stderr.log
+            .ocf-work/tmp/pytest-run-*/**/launcher-stderr.log
   agent-tools:
     strategy:
       fail-fast: false

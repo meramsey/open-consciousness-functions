@@ -3,6 +3,7 @@
 import importlib.util
 import os
 import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -38,6 +39,29 @@ def python_lsp_command(argv):
     return [node, str(server), *argv]
 
 
+def handoff(command, env=None, *, windows=None):
+    """POSIX replaces the process; Windows waits with inherited protocol handles.
+
+    CRT exec through Windows venv redirectors can lose redirected stdio and
+    report success before the child exits. Popen preserves those handles and
+    lets this launcher propagate the actual child's exit status instead.
+    """
+    windows = os.name == "nt" if windows is None else windows
+    if not windows:
+        if env is None:
+            os.execv(command[0], command)
+        else:
+            os.execve(command[0], command, env)
+        return 0
+    child = subprocess.Popen(command, env=env)
+    try:
+        return child.wait()
+    finally:
+        if child.poll() is None:
+            child.terminate()
+            child.wait()
+
+
 def launch(kind, script, argv=None):
     """Re-exec into the project venv, then preserve protocol/terminal streams."""
     script = Path(script).resolve()
@@ -46,8 +70,7 @@ def launch(kind, script, argv=None):
     try:
         interpreter = venv_python(root)
         if Path(sys.prefix).resolve() != (root / ".venv").resolve():
-            os.execv(str(interpreter), [str(interpreter), str(script), *argv])
-            return 0
+            return handoff([str(interpreter), str(script), *argv])
         if sys.version_info < (3, 11):  # noqa: UP036 — bootstrap may be older than the venv
             raise RuntimeError("The checkout's .venv requires Python 3.11 or newer.")
 
@@ -81,8 +104,7 @@ def launch(kind, script, argv=None):
         else:
             raise ValueError("unknown checkout launcher")
         os.chdir(root)
-        os.execve(command[0], command, env)
-        return 0
+        return handoff(command, env)
     except (RuntimeError, OSError) as exc:
         print(str(exc), file=sys.stderr)
         return 1

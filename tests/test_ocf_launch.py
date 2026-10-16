@@ -36,6 +36,10 @@ def prepared(monkeypatch, tmp_path):
     )
     monkeypatch.setattr(paths, "work_path", lambda area, name: root / ".ocf-work" / area / name)
     monkeypatch.setattr(ocf_launch.os, "chdir", lambda path: None)
+    handoff = ocf_launch.handoff
+    monkeypatch.setattr(
+        ocf_launch, "handoff", lambda command, env=None: handoff(command, env, windows=False)
+    )
     return root, script, interpreter
 
 
@@ -140,3 +144,35 @@ def test_python_lsp_launch_uses_common_venv_and_workspace_without_changing_path(
     assert ocf_launch.launch("python-lsp", script, ["--stdio"]) == 0
     assert calls[0][1] == ["node", "server.js", "--stdio"]
     assert calls[0][2]["PATH"] == "unchanged"
+
+
+@pytest.mark.parametrize("interrupted", [False, True])
+def test_windows_handoff_inherits_protocol_streams_and_propagates_exit(monkeypatch, interrupted):
+    events = []
+
+    class Child:
+        def wait(self):
+            events.append("wait")
+            if interrupted and events.count("wait") == 1:
+                raise KeyboardInterrupt
+            return 37
+
+        def poll(self):
+            return None if interrupted else 37
+
+        def terminate(self):
+            events.append("terminate")
+
+    def start(command, **kwargs):
+        assert command == ["python with spaces/python.exe", "server.py", "--stdio"]
+        assert kwargs == {"env": {"KEEP": "same"}}  # No redirection or shell.
+        return Child()
+
+    monkeypatch.setattr(ocf_launch.subprocess, "Popen", start)
+    command = ["python with spaces/python.exe", "server.py", "--stdio"]
+    if interrupted:
+        with pytest.raises(KeyboardInterrupt):
+            ocf_launch.handoff(command, {"KEEP": "same"}, windows=True)
+        assert events == ["wait", "terminate", "wait"]
+    else:
+        assert ocf_launch.handoff(command, {"KEEP": "same"}, windows=True) == 37
