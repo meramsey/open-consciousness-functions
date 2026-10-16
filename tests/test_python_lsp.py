@@ -11,7 +11,7 @@ from urllib.parse import unquote
 
 import pytest
 from lsp_client import Client
-from ocf_tools.authoring import position_at
+from ocf_tools.authoring import position_at, uri_path
 
 if importlib.util.find_spec("pyright") is None or not shutil.which("node"):
     if os.environ.get("OCF_REQUIRE_PYTHON_LSP") == "1":
@@ -102,17 +102,21 @@ def open_python(rpc, path, version=1):
     )
 
 
+def diagnostics_for(message, path):
+    # Pyright encodes/lowercases Windows drive letters; compare file identity,
+    # not wire spelling (file:///D:/... versus file:///d%3A/...).
+    return (
+        message.get("method") == "textDocument/publishDiagnostics"
+        and uri_path(message["params"]["uri"]) == path.resolve()
+    )
+
+
 def test_python_symbols_hover_cross_file_navigation_and_environment(python_client):
     rpc, root, definition, usage, initialized = python_client
     assert initialized["result"]["capabilities"]["definitionProvider"]
     open_python(rpc, definition)
     open_python(rpc, usage)
-    findings = rpc.receive(
-        lambda message: (
-            message.get("method") == "textDocument/publishDiagnostics"
-            and message["params"]["uri"] == usage.as_uri()
-        )
-    )
+    findings = rpc.receive(lambda message: diagnostics_for(message, usage))
     assert findings["params"]["diagnostics"] == []
     symbols = rpc.request(
         "textDocument/documentSymbol", {"textDocument": {"uri": definition.as_uri()}}
@@ -126,36 +130,29 @@ def test_python_symbols_hover_cross_file_navigation_and_environment(python_clien
     hover = rpc.request("textDocument/hover", params)
     assert "greeting" in json.dumps(hover["result"]) and "str" in json.dumps(hover["result"])
     target = rpc.request("textDocument/definition", params)
-    assert any(row["uri"] == definition.as_uri() for row in target["result"])
+    assert any(uri_path(row["uri"]) == definition.resolve() for row in target["result"])
     references = rpc.request(
         "textDocument/references", {**params, "context": {"includeDeclaration": True}}
     )
-    assert any(row["uri"] == usage.as_uri() for row in references["result"])
-    assert any(row["uri"] == definition.as_uri() for row in references["result"])
+    assert any(uri_path(row["uri"]) == usage.resolve() for row in references["result"])
+    assert any(uri_path(row["uri"]) == definition.resolve() for row in references["result"])
     assert any(request["method"] == "workspace/configuration" for request in rpc.server_requests)
     logs = "\n".join(
         message["params"]["message"]
         for message in rpc.notifications
         if message.get("method") == "window/logMessage"
     )
-    assert str(root / ".venv").replace("\\", "/") in unquote(logs).replace("\\", "/")
-    assert not any(
-        message.get("method") == "textDocument/publishDiagnostics"
-        and message["params"]["uri"] == (root / "unopened.py").as_uri()
-        for message in rpc.notifications
-    )
+    assert os.path.normcase(str(root / ".venv")).replace("\\", "/") in os.path.normcase(
+        unquote(logs)
+    ).replace("\\", "/")
+    assert not any(diagnostics_for(message, root / "unopened.py") for message in rpc.notifications)
 
 
 def test_python_unsaved_error_and_clearing(python_client):
     rpc, _root, _definition, usage, _initialized = python_client
     original = usage.read_text()
     open_python(rpc, usage)
-    rpc.receive(
-        lambda message: (
-            message.get("method") == "textDocument/publishDiagnostics"
-            and message["params"]["uri"] == usage.as_uri()
-        )
-    )
+    rpc.receive(lambda message: diagnostics_for(message, usage))
     rpc.send(
         "textDocument/didChange",
         {
@@ -165,8 +162,7 @@ def test_python_unsaved_error_and_clearing(python_client):
     )
     findings = rpc.receive(
         lambda message: (
-            message.get("method") == "textDocument/publishDiagnostics"
-            and message["params"]["uri"] == usage.as_uri()
+            diagnostics_for(message, usage)
             and any(
                 row.get("code") == "reportUndefinedVariable"
                 for row in message["params"]["diagnostics"]
@@ -182,10 +178,6 @@ def test_python_unsaved_error_and_clearing(python_client):
         },
     )
     rpc.receive(
-        lambda message: (
-            message.get("method") == "textDocument/publishDiagnostics"
-            and message["params"]["uri"] == usage.as_uri()
-            and message["params"]["diagnostics"] == []
-        )
+        lambda message: diagnostics_for(message, usage) and message["params"]["diagnostics"] == []
     )
     assert usage.read_text() == original
