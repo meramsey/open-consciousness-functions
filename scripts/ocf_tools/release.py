@@ -243,6 +243,21 @@ def transcript_from_render(render_doc: dict[str, Any]) -> str:
     return "\n\n".join(lines).rstrip() + "\n"
 
 
+def artwork_selection(query: str, explicit_theme: str | None = None):
+    """Shared registered-implementation/function theme lookup; never renders."""
+    from .artwork import select_theme
+
+    manifest = _select_audio_manifest(query)
+    function_id = str(manifest.get("function_id") or "")
+    if not function_id:
+        raise OCFError(f"audio implementation {manifest.get('id')} has no function_id")
+    record = load_function_by_id(function_id)
+    if record is None:
+        raise OCFError(f"audio implementation references unknown function {function_id}")
+    reference, source = select_theme(record, explicit_theme, manifest)
+    return manifest, record, reference, source
+
+
 def package_release(
     query: str,
     *,
@@ -296,19 +311,19 @@ def package_release(
     formats = list(dict.fromkeys(formats or ["flac", "mp3"]))
     if not formats or any(fmt not in {"flac", "mp3"} for fmt in formats):
         raise OCFError("release formats must contain one or more of: mp3, flac")
-    if artwork is None and artwork_theme is None:
-        raise OCFError("release artwork is required; pass an explicitly approved --artwork image")
-    audio_manifest = _select_audio_manifest(query)
-    function_id = str(audio_manifest.get("function_id") or "")
-    if not function_id:
-        raise OCFError(f"audio implementation {audio_manifest.get('id')} has no function_id")
+    audio_manifest, record, selected_theme, theme_source = artwork_selection(query, artwork_theme)
+    function_id = record.id
+    if artwork is None and selected_theme is None:
+        raise OCFError(
+            "release artwork is required; pass an explicitly approved --artwork image or select an artwork theme"
+        )
     if artwork is None:
         from .artwork import generate_cover
 
         generated = generate_cover(
             function_id,
             locale=locale or "en-US",
-            theme=artwork_theme,
+            theme=selected_theme,
             resolution=artwork_resolution,
             version=version,
             title_override=overrides.get("title"),
@@ -325,6 +340,7 @@ def package_release(
             "brand_id": generated["settings"]["brand"]["id"],
             "brand_version": generated["settings"]["brand"]["version"],
             "theme_id": generated["settings"]["theme"]["id"],
+            "theme_selection": theme_source,
             "fingerprint": generated["fingerprint"],
             "review_status": "candidate",
             "publication_approval": False,
@@ -342,9 +358,6 @@ def package_release(
     if not requested_locale:
         raise OCFError(f"invalid locale: {locale!r}")
     title, title_provenance = _function_title(function_id, requested_locale, catalog)
-    record = load_function_by_id(function_id)
-    if record is None:
-        raise OCFError(f"audio implementation references unknown function {function_id}")
     title = str(overrides.get("title", title))
     if "title" in overrides:
         title_provenance = {

@@ -1,194 +1,192 @@
-# Open Consciousness Functions (OCF)
+<p align="center">
+  <img src="brand/versions/0.3.0/presentation/readme-hero.png" alt="Open Consciousness Functions — luminous Cosmic Path and Resonance Rings in a deep-blue star field" width="100%">
+</p>
 
-OCF is a declarative function/session authoring and audio toolchain. Canonical
-YAML, schemas and reviewed locale resources define functions; Python tools
-validate, compose, synthesize and package them. It is an independent community
-project, unaffiliated with The Monroe Institute, Hemi-Sync or related entities.
-It distributes no historical source recordings and makes no medical or
-therapeutic efficacy claim.
+# Open Consciousness Functions
 
-## Current capabilities
+**Intentional practice. Declarative sessions. Local audio.**
 
-- 55 canonical functions, with preserved commands and provenance. Historical
-  sources are available for 39 and unavailable for 16; this is distinct from
-  modern narration availability.
-- All 55 have complete English TTS session bindings and deterministic generated
-  plans. Technical eligibility is not editorial approval or release clearance.
-- Interactive function/proposal/audio wizards; strict spoken localization;
-  timed-transcript import/export; semantic sentence/count pacing.
-- Optional Piper/eSpeak narration, Farfield/SBaGenX backgrounds, verified
-  auditions and artwork/metadata/transcript/checksum release packaging.
-- Recorded-only and explicitly hybrid recording/TTS complete sessions, including
-  manual segment cuts and complete all-event-marked narration stems; measured
-  source receipts preserve originals and keep narration processing off the bed.
-- Resumable explicit bulk auditions, content-addressed speech cache, local jobs,
-  and an optional provider-neutral stdio MCP adapter.
-- Original candidate branding, independent themes and offline localized covers;
-  portable/private voice imports, recording validation and short comparisons.
-  Local voice training remains explicitly unsupported until verified.
+[![Validation](https://github.com/meramsey/open-consciousness-functions/actions/workflows/validate.yml/badge.svg)](https://github.com/meramsey/open-consciousness-functions/actions/workflows/validate.yml)
+[![Tests](https://github.com/meramsey/open-consciousness-functions/actions/workflows/test.yml/badge.svg)](https://github.com/meramsey/open-consciousness-functions/actions/workflows/test.yml)
+[![Lint](https://github.com/meramsey/open-consciousness-functions/actions/workflows/lint.yml/badge.svg)](https://github.com/meramsey/open-consciousness-functions/actions/workflows/lint.yml)
+[![Generated files](https://github.com/meramsey/open-consciousness-functions/actions/workflows/generated-index-check.yml/badge.svg)](https://github.com/meramsey/open-consciousness-functions/actions/workflows/generated-index-check.yml)
 
-The shared LOCKED configuration is an engineering baseline, not human listening
-approval. Human review remains required. Preparation-module designs and final
-focus-state auditory cue sound design remain planned; see
-[status and architecture](docs/AGENT_DEVELOPMENT.md).
+Python 3.11+ · Linux · macOS · Windows · Apache-2.0
 
-## Install
+OCF is an open-source toolkit for building consciousness-oriented, intention-driven
+practices as versioned functions and measured audio sessions. Author constructive
+narration, choose a voice or your own recordings, compose a continuous stereo
+background, and inspect the timing and provenance behind every result.
 
-Python **3.11+**; Linux, macOS and Windows. Run commands from the checkout root.
-Use your platform's Python executable (`python3` on many POSIX systems,
-`py -3` on Windows) to create the environment:
+Canonical YAML and schemas define the practice. Python tools validate and execute
+it. Everything from planning to auditions can run locally; paid services and
+provider credentials are not required.
+
+[Get started](#get-started) · [Function catalog](#explore-the-functions) ·
+[Audio workflows](#from-intention-to-audio) · [Artwork](#artwork-with-a-cosmic-identity) ·
+[Agent tools](#local-agent-workflows) · [Documentation](docs/README.md)
+
+## Get started
+
+Clone this repository, install Git LFS for its supplied visual assets, and run
+commands from the checkout root. Use Python 3.11 or newer.
+
+### Linux / macOS
 
 ```bash
-python -m venv .venv
-# Activate .venv with your shell's standard activation command.
-python -m pip install -e .
+git lfs pull
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e ".[artwork,mcp]"
 python scripts/ocf.py doctor --json
-python scripts/ocf.py help
 ```
 
-Without activation, use `.venv/bin/python` on Linux/macOS or
-`.venv\Scripts\python.exe` on Windows. Native engines, codecs and voice models
-are separate optional installations; `doctor` and `voice doctor` report them.
-See [native setup](docs/USER_GUIDE.md) and [voices](docs/COMMUNITY_VOICES.md).
-For local voice capabilities, portable profiles and import-first datasets, see
-[voice workflows](docs/VOICE_WORKFLOWS.md),
-[cloning capability boundaries](docs/VOICE_CLONING.md) and
-[training preparation](docs/VOICE_TRAINING.md). Cloning/training remains unavailable
-through OCF until a working adapter produces and verifies a model.
+### Windows PowerShell
 
-## Find, author and localize
+```powershell
+git lfs pull
+py -3.12 -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install -e ".[artwork,mcp]"
+python scripts/ocf.py doctor --json
+```
+
+Activation is optional: use `.venv/bin/python` or
+`.venv\Scripts\python.exe` directly. Artwork and MCP are optional extras; core
+discovery, authoring and planning also work with `python -m pip install -e .`.
+Piper/eSpeak, voice models, Farfield/SBaGenX and FFmpeg are separate optional
+installations. [Setup](docs/SETUP.md) and [the user guide](docs/USER_GUIDE.md)
+explain the supported paths.
+
+### Your first plan — no audio engines required
 
 ```bash
 python scripts/ocf.py functions list --json
 python scripts/ocf.py functions describe OCF-FND-002 --rich --json
-python scripts/ocf.py new function
-python scripts/ocf.py validate --all
-python scripts/ocf.py review commands
-python scripts/ocf.py build-index
-```
-
-Start with [function lifecycle](docs/FUNCTION_LIFECYCLE.md) and
-[source-first authoring](docs/SOURCE_FIRST_AUTHORING.md). Immutable source,
-working edits, human review and explicit release approval are separate stages.
-Never silently rewrite approved narration or canonical activation phrases.
-`PLUS-THINK`, `PLUS-FOCUS` and `PLUS-SEE BETTER` remain canonical.
-
-Translations use stable resource IDs, not constructed English. Follow
-[localization](docs/LOCALIZATION.md) and [locale packs](locales/README.md).
-Spoken fallback is strict; missing Spanish resources are reported rather than
-silently spoken in English. Measured timing is locale- and voice-specific.
-
-## Plan without audio engines
-
-```bash
-python scripts/ocf.py audio eligibility --all --locale en-US
-python scripts/ocf.py audio plan OCF-FND-002 --locale en-US --dry-run
-python scripts/ocf.py audio plan --all --locale en-US
-python scripts/ocf.py audio plan --all --locale en-US --check
 python scripts/ocf.py audio plan OCF-SLP-005 --locale en-US --expand
-python scripts/ocf.py new session-plan
+python scripts/ocf.py audio eligibility --all --locale en-US
 ```
 
-[Bulk sessions](docs/BULK_SESSIONS.md) explains bindings, template inheritance,
-generation and review. Generated declarations live in `audio/session-plans/`;
-never hand-edit them or the generated function/command indexes.
+A plan is a declaration, not a render. It reports the bound narration,
+template, pacing and background policy without synthesizing speech.
 
-## Audition with your selected voice
+## Explore the functions
+
+The catalog contains **55 functions**, **97 structured command records** and
+**55 generated English session plans**. Historical source availability is
+tracked independently: 39 available, 16 unavailable/planned reimplementations.
+
+| Area | Functions | Explore |
+| --- | --- | --- |
+| Foundation and cognition | 13 | Focus, Relax, Recall, Imprint, Options |
+| Body and senses | 20 | Comfort, circulation, breathing and sensory practices |
+| Emotion and communication | 4 | Let Go, Off-Loading, Empathizing, Speak Up |
+| Performance and automation | 7 | Do This Now, Synchronizing, See-Be |
+| Sleep | 6 | Sleep, Sleep Easy, Sweet Dreams, Stay Awake |
+| Lifestyle, experimental and emergency | 5 | Habit patterns and specialized practices |
+
+[Browse the generated catalog](FUNCTION_INDEX.md) or use
+`python scripts/ocf.py commands describe OCF-SLP-005` for command roles and
+procedures. A function, its activation phrase, its narration and its audio are
+separate identities. Naming recommendations are [audited for human review](docs/releases/OCF_COMMAND_NAMING_AUDIT.md);
+no proposed command or narration renames have been applied.
+
+## From intention to audio
+
+**Author → validate → plan → audition → review → explicitly package.**
+
+| Workflow | Start here |
+| --- | --- |
+| Create a function or translate a resource | [Function lifecycle](docs/FUNCTION_LIFECYCLE.md) · [Localization](docs/LOCALIZATION.md) |
+| Compose templates, pacing and function variants | [Bulk sessions](docs/BULK_SESSIONS.md) · [Session overrides](docs/SESSION_OVERRIDES.md) |
+| Use your recorded voice | [Recorded narration](docs/RECORDED_NARRATION.md) |
+| Mix recordings and synthesis cue by cue | [Hybrid narration](docs/HYBRID_NARRATION.md) |
+| Import a private voice or prepare a dataset | [Voice workflows](docs/VOICE_WORKFLOWS.md) |
+| Inspect timing, gains and Focus backgrounds | [Audio pipeline](docs/AUDIO_PIPELINE.md) · [Semantic DSP](docs/SEMANTIC_DSP.md) |
+
+### Audition a complete session
+
+With the configured Piper model and audio tools installed:
 
 ```bash
 python scripts/ocf.py voice doctor
-python scripts/ocf.py audio render OCF-SLP-005 --locale en-US \
-  --voice OCF-VOICE-0002 --pacing sleep --dry-run
-python scripts/ocf.py audio render-many OCF-SLP-005 --locale en-US \
-  --voice OCF-VOICE-0002 --resume
+python scripts/ocf.py audio render OCF-SLP-005 --voice OCF-VOICE-0002 --pacing sleep --dry-run
+python scripts/ocf.py audio render OCF-SLP-005 --voice OCF-VOICE-0002 --pacing sleep
 ```
 
-The example voice requires its configured Piper model. Full-session rendering
-uses Focus 10 from the start (OCF-BG-0012, approximate V4-derived candidate),
-Focus 11 during access/programming (OCF-BG-0006, canonical newer pure SAM),
-25-second equal-power transitions, a continuous bed through pauses and sleep,
-and a 10-second ending fade. No automatic Focus 20 DSP substitution occurs.
-There are two programming and two -24 dB sleep body repetitions.
+The locked engineering baseline keeps Focus 10 from the opening, Focus 11 during
+access/programming, 25-second equal-power transitions and a 10-second ending fade.
+Logical sleep stages do not substitute a Focus 20 background. Timing is measured
+from the selected narration. Outputs, logs and caches stay in `.ocf-work/`;
+existing auditions are never overwritten. [Bulk generation](docs/BULK_SESSIONS.md)
+adds explicit multi-function selection and verified resume.
 
-Semantic pacing synthesizes sentence/count units separately and inserts real
-silence with backend-aware rate controls. Inspect the timing reports and short
-pacing excerpts, then perform a listening review. `--mode narration-only` on
-`audio render` explicitly selects the separate narration-only workflow.
-
-Outputs, cache, logs and scratch stay in ignored `.ocf-work/`; auditions use
-unique paths. Bulk rendering all functions requires explicit `--all` and never
-happens during planning. See [audio pipeline](docs/AUDIO_PIPELINE.md),
-[semantic DSP](docs/SEMANTIC_DSP.md) and [backgrounds](audio/background/README.md).
-
-For your own recordings, follow [recorded narration](docs/RECORDED_NARRATION.md)
-or [hybrid source selection](docs/HYBRID_NARRATION.md):
+### Recordings, hybrid speech and portable voices
 
 ```bash
-python scripts/ocf.py narration sources OCF-SLP-005 --locale en-US
-python scripts/ocf.py audio render OCF-SLP-005 \
-  --narration-sources .ocf-work/my-narration/sources.json --dry-run
+python scripts/ocf.py narration sources OCF-SLP-005
+python scripts/ocf.py voice capabilities --json
+python scripts/ocf.py voice dataset-init .ocf-work/my-dataset --id my-voice
 ```
 
-The render example requires your prepared source manifest. Its mode selects
-recording/hybrid; `--voice` is optional for recorded-only sessions. CLI
-`narration validate` checks source compatibility; use `narration inspect FILE`
-or queued recording validation for technical decoding. Text fingerprints do not
-verify the words actually spoken or grant listening approval.
+Use explicit event/resource/unit mappings or a complete all-event-marked stem.
+Recorded-only mode never silently falls back; hybrid mode requires a declared
+policy. Original files are preserved, and narration processing never touches
+the independent binaural bed. Text hashes do not verify speech content.
+Reference-voice cloning and training remain [explicitly unavailable until a
+working adapter is verified](docs/VOICE_CLONING.md).
 
-## Package an approved release
+## Artwork with a cosmic identity
 
-See [original OCF artwork and themes](docs/BRANDING.md),
-[private voice workflows](docs/VOICE_WORKFLOWS.md), and
-[function-specific session variants](docs/SESSION_OVERRIDES.md).
-Generated covers require explicit `--artwork-theme` selection and remain
-candidate assets; they are not a user-approved final brand identity.
+<p align="center">
+  <img src="brand/imports/ocf-cosmic-path-brand-kit-v1/png/ocf-app-icon-128.png" alt="Supplied OCF Cosmic Path application icon" width="64">
+</p>
 
-Use `python scripts/ocf.py audio release --help`. Select a registered audio
-implementation/function, explicit approved PNG/JPEG artwork, locale and formats;
-preview with `--dry-run`. Packaging verifies decode, metadata, embedded artwork,
-transcript and checksums. It does not itself establish rights or human approval.
-See [release packaging](docs/AUDIO_PIPELINE.md#final-release-packages).
-
-## Develop and contribute
+New generated covers default to **imported cosmic dark**. Light, minimal,
+custom themes and explicit custom covers remain available; the application/UI
+and documentation themes are independent.
 
 ```bash
-python -m pip install -r requirements-dev.txt
-python -m pytest                         # comprehensive serial suite
-python -m pytest -n 2 --dist loadfile    # same suite, bounded workers
-make check                             # schemas, indexes and all source plans
-make lint                              # Ruff, formatting and internal links
+python scripts/ocf.py artwork generate OCF-SLP-005 --resolution 1200
+python scripts/ocf.py artwork generate OCF-FND-002 --theme ocf-cosmic-light --format jpeg --resolution 1200
+python scripts/ocf.py artwork theme --surface ui
 ```
 
-On Windows without make, run the commands listed in `Makefile` individually.
-Markdownlint runs in CI; local absence is reported as a skip. Use focused tests
-while editing and the full gates before completion. See
-[testing](docs/TEST_COVERAGE.md), [measured performance](docs/releases/OCF_BULK_TEST_PERFORMANCE.md)
-and [contributing](CONTRIBUTING.md).
+[Review the versioned gallery](brand/versions/0.3.0/gallery/index.html) locally
+and read [branding and theme precedence](docs/BRANDING.md). Brand 0.3.0 remains a
+candidate. The cinematic reference hero and editable companions are distinct;
+the vectors are not exact copies of the cinematic artwork. Originals are intact.
+[Social-preview image and GitHub setup](brand/versions/0.3.0/presentation/README.md).
 
-## Coding agents and optional MCP
+## Local agent workflows
 
-[AGENTS.md](AGENTS.md) is the provider-neutral entry point. Start with a compact
-query instead of loading large indexes or narration files:
+The optional MCP server exposes **36 tools** for compact discovery, validation,
+planning, explicit jobs and cancellation over local stdio. It reuses the same
+application services as the CLI and needs no HTTP listener.
 
 ```bash
 python scripts/ocf.py dev ocf_project_overview
 python scripts/ocf.py dev ocf_get_function --arguments '{"function_id":"OCF-FND-002"}'
-python -m pip install -e '.[mcp]'       # optional official SDK
-python scripts/ocf.py mcp             # local stdio; connect an MCP client
+python scripts/ocf.py mcp
 ```
 
-The same adapters work through CLI without MCP. Long jobs return persistent IDs
-for polling/cancellation and bounded result summaries. Read
-[MCP setup and job boundaries](docs/MCP.md) for OpenCode, Claude Code and Codex
-configuration. No provider credentials or paid services are required.
-Current CLI discovery lists 36 operations, including source inspection, queued
-recording validation/rendering and voice capabilities; refresh server/client
-discovery after updating the checkout.
+[Connect an MCP client](docs/MCP.md) or use the CLI adapters directly.
+[AGENTS.md](AGENTS.md) and [the developer guide](docs/AGENT_DEVELOPMENT.md)
+describe bounded jobs, targeted validation and protected-data rules.
 
-## Documentation
+## Documentation, contribution and provenance
 
-The [documentation map](docs/README.md) routes to canonical guides in two steps.
-`python scripts/ocf.py docs-inventory` generates the tracked documentation
-inventory; historical research/checkpoint pages remain explicitly historical.
-See [governance](GOVERNANCE.md), [licensing](LICENSE) and
-[source attribution](docs/SOURCE_ATTRIBUTION.md).
+- **New here?** Follow [the user guide](docs/USER_GUIDE.md) and [documentation map](docs/README.md).
+- **Contributing?** Start with [CONTRIBUTING.md](CONTRIBUTING.md); run focused tests,
+  `make check`, `make lint` and the comprehensive suite before submitting changes.
+- **Packaging?** Select a registered implementation and approved/custom artwork;
+  [preview the release](docs/AUDIO_PIPELINE.md#final-release-packages) before any
+  deliberate packaging. Successful encoding is not publication approval.
+- **Editorial review?** Read the [command audit](docs/releases/OCF_COMMAND_NAMING_AUDIT.md)
+  and [identifier audit](docs/releases/OCF_IDENTIFIER_NEUTRALIZATION_AUDIT.md).
+
+OCF is independent and unaffiliated with The Monroe Institute, Hemi-Sync or
+related entities. Historical source recordings and private voices/models are
+not distributed. Intended practice outcomes, documentary provenance, technical
+renderability and human/release approval are separate. See [Apache-2.0](LICENSE),
+[source attribution](docs/SOURCE_ATTRIBUTION.md) and [governance](GOVERNANCE.md).

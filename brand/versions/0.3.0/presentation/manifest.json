@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "brand_version": "0.3.0",
+  "presentation_revision": "1.0.0",
+  "review_status": "candidate",
+  "human_approval": null,
+  "kit_manifest_sha256": "0980501faba103ed5fdaad6108a47e3a86860f53b9d34c10a06847bb12348e01",
+  "hero_crop": [
+    1,
+    28,
+    588,
+    281
+  ],
+  "limitations": "Cinematic reference crop has native 587x253 pixels; it is repository presentation, not a high-resolution cinematic album master. Supplied vector/raster companions are not exact copies of the cinematic reference.",
+  "assets": [
+    {
+      "path": "readme-hero.png",
+      "sha256": "d91f5bd8c03b8e56ef39b6aef5ffb94b0d8407a0a8b81beacc2fda2c17bf0189",
+      "source": "brand/imports/ocf-cosmic-path-brand-kit-v1/reference/cinematic-dark-logo-reference.png",
+      "source_sha256": "d1a492af0eebe679ed0b1c9bfdd6923937ee8d485149afe8431a7fda7256dc6c",
+      "method": "crop supplied cinematic reference; remove panel label/border; no redraw or upscaling"
+    },
+    {
+      "path": "github-social.png",
+      "sha256": "1e3f8c6b3e9e7d417452a8706ae3424cfa45da2b9f117064df719a427b7acc25",
+      "source": "brand/imports/ocf-cosmic-path-brand-kit-v1/png/ocf-github-social-1280x640.png",
+      "source_sha256": "1e3f8c6b3e9e7d417452a8706ae3424cfa45da2b9f117064df719a427b7acc25",
+      "method": "unchanged supplied native 1280x640 PNG companion"
+    }
+  ]
+}

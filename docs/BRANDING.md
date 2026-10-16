@@ -1,5 +1,32 @@
 # Original candidate OCF visual identity
 
+## New-cover default and repository presentation
+
+New artwork without an explicit theme uses `ocf-cosmic-dark`, the imported 0.3.0
+dark companion theme. This changes only `brand/surfaces.json`'s artwork surface;
+UI remains `ocf-light`, documentation remains `ocf-minimal`, and existing covers
+are not overwritten. `ocf-cosmic-light`, `ocf-cosmic-minimal`, custom files and
+the earlier `ocf-dark`/refined themes remain explicit choices.
+
+Cover precedence is explicit custom image, explicit theme, optional registered
+`artwork_theme` in an audio implementation or function's `audio` metadata, then
+the artwork-surface default for new generated covers. Function records and
+implementations have not been edited to add these optional fields. Release
+packaging still requires explicit/custom or configured artwork selection;
+generating a default candidate does not grant publication approval.
+
+The README uses a native-resolution crop of the supplied cinematic reference,
+without a redraw or upscaling the export. The supplied high-resolution social
+PNG remains an exact copy. [Presentation provenance and social-preview setup](../brand/versions/0.3.0/presentation/README.md)
+record source/export hashes and explain the native reference resolution limit.
+No GitHub repository social-preview setting was changed automatically.
+
+The default cover renderer uses supplied companion pixels with localized OCF
+title layout; it does not invent a high-resolution cinematic master or claim
+that its vector companion reproduces the reference board exactly. Formal
+candidate approval remains unset. Imported originals and previous brand
+geometry/assets remain unchanged.
+
 ## Supplied Cosmic Path import 0.3.0
 
 The [offline comparison gallery](../brand/versions/0.3.0/gallery/index.html)

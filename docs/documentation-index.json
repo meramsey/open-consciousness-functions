@@ -230,30 +230,26 @@
       "missing_information": [],
       "path": "README.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
-      "purpose": "Open Consciousness Functions (OCF)",
+      "purpose": "Open Consciousness Functions",
       "related_commands": [
+        "artwork generate",
+        "artwork theme",
         "audio eligibility",
         "audio plan",
-        "audio release",
         "audio render",
-        "audio render-many",
-        "build-index",
+        "commands describe",
         "dev ocf",
-        "docs-inventory",
         "doctor",
         "functions describe",
         "functions list",
-        "help",
         "mcp",
         "narration sources",
-        "new function",
-        "new session-plan",
-        "review commands",
-        "validate",
+        "voice capabilities",
+        "voice dataset-init",
         "voice doctor"
       ],
       "related_schemas": [],
-      "sha256": "5133d32469ffeab32809a6a24ce94dbfbb6db4c4ee5702277d87419704680000",
+      "sha256": "d47eebca7c865e17d750e6090c83d082ebe2bee344125f9106394c91e17225aa",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -450,6 +446,24 @@
       "related_commands": [],
       "related_schemas": [],
       "sha256": "b69656c966928c0c5ed030b33813f2655da7c33766535af5aa2e5b321c4b0a43",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "brand/versions/0.3.0/presentation/README.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Repository presentation candidates",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "2237783ba9c43b6fc4bc138f919c4f075a081dfdcc083d20c51c779d17ccfc4a",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -676,7 +690,7 @@
         "artwork themes"
       ],
       "related_schemas": [],
-      "sha256": "32fc1d96ea85ba90dd0cef7d6fd0ec75030faf9726b98f681d03d73faeaf6824",
+      "sha256": "0e9dd4ce6807136a134b7c532b6d61f192607d71cd4fe06ef8def545fb097d11",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -3727,7 +3741,7 @@
       "related_schemas": [
         "schemas/audio-implementation.schema.json"
       ],
-      "sha256": "a1a6d0c1d05a19109058ef64a27bc26c55af5804ea8fac6755da2af77fa0e86b",
+      "sha256": "8a785e8968d5c9cee2a2f1c5ad360e4d47c33dc71846ef6c73bec11af48c1899",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4129,7 +4143,7 @@
       "related_schemas": [
         "schemas/function.schema.json"
       ],
-      "sha256": "8a14f143f59ccbfe12365e9a68e8603338287572150ba4f050beec06c5dabb9f",
+      "sha256": "22fe460242cb6710657d60748226c120f85d34ddfff45039c984f203a31848a0",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4710,5 +4724,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 225
+  "total": 226
 }

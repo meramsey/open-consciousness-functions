@@ -22,6 +22,7 @@ lint: ## Lint Python (ruff), Markdown, and internal links
 	ruff check scripts tests
 	ruff format --check scripts tests
 	$(PY) scripts/tools/check_markdown_links.py
+	$(PY) scripts/tools/brand_presentation.py --check
 	-command -v markdownlint >/dev/null && markdownlint . || echo "markdownlint not installed; skipping"
 
 check: ## Full check: validate + refresh indexes + verify freshness

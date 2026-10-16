@@ -19,7 +19,7 @@ def test_refinement_contract_keeps_baseline_and_independent_defaults():
             artwork.contrast(theme["palette"]["background"], theme["palette"]["foreground"]) >= 4.5
         )
     assert artwork.theme_tokens("ui")["theme"]["id"] == "ocf-light"
-    assert artwork.theme_tokens("artwork")["theme"]["id"] == "ocf-dark"
+    assert artwork.theme_tokens("artwork")["theme"]["id"] == "ocf-cosmic-dark"
     for variant in artwork.identity()["variants"]:
         assert artwork.brand_svg(variant) == (
             artwork.BRAND / "candidates" / f"{variant}.svg"

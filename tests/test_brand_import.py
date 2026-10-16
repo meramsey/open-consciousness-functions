@@ -32,7 +32,7 @@ def test_import_exports_are_unchanged_and_surface_defaults_remain_independent(tm
     assert artwork.identity()["version"] == "0.1.0"
     assert artwork.load_theme("ocf-refined-dark")["brand_revision"] == "0.2.0"
     assert artwork.theme_tokens("ui")["theme"]["id"] == "ocf-light"
-    assert artwork.theme_tokens("artwork")["theme"]["id"] == "ocf-dark"
+    assert artwork.theme_tokens("artwork")["theme"]["id"] == "ocf-cosmic-dark"
     for finish in ("dark", "light", "minimal"):
         theme = "ocf-cosmic-" + finish
         data = artwork.load_theme(theme)

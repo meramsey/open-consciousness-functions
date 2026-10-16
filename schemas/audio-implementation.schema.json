@@ -38,6 +38,7 @@
     "contributor": { "type": "string" },
     "narrator": { "type": ["string", "null"] },
     "voice_profile": { "type": ["string", "null"], "pattern": "^OCF-VOICE-[0-9]{4}$" },
+    "artwork_theme": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$", "description": "Optional registered album theme; explicit cover/theme arguments take precedence."},
     "language": { "type": "string" },
     "license": { "type": "string" },
     "training_type": {

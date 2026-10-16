@@ -140,19 +140,23 @@ def validate_request(operation: str, arguments: dict) -> dict:
             raise OCFError("the original audition script is currently en-US only")
         return args
     if operation == "artwork":
-        from .artwork import BRAND
+        from .artwork import BRAND, load_theme, select_theme
 
-        owner(args["function_id"])
+        record = owner(args["function_id"])
         args["locale"] = normalize_tag(args.get("locale", "en-US"))
-        if args.get("theme") not in {p.stem for p in (BRAND / "themes").glob("*.json")}:
+        args.setdefault("theme", None)
+        reference, _source = select_theme(record, args.get("theme"))
+        effective = reference or load_theme(surface="artwork")["id"]
+        if effective not in {p.stem for p in (BRAND / "themes").glob("*.json")}:
             raise OCFError(
                 "MCP artwork jobs select registered themes; custom file rendering is an explicit CLI workflow"
             )
         if type(args.get("resolution")) is not int or not 256 <= args["resolution"] <= 4096:
             raise OCFError("artwork resolution must be 256..4096")
-        from .artwork import load_theme
-
-        if load_theme(args["theme"]).get("brand_revision") == "0.2.0" and args["resolution"] < 320:
+        if (
+            load_theme(effective).get("brand_revision") in ("0.2.0", "0.3.0")
+            and args["resolution"] < 320
+        ):
             raise OCFError("refined covers require at least 320 pixels for legible typography")
         return args
     for key in ("full", "generate", "force", "dry_run"):
@@ -184,10 +188,10 @@ def validate_request(operation: str, arguments: dict) -> dict:
                 safe_path(args["artwork"], work_root())
             else:
                 from .artwork import BRAND
+                from .release import artwork_selection
 
-                if args.get("artwork_theme") not in {
-                    p.stem for p in (BRAND / "themes").glob("*.json")
-                }:
+                reference = args.get("artwork_theme") or artwork_selection(args["function_id"])[2]
+                if reference not in {p.stem for p in (BRAND / "themes").glob("*.json")}:
                     raise OCFError(
                         "select explicit workspace artwork or a registered artwork theme"
                     )
@@ -225,6 +229,7 @@ def input_identity(operation: str, args: dict) -> dict:
         "function-content",
         "locales",
         "audio/templates",
+        "audio/manifests",
         "audio/defaults",
         "audio/session-plans",
         "audio/background/manifests",
@@ -610,6 +615,7 @@ def _execute(job_id: str) -> int:
             from .artwork import generate_cover
 
             result = generate_cover(**args)
+            settings = result.get("settings", {})
             result = {
                 k: result[k]
                 for k in (
@@ -622,6 +628,12 @@ def _execute(job_id: str) -> int:
                     "title_lines",
                 )
             }
+            if settings:
+                result.update(
+                    theme_id=settings["theme"]["id"],
+                    theme_selection=settings.get("theme_selection"),
+                    brand_version=settings["brand"]["version"],
+                )
             passed = True
         elif operation == "voice-audition":
             from .custom_voices import audition

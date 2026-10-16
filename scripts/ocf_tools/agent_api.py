@@ -664,7 +664,10 @@ def package_release(
     if artwork:
         safe_path(artwork, work_root())
     elif not artwork_theme:
-        raise OCFError("provide explicit artwork or an artwork theme")
+        from .release import artwork_selection
+
+        if artwork_selection(function_id)[2] is None:
+            raise OCFError("provide explicit artwork or an explicit/configured artwork theme")
     if not dry_run and not confirmed:
         raise OCFError("explicit confirmed=true is required for release packaging")
     return start(
@@ -815,13 +818,18 @@ def validate_theme(theme: str, surface: str = "artwork") -> dict:
 
 @public
 def generate_artwork_preview(
-    function_id: str, locale: str = "en-US", theme: str = "ocf-dark", resolution: int = 1400
+    function_id: str, locale: str = "en-US", theme: str | None = None, resolution: int = 1400
 ) -> dict:
     from .dev_jobs import start
 
     return start(
         "artwork",
-        {"function_id": function_id, "locale": locale, "theme": theme, "resolution": resolution},
+        {
+            "function_id": function_id,
+            "locale": locale,
+            "theme": theme,
+            "resolution": resolution,
+        },
     )
 
 

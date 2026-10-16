@@ -314,6 +314,7 @@
       "additionalProperties": false,
       "required": ["script_status", "implementation_status", "background_audio"],
       "properties": {
+        "artwork_theme": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$", "description": "Optional registered album theme; independent of UI and narration."},
         "script_status": {
           "type": "string",
           "enum": ["not-started", "draft", "review", "approved", "published"]

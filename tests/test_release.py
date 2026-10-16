@@ -264,12 +264,14 @@ def _valid_manifest(artifact):
         "imported",
         "imported-jpeg",
         "supplied",
+        "default",
+        "default-jpeg",
     ],
 )
 def test_real_codec_metadata_and_artwork_round_trip(tmp_path, fmt, cover_kind, monkeypatch):
     if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
         pytest.skip("real codec round-trip requires optional ffmpeg and ffprobe")
-    if cover_kind.startswith(("generated", "refined", "imported")):
+    if cover_kind.startswith(("generated", "refined", "imported", "default")):
         pytest.importorskip("PIL")
         pytest.importorskip("fontTools")
         from ocf_tools.artwork import generate_cover
@@ -278,12 +280,16 @@ def test_real_codec_metadata_and_artwork_round_trip(tmp_path, fmt, cover_kind, m
         cover = Path(
             generate_cover(
                 "OCF-BOD-010",
-                theme="ocf-cosmic-dark"
+                theme=None
+                if cover_kind.startswith("default")
+                else "ocf-cosmic-dark"
                 if cover_kind.startswith("imported")
                 else "ocf-refined-dark"
                 if cover_kind.startswith("refined")
                 else "ocf-light",
-                resolution=320 if cover_kind.startswith(("refined", "imported")) else 256,
+                resolution=320
+                if cover_kind.startswith(("refined", "imported", "default"))
+                else 256,
                 format="jpeg" if cover_kind.endswith("jpeg") else "png",
             )["path"]
         )

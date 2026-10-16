@@ -39,7 +39,7 @@ def unicode_font_fixture(path):
 
 def test_themes_are_independent_validated_and_inheritance_is_bounded(tmp_path):
     assert artwork.theme_tokens("ui")["theme"]["id"] == "ocf-light"
-    assert artwork.theme_tokens("artwork")["theme"]["id"] == "ocf-dark"
+    assert artwork.theme_tokens("artwork")["theme"]["id"] == "ocf-cosmic-dark"
     with pytest.raises(OCFError, match="contrast"):
         artwork.load_theme(overrides={"palette": {"foreground": "#071426"}})
     custom = tmp_path / "custom.json"
@@ -55,7 +55,7 @@ def test_themes_are_independent_validated_and_inheritance_is_bounded(tmp_path):
     preview = tmp_path / "gallery.html"
     artwork.gallery(preview)
     html = preview.read_text(encoding="utf-8")
-    assert 'ui.value="ocf-light"' in html and 'art.value="ocf-dark"' in html
+    assert 'ui.value="ocf-light"' in html and 'art.value="ocf-cosmic-dark"' in html
     assert "https://" not in html
 
 
@@ -65,19 +65,19 @@ def test_localized_artwork_cache_integrity_and_no_overwrite(monkeypatch, tmp_pat
     from PIL import Image
 
     monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
-    first = artwork.generate_cover("OCF-SLP-005", resolution=256)
-    second = artwork.generate_cover("OCF-SLP-005", resolution=256)
+    first = artwork.generate_cover("OCF-SLP-005", resolution=320)
+    second = artwork.generate_cover("OCF-SLP-005", resolution=320)
     assert first["sha256"] == second["sha256"] and second["cache"] == "hit"
     with Image.open(first["path"]) as image:
-        assert image.size == (256, 256) and image.format == "PNG"
+        assert image.size == (320, 320) and image.format == "PNG"
     assert first["settings"]["title"] == "Sleep Easy" and first["human_approval"] is None
     Path(first["path"]).write_bytes(b"broken")
-    repaired = artwork.generate_cover("OCF-SLP-005", resolution=256)
+    repaired = artwork.generate_cover("OCF-SLP-005", resolution=320)
     assert repaired["sha256"] == first["sha256"]
     custom = tmp_path / "custom.png"
     custom.write_bytes(b"operator cover")
     with pytest.raises(OCFError, match="overwrite"):
-        artwork.generate_cover("OCF-SLP-005", resolution=256, output=custom)
+        artwork.generate_cover("OCF-SLP-005", resolution=320, output=custom)
     assert custom.read_bytes() == b"operator cover"
     jpeg = artwork.generate_cover(
         "OCF-FND-002", locale="es", resolution=256, format="jpeg", theme="ocf-light"
@@ -87,6 +87,7 @@ def test_localized_artwork_cache_integrity_and_no_overwrite(monkeypatch, tmp_pat
     long = artwork.generate_cover(
         "OCF-SLP-005",
         resolution=256,
+        theme="ocf-dark",
         title_override="Énergie et attention " * 12,
         version="W" * 32,
         overrides={"font": unicode_font_fixture(tmp_path / "unicode-fixture.ttf")},
@@ -118,7 +119,7 @@ def test_generated_release_preview_is_nonmutating_and_custom_cover_wins(monkeypa
     )
     assert preview["artwork_provenance"]["source"] == "generated-ocf"
     assert not (tmp_path / "work").exists() and not (tmp_path / "out").exists()
-    cover = artwork.generate_cover("OCF-SLP-005", resolution=256)
+    cover = artwork.generate_cover("OCF-SLP-005", resolution=320)
     custom = release.package_release(
         "OCF-SLP-005",
         artwork=cover["path"],
@@ -128,7 +129,7 @@ def test_generated_release_preview_is_nonmutating_and_custom_cover_wins(monkeypa
     )
     assert custom["artwork_provenance"]["source"] == "explicit-user-cover"
     changed = artwork.generate_cover(
-        "OCF-SLP-005", resolution=256, title_override="Operator title", dry_run=True
+        "OCF-SLP-005", resolution=320, title_override="Operator title", dry_run=True
     )
     assert changed["settings"]["title_resolution"]["resource_key"] is None
     assert changed["settings"]["title_resolution"]["source"] == "operator-title-override"

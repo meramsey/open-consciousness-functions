@@ -111,10 +111,15 @@ def gallery(output: Path, *, ui_theme: str | None = None, artwork_theme: str | N
         "ui": load_theme(surface="ui")["id"],
         "artwork": load_theme(surface="artwork")["id"],
     }
-    for surface, reference in (("ui", ui_theme), ("artwork", artwork_theme)):
+    for surface, requested in (("ui", ui_theme), ("artwork", artwork_theme)):
+        reference = requested or load_theme(surface=surface)["id"]
         if reference:
             value = load_theme(reference, surface=surface)
-            key = reference if reference in themes else surface + "-custom"
+            key = (
+                reference
+                if reference in themes or (BRAND / "themes" / (reference + ".json")).is_file()
+                else surface + "-custom"
+            )
             data[key] = {
                 "palette": value["palette"],
                 "ui_font_family": value.get("ui_font_family", "system-ui, sans-serif"),
@@ -128,7 +133,7 @@ def gallery(output: Path, *, ui_theme: str | None = None, artwork_theme: str | N
 body{font-family:var(--font,system-ui),sans-serif;margin:2rem;background:var(--bg);color:var(--fg)}
 select{font:inherit;margin:.5rem;padding:.4rem}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
 article{border:1px solid var(--accent);padding:1rem}svg{width:100%;height:auto}label{display:inline-block}
-</style><h1>OCF candidate review gallery</h1><p>Original procedural candidates. No final human design approval is recorded.</p>
+</style><h1>OCF candidate review gallery</h1><p>Versioned original/imported candidates. No final human design approval is recorded.</p>
 <label>Interface theme <select id="ui">OPTIONS</select></label><label>Artwork theme <select id="art">OPTIONS</select></label><main id="cards"></main>
 <script>const themes=PAYLOAD; const ui=document.getElementById('ui'),art=document.getElementById('art');
 ui.value=UI_SELECTED; art.value=ART_SELECTED;
@@ -367,6 +372,17 @@ def export_brand(
     }
 
 
+def select_theme(record, explicit: str | None = None, implementation: dict | None = None):
+    """Select only a reference/provenance; omitted selection stays inherited."""
+    if explicit:
+        return explicit, "explicit"
+    if (implementation or {}).get("artwork_theme"):
+        return implementation["artwork_theme"], "audio-implementation"
+    if record.data.get("audio", {}).get("artwork_theme"):
+        return record.data["audio"]["artwork_theme"], "function"
+    return None, "artwork-surface-default"
+
+
 def generate_cover(
     function_id: str,
     *,
@@ -403,7 +419,8 @@ def generate_cover(
         raise OCFError("artwork requires a meaningful function title, not only its identifier")
     if any(word in title.casefold() for word in ("hemi-sync", "human plus", "monroe")):
         raise OCFError("OCF artwork cannot include third-party brand names")
-    data = load_theme(theme, overrides=overrides)
+    theme_reference, theme_source = select_theme(record, theme)
+    data = load_theme(theme_reference, overrides=overrides)
     if data.get("brand_revision") in ("0.2.0", "0.3.0") and resolution < 320:
         raise OCFError("refined covers require at least 320 pixels for legible typography")
     if data.get("brand_revision") == "0.2.0":
@@ -438,6 +455,7 @@ def generate_cover(
     settings = {
         "brand": brand,
         "theme": data,
+        "theme_selection": theme_source,
         "function_id": function_id,
         "title": title,
         "locale": locale,
