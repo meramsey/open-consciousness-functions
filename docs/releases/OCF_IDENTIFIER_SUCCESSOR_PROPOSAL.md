@@ -1,0 +1,247 @@
+# OCF-native identifier successor proposal — companion
+
+Status: PROPOSED — NOT IMPLEMENTED.
+
+Source commit: `fb66fbce11dd3d71e57fac4d5784365128d41c82`.
+
+Canonical inputs checked against pinned committed source, no working-tree data changes incorporated. Earlier committed recommendations are starting proposals; this companion adds independent recommendations. Existing uncommitted audit/search/localization proposals preserved and not imported.
+
+## Scope and dependency decisions
+
+Pinned tracked source text; binary assets, immutable brand imports and all references/ReusablePrompts excluded without opening. User-owned reference occurrences deliberately unmeasured.
+
+Classifications: {"active OCF implementation": 699, "historical provenance/attribution": 4743, "immutable imported/versioned material": 439, "protected identity": 9824, "technical compatibility reference": 65}.
+
+- Active templates/pacing: use FUNCTION-LEARNING and SHARED role names; retain inheritance and all repetition/pacing values.
+- DSP: F10-BED-F11-ACCESS describes policy, not semantic state identity; do not rename sleep semantics as a DSP onset.
+- Defaults: OCF-AUDIO-DEFAULTS-FUNCTION-LEARNING-002 is a successor; old lock/hash manifest remains immutable and independently verifiable. No baseline approval implied.
+- Protected narration keys/locale filenames: function.<stable-id>.<role> and session.shared.<role> are proposed identities; prove a bijective old-file/key → successor map with identical text before approval. Keep imported/versioned baselines unchanged.
+- Bindings/generated plans and recorded manifests/stems: migrate exact event/resource/unit references together; preserve originals, speaker/provenance and every nonspoken marker. Rebuild text/config receipts; never relabel old speech or hashes.
+- Python/schema/CLI/MCP/LSP/tests: migrate actual lookup constructors, resource pointers, definition/reference indexes, cache identities and integrity fixture consumers together. Surface compatibility is explicit and time-bounded only for real consumers.
+- Historical attribution, evidence, immutable imports and user references remain labeled history; identifier changes never confer original authorship or rights.
+
+## Proposed mappings
+
+The JSON companion carries per-token file/line evidence and classifications, including schemas, Python, CLI/MCP/LSP, tests, bindings and generated references. This is a decision inventory, not a mechanical replacement script.
+
+- `OCF-AUDIO-DEFAULTS-HPLUS-001` → `OCF-AUDIO-DEFAULTS-FUNCTION-LEARNING-002`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-DSP-HPLUS-LOCKED-001` → `OCF-DSP-F10-BED-F11-ACCESS-LOCKED-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-DSP-HPLUS-STANDARD-DRAFT-001` → `OCF-DSP-F10-BED-F11-ACCESS-STANDARD-DRAFT-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-PACING-HPLUS-LOCKED-001` → `OCF-PACING-FUNCTION-LEARNING-LOCKED-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-PACING-HPLUS-STANDARD-001` → `OCF-PACING-FUNCTION-LEARNING-STANDARD-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-TPL-SESSION-HPLUS-LOCKED-001` → `OCF-TPL-SESSION-FUNCTION-LEARNING-LOCKED-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-TPL-SESSION-HPLUS-STANDARD-001` → `OCF-TPL-SESSION-FUNCTION-LEARNING-STANDARD-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-TPL-STAGE-HPLUS-AFFIRMATION-001` → `OCF-TPL-STAGE-SHARED-AFFIRMATION-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-TPL-STAGE-HPLUS-BODY-COMFORT-001` → `OCF-TPL-STAGE-SHARED-BODY-COMFORT-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-TPL-STAGE-HPLUS-ENERGY-BALL-001` → `OCF-TPL-STAGE-SHARED-ENERGY-BALL-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-TPL-STAGE-HPLUS-FOCUS-ELEVEN-CLOSE-001` → `OCF-TPL-STAGE-SHARED-FOCUS-ELEVEN-CLOSE-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-TPL-STAGE-HPLUS-FOCUS-ELEVEN-OPEN-001` → `OCF-TPL-STAGE-SHARED-FOCUS-ELEVEN-OPEN-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-TPL-STAGE-HPLUS-FOCUS-TEN-HOLD-001` → `OCF-TPL-STAGE-SHARED-FOCUS-TEN-HOLD-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-TPL-STAGE-HPLUS-FOCUS-TWENTY-CLOSE-001` → `OCF-TPL-STAGE-SHARED-SLEEP-CLOSE-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-TPL-STAGE-HPLUS-FOCUS-TWENTY-ENTER-001` → `OCF-TPL-STAGE-SHARED-SLEEP-ENTRY-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-TPL-STAGE-HPLUS-RELAXATION-001` → `OCF-TPL-STAGE-SHARED-PROGRESSIVE-RELAXATION-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-TPL-STAGE-HPLUS-SESSION-COMPLETE-001` → `OCF-TPL-STAGE-SHARED-SESSION-COMPLETE-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-TPL-STAGE-HPLUS-TUNING-001` → `OCF-TPL-STAGE-SHARED-RESONANT-TUNING-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `OCF-TPL-STAGE-HPLUS-WAKING-RETURN-001` → `OCF-TPL-STAGE-SHARED-WAKING-RETURN-001`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-aut-001.closer` → `function.ocf-aut-001.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-aut-001.function-body` → `function.ocf-aut-001.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-aut-001.opener` → `function.ocf-aut-001.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-001.closer` → `function.ocf-bod-001.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-001.function-body` → `function.ocf-bod-001.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-001.opener` → `function.ocf-bod-001.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-002.closer` → `function.ocf-bod-002.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-002.function-body` → `function.ocf-bod-002.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-002.opener` → `function.ocf-bod-002.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-003.closer` → `function.ocf-bod-003.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-003.function-body` → `function.ocf-bod-003.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-003.opener` → `function.ocf-bod-003.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-004.closer` → `function.ocf-bod-004.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-004.function-body` → `function.ocf-bod-004.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-004.opener` → `function.ocf-bod-004.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-005.closer` → `function.ocf-bod-005.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-005.function-body` → `function.ocf-bod-005.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-005.opener` → `function.ocf-bod-005.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-006.closer` → `function.ocf-bod-006.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-006.function-body` → `function.ocf-bod-006.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-006.opener` → `function.ocf-bod-006.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-007.closer` → `function.ocf-bod-007.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-007.function-body` → `function.ocf-bod-007.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-007.opener` → `function.ocf-bod-007.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-008.closer` → `function.ocf-bod-008.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-008.function-body` → `function.ocf-bod-008.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-008.opener` → `function.ocf-bod-008.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-009.closer` → `function.ocf-bod-009.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-009.function-body` → `function.ocf-bod-009.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-009.opener` → `function.ocf-bod-009.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-010.closer` → `function.ocf-bod-010.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-010.function-body` → `function.ocf-bod-010.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-010.opener` → `function.ocf-bod-010.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-011.closer` → `function.ocf-bod-011.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-011.function-body` → `function.ocf-bod-011.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-011.opener` → `function.ocf-bod-011.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-012.closer` → `function.ocf-bod-012.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-012.function-body` → `function.ocf-bod-012.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-012.opener` → `function.ocf-bod-012.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-013.closer` → `function.ocf-bod-013.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-013.function-body` → `function.ocf-bod-013.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-013.opener` → `function.ocf-bod-013.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-014.closer` → `function.ocf-bod-014.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-014.function-body` → `function.ocf-bod-014.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-014.opener` → `function.ocf-bod-014.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-015.closer` → `function.ocf-bod-015.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-015.function-body` → `function.ocf-bod-015.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-bod-015.opener` → `function.ocf-bod-015.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-001.closer` → `function.ocf-cog-001.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-001.function-body` → `function.ocf-cog-001.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-001.opener` → `function.ocf-cog-001.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-002.closer` → `function.ocf-cog-002.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-002.function-body` → `function.ocf-cog-002.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-002.opener` → `function.ocf-cog-002.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-003.closer` → `function.ocf-cog-003.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-003.function-body` → `function.ocf-cog-003.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-003.opener` → `function.ocf-cog-003.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-004.closer` → `function.ocf-cog-004.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-004.function-body` → `function.ocf-cog-004.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-004.opener` → `function.ocf-cog-004.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-005.closer` → `function.ocf-cog-005.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-005.function-body` → `function.ocf-cog-005.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-005.opener` → `function.ocf-cog-005.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-006.closer` → `function.ocf-cog-006.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-006.function-body` → `function.ocf-cog-006.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-006.opener` → `function.ocf-cog-006.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-007.closer` → `function.ocf-cog-007.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-007.function-body` → `function.ocf-cog-007.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-007.opener` → `function.ocf-cog-007.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-999.access-close` → `function.ocf-cog-999.access-close`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-cog-999.function-body` → `function.ocf-cog-999.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-com-001.closer` → `function.ocf-com-001.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-com-001.function-body` → `function.ocf-com-001.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-com-001.opener` → `function.ocf-com-001.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-emg-001.closer` → `function.ocf-emg-001.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-emg-001.function-body` → `function.ocf-emg-001.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-emg-001.opener` → `function.ocf-emg-001.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-emg-002.closer` → `function.ocf-emg-002.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-emg-002.function-body` → `function.ocf-emg-002.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-emg-002.opener` → `function.ocf-emg-002.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-emo-001.closer` → `function.ocf-emo-001.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-emo-001.function-body` → `function.ocf-emo-001.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-emo-001.opener` → `function.ocf-emo-001.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-emo-002.closer` → `function.ocf-emo-002.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-emo-002.function-body` → `function.ocf-emo-002.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-emo-002.opener` → `function.ocf-emo-002.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-emo-003.closer` → `function.ocf-emo-003.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-emo-003.function-body` → `function.ocf-emo-003.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-emo-003.opener` → `function.ocf-emo-003.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-exp-001.closer` → `function.ocf-exp-001.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-exp-001.function-body` → `function.ocf-exp-001.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-exp-001.opener` → `function.ocf-exp-001.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-exp-002.closer` → `function.ocf-exp-002.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-exp-002.function-body` → `function.ocf-exp-002.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-exp-002.opener` → `function.ocf-exp-002.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-001.access-close` → `function.ocf-fnd-001.access-close`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-001.closer` → `function.ocf-fnd-001.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-001.function-body` → `function.ocf-fnd-001.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-001.opener` → `function.ocf-fnd-001.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-002` → `function.ocf-fnd-002`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-002.closer` → `function.ocf-fnd-002.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-002.function-body` → `function.ocf-fnd-002.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-002.opener` → `function.ocf-fnd-002.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-003.closer` → `function.ocf-fnd-003.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-003.function-body` → `function.ocf-fnd-003.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-003.opener` → `function.ocf-fnd-003.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-004.closer` → `function.ocf-fnd-004.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-004.function-body` → `function.ocf-fnd-004.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-004.opener` → `function.ocf-fnd-004.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-005.closer` → `function.ocf-fnd-005.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-005.function-body` → `function.ocf-fnd-005.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-005.opener` → `function.ocf-fnd-005.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-006.closer` → `function.ocf-fnd-006.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-006.function-body` → `function.ocf-fnd-006.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-fnd-006.opener` → `function.ocf-fnd-006.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-lif-001.closer` → `function.ocf-lif-001.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-lif-001.function-body` → `function.ocf-lif-001.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-lif-001.opener` → `function.ocf-lif-001.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-001.closer` → `function.ocf-prf-001.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-001.function-body` → `function.ocf-prf-001.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-001.opener` → `function.ocf-prf-001.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-002.closer` → `function.ocf-prf-002.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-002.function-body` → `function.ocf-prf-002.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-002.opener` → `function.ocf-prf-002.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-003.closer` → `function.ocf-prf-003.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-003.function-body` → `function.ocf-prf-003.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-003.opener` → `function.ocf-prf-003.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-004.closer` → `function.ocf-prf-004.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-004.function-body` → `function.ocf-prf-004.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-004.opener` → `function.ocf-prf-004.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-005.closer` → `function.ocf-prf-005.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-005.function-body` → `function.ocf-prf-005.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-005.opener` → `function.ocf-prf-005.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-006.closer` → `function.ocf-prf-006.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-006.function-body` → `function.ocf-prf-006.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-prf-006.opener` → `function.ocf-prf-006.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-sen-001.closer` → `function.ocf-sen-001.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-sen-001.function-body` → `function.ocf-sen-001.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-sen-001.opener` → `function.ocf-sen-001.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-sen-002.closer` → `function.ocf-sen-002.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-sen-002.function-body` → `function.ocf-sen-002.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-sen-002.opener` → `function.ocf-sen-002.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-sen-003.closer` → `function.ocf-sen-003.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-sen-003.function-body` → `function.ocf-sen-003.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-sen-003.opener` → `function.ocf-sen-003.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-sen-004.closer` → `function.ocf-sen-004.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-sen-004.function-body` → `function.ocf-sen-004.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-sen-004.opener` → `function.ocf-sen-004.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-sen-005.closer` → `function.ocf-sen-005.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-sen-005.function-body` → `function.ocf-sen-005.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-sen-005.opener` → `function.ocf-sen-005.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-001.closer` → `function.ocf-slp-001.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-001.function-body` → `function.ocf-slp-001.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-001.opener` → `function.ocf-slp-001.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-002.closer` → `function.ocf-slp-002.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-002.function-body` → `function.ocf-slp-002.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-002.opener` → `function.ocf-slp-002.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-003.closer` → `function.ocf-slp-003.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-003.function-body` → `function.ocf-slp-003.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-003.opener` → `function.ocf-slp-003.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-004.closer` → `function.ocf-slp-004.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-004.function-body` → `function.ocf-slp-004.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-004.opener` → `function.ocf-slp-004.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-005` → `function.ocf-slp-005`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-005.closer` → `function.ocf-slp-005.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-005.function-body` → `function.ocf-slp-005.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-005.opener` → `function.ocf-slp-005.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-006.closer` → `function.ocf-slp-006.closer`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-006.function-body` → `function.ocf-slp-006.function-body`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.function.ocf-slp-006.opener` → `function.ocf-slp-006.opener`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.optional.affirmation.begin` → `session.optional.affirmation.begin`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.optional.affirmation.complete` → `session.optional.affirmation.complete`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.optional.affirmation.default` → `session.optional.affirmation.default`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.optional.energy-ball.begin` → `session.optional.energy-ball.begin`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.optional.energy-ball.complete` → `session.optional.energy-ball.complete`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.optional.energy-ball.default` → `session.optional.energy-ball.default`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.optional.resonant-tuning.begin` → `session.optional.resonant-tuning.begin`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.optional.resonant-tuning.complete` → `session.optional.resonant-tuning.complete`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.optional.resonant-tuning.default` → `session.optional.resonant-tuning.default`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.body-comfort` → `session.shared.preparation.body-comfort`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.focus10.count` → `session.shared.focus-ten.induction.count`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.focus10.enter` → `session.shared.focus-ten.induction.enter`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.focus10.learn` → `session.shared.focus-ten.induction.learn`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.focus10.ready` → `session.shared.focus-ten.induction.ready`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.focus10.return.ready` → `session.shared.focus-ten.return.ready`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.focus11.close` → `session.shared.focus-eleven.access.close`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.focus11.close.prepare` → `session.shared.focus-eleven.access.close.prepare`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.focus11.open` → `session.shared.focus-eleven.access.open`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.focus11.open.prepare` → `session.shared.focus-eleven.access.open.prepare`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.focus11.ready` → `session.shared.focus-eleven.access.ready`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.focus20.enter` → `session.shared.sleep.entry`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.relaxation.begin` → `session.shared.relaxation.begin`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.relaxation.face` → `session.shared.relaxation.face`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.relaxation.hands` → `session.shared.relaxation.hands`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.relaxation.legs` → `session.shared.relaxation.legs`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.relaxation.shoulders` → `session.shared.relaxation.shoulders`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.relaxation.torso` → `session.shared.relaxation.torso`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.transmutation-box.begin` → `session.shared.preparation.transmutation-box.begin`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.transmutation-box.complete` → `session.shared.preparation.transmutation-box.complete`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.transmutation-box.place` → `session.shared.preparation.transmutation-box.place`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `hplus.shared.waking.begin` → `session.shared.waking.return`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.
+- `human-plus-function` → `guided-function-learning`. Preserve immutable original; deliberate successor and explicit bijective mapping only after approval.

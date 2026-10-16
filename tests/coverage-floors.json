@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "policy": "Separate measured statement/branch floors over all application and tool modules, no exclusions. Never label combined coverage as unit coverage. Raise floors only from passing supported-environment measurements; 100% unit remains the target.",
   "minimums": {
-    "combined": {"statement_percent": 89, "branch_percent": 83},
-    "unit": {"statement_percent": 56, "branch_percent": 61}
+    "combined": {"statement_percent": 89.5, "branch_percent": 84},
+    "unit": {"statement_percent": 57, "branch_percent": 62}
   }
 }

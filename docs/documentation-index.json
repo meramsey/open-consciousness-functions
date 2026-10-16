@@ -812,7 +812,7 @@
       "related_schemas": [
         "schemas/function.schema.json"
       ],
-      "sha256": "887775a0709b3aa1ae85c1a7af2eecc81cef98464ed08713d0c4d19095832417",
+      "sha256": "46c7189721795a28a35cac7d84661d6797c6228caa344292920a293e9674b56a",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -916,6 +916,24 @@
         "schemas/doctor.schema.json"
       ],
       "sha256": "f4e7796cc17e4059188bf098bdee49d81f8a44d862c0e1013332c6cef7ee7087",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "docs/EDITORIAL_REVIEW.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Read-only title–cue decision review",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "0d251c38e48274ef7255c4881ec99cd4a272fe42f1a88cca33b819ed8577511e",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1608,7 +1626,7 @@
       "purpose": "Unit coverage policy and current gap",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "2536ada91570fcff733285b5122879550d6a6876e3ae66da50aa9496a8fcc2b0",
+      "sha256": "24782bf2266210f688c3d4683ab4c1f192644a70a264a96a2d0f772da1f34679",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -3082,6 +3100,26 @@
       "missing_information": [
         "per-document semantic review not recorded"
       ],
+      "path": "docs/releases/OCF_EXACT_TEACHING_REVIEW.md",
+      "proposed_correction": "retain historical claims; consult current workflow guides",
+      "purpose": "Exact teaching-consistency report",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "5d66038a6c4f98c642c3cb4425cda9e4329f5a462462990c4b724ba9d109ea6e",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "maintainers/research reviewers",
+      "broken_references": [],
+      "canonical_source": "historical checkpoint (not current implementation)",
+      "duplicate_or_contradictory_information": [],
+      "historical": true,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [
+        "per-document semantic review not recorded"
+      ],
       "path": "docs/releases/OCF_IDENTIFIER_NEUTRALIZATION_AUDIT.md",
       "proposed_correction": "retain historical claims; consult current workflow guides",
       "purpose": "OCF identifier neutralization audit",
@@ -3092,6 +3130,46 @@
         "schemas/source-review-selection.schema.json"
       ],
       "sha256": "42af3c8b1cb5c0adc301e50fa868c19d90159b64089487f759063dffeab0c725",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "maintainers/research reviewers",
+      "broken_references": [],
+      "canonical_source": "historical checkpoint (not current implementation)",
+      "duplicate_or_contradictory_information": [],
+      "historical": true,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [
+        "per-document semantic review not recorded"
+      ],
+      "path": "docs/releases/OCF_IDENTIFIER_SUCCESSOR_PROPOSAL.md",
+      "proposed_correction": "retain historical claims; consult current workflow guides",
+      "purpose": "OCF-native identifier successor proposal — companion",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "71f532bb1015940d4460b0ab840e5626989007afbf9ac2d42646cdb920cfed81",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "maintainers/research reviewers",
+      "broken_references": [],
+      "canonical_source": "historical checkpoint (not current implementation)",
+      "duplicate_or_contradictory_information": [],
+      "historical": true,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [
+        "per-document semantic review not recorded"
+      ],
+      "path": "docs/releases/OCF_LOCALE_TITLE_CUE_READINESS.md",
+      "proposed_correction": "retain historical claims; consult current workflow guides",
+      "purpose": "Locale-native title–cue terminology and readiness proposal",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "45f6655d7e0b06a7d383c03f86fd26b373623a30af9aef34309dbed356e894c2",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -3395,6 +3473,46 @@
       "missing_information": [
         "per-document semantic review not recorded"
       ],
+      "path": "docs/releases/OCF_TITLE_CUE_QUALITY_CHECKPOINT.md",
+      "proposed_correction": "retain historical claims; consult current workflow guides",
+      "purpose": "Title–cue quality and coverage checkpoint",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "2fed3f3d6ca3de9329ea9a14a044328a4159fc1fffb19fb3e49d9ae459770b3d",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "maintainers/research reviewers",
+      "broken_references": [],
+      "canonical_source": "historical checkpoint (not current implementation)",
+      "duplicate_or_contradictory_information": [],
+      "historical": true,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [
+        "per-document semantic review not recorded"
+      ],
+      "path": "docs/releases/OCF_TITLE_CUE_REVIEW.md",
+      "proposed_correction": "retain historical claims; consult current workflow guides",
+      "purpose": "Complete title–cue decision sheet — companion revision",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "095529d8341fc793d1af9da38481055dac7f785f42480195b49a9f56a75dad70",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "maintainers/research reviewers",
+      "broken_references": [],
+      "canonical_source": "historical checkpoint (not current implementation)",
+      "duplicate_or_contradictory_information": [],
+      "historical": true,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [
+        "per-document semantic review not recorded"
+      ],
       "path": "docs/releases/OCF_UNIT_COVERAGE_CHECKPOINT_2026-10-04.md",
       "proposed_correction": "retain historical claims; consult current workflow guides",
       "purpose": "Unit-coverage engineering checkpoint — 2026-10-04",
@@ -3618,7 +3736,7 @@
         "validate"
       ],
       "related_schemas": [],
-      "sha256": "8e13ea452a2c7ce22cb8b8afddca9b4ef363a23ae270ba94c720d2acc41d3f4b",
+      "sha256": "a5fc8c5b78b683219591ef5bc35e957acd7559fc81d8b7a75f075297d673d53e",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4798,5 +4916,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 229
+  "total": 235
 }

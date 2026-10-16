@@ -2,6 +2,10 @@
 
 ## Current reproducible measurement
 
+The [title–cue quality checkpoint](releases/OCF_TITLE_CUE_QUALITY_CHECKPOINT.md)
+records the latest isolated continuation and links exact uncovered statement and
+branch regions for combined, unit-attributed and integration-attributed contexts.
+
 Use Python 3.11+ with `requirements-dev.txt` and any optional extras being tested:
 
 ```bash

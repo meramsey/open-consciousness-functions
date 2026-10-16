@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import json
 import math
-import os
 import shutil
+import sys
 import wave
 from array import array
 from datetime import UTC, datetime
@@ -334,11 +334,12 @@ def build_complete_session_plan(
     if not selected_dsp:
         raise OCFError(f"complete session template {selected_template} has no explicit DSP profile")
     dsp = load_profile(selected_dsp)
-    selected_pacing = (
-        load_pacing_profile(str(options.get("pacing_profile") or template_record["pacing_profile"]))
-        if template_record.get("pacing_profile")
-        else None
-    )
+    pacing_id = options.get("pacing_profile") or template_record.get("pacing_profile")
+    if not pacing_id:
+        raise OCFError(
+            f"complete session template {selected_template} has no explicit pacing profile"
+        )
+    selected_pacing = load_pacing_profile(str(pacing_id))
     template_record, selected_pacing, dsp, removed, passes = apply_overrides(
         template_record, selected_pacing, dsp, options
     )
@@ -526,7 +527,7 @@ def _stereo_metrics(path: Path, sample_rate: int) -> dict[str, Any]:
         while raw := reader.readframes(65536):
             values = array("h")
             values.frombytes(raw)
-            if os.sys.byteorder != "little":
+            if sys.byteorder != "little":
                 values.byteswap()
             for index in range(0, len(values), 2):
                 left, right = values[index], values[index + 1]
@@ -585,7 +586,7 @@ def _background_activity(
             if width == 2:
                 values = array("h")
                 values.frombytes(raw)
-                if os.sys.byteorder != "little":
+                if sys.byteorder != "little":
                     values.byteswap()
                 energy = sum(value * value for value in values)
                 different_channels = sum(
@@ -651,7 +652,7 @@ def _pcm_window(path: Path, start_seconds: float, *, seconds: float = 1.0) -> di
     if width == 2:
         values = array("h")
         values.frombytes(raw)
-        if os.sys.byteorder != "little":
+        if sys.byteorder != "little":
             values.byteswap()
         samples = ((values[index], values[index + 1]) for index in range(0, len(values), 2))
     else:
@@ -979,6 +980,8 @@ def render_complete_session(
             "session_plan": session_plan,
             **({"mix_profile": mix_profile} if mix_profile is not None else {}),
         }
+    if narration_sources is None and voice is None:
+        raise OCFError("complete session TTS rendering requires a voice profile")
     tts_plan = session_plan["tts_plan"]
     doc = session_plan["template_plan"]
     selected_dsp = session_plan["resolved_dsp_profile"]["id"]
@@ -1031,6 +1034,7 @@ def render_complete_session(
 
         catalog = LocaleCatalog()
         if narration_sources is None:
+            assert voice is not None  # Validated before creating any render output.
             profile_data, _resolved_voice = _voice_profile(
                 voice, tts_plan["requested_locale"], catalog
             )

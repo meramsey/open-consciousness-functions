@@ -118,7 +118,7 @@ Known conflicts to carry explicitly rather than silently decide:
 - Several approved function narrations retain a phrase represented by a legacy
   command while the registry has a different canonical phrase, including
   De-Discomfort, De-Tox: Body, Regenerate, Short Fix, Off-Loading, Mobius West,
-  Eight-Great, Sensory: Seeing, Restorative Sleep, Sleep, Sweet Dreams,
+  Eight-Great, Restorative Sleep, Sleep, Sweet Dreams,
   Wake/Know, and Stay Awake. These are cross-layer differences, not permission
   to rename registry commands or rewrite reviewed text. Preserve both records
   and show their source/role distinction in the guide.
@@ -137,7 +137,7 @@ Five”), De-Tox Body (`PLUS-DETOX` vs “Plus Clean Clear”), Hypertension
 (`PLUS-BALANCE-BLOODPRESSURE` vs “Plus Balance Blood Pressure”), Lungs
 (`PLUS-BREATH BETTER` vs “Plus Breathe Better”), Regenerate (`PLUS-REGENERATE`
 vs “Plus Build Live”), and the source-spoken forms for Nutricia, Sex Drive,
-Imprint, Off-Loading, Mobius West, Eight-Great, Sensory: Seeing, Restorative
+Imprint, Off-Loading, Mobius West, Eight-Great, Restorative
 Sleep, Sleep, Sweet Dreams, Wake/Know, and Stay Awake. Some are represented by
 preserved legacy aliases; others are script-only spelling/wording distinctions.
 Migration must record the source basis and relationship for each, or leave it

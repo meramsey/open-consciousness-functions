@@ -77,6 +77,22 @@ wizards can write records and plans after their normal prompts. Follow
 [function lifecycle](../docs/FUNCTION_LIFECYCLE.md) and
 [source-first authoring](../docs/SOURCE_FIRST_AUTHORING.md). Never treat proposed
 command/identifier audits as permission to rename canonical or protected data.
+Use the [read-only title–cue review guide](../docs/EDITORIAL_REVIEW.md) for the
+complete source-pinned companion proposals and their evidence boundaries.
+
+The session-plan wizard also has a fixture-backed **executed integration example**:
+
+```bash
+python -m pytest tests/test_workflow_examples_execution.py
+```
+
+It enters through the real CLI and prompts, composes through the authoritative
+generator, and writes only to isolated fixture output. The example verifies
+declining without writes, confirmed schema-valid output and shared fingerprints,
+release approval remaining false, and refusal to replace a human-owned file
+without partial publication. It needs no audio engine. This execution evidence
+does not upgrade the new-function parser example or other operator workflows to
+executed status.
 
 ### Recorded/hybrid speech, private voices and release artwork
 
