@@ -755,6 +755,7 @@ def build(
     narration_sources: str | Path | None = None,
     narration_source: str | None = None,
     source_rate_scale: float = 1.0,
+    source_fallback_voice: str | None = None,
     artwork: str | Path | None = None,
     retain_background_stem: bool = False,
     mix_profile: dict[str, Any] | str | Path | None = None,
@@ -832,7 +833,9 @@ def build(
     narration_meta = render_narration(
         doc,
         narration_wav,
-        backend=selected_voice,
+        backend=(voice or manifest.get("voice_profile"))
+        if narration_sources is not None
+        else selected_voice,
         sample_rate=sample_rate,
         render_cue=render_cue,
         render_cue_with_profile=render_cue_with_profile,
@@ -848,6 +851,7 @@ def build(
                 "narration_sources": narration_sources,
                 "narration_source": narration_source,
                 "source_rate_scale": source_rate_scale,
+                "source_fallback_voice": source_fallback_voice,
             }
             if narration_sources is not None or narration_source is not None
             else {}

@@ -79,10 +79,27 @@ def session_document(function_id, locale="en-US"):
     return resolve_document(plan["template_plan"], locale, strict=True)
 
 
+def source_resolver(function_id, sources, *, locale="en-US", voice=None):
+    """Share inherited function/template voice precedence with queued identity planning."""
+    from .complete_session import _resolve_template
+    from .session_overrides import resolve
+
+    document = session_document(function_id, locale)
+    template, binding = _resolve_template(function_id, None)
+    options, _ = resolve(binding)
+    return SourceResolver(
+        document,
+        sources,
+        locale=locale,
+        default_voice=voice or options.get("voice_profile"),
+        fallback_voice=template.get("voice_profile"),
+    )
+
+
 def coverage(function_id, *, locale="en-US", sources=None):
-    doc = session_document(function_id, locale)
     if sources:
-        return SourceResolver(doc, sources, locale=locale).report
+        return source_resolver(function_id, sources, locale=locale).report
+    doc = session_document(function_id, locale)
     return {
         "function_id": function_id,
         "locale": locale,

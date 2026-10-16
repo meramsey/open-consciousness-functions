@@ -275,16 +275,15 @@ def input_identity(operation: str, args: dict) -> dict:
         }
         if operation == "narration-render":
             from .locale import LocaleCatalog
-            from .narration_cli import session_document
-            from .narration_sources import SourceResolver
+            from .narration_cli import source_resolver
             from .speech_cache import voice_identity
             from .voice import resolve_backend
 
-            resolver = SourceResolver(
-                session_document(args["function_id"], args["locale"]),
+            resolver = source_resolver(
+                args["function_id"],
                 manifest,
                 locale=args["locale"],
-                default_voice=args.get("voice"),
+                voice=args.get("voice"),
             )
             voices = {
                 row["voice"]

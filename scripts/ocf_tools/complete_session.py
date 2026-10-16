@@ -949,12 +949,14 @@ def render_complete_session(
         from .narration_sources import preview_sources
 
         # Source preflight remains independent of synthesis availability for recorded-only sessions.
+        inherited_voice = options.get("voice_profile") or selected_template.get("voice_profile")
         source_preview = preview_sources(
             session_plan["template_plan"],
             narration_sources,
             locale=session_plan["locale"],
             mode=narration_source,
-            default_voice=explicit_voice,
+            default_voice=explicit_voice or options.get("voice_profile"),
+            fallback_voice=inherited_voice,
         )
         session_plan["narration_sources"] = source_preview
         source_voice = {
@@ -1034,7 +1036,7 @@ def render_complete_session(
             )
             adjusted_voice = _adjusted_profile(tts_plan, profile_data)
         else:
-            adjusted_voice = explicit_voice
+            adjusted_voice = explicit_voice or options.get("voice_profile")
         script_path = stage / "session-plan.yaml"
         script_path.write_text(yaml_safe_dump(doc), encoding="utf-8", newline="\n")
         render_dir = stage / "engine-render"
@@ -1076,6 +1078,7 @@ def render_complete_session(
                         "narration_sources": narration_sources,
                         "narration_source": narration_source,
                         "source_rate_scale": 1 / float(tts_plan["pacing"]["speech_rate_scale"]),
+                        "source_fallback_voice": inherited_voice,
                     }
                     if narration_sources is not None
                     else {}

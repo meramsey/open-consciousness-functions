@@ -44,6 +44,12 @@ applicable explicit source choice:
 5. Manifest `functions[FUNCTION_ID]`.
 6. Automatic catalog matching under the manifest mode and default voice.
 
+After scoped choices, the TTS default is explicit `--voice`, then the resolved
+function/session `voice_profile` override, manifest `default_voice`, inherited
+template/document voice, and finally backend auto-detection only when no voice
+was configured. A selected unavailable voice fails; it is never substituted.
+Queue input identity and rendering use this same inherited selection policy.
+
 Choices declare `source: recording|tts|silence`, with optional `recording_id`,
 voice/speaker, gain, rate and processing controls. `recording_id` requires
 `source: recording`. Silence cannot suppress required spoken text. Nonspoken

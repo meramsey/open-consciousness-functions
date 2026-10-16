@@ -55,7 +55,9 @@ def _safe_source(root, name):
 class SourceResolver:
     """Resolve before synthesis; prepared audio uses the common recording cache."""
 
-    def __init__(self, doc, reference, *, locale=None, mode=None, default_voice=None):
+    def __init__(
+        self, doc, reference, *, locale=None, mode=None, default_voice=None, fallback_voice=None
+    ):
         self.path = None if isinstance(reference, dict) else Path(reference).expanduser().resolve()
         self.root = self.path.parent if self.path else None
         self.config = (
@@ -80,7 +82,10 @@ class SourceResolver:
         if self.mode == "hybrid" and "fallback" not in self.config:
             raise OCFError("hybrid narration requires an explicit fallback policy")
         self.default_voice = (
-            default_voice or self.config.get("default_voice") or doc.get("voice_profile")
+            default_voice
+            or self.config.get("default_voice")
+            or doc.get("voice_profile")
+            or fallback_voice
         )
         self.channels = self.config.get("output_channels", 1)
         self.contexts = _contexts(doc)
@@ -391,9 +396,16 @@ class SourceResolver:
         return data, report
 
 
-def preview_sources(document, reference, *, locale=None, mode=None, default_voice=None):
+def preview_sources(
+    document, reference, *, locale=None, mode=None, default_voice=None, fallback_voice=None
+):
     target = locale or document_locale(document)
     resolved = resolve_document(document, target, strict=True)
     return SourceResolver(
-        resolved, reference, locale=target, mode=mode, default_voice=default_voice
+        resolved,
+        reference,
+        locale=target,
+        mode=mode,
+        default_voice=default_voice,
+        fallback_voice=fallback_voice,
     ).report

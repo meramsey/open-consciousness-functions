@@ -487,3 +487,87 @@ def test_strict_speaker_consistency_rejects_unidentified_default_tts(tmp_path):
     path.write_text(json.dumps(config), encoding="utf-8")
     with pytest.raises(OCFError, match="declared speaker"):
         SourceResolver(doc, path)
+
+
+def test_source_session_inherits_voice_without_synthesis_preflight(tmp_path, monkeypatch):
+    from ocf_tools import complete_session, narration_cli, narration_first
+
+    config = {
+        "schema_version": "2.0",
+        "id": "inherited",
+        "locale": "en-US",
+        "mode": "hybrid",
+        "fallback": "tts",
+    }
+    path = tmp_path / "inherited.json"
+    path.write_text(json.dumps(config), encoding="utf-8")
+    document = narration_cli.session_document("OCF-SLP-005")
+    assert (
+        "voice_profile" not in document
+    )  # Selection must not change the canonical session document.
+    monkeypatch.setattr(
+        narration_first,
+        "_voice_profile",
+        lambda *_a, **_k: pytest.fail("source plan must not require synthesis"),
+    )
+    inherited = complete_session.render_complete_session(
+        "OCF-SLP-005", narration_sources=path, dry_run=True
+    )
+    selected = inherited["session_plan"]["narration_sources"]["events"]
+    assert {row["voice"] for row in selected if row["source"] == "tts"} == {"OCF-VOICE-0003"}
+    config["default_voice"] = "OCF-VOICE-0002"
+    path.write_text(json.dumps(config), encoding="utf-8")
+    explicit_manifest = complete_session.render_complete_session(
+        "OCF-SLP-005", narration_sources=path, dry_run=True
+    )
+    assert {
+        row["voice"]
+        for row in explicit_manifest["session_plan"]["narration_sources"]["events"]
+        if row["source"] == "tts"
+    } == {"OCF-VOICE-0002"}
+    overrides = complete_session.render_complete_session(
+        "OCF-SLP-005",
+        narration_sources=path,
+        overrides={"voice_profile": "OCF-VOICE-0001"},
+        dry_run=True,
+    )
+    assert {
+        row["voice"]
+        for row in overrides["session_plan"]["narration_sources"]["events"]
+        if row["source"] == "tts"
+    } == {"OCF-VOICE-0001"}
+
+
+def test_build_manifest_does_not_promote_document_fallback_over_source_default(tmp_path):
+    from ocf_tools import audio_build
+
+    doc, _config, _path = fixture(tmp_path)
+    doc["voice_profile"] = "piper"
+    source = tmp_path / "tts.json"
+    source.write_text(
+        json.dumps(
+            {
+                "schema_version": "2.0",
+                "id": "tts",
+                "locale": "en-US",
+                "mode": "tts",
+                "default_voice": "espeak-ng",
+            }
+        ),
+        encoding="utf-8",
+    )
+    seen = []
+    audio = (tmp_path / "take.wav").read_bytes()
+    built = audio_build.build(
+        "fixture",
+        manifest_override={"title": "Original fixture", "background_audio": {"strategy": "none"}},
+        document_override=doc,
+        render_label="voice-default",
+        out_root=tmp_path / "build",
+        formats=["wav"],
+        sample_rate=8000,
+        narration_sources=source,
+        render_cue_with_profile=lambda _text, spec: seen.append(spec["name"]) or audio,
+    )
+    assert seen == ["espeak-ng", "espeak-ng"]
+    assert built["voice"]["backend"] == "espeak-ng"

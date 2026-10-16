@@ -954,6 +954,7 @@ def render_narration(
     narration_sources: str | Path | None = None,
     narration_source: str | None = None,
     source_rate_scale: float = 1.0,
+    source_fallback_voice: str | None = None,
 ) -> dict[str, Any]:
     """Render a timed document into a mono 16-bit WAV narration stem.
 
@@ -1023,6 +1024,7 @@ def render_narration(
             locale=locale,
             mode=narration_source,
             default_voice=explicit_backend,
+            fallback_voice=source_fallback_voice,
         )
         locale = source_resolver.locale
         channels = source_resolver.channels

@@ -346,6 +346,7 @@ def report_fixture(prepared, document, monkeypatch):
     monkeypatch.setattr(
         demo.complete_session, "_stereo_metrics", lambda *_a, **_k: deepcopy(metrics)
     )
+    monkeypatch.setattr(demo, "_background_stereo_metrics", lambda *_a, **_k: deepcopy(metrics))
     for symbol in (
         "_background_activity",
         "_representative_audio_analysis",
@@ -372,6 +373,68 @@ def test_verify_report_checks_real_artifact_hashes_sources_and_timing(report_fix
         "_verify_background_continuity",
     }
     assert result["listening_approval"] is None
+
+
+@pytest.mark.unit
+def test_rendered_selection_receipts_extend_plan_without_changing_dsp_identity(report_fixture):
+    directory, preparation, report, _scans, _metrics = report_fixture
+    selection = report["dsp_profile"]["selections"]["focus-10"]
+    selection.update(
+        raw_rms_dbfs=-15.5,
+        target_rms_dbfs=-18,
+        renderer_gain=10 ** (-2.5 / 20),
+        stem_cache="hit",
+        stem_cache_stored=True,
+        stem_sha256="f" * 64,
+    )
+    (directory / "session-report.json").write_text(json.dumps(report), encoding="utf-8")
+    assert demo.verify_report(directory, preparation)["status"] == "passed"
+    selection["preset_sha256"] = "changed-canonical-preset"
+    (directory / "session-report.json").write_text(json.dumps(report), encoding="utf-8")
+    with pytest.raises(OCFError, match="fingerprint"):
+        demo.verify_report(directory, preparation)
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize("mutation", ["target", "gain", "state"])
+def test_rendered_selection_receipts_reject_wrong_targets_gains_or_states(mutation):
+    planned = {"focus-10": {"preset_id": "OCF-BG-0012", "preset_sha256": "f" * 64}}
+    rendered = deepcopy(planned)
+    rendered["focus-10"].update(
+        raw_rms_dbfs=-15.5, target_rms_dbfs=-18, renderer_gain=10 ** (-2.5 / 20)
+    )
+    if mutation == "target":
+        rendered["focus-10"]["target_rms_dbfs"] = -12
+    elif mutation == "gain":
+        rendered["focus-10"]["renderer_gain"] = 1.0
+    else:
+        rendered["unexpected"] = rendered["focus-10"]
+    with pytest.raises(OCFError):
+        demo._verify_rendered_selections(rendered, planned, {"target_state_rms_dbfs": -18})
+
+
+@pytest.mark.integration
+@pytest.mark.external_tool
+def test_retained_pcm24_bed_analysis_preserves_original_and_independent_channels(tmp_path):
+    import shutil
+    import wave
+
+    if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
+        pytest.skip("FFmpeg/ffprobe required for retained PCM24 bed read-back")
+    source = tmp_path / "bed.wav"
+    with wave.open(str(source), "wb") as writer:
+        writer.setparams((2, 3, 44100, 0, "NONE", "not compressed"))
+        writer.writeframes(
+            (1000000).to_bytes(3, "little", signed=True) * 1
+            + (-1000000).to_bytes(3, "little", signed=True)
+        )
+    original = source.read_bytes()
+    measured = demo._background_stereo_metrics(source)
+    assert measured["frames"] == 1 and measured["channels"] == 2
+    assert measured["different_channel_frames"] == 1
+    assert measured["clipped_sample_count"] == 0
+    assert measured["source_codec"] == "pcm_s24le"
+    assert source.read_bytes() == original
 
 
 @pytest.mark.unit
@@ -412,13 +475,32 @@ def test_verify_report_rejects_objective_regressions(report_fixture, monkeypatch
         monkeypatch.setattr(
             demo.complete_session,
             "_stereo_metrics",
-            lambda path, **_k: {**metrics, "frames": metrics["frames"] + (path.name == "wav")},
+            lambda path, **_k: {
+                **metrics,
+                "frames": metrics["frames"] + (441 if path.name == "wav" else 0),
+            },
         )
     (directory / "session-report.json").write_text(json.dumps(report))
     with pytest.raises(OCFError, match=match):
         demo.verify_report(directory, preparation)
     if mutation in ("artifact", "receipt", "sources", "wait", "preset", "transition", "fade"):
         assert scans == []  # Preflight fails before any expensive audio scans.
+
+
+@pytest.mark.unit
+def test_measured_total_duration_respects_existing_millisecond_planner_precision(
+    report_fixture, monkeypatch
+):
+    directory, preparation, report, _scans, metrics = report_fixture
+    monkeypatch.setattr(
+        demo.complete_session,
+        "_stereo_metrics",
+        lambda *_a, **_k: {**metrics, "frames": metrics["frames"] + 19},
+    )
+    (directory / "session-report.json").write_text(json.dumps(report), encoding="utf-8")
+    result = demo.verify_report(directory, preparation)
+    assert result["duration_alignment"]["master_minus_background_frames"] == 19
+    assert result["duration_alignment"]["permitted_frames"] == 24
 
 
 @pytest.mark.unit

@@ -19,6 +19,7 @@ import hashlib
 import json
 import math
 import os
+import shutil
 import statistics
 import sys
 import time
@@ -414,6 +415,108 @@ def _source_checks(report, resolver, marker):
     return cues, durations
 
 
+def _background_stereo_metrics(path):
+    """Inspect the PCM24 retained bed through a read-only PCM16 analysis view."""
+    from ocf_tools.paths import (
+        cleanup_workspace_temp,
+        record_workspace_failure,
+        workspace_run,
+        workspace_temp_directory,
+    )
+
+    probe = complete_session._probe_audio(path)
+    _require(
+        probe["channels"] == 2 and probe["sample_rate"] == 44100,
+        "retained background must remain 44100 Hz stereo",
+    )
+    if probe["codec"] == "pcm_s16le":
+        return complete_session._stereo_metrics(path, sample_rate=44100)
+    _require(
+        probe["codec"] in {"pcm_s24le", "pcm_s32le"}, "retained background must remain integer PCM"
+    )
+    ffmpeg = shutil.which("ffmpeg")
+    _require(ffmpeg is not None, "FFmpeg is required for retained-bed analysis")
+    original_sha = sha256_of_file(path)
+    stage = workspace_temp_directory(prefix="ocf-bed-analysis-")
+    try:
+        analysis = stage / "pcm16-analysis.wav"
+        decoded = workspace_run(
+            [
+                ffmpeg,
+                "-v",
+                "error",
+                "-nostdin",
+                "-threads",
+                "1",
+                "-i",
+                str(path),
+                "-map",
+                "0:a:0",
+                "-c:a",
+                "pcm_s16le",
+                str(analysis),
+            ],
+            capture_output=True,
+            timeout=300,
+        )
+        _require(decoded.returncode == 0, "retained background analysis decode failed")
+        metrics = complete_session._stereo_metrics(analysis, sample_rate=44100)
+        _require(
+            sha256_of_file(path) == original_sha,
+            "retained background bytes changed during analysis",
+        )
+    except BaseException as exc:
+        record_workspace_failure(stage.name, str(exc))
+        raise
+    else:
+        cleanup_workspace_temp(stage)
+        return {
+            **metrics,
+            "source_codec": probe["codec"],
+            "analysis_conversion": "PCM16 read-only analysis view; original retained bed unchanged",
+        }
+
+
+def _verify_rendered_selections(rendered, planned, profile):
+    """Render receipts enrich the plan; canonical selection fields must still match."""
+    _require(set(rendered) == set(planned), "DSP preset fingerprint state set mismatch")
+    for state, expected in planned.items():
+        actual = rendered[state]
+        _require(
+            all(actual.get(key) == value for key, value in expected.items()),
+            f"DSP preset fingerprint mismatch: {state}",
+        )
+        if "target_rms_dbfs" in actual:
+            target = actual["target_rms_dbfs"]
+            _require(
+                isinstance(target, (int, float)) and math.isfinite(target) and target <= 0,
+                "invalid rendered RMS target",
+            )
+            if profile.get("target_state_rms_dbfs") is not None:
+                _require(
+                    target == profile["target_state_rms_dbfs"],
+                    "rendered RMS target differs from selected DSP profile",
+                )
+        if "renderer_gain" in actual:
+            gain = actual["renderer_gain"]
+            _require(
+                isinstance(gain, (int, float)) and math.isfinite(gain) and gain > 0,
+                "invalid rendered calibration gain",
+            )
+            if all(key in actual for key in ("target_rms_dbfs", "raw_rms_dbfs")):
+                raw = actual["raw_rms_dbfs"]
+                _require(
+                    isinstance(raw, (int, float)) and math.isfinite(raw),
+                    "invalid rendered raw RMS measurement",
+                )
+                _require(
+                    math.isclose(
+                        gain, 10 ** ((actual["target_rms_dbfs"] - raw) / 20), rel_tol=1e-6
+                    ),
+                    "rendered calibration gain does not match RMS measurements",
+                )
+
+
 def verify_report(directory, preparation):
     root, marker, document, profile = preparation
     directory = Path(directory).expanduser().resolve()
@@ -463,13 +566,13 @@ def verify_report(directory, preparation):
         "initial_state",
         "default_background_state",
         "curve",
-        "selections",
         "ignored_state_directives",
         "stage_backgrounds",
     ):
         _require(
             dsp.get(field) == program.get(field), f"DSP policy/preset fingerprint mismatch: {field}"
         )
+    _verify_rendered_selections(dsp["selections"], program["selections"], profile)
     _require(
         program["ending_fade_seconds"]
         == dsp["ending_fade_seconds"]
@@ -528,16 +631,24 @@ def verify_report(directory, preparation):
     metrics = {}
     for key, path in paths.items():
         complete_session._verify_decode(path)
-        metrics[key] = complete_session._stereo_metrics(path, sample_rate=44100)
+        metrics[key] = (
+            _background_stereo_metrics(path)
+            if key == "background_stem"
+            else complete_session._stereo_metrics(path, sample_rate=44100)
+        )
         _require(
             metrics[key]["clipped_sample_count"] == 0
             and metrics[key]["left_peak_int16"] > 0
             and metrics[key]["right_peak_int16"] > 0,
             f"clipping or empty L/R channel: {key}",
         )
+    # voice metadata rounds total duration to milliseconds before DSP planning.
+    # Preserve that established contract without claiming sample-identical lengths.
+    frame_delta = metrics["wav"]["frames"] - metrics["background_stem"]["frames"]
+    frame_budget = math.ceil(44100 * 0.0005) + 1
     _require(
-        metrics["wav"]["frames"] == metrics["background_stem"]["frames"],
-        "master/background duration mismatch",
+        abs(frame_delta) <= frame_budget,
+        "master/background duration mismatch beyond planner precision",
     )
     _require(
         abs(metrics["wav"]["duration_seconds"] - program["duration_s"]) < 0.02
@@ -563,6 +674,11 @@ def verify_report(directory, preparation):
         "preset_fingerprints": program["selections"],
         "transitions": transitions,
         "metrics": metrics,
+        "duration_alignment": {
+            "master_minus_background_frames": frame_delta,
+            "permitted_frames": frame_budget,
+            "basis": "half-millisecond planner rounding plus one sample",
+        },
         "background_activity": activity,
         "representative_audio_analysis": analysis,
         "background_continuity": continuity,
