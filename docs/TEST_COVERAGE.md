@@ -18,7 +18,12 @@ contexts. No source omissions or statement exclusions are configured, including
 old `pragma: no cover` annotations. Default output is a unique directory under
 the validated OCF work root's `logs/coverage/`; an existing output directory is
 rejected, preserving failed diagnostics. A short independent pytest basetemp
-retains the production release path-length guard.
+retains the production release path-length guard. Successful managed scratch is
+cleaned through the shared workspace helper (unless `OCF_KEEP_WORK` is set);
+failed/interrupted scratch and reports remain available. Reporting anchors
+relative coverage filenames at the repository root, even from another directory.
+Inherited `PYTEST_ADDOPTS` and configured `addopts` cannot filter this explicit
+full-suite run, and unexpected deselection fails its gate.
 
 Reports include raw combined, unit-context and integration-context JSON, exact
 missing statements/branches, JUnit, collection taxonomy, pytest logs and a compact
@@ -38,8 +43,8 @@ gap; do not reduce scope, reclassify workflows or exclude branches to pass them.
 The [modernization baseline](releases/OCF_MODERNIZATION_BASELINE.md) records the
 unchanged starting commit's 1,779 passing tests and exact statement/branch counts.
 The [modernization measurement](releases/OCF_MODERNIZATION_COVERAGE.md) records
-1,891 passing cases, 89.3367% combined statements / 84.2714% combined branches,
-and the still-incomplete 56.2874% / 61.7286% unit-context contribution.
+1,894 passing cases, 89.3971% combined statements / 84.2947% combined branches,
+and the still-incomplete 56.3629% / 61.7647% unit-context contribution.
 New modules expand the denominator, so compare absolute coverage and remaining
 gaps as well as percentages. Historical snapshots below retain their original
 scope/tooling/limitations; their old temporary paths are not current commands or

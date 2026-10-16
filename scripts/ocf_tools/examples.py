@@ -246,7 +246,7 @@ def build():
         ],
         "safe_cli_examples": SAFE_COMMANDS,
         "source_hashes": {
-            str(path.relative_to(REPO_ROOT)): hashlib.sha256(
+            path.relative_to(REPO_ROOT).as_posix(): hashlib.sha256(
                 path.read_text(encoding="utf-8").encode("utf-8")
             ).hexdigest()
             for path in [

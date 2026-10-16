@@ -1,6 +1,31 @@
 # Modernization coverage checkpoint
 
-## Measured result
+## Final hardened measurement
+
+The follow-up full Linux/Python 3.12.3 measurement passed **1,894 tests / two
+optional skips** in **444.30 seconds**, with 1,245 unit and 651 integration cases.
+There were zero deselections, taxonomy errors or excluded statements.
+
+| Scope | Covered statements / total | Statements | Covered branches / total | Branches |
+| --- | --- | --- | --- | --- |
+| Combined | 15,539 / 17,382 | 89.3971% | 5,904 / 7,004 | 84.2947% |
+| Unit contexts | 9,797 / 17,382 | 56.3629% | 4,326 / 7,004 | 61.7647% |
+| Integration contexts | 9,393 / 17,382 | 54.0387% | 4,008 / 7,004 | 57.2244% |
+
+Raw reports: `.ocf-work/logs/coverage/modernization-hardened/`. Successful managed
+scratch was removed through the shared workspace helper; reports were retained.
+Unit gaps remain **7,585 statements / 2,678 branches**. The measured floors below
+still pass, and the 100% unit target remains unmet.
+
+The harness now neutralizes inherited/configured pytest selection, rejects
+unexpected deselection, anchors relative reporting paths to the repository root
+and cleans only successful marked scratch (honoring `OCF_KEEP_WORK`). Focused
+synthetic tests exercise these paths, including reporting from another working
+directory. Windows CI also exposed native backslashes in example fingerprint
+keys; the generator now serializes portable POSIX paths and normalized newlines.
+No schema or validator was weakened to fix these failures.
+
+## Earlier measured result
 
 Linux/Python 3.12.3, coverage.py 7.16.2, pytest-cov 7.1.0, two `loadfile` workers:
 **1,891 passed, two skipped**, 442.01 seconds with instrumentation. There were

@@ -7,6 +7,16 @@ from pathlib import Path
 import pytest
 
 
+def pytest_deselected(items):
+    directory = os.environ.get("OCF_COVERAGE_COLLECTION")
+    if not directory or not items:
+        return
+    worker = getattr(items[0].config, "workerinput", {}).get("workerid", "serial")
+    path = Path(directory) / f"deselected-{worker}.json"
+    previous = json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+    path.write_text(json.dumps([*previous, *(item.nodeid for item in items)]), encoding="utf-8")
+
+
 @pytest.hookimpl(trylast=True)
 def pytest_collection_finish(session):
     directory = os.environ.get("OCF_COVERAGE_COLLECTION")

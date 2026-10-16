@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import contextlib
 import json
 import os
 import platform
@@ -14,7 +15,13 @@ import uuid
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from .paths import REPO_ROOT, work_root, workspace_environment
+from .paths import (
+    REPO_ROOT,
+    cleanup_workspace_temp,
+    work_root,
+    workspace_environment,
+    workspace_temp_directory,
+)
 from .utils import OCFError
 
 FLOORS = REPO_ROOT / "tests/coverage-floors.json"
@@ -57,10 +64,19 @@ def check(summary, floors):
                 failures.append(f"{name}: {metric} {report[metric]:.8f} < {minimum[metric]}")
     if summary.get("taxonomy_errors"):
         failures.append("tests must have exactly one audited unit/integration classification")
+    if summary.get("deselected_count", 0):
+        failures.append("full-suite measurement must not deselect tests")
     return failures
 
 
 def summarize(directory, *, exit_code, elapsed):
+    directory = directory.resolve()
+    # Relative coverage filenames use the same root as the pytest process.
+    with contextlib.chdir(REPO_ROOT):
+        return _summarize(directory, exit_code=exit_code, elapsed=elapsed)
+
+
+def _summarize(directory, *, exit_code, elapsed):
     from coverage import Coverage
 
     coverage = Coverage(
@@ -105,6 +121,10 @@ def summarize(directory, *, exit_code, elapsed):
         "classified_counts": {
             name: sum(row[name] for row in rows.values()) for name in ("unit", "integration")
         },
+        "deselected_count": sum(
+            len(json.loads(path.read_text(encoding="utf-8")))
+            for path in directory.glob("deselected-*.json")
+        ),
         "counts": counts,
         "reports": reports,
         "context_note": "Unit/integration are strict attributed test-context contributions. Combined also includes startup/unattributed subprocess execution; contributions overlap and must not be summed.",
@@ -128,16 +148,21 @@ def run(directory=None):
         raise OCFError("coverage output already exists; retain it and choose a new directory")
     directory.mkdir(parents=True)
     environment = workspace_environment()
+    environment.pop("PYTEST_ADDOPTS", None)
     environment.update(
         COVERAGE_FILE=str(directory / ".coverage"),
         COVERAGE_RCFILE=str(REPO_ROOT / "pyproject.toml"),
         OCF_COVERAGE_COLLECTION=str(directory),
         PYTHONPATH=os.pathsep.join([str(REPO_ROOT / "scripts"), str(REPO_ROOT / "tests")]),
     )
+    scratch = workspace_temp_directory(prefix="ocf-c-")
     command = [
         sys.executable,
         "-m",
         "pytest",
+        "-o",
+        "addopts=",
+        "-q",
         "-n",
         "2",
         "--dist",
@@ -154,7 +179,7 @@ def run(directory=None):
         "--junitxml",
         str(directory / "tests.xml"),
         "--basetemp",
-        str(root / ("c-" + token)),
+        str(scratch / "p"),
         "-ra",
     ]
     start = time.monotonic()
@@ -168,6 +193,11 @@ def run(directory=None):
             check=False,
         )
     summary = summarize(directory, exit_code=completed.returncode, elapsed=time.monotonic() - start)
+    summary["scratch_retained"] = True
+    if not check(summary, json.loads(FLOORS.read_text(encoding="utf-8"))):
+        summary["scratch_retained"] = not cleanup_workspace_temp(scratch)
+    summary["scratch_directory"] = str(scratch)
+    (directory / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     return directory, summary
 
 
