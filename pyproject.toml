@@ -27,7 +27,7 @@ dependencies = [
 
 [project.optional-dependencies]
 artwork = ["Pillow==12.3.0", "fonttools==4.67.0"]
-mcp = ["mcp==1.28.1"]
+mcp = ["mcp==1.30.0"]
 lsp = ["pygls==2.1.1", "lsprotocol==2025.0.0"]
 python-lsp = ["pyright==1.1.408"]
 dev = [
