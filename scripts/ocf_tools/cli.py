@@ -109,6 +109,11 @@ def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="ocf", description=HELP_TEXT, add_help=False)
     parser.add_argument("--quiet", action="store_true", help="suppress informational output")
     sub = parser.add_subparsers(dest="command")
+    from .lsp_server import add_arguments as add_lsp_arguments
+
+    add_lsp_arguments(
+        sub.add_parser("lsp", help="optional read-only OCF YAML/JSON language server over stdio")
+    )
     from .narration_cli import add_commands as add_narration_commands
 
     add_narration_commands(sub)
@@ -278,6 +283,11 @@ def _build_parser() -> argparse.ArgumentParser:
     validate = sub.add_parser("validate", help="validate records")
     validate.add_argument("--all", action="store_true", help="validate everything")
     validate.add_argument("path", nargs="?", help="validate a specific function file")
+    validate.add_argument(
+        "--json",
+        action="store_true",
+        help="structured diagnostics from the same authoritative validators",
+    )
 
     build = sub.add_parser("build-index", help="regenerate derived indexes")
     build.add_argument("--check", action="store_true", help="fail if indexes are stale")
@@ -823,8 +833,25 @@ def cmd_validate(args: argparse.Namespace) -> int:
     """Route `validate`."""
     if args.path:
         result = validate_function_file(Path(args.path))
-        return print_result(result)
-    result = validate_all()
+    else:
+        result = validate_all()
+    if getattr(args, "json", False):
+        import json
+        from dataclasses import asdict
+
+        print(
+            json.dumps(
+                {
+                    "ok": result.ok,
+                    "errors": len(result.errors),
+                    "warnings": len(result.warnings),
+                    "diagnostics": [asdict(issue) for issue in result.issues],
+                },
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
+        return 0 if result.ok else 1
     return print_result(result)
 
 
@@ -1230,6 +1257,10 @@ def main(argv: list[str] | None = None) -> int:
             result = dispatch(args.operation, arguments)
             print(json.dumps(result, ensure_ascii=False, sort_keys=True))
             return 1 if result.get("status") == "failed" else 0
+        if args.command == "lsp":
+            from .lsp_server import run
+
+            return run(args)
         if args.command == "mcp":
             from .mcp_server import main as mcp_main
 

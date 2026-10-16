@@ -157,12 +157,12 @@ claim. Preserve existing caches and all frozen editorial/listening checkpoints.
 
 ## LSP, MCP, and search efficiency
 
-OpenCode `1.18.34` supports project agents, watcher ignores, LSP, and MCP. This
-repository supplies read-only narrow agents and ignores generated/build/cache
-trees for watcher noise. No Python LSP server is installed in the audited
-environment, so do not claim LSP diagnostics are active; when available, prefer
-Pyright/Based Pyright or another Python server for definitions, references,
-symbols, and diagnostics. Keep LSP configuration portable and optional.
+This repository supplies read-only narrow agents and ignores generated/build/cache
+trees for watcher noise. The optional [OCF data language server](LSP.md) provides
+real stdio diagnostics and navigation for YAML/JSON using shared application
+services and unsaved buffers. Install `.[lsp]` and configure a client explicitly;
+its presence does not mean an editor has connected. It is separate from a Python
+server such as Pyright/Based Pyright. Keep client configuration portable and optional.
 
 The optional [OCF stdio MCP adapter](MCP.md) reuses application APIs for compact
 discovery, targeted validation and persistent jobs. It is not automatically

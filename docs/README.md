@@ -24,6 +24,7 @@ loading the entire documentation tree:
 - Develop: [agent guide](AGENT_DEVELOPMENT.md), [testing](TEST_COVERAGE.md),
   [contributing](../CONTRIBUTING.md).
 - Automate: [local MCP and jobs](MCP.md), with the CLI as the fallback.
+- Edit YAML/JSON with diagnostics and navigation: [optional OCF LSP](LSP.md).
 
 `documentation-index.json` inventories tracked Markdown, schemas, CLI help and
 wizard source. It records content fingerprints, references, audiences and

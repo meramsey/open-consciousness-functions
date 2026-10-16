@@ -99,11 +99,23 @@ def _load_schema(name: str) -> dict[str, Any]:
         return json.load(handle)
 
 
-def validate_against_schema(data: dict[str, Any], schema: dict[str, Any]) -> list[str]:
-    """Return a list of schema error messages (empty if valid)."""
+def schema_errors(data: Any, schema: dict[str, Any]):
+    """Authoritative local-schema errors, retaining paths for editor/JSON adapters."""
     validator = Draft7Validator(schema, registry=_schema_registry())
-    errors = sorted(validator.iter_errors(data), key=lambda e: list(e.path))
-    return [f"{'.'.join(map(str, e.path))}: {e.message}" for e in errors]
+    return sorted(
+        validator.iter_errors(data),
+        key=lambda error: tuple(
+            (1, part) if isinstance(part, int) else (0, str(part)) for part in error.path
+        ),
+    )
+
+
+def validate_against_schema(data: dict[str, Any], schema: dict[str, Any]) -> list[str]:
+    """Return the existing CLI-compatible messages from the shared schema engine."""
+    return [
+        f"{'.'.join(map(str, error.path))}: {error.message}"
+        for error in schema_errors(data, schema)
+    ]
 
 
 def _schema_registry() -> Registry:
@@ -537,7 +549,12 @@ def validate_background_manifests() -> ValidationResult:
     return result
 
 
-def validate_timed_transcript(data: dict[str, Any], path: Path) -> ValidationResult:
+def validate_timed_transcript(
+    data: dict[str, Any],
+    path: Path,
+    catalog: LocaleCatalog | None = None,
+    records: list[FunctionRecord] | None = None,
+) -> ValidationResult:
     """Validate one timed-transcript document (schema + timeline rules)."""
     result = ValidationResult()
     schema = _load_schema("timed-transcript.schema.json")
@@ -551,8 +568,13 @@ def validate_timed_transcript(data: dict[str, Any], path: Path) -> ValidationRes
         _events, problems = resolve_timeline(data)
         for problem in problems:
             result.add("error", "timed-timeline", problem, str(path))
-        result.extend(validate_narration_usage(data, path))
-        result.extend(validate_narration_hygiene(data, path, LocaleCatalog()))
+        catalog = catalog or LocaleCatalog()
+        result.extend(
+            validate_narration_usage(data, path, catalog)
+            if records is None
+            else validate_narration_usage(data, path, catalog, records=records)
+        )
+        result.extend(validate_narration_hygiene(data, path, catalog))
     except (AttributeError, KeyError, TypeError, ValueError, LocalizationError):
         # Shape errors already reported by the schema must remain diagnostics,
         # not crashes. Still collect runtime findings when invalid data is usable;
@@ -576,7 +598,11 @@ def _event_variables(event: dict, result: ValidationResult, path: Path) -> dict:
 
 
 def validate_narration_usage(
-    data: dict[str, Any], path: Path, catalog: LocaleCatalog | None = None
+    data: dict[str, Any],
+    path: Path,
+    catalog: LocaleCatalog | None = None,
+    *,
+    records: list[FunctionRecord] | None = None,
 ) -> ValidationResult:
     """Check narration keys against the locale packs.
 
@@ -584,13 +610,17 @@ def validate_narration_usage(
     canonical pack does not define, and variable-contract mismatches.
     """
     result = ValidationResult()
-    result.extend(validate_command_ownership(data, path))
+    result.extend(
+        validate_command_ownership(data, path)
+        if records is None
+        else validate_command_ownership(data, path, records=records, catalog=catalog)
+    )
     catalog = catalog or LocaleCatalog()
     usage = document_key_usage(data)
     if not usage["keyed"]:
         return result
     canonical = catalog.canonical
-    commands = known_commands()
+    commands = known_commands() if records is None else known_commands(records)
     for event in iter_events(data):
         event_id = str(event.get("id", "?"))
         key = event.get("narration_key")
@@ -648,12 +678,21 @@ def validate_narration_usage(
     return result
 
 
-def validate_command_ownership(data: dict[str, Any], path: Path) -> ValidationResult:
+def validate_command_ownership(
+    data: dict[str, Any],
+    path: Path,
+    *,
+    records: list[FunctionRecord] | None = None,
+    catalog: LocaleCatalog | None = None,
+) -> ValidationResult:
     """Commands used by keyed explanations belong to an identified function."""
     result = ValidationResult()
-    records = {record.id: record for record in load_all_functions()}
-    vocabulary = sorted(known_commands(), key=len, reverse=True)
-    catalog = None
+    injected_records = records is not None
+    collection = load_all_functions() if records is None else records
+    records = {record.id: record for record in collection}
+    vocabulary = sorted(
+        known_commands(collection) if injected_records else known_commands(), key=len, reverse=True
+    )
     for event in iter_events(data):
         variables = _event_variables(event, result, path)
         commands = {
@@ -1059,10 +1098,10 @@ def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationRes
     return result
 
 
-def known_commands() -> set[str]:
+def known_commands(records: list[FunctionRecord] | None = None) -> set[str]:
     """Canonical OCF commands, for validating command references in resources."""
     commands: set[str] = set()
-    for record in load_all_functions():
+    for record in load_all_functions() if records is None else records:
         command = record.canonical_command
         if command:
             commands.add(str(command))

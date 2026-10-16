@@ -28,6 +28,7 @@ dependencies = [
 [project.optional-dependencies]
 artwork = ["Pillow==12.3.0", "fonttools==4.67.0"]
 mcp = ["mcp==1.28.1"]
+lsp = ["pygls==2.1.1", "lsprotocol==2025.0.0"]
 dev = [
   "pytest>=8.0",
   "pytest-xdist==3.8.0",
@@ -44,6 +45,7 @@ farfield = [
 
 [project.scripts]
 ocf = "ocf_tools.cli:main"
+ocf-lsp = "ocf_tools.lsp_server:main"
 
 [tool.setuptools]
 packages = ["ocf_tools"]

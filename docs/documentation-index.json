@@ -249,7 +249,7 @@
         "voice doctor"
       ],
       "related_schemas": [],
-      "sha256": "d47eebca7c865e17d750e6090c83d082ebe2bee344125f9106394c91e17225aa",
+      "sha256": "b8e8e3d325fd503a729bed0fa9de7c775100e45523602b25546579348a47c684",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -490,7 +490,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "992c1e9cac52596dda6791efb44266864d3afa7d311c344cb1f1914e89a2071d",
+      "sha256": "b67d76023355cb95846b6df349055a8001325bc29d44c84c36be5a19e3c06985",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1166,6 +1166,27 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "docs/LSP.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Optional OCF language server",
+      "related_commands": [
+        "lsp",
+        "validate"
+      ],
+      "related_schemas": [],
+      "sha256": "c4324a33db09f095060077819e95e9e592bcfc12c9b630eec092f984895a171f",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "docs/MCP.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "Optional local MCP and developer jobs",
@@ -1310,7 +1331,7 @@
       "purpose": "Documentation map",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "90282bf9132c26261be0327d3a67b3f7a8c19a7ec6d5038baed20dfa50327502",
+      "sha256": "0ae6945679dd149b8dfb79999ba25a36e3f9d9e2b47bd95035eeef23940e5cbe",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4611,7 +4632,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "51f7225e57d76520e2512a1dbfa1857ef0e2af55e53b873d396ad6f9a2b7d77a",
+      "sha256": "e4c552a74f95970862fe797b8c8a71b47a4b7332c343623db725ebcb4e1ae96c",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4724,5 +4745,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 226
+  "total": 227
 }

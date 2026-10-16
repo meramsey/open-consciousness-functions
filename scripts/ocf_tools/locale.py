@@ -986,13 +986,15 @@ def _entry_from_value(
     )
 
 
-def load_pack(path: Path) -> LocalePack:
+def load_pack(path: Path, *, reader=None, exists=None) -> LocalePack:
     """Load one locale pack directory (manifest plus declared resource files)."""
+    reader = reader or load_yaml_file
+    exists = exists or Path.is_file
     manifest_path = path / "manifest.yaml"
-    if not manifest_path.is_file():
+    if not exists(manifest_path):
         raise LocalizationError(f"locale pack {path} has no manifest.yaml")
     try:
-        manifest = load_yaml_file(manifest_path)
+        manifest = reader(manifest_path)
     except OCFError as exc:
         raise LocalizationError(f"cannot read locale manifest {manifest_path}: {exc}") from exc
     locale = normalize_tag(manifest.get("locale"))
@@ -1015,13 +1017,13 @@ def load_pack(path: Path) -> LocalePack:
         resource_path = path / filename
         if not resource_path.resolve().is_relative_to(path.resolve()):
             raise LocalizationError(f"{locale}: resource escapes locale pack: {filename!r}")
-        if not resource_path.is_file():
+        if not exists(resource_path):
             raise LocalizationError(
                 f"{locale} pack {path.name}: manifest declares resource {filename!r} "
                 "but the file is missing"
             )
         try:
-            data = load_yaml_file(resource_path)
+            data = reader(resource_path)
         except OCFError as exc:
             raise LocalizationError(f"cannot read locale resource {resource_path}: {exc}") from exc
         file_domain = str(data.get("domain", declared_domain))
@@ -1066,17 +1068,25 @@ class Resolution:
 class LocaleCatalog:
     """Registry of every pack under ``locales/``."""
 
-    def __init__(self, root: Path | None = None) -> None:
+    def __init__(
+        self, root: Path | None = None, *, reader=None, exists=None, directories=None
+    ) -> None:
         self.root = Path(root) if root else LOCALES_DIR
         self.packs: dict[str, LocalePack] = {}
         self.problems: list[str] = []
-        if not self.root.is_dir():
+        if directories is None and not self.root.is_dir():
             return
-        for directory in sorted(self.root.iterdir()):
-            if not directory.is_dir() or directory.name.startswith((".", "_")):
+        for directory in sorted(self.root.iterdir() if directories is None else directories):
+            if (directories is None and not directory.is_dir()) or directory.name.startswith(
+                (".", "_")
+            ):
                 continue
             try:
-                pack = load_pack(directory)
+                pack = (
+                    load_pack(directory)
+                    if reader is None and exists is None
+                    else load_pack(directory, reader=reader, exists=exists)
+                )
             except LocalizationError as exc:
                 self.problems.append(str(exc))
                 continue

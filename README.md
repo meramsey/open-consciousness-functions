@@ -52,7 +52,7 @@ python scripts/ocf.py doctor --json
 ```
 
 Activation is optional: use `.venv/bin/python` or
-`.venv\Scripts\python.exe` directly. Artwork and MCP are optional extras; core
+`.venv\Scripts\python.exe` directly. Artwork, MCP and LSP are optional extras; core
 discovery, authoring and planning also work with `python -m pip install -e .`.
 Piper/eSpeak, voice models, Farfield/SBaGenX and FFmpeg are separate optional
 installations. [Setup](docs/SETUP.md) and [the user guide](docs/USER_GUIDE.md)
@@ -171,6 +171,8 @@ python scripts/ocf.py mcp
 ```
 
 [Connect an MCP client](docs/MCP.md) or use the CLI adapters directly.
+[Configure the optional OCF language server](docs/LSP.md) for YAML/JSON diagnostics,
+completion, navigation and read-only migration previews in an editor.
 [AGENTS.md](AGENTS.md) and [the developer guide](docs/AGENT_DEVELOPMENT.md)
 describe bounded jobs, targeted validation and protected-data rules.
 

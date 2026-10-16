@@ -43,7 +43,9 @@ DEFAULT_TEMPLATE_ID = "OCF-TPL-SESSION-LEARN-001"
 _LRC_LINE = re.compile(r"^\s*\[(\d{1,2}:\d{2}(?:[.,]\d{1,3})?)\]\s*(.*?)\s*$")
 
 
-def load_template(template_ref: str, *, _parents: tuple[str, ...] = ()) -> dict[str, Any]:
+def load_template(
+    template_ref: str, *, _parents: tuple[str, ...] = (), reader=None, lookup=None
+) -> dict[str, Any]:
     """Load and validate a session template by id or by local file path.
 
     A bare id (e.g. ``OCF-TPL-SESSION-LEARN-001``) resolves from
@@ -52,17 +54,19 @@ def load_template(template_ref: str, *, _parents: tuple[str, ...] = ()) -> dict[
     outside the repository.
     """
     candidate = Path(template_ref).expanduser()
-    if template_ref and (candidate.is_file() or "/" in template_ref or "\\" in template_ref):
+    if lookup is not None:
+        path = lookup("template", template_ref)
+    elif template_ref and (candidate.is_file() or "/" in template_ref or "\\" in template_ref):
         path = candidate
     else:
         path = TEMPLATES_DIR / f"{template_ref}.yaml"
-    if not path.is_file():
+    if reader is None and not path.is_file():
         raise OCFError(
             f"session template not found: {template_ref} "
             f"(looked in {TEMPLATES_DIR}). Use `ocf session list-templates`."
         )
     try:
-        data = yaml_safe_load(read_text(path))
+        data = deepcopy(reader(path)) if reader is not None else yaml_safe_load(read_text(path))
     except Exception as exc:  # pragma: no cover - defensive
         raise OCFError(f"invalid YAML in session template {path.name}: {exc}") from exc
     if not isinstance(data, dict):
@@ -73,27 +77,36 @@ def load_template(template_ref: str, *, _parents: tuple[str, ...] = ()) -> dict[
             raise OCFError("cyclic session template inheritance")
         from .audio_defaults import overlay
 
-        data = overlay(load_template(data["extends"], _parents=(*_parents, identity)), data)
+        data = overlay(
+            load_template(
+                data["extends"], _parents=(*_parents, identity), reader=reader, lookup=lookup
+            ),
+            data,
+        )
     schema = _load_schema("session-template.schema.json")
     errors = validate_against_schema(data, schema)
     if errors:
         raise OCFError(f"session template {path.name} fails its schema:\n" + "\n".join(errors))
     if data.get("pacing_profile"):
-        load_pacing_profile(str(data["pacing_profile"]))
+        load_pacing_profile(str(data["pacing_profile"]), reader=reader, lookup=lookup)
     return data
 
 
-def load_pacing_profile(profile_ref: str, *, _parents: tuple[str, ...] = ()) -> dict[str, Any]:
+def load_pacing_profile(
+    profile_ref: str, *, _parents: tuple[str, ...] = (), reader=None, lookup=None
+) -> dict[str, Any]:
     """Load one versioned session pacing policy by id or local YAML path."""
     candidate = Path(profile_ref).expanduser()
-    if profile_ref and (candidate.is_file() or "/" in profile_ref or "\\" in profile_ref):
+    if lookup is not None:
+        path = lookup("pacing", profile_ref)
+    elif profile_ref and (candidate.is_file() or "/" in profile_ref or "\\" in profile_ref):
         path = candidate
     else:
         path = PACING_DIR / f"{profile_ref}.yaml"
-    if not path.is_file():
+    if reader is None and not path.is_file():
         raise OCFError(f"session pacing profile not found: {profile_ref} (looked in {PACING_DIR})")
     try:
-        data = yaml_safe_load(read_text(path))
+        data = deepcopy(reader(path)) if reader is not None else yaml_safe_load(read_text(path))
     except Exception as exc:  # pragma: no cover - defensive
         raise OCFError(f"invalid YAML in pacing profile {path.name}: {exc}") from exc
     if not isinstance(data, dict):
@@ -104,7 +117,12 @@ def load_pacing_profile(profile_ref: str, *, _parents: tuple[str, ...] = ()) -> 
             raise OCFError("cyclic pacing profile inheritance")
         from .audio_defaults import overlay
 
-        data = overlay(load_pacing_profile(data["extends"], _parents=(*_parents, identity)), data)
+        data = overlay(
+            load_pacing_profile(
+                data["extends"], _parents=(*_parents, identity), reader=reader, lookup=lookup
+            ),
+            data,
+        )
     problems = validate_against_schema(data, _load_schema("session-pacing.schema.json"))
     if problems:
         raise OCFError(

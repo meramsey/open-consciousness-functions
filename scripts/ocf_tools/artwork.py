@@ -47,13 +47,15 @@ def load_theme(
     surface: str = "artwork",
     overrides: dict | None = None,
     _seen=(),
+    reader=None,
+    lookup=None,
 ) -> dict:
     defaults = json.loads((BRAND / "surfaces.json").read_text())
     if surface not in ("ui", "artwork", "documentation"):
         raise OCFError("surface must be ui, artwork or documentation")
     reference = reference or defaults[surface]
-    path = Path(reference)
-    if not path.is_file():
+    path = lookup("theme", reference) if lookup is not None else Path(reference)
+    if lookup is None and not path.is_file():
         if "/" in reference or "\\" in reference or reference.startswith("."):
             raise OCFError("custom theme file does not exist")
         path = BRAND / "themes" / (reference + ".json")
@@ -61,16 +63,25 @@ def load_theme(
     if resolved in _seen or len(_seen) > 8:
         raise OCFError("cyclic/excessive theme inheritance")
     try:
-        data = read_json_object(path)
+        data = reader(path) if reader is not None else read_json_object(path)
     except (OSError, ValueError) as exc:
         raise OCFError(f"cannot load theme {path.name}: {exc}") from exc
     if not isinstance(data, dict):
         raise OCFError("theme must be a JSON object")
     if data.get("extends"):
         parent = data["extends"]
-        if (path.parent / parent).is_file():
+        if lookup is None and (path.parent / parent).is_file():
             parent = str(path.parent / parent)
-        data = overlay(load_theme(parent, surface=surface, _seen=(*_seen, resolved)), data)
+        elif lookup is not None and (
+            Path(parent).suffix == ".json" or "/" in parent or "\\" in parent
+        ):
+            parent = str(path.parent / parent)
+        data = overlay(
+            load_theme(
+                parent, surface=surface, _seen=(*_seen, resolved), reader=reader, lookup=lookup
+            ),
+            data,
+        )
     data = overlay(data, overrides or {})
     errors = validate_against_schema(data, _load_schema("theme.schema.json"))
     if errors:
