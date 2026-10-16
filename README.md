@@ -179,6 +179,8 @@ describe bounded jobs, targeted validation and protected-data rules.
 ## Documentation, contribution and provenance
 
 - **New here?** Follow [the user guide](docs/USER_GUIDE.md) and [documentation map](docs/README.md).
+- **Need examples?** Use the [checked interface library](examples/README.md) for
+  CLI, MCP, schemas, workflows and editor integration.
 - **Contributing?** Start with [CONTRIBUTING.md](CONTRIBUTING.md); run focused tests,
   `make check`, `make lint` and the comprehensive suite before submitting changes.
 - **Packaging?** Select a registered implementation and approved/custom artwork;

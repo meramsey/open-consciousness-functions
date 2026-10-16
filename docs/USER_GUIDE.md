@@ -18,6 +18,12 @@ auditions and frozen editorial/listening decisions retain their existing status.
 
 ## Entry points
 
+Use Python 3.11 or newer in the environment where OCF is installed. See the
+[README installation steps](../README.md#get-started) for platform-specific activation.
+The [interface example library](../examples/README.md) inventories every shipped
+CLI leaf, MCP tool/resource/prompt, schema and OCF LSP method, distinguishing
+executed read-only workflows from parser-only and operator-dependent examples.
+
 ```bash
 ./scripts/ocf
 python3 scripts/ocf.py
@@ -92,9 +98,9 @@ import-first voice-dataset wizard instead uses blank paths to skip slots and
 ocf audio check-engine
 ocf audio list-background
 ocf audio describe-background OCF-BG-0001
-ocf audio render-background OCF-BG-0001 --output out.wav
-ocf audio render-background OCF-BG-0002 --engine sbagenx --output bed.wav
-ocf audio render-background OCF-BG-0004 --engine reference-master --output bed.wav
+ocf audio render-background OCF-BG-0001 --output .ocf-work/examples/out.wav
+ocf audio render-background OCF-BG-0002 --engine sbagenx --output .ocf-work/examples/bed.wav
+ocf audio render-background OCF-BG-0004 --engine reference-master --output .ocf-work/examples/reference-bed.wav
 ```
 
 Background engines are optional and degrade gracefully. Supported engines:

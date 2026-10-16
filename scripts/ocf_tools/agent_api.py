@@ -990,7 +990,8 @@ READ_ONLY = {
 }
 
 
-def dispatch(name: str, arguments: dict) -> dict:
+def validate_tool_arguments(name: str, arguments: dict) -> None:
+    """Validate the public argument contract without dispatching an operation."""
     if name not in TOOLS:
         raise OCFError("unknown developer operation")
     try:
@@ -1012,4 +1013,8 @@ def dispatch(name: str, arguments: dict) -> dict:
     for key, value in arguments.items():
         if not matches(value, hints[key]):
             raise OCFError(f"invalid argument type: {key}")
+
+
+def dispatch(name: str, arguments: dict) -> dict:
+    validate_tool_arguments(name, arguments)
     return TOOLS[name](**arguments)

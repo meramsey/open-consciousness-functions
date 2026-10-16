@@ -1,0 +1,2151 @@
+{
+  "cli": [
+    {
+      "argv": [
+        "lsp"
+      ],
+      "path": [
+        "lsp"
+      ],
+      "usage": "usage: ocf lsp [-h] [--stdio] [--workspace WORKSPACE] [--capabilities]\n               [--log-level {DEBUG,INFO,WARNING,ERROR}]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "narration",
+        "sources",
+        "OCF-FND-002"
+      ],
+      "path": [
+        "narration",
+        "sources"
+      ],
+      "usage": "usage: ocf narration sources [-h] [--sources SOURCES] [--locale LOCALE]\n                             function_id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "narration",
+        "preview",
+        "OCF-FND-002"
+      ],
+      "path": [
+        "narration",
+        "preview"
+      ],
+      "usage": "usage: ocf narration preview [-h] [--sources SOURCES] [--locale LOCALE]\n                             function_id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "narration",
+        "validate",
+        "OCF-FND-002"
+      ],
+      "path": [
+        "narration",
+        "validate"
+      ],
+      "usage": "usage: ocf narration validate [-h] [--sources SOURCES] [--locale LOCALE]\n                              function_id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "narration",
+        "init",
+        "OCF-FND-002",
+        "--output",
+        ".ocf-work/examples/YOUR_OUTPUT"
+      ],
+      "path": [
+        "narration",
+        "init"
+      ],
+      "usage": "usage: ocf narration init [-h] --output OUTPUT [--mode {recording,hybrid,tts}]\n                          [--fallback {tts,error}] [--voice VOICE]\n                          [--locale LOCALE]\n                          function_id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "narration",
+        "import",
+        "OCF-FND-002",
+        "--sources",
+        "YOUR_SOURCES",
+        "--file",
+        "YOUR_FILE",
+        "--id",
+        "YOUR_ID",
+        "--event",
+        "YOUR_EVENT",
+        "--speaker",
+        "YOUR_SPEAKER"
+      ],
+      "path": [
+        "narration",
+        "import"
+      ],
+      "usage": "usage: ocf narration import [-h] --sources SOURCES --file FILE --id ID\n                            (--event EVENT | --resource RESOURCE)\n                            [--unit UNIT] [--start START] [--end END]\n                            --speaker SPEAKER [--session SESSION]\n                            [--version VERSION]\n                            [--consent {unknown,self-recorded,authorized-contributor,synthetic-fixture}]\n                            function_id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "narration",
+        "inspect",
+        "YOUR_FILE"
+      ],
+      "path": [
+        "narration",
+        "inspect"
+      ],
+      "usage": "usage: ocf narration inspect [-h] file",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "narration",
+        "preprocess",
+        "YOUR_FILE",
+        "--output",
+        ".ocf-work/examples/YOUR_OUTPUT"
+      ],
+      "path": [
+        "narration",
+        "preprocess"
+      ],
+      "usage": "usage: ocf narration preprocess [-h] [--processing PROCESSING] [--rate RATE]\n                                [--channels {1,2}] --output OUTPUT\n                                file",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "artwork",
+        "themes"
+      ],
+      "path": [
+        "artwork",
+        "themes"
+      ],
+      "usage": "usage: ocf artwork themes [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "artwork",
+        "import-review"
+      ],
+      "path": [
+        "artwork",
+        "import-review"
+      ],
+      "usage": "usage: ocf artwork import-review [-h] [--output OUTPUT] [--check]\n                                 [--ui-theme UI_THEME]\n                                 [--artwork-theme ARTWORK_THEME]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "artwork",
+        "refine",
+        "--output",
+        ".ocf-work/examples/YOUR_OUTPUT"
+      ],
+      "path": [
+        "artwork",
+        "refine"
+      ],
+      "usage": "usage: ocf artwork refine [-h] --output OUTPUT [--vector-only] [--check]\n                          [--ui-theme UI_THEME] [--custom-theme CUSTOM_THEME]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "artwork",
+        "gallery",
+        "--output",
+        ".ocf-work/examples/YOUR_OUTPUT"
+      ],
+      "path": [
+        "artwork",
+        "gallery"
+      ],
+      "usage": "usage: ocf artwork gallery [-h] --output OUTPUT [--ui-theme UI_THEME]\n                           [--artwork-theme ARTWORK_THEME]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "artwork",
+        "brand",
+        "--output",
+        ".ocf-work/examples/YOUR_OUTPUT"
+      ],
+      "path": [
+        "artwork",
+        "brand"
+      ],
+      "usage": "usage: ocf artwork brand [-h] [--variant VARIANT] [--theme THEME] --output\n                         OUTPUT [--resolution RESOLUTION]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "artwork",
+        "theme"
+      ],
+      "path": [
+        "artwork",
+        "theme"
+      ],
+      "usage": "usage: ocf artwork theme [-h] [--theme THEME]\n                         [--surface {ui,artwork,documentation}]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "artwork",
+        "generate",
+        "OCF-FND-002"
+      ],
+      "path": [
+        "artwork",
+        "generate"
+      ],
+      "usage": "usage: ocf artwork generate [-h] [--locale LOCALE] [--theme THEME]\n                            [--resolution RESOLUTION] [--format {png,jpeg}]\n                            [--version VERSION] [--font FONT]\n                            [--output OUTPUT]\n                            function_id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "dev",
+        "ocf_project_overview"
+      ],
+      "path": [
+        "dev"
+      ],
+      "usage": "usage: ocf dev [-h] [--arguments ARGUMENTS] operation",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "mcp"
+      ],
+      "path": [
+        "mcp"
+      ],
+      "usage": "usage: ocf mcp [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "docs-inventory"
+      ],
+      "path": [
+        "docs-inventory"
+      ],
+      "usage": "usage: ocf docs-inventory [-h] [--check]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "help"
+      ],
+      "path": [
+        "help"
+      ],
+      "usage": "usage: ocf help [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "capabilities"
+      ],
+      "path": [
+        "capabilities"
+      ],
+      "usage": "usage: ocf capabilities [-h] [--json]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "workspace",
+        "clean"
+      ],
+      "path": [
+        "workspace",
+        "clean"
+      ],
+      "usage": "usage: ocf workspace clean [-h] [--older-than-hours OLDER_THAN_HOURS]\n                           [--dry-run]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "plan",
+        "YOUR_FILE"
+      ],
+      "path": [
+        "plan"
+      ],
+      "usage": "usage: ocf plan [-h] [--json] file",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "functions",
+        "list"
+      ],
+      "path": [
+        "functions",
+        "list"
+      ],
+      "usage": "usage: ocf functions list [-h] [--json] [--rich]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "functions",
+        "describe",
+        "YOUR_ID"
+      ],
+      "path": [
+        "functions",
+        "describe"
+      ],
+      "usage": "usage: ocf functions describe [-h] [--json] [--rich] id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "commands",
+        "list"
+      ],
+      "path": [
+        "commands",
+        "list"
+      ],
+      "usage": "usage: ocf commands list [-h] [--locale LOCALE] [--json] [--all-roles]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "commands",
+        "describe",
+        "YOUR_FUNCTION"
+      ],
+      "path": [
+        "commands",
+        "describe"
+      ],
+      "usage": "usage: ocf commands describe [-h] [--locale LOCALE] [--json] function",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "commands",
+        "export"
+      ],
+      "path": [
+        "commands",
+        "export"
+      ],
+      "usage": "usage: ocf commands export [-h] [--locale LOCALE] [--format {json,md}]\n                           [--output OUTPUT] [--force]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "content",
+        "skeletonize",
+        "--source-root",
+        "YOUR_SOURCE_ROOT"
+      ],
+      "path": [
+        "content",
+        "skeletonize"
+      ],
+      "usage": "usage: ocf content skeletonize [-h] [--workspace WORKSPACE] --source-root\n                               SOURCE_ROOT [--function FUNCTION] [--json]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "content",
+        "diff",
+        "YOUR_ID"
+      ],
+      "path": [
+        "content",
+        "diff"
+      ],
+      "usage": "usage: ocf content diff [-h] [--workspace WORKSPACE]\n                        [--filter {changed,unreviewed,uncertain,function-specific,reusable}]\n                        [--json]\n                        id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "content",
+        "dashboard"
+      ],
+      "path": [
+        "content",
+        "dashboard"
+      ],
+      "usage": "usage: ocf content dashboard [-h] [--workspace WORKSPACE] [--output OUTPUT]\n                             [--filter {changed,unreviewed,uncertain,function-specific,reusable}]\n                             [--json]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "content",
+        "variants"
+      ],
+      "path": [
+        "content",
+        "variants"
+      ],
+      "usage": "usage: ocf content variants [-h] [--workspace WORKSPACE] [--output OUTPUT]\n                            [--json]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "content",
+        "review",
+        "YOUR_ID",
+        "--block",
+        "YOUR_BLOCK",
+        "--reviewer",
+        "YOUR_REVIEWER",
+        "--status",
+        "inherited"
+      ],
+      "path": [
+        "content",
+        "review"
+      ],
+      "usage": "usage: ocf content review [-h] [--workspace WORKSPACE] --block BLOCK\n                          --reviewer REVIEWER --status\n                          {inherited,needs_review,reviewed_unchanged,reviewed_modified,transcript_uncertain,blocked}\n                          [--json]\n                          id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "content",
+        "approve",
+        "YOUR_ID",
+        "--block",
+        "YOUR_BLOCK",
+        "--reviewer",
+        "YOUR_REVIEWER",
+        "--rights",
+        "user_cleared",
+        "--rights-evidence",
+        "YOUR_RIGHTS_EVIDENCE"
+      ],
+      "path": [
+        "content",
+        "approve"
+      ],
+      "usage": "usage: ocf content approve [-h] [--workspace WORKSPACE] --block BLOCK\n                           --reviewer REVIEWER --rights\n                           {user_cleared,verified_redistributable}\n                           --rights-evidence RIGHTS_EVIDENCE [--json]\n                           id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "content",
+        "preview",
+        "YOUR_ID"
+      ],
+      "path": [
+        "content",
+        "preview"
+      ],
+      "usage": "usage: ocf content preview [-h] [--workspace WORKSPACE] [--output OUTPUT]\n                           [--release] [--json]\n                           id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "content",
+        "insert",
+        "YOUR_ID",
+        "--block",
+        "YOUR_BLOCK",
+        "--before",
+        "YOUR_BEFORE",
+        "--semantic",
+        "authoring.unassigned",
+        "--text-file",
+        "YOUR_TEXT_FILE",
+        "--reviewer",
+        "YOUR_REVIEWER"
+      ],
+      "path": [
+        "content",
+        "insert"
+      ],
+      "usage": "usage: ocf content insert [-h] [--workspace WORKSPACE] --block BLOCK --before\n                          BEFORE --semantic\n                          {authoring.unassigned,focus.eleven.close,function.command.association,function.command.rehearsal,function.consolidation,function.future-use,function.instruction,function.learning.attend,function.purpose,function.release,preparation.orientation.begin,session.return.begin}\n                          --text-file TEXT_FILE --reviewer REVIEWER [--json]\n                          id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "corpus",
+        "inventory"
+      ],
+      "path": [
+        "corpus",
+        "inventory"
+      ],
+      "usage": "usage: ocf corpus inventory [-h] [--root ROOT] [--format {json,md}]\n                            [--output OUTPUT]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "new",
+        "voice-dataset",
+        "YOUR_MANIFEST"
+      ],
+      "path": [
+        "new",
+        "voice-dataset"
+      ],
+      "usage": "usage: ocf new voice-dataset [-h] MANIFEST",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "new",
+        "function"
+      ],
+      "path": [
+        "new",
+        "function"
+      ],
+      "usage": "usage: ocf new function [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "new",
+        "proposal"
+      ],
+      "path": [
+        "new",
+        "proposal"
+      ],
+      "usage": "usage: ocf new proposal [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "new",
+        "audio"
+      ],
+      "path": [
+        "new",
+        "audio"
+      ],
+      "usage": "usage: ocf new audio [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "new",
+        "background"
+      ],
+      "path": [
+        "new",
+        "background"
+      ],
+      "usage": "usage: ocf new background [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "new",
+        "test-report"
+      ],
+      "path": [
+        "new",
+        "test-report"
+      ],
+      "usage": "usage: ocf new test-report [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "new",
+        "voice"
+      ],
+      "path": [
+        "new",
+        "voice"
+      ],
+      "usage": "usage: ocf new voice [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "new",
+        "session-plan"
+      ],
+      "path": [
+        "new",
+        "session-plan"
+      ],
+      "usage": "usage: ocf new session-plan [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "import",
+        "source"
+      ],
+      "path": [
+        "import",
+        "source"
+      ],
+      "usage": "usage: ocf import source [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "edit",
+        "function"
+      ],
+      "path": [
+        "edit",
+        "function"
+      ],
+      "usage": "usage: ocf edit function [-h] [query]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "validate"
+      ],
+      "path": [
+        "validate"
+      ],
+      "usage": "usage: ocf validate [-h] [--all] [--json] [path]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "build-index"
+      ],
+      "path": [
+        "build-index"
+      ],
+      "usage": "usage: ocf build-index [-h] [--check]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "review",
+        "commands"
+      ],
+      "path": [
+        "review",
+        "commands"
+      ],
+      "usage": "usage: ocf review commands [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "review-sessions",
+        "YOUR_FUNCTION_IDS"
+      ],
+      "path": [
+        "audio",
+        "review-sessions"
+      ],
+      "usage": "usage: ocf audio review-sessions [-h] [--locale LOCALE] [--voice VOICE]\n                                 function_ids [function_ids ...]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "render-many",
+        "--voice",
+        "espeak-en"
+      ],
+      "path": [
+        "audio",
+        "render-many"
+      ],
+      "usage": "usage: ocf audio render-many [-h] [--all] [--locale LOCALE] --voice VOICE\n                             [--pacing {normal,relaxed,sleep}] [--rate RATE]\n                             [--dry-run] [--resume] [--force]\n                             [function_ids ...]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "plan"
+      ],
+      "path": [
+        "audio",
+        "plan"
+      ],
+      "usage": "usage: ocf audio plan [-h] [--all] [--locale LOCALE] [--overrides OVERRIDES]\n                      [--output OUTPUT] [--dry-run | --check] [--expand]\n                      [function_id]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "migrate-bindings"
+      ],
+      "path": [
+        "audio",
+        "migrate-bindings"
+      ],
+      "usage": "usage: ocf audio migrate-bindings [-h] [--all] [--dry-run] [function_ids ...]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "eligibility"
+      ],
+      "path": [
+        "audio",
+        "eligibility"
+      ],
+      "usage": "usage: ocf audio eligibility [-h] [--all] [--locale LOCALE] [--output OUTPUT]\n                             [function_id]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "defaults"
+      ],
+      "path": [
+        "audio",
+        "defaults"
+      ],
+      "usage": "usage: ocf audio defaults [-h] [--create-lock]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "check-engine"
+      ],
+      "path": [
+        "audio",
+        "check-engine"
+      ],
+      "usage": "usage: ocf audio check-engine [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "list-background"
+      ],
+      "path": [
+        "audio",
+        "list-background"
+      ],
+      "usage": "usage: ocf audio list-background [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "describe-background",
+        "YOUR_PRESET"
+      ],
+      "path": [
+        "audio",
+        "describe-background"
+      ],
+      "usage": "usage: ocf audio describe-background [-h]\n                                     [--engine {farfield,sbagenx,reference-master}]\n                                     preset",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "render-background",
+        "YOUR_PRESET"
+      ],
+      "path": [
+        "audio",
+        "render-background"
+      ],
+      "usage": "usage: ocf audio render-background [-h] [--output OUTPUT]\n                                   [--engine {farfield,sbagenx,reference-master}]\n                                   preset",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "render-speech",
+        "YOUR_FILE"
+      ],
+      "path": [
+        "audio",
+        "render-speech"
+      ],
+      "usage": "usage: ocf audio render-speech [-h] [--voice VOICE] [--recordings RECORDINGS]\n                               [--locale LOCALE] [--allow-fallback]\n                               [--output OUTPUT] [--rate RATE] [--force]\n                               file",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "render",
+        "OCF-FND-002"
+      ],
+      "path": [
+        "audio",
+        "render"
+      ],
+      "usage": "usage: ocf audio render [-h] [--mode {session,narration-only}]\n                        [--locale LOCALE]\n                        [--narration-sources NARRATION_SOURCES]\n                        [--narration-source {tts,recording,hybrid,silence}]\n                        [--voice VOICE] [--overrides OVERRIDES]\n                        [--pacing {normal,relaxed,sleep}]\n                        [--template TEMPLATE] [--dsp-profile DSP_PROFILE]\n                        [--output OUTPUT] [--rate RATE]\n                        [--mix-profile MIX_PROFILE] [--voice-gain VOICE_GAIN]\n                        [--background-gain BACKGROUND_GAIN] [--dry-run]\n                        function_id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "mix",
+        "--speech",
+        "YOUR_SPEECH",
+        "--output",
+        ".ocf-work/examples/YOUR_OUTPUT"
+      ],
+      "path": [
+        "audio",
+        "mix"
+      ],
+      "usage": "usage: ocf audio mix [-h] --speech SPEECH [--background BACKGROUND] --output\n                     OUTPUT [--background-gain BACKGROUND_GAIN] [--force]\n                     [--mix-profile MIX_PROFILE]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "build",
+        "OCF-FND-002"
+      ],
+      "path": [
+        "audio",
+        "build"
+      ],
+      "usage": "usage: ocf audio build [-h] [--mix-profile MIX_PROFILE]\n                       [--format {wav,flac,mp3}] [--tag TAG] [--voice VOICE]\n                       [--recordings RECORDINGS] [--locale LOCALE]\n                       [--allow-fallback] [--output OUTPUT] [--rate RATE]\n                       [--voice-gain VOICE_GAIN]\n                       [--background-gain BACKGROUND_GAIN]\n                       [--dsp-profile DSP_PROFILE] [--fit] [--flow]\n                       [--even-counts] [--force]\n                       query",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "release",
+        "OCF-FND-002"
+      ],
+      "path": [
+        "audio",
+        "release"
+      ],
+      "usage": "usage: ocf audio release [-h] [--locale LOCALE] [--format {mp3,flac}]\n                         [--voice VOICE] [--artwork ARTWORK]\n                         [--artwork-theme ARTWORK_THEME]\n                         [--artwork-resolution ARTWORK_RESOLUTION]\n                         [--output OUTPUT] [--version VERSION] [--tag TAG]\n                         [--dry-run] [--force]\n                         query",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "inspect",
+        "YOUR_FILE"
+      ],
+      "path": [
+        "audio",
+        "inspect"
+      ],
+      "usage": "usage: ocf audio inspect [-h] file",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "render-state-program",
+        "YOUR_FILE",
+        "--render-manifest",
+        "YOUR_RENDER_MANIFEST",
+        "--dsp-profile",
+        "YOUR_DSP_PROFILE",
+        "--output",
+        ".ocf-work/examples/YOUR_OUTPUT"
+      ],
+      "path": [
+        "audio",
+        "render-state-program"
+      ],
+      "usage": "usage: ocf audio render-state-program [-h] --render-manifest RENDER_MANIFEST\n                                      --dsp-profile DSP_PROFILE --output\n                                      OUTPUT [--force]\n                                      file",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "capabilities"
+      ],
+      "path": [
+        "voice",
+        "capabilities"
+      ],
+      "usage": "usage: ocf voice capabilities [-h] [--gpu] [--json]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "export-profile",
+        "OCF-FND-002",
+        "--output",
+        ".ocf-work/examples/YOUR_OUTPUT"
+      ],
+      "path": [
+        "voice",
+        "export-profile"
+      ],
+      "usage": "usage: ocf voice export-profile [-h] --output OUTPUT [--include-assets] QUERY",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "import-profile",
+        "YOUR_FILE"
+      ],
+      "path": [
+        "voice",
+        "import-profile"
+      ],
+      "usage": "usage: ocf voice import-profile [-h] [--include-assets] [--id ID]\n                                [--consent-record CONSENT_RECORD]\n                                FILE",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "dataset-record",
+        "YOUR_MANIFEST",
+        "YOUR_PROMPT",
+        "--audio",
+        "YOUR_AUDIO",
+        "--session",
+        "YOUR_SESSION",
+        "--speaker",
+        "YOUR_SPEAKER"
+      ],
+      "path": [
+        "voice",
+        "dataset-record"
+      ],
+      "usage": "usage: ocf voice dataset-record [-h] --audio SOURCE --session ID --speaker ID\n                                MANIFEST PROMPT",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "dataset-guide",
+        "YOUR_MANIFEST"
+      ],
+      "path": [
+        "voice",
+        "dataset-guide"
+      ],
+      "usage": "usage: ocf voice dataset-guide [-h] [--json] MANIFEST",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "inspect",
+        "espeak-en"
+      ],
+      "path": [
+        "voice",
+        "inspect"
+      ],
+      "usage": "usage: ocf voice inspect [-h] voice_id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "validate-profile",
+        "YOUR_FILE"
+      ],
+      "path": [
+        "voice",
+        "validate-profile"
+      ],
+      "usage": "usage: ocf voice validate-profile [-h] [--metadata-only] file",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "import-model",
+        "YOUR_FILE",
+        "--id",
+        "YOUR_ID",
+        "--name",
+        "YOUR_NAME"
+      ],
+      "path": [
+        "voice",
+        "import-model"
+      ],
+      "usage": "usage: ocf voice import-model [-h] --id ID --name NAME\n                              [--model-version MODEL_VERSION]\n                              [--license LICENSE]\n                              [--kind {installed-model,custom,cloned}]\n                              [--consent {unknown,self-recorded,authorized-contributor}]\n                              [--consent-record CONSENT_RECORD]\n                              file",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "dataset-init",
+        "YOUR_DIRECTORY"
+      ],
+      "path": [
+        "voice",
+        "dataset-init"
+      ],
+      "usage": "usage: ocf voice dataset-init [-h] [--id ID] [--rate RATE] directory",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "validate-dataset",
+        "YOUR_FILE"
+      ],
+      "path": [
+        "voice",
+        "validate-dataset"
+      ],
+      "usage": "usage: ocf voice validate-dataset [-h] file",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "training-plan"
+      ],
+      "path": [
+        "voice",
+        "training-plan"
+      ],
+      "usage": "usage: ocf voice training-plan [-h] [--dataset DATASET]\n                               [--backend {piper,f5-tts}]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "audition",
+        "YOUR_VOICES"
+      ],
+      "path": [
+        "voice",
+        "audition"
+      ],
+      "usage": "usage: ocf voice audition [-h] [--locale LOCALE] voices [voices ...]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "packs"
+      ],
+      "path": [
+        "voice",
+        "packs"
+      ],
+      "usage": "usage: ocf voice packs [-h] [--json]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "import-recordings",
+        "YOUR_FILE",
+        "--directory",
+        "YOUR_DIRECTORY",
+        "--mapping",
+        "YOUR_MAPPING",
+        "--locale",
+        "en-US",
+        "--author",
+        "YOUR_AUTHOR",
+        "--license",
+        "YOUR_LICENSE",
+        "--output",
+        ".ocf-work/examples/YOUR_OUTPUT"
+      ],
+      "path": [
+        "voice",
+        "import-recordings"
+      ],
+      "usage": "usage: ocf voice import-recordings [-h] --directory DIRECTORY --mapping\n                                   MAPPING --locale LOCALE --author AUTHOR\n                                   --license LICENSE [--speaker SPEAKER]\n                                   --output OUTPUT\n                                   file",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "list-backends"
+      ],
+      "path": [
+        "voice",
+        "list-backends"
+      ],
+      "usage": "usage: ocf voice list-backends [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "doctor"
+      ],
+      "path": [
+        "voice",
+        "doctor"
+      ],
+      "usage": "usage: ocf voice doctor [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "list"
+      ],
+      "path": [
+        "voice",
+        "list"
+      ],
+      "usage": "usage: ocf voice list [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "render",
+        "YOUR_FILE"
+      ],
+      "path": [
+        "voice",
+        "render"
+      ],
+      "usage": "usage: ocf voice render [-h] [--voice VOICE] [--recordings RECORDINGS]\n                        [--locale LOCALE] [--allow-fallback] [--output OUTPUT]\n                        [--rate RATE] [--fit] [--flow] [--even-counts]\n                        [--force]\n                        file",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "transcript",
+        "import",
+        "YOUR_FILE"
+      ],
+      "path": [
+        "transcript",
+        "import"
+      ],
+      "usage": "usage: ocf transcript import [-h] [--format {auto,lrc,srt,vtt,txt,md,yaml}]\n                             [--output OUTPUT] [--title TITLE] [--force]\n                             file",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "transcript",
+        "analyze",
+        "YOUR_FILE"
+      ],
+      "path": [
+        "transcript",
+        "analyze"
+      ],
+      "usage": "usage: ocf transcript analyze [-h] [--interactive] file",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "transcript",
+        "segment",
+        "YOUR_FILE"
+      ],
+      "path": [
+        "transcript",
+        "segment"
+      ],
+      "usage": "usage: ocf transcript segment [-h] [--apply] [--output OUTPUT] [--force] file",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "transcript",
+        "review",
+        "YOUR_FILE"
+      ],
+      "path": [
+        "transcript",
+        "review"
+      ],
+      "usage": "usage: ocf transcript review [-h] [--state-profile STATE_PROFILE] [--write]\n                             [--output OUTPUT] [--force]\n                             file",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "transcript",
+        "export",
+        "YOUR_FILE",
+        "--format",
+        "srt"
+      ],
+      "path": [
+        "transcript",
+        "export"
+      ],
+      "usage": "usage: ocf transcript export [-h] --format {srt,vtt,lrc} [--locale LOCALE]\n                             [--allow-fallback]\n                             [--render-manifest RENDER_MANIFEST]\n                             [--output OUTPUT] [--force]\n                             file",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "transcript",
+        "extract-template",
+        "YOUR_FILE",
+        "--timing-only"
+      ],
+      "path": [
+        "transcript",
+        "extract-template"
+      ],
+      "usage": "usage: ocf transcript extract-template [-h] --timing-only [--output OUTPUT]\n                                       [--force]\n                                       file",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "session",
+        "list-templates"
+      ],
+      "path": [
+        "session",
+        "list-templates"
+      ],
+      "usage": "usage: ocf session list-templates [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "session",
+        "compose"
+      ],
+      "path": [
+        "session",
+        "compose"
+      ],
+      "usage": "usage: ocf session compose [-h] [--template TEMPLATE]\n                           [--pacing-profile PACING_PROFILE] [--opener OPENER]\n                           [--focus11 FOCUS11] [--sleep20 SLEEP20]\n                           [--closer CLOSER] [--slot SLOT] [--title TITLE]\n                           [--id ID] [--duration DURATION]\n                           [--line-seconds LINE_SECONDS] [--locale LOCALE]\n                           [--enable-stage ENABLE_STAGE] [--function FUNCTION]\n                           [--allow-fallback] [--output OUTPUT] [--force]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "locale",
+        "list"
+      ],
+      "path": [
+        "locale",
+        "list"
+      ],
+      "usage": "usage: ocf locale list [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "locale",
+        "coverage"
+      ],
+      "path": [
+        "locale",
+        "coverage"
+      ],
+      "usage": "usage: ocf locale coverage [-h] [--locale LOCALE] [--domain {ui,narration}]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "locale",
+        "validate"
+      ],
+      "path": [
+        "locale",
+        "validate"
+      ],
+      "usage": "usage: ocf locale validate [-h] [--locale LOCALE] [--file FILE] [--json]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "locale",
+        "resolve",
+        "--locale",
+        "en-US"
+      ],
+      "path": [
+        "locale",
+        "resolve"
+      ],
+      "usage": "usage: ocf locale resolve [-h] [--file FILE] [--session SESSION] --locale\n                          LOCALE [--no-strict] [--output OUTPUT] [--force]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "locale",
+        "pseudo"
+      ],
+      "path": [
+        "locale",
+        "pseudo"
+      ],
+      "usage": "usage: ocf locale pseudo [-h] [--from SOURCE_LOCALE] [--locale LOCALE]\n                         [--output OUTPUT]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "doctor"
+      ],
+      "path": [
+        "doctor"
+      ],
+      "usage": "usage: ocf doctor [-h] [--json]\n                  [--workflow {core,encode,farfield,sbagenx,piper,container}]",
+      "verification": "parser-only; placeholders are not dispatched"
+    }
+  ],
+  "generator": "ocf_tools.examples",
+  "lsp": [
+    {
+      "example_guide": "docs/LSP.md",
+      "method": "textDocument/didOpen",
+      "purpose": "Initial unsaved-buffer diagnostics",
+      "verification": "actual protocol coverage is reported by test_lsp_protocol.py, not inferred from discovery"
+    },
+    {
+      "example_guide": "docs/LSP.md",
+      "method": "textDocument/didChange",
+      "purpose": "Incremental buffer updates and debounced diagnostics",
+      "verification": "actual protocol coverage is reported by test_lsp_protocol.py, not inferred from discovery"
+    },
+    {
+      "example_guide": "docs/LSP.md",
+      "method": "textDocument/didSave",
+      "purpose": "Refresh saved-document diagnostics",
+      "verification": "actual protocol coverage is reported by test_lsp_protocol.py, not inferred from discovery"
+    },
+    {
+      "example_guide": "docs/LSP.md",
+      "method": "textDocument/didClose",
+      "purpose": "Clear diagnostics and release overlay",
+      "verification": "actual protocol coverage is reported by test_lsp_protocol.py, not inferred from discovery"
+    },
+    {
+      "example_guide": "docs/LSP.md",
+      "method": "workspace/didChangeWatchedFiles",
+      "purpose": "Invalidate saved-data indexes and revalidate open buffers",
+      "verification": "actual protocol coverage is reported by test_lsp_protocol.py, not inferred from discovery"
+    },
+    {
+      "example_guide": "docs/LSP.md",
+      "method": "workspace/didChangeWorkspaceFolders",
+      "purpose": "Contained multi-root workspace selection",
+      "verification": "actual protocol coverage is reported by test_lsp_protocol.py, not inferred from discovery"
+    },
+    {
+      "example_guide": "docs/LSP.md",
+      "method": "textDocument/completion",
+      "purpose": "Function/resource/locale/template/pacing/DSP/voice/theme and schema-property completions",
+      "verification": "actual protocol coverage is reported by test_lsp_protocol.py, not inferred from discovery"
+    },
+    {
+      "example_guide": "docs/LSP.md",
+      "method": "textDocument/hover",
+      "purpose": "Read-only canonical metadata and schema documentation",
+      "verification": "actual protocol coverage is reported by test_lsp_protocol.py, not inferred from discovery"
+    },
+    {
+      "example_guide": "docs/LSP.md",
+      "method": "textDocument/definition",
+      "purpose": "Navigate to contained identifier definitions",
+      "verification": "actual protocol coverage is reported by test_lsp_protocol.py, not inferred from discovery"
+    },
+    {
+      "example_guide": "docs/LSP.md",
+      "method": "textDocument/references",
+      "purpose": "Find contained configuration and literal Python references",
+      "verification": "actual protocol coverage is reported by test_lsp_protocol.py, not inferred from discovery"
+    },
+    {
+      "example_guide": "docs/LSP.md",
+      "method": "textDocument/documentSymbol",
+      "purpose": "Document identifier outline",
+      "verification": "actual protocol coverage is reported by test_lsp_protocol.py, not inferred from discovery"
+    },
+    {
+      "example_guide": "docs/LSP.md",
+      "method": "workspace/symbol",
+      "purpose": "Query workspace identifiers",
+      "verification": "actual protocol coverage is reported by test_lsp_protocol.py, not inferred from discovery"
+    },
+    {
+      "example_guide": "docs/LSP.md",
+      "method": "ocf/renamePreview",
+      "purpose": "Paginated, read-only global-identifier impact suggestions; never WorkspaceEdit",
+      "verification": "actual protocol coverage is reported by test_lsp_protocol.py, not inferred from discovery"
+    },
+    {
+      "example_guide": "docs/LSP.md",
+      "method": "ocf/indexStatus",
+      "purpose": "Index boundaries, refresh counts and measured indexing time",
+      "verification": "actual protocol coverage is reported by test_lsp_protocol.py, not inferred from discovery"
+    }
+  ],
+  "mcp_prompts": [
+    {
+      "arguments": {
+        "name": "add-function"
+      },
+      "name": "workflow",
+      "verification": "registered prompt declaration; workflow selectors checked separately"
+    }
+  ],
+  "mcp_resources": [
+    {
+      "uri": "ocf://artifacts",
+      "verification": "registered resource declaration; protocol tests cover reads"
+    },
+    {
+      "uri": "ocf://audio-defaults",
+      "verification": "registered resource declaration; protocol tests cover reads"
+    },
+    {
+      "uri": "ocf://documentation",
+      "verification": "registered resource declaration; protocol tests cover reads"
+    },
+    {
+      "uri": "ocf://functions",
+      "verification": "registered resource declaration; protocol tests cover reads"
+    },
+    {
+      "uri": "ocf://overview",
+      "verification": "registered resource declaration; protocol tests cover reads"
+    },
+    {
+      "uri": "ocf://schemas",
+      "verification": "registered resource declaration; protocol tests cover reads"
+    },
+    {
+      "uri": "ocf://validation",
+      "verification": "registered resource declaration; protocol tests cover reads"
+    }
+  ],
+  "mcp_tools": [
+    {
+      "arguments": {},
+      "name": "ocf_cache_clean",
+      "read_only_hint": false,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {},
+      "name": "ocf_cache_diagnostics",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "job_id": "YOUR_JOB_ID"
+      },
+      "name": "ocf_cancel_job",
+      "read_only_hint": false,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {},
+      "name": "ocf_check_generated",
+      "read_only_hint": false,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {},
+      "name": "ocf_final_validation",
+      "read_only_hint": false,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "function_id": "OCF-FND-002"
+      },
+      "name": "ocf_generate_artwork_preview",
+      "read_only_hint": false,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {},
+      "name": "ocf_get_audio_defaults",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "function_id": "OCF-FND-002"
+      },
+      "name": "ocf_get_function",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "job_id": "YOUR_JOB_ID"
+      },
+      "name": "ocf_get_job_result",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "job_id": "YOUR_JOB_ID"
+      },
+      "name": "ocf_get_job_status",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "name": "function.schema.json"
+      },
+      "name": "ocf_get_schema",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "function_id": "OCF-FND-002"
+      },
+      "name": "ocf_get_session_plan",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "name": "add-function"
+      },
+      "name": "ocf_get_workflow",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {},
+      "name": "ocf_inspect_brand",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "function_id": "OCF-FND-002",
+        "manifest": "YOUR_MANIFEST"
+      },
+      "name": "ocf_inspect_narration_sources",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "manifest": "YOUR_MANIFEST"
+      },
+      "name": "ocf_inspect_release_artwork",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {},
+      "name": "ocf_inspect_voice_capabilities",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {},
+      "name": "ocf_list_artwork_themes",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {},
+      "name": "ocf_list_functions",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {},
+      "name": "ocf_list_voice_profiles",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "function_id": "OCF-FND-002"
+      },
+      "name": "ocf_package_release",
+      "read_only_hint": false,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "function_id": "OCF-FND-002",
+        "voice": "espeak-en"
+      },
+      "name": "ocf_plan_audio",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {},
+      "name": "ocf_plan_voice_training",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {},
+      "name": "ocf_project_overview",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {},
+      "name": "ocf_run_tests",
+      "read_only_hint": false,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "changed_files": [
+          "scripts/ocf_tools/cli.py"
+        ]
+      },
+      "name": "ocf_select_tests",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "function_id": "OCF-FND-002",
+        "voice": "espeak-en"
+      },
+      "name": "ocf_start_audio_render",
+      "read_only_hint": false,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "function_id": "OCF-FND-002",
+        "manifest": "YOUR_MANIFEST"
+      },
+      "name": "ocf_start_narration_render",
+      "read_only_hint": false,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "voices": [
+          "espeak-en"
+        ]
+      },
+      "name": "ocf_start_voice_audition",
+      "read_only_hint": false,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "function_id": "OCF-FND-002"
+      },
+      "name": "ocf_validate_commands",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "function_id": "OCF-FND-002"
+      },
+      "name": "ocf_validate_function",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {},
+      "name": "ocf_validate_locale",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "function_id": "OCF-FND-002",
+        "manifest": "YOUR_MANIFEST"
+      },
+      "name": "ocf_validate_recordings",
+      "read_only_hint": false,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "theme": "ocf-cosmic-dark"
+      },
+      "name": "ocf_validate_theme",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "manifest": "YOUR_MANIFEST"
+      },
+      "name": "ocf_validate_voice_dataset",
+      "read_only_hint": false,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
+      "arguments": {
+        "output_path": "YOUR_OUTPUT_PATH"
+      },
+      "name": "ocf_verify_audio",
+      "read_only_hint": true,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    }
+  ],
+  "policy": "Discovery/contract checks are not operation execution. YOUR_* and zero hashes are documentation placeholders. No public HTTP API exists.",
+  "safe_cli_examples": [
+    [
+      "capabilities",
+      "--json"
+    ],
+    [
+      "functions",
+      "list",
+      "--json"
+    ],
+    [
+      "functions",
+      "describe",
+      "OCF-FND-002",
+      "--rich",
+      "--json"
+    ],
+    [
+      "locale",
+      "list"
+    ],
+    [
+      "audio",
+      "defaults"
+    ],
+    [
+      "audio",
+      "eligibility",
+      "OCF-FND-002"
+    ],
+    [
+      "audio",
+      "plan",
+      "OCF-FND-002",
+      "--expand"
+    ],
+    [
+      "narration",
+      "sources",
+      "OCF-SLP-005",
+      "--locale",
+      "en-US"
+    ],
+    [
+      "voice",
+      "capabilities",
+      "--json"
+    ],
+    [
+      "lsp",
+      "--capabilities"
+    ],
+    [
+      "dev",
+      "ocf_project_overview"
+    ]
+  ],
+  "schema_version": "1.0",
+  "schemas": [
+    {
+      "example_sha256": "2b14224c71dbc22d510c6fec93f16ba3f0266eee0fd2b2097029c871e4267e43",
+      "schema": "audio-implementation.schema.json",
+      "source": "audio/manifests/OCF-AUDIO-0001.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "f998280115a8de20760e907e9ab40795aeca6a2caeeec829468535c42c8f4b2e",
+      "schema": "audio-release.schema.json",
+      "source": "examples/contracts.json#/audio-release.schema.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "5871ad588ce1ee1b7e24eb38457c6ac35dcf1fbad90623ee73996718a5ff1f6a",
+      "schema": "authoring-plan.schema.json",
+      "source": "examples/contracts.json#/authoring-plan.schema.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "0a8446b00e8fbc694f836fd4d6dcbfd348e0e3239538456625861d7042324705",
+      "schema": "background-audio.schema.json",
+      "source": "tests/fixtures/background-sample.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "870d57697443dca9fda033250b324df8bd5f430ad1cbd91f8dabec3034777564",
+      "schema": "brand-import.schema.json",
+      "source": "brand/versions/0.3.0/identity.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "17e2a6b11b8ab87e2dfb3a685c90c14d4d984e9592f33f388dc5a6262091a311",
+      "schema": "brand-refinement.schema.json",
+      "source": "brand/versions/0.2.0/identity.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "aa93fcf1ee6c12da8d2bff70befafdbc3639b6183fe60d225bdc1952137a450d",
+      "schema": "brand.schema.json",
+      "source": "brand/identity.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "argv": [
+        "capabilities",
+        "--json"
+      ],
+      "schema": "capabilities.schema.json",
+      "verification": "runtime JSON schema checked by --execute-read-only"
+    },
+    {
+      "example_sha256": "cf351653305d19a01a71a185acbe82d1df10e8292db03747574c72017565858e",
+      "schema": "command-procedure.schema.json",
+      "source": "function-content/command-procedures.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "0a90fda389896ecbbca9500dddf2c9f31954f37aa2309d4132e396d7aee3a04e",
+      "schema": "community-voice.schema.json",
+      "source": "templates/community-voice.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "37f82d611c96041918a88b37e0cf7b9da90c602c689052e268e2fc0f4edf7f1d",
+      "schema": "corpus-inventory.schema.json",
+      "source": "docs/research/humanplus-corpus-inventory.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "d9fbbb26008a1ad345cf1ad9a2252d853a245ecaba96d00b63dd46cb50e9afa7",
+      "schema": "cue-profile.schema.json",
+      "source": "audio/cues/profiles/OCF-CUE-PROFILE-DEFAULT.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "argv": [
+        "doctor",
+        "--json"
+      ],
+      "schema": "doctor.schema.json",
+      "verification": "runtime JSON schema checked by --execute-read-only"
+    },
+    {
+      "example_sha256": "4fc276c225bec8ee408e6a4e57fed9a1e8c08a3bacd040835fdf9da4cd56802d",
+      "schema": "editorial-block.schema.json",
+      "source": "examples/contracts.json#/editorial-block.schema.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "e6f996f69203f39e9c2b7929f775401d9ce6145f5897614dcde5e9546f2291ec",
+      "schema": "editorial-function.schema.json",
+      "source": "examples/contracts.json#/editorial-function.schema.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "e96e2ff799ccd4af257abe9b886986e3f78e3665d0ac6612567fefdb74ad7207",
+      "schema": "function-binding.schema.json",
+      "source": "function-content/bindings/OCF-FND-002.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "867ad5e5f139d2e118212a7eedb2886cea9f3abfceb1f0b6a9a618f25519fe4e",
+      "schema": "function-decisions.schema.json",
+      "source": "function-content/decisions/OCF-FND-002.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "argv": [
+        "functions",
+        "describe",
+        "OCF-FND-002",
+        "--rich",
+        "--json"
+      ],
+      "schema": "function-discovery.schema.json",
+      "verification": "runtime JSON schema checked by --execute-read-only"
+    },
+    {
+      "example_sha256": "8020433b1fe70be8202f8e11a12a799991f3b41bf9897b63b2a0cf2e0d1e56d0",
+      "schema": "function-evidence.schema.json",
+      "source": "function-content/evidence/OCF-FND-002.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "560a4b25c66d2a81a0ec3724cf0707d6732bdbd8a3dafb92e31dbf4e66bd0750",
+      "schema": "function-specification.schema.json",
+      "source": "function-content/specifications/OCF-FND-002.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "7b929a3b098d32b86d6d7cdf06234a004e1d1b2488624237b823235530cdcc14",
+      "schema": "function.schema.json",
+      "source": "tests/fixtures/function-sample.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "bc4b5aba040556869cf261362132e211749b92f9a5608feebb70f18f58f6c504",
+      "schema": "hplus-review-selection.schema.json",
+      "source": "examples/contracts.json#/hplus-review-selection.schema.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "1950184cf6ccbf6d204bdb47db0f9d239da6793e780b0fc7276d7797d55ab22e",
+      "schema": "locale-manifest.schema.json",
+      "source": "locales/en-US/manifest.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "6cc9dd7b960d85b96ceb60085bb32bdcb692d878c3ecf8f97252466ae5cf9c14",
+      "schema": "locale-resource.schema.json",
+      "source": "locales/en-US/ui.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "0d4301477945fcdf01f9da80d1b68d4ff01ac5f9ee9c76faeb76855edb619e3a",
+      "schema": "mix-profile.schema.json",
+      "source": "examples/contracts.json#/mix-profile.schema.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "4581995689685e810661e95128226c2d94f2c913911456b38049bf9c511f9251",
+      "schema": "narration-package.schema.json",
+      "source": "examples/contracts.json#/narration-package.schema.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "fd18d70828bb11983aad94bea8b91e4d97b9cda9ea57f439039a36604b087dad",
+      "schema": "narration-sources.schema.json",
+      "source": "examples/contracts.json#/narration-sources.schema.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "0d862bb9a51ea353634ed0f31e99180b3d5b74c16bddc41ba5b721df6208d92c",
+      "schema": "narration-stem.schema.json",
+      "source": "examples/contracts.json#/narration-stem.schema.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "14a34409976c4717d2604000f5273cbd9ab93964a19c096e33791eb39729a6b7",
+      "schema": "proposal.schema.json",
+      "source": "examples/contracts.json#/proposal.schema.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "9a45cf5b4594be2711988d64602a5d69cb7b87dad0ae3c58dd68a757f6aa6afa",
+      "schema": "recording-processing.schema.json",
+      "source": "examples/contracts.json#/recording-processing.schema.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "2053afc60eab50bccab8bcdf709ee39e87e7c05d3b36b6373800ceff474aa66c",
+      "schema": "semantic-dsp-profile.schema.json",
+      "source": "audio/background/state-profiles/OCF-DSP-DEFAULT-001.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "04f7adf07ce784b03c86a65e6e12bf8e55d8aacb0be1668853ac857c1408b981",
+      "schema": "session-overrides.schema.json",
+      "source": "examples/contracts.json#/session-overrides.schema.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "d7c30e3a1b6d4bf75284e39e2517b3fc73ea4a3b10df0a9d39652e3eb748ba12",
+      "schema": "session-pacing.schema.json",
+      "source": "audio/templates/pacing/OCF-PACING-HPLUS-STANDARD-001.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "6d5c05bdc6b8f8b8475e918ad29d0f4d45578a63c857174dfed62344508bfc05",
+      "schema": "session-plan.schema.json",
+      "source": "audio/session-plans/en-US/OCF-FND-002.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "a9d3c2b4b86b276a2e4f4ab5c3427492cf650f9db1e1054b9ef126a51e858a77",
+      "schema": "session-stage.schema.json",
+      "source": "audio/templates/stages/OCF-TPL-STAGE-ORIENTATION-001.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "d23b351e38e94f132186bee61e861dfca0609c34cf264a0429be630e8f0ac270",
+      "schema": "session-template.schema.json",
+      "source": "audio/templates/sessions/OCF-TPL-SESSION-LEARN-001.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "561561612deb65292ffdf18daf9eadd523057af547c4eca4c87d6fd14d7563f7",
+      "schema": "theme.schema.json",
+      "source": "brand/themes/ocf-dark.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "418da1b58c3db4c027e5de803bf2bb44b5c2855abf06b72c4b238f9988bc195c",
+      "schema": "timed-transcript.schema.json",
+      "source": "templates/timed-transcript.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "cffb26923d63aaee02be13b716ac6adbe7913fc4e816c60058bc0655d622e502",
+      "schema": "voice-dataset.schema.json",
+      "source": "examples/contracts.json#/voice-dataset.schema.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "1f25a7ad0b4e29c9ef1292767f9a33d15808fe6c7aa8e5c813cc533f9667cea5",
+      "schema": "voice-profile.schema.json",
+      "source": "audio/voices/profiles/espeak-en.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    }
+  ],
+  "source_hashes": {
+    "schemas/audio-implementation.schema.json": "8a785e8968d5c9cee2a2f1c5ad360e4d47c33dc71846ef6c73bec11af48c1899",
+    "schemas/audio-release.schema.json": "66b708e5a7dc282557a5aa718b133940b45c1d34420183f5d421eb338b196a9a",
+    "schemas/authoring-plan.schema.json": "1de8a1ac424fd28a154579132f6f29a99c8bda17ba140829445b02f8a00c0694",
+    "schemas/background-audio.schema.json": "3155cbc979820b16f746a0ff93a8c829a861134cfd334a59489dff6f92f44dca",
+    "schemas/brand-import.schema.json": "e152f47e9e49daf1d118e9f2a61ecdcc8fe5429e7a9983bde534e255d3cdb801",
+    "schemas/brand-refinement.schema.json": "45940b6ab35b0b087982e7096e1ea82548eceb09d9c9949bc839dfaa61822922",
+    "schemas/brand.schema.json": "24bc85b77437021c01e20b60442c796e2faf55dd6f6e1f68341f955f4837f3c1",
+    "schemas/capabilities.schema.json": "1de3e89850ae61db2c118d86b195ca6b961a39f51cef0ab28447f99e89d129c1",
+    "schemas/command-procedure.schema.json": "ce83b5e0ce5d297aa71c8e293fc4af0a0d32ac35d1a677e6b08bf9c3cf211747",
+    "schemas/community-voice.schema.json": "c530fa8bb6783b56da06980dc943e5848ad0bee10168c4146ac0cc318ab0c9b3",
+    "schemas/corpus-inventory.schema.json": "11a08e6c17c8409b6111b5de49018a36fa0310975f9917c9b8380c5815bdc6a5",
+    "schemas/cue-profile.schema.json": "05500c0c486bf959ea4d952a9d9d487860bd67e80e333c0e99e990e234833b3a",
+    "schemas/doctor.schema.json": "9b861ac28abab75f1aab4c78419d7faf731db099a6031704abbb07bf75f1ff74",
+    "schemas/editorial-block.schema.json": "ef17e6b8bce5b318036b5c1618ee2dfa83473f45e93a9fd486bbef1fa72d26d0",
+    "schemas/editorial-function.schema.json": "f43a058da0c9e1815d975b255f8f96c420c2385da88627c9e78e6878cd42c6cf",
+    "schemas/function-binding.schema.json": "d3095a31cf1edf746a9d6ec230b7a545765774be446a4028d8b03519df6fb33f",
+    "schemas/function-decisions.schema.json": "5882d26b99b7bb3005a334926ec879cf77df8dfdfc8041219eba0e59df871a52",
+    "schemas/function-discovery.schema.json": "25ed6260fcb78e794e495f38c74b7c070054c227c0f512b2e7b1751071bcf9db",
+    "schemas/function-evidence.schema.json": "e541f1af76323fb9b059c4e39ceb5ab5f2eceaa0cbf4d6e37d0230d303b919a8",
+    "schemas/function-specification.schema.json": "f7348ab2cba5a5fc8b4216efd00dc3e8300e053c77d78004527ea176354409ea",
+    "schemas/function.schema.json": "22fe460242cb6710657d60748226c120f85d34ddfff45039c984f203a31848a0",
+    "schemas/hplus-review-selection.schema.json": "2e65fa5465bd6a70185dbcbb5ae3d933b81e2e7034ba17b4699b7998a392ac19",
+    "schemas/locale-manifest.schema.json": "3d1188d454415a4b111beca2545ed0627e89b112943ab523e81e632c3e1558b6",
+    "schemas/locale-resource.schema.json": "f10a850edaa8ec7227b0bd33101394561cad452a348a926c63961e0864ea1e96",
+    "schemas/mix-profile.schema.json": "5347090a2c134a4eb1bf760c944d3b94b7917d619b10544fd9e45a45cdd72ba2",
+    "schemas/narration-package.schema.json": "8a9e55379eec1481cdde5fbfa55b91af471dc45fe0ae30c64da36ab5d9b1a15d",
+    "schemas/narration-sources.schema.json": "5c084f128351d6a2a879b5a971007cbc9efe3fb269deb3eeb12832895e729c3e",
+    "schemas/narration-stem.schema.json": "6e377d585c16ed0c77178862a99f6de5be75786183cef36361ed4e717faa1efd",
+    "schemas/proposal.schema.json": "110b6780ef9fda7154fcd5358c4502ea589c6a26356afd24da5668d4be2482a0",
+    "schemas/recording-processing.schema.json": "7062e488510f3703db3392200d8a9f5ace7500dd41eb01496f3d5dad8a17ceec",
+    "schemas/semantic-dsp-profile.schema.json": "6e4782d6c775da1494196d72d12f155739acf9336fe1c145080c3016ffcfec1f",
+    "schemas/session-overrides.schema.json": "e2a8867050ebfd3ff2f974cb5b588012047bf196ee0280469a5cedbbea6eeade",
+    "schemas/session-pacing.schema.json": "7e660f9d37de36f457e15fdd7463f00d9688433ae2dacc567cfd4ef37ff10379",
+    "schemas/session-plan.schema.json": "824a833d7751536b8a1ded3784d6268847bc3bc101b06d8b649b25c163487805",
+    "schemas/session-stage.schema.json": "fcdccd53577a0df9f444439199332bcc097cd9083a30c2b583f23811e48f2981",
+    "schemas/session-template.schema.json": "a6e0d4d7485ba4ea09057cbfbc743a6ab737ccec7bdc71d28825acc760333ef2",
+    "schemas/theme.schema.json": "e4316f7acbd55c53c255d06efba8ecd8d3f7b69541219ee360d24f4779ccb6fb",
+    "schemas/timed-transcript.schema.json": "c3e2798f7ace0ba81c1fb5f1d2fa5afad20066ac3285a2fb7772dbed995b5950",
+    "schemas/voice-dataset.schema.json": "0307327f3f52eeaaaed71abaa6d1950c0b665fc677b43547e2452e9c31000ed8",
+    "schemas/voice-profile.schema.json": "0204c3379a0540d22e3792ee5b78ad134bd2a8cb73ddf51c975a602dbcb2c23d",
+    "scripts/ocf_tools/agent_api.py": "15bebf9c3e6bdda42c29498efacce6ac212dd083382fc83e38de7ee117a374e1",
+    "scripts/ocf_tools/cli.py": "e4c552a74f95970862fe797b8c8a71b47a4b7332c343623db725ebcb4e1ae96c",
+    "scripts/ocf_tools/lsp_server.py": "36e0d66e2aacdf2b0d32647b76da96735588ca23d03ad70ff47061c2c154e061",
+    "scripts/ocf_tools/mcp_server.py": "d8641d4160888abbe7152fca2117623de4dfb061793b95b161dbfb4534a2be54",
+    "scripts/ocf_tools/narration_cli.py": "5f13a05251816e5d3b80419d9ed67184b5c6c48722175700bbc88ec2b429bd41",
+    "scripts/ocf_tools/prompts.py": "968a77a45feb25b292a05e50041a40930756096474adca46138c30332efbd739",
+    "scripts/ocf_tools/voice_engine_cli.py": "da5904aff97e0dc9923c80b891adc9a8131d8cd8da71b54cc44e8a71f84c99d6"
+  },
+  "workflows": {
+    "schema_version": "1.0",
+    "workflows": {
+      "add-function": {
+        "commands": [
+          "new function",
+          "validate --all",
+          "build-index"
+        ],
+        "guide": "docs/FUNCTION_LIFECYCLE.md",
+        "note": "Wizard creates a record. Author actual narration and explicit bindings before planning; never fabricate missing narration."
+      },
+      "add-locale": {
+        "commands": [
+          "locale validate --locale en-US",
+          "locale coverage --locale en-US"
+        ],
+        "guide": "docs/LOCALIZATION.md",
+        "note": "Replace en-US with the authored locale. Spoken fallback stays strict."
+      },
+      "custom-voice": {
+        "commands": [
+          "voice inspect OCF-VOICE-0002",
+          "new voice",
+          "voice audition OCF-VOICE-0002"
+        ],
+        "guide": "docs/VOICE_WORKFLOWS.md",
+        "note": "Private model import and explicit original-passage audition; no automatic voice replacement or model publication."
+      },
+      "debug-render": {
+        "commands": [
+          "doctor --json",
+          "voice doctor",
+          "audio eligibility OCF-SLP-005 --locale en-US"
+        ],
+        "guide": "docs/DOCTOR.md",
+        "note": "Inspect retained job logs and scratch; never silently rerun an expensive failed job."
+      },
+      "generate-artwork": {
+        "commands": [
+          "artwork themes",
+          "artwork theme --surface ui",
+          "artwork generate OCF-SLP-005 --resolution 512"
+        ],
+        "guide": "docs/BRANDING.md",
+        "note": "Imported cosmic dark is the new-cover default; UI and album themes are independent. No publication approval is inferred."
+      },
+      "package-release": {
+        "commands": [
+          "audio release --help"
+        ],
+        "guide": "docs/AUDIO_PIPELINE.md",
+        "note": "Select a registered implementation and explicit approved PNG/JPEG artwork. Use --dry-run first; packaging success is not rights clearance."
+      },
+      "plan-all": {
+        "commands": [
+          "audio plan --all --locale en-US --dry-run",
+          "audio plan --all --locale en-US",
+          "audio plan --all --locale en-US --check"
+        ],
+        "guide": "docs/BULK_SESSIONS.md",
+        "note": "No synthesis; generated source plans inherit the shared configuration."
+      },
+      "record-dataset": {
+        "commands": [
+          "voice dataset-init --help",
+          "voice validate-dataset --help",
+          "voice training-plan"
+        ],
+        "guide": "docs/VOICE_WORKFLOWS.md",
+        "note": "Record the original prompts locally. Training remains unsupported until an adapter actually produces and verifies a model."
+      },
+      "render-audition": {
+        "commands": [
+          "voice doctor",
+          "audio plan OCF-SLP-005 --locale en-US --expand",
+          "audio render-many OCF-SLP-005 --voice OCF-VOICE-0002 --dry-run",
+          "audio render-many OCF-SLP-005 --voice OCF-VOICE-0002 --resume"
+        ],
+        "guide": "docs/BULK_SESSIONS.md",
+        "note": "Real rendering requires explicit start. Review timing reports and listen before approval."
+      },
+      "review-narration": {
+        "commands": [
+          "functions describe OCF-FND-002 --rich --json",
+          "review commands",
+          "validate --all"
+        ],
+        "guide": "docs/SOURCE_FIRST_AUTHORING.md",
+        "note": "Preserve protected wording, provenance and canonical commands; record human review separately."
+      },
+      "validate-pr": {
+        "commands": [
+          "validate --all",
+          "build-index --check",
+          "audio plan --all --locale en-US --check"
+        ],
+        "guide": "docs/TEST_COVERAGE.md",
+        "note": "Run focused tests while editing, then make check, make lint and the full pytest suite before completion."
+      }
+    }
+  }
+}

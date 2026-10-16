@@ -1,0 +1,79 @@
+{
+  "authoring-plan.schema.json": {
+    "schema_version": "1.0", "template": "OCF-TPL-SESSION-LEARN-001",
+    "locale": "en-US", "narration_source": "tts", "voice": "espeak-en",
+    "slots": {"function": "YOUR_ORIGINAL_SCRIPT.yaml"}
+  },
+  "editorial-block.schema.json": {
+    "schema_version": "1.0",
+    "id": "0000000000000000000000000000000000000000000000000000000000000000",
+    "semantic": "example.documentation",
+    "source": {"text": "Illustration only; no historical source.", "text_sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+    "working": {"text": "Illustration only; no historical source.", "review_status": "needs_review", "reviewer": null, "review_sha256": null, "flags": ["documentation-only; hashes are placeholders"], "corrections": [], "history": []},
+    "release": {"status": "pending", "rights": "unknown", "rights_evidence": null, "reviewer": null, "text_sha256": null}
+  },
+  "editorial-function.schema.json": {
+    "schema_version": "1.0", "function_id": "OCF-TST-999",
+    "source_availability": "unavailable", "source_status": "unavailable",
+    "skeletonization_status": "source_unavailable",
+    "extraction_method": "exact-text-locator-guided-candidate-partition",
+    "sections": {}, "blocks": [], "previous_candidates": [], "source": null
+  },
+  "hplus-review-selection.schema.json": {
+    "schema_version": "1.0",
+    "selections": {"OCF-TST-999": {"slots": {}, "missing": {"function-body": "No source selected in this documentation illustration."}, "notes": ["Documentation only; no source evidence or locator is asserted."]}}
+  },
+  "mix-profile.schema.json": {
+    "schema_version": "1.0", "output_headroom_db": 0,
+    "background_ducking": {"enabled": false}, "limiter": {"enabled": true, "ceiling": 0.97},
+    "fade_in_s": 0, "fade_out_s": 0, "measure_loudness": false
+  },
+  "narration-package.schema.json": {
+    "schema_version": "1.0", "id": "documentation-only", "source_type": "prerecorded-user",
+    "locale": "en-US", "author": "YOUR_DECLARED_SPEAKER", "license": "unknown",
+    "redistribution_permission": false,
+    "notes": "Structural illustration only. No recording supplied; hash is a placeholder, not verification.",
+    "recordings": {"YOUR_EVENT_ID": {"file": "YOUR_RECORDING.wav", "sha256": "0000000000000000000000000000000000000000000000000000000000000000", "validation_status": "pending-content-review"}}
+  },
+  "narration-sources.schema.json": {
+    "schema_version": "2.0", "id": "documentation-only", "locale": "en-US",
+    "mode": "hybrid", "fallback": "error", "recordings": {}, "events": {}
+  },
+  "narration-stem.schema.json": {
+    "file": "YOUR_COMPLETE_STEM.wav", "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "locale": "en-US", "speaker": "YOUR_DECLARED_SPEAKER", "version": "documentation-only",
+    "markers": {"YOUR_SPOKEN_EVENT": {"at": 0, "speech_duration": 1}, "YOUR_DSP_BOUNDARY": {"at": 2, "speech_duration": 0}},
+    "approval": "pending", "rights": {"consent": "unknown", "license": "unknown", "redistribution_permission": false}
+  },
+  "proposal.schema.json": {
+    "schema_version": "1.0", "id": "OCFP-9999", "title": "Documentation-only proposal shape",
+    "status": "draft", "date": "YOUR_DATE", "authors": [],
+    "problem": "Illustrate a structured proposal without changing a function.",
+    "purpose": "Documentation only.", "proposed_name": "Undecided", "proposed_command": null,
+    "command_length_rationale": "No command proposed.", "activation": "Undecided", "release": "Undecided",
+    "persistence": "conditional", "safety": "Unreviewed", "compatibility": "Unreviewed",
+    "evidence_state": "unverified", "alternatives": "Undecided", "implementation": "Not implemented",
+    "testing": "Not performed", "sources": [], "licensing": "Unknown"
+  },
+  "recording-processing.schema.json": {"remove_dc": false, "gain_db": 0, "fade_in_s": 0, "fade_out_s": 0, "measure_loudness": false},
+  "session-overrides.schema.json": {"ending": "waking", "sleep_continuation": false, "repetitions": {"programming": 2}},
+  "voice-dataset.schema.json": {
+    "schema_version": "1.0", "id": "documentation-only", "locale": "en-US", "sample_rate": 22050,
+    "consent_status": "unknown", "license": "unknown", "privacy": "private",
+    "records": [{"id": "example", "audio": "recordings/YOUR_RECORDING.wav", "text": "Documentation placeholder, not recorded speech.", "split": "train"}]
+  },
+  "audio-release.schema.json": {
+    "schema_version": "1.0", "function_id": "OCF-TST-999", "audio_id": "DOCUMENTATION-ONLY",
+    "title": "Structural illustration; not a release", "requested_locale": "en-US",
+    "title_resolution": {"requested_locale": "en-US", "resolved_locale": "en-US", "fallback": false, "resource_key": null},
+    "release_version": "documentation-only", "voice_profile_id": null, "narrator": null,
+    "source_narration": "No audio supplied", "narration_resolution": null,
+    "rendering": {"backend": null, "locale": "en-US", "sample_rate": null, "channels": null, "timing_mode": null},
+    "created_at": "2000-01-01T00:00:00Z",
+    "artifacts": [
+      {"path": "YOUR_AUDIO.mp3", "format": "audio/mp3", "size_bytes": 0, "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+      {"path": "YOUR_AUDIO.flac", "format": "audio/flac", "size_bytes": 0, "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+      {"path": "YOUR_COVER.png", "format": "image/png", "size_bytes": 0, "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}
+    ]
+  }
+}
