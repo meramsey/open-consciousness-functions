@@ -58,6 +58,10 @@ class SourceResolver:
     def __init__(
         self, doc, reference, *, locale=None, mode=None, default_voice=None, fallback_voice=None
     ):
+        from .cue_templates import reject_unexpanded
+
+        for event in iter_events(doc):
+            reject_unexpanded(str(event.get("text", "")))
         self.path = None if isinstance(reference, dict) else Path(reference).expanduser().resolve()
         self.root = self.path.parent if self.path else None
         self.config = (

@@ -65,6 +65,9 @@ entries:
       excluded. Rights: user_cleared, per user's
       lawyer-clearance attestation.
       Finished-session release pending.
+    cue_template:
+      function_id: OCF-BOD-006
+      allowed: [cue.primary]
     text: |-
       From this moment forward, the muscles, nerves,
       and blood vessels within and around your heart
@@ -201,7 +204,7 @@ entries:
       Take a deep breath in and gently hold it.
 
       While holding your breath, silently say
-      to yourself, "Plus Heart Better."
+      to yourself, "{{ cue.primary }}."
 
       Then slowly exhale through your mouth,
       as though gently blowing out a candle.
@@ -220,7 +223,7 @@ entries:
       Every muscle, vessel, and supporting system
       works together in complete harmony.
 
-      Each time you use Plus Heart Better,
+      Each time you use {{ cue.primary }},
       your ability to consciously reinforce
       this pattern becomes easier, faster,
       and more effective.
@@ -231,7 +234,7 @@ entries:
       will continue working whether or not
       you consciously think about them.
 
-      Plus Heart Better is always available
+      {{ cue.primary }} is always available
       whenever you wish to give this established
       pattern additional attention and reinforcement.
 
@@ -259,6 +262,9 @@ entries:
       This is not historical transcript wording.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release pending.
+    cue_template:
+      function_id: OCF-BOD-006
+      allowed: [cue.primary]
     text: |-
       Remember, your heart's natural processes
       of maintenance and renewal are now firmly
@@ -272,7 +278,7 @@ entries:
       Inhale deeply and gently hold your breath.
 
       Silently say to yourself,
-      "Plus Heart Better."
+      "{{ cue.primary }}."
 
       Then slowly exhale through your mouth,
       as though gently blowing out a candle.

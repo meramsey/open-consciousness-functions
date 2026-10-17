@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/symbolic-cue-migration.schema.json",
+  "title": "Zero-resolved-text-drift symbolic cue migration",
+  "type": "object",
+  "required": ["id", "source_commit", "authorization", "predecessor_files", "files", "entries", "resolved_baseline", "narration_bindings", "predecessor_lock_sha256"],
+  "properties": {
+    "id": {"const": "OCF-SYMBOLIC-CUES-001"},
+    "source_commit": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+    "authorization": {"type": "string", "minLength": 1},
+    "predecessor_files": {"type": "object", "additionalProperties": {"type": "string"}},
+    "files": {"type": "object", "additionalProperties": {"type": "object", "required": ["before_sha256", "after_sha256"], "additionalProperties": {"$ref": "#/definitions/sha"}}},
+    "resolved_baseline": {"type": "object", "additionalProperties": {"$ref": "#/definitions/sha"}},
+    "predecessor_lock_sha256": {"$ref": "#/definitions/sha"},
+    "narration_bindings": {"type": "object", "additionalProperties": {"$ref": "function-binding.schema.json#/properties/narration_plan"}},
+    "entries": {"type": "array", "items": {"type": "object", "required": ["function_id", "key", "path", "before_text", "resolved_sha256", "template_sha256", "spans"], "properties": {
+      "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
+      "key": {"type": "string"}, "path": {"type": "string"}, "before_text": {"type": "string"},
+      "resolved_sha256": {"$ref": "#/definitions/sha"}, "template_sha256": {"$ref": "#/definitions/sha"},
+      "spans": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["start", "end", "before", "symbol"], "properties": {"start": {"type": "integer", "minimum": 0}, "end": {"type": "integer", "minimum": 1}, "before": {"type": "string", "minLength": 1}, "symbol": {"const": "cue.primary"}}}}
+    }}}
+  },
+  "definitions": {"sha": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

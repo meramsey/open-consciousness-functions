@@ -52,6 +52,9 @@ entries:
       Shared consolidation at lines 48–49 remains excluded.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release pending.
+    cue_template:
+      function_id: OCF-BOD-001
+      allowed: [cue.primary]
     text: |-
       From this moment forward, bring your awareness to the blood
       circulating throughout your brain and the blood vessels in your
@@ -118,7 +121,7 @@ entries:
       Take a deep breath in and gently hold it.
 
       While holding your breath, silently say to yourself,
-      "Plus Brain Flow."
+      "{{ cue.primary }}."
 
       Then slowly exhale through your mouth, as though gently
       blowing out a candle.
@@ -129,13 +132,13 @@ entries:
       Your mind will reinforce this already-established pattern
       of healthy circulation, renewal, and maintenance.
 
-      Each time you use Plus Brain Flow, conscious reinforcement
+      Each time you use {{ cue.primary }}, conscious reinforcement
       of this pattern becomes easier, faster, and more effective.
 
       Remember, the maintenance pattern continues automatically,
       whether or not you think about it.
 
-      Plus Brain Flow is always available whenever you choose
+      {{ cue.primary }} is always available whenever you choose
       to focus and reinforce it.
 
       Your mind will remain clear, sharp, alert, and ready
@@ -157,6 +160,9 @@ entries:
       remain excluded. Adapted narration, not verbatim transcription.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release pending.
+    cue_template:
+      function_id: OCF-BOD-001
+      allowed: [cue.primary]
     text: |-
       Remember, the natural pattern of healthy circulation, renewal,
       and maintenance in your brain and neck is now firmly established.
@@ -166,7 +172,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Silently say to yourself, "Plus Brain Flow."
+      Silently say to yourself, "{{ cue.primary }}."
 
       Then slowly exhale through your mouth, as though gently
       blowing out a candle, and open your eyes.

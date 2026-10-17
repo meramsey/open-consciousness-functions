@@ -46,6 +46,8 @@ commands:
       operation: select-purpose
       localization_key: command.procedure.select-purpose
   relationships: {}
+  spoken: "Plus Speak Up"
+  spoken_review: reviewed
 chains: []
 claims:
   intended_effects: []
@@ -113,3 +115,14 @@ version:
   created: '2026-09-12'
   current: 0.1.0
   updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-com-001.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-com-001.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-com-001.closer
+    repetitions: 1
+    role: closer

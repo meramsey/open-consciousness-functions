@@ -48,6 +48,8 @@ commands:
       operation: select-activity
       localization_key: command.procedure.select-activity
   relationships: {}
+  spoken: "Plus Strong Quick"
+  spoken_review: reviewed
 - id: OCF-CMD-PRF-006-LEGACY-01
   function_id: OCF-PRF-006
   phrase_ref:
@@ -65,6 +67,8 @@ commands:
     order: 101
   effect_scope_ref: lifecycle.persistence
   relationships: {}
+  spoken: null
+  spoken_review: unresolved
 - id: OCF-CMD-PRF-006-RELEASE
   function_id: OCF-PRF-006
   phrase_ref:
@@ -93,6 +97,8 @@ commands:
   relationships:
     releases:
     - OCF-CMD-PRF-006-PRIMARY
+  spoken: "Plus Release"
+  spoken_review: reviewed
 command_phrases:
 - id: OCF-CMD-PRF-006-RELEASE
   phrase: Plus Release
@@ -172,3 +178,14 @@ version:
   created: '2026-09-12'
   current: 0.1.0
   updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-prf-006.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-prf-006.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-prf-006.closer
+    repetitions: 1
+    role: closer

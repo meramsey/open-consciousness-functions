@@ -67,6 +67,15 @@ def source_plan(function_id: str, locale: str = "en-US") -> tuple[dict, dict, di
             "version": entry.version,
             "status": entry.status,
             "text_sha256": hashlib.sha256(entry.text.encode("utf-8")).hexdigest(),
+            **(
+                {
+                    "raw_template_sha256": hashlib.sha256(
+                        entry.raw_template.encode("utf-8")
+                    ).hexdigest()
+                }
+                if entry.raw_template is not None
+                else {}
+            ),
         }
     shared = {
         "schema_version": "1.0",

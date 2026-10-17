@@ -168,6 +168,8 @@ def test_resource_variables_are_declared_and_used():
         pack = catalog.require(locale)
         for entry in pack.entries.values():
             assert entry.check_contract() == []
+            if entry.cue_template is not None:
+                entry, _ = catalog.resource(entry.key, locale, domain=entry.domain, fallback=False)
             entry.render(entry.sample_variables(), plural_rules=pack.plural_rules())
 
 
@@ -181,7 +183,15 @@ def test_pseudo_pack_preserves_icu_syntax_and_shape():
         original = source.entries[key]
         assert entry.domain == original.domain
         assert sorted(entry.variables) == sorted(original.variables)
-        assert message_variables(entry.text) == message_variables(original.text)
+        if original.cue_template is not None:
+            from ocf_tools.cue_templates import scan
+
+            assert entry.cue_template == original.cue_template
+            assert [part["symbol"] for part in scan(entry.text) if "symbol" in part] == [
+                part["symbol"] for part in scan(original.text) if "symbol" in part
+            ]
+        else:
+            assert message_variables(entry.text) == message_variables(original.text)
         if entry.text == original.text:
             # Variable-only or numeral-only content has no letters to accent.
             rendered = original.render({name: "" for name in original.variables})

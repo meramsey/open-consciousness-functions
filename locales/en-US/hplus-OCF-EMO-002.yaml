@@ -71,6 +71,9 @@ entries:
       Affirmative outcomes represent intended exercise suggestions.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-EMO-002
+      allowed: [cue.primary]
     text: |-
       From this moment forward, you have the ability
       to release unwanted thoughts and emotional patterns
@@ -85,7 +88,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Offload."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth
       and breathe deeply and naturally.
@@ -129,7 +132,7 @@ entries:
       choosing what to release
       and what you wish to retain.
 
-      Each time you use Plus Offload,
+      Each time you use {{ cue.primary }},
       releasing unwanted thought patterns
       becomes easier, faster, and more effective.
 
@@ -155,6 +158,9 @@ entries:
       This is adapted narration, not verbatim source wording.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-EMO-002
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to release
       a recurring thought or unwanted emotional
@@ -162,7 +168,7 @@ entries:
 
       Inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus Offload."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth
       and breathe deeply and naturally.

@@ -17,6 +17,12 @@ timeline are never duplicated per language.
 
 ## Explicit localized spoken cues
 
+Source-English `commands[].spoken` in function YAML is authoritative. The existing
+en-US cue resources are checked compatibility copies. Localized languages retain
+their own reviewed realizations. [Symbolic cue templates](SYMBOLIC_CUES.md) resolve
+through the same LocaleCatalog before segmentation and audio/source selection;
+raw templates and effective speech have separate hashes.
+
 The approved English primary cues are explicitly bound through each stable
 command's optional `localization.spoken_cue_key`. The separate
 `localization.display_cue_key` resolves the exact display spelling, while

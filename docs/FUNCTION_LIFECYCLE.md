@@ -5,6 +5,11 @@ style lifecycle.
 
 ## States
 
+The function wizard stores source-English spoken wording alongside its stable
+command ID, with review unresolved until explicitly decided. Narration bindings
+belong in the function's `narration.sequence`; authored teaching uses declared
+[cue references](SYMBOLIC_CUES.md), not independently editable literal cue copies.
+
 ```text
         ┌──────────────────────────────────────────┐
         │                                          ▼

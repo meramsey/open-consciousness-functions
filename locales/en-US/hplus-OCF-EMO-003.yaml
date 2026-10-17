@@ -70,6 +70,9 @@ entries:
       control, with the listener retaining judgment and boundaries.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-EMO-003
+      allowed: [cue.primary]
     text: |-
       From this moment forward, your ability to perceive
       and understand another being is becoming deeper,
@@ -93,7 +96,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Empathize."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
@@ -128,7 +131,7 @@ entries:
       is permanently available whenever you choose
       to open yourself to deeper understanding.
 
-      The more you use Plus Empathize,
+      The more you use {{ cue.primary }},
       the easier, clearer, and more effective
       this communion and understanding will become.
 
@@ -145,6 +148,9 @@ entries:
       reminder, the exact command and breathing sequence, and
       the standard OCF ending. Rights: user_cleared, per user's
       lawyer-clearance attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-EMO-003
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to understand
       another being through your senses and total self,
@@ -152,7 +158,7 @@ entries:
 
       Inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus Empathize."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 

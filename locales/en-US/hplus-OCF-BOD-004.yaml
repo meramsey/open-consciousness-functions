@@ -63,6 +63,9 @@ entries:
       at lines 104–130 remain excluded.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release pending.
+    cue_template:
+      function_id: OCF-BOD-004
+      allowed: [cue.primary]
     text: |-
       From this moment forward, your body's natural processes
       of cleansing, renewal, and maintenance will become stronger,
@@ -146,7 +149,7 @@ entries:
       Take a deep breath in and gently hold it.
 
       While holding your breath, silently say to yourself,
-      "Plus Detox."
+      "{{ cue.primary }}."
 
       Then slowly exhale through your mouth,
       as though gently blowing out a candle.
@@ -161,7 +164,7 @@ entries:
       Every system will perform its function at exactly
       the level needed to maintain your well-being.
 
-      Each time you use Plus Detox,
+      Each time you use {{ cue.primary }},
       your ability to consciously reinforce
       this pattern becomes easier, faster,
       and more effective.
@@ -172,7 +175,7 @@ entries:
       and maintenance whether or not you
       consciously think about it.
 
-      Plus Detox is always available whenever
+      {{ cue.primary }} is always available whenever
       you wish to give this established pattern
       additional attention and reinforcement.
 
@@ -197,6 +200,9 @@ entries:
       and unverified.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release pending.
+    cue_template:
+      function_id: OCF-BOD-004
+      allowed: [cue.primary]
     text: |-
       Remember, your body's natural processes of cleansing,
       renewal, and maintenance are now firmly established
@@ -207,7 +213,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Silently say to yourself, "Plus Detox."
+      Silently say to yourself, "{{ cue.primary }}."
 
       Then slowly exhale through your mouth,
       as though gently blowing out a candle.

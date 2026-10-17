@@ -54,6 +54,8 @@ commands:
   relationships:
     pairs_with:
     - OCF-CMD-BOD-012-SEX-LESS
+  spoken: "Plus Sex More"
+  spoken_review: reviewed
 - id: OCF-CMD-BOD-012-SEX-LESS
   function_id: OCF-BOD-012
   phrase_ref:
@@ -84,6 +86,8 @@ commands:
     - OCF-CMD-BOD-012-PRIMARY
     modifies:
     - OCF-CMD-BOD-012-PRIMARY
+  spoken: "Plus Sex Less"
+  spoken_review: reviewed
 - id: OCF-CMD-BOD-012-LEGACY-01
   function_id: OCF-BOD-012
   phrase_ref:
@@ -101,6 +105,8 @@ commands:
     order: 101
   effect_scope_ref: lifecycle.persistence
   relationships: {}
+  spoken: null
+  spoken_review: unresolved
 - id: OCF-CMD-BOD-012-LEGACY-02
   function_id: OCF-BOD-012
   phrase_ref:
@@ -118,6 +124,8 @@ commands:
     order: 102
   effect_scope_ref: lifecycle.persistence
   relationships: {}
+  spoken: null
+  spoken_review: unresolved
 chains: []
 claims:
   intended_effects: []
@@ -194,3 +202,14 @@ version:
   created: '2026-09-12'
   current: 0.1.0
   updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-012.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-012.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-012.closer
+    repetitions: 1
+    role: closer

@@ -287,6 +287,11 @@ require a complete-session template, audio implementation manifest, fixed
 source timestamps, artwork, or release metadata. Remove `--dry-run` to render;
 the default output is a unique retained audition under `.ocf-work/renders/`.
 
+Declared [symbolic cues](SYMBOLIC_CUES.md) expand through LocaleCatalog before
+paragraph/unit segmentation, pronunciation, recording text hashes or TTS cache
+identity. Raw-template and resolved-text hashes remain separate; structural
+conversion preserves existing approved speech and does not require new audio.
+
 The binding lists source resource keys, their order and role, and explicit
 repetition counts. The resolver uses the existing `LocaleCatalog`, requires the
 function's existing `audio.script_status: approved` and reviewed/canonical

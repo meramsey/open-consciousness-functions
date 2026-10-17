@@ -22,11 +22,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-AUT-001-PRIMARY",
               "display_cue": "PLUS-AUTOMATE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Automate",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -89,7 +91,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Automate",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -552,7 +556,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Brain Flow",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -879,11 +885,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-002-PRIMARY",
               "display_cue": "PLUS-FLOW SMOOTH",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Flow Smooth",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -945,7 +953,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Flow Smooth",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -1344,7 +1354,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
@@ -1375,7 +1387,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           }
         ],
         "content_maturity": "draft",
@@ -1781,7 +1795,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Detox",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -2108,11 +2124,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-005-PRIMARY",
               "display_cue": "PLUS-SATISFIED, SUPPLIED",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Satisfied Supplied",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -2175,7 +2193,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Satisfied Supplied",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -2580,7 +2600,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Heart Better",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -2907,11 +2929,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-007-PRIMARY",
               "display_cue": "PLUS-BALANCE-BLOODPRESSURE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Balance Blood Pressure",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -2978,7 +3002,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Balance Blood Pressure",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -3303,11 +3329,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-008-PRIMARY",
               "display_cue": "PLUS-ALERT, DESTROY",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Alert Destroy",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -3359,7 +3387,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Alert Destroy",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -3755,7 +3785,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Breathe Better",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -4085,11 +4117,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-010-PRIMARY",
               "display_cue": "PLUS-FOOD MORE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Food More",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -4161,15 +4195,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Food More",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-010-FOOD-LESS",
               "display_cue": "PLUS-FOOD LESS",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Food Less",
+              "spoken_locale": "en-US"
             },
             "designation": "secondary",
             "documentation": {
@@ -4245,7 +4283,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "decrease"
+            "role": "decrease",
+            "spoken": "Plus Food Less",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -4571,11 +4611,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-011-PRIMARY",
               "display_cue": "PLUS-EQUALIZE-HARMONIZE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Equalize Harmonize",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -4627,7 +4669,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Equalize Harmonize",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -4953,11 +4997,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-012-PRIMARY",
               "display_cue": "PLUS-SEX MORE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Sex More",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -5029,15 +5075,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "breathe-normally"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Sex More",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-012-SEX-LESS",
               "display_cue": "PLUS-SEX LESS",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Sex Less",
+              "spoken_locale": "en-US"
             },
             "designation": "secondary",
             "documentation": {
@@ -5113,7 +5163,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "breathe-normally"
               }
             ],
-            "role": "decrease"
+            "role": "decrease",
+            "spoken": "Plus Sex Less",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
@@ -5144,7 +5196,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
@@ -5175,7 +5229,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           }
         ],
         "content_maturity": "draft",
@@ -5501,11 +5557,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-013-PRIMARY",
               "display_cue": "PLUS-BALANCE, HEAL",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Balance Heal",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -5572,7 +5630,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "open-eyes"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Balance Heal",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -5974,7 +6034,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "open-eyes"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
@@ -6005,7 +6067,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           }
         ],
         "content_maturity": "draft",
@@ -6461,7 +6525,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
@@ -6492,15 +6558,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-015-LEGACY-02",
               "display_cue": "PLUS-RELEASE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Release",
+              "spoken_locale": "en-US"
             },
             "designation": "secondary",
             "documentation": {
@@ -6588,7 +6658,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "release"
+            "role": "release",
+            "spoken": "Plus Release",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -6973,11 +7045,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-COG-001-PRIMARY",
               "display_cue": "PLUS-RETRIEVE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Retrieve",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -7019,7 +7093,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "think-or-say-command"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Retrieve",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -7342,11 +7418,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-COG-002-PRIMARY",
               "display_cue": "PLUS-CALCULATE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Calculate",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -7409,7 +7487,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Calculate",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -7735,11 +7815,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-COG-003-PRIMARY",
               "display_cue": "PLUS-OPEN",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Open",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -7801,15 +7883,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "breathe-normally"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Open",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-COG-003-CLOSED",
               "display_cue": "PLUS-CLOSED",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Closed",
+              "spoken_locale": "en-US"
             },
             "designation": "secondary",
             "documentation": {
@@ -7851,7 +7937,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "think-or-say-command"
               }
             ],
-            "role": "close"
+            "role": "close",
+            "spoken": "Plus Closed",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -8249,15 +8337,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-COG-004-RECALL",
               "display_cue": "PLUS-RECALL",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Recall",
+              "spoken_locale": "en-US"
             },
             "designation": "secondary",
             "documentation": {
@@ -8299,7 +8391,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "think-or-say-command"
               }
             ],
-            "role": "retrieval"
+            "role": "retrieval",
+            "spoken": "Plus Recall",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
@@ -8330,7 +8424,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           }
         ],
         "content_maturity": "draft",
@@ -8726,7 +8822,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
@@ -8757,7 +8855,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           }
         ],
         "content_maturity": "draft",
@@ -9083,11 +9183,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-COG-006-PRIMARY",
               "display_cue": "PLUS-RECALL",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Recall",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -9150,7 +9252,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Recall",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -9475,11 +9579,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-COG-007-PRIMARY",
               "display_cue": "PLUS-THINK",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Think",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -9542,7 +9648,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Think",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -9866,11 +9974,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-COM-001-PRIMARY",
               "display_cue": "PLUS-SPEAK UP",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Speak Up",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -9933,7 +10043,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Speak Up",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -10258,11 +10370,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-EMG-001-PRIMARY",
               "display_cue": "PLUS-CONTROL, BALANCE, RESTORE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Control Balance Restore",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -10314,7 +10428,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Control Balance Restore",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -10700,11 +10816,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-EMG-002-PRIMARY",
               "display_cue": "PLUS-CLEAR, REMOVE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Clear Remove",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -10756,7 +10874,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Clear Remove",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -11142,11 +11262,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-EMO-001-PRIMARY",
               "display_cue": "PLUS-LET GO",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Let Go",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -11209,7 +11331,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Let Go",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -11620,7 +11744,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "breathe-normally"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Offload",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -12014,7 +12140,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Empathize",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -12479,7 +12607,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Manifest",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -12887,15 +13017,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Insulate",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-EXP-002-CANCEL",
               "display_cue": "PLUS-CANCEL",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Cancel",
+              "spoken_locale": "en-US"
             },
             "designation": "secondary",
             "documentation": {
@@ -12952,15 +13086,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "cancel"
+            "role": "cancel",
+            "spoken": "Plus Cancel",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-EXP-002-RELEASE",
               "display_cue": "Plus Release",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Release",
+              "spoken_locale": "en-US"
             },
             "designation": "special",
             "documentation": {
@@ -13028,7 +13166,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "release"
+            "role": "release",
+            "spoken": "Plus Release",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -13412,11 +13552,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-FND-001-PRIMARY",
               "display_cue": "PLUS-ENERGIZE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Energize",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -13463,15 +13605,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "represent-result"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Energize",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-FND-001-ACCESS-CLOSE",
               "display_cue": "Plus Release Eleven Access",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "plus, release, eleven, access",
+              "spoken_locale": "en-US"
             },
             "designation": "special",
             "documentation": {
@@ -13507,7 +13653,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "think-or-say-command"
               }
             ],
-            "role": "access-close"
+            "role": "access-close",
+            "spoken": "plus, release, eleven, access",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -13831,11 +13979,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-FND-002-PRIMARY",
               "display_cue": "PLUS-FOCUS",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Focus",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -13898,7 +14048,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Focus",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -14222,11 +14374,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-FND-003-PRIMARY",
               "display_cue": "PLUS-RECHARGE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Recharge",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -14289,7 +14443,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Recharge",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -14675,7 +14831,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
@@ -14706,7 +14864,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           }
         ],
         "content_maturity": "pilot",
@@ -15131,7 +15291,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "open-eyes"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
@@ -15162,7 +15324,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           }
         ],
         "content_maturity": "draft",
@@ -15487,11 +15651,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-FND-006-PRIMARY",
               "display_cue": "PLUS-RELEASE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Release",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -15554,7 +15720,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Release",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -15937,11 +16105,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-LIF-001-PRIMARY",
               "display_cue": "PLUS-NO MORE, NO MORE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus No More No More",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -16004,7 +16174,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus No More No More",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -16328,11 +16500,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-PRF-001-PRIMARY",
               "display_cue": "PLUS-DO-THIS-NOW",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Do This Now",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -16395,7 +16569,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Do This Now",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -16800,7 +16976,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Inner Power",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -17124,11 +17302,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-PRF-003-PRIMARY",
               "display_cue": "PLUS-SMOOTH, FAST",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Smooth Fast",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -17191,7 +17371,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Smooth Fast",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -17587,7 +17769,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
@@ -17618,7 +17802,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           }
         ],
         "content_maturity": "draft",
@@ -18001,11 +18187,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-PRF-005-PRIMARY",
               "display_cue": "PLUS-THIS DAY",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus This Day",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -18068,7 +18256,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus This Day",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -18451,11 +18641,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-PRF-006-PRIMARY",
               "display_cue": "PLUS-STRONG QUICK",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Strong Quick",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -18518,7 +18710,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Strong Quick",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
@@ -18549,15 +18743,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-PRF-006-RELEASE",
               "display_cue": "Plus Release",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Release",
+              "spoken_locale": "en-US"
             },
             "designation": "special",
             "documentation": {
@@ -18625,7 +18823,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "release"
+            "role": "release",
+            "spoken": "Plus Release",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -19010,11 +19210,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-SEN-001-PRIMARY",
               "display_cue": "PLUS-HEAR MORE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Hear More",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -19080,15 +19282,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "open-eyes"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Hear More",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-SEN-001-HEAR-LESS",
               "display_cue": "PLUS-HEAR LESS",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Hear Less",
+              "spoken_locale": "en-US"
             },
             "designation": "secondary",
             "documentation": {
@@ -19158,7 +19364,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "open-eyes"
               }
             ],
-            "role": "decrease"
+            "role": "decrease",
+            "spoken": "Plus Hear Less",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "pilot",
@@ -19513,11 +19721,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-SEN-002-PRIMARY",
               "display_cue": "PLUS-SEE BETTER",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus See Better",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -19574,7 +19784,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus See Better",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
@@ -19605,7 +19817,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           }
         ],
         "content_maturity": "draft",
@@ -19932,11 +20146,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-SEN-003-PRIMARY",
               "display_cue": "PLUS-SMELL MORE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Smell More",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -20002,15 +20218,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "open-eyes"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Smell More",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-SEN-003-SMELL-LESS",
               "display_cue": "PLUS-SMELL LESS",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Smell Less",
+              "spoken_locale": "en-US"
             },
             "designation": "secondary",
             "documentation": {
@@ -20080,7 +20300,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "open-eyes"
               }
             ],
-            "role": "decrease"
+            "role": "decrease",
+            "spoken": "Plus Smell Less",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
@@ -20111,7 +20333,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
@@ -20142,7 +20366,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           }
         ],
         "content_maturity": "draft",
@@ -20527,11 +20753,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-SEN-004-PRIMARY",
               "display_cue": "PLUS-TASTE MORE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Taste More",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -20597,15 +20825,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "open-eyes"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Taste More",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-SEN-004-TASTE-LESS",
               "display_cue": "PLUS-TASTE LESS",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Taste Less",
+              "spoken_locale": "en-US"
             },
             "designation": "secondary",
             "documentation": {
@@ -20675,7 +20907,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "open-eyes"
               }
             ],
-            "role": "decrease"
+            "role": "decrease",
+            "spoken": "Plus Taste Less",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
@@ -20706,7 +20940,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
@@ -20737,7 +20973,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           }
         ],
         "content_maturity": "draft",
@@ -21122,11 +21360,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-SEN-005-PRIMARY",
               "display_cue": "PLUS-TOUCH MORE",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Touch More",
+              "spoken_locale": "en-US"
             },
             "designation": "primary",
             "documentation": {
@@ -21192,15 +21432,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "open-eyes"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Touch More",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "authority": "function-yaml",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-SEN-005-TOUCH-LESS",
               "display_cue": "PLUS-TOUCH LESS",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "spoken_cue": "Plus Touch Less",
+              "spoken_locale": "en-US"
             },
             "designation": "secondary",
             "documentation": {
@@ -21270,7 +21514,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "open-eyes"
               }
             ],
-            "role": "decrease"
+            "role": "decrease",
+            "spoken": "Plus Touch Less",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
@@ -21301,7 +21547,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
@@ -21332,7 +21580,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           }
         ],
         "content_maturity": "draft",
@@ -21787,7 +22037,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
@@ -21818,7 +22070,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           }
         ],
         "content_maturity": "draft",
@@ -22216,7 +22470,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "breathe-normally"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
@@ -22247,7 +22503,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           }
         ],
         "content_maturity": "draft",
@@ -22648,7 +22906,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "breathe-slowly-deeply"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
@@ -22679,7 +22939,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           }
         ],
         "content_maturity": "draft",
@@ -23089,7 +23351,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "breathe-slowly-deeply"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Sleep Insight",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -23504,7 +23768,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "breathe-normally"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": "Plus Sleep Easy",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "pilot",
@@ -23990,7 +24256,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "activation"
+            "role": "activation",
+            "spoken": null,
+            "spoken_review": "unresolved"
           },
           {
             "cue_presentation": {
@@ -24021,7 +24289,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "legacy-command"
             },
             "relationships": {},
-            "role": "legacy-alias"
+            "role": "legacy-alias",
+            "spoken": null,
+            "spoken_review": "unresolved"
           }
         ],
         "content_maturity": "draft",

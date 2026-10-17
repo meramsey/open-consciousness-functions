@@ -41,6 +41,7 @@ from .locale import (
 )
 from .models import FunctionRecord
 from .paths import schema_path
+from .utils import OCFError
 
 SEVERITIES = ("error", "warning", "info")
 
@@ -343,6 +344,10 @@ def validate_command_metadata(records: list[FunctionRecord]) -> ValidationResult
         entry = canonical_locale.get(key) if canonical_locale else None
         if entry is None or entry.domain != NARRATION_DOMAIN:
             return False
+        if entry.cue_template is not None:
+            entry, _ = locale_catalog.resource(
+                key, "en-US", domain=NARRATION_DOMAIN, fallback=False
+            )
         phrase_words = re.findall(r"[A-Z0-9]+", phrase.upper())
         spoken_words = re.findall(r"[A-Z0-9]+", entry.text.upper())
         width = len(phrase_words)
@@ -363,6 +368,28 @@ def validate_command_metadata(records: list[FunctionRecord]) -> ValidationResult
 
     seen_ids: dict[str, str] = {}
     for record in records:
+        for source_field, expected in (
+            ("title_key", record.canonical_name),
+            ("purpose_key", record.purpose_summary),
+            ("short_description_key", record.purpose_summary),
+        ):
+            key = record.documentation.get(source_field)
+            entry = canonical_locale.get(key) if canonical_locale and key else None
+            if "narration" in record.data and entry and entry.text != expected:
+                result.add(
+                    "error",
+                    "function-source-authority",
+                    f"{key}: en-US presentation conflicts with function YAML {source_field}",
+                    record.id,
+                )
+        for command in record.command_records:
+            if command.data.get("spoken_review") == "reviewed" and not command.data.get("spoken"):
+                result.add(
+                    "error",
+                    "command-source-authority",
+                    "reviewed source cue must have explicit nonempty spoken wording",
+                    command.id,
+                )
         for message in validate_command_records(record):
             result.add("error", "command-metadata", message, record.id)
         special_phrases = {
@@ -1028,8 +1055,11 @@ def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationRes
             try:
                 for problem in entry.check_contract():
                     result.add("error", "locale-variable-contract", f"{key}: {problem}", where)
-                message_variables(entry.text)
-            except LocalizationError as exc:
+                if getattr(entry, "cue_template", None) is not None:
+                    catalog.resource(key, locale, domain=entry.domain, fallback=False)
+                else:
+                    message_variables(entry.text)
+            except (LocalizationError, OCFError) as exc:
                 result.add("error", "locale-message-syntax", f"{key}: {exc}", where)
             if canonical is not None and canonical.locale == locale:
                 continue

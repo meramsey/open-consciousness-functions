@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import io
 import json
 import math
@@ -157,7 +158,7 @@ def plan_narration(
     layers = load_layers(function_id)
     specification = layers.get("specifications") or {}
     binding = layers.get("bindings") or {}
-    narration_plan = binding.get("narration_plan")
+    narration_plan = record.data.get("narration") or binding.get("narration_plan")
     if not isinstance(narration_plan, dict) or not narration_plan.get("sequence"):
         raise OCFError(f"{function_id} has no explicit function-content narration_plan binding")
 
@@ -194,6 +195,18 @@ def plan_narration(
                 "resolved_locale": resolution.origin_locale,
                 "fallback": resolution.fallback,
                 "version": entry.version,
+                **(
+                    {
+                        "raw_template_sha256": hashlib.sha256(
+                            entry.raw_template.encode("utf-8")
+                        ).hexdigest(),
+                        "resolved_text_sha256": hashlib.sha256(
+                            entry.text.encode("utf-8")
+                        ).hexdigest(),
+                    }
+                    if entry.raw_template is not None
+                    else {}
+                ),
                 "status": entry.status,
                 "paragraph_count": len(paragraphs),
                 "repetitions": int(block["repetitions"]),

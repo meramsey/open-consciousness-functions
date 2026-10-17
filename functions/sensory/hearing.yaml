@@ -47,6 +47,8 @@ commands:
   relationships:
     pairs_with:
     - OCF-CMD-SEN-001-HEAR-LESS
+  spoken: "Plus Hear More"
+  spoken_review: reviewed
 - id: OCF-CMD-SEN-001-HEAR-LESS
   function_id: OCF-SEN-001
   phrase_ref:
@@ -74,6 +76,8 @@ commands:
     - OCF-CMD-SEN-001-PRIMARY
     modifies:
     - OCF-CMD-SEN-001-PRIMARY
+  spoken: "Plus Hear Less"
+  spoken_review: reviewed
 chains: []
 claims:
   intended_effects: []
@@ -148,3 +152,14 @@ version:
   created: '2026-09-12'
   current: 0.1.0
   updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-sen-001.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-sen-001.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-sen-001.closer
+    repetitions: 1
+    role: closer

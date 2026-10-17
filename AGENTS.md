@@ -20,6 +20,14 @@ agent reasons; OCF validates and executes. These instructions are provider-neutr
 
 ## Canonical map
 
+Function YAML also owns source-English command `spoken`/`spoken_review` and
+`narration.sequence`. Locale copies and content bindings must agree; never create
+a second English authority. Use [strict cue templates](docs/SYMBOLIC_CUES.md)
+through LocaleCatalog before segmentation, cache keys or recording fingerprints.
+Check raw-template and resolved-text hashes separately. Structural conversions
+must preserve all resolved speech bytes and immutable predecessor manifests.
+Review remaining vocabulary ONE function at a time; wait for explicit user input.
+
 - `functions/`: identity, commands, legacy mappings and source availability.
 - `function-content/`: separate evidence, specifications, decisions and bindings.
 - `locales/`: stable localized narration/UI IDs and review/provenance metadata.

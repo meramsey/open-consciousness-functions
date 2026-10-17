@@ -24,8 +24,10 @@
         "command_id": "OCF-CMD-AUT-001-PRIMARY",
         "display_cue": "PLUS-AUTOMATE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Automate",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Automates a desired way of being so it runs without active effort.",
       "decision_status": "STILL UNDECIDED",
@@ -115,8 +117,10 @@
         "command_id": "OCF-CMD-BOD-002-PRIMARY",
         "display_cue": "PLUS-FLOW SMOOTH",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Flow Smooth",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Promotes a felt sense of smooth, comfortable circulation.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -241,8 +245,10 @@
         "command_id": "OCF-CMD-BOD-005-PRIMARY",
         "display_cue": "PLUS-SATISFIED, SUPPLIED",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Satisfied Supplied",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Adjusts appetite signals in either direction.",
       "decision_status": "STILL UNDECIDED",
@@ -332,8 +338,10 @@
         "command_id": "OCF-CMD-BOD-007-PRIMARY",
         "display_cue": "PLUS-BALANCE-BLOODPRESSURE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Balance Blood Pressure",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for medical care.",
       "decision_status": "STILL UNDECIDED",
@@ -359,8 +367,10 @@
         "command_id": "OCF-CMD-BOD-008-PRIMARY",
         "display_cue": "PLUS-ALERT, DESTROY",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Alert Destroy",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Supports a felt sense of alertness and preparedness; not a medical claim.",
       "decision_status": "STILL UNDECIDED",
@@ -453,8 +463,10 @@
         "command_id": "OCF-CMD-BOD-010-PRIMARY",
         "display_cue": "PLUS-FOOD MORE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Food More",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Adjusts appetite and food drive in either direction using the MORE/LESS grammar.",
       "decision_status": "STILL UNDECIDED",
@@ -480,8 +492,10 @@
         "command_id": "OCF-CMD-BOD-011-PRIMARY",
         "display_cue": "PLUS-EQUALIZE-HARMONIZE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Equalize Harmonize",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Supports graceful passage through internal transitions.",
       "decision_status": "STILL UNDECIDED",
@@ -507,8 +521,10 @@
         "command_id": "OCF-CMD-BOD-012-PRIMARY",
         "display_cue": "PLUS-SEX MORE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Sex More",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Adjusts felt sexual drive in either direction using the MORE/LESS grammar.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -534,8 +550,10 @@
         "command_id": "OCF-CMD-BOD-013-PRIMARY",
         "display_cue": "PLUS-BALANCE, HEAL",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Balance Heal",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "A general self-directed balance-and-heal tune-up practice.",
       "decision_status": "STILL UNDECIDED",
@@ -615,8 +633,10 @@
         "command_id": "OCF-CMD-COG-001-PRIMARY",
         "display_cue": "PLUS-RETRIEVE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Retrieve",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Accesses intuition, memory, and inner knowledge on demand.",
       "decision_status": "STILL UNDECIDED",
@@ -642,8 +662,10 @@
         "command_id": "OCF-CMD-COG-002-PRIMARY",
         "display_cue": "PLUS-CALCULATE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Calculate",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Speeds mental arithmetic and number processing.",
       "decision_status": "STILL UNDECIDED",
@@ -669,8 +691,10 @@
         "command_id": "OCF-CMD-COG-003-PRIMARY",
         "display_cue": "PLUS-OPEN",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Open",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Opens an internal space for quiet reflection; closes it again on completion.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -750,8 +774,10 @@
         "command_id": "OCF-CMD-COG-006-PRIMARY",
         "display_cue": "PLUS-RECALL",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Recall",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Brings specific memories or learned material to mind on request.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -777,8 +803,10 @@
         "command_id": "OCF-CMD-COG-007-PRIMARY",
         "display_cue": "PLUS-THINK",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Think",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Accelerates thinking speed and mental processing.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -804,8 +832,10 @@
         "command_id": "OCF-CMD-COM-001-PRIMARY",
         "display_cue": "PLUS-SPEAK UP",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Speak Up",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Supports confident, clear verbal expression.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -831,8 +861,10 @@
         "command_id": "OCF-CMD-EMG-001-PRIMARY",
         "display_cue": "PLUS-CONTROL, BALANCE, RESTORE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Control Balance Restore",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Emergency-oriented practice to stay calm and take helpful action. Does NOT replace emergency services, first aid, or professional care.",
       "decision_status": "STILL UNDECIDED",
@@ -858,8 +890,10 @@
         "command_id": "OCF-CMD-EMG-002-PRIMARY",
         "display_cue": "PLUS-CLEAR, REMOVE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Clear Remove",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Emergency-oriented practice for toxic-exposure situations. Does NOT replace poison control, emergency services, or medical evaluation.",
       "decision_status": "STILL UNDECIDED",
@@ -885,8 +919,10 @@
         "command_id": "OCF-CMD-EMO-001-PRIMARY",
         "display_cue": "PLUS-LET GO",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Let Go",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Releases clinging, tension, or unwanted mental objects.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -1192,8 +1228,10 @@
         "command_id": "OCF-CMD-FND-001-PRIMARY",
         "display_cue": "PLUS-ENERGIZE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Energize",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Restores a felt sense of available energy on demand.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -1219,8 +1257,10 @@
         "command_id": "OCF-CMD-FND-002-PRIMARY",
         "display_cue": "PLUS-FOCUS",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Focus",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Directs and sustains focused attention.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -1246,8 +1286,10 @@
         "command_id": "OCF-CMD-FND-003-PRIMARY",
         "display_cue": "PLUS-RECHARGE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Recharge",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Replenishes a felt sense of energy and freshness.",
       "decision_status": "STILL UNDECIDED",
@@ -1327,8 +1369,10 @@
         "command_id": "OCF-CMD-FND-006-PRIMARY",
         "display_cue": "PLUS-RELEASE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Release",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Releases unhelpful states, prompts, or lingering experiences.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -1354,8 +1398,10 @@
         "command_id": "OCF-CMD-LIF-001-PRIMARY",
         "display_cue": "PLUS-NO MORE, NO MORE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus No More No More",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Supports stepping away from habitual, repeated behavior patterns.",
       "decision_status": "STILL UNDECIDED",
@@ -1381,8 +1427,10 @@
         "command_id": "OCF-CMD-PRF-001-PRIMARY",
         "display_cue": "PLUS-DO-THIS-NOW",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Do This Now",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Moves from deliberation into immediate, present action.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -1480,8 +1528,10 @@
         "command_id": "OCF-CMD-PRF-003-PRIMARY",
         "display_cue": "PLUS-SMOOTH, FAST",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Smooth Fast",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Aligns and smooths internal rhythms toward feeling faster and steadier.",
       "decision_status": "STILL UNDECIDED",
@@ -1534,8 +1584,10 @@
         "command_id": "OCF-CMD-PRF-005-PRIMARY",
         "display_cue": "PLUS-THIS DAY",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus This Day",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Sets a deliberate tone for the day ahead.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -1561,8 +1613,10 @@
         "command_id": "OCF-CMD-PRF-006-PRIMARY",
         "display_cue": "PLUS-STRONG QUICK",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Strong Quick",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -1588,8 +1642,10 @@
         "command_id": "OCF-CMD-SEN-001-PRIMARY",
         "display_cue": "PLUS-HEAR MORE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Hear More",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Adjusts inward listening and perception in either direction using the MORE/LESS grammar.",
       "decision_status": "STILL UNDECIDED",
@@ -1615,8 +1671,10 @@
         "command_id": "OCF-CMD-SEN-002-PRIMARY",
         "display_cue": "PLUS-SEE BETTER",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus See Better",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Improves the felt sense of inner vision and clarity.",
       "decision_status": "STILL UNDECIDED",
@@ -1642,8 +1700,10 @@
         "command_id": "OCF-CMD-SEN-003-PRIMARY",
         "display_cue": "PLUS-SMELL MORE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Smell More",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Adjusts the felt sense of smell in either direction using the MORE/LESS grammar.",
       "decision_status": "STILL UNDECIDED",
@@ -1669,8 +1729,10 @@
         "command_id": "OCF-CMD-SEN-004-PRIMARY",
         "display_cue": "PLUS-TASTE MORE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Taste More",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Adjusts the felt sense of taste in either direction using the MORE/LESS grammar.",
       "decision_status": "STILL UNDECIDED",
@@ -1696,8 +1758,10 @@
         "command_id": "OCF-CMD-SEN-005-PRIMARY",
         "display_cue": "PLUS-TOUCH MORE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Touch More",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       },
       "current_purpose": "Adjusts the felt sense of touch or skin sensation using the MORE/LESS grammar.",
       "decision_status": "STILL UNDECIDED",
@@ -2002,6 +2066,8 @@
         ]
       },
       "relationships": {},
+      "spoken": "Plus Automate",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-AUTOMATE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -2035,8 +2101,10 @@
         "command_id": "OCF-CMD-AUT-001-PRIMARY",
         "display_cue": "PLUS-AUTOMATE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Automate",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -2074,6 +2142,8 @@
       },
       "relationships": {},
       "role": "activation",
+      "spoken": "Plus Brain Flow",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-BRAIN FLOW",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
@@ -2151,6 +2221,8 @@
         "before_steps": []
       },
       "relationships": {},
+      "spoken": "Plus Flow Smooth",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-FLOW SMOOTH",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
@@ -2189,8 +2261,10 @@
         "command_id": "OCF-CMD-BOD-002-PRIMARY",
         "display_cue": "PLUS-FLOW SMOOTH",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Flow Smooth",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -2226,6 +2300,8 @@
         "narration_key": "hplus.function.ocf-bod-003.function-body",
         "relationship": "legacy-form"
       },
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-COMFORT",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -2289,6 +2365,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-55515",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -2334,6 +2412,8 @@
       },
       "relationships": {},
       "role": "activation",
+      "spoken": "Plus Detox",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-DETOX",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
@@ -2405,6 +2485,8 @@
       },
       "relationships": {},
       "role": "legacy-alias",
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-CLEAN, CLEAR",
       "effect_scope": "permanent",
       "cue_presentation": {
@@ -2449,6 +2531,8 @@
         ]
       },
       "relationships": {},
+      "spoken": "Plus Satisfied Supplied",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-SATISFIED, SUPPLIED",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -2482,8 +2566,10 @@
         "command_id": "OCF-CMD-BOD-005-PRIMARY",
         "display_cue": "PLUS-SATISFIED, SUPPLIED",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Satisfied Supplied",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -2521,6 +2607,8 @@
       },
       "relationships": {},
       "role": "activation",
+      "spoken": "Plus Heart Better",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-HEART-BETTER",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
@@ -2603,6 +2691,8 @@
         "narration_key": "hplus.function.ocf-bod-007.function-body",
         "relationship": "variant"
       },
+      "spoken": "Plus Balance Blood Pressure",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-BALANCE-BLOODPRESSURE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -2641,8 +2731,10 @@
         "command_id": "OCF-CMD-BOD-007-PRIMARY",
         "display_cue": "PLUS-BALANCE-BLOODPRESSURE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Balance Blood Pressure",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -2673,6 +2765,8 @@
         "before_steps": []
       },
       "relationships": {},
+      "spoken": "Plus Alert Destroy",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-ALERT, DESTROY",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
@@ -2701,8 +2795,10 @@
         "command_id": "OCF-CMD-BOD-008-PRIMARY",
         "display_cue": "PLUS-ALERT, DESTROY",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Alert Destroy",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -2740,6 +2836,8 @@
       },
       "relationships": {},
       "role": "activation",
+      "spoken": "Plus Breathe Better",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-BREATHE BETTER",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
@@ -2817,6 +2915,8 @@
           "OCF-CMD-BOD-010-FOOD-LESS"
         ]
       },
+      "spoken": "Plus Food More",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-FOOD MORE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -2855,8 +2955,10 @@
         "command_id": "OCF-CMD-BOD-010-PRIMARY",
         "display_cue": "PLUS-FOOD MORE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Food More",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -2901,6 +3003,8 @@
           "OCF-CMD-BOD-010-PRIMARY"
         ]
       },
+      "spoken": "Plus Food Less",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-FOOD LESS",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -2939,8 +3043,10 @@
         "command_id": "OCF-CMD-BOD-010-FOOD-LESS",
         "display_cue": "PLUS-FOOD LESS",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Food Less",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -2971,6 +3077,8 @@
         "before_steps": []
       },
       "relationships": {},
+      "spoken": "Plus Equalize Harmonize",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-EQUALIZE-HARMONIZE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -2999,8 +3107,10 @@
         "command_id": "OCF-CMD-BOD-011-PRIMARY",
         "display_cue": "PLUS-EQUALIZE-HARMONIZE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Equalize Harmonize",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -3041,6 +3151,8 @@
           "OCF-CMD-BOD-012-SEX-LESS"
         ]
       },
+      "spoken": "Plus Sex More",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-SEX MORE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -3079,8 +3191,10 @@
         "command_id": "OCF-CMD-BOD-012-PRIMARY",
         "display_cue": "PLUS-SEX MORE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Sex More",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -3125,6 +3239,8 @@
           "OCF-CMD-BOD-012-PRIMARY"
         ]
       },
+      "spoken": "Plus Sex Less",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-SEX LESS",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -3163,8 +3279,10 @@
         "command_id": "OCF-CMD-BOD-012-SEX-LESS",
         "display_cue": "PLUS-SEX LESS",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Sex Less",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -3188,6 +3306,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-SEX GREATER",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -3219,6 +3339,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-SEX LESSER",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -3257,6 +3379,8 @@
         "before_steps": []
       },
       "relationships": {},
+      "spoken": "Plus Balance Heal",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-BALANCE, HEAL",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -3300,8 +3424,10 @@
         "command_id": "OCF-CMD-BOD-013-PRIMARY",
         "display_cue": "PLUS-BALANCE, HEAL",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Balance Heal",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -3337,6 +3463,8 @@
         "narration_key": "hplus.function.ocf-bod-014.function-body",
         "relationship": "legacy-form"
       },
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-REGENERATE",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
@@ -3405,6 +3533,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-BUILD, LIVE",
       "effect_scope": "permanent",
       "cue_presentation": {
@@ -3448,6 +3578,8 @@
         "narration_key": "hplus.function.ocf-bod-015.function-body",
         "relationship": "legacy-form"
       },
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-NUMB",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -3511,6 +3643,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-GO NUMB, GO NUMB",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -3580,6 +3714,8 @@
           "OCF-CMD-BOD-015-PRIMARY"
         ]
       },
+      "spoken": "Plus Release",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-RELEASE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -3613,8 +3749,10 @@
         "command_id": "OCF-CMD-BOD-015-LEGACY-02",
         "display_cue": "PLUS-RELEASE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Release",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -3645,6 +3783,8 @@
         "before_steps": []
       },
       "relationships": {},
+      "spoken": "Plus Retrieve",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-RETRIEVE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -3663,8 +3803,10 @@
         "command_id": "OCF-CMD-COG-001-PRIMARY",
         "display_cue": "PLUS-RETRIEVE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Retrieve",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -3701,6 +3843,8 @@
         ]
       },
       "relationships": {},
+      "spoken": "Plus Calculate",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-CALCULATE",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
@@ -3734,8 +3878,10 @@
         "command_id": "OCF-CMD-COG-002-PRIMARY",
         "display_cue": "PLUS-CALCULATE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Calculate",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -3766,6 +3912,8 @@
         "before_steps": []
       },
       "relationships": {},
+      "spoken": "Plus Open",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-OPEN",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -3804,8 +3952,10 @@
         "command_id": "OCF-CMD-COG-003-PRIMARY",
         "display_cue": "PLUS-OPEN",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Open",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -3841,6 +3991,8 @@
           "OCF-CMD-COG-003-PRIMARY"
         ]
       },
+      "spoken": "Plus Closed",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-CLOSED",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -3854,8 +4006,10 @@
         "command_id": "OCF-CMD-COG-003-CLOSED",
         "display_cue": "PLUS-CLOSED",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Closed",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -3891,6 +4045,8 @@
         "narration_key": "hplus.function.ocf-cog-004.function-body",
         "relationship": "legacy-form"
       },
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-IMPRINT",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -3966,6 +4122,8 @@
           "OCF-CMD-COG-004-PRIMARY"
         ]
       },
+      "spoken": "Plus Recall",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-RECALL",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -3979,8 +4137,10 @@
         "command_id": "OCF-CMD-COG-004-RECALL",
         "display_cue": "PLUS-RECALL",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Recall",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -4004,6 +4164,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-IMPRINT, IMPRINT",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -4047,6 +4209,8 @@
         "narration_key": "hplus.function.ocf-cog-005.function-body",
         "relationship": "legacy-form"
       },
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-OPTIONS",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -4110,6 +4274,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-OPTIONS, CHOICES",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -4154,6 +4320,8 @@
         ]
       },
       "relationships": {},
+      "spoken": "Plus Recall",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-RECALL",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -4187,8 +4355,10 @@
         "command_id": "OCF-CMD-COG-006-PRIMARY",
         "display_cue": "PLUS-RECALL",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Recall",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -4225,6 +4395,8 @@
         ]
       },
       "relationships": {},
+      "spoken": "Plus Think",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-THINK",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
@@ -4258,8 +4430,10 @@
         "command_id": "OCF-CMD-COG-007-PRIMARY",
         "display_cue": "PLUS-THINK",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Think",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -4296,6 +4470,8 @@
         ]
       },
       "relationships": {},
+      "spoken": "Plus Speak Up",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-SPEAK UP",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
@@ -4329,8 +4505,10 @@
         "command_id": "OCF-CMD-COM-001-PRIMARY",
         "display_cue": "PLUS-SPEAK UP",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Speak Up",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -4361,6 +4539,8 @@
         "before_steps": []
       },
       "relationships": {},
+      "spoken": "Plus Control Balance Restore",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-CONTROL, BALANCE, RESTORE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -4389,8 +4569,10 @@
         "command_id": "OCF-CMD-EMG-001-PRIMARY",
         "display_cue": "PLUS-CONTROL, BALANCE, RESTORE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Control Balance Restore",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -4421,6 +4603,8 @@
         "before_steps": []
       },
       "relationships": {},
+      "spoken": "Plus Clear Remove",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-CLEAR, REMOVE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -4449,8 +4633,10 @@
         "command_id": "OCF-CMD-EMG-002-PRIMARY",
         "display_cue": "PLUS-CLEAR, REMOVE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Clear Remove",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -4487,6 +4673,8 @@
         ]
       },
       "relationships": {},
+      "spoken": "Plus Let Go",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-LET GO",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -4520,8 +4708,10 @@
         "command_id": "OCF-CMD-EMO-001-PRIMARY",
         "display_cue": "PLUS-LET GO",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Let Go",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -4565,6 +4755,8 @@
       },
       "relationships": {},
       "role": "activation",
+      "spoken": "Plus Offload",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-OFFLOAD",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -4636,6 +4828,8 @@
       },
       "relationships": {},
       "role": "legacy-alias",
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-FADE, FADE",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -4681,6 +4875,8 @@
       },
       "relationships": {},
       "role": "activation",
+      "spoken": "Plus Empathize",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-EMPATHIZE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -4761,6 +4957,8 @@
       },
       "relationships": {},
       "role": "activation",
+      "spoken": "Plus Manifest",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-MANIFEST",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -4827,6 +5025,8 @@
       },
       "relationships": {},
       "role": "legacy-alias",
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-CHANGE, CHANGE",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -4878,6 +5078,8 @@
       },
       "relationships": {},
       "role": "activation",
+      "spoken": "Plus Insulate",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-INSULATE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -4955,6 +5157,8 @@
         ]
       },
       "role": "cancel",
+      "spoken": "Plus Cancel",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-CANCEL",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -4983,8 +5187,10 @@
         "command_id": "OCF-CMD-EXP-002-CANCEL",
         "display_cue": "PLUS-CANCEL",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Cancel",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -5009,6 +5215,8 @@
       },
       "relationships": {},
       "role": "legacy-alias",
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-INSULATE, INSULATE",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -5058,6 +5266,8 @@
         ]
       },
       "role": "release",
+      "spoken": "Plus Release",
+      "spoken_review": "reviewed",
       "phrase": "Plus Release",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -5091,8 +5301,10 @@
         "command_id": "OCF-CMD-EXP-002-RELEASE",
         "display_cue": "Plus Release",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Release",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -5123,6 +5335,8 @@
         "before_steps": []
       },
       "relationships": {},
+      "spoken": "Plus Energize",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-ENERGIZE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -5146,8 +5360,10 @@
         "command_id": "OCF-CMD-FND-001-PRIMARY",
         "display_cue": "PLUS-ENERGIZE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Energize",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -5178,6 +5394,8 @@
         "before_steps": []
       },
       "relationships": {},
+      "spoken": "plus, release, eleven, access",
+      "spoken_review": "reviewed",
       "phrase": "Plus Release Eleven Access",
       "resolved_procedure_steps": [
         {
@@ -5190,8 +5408,10 @@
         "command_id": "OCF-CMD-FND-001-ACCESS-CLOSE",
         "display_cue": "Plus Release Eleven Access",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "plus, release, eleven, access",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -5228,6 +5448,8 @@
         ]
       },
       "relationships": {},
+      "spoken": "Plus Focus",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-FOCUS",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -5261,8 +5483,10 @@
         "command_id": "OCF-CMD-FND-002-PRIMARY",
         "display_cue": "PLUS-FOCUS",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Focus",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -5299,6 +5523,8 @@
         ]
       },
       "relationships": {},
+      "spoken": "Plus Recharge",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-RECHARGE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -5332,8 +5558,10 @@
         "command_id": "OCF-CMD-FND-003-PRIMARY",
         "display_cue": "PLUS-RECHARGE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Recharge",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -5369,6 +5597,8 @@
         "narration_key": "hplus.function.ocf-fnd-004.function-body",
         "relationship": "legacy-form"
       },
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-RELAX",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -5422,6 +5652,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-RELAX, RELAX",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -5465,6 +5697,8 @@
         "narration_key": "hplus.function.ocf-fnd-005.function-body",
         "relationship": "legacy-form"
       },
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-RESET",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -5528,6 +5762,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-RESET, RESET",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -5572,6 +5808,8 @@
         ]
       },
       "relationships": {},
+      "spoken": "Plus Release",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-RELEASE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -5605,8 +5843,10 @@
         "command_id": "OCF-CMD-FND-006-PRIMARY",
         "display_cue": "PLUS-RELEASE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Release",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -5643,6 +5883,8 @@
         ]
       },
       "relationships": {},
+      "spoken": "Plus No More No More",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-NO MORE, NO MORE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -5676,8 +5918,10 @@
         "command_id": "OCF-CMD-LIF-001-PRIMARY",
         "display_cue": "PLUS-NO MORE, NO MORE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus No More No More",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -5714,6 +5958,8 @@
         ]
       },
       "relationships": {},
+      "spoken": "Plus Do This Now",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-DO-THIS-NOW",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -5747,8 +5993,10 @@
         "command_id": "OCF-CMD-PRF-001-PRIMARY",
         "display_cue": "PLUS-DO-THIS-NOW",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Do This Now",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -5792,6 +6040,8 @@
       },
       "relationships": {},
       "role": "activation",
+      "spoken": "Plus Inner Power",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-INNER POWER",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
@@ -5858,6 +6108,8 @@
       },
       "relationships": {},
       "role": "legacy-alias",
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-EIGHT, GREAT",
       "effect_scope": "permanent",
       "cue_presentation": {
@@ -5902,6 +6154,8 @@
         ]
       },
       "relationships": {},
+      "spoken": "Plus Smooth Fast",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-SMOOTH, FAST",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
@@ -5935,8 +6189,10 @@
         "command_id": "OCF-CMD-PRF-003-PRIMARY",
         "display_cue": "PLUS-SMOOTH, FAST",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Smooth Fast",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -5978,6 +6234,8 @@
         "narration_key": "hplus.function.ocf-prf-004.function-body",
         "relationship": "legacy-form"
       },
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-LIGHT",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -6036,6 +6294,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-LIGHTER, LIGHTER",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -6080,6 +6340,8 @@
         ]
       },
       "relationships": {},
+      "spoken": "Plus This Day",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-THIS DAY",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -6113,8 +6375,10 @@
         "command_id": "OCF-CMD-PRF-005-PRIMARY",
         "display_cue": "PLUS-THIS DAY",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus This Day",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -6151,6 +6415,8 @@
         ]
       },
       "relationships": {},
+      "spoken": "Plus Strong Quick",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-STRONG QUICK",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -6184,8 +6450,10 @@
         "command_id": "OCF-CMD-PRF-006-PRIMARY",
         "display_cue": "PLUS-STRONG QUICK",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Strong Quick",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -6209,6 +6477,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-STRONG-QUICK",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -6258,6 +6528,8 @@
           "OCF-CMD-PRF-006-PRIMARY"
         ]
       },
+      "spoken": "Plus Release",
+      "spoken_review": "reviewed",
       "phrase": "Plus Release",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -6291,8 +6563,10 @@
         "command_id": "OCF-CMD-PRF-006-RELEASE",
         "display_cue": "Plus Release",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Release",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -6327,6 +6601,8 @@
           "OCF-CMD-SEN-001-HEAR-LESS"
         ]
       },
+      "spoken": "Plus Hear More",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-HEAR MORE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -6365,8 +6641,10 @@
         "command_id": "OCF-CMD-SEN-001-PRIMARY",
         "display_cue": "PLUS-HEAR MORE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Hear More",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -6405,6 +6683,8 @@
           "OCF-CMD-SEN-001-PRIMARY"
         ]
       },
+      "spoken": "Plus Hear Less",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-HEAR LESS",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -6443,8 +6723,10 @@
         "command_id": "OCF-CMD-SEN-001-HEAR-LESS",
         "display_cue": "PLUS-HEAR LESS",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Hear Less",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -6480,6 +6762,8 @@
         "narration_key": "hplus.function.ocf-sen-002.function-body",
         "relationship": "canonical-match"
       },
+      "spoken": "Plus See Better",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-SEE BETTER",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
@@ -6508,8 +6792,10 @@
         "command_id": "OCF-CMD-SEN-002-PRIMARY",
         "display_cue": "PLUS-SEE BETTER",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus See Better",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -6533,6 +6819,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-SEE BETTER",
       "effect_scope": "permanent",
       "cue_presentation": {
@@ -6575,6 +6863,8 @@
           "OCF-CMD-SEN-003-SMELL-LESS"
         ]
       },
+      "spoken": "Plus Smell More",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-SMELL MORE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -6613,8 +6903,10 @@
         "command_id": "OCF-CMD-SEN-003-PRIMARY",
         "display_cue": "PLUS-SMELL MORE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Smell More",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -6653,6 +6945,8 @@
           "OCF-CMD-SEN-003-PRIMARY"
         ]
       },
+      "spoken": "Plus Smell Less",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-SMELL LESS",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -6691,8 +6985,10 @@
         "command_id": "OCF-CMD-SEN-003-SMELL-LESS",
         "display_cue": "PLUS-SMELL LESS",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Smell Less",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -6716,6 +7012,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-SMELL GREATER",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -6747,6 +7045,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-SMELL LESSER",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -6789,6 +7089,8 @@
           "OCF-CMD-SEN-004-TASTE-LESS"
         ]
       },
+      "spoken": "Plus Taste More",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-TASTE MORE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -6827,8 +7129,10 @@
         "command_id": "OCF-CMD-SEN-004-PRIMARY",
         "display_cue": "PLUS-TASTE MORE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Taste More",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -6867,6 +7171,8 @@
           "OCF-CMD-SEN-004-PRIMARY"
         ]
       },
+      "spoken": "Plus Taste Less",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-TASTE LESS",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -6905,8 +7211,10 @@
         "command_id": "OCF-CMD-SEN-004-TASTE-LESS",
         "display_cue": "PLUS-TASTE LESS",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Taste Less",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -6930,6 +7238,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-TASTE GREATER",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -6961,6 +7271,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-TASTE LESSER",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -7003,6 +7315,8 @@
           "OCF-CMD-SEN-005-TOUCH-LESS"
         ]
       },
+      "spoken": "Plus Touch More",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-TOUCH MORE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -7041,8 +7355,10 @@
         "command_id": "OCF-CMD-SEN-005-PRIMARY",
         "display_cue": "PLUS-TOUCH MORE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Touch More",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -7081,6 +7397,8 @@
           "OCF-CMD-SEN-005-PRIMARY"
         ]
       },
+      "spoken": "Plus Touch Less",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-TOUCH LESS",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -7119,8 +7437,10 @@
         "command_id": "OCF-CMD-SEN-005-TOUCH-LESS",
         "display_cue": "PLUS-TOUCH LESS",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Touch Less",
+        "binding_status": "resolved",
+        "spoken_locale": "en-US",
+        "authority": "function-yaml"
       }
     },
     {
@@ -7144,6 +7464,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-TOUCH GREATER",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -7175,6 +7497,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-TOUCH LESSER",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -7224,6 +7548,8 @@
         "narration_key": "hplus.function.ocf-slp-001.function-body",
         "relationship": "legacy-form"
       },
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-RESTORE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -7282,6 +7608,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-HEAL, HEAL",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -7331,6 +7659,8 @@
         "narration_key": "hplus.function.ocf-slp-002.function-body",
         "relationship": "legacy-form"
       },
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-SLEEP",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -7389,6 +7719,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-20-20",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -7438,6 +7770,8 @@
         "narration_key": "hplus.function.ocf-slp-003.function-body",
         "relationship": "legacy-form"
       },
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-DREAM",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -7501,6 +7835,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-THEME, DREAM, SLEEP",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -7552,6 +7888,8 @@
       },
       "relationships": {},
       "role": "activation",
+      "spoken": "Plus Sleep Insight",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-SLEEP INSIGHT",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -7623,6 +7961,8 @@
       },
       "relationships": {},
       "role": "legacy-alias",
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-SLEEP, HELP",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -7674,6 +8014,8 @@
       },
       "relationships": {},
       "role": "activation",
+      "spoken": "Plus Sleep Easy",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-SLEEP EASY",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -7750,6 +8092,8 @@
       },
       "relationships": {},
       "role": "legacy-alias",
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-QUIET, SLEEP",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -7799,6 +8143,8 @@
         "narration_key": "hplus.function.ocf-slp-006.function-body",
         "relationship": "legacy-form"
       },
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-AWAKE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -7857,6 +8203,8 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
+      "spoken": null,
+      "spoken_review": "unresolved",
       "phrase": "PLUS-ONE, AWAKE, ALERT, ONE, ONE",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -7978,60 +8326,60 @@
     }
   ],
   "input_sha256": {
-    "functions/automation/see-be.yaml": "8e6995e92cf0e804c0d1e58a5e84b9ea93d23326f3297c1d012dbec6bd8aa5c0",
-    "functions/body/brain-repairs.yaml": "23e39829f83289d2d13a0087cf21520f059d6776ed59d5caeec7cd2da80034ba",
-    "functions/body/circulation.yaml": "fa6a93264359b24fd32a6b30c7b7e40264d2c6a5198a80603f852ee9005b391c",
-    "functions/body/de-discomfort.yaml": "f2bdaaddd941123c640c592fe9bba5711b53ef843ba8001145cb6e00d1475bdd",
-    "functions/body/de-tox-body.yaml": "f74911ea65dae0491aa449dd77dc871b51de1b10f1351ad2e6af337a4b3054fc",
-    "functions/body/eat-no-eat.yaml": "622f1341789c5060e688fb90a0812f28d1fde8fa521f7259813600461d721b6e",
-    "functions/body/heart-repairs.yaml": "a94f98634104448f9267dc4a3390c43d410eee594f88bf65832ec2373443eb6b",
-    "functions/body/hypertension.yaml": "fa0e0625eb9cf2e5a288f12c52e88f50bffcc35e604b1e507e749af96e36d47a",
-    "functions/body/immunizing.yaml": "f6fafef9d8d058f8292c34dfe1e9202f6c2b52bd5c90ce2bc6b535e3d13b9e60",
-    "functions/body/lungs-repairs.yaml": "960b29efabc3bd2feff91e1031a108e4d44e2a426708bb3366a928aa6acb8a65",
-    "functions/body/nutricia.yaml": "de2b91691bfce31b877a84795717f3ab3e0dadef1fe964400a0385334aaad925",
-    "functions/body/passages.yaml": "0a6147631580d4677ac16f30001a9334a112b1cd1f0209a73d7dc5ef9668dd83",
-    "functions/body/sex-drive.yaml": "ae0d28f22134497788d284154e6a9ebb86c16f5acc8de35274410dcd8ae12777",
-    "functions/body/tune-up.yaml": "8698803bc64a85c04a619fb0b5717e5c78604828b1d7580b6249c52f6b934f8b",
-    "functions/body/regenerate.yaml": "cf1c9bea3a32da6faf71598c388d0a1a639050388c8517df8555eb18578ed854",
-    "functions/body/short-fix.yaml": "efc9519984ca98ee3c516c05c6bcd4429909f5645fc30e524bb79072dc46900b",
-    "functions/cognition/access-to-information.yaml": "0d403482d21f2dc0aa76a4abbec95917789d14ebd6c7e48f712c4366b79477f4",
-    "functions/cognition/buy-the-numbers.yaml": "7b5ee95ef2f958eba96c84a58fad8a7eafbb44ed2955ec036aa5ddad94c6e556",
-    "functions/cognition/contemplation.yaml": "a4c223dd73d78d7eb9d39a1b44f47a32affccf63aa3cce01fdb9c29ebfba307d",
-    "functions/cognition/imprint.yaml": "1c181afe5c31ea62da30c5a2dd9fee08ff578cc7d149bac65dccb98043a40dc7",
-    "functions/cognition/options.yaml": "ebf7ca7efd6b17449152a2024ebf9179d7f69d431386d3f772811ea8b3dcb809",
-    "functions/cognition/recall.yaml": "c1a46340782dd77eefe73140cb19a720a3d1bb090d20887741ce7371c1ce2f21",
-    "functions/cognition/think-fast.yaml": "ab9c3c7010bfebaf1166fc8ecfa321d5681f76d6e8701ccc9bf9101bc40c1350",
-    "functions/communication/speak-up.yaml": "24b5010528b0883f8d933555cf4a10ec36e1d841152132843aa18d691df2e5ed",
-    "functions/emergency/emergency-injury.yaml": "c4bb00a4d88fbc1568ed9887f0ca3df974ecaac4573e08be0e671bd80a32157f",
-    "functions/emergency/emergency-toxic.yaml": "d264447aeae6bcce5286f04c51ecca6bc443f8f9f0a3fd769777d6be96472f79",
-    "functions/emotion/let-go.yaml": "9303135adc3c7f0624914e46313b85b2e7edee2a9655d7e9d59bdc7a923b8cb3",
-    "functions/emotion/off-loading.yaml": "58edd1966a71c6b39003b926546ee2727144a1bfb376fd8f694967fb00ba4c5d",
-    "functions/emotion/empathizing.yaml": "cf90ec6759b27cb980bf057f479e95f7e8b9c184084268d544212c2719a0a721",
-    "functions/experimental/mobius-west.yaml": "ca0c02236c5cf072fd28ba34c414861e143178e8b95ba8bbd805c6bfb403f1ee",
-    "functions/experimental/zoning.yaml": "efac5a869953d6a6e1372a5f9ae8ef73a237878307e9ba7423742b4f5040a94e",
-    "functions/foundation/energize.yaml": "1af40519e73e6a719eb64b50ff23704a965c92e8830e251cf76ebd8f036f812b",
-    "functions/foundation/attention.yaml": "0fcf8faa9d9c0bc64539235f29570c2cbf31a21c106e48fb55e647ebe6414c6c",
-    "functions/foundation/recharge.yaml": "4ab8b66c8a83012771892d36d462db4f09bf771611a2b606b5fabb1d99605b8b",
-    "functions/foundation/relax.yaml": "aef21c7cba12c4fef73067e9e230ccded2b845763f09ff6284477c98d94e6a84",
-    "functions/foundation/reset.yaml": "e537c07f27f8148e8375be06053dcdf4f4ec8b1e41009eb260537e0eb942285d",
-    "functions/foundation/release.yaml": "5f3ea4effe532b999242f97e2ff10630f5afcc7a63d7d1a1061359c3ab54d10b",
-    "functions/lifestyle/de-hab.yaml": "8fd20dab382b29786f67be7338e85f5e4c6fb692e1bcdd7b3415b2e12dae184f",
-    "functions/performance/do-this-now.yaml": "429faf98276acd47e55d2601e755c5237c8b5ab0a71f0b2bb679940753f89f7a",
-    "functions/performance/eight-great.yaml": "44630eed87d794cc79cc329cad4c2dc159925ffb63e2ee118e18df9e76fe3ff5",
-    "functions/performance/synchronizing.yaml": "3d3440ec1afdc9fe084d667d05eadd25bf8067172984b606ade3986ba485b38d",
-    "functions/performance/light-foot.yaml": "c416d43a62c6042a2c0d135406f594a004bd13c154cd6279b1d2728a443f8e50",
-    "functions/performance/make-your-day.yaml": "e40a9004c76b8673a3a188c943f0e62293de6cd351b92109fd92a90780be78a2",
-    "functions/performance/strong-quick.yaml": "f7e97ec487c7ba259f8f8cacf123919d76d5a17d1be64aec59e048cab1a6abcf",
-    "functions/sensory/hearing.yaml": "02027593c138e80b12199878d09c648dae50d2431bc4194a2c796f55854f5e4a",
-    "functions/sensory/seeing.yaml": "66cb24992f9f4322f214582a9dee74a17191d11f0eb5e5d14be3b875c9bed226",
-    "functions/sensory/smell.yaml": "e38071a194a864aff683ee73e34afeae8252cb4607e996dc02f73a7c793423f7",
-    "functions/sensory/taste.yaml": "3ec66b5b936a12715b8afa87205a3bface4ae7453d3bd667540c0f84cb146a61",
-    "functions/sensory/touch.yaml": "64eb49b1ee52877056b121536cf69130eb0a539e4f83fe82f5f21ab5a85654af",
-    "functions/sleep/restorative-sleep.yaml": "4eed74735f8f21ffc1f678762b76e87893cdd0bc12fb2af1153d7d452425a930",
-    "functions/sleep/sleep.yaml": "8ef4b8b34a14bade4bea98ba547339e8621b4f9b2e2facacb7b9b8717babf869",
-    "functions/sleep/sweet-dreams.yaml": "70aa3c2ac68f8892308da8e1db28894d82025f36ebc580eda836e74f571b9ebe",
-    "functions/sleep/wake-know.yaml": "e10f63a9f28f73d59129aca305ff7f9c9b5cd62bcf607497dbc9cf0420916b11",
-    "functions/sleep/sleep-easy.yaml": "4f83088a0fdaaab524c1f92be9825e7d254b324739162e0e4d6e5d92b427804e",
-    "functions/sleep/stay-awake.yaml": "582ce0356f4f1bf7e2a5873e8e7b5c8e75d47afcbc402edf894f499e828a9deb"
+    "functions/automation/see-be.yaml": "ad3b0b6c24c772a3b14cdb95f58af66149f296347e8fb4ae82e56b347df231bf",
+    "functions/body/brain-repairs.yaml": "3136af44bb811d9dfbd99e5dda6bc3d5ed7c7e53b40bbfedd81de1b231694bc2",
+    "functions/body/circulation.yaml": "ab82119a99a67d80d423e48e2e335541b4da52d7d89407c855c4586e9ebe13d3",
+    "functions/body/de-discomfort.yaml": "073295e8cd80582407d319a9f12c9c920e42832a918e864482b8dcfdbfb8a1fb",
+    "functions/body/de-tox-body.yaml": "4b961558d4e3255f0f1d542f0b1459ecb2f382541c29857bf33f6a7f15c8df35",
+    "functions/body/eat-no-eat.yaml": "1a6f925c2fa4d805475f342069a3e72dbfea47281169de69396996a0933b9a8b",
+    "functions/body/heart-repairs.yaml": "0ff3bbb6bfeed8323a5b7716bd0b0bc08116136ea42b6284445b94398c1e7315",
+    "functions/body/hypertension.yaml": "8ffae8b8066a3ffa611694c6cc2c2163f5fa069e1bd390ff9ffa9f94b786a319",
+    "functions/body/immunizing.yaml": "69dc8b7f9f6af5440df5453d10156eefca97e9f2fb809ffb494b9face1325dd3",
+    "functions/body/lungs-repairs.yaml": "899b2e0248e4a452130d5460410f080790cb2a80ee81799f303cd6dcb1a3784c",
+    "functions/body/nutricia.yaml": "60dad96e4e57e0a16b7ba894e1e353068fc75445f859cf93b9c2af3e553a87cb",
+    "functions/body/passages.yaml": "0b10c57c2b6744deadc74056f55acbcd0ad87e3a85ca2a24de7c40c24579cde6",
+    "functions/body/sex-drive.yaml": "1671db633b87d9702d9b6cf7bd3683dd2f18047b96bcba5101df53def812f99e",
+    "functions/body/tune-up.yaml": "a000c8d753f8b2346c94a469fa53b2d76361e72e0e61a7340981e3c90e04e574",
+    "functions/body/regenerate.yaml": "50aca4b3193f7a1ac0043f541a3af17d762a31f36f2d7b227ebb6c63981630c8",
+    "functions/body/short-fix.yaml": "dc8a67a825a142864371bafd55421bb7f787be895dc0ce01e48f485fe5108770",
+    "functions/cognition/access-to-information.yaml": "40bbf4bc8f50da0838174f71787517e16458d3f97d2696cfc93873b1bcbae79e",
+    "functions/cognition/buy-the-numbers.yaml": "8b7fbb6678e4783f5f118c667acead6a4bfea76f6c6208d786d3d1f3c7466cf7",
+    "functions/cognition/contemplation.yaml": "7791e189c7c153fe2c4292c0288f6d540826e3299b39ed7127a36067b13f1289",
+    "functions/cognition/imprint.yaml": "47477a7221659462376fd891aa1c39faccaaf6f21f74ff3e395cc90645d21605",
+    "functions/cognition/options.yaml": "374a63375e1a31b6337a3e9b7a5f1af81f524aa4f9453679e1cdf4788deac364",
+    "functions/cognition/recall.yaml": "aeb550a24153dcf23d3a1ae41b2b3da79e1a92345777e663b51aeb058e1c668f",
+    "functions/cognition/think-fast.yaml": "e6ce234e058cf1d8bb6ab74c6843765ee22adcf497d8a8d30fbbfd5dc14012bd",
+    "functions/communication/speak-up.yaml": "46d70a4e340d738ea2d03a42b5863cbfd9e2b08e6965b7e23e06ab0ca88ae5e3",
+    "functions/emergency/emergency-injury.yaml": "8c0d5f566cbd44db8fff2e69839f617396861b7201fe367aabb8f51e4865aa86",
+    "functions/emergency/emergency-toxic.yaml": "adbb4783d62043b806a26a677ee0a1b15717864028536a2b052dceb49ce5e992",
+    "functions/emotion/let-go.yaml": "1b3ad890769212a0a95bcf534766c87c84171e3923087770b0b0b1c1b90f5433",
+    "functions/emotion/off-loading.yaml": "c2a160d3ad0f196404b5cdbb9eac1b97456278417bb3dc0e7178d7e8e6df221c",
+    "functions/emotion/empathizing.yaml": "c5d02479a626e1736bc3e6eea63d0f02fcc8217b7e04f5613762d0ac9e76b9e0",
+    "functions/experimental/mobius-west.yaml": "4ed60aadc94a22ab8ec88ff000a8cc05cc21ed5f693d467467aab87afde100d6",
+    "functions/experimental/zoning.yaml": "f5f3aa75d3fdd7a20b0ae6959ab264a9019248169a56ec54e2140b8c1516bfa2",
+    "functions/foundation/energize.yaml": "18c8a03827f47a11814362b9a11e80c73fa6dbba0a04f802fe0c76a38a0c1378",
+    "functions/foundation/attention.yaml": "2385e4b894763480995fd4d4e471895f3edb00e378f4192ca3632a8a6742ae28",
+    "functions/foundation/recharge.yaml": "b5703b54ecea560e84c01a8e1e09b22981606ef5e4d99d7643c657324d29021a",
+    "functions/foundation/relax.yaml": "f3c4d992c8102074907114c6a13d3e86dafdfe2a2439daf45d20d56b0e44c9bd",
+    "functions/foundation/reset.yaml": "76183c0650d86bd8201c740da888f9d55f5f63701b6a0dae38c4c0903ee75080",
+    "functions/foundation/release.yaml": "8aa17264ffe9de74dc42946d9c888279a8568251cdf1c727ef30a07e64bb1373",
+    "functions/lifestyle/de-hab.yaml": "98575297b14251f7a01cfe62c5fb8678b40b27cbca230169e86d023a45ea5a27",
+    "functions/performance/do-this-now.yaml": "e47a4d41673cb081c6204f6093848bae1e88d8233d79dd493249ab5dba1a98ab",
+    "functions/performance/eight-great.yaml": "da690abd9584a4add00f942f9cf1dec639838233f31f09415bfa4c8e04d3f55d",
+    "functions/performance/synchronizing.yaml": "95d5ebee38d3cef616d18a389ee5f5b8cbc37e9ab348f655ca6d43bd4bff575b",
+    "functions/performance/light-foot.yaml": "2123ed6b85d7a83bcdcb01105a777cec65a5114981616afc53d6064e3bf202e4",
+    "functions/performance/make-your-day.yaml": "6f4ddd3b4654473aa1b3cddf72dc53e70d6f55af6d96421205d491044833db20",
+    "functions/performance/strong-quick.yaml": "47738b98c483b64d938acdc5abc38eed144dea1a2487b45cabef204bc8c8c515",
+    "functions/sensory/hearing.yaml": "1d0198c9b4b6a03dac31f61460724a322b6f123c73937f5a419b3152f7b4f945",
+    "functions/sensory/seeing.yaml": "984a0003164871f33245f062bd4985373ba145260ba1d580b479786033eb7ed3",
+    "functions/sensory/smell.yaml": "32f659909da2fed9885653d86486a8f55d52f46830cc62b4936a5dc9305d96d1",
+    "functions/sensory/taste.yaml": "c27c6f4f7d500329d3db39481c3a5d0717c0ebbd9e862dc0853b67b07a3756a8",
+    "functions/sensory/touch.yaml": "06d32c13dd99ad16114fce669eea0b271334326c68b35f235ea47d795c2bfe35",
+    "functions/sleep/restorative-sleep.yaml": "42f4d242c240fffc0d1932a80f5225006a26b582f4a633157d363cd2529cfe62",
+    "functions/sleep/sleep.yaml": "90de6d2b48a8df6b298c56da14a02c6a19bc208fa7248cb1e0405c9a5b2ba8c1",
+    "functions/sleep/sweet-dreams.yaml": "4c1d7afc463400557393e4eda70bacca7b7a22f687a1745c47c4571cbd24ff42",
+    "functions/sleep/wake-know.yaml": "6671c425e8ecc5f74deb78f0a43eaac10d2a3b26bce011fa64f32593c94de95c",
+    "functions/sleep/sleep-easy.yaml": "3e69cddf48e0183f68642925ef15af20080e4875cfd4cc2a5d488b90ca5ff930",
+    "functions/sleep/stay-awake.yaml": "8d2c2a8332e4f88d7792c290195c75e09488df0765006ac571d987de756a5adc"
   }
 }

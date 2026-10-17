@@ -55,6 +55,9 @@ entries:
       One reusable body serves four passes across Focus 11 and Focus 20.
       Rights: user_cleared per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-SLP-004
+      allowed: [cue.primary]
     text: |-
       From this moment forward, whenever you desire
       an answer, understanding, or a constructive solution,
@@ -66,7 +69,7 @@ entries:
       then allow the question to rest within you.
 
       Inhale deeply and gently hold your breath.
-      Think or say in your mind, "Plus Sleep Insight."
+      Think or say in your mind, "{{ cue.primary }}."
       Then exhale and breathe slowly and deeply.
 
       You will move calmly and easily into
@@ -95,7 +98,7 @@ entries:
 
       This ability to seek help through sleep
       will remain permanently available to you.
-      Each time you use Plus Sleep Insight,
+      Each time you use {{ cue.primary }},
       receiving and remembering useful insight
       will become easier, clearer, and more effective.
 
@@ -112,11 +115,14 @@ entries:
       selection, inhale-hold-command-exhale followed by slow deep breathing,
       and standard OCF sign-off. Rights: user_cleared per user's
       lawyer-clearance attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-SLP-004
+      allowed: [cue.primary]
     text: |-
       Remember, when you wish to receive an answer
       or solution through sleep, bring your question to mind.
       Inhale deeply and hold your breath.
-      Think or say in your mind, "Plus Sleep Insight."
+      Think or say in your mind, "{{ cue.primary }}."
       Then exhale and breathe slowly and deeply.
 
       This concludes your OCF Sleep Insight exercise.

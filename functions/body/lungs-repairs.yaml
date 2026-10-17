@@ -57,6 +57,8 @@ commands:
     status: documented
   relationships: {}
   role: activation
+  spoken: "Plus Breathe Better"
+  spoken_review: reviewed
 companions: []
 compatibility:
   rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
@@ -134,3 +136,14 @@ version:
   created: '2026-09-12'
   current: 0.1.0
   updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-009.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-009.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-009.closer
+    repetitions: 1
+    role: closer

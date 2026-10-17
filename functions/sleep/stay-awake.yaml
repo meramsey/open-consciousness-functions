@@ -52,6 +52,8 @@ commands:
     text: Plus One Awake Alert One One
     narration_key: hplus.function.ocf-slp-006.function-body
     relationship: legacy-form
+  spoken: null
+  spoken_review: unresolved
 - id: OCF-CMD-SLP-006-LEGACY-01
   function_id: OCF-SLP-006
   phrase_ref:
@@ -69,6 +71,8 @@ commands:
     order: 101
   effect_scope_ref: lifecycle.persistence
   relationships: {}
+  spoken: null
+  spoken_review: unresolved
 chains: []
 claims:
   intended_effects: []
@@ -140,3 +144,14 @@ version:
   created: '2026-09-12'
   current: 0.1.0
   updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-slp-006.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-slp-006.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-slp-006.closer
+    repetitions: 1
+    role: closer

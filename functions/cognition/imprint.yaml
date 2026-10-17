@@ -51,6 +51,8 @@ commands:
     text: Plus Imprint Imprint
     narration_key: hplus.function.ocf-cog-004.function-body
     relationship: legacy-form
+  spoken: null
+  spoken_review: unresolved
 - id: OCF-CMD-COG-004-RECALL
   function_id: OCF-COG-004
   phrase_ref:
@@ -76,6 +78,8 @@ commands:
   relationships:
     retrieves:
     - OCF-CMD-COG-004-PRIMARY
+  spoken: "Plus Recall"
+  spoken_review: reviewed
 - id: OCF-CMD-COG-004-LEGACY-01
   function_id: OCF-COG-004
   phrase_ref:
@@ -93,6 +97,8 @@ commands:
     order: 101
   effect_scope_ref: lifecycle.persistence
   relationships: {}
+  spoken: null
+  spoken_review: unresolved
 chains: []
 claims:
   intended_effects: []
@@ -162,3 +168,14 @@ version:
   created: '2026-09-12'
   current: 0.1.0
   updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-cog-004.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-cog-004.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-cog-004.closer
+    repetitions: 1
+    role: closer

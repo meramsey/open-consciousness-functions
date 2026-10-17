@@ -342,6 +342,7 @@
       "items": { "$ref": "#/definitions/commandRecord" },
       "uniqueItems": true
     },
+    "narration": {"anyOf": [{"type": "null"}, {"$ref": "function-binding.schema.json#/properties/narration_plan"}]},
     "historical_lookup": {
       "description": "Discovery-only former vocabulary. Never an active spoken alias or target selector.",
       "type": "array",
@@ -533,6 +534,9 @@
         },
         "designation": { "type": "string", "enum": ["primary", "secondary", "special"] },
         "availability": {"type": "string", "enum": ["active", "historical-lookup"], "default": "active"},
+        "spoken": {"type": ["string", "null"], "minLength": 1, "description": "Authoritative complete source-English spoken cue, null when no vocabulary decision is established."},
+        "spoken_review": {"enum": ["reviewed", "unresolved"]},
+        "spoken_variants": {"type": "object", "propertyNames": {"pattern": "^[a-z][a-z0-9_-]*$"}, "additionalProperties": {"type": "object", "additionalProperties": false, "required": ["text", "status"], "properties": {"text": {"type": "string", "minLength": 1}, "status": {"enum": ["reviewed", "unresolved"]}}}},
         "effect_scope_ref": { "type": "string", "const": "lifecycle.persistence" },
         "procedure": {
           "type": "object",
@@ -581,6 +585,7 @@
             "purpose_key": { "$ref": "#/definitions/localizationKey" },
             "explanation_key": { "$ref": "#/definitions/localizationKey" },
             "display_cue_key": { "$ref": "#/definitions/localizationKey" },
+            "spoken_variant_keys": {"type": "object", "additionalProperties": {"$ref": "#/definitions/localizationKey"}},
             "spoken_cue_key": { "$ref": "#/definitions/localizationKey", "description": "Complete explicitly reviewed spoken realization; distinct from the interface role label." }
           }
         },

@@ -59,6 +59,9 @@ entries:
       Shared preparation, state, and return material remain excluded.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-EXP-002
+      allowed: [cue.primary]
     text: |-
       From this moment forward, you have the ability
       to create a balanced zone of temperature comfort
@@ -70,7 +73,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Insulate."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
@@ -131,10 +134,13 @@ entries:
       the exact activation and adjustment/release commands, and the standard
       OCF ending. Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-EXP-002
+      allowed: [cue.primary]
     text: |-
       Remember, to establish your zone of temperature comfort,
       inhale deeply, hold your breath, and think
-      or say in your mind, "Plus Insulate."
+      or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 

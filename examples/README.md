@@ -41,7 +41,7 @@ python -m ocf_tools.examples --check --execute-read-only
 Use an editable core installation (`python -m pip install -e .`). Generation and
 `--check` parse all leaf examples, check all tool argument contracts and validate
 all static schema examples. Source and example fingerprints make drift visible.
-The last command additionally executes a **fixed allowlist** of thirteen read-only
+The last command additionally executes a **fixed allowlist** of fourteen read-only
 discovery/planning/doctor examples and validates the three dynamic schema outputs.
 It never dispatches generated placeholders. Doctor may report missing optional
 tools without invalidating its report schema. CI runs these checks from a clean

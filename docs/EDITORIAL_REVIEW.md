@@ -2,6 +2,13 @@
 
 ## Current implemented decisions
 
+The approved vocabulary now has a structural successor using
+[function-owned spoken cues and strict narration references](SYMBOLIC_CUES.md).
+This changes raw templates, not approved resolved speech. Source-pinned historical
+reports and approval ledgers remain evidence of their original revisions.
+The local interactive queue records one explicit decision at a time; context
+requests and silence never authorize edits.
+
 The [current decision sheet](releases/OCF_TITLE_CUE_CURRENT.md),
 [machine-readable current view](releases/OCF_TITLE_CUE_CURRENT.json),
 [current teaching status](releases/OCF_TEACHING_CURRENT.md),

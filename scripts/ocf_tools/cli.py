@@ -219,6 +219,11 @@ def _build_parser() -> argparse.ArgumentParser:
     function_describe.add_argument("id")
     function_describe.add_argument("--json", action="store_true")
     function_describe.add_argument("--rich", action="store_true")
+    function_preview = function_sub.add_parser(
+        "preview", help="strict resolved narration and symbolic provenance, without synthesis"
+    )
+    function_preview.add_argument("id")
+    function_preview.add_argument("--locale", default="en-US")
     function_lookup = function_sub.add_parser(
         "lookup",
         help="find current presentation by a historical name or phrase; never selects activation",
@@ -1087,6 +1092,11 @@ def cmd_locale_pseudo(args: argparse.Namespace) -> int:
                     "pronunciation": dict(entry.pronunciation),
                     "requires_events": list(entry.requires_events),
                     "required_pronunciation": list(entry.required_pronunciation),
+                    **(
+                        {"cue_template": dict(entry.cue_template)}
+                        if getattr(entry, "cue_template", None) is not None
+                        else {}
+                    ),
                 }
             for domain, entries in sorted(by_domain.items()):
                 (root / filename).write_text(
@@ -1326,6 +1336,12 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == "functions":
             import json
+
+            if args.function_kind == "preview":
+                from .cue_templates import preview
+
+                print(json.dumps(preview(args.id, args.locale), ensure_ascii=False, indent=2))
+                return 0
 
             if args.function_kind == "lookup":
                 from .vocabulary import lookup

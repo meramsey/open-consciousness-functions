@@ -308,6 +308,19 @@
     {
       "argv": [
         "functions",
+        "preview",
+        "YOUR_ID"
+      ],
+      "path": [
+        "functions",
+        "preview"
+      ],
+      "usage": "usage: ocf functions preview [-h] [--locale LOCALE] id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "functions",
         "lookup",
         "OCF-FND-002"
       ],
@@ -1727,6 +1740,13 @@
       "--json"
     ],
     [
+      "functions",
+      "preview",
+      "OCF-SLP-005",
+      "--locale",
+      "en-US"
+    ],
+    [
       "locale",
       "list"
     ],
@@ -1982,7 +2002,7 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "00bc3b58e8b591ecf3a666d273b478542fa8e1934245f414c040f7b024d46596",
+      "example_sha256": "09b66d120cae2db877c05c40be55eebfad6b41baa5b675ebdcaa5650a2e7a669",
       "schema": "session-plan.schema.json",
       "source": "audio/session-plans/en-US/OCF-FND-002.json",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
@@ -1997,6 +2017,12 @@
       "example_sha256": "d23b351e38e94f132186bee61e861dfca0609c34cf264a0429be630e8f0ac270",
       "schema": "session-template.schema.json",
       "source": "audio/templates/sessions/OCF-TPL-SESSION-LEARN-001.yaml",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "50fa58764174ba1609e05165347715cd673846ad22269c35d17aa475b3add05b",
+      "schema": "symbolic-cue-migration.schema.json",
+      "source": "function-content/editorial/symbolic-cues-001.json",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
@@ -2043,13 +2069,13 @@
     "schemas/editorial-function.schema.json": "f43a058da0c9e1815d975b255f8f96c420c2385da88627c9e78e6878cd42c6cf",
     "schemas/function-binding.schema.json": "d3095a31cf1edf746a9d6ec230b7a545765774be446a4028d8b03519df6fb33f",
     "schemas/function-decisions.schema.json": "5882d26b99b7bb3005a334926ec879cf77df8dfdfc8041219eba0e59df871a52",
-    "schemas/function-discovery.schema.json": "f5489f065a628f720dc3386cf0a627260748fd02b1cfae4b662aac4d2074264a",
+    "schemas/function-discovery.schema.json": "455bbae5b5f50ef2a1db8e38b2e4ad6495d032acb92ad9c6d084f2a7c1fb4df4",
     "schemas/function-evidence.schema.json": "e541f1af76323fb9b059c4e39ceb5ab5f2eceaa0cbf4d6e37d0230d303b919a8",
     "schemas/function-specification.schema.json": "f7348ab2cba5a5fc8b4216efd00dc3e8300e053c77d78004527ea176354409ea",
-    "schemas/function.schema.json": "631964f8aff79e1f3983d53e018a4370e6eaa0c0440d29bb20debc89cdd0c6e4",
+    "schemas/function.schema.json": "6fbfe70cbc054c212322aa6a052d9c234189adc5c3618a40f1b49bffc3c241a6",
     "schemas/hplus-review-selection.schema.json": "2e65fa5465bd6a70185dbcbb5ae3d933b81e2e7034ba17b4699b7998a392ac19",
     "schemas/locale-manifest.schema.json": "3d1188d454415a4b111beca2545ed0627e89b112943ab523e81e632c3e1558b6",
-    "schemas/locale-resource.schema.json": "f10a850edaa8ec7227b0bd33101394561cad452a348a926c63961e0864ea1e96",
+    "schemas/locale-resource.schema.json": "1573a212f7aad08201444d34f7f10b7c035307f30ea713f6d1897dfe72dab7a7",
     "schemas/mix-profile.schema.json": "5347090a2c134a4eb1bf760c944d3b94b7917d619b10544fd9e45a45cdd72ba2",
     "schemas/narration-package.schema.json": "8a9e55379eec1481cdde5fbfa55b91af471dc45fe0ae30c64da36ab5d9b1a15d",
     "schemas/narration-sources.schema.json": "5c084f128351d6a2a879b5a971007cbc9efe3fb269deb3eeb12832895e729c3e",
@@ -2062,16 +2088,17 @@
     "schemas/session-plan.schema.json": "824a833d7751536b8a1ded3784d6268847bc3bc101b06d8b649b25c163487805",
     "schemas/session-stage.schema.json": "fcdccd53577a0df9f444439199332bcc097cd9083a30c2b583f23811e48f2981",
     "schemas/session-template.schema.json": "a6e0d4d7485ba4ea09057cbfbc743a6ab737ccec7bdc71d28825acc760333ef2",
+    "schemas/symbolic-cue-migration.schema.json": "6d73f31a786e2e874a708b570339d12aa5319d18cfb4d6349abfb9c46becda1f",
     "schemas/theme.schema.json": "e4316f7acbd55c53c255d06efba8ecd8d3f7b69541219ee360d24f4779ccb6fb",
     "schemas/timed-transcript.schema.json": "c3e2798f7ace0ba81c1fb5f1d2fa5afad20066ac3285a2fb7772dbed995b5950",
     "schemas/voice-dataset.schema.json": "0307327f3f52eeaaaed71abaa6d1950c0b665fc677b43547e2452e9c31000ed8",
     "schemas/voice-profile.schema.json": "0204c3379a0540d22e3792ee5b78ad134bd2a8cb73ddf51c975a602dbcb2c23d",
-    "scripts/ocf_tools/agent_api.py": "41628d906e777015661f4f88a71ba415d6b463e62122c3676fe2e277f1c9fc03",
-    "scripts/ocf_tools/cli.py": "ddac453a6147ff2dcfb79ed30ac82523dcce3cd1172a40c04340c7f959661b16",
-    "scripts/ocf_tools/lsp_server.py": "36e0d66e2aacdf2b0d32647b76da96735588ca23d03ad70ff47061c2c154e061",
+    "scripts/ocf_tools/agent_api.py": "3fb5c11dba79570b8c4c0864fbd91b787aade571cec403863e91b88d33d2251d",
+    "scripts/ocf_tools/cli.py": "153d7d205b9e94c9804bb3a85b9a67645ad124965862da42a9e0eaba78921a54",
+    "scripts/ocf_tools/lsp_server.py": "a753b91b1b73609ecd6886470a037a9bbf1259e2a77f08203546e55ef4cbae09",
     "scripts/ocf_tools/mcp_server.py": "d8641d4160888abbe7152fca2117623de4dfb061793b95b161dbfb4534a2be54",
     "scripts/ocf_tools/narration_cli.py": "5f13a05251816e5d3b80419d9ed67184b5c6c48722175700bbc88ec2b429bd41",
-    "scripts/ocf_tools/prompts.py": "968a77a45feb25b292a05e50041a40930756096474adca46138c30332efbd739",
+    "scripts/ocf_tools/prompts.py": "3ac363286118b80afb1c7b9fc0424228f3c1721dfb1f627128a50c47a3c5e6c3",
     "scripts/ocf_tools/voice_engine_cli.py": "da5904aff97e0dc9923c80b891adc9a8131d8cd8da71b54cc44e8a71f84c99d6"
   },
   "workflows": {

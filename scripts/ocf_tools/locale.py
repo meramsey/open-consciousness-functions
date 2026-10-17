@@ -24,10 +24,11 @@ from __future__ import annotations
 
 import ast
 import copy
+import hashlib
 import math
 import re
 from collections.abc import Iterable, Iterator, Mapping, Sequence
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Any, Union
 
@@ -800,14 +801,28 @@ class NarrationResource:
     file: str | None = None
     requires_events: tuple[str, ...] = ()
     required_pronunciation: tuple[str, ...] = ()
+    cue_template: Mapping[str, Any] | None = None
+    raw_template: str | None = None
+    cue_provenance: tuple = ()
 
     @property
     def used_variables(self) -> set[str]:
+        if self.cue_template is not None or self.raw_template is not None:
+            return set()
         return message_variables(self.text)
 
     def check_contract(self) -> list[str]:
         """Declared variables must exactly match the ones the message uses."""
         problems: list[str] = []
+        if self.cue_template is not None:
+            from .cue_templates import scan
+
+            symbols = {part["symbol"] for part in scan(self.text) if "symbol" in part}
+            if symbols != set(self.cue_template.get("allowed", [])):
+                problems.append("cue-template references must match explicit allowed symbols")
+            if self.variables:
+                problems.append("cue templates cannot accept caller ICU variables")
+            return problems
         used = self.used_variables
         undeclared = sorted(used - set(self.variables))
         unused = sorted(set(self.variables) - used)
@@ -845,6 +860,10 @@ class NarrationResource:
         plural_rules: Mapping[str, str] | None = None,
     ) -> str:
         """Format this message, enforcing the declared variable contract."""
+        if self.cue_template is not None:
+            raise LocalizationError(
+                f"{self.locale}:{self.key}: resolve symbolic narration through LocaleCatalog first"
+            )
         problems = self.check_contract()
         if problems:
             raise LocalizationError(f"{self.locale}:{self.key} {'; '.join(problems)}")
@@ -861,6 +880,8 @@ class NarrationResource:
             raise LocalizationError(
                 f"{self.locale}:{self.key} variable mismatch: {'; '.join(parts)}"
             )
+        if self.raw_template is not None:
+            return self.text
         return format_message(
             self.text,
             supplied,
@@ -963,6 +984,18 @@ def _entry_from_value(
         declared = value.get(name)
         if declared is not None and not isinstance(declared, dict):
             raise LocalizationError(f"{locale} {filename}: entry {key!r} {name} must be an object")
+    contract = value.get("cue_template")
+    if contract is not None:
+        if (
+            not isinstance(contract, dict)
+            or set(contract) != {"function_id", "allowed"}
+            or not isinstance(contract.get("function_id"), str)
+            or not isinstance(contract.get("allowed"), list)
+            or not all(isinstance(symbol, str) for symbol in contract["allowed"])
+        ):
+            raise LocalizationError(
+                f"{locale} {filename}:{key}: cue_template requires function_id and an allowed-symbol list"
+            )
     variables = tuple(value.get("variables") or ())
     for name in variables:
         if not isinstance(name, str) or not VARIABLE_RE.match(name):
@@ -974,6 +1007,7 @@ def _entry_from_value(
         locale=locale,
         domain=domain,
         text=text,
+        cue_template=value.get("cue_template"),
         variables=variables,
         status=value.get("status"),
         version=value.get("version"),
@@ -1069,9 +1103,16 @@ class LocaleCatalog:
     """Registry of every pack under ``locales/``."""
 
     def __init__(
-        self, root: Path | None = None, *, reader=None, exists=None, directories=None
+        self,
+        root: Path | None = None,
+        *,
+        reader=None,
+        exists=None,
+        directories=None,
+        function_records=None,
     ) -> None:
         self.root = Path(root) if root else LOCALES_DIR
+        self._function_records = function_records
         self.packs: dict[str, LocalePack] = {}
         self.problems: list[str] = []
         if directories is None and not self.root.is_dir():
@@ -1113,6 +1154,7 @@ class LocaleCatalog:
         instance.root = Path()
         instance.packs = {}
         instance.problems = []
+        instance._function_records = None
         for locale, pack in packs:
             normalized = normalize_tag(locale)
             if normalized in instance.packs:
@@ -1245,11 +1287,8 @@ class LocaleCatalog:
         requested locale. A missing translation is an error to fix, not a reason
         to drop an English sentence into a translated session.
         """
-        resolution = self.lookup(key, locale, domain=NARRATION_DOMAIN, fallback=not strict)
-        pack = self.require(resolution.origin_locale)
-        return pack.entries[key].render(
-            variables, plural_rules=self.plural_rules_for(resolution.origin_locale)
-        )
+        entry, resolution = self.resource(key, locale, domain=NARRATION_DOMAIN, fallback=not strict)
+        return entry.render(variables, plural_rules=self.plural_rules_for(resolution.origin_locale))
 
     def resource(
         self,
@@ -1259,8 +1298,73 @@ class LocaleCatalog:
         domain: str | None = None,
         fallback: bool = True,
     ) -> tuple[NarrationResource, Resolution]:
+        entry, resolution = self.raw_resource(key, locale, domain=domain, fallback=fallback)
+        if entry.cue_template is not None:
+            from .cue_templates import CueTemplateError, expand
+
+            text, provenance = expand(entry, resolution.origin_locale, self)
+            pronunciation = copy.deepcopy(dict(entry.pronunciation))
+            required = list(entry.required_pronunciation)
+            for reference in provenance:
+                cue = reference["provenance"]
+                cue_key = cue.get("spoken_cue_key") or (
+                    cue.get("key") if reference["symbol"].startswith("cue.") else None
+                )
+                if not cue_key:
+                    continue
+                cue_entry, _ = self.raw_resource(
+                    cue_key,
+                    cue.get("spoken_locale", cue.get("locale", resolution.origin_locale)),
+                    domain=NARRATION_DOMAIN,
+                    fallback=False,
+                )
+                for token, hints in cue_entry.pronunciation.items():
+                    previous = pronunciation.setdefault(token, {})
+                    for backend, hint in hints.items():
+                        if backend in previous and previous[backend] != hint:
+                            raise CueTemplateError(
+                                f"{entry.key}: conflicting pronunciation for {token!r}/{backend}; declare a reviewed variant"
+                            )
+                        previous[backend] = hint
+                required.extend(
+                    token for token in cue_entry.required_pronunciation if token not in required
+                )
+            entry = replace(
+                entry,
+                text=text,
+                cue_template=None,
+                raw_template=entry.text,
+                cue_provenance=tuple(provenance),
+                pronunciation=pronunciation,
+                required_pronunciation=tuple(required),
+            )
+        elif entry.domain == NARRATION_DOMAIN and not entry.variables:
+            from .cue_templates import reject_unexpanded
+
+            reject_unexpanded(entry.text)
+        return entry, resolution
+
+    def raw_resource(self, key, locale=None, *, domain=None, fallback=True):
         resolution = self.lookup(key, locale, domain=domain, fallback=fallback)
         return self.require(resolution.origin_locale).entries[key], resolution
+
+    def function_records(self):
+        if self._function_records is not None:
+            return self._function_records()
+        from .indexes import load_all_functions
+        from .models import function_from_dict
+
+        if self.root.resolve() == LOCALES_DIR.resolve():
+            return load_all_functions()
+        functions = self.root.parent / "functions"
+        result = []
+        for path in sorted(functions.rglob("*")):
+            if not path.is_file() or path.suffix not in {".yaml", ".yml"}:
+                continue
+            if not path.resolve().is_relative_to(functions.resolve()):
+                raise LocalizationError("cue authority escapes its function root")
+            result.append(function_from_dict(load_yaml_file(path), path))
+        return result
 
     def provenance(self) -> dict[str, Any]:
         """Per-pack translation provenance, for `ocf locale list`."""
@@ -1418,6 +1522,7 @@ def build_pseudo_pack(
             file=entry.file,
             requires_events=entry.requires_events,
             required_pronunciation=entry.required_pronunciation,
+            cue_template=entry.cue_template,
         )
         for key, entry in source.entries.items()
     }
@@ -1570,6 +1675,19 @@ def resolve_document(
                 "locale": resolution.origin_locale,
                 "resource_file": entry.file,
                 "version": entry.version,
+                **(
+                    {
+                        "raw_template_sha256": hashlib.sha256(
+                            entry.raw_template.encode("utf-8")
+                        ).hexdigest(),
+                        "resolved_text_sha256": hashlib.sha256(
+                            entry.text.encode("utf-8")
+                        ).hexdigest(),
+                        "cue_references": list(entry.cue_provenance),
+                    }
+                    if entry.raw_template is not None
+                    else {}
+                ),
                 "status": entry.status or (catalog.get(resolution.origin_locale) or pack).status,
                 "pacing_units": list(pacing_units) if pacing_units else None,
             }

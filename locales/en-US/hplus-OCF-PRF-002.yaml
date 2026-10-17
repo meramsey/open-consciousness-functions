@@ -54,6 +54,9 @@ entries:
       and Focus 20. Affirmative effects represent intended exercise
       suggestions. Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-PRF-002
+      allowed: [cue.primary]
     text: |-
       Beginning now, and from this moment forward,
       you will recognize more fully the greatness
@@ -90,7 +93,7 @@ entries:
       even more strongly into your life,
       inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Inner Power."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth,
       as though gently blowing out a candle.
@@ -100,7 +103,7 @@ entries:
       You will feel and express your natural inner power
       with calmness, confidence, and ease.
 
-      The more you use Plus Inner Power,
+      The more you use {{ cue.primary }},
       the easier and more effective this recognition
       and expression of your total self will become.
 
@@ -116,12 +119,15 @@ entries:
       OCF ending. This is adapted narration, not verbatim source wording.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-PRF-002
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to strengthen
       your awareness and expression of your total self,
       inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus Inner Power."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth,
       as though gently blowing out a candle.

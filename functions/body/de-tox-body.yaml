@@ -58,6 +58,8 @@ commands:
     status: documented
   relationships: {}
   role: activation
+  spoken: "Plus Detox"
+  spoken_review: reviewed
 - availability: historical-lookup
   designation: secondary
   documentation:
@@ -76,6 +78,8 @@ commands:
     source: legacy-command
   relationships: {}
   role: legacy-alias
+  spoken: null
+  spoken_review: unresolved
 companions: []
 compatibility:
   rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
@@ -153,3 +157,14 @@ version:
   created: '2026-09-12'
   current: 0.1.0
   updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-004.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-004.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-004.closer
+    repetitions: 1
+    role: closer

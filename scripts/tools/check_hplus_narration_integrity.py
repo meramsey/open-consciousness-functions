@@ -1,8 +1,9 @@
 """Verify the reviewed en-US HPlus narration against frozen text fingerprints.
 
 This check covers every entry in the 55 function resources and four shared
-resources. The fixture fingerprints parsed YAML ``text`` values only; notes,
-status, version, and source provenance remain independently editable metadata.
+resources. The fixture fingerprints effective narration text. Declared symbolic
+resources resolve through LocaleCatalog first; their raw templates and exact
+structural delta are independently protected by the symbolic successor ledger.
 """
 
 from __future__ import annotations
@@ -49,6 +50,7 @@ def narration_texts(root: Path = REPO_ROOT) -> dict[str, str]:
     }
     texts: dict[str, str] = {}
     owners: dict[str, str] = {}
+    symbolic_catalog = None
     for path in paths:
         if not path.is_file():
             raise ValueError(f"required narration resource is missing: {path}")
@@ -77,6 +79,14 @@ def narration_texts(root: Path = REPO_ROOT) -> dict[str, str]:
             )
             if not isinstance(text, str) or not text.strip():
                 raise ValueError(f"narration entry has no non-empty parsed text: {path}::{key}")
+            if isinstance(value, dict) and value.get("cue_template"):
+                from ocf_tools.locale import LocaleCatalog
+
+                if symbolic_catalog is None:
+                    symbolic_catalog = LocaleCatalog(root / LOCALE_ROOT.parent)
+                text = symbolic_catalog.resource(key, "en-US", domain="narration", fallback=False)[
+                    0
+                ].text
             owners[key] = path.relative_to(root).as_posix()
             texts[f"{owners[key]}::{key}"] = text
     return texts
@@ -115,6 +125,10 @@ def check(root: Path = REPO_ROOT, baseline: Path = BASELINE_PATH) -> list[str]:
         from ocf_tools.cue_migration import verify_migration
 
         problems.extend(verify_migration())
+        if (root / "function-content/editorial/symbolic-cues-001.json").is_file():
+            from ocf_tools.symbolic_integrity import verify
+
+            problems.extend(verify(root))
     return problems
 
 

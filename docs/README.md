@@ -6,6 +6,7 @@ loading the entire documentation tree:
 - Author a function: [lifecycle](FUNCTION_LIFECYCLE.md), then
   [source-first narration](SOURCE_FIRST_AUTHORING.md).
 - Review current titles/cues and historical lookup: [implemented decisions](EDITORIAL_REVIEW.md).
+- Author symbolic narration and preview resolved speech: [strict cue references](SYMBOLIC_CUES.md).
 - Translate: [localization](LOCALIZATION.md) and [locale packs](../locales/README.md).
 - Plan and audition: [bulk sessions](BULK_SESSIONS.md), then
   [audio pipeline](AUDIO_PIPELINE.md).

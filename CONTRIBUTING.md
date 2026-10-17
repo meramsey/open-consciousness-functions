@@ -11,6 +11,12 @@ the same services through [optional local MCP](docs/MCP.md) or `ocf dev`.
 Renderability, historical sources, human review and release clearance remain
 separate. Never commit reference material, private audio or `.ocf-work/` outputs.
 
+For cue authoring, use [function authority and symbolic cues](docs/SYMBOLIC_CUES.md).
+Enter complete English speech once in function YAML, retain exact display spelling,
+and use declared symbolic references in narration. The wizard does not approve
+new wording. Translate only after per-locale terminology review; no universal
+Plus prefix, English word order or word count is assumed.
+
 ## Easy contributor path
 
 You do not need to know YAML, schemas, or git internals:

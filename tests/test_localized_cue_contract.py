@@ -47,12 +47,18 @@ def test_complete_locale_native_cue_is_never_tokenized_or_built_from_label(
     def resource(key, target, *, domain, fallback):
         seen.append((key, domain, fallback))
         return SimpleNamespace(
-            text="Native display" if domain == "ui" else speech, version="2.0.0", status="reviewed"
+            text=("PLUS-MANIFEST" if locale == "en-US" else "Native display")
+            if domain == "ui"
+            else speech,
+            version="2.0.0",
+            status="reviewed",
         ), SimpleNamespace(origin_locale=locale, fallback=False)
 
     catalog = SimpleNamespace(canonical_locale="en-US", resource=resource)
     result = localized_cue(owner, command, locale, catalog=catalog, strict=True)
-    assert result["spoken_cue"] == speech and result["display_cue"] == "Native display"
+    assert result["spoken_cue"] == speech and result["display_cue"] == (
+        "PLUS-MANIFEST" if locale == "en-US" else "Native display"
+    )
     assert seen == [("cue.display", "ui", True), ("cue.spoken", "narration", False)]
     assert "role.label" not in [row[0] for row in seen]
 

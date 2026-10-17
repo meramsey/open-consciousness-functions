@@ -43,6 +43,8 @@ commands:
     - hplus.function.ocf-fnd-001.function-body
     before_steps: []
   relationships: {}
+  spoken: "Plus Energize"
+  spoken_review: reviewed
 - id: OCF-CMD-FND-001-ACCESS-CLOSE
   function_id: OCF-FND-001
   phrase_ref:
@@ -65,6 +67,8 @@ commands:
     - hplus.function.ocf-fnd-001.access-close
     before_steps: []
   relationships: {}
+  spoken: "plus, release, eleven, access"
+  spoken_review: reviewed
 command_phrases:
 - id: OCF-CMD-FND-001-ACCESS-CLOSE
   phrase: Plus Release Eleven Access
@@ -138,3 +142,14 @@ version:
   created: '2026-09-12'
   current: 0.1.0
   updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-fnd-001.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-fnd-001.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-fnd-001.closer
+    repetitions: 1
+    role: closer

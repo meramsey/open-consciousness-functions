@@ -316,7 +316,9 @@ def create_server(*, fixed_root=None):
         for row in rows:
             value = row.get("value", row["label"])
             quoted = span.start > 0 and doc.text[span.start - 1 : span.start] in ("'", '"')
-            if row["kind"] == "property":
+            if row["kind"] == "cue-symbol":
+                insertion = str(value)
+            elif row["kind"] == "property":
                 following = doc.text[span.end :].lstrip()
                 insertion = (
                     row["label"] if following.startswith(('"', "'", ":")) else row["label"] + ": "

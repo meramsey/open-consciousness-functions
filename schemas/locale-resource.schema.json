@@ -34,6 +34,7 @@
         "requires_events": {"type": "array", "items": {"type": "string", "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"}, "uniqueItems": true},
         "required_pronunciation": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
         "text": { "type": "string", "minLength": 1 },
+        "cue_template": {"type": "object", "additionalProperties": false, "required": ["function_id", "allowed"], "properties": {"function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"}, "allowed": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}}},
         "variables": {
           "description": "Declared template variables. Must list exactly the variables the message uses. A caller that supplies a different set is a validation error, which is what catches missing, unknown, and cross-locale mismatched variables.",
           "type": "array",

@@ -51,6 +51,8 @@ def verify_migration(root: Path = REPO_ROOT):
     from tools.approved_cue_migration import APPROVED, text_operations
     from tools.check_hplus_narration_integrity import narration_texts, text_fingerprints
 
+    from .symbolic_integrity import predecessor_text
+
     data = decision_record(root)
     from .validators import _load_schema, validate_against_schema
 
@@ -103,10 +105,12 @@ def verify_migration(root: Path = REPO_ROOT):
     if permitted.keys() - previous.keys():
         problems.append("editorial allowlist contains unknown protected identities")
     for name, expected in data["unaffected_function_sha256"].items():
-        if text_sha(contained(root, name).read_text(encoding="utf-8")) != expected:
+        contained(root, name)
+        if text_sha(predecessor_text(root, name)) != expected:
             problems.append("unaffected function changed: " + name)
     for name, values in data["source_files"].items():
-        if text_sha(contained(root, name).read_text(encoding="utf-8")) != values["after_sha256"]:
+        contained(root, name)
+        if text_sha(predecessor_text(root, name)) != values["after_sha256"]:
             problems.append("editorial source fingerprint mismatch: " + name)
     # Frozen configuration is retained; the successor only changes declared content.
     old_lock_raw = contained(root, data["previous_defaults_lock"]).read_text(encoding="utf-8")

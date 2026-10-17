@@ -138,6 +138,20 @@ def load_layers(function_id: str, root: Path | None = None) -> dict:
         if path.is_file():
             layers[layer] = load_yaml_file(path)
     errors = validate_layers(layers, function_id)
+    if root is None:
+        from .indexes import load_function_by_id
+
+        owner = load_function_by_id(function_id)
+        if (
+            owner
+            and layers.get("bindings")
+            and not errors
+            and "narration" in owner.data
+            and layers.get("bindings", {}).get("narration_plan") != owner.data["narration"]
+        ):
+            errors.append(
+                "compatibility narration_plan conflicts with authoritative function YAML narration"
+            )
     if errors:
         raise OCFError("function content: " + " | ".join(errors))
     return layers

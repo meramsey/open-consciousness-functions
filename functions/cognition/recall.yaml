@@ -46,6 +46,8 @@ commands:
       operation: select-memory
       localization_key: command.procedure.select-memory
   relationships: {}
+  spoken: "Plus Recall"
+  spoken_review: reviewed
 chains: []
 claims:
   intended_effects: []
@@ -113,3 +115,14 @@ version:
   created: '2026-09-12'
   current: 0.1.0
   updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-cog-006.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-cog-006.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-cog-006.closer
+    repetitions: 1
+    role: closer

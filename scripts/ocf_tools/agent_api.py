@@ -320,7 +320,11 @@ def list_functions(
 
 @public
 def get_function(
-    function_id: str, fields: list[str] | None = None, previous_hash: str | None = None
+    function_id: str,
+    fields: list[str] | None = None,
+    previous_hash: str | None = None,
+    locale: str = "en-US",
+    preview: bool = False,
 ) -> dict:
     from .commands import cue_presentation
     from .content import load_layers
@@ -339,8 +343,12 @@ def get_function(
             "source_count": len(layers.get("evidence", {}).get("sources", [])),
         },
         "release_ready": False,
-        "cue_presentation": cue_presentation(record, "en-US"),
+        "cue_presentation": cue_presentation(record, locale),
     }
+    if preview:
+        from .cue_templates import preview as preview_narration
+
+        data["narration_preview"] = preview_narration(function_id, locale)
     if fields:
         unknown = set(fields) - data.keys()
         if unknown:

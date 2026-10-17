@@ -9,6 +9,11 @@ a source checkout. Core OCF works without the SDK.
 
 ## Install and start
 
+`ocf_get_function` accepts `locale` and `preview: true` for a read-only
+[symbolic narration preview](SYMBOLIC_CUES.md), including raw template, resolved
+text and identity/hash provenance. CLI `functions preview` uses that same service.
+It does not synthesize audio, approve vocabulary or change a release state.
+
 From the repository root, using Python 3.11+ in your local environment:
 
 ```bash

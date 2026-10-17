@@ -50,6 +50,8 @@ commands:
   relationships:
     pairs_with:
     - OCF-CMD-BOD-010-FOOD-LESS
+  spoken: "Plus Food More"
+  spoken_review: reviewed
 - id: OCF-CMD-BOD-010-FOOD-LESS
   function_id: OCF-BOD-010
   phrase_ref:
@@ -80,6 +82,8 @@ commands:
     - OCF-CMD-BOD-010-PRIMARY
     modifies:
     - OCF-CMD-BOD-010-PRIMARY
+  spoken: "Plus Food Less"
+  spoken_review: reviewed
 chains: []
 claims:
   intended_effects: []
@@ -156,3 +160,14 @@ version:
   created: '2026-09-12'
   current: 0.1.0
   updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-010.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-010.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-010.closer
+    repetitions: 1
+    role: closer

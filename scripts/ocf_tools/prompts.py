@@ -309,6 +309,9 @@ def run_function_wizard() -> None:
             help_text="Short command starting with PLUS, e.g. PLUS-FOCUS.",
             validator=lambda v: v.startswith("PLUS") or "commands must start with PLUS",
         )
+        spoken = ask(
+            "Complete source-English spoken cue (blank if undecided)", default="", allow_skip=True
+        )
         modes = multi_ask(
             "Optional command modes (comma-separated)",
             help_text="e.g. PLUS-SEE MORE / PLUS-SEE LESS.",
@@ -424,6 +427,7 @@ def run_function_wizard() -> None:
         secondary_domains=secondary,
         purpose=str(purpose.value),
         canonical_command=str(command.value),
+        spoken_cue=str(spoken.value) if spoken.intent == "value" and spoken.value else None,
         modes=modes,
         legacy_name=str(legacy_name.value),
         legacy_commands=legacy_cmds,
@@ -481,6 +485,9 @@ def run_function_wizard() -> None:
     print("  3. Regenerate indexes:              ./scripts/ocf build-index")
     print("  4. Consider a proposal:             ./scripts/ocf new proposal")
     print("  5. Author/review locale narration:  docs/SOURCE_FIRST_AUTHORING.md")
+    print(
+        "     Use {{ cue.primary }} in a declared cue_template; never copy literal cue wording into teaching."
+    )
     print(
         "  6. Bind existing narration:         ./scripts/ocf audio migrate-bindings "
         + function_id
@@ -581,7 +588,7 @@ def build_function_yaml(**kwargs: Any) -> dict[str, Any]:
     if kwargs.get("legacy_commands"):
         compat["legacy_commands"] = kwargs["legacy_commands"]
 
-    return {
+    record = {
         "schema_version": "1.0",
         "id": kwargs["function_id"],
         "slug": kwargs["slug"],
@@ -605,9 +612,7 @@ def build_function_yaml(**kwargs: Any) -> dict[str, Any]:
         },
         "ocf": {
             "reimplementation_status": kwargs.get("reimplementation_status", "planned"),
-            "command_review": "approved"
-            if kwargs.get("command_status") == "unchanged"
-            else "needs-review",
+            "command_review": "needs-review",
             "testing_status": kwargs.get("testing_status"),
         },
         "aliases": {
@@ -676,6 +681,48 @@ def build_function_yaml(**kwargs: Any) -> dict[str, Any]:
         "version": {"current": "0.1.0", "created": today, "updated": today},
         "history": [{"version": "0.1.0", "date": today, "note": history_note}],
     }
+    prefix = "OCF-CMD-" + kwargs["function_id"][4:]
+    primary = {
+        "id": prefix + "-PRIMARY",
+        "function_id": kwargs["function_id"],
+        "phrase_ref": {"source": "canonical-primary"},
+        "role": "activation",
+        "designation": "primary",
+        "spoken": kwargs.get("spoken_cue"),
+        "spoken_review": "unresolved",
+    }
+    commands = [primary]
+    mode_ids = []
+    for number, _ in enumerate(record["canonical"]["command"]["modes"], 1):
+        identifier = f"{prefix}-MODE-{number:03d}"
+        mode_ids.append(identifier)
+        commands.append(
+            {
+                "id": identifier,
+                "function_id": kwargs["function_id"],
+                "phrase_ref": {"source": "canonical-mode", "command_id": identifier},
+                "role": "mode",
+                "designation": "secondary",
+                "spoken": None,
+                "spoken_review": "unresolved",
+            }
+        )
+    record["canonical"]["command"]["mode_ids"] = mode_ids
+    if record["lifecycle"]["release"]["command"]:
+        commands.append(
+            {
+                "id": prefix + "-RELEASE",
+                "function_id": kwargs["function_id"],
+                "phrase_ref": {"source": "lifecycle-release"},
+                "role": "release",
+                "designation": "secondary",
+                "spoken": None,
+                "spoken_review": "unresolved",
+            }
+        )
+    record["commands"] = commands
+    record["narration"] = None
+    return record
 
 
 # ---------------------------------------------------------------------------

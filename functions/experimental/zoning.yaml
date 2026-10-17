@@ -67,6 +67,8 @@ commands:
     status: documented
   relationships: {}
   role: activation
+  spoken: "Plus Insulate"
+  spoken_review: reviewed
 - designation: secondary
   documentation:
     order: 11
@@ -92,6 +94,8 @@ commands:
     cancels:
     - OCF-CMD-EXP-002-PRIMARY
   role: cancel
+  spoken: "Plus Cancel"
+  spoken_review: reviewed
 - availability: historical-lookup
   designation: secondary
   documentation:
@@ -110,6 +114,8 @@ commands:
     source: legacy-command
   relationships: {}
   role: legacy-alias
+  spoken: null
+  spoken_review: unresolved
 - designation: special
   documentation:
     order: 200
@@ -138,6 +144,8 @@ commands:
     releases:
     - OCF-CMD-EXP-002-PRIMARY
   role: release
+  spoken: "Plus Release"
+  spoken_review: reviewed
 companions: []
 compatibility:
   rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
@@ -216,3 +224,14 @@ version:
   created: '2026-09-12'
   current: 0.1.0
   updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-exp-002.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-exp-002.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-exp-002.closer
+    repetitions: 1
+    role: closer

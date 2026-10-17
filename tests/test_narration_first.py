@@ -112,8 +112,15 @@ def test_plan_requires_explicit_binding_and_reviewed_resources(monkeypatch):
     monkeypatch.setattr(
         nf, "load_layers", lambda _function_id: {"specifications": {}, "bindings": {}}
     )
+    # Function YAML is authoritative even without the compatibility layer copy.
+    assert nf.plan_narration("OCF-SLP-005", locale="en-US", voice="test")["segments"]
+    original_loader = nf.load_function_by_id
+    record = original_loader("OCF-SLP-005")
+    record.data.pop("narration")
+    monkeypatch.setattr(nf, "load_function_by_id", lambda _id: record)
     with pytest.raises(OCFError, match="no explicit.*narration_plan"):
         nf.plan_narration("OCF-SLP-005", locale="en-US", voice="test")
+    monkeypatch.setattr(nf, "load_function_by_id", original_loader)
 
     original_resource = LocaleCatalog.resource
 

@@ -51,6 +51,8 @@ commands:
   relationships:
     pairs_with:
     - OCF-CMD-SEN-004-TASTE-LESS
+  spoken: "Plus Taste More"
+  spoken_review: reviewed
 - id: OCF-CMD-SEN-004-TASTE-LESS
   function_id: OCF-SEN-004
   phrase_ref:
@@ -78,6 +80,8 @@ commands:
     - OCF-CMD-SEN-004-PRIMARY
     modifies:
     - OCF-CMD-SEN-004-PRIMARY
+  spoken: "Plus Taste Less"
+  spoken_review: reviewed
 - id: OCF-CMD-SEN-004-LEGACY-01
   function_id: OCF-SEN-004
   phrase_ref:
@@ -95,6 +99,8 @@ commands:
     order: 101
   effect_scope_ref: lifecycle.persistence
   relationships: {}
+  spoken: null
+  spoken_review: unresolved
 - id: OCF-CMD-SEN-004-LEGACY-02
   function_id: OCF-SEN-004
   phrase_ref:
@@ -112,6 +118,8 @@ commands:
     order: 102
   effect_scope_ref: lifecycle.persistence
   relationships: {}
+  spoken: null
+  spoken_review: unresolved
 chains: []
 claims:
   intended_effects: []
@@ -185,3 +193,14 @@ version:
   created: '2026-09-12'
   current: 0.1.0
   updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-sen-004.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-sen-004.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-sen-004.closer
+    repetitions: 1
+    role: closer

@@ -75,7 +75,7 @@
         "dev ocf"
       ],
       "related_schemas": [],
-      "sha256": "840bb29e52daeb19b8b68eaba89cee942acb48e63b62b51fe2ab952245f1b8b1",
+      "sha256": "42d1afc1e91ff3de03ba80f07983ade8c53062d949f1992b04a541a4e9d91d98",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -161,7 +161,7 @@
         "voice"
       ],
       "related_schemas": [],
-      "sha256": "d8e772ed4d22fe462dc71295a85b9a1faced3f188f7a34d7de6e701bc4d99205",
+      "sha256": "0fa5033d96527eb587a5e77d4ce3abd2e9f85585c000274399611bd1306a7ad7",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -242,6 +242,7 @@
         "doctor",
         "functions describe",
         "functions list",
+        "functions preview",
         "mcp",
         "narration sources",
         "voice capabilities",
@@ -249,7 +250,7 @@
         "voice doctor"
       ],
       "related_schemas": [],
-      "sha256": "0d067d348168b0a70310a7a6af333b128a6d00eaae770493b81456854fb0e31c",
+      "sha256": "a0e215174040dc07e908b232ff5c99ba6a933b05f850b8c73dab05bda6369dbf",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -558,7 +559,7 @@
         "schemas/audio-release.schema.json",
         "schemas/mix-profile.schema.json"
       ],
-      "sha256": "6bf8250c35f3e8916f8755139c63b74117d4c7cc54ddb807df4d865dfcacc722",
+      "sha256": "2c08c07836dbde9b26ec0e36eb9b4147aafd74ab68a8df186a7abaf596483768",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -812,7 +813,7 @@
       "related_schemas": [
         "schemas/function.schema.json"
       ],
-      "sha256": "1810815747ea8b6d98fb27f1be2382d4f3fe85e6db5eb9005f7a2aa2fef189a8",
+      "sha256": "f01dd48aad67f5bebb1100408eaddf6c2882b6b899708f9c6dfcde6e4fd80ea2",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -935,7 +936,7 @@
         "functions lookup"
       ],
       "related_schemas": [],
-      "sha256": "19bfda69da7f7ed6db2f21ed9fc6bf3cb37c07f52761efc706f690d50ae218d0",
+      "sha256": "9773651a9e272b07abebb560aa11bdd0a8c466b177049c3681474ae7270b0c33",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1014,7 +1015,7 @@
         "new session-plan"
       ],
       "related_schemas": [],
-      "sha256": "ae8ea6ba0cbc70ae66c3b846b203986691c3613b2b9616cca5c94a15d4b0099b",
+      "sha256": "c5f3b994eb92183ced11c84c100416e80dba107d820e461a99ff9554b411a5c1",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1155,7 +1156,7 @@
         "voice render"
       ],
       "related_schemas": [],
-      "sha256": "1fba938e91fecade9c738d0c579a080d4a0ed4d25e6fb47a8a67d35ded7bb5c5",
+      "sha256": "87e8072e282c8fbc28cbc3632a31caad0a8e8cc5fc5a745e46d82f65ab0a889f",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1196,7 +1197,7 @@
       "related_schemas": [
         "schemas/function.schema.json"
       ],
-      "sha256": "5485a2a22d2e14bc5d3b5f4492b51df3c2c707fc387831604b09557c1e8917f2",
+      "sha256": "1a058eb08a11a9ee8410c0348ef5dff34643c35dc61a415b655ebf99fb95e224",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1218,7 +1219,7 @@
         "voice import-profile"
       ],
       "related_schemas": [],
-      "sha256": "fa8a2e03ec40b2b08760a9dcc6309abb3dfdc8217b0db153834c2e75f4a333cf",
+      "sha256": "8f6f08697be04f0a087d75d174611348ec8438ea182e2ff4e52b3fcf7044a476",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1353,7 +1354,7 @@
       "purpose": "Documentation map",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "dfbfd218e0865902faf8888c387a9c76d56e115724705ba5ac693e2e3f37b38b",
+      "sha256": "908c260271a53e21e8e0547a58b42689c0714ea2e05cb24c1de33d4d734ff6dd",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1593,6 +1594,27 @@
       ],
       "related_schemas": [],
       "sha256": "757bd809cc62f08af456058b2ca0499731f62757e0388ae3154b61ea2aafec71",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "docs/SYMBOLIC_CUES.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Function authority and strict localized cue references",
+      "related_commands": [
+        "dev ocf",
+        "functions preview"
+      ],
+      "related_schemas": [],
+      "sha256": "b2511917bd59f2cc48e3d1d713cec4286af1d55641136535a471e0f6ca888fb5",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -3557,6 +3579,26 @@
       "missing_information": [
         "per-document semantic review not recorded"
       ],
+      "path": "docs/releases/OCF_SYMBOLIC_CUES_CHECKPOINT.md",
+      "proposed_correction": "retain historical claims; consult current workflow guides",
+      "purpose": "Function authority and symbolic cue architecture checkpoint",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "6b446d5480d7b51b3d2292e9833bca5cffb55577270e631c7824dc8fd078eb77",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "maintainers/research reviewers",
+      "broken_references": [],
+      "canonical_source": "historical checkpoint (not current implementation)",
+      "duplicate_or_contradictory_information": [],
+      "historical": true,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [
+        "per-document semantic review not recorded"
+      ],
       "path": "docs/releases/OCF_TEACHING_CURRENT.md",
       "proposed_correction": "retain historical claims; consult current workflow guides",
       "purpose": "Current exact-teaching status",
@@ -3862,7 +3904,7 @@
         "validate"
       ],
       "related_schemas": [],
-      "sha256": "80548a8afe3f3d69f81af77190386e7ffb0d09a094fbf19b83e23a5f662b1f98",
+      "sha256": "9f4db6b3c630c423835aac29551eb027b22b47e8c5ab9a3c4701b32f8609a387",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4421,7 +4463,7 @@
       "related_schemas": [
         "schemas/function-discovery.schema.json"
       ],
-      "sha256": "f5489f065a628f720dc3386cf0a627260748fd02b1cfae4b662aac4d2074264a",
+      "sha256": "455bbae5b5f50ef2a1db8e38b2e4ad6495d032acb92ad9c6d084f2a7c1fb4df4",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4481,7 +4523,7 @@
       "related_schemas": [
         "schemas/function.schema.json"
       ],
-      "sha256": "631964f8aff79e1f3983d53e018a4370e6eaa0c0440d29bb20debc89cdd0c6e4",
+      "sha256": "6fbfe70cbc054c212322aa6a052d9c234189adc5c3618a40f1b49bffc3c241a6",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4543,7 +4585,7 @@
       "related_schemas": [
         "schemas/locale-resource.schema.json"
       ],
-      "sha256": "f10a850edaa8ec7227b0bd33101394561cad452a348a926c63961e0864ea1e96",
+      "sha256": "1573a212f7aad08201444d34f7f10b7c035307f30ea713f6d1897dfe72dab7a7",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4798,6 +4840,26 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "schemas/symbolic-cue-migration.schema.json",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "symbolic-cue-migration.schema",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/symbolic-cue-migration.schema.json"
+      ],
+      "sha256": "6d73f31a786e2e874a708b570339d12aa5319d18cfb4d6349abfb9c46becda1f",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "schemas/theme.schema.json",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "theme.schema",
@@ -4950,7 +5012,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "ddac453a6147ff2dcfb79ed30ac82523dcce3cd1172a40c04340c7f959661b16",
+      "sha256": "153d7d205b9e94c9804bb3a85b9a67645ad124965862da42a9e0eaba78921a54",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4983,7 +5045,7 @@
         "voice audition"
       ],
       "related_schemas": [],
-      "sha256": "968a77a45feb25b292a05e50041a40930756096474adca46138c30332efbd739",
+      "sha256": "3ac363286118b80afb1c7b9fc0424228f3c1721dfb1f627128a50c47a3c5e6c3",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5063,5 +5125,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 242
+  "total": 245
 }

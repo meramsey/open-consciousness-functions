@@ -24,6 +24,7 @@ def localized_cue(owner, command, locale="en-US", *, catalog=None, strict=False)
     catalog = catalog or LocaleCatalog()
     target = normalize_tag(locale) or catalog.canonical_locale
     bindings = command.localization
+    source_spoken = command.data.get("spoken")
     spoken_key = bindings.get("spoken_cue_key")
     result = {
         "command_id": command.id,
@@ -34,16 +35,37 @@ def localized_cue(owner, command, locale="en-US", *, catalog=None, strict=False)
     }
     display_key = bindings.get("display_cue_key")
     if display_key:
-        entry, resolution = catalog.resource(display_key, target, domain="ui", fallback=True)
+        resolver = getattr(catalog, "raw_resource", catalog.resource)
+        entry, resolution = resolver(display_key, target, domain="ui", fallback=True)
+        if (
+            getattr(entry, "cue_template", None) is not None
+            or "{{" in entry.text
+            or "}}" in entry.text
+        ):
+            raise CommandMetadataError(
+                f"{command.id}: display cue must be literal, not a nested template"
+            )
+        if resolution.origin_locale == "en-US" and entry.text != resolve_phrase(owner, command):
+            raise CommandMetadataError(
+                f"{owner.id}/{command.id}: en-US display cue conflicts with function YAML"
+            )
         result.update(
             display_cue=entry.text,
             display_locale=resolution.origin_locale,
             display_fallback=resolution.fallback,
         )
     if not spoken_key:
+        if target == "en-US" and source_spoken and command.data.get("spoken_review") == "reviewed":
+            return result | {
+                "spoken_cue": source_spoken,
+                "spoken_locale": "en-US",
+                "binding_status": "resolved",
+                "authority": "function-yaml",
+            }
         return result
     try:
-        entry, resolution = catalog.resource(spoken_key, target, domain="narration", fallback=False)
+        resolver = getattr(catalog, "raw_resource", catalog.resource)
+        entry, resolution = resolver(spoken_key, target, domain="narration", fallback=False)
     except LocalizationError:
         if strict:
             raise
@@ -56,6 +78,21 @@ def localized_cue(owner, command, locale="en-US", *, catalog=None, strict=False)
             "resource_status": entry.status,
             "binding_status": "requires-locale-review",
         }
+    if (
+        "spoken" in command.data or "spoken_review" in command.data
+    ) and resolution.origin_locale == "en-US":
+        if (
+            not source_spoken
+            or entry.text != source_spoken
+            or command.data.get("spoken_review") != "reviewed"
+        ):
+            raise CommandMetadataError(
+                f"{owner.id}/{command.id}: en-US spoken resource conflicts with authoritative function YAML/review"
+            )
+    if "{{" in entry.text or "}}" in entry.text:
+        raise CommandMetadataError(
+            f"{command.id}: nested/circular spoken cue references are forbidden"
+        )
     return result | {
         "spoken_cue_key": spoken_key,
         "spoken_cue": entry.text,
@@ -246,6 +283,14 @@ def validate_command_records(owner: FunctionRecord) -> list[str]:
     """Check local references and old-field alignment for one function."""
     records = owner.command_records
     errors: list[str] = []
+    if "narration" in owner.data:
+        for command in records:
+            if "spoken" not in command.data or "spoken_review" not in command.data:
+                errors.append(
+                    f"{command.id}: function-owned narration requires explicit spoken/spoken_review fields, including unresolved null values"
+                )
+            if command.data.get("spoken_review") == "reviewed" and not command.data.get("spoken"):
+                errors.append(f"{command.id}: reviewed source speech cannot be missing")
     if owner.data.get("compatibility", {}).get("state") == "historical-lookup":
         if not owner.data.get("historical_lookup"):
             errors.append(

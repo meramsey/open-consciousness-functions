@@ -22,6 +22,12 @@ Canonical YAML and schemas define the practice. Python tools validate and execut
 it. Everything from planning to auditions can run locally; paid services and
 provider credentials are not required.
 
+Function YAML owns English titles and complete spoken cue identities. Narration
+can use [strict localized cue references](docs/SYMBOLIC_CUES.md), with a
+no-synthesis preview: `python scripts/ocf.py functions preview OCF-SLP-005 --locale en-US`.
+Existing approved speech resolves byte-for-byte unchanged; remaining naming
+decisions are reviewed one function at a time.
+
 [Get started](#get-started) · [Function catalog](#explore-the-functions) ·
 [Audio workflows](#from-intention-to-audio) · [Artwork](#artwork-with-a-cosmic-identity) ·
 [Agent tools](#local-agent-workflows) · [Documentation](docs/README.md)

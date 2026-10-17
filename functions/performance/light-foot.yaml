@@ -52,6 +52,8 @@ commands:
     text: Plus Lighter Lighter
     narration_key: hplus.function.ocf-prf-004.function-body
     relationship: legacy-form
+  spoken: null
+  spoken_review: unresolved
 - id: OCF-CMD-PRF-004-LEGACY-01
   function_id: OCF-PRF-004
   phrase_ref:
@@ -69,6 +71,8 @@ commands:
     order: 101
   effect_scope_ref: lifecycle.persistence
   relationships: {}
+  spoken: null
+  spoken_review: unresolved
 chains: []
 claims:
   intended_effects: []
@@ -142,3 +146,14 @@ version:
   created: '2026-09-12'
   current: 0.1.0
   updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-prf-004.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-prf-004.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-prf-004.closer
+    repetitions: 1
+    role: closer

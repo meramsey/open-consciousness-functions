@@ -45,6 +45,8 @@ commands:
     - hplus.function.ocf-cog-003.function-body
     before_steps: []
   relationships: {}
+  spoken: "Plus Open"
+  spoken_review: reviewed
 - id: OCF-CMD-COG-003-CLOSED
   function_id: OCF-COG-003
   phrase_ref:
@@ -70,6 +72,8 @@ commands:
   relationships:
     closes:
     - OCF-CMD-COG-003-PRIMARY
+  spoken: "Plus Closed"
+  spoken_review: reviewed
 chains: []
 claims:
   intended_effects: []
@@ -140,3 +144,14 @@ version:
   created: '2026-09-12'
   current: 0.1.0
   updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-cog-003.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-cog-003.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-cog-003.closer
+    repetitions: 1
+    role: closer

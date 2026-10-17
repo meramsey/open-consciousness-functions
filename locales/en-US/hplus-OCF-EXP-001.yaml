@@ -53,6 +53,9 @@ entries:
       Shared preparation, state, and return wording remain excluded.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-EXP-001
+      allowed: [cue.primary]
     text: |-
       From this moment forward, you have the ability
       to set in motion a new pattern for your future.
@@ -69,7 +72,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Manifest."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
@@ -105,7 +108,7 @@ entries:
       to create and direct future patterns
       is permanently available to you.
 
-      Each time you use Plus Manifest,
+      Each time you use {{ cue.primary }},
       your intention becomes clearer,
       your alignment stronger,
       and this process easier and more effective.
@@ -123,6 +126,9 @@ entries:
       sequence, and the standard OCF ending. This is not historical wording.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-EXP-001
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to create
       a new future pattern, clearly envision
@@ -130,7 +136,7 @@ entries:
 
       Inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus Manifest."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 

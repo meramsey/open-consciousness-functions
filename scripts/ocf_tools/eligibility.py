@@ -18,10 +18,13 @@ def migrate_bindings(function_ids: list[str], *, dry_run: bool = True) -> list[d
     """
     catalog = LocaleCatalog()
     pending = []
+    authority_updates = []
     for owner in sorted(set(function_ids)):
         if load_function_by_id(owner) is None:
             raise OCFError(f"unknown function {owner}")
-        layers = load_layers(owner)
+        # Explicit migration may populate null authority from an existing
+        # compatibility plan. Runtime load_layers still rejects conflicts.
+        layers = load_layers(owner, CONTENT_DIR)
         binding = layers.get("bindings")
         if binding is None:
             binding = {
@@ -53,7 +56,27 @@ def migrate_bindings(function_ids: list[str], *, dry_run: bool = True) -> list[d
         if errors:
             raise OCFError(" | ".join(errors))
         pending.append((CONTENT_DIR / "bindings" / f"{owner}.yaml", binding))
+        record = load_function_by_id(owner)
+        if record is not None:
+            declared = record.data.get("narration")
+            if declared is not None and declared != binding["narration_plan"]:
+                raise OCFError(f"{owner}: binding migration conflicts with authoritative narration")
+            if declared is None:
+                import yaml
+
+                raw = record.path.read_text(encoding="utf-8")
+                node = yaml.compose(raw)
+                field = next((value for key, value in node.value if key.value == "narration"), None)
+                rendered = yaml_safe_dump({"narration": binding["narration_plan"]})
+                if field is None:
+                    raw = raw.rstrip() + "\n" + rendered
+                else:
+                    start = raw.rfind("\n", 0, field.start_mark.index) + 1
+                    raw = raw[:start] + rendered + raw[field.end_mark.index :].lstrip("\n")
+                authority_updates.append((record.path, raw))
     if not dry_run:
+        for path, text in authority_updates:
+            write_text_atomic(path, text)
         for path, binding in pending:
             write_text_atomic(path, yaml_safe_dump(binding))
     return [

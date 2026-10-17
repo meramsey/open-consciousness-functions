@@ -43,6 +43,8 @@ commands:
     - hplus.function.ocf-bod-008.function-body
     before_steps: []
   relationships: {}
+  spoken: "Plus Alert Destroy"
+  spoken_review: reviewed
 chains: []
 claims:
   intended_effects: []
@@ -112,3 +114,14 @@ version:
   created: '2026-09-12'
   current: 0.1.0
   updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-008.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-008.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-008.closer
+    repetitions: 1
+    role: closer

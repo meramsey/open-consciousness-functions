@@ -7,6 +7,11 @@ the server does not write them. This is an OCF data server, not a Python server.
 
 ## Install and start
 
+Embedded [cue symbols](SYMBOLIC_CUES.md) in declared narration templates use the
+same resolver as runtime preview. Completion/hover/definition and diagnostics
+observe unsaved function and locale buffers. Definitions point to the owning
+function's source spoken field; no server or permission reconfiguration is needed.
+
 From a checkout using Python 3.11 or newer:
 
 ```bash

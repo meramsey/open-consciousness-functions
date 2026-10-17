@@ -664,7 +664,10 @@ def check_backend_locale(spec: dict[str, Any]) -> None:
 
 def render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes:
     """Render one cue with a detected backend; return raw WAV bytes."""
+    from .cue_templates import reject_unexpanded
     from .speech_cache import cached_cue
+
+    reject_unexpanded(text)
 
     return cached_cue(spec, text, lambda: _render_cue_wav(spec, text, timeout))
 
@@ -986,6 +989,10 @@ def render_narration(
         target = normalize_tag(locale) if locale else document_locale(doc)
         doc = resolve_document(doc, target, catalog=catalog, strict=strict)
         locale = target
+    from .cue_templates import reject_unexpanded
+
+    for event in iter_events(doc):
+        reject_unexpanded(str(event.get("text", "")))
     from .validators import validate_command_ownership, validate_narration_hygiene
 
     validation = validate_command_ownership(doc, Path(out_path))

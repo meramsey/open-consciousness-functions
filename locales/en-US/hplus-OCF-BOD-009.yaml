@@ -67,6 +67,9 @@ entries:
       not medically established treatment effects.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-BOD-009
+      allowed: [cue.primary]
     text: |-
       From this moment forward, your entire respiratory
       system is becoming stronger, healthier,
@@ -123,7 +126,7 @@ entries:
       improving pattern, inhale deeply
       and gently hold your breath.
 
-      Think or say in your mind, "Plus Breathe Better."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
@@ -132,7 +135,7 @@ entries:
       strengthening this established pattern
       of healthy respiratory function.
 
-      Each time you use Plus Breathe Better,
+      Each time you use {{ cue.primary }},
       this reinforcement becomes easier,
       faster, and more effective.
 
@@ -156,13 +159,16 @@ entries:
       Historical source remains partial_transcript and unverified.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-BOD-009
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to reinforce
       your respiratory system's natural strength
       and healthy function, inhale deeply
       and hold your breath.
 
-      Think or say in your mind, "Plus Breathe Better."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 

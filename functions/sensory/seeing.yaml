@@ -47,6 +47,8 @@ commands:
     text: Plus See Better
     narration_key: hplus.function.ocf-sen-002.function-body
     relationship: canonical-match
+  spoken: "Plus See Better"
+  spoken_review: reviewed
 - id: OCF-CMD-SEN-002-LEGACY-01
   function_id: OCF-SEN-002
   phrase_ref:
@@ -64,6 +66,8 @@ commands:
     order: 101
   effect_scope_ref: lifecycle.persistence
   relationships: {}
+  spoken: null
+  spoken_review: unresolved
 chains: []
 claims:
   intended_effects: []
@@ -135,3 +139,14 @@ version:
   current: 0.1.0
   updated: '2026-09-12'
 command_phrases: []
+narration:
+  sequence:
+  - key: hplus.function.ocf-sen-002.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-sen-002.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-sen-002.closer
+    repetitions: 1
+    role: closer

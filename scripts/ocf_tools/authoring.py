@@ -708,7 +708,13 @@ class AuthoringService:
                 raise OCFError("locale document is malformed or not an object")
             return doc.data
 
-        catalog = LocaleCatalog(locale_root, reader=reader, exists=exists, directories=directories)
+        catalog = LocaleCatalog(
+            locale_root,
+            reader=reader,
+            exists=exists,
+            directories=directories,
+            function_records=self.records,
+        )
         self._catalog_cache = (self._signature, catalog)
         return catalog
 
@@ -819,12 +825,42 @@ class AuthoringService:
                 diagnostics.extend(
                     Diagnostic("ocf.locale-pack", problem) for problem in self.catalog().problems
                 )
+                if schema == "locale-resource.schema.json":
+                    for key, entry in data.get("entries", {}).items():
+                        if not isinstance(entry, dict) or not entry.get("cue_template"):
+                            continue
+                        span = doc.span(("entries", key, "text"))
+                        try:
+                            self.catalog().resource(
+                                key, data["locale"], domain=data["domain"], fallback=False
+                            )
+                        except OCFError as exc:
+                            diagnostics.append(
+                                Diagnostic(
+                                    "ocf.cue-template", str(exc), start=span.start, end=span.end
+                                )
+                            )
             if schema == "function.schema.json":
                 record = FunctionRecord(str(data["id"]), str(data["slug"]), path, data)
                 result = validators.validate_command_rules(record)
                 diagnostics.extend(
                     Diagnostic(issue.code, issue.message, issue.severity) for issue in result.issues
                 )
+                from .commands import localized_cue, validate_command_records
+
+                diagnostics.extend(
+                    Diagnostic("ocf.cue-authority", error)
+                    for error in validate_command_records(record)
+                )
+
+                for command in record.command_records:
+                    if command.data.get("spoken") is not None:
+                        try:
+                            localized_cue(
+                                record, command, "en-US", catalog=self.catalog(), strict=True
+                            )
+                        except OCFError as exc:
+                            diagnostics.append(Diagnostic("ocf.cue-authority", str(exc)))
             if schema == "timed-transcript.schema.json":
                 result = validators.validate_timed_transcript(
                     data, path, self.catalog(), self.records()
@@ -889,6 +925,14 @@ class AuthoringService:
     def context(self, uri, offset):
         doc = self.document(self.path(uri))
         span = doc.at(offset)
+        if span and len(span.path) >= 3 and span.path[0] == "entries" and span.path[-1] == "text":
+            for match in re.finditer(
+                r"(?<!\\)\{\{\s*([A-Za-z0-9_.-]*)", doc.text[span.start : span.end]
+            ):
+                start = span.start + match.start(1)
+                end = span.start + match.end(1)
+                if start <= offset <= end:
+                    return doc, Span((*span.path, "$cue"), match.group(1), start, end)
         if span and (span.value or span.start == span.end):
             return doc, span
         line_start = doc.text.rfind("\n", 0, offset) + 1
@@ -914,6 +958,26 @@ class AuthoringService:
     def completions(self, uri, offset):
         doc, span = self.context(uri, offset)
         self.refresh()
+        if span.path and span.path[-1] == "$cue":
+            from .cue_templates import choices
+
+            entry = doc.data["entries"][span.path[1]]
+            owner_id = entry.get("cue_template", {}).get("function_id")
+            owner = next((record for record in self.records() if record.id == owner_id), None)
+            rows = (
+                [
+                    {
+                        "label": symbol,
+                        "kind": "cue-symbol",
+                        "description": "Strict complete reviewed cue from function YAML/localized binding",
+                    }
+                    for symbol in choices(owner)
+                    if symbol.startswith(span.value)
+                ]
+                if owner
+                else []
+            )
+            return doc, span, rows
         name = schema_name(doc.path, doc.data, self.root, self.associations)
         kind = reference_kind(span, name)
         prefix = doc.text[span.start : offset]
@@ -951,6 +1015,50 @@ class AuthoringService:
     def definitions_at(self, uri, offset):
         doc, span = self.context(uri, offset)
         self.refresh()
+        if span.path and span.path[-1] == "$cue":
+            from .cue_templates import select_command, value
+
+            entry = doc.data["entries"][span.path[1]]
+            owner_id = entry.get("cue_template", {}).get("function_id")
+            owner = next((record for record in self.records() if record.id == owner_id), None)
+            if owner is None:
+                return doc, span, []
+            try:
+                text, _ = value(owner, span.value, doc.data["locale"], self.catalog())
+                target = self.document(owner.path)
+                if span.value == "function.title":
+                    target_span = target.span(("canonical", "name"))
+                else:
+                    command = select_command(owner, span.value)
+                    index = next(
+                        i for i, row in enumerate(owner.data["commands"]) if row["id"] == command.id
+                    )
+                    target_span = target.span(("commands", index, "spoken"))
+                    if ".variant." in span.value:
+                        variant = span.value.split(".variant.", 1)[1]
+                        if variant in command.data.get("spoken_variants", {}):
+                            target_span = target.span(
+                                ("commands", index, "spoken_variants", variant, "text")
+                            )
+                        else:
+                            target_span = target.span(
+                                ("commands", index, "localization", "spoken_variant_keys", variant)
+                            )
+                return (
+                    doc,
+                    span,
+                    [
+                        Definition(
+                            span.value,
+                            "cue-symbol",
+                            owner.path,
+                            target_span,
+                            f"{owner.id}: {text} ({doc.data['locale']}; explicit reviewed cue)",
+                        )
+                    ],
+                )
+            except OCFError:
+                return doc, span, []
         definitions = self.definitions.get(span.value, [])
         if not definitions and span.path and span.path[-1] in {"after", "event_id"}:
             definitions = [

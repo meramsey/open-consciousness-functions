@@ -238,6 +238,9 @@ def transcript_from_render(render_doc: dict[str, Any]) -> str:
                 f"render cue {cue.get('id', '?')!r} has no final spoken_text; rebuild with current OCF"
             )
         text = str(cue["spoken_text"]).strip()
+        from .cue_templates import reject_unexpanded
+
+        reject_unexpanded(text)
         if text:
             lines.append(text)
     return "\n\n".join(lines).rstrip() + "\n"

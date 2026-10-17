@@ -5,6 +5,12 @@ architecture and migration boundaries before schema or runtime changes.
 
 ## Current authoritative data
 
+Current source-English speech is explicit in each command's `spoken` and
+`spoken_review`; missing/unresolved wording is not inferred from display cues.
+`narration.sequence` exposes function-owned resource bindings. See
+[strict symbolic cues](SYMBOLIC_CUES.md) for role/ID resolution, raw-versus-resolved
+hashes, localized complete realizations and one-function-at-a-time review.
+
 - `functions/<domain>/*.yaml` is the authoritative registry for function IDs,
   canonical primary phrases, mode phrases, legacy commands, aliases, lifecycle,
   and source availability.

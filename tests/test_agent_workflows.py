@@ -2,6 +2,7 @@
 
 from dataclasses import replace
 
+import pytest
 from ocf_tools import (
     complete_session,
     content,
@@ -17,7 +18,10 @@ from ocf_tools.prompts import build_function_yaml
 from ocf_tools.utils import write_text_atomic, yaml_safe_dump
 
 
-def test_new_temporary_function_validates_and_generates_complete_plan(monkeypatch, tmp_path):
+@pytest.mark.parametrize("existing_plan", [False, True])
+def test_new_temporary_function_validates_and_generates_complete_plan(
+    monkeypatch, tmp_path, existing_plan
+):
     owner = "OCF-FND-999"
     record = build_function_yaml(
         function_id=owner,
@@ -84,10 +88,51 @@ def test_new_temporary_function_validates_and_generates_complete_plan(monkeypatc
     ):
         if hasattr(module, "LocaleCatalog"):
             monkeypatch.setattr(module, "LocaleCatalog", lambda: catalog)
+    if existing_plan:
+        binding = {
+            "schema_version": "1.0",
+            "function_id": owner,
+            "session_templates": [TEMPLATE_ID],
+            "default_session_template": TEMPLATE_ID,
+            "narration_resources": [],
+            "voice_sources": ["tts"],
+            "duration": None,
+            "narration_plan": {
+                "sequence": [
+                    {
+                        "key": f"hplus.function.{owner.lower()}.{role}",
+                        "role": role,
+                        "repetitions": 4 if role == "function-body" else 1,
+                    }
+                    for role in ("opener", "function-body", "closer")
+                ]
+            },
+        }
+        path = root / "bindings" / f"{owner}.yaml"
+        write_text_atomic(path, yaml_safe_dump(binding))
+        before = path.read_bytes(), (functions / "fixture.yaml").read_bytes()
+        from ocf_tools.utils import OCFError
+
+        with pytest.raises(OCFError, match="conflicts with authoritative"):
+            content.load_layers(owner)
+        eligibility.migrate_bindings([owner], dry_run=True)
+        assert before == (path.read_bytes(), (functions / "fixture.yaml").read_bytes())
     eligibility.migrate_bindings([owner], dry_run=False)
     assert content.load_layers(owner)["bindings"]["default_session_template"] == TEMPLATE_ID
+    assert (
+        indexes.load_function_by_id(owner).data["narration"]
+        == content.load_layers(owner)["bindings"]["narration_plan"]
+    )
     result = session_plans.generate_plans([owner], output=tmp_path / "plans")
     assert result["validated"] == 1
     assert (
         session_plans.generate_plans([owner], output=tmp_path / "plans", check=True)["stale"] == []
     )
+    if existing_plan:
+        changed = indexes.load_function_by_id(owner).data
+        changed["narration"]["sequence"].reverse()
+        write_text_atomic(functions / "fixture.yaml", yaml_safe_dump(changed))
+        before = path.read_bytes(), (functions / "fixture.yaml").read_bytes()
+        with pytest.raises(OCFError, match="conflicts with authoritative"):
+            eligibility.migrate_bindings([owner], dry_run=False)
+        assert before == (path.read_bytes(), (functions / "fixture.yaml").read_bytes())
