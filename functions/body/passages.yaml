@@ -18,8 +18,8 @@ canonical:
   command:
     modes: []
     mode_ids: []
-    primary: PLUS-EQUALIZE-HARMONIZE
-  name: Passages
+    primary: "PLUS-HORMONE BALANCE"
+  name: "Hormonal Transitions"
 commands:
 - id: OCF-CMD-BOD-011-PRIMARY
   function_id: OCF-BOD-011
@@ -32,6 +32,8 @@ commands:
     usage_key: commands.ocf-cmd-bod-011-primary.usage
     purpose_key: functions.ocf-bod-011.purpose
     explanation_key: commands.ocf-cmd-bod-011-primary.explanation
+    display_cue_key: commands.ocf-cmd-bod-011-primary.display-cue
+    spoken_cue_key: commands.ocf-cmd-bod-011-primary.spoken-cue
   documentation:
     visible: true
     order: 1
@@ -43,8 +45,9 @@ commands:
     - hplus.function.ocf-bod-011.function-body
     before_steps: []
   relationships: {}
-  spoken: "Plus Equalize Harmonize"
+  spoken: "Plus Hormone Balance"
   spoken_review: reviewed
+  observed_phrase: {"text": "Plus Hormone Balance", "narration_key": "hplus.function.ocf-bod-011.function-body", "relationship": "canonical-match"}
 chains: []
 claims:
   intended_effects: []
@@ -56,7 +59,9 @@ classification:
   - lifestyle
 companions: []
 compatibility:
-  state: unchanged
+  state: historical-lookup
+  rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is historical
+    lookup. Existing controls remain unchanged.
 contributor:
   contact: null
   name: null
@@ -124,3 +129,15 @@ narration:
   - key: hplus.function.ocf-bod-011.closer
     repetitions: 1
     role: closer
+historical_lookup:
+- text: Passages
+  kind: former-title
+  decision: OCF-EDITORIAL-TITLE-CUES-004
+- text: PLUS-EQUALIZE-HARMONIZE
+  kind: former-primary
+  decision: OCF-EDITORIAL-TITLE-CUES-004
+  command_id: OCF-CMD-BOD-011-PRIMARY
+- text: Plus Equalize Harmonize
+  kind: former-teaching
+  decision: OCF-EDITORIAL-TITLE-CUES-004
+  command_id: OCF-CMD-BOD-011-PRIMARY

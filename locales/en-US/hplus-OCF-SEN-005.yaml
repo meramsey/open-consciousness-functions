@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-SEN-005 — Sensory: Touch
 # English function-specific OCF-adapted narration; wording source of truth.
 # Source status: unavailable; authentication remains unverified.
@@ -112,7 +113,7 @@ entries:
 
   hplus.function.ocf-sen-005.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted closer based on user-proposed Sensory: Touch reconstruction,
       proposed input Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt;
@@ -123,13 +124,16 @@ entries:
       open-eyes sequence. Includes one reminder of physical and imagined
       touch and the standard OCF sign-off. Rights: user_cleared per user's
       lawyer-clearance attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-SEN-005
+      allowed: [cue.primary]
     text: |-
       Remember, to regulate your physical sense of touch
       or strengthen your inner experience of it, close your eyes,
       inhale deeply, and hold your breath.
-      Think or say in your mind, "Plus Touch More"
+      Think or say in your mind, "{{ cue.primary }}"
       or "Plus Touch Less," according to your intention.
       Then exhale through your mouth as though gently
       blowing out a candle, and open your eyes.
 
-      This concludes your OCF Sensory: Touch exercise.
+      This concludes your OCF Touch exercise.

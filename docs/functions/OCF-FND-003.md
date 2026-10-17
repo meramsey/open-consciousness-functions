@@ -1,6 +1,6 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Recharge
+# Quick Recharge
 
 **Purpose**: Replenishes a felt sense of energy and freshness.
 

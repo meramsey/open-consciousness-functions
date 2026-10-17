@@ -25,7 +25,7 @@ canonical:
     mode_ids:
     - OCF-CMD-SEN-003-SMELL-LESS
     primary: PLUS-SMELL MORE
-  name: 'Sensory: Smell'
+  name: "Smell"
 commands:
 - id: OCF-CMD-SEN-003-PRIMARY
   function_id: OCF-SEN-003
@@ -38,6 +38,8 @@ commands:
     usage_key: commands.ocf-cmd-sen-003-primary.usage
     purpose_key: functions.ocf-sen-003.purpose
     explanation_key: commands.ocf-cmd-sen-003-primary.explanation
+    display_cue_key: commands.ocf-cmd-sen-003-primary.display-cue
+    spoken_cue_key: commands.ocf-cmd-sen-003-primary.spoken-cue
   documentation:
     visible: true
     order: 1
@@ -167,7 +169,7 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: needs-review
+  command_review: "approved"
   reimplementation_status: planned
 purpose:
   community_description: Adjusts the felt sense of smell in either direction using the MORE/LESS grammar.
@@ -204,3 +206,7 @@ narration:
   - key: hplus.function.ocf-sen-003.closer
     repetitions: 1
     role: closer
+historical_lookup:
+- text: 'Sensory: Smell'
+  kind: former-title
+  decision: OCF-EDITORIAL-TITLE-CUES-004

@@ -1,6 +1,6 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Tune-Up
+# Body Tune-Up
 
 **Purpose**: A general self-directed balance-and-heal tune-up practice.
 

@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-SLP-003 — Sweet Dreams
 # English function-specific OCF-adapted narration; wording source of truth.
 # Source status: transcript_unverified; authentication remains unverified.
@@ -38,7 +39,7 @@ entries:
 
   hplus.function.ocf-slp-003.function-body:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted body based on the unverified Sweet Dreams transcript;
       SOURCE +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt;
@@ -58,6 +59,9 @@ entries:
       One body supports four passes across Focus 11 and Focus 20.
       Rights: user_cleared per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-SLP-003
+      allowed: [cue.primary]
     text: |-
       From this moment forward, you can choose
       the dreams you desire to experience during sleep.
@@ -73,7 +77,7 @@ entries:
       and emotions that give your dream its character.
 
       Inhale deeply and gently hold your breath.
-      Think or say in your mind, "Plus Theme Dream Sleep."
+      Think or say in your mind, "{{ cue.primary }}."
       Then exhale and breathe slowly and deeply.
 
       You will move calmly and easily
@@ -100,13 +104,13 @@ entries:
 
       This ability to choose, experience, and remember
       your dreams will remain permanently available.
-      Each time you use Plus Theme Dream Sleep,
+      Each time you use {{ cue.primary }},
       your dream experiences and their recall
       will become clearer, richer, and easier.
 
   hplus.function.ocf-slp-003.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted closer based on the unverified Sweet Dreams transcript;
       SOURCE +Transcripts From available tapes/Sweet Dreams/Sweet Dreams.txt;
@@ -116,12 +120,15 @@ entries:
       followed by slow deep breathing, and standard OCF sign-off.
       Rights: user_cleared per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-SLP-003
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to experience
       a dream of your choosing and recall it clearly,
       bring your desired dream theme into your mind.
       Inhale deeply and hold your breath.
-      Think or say in your mind, "Plus Theme Dream Sleep."
+      Think or say in your mind, "{{ cue.primary }}."
       Then exhale and breathe slowly and deeply.
 
-      This concludes your OCF Sweet Dreams exercise.
+      This concludes your OCF Dream Theme exercise.

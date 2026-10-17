@@ -1,28 +1,29 @@
 {
   "schema_version": "1.0",
-  "decision_id": "OCF-EDITORIAL-TITLE-CUES-003",
+  "decision_id": "OCF-EDITORIAL-TITLE-CUES-004",
   "decision_ids": [
     "OCF-EDITORIAL-TITLE-CUES-001",
     "OCF-EDITORIAL-TITLE-CUES-002",
-    "OCF-EDITORIAL-TITLE-CUES-003"
+    "OCF-EDITORIAL-TITLE-CUES-003",
+    "OCF-EDITORIAL-TITLE-CUES-004"
   ],
-  "predecessor_commit": "83f7b850779c9b67f2ec40f5001c00c2e9c4af75",
+  "predecessor_commit": "85ba92896c2d6a2cea7b5668e49196838dd3ec2b",
   "source_scope": "Current approved successor. Earlier source-pinned proposals remain immutable history; this is not a repin or blanket approval of them.",
   "counts": {
     "functions": 55,
     "structured_command_identities": 97,
-    "active_records": 88,
-    "historical_only_command_records": 9,
+    "active_records": 79,
+    "historical_only_command_records": 18,
     "stable_primary_identities": 55,
-    "approved_cues_implemented": 13,
+    "approved_cues_implemented": 40,
     "protected_entries": 177,
-    "allowlisted_text_changes": 25,
-    "remaining_metadata_teaching_differences": 10
+    "allowlisted_text_changes": 66,
+    "remaining_metadata_teaching_differences": 1
   },
   "functions": [
     {
       "function_id": "OCF-AUT-001",
-      "current_title": "See-Be",
+      "current_title": "Automatic Action",
       "display_cue": "PLUS-AUTOMATE",
       "spoken_teaching": "Plus Automate",
       "cue_presentation": {
@@ -31,23 +32,38 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Automate",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-aut-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Automates a desired way of being so it runs without active effort.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Automatic Action",
-        "cue": "PLUS-AUTOMATE"
+      "previous_values": {
+        "title": "See-Be",
+        "display_cue": "PLUS-AUTOMATE",
+        "spoken_cue": "Plus Automate",
+        "source_spoken": "Plus Automate"
       },
-      "historical_lookup": [],
-      "context": "Correctly learn the selected ordered action, rehearse correct completion, then inhale/hold/cue/exhale. Automatic performance remains consciously observable, adjustable and stoppable; not future-condition manifestation.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "See-Be",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        }
+      ],
+      "context": "Change title from See-Be to Automatic Action and update exercise sign-off. Keep display and spoken cue unchanged. Preserve correctly learned action selection, ordered mental rehearsal through successful completion, inhale/hold/cue/slow mouth exhale, and surrounding suggestions. Preserve conscious ability to observe, adjust, improve or stop the action. Retain See-Be as historical lookup; introduce no mode or release.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-aut-001.closer"
+      ]
     },
     {
       "function_id": "OCF-BOD-001",
@@ -273,7 +289,7 @@
     },
     {
       "function_id": "OCF-BOD-005",
-      "current_title": "Eat/No Eat",
+      "current_title": "Appetite Choice",
       "display_cue": "PLUS-SATISFIED, SUPPLIED",
       "spoken_teaching": "Plus Satisfied Supplied",
       "cue_presentation": {
@@ -282,27 +298,42 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Satisfied Supplied",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-005-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Adjusts appetite signals in either direction.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Appetite Choice",
-        "cue": "PLUS-SATISFIED, SUPPLIED"
+      "previous_values": {
+        "title": "Eat/No Eat",
+        "display_cue": "PLUS-SATISFIED, SUPPLIED",
+        "spoken_cue": "Plus Satisfied Supplied",
+        "source_spoken": "Plus Satisfied Supplied"
       },
-      "historical_lookup": [],
-      "context": "One complete cue releases unnecessary craving while preserving genuine nutritional need and chosen eating. Pause, attend to craving, inhale/hold/cue/exhale. No independent appetite-increase mode is taught; do not split the two words into directions.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Eat/No Eat",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        }
+      ],
+      "context": "Change title from Eat/No Eat to Appetite Choice and update exercise sign-off. Keep complete display and spoken cue unchanged. Preserve breathing sequence, automatic reinforcement, genuine nutritional need recognition and freedom to eat when chosen. Retain Eat/No Eat as historical lookup. Satisfied Supplied remains one complete cue; introduce no separate appetite-increase or appetite-decrease mode.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-bod-005.closer"
+      ]
     },
     {
       "function_id": "OCF-BOD-006",
-      "current_title": "Heart: Repairs & Maintenance",
+      "current_title": "Heart Flow",
       "display_cue": "PLUS-HEART-BETTER",
       "spoken_teaching": "Plus Heart Better",
       "cue_presentation": {
@@ -322,20 +353,13 @@
       "current_purpose": "Self-directed wellness practice supporting a felt sense of calm, steady heart function.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "TENTATIVE TITLE",
-      "pending_title": "Heart Flow",
+      "title_status": "APPROVED AND IMPLEMENTED",
+      "pending_title": null,
       "previous_values": {
         "title": "Heart: Repairs & Maintenance",
-        "display_cue": "PLUS-HEART, BETTER, BETTER",
-        "spoken_cue": "Plus Heart Better Better",
-        "observed_phrase": null,
-        "aliases": {
-          "commands": [],
-          "command_ids": [],
-          "names": [
-            "Heart: Repairs & Maintenance"
-          ]
-        }
+        "display_cue": "PLUS-HEART-BETTER",
+        "spoken_cue": "Plus Heart Better",
+        "source_spoken": "Plus Heart Better"
       },
       "unselected_proposal": null,
       "historical_lookup": [
@@ -355,72 +379,125 @@
           "decision": "OCF-EDITORIAL-TITLE-CUES-001",
           "kind": "former-teaching",
           "text": "Plus Heart Better Better"
+        },
+        {
+          "text": "Heart: Repairs & Maintenance",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
         }
       ],
-      "context": "Cue contains Better once. Retain the committed heart title, purpose and scope; Heart Flow is tentative and Heart Renewal is rejected.",
+      "context": "Finalize previously tentative title Heart Flow, replacing Heart: Repairs & Maintenance and updating exercise sign-off. Keep already-approved display PLUS-HEART-BETTER and spoken Plus Heart Better unchanged; do not restore the historical second Better. Preserve full heart muscle, vessel, circulation, rhythm, coordination, maintenance and renewal scope, lasting automatic pattern, optional reinforcement and breathing sequence. Retain former title as historical lookup; introduce no mode or release.",
       "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
       "changed_keys": [
-        "hplus.function.ocf-bod-006.function-body",
         "hplus.function.ocf-bod-006.closer"
       ]
     },
     {
       "function_id": "OCF-BOD-007",
-      "current_title": "Hypertension",
-      "display_cue": "PLUS-BALANCE-BLOODPRESSURE",
+      "current_title": "Blood Pressure Balance",
+      "display_cue": "PLUS-BALANCE BLOOD PRESSURE",
       "spoken_teaching": "Plus Balance Blood Pressure",
       "cue_presentation": {
         "command_id": "OCF-CMD-BOD-007-PRIMARY",
-        "display_cue": "PLUS-BALANCE-BLOODPRESSURE",
+        "display_cue": "PLUS-BALANCE BLOOD PRESSURE",
         "requested_locale": "en-US",
         "spoken_cue": "Plus Balance Blood Pressure",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-007-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for medical care.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Blood Pressure Balance",
-        "cue": "PLUS-BALANCE BLOOD PRESSURE"
+      "previous_values": {
+        "title": "Hypertension",
+        "display_cue": "PLUS-BALANCE-BLOODPRESSURE",
+        "spoken_cue": "Plus Balance Blood Pressure",
+        "source_spoken": "Plus Balance Blood Pressure"
       },
-      "historical_lookup": [],
-      "context": "Appropriate cardiovascular regulation for rest/activity, not indiscriminate lowering. Close eyes, attend to heart/vessels, comfortable inhale/hold/cue/exhale. Keep Blood explicit; do not invent up/down modes.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Hypertension",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        },
+        {
+          "text": "PLUS-BALANCE-BLOODPRESSURE",
+          "kind": "former-primary",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-BOD-007-PRIMARY"
+        }
+      ],
+      "context": "Change title from Hypertension to Blood Pressure Balance and update exercise sign-off. Normalize display cue to PLUS-BALANCE BLOOD PRESSURE; keep spoken Plus Balance Blood Pressure unchanged. Preserve eye-closing, heart and blood-vessel attention, comfortable inhale/hold/cue/candle-like exhale and surrounding suggestions. Retain Hypertension and former display spelling as historical lookup. Preserve appropriate cardiovascular adjustment to bodily needs rather than indiscriminate lowering; introduce no pressure-up, pressure-down or release mode.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-bod-007.closer"
+      ]
     },
     {
       "function_id": "OCF-BOD-008",
-      "current_title": "Immunizing",
-      "display_cue": "PLUS-ALERT, DESTROY",
-      "spoken_teaching": "Plus Alert Destroy",
+      "current_title": "Immune Readiness",
+      "display_cue": "PLUS-IMMUNE READY",
+      "spoken_teaching": "Plus Immune Ready",
       "cue_presentation": {
         "command_id": "OCF-CMD-BOD-008-PRIMARY",
-        "display_cue": "PLUS-ALERT, DESTROY",
+        "display_cue": "PLUS-IMMUNE READY",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Alert Destroy",
+        "spoken_cue": "Plus Immune Ready",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-008-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Supports a felt sense of alertness and preparedness; not a medical claim.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Immune Readiness",
-        "cue": "PLUS-IMMUNE READY"
+      "previous_values": {
+        "title": "Immunizing",
+        "display_cue": "PLUS-ALERT, DESTROY",
+        "spoken_cue": "Plus Alert Destroy",
+        "source_spoken": "Plus Alert Destroy"
       },
-      "historical_lookup": [],
-      "context": "Immune-specific surveillance, coordinated response, memory, healthy-tissue protection and return to balance. Inhale/hold/cue/exhale; no eye-closing step is taught. Readiness must retain response scope, not generic alertness.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Immunizing",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        },
+        {
+          "text": "PLUS-ALERT, DESTROY",
+          "kind": "former-primary",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-BOD-008-PRIMARY"
+        },
+        {
+          "text": "Plus Alert Destroy",
+          "kind": "former-teaching",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-BOD-008-PRIMARY"
+        }
+      ],
+      "context": "Change title from Immunizing to Immune Readiness and update exercise sign-off. Replace two body mentions and one closer mention from Plus Alert Destroy to Plus Immune Ready. Preserve immune-specific surveillance, coordinated response, memory, healthy-tissue protection, automatic maintenance, return to balance, and inhale/hold/cue/slow mouth exhale. Do not add eye-closing instruction. Retain Immunizing and superseded cue as historical lookup; introduce no mode or release.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-bod-008.function-body",
+        "hplus.function.ocf-bod-008.closer"
+      ]
     },
     {
       "function_id": "OCF-BOD-009",
@@ -504,48 +581,73 @@
         "authority": "function-yaml"
       },
       "current_purpose": "Adjusts appetite and food drive in either direction using the MORE/LESS grammar.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "EXISTING PAIR RETAINED",
       "metadata_teaching_consistent": true,
       "title_status": "UNCHANGED",
       "pending_title": null,
       "previous_values": null,
-      "unselected_proposal": {
-        "title": "Food Energy Use",
-        "cue": "PLUS-USE FOOD ENERGY"
-      },
+      "unselected_proposal": null,
       "historical_lookup": [],
-      "context": "MORE selects useful food-energy extraction/conversion/distribution/use; LESS selects sufficient nourishment with reduced unnecessary retention/storage. Close eyes, inhale/hold/select complete cue/exhale/open eyes. Neither mode is permanently active; automatic baseline differs. Not appetite control.",
+      "context": "Keep Nutricia and BOTH current cues unchanged: PLUS-FOOD MORE / Plus Food More and PLUS-FOOD LESS / Plus Food Less. Preserve all existing wording, metadata, distinct operations and active command identities. Do not implement Food Energy Use, Plus Use Food Energy or Plus Retain Less Excess, and do not retire either current cue.",
       "teaching_source": "Predecessor contextual review; unchanged protected text verified",
       "changed_keys": []
     },
     {
       "function_id": "OCF-BOD-011",
-      "current_title": "Passages",
-      "display_cue": "PLUS-EQUALIZE-HARMONIZE",
-      "spoken_teaching": "Plus Equalize Harmonize",
+      "current_title": "Hormonal Transitions",
+      "display_cue": "PLUS-HORMONE BALANCE",
+      "spoken_teaching": "Plus Hormone Balance",
       "cue_presentation": {
         "command_id": "OCF-CMD-BOD-011-PRIMARY",
-        "display_cue": "PLUS-EQUALIZE-HARMONIZE",
+        "display_cue": "PLUS-HORMONE BALANCE",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Equalize Harmonize",
+        "spoken_cue": "Plus Hormone Balance",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-011-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Supports graceful passage through internal transitions.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Hormonal Transitions",
-        "cue": "PLUS-HORMONE BALANCE"
+      "previous_values": {
+        "title": "Passages",
+        "display_cue": "PLUS-EQUALIZE-HARMONIZE",
+        "spoken_cue": "Plus Equalize Harmonize",
+        "source_spoken": "Plus Equalize Harmonize"
       },
-      "historical_lookup": [],
-      "context": "Hormonal adaptation through premenstrual/perimenopausal/menopausal/postmenopausal transitions, not generic life change. Inhale/hold/cue/exhale; gratitude is optional, not a cue. Adaptive balance is not fixed hormone levels.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Passages",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        },
+        {
+          "text": "PLUS-EQUALIZE-HARMONIZE",
+          "kind": "former-primary",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-BOD-011-PRIMARY"
+        },
+        {
+          "text": "Plus Equalize Harmonize",
+          "kind": "former-teaching",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-BOD-011-PRIMARY"
+        }
+      ],
+      "context": "Change title from Passages to Hormonal Transitions and update exercise sign-off. Replace two body mentions and one closer mention from Plus Equalize Harmonize to Plus Hormone Balance. Preserve premenstrual/perimenopausal/menopausal/postmenopausal scope, automatic adaptation to changing needs, physical comfort, emotional stability, mental clarity, inhale/hold/cue/candle-like exhale and optional gratitude in closer. Retain Passages and superseded cue as historical lookup; introduce no mode or release. Adaptive balance does not mean fixed hormone levels or permanently heightened endocrine activity; gratitude is not a cue.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-bod-011.function-body",
+        "hplus.function.ocf-bod-011.closer"
+      ]
     },
     {
       "function_id": "OCF-BOD-012",
@@ -578,7 +680,7 @@
     },
     {
       "function_id": "OCF-BOD-013",
-      "current_title": "Tune-Up",
+      "current_title": "Body Tune-Up",
       "display_cue": "PLUS-BALANCE, HEAL",
       "spoken_teaching": "Plus Balance Heal",
       "cue_presentation": {
@@ -587,23 +689,38 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Balance Heal",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-013-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "A general self-directed balance-and-heal tune-up practice.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Body Tune-Up",
-        "cue": "PLUS-BALANCE, HEAL"
+      "previous_values": {
+        "title": "Tune-Up",
+        "display_cue": "PLUS-BALANCE, HEAL",
+        "spoken_cue": "Plus Balance Heal",
+        "source_spoken": "Plus Balance Heal"
       },
-      "historical_lookup": [],
-      "context": "Whole-body automatic maintenance and selected-area inward perception/repair. Close eyes, select area, inhale/hold/complete cue/exhale/open eyes. Balance and Heal are one cue, not separate modes; inner perception is not verified diagnosis.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Tune-Up",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        }
+      ],
+      "context": "Change title from Tune-Up to Body Tune-Up and update exercise sign-off. Keep display and spoken cue unchanged. Preserve selected-area inward attention, close eyes/inhale/hold/complete cue/slow mouth exhale/open eyes sequence and surrounding automatic whole-body maintenance, repair and renewal suggestions. Retain Tune-Up as historical lookup. Balance Heal remains one complete cue, not separate modes.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-bod-013.closer"
+      ]
     },
     {
       "function_id": "OCF-BOD-014",
@@ -659,63 +776,115 @@
     },
     {
       "function_id": "OCF-BOD-015",
-      "current_title": "Short Fix",
+      "current_title": "Temporary Numbing",
       "display_cue": "PLUS-NUMB",
-      "spoken_teaching": "Plus Go Numb Go Numb",
+      "spoken_teaching": "Plus Numb",
       "cue_presentation": {
         "command_id": "OCF-CMD-BOD-015-PRIMARY",
         "display_cue": "PLUS-NUMB",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Numb",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-015-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB.",
-      "decision_status": "STILL UNDECIDED",
-      "metadata_teaching_consistent": false,
-      "title_status": "UNCHANGED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
+      "metadata_teaching_consistent": true,
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Temporary Numbing",
-        "cue": "PLUS-NUMB"
+      "previous_values": {
+        "title": "Short Fix",
+        "display_cue": "PLUS-NUMB",
+        "spoken_cue": "Plus Go Numb Go Numb",
+        "source_spoken": null
       },
-      "historical_lookup": [],
-      "context": "Temporary localized numbing of selected new discomfort: close eyes, focus area, inhale/hold/complete cue/exhale. Selected-area Plus Release restores sensitivity; learning remains. Clarify restriction/release metadata separately; do not equate this with Comfort.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Short Fix",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        },
+        {
+          "text": "Plus Go Numb Go Numb",
+          "kind": "former-teaching",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-BOD-015-PRIMARY"
+        }
+      ],
+      "context": "One body and one closer primary-cue substitution; Short Fix body reference and exercise sign-off become Temporary Numbing. Retain Short Fix and repeated legacy primary wording as historical lookup. Keep active PLUS-RELEASE / Plus Release, procedures, temporary response, lasting learned ability, existing restriction and reconstruction provenance unchanged.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-bod-015.function-body",
+        "hplus.function.ocf-bod-015.closer"
+      ]
     },
     {
       "function_id": "OCF-COG-001",
-      "current_title": "Access to Information",
-      "display_cue": "PLUS-RETRIEVE",
-      "spoken_teaching": "Plus Retrieve",
+      "current_title": "Information Access",
+      "display_cue": "PLUS-ACCESS INFO",
+      "spoken_teaching": "Plus Access Info",
       "cue_presentation": {
         "command_id": "OCF-CMD-COG-001-PRIMARY",
-        "display_cue": "PLUS-RETRIEVE",
+        "display_cue": "PLUS-ACCESS INFO",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Retrieve",
+        "spoken_cue": "Plus Access Info",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-cog-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Accesses intuition, memory, and inner knowledge on demand.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Information Access",
-        "cue": "PLUS-ACCESS INFO"
+      "previous_values": {
+        "title": "Access to Information",
+        "display_cue": "PLUS-RETRIEVE",
+        "spoken_cue": "Plus Retrieve",
+        "source_spoken": "Plus Retrieve"
       },
-      "historical_lookup": [],
-      "context": "Requests knowledge/experience from the personal library. Cue then target in instruction/closer; practice selects target first. No breath instruction. Different from detailed event Recall; no external knowledge or accuracy verification is established.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Access to Information",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        },
+        {
+          "text": "PLUS-RETRIEVE",
+          "kind": "former-primary",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-COG-001-PRIMARY"
+        },
+        {
+          "text": "Plus Retrieve",
+          "kind": "former-teaching",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-COG-001-PRIMARY"
+        }
+      ],
+      "context": "Change title from Access to Information to Information Access and update exercise sign-off. Replace three body mentions and one closer mention from Plus Retrieve to Plus Access Info. Preserve personal knowledge-library scope, cue-first then information-selection main instruction and closer, target-first practice passage, and surrounding suggestions. Retain Access to Information and Plus Retrieve as historical lookup. Introduce no breathing step, mode or release; keep separate Recall cue unchanged.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-cog-001.function-body",
+        "hplus.function.ocf-cog-001.closer"
+      ]
     },
     {
       "function_id": "OCF-COG-002",
-      "current_title": "Buy the Numbers",
+      "current_title": "Mental Calculation",
       "display_cue": "PLUS-CALCULATE",
       "spoken_teaching": "Plus Calculate",
       "cue_presentation": {
@@ -724,23 +893,38 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Calculate",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-cog-002-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Speeds mental arithmetic and number processing.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Mental Calculation",
-        "cue": "PLUS-CALCULATE"
+      "previous_values": {
+        "title": "Buy the Numbers",
+        "display_cue": "PLUS-CALCULATE",
+        "spoken_cue": "Plus Calculate",
+        "source_spoken": "Plus Calculate"
       },
-      "historical_lookup": [],
-      "context": "Automatic mathematical understanding, numerical memory and symbolic reasoning, optionally intensified with inhale/hold/cue/candle-like exhale. Mental Calculation must not narrow scope to arithmetic.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Buy the Numbers",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        }
+      ],
+      "context": "Change title from Buy the Numbers to Mental Calculation and update exercise sign-off. Keep display and spoken cue unchanged. Preserve full mathematical scope including numerical memory, arithmetic, algebra, geometry, trigonometry, symbolic reasoning, visualization and problem-solving, automatic development and optional conscious reinforcement. Preserve inhale/hold/cue/slow mouth exhale; do not add candle-blowing instructions. Retain Buy the Numbers as historical lookup; introduce no mode or release. Do not narrow scope to arithmetic alone.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-cog-002.closer"
+      ]
     },
     {
       "function_id": "OCF-COG-003",
@@ -775,28 +959,47 @@
       "function_id": "OCF-COG-004",
       "current_title": "Imprint",
       "display_cue": "PLUS-IMPRINT",
-      "spoken_teaching": "Plus Imprint Imprint",
+      "spoken_teaching": "Plus Imprint",
       "cue_presentation": {
         "command_id": "OCF-CMD-COG-004-PRIMARY",
         "display_cue": "PLUS-IMPRINT",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Imprint",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-cog-004-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Imprints a chosen suggestion or intention using the IMPRINT rehearsal.",
-      "decision_status": "STILL UNDECIDED",
-      "metadata_teaching_consistent": false,
-      "title_status": "UNCHANGED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
+      "metadata_teaching_consistent": true,
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
+      "previous_values": {
         "title": "Imprint",
-        "cue": "PLUS-IMPRINT"
+        "display_cue": "PLUS-IMPRINT",
+        "spoken_cue": "Plus Imprint Imprint",
+        "source_spoken": null
       },
-      "historical_lookup": [],
-      "context": "Selected information/experience encoding: inhale/hold/complete repeated cue/focus target/exhale. Plus Recall retrieves imprinted material. Registry suggestion/intention rehearsal understates actual memory encoding/consolidation; the shorter Imprint is not independently taught.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Plus Imprint Imprint",
+          "kind": "former-teaching",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-COG-004-PRIMARY"
+        }
+      ],
+      "context": "Shorten two body mentions and one closer mention from Plus Imprint Imprint to Plus Imprint. Preserve title, breathing/attention sequence and memory suggestions. Keep Plus Recall active and unchanged; retain repeated legacy phrase as historical lookup.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-cog-004.function-body",
+        "hplus.function.ocf-cog-004.closer"
+      ]
     },
     {
       "function_id": "OCF-COG-005",
@@ -811,17 +1014,14 @@
         "binding_status": "unbound"
       },
       "current_purpose": "Opens perception of choices and alternatives.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "EXISTING PAIR RETAINED",
       "metadata_teaching_consistent": false,
       "title_status": "UNCHANGED",
       "pending_title": null,
       "previous_values": null,
-      "unselected_proposal": {
-        "title": "Options",
-        "cue": "PLUS-OPTIONS"
-      },
+      "unselected_proposal": null,
       "historical_lookup": [],
-      "context": "Close eyes, inhale/hold, select situation, complete cue, exhale with eyes remaining closed. Explore greater-self possibilities/probabilities and consequences while preserving choice. Plus Options is nested only, not independently taught or verified prediction.",
+      "context": "Keep all current Options wording and metadata unchanged, including actual taught Plus Options Choices. Do not implement the proposed shortening to Plus Options or retire its active legacy alias.",
       "teaching_source": "Predecessor contextual review; unchanged protected text verified",
       "changed_keys": []
     },
@@ -914,7 +1114,7 @@
     },
     {
       "function_id": "OCF-EMG-001",
-      "current_title": "Emergency: Injury",
+      "current_title": "Injury Response",
       "display_cue": "PLUS-CONTROL, BALANCE, RESTORE",
       "spoken_teaching": "Plus Control Balance Restore",
       "cue_presentation": {
@@ -923,27 +1123,42 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Control Balance Restore",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-emg-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Emergency-oriented practice to stay calm and take helpful action. Does NOT replace emergency services, first aid, or professional care.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Injury Response",
-        "cue": "PLUS-CONTROL, BALANCE, RESTORE"
+      "previous_values": {
+        "title": "Emergency: Injury",
+        "display_cue": "PLUS-CONTROL, BALANCE, RESTORE",
+        "spoken_cue": "Plus Control Balance Restore",
+        "source_spoken": "Plus Control Balance Restore"
       },
-      "historical_lookup": [],
-      "context": "Conscious inhale/hold/complete ordered cue/exhale reinforces injury response. Narrated automatic injury-triggered operation even asleep/unconscious is absent from manual/empty-trigger registry metadata. Resolve that scope separately; three verbs are not three modes.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Emergency: Injury",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        }
+      ],
+      "context": "Change title from Emergency: Injury to Injury Response and update exercise sign-off. Keep display and spoken cue unchanged. Preserve inhale/hold/complete cue/slow mouth exhale and surrounding protection, balance, healing and restoration suggestions. Retain Emergency: Injury as historical lookup. Control Balance Restore remains one ordered cue, not three modes.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-emg-001.closer"
+      ]
     },
     {
       "function_id": "OCF-EMG-002",
-      "current_title": "Emergency: Toxic",
+      "current_title": "Toxic Exposure Response",
       "display_cue": "PLUS-CLEAR, REMOVE",
       "spoken_teaching": "Plus Clear Remove",
       "cue_presentation": {
@@ -952,23 +1167,38 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Clear Remove",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-emg-002-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Emergency-oriented practice for toxic-exposure situations. Does NOT replace poison control, emergency services, or medical evaluation.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Toxic Exposure Response",
-        "cue": "PLUS-CLEAR, REMOVE"
+      "previous_values": {
+        "title": "Emergency: Toxic",
+        "display_cue": "PLUS-CLEAR, REMOVE",
+        "spoken_cue": "Plus Clear Remove",
+        "source_spoken": "Plus Clear Remove"
       },
-      "historical_lookup": [],
-      "context": "Conscious inhale/hold/complete cue/exhale reinforces harmful-exposure response. Narrated automatic operation and chemical/venom/bite/sting scope exceed manual/empty-trigger registry metadata. Not emotional clearing; source-unavailable reconstruction is not authenticated history.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Emergency: Toxic",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        }
+      ],
+      "context": "Change title from Emergency: Toxic to Toxic Exposure Response and update exercise sign-off. Keep display and spoken cue unchanged. Preserve inhale/hold/complete cue/slow mouth exhale and surrounding physical harmful-exposure response suggestions. Retain Emergency: Toxic as historical lookup. Clear Remove remains one complete cue, not separate modes. Preserve historical source-unavailable reconstruction status.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-emg-002.closer"
+      ]
     },
     {
       "function_id": "OCF-EMO-001",
@@ -1339,7 +1569,7 @@
     },
     {
       "function_id": "OCF-FND-003",
-      "current_title": "Recharge",
+      "current_title": "Quick Recharge",
       "display_cue": "PLUS-RECHARGE",
       "spoken_teaching": "Plus Recharge",
       "cue_presentation": {
@@ -1348,77 +1578,130 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Recharge",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-fnd-003-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Replenishes a felt sense of energy and freshness.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Quick Recharge",
-        "cue": "PLUS-RECHARGE"
+      "previous_values": {
+        "title": "Recharge",
+        "display_cue": "PLUS-RECHARGE",
+        "spoken_cue": "Plus Recharge",
+        "source_spoken": "Plus Recharge"
       },
-      "historical_lookup": [],
-      "context": "Settle for brief natural sleep/rest, inhale/hold/cue/candle-like exhale; awakening within minutes. No programmable timer or wake/abort cue is supplied; distinguish energy access and overnight restoration.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Recharge",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        }
+      ],
+      "context": "Change title from Recharge to Quick Recharge and update exercise sign-off. Keep display and spoken cue unchanged. Preserve deliberately chosen brief natural sleep, restoration, natural awakening within minutes and inhale/hold/cue/candle-like exhale sequence. Retain Recharge as former-title lookup. Introduce no programmable timer, wake-up cue or release command. Preserve lasting learned availability without persistent drowsiness.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-fnd-003.closer"
+      ]
     },
     {
       "function_id": "OCF-FND-004",
       "current_title": "Relax",
       "display_cue": "PLUS-RELAX",
-      "spoken_teaching": "Plus Relax Relax",
+      "spoken_teaching": "Plus Relax",
       "cue_presentation": {
         "command_id": "OCF-CMD-FND-004-PRIMARY",
         "display_cue": "PLUS-RELAX",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Relax",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-fnd-004-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Deepens physical and mental relaxation.",
-      "decision_status": "STILL UNDECIDED",
-      "metadata_teaching_consistent": false,
-      "title_status": "UNCHANGED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
+      "metadata_teaching_consistent": true,
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
+      "previous_values": {
         "title": "Relax",
-        "cue": "PLUS-RELAX"
+        "display_cue": "PLUS-RELAX",
+        "spoken_cue": "Plus Relax Relax",
+        "source_spoken": null
       },
-      "historical_lookup": [],
-      "context": "Inhale/hold/complete repeated cue/candle-like exhale releases physical/mental tension while allowing relaxed alert activity. Shorter RELAX is not independently taught; frozen editorial checkpoint remains pending.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Plus Relax Relax",
+          "kind": "former-teaching",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-FND-004-PRIMARY"
+        }
+      ],
+      "context": "Shorten two current function-body mentions and one closer mention from Plus Relax Relax to Plus Relax. Preserve title, breathing sequence, surrounding suggestions and alert activity. Retain repeated legacy phrase as historical lookup; introduce no mode or release. This approval covers current function-specific narration only; frozen Relax pilot resources and listening checkpoints remain untouched.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-fnd-004.function-body",
+        "hplus.function.ocf-fnd-004.closer"
+      ]
     },
     {
       "function_id": "OCF-FND-005",
       "current_title": "Reset",
       "display_cue": "PLUS-RESET",
-      "spoken_teaching": "Plus Reset Reset",
+      "spoken_teaching": "Plus Reset",
       "cue_presentation": {
         "command_id": "OCF-CMD-FND-005-PRIMARY",
         "display_cue": "PLUS-RESET",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Reset",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-fnd-005-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Returns mind and body to a neutral, settled baseline.",
-      "decision_status": "STILL UNDECIDED",
-      "metadata_teaching_consistent": false,
-      "title_status": "UNCHANGED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
+      "metadata_teaching_consistent": true,
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
+      "previous_values": {
         "title": "Reset",
-        "cue": "PLUS-RESET"
+        "display_cue": "PLUS-RESET",
+        "spoken_cue": "Plus Reset Reset",
+        "source_spoken": null
       },
-      "historical_lookup": [],
-      "context": "When tired/weary/emotionally low: inhale, close eyes/hold, complete repeated cue, exhale/open eyes into energized clear confident waking state. Not neutral global reset, ending other functions, or Recharge sleep.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Plus Reset Reset",
+          "kind": "former-teaching",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-FND-005-PRIMARY"
+        }
+      ],
+      "context": "Shorten two body mentions and one closer mention from Plus Reset Reset to Plus Reset. Preserve title, breathing and eye sequence, and surrounding suggestions. Retain repeated legacy phrase as historical lookup; introduce no mode or release. Preserve energized waking-state intent, deliberate availability and absence of permanent stimulation; do not reinterpret as cancelling other functions.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-fnd-005.function-body",
+        "hplus.function.ocf-fnd-005.closer"
+      ]
     },
     {
       "function_id": "OCF-FND-006",
@@ -1451,32 +1734,60 @@
     },
     {
       "function_id": "OCF-LIF-001",
-      "current_title": "De-Hab",
-      "display_cue": "PLUS-NO MORE, NO MORE",
-      "spoken_teaching": "Plus No More No More",
+      "current_title": "Habit Freedom",
+      "display_cue": "PLUS-FREE THIS HABIT",
+      "spoken_teaching": "Plus Free This Habit",
       "cue_presentation": {
         "command_id": "OCF-CMD-LIF-001-PRIMARY",
-        "display_cue": "PLUS-NO MORE, NO MORE",
+        "display_cue": "PLUS-FREE THIS HABIT",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus No More No More",
+        "spoken_cue": "Plus Free This Habit",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-lif-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Supports stepping away from habitual, repeated behavior patterns.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Habit Freedom",
-        "cue": "PLUS-FREE THIS HABIT"
+      "previous_values": {
+        "title": "De-Hab",
+        "display_cue": "PLUS-NO MORE, NO MORE",
+        "spoken_cue": "Plus No More No More",
+        "source_spoken": "Plus No More No More"
       },
-      "historical_lookup": [],
-      "context": "Recognize selected unwanted physical/mental habit as it arises, inhale/hold/complete cue/candle-like exhale for progressive lasting elimination. Preserve wanted memories/skills. This is habit change, not ending a temporary OCF application.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "De-Hab",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        },
+        {
+          "text": "PLUS-NO MORE, NO MORE",
+          "kind": "former-primary",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-LIF-001-PRIMARY"
+        },
+        {
+          "text": "Plus No More No More",
+          "kind": "former-teaching",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-LIF-001-PRIMARY"
+        }
+      ],
+      "context": "Change title from De-Hab to Habit Freedom and update exercise sign-off. Replace two body mentions and one closer mention from Plus No More No More to Plus Free This Habit. Preserve deliberate recognition and selection of the unwanted physical or mental habit as it arises, progressive lasting change, inhale/hold/cue/candle-like exhale and useful memories, knowledge and skills. Retain De-Hab and superseded cue as historical lookup; introduce no mode or release. Do not reinterpret as cancelling other functions or stopping a temporary application.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-lif-001.function-body",
+        "hplus.function.ocf-lif-001.closer"
+      ]
     },
     {
       "function_id": "OCF-PRF-001",
@@ -1581,7 +1892,7 @@
     },
     {
       "function_id": "OCF-PRF-003",
-      "current_title": "Synchronizing",
+      "current_title": "Coordination",
       "display_cue": "PLUS-SMOOTH, FAST",
       "spoken_teaching": "Plus Smooth Fast",
       "cue_presentation": {
@@ -1590,50 +1901,90 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Smooth Fast",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-prf-003-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Aligns and smooths internal rhythms toward feeling faster and steadier.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Coordination",
-        "cue": "PLUS-SMOOTH, FAST"
+      "previous_values": {
+        "title": "Synchronizing",
+        "display_cue": "PLUS-SMOOTH, FAST",
+        "spoken_cue": "Plus Smooth Fast",
+        "source_spoken": "Plus Smooth Fast"
       },
-      "historical_lookup": [],
-      "context": "Increasing mind/nervous-system/muscle coordination, balance, precision and timing; optional inhale/hold/cue/candle-like reinforcement. Smooth and Fast are one cue; steady precision, not indiscriminate speed.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Synchronizing",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        }
+      ],
+      "context": "Change title from Synchronizing to Coordination and update exercise sign-off. Keep display and spoken cue unchanged. Preserve automatic everyday improvement, optional conscious reinforcement, mind/nervous-system/muscle coordination, balance, precision, timing and inhale/hold/cue/candle-like exhale. Retain Synchronizing as historical lookup. Smooth Fast remains one complete cue, not separate modes. Preserve quick responses when needed and steady precision when careful control is needed, with speed coordinated with intention and accuracy.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-prf-003.closer"
+      ]
     },
     {
       "function_id": "OCF-PRF-004",
       "current_title": "Light Foot",
-      "display_cue": "PLUS-LIGHT",
-      "spoken_teaching": "Plus Lighter Lighter",
+      "display_cue": "PLUS-LIGHT STEP",
+      "spoken_teaching": "Plus Light Step",
       "cue_presentation": {
         "command_id": "OCF-CMD-PRF-004-PRIMARY",
-        "display_cue": "PLUS-LIGHT",
+        "display_cue": "PLUS-LIGHT STEP",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Light Step",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-prf-004-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.",
-      "decision_status": "STILL UNDECIDED",
-      "metadata_teaching_consistent": false,
-      "title_status": "UNCHANGED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
+      "metadata_teaching_consistent": true,
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
+      "previous_values": {
         "title": "Light Foot",
-        "cue": "PLUS-LIGHT STEP"
+        "display_cue": "PLUS-LIGHT",
+        "spoken_cue": "Plus Lighter Lighter",
+        "source_spoken": null
       },
-      "historical_lookup": [],
-      "context": "Lasting efficient gait, clean foot lift, controlled placement and reduced impact; optional inhale/hold/cue/slow mouth exhale. Preserve automatic baseline rather than imply command-only walking/jogging/running scope.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "PLUS-LIGHT",
+          "kind": "former-primary",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-PRF-004-PRIMARY"
+        },
+        {
+          "text": "Plus Lighter Lighter",
+          "kind": "former-teaching",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-PRF-004-PRIMARY"
+        }
+      ],
+      "context": "Change display cue to PLUS-LIGHT STEP; replace two body mentions and one closer mention with Plus Light Step. Keep Light Foot title, automatic everyday baseline, optional reinforcement, breathing procedure and surrounding movement suggestions. Retain superseded cue wording as historical lookup; introduce no mode or release.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-prf-004.function-body",
+        "hplus.function.ocf-prf-004.closer"
+      ]
     },
     {
       "function_id": "OCF-PRF-005",
@@ -1695,7 +2046,7 @@
     },
     {
       "function_id": "OCF-SEN-001",
-      "current_title": "Sensory: Hearing",
+      "current_title": "Hearing",
       "display_cue": "PLUS-HEAR MORE",
       "spoken_teaching": "Plus Hear More",
       "cue_presentation": {
@@ -1704,27 +2055,42 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Hear More",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-sen-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Adjusts inward listening and perception in either direction using the MORE/LESS grammar.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Hearing",
-        "cue": "PLUS-HEAR MORE"
+      "previous_values": {
+        "title": "Sensory: Hearing",
+        "display_cue": "PLUS-HEAR MORE",
+        "spoken_cue": "Plus Hear More",
+        "source_spoken": "Plus Hear More"
       },
-      "historical_lookup": [],
-      "context": "Close eyes, inhale/hold/chosen MORE or LESS cue/exhale/open eyes for external hearing; intention also selects imagined sound. Temporary adjustments differ from lasting imagery development. No normal/reset cue; frozen pilot untouched.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Sensory: Hearing",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        }
+      ],
+      "context": "Change title from Sensory: Hearing to Hearing and update exercise sign-off. Keep BOTH cues unchanged: PLUS-HEAR MORE / Plus Hear More and PLUS-HEAR LESS / Plus Hear Less. Preserve close eyes/inhale/hold/selected cue/slow mouth exhale/open eyes sequence, consciously selected adjustments, auditory memory and imagination, and distinction between imagined and external sound. Retain Sensory: Hearing as historical lookup; introduce no normal, reset or release cue. Preserve lasting inner auditory-imagery ability and leave frozen Hearing pilot resources untouched.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-sen-001.closer"
+      ]
     },
     {
       "function_id": "OCF-SEN-002",
-      "current_title": "Sensory: Seeing",
+      "current_title": "Seeing",
       "display_cue": "PLUS-SEE BETTER",
       "spoken_teaching": "Plus See Better",
       "cue_presentation": {
@@ -1733,27 +2099,42 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus See Better",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-sen-002-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Improves the felt sense of inner vision and clarity.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Seeing",
-        "cue": "PLUS-SEE BETTER"
+      "previous_values": {
+        "title": "Sensory: Seeing",
+        "display_cue": "PLUS-SEE BETTER",
+        "spoken_cue": "Plus See Better",
+        "source_spoken": "Plus See Better"
       },
-      "historical_lookup": [],
-      "context": "Inhale/hold/cue/exhale reinforces physical sight, inner visualization or both by intention. Preserve protected SEE BETTER and physical/inner scope; superseded MORE/LESS must not return as artificial modes.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Sensory: Seeing",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        }
+      ],
+      "context": "Change title from Sensory: Seeing to Seeing and update exercise sign-off. Keep protected PLUS-SEE BETTER and spoken Plus See Better unchanged. Preserve physical sight and inner visualization scope, visual processing, imagination, visual memory, deliberate inner-image manipulation, continuing development and inhale/hold/cue/slow mouth exhale. Retain Sensory: Seeing as historical lookup; introduce no MORE/LESS modes or release command.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-sen-002.closer"
+      ]
     },
     {
       "function_id": "OCF-SEN-003",
-      "current_title": "Sensory: Smell",
+      "current_title": "Smell",
       "display_cue": "PLUS-SMELL MORE",
       "spoken_teaching": "Plus Smell More",
       "cue_presentation": {
@@ -1762,27 +2143,42 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Smell More",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-sen-003-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Adjusts the felt sense of smell in either direction using the MORE/LESS grammar.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Smell",
-        "cue": "PLUS-SMELL MORE"
+      "previous_values": {
+        "title": "Sensory: Smell",
+        "display_cue": "PLUS-SMELL MORE",
+        "spoken_cue": "Plus Smell More",
+        "source_spoken": "Plus Smell More"
       },
-      "historical_lookup": [],
-      "context": "Close eyes, inhale/hold/chosen MORE or LESS cue/exhale/open eyes; external aromas or intended inner scent. GREATER/LESSER aliases are not current teaching; no third normal/reset cue.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Sensory: Smell",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        }
+      ],
+      "context": "Change title from Sensory: Smell to Smell and update exercise sign-off. Keep BOTH cues unchanged: PLUS-SMELL MORE / Plus Smell More and PLUS-SMELL LESS / Plus Smell Less. Preserve close eyes/inhale/hold/selected cue/slow mouth exhale/open eyes sequence, consciously selected temporary physical adjustments, scent recall and lasting olfactory imagination. Retain Sensory: Smell as historical lookup; introduce no third normal, reset or release cue. Do not replace current MORE/LESS teaching with older GREATER/LESSER wording.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-sen-003.closer"
+      ]
     },
     {
       "function_id": "OCF-SEN-004",
-      "current_title": "Sensory: Taste",
+      "current_title": "Taste",
       "display_cue": "PLUS-TASTE MORE",
       "spoken_teaching": "Plus Taste More",
       "cue_presentation": {
@@ -1791,27 +2187,42 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Taste More",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-sen-004-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Adjusts the felt sense of taste in either direction using the MORE/LESS grammar.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Taste",
-        "cue": "PLUS-TASTE MORE"
+      "previous_values": {
+        "title": "Sensory: Taste",
+        "display_cue": "PLUS-TASTE MORE",
+        "spoken_cue": "Plus Taste More",
+        "source_spoken": "Plus Taste More"
       },
-      "historical_lookup": [],
-      "context": "Close eyes, inhale/hold/chosen MORE or LESS cue/exhale/open eyes for actual or imagined flavor. LESS can soften enjoyable flavor too; distinct from appetite. GREATER/LESSER aliases are not current teaching.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Sensory: Taste",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        }
+      ],
+      "context": "Change title from Sensory: Taste to Taste and update exercise sign-off. Keep BOTH cues unchanged: PLUS-TASTE MORE / Plus Taste More and PLUS-TASTE LESS / Plus Taste Less. Preserve close eyes/inhale/hold/selected cue/slow mouth exhale/open eyes sequence, consciously controlled selected taste adjustments including softening enjoyable flavors, flavor recall and lasting inner flavor imagination. Retain Sensory: Taste as historical lookup; introduce no third normal, reset or release cue. Preserve distinction from appetite control and do not replace current MORE/LESS teaching with older GREATER/LESSER wording.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-sen-004.closer"
+      ]
     },
     {
       "function_id": "OCF-SEN-005",
-      "current_title": "Sensory: Touch",
+      "current_title": "Touch",
       "display_cue": "PLUS-TOUCH MORE",
       "spoken_teaching": "Plus Touch More",
       "cue_presentation": {
@@ -1820,104 +2231,187 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Touch More",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-sen-005-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Adjusts the felt sense of touch or skin sensation using the MORE/LESS grammar.",
-      "decision_status": "STILL UNDECIDED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Touch",
-        "cue": "PLUS-TOUCH MORE"
+      "previous_values": {
+        "title": "Sensory: Touch",
+        "display_cue": "PLUS-TOUCH MORE",
+        "spoken_cue": "Plus Touch More",
+        "source_spoken": "Plus Touch More"
       },
-      "historical_lookup": [],
-      "context": "Close eyes, inhale/hold/chosen MORE or LESS cue/exhale/open eyes for physical sensation or intended tactile imagination. Not numbing/injury protection; body slow-mouth and closer candle-like exhale differ. GREATER/LESSER aliases are not current teaching.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Sensory: Touch",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        }
+      ],
+      "context": "Change title from Sensory: Touch to Touch and update exercise sign-off. Keep BOTH cues unchanged: PLUS-TOUCH MORE / Plus Touch More and PLUS-TOUCH LESS / Plus Touch Less. Preserve consciously controlled reversible physical adjustments, lasting tactile recall and imagination, and distinction between imagined sensations and physical contact. Preserve close eyes/inhale/hold/selected cue/exhale/open eyes, including slow mouth exhale in body and candle-like exhale in closer. Retain Sensory: Touch as historical lookup; introduce no third normal, reset or release cue. Do not replace current MORE/LESS teaching with older GREATER/LESSER wording.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-sen-005.closer"
+      ]
     },
     {
       "function_id": "OCF-SLP-001",
       "current_title": "Restorative Sleep",
-      "display_cue": "PLUS-RESTORE",
-      "spoken_teaching": "Plus Heal Heal",
+      "display_cue": "PLUS-RESTORATIVE SLEEP",
+      "spoken_teaching": "Plus Restorative Sleep",
       "cue_presentation": {
         "command_id": "OCF-CMD-SLP-001-PRIMARY",
-        "display_cue": "PLUS-RESTORE",
+        "display_cue": "PLUS-RESTORATIVE SLEEP",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Restorative Sleep",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-slp-001-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE.",
-      "decision_status": "STILL UNDECIDED",
-      "metadata_teaching_consistent": false,
-      "title_status": "UNCHANGED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
+      "metadata_teaching_consistent": true,
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
+      "previous_values": {
         "title": "Restorative Sleep",
-        "cue": "PLUS-RESTORATIVE SLEEP"
+        "display_cue": "PLUS-RESTORE",
+        "spoken_cue": "Plus Heal Heal",
+        "source_spoken": null
       },
-      "historical_lookup": [],
-      "context": "Select restoration intention, deep inhale/gentle hold/cue/slow mouth candle-like exhale. Total-self healing/restoration/regeneration during natural sleep; lasting availability is not perpetual active application.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "PLUS-RESTORE",
+          "kind": "former-primary",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-SLP-001-PRIMARY"
+        },
+        {
+          "text": "Plus Heal Heal",
+          "kind": "former-teaching",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-SLP-001-PRIMARY"
+        }
+      ],
+      "context": "Change display cue to PLUS-RESTORATIVE SLEEP. Replace one body mention and one closer mention from Plus Heal Heal to Plus Restorative Sleep. Preserve title, restoration suggestions, chosen intention, overall balance and inhale/hold/cue/candle-like exhale. Retain superseded cue wording as historical lookup; introduce no mode or release. Preserve restoration during the selected sleep period and lasting availability of the ability. Frozen Sleep Easy pilot resources remain untouched.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-slp-001.function-body",
+        "hplus.function.ocf-slp-001.closer"
+      ]
     },
     {
       "function_id": "OCF-SLP-002",
       "current_title": "Sleep",
       "display_cue": "PLUS-SLEEP",
-      "spoken_teaching": "Plus Twenty Twenty",
+      "spoken_teaching": "Plus Sleep",
       "cue_presentation": {
         "command_id": "OCF-CMD-SLP-002-PRIMARY",
         "display_cue": "PLUS-SLEEP",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Sleep",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-slp-002-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP.",
-      "decision_status": "STILL UNDECIDED",
-      "metadata_teaching_consistent": false,
-      "title_status": "UNCHANGED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
+      "metadata_teaching_consistent": true,
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
+      "previous_values": {
         "title": "Sleep",
-        "cue": "PLUS-SLEEP"
+        "display_cue": "PLUS-SLEEP",
+        "spoken_cue": "Plus Twenty Twenty",
+        "source_spoken": null
       },
-      "historical_lookup": [],
-      "context": "Choose sleep, breathe slowly/deeply/easily and cue DURING EXHALATION, repeating with successive breaths. Retain chosen waking time. Do not insert inhale/hold or candle procedure; registry SLEEP is not taught.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Plus Twenty Twenty",
+          "kind": "former-teaching",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-SLP-002-PRIMARY"
+        }
+      ],
+      "context": "Replace two body mentions and one closer mention from Plus Twenty Twenty to Plus Sleep. Preserve title, cue during exhalation, successive gentle-breath repetition, chosen waking time and surrounding suggestions. Do not add breath-hold or candle-blowing instructions. Retain superseded numeric phrase as historical lookup; introduce no mode or release. Preserve deliberately invoked sleep, lasting learned ability and clear ordinary waking awareness at other times.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-slp-002.function-body",
+        "hplus.function.ocf-slp-002.closer"
+      ]
     },
     {
       "function_id": "OCF-SLP-003",
-      "current_title": "Sweet Dreams",
+      "current_title": "Dream Theme",
       "display_cue": "PLUS-DREAM",
-      "spoken_teaching": "Plus Theme Dream Sleep",
+      "spoken_teaching": "Plus Dream",
       "cue_presentation": {
         "command_id": "OCF-CMD-SLP-003-PRIMARY",
         "display_cue": "PLUS-DREAM",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Dream",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-slp-003-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM.",
-      "decision_status": "STILL UNDECIDED",
-      "metadata_teaching_consistent": false,
-      "title_status": "UNCHANGED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
+      "metadata_teaching_consistent": true,
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Dream Theme",
-        "cue": "PLUS-DREAM"
+      "previous_values": {
+        "title": "Sweet Dreams",
+        "display_cue": "PLUS-DREAM",
+        "spoken_cue": "Plus Theme Dream Sleep",
+        "source_spoken": null
       },
-      "historical_lookup": [],
-      "context": "Select/represent dream theme, inhale/hold/complete cue/exhale, then slow deep breathing. Preserve selected dream experience AND clear joyful waking recall; do not add lucid-control or cancellation modes.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Sweet Dreams",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        },
+        {
+          "text": "Plus Theme Dream Sleep",
+          "kind": "former-teaching",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-SLP-003-PRIMARY"
+        }
+      ],
+      "context": "Change title from Sweet Dreams to Dream Theme and update exercise sign-off. Replace two body mentions and one closer mention from Plus Theme Dream Sleep to Plus Dream. Preserve theme selection, inhale/hold/cue/exhale followed by slow deep breathing, dream suggestions and clear joyful waking recall. Retain Sweet Dreams and superseded cue wording as historical lookup; introduce no lucid-control, cancellation or release mode. Preserve a theme selected for each use and lasting availability of the learned ability.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-slp-003.function-body",
+        "hplus.function.ocf-slp-003.closer"
+      ]
     },
     {
       "function_id": "OCF-SLP-004",
@@ -2067,28 +2561,47 @@
       "function_id": "OCF-SLP-006",
       "current_title": "Stay Awake",
       "display_cue": "PLUS-AWAKE",
-      "spoken_teaching": "Plus One Awake Alert One One",
+      "spoken_teaching": "Plus Awake",
       "cue_presentation": {
         "command_id": "OCF-CMD-SLP-006-PRIMARY",
         "display_cue": "PLUS-AWAKE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Awake",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-slp-006-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE.",
-      "decision_status": "STILL UNDECIDED",
-      "metadata_teaching_consistent": false,
-      "title_status": "UNCHANGED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
+      "metadata_teaching_consistent": true,
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
+      "previous_values": {
         "title": "Stay Awake",
-        "cue": "PLUS-AWAKE"
+        "display_cue": "PLUS-AWAKE",
+        "spoken_cue": "Plus One Awake Alert One One",
+        "source_spoken": null
       },
-      "historical_lookup": [],
-      "context": "Select essential immediate need, inhale/hold/complete cue/slow mouth exhale. Temporary purposeful alertness yields when need passes; lasting availability is not continuous stimulation. No separate release cue taught.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Plus One Awake Alert One One",
+          "kind": "former-teaching",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-004",
+          "command_id": "OCF-CMD-SLP-006-PRIMARY"
+        }
+      ],
+      "context": "Replace one body mention and one closer mention from Plus One Awake Alert One One to Plus Awake. Preserve title, essential immediate selected-need focus, inhale/hold/cue/slow mouth exhale and surrounding alertness suggestions. Retain longer legacy phrase as historical lookup; introduce no mode or release. Preserve temporary purposeful response yielding naturally when the need passes and rest is possible, and lasting availability without continuous stimulation.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-slp-006.function-body",
+        "hplus.function.ocf-slp-006.closer"
+      ]
     }
   ],
   "commands": [
@@ -2104,7 +2617,9 @@
         "label_key": "commands.ocf-cmd-aut-001-primary.label",
         "usage_key": "commands.ocf-cmd-aut-001-primary.usage",
         "purpose_key": "functions.ocf-aut-001.purpose",
-        "explanation_key": "commands.ocf-cmd-aut-001-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-aut-001-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-aut-001-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-aut-001-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -2163,8 +2678,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Automate",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-aut-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -2579,7 +3099,9 @@
         "label_key": "commands.ocf-cmd-bod-005-primary.label",
         "usage_key": "commands.ocf-cmd-bod-005-primary.usage",
         "purpose_key": "functions.ocf-bod-005.purpose",
-        "explanation_key": "commands.ocf-cmd-bod-005-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-bod-005-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-bod-005-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-bod-005-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -2638,8 +3160,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Satisfied Supplied",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-005-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -2740,7 +3267,9 @@
         "label_key": "commands.ocf-cmd-bod-007-primary.label",
         "usage_key": "commands.ocf-cmd-bod-007-primary.usage",
         "purpose_key": "functions.ocf-bod-007.purpose",
-        "explanation_key": "commands.ocf-cmd-bod-007-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-bod-007-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-bod-007-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-bod-007-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -2763,7 +3292,7 @@
       },
       "spoken": "Plus Balance Blood Pressure",
       "spoken_review": "reviewed",
-      "phrase": "PLUS-BALANCE-BLOODPRESSURE",
+      "phrase": "PLUS-BALANCE BLOOD PRESSURE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
         {
@@ -2799,12 +3328,17 @@
       ],
       "cue_presentation": {
         "command_id": "OCF-CMD-BOD-007-PRIMARY",
-        "display_cue": "PLUS-BALANCE-BLOODPRESSURE",
+        "display_cue": "PLUS-BALANCE BLOOD PRESSURE",
         "requested_locale": "en-US",
         "spoken_cue": "Plus Balance Blood Pressure",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-007-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -2819,7 +3353,9 @@
         "label_key": "commands.ocf-cmd-bod-008-primary.label",
         "usage_key": "commands.ocf-cmd-bod-008-primary.usage",
         "purpose_key": "functions.ocf-bod-008.purpose",
-        "explanation_key": "commands.ocf-cmd-bod-008-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-bod-008-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-bod-008-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-bod-008-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -2835,9 +3371,14 @@
         "before_steps": []
       },
       "relationships": {},
-      "spoken": "Plus Alert Destroy",
+      "spoken": "Plus Immune Ready",
       "spoken_review": "reviewed",
-      "phrase": "PLUS-ALERT, DESTROY",
+      "observed_phrase": {
+        "text": "Plus Immune Ready",
+        "narration_key": "hplus.function.ocf-bod-008.function-body",
+        "relationship": "canonical-match"
+      },
+      "phrase": "PLUS-IMMUNE READY",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
         {
@@ -2863,12 +3404,17 @@
       ],
       "cue_presentation": {
         "command_id": "OCF-CMD-BOD-008-PRIMARY",
-        "display_cue": "PLUS-ALERT, DESTROY",
+        "display_cue": "PLUS-IMMUNE READY",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Alert Destroy",
+        "spoken_cue": "Plus Immune Ready",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-008-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -3131,7 +3677,9 @@
         "label_key": "commands.ocf-cmd-bod-011-primary.label",
         "usage_key": "commands.ocf-cmd-bod-011-primary.usage",
         "purpose_key": "functions.ocf-bod-011.purpose",
-        "explanation_key": "commands.ocf-cmd-bod-011-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-bod-011-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-bod-011-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-bod-011-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -3147,9 +3695,14 @@
         "before_steps": []
       },
       "relationships": {},
-      "spoken": "Plus Equalize Harmonize",
+      "spoken": "Plus Hormone Balance",
       "spoken_review": "reviewed",
-      "phrase": "PLUS-EQUALIZE-HARMONIZE",
+      "observed_phrase": {
+        "text": "Plus Hormone Balance",
+        "narration_key": "hplus.function.ocf-bod-011.function-body",
+        "relationship": "canonical-match"
+      },
+      "phrase": "PLUS-HORMONE BALANCE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
         {
@@ -3175,12 +3728,17 @@
       ],
       "cue_presentation": {
         "command_id": "OCF-CMD-BOD-011-PRIMARY",
-        "display_cue": "PLUS-EQUALIZE-HARMONIZE",
+        "display_cue": "PLUS-HORMONE BALANCE",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Equalize Harmonize",
+        "spoken_cue": "Plus Hormone Balance",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-011-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -3433,7 +3991,9 @@
         "label_key": "commands.ocf-cmd-bod-013-primary.label",
         "usage_key": "commands.ocf-cmd-bod-013-primary.usage",
         "purpose_key": "functions.ocf-bod-013.purpose",
-        "explanation_key": "commands.ocf-cmd-bod-013-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-bod-013-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-bod-013-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-bod-013-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -3496,8 +4056,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Balance Heal",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-013-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -3637,7 +4202,9 @@
         "label_key": "commands.ocf-cmd-bod-015-primary.label",
         "usage_key": "commands.ocf-cmd-bod-015-primary.usage",
         "purpose_key": "functions.ocf-bod-015.purpose",
-        "explanation_key": "commands.ocf-cmd-bod-015-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-bod-015-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-bod-015-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-bod-015-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -3654,12 +4221,12 @@
       },
       "relationships": {},
       "observed_phrase": {
-        "text": "Plus Go Numb Go Numb",
+        "text": "Plus Numb",
         "narration_key": "hplus.function.ocf-bod-015.function-body",
-        "relationship": "legacy-form"
+        "relationship": "canonical-match"
       },
-      "spoken": null,
-      "spoken_review": "unresolved",
+      "spoken": "Plus Numb",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-NUMB",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -3698,8 +4265,15 @@
         "command_id": "OCF-CMD-BOD-015-PRIMARY",
         "display_cue": "PLUS-NUMB",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Numb",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-015-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -3718,13 +4292,14 @@
         "explanation_key": "commands.ocf-cmd-bod-015-legacy-01.explanation"
       },
       "documentation": {
-        "visible": true,
+        "visible": false,
         "order": 101
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
       "spoken": null,
       "spoken_review": "unresolved",
+      "availability": "historical-lookup",
       "phrase": "PLUS-GO NUMB, GO NUMB",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -3847,7 +4422,9 @@
         "label_key": "commands.ocf-cmd-cog-001-primary.label",
         "usage_key": "commands.ocf-cmd-cog-001-primary.usage",
         "purpose_key": "functions.ocf-cog-001.purpose",
-        "explanation_key": "commands.ocf-cmd-cog-001-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-cog-001-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-cog-001-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-cog-001-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -3863,9 +4440,14 @@
         "before_steps": []
       },
       "relationships": {},
-      "spoken": "Plus Retrieve",
+      "spoken": "Plus Access Info",
       "spoken_review": "reviewed",
-      "phrase": "PLUS-RETRIEVE",
+      "observed_phrase": {
+        "text": "Plus Access Info",
+        "narration_key": "hplus.function.ocf-cog-001.function-body",
+        "relationship": "canonical-match"
+      },
+      "phrase": "PLUS-ACCESS INFO",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
         {
@@ -3881,12 +4463,17 @@
       ],
       "cue_presentation": {
         "command_id": "OCF-CMD-COG-001-PRIMARY",
-        "display_cue": "PLUS-RETRIEVE",
+        "display_cue": "PLUS-ACCESS INFO",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Retrieve",
+        "spoken_cue": "Plus Access Info",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-cog-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -3901,7 +4488,9 @@
         "label_key": "commands.ocf-cmd-cog-002-primary.label",
         "usage_key": "commands.ocf-cmd-cog-002-primary.usage",
         "purpose_key": "functions.ocf-cog-002.purpose",
-        "explanation_key": "commands.ocf-cmd-cog-002-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-cog-002-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-cog-002-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-cog-002-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -3960,8 +4549,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Calculate",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-cog-002-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -4104,7 +4698,9 @@
         "label_key": "commands.ocf-cmd-cog-004-primary.label",
         "usage_key": "commands.ocf-cmd-cog-004-primary.usage",
         "purpose_key": "functions.ocf-cog-004.purpose",
-        "explanation_key": "commands.ocf-cmd-cog-004-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-cog-004-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-cog-004-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-cog-004-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -4121,12 +4717,12 @@
       },
       "relationships": {},
       "observed_phrase": {
-        "text": "Plus Imprint Imprint",
+        "text": "Plus Imprint",
         "narration_key": "hplus.function.ocf-cog-004.function-body",
-        "relationship": "legacy-form"
+        "relationship": "canonical-match"
       },
-      "spoken": null,
-      "spoken_review": "unresolved",
+      "spoken": "Plus Imprint",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-IMPRINT",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -4165,8 +4761,15 @@
         "command_id": "OCF-CMD-COG-004-PRIMARY",
         "display_cue": "PLUS-IMPRINT",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Imprint",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-cog-004-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -4239,13 +4842,14 @@
         "explanation_key": "commands.ocf-cmd-cog-004-legacy-01.explanation"
       },
       "documentation": {
-        "visible": true,
+        "visible": false,
         "order": 101
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
       "spoken": null,
       "spoken_review": "unresolved",
+      "availability": "historical-lookup",
       "phrase": "PLUS-IMPRINT, IMPRINT",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -4603,7 +5207,9 @@
         "label_key": "commands.ocf-cmd-emg-001-primary.label",
         "usage_key": "commands.ocf-cmd-emg-001-primary.usage",
         "purpose_key": "functions.ocf-emg-001.purpose",
-        "explanation_key": "commands.ocf-cmd-emg-001-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-emg-001-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-emg-001-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-emg-001-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -4651,8 +5257,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Control Balance Restore",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-emg-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -4667,7 +5278,9 @@
         "label_key": "commands.ocf-cmd-emg-002-primary.label",
         "usage_key": "commands.ocf-cmd-emg-002-primary.usage",
         "purpose_key": "functions.ocf-emg-002.purpose",
-        "explanation_key": "commands.ocf-cmd-emg-002-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-emg-002-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-emg-002-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-emg-002-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -4715,8 +5328,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Clear Remove",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-emg-002-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -5581,7 +6199,9 @@
         "label_key": "commands.ocf-cmd-fnd-003-primary.label",
         "usage_key": "commands.ocf-cmd-fnd-003-primary.usage",
         "purpose_key": "functions.ocf-fnd-003.purpose",
-        "explanation_key": "commands.ocf-cmd-fnd-003-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-fnd-003-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-fnd-003-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-fnd-003-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -5640,8 +6260,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Recharge",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-fnd-003-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -5656,7 +6281,9 @@
         "label_key": "commands.ocf-cmd-fnd-004-primary.label",
         "usage_key": "commands.ocf-cmd-fnd-004-primary.usage",
         "purpose_key": "functions.ocf-fnd-004.purpose",
-        "explanation_key": "commands.ocf-cmd-fnd-004-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-fnd-004-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-fnd-004-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-fnd-004-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -5673,12 +6300,12 @@
       },
       "relationships": {},
       "observed_phrase": {
-        "text": "Plus Relax Relax",
+        "text": "Plus Relax",
         "narration_key": "hplus.function.ocf-fnd-004.function-body",
-        "relationship": "legacy-form"
+        "relationship": "canonical-match"
       },
-      "spoken": null,
-      "spoken_review": "unresolved",
+      "spoken": "Plus Relax",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-RELAX",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -5707,8 +6334,15 @@
         "command_id": "OCF-CMD-FND-004-PRIMARY",
         "display_cue": "PLUS-RELAX",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Relax",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-fnd-004-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -5727,13 +6361,14 @@
         "explanation_key": "commands.ocf-cmd-fnd-004-legacy-01.explanation"
       },
       "documentation": {
-        "visible": true,
+        "visible": false,
         "order": 101
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
       "spoken": null,
       "spoken_review": "unresolved",
+      "availability": "historical-lookup",
       "phrase": "PLUS-RELAX, RELAX",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -5756,7 +6391,9 @@
         "label_key": "commands.ocf-cmd-fnd-005-primary.label",
         "usage_key": "commands.ocf-cmd-fnd-005-primary.usage",
         "purpose_key": "functions.ocf-fnd-005.purpose",
-        "explanation_key": "commands.ocf-cmd-fnd-005-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-fnd-005-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-fnd-005-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-fnd-005-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -5773,12 +6410,12 @@
       },
       "relationships": {},
       "observed_phrase": {
-        "text": "Plus Reset Reset",
+        "text": "Plus Reset",
         "narration_key": "hplus.function.ocf-fnd-005.function-body",
-        "relationship": "legacy-form"
+        "relationship": "canonical-match"
       },
-      "spoken": null,
-      "spoken_review": "unresolved",
+      "spoken": "Plus Reset",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-RESET",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -5817,8 +6454,15 @@
         "command_id": "OCF-CMD-FND-005-PRIMARY",
         "display_cue": "PLUS-RESET",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Reset",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-fnd-005-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -5837,13 +6481,14 @@
         "explanation_key": "commands.ocf-cmd-fnd-005-legacy-01.explanation"
       },
       "documentation": {
-        "visible": true,
+        "visible": false,
         "order": 101
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
       "spoken": null,
       "spoken_review": "unresolved",
+      "availability": "historical-lookup",
       "phrase": "PLUS-RESET, RESET",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -5941,7 +6586,9 @@
         "label_key": "commands.ocf-cmd-lif-001-primary.label",
         "usage_key": "commands.ocf-cmd-lif-001-primary.usage",
         "purpose_key": "functions.ocf-lif-001.purpose",
-        "explanation_key": "commands.ocf-cmd-lif-001-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-lif-001-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-lif-001-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-lif-001-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -5963,9 +6610,14 @@
         ]
       },
       "relationships": {},
-      "spoken": "Plus No More No More",
+      "spoken": "Plus Free This Habit",
       "spoken_review": "reviewed",
-      "phrase": "PLUS-NO MORE, NO MORE",
+      "observed_phrase": {
+        "text": "Plus Free This Habit",
+        "narration_key": "hplus.function.ocf-lif-001.function-body",
+        "relationship": "canonical-match"
+      },
+      "phrase": "PLUS-FREE THIS HABIT",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
         {
@@ -5996,12 +6648,17 @@
       ],
       "cue_presentation": {
         "command_id": "OCF-CMD-LIF-001-PRIMARY",
-        "display_cue": "PLUS-NO MORE, NO MORE",
+        "display_cue": "PLUS-FREE THIS HABIT",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus No More No More",
+        "spoken_cue": "Plus Free This Habit",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-lif-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -6212,7 +6869,9 @@
         "label_key": "commands.ocf-cmd-prf-003-primary.label",
         "usage_key": "commands.ocf-cmd-prf-003-primary.usage",
         "purpose_key": "functions.ocf-prf-003.purpose",
-        "explanation_key": "commands.ocf-cmd-prf-003-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-prf-003-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-prf-003-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-prf-003-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -6271,8 +6930,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Smooth Fast",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-prf-003-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -6287,7 +6951,9 @@
         "label_key": "commands.ocf-cmd-prf-004-primary.label",
         "usage_key": "commands.ocf-cmd-prf-004-primary.usage",
         "purpose_key": "functions.ocf-prf-004.purpose",
-        "explanation_key": "commands.ocf-cmd-prf-004-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-prf-004-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-prf-004-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-prf-004-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -6310,13 +6976,13 @@
       },
       "relationships": {},
       "observed_phrase": {
-        "text": "Plus Lighter Lighter",
+        "text": "Plus Light Step",
         "narration_key": "hplus.function.ocf-prf-004.function-body",
-        "relationship": "legacy-form"
+        "relationship": "canonical-match"
       },
-      "spoken": null,
-      "spoken_review": "unresolved",
-      "phrase": "PLUS-LIGHT",
+      "spoken": "Plus Light Step",
+      "spoken_review": "reviewed",
+      "phrase": "PLUS-LIGHT STEP",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
         {
@@ -6347,10 +7013,17 @@
       ],
       "cue_presentation": {
         "command_id": "OCF-CMD-PRF-004-PRIMARY",
-        "display_cue": "PLUS-LIGHT",
+        "display_cue": "PLUS-LIGHT STEP",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Light Step",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-prf-004-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -6369,13 +7042,14 @@
         "explanation_key": "commands.ocf-cmd-prf-004-legacy-01.explanation"
       },
       "documentation": {
-        "visible": true,
+        "visible": false,
         "order": 101
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
       "spoken": null,
       "spoken_review": "unresolved",
+      "availability": "historical-lookup",
       "phrase": "PLUS-LIGHTER, LIGHTER",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -6661,7 +7335,9 @@
         "label_key": "commands.ocf-cmd-sen-001-primary.label",
         "usage_key": "commands.ocf-cmd-sen-001-primary.usage",
         "purpose_key": "functions.ocf-sen-001.purpose",
-        "explanation_key": "commands.ocf-cmd-sen-001-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-sen-001-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-sen-001-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-sen-001-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -6723,8 +7399,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Hear More",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-sen-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -6821,7 +7502,9 @@
         "label_key": "commands.ocf-cmd-sen-002-primary.label",
         "usage_key": "commands.ocf-cmd-sen-002-primary.usage",
         "purpose_key": "functions.ocf-sen-002.purpose",
-        "explanation_key": "commands.ocf-cmd-sen-002-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-sen-002-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-sen-002-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-sen-002-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -6874,8 +7557,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus See Better",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-sen-002-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -6923,7 +7611,9 @@
         "label_key": "commands.ocf-cmd-sen-003-primary.label",
         "usage_key": "commands.ocf-cmd-sen-003-primary.usage",
         "purpose_key": "functions.ocf-sen-003.purpose",
-        "explanation_key": "commands.ocf-cmd-sen-003-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-sen-003-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-sen-003-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-sen-003-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -6985,8 +7675,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Smell More",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-sen-003-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -7149,7 +7844,9 @@
         "label_key": "commands.ocf-cmd-sen-004-primary.label",
         "usage_key": "commands.ocf-cmd-sen-004-primary.usage",
         "purpose_key": "functions.ocf-sen-004.purpose",
-        "explanation_key": "commands.ocf-cmd-sen-004-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-sen-004-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-sen-004-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-sen-004-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -7211,8 +7908,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Taste More",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-sen-004-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -7375,7 +8077,9 @@
         "label_key": "commands.ocf-cmd-sen-005-primary.label",
         "usage_key": "commands.ocf-cmd-sen-005-primary.usage",
         "purpose_key": "functions.ocf-sen-005.purpose",
-        "explanation_key": "commands.ocf-cmd-sen-005-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-sen-005-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-sen-005-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-sen-005-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -7437,8 +8141,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Touch More",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-sen-005-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -7601,7 +8310,9 @@
         "label_key": "commands.ocf-cmd-slp-001-primary.label",
         "usage_key": "commands.ocf-cmd-slp-001-primary.usage",
         "purpose_key": "functions.ocf-slp-001.purpose",
-        "explanation_key": "commands.ocf-cmd-slp-001-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-slp-001-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-slp-001-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-slp-001-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -7624,13 +8335,13 @@
       },
       "relationships": {},
       "observed_phrase": {
-        "text": "Plus Heal Heal",
+        "text": "Plus Restorative Sleep",
         "narration_key": "hplus.function.ocf-slp-001.function-body",
-        "relationship": "legacy-form"
+        "relationship": "canonical-match"
       },
-      "spoken": null,
-      "spoken_review": "unresolved",
-      "phrase": "PLUS-RESTORE",
+      "spoken": "Plus Restorative Sleep",
+      "spoken_review": "reviewed",
+      "phrase": "PLUS-RESTORATIVE SLEEP",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
         {
@@ -7661,10 +8372,17 @@
       ],
       "cue_presentation": {
         "command_id": "OCF-CMD-SLP-001-PRIMARY",
-        "display_cue": "PLUS-RESTORE",
+        "display_cue": "PLUS-RESTORATIVE SLEEP",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Restorative Sleep",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-slp-001-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -7683,13 +8401,14 @@
         "explanation_key": "commands.ocf-cmd-slp-001-legacy-01.explanation"
       },
       "documentation": {
-        "visible": true,
+        "visible": false,
         "order": 101
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
       "spoken": null,
       "spoken_review": "unresolved",
+      "availability": "historical-lookup",
       "phrase": "PLUS-HEAL, HEAL",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -7712,7 +8431,9 @@
         "label_key": "commands.ocf-cmd-slp-002-primary.label",
         "usage_key": "commands.ocf-cmd-slp-002-primary.usage",
         "purpose_key": "functions.ocf-slp-002.purpose",
-        "explanation_key": "commands.ocf-cmd-slp-002-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-slp-002-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-slp-002-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-slp-002-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -7735,12 +8456,12 @@
       },
       "relationships": {},
       "observed_phrase": {
-        "text": "Plus Twenty Twenty",
+        "text": "Plus Sleep",
         "narration_key": "hplus.function.ocf-slp-002.function-body",
-        "relationship": "legacy-form"
+        "relationship": "canonical-match"
       },
-      "spoken": null,
-      "spoken_review": "unresolved",
+      "spoken": "Plus Sleep",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-SLEEP",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -7774,8 +8495,15 @@
         "command_id": "OCF-CMD-SLP-002-PRIMARY",
         "display_cue": "PLUS-SLEEP",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Sleep",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-slp-002-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -7794,13 +8522,14 @@
         "explanation_key": "commands.ocf-cmd-slp-002-legacy-01.explanation"
       },
       "documentation": {
-        "visible": true,
+        "visible": false,
         "order": 101
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
       "spoken": null,
       "spoken_review": "unresolved",
+      "availability": "historical-lookup",
       "phrase": "PLUS-20-20",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -7823,7 +8552,9 @@
         "label_key": "commands.ocf-cmd-slp-003-primary.label",
         "usage_key": "commands.ocf-cmd-slp-003-primary.usage",
         "purpose_key": "functions.ocf-slp-003.purpose",
-        "explanation_key": "commands.ocf-cmd-slp-003-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-slp-003-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-slp-003-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-slp-003-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -7846,12 +8577,12 @@
       },
       "relationships": {},
       "observed_phrase": {
-        "text": "Plus Theme Dream Sleep",
+        "text": "Plus Dream",
         "narration_key": "hplus.function.ocf-slp-003.function-body",
-        "relationship": "legacy-form"
+        "relationship": "canonical-match"
       },
-      "spoken": null,
-      "spoken_review": "unresolved",
+      "spoken": "Plus Dream",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-DREAM",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -7890,8 +8621,15 @@
         "command_id": "OCF-CMD-SLP-003-PRIMARY",
         "display_cue": "PLUS-DREAM",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Dream",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-slp-003-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -7910,13 +8648,14 @@
         "explanation_key": "commands.ocf-cmd-slp-003-legacy-01.explanation"
       },
       "documentation": {
-        "visible": true,
+        "visible": false,
         "order": 101
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
       "spoken": null,
       "spoken_review": "unresolved",
+      "availability": "historical-lookup",
       "phrase": "PLUS-THEME, DREAM, SLEEP",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -8196,7 +8935,9 @@
         "label_key": "commands.ocf-cmd-slp-006-primary.label",
         "usage_key": "commands.ocf-cmd-slp-006-primary.usage",
         "purpose_key": "functions.ocf-slp-006.purpose",
-        "explanation_key": "commands.ocf-cmd-slp-006-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-slp-006-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-slp-006-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-slp-006-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -8219,12 +8960,12 @@
       },
       "relationships": {},
       "observed_phrase": {
-        "text": "Plus One Awake Alert One One",
+        "text": "Plus Awake",
         "narration_key": "hplus.function.ocf-slp-006.function-body",
-        "relationship": "legacy-form"
+        "relationship": "canonical-match"
       },
-      "spoken": null,
-      "spoken_review": "unresolved",
+      "spoken": "Plus Awake",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-AWAKE",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -8258,8 +8999,15 @@
         "command_id": "OCF-CMD-SLP-006-PRIMARY",
         "display_cue": "PLUS-AWAKE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Awake",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-slp-006-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -8278,13 +9026,14 @@
         "explanation_key": "commands.ocf-cmd-slp-006-legacy-01.explanation"
       },
       "documentation": {
-        "visible": true,
+        "visible": false,
         "order": 101
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
       "spoken": null,
       "spoken_review": "unresolved",
+      "availability": "historical-lookup",
       "phrase": "PLUS-ONE, AWAKE, ALERT, ONE, ONE",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -8304,13 +9053,10 @@
     "PLUS-BODY CLEANSE"
   ],
   "pending": [
-    "Heart Flow final title",
-    "Nutricia paired vocabulary",
-    "De-Hab alternatives",
-    "Other unselected proposals",
     "HPLUS identifier migration",
     "Per-locale Plus policy and production translations",
-    "Human listening and release decisions"
+    "Human listening and release decisions",
+    "Separately flagged purpose, persistence and trigger metadata questions"
   ],
   "locales_requiring_review": [
     "es"
@@ -8406,32 +9152,32 @@
     }
   ],
   "input_sha256": {
-    "functions/automation/see-be.yaml": "ad3b0b6c24c772a3b14cdb95f58af66149f296347e8fb4ae82e56b347df231bf",
+    "functions/automation/see-be.yaml": "5ce644ad2141c13f417bb4fdaf1cd68144ad15b6bc9d94ddbd5136ee597b4aae",
     "functions/body/brain-repairs.yaml": "3136af44bb811d9dfbd99e5dda6bc3d5ed7c7e53b40bbfedd81de1b231694bc2",
     "functions/body/circulation.yaml": "ab82119a99a67d80d423e48e2e335541b4da52d7d89407c855c4586e9ebe13d3",
     "functions/body/de-discomfort.yaml": "fc9ccf4d2d50ec56a81bf66791f292605839a7d33e9827e0543a50df9e6a012b",
     "functions/body/de-tox-body.yaml": "4b961558d4e3255f0f1d542f0b1459ecb2f382541c29857bf33f6a7f15c8df35",
-    "functions/body/eat-no-eat.yaml": "1a6f925c2fa4d805475f342069a3e72dbfea47281169de69396996a0933b9a8b",
-    "functions/body/heart-repairs.yaml": "0ff3bbb6bfeed8323a5b7716bd0b0bc08116136ea42b6284445b94398c1e7315",
-    "functions/body/hypertension.yaml": "8ffae8b8066a3ffa611694c6cc2c2163f5fa069e1bd390ff9ffa9f94b786a319",
-    "functions/body/immunizing.yaml": "69dc8b7f9f6af5440df5453d10156eefca97e9f2fb809ffb494b9face1325dd3",
+    "functions/body/eat-no-eat.yaml": "f9346642c5b4921742536c075c052e11fa5cba6cd56bf33f462e6c241a049647",
+    "functions/body/heart-repairs.yaml": "d2bc974f1e22e59f786c3c5835342080373c37b6376a8044d276c44a4a16090d",
+    "functions/body/hypertension.yaml": "66cbcc47ae341d5aef380670e331a1cc9aacf0df15398b86ad0c54d602c31314",
+    "functions/body/immunizing.yaml": "4eca3ba1529de44c9b10394ed5e7da3d49b49542f8c0eb08aa1bff0b130feb80",
     "functions/body/lungs-repairs.yaml": "899b2e0248e4a452130d5460410f080790cb2a80ee81799f303cd6dcb1a3784c",
     "functions/body/nutricia.yaml": "60dad96e4e57e0a16b7ba894e1e353068fc75445f859cf93b9c2af3e553a87cb",
-    "functions/body/passages.yaml": "0b10c57c2b6744deadc74056f55acbcd0ad87e3a85ca2a24de7c40c24579cde6",
+    "functions/body/passages.yaml": "cc8ef508b4b514d3eb22a87bb28651dc59b46891ebbbc65ebcb017fe50aaf05f",
     "functions/body/sex-drive.yaml": "1671db633b87d9702d9b6cf7bd3683dd2f18047b96bcba5101df53def812f99e",
-    "functions/body/tune-up.yaml": "a000c8d753f8b2346c94a469fa53b2d76361e72e0e61a7340981e3c90e04e574",
+    "functions/body/tune-up.yaml": "3129ac226fe4847dbe32b26bcd1fb12a2261fec4a102244968d7199de872ec15",
     "functions/body/regenerate.yaml": "67a1ec3f847944e064e0ec2831ef2decc8af0b69208c3a027b437915ac8fbff8",
-    "functions/body/short-fix.yaml": "dc8a67a825a142864371bafd55421bb7f787be895dc0ce01e48f485fe5108770",
-    "functions/cognition/access-to-information.yaml": "40bbf4bc8f50da0838174f71787517e16458d3f97d2696cfc93873b1bcbae79e",
-    "functions/cognition/buy-the-numbers.yaml": "8b7fbb6678e4783f5f118c667acead6a4bfea76f6c6208d786d3d1f3c7466cf7",
+    "functions/body/short-fix.yaml": "1948dba8133693e4fa907d33aa4510a30c4474c3a4314a8337662dd9ffb44720",
+    "functions/cognition/access-to-information.yaml": "5442cbad113cd5cb7f684d10b0373d4fe0f7f2fa8d783e6934e35ed4e5dc60a2",
+    "functions/cognition/buy-the-numbers.yaml": "f28c4c7bf7cfae2fdd01907fa0d930fb5f2451cd3490a12e35e62c1f94e6e1d9",
     "functions/cognition/contemplation.yaml": "7791e189c7c153fe2c4292c0288f6d540826e3299b39ed7127a36067b13f1289",
-    "functions/cognition/imprint.yaml": "47477a7221659462376fd891aa1c39faccaaf6f21f74ff3e395cc90645d21605",
+    "functions/cognition/imprint.yaml": "92e139659d5f60ba15f0dda75c03b3c6be0705eee15a21a8c56cebaad61612de",
     "functions/cognition/options.yaml": "374a63375e1a31b6337a3e9b7a5f1af81f524aa4f9453679e1cdf4788deac364",
     "functions/cognition/recall.yaml": "aeb550a24153dcf23d3a1ae41b2b3da79e1a92345777e663b51aeb058e1c668f",
     "functions/cognition/think-fast.yaml": "e6ce234e058cf1d8bb6ab74c6843765ee22adcf497d8a8d30fbbfd5dc14012bd",
     "functions/communication/speak-up.yaml": "46d70a4e340d738ea2d03a42b5863cbfd9e2b08e6965b7e23e06ab0ca88ae5e3",
-    "functions/emergency/emergency-injury.yaml": "8c0d5f566cbd44db8fff2e69839f617396861b7201fe367aabb8f51e4865aa86",
-    "functions/emergency/emergency-toxic.yaml": "adbb4783d62043b806a26a677ee0a1b15717864028536a2b052dceb49ce5e992",
+    "functions/emergency/emergency-injury.yaml": "2649ef0c708c4b12242ee816b901d39d5798cbc7c2c83bd5e392b1c1905b7167",
+    "functions/emergency/emergency-toxic.yaml": "2c48283984ae6c9c9c90e4b70eda77d04bc02eb785040a2e7bc19744ae90cd6e",
     "functions/emotion/let-go.yaml": "1b3ad890769212a0a95bcf534766c87c84171e3923087770b0b0b1c1b90f5433",
     "functions/emotion/off-loading.yaml": "c2a160d3ad0f196404b5cdbb9eac1b97456278417bb3dc0e7178d7e8e6df221c",
     "functions/emotion/empathizing.yaml": "c5d02479a626e1736bc3e6eea63d0f02fcc8217b7e04f5613762d0ac9e76b9e0",
@@ -8439,27 +9185,27 @@
     "functions/experimental/zoning.yaml": "f5f3aa75d3fdd7a20b0ae6959ab264a9019248169a56ec54e2140b8c1516bfa2",
     "functions/foundation/energize.yaml": "18c8a03827f47a11814362b9a11e80c73fa6dbba0a04f802fe0c76a38a0c1378",
     "functions/foundation/attention.yaml": "2385e4b894763480995fd4d4e471895f3edb00e378f4192ca3632a8a6742ae28",
-    "functions/foundation/recharge.yaml": "b5703b54ecea560e84c01a8e1e09b22981606ef5e4d99d7643c657324d29021a",
-    "functions/foundation/relax.yaml": "f3c4d992c8102074907114c6a13d3e86dafdfe2a2439daf45d20d56b0e44c9bd",
-    "functions/foundation/reset.yaml": "76183c0650d86bd8201c740da888f9d55f5f63701b6a0dae38c4c0903ee75080",
+    "functions/foundation/recharge.yaml": "4192369502c43aefa4efa0cd6a0988ae38fbdb66f6084849be971756149be465",
+    "functions/foundation/relax.yaml": "7cc1df12f010d2942dd99c3a9cab6f67ac8c86039a6ce616f3ab381627d89c0b",
+    "functions/foundation/reset.yaml": "802d4701e65e82a600de358eb697b4abcf111337d740080c97c4adffa0bc77e3",
     "functions/foundation/release.yaml": "8aa17264ffe9de74dc42946d9c888279a8568251cdf1c727ef30a07e64bb1373",
-    "functions/lifestyle/de-hab.yaml": "98575297b14251f7a01cfe62c5fb8678b40b27cbca230169e86d023a45ea5a27",
+    "functions/lifestyle/de-hab.yaml": "6010a44925b8ec264d95d6eeb07e8c2fcfeddc9b30293c8287927c65694bb88a",
     "functions/performance/do-this-now.yaml": "e47a4d41673cb081c6204f6093848bae1e88d8233d79dd493249ab5dba1a98ab",
     "functions/performance/eight-great.yaml": "da690abd9584a4add00f942f9cf1dec639838233f31f09415bfa4c8e04d3f55d",
-    "functions/performance/synchronizing.yaml": "95d5ebee38d3cef616d18a389ee5f5b8cbc37e9ab348f655ca6d43bd4bff575b",
-    "functions/performance/light-foot.yaml": "2123ed6b85d7a83bcdcb01105a777cec65a5114981616afc53d6064e3bf202e4",
+    "functions/performance/synchronizing.yaml": "baea84216a8dad234a7d1fef996f7d99e4f2336e7002d646437ef2a34e91250c",
+    "functions/performance/light-foot.yaml": "438c4566c96f50fef31b8939f7f1e8a253f73a8d8b9aa53d725c242a1a71b25e",
     "functions/performance/make-your-day.yaml": "6f4ddd3b4654473aa1b3cddf72dc53e70d6f55af6d96421205d491044833db20",
     "functions/performance/strong-quick.yaml": "47738b98c483b64d938acdc5abc38eed144dea1a2487b45cabef204bc8c8c515",
-    "functions/sensory/hearing.yaml": "1d0198c9b4b6a03dac31f61460724a322b6f123c73937f5a419b3152f7b4f945",
-    "functions/sensory/seeing.yaml": "984a0003164871f33245f062bd4985373ba145260ba1d580b479786033eb7ed3",
-    "functions/sensory/smell.yaml": "32f659909da2fed9885653d86486a8f55d52f46830cc62b4936a5dc9305d96d1",
-    "functions/sensory/taste.yaml": "c27c6f4f7d500329d3db39481c3a5d0717c0ebbd9e862dc0853b67b07a3756a8",
-    "functions/sensory/touch.yaml": "06d32c13dd99ad16114fce669eea0b271334326c68b35f235ea47d795c2bfe35",
-    "functions/sleep/restorative-sleep.yaml": "42f4d242c240fffc0d1932a80f5225006a26b582f4a633157d363cd2529cfe62",
-    "functions/sleep/sleep.yaml": "90de6d2b48a8df6b298c56da14a02c6a19bc208fa7248cb1e0405c9a5b2ba8c1",
-    "functions/sleep/sweet-dreams.yaml": "4c1d7afc463400557393e4eda70bacca7b7a22f687a1745c47c4571cbd24ff42",
+    "functions/sensory/hearing.yaml": "9ff22aed5205f8fa17b5c9c397c2e44c39ea91fb0e56e7339b76f2f4beed3acb",
+    "functions/sensory/seeing.yaml": "d13be1a93446667fee4dc56ac98175df8f5a3c623a648145071b72b42665e9c1",
+    "functions/sensory/smell.yaml": "bbbbf254259ccbbdc2b452f691f7608144cbe2dea8d50d867078f14530d18962",
+    "functions/sensory/taste.yaml": "88631efea0e6f856f21fd74fb4a39b2a40d62f25658c523eaa0094ecaf89620a",
+    "functions/sensory/touch.yaml": "f45495dfe24cf0cde8f43c7392e068175a194d3b91547d61c74f8fca61872ab6",
+    "functions/sleep/restorative-sleep.yaml": "a850dc573d920bcd4166c84ed3aa13c67133571055a32c3e228370dcdd62f4f4",
+    "functions/sleep/sleep.yaml": "006fb6bd23c7159fd9d7b8cf24a6c4bc32175db7bc64a1ed8e2473564d0e9dcd",
+    "functions/sleep/sweet-dreams.yaml": "797f95278bfb23d3c4423d4e9028853f22928d3e0dc4c8d15acfa818d82bc2eb",
     "functions/sleep/wake-know.yaml": "6671c425e8ecc5f74deb78f0a43eaac10d2a3b26bce011fa64f32593c94de95c",
     "functions/sleep/sleep-easy.yaml": "3e69cddf48e0183f68642925ef15af20080e4875cfd4cc2a5d488b90ca5ff930",
-    "functions/sleep/stay-awake.yaml": "8d2c2a8332e4f88d7792c290195c75e09488df0765006ac571d987de756a5adc"
+    "functions/sleep/stay-awake.yaml": "2ad207fb933134239c3c7bd9e1cba70520f677733b096dadd0989e3f48d38d85"
   }
 }

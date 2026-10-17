@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-EMG-002 — Emergency: Toxic
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -174,7 +175,7 @@ entries:
 
   hplus.function.ocf-emg-002.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted closer based on the user-proposed Emergency:
       Toxic reconstruction. Proposed input:
@@ -191,6 +192,9 @@ entries:
       transcript wording.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-EMG-002
+      allowed: [cue.primary]
     text: |-
       Remember, whenever harmful foreign substances
       enter or contact your body, you can consciously
@@ -199,8 +203,8 @@ entries:
       Inhale deeply and hold your breath.
 
       Think or say in your mind,
-      "Plus Clear Remove."
+      "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
-      This concludes your OCF Emergency: Toxic exercise.
+      This concludes your OCF Toxic Exposure Response exercise.

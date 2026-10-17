@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-BOD-013 — Tune-Up
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -136,7 +137,7 @@ entries:
 
   hplus.function.ocf-bod-013.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted closer based on the unverified Tune-Up
       transcript. Original SOURCE +Transcripts From available
@@ -151,6 +152,9 @@ entries:
       This is adapted narration, not verbatim source wording.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-BOD-013
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to perceive,
       balance, or heal any part of your physical body,
@@ -158,9 +162,9 @@ entries:
 
       Inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus Balance Heal."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth
       and open your eyes.
 
-      This concludes your OCF Tune-Up exercise.
+      This concludes your OCF Body Tune-Up exercise.

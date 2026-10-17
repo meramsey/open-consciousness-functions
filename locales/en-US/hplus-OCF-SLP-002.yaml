@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-SLP-002 — Sleep
 # English function-specific OCF-adapted narration; wording source of truth.
 # Source status: transcript_unverified; authentication remains unverified.
@@ -35,7 +36,7 @@ entries:
 
   hplus.function.ocf-slp-002.function-body:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted function body based on the supplied unverified Sleep candidate,
       source lines 72–116. Source document path and SHA-256 were not supplied.
@@ -50,6 +51,9 @@ entries:
       session-specific references or return instructions. Effects are intended
       narration suggestions rather than independently verified outcomes.
       Rights: user_cleared per user's lawyer-clearance attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-SLP-002
+      allowed: [cue.primary]
     text: |-
       From this moment forward, you have the ability
       to enter normal, natural, restful sleep
@@ -60,7 +64,7 @@ entries:
       slowly, deeply, and easily.
 
       As you exhale, think or say in your mind,
-      "Plus Twenty Twenty."
+      "{{ cue.primary }}."
 
       With each gentle breath and each repetition
       of this command, you will move more deeply
@@ -96,13 +100,13 @@ entries:
       leaving your ordinary waking state
       clear and active at other times.
 
-      Each time you use Plus Twenty Twenty,
+      Each time you use {{ cue.primary }},
       entering natural sleep and awakening
       refreshed will become easier and more effective.
 
   hplus.function.ocf-slp-002.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted closer based on the supplied unverified Sleep candidate,
       source lines 315–317. Source document path and SHA-256 were not supplied.
@@ -110,10 +114,13 @@ entries:
       during the exhale, and the standard OCF ending. No inhale-hold or
       candle-blowing instruction has been added. Rights: user_cleared per
       user's lawyer-clearance attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-SLP-002
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to enter normal,
       natural, restful sleep, breathe slowly and deeply.
       As you exhale, think or say in your mind,
-      "Plus Twenty Twenty."
+      "{{ cue.primary }}."
 
       This concludes your OCF Sleep exercise.

@@ -18,6 +18,7 @@ from .utils import OCFError
 REGISTERED = (
     "function-content/editorial/approved-title-cues-002.json",
     "function-content/editorial/approved-title-cues-003.json",
+    "function-content/editorial/approved-title-cues-004.json",
 )
 APPROVED = {
     "OCF-EDITORIAL-TITLE-CUES-002": ("OCF-BOD-003", "Comfort", "PLUS-COMFORT", "Plus Comfort"),
@@ -136,6 +137,12 @@ def records(root=REPO_ROOT, *, required=False):
         errors = validate_against_schema(data, _load_schema("editorial-cue-migration.schema.json"))
         if errors:
             raise OCFError("invalid editorial successor: " + " | ".join(errors))
+        from .editorial_batch import BATCH_ID, check_record
+
+        if data["id"] == BATCH_ID:
+            check_record(data)
+            result.append(data)
+            continue
         expected = APPROVED.get(data["id"])
         if expected is None or len(data["decisions"]) != 1:
             raise OCFError("unregistered editorial approval")
@@ -216,12 +223,18 @@ def current_decision_record(root=REPO_ROOT):
 
     result = json.loads(json.dumps(decision_record(root)))
     result["decision_ids"] = [result["id"]]
+    result["kept_decisions"] = []
     by_owner = {row["function_id"]: row for row in result["decisions"]}
     for data in records(root):
         result["id"] = data["id"]
         result["source_commit"] = data["source_commit"]
         result["integrity_baseline"] = data["integrity_baseline"]
         result["decision_ids"].append(data["id"])
+        result["kept_decisions"].extend(data.get("kept_decisions", []))
+        result["pending"] = [
+            item for item in result["pending"] if item not in data.get("resolved_pending", [])
+        ]
+        result["pending"] = list(dict.fromkeys(result["pending"] + data["pending"]))
         by_owner.update({row["function_id"]: row for row in data["decisions"]})
         result["allowed_text_changes"].extend(data["allowed_text_changes"])
         result["locales_requiring_review"] = sorted(
@@ -248,22 +261,29 @@ def verify(root=REPO_ROOT):
         )
 
     for data in reversed(records(root, required=True)):
-        decision = data["decisions"][0]
-        function_name = decision["function_file"]
-        function_scope(
-            yaml.safe_load(data["predecessor_files"][function_name]),
-            yaml.safe_load(read(function_name)),
-            decision,
-        )
-        old_narration = yaml.safe_load(data["predecessor_files"][decision["narration_file"]])
-        new_narration = yaml.safe_load(read(decision["narration_file"]))
-        comparable = deepcopy(new_narration)
-        for key in decision["narration_keys_changed"]:
-            for field in ("text", "version"):
-                comparable["entries"][key][field] = old_narration["entries"][key][field]
-            comparable["entries"][key].pop("cue_template", None)
-        if comparable != old_narration:
-            problems.append("narration provenance or unapproved entries changed")
+        from .editorial_batch import BATCH_ID, approved_function
+
+        by_owner = {decision["function_id"]: decision for decision in data["decisions"]}
+        for decision in data["decisions"]:
+            function_name = decision["function_file"]
+            old_function = yaml.safe_load(data["predecessor_files"][function_name])
+            current_function = yaml.safe_load(read(function_name))
+            if data["id"] == BATCH_ID:
+                if approved_function(old_function, decision) != current_function:
+                    raise OCFError("function change exceeds approved batch naming scope")
+            else:
+                function_scope(old_function, current_function, decision)
+            old_narration = yaml.safe_load(data["predecessor_files"][decision["narration_file"]])
+            comparable = yaml.safe_load(read(decision["narration_file"]))
+            for key in decision["narration_keys_changed"]:
+                for field in ("text", "version", "cue_template"):
+                    previous_entry = old_narration["entries"][key]
+                    if field in previous_entry:
+                        comparable["entries"][key][field] = previous_entry[field]
+                    else:
+                        comparable["entries"][key].pop(field, None)
+            if comparable != old_narration:
+                problems.append("narration provenance or unapproved entries changed")
         previous_path = contained(root, data["previous_integrity_baseline"])
         previous_raw = previous_path.read_text(encoding="utf-8")
         if sha(previous_raw) != data["previous_baseline_sha256"]:
@@ -273,6 +293,7 @@ def verify(root=REPO_ROOT):
         if len(allowed) != len(data["allowed_text_changes"]) or not set(allowed) <= expected.keys():
             raise OCFError("invalid successor text allowlist identities")
         for identity, row in allowed.items():
+            decision = by_owner[row["function_id"]]
             if expected[identity] != row["before_sha256"]:
                 problems.append("successor predecessor text hash mismatch: " + identity)
             after = replay_change(row)

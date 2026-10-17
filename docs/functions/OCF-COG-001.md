@@ -1,6 +1,6 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Access to Information
+# Information Access
 
 **Purpose**: Accesses intuition, memory, and inner knowledge on demand.
 
@@ -14,13 +14,15 @@ Source availability does not establish historical authentication or provenance.
 
 [Command index](../COMMAND_INDEX.md)
 
-## PLUS-RETRIEVE
+## PLUS-ACCESS INFO
 
 ### Primary activation command
 
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
+
+**Recorded source phrase (not the canonical phrase)**: Plus Access Info `(canonical-match; hplus.function.ocf-cog-001.function-body)`
 
 ### Activation sequence
 

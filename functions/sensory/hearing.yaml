@@ -21,7 +21,7 @@ canonical:
     mode_ids:
     - OCF-CMD-SEN-001-HEAR-LESS
     primary: PLUS-HEAR MORE
-  name: 'Sensory: Hearing'
+  name: "Hearing"
 commands:
 - id: OCF-CMD-SEN-001-PRIMARY
   function_id: OCF-SEN-001
@@ -34,6 +34,8 @@ commands:
     usage_key: commands.ocf-cmd-sen-001-primary.usage
     purpose_key: functions.ocf-sen-001.purpose
     explanation_key: commands.ocf-cmd-sen-001-primary.explanation
+    display_cue_key: commands.ocf-cmd-sen-001-primary.display-cue
+    spoken_cue_key: commands.ocf-cmd-sen-001-primary.spoken-cue
   documentation:
     visible: true
     order: 1
@@ -125,7 +127,7 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: needs-review
+  command_review: "approved"
   reimplementation_status: planned
 purpose:
   community_description: Adjusts inward listening and perception in either direction using the MORE/LESS
@@ -163,3 +165,7 @@ narration:
   - key: hplus.function.ocf-sen-001.closer
     repetitions: 1
     role: closer
+historical_lookup:
+- text: 'Sensory: Hearing'
+  kind: former-title
+  decision: OCF-EDITORIAL-TITLE-CUES-004

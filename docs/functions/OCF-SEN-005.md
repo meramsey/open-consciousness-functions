@@ -1,6 +1,6 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Sensory: Touch
+# Touch
 
 **Purpose**: Adjusts the felt sense of touch or skin sensation using the MORE/LESS grammar.
 
@@ -10,7 +10,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 Source availability does not establish historical authentication or provenance.
 
-**Command review state**: Needs review (`needs-review`)
+**Command review state**: Approved (`approved`)
 
 [Command index](../COMMAND_INDEX.md)
 

@@ -1,9 +1,7 @@
 aliases:
   commands:
-  - PLUS-GO NUMB, GO NUMB
   - PLUS-RELEASE
   command_ids:
-  - OCF-CMD-BOD-015-LEGACY-01
   - OCF-CMD-BOD-015-LEGACY-02
   names:
   - Short Fix
@@ -23,7 +21,7 @@ canonical:
     modes: []
     mode_ids: []
     primary: PLUS-NUMB
-  name: Short Fix
+  name: "Temporary Numbing"
 commands:
 - id: OCF-CMD-BOD-015-PRIMARY
   function_id: OCF-BOD-015
@@ -36,6 +34,8 @@ commands:
     usage_key: commands.ocf-cmd-bod-015-primary.usage
     purpose_key: functions.ocf-bod-015.purpose
     explanation_key: commands.ocf-cmd-bod-015-primary.explanation
+    display_cue_key: commands.ocf-cmd-bod-015-primary.display-cue
+    spoken_cue_key: commands.ocf-cmd-bod-015-primary.spoken-cue
   documentation:
     visible: true
     order: 1
@@ -48,11 +48,11 @@ commands:
     before_steps: []
   relationships: {}
   observed_phrase:
-    text: Plus Go Numb Go Numb
+    text: Plus Numb
     narration_key: hplus.function.ocf-bod-015.function-body
-    relationship: legacy-form
-  spoken: null
-  spoken_review: unresolved
+    relationship: canonical-match
+  spoken: "Plus Numb"
+  spoken_review: "reviewed"
 - id: OCF-CMD-BOD-015-LEGACY-01
   function_id: OCF-BOD-015
   phrase_ref:
@@ -66,12 +66,13 @@ commands:
     purpose_key: functions.ocf-bod-015.purpose
     explanation_key: commands.ocf-cmd-bod-015-legacy-01.explanation
   documentation:
-    visible: true
+    visible: false
     order: 101
   effect_scope_ref: lifecycle.persistence
   relationships: {}
   spoken: null
   spoken_review: unresolved
+  availability: "historical-lookup"
 - id: OCF-CMD-BOD-015-LEGACY-02
   function_id: OCF-BOD-015
   phrase_ref:
@@ -127,9 +128,9 @@ compatibility:
   legacy_commands:
   - PLUS-GO NUMB, GO NUMB
   - PLUS-RELEASE
-  rationale: Legacy rapid-numbing cues are retained as aliases; concise cue PLUS-NUMB is proposed for
-    review.
-  state: bridge-trainable
+  rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is historical
+    lookup. Existing controls remain unchanged.
+  state: historical-lookup
 contributor:
   contact: null
   name: null
@@ -163,7 +164,7 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: review-required
+  command_review: "approved"
   reimplementation_status: planned
 purpose:
   community_description: Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue
@@ -203,3 +204,11 @@ narration:
   - key: hplus.function.ocf-bod-015.closer
     repetitions: 1
     role: closer
+historical_lookup:
+- text: Short Fix
+  kind: former-title
+  decision: OCF-EDITORIAL-TITLE-CUES-004
+- text: Plus Go Numb Go Numb
+  kind: former-teaching
+  decision: OCF-EDITORIAL-TITLE-CUES-004
+  command_id: OCF-CMD-BOD-015-PRIMARY

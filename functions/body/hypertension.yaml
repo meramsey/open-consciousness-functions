@@ -18,8 +18,8 @@ canonical:
   command:
     modes: []
     mode_ids: []
-    primary: PLUS-BALANCE-BLOODPRESSURE
-  name: Hypertension
+    primary: "PLUS-BALANCE BLOOD PRESSURE"
+  name: "Blood Pressure Balance"
 commands:
 - id: OCF-CMD-BOD-007-PRIMARY
   function_id: OCF-BOD-007
@@ -32,6 +32,8 @@ commands:
     usage_key: commands.ocf-cmd-bod-007-primary.usage
     purpose_key: functions.ocf-bod-007.purpose
     explanation_key: commands.ocf-cmd-bod-007-primary.explanation
+    display_cue_key: commands.ocf-cmd-bod-007-primary.display-cue
+    spoken_cue_key: commands.ocf-cmd-bod-007-primary.spoken-cue
   documentation:
     visible: true
     order: 1
@@ -131,3 +133,11 @@ narration:
   - key: hplus.function.ocf-bod-007.closer
     repetitions: 1
     role: closer
+historical_lookup:
+- text: Hypertension
+  kind: former-title
+  decision: OCF-EDITORIAL-TITLE-CUES-004
+- text: PLUS-BALANCE-BLOODPRESSURE
+  kind: former-primary
+  decision: OCF-EDITORIAL-TITLE-CUES-004
+  command_id: OCF-CMD-BOD-007-PRIMARY

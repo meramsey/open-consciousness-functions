@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-AUT-001 — See-Be
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -151,7 +152,7 @@ entries:
 
   hplus.function.ocf-aut-001.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted closer based on the user-proposed See-Be
       reconstruction. Proposed input:
@@ -168,6 +169,9 @@ entries:
       transcript wording.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-AUT-001
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to make a learned
       action or skill automatic, picture yourself
@@ -175,8 +179,8 @@ entries:
 
       Inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus Automate."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
-      This concludes your OCF See-Be exercise.
+      This concludes your OCF Automatic Action exercise.

@@ -18,8 +18,8 @@ canonical:
   command:
     modes: []
     mode_ids: []
-    primary: PLUS-NO MORE, NO MORE
-  name: De-Hab
+    primary: "PLUS-FREE THIS HABIT"
+  name: "Habit Freedom"
 commands:
 - id: OCF-CMD-LIF-001-PRIMARY
   function_id: OCF-LIF-001
@@ -32,6 +32,8 @@ commands:
     usage_key: commands.ocf-cmd-lif-001-primary.usage
     purpose_key: functions.ocf-lif-001.purpose
     explanation_key: commands.ocf-cmd-lif-001-primary.explanation
+    display_cue_key: commands.ocf-cmd-lif-001-primary.display-cue
+    spoken_cue_key: commands.ocf-cmd-lif-001-primary.spoken-cue
   documentation:
     visible: true
     order: 1
@@ -46,8 +48,9 @@ commands:
       operation: select-intention
       localization_key: command.procedure.select-intention
   relationships: {}
-  spoken: "Plus No More No More"
+  spoken: "Plus Free This Habit"
   spoken_review: reviewed
+  observed_phrase: {"text": "Plus Free This Habit", "narration_key": "hplus.function.ocf-lif-001.function-body", "relationship": "canonical-match"}
 chains: []
 claims:
   intended_effects: []
@@ -61,8 +64,9 @@ companions: []
 compatibility:
   legacy_commands:
   - PLUS-NO MORE, NO MORE
-  rationale: Legacy cue is four spoken words; a concise replacement requires review.
-  state: bridge-trainable
+  rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is historical
+    lookup. Existing controls remain unchanged.
+  state: historical-lookup
 contributor:
   contact: null
   name: null
@@ -93,7 +97,7 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: review-required
+  command_review: "approved"
   reimplementation_status: planned
 purpose:
   community_description: Supports stepping away from habitual, repeated behavior patterns.
@@ -130,3 +134,15 @@ narration:
   - key: hplus.function.ocf-lif-001.closer
     repetitions: 1
     role: closer
+historical_lookup:
+- text: De-Hab
+  kind: former-title
+  decision: OCF-EDITORIAL-TITLE-CUES-004
+- text: PLUS-NO MORE, NO MORE
+  kind: former-primary
+  decision: OCF-EDITORIAL-TITLE-CUES-004
+  command_id: OCF-CMD-LIF-001-PRIMARY
+- text: Plus No More No More
+  kind: former-teaching
+  decision: OCF-EDITORIAL-TITLE-CUES-004
+  command_id: OCF-CMD-LIF-001-PRIMARY

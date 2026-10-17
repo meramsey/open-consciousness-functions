@@ -1,6 +1,6 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Synchronizing
+# Coordination
 
 **Purpose**: Aligns and smooths internal rhythms toward feeling faster and steadier.
 

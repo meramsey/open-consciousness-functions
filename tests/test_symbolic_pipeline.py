@@ -123,14 +123,11 @@ def test_preview_does_not_guess_unknown_function_or_missing_bindings(tmp_path):
 
 
 @pytest.mark.integration
-def test_current_queue_excludes_finalized_cues_and_keeps_tentative_heart(tmp_path, monkeypatch):
+def test_current_queue_excludes_finalized_and_explicit_keep_decisions(tmp_path, monkeypatch):
     from ocf_tools import editorial_queue as review
 
     monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path))
     queue = review.load_or_create()
-    assert review.next_item(queue)["function_id"] == "OCF-BOD-015"
-    ids = {row["function_id"] for row in queue["items"]}
-    assert {"OCF-BOD-006", "OCF-BOD-010", "OCF-LIF-001"} <= ids
-    assert not {"OCF-EXP-001", "OCF-SLP-005", "OCF-BOD-004", "OCF-BOD-003", "OCF-BOD-014"} & ids
-    assert all(row["status"] == "pending" for row in queue["items"])
+    assert review.next_item(queue) is None
+    assert queue["items"] == []
     assert review.load_or_create() == queue

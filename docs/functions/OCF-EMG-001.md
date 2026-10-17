@@ -1,6 +1,6 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Emergency: Injury
+# Injury Response
 
 **Purpose**: Emergency-oriented practice to stay calm and take helpful action. Does NOT replace emergency services, first aid, or professional care.
 

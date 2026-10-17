@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-SLP-006 — Stay Awake
 # English function-specific OCF-adapted narration; wording source of truth.
 # Source status: unavailable; authentication remains unverified.
@@ -38,7 +39,7 @@ entries:
 
   hplus.function.ocf-slp-006.function-body:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF adaptation of user-proposed Stay Awake reconstruction; proposed input
       Stay Awake/Stay_Awake_881001_reconstructed_clean.txt; SHA-256
@@ -54,6 +55,9 @@ entries:
       does not establish verified resistance to sleep deprivation or involuntary
       sleep. One reusable body supports four passes across Focus 11 and Focus 20.
       Rights: user_cleared per user's lawyer-clearance attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-SLP-006
+      allowed: [cue.primary]
     text: |-
       From this moment forward, you have the ability
       to call upon a powerful state of waking alertness
@@ -65,7 +69,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
       Think or say in your mind,
-      "Plus One Awake Alert One One."
+      "{{ cue.primary }}."
       Then exhale slowly through your mouth.
 
       Immediately, your total self will begin to shift
@@ -103,7 +107,7 @@ entries:
 
   hplus.function.ocf-slp-006.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted closer based on user-proposed Stay Awake reconstruction;
       proposed input Stay Awake/Stay_Awake_881001_reconstructed_clean.txt;
@@ -112,12 +116,15 @@ entries:
       unverified. Contains one purpose reminder, exact command and breathing
       sequence, and standard OCF ending. Rights: user_cleared per user's
       lawyer-clearance attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-SLP-006
+      allowed: [cue.primary]
     text: |-
       Remember, when an essential need requires
       immediate waking alertness, inhale deeply
       and hold your breath.
       Think or say in your mind,
-      "Plus One Awake Alert One One."
+      "{{ cue.primary }}."
       Then exhale slowly through your mouth.
 
       This concludes your OCF Stay Awake exercise.

@@ -22,7 +22,7 @@ Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Recorded source phrase (not the canonical phrase)**: Plus Reset Reset `(legacy-form; hplus.function.ocf-fnd-005.function-body)`
+**Recorded source phrase (not the canonical phrase)**: Plus Reset `(canonical-match; hplus.function.ocf-fnd-005.function-body)`
 
 ### Activation sequence
 
@@ -32,13 +32,5 @@ This is the primary command for the function.
 4. Think or say the command.
 5. Exhale.
 6. Open your eyes.
-
-## PLUS-RESET, RESET
-
-### Legacy compatibility phrase
-
-Compatibility phrase retained by the registry; historical authentication is not implied.
-
-This is a compatibility phrase, not a new canonical command.
 
 Canonical command phrases are shown exactly as registered and are not translated. Script and legacy phrase differences are shown separately.

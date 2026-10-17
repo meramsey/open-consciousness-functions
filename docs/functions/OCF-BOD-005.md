@@ -1,6 +1,6 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Eat/No Eat
+# Appetite Choice
 
 **Purpose**: Adjusts appetite signals in either direction.
 

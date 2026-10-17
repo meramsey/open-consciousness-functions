@@ -19,7 +19,7 @@ canonical:
     modes: []
     mode_ids: []
     primary: PLUS-SEE BETTER
-  name: 'Sensory: Seeing'
+  name: "Seeing"
 commands:
 - id: OCF-CMD-SEN-002-PRIMARY
   function_id: OCF-SEN-002
@@ -32,6 +32,8 @@ commands:
     usage_key: commands.ocf-cmd-sen-002-primary.usage
     purpose_key: functions.ocf-sen-002.purpose
     explanation_key: commands.ocf-cmd-sen-002-primary.explanation
+    display_cue_key: commands.ocf-cmd-sen-002-primary.display-cue
+    spoken_cue_key: commands.ocf-cmd-sen-002-primary.spoken-cue
   documentation:
     visible: true
     order: 1
@@ -112,7 +114,7 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: needs-review
+  command_review: "approved"
   reimplementation_status: planned
 purpose:
   community_description: Improves the felt sense of inner vision and clarity.
@@ -150,3 +152,7 @@ narration:
   - key: hplus.function.ocf-sen-002.closer
     repetitions: 1
     role: closer
+historical_lookup:
+- text: 'Sensory: Seeing'
+  kind: former-title
+  decision: OCF-EDITORIAL-TITLE-CUES-004

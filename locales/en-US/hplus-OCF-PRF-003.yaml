@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-PRF-003 — Synchronizing
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -104,7 +105,7 @@ entries:
 
   hplus.function.ocf-prf-003.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted closer based on unverified Synchronizing transcript.
       Original SOURCE +Transcripts From available tapes/Synchronizing/Synchronizing.txt;
@@ -113,15 +114,18 @@ entries:
       source inhale-hold-command-candle-exhale sequence, and standard OCF
       ending. Original SOURCE remains unchanged. Rights: user_cleared, per
       user's lawyer-clearance attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-PRF-003
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to increase
       the speed, smoothness, and coordination
       of your movement, inhale deeply
       and hold your breath.
 
-      Think or say in your mind, "Plus Smooth Fast."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth,
       as though gently blowing out a candle.
 
-      This concludes your OCF Synchronizing exercise.
+      This concludes your OCF Coordination exercise.

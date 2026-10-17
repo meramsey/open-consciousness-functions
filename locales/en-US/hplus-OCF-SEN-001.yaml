@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 
 # OCF-SEN-001 — Sensory: Hearing
 # English function-specific OCF-adapted narration; wording source of truth.
@@ -114,7 +115,7 @@ entries:
 
   hplus.function.ocf-sen-001.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-authored concise closer adapted from the unverified Sensory (Hearing)
       transcript; SOURCE +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt;
@@ -125,12 +126,15 @@ entries:
       Rights: user_cleared per user's lawyer-clearance attestation.
       Finished-session release remains pending.
       Frozen Hearing pilot resources remain unchanged.
+    cue_template:
+      function_id: OCF-SEN-001
+      allowed: [cue.primary]
     text: |-
       Remember, to regulate your hearing or strengthen
       your inner experience of sound, close your eyes,
       inhale deeply, and hold your breath.
-      Think or say in your mind, "Plus Hear More"
+      Think or say in your mind, "{{ cue.primary }}"
       or "Plus Hear Less," according to your intention.
       Then exhale slowly through your mouth and open your eyes.
 
-      This concludes your OCF Sensory: Hearing exercise.
+      This concludes your OCF Hearing exercise.

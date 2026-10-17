@@ -14,12 +14,13 @@ The [current decision sheet](releases/OCF_TITLE_CUE_CURRENT.md),
 [current teaching status](releases/OCF_TEACHING_CURRENT.md),
 [source-English terminology sheet](releases/OCF_EN_US_TERMINOLOGY.md) and
 [historical lookup guide](releases/OCF_HISTORICAL_LOOKUP_CURRENT.md) reflect
-`OCF-EDITORIAL-TITLE-CUES-001` and its approved Comfort and Regenerate successors
-`OCF-EDITORIAL-TITLE-CUES-002` and `OCF-EDITORIAL-TITLE-CUES-003`.
-Nine selected pairs, Detox, the requested heart cue, Comfort and Regenerate
-are implemented. Heart Flow remains tentative; Heart Renewal and the
-Body Cleansing/Body Cleanse proposals are rejected/superseded. All other unselected
-vocabulary remains pending. No HPLUS identity migration is implemented.
+`OCF-EDITORIAL-TITLE-CUES-001` and its approved successors through
+`OCF-EDITORIAL-TITLE-CUES-004`. The completed 32-function review includes
+Comfort and Regenerate, followed by 28 batch approvals and two explicit
+keep-current decisions: Options and Nutricia. Heart Flow is now finalized;
+its already-approved **Plus Heart Better** cue is unchanged. Heart Renewal
+and Body Cleansing/Body Cleanse remain rejected/superseded.
+No HPLUS identity migration is implemented.
 
 ```bash
 python scripts/tools/approved_cue_migration.py --check
@@ -79,13 +80,49 @@ provenance and historical source-unavailable status are retained. `PLUS-BUILD,
 LIVE` and `Plus Build Live` remain historical lookup; the old command identity
 is historical-only.
 
-The current successors are fixture 004 and engineering defaults lock 005.
+The Regenerate revision uses fixture 004 and engineering defaults lock 005.
 Exactly two protected entries change relative to Comfort's revision; 175 are
 unchanged. Earlier ledgers, fixtures and locks remain immutable. Engineering
 profiles stay identical. Both approved successors are verified before their
 predecessor views are used by historical checks. Old recording text fingerprints
 remain stale in recorded and hybrid modes. This decision adds no listening or
 finished-session release approval.
+
+## Collected naming batch: reviews 3–32
+
+At the user's request, decisions were collected one function at a time before
+implementation. The [batch approval ledger](../function-content/editorial/approved-title-cues-004.json)
+records each selected title, display cue, complete spoken phrase, exact response,
+scope and separately flagged metadata issue. The entire authorization is pinned;
+editing its old wording or substitutions cannot silently enlarge the approval.
+
+Twenty-eight approvals change 41 protected body/closer entries; the other 136
+entries are byte-identical to the preceding revision. Titles and/or primary cues
+change only as selected. Current totals are 55 functions, 97 stable command
+identities, 79 active records, 18 historical-only records and 40 implemented
+approved primary pairs. Nine superseded primary aliases become historical-only.
+Retrieval, release and sensory LESS controls retain their exact data and speech.
+
+Options retains **Plus Options Choices**, and Nutricia retains **Plus Food More**
+and **Plus Food Less**. Their function YAML and narration remain unchanged.
+The completed queue does not reopen these keep-current decisions or Heart Flow.
+The remaining Options display/teaching difference is intentional and visible.
+
+Fixture 005 and engineering defaults lock 006 are the current successors.
+All previous ledgers, fixtures and locks remain immutable. The lock updates only
+approved narration dependencies; profiles, stages, DSP and mixing remain intact.
+After completing the naming reviews, the user explicitly released the draft-pilot
+freeze: “I don't need to keep those frozen pilots.” Pilot composition therefore
+uses the current approved titles and spoken cues through the ordinary resolver;
+no historical pilot-binding compatibility layer is retained. Draft content and
+listening/release review remain separate from naming approval.
+
+Purpose, persistence, trigger and role discrepancies identified during review
+remain separate pending questions, recorded per decision. No naming approval
+rewrites those mechanisms, resolves those discrepancies, creates a control,
+changes a breathing sequence or grants listening/release approval. Old recorded
+text fingerprints remain stale even when only a title/sign-off changes; hybrid
+fallback cannot bypass that mismatch.
 
 ## Historical proposal checkpoint
 

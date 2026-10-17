@@ -5,7 +5,7 @@
   },
   "defaults": {
     "file": "_shared.json",
-    "sha256": "868e9c01b241f45a26be4dc86e2ec60a89c90bf94a2c6a983da5f341eb01b9a4"
+    "sha256": "1976558ef50735e20e6875a0162d4ed111223c4b5681f19a186770daa07775d7"
   },
   "function_id": "OCF-SLP-002",
   "generation": {
@@ -19,19 +19,21 @@
       "fallback": false,
       "key": "hplus.function.ocf-slp-002.closer",
       "locale": "en-US",
+      "raw_template_sha256": "82792562c6b94193310108c3bef82bc3c08d09dec36a51b51a0e2284a00d3e49",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "4d90fe37f7d72191e0be35e5661fc0b4c3298489f0378483237beb671791ff5f",
-      "version": "1.2.0"
+      "text_sha256": "ef9c2624e22f72ce0e38238747fca833456fc82f29955e99ef022b37c920ba3e",
+      "version": "1.2.1"
     },
     {
       "fallback": false,
       "key": "hplus.function.ocf-slp-002.function-body",
       "locale": "en-US",
+      "raw_template_sha256": "f1b4556fc0c6aa76c289b3e55f4dc56cbe8ac9785b47ad6455330ed782e70e4a",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "e3d9a599c924d6ba84d3d04545d2c215024a13bd058b5e5388e4328bcb67bd6e",
-      "version": "1.2.0"
+      "text_sha256": "4a30cab667ad3cdf68ba3c3254e949f8e99495412fe1b0be3c2ff0854e09bd33",
+      "version": "1.2.1"
     },
     {
       "fallback": false,

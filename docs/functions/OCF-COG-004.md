@@ -22,7 +22,7 @@ Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Recorded source phrase (not the canonical phrase)**: Plus Imprint Imprint `(legacy-form; hplus.function.ocf-cog-004.function-body)`
+**Recorded source phrase (not the canonical phrase)**: Plus Imprint `(canonical-match; hplus.function.ocf-cog-004.function-body)`
 
 ### Activation sequence
 
@@ -48,13 +48,5 @@ This command retrieves selected or imprinted information.
 ### Related commands
 
 - retrieves from: `PLUS-IMPRINT`
-
-## PLUS-IMPRINT, IMPRINT
-
-### Legacy compatibility phrase
-
-Compatibility phrase retained by the registry; historical authentication is not implied.
-
-This is a compatibility phrase, not a new canonical command.
 
 Canonical command phrases are shown exactly as registered and are not translated. Script and legacy phrase differences are shown separately.

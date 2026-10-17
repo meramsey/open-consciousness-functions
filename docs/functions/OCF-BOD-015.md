@@ -1,6 +1,6 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Short Fix
+# Temporary Numbing
 
 **Purpose**: Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB.
 
@@ -10,7 +10,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 Source availability does not establish historical authentication or provenance.
 
-**Command review state**: Review required (`review-required`)
+**Command review state**: Approved (`approved`)
 
 [Command index](../COMMAND_INDEX.md)
 
@@ -22,7 +22,7 @@ Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Recorded source phrase (not the canonical phrase)**: Plus Go Numb Go Numb `(legacy-form; hplus.function.ocf-bod-015.function-body)`
+**Recorded source phrase (not the canonical phrase)**: Plus Numb `(canonical-match; hplus.function.ocf-bod-015.function-body)`
 
 ### Activation sequence
 
@@ -32,14 +32,6 @@ This is the primary command for the function.
 4. Hold your breath.
 5. Think or say the command.
 6. Exhale.
-
-## PLUS-GO NUMB, GO NUMB
-
-### Legacy compatibility phrase
-
-Compatibility phrase retained by the registry; historical authentication is not implied.
-
-This is a compatibility phrase, not a new canonical command.
 
 ## PLUS-RELEASE
 

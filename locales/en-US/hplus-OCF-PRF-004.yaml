@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-PRF-004 — Light Foot
 # English function-specific OCF-adapted narration; wording source of truth.
 # Source status: unavailable; authentication remains unverified.
@@ -36,7 +37,7 @@ entries:
 
   hplus.function.ocf-prf-004.function-body:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF adaptation of the user-proposed Light Foot reconstruction;
       proposed input Light Foot/Light_Foot_881047_reconstructed_clean.txt;
@@ -56,6 +57,9 @@ entries:
       Focus 20. Intended effects are suggestions, not established outcomes.
       Rights: user_cleared per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-PRF-004
+      allowed: [cue.primary]
     text: |-
       From this moment forward, your body will learn
       a lighter, quieter, and more efficient way of moving.
@@ -90,7 +94,7 @@ entries:
       and efficiency even further, inhale deeply
       and gently hold your breath.
 
-      Think or say in your mind, "Plus Lighter Lighter."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
@@ -101,12 +105,12 @@ entries:
 
       Each time you move, your body will reinforce
       this effortless pattern. Each time you use
-      Plus Lighter Lighter, it will become easier
+      {{ cue.primary }}, it will become easier
       and more effective to express at will.
 
   hplus.function.ocf-prf-004.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-authored concise closer based on the user-proposed reconstruction;
       proposed input Light Foot/Light_Foot_881047_reconstructed_clean.txt;
@@ -117,12 +121,15 @@ entries:
       the original inhale-hold-command-exhale sequence, and uses standard
       OCF sign-off. Rights: user_cleared per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-PRF-004
+      allowed: [cue.primary]
     text: |-
       Remember, your lighter, quieter, more efficient way
       of moving will continue naturally, and whenever
       you wish to strengthen it, inhale deeply,
       hold your breath, and think or say in your mind,
-      "Plus Lighter Lighter."
+      "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 

@@ -63,12 +63,16 @@ def create():
         (REPO_ROOT / "docs/releases/OCF_TITLE_CUE_REVIEW.json").read_text(encoding="utf-8")
     )
     recommendations = {row["function_id"]: row for row in source["functions"]}
-    approved = {row["function_id"] for row in current_decision_record()["decisions"]}
+    decisions = current_decision_record()
+    approved = {
+        row["function_id"] for row in decisions["decisions"] if not row.get("pending_title")
+    }
+    kept = {row["function_id"] for row in decisions["kept_decisions"]}
     records = {record.id: record for record in load_all_functions()}
     rows = []
     for row in current["functions"]:
         owner = row["function_id"]
-        if owner in approved and owner != "OCF-BOD-006":
+        if owner in approved or owner in kept:
             continue
         prior = recommendations[owner]
         if row["decision_status"] == "EXISTING PAIR RETAINED" and owner != "OCF-BOD-006":

@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-SEN-002 — Sensory: Seeing
 # English function-specific OCF-adapted narration; wording source of truth.
 # Source status: transcript_unverified; authentication remains unverified.
@@ -102,7 +103,7 @@ entries:
 
   hplus.function.ocf-sen-002.closer:
     status: reviewed
-    version: 1.3.0
+    version: 1.3.1
     notes: >-
       OCF-adapted closer based on unverified Sensory (Seeing) transcript;
       SOURCE +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt;
@@ -112,13 +113,16 @@ entries:
       Exact Plus See Better cue, original breathing sequence, and standard
       OCF ending remain. Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-SEN-002
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to strengthen your
       physical sight or the clarity of your inner images,
       inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus See Better."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
-      This concludes your OCF Sensory: Seeing exercise.
+      This concludes your OCF Seeing exercise.

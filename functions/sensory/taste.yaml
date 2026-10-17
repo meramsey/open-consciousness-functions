@@ -25,7 +25,7 @@ canonical:
     mode_ids:
     - OCF-CMD-SEN-004-TASTE-LESS
     primary: PLUS-TASTE MORE
-  name: 'Sensory: Taste'
+  name: "Taste"
 commands:
 - id: OCF-CMD-SEN-004-PRIMARY
   function_id: OCF-SEN-004
@@ -38,6 +38,8 @@ commands:
     usage_key: commands.ocf-cmd-sen-004-primary.usage
     purpose_key: functions.ocf-sen-004.purpose
     explanation_key: commands.ocf-cmd-sen-004-primary.explanation
+    display_cue_key: commands.ocf-cmd-sen-004-primary.display-cue
+    spoken_cue_key: commands.ocf-cmd-sen-004-primary.spoken-cue
   documentation:
     visible: true
     order: 1
@@ -167,7 +169,7 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: needs-review
+  command_review: "approved"
   reimplementation_status: planned
 purpose:
   community_description: Adjusts the felt sense of taste in either direction using the MORE/LESS grammar.
@@ -204,3 +206,7 @@ narration:
   - key: hplus.function.ocf-sen-004.closer
     repetitions: 1
     role: closer
+historical_lookup:
+- text: 'Sensory: Taste'
+  kind: former-title
+  decision: OCF-EDITORIAL-TITLE-CUES-004

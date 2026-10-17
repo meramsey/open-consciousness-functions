@@ -390,9 +390,10 @@ def test_all_approved_resolved_bytes_and_four_passes_match_predecessor():
     )
     assert verify() == []
     assert len(data["entries"]) == 22
+    current_texts = narration_texts()
     assert {
         key: hashlib.sha256(text.encode()).hexdigest()
-        for key, text in before_texts(REPO_ROOT, narration_texts()).items()
+        for key, text in before_texts(REPO_ROOT, current_texts).items()
     } == data["resolved_baseline"]
     for owner in sorted({row["function_id"] for row in data["entries"]}):
         view = preview(owner)
@@ -406,5 +407,8 @@ def test_all_approved_resolved_bytes_and_four_passes_match_predecessor():
                     for segment in plan["segments"]
                     if segment["resource_key"] == row["key"] and segment["playback"] == playback
                 ]
-                assert "\n\n".join(pieces).encode() == row["before_text"].encode()
+                assert (
+                    "\n\n".join(pieces).encode()
+                    == current_texts[row["path"] + "::" + row["key"]].encode()
+                )
         assert all("{{" not in resource["resolved_text"] for resource in view["resources"])

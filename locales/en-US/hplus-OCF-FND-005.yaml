@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-FND-005 — Reset
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -35,7 +36,7 @@ entries:
 
   hplus.function.ocf-fnd-005.function-body:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted body based on the unverified Reset transcript.
       Original SOURCE +Transcripts From available tapes/Reset/Reset.txt;
@@ -53,6 +54,9 @@ entries:
       narration are intended suggestions, not independently verified outcomes.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-FND-005
+      allowed: [cue.primary]
     text: |-
       From this moment forward, you have the ability
       to change your physical and mental pattern
@@ -65,7 +69,7 @@ entries:
       Inhale deeply, close your eyes,
       and gently hold your breath.
 
-      Think or say in your mind, "Plus Reset Reset."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth
       and open your eyes.
@@ -96,13 +100,13 @@ entries:
       and you can invoke this renewed wakefulness
       whenever a change of pattern is desired.
 
-      Each time you use Plus Reset Reset,
+      Each time you use {{ cue.primary }},
       this shift becomes easier, faster,
       and more effective.
 
   hplus.function.ocf-fnd-005.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted closer based on the unverified Reset transcript.
       Original SOURCE +Transcripts From available tapes/Reset/Reset.txt;
@@ -113,12 +117,15 @@ entries:
       standard OCF ending. This is adapted narration rather than a verbatim
       transcription. Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-FND-005
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to change
       from tired and low to energized and strong,
       inhale deeply, close your eyes, and hold your breath.
 
-      Think or say in your mind, "Plus Reset Reset."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth
       and open your eyes.

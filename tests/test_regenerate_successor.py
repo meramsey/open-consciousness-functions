@@ -23,9 +23,13 @@ def test_regenerate_exact_scope_and_all_predecessors_remain_valid():
     from tools.check_hplus_narration_integrity import narration_texts, text_fingerprints
 
     assert successors.verify() == verify_migration() == verify_structure() == []
-    ledger = successors.records()[-1]
+    ledger = successors.records()[1]
     decision = ledger["decisions"][0]
     current = text_fingerprints(narration_texts())
+    for later in reversed(successors.records()[2:]):
+        for change in later["allowed_text_changes"]:
+            assert current[change["identity"]] == change["after_sha256"]
+            current[change["identity"]] = change["before_sha256"]
     previous = json.loads((REPO_ROOT / ledger["previous_integrity_baseline"]).read_text())
     assert len(current) == len(previous) == 177
     assert {key for key in current if current[key] != previous[key]} == {
@@ -79,7 +83,7 @@ def test_build_live_recordings_are_stale_including_explicit_tts_fallback(tmp_pat
     from test_narration_sources import fixture
 
     doc, config, path = fixture(tmp_path, mode=mode)
-    old = successors.records()[-1]["allowed_text_changes"][0]
+    old = successors.records()[1]["allowed_text_changes"][0]
     entry, _ = LocaleCatalog().resource(
         "hplus.function.ocf-bod-014.function-body", "en-US", domain="narration", fallback=False
     )
@@ -107,9 +111,9 @@ def test_build_live_lookup_remains_historical_without_selecting_activation():
 @pytest.mark.integration
 @pytest.mark.parametrize("field", ["title", "display_cue", "spoken_cue"])
 def test_regenerate_predecessor_is_pinned_before_projection(tmp_path, field):
-    data = successors.records()[-1]
+    data = successors.records()[1]
     data["decisions"][0]["previous"][field] = "inhale"
-    target = tmp_path / successors.REGISTERED[-1]
+    target = tmp_path / successors.REGISTERED[1]
     target.parent.mkdir(parents=True)
     target.write_text(json.dumps(data), encoding="utf-8")
     with pytest.raises(OCFError, match="predecessor wording"):

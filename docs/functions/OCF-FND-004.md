@@ -22,7 +22,7 @@ Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Recorded source phrase (not the canonical phrase)**: Plus Relax Relax `(legacy-form; hplus.function.ocf-fnd-004.function-body)`
+**Recorded source phrase (not the canonical phrase)**: Plus Relax `(canonical-match; hplus.function.ocf-fnd-004.function-body)`
 
 ### Activation sequence
 
@@ -30,13 +30,5 @@ This is the primary command for the function.
 2. Hold your breath.
 3. Think or say the command.
 4. Exhale.
-
-## PLUS-RELAX, RELAX
-
-### Legacy compatibility phrase
-
-Compatibility phrase retained by the registry; historical authentication is not implied.
-
-This is a compatibility phrase, not a new canonical command.
 
 Canonical command phrases are shown exactly as registered and are not translated. Script and legacy phrase differences are shown separately.

@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-SLP-001 — Restorative Sleep
 # English function-specific OCF-adapted narration; wording source of truth.
 # Source status: transcript_unverified; authentication remains unverified.
@@ -36,7 +37,7 @@ entries:
 
   hplus.function.ocf-slp-001.function-body:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted body based on unverified Restorative Sleep transcript;
       SOURCE +Transcripts From available tapes/Restorative Sleep/Restorative Sleep.txt;
@@ -53,6 +54,9 @@ entries:
       Focus 11 and Focus 20. Healing effects are intended exercise suggestions,
       not verified physical outcomes. Rights: user_cleared per user's
       lawyer-clearance attestation. Finished-session release remains pending. Frozen Sleep Easy pilot unchanged.
+    cue_template:
+      function_id: OCF-SLP-001
+      allowed: [cue.primary]
     text: |-
       From this moment forward, whenever you prepare for sleep,
       you can direct your total self toward deep healing,
@@ -64,7 +68,7 @@ entries:
       renewal, and natural, healthy functioning.
 
       Inhale deeply and gently hold your breath.
-      Think or say in your mind, "Plus Heal Heal."
+      Think or say in your mind, "{{ cue.primary }}."
       Then exhale slowly through your mouth,
       as though gently blowing out a candle.
 
@@ -103,7 +107,7 @@ entries:
 
   hplus.function.ocf-slp-001.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-authored closer; no function-specific historical closer is
       recoverable because the unverified source ends in repeated Focus Twenty.
@@ -112,12 +116,15 @@ entries:
       Contains one purpose reminder, exact Plus Heal Heal cue, the original
       inhale-hold-command-candle-exhale sequence, and standard OCF ending.
       Rights: user_cleared per user's lawyer-clearance attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-SLP-001
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to direct your total self
       toward healing and restoration during sleep,
       inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus Heal Heal."
+      Think or say in your mind, "{{ cue.primary }}."
       Then exhale slowly through your mouth,
       as though gently blowing out a candle.
 

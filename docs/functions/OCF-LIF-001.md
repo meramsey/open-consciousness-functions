@@ -1,6 +1,6 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# De-Hab
+# Habit Freedom
 
 **Purpose**: Supports stepping away from habitual, repeated behavior patterns.
 
@@ -10,17 +10,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 Source availability does not establish historical authentication or provenance.
 
-**Command review state**: Review required (`review-required`)
+**Command review state**: Approved (`approved`)
 
 [Command index](../COMMAND_INDEX.md)
 
-## PLUS-NO MORE, NO MORE
+## PLUS-FREE THIS HABIT
 
 ### Primary activation command
 
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
+
+**Recorded source phrase (not the canonical phrase)**: Plus Free This Habit `(canonical-match; hplus.function.ocf-lif-001.function-body)`
 
 ### Activation sequence
 

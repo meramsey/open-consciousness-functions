@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-SEN-004 — Sensory: Taste
 # English function-specific OCF-adapted narration; wording source of truth.
 # Source status: unavailable; authentication remains unverified.
@@ -105,7 +106,7 @@ entries:
 
   hplus.function.ocf-sen-004.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted concise closer based on the user-proposed Sensory: Taste
       reconstruction; proposed input
@@ -116,12 +117,15 @@ entries:
       canonical Plus Taste More and Plus Taste Less commands, and the
       complete source eye-and-breath sequence. Rights: user_cleared per
       user's lawyer-clearance attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-SEN-004
+      allowed: [cue.primary]
     text: |-
       Remember, to regulate your sense of taste
       or strengthen your inner experience of flavor,
       close your eyes, inhale deeply, and hold your breath.
-      Think or say in your mind, "Plus Taste More"
+      Think or say in your mind, "{{ cue.primary }}"
       or "Plus Taste Less," according to your intention.
       Then exhale slowly through your mouth and open your eyes.
 
-      This concludes your OCF Sensory: Taste exercise.
+      This concludes your OCF Taste exercise.

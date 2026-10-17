@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-BOD-008 — Immunizing
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -36,7 +37,7 @@ entries:
 
   hplus.function.ocf-bod-008.function-body:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted narration based on the unverified Immunizing
       transcript. Original SOURCE +Transcripts From available
@@ -57,6 +58,9 @@ entries:
       Shared preparation, state, and return wording excluded.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-BOD-008
+      allowed: [cue.primary]
     text: |-
       From this moment forward, your body's natural immune
       defenses are becoming stronger, more accurate,
@@ -99,7 +103,7 @@ entries:
       Whenever you wish to reinforce this protective
       pattern, inhale deeply and gently hold your breath.
 
-      Silently say to yourself, "Plus Alert Destroy."
+      Silently say to yourself, "{{ cue.primary }}."
 
       Then slowly exhale through your mouth.
 
@@ -107,7 +111,7 @@ entries:
       strength, and coordination, directing its defenses
       toward harmful organisms while protecting healthy tissue.
 
-      Each time you use Plus Alert Destroy, reinforcing
+      Each time you use {{ cue.primary }}, reinforcing
       this pattern becomes easier, faster, and more effective.
 
       Your body's natural protective systems will continue
@@ -116,7 +120,7 @@ entries:
 
   hplus.function.ocf-bod-008.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted closer based on the unverified Immunizing
       transcript. Original SOURCE +Transcripts From available
@@ -129,13 +133,16 @@ entries:
       This is adapted narration, not verbatim source wording.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-BOD-008
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to strengthen your body's
       natural defenses against harmful organisms, inhale
       deeply and hold your breath.
 
-      Think or say in your mind, "Plus Alert Destroy."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
-      This concludes your OCF Immunizing exercise.
+      This concludes your OCF Immune Readiness exercise.

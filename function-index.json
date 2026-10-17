@@ -7,7 +7,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-AUTOMATE",
-      "canonical_name": "See-Be",
+      "canonical_name": "Automatic Action",
       "capabilities": {
         "activation": {
           "modes": [],
@@ -22,13 +22,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-AUT-001-PRIMARY",
               "display_cue": "PLUS-AUTOMATE",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
+              "resource_status": "reviewed",
               "spoken_cue": "Plus Automate",
-              "spoken_locale": "en-US"
+              "spoken_cue_key": "commands.ocf-cmd-aut-001-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -40,9 +45,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-AUT-001",
             "id": "OCF-CMD-AUT-001-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-aut-001-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-aut-001-primary.explanation",
               "label_key": "commands.ocf-cmd-aut-001-primary.label",
               "purpose_key": "functions.ocf-aut-001.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-aut-001-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-aut-001-primary.usage"
             },
             "phrase": "PLUS-AUTOMATE",
@@ -441,7 +448,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "See-Be",
+        "title": "Automatic Action",
         "voice_sources": [
           "tts"
         ]
@@ -2085,7 +2092,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-SATISFIED, SUPPLIED",
-      "canonical_name": "Eat/No Eat",
+      "canonical_name": "Appetite Choice",
       "capabilities": {
         "activation": {
           "modes": [],
@@ -2100,13 +2107,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-005-PRIMARY",
               "display_cue": "PLUS-SATISFIED, SUPPLIED",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
+              "resource_status": "reviewed",
               "spoken_cue": "Plus Satisfied Supplied",
-              "spoken_locale": "en-US"
+              "spoken_cue_key": "commands.ocf-cmd-bod-005-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -2118,9 +2130,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-BOD-005",
             "id": "OCF-CMD-BOD-005-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-bod-005-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-bod-005-primary.explanation",
               "label_key": "commands.ocf-cmd-bod-005-primary.label",
               "purpose_key": "functions.ocf-bod-005.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-bod-005-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-bod-005-primary.usage"
             },
             "phrase": "PLUS-SATISFIED, SUPPLIED",
@@ -2461,7 +2475,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Eat/No Eat",
+        "title": "Appetite Choice",
         "voice_sources": [
           "tts"
         ]
@@ -2481,7 +2495,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-HEART-BETTER",
-      "canonical_name": "Heart: Repairs & Maintenance",
+      "canonical_name": "Heart Flow",
       "capabilities": {
         "activation": {
           "modes": [],
@@ -2870,7 +2884,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Heart: Repairs & Maintenance",
+        "title": "Heart Flow",
         "voice_sources": [
           "tts"
         ]
@@ -2889,12 +2903,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-BALANCE-BLOODPRESSURE",
-      "canonical_name": "Hypertension",
+      "canonical_command": "PLUS-BALANCE BLOOD PRESSURE",
+      "canonical_name": "Blood Pressure Balance",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-BALANCE-BLOODPRESSURE"
+          "primary": "PLUS-BALANCE BLOOD PRESSURE"
         },
         "background": {
           "engine": "farfield",
@@ -2905,13 +2919,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-007-PRIMARY",
-              "display_cue": "PLUS-BALANCE-BLOODPRESSURE",
+              "display_cue": "PLUS-BALANCE BLOOD PRESSURE",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
+              "resource_status": "reviewed",
               "spoken_cue": "Plus Balance Blood Pressure",
-              "spoken_locale": "en-US"
+              "spoken_cue_key": "commands.ocf-cmd-bod-007-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -2923,9 +2942,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-BOD-007",
             "id": "OCF-CMD-BOD-007-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-bod-007-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-bod-007-primary.explanation",
               "label_key": "commands.ocf-cmd-bod-007-primary.label",
               "purpose_key": "functions.ocf-bod-007.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-bod-007-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-bod-007-primary.usage"
             },
             "observed_phrase": {
@@ -2933,7 +2954,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "relationship": "variant",
               "text": "Plus Balance Blood Pressure"
             },
-            "phrase": "PLUS-BALANCE-BLOODPRESSURE",
+            "phrase": "PLUS-BALANCE BLOOD PRESSURE",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -3270,7 +3291,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Hypertension",
+        "title": "Blood Pressure Balance",
         "voice_sources": [
           "tts"
         ]
@@ -3289,12 +3310,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-ALERT, DESTROY",
-      "canonical_name": "Immunizing",
+      "canonical_command": "PLUS-IMMUNE READY",
+      "canonical_name": "Immune Readiness",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-ALERT, DESTROY"
+          "primary": "PLUS-IMMUNE READY"
         },
         "background": {
           "engine": "farfield",
@@ -3305,13 +3326,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-008-PRIMARY",
-              "display_cue": "PLUS-ALERT, DESTROY",
+              "display_cue": "PLUS-IMMUNE READY",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
-              "spoken_cue": "Plus Alert Destroy",
-              "spoken_locale": "en-US"
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Immune Ready",
+              "spoken_cue_key": "commands.ocf-cmd-bod-008-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -3323,12 +3349,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-BOD-008",
             "id": "OCF-CMD-BOD-008-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-bod-008-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-bod-008-primary.explanation",
               "label_key": "commands.ocf-cmd-bod-008-primary.label",
               "purpose_key": "functions.ocf-bod-008.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-bod-008-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-bod-008-primary.usage"
             },
-            "phrase": "PLUS-ALERT, DESTROY",
+            "observed_phrase": {
+              "narration_key": "hplus.function.ocf-bod-008.function-body",
+              "relationship": "canonical-match",
+              "text": "Plus Immune Ready"
+            },
+            "phrase": "PLUS-IMMUNE READY",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -3364,7 +3397,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": "Plus Alert Destroy",
+            "spoken": "Plus Immune Ready",
             "spoken_review": "reviewed"
           }
         ],
@@ -3656,13 +3689,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Immunizing",
+        "title": "Immune Readiness",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "body",
       "legacy_command": "PLUS-ALERT, DESTROY",
       "legacy_name": "IMMUNIZING",
@@ -4571,12 +4604,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-EQUALIZE-HARMONIZE",
-      "canonical_name": "Passages",
+      "canonical_command": "PLUS-HORMONE BALANCE",
+      "canonical_name": "Hormonal Transitions",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-EQUALIZE-HARMONIZE"
+          "primary": "PLUS-HORMONE BALANCE"
         },
         "background": {
           "engine": "farfield",
@@ -4587,13 +4620,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-011-PRIMARY",
-              "display_cue": "PLUS-EQUALIZE-HARMONIZE",
+              "display_cue": "PLUS-HORMONE BALANCE",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
-              "spoken_cue": "Plus Equalize Harmonize",
-              "spoken_locale": "en-US"
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Hormone Balance",
+              "spoken_cue_key": "commands.ocf-cmd-bod-011-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -4605,12 +4643,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-BOD-011",
             "id": "OCF-CMD-BOD-011-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-bod-011-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-bod-011-primary.explanation",
               "label_key": "commands.ocf-cmd-bod-011-primary.label",
               "purpose_key": "functions.ocf-bod-011.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-bod-011-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-bod-011-primary.usage"
             },
-            "phrase": "PLUS-EQUALIZE-HARMONIZE",
+            "observed_phrase": {
+              "narration_key": "hplus.function.ocf-bod-011.function-body",
+              "relationship": "canonical-match",
+              "text": "Plus Hormone Balance"
+            },
+            "phrase": "PLUS-HORMONE BALANCE",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -4646,7 +4691,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": "Plus Equalize Harmonize",
+            "spoken": "Plus Hormone Balance",
             "spoken_review": "reviewed"
           }
         ],
@@ -4936,13 +4981,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Passages",
+        "title": "Hormonal Transitions",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "body;lifestyle",
       "legacy_command": "PLUS-EQUALIZE-HARMONIZE",
       "legacy_name": "PASSAGES",
@@ -5518,7 +5563,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-BALANCE, HEAL",
-      "canonical_name": "Tune-Up",
+      "canonical_name": "Body Tune-Up",
       "capabilities": {
         "activation": {
           "modes": [],
@@ -5533,13 +5578,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-013-PRIMARY",
               "display_cue": "PLUS-BALANCE, HEAL",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
+              "resource_status": "reviewed",
               "spoken_cue": "Plus Balance Heal",
-              "spoken_locale": "en-US"
+              "spoken_cue_key": "commands.ocf-cmd-bod-013-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -5551,9 +5601,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-BOD-013",
             "id": "OCF-CMD-BOD-013-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-bod-013-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-bod-013-primary.explanation",
               "label_key": "commands.ocf-cmd-bod-013-primary.label",
               "purpose_key": "functions.ocf-bod-013.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-bod-013-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-bod-013-primary.usage"
             },
             "phrase": "PLUS-BALANCE, HEAL",
@@ -5899,7 +5951,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Tune-Up",
+        "title": "Body Tune-Up",
         "voice_sources": [
           "tts"
         ]
@@ -6391,7 +6443,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-NUMB",
-      "canonical_name": "Short Fix",
+      "canonical_name": "Temporary Numbing",
       "capabilities": {
         "activation": {
           "modes": [],
@@ -6406,11 +6458,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-015-PRIMARY",
               "display_cue": "PLUS-NUMB",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Numb",
+              "spoken_cue_key": "commands.ocf-cmd-bod-015-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -6422,15 +6481,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-BOD-015",
             "id": "OCF-CMD-BOD-015-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-bod-015-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-bod-015-primary.explanation",
               "label_key": "commands.ocf-cmd-bod-015-primary.label",
               "purpose_key": "functions.ocf-bod-015.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-bod-015-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-bod-015-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-bod-015.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus Go Numb Go Numb"
+              "relationship": "canonical-match",
+              "text": "Plus Numb"
             },
             "phrase": "PLUS-NUMB",
             "phrase_ref": {
@@ -6478,41 +6539,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": null,
-            "spoken_review": "unresolved"
-          },
-          {
-            "cue_presentation": {
-              "binding_status": "unbound",
-              "command_id": "OCF-CMD-BOD-015-LEGACY-01",
-              "display_cue": "PLUS-GO NUMB, GO NUMB",
-              "requested_locale": "en-US",
-              "spoken_cue": null
-            },
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-BOD-015",
-            "id": "OCF-CMD-BOD-015-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-bod-015-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-bod-015-legacy-01.label",
-              "purpose_key": "functions.ocf-bod-015.purpose",
-              "usage_key": "commands.ocf-cmd-bod-015-legacy-01.usage"
-            },
-            "phrase": "PLUS-GO NUMB, GO NUMB",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-BOD-015-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias",
-            "spoken": null,
-            "spoken_review": "unresolved"
+            "spoken": "Plus Numb",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
@@ -6962,13 +6990,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Short Fix",
+        "title": "Temporary Numbing",
         "voice_sources": [
           "tts"
         ]
       },
-      "command_review": "review-required",
-      "compatibility": "bridge-trainable",
+      "command_review": "approved",
+      "compatibility": "historical-lookup",
       "domains": "body",
       "legacy_command": "PLUS-GO NUMB, GO NUMB / PLUS-RELEASE",
       "legacy_name": "SHORT FIX",
@@ -6981,12 +7009,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-RETRIEVE",
-      "canonical_name": "Access to Information",
+      "canonical_command": "PLUS-ACCESS INFO",
+      "canonical_name": "Information Access",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-RETRIEVE"
+          "primary": "PLUS-ACCESS INFO"
         },
         "background": {
           "engine": "farfield",
@@ -6997,13 +7025,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-COG-001-PRIMARY",
-              "display_cue": "PLUS-RETRIEVE",
+              "display_cue": "PLUS-ACCESS INFO",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
-              "spoken_cue": "Plus Retrieve",
-              "spoken_locale": "en-US"
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Access Info",
+              "spoken_cue_key": "commands.ocf-cmd-cog-001-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -7015,12 +7048,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-COG-001",
             "id": "OCF-CMD-COG-001-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-cog-001-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-cog-001-primary.explanation",
               "label_key": "commands.ocf-cmd-cog-001-primary.label",
               "purpose_key": "functions.ocf-cog-001.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-cog-001-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-cog-001-primary.usage"
             },
-            "phrase": "PLUS-RETRIEVE",
+            "observed_phrase": {
+              "narration_key": "hplus.function.ocf-cog-001.function-body",
+              "relationship": "canonical-match",
+              "text": "Plus Access Info"
+            },
+            "phrase": "PLUS-ACCESS INFO",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -7046,7 +7086,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": "Plus Retrieve",
+            "spoken": "Plus Access Info",
             "spoken_review": "reviewed"
           }
         ],
@@ -7335,13 +7375,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Access to Information",
+        "title": "Information Access",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "cognition;experimental",
       "legacy_command": "PLUS-RETRIEVE",
       "legacy_name": "ACCESS TO INFORMATION",
@@ -7355,7 +7395,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-CALCULATE",
-      "canonical_name": "Buy the Numbers",
+      "canonical_name": "Mental Calculation",
       "capabilities": {
         "activation": {
           "modes": [],
@@ -7370,13 +7410,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-COG-002-PRIMARY",
               "display_cue": "PLUS-CALCULATE",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
+              "resource_status": "reviewed",
               "spoken_cue": "Plus Calculate",
-              "spoken_locale": "en-US"
+              "spoken_cue_key": "commands.ocf-cmd-cog-002-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -7388,9 +7433,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-COG-002",
             "id": "OCF-CMD-COG-002-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-cog-002-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-cog-002-primary.explanation",
               "label_key": "commands.ocf-cmd-cog-002-primary.label",
               "purpose_key": "functions.ocf-cog-002.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-cog-002-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-cog-002-primary.usage"
             },
             "phrase": "PLUS-CALCULATE",
@@ -7730,7 +7777,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Buy the Numbers",
+        "title": "Mental Calculation",
         "voice_sources": [
           "tts"
         ]
@@ -8218,11 +8265,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-COG-004-PRIMARY",
               "display_cue": "PLUS-IMPRINT",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Imprint",
+              "spoken_cue_key": "commands.ocf-cmd-cog-004-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -8234,15 +8288,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-COG-004",
             "id": "OCF-CMD-COG-004-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-cog-004-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-cog-004-primary.explanation",
               "label_key": "commands.ocf-cmd-cog-004-primary.label",
               "purpose_key": "functions.ocf-cog-004.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-cog-004-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-cog-004-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-cog-004.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus Imprint Imprint"
+              "relationship": "canonical-match",
+              "text": "Plus Imprint"
             },
             "phrase": "PLUS-IMPRINT",
             "phrase_ref": {
@@ -8290,8 +8346,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": null,
-            "spoken_review": "unresolved"
+            "spoken": "Plus Imprint",
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
@@ -8346,39 +8402,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "retrieval",
             "spoken": "Plus Recall",
             "spoken_review": "reviewed"
-          },
-          {
-            "cue_presentation": {
-              "binding_status": "unbound",
-              "command_id": "OCF-CMD-COG-004-LEGACY-01",
-              "display_cue": "PLUS-IMPRINT, IMPRINT",
-              "requested_locale": "en-US",
-              "spoken_cue": null
-            },
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-COG-004",
-            "id": "OCF-CMD-COG-004-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-cog-004-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-cog-004-legacy-01.label",
-              "purpose_key": "functions.ocf-cog-004.purpose",
-              "usage_key": "commands.ocf-cmd-cog-004-legacy-01.usage"
-            },
-            "phrase": "PLUS-IMPRINT, IMPRINT",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-COG-004-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias",
-            "spoken": null,
-            "spoken_review": "unresolved"
           }
         ],
         "content_maturity": "draft",
@@ -8674,7 +8697,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "cognition",
       "legacy_command": "PLUS-IMPRINT, IMPRINT / PLUS-RECALL",
       "legacy_name": "IMPRINT",
@@ -10307,7 +10330,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-CONTROL, BALANCE, RESTORE",
-      "canonical_name": "Emergency: Injury",
+      "canonical_name": "Injury Response",
       "capabilities": {
         "activation": {
           "modes": [],
@@ -10322,13 +10345,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-EMG-001-PRIMARY",
               "display_cue": "PLUS-CONTROL, BALANCE, RESTORE",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
+              "resource_status": "reviewed",
               "spoken_cue": "Plus Control Balance Restore",
-              "spoken_locale": "en-US"
+              "spoken_cue_key": "commands.ocf-cmd-emg-001-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -10340,9 +10368,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-EMG-001",
             "id": "OCF-CMD-EMG-001-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-emg-001-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-emg-001-primary.explanation",
               "label_key": "commands.ocf-cmd-emg-001-primary.label",
               "purpose_key": "functions.ocf-emg-001.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-emg-001-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-emg-001-primary.usage"
             },
             "phrase": "PLUS-CONTROL, BALANCE, RESTORE",
@@ -10733,7 +10763,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Emergency: Injury",
+        "title": "Injury Response",
         "voice_sources": [
           "tts"
         ]
@@ -10753,7 +10783,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-CLEAR, REMOVE",
-      "canonical_name": "Emergency: Toxic",
+      "canonical_name": "Toxic Exposure Response",
       "capabilities": {
         "activation": {
           "modes": [],
@@ -10768,13 +10798,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-EMG-002-PRIMARY",
               "display_cue": "PLUS-CLEAR, REMOVE",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
+              "resource_status": "reviewed",
               "spoken_cue": "Plus Clear Remove",
-              "spoken_locale": "en-US"
+              "spoken_cue_key": "commands.ocf-cmd-emg-002-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -10786,9 +10821,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-EMG-002",
             "id": "OCF-CMD-EMG-002-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-emg-002-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-emg-002-primary.explanation",
               "label_key": "commands.ocf-cmd-emg-002-primary.label",
               "purpose_key": "functions.ocf-emg-002.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-emg-002-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-emg-002-primary.usage"
             },
             "phrase": "PLUS-CLEAR, REMOVE",
@@ -11179,7 +11216,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Emergency: Toxic",
+        "title": "Toxic Exposure Response",
         "voice_sources": [
           "tts"
         ]
@@ -14311,7 +14348,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-RECHARGE",
-      "canonical_name": "Recharge",
+      "canonical_name": "Quick Recharge",
       "capabilities": {
         "activation": {
           "modes": [],
@@ -14326,13 +14363,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-FND-003-PRIMARY",
               "display_cue": "PLUS-RECHARGE",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
+              "resource_status": "reviewed",
               "spoken_cue": "Plus Recharge",
-              "spoken_locale": "en-US"
+              "spoken_cue_key": "commands.ocf-cmd-fnd-003-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -14344,9 +14386,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-FND-003",
             "id": "OCF-CMD-FND-003-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-fnd-003-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-fnd-003-primary.explanation",
               "label_key": "commands.ocf-cmd-fnd-003-primary.label",
               "purpose_key": "functions.ocf-fnd-003.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-fnd-003-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-fnd-003-primary.usage"
             },
             "phrase": "PLUS-RECHARGE",
@@ -14687,7 +14731,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Recharge",
+        "title": "Quick Recharge",
         "voice_sources": [
           "tts"
         ]
@@ -14722,11 +14766,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-FND-004-PRIMARY",
               "display_cue": "PLUS-RELAX",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Relax",
+              "spoken_cue_key": "commands.ocf-cmd-fnd-004-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -14738,15 +14789,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-FND-004",
             "id": "OCF-CMD-FND-004-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-fnd-004-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-fnd-004-primary.explanation",
               "label_key": "commands.ocf-cmd-fnd-004-primary.label",
               "purpose_key": "functions.ocf-fnd-004.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-fnd-004-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-fnd-004-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-fnd-004.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus Relax Relax"
+              "relationship": "canonical-match",
+              "text": "Plus Relax"
             },
             "phrase": "PLUS-RELAX",
             "phrase_ref": {
@@ -14784,41 +14837,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": null,
-            "spoken_review": "unresolved"
-          },
-          {
-            "cue_presentation": {
-              "binding_status": "unbound",
-              "command_id": "OCF-CMD-FND-004-LEGACY-01",
-              "display_cue": "PLUS-RELAX, RELAX",
-              "requested_locale": "en-US",
-              "spoken_cue": null
-            },
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-FND-004",
-            "id": "OCF-CMD-FND-004-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-fnd-004-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-fnd-004-legacy-01.label",
-              "purpose_key": "functions.ocf-fnd-004.purpose",
-              "usage_key": "commands.ocf-cmd-fnd-004-legacy-01.usage"
-            },
-            "phrase": "PLUS-RELAX, RELAX",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-FND-004-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias",
-            "spoken": null,
-            "spoken_review": "unresolved"
+            "spoken": "Plus Relax",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "pilot",
@@ -15143,7 +15163,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "foundation;body",
       "legacy_command": "PLUS-RELAX, RELAX",
       "legacy_name": "RELAX",
@@ -15172,11 +15192,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-FND-005-PRIMARY",
               "display_cue": "PLUS-RESET",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Reset",
+              "spoken_cue_key": "commands.ocf-cmd-fnd-005-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -15188,15 +15215,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-FND-005",
             "id": "OCF-CMD-FND-005-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-fnd-005-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-fnd-005-primary.explanation",
               "label_key": "commands.ocf-cmd-fnd-005-primary.label",
               "purpose_key": "functions.ocf-fnd-005.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-fnd-005-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-fnd-005-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-fnd-005.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus Reset Reset"
+              "relationship": "canonical-match",
+              "text": "Plus Reset"
             },
             "phrase": "PLUS-RESET",
             "phrase_ref": {
@@ -15244,41 +15273,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": null,
-            "spoken_review": "unresolved"
-          },
-          {
-            "cue_presentation": {
-              "binding_status": "unbound",
-              "command_id": "OCF-CMD-FND-005-LEGACY-01",
-              "display_cue": "PLUS-RESET, RESET",
-              "requested_locale": "en-US",
-              "spoken_cue": null
-            },
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-FND-005",
-            "id": "OCF-CMD-FND-005-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-fnd-005-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-fnd-005-legacy-01.label",
-              "purpose_key": "functions.ocf-fnd-005.purpose",
-              "usage_key": "commands.ocf-cmd-fnd-005-legacy-01.usage"
-            },
-            "phrase": "PLUS-RESET, RESET",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-FND-005-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias",
-            "spoken": null,
-            "spoken_review": "unresolved"
+            "spoken": "Plus Reset",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -15574,7 +15570,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "foundation",
       "legacy_command": "PLUS-RESET, RESET",
       "legacy_name": "RESET",
@@ -16041,12 +16037,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-NO MORE, NO MORE",
-      "canonical_name": "De-Hab",
+      "canonical_command": "PLUS-FREE THIS HABIT",
+      "canonical_name": "Habit Freedom",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-NO MORE, NO MORE"
+          "primary": "PLUS-FREE THIS HABIT"
         },
         "background": {
           "engine": "farfield",
@@ -16057,13 +16053,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-LIF-001-PRIMARY",
-              "display_cue": "PLUS-NO MORE, NO MORE",
+              "display_cue": "PLUS-FREE THIS HABIT",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
-              "spoken_cue": "Plus No More No More",
-              "spoken_locale": "en-US"
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Free This Habit",
+              "spoken_cue_key": "commands.ocf-cmd-lif-001-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -16075,12 +16076,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-LIF-001",
             "id": "OCF-CMD-LIF-001-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-lif-001-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-lif-001-primary.explanation",
               "label_key": "commands.ocf-cmd-lif-001-primary.label",
               "purpose_key": "functions.ocf-lif-001.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-lif-001-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-lif-001-primary.usage"
             },
-            "phrase": "PLUS-NO MORE, NO MORE",
+            "observed_phrase": {
+              "narration_key": "hplus.function.ocf-lif-001.function-body",
+              "relationship": "canonical-match",
+              "text": "Plus Free This Habit"
+            },
+            "phrase": "PLUS-FREE THIS HABIT",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -16127,7 +16135,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": "Plus No More No More",
+            "spoken": "Plus Free This Habit",
             "spoken_review": "reviewed"
           }
         ],
@@ -16417,13 +16425,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "De-Hab",
+        "title": "Habit Freedom",
         "voice_sources": [
           "tts"
         ]
       },
-      "command_review": "review-required",
-      "compatibility": "bridge-trainable",
+      "command_review": "approved",
+      "compatibility": "historical-lookup",
       "domains": "lifestyle;emotion",
       "legacy_command": "PLUS-NO MORE, NO MORE",
       "legacy_name": "DE-HAB",
@@ -17239,7 +17247,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-SMOOTH, FAST",
-      "canonical_name": "Synchronizing",
+      "canonical_name": "Coordination",
       "capabilities": {
         "activation": {
           "modes": [],
@@ -17254,13 +17262,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-PRF-003-PRIMARY",
               "display_cue": "PLUS-SMOOTH, FAST",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
+              "resource_status": "reviewed",
               "spoken_cue": "Plus Smooth Fast",
-              "spoken_locale": "en-US"
+              "spoken_cue_key": "commands.ocf-cmd-prf-003-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -17272,9 +17285,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-PRF-003",
             "id": "OCF-CMD-PRF-003-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-prf-003-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-prf-003-primary.explanation",
               "label_key": "commands.ocf-cmd-prf-003-primary.label",
               "purpose_key": "functions.ocf-prf-003.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-prf-003-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-prf-003-primary.usage"
             },
             "phrase": "PLUS-SMOOTH, FAST",
@@ -17614,7 +17629,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Synchronizing",
+        "title": "Coordination",
         "voice_sources": [
           "tts"
         ]
@@ -17633,12 +17648,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-LIGHT",
+      "canonical_command": "PLUS-LIGHT STEP",
       "canonical_name": "Light Foot",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-LIGHT"
+          "primary": "PLUS-LIGHT STEP"
         },
         "background": {
           "engine": "farfield",
@@ -17649,11 +17664,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-PRF-004-PRIMARY",
-              "display_cue": "PLUS-LIGHT",
+              "display_cue": "PLUS-LIGHT STEP",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Light Step",
+              "spoken_cue_key": "commands.ocf-cmd-prf-004-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -17665,17 +17687,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-PRF-004",
             "id": "OCF-CMD-PRF-004-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-prf-004-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-prf-004-primary.explanation",
               "label_key": "commands.ocf-cmd-prf-004-primary.label",
               "purpose_key": "functions.ocf-prf-004.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-prf-004-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-prf-004-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-prf-004.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus Lighter Lighter"
+              "relationship": "canonical-match",
+              "text": "Plus Light Step"
             },
-            "phrase": "PLUS-LIGHT",
+            "phrase": "PLUS-LIGHT STEP",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -17722,41 +17746,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": null,
-            "spoken_review": "unresolved"
-          },
-          {
-            "cue_presentation": {
-              "binding_status": "unbound",
-              "command_id": "OCF-CMD-PRF-004-LEGACY-01",
-              "display_cue": "PLUS-LIGHTER, LIGHTER",
-              "requested_locale": "en-US",
-              "spoken_cue": null
-            },
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-PRF-004",
-            "id": "OCF-CMD-PRF-004-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-prf-004-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-prf-004-legacy-01.label",
-              "purpose_key": "functions.ocf-prf-004.purpose",
-              "usage_key": "commands.ocf-cmd-prf-004-legacy-01.usage"
-            },
-            "phrase": "PLUS-LIGHTER, LIGHTER",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-PRF-004-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias",
-            "spoken": null,
-            "spoken_review": "unresolved"
+            "spoken": "Plus Light Step",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -18109,8 +18100,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "tts"
         ]
       },
-      "command_review": "review-required",
-      "compatibility": "bridge-trainable",
+      "command_review": "approved",
+      "compatibility": "historical-lookup",
       "domains": "performance;body",
       "legacy_command": "PLUS-LIGHTER, LIGHTER",
       "legacy_name": "LIGHT FOOT",
@@ -19145,7 +19136,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-HEAR MORE",
-      "canonical_name": "Sensory: Hearing",
+      "canonical_name": "Hearing",
       "capabilities": {
         "activation": {
           "modes": [
@@ -19162,13 +19153,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-SEN-001-PRIMARY",
               "display_cue": "PLUS-HEAR MORE",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
+              "resource_status": "reviewed",
               "spoken_cue": "Plus Hear More",
-              "spoken_locale": "en-US"
+              "spoken_cue_key": "commands.ocf-cmd-sen-001-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -19180,9 +19176,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-SEN-001",
             "id": "OCF-CMD-SEN-001-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-sen-001-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-sen-001-primary.explanation",
               "label_key": "commands.ocf-cmd-sen-001-primary.label",
               "purpose_key": "functions.ocf-sen-001.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-sen-001-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-sen-001-primary.usage"
             },
             "phrase": "PLUS-HEAR MORE",
@@ -19636,14 +19634,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Sensory: Hearing",
+        "title": "Hearing",
         "voice_sources": [
           "externally-generated",
           "prerecorded-user",
           "tts"
         ]
       },
-      "command_review": "needs-review",
+      "command_review": "approved",
       "compatibility": "alias-listed",
       "domains": "sensory",
       "legacy_command": "PLUS-HEAR MORE / PLUS-HEAR LESS",
@@ -19658,7 +19656,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-SEE BETTER",
-      "canonical_name": "Sensory: Seeing",
+      "canonical_name": "Seeing",
       "capabilities": {
         "activation": {
           "modes": [],
@@ -19673,13 +19671,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-SEN-002-PRIMARY",
               "display_cue": "PLUS-SEE BETTER",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
+              "resource_status": "reviewed",
               "spoken_cue": "Plus See Better",
-              "spoken_locale": "en-US"
+              "spoken_cue_key": "commands.ocf-cmd-sen-002-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -19691,9 +19694,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-SEN-002",
             "id": "OCF-CMD-SEN-002-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-sen-002-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-sen-002-primary.explanation",
               "label_key": "commands.ocf-cmd-sen-002-primary.label",
               "purpose_key": "functions.ocf-sen-002.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-sen-002-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-sen-002-primary.usage"
             },
             "observed_phrase": {
@@ -20061,12 +20066,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Sensory: Seeing",
+        "title": "Seeing",
         "voice_sources": [
           "tts"
         ]
       },
-      "command_review": "needs-review",
+      "command_review": "approved",
       "compatibility": "alias-listed",
       "domains": "sensory",
       "legacy_command": "PLUS-SEE BETTER",
@@ -20081,7 +20086,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-SMELL MORE",
-      "canonical_name": "Sensory: Smell",
+      "canonical_name": "Smell",
       "capabilities": {
         "activation": {
           "modes": [
@@ -20098,13 +20103,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-SEN-003-PRIMARY",
               "display_cue": "PLUS-SMELL MORE",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
+              "resource_status": "reviewed",
               "spoken_cue": "Plus Smell More",
-              "spoken_locale": "en-US"
+              "spoken_cue_key": "commands.ocf-cmd-sen-003-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -20116,9 +20126,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-SEN-003",
             "id": "OCF-CMD-SEN-003-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-sen-003-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-sen-003-primary.explanation",
               "label_key": "commands.ocf-cmd-sen-003-primary.label",
               "purpose_key": "functions.ocf-sen-003.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-sen-003-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-sen-003-primary.usage"
             },
             "phrase": "PLUS-SMELL MORE",
@@ -20668,12 +20680,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Sensory: Smell",
+        "title": "Smell",
         "voice_sources": [
           "tts"
         ]
       },
-      "command_review": "needs-review",
+      "command_review": "approved",
       "compatibility": "alias-listed",
       "domains": "sensory",
       "legacy_command": "PLUS-SMELL GREATER / PLUS-SMELL LESSER",
@@ -20688,7 +20700,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-TASTE MORE",
-      "canonical_name": "Sensory: Taste",
+      "canonical_name": "Taste",
       "capabilities": {
         "activation": {
           "modes": [
@@ -20705,13 +20717,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-SEN-004-PRIMARY",
               "display_cue": "PLUS-TASTE MORE",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
+              "resource_status": "reviewed",
               "spoken_cue": "Plus Taste More",
-              "spoken_locale": "en-US"
+              "spoken_cue_key": "commands.ocf-cmd-sen-004-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -20723,9 +20740,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-SEN-004",
             "id": "OCF-CMD-SEN-004-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-sen-004-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-sen-004-primary.explanation",
               "label_key": "commands.ocf-cmd-sen-004-primary.label",
               "purpose_key": "functions.ocf-sen-004.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-sen-004-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-sen-004-primary.usage"
             },
             "phrase": "PLUS-TASTE MORE",
@@ -21275,12 +21294,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Sensory: Taste",
+        "title": "Taste",
         "voice_sources": [
           "tts"
         ]
       },
-      "command_review": "needs-review",
+      "command_review": "approved",
       "compatibility": "alias-listed",
       "domains": "sensory",
       "legacy_command": "PLUS-TASTE GREATER / PLUS-TASTE LESSER",
@@ -21295,7 +21314,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-TOUCH MORE",
-      "canonical_name": "Sensory: Touch",
+      "canonical_name": "Touch",
       "capabilities": {
         "activation": {
           "modes": [
@@ -21312,13 +21331,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-SEN-005-PRIMARY",
               "display_cue": "PLUS-TOUCH MORE",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
+              "resource_status": "reviewed",
               "spoken_cue": "Plus Touch More",
-              "spoken_locale": "en-US"
+              "spoken_cue_key": "commands.ocf-cmd-sen-005-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -21330,9 +21354,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-SEN-005",
             "id": "OCF-CMD-SEN-005-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-sen-005-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-sen-005-primary.explanation",
               "label_key": "commands.ocf-cmd-sen-005-primary.label",
               "purpose_key": "functions.ocf-sen-005.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-sen-005-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-sen-005-primary.usage"
             },
             "phrase": "PLUS-TOUCH MORE",
@@ -21882,12 +21908,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Sensory: Touch",
+        "title": "Touch",
         "voice_sources": [
           "tts"
         ]
       },
-      "command_review": "needs-review",
+      "command_review": "approved",
       "compatibility": "alias-listed",
       "domains": "sensory",
       "legacy_command": "PLUS-TOUCH GREATER / PLUS-TOUCH LESSER",
@@ -21901,12 +21927,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-RESTORE",
+      "canonical_command": "PLUS-RESTORATIVE SLEEP",
       "canonical_name": "Restorative Sleep",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-RESTORE"
+          "primary": "PLUS-RESTORATIVE SLEEP"
         },
         "background": {
           "engine": "farfield",
@@ -21917,11 +21943,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-SLP-001-PRIMARY",
-              "display_cue": "PLUS-RESTORE",
+              "display_cue": "PLUS-RESTORATIVE SLEEP",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Restorative Sleep",
+              "spoken_cue_key": "commands.ocf-cmd-slp-001-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -21933,17 +21966,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-SLP-001",
             "id": "OCF-CMD-SLP-001-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-slp-001-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-slp-001-primary.explanation",
               "label_key": "commands.ocf-cmd-slp-001-primary.label",
               "purpose_key": "functions.ocf-slp-001.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-slp-001-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-slp-001-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-slp-001.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus Heal Heal"
+              "relationship": "canonical-match",
+              "text": "Plus Restorative Sleep"
             },
-            "phrase": "PLUS-RESTORE",
+            "phrase": "PLUS-RESTORATIVE SLEEP",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -21990,41 +22025,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": null,
-            "spoken_review": "unresolved"
-          },
-          {
-            "cue_presentation": {
-              "binding_status": "unbound",
-              "command_id": "OCF-CMD-SLP-001-LEGACY-01",
-              "display_cue": "PLUS-HEAL, HEAL",
-              "requested_locale": "en-US",
-              "spoken_cue": null
-            },
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-SLP-001",
-            "id": "OCF-CMD-SLP-001-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-slp-001-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-slp-001-legacy-01.label",
-              "purpose_key": "functions.ocf-slp-001.purpose",
-              "usage_key": "commands.ocf-cmd-slp-001-legacy-01.usage"
-            },
-            "phrase": "PLUS-HEAL, HEAL",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-SLP-001-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias",
-            "spoken": null,
-            "spoken_review": "unresolved"
+            "spoken": "Plus Restorative Sleep",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -22320,8 +22322,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "tts"
         ]
       },
-      "command_review": "review-required",
-      "compatibility": "bridge-trainable",
+      "command_review": "approved",
+      "compatibility": "historical-lookup",
       "domains": "sleep;body",
       "legacy_command": "PLUS-HEAL, HEAL",
       "legacy_name": "RESTORATIVE SLEEP",
@@ -22350,11 +22352,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-SLP-002-PRIMARY",
               "display_cue": "PLUS-SLEEP",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Sleep",
+              "spoken_cue_key": "commands.ocf-cmd-slp-002-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -22366,15 +22375,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-SLP-002",
             "id": "OCF-CMD-SLP-002-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-slp-002-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-slp-002-primary.explanation",
               "label_key": "commands.ocf-cmd-slp-002-primary.label",
               "purpose_key": "functions.ocf-slp-002.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-slp-002-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-slp-002-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-slp-002.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus Twenty Twenty"
+              "relationship": "canonical-match",
+              "text": "Plus Sleep"
             },
             "phrase": "PLUS-SLEEP",
             "phrase_ref": {
@@ -22423,41 +22434,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": null,
-            "spoken_review": "unresolved"
-          },
-          {
-            "cue_presentation": {
-              "binding_status": "unbound",
-              "command_id": "OCF-CMD-SLP-002-LEGACY-01",
-              "display_cue": "PLUS-20-20",
-              "requested_locale": "en-US",
-              "spoken_cue": null
-            },
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-SLP-002",
-            "id": "OCF-CMD-SLP-002-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-slp-002-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-slp-002-legacy-01.label",
-              "purpose_key": "functions.ocf-slp-002.purpose",
-              "usage_key": "commands.ocf-cmd-slp-002-legacy-01.usage"
-            },
-            "phrase": "PLUS-20-20",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-SLP-002-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias",
-            "spoken": null,
-            "spoken_review": "unresolved"
+            "spoken": "Plus Sleep",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -22751,8 +22729,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "tts"
         ]
       },
-      "command_review": "review-required",
-      "compatibility": "bridge-trainable",
+      "command_review": "approved",
+      "compatibility": "historical-lookup",
       "domains": "sleep",
       "legacy_command": "PLUS-20-20",
       "legacy_name": "SLEEP",
@@ -22766,7 +22744,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-DREAM",
-      "canonical_name": "Sweet Dreams",
+      "canonical_name": "Dream Theme",
       "capabilities": {
         "activation": {
           "modes": [],
@@ -22781,11 +22759,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-SLP-003-PRIMARY",
               "display_cue": "PLUS-DREAM",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Dream",
+              "spoken_cue_key": "commands.ocf-cmd-slp-003-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -22797,15 +22782,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-SLP-003",
             "id": "OCF-CMD-SLP-003-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-slp-003-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-slp-003-primary.explanation",
               "label_key": "commands.ocf-cmd-slp-003-primary.label",
               "purpose_key": "functions.ocf-slp-003.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-slp-003-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-slp-003-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-slp-003.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus Theme Dream Sleep"
+              "relationship": "canonical-match",
+              "text": "Plus Dream"
             },
             "phrase": "PLUS-DREAM",
             "phrase_ref": {
@@ -22859,41 +22846,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": null,
-            "spoken_review": "unresolved"
-          },
-          {
-            "cue_presentation": {
-              "binding_status": "unbound",
-              "command_id": "OCF-CMD-SLP-003-LEGACY-01",
-              "display_cue": "PLUS-THEME, DREAM, SLEEP",
-              "requested_locale": "en-US",
-              "spoken_cue": null
-            },
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-SLP-003",
-            "id": "OCF-CMD-SLP-003-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-slp-003-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-slp-003-legacy-01.label",
-              "purpose_key": "functions.ocf-slp-003.purpose",
-              "usage_key": "commands.ocf-cmd-slp-003-legacy-01.usage"
-            },
-            "phrase": "PLUS-THEME, DREAM, SLEEP",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-SLP-003-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias",
-            "spoken": null,
-            "spoken_review": "unresolved"
+            "spoken": "Plus Dream",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -23182,13 +23136,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Sweet Dreams",
+        "title": "Dream Theme",
         "voice_sources": [
           "tts"
         ]
       },
-      "command_review": "review-required",
-      "compatibility": "bridge-trainable",
+      "command_review": "approved",
+      "compatibility": "historical-lookup",
       "domains": "sleep",
       "legacy_command": "PLUS-THEME, DREAM, SLEEP",
       "legacy_name": "SWEET DREAMS",
@@ -24136,11 +24090,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-SLP-006-PRIMARY",
               "display_cue": "PLUS-AWAKE",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Awake",
+              "spoken_cue_key": "commands.ocf-cmd-slp-006-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -24152,15 +24113,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-SLP-006",
             "id": "OCF-CMD-SLP-006-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-slp-006-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-slp-006-primary.explanation",
               "label_key": "commands.ocf-cmd-slp-006-primary.label",
               "purpose_key": "functions.ocf-slp-006.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-slp-006-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-slp-006-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-slp-006.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus One Awake Alert One One"
+              "relationship": "canonical-match",
+              "text": "Plus Awake"
             },
             "phrase": "PLUS-AWAKE",
             "phrase_ref": {
@@ -24209,41 +24172,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": null,
-            "spoken_review": "unresolved"
-          },
-          {
-            "cue_presentation": {
-              "binding_status": "unbound",
-              "command_id": "OCF-CMD-SLP-006-LEGACY-01",
-              "display_cue": "PLUS-ONE, AWAKE, ALERT, ONE, ONE",
-              "requested_locale": "en-US",
-              "spoken_cue": null
-            },
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-SLP-006",
-            "id": "OCF-CMD-SLP-006-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-slp-006-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-slp-006-legacy-01.label",
-              "purpose_key": "functions.ocf-slp-006.purpose",
-              "usage_key": "commands.ocf-cmd-slp-006-legacy-01.usage"
-            },
-            "phrase": "PLUS-ONE, AWAKE, ALERT, ONE, ONE",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-SLP-006-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias",
-            "spoken": null,
-            "spoken_review": "unresolved"
+            "spoken": "Plus Awake",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -24596,8 +24526,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "tts"
         ]
       },
-      "command_review": "review-required",
-      "compatibility": "bridge-trainable",
+      "command_review": "approved",
+      "compatibility": "historical-lookup",
       "domains": "sleep;performance",
       "legacy_command": "PLUS-ONE, AWAKE, ALERT, ONE, ONE",
       "legacy_name": "STAY AWAKE",

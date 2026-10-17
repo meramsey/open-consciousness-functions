@@ -13,7 +13,7 @@ from tools import convert_cue_templates as conversion
 def test_structural_converter_replays_pinned_sources_without_touching_runtime(
     monkeypatch, tmp_path
 ):
-    from ocf_tools import indexes
+    from ocf_tools import indexes, locale
     from ocf_tools.editorial_successors import before_file, before_texts
     from tools import check_hplus_narration_integrity as integrity
 
@@ -43,6 +43,15 @@ def test_structural_converter_replays_pinned_sources_without_touching_runtime(
             doc = yaml.safe_load(raw)
             records.append(FunctionRecord(doc["id"], doc["slug"], path, doc))
     baseline = before_texts(root, integrity.narration_texts())
+
+    # The historical converter must see historical locale resources as well as
+    # historical functions; current title/cue successors must not leak into replay.
+    def historical_reader(path):
+        name = path.relative_to(root).as_posix()
+        return yaml.safe_load(sources[name] if name in sources else before_file(root, name))
+
+    historical_catalog = locale.LocaleCatalog(reader=historical_reader, function_records=records)
+    monkeypatch.setattr(locale, "LocaleCatalog", lambda: historical_catalog)
     monkeypatch.setattr(conversion, "REPO_ROOT", tmp_path)
     monkeypatch.setattr(conversion, "source", lambda name: sources[name])
     monkeypatch.setattr(indexes, "load_all_functions", lambda: records)

@@ -1,8 +1,8 @@
 aliases:
   commands:
-  - PLUS-HEAL, HEAL
+    []
   command_ids:
-  - OCF-CMD-SLP-001-LEGACY-01
+    []
   names:
   - Restorative Sleep
 applications: []
@@ -20,7 +20,7 @@ canonical:
   command:
     modes: []
     mode_ids: []
-    primary: PLUS-RESTORE
+    primary: "PLUS-RESTORATIVE SLEEP"
   name: Restorative Sleep
 commands:
 - id: OCF-CMD-SLP-001-PRIMARY
@@ -34,6 +34,8 @@ commands:
     usage_key: commands.ocf-cmd-slp-001-primary.usage
     purpose_key: functions.ocf-slp-001.purpose
     explanation_key: commands.ocf-cmd-slp-001-primary.explanation
+    display_cue_key: commands.ocf-cmd-slp-001-primary.display-cue
+    spoken_cue_key: commands.ocf-cmd-slp-001-primary.spoken-cue
   documentation:
     visible: true
     order: 1
@@ -49,11 +51,11 @@ commands:
       localization_key: command.procedure.select-target-area
   relationships: {}
   observed_phrase:
-    text: Plus Heal Heal
+    text: Plus Restorative Sleep
     narration_key: hplus.function.ocf-slp-001.function-body
-    relationship: legacy-form
-  spoken: null
-  spoken_review: unresolved
+    relationship: canonical-match
+  spoken: "Plus Restorative Sleep"
+  spoken_review: "reviewed"
 - id: OCF-CMD-SLP-001-LEGACY-01
   function_id: OCF-SLP-001
   phrase_ref:
@@ -67,12 +69,13 @@ commands:
     purpose_key: functions.ocf-slp-001.purpose
     explanation_key: commands.ocf-cmd-slp-001-legacy-01.explanation
   documentation:
-    visible: true
+    visible: false
     order: 101
   effect_scope_ref: lifecycle.persistence
   relationships: {}
   spoken: null
   spoken_review: unresolved
+  availability: "historical-lookup"
 chains: []
 claims:
   intended_effects: []
@@ -86,9 +89,9 @@ companions: []
 compatibility:
   legacy_commands:
   - PLUS-HEAL, HEAL
-  rationale: Legacy two-word cue PLUS-HEAL, HEAL is retained; concise cue PLUS-RESTORE is proposed for
-    review.
-  state: bridge-trainable
+  rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is historical
+    lookup. Existing controls remain unchanged.
+  state: historical-lookup
 contributor:
   contact: null
   name: null
@@ -119,7 +122,7 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: review-required
+  command_review: "approved"
   reimplementation_status: planned
 purpose:
   community_description: Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE.
@@ -158,3 +161,12 @@ narration:
   - key: hplus.function.ocf-slp-001.closer
     repetitions: 1
     role: closer
+historical_lookup:
+- text: PLUS-RESTORE
+  kind: former-primary
+  decision: OCF-EDITORIAL-TITLE-CUES-004
+  command_id: OCF-CMD-SLP-001-PRIMARY
+- text: Plus Heal Heal
+  kind: former-teaching
+  decision: OCF-EDITORIAL-TITLE-CUES-004
+  command_id: OCF-CMD-SLP-001-PRIMARY

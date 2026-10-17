@@ -7,7 +7,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "canonical_commands": [
         "PLUS-AUTOMATE"
       ],
-      "canonical_name": "See-Be",
+      "canonical_name": "Automatic Action",
       "command_review": "approved",
       "command_status": "unchanged",
       "compatibility": "unchanged",
@@ -87,7 +87,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "canonical_commands": [
         "PLUS-SATISFIED, SUPPLIED"
       ],
-      "canonical_name": "Eat/No Eat",
+      "canonical_name": "Appetite Choice",
       "command_review": "approved",
       "command_status": "unchanged",
       "compatibility": "unchanged",
@@ -103,7 +103,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "canonical_commands": [
         "PLUS-HEART-BETTER"
       ],
-      "canonical_name": "Heart: Repairs & Maintenance",
+      "canonical_name": "Heart Flow",
       "command_review": "approved",
       "command_status": "unchanged",
       "compatibility": "historical-lookup",
@@ -117,9 +117,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     },
     {
       "canonical_commands": [
-        "PLUS-BALANCE-BLOODPRESSURE"
+        "PLUS-BALANCE BLOOD PRESSURE"
       ],
-      "canonical_name": "Hypertension",
+      "canonical_name": "Blood Pressure Balance",
       "command_review": "approved",
       "command_status": "unchanged",
       "compatibility": "unchanged",
@@ -133,12 +133,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     },
     {
       "canonical_commands": [
-        "PLUS-ALERT, DESTROY"
+        "PLUS-IMMUNE READY"
       ],
-      "canonical_name": "Immunizing",
+      "canonical_name": "Immune Readiness",
       "command_review": "approved",
       "command_status": "unchanged",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-ALERT, DESTROY"
       ],
@@ -183,12 +183,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     },
     {
       "canonical_commands": [
-        "PLUS-EQUALIZE-HARMONIZE"
+        "PLUS-HORMONE BALANCE"
       ],
-      "canonical_name": "Passages",
+      "canonical_name": "Hormonal Transitions",
       "command_review": "approved",
       "command_status": "unchanged",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-EQUALIZE-HARMONIZE"
       ],
@@ -219,7 +219,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "canonical_commands": [
         "PLUS-BALANCE, HEAL"
       ],
-      "canonical_name": "Tune-Up",
+      "canonical_name": "Body Tune-Up",
       "command_review": "approved",
       "command_status": "unchanged",
       "compatibility": "unchanged",
@@ -251,10 +251,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "canonical_commands": [
         "PLUS-NUMB"
       ],
-      "canonical_name": "Short Fix",
-      "command_review": "review-required",
+      "canonical_name": "Temporary Numbing",
+      "command_review": "approved",
       "command_status": "proposed",
-      "compatibility": "bridge-trainable",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-GO NUMB, GO NUMB",
         "PLUS-RELEASE"
@@ -266,12 +266,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     },
     {
       "canonical_commands": [
-        "PLUS-RETRIEVE"
+        "PLUS-ACCESS INFO"
       ],
-      "canonical_name": "Access to Information",
+      "canonical_name": "Information Access",
       "command_review": "approved",
       "command_status": "unchanged",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-RETRIEVE"
       ],
@@ -284,7 +284,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "canonical_commands": [
         "PLUS-CALCULATE"
       ],
-      "canonical_name": "Buy the Numbers",
+      "canonical_name": "Mental Calculation",
       "command_review": "approved",
       "command_status": "unchanged",
       "compatibility": "unchanged",
@@ -322,7 +322,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "canonical_name": "Imprint",
       "command_review": "approved",
       "command_status": "unchanged",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-IMPRINT, IMPRINT",
         "PLUS-RECALL"
@@ -400,7 +400,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "canonical_commands": [
         "PLUS-CONTROL, BALANCE, RESTORE"
       ],
-      "canonical_name": "Emergency: Injury",
+      "canonical_name": "Injury Response",
       "command_review": "approved",
       "command_status": "unchanged",
       "compatibility": "unchanged",
@@ -416,7 +416,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "canonical_commands": [
         "PLUS-CLEAR, REMOVE"
       ],
-      "canonical_name": "Emergency: Toxic",
+      "canonical_name": "Toxic Exposure Response",
       "command_review": "approved",
       "command_status": "unchanged",
       "compatibility": "unchanged",
@@ -546,7 +546,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "canonical_commands": [
         "PLUS-RECHARGE"
       ],
-      "canonical_name": "Recharge",
+      "canonical_name": "Quick Recharge",
       "command_review": "approved",
       "command_status": "unchanged",
       "compatibility": "unchanged",
@@ -565,7 +565,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "canonical_name": "Relax",
       "command_review": "approved",
       "command_status": "unchanged",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-RELAX, RELAX"
       ],
@@ -581,7 +581,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "canonical_name": "Reset",
       "command_review": "approved",
       "command_status": "unchanged",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-RESET, RESET"
       ],
@@ -608,12 +608,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     },
     {
       "canonical_commands": [
-        "PLUS-NO MORE, NO MORE"
+        "PLUS-FREE THIS HABIT"
       ],
-      "canonical_name": "De-Hab",
-      "command_review": "review-required",
+      "canonical_name": "Habit Freedom",
+      "command_review": "approved",
       "command_status": "review-required",
-      "compatibility": "bridge-trainable",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-NO MORE, NO MORE"
       ],
@@ -658,7 +658,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "canonical_commands": [
         "PLUS-SMOOTH, FAST"
       ],
-      "canonical_name": "Synchronizing",
+      "canonical_name": "Coordination",
       "command_review": "approved",
       "command_status": "unchanged",
       "compatibility": "unchanged",
@@ -672,12 +672,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     },
     {
       "canonical_commands": [
-        "PLUS-LIGHT"
+        "PLUS-LIGHT STEP"
       ],
       "canonical_name": "Light Foot",
-      "command_review": "review-required",
+      "command_review": "approved",
       "command_status": "proposed",
-      "compatibility": "bridge-trainable",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-LIGHTER, LIGHTER"
       ],
@@ -723,8 +723,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "PLUS-HEAR MORE",
         "PLUS-HEAR LESS"
       ],
-      "canonical_name": "Sensory: Hearing",
-      "command_review": "needs-review",
+      "canonical_name": "Hearing",
+      "command_review": "approved",
       "command_status": "normalized",
       "compatibility": "alias-listed",
       "legacy_commands": [
@@ -740,8 +740,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "canonical_commands": [
         "PLUS-SEE BETTER"
       ],
-      "canonical_name": "Sensory: Seeing",
-      "command_review": "needs-review",
+      "canonical_name": "Seeing",
+      "command_review": "approved",
       "command_status": "normalized",
       "compatibility": "alias-listed",
       "legacy_commands": [
@@ -757,8 +757,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "PLUS-SMELL MORE",
         "PLUS-SMELL LESS"
       ],
-      "canonical_name": "Sensory: Smell",
-      "command_review": "needs-review",
+      "canonical_name": "Smell",
+      "command_review": "approved",
       "command_status": "normalized",
       "compatibility": "alias-listed",
       "legacy_commands": [
@@ -775,8 +775,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "PLUS-TASTE MORE",
         "PLUS-TASTE LESS"
       ],
-      "canonical_name": "Sensory: Taste",
-      "command_review": "needs-review",
+      "canonical_name": "Taste",
+      "command_review": "approved",
       "command_status": "normalized",
       "compatibility": "alias-listed",
       "legacy_commands": [
@@ -793,8 +793,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "PLUS-TOUCH MORE",
         "PLUS-TOUCH LESS"
       ],
-      "canonical_name": "Sensory: Touch",
-      "command_review": "needs-review",
+      "canonical_name": "Touch",
+      "command_review": "approved",
       "command_status": "normalized",
       "compatibility": "alias-listed",
       "legacy_commands": [
@@ -808,12 +808,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     },
     {
       "canonical_commands": [
-        "PLUS-RESTORE"
+        "PLUS-RESTORATIVE SLEEP"
       ],
       "canonical_name": "Restorative Sleep",
-      "command_review": "review-required",
+      "command_review": "approved",
       "command_status": "proposed",
-      "compatibility": "bridge-trainable",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-HEAL, HEAL"
       ],
@@ -827,9 +827,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "PLUS-SLEEP"
       ],
       "canonical_name": "Sleep",
-      "command_review": "review-required",
+      "command_review": "approved",
       "command_status": "proposed",
-      "compatibility": "bridge-trainable",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-20-20"
       ],
@@ -842,10 +842,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "canonical_commands": [
         "PLUS-DREAM"
       ],
-      "canonical_name": "Sweet Dreams",
-      "command_review": "review-required",
+      "canonical_name": "Dream Theme",
+      "command_review": "approved",
       "command_status": "proposed",
-      "compatibility": "bridge-trainable",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-THEME, DREAM, SLEEP"
       ],
@@ -891,9 +891,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "PLUS-AWAKE"
       ],
       "canonical_name": "Stay Awake",
-      "command_review": "review-required",
+      "command_review": "approved",
       "command_status": "proposed",
-      "compatibility": "bridge-trainable",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-ONE, AWAKE, ALERT, ONE, ONE"
       ],

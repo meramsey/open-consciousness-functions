@@ -458,6 +458,8 @@ def test_exact_user_decisions_integrity_and_unaffected_active_vocabulary():
     records = {record.id: record for record in load_all_functions()}
     assert set(EXPECTED) == set(author.APPROVED)
     for owner, (title, display, speech) in EXPECTED.items():
+        if owner == "OCF-BOD-006":
+            title = "Heart Flow"  # Explicitly finalized by review 17 in successor 004.
         record = records[owner]
         primary = next(row for row in record.command_records if row.designation == "primary")
         assert (record.canonical_name, record.canonical_command) == (title, display)
@@ -478,7 +480,7 @@ def test_exact_user_decisions_integrity_and_unaffected_active_vocabulary():
             assert command.data.get("relationships") == old.get("relationships")
         if owner == "OCF-BOD-006":
             assert record.data["purpose"] == before["purpose"]
-    assert records["OCF-BOD-006"].canonical_name != "Heart Flow"
+    assert records["OCF-BOD-006"].canonical_name == "Heart Flow"
     assert not {"Heart Renewal", "Body Cleansing", "Body Cleanse"} & {
         row.canonical_name for row in records.values()
     }
@@ -488,7 +490,7 @@ def test_exact_user_decisions_integrity_and_unaffected_active_vocabulary():
         for row in record.command_records
         if commands.is_active(row)
     ]
-    assert len(active) == 88  # Comfort and Regenerate retire their superseded primary aliases.
+    assert len(active) == 79  # Approved successors retire only superseded primary aliases.
     assert len({row.id for row in active if row.designation == "primary"}) == 55
 
 
@@ -515,9 +517,11 @@ def test_all_four_body_passes_and_closer_resolve_the_approved_cue(owner):
 
 @pytest.mark.integration
 def test_historical_lookup_returns_current_cues_without_reviving_aliases():
+    from ocf_tools.editorial_successors import current_decision_record
     from ocf_tools.vocabulary import lookup
 
     data = cue_migration.decision_record()
+    latest = {row["function_id"]: row for row in current_decision_record()["decisions"]}
     for decision in data["decisions"]:
         for query in (
             decision["previous"]["title"],
@@ -526,7 +530,7 @@ def test_historical_lookup_returns_current_cues_without_reviving_aliases():
         ):
             rows = lookup(query)
             match = next(row for row in rows if row["function_id"] == decision["function_id"])
-            assert match["title"] == decision["current_title"]
+            assert match["title"] == latest[decision["function_id"]]["current_title"]
             assert match["cue"]["spoken_cue"] == decision["spoken_cue"]
             assert match["activation_selected"] is False
     insulate = next(row for row in load_all_functions() if row.id == "OCF-EXP-002")

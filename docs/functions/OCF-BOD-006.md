@@ -1,6 +1,6 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Heart: Repairs & Maintenance
+# Heart Flow
 
 **Purpose**: Self-directed wellness practice supporting a felt sense of calm, steady heart function.
 

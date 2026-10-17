@@ -19,7 +19,7 @@ canonical:
     modes: []
     mode_ids: []
     primary: PLUS-RECHARGE
-  name: Recharge
+  name: "Quick Recharge"
 commands:
 - id: OCF-CMD-FND-003-PRIMARY
   function_id: OCF-FND-003
@@ -32,6 +32,8 @@ commands:
     usage_key: commands.ocf-cmd-fnd-003-primary.usage
     purpose_key: functions.ocf-fnd-003.purpose
     explanation_key: commands.ocf-cmd-fnd-003-primary.explanation
+    display_cue_key: commands.ocf-cmd-fnd-003-primary.display-cue
+    spoken_cue_key: commands.ocf-cmd-fnd-003-primary.spoken-cue
   documentation:
     visible: true
     order: 1
@@ -127,3 +129,7 @@ narration:
   - key: hplus.function.ocf-fnd-003.closer
     repetitions: 1
     role: closer
+historical_lookup:
+- text: Recharge
+  kind: former-title
+  decision: OCF-EDITORIAL-TITLE-CUES-004

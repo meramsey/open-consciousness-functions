@@ -387,7 +387,7 @@ def test_comfort_decision_four_passes_controls_and_other_175_entries_preserved()
     assert {row.id for row in record.command_records if is_active(row)} == {PRIMARY}
     all_records = load_all_functions()
     assert len(all_records) == 55 and sum(len(row.command_records) for row in all_records) == 97
-    assert sum(is_active(command) for row in all_records for command in row.command_records) == 88
+    assert sum(is_active(command) for row in all_records for command in row.command_records) == 79
     plan = plan_narration(OWNER, locale="en-US")
     for playback in range(1, 5):
         text = "\n\n".join(

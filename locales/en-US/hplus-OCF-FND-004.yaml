@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-FND-004 — Relax
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -34,7 +35,7 @@ entries:
 
   hplus.function.ocf-fnd-004.function-body:
     status: reviewed
-    version: 1.3.0
+    version: 1.3.1
     notes: >-
       OCF-adapted body based on the unverified Relax transcript.
       Original SOURCE +Transcripts From available tapes/Relax/Relax.txt;
@@ -52,6 +53,9 @@ entries:
       Affirmative effects are exercise suggestions. Rights:
       user_cleared, per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-FND-004
+      allowed: [cue.primary]
     text: |-
       From this moment forward, you have the ability
       to relax your entire body and mind deeply,
@@ -64,7 +68,7 @@ entries:
       Whenever you wish to relax, inhale deeply
       and gently hold your breath.
 
-      Think or say in your mind, "Plus Relax Relax."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth,
       as though gently blowing out a candle.
@@ -94,7 +98,7 @@ entries:
       and your body will return to balance
       more naturally with each experience.
 
-      Whenever you use Plus Relax Relax,
+      Whenever you use {{ cue.primary }},
       relaxation will flow through your total self,
       deeper and more easily than before.
 
@@ -104,7 +108,7 @@ entries:
 
   hplus.function.ocf-fnd-004.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted closer based on the unverified Relax transcript.
       Original SOURCE +Transcripts From available tapes/Relax/Relax.txt;
@@ -115,12 +119,15 @@ entries:
       This revision is separate from frozen Relax pilot resources.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-FND-004
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to relax
       your body and mind, inhale deeply
       and hold your breath.
 
-      Think or say in your mind, "Plus Relax Relax."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth,
       as though gently blowing out a candle.

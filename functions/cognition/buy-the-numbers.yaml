@@ -19,7 +19,7 @@ canonical:
     modes: []
     mode_ids: []
     primary: PLUS-CALCULATE
-  name: Buy the Numbers
+  name: "Mental Calculation"
 commands:
 - id: OCF-CMD-COG-002-PRIMARY
   function_id: OCF-COG-002
@@ -32,6 +32,8 @@ commands:
     usage_key: commands.ocf-cmd-cog-002-primary.usage
     purpose_key: functions.ocf-cog-002.purpose
     explanation_key: commands.ocf-cmd-cog-002-primary.explanation
+    display_cue_key: commands.ocf-cmd-cog-002-primary.display-cue
+    spoken_cue_key: commands.ocf-cmd-cog-002-primary.spoken-cue
   documentation:
     visible: true
     order: 1
@@ -126,3 +128,7 @@ narration:
   - key: hplus.function.ocf-cog-002.closer
     repetitions: 1
     role: closer
+historical_lookup:
+- text: Buy the Numbers
+  kind: former-title
+  decision: OCF-EDITORIAL-TITLE-CUES-004

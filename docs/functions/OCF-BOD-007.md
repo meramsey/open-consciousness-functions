@@ -1,6 +1,6 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Hypertension
+# Blood Pressure Balance
 
 **Purpose**: Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for medical care.
 
@@ -14,7 +14,7 @@ Source availability does not establish historical authentication or provenance.
 
 [Command index](../COMMAND_INDEX.md)
 
-## PLUS-BALANCE-BLOODPRESSURE
+## PLUS-BALANCE BLOOD PRESSURE
 
 ### Primary activation command
 

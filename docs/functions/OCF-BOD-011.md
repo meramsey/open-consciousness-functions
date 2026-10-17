@@ -1,6 +1,6 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Passages
+# Hormonal Transitions
 
 **Purpose**: Supports graceful passage through internal transitions.
 
@@ -14,13 +14,15 @@ Source availability does not establish historical authentication or provenance.
 
 [Command index](../COMMAND_INDEX.md)
 
-## PLUS-EQUALIZE-HARMONIZE
+## PLUS-HORMONE BALANCE
 
 ### Primary activation command
 
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
+
+**Recorded source phrase (not the canonical phrase)**: Plus Hormone Balance `(canonical-match; hplus.function.ocf-bod-011.function-body)`
 
 ### Activation sequence
 

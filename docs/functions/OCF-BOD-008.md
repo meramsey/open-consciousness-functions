@@ -1,6 +1,6 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Immunizing
+# Immune Readiness
 
 **Purpose**: Supports a felt sense of alertness and preparedness; not a medical claim.
 
@@ -14,13 +14,15 @@ Source availability does not establish historical authentication or provenance.
 
 [Command index](../COMMAND_INDEX.md)
 
-## PLUS-ALERT, DESTROY
+## PLUS-IMMUNE READY
 
 ### Primary activation command
 
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
+
+**Recorded source phrase (not the canonical phrase)**: Plus Immune Ready `(canonical-match; hplus.function.ocf-bod-008.function-body)`
 
 ### Activation sequence
 

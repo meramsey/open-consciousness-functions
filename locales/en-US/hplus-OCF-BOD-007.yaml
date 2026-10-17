@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-BOD-007 — Hypertension
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -227,7 +228,7 @@ entries:
 
   hplus.function.ocf-bod-007.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted narration based on the unverified Hypertension
       transcript. Original SOURCE +Transcripts From available
@@ -247,6 +248,9 @@ entries:
       This is adapted narration, not a verbatim transcription.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release pending.
+    cue_template:
+      function_id: OCF-BOD-007
+      allowed: [cue.primary]
     text: |-
       Remember, your body's natural systems
       of blood pressure regulation and
@@ -269,9 +273,9 @@ entries:
       Inhale comfortably and gently hold your breath.
 
       Silently say to yourself,
-      "Plus Balance Blood Pressure."
+      "{{ cue.primary }}."
 
       Then slowly exhale through your mouth,
       as though gently blowing out a candle.
 
-      This concludes your OCF Hypertension exercise.
+      This concludes your OCF Blood Pressure Balance exercise.

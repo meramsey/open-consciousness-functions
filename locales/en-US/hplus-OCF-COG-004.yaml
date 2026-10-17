@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-COG-004 — Imprint
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -42,7 +43,7 @@ entries:
 
   hplus.function.ocf-cog-004.function-body:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted narration based on the unverified Imprint
       transcript. Original SOURCE +Transcripts From available
@@ -71,6 +72,9 @@ entries:
       independently verified memory capabilities.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-COG-004
+      allowed: [cue.primary]
     text: |-
       From this moment forward, your ability to capture,
       store, and remember information and experiences
@@ -82,7 +86,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Imprint Imprint."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Focus clearly on what you wish to remember,
       then exhale slowly and easily.
@@ -130,7 +134,7 @@ entries:
       to consciously imprint information
       is permanently available to you.
 
-      Each time you use Plus Imprint Imprint,
+      Each time you use {{ cue.primary }},
       your ability to capture and retain
       information becomes easier, faster,
       and more effective.
@@ -141,7 +145,7 @@ entries:
 
   hplus.function.ocf-cog-004.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-authored closer adapted from the previously approved
       Imprint function reminder. Original SOURCE +Transcripts
@@ -157,12 +161,15 @@ entries:
       This is OCF-authored wording, not historical transcript text.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-COG-004
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to preserve
       information or an experience in your memory,
       inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus Imprint Imprint."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Focus on what you wish to remember,
       then exhale slowly and easily.

@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-BOD-015 — Short Fix
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -52,7 +53,7 @@ entries:
 
   hplus.function.ocf-bod-015.function-body:
     status: reviewed
-    version: 1.1.0
+    version: 1.1.1
     notes: >-
       OCF-adapted narration based on the user-proposed Short Fix
       reconstruction. Proposed input:
@@ -80,6 +81,9 @@ entries:
       Focus 11 and Focus 20.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-BOD-015
+      allowed: [cue.primary]
     text: |-
       From this moment forward, you have the ability
       to quickly and temporarily reduce discomfort
@@ -95,7 +99,7 @@ entries:
       Inhale deeply and gently hold your breath.
 
       Think or say in your mind,
-      "Plus Go Numb Go Numb."
+      "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
@@ -143,7 +147,7 @@ entries:
       From this moment forward, this ability
       is permanently available to you.
 
-      Each time you use Short Fix,
+      Each time you use Temporary Numbing,
       directing and releasing the temporary
       response becomes easier, faster,
       and more effective.
@@ -155,7 +159,7 @@ entries:
 
   hplus.function.ocf-bod-015.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted closer based on the user-proposed Short Fix
       reconstruction. Proposed input:
@@ -171,6 +175,9 @@ entries:
       narration, not historical transcript wording.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-BOD-015
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to temporarily
       reduce discomfort in a specific part of your body,
@@ -178,7 +185,7 @@ entries:
 
       Inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus Go Numb Go Numb."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
@@ -186,4 +193,4 @@ entries:
       repeat the breathing sequence and think
       or say in your mind, "Plus Release."
 
-      This concludes your OCF Short Fix exercise.
+      This concludes your OCF Temporary Numbing exercise.

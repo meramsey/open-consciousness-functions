@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-COG-001 — Access to Information
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -38,7 +39,7 @@ entries:
 
   hplus.function.ocf-cog-001.function-body:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted narration based on the unverified Access to
       Information transcript. Original SOURCE +Transcripts From
@@ -61,6 +62,9 @@ entries:
       not independently verified retrieval capabilities.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-COG-001
+      allowed: [cue.primary]
     text: |-
       From this moment forward, your ability to access
       your personal library of information and knowledge
@@ -94,7 +98,7 @@ entries:
       Whenever you desire information
       from your personal library,
       simply think or say in your mind,
-      "Plus Retrieve."
+      "{{ cue.primary }}."
 
       Then focus clearly on the information,
       knowledge, or understanding you desire.
@@ -110,7 +114,7 @@ entries:
       will come together, allowing you
       to recognize and use the information.
 
-      The more you use Plus Retrieve,
+      The more you use {{ cue.primary }},
       the easier, faster, and more effective
       this process will become.
 
@@ -121,7 +125,7 @@ entries:
       Now think of something you wish to know
       or understand more clearly.
 
-      Silently say, "Plus Retrieve."
+      Silently say, "{{ cue.primary }}."
 
       Allow the information to come
       into your conscious awareness.
@@ -131,7 +135,7 @@ entries:
 
   hplus.function.ocf-cog-001.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-authored closer adapted from the previously approved
       proposal. The historical Access to Information transcript
@@ -147,12 +151,15 @@ entries:
       This is OCF-authored wording, not historical transcript
       text. Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-COG-001
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to access
       your personal library of knowledge,
-      think or say in your mind, "Plus Retrieve."
+      think or say in your mind, "{{ cue.primary }}."
 
       Then focus on the information you desire,
       and allow it to enter your conscious awareness.
 
-      This concludes your OCF Access to Information exercise.
+      This concludes your OCF Information Access exercise.

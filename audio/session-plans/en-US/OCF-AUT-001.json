@@ -5,12 +5,12 @@
   },
   "defaults": {
     "file": "_shared.json",
-    "sha256": "868e9c01b241f45a26be4dc86e2ec60a89c90bf94a2c6a983da5f341eb01b9a4"
+    "sha256": "1976558ef50735e20e6875a0162d4ed111223c4b5681f19a186770daa07775d7"
   },
   "function_id": "OCF-AUT-001",
   "generation": {
     "binding_sha256": "1572f59909efaace41293c181de746b2c36841513715c1f7f4ce7e7d1dc914bf",
-    "semantic_plan_sha256": "a4bc7880527075743d3749887cd466b26dd1469ab7f387d96364ba3b4f76f2f2"
+    "semantic_plan_sha256": "b3739779c91ad343105d27cdc42dffe71a3bbff92a38fa7f9d8a72b60f2ce7ce"
   },
   "generator": "ocf.audio.plan/1",
   "locale": "en-US",
@@ -19,10 +19,11 @@
       "fallback": false,
       "key": "hplus.function.ocf-aut-001.closer",
       "locale": "en-US",
+      "raw_template_sha256": "96833f10f34cf54f5fba7384b918accec235eba0c30798d91e88ce90a06eaab3",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "d27acfb0e90accd949e3545da952742449e5fa432c0405ec0b34193332740672",
-      "version": "1.2.0"
+      "text_sha256": "7aec8055c1677ed98d8f976268b0da4aad5d3a04780babba5f912e161b07648e",
+      "version": "1.2.1"
     },
     {
       "fallback": false,

@@ -19,7 +19,7 @@ canonical:
     mode_ids: []
     modes: []
     primary: PLUS-HEART-BETTER
-  name: 'Heart: Repairs & Maintenance'
+  name: "Heart Flow"
 chains: []
 claims:
   intended_effects: []
@@ -83,6 +83,9 @@ historical_lookup:
   decision: OCF-EDITORIAL-TITLE-CUES-001
   kind: former-teaching
   text: Plus Heart Better Better
+- text: 'Heart: Repairs & Maintenance'
+  kind: former-title
+  decision: OCF-EDITORIAL-TITLE-CUES-004
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.

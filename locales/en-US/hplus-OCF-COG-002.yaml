@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-COG-002 — Buy the Numbers
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -145,7 +146,7 @@ entries:
 
   hplus.function.ocf-cog-002.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-authored closer adapted from the previously approved
       suggestion. The unverified Buy the Numbers transcript
@@ -161,13 +162,16 @@ entries:
       This is OCF-authored wording, not historical transcript text.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-COG-002
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to strengthen
       your ability to calculate or understand numbers,
       inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus Calculate."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
-      This concludes your OCF Buy the Numbers exercise.
+      This concludes your OCF Mental Calculation exercise.

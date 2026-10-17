@@ -1,8 +1,8 @@
 aliases:
   commands:
-  - PLUS-IMPRINT, IMPRINT
+    []
   command_ids:
-  - OCF-CMD-COG-004-LEGACY-01
+    []
   names:
   - Imprint
 applications: []
@@ -36,6 +36,8 @@ commands:
     usage_key: commands.ocf-cmd-cog-004-primary.usage
     purpose_key: functions.ocf-cog-004.purpose
     explanation_key: commands.ocf-cmd-cog-004-primary.explanation
+    display_cue_key: commands.ocf-cmd-cog-004-primary.display-cue
+    spoken_cue_key: commands.ocf-cmd-cog-004-primary.spoken-cue
   documentation:
     visible: true
     order: 1
@@ -48,11 +50,11 @@ commands:
     before_steps: []
   relationships: {}
   observed_phrase:
-    text: Plus Imprint Imprint
+    text: Plus Imprint
     narration_key: hplus.function.ocf-cog-004.function-body
-    relationship: legacy-form
-  spoken: null
-  spoken_review: unresolved
+    relationship: canonical-match
+  spoken: "Plus Imprint"
+  spoken_review: "reviewed"
 - id: OCF-CMD-COG-004-RECALL
   function_id: OCF-COG-004
   phrase_ref:
@@ -93,12 +95,13 @@ commands:
     purpose_key: functions.ocf-cog-004.purpose
     explanation_key: commands.ocf-cmd-cog-004-legacy-01.explanation
   documentation:
-    visible: true
+    visible: false
     order: 101
   effect_scope_ref: lifecycle.persistence
   relationships: {}
   spoken: null
   spoken_review: unresolved
+  availability: "historical-lookup"
 chains: []
 claims:
   intended_effects: []
@@ -109,7 +112,9 @@ classification:
   secondary_domains: []
 companions: []
 compatibility:
-  state: unchanged
+  state: historical-lookup
+  rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is historical
+    lookup. Existing controls remain unchanged.
 contributor:
   contact: null
   name: null
@@ -179,3 +184,8 @@ narration:
   - key: hplus.function.ocf-cog-004.closer
     repetitions: 1
     role: closer
+historical_lookup:
+- text: Plus Imprint Imprint
+  kind: former-teaching
+  decision: OCF-EDITORIAL-TITLE-CUES-004
+  command_id: OCF-CMD-COG-004-PRIMARY

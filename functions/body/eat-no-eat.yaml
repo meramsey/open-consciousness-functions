@@ -19,7 +19,7 @@ canonical:
     modes: []
     mode_ids: []
     primary: PLUS-SATISFIED, SUPPLIED
-  name: Eat/No Eat
+  name: "Appetite Choice"
 commands:
 - id: OCF-CMD-BOD-005-PRIMARY
   function_id: OCF-BOD-005
@@ -32,6 +32,8 @@ commands:
     usage_key: commands.ocf-cmd-bod-005-primary.usage
     purpose_key: functions.ocf-bod-005.purpose
     explanation_key: commands.ocf-cmd-bod-005-primary.explanation
+    display_cue_key: commands.ocf-cmd-bod-005-primary.display-cue
+    spoken_cue_key: commands.ocf-cmd-bod-005-primary.spoken-cue
   documentation:
     visible: true
     order: 1
@@ -129,3 +131,7 @@ narration:
   - key: hplus.function.ocf-bod-005.closer
     repetitions: 1
     role: closer
+historical_lookup:
+- text: Eat/No Eat
+  kind: former-title
+  decision: OCF-EDITORIAL-TITLE-CUES-004

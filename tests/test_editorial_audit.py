@@ -24,11 +24,15 @@ def test_complete_function_command_audit_preserves_every_authoritative_phrase():
     records = load_all_functions()
     data = historical_data()
     from ocf_tools.cue_migration import decision_record
+    from ocf_tools.editorial_successors import records as successor_records
 
     migrated = {
         row["primary_command_id"]: row["previous"]["display_cue"]
         for row in decision_record()["decisions"]
     }
+    for successor in successor_records():
+        for decision in successor["decisions"]:
+            migrated.setdefault(decision["primary_command_id"], decision["previous"]["display_cue"])
     actual = {row["id"]: row["phrase"] for row in data["commands"]}
     expected = {
         command.id: migrated.get(command.id, resolve_phrase(record, command))

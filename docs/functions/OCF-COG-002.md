@@ -1,6 +1,6 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Buy the Numbers
+# Mental Calculation
 
 **Purpose**: Speeds mental arithmetic and number processing.
 

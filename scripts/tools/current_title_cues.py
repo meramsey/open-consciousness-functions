@@ -29,6 +29,7 @@ def build():
         raise OCFError("approved migration drift: " + " | ".join(problems))
     decision = current_decision_record()
     changed = {row["function_id"]: row for row in decision["decisions"]}
+    kept = {row["function_id"]: row for row in decision["kept_decisions"]}
     previous = json.loads(
         (REPO_ROOT / "docs/releases/OCF_TITLE_CUE_REVIEW.json").read_text(encoding="utf-8")
     )
@@ -57,6 +58,8 @@ def build():
                 "current_purpose": record.purpose_summary,
                 "decision_status": "APPROVED AND IMPLEMENTED"
                 if update
+                else "EXISTING PAIR RETAINED"
+                if record.id in kept
                 else "STILL UNDECIDED"
                 if prior[record.id]["classification"]
                 != "KEEP — TITLE, CUE, AND TEACHING ALREADY CONSISTENT"
@@ -66,7 +69,7 @@ def build():
                 "pending_title": update.get("pending_title") if update else None,
                 "previous_values": update["previous"] if update else None,
                 "unselected_proposal": None
-                if update
+                if update or record.id in kept
                 else {
                     "title": prior[record.id]["recommended_title"],
                     "cue": prior[record.id]["recommended_primary_cue"],
@@ -74,6 +77,8 @@ def build():
                 "historical_lookup": record.data.get("historical_lookup", []),
                 "context": update["translator_notes"]
                 if update
+                else kept[record.id]["implementation_scope"]
+                if record.id in kept
                 else prior[record.id]["contextual_review"],
                 "teaching_source": "Approved exact substitutions, verified against immutable predecessor"
                 if update

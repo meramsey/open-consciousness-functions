@@ -10,8 +10,8 @@ from ocf_tools.timing import schedule_timeline
 @pytest.mark.parametrize(
     "slug,function_id,command",
     [
-        ("RELAX", "OCF-FND-004", "PLUS-RELAX"),
-        ("HEARING", "OCF-SEN-001", "PLUS-HEAR MORE"),
+        ("RELAX", "OCF-FND-004", "Plus Relax"),
+        ("HEARING", "OCF-SEN-001", "Plus Hear More"),
         ("SLEEP-EASY", "OCF-SLP-005", "Plus Sleep Easy"),
     ],
 )
@@ -25,6 +25,13 @@ def test_pilot_composition_command_ownership_and_pause_semantics(slug, function_
     resolved = resolve_document(doc, "en-US")
     events = list(iter_events(resolved))
     assert len(events) == 6 and any(command in event["text"] for event in events)
+    owner = load_function_by_id(function_id)
+    for event in iter_events(doc):
+        variables = event.get("variables", {})
+        if "function_name" in variables:
+            assert variables["function_name"] == owner.canonical_name
+        if "command" in variables:
+            assert variables["command"] == command
     assert all(not event.get("dsp") and not event.get("auditory_cue") for event in events)
     schedule = schedule_timeline(resolved, {event["id"]: 10 for event in events})
     assert schedule[4]["at"] >= schedule[3]["at"] + 50  # speech plus40s rehearsal

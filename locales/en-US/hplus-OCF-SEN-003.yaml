@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-SEN-003 — Sensory: Smell
 # English function-specific OCF-adapted narration; wording source of truth.
 # Source status: unavailable; authentication remains unverified.
@@ -106,7 +107,7 @@ entries:
 
   hplus.function.ocf-sen-003.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted concise closer based on proposed reconstruction,
       input lines 252–258; source
@@ -117,12 +118,15 @@ entries:
       and Plus Smell Less, and full source eye/breath sequence, followed by
       standard OCF ending. Rights: user_cleared per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-SEN-003
+      allowed: [cue.primary]
     text: |-
       Remember, to regulate your perception of aromas
       or strengthen your inner sense of smell, close your eyes,
       inhale deeply, and hold your breath.
-      Think or say in your mind, "Plus Smell More"
+      Think or say in your mind, "{{ cue.primary }}"
       or "Plus Smell Less," according to your intention.
       Then exhale slowly through your mouth and open your eyes.
 
-      This concludes your OCF Sensory: Smell exercise.
+      This concludes your OCF Smell exercise.
