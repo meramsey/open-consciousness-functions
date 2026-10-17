@@ -25,7 +25,6 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Sex Drive](functions/OCF-BOD-012.md) | PLUS-SEX LESSER | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
 | [Tune-Up](functions/OCF-BOD-013.md) | PLUS-BALANCE, HEAL | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Regenerate](functions/OCF-BOD-014.md) | PLUS-REGENERATE | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
-| [Regenerate](functions/OCF-BOD-014.md) | PLUS-BUILD, LIVE | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Permanent |
 | [Short Fix](functions/OCF-BOD-015.md) | PLUS-NUMB | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Short Fix](functions/OCF-BOD-015.md) | PLUS-GO NUMB, GO NUMB | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
 | [Short Fix](functions/OCF-BOD-015.md) | PLUS-RELEASE | Release command | Ends the temporary numbing response; normal sensitivity returns while the learned ability remains available. | Temporary |
@@ -96,4 +95,4 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Stay Awake](functions/OCF-SLP-006.md) | PLUS-AWAKE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Stay Awake](functions/OCF-SLP-006.md) | PLUS-ONE, AWAKE, ALERT, ONE, ONE | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
 
-55 functions; 89 structured command records.
+55 functions; 88 structured command records.

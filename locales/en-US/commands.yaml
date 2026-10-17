@@ -1639,17 +1639,15 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-bod-014.purpose:
-    text: Supports a felt sense of body-wide regeneration and renewal; proposed concise cue PLUS-REGENERATE
-      for review.
+    text: "Supports a felt sense of body-wide regeneration and renewal; activation cue PLUS-REGENERATE."
     status: canonical
     version: 1.0.0
   functions.ocf-bod-014.short-description:
-    text: Supports a felt sense of body-wide regeneration and renewal; proposed concise cue PLUS-REGENERATE
-      for review.
+    text: "Supports a felt sense of body-wide regeneration and renewal; activation cue PLUS-REGENERATE."
     status: canonical
     version: 1.0.0
   functions.ocf-bod-014.title:
-    text: Regenerate
+    text: "Regenerate"
     status: canonical
     version: 1.0.0
   functions.ocf-bod-015.purpose:
@@ -2148,3 +2146,4 @@ entries:
   commands.ocf-cmd-bod-004-primary.display-cue: "PLUS-DETOX"
   commands.ocf-cmd-bod-006-primary.display-cue: "PLUS-HEART-BETTER"
   commands.ocf-cmd-bod-003-primary.display-cue: "PLUS-COMFORT"
+  commands.ocf-cmd-bod-014-primary.display-cue: "PLUS-REGENERATE"

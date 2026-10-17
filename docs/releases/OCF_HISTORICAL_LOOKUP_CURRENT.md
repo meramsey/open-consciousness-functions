@@ -20,6 +20,7 @@ Discovery normalization uses NFC, case folding and whitespace folding only. It i
 - OCF-BOD-004 → Detox / `PLUS-DETOX`; historical matches: De-Tox: Body; PLUS-DETOX; Plus Clean Clear.
 - OCF-BOD-006 → Heart: Repairs & Maintenance / `PLUS-HEART-BETTER`; historical matches: Heart: Repairs & Maintenance; PLUS-HEART, BETTER, BETTER; Plus Heart Better Better.
 - OCF-BOD-009 → Breathe Better / `PLUS-BREATHE BETTER`; historical matches: Lungs: Repairs & Maintenance; PLUS-BREATH BETTER; Plus Breathe Better.
+- OCF-BOD-014 → Regenerate / `PLUS-REGENERATE`; historical matches: PLUS-BUILD, LIVE; Plus Build Live.
 - OCF-EMO-002 → Offload / `PLUS-OFFLOAD`; historical matches: Off-Loading; PLUS-CLEAR; Plus Fade Fade.
 - OCF-EMO-003 → Empathize / `PLUS-EMPATHIZE`; historical matches: Empathizing; PLUS-PROFILE, PROFILE; Plus Profile Profile.
 - OCF-EXP-001 → Manifest / `PLUS-MANIFEST`; historical matches: Mobius West; PLUS-PROGRAM; Plus Change Change.

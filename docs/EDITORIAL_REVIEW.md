@@ -14,9 +14,10 @@ The [current decision sheet](releases/OCF_TITLE_CUE_CURRENT.md),
 [current teaching status](releases/OCF_TEACHING_CURRENT.md),
 [source-English terminology sheet](releases/OCF_EN_US_TERMINOLOGY.md) and
 [historical lookup guide](releases/OCF_HISTORICAL_LOOKUP_CURRENT.md) reflect
-`OCF-EDITORIAL-TITLE-CUES-001` and its approved Comfort successor
-`OCF-EDITORIAL-TITLE-CUES-002`. Nine selected pairs, Detox, the requested
-heart cue and Comfort are implemented. Heart Flow remains tentative; Heart Renewal and the
+`OCF-EDITORIAL-TITLE-CUES-001` and its approved Comfort and Regenerate successors
+`OCF-EDITORIAL-TITLE-CUES-002` and `OCF-EDITORIAL-TITLE-CUES-003`.
+Nine selected pairs, Detox, the requested heart cue, Comfort and Regenerate
+are implemented. Heart Flow remains tentative; Heart Renewal and the
 Body Cleansing/Body Cleanse proposals are rejected/superseded. All other unselected
 vocabulary remains pending. No HPLUS identity migration is implemented.
 
@@ -53,13 +54,38 @@ introduced. `PLUS-55515` and its spoken numeric realization remain historical
 lookup, and the legacy command identity is historical-only. Stable IDs and
 source provenance are retained.
 
-Fixture 003 and engineering defaults lock 004 are the current successors.
+Fixture 003 and engineering defaults lock 004 record the Comfort revision.
 Earlier fixtures, approval/structural ledgers and locks 001–003 remain immutable.
 Lock 004 updates affected narration dependencies with the same engineering
 profiles. The verifier checks the bounded decision before projecting predecessor
 content for historical checks. Old text fingerprints remain stale for recorded
 and hybrid sources; historical lookup does not select activation. Existing audio
 does not acquire new wording or listening approval from this decision.
+
+## Regenerate: second individual follow-up review
+
+The user's explicit selection of option 1 approves **Regenerate** /
+**PLUS-REGENERATE** / **Plus Regenerate** for OCF-BOD-014. The
+[successor ledger](../function-content/editorial/approved-title-cues-003.json)
+records exactly two body substitutions and one closer substitution from
+`Plus Build Live`. Function-owned `{{ cue.primary }}` references resolve the
+new phrase. The title and exercise sign-off remain Regenerate.
+
+The lasting automatic repair/reconstruction suggestions and optional conscious
+targeting retain their existing wording and procedures: close eyes, picture
+healthy form and function, inhale/hold, internal cue, exhale and open eyes.
+Persistence remains permanent, with no separate mode or release. Reconstruction
+provenance and historical source-unavailable status are retained. `PLUS-BUILD,
+LIVE` and `Plus Build Live` remain historical lookup; the old command identity
+is historical-only.
+
+The current successors are fixture 004 and engineering defaults lock 005.
+Exactly two protected entries change relative to Comfort's revision; 175 are
+unchanged. Earlier ledgers, fixtures and locks remain immutable. Engineering
+profiles stay identical. Both approved successors are verified before their
+predecessor views are used by historical checks. Old recording text fingerprints
+remain stale in recorded and hybrid modes. This decision adds no listening or
+finished-session release approval.
 
 ## Historical proposal checkpoint
 

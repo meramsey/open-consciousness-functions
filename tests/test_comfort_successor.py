@@ -31,6 +31,7 @@ def write(root, name, value):
 def fixture(tmp_path, monkeypatch):
     from tools import check_hplus_narration_integrity as integrity
 
+    monkeypatch.setattr(successors, "REGISTERED", (successors.REGISTERED[0],))
     old_function = {
         "id": OWNER,
         "canonical": {"name": "De-Discomfort", "command": {"primary": "PLUS-COMFORT", "modes": []}},
@@ -367,6 +368,11 @@ def test_comfort_decision_four_passes_controls_and_other_175_entries_preserved()
     assert successors.verify() == []
     data = successors.records()[0]
     current = text_fingerprints(narration_texts())
+    # Check Comfort's historical revision after authenticating later successors.
+    for later in reversed(successors.records()[1:]):
+        for change in later["allowed_text_changes"]:
+            assert current[change["identity"]] == change["after_sha256"]
+            current[change["identity"]] = change["before_sha256"]
     previous = json.loads((REPO_ROOT / data["previous_integrity_baseline"]).read_text())
     assert len(current) == len(previous) == 177
     assert {key for key in current if current[key] != previous[key]} == {
@@ -381,7 +387,7 @@ def test_comfort_decision_four_passes_controls_and_other_175_entries_preserved()
     assert {row.id for row in record.command_records if is_active(row)} == {PRIMARY}
     all_records = load_all_functions()
     assert len(all_records) == 55 and sum(len(row.command_records) for row in all_records) == 97
-    assert sum(is_active(command) for row in all_records for command in row.command_records) == 89
+    assert sum(is_active(command) for row in all_records for command in row.command_records) == 88
     plan = plan_narration(OWNER, locale="en-US")
     for playback in range(1, 5):
         text = "\n\n".join(

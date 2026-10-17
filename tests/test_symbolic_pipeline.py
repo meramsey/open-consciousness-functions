@@ -128,9 +128,9 @@ def test_current_queue_excludes_finalized_cues_and_keeps_tentative_heart(tmp_pat
 
     monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path))
     queue = review.load_or_create()
-    assert review.next_item(queue)["function_id"] == "OCF-BOD-014"
+    assert review.next_item(queue)["function_id"] == "OCF-BOD-015"
     ids = {row["function_id"] for row in queue["items"]}
     assert {"OCF-BOD-006", "OCF-BOD-010", "OCF-LIF-001"} <= ids
-    assert not {"OCF-EXP-001", "OCF-SLP-005", "OCF-BOD-004", "OCF-BOD-003"} & ids
+    assert not {"OCF-EXP-001", "OCF-SLP-005", "OCF-BOD-004", "OCF-BOD-003", "OCF-BOD-014"} & ids
     assert all(row["status"] == "pending" for row in queue["items"])
     assert review.load_or_create() == queue

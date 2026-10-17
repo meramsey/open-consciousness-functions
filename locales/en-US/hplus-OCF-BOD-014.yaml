@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-003: approved successor; earlier Build Live cue notes describe prior versions.
 # OCF-BOD-014 — Regenerate
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -53,7 +54,7 @@ entries:
 
   hplus.function.ocf-bod-014.function-body:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted narration based on the user-proposed Regenerate
       reconstruction. Proposed input:
@@ -85,6 +86,9 @@ entries:
       Focus 11 and Focus 20.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-BOD-014
+      allowed: [cue.primary]
     text: |-
       From this moment forward, your body's natural
       powers of repair, rebuilding, and regeneration
@@ -151,7 +155,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Build Live."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth
       and open your eyes.
@@ -161,7 +165,7 @@ entries:
       of repair, rebuilding, and regeneration
       toward the selected area.
 
-      Each time you use Plus Build Live,
+      Each time you use {{ cue.primary }},
       directing this regenerative pattern
       becomes easier, faster, and more effective.
 
@@ -172,7 +176,7 @@ entries:
 
   hplus.function.ocf-bod-014.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted closer based on the user-proposed Regenerate
       reconstruction. Proposed input:
@@ -191,6 +195,9 @@ entries:
       transcript wording.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-BOD-014
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to direct regeneration
       toward any part of your physical body,
@@ -199,7 +206,7 @@ entries:
 
       Inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus Build Live."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth
       and open your eyes.

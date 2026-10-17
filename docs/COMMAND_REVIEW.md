@@ -70,7 +70,7 @@ These commands have a proposed canonical form that has not been approved. Legacy
 |---|---|---|---|---|---|---|
 | `OCF-BOD-003` | DE-DISCOMFORT | `PLUS-55515` | `PLUS-COMFORT` |  | approved | historical-lookup |
 | `OCF-BOD-004` | DE-TOX: BODY | `PLUS-CLEAN, CLEAR` | `PLUS-DETOX` |  | approved | historical-lookup |
-| `OCF-BOD-014` | REGENERATE | `PLUS-BUILD, LIVE` | `PLUS-REGENERATE` |  | review-required | bridge-trainable |
+| `OCF-BOD-014` | REGENERATE | `PLUS-BUILD, LIVE` | `PLUS-REGENERATE` |  | approved | historical-lookup |
 | `OCF-BOD-015` | SHORT FIX | `PLUS-GO NUMB, GO NUMB` / `PLUS-RELEASE` | `PLUS-NUMB` |  | review-required | bridge-trainable |
 | `OCF-EMO-002` | OFF-LOADING | `PLUS-FADE, FADE` | `PLUS-OFFLOAD` |  | approved | historical-lookup |
 | `OCF-EXP-001` | MOBIUS WEST | `PLUS-CHANGE, CHANGE` | `PLUS-MANIFEST` |  | approved | historical-lookup |

@@ -92,9 +92,10 @@ def test_longer_replacement_triggers_warning():
     assert any(i.code == "replacement-longer-than-legacy" for i in result.warnings)
 
 
-def test_regenerate_command_is_review_required_not_approved():
+def test_regenerate_command_has_explicit_individual_review_approval():
     record = _by_legacy_name(load_all_functions(), "REGENERATE")
-    assert record.command_review == "review-required"
+    assert record.command_review == "approved"
+    assert record.canonical_command == "PLUS-REGENERATE"
 
 
 def test_canonical_commands_fit_word_limits_except_flagged():

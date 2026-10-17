@@ -30,7 +30,7 @@ SHARED_RESOURCES = (
     "hplus-waking-return.yaml",
 )
 PREVIOUS_BASELINE_PATH = REPO_ROOT / "tests/fixtures/hplus-narration-text-baseline.json"
-BASELINE_PATH = REPO_ROOT / "tests/fixtures/hplus-narration-text-baseline-003.json"
+BASELINE_PATH = REPO_ROOT / "tests/fixtures/hplus-narration-text-baseline-004.json"
 KEY_RE = re.compile(r"^[a-z][a-z0-9-]*(\.[a-z0-9-]+)+$")
 
 

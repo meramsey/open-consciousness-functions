@@ -20,7 +20,7 @@ Complete index of every OCF function record. Sorted by OCF ID.
 | `OCF-BOD-011` | Passages | PASSAGES | `PLUS-EQUALIZE-HARMONIZE` | `PLUS-EQUALIZE-HARMONIZE` | body | temporary | available | planned | approved | unchanged | 0 | 0 | functions/body/passages.yaml |
 | `OCF-BOD-012` | Sex Drive | SEX DRIVE | `PLUS-SEX MORE` | `PLUS-SEX GREATER` / `PLUS-SEX LESSER` | body | temporary | available | planned | needs-review | alias-listed | 0 | 0 | functions/body/sex-drive.yaml |
 | `OCF-BOD-013` | Tune-Up | TUNE-UP | `PLUS-BALANCE, HEAL` | `PLUS-BALANCE, HEAL` | body | temporary | available | planned | approved | unchanged | 0 | 0 | functions/body/tune-up.yaml |
-| `OCF-BOD-014` | Regenerate | REGENERATE | `PLUS-REGENERATE` | `PLUS-BUILD, LIVE` | body | permanent | unavailable | planned | review-required | bridge-trainable | 0 | 0 | functions/body/regenerate.yaml |
+| `OCF-BOD-014` | Regenerate | REGENERATE | `PLUS-REGENERATE` | `PLUS-BUILD, LIVE` | body | permanent | unavailable | planned | approved | historical-lookup | 0 | 0 | functions/body/regenerate.yaml |
 | `OCF-BOD-015` | Short Fix | SHORT FIX | `PLUS-NUMB` | `PLUS-GO NUMB, GO NUMB` / `PLUS-RELEASE` | body | temporary | unavailable | planned | review-required | bridge-trainable | 0 | 0 | functions/body/short-fix.yaml |
 | `OCF-COG-001` | Access to Information | ACCESS TO INFORMATION | `PLUS-RETRIEVE` | `PLUS-RETRIEVE` | cognition | temporary | available | planned | approved | unchanged | 0 | 0 | functions/cognition/access-to-information.yaml |
 | `OCF-COG-002` | Buy the Numbers | BUY THE NUMBERS | `PLUS-CALCULATE` | `PLUS-CALCULATE` | cognition | permanent | available | planned | approved | unchanged | 0 | 0 | functions/cognition/buy-the-numbers.yaml |

@@ -1,22 +1,23 @@
 {
   "schema_version": "1.0",
-  "decision_id": "OCF-EDITORIAL-TITLE-CUES-002",
+  "decision_id": "OCF-EDITORIAL-TITLE-CUES-003",
   "decision_ids": [
     "OCF-EDITORIAL-TITLE-CUES-001",
-    "OCF-EDITORIAL-TITLE-CUES-002"
+    "OCF-EDITORIAL-TITLE-CUES-002",
+    "OCF-EDITORIAL-TITLE-CUES-003"
   ],
-  "predecessor_commit": "848ac6381bd0832edf9ce60da8a8f794eefa8afe",
+  "predecessor_commit": "83f7b850779c9b67f2ec40f5001c00c2e9c4af75",
   "source_scope": "Current approved successor. Earlier source-pinned proposals remain immutable history; this is not a repin or blanket approval of them.",
   "counts": {
     "functions": 55,
     "structured_command_identities": 97,
-    "active_records": 89,
-    "historical_only_command_records": 8,
+    "active_records": 88,
+    "historical_only_command_records": 9,
     "stable_primary_identities": 55,
-    "approved_cues_implemented": 12,
+    "approved_cues_implemented": 13,
     "protected_entries": 177,
-    "allowlisted_text_changes": 23,
-    "remaining_metadata_teaching_differences": 11
+    "allowlisted_text_changes": 25,
+    "remaining_metadata_teaching_differences": 10
   },
   "functions": [
     {
@@ -608,28 +609,53 @@
       "function_id": "OCF-BOD-014",
       "current_title": "Regenerate",
       "display_cue": "PLUS-REGENERATE",
-      "spoken_teaching": "Plus Build Live",
+      "spoken_teaching": "Plus Regenerate",
       "cue_presentation": {
         "command_id": "OCF-CMD-BOD-014-PRIMARY",
         "display_cue": "PLUS-REGENERATE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Regenerate",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-014-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
-      "current_purpose": "Supports a felt sense of body-wide regeneration and renewal; proposed concise cue PLUS-REGENERATE for review.",
-      "decision_status": "STILL UNDECIDED",
-      "metadata_teaching_consistent": false,
-      "title_status": "UNCHANGED",
+      "current_purpose": "Supports a felt sense of body-wide regeneration and renewal; activation cue PLUS-REGENERATE.",
+      "decision_status": "APPROVED AND IMPLEMENTED",
+      "metadata_teaching_consistent": true,
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
+      "previous_values": {
         "title": "Regenerate",
-        "cue": "PLUS-REGENERATE"
+        "display_cue": "PLUS-REGENERATE",
+        "spoken_cue": "Plus Build Live",
+        "source_spoken": null
       },
-      "historical_lookup": [],
-      "context": "Automatic repair/reconstruction and selected damaged/impaired/missing physical structure intent. Select area, picture complete form/function, close eyes, inhale/hold/cue/exhale. Regenerate is not yet taught; retain reconstruction provenance and scope.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "PLUS-BUILD, LIVE",
+          "kind": "legacy-phrase",
+          "command_id": "OCF-CMD-BOD-014-LEGACY-01",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-003"
+        },
+        {
+          "text": "Plus Build Live",
+          "kind": "former-teaching",
+          "command_id": "OCF-CMD-BOD-014-PRIMARY",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-003"
+        }
+      ],
+      "context": "Preserve lasting automatic repair/reconstruction suggestions and optional conscious targeting: close eyes, picture healthy form and function, inhale/hold, internal cue, exhale and open eyes. Permanent persistence; no separate mode or release. Preserve reconstruction provenance and historical source-unavailable status.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-bod-014.function-body",
+        "hplus.function.ocf-bod-014.closer"
+      ]
     },
     {
       "function_id": "OCF-BOD-015",
@@ -3486,7 +3512,9 @@
         "label_key": "commands.ocf-cmd-bod-014-primary.label",
         "usage_key": "commands.ocf-cmd-bod-014-primary.usage",
         "purpose_key": "functions.ocf-bod-014.purpose",
-        "explanation_key": "commands.ocf-cmd-bod-014-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-bod-014-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-bod-014-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-bod-014-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -3503,12 +3531,12 @@
       },
       "relationships": {},
       "observed_phrase": {
-        "text": "Plus Build Live",
+        "text": "Plus Regenerate",
         "narration_key": "hplus.function.ocf-bod-014.function-body",
-        "relationship": "legacy-form"
+        "relationship": "canonical-match"
       },
-      "spoken": null,
-      "spoken_review": "unresolved",
+      "spoken": "Plus Regenerate",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-REGENERATE",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
@@ -3552,8 +3580,15 @@
         "command_id": "OCF-CMD-BOD-014-PRIMARY",
         "display_cue": "PLUS-REGENERATE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Regenerate",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-014-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -3572,13 +3607,14 @@
         "explanation_key": "commands.ocf-cmd-bod-014-legacy-01.explanation"
       },
       "documentation": {
-        "visible": true,
+        "visible": false,
         "order": 101
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
       "spoken": null,
       "spoken_review": "unresolved",
+      "availability": "historical-lookup",
       "phrase": "PLUS-BUILD, LIVE",
       "effect_scope": "permanent",
       "cue_presentation": {
@@ -8384,7 +8420,7 @@
     "functions/body/passages.yaml": "0b10c57c2b6744deadc74056f55acbcd0ad87e3a85ca2a24de7c40c24579cde6",
     "functions/body/sex-drive.yaml": "1671db633b87d9702d9b6cf7bd3683dd2f18047b96bcba5101df53def812f99e",
     "functions/body/tune-up.yaml": "a000c8d753f8b2346c94a469fa53b2d76361e72e0e61a7340981e3c90e04e574",
-    "functions/body/regenerate.yaml": "50aca4b3193f7a1ac0043f541a3af17d762a31f36f2d7b227ebb6c63981630c8",
+    "functions/body/regenerate.yaml": "67a1ec3f847944e064e0ec2831ef2decc8af0b69208c3a027b437915ac8fbff8",
     "functions/body/short-fix.yaml": "dc8a67a825a142864371bafd55421bb7f787be895dc0ce01e48f485fe5108770",
     "functions/cognition/access-to-information.yaml": "40bbf4bc8f50da0838174f71787517e16458d3f97d2696cfc93873b1bcbae79e",
     "functions/cognition/buy-the-numbers.yaml": "8b7fbb6678e4783f5f118c667acead6a4bfea76f6c6208d786d3d1f3c7466cf7",

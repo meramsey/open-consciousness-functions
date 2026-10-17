@@ -57,6 +57,17 @@ Translator context: Respiratory-support intent and procedures remain; Breathe is
 
 Review: English primary cue approved and implemented. Preserve controls/procedures. Other language terminology and prefix treatment require review.
 
+## OCF-BOD-014 / OCF-CMD-BOD-014-PRIMARY
+
+Title: Regenerate. Title status: APPROVED AND IMPLEMENTED.
+Display: `PLUS-REGENERATE`. Complete speech: **Plus Regenerate**.
+
+Supports a felt sense of body-wide regeneration and renewal; activation cue PLUS-REGENERATE.
+
+Translator context: Preserve lasting automatic repair/reconstruction suggestions and optional conscious targeting: close eyes, picture healthy form and function, inhale/hold, internal cue, exhale and open eyes. Permanent persistence; no separate mode or release. Preserve reconstruction provenance and historical source-unavailable status.
+
+Review: English primary cue approved and implemented. Preserve controls/procedures. Other language terminology and prefix treatment require review.
+
 ## OCF-EMO-002 / OCF-CMD-EMO-002-PRIMARY
 
 Title: Offload. Title status: APPROVED AND IMPLEMENTED.

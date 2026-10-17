@@ -16,7 +16,7 @@ Only explicitly approved substitutions were applied. Every affected entry's befo
 - OCF-BOD-011: `PLUS-EQUALIZE-HARMONIZE` / Plus Equalize Harmonize; metadata match True; Predecessor contextual review; unchanged protected text verified.
 - OCF-BOD-012: `PLUS-SEX MORE` / Plus Sex More; metadata match True; Predecessor contextual review; unchanged protected text verified.
 - OCF-BOD-013: `PLUS-BALANCE, HEAL` / Plus Balance Heal; metadata match True; Predecessor contextual review; unchanged protected text verified.
-- OCF-BOD-014: `PLUS-REGENERATE` / Plus Build Live; metadata match False; Predecessor contextual review; unchanged protected text verified.
+- OCF-BOD-014: `PLUS-REGENERATE` / Plus Regenerate; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-BOD-015: `PLUS-NUMB` / Plus Go Numb Go Numb; metadata match False; Predecessor contextual review; unchanged protected text verified.
 - OCF-COG-001: `PLUS-RETRIEVE` / Plus Retrieve; metadata match True; Predecessor contextual review; unchanged protected text verified.
 - OCF-COG-002: `PLUS-CALCULATE` / Plus Calculate; metadata match True; Predecessor contextual review; unchanged protected text verified.

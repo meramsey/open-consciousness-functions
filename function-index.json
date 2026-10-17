@@ -5934,11 +5934,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-014-PRIMARY",
               "display_cue": "PLUS-REGENERATE",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Regenerate",
+              "spoken_cue_key": "commands.ocf-cmd-bod-014-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -5950,15 +5957,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-BOD-014",
             "id": "OCF-CMD-BOD-014-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-bod-014-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-bod-014-primary.explanation",
               "label_key": "commands.ocf-cmd-bod-014-primary.label",
               "purpose_key": "functions.ocf-bod-014.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-bod-014-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-bod-014-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-bod-014.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus Build Live"
+              "relationship": "canonical-match",
+              "text": "Plus Regenerate"
             },
             "phrase": "PLUS-REGENERATE",
             "phrase_ref": {
@@ -6011,41 +6020,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": null,
-            "spoken_review": "unresolved"
-          },
-          {
-            "cue_presentation": {
-              "binding_status": "unbound",
-              "command_id": "OCF-CMD-BOD-014-LEGACY-01",
-              "display_cue": "PLUS-BUILD, LIVE",
-              "requested_locale": "en-US",
-              "spoken_cue": null
-            },
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "permanent",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-BOD-014",
-            "id": "OCF-CMD-BOD-014-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-bod-014-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-bod-014-legacy-01.label",
-              "purpose_key": "functions.ocf-bod-014.purpose",
-              "usage_key": "commands.ocf-cmd-bod-014-legacy-01.usage"
-            },
-            "phrase": "PLUS-BUILD, LIVE",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-BOD-014-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias",
-            "spoken": null,
-            "spoken_review": "unresolved"
+            "spoken": "Plus Regenerate",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -6373,7 +6349,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Supports a felt sense of body-wide regeneration and renewal; proposed concise cue PLUS-REGENERATE for review.",
+        "purpose": "Supports a felt sense of body-wide regeneration and renewal; activation cue PLUS-REGENERATE.",
         "safety": {
           "level": "health",
           "medical_relevance": true,
@@ -6400,8 +6376,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "tts"
         ]
       },
-      "command_review": "review-required",
-      "compatibility": "bridge-trainable",
+      "command_review": "approved",
+      "compatibility": "historical-lookup",
       "domains": "body",
       "legacy_command": "PLUS-BUILD, LIVE",
       "legacy_name": "REGENERATE",

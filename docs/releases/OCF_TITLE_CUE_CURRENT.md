@@ -1,12 +1,12 @@
 # Current title–cue decisions and implementation
 
-Decision: `OCF-EDITORIAL-TITLE-CUES-002`. Predecessor commit: `848ac6381bd0832edf9ce60da8a8f794eefa8afe`.
+Decision: `OCF-EDITORIAL-TITLE-CUES-003`. Predecessor commit: `83f7b850779c9b67f2ec40f5001c00c2e9c4af75`.
 
 Current approved successor. Earlier source-pinned proposals remain immutable history; this is not a repin or blanket approval of them.
 
 Approved source: explicit user decisions recorded in the versioned title–cue ledgers. Approval covers primary English vocabulary and scoped teaching edits, not other proposals, mechanisms, listening or release. Heart Flow remains tentative; the committed heart title is retained.
 
-Counts: {"active_records": 89, "allowlisted_text_changes": 23, "approved_cues_implemented": 12, "functions": 55, "historical_only_command_records": 8, "protected_entries": 177, "remaining_metadata_teaching_differences": 11, "stable_primary_identities": 55, "structured_command_identities": 97}.
+Counts: {"active_records": 88, "allowlisted_text_changes": 25, "approved_cues_implemented": 13, "functions": 55, "historical_only_command_records": 9, "protected_entries": 177, "remaining_metadata_teaching_differences": 10, "stable_primary_identities": 55, "structured_command_identities": 97}.
 
 ## Approved implementation and remaining catalog decisions
 
@@ -134,11 +134,13 @@ Previous values: Lungs: Repairs & Maintenance / `PLUS-BREATH BETTER`; complete t
 
 ### OCF-BOD-014 — Regenerate
 
-- Current display cue: `PLUS-REGENERATE`; complete teaching: **Plus Build Live**.
-- Status: STILL UNDECIDED; title: UNCHANGED.
-- Purpose: Supports a felt sense of body-wide regeneration and renewal; proposed concise cue PLUS-REGENERATE for review.
+- Current display cue: `PLUS-REGENERATE`; complete teaching: **Plus Regenerate**.
+- Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
+- Purpose: Supports a felt sense of body-wide regeneration and renewal; activation cue PLUS-REGENERATE.
 - Pending title: None.
-- Other unselected proposal: {"title": "Regenerate", "cue": "PLUS-REGENERATE"}
+- Other unselected proposal: null
+
+Previous values: Regenerate / `PLUS-REGENERATE`; complete teaching **Plus Build Live**.
 
 ### OCF-BOD-015 — Short Fix
 

@@ -488,7 +488,7 @@ def test_exact_user_decisions_integrity_and_unaffected_active_vocabulary():
         for row in record.command_records
         if commands.is_active(row)
     ]
-    assert len(active) == 89  # Comfort's approved successor retires its numeric primary alias.
+    assert len(active) == 88  # Comfort and Regenerate retire their superseded primary aliases.
     assert len({row.id for row in active if row.designation == "primary"}) == 55
 
 

@@ -15,16 +15,30 @@ import yaml
 from .paths import REPO_ROOT
 from .utils import OCFError
 
-REGISTERED = ("function-content/editorial/approved-title-cues-002.json",)
+REGISTERED = (
+    "function-content/editorial/approved-title-cues-002.json",
+    "function-content/editorial/approved-title-cues-003.json",
+)
 APPROVED = {
-    "OCF-EDITORIAL-TITLE-CUES-002": ("OCF-BOD-003", "Comfort", "PLUS-COMFORT", "Plus Comfort")
+    "OCF-EDITORIAL-TITLE-CUES-002": ("OCF-BOD-003", "Comfort", "PLUS-COMFORT", "Plus Comfort"),
+    "OCF-EDITORIAL-TITLE-CUES-003": (
+        "OCF-BOD-014",
+        "Regenerate",
+        "PLUS-REGENERATE",
+        "Plus Regenerate",
+    ),
 }
 APPROVED_PREDECESSORS = {
     "OCF-EDITORIAL-TITLE-CUES-002": {
         "title": "De-Discomfort",
         "display_cue": "PLUS-COMFORT",
         "spoken_cue": "Plus Five Five Five One Five",
-    }
+    },
+    "OCF-EDITORIAL-TITLE-CUES-003": {
+        "title": "Regenerate",
+        "display_cue": "PLUS-REGENERATE",
+        "spoken_cue": "Plus Build Live",
+    },
 }
 
 
@@ -91,6 +105,8 @@ def function_scope(before, after, decision):
     old["ocf"]["command_review"] = "approved"
     for key in ("summary", "community_description"):
         old["purpose"][key] = old["purpose"][key].replace("proposed concise cue", "activation cue")
+        if owner == "OCF-BOD-014":
+            old["purpose"][key] = old["purpose"][key].replace(" for review", "")
     # These two fields record the decision/lookup policy, not behavior.
     old["historical_lookup"] = deepcopy(new.get("historical_lookup"))
     old["compatibility"]["state"] = new["compatibility"]["state"]

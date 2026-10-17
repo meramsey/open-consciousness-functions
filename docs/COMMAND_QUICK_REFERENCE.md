@@ -20,7 +20,7 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Passages](functions/OCF-BOD-011.md) | PLUS-EQUALIZE-HARMONIZE |  | Temporary | Supports graceful passage through internal transitions. |
 | [Sex Drive](functions/OCF-BOD-012.md) | PLUS-SEX MORE | Decrease mode: PLUS-SEX LESS | Temporary | Adjusts felt sexual drive in either direction using the MORE/LESS grammar. |
 | [Tune-Up](functions/OCF-BOD-013.md) | PLUS-BALANCE, HEAL |  | Temporary | A general self-directed balance-and-heal tune-up practice. |
-| [Regenerate](functions/OCF-BOD-014.md) | PLUS-REGENERATE |  | Permanent | Supports a felt sense of body-wide regeneration and renewal; proposed concise cue PLUS-REGENERATE for review. |
+| [Regenerate](functions/OCF-BOD-014.md) | PLUS-REGENERATE |  | Permanent | Supports a felt sense of body-wide regeneration and renewal; activation cue PLUS-REGENERATE. |
 | [Short Fix](functions/OCF-BOD-015.md) | PLUS-NUMB | Release command: PLUS-RELEASE | Temporary | Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB. |
 | [Access to Information](functions/OCF-COG-001.md) | PLUS-RETRIEVE |  | Temporary | Accesses intuition, memory, and inner knowledge on demand. |
 | [Buy the Numbers](functions/OCF-COG-002.md) | PLUS-CALCULATE |  | Permanent | Speeds mental arithmetic and number processing. |
