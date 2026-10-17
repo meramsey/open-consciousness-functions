@@ -307,6 +307,19 @@
     },
     {
       "argv": [
+        "functions",
+        "lookup",
+        "OCF-FND-002"
+      ],
+      "path": [
+        "functions",
+        "lookup"
+      ],
+      "usage": "usage: ocf functions lookup [-h] [--locale LOCALE] [--json] query",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
         "commands",
         "list"
       ],
@@ -1706,6 +1719,14 @@
       "--json"
     ],
     [
+      "functions",
+      "lookup",
+      "Mobius West",
+      "--locale",
+      "en-US",
+      "--json"
+    ],
+    [
       "locale",
       "list"
     ],
@@ -1836,6 +1857,12 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
+      "example_sha256": "5742257d6bda15fbc9688c26b15020473fddd6b979b2bc7dc5e0da5f82eda2c9",
+      "schema": "editorial-cue-migration.schema.json",
+      "source": "function-content/editorial/approved-title-cues-001.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
       "example_sha256": "e6f996f69203f39e9c2b7929f775401d9ce6145f5897614dcde5e9546f2291ec",
       "schema": "editorial-function.schema.json",
       "source": "examples/contracts.json#/editorial-function.schema.json",
@@ -1889,7 +1916,7 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "1950184cf6ccbf6d204bdb47db0f9d239da6793e780b0fc7276d7797d55ab22e",
+      "example_sha256": "2b8a9838001b1a3bcab208a703e26d3ce5889071936bc4c39122ac1a3a9b6c84",
       "schema": "locale-manifest.schema.json",
       "source": "locales/en-US/manifest.yaml",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
@@ -1955,7 +1982,7 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "6d5c05bdc6b8f8b8475e918ad29d0f4d45578a63c857174dfed62344508bfc05",
+      "example_sha256": "00bc3b58e8b591ecf3a666d273b478542fa8e1934245f414c040f7b024d46596",
       "schema": "session-plan.schema.json",
       "source": "audio/session-plans/en-US/OCF-FND-002.json",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
@@ -2012,13 +2039,14 @@
     "schemas/cue-profile.schema.json": "05500c0c486bf959ea4d952a9d9d487860bd67e80e333c0e99e990e234833b3a",
     "schemas/doctor.schema.json": "9b861ac28abab75f1aab4c78419d7faf731db099a6031704abbb07bf75f1ff74",
     "schemas/editorial-block.schema.json": "ef17e6b8bce5b318036b5c1618ee2dfa83473f45e93a9fd486bbef1fa72d26d0",
+    "schemas/editorial-cue-migration.schema.json": "59702fc5f66da99f860ab1166047237903e451c4c2138c8b012e362005194f67",
     "schemas/editorial-function.schema.json": "f43a058da0c9e1815d975b255f8f96c420c2385da88627c9e78e6878cd42c6cf",
     "schemas/function-binding.schema.json": "d3095a31cf1edf746a9d6ec230b7a545765774be446a4028d8b03519df6fb33f",
     "schemas/function-decisions.schema.json": "5882d26b99b7bb3005a334926ec879cf77df8dfdfc8041219eba0e59df871a52",
-    "schemas/function-discovery.schema.json": "25ed6260fcb78e794e495f38c74b7c070054c227c0f512b2e7b1751071bcf9db",
+    "schemas/function-discovery.schema.json": "f5489f065a628f720dc3386cf0a627260748fd02b1cfae4b662aac4d2074264a",
     "schemas/function-evidence.schema.json": "e541f1af76323fb9b059c4e39ceb5ab5f2eceaa0cbf4d6e37d0230d303b919a8",
     "schemas/function-specification.schema.json": "f7348ab2cba5a5fc8b4216efd00dc3e8300e053c77d78004527ea176354409ea",
-    "schemas/function.schema.json": "22fe460242cb6710657d60748226c120f85d34ddfff45039c984f203a31848a0",
+    "schemas/function.schema.json": "631964f8aff79e1f3983d53e018a4370e6eaa0c0440d29bb20debc89cdd0c6e4",
     "schemas/hplus-review-selection.schema.json": "2e65fa5465bd6a70185dbcbb5ae3d933b81e2e7034ba17b4699b7998a392ac19",
     "schemas/locale-manifest.schema.json": "3d1188d454415a4b111beca2545ed0627e89b112943ab523e81e632c3e1558b6",
     "schemas/locale-resource.schema.json": "f10a850edaa8ec7227b0bd33101394561cad452a348a926c63961e0864ea1e96",
@@ -2038,8 +2066,8 @@
     "schemas/timed-transcript.schema.json": "c3e2798f7ace0ba81c1fb5f1d2fa5afad20066ac3285a2fb7772dbed995b5950",
     "schemas/voice-dataset.schema.json": "0307327f3f52eeaaaed71abaa6d1950c0b665fc677b43547e2452e9c31000ed8",
     "schemas/voice-profile.schema.json": "0204c3379a0540d22e3792ee5b78ad134bd2a8cb73ddf51c975a602dbcb2c23d",
-    "scripts/ocf_tools/agent_api.py": "15bebf9c3e6bdda42c29498efacce6ac212dd083382fc83e38de7ee117a374e1",
-    "scripts/ocf_tools/cli.py": "e4c552a74f95970862fe797b8c8a71b47a4b7332c343623db725ebcb4e1ae96c",
+    "scripts/ocf_tools/agent_api.py": "41628d906e777015661f4f88a71ba415d6b463e62122c3676fe2e277f1c9fc03",
+    "scripts/ocf_tools/cli.py": "ddac453a6147ff2dcfb79ed30ac82523dcce3cd1172a40c04340c7f959661b16",
     "scripts/ocf_tools/lsp_server.py": "36e0d66e2aacdf2b0d32647b76da96735588ca23d03ad70ff47061c2c154e061",
     "scripts/ocf_tools/mcp_server.py": "d8641d4160888abbe7152fca2117623de4dfb061793b95b161dbfb4534a2be54",
     "scripts/ocf_tools/narration_cli.py": "5f13a05251816e5d3b80419d9ed67184b5c6c48722175700bbc88ec2b429bd41",

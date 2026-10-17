@@ -62,6 +62,8 @@
         "phrase": { "type": "string", "minLength": 1 },
         "role": { "type": "string", "enum": ["activation", "mode", "increase", "decrease", "retrieval", "close", "cancel", "release", "access-close", "legacy-alias", "auxiliary"] },
         "designation": { "type": "string", "enum": ["primary", "secondary", "special"] },
+        "availability": {"enum": ["active", "historical-lookup"]},
+        "cue_presentation": {"type": "object"},
         "effect_scope_ref": { "type": "string", "const": "lifecycle.persistence" },
         "effect_scope": { "type": "string", "enum": ["temporary", "permanent", "persistent", "conditional"] },
         "procedure": { "$ref": "function.schema.json#/definitions/commandRecord/properties/procedure" },

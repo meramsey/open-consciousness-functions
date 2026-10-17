@@ -544,6 +544,8 @@ def _stereo_metrics(path: Path, sample_rate: int) -> dict[str, Any]:
         raise OCFError(
             "complete session output has identical L/R channels; binaural stereo is absent"
         )
+    if left_peak == 0 or right_peak == 0:
+        raise OCFError("complete session output has a silent stereo channel")
 
     def rms_db(squares: int) -> float:
         rms = math.sqrt(squares / frames)
@@ -589,6 +591,8 @@ def _background_activity(
                 if sys.byteorder != "little":
                     values.byteswap()
                 energy = sum(value * value for value in values)
+                left_non_silent = any(values[::2])
+                right_non_silent = any(values[1::2])
                 different_channels = sum(
                     values[index] != values[index + 1] for index in range(0, len(values), 2)
                 )
@@ -596,15 +600,22 @@ def _background_activity(
                 step = width * channels
                 energy = 0
                 different_channels = 0
+                left_non_silent = right_non_silent = False
                 for offset in range(0, len(raw), step):
                     left = int.from_bytes(raw[offset : offset + width], "little", signed=True)
                     right = int.from_bytes(
                         raw[offset + width : offset + step], "little", signed=True
                     )
                     energy += left * left + right * right
+                    left_non_silent |= left != 0
+                    right_non_silent |= right != 0
                     different_channels += left != right
             if energy == 0:
                 raise OCFError(f"configured background is silent in active stage {stage['id']}")
+            if not left_non_silent or not right_non_silent:
+                raise OCFError(
+                    f"configured background has a silent stereo channel in stage {stage['id']}"
+                )
             if not different_channels:
                 raise OCFError(
                     f"configured binaural background has no independent L/R content in stage {stage['id']}"
@@ -759,7 +770,12 @@ def _representative_audio_analysis(
                 f"resolved audio states at {label} differ from policy: expected "
                 f"{', '.join(sorted(expected_states))}, found {', '.join(sorted(active_states))}"
             )
-        if not measured["non_silent"] or measured["different_channel_frames"] == 0:
+        if (
+            not measured["non_silent"]
+            or measured["different_channel_frames"] == 0
+            or measured["left_peak"] == 0
+            or measured["right_peak"] == 0
+        ):
             raise OCFError(f"actual background audio is silent or not stereo at {label}")
         report.append(
             {

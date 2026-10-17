@@ -1,8 +1,8 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Brain: Repairs & Maintenance
+# Brain Flow
 
-**Purpose**: Self-directed wellness practice supporting a felt sense of comfortable, balanced brain function.
+**Purpose**: Supports balanced brain and neck circulation and maintenance, with conscious reinforcement when desired.
 
 **Function persistence**: Permanent (`permanent`)
 
@@ -14,13 +14,15 @@ Source availability does not establish historical authentication or provenance.
 
 [Command index](../COMMAND_INDEX.md)
 
-## PLUS-FLOW BETTER
+## PLUS-BRAIN FLOW
 
 ### Primary activation command
 
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
+
+**Recorded source phrase (not the canonical phrase)**: Plus Brain Flow `(canonical-match; hplus.function.ocf-bod-001.function-body)`
 
 ### Activation sequence
 

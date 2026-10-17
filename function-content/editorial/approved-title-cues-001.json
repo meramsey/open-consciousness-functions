@@ -1,0 +1,1029 @@
+{
+  "schema_version": "1.0",
+  "id": "OCF-EDITORIAL-TITLE-CUES-001",
+  "source_commit": "21e63ac6f8bf5a7bce9506f033330df967aa4f97",
+  "decision_source": "Explicit user approval in the approved English title-cue migration task",
+  "approval_scope": "Eleven English primary cues; nine approved title-cue pairs, user-selected Detox correction, heart cue only. No listening/release approval.",
+  "decisions": [
+    {
+      "function_id": "OCF-EXP-001",
+      "primary_command_id": "OCF-CMD-EXP-001-PRIMARY",
+      "previous": {
+        "title": "Mobius West",
+        "display_cue": "PLUS-PROGRAM",
+        "spoken_cue": "Plus Change Change",
+        "observed_phrase": {
+          "text": "Plus Change Change",
+          "narration_key": "hplus.function.ocf-exp-001.function-body",
+          "relationship": "legacy-form"
+        },
+        "aliases": {
+          "commands": [
+            "PLUS-CHANGE, CHANGE"
+          ],
+          "command_ids": [
+            "OCF-CMD-EXP-001-LEGACY-01"
+          ],
+          "names": [
+            "Mobius West"
+          ]
+        }
+      },
+      "current_title": "Manifest",
+      "display_cue": "PLUS-MANIFEST",
+      "spoken_cue": "Plus Manifest",
+      "title_status": "APPROVED AND IMPLEMENTED",
+      "pending_title": null,
+      "cue_status": "APPROVED AND IMPLEMENTED",
+      "scope": "English primary cue, finalized title where supplied, exact teaching substitutions and necessary presentation summaries; procedures/mechanisms/secondary controls unchanged.",
+      "narration_keys_changed": [
+        "hplus.function.ocf-exp-001.function-body",
+        "hplus.function.ocf-exp-001.closer"
+      ],
+      "historical_command_ids": [
+        "OCF-CMD-EXP-001-LEGACY-01"
+      ],
+      "narration_file": "locales/en-US/hplus-OCF-EXP-001.yaml",
+      "function_file": "functions/experimental/mobius-west.yaml",
+      "translator_notes": "Retain desired future-condition selection, completion time and total-self manifestation; not generic productivity or loop-breaking."
+    },
+    {
+      "function_id": "OCF-SLP-005",
+      "primary_command_id": "OCF-CMD-SLP-005-PRIMARY",
+      "previous": {
+        "title": "Sleep Easy",
+        "display_cue": "PLUS-SLEEP EASY",
+        "spoken_cue": "Plus Quiet Sleep",
+        "observed_phrase": {
+          "text": "Plus Quiet Sleep",
+          "narration_key": "hplus.function.ocf-slp-005.function-body",
+          "relationship": "conflict"
+        },
+        "aliases": {
+          "commands": [
+            "PLUS-QUIET, SLEEP"
+          ],
+          "command_ids": [
+            "OCF-CMD-SLP-005-LEGACY-01"
+          ],
+          "names": [
+            "Sleep Easy"
+          ]
+        }
+      },
+      "current_title": "Sleep Easy",
+      "display_cue": "PLUS-SLEEP EASY",
+      "spoken_cue": "Plus Sleep Easy",
+      "title_status": "APPROVED AND IMPLEMENTED",
+      "pending_title": null,
+      "cue_status": "APPROVED AND IMPLEMENTED",
+      "scope": "English primary cue, finalized title where supplied, exact teaching substitutions and necessary presentation summaries; procedures/mechanisms/secondary controls unchanged.",
+      "narration_keys_changed": [
+        "hplus.function.ocf-slp-005.function-body",
+        "hplus.function.ocf-slp-005.closer"
+      ],
+      "historical_command_ids": [
+        "OCF-CMD-SLP-005-LEGACY-01"
+      ],
+      "narration_file": "locales/en-US/hplus-OCF-SLP-005.yaml",
+      "function_file": "functions/sleep/sleep-easy.yaml",
+      "translator_notes": "Retain unfamiliar/distracting surroundings, sleep continuity and resettling; preserve close-eyes, inhale/hold, cue and slow mouth exhale, then natural breathing."
+    },
+    {
+      "function_id": "OCF-BOD-001",
+      "primary_command_id": "OCF-CMD-BOD-001-PRIMARY",
+      "previous": {
+        "title": "Brain: Repairs & Maintenance",
+        "display_cue": "PLUS-FLOW BETTER",
+        "spoken_cue": "Plus Flow Better",
+        "observed_phrase": null,
+        "aliases": {
+          "commands": [],
+          "command_ids": [],
+          "names": [
+            "Brain: Repairs & Maintenance"
+          ]
+        }
+      },
+      "current_title": "Brain Flow",
+      "display_cue": "PLUS-BRAIN FLOW",
+      "spoken_cue": "Plus Brain Flow",
+      "title_status": "APPROVED AND IMPLEMENTED",
+      "pending_title": null,
+      "cue_status": "APPROVED AND IMPLEMENTED",
+      "scope": "English primary cue, finalized title where supplied, exact teaching substitutions and necessary presentation summaries; procedures/mechanisms/secondary controls unchanged.",
+      "narration_keys_changed": [
+        "hplus.function.ocf-bod-001.function-body",
+        "hplus.function.ocf-bod-001.closer"
+      ],
+      "historical_command_ids": [],
+      "narration_file": "locales/en-US/hplus-OCF-BOD-001.yaml",
+      "function_file": "functions/body/brain-repairs.yaml",
+      "translator_notes": "Brain/neck circulation support and maintenance; not generic creativity or cognitive flow. Preserve targeting and breathing."
+    },
+    {
+      "function_id": "OCF-BOD-009",
+      "primary_command_id": "OCF-CMD-BOD-009-PRIMARY",
+      "previous": {
+        "title": "Lungs: Repairs & Maintenance",
+        "display_cue": "PLUS-BREATH BETTER",
+        "spoken_cue": "Plus Breathe Better",
+        "observed_phrase": {
+          "text": "Plus Breathe Better",
+          "narration_key": "hplus.function.ocf-bod-009.function-body",
+          "relationship": "variant"
+        },
+        "aliases": {
+          "commands": [],
+          "command_ids": [],
+          "names": [
+            "Lungs: Repairs & Maintenance"
+          ]
+        }
+      },
+      "current_title": "Breathe Better",
+      "display_cue": "PLUS-BREATHE BETTER",
+      "spoken_cue": "Plus Breathe Better",
+      "title_status": "APPROVED AND IMPLEMENTED",
+      "pending_title": null,
+      "cue_status": "APPROVED AND IMPLEMENTED",
+      "scope": "English primary cue, finalized title where supplied, exact teaching substitutions and necessary presentation summaries; procedures/mechanisms/secondary controls unchanged.",
+      "narration_keys_changed": [
+        "hplus.function.ocf-bod-009.closer"
+      ],
+      "historical_command_ids": [],
+      "narration_file": "locales/en-US/hplus-OCF-BOD-009.yaml",
+      "function_file": "functions/body/lungs-repairs.yaml",
+      "translator_notes": "Respiratory-support intent and procedures remain; Breathe is the approved verb. Existing body speech already matches."
+    },
+    {
+      "function_id": "OCF-EMO-002",
+      "primary_command_id": "OCF-CMD-EMO-002-PRIMARY",
+      "previous": {
+        "title": "Off-Loading",
+        "display_cue": "PLUS-CLEAR",
+        "spoken_cue": "Plus Fade Fade",
+        "observed_phrase": {
+          "text": "Plus Fade Fade",
+          "narration_key": "hplus.function.ocf-emo-002.function-body",
+          "relationship": "legacy-form"
+        },
+        "aliases": {
+          "commands": [
+            "PLUS-FADE, FADE"
+          ],
+          "command_ids": [
+            "OCF-CMD-EMO-002-LEGACY-01"
+          ],
+          "names": [
+            "Off-Loading"
+          ]
+        }
+      },
+      "current_title": "Offload",
+      "display_cue": "PLUS-OFFLOAD",
+      "spoken_cue": "Plus Offload",
+      "title_status": "APPROVED AND IMPLEMENTED",
+      "pending_title": null,
+      "cue_status": "APPROVED AND IMPLEMENTED",
+      "scope": "English primary cue, finalized title where supplied, exact teaching substitutions and necessary presentation summaries; procedures/mechanisms/secondary controls unchanged.",
+      "narration_keys_changed": [
+        "hplus.function.ocf-emo-002.function-body",
+        "hplus.function.ocf-emo-002.closer"
+      ],
+      "historical_command_ids": [
+        "OCF-CMD-EMO-002-LEGACY-01"
+      ],
+      "narration_file": "locales/en-US/hplus-OCF-EMO-002.yaml",
+      "function_file": "functions/emotion/off-loading.yaml",
+      "translator_notes": "Selected recurring thought/emotional-pattern interference, useful memory and conscious choice; not indiscriminate clearing or memory erasure."
+    },
+    {
+      "function_id": "OCF-EMO-003",
+      "primary_command_id": "OCF-CMD-EMO-003-PRIMARY",
+      "previous": {
+        "title": "Empathizing",
+        "display_cue": "PLUS-PROFILE, PROFILE",
+        "spoken_cue": "Plus Profile Profile",
+        "observed_phrase": null,
+        "aliases": {
+          "commands": [],
+          "command_ids": [],
+          "names": [
+            "Empathizing"
+          ]
+        }
+      },
+      "current_title": "Empathize",
+      "display_cue": "PLUS-EMPATHIZE",
+      "spoken_cue": "Plus Empathize",
+      "title_status": "APPROVED AND IMPLEMENTED",
+      "pending_title": null,
+      "cue_status": "APPROVED AND IMPLEMENTED",
+      "scope": "English primary cue, finalized title where supplied, exact teaching substitutions and necessary presentation summaries; procedures/mechanisms/secondary controls unchanged.",
+      "narration_keys_changed": [
+        "hplus.function.ocf-emo-003.function-body",
+        "hplus.function.ocf-emo-003.closer"
+      ],
+      "historical_command_ids": [],
+      "narration_file": "locales/en-US/hplus-OCF-EMO-003.yaml",
+      "function_file": "functions/emotion/empathizing.yaml",
+      "translator_notes": "Retain the existing understanding/communication and total-self intention; impressions are not independently verified knowledge."
+    },
+    {
+      "function_id": "OCF-EXP-002",
+      "primary_command_id": "OCF-CMD-EXP-002-PRIMARY",
+      "previous": {
+        "title": "Zoning",
+        "display_cue": "PLUS-ZONE",
+        "spoken_cue": "Plus Insulate Insulate",
+        "observed_phrase": {
+          "text": "Plus Insulate Insulate",
+          "narration_key": "hplus.function.ocf-exp-002.function-body",
+          "relationship": "legacy-form"
+        },
+        "aliases": {
+          "commands": [
+            "PLUS-INSULATE, INSULATE"
+          ],
+          "command_ids": [
+            "OCF-CMD-EXP-002-LEGACY-01"
+          ],
+          "names": [
+            "Zoning"
+          ]
+        }
+      },
+      "current_title": "Insulate",
+      "display_cue": "PLUS-INSULATE",
+      "spoken_cue": "Plus Insulate",
+      "title_status": "APPROVED AND IMPLEMENTED",
+      "pending_title": null,
+      "cue_status": "APPROVED AND IMPLEMENTED",
+      "scope": "English primary cue, finalized title where supplied, exact teaching substitutions and necessary presentation summaries; procedures/mechanisms/secondary controls unchanged.",
+      "narration_keys_changed": [
+        "hplus.function.ocf-exp-002.function-body",
+        "hplus.function.ocf-exp-002.closer"
+      ],
+      "historical_command_ids": [
+        "OCF-CMD-EXP-002-LEGACY-01"
+      ],
+      "narration_file": "locales/en-US/hplus-OCF-EXP-002.yaml",
+      "function_file": "functions/experimental/zoning.yaml",
+      "translator_notes": "Temperature-comfort scope. Cancel ends the current adjustment; Release puts the selected application on hold. Preserve both operations."
+    },
+    {
+      "function_id": "OCF-SLP-004",
+      "primary_command_id": "OCF-CMD-SLP-004-PRIMARY",
+      "previous": {
+        "title": "Wake/Know",
+        "display_cue": "PLUS-KNOW",
+        "spoken_cue": "Plus Sleep Help",
+        "observed_phrase": {
+          "text": "Plus Sleep Help",
+          "narration_key": "hplus.function.ocf-slp-004.function-body",
+          "relationship": "legacy-form"
+        },
+        "aliases": {
+          "commands": [
+            "PLUS-SLEEP, HELP"
+          ],
+          "command_ids": [
+            "OCF-CMD-SLP-004-LEGACY-01"
+          ],
+          "names": [
+            "Wake/Know"
+          ]
+        }
+      },
+      "current_title": "Sleep Insight",
+      "display_cue": "PLUS-SLEEP INSIGHT",
+      "spoken_cue": "Plus Sleep Insight",
+      "title_status": "APPROVED AND IMPLEMENTED",
+      "pending_title": null,
+      "cue_status": "APPROVED AND IMPLEMENTED",
+      "scope": "English primary cue, finalized title where supplied, exact teaching substitutions and necessary presentation summaries; procedures/mechanisms/secondary controls unchanged.",
+      "narration_keys_changed": [
+        "hplus.function.ocf-slp-004.function-body",
+        "hplus.function.ocf-slp-004.closer"
+      ],
+      "historical_command_ids": [
+        "OCF-CMD-SLP-004-LEGACY-01"
+      ],
+      "narration_file": "locales/en-US/hplus-OCF-SLP-004.yaml",
+      "function_file": "functions/sleep/wake-know.yaml",
+      "translator_notes": "Request an answer/insight through sleep and recognize it on waking; not choosing a wake-up time."
+    },
+    {
+      "function_id": "OCF-PRF-002",
+      "primary_command_id": "OCF-CMD-PRF-002-PRIMARY",
+      "previous": {
+        "title": "Eight-Great",
+        "display_cue": "PLUS-STRONG",
+        "spoken_cue": "Plus Eight Great",
+        "observed_phrase": {
+          "text": "Plus Eight Great",
+          "narration_key": "hplus.function.ocf-prf-002.function-body",
+          "relationship": "legacy-form"
+        },
+        "aliases": {
+          "commands": [
+            "PLUS-EIGHT, GREAT"
+          ],
+          "command_ids": [
+            "OCF-CMD-PRF-002-LEGACY-01"
+          ],
+          "names": [
+            "Eight-Great"
+          ]
+        }
+      },
+      "current_title": "Inner Power",
+      "display_cue": "PLUS-INNER POWER",
+      "spoken_cue": "Plus Inner Power",
+      "title_status": "APPROVED AND IMPLEMENTED",
+      "pending_title": null,
+      "cue_status": "APPROVED AND IMPLEMENTED",
+      "scope": "English primary cue, finalized title where supplied, exact teaching substitutions and necessary presentation summaries; procedures/mechanisms/secondary controls unchanged.",
+      "narration_keys_changed": [
+        "hplus.function.ocf-prf-002.function-body",
+        "hplus.function.ocf-prf-002.closer"
+      ],
+      "historical_command_ids": [
+        "OCF-CMD-PRF-002-LEGACY-01"
+      ],
+      "narration_file": "locales/en-US/hplus-OCF-PRF-002.yaml",
+      "function_file": "functions/performance/eight-great.yaml",
+      "translator_notes": "Retain total-self strength, unity, resources and expression; not only confidence or temporary physical performance."
+    },
+    {
+      "function_id": "OCF-BOD-004",
+      "primary_command_id": "OCF-CMD-BOD-004-PRIMARY",
+      "previous": {
+        "title": "De-Tox: Body",
+        "display_cue": "PLUS-DETOX",
+        "spoken_cue": "Plus Clean Clear",
+        "observed_phrase": {
+          "text": "Plus Clean Clear",
+          "narration_key": "hplus.function.ocf-bod-004.function-body",
+          "relationship": "legacy-form"
+        },
+        "aliases": {
+          "commands": [
+            "PLUS-CLEAN, CLEAR"
+          ],
+          "command_ids": [
+            "OCF-CMD-BOD-004-LEGACY-01"
+          ],
+          "names": [
+            "De-Tox: Body"
+          ]
+        }
+      },
+      "current_title": "Detox",
+      "display_cue": "PLUS-DETOX",
+      "spoken_cue": "Plus Detox",
+      "title_status": "APPROVED AND IMPLEMENTED",
+      "pending_title": null,
+      "cue_status": "APPROVED AND IMPLEMENTED",
+      "scope": "English primary cue, finalized title where supplied, exact teaching substitutions and necessary presentation summaries; procedures/mechanisms/secondary controls unchanged.",
+      "narration_keys_changed": [
+        "hplus.function.ocf-bod-004.function-body",
+        "hplus.function.ocf-bod-004.closer"
+      ],
+      "historical_command_ids": [
+        "OCF-CMD-BOD-004-LEGACY-01"
+      ],
+      "narration_file": "locales/en-US/hplus-OCF-BOD-004.yaml",
+      "function_file": "functions/body/de-tox-body.yaml",
+      "translator_notes": "Detox is the selected title and cue. Preserve current bodily cleansing scope; no Body Cleansing/Body Cleanse title or new medical mechanism."
+    },
+    {
+      "function_id": "OCF-BOD-006",
+      "primary_command_id": "OCF-CMD-BOD-006-PRIMARY",
+      "previous": {
+        "title": "Heart: Repairs & Maintenance",
+        "display_cue": "PLUS-HEART, BETTER, BETTER",
+        "spoken_cue": "Plus Heart Better Better",
+        "observed_phrase": null,
+        "aliases": {
+          "commands": [],
+          "command_ids": [],
+          "names": [
+            "Heart: Repairs & Maintenance"
+          ]
+        }
+      },
+      "current_title": "Heart: Repairs & Maintenance",
+      "display_cue": "PLUS-HEART-BETTER",
+      "spoken_cue": "Plus Heart Better",
+      "title_status": "TENTATIVE TITLE",
+      "pending_title": "Heart Flow",
+      "cue_status": "APPROVED AND IMPLEMENTED",
+      "scope": "Heart primary cue only; committed title and purposes retained. Heart Flow remains tentative.",
+      "narration_keys_changed": [
+        "hplus.function.ocf-bod-006.function-body",
+        "hplus.function.ocf-bod-006.closer"
+      ],
+      "historical_command_ids": [],
+      "narration_file": "locales/en-US/hplus-OCF-BOD-006.yaml",
+      "function_file": "functions/body/heart-repairs.yaml",
+      "translator_notes": "Cue contains Better once. Retain the committed heart title, purpose and scope; Heart Flow is tentative and Heart Renewal is rejected."
+    }
+  ],
+  "allowed_text_changes": [
+    {
+      "identity": "locales/en-US/hplus-OCF-EXP-001.yaml::hplus.function.ocf-exp-001.function-body",
+      "function_id": "OCF-EXP-001",
+      "before_sha256": "8250a18acc38c42206c22db0c6f879ccd161353944bbb86e567f8168676faf6c",
+      "after_sha256": "025a052d05f536dcd341c349513d625a7676f1552890b171dd3da3fb8d78243c",
+      "before_text": "From this moment forward, you have the ability\nto set in motion a new pattern for your future.\n\nWhenever you desire a different state of being,\nchoose clearly what you wish to create.\nSee yourself already living that reality.\nFeel its meaning, its harmony,\nand the change it brings into your life.\n\nKnow the condition you desire,\nand choose when you wish it to be complete.\nHold that intention clearly within your awareness.\n\nInhale deeply and gently hold your breath.\n\nThink or say in your mind, \"Plus Change Change.\"\n\nThen exhale slowly through your mouth.\n\nYour total self will immediately begin\naligning with the pattern you have chosen.\nYour thoughts, feelings, actions, and physical being\nwill move into harmony with your intention.\n\nYour greater self will extend its awareness\nbeyond the limits of your physical body,\nreaching into the wider field of consciousness\nand the possibilities available to you.\n\nYour intention will become a clear pattern,\ndrawing together the conditions, connections,\nopportunities, and changes that support\nthe reality you wish to experience.\n\nSome changes will begin at once.\nOthers will unfold in their proper sequence,\nmoving toward the completion you have envisioned.\n\nYour total self will continue this process\nwithout the need for constant conscious effort.\nYou will recognize opportunities and act upon them\nnaturally, confidently, and at the appropriate time.\n\nThis pattern will operate in harmony\nwith your greater well-being,\nwithout destructive effects upon others.\n\nFrom this moment forward, the ability\nto create and direct future patterns\nis permanently available to you.\n\nEach time you use Plus Change Change,\nyour intention becomes clearer,\nyour alignment stronger,\nand this process easier and more effective.",
+      "substitutions": [
+        {
+          "before": "Plus Change Change",
+          "after": "Plus Manifest",
+          "count": 2
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-EXP-001.yaml::hplus.function.ocf-exp-001.function-body@001\n+++ locales/en-US/hplus-OCF-EXP-001.yaml::hplus.function.ocf-exp-001.function-body@002\n@@ -13,7 +13,7 @@\n \n Inhale deeply and gently hold your breath.\n \n-Think or say in your mind, \"Plus Change Change.\"\n+Think or say in your mind, \"Plus Manifest.\"\n \n Then exhale slowly through your mouth.\n \n@@ -49,7 +49,7 @@\n to create and direct future patterns\n is permanently available to you.\n \n-Each time you use Plus Change Change,\n+Each time you use Plus Manifest,\n your intention becomes clearer,\n your alignment stronger,\n and this process easier and more effective."
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-EXP-001.yaml::hplus.function.ocf-exp-001.closer",
+      "function_id": "OCF-EXP-001",
+      "before_sha256": "32a2fba7dc6754b73eff9b1194f672f6761ca62aeb32dbb462c54ac2ae1c5933",
+      "after_sha256": "0a06b27050830d6fa36f437579fee509b9518ba6a5d50e357d80786db6a112ca",
+      "before_text": "Remember, whenever you wish to create\na new future pattern, clearly envision\nthe condition you desire and when it will be complete.\n\nInhale deeply and hold your breath.\n\nThink or say in your mind, \"Plus Change Change.\"\n\nThen exhale slowly through your mouth.\n\nThis concludes your OCF exercise.",
+      "substitutions": [
+        {
+          "before": "Plus Change Change",
+          "after": "Plus Manifest",
+          "count": 1
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-EXP-001.yaml::hplus.function.ocf-exp-001.closer@001\n+++ locales/en-US/hplus-OCF-EXP-001.yaml::hplus.function.ocf-exp-001.closer@002\n@@ -4,7 +4,7 @@\n \n Inhale deeply and hold your breath.\n \n-Think or say in your mind, \"Plus Change Change.\"\n+Think or say in your mind, \"Plus Manifest.\"\n \n Then exhale slowly through your mouth.\n \n"
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-SLP-005.yaml::hplus.function.ocf-slp-005.function-body",
+      "function_id": "OCF-SLP-005",
+      "before_sha256": "53ea2a36f9b6fa078bc3d554a274d0c427980f7eef694c99617debb61e59a8d2",
+      "after_sha256": "652e736c22d4f918610dcf69275fa18fa1490ef0b9bdaa9b8daaba58b2877cee",
+      "before_text": "From this moment forward, you have the ability\nto enter natural, restful sleep wherever you choose,\neven when the place around you is unfamiliar\nor the conditions are changing and distracting.\n\nMake yourself as comfortable as the situation permits.\nClose your eyes, inhale deeply, and hold your breath.\nThink or say in your mind, \"Plus Quiet Sleep.\"\nThen exhale slowly through your mouth\nand allow your breathing to become easy and natural.\n\nYour physical body will loosen and relax.\nYour thoughts will become quiet and unhurried.\nThe unfamiliar place will begin to feel ordinary,\nand your mind will accept it as a place for sleep.\n\nSounds may rise and fade around you.\nSome may be sudden, irregular, or unexpected.\nMovement, voices, light, and changing conditions\nwill no longer need to capture your attention.\n\nYour total self will distinguish what matters\nfrom ordinary background activity.\nUnimportant disturbances will pass through awareness\nwithout drawing you away from your chosen rest.\n\nIf a passing sound or movement briefly stirs you,\nyour body will settle again naturally.\nYour mind will release the interruption,\nyour breathing will remain comfortable,\nand sleep will return smoothly and easily.\n\nYou will no longer need perfect silence,\nfamiliar surroundings, or unchanging conditions\nto allow yourself peaceful, natural sleep.\n\nThis ability will remain permanently available,\nready whenever you choose to rest.\nEach use of Plus Quiet Sleep will make it easier\nto fall asleep, remain asleep, and settle again\namid the ordinary changes around you.",
+      "substitutions": [
+        {
+          "before": "Plus Quiet Sleep",
+          "after": "Plus Sleep Easy",
+          "count": 2
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-SLP-005.yaml::hplus.function.ocf-slp-005.function-body@001\n+++ locales/en-US/hplus-OCF-SLP-005.yaml::hplus.function.ocf-slp-005.function-body@002\n@@ -5,7 +5,7 @@\n \n Make yourself as comfortable as the situation permits.\n Close your eyes, inhale deeply, and hold your breath.\n-Think or say in your mind, \"Plus Quiet Sleep.\"\n+Think or say in your mind, \"Plus Sleep Easy.\"\n Then exhale slowly through your mouth\n and allow your breathing to become easy and natural.\n \n@@ -36,6 +36,6 @@\n \n This ability will remain permanently available,\n ready whenever you choose to rest.\n-Each use of Plus Quiet Sleep will make it easier\n+Each use of Plus Sleep Easy will make it easier\n to fall asleep, remain asleep, and settle again\n amid the ordinary changes around you."
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-SLP-005.yaml::hplus.function.ocf-slp-005.closer",
+      "function_id": "OCF-SLP-005",
+      "before_sha256": "ac02d7d15f93b55629fc83ddd74a607e27b40c56842bb192f46aecd3da12a00b",
+      "after_sha256": "a26cb92bed343de81c1e34f37d08a8cc01359077d81e7c70e1a7441f14aa4833",
+      "before_text": "Remember, when you wish to sleep in unfamiliar\nor distracting surroundings, make yourself comfortable,\nclose your eyes, inhale deeply, and hold your breath.\nThink or say in your mind, \"Plus Quiet Sleep.\"\nThen exhale slowly through your mouth\nand continue breathing naturally.\n\nThis concludes your OCF Sleep Easy exercise.",
+      "substitutions": [
+        {
+          "before": "Plus Quiet Sleep",
+          "after": "Plus Sleep Easy",
+          "count": 1
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-SLP-005.yaml::hplus.function.ocf-slp-005.closer@001\n+++ locales/en-US/hplus-OCF-SLP-005.yaml::hplus.function.ocf-slp-005.closer@002\n@@ -1,7 +1,7 @@\n Remember, when you wish to sleep in unfamiliar\n or distracting surroundings, make yourself comfortable,\n close your eyes, inhale deeply, and hold your breath.\n-Think or say in your mind, \"Plus Quiet Sleep.\"\n+Think or say in your mind, \"Plus Sleep Easy.\"\n Then exhale slowly through your mouth\n and continue breathing naturally.\n \n"
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-BOD-001.yaml::hplus.function.ocf-bod-001.function-body",
+      "function_id": "OCF-BOD-001",
+      "before_sha256": "fc8a62492ef98b2eb1ac02dd5c08aa22926752b81a9e2aecae01815416c933b4",
+      "after_sha256": "525ef208d4409c6c730057f25a44c15fc3a246e4c1626fced60d53801937902b",
+      "before_text": "From this moment forward, bring your awareness to the blood\ncirculating throughout your brain and the blood vessels in your\nneck that supply it.\n\nImagine this circulation becoming stronger, smoother, and more\nbalanced with every passing moment.\n\nSee and feel your blood flowing freely and evenly, carrying\noxygen and nourishment to every part of your brain.\n\nBecome aware of the arteries and veins that carry this blood.\n\nVisualize each vessel becoming stronger, healthier, and more\nflexible, maintaining the ideal size and shape for smooth,\nnatural circulation.\n\nImagine every restriction clearing, and see these pathways\nbecoming open and free for balanced circulation.\n\nNow visualize your body's natural processes of renewal and\nmaintenance working together in complete harmony.\n\nImagine healthy circulation pathways strengthening and renewing,\nwith each part of the system receiving exactly the support it needs.\n\nSee this entire network becoming stronger, more efficient,\nand perfectly balanced.\n\nFeel the strength and vitality of this healthy circulation\nthroughout your brain.\n\nKnow that this pattern of healthy circulation, renewal, and\nmaintenance is now firmly established within you.\n\nFrom this moment forward, it will continue automatically,\nwithout any need for conscious thought or effort.\n\nWhether you are awake, resting, or sleeping, your body's natural\ncirculation and maintenance systems will continue working for you.\n\nThey will respond to your body's needs, adjusting smoothly and\nprecisely, providing what is needed and returning to their\nnatural balance when their work is complete.\n\nThis is a lasting, automatic pattern of healthy maintenance,\nalways working at the appropriate level for your body.\n\nYour mind will become clearer, your thinking sharper, and your\nresponses quicker and more precise.\n\nYour awareness will strengthen, your concentration will improve,\nand your thoughts will flow smoothly and naturally.\n\nEach day, clear thinking and mental sharpness will become more\nnatural, steady, and effortless.\n\nWhenever you wish to give this established pattern additional\nattention and reinforcement, you can do so quickly and easily.\n\nSimply close your eyes and bring your attention to the area\nyou wish to strengthen.\n\nTake a deep breath in and gently hold it.\n\nWhile holding your breath, silently say to yourself,\n\"Plus Flow Better.\"\n\nThen slowly exhale through your mouth, as though gently\nblowing out a candle.\n\nAs you exhale, visualize circulation becoming smoother,\nstronger, and more balanced throughout your chosen area.\n\nYour mind will reinforce this already-established pattern\nof healthy circulation, renewal, and maintenance.\n\nEach time you use Plus Flow Better, conscious reinforcement\nof this pattern becomes easier, faster, and more effective.\n\nRemember, the maintenance pattern continues automatically,\nwhether or not you think about it.\n\nPlus Flow Better is always available whenever you choose\nto focus and reinforce it.\n\nYour mind will remain clear, sharp, alert, and ready\nwhenever you need it.",
+      "substitutions": [
+        {
+          "before": "Plus Flow Better",
+          "after": "Plus Brain Flow",
+          "count": 3
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-BOD-001.yaml::hplus.function.ocf-bod-001.function-body@001\n+++ locales/en-US/hplus-OCF-BOD-001.yaml::hplus.function.ocf-bod-001.function-body@002\n@@ -63,7 +63,7 @@\n Take a deep breath in and gently hold it.\n \n While holding your breath, silently say to yourself,\n-\"Plus Flow Better.\"\n+\"Plus Brain Flow.\"\n \n Then slowly exhale through your mouth, as though gently\n blowing out a candle.\n@@ -74,13 +74,13 @@\n Your mind will reinforce this already-established pattern\n of healthy circulation, renewal, and maintenance.\n \n-Each time you use Plus Flow Better, conscious reinforcement\n+Each time you use Plus Brain Flow, conscious reinforcement\n of this pattern becomes easier, faster, and more effective.\n \n Remember, the maintenance pattern continues automatically,\n whether or not you think about it.\n \n-Plus Flow Better is always available whenever you choose\n+Plus Brain Flow is always available whenever you choose\n to focus and reinforce it.\n \n Your mind will remain clear, sharp, alert, and ready\n"
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-BOD-001.yaml::hplus.function.ocf-bod-001.closer",
+      "function_id": "OCF-BOD-001",
+      "before_sha256": "a39f6e1adff3d2fa4829cdb03e64fae9034f4e73a82ec6f2b26c94f91a6a6259",
+      "after_sha256": "041a2d1c21a8124692f9b5d16870215b5518d6914b97397778f7ee3812888952",
+      "before_text": "Remember, the natural pattern of healthy circulation, renewal,\nand maintenance in your brain and neck is now firmly established.\n\nWhenever you wish to reinforce this pattern, simply close\nyour eyes and bring your attention to the area you choose.\n\nInhale deeply and gently hold your breath.\n\nSilently say to yourself, \"Plus Flow Better.\"\n\nThen slowly exhale through your mouth, as though gently\nblowing out a candle, and open your eyes.\n\nThis concludes your OCF Brain Repairs and Maintenance exercise.",
+      "substitutions": [
+        {
+          "before": "Plus Flow Better",
+          "after": "Plus Brain Flow",
+          "count": 1
+        },
+        {
+          "before": "OCF Brain Repairs and Maintenance exercise",
+          "after": "OCF Brain Flow exercise",
+          "count": 1
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-BOD-001.yaml::hplus.function.ocf-bod-001.closer@001\n+++ locales/en-US/hplus-OCF-BOD-001.yaml::hplus.function.ocf-bod-001.closer@002\n@@ -6,9 +6,9 @@\n \n Inhale deeply and gently hold your breath.\n \n-Silently say to yourself, \"Plus Flow Better.\"\n+Silently say to yourself, \"Plus Brain Flow.\"\n \n Then slowly exhale through your mouth, as though gently\n blowing out a candle, and open your eyes.\n \n-This concludes your OCF Brain Repairs and Maintenance exercise.+This concludes your OCF Brain Flow exercise."
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-BOD-009.yaml::hplus.function.ocf-bod-009.closer",
+      "function_id": "OCF-BOD-009",
+      "before_sha256": "c362af663c523b239a689ec59b8d3c88f40d3a7e167706bf7654cfd37637a35d",
+      "after_sha256": "25f332161f349cc401b990a3797644bb003f60ed5f9951bee8ddb3431354635d",
+      "before_text": "Remember, whenever you wish to reinforce\nyour respiratory system's natural strength\nand healthy function, inhale deeply\nand hold your breath.\n\nThink or say in your mind, \"Plus Breathe Better.\"\n\nThen exhale slowly through your mouth.\n\nThis concludes your OCF Lungs Repairs\nand Maintenance exercise.",
+      "substitutions": [
+        {
+          "before": "OCF Lungs Repairs\nand Maintenance exercise",
+          "after": "OCF Breathe Better exercise",
+          "count": 1
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-BOD-009.yaml::hplus.function.ocf-bod-009.closer@001\n+++ locales/en-US/hplus-OCF-BOD-009.yaml::hplus.function.ocf-bod-009.closer@002\n@@ -7,5 +7,4 @@\n \n Then exhale slowly through your mouth.\n \n-This concludes your OCF Lungs Repairs\n-and Maintenance exercise.+This concludes your OCF Breathe Better exercise."
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-EMO-002.yaml::hplus.function.ocf-emo-002.function-body",
+      "function_id": "OCF-EMO-002",
+      "before_sha256": "91b971b55d1409fcf90f5266c2031c54c634a96bb4d1fe01de5a2bbd62fbd34e",
+      "after_sha256": "0ef7a2cf24e93e88c26d530d3886fd1ce61ddad6e91f09ab0543959d1a3dd198",
+      "before_text": "From this moment forward, you have the ability\nto release unwanted thoughts and emotional patterns\nthat continue to interfere with your awareness.\n\nWhenever a recurring thought, feeling,\nor mental pattern no longer serves you,\nyou can choose to release it completely.\n\nBring the particular thought or pattern\nyou wish to remove clearly into your mind.\n\nInhale deeply and gently hold your breath.\n\nThink or say in your mind, \"Plus Fade Fade.\"\n\nThen exhale slowly through your mouth\nand breathe deeply and naturally.\n\nAs you exhale, the unwanted thought\nor emotional pattern will immediately\nbegin to fade from your awareness.\n\nFeel it becoming weaker and weaker,\nsmaller and smaller, moving farther away\nuntil it disappears completely.\n\nIts influence over your attention\nand emotions will fade away,\nleaving your mind peaceful,\nclear, and free.\n\nThe selected pattern will remain\noutside your conscious awareness,\nquiet and inactive,\nuntil you consciously desire otherwise.\n\nYour memories, knowledge, and useful\nunderstanding will remain available,\nwhile the unwanted interference\nno longer occupies your mind.\n\nYour thoughts will become calm and organized,\nand your attention will return naturally\nto whatever you choose.\n\nFrom this moment forward, this ability\nto off-load unwanted mental patterns\nis permanently established within you.\n\nOnce you release a selected pattern,\nyour mind will naturally maintain\nthat freedom from unnecessary interference.\n\nYou remain in complete control,\nchoosing what to release\nand what you wish to retain.\n\nEach time you use Plus Fade Fade,\nreleasing unwanted thought patterns\nbecomes easier, faster, and more effective.\n\nYour mind remains clear, calm, and free\nto focus on the thoughts, feelings,\nand experiences you truly desire.",
+      "substitutions": [
+        {
+          "before": "Plus Fade Fade",
+          "after": "Plus Offload",
+          "count": 2
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-EMO-002.yaml::hplus.function.ocf-emo-002.function-body@001\n+++ locales/en-US/hplus-OCF-EMO-002.yaml::hplus.function.ocf-emo-002.function-body@002\n@@ -11,7 +11,7 @@\n \n Inhale deeply and gently hold your breath.\n \n-Think or say in your mind, \"Plus Fade Fade.\"\n+Think or say in your mind, \"Plus Offload.\"\n \n Then exhale slowly through your mouth\n and breathe deeply and naturally.\n@@ -55,7 +55,7 @@\n choosing what to release\n and what you wish to retain.\n \n-Each time you use Plus Fade Fade,\n+Each time you use Plus Offload,\n releasing unwanted thought patterns\n becomes easier, faster, and more effective.\n \n"
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-EMO-002.yaml::hplus.function.ocf-emo-002.closer",
+      "function_id": "OCF-EMO-002",
+      "before_sha256": "7f9540728b2b664af572bda93ed9dddd4da2c4fe72ea95a70593be44bca7b3b3",
+      "after_sha256": "734dea8ffc6db26279ceb329a591de8822cd73a704940b192cf2a761beb9770f",
+      "before_text": "Remember, whenever you wish to release\na recurring thought or unwanted emotional\npattern, bring it clearly into your mind.\n\nInhale deeply and hold your breath.\n\nThink or say in your mind, \"Plus Fade Fade.\"\n\nThen exhale slowly through your mouth\nand breathe deeply and naturally.\n\nThis concludes your OCF Off-Loading exercise.",
+      "substitutions": [
+        {
+          "before": "Plus Fade Fade",
+          "after": "Plus Offload",
+          "count": 1
+        },
+        {
+          "before": "OCF Off-Loading exercise",
+          "after": "OCF Offload exercise",
+          "count": 1
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-EMO-002.yaml::hplus.function.ocf-emo-002.closer@001\n+++ locales/en-US/hplus-OCF-EMO-002.yaml::hplus.function.ocf-emo-002.closer@002\n@@ -4,9 +4,9 @@\n \n Inhale deeply and hold your breath.\n \n-Think or say in your mind, \"Plus Fade Fade.\"\n+Think or say in your mind, \"Plus Offload.\"\n \n Then exhale slowly through your mouth\n and breathe deeply and naturally.\n \n-This concludes your OCF Off-Loading exercise.+This concludes your OCF Offload exercise."
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-EMO-003.yaml::hplus.function.ocf-emo-003.function-body",
+      "function_id": "OCF-EMO-003",
+      "before_sha256": "dc2ec188fdd65f4c2a89b16e020d29d9fe10dc939a9699bc8177dac213efdda0",
+      "after_sha256": "02a6808b7d0a5db61b3d679eee9108f95d4a33b9dc9aa70be8708c84c8c4bf91",
+      "before_text": "From this moment forward, your ability to perceive\nand understand another being is becoming deeper,\nclearer, and more complete.\n\nYou are connected to the greater whole of life.\nYour conscious mind, subconscious mind,\nand higher self work together as your total self,\nopening every available way of knowing.\n\nWhenever you desire to understand another being,\nbring that being clearly into your awareness.\nRelax your body, quiet your own expectations,\nand become calm, open, and receptive.\n\nThrough your physical senses, you recognize\nexpression, movement, voice, and subtle changes.\nBeyond those senses, you remain open to intuition,\nemotional impressions, images, feelings,\nand direct, wordless understanding.\n\nInhale deeply and gently hold your breath.\n\nThink or say in your mind, \"Plus Profile Profile.\"\n\nThen exhale slowly through your mouth.\n\nYour total self will now bring together\nevery form of information available to you,\nrevealing a clearer understanding of the\nother being's feelings, needs, intentions,\nand state of being.\n\nCommunication will become possible beyond words:\nfeeling to feeling, awareness to awareness,\nand thought to thought.\n\nWhether you are physically present or exploring\nin an out-of-body state, your greater awareness\nwill remain open to subtle and nonphysical\nimpressions and communication.\n\nYour higher self will help you recognize\nthe connection between yourself, the other being,\nand the greater consciousness of which all are part.\n\nUnderstanding will arrive in the form most natural\nto you: a clear feeling, an image, a thought,\na sensation, or immediate inner knowing.\n\nYou will remain centered in your own awareness,\nunderstanding without imposing your desires\nor losing your sense of self.\n\nFrom this moment forward, this ability\nis permanently available whenever you choose\nto open yourself to deeper understanding.\n\nThe more you use Plus Profile Profile,\nthe easier, clearer, and more effective\nthis communion and understanding will become.",
+      "substitutions": [
+        {
+          "before": "Plus Profile Profile",
+          "after": "Plus Empathize",
+          "count": 2
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-EMO-003.yaml::hplus.function.ocf-emo-003.function-body@001\n+++ locales/en-US/hplus-OCF-EMO-003.yaml::hplus.function.ocf-emo-003.function-body@002\n@@ -20,7 +20,7 @@\n \n Inhale deeply and gently hold your breath.\n \n-Think or say in your mind, \"Plus Profile Profile.\"\n+Think or say in your mind, \"Plus Empathize.\"\n \n Then exhale slowly through your mouth.\n \n@@ -55,6 +55,6 @@\n is permanently available whenever you choose\n to open yourself to deeper understanding.\n \n-The more you use Plus Profile Profile,\n+The more you use Plus Empathize,\n the easier, clearer, and more effective\n this communion and understanding will become."
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-EMO-003.yaml::hplus.function.ocf-emo-003.closer",
+      "function_id": "OCF-EMO-003",
+      "before_sha256": "7b3dbbe7a1eff06d71094912f9bfe5c38789b17073e72f93aef43f4c3176926a",
+      "after_sha256": "c042c3988afe45d63ee4193465f233f2fb81f687f207719ee4fbf48727895e06",
+      "before_text": "Remember, whenever you wish to understand\nanother being through your senses and total self,\nbring that being clearly into your awareness.\n\nInhale deeply and hold your breath.\n\nThink or say in your mind, \"Plus Profile Profile.\"\n\nThen exhale slowly through your mouth.\n\nThis concludes your OCF Empathizing exercise.",
+      "substitutions": [
+        {
+          "before": "Plus Profile Profile",
+          "after": "Plus Empathize",
+          "count": 1
+        },
+        {
+          "before": "OCF Empathizing exercise",
+          "after": "OCF Empathize exercise",
+          "count": 1
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-EMO-003.yaml::hplus.function.ocf-emo-003.closer@001\n+++ locales/en-US/hplus-OCF-EMO-003.yaml::hplus.function.ocf-emo-003.closer@002\n@@ -4,8 +4,8 @@\n \n Inhale deeply and hold your breath.\n \n-Think or say in your mind, \"Plus Profile Profile.\"\n+Think or say in your mind, \"Plus Empathize.\"\n \n Then exhale slowly through your mouth.\n \n-This concludes your OCF Empathizing exercise.+This concludes your OCF Empathize exercise."
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-EXP-002.yaml::hplus.function.ocf-exp-002.function-body",
+      "function_id": "OCF-EXP-002",
+      "before_sha256": "84ee0efb4b50af7cb8c3c4748fdba24664ff7bb67a93f5b05b6f958f1b065b2f",
+      "after_sha256": "1f78fb1b9dc042f5053d82ad19c8e899858f92b4aa5e540be7dcd0673e132b4e",
+      "before_text": "From this moment forward, you have the ability\nto create a balanced zone of temperature comfort\nsurrounding your entire physical body.\n\nWhenever you desire this protection,\nimagine a continuous, even layer of insulation\nextending around you from head to toe.\n\nInhale deeply and gently hold your breath.\n\nThink or say in your mind, \"Plus Insulate Insulate.\"\n\nThen exhale slowly through your mouth.\n\nYour zone will immediately begin to form,\nsurrounding you in a smooth, balanced field\nadjusted to the comfort you desire.\n\nWhen the surroundings are cold,\nthe zone will resist excessive cooling,\nconserving comfortable warmth around your body.\n\nWhen the surroundings are hot,\nthe zone will resist excessive heating,\nmaintaining a comfortable, balanced condition.\n\nAs the environment changes, your zone\nwill adjust continuously and evenly,\nstrengthening or easing its insulating effect\naccording to what is needed.\n\nYour physical body and your total self\nwill work together in this pattern of balance,\nmaintaining the zone without constant attention.\n\nThe ability to establish Zoning is now\npermanently available whenever you choose,\nand the selected zone continues operating\nuntil you consciously change or release it.\n\nTo cancel the current temperature adjustment,\ninhale, hold your breath, think or say\nin your mind, \"Plus Cancel,\" then exhale.\n\nThat adjustment will end, leaving you free\nto establish a different one whenever desired.\n\nWhen you wish to place the entire Zoning\napplication on hold, bring Zoning into your mind.\nInhale, hold your breath, think or say\nin your mind, \"Plus Release,\" then exhale.\n\nThe present zone will rest, while your ability\nto create it remains ready for future use.\n\nEach time you use Zoning, establishing\nand adjusting your zone will become\neasier, smoother, and more effective.",
+      "substitutions": [
+        {
+          "before": "Plus Insulate Insulate",
+          "after": "Plus Insulate",
+          "count": 1
+        },
+        {
+          "before": "ability to establish Zoning",
+          "after": "ability to use Insulate",
+          "count": 1
+        },
+        {
+          "before": "Zoning",
+          "after": "Insulate",
+          "count": 3
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-EXP-002.yaml::hplus.function.ocf-exp-002.function-body@001\n+++ locales/en-US/hplus-OCF-EXP-002.yaml::hplus.function.ocf-exp-002.function-body@002\n@@ -8,7 +8,7 @@\n \n Inhale deeply and gently hold your breath.\n \n-Think or say in your mind, \"Plus Insulate Insulate.\"\n+Think or say in your mind, \"Plus Insulate.\"\n \n Then exhale slowly through your mouth.\n \n@@ -33,7 +33,7 @@\n will work together in this pattern of balance,\n maintaining the zone without constant attention.\n \n-The ability to establish Zoning is now\n+The ability to use Insulate is now\n permanently available whenever you choose,\n and the selected zone continues operating\n until you consciously change or release it.\n@@ -45,14 +45,14 @@\n That adjustment will end, leaving you free\n to establish a different one whenever desired.\n \n-When you wish to place the entire Zoning\n-application on hold, bring Zoning into your mind.\n+When you wish to place the entire Insulate\n+application on hold, bring Insulate into your mind.\n Inhale, hold your breath, think or say\n in your mind, \"Plus Release,\" then exhale.\n \n The present zone will rest, while your ability\n to create it remains ready for future use.\n \n-Each time you use Zoning, establishing\n+Each time you use Insulate, establishing\n and adjusting your zone will become\n easier, smoother, and more effective."
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-EXP-002.yaml::hplus.function.ocf-exp-002.closer",
+      "function_id": "OCF-EXP-002",
+      "before_sha256": "16cbce6cc115b2fa5734098941c5ae2f31a882864b4eff1cf7d98aad12b67e68",
+      "after_sha256": "50986eafe3f56f994fa8e0fcb3337f1c7ca4a915b13387f9c666d6c166b042fd",
+      "before_text": "Remember, to establish your zone of temperature comfort,\ninhale deeply, hold your breath, and think\nor say in your mind, \"Plus Insulate Insulate.\"\n\nThen exhale slowly through your mouth.\n\nUse \"Plus Cancel\" to end the current adjustment,\nor \"Plus Release\" to place Zoning on hold.\n\nThis concludes your OCF Zoning exercise.",
+      "substitutions": [
+        {
+          "before": "Plus Insulate Insulate",
+          "after": "Plus Insulate",
+          "count": 1
+        },
+        {
+          "before": "Zoning",
+          "after": "Insulate",
+          "count": 2
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-EXP-002.yaml::hplus.function.ocf-exp-002.closer@001\n+++ locales/en-US/hplus-OCF-EXP-002.yaml::hplus.function.ocf-exp-002.closer@002\n@@ -1,10 +1,10 @@\n Remember, to establish your zone of temperature comfort,\n inhale deeply, hold your breath, and think\n-or say in your mind, \"Plus Insulate Insulate.\"\n+or say in your mind, \"Plus Insulate.\"\n \n Then exhale slowly through your mouth.\n \n Use \"Plus Cancel\" to end the current adjustment,\n-or \"Plus Release\" to place Zoning on hold.\n+or \"Plus Release\" to place Insulate on hold.\n \n-This concludes your OCF Zoning exercise.+This concludes your OCF Insulate exercise."
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-SLP-004.yaml::hplus.function.ocf-slp-004.function-body",
+      "function_id": "OCF-SLP-004",
+      "before_sha256": "10e84cad058655fa531592b74ad068d290e1977e24e10b48c20a06a47ee2ccc4",
+      "after_sha256": "8f94db81413f5444838360db6515e134c4b9b5f3ead57d6c08dfd5ee20757fee",
+      "before_text": "From this moment forward, whenever you desire\nan answer, understanding, or a constructive solution,\nyou can invite your total self to help you during sleep.\n\nBring your question or problem clearly into your mind.\nKnow what you wish to understand or resolve.\nState your intention simply and directly,\nthen allow the question to rest within you.\n\nInhale deeply and gently hold your breath.\nThink or say in your mind, \"Plus Sleep Help.\"\nThen exhale and breathe slowly and deeply.\n\nYou will move calmly and easily into\nnormal, natural, restful sleep.\nYour conscious mind can rest while your\nsubconscious awareness, higher self,\nand total being work together on your request.\n\nYou will draw upon your experience, memory,\ndeeper understanding, and the wider awareness\navailable through your total self.\nConnections and possibilities will come together,\nrevealing the most constructive answer or direction.\n\nThe answer may emerge as clear inner knowing,\na remembered dream, a picture, a phrase,\na feeling of certainty, or a practical next step.\nYou need not control how it arrives.\nYour total self will bring forward what is useful\nin a form you can recognize and understand.\n\nWhen you awaken, the answer or guidance\nwill come clearly into your awareness.\nYou will remember what matters, recognize\nits meaning, and know how to begin using it.\n\nThis ability to seek help through sleep\nwill remain permanently available to you.\nEach time you use Plus Sleep Help,\nreceiving and remembering useful insight\nwill become easier, clearer, and more effective.",
+      "substitutions": [
+        {
+          "before": "Plus Sleep Help",
+          "after": "Plus Sleep Insight",
+          "count": 2
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-SLP-004.yaml::hplus.function.ocf-slp-004.function-body@001\n+++ locales/en-US/hplus-OCF-SLP-004.yaml::hplus.function.ocf-slp-004.function-body@002\n@@ -8,7 +8,7 @@\n then allow the question to rest within you.\n \n Inhale deeply and gently hold your breath.\n-Think or say in your mind, \"Plus Sleep Help.\"\n+Think or say in your mind, \"Plus Sleep Insight.\"\n Then exhale and breathe slowly and deeply.\n \n You will move calmly and easily into\n@@ -37,6 +37,6 @@\n \n This ability to seek help through sleep\n will remain permanently available to you.\n-Each time you use Plus Sleep Help,\n+Each time you use Plus Sleep Insight,\n receiving and remembering useful insight\n will become easier, clearer, and more effective."
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-SLP-004.yaml::hplus.function.ocf-slp-004.closer",
+      "function_id": "OCF-SLP-004",
+      "before_sha256": "d8c3960785c9064a6fcaa433087581ed1db19cb3a2142453e50154624ce45b46",
+      "after_sha256": "891d6ed2cabfa955ba89a8907d9d9df0f8f900663ef522c083959c2d9985dfe8",
+      "before_text": "Remember, when you wish to receive an answer\nor solution through sleep, bring your question to mind.\nInhale deeply and hold your breath.\nThink or say in your mind, \"Plus Sleep Help.\"\nThen exhale and breathe slowly and deeply.\n\nThis concludes your OCF Wake/Know exercise.",
+      "substitutions": [
+        {
+          "before": "Plus Sleep Help",
+          "after": "Plus Sleep Insight",
+          "count": 1
+        },
+        {
+          "before": "OCF Wake/Know exercise",
+          "after": "OCF Sleep Insight exercise",
+          "count": 1
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-SLP-004.yaml::hplus.function.ocf-slp-004.closer@001\n+++ locales/en-US/hplus-OCF-SLP-004.yaml::hplus.function.ocf-slp-004.closer@002\n@@ -1,7 +1,7 @@\n Remember, when you wish to receive an answer\n or solution through sleep, bring your question to mind.\n Inhale deeply and hold your breath.\n-Think or say in your mind, \"Plus Sleep Help.\"\n+Think or say in your mind, \"Plus Sleep Insight.\"\n Then exhale and breathe slowly and deeply.\n \n-This concludes your OCF Wake/Know exercise.+This concludes your OCF Sleep Insight exercise."
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-PRF-002.yaml::hplus.function.ocf-prf-002.function-body",
+      "function_id": "OCF-PRF-002",
+      "before_sha256": "17f429d2edcf48cc91b2ded2a7282c4ac381ee79167c7a115e26f6e9f7483a73",
+      "after_sha256": "9ddc7f135a7cc0e763bc356c6f1f05314452f2a414dbf1e246e03a4d627be407",
+      "before_text": "Beginning now, and from this moment forward,\nyou will recognize more fully the greatness\nand power that are already within your total self.\n\nYour conscious mind, subconscious mind,\nhigher self, and entire being are united\nin the knowledge of your true inner strength.\n\nThis greatness is a natural part of who you are.\nYou will recognize it clearly, trust it completely,\nand express it calmly in your daily life.\n\nWhenever you encounter questions, challenges,\nor important moments, your total self will respond\nwith wisdom, clarity, strength, and assurance.\n\nYou will think and act smoothly, quickly,\nand effectively, drawing upon the full range\nof your abilities without strain or hesitation.\n\nYou will meet life's experiences with quiet happiness,\ncalm confidence, and the certainty that your\ninner resources are available whenever needed.\n\nEach day, your awareness of the strength,\nknowledge, and capability of your total self\nwill become clearer and more complete.\n\nThis knowing is permanently established within you,\ngrowing naturally through everything you experience.\n\nWhenever you wish to bring this awareness\neven more strongly into your life,\ninhale deeply and gently hold your breath.\n\nThink or say in your mind, \"Plus Eight Great.\"\n\nThen exhale slowly through your mouth,\nas though gently blowing out a candle.\n\nYour awareness of your total self will immediately\nbecome stronger, clearer, and more complete.\nYou will feel and express your natural inner power\nwith calmness, confidence, and ease.\n\nThe more you use Plus Eight Great,\nthe easier and more effective this recognition\nand expression of your total self will become.",
+      "substitutions": [
+        {
+          "before": "Plus Eight Great",
+          "after": "Plus Inner Power",
+          "count": 2
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-PRF-002.yaml::hplus.function.ocf-prf-002.function-body@001\n+++ locales/en-US/hplus-OCF-PRF-002.yaml::hplus.function.ocf-prf-002.function-body@002\n@@ -33,7 +33,7 @@\n even more strongly into your life,\n inhale deeply and gently hold your breath.\n \n-Think or say in your mind, \"Plus Eight Great.\"\n+Think or say in your mind, \"Plus Inner Power.\"\n \n Then exhale slowly through your mouth,\n as though gently blowing out a candle.\n@@ -43,6 +43,6 @@\n You will feel and express your natural inner power\n with calmness, confidence, and ease.\n \n-The more you use Plus Eight Great,\n+The more you use Plus Inner Power,\n the easier and more effective this recognition\n and expression of your total self will become."
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-PRF-002.yaml::hplus.function.ocf-prf-002.closer",
+      "function_id": "OCF-PRF-002",
+      "before_sha256": "332215b91a10a5e20ad4d46a352e27ba46ca647977103b69deb8cf12d54e1a4b",
+      "after_sha256": "50ea2c64e0ed16ece928c5c15643bf9f2a4c04bfafe161dbfcadfb0a8e01b070",
+      "before_text": "Remember, whenever you wish to strengthen\nyour awareness and expression of your total self,\ninhale deeply and hold your breath.\n\nThink or say in your mind, \"Plus Eight Great.\"\n\nThen exhale slowly through your mouth,\nas though gently blowing out a candle.\n\nThis concludes your OCF Eight-Great exercise.",
+      "substitutions": [
+        {
+          "before": "Plus Eight Great",
+          "after": "Plus Inner Power",
+          "count": 1
+        },
+        {
+          "before": "OCF Eight-Great exercise",
+          "after": "OCF Inner Power exercise",
+          "count": 1
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-PRF-002.yaml::hplus.function.ocf-prf-002.closer@001\n+++ locales/en-US/hplus-OCF-PRF-002.yaml::hplus.function.ocf-prf-002.closer@002\n@@ -2,9 +2,9 @@\n your awareness and expression of your total self,\n inhale deeply and hold your breath.\n \n-Think or say in your mind, \"Plus Eight Great.\"\n+Think or say in your mind, \"Plus Inner Power.\"\n \n Then exhale slowly through your mouth,\n as though gently blowing out a candle.\n \n-This concludes your OCF Eight-Great exercise.+This concludes your OCF Inner Power exercise."
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-BOD-004.yaml::hplus.function.ocf-bod-004.function-body",
+      "function_id": "OCF-BOD-004",
+      "before_sha256": "6b3ac83f2647648316a32facbdb6260ab6390978d9d596edb7a9d00dfd079a5a",
+      "after_sha256": "fcac6e12d0d8a42b9a6cf1ea355220ea0aa1b94bcfd3122252d6013c676a96d8",
+      "before_text": "From this moment forward, your body's natural processes\nof cleansing, renewal, and maintenance will become stronger,\nsmoother, and more effective.\n\nEvery part of your body will work together in complete\nharmony, maintaining the healthy balance you are\nnaturally designed to achieve.\n\nBring your awareness to the many systems within your\nbody that continually cleanse, protect, and renew you.\n\nYour liver, kidneys, lungs, digestive system, and other\nnatural cleansing systems work together, each performing\nits own important function.\n\nSee and feel these systems working smoothly, efficiently,\nand in perfect coordination.\n\nYour body recognizes what it needs and what it no\nlonger needs.\n\nEverything useful and beneficial is retained and used\nwhere it is needed.\n\nUnwanted substances and natural waste products are\nprocessed and eliminated through your body's normal\ncleansing pathways.\n\nVisualize these processes becoming clearer, smoother,\nand more effective throughout your entire body.\n\nImagine every cell receiving the nourishment it needs,\nwhile your body's natural maintenance systems keep\nyour internal environment clean and balanced.\n\nFeel this sense of balance spreading throughout\nyour entire physical body.\n\nEvery organ, every tissue, and every system works\ntogether to maintain your natural health and vitality.\n\nNow know that this pattern of cleansing, renewal,\nand maintenance is becoming permanently established\nwithin you.\n\nFrom this moment forward, your body will maintain\nthis pattern automatically, without any need for\nconscious thought or effort.\n\nWhether you are awake, resting, or sleeping,\nyour body's natural cleansing and maintenance\nprocesses will continue working for you.\n\nThese processes will always respond intelligently\nto your body's needs, becoming more active when\nneeded and returning to their normal balanced\nactivity when their work is complete.\n\nYour body will continuously maintain this healthy\nbalance, retaining what is beneficial and\neliminating what is no longer needed.\n\nThis automatic pattern is now a natural and lasting\npart of your everyday life.\n\nEach day, your body's natural processes of\ncleansing and renewal will operate more smoothly,\nefficiently, and effectively.\n\nYou will feel increasingly clean, refreshed,\nbalanced, and full of natural vitality.\n\nWhenever you wish to consciously strengthen\nor reinforce this cleansing pattern,\nyou can do so quickly and easily.\n\nSimply close your eyes and bring your awareness\nto your body's natural cleansing systems.\n\nTake a deep breath in and gently hold it.\n\nWhile holding your breath, silently say to yourself,\n\"Plus Clean Clear.\"\n\nThen slowly exhale through your mouth,\nas though gently blowing out a candle.\n\nAs you exhale, visualize your body's cleansing\nand maintenance systems working together\nsmoothly and in complete harmony.\n\nYour body will reinforce its natural pattern\nof cleansing, renewal, and healthy balance.\n\nEvery system will perform its function at exactly\nthe level needed to maintain your well-being.\n\nEach time you use Plus Clean Clear,\nyour ability to consciously reinforce\nthis pattern becomes easier, faster,\nand more effective.\n\nRemember, this process is now automatic.\n\nYour body will continue its natural cleansing\nand maintenance whether or not you\nconsciously think about it.\n\nPlus Clean Clear is always available whenever\nyou wish to give this established pattern\nadditional attention and reinforcement.\n\nYour body knows how to maintain its natural\nbalance, and this pattern will continue\nworking for you every day and every night.",
+      "substitutions": [
+        {
+          "before": "Plus Clean Clear",
+          "after": "Plus Detox",
+          "count": 3
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-BOD-004.yaml::hplus.function.ocf-bod-004.function-body@001\n+++ locales/en-US/hplus-OCF-BOD-004.yaml::hplus.function.ocf-bod-004.function-body@002\n@@ -80,7 +80,7 @@\n Take a deep breath in and gently hold it.\n \n While holding your breath, silently say to yourself,\n-\"Plus Clean Clear.\"\n+\"Plus Detox.\"\n \n Then slowly exhale through your mouth,\n as though gently blowing out a candle.\n@@ -95,7 +95,7 @@\n Every system will perform its function at exactly\n the level needed to maintain your well-being.\n \n-Each time you use Plus Clean Clear,\n+Each time you use Plus Detox,\n your ability to consciously reinforce\n this pattern becomes easier, faster,\n and more effective.\n@@ -106,7 +106,7 @@\n and maintenance whether or not you\n consciously think about it.\n \n-Plus Clean Clear is always available whenever\n+Plus Detox is always available whenever\n you wish to give this established pattern\n additional attention and reinforcement.\n \n"
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-BOD-004.yaml::hplus.function.ocf-bod-004.closer",
+      "function_id": "OCF-BOD-004",
+      "before_sha256": "5488350b941ede6ca0167eb63fe4ae78e0ce1e583a60dee94a277738432007a3",
+      "after_sha256": "b8123ec9832f3d00929ecb2e025346f8ec1b4a81a20626fcc4f3ce1b26b8f3df",
+      "before_text": "Remember, your body's natural processes of cleansing,\nrenewal, and maintenance are now firmly established\nas a lasting, automatic pattern.\n\nWhenever you wish to reinforce this pattern,\nsimply close your eyes.\n\nInhale deeply and gently hold your breath.\n\nSilently say to yourself, \"Plus Clean Clear.\"\n\nThen slowly exhale through your mouth,\nas though gently blowing out a candle.\n\nThis concludes your OCF De-Tox Body exercise.",
+      "substitutions": [
+        {
+          "before": "Plus Clean Clear",
+          "after": "Plus Detox",
+          "count": 1
+        },
+        {
+          "before": "OCF De-Tox Body exercise",
+          "after": "OCF Detox exercise",
+          "count": 1
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-BOD-004.yaml::hplus.function.ocf-bod-004.closer@001\n+++ locales/en-US/hplus-OCF-BOD-004.yaml::hplus.function.ocf-bod-004.closer@002\n@@ -7,9 +7,9 @@\n \n Inhale deeply and gently hold your breath.\n \n-Silently say to yourself, \"Plus Clean Clear.\"\n+Silently say to yourself, \"Plus Detox.\"\n \n Then slowly exhale through your mouth,\n as though gently blowing out a candle.\n \n-This concludes your OCF De-Tox Body exercise.+This concludes your OCF Detox exercise."
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-BOD-006.yaml::hplus.function.ocf-bod-006.function-body",
+      "function_id": "OCF-BOD-006",
+      "before_sha256": "0e3493510b988d50fdace364cbbfeee84997362d85c9aabd566692d8130c4459",
+      "after_sha256": "d17eec8958f44d5e0bf36e53c4ff9f210e617fc564232059f60bf7634e18deb4",
+      "before_text": "From this moment forward, the muscles, nerves,\nand blood vessels within and around your heart\nare becoming stronger, healthier, and more balanced.\n\nBring your awareness to your heart,\nworking steadily and naturally within your chest.\n\nFeel its strength and its steady rhythm.\n\nWith every heartbeat, your heart performs\nits important work, circulating blood\nthroughout your entire physical body.\n\nNow become aware of the muscles of your heart.\n\nSee and feel these muscles becoming stronger,\nhealthier, and more efficient.\n\nEvery part of your heart works together\nin perfect coordination, providing exactly\nthe strength needed for smooth, steady circulation.\n\nYour heart muscles are strong and balanced,\nworking naturally and efficiently\nwithout unnecessary strain.\n\nNow bring your awareness to the blood vessels\nwithin and around your heart.\n\nVisualize each artery and vein becoming stronger,\nhealthier, and more flexible.\n\nSee the pathways of circulation becoming\nsmooth and clear, allowing blood\nto flow freely and evenly.\n\nYour heart receives the oxygen and nourishment\nit needs to maintain its strength and vitality.\n\nImagine every part of your heart receiving\na steady, balanced supply of blood.\n\nSee its entire circulation system\nworking smoothly and efficiently.\n\nNow bring your awareness to the signals\nthat guide and coordinate your heartbeat.\n\nThese signals are clear, steady,\nand perfectly coordinated.\n\nEvery signal reaches its intended destination,\nguiding your heart muscles to work together\nin a smooth and balanced rhythm.\n\nYour heart responds naturally and appropriately\nto the changing needs of your body.\n\nWhen you are resting, your heart works\ncalmly and efficiently.\n\nWhen you are active, your heart adjusts\nits activity smoothly and naturally\nto provide the circulation your body needs.\n\nEvery part of your heart works together\nin complete harmony.\n\nNow become aware of your heart's natural\nprocesses of maintenance and renewal.\n\nVisualize every muscle, vessel, and supporting\nstructure receiving the nourishment\nand care it needs.\n\nSee your body's natural maintenance systems\nworking together, supporting the strength,\nbalance, and healthy function of your heart.\n\nYour heart is growing stronger,\nsteadier, and more efficient.\n\nIts muscles work in harmony,\nits circulation flows smoothly,\nand its rhythm remains naturally balanced.\n\nNow know that this pattern of healthy\nheart maintenance and renewal\nis becoming permanently established within you.\n\nFrom this moment forward, your body's natural\nprocesses of heart maintenance will continue\nautomatically, without conscious thought or effort.\n\nWhether you are awake, resting, or sleeping,\nthese processes will continue working for you.\n\nYour heart will maintain its natural strength,\ncoordination, and healthy balance.\n\nThese processes will always respond intelligently\nto the needs of your body, providing exactly\nthe level of activity and support required.\n\nWhen more circulation is needed,\nyour heart will respond appropriately.\n\nWhen your body is resting,\nyour heart will return to its natural,\ncomfortable, and efficient rhythm.\n\nThis automatic pattern of healthy maintenance\nis now a lasting part of your everyday life.\n\nEach day, your heart's natural processes\nof maintenance and renewal will work\nmore smoothly, efficiently, and effectively.\n\nFeel the confidence of knowing that\nyour heart is supported by these\nautomatic processes of healthy maintenance.\n\nYour heart is strong, steady,\nbalanced, and full of natural vitality.\n\nWhenever you wish to consciously strengthen\nor reinforce this established pattern,\nyou can do so quickly and easily.\n\nSimply close your eyes and bring\nyour awareness to your heart.\n\nTake a deep breath in and gently hold it.\n\nWhile holding your breath, silently say\nto yourself, \"Plus Heart Better Better.\"\n\nThen slowly exhale through your mouth,\nas though gently blowing out a candle.\n\nAs you exhale, visualize your heart\nworking smoothly, strongly,\nand in perfect coordination.\n\nFeel its natural rhythm,\nits steady strength,\nand its balanced activity.\n\nYour mind reinforces this established pattern\nof healthy heart maintenance and renewal.\n\nEvery muscle, vessel, and supporting system\nworks together in complete harmony.\n\nEach time you use Plus Heart Better Better,\nyour ability to consciously reinforce\nthis pattern becomes easier, faster,\nand more effective.\n\nRemember, this process is now automatic.\n\nYour body's natural processes of heart maintenance\nwill continue working whether or not\nyou consciously think about them.\n\nPlus Heart Better Better is always available\nwhenever you wish to give this established\npattern additional attention and reinforcement.\n\nYour heart will continue maintaining\nits natural strength, balance,\nand efficient function every day and every night.",
+      "substitutions": [
+        {
+          "before": "Plus Heart Better Better",
+          "after": "Plus Heart Better",
+          "count": 3
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-BOD-006.yaml::hplus.function.ocf-bod-006.function-body@001\n+++ locales/en-US/hplus-OCF-BOD-006.yaml::hplus.function.ocf-bod-006.function-body@002\n@@ -133,7 +133,7 @@\n Take a deep breath in and gently hold it.\n \n While holding your breath, silently say\n-to yourself, \"Plus Heart Better Better.\"\n+to yourself, \"Plus Heart Better.\"\n \n Then slowly exhale through your mouth,\n as though gently blowing out a candle.\n@@ -152,7 +152,7 @@\n Every muscle, vessel, and supporting system\n works together in complete harmony.\n \n-Each time you use Plus Heart Better Better,\n+Each time you use Plus Heart Better,\n your ability to consciously reinforce\n this pattern becomes easier, faster,\n and more effective.\n@@ -163,7 +163,7 @@\n will continue working whether or not\n you consciously think about them.\n \n-Plus Heart Better Better is always available\n+Plus Heart Better is always available\n whenever you wish to give this established\n pattern additional attention and reinforcement.\n \n"
+    },
+    {
+      "identity": "locales/en-US/hplus-OCF-BOD-006.yaml::hplus.function.ocf-bod-006.closer",
+      "function_id": "OCF-BOD-006",
+      "before_sha256": "cdc495b698feff389872bf54ad2150c6d94cf0c19f7e8dab88cd4e1495b7f6cf",
+      "after_sha256": "a582c7c02d135ee31618bc7ff38f995bdcd76b52d4c6de93aa1821e6852af9ad",
+      "before_text": "Remember, your heart's natural processes\nof maintenance and renewal are now firmly\nestablished as a lasting, automatic pattern.\n\nWhenever you wish to consciously reinforce\nthis pattern, simply close your eyes.\n\nBring your attention to your heart.\n\nInhale deeply and gently hold your breath.\n\nSilently say to yourself,\n\"Plus Heart Better Better.\"\n\nThen slowly exhale through your mouth,\nas though gently blowing out a candle.\n\nThis concludes your OCF Heart Repairs\nand Maintenance exercise.",
+      "substitutions": [
+        {
+          "before": "Plus Heart Better Better",
+          "after": "Plus Heart Better",
+          "count": 1
+        }
+      ],
+      "diff": "--- locales/en-US/hplus-OCF-BOD-006.yaml::hplus.function.ocf-bod-006.closer@001\n+++ locales/en-US/hplus-OCF-BOD-006.yaml::hplus.function.ocf-bod-006.closer@002\n@@ -10,7 +10,7 @@\n Inhale deeply and gently hold your breath.\n \n Silently say to yourself,\n-\"Plus Heart Better Better.\"\n+\"Plus Heart Better.\"\n \n Then slowly exhale through your mouth,\n as though gently blowing out a candle.\n"
+    }
+  ],
+  "previous_integrity_baseline": "tests/fixtures/hplus-narration-text-baseline.json",
+  "integrity_baseline": "tests/fixtures/hplus-narration-text-baseline-002.json",
+  "previous_baseline_sha256": "d4854d52b3c8d964ded2fdcc62732919ef5d2ec016bbe7160f2f24c553f0c102",
+  "rejected_or_superseded": [
+    "Heart Renewal",
+    "PLUS-HEART RENEWAL",
+    "Body Cleansing",
+    "Body Cleanse",
+    "PLUS-BODY CLEANSE"
+  ],
+  "pending": [
+    "Heart Flow final title",
+    "Nutricia paired vocabulary",
+    "De-Hab alternatives",
+    "Other unselected proposals",
+    "HPLUS identifier migration",
+    "Per-locale Plus policy and production translations",
+    "Human listening and release decisions"
+  ],
+  "locales_requiring_review": [
+    "es"
+  ],
+  "unaffected_function_sha256": {
+    "functions/automation/see-be.yaml": "8e6995e92cf0e804c0d1e58a5e84b9ea93d23326f3297c1d012dbec6bd8aa5c0",
+    "functions/body/circulation.yaml": "fa6a93264359b24fd32a6b30c7b7e40264d2c6a5198a80603f852ee9005b391c",
+    "functions/body/de-discomfort.yaml": "f2bdaaddd941123c640c592fe9bba5711b53ef843ba8001145cb6e00d1475bdd",
+    "functions/body/eat-no-eat.yaml": "622f1341789c5060e688fb90a0812f28d1fde8fa521f7259813600461d721b6e",
+    "functions/body/hypertension.yaml": "fa0e0625eb9cf2e5a288f12c52e88f50bffcc35e604b1e507e749af96e36d47a",
+    "functions/body/immunizing.yaml": "f6fafef9d8d058f8292c34dfe1e9202f6c2b52bd5c90ce2bc6b535e3d13b9e60",
+    "functions/body/nutricia.yaml": "de2b91691bfce31b877a84795717f3ab3e0dadef1fe964400a0385334aaad925",
+    "functions/body/passages.yaml": "0a6147631580d4677ac16f30001a9334a112b1cd1f0209a73d7dc5ef9668dd83",
+    "functions/body/sex-drive.yaml": "ae0d28f22134497788d284154e6a9ebb86c16f5acc8de35274410dcd8ae12777",
+    "functions/body/tune-up.yaml": "8698803bc64a85c04a619fb0b5717e5c78604828b1d7580b6249c52f6b934f8b",
+    "functions/body/regenerate.yaml": "cf1c9bea3a32da6faf71598c388d0a1a639050388c8517df8555eb18578ed854",
+    "functions/body/short-fix.yaml": "efc9519984ca98ee3c516c05c6bcd4429909f5645fc30e524bb79072dc46900b",
+    "functions/cognition/access-to-information.yaml": "0d403482d21f2dc0aa76a4abbec95917789d14ebd6c7e48f712c4366b79477f4",
+    "functions/cognition/buy-the-numbers.yaml": "7b5ee95ef2f958eba96c84a58fad8a7eafbb44ed2955ec036aa5ddad94c6e556",
+    "functions/cognition/contemplation.yaml": "a4c223dd73d78d7eb9d39a1b44f47a32affccf63aa3cce01fdb9c29ebfba307d",
+    "functions/cognition/imprint.yaml": "1c181afe5c31ea62da30c5a2dd9fee08ff578cc7d149bac65dccb98043a40dc7",
+    "functions/cognition/options.yaml": "ebf7ca7efd6b17449152a2024ebf9179d7f69d431386d3f772811ea8b3dcb809",
+    "functions/cognition/recall.yaml": "c1a46340782dd77eefe73140cb19a720a3d1bb090d20887741ce7371c1ce2f21",
+    "functions/cognition/think-fast.yaml": "ab9c3c7010bfebaf1166fc8ecfa321d5681f76d6e8701ccc9bf9101bc40c1350",
+    "functions/communication/speak-up.yaml": "24b5010528b0883f8d933555cf4a10ec36e1d841152132843aa18d691df2e5ed",
+    "functions/emergency/emergency-injury.yaml": "c4bb00a4d88fbc1568ed9887f0ca3df974ecaac4573e08be0e671bd80a32157f",
+    "functions/emergency/emergency-toxic.yaml": "d264447aeae6bcce5286f04c51ecca6bc443f8f9f0a3fd769777d6be96472f79",
+    "functions/emotion/let-go.yaml": "9303135adc3c7f0624914e46313b85b2e7edee2a9655d7e9d59bdc7a923b8cb3",
+    "functions/foundation/energize.yaml": "1af40519e73e6a719eb64b50ff23704a965c92e8830e251cf76ebd8f036f812b",
+    "functions/foundation/attention.yaml": "0fcf8faa9d9c0bc64539235f29570c2cbf31a21c106e48fb55e647ebe6414c6c",
+    "functions/foundation/recharge.yaml": "4ab8b66c8a83012771892d36d462db4f09bf771611a2b606b5fabb1d99605b8b",
+    "functions/foundation/relax.yaml": "aef21c7cba12c4fef73067e9e230ccded2b845763f09ff6284477c98d94e6a84",
+    "functions/foundation/reset.yaml": "e537c07f27f8148e8375be06053dcdf4f4ec8b1e41009eb260537e0eb942285d",
+    "functions/foundation/release.yaml": "5f3ea4effe532b999242f97e2ff10630f5afcc7a63d7d1a1061359c3ab54d10b",
+    "functions/lifestyle/de-hab.yaml": "8fd20dab382b29786f67be7338e85f5e4c6fb692e1bcdd7b3415b2e12dae184f",
+    "functions/performance/do-this-now.yaml": "429faf98276acd47e55d2601e755c5237c8b5ab0a71f0b2bb679940753f89f7a",
+    "functions/performance/synchronizing.yaml": "3d3440ec1afdc9fe084d667d05eadd25bf8067172984b606ade3986ba485b38d",
+    "functions/performance/light-foot.yaml": "c416d43a62c6042a2c0d135406f594a004bd13c154cd6279b1d2728a443f8e50",
+    "functions/performance/make-your-day.yaml": "e40a9004c76b8673a3a188c943f0e62293de6cd351b92109fd92a90780be78a2",
+    "functions/performance/strong-quick.yaml": "f7e97ec487c7ba259f8f8cacf123919d76d5a17d1be64aec59e048cab1a6abcf",
+    "functions/sensory/hearing.yaml": "02027593c138e80b12199878d09c648dae50d2431bc4194a2c796f55854f5e4a",
+    "functions/sensory/seeing.yaml": "66cb24992f9f4322f214582a9dee74a17191d11f0eb5e5d14be3b875c9bed226",
+    "functions/sensory/smell.yaml": "e38071a194a864aff683ee73e34afeae8252cb4607e996dc02f73a7c793423f7",
+    "functions/sensory/taste.yaml": "3ec66b5b936a12715b8afa87205a3bface4ae7453d3bd667540c0f84cb146a61",
+    "functions/sensory/touch.yaml": "64eb49b1ee52877056b121536cf69130eb0a539e4f83fe82f5f21ab5a85654af",
+    "functions/sleep/restorative-sleep.yaml": "4eed74735f8f21ffc1f678762b76e87893cdd0bc12fb2af1153d7d452425a930",
+    "functions/sleep/sleep.yaml": "8ef4b8b34a14bade4bea98ba547339e8621b4f9b2e2facacb7b9b8717babf869",
+    "functions/sleep/sweet-dreams.yaml": "70aa3c2ac68f8892308da8e1db28894d82025f36ebc580eda836e74f571b9ebe",
+    "functions/sleep/stay-awake.yaml": "582ce0356f4f1bf7e2a5873e8e7b5c8e75d47afcbc402edf894f499e828a9deb"
+  },
+  "previous_defaults_lock": "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-001.json",
+  "defaults_lock": "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-002.json",
+  "previous_defaults_sha256": "49ab147aa58e9715e6d26f4abf0cfd4a2b6394e8dd0dc1684dac6623e0109d15",
+  "source_files": {
+    "functions/experimental/mobius-west.yaml": {
+      "before_sha256": "915fa28af1c8a4750a907d4ea73d13a04fd6be498a63031de2a05bf258de7a03",
+      "after_sha256": "ca0c02236c5cf072fd28ba34c414861e143178e8b95ba8bbd805c6bfb403f1ee"
+    },
+    "locales/en-US/hplus-OCF-EXP-001.yaml": {
+      "before_sha256": "fbd443f6298fef5128c852b161d474c2fb22446a7a30169137f293bb30cb0ec2",
+      "after_sha256": "dc269b80b19c75ebe5bb775b47b55bc36e6d4a69ac62dc7e625d0de2ff00f367"
+    },
+    "functions/sleep/sleep-easy.yaml": {
+      "before_sha256": "09f67abe48c2b4eedf3e8f653f98b8ce0f150390e9c5d0430a5b667b2e651fda",
+      "after_sha256": "4f83088a0fdaaab524c1f92be9825e7d254b324739162e0e4d6e5d92b427804e"
+    },
+    "locales/en-US/hplus-OCF-SLP-005.yaml": {
+      "before_sha256": "2e3f8801442e9c6b18b7c3449a9f0465ff09078a2ae293e7d05fe4def924391b",
+      "after_sha256": "4da6848507f465958e660d709a129219708a5461b3d908ce8b144beaac825d06"
+    },
+    "functions/body/brain-repairs.yaml": {
+      "before_sha256": "2de709630623edcd089da299e282b99e628e65647afbfe4fd49601d13a8ce873",
+      "after_sha256": "23e39829f83289d2d13a0087cf21520f059d6776ed59d5caeec7cd2da80034ba"
+    },
+    "locales/en-US/hplus-OCF-BOD-001.yaml": {
+      "before_sha256": "86d88e8239365e98e19d3f95b144b52f6f17462454cf52a044982310a27b4c2e",
+      "after_sha256": "09fc9d3c46885fbfd57f9e7e934e8b72e2508e4d833bcc735298a7082b25ab1f"
+    },
+    "functions/body/lungs-repairs.yaml": {
+      "before_sha256": "bb14f4a17ed04acd3d12d24777df8d8f66ba06278370f395b6caa184da44ba42",
+      "after_sha256": "960b29efabc3bd2feff91e1031a108e4d44e2a426708bb3366a928aa6acb8a65"
+    },
+    "locales/en-US/hplus-OCF-BOD-009.yaml": {
+      "before_sha256": "0c67a47f9544cf7664ab3e9442274b16330d9221c0e4b2d2187f7ae79be24a6a",
+      "after_sha256": "b88765d0c9f148c8e45fdfb7f05ab48d9b02ab0b99c91b5ff76025676bd8e3cd"
+    },
+    "functions/emotion/off-loading.yaml": {
+      "before_sha256": "2239c9fd4183acf641afce6603ea361f987822a64321f86661d780a7a5c17a34",
+      "after_sha256": "58edd1966a71c6b39003b926546ee2727144a1bfb376fd8f694967fb00ba4c5d"
+    },
+    "locales/en-US/hplus-OCF-EMO-002.yaml": {
+      "before_sha256": "b1c1a199c556868282db8fb74315a5488e6a546d606a140f6d2ce4037e629c7e",
+      "after_sha256": "8c0f0bc0ef416dddda86b90d795a3e9aee512e80a51d4fdb7da3fdf468283c8f"
+    },
+    "functions/emotion/empathizing.yaml": {
+      "before_sha256": "342aceff3b1c20abd58c0c1e33b53e854acbed578bf5e9e5840e1396f4044f0a",
+      "after_sha256": "cf90ec6759b27cb980bf057f479e95f7e8b9c184084268d544212c2719a0a721"
+    },
+    "locales/en-US/hplus-OCF-EMO-003.yaml": {
+      "before_sha256": "c97c1fbc5583c6151bf69bc5c4eb4345bbe6d8672858c96c3efd6bc719b089ea",
+      "after_sha256": "5dc749e446c0affef6245612bce094c7850cc21510310fcc3a86802a221135b3"
+    },
+    "functions/experimental/zoning.yaml": {
+      "before_sha256": "a38a718d0fd550671cfd431b6ef34ea673cdca7b1d5bc6fd801157cb559b133b",
+      "after_sha256": "efac5a869953d6a6e1372a5f9ae8ef73a237878307e9ba7423742b4f5040a94e"
+    },
+    "locales/en-US/hplus-OCF-EXP-002.yaml": {
+      "before_sha256": "ae9d6908afebf28ee28acfb655c375ec067807cbe51f8758e4a4db4915dd6aaf",
+      "after_sha256": "37dc6131547e417938c4d7ba87056a823ab49391763fd24246f6eab11f04a13f"
+    },
+    "functions/sleep/wake-know.yaml": {
+      "before_sha256": "d008b5c4f81d738e250c42bbf33a0bd245951d5a4d067713b0539482d2a28572",
+      "after_sha256": "e10f63a9f28f73d59129aca305ff7f9c9b5cd62bcf607497dbc9cf0420916b11"
+    },
+    "locales/en-US/hplus-OCF-SLP-004.yaml": {
+      "before_sha256": "3e2025e54661087f0ce8378ae0f58ef1a22c578e39312f5342e1319ec11c72ff",
+      "after_sha256": "3bc2462125bfea5d1ea1a2c4d1d09e1592bc37cde7cde1313e453df62d436aff"
+    },
+    "functions/performance/eight-great.yaml": {
+      "before_sha256": "30591564efe68a9c417e97dc8f34b533b99346832dabf4c2b34dd57dd903efe2",
+      "after_sha256": "44630eed87d794cc79cc329cad4c2dc159925ffb63e2ee118e18df9e76fe3ff5"
+    },
+    "locales/en-US/hplus-OCF-PRF-002.yaml": {
+      "before_sha256": "88bafd6db4ec3c7fba0bd197f0d146ca10e87616a2cc971572893937acedb3fb",
+      "after_sha256": "6135588bc36c271b11bbacdea60e99cb8cd32b6d3c5a97bb8816f8ea6831740e"
+    },
+    "functions/body/de-tox-body.yaml": {
+      "before_sha256": "39e384f0d274aa301447f1809158bb54f0234caaa9807d5a13f555575414a72c",
+      "after_sha256": "f74911ea65dae0491aa449dd77dc871b51de1b10f1351ad2e6af337a4b3054fc"
+    },
+    "locales/en-US/hplus-OCF-BOD-004.yaml": {
+      "before_sha256": "ea05b61a372ddf48a499c04ee69fa88821da01a381a9150e1c9e54e2dd3adcd3",
+      "after_sha256": "9f37ca8e105e28fde327468fce703add3e33c907411cfb01ce717abb1d7ee480"
+    },
+    "functions/body/heart-repairs.yaml": {
+      "before_sha256": "ed9e301569e0f5f1878879f2814e167b169cfb57783a41b450e24b88426595a6",
+      "after_sha256": "a94f98634104448f9267dc4a3390c43d410eee594f88bf65832ec2373443eb6b"
+    },
+    "locales/en-US/hplus-OCF-BOD-006.yaml": {
+      "before_sha256": "0cb82a68583474e71d60e1b0db93d0d16fe1bfdd0c979eaa214b693820dbb17d",
+      "after_sha256": "b41248f7bd337defdd2f0360bb645d74dca338f27220e0b3c2fcd9c103cf42a5"
+    },
+    "locales/en-US/commands.yaml": {
+      "before_sha256": "d4143804779370f6b01c6bb5b247da6ef02b222eceec7c9ff29c3476d53d29e6",
+      "after_sha256": "5fdbbe32d0654a3d8bde2907a93b2c0015d7ff83081c8db0b5055f780d15c760"
+    },
+    "locales/en-US/activation-cues.yaml": {
+      "before_sha256": null,
+      "after_sha256": "42ea1ea7ebe5eea88e65f79d329d02dfefd286c498a5956d80b5028b089b3a75"
+    },
+    "locales/en-US/manifest.yaml": {
+      "before_sha256": "540afda3fcc688392c352aff9ee60f479154a2f34caf186642699256722041b0",
+      "after_sha256": "6a62b4b2652865ecd516c25023e1f7b872ca9b30d59cca8e209abb876b4c71d5"
+    },
+    "tests/fixtures/hplus-narration-text-baseline-002.json": {
+      "before_sha256": null,
+      "after_sha256": "8e389bb71cdc2c4ada955a3dc46d4ad8d808e8d0036f505f03285a0ff8b808fa"
+    },
+    "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-002.json": {
+      "before_sha256": null,
+      "after_sha256": "48f122e81a058d5acd668d1353b70ed5d074ea222dd3a32c3817476af52413fb"
+    }
+  },
+  "purpose_correction_basis": [
+    {
+      "function_id": "OCF-EXP-001",
+      "resource_key": "hplus.function.ocf-exp-001.function-body",
+      "basis": "Existing committed narration and the user's function-specific scope guardrails; presentation correction only, no mechanism or procedure rewritten."
+    },
+    {
+      "function_id": "OCF-SLP-005",
+      "resource_key": "hplus.function.ocf-slp-005.function-body",
+      "basis": "Existing committed narration and the user's function-specific scope guardrails; presentation correction only, no mechanism or procedure rewritten."
+    },
+    {
+      "function_id": "OCF-BOD-001",
+      "resource_key": "hplus.function.ocf-bod-001.function-body",
+      "basis": "Existing committed narration and the user's function-specific scope guardrails; presentation correction only, no mechanism or procedure rewritten."
+    },
+    {
+      "function_id": "OCF-BOD-009",
+      "resource_key": "hplus.function.ocf-bod-009.function-body",
+      "basis": "Existing committed narration and the user's function-specific scope guardrails; presentation correction only, no mechanism or procedure rewritten."
+    },
+    {
+      "function_id": "OCF-EMO-002",
+      "resource_key": "hplus.function.ocf-emo-002.function-body",
+      "basis": "Existing committed narration and the user's function-specific scope guardrails; presentation correction only, no mechanism or procedure rewritten."
+    },
+    {
+      "function_id": "OCF-EMO-003",
+      "resource_key": "hplus.function.ocf-emo-003.function-body",
+      "basis": "Existing committed narration and the user's function-specific scope guardrails; presentation correction only, no mechanism or procedure rewritten."
+    },
+    {
+      "function_id": "OCF-EXP-002",
+      "resource_key": "hplus.function.ocf-exp-002.function-body",
+      "basis": "Existing committed narration and the user's function-specific scope guardrails; presentation correction only, no mechanism or procedure rewritten."
+    },
+    {
+      "function_id": "OCF-SLP-004",
+      "resource_key": "hplus.function.ocf-slp-004.function-body",
+      "basis": "Existing committed narration and the user's function-specific scope guardrails; presentation correction only, no mechanism or procedure rewritten."
+    },
+    {
+      "function_id": "OCF-PRF-002",
+      "resource_key": "hplus.function.ocf-prf-002.function-body",
+      "basis": "Existing committed narration and the user's function-specific scope guardrails; presentation correction only, no mechanism or procedure rewritten."
+    },
+    {
+      "function_id": "OCF-BOD-004",
+      "resource_key": "hplus.function.ocf-bod-004.function-body",
+      "basis": "Existing committed narration and the user's function-specific scope guardrails; presentation correction only, no mechanism or procedure rewritten."
+    }
+  ]
+}

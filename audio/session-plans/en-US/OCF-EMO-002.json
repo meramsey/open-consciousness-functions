@@ -5,12 +5,12 @@
   },
   "defaults": {
     "file": "_shared.json",
-    "sha256": "cbe06d1f862a4e1e3fbb6f48e9c05b770c88fa9fc40e30a007a4c25f6d38f1f2"
+    "sha256": "eae0d2d60cd94c899d9673d25637db9d674b64580ac9a3af080e9fd1ec198925"
   },
   "function_id": "OCF-EMO-002",
   "generation": {
     "binding_sha256": "b15bf80e49884db165bae786c2fb269f9a0948cad6d6d475ab6df23cde024684",
-    "semantic_plan_sha256": "842fa782d1d28f907b0dcdd732451805143bdbaaed1bf52e4e4196e6071618fd"
+    "semantic_plan_sha256": "586ae11bdf1c49970387d62601b3091337f4760c4f9b4527c571c015effd9446"
   },
   "generator": "ocf.audio.plan/1",
   "locale": "en-US",
@@ -21,8 +21,8 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "7f9540728b2b664af572bda93ed9dddd4da2c4fe72ea95a70593be44bca7b3b3",
-      "version": "1.1.0"
+      "text_sha256": "734dea8ffc6db26279ceb329a591de8822cd73a704940b192cf2a761beb9770f",
+      "version": "1.1.1"
     },
     {
       "fallback": false,
@@ -30,8 +30,8 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "91b971b55d1409fcf90f5266c2031c54c634a96bb4d1fe01de5a2bbd62fbd34e",
-      "version": "1.2.0"
+      "text_sha256": "0ef7a2cf24e93e88c26d530d3886fd1ce61ddad6e91f09ab0543959d1a3dd198",
+      "version": "1.2.1"
     },
     {
       "fallback": false,

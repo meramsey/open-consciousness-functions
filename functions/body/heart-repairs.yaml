@@ -1,6 +1,6 @@
 aliases:
-  commands: []
   command_ids: []
+  commands: []
   names:
   - 'Heart: Repairs & Maintenance'
 applications: []
@@ -16,33 +16,10 @@ audio:
   script_status: approved
 canonical:
   command:
-    modes: []
     mode_ids: []
-    primary: PLUS-HEART, BETTER, BETTER
+    modes: []
+    primary: PLUS-HEART-BETTER
   name: 'Heart: Repairs & Maintenance'
-commands:
-- id: OCF-CMD-BOD-006-PRIMARY
-  function_id: OCF-BOD-006
-  phrase_ref:
-    source: canonical-primary
-  role: activation
-  designation: primary
-  localization:
-    label_key: commands.ocf-cmd-bod-006-primary.label
-    usage_key: commands.ocf-cmd-bod-006-primary.usage
-    purpose_key: functions.ocf-bod-006.purpose
-    explanation_key: commands.ocf-cmd-bod-006-primary.explanation
-  documentation:
-    visible: true
-    order: 1
-  effect_scope_ref: lifecycle.persistence
-  procedure:
-    ref: OCF-PROC-CLOSE-FOCUS
-    status: documented
-    evidence_keys:
-    - hplus.function.ocf-bod-006.function-body
-    before_steps: []
-  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -51,16 +28,59 @@ claims:
 classification:
   primary_domain: body
   secondary_domains: []
+commands:
+- designation: primary
+  documentation:
+    order: 1
+    visible: true
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-BOD-006
+  id: OCF-CMD-BOD-006-PRIMARY
+  localization:
+    display_cue_key: commands.ocf-cmd-bod-006-primary.display-cue
+    explanation_key: commands.ocf-cmd-bod-006-primary.explanation
+    label_key: commands.ocf-cmd-bod-006-primary.label
+    purpose_key: functions.ocf-bod-006.purpose
+    spoken_cue_key: commands.ocf-cmd-bod-006-primary.spoken-cue
+    usage_key: commands.ocf-cmd-bod-006-primary.usage
+  observed_phrase:
+    narration_key: hplus.function.ocf-bod-006.function-body
+    relationship: canonical-match
+    text: Plus Heart Better
+  phrase_ref:
+    source: canonical-primary
+  procedure:
+    before_steps: []
+    evidence_keys:
+    - hplus.function.ocf-bod-006.function-body
+    ref: OCF-PROC-CLOSE-FOCUS
+    status: documented
+  relationships: {}
+  role: activation
 companions: []
 compatibility:
-  state: unchanged
+  rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
+    operational commands remain unchanged.
+  state: historical-lookup
 contributor:
   contact: null
   name: null
 documentation:
-  title_key: functions.ocf-bod-006.title
-  short_description_key: functions.ocf-bod-006.short-description
   purpose_key: functions.ocf-bod-006.purpose
+  short_description_key: functions.ocf-bod-006.short-description
+  title_key: functions.ocf-bod-006.title
+historical_lookup:
+- decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-title
+  text: 'Heart: Repairs & Maintenance'
+- command_id: OCF-CMD-BOD-006-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-primary
+  text: PLUS-HEART, BETTER, BETTER
+- command_id: OCF-CMD-BOD-006-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-teaching
+  text: Plus Heart Better Better
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.

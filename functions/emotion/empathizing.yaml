@@ -1,6 +1,6 @@
 aliases:
-  commands: []
   command_ids: []
+  commands: []
   names:
   - Empathizing
 applications: []
@@ -16,33 +16,10 @@ audio:
   script_status: approved
 canonical:
   command:
-    modes: []
     mode_ids: []
-    primary: PLUS-PROFILE, PROFILE
-  name: Empathizing
-commands:
-- id: OCF-CMD-EMO-003-PRIMARY
-  function_id: OCF-EMO-003
-  phrase_ref:
-    source: canonical-primary
-  role: activation
-  designation: primary
-  localization:
-    label_key: commands.ocf-cmd-emo-003-primary.label
-    usage_key: commands.ocf-cmd-emo-003-primary.usage
-    purpose_key: functions.ocf-emo-003.purpose
-    explanation_key: commands.ocf-cmd-emo-003-primary.explanation
-  documentation:
-    visible: true
-    order: 1
-  effect_scope_ref: lifecycle.persistence
-  procedure:
-    ref: OCF-PROC-INHALE-HOLD
-    status: documented
-    evidence_keys:
-    - hplus.function.ocf-emo-003.function-body
-    before_steps: []
-  relationships: {}
+    modes: []
+    primary: PLUS-EMPATHIZE
+  name: Empathize
 chains: []
 claims:
   intended_effects: []
@@ -52,16 +29,59 @@ classification:
   primary_domain: emotion
   secondary_domains:
   - communication
+commands:
+- designation: primary
+  documentation:
+    order: 1
+    visible: true
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-EMO-003
+  id: OCF-CMD-EMO-003-PRIMARY
+  localization:
+    display_cue_key: commands.ocf-cmd-emo-003-primary.display-cue
+    explanation_key: commands.ocf-cmd-emo-003-primary.explanation
+    label_key: commands.ocf-cmd-emo-003-primary.label
+    purpose_key: functions.ocf-emo-003.purpose
+    spoken_cue_key: commands.ocf-cmd-emo-003-primary.spoken-cue
+    usage_key: commands.ocf-cmd-emo-003-primary.usage
+  observed_phrase:
+    narration_key: hplus.function.ocf-emo-003.function-body
+    relationship: canonical-match
+    text: Plus Empathize
+  phrase_ref:
+    source: canonical-primary
+  procedure:
+    before_steps: []
+    evidence_keys:
+    - hplus.function.ocf-emo-003.function-body
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+  relationships: {}
+  role: activation
 companions: []
 compatibility:
-  state: unchanged
+  rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
+    operational commands remain unchanged.
+  state: historical-lookup
 contributor:
   contact: null
   name: null
 documentation:
-  title_key: functions.ocf-emo-003.title
-  short_description_key: functions.ocf-emo-003.short-description
   purpose_key: functions.ocf-emo-003.purpose
+  short_description_key: functions.ocf-emo-003.short-description
+  title_key: functions.ocf-emo-003.title
+historical_lookup:
+- decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-title
+  text: Empathizing
+- command_id: OCF-CMD-EMO-003-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-primary
+  text: PLUS-PROFILE, PROFILE
+- command_id: OCF-CMD-EMO-003-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-teaching
+  text: Plus Profile Profile
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -88,9 +108,11 @@ ocf:
   command_review: approved
   reimplementation_status: planned
 purpose:
-  community_description: Builds a felt profile of another person's experience.
+  community_description: Develops consciously directed understanding and communication with another being
+    through sensory, intuitive, and total-self awareness.
   source_description: null
-  summary: Builds a felt profile of another person's experience.
+  summary: Develops consciously directed understanding and communication with another being through sensory,
+    intuitive, and total-self awareness.
 safety:
   level: general
   medical_relevance: false

@@ -1,8 +1,6 @@
 aliases:
-  commands:
-  - PLUS-CLEAN, CLEAR
-  command_ids:
-  - OCF-CMD-BOD-004-LEGACY-01
+  command_ids: []
+  commands: []
   names:
   - 'De-Tox: Body'
 applications: []
@@ -18,54 +16,10 @@ audio:
   script_status: approved
 canonical:
   command:
-    modes: []
     mode_ids: []
+    modes: []
     primary: PLUS-DETOX
-  name: 'De-Tox: Body'
-commands:
-- id: OCF-CMD-BOD-004-PRIMARY
-  function_id: OCF-BOD-004
-  phrase_ref:
-    source: canonical-primary
-  role: activation
-  designation: primary
-  localization:
-    label_key: commands.ocf-cmd-bod-004-primary.label
-    usage_key: commands.ocf-cmd-bod-004-primary.usage
-    purpose_key: functions.ocf-bod-004.purpose
-    explanation_key: commands.ocf-cmd-bod-004-primary.explanation
-  documentation:
-    visible: true
-    order: 1
-  effect_scope_ref: lifecycle.persistence
-  procedure:
-    ref: OCF-PROC-CLOSE-FOCUS
-    status: documented
-    evidence_keys:
-    - hplus.function.ocf-bod-004.function-body
-    before_steps: []
-  relationships: {}
-  observed_phrase:
-    text: Plus Clean Clear
-    narration_key: hplus.function.ocf-bod-004.function-body
-    relationship: legacy-form
-- id: OCF-CMD-BOD-004-LEGACY-01
-  function_id: OCF-BOD-004
-  phrase_ref:
-    source: legacy-command
-    command_id: OCF-CMD-BOD-004-LEGACY-01
-  role: legacy-alias
-  designation: secondary
-  localization:
-    label_key: commands.ocf-cmd-bod-004-legacy-01.label
-    usage_key: commands.ocf-cmd-bod-004-legacy-01.usage
-    purpose_key: functions.ocf-bod-004.purpose
-    explanation_key: commands.ocf-cmd-bod-004-legacy-01.explanation
-  documentation:
-    visible: true
-    order: 101
-  effect_scope_ref: lifecycle.persistence
-  relationships: {}
+  name: Detox
 chains: []
 claims:
   intended_effects: []
@@ -75,20 +29,77 @@ classification:
   primary_domain: body
   secondary_domains:
   - lifestyle
+commands:
+- designation: primary
+  documentation:
+    order: 1
+    visible: true
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-BOD-004
+  id: OCF-CMD-BOD-004-PRIMARY
+  localization:
+    display_cue_key: commands.ocf-cmd-bod-004-primary.display-cue
+    explanation_key: commands.ocf-cmd-bod-004-primary.explanation
+    label_key: commands.ocf-cmd-bod-004-primary.label
+    purpose_key: functions.ocf-bod-004.purpose
+    spoken_cue_key: commands.ocf-cmd-bod-004-primary.spoken-cue
+    usage_key: commands.ocf-cmd-bod-004-primary.usage
+  observed_phrase:
+    narration_key: hplus.function.ocf-bod-004.function-body
+    relationship: canonical-match
+    text: Plus Detox
+  phrase_ref:
+    source: canonical-primary
+  procedure:
+    before_steps: []
+    evidence_keys:
+    - hplus.function.ocf-bod-004.function-body
+    ref: OCF-PROC-CLOSE-FOCUS
+    status: documented
+  relationships: {}
+  role: activation
+- availability: historical-lookup
+  designation: secondary
+  documentation:
+    order: 101
+    visible: false
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-BOD-004
+  id: OCF-CMD-BOD-004-LEGACY-01
+  localization:
+    explanation_key: commands.ocf-cmd-bod-004-legacy-01.explanation
+    label_key: commands.ocf-cmd-bod-004-legacy-01.label
+    purpose_key: functions.ocf-bod-004.purpose
+    usage_key: commands.ocf-cmd-bod-004-legacy-01.usage
+  phrase_ref:
+    command_id: OCF-CMD-BOD-004-LEGACY-01
+    source: legacy-command
+  relationships: {}
+  role: legacy-alias
 companions: []
 compatibility:
-  legacy_commands:
-  - PLUS-CLEAN, CLEAR
-  rationale: Legacy two-phrase cue is concise already, but PLUS-DETOX is proposed as the single canonical
-    cue for review.
-  state: bridge-trainable
+  rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
+    operational commands remain unchanged.
+  state: historical-lookup
 contributor:
   contact: null
   name: null
 documentation:
-  title_key: functions.ocf-bod-004.title
-  short_description_key: functions.ocf-bod-004.short-description
   purpose_key: functions.ocf-bod-004.purpose
+  short_description_key: functions.ocf-bod-004.short-description
+  title_key: functions.ocf-bod-004.title
+historical_lookup:
+- decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-title
+  text: 'De-Tox: Body'
+- command_id: OCF-CMD-BOD-004-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-primary
+  text: PLUS-DETOX
+- command_id: OCF-CMD-BOD-004-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-teaching
+  text: Plus Clean Clear
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -112,12 +123,14 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: review-required
+  command_review: approved
   reimplementation_status: planned
 purpose:
-  community_description: Supports a perceived sense of bodily cleansing and clarity.
+  community_description: Supports the body's self-regulating cleansing, renewal, and maintenance, with
+    conscious reinforcement when desired.
   source_description: null
-  summary: Supports a perceived sense of bodily cleansing and clarity.
+  summary: Supports the body's self-regulating cleansing, renewal, and maintenance, with conscious reinforcement
+    when desired.
 safety:
   level: health
   medical_relevance: true

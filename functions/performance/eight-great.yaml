@@ -1,8 +1,6 @@
 aliases:
-  commands:
-  - PLUS-EIGHT, GREAT
-  command_ids:
-  - OCF-CMD-PRF-002-LEGACY-01
+  command_ids: []
+  commands: []
   names:
   - Eight-Great
 applications: []
@@ -18,57 +16,10 @@ audio:
   script_status: approved
 canonical:
   command:
-    modes: []
     mode_ids: []
-    primary: PLUS-STRONG
-  name: Eight-Great
-commands:
-- id: OCF-CMD-PRF-002-PRIMARY
-  function_id: OCF-PRF-002
-  phrase_ref:
-    source: canonical-primary
-  role: activation
-  designation: primary
-  localization:
-    label_key: commands.ocf-cmd-prf-002-primary.label
-    usage_key: commands.ocf-cmd-prf-002-primary.usage
-    purpose_key: functions.ocf-prf-002.purpose
-    explanation_key: commands.ocf-cmd-prf-002-primary.explanation
-  documentation:
-    visible: true
-    order: 1
-  effect_scope_ref: lifecycle.persistence
-  procedure:
-    ref: OCF-PROC-INHALE-HOLD
-    status: documented
-    evidence_keys:
-    - hplus.function.ocf-prf-002.function-body
-    before_steps:
-    - id: select-quality
-      operation: select-purpose
-      localization_key: command.procedure.select-purpose
-  relationships: {}
-  observed_phrase:
-    text: Plus Eight Great
-    narration_key: hplus.function.ocf-prf-002.function-body
-    relationship: legacy-form
-- id: OCF-CMD-PRF-002-LEGACY-01
-  function_id: OCF-PRF-002
-  phrase_ref:
-    source: legacy-command
-    command_id: OCF-CMD-PRF-002-LEGACY-01
-  role: legacy-alias
-  designation: secondary
-  localization:
-    label_key: commands.ocf-cmd-prf-002-legacy-01.label
-    usage_key: commands.ocf-cmd-prf-002-legacy-01.usage
-    purpose_key: functions.ocf-prf-002.purpose
-    explanation_key: commands.ocf-cmd-prf-002-legacy-01.explanation
-  documentation:
-    visible: true
-    order: 101
-  effect_scope_ref: lifecycle.persistence
-  relationships: {}
+    modes: []
+    primary: PLUS-INNER POWER
+  name: Inner Power
 chains: []
 claims:
   intended_effects: []
@@ -78,19 +29,80 @@ classification:
   primary_domain: performance
   secondary_domains:
   - body
+commands:
+- designation: primary
+  documentation:
+    order: 1
+    visible: true
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-PRF-002
+  id: OCF-CMD-PRF-002-PRIMARY
+  localization:
+    display_cue_key: commands.ocf-cmd-prf-002-primary.display-cue
+    explanation_key: commands.ocf-cmd-prf-002-primary.explanation
+    label_key: commands.ocf-cmd-prf-002-primary.label
+    purpose_key: functions.ocf-prf-002.purpose
+    spoken_cue_key: commands.ocf-cmd-prf-002-primary.spoken-cue
+    usage_key: commands.ocf-cmd-prf-002-primary.usage
+  observed_phrase:
+    narration_key: hplus.function.ocf-prf-002.function-body
+    relationship: canonical-match
+    text: Plus Inner Power
+  phrase_ref:
+    source: canonical-primary
+  procedure:
+    before_steps:
+    - id: select-quality
+      localization_key: command.procedure.select-purpose
+      operation: select-purpose
+    evidence_keys:
+    - hplus.function.ocf-prf-002.function-body
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+  relationships: {}
+  role: activation
+- availability: historical-lookup
+  designation: secondary
+  documentation:
+    order: 101
+    visible: false
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-PRF-002
+  id: OCF-CMD-PRF-002-LEGACY-01
+  localization:
+    explanation_key: commands.ocf-cmd-prf-002-legacy-01.explanation
+    label_key: commands.ocf-cmd-prf-002-legacy-01.label
+    purpose_key: functions.ocf-prf-002.purpose
+    usage_key: commands.ocf-cmd-prf-002-legacy-01.usage
+  phrase_ref:
+    command_id: OCF-CMD-PRF-002-LEGACY-01
+    source: legacy-command
+  relationships: {}
+  role: legacy-alias
 companions: []
 compatibility:
-  legacy_commands:
-  - PLUS-EIGHT, GREAT
-  rationale: Legacy cue PLUS-EIGHT, GREAT is two words; concise cue PLUS-STRONG is proposed for review.
-  state: bridge-trainable
+  rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
+    operational commands remain unchanged.
+  state: historical-lookup
 contributor:
   contact: null
   name: null
 documentation:
-  title_key: functions.ocf-prf-002.title
-  short_description_key: functions.ocf-prf-002.short-description
   purpose_key: functions.ocf-prf-002.purpose
+  short_description_key: functions.ocf-prf-002.short-description
+  title_key: functions.ocf-prf-002.title
+historical_lookup:
+- decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-title
+  text: Eight-Great
+- command_id: OCF-CMD-PRF-002-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-primary
+  text: PLUS-STRONG
+- command_id: OCF-CMD-PRF-002-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-teaching
+  text: Plus Eight Great
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -114,13 +126,14 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: review-required
+  command_review: approved
   reimplementation_status: planned
 purpose:
-  community_description: Legacy vitality practice associated with the phrase EIGHT, GREAT; proposed concise
-    cue PLUS-STRONG.
+  community_description: Strengthens recognition and expression of total-self strength, unity, resources,
+    and power throughout daily life.
   source_description: null
-  summary: Legacy vitality practice associated with the phrase EIGHT, GREAT; proposed concise cue PLUS-STRONG.
+  summary: Strengthens recognition and expression of total-self strength, unity, resources, and power
+    throughout daily life.
 safety:
   level: general
   medical_relevance: false

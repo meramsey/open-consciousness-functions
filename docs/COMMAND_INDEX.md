@@ -7,17 +7,16 @@ Canonical command phrases are shown exactly as registered and are not translated
 | Function | Command phrase | Role | Usage | Function persistence |
 | --- | --- | --- | --- | --- |
 | [See-Be](functions/OCF-AUT-001.md) | PLUS-AUTOMATE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
-| [Brain: Repairs & Maintenance](functions/OCF-BOD-001.md) | PLUS-FLOW BETTER | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
+| [Brain Flow](functions/OCF-BOD-001.md) | PLUS-BRAIN FLOW | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Circulation](functions/OCF-BOD-002.md) | PLUS-FLOW SMOOTH | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [De-Discomfort](functions/OCF-BOD-003.md) | PLUS-COMFORT | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [De-Discomfort](functions/OCF-BOD-003.md) | PLUS-55515 | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
-| [De-Tox: Body](functions/OCF-BOD-004.md) | PLUS-DETOX | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
-| [De-Tox: Body](functions/OCF-BOD-004.md) | PLUS-CLEAN, CLEAR | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Permanent |
+| [Detox](functions/OCF-BOD-004.md) | PLUS-DETOX | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Eat/No Eat](functions/OCF-BOD-005.md) | PLUS-SATISFIED, SUPPLIED | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
-| [Heart: Repairs & Maintenance](functions/OCF-BOD-006.md) | PLUS-HEART, BETTER, BETTER | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
+| [Heart: Repairs & Maintenance](functions/OCF-BOD-006.md) | PLUS-HEART-BETTER | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Hypertension](functions/OCF-BOD-007.md) | PLUS-BALANCE-BLOODPRESSURE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Immunizing](functions/OCF-BOD-008.md) | PLUS-ALERT, DESTROY | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
-| [Lungs: Repairs & Maintenance](functions/OCF-BOD-009.md) | PLUS-BREATH BETTER | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
+| [Breathe Better](functions/OCF-BOD-009.md) | PLUS-BREATHE BETTER | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Nutricia](functions/OCF-BOD-010.md) | PLUS-FOOD MORE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Nutricia](functions/OCF-BOD-010.md) | PLUS-FOOD LESS | Decrease mode | Use when you choose to decrease the selected function response. | Temporary |
 | [Passages](functions/OCF-BOD-011.md) | PLUS-EQUALIZE-HARMONIZE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
@@ -46,15 +45,12 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Emergency: Injury](functions/OCF-EMG-001.md) | PLUS-CONTROL, BALANCE, RESTORE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Emergency: Toxic](functions/OCF-EMG-002.md) | PLUS-CLEAR, REMOVE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Let Go](functions/OCF-EMO-001.md) | PLUS-LET GO | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
-| [Off-Loading](functions/OCF-EMO-002.md) | PLUS-CLEAR | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
-| [Off-Loading](functions/OCF-EMO-002.md) | PLUS-FADE, FADE | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
-| [Empathizing](functions/OCF-EMO-003.md) | PLUS-PROFILE, PROFILE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
-| [Mobius West](functions/OCF-EXP-001.md) | PLUS-PROGRAM | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
-| [Mobius West](functions/OCF-EXP-001.md) | PLUS-CHANGE, CHANGE | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
-| [Zoning](functions/OCF-EXP-002.md) | PLUS-ZONE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
-| [Zoning](functions/OCF-EXP-002.md) | PLUS-CANCEL | Cancellation command | Use to cancel the current adjustment. | Temporary |
-| [Zoning](functions/OCF-EXP-002.md) | PLUS-INSULATE, INSULATE | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
-| [Zoning](functions/OCF-EXP-002.md) | Plus Release | Release command | Places Zoning on hold; PLUS-CANCEL ends the current adjustment. | Temporary |
+| [Offload](functions/OCF-EMO-002.md) | PLUS-OFFLOAD | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
+| [Empathize](functions/OCF-EMO-003.md) | PLUS-EMPATHIZE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
+| [Manifest](functions/OCF-EXP-001.md) | PLUS-MANIFEST | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
+| [Insulate](functions/OCF-EXP-002.md) | PLUS-INSULATE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
+| [Insulate](functions/OCF-EXP-002.md) | PLUS-CANCEL | Cancellation command | Use to cancel the current adjustment. | Temporary |
+| [Insulate](functions/OCF-EXP-002.md) | Plus Release | Release command | Places Insulate on hold; PLUS-CANCEL ends the current adjustment. | Temporary |
 | [Access to Energy](functions/OCF-FND-001.md) | PLUS-ENERGIZE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Access to Energy](functions/OCF-FND-001.md) | Plus Release Eleven Access | Access-channel close cue | Use to close the Access Channel; this cue is distinct from function activation. | Access channel (separate from function persistence) |
 | [Attention](functions/OCF-FND-002.md) | PLUS-FOCUS | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
@@ -66,8 +62,7 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Release](functions/OCF-FND-006.md) | PLUS-RELEASE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [De-Hab](functions/OCF-LIF-001.md) | PLUS-NO MORE, NO MORE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Do This Now](functions/OCF-PRF-001.md) | PLUS-DO-THIS-NOW | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
-| [Eight-Great](functions/OCF-PRF-002.md) | PLUS-STRONG | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
-| [Eight-Great](functions/OCF-PRF-002.md) | PLUS-EIGHT, GREAT | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Permanent |
+| [Inner Power](functions/OCF-PRF-002.md) | PLUS-INNER POWER | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Synchronizing](functions/OCF-PRF-003.md) | PLUS-SMOOTH, FAST | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Light Foot](functions/OCF-PRF-004.md) | PLUS-LIGHT | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Light Foot](functions/OCF-PRF-004.md) | PLUS-LIGHTER, LIGHTER | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
@@ -97,11 +92,9 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Sleep](functions/OCF-SLP-002.md) | PLUS-20-20 | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
 | [Sweet Dreams](functions/OCF-SLP-003.md) | PLUS-DREAM | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Sweet Dreams](functions/OCF-SLP-003.md) | PLUS-THEME, DREAM, SLEEP | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
-| [Wake/Know](functions/OCF-SLP-004.md) | PLUS-KNOW | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
-| [Wake/Know](functions/OCF-SLP-004.md) | PLUS-SLEEP, HELP | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
+| [Sleep Insight](functions/OCF-SLP-004.md) | PLUS-SLEEP INSIGHT | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Sleep Easy](functions/OCF-SLP-005.md) | PLUS-SLEEP EASY | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
-| [Sleep Easy](functions/OCF-SLP-005.md) | PLUS-QUIET, SLEEP | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
 | [Stay Awake](functions/OCF-SLP-006.md) | PLUS-AWAKE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Stay Awake](functions/OCF-SLP-006.md) | PLUS-ONE, AWAKE, ALERT, ONE, ONE | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
 
-55 functions; 97 structured command records.
+55 functions; 90 structured command records.

@@ -12,7 +12,7 @@ from ocf_tools.timing import schedule_timeline
     [
         ("RELAX", "OCF-FND-004", "PLUS-RELAX"),
         ("HEARING", "OCF-SEN-001", "PLUS-HEAR MORE"),
-        ("SLEEP-EASY", "OCF-SLP-005", "PLUS-SLEEP EASY"),
+        ("SLEEP-EASY", "OCF-SLP-005", "Plus Sleep Easy"),
     ],
 )
 def test_pilot_composition_command_ownership_and_pause_semantics(slug, function_id, command):

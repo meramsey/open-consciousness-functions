@@ -3,6 +3,7 @@
 import pytest
 from ocf_tools.commands import (
     load_procedure_catalog,
+    resolve_historical_phrase,
     resolve_phrase,
     resolve_procedure,
     validate_command_collection,
@@ -50,7 +51,7 @@ def test_all_55_function_commands_resolve_with_legacy_fields_unchanged():
         for phrase, command_id in zip(
             function.legacy_commands, data["legacy"]["command_ids"], strict=True
         ):
-            assert resolve_phrase(function, by_id[command_id]) == phrase
+            assert resolve_historical_phrase(function, command_id) == phrase
             legacy_phrase_count += 1
         for phrase, command_id in zip(
             data["aliases"]["commands"], data["aliases"]["command_ids"], strict=True
@@ -98,8 +99,8 @@ def test_sleep_easy_and_special_release_commands_preserve_semantic_conflicts():
     sleep_easy = functions["OCF-SLP-005"]
     primary = next(c for c in sleep_easy.command_records if c.designation == "primary")
     assert resolve_phrase(sleep_easy, primary) == "PLUS-SLEEP EASY"
-    assert primary.observed_phrase["text"] == "Plus Quiet Sleep"
-    assert primary.observed_phrase["relationship"] == "conflict"
+    assert primary.observed_phrase["text"] == "Plus Sleep Easy"
+    assert primary.observed_phrase["relationship"] == "canonical-match"
     assert sleep_easy.source_availability == "unavailable"
     assert sleep_easy.reimplementation_status == "planned"
 

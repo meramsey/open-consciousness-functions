@@ -1,8 +1,6 @@
 aliases:
-  commands:
-  - PLUS-INSULATE, INSULATE
-  command_ids:
-  - OCF-CMD-EXP-002-LEGACY-01
+  command_ids: []
+  commands: []
   names:
   - Zoning
 applications: []
@@ -18,117 +16,12 @@ audio:
   script_status: approved
 canonical:
   command:
-    modes:
-    - PLUS-CANCEL
     mode_ids:
     - OCF-CMD-EXP-002-CANCEL
-    primary: PLUS-ZONE
-  name: Zoning
-commands:
-- id: OCF-CMD-EXP-002-PRIMARY
-  function_id: OCF-EXP-002
-  phrase_ref:
-    source: canonical-primary
-  role: activation
-  designation: primary
-  localization:
-    label_key: commands.ocf-cmd-exp-002-primary.label
-    usage_key: commands.ocf-cmd-exp-002-primary.usage
-    purpose_key: functions.ocf-exp-002.purpose
-    explanation_key: commands.ocf-cmd-exp-002-primary.explanation
-  documentation:
-    visible: true
-    order: 1
-  effect_scope_ref: lifecycle.persistence
-  procedure:
-    ref: OCF-PROC-INHALE-HOLD
-    status: documented
-    evidence_keys:
-    - hplus.function.ocf-exp-002.function-body
-    before_steps:
-    - id: select-comfort-zone
-      operation: select-purpose
-      localization_key: command.procedure.select-purpose
-  relationships: {}
-  observed_phrase:
-    text: Plus Insulate Insulate
-    narration_key: hplus.function.ocf-exp-002.function-body
-    relationship: legacy-form
-- id: OCF-CMD-EXP-002-CANCEL
-  function_id: OCF-EXP-002
-  phrase_ref:
-    source: canonical-mode
-    command_id: OCF-CMD-EXP-002-CANCEL
-  role: cancel
-  designation: secondary
-  localization:
-    label_key: commands.ocf-cmd-exp-002-cancel.label
-    usage_key: commands.ocf-cmd-exp-002-cancel.usage
-    purpose_key: functions.ocf-exp-002.purpose
-    explanation_key: commands.ocf-cmd-exp-002-cancel.explanation
-  documentation:
-    visible: true
-    order: 11
-  effect_scope_ref: lifecycle.persistence
-  procedure:
-    ref: OCF-PROC-INHALE-HOLD
-    status: documented
-    evidence_keys:
-    - hplus.function.ocf-exp-002.function-body
-    before_steps: []
-  relationships:
-    cancels:
-    - OCF-CMD-EXP-002-PRIMARY
-- id: OCF-CMD-EXP-002-LEGACY-01
-  function_id: OCF-EXP-002
-  phrase_ref:
-    source: legacy-command
-    command_id: OCF-CMD-EXP-002-LEGACY-01
-  role: legacy-alias
-  designation: secondary
-  localization:
-    label_key: commands.ocf-cmd-exp-002-legacy-01.label
-    usage_key: commands.ocf-cmd-exp-002-legacy-01.usage
-    purpose_key: functions.ocf-exp-002.purpose
-    explanation_key: commands.ocf-cmd-exp-002-legacy-01.explanation
-  documentation:
-    visible: true
-    order: 101
-  effect_scope_ref: lifecycle.persistence
-  relationships: {}
-- id: OCF-CMD-EXP-002-RELEASE
-  function_id: OCF-EXP-002
-  phrase_ref:
-    source: special-phrase
-    phrase_id: OCF-CMD-EXP-002-RELEASE
-  role: release
-  designation: special
-  localization:
-    label_key: commands.ocf-cmd-exp-002-release.label
-    usage_key: commands.ocf-cmd-exp-002-release.usage
-    purpose_key: functions.ocf-exp-002.purpose
-    explanation_key: commands.ocf-cmd-exp-002-release.explanation
-  documentation:
-    visible: true
-    order: 200
-  effect_scope_ref: lifecycle.persistence
-  procedure:
-    ref: OCF-PROC-INHALE-HOLD
-    status: documented
-    evidence_keys:
-    - hplus.function.ocf-exp-002.function-body
-    before_steps:
-    - id: focus-zoning
-      operation: focus-target
-      localization_key: command.procedure.focus-target
-  relationships:
-    releases:
-    - OCF-CMD-EXP-002-PRIMARY
-command_phrases:
-- id: OCF-CMD-EXP-002-RELEASE
-  phrase: Plus Release
-  source_narration_key: hplus.function.ocf-exp-002.function-body
-  status: observed
+    modes:
+    - PLUS-CANCEL
+    primary: PLUS-INSULATE
+  name: Insulate
 chains: []
 claims:
   intended_effects: []
@@ -137,21 +30,138 @@ claims:
 classification:
   primary_domain: experimental
   secondary_domains: []
+command_phrases:
+- id: OCF-CMD-EXP-002-RELEASE
+  phrase: Plus Release
+  source_narration_key: hplus.function.ocf-exp-002.function-body
+  status: observed
+commands:
+- designation: primary
+  documentation:
+    order: 1
+    visible: true
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-EXP-002
+  id: OCF-CMD-EXP-002-PRIMARY
+  localization:
+    display_cue_key: commands.ocf-cmd-exp-002-primary.display-cue
+    explanation_key: commands.ocf-cmd-exp-002-primary.explanation
+    label_key: commands.ocf-cmd-exp-002-primary.label
+    purpose_key: functions.ocf-exp-002.purpose
+    spoken_cue_key: commands.ocf-cmd-exp-002-primary.spoken-cue
+    usage_key: commands.ocf-cmd-exp-002-primary.usage
+  observed_phrase:
+    narration_key: hplus.function.ocf-exp-002.function-body
+    relationship: canonical-match
+    text: Plus Insulate
+  phrase_ref:
+    source: canonical-primary
+  procedure:
+    before_steps:
+    - id: select-comfort-zone
+      localization_key: command.procedure.select-purpose
+      operation: select-purpose
+    evidence_keys:
+    - hplus.function.ocf-exp-002.function-body
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+  relationships: {}
+  role: activation
+- designation: secondary
+  documentation:
+    order: 11
+    visible: true
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-EXP-002
+  id: OCF-CMD-EXP-002-CANCEL
+  localization:
+    explanation_key: commands.ocf-cmd-exp-002-cancel.explanation
+    label_key: commands.ocf-cmd-exp-002-cancel.label
+    purpose_key: functions.ocf-exp-002.purpose
+    usage_key: commands.ocf-cmd-exp-002-cancel.usage
+  phrase_ref:
+    command_id: OCF-CMD-EXP-002-CANCEL
+    source: canonical-mode
+  procedure:
+    before_steps: []
+    evidence_keys:
+    - hplus.function.ocf-exp-002.function-body
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+  relationships:
+    cancels:
+    - OCF-CMD-EXP-002-PRIMARY
+  role: cancel
+- availability: historical-lookup
+  designation: secondary
+  documentation:
+    order: 101
+    visible: false
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-EXP-002
+  id: OCF-CMD-EXP-002-LEGACY-01
+  localization:
+    explanation_key: commands.ocf-cmd-exp-002-legacy-01.explanation
+    label_key: commands.ocf-cmd-exp-002-legacy-01.label
+    purpose_key: functions.ocf-exp-002.purpose
+    usage_key: commands.ocf-cmd-exp-002-legacy-01.usage
+  phrase_ref:
+    command_id: OCF-CMD-EXP-002-LEGACY-01
+    source: legacy-command
+  relationships: {}
+  role: legacy-alias
+- designation: special
+  documentation:
+    order: 200
+    visible: true
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-EXP-002
+  id: OCF-CMD-EXP-002-RELEASE
+  localization:
+    explanation_key: commands.ocf-cmd-exp-002-release.explanation
+    label_key: commands.ocf-cmd-exp-002-release.label
+    purpose_key: functions.ocf-exp-002.purpose
+    usage_key: commands.ocf-cmd-exp-002-release.usage
+  phrase_ref:
+    phrase_id: OCF-CMD-EXP-002-RELEASE
+    source: special-phrase
+  procedure:
+    before_steps:
+    - id: focus-zoning
+      localization_key: command.procedure.focus-target
+      operation: focus-target
+    evidence_keys:
+    - hplus.function.ocf-exp-002.function-body
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+  relationships:
+    releases:
+    - OCF-CMD-EXP-002-PRIMARY
+  role: release
 companions: []
 compatibility:
-  legacy_commands:
-  - PLUS-INSULATE, INSULATE
-  - PLUS-CANCEL
-  rationale: Legacy two-word cue PLUS-INSULATE, INSULATE is retained; concise cue PLUS-ZONE (with PLUS-CANCEL)
-    is proposed for review.
-  state: bridge-trainable
+  rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
+    operational commands remain unchanged.
+  state: historical-lookup
 contributor:
   contact: null
   name: null
 documentation:
-  title_key: functions.ocf-exp-002.title
-  short_description_key: functions.ocf-exp-002.short-description
   purpose_key: functions.ocf-exp-002.purpose
+  short_description_key: functions.ocf-exp-002.short-description
+  title_key: functions.ocf-exp-002.title
+historical_lookup:
+- decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-title
+  text: Zoning
+- command_id: OCF-CMD-EXP-002-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-primary
+  text: PLUS-ZONE
+- command_id: OCF-CMD-EXP-002-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-teaching
+  text: Plus Insulate Insulate
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -178,12 +188,14 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: review-required
+  command_review: approved
   reimplementation_status: planned
 purpose:
-  community_description: Insulates against unwanted influence; cancels the zoning state via PLUS-CANCEL.
+  community_description: Establishes an adjustable whole-body zone of temperature comfort; Cancel ends
+    the current adjustment and Release places the selected application on hold.
   source_description: null
-  summary: Insulates against unwanted influence; cancels the zoning state via PLUS-CANCEL.
+  summary: Establishes an adjustable whole-body zone of temperature comfort; Cancel ends the current adjustment
+    and Release places the selected application on hold.
 safety:
   level: general
   medical_relevance: false

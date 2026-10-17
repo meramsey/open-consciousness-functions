@@ -15,13 +15,50 @@ describes what happens and when, and the words a listener hears come from a
 locale pack resolved at render time. The binaural/SAM/background DSP and the
 timeline are never duplicated per language.
 
+## Explicit localized spoken cues
+
+The approved English primary cues are explicitly bound through each stable
+command's optional `localization.spoken_cue_key`. The separate
+`localization.display_cue_key` resolves the exact display spelling, while
+`label_key` continues to describe the command role. No cue is constructed from
+a translated title or role label. Existing unbound records remain compatible
+and report `unbound`; they are not silently given a spoken-cue approval.
+
+The complete narration resource is registered in the en-US manifest:
+
+```yaml
+schema_version: '1.0'
+locale: en-US
+domain: narration
+entries:
+  commands.ocf-cmd-exp-001-primary.spoken-cue:
+    text: Plus Manifest
+    status: reviewed
+    version: 1.0.0
+    notes: English terminology approved in OCF-EDITORIAL-TITLE-CUES-001; listening and release approval remain separate.
+```
+
+`commands.localized_cue` uses the existing `LocaleCatalog`: UI display fallback
+is labeled, and spoken lookup is strict across languages. A declared missing or
+wrong-domain spoken binding fails strict resolution; catalog browsing instead
+reports `requires-locale-review`, without an English spoken substitute. The
+existing same-language regional parent fallback remains available. Text is
+preserved as Unicode, with no generic word-count or English-token matching rule.
+
+See the [source-English terminology sheet](releases/OCF_EN_US_TERMINOLOGY.md).
+Spanish is still a partial fixture and requires terminology review against the
+changed source; no translations or historical Spanish versions were overwritten.
+Each future locale must decide its own complete title/cue pair and Plus-prefix
+treatment. Title, explicit cue and actual teaching must be reviewed together;
+resource availability is not language/editorial approval.
+
 ## What this is not
 
 Localization changes words and measured speech duration. **Explicit semantic
 anchors remain fixed**; declared speech-end/event-end dependencies follow the
 localized render. Reflow is opt-in, not an arbitrary stretching of every track.
 Semantic identity, ordering and DSP/cue references are language-independent.
-No tool rewrites authored sentences or imported source wording.
+No render-time localization tool rewrites authored sentences or imported source wording.
 
 ## The model in one example
 

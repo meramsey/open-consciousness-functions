@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/editorial-cue-migration.schema.json",
+  "title": "Explicit versioned English title and cue editorial migration",
+  "type": "object",
+  "required": ["schema_version", "id", "source_commit", "decision_source", "approval_scope", "decisions", "allowed_text_changes", "previous_integrity_baseline", "integrity_baseline", "previous_baseline_sha256", "source_files", "unaffected_function_sha256", "previous_defaults_lock", "defaults_lock", "previous_defaults_sha256", "pending", "rejected_or_superseded", "locales_requiring_review"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "id": {"const": "OCF-EDITORIAL-TITLE-CUES-001"},
+    "source_commit": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+    "decision_source": {"type": "string", "minLength": 1},
+    "approval_scope": {"type": "string", "minLength": 1},
+    "pending": {"type": "array", "items": {"type": "string"}},
+    "rejected_or_superseded": {"type": "array", "items": {"type": "string"}},
+    "locales_requiring_review": {"type": "array", "items": {"type": "string"}},
+    "decisions": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["function_id", "primary_command_id", "previous", "current_title", "display_cue", "spoken_cue", "title_status", "cue_status", "narration_keys_changed", "narration_file", "function_file", "historical_command_ids"], "properties": {"function_id": {"type": "string"}, "primary_command_id": {"type": "string"}, "previous": {"type": "object"}, "current_title": {"type": "string"}, "display_cue": {"type": "string"}, "spoken_cue": {"type": "string"}, "title_status": {"type": "string"}, "cue_status": {"type": "string"}, "narration_keys_changed": {"type": "array", "items": {"type": "string"}}, "narration_file": {"type": "string", "minLength": 1}, "function_file": {"type": "string", "minLength": 1}, "historical_command_ids": {"type": "array", "items": {"type": "string"}}}}},
+    "allowed_text_changes": {"type": "array", "items": {"type": "object", "required": ["identity", "function_id", "before_sha256", "after_sha256", "before_text", "substitutions", "diff"], "properties": {"before_sha256": {"$ref": "#/definitions/sha"}, "after_sha256": {"$ref": "#/definitions/sha"}, "substitutions": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["before", "after", "count"], "properties": {"before": {"type": "string", "minLength": 1}, "after": {"type": "string"}, "count": {"type": "integer", "minimum": 1}}}}}}},
+    "previous_baseline_sha256": {"$ref": "#/definitions/sha"},
+    "previous_defaults_sha256": {"$ref": "#/definitions/sha"},
+    "previous_integrity_baseline": {"type": "string"},
+    "integrity_baseline": {"type": "string"},
+    "previous_defaults_lock": {"type": "string"},
+    "defaults_lock": {"type": "string"},
+    "source_files": {"type": "object", "additionalProperties": {"type": "object", "required": ["before_sha256", "after_sha256"], "properties": {"before_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"}, "after_sha256": {"$ref": "#/definitions/sha"}}}},
+    "unaffected_function_sha256": {"type": "object", "additionalProperties": {"$ref": "#/definitions/sha"}}
+  },
+  "allOf": [{"properties": {
+    "decisions": {"items": {"required": ["translator_notes"], "properties": {"translator_notes": {"type": "string", "minLength": 1}, "previous": {"required": ["title", "display_cue", "spoken_cue"], "properties": {"title": {"type": "string"}, "display_cue": {"type": "string"}, "spoken_cue": {"type": "string"}}}}}},
+    "allowed_text_changes": {"items": {"properties": {"identity": {"type": "string", "minLength": 1}, "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"}, "before_text": {"type": "string"}, "diff": {"type": "string"}}}}
+  }}],
+  "definitions": {"sha": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

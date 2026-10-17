@@ -279,6 +279,7 @@ def validate_command_rules(record: FunctionRecord) -> ValidationResult:
             )
         elif compatibility.get("state") not in (
             "alias-listed",
+            "historical-lookup",
             "bridge-trainable",
             "canonical-first",
             "legacy-first",
@@ -312,10 +313,12 @@ def validate_command_metadata(records: list[FunctionRecord]) -> ValidationResult
     from .commands import (
         CommandMetadataError,
         load_procedure_catalog,
+        resolve_phrase,
         resolve_procedure,
         validate_command_records,
     )
     from .locale import NARRATION_DOMAIN, LocaleCatalog
+    from .utils import OCFError
 
     result = ValidationResult()
     try:
@@ -368,6 +371,36 @@ def validate_command_metadata(records: list[FunctionRecord]) -> ValidationResult
             if isinstance(phrase, dict)
         }
         for command in record.command_records:
+            if command.localization.get("spoken_cue_key"):
+                from .commands import localized_cue
+
+                try:
+                    presentation = localized_cue(
+                        record,
+                        command,
+                        locale_catalog.canonical_locale,
+                        catalog=locale_catalog,
+                        strict=True,
+                    )
+                    if presentation["display_cue"] != resolve_phrase(record, command):
+                        result.add(
+                            "error",
+                            "command-display-cue-mismatch",
+                            "explicit source-locale display cue differs from canonical phrase",
+                            command.id,
+                        )
+                    if (
+                        command.observed_phrase
+                        and presentation["spoken_cue"] != command.observed_phrase["text"]
+                    ):
+                        result.add(
+                            "error",
+                            "command-spoken-cue-mismatch",
+                            "explicit spoken binding differs from current observed teaching",
+                            command.id,
+                        )
+                except OCFError as exc:
+                    result.add("error", "command-spoken-cue-binding", str(exc), command.id)
             if command.id in seen_ids:
                 result.add(
                     "error",
@@ -620,7 +653,25 @@ def validate_narration_usage(
     if not usage["keyed"]:
         return result
     canonical = catalog.canonical
-    commands = known_commands() if records is None else known_commands(records)
+    collection = load_all_functions() if records is None else records
+    commands = known_commands(collection)
+    from .commands import reviewed_spoken_values
+
+    referenced_owners = {
+        owner
+        for owner in [
+            data.get("function_id"),
+            *(event.get("function_id") for event in iter_events(data)),
+        ]
+        if isinstance(owner, str)
+    }
+    for owner in collection:
+        if owner.id not in referenced_owners:
+            continue
+        try:
+            commands.update(reviewed_spoken_values(owner, document_locale(data), catalog=catalog))
+        except LocalizationError as exc:
+            result.add("error", "narration-command-binding", str(exc), str(path))
     for event in iter_events(data):
         event_id = str(event.get("id", "?"))
         key = event.get("narration_key")
@@ -652,7 +703,7 @@ def validate_narration_usage(
                     "error",
                     "narration-command-invalid",
                     f"event {event_id} passes {value!r} for {name}, which is not a "
-                    "canonical OCF command",
+                    "declared canonical or reviewed spoken OCF command",
                     str(path),
                 )
     locale = document_locale(data)
@@ -687,12 +738,9 @@ def validate_command_ownership(
 ) -> ValidationResult:
     """Commands used by keyed explanations belong to an identified function."""
     result = ValidationResult()
-    injected_records = records is not None
     collection = load_all_functions() if records is None else records
-    records = {record.id: record for record in collection}
-    vocabulary = sorted(
-        known_commands(collection) if injected_records else known_commands(), key=len, reverse=True
-    )
+    records_by_id = {record.id: record for record in collection}
+    vocabulary = sorted(known_commands(collection), key=len, reverse=True)
     for event in iter_events(data):
         variables = _event_variables(event, result, path)
         commands = {
@@ -718,7 +766,7 @@ def validate_command_ownership(
         if not commands:
             continue
         owner = event.get("function_id") or data.get("function_id")
-        record = records.get(owner) if isinstance(owner, str) else None
+        record = records_by_id.get(owner) if isinstance(owner, str) else None
         if record is None:
             result.add(
                 "error",
@@ -736,6 +784,14 @@ def validate_command_ownership(
                 allowed = [(record.data.get("lifecycle", {}).get("release") or {}).get("command")]
             else:
                 allowed = [record.canonical_command] + record.command_modes
+                from .commands import reviewed_spoken_values
+
+                try:
+                    allowed += list(
+                        reviewed_spoken_values(record, document_locale(data), catalog=catalog)
+                    )
+                except LocalizationError as exc:
+                    result.add("error", "narration-command-binding", str(exc), str(path))
             if command not in allowed:
                 result.add(
                     "error",

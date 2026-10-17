@@ -5,12 +5,12 @@
   },
   "defaults": {
     "file": "_shared.json",
-    "sha256": "cbe06d1f862a4e1e3fbb6f48e9c05b770c88fa9fc40e30a007a4c25f6d38f1f2"
+    "sha256": "eae0d2d60cd94c899d9673d25637db9d674b64580ac9a3af080e9fd1ec198925"
   },
   "function_id": "OCF-EXP-001",
   "generation": {
     "binding_sha256": "dd09511739c9a2148628da701c0cdc1f479a7efb5ef5dc2e47c7110683bb55ea",
-    "semantic_plan_sha256": "41abb16d9fbf3d7f5c6c024e5f490e7369dfa8c24a683e813f1823c30f53a472"
+    "semantic_plan_sha256": "a7facf79a97eb4e544fb8a2fdaf14f4ba8d26f885cba9977c58ff7b1adea76fe"
   },
   "generator": "ocf.audio.plan/1",
   "locale": "en-US",
@@ -21,8 +21,8 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "32a2fba7dc6754b73eff9b1194f672f6761ca62aeb32dbb462c54ac2ae1c5933",
-      "version": "1.2.0"
+      "text_sha256": "0a06b27050830d6fa36f437579fee509b9518ba6a5d50e357d80786db6a112ca",
+      "version": "1.2.1"
     },
     {
       "fallback": false,
@@ -30,8 +30,8 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "8250a18acc38c42206c22db0c6f879ccd161353944bbb86e567f8168676faf6c",
-      "version": "1.2.0"
+      "text_sha256": "025a052d05f536dcd341c349513d625a7676f1552890b171dd3da3fb8d78243c",
+      "version": "1.2.1"
     },
     {
       "fallback": false,

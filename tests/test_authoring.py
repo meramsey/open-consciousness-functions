@@ -89,6 +89,30 @@ def test_function_resources_and_profiles_complete_and_navigate(workspace):
 
 
 @pytest.mark.integration
+def test_explicit_spoken_binding_navigates_unsaved_narration_not_ui_label(workspace):
+    service, _ = workspace
+    path = service.root / "functions/foundation/focus.yaml"
+    before = path.read_bytes()
+    data = yaml_safe_load(path.read_text(encoding="utf-8"))
+    data["commands"][0]["localization"]["spoken_cue_key"] = "test.guidance"
+    data["commands"][0]["localization"]["display_cue_key"] = "test.label"
+    from ocf_tools.utils import yaml_safe_dump
+
+    text = yaml_safe_dump(data)
+    service.update(path.as_uri(), text)
+    for key, filename in (("test.guidance", "narration.yaml"), ("test.label", "ui.yaml")):
+        _doc, _span, definitions = service.definitions_at(path.as_uri(), text.index(key) + 2)
+        assert definitions and definitions[0].path.name == filename
+    assert path.read_bytes() == before
+    text = text.replace("test.guidance", "test.missing")
+    service.update(path.as_uri(), text)
+    assert any(
+        item.code == "ocf.unknown-reference" and "test.missing" in item.message
+        for item in service.analyze(path.as_uri())
+    )
+
+
+@pytest.mark.integration
 def test_inheritance_uses_unsaved_parents_and_the_same_loader_contracts(workspace):
     service, _path = workspace
     child = write(

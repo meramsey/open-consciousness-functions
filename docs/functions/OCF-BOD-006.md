@@ -14,13 +14,15 @@ Source availability does not establish historical authentication or provenance.
 
 [Command index](../COMMAND_INDEX.md)
 
-## PLUS-HEART, BETTER, BETTER
+## PLUS-HEART-BETTER
 
 ### Primary activation command
 
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
+
+**Recorded source phrase (not the canonical phrase)**: Plus Heart Better `(canonical-match; hplus.function.ocf-bod-006.function-body)`
 
 ### Activation sequence
 

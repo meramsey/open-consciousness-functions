@@ -71,7 +71,8 @@ def test_sleep_easy_plan_preserves_canonical_resources_and_four_pass_order(monke
                 if segment["resource_key"] == resource["key"] and segment["playback"] == playback
             ]
             assert "\n\n".join(pieces) == entry.text
-    assert any('"Plus Quiet Sleep."' in segment["canonical_text"] for segment in body)
+    assert any('"Plus Sleep Easy."' in segment["canonical_text"] for segment in body)
+    assert not any("Plus Quiet Sleep" in segment["canonical_text"] for segment in body)
     assert all("PLUS-SLEEP EASY" not in segment["spoken_text"] for segment in plan["segments"])
     assert plan["pacing"]["id"] == "sleep"
     assert plan["estimated_duration_seconds"] > plan["pacing"]["ending_silence_s"]

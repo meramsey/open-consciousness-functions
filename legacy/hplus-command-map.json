@@ -21,12 +21,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     },
     {
       "canonical_commands": [
-        "PLUS-FLOW BETTER"
+        "PLUS-BRAIN FLOW"
       ],
-      "canonical_name": "Brain: Repairs & Maintenance",
+      "canonical_name": "Brain Flow",
       "command_review": "approved",
       "command_status": "unchanged",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-FLOW BETTER"
       ],
@@ -71,10 +71,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "canonical_commands": [
         "PLUS-DETOX"
       ],
-      "canonical_name": "De-Tox: Body",
-      "command_review": "review-required",
+      "canonical_name": "Detox",
+      "command_review": "approved",
       "command_status": "proposed",
-      "compatibility": "bridge-trainable",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-CLEAN, CLEAR"
       ],
@@ -101,12 +101,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     },
     {
       "canonical_commands": [
-        "PLUS-HEART, BETTER, BETTER"
+        "PLUS-HEART-BETTER"
       ],
       "canonical_name": "Heart: Repairs & Maintenance",
       "command_review": "approved",
       "command_status": "unchanged",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-HEART, BETTER, BETTER"
       ],
@@ -149,12 +149,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     },
     {
       "canonical_commands": [
-        "PLUS-BREATH BETTER"
+        "PLUS-BREATHE BETTER"
       ],
-      "canonical_name": "Lungs: Repairs & Maintenance",
+      "canonical_name": "Breathe Better",
       "command_review": "approved",
       "command_status": "unchanged",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-BREATH BETTER"
       ],
@@ -446,12 +446,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     },
     {
       "canonical_commands": [
-        "PLUS-CLEAR"
+        "PLUS-OFFLOAD"
       ],
-      "canonical_name": "Off-Loading",
-      "command_review": "review-required",
+      "canonical_name": "Offload",
+      "command_review": "approved",
       "command_status": "proposed",
-      "compatibility": "bridge-trainable",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-FADE, FADE"
       ],
@@ -462,12 +462,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     },
     {
       "canonical_commands": [
-        "PLUS-PROFILE, PROFILE"
+        "PLUS-EMPATHIZE"
       ],
-      "canonical_name": "Empathizing",
+      "canonical_name": "Empathize",
       "command_review": "approved",
       "command_status": "unchanged",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-PROFILE, PROFILE"
       ],
@@ -478,12 +478,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     },
     {
       "canonical_commands": [
-        "PLUS-PROGRAM"
+        "PLUS-MANIFEST"
       ],
-      "canonical_name": "Mobius West",
-      "command_review": "review-required",
+      "canonical_name": "Manifest",
+      "command_review": "approved",
       "command_status": "proposed",
-      "compatibility": "bridge-trainable",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-CHANGE, CHANGE"
       ],
@@ -494,13 +494,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     },
     {
       "canonical_commands": [
-        "PLUS-ZONE",
+        "PLUS-INSULATE",
         "PLUS-CANCEL"
       ],
-      "canonical_name": "Zoning",
-      "command_review": "review-required",
+      "canonical_name": "Insulate",
+      "command_review": "approved",
       "command_status": "proposed",
-      "compatibility": "bridge-trainable",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-INSULATE, INSULATE",
         "PLUS-CANCEL"
@@ -640,12 +640,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     },
     {
       "canonical_commands": [
-        "PLUS-STRONG"
+        "PLUS-INNER POWER"
       ],
-      "canonical_name": "Eight-Great",
-      "command_review": "review-required",
+      "canonical_name": "Inner Power",
+      "command_review": "approved",
       "command_status": "proposed",
-      "compatibility": "bridge-trainable",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-EIGHT, GREAT"
       ],
@@ -856,12 +856,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     },
     {
       "canonical_commands": [
-        "PLUS-KNOW"
+        "PLUS-SLEEP INSIGHT"
       ],
-      "canonical_name": "Wake/Know",
-      "command_review": "review-required",
+      "canonical_name": "Sleep Insight",
+      "command_review": "approved",
       "command_status": "proposed",
-      "compatibility": "bridge-trainable",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-SLEEP, HELP"
       ],
@@ -875,9 +875,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "PLUS-SLEEP EASY"
       ],
       "canonical_name": "Sleep Easy",
-      "command_review": "review-required",
+      "command_review": "approved",
       "command_status": "proposed",
-      "compatibility": "bridge-trainable",
+      "compatibility": "historical-lookup",
       "legacy_commands": [
         "PLUS-QUIET, SLEEP"
       ],

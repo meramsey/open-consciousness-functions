@@ -1,8 +1,8 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Zoning
+# Insulate
 
-**Purpose**: Insulates against unwanted influence; cancels the zoning state via PLUS-CANCEL.
+**Purpose**: Establishes an adjustable whole-body zone of temperature comfort; Cancel ends the current adjustment and Release places the selected application on hold.
 
 **Function persistence**: Temporary (`temporary`)
 
@@ -10,11 +10,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 Source availability does not establish historical authentication or provenance.
 
-**Command review state**: Review required (`review-required`)
+**Command review state**: Approved (`approved`)
 
 [Command index](../COMMAND_INDEX.md)
 
-## PLUS-ZONE
+## PLUS-INSULATE
 
 ### Primary activation command
 
@@ -22,7 +22,7 @@ Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Recorded source phrase (not the canonical phrase)**: Plus Insulate Insulate `(legacy-form; hplus.function.ocf-exp-002.function-body)`
+**Recorded source phrase (not the canonical phrase)**: Plus Insulate `(canonical-match; hplus.function.ocf-exp-002.function-body)`
 
 ### Activation sequence
 
@@ -49,21 +49,13 @@ This command cancels the current adjustment.
 
 ### Related commands
 
-- cancels: `PLUS-ZONE`
-
-## PLUS-INSULATE, INSULATE
-
-### Legacy compatibility phrase
-
-Compatibility phrase retained by the registry; historical authentication is not implied.
-
-This is a compatibility phrase, not a new canonical command.
+- cancels: `PLUS-INSULATE`
 
 ## Plus Release
 
 ### Release command
 
-Places Zoning on hold; PLUS-CANCEL ends the current adjustment.
+Places Insulate on hold; PLUS-CANCEL ends the current adjustment.
 
 This command releases or suspends the current application as documented.
 
@@ -77,6 +69,6 @@ This command releases or suspends the current application as documented.
 
 ### Related commands
 
-- releases: `PLUS-ZONE`
+- releases: `PLUS-INSULATE`
 
 Canonical command phrases are shown exactly as registered and are not translated. Script and legacy phrase differences are shown separately.

@@ -192,6 +192,7 @@
           "enum": [
             "unchanged",
             "alias-listed",
+            "historical-lookup",
             "bridge-trainable",
             "canonical-first",
             "legacy-first",
@@ -340,6 +341,20 @@
       "type": "array",
       "items": { "$ref": "#/definitions/commandRecord" },
       "uniqueItems": true
+    },
+    "historical_lookup": {
+      "description": "Discovery-only former vocabulary. Never an active spoken alias or target selector.",
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["text", "kind", "decision"],
+        "properties": {
+          "text": {"type": "string", "minLength": 1},
+          "kind": {"enum": ["former-title", "former-primary", "former-teaching", "legacy-phrase"]},
+          "command_id": {"$ref": "#/definitions/commandId"},
+          "decision": {"type": "string", "minLength": 1}
+        }
+      }
     },
     "command_phrases": {
       "description": "Phrase owners for special commands that have no existing primary, mode, legacy, alias, or lifecycle phrase field.",
@@ -517,6 +532,7 @@
           "enum": ["activation", "mode", "increase", "decrease", "retrieval", "close", "cancel", "release", "access-close", "legacy-alias", "auxiliary"]
         },
         "designation": { "type": "string", "enum": ["primary", "secondary", "special"] },
+        "availability": {"type": "string", "enum": ["active", "historical-lookup"], "default": "active"},
         "effect_scope_ref": { "type": "string", "const": "lifecycle.persistence" },
         "procedure": {
           "type": "object",
@@ -563,7 +579,9 @@
             "label_key": { "$ref": "#/definitions/localizationKey" },
             "usage_key": { "$ref": "#/definitions/localizationKey" },
             "purpose_key": { "$ref": "#/definitions/localizationKey" },
-            "explanation_key": { "$ref": "#/definitions/localizationKey" }
+            "explanation_key": { "$ref": "#/definitions/localizationKey" },
+            "display_cue_key": { "$ref": "#/definitions/localizationKey" },
+            "spoken_cue_key": { "$ref": "#/definitions/localizationKey", "description": "Complete explicitly reviewed spoken realization; distinct from the interface role label." }
           }
         },
         "documentation": {

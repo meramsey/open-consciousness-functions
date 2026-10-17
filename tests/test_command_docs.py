@@ -27,7 +27,8 @@ def test_localized_command_data_preserves_canonical_phrases_and_fallback_provena
     sleep = next(item for item in index["functions"] if item["function_id"] == "OCF-SLP-005")
     activation = next(item for item in sleep["commands"] if item["designation"] == "primary")
     assert activation["phrase"] == "PLUS-SLEEP EASY"
-    assert activation["observed_phrase"]["text"] == "Plus Quiet Sleep"
+    assert activation["observed_phrase"]["text"] == "Plus Sleep Easy"
+    assert activation["cue_presentation"]["binding_status"] == "requires-locale-review"
 
     rendered = render_command_index(index)
     fallback_key = "command.guide.fallback-note"

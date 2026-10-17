@@ -1,8 +1,6 @@
 aliases:
-  commands:
-  - PLUS-CHANGE, CHANGE
-  command_ids:
-  - OCF-CMD-EXP-001-LEGACY-01
+  command_ids: []
+  commands: []
   names:
   - Mobius West
 applications: []
@@ -18,57 +16,10 @@ audio:
   script_status: approved
 canonical:
   command:
-    modes: []
     mode_ids: []
-    primary: PLUS-PROGRAM
-  name: Mobius West
-commands:
-- id: OCF-CMD-EXP-001-PRIMARY
-  function_id: OCF-EXP-001
-  phrase_ref:
-    source: canonical-primary
-  role: activation
-  designation: primary
-  localization:
-    label_key: commands.ocf-cmd-exp-001-primary.label
-    usage_key: commands.ocf-cmd-exp-001-primary.usage
-    purpose_key: functions.ocf-exp-001.purpose
-    explanation_key: commands.ocf-cmd-exp-001-primary.explanation
-  documentation:
-    visible: true
-    order: 1
-  effect_scope_ref: lifecycle.persistence
-  procedure:
-    ref: OCF-PROC-INHALE-HOLD
-    status: documented
-    evidence_keys:
-    - hplus.function.ocf-exp-001.function-body
-    before_steps:
-    - id: select-outcome
-      operation: select-intention
-      localization_key: command.procedure.select-intention
-  relationships: {}
-  observed_phrase:
-    text: Plus Change Change
-    narration_key: hplus.function.ocf-exp-001.function-body
-    relationship: legacy-form
-- id: OCF-CMD-EXP-001-LEGACY-01
-  function_id: OCF-EXP-001
-  phrase_ref:
-    source: legacy-command
-    command_id: OCF-CMD-EXP-001-LEGACY-01
-  role: legacy-alias
-  designation: secondary
-  localization:
-    label_key: commands.ocf-cmd-exp-001-legacy-01.label
-    usage_key: commands.ocf-cmd-exp-001-legacy-01.usage
-    purpose_key: functions.ocf-exp-001.purpose
-    explanation_key: commands.ocf-cmd-exp-001-legacy-01.explanation
-  documentation:
-    visible: true
-    order: 101
-  effect_scope_ref: lifecycle.persistence
-  relationships: {}
+    modes: []
+    primary: PLUS-MANIFEST
+  name: Manifest
 chains: []
 claims:
   intended_effects: []
@@ -78,20 +29,80 @@ classification:
   primary_domain: experimental
   secondary_domains:
   - foundation
+commands:
+- designation: primary
+  documentation:
+    order: 1
+    visible: true
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-EXP-001
+  id: OCF-CMD-EXP-001-PRIMARY
+  localization:
+    display_cue_key: commands.ocf-cmd-exp-001-primary.display-cue
+    explanation_key: commands.ocf-cmd-exp-001-primary.explanation
+    label_key: commands.ocf-cmd-exp-001-primary.label
+    purpose_key: functions.ocf-exp-001.purpose
+    spoken_cue_key: commands.ocf-cmd-exp-001-primary.spoken-cue
+    usage_key: commands.ocf-cmd-exp-001-primary.usage
+  observed_phrase:
+    narration_key: hplus.function.ocf-exp-001.function-body
+    relationship: canonical-match
+    text: Plus Manifest
+  phrase_ref:
+    source: canonical-primary
+  procedure:
+    before_steps:
+    - id: select-outcome
+      localization_key: command.procedure.select-intention
+      operation: select-intention
+    evidence_keys:
+    - hplus.function.ocf-exp-001.function-body
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+  relationships: {}
+  role: activation
+- availability: historical-lookup
+  designation: secondary
+  documentation:
+    order: 101
+    visible: false
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-EXP-001
+  id: OCF-CMD-EXP-001-LEGACY-01
+  localization:
+    explanation_key: commands.ocf-cmd-exp-001-legacy-01.explanation
+    label_key: commands.ocf-cmd-exp-001-legacy-01.label
+    purpose_key: functions.ocf-exp-001.purpose
+    usage_key: commands.ocf-cmd-exp-001-legacy-01.usage
+  phrase_ref:
+    command_id: OCF-CMD-EXP-001-LEGACY-01
+    source: legacy-command
+  relationships: {}
+  role: legacy-alias
 companions: []
 compatibility:
-  legacy_commands:
-  - PLUS-CHANGE, CHANGE
-  rationale: Legacy two-word cue PLUS-CHANGE, CHANGE is retained; concise cue PLUS-PROGRAM is proposed
-    for review.
-  state: bridge-trainable
+  rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
+    operational commands remain unchanged.
+  state: historical-lookup
 contributor:
   contact: null
   name: null
 documentation:
-  title_key: functions.ocf-exp-001.title
-  short_description_key: functions.ocf-exp-001.short-description
   purpose_key: functions.ocf-exp-001.purpose
+  short_description_key: functions.ocf-exp-001.short-description
+  title_key: functions.ocf-exp-001.title
+historical_lookup:
+- decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-title
+  text: Mobius West
+- command_id: OCF-CMD-EXP-001-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-primary
+  text: PLUS-PROGRAM
+- command_id: OCF-CMD-EXP-001-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-teaching
+  text: Plus Change Change
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -115,12 +126,14 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: review-required
+  command_review: approved
   reimplementation_status: planned
 purpose:
-  community_description: Legacy 'change' practice for breaking personal loops; proposed concise cue PLUS-PROGRAM.
+  community_description: Sets a consciously selected future condition and completion time through intention
+    and total-self alignment.
   source_description: null
-  summary: Legacy 'change' practice for breaking personal loops; proposed concise cue PLUS-PROGRAM.
+  summary: Sets a consciously selected future condition and completion time through intention and total-self
+    alignment.
 safety:
   level: general
   medical_relevance: false

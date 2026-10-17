@@ -13,13 +13,13 @@ Command-design review generated from the canonical function records.
 | OCF ID | Legacy name | Legacy command | Canonical | Modes | Review | Compat |
 |---|---|---|---|---|---|---|
 | `OCF-AUT-001` | SEE-BE | `PLUS-AUTOMATE` | `PLUS-AUTOMATE` |  | approved | unchanged |
-| `OCF-BOD-001` | BRAIN: REPAIRS & MAINTENANCE | `PLUS-FLOW BETTER` | `PLUS-FLOW BETTER` |  | approved | unchanged |
+| `OCF-BOD-001` | BRAIN: REPAIRS & MAINTENANCE | `PLUS-FLOW BETTER` | `PLUS-BRAIN FLOW` |  | approved | historical-lookup |
 | `OCF-BOD-002` | CIRCULATION | `PLUS-FLOW SMOOTH` | `PLUS-FLOW SMOOTH` |  | approved | unchanged |
 | `OCF-BOD-005` | EAT/NO EAT | `PLUS-SATISFIED, SUPPLIED` | `PLUS-SATISFIED, SUPPLIED` |  | approved | unchanged |
-| `OCF-BOD-006` | HEART: REPAIRS & MAINTENANCE | `PLUS-HEART, BETTER, BETTER` | `PLUS-HEART, BETTER, BETTER` |  | approved | unchanged |
+| `OCF-BOD-006` | HEART: REPAIRS & MAINTENANCE | `PLUS-HEART, BETTER, BETTER` | `PLUS-HEART-BETTER` |  | approved | historical-lookup |
 | `OCF-BOD-007` | HYPERTENSION | `PLUS-BALANCE-BLOODPRESSURE` | `PLUS-BALANCE-BLOODPRESSURE` |  | approved | unchanged |
 | `OCF-BOD-008` | IMMUNIZING | `PLUS-ALERT, DESTROY` | `PLUS-ALERT, DESTROY` |  | approved | unchanged |
-| `OCF-BOD-009` | LUNGS: REPAIRS & MAINTENANCE | `PLUS-BREATH BETTER` | `PLUS-BREATH BETTER` |  | approved | unchanged |
+| `OCF-BOD-009` | LUNGS: REPAIRS & MAINTENANCE | `PLUS-BREATH BETTER` | `PLUS-BREATHE BETTER` |  | approved | historical-lookup |
 | `OCF-BOD-011` | PASSAGES | `PLUS-EQUALIZE-HARMONIZE` | `PLUS-EQUALIZE-HARMONIZE` |  | approved | unchanged |
 | `OCF-BOD-013` | TUNE-UP | `PLUS-BALANCE, HEAL` | `PLUS-BALANCE, HEAL` |  | approved | unchanged |
 | `OCF-COG-001` | ACCESS TO INFORMATION | `PLUS-RETRIEVE` | `PLUS-RETRIEVE` |  | approved | unchanged |
@@ -33,7 +33,7 @@ Command-design review generated from the canonical function records.
 | `OCF-EMG-001` | EMERGENCY: INJURY | `PLUS-CONTROL, BALANCE, RESTORE` | `PLUS-CONTROL, BALANCE, RESTORE` |  | approved | unchanged |
 | `OCF-EMG-002` | EMERGENCY: TOXIC | `PLUS-CLEAR, REMOVE` | `PLUS-CLEAR, REMOVE` |  | approved | unchanged |
 | `OCF-EMO-001` | LET GO | `PLUS-LET GO` | `PLUS-LET GO` |  | approved | unchanged |
-| `OCF-EMO-003` | EMPATHIZING | `PLUS-PROFILE, PROFILE` | `PLUS-PROFILE, PROFILE` |  | approved | unchanged |
+| `OCF-EMO-003` | EMPATHIZING | `PLUS-PROFILE, PROFILE` | `PLUS-EMPATHIZE` |  | approved | historical-lookup |
 | `OCF-FND-001` | ACCESS TO ENERGY | `PLUS-ENERGIZE` | `PLUS-ENERGIZE` |  | approved | unchanged |
 | `OCF-FND-002` | ATTENTION | `PLUS-FOCUS` | `PLUS-FOCUS` |  | approved | unchanged |
 | `OCF-FND-003` | RECHARGE | `PLUS-RECHARGE` | `PLUS-RECHARGE` |  | approved | unchanged |
@@ -69,21 +69,21 @@ These commands have a proposed canonical form that has not been approved. Legacy
 | OCF ID | Legacy name | Legacy command | Canonical | Modes | Review | Compat |
 |---|---|---|---|---|---|---|
 | `OCF-BOD-003` | DE-DISCOMFORT | `PLUS-55515` | `PLUS-COMFORT` |  | review-required | bridge-trainable |
-| `OCF-BOD-004` | DE-TOX: BODY | `PLUS-CLEAN, CLEAR` | `PLUS-DETOX` |  | review-required | bridge-trainable |
+| `OCF-BOD-004` | DE-TOX: BODY | `PLUS-CLEAN, CLEAR` | `PLUS-DETOX` |  | approved | historical-lookup |
 | `OCF-BOD-014` | REGENERATE | `PLUS-BUILD, LIVE` | `PLUS-REGENERATE` |  | review-required | bridge-trainable |
 | `OCF-BOD-015` | SHORT FIX | `PLUS-GO NUMB, GO NUMB` / `PLUS-RELEASE` | `PLUS-NUMB` |  | review-required | bridge-trainable |
-| `OCF-EMO-002` | OFF-LOADING | `PLUS-FADE, FADE` | `PLUS-CLEAR` |  | review-required | bridge-trainable |
-| `OCF-EXP-001` | MOBIUS WEST | `PLUS-CHANGE, CHANGE` | `PLUS-PROGRAM` |  | review-required | bridge-trainable |
-| `OCF-EXP-002` | ZONING | `PLUS-INSULATE, INSULATE` / `PLUS-CANCEL` | `PLUS-ZONE` | `PLUS-CANCEL` | review-required | bridge-trainable |
+| `OCF-EMO-002` | OFF-LOADING | `PLUS-FADE, FADE` | `PLUS-OFFLOAD` |  | approved | historical-lookup |
+| `OCF-EXP-001` | MOBIUS WEST | `PLUS-CHANGE, CHANGE` | `PLUS-MANIFEST` |  | approved | historical-lookup |
+| `OCF-EXP-002` | ZONING | `PLUS-INSULATE, INSULATE` / `PLUS-CANCEL` | `PLUS-INSULATE` | `PLUS-CANCEL` | approved | historical-lookup |
 | `OCF-LIF-001` | DE-HAB | `PLUS-NO MORE, NO MORE` | `PLUS-NO MORE, NO MORE` |  | review-required | bridge-trainable |
-| `OCF-PRF-002` | EIGHT-GREAT | `PLUS-EIGHT, GREAT` | `PLUS-STRONG` |  | review-required | bridge-trainable |
+| `OCF-PRF-002` | EIGHT-GREAT | `PLUS-EIGHT, GREAT` | `PLUS-INNER POWER` |  | approved | historical-lookup |
 | `OCF-PRF-004` | LIGHT FOOT | `PLUS-LIGHTER, LIGHTER` | `PLUS-LIGHT` |  | review-required | bridge-trainable |
 | `OCF-PRF-006` | STRONG-QUICK | `PLUS-STRONG-QUICK` | `PLUS-STRONG QUICK` |  | review-required | bridge-trainable |
 | `OCF-SLP-001` | RESTORATIVE SLEEP | `PLUS-HEAL, HEAL` | `PLUS-RESTORE` |  | review-required | bridge-trainable |
 | `OCF-SLP-002` | SLEEP | `PLUS-20-20` | `PLUS-SLEEP` |  | review-required | bridge-trainable |
 | `OCF-SLP-003` | SWEET DREAMS | `PLUS-THEME, DREAM, SLEEP` | `PLUS-DREAM` |  | review-required | bridge-trainable |
-| `OCF-SLP-004` | WAKE/KNOW | `PLUS-SLEEP, HELP` | `PLUS-KNOW` |  | review-required | bridge-trainable |
-| `OCF-SLP-005` | SLEEP EASY | `PLUS-QUIET, SLEEP` | `PLUS-SLEEP EASY` |  | review-required | bridge-trainable |
+| `OCF-SLP-004` | WAKE/KNOW | `PLUS-SLEEP, HELP` | `PLUS-SLEEP INSIGHT` |  | approved | historical-lookup |
+| `OCF-SLP-005` | SLEEP EASY | `PLUS-QUIET, SLEEP` | `PLUS-SLEEP EASY` |  | approved | historical-lookup |
 | `OCF-SLP-006` | STAY AWAKE | `PLUS-ONE, AWAKE, ALERT, ONE, ONE` | `PLUS-AWAKE` |  | review-required | bridge-trainable |
 
 Review guidance: `docs/COMMAND_GRAMMAR.md` and `docs/NAMING_GUIDELINES.md`.

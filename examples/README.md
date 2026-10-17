@@ -41,7 +41,7 @@ python -m ocf_tools.examples --check --execute-read-only
 Use an editable core installation (`python -m pip install -e .`). Generation and
 `--check` parse all leaf examples, check all tool argument contracts and validate
 all static schema examples. Source and example fingerprints make drift visible.
-The last command additionally executes a **fixed allowlist** of twelve read-only
+The last command additionally executes a **fixed allowlist** of thirteen read-only
 discovery/planning/doctor examples and validates the three dynamic schema outputs.
 It never dispatches generated placeholders. Doctor may report missing optional
 tools without invalidating its report schema. CI runs these checks from a clean
@@ -77,8 +77,22 @@ wizards can write records and plans after their normal prompts. Follow
 [function lifecycle](../docs/FUNCTION_LIFECYCLE.md) and
 [source-first authoring](../docs/SOURCE_FIRST_AUTHORING.md). Never treat proposed
 command/identifier audits as permission to rename canonical or protected data.
-Use the [read-only title–cue review guide](../docs/EDITORIAL_REVIEW.md) for the
-complete source-pinned companion proposals and their evidence boundaries.
+Use the [decision and historical-audit guide](../docs/EDITORIAL_REVIEW.md) for
+current implementation status and source-pinned proposal evidence boundaries.
+
+The [current approved migration](../docs/releases/OCF_TITLE_CUE_CURRENT.md) is a
+separate successor to those historical proposals. Current lookup is executable:
+
+```bash
+python scripts/ocf.py functions lookup "Mobius West" --locale en-US --json
+python scripts/ocf.py commands describe OCF-EXP-001 --locale en-US --json
+python scripts/tools/approved_cue_migration.py --check
+python scripts/tools/current_title_cues.py --check
+```
+
+The old name returns Manifest / PLUS-MANIFEST with a labeled historical match,
+not an active alias or an instruction to teach the old cue. These checks do not
+render audio or approve release.
 
 The session-plan wizard also has a fixture-backed **executed integration example**:
 

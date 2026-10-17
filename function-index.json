@@ -21,6 +21,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-AUT-001-PRIMARY",
+              "display_cue": "PLUS-AUTOMATE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -449,12 +456,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-FLOW BETTER",
-      "canonical_name": "Brain: Repairs & Maintenance",
+      "canonical_command": "PLUS-BRAIN FLOW",
+      "canonical_name": "Brain Flow",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-FLOW BETTER"
+          "primary": "PLUS-BRAIN FLOW"
         },
         "background": {
           "engine": "farfield",
@@ -464,6 +471,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "resolved",
+              "command_id": "OCF-CMD-BOD-001-PRIMARY",
+              "display_cue": "PLUS-BRAIN FLOW",
+              "display_fallback": false,
+              "display_locale": "en-US",
+              "requested_locale": "en-US",
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Brain Flow",
+              "spoken_cue_key": "commands.ocf-cmd-bod-001-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -474,12 +495,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-BOD-001",
             "id": "OCF-CMD-BOD-001-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-bod-001-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-bod-001-primary.explanation",
               "label_key": "commands.ocf-cmd-bod-001-primary.label",
               "purpose_key": "functions.ocf-bod-001.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-bod-001-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-bod-001-primary.usage"
             },
-            "phrase": "PLUS-FLOW BETTER",
+            "observed_phrase": {
+              "narration_key": "hplus.function.ocf-bod-001.function-body",
+              "relationship": "canonical-match",
+              "text": "Plus Brain Flow"
+            },
+            "phrase": "PLUS-BRAIN FLOW",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -794,7 +822,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Self-directed wellness practice supporting a felt sense of comfortable, balanced brain function.",
+        "purpose": "Supports balanced brain and neck circulation and maintenance, with conscious reinforcement when desired.",
         "safety": {
           "level": "health",
           "medical_relevance": true,
@@ -816,13 +844,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Brain: Repairs & Maintenance",
+        "title": "Brain Flow",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "body;foundation",
       "legacy_command": "PLUS-FLOW BETTER",
       "legacy_name": "BRAIN: REPAIRS & MAINTENANCE",
@@ -850,6 +878,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-002-PRIMARY",
+              "display_cue": "PLUS-FLOW SMOOTH",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -1237,6 +1272,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-003-PRIMARY",
+              "display_cue": "PLUS-COMFORT",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -1305,6 +1347,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-003-LEGACY-01",
+              "display_cue": "PLUS-55515",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,
@@ -1637,7 +1686,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-DETOX",
-      "canonical_name": "De-Tox: Body",
+      "canonical_name": "Detox",
       "capabilities": {
         "activation": {
           "modes": [],
@@ -1651,6 +1700,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "resolved",
+              "command_id": "OCF-CMD-BOD-004-PRIMARY",
+              "display_cue": "PLUS-DETOX",
+              "display_fallback": false,
+              "display_locale": "en-US",
+              "requested_locale": "en-US",
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Detox",
+              "spoken_cue_key": "commands.ocf-cmd-bod-004-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -1661,15 +1724,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-BOD-004",
             "id": "OCF-CMD-BOD-004-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-bod-004-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-bod-004-primary.explanation",
               "label_key": "commands.ocf-cmd-bod-004-primary.label",
               "purpose_key": "functions.ocf-bod-004.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-bod-004-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-bod-004-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-bod-004.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus Clean Clear"
+              "relationship": "canonical-match",
+              "text": "Plus Detox"
             },
             "phrase": "PLUS-DETOX",
             "phrase_ref": {
@@ -1717,30 +1782,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation"
-          },
-          {
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "permanent",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-BOD-004",
-            "id": "OCF-CMD-BOD-004-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-bod-004-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-bod-004-legacy-01.label",
-              "purpose_key": "functions.ocf-bod-004.purpose",
-              "usage_key": "commands.ocf-cmd-bod-004-legacy-01.usage"
-            },
-            "phrase": "PLUS-CLEAN, CLEAR",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-BOD-004-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias"
           }
         ],
         "content_maturity": "draft",
@@ -2010,7 +2051,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Supports a perceived sense of bodily cleansing and clarity.",
+        "purpose": "Supports the body's self-regulating cleansing, renewal, and maintenance, with conscious reinforcement when desired.",
         "safety": {
           "level": "health",
           "medical_relevance": true,
@@ -2032,13 +2073,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "De-Tox: Body",
+        "title": "Detox",
         "voice_sources": [
           "tts"
         ]
       },
-      "command_review": "review-required",
-      "compatibility": "bridge-trainable",
+      "command_review": "approved",
+      "compatibility": "historical-lookup",
       "domains": "body;lifestyle",
       "legacy_command": "PLUS-CLEAN, CLEAR",
       "legacy_name": "DE-TOX: BODY",
@@ -2066,6 +2107,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-005-PRIMARY",
+              "display_cue": "PLUS-SATISFIED, SUPPLIED",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -2436,12 +2484,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-HEART, BETTER, BETTER",
+      "canonical_command": "PLUS-HEART-BETTER",
       "canonical_name": "Heart: Repairs & Maintenance",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-HEART, BETTER, BETTER"
+          "primary": "PLUS-HEART-BETTER"
         },
         "background": {
           "engine": "farfield",
@@ -2451,6 +2499,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "resolved",
+              "command_id": "OCF-CMD-BOD-006-PRIMARY",
+              "display_cue": "PLUS-HEART-BETTER",
+              "display_fallback": false,
+              "display_locale": "en-US",
+              "requested_locale": "en-US",
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Heart Better",
+              "spoken_cue_key": "commands.ocf-cmd-bod-006-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -2461,12 +2523,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-BOD-006",
             "id": "OCF-CMD-BOD-006-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-bod-006-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-bod-006-primary.explanation",
               "label_key": "commands.ocf-cmd-bod-006-primary.label",
               "purpose_key": "functions.ocf-bod-006.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-bod-006-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-bod-006-primary.usage"
             },
-            "phrase": "PLUS-HEART, BETTER, BETTER",
+            "observed_phrase": {
+              "narration_key": "hplus.function.ocf-bod-006.function-body",
+              "relationship": "canonical-match",
+              "text": "Plus Heart Better"
+            },
+            "phrase": "PLUS-HEART-BETTER",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -2809,7 +2878,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "body",
       "legacy_command": "PLUS-HEART, BETTER, BETTER",
       "legacy_name": "HEART: REPAIRS & MAINTENANCE",
@@ -2837,6 +2906,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-007-PRIMARY",
+              "display_cue": "PLUS-BALANCE-BLOODPRESSURE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -3226,6 +3302,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-008-PRIMARY",
+              "display_cue": "PLUS-ALERT, DESTROY",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -3586,12 +3669,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-BREATH BETTER",
-      "canonical_name": "Lungs: Repairs & Maintenance",
+      "canonical_command": "PLUS-BREATHE BETTER",
+      "canonical_name": "Breathe Better",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-BREATH BETTER"
+          "primary": "PLUS-BREATHE BETTER"
         },
         "background": {
           "engine": "farfield",
@@ -3601,6 +3684,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "resolved",
+              "command_id": "OCF-CMD-BOD-009-PRIMARY",
+              "display_cue": "PLUS-BREATHE BETTER",
+              "display_fallback": false,
+              "display_locale": "en-US",
+              "requested_locale": "en-US",
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Breathe Better",
+              "spoken_cue_key": "commands.ocf-cmd-bod-009-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -3611,17 +3708,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-BOD-009",
             "id": "OCF-CMD-BOD-009-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-bod-009-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-bod-009-primary.explanation",
               "label_key": "commands.ocf-cmd-bod-009-primary.label",
               "purpose_key": "functions.ocf-bod-009.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-bod-009-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-bod-009-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-bod-009.function-body",
-              "relationship": "variant",
+              "relationship": "canonical-match",
               "text": "Plus Breathe Better"
             },
-            "phrase": "PLUS-BREATH BETTER",
+            "phrase": "PLUS-BREATHE BETTER",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -3927,7 +4026,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Self-directed wellness practice supporting easy, comfortable breathing.",
+        "purpose": "Supports efficient breathing and respiratory maintenance, with conscious reinforcement when desired.",
         "safety": {
           "level": "health",
           "medical_relevance": true,
@@ -3949,13 +4048,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Lungs: Repairs & Maintenance",
+        "title": "Breathe Better",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "body",
       "legacy_command": "PLUS-BREATH BETTER",
       "legacy_name": "LUNGS: REPAIRS & MAINTENANCE",
@@ -3985,6 +4084,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-010-PRIMARY",
+              "display_cue": "PLUS-FOOD MORE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -4058,6 +4164,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-010-FOOD-LESS",
+              "display_cue": "PLUS-FOOD LESS",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 11,
@@ -4457,6 +4570,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-011-PRIMARY",
+              "display_cue": "PLUS-EQUALIZE-HARMONIZE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -4832,6 +4952,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-012-PRIMARY",
+              "display_cue": "PLUS-SEX MORE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -4905,6 +5032,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-012-SEX-LESS",
+              "display_cue": "PLUS-SEX LESS",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 11,
@@ -4982,6 +5116,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "decrease"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-012-LEGACY-01",
+              "display_cue": "PLUS-SEX GREATER",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,
@@ -5006,6 +5147,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "legacy-alias"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-012-LEGACY-02",
+              "display_cue": "PLUS-SEX LESSER",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 102,
@@ -5352,6 +5500,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-013-PRIMARY",
+              "display_cue": "PLUS-BALANCE, HEAL",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -5742,6 +5897,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-014-PRIMARY",
+              "display_cue": "PLUS-REGENERATE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -5815,6 +5977,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-014-LEGACY-01",
+              "display_cue": "PLUS-BUILD, LIVE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,
@@ -6220,6 +6389,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-015-PRIMARY",
+              "display_cue": "PLUS-NUMB",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -6288,6 +6464,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-015-LEGACY-01",
+              "display_cue": "PLUS-GO NUMB, GO NUMB",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,
@@ -6312,6 +6495,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "legacy-alias"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-BOD-015-LEGACY-02",
+              "display_cue": "PLUS-RELEASE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 102,
@@ -6782,6 +6972,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-COG-001-PRIMARY",
+              "display_cue": "PLUS-RETRIEVE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -7144,6 +7341,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-COG-002-PRIMARY",
+              "display_cue": "PLUS-CALCULATE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -7530,6 +7734,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-COG-003-PRIMARY",
+              "display_cue": "PLUS-OPEN",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -7593,6 +7804,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-COG-003-CLOSED",
+              "display_cue": "PLUS-CLOSED",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 11,
@@ -7959,6 +8177,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-COG-004-PRIMARY",
+              "display_cue": "PLUS-IMPRINT",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -8027,6 +8252,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-COG-004-RECALL",
+              "display_cue": "PLUS-RECALL",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 11,
@@ -8070,6 +8302,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "retrieval"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-COG-004-LEGACY-01",
+              "display_cue": "PLUS-IMPRINT, IMPRINT",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,
@@ -8415,6 +8654,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-COG-005-PRIMARY",
+              "display_cue": "PLUS-OPTIONS",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -8483,6 +8729,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-COG-005-LEGACY-01",
+              "display_cue": "PLUS-OPTIONS, CHOICES",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,
@@ -8829,6 +9082,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-COG-006-PRIMARY",
+              "display_cue": "PLUS-RECALL",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -9214,6 +9474,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-COG-007-PRIMARY",
+              "display_cue": "PLUS-THINK",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -9598,6 +9865,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-COM-001-PRIMARY",
+              "display_cue": "PLUS-SPEAK UP",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -9983,6 +10257,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-EMG-001-PRIMARY",
+              "display_cue": "PLUS-CONTROL, BALANCE, RESTORE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -10418,6 +10699,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-EMG-002-PRIMARY",
+              "display_cue": "PLUS-CLEAR, REMOVE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -10853,6 +11141,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-EMO-001-PRIMARY",
+              "display_cue": "PLUS-LET GO",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -11223,12 +11518,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-CLEAR",
-      "canonical_name": "Off-Loading",
+      "canonical_command": "PLUS-OFFLOAD",
+      "canonical_name": "Offload",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-CLEAR"
+          "primary": "PLUS-OFFLOAD"
         },
         "background": {
           "engine": "farfield",
@@ -11238,6 +11533,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "resolved",
+              "command_id": "OCF-CMD-EMO-002-PRIMARY",
+              "display_cue": "PLUS-OFFLOAD",
+              "display_fallback": false,
+              "display_locale": "en-US",
+              "requested_locale": "en-US",
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Offload",
+              "spoken_cue_key": "commands.ocf-cmd-emo-002-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -11248,17 +11557,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-EMO-002",
             "id": "OCF-CMD-EMO-002-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-emo-002-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-emo-002-primary.explanation",
               "label_key": "commands.ocf-cmd-emo-002-primary.label",
               "purpose_key": "functions.ocf-emo-002.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-emo-002-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-emo-002-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-emo-002.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus Fade Fade"
+              "relationship": "canonical-match",
+              "text": "Plus Offload"
             },
-            "phrase": "PLUS-CLEAR",
+            "phrase": "PLUS-OFFLOAD",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -11310,30 +11621,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation"
-          },
-          {
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-EMO-002",
-            "id": "OCF-CMD-EMO-002-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-emo-002-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-emo-002-legacy-01.label",
-              "purpose_key": "functions.ocf-emo-002.purpose",
-              "usage_key": "commands.ocf-cmd-emo-002-legacy-01.usage"
-            },
-            "phrase": "PLUS-FADE, FADE",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-EMO-002-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias"
           }
         ],
         "content_maturity": "draft",
@@ -11602,7 +11889,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Fades and off-loads unhelpful mental load or charge; proposed concise cue PLUS-CLEAR.",
+        "purpose": "Reduces selected recurring thought and emotional-pattern interference while retaining useful memories and conscious choice.",
         "safety": {
           "level": "general",
           "medical_relevance": false,
@@ -11622,13 +11909,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Off-Loading",
+        "title": "Offload",
         "voice_sources": [
           "tts"
         ]
       },
-      "command_review": "review-required",
-      "compatibility": "bridge-trainable",
+      "command_review": "approved",
+      "compatibility": "historical-lookup",
       "domains": "emotion;foundation",
       "legacy_command": "PLUS-FADE, FADE",
       "legacy_name": "OFF-LOADING",
@@ -11641,12 +11928,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-PROFILE, PROFILE",
-      "canonical_name": "Empathizing",
+      "canonical_command": "PLUS-EMPATHIZE",
+      "canonical_name": "Empathize",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-PROFILE, PROFILE"
+          "primary": "PLUS-EMPATHIZE"
         },
         "background": {
           "engine": "farfield",
@@ -11656,6 +11943,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "resolved",
+              "command_id": "OCF-CMD-EMO-003-PRIMARY",
+              "display_cue": "PLUS-EMPATHIZE",
+              "display_fallback": false,
+              "display_locale": "en-US",
+              "requested_locale": "en-US",
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Empathize",
+              "spoken_cue_key": "commands.ocf-cmd-emo-003-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -11666,12 +11967,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-EMO-003",
             "id": "OCF-CMD-EMO-003-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-emo-003-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-emo-003-primary.explanation",
               "label_key": "commands.ocf-cmd-emo-003-primary.label",
               "purpose_key": "functions.ocf-emo-003.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-emo-003-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-emo-003-primary.usage"
             },
-            "phrase": "PLUS-PROFILE, PROFILE",
+            "observed_phrase": {
+              "narration_key": "hplus.function.ocf-emo-003.function-body",
+              "relationship": "canonical-match",
+              "text": "Plus Empathize"
+            },
+            "phrase": "PLUS-EMPATHIZE",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -12035,7 +12343,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Builds a felt profile of another person's experience.",
+        "purpose": "Develops consciously directed understanding and communication with another being through sensory, intuitive, and total-self awareness.",
         "safety": {
           "level": "general",
           "medical_relevance": false,
@@ -12055,13 +12363,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Empathizing",
+        "title": "Empathize",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "emotion;communication",
       "legacy_command": "PLUS-PROFILE, PROFILE",
       "legacy_name": "EMPATHIZING",
@@ -12074,12 +12382,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-PROGRAM",
-      "canonical_name": "Mobius West",
+      "canonical_command": "PLUS-MANIFEST",
+      "canonical_name": "Manifest",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-PROGRAM"
+          "primary": "PLUS-MANIFEST"
         },
         "background": {
           "engine": "farfield",
@@ -12089,6 +12397,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "resolved",
+              "command_id": "OCF-CMD-EXP-001-PRIMARY",
+              "display_cue": "PLUS-MANIFEST",
+              "display_fallback": false,
+              "display_locale": "en-US",
+              "requested_locale": "en-US",
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Manifest",
+              "spoken_cue_key": "commands.ocf-cmd-exp-001-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -12099,17 +12421,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-EXP-001",
             "id": "OCF-CMD-EXP-001-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-exp-001-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-exp-001-primary.explanation",
               "label_key": "commands.ocf-cmd-exp-001-primary.label",
               "purpose_key": "functions.ocf-exp-001.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-exp-001-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-exp-001-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-exp-001.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus Change Change"
+              "relationship": "canonical-match",
+              "text": "Plus Manifest"
             },
-            "phrase": "PLUS-PROGRAM",
+            "phrase": "PLUS-MANIFEST",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -12156,30 +12480,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation"
-          },
-          {
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-EXP-001",
-            "id": "OCF-CMD-EXP-001-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-exp-001-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-exp-001-legacy-01.label",
-              "purpose_key": "functions.ocf-exp-001.purpose",
-              "usage_key": "commands.ocf-cmd-exp-001-legacy-01.usage"
-            },
-            "phrase": "PLUS-CHANGE, CHANGE",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-EXP-001-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias"
           }
         ],
         "content_maturity": "draft",
@@ -12449,7 +12749,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Legacy 'change' practice for breaking personal loops; proposed concise cue PLUS-PROGRAM.",
+        "purpose": "Sets a consciously selected future condition and completion time through intention and total-self alignment.",
         "safety": {
           "level": "general",
           "medical_relevance": false,
@@ -12469,13 +12769,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Mobius West",
+        "title": "Manifest",
         "voice_sources": [
           "tts"
         ]
       },
-      "command_review": "review-required",
-      "compatibility": "bridge-trainable",
+      "command_review": "approved",
+      "compatibility": "historical-lookup",
       "domains": "experimental;foundation",
       "legacy_command": "PLUS-CHANGE, CHANGE",
       "legacy_name": "MOBIUS WEST",
@@ -12488,14 +12788,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-ZONE",
-      "canonical_name": "Zoning",
+      "canonical_command": "PLUS-INSULATE",
+      "canonical_name": "Insulate",
       "capabilities": {
         "activation": {
           "modes": [
             "PLUS-CANCEL"
           ],
-          "primary": "PLUS-ZONE"
+          "primary": "PLUS-INSULATE"
         },
         "background": {
           "engine": "farfield",
@@ -12505,6 +12805,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "resolved",
+              "command_id": "OCF-CMD-EXP-002-PRIMARY",
+              "display_cue": "PLUS-INSULATE",
+              "display_fallback": false,
+              "display_locale": "en-US",
+              "requested_locale": "en-US",
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Insulate",
+              "spoken_cue_key": "commands.ocf-cmd-exp-002-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -12515,17 +12829,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-EXP-002",
             "id": "OCF-CMD-EXP-002-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-exp-002-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-exp-002-primary.explanation",
               "label_key": "commands.ocf-cmd-exp-002-primary.label",
               "purpose_key": "functions.ocf-exp-002.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-exp-002-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-exp-002-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-exp-002.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus Insulate Insulate"
+              "relationship": "canonical-match",
+              "text": "Plus Insulate"
             },
-            "phrase": "PLUS-ZONE",
+            "phrase": "PLUS-INSULATE",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -12574,6 +12890,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-EXP-002-CANCEL",
+              "display_cue": "PLUS-CANCEL",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 11,
@@ -12632,30 +12955,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "cancel"
           },
           {
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-EXP-002-RELEASE",
+              "display_cue": "Plus Release",
+              "requested_locale": "en-US",
+              "spoken_cue": null
             },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-EXP-002",
-            "id": "OCF-CMD-EXP-002-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-exp-002-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-exp-002-legacy-01.label",
-              "purpose_key": "functions.ocf-exp-002.purpose",
-              "usage_key": "commands.ocf-cmd-exp-002-legacy-01.usage"
-            },
-            "phrase": "PLUS-INSULATE, INSULATE",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-EXP-002-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias"
-          },
-          {
             "designation": "special",
             "documentation": {
               "order": 200,
@@ -13051,7 +13357,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Insulates against unwanted influence; cancels the zoning state via PLUS-CANCEL.",
+        "purpose": "Establishes an adjustable whole-body zone of temperature comfort; Cancel ends the current adjustment and Release places the selected application on hold.",
         "safety": {
           "level": "general",
           "medical_relevance": false,
@@ -13071,13 +13377,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Zoning",
+        "title": "Insulate",
         "voice_sources": [
           "tts"
         ]
       },
-      "command_review": "review-required",
-      "compatibility": "bridge-trainable",
+      "command_review": "approved",
+      "compatibility": "historical-lookup",
       "domains": "experimental",
       "legacy_command": "PLUS-INSULATE, INSULATE / PLUS-CANCEL",
       "legacy_name": "ZONING",
@@ -13105,6 +13411,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-FND-001-PRIMARY",
+              "display_cue": "PLUS-ENERGIZE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -13153,6 +13466,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-FND-001-ACCESS-CLOSE",
+              "display_cue": "Plus Release Eleven Access",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "special",
             "documentation": {
               "order": 200,
@@ -13510,6 +13830,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-FND-002-PRIMARY",
+              "display_cue": "PLUS-FOCUS",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -13894,6 +14221,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-FND-003-PRIMARY",
+              "display_cue": "PLUS-RECHARGE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -14279,6 +14613,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-FND-004-PRIMARY",
+              "display_cue": "PLUS-RELAX",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -14337,6 +14678,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-FND-004-LEGACY-01",
+              "display_cue": "PLUS-RELAX, RELAX",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,
@@ -14711,6 +15059,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-FND-005-PRIMARY",
+              "display_cue": "PLUS-RESET",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -14779,6 +15134,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-FND-005-LEGACY-01",
+              "display_cue": "PLUS-RESET, RESET",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,
@@ -15124,6 +15486,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-FND-006-PRIMARY",
+              "display_cue": "PLUS-RELEASE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -15567,6 +15936,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-LIF-001-PRIMARY",
+              "display_cue": "PLUS-NO MORE, NO MORE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -15951,6 +16327,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-PRF-001-PRIMARY",
+              "display_cue": "PLUS-DO-THIS-NOW",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -16320,12 +16703,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-STRONG",
-      "canonical_name": "Eight-Great",
+      "canonical_command": "PLUS-INNER POWER",
+      "canonical_name": "Inner Power",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-STRONG"
+          "primary": "PLUS-INNER POWER"
         },
         "background": {
           "engine": "farfield",
@@ -16335,6 +16718,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "resolved",
+              "command_id": "OCF-CMD-PRF-002-PRIMARY",
+              "display_cue": "PLUS-INNER POWER",
+              "display_fallback": false,
+              "display_locale": "en-US",
+              "requested_locale": "en-US",
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Inner Power",
+              "spoken_cue_key": "commands.ocf-cmd-prf-002-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -16345,17 +16742,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-PRF-002",
             "id": "OCF-CMD-PRF-002-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-prf-002-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-prf-002-primary.explanation",
               "label_key": "commands.ocf-cmd-prf-002-primary.label",
               "purpose_key": "functions.ocf-prf-002.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-prf-002-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-prf-002-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-prf-002.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus Eight Great"
+              "relationship": "canonical-match",
+              "text": "Plus Inner Power"
             },
-            "phrase": "PLUS-STRONG",
+            "phrase": "PLUS-INNER POWER",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -16402,30 +16801,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation"
-          },
-          {
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "permanent",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-PRF-002",
-            "id": "OCF-CMD-PRF-002-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-prf-002-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-prf-002-legacy-01.label",
-              "purpose_key": "functions.ocf-prf-002.purpose",
-              "usage_key": "commands.ocf-cmd-prf-002-legacy-01.usage"
-            },
-            "phrase": "PLUS-EIGHT, GREAT",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-PRF-002-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias"
           }
         ],
         "content_maturity": "draft",
@@ -16694,7 +17069,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Legacy vitality practice associated with the phrase EIGHT, GREAT; proposed concise cue PLUS-STRONG.",
+        "purpose": "Strengthens recognition and expression of total-self strength, unity, resources, and power throughout daily life.",
         "safety": {
           "level": "general",
           "medical_relevance": false,
@@ -16714,13 +17089,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Eight-Great",
+        "title": "Inner Power",
         "voice_sources": [
           "tts"
         ]
       },
-      "command_review": "review-required",
-      "compatibility": "bridge-trainable",
+      "command_review": "approved",
+      "compatibility": "historical-lookup",
       "domains": "performance;body",
       "legacy_command": "PLUS-EIGHT, GREAT",
       "legacy_name": "EIGHT-GREAT",
@@ -16748,6 +17123,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-PRF-003-PRIMARY",
+              "display_cue": "PLUS-SMOOTH, FAST",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -17132,6 +17514,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-PRF-004-PRIMARY",
+              "display_cue": "PLUS-LIGHT",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -17201,6 +17590,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-PRF-004-LEGACY-01",
+              "display_cue": "PLUS-LIGHTER, LIGHTER",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,
@@ -17604,6 +18000,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-PRF-005-PRIMARY",
+              "display_cue": "PLUS-THIS DAY",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -18047,6 +18450,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-PRF-006-PRIMARY",
+              "display_cue": "PLUS-STRONG QUICK",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -18111,6 +18521,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-PRF-006-LEGACY-01",
+              "display_cue": "PLUS-STRONG-QUICK",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,
@@ -18135,6 +18552,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "legacy-alias"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-PRF-006-RELEASE",
+              "display_cue": "Plus Release",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "special",
             "documentation": {
               "order": 200,
@@ -18585,6 +19009,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SEN-001-PRIMARY",
+              "display_cue": "PLUS-HEAR MORE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -18652,6 +19083,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SEN-001-HEAR-LESS",
+              "display_cue": "PLUS-HEAR LESS",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 11,
@@ -19074,6 +19512,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SEN-002-PRIMARY",
+              "display_cue": "PLUS-SEE BETTER",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -19132,6 +19577,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SEN-002-LEGACY-01",
+              "display_cue": "PLUS-SEE BETTER",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,
@@ -19479,6 +19931,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SEN-003-PRIMARY",
+              "display_cue": "PLUS-SMELL MORE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -19546,6 +20005,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SEN-003-SMELL-LESS",
+              "display_cue": "PLUS-SMELL LESS",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 11,
@@ -19617,6 +20083,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "decrease"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SEN-003-LEGACY-01",
+              "display_cue": "PLUS-SMELL GREATER",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,
@@ -19641,6 +20114,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "legacy-alias"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SEN-003-LEGACY-02",
+              "display_cue": "PLUS-SMELL LESSER",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 102,
@@ -20046,6 +20526,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SEN-004-PRIMARY",
+              "display_cue": "PLUS-TASTE MORE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -20113,6 +20600,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SEN-004-TASTE-LESS",
+              "display_cue": "PLUS-TASTE LESS",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 11,
@@ -20184,6 +20678,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "decrease"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SEN-004-LEGACY-01",
+              "display_cue": "PLUS-TASTE GREATER",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,
@@ -20208,6 +20709,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "legacy-alias"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SEN-004-LEGACY-02",
+              "display_cue": "PLUS-TASTE LESSER",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 102,
@@ -20613,6 +21121,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SEN-005-PRIMARY",
+              "display_cue": "PLUS-TOUCH MORE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -20680,6 +21195,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SEN-005-TOUCH-LESS",
+              "display_cue": "PLUS-TOUCH LESS",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 11,
@@ -20751,6 +21273,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "decrease"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SEN-005-LEGACY-01",
+              "display_cue": "PLUS-TOUCH GREATER",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,
@@ -20775,6 +21304,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "legacy-alias"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SEN-005-LEGACY-02",
+              "display_cue": "PLUS-TOUCH LESSER",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 102,
@@ -21178,6 +21714,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SLP-001-PRIMARY",
+              "display_cue": "PLUS-RESTORE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -21247,6 +21790,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SLP-001-LEGACY-01",
+              "display_cue": "PLUS-HEAL, HEAL",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,
@@ -21593,6 +22143,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SLP-002-PRIMARY",
+              "display_cue": "PLUS-SLEEP",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -21662,6 +22219,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SLP-002-LEGACY-01",
+              "display_cue": "PLUS-20-20",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,
@@ -22006,6 +22570,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SLP-003-PRIMARY",
+              "display_cue": "PLUS-DREAM",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -22080,6 +22651,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SLP-003-LEGACY-01",
+              "display_cue": "PLUS-THEME, DREAM, SLEEP",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,
@@ -22409,12 +22987,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-KNOW",
-      "canonical_name": "Wake/Know",
+      "canonical_command": "PLUS-SLEEP INSIGHT",
+      "canonical_name": "Sleep Insight",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-KNOW"
+          "primary": "PLUS-SLEEP INSIGHT"
         },
         "background": {
           "engine": "farfield",
@@ -22424,6 +23002,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "resolved",
+              "command_id": "OCF-CMD-SLP-004-PRIMARY",
+              "display_cue": "PLUS-SLEEP INSIGHT",
+              "display_fallback": false,
+              "display_locale": "en-US",
+              "requested_locale": "en-US",
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Sleep Insight",
+              "spoken_cue_key": "commands.ocf-cmd-slp-004-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -22434,17 +23026,19 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-SLP-004",
             "id": "OCF-CMD-SLP-004-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-slp-004-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-slp-004-primary.explanation",
               "label_key": "commands.ocf-cmd-slp-004-primary.label",
               "purpose_key": "functions.ocf-slp-004.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-slp-004-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-slp-004-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-slp-004.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus Sleep Help"
+              "relationship": "canonical-match",
+              "text": "Plus Sleep Insight"
             },
-            "phrase": "PLUS-KNOW",
+            "phrase": "PLUS-SLEEP INSIGHT",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -22496,30 +23090,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation"
-          },
-          {
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-SLP-004",
-            "id": "OCF-CMD-SLP-004-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-slp-004-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-slp-004-legacy-01.label",
-              "purpose_key": "functions.ocf-slp-004.purpose",
-              "usage_key": "commands.ocf-cmd-slp-004-legacy-01.usage"
-            },
-            "phrase": "PLUS-SLEEP, HELP",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-SLP-004-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias"
           }
         ],
         "content_maturity": "draft",
@@ -22788,7 +23358,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Requests help with sleep and with knowing the right time to wake; proposed concise cue PLUS-KNOW.",
+        "purpose": "Requests an answer or constructive solution through sleep, with useful insight recognized on awakening.",
         "safety": {
           "level": "general",
           "medical_relevance": false,
@@ -22808,13 +23378,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "Wake/Know",
+        "title": "Sleep Insight",
         "voice_sources": [
           "tts"
         ]
       },
-      "command_review": "review-required",
-      "compatibility": "bridge-trainable",
+      "command_review": "approved",
+      "compatibility": "historical-lookup",
       "domains": "sleep",
       "legacy_command": "PLUS-SLEEP, HELP",
       "legacy_name": "WAKE/KNOW",
@@ -22842,6 +23412,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "resolved",
+              "command_id": "OCF-CMD-SLP-005-PRIMARY",
+              "display_cue": "PLUS-SLEEP EASY",
+              "display_fallback": false,
+              "display_locale": "en-US",
+              "requested_locale": "en-US",
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Sleep Easy",
+              "spoken_cue_key": "commands.ocf-cmd-slp-005-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -22852,15 +23436,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-SLP-005",
             "id": "OCF-CMD-SLP-005-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-slp-005-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-slp-005-primary.explanation",
               "label_key": "commands.ocf-cmd-slp-005-primary.label",
               "purpose_key": "functions.ocf-slp-005.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-slp-005-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-slp-005-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-slp-005.function-body",
-              "relationship": "conflict",
-              "text": "Plus Quiet Sleep"
+              "relationship": "canonical-match",
+              "text": "Plus Sleep Easy"
             },
             "phrase": "PLUS-SLEEP EASY",
             "phrase_ref": {
@@ -22919,30 +23505,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation"
-          },
-          {
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-SLP-005",
-            "id": "OCF-CMD-SLP-005-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-slp-005-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-slp-005-legacy-01.label",
-              "purpose_key": "functions.ocf-slp-005.purpose",
-              "usage_key": "commands.ocf-cmd-slp-005-legacy-01.usage"
-            },
-            "phrase": "PLUS-QUIET, SLEEP",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-SLP-005-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias"
           }
         ],
         "content_maturity": "pilot",
@@ -23297,7 +23859,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           }
         ],
         "preparation": [],
-        "purpose": "Promotes easy, quiet transition into sleep; proposed concise cue PLUS-SLEEP EASY.",
+        "purpose": "Supports entering, remaining in, and returning to natural sleep amid unfamiliar or distracting surroundings.",
         "safety": {
           "level": "general",
           "medical_relevance": false,
@@ -23326,8 +23888,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "tts"
         ]
       },
-      "command_review": "review-required",
-      "compatibility": "bridge-trainable",
+      "command_review": "approved",
+      "compatibility": "historical-lookup",
       "domains": "sleep",
       "legacy_command": "PLUS-QUIET, SLEEP",
       "legacy_name": "SLEEP EASY",
@@ -23355,6 +23917,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "claim_review": "pending-source-review",
         "commands": [
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SLP-006-PRIMARY",
+              "display_cue": "PLUS-AWAKE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "primary",
             "documentation": {
               "order": 1,
@@ -23424,6 +23993,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation"
           },
           {
+            "cue_presentation": {
+              "binding_status": "unbound",
+              "command_id": "OCF-CMD-SLP-006-LEGACY-01",
+              "display_cue": "PLUS-ONE, AWAKE, ALERT, ONE, ONE",
+              "requested_locale": "en-US",
+              "spoken_cue": null
+            },
             "designation": "secondary",
             "documentation": {
               "order": 101,

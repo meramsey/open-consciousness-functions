@@ -146,6 +146,9 @@ def plan_narration(
         raise OCFError(f"invalid locale {locale!r}: {exc}") from exc
     if not requested_locale:
         raise OCFError(f"invalid locale {locale!r}")
+    from .commands import cue_presentation
+
+    localized_primary_cue = cue_presentation(record, requested_locale, catalog=catalog, strict=True)
     voice_profile, resolved_voice = (
         _voice_profile(voice, requested_locale, catalog)
         if voice is not None
@@ -282,10 +285,22 @@ def plan_narration(
             "resource_key": None,
         }
 
+    if localized_primary_cue and localized_primary_cue["binding_status"] == "resolved":
+        origins = [
+            title_provenance["resolved_locale"],
+            localized_primary_cue["spoken_locale"],
+            *(row["resolved_locale"] for row in resources),
+        ]
+        if any(origin.split("-", 1)[0] != requested_locale.split("-", 1)[0] for origin in origins):
+            raise OCFError(
+                "complete localized title, cue and teaching must resolve in the requested language"
+            )
+
     return {
         "schema_version": "1.0",
         "function_id": record.id,
         "title": title,
+        "cue_presentation": localized_primary_cue,
         "title_resolution": title_provenance,
         "requested_locale": requested_locale,
         "voice_profile": {

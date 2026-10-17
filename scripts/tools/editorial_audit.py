@@ -480,10 +480,31 @@ def normalized(phrase):
     return tuple(re.findall(r"[\w]+", phrase.casefold()))
 
 
+def historical_report():
+    """Read the artifact revision, without restamping its earlier evidence SHA."""
+    recorded_at = "21e63ac6f8bf5a7bce9506f033330df967aa4f97"
+    result = workspace_run(
+        ["git", "show", recorded_at + ":docs/releases/OCF_COMMAND_NAMING_RECOMMENDATIONS.json"],
+        cwd=REPO_ROOT,
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    return json.loads(result.stdout)
+
+
 def canonical_audit():
     records = sorted(load_all_functions(), key=lambda item: item.id)
     if set(DECISIONS) != {record.id for record in records}:
         raise OCFError("editorial decisions must cover every canonical function exactly")
+    previous = historical_report()
+    if any(
+        sha256_of_file(REPO_ROOT / name) != checksum
+        for name, checksum in previous["source_sha256"].items()
+    ):
+        raise OCFError(
+            "historical editorial audit input drift; run it at its matching source checkpoint or use the current approved-cue report"
+        )
     owners = defaultdict(list)
     for record in records:
         for command in record.command_records:

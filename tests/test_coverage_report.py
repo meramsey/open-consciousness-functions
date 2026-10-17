@@ -147,7 +147,11 @@ def test_full_runner_neutralizes_selection_and_cleans_only_successful_scratch(
         return SimpleNamespace(returncode=exit_code)
 
     monkeypatch.setattr(report.subprocess, "run", process)
+    ticks = iter([0.0, 10.0, 10.0, 12.0, 12.0])
+    monkeypatch.setattr(report, "time", SimpleNamespace(monotonic=lambda: next(ticks)))
     directory, result = report.run(tmp_path / "reports")
     assert (directory / "pytest.log").exists()
     assert result["scratch_retained"] is bool(exit_code)
+    assert result["reporting_seconds"] == 2.0
+    assert result["total_runtime_seconds"] == 12.0
     assert cleaned == ([] if exit_code else [scratch])

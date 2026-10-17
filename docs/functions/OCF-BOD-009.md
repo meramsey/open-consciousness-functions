@@ -1,8 +1,8 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Lungs: Repairs & Maintenance
+# Breathe Better
 
-**Purpose**: Self-directed wellness practice supporting easy, comfortable breathing.
+**Purpose**: Supports efficient breathing and respiratory maintenance, with conscious reinforcement when desired.
 
 **Function persistence**: Permanent (`permanent`)
 
@@ -14,7 +14,7 @@ Source availability does not establish historical authentication or provenance.
 
 [Command index](../COMMAND_INDEX.md)
 
-## PLUS-BREATH BETTER
+## PLUS-BREATHE BETTER
 
 ### Primary activation command
 
@@ -22,7 +22,7 @@ Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Recorded source phrase (not the canonical phrase)**: Plus Breathe Better `(variant; hplus.function.ocf-bod-009.function-body)`
+**Recorded source phrase (not the canonical phrase)**: Plus Breathe Better `(canonical-match; hplus.function.ocf-bod-009.function-body)`
 
 ### Activation sequence
 

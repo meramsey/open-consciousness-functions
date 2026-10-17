@@ -3,8 +3,11 @@ locale: en-US
 language_name: English (United States)
 direction: ltr
 status: canonical
-semantic_version: 1.6.0
+semantic_version: 1.7.0
 resources:
+- file: activation-cues.yaml
+  domain: narration
+  description: Explicit user-approved en-US primary spoken cues; other locales require their own reviewed terminology.
 - file: ui.yaml
   domain: ui
   description: Operator- and player-facing strings. May fall back to this locale.

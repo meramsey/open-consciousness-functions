@@ -328,7 +328,14 @@ def test_source_pinned_review_with_synthetic_catalog(monkeypatch, tmp_path, muta
 
 @pytest.mark.integration
 def test_companion_covers_catalog_and_never_labels_nested_cue_as_taught():
-    data = review.build()
+    with pytest.raises(OCFError, match="differs from pinned source"):
+        review.build()
+    data = json.loads(
+        (review.REPO_ROOT / "docs/releases/OCF_TITLE_CUE_REVIEW.json").read_text(encoding="utf-8")
+    )
+    _, snapshot = review.source_snapshot(data["source_commit"])
+    for name, checksum in data["source_sha256"].items():
+        assert hashlib.sha256(snapshot[name].encode()).hexdigest() == checksum
     assert len(data["functions"]) == len(review.TEACHING)
     assert len({row["id"] for row in data["commands"]}) == len(data["commands"])
     by_id = {row["function_id"]: row for row in data["functions"]}
@@ -348,3 +355,5 @@ def test_companion_covers_catalog_and_never_labels_nested_cue_as_taught():
     assert len(outputs) == 4
     assert json.loads(outputs[review.PREFIX + ".json"])["source_commit"] == review.SOURCE
     assert all(row["function_id"] in outputs[review.PREFIX + ".md"] for row in data["functions"])
+    for name, text in outputs.items():
+        assert (review.REPO_ROOT / "docs/releases" / name).read_text(encoding="utf-8") == text

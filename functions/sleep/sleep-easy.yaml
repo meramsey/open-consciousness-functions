@@ -1,8 +1,6 @@
 aliases:
-  commands:
-  - PLUS-QUIET, SLEEP
-  command_ids:
-  - OCF-CMD-SLP-005-LEGACY-01
+  command_ids: []
+  commands: []
   names:
   - Sleep Easy
 applications: []
@@ -18,57 +16,10 @@ audio:
   script_status: approved
 canonical:
   command:
-    modes: []
     mode_ids: []
+    modes: []
     primary: PLUS-SLEEP EASY
   name: Sleep Easy
-commands:
-- id: OCF-CMD-SLP-005-PRIMARY
-  function_id: OCF-SLP-005
-  phrase_ref:
-    source: canonical-primary
-  role: activation
-  designation: primary
-  localization:
-    label_key: commands.ocf-cmd-slp-005-primary.label
-    usage_key: commands.ocf-cmd-slp-005-primary.usage
-    purpose_key: functions.ocf-slp-005.purpose
-    explanation_key: commands.ocf-cmd-slp-005-primary.explanation
-  documentation:
-    visible: true
-    order: 1
-  effect_scope_ref: lifecycle.persistence
-  procedure:
-    ref: OCF-PROC-CLOSE-NATURAL
-    status: documented
-    evidence_keys:
-    - hplus.function.ocf-slp-005.function-body
-    before_steps:
-    - id: settle-for-rest
-      operation: select-purpose
-      localization_key: command.procedure.select-purpose
-  relationships: {}
-  observed_phrase:
-    text: Plus Quiet Sleep
-    narration_key: hplus.function.ocf-slp-005.function-body
-    relationship: conflict
-- id: OCF-CMD-SLP-005-LEGACY-01
-  function_id: OCF-SLP-005
-  phrase_ref:
-    source: legacy-command
-    command_id: OCF-CMD-SLP-005-LEGACY-01
-  role: legacy-alias
-  designation: secondary
-  localization:
-    label_key: commands.ocf-cmd-slp-005-legacy-01.label
-    usage_key: commands.ocf-cmd-slp-005-legacy-01.usage
-    purpose_key: functions.ocf-slp-005.purpose
-    explanation_key: commands.ocf-cmd-slp-005-legacy-01.explanation
-  documentation:
-    visible: true
-    order: 101
-  effect_scope_ref: lifecycle.persistence
-  relationships: {}
 chains: []
 claims:
   intended_effects: []
@@ -77,20 +28,80 @@ claims:
 classification:
   primary_domain: sleep
   secondary_domains: []
+commands:
+- designation: primary
+  documentation:
+    order: 1
+    visible: true
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-SLP-005
+  id: OCF-CMD-SLP-005-PRIMARY
+  localization:
+    display_cue_key: commands.ocf-cmd-slp-005-primary.display-cue
+    explanation_key: commands.ocf-cmd-slp-005-primary.explanation
+    label_key: commands.ocf-cmd-slp-005-primary.label
+    purpose_key: functions.ocf-slp-005.purpose
+    spoken_cue_key: commands.ocf-cmd-slp-005-primary.spoken-cue
+    usage_key: commands.ocf-cmd-slp-005-primary.usage
+  observed_phrase:
+    narration_key: hplus.function.ocf-slp-005.function-body
+    relationship: canonical-match
+    text: Plus Sleep Easy
+  phrase_ref:
+    source: canonical-primary
+  procedure:
+    before_steps:
+    - id: settle-for-rest
+      localization_key: command.procedure.select-purpose
+      operation: select-purpose
+    evidence_keys:
+    - hplus.function.ocf-slp-005.function-body
+    ref: OCF-PROC-CLOSE-NATURAL
+    status: documented
+  relationships: {}
+  role: activation
+- availability: historical-lookup
+  designation: secondary
+  documentation:
+    order: 101
+    visible: false
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-SLP-005
+  id: OCF-CMD-SLP-005-LEGACY-01
+  localization:
+    explanation_key: commands.ocf-cmd-slp-005-legacy-01.explanation
+    label_key: commands.ocf-cmd-slp-005-legacy-01.label
+    purpose_key: functions.ocf-slp-005.purpose
+    usage_key: commands.ocf-cmd-slp-005-legacy-01.usage
+  phrase_ref:
+    command_id: OCF-CMD-SLP-005-LEGACY-01
+    source: legacy-command
+  relationships: {}
+  role: legacy-alias
 companions: []
 compatibility:
-  legacy_commands:
-  - PLUS-QUIET, SLEEP
-  rationale: Legacy two-word cue PLUS-QUIET, SLEEP is retained; canonical PLUS-SLEEP EASY is proposed
-    for review.
-  state: bridge-trainable
+  rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
+    operational commands remain unchanged.
+  state: historical-lookup
 contributor:
   contact: null
   name: null
 documentation:
-  title_key: functions.ocf-slp-005.title
-  short_description_key: functions.ocf-slp-005.short-description
   purpose_key: functions.ocf-slp-005.purpose
+  short_description_key: functions.ocf-slp-005.short-description
+  title_key: functions.ocf-slp-005.title
+historical_lookup:
+- decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-title
+  text: Sleep Easy
+- command_id: OCF-CMD-SLP-005-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-primary
+  text: PLUS-SLEEP EASY
+- command_id: OCF-CMD-SLP-005-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-teaching
+  text: Plus Quiet Sleep
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -114,12 +125,14 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: review-required
+  command_review: approved
   reimplementation_status: planned
 purpose:
-  community_description: Promotes easy, quiet transition into sleep; proposed concise cue PLUS-SLEEP EASY.
+  community_description: Supports entering, remaining in, and returning to natural sleep amid unfamiliar
+    or distracting surroundings.
   source_description: null
-  summary: Promotes easy, quiet transition into sleep; proposed concise cue PLUS-SLEEP EASY.
+  summary: Supports entering, remaining in, and returning to natural sleep amid unfamiliar or distracting
+    surroundings.
 safety:
   level: general
   medical_relevance: false

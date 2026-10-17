@@ -144,6 +144,8 @@ def load_layers(function_id: str, root: Path | None = None) -> dict:
 
 
 def discover(record) -> dict:
+    from .commands import is_active
+
     layers = load_layers(record.id)
     spec = layers.get("specifications")
     bindings = layers.get("bindings", {})
@@ -155,7 +157,11 @@ def discover(record) -> dict:
         # Keep the historic response shape; stable mode IDs are added only in
         # the separate structured commands view below.
         "activation": {key: command[key] for key in ("primary", "modes") if key in command},
-        "commands": [command_view(record, item) for item in record.command_records],
+        "commands": [
+            command_view(record, item, locale="en-US")
+            for item in record.command_records
+            if is_active(item)
+        ],
         "status": record.data["status"],
         "content_maturity": spec["maturity"] if spec else None,
         "human_review": spec["human_review"] if spec else "unknown",

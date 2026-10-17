@@ -94,6 +94,7 @@ Usage:
   ocf workspace clean [--older-than-hours N] [--dry-run]
   ocf functions list --json  Discover canonical function records
   ocf functions describe ID --json
+  ocf functions lookup "HISTORICAL NAME" --locale en-US --json
   ocf commands list [--locale TAG] [--json]
   ocf commands describe ID [--locale TAG] [--json]
   ocf commands export [--locale TAG] [--format json|md] [--output FILE] [--force]
@@ -218,6 +219,13 @@ def _build_parser() -> argparse.ArgumentParser:
     function_describe.add_argument("id")
     function_describe.add_argument("--json", action="store_true")
     function_describe.add_argument("--rich", action="store_true")
+    function_lookup = function_sub.add_parser(
+        "lookup",
+        help="find current presentation by a historical name or phrase; never selects activation",
+    )
+    function_lookup.add_argument("query")
+    function_lookup.add_argument("--locale", default="en-US")
+    function_lookup.add_argument("--json", action="store_true")
 
     commands = sub.add_parser("commands", help="localized command documentation and export")
     command_sub = commands.add_subparsers(dest="command_kind", required=True)
@@ -1318,6 +1326,27 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == "functions":
             import json
+
+            if args.function_kind == "lookup":
+                from .vocabulary import lookup
+
+                rows = lookup(args.query, locale=args.locale)
+                if args.json:
+                    print(
+                        json.dumps(
+                            {"locale": args.locale, "matches": rows, "activation_selected": False},
+                            ensure_ascii=False,
+                            indent=2,
+                        )
+                    )
+                else:
+                    for row in rows:
+                        cue = row["cue"] or {}
+                        print(
+                            f"{row['function_id']}: {row['title']} — {cue.get('display_cue', '')} — lookup match: "
+                            + ", ".join(item["kind"] for item in row["matches"])
+                        )
+                return 0
 
             from .content import discover
             from .indexes import load_function_by_slug_or_id

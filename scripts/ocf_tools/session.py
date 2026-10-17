@@ -822,11 +822,24 @@ def compose(
         if owner is None:
             raise OCFError(f"unknown function_id: {doc['function_id']}")
         catalog = LocaleCatalog()
+        from .commands import cue_presentation
+
+        opted_in = any(
+            command.designation == "primary" and command.localization.get("spoken_cue_key")
+            for command in getattr(owner, "command_records", [])
+        )
+        cue = (
+            cue_presentation(owner, catalog.canonical_locale, catalog=catalog, strict=True)
+            if opted_in
+            else None
+        )
         for event in iter_events(doc):
             entry = catalog.canonical.get(event.get("narration_key")) if catalog.canonical else None
             if entry:
                 metadata = {
-                    "command": owner.canonical_command,
+                    "command": cue["spoken_cue"]
+                    if cue and cue["binding_status"] == "resolved"
+                    else owner.canonical_command,
                     "function_name": owner.canonical_name,
                 }
                 values = event.setdefault("variables", {})

@@ -322,6 +322,7 @@ def list_functions(
 def get_function(
     function_id: str, fields: list[str] | None = None, previous_hash: str | None = None
 ) -> dict:
+    from .commands import cue_presentation
     from .content import load_layers
 
     record = owner(function_id)
@@ -338,6 +339,7 @@ def get_function(
             "source_count": len(layers.get("evidence", {}).get("sources", [])),
         },
         "release_ready": False,
+        "cue_presentation": cue_presentation(record, "en-US"),
     }
     if fields:
         unknown = set(fields) - data.keys()
@@ -381,14 +383,14 @@ def get_workflow(name: str) -> dict:
 
 @public
 def get_audio_defaults() -> dict:
-    from .audio_defaults import check_lock
+    from .audio_defaults import LOCK_PATH, check_lock
     from .session_plans import digest
 
     lock = check_lock()
     return {key: value for key, value in lock.items() if key != "files"} | {
         "sha256": digest(lock),
         "locked_files": len(lock["files"]),
-        "artifact": "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-001.json",
+        "artifact": LOCK_PATH.relative_to(REPO_ROOT).as_posix(),
     }
 
 

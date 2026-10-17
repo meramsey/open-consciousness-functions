@@ -1,13 +1,43 @@
-# Read-only title–cue decision review
+# Title–cue decisions and historical audit review
+
+## Current implemented decisions
+
+The [current decision sheet](releases/OCF_TITLE_CUE_CURRENT.md),
+[machine-readable current view](releases/OCF_TITLE_CUE_CURRENT.json),
+[current teaching status](releases/OCF_TEACHING_CURRENT.md),
+[source-English terminology sheet](releases/OCF_EN_US_TERMINOLOGY.md) and
+[historical lookup guide](releases/OCF_HISTORICAL_LOOKUP_CURRENT.md) reflect
+`OCF-EDITORIAL-TITLE-CUES-001`. Nine selected pairs, Detox and the requested
+heart cue are implemented. Heart Flow remains tentative; Heart Renewal and the
+Body Cleansing/Body Cleanse proposals are rejected/superseded. All other unselected
+vocabulary remains pending. No HPLUS identity migration is implemented.
+
+```bash
+python scripts/tools/approved_cue_migration.py --check
+python scripts/tools/current_title_cues.py --check
+python scripts/ocf.py functions lookup "Mobius West" --locale en-US --json
+```
+
+The [approval and exact-change manifest](../function-content/editorial/approved-title-cues-001.json)
+contains previous/current values, each allowed resource diff and old/new hashes.
+The 177-entry predecessor fixture and defaults lock 001 remain immutable;
+successor fixture 002 and defaults lock 002 select the approved content with
+identical engineering profiles. Only 21 protected entries change. Existing audio
+is never relabeled or overwritten. Listening and release approval are separate.
+The canonical-command review now records the approved source-English primary
+vocabulary. Specification review, other-language terminology review, listening
+and release states remain separate and are not promoted by that field.
+
+## Historical proposal checkpoint
 
 The [complete decision sheet](releases/OCF_TITLE_CUE_REVIEW.md),
 [machine-readable recommendations](releases/OCF_TITLE_CUE_REVIEW.json),
 [exact teaching report](releases/OCF_EXACT_TEACHING_REVIEW.md),
 [identifier successor proposal](releases/OCF_IDENTIFIER_SUCCESSOR_PROPOSAL.md) and
 [locale readiness proposal](releases/OCF_LOCALE_TITLE_CUE_READINESS.md) form one
-proposal checkpoint. Every vocabulary recommendation is
-**PROPOSED — NOT IMPLEMENTED**. These companion files preserve earlier audit drafts
-and pending user edits rather than overwriting them.
+historical proposal checkpoint. Their vocabulary recommendations were
+**PROPOSED — NOT IMPLEMENTED** at that source revision. They do not override the
+current decisions above. Earlier audit drafts and pending user edits are preserved.
 
 ## Reproduce and inspect
 
@@ -28,6 +58,11 @@ use an isolated committed checkout rather than overwriting the user's work.
 The source SHA is deliberate: after canonical inputs evolve, an editor must
 review the corresponding contextual findings before selecting a new checkpoint.
 The tool does not automatically stamp current HEAD onto old recommendations.
+
+Run the historical generator in a matching historical checkout. The approved
+successor deliberately triggers its old source-drift guard; use
+`current_title_cues.py` for current-tree freshness. Tests verify historical saved
+evidence against historical Git blobs rather than restamping it as current data.
 
 ## What the evidence means
 

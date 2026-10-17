@@ -1,21 +1,37 @@
 """Editorial output is complete evidence/recommendations, never a mutation engine."""
 
+import hashlib
 import json
 from collections import Counter
 
 import pytest
 from ocf_tools.commands import resolve_phrase
 from ocf_tools.indexes import load_all_functions
-from ocf_tools.utils import OCFError, sha256_of_file
+from ocf_tools.models import FunctionRecord
+from ocf_tools.utils import OCFError
 from tools import editorial_audit as audit
+
+
+def historical_data():
+    return json.loads(
+        (audit.REPO_ROOT / "docs/releases/OCF_COMMAND_NAMING_RECOMMENDATIONS.json").read_text(
+            encoding="utf-8"
+        )
+    )
 
 
 def test_complete_function_command_audit_preserves_every_authoritative_phrase():
     records = load_all_functions()
-    data = audit.canonical_audit()
+    data = historical_data()
+    from ocf_tools.cue_migration import decision_record
+
+    migrated = {
+        row["primary_command_id"]: row["previous"]["display_cue"]
+        for row in decision_record()["decisions"]
+    }
     actual = {row["id"]: row["phrase"] for row in data["commands"]}
     expected = {
-        command.id: resolve_phrase(record, command)
+        command.id: migrated.get(command.id, resolve_phrase(record, command))
         for record in records
         for command in record.command_records
     }
@@ -25,12 +41,13 @@ def test_complete_function_command_audit_preserves_every_authoritative_phrase():
     assert not data["implemented"]
     assert all(row["status"] == audit.PROPOSAL for row in data["functions"])
     assert all(row["audit_status"] == audit.PROPOSAL for row in data["commands"])
+    snapshot = dict(audit.tracked_snapshot())
     for name, checksum in data["source_sha256"].items():
-        assert sha256_of_file(audit.REPO_ROOT / name) == checksum
+        assert hashlib.sha256(snapshot[name].encode()).hexdigest() == checksum
 
 
 def test_special_cases_and_shared_roles_are_not_silently_canonicalized():
-    data = audit.canonical_audit()
+    data = historical_data()
     by_id = {row["function_id"]: row for row in data["functions"]}
     mobius, sleep = by_id["OCF-EXP-001"], by_id["OCF-SLP-005"]
     assert mobius["current_command"] == "PLUS-PROGRAM"
@@ -130,4 +147,109 @@ def test_report_writer_is_restricted_and_detects_drift_without_applying(monkeypa
 
 
 def test_committed_audits_are_fresh_and_do_not_modify_inputs():
-    assert audit.main(["--check"]) == 0
+    with pytest.raises(OCFError, match="historical editorial audit input drift"):
+        audit.main(["--check"])
+    assert audit.command_markdown(historical_data()) == (
+        audit.REPO_ROOT / "docs/releases/OCF_COMMAND_NAMING_AUDIT.md"
+    ).read_text(encoding="utf-8")
+    assert audit.identifier_markdown(audit.identifier_audit()) == (
+        audit.REPO_ROOT / "docs/releases/OCF_IDENTIFIER_NEUTRALIZATION_AUDIT.md"
+    ).read_text(encoding="utf-8")
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize(
+    "state,proposed,observed",
+    [
+        ("KEEP", "PLUS-OLD", None),
+        ("RECOMMENDED RENAME", "PLUS-NEW", None),
+        ("RECOMMENDED RENAME", "PLUS-NEW", "Plus New"),
+    ],
+)
+def test_historical_projection_with_verified_synthetic_inputs(
+    monkeypatch, tmp_path, state, proposed, observed
+):
+    """Keep historical generation exercised without attributing old code to a new tree."""
+    owner = "OCF-COG-999"
+    data = {
+        "canonical": {"name": "Old Fixture", "command": {"primary": "PLUS-OLD", "modes": []}},
+        "commands": [
+            {
+                "id": "OCF-CMD-COG-999-PRIMARY",
+                "function_id": owner,
+                "phrase_ref": {"source": "canonical-primary"},
+                "role": "activation",
+                "designation": "primary",
+            }
+        ],
+        "purpose": {"summary": "Selected fixture operation."},
+        "aliases": {"names": ["Old Fixture"], "commands": []},
+        "legacy": {
+            "name": "Historical Fixture",
+            "commands": ["PLUS-OLD"],
+            "source_availability": "available",
+        },
+        "compatibility": {"state": "unchanged"},
+        "ocf": {"command_review": "approved"},
+        "lifecycle": {
+            "activation": "manual",
+            "persistence": "temporary",
+            "release": {"command": None, "required": False},
+        },
+    }
+    if observed:
+        data["commands"][0]["observed_phrase"] = {
+            "text": observed,
+            "narration_key": "fixture.body",
+            "relationship": "variant",
+        }
+    path = tmp_path / "functions/fixture.yaml"
+    path.parent.mkdir()
+    path.write_text("original synthetic metadata\n", encoding="utf-8")
+    record = FunctionRecord(owner, "fixture", path, data)
+    for folder in ("function-content/specifications", "function-content/bindings", "locales/en-US"):
+        (tmp_path / folder).mkdir(parents=True, exist_ok=True)
+    (tmp_path / "function-content/specifications" / (owner + ".yaml")).write_text(
+        "analysis_review:\n  sections:\n    purpose:\n      summary: Original fixture purpose.\n",
+        encoding="utf-8",
+    )
+    (tmp_path / "function-content/bindings" / (owner + ".yaml")).write_text(
+        "default_session_template: fixture\n", encoding="utf-8"
+    )
+    resource = {
+        "entries": {
+            "fixture.body": {"text": "Think Plus Old. " + (observed or ""), "version": "1.0.0"}
+        }
+    }
+    from ocf_tools.utils import yaml_safe_dump
+
+    (tmp_path / "locales/en-US" / ("hplus-" + owner + ".yaml")).write_text(
+        yaml_safe_dump(resource), encoding="utf-8"
+    )
+    monkeypatch.setattr(audit, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(audit, "load_all_functions", lambda: [record])
+    monkeypatch.setattr(
+        audit,
+        "DECISIONS",
+        {owner: (state, proposed, [], "Fixture rationale.", "New Fixture", "low")},
+    )
+    monkeypatch.setattr(
+        audit,
+        "historical_report",
+        lambda: {
+            "source_sha256": {
+                "functions/fixture.yaml": hashlib.sha256(path.read_bytes()).hexdigest()
+            }
+        },
+    )
+    monkeypatch.setattr(audit, "narration_texts", lambda: {"fixture": "Think Plus Old."})
+    result = audit.canonical_audit()
+    row = result["functions"][0]
+    assert row["current_command"] == "PLUS-OLD" and row["proposed_command"] == proposed
+    assert result["counts"]["functions"] == result["counts"]["command_records"] == 1
+    assert (
+        row["observed_narration"][0]["text_sha256"]
+        == hashlib.sha256(resource["entries"]["fixture.body"]["text"].encode()).hexdigest()
+    )
+    assert not result["implemented"]
+    assert path.read_text(encoding="utf-8") == "original synthetic metadata\n"

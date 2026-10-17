@@ -378,6 +378,7 @@ def reference_kind(span: Span, schema):
         return "function"
     if field in {
         "narration_key",
+        "spoken_cue_key",
         "narration_resources",
         "evidence_keys",
         "source_narration_key",
@@ -391,6 +392,7 @@ def reference_kind(span: Span, schema):
         "effect_key",
         "localization_key",
         "label_key",
+        "display_cue_key",
         "usage_key",
         "explanation_key",
     }:

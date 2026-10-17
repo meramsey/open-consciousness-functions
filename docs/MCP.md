@@ -3,7 +3,7 @@
 OCF's CLI, schemas, wizards and application services remain authoritative.
 The optional MCP adapter provides compact discovery, bounded diagnostics and
 asynchronous jobs; it does not implement another renderer. It uses the official
-Python MCP SDK (`mcp==1.28.1`) over **stdio only**, without a network listener,
+Python MCP SDK (`mcp==1.30.0`) over **stdio only**, without a network listener,
 authentication service, database or paid API. This developer integration requires
 a source checkout. Core OCF works without the SDK.
 
@@ -217,7 +217,8 @@ environment values out of committed client configuration.
 
 Authoritative syntax references:
 
-- [Official Python SDK v1.28.1](https://github.com/modelcontextprotocol/python-sdk/tree/v1.28.1)
+- [Official Python SDK v1.30.0](https://github.com/modelcontextprotocol/python-sdk/tree/v1.30.0)
+- [Streamable HTTP session-retention advisory](https://github.com/modelcontextprotocol/python-sdk/security/advisories/GHSA-84m7-p3x7-pcfv): affected SDK versions include 1.28.1; patched in 1.30.0. OCF's stdio-only transport does not use the affected stateful HTTP session path. The optional SDK pin is updated without changing transport or the running client configuration.
 - [OpenCode configuration schema](https://opencode.ai/config.json)
 - [Claude Code MCP](https://code.claude.com/docs/en/mcp)
 - [Codex MCP](https://developers.openai.com/codex/mcp)

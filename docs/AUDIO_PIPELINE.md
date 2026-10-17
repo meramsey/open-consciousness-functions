@@ -292,9 +292,13 @@ repetition counts. The resolver uses the existing `LocaleCatalog`, requires the
 function's existing `audio.script_status: approved` and reviewed/canonical
 spoken resources for TTS readiness, and records function-level human review and
 release readiness separately. It does not alter either approval state. Sleep
-Easy's plan is opener → function body four times → closer; its spoken
-`Plus Quiet Sleep` wording is preserved as written and is not replaced with the
-different canonical registry phrase `PLUS-SLEEP EASY`.
+Easy's plan is opener → function body four times → closer. Its user-approved
+successor consistently teaches `Plus Sleep Easy`, matching display cue
+`PLUS-SLEEP EASY`. The former `Plus Quiet Sleep` wording remains historical
+evidence, not an active compatibility lesson. The scoped
+[migration record](../function-content/editorial/approved-title-cues-001.json)
+preserves the old/new text fingerprints; breathing, repetitions and engineering
+defaults are unchanged. New audition speech has not received listening approval.
 
 Pacing presets are configuration only: NORMAL uses 0.8 s paragraph/2 s section
 pauses, RELAXED uses 1.5 s/4 s, and SLEEP uses 2 s/6 s; SLEEP includes 2 s

@@ -131,7 +131,11 @@ def _function_document(
             item.id,
         ),
     ):
-        view = command_view(record, metadata)
+        from .commands import is_active
+
+        if not is_active(metadata):
+            continue
+        view = command_view(record, metadata, locale=locale, catalog=catalog)
         command_localized = metadata.localization
         for field in ("label_key", "usage_key", "explanation_key"):
             key = command_localized.get(field)

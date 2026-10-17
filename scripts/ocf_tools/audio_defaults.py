@@ -9,7 +9,9 @@ from pathlib import Path
 from .paths import REPO_ROOT
 from .utils import OCFError, sha256_of_file, write_text_atomic
 
-BASELINE_ID = "OCF-AUDIO-DEFAULTS-HPLUS-001"
+PREVIOUS_BASELINE_ID = "OCF-AUDIO-DEFAULTS-HPLUS-001"
+BASELINE_ID = "OCF-AUDIO-DEFAULTS-HPLUS-002"
+BASELINE_VERSIONS = {PREVIOUS_BASELINE_ID: "1.0.0", BASELINE_ID: "2.0.0"}
 TEMPLATE_ID = "OCF-TPL-SESSION-HPLUS-LOCKED-001"
 PACING_ID = "OCF-PACING-HPLUS-LOCKED-001"
 DSP_ID = "OCF-DSP-HPLUS-LOCKED-001"
@@ -28,10 +30,14 @@ def overlay(parent: dict, child: dict) -> dict:
     return result
 
 
-def configuration_lock(dependency_names: list[str] | None = None) -> dict:
+def configuration_lock(
+    dependency_names: list[str] | None = None, *, baseline_id: str = BASELINE_ID
+) -> dict:
     from .semantic_dsp import load_profile
     from .session import load_pacing_profile, load_template
 
+    if baseline_id not in BASELINE_VERSIONS:
+        raise OCFError(f"unknown audio defaults baseline: {baseline_id}")
     template = load_template(TEMPLATE_ID)
     pacing = load_pacing_profile(PACING_ID)
     dsp = load_profile(DSP_ID)
@@ -60,8 +66,8 @@ def configuration_lock(dependency_names: list[str] | None = None) -> dict:
             paths.add(path)
     return {
         "schema_version": "1.0",
-        "id": BASELINE_ID,
-        "version": "1.0.0",
+        "id": baseline_id,
+        "version": BASELINE_VERSIONS[baseline_id],
         "configuration_status": "locked-user-requested",
         "human_listening_approval": None,
         "release_ready": False,
@@ -82,9 +88,22 @@ def configuration_lock(dependency_names: list[str] | None = None) -> dict:
 
 def check_lock(path: Path = LOCK_PATH) -> dict:
     recorded = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
+    baseline_id = recorded.get("id", BASELINE_ID)
+    if path.name != f"{baseline_id}.json":
+        raise OCFError("audio defaults lock identity/path mismatch")
+    if baseline_id == BASELINE_ID:
+        predecessor = json.loads(
+            (REPO_ROOT / "audio/defaults" / f"{PREVIOUS_BASELINE_ID}.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        if set(recorded.get("files", {})) != set(predecessor["files"]):
+            raise OCFError(
+                "successor audio defaults dependency membership differs from predecessor"
+            )
     # New unrelated functions/locales do not mutate an existing baseline.
     # A change to a locked input still fails exact content verification.
-    expected = configuration_lock(list(recorded.get("files", {})))
+    expected = configuration_lock(list(recorded.get("files", {})), baseline_id=baseline_id)
     if recorded != expected:
         raise OCFError(
             "shared audio defaults lock is stale; create a new baseline version deliberately"
@@ -92,9 +111,24 @@ def check_lock(path: Path = LOCK_PATH) -> dict:
     return expected
 
 
-def create_lock(path: Path = LOCK_PATH) -> None:
+def create_lock(
+    path: Path = LOCK_PATH,
+    *,
+    baseline_id: str = BASELINE_ID,
+    dependency_names: list[str] | None = None,
+) -> None:
     if path.exists():
         raise OCFError(f"immutable audio defaults lock already exists: {path.name}")
+    if path.name != f"{baseline_id}.json":
+        raise OCFError("audio defaults lock identity/path mismatch")
     write_text_atomic(
-        path, json.dumps(configuration_lock(), ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+        path,
+        json.dumps(
+            configuration_lock(dependency_names, baseline_id=baseline_id),
+            ensure_ascii=False,
+            indent=2,
+            sort_keys=True,
+        )
+        + "\n",
+        overwrite=False,
     )

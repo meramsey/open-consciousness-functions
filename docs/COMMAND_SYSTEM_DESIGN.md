@@ -100,16 +100,18 @@ outputs are checked for freshness by `build-index --check`.
 
 Populate primary and mode rows from current registry fields. Add special release,
 cancellation, or access-close rows only when existing lifecycle metadata or
-approved narration supports the role and sequence. Preserve every phrase and
-alias byte-for-byte.
+approved narration supports the role and sequence. Preserve historical names and
+phrases byte-for-byte. A specifically approved migration can demote
+superseded primary aliases to `availability: historical-lookup`; those records
+retain stable IDs but do not appear in active guides or activation listings.
 
 Known conflicts to carry explicitly rather than silently decide:
 
-- Sleep Easy's canonical registry phrase is `PLUS-SLEEP EASY`; its approved
-  narration uses `Plus Quiet Sleep`, and the source is unavailable. Keep both
-  facts and mark their relationship unresolved.
-- Zoning's approved narration distinguishes `Plus Cancel` (end the current
-  adjustment) from `Plus Release` (place Zoning on hold). The registry has
+- Sleep Easy now consistently teaches `Plus Sleep Easy` under the explicit
+  approved migration. `Plus Quiet Sleep` is preserved in historical evidence;
+  source availability remains unavailable, and no listening approval is inferred.
+- Insulate's narration distinguishes `Plus Cancel` (end the current
+  adjustment) from `Plus Release` (place Insulate on hold). The registry has
   `PLUS-CANCEL` as a mode but no release phrase in `lifecycle.release.command`.
 - Access to Energy's `Plus Release Eleven Access` is a distinct access-channel
   close cue in approved narration, not the function's primary activation phrase.
@@ -117,9 +119,8 @@ Known conflicts to carry explicitly rather than silently decide:
   function. Command IDs therefore must remain function-scoped.
 - Several approved function narrations retain a phrase represented by a legacy
   command while the registry has a different canonical phrase, including
-  De-Discomfort, De-Tox: Body, Regenerate, Short Fix, Off-Loading, Mobius West,
-  Eight-Great, Restorative Sleep, Sleep, Sweet Dreams,
-  Wake/Know, and Stay Awake. These are cross-layer differences, not permission
+  De-Discomfort, Regenerate, Short Fix, Restorative Sleep, Sleep, Sweet Dreams,
+  and Stay Awake. These are cross-layer differences, not permission
   to rename registry commands or rewrite reviewed text. Preserve both records
   and show their source/role distinction in the guide.
 - Contemplation's `PLUS-CLOSED` and Imprint's `PLUS-RECALL` are secondary modes
@@ -133,12 +134,10 @@ known canonical and compatibility data.
 A phrase comparison of approved English resources against the registry also
 found canonical-versus-script wording that must be surfaced, not harmonized.
 Examples include De-Discomfort (`PLUS-COMFORT` vs “Plus Five Five Five One
-Five”), De-Tox Body (`PLUS-DETOX` vs “Plus Clean Clear”), Hypertension
-(`PLUS-BALANCE-BLOODPRESSURE` vs “Plus Balance Blood Pressure”), Lungs
-(`PLUS-BREATH BETTER` vs “Plus Breathe Better”), Regenerate (`PLUS-REGENERATE`
+Five”), Hypertension
+(`PLUS-BALANCE-BLOODPRESSURE` vs “Plus Balance Blood Pressure”), Regenerate (`PLUS-REGENERATE`
 vs “Plus Build Live”), and the source-spoken forms for Nutricia, Sex Drive,
-Imprint, Off-Loading, Mobius West, Eight-Great, Restorative
-Sleep, Sleep, Sweet Dreams, Wake/Know, and Stay Awake. Some are represented by
+Imprint, Restorative Sleep, Sleep, Sweet Dreams, and Stay Awake. Some are represented by
 preserved legacy aliases; others are script-only spelling/wording distinctions.
 Migration must record the source basis and relationship for each, or leave it
 unresolved when the current metadata and approved wording do not establish one.

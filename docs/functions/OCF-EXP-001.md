@@ -1,8 +1,8 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Mobius West
+# Manifest
 
-**Purpose**: Legacy 'change' practice for breaking personal loops; proposed concise cue PLUS-PROGRAM.
+**Purpose**: Sets a consciously selected future condition and completion time through intention and total-self alignment.
 
 **Function persistence**: Temporary (`temporary`)
 
@@ -10,11 +10,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 Source availability does not establish historical authentication or provenance.
 
-**Command review state**: Review required (`review-required`)
+**Command review state**: Approved (`approved`)
 
 [Command index](../COMMAND_INDEX.md)
 
-## PLUS-PROGRAM
+## PLUS-MANIFEST
 
 ### Primary activation command
 
@@ -22,7 +22,7 @@ Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Recorded source phrase (not the canonical phrase)**: Plus Change Change `(legacy-form; hplus.function.ocf-exp-001.function-body)`
+**Recorded source phrase (not the canonical phrase)**: Plus Manifest `(canonical-match; hplus.function.ocf-exp-001.function-body)`
 
 ### Activation sequence
 
@@ -31,13 +31,5 @@ This is the primary command for the function.
 3. Hold your breath.
 4. Think or say the command.
 5. Exhale.
-
-## PLUS-CHANGE, CHANGE
-
-### Legacy compatibility phrase
-
-Compatibility phrase retained by the registry; historical authentication is not implied.
-
-This is a compatibility phrase, not a new canonical command.
 
 Canonical command phrases are shown exactly as registered and are not translated. Script and legacy phrase differences are shown separately.

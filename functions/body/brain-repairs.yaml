@@ -1,6 +1,6 @@
 aliases:
-  commands: []
   command_ids: []
+  commands: []
   names:
   - 'Brain: Repairs & Maintenance'
 applications: []
@@ -16,33 +16,10 @@ audio:
   script_status: approved
 canonical:
   command:
-    modes: []
     mode_ids: []
-    primary: PLUS-FLOW BETTER
-  name: 'Brain: Repairs & Maintenance'
-commands:
-- id: OCF-CMD-BOD-001-PRIMARY
-  function_id: OCF-BOD-001
-  phrase_ref:
-    source: canonical-primary
-  role: activation
-  designation: primary
-  localization:
-    label_key: commands.ocf-cmd-bod-001-primary.label
-    usage_key: commands.ocf-cmd-bod-001-primary.usage
-    purpose_key: functions.ocf-bod-001.purpose
-    explanation_key: commands.ocf-cmd-bod-001-primary.explanation
-  documentation:
-    visible: true
-    order: 1
-  effect_scope_ref: lifecycle.persistence
-  procedure:
-    ref: OCF-PROC-CLOSE-FOCUS
-    status: documented
-    evidence_keys:
-    - hplus.function.ocf-bod-001.function-body
-    before_steps: []
-  relationships: {}
+    modes: []
+    primary: PLUS-BRAIN FLOW
+  name: Brain Flow
 chains: []
 claims:
   intended_effects: []
@@ -52,16 +29,59 @@ classification:
   primary_domain: body
   secondary_domains:
   - foundation
+commands:
+- designation: primary
+  documentation:
+    order: 1
+    visible: true
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-BOD-001
+  id: OCF-CMD-BOD-001-PRIMARY
+  localization:
+    display_cue_key: commands.ocf-cmd-bod-001-primary.display-cue
+    explanation_key: commands.ocf-cmd-bod-001-primary.explanation
+    label_key: commands.ocf-cmd-bod-001-primary.label
+    purpose_key: functions.ocf-bod-001.purpose
+    spoken_cue_key: commands.ocf-cmd-bod-001-primary.spoken-cue
+    usage_key: commands.ocf-cmd-bod-001-primary.usage
+  observed_phrase:
+    narration_key: hplus.function.ocf-bod-001.function-body
+    relationship: canonical-match
+    text: Plus Brain Flow
+  phrase_ref:
+    source: canonical-primary
+  procedure:
+    before_steps: []
+    evidence_keys:
+    - hplus.function.ocf-bod-001.function-body
+    ref: OCF-PROC-CLOSE-FOCUS
+    status: documented
+  relationships: {}
+  role: activation
 companions: []
 compatibility:
-  state: unchanged
+  rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
+    operational commands remain unchanged.
+  state: historical-lookup
 contributor:
   contact: null
   name: null
 documentation:
-  title_key: functions.ocf-bod-001.title
-  short_description_key: functions.ocf-bod-001.short-description
   purpose_key: functions.ocf-bod-001.purpose
+  short_description_key: functions.ocf-bod-001.short-description
+  title_key: functions.ocf-bod-001.title
+historical_lookup:
+- decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-title
+  text: 'Brain: Repairs & Maintenance'
+- command_id: OCF-CMD-BOD-001-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-primary
+  text: PLUS-FLOW BETTER
+- command_id: OCF-CMD-BOD-001-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-teaching
+  text: Plus Flow Better
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -88,10 +108,11 @@ ocf:
   command_review: approved
   reimplementation_status: planned
 purpose:
-  community_description: Self-directed wellness practice supporting a felt sense of comfortable, balanced
-    brain function.
+  community_description: Supports balanced brain and neck circulation and maintenance, with conscious
+    reinforcement when desired.
   source_description: null
-  summary: Self-directed wellness practice supporting a felt sense of comfortable, balanced brain function.
+  summary: Supports balanced brain and neck circulation and maintenance, with conscious reinforcement
+    when desired.
 safety:
   level: health
   medical_relevance: true

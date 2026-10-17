@@ -13,6 +13,76 @@ from .paths import COMMAND_PROCEDURES_FILE, schema_path
 from .utils import OCFError, yaml_safe_load
 
 
+def is_active(command: FunctionCommand) -> bool:
+    return command.data.get("availability", "active") == "active"
+
+
+def localized_cue(owner, command, locale="en-US", *, catalog=None, strict=False):
+    """Resolve explicit cue bindings; role labels never become spoken wording."""
+    from .locale import LocaleCatalog, LocalizationError, normalize_tag
+
+    catalog = catalog or LocaleCatalog()
+    target = normalize_tag(locale) or catalog.canonical_locale
+    bindings = command.localization
+    spoken_key = bindings.get("spoken_cue_key")
+    result = {
+        "command_id": command.id,
+        "display_cue": resolve_phrase(owner, command),
+        "requested_locale": target,
+        "spoken_cue": None,
+        "binding_status": "unbound",
+    }
+    display_key = bindings.get("display_cue_key")
+    if display_key:
+        entry, resolution = catalog.resource(display_key, target, domain="ui", fallback=True)
+        result.update(
+            display_cue=entry.text,
+            display_locale=resolution.origin_locale,
+            display_fallback=resolution.fallback,
+        )
+    if not spoken_key:
+        return result
+    try:
+        entry, resolution = catalog.resource(spoken_key, target, domain="narration", fallback=False)
+    except LocalizationError:
+        if strict:
+            raise
+        return result | {"spoken_cue_key": spoken_key, "binding_status": "requires-locale-review"}
+    if entry.status not in {"reviewed", "canonical"}:
+        if strict:
+            raise LocalizationError(f"spoken cue {spoken_key!r} requires locale terminology review")
+        return result | {
+            "spoken_cue_key": spoken_key,
+            "resource_status": entry.status,
+            "binding_status": "requires-locale-review",
+        }
+    return result | {
+        "spoken_cue_key": spoken_key,
+        "spoken_cue": entry.text,
+        "spoken_locale": resolution.origin_locale,
+        "spoken_fallback": resolution.fallback,
+        "version": entry.version,
+        "resource_status": entry.status,
+        "binding_status": "resolved",
+    }
+
+
+def cue_presentation(owner, locale="en-US", *, catalog=None, strict=False):
+    primary = next((row for row in owner.command_records if row.designation == "primary"), None)
+    return (
+        localized_cue(owner, primary, locale, catalog=catalog, strict=strict) if primary else None
+    )
+
+
+def reviewed_spoken_values(owner, locale="en-US", *, catalog=None):
+    """Exact reviewed realization of the primary identity, not compatibility aliases."""
+    primary = next((row for row in owner.command_records if row.designation == "primary"), None)
+    if primary is None or not primary.localization.get("spoken_cue_key"):
+        return set()
+    presentation = localized_cue(owner, primary, locale, catalog=catalog, strict=True)
+    return {presentation["spoken_cue"]}
+
+
 class CommandMetadataError(OCFError):
     """Structured command metadata is incomplete or internally inconsistent."""
 
@@ -99,7 +169,9 @@ def resolve_phrase(owner: FunctionRecord, command: FunctionCommand) -> str:
     return phrase
 
 
-def command_view(owner: FunctionRecord, command: FunctionCommand) -> dict[str, Any]:
+def command_view(
+    owner: FunctionRecord, command: FunctionCommand, *, locale=None, catalog=None
+) -> dict[str, Any]:
     """Return a rich, derived view without duplicating phrase authority in YAML."""
     result = deepcopy(command.data)
     result["phrase"] = resolve_phrase(owner, command)
@@ -107,7 +179,14 @@ def command_view(owner: FunctionRecord, command: FunctionCommand) -> dict[str, A
         result["effect_scope"] = owner.persistence
     if command.procedure:
         result["resolved_procedure_steps"] = resolve_procedure(command, load_procedure_catalog())
+    if locale is not None:
+        result["cue_presentation"] = localized_cue(owner, command, locale, catalog=catalog)
     return result
+
+
+def resolve_historical_phrase(owner: FunctionRecord, command_id: str) -> str:
+    """Former wording of a stable cue identity, never its active cue."""
+    return _parallel_phrase(owner, field="legacy", id_field="command_ids", command_id=command_id)
 
 
 @lru_cache(maxsize=4)
@@ -167,6 +246,15 @@ def validate_command_records(owner: FunctionRecord) -> list[str]:
     """Check local references and old-field alignment for one function."""
     records = owner.command_records
     errors: list[str] = []
+    if owner.data.get("compatibility", {}).get("state") == "historical-lookup":
+        if not owner.data.get("historical_lookup"):
+            errors.append(
+                "historical-lookup compatibility requires explicit predecessor lookup records"
+            )
+        if any(command.role == "legacy-alias" and is_active(command) for command in records):
+            errors.append(
+                "historical-lookup compatibility cannot retain active primary legacy aliases"
+            )
     canonical_data = owner.data.get("canonical") or {}
     command_data = canonical_data.get("command") or {}
     modes = command_data.get("modes", [])
@@ -205,6 +293,8 @@ def validate_command_records(owner: FunctionRecord) -> list[str]:
     for record in records:
         if record.function_id != owner.id:
             errors.append(f"command {record.id} has a different parent function ID")
+        if not is_active(record) and record.role != "legacy-alias":
+            errors.append(f"operational command {record.id} cannot be demoted to historical lookup")
         if not record.id.startswith(f"OCF-CMD-{owner.id[4:]}-"):
             errors.append(f"command ID {record.id} is not scoped to function {owner.id}")
         try:

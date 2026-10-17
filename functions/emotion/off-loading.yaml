@@ -1,8 +1,6 @@
 aliases:
-  commands:
-  - PLUS-FADE, FADE
-  command_ids:
-  - OCF-CMD-EMO-002-LEGACY-01
+  command_ids: []
+  commands: []
   names:
   - Off-Loading
 applications: []
@@ -18,57 +16,10 @@ audio:
   script_status: approved
 canonical:
   command:
-    modes: []
     mode_ids: []
-    primary: PLUS-CLEAR
-  name: Off-Loading
-commands:
-- id: OCF-CMD-EMO-002-PRIMARY
-  function_id: OCF-EMO-002
-  phrase_ref:
-    source: canonical-primary
-  role: activation
-  designation: primary
-  localization:
-    label_key: commands.ocf-cmd-emo-002-primary.label
-    usage_key: commands.ocf-cmd-emo-002-primary.usage
-    purpose_key: functions.ocf-emo-002.purpose
-    explanation_key: commands.ocf-cmd-emo-002-primary.explanation
-  documentation:
-    visible: true
-    order: 1
-  effect_scope_ref: lifecycle.persistence
-  procedure:
-    ref: OCF-PROC-INHALE-HOLD-NATURAL
-    status: documented
-    evidence_keys:
-    - hplus.function.ocf-emo-002.function-body
-    before_steps:
-    - id: select-thought-pattern
-      operation: select-intention
-      localization_key: command.procedure.select-intention
-  relationships: {}
-  observed_phrase:
-    text: Plus Fade Fade
-    narration_key: hplus.function.ocf-emo-002.function-body
-    relationship: legacy-form
-- id: OCF-CMD-EMO-002-LEGACY-01
-  function_id: OCF-EMO-002
-  phrase_ref:
-    source: legacy-command
-    command_id: OCF-CMD-EMO-002-LEGACY-01
-  role: legacy-alias
-  designation: secondary
-  localization:
-    label_key: commands.ocf-cmd-emo-002-legacy-01.label
-    usage_key: commands.ocf-cmd-emo-002-legacy-01.usage
-    purpose_key: functions.ocf-emo-002.purpose
-    explanation_key: commands.ocf-cmd-emo-002-legacy-01.explanation
-  documentation:
-    visible: true
-    order: 101
-  effect_scope_ref: lifecycle.persistence
-  relationships: {}
+    modes: []
+    primary: PLUS-OFFLOAD
+  name: Offload
 chains: []
 claims:
   intended_effects: []
@@ -78,19 +29,80 @@ classification:
   primary_domain: emotion
   secondary_domains:
   - foundation
+commands:
+- designation: primary
+  documentation:
+    order: 1
+    visible: true
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-EMO-002
+  id: OCF-CMD-EMO-002-PRIMARY
+  localization:
+    display_cue_key: commands.ocf-cmd-emo-002-primary.display-cue
+    explanation_key: commands.ocf-cmd-emo-002-primary.explanation
+    label_key: commands.ocf-cmd-emo-002-primary.label
+    purpose_key: functions.ocf-emo-002.purpose
+    spoken_cue_key: commands.ocf-cmd-emo-002-primary.spoken-cue
+    usage_key: commands.ocf-cmd-emo-002-primary.usage
+  observed_phrase:
+    narration_key: hplus.function.ocf-emo-002.function-body
+    relationship: canonical-match
+    text: Plus Offload
+  phrase_ref:
+    source: canonical-primary
+  procedure:
+    before_steps:
+    - id: select-thought-pattern
+      localization_key: command.procedure.select-intention
+      operation: select-intention
+    evidence_keys:
+    - hplus.function.ocf-emo-002.function-body
+    ref: OCF-PROC-INHALE-HOLD-NATURAL
+    status: documented
+  relationships: {}
+  role: activation
+- availability: historical-lookup
+  designation: secondary
+  documentation:
+    order: 101
+    visible: false
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-EMO-002
+  id: OCF-CMD-EMO-002-LEGACY-01
+  localization:
+    explanation_key: commands.ocf-cmd-emo-002-legacy-01.explanation
+    label_key: commands.ocf-cmd-emo-002-legacy-01.label
+    purpose_key: functions.ocf-emo-002.purpose
+    usage_key: commands.ocf-cmd-emo-002-legacy-01.usage
+  phrase_ref:
+    command_id: OCF-CMD-EMO-002-LEGACY-01
+    source: legacy-command
+  relationships: {}
+  role: legacy-alias
 companions: []
 compatibility:
-  legacy_commands:
-  - PLUS-FADE, FADE
-  rationale: Legacy two-word cue PLUS-FADE, FADE is retained; concise cue PLUS-CLEAR is proposed for review.
-  state: bridge-trainable
+  rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
+    operational commands remain unchanged.
+  state: historical-lookup
 contributor:
   contact: null
   name: null
 documentation:
-  title_key: functions.ocf-emo-002.title
-  short_description_key: functions.ocf-emo-002.short-description
   purpose_key: functions.ocf-emo-002.purpose
+  short_description_key: functions.ocf-emo-002.short-description
+  title_key: functions.ocf-emo-002.title
+historical_lookup:
+- decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-title
+  text: Off-Loading
+- command_id: OCF-CMD-EMO-002-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-primary
+  text: PLUS-CLEAR
+- command_id: OCF-CMD-EMO-002-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-teaching
+  text: Plus Fade Fade
 history:
 - date: '2026-09-12'
   note: Initial legacy mapping record created by bootstrap generator.
@@ -114,12 +126,14 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: review-required
+  command_review: approved
   reimplementation_status: planned
 purpose:
-  community_description: Fades and off-loads unhelpful mental load or charge; proposed concise cue PLUS-CLEAR.
+  community_description: Reduces selected recurring thought and emotional-pattern interference while retaining
+    useful memories and conscious choice.
   source_description: null
-  summary: Fades and off-loads unhelpful mental load or charge; proposed concise cue PLUS-CLEAR.
+  summary: Reduces selected recurring thought and emotional-pattern interference while retaining useful
+    memories and conscious choice.
 safety:
   level: general
   medical_relevance: false

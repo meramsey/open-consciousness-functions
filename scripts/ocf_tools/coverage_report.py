@@ -181,6 +181,7 @@ def run(directory=None):
         "--basetemp",
         str(scratch / "p"),
         "-ra",
+        "--durations=20",
     ]
     start = time.monotonic()
     with (directory / "pytest.log").open("wb") as log:
@@ -192,7 +193,11 @@ def run(directory=None):
             stderr=subprocess.STDOUT,
             check=False,
         )
-    summary = summarize(directory, exit_code=completed.returncode, elapsed=time.monotonic() - start)
+    pytest_elapsed = time.monotonic() - start
+    reporting_start = time.monotonic()
+    summary = summarize(directory, exit_code=completed.returncode, elapsed=pytest_elapsed)
+    summary["reporting_seconds"] = time.monotonic() - reporting_start
+    summary["total_runtime_seconds"] = time.monotonic() - start
     summary["scratch_retained"] = True
     if not check(summary, json.loads(FLOORS.read_text(encoding="utf-8"))):
         summary["scratch_retained"] = not cleanup_workspace_temp(scratch)

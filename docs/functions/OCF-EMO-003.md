@@ -1,8 +1,8 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Empathizing
+# Empathize
 
-**Purpose**: Builds a felt profile of another person's experience.
+**Purpose**: Develops consciously directed understanding and communication with another being through sensory, intuitive, and total-self awareness.
 
 **Function persistence**: Temporary (`temporary`)
 
@@ -14,13 +14,15 @@ Source availability does not establish historical authentication or provenance.
 
 [Command index](../COMMAND_INDEX.md)
 
-## PLUS-PROFILE, PROFILE
+## PLUS-EMPATHIZE
 
 ### Primary activation command
 
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
+
+**Recorded source phrase (not the canonical phrase)**: Plus Empathize `(canonical-match; hplus.function.ocf-emo-003.function-body)`
 
 ### Activation sequence
 

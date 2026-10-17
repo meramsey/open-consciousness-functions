@@ -17,6 +17,9 @@ from typing import Any
 
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from ocf_tools.utils import OCFError  # noqa: E402
+
 REPO_ROOT = Path(__file__).resolve().parents[2]
 LOCALE_ROOT = Path("locales/en-US")
 SHARED_RESOURCES = (
@@ -25,7 +28,8 @@ SHARED_RESOURCES = (
     "hplus-transmutation-box.yaml",
     "hplus-waking-return.yaml",
 )
-BASELINE_PATH = REPO_ROOT / "tests/fixtures/hplus-narration-text-baseline.json"
+PREVIOUS_BASELINE_PATH = REPO_ROOT / "tests/fixtures/hplus-narration-text-baseline.json"
+BASELINE_PATH = REPO_ROOT / "tests/fixtures/hplus-narration-text-baseline-002.json"
 KEY_RE = re.compile(r"^[a-z][a-z0-9-]*(\.[a-z0-9-]+)+$")
 
 
@@ -106,7 +110,12 @@ def check(root: Path = REPO_ROOT, baseline: Path = BASELINE_PATH) -> list[str]:
     ):
         raise ValueError(f"invalid narration integrity baseline: {baseline}")
     current = text_fingerprints(narration_texts(root))
-    return differences(expected, current)
+    problems = differences(expected, current)
+    if baseline == BASELINE_PATH and root == REPO_ROOT:
+        from ocf_tools.cue_migration import verify_migration
+
+        problems.extend(verify_migration())
+    return problems
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -117,7 +126,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         problems = check(baseline=args.baseline)
-    except (OSError, ValueError, yaml.YAMLError, json.JSONDecodeError) as exc:
+    except (OCFError, OSError, ValueError, yaml.YAMLError, json.JSONDecodeError) as exc:
         print(f"narration integrity error: {exc}", file=sys.stderr)
         return 2
     if problems:
