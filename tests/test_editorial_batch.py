@@ -152,7 +152,10 @@ def test_keep_decisions_and_historical_lookup_are_distinct_from_activation():
     for row in ledger["kept_decisions"]:
         owner = load_function_by_id(row["function_id"])
         name = owner.path.relative_to(REPO_ROOT).as_posix()
-        assert successors.sha(owner.path.read_text()) == ledger["unaffected_function_sha256"][name]
+        assert (
+            successors.sha(owner.path.read_text(encoding="utf-8"))
+            == ledger["unaffected_function_sha256"][name]
+        )
         item = next(item for item in report["functions"] if item["function_id"] == owner.id)
         assert item["decision_status"] == "EXISTING PAIR RETAINED"
         assert item["unselected_proposal"] is None
