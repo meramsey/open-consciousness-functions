@@ -70,11 +70,14 @@ def synthetic_predecessor(monkeypatch, tmp_path):
     }
     function = tmp_path / "functions/heart.yaml"
     function.parent.mkdir(parents=True)
-    function.write_text(yaml.safe_dump(doc, sort_keys=False))
+    # Model Git's committed UTF-8/LF bytes, independently of the host newline.
+    function.write_text(yaml.safe_dump(doc, sort_keys=False), encoding="utf-8", newline="\n")
     nar = tmp_path / "locales/en-US/hplus-OCF-BOD-006.yaml"
     nar.parent.mkdir(parents=True)
     nar.write_text(
-        'entries:\n  fixture.opener:\n    version: 1.0.0\n    text: |-\n      Original opening.\n  fixture.function-body:\n    version: 1.0.0\n    notes: historical Plus Heart Better Better remains quoted here\n    text: |-\n      Inhale and hold. Think "Plus Heart Better Better." Then exhale.\n      Think Plus Release only for the selected application.\n  fixture.closer:\n    version: 1.0.0\n    text: |-\n      Remember Plus Heart Better Better.\n'
+        'entries:\n  fixture.opener:\n    version: 1.0.0\n    text: |-\n      Original opening.\n  fixture.function-body:\n    version: 1.0.0\n    notes: historical Plus Heart Better Better remains quoted here\n    text: |-\n      Inhale and hold. Think "Plus Heart Better Better." Then exhale.\n      Think Plus Release only for the selected application.\n  fixture.closer:\n    version: 1.0.0\n    text: |-\n      Remember Plus Heart Better Better.\n',
+        encoding="utf-8",
+        newline="\n",
     )
 
     def texts(root=tmp_path):
@@ -85,7 +88,9 @@ def synthetic_predecessor(monkeypatch, tmp_path):
 
     baseline = tmp_path / author.BASELINE
     baseline.parent.mkdir(parents=True)
-    baseline.write_text(json.dumps(integrity.text_fingerprints(texts())))
+    baseline.write_text(
+        json.dumps(integrity.text_fingerprints(texts())), encoding="utf-8", newline="\n"
+    )
     ui = {
         f"functions.{owner.lower()}.{suffix}": "Old description"
         for suffix in ("title", "purpose", "short-description")
@@ -93,9 +98,13 @@ def synthetic_predecessor(monkeypatch, tmp_path):
     ui["commands.ocf-cmd-exp-002-release.usage"] = (
         "Places Zoning on hold; Cancel ends the adjustment."
     )
-    (nar.parent / "commands.yaml").write_text(yaml.safe_dump({"entries": ui}, sort_keys=False))
+    (nar.parent / "commands.yaml").write_text(
+        yaml.safe_dump({"entries": ui}, sort_keys=False), encoding="utf-8", newline="\n"
+    )
     (nar.parent / "manifest.yaml").write_text(
-        "semantic_version: 1.6.0\nresources:\n- file: commands.yaml\n  domain: ui\n"
+        "semantic_version: 1.6.0\nresources:\n- file: commands.yaml\n  domain: ui\n",
+        encoding="utf-8",
+        newline="\n",
     )
     lock = tmp_path / "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-001.json"
     lock.parent.mkdir(parents=True)
@@ -110,7 +119,9 @@ def synthetic_predecessor(monkeypatch, tmp_path):
                     "engineering.yaml": "unchanged-hash",
                 },
             }
-        )
+        ),
+        encoding="utf-8",
+        newline="\n",
     )
     record = SimpleNamespace(
         id=owner,
@@ -209,6 +220,20 @@ def test_preexisting_predecessor_edits_cannot_be_blessed_by_new_hashes(
 
 
 @pytest.mark.unit
+def test_pinned_source_byte_guard_rejects_newline_only_drift(monkeypatch, tmp_path):
+    synthetic_predecessor(monkeypatch, tmp_path)
+    path = tmp_path / "locales/en-US/commands.yaml"
+    committed = path.read_bytes()
+    assert b"\r\n" not in committed and b"\n" in committed
+    edited = committed.replace(b"\n", b"\r\n")
+    path.write_bytes(edited)
+    with pytest.raises(OCFError, match="predecessor differs from pinned source"):
+        author.plan()
+    assert path.read_bytes() == edited
+    assert not (tmp_path / author.MANIFEST).exists()
+
+
+@pytest.mark.unit
 def test_migration_preserves_preexisting_and_racing_successor_artifacts(monkeypatch, tmp_path):
     texts, function, nar, lock = synthetic_predecessor(monkeypatch, tmp_path)
     target = lock.with_name("OCF-AUDIO-DEFAULTS-HPLUS-002.json")
@@ -237,7 +262,7 @@ def test_unaffected_unicode_input_uses_explicit_utf8_and_retains_identity(monkey
     synthetic_predecessor(monkeypatch, tmp_path)
     path = tmp_path / "functions/unaffected.yaml"
     text = "id: OCF-FND-999\npurpose: Énergie 見る\n"
-    path.write_text(text, encoding="utf-8")
+    path.write_text(text, encoding="utf-8", newline="\n")
     records = author.load_all_functions()
     monkeypatch.setattr(
         author,
