@@ -1,12 +1,12 @@
 # Current title–cue decisions and implementation
 
-Decision: `OCF-EDITORIAL-TITLE-CUES-001`. Predecessor commit: `21e63ac6f8bf5a7bce9506f033330df967aa4f97`.
+Decision: `OCF-EDITORIAL-TITLE-CUES-002`. Predecessor commit: `848ac6381bd0832edf9ce60da8a8f794eefa8afe`.
 
 Current approved successor. Earlier source-pinned proposals remain immutable history; this is not a repin or blanket approval of them.
 
-Approved source: explicit user instructions in the English title–cue migration task. Approval covers primary English vocabulary and scoped teaching edits, not other proposals, mechanisms, listening or release. Heart Flow remains tentative; the committed heart title is retained.
+Approved source: explicit user decisions recorded in the versioned title–cue ledgers. Approval covers primary English vocabulary and scoped teaching edits, not other proposals, mechanisms, listening or release. Heart Flow remains tentative; the committed heart title is retained.
 
-Counts: {"active_records": 90, "allowlisted_text_changes": 21, "approved_cues_implemented": 11, "functions": 55, "historical_only_command_records": 7, "protected_entries": 177, "remaining_metadata_teaching_differences": 12, "stable_primary_identities": 55, "structured_command_identities": 97}.
+Counts: {"active_records": 89, "allowlisted_text_changes": 23, "approved_cues_implemented": 12, "functions": 55, "historical_only_command_records": 8, "protected_entries": 177, "remaining_metadata_teaching_differences": 11, "stable_primary_identities": 55, "structured_command_identities": 97}.
 
 ## Approved implementation and remaining catalog decisions
 
@@ -36,13 +36,15 @@ Previous values: Brain: Repairs & Maintenance / `PLUS-FLOW BETTER`; complete tea
 - Pending title: None.
 - Other unselected proposal: {"title": "Circulation", "cue": "PLUS-FLOW SMOOTH"}
 
-### OCF-BOD-003 — De-Discomfort
+### OCF-BOD-003 — Comfort
 
-- Current display cue: `PLUS-COMFORT`; complete teaching: **Plus Five Five Five One Five**.
-- Status: STILL UNDECIDED; title: UNCHANGED.
-- Purpose: Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT.
+- Current display cue: `PLUS-COMFORT`; complete teaching: **Plus Comfort**.
+- Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
+- Purpose: Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT.
 - Pending title: None.
-- Other unselected proposal: {"title": "Comfort", "cue": "PLUS-COMFORT"}
+- Other unselected proposal: null
+
+Previous values: De-Discomfort / `PLUS-COMFORT`; complete teaching **Plus Five Five Five One Five**.
 
 ### OCF-BOD-004 — Detox
 

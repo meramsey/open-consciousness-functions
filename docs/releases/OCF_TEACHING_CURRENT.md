@@ -5,7 +5,7 @@ Only explicitly approved substitutions were applied. Every affected entry's befo
 - OCF-AUT-001: `PLUS-AUTOMATE` / Plus Automate; metadata match True; Predecessor contextual review; unchanged protected text verified.
 - OCF-BOD-001: `PLUS-BRAIN FLOW` / Plus Brain Flow; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-BOD-002: `PLUS-FLOW SMOOTH` / Plus Flow Smooth; metadata match True; Predecessor contextual review; unchanged protected text verified.
-- OCF-BOD-003: `PLUS-COMFORT` / Plus Five Five Five One Five; metadata match False; Predecessor contextual review; unchanged protected text verified.
+- OCF-BOD-003: `PLUS-COMFORT` / Plus Comfort; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-BOD-004: `PLUS-DETOX` / Plus Detox; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-BOD-005: `PLUS-SATISFIED, SUPPLIED` / Plus Satisfied Supplied; metadata match True; Predecessor contextual review; unchanged protected text verified.
 - OCF-BOD-006: `PLUS-HEART-BETTER` / Plus Heart Better; metadata match True; Approved exact substitutions, verified against immutable predecessor.

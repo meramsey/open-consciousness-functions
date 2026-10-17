@@ -53,7 +53,7 @@ def check_current(row, source_fingerprint=None):
 
 
 def create():
-    from .cue_migration import decision_record
+    from .editorial_successors import current_decision_record
     from .indexes import load_all_functions
 
     current = json.loads(
@@ -63,7 +63,7 @@ def create():
         (REPO_ROOT / "docs/releases/OCF_TITLE_CUE_REVIEW.json").read_text(encoding="utf-8")
     )
     recommendations = {row["function_id"]: row for row in source["functions"]}
-    approved = {row["function_id"] for row in decision_record()["decisions"]}
+    approved = {row["function_id"] for row in current_decision_record()["decisions"]}
     records = {record.id: record for record in load_all_functions()}
     rows = []
     for row in current["functions"]:

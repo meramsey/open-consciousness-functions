@@ -13,6 +13,17 @@ Translator context: Brain/neck circulation support and maintenance; not generic 
 
 Review: English primary cue approved and implemented. Preserve controls/procedures. Other language terminology and prefix treatment require review.
 
+## OCF-BOD-003 / OCF-CMD-BOD-003-PRIMARY
+
+Title: Comfort. Title status: APPROVED AND IMPLEMENTED.
+Display: `PLUS-COMFORT`. Complete speech: **Plus Comfort**.
+
+Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT.
+
+Translator context: Selected physical discomfort/signal salience, with bodily awareness retained. Preserve targeting, close eyes, inhale/hold, internal cue and candle-like exhale; no separate mode or release is introduced.
+
+Review: English primary cue approved and implemented. Preserve controls/procedures. Other language terminology and prefix treatment require review.
+
 ## OCF-BOD-004 / OCF-CMD-BOD-004-PRIMARY
 
 Title: Detox. Title status: APPROVED AND IMPLEMENTED.

@@ -14,6 +14,7 @@ def test_structural_converter_replays_pinned_sources_without_touching_runtime(
     monkeypatch, tmp_path
 ):
     from ocf_tools import indexes
+    from ocf_tools.editorial_successors import before_file, before_texts
     from tools import check_hplus_narration_integrity as integrity
 
     root = conversion.REPO_ROOT
@@ -32,7 +33,7 @@ def test_structural_converter_replays_pinned_sources_without_touching_runtime(
         "locales/en-US/manifest.yaml",
         "tests/fixtures/hplus-narration-text-baseline-002.json",
     ):
-        sources[name] = (root / name).read_text(encoding="utf-8")
+        sources[name] = before_file(root, name)
     records = []
     for name, raw in sources.items():
         path = tmp_path / name
@@ -41,7 +42,7 @@ def test_structural_converter_replays_pinned_sources_without_touching_runtime(
         if name.startswith("functions/"):
             doc = yaml.safe_load(raw)
             records.append(FunctionRecord(doc["id"], doc["slug"], path, doc))
-    baseline = integrity.narration_texts()
+    baseline = before_texts(root, integrity.narration_texts())
     monkeypatch.setattr(conversion, "REPO_ROOT", tmp_path)
     monkeypatch.setattr(conversion, "source", lambda name: sources[name])
     monkeypatch.setattr(indexes, "load_all_functions", lambda: records)

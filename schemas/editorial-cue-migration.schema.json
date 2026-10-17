@@ -6,7 +6,8 @@
   "required": ["schema_version", "id", "source_commit", "decision_source", "approval_scope", "decisions", "allowed_text_changes", "previous_integrity_baseline", "integrity_baseline", "previous_baseline_sha256", "source_files", "unaffected_function_sha256", "previous_defaults_lock", "defaults_lock", "previous_defaults_sha256", "pending", "rejected_or_superseded", "locales_requiring_review"],
   "properties": {
     "schema_version": {"const": "1.0"},
-    "id": {"const": "OCF-EDITORIAL-TITLE-CUES-001"},
+    "id": {"enum": ["OCF-EDITORIAL-TITLE-CUES-001", "OCF-EDITORIAL-TITLE-CUES-002"]},
+    "predecessor_files": {"type": "object", "additionalProperties": {"type": "string"}},
     "source_commit": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
     "decision_source": {"type": "string", "minLength": 1},
     "approval_scope": {"type": "string", "minLength": 1},

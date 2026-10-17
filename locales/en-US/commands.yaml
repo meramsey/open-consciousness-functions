@@ -1505,15 +1505,15 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-bod-003.purpose:
-    text: Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT.
+    text: "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT."
     status: canonical
     version: 1.0.0
   functions.ocf-bod-003.short-description:
-    text: Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT.
+    text: "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT."
     status: canonical
     version: 1.0.0
   functions.ocf-bod-003.title:
-    text: De-Discomfort
+    text: "Comfort"
     status: canonical
     version: 1.0.0
   functions.ocf-bod-004.purpose:
@@ -2147,3 +2147,4 @@ entries:
   commands.ocf-cmd-prf-002-primary.display-cue: "PLUS-INNER POWER"
   commands.ocf-cmd-bod-004-primary.display-cue: "PLUS-DETOX"
   commands.ocf-cmd-bod-006-primary.display-cue: "PLUS-HEART-BETTER"
+  commands.ocf-cmd-bod-003-primary.display-cue: "PLUS-COMFORT"

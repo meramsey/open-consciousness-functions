@@ -377,6 +377,7 @@ def test_document_expansion_precedes_recording_fingerprints_and_release(tmp_path
 
 @pytest.mark.integration
 def test_all_approved_resolved_bytes_and_four_passes_match_predecessor():
+    from ocf_tools.editorial_successors import before_texts
     from ocf_tools.narration_first import plan_narration
     from ocf_tools.paths import REPO_ROOT
     from ocf_tools.symbolic_integrity import verify
@@ -390,7 +391,8 @@ def test_all_approved_resolved_bytes_and_four_passes_match_predecessor():
     assert verify() == []
     assert len(data["entries"]) == 22
     assert {
-        key: hashlib.sha256(text.encode()).hexdigest() for key, text in narration_texts().items()
+        key: hashlib.sha256(text.encode()).hexdigest()
+        for key, text in before_texts(REPO_ROOT, narration_texts()).items()
     } == data["resolved_baseline"]
     for owner in sorted({row["function_id"] for row in data["entries"]}):
         view = preview(owner)

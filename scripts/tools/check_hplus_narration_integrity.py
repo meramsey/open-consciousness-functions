@@ -30,7 +30,7 @@ SHARED_RESOURCES = (
     "hplus-waking-return.yaml",
 )
 PREVIOUS_BASELINE_PATH = REPO_ROOT / "tests/fixtures/hplus-narration-text-baseline.json"
-BASELINE_PATH = REPO_ROOT / "tests/fixtures/hplus-narration-text-baseline-002.json"
+BASELINE_PATH = REPO_ROOT / "tests/fixtures/hplus-narration-text-baseline-003.json"
 KEY_RE = re.compile(r"^[a-z][a-z0-9-]*(\.[a-z0-9-]+)+$")
 
 
@@ -129,6 +129,9 @@ def check(root: Path = REPO_ROOT, baseline: Path = BASELINE_PATH) -> list[str]:
             from ocf_tools.symbolic_integrity import verify
 
             problems.extend(verify(root))
+        from ocf_tools.editorial_successors import verify as verify_successors
+
+        problems.extend(verify_successors(root))
     return problems
 
 

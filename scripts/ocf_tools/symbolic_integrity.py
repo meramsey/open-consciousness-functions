@@ -6,6 +6,8 @@ import hashlib
 import json
 from pathlib import Path
 
+import yaml
+
 from .paths import REPO_ROOT
 from .utils import OCFError
 
@@ -32,21 +34,22 @@ def ledger(root=REPO_ROOT):
 def predecessor_text(root, name):
     """Old approval remains checkable against exact retained predecessor bytes."""
     data = ledger(root)
+    from .editorial_successors import before_file
+
+    current = before_file(root, name)
     if data and name in data["predecessor_files"]:
         row = data["files"][name]
         text = data["predecessor_files"][name]
-        if (
-            sha(text) != row["before_sha256"]
-            or sha((root / name).read_text(encoding="utf-8")) != row["after_sha256"]
-        ):
+        if sha(text) != row["before_sha256"] or sha(current) != row["after_sha256"]:
             raise OCFError("structural predecessor/current file fingerprint mismatch: " + name)
         return text
-    return (root / name).read_text(encoding="utf-8")
+    return current
 
 
 def verify(root=REPO_ROOT):
     from tools.check_hplus_narration_integrity import narration_texts
 
+    from .editorial_successors import before_file, before_texts
     from .locale import LocaleCatalog
 
     data = ledger(root)
@@ -57,16 +60,16 @@ def verify(root=REPO_ROOT):
         path = (root / name).resolve()
         if Path(name).is_absolute() or not path.is_relative_to(root.resolve()):
             raise OCFError("symbolic migration path escapes repository")
-        if sha(path.read_text(encoding="utf-8")) != checks["after_sha256"]:
+        if sha(before_file(root, name)) != checks["after_sha256"]:
             problems.append("symbolic raw source drift: " + name)
         if sha(data["predecessor_files"][name]) != checks["before_sha256"]:
             problems.append("symbolic predecessor tampered: " + name)
     catalog = LocaleCatalog(root / "locales")
-    texts = narration_texts(root)
+    texts = before_texts(root, narration_texts(root))
     if {key: sha(text) for key, text in texts.items()} != data["resolved_baseline"]:
         problems.append("resolved protected narration differs from byte-identical predecessor")
     for row in data["entries"]:
-        raw, _ = catalog.raw_resource(row["key"], "en-US", domain="narration", fallback=False)
+        raw = yaml.safe_load(before_file(root, row["path"]))["entries"][row["key"]]["text"]
         expected = row["before_text"]
         for span in reversed(row["spans"]):
             if (
@@ -75,10 +78,10 @@ def verify(root=REPO_ROOT):
             ):
                 raise OCFError("symbolic replacement span mismatch")
             expected = expected[: span["start"]] + "{{ cue.primary }}" + expected[span["end"] :]
-        if expected != raw.text or sha(raw.text) != row["template_sha256"]:
+        if expected != raw or sha(raw) != row["template_sha256"]:
             problems.append("nonstructural template change: " + row["key"])
-        resolved, _ = catalog.resource(row["key"], "en-US", domain="narration", fallback=False)
-        if resolved.text.encode("utf-8") != row["before_text"].encode("utf-8"):
+        resolved = texts[row["path"] + "::" + row["key"]]
+        if resolved.encode("utf-8") != row["before_text"].encode("utf-8"):
             problems.append("resolved byte drift: " + row["key"])
     for owner in catalog.function_records():
         if owner.data.get("narration") != data["narration_bindings"][owner.id]:

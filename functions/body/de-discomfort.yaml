@@ -1,8 +1,6 @@
 aliases:
-  commands:
-  - PLUS-55515
-  command_ids:
-  - OCF-CMD-BOD-003-LEGACY-01
+  commands: []
+  command_ids: []
   names:
   - De-Discomfort
 applications: []
@@ -21,7 +19,7 @@ canonical:
     modes: []
     mode_ids: []
     primary: PLUS-COMFORT
-  name: De-Discomfort
+  name: "Comfort"
 commands:
 - id: OCF-CMD-BOD-003-PRIMARY
   function_id: OCF-BOD-003
@@ -34,6 +32,8 @@ commands:
     usage_key: commands.ocf-cmd-bod-003-primary.usage
     purpose_key: functions.ocf-bod-003.purpose
     explanation_key: commands.ocf-cmd-bod-003-primary.explanation
+    display_cue_key: commands.ocf-cmd-bod-003-primary.display-cue
+    spoken_cue_key: commands.ocf-cmd-bod-003-primary.spoken-cue
   documentation:
     visible: true
     order: 1
@@ -46,11 +46,11 @@ commands:
     before_steps: []
   relationships: {}
   observed_phrase:
-    text: Plus Five Five Five One Five
+    text: "Plus Comfort"
     narration_key: hplus.function.ocf-bod-003.function-body
-    relationship: legacy-form
-  spoken: null
-  spoken_review: unresolved
+    relationship: "canonical-match"
+  spoken: "Plus Comfort"
+  spoken_review: "reviewed"
 - id: OCF-CMD-BOD-003-LEGACY-01
   function_id: OCF-BOD-003
   phrase_ref:
@@ -64,12 +64,13 @@ commands:
     purpose_key: functions.ocf-bod-003.purpose
     explanation_key: commands.ocf-cmd-bod-003-legacy-01.explanation
   documentation:
-    visible: true
+    visible: false
     order: 101
   effect_scope_ref: lifecycle.persistence
   relationships: {}
   spoken: null
   spoken_review: unresolved
+  availability: historical-lookup
 chains: []
 claims:
   intended_effects: []
@@ -82,9 +83,8 @@ companions: []
 compatibility:
   legacy_commands:
   - PLUS-55515
-  rationale: The legacy numeric cue (PLUS-55515) is cryptic; the concise OCF cue PLUS-COMFORT is proposed
-    for review.
-  state: bridge-trainable
+  rationale: "User approved Comfort / PLUS-COMFORT / Plus Comfort in OCF-EDITORIAL-TITLE-CUES-002. Numeric wording remains historical lookup only; no bridge lesson is added."
+  state: "historical-lookup"
 contributor:
   contact: null
   name: null
@@ -115,12 +115,12 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: review-required
+  command_review: "approved"
   reimplementation_status: planned
 purpose:
-  community_description: Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT.
+  community_description: "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT."
   source_description: null
-  summary: Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT.
+  summary: "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT."
 safety:
   level: health
   medical_relevance: true
@@ -154,3 +154,15 @@ narration:
   - key: hplus.function.ocf-bod-003.closer
     repetitions: 1
     role: closer
+historical_lookup:
+- text: De-Discomfort
+  kind: former-title
+  decision: OCF-EDITORIAL-TITLE-CUES-002
+- text: PLUS-55515
+  kind: legacy-phrase
+  command_id: OCF-CMD-BOD-003-LEGACY-01
+  decision: OCF-EDITORIAL-TITLE-CUES-002
+- text: Plus Five Five Five One Five
+  kind: former-teaching
+  command_id: OCF-CMD-BOD-003-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-002

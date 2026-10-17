@@ -14,8 +14,9 @@ The [current decision sheet](releases/OCF_TITLE_CUE_CURRENT.md),
 [current teaching status](releases/OCF_TEACHING_CURRENT.md),
 [source-English terminology sheet](releases/OCF_EN_US_TERMINOLOGY.md) and
 [historical lookup guide](releases/OCF_HISTORICAL_LOOKUP_CURRENT.md) reflect
-`OCF-EDITORIAL-TITLE-CUES-001`. Nine selected pairs, Detox and the requested
-heart cue are implemented. Heart Flow remains tentative; Heart Renewal and the
+`OCF-EDITORIAL-TITLE-CUES-001` and its approved Comfort successor
+`OCF-EDITORIAL-TITLE-CUES-002`. Nine selected pairs, Detox, the requested
+heart cue and Comfort are implemented. Heart Flow remains tentative; Heart Renewal and the
 Body Cleansing/Body Cleanse proposals are rejected/superseded. All other unselected
 vocabulary remains pending. No HPLUS identity migration is implemented.
 
@@ -34,6 +35,31 @@ is never relabeled or overwritten. Listening and release approval are separate.
 The canonical-command review now records the approved source-English primary
 vocabulary. Specification review, other-language terminology review, listening
 and release states remain separate and are not promoted by that field.
+
+## Comfort: first individual follow-up review
+
+The user's explicit selection of option 1 approves OCF-BOD-003 as **Comfort**,
+with display cue **PLUS-COMFORT** and complete spoken cue **Plus Comfort**.
+The [successor ledger](../function-content/editorial/approved-title-cues-002.json)
+records the exact authorization, predecessor files, substitutions and hashes.
+Function YAML owns the spoken phrase; the body and closer reference
+`{{ cue.primary }}`. Three body mentions, one closer mention and the exercise
+sign-off are aligned. Only these two protected entries change; the other 175
+resolved entries are byte-identical to the preceding revision.
+
+Target selection, closing the eyes, inhaling/holding, internal cue and candle-like
+exhalation remain intact. Persistence stays temporary; no mode or release is
+introduced. `PLUS-55515` and its spoken numeric realization remain historical
+lookup, and the legacy command identity is historical-only. Stable IDs and
+source provenance are retained.
+
+Fixture 003 and engineering defaults lock 004 are the current successors.
+Earlier fixtures, approval/structural ledgers and locks 001–003 remain immutable.
+Lock 004 updates affected narration dependencies with the same engineering
+profiles. The verifier checks the bounded decision before projecting predecessor
+content for historical checks. Old text fingerprints remain stale for recorded
+and hybrid sources; historical lookup does not select activation. Existing audio
+does not acquire new wording or listening approval from this decision.
 
 ## Historical proposal checkpoint
 

@@ -9,7 +9,7 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [See-Be](functions/OCF-AUT-001.md) | PLUS-AUTOMATE |  | Temporary | Automates a desired way of being so it runs without active effort. |
 | [Brain Flow](functions/OCF-BOD-001.md) | PLUS-BRAIN FLOW |  | Permanent | Supports balanced brain and neck circulation and maintenance, with conscious reinforcement when desired. |
 | [Circulation](functions/OCF-BOD-002.md) | PLUS-FLOW SMOOTH |  | Permanent | Promotes a felt sense of smooth, comfortable circulation. |
-| [De-Discomfort](functions/OCF-BOD-003.md) | PLUS-COMFORT |  | Temporary | Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT. |
+| [Comfort](functions/OCF-BOD-003.md) | PLUS-COMFORT |  | Temporary | Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT. |
 | [Detox](functions/OCF-BOD-004.md) | PLUS-DETOX |  | Permanent | Supports the body's self-regulating cleansing, renewal, and maintenance, with conscious reinforcement when desired. |
 | [Eat/No Eat](functions/OCF-BOD-005.md) | PLUS-SATISFIED, SUPPLIED |  | Temporary | Adjusts appetite signals in either direction. |
 | [Heart: Repairs & Maintenance](functions/OCF-BOD-006.md) | PLUS-HEART-BETTER |  | Permanent | Self-directed wellness practice supporting a felt sense of calm, steady heart function. |

@@ -51,6 +51,7 @@ def verify_migration(root: Path = REPO_ROOT):
     from tools.approved_cue_migration import APPROVED, text_operations
     from tools.check_hplus_narration_integrity import narration_texts, text_fingerprints
 
+    from .editorial_successors import before_texts
     from .symbolic_integrity import predecessor_text
 
     data = decision_record(root)
@@ -74,7 +75,8 @@ def verify_migration(root: Path = REPO_ROOT):
         raise OCFError("invalid predecessor narration fixture")
     for identity in previous:
         contained(root, identity.split("::", 1)[0])
-    current = text_fingerprints(narration_texts(root))
+    actual_texts = before_texts(root, narration_texts(root))
+    current = text_fingerprints(actual_texts)
     problems = []
     permitted = {row["identity"]: row for row in data["allowed_text_changes"]}
     if len(permitted) != len(data["allowed_text_changes"]):
@@ -86,7 +88,6 @@ def verify_migration(root: Path = REPO_ROOT):
             raise OCFError("protected entry is outside the approved function scope")
     if set(current) != set(previous):
         problems.append("editorial migration changed protected resource identities")
-    actual_texts = narration_texts(root)
     for identity in previous.keys() & current.keys():
         row = permitted.get(identity)
         if row is None:

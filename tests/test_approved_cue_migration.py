@@ -447,7 +447,11 @@ def test_exact_user_decisions_integrity_and_unaffected_active_vocabulary():
     assert cue_migration.verify_migration() == []
     assert len(data["allowed_text_changes"]) == 21
     old = json.loads((author.REPO_ROOT / author.BASELINE).read_text())
-    current = integrity.text_fingerprints(integrity.narration_texts())
+    from ocf_tools.editorial_successors import before_texts
+
+    current = integrity.text_fingerprints(
+        before_texts(author.REPO_ROOT, integrity.narration_texts())
+    )
     assert len(old) == len(current) == 177
     assert sum(old[key] != current[key] for key in old) == 21
     catalog = LocaleCatalog()
@@ -484,7 +488,7 @@ def test_exact_user_decisions_integrity_and_unaffected_active_vocabulary():
         for row in record.command_records
         if commands.is_active(row)
     ]
-    assert len(active) == 90
+    assert len(active) == 89  # Comfort's approved successor retires its numeric primary alias.
     assert len({row.id for row in active if row.designation == "primary"}) == 55
 
 

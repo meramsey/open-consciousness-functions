@@ -9,7 +9,7 @@ Complete index of every OCF function record. Sorted by OCF ID.
 | `OCF-AUT-001` | See-Be | SEE-BE | `PLUS-AUTOMATE` | `PLUS-AUTOMATE` | automation | temporary | unavailable | planned | approved | unchanged | 0 | 0 | functions/automation/see-be.yaml |
 | `OCF-BOD-001` | Brain Flow | BRAIN: REPAIRS & MAINTENANCE | `PLUS-BRAIN FLOW` | `PLUS-FLOW BETTER` | body | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/body/brain-repairs.yaml |
 | `OCF-BOD-002` | Circulation | CIRCULATION | `PLUS-FLOW SMOOTH` | `PLUS-FLOW SMOOTH` | body | permanent | available | planned | approved | unchanged | 0 | 0 | functions/body/circulation.yaml |
-| `OCF-BOD-003` | De-Discomfort | DE-DISCOMFORT | `PLUS-COMFORT` | `PLUS-55515` | body | temporary | available | planned | review-required | bridge-trainable | 0 | 0 | functions/body/de-discomfort.yaml |
+| `OCF-BOD-003` | Comfort | DE-DISCOMFORT | `PLUS-COMFORT` | `PLUS-55515` | body | temporary | available | planned | approved | historical-lookup | 0 | 0 | functions/body/de-discomfort.yaml |
 | `OCF-BOD-004` | Detox | DE-TOX: BODY | `PLUS-DETOX` | `PLUS-CLEAN, CLEAR` | body | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/body/de-tox-body.yaml |
 | `OCF-BOD-005` | Eat/No Eat | EAT/NO EAT | `PLUS-SATISFIED, SUPPLIED` | `PLUS-SATISFIED, SUPPLIED` | body | temporary | available | planned | approved | unchanged | 0 | 0 | functions/body/eat-no-eat.yaml |
 | `OCF-BOD-006` | Heart: Repairs & Maintenance | HEART: REPAIRS & MAINTENANCE | `PLUS-HEART-BETTER` | `PLUS-HEART, BETTER, BETTER` | body | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/body/heart-repairs.yaml |

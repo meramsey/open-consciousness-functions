@@ -1,3 +1,4 @@
+# OCF-EDITORIAL-TITLE-CUES-002: approved successor; earlier numeric-cue notes describe prior versions.
 # OCF-BOD-003 — De-Discomfort
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -35,7 +36,7 @@ entries:
 
   hplus.function.ocf-bod-003.function-body:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted narration based on the unverified De-Discomfort
       transcript. Original SOURCE +Transcripts From available
@@ -60,6 +61,9 @@ entries:
       medical effect.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release pending.
+    cue_template:
+      function_id: OCF-BOD-003
+      allowed: [cue.primary]
     text: |-
       From this moment forward, whenever you wish to reduce
       physical discomfort in any part of your body,
@@ -73,7 +77,7 @@ entries:
       Take a deep breath in and gently hold it.
 
       While holding your breath, silently say to yourself,
-      "Plus Five Five Five One Five."
+      "{{ cue.primary }}."
 
       Then slowly exhale through your mouth,
       as though gently blowing out a candle.
@@ -99,7 +103,7 @@ entries:
       and gently hold your breath.
 
       Focus on the area of discomfort and silently
-      say to yourself, "Plus Five Five Five One Five."
+      say to yourself, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
@@ -107,7 +111,7 @@ entries:
       fading into the background until it is
       no longer important to you.
 
-      Each time you use Plus Five Five Five One Five,
+      Each time you use {{ cue.primary }},
       this process becomes easier, smoother,
       faster, and more effective.
 
@@ -118,7 +122,7 @@ entries:
 
   hplus.function.ocf-bod-003.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.2.1
     notes: >-
       OCF-adapted narration based on the unverified De-Discomfort
       transcript. Original SOURCE +Transcripts From available
@@ -136,6 +140,9 @@ entries:
       not a verbatim source transcription.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release pending.
+    cue_template:
+      function_id: OCF-BOD-003
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to reduce discomfort
       in any part of your body, simply close your eyes.
@@ -146,7 +153,7 @@ entries:
       Inhale deeply and gently hold your breath.
 
       Silently say to yourself,
-      "Plus Five Five Five One Five."
+      "{{ cue.primary }}."
 
       Then slowly exhale through your mouth,
       as though gently blowing out a candle.
@@ -154,4 +161,4 @@ entries:
       The discomfort will diminish,
       becoming less and less important to you.
 
-      This concludes your OCF De-Discomfort exercise.
+      This concludes your OCF Comfort exercise.

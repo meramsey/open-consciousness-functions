@@ -9,7 +9,7 @@ Every function either has source material available (`available`) or is a full O
 | `OCF-AUT-001` | See-Be | SEE-BE | unavailable | proposal pathway |
 | `OCF-BOD-001` | Brain Flow | BRAIN: REPAIRS & MAINTENANCE | available | available |
 | `OCF-BOD-002` | Circulation | CIRCULATION | available | available |
-| `OCF-BOD-003` | De-Discomfort | DE-DISCOMFORT | available | available |
+| `OCF-BOD-003` | Comfort | DE-DISCOMFORT | available | available |
 | `OCF-BOD-004` | Detox | DE-TOX: BODY | available | available |
 | `OCF-BOD-005` | Eat/No Eat | EAT/NO EAT | available | available |
 | `OCF-BOD-006` | Heart: Repairs & Maintenance | HEART: REPAIRS & MAINTENANCE | available | available |

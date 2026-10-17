@@ -11,7 +11,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from ocf_tools.commands import command_view, cue_presentation  # noqa: E402
-from ocf_tools.cue_migration import decision_record, verify_migration  # noqa: E402
+from ocf_tools.cue_migration import verify_migration  # noqa: E402
+from ocf_tools.editorial_successors import current_decision_record  # noqa: E402
+from ocf_tools.editorial_successors import verify as verify_successors
 from ocf_tools.indexes import load_all_functions  # noqa: E402
 from ocf_tools.locale import LocaleCatalog  # noqa: E402
 from ocf_tools.paths import REPO_ROOT  # noqa: E402
@@ -21,9 +23,11 @@ from tools.title_cue_review import words  # noqa: E402
 
 def build():
     problems = verify_migration()
+    if not problems:
+        problems = verify_successors()
     if problems:
         raise OCFError("approved migration drift: " + " | ".join(problems))
-    decision = decision_record()
+    decision = current_decision_record()
     changed = {row["function_id"]: row for row in decision["decisions"]}
     previous = json.loads(
         (REPO_ROOT / "docs/releases/OCF_TITLE_CUE_REVIEW.json").read_text(encoding="utf-8")
@@ -86,6 +90,7 @@ def build():
     return {
         "schema_version": "1.0",
         "decision_id": decision["id"],
+        "decision_ids": decision["decision_ids"],
         "predecessor_commit": decision["source_commit"],
         "source_scope": "Current approved successor. Earlier source-pinned proposals remain immutable history; this is not a repin or blanket approval of them.",
         "counts": {
@@ -138,7 +143,7 @@ def render(data):
         "",
         data["source_scope"],
         "",
-        "Approved source: explicit user instructions in the English title–cue migration task. Approval covers primary English vocabulary and scoped teaching edits, not other proposals, mechanisms, listening or release. Heart Flow remains tentative; the committed heart title is retained.",
+        "Approved source: explicit user decisions recorded in the versioned title–cue ledgers. Approval covers primary English vocabulary and scoped teaching edits, not other proposals, mechanisms, listening or release. Heart Flow remains tentative; the committed heart title is retained.",
         "",
         "Counts: " + json.dumps(data["counts"], sort_keys=True) + ".",
         "",

@@ -1,18 +1,22 @@
 {
   "schema_version": "1.0",
-  "decision_id": "OCF-EDITORIAL-TITLE-CUES-001",
-  "predecessor_commit": "21e63ac6f8bf5a7bce9506f033330df967aa4f97",
+  "decision_id": "OCF-EDITORIAL-TITLE-CUES-002",
+  "decision_ids": [
+    "OCF-EDITORIAL-TITLE-CUES-001",
+    "OCF-EDITORIAL-TITLE-CUES-002"
+  ],
+  "predecessor_commit": "848ac6381bd0832edf9ce60da8a8f794eefa8afe",
   "source_scope": "Current approved successor. Earlier source-pinned proposals remain immutable history; this is not a repin or blanket approval of them.",
   "counts": {
     "functions": 55,
     "structured_command_identities": 97,
-    "active_records": 90,
-    "historical_only_command_records": 7,
+    "active_records": 89,
+    "historical_only_command_records": 8,
     "stable_primary_identities": 55,
-    "approved_cues_implemented": 11,
+    "approved_cues_implemented": 12,
     "protected_entries": 177,
-    "allowlisted_text_changes": 21,
-    "remaining_metadata_teaching_differences": 12
+    "allowlisted_text_changes": 23,
+    "remaining_metadata_teaching_differences": 11
   },
   "functions": [
     {
@@ -139,30 +143,60 @@
     },
     {
       "function_id": "OCF-BOD-003",
-      "current_title": "De-Discomfort",
+      "current_title": "Comfort",
       "display_cue": "PLUS-COMFORT",
-      "spoken_teaching": "Plus Five Five Five One Five",
+      "spoken_teaching": "Plus Comfort",
       "cue_presentation": {
         "command_id": "OCF-CMD-BOD-003-PRIMARY",
         "display_cue": "PLUS-COMFORT",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Comfort",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-003-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
-      "current_purpose": "Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT.",
-      "decision_status": "STILL UNDECIDED",
-      "metadata_teaching_consistent": false,
-      "title_status": "UNCHANGED",
+      "current_purpose": "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT.",
+      "decision_status": "APPROVED AND IMPLEMENTED",
+      "metadata_teaching_consistent": true,
+      "title_status": "APPROVED AND IMPLEMENTED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
-        "title": "Comfort",
-        "cue": "PLUS-COMFORT"
+      "previous_values": {
+        "title": "De-Discomfort",
+        "display_cue": "PLUS-COMFORT",
+        "spoken_cue": "Plus Five Five Five One Five",
+        "source_spoken": null
       },
-      "historical_lookup": [],
-      "context": "Locate physical discomfort, close eyes, inhale/hold/numeric cue/candle-like exhale. Reduces signal salience while retaining bodily awareness; COMFORT is a new association, not speech already taught. Distinct from temporary numbing.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "De-Discomfort",
+          "kind": "former-title",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-002"
+        },
+        {
+          "text": "PLUS-55515",
+          "kind": "legacy-phrase",
+          "command_id": "OCF-CMD-BOD-003-LEGACY-01",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-002"
+        },
+        {
+          "text": "Plus Five Five Five One Five",
+          "kind": "former-teaching",
+          "command_id": "OCF-CMD-BOD-003-PRIMARY",
+          "decision": "OCF-EDITORIAL-TITLE-CUES-002"
+        }
+      ],
+      "context": "Selected physical discomfort/signal salience, with bodily awareness retained. Preserve targeting, close eyes, inhale/hold, internal cue and candle-like exhale; no separate mode or release is introduced.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-bod-003.function-body",
+        "hplus.function.ocf-bod-003.closer"
+      ]
     },
     {
       "function_id": "OCF-BOD-004",
@@ -2279,7 +2313,9 @@
         "label_key": "commands.ocf-cmd-bod-003-primary.label",
         "usage_key": "commands.ocf-cmd-bod-003-primary.usage",
         "purpose_key": "functions.ocf-bod-003.purpose",
-        "explanation_key": "commands.ocf-cmd-bod-003-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-bod-003-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-bod-003-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-bod-003-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -2296,12 +2332,12 @@
       },
       "relationships": {},
       "observed_phrase": {
-        "text": "Plus Five Five Five One Five",
+        "text": "Plus Comfort",
         "narration_key": "hplus.function.ocf-bod-003.function-body",
-        "relationship": "legacy-form"
+        "relationship": "canonical-match"
       },
-      "spoken": null,
-      "spoken_review": "unresolved",
+      "spoken": "Plus Comfort",
+      "spoken_review": "reviewed",
       "phrase": "PLUS-COMFORT",
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
@@ -2340,8 +2376,15 @@
         "command_id": "OCF-CMD-BOD-003-PRIMARY",
         "display_cue": "PLUS-COMFORT",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Comfort",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-003-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -2360,13 +2403,14 @@
         "explanation_key": "commands.ocf-cmd-bod-003-legacy-01.explanation"
       },
       "documentation": {
-        "visible": true,
+        "visible": false,
         "order": 101
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
       "spoken": null,
       "spoken_review": "unresolved",
+      "availability": "historical-lookup",
       "phrase": "PLUS-55515",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -8329,7 +8373,7 @@
     "functions/automation/see-be.yaml": "ad3b0b6c24c772a3b14cdb95f58af66149f296347e8fb4ae82e56b347df231bf",
     "functions/body/brain-repairs.yaml": "3136af44bb811d9dfbd99e5dda6bc3d5ed7c7e53b40bbfedd81de1b231694bc2",
     "functions/body/circulation.yaml": "ab82119a99a67d80d423e48e2e335541b4da52d7d89407c855c4586e9ebe13d3",
-    "functions/body/de-discomfort.yaml": "073295e8cd80582407d319a9f12c9c920e42832a918e864482b8dcfdbfb8a1fb",
+    "functions/body/de-discomfort.yaml": "fc9ccf4d2d50ec56a81bf66791f292605839a7d33e9827e0543a50df9e6a012b",
     "functions/body/de-tox-body.yaml": "4b961558d4e3255f0f1d542f0b1459ecb2f382541c29857bf33f6a7f15c8df35",
     "functions/body/eat-no-eat.yaml": "1a6f925c2fa4d805475f342069a3e72dbfea47281169de69396996a0933b9a8b",
     "functions/body/heart-repairs.yaml": "0ff3bbb6bfeed8323a5b7716bd0b0bc08116136ea42b6284445b94398c1e7315",

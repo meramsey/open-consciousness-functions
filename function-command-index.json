@@ -1,6 +1,6 @@
 {
   "canonical_locale": "en-US",
-  "command_count": 90,
+  "command_count": 89,
   "fallback_count": 0,
   "fallbacks": [],
   "function_count": 55,
@@ -613,22 +613,29 @@
       }
     },
     {
-      "canonical_command_review": "review-required",
+      "canonical_command_review": "approved",
       "command_review_label": {
         "fallback": false,
-        "key": "command.review.review-required",
+        "key": "command.review.approved",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Review required"
+        "text": "Approved"
       },
       "commands": [
         {
           "cue_presentation": {
-            "binding_status": "unbound",
+            "binding_status": "resolved",
             "command_id": "OCF-CMD-BOD-003-PRIMARY",
             "display_cue": "PLUS-COMFORT",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
-            "spoken_cue": null
+            "resource_status": "reviewed",
+            "spoken_cue": "Plus Comfort",
+            "spoken_cue_key": "commands.ocf-cmd-bod-003-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": "1.0.0"
           },
           "designation": "primary",
           "documentation": {
@@ -654,15 +661,17 @@
             "text": "Primary activation command"
           },
           "localization": {
+            "display_cue_key": "commands.ocf-cmd-bod-003-primary.display-cue",
             "explanation_key": "commands.ocf-cmd-bod-003-primary.explanation",
             "label_key": "commands.ocf-cmd-bod-003-primary.label",
             "purpose_key": "functions.ocf-bod-003.purpose",
+            "spoken_cue_key": "commands.ocf-cmd-bod-003-primary.spoken-cue",
             "usage_key": "commands.ocf-cmd-bod-003-primary.usage"
           },
           "observed_phrase": {
             "narration_key": "hplus.function.ocf-bod-003.function-body",
-            "relationship": "legacy-form",
-            "text": "Plus Five Five Five One Five"
+            "relationship": "canonical-match",
+            "text": "Plus Comfort"
           },
           "phrase": "PLUS-COMFORT",
           "phrase_ref": {
@@ -750,7 +759,7 @@
             "key": "functions.ocf-bod-003.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT."
+            "text": "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT."
           },
           "related_commands": [],
           "relationships": {},
@@ -762,85 +771,14 @@
             "resolved_locale": "en-US",
             "text": "Temporary"
           },
-          "spoken": null,
-          "spoken_review": "unresolved",
+          "spoken": "Plus Comfort",
+          "spoken_review": "reviewed",
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-003-primary.usage",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
             "text": "Use only when you choose to activate the documented function."
-          }
-        },
-        {
-          "cue_presentation": {
-            "binding_status": "unbound",
-            "command_id": "OCF-CMD-BOD-003-LEGACY-01",
-            "display_cue": "PLUS-55515",
-            "requested_locale": "en-US",
-            "spoken_cue": null
-          },
-          "designation": "secondary",
-          "documentation": {
-            "order": 101,
-            "visible": true
-          },
-          "effect_scope": "temporary",
-          "effect_scope_ref": "lifecycle.persistence",
-          "explanation": {
-            "fallback": false,
-            "key": "commands.ocf-cmd-bod-003-legacy-01.explanation",
-            "requested_locale": "en-US",
-            "resolved_locale": "en-US",
-            "text": "This is a compatibility phrase, not a new canonical command."
-          },
-          "function_id": "OCF-BOD-003",
-          "id": "OCF-CMD-BOD-003-LEGACY-01",
-          "label": {
-            "fallback": false,
-            "key": "commands.ocf-cmd-bod-003-legacy-01.label",
-            "requested_locale": "en-US",
-            "resolved_locale": "en-US",
-            "text": "Legacy compatibility phrase"
-          },
-          "localization": {
-            "explanation_key": "commands.ocf-cmd-bod-003-legacy-01.explanation",
-            "label_key": "commands.ocf-cmd-bod-003-legacy-01.label",
-            "purpose_key": "functions.ocf-bod-003.purpose",
-            "usage_key": "commands.ocf-cmd-bod-003-legacy-01.usage"
-          },
-          "phrase": "PLUS-55515",
-          "phrase_ref": {
-            "command_id": "OCF-CMD-BOD-003-LEGACY-01",
-            "source": "legacy-command"
-          },
-          "procedure_status": "not-specified",
-          "procedure_steps": [],
-          "purpose": {
-            "fallback": false,
-            "key": "functions.ocf-bod-003.purpose",
-            "requested_locale": "en-US",
-            "resolved_locale": "en-US",
-            "text": "Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT."
-          },
-          "related_commands": [],
-          "relationships": {},
-          "role": "legacy-alias",
-          "scope_label": {
-            "fallback": false,
-            "key": "command.scope.temporary",
-            "requested_locale": "en-US",
-            "resolved_locale": "en-US",
-            "text": "Temporary"
-          },
-          "spoken": null,
-          "spoken_review": "unresolved",
-          "usage": {
-            "fallback": false,
-            "key": "commands.ocf-cmd-bod-003-legacy-01.usage",
-            "requested_locale": "en-US",
-            "resolved_locale": "en-US",
-            "text": "Compatibility phrase retained by the registry; historical authentication is not implied."
           }
         }
       ],
@@ -859,7 +797,7 @@
         "key": "functions.ocf-bod-003.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT."
+        "text": "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT."
       },
       "reimplementation_status": "planned",
       "short_description": {
@@ -867,7 +805,7 @@
         "key": "functions.ocf-bod-003.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT."
+        "text": "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT."
       },
       "slug": "de-discomfort",
       "source_availability": "available",
@@ -883,7 +821,7 @@
         "key": "functions.ocf-bod-003.title",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "De-Discomfort"
+        "text": "Comfort"
       }
     },
     {

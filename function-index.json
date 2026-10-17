@@ -1268,7 +1268,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 0,
       "background_preset_count": 0,
       "canonical_command": "PLUS-COMFORT",
-      "canonical_name": "De-Discomfort",
+      "canonical_name": "Comfort",
       "capabilities": {
         "activation": {
           "modes": [],
@@ -1283,11 +1283,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-003-PRIMARY",
               "display_cue": "PLUS-COMFORT",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Comfort",
+              "spoken_cue_key": "commands.ocf-cmd-bod-003-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -1299,15 +1306,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-BOD-003",
             "id": "OCF-CMD-BOD-003-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-bod-003-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-bod-003-primary.explanation",
               "label_key": "commands.ocf-cmd-bod-003-primary.label",
               "purpose_key": "functions.ocf-bod-003.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-bod-003-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-bod-003-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-bod-003.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus Five Five Five One Five"
+              "relationship": "canonical-match",
+              "text": "Plus Comfort"
             },
             "phrase": "PLUS-COMFORT",
             "phrase_ref": {
@@ -1355,41 +1364,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": null,
-            "spoken_review": "unresolved"
-          },
-          {
-            "cue_presentation": {
-              "binding_status": "unbound",
-              "command_id": "OCF-CMD-BOD-003-LEGACY-01",
-              "display_cue": "PLUS-55515",
-              "requested_locale": "en-US",
-              "spoken_cue": null
-            },
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-BOD-003",
-            "id": "OCF-CMD-BOD-003-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-bod-003-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-bod-003-legacy-01.label",
-              "purpose_key": "functions.ocf-bod-003.purpose",
-              "usage_key": "commands.ocf-cmd-bod-003-legacy-01.usage"
-            },
-            "phrase": "PLUS-55515",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-BOD-003-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias",
-            "spoken": null,
-            "spoken_review": "unresolved"
+            "spoken": "Plus Comfort",
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": "draft",
@@ -1658,7 +1634,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Felt-discomfort support for self-directed comfort; proposed concise cue PLUS-COMFORT.",
+        "purpose": "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT.",
         "safety": {
           "level": "health",
           "medical_relevance": true,
@@ -1680,13 +1656,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "title": "De-Discomfort",
+        "title": "Comfort",
         "voice_sources": [
           "tts"
         ]
       },
-      "command_review": "review-required",
-      "compatibility": "bridge-trainable",
+      "command_review": "approved",
+      "compatibility": "historical-lookup",
       "domains": "body",
       "legacy_command": "PLUS-55515",
       "legacy_name": "DE-DISCOMFORT",

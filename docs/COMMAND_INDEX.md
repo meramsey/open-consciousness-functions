@@ -9,8 +9,7 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [See-Be](functions/OCF-AUT-001.md) | PLUS-AUTOMATE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Brain Flow](functions/OCF-BOD-001.md) | PLUS-BRAIN FLOW | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Circulation](functions/OCF-BOD-002.md) | PLUS-FLOW SMOOTH | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
-| [De-Discomfort](functions/OCF-BOD-003.md) | PLUS-COMFORT | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
-| [De-Discomfort](functions/OCF-BOD-003.md) | PLUS-55515 | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
+| [Comfort](functions/OCF-BOD-003.md) | PLUS-COMFORT | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Detox](functions/OCF-BOD-004.md) | PLUS-DETOX | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Eat/No Eat](functions/OCF-BOD-005.md) | PLUS-SATISFIED, SUPPLIED | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Heart: Repairs & Maintenance](functions/OCF-BOD-006.md) | PLUS-HEART-BETTER | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
@@ -97,4 +96,4 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Stay Awake](functions/OCF-SLP-006.md) | PLUS-AWAKE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Stay Awake](functions/OCF-SLP-006.md) | PLUS-ONE, AWAKE, ALERT, ONE, ONE | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
 
-55 functions; 90 structured command records.
+55 functions; 89 structured command records.

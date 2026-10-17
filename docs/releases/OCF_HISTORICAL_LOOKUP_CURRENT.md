@@ -16,6 +16,7 @@ Discovery normalization uses NFC, case folding and whitespace folding only. It i
 ## Migrated vocabulary
 
 - OCF-BOD-001 → Brain Flow / `PLUS-BRAIN FLOW`; historical matches: Brain: Repairs & Maintenance; PLUS-FLOW BETTER; Plus Flow Better.
+- OCF-BOD-003 → Comfort / `PLUS-COMFORT`; historical matches: De-Discomfort; PLUS-55515; Plus Five Five Five One Five.
 - OCF-BOD-004 → Detox / `PLUS-DETOX`; historical matches: De-Tox: Body; PLUS-DETOX; Plus Clean Clear.
 - OCF-BOD-006 → Heart: Repairs & Maintenance / `PLUS-HEART-BETTER`; historical matches: Heart: Repairs & Maintenance; PLUS-HEART, BETTER, BETTER; Plus Heart Better Better.
 - OCF-BOD-009 → Breathe Better / `PLUS-BREATHE BETTER`; historical matches: Lungs: Repairs & Maintenance; PLUS-BREATH BETTER; Plus Breathe Better.
