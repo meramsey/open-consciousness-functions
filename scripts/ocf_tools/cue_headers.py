@@ -39,9 +39,14 @@ def split_header(text: str) -> tuple[str, str]:
     header = normalized[:index]
     if any(not line.startswith("#") for line in header.splitlines()):
         raise OCFError("cue preview block must contain only comments")
-    newline = "\r\n" if text.startswith(START.replace("\n", "\r\n")) else "\n"
-    original_header = header.replace("\n", newline)
-    return original_header, text[len(original_header) :]
+    # Slice the original bytes' character positions, never a reconstructed
+    # newline style: mixed LF/CRLF comments must not consume authored content.
+    offset = 0
+    for line in text.splitlines(keepends=True):
+        offset += len(line)
+        if line.replace("\r\n", "\n") == END:
+            return text[:offset], text[offset:]
+    raise OCFError("generated cue preview end marker is not on its own line")
 
 
 def header(owner, locale: str, catalog: LocaleCatalog, root: Path) -> str:
@@ -203,6 +208,9 @@ def main(argv=None) -> int:
         # silently rewrite an existing record or baseline while refreshing.
         if not (REPO_ROOT / LEDGER).is_file():
             raise OCFError("protected source preview requires an explicit successor ledger first")
+        record = json.loads((REPO_ROOT / LEDGER).read_text(encoding="utf-8"))
+        if set(planned) - record["files"].keys():
+            raise OCFError("every preview write requires an explicit successor file record")
         for name, text in planned.items():
             predecessor(REPO_ROOT, name, text.replace("\r\n", "\n"))
         for name, text in planned.items():

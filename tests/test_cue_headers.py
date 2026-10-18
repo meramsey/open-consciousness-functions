@@ -18,6 +18,31 @@ def test_header_is_comment_only_and_preserves_body(newline):
 
 
 @pytest.mark.unit
+@pytest.mark.parametrize("first,last", [("\r\n", "\n"), ("\n", "\r\n")])
+def test_mixed_header_newlines_never_consume_authored_bytes(first, last):
+    prefix = cue_headers.START.rstrip() + first + "# preview\n" + cue_headers.END.rstrip() + last
+    body = "text: |\r\n  Exact  content.\n"
+    assert cue_headers.split_header(prefix + body) == (prefix, body)
+
+
+@pytest.mark.unit
+def test_refresh_requires_each_file_witness_before_any_write(monkeypatch, tmp_path):
+    ledger = tmp_path / cue_headers.LEDGER
+    ledger.parent.mkdir(parents=True)
+    ledger.write_text(json.dumps({"files": {"first.yaml": {}}}), encoding="utf-8")
+    first = tmp_path / "first.yaml"
+    first.write_bytes(b"preserve this")
+    monkeypatch.setattr(cue_headers, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(
+        cue_headers, "plans", lambda: {"first.yaml": "changed", "unlisted.yaml": "new"}
+    )
+    with pytest.raises(OCFError, match="every preview write"):
+        cue_headers.main(["--write"])
+    assert first.read_bytes() == b"preserve this"
+    assert not (tmp_path / "unlisted.yaml").exists()
+
+
+@pytest.mark.unit
 @pytest.mark.parametrize(
     "text",
     [
@@ -131,3 +156,59 @@ def test_completion_rejects_behavior_change_even_with_updated_file_hash(tmp_path
     ledger.write_text(json.dumps({"files": {name: row}}), encoding="utf-8")
     with pytest.raises(OCFError, match="non-cue data"):
         cue_completion.predecessor(tmp_path, name, after)
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize("mutation", ["literal", "overlap", "hash"])
+def test_completion_rejects_invalid_replay_evidence(tmp_path, mutation):
+    import yaml
+
+    before = {"entries": {"example": {"text": "Say Plus Example."}}}
+    span = {"start": 4, "end": 16, "spoken": "Plus Example", "symbol": "cue.primary"}
+    template = "Say {{ cue.primary }}."
+    contract = {"function_id": "OCF-COG-999", "allowed": ["cue.primary"]}
+    after = {"entries": {"example": {"text": template, "cue_template": contract}}}
+    old, new = yaml.safe_dump(before), yaml.safe_dump(after)
+    evidence = {
+        "key": "example",
+        "spans": [span],
+        "contract": contract,
+        "raw_template_sha256": cue_headers.sha(template),
+    }
+    if mutation == "literal":
+        span["spoken"] = "Incorrect cue"
+    elif mutation == "overlap":
+        evidence["spans"].append(dict(span))
+    else:
+        evidence["raw_template_sha256"] = "invalid"
+    name = "locales/en-US/hplus-OCF-COG-999.yaml"
+    row = {
+        "before_sha256": cue_headers.sha(old),
+        "after_sha256": cue_headers.sha(new),
+        "predecessor": old,
+        "entries": [evidence],
+    }
+    ledger = tmp_path / cue_completion.LEDGER
+    ledger.parent.mkdir(parents=True)
+    ledger.write_text(json.dumps({"files": {name: row}}), encoding="utf-8")
+    with pytest.raises(OCFError, match="span overlap/mismatch|template fingerprint drift"):
+        cue_completion.predecessor(tmp_path, name, new)
+
+
+@pytest.mark.unit
+def test_completion_does_not_allow_timing_changes_in_plan(tmp_path):
+    before = {"defaults": {"sha256": "old"}, "resources": [], "timing": "original"}
+    after = {"defaults": {"sha256": "new"}, "resources": [], "timing": "retuned"}
+    old, new = json.dumps(before), json.dumps(after)
+    name = "audio/session-plans/en-US/OCF-COG-999.json"
+    row = {
+        "before_sha256": cue_headers.sha(old),
+        "after_sha256": cue_headers.sha(new),
+        "predecessor": old,
+        "entries": [],
+    }
+    ledger = tmp_path / cue_completion.LEDGER
+    ledger.parent.mkdir(parents=True)
+    ledger.write_text(json.dumps({"files": {name: row}}), encoding="utf-8")
+    with pytest.raises(OCFError, match="non-cue data"):
+        cue_completion.predecessor(tmp_path, name, new)
