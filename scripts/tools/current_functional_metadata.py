@@ -77,7 +77,8 @@ def render(data):
         )
         for kind, scope in life.get("scopes", {}).items():
             lines.append(f"- **{kind}** (`{scope['persistence']}`): {scope['description']}")
-        lines.append("")
+        if life.get("scopes"):
+            lines.append("")
         for command in function["commands"]:
             if command.get("availability") == "historical-lookup":
                 continue

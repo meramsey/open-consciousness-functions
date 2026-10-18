@@ -7,8 +7,6 @@ from ocf_tools.commands import command_view, validate_command_records
 from ocf_tools.indexes import load_function_by_id
 from ocf_tools.models import FunctionRecord
 
-pytestmark = pytest.mark.unit
-
 
 def fixture_owner(scopes, effect_ref="lifecycle.persistence", invocation_ref=None):
     primary = {

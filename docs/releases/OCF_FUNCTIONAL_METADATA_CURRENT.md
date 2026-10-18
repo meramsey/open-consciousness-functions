@@ -52,7 +52,6 @@ Supports a self-directed practice of immune surveillance, coordinated protective
 
 Function summary: `permanent` / `manual`; triggers: `[]`.
 
-
 - `OCF-CMD-BOD-008-PRIMARY`: `PLUS-IMMUNE READY`; role `activation`; effect `permanent`; invocation `manual` / `unspecified`.
 
 ## OCF-BOD-010 — Nutricia
@@ -60,7 +59,6 @@ Function summary: `permanent` / `manual`; triggers: `[]`.
 Supports conscious selection between fuller use of food energy and nourishment, or sufficient nourishment with reduced unnecessary energy retention and storage.
 
 Function summary: `temporary` / `manual`; triggers: `[]`.
-
 
 - `OCF-CMD-BOD-010-PRIMARY`: `PLUS-FOOD MORE`; role `activation`; effect `temporary`; invocation `manual` / `unspecified`.
 - `OCF-CMD-BOD-010-FOOD-LESS`: `PLUS-FOOD LESS`; role `mode`; effect `temporary`; invocation `manual` / `unspecified`.
@@ -157,7 +155,6 @@ Supports a deliberately invoked shift from tiredness, weariness, or feeling emot
 
 Function summary: `temporary` / `manual`; triggers: `[]`.
 
-
 - `OCF-CMD-FND-005-PRIMARY`: `PLUS-RESET`; role `activation`; effect `temporary`; invocation `manual` / `unspecified`.
 
 ## OCF-LIF-001 — Habit Freedom
@@ -189,7 +186,6 @@ Function summary: `permanent` / `manual`; triggers: `[]`.
 Supports physical seeing and inner visualization, including visual processing, visual memory, and deliberate creation and manipulation of mental images.
 
 Function summary: `permanent` / `manual`; triggers: `[]`.
-
 
 - `OCF-CMD-SEN-002-PRIMARY`: `PLUS-SEE BETTER`; role `activation`; effect `permanent`; invocation `manual` / `unspecified`.
 - `OCF-CMD-SEN-002-LEGACY-01`: `PLUS-SEE BETTER`; role `legacy-alias`; effect `permanent`; invocation `manual` / `unspecified`.

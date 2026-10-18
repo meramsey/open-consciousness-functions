@@ -969,6 +969,27 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "docs/FUNCTIONAL_METADATA.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Functional metadata and lifecycle scopes",
+      "related_commands": [
+        "commands describe",
+        "functions describe"
+      ],
+      "related_schemas": [],
+      "sha256": "e0d166a39704834baf19b08e975bb48c0c7b81b4a9d88eb2ff2fdeca564f2fed",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "docs/FUNCTION_CONTENT.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "Function content and provenance layers",
@@ -3204,6 +3225,26 @@
       "missing_information": [
         "per-document semantic review not recorded"
       ],
+      "path": "docs/releases/OCF_FUNCTIONAL_METADATA_CURRENT.md",
+      "proposed_correction": "retain historical claims; consult current workflow guides",
+      "purpose": "Current functional metadata review",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "43927c8185bc402c024158e9d5e1146cb214f9538286bcfcd7653cc3a70c2156",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "maintainers/research reviewers",
+      "broken_references": [],
+      "canonical_source": "historical checkpoint (not current implementation)",
+      "duplicate_or_contradictory_information": [],
+      "historical": true,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [
+        "per-document semantic review not recorded"
+      ],
       "path": "docs/releases/OCF_HISTORICAL_LOOKUP_CURRENT.md",
       "proposed_correction": "retain historical claims; consult current workflow guides",
       "purpose": "Historical lookup and active cue separation",
@@ -4536,6 +4577,26 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "schemas/functional-metadata.schema.json",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "functional-metadata.schema",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/functional-metadata.schema.json"
+      ],
+      "sha256": "e8bcf6a722735269065ef8c308ac03e6a4dcae6210538209dec87d738a0d072a",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "schemas/hplus-review-selection.schema.json",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "hplus-review-selection.schema",
@@ -5125,5 +5186,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 245
+  "total": 248
 }
