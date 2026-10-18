@@ -29,10 +29,11 @@ lint: ## Lint Python (ruff), Markdown, and internal links
 	$(PY) -m ocf_tools.examples --check
 	-command -v markdownlint >/dev/null && markdownlint . || echo "markdownlint not installed; skipping"
 
-check: ## Full check: validate + refresh indexes + verify freshness
+check: ## Validate functions and verify generated/pinned data freshness
 	$(OCF) validate --all
 	$(OCF) build-index --check
 	$(OCF) audio plan --all --locale en-US --check
+	$(PY) -m ocf_tools.farfield_inventory
 
 doctor: ## Run the environment doctor
 	$(OCF) doctor

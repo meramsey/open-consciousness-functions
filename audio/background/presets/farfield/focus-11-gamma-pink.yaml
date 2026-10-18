@@ -1,8 +1,32 @@
 name: focus-11-gamma-pink
-title: Focus 11 newer — measured 16:00-27:00
-fidelity: measured-tape
-notes: Pink noise is correctly represented as a segment-level bed. Gamma uses measured
-  40-Hz SAM. The theta variant adds the intermittent 175/179-Hz pair.
+title: "Focus 11 — 40 Hz SAM triad (unverified)"
+fidelity: best-effort
+notes: |
+  BEST-EFFORT, UNVERIFIED. Contributed by a community member, who measured
+  it with AI-assisted analysis of their own copy of a newer commercial
+  Focus 11 release (identified by them as "SyncCreation 2.0", a 320 kbps
+  MP3), sustained window 16:00-27:00. Farfield has NOT re-measured this
+  recording, no measurement data is published in docs/tape-analysis/, and
+  the numbers below are taken on trust. Treat it as a plausible sketch,
+  not a transcription.
+
+  What is claimed: three shared carriers under 40 Hz closed-path
+  spatial angle modulation (antiphase phase modulation, the technique in
+  sam-gamma.yaml), over a pink bed. If confirmed, this would be the first
+  recording found to use SAM at all: the MSS remasters measured in this
+  repository came back SAM-absent. That claim is exactly what farfield's
+  mid/side estimator exists to check, and it has not been run here.
+
+  Two things in its favour and two against:
+    - The carriers 256.869 / 323.625 / 384.875 Hz sit within 0.01 Hz of a
+      C-major triad (C4 / E4 / G4) in equal temperament at A = 432 Hz,
+      which a deliberate design would produce and noise would not.
+    - The depths imply +/-548, +/-559 and +/-592 us of interaural delay,
+      beyond the ~510 us maximum of the spherical-head model used in
+      sam-gamma.yaml. Possible, but unexplained.
+    - The pink-bed level (-7.4 dB) was set by ear, not measured.
+    - The source window is rendered as one sustained 30:00 hold; any entry,
+      exit or drift in the original is not represented.
 sample_rate: 48000
 output:
   peak_dbfs: -3.0

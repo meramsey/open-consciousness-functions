@@ -1,8 +1,17 @@
 name: focus-11-gamma-theta-pink
-title: Focus 11 newer — measured 16:00-27:00
-fidelity: measured-tape
-notes: Pink noise is correctly represented as a segment-level bed. Gamma uses measured
-  40-Hz SAM. The theta variant adds the intermittent 175/179-Hz pair.
+title: "Focus 11 — SAM triad plus 4 Hz theta (unverified arrangement)"
+fidelity: best-effort
+notes: |
+  BEST-EFFORT, UNVERIFIED, AND PARTLY AN ARRANGEMENT. Identical to
+  focus-11-gamma-pink (read its notes: same contributed, unverified 40 Hz
+  SAM triad and ear-set pink bed) plus a conventional L 175 / R 179 Hz
+  binaural pair, a 4 Hz beat with the right ear high.
+
+  The contributor reports that pair as INTERMITTENT in the source, not
+  continuously present. This preset plays it for the whole 30:00, so its
+  persistence is a design choice, not a measurement. Its -7 dB level was
+  likewise chosen, not measured. Prefer focus-11-gamma-pink as the
+  closer sketch of the source; this one is an audition variant.
 sample_rate: 48000
 output:
   peak_dbfs: -3.0

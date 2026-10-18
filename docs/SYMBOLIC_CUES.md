@@ -130,10 +130,10 @@ same-language fallback. Explicit labeled fallback auditions retain provenance;
 bad symbolic references fail even when fallback was requested. Spanish remains
 partial; no production vocabulary or translation is created here.
 
-The local review queue selects one unresolved function at a time, excludes the
-eleven finalized cues, and retains Heart Flow as a tentative title. Approve,
-keep, custom, skip and context responses preserve the user's exact words.
-Approve/custom waits for scoped implementation before advancing; context stays
-on the same function. Empty/silent, ambiguous or out-of-turn responses do not
-authorize changes. Queue records stay under `.ocf-work/`; actual approved changes
-need a separately versioned committed decision/integrity record and tests.
+The earlier one-function-at-a-time review queue is historical. Naming reviews
+and all 18 functional-metadata decisions are completed; current approved
+function YAML and successor ledgers own the results. Do not reopen the queue or
+treat earlier tentative titles as current proposals. Future explicitly requested
+editorial changes require a separately versioned decision/integrity record;
+silence, ambiguous responses and technical maintenance do not authorize wording
+changes. Local queue records remain under `.ocf-work/` as history.

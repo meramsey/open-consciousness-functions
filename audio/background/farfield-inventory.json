@@ -1,0 +1,304 @@
+{
+  "schema_version": "1.0",
+  "repository": "https://github.com/txus/farfield",
+  "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+  "reviewed_revision": "b6201835640cdbe13c96e43d68c839c8ac701942",
+  "engine_revision_is_separate": true,
+  "upstream_presets": {
+    "presets/alert.yaml": "e3ce39f8231f522d1ec3edd36a29a1c1562d434425944b0165ac5a5152a559ef",
+    "presets/attention.yaml": "42c9ceb3b7552282b8b6f2154b421e94af9055311657b80278d1ef543138ba6a",
+    "presets/concentration.yaml": "74cbb04a29ddf5b4aca4acc1e6eaa4b2b86a714294a039e5d51db4018ab2e655",
+    "presets/focus-10-mss.yaml": "cf41dc67e553642d9192f88b23b4da6ce97a9f2345440070b3596c23b9c0b0ad",
+    "presets/focus-10.yaml": "eb8ff64ec1a1334cd2f37a71f322cdc52566802723d4be4e9d9fdc8f6f7b4904",
+    "presets/focus-11-gamma-pink.yaml": "572cf77b2e8f2977d92d2386f60a3a7af2d2233196c376c83d908e2d03003b42",
+    "presets/focus-11-gamma-theta-pink.yaml": "461e46db3a21ff0035e34e1dd03184e4e5dab3224946cf0e598f09434ab70bd3",
+    "presets/focus-11-older-flac.yaml": "00f11a924ac22935208ae4d7f1479962bd7d052e6637cf1dc3657854e5ddcd4b",
+    "presets/focus-12-mss.yaml": "d14c3f26b42d2e7934a6dfb4cf88f2326de9942aec4802b62382eac45e557699",
+    "presets/focus-12.yaml": "4b46f9358300c625873f655398b74dedcca9c46fdc3b5ba3b38576407d93f313",
+    "presets/focus-15-mss.yaml": "6a3818205422202f10f0dc97e58a506b5b96c5b526dcfe821e309a6bfe9d6fe4",
+    "presets/focus-15.yaml": "72e157e793b2cb3c1d88bec481663e1fdcb098e6b7cc5fe9ca9832d029dd21bc",
+    "presets/focus-21-mss.yaml": "9fc2fe79f1ffd67afa54532d35d64c881cbad165e7db72c348c0bd74a9edbc7d",
+    "presets/focus-21.yaml": "8a72915e758c3f3931cce2e9d213d20a8d089ca62ab53ee899c381334faee723",
+    "presets/focus-3.yaml": "6b307b5246eeb147dce20f501dbfb792814672422c6d47151de0cd9eab940037",
+    "presets/relaxation.yaml": "79731b919fcf76495bfa024a329c802b70333fbd49e9696293844426677ad8b4",
+    "presets/sam-gamma.yaml": "72f8aaefa4ecd6e0438b7d9ed30d4bd109b109aecd38549e7a0287d39ed6585f",
+    "presets/sleep-90.yaml": "6183d32c5f44ab96997d4a55a250f857b73af31f2225ba0cd19f34e71224bd83",
+    "presets/wake.yaml": "a246a99e0e81830cf20c8f8b0d346e3ee29a7df9fc7acd2640359690bdcfce83"
+  },
+  "presets": [
+    {
+      "local_path": "audio/background/presets/attention-focus-10-11-10.yaml",
+      "sha256": "f211097a1476978ca28aec3dbfe46fed1d2ad464b158b5b9657e28ade28a6a45",
+      "classification": "ocf-authored-extension",
+      "repository": "https://github.com/meramsey/open-consciousness-functions",
+      "revision": "d92cb27cf5c89e6ed04a085099ec3538a9162748",
+      "upstream_path": null,
+      "intentional_modifications": "OCF composition; not an upstream mirror.",
+      "current_fidelity": "original"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/alert.yaml",
+      "sha256": "e3ce39f8231f522d1ec3edd36a29a1c1562d434425944b0165ac5a5152a559ef",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/alert.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "original"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/attention.yaml",
+      "sha256": "42c9ceb3b7552282b8b6f2154b421e94af9055311657b80278d1ef543138ba6a",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/attention.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "original"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/concentration.yaml",
+      "sha256": "74cbb04a29ddf5b4aca4acc1e6eaa4b2b86a714294a039e5d51db4018ab2e655",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/concentration.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "original"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/focus-10-mss.yaml",
+      "sha256": "cf41dc67e553642d9192f88b23b4da6ce97a9f2345440070b3596c23b9c0b0ad",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/focus-10-mss.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "measured-mss"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/focus-10.yaml",
+      "sha256": "eb8ff64ec1a1334cd2f37a71f322cdc52566802723d4be4e9d9fdc8f6f7b4904",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/focus-10.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "measured-tape"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/focus-11-a.yaml",
+      "sha256": "fac7f683d2105a6b0be59df4fef9f1f667c86db4caa8aad1f96d9a7b850ef0a0",
+      "classification": "historical-snapshot",
+      "repository": "https://github.com/meramsey/open-consciousness-functions",
+      "revision": "d92cb27cf5c89e6ed04a085099ec3538a9162748",
+      "upstream_path": null,
+      "intentional_modifications": "Frozen pre-review contribution; original metadata retained, not upstream verification.",
+      "current_fidelity": "best-effort"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/focus-11-b.yaml",
+      "sha256": "d9e87888d2ed92851e6beba78ea5a4895e1298a99c799318398b65154ee132aa",
+      "classification": "historical-snapshot",
+      "repository": "https://github.com/meramsey/open-consciousness-functions",
+      "revision": "d92cb27cf5c89e6ed04a085099ec3538a9162748",
+      "upstream_path": null,
+      "intentional_modifications": "Frozen pre-review contribution; original metadata retained, not upstream verification.",
+      "current_fidelity": "best-effort"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/focus-11-c.yaml",
+      "sha256": "f201452248fcc6a177b8a95c66ab7ce89b75cdb3ae46fa0b7d149a707dbb45bc",
+      "classification": "historical-snapshot",
+      "repository": "https://github.com/meramsey/open-consciousness-functions",
+      "revision": "d92cb27cf5c89e6ed04a085099ec3538a9162748",
+      "upstream_path": null,
+      "intentional_modifications": "Frozen pre-review contribution; original metadata retained, not upstream verification.",
+      "current_fidelity": "best-effort"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/focus-11-gamma-pink.yaml",
+      "sha256": "572cf77b2e8f2977d92d2386f60a3a7af2d2233196c376c83d908e2d03003b42",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/focus-11-gamma-pink.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "best-effort"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/focus-11-gamma-theta-pink.yaml",
+      "sha256": "461e46db3a21ff0035e34e1dd03184e4e5dab3224946cf0e598f09434ab70bd3",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/focus-11-gamma-theta-pink.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "best-effort"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/focus-11-older-flac.yaml",
+      "sha256": "00f11a924ac22935208ae4d7f1479962bd7d052e6637cf1dc3657854e5ddcd4b",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/focus-11-older-flac.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "best-effort"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/focus-12-mss.yaml",
+      "sha256": "d14c3f26b42d2e7934a6dfb4cf88f2326de9942aec4802b62382eac45e557699",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/focus-12-mss.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "measured-mss"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/focus-12.yaml",
+      "sha256": "4b46f9358300c625873f655398b74dedcca9c46fdc3b5ba3b38576407d93f313",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/focus-12.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "measured-tape"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/focus-15-mss.yaml",
+      "sha256": "6a3818205422202f10f0dc97e58a506b5b96c5b526dcfe821e309a6bfe9d6fe4",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/focus-15-mss.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "measured-mss"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/focus-15.yaml",
+      "sha256": "72e157e793b2cb3c1d88bec481663e1fdcb098e6b7cc5fe9ca9832d029dd21bc",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/focus-15.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "measured-tape"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/focus-21-mss.yaml",
+      "sha256": "9fc2fe79f1ffd67afa54532d35d64c881cbad165e7db72c348c0bd74a9edbc7d",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/focus-21-mss.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "measured-mss"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/focus-21.yaml",
+      "sha256": "8a72915e758c3f3931cce2e9d213d20a8d089ca62ab53ee899c381334faee723",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/focus-21.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "measured-tape"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/focus-3.yaml",
+      "sha256": "6b307b5246eeb147dce20f501dbfb792814672422c6d47151de0cd9eab940037",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/focus-3.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "original"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/relaxation.yaml",
+      "sha256": "79731b919fcf76495bfa024a329c802b70333fbd49e9696293844426677ad8b4",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/relaxation.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "original"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/sam-gamma.yaml",
+      "sha256": "72f8aaefa4ecd6e0438b7d9ed30d4bd109b109aecd38549e7a0287d39ed6585f",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/sam-gamma.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "patent"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/sleep-90.yaml",
+      "sha256": "6183d32c5f44ab96997d4a55a250f857b73af31f2225ba0cd19f34e71224bd83",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/sleep-90.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "patent"
+    },
+    {
+      "local_path": "audio/background/presets/farfield/wake.yaml",
+      "sha256": "a246a99e0e81830cf20c8f8b0d346e3ee29a7df9fc7acd2640359690bdcfce83",
+      "classification": "exact-upstream-mirror",
+      "repository": "https://github.com/txus/farfield",
+      "revision": "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3",
+      "upstream_path": "presets/wake.yaml",
+      "intentional_modifications": "None; exact pinned bytes.",
+      "current_fidelity": "patent"
+    },
+    {
+      "local_path": "audio/background/presets/focus-10-v4-candidate.yaml",
+      "sha256": "a226a67000e0fdc90837a3d94707837e0472f72aaf5c8d4cdf345ac201b997e7",
+      "classification": "ocf-authored-extension",
+      "repository": "https://github.com/meramsey/open-consciousness-functions",
+      "revision": "d92cb27cf5c89e6ed04a085099ec3538a9162748",
+      "upstream_path": null,
+      "intentional_modifications": "OCF composition; not an upstream mirror.",
+      "current_fidelity": "original"
+    },
+    {
+      "local_path": "presets/farfield/focus-11-a.yaml",
+      "sha256": "fac7f683d2105a6b0be59df4fef9f1f667c86db4caa8aad1f96d9a7b850ef0a0",
+      "classification": "staging-only-contribution",
+      "repository": "https://github.com/meramsey/open-consciousness-functions",
+      "revision": "d92cb27cf5c89e6ed04a085099ec3538a9162748",
+      "upstream_path": null,
+      "intentional_modifications": "Frozen pre-review contribution; original metadata retained, not upstream verification.",
+      "current_fidelity": "best-effort"
+    },
+    {
+      "local_path": "presets/farfield/focus-11-b.yaml",
+      "sha256": "d9e87888d2ed92851e6beba78ea5a4895e1298a99c799318398b65154ee132aa",
+      "classification": "staging-only-contribution",
+      "repository": "https://github.com/meramsey/open-consciousness-functions",
+      "revision": "d92cb27cf5c89e6ed04a085099ec3538a9162748",
+      "upstream_path": null,
+      "intentional_modifications": "Frozen pre-review contribution; original metadata retained, not upstream verification.",
+      "current_fidelity": "best-effort"
+    },
+    {
+      "local_path": "presets/farfield/focus-11-c.yaml",
+      "sha256": "f201452248fcc6a177b8a95c66ab7ce89b75cdb3ae46fa0b7d149a707dbb45bc",
+      "classification": "staging-only-contribution",
+      "repository": "https://github.com/meramsey/open-consciousness-functions",
+      "revision": "d92cb27cf5c89e6ed04a085099ec3538a9162748",
+      "upstream_path": null,
+      "intentional_modifications": "Frozen pre-review contribution; original metadata retained, not upstream verification.",
+      "current_fidelity": "best-effort"
+    }
+  ],
+  "notices": {
+    "audio/background/FARFIELD-NOTICE": "52964913ee8c1c0c8b2664481039ad36fbd3600c26772826d27989c4067030b3",
+    "audio/background/FARFIELD-LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  }
+}

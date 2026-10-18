@@ -21,6 +21,7 @@ from urllib.request import url2pathname
 from .paths import REPO_ROOT, workspace_run
 
 FARFIELD_REPOSITORY = "https://github.com/txus/farfield"
+FARFIELD_COMPATIBLE_REVISION = "019fb804f3b274359e13e8cc9ca3b8fcaf9701f3"
 
 
 @dataclass
@@ -67,7 +68,18 @@ def run_farfield(args: list[str]) -> subprocess.CompletedProcess[str]:
     status = check_farfield()
     if not status.available or not status.executable:
         raise OCFFarfieldMissing(installation_guidance())
-    return workspace_run([status.executable, *args], check=False, text=True, capture_output=True)
+    result = workspace_run([status.executable, *args], check=False, text=True, capture_output=True)
+    # Older public CLIs print parser errors while returning zero. A package
+    # version alone cannot distinguish the pre/post best-effort implementations.
+    if "unknown fidelity 'best-effort'" in (result.stdout or "") + (result.stderr or ""):
+        result.returncode = result.returncode or 1
+        result.stderr = (result.stderr or "") + (
+            "\nInstalled Farfield cannot parse best-effort presets. Install the optional "
+            f"engine at {FARFIELD_REPOSITORY}@{FARFIELD_COMPATIBLE_REVISION} in a "
+            "separate environment and select its CLI on PATH; see docs/BACKGROUND_AUDIO.md. "
+            "Do not relabel the preset as measured-tape.\n"
+        )
+    return result
 
 
 class OCFFarfieldMissing(RuntimeError):

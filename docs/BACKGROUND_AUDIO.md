@@ -39,7 +39,8 @@ A preset may therefore be named rather than pathed, and OCF searches, in order:
 
 1. `OCF_FARFIELD_PRESETS_DIR` (`os.pathsep`-separated), when set;
 2. `audio/background/presets/farfield/` — the presets OCF commits;
-3. `<farfield source checkout>/presets` — an extension tier, located via the
+3. `audio/background/presets/` — OCF-authored compositions;
+4. `<farfield source checkout>/presets` — an extension tier, located via the
    install's PEP 610 `direct_url.json`.
 
 The committed tier outranks the checkout on purpose: a build must be
@@ -48,9 +49,10 @@ machines and Farfield versions. `OCF_FARFIELD_PRESETS_DIR` only *raises*
 priority — the committed tier always stays in the chain, so an override can
 shadow a preset but never make a committed one unreachable.
 
-All 22 Farfield session presets are currently committed, so tier 3 is not
-needed to build and `OCF_BG-0001` (a Focus-10 arc with no preset file of its
-own) resolves like any other name. A name that resolves nowhere fails the
+The committed Farfield directory contains 19 pinned upstream mirrors and three
+historical contribution aliases. The external-checkout tier is not needed to
+build. `OCF-BG-0001` resolves its OCF-authored composition through its manifest.
+A name that resolves nowhere fails the
 build when `strategy: required`, reporting every directory searched.
 
 Resolution order in `_farfield_preset_file`, most preferred first:
@@ -115,6 +117,13 @@ Focus 10  ->  Focus 11  ->  Focus 10
 induction/preparation mechanism in the preparation layer; it must not redefine
 the Focus 11 background program.
 
+The following is a historical fixed-timeline reference-master example, not the
+current complete-session timing default. Complete sessions bind the Focus 11
+window to explicit entry/programming/exit events, with Focus 10 through opening,
+preparation, sleep, return and closer, existing 25-second transitions and a
+10-second ending fade. The four body passes and configured -24 dB sleep underlay
+are unchanged; a Focus number never implies a new frequency or Focus 20 DSP.
+
 `focus_sequence` in a background manifest records this progression in a
 language-independent, machine-readable form, so a locale change cannot alter it:
 
@@ -161,13 +170,82 @@ SBaGenX `a`/`b`/`c`), and all six point at the committed mirrors. Keeping the
 mirrors inside `audio/background/presets/` means a build does not depend on
 anything outside the repository, whether or not upstream merges the
 contribution. If a preset is never merged upstream, nothing here needs to
-change: a name that only the mirror carries still resolves, as the last tier
-of the search path above.
+change: a name that only the committed copy carries still resolves in the
+committed tier of the search path above.
 
-That contribution has since landed, and all 22 Farfield session presets are now
-committed under `audio/background/presets/farfield/`, byte-identical to
-upstream 0.1.0. The repo tier therefore serves every name and the checkout
-tier is a convenience, not a dependency.
+PR 1 was merged at upstream commit
+`019fb804f3b274359e13e8cc9ca3b8fcaf9701f3`, incorporating maintainer review
+`b6201835640cdbe13c96e43d68c839c8ac701942`. That snapshot has **19** presets.
+The 22 files in `audio/background/presets/farfield/` comprise those 19 exact
+mirrors plus three historical `focus-11-a/b/c.yaml` aliases. Two additional
+OCF compositions live in the parent directory; three nonruntime staging copies
+live in `presets/farfield/`. None was deleted to match upstream's count.
+
+The reproducible [inventory](../audio/background/farfield-inventory.json) records
+paths, SHA-256 bytes, source revisions, classifications and current fidelity.
+Frozen alias bytes retain their historical metadata; their current provenance is
+**best-effort**, not independently measured by Farfield. The selected background
+and immutable defaults locks are unchanged. Engine version `0.1.0` does not
+identify preset bytes or guarantee support for this classification.
+
+The three contributed named presets now carry upstream's `best-effort` category:
+
+- `focus-11-gamma-pink`: contributed SAM interpretation with evidentiary limits.
+- `focus-11-gamma-theta-pink`: continuous arrangement of a reportedly intermittent
+  theta pair; the recommendation of the pure variant does not change OCF selection.
+- `focus-11-older-flac`: separate recording and reconstruction, not newer SAM evidence.
+
+`sam-gamma.yaml` retains its existing synthesis while acknowledging the contributed
+claim. All four updates change descriptive metadata only. Upstream attribution
+and terms are retained in `audio/background/FARFIELD-NOTICE` and
+`audio/background/FARFIELD-LICENSE`. A merge or fidelity tier is neither efficacy
+evidence nor release/rights approval.
+
+### Explicit verification and optional engine setup
+
+Ordinary builds never fetch or synchronize upstream. Offline inventory check:
+
+```bash
+python -m ocf_tools.farfield_inventory
+```
+
+Maintainers can explicitly refresh from a local checkout containing the pinned
+commit; every declared synthesis field must match before metadata is updated:
+
+```bash
+python -m ocf_tools.farfield_inventory --refresh-from .ocf-work/farfield-followup-upstream
+```
+
+Use a separate optional engine environment, preserving any running installation:
+
+```bash
+python -m venv .ocf-work/farfield-followup-env
+.ocf-work/farfield-followup-env/bin/python -m pip install "farfield @ git+https://github.com/txus/farfield@019fb804f3b274359e13e8cc9ca3b8fcaf9701f3"
+.ocf-work/farfield-followup-env/bin/farfield describe audio/background/presets/farfield/focus-11-gamma-pink.yaml
+```
+
+On Windows use the environment's `Scripts/python.exe` and `Scripts/farfield.exe`.
+Select that environment's executable directory on the child process PATH when
+rendering. Use the workspace environment resolver for child temporary/cache
+paths. Test the actual `describe` command: older engines reject `best-effort`,
+sometimes even with a zero exit status. OCF diagnoses that response; never
+relabel the preset `measured-tape` to satisfy an older parser. User preset
+overrides still take priority. Metadata changes invalidate full preset-byte
+identities even when acoustic inputs match; old artifact provenance is not new
+verification.
+
+### Analysis follow-up boundary
+
+The maintainer requested the original newer recording's 16:00–27:00 window,
+using mid/side complex projection and JSON evidence. At the pinned revision,
+README describes that estimator, but `farfield.analysis` contains only
+`sam_signature` (IPD/mono-envelope diagnostics), not the report's complex
+sideband phase-versus-pan decomposition. These are different methods. Request
+the exact estimator/script and settings before claiming the requested analysis.
+Synthetic controls must include phase modulation, amplitude panning, a binaural
+pair and insufficient evidence. No original-recording result is inferred from
+generated presets. Real-source JSON remains local pending explicit source mapping
+and sharing review; the older-FLAC recording remains separate.
 
 The SBaGenX sequences use `-R 10` (recalculation rate 10). The much larger
 `-R 1000` value makes `sbagenx` abort with a floating-point exception, so the

@@ -1,18 +1,27 @@
 name: focus-11-older-flac
-title: Focus 11 — older FLAC measured sustained state
-fidelity: measured-tape
-notes: "MEASURED from 06:54-12:27 of the supplied 44.1 kHz / 24-bit stereo FLAC.\n\
-  \nTwo persistent conventional binaural systems dominate the confirmed Focus 11 interval:\n\
-  \  A: L 167.35 Hz / R 171.35 Hz = 4.00 Hz beat, right ear high.\n  B: L ~412.3 Hz\
-  \ / R ~404.9 Hz = ~7.40 Hz beat, left ear high.\n\nPair B's absolute carrier drifts\
-  \ by roughly +/-0.5 Hz over the measured interval,\nwhile its interaural separation\
-  \ remains close to 7.4 Hz. This sustained-state\npreset uses the median center (~408.6\
-  \ Hz) rather than reproducing the small,\nnon-monotonic carrier drift.\n\nThe broadband\
-  \ bed measures approximately pink-like through the useful midband\n(~ -11.6 dB/decade\
-  \ over 1-5 kHz), with stronger high-frequency rolloff.\nNarration/program audio\
-  \ prevents a sample-perfect isolation of the bed, so its\nlevel is an evidence-based\
-  \ approximation.\n\nNo persistent 40-Hz SAM family comparable to the newer Focus\
-  \ 11 recording was\ndetected in this older Focus-11 window; none is invented here.\n"
+title: "Focus 11 — 4 Hz and 7.4 Hz pairs, older release (unverified)"
+fidelity: best-effort
+notes: |
+  BEST-EFFORT, UNVERIFIED. Contributed by a community member, who measured
+  it with AI-assisted analysis of their own copy of an older commercial
+  recording (a 44.1 kHz / 24-bit stereo FLAC named "HP040 Sleep 2
+  Function"), window 06:54-12:27, which they identify as its Focus 11
+  section. Farfield has NOT re-measured this recording and publishes no
+  data for it; the numbers below are taken on trust. It is a different
+  construction from focus-11-gamma-pink, not an earlier take on it.
+
+  Reported content, two persistent conventional binaural pairs:
+    A: L 167.35 / R 171.35 Hz = 4.00 Hz beat, right ear high.
+    B: L ~412.3 / R ~404.9 Hz = ~7.40 Hz beat, left ear high.
+  Pair B's absolute carrier reportedly drifts by about +/-0.5 Hz across the
+  window while its 7.4 Hz separation holds; this preset uses the median
+  centre (~408.6 Hz) and drops the drift.
+
+  The bed is reported as roughly pink through the midband (~ -11.6
+  dB/decade over 1-5 kHz) with a steeper high-frequency rolloff that is not
+  reproduced. Narration over the source prevented isolating the bed, so
+  its level is an estimate. No 40 Hz SAM was found in this window and none
+  is added. Rendered as one sustained 30:00 hold, not the source timeline.
 sample_rate: 48000
 output:
   peak_dbfs: -3.0
