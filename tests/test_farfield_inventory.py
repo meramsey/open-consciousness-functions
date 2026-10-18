@@ -80,3 +80,24 @@ def test_offline_inventory_detects_drift(tmp_path, mutation):
         data["upstream_presets"]["presets/test.yaml"] = "incorrect"
     (tmp_path / inventory.INVENTORY).write_text(json.dumps(data), encoding="utf-8")
     assert inventory.check(tmp_path)
+
+
+@pytest.mark.unit
+def test_absent_nonruntime_staging_does_not_break_clean_checkout(tmp_path):
+    path = tmp_path / inventory.INVENTORY
+    path.parent.mkdir(parents=True)
+    data = {
+        "repository": inventory.REPOSITORY,
+        "revision": inventory.REVISION,
+        "presets": [
+            {
+                "local_path": "presets/farfield/old.yaml",
+                "classification": "staging-only-contribution",
+                "sha256": "unused",
+            }
+        ],
+        "notices": {},
+        "upstream_presets": {},
+    }
+    path.write_text(json.dumps(data), encoding="utf-8")
+    assert inventory.check(tmp_path) == []

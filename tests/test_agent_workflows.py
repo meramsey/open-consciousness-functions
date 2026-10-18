@@ -75,7 +75,13 @@ def test_new_temporary_function_validates_and_generates_complete_plan(
         original = catalog.canonical.entries[f"hplus.function.ocf-fnd-002.{role}"]
         key = f"hplus.function.{owner.lower()}.{role}"
         catalog.canonical.entries[key] = replace(
-            original, key=key, text="Synthetic fixture narration.", notes="Test only."
+            original,
+            key=key,
+            text="Synthetic fixture narration.",
+            notes="Test only.",
+            cue_template=None,
+            raw_template=None,
+            cue_provenance=(),
         )
     for module in (
         locale,

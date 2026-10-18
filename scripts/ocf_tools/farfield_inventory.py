@@ -51,7 +51,12 @@ def check(root: Path = REPO_ROOT) -> list[str]:
     rows = data["presets"]
     names = [row["local_path"] for row in rows]
     actual = {path.relative_to(root).as_posix() for path in local_presets(root)}
-    if len(names) != len(set(names)) or set(names) != actual:
+    # Staging copies were inventoried locally, but are deliberately ignored
+    # and absent in clean checkouts. If present, their bytes are still checked.
+    optional = {
+        row["local_path"] for row in rows if row["classification"] == "staging-only-contribution"
+    }
+    if len(names) != len(set(names)) or set(names) - optional != actual - optional:
         errors.append("preset inventory membership drift")
     for row in rows:
         name = row["local_path"]

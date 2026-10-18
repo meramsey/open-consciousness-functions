@@ -26,6 +26,8 @@ SCHEMA_FILES = {
     "editorial-cue-migration": "function-content/editorial/approved-title-cues-001.json",
     "functional-metadata": "function-content/editorial/functional-metadata-001.json",
     "symbolic-cue-migration": "function-content/editorial/symbolic-cues-001.json",
+    "cue-header-successor": "function-content/editorial/cue-headers-001.json",
+    "cue-completion-successor": "function-content/editorial/cue-completion-001.json",
     "community-voice": "templates/community-voice.yaml",
     "corpus-inventory": "docs/research/humanplus-corpus-inventory.json",
     "cue-profile": "audio/cues/profiles/OCF-CUE-PROFILE-DEFAULT.yaml",
