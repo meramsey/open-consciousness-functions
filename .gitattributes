@@ -20,6 +20,9 @@
 # SBaGenX beds are text programs, not binaries.
 *.sbg text eol=lf
 Makefile text eol=lf
+# Pinned upstream notice bytes are part of the offline provenance inventory.
+audio/background/FARFIELD-LICENSE text eol=lf
+audio/background/FARFIELD-NOTICE text eol=lf
 
 # --- Binaries that are NEVER committed ---------------------------------------
 # Reference PDFs are citation-only and stay local (see .gitignore /
