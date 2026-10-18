@@ -1,3 +1,10 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-SEN-001", "title": "Hearing", "locale": "en-US"}
+# English authority: functions/sensory/hearing.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-SEN-001-PRIMARY", "role": "activation", "display": "PLUS-HEAR MORE", "spoken": "Plus Hear More", "locale_definition": "commands.ocf-cmd-sen-001-primary.spoken-cue"}
+# {"symbol": "cue.id.OCF-CMD-SEN-001-HEAR-LESS", "command": "OCF-CMD-SEN-001-HEAR-LESS", "role": "decrease", "display": "PLUS-HEAR LESS", "spoken": "Plus Hear Less", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 
 # OCF-SEN-001 — Sensory: Hearing
@@ -65,6 +72,7 @@ entries:
       Rights: user_cleared per user's lawyer-clearance attestation.
       Finished-session release remains pending.
       Frozen Hearing pilot resources remain unchanged.
+    cue_template: {"function_id": "OCF-SEN-001", "allowed": ["cue.id.OCF-CMD-SEN-001-HEAR-LESS", "cue.primary"]}
     text: |-
       From this moment forward, you have the ability
       to regulate your hearing and develop vivid,
@@ -76,7 +84,7 @@ entries:
 
       To enhance your hearing, close your eyes,
       inhale deeply, and gently hold your breath.
-      Think or say in your mind, "Plus Hear More."
+      Think or say in your mind, "{{ cue.primary }}."
       Then exhale slowly through your mouth and open your eyes.
 
       Faint sounds will become clearer and more distinct.
@@ -87,7 +95,7 @@ entries:
 
       To reduce unwanted sound, use the same eye
       and breathing sequence, thinking or saying,
-      "Plus Hear Less."
+      "{{ cue.id.OCF-CMD-SEN-001-HEAR-LESS }}."
       Distracting sounds will become less prominent,
       while you remain free to change the adjustment
       or return to your usual hearing condition.
@@ -112,7 +120,6 @@ entries:
       Each time you use this function, your hearing regulation
       and inner auditory imagery will become easier,
       clearer, and more effective.
-
   hplus.function.ocf-sen-001.closer:
     status: reviewed
     version: 1.2.1
@@ -127,14 +134,13 @@ entries:
       Finished-session release remains pending.
       Frozen Hearing pilot resources remain unchanged.
     cue_template:
-      function_id: OCF-SEN-001
-      allowed: [cue.primary]
+      {"function_id": "OCF-SEN-001", "allowed": ["cue.id.OCF-CMD-SEN-001-HEAR-LESS", "cue.primary"]}
     text: |-
       Remember, to regulate your hearing or strengthen
       your inner experience of sound, close your eyes,
       inhale deeply, and hold your breath.
       Think or say in your mind, "{{ cue.primary }}"
-      or "Plus Hear Less," according to your intention.
+      or "{{ cue.id.OCF-CMD-SEN-001-HEAR-LESS }}," according to your intention.
       Then exhale slowly through your mouth and open your eyes.
 
       This concludes your OCF Hearing exercise.

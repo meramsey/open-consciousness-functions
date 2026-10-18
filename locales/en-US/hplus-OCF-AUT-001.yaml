@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-AUT-001", "title": "Automatic Action", "locale": "en-US"}
+# English authority: functions/automation/see-be.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-AUT-001-PRIMARY", "role": "activation", "display": "PLUS-AUTOMATE", "spoken": "Plus Automate", "locale_definition": "commands.ocf-cmd-aut-001-primary.spoken-cue"}
+# END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-AUT-001 — See-Be
 # English function-specific OCF-adapted narration.
@@ -74,6 +80,7 @@ entries:
       Focus 11 and Focus 20.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-AUT-001", "allowed": ["cue.primary"]}
     text: |-
       From this moment forward, you have the ability
       to transform any correctly learned action
@@ -116,7 +123,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Automate."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
@@ -142,14 +149,13 @@ entries:
       its automatic pattern becomes stronger,
       smoother, and more reliable.
 
-      The more you use Plus Automate,
+      The more you use {{ cue.primary }},
       the easier and more effective
       this process will become.
 
       This lasting ability to develop
       automatic skills is now permanently
       available to you whenever you desire.
-
   hplus.function.ocf-aut-001.closer:
     status: reviewed
     version: 1.2.1

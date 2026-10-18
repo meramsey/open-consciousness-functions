@@ -1,3 +1,10 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-PRF-006", "title": "Strong-Quick", "locale": "en-US"}
+# English authority: functions/performance/strong-quick.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-PRF-006-PRIMARY", "role": "activation", "display": "PLUS-STRONG QUICK", "spoken": "Plus Strong Quick", "locale_definition": null}
+# {"symbol": "cue.id.OCF-CMD-PRF-006-RELEASE", "command": "OCF-CMD-PRF-006-RELEASE", "role": "release", "display": "Plus Release", "spoken": "Plus Release", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # OCF-PRF-006 — Strong-Quick
 # English function-specific OCF-adapted narration; wording source of truth.
 # Source status: unavailable; authentication remains unverified.
@@ -57,6 +64,7 @@ entries:
       One body supports four passes across Focus 11 and Focus 20.
       Rights: user_cleared per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-PRF-006", "allowed": ["cue.id.OCF-CMD-PRF-006-RELEASE", "cue.primary"]}
     text: |-
       From this moment forward, within your total self
       there is an exceptional reserve of strength and quickness,
@@ -70,7 +78,7 @@ entries:
       bring the necessary action clearly into your awareness.
       Inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Strong Quick."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
@@ -98,7 +106,7 @@ entries:
       clearly into your awareness.
 
       Inhale deeply, hold your breath,
-      think or say in your mind, "Plus Release,"
+      think or say in your mind, "{{ cue.id.OCF-CMD-PRF-006-RELEASE }},"
       and exhale slowly through your mouth.
 
       The present application will end,
@@ -109,7 +117,6 @@ entries:
       Each time you use this function,
       your total self will recognize and respond
       to your intention more readily and effectively.
-
   hplus.function.ocf-prf-006.closer:
     status: reviewed
     version: 1.2.0
@@ -122,14 +129,15 @@ entries:
       breathing sequence and exact spoken Plus Strong Quick command, the
       separate Plus Release cue, and standard OCF sign-off. Rights:
       user_cleared per user's lawyer-clearance attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-PRF-006", "allowed": ["cue.id.OCF-CMD-PRF-006-RELEASE", "cue.primary"]}
     text: |-
       Remember, when an immediate need calls for extraordinary
       strength and quickness, inhale deeply, hold your breath,
-      and think or say in your mind, "Plus Strong Quick."
+      and think or say in your mind, "{{ cue.primary }}."
       Then exhale slowly through your mouth.
 
       When the need has passed, bring Strong-Quick to mind,
-      inhale, hold your breath, think or say "Plus Release,"
+      inhale, hold your breath, think or say "{{ cue.id.OCF-CMD-PRF-006-RELEASE }},"
       and exhale slowly through your mouth.
 
       This concludes your OCF Strong-Quick exercise.

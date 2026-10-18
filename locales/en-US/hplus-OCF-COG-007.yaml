@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-COG-007", "title": "Think Fast", "locale": "en-US"}
+# English authority: functions/cognition/think-fast.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-COG-007-PRIMARY", "role": "activation", "display": "PLUS-THINK", "spoken": "Plus Think", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # OCF-COG-007 — Think Fast
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -66,6 +72,7 @@ entries:
       not independently verified cognitive enhancements.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-COG-007", "allowed": ["cue.primary"]}
     text: |-
       From this moment forward, your entire mental process
       is becoming faster, clearer, and more capable.
@@ -119,7 +126,7 @@ entries:
       your mental clarity and thinking speed,
       inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Think."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
@@ -130,7 +137,7 @@ entries:
       recognize the connections that matter,
       and find solutions with increasing ease.
 
-      Each time you use Plus Think,
+      Each time you use {{ cue.primary }},
       your thinking becomes faster,
       smoother, and more effective.
 
@@ -138,7 +145,6 @@ entries:
       completely, calmly, and rapidly
       will continue strengthening automatically,
       every day and every night.
-
   hplus.function.ocf-cog-007.closer:
     status: reviewed
     version: 1.2.0
@@ -159,12 +165,13 @@ entries:
       This is adapted narration, not verbatim historical wording.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-COG-007", "allowed": ["cue.primary"]}
     text: |-
       Remember, whenever you wish to think
       more quickly, clearly, and accurately,
       inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus Think."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 

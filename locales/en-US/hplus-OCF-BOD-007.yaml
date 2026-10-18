@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-BOD-007", "title": "Blood Pressure Balance", "locale": "en-US"}
+# English authority: functions/body/hypertension.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-007-PRIMARY", "role": "activation", "display": "PLUS-BALANCE BLOOD PRESSURE", "spoken": "Plus Balance Blood Pressure", "locale_definition": "commands.ocf-cmd-bod-007-primary.spoken-cue"}
+# END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-BOD-007 — Hypertension
 # English function-specific OCF-adapted narration.
@@ -68,6 +74,7 @@ entries:
       Focus 20. Trailing video text remains excluded.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release pending.
+    cue_template: {"function_id": "OCF-BOD-007", "allowed": ["cue.primary"]}
     text: |-
       From this moment forward, bring your awareness
       to your heart and the blood vessels throughout
@@ -176,7 +183,7 @@ entries:
       and gently hold it.
 
       While holding your breath, silently say
-      to yourself, "Plus Balance Blood Pressure."
+      to yourself, "{{ cue.primary }}."
 
       Then slowly exhale through your mouth,
       as though gently blowing out a candle.
@@ -198,7 +205,7 @@ entries:
       pattern of healthy cardiovascular awareness,
       relaxation, and balance.
 
-      Each time you use Plus Balance Blood Pressure,
+      Each time you use {{ cue.primary }},
       your ability to enter this calm,
       balanced state becomes easier,
       faster, and more effective.
@@ -216,7 +223,7 @@ entries:
       Your body performs these natural functions
       according to its needs.
 
-      Plus Balance Blood Pressure remains available
+      {{ cue.primary }} remains available
       whenever you wish to consciously reinforce
       your established pattern of relaxation
       and healthy cardiovascular awareness.
@@ -225,7 +232,6 @@ entries:
       it easier and easier to release tension,
       become calm, and maintain a comfortable,
       balanced state throughout your day.
-
   hplus.function.ocf-bod-007.closer:
     status: reviewed
     version: 1.2.1

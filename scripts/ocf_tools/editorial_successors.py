@@ -201,9 +201,10 @@ def records(root=REPO_ROOT, *, required=False):
 
 
 def before_file(root, name):
+    from .cue_headers import predecessor
     from .cue_migration import contained
 
-    text = contained(root, name).read_text(encoding="utf-8")
+    text = predecessor(root, name, contained(root, name).read_text(encoding="utf-8"))
     for data in reversed(records(root)):
         row = data["source_files"].get(name)
         if row is None:
@@ -270,9 +271,11 @@ def current_decision_record(root=REPO_ROOT):
 def verify(root=REPO_ROOT):
     from tools.check_hplus_narration_integrity import narration_texts, text_fingerprints
 
+    from .cue_headers import predecessor
+    from .cue_headers import verify as verify_headers
     from .cue_migration import contained, replay_change
 
-    problems = []
+    problems = verify_headers(root)
     texts = narration_texts(root)
     file_view = {}
 
@@ -280,7 +283,7 @@ def verify(root=REPO_ROOT):
         return (
             file_view[name]
             if name in file_view
-            else contained(root, name).read_text(encoding="utf-8")
+            else predecessor(root, name, contained(root, name).read_text(encoding="utf-8"))
         )
 
     for data in reversed(records(root, required=True)):

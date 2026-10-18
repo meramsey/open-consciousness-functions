@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-FND-003", "title": "Quick Recharge", "locale": "en-US"}
+# English authority: functions/foundation/recharge.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-FND-003-PRIMARY", "role": "activation", "display": "PLUS-RECHARGE", "spoken": "Plus Recharge", "locale_definition": "commands.ocf-cmd-fnd-003-primary.spoken-cue"}
+# END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-FND-003 — Recharge
 # English function-specific OCF-adapted narration.
@@ -51,6 +57,7 @@ entries:
       suggestions, not established substitutes for ordinary sleep.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-FND-003", "allowed": ["cue.primary"]}
     text: |-
       From this moment forward, you have the ability
       to recharge and restore yourself through
@@ -62,7 +69,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Recharge."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth,
       as though gently blowing out a candle.
@@ -96,13 +103,12 @@ entries:
 
       Your normal wakefulness remains bright and clear,
       and this response begins when you deliberately
-      choose to use Plus Recharge.
+      choose to use {{ cue.primary }}.
 
       Each time you use this function,
       falling asleep briefly, restoring your energy,
       and awakening refreshed will become
       easier, smoother, and more effective.
-
   hplus.function.ocf-fnd-003.closer:
     status: reviewed
     version: 1.2.1

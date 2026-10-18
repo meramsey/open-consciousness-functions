@@ -1,3 +1,10 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-FND-001", "title": "Access to Energy", "locale": "en-US"}
+# English authority: functions/foundation/energize.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-FND-001-PRIMARY", "role": "activation", "display": "PLUS-ENERGIZE", "spoken": "Plus Energize", "locale_definition": null}
+# {"symbol": "cue.id.OCF-CMD-FND-001-ACCESS-CLOSE", "command": "OCF-CMD-FND-001-ACCESS-CLOSE", "role": "access-close", "display": "Plus Release Eleven Access", "spoken": "plus, release, eleven, access", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # OCF-FND-001 — Access to Energy
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -58,6 +65,7 @@ entries:
       One function body supports four playback passes across Focus 11
       and Focus 20. Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-FND-001", "allowed": ["cue.primary"]}
     text: |-
       Bring into your awareness a time when you felt
       strong, alert, energized, and completely alive.
@@ -78,7 +86,7 @@ entries:
       this energy toward the purpose you choose.
 
       Whenever you desire to use your M energy,
-      think or say in your mind, "Plus Energize."
+      think or say in your mind, "{{ cue.primary }}."
 
       Then picture clearly the result you intend.
       Give your energy a direction, a form,
@@ -107,7 +115,6 @@ entries:
       and experience your M energy responding.
 
       Begin now.
-
   hplus.function.ocf-fnd-001.access-close:
     status: reviewed
     version: 1.1.0
@@ -136,10 +143,11 @@ entries:
       Plus Release Eleven Access cue remains in its separate entry.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-FND-001", "allowed": ["cue.primary"]}
     text: |-
       Remember, whenever you wish to access and direct
       your M energy, think or say in your mind,
-      "Plus Energize."
+      "{{ cue.primary }}."
 
       Then picture clearly the purpose
       toward which you wish to direct it.

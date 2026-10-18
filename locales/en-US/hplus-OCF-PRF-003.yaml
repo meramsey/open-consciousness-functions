@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-PRF-003", "title": "Coordination", "locale": "en-US"}
+# English authority: functions/performance/synchronizing.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-PRF-003-PRIMARY", "role": "activation", "display": "PLUS-SMOOTH, FAST", "spoken": "Plus Smooth Fast", "locale_definition": "commands.ocf-cmd-prf-003-primary.spoken-cue"}
+# END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-PRF-003 — Synchronizing
 # English function-specific OCF-adapted narration.
@@ -51,6 +57,7 @@ entries:
       not independently established performance outcomes. One body supports
       four passes across Focus 11 and Focus 20. Rights: user_cleared, per
       user's lawyer-clearance attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-PRF-003", "allowed": ["cue.primary"]}
     text: |-
       Beginning now, and from this moment forward,
       your mind, nervous system, and muscles
@@ -90,7 +97,7 @@ entries:
       this synchronization even further,
       inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Smooth Fast."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth,
       as though gently blowing out a candle.
@@ -99,10 +106,9 @@ entries:
       come into clearer, smoother coordination,
       responding with effortless speed and control.
 
-      Each time you use Plus Smooth Fast,
+      Each time you use {{ cue.primary }},
       this natural harmony of mind and body
       will become easier, stronger, and more effective.
-
   hplus.function.ocf-prf-003.closer:
     status: reviewed
     version: 1.2.1

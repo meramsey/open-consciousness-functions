@@ -1,3 +1,11 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-EXP-002", "title": "Insulate", "locale": "en-US"}
+# English authority: functions/experimental/zoning.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-EXP-002-PRIMARY", "role": "activation", "display": "PLUS-INSULATE", "spoken": "Plus Insulate", "locale_definition": "commands.ocf-cmd-exp-002-primary.spoken-cue"}
+# {"symbol": "cue.id.OCF-CMD-EXP-002-CANCEL", "command": "OCF-CMD-EXP-002-CANCEL", "role": "cancel", "display": "PLUS-CANCEL", "spoken": "Plus Cancel", "locale_definition": null}
+# {"symbol": "cue.id.OCF-CMD-EXP-002-RELEASE", "command": "OCF-CMD-EXP-002-RELEASE", "role": "release", "display": "Plus Release", "spoken": "Plus Release", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # Editorial successor OCF-EDITORIAL-TITLE-CUES-001: prior cue-preservation notes describe predecessor versions; only approved title/cue substitutions changed.
 # OCF-EXP-002 — Zoning
 # English function-specific OCF-adapted narration.
@@ -60,8 +68,7 @@ entries:
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release remains pending.
     cue_template:
-      function_id: OCF-EXP-002
-      allowed: [cue.primary]
+      {"function_id": "OCF-EXP-002", "allowed": ["cue.id.OCF-CMD-EXP-002-CANCEL", "cue.id.OCF-CMD-EXP-002-RELEASE", "cue.primary"]}
     text: |-
       From this moment forward, you have the ability
       to create a balanced zone of temperature comfort
@@ -105,7 +112,7 @@ entries:
 
       To cancel the current temperature adjustment,
       inhale, hold your breath, think or say
-      in your mind, "Plus Cancel," then exhale.
+      in your mind, "{{ cue.id.OCF-CMD-EXP-002-CANCEL }}," then exhale.
 
       That adjustment will end, leaving you free
       to establish a different one whenever desired.
@@ -113,7 +120,7 @@ entries:
       When you wish to place the entire Insulate
       application on hold, bring Insulate into your mind.
       Inhale, hold your breath, think or say
-      in your mind, "Plus Release," then exhale.
+      in your mind, "{{ cue.id.OCF-CMD-EXP-002-RELEASE }}," then exhale.
 
       The present zone will rest, while your ability
       to create it remains ready for future use.
@@ -121,7 +128,6 @@ entries:
       Each time you use Insulate, establishing
       and adjusting your zone will become
       easier, smoother, and more effective.
-
   hplus.function.ocf-exp-002.closer:
     status: reviewed
     version: 1.2.1
@@ -135,8 +141,7 @@ entries:
       OCF ending. Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
     cue_template:
-      function_id: OCF-EXP-002
-      allowed: [cue.primary]
+      {"function_id": "OCF-EXP-002", "allowed": ["cue.id.OCF-CMD-EXP-002-CANCEL", "cue.id.OCF-CMD-EXP-002-RELEASE", "cue.primary"]}
     text: |-
       Remember, to establish your zone of temperature comfort,
       inhale deeply, hold your breath, and think
@@ -144,7 +149,7 @@ entries:
 
       Then exhale slowly through your mouth.
 
-      Use "Plus Cancel" to end the current adjustment,
-      or "Plus Release" to place Insulate on hold.
+      Use "{{ cue.id.OCF-CMD-EXP-002-CANCEL }}" to end the current adjustment,
+      or "{{ cue.id.OCF-CMD-EXP-002-RELEASE }}" to place Insulate on hold.
 
       This concludes your OCF Insulate exercise.

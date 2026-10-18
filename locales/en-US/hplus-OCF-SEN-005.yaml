@@ -1,3 +1,10 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-SEN-005", "title": "Touch", "locale": "en-US"}
+# English authority: functions/sensory/touch.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-SEN-005-PRIMARY", "role": "activation", "display": "PLUS-TOUCH MORE", "spoken": "Plus Touch More", "locale_definition": "commands.ocf-cmd-sen-005-primary.spoken-cue"}
+# {"symbol": "cue.id.OCF-CMD-SEN-005-TOUCH-LESS", "command": "OCF-CMD-SEN-005-TOUCH-LESS", "role": "decrease", "display": "PLUS-TOUCH LESS", "spoken": "Plus Touch Less", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-SEN-005 — Sensory: Touch
 # English function-specific OCF-adapted narration; wording source of truth.
@@ -61,6 +68,7 @@ entries:
       across Focus 11 and Focus 20. Intended sensory effects are exercise
       suggestions rather than established physiological outcomes. Rights:
       user_cleared per user's lawyer-clearance attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-SEN-005", "allowed": ["cue.id.OCF-CMD-SEN-005-TOUCH-LESS", "cue.primary"]}
     text: |-
       From this moment forward, you have the ability
       to regulate your sense of touch and develop
@@ -72,7 +80,7 @@ entries:
 
       To increase your awareness of touch, close your eyes,
       inhale deeply, and gently hold your breath.
-      Think or say in your mind, "Plus Touch More."
+      Think or say in your mind, "{{ cue.primary }}."
       Then exhale slowly through your mouth and open your eyes.
 
       The lightest contact will become more distinct.
@@ -81,7 +89,7 @@ entries:
 
       To reduce the prominence of an unwanted sensation,
       use the same eye and breathing sequence,
-      thinking or saying, "Plus Touch Less."
+      thinking or saying, "{{ cue.id.OCF-CMD-SEN-005-TOUCH-LESS }}."
       The selected feeling will become less distracting,
       and you can return to your usual sense of touch
       whenever you consciously choose.
@@ -110,7 +118,6 @@ entries:
       Each time you use this function, physical touch regulation
       and inner tactile imagery will become clearer,
       easier, and more effective.
-
   hplus.function.ocf-sen-005.closer:
     status: reviewed
     version: 1.2.1
@@ -125,14 +132,13 @@ entries:
       touch and the standard OCF sign-off. Rights: user_cleared per user's
       lawyer-clearance attestation. Finished-session release remains pending.
     cue_template:
-      function_id: OCF-SEN-005
-      allowed: [cue.primary]
+      {"function_id": "OCF-SEN-005", "allowed": ["cue.id.OCF-CMD-SEN-005-TOUCH-LESS", "cue.primary"]}
     text: |-
       Remember, to regulate your physical sense of touch
       or strengthen your inner experience of it, close your eyes,
       inhale deeply, and hold your breath.
       Think or say in your mind, "{{ cue.primary }}"
-      or "Plus Touch Less," according to your intention.
+      or "{{ cue.id.OCF-CMD-SEN-005-TOUCH-LESS }}," according to your intention.
       Then exhale through your mouth as though gently
       blowing out a candle, and open your eyes.
 

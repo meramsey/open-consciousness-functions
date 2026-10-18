@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-COG-006", "title": "Recall", "locale": "en-US"}
+# English authority: functions/cognition/recall.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-COG-006-PRIMARY", "role": "activation", "display": "PLUS-RECALL", "spoken": "Plus Recall", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # OCF-COG-006 — Recall
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -71,6 +77,7 @@ entries:
       independently verified memory capabilities.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-COG-006", "allowed": ["cue.primary"]}
     text: |-
       From this moment forward, your ability to remember
       and recall information and experiences is becoming
@@ -86,7 +93,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Recall."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth,
       as though gently blowing out a candle.
@@ -106,7 +113,7 @@ entries:
       information and experiences is permanently
       established within you.
 
-      Whenever you use Plus Recall, your mind will bring
+      Whenever you use {{ cue.primary }}, your mind will bring
       the desired information into your awareness
       quickly, clearly, and in great detail.
 
@@ -117,7 +124,6 @@ entries:
       Your memories remain available to you,
       ready to return to your conscious awareness
       whenever you desire.
-
   hplus.function.ocf-cog-006.closer:
     status: reviewed
     version: 1.2.0
@@ -135,6 +141,7 @@ entries:
       This is OCF-authored wording, not historical transcript text.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-COG-006", "allowed": ["cue.primary"]}
     text: |-
       Remember, whenever you wish to recall
       information or a past experience,
@@ -142,7 +149,7 @@ entries:
 
       Inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus Recall."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 

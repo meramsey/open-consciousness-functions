@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-PRF-001", "title": "Do This Now", "locale": "en-US"}
+# English authority: functions/performance/do-this-now.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-PRF-001-PRIMARY", "role": "activation", "display": "PLUS-DO-THIS-NOW", "spoken": "Plus Do This Now", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # OCF-PRF-001 — Do This Now
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -56,6 +62,7 @@ entries:
       Affirmative outcomes are intended exercise suggestions.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-PRF-001", "allowed": ["cue.primary"]}
     text: |-
       From this moment forward, you have the ability
       to turn your intentions into action
@@ -71,7 +78,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Do This Now."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth,
       as though gently blowing out a candle.
@@ -102,10 +109,9 @@ entries:
       your chosen activities is permanently
       available whenever you desire.
 
-      Each time you use Plus Do This Now,
+      Each time you use {{ cue.primary }},
       moving from intention into action
       becomes easier, quicker, and more effective.
-
   hplus.function.ocf-prf-001.closer:
     status: reviewed
     version: 1.2.0
@@ -120,6 +126,7 @@ entries:
       purpose reminder, exact Plus Do This Now command, original breath
       sequence, and standard OCF ending. Rights: user_cleared, per user's
       lawyer-clearance attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-PRF-001", "allowed": ["cue.primary"]}
     text: |-
       Remember, whenever you wish to begin,
       continue, or complete an activity,
@@ -127,7 +134,7 @@ entries:
 
       Inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus Do This Now."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth,
       as though gently blowing out a candle.

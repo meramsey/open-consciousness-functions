@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-EMG-002", "title": "Toxic Exposure Response", "locale": "en-US"}
+# English authority: functions/emergency/emergency-toxic.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-EMG-002-PRIMARY", "role": "activation", "display": "PLUS-CLEAR, REMOVE", "spoken": "Plus Clear Remove", "locale_definition": "commands.ocf-cmd-emg-002-primary.spoken-cue"}
+# END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-EMG-002 — Emergency: Toxic
 # English function-specific OCF-adapted narration.
@@ -91,6 +97,7 @@ entries:
       Shared preparation, state, and return wording excluded.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-EMG-002", "allowed": ["cue.primary"]}
     text: |-
       From this moment forward, whenever a harmful
       foreign substance enters or contacts your body,
@@ -145,7 +152,7 @@ entries:
       Inhale deeply and gently hold your breath.
 
       Think or say in your mind,
-      "Plus Clear Remove."
+      "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
@@ -164,7 +171,7 @@ entries:
       toward balance, recovery,
       and restoration of normal function.
 
-      Each time you use Plus Clear Remove,
+      Each time you use {{ cue.primary }},
       consciously reinforcing this protective
       response becomes easier and more effective.
 
@@ -172,7 +179,6 @@ entries:
       remains ready to protect, balance,
       and restore your physical system
       whenever such a response is needed.
-
   hplus.function.ocf-emg-002.closer:
     status: reviewed
     version: 1.2.1

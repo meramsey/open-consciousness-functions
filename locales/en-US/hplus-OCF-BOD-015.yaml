@@ -1,3 +1,10 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-BOD-015", "title": "Temporary Numbing", "locale": "en-US"}
+# English authority: functions/body/short-fix.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-015-PRIMARY", "role": "activation", "display": "PLUS-NUMB", "spoken": "Plus Numb", "locale_definition": "commands.ocf-cmd-bod-015-primary.spoken-cue"}
+# {"symbol": "cue.id.OCF-CMD-BOD-015-LEGACY-02", "command": "OCF-CMD-BOD-015-LEGACY-02", "role": "release", "display": "PLUS-RELEASE", "spoken": "Plus Release", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-BOD-015 — Short Fix
 # English function-specific OCF-adapted narration.
@@ -82,8 +89,7 @@ entries:
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
     cue_template:
-      function_id: OCF-BOD-015
-      allowed: [cue.primary]
+      {"function_id": "OCF-BOD-015", "allowed": ["cue.id.OCF-CMD-BOD-015-LEGACY-02", "cue.primary"]}
     text: |-
       From this moment forward, you have the ability
       to quickly and temporarily reduce discomfort
@@ -132,7 +138,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Release."
+      Think or say in your mind, "{{ cue.id.OCF-CMD-BOD-015-LEGACY-02 }}."
 
       Then exhale slowly through your mouth.
 
@@ -156,7 +162,6 @@ entries:
       use whenever you need it,
       while your body's normal sensitivity
       continues at all other times.
-
   hplus.function.ocf-bod-015.closer:
     status: reviewed
     version: 1.2.1
@@ -176,8 +181,7 @@ entries:
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
     cue_template:
-      function_id: OCF-BOD-015
-      allowed: [cue.primary]
+      {"function_id": "OCF-BOD-015", "allowed": ["cue.id.OCF-CMD-BOD-015-LEGACY-02", "cue.primary"]}
     text: |-
       Remember, whenever you wish to temporarily
       reduce discomfort in a specific part of your body,
@@ -191,6 +195,6 @@ entries:
 
       When you wish to restore normal sensitivity,
       repeat the breathing sequence and think
-      or say in your mind, "Plus Release."
+      or say in your mind, "{{ cue.id.OCF-CMD-BOD-015-LEGACY-02 }}."
 
       This concludes your OCF Temporary Numbing exercise.

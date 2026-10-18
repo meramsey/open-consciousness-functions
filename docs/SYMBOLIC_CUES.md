@@ -96,6 +96,38 @@ still fail in recorded-only and hybrid mode; no recorded hashes are rewritten.
 
 ## Preview and authoring
 
+All 55 source-English function narration files begin with a generated comment
+preview of the current title, display/spoken cues, command identities, secondary
+operations and authority path. Edit source-English definitions in function YAML,
+not in the comments. Missing reviewed cues are marked unavailable; the preview
+does not silently borrow English for another locale. Existing CLI/MCP/LSP
+previews continue to use the same strict resolver.
+
+Check with `python -m ocf_tools.cue_headers` (also in `make check`); refresh with
+`python -m ocf_tools.cue_headers --write`. Frozen files require an explicit
+successor ledger before a changed preview can be written. The initial comment-only
+successor is `function-content/editorial/cue-headers-001.json`: exact predecessor
+bytes, raw-file hashes and 177 unchanged resolved-text hashes remain checkable.
+Defaults lock 007 succeeds immutable 006 with only these comment hashes changed;
+all engineering profiles and dependency membership remain identical. Generated
+plans only change their defaults-lock references/hashes. No spoken baseline is
+replaced and no recording fingerprint is rewritten.
+
+The follow-up `cue-completion-001.json` records 90 additional exact active cue
+spans across 51 body/closer entries in 31 function files. Secondary operations
+use their own stable command IDs; they are never replaced with `cue.primary`.
+All 177 resolved entries remain byte-identical, including reinforcement passages.
+Defaults lock 008 succeeds 007 for the changed raw templates. Session plans retain
+their resolved-text hashes and update raw-template/defaults provenance separately.
+Historical notes/quotations and the separate, unbound Access to Energy
+`access-close` entry remain literal.
+
+One explicit technical review item remains: `OCF-COG-005` has null/unresolved
+authoritative spoken metadata although its narration contains “Plus Options
+Choices”. Its preview says unavailable and its literal teaching is retained;
+maintenance does not infer a reviewed cue definition from narration. This does
+not reopen the completed naming queue.
+
 ```bash
 python scripts/ocf.py functions preview OCF-SLP-005 --locale en-US
 python scripts/ocf.py dev ocf_get_function --arguments '{"function_id":"OCF-SLP-005","locale":"en-US","preview":true}'

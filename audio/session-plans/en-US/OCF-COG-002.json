@@ -5,7 +5,7 @@
   },
   "defaults": {
     "file": "_shared.json",
-    "sha256": "1976558ef50735e20e6875a0162d4ed111223c4b5681f19a186770daa07775d7"
+    "sha256": "1021b266770de941592e1d57a46ccf63185d511cba087648dd3c150766179a42"
   },
   "function_id": "OCF-COG-002",
   "generation": {
@@ -29,6 +29,7 @@
       "fallback": false,
       "key": "hplus.function.ocf-cog-002.function-body",
       "locale": "en-US",
+      "raw_template_sha256": "8d25d357a3950bd7607ae4feb1ae15af7a035ad67032ad2fbea4df99e18c4710",
       "requested_locale": "en-US",
       "status": "reviewed",
       "text_sha256": "497e04faac23db79bba11fdb86a2f18c7223ebf2ee812a3bbc569c88bb47a9b2",

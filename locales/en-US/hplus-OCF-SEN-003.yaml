@@ -1,3 +1,10 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-SEN-003", "title": "Smell", "locale": "en-US"}
+# English authority: functions/sensory/smell.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-SEN-003-PRIMARY", "role": "activation", "display": "PLUS-SMELL MORE", "spoken": "Plus Smell More", "locale_definition": "commands.ocf-cmd-sen-003-primary.spoken-cue"}
+# {"symbol": "cue.id.OCF-CMD-SEN-003-SMELL-LESS", "command": "OCF-CMD-SEN-003-SMELL-LESS", "role": "decrease", "display": "PLUS-SMELL LESS", "spoken": "Plus Smell Less", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-SEN-003 — Sensory: Smell
 # English function-specific OCF-adapted narration; wording source of truth.
@@ -59,6 +66,7 @@ entries:
       One body serves four playback passes across Focus 11 and Focus 20.
       Rights: user_cleared per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-SEN-003", "allowed": ["cue.id.OCF-CMD-SEN-003-SMELL-LESS", "cue.primary"]}
     text: |-
       From this moment forward, you have the ability
       to regulate your sense of smell and develop
@@ -71,7 +79,7 @@ entries:
 
       To increase your perception of smell, close your eyes,
       inhale deeply, and gently hold your breath.
-      Think or say in your mind, "Plus Smell More."
+      Think or say in your mind, "{{ cue.primary }}."
       Then exhale slowly through your mouth and open your eyes.
 
       Faint scents will become clearer and more distinct.
@@ -80,7 +88,7 @@ entries:
 
       To reduce the prominence of an unwanted odor,
       use the same eye and breathing sequence,
-      thinking or saying, "Plus Smell Less."
+      thinking or saying, "{{ cue.id.OCF-CMD-SEN-003-SMELL-LESS }}."
       Its presence in your awareness will grow quieter,
       while you remain free to change your adjustment
       or return to your usual sense of smell.
@@ -104,7 +112,6 @@ entries:
       With each use, your physical smell regulation
       and inner scent imagery will become easier,
       clearer, and more effective.
-
   hplus.function.ocf-sen-003.closer:
     status: reviewed
     version: 1.2.1
@@ -119,14 +126,13 @@ entries:
       standard OCF ending. Rights: user_cleared per user's lawyer-clearance
       attestation. Finished-session release remains pending.
     cue_template:
-      function_id: OCF-SEN-003
-      allowed: [cue.primary]
+      {"function_id": "OCF-SEN-003", "allowed": ["cue.id.OCF-CMD-SEN-003-SMELL-LESS", "cue.primary"]}
     text: |-
       Remember, to regulate your perception of aromas
       or strengthen your inner sense of smell, close your eyes,
       inhale deeply, and hold your breath.
       Think or say in your mind, "{{ cue.primary }}"
-      or "Plus Smell Less," according to your intention.
+      or "{{ cue.id.OCF-CMD-SEN-003-SMELL-LESS }}," according to your intention.
       Then exhale slowly through your mouth and open your eyes.
 
       This concludes your OCF Smell exercise.

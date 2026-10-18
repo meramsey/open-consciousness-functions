@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-BOD-005", "title": "Appetite Choice", "locale": "en-US"}
+# English authority: functions/body/eat-no-eat.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-005-PRIMARY", "role": "activation", "display": "PLUS-SATISFIED, SUPPLIED", "spoken": "Plus Satisfied Supplied", "locale_definition": "commands.ocf-cmd-bod-005-primary.spoken-cue"}
+# END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-BOD-005 — Eat/No Eat
 # English function-specific OCF-adapted narration.
@@ -63,6 +69,7 @@ entries:
       This is adapted narration, not a verbatim transcription.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release pending.
+    cue_template: {"function_id": "OCF-BOD-005", "allowed": ["cue.primary"]}
     text: |-
       From this moment forward, you will have greater
       control over your appetite and your desire for food.
@@ -105,7 +112,7 @@ entries:
       and gently hold it.
 
       While holding your breath, silently
-      say to yourself, "Plus Satisfied Supplied."
+      say to yourself, "{{ cue.primary }}."
 
       Then slowly exhale through your mouth,
       as though gently blowing out a candle.
@@ -147,7 +154,7 @@ entries:
       You will feel comfortable and confident
       choosing when to eat and when to wait.
 
-      Each time you use Plus Satisfied Supplied,
+      Each time you use {{ cue.primary }},
       your ability to release unnecessary cravings
       becomes easier, smoother, and more effective.
 
@@ -161,7 +168,6 @@ entries:
       This lasting pattern of awareness,
       satisfaction, and self-control
       will continue strengthening every day.
-
   hplus.function.ocf-bod-005.closer:
     status: reviewed
     version: 1.2.1

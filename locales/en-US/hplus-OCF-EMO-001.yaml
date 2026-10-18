@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-EMO-001", "title": "Let Go", "locale": "en-US"}
+# English authority: functions/emotion/let-go.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-EMO-001-PRIMARY", "role": "activation", "display": "PLUS-LET GO", "spoken": "Plus Let Go", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # OCF-EMO-001 — Let Go
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -72,6 +78,7 @@ entries:
       video text remain excluded from narration.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-EMO-001", "allowed": ["cue.primary"]}
     text: |-
       From this moment forward, you have the ability
       to release any unwanted or interfering emotion
@@ -88,7 +95,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Let Go."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth,
       as though gently blowing out a candle.
@@ -123,7 +130,7 @@ entries:
       return to emotional balance
       more quickly and easily.
 
-      Whenever you use Plus Let Go,
+      Whenever you use {{ cue.primary }},
       the chosen emotion will release
       smoothly and completely,
       leaving you calm, confident,
@@ -136,7 +143,6 @@ entries:
       You are free to experience your emotions
       while choosing which feelings
       you wish to release and which to retain.
-
   hplus.function.ocf-emo-001.closer:
     status: reviewed
     version: 1.2.0
@@ -155,12 +161,13 @@ entries:
       This is adapted narration, not verbatim source wording.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-EMO-001", "allowed": ["cue.primary"]}
     text: |-
       Remember, whenever you wish to release
       an unwanted or interfering emotion,
       inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus Let Go."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth,
       as though gently blowing out a candle.

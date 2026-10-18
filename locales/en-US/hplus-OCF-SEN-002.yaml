@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-SEN-002", "title": "Seeing", "locale": "en-US"}
+# English authority: functions/sensory/seeing.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-SEN-002-PRIMARY", "role": "activation", "display": "PLUS-SEE BETTER", "spoken": "Plus See Better", "locale_definition": "commands.ocf-cmd-sen-002-primary.spoken-cue"}
+# END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-SEN-002 — Sensory: Seeing
 # English function-specific OCF-adapted narration; wording source of truth.
@@ -54,6 +60,7 @@ entries:
       across Focus 11 and Focus 20. All improvements described are intended
       exercise suggestions rather than established physiological outcomes.
       Rights: user_cleared, per user's lawyer-clearance attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-SEN-002", "allowed": ["cue.primary"]}
     text: |-
       From this moment forward, your entire system of seeing,
       both physical and within your mind, will become
@@ -92,15 +99,14 @@ entries:
       your inner visualization, or both, inhale deeply
       and gently hold your breath.
 
-      Think or say in your mind, "Plus See Better."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
       Your entire seeing system will respond to your intention,
       becoming clearer, smoother, and more capable.
-      Each time you use Plus See Better, these abilities
+      Each time you use {{ cue.primary }}, these abilities
       will become easier, stronger, and more effective.
-
   hplus.function.ocf-sen-002.closer:
     status: reviewed
     version: 1.3.1

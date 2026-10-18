@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-FND-006", "title": "Release", "locale": "en-US"}
+# English authority: functions/foundation/release.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-FND-006-PRIMARY", "role": "activation", "display": "PLUS-RELEASE", "spoken": "Plus Release", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # OCF-FND-006 — Release
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -59,6 +65,7 @@ entries:
       Effects described are intended exercise suggestions.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-FND-006", "allowed": ["cue.primary"]}
     text: |-
       From this moment forward, you have the ability
       to release any temporary OCF function
@@ -75,7 +82,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Release."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
@@ -103,11 +110,10 @@ entries:
       selected applications is permanently
       available to you whenever you desire.
 
-      Each time you use Plus Release,
+      Each time you use {{ cue.primary }},
       ending an application and returning
       to balance becomes easier, smoother,
       and more effective.
-
   hplus.function.ocf-fnd-006.closer:
     status: reviewed
     version: 1.2.0
@@ -121,6 +127,7 @@ entries:
       ability and separate function-specific release commands remain intact.
       Rights: user_cleared, per user's lawyer-clearance attestation.
       Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-FND-006", "allowed": ["cue.primary"]}
     text: |-
       Remember, when a temporary OCF function
       is no longer needed, bring that function
@@ -128,7 +135,7 @@ entries:
 
       Inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus Release."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 

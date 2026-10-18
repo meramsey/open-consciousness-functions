@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-EMG-001", "title": "Injury Response", "locale": "en-US"}
+# English authority: functions/emergency/emergency-injury.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-EMG-001-PRIMARY", "role": "activation", "display": "PLUS-CONTROL, BALANCE, RESTORE", "spoken": "Plus Control Balance Restore", "locale_definition": "commands.ocf-cmd-emg-001-primary.spoken-cue"}
+# END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-EMG-001 — Emergency: Injury
 # English function-specific OCF-adapted narration.
@@ -83,6 +89,7 @@ entries:
       Shared preparation, state, and return wording excluded.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-EMG-001", "allowed": ["cue.primary"]}
     text: |-
       From this moment forward, whenever physical injury
       occurs, your entire living system will immediately
@@ -134,7 +141,7 @@ entries:
       Inhale deeply and gently hold your breath.
 
       Think or say in your mind,
-      "Plus Control Balance Restore."
+      "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
@@ -160,7 +167,6 @@ entries:
       will continue directing its resources
       toward protection, balance,
       and restoration whenever needed.
-
   hplus.function.ocf-emg-001.closer:
     status: reviewed
     version: 1.2.1

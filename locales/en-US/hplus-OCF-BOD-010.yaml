@@ -1,3 +1,10 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-BOD-010", "title": "Nutricia", "locale": "en-US"}
+# English authority: functions/body/nutricia.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-010-PRIMARY", "role": "activation", "display": "PLUS-FOOD MORE", "spoken": "Plus Food More", "locale_definition": null}
+# {"symbol": "cue.id.OCF-CMD-BOD-010-FOOD-LESS", "command": "OCF-CMD-BOD-010-FOOD-LESS", "role": "mode", "display": "PLUS-FOOD LESS", "spoken": "Plus Food Less", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 
 # OCF-BOD-010 — Nutricia
 # English function-specific OCF-adapted narration.
@@ -63,6 +70,7 @@ entries:
       Focus 11 and Focus 20.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-BOD-010", "allowed": ["cue.id.OCF-CMD-BOD-010-FOOD-LESS", "cue.primary"]}
     text: |-
       From this moment forward, your body's natural processes
       of digestion, nourishment, and energy utilization
@@ -78,9 +86,9 @@ entries:
       Whenever you wish to direct how your body
       uses the food you eat, you have two commands.
 
-      The first is "Plus Food More."
+      The first is "{{ cue.primary }}."
 
-      When you use Plus Food More, your body will
+      When you use {{ cue.primary }}, your body will
       extract the greatest possible useful nourishment
       and energy from the food you eat.
 
@@ -88,9 +96,9 @@ entries:
       quickly and efficiently, making the fullest
       possible use of the food available.
 
-      The second command is "Plus Food Less."
+      The second command is "{{ cue.id.OCF-CMD-BOD-010-FOOD-LESS }}."
 
-      When you use Plus Food Less, your body will
+      When you use {{ cue.id.OCF-CMD-BOD-010-FOOD-LESS }}, your body will
       recognize that nourishment is plentiful
       and there is no need to store unnecessary excess.
 
@@ -113,8 +121,8 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Food More"
-      or "Plus Food Less," according to your desire.
+      Think or say in your mind, "{{ cue.primary }}"
+      or "{{ cue.id.OCF-CMD-BOD-010-FOOD-LESS }}," according to your desire.
 
       Then exhale slowly through your mouth
       and open your eyes.
@@ -129,7 +137,6 @@ entries:
       energy utilization, and metabolic balance
       will continue working automatically,
       every day and every night.
-
   hplus.function.ocf-bod-010.closer:
     status: reviewed
     version: 1.3.0
@@ -145,13 +152,14 @@ entries:
       This is adapted narration, not verbatim source wording.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-BOD-010", "allowed": ["cue.id.OCF-CMD-BOD-010-FOOD-LESS", "cue.primary"]}
     text: |-
       Remember, whenever you wish to direct how your body
       uses food energy, close your eyes, inhale deeply,
       and hold your breath.
 
-      Think or say in your mind, "Plus Food More"
-      or "Plus Food Less," according to your desire.
+      Think or say in your mind, "{{ cue.primary }}"
+      or "{{ cue.id.OCF-CMD-BOD-010-FOOD-LESS }}," according to your desire.
 
       Then exhale slowly through your mouth
       and open your eyes.

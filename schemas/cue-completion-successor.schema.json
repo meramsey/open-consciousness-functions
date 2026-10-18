@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/cue-completion-successor.schema.json",
+  "title": "Zero-spoken-drift literal cue completion successor",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "source_commit", "files", "resolved_text_sha256", "previous_defaults_lock", "previous_defaults_sha256", "defaults_lock"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "source_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "previous_defaults_lock": {"type": "string"},
+    "previous_defaults_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "defaults_lock": {"type": "string"},
+    "resolved_text_sha256": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+    "files": {
+      "type": "object", "minProperties": 1,
+      "additionalProperties": {
+        "type": "object", "additionalProperties": false,
+        "required": ["before_sha256", "after_sha256", "predecessor", "entries"],
+        "properties": {
+          "before_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "after_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "predecessor": {"type": "string"},
+          "entries": {"type": "array", "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["key", "spans", "contract", "raw_template_sha256"],
+            "properties": {
+              "key": {"type": "string"},
+              "raw_template_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+              "contract": {"type": "object", "required": ["function_id", "allowed"], "additionalProperties": false,
+                "properties": {"function_id": {"type": "string"}, "allowed": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}}},
+              "spans": {"type": "array", "minItems": 1, "items": {
+                "type": "object", "additionalProperties": false,
+                "required": ["start", "end", "spoken", "symbol"],
+                "properties": {"start": {"type": "integer", "minimum": 0}, "end": {"type": "integer", "minimum": 1}, "spoken": {"type": "string", "minLength": 1}, "symbol": {"type": "string"}}
+              }}
+            }
+          }}
+        }
+      }
+    }
+  }
+}

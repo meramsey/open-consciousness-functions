@@ -5,7 +5,7 @@
   },
   "defaults": {
     "file": "_shared.json",
-    "sha256": "1976558ef50735e20e6875a0162d4ed111223c4b5681f19a186770daa07775d7"
+    "sha256": "1021b266770de941592e1d57a46ccf63185d511cba087648dd3c150766179a42"
   },
   "function_id": "OCF-EMG-002",
   "generation": {
@@ -29,6 +29,7 @@
       "fallback": false,
       "key": "hplus.function.ocf-emg-002.function-body",
       "locale": "en-US",
+      "raw_template_sha256": "f7cab7473c9c164ac6af65e67160e672031c78bcbb532fb028ea37f679aaf6f1",
       "requested_locale": "en-US",
       "status": "reviewed",
       "text_sha256": "ba0b7a05be01e43ffda3d3f9ec84ce5910738dbcd575660cb797b40779219ea2",

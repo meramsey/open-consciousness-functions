@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-BOD-013", "title": "Body Tune-Up", "locale": "en-US"}
+# English authority: functions/body/tune-up.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-013-PRIMARY", "role": "activation", "display": "PLUS-BALANCE, HEAL", "spoken": "Plus Balance Heal", "locale_definition": "commands.ocf-cmd-bod-013-primary.spoken-cue"}
+# END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-BOD-013 — Tune-Up
 # English function-specific OCF-adapted narration.
@@ -65,6 +71,7 @@ entries:
       across Focus 11 and Focus 20.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-BOD-013", "allowed": ["cue.primary"]}
     text: |-
       From this moment forward, your body's natural
       processes of balance, healing, and regeneration
@@ -108,7 +115,7 @@ entries:
       Take a deep breath in and gently hold it.
 
       Think or say in your mind,
-      "Plus Balance Heal."
+      "{{ cue.primary }}."
 
       Then exhale slowly through your mouth
       and open your eyes.
@@ -125,7 +132,7 @@ entries:
       these processes and will perform
       them smoothly and effectively.
 
-      Each time you use Plus Balance Heal,
+      Each time you use {{ cue.primary }},
       your ability to perceive and direct
       this process becomes easier,
       faster, and more effective.
@@ -134,7 +141,6 @@ entries:
       renewal, and balanced maintenance
       will continue automatically,
       every day and every night.
-
   hplus.function.ocf-bod-013.closer:
     status: reviewed
     version: 1.2.1

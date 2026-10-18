@@ -1,3 +1,10 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-SEN-004", "title": "Taste", "locale": "en-US"}
+# English authority: functions/sensory/taste.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-SEN-004-PRIMARY", "role": "activation", "display": "PLUS-TASTE MORE", "spoken": "Plus Taste More", "locale_definition": "commands.ocf-cmd-sen-004-primary.spoken-cue"}
+# {"symbol": "cue.id.OCF-CMD-SEN-004-TASTE-LESS", "command": "OCF-CMD-SEN-004-TASTE-LESS", "role": "decrease", "display": "PLUS-TASTE LESS", "spoken": "Plus Taste Less", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-SEN-004 — Sensory: Taste
 # English function-specific OCF-adapted narration; wording source of truth.
@@ -58,6 +65,7 @@ entries:
       Focus 11 and Focus 20. Intended experiences are not verified changes
       in physiological taste sensitivity. Rights: user_cleared per user's
       lawyer-clearance attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-SEN-004", "allowed": ["cue.id.OCF-CMD-SEN-004-TASTE-LESS", "cue.primary"]}
     text: |-
       From this moment forward, you have the ability
       to regulate your sense of taste and develop
@@ -69,7 +77,7 @@ entries:
 
       To enhance your physical sense of taste,
       close your eyes, inhale deeply, and hold your breath.
-      Think or say in your mind, "Plus Taste More."
+      Think or say in your mind, "{{ cue.primary }}."
       Then exhale slowly through your mouth and open your eyes.
 
       Subtle flavors will become more distinct.
@@ -79,7 +87,7 @@ entries:
 
       To reduce a taste you do not wish to experience
       as strongly, use the same eye and breath sequence,
-      thinking or saying, "Plus Taste Less."
+      thinking or saying, "{{ cue.id.OCF-CMD-SEN-004-TASTE-LESS }}."
       The selected sensation will become less prominent.
       You can soften even an enjoyable flavor when desired,
       and return to your usual sense of taste at will.
@@ -103,7 +111,6 @@ entries:
       Each time you use this function, physical taste regulation
       and inner flavor imagery will become easier,
       clearer, and more effective.
-
   hplus.function.ocf-sen-004.closer:
     status: reviewed
     version: 1.2.1
@@ -118,14 +125,13 @@ entries:
       complete source eye-and-breath sequence. Rights: user_cleared per
       user's lawyer-clearance attestation. Finished-session release remains pending.
     cue_template:
-      function_id: OCF-SEN-004
-      allowed: [cue.primary]
+      {"function_id": "OCF-SEN-004", "allowed": ["cue.id.OCF-CMD-SEN-004-TASTE-LESS", "cue.primary"]}
     text: |-
       Remember, to regulate your sense of taste
       or strengthen your inner experience of flavor,
       close your eyes, inhale deeply, and hold your breath.
       Think or say in your mind, "{{ cue.primary }}"
-      or "Plus Taste Less," according to your intention.
+      or "{{ cue.id.OCF-CMD-SEN-004-TASTE-LESS }}," according to your intention.
       Then exhale slowly through your mouth and open your eyes.
 
       This concludes your OCF Taste exercise.

@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-FND-002", "title": "Attention", "locale": "en-US"}
+# English authority: functions/foundation/attention.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-FND-002-PRIMARY", "role": "activation", "display": "PLUS-FOCUS", "spoken": "Plus Focus", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # OCF-FND-002 — Attention
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -41,6 +47,7 @@ entries:
       detailed memory, and calm confidence. One reusable body supports
       four playback passes across Focus 11 and Focus 20. Affirmative
       effects are intended exercise suggestions.
+    cue_template: {"function_id": "OCF-FND-002", "allowed": ["cue.primary"]}
     text: |-
       From this moment forward, your ability to direct
       and sustain your attention is becoming stronger,
@@ -52,7 +59,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Think or say in your mind, "Plus Focus."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth,
       as though gently blowing out a candle.
@@ -91,14 +98,13 @@ entries:
       able to direct or shift your attention
       whenever you choose.
 
-      Each time you use Plus Focus,
+      Each time you use {{ cue.primary }},
       concentration becomes easier, stronger,
       and more effective.
 
       Your natural ability to focus will continue
       improving through every experience,
       becoming an effortless part of your daily life.
-
   hplus.function.ocf-fnd-002.closer:
     status: reviewed
     version: 1.3.0
@@ -108,13 +114,14 @@ entries:
       sequence remains unchanged. Removed extra reinforcement so the
       closer contains one purpose reminder, the exact Plus Focus command,
       and the standard OCF ending.
+    cue_template: {"function_id": "OCF-FND-002", "allowed": ["cue.primary"]}
     text: |-
       Remember, whenever you wish to focus your attention
       completely, choose what you desire to concentrate on.
 
       Inhale deeply and hold your breath.
 
-      Think or say in your mind, "Plus Focus."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth,
       as though gently blowing out a candle.

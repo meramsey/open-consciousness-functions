@@ -5,7 +5,7 @@
   },
   "defaults": {
     "file": "_shared.json",
-    "sha256": "1976558ef50735e20e6875a0162d4ed111223c4b5681f19a186770daa07775d7"
+    "sha256": "1021b266770de941592e1d57a46ccf63185d511cba087648dd3c150766179a42"
   },
   "function_id": "OCF-PRF-003",
   "generation": {
@@ -29,6 +29,7 @@
       "fallback": false,
       "key": "hplus.function.ocf-prf-003.function-body",
       "locale": "en-US",
+      "raw_template_sha256": "7543356aa01127c0504027b29eb96996bc936bd5c6e2f00126e1f3a0c7a67d0b",
       "requested_locale": "en-US",
       "status": "reviewed",
       "text_sha256": "fe6ec1ab16e807c77e7f3f3482f028eab14c5323083979c430eef6b7d0c677c1",

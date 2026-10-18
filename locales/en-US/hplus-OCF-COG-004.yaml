@@ -1,3 +1,10 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-COG-004", "title": "Imprint", "locale": "en-US"}
+# English authority: functions/cognition/imprint.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-COG-004-PRIMARY", "role": "activation", "display": "PLUS-IMPRINT", "spoken": "Plus Imprint", "locale_definition": "commands.ocf-cmd-cog-004-primary.spoken-cue"}
+# {"symbol": "cue.id.OCF-CMD-COG-004-RECALL", "command": "OCF-CMD-COG-004-RECALL", "role": "retrieval", "display": "PLUS-RECALL", "spoken": "Plus Recall", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-COG-004 — Imprint
 # English function-specific OCF-adapted narration.
@@ -73,8 +80,7 @@ entries:
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
     cue_template:
-      function_id: OCF-COG-004
-      allowed: [cue.primary]
+      {"function_id": "OCF-COG-004", "allowed": ["cue.id.OCF-CMD-COG-004-RECALL", "cue.primary"]}
     text: |-
       From this moment forward, your ability to capture,
       store, and remember information and experiences
@@ -120,7 +126,7 @@ entries:
       Whenever you wish to remember an imprinted
       experience or any part of its details,
       simply think or say in your mind,
-      "Plus Recall."
+      "{{ cue.id.OCF-CMD-COG-004-RECALL }}."
 
       The information will return immediately
       into your conscious awareness,
@@ -142,7 +148,6 @@ entries:
       Your selected memories will remain
       clear and accessible, ready to return
       to your awareness whenever you desire.
-
   hplus.function.ocf-cog-004.closer:
     status: reviewed
     version: 1.2.1

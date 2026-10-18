@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-COG-002", "title": "Mental Calculation", "locale": "en-US"}
+# English authority: functions/cognition/buy-the-numbers.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-COG-002-PRIMARY", "role": "activation", "display": "PLUS-CALCULATE", "spoken": "Plus Calculate", "locale_definition": "commands.ocf-cmd-cog-002-primary.spoken-cue"}
+# END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-COG-002 — Buy the Numbers
 # English function-specific OCF-adapted narration.
@@ -69,6 +75,7 @@ entries:
       Affirmative outcomes represent intended exercise suggestions.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-COG-002", "allowed": ["cue.primary"]}
     text: |-
       From this moment forward, your ability to understand,
       remember, and work with numbers is becoming
@@ -123,7 +130,7 @@ entries:
       abilities more intensely, inhale deeply
       and gently hold your breath.
 
-      Think or say in your mind, "Plus Calculate."
+      Think or say in your mind, "{{ cue.primary }}."
 
       Then exhale slowly through your mouth.
 
@@ -135,7 +142,7 @@ entries:
       and the relationships between numbers
       will become clear and easy to understand.
 
-      Each time you use Plus Calculate,
+      Each time you use {{ cue.primary }},
       your mathematical abilities become
       easier, faster, and more effective.
 
@@ -143,7 +150,6 @@ entries:
       remember, and work with numbers
       will continue strengthening automatically,
       every day and every night.
-
   hplus.function.ocf-cog-002.closer:
     status: reviewed
     version: 1.2.1

@@ -1,3 +1,10 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-BOD-012", "title": "Sex Drive", "locale": "en-US"}
+# English authority: functions/body/sex-drive.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-012-PRIMARY", "role": "activation", "display": "PLUS-SEX MORE", "spoken": "Plus Sex More", "locale_definition": null}
+# {"symbol": "cue.id.OCF-CMD-BOD-012-SEX-LESS", "command": "OCF-CMD-BOD-012-SEX-LESS", "role": "decrease", "display": "PLUS-SEX LESS", "spoken": "Plus Sex Less", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # OCF-BOD-012 — Sex Drive
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -62,6 +69,7 @@ entries:
       not independently established physiological effects.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-BOD-012", "allowed": ["cue.id.OCF-CMD-BOD-012-SEX-LESS", "cue.primary"]}
     text: |-
       From this moment forward, you have the ability
       to consciously direct your sexual desire
@@ -71,7 +79,7 @@ entries:
       responding quickly and naturally to your intentions.
 
       Whenever you wish to increase your sexual desire
-      and arousal, use the command "Plus Sex More."
+      and arousal, use the command "{{ cue.primary }}."
 
       Your sexual energy will increase,
       bringing greater desire, sensitivity,
@@ -83,7 +91,7 @@ entries:
       and intimate connection.
 
       Whenever you wish to reduce sexual arousal,
-      use the command "Plus Sex Less."
+      use the command "{{ cue.id.OCF-CMD-BOD-012-SEX-LESS }}."
 
       Your arousal will quickly and comfortably diminish,
       becoming less and less until your mind
@@ -102,7 +110,7 @@ entries:
       take a deep breath in and gently hold it.
 
       Think or say in your mind,
-      "Plus Sex More" or "Plus Sex Less,"
+      "{{ cue.primary }}" or "{{ cue.id.OCF-CMD-BOD-012-SEX-LESS }},"
       according to your desire.
 
       Then exhale slowly through your mouth
@@ -132,7 +140,6 @@ entries:
       This lasting ability is always available,
       allowing you to direct your sexual desire
       and responsiveness whenever you choose.
-
   hplus.function.ocf-bod-012.closer:
     status: reviewed
     version: 1.1.0
@@ -149,13 +156,14 @@ entries:
       not verbatim source wording.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-BOD-012", "allowed": ["cue.id.OCF-CMD-BOD-012-SEX-LESS", "cue.primary"]}
     text: |-
       Remember, whenever you wish to regulate
       your sexual arousal, inhale deeply
       and hold your breath.
 
-      Think or say in your mind, "Plus Sex More"
-      to increase arousal, or "Plus Sex Less"
+      Think or say in your mind, "{{ cue.primary }}"
+      to increase arousal, or "{{ cue.id.OCF-CMD-BOD-012-SEX-LESS }}"
       to reduce and redirect it.
 
       Then exhale slowly through your mouth

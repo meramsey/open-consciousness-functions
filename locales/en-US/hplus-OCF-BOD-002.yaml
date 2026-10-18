@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-BOD-002", "title": "Circulation", "locale": "en-US"}
+# English authority: functions/body/circulation.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-002-PRIMARY", "role": "activation", "display": "PLUS-FLOW SMOOTH", "spoken": "Plus Flow Smooth", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # OCF-BOD-002 — Circulation
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
@@ -43,6 +49,7 @@ entries:
       reusable across Focus 11 and Focus 20. Generic consolidation
       at lines 75–79 remains excluded. Rights status is not established
       by this file. Finished-session release pending.
+    cue_template: {"function_id": "OCF-BOD-002", "allowed": ["cue.primary"]}
     text: |-
       From this moment forward, bring your awareness to the blood
       circulating throughout your entire physical body.
@@ -123,7 +130,7 @@ entries:
       Take a deep breath in and gently hold it.
 
       While holding your breath, silently say to yourself,
-      "Plus Flow Smooth."
+      "{{ cue.primary }}."
 
       Then slowly exhale through your mouth, as though
       gently blowing out a candle.
@@ -134,7 +141,7 @@ entries:
       Your mind will reinforce this already-established
       pattern of healthy circulation and maintenance.
 
-      Each time you use Plus Flow Smooth, conscious
+      Each time you use {{ cue.primary }}, conscious
       reinforcement of this pattern becomes easier,
       faster, and more effective.
 
@@ -142,13 +149,12 @@ entries:
       maintenance will continue automatically, whether
       or not you think about it.
 
-      Plus Flow Smooth is always available whenever
+      {{ cue.primary }} is always available whenever
       you choose to focus and reinforce this pattern.
 
       Your blood will flow smoothly and evenly,
       bringing nourishment and vitality throughout
       your body.
-
   hplus.function.ocf-bod-002.closer:
     status: reviewed
     version: "1.2.0"
@@ -161,6 +167,7 @@ entries:
       Adapted narration, not verbatim source transcription. Rights
       status is not established by this file. Finished-session
       release pending.
+    cue_template: {"function_id": "OCF-BOD-002", "allowed": ["cue.primary"]}
     text: |-
       Remember, your body's natural pattern of healthy circulation
       and maintenance is now firmly established.
@@ -172,7 +179,7 @@ entries:
 
       Inhale deeply and gently hold your breath.
 
-      Silently say to yourself, "Plus Flow Smooth."
+      Silently say to yourself, "{{ cue.primary }}."
 
       Then slowly exhale through your mouth, as though
       gently blowing out a candle, and open your eyes.

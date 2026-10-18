@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-PRF-005", "title": "Make Your Day", "locale": "en-US"}
+# English authority: functions/performance/make-your-day.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-PRF-005-PRIMARY", "role": "activation", "display": "PLUS-THIS DAY", "spoken": "Plus This Day", "locale_definition": null}
+# END GENERATED CUE PREVIEW
 # OCF-PRF-005 — Make Your Day
 # English function-specific OCF-adapted narration; wording source of truth.
 # Source status: unavailable; authentication remains unverified.
@@ -59,6 +65,7 @@ entries:
       an established effect. One body supports four passes across Focus 11
       and Focus 20. Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-PRF-005", "allowed": ["cue.primary"]}
     text: |-
       From this moment forward, you can begin each morning
       by creating the pattern you desire for the day ahead.
@@ -85,7 +92,7 @@ entries:
       and accomplish before this day is complete.
 
       Inhale deeply and gently hold your breath.
-      Think or say in your mind, "Plus This Day."
+      Think or say in your mind, "{{ cue.primary }}."
       Then exhale slowly through your mouth.
 
       Your conscious mind, subconscious mind,
@@ -103,7 +110,6 @@ entries:
       Each morning you may create a new one,
       and with each use, shaping your day through
       clear intention will become easier and stronger.
-
   hplus.function.ocf-prf-005.closer:
     status: reviewed
     version: 1.2.0
@@ -116,11 +122,12 @@ entries:
       verbal and visual expression, exact Plus This Day command, original
       breathing sequence, and standard OCF sign-off. Rights: user_cleared,
       per user's lawyer-clearance attestation. Finished-session release remains pending.
+    cue_template: {"function_id": "OCF-PRF-005", "allowed": ["cue.primary"]}
     text: |-
       Remember, each morning, clearly picture and express
       the experiences and outcomes you desire for this day.
       Inhale deeply and hold your breath.
-      Think or say in your mind, "Plus This Day."
+      Think or say in your mind, "{{ cue.primary }}."
       Then exhale slowly through your mouth.
 
       This concludes your OCF Make Your Day exercise.
