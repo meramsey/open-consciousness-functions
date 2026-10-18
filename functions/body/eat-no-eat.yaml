@@ -19,7 +19,7 @@ canonical:
     modes: []
     mode_ids: []
     primary: PLUS-SATISFIED, SUPPLIED
-  name: "Appetite Choice"
+  name: Appetite Choice
 commands:
 - id: OCF-CMD-BOD-005-PRIMARY
   function_id: OCF-BOD-005
@@ -37,7 +37,7 @@ commands:
   documentation:
     visible: true
     order: 1
-  effect_scope_ref: lifecycle.persistence
+  effect_scope_ref: lifecycle.scopes.application.persistence
   procedure:
     ref: OCF-PROC-INHALE-HOLD
     status: documented
@@ -48,8 +48,9 @@ commands:
       operation: select-intention
       localization_key: command.procedure.select-intention
   relationships: {}
-  spoken: "Plus Satisfied Supplied"
+  spoken: Plus Satisfied Supplied
   spoken_review: reviewed
+  invocation_scope_ref: lifecycle.scopes.application
 chains: []
 claims:
   intended_effects: []
@@ -86,18 +87,36 @@ legacy:
   source_system: Monroe H-PLUS
 lifecycle:
   activation: manual
-  persistence: temporary
+  persistence: permanent
   release:
     command: null
     required: false
   trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description: The ability to recognize unnecessary cravings and choose deliberately remains available.
+      description_key: functions.ocf-bod-005.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description: Appetite awareness and deliberate eating choices persist while genuine nutritional
+        needs and freedom to eat remain intact.
+      description_key: functions.ocf-bod-005.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description: Conscious release of one selected unnecessary craving; not permanent hunger suppression.
+      description_key: functions.ocf-bod-005.lifecycle.scopes.application.description
+      activation: manual
 ocf:
   command_review: approved
   reimplementation_status: planned
 purpose:
-  community_description: Adjusts appetite signals in either direction.
+  community_description: Supports deliberate eating choices and release of unnecessary cravings while
+    preserving awareness of genuine nutritional needs.
   source_description: null
-  summary: Adjusts appetite signals in either direction.
+  summary: Supports deliberate eating choices and release of unnecessary cravings while preserving awareness
+    of genuine nutritional needs.
 safety:
   level: health
   medical_relevance: true

@@ -51,7 +51,7 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 Title: Appetite Choice. Title status: APPROVED AND IMPLEMENTED.
 Display: `PLUS-SATISFIED, SUPPLIED`. Complete speech: **Plus Satisfied Supplied**.
 
-Adjusts appetite signals in either direction.
+Supports deliberate eating choices and release of unnecessary cravings while preserving awareness of genuine nutritional needs.
 
 Translator context: Change title from Eat/No Eat to Appetite Choice and update exercise sign-off. Keep complete display and spoken cue unchanged. Preserve breathing sequence, automatic reinforcement, genuine nutritional need recognition and freedom to eat when chosen. Retain Eat/No Eat as historical lookup. Satisfied Supplied remains one complete cue; introduce no separate appetite-increase or appetite-decrease mode.
 
@@ -84,7 +84,7 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 Title: Immune Readiness. Title status: APPROVED AND IMPLEMENTED.
 Display: `PLUS-IMMUNE READY`. Complete speech: **Plus Immune Ready**.
 
-Supports a felt sense of alertness and preparedness; not a medical claim.
+Supports a self-directed practice of immune surveillance, coordinated protective responses, immune memory, protection of healthy tissue, and return to balance after a threat is controlled.
 
 Translator context: Change title from Immunizing to Immune Readiness and update exercise sign-off. Replace two body mentions and one closer mention from Plus Alert Destroy to Plus Immune Ready. Preserve immune-specific surveillance, coordinated response, memory, healthy-tissue protection, automatic maintenance, return to balance, and inhale/hold/cue/slow mouth exhale. Do not add eye-closing instruction. Retain Immunizing and superseded cue as historical lookup; introduce no mode or release.
 
@@ -271,7 +271,7 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 Title: Reset. Title status: APPROVED AND IMPLEMENTED.
 Display: `PLUS-RESET`. Complete speech: **Plus Reset**.
 
-Returns mind and body to a neutral, settled baseline.
+Supports a deliberately invoked shift from tiredness, weariness, or feeling emotionally low toward renewed wakefulness, energy, clarity, and confidence.
 
 Translator context: Shorten two body mentions and one closer mention from Plus Reset Reset to Plus Reset. Preserve title, breathing and eye sequence, and surrounding suggestions. Retain repeated legacy phrase as historical lookup; introduce no mode or release. Preserve energized waking-state intent, deliberate availability and absence of permanent stimulation; do not reinterpret as cancelling other functions.
 
@@ -337,7 +337,7 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 Title: Seeing. Title status: APPROVED AND IMPLEMENTED.
 Display: `PLUS-SEE BETTER`. Complete speech: **Plus See Better**.
 
-Improves the felt sense of inner vision and clarity.
+Supports physical seeing and inner visualization, including visual processing, visual memory, and deliberate creation and manipulation of mental images.
 
 Translator context: Change title from Sensory: Seeing to Seeing and update exercise sign-off. Keep protected PLUS-SEE BETTER and spoken Plus See Better unchanged. Preserve physical sight and inner visualization scope, visual processing, imagination, visual memory, deliberate inner-image manipulation, continuing development and inhale/hold/cue/slow mouth exhale. Retain Sensory: Seeing as historical lookup; introduce no MORE/LESS modes or release command.
 

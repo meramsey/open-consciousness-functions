@@ -36,7 +36,8 @@ entries:
     status: canonical
     version: 1.0.0
   command.guide.no-procedure:
-    text: No procedure steps are structured for this command; refer to its documented source and review status.
+    text: No procedure steps are structured for this command; refer to its documented source and review
+      status.
     status: canonical
     version: 1.0.0
   command.guide.observed:
@@ -424,17 +425,19 @@ entries:
     status: canonical
     version: 1.0.0
   commands.ocf-cmd-bod-010-food-less.explanation:
-    text: This command selects the decrease mode.
+    text: Selects the alternative retention response; it does not decrement or modify a Food More intensity
+      level.
     status: canonical
-    version: 1.0.0
+    version: 1.0.1
   commands.ocf-cmd-bod-010-food-less.label:
-    text: Decrease mode
+    text: Alternative food-energy mode
     status: canonical
-    version: 1.0.0
+    version: 1.0.1
   commands.ocf-cmd-bod-010-food-less.usage:
-    text: Use when you choose to decrease the selected function response.
+    text: Use the complete Plus Food Less cue to select sufficient nourishment with reduced unnecessary
+      retention and storage.
     status: canonical
-    version: 1.0.0
+    version: 1.0.1
   commands.ocf-cmd-bod-010-primary.explanation:
     text: This is the primary command for the function.
     status: canonical
@@ -865,7 +868,7 @@ entries:
     status: canonical
     version: 1.0.0
   commands.ocf-cmd-exp-002-release.usage:
-    text: "Places Insulate on hold; PLUS-CANCEL ends the current adjustment."
+    text: Places Insulate on hold; PLUS-CANCEL ends the current adjustment.
     status: canonical
     version: 1.0.0
   commands.ocf-cmd-fnd-001-access-close.explanation:
@@ -1169,7 +1172,8 @@ entries:
     status: canonical
     version: 1.0.0
   commands.ocf-cmd-sen-002-superseded-less.explanation:
-    text: This superseded command was the previous decrease mode; the function no longer uses MORE/LESS directional modes.
+    text: This superseded command was the previous decrease mode; the function no longer uses MORE/LESS
+      directional modes.
     status: canonical
     version: 1.0.0
   commands.ocf-cmd-sen-002-superseded-less.label:
@@ -1477,19 +1481,21 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-aut-001.title:
-    text: "Automatic Action"
+    text: Automatic Action
     status: canonical
     version: 1.0.0
   functions.ocf-bod-001.purpose:
-    text: "Supports balanced brain and neck circulation and maintenance, with conscious reinforcement when desired."
+    text: Supports balanced brain and neck circulation and maintenance, with conscious reinforcement when
+      desired.
     status: canonical
     version: 1.0.0
   functions.ocf-bod-001.short-description:
-    text: "Supports balanced brain and neck circulation and maintenance, with conscious reinforcement when desired."
+    text: Supports balanced brain and neck circulation and maintenance, with conscious reinforcement when
+      desired.
     status: canonical
     version: 1.0.0
   functions.ocf-bod-001.title:
-    text: "Brain Flow"
+    text: Brain Flow
     status: canonical
     version: 1.0.0
   functions.ocf-bod-002.purpose:
@@ -1505,51 +1511,55 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-bod-003.purpose:
-    text: "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT."
+    text: Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT.
     status: canonical
     version: 1.0.0
   functions.ocf-bod-003.short-description:
-    text: "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT."
+    text: Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT.
     status: canonical
     version: 1.0.0
   functions.ocf-bod-003.title:
-    text: "Comfort"
+    text: Comfort
     status: canonical
     version: 1.0.0
   functions.ocf-bod-004.purpose:
-    text: "Supports the body's self-regulating cleansing, renewal, and maintenance, with conscious reinforcement when desired."
+    text: Supports the body's self-regulating cleansing, renewal, and maintenance, with conscious reinforcement
+      when desired.
     status: canonical
     version: 1.0.0
   functions.ocf-bod-004.short-description:
-    text: "Supports the body's self-regulating cleansing, renewal, and maintenance, with conscious reinforcement when desired."
+    text: Supports the body's self-regulating cleansing, renewal, and maintenance, with conscious reinforcement
+      when desired.
     status: canonical
     version: 1.0.0
   functions.ocf-bod-004.title:
-    text: "Detox"
+    text: Detox
     status: canonical
     version: 1.0.0
   functions.ocf-bod-005.purpose:
-    text: Adjusts appetite signals in either direction.
+    text: Supports deliberate eating choices and release of unnecessary cravings while preserving awareness
+      of genuine nutritional needs.
     status: canonical
-    version: 1.0.0
+    version: 1.0.1
   functions.ocf-bod-005.short-description:
-    text: Adjusts appetite signals in either direction.
+    text: Supports deliberate eating choices and release of unnecessary cravings while preserving awareness
+      of genuine nutritional needs.
     status: canonical
-    version: 1.0.0
+    version: 1.0.1
   functions.ocf-bod-005.title:
-    text: "Appetite Choice"
+    text: Appetite Choice
     status: canonical
     version: 1.0.0
   functions.ocf-bod-006.purpose:
-    text: "Self-directed wellness practice supporting a felt sense of calm, steady heart function."
+    text: Self-directed wellness practice supporting a felt sense of calm, steady heart function.
     status: canonical
     version: 1.0.0
   functions.ocf-bod-006.short-description:
-    text: "Self-directed wellness practice supporting a felt sense of calm, steady heart function."
+    text: Self-directed wellness practice supporting a felt sense of calm, steady heart function.
     status: canonical
     version: 1.0.0
   functions.ocf-bod-006.title:
-    text: "Heart Flow"
+    text: Heart Flow
     status: canonical
     version: 1.0.0
   functions.ocf-bod-007.purpose:
@@ -1563,41 +1573,47 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-bod-007.title:
-    text: "Blood Pressure Balance"
+    text: Blood Pressure Balance
     status: canonical
     version: 1.0.0
   functions.ocf-bod-008.purpose:
-    text: Supports a felt sense of alertness and preparedness; not a medical claim.
+    text: Supports a self-directed practice of immune surveillance, coordinated protective responses,
+      immune memory, protection of healthy tissue, and return to balance after a threat is controlled.
     status: canonical
-    version: 1.0.0
+    version: 1.0.1
   functions.ocf-bod-008.short-description:
-    text: Supports a felt sense of alertness and preparedness; not a medical claim.
+    text: Supports a self-directed practice of immune surveillance, coordinated protective responses,
+      immune memory, protection of healthy tissue, and return to balance after a threat is controlled.
     status: canonical
-    version: 1.0.0
+    version: 1.0.1
   functions.ocf-bod-008.title:
-    text: "Immune Readiness"
+    text: Immune Readiness
     status: canonical
     version: 1.0.0
   functions.ocf-bod-009.purpose:
-    text: "Supports efficient breathing and respiratory maintenance, with conscious reinforcement when desired."
+    text: Supports efficient breathing and respiratory maintenance, with conscious reinforcement when
+      desired.
     status: canonical
     version: 1.0.0
   functions.ocf-bod-009.short-description:
-    text: "Supports efficient breathing and respiratory maintenance, with conscious reinforcement when desired."
+    text: Supports efficient breathing and respiratory maintenance, with conscious reinforcement when
+      desired.
     status: canonical
     version: 1.0.0
   functions.ocf-bod-009.title:
-    text: "Breathe Better"
+    text: Breathe Better
     status: canonical
     version: 1.0.0
   functions.ocf-bod-010.purpose:
-    text: Adjusts appetite and food drive in either direction using the MORE/LESS grammar.
+    text: Supports conscious selection between fuller use of food energy and nourishment, or sufficient
+      nourishment with reduced unnecessary energy retention and storage.
     status: canonical
-    version: 1.0.0
+    version: 1.0.1
   functions.ocf-bod-010.short-description:
-    text: Adjusts appetite and food drive in either direction using the MORE/LESS grammar.
+    text: Supports conscious selection between fuller use of food energy and nourishment, or sufficient
+      nourishment with reduced unnecessary energy retention and storage.
     status: canonical
-    version: 1.0.0
+    version: 1.0.1
   functions.ocf-bod-010.title:
     text: Nutricia
     status: canonical
@@ -1611,7 +1627,7 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-bod-011.title:
-    text: "Hormonal Transitions"
+    text: Hormonal Transitions
     status: canonical
     version: 1.0.0
   functions.ocf-bod-012.purpose:
@@ -1635,19 +1651,19 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-bod-013.title:
-    text: "Body Tune-Up"
+    text: Body Tune-Up
     status: canonical
     version: 1.0.0
   functions.ocf-bod-014.purpose:
-    text: "Supports a felt sense of body-wide regeneration and renewal; activation cue PLUS-REGENERATE."
+    text: Supports a felt sense of body-wide regeneration and renewal; activation cue PLUS-REGENERATE.
     status: canonical
     version: 1.0.0
   functions.ocf-bod-014.short-description:
-    text: "Supports a felt sense of body-wide regeneration and renewal; activation cue PLUS-REGENERATE."
+    text: Supports a felt sense of body-wide regeneration and renewal; activation cue PLUS-REGENERATE.
     status: canonical
     version: 1.0.0
   functions.ocf-bod-014.title:
-    text: "Regenerate"
+    text: Regenerate
     status: canonical
     version: 1.0.0
   functions.ocf-bod-015.purpose:
@@ -1659,7 +1675,7 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-bod-015.title:
-    text: "Temporary Numbing"
+    text: Temporary Numbing
     status: canonical
     version: 1.0.0
   functions.ocf-cog-001.purpose:
@@ -1671,7 +1687,7 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-cog-001.title:
-    text: "Information Access"
+    text: Information Access
     status: canonical
     version: 1.0.0
   functions.ocf-cog-002.purpose:
@@ -1683,7 +1699,7 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-cog-002.title:
-    text: "Mental Calculation"
+    text: Mental Calculation
     status: canonical
     version: 1.0.0
   functions.ocf-cog-003.purpose:
@@ -1707,7 +1723,7 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-cog-004.title:
-    text: "Imprint"
+    text: Imprint
     status: canonical
     version: 1.0.0
   functions.ocf-cog-005.purpose:
@@ -1769,7 +1785,7 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-emg-001.title:
-    text: "Injury Response"
+    text: Injury Response
     status: canonical
     version: 1.0.0
   functions.ocf-emg-002.purpose:
@@ -1783,7 +1799,7 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-emg-002.title:
-    text: "Toxic Exposure Response"
+    text: Toxic Exposure Response
     status: canonical
     version: 1.0.0
   functions.ocf-emo-001.purpose:
@@ -1799,51 +1815,59 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-emo-002.purpose:
-    text: "Reduces selected recurring thought and emotional-pattern interference while retaining useful memories and conscious choice."
+    text: Reduces selected recurring thought and emotional-pattern interference while retaining useful
+      memories and conscious choice.
     status: canonical
     version: 1.0.0
   functions.ocf-emo-002.short-description:
-    text: "Reduces selected recurring thought and emotional-pattern interference while retaining useful memories and conscious choice."
+    text: Reduces selected recurring thought and emotional-pattern interference while retaining useful
+      memories and conscious choice.
     status: canonical
     version: 1.0.0
   functions.ocf-emo-002.title:
-    text: "Offload"
+    text: Offload
     status: canonical
     version: 1.0.0
   functions.ocf-emo-003.purpose:
-    text: "Develops consciously directed understanding and communication with another being through sensory, intuitive, and total-self awareness."
+    text: Develops consciously directed understanding and communication with another being through sensory,
+      intuitive, and total-self awareness.
     status: canonical
     version: 1.0.0
   functions.ocf-emo-003.short-description:
-    text: "Develops consciously directed understanding and communication with another being through sensory, intuitive, and total-self awareness."
+    text: Develops consciously directed understanding and communication with another being through sensory,
+      intuitive, and total-self awareness.
     status: canonical
     version: 1.0.0
   functions.ocf-emo-003.title:
-    text: "Empathize"
+    text: Empathize
     status: canonical
     version: 1.0.0
   functions.ocf-exp-001.purpose:
-    text: "Sets a consciously selected future condition and completion time through intention and total-self alignment."
+    text: Sets a consciously selected future condition and completion time through intention and total-self
+      alignment.
     status: canonical
     version: 1.0.0
   functions.ocf-exp-001.short-description:
-    text: "Sets a consciously selected future condition and completion time through intention and total-self alignment."
+    text: Sets a consciously selected future condition and completion time through intention and total-self
+      alignment.
     status: canonical
     version: 1.0.0
   functions.ocf-exp-001.title:
-    text: "Manifest"
+    text: Manifest
     status: canonical
     version: 1.0.0
   functions.ocf-exp-002.purpose:
-    text: "Establishes an adjustable whole-body zone of temperature comfort; Cancel ends the current adjustment and Release places the selected application on hold."
+    text: Establishes an adjustable whole-body zone of temperature comfort; Cancel ends the current adjustment
+      and Release places the selected application on hold.
     status: canonical
     version: 1.0.0
   functions.ocf-exp-002.short-description:
-    text: "Establishes an adjustable whole-body zone of temperature comfort; Cancel ends the current adjustment and Release places the selected application on hold."
+    text: Establishes an adjustable whole-body zone of temperature comfort; Cancel ends the current adjustment
+      and Release places the selected application on hold.
     status: canonical
     version: 1.0.0
   functions.ocf-exp-002.title:
-    text: "Insulate"
+    text: Insulate
     status: canonical
     version: 1.0.0
   functions.ocf-fnd-001.purpose:
@@ -1879,7 +1903,7 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-fnd-003.title:
-    text: "Quick Recharge"
+    text: Quick Recharge
     status: canonical
     version: 1.0.0
   functions.ocf-fnd-004.purpose:
@@ -1891,19 +1915,21 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-fnd-004.title:
-    text: "Relax"
+    text: Relax
     status: canonical
     version: 1.0.0
   functions.ocf-fnd-005.purpose:
-    text: Returns mind and body to a neutral, settled baseline.
+    text: Supports a deliberately invoked shift from tiredness, weariness, or feeling emotionally low
+      toward renewed wakefulness, energy, clarity, and confidence.
     status: canonical
-    version: 1.0.0
+    version: 1.0.1
   functions.ocf-fnd-005.short-description:
-    text: Returns mind and body to a neutral, settled baseline.
+    text: Supports a deliberately invoked shift from tiredness, weariness, or feeling emotionally low
+      toward renewed wakefulness, energy, clarity, and confidence.
     status: canonical
-    version: 1.0.0
+    version: 1.0.1
   functions.ocf-fnd-005.title:
-    text: "Reset"
+    text: Reset
     status: canonical
     version: 1.0.0
   functions.ocf-fnd-006.purpose:
@@ -1927,7 +1953,7 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-lif-001.title:
-    text: "Habit Freedom"
+    text: Habit Freedom
     status: canonical
     version: 1.0.0
   functions.ocf-prf-001.purpose:
@@ -1943,15 +1969,17 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-prf-002.purpose:
-    text: "Strengthens recognition and expression of total-self strength, unity, resources, and power throughout daily life."
+    text: Strengthens recognition and expression of total-self strength, unity, resources, and power throughout
+      daily life.
     status: canonical
     version: 1.0.0
   functions.ocf-prf-002.short-description:
-    text: "Strengthens recognition and expression of total-self strength, unity, resources, and power throughout daily life."
+    text: Strengthens recognition and expression of total-self strength, unity, resources, and power throughout
+      daily life.
     status: canonical
     version: 1.0.0
   functions.ocf-prf-002.title:
-    text: "Inner Power"
+    text: Inner Power
     status: canonical
     version: 1.0.0
   functions.ocf-prf-003.purpose:
@@ -1963,7 +1991,7 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-prf-003.title:
-    text: "Coordination"
+    text: Coordination
     status: canonical
     version: 1.0.0
   functions.ocf-prf-004.purpose:
@@ -1975,7 +2003,7 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-prf-004.title:
-    text: "Light Foot"
+    text: Light Foot
     status: canonical
     version: 1.0.0
   functions.ocf-prf-005.purpose:
@@ -2011,19 +2039,21 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-sen-001.title:
-    text: "Hearing"
+    text: Hearing
     status: canonical
     version: 1.0.0
   functions.ocf-sen-002.purpose:
-    text: Improves the felt sense of inner vision and clarity.
+    text: Supports physical seeing and inner visualization, including visual processing, visual memory,
+      and deliberate creation and manipulation of mental images.
     status: canonical
-    version: 1.0.0
+    version: 1.0.1
   functions.ocf-sen-002.short-description:
-    text: Improves the felt sense of inner vision and clarity.
+    text: Supports physical seeing and inner visualization, including visual processing, visual memory,
+      and deliberate creation and manipulation of mental images.
     status: canonical
-    version: 1.0.0
+    version: 1.0.1
   functions.ocf-sen-002.title:
-    text: "Seeing"
+    text: Seeing
     status: canonical
     version: 1.0.0
   functions.ocf-sen-003.purpose:
@@ -2035,7 +2065,7 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-sen-003.title:
-    text: "Smell"
+    text: Smell
     status: canonical
     version: 1.0.0
   functions.ocf-sen-004.purpose:
@@ -2047,7 +2077,7 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-sen-004.title:
-    text: "Taste"
+    text: Taste
     status: canonical
     version: 1.0.0
   functions.ocf-sen-005.purpose:
@@ -2059,7 +2089,7 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-sen-005.title:
-    text: "Touch"
+    text: Touch
     status: canonical
     version: 1.0.0
   functions.ocf-slp-001.purpose:
@@ -2071,7 +2101,7 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-slp-001.title:
-    text: "Restorative Sleep"
+    text: Restorative Sleep
     status: canonical
     version: 1.0.0
   functions.ocf-slp-002.purpose:
@@ -2083,7 +2113,7 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-slp-002.title:
-    text: "Sleep"
+    text: Sleep
     status: canonical
     version: 1.0.0
   functions.ocf-slp-003.purpose:
@@ -2095,27 +2125,31 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-slp-003.title:
-    text: "Dream Theme"
+    text: Dream Theme
     status: canonical
     version: 1.0.0
   functions.ocf-slp-004.purpose:
-    text: "Requests an answer or constructive solution through sleep, with useful insight recognized on awakening."
+    text: Requests an answer or constructive solution through sleep, with useful insight recognized on
+      awakening.
     status: canonical
     version: 1.0.0
   functions.ocf-slp-004.short-description:
-    text: "Requests an answer or constructive solution through sleep, with useful insight recognized on awakening."
+    text: Requests an answer or constructive solution through sleep, with useful insight recognized on
+      awakening.
     status: canonical
     version: 1.0.0
   functions.ocf-slp-004.title:
-    text: "Sleep Insight"
+    text: Sleep Insight
     status: canonical
     version: 1.0.0
   functions.ocf-slp-005.purpose:
-    text: "Supports entering, remaining in, and returning to natural sleep amid unfamiliar or distracting surroundings."
+    text: Supports entering, remaining in, and returning to natural sleep amid unfamiliar or distracting
+      surroundings.
     status: canonical
     version: 1.0.0
   functions.ocf-slp-005.short-description:
-    text: "Supports entering, remaining in, and returning to natural sleep amid unfamiliar or distracting surroundings."
+    text: Supports entering, remaining in, and returning to natural sleep amid unfamiliar or distracting
+      surroundings.
     status: canonical
     version: 1.0.0
   functions.ocf-slp-005.title:
@@ -2131,22 +2165,22 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-slp-006.title:
-    text: "Stay Awake"
+    text: Stay Awake
     status: canonical
     version: 1.0.0
-  commands.ocf-cmd-exp-001-primary.display-cue: "PLUS-MANIFEST"
-  commands.ocf-cmd-slp-005-primary.display-cue: "PLUS-SLEEP EASY"
-  commands.ocf-cmd-bod-001-primary.display-cue: "PLUS-BRAIN FLOW"
-  commands.ocf-cmd-bod-009-primary.display-cue: "PLUS-BREATHE BETTER"
-  commands.ocf-cmd-emo-002-primary.display-cue: "PLUS-OFFLOAD"
-  commands.ocf-cmd-emo-003-primary.display-cue: "PLUS-EMPATHIZE"
-  commands.ocf-cmd-exp-002-primary.display-cue: "PLUS-INSULATE"
-  commands.ocf-cmd-slp-004-primary.display-cue: "PLUS-SLEEP INSIGHT"
-  commands.ocf-cmd-prf-002-primary.display-cue: "PLUS-INNER POWER"
-  commands.ocf-cmd-bod-004-primary.display-cue: "PLUS-DETOX"
-  commands.ocf-cmd-bod-006-primary.display-cue: "PLUS-HEART-BETTER"
-  commands.ocf-cmd-bod-003-primary.display-cue: "PLUS-COMFORT"
-  commands.ocf-cmd-bod-014-primary.display-cue: "PLUS-REGENERATE"
+  commands.ocf-cmd-exp-001-primary.display-cue: PLUS-MANIFEST
+  commands.ocf-cmd-slp-005-primary.display-cue: PLUS-SLEEP EASY
+  commands.ocf-cmd-bod-001-primary.display-cue: PLUS-BRAIN FLOW
+  commands.ocf-cmd-bod-009-primary.display-cue: PLUS-BREATHE BETTER
+  commands.ocf-cmd-emo-002-primary.display-cue: PLUS-OFFLOAD
+  commands.ocf-cmd-emo-003-primary.display-cue: PLUS-EMPATHIZE
+  commands.ocf-cmd-exp-002-primary.display-cue: PLUS-INSULATE
+  commands.ocf-cmd-slp-004-primary.display-cue: PLUS-SLEEP INSIGHT
+  commands.ocf-cmd-prf-002-primary.display-cue: PLUS-INNER POWER
+  commands.ocf-cmd-bod-004-primary.display-cue: PLUS-DETOX
+  commands.ocf-cmd-bod-006-primary.display-cue: PLUS-HEART-BETTER
+  commands.ocf-cmd-bod-003-primary.display-cue: PLUS-COMFORT
+  commands.ocf-cmd-bod-014-primary.display-cue: PLUS-REGENERATE
   commands.ocf-cmd-bod-015-primary.display-cue: PLUS-NUMB
   commands.ocf-cmd-cog-004-primary.display-cue: PLUS-IMPRINT
   commands.ocf-cmd-fnd-004-primary.display-cue: PLUS-RELAX
@@ -2174,3 +2208,80 @@ entries:
   commands.ocf-cmd-sen-003-primary.display-cue: PLUS-SMELL MORE
   commands.ocf-cmd-sen-004-primary.display-cue: PLUS-TASTE MORE
   commands.ocf-cmd-sen-005-primary.display-cue: PLUS-TOUCH MORE
+  functions.ocf-bod-005.lifecycle.scopes.capability.description: The ability to recognize unnecessary
+    cravings and choose deliberately remains available.
+  functions.ocf-bod-005.lifecycle.scopes.baseline.description: Appetite awareness and deliberate eating
+    choices persist while genuine nutritional needs and freedom to eat remain intact.
+  functions.ocf-bod-005.lifecycle.scopes.application.description: Conscious release of one selected unnecessary
+    craving; not permanent hunger suppression.
+  functions.ocf-cog-004.lifecycle.scopes.capability.description: Learned imprinting ability remains available.
+  functions.ocf-cog-004.lifecycle.scopes.baseline.description: Deliberately imprinted material is retained
+    and maintained; storage is distinct from an individual recall action.
+  functions.ocf-cog-004.lifecycle.scopes.application.description: A single deliberate imprint or recall
+    invocation; no continuously running imprinting or recall.
+  functions.ocf-cog-005.lifecycle.scopes.capability.description: The ability to explore possibilities
+    remains available.
+  functions.ocf-cog-005.lifecycle.scopes.baseline.description: Connections and insights continue forming
+    in the background; no selected situation remains permanently active.
+  functions.ocf-cog-005.lifecycle.scopes.application.description: One consciously chosen, situation-focused
+    exploration.
+  functions.ocf-prf-004.lifecycle.scopes.capability.description: The learned movement ability remains
+    available.
+  functions.ocf-prf-004.lifecycle.scopes.baseline.description: The everyday movement pattern continues
+    without conscious cue use.
+  functions.ocf-prf-004.lifecycle.scopes.application.description: Optional conscious reinforcement of
+    the movement baseline; not permanently intensified movement.
+  functions.ocf-aut-001.lifecycle.scopes.capability.description: The ability to develop automatic skills
+    remains available.
+  functions.ocf-aut-001.lifecycle.scopes.baseline.description: Correctly learned selected skill patterns
+    are retained; each performance remains observable, adjustable and stoppable.
+  functions.ocf-aut-001.lifecycle.scopes.application.description: One deliberate cue invocation or chosen
+    performance; not continuously performing an action.
+  functions.ocf-bod-007.lifecycle.scopes.capability.description: The ability to reinforce cardiovascular
+    awareness and relaxation remains available.
+  functions.ocf-bod-007.lifecycle.scopes.baseline.description: The narrated adaptive cardiovascular maintenance
+    baseline persists, adjusting to rest and activity; not fixed pressure or continuous lowering.
+  functions.ocf-bod-007.lifecycle.scopes.application.description: Optional conscious reinforcement of
+    the adaptive baseline; not a permanently intensified state.
+  functions.ocf-bod-011.lifecycle.scopes.capability.description: The ability to reinforce hormonal balance
+    remains available.
+  functions.ocf-bod-011.lifecycle.scopes.baseline.description: The narrated regulation and adaptation
+    baseline persists as hormonal needs change; not fixed levels or heightened endocrine activity.
+  functions.ocf-bod-011.lifecycle.scopes.application.description: Optional conscious reinforcement of
+    regulation and adaptation.
+  functions.ocf-bod-013.lifecycle.scopes.capability.description: The ability to direct attention toward
+    a selected body area remains available.
+  functions.ocf-bod-013.lifecycle.scopes.baseline.description: The narrated whole-body maintenance and
+    renewal baseline persists.
+  functions.ocf-bod-013.lifecycle.scopes.application.description: Conscious selected-area reinforcement;
+    not continuous intensified repair in that area.
+  functions.ocf-cog-001.lifecycle.scopes.capability.description: Access to the personal knowledge library
+    remains available.
+  functions.ocf-cog-001.lifecycle.scopes.baseline.description: Personal knowledge continues to be organized
+    and connected in the background.
+  functions.ocf-cog-001.lifecycle.scopes.application.description: One consciously chosen information request;
+    not a permanently active search or stream of answers.
+  functions.ocf-lif-001.lifecycle.scopes.capability.description: The ability to change selected unwanted
+    habits remains available.
+  functions.ocf-lif-001.lifecycle.scopes.baseline.description: The intended change to the deliberately
+    selected habit is lasting; useful memories, knowledge and skills remain intact.
+  functions.ocf-lif-001.lifecycle.scopes.application.description: One deliberate intervention when the
+    selected habit arises; not continuous behavioral suppression or cancellation of other functions.
+  functions.ocf-emg-001.lifecycle.scopes.capability.description: Narrated injury-response readiness remains
+    available, including when conscious invocation is unavailable.
+  functions.ocf-emg-001.lifecycle.scopes.application.description: Optional manual reinforcement when conscious
+    and able.
+  functions.ocf-emg-001.lifecycle.scopes.episode.description: The narrated adaptive response lasts for
+    the injury episode and adjusts as the injury stabilizes.
+  functions.ocf-emg-002.lifecycle.scopes.capability.description: Narrated harmful-exposure response readiness
+    remains available, including when conscious invocation is unavailable.
+  functions.ocf-emg-002.lifecycle.scopes.application.description: Optional manual reinforcement when conscious
+    and able.
+  functions.ocf-emg-002.lifecycle.scopes.episode.description: The narrated exposure response operates
+    only as strongly and for as long as needed for the actual substance and exposure.
+  command.guide.lifecycle-scopes: Lifecycle scopes
+  command.guide.invocation-scope: Command invocation
+  command.scope-kind.capability: Learned capability / readiness
+  command.scope-kind.baseline: Lasting baseline / retained effect
+  command.scope-kind.application: Individual invocation / application
+  command.scope-kind.episode: Conditional response episode

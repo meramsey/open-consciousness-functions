@@ -50,14 +50,14 @@ commands:
   relationships:
     pairs_with:
     - OCF-CMD-BOD-010-FOOD-LESS
-  spoken: "Plus Food More"
+  spoken: Plus Food More
   spoken_review: reviewed
 - id: OCF-CMD-BOD-010-FOOD-LESS
   function_id: OCF-BOD-010
   phrase_ref:
     source: canonical-mode
     command_id: OCF-CMD-BOD-010-FOOD-LESS
-  role: decrease
+  role: mode
   designation: secondary
   localization:
     label_key: commands.ocf-cmd-bod-010-food-less.label
@@ -80,9 +80,7 @@ commands:
   relationships:
     pairs_with:
     - OCF-CMD-BOD-010-PRIMARY
-    modifies:
-    - OCF-CMD-BOD-010-PRIMARY
-  spoken: "Plus Food Less"
+  spoken: Plus Food Less
   spoken_review: reviewed
 chains: []
 claims:
@@ -98,7 +96,8 @@ compatibility:
   legacy_commands:
   - PLUS-FOOD MORE
   - PLUS-FOOD LESS
-  rationale: 'Vocabulary normalization: food-direction magnitudes stay MORE/LESS per the OCF grammar.'
+  rationale: Historical Food More/Food Less wording is retained for alternative food-energy responses,
+    not an incremental appetite or intensity scale.
   state: alias-listed
 contributor:
   contact: null
@@ -135,9 +134,11 @@ ocf:
   command_review: needs-review
   reimplementation_status: planned
 purpose:
-  community_description: Adjusts appetite and food drive in either direction using the MORE/LESS grammar.
+  community_description: Supports conscious selection between fuller use of food energy and nourishment,
+    or sufficient nourishment with reduced unnecessary energy retention and storage.
   source_description: null
-  summary: Adjusts appetite and food drive in either direction using the MORE/LESS grammar.
+  summary: Supports conscious selection between fuller use of food energy and nourishment, or sufficient
+    nourishment with reduced unnecessary energy retention and storage.
 safety:
   level: health
   medical_relevance: true

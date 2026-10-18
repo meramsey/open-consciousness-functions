@@ -326,7 +326,7 @@ def get_function(
     locale: str = "en-US",
     preview: bool = False,
 ) -> dict:
-    from .commands import cue_presentation
+    from .commands import command_view, cue_presentation
     from .content import load_layers
 
     record = owner(function_id)
@@ -335,6 +335,9 @@ def get_function(
         "id": record.id,
         "name": record.canonical_name,
         "commands": record.data["canonical"]["command"],
+        "purpose": record.purpose_summary,
+        "lifecycle": record.data["lifecycle"],
+        "command_metadata": [command_view(record, command) for command in record.command_records],
         "source_availability": record.source_availability,
         "human_review": layers.get("specifications", {}).get("human_review", "unknown"),
         "binding": layers.get("bindings", {}),

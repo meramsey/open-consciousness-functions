@@ -2,6 +2,11 @@
 
 ## Current implemented decisions
 
+The subsequent [functional metadata review](FUNCTIONAL_METADATA.md) is now
+implemented: all 18 decisions were collected and explicitly confirmed together.
+It resolves the separately flagged purpose, persistence, trigger and Nutricia
+role questions without changing approved names, cues or resolved narration.
+
 The approved vocabulary now has a structural successor using
 [function-owned spoken cues and strict narration references](SYMBOLIC_CUES.md).
 This changes raw templates, not approved resolved speech. Source-pinned historical
@@ -117,8 +122,9 @@ uses the current approved titles and spoken cues through the ordinary resolver;
 no historical pilot-binding compatibility layer is retained. Draft content and
 listening/release review remain separate from naming approval.
 
-Purpose, persistence, trigger and role discrepancies identified during review
-remain separate pending questions, recorded per decision. No naming approval
+Purpose, persistence, trigger and role discrepancies identified during naming
+were recorded separately and subsequently resolved by the confirmed functional
+metadata successor. No naming approval
 rewrites those mechanisms, resolves those discrepancies, creates a control,
 changes a breathing sequence or grants listening/release approval. Old recorded
 text fingerprints remain stale even when only a title/sign-off changes; hybrid

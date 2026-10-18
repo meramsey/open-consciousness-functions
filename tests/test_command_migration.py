@@ -86,6 +86,12 @@ def test_directional_modes_and_relationships_are_structured():
     for function_id, (mode_id, role) in expected.items():
         function = functions[function_id]
         commands = {command.id: command for command in function.command_records}
+        if function_id == "OCF-BOD-010":
+            assert commands[mode_id].role == "mode"
+            assert "modifies" not in commands[mode_id].relationships
+            primary = next(c for c in commands.values() if c.designation == "primary")
+            assert commands[mode_id].relationships["pairs_with"] == [primary.id]
+            continue
         assert commands[mode_id].role == role
         primary = next(c for c in commands.values() if c.designation == "primary")
         assert commands[mode_id].relationships["pairs_with"] == [primary.id]

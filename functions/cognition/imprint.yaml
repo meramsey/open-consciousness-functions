@@ -1,8 +1,6 @@
 aliases:
-  commands:
-    []
-  command_ids:
-    []
+  commands: []
+  command_ids: []
   names:
   - Imprint
 applications: []
@@ -41,7 +39,7 @@ commands:
   documentation:
     visible: true
     order: 1
-  effect_scope_ref: lifecycle.persistence
+  effect_scope_ref: lifecycle.scopes.baseline.persistence
   procedure:
     ref: OCF-PROC-IMPRINT
     status: documented
@@ -53,8 +51,9 @@ commands:
     text: Plus Imprint
     narration_key: hplus.function.ocf-cog-004.function-body
     relationship: canonical-match
-  spoken: "Plus Imprint"
-  spoken_review: "reviewed"
+  spoken: Plus Imprint
+  spoken_review: reviewed
+  invocation_scope_ref: lifecycle.scopes.application
 - id: OCF-CMD-COG-004-RECALL
   function_id: OCF-COG-004
   phrase_ref:
@@ -70,7 +69,7 @@ commands:
   documentation:
     visible: true
     order: 11
-  effect_scope_ref: lifecycle.persistence
+  effect_scope_ref: lifecycle.scopes.application.persistence
   procedure:
     ref: OCF-PROC-THINK-COMMAND
     status: documented
@@ -80,8 +79,9 @@ commands:
   relationships:
     retrieves:
     - OCF-CMD-COG-004-PRIMARY
-  spoken: "Plus Recall"
+  spoken: Plus Recall
   spoken_review: reviewed
+  invocation_scope_ref: lifecycle.scopes.application
 - id: OCF-CMD-COG-004-LEGACY-01
   function_id: OCF-COG-004
   phrase_ref:
@@ -101,7 +101,7 @@ commands:
   relationships: {}
   spoken: null
   spoken_review: unresolved
-  availability: "historical-lookup"
+  availability: historical-lookup
 chains: []
 claims:
   intended_effects: []
@@ -141,11 +141,28 @@ legacy:
   source_system: Monroe H-PLUS
 lifecycle:
   activation: manual
-  persistence: temporary
+  persistence: permanent
   release:
     command: null
     required: false
   trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description: Learned imprinting ability remains available.
+      description_key: functions.ocf-cog-004.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description: Deliberately imprinted material is retained and maintained; storage is distinct from
+        an individual recall action.
+      description_key: functions.ocf-cog-004.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description: A single deliberate imprint or recall invocation; no continuously running imprinting
+        or recall.
+      description_key: functions.ocf-cog-004.lifecycle.scopes.application.description
+      activation: manual
 ocf:
   command_review: approved
   reimplementation_status: planned

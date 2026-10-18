@@ -382,6 +382,10 @@ def validate_command_metadata(records: list[FunctionRecord]) -> ValidationResult
                     f"{key}: en-US presentation conflicts with function YAML {source_field}",
                     record.id,
                 )
+        from .lifecycle import validate_scope_descriptions
+
+        for error in validate_scope_descriptions(record, locale_catalog):
+            result.add("error", "function-source-authority", error, record.id)
         for command in record.command_records:
             if command.data.get("spoken_review") == "reviewed" and not command.data.get("spoken"):
                 result.add(

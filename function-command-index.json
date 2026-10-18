@@ -35,8 +35,14 @@
             "order": 1,
             "visible": true
           },
-          "effect_scope": "temporary",
-          "effect_scope_ref": "lifecycle.persistence",
+          "effect_scope": "permanent",
+          "effect_scope_details": {
+            "activation": "automatic",
+            "description": "Correctly learned selected skill patterns are retained; each performance remains observable, adjustable and stoppable.",
+            "description_key": "functions.ocf-aut-001.lifecycle.scopes.baseline.description",
+            "persistence": "permanent"
+          },
+          "effect_scope_ref": "lifecycle.scopes.baseline.persistence",
           "explanation": {
             "fallback": false,
             "key": "commands.ocf-cmd-aut-001-primary.explanation",
@@ -46,6 +52,20 @@
           },
           "function_id": "OCF-AUT-001",
           "id": "OCF-CMD-AUT-001-PRIMARY",
+          "invocation_description": {
+            "fallback": false,
+            "key": "functions.ocf-aut-001.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "One deliberate cue invocation or chosen performance; not continuously performing an action."
+          },
+          "invocation_scope": {
+            "activation": "manual",
+            "description": "One deliberate cue invocation or chosen performance; not continuously performing an action.",
+            "description_key": "functions.ocf-aut-001.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "invocation_scope_ref": "lifecycle.scopes.application",
           "label": {
             "fallback": false,
             "key": "commands.ocf-cmd-aut-001-primary.label",
@@ -149,10 +169,10 @@
           "role": "activation",
           "scope_label": {
             "fallback": false,
-            "key": "command.scope.temporary",
+            "key": "command.scope.permanent",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Temporary"
+            "text": "Permanent"
           },
           "spoken": "Plus Automate",
           "spoken_review": "reviewed",
@@ -167,13 +187,72 @@
       ],
       "effects": null,
       "function_id": "OCF-AUT-001",
-      "persistence": "temporary",
+      "lifecycle_scopes": [
+        {
+          "activation": null,
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-aut-001.lifecycle.scopes.capability.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "The ability to develop automatic skills remains available."
+          },
+          "kind": "capability",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.capability",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Learned capability / readiness"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "automatic",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-aut-001.lifecycle.scopes.baseline.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Correctly learned selected skill patterns are retained; each performance remains observable, adjustable and stoppable."
+          },
+          "kind": "baseline",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.baseline",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Lasting baseline / retained effect"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "manual",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-aut-001.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "One deliberate cue invocation or chosen performance; not continuously performing an action."
+          },
+          "kind": "application",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.application",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Individual invocation / application"
+          },
+          "persistence": "temporary"
+        }
+      ],
+      "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
-        "key": "command.scope.temporary",
+        "key": "command.scope.permanent",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Temporary"
+        "text": "Permanent"
       },
       "purpose": {
         "fallback": false,
@@ -379,6 +458,7 @@
       ],
       "effects": null,
       "function_id": "OCF-BOD-001",
+      "lifecycle_scopes": [],
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -579,6 +659,7 @@
       ],
       "effects": null,
       "function_id": "OCF-BOD-002",
+      "lifecycle_scopes": [],
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -791,6 +872,7 @@
       ],
       "effects": null,
       "function_id": "OCF-BOD-003",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -1003,6 +1085,7 @@
       ],
       "effects": null,
       "function_id": "OCF-BOD-004",
+      "lifecycle_scopes": [],
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -1074,7 +1157,13 @@
             "visible": true
           },
           "effect_scope": "temporary",
-          "effect_scope_ref": "lifecycle.persistence",
+          "effect_scope_details": {
+            "activation": "manual",
+            "description": "Conscious release of one selected unnecessary craving; not permanent hunger suppression.",
+            "description_key": "functions.ocf-bod-005.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "effect_scope_ref": "lifecycle.scopes.application.persistence",
           "explanation": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-005-primary.explanation",
@@ -1084,6 +1173,20 @@
           },
           "function_id": "OCF-BOD-005",
           "id": "OCF-CMD-BOD-005-PRIMARY",
+          "invocation_description": {
+            "fallback": false,
+            "key": "functions.ocf-bod-005.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Conscious release of one selected unnecessary craving; not permanent hunger suppression."
+          },
+          "invocation_scope": {
+            "activation": "manual",
+            "description": "Conscious release of one selected unnecessary craving; not permanent hunger suppression.",
+            "description_key": "functions.ocf-bod-005.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "invocation_scope_ref": "lifecycle.scopes.application",
           "label": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-005-primary.label",
@@ -1180,7 +1283,7 @@
             "key": "functions.ocf-bod-005.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Adjusts appetite signals in either direction."
+            "text": "Supports deliberate eating choices and release of unnecessary cravings while preserving awareness of genuine nutritional needs."
           },
           "related_commands": [],
           "relationships": {},
@@ -1205,20 +1308,79 @@
       ],
       "effects": null,
       "function_id": "OCF-BOD-005",
-      "persistence": "temporary",
+      "lifecycle_scopes": [
+        {
+          "activation": null,
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-bod-005.lifecycle.scopes.capability.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "The ability to recognize unnecessary cravings and choose deliberately remains available."
+          },
+          "kind": "capability",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.capability",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Learned capability / readiness"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "automatic",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-bod-005.lifecycle.scopes.baseline.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Appetite awareness and deliberate eating choices persist while genuine nutritional needs and freedom to eat remain intact."
+          },
+          "kind": "baseline",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.baseline",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Lasting baseline / retained effect"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "manual",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-bod-005.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Conscious release of one selected unnecessary craving; not permanent hunger suppression."
+          },
+          "kind": "application",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.application",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Individual invocation / application"
+          },
+          "persistence": "temporary"
+        }
+      ],
+      "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
-        "key": "command.scope.temporary",
+        "key": "command.scope.permanent",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Temporary"
+        "text": "Permanent"
       },
       "purpose": {
         "fallback": false,
         "key": "functions.ocf-bod-005.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Adjusts appetite signals in either direction."
+        "text": "Supports deliberate eating choices and release of unnecessary cravings while preserving awareness of genuine nutritional needs."
       },
       "reimplementation_status": "planned",
       "short_description": {
@@ -1226,7 +1388,7 @@
         "key": "functions.ocf-bod-005.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Adjusts appetite signals in either direction."
+        "text": "Supports deliberate eating choices and release of unnecessary cravings while preserving awareness of genuine nutritional needs."
       },
       "slug": "eat-no-eat",
       "source_availability": "available",
@@ -1417,6 +1579,7 @@
       ],
       "effects": null,
       "function_id": "OCF-BOD-006",
+      "lifecycle_scopes": [],
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -1488,7 +1651,13 @@
             "visible": true
           },
           "effect_scope": "temporary",
-          "effect_scope_ref": "lifecycle.persistence",
+          "effect_scope_details": {
+            "activation": "manual",
+            "description": "Optional conscious reinforcement of the adaptive baseline; not a permanently intensified state.",
+            "description_key": "functions.ocf-bod-007.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "effect_scope_ref": "lifecycle.scopes.application.persistence",
           "explanation": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-007-primary.explanation",
@@ -1498,6 +1667,20 @@
           },
           "function_id": "OCF-BOD-007",
           "id": "OCF-CMD-BOD-007-PRIMARY",
+          "invocation_description": {
+            "fallback": false,
+            "key": "functions.ocf-bod-007.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Optional conscious reinforcement of the adaptive baseline; not a permanently intensified state."
+          },
+          "invocation_scope": {
+            "activation": "manual",
+            "description": "Optional conscious reinforcement of the adaptive baseline; not a permanently intensified state.",
+            "description_key": "functions.ocf-bod-007.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "invocation_scope_ref": "lifecycle.scopes.application",
           "label": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-007-primary.label",
@@ -1629,13 +1812,72 @@
       ],
       "effects": null,
       "function_id": "OCF-BOD-007",
-      "persistence": "temporary",
+      "lifecycle_scopes": [
+        {
+          "activation": null,
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-bod-007.lifecycle.scopes.capability.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "The ability to reinforce cardiovascular awareness and relaxation remains available."
+          },
+          "kind": "capability",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.capability",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Learned capability / readiness"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "automatic",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-bod-007.lifecycle.scopes.baseline.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "The narrated adaptive cardiovascular maintenance baseline persists, adjusting to rest and activity; not fixed pressure or continuous lowering."
+          },
+          "kind": "baseline",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.baseline",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Lasting baseline / retained effect"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "manual",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-bod-007.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Optional conscious reinforcement of the adaptive baseline; not a permanently intensified state."
+          },
+          "kind": "application",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.application",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Individual invocation / application"
+          },
+          "persistence": "temporary"
+        }
+      ],
+      "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
-        "key": "command.scope.temporary",
+        "key": "command.scope.permanent",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Temporary"
+        "text": "Permanent"
       },
       "purpose": {
         "fallback": false,
@@ -1794,7 +2036,7 @@
             "key": "functions.ocf-bod-008.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Supports a felt sense of alertness and preparedness; not a medical claim."
+            "text": "Supports a self-directed practice of immune surveillance, coordinated protective responses, immune memory, protection of healthy tissue, and return to balance after a threat is controlled."
           },
           "related_commands": [],
           "relationships": {},
@@ -1819,6 +2061,7 @@
       ],
       "effects": null,
       "function_id": "OCF-BOD-008",
+      "lifecycle_scopes": [],
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -1832,7 +2075,7 @@
         "key": "functions.ocf-bod-008.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Supports a felt sense of alertness and preparedness; not a medical claim."
+        "text": "Supports a self-directed practice of immune surveillance, coordinated protective responses, immune memory, protection of healthy tissue, and return to balance after a threat is controlled."
       },
       "reimplementation_status": "planned",
       "short_description": {
@@ -1840,7 +2083,7 @@
         "key": "functions.ocf-bod-008.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Supports a felt sense of alertness and preparedness; not a medical claim."
+        "text": "Supports a self-directed practice of immune surveillance, coordinated protective responses, immune memory, protection of healthy tissue, and return to balance after a threat is controlled."
       },
       "slug": "immunizing",
       "source_availability": "available",
@@ -2009,6 +2252,7 @@
       ],
       "effects": null,
       "function_id": "OCF-BOD-009",
+      "lifecycle_scopes": [],
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -2190,7 +2434,7 @@
             "key": "functions.ocf-bod-010.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Adjusts appetite and food drive in either direction using the MORE/LESS grammar."
+            "text": "Supports conscious selection between fuller use of food energy and nourishment, or sufficient nourishment with reduced unnecessary energy retention and storage."
           },
           "related_commands": [
             {
@@ -2255,7 +2499,7 @@
             "key": "commands.ocf-cmd-bod-010-food-less.explanation",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "This command selects the decrease mode."
+            "text": "Selects the alternative retention response; it does not decrement or modify a Food More intensity level."
           },
           "function_id": "OCF-BOD-010",
           "id": "OCF-CMD-BOD-010-FOOD-LESS",
@@ -2264,7 +2508,7 @@
             "key": "commands.ocf-cmd-bod-010-food-less.label",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Decrease mode"
+            "text": "Alternative food-energy mode"
           },
           "localization": {
             "explanation_key": "commands.ocf-cmd-bod-010-food-less.explanation",
@@ -2365,7 +2609,7 @@
             "key": "functions.ocf-bod-010.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Adjusts appetite and food drive in either direction using the MORE/LESS grammar."
+            "text": "Supports conscious selection between fuller use of food energy and nourishment, or sufficient nourishment with reduced unnecessary energy retention and storage."
           },
           "related_commands": [
             {
@@ -2383,33 +2627,14 @@
                 "resolved_locale": "en-US",
                 "text": "paired with"
               }
-            },
-            {
-              "commands": [
-                {
-                  "id": "OCF-CMD-BOD-010-PRIMARY",
-                  "phrase": "PLUS-FOOD MORE"
-                }
-              ],
-              "kind": "modifies",
-              "label": {
-                "fallback": false,
-                "key": "command.relationship.modifies",
-                "requested_locale": "en-US",
-                "resolved_locale": "en-US",
-                "text": "modifies"
-              }
             }
           ],
           "relationships": {
-            "modifies": [
-              "OCF-CMD-BOD-010-PRIMARY"
-            ],
             "pairs_with": [
               "OCF-CMD-BOD-010-PRIMARY"
             ]
           },
-          "role": "decrease",
+          "role": "mode",
           "scope_label": {
             "fallback": false,
             "key": "command.scope.temporary",
@@ -2424,12 +2649,13 @@
             "key": "commands.ocf-cmd-bod-010-food-less.usage",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Use when you choose to decrease the selected function response."
+            "text": "Use the complete Plus Food Less cue to select sufficient nourishment with reduced unnecessary retention and storage."
           }
         }
       ],
       "effects": null,
       "function_id": "OCF-BOD-010",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -2443,7 +2669,7 @@
         "key": "functions.ocf-bod-010.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Adjusts appetite and food drive in either direction using the MORE/LESS grammar."
+        "text": "Supports conscious selection between fuller use of food energy and nourishment, or sufficient nourishment with reduced unnecessary energy retention and storage."
       },
       "reimplementation_status": "planned",
       "short_description": {
@@ -2451,7 +2677,7 @@
         "key": "functions.ocf-bod-010.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Adjusts appetite and food drive in either direction using the MORE/LESS grammar."
+        "text": "Supports conscious selection between fuller use of food energy and nourishment, or sufficient nourishment with reduced unnecessary energy retention and storage."
       },
       "slug": "nutricia",
       "source_availability": "available",
@@ -2501,7 +2727,13 @@
             "visible": true
           },
           "effect_scope": "temporary",
-          "effect_scope_ref": "lifecycle.persistence",
+          "effect_scope_details": {
+            "activation": "manual",
+            "description": "Optional conscious reinforcement of regulation and adaptation.",
+            "description_key": "functions.ocf-bod-011.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "effect_scope_ref": "lifecycle.scopes.application.persistence",
           "explanation": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-011-primary.explanation",
@@ -2511,6 +2743,20 @@
           },
           "function_id": "OCF-BOD-011",
           "id": "OCF-CMD-BOD-011-PRIMARY",
+          "invocation_description": {
+            "fallback": false,
+            "key": "functions.ocf-bod-011.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Optional conscious reinforcement of regulation and adaptation."
+          },
+          "invocation_scope": {
+            "activation": "manual",
+            "description": "Optional conscious reinforcement of regulation and adaptation.",
+            "description_key": "functions.ocf-bod-011.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "invocation_scope_ref": "lifecycle.scopes.application",
           "label": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-011-primary.label",
@@ -2620,13 +2866,72 @@
       ],
       "effects": null,
       "function_id": "OCF-BOD-011",
-      "persistence": "temporary",
+      "lifecycle_scopes": [
+        {
+          "activation": null,
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-bod-011.lifecycle.scopes.capability.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "The ability to reinforce hormonal balance remains available."
+          },
+          "kind": "capability",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.capability",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Learned capability / readiness"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "automatic",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-bod-011.lifecycle.scopes.baseline.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "The narrated regulation and adaptation baseline persists as hormonal needs change; not fixed levels or heightened endocrine activity."
+          },
+          "kind": "baseline",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.baseline",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Lasting baseline / retained effect"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "manual",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-bod-011.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Optional conscious reinforcement of regulation and adaptation."
+          },
+          "kind": "application",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.application",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Individual invocation / application"
+          },
+          "persistence": "temporary"
+        }
+      ],
+      "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
-        "key": "command.scope.temporary",
+        "key": "command.scope.permanent",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Temporary"
+        "text": "Permanent"
       },
       "purpose": {
         "fallback": false,
@@ -3183,6 +3488,7 @@
       ],
       "effects": null,
       "function_id": "OCF-BOD-012",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -3254,7 +3560,13 @@
             "visible": true
           },
           "effect_scope": "temporary",
-          "effect_scope_ref": "lifecycle.persistence",
+          "effect_scope_details": {
+            "activation": "manual",
+            "description": "Conscious selected-area reinforcement; not continuous intensified repair in that area.",
+            "description_key": "functions.ocf-bod-013.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "effect_scope_ref": "lifecycle.scopes.application.persistence",
           "explanation": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-013-primary.explanation",
@@ -3264,6 +3576,20 @@
           },
           "function_id": "OCF-BOD-013",
           "id": "OCF-CMD-BOD-013-PRIMARY",
+          "invocation_description": {
+            "fallback": false,
+            "key": "functions.ocf-bod-013.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Conscious selected-area reinforcement; not continuous intensified repair in that area."
+          },
+          "invocation_scope": {
+            "activation": "manual",
+            "description": "Conscious selected-area reinforcement; not continuous intensified repair in that area.",
+            "description_key": "functions.ocf-bod-013.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "invocation_scope_ref": "lifecycle.scopes.application",
           "label": {
             "fallback": false,
             "key": "commands.ocf-cmd-bod-013-primary.label",
@@ -3401,13 +3727,72 @@
       ],
       "effects": null,
       "function_id": "OCF-BOD-013",
-      "persistence": "temporary",
+      "lifecycle_scopes": [
+        {
+          "activation": null,
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-bod-013.lifecycle.scopes.capability.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "The ability to direct attention toward a selected body area remains available."
+          },
+          "kind": "capability",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.capability",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Learned capability / readiness"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "automatic",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-bod-013.lifecycle.scopes.baseline.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "The narrated whole-body maintenance and renewal baseline persists."
+          },
+          "kind": "baseline",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.baseline",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Lasting baseline / retained effect"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "manual",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-bod-013.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Conscious selected-area reinforcement; not continuous intensified repair in that area."
+          },
+          "kind": "application",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.application",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Individual invocation / application"
+          },
+          "persistence": "temporary"
+        }
+      ],
+      "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
-        "key": "command.scope.temporary",
+        "key": "command.scope.permanent",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Temporary"
+        "text": "Permanent"
       },
       "purpose": {
         "fallback": false,
@@ -3624,6 +4009,7 @@
       ],
       "effects": null,
       "function_id": "OCF-BOD-014",
+      "lifecycle_scopes": [],
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -4020,6 +4406,7 @@
       ],
       "effects": null,
       "function_id": "OCF-BOD-015",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -4091,7 +4478,13 @@
             "visible": true
           },
           "effect_scope": "temporary",
-          "effect_scope_ref": "lifecycle.persistence",
+          "effect_scope_details": {
+            "activation": "manual",
+            "description": "One consciously chosen information request; not a permanently active search or stream of answers.",
+            "description_key": "functions.ocf-cog-001.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "effect_scope_ref": "lifecycle.scopes.application.persistence",
           "explanation": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-001-primary.explanation",
@@ -4101,6 +4494,20 @@
           },
           "function_id": "OCF-COG-001",
           "id": "OCF-CMD-COG-001-PRIMARY",
+          "invocation_description": {
+            "fallback": false,
+            "key": "functions.ocf-cog-001.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "One consciously chosen information request; not a permanently active search or stream of answers."
+          },
+          "invocation_scope": {
+            "activation": "manual",
+            "description": "One consciously chosen information request; not a permanently active search or stream of answers.",
+            "description_key": "functions.ocf-cog-001.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "invocation_scope_ref": "lifecycle.scopes.application",
           "label": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-001-primary.label",
@@ -4188,6 +4595,65 @@
       ],
       "effects": null,
       "function_id": "OCF-COG-001",
+      "lifecycle_scopes": [
+        {
+          "activation": null,
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-cog-001.lifecycle.scopes.capability.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Access to the personal knowledge library remains available."
+          },
+          "kind": "capability",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.capability",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Learned capability / readiness"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "automatic",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-cog-001.lifecycle.scopes.baseline.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Personal knowledge continues to be organized and connected in the background."
+          },
+          "kind": "baseline",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.baseline",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Lasting baseline / retained effect"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "manual",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-cog-001.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "One consciously chosen information request; not a permanently active search or stream of answers."
+          },
+          "kind": "application",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.application",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Individual invocation / application"
+          },
+          "persistence": "temporary"
+        }
+      ],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -4390,6 +4856,7 @@
       ],
       "effects": null,
       "function_id": "OCF-COG-002",
+      "lifecycle_scopes": [],
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -4704,6 +5171,7 @@
       ],
       "effects": null,
       "function_id": "OCF-COG-003",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -4774,8 +5242,14 @@
             "order": 1,
             "visible": true
           },
-          "effect_scope": "temporary",
-          "effect_scope_ref": "lifecycle.persistence",
+          "effect_scope": "permanent",
+          "effect_scope_details": {
+            "activation": "automatic",
+            "description": "Deliberately imprinted material is retained and maintained; storage is distinct from an individual recall action.",
+            "description_key": "functions.ocf-cog-004.lifecycle.scopes.baseline.description",
+            "persistence": "permanent"
+          },
+          "effect_scope_ref": "lifecycle.scopes.baseline.persistence",
           "explanation": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-004-primary.explanation",
@@ -4785,6 +5259,20 @@
           },
           "function_id": "OCF-COG-004",
           "id": "OCF-CMD-COG-004-PRIMARY",
+          "invocation_description": {
+            "fallback": false,
+            "key": "functions.ocf-cog-004.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "A single deliberate imprint or recall invocation; no continuously running imprinting or recall."
+          },
+          "invocation_scope": {
+            "activation": "manual",
+            "description": "A single deliberate imprint or recall invocation; no continuously running imprinting or recall.",
+            "description_key": "functions.ocf-cog-004.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "invocation_scope_ref": "lifecycle.scopes.application",
           "label": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-004-primary.label",
@@ -4898,10 +5386,10 @@
           "role": "activation",
           "scope_label": {
             "fallback": false,
-            "key": "command.scope.temporary",
+            "key": "command.scope.permanent",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Temporary"
+            "text": "Permanent"
           },
           "spoken": "Plus Imprint",
           "spoken_review": "reviewed",
@@ -4929,7 +5417,13 @@
             "visible": true
           },
           "effect_scope": "temporary",
-          "effect_scope_ref": "lifecycle.persistence",
+          "effect_scope_details": {
+            "activation": "manual",
+            "description": "A single deliberate imprint or recall invocation; no continuously running imprinting or recall.",
+            "description_key": "functions.ocf-cog-004.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "effect_scope_ref": "lifecycle.scopes.application.persistence",
           "explanation": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-004-recall.explanation",
@@ -4939,6 +5433,20 @@
           },
           "function_id": "OCF-COG-004",
           "id": "OCF-CMD-COG-004-RECALL",
+          "invocation_description": {
+            "fallback": false,
+            "key": "functions.ocf-cog-004.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "A single deliberate imprint or recall invocation; no continuously running imprinting or recall."
+          },
+          "invocation_scope": {
+            "activation": "manual",
+            "description": "A single deliberate imprint or recall invocation; no continuously running imprinting or recall.",
+            "description_key": "functions.ocf-cog-004.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "invocation_scope_ref": "lifecycle.scopes.application",
           "label": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-004-recall.label",
@@ -5030,13 +5538,72 @@
       ],
       "effects": null,
       "function_id": "OCF-COG-004",
-      "persistence": "temporary",
+      "lifecycle_scopes": [
+        {
+          "activation": null,
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-cog-004.lifecycle.scopes.capability.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Learned imprinting ability remains available."
+          },
+          "kind": "capability",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.capability",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Learned capability / readiness"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "automatic",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-cog-004.lifecycle.scopes.baseline.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Deliberately imprinted material is retained and maintained; storage is distinct from an individual recall action."
+          },
+          "kind": "baseline",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.baseline",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Lasting baseline / retained effect"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "manual",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-cog-004.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "A single deliberate imprint or recall invocation; no continuously running imprinting or recall."
+          },
+          "kind": "application",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.application",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Individual invocation / application"
+          },
+          "persistence": "temporary"
+        }
+      ],
+      "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
-        "key": "command.scope.temporary",
+        "key": "command.scope.permanent",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Temporary"
+        "text": "Permanent"
       },
       "purpose": {
         "fallback": false,
@@ -5094,7 +5661,13 @@
             "visible": true
           },
           "effect_scope": "temporary",
-          "effect_scope_ref": "lifecycle.persistence",
+          "effect_scope_details": {
+            "activation": "manual",
+            "description": "One consciously chosen, situation-focused exploration.",
+            "description_key": "functions.ocf-cog-005.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "effect_scope_ref": "lifecycle.scopes.application.persistence",
           "explanation": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-005-primary.explanation",
@@ -5104,6 +5677,20 @@
           },
           "function_id": "OCF-COG-005",
           "id": "OCF-CMD-COG-005-PRIMARY",
+          "invocation_description": {
+            "fallback": false,
+            "key": "functions.ocf-cog-005.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "One consciously chosen, situation-focused exploration."
+          },
+          "invocation_scope": {
+            "activation": "manual",
+            "description": "One consciously chosen, situation-focused exploration.",
+            "description_key": "functions.ocf-cog-005.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "invocation_scope_ref": "lifecycle.scopes.application",
           "label": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-005-primary.label",
@@ -5304,6 +5891,65 @@
       ],
       "effects": null,
       "function_id": "OCF-COG-005",
+      "lifecycle_scopes": [
+        {
+          "activation": null,
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-cog-005.lifecycle.scopes.capability.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "The ability to explore possibilities remains available."
+          },
+          "kind": "capability",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.capability",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Learned capability / readiness"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "automatic",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-cog-005.lifecycle.scopes.baseline.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Connections and insights continue forming in the background; no selected situation remains permanently active."
+          },
+          "kind": "baseline",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.baseline",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Lasting baseline / retained effect"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "manual",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-cog-005.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "One consciously chosen, situation-focused exploration."
+          },
+          "kind": "application",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.application",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Individual invocation / application"
+          },
+          "persistence": "temporary"
+        }
+      ],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -5499,6 +6145,7 @@
       ],
       "effects": null,
       "function_id": "OCF-COG-006",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -5694,6 +6341,7 @@
       ],
       "effects": null,
       "function_id": "OCF-COG-007",
+      "lifecycle_scopes": [],
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -5889,6 +6537,7 @@
       ],
       "effects": null,
       "function_id": "OCF-COM-001",
+      "lifecycle_scopes": [],
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -5960,7 +6609,14 @@
             "visible": true
           },
           "effect_scope": "temporary",
-          "effect_scope_ref": "lifecycle.persistence",
+          "effect_scope_details": {
+            "activation": "conditional",
+            "description": "The narrated adaptive response lasts for the injury episode and adjusts as the injury stabilizes.",
+            "description_key": "functions.ocf-emg-001.lifecycle.scopes.episode.description",
+            "persistence": "temporary",
+            "trigger_conditions_ref": "lifecycle.trigger_conditions"
+          },
+          "effect_scope_ref": "lifecycle.scopes.episode.persistence",
           "explanation": {
             "fallback": false,
             "key": "commands.ocf-cmd-emg-001-primary.explanation",
@@ -5970,6 +6626,20 @@
           },
           "function_id": "OCF-EMG-001",
           "id": "OCF-CMD-EMG-001-PRIMARY",
+          "invocation_description": {
+            "fallback": false,
+            "key": "functions.ocf-emg-001.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Optional manual reinforcement when conscious and able."
+          },
+          "invocation_scope": {
+            "activation": "manual",
+            "description": "Optional manual reinforcement when conscious and able.",
+            "description_key": "functions.ocf-emg-001.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "invocation_scope_ref": "lifecycle.scopes.application",
           "label": {
             "fallback": false,
             "key": "commands.ocf-cmd-emg-001-primary.label",
@@ -6074,6 +6744,65 @@
       ],
       "effects": null,
       "function_id": "OCF-EMG-001",
+      "lifecycle_scopes": [
+        {
+          "activation": null,
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-emg-001.lifecycle.scopes.capability.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Narrated injury-response readiness remains available, including when conscious invocation is unavailable."
+          },
+          "kind": "capability",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.capability",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Learned capability / readiness"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "manual",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-emg-001.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Optional manual reinforcement when conscious and able."
+          },
+          "kind": "application",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.application",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Individual invocation / application"
+          },
+          "persistence": "temporary"
+        },
+        {
+          "activation": "conditional",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-emg-001.lifecycle.scopes.episode.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "The narrated adaptive response lasts for the injury episode and adjusts as the injury stabilizes."
+          },
+          "kind": "episode",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.episode",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Conditional response episode"
+          },
+          "persistence": "temporary"
+        }
+      ],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -6145,7 +6874,14 @@
             "visible": true
           },
           "effect_scope": "temporary",
-          "effect_scope_ref": "lifecycle.persistence",
+          "effect_scope_details": {
+            "activation": "conditional",
+            "description": "The narrated exposure response operates only as strongly and for as long as needed for the actual substance and exposure.",
+            "description_key": "functions.ocf-emg-002.lifecycle.scopes.episode.description",
+            "persistence": "temporary",
+            "trigger_conditions_ref": "lifecycle.trigger_conditions"
+          },
+          "effect_scope_ref": "lifecycle.scopes.episode.persistence",
           "explanation": {
             "fallback": false,
             "key": "commands.ocf-cmd-emg-002-primary.explanation",
@@ -6155,6 +6891,20 @@
           },
           "function_id": "OCF-EMG-002",
           "id": "OCF-CMD-EMG-002-PRIMARY",
+          "invocation_description": {
+            "fallback": false,
+            "key": "functions.ocf-emg-002.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Optional manual reinforcement when conscious and able."
+          },
+          "invocation_scope": {
+            "activation": "manual",
+            "description": "Optional manual reinforcement when conscious and able.",
+            "description_key": "functions.ocf-emg-002.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "invocation_scope_ref": "lifecycle.scopes.application",
           "label": {
             "fallback": false,
             "key": "commands.ocf-cmd-emg-002-primary.label",
@@ -6259,6 +7009,65 @@
       ],
       "effects": null,
       "function_id": "OCF-EMG-002",
+      "lifecycle_scopes": [
+        {
+          "activation": null,
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-emg-002.lifecycle.scopes.capability.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Narrated harmful-exposure response readiness remains available, including when conscious invocation is unavailable."
+          },
+          "kind": "capability",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.capability",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Learned capability / readiness"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "manual",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-emg-002.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Optional manual reinforcement when conscious and able."
+          },
+          "kind": "application",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.application",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Individual invocation / application"
+          },
+          "persistence": "temporary"
+        },
+        {
+          "activation": "conditional",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-emg-002.lifecycle.scopes.episode.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "The narrated exposure response operates only as strongly and for as long as needed for the actual substance and exposure."
+          },
+          "kind": "episode",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.episode",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Conditional response episode"
+          },
+          "persistence": "temporary"
+        }
+      ],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -6454,6 +7263,7 @@
       ],
       "effects": null,
       "function_id": "OCF-EMO-001",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -6672,6 +7482,7 @@
       ],
       "effects": null,
       "function_id": "OCF-EMO-002",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -6862,6 +7673,7 @@
       ],
       "effects": null,
       "function_id": "OCF-EMO-003",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -7069,6 +7881,7 @@
       ],
       "effects": null,
       "function_id": "OCF-EXP-001",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -7587,6 +8400,7 @@
       ],
       "effects": null,
       "function_id": "OCF-EXP-002",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -7845,6 +8659,7 @@
       ],
       "effects": null,
       "function_id": "OCF-FND-001",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -8040,6 +8855,7 @@
       ],
       "effects": null,
       "function_id": "OCF-FND-002",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -8242,6 +9058,7 @@
       ],
       "effects": null,
       "function_id": "OCF-FND-003",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -8432,6 +9249,7 @@
       ],
       "effects": null,
       "function_id": "OCF-FND-004",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -8619,7 +9437,7 @@
             "key": "functions.ocf-fnd-005.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Returns mind and body to a neutral, settled baseline."
+            "text": "Supports a deliberately invoked shift from tiredness, weariness, or feeling emotionally low toward renewed wakefulness, energy, clarity, and confidence."
           },
           "related_commands": [],
           "relationships": {},
@@ -8644,6 +9462,7 @@
       ],
       "effects": null,
       "function_id": "OCF-FND-005",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -8657,7 +9476,7 @@
         "key": "functions.ocf-fnd-005.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Returns mind and body to a neutral, settled baseline."
+        "text": "Supports a deliberately invoked shift from tiredness, weariness, or feeling emotionally low toward renewed wakefulness, energy, clarity, and confidence."
       },
       "reimplementation_status": "planned",
       "short_description": {
@@ -8665,7 +9484,7 @@
         "key": "functions.ocf-fnd-005.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Returns mind and body to a neutral, settled baseline."
+        "text": "Supports a deliberately invoked shift from tiredness, weariness, or feeling emotionally low toward renewed wakefulness, energy, clarity, and confidence."
       },
       "slug": "reset",
       "source_availability": "available",
@@ -8839,6 +9658,7 @@
       ],
       "effects": null,
       "function_id": "OCF-FND-006",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -8909,8 +9729,14 @@
             "order": 1,
             "visible": true
           },
-          "effect_scope": "temporary",
-          "effect_scope_ref": "lifecycle.persistence",
+          "effect_scope": "permanent",
+          "effect_scope_details": {
+            "activation": "automatic",
+            "description": "The intended change to the deliberately selected habit is lasting; useful memories, knowledge and skills remain intact.",
+            "description_key": "functions.ocf-lif-001.lifecycle.scopes.baseline.description",
+            "persistence": "permanent"
+          },
+          "effect_scope_ref": "lifecycle.scopes.baseline.persistence",
           "explanation": {
             "fallback": false,
             "key": "commands.ocf-cmd-lif-001-primary.explanation",
@@ -8920,6 +9746,20 @@
           },
           "function_id": "OCF-LIF-001",
           "id": "OCF-CMD-LIF-001-PRIMARY",
+          "invocation_description": {
+            "fallback": false,
+            "key": "functions.ocf-lif-001.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "One deliberate intervention when the selected habit arises; not continuous behavioral suppression or cancellation of other functions."
+          },
+          "invocation_scope": {
+            "activation": "manual",
+            "description": "One deliberate intervention when the selected habit arises; not continuous behavioral suppression or cancellation of other functions.",
+            "description_key": "functions.ocf-lif-001.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "invocation_scope_ref": "lifecycle.scopes.application",
           "label": {
             "fallback": false,
             "key": "commands.ocf-cmd-lif-001-primary.label",
@@ -9028,10 +9868,10 @@
           "role": "activation",
           "scope_label": {
             "fallback": false,
-            "key": "command.scope.temporary",
+            "key": "command.scope.permanent",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Temporary"
+            "text": "Permanent"
           },
           "spoken": "Plus Free This Habit",
           "spoken_review": "reviewed",
@@ -9046,13 +9886,72 @@
       ],
       "effects": null,
       "function_id": "OCF-LIF-001",
-      "persistence": "temporary",
+      "lifecycle_scopes": [
+        {
+          "activation": null,
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-lif-001.lifecycle.scopes.capability.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "The ability to change selected unwanted habits remains available."
+          },
+          "kind": "capability",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.capability",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Learned capability / readiness"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "automatic",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-lif-001.lifecycle.scopes.baseline.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "The intended change to the deliberately selected habit is lasting; useful memories, knowledge and skills remain intact."
+          },
+          "kind": "baseline",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.baseline",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Lasting baseline / retained effect"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "manual",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-lif-001.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "One deliberate intervention when the selected habit arises; not continuous behavioral suppression or cancellation of other functions."
+          },
+          "kind": "application",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.application",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Individual invocation / application"
+          },
+          "persistence": "temporary"
+        }
+      ],
+      "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
-        "key": "command.scope.temporary",
+        "key": "command.scope.permanent",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Temporary"
+        "text": "Permanent"
       },
       "purpose": {
         "fallback": false,
@@ -9241,6 +10140,7 @@
       ],
       "effects": null,
       "function_id": "OCF-PRF-001",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -9448,6 +10348,7 @@
       ],
       "effects": null,
       "function_id": "OCF-PRF-002",
+      "lifecycle_scopes": [],
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -9650,6 +10551,7 @@
       ],
       "effects": null,
       "function_id": "OCF-PRF-003",
+      "lifecycle_scopes": [],
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -9721,7 +10623,13 @@
             "visible": true
           },
           "effect_scope": "temporary",
-          "effect_scope_ref": "lifecycle.persistence",
+          "effect_scope_details": {
+            "activation": "manual",
+            "description": "Optional conscious reinforcement of the movement baseline; not permanently intensified movement.",
+            "description_key": "functions.ocf-prf-004.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "effect_scope_ref": "lifecycle.scopes.application.persistence",
           "explanation": {
             "fallback": false,
             "key": "commands.ocf-cmd-prf-004-primary.explanation",
@@ -9731,6 +10639,20 @@
           },
           "function_id": "OCF-PRF-004",
           "id": "OCF-CMD-PRF-004-PRIMARY",
+          "invocation_description": {
+            "fallback": false,
+            "key": "functions.ocf-prf-004.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Optional conscious reinforcement of the movement baseline; not permanently intensified movement."
+          },
+          "invocation_scope": {
+            "activation": "manual",
+            "description": "Optional conscious reinforcement of the movement baseline; not permanently intensified movement.",
+            "description_key": "functions.ocf-prf-004.lifecycle.scopes.application.description",
+            "persistence": "temporary"
+          },
+          "invocation_scope_ref": "lifecycle.scopes.application",
           "label": {
             "fallback": false,
             "key": "commands.ocf-cmd-prf-004-primary.label",
@@ -9857,13 +10779,72 @@
       ],
       "effects": null,
       "function_id": "OCF-PRF-004",
-      "persistence": "temporary",
+      "lifecycle_scopes": [
+        {
+          "activation": null,
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-prf-004.lifecycle.scopes.capability.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "The learned movement ability remains available."
+          },
+          "kind": "capability",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.capability",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Learned capability / readiness"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "automatic",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-prf-004.lifecycle.scopes.baseline.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "The everyday movement pattern continues without conscious cue use."
+          },
+          "kind": "baseline",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.baseline",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Lasting baseline / retained effect"
+          },
+          "persistence": "permanent"
+        },
+        {
+          "activation": "manual",
+          "description": {
+            "fallback": false,
+            "key": "functions.ocf-prf-004.lifecycle.scopes.application.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Optional conscious reinforcement of the movement baseline; not permanently intensified movement."
+          },
+          "kind": "application",
+          "label": {
+            "fallback": false,
+            "key": "command.scope-kind.application",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Individual invocation / application"
+          },
+          "persistence": "temporary"
+        }
+      ],
+      "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
-        "key": "command.scope.temporary",
+        "key": "command.scope.permanent",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Temporary"
+        "text": "Permanent"
       },
       "purpose": {
         "fallback": false,
@@ -10052,6 +11033,7 @@
       ],
       "effects": null,
       "function_id": "OCF-PRF-005",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -10482,6 +11464,7 @@
       ],
       "effects": null,
       "function_id": "OCF-PRF-006",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -10898,6 +11881,7 @@
       ],
       "effects": null,
       "function_id": "OCF-SEN-001",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -11063,7 +12047,7 @@
             "key": "functions.ocf-sen-002.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Improves the felt sense of inner vision and clarity."
+            "text": "Supports physical seeing and inner visualization, including visual processing, visual memory, and deliberate creation and manipulation of mental images."
           },
           "related_commands": [],
           "relationships": {},
@@ -11134,7 +12118,7 @@
             "key": "functions.ocf-sen-002.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Improves the felt sense of inner vision and clarity."
+            "text": "Supports physical seeing and inner visualization, including visual processing, visual memory, and deliberate creation and manipulation of mental images."
           },
           "related_commands": [],
           "relationships": {},
@@ -11159,6 +12143,7 @@
       ],
       "effects": null,
       "function_id": "OCF-SEN-002",
+      "lifecycle_scopes": [],
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -11172,7 +12157,7 @@
         "key": "functions.ocf-sen-002.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Improves the felt sense of inner vision and clarity."
+        "text": "Supports physical seeing and inner visualization, including visual processing, visual memory, and deliberate creation and manipulation of mental images."
       },
       "reimplementation_status": "planned",
       "short_description": {
@@ -11180,7 +12165,7 @@
         "key": "functions.ocf-sen-002.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Improves the felt sense of inner vision and clarity."
+        "text": "Supports physical seeing and inner visualization, including visual processing, visual memory, and deliberate creation and manipulation of mental images."
       },
       "slug": "seeing",
       "source_availability": "available",
@@ -11717,6 +12702,7 @@
       ],
       "effects": null,
       "function_id": "OCF-SEN-003",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -12275,6 +13261,7 @@
       ],
       "effects": null,
       "function_id": "OCF-SEN-004",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -12833,6 +13820,7 @@
       ],
       "effects": null,
       "function_id": "OCF-SEN-005",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -13040,6 +14028,7 @@
       ],
       "effects": null,
       "function_id": "OCF-SLP-001",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -13247,6 +14236,7 @@
       ],
       "effects": null,
       "function_id": "OCF-SLP-002",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -13465,6 +14455,7 @@
       ],
       "effects": null,
       "function_id": "OCF-SLP-003",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -13683,6 +14674,7 @@
       ],
       "effects": null,
       "function_id": "OCF-SLP-004",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -13912,6 +14904,7 @@
       ],
       "effects": null,
       "function_id": "OCF-SLP-005",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -14119,6 +15112,7 @@
       ],
       "effects": null,
       "function_id": "OCF-SLP-006",
+      "lifecycle_scopes": [],
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -14217,6 +15211,20 @@
       "requested_locale": "en-US",
       "resolved_locale": "en-US",
       "text": "OCF Function Command Index"
+    },
+    "command.guide.invocation-scope": {
+      "fallback": false,
+      "key": "command.guide.invocation-scope",
+      "requested_locale": "en-US",
+      "resolved_locale": "en-US",
+      "text": "Command invocation"
+    },
+    "command.guide.lifecycle-scopes": {
+      "fallback": false,
+      "key": "command.guide.lifecycle-scopes",
+      "requested_locale": "en-US",
+      "resolved_locale": "en-US",
+      "text": "Lifecycle scopes"
     },
     "command.guide.no-procedure": {
       "fallback": false,

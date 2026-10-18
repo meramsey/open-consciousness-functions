@@ -212,8 +212,23 @@ def command_view(
     """Return a rich, derived view without duplicating phrase authority in YAML."""
     result = deepcopy(command.data)
     result["phrase"] = resolve_phrase(owner, command)
-    if command.data.get("effect_scope_ref") == "lifecycle.persistence":
+    if (
+        "effect_scope_ref" in command.data
+        and command.data["effect_scope_ref"] == "lifecycle.persistence"
+    ):
         result["effect_scope"] = owner.persistence
+    elif "effect_scope_ref" in command.data:
+        from .lifecycle import scoped
+
+        details = scoped(owner, command.data["effect_scope_ref"])
+        result["effect_scope"] = details["persistence"]
+        result["effect_scope_details"] = details
+    if "invocation_scope_ref" in command.data:
+        from .lifecycle import scoped
+
+        result["invocation_scope"] = scoped(
+            owner, command.data["invocation_scope_ref"], invocation=True
+        )
     if command.procedure:
         result["resolved_procedure_steps"] = resolve_procedure(command, load_procedure_catalog())
     if locale is not None:
@@ -282,7 +297,9 @@ def resolve_procedure(
 def validate_command_records(owner: FunctionRecord) -> list[str]:
     """Check local references and old-field alignment for one function."""
     records = owner.command_records
-    errors: list[str] = []
+    from .lifecycle import validate_scopes
+
+    errors: list[str] = validate_scopes(owner)
     if "narration" in owner.data:
         for command in records:
             if "spoken" not in command.data or "spoken_review" not in command.data:

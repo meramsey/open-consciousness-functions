@@ -18,8 +18,8 @@ canonical:
   command:
     modes: []
     mode_ids: []
-    primary: "PLUS-BALANCE BLOOD PRESSURE"
-  name: "Blood Pressure Balance"
+    primary: PLUS-BALANCE BLOOD PRESSURE
+  name: Blood Pressure Balance
 commands:
 - id: OCF-CMD-BOD-007-PRIMARY
   function_id: OCF-BOD-007
@@ -37,7 +37,7 @@ commands:
   documentation:
     visible: true
     order: 1
-  effect_scope_ref: lifecycle.persistence
+  effect_scope_ref: lifecycle.scopes.application.persistence
   procedure:
     ref: OCF-PROC-CLOSE-FOCUS
     status: documented
@@ -49,8 +49,9 @@ commands:
     text: Plus Balance Blood Pressure
     narration_key: hplus.function.ocf-bod-007.function-body
     relationship: variant
-  spoken: "Plus Balance Blood Pressure"
+  spoken: Plus Balance Blood Pressure
   spoken_review: reviewed
+  invocation_scope_ref: lifecycle.scopes.application
 chains: []
 claims:
   intended_effects: []
@@ -86,11 +87,28 @@ legacy:
   source_system: Monroe H-PLUS
 lifecycle:
   activation: manual
-  persistence: temporary
+  persistence: permanent
   release:
     command: null
     required: false
   trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description: The ability to reinforce cardiovascular awareness and relaxation remains available.
+      description_key: functions.ocf-bod-007.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description: The narrated adaptive cardiovascular maintenance baseline persists, adjusting to rest
+        and activity; not fixed pressure or continuous lowering.
+      description_key: functions.ocf-bod-007.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description: Optional conscious reinforcement of the adaptive baseline; not a permanently intensified
+        state.
+      description_key: functions.ocf-bod-007.lifecycle.scopes.application.description
+      activation: manual
 ocf:
   command_review: approved
   reimplementation_status: planned

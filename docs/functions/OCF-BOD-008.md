@@ -2,7 +2,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Immune Readiness
 
-**Purpose**: Supports a felt sense of alertness and preparedness; not a medical claim.
+**Purpose**: Supports a self-directed practice of immune surveillance, coordinated protective responses, immune memory, protection of healthy tissue, and return to balance after a threat is controlled.
 
 **Function persistence**: Permanent (`permanent`)
 

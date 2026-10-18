@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/functional-metadata.schema.json",
+  "title": "Confirmed metadata-only editorial successor",
+  "type": "object",
+  "required": ["schema_version", "id", "source_commit", "confirmation", "summary_sha256", "decisions", "source_files", "predecessor_files", "function_changes", "unchanged_files", "resolved_baseline", "allowed_text_changes", "integrity_baseline", "defaults_lock", "locales_requiring_review", "runtime_policy"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "id": {"const": "OCF-FUNCTIONAL-METADATA-001"},
+    "source_commit": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+    "confirmation": {"const": "Please do"},
+    "summary_sha256": {"$ref": "#/definitions/sha"},
+    "decisions": {"type": "array", "minItems": 18, "maxItems": 18, "items": {"type": "object"}},
+    "source_files": {"type": "object", "additionalProperties": {"type": "object", "required": ["before_sha256", "after_sha256"], "additionalProperties": false, "properties": {"before_sha256": {"$ref": "#/definitions/sha"}, "after_sha256": {"$ref": "#/definitions/sha"}}}},
+    "predecessor_files": {"type": "object", "additionalProperties": {"type": "string"}},
+    "function_changes": {"type": "object", "minProperties": 16, "maxProperties": 16, "additionalProperties": {"type": "object", "required": ["function_id", "before", "after"], "additionalProperties": false, "properties": {"function_id": {"type": "string"}, "before": {"type": "object"}, "after": {"type": "object"}}}},
+    "unchanged_files": {"type": "object", "additionalProperties": {"$ref": "#/definitions/sha"}},
+    "resolved_baseline": {"type": "object", "minProperties": 177, "maxProperties": 177, "additionalProperties": {"$ref": "#/definitions/sha"}},
+    "allowed_text_changes": {"const": []},
+    "integrity_baseline": {"const": "tests/fixtures/hplus-narration-text-baseline-005.json"},
+    "defaults_lock": {"const": "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-006.json"},
+    "locales_requiring_review": {"type": "array", "items": {"type": "string"}},
+    "runtime_policy": {"type": "string"}
+  },
+  "definitions": {"sha": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

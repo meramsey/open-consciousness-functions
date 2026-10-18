@@ -4,7 +4,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: A general self-directed balance-and-heal tune-up practice.
 
-**Function persistence**: Temporary (`temporary`)
+**Function persistence**: Permanent (`permanent`)
 
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
@@ -14,6 +14,12 @@ Source availability does not establish historical authentication or provenance.
 
 [Command index](../COMMAND_INDEX.md)
 
+## Lifecycle scopes
+
+- **Learned capability / readiness** (`permanent`): The ability to direct attention toward a selected body area remains available.
+- **Lasting baseline / retained effect** (`permanent`, `automatic`): The narrated whole-body maintenance and renewal baseline persists.
+- **Individual invocation / application** (`temporary`, `manual`): Conscious selected-area reinforcement; not continuous intensified repair in that area.
+
 ## PLUS-BALANCE, HEAL
 
 ### Primary activation command
@@ -21,6 +27,8 @@ Source availability does not establish historical authentication or provenance.
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
+
+**Command invocation**: Conscious selected-area reinforcement; not continuous intensified repair in that area.
 
 ### Activation sequence
 

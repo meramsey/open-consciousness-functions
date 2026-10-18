@@ -19,7 +19,7 @@ canonical:
     modes: []
     mode_ids: []
     primary: PLUS-BALANCE, HEAL
-  name: "Body Tune-Up"
+  name: Body Tune-Up
 commands:
 - id: OCF-CMD-BOD-013-PRIMARY
   function_id: OCF-BOD-013
@@ -37,7 +37,7 @@ commands:
   documentation:
     visible: true
     order: 1
-  effect_scope_ref: lifecycle.persistence
+  effect_scope_ref: lifecycle.scopes.application.persistence
   procedure:
     ref: OCF-PROC-CLOSE-FOCUS-OPEN
     status: documented
@@ -45,8 +45,9 @@ commands:
     - hplus.function.ocf-bod-013.function-body
     before_steps: []
   relationships: {}
-  spoken: "Plus Balance Heal"
+  spoken: Plus Balance Heal
   spoken_review: reviewed
+  invocation_scope_ref: lifecycle.scopes.application
 chains: []
 claims:
   intended_effects: []
@@ -82,11 +83,26 @@ legacy:
   source_system: Monroe H-PLUS
 lifecycle:
   activation: manual
-  persistence: temporary
+  persistence: permanent
   release:
     command: null
     required: false
   trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description: The ability to direct attention toward a selected body area remains available.
+      description_key: functions.ocf-bod-013.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description: The narrated whole-body maintenance and renewal baseline persists.
+      description_key: functions.ocf-bod-013.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description: Conscious selected-area reinforcement; not continuous intensified repair in that area.
+      description_key: functions.ocf-bod-013.lifecycle.scopes.application.description
+      activation: manual
 ocf:
   command_review: approved
   reimplementation_status: planned

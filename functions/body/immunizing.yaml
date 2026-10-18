@@ -18,8 +18,8 @@ canonical:
   command:
     modes: []
     mode_ids: []
-    primary: "PLUS-IMMUNE READY"
-  name: "Immune Readiness"
+    primary: PLUS-IMMUNE READY
+  name: Immune Readiness
 commands:
 - id: OCF-CMD-BOD-008-PRIMARY
   function_id: OCF-BOD-008
@@ -45,9 +45,12 @@ commands:
     - hplus.function.ocf-bod-008.function-body
     before_steps: []
   relationships: {}
-  spoken: "Plus Immune Ready"
+  spoken: Plus Immune Ready
   spoken_review: reviewed
-  observed_phrase: {"text": "Plus Immune Ready", "narration_key": "hplus.function.ocf-bod-008.function-body", "relationship": "canonical-match"}
+  observed_phrase:
+    text: Plus Immune Ready
+    narration_key: hplus.function.ocf-bod-008.function-body
+    relationship: canonical-match
 chains: []
 claims:
   intended_effects: []
@@ -94,9 +97,11 @@ ocf:
   command_review: approved
   reimplementation_status: planned
 purpose:
-  community_description: Supports a felt sense of alertness and preparedness; not a medical claim.
+  community_description: Supports a self-directed practice of immune surveillance, coordinated protective
+    responses, immune memory, protection of healthy tissue, and return to balance after a threat is controlled.
   source_description: null
-  summary: Supports a felt sense of alertness and preparedness; not a medical claim.
+  summary: Supports a self-directed practice of immune surveillance, coordinated protective responses,
+    immune memory, protection of healthy tissue, and return to balance after a threat is controlled.
 safety:
   level: health
   medical_relevance: true

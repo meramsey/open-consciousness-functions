@@ -27,6 +27,7 @@ def test_function_discovery_preserves_commands_and_legacy_targets(capsys):
     assert main(["functions", "describe", "OCF-FND-002", "--json"]) == 0
     row = json.loads(capsys.readouterr().out)["functions"][0]
     assert row["canonical"]["command"]["primary"] == "PLUS-FOCUS"
+    assert row["lifecycle"]["persistence"] == "temporary"
     assert main(["functions", "describe", "no-such-function", "--json"]) == 1
     assert main(["functions", "describe", "relax"]) == 0
     assert "PLUS-RELAX" in capsys.readouterr().out

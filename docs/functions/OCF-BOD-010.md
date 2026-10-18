@@ -2,7 +2,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Nutricia
 
-**Purpose**: Adjusts appetite and food drive in either direction using the MORE/LESS grammar.
+**Purpose**: Supports conscious selection between fuller use of food energy and nourishment, or sufficient nourishment with reduced unnecessary energy retention and storage.
 
 **Function persistence**: Temporary (`temporary`)
 
@@ -37,13 +37,13 @@ This is the primary command for the function.
 
 ## PLUS-FOOD LESS
 
-### Decrease mode
+### Alternative food-energy mode
 
-Use when you choose to decrease the selected function response.
+Use the complete Plus Food Less cue to select sufficient nourishment with reduced unnecessary retention and storage.
 
-This command selects the decrease mode.
+Selects the alternative retention response; it does not decrement or modify a Food More intensity level.
 
-### Decrease-mode sequence
+### Mode sequence
 
 1. Choose an intention.
 2. Close your eyes.
@@ -55,6 +55,5 @@ This command selects the decrease mode.
 ### Related commands
 
 - paired with: `PLUS-FOOD MORE`
-- modifies: `PLUS-FOOD MORE`
 
 Canonical command phrases are shown exactly as registered and are not translated. Script and legacy phrase differences are shown separately.

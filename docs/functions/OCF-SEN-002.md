@@ -2,7 +2,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Seeing
 
-**Purpose**: Improves the felt sense of inner vision and clarity.
+**Purpose**: Supports physical seeing and inner visualization, including visual processing, visual memory, and deliberate creation and manipulation of mental images.
 
 **Function persistence**: Permanent (`permanent`)
 

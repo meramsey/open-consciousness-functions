@@ -246,6 +246,15 @@
           "enum": ["manual", "automatic", "conditional", "continuous"]
         },
         "trigger_conditions": { "type": "array", "items": { "type": "string" } },
+        "scopes": {
+          "type": "object", "additionalProperties": false,
+          "properties": {
+            "capability": {"$ref": "#/definitions/lifecycleScope"},
+            "baseline": {"$ref": "#/definitions/lifecycleScope"},
+            "application": {"$ref": "#/definitions/lifecycleScope"},
+            "episode": {"$ref": "#/definitions/lifecycleScope"}
+          }
+        },
         "release": {
           "type": "object",
           "additionalProperties": false,
@@ -422,6 +431,18 @@
     }
   },
   "definitions": {
+    "effectScopeReference": {"enum": ["lifecycle.persistence", "lifecycle.scopes.capability.persistence", "lifecycle.scopes.baseline.persistence", "lifecycle.scopes.application.persistence", "lifecycle.scopes.episode.persistence"]},
+    "lifecycleScope": {
+      "type": "object", "additionalProperties": false,
+      "required": ["persistence", "description", "description_key"],
+      "properties": {
+        "persistence": {"enum": ["temporary", "permanent", "persistent", "conditional"]},
+        "activation": {"enum": ["manual", "automatic", "conditional", "continuous"]},
+        "description": {"type": "string", "minLength": 1},
+        "description_key": {"type": "string", "minLength": 1},
+        "trigger_conditions_ref": {"const": "lifecycle.trigger_conditions"}
+      }
+    },
     "commandId": {
       "type": "string",
       "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
@@ -537,7 +558,8 @@
         "spoken": {"type": ["string", "null"], "minLength": 1, "description": "Authoritative complete source-English spoken cue, null when no vocabulary decision is established."},
         "spoken_review": {"enum": ["reviewed", "unresolved"]},
         "spoken_variants": {"type": "object", "propertyNames": {"pattern": "^[a-z][a-z0-9_-]*$"}, "additionalProperties": {"type": "object", "additionalProperties": false, "required": ["text", "status"], "properties": {"text": {"type": "string", "minLength": 1}, "status": {"enum": ["reviewed", "unresolved"]}}}},
-        "effect_scope_ref": { "type": "string", "const": "lifecycle.persistence" },
+        "effect_scope_ref": {"$ref": "#/definitions/effectScopeReference"},
+        "invocation_scope_ref": {"const": "lifecycle.scopes.application"},
         "procedure": {
           "type": "object",
           "additionalProperties": false,

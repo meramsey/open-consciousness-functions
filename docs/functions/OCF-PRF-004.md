@@ -4,7 +4,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.
 
-**Function persistence**: Temporary (`temporary`)
+**Function persistence**: Permanent (`permanent`)
 
 **Legacy source availability**: Historical source unavailable. (`unavailable`)
 
@@ -14,6 +14,12 @@ Source availability does not establish historical authentication or provenance.
 
 [Command index](../COMMAND_INDEX.md)
 
+## Lifecycle scopes
+
+- **Learned capability / readiness** (`permanent`): The learned movement ability remains available.
+- **Lasting baseline / retained effect** (`permanent`, `automatic`): The everyday movement pattern continues without conscious cue use.
+- **Individual invocation / application** (`temporary`, `manual`): Optional conscious reinforcement of the movement baseline; not permanently intensified movement.
+
 ## PLUS-LIGHT STEP
 
 ### Primary activation command
@@ -21,6 +27,8 @@ Source availability does not establish historical authentication or provenance.
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
+
+**Command invocation**: Optional conscious reinforcement of the movement baseline; not permanently intensified movement.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Light Step `(canonical-match; hplus.function.ocf-prf-004.function-body)`
 

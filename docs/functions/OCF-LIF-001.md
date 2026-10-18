@@ -4,7 +4,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Supports stepping away from habitual, repeated behavior patterns.
 
-**Function persistence**: Temporary (`temporary`)
+**Function persistence**: Permanent (`permanent`)
 
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
@@ -14,6 +14,12 @@ Source availability does not establish historical authentication or provenance.
 
 [Command index](../COMMAND_INDEX.md)
 
+## Lifecycle scopes
+
+- **Learned capability / readiness** (`permanent`): The ability to change selected unwanted habits remains available.
+- **Lasting baseline / retained effect** (`permanent`, `automatic`): The intended change to the deliberately selected habit is lasting; useful memories, knowledge and skills remain intact.
+- **Individual invocation / application** (`temporary`, `manual`): One deliberate intervention when the selected habit arises; not continuous behavioral suppression or cancellation of other functions.
+
 ## PLUS-FREE THIS HABIT
 
 ### Primary activation command
@@ -21,6 +27,8 @@ Source availability does not establish historical authentication or provenance.
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
+
+**Command invocation**: One deliberate intervention when the selected habit arises; not continuous behavioral suppression or cancellation of other functions.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Free This Habit `(canonical-match; hplus.function.ocf-lif-001.function-body)`
 

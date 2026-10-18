@@ -19,7 +19,7 @@ canonical:
     modes: []
     mode_ids: []
     primary: PLUS-CONTROL, BALANCE, RESTORE
-  name: "Injury Response"
+  name: Injury Response
 commands:
 - id: OCF-CMD-EMG-001-PRIMARY
   function_id: OCF-EMG-001
@@ -37,7 +37,7 @@ commands:
   documentation:
     visible: true
     order: 1
-  effect_scope_ref: lifecycle.persistence
+  effect_scope_ref: lifecycle.scopes.episode.persistence
   procedure:
     ref: OCF-PROC-INHALE-HOLD
     status: documented
@@ -45,8 +45,9 @@ commands:
     - hplus.function.ocf-emg-001.function-body
     before_steps: []
   relationships: {}
-  spoken: "Plus Control Balance Restore"
+  spoken: Plus Control Balance Restore
   spoken_review: reviewed
+  invocation_scope_ref: lifecycle.scopes.application
 chains: []
 claims:
   intended_effects: []
@@ -82,12 +83,31 @@ legacy:
   source_availability: unavailable
   source_system: Monroe H-PLUS
 lifecycle:
-  activation: manual
+  activation: conditional
   persistence: temporary
   release:
     command: null
     required: false
-  trigger_conditions: []
+  trigger_conditions:
+  - physical injury occurs
+  scopes:
+    capability:
+      persistence: permanent
+      description: Narrated injury-response readiness remains available, including when conscious invocation
+        is unavailable.
+      description_key: functions.ocf-emg-001.lifecycle.scopes.capability.description
+    application:
+      persistence: temporary
+      description: Optional manual reinforcement when conscious and able.
+      description_key: functions.ocf-emg-001.lifecycle.scopes.application.description
+      activation: manual
+    episode:
+      persistence: temporary
+      activation: conditional
+      trigger_conditions_ref: lifecycle.trigger_conditions
+      description: The narrated adaptive response lasts for the injury episode and adjusts as the injury
+        stabilizes.
+      description_key: functions.ocf-emg-001.lifecycle.scopes.episode.description
 ocf:
   command_review: approved
   reimplementation_status: planned

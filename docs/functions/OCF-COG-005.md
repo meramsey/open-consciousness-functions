@@ -14,6 +14,12 @@ Source availability does not establish historical authentication or provenance.
 
 [Command index](../COMMAND_INDEX.md)
 
+## Lifecycle scopes
+
+- **Learned capability / readiness** (`permanent`): The ability to explore possibilities remains available.
+- **Lasting baseline / retained effect** (`permanent`, `automatic`): Connections and insights continue forming in the background; no selected situation remains permanently active.
+- **Individual invocation / application** (`temporary`, `manual`): One consciously chosen, situation-focused exploration.
+
 ## PLUS-OPTIONS
 
 ### Primary activation command
@@ -21,6 +27,8 @@ Source availability does not establish historical authentication or provenance.
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
+
+**Command invocation**: One consciously chosen, situation-focused exploration.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Options Choices `(legacy-form; hplus.function.ocf-cog-005.function-body)`
 

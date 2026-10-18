@@ -19,6 +19,7 @@ REGISTERED = (
     "function-content/editorial/approved-title-cues-002.json",
     "function-content/editorial/approved-title-cues-003.json",
     "function-content/editorial/approved-title-cues-004.json",
+    "function-content/editorial/functional-metadata-001.json",
 )
 APPROVED = {
     "OCF-EDITORIAL-TITLE-CUES-002": ("OCF-BOD-003", "Comfort", "PLUS-COMFORT", "Plus Comfort"),
@@ -134,9 +135,21 @@ def records(root=REPO_ROOT, *, required=False):
                 raise OCFError("approved successor record missing: " + name)
             continue
         data = json.loads(path.read_text(encoding="utf-8"))
-        errors = validate_against_schema(data, _load_schema("editorial-cue-migration.schema.json"))
+        from .functional_metadata import ID as METADATA_ID
+        from .functional_metadata import check_record as check_metadata
+
+        schema = (
+            "functional-metadata.schema.json"
+            if name.endswith("functional-metadata-001.json")
+            else "editorial-cue-migration.schema.json"
+        )
+        errors = validate_against_schema(data, _load_schema(schema))
         if errors:
             raise OCFError("invalid editorial successor: " + " | ".join(errors))
+        if data["id"] == METADATA_ID:
+            check_metadata(data)
+            result.append(data)
+            continue
         from .editorial_batch import BATCH_ID, check_record
 
         if data["id"] == BATCH_ID:
@@ -224,8 +237,18 @@ def current_decision_record(root=REPO_ROOT):
     result = json.loads(json.dumps(decision_record(root)))
     result["decision_ids"] = [result["id"]]
     result["kept_decisions"] = []
+    result["functional_metadata_decisions"] = []
     by_owner = {row["function_id"]: row for row in result["decisions"]}
     for data in records(root):
+        if data["id"] == "OCF-FUNCTIONAL-METADATA-001":
+            result["pending"] = [
+                item
+                for item in result["pending"]
+                if item != "Separately flagged purpose, persistence and trigger metadata questions"
+            ]
+            result["functional_metadata_decisions"] = data["decisions"]
+            result["decision_ids"].append(data["id"])
+            continue
         result["id"] = data["id"]
         result["source_commit"] = data["source_commit"]
         result["integrity_baseline"] = data["integrity_baseline"]
@@ -261,6 +284,12 @@ def verify(root=REPO_ROOT):
         )
 
     for data in reversed(records(root, required=True)):
+        if data["id"] == "OCF-FUNCTIONAL-METADATA-001":
+            from .functional_metadata import verify as verify_metadata
+
+            problems.extend(verify_metadata(data, root, read, texts))
+            file_view.update(data["predecessor_files"])
+            continue
         from .editorial_batch import BATCH_ID, approved_function
 
         by_owner = {decision["function_id"]: decision for decision in data["decisions"]}

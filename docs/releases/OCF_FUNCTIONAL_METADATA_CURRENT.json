@@ -1,0 +1,2048 @@
+{
+  "id": "OCF-FUNCTIONAL-METADATA-001",
+  "source_commit": "4da47a5740ead0be6bc3127437ee7b36a9c86ddf",
+  "confirmation": "Please do",
+  "reviewed": 18,
+  "approved": 18,
+  "deferred": [],
+  "narration_changed": 0,
+  "narration_unchanged": 177,
+  "runtime_policy": "Descriptive scopes only; no runtime trigger evaluation, sensors, command execution or physiological controls.",
+  "locales_requiring_review": [
+    "es"
+  ],
+  "functions": [
+    {
+      "id": "OCF-AUT-001",
+      "title": "Automatic Action",
+      "purpose": "Automates a desired way of being so it runs without active effort.",
+      "lifecycle": {
+        "activation": "manual",
+        "persistence": "permanent",
+        "release": {
+          "command": null,
+          "required": false
+        },
+        "trigger_conditions": [],
+        "scopes": {
+          "capability": {
+            "persistence": "permanent",
+            "description": "The ability to develop automatic skills remains available.",
+            "description_key": "functions.ocf-aut-001.lifecycle.scopes.capability.description"
+          },
+          "baseline": {
+            "persistence": "permanent",
+            "description": "Correctly learned selected skill patterns are retained; each performance remains observable, adjustable and stoppable.",
+            "description_key": "functions.ocf-aut-001.lifecycle.scopes.baseline.description",
+            "activation": "automatic"
+          },
+          "application": {
+            "persistence": "temporary",
+            "description": "One deliberate cue invocation or chosen performance; not continuously performing an action.",
+            "description_key": "functions.ocf-aut-001.lifecycle.scopes.application.description",
+            "activation": "manual"
+          }
+        }
+      },
+      "commands": [
+        {
+          "id": "OCF-CMD-AUT-001-PRIMARY",
+          "function_id": "OCF-AUT-001",
+          "phrase_ref": {
+            "source": "canonical-primary"
+          },
+          "role": "activation",
+          "designation": "primary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-aut-001-primary.label",
+            "usage_key": "commands.ocf-cmd-aut-001-primary.usage",
+            "purpose_key": "functions.ocf-aut-001.purpose",
+            "explanation_key": "commands.ocf-cmd-aut-001-primary.explanation",
+            "display_cue_key": "commands.ocf-cmd-aut-001-primary.display-cue",
+            "spoken_cue_key": "commands.ocf-cmd-aut-001-primary.spoken-cue"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 1
+          },
+          "effect_scope_ref": "lifecycle.scopes.baseline.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-INHALE-HOLD",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-aut-001.function-body"
+            ],
+            "before_steps": [
+              {
+                "id": "select-action",
+                "operation": "select-activity",
+                "localization_key": "command.procedure.select-activity"
+              }
+            ]
+          },
+          "relationships": {},
+          "spoken": "Plus Automate",
+          "spoken_review": "reviewed",
+          "invocation_scope_ref": "lifecycle.scopes.application",
+          "phrase": "PLUS-AUTOMATE",
+          "effect_scope": "permanent",
+          "effect_scope_details": {
+            "persistence": "permanent",
+            "description": "Correctly learned selected skill patterns are retained; each performance remains observable, adjustable and stoppable.",
+            "description_key": "functions.ocf-aut-001.lifecycle.scopes.baseline.description",
+            "activation": "automatic"
+          },
+          "invocation_scope": {
+            "persistence": "temporary",
+            "description": "One deliberate cue invocation or chosen performance; not continuously performing an action.",
+            "description_key": "functions.ocf-aut-001.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "resolved_procedure_steps": [
+            {
+              "id": "select-action",
+              "operation": "select-activity",
+              "localization_key": "command.procedure.select-activity"
+            },
+            {
+              "id": "inhale",
+              "operation": "inhale",
+              "localization_key": "command.procedure.inhale"
+            },
+            {
+              "id": "hold",
+              "operation": "hold-breath",
+              "localization_key": "command.procedure.hold-breath"
+            },
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            },
+            {
+              "id": "exhale",
+              "operation": "exhale",
+              "localization_key": "command.procedure.exhale"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        "OCF-AUT-001:persistence"
+      ]
+    },
+    {
+      "id": "OCF-BOD-005",
+      "title": "Appetite Choice",
+      "purpose": "Supports deliberate eating choices and release of unnecessary cravings while preserving awareness of genuine nutritional needs.",
+      "lifecycle": {
+        "activation": "manual",
+        "persistence": "permanent",
+        "release": {
+          "command": null,
+          "required": false
+        },
+        "trigger_conditions": [],
+        "scopes": {
+          "capability": {
+            "persistence": "permanent",
+            "description": "The ability to recognize unnecessary cravings and choose deliberately remains available.",
+            "description_key": "functions.ocf-bod-005.lifecycle.scopes.capability.description"
+          },
+          "baseline": {
+            "persistence": "permanent",
+            "description": "Appetite awareness and deliberate eating choices persist while genuine nutritional needs and freedom to eat remain intact.",
+            "description_key": "functions.ocf-bod-005.lifecycle.scopes.baseline.description",
+            "activation": "automatic"
+          },
+          "application": {
+            "persistence": "temporary",
+            "description": "Conscious release of one selected unnecessary craving; not permanent hunger suppression.",
+            "description_key": "functions.ocf-bod-005.lifecycle.scopes.application.description",
+            "activation": "manual"
+          }
+        }
+      },
+      "commands": [
+        {
+          "id": "OCF-CMD-BOD-005-PRIMARY",
+          "function_id": "OCF-BOD-005",
+          "phrase_ref": {
+            "source": "canonical-primary"
+          },
+          "role": "activation",
+          "designation": "primary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-bod-005-primary.label",
+            "usage_key": "commands.ocf-cmd-bod-005-primary.usage",
+            "purpose_key": "functions.ocf-bod-005.purpose",
+            "explanation_key": "commands.ocf-cmd-bod-005-primary.explanation",
+            "display_cue_key": "commands.ocf-cmd-bod-005-primary.display-cue",
+            "spoken_cue_key": "commands.ocf-cmd-bod-005-primary.spoken-cue"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 1
+          },
+          "effect_scope_ref": "lifecycle.scopes.application.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-INHALE-HOLD",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-bod-005.function-body"
+            ],
+            "before_steps": [
+              {
+                "id": "select-food-response",
+                "operation": "select-intention",
+                "localization_key": "command.procedure.select-intention"
+              }
+            ]
+          },
+          "relationships": {},
+          "spoken": "Plus Satisfied Supplied",
+          "spoken_review": "reviewed",
+          "invocation_scope_ref": "lifecycle.scopes.application",
+          "phrase": "PLUS-SATISFIED, SUPPLIED",
+          "effect_scope": "temporary",
+          "effect_scope_details": {
+            "persistence": "temporary",
+            "description": "Conscious release of one selected unnecessary craving; not permanent hunger suppression.",
+            "description_key": "functions.ocf-bod-005.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "invocation_scope": {
+            "persistence": "temporary",
+            "description": "Conscious release of one selected unnecessary craving; not permanent hunger suppression.",
+            "description_key": "functions.ocf-bod-005.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "resolved_procedure_steps": [
+            {
+              "id": "select-food-response",
+              "operation": "select-intention",
+              "localization_key": "command.procedure.select-intention"
+            },
+            {
+              "id": "inhale",
+              "operation": "inhale",
+              "localization_key": "command.procedure.inhale"
+            },
+            {
+              "id": "hold",
+              "operation": "hold-breath",
+              "localization_key": "command.procedure.hold-breath"
+            },
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            },
+            {
+              "id": "exhale",
+              "operation": "exhale",
+              "localization_key": "command.procedure.exhale"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        "OCF-BOD-005:purpose",
+        "OCF-BOD-005:persistence"
+      ]
+    },
+    {
+      "id": "OCF-BOD-007",
+      "title": "Blood Pressure Balance",
+      "purpose": "Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for medical care.",
+      "lifecycle": {
+        "activation": "manual",
+        "persistence": "permanent",
+        "release": {
+          "command": null,
+          "required": false
+        },
+        "trigger_conditions": [],
+        "scopes": {
+          "capability": {
+            "persistence": "permanent",
+            "description": "The ability to reinforce cardiovascular awareness and relaxation remains available.",
+            "description_key": "functions.ocf-bod-007.lifecycle.scopes.capability.description"
+          },
+          "baseline": {
+            "persistence": "permanent",
+            "description": "The narrated adaptive cardiovascular maintenance baseline persists, adjusting to rest and activity; not fixed pressure or continuous lowering.",
+            "description_key": "functions.ocf-bod-007.lifecycle.scopes.baseline.description",
+            "activation": "automatic"
+          },
+          "application": {
+            "persistence": "temporary",
+            "description": "Optional conscious reinforcement of the adaptive baseline; not a permanently intensified state.",
+            "description_key": "functions.ocf-bod-007.lifecycle.scopes.application.description",
+            "activation": "manual"
+          }
+        }
+      },
+      "commands": [
+        {
+          "id": "OCF-CMD-BOD-007-PRIMARY",
+          "function_id": "OCF-BOD-007",
+          "phrase_ref": {
+            "source": "canonical-primary"
+          },
+          "role": "activation",
+          "designation": "primary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-bod-007-primary.label",
+            "usage_key": "commands.ocf-cmd-bod-007-primary.usage",
+            "purpose_key": "functions.ocf-bod-007.purpose",
+            "explanation_key": "commands.ocf-cmd-bod-007-primary.explanation",
+            "display_cue_key": "commands.ocf-cmd-bod-007-primary.display-cue",
+            "spoken_cue_key": "commands.ocf-cmd-bod-007-primary.spoken-cue"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 1
+          },
+          "effect_scope_ref": "lifecycle.scopes.application.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-CLOSE-FOCUS",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-bod-007.function-body"
+            ],
+            "before_steps": []
+          },
+          "relationships": {},
+          "observed_phrase": {
+            "text": "Plus Balance Blood Pressure",
+            "narration_key": "hplus.function.ocf-bod-007.function-body",
+            "relationship": "variant"
+          },
+          "spoken": "Plus Balance Blood Pressure",
+          "spoken_review": "reviewed",
+          "invocation_scope_ref": "lifecycle.scopes.application",
+          "phrase": "PLUS-BALANCE BLOOD PRESSURE",
+          "effect_scope": "temporary",
+          "effect_scope_details": {
+            "persistence": "temporary",
+            "description": "Optional conscious reinforcement of the adaptive baseline; not a permanently intensified state.",
+            "description_key": "functions.ocf-bod-007.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "invocation_scope": {
+            "persistence": "temporary",
+            "description": "Optional conscious reinforcement of the adaptive baseline; not a permanently intensified state.",
+            "description_key": "functions.ocf-bod-007.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "resolved_procedure_steps": [
+            {
+              "id": "close-eyes",
+              "operation": "close-eyes",
+              "localization_key": "command.procedure.close-eyes"
+            },
+            {
+              "id": "focus-target",
+              "operation": "focus-target",
+              "localization_key": "command.procedure.focus-target"
+            },
+            {
+              "id": "inhale",
+              "operation": "inhale",
+              "localization_key": "command.procedure.inhale"
+            },
+            {
+              "id": "hold",
+              "operation": "hold-breath",
+              "localization_key": "command.procedure.hold-breath"
+            },
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            },
+            {
+              "id": "exhale",
+              "operation": "exhale",
+              "localization_key": "command.procedure.exhale"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        "OCF-BOD-007:persistence"
+      ]
+    },
+    {
+      "id": "OCF-BOD-008",
+      "title": "Immune Readiness",
+      "purpose": "Supports a self-directed practice of immune surveillance, coordinated protective responses, immune memory, protection of healthy tissue, and return to balance after a threat is controlled.",
+      "lifecycle": {
+        "activation": "manual",
+        "persistence": "permanent",
+        "release": {
+          "command": null,
+          "required": false
+        },
+        "trigger_conditions": []
+      },
+      "commands": [
+        {
+          "id": "OCF-CMD-BOD-008-PRIMARY",
+          "function_id": "OCF-BOD-008",
+          "phrase_ref": {
+            "source": "canonical-primary"
+          },
+          "role": "activation",
+          "designation": "primary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-bod-008-primary.label",
+            "usage_key": "commands.ocf-cmd-bod-008-primary.usage",
+            "purpose_key": "functions.ocf-bod-008.purpose",
+            "explanation_key": "commands.ocf-cmd-bod-008-primary.explanation",
+            "display_cue_key": "commands.ocf-cmd-bod-008-primary.display-cue",
+            "spoken_cue_key": "commands.ocf-cmd-bod-008-primary.spoken-cue"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 1
+          },
+          "effect_scope_ref": "lifecycle.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-INHALE-HOLD",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-bod-008.function-body"
+            ],
+            "before_steps": []
+          },
+          "relationships": {},
+          "spoken": "Plus Immune Ready",
+          "spoken_review": "reviewed",
+          "observed_phrase": {
+            "text": "Plus Immune Ready",
+            "narration_key": "hplus.function.ocf-bod-008.function-body",
+            "relationship": "canonical-match"
+          },
+          "phrase": "PLUS-IMMUNE READY",
+          "effect_scope": "permanent",
+          "resolved_procedure_steps": [
+            {
+              "id": "inhale",
+              "operation": "inhale",
+              "localization_key": "command.procedure.inhale"
+            },
+            {
+              "id": "hold",
+              "operation": "hold-breath",
+              "localization_key": "command.procedure.hold-breath"
+            },
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            },
+            {
+              "id": "exhale",
+              "operation": "exhale",
+              "localization_key": "command.procedure.exhale"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        "OCF-BOD-008:purpose"
+      ]
+    },
+    {
+      "id": "OCF-BOD-010",
+      "title": "Nutricia",
+      "purpose": "Supports conscious selection between fuller use of food energy and nourishment, or sufficient nourishment with reduced unnecessary energy retention and storage.",
+      "lifecycle": {
+        "activation": "manual",
+        "persistence": "temporary",
+        "release": {
+          "command": null,
+          "required": false
+        },
+        "trigger_conditions": []
+      },
+      "commands": [
+        {
+          "id": "OCF-CMD-BOD-010-PRIMARY",
+          "function_id": "OCF-BOD-010",
+          "phrase_ref": {
+            "source": "canonical-primary"
+          },
+          "role": "activation",
+          "designation": "primary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-bod-010-primary.label",
+            "usage_key": "commands.ocf-cmd-bod-010-primary.usage",
+            "purpose_key": "functions.ocf-bod-010.purpose",
+            "explanation_key": "commands.ocf-cmd-bod-010-primary.explanation"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 1
+          },
+          "effect_scope_ref": "lifecycle.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-bod-010.function-body"
+            ],
+            "before_steps": [
+              {
+                "id": "select-food-response",
+                "operation": "select-intention",
+                "localization_key": "command.procedure.select-intention"
+              }
+            ]
+          },
+          "relationships": {
+            "pairs_with": [
+              "OCF-CMD-BOD-010-FOOD-LESS"
+            ]
+          },
+          "spoken": "Plus Food More",
+          "spoken_review": "reviewed",
+          "phrase": "PLUS-FOOD MORE",
+          "effect_scope": "temporary",
+          "resolved_procedure_steps": [
+            {
+              "id": "select-food-response",
+              "operation": "select-intention",
+              "localization_key": "command.procedure.select-intention"
+            },
+            {
+              "id": "close-eyes",
+              "operation": "close-eyes",
+              "localization_key": "command.procedure.close-eyes"
+            },
+            {
+              "id": "inhale",
+              "operation": "inhale",
+              "localization_key": "command.procedure.inhale"
+            },
+            {
+              "id": "hold",
+              "operation": "hold-breath",
+              "localization_key": "command.procedure.hold-breath"
+            },
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            },
+            {
+              "id": "exhale",
+              "operation": "exhale",
+              "localization_key": "command.procedure.exhale"
+            }
+          ]
+        },
+        {
+          "id": "OCF-CMD-BOD-010-FOOD-LESS",
+          "function_id": "OCF-BOD-010",
+          "phrase_ref": {
+            "source": "canonical-mode",
+            "command_id": "OCF-CMD-BOD-010-FOOD-LESS"
+          },
+          "role": "mode",
+          "designation": "secondary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-bod-010-food-less.label",
+            "usage_key": "commands.ocf-cmd-bod-010-food-less.usage",
+            "purpose_key": "functions.ocf-bod-010.purpose",
+            "explanation_key": "commands.ocf-cmd-bod-010-food-less.explanation"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 11
+          },
+          "effect_scope_ref": "lifecycle.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-bod-010.function-body"
+            ],
+            "before_steps": [
+              {
+                "id": "select-food-response",
+                "operation": "select-intention",
+                "localization_key": "command.procedure.select-intention"
+              }
+            ]
+          },
+          "relationships": {
+            "pairs_with": [
+              "OCF-CMD-BOD-010-PRIMARY"
+            ]
+          },
+          "spoken": "Plus Food Less",
+          "spoken_review": "reviewed",
+          "phrase": "PLUS-FOOD LESS",
+          "effect_scope": "temporary",
+          "resolved_procedure_steps": [
+            {
+              "id": "select-food-response",
+              "operation": "select-intention",
+              "localization_key": "command.procedure.select-intention"
+            },
+            {
+              "id": "close-eyes",
+              "operation": "close-eyes",
+              "localization_key": "command.procedure.close-eyes"
+            },
+            {
+              "id": "inhale",
+              "operation": "inhale",
+              "localization_key": "command.procedure.inhale"
+            },
+            {
+              "id": "hold",
+              "operation": "hold-breath",
+              "localization_key": "command.procedure.hold-breath"
+            },
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            },
+            {
+              "id": "exhale",
+              "operation": "exhale",
+              "localization_key": "command.procedure.exhale"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        "OCF-BOD-010:purpose",
+        "OCF-BOD-010:command-role"
+      ]
+    },
+    {
+      "id": "OCF-BOD-011",
+      "title": "Hormonal Transitions",
+      "purpose": "Supports graceful passage through internal transitions.",
+      "lifecycle": {
+        "activation": "manual",
+        "persistence": "permanent",
+        "release": {
+          "command": null,
+          "required": false
+        },
+        "trigger_conditions": [],
+        "scopes": {
+          "capability": {
+            "persistence": "permanent",
+            "description": "The ability to reinforce hormonal balance remains available.",
+            "description_key": "functions.ocf-bod-011.lifecycle.scopes.capability.description"
+          },
+          "baseline": {
+            "persistence": "permanent",
+            "description": "The narrated regulation and adaptation baseline persists as hormonal needs change; not fixed levels or heightened endocrine activity.",
+            "description_key": "functions.ocf-bod-011.lifecycle.scopes.baseline.description",
+            "activation": "automatic"
+          },
+          "application": {
+            "persistence": "temporary",
+            "description": "Optional conscious reinforcement of regulation and adaptation.",
+            "description_key": "functions.ocf-bod-011.lifecycle.scopes.application.description",
+            "activation": "manual"
+          }
+        }
+      },
+      "commands": [
+        {
+          "id": "OCF-CMD-BOD-011-PRIMARY",
+          "function_id": "OCF-BOD-011",
+          "phrase_ref": {
+            "source": "canonical-primary"
+          },
+          "role": "activation",
+          "designation": "primary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-bod-011-primary.label",
+            "usage_key": "commands.ocf-cmd-bod-011-primary.usage",
+            "purpose_key": "functions.ocf-bod-011.purpose",
+            "explanation_key": "commands.ocf-cmd-bod-011-primary.explanation",
+            "display_cue_key": "commands.ocf-cmd-bod-011-primary.display-cue",
+            "spoken_cue_key": "commands.ocf-cmd-bod-011-primary.spoken-cue"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 1
+          },
+          "effect_scope_ref": "lifecycle.scopes.application.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-INHALE-HOLD",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-bod-011.function-body"
+            ],
+            "before_steps": []
+          },
+          "relationships": {},
+          "spoken": "Plus Hormone Balance",
+          "spoken_review": "reviewed",
+          "observed_phrase": {
+            "text": "Plus Hormone Balance",
+            "narration_key": "hplus.function.ocf-bod-011.function-body",
+            "relationship": "canonical-match"
+          },
+          "invocation_scope_ref": "lifecycle.scopes.application",
+          "phrase": "PLUS-HORMONE BALANCE",
+          "effect_scope": "temporary",
+          "effect_scope_details": {
+            "persistence": "temporary",
+            "description": "Optional conscious reinforcement of regulation and adaptation.",
+            "description_key": "functions.ocf-bod-011.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "invocation_scope": {
+            "persistence": "temporary",
+            "description": "Optional conscious reinforcement of regulation and adaptation.",
+            "description_key": "functions.ocf-bod-011.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "resolved_procedure_steps": [
+            {
+              "id": "inhale",
+              "operation": "inhale",
+              "localization_key": "command.procedure.inhale"
+            },
+            {
+              "id": "hold",
+              "operation": "hold-breath",
+              "localization_key": "command.procedure.hold-breath"
+            },
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            },
+            {
+              "id": "exhale",
+              "operation": "exhale",
+              "localization_key": "command.procedure.exhale"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        "OCF-BOD-011:persistence"
+      ]
+    },
+    {
+      "id": "OCF-BOD-013",
+      "title": "Body Tune-Up",
+      "purpose": "A general self-directed balance-and-heal tune-up practice.",
+      "lifecycle": {
+        "activation": "manual",
+        "persistence": "permanent",
+        "release": {
+          "command": null,
+          "required": false
+        },
+        "trigger_conditions": [],
+        "scopes": {
+          "capability": {
+            "persistence": "permanent",
+            "description": "The ability to direct attention toward a selected body area remains available.",
+            "description_key": "functions.ocf-bod-013.lifecycle.scopes.capability.description"
+          },
+          "baseline": {
+            "persistence": "permanent",
+            "description": "The narrated whole-body maintenance and renewal baseline persists.",
+            "description_key": "functions.ocf-bod-013.lifecycle.scopes.baseline.description",
+            "activation": "automatic"
+          },
+          "application": {
+            "persistence": "temporary",
+            "description": "Conscious selected-area reinforcement; not continuous intensified repair in that area.",
+            "description_key": "functions.ocf-bod-013.lifecycle.scopes.application.description",
+            "activation": "manual"
+          }
+        }
+      },
+      "commands": [
+        {
+          "id": "OCF-CMD-BOD-013-PRIMARY",
+          "function_id": "OCF-BOD-013",
+          "phrase_ref": {
+            "source": "canonical-primary"
+          },
+          "role": "activation",
+          "designation": "primary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-bod-013-primary.label",
+            "usage_key": "commands.ocf-cmd-bod-013-primary.usage",
+            "purpose_key": "functions.ocf-bod-013.purpose",
+            "explanation_key": "commands.ocf-cmd-bod-013-primary.explanation",
+            "display_cue_key": "commands.ocf-cmd-bod-013-primary.display-cue",
+            "spoken_cue_key": "commands.ocf-cmd-bod-013-primary.spoken-cue"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 1
+          },
+          "effect_scope_ref": "lifecycle.scopes.application.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-CLOSE-FOCUS-OPEN",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-bod-013.function-body"
+            ],
+            "before_steps": []
+          },
+          "relationships": {},
+          "spoken": "Plus Balance Heal",
+          "spoken_review": "reviewed",
+          "invocation_scope_ref": "lifecycle.scopes.application",
+          "phrase": "PLUS-BALANCE, HEAL",
+          "effect_scope": "temporary",
+          "effect_scope_details": {
+            "persistence": "temporary",
+            "description": "Conscious selected-area reinforcement; not continuous intensified repair in that area.",
+            "description_key": "functions.ocf-bod-013.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "invocation_scope": {
+            "persistence": "temporary",
+            "description": "Conscious selected-area reinforcement; not continuous intensified repair in that area.",
+            "description_key": "functions.ocf-bod-013.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "resolved_procedure_steps": [
+            {
+              "id": "close-eyes",
+              "operation": "close-eyes",
+              "localization_key": "command.procedure.close-eyes"
+            },
+            {
+              "id": "focus-target",
+              "operation": "focus-target",
+              "localization_key": "command.procedure.focus-target"
+            },
+            {
+              "id": "inhale",
+              "operation": "inhale",
+              "localization_key": "command.procedure.inhale"
+            },
+            {
+              "id": "hold",
+              "operation": "hold-breath",
+              "localization_key": "command.procedure.hold-breath"
+            },
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            },
+            {
+              "id": "exhale",
+              "operation": "exhale",
+              "localization_key": "command.procedure.exhale"
+            },
+            {
+              "id": "open-eyes",
+              "operation": "open-eyes",
+              "localization_key": "command.procedure.open-eyes"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        "OCF-BOD-013:persistence"
+      ]
+    },
+    {
+      "id": "OCF-COG-001",
+      "title": "Information Access",
+      "purpose": "Accesses intuition, memory, and inner knowledge on demand.",
+      "lifecycle": {
+        "activation": "manual",
+        "persistence": "temporary",
+        "release": {
+          "command": null,
+          "required": false
+        },
+        "trigger_conditions": [],
+        "scopes": {
+          "capability": {
+            "persistence": "permanent",
+            "description": "Access to the personal knowledge library remains available.",
+            "description_key": "functions.ocf-cog-001.lifecycle.scopes.capability.description"
+          },
+          "baseline": {
+            "persistence": "permanent",
+            "description": "Personal knowledge continues to be organized and connected in the background.",
+            "description_key": "functions.ocf-cog-001.lifecycle.scopes.baseline.description",
+            "activation": "automatic"
+          },
+          "application": {
+            "persistence": "temporary",
+            "description": "One consciously chosen information request; not a permanently active search or stream of answers.",
+            "description_key": "functions.ocf-cog-001.lifecycle.scopes.application.description",
+            "activation": "manual"
+          }
+        }
+      },
+      "commands": [
+        {
+          "id": "OCF-CMD-COG-001-PRIMARY",
+          "function_id": "OCF-COG-001",
+          "phrase_ref": {
+            "source": "canonical-primary"
+          },
+          "role": "activation",
+          "designation": "primary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-cog-001-primary.label",
+            "usage_key": "commands.ocf-cmd-cog-001-primary.usage",
+            "purpose_key": "functions.ocf-cog-001.purpose",
+            "explanation_key": "commands.ocf-cmd-cog-001-primary.explanation",
+            "display_cue_key": "commands.ocf-cmd-cog-001-primary.display-cue",
+            "spoken_cue_key": "commands.ocf-cmd-cog-001-primary.spoken-cue"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 1
+          },
+          "effect_scope_ref": "lifecycle.scopes.application.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-QUESTION",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-cog-001.function-body"
+            ],
+            "before_steps": []
+          },
+          "relationships": {},
+          "spoken": "Plus Access Info",
+          "spoken_review": "reviewed",
+          "observed_phrase": {
+            "text": "Plus Access Info",
+            "narration_key": "hplus.function.ocf-cog-001.function-body",
+            "relationship": "canonical-match"
+          },
+          "invocation_scope_ref": "lifecycle.scopes.application",
+          "phrase": "PLUS-ACCESS INFO",
+          "effect_scope": "temporary",
+          "effect_scope_details": {
+            "persistence": "temporary",
+            "description": "One consciously chosen information request; not a permanently active search or stream of answers.",
+            "description_key": "functions.ocf-cog-001.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "invocation_scope": {
+            "persistence": "temporary",
+            "description": "One consciously chosen information request; not a permanently active search or stream of answers.",
+            "description_key": "functions.ocf-cog-001.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "resolved_procedure_steps": [
+            {
+              "id": "question",
+              "operation": "select-question",
+              "localization_key": "command.procedure.select-question"
+            },
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        "OCF-COG-001:persistence"
+      ]
+    },
+    {
+      "id": "OCF-COG-004",
+      "title": "Imprint",
+      "purpose": "Imprints a chosen suggestion or intention using the IMPRINT rehearsal.",
+      "lifecycle": {
+        "activation": "manual",
+        "persistence": "permanent",
+        "release": {
+          "command": null,
+          "required": false
+        },
+        "trigger_conditions": [],
+        "scopes": {
+          "capability": {
+            "persistence": "permanent",
+            "description": "Learned imprinting ability remains available.",
+            "description_key": "functions.ocf-cog-004.lifecycle.scopes.capability.description"
+          },
+          "baseline": {
+            "persistence": "permanent",
+            "description": "Deliberately imprinted material is retained and maintained; storage is distinct from an individual recall action.",
+            "description_key": "functions.ocf-cog-004.lifecycle.scopes.baseline.description",
+            "activation": "automatic"
+          },
+          "application": {
+            "persistence": "temporary",
+            "description": "A single deliberate imprint or recall invocation; no continuously running imprinting or recall.",
+            "description_key": "functions.ocf-cog-004.lifecycle.scopes.application.description",
+            "activation": "manual"
+          }
+        }
+      },
+      "commands": [
+        {
+          "id": "OCF-CMD-COG-004-PRIMARY",
+          "function_id": "OCF-COG-004",
+          "phrase_ref": {
+            "source": "canonical-primary"
+          },
+          "role": "activation",
+          "designation": "primary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-cog-004-primary.label",
+            "usage_key": "commands.ocf-cmd-cog-004-primary.usage",
+            "purpose_key": "functions.ocf-cog-004.purpose",
+            "explanation_key": "commands.ocf-cmd-cog-004-primary.explanation",
+            "display_cue_key": "commands.ocf-cmd-cog-004-primary.display-cue",
+            "spoken_cue_key": "commands.ocf-cmd-cog-004-primary.spoken-cue"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 1
+          },
+          "effect_scope_ref": "lifecycle.scopes.baseline.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-IMPRINT",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-cog-004.function-body"
+            ],
+            "before_steps": []
+          },
+          "relationships": {},
+          "observed_phrase": {
+            "text": "Plus Imprint",
+            "narration_key": "hplus.function.ocf-cog-004.function-body",
+            "relationship": "canonical-match"
+          },
+          "spoken": "Plus Imprint",
+          "spoken_review": "reviewed",
+          "invocation_scope_ref": "lifecycle.scopes.application",
+          "phrase": "PLUS-IMPRINT",
+          "effect_scope": "permanent",
+          "effect_scope_details": {
+            "persistence": "permanent",
+            "description": "Deliberately imprinted material is retained and maintained; storage is distinct from an individual recall action.",
+            "description_key": "functions.ocf-cog-004.lifecycle.scopes.baseline.description",
+            "activation": "automatic"
+          },
+          "invocation_scope": {
+            "persistence": "temporary",
+            "description": "A single deliberate imprint or recall invocation; no continuously running imprinting or recall.",
+            "description_key": "functions.ocf-cog-004.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "resolved_procedure_steps": [
+            {
+              "id": "memory",
+              "operation": "select-memory",
+              "localization_key": "command.procedure.select-memory"
+            },
+            {
+              "id": "inhale",
+              "operation": "inhale",
+              "localization_key": "command.procedure.inhale"
+            },
+            {
+              "id": "hold",
+              "operation": "hold-breath",
+              "localization_key": "command.procedure.hold-breath"
+            },
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            },
+            {
+              "id": "focus-memory",
+              "operation": "focus-target",
+              "localization_key": "command.procedure.focus-target"
+            },
+            {
+              "id": "exhale",
+              "operation": "exhale",
+              "localization_key": "command.procedure.exhale"
+            }
+          ]
+        },
+        {
+          "id": "OCF-CMD-COG-004-RECALL",
+          "function_id": "OCF-COG-004",
+          "phrase_ref": {
+            "source": "canonical-mode",
+            "command_id": "OCF-CMD-COG-004-RECALL"
+          },
+          "role": "retrieval",
+          "designation": "secondary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-cog-004-recall.label",
+            "usage_key": "commands.ocf-cmd-cog-004-recall.usage",
+            "purpose_key": "functions.ocf-cog-004.purpose",
+            "explanation_key": "commands.ocf-cmd-cog-004-recall.explanation"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 11
+          },
+          "effect_scope_ref": "lifecycle.scopes.application.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-THINK-COMMAND",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-cog-004.function-body"
+            ],
+            "before_steps": []
+          },
+          "relationships": {
+            "retrieves": [
+              "OCF-CMD-COG-004-PRIMARY"
+            ]
+          },
+          "spoken": "Plus Recall",
+          "spoken_review": "reviewed",
+          "invocation_scope_ref": "lifecycle.scopes.application",
+          "phrase": "PLUS-RECALL",
+          "effect_scope": "temporary",
+          "effect_scope_details": {
+            "persistence": "temporary",
+            "description": "A single deliberate imprint or recall invocation; no continuously running imprinting or recall.",
+            "description_key": "functions.ocf-cog-004.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "invocation_scope": {
+            "persistence": "temporary",
+            "description": "A single deliberate imprint or recall invocation; no continuously running imprinting or recall.",
+            "description_key": "functions.ocf-cog-004.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "resolved_procedure_steps": [
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            }
+          ]
+        },
+        {
+          "id": "OCF-CMD-COG-004-LEGACY-01",
+          "function_id": "OCF-COG-004",
+          "phrase_ref": {
+            "source": "legacy-command",
+            "command_id": "OCF-CMD-COG-004-LEGACY-01"
+          },
+          "role": "legacy-alias",
+          "designation": "secondary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-cog-004-legacy-01.label",
+            "usage_key": "commands.ocf-cmd-cog-004-legacy-01.usage",
+            "purpose_key": "functions.ocf-cog-004.purpose",
+            "explanation_key": "commands.ocf-cmd-cog-004-legacy-01.explanation"
+          },
+          "documentation": {
+            "visible": false,
+            "order": 101
+          },
+          "effect_scope_ref": "lifecycle.persistence",
+          "relationships": {},
+          "spoken": null,
+          "spoken_review": "unresolved",
+          "availability": "historical-lookup",
+          "phrase": "PLUS-IMPRINT, IMPRINT",
+          "effect_scope": "permanent"
+        }
+      ],
+      "issues": [
+        "OCF-COG-004:persistence"
+      ]
+    },
+    {
+      "id": "OCF-COG-005",
+      "title": "Options",
+      "purpose": "Opens perception of choices and alternatives.",
+      "lifecycle": {
+        "activation": "manual",
+        "persistence": "temporary",
+        "release": {
+          "command": null,
+          "required": false
+        },
+        "trigger_conditions": [],
+        "scopes": {
+          "capability": {
+            "persistence": "permanent",
+            "description": "The ability to explore possibilities remains available.",
+            "description_key": "functions.ocf-cog-005.lifecycle.scopes.capability.description"
+          },
+          "baseline": {
+            "persistence": "permanent",
+            "description": "Connections and insights continue forming in the background; no selected situation remains permanently active.",
+            "description_key": "functions.ocf-cog-005.lifecycle.scopes.baseline.description",
+            "activation": "automatic"
+          },
+          "application": {
+            "persistence": "temporary",
+            "description": "One consciously chosen, situation-focused exploration.",
+            "description_key": "functions.ocf-cog-005.lifecycle.scopes.application.description",
+            "activation": "manual"
+          }
+        }
+      },
+      "commands": [
+        {
+          "id": "OCF-CMD-COG-005-PRIMARY",
+          "function_id": "OCF-COG-005",
+          "phrase_ref": {
+            "source": "canonical-primary"
+          },
+          "role": "activation",
+          "designation": "primary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-cog-005-primary.label",
+            "usage_key": "commands.ocf-cmd-cog-005-primary.usage",
+            "purpose_key": "functions.ocf-cog-005.purpose",
+            "explanation_key": "commands.ocf-cmd-cog-005-primary.explanation"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 1
+          },
+          "effect_scope_ref": "lifecycle.scopes.application.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-OPTIONS",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-cog-005.function-body"
+            ],
+            "before_steps": []
+          },
+          "relationships": {},
+          "observed_phrase": {
+            "text": "Plus Options Choices",
+            "narration_key": "hplus.function.ocf-cog-005.function-body",
+            "relationship": "legacy-form"
+          },
+          "spoken": null,
+          "spoken_review": "unresolved",
+          "invocation_scope_ref": "lifecycle.scopes.application",
+          "phrase": "PLUS-OPTIONS",
+          "effect_scope": "temporary",
+          "effect_scope_details": {
+            "persistence": "temporary",
+            "description": "One consciously chosen, situation-focused exploration.",
+            "description_key": "functions.ocf-cog-005.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "invocation_scope": {
+            "persistence": "temporary",
+            "description": "One consciously chosen, situation-focused exploration.",
+            "description_key": "functions.ocf-cog-005.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "resolved_procedure_steps": [
+            {
+              "id": "close-eyes",
+              "operation": "close-eyes",
+              "localization_key": "command.procedure.close-eyes"
+            },
+            {
+              "id": "inhale",
+              "operation": "inhale",
+              "localization_key": "command.procedure.inhale"
+            },
+            {
+              "id": "hold",
+              "operation": "hold-breath",
+              "localization_key": "command.procedure.hold-breath"
+            },
+            {
+              "id": "focus-situation",
+              "operation": "focus-target",
+              "localization_key": "command.procedure.focus-target"
+            },
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            },
+            {
+              "id": "exhale",
+              "operation": "exhale",
+              "localization_key": "command.procedure.exhale"
+            }
+          ]
+        },
+        {
+          "id": "OCF-CMD-COG-005-LEGACY-01",
+          "function_id": "OCF-COG-005",
+          "phrase_ref": {
+            "source": "legacy-command",
+            "command_id": "OCF-CMD-COG-005-LEGACY-01"
+          },
+          "role": "legacy-alias",
+          "designation": "secondary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-cog-005-legacy-01.label",
+            "usage_key": "commands.ocf-cmd-cog-005-legacy-01.usage",
+            "purpose_key": "functions.ocf-cog-005.purpose",
+            "explanation_key": "commands.ocf-cmd-cog-005-legacy-01.explanation"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 101
+          },
+          "effect_scope_ref": "lifecycle.persistence",
+          "relationships": {},
+          "spoken": null,
+          "spoken_review": "unresolved",
+          "phrase": "PLUS-OPTIONS, CHOICES",
+          "effect_scope": "temporary"
+        }
+      ],
+      "issues": [
+        "OCF-COG-005:persistence"
+      ]
+    },
+    {
+      "id": "OCF-EMG-001",
+      "title": "Injury Response",
+      "purpose": "Emergency-oriented practice to stay calm and take helpful action. Does NOT replace emergency services, first aid, or professional care.",
+      "lifecycle": {
+        "activation": "conditional",
+        "persistence": "temporary",
+        "release": {
+          "command": null,
+          "required": false
+        },
+        "trigger_conditions": [
+          "physical injury occurs"
+        ],
+        "scopes": {
+          "capability": {
+            "persistence": "permanent",
+            "description": "Narrated injury-response readiness remains available, including when conscious invocation is unavailable.",
+            "description_key": "functions.ocf-emg-001.lifecycle.scopes.capability.description"
+          },
+          "application": {
+            "persistence": "temporary",
+            "description": "Optional manual reinforcement when conscious and able.",
+            "description_key": "functions.ocf-emg-001.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "episode": {
+            "persistence": "temporary",
+            "activation": "conditional",
+            "trigger_conditions_ref": "lifecycle.trigger_conditions",
+            "description": "The narrated adaptive response lasts for the injury episode and adjusts as the injury stabilizes.",
+            "description_key": "functions.ocf-emg-001.lifecycle.scopes.episode.description"
+          }
+        }
+      },
+      "commands": [
+        {
+          "id": "OCF-CMD-EMG-001-PRIMARY",
+          "function_id": "OCF-EMG-001",
+          "phrase_ref": {
+            "source": "canonical-primary"
+          },
+          "role": "activation",
+          "designation": "primary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-emg-001-primary.label",
+            "usage_key": "commands.ocf-cmd-emg-001-primary.usage",
+            "purpose_key": "functions.ocf-emg-001.purpose",
+            "explanation_key": "commands.ocf-cmd-emg-001-primary.explanation",
+            "display_cue_key": "commands.ocf-cmd-emg-001-primary.display-cue",
+            "spoken_cue_key": "commands.ocf-cmd-emg-001-primary.spoken-cue"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 1
+          },
+          "effect_scope_ref": "lifecycle.scopes.episode.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-INHALE-HOLD",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-emg-001.function-body"
+            ],
+            "before_steps": []
+          },
+          "relationships": {},
+          "spoken": "Plus Control Balance Restore",
+          "spoken_review": "reviewed",
+          "invocation_scope_ref": "lifecycle.scopes.application",
+          "phrase": "PLUS-CONTROL, BALANCE, RESTORE",
+          "effect_scope": "temporary",
+          "effect_scope_details": {
+            "persistence": "temporary",
+            "activation": "conditional",
+            "trigger_conditions_ref": "lifecycle.trigger_conditions",
+            "description": "The narrated adaptive response lasts for the injury episode and adjusts as the injury stabilizes.",
+            "description_key": "functions.ocf-emg-001.lifecycle.scopes.episode.description"
+          },
+          "invocation_scope": {
+            "persistence": "temporary",
+            "description": "Optional manual reinforcement when conscious and able.",
+            "description_key": "functions.ocf-emg-001.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "resolved_procedure_steps": [
+            {
+              "id": "inhale",
+              "operation": "inhale",
+              "localization_key": "command.procedure.inhale"
+            },
+            {
+              "id": "hold",
+              "operation": "hold-breath",
+              "localization_key": "command.procedure.hold-breath"
+            },
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            },
+            {
+              "id": "exhale",
+              "operation": "exhale",
+              "localization_key": "command.procedure.exhale"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        "OCF-EMG-001:activation-triggers"
+      ]
+    },
+    {
+      "id": "OCF-EMG-002",
+      "title": "Toxic Exposure Response",
+      "purpose": "Emergency-oriented practice for toxic-exposure situations. Does NOT replace poison control, emergency services, or medical evaluation.",
+      "lifecycle": {
+        "activation": "conditional",
+        "persistence": "temporary",
+        "release": {
+          "command": null,
+          "required": false
+        },
+        "trigger_conditions": [
+          "a harmful foreign substance enters or contacts the body"
+        ],
+        "scopes": {
+          "capability": {
+            "persistence": "permanent",
+            "description": "Narrated harmful-exposure response readiness remains available, including when conscious invocation is unavailable.",
+            "description_key": "functions.ocf-emg-002.lifecycle.scopes.capability.description"
+          },
+          "application": {
+            "persistence": "temporary",
+            "description": "Optional manual reinforcement when conscious and able.",
+            "description_key": "functions.ocf-emg-002.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "episode": {
+            "persistence": "temporary",
+            "activation": "conditional",
+            "trigger_conditions_ref": "lifecycle.trigger_conditions",
+            "description": "The narrated exposure response operates only as strongly and for as long as needed for the actual substance and exposure.",
+            "description_key": "functions.ocf-emg-002.lifecycle.scopes.episode.description"
+          }
+        }
+      },
+      "commands": [
+        {
+          "id": "OCF-CMD-EMG-002-PRIMARY",
+          "function_id": "OCF-EMG-002",
+          "phrase_ref": {
+            "source": "canonical-primary"
+          },
+          "role": "activation",
+          "designation": "primary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-emg-002-primary.label",
+            "usage_key": "commands.ocf-cmd-emg-002-primary.usage",
+            "purpose_key": "functions.ocf-emg-002.purpose",
+            "explanation_key": "commands.ocf-cmd-emg-002-primary.explanation",
+            "display_cue_key": "commands.ocf-cmd-emg-002-primary.display-cue",
+            "spoken_cue_key": "commands.ocf-cmd-emg-002-primary.spoken-cue"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 1
+          },
+          "effect_scope_ref": "lifecycle.scopes.episode.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-INHALE-HOLD",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-emg-002.function-body"
+            ],
+            "before_steps": []
+          },
+          "relationships": {},
+          "spoken": "Plus Clear Remove",
+          "spoken_review": "reviewed",
+          "invocation_scope_ref": "lifecycle.scopes.application",
+          "phrase": "PLUS-CLEAR, REMOVE",
+          "effect_scope": "temporary",
+          "effect_scope_details": {
+            "persistence": "temporary",
+            "activation": "conditional",
+            "trigger_conditions_ref": "lifecycle.trigger_conditions",
+            "description": "The narrated exposure response operates only as strongly and for as long as needed for the actual substance and exposure.",
+            "description_key": "functions.ocf-emg-002.lifecycle.scopes.episode.description"
+          },
+          "invocation_scope": {
+            "persistence": "temporary",
+            "description": "Optional manual reinforcement when conscious and able.",
+            "description_key": "functions.ocf-emg-002.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "resolved_procedure_steps": [
+            {
+              "id": "inhale",
+              "operation": "inhale",
+              "localization_key": "command.procedure.inhale"
+            },
+            {
+              "id": "hold",
+              "operation": "hold-breath",
+              "localization_key": "command.procedure.hold-breath"
+            },
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            },
+            {
+              "id": "exhale",
+              "operation": "exhale",
+              "localization_key": "command.procedure.exhale"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        "OCF-EMG-002:activation-triggers"
+      ]
+    },
+    {
+      "id": "OCF-FND-005",
+      "title": "Reset",
+      "purpose": "Supports a deliberately invoked shift from tiredness, weariness, or feeling emotionally low toward renewed wakefulness, energy, clarity, and confidence.",
+      "lifecycle": {
+        "activation": "manual",
+        "persistence": "temporary",
+        "release": {
+          "command": null,
+          "required": false
+        },
+        "trigger_conditions": []
+      },
+      "commands": [
+        {
+          "id": "OCF-CMD-FND-005-PRIMARY",
+          "function_id": "OCF-FND-005",
+          "phrase_ref": {
+            "source": "canonical-primary"
+          },
+          "role": "activation",
+          "designation": "primary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-fnd-005-primary.label",
+            "usage_key": "commands.ocf-cmd-fnd-005-primary.usage",
+            "purpose_key": "functions.ocf-fnd-005.purpose",
+            "explanation_key": "commands.ocf-cmd-fnd-005-primary.explanation",
+            "display_cue_key": "commands.ocf-cmd-fnd-005-primary.display-cue",
+            "spoken_cue_key": "commands.ocf-cmd-fnd-005-primary.spoken-cue"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 1
+          },
+          "effect_scope_ref": "lifecycle.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-INHALE-CLOSE-OPEN",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-fnd-005.function-body"
+            ],
+            "before_steps": []
+          },
+          "relationships": {},
+          "observed_phrase": {
+            "text": "Plus Reset",
+            "narration_key": "hplus.function.ocf-fnd-005.function-body",
+            "relationship": "canonical-match"
+          },
+          "spoken": "Plus Reset",
+          "spoken_review": "reviewed",
+          "phrase": "PLUS-RESET",
+          "effect_scope": "temporary",
+          "resolved_procedure_steps": [
+            {
+              "id": "inhale",
+              "operation": "inhale",
+              "localization_key": "command.procedure.inhale"
+            },
+            {
+              "id": "close-eyes",
+              "operation": "close-eyes",
+              "localization_key": "command.procedure.close-eyes"
+            },
+            {
+              "id": "hold",
+              "operation": "hold-breath",
+              "localization_key": "command.procedure.hold-breath"
+            },
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            },
+            {
+              "id": "exhale",
+              "operation": "exhale",
+              "localization_key": "command.procedure.exhale"
+            },
+            {
+              "id": "open-eyes",
+              "operation": "open-eyes",
+              "localization_key": "command.procedure.open-eyes"
+            }
+          ]
+        },
+        {
+          "id": "OCF-CMD-FND-005-LEGACY-01",
+          "function_id": "OCF-FND-005",
+          "phrase_ref": {
+            "source": "legacy-command",
+            "command_id": "OCF-CMD-FND-005-LEGACY-01"
+          },
+          "role": "legacy-alias",
+          "designation": "secondary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-fnd-005-legacy-01.label",
+            "usage_key": "commands.ocf-cmd-fnd-005-legacy-01.usage",
+            "purpose_key": "functions.ocf-fnd-005.purpose",
+            "explanation_key": "commands.ocf-cmd-fnd-005-legacy-01.explanation"
+          },
+          "documentation": {
+            "visible": false,
+            "order": 101
+          },
+          "effect_scope_ref": "lifecycle.persistence",
+          "relationships": {},
+          "spoken": null,
+          "spoken_review": "unresolved",
+          "availability": "historical-lookup",
+          "phrase": "PLUS-RESET, RESET",
+          "effect_scope": "temporary"
+        }
+      ],
+      "issues": [
+        "OCF-FND-005:purpose"
+      ]
+    },
+    {
+      "id": "OCF-LIF-001",
+      "title": "Habit Freedom",
+      "purpose": "Supports stepping away from habitual, repeated behavior patterns.",
+      "lifecycle": {
+        "activation": "manual",
+        "persistence": "permanent",
+        "release": {
+          "command": null,
+          "required": false
+        },
+        "trigger_conditions": [],
+        "scopes": {
+          "capability": {
+            "persistence": "permanent",
+            "description": "The ability to change selected unwanted habits remains available.",
+            "description_key": "functions.ocf-lif-001.lifecycle.scopes.capability.description"
+          },
+          "baseline": {
+            "persistence": "permanent",
+            "description": "The intended change to the deliberately selected habit is lasting; useful memories, knowledge and skills remain intact.",
+            "description_key": "functions.ocf-lif-001.lifecycle.scopes.baseline.description",
+            "activation": "automatic"
+          },
+          "application": {
+            "persistence": "temporary",
+            "description": "One deliberate intervention when the selected habit arises; not continuous behavioral suppression or cancellation of other functions.",
+            "description_key": "functions.ocf-lif-001.lifecycle.scopes.application.description",
+            "activation": "manual"
+          }
+        }
+      },
+      "commands": [
+        {
+          "id": "OCF-CMD-LIF-001-PRIMARY",
+          "function_id": "OCF-LIF-001",
+          "phrase_ref": {
+            "source": "canonical-primary"
+          },
+          "role": "activation",
+          "designation": "primary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-lif-001-primary.label",
+            "usage_key": "commands.ocf-cmd-lif-001-primary.usage",
+            "purpose_key": "functions.ocf-lif-001.purpose",
+            "explanation_key": "commands.ocf-cmd-lif-001-primary.explanation",
+            "display_cue_key": "commands.ocf-cmd-lif-001-primary.display-cue",
+            "spoken_cue_key": "commands.ocf-cmd-lif-001-primary.spoken-cue"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 1
+          },
+          "effect_scope_ref": "lifecycle.scopes.baseline.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-INHALE-HOLD",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-lif-001.function-body"
+            ],
+            "before_steps": [
+              {
+                "id": "select-habit-pattern",
+                "operation": "select-intention",
+                "localization_key": "command.procedure.select-intention"
+              }
+            ]
+          },
+          "relationships": {},
+          "spoken": "Plus Free This Habit",
+          "spoken_review": "reviewed",
+          "observed_phrase": {
+            "text": "Plus Free This Habit",
+            "narration_key": "hplus.function.ocf-lif-001.function-body",
+            "relationship": "canonical-match"
+          },
+          "invocation_scope_ref": "lifecycle.scopes.application",
+          "phrase": "PLUS-FREE THIS HABIT",
+          "effect_scope": "permanent",
+          "effect_scope_details": {
+            "persistence": "permanent",
+            "description": "The intended change to the deliberately selected habit is lasting; useful memories, knowledge and skills remain intact.",
+            "description_key": "functions.ocf-lif-001.lifecycle.scopes.baseline.description",
+            "activation": "automatic"
+          },
+          "invocation_scope": {
+            "persistence": "temporary",
+            "description": "One deliberate intervention when the selected habit arises; not continuous behavioral suppression or cancellation of other functions.",
+            "description_key": "functions.ocf-lif-001.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "resolved_procedure_steps": [
+            {
+              "id": "select-habit-pattern",
+              "operation": "select-intention",
+              "localization_key": "command.procedure.select-intention"
+            },
+            {
+              "id": "inhale",
+              "operation": "inhale",
+              "localization_key": "command.procedure.inhale"
+            },
+            {
+              "id": "hold",
+              "operation": "hold-breath",
+              "localization_key": "command.procedure.hold-breath"
+            },
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            },
+            {
+              "id": "exhale",
+              "operation": "exhale",
+              "localization_key": "command.procedure.exhale"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        "OCF-LIF-001:persistence"
+      ]
+    },
+    {
+      "id": "OCF-PRF-004",
+      "title": "Light Foot",
+      "purpose": "Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.",
+      "lifecycle": {
+        "activation": "manual",
+        "persistence": "permanent",
+        "release": {
+          "command": null,
+          "required": false
+        },
+        "trigger_conditions": [],
+        "scopes": {
+          "capability": {
+            "persistence": "permanent",
+            "description": "The learned movement ability remains available.",
+            "description_key": "functions.ocf-prf-004.lifecycle.scopes.capability.description"
+          },
+          "baseline": {
+            "persistence": "permanent",
+            "description": "The everyday movement pattern continues without conscious cue use.",
+            "description_key": "functions.ocf-prf-004.lifecycle.scopes.baseline.description",
+            "activation": "automatic"
+          },
+          "application": {
+            "persistence": "temporary",
+            "description": "Optional conscious reinforcement of the movement baseline; not permanently intensified movement.",
+            "description_key": "functions.ocf-prf-004.lifecycle.scopes.application.description",
+            "activation": "manual"
+          }
+        }
+      },
+      "commands": [
+        {
+          "id": "OCF-CMD-PRF-004-PRIMARY",
+          "function_id": "OCF-PRF-004",
+          "phrase_ref": {
+            "source": "canonical-primary"
+          },
+          "role": "activation",
+          "designation": "primary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-prf-004-primary.label",
+            "usage_key": "commands.ocf-cmd-prf-004-primary.usage",
+            "purpose_key": "functions.ocf-prf-004.purpose",
+            "explanation_key": "commands.ocf-cmd-prf-004-primary.explanation",
+            "display_cue_key": "commands.ocf-cmd-prf-004-primary.display-cue",
+            "spoken_cue_key": "commands.ocf-cmd-prf-004-primary.spoken-cue"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 1
+          },
+          "effect_scope_ref": "lifecycle.scopes.application.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-INHALE-HOLD",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-prf-004.function-body"
+            ],
+            "before_steps": [
+              {
+                "id": "select-movement-context",
+                "operation": "select-purpose",
+                "localization_key": "command.procedure.select-purpose"
+              }
+            ]
+          },
+          "relationships": {},
+          "observed_phrase": {
+            "text": "Plus Light Step",
+            "narration_key": "hplus.function.ocf-prf-004.function-body",
+            "relationship": "canonical-match"
+          },
+          "spoken": "Plus Light Step",
+          "spoken_review": "reviewed",
+          "invocation_scope_ref": "lifecycle.scopes.application",
+          "phrase": "PLUS-LIGHT STEP",
+          "effect_scope": "temporary",
+          "effect_scope_details": {
+            "persistence": "temporary",
+            "description": "Optional conscious reinforcement of the movement baseline; not permanently intensified movement.",
+            "description_key": "functions.ocf-prf-004.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "invocation_scope": {
+            "persistence": "temporary",
+            "description": "Optional conscious reinforcement of the movement baseline; not permanently intensified movement.",
+            "description_key": "functions.ocf-prf-004.lifecycle.scopes.application.description",
+            "activation": "manual"
+          },
+          "resolved_procedure_steps": [
+            {
+              "id": "select-movement-context",
+              "operation": "select-purpose",
+              "localization_key": "command.procedure.select-purpose"
+            },
+            {
+              "id": "inhale",
+              "operation": "inhale",
+              "localization_key": "command.procedure.inhale"
+            },
+            {
+              "id": "hold",
+              "operation": "hold-breath",
+              "localization_key": "command.procedure.hold-breath"
+            },
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            },
+            {
+              "id": "exhale",
+              "operation": "exhale",
+              "localization_key": "command.procedure.exhale"
+            }
+          ]
+        },
+        {
+          "id": "OCF-CMD-PRF-004-LEGACY-01",
+          "function_id": "OCF-PRF-004",
+          "phrase_ref": {
+            "source": "legacy-command",
+            "command_id": "OCF-CMD-PRF-004-LEGACY-01"
+          },
+          "role": "legacy-alias",
+          "designation": "secondary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-prf-004-legacy-01.label",
+            "usage_key": "commands.ocf-cmd-prf-004-legacy-01.usage",
+            "purpose_key": "functions.ocf-prf-004.purpose",
+            "explanation_key": "commands.ocf-cmd-prf-004-legacy-01.explanation"
+          },
+          "documentation": {
+            "visible": false,
+            "order": 101
+          },
+          "effect_scope_ref": "lifecycle.persistence",
+          "relationships": {},
+          "spoken": null,
+          "spoken_review": "unresolved",
+          "availability": "historical-lookup",
+          "phrase": "PLUS-LIGHTER, LIGHTER",
+          "effect_scope": "permanent"
+        }
+      ],
+      "issues": [
+        "OCF-PRF-004:persistence"
+      ]
+    },
+    {
+      "id": "OCF-SEN-002",
+      "title": "Seeing",
+      "purpose": "Supports physical seeing and inner visualization, including visual processing, visual memory, and deliberate creation and manipulation of mental images.",
+      "lifecycle": {
+        "activation": "manual",
+        "persistence": "permanent",
+        "release": {
+          "command": null,
+          "required": false
+        },
+        "trigger_conditions": []
+      },
+      "commands": [
+        {
+          "id": "OCF-CMD-SEN-002-PRIMARY",
+          "function_id": "OCF-SEN-002",
+          "phrase_ref": {
+            "source": "canonical-primary"
+          },
+          "role": "activation",
+          "designation": "primary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-sen-002-primary.label",
+            "usage_key": "commands.ocf-cmd-sen-002-primary.usage",
+            "purpose_key": "functions.ocf-sen-002.purpose",
+            "explanation_key": "commands.ocf-cmd-sen-002-primary.explanation",
+            "display_cue_key": "commands.ocf-cmd-sen-002-primary.display-cue",
+            "spoken_cue_key": "commands.ocf-cmd-sen-002-primary.spoken-cue"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 1
+          },
+          "effect_scope_ref": "lifecycle.persistence",
+          "procedure": {
+            "ref": "OCF-PROC-INHALE-HOLD",
+            "status": "documented",
+            "evidence_keys": [
+              "hplus.function.ocf-sen-002.function-body"
+            ],
+            "before_steps": []
+          },
+          "relationships": {},
+          "observed_phrase": {
+            "text": "Plus See Better",
+            "narration_key": "hplus.function.ocf-sen-002.function-body",
+            "relationship": "canonical-match"
+          },
+          "spoken": "Plus See Better",
+          "spoken_review": "reviewed",
+          "phrase": "PLUS-SEE BETTER",
+          "effect_scope": "permanent",
+          "resolved_procedure_steps": [
+            {
+              "id": "inhale",
+              "operation": "inhale",
+              "localization_key": "command.procedure.inhale"
+            },
+            {
+              "id": "hold",
+              "operation": "hold-breath",
+              "localization_key": "command.procedure.hold-breath"
+            },
+            {
+              "id": "command",
+              "operation": "think-or-say-command",
+              "localization_key": "command.procedure.think-or-say-command"
+            },
+            {
+              "id": "exhale",
+              "operation": "exhale",
+              "localization_key": "command.procedure.exhale"
+            }
+          ]
+        },
+        {
+          "id": "OCF-CMD-SEN-002-LEGACY-01",
+          "function_id": "OCF-SEN-002",
+          "phrase_ref": {
+            "source": "legacy-command",
+            "command_id": "OCF-CMD-SEN-002-LEGACY-01"
+          },
+          "role": "legacy-alias",
+          "designation": "secondary",
+          "localization": {
+            "label_key": "commands.ocf-cmd-sen-002-legacy-01.label",
+            "usage_key": "commands.ocf-cmd-sen-002-legacy-01.usage",
+            "purpose_key": "functions.ocf-sen-002.purpose",
+            "explanation_key": "commands.ocf-cmd-sen-002-legacy-01.explanation"
+          },
+          "documentation": {
+            "visible": true,
+            "order": 101
+          },
+          "effect_scope_ref": "lifecycle.persistence",
+          "relationships": {},
+          "spoken": null,
+          "spoken_review": "unresolved",
+          "phrase": "PLUS-SEE BETTER",
+          "effect_scope": "permanent"
+        }
+      ],
+      "issues": [
+        "OCF-SEN-002:purpose"
+      ]
+    }
+  ]
+}

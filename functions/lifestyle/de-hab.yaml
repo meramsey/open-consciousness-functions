@@ -18,8 +18,8 @@ canonical:
   command:
     modes: []
     mode_ids: []
-    primary: "PLUS-FREE THIS HABIT"
-  name: "Habit Freedom"
+    primary: PLUS-FREE THIS HABIT
+  name: Habit Freedom
 commands:
 - id: OCF-CMD-LIF-001-PRIMARY
   function_id: OCF-LIF-001
@@ -37,7 +37,7 @@ commands:
   documentation:
     visible: true
     order: 1
-  effect_scope_ref: lifecycle.persistence
+  effect_scope_ref: lifecycle.scopes.baseline.persistence
   procedure:
     ref: OCF-PROC-INHALE-HOLD
     status: documented
@@ -48,9 +48,13 @@ commands:
       operation: select-intention
       localization_key: command.procedure.select-intention
   relationships: {}
-  spoken: "Plus Free This Habit"
+  spoken: Plus Free This Habit
   spoken_review: reviewed
-  observed_phrase: {"text": "Plus Free This Habit", "narration_key": "hplus.function.ocf-lif-001.function-body", "relationship": "canonical-match"}
+  observed_phrase:
+    text: Plus Free This Habit
+    narration_key: hplus.function.ocf-lif-001.function-body
+    relationship: canonical-match
+  invocation_scope_ref: lifecycle.scopes.application
 chains: []
 claims:
   intended_effects: []
@@ -91,13 +95,30 @@ legacy:
   source_system: Monroe H-PLUS
 lifecycle:
   activation: manual
-  persistence: temporary
+  persistence: permanent
   release:
     command: null
     required: false
   trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description: The ability to change selected unwanted habits remains available.
+      description_key: functions.ocf-lif-001.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description: The intended change to the deliberately selected habit is lasting; useful memories,
+        knowledge and skills remain intact.
+      description_key: functions.ocf-lif-001.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description: One deliberate intervention when the selected habit arises; not continuous behavioral
+        suppression or cancellation of other functions.
+      description_key: functions.ocf-lif-001.lifecycle.scopes.application.description
+      activation: manual
 ocf:
-  command_review: "approved"
+  command_review: approved
   reimplementation_status: planned
 purpose:
   community_description: Supports stepping away from habitual, repeated behavior patterns.

@@ -2,7 +2,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Reset
 
-**Purpose**: Returns mind and body to a neutral, settled baseline.
+**Purpose**: Supports a deliberately invoked shift from tiredness, weariness, or feeling emotionally low toward renewed wakefulness, energy, clarity, and confidence.
 
 **Function persistence**: Temporary (`temporary`)
 

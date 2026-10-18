@@ -19,7 +19,7 @@ canonical:
     modes: []
     mode_ids: []
     primary: PLUS-AUTOMATE
-  name: "Automatic Action"
+  name: Automatic Action
 commands:
 - id: OCF-CMD-AUT-001-PRIMARY
   function_id: OCF-AUT-001
@@ -37,7 +37,7 @@ commands:
   documentation:
     visible: true
     order: 1
-  effect_scope_ref: lifecycle.persistence
+  effect_scope_ref: lifecycle.scopes.baseline.persistence
   procedure:
     ref: OCF-PROC-INHALE-HOLD
     status: documented
@@ -48,8 +48,9 @@ commands:
       operation: select-activity
       localization_key: command.procedure.select-activity
   relationships: {}
-  spoken: "Plus Automate"
+  spoken: Plus Automate
   spoken_review: reviewed
+  invocation_scope_ref: lifecycle.scopes.application
 chains: []
 claims:
   intended_effects: []
@@ -85,11 +86,28 @@ legacy:
   source_system: Monroe H-PLUS
 lifecycle:
   activation: manual
-  persistence: temporary
+  persistence: permanent
   release:
     command: null
     required: false
   trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description: The ability to develop automatic skills remains available.
+      description_key: functions.ocf-aut-001.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description: Correctly learned selected skill patterns are retained; each performance remains observable,
+        adjustable and stoppable.
+      description_key: functions.ocf-aut-001.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description: One deliberate cue invocation or chosen performance; not continuously performing an
+        action.
+      description_key: functions.ocf-aut-001.lifecycle.scopes.application.description
+      activation: manual
 ocf:
   command_review: approved
   reimplementation_status: planned

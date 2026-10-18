@@ -1,8 +1,6 @@
 aliases:
-  commands:
-    []
-  command_ids:
-    []
+  commands: []
+  command_ids: []
   names:
   - Light Foot
 applications: []
@@ -20,7 +18,7 @@ canonical:
   command:
     modes: []
     mode_ids: []
-    primary: "PLUS-LIGHT STEP"
+    primary: PLUS-LIGHT STEP
   name: Light Foot
 commands:
 - id: OCF-CMD-PRF-004-PRIMARY
@@ -39,7 +37,7 @@ commands:
   documentation:
     visible: true
     order: 1
-  effect_scope_ref: lifecycle.persistence
+  effect_scope_ref: lifecycle.scopes.application.persistence
   procedure:
     ref: OCF-PROC-INHALE-HOLD
     status: documented
@@ -54,8 +52,9 @@ commands:
     text: Plus Light Step
     narration_key: hplus.function.ocf-prf-004.function-body
     relationship: canonical-match
-  spoken: "Plus Light Step"
-  spoken_review: "reviewed"
+  spoken: Plus Light Step
+  spoken_review: reviewed
+  invocation_scope_ref: lifecycle.scopes.application
 - id: OCF-CMD-PRF-004-LEGACY-01
   function_id: OCF-PRF-004
   phrase_ref:
@@ -75,7 +74,7 @@ commands:
   relationships: {}
   spoken: null
   spoken_review: unresolved
-  availability: "historical-lookup"
+  availability: historical-lookup
 chains: []
 claims:
   intended_effects: []
@@ -116,13 +115,29 @@ legacy:
   source_system: Monroe H-PLUS
 lifecycle:
   activation: manual
-  persistence: temporary
+  persistence: permanent
   release:
     command: null
     required: false
   trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description: The learned movement ability remains available.
+      description_key: functions.ocf-prf-004.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description: The everyday movement pattern continues without conscious cue use.
+      description_key: functions.ocf-prf-004.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description: Optional conscious reinforcement of the movement baseline; not permanently intensified
+        movement.
+      description_key: functions.ocf-prf-004.lifecycle.scopes.application.description
+      activation: manual
 ocf:
-  command_review: "approved"
+  command_review: approved
   reimplementation_status: planned
 purpose:
   community_description: Eases the felt sense of physical lightness and ease of movement; proposed concise

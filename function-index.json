@@ -40,10 +40,23 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "order": 1,
               "visible": true
             },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
+            "effect_scope": "permanent",
+            "effect_scope_details": {
+              "activation": "automatic",
+              "description": "Correctly learned selected skill patterns are retained; each performance remains observable, adjustable and stoppable.",
+              "description_key": "functions.ocf-aut-001.lifecycle.scopes.baseline.description",
+              "persistence": "permanent"
+            },
+            "effect_scope_ref": "lifecycle.scopes.baseline.persistence",
             "function_id": "OCF-AUT-001",
             "id": "OCF-CMD-AUT-001-PRIMARY",
+            "invocation_scope": {
+              "activation": "manual",
+              "description": "One deliberate cue invocation or chosen performance; not continuously performing an action.",
+              "description_key": "functions.ocf-aut-001.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "invocation_scope_ref": "lifecycle.scopes.application",
             "localization": {
               "display_cue_key": "commands.ocf-cmd-aut-001-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-aut-001-primary.explanation",
@@ -406,6 +419,34 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "scopes": {
+            "application": {
+              "activation": "manual",
+              "description": "One deliberate cue invocation or chosen performance; not continuously performing an action.",
+              "description_key": "functions.ocf-aut-001.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "baseline": {
+              "activation": "automatic",
+              "description": "Correctly learned selected skill patterns are retained; each performance remains observable, adjustable and stoppable.",
+              "description_key": "functions.ocf-aut-001.lifecycle.scopes.baseline.description",
+              "persistence": "permanent"
+            },
+            "capability": {
+              "description": "The ability to develop automatic skills remains available.",
+              "description_key": "functions.ocf-aut-001.lifecycle.scopes.capability.description",
+              "persistence": "permanent"
+            }
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -459,7 +500,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "legacy_command": "PLUS-AUTOMATE",
       "legacy_name": "SEE-BE",
       "ocf_id": "OCF-AUT-001",
-      "persistence": "temporary",
+      "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
       "source_file": "functions/automation/see-be.yaml"
@@ -813,6 +854,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -1211,6 +1261,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -1619,6 +1678,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -2028,6 +2096,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -2126,9 +2203,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "visible": true
             },
             "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
+            "effect_scope_details": {
+              "activation": "manual",
+              "description": "Conscious release of one selected unnecessary craving; not permanent hunger suppression.",
+              "description_key": "functions.ocf-bod-005.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "effect_scope_ref": "lifecycle.scopes.application.persistence",
             "function_id": "OCF-BOD-005",
             "id": "OCF-CMD-BOD-005-PRIMARY",
+            "invocation_scope": {
+              "activation": "manual",
+              "description": "Conscious release of one selected unnecessary craving; not permanent hunger suppression.",
+              "description_key": "functions.ocf-bod-005.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "invocation_scope_ref": "lifecycle.scopes.application",
             "localization": {
               "display_cue_key": "commands.ocf-cmd-bod-005-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-bod-005-primary.explanation",
@@ -2431,6 +2521,34 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "scopes": {
+            "application": {
+              "activation": "manual",
+              "description": "Conscious release of one selected unnecessary craving; not permanent hunger suppression.",
+              "description_key": "functions.ocf-bod-005.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "baseline": {
+              "activation": "automatic",
+              "description": "Appetite awareness and deliberate eating choices persist while genuine nutritional needs and freedom to eat remain intact.",
+              "description_key": "functions.ocf-bod-005.lifecycle.scopes.baseline.description",
+              "persistence": "permanent"
+            },
+            "capability": {
+              "description": "The ability to recognize unnecessary cravings and choose deliberately remains available.",
+              "description_key": "functions.ocf-bod-005.lifecycle.scopes.capability.description",
+              "persistence": "permanent"
+            }
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -2453,7 +2571,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Adjusts appetite signals in either direction.",
+        "purpose": "Supports deliberate eating choices and release of unnecessary cravings while preserving awareness of genuine nutritional needs.",
         "safety": {
           "level": "health",
           "medical_relevance": true,
@@ -2486,7 +2604,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "legacy_command": "PLUS-SATISFIED, SUPPLIED",
       "legacy_name": "EAT/NO EAT",
       "ocf_id": "OCF-BOD-005",
-      "persistence": "temporary",
+      "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
       "source_file": "functions/body/eat-no-eat.yaml"
@@ -2840,6 +2958,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -2938,9 +3065,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "visible": true
             },
             "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
+            "effect_scope_details": {
+              "activation": "manual",
+              "description": "Optional conscious reinforcement of the adaptive baseline; not a permanently intensified state.",
+              "description_key": "functions.ocf-bod-007.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "effect_scope_ref": "lifecycle.scopes.application.persistence",
             "function_id": "OCF-BOD-007",
             "id": "OCF-CMD-BOD-007-PRIMARY",
+            "invocation_scope": {
+              "activation": "manual",
+              "description": "Optional conscious reinforcement of the adaptive baseline; not a permanently intensified state.",
+              "description_key": "functions.ocf-bod-007.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "invocation_scope_ref": "lifecycle.scopes.application",
             "localization": {
               "display_cue_key": "commands.ocf-cmd-bod-007-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-bod-007-primary.explanation",
@@ -3247,6 +3387,34 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "scopes": {
+            "application": {
+              "activation": "manual",
+              "description": "Optional conscious reinforcement of the adaptive baseline; not a permanently intensified state.",
+              "description_key": "functions.ocf-bod-007.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "baseline": {
+              "activation": "automatic",
+              "description": "The narrated adaptive cardiovascular maintenance baseline persists, adjusting to rest and activity; not fixed pressure or continuous lowering.",
+              "description_key": "functions.ocf-bod-007.lifecycle.scopes.baseline.description",
+              "persistence": "permanent"
+            },
+            "capability": {
+              "description": "The ability to reinforce cardiovascular awareness and relaxation remains available.",
+              "description_key": "functions.ocf-bod-007.lifecycle.scopes.capability.description",
+              "persistence": "permanent"
+            }
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -3302,7 +3470,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "legacy_command": "PLUS-BALANCE-BLOODPRESSURE",
       "legacy_name": "HYPERTENSION",
       "ocf_id": "OCF-BOD-007",
-      "persistence": "temporary",
+      "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
       "source_file": "functions/body/hypertension.yaml"
@@ -3645,6 +3813,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -3667,7 +3844,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Supports a felt sense of alertness and preparedness; not a medical claim.",
+        "purpose": "Supports a self-directed practice of immune surveillance, coordinated protective responses, immune memory, protection of healthy tissue, and return to balance after a threat is controlled.",
         "safety": {
           "level": "health",
           "medical_relevance": true,
@@ -4045,6 +4222,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -4253,9 +4439,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "status": "documented"
             },
             "relationships": {
-              "modifies": [
-                "OCF-CMD-BOD-010-PRIMARY"
-              ],
               "pairs_with": [
                 "OCF-CMD-BOD-010-PRIMARY"
               ]
@@ -4292,7 +4475,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "operation": "exhale"
               }
             ],
-            "role": "decrease",
+            "role": "mode",
             "spoken": "Plus Food Less",
             "spoken_review": "reviewed"
           }
@@ -4541,6 +4724,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -4563,7 +4755,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Adjusts appetite and food drive in either direction using the MORE/LESS grammar.",
+        "purpose": "Supports conscious selection between fuller use of food energy and nourishment, or sufficient nourishment with reduced unnecessary energy retention and storage.",
         "safety": {
           "level": "health",
           "medical_relevance": true,
@@ -4639,9 +4831,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "visible": true
             },
             "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
+            "effect_scope_details": {
+              "activation": "manual",
+              "description": "Optional conscious reinforcement of regulation and adaptation.",
+              "description_key": "functions.ocf-bod-011.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "effect_scope_ref": "lifecycle.scopes.application.persistence",
             "function_id": "OCF-BOD-011",
             "id": "OCF-CMD-BOD-011-PRIMARY",
+            "invocation_scope": {
+              "activation": "manual",
+              "description": "Optional conscious reinforcement of regulation and adaptation.",
+              "description_key": "functions.ocf-bod-011.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "invocation_scope_ref": "lifecycle.scopes.application",
             "localization": {
               "display_cue_key": "commands.ocf-cmd-bod-011-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-bod-011-primary.explanation",
@@ -4939,6 +5144,34 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "scopes": {
+            "application": {
+              "activation": "manual",
+              "description": "Optional conscious reinforcement of regulation and adaptation.",
+              "description_key": "functions.ocf-bod-011.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "baseline": {
+              "activation": "automatic",
+              "description": "The narrated regulation and adaptation baseline persists as hormonal needs change; not fixed levels or heightened endocrine activity.",
+              "description_key": "functions.ocf-bod-011.lifecycle.scopes.baseline.description",
+              "persistence": "permanent"
+            },
+            "capability": {
+              "description": "The ability to reinforce hormonal balance remains available.",
+              "description_key": "functions.ocf-bod-011.lifecycle.scopes.capability.description",
+              "persistence": "permanent"
+            }
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -4992,7 +5225,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "legacy_command": "PLUS-EQUALIZE-HARMONIZE",
       "legacy_name": "PASSAGES",
       "ocf_id": "OCF-BOD-011",
-      "persistence": "temporary",
+      "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
       "source_file": "functions/body/passages.yaml"
@@ -5499,6 +5732,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -5597,9 +5839,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "visible": true
             },
             "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
+            "effect_scope_details": {
+              "activation": "manual",
+              "description": "Conscious selected-area reinforcement; not continuous intensified repair in that area.",
+              "description_key": "functions.ocf-bod-013.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "effect_scope_ref": "lifecycle.scopes.application.persistence",
             "function_id": "OCF-BOD-013",
             "id": "OCF-CMD-BOD-013-PRIMARY",
+            "invocation_scope": {
+              "activation": "manual",
+              "description": "Conscious selected-area reinforcement; not continuous intensified repair in that area.",
+              "description_key": "functions.ocf-bod-013.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "invocation_scope_ref": "lifecycle.scopes.application",
             "localization": {
               "display_cue_key": "commands.ocf-cmd-bod-013-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-bod-013-primary.explanation",
@@ -5907,6 +6162,34 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "scopes": {
+            "application": {
+              "activation": "manual",
+              "description": "Conscious selected-area reinforcement; not continuous intensified repair in that area.",
+              "description_key": "functions.ocf-bod-013.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "baseline": {
+              "activation": "automatic",
+              "description": "The narrated whole-body maintenance and renewal baseline persists.",
+              "description_key": "functions.ocf-bod-013.lifecycle.scopes.baseline.description",
+              "persistence": "permanent"
+            },
+            "capability": {
+              "description": "The ability to direct attention toward a selected body area remains available.",
+              "description_key": "functions.ocf-bod-013.lifecycle.scopes.capability.description",
+              "persistence": "permanent"
+            }
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -5962,7 +6245,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "legacy_command": "PLUS-BALANCE, HEAL",
       "legacy_name": "TUNE-UP",
       "ocf_id": "OCF-BOD-013",
-      "persistence": "temporary",
+      "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
       "source_file": "functions/body/tune-up.yaml"
@@ -6379,6 +6662,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -6946,6 +7238,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "command_id": "OCF-CMD-BOD-015-LEGACY-02",
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -7044,9 +7346,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "visible": true
             },
             "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
+            "effect_scope_details": {
+              "activation": "manual",
+              "description": "One consciously chosen information request; not a permanently active search or stream of answers.",
+              "description_key": "functions.ocf-cog-001.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "effect_scope_ref": "lifecycle.scopes.application.persistence",
             "function_id": "OCF-COG-001",
             "id": "OCF-CMD-COG-001-PRIMARY",
+            "invocation_scope": {
+              "activation": "manual",
+              "description": "One consciously chosen information request; not a permanently active search or stream of answers.",
+              "description_key": "functions.ocf-cog-001.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "invocation_scope_ref": "lifecycle.scopes.application",
             "localization": {
               "display_cue_key": "commands.ocf-cmd-cog-001-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-cog-001-primary.explanation",
@@ -7333,6 +7648,34 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "scopes": {
+            "application": {
+              "activation": "manual",
+              "description": "One consciously chosen information request; not a permanently active search or stream of answers.",
+              "description_key": "functions.ocf-cog-001.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "baseline": {
+              "activation": "automatic",
+              "description": "Personal knowledge continues to be organized and connected in the background.",
+              "description_key": "functions.ocf-cog-001.lifecycle.scopes.baseline.description",
+              "persistence": "permanent"
+            },
+            "capability": {
+              "description": "Access to the personal knowledge library remains available.",
+              "description_key": "functions.ocf-cog-001.lifecycle.scopes.capability.description",
+              "persistence": "permanent"
+            }
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -7735,6 +8078,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -8186,6 +8538,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "command_id": "OCF-CMD-COG-003-CLOSED",
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -8283,10 +8645,23 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "order": 1,
               "visible": true
             },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
+            "effect_scope": "permanent",
+            "effect_scope_details": {
+              "activation": "automatic",
+              "description": "Deliberately imprinted material is retained and maintained; storage is distinct from an individual recall action.",
+              "description_key": "functions.ocf-cog-004.lifecycle.scopes.baseline.description",
+              "persistence": "permanent"
+            },
+            "effect_scope_ref": "lifecycle.scopes.baseline.persistence",
             "function_id": "OCF-COG-004",
             "id": "OCF-CMD-COG-004-PRIMARY",
+            "invocation_scope": {
+              "activation": "manual",
+              "description": "A single deliberate imprint or recall invocation; no continuously running imprinting or recall.",
+              "description_key": "functions.ocf-cog-004.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "invocation_scope_ref": "lifecycle.scopes.application",
             "localization": {
               "display_cue_key": "commands.ocf-cmd-cog-004-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-cog-004-primary.explanation",
@@ -8365,9 +8740,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "visible": true
             },
             "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
+            "effect_scope_details": {
+              "activation": "manual",
+              "description": "A single deliberate imprint or recall invocation; no continuously running imprinting or recall.",
+              "description_key": "functions.ocf-cog-004.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "effect_scope_ref": "lifecycle.scopes.application.persistence",
             "function_id": "OCF-COG-004",
             "id": "OCF-CMD-COG-004-RECALL",
+            "invocation_scope": {
+              "activation": "manual",
+              "description": "A single deliberate imprint or recall invocation; no continuously running imprinting or recall.",
+              "description_key": "functions.ocf-cog-004.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "invocation_scope_ref": "lifecycle.scopes.application",
             "localization": {
               "explanation_key": "commands.ocf-cmd-cog-004-recall.explanation",
               "label_key": "commands.ocf-cmd-cog-004-recall.label",
@@ -8649,6 +9037,34 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "scopes": {
+            "application": {
+              "activation": "manual",
+              "description": "A single deliberate imprint or recall invocation; no continuously running imprinting or recall.",
+              "description_key": "functions.ocf-cog-004.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "baseline": {
+              "activation": "automatic",
+              "description": "Deliberately imprinted material is retained and maintained; storage is distinct from an individual recall action.",
+              "description_key": "functions.ocf-cog-004.lifecycle.scopes.baseline.description",
+              "persistence": "permanent"
+            },
+            "capability": {
+              "description": "Learned imprinting ability remains available.",
+              "description_key": "functions.ocf-cog-004.lifecycle.scopes.capability.description",
+              "persistence": "permanent"
+            }
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -8702,7 +9118,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "legacy_command": "PLUS-IMPRINT, IMPRINT / PLUS-RECALL",
       "legacy_name": "IMPRINT",
       "ocf_id": "OCF-COG-004",
-      "persistence": "temporary",
+      "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
       "source_file": "functions/cognition/imprint.yaml"
@@ -8738,9 +9154,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "visible": true
             },
             "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
+            "effect_scope_details": {
+              "activation": "manual",
+              "description": "One consciously chosen, situation-focused exploration.",
+              "description_key": "functions.ocf-cog-005.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "effect_scope_ref": "lifecycle.scopes.application.persistence",
             "function_id": "OCF-COG-005",
             "id": "OCF-CMD-COG-005-PRIMARY",
+            "invocation_scope": {
+              "activation": "manual",
+              "description": "One consciously chosen, situation-focused exploration.",
+              "description_key": "functions.ocf-cog-005.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "invocation_scope_ref": "lifecycle.scopes.application",
             "localization": {
               "explanation_key": "commands.ocf-cmd-cog-005-primary.explanation",
               "label_key": "commands.ocf-cmd-cog-005-primary.label",
@@ -9081,6 +9510,34 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "scopes": {
+            "application": {
+              "activation": "manual",
+              "description": "One consciously chosen, situation-focused exploration.",
+              "description_key": "functions.ocf-cog-005.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "baseline": {
+              "activation": "automatic",
+              "description": "Connections and insights continue forming in the background; no selected situation remains permanently active.",
+              "description_key": "functions.ocf-cog-005.lifecycle.scopes.baseline.description",
+              "persistence": "permanent"
+            },
+            "capability": {
+              "description": "The ability to explore possibilities remains available.",
+              "description_key": "functions.ocf-cog-005.lifecycle.scopes.capability.description",
+              "persistence": "permanent"
+            }
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -9477,6 +9934,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -9872,6 +10338,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -10268,6 +10743,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -10364,9 +10848,23 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "visible": true
             },
             "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
+            "effect_scope_details": {
+              "activation": "conditional",
+              "description": "The narrated adaptive response lasts for the injury episode and adjusts as the injury stabilizes.",
+              "description_key": "functions.ocf-emg-001.lifecycle.scopes.episode.description",
+              "persistence": "temporary",
+              "trigger_conditions_ref": "lifecycle.trigger_conditions"
+            },
+            "effect_scope_ref": "lifecycle.scopes.episode.persistence",
             "function_id": "OCF-EMG-001",
             "id": "OCF-CMD-EMG-001-PRIMARY",
+            "invocation_scope": {
+              "activation": "manual",
+              "description": "Optional manual reinforcement when conscious and able.",
+              "description_key": "functions.ocf-emg-001.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "invocation_scope_ref": "lifecycle.scopes.application",
             "localization": {
               "display_cue_key": "commands.ocf-cmd-emg-001-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-emg-001-primary.explanation",
@@ -10718,6 +11216,37 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "conditional",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "scopes": {
+            "application": {
+              "activation": "manual",
+              "description": "Optional manual reinforcement when conscious and able.",
+              "description_key": "functions.ocf-emg-001.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "capability": {
+              "description": "Narrated injury-response readiness remains available, including when conscious invocation is unavailable.",
+              "description_key": "functions.ocf-emg-001.lifecycle.scopes.capability.description",
+              "persistence": "permanent"
+            },
+            "episode": {
+              "activation": "conditional",
+              "description": "The narrated adaptive response lasts for the injury episode and adjusts as the injury stabilizes.",
+              "description_key": "functions.ocf-emg-001.lifecycle.scopes.episode.description",
+              "persistence": "temporary",
+              "trigger_conditions_ref": "lifecycle.trigger_conditions"
+            }
+          },
+          "trigger_conditions": [
+            "physical injury occurs"
+          ]
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -10817,9 +11346,23 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "visible": true
             },
             "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
+            "effect_scope_details": {
+              "activation": "conditional",
+              "description": "The narrated exposure response operates only as strongly and for as long as needed for the actual substance and exposure.",
+              "description_key": "functions.ocf-emg-002.lifecycle.scopes.episode.description",
+              "persistence": "temporary",
+              "trigger_conditions_ref": "lifecycle.trigger_conditions"
+            },
+            "effect_scope_ref": "lifecycle.scopes.episode.persistence",
             "function_id": "OCF-EMG-002",
             "id": "OCF-CMD-EMG-002-PRIMARY",
+            "invocation_scope": {
+              "activation": "manual",
+              "description": "Optional manual reinforcement when conscious and able.",
+              "description_key": "functions.ocf-emg-002.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "invocation_scope_ref": "lifecycle.scopes.application",
             "localization": {
               "display_cue_key": "commands.ocf-cmd-emg-002-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-emg-002-primary.explanation",
@@ -11171,6 +11714,37 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "conditional",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "scopes": {
+            "application": {
+              "activation": "manual",
+              "description": "Optional manual reinforcement when conscious and able.",
+              "description_key": "functions.ocf-emg-002.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "capability": {
+              "description": "Narrated harmful-exposure response readiness remains available, including when conscious invocation is unavailable.",
+              "description_key": "functions.ocf-emg-002.lifecycle.scopes.capability.description",
+              "persistence": "permanent"
+            },
+            "episode": {
+              "activation": "conditional",
+              "description": "The narrated exposure response operates only as strongly and for as long as needed for the actual substance and exposure.",
+              "description_key": "functions.ocf-emg-002.lifecycle.scopes.episode.description",
+              "persistence": "temporary",
+              "trigger_conditions_ref": "lifecycle.trigger_conditions"
+            }
+          },
+          "trigger_conditions": [
+            "a harmful foreign substance enters or contacts the body"
+          ]
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -11570,6 +12144,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -11982,6 +12565,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -12438,6 +13030,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -12846,6 +13447,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -13464,6 +14074,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "command_id": "OCF-CMD-EXP-002-RELEASE",
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -13891,6 +14511,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -14286,6 +14915,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -14689,6 +15327,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -15085,6 +15732,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [
           "en-US"
         ],
@@ -15522,6 +16178,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -15544,7 +16209,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Returns mind and body to a neutral, settled baseline.",
+        "purpose": "Supports a deliberately invoked shift from tiredness, weariness, or feeling emotionally low toward renewed wakefulness, energy, clarity, and confidence.",
         "safety": {
           "level": "general",
           "medical_relevance": false,
@@ -15976,6 +16641,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -16071,10 +16745,23 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "order": 1,
               "visible": true
             },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
+            "effect_scope": "permanent",
+            "effect_scope_details": {
+              "activation": "automatic",
+              "description": "The intended change to the deliberately selected habit is lasting; useful memories, knowledge and skills remain intact.",
+              "description_key": "functions.ocf-lif-001.lifecycle.scopes.baseline.description",
+              "persistence": "permanent"
+            },
+            "effect_scope_ref": "lifecycle.scopes.baseline.persistence",
             "function_id": "OCF-LIF-001",
             "id": "OCF-CMD-LIF-001-PRIMARY",
+            "invocation_scope": {
+              "activation": "manual",
+              "description": "One deliberate intervention when the selected habit arises; not continuous behavioral suppression or cancellation of other functions.",
+              "description_key": "functions.ocf-lif-001.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "invocation_scope_ref": "lifecycle.scopes.application",
             "localization": {
               "display_cue_key": "commands.ocf-cmd-lif-001-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-lif-001-primary.explanation",
@@ -16383,6 +17070,34 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "scopes": {
+            "application": {
+              "activation": "manual",
+              "description": "One deliberate intervention when the selected habit arises; not continuous behavioral suppression or cancellation of other functions.",
+              "description_key": "functions.ocf-lif-001.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "baseline": {
+              "activation": "automatic",
+              "description": "The intended change to the deliberately selected habit is lasting; useful memories, knowledge and skills remain intact.",
+              "description_key": "functions.ocf-lif-001.lifecycle.scopes.baseline.description",
+              "persistence": "permanent"
+            },
+            "capability": {
+              "description": "The ability to change selected unwanted habits remains available.",
+              "description_key": "functions.ocf-lif-001.lifecycle.scopes.capability.description",
+              "persistence": "permanent"
+            }
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -16436,7 +17151,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "legacy_command": "PLUS-NO MORE, NO MORE",
       "legacy_name": "DE-HAB",
       "ocf_id": "OCF-LIF-001",
-      "persistence": "temporary",
+      "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
       "source_file": "functions/lifestyle/de-hab.yaml"
@@ -16778,6 +17493,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -17185,6 +17909,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -17587,6 +18320,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -17683,9 +18425,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "visible": true
             },
             "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
+            "effect_scope_details": {
+              "activation": "manual",
+              "description": "Optional conscious reinforcement of the movement baseline; not permanently intensified movement.",
+              "description_key": "functions.ocf-prf-004.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "effect_scope_ref": "lifecycle.scopes.application.persistence",
             "function_id": "OCF-PRF-004",
             "id": "OCF-CMD-PRF-004-PRIMARY",
+            "invocation_scope": {
+              "activation": "manual",
+              "description": "Optional conscious reinforcement of the movement baseline; not permanently intensified movement.",
+              "description_key": "functions.ocf-prf-004.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "invocation_scope_ref": "lifecycle.scopes.application",
             "localization": {
               "display_cue_key": "commands.ocf-cmd-prf-004-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-prf-004-primary.explanation",
@@ -18053,6 +18808,34 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "scopes": {
+            "application": {
+              "activation": "manual",
+              "description": "Optional conscious reinforcement of the movement baseline; not permanently intensified movement.",
+              "description_key": "functions.ocf-prf-004.lifecycle.scopes.application.description",
+              "persistence": "temporary"
+            },
+            "baseline": {
+              "activation": "automatic",
+              "description": "The everyday movement pattern continues without conscious cue use.",
+              "description_key": "functions.ocf-prf-004.lifecycle.scopes.baseline.description",
+              "persistence": "permanent"
+            },
+            "capability": {
+              "description": "The learned movement ability remains available.",
+              "description_key": "functions.ocf-prf-004.lifecycle.scopes.capability.description",
+              "persistence": "permanent"
+            }
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -18106,7 +18889,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "legacy_command": "PLUS-LIGHTER, LIGHTER",
       "legacy_name": "LIGHT FOOT",
       "ocf_id": "OCF-PRF-004",
-      "persistence": "temporary",
+      "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
       "source_file": "functions/performance/light-foot.yaml"
@@ -18507,6 +19290,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -19074,6 +19866,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "command_id": "OCF-CMD-PRF-006-RELEASE",
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -19564,6 +20366,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [
           "en-US"
         ],
@@ -20024,6 +20835,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -20046,7 +20866,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Improves the felt sense of inner vision and clarity.",
+        "purpose": "Supports physical seeing and inner visualization, including visual processing, visual memory, and deliberate creation and manipulation of mental images.",
         "safety": {
           "level": "general",
           "medical_relevance": false,
@@ -20638,6 +21458,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -21252,6 +22081,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -21866,6 +22704,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -22273,6 +23120,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -22682,6 +23538,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -23094,6 +23959,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -23506,6 +24380,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [
@@ -23982,6 +24865,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [
           "en-US"
         ],
@@ -24479,6 +25371,15 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "decisions",
           "bindings"
         ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "temporary",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": []
+        },
         "locales": [],
         "narration_plan": {
           "sequence": [

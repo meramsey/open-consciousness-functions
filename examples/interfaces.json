@@ -1930,13 +1930,19 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
+      "example_sha256": "09603d115243e85912884425ca845200fa02195d8ca2761dc12c1075373d1e59",
+      "schema": "functional-metadata.schema.json",
+      "source": "function-content/editorial/functional-metadata-001.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
       "example_sha256": "bc4b5aba040556869cf261362132e211749b92f9a5608feebb70f18f58f6c504",
       "schema": "hplus-review-selection.schema.json",
       "source": "examples/contracts.json#/hplus-review-selection.schema.json",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "9fcbbcc5b5c613ab09f0234e9c53140a9445742124e0a3468057d826be708e5b",
+      "example_sha256": "9c936791af33a4206a48d2f031612c779f85ec4c9ed2e643675dc8700a18b604",
       "schema": "locale-manifest.schema.json",
       "source": "locales/en-US/manifest.yaml",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
@@ -2069,10 +2075,11 @@
     "schemas/editorial-function.schema.json": "f43a058da0c9e1815d975b255f8f96c420c2385da88627c9e78e6878cd42c6cf",
     "schemas/function-binding.schema.json": "d3095a31cf1edf746a9d6ec230b7a545765774be446a4028d8b03519df6fb33f",
     "schemas/function-decisions.schema.json": "5882d26b99b7bb3005a334926ec879cf77df8dfdfc8041219eba0e59df871a52",
-    "schemas/function-discovery.schema.json": "455bbae5b5f50ef2a1db8e38b2e4ad6495d032acb92ad9c6d084f2a7c1fb4df4",
+    "schemas/function-discovery.schema.json": "a7a0e886391da83485fba62727dc12511a876327681327f8ab7399081c11cc49",
     "schemas/function-evidence.schema.json": "e541f1af76323fb9b059c4e39ceb5ab5f2eceaa0cbf4d6e37d0230d303b919a8",
     "schemas/function-specification.schema.json": "f7348ab2cba5a5fc8b4216efd00dc3e8300e053c77d78004527ea176354409ea",
-    "schemas/function.schema.json": "6fbfe70cbc054c212322aa6a052d9c234189adc5c3618a40f1b49bffc3c241a6",
+    "schemas/function.schema.json": "46036add72bf27ca85288a28b246c7b8c32da424d5d1c723a4d41d825f6d470a",
+    "schemas/functional-metadata.schema.json": "e8bcf6a722735269065ef8c308ac03e6a4dcae6210538209dec87d738a0d072a",
     "schemas/hplus-review-selection.schema.json": "2e65fa5465bd6a70185dbcbb5ae3d933b81e2e7034ba17b4699b7998a392ac19",
     "schemas/locale-manifest.schema.json": "3d1188d454415a4b111beca2545ed0627e89b112943ab523e81e632c3e1558b6",
     "schemas/locale-resource.schema.json": "1573a212f7aad08201444d34f7f10b7c035307f30ea713f6d1897dfe72dab7a7",
@@ -2093,7 +2100,7 @@
     "schemas/timed-transcript.schema.json": "c3e2798f7ace0ba81c1fb5f1d2fa5afad20066ac3285a2fb7772dbed995b5950",
     "schemas/voice-dataset.schema.json": "0307327f3f52eeaaaed71abaa6d1950c0b665fc677b43547e2452e9c31000ed8",
     "schemas/voice-profile.schema.json": "0204c3379a0540d22e3792ee5b78ad134bd2a8cb73ddf51c975a602dbcb2c23d",
-    "scripts/ocf_tools/agent_api.py": "3fb5c11dba79570b8c4c0864fbd91b787aade571cec403863e91b88d33d2251d",
+    "scripts/ocf_tools/agent_api.py": "5e6588bca9f91bff1a3d40a3a9aa0be4148c24e0121ec622c6f5d6a9df0e9c89",
     "scripts/ocf_tools/cli.py": "153d7d205b9e94c9804bb3a85b9a67645ad124965862da42a9e0eaba78921a54",
     "scripts/ocf_tools/lsp_server.py": "a753b91b1b73609ecd6886470a037a9bbf1259e2a77f08203546e55ef4cbae09",
     "scripts/ocf_tools/mcp_server.py": "d8641d4160888abbe7152fca2117623de4dfb061793b95b161dbfb4534a2be54",

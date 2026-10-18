@@ -37,7 +37,7 @@ commands:
   documentation:
     visible: true
     order: 1
-  effect_scope_ref: lifecycle.persistence
+  effect_scope_ref: lifecycle.scopes.application.persistence
   procedure:
     ref: OCF-PROC-OPTIONS
     status: documented
@@ -51,6 +51,7 @@ commands:
     relationship: legacy-form
   spoken: null
   spoken_review: unresolved
+  invocation_scope_ref: lifecycle.scopes.application
 - id: OCF-CMD-COG-005-LEGACY-01
   function_id: OCF-COG-005
   phrase_ref:
@@ -110,6 +111,22 @@ lifecycle:
     command: null
     required: false
   trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description: The ability to explore possibilities remains available.
+      description_key: functions.ocf-cog-005.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description: Connections and insights continue forming in the background; no selected situation
+        remains permanently active.
+      description_key: functions.ocf-cog-005.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description: One consciously chosen, situation-focused exploration.
+      description_key: functions.ocf-cog-005.lifecycle.scopes.application.description
+      activation: manual
 ocf:
   command_review: approved
   reimplementation_status: planned

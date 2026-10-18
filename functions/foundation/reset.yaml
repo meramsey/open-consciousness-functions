@@ -1,8 +1,6 @@
 aliases:
-  commands:
-    []
-  command_ids:
-    []
+  commands: []
+  command_ids: []
   names:
   - Reset
 applications: []
@@ -51,8 +49,8 @@ commands:
     text: Plus Reset
     narration_key: hplus.function.ocf-fnd-005.function-body
     relationship: canonical-match
-  spoken: "Plus Reset"
-  spoken_review: "reviewed"
+  spoken: Plus Reset
+  spoken_review: reviewed
 - id: OCF-CMD-FND-005-LEGACY-01
   function_id: OCF-FND-005
   phrase_ref:
@@ -72,7 +70,7 @@ commands:
   relationships: {}
   spoken: null
   spoken_review: unresolved
-  availability: "historical-lookup"
+  availability: historical-lookup
 chains: []
 claims:
   intended_effects: []
@@ -119,9 +117,11 @@ ocf:
   command_review: approved
   reimplementation_status: planned
 purpose:
-  community_description: Returns mind and body to a neutral, settled baseline.
+  community_description: Supports a deliberately invoked shift from tiredness, weariness, or feeling emotionally
+    low toward renewed wakefulness, energy, clarity, and confidence.
   source_description: null
-  summary: Returns mind and body to a neutral, settled baseline.
+  summary: Supports a deliberately invoked shift from tiredness, weariness, or feeling emotionally low
+    toward renewed wakefulness, energy, clarity, and confidence.
 safety:
   level: general
   medical_relevance: false

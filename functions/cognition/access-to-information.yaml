@@ -18,8 +18,8 @@ canonical:
   command:
     modes: []
     mode_ids: []
-    primary: "PLUS-ACCESS INFO"
-  name: "Information Access"
+    primary: PLUS-ACCESS INFO
+  name: Information Access
 commands:
 - id: OCF-CMD-COG-001-PRIMARY
   function_id: OCF-COG-001
@@ -37,7 +37,7 @@ commands:
   documentation:
     visible: true
     order: 1
-  effect_scope_ref: lifecycle.persistence
+  effect_scope_ref: lifecycle.scopes.application.persistence
   procedure:
     ref: OCF-PROC-QUESTION
     status: documented
@@ -45,9 +45,13 @@ commands:
     - hplus.function.ocf-cog-001.function-body
     before_steps: []
   relationships: {}
-  spoken: "Plus Access Info"
+  spoken: Plus Access Info
   spoken_review: reviewed
-  observed_phrase: {"text": "Plus Access Info", "narration_key": "hplus.function.ocf-cog-001.function-body", "relationship": "canonical-match"}
+  observed_phrase:
+    text: Plus Access Info
+    narration_key: hplus.function.ocf-cog-001.function-body
+    relationship: canonical-match
+  invocation_scope_ref: lifecycle.scopes.application
 chains: []
 claims:
   intended_effects: []
@@ -91,6 +95,22 @@ lifecycle:
     command: null
     required: false
   trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description: Access to the personal knowledge library remains available.
+      description_key: functions.ocf-cog-001.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description: Personal knowledge continues to be organized and connected in the background.
+      description_key: functions.ocf-cog-001.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description: One consciously chosen information request; not a permanently active search or stream
+        of answers.
+      description_key: functions.ocf-cog-001.lifecycle.scopes.application.description
+      activation: manual
 ocf:
   command_review: approved
   reimplementation_status: planned

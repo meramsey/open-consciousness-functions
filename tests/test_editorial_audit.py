@@ -32,6 +32,8 @@ def test_complete_function_command_audit_preserves_every_authoritative_phrase():
     }
     for successor in successor_records():
         for decision in successor["decisions"]:
+            if "primary_command_id" not in decision:
+                continue
             migrated.setdefault(decision["primary_command_id"], decision["previous"]["display_cue"])
     actual = {row["id"]: row["phrase"] for row in data["commands"]}
     expected = {

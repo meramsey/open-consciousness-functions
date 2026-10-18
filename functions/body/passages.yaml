@@ -18,8 +18,8 @@ canonical:
   command:
     modes: []
     mode_ids: []
-    primary: "PLUS-HORMONE BALANCE"
-  name: "Hormonal Transitions"
+    primary: PLUS-HORMONE BALANCE
+  name: Hormonal Transitions
 commands:
 - id: OCF-CMD-BOD-011-PRIMARY
   function_id: OCF-BOD-011
@@ -37,7 +37,7 @@ commands:
   documentation:
     visible: true
     order: 1
-  effect_scope_ref: lifecycle.persistence
+  effect_scope_ref: lifecycle.scopes.application.persistence
   procedure:
     ref: OCF-PROC-INHALE-HOLD
     status: documented
@@ -45,9 +45,13 @@ commands:
     - hplus.function.ocf-bod-011.function-body
     before_steps: []
   relationships: {}
-  spoken: "Plus Hormone Balance"
+  spoken: Plus Hormone Balance
   spoken_review: reviewed
-  observed_phrase: {"text": "Plus Hormone Balance", "narration_key": "hplus.function.ocf-bod-011.function-body", "relationship": "canonical-match"}
+  observed_phrase:
+    text: Plus Hormone Balance
+    narration_key: hplus.function.ocf-bod-011.function-body
+    relationship: canonical-match
+  invocation_scope_ref: lifecycle.scopes.application
 chains: []
 claims:
   intended_effects: []
@@ -86,11 +90,27 @@ legacy:
   source_system: Monroe H-PLUS
 lifecycle:
   activation: manual
-  persistence: temporary
+  persistence: permanent
   release:
     command: null
     required: false
   trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description: The ability to reinforce hormonal balance remains available.
+      description_key: functions.ocf-bod-011.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description: The narrated regulation and adaptation baseline persists as hormonal needs change;
+        not fixed levels or heightened endocrine activity.
+      description_key: functions.ocf-bod-011.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description: Optional conscious reinforcement of regulation and adaptation.
+      description_key: functions.ocf-bod-011.lifecycle.scopes.application.description
+      activation: manual
 ocf:
   command_review: approved
   reimplementation_status: planned

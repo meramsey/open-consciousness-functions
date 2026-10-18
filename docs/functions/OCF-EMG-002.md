@@ -14,6 +14,12 @@ Source availability does not establish historical authentication or provenance.
 
 [Command index](../COMMAND_INDEX.md)
 
+## Lifecycle scopes
+
+- **Learned capability / readiness** (`permanent`): Narrated harmful-exposure response readiness remains available, including when conscious invocation is unavailable.
+- **Individual invocation / application** (`temporary`, `manual`): Optional manual reinforcement when conscious and able.
+- **Conditional response episode** (`temporary`, `conditional`): The narrated exposure response operates only as strongly and for as long as needed for the actual substance and exposure.
+
 ## PLUS-CLEAR, REMOVE
 
 ### Primary activation command
@@ -21,6 +27,8 @@ Source availability does not establish historical authentication or provenance.
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
+
+**Command invocation**: Optional manual reinforcement when conscious and able.
 
 ### Activation sequence
 

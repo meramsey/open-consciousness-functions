@@ -37,6 +37,8 @@ GUIDE_KEYS = (
     "command.guide.source-auth-note",
     "command.guide.command-review",
     "command.guide.scope",
+    "command.guide.lifecycle-scopes",
+    "command.guide.invocation-scope",
     "command.scope.temporary",
     "command.scope.permanent",
     "command.scope.access-channel-close",
@@ -190,6 +192,10 @@ def _function_document(
         else:
             command_scope_key = f"command.scope.{view.get('effect_scope', record.persistence)}"
         view["scope_label"] = _localized(catalog, command_scope_key, locale)
+        if view.get("invocation_scope"):
+            view["invocation_description"] = _localized(
+                catalog, view["invocation_scope"]["description_key"], locale
+            )
         commands.append(view)
 
     return {
@@ -205,6 +211,16 @@ def _function_document(
         "command_review_label": review_label,
         "persistence": record.persistence,
         "persistence_label": persistence_label,
+        "lifecycle_scopes": [
+            {
+                "kind": kind,
+                "persistence": scope["persistence"],
+                "activation": scope.get("activation"),
+                "label": _localized(catalog, "command.scope-kind." + kind, locale),
+                "description": _localized(catalog, scope["description_key"], locale),
+            }
+            for kind, scope in record.data.get("lifecycle", {}).get("scopes", {}).items()
+        ],
         "reimplementation_status": record.reimplementation_status,
         "commands": commands,
     }
@@ -224,6 +240,17 @@ def build_command_index(locale: str | None = None, catalog: LocaleCatalog | None
         if value["fallback"]
     ]
     for function in functions:
+        for scope in function.get("lifecycle_scopes", []):
+            for field in ("label", "description"):
+                value = scope[field]
+                if value["fallback"]:
+                    fallback_rows.append(
+                        {
+                            "function_id": function["function_id"],
+                            "key": value["key"],
+                            "locale": value["resolved_locale"],
+                        }
+                    )
         for field in (
             "title",
             "short_description",
@@ -243,7 +270,14 @@ def build_command_index(locale: str | None = None, catalog: LocaleCatalog | None
                     }
                 )
         for command in function["commands"]:
-            for field in ("label", "usage", "explanation", "purpose", "scope_label"):
+            for field in (
+                "label",
+                "usage",
+                "explanation",
+                "purpose",
+                "scope_label",
+                "invocation_description",
+            ):
                 value = command.get(field)
                 if isinstance(value, dict) and value.get("fallback"):
                     fallback_rows.append(
@@ -384,6 +418,14 @@ def render_function_sheet(function: dict, index: dict) -> str:
         "[Command index](../COMMAND_INDEX.md)",
         "",
     ]
+    if function.get("lifecycle_scopes"):
+        lines.extend([f"## {strings['command.guide.lifecycle-scopes']['text']}", ""])
+        for scope in function["lifecycle_scopes"]:
+            activation = f", `{scope['activation']}`" if scope.get("activation") else ""
+            lines.append(
+                f"- **{scope['label']['text']}** (`{scope['persistence']}`{activation}): {scope['description']['text']}"
+            )
+        lines.append("")
     if function.get("effects"):
         lines.extend(
             [
@@ -411,6 +453,13 @@ def render_function_sheet(function: dict, index: dict) -> str:
                 "",
             ]
         )
+        if command.get("invocation_description"):
+            lines.extend(
+                [
+                    f"**{strings['command.guide.invocation-scope']['text']}**: {command['invocation_description']['text']}",
+                    "",
+                ]
+            )
         if command.get("observed_phrase"):
             observed = command["observed_phrase"]
             lines.extend(

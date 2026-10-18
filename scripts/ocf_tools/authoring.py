@@ -847,10 +847,15 @@ class AuthoringService:
                     Diagnostic(issue.code, issue.message, issue.severity) for issue in result.issues
                 )
                 from .commands import localized_cue, validate_command_records
+                from .lifecycle import validate_scope_descriptions
 
                 diagnostics.extend(
                     Diagnostic("ocf.cue-authority", error)
                     for error in validate_command_records(record)
+                )
+                diagnostics.extend(
+                    Diagnostic("ocf.lifecycle-authority", error)
+                    for error in validate_scope_descriptions(record, self.catalog())
                 )
 
                 for command in record.command_records:

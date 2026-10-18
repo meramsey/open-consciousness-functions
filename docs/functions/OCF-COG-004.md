@@ -4,7 +4,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 **Purpose**: Imprints a chosen suggestion or intention using the IMPRINT rehearsal.
 
-**Function persistence**: Temporary (`temporary`)
+**Function persistence**: Permanent (`permanent`)
 
 **Legacy source availability**: Available source material; historical authentication remains separately recorded. (`available`)
 
@@ -14,6 +14,12 @@ Source availability does not establish historical authentication or provenance.
 
 [Command index](../COMMAND_INDEX.md)
 
+## Lifecycle scopes
+
+- **Learned capability / readiness** (`permanent`): Learned imprinting ability remains available.
+- **Lasting baseline / retained effect** (`permanent`, `automatic`): Deliberately imprinted material is retained and maintained; storage is distinct from an individual recall action.
+- **Individual invocation / application** (`temporary`, `manual`): A single deliberate imprint or recall invocation; no continuously running imprinting or recall.
+
 ## PLUS-IMPRINT
 
 ### Primary activation command
@@ -21,6 +27,8 @@ Source availability does not establish historical authentication or provenance.
 Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
+
+**Command invocation**: A single deliberate imprint or recall invocation; no continuously running imprinting or recall.
 
 **Recorded source phrase (not the canonical phrase)**: Plus Imprint `(canonical-match; hplus.function.ocf-cog-004.function-body)`
 
@@ -40,6 +48,8 @@ This is the primary command for the function.
 Use to retrieve information or experience selected or imprinted with this function.
 
 This command retrieves selected or imprinted information.
+
+**Command invocation**: A single deliberate imprint or recall invocation; no continuously running imprinting or recall.
 
 ### Retrieval sequence
 

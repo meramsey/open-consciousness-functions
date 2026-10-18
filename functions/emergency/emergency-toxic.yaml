@@ -19,7 +19,7 @@ canonical:
     modes: []
     mode_ids: []
     primary: PLUS-CLEAR, REMOVE
-  name: "Toxic Exposure Response"
+  name: Toxic Exposure Response
 commands:
 - id: OCF-CMD-EMG-002-PRIMARY
   function_id: OCF-EMG-002
@@ -37,7 +37,7 @@ commands:
   documentation:
     visible: true
     order: 1
-  effect_scope_ref: lifecycle.persistence
+  effect_scope_ref: lifecycle.scopes.episode.persistence
   procedure:
     ref: OCF-PROC-INHALE-HOLD
     status: documented
@@ -45,8 +45,9 @@ commands:
     - hplus.function.ocf-emg-002.function-body
     before_steps: []
   relationships: {}
-  spoken: "Plus Clear Remove"
+  spoken: Plus Clear Remove
   spoken_review: reviewed
+  invocation_scope_ref: lifecycle.scopes.application
 chains: []
 claims:
   intended_effects: []
@@ -81,12 +82,31 @@ legacy:
   source_availability: unavailable
   source_system: Monroe H-PLUS
 lifecycle:
-  activation: manual
+  activation: conditional
   persistence: temporary
   release:
     command: null
     required: false
-  trigger_conditions: []
+  trigger_conditions:
+  - a harmful foreign substance enters or contacts the body
+  scopes:
+    capability:
+      persistence: permanent
+      description: Narrated harmful-exposure response readiness remains available, including when conscious
+        invocation is unavailable.
+      description_key: functions.ocf-emg-002.lifecycle.scopes.capability.description
+    application:
+      persistence: temporary
+      description: Optional manual reinforcement when conscious and able.
+      description_key: functions.ocf-emg-002.lifecycle.scopes.application.description
+      activation: manual
+    episode:
+      persistence: temporary
+      activation: conditional
+      trigger_conditions_ref: lifecycle.trigger_conditions
+      description: The narrated exposure response operates only as strongly and for as long as needed
+        for the actual substance and exposure.
+      description_key: functions.ocf-emg-002.lifecycle.scopes.episode.description
 ocf:
   command_review: approved
   reimplementation_status: planned

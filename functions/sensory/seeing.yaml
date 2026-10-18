@@ -19,7 +19,7 @@ canonical:
     modes: []
     mode_ids: []
     primary: PLUS-SEE BETTER
-  name: "Seeing"
+  name: Seeing
 commands:
 - id: OCF-CMD-SEN-002-PRIMARY
   function_id: OCF-SEN-002
@@ -49,7 +49,7 @@ commands:
     text: Plus See Better
     narration_key: hplus.function.ocf-sen-002.function-body
     relationship: canonical-match
-  spoken: "Plus See Better"
+  spoken: Plus See Better
   spoken_review: reviewed
 - id: OCF-CMD-SEN-002-LEGACY-01
   function_id: OCF-SEN-002
@@ -82,7 +82,9 @@ companions: []
 compatibility:
   legacy_commands:
   - PLUS-SEE BETTER
-  rationale: 'The canonical activation command is PLUS-SEE BETTER, matching the approved narration. The previous MORE/LESS directional pair (PLUS-SEE MORE / PLUS-SEE LESS) is superseded and preserved as historical provenance.'
+  rationale: The canonical activation command is PLUS-SEE BETTER, matching the approved narration. The
+    previous MORE/LESS directional pair (PLUS-SEE MORE / PLUS-SEE LESS) is superseded and preserved as
+    historical provenance.
   state: alias-listed
 contributor:
   contact: null
@@ -114,12 +116,14 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: "approved"
+  command_review: approved
   reimplementation_status: planned
 purpose:
-  community_description: Improves the felt sense of inner vision and clarity.
+  community_description: Supports physical seeing and inner visualization, including visual processing,
+    visual memory, and deliberate creation and manipulation of mental images.
   source_description: null
-  summary: Improves the felt sense of inner vision and clarity.
+  summary: Supports physical seeing and inner visualization, including visual processing, visual memory,
+    and deliberate creation and manipulation of mental images.
 safety:
   level: general
   medical_relevance: false

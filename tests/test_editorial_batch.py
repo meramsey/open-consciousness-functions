@@ -65,12 +65,14 @@ def test_intermediate_shared_file_drift_cannot_be_hidden_by_latest_successor(tmp
 
 @pytest.mark.integration
 def test_all_28_approvals_preserve_procedures_controls_and_deferred_metadata():
-    from ocf_tools.commands import cue_presentation, is_active
+    from ocf_tools.commands import command_view, cue_presentation, is_active
     from ocf_tools.indexes import load_all_functions
     from ocf_tools.narration_first import plan_narration
     from tools.check_hplus_narration_integrity import narration_texts, text_fingerprints
 
-    ledger = successors.records()[-1]
+    ledger = next(
+        row for row in successors.records() if row["id"] == "OCF-EDITORIAL-TITLE-CUES-004"
+    )
     batch.check_record(ledger)
     assert len(ledger["decisions"]) == 28
     assert len(ledger["allowed_text_changes"]) == 41
@@ -98,8 +100,6 @@ def test_all_28_approvals_preserve_procedures_controls_and_deferred_metadata():
         assert cue_presentation(owner, strict=True)["spoken_cue"] == decision["spoken_cue"]
         # These are intentionally outside every naming approval, including known mismatches.
         for field in (
-            "purpose",
-            "lifecycle",
             "legacy",
             "narration",
             "audio",
@@ -108,15 +108,83 @@ def test_all_28_approvals_preserve_procedures_controls_and_deferred_metadata():
             "safety",
         ):
             assert owner.data[field] == old[field], (owner.id, field)
+        if owner.id not in {
+            "OCF-FND-005",
+            "OCF-BOD-005",
+            "OCF-BOD-010",
+            "OCF-BOD-008",
+            "OCF-SEN-002",
+        }:
+            assert owner.data["purpose"] == old["purpose"]
+        if owner.id not in {
+            "OCF-COG-004",
+            "OCF-COG-005",
+            "OCF-PRF-004",
+            "OCF-BOD-005",
+            "OCF-AUT-001",
+            "OCF-BOD-007",
+            "OCF-BOD-011",
+            "OCF-BOD-013",
+            "OCF-COG-001",
+            "OCF-LIF-001",
+            "OCF-EMG-001",
+            "OCF-EMG-002",
+        }:
+            assert owner.data["lifecycle"] == old["lifecycle"]
         for command in owner.command_records:
             prior = next(row for row in old["commands"] if row["id"] == command.id)
-            for field in ("procedure", "relationships", "effect_scope_ref", "role"):
+            for field in ("procedure", "relationships"):
                 assert command.data.get(field) == prior.get(field)
+            scoped_owner = owner.id in {
+                "OCF-COG-004",
+                "OCF-COG-005",
+                "OCF-PRF-004",
+                "OCF-BOD-005",
+                "OCF-AUT-001",
+                "OCF-BOD-007",
+                "OCF-BOD-011",
+                "OCF-BOD-013",
+                "OCF-COG-001",
+                "OCF-LIF-001",
+                "OCF-EMG-001",
+                "OCF-EMG-002",
+            }
+            if not scoped_owner and not (
+                owner.id == "OCF-BOD-010" and command.id == "OCF-CMD-BOD-010-FOOD-LESS"
+            ):
+                for field in ("effect_scope_ref", "invocation_scope_ref", "role"):
+                    assert command.data.get(field) == prior.get(field)
+            if command.data.get("invocation_scope_ref"):
+                assert command.data["invocation_scope_ref"] == "lifecycle.scopes.application"
+                assert command_view(owner, command)["invocation_scope"]["activation"] == "manual"
             if (
                 command.designation != "primary"
                 and command.id not in decision["historical_command_ids"]
             ):
-                assert command.data == prior  # Includes Recall, Release and all sensory LESS cues.
+                for field, value in prior.items():
+                    if field in {"effect_scope_ref"} and owner.id in {
+                        "OCF-COG-004",
+                        "OCF-COG-005",
+                        "OCF-PRF-004",
+                        "OCF-BOD-005",
+                        "OCF-AUT-001",
+                        "OCF-BOD-007",
+                        "OCF-BOD-011",
+                        "OCF-BOD-013",
+                        "OCF-COG-001",
+                        "OCF-LIF-001",
+                        "OCF-EMG-001",
+                        "OCF-EMG-002",
+                    }:
+                        continue
+                    assert command.data.get(field) == value, (owner.id, command.id, field)
+                if command.id in {
+                    row.id
+                    for record in owners.values()
+                    if "scopes" in record.data.get("lifecycle", {})
+                    for row in record.command_records
+                }:
+                    assert command.data["invocation_scope_ref"] == "lifecycle.scopes.application"
         plan = plan_narration(owner.id, locale="en-US")
         for role, count in (("function-body", 4), ("closer", 1)):
             key = f"hplus.function.{owner.id.lower()}.{role}"
@@ -143,7 +211,9 @@ def test_keep_decisions_and_historical_lookup_are_distinct_from_activation():
     from ocf_tools.vocabulary import lookup
     from tools.current_title_cues import build
 
-    ledger = successors.records()[-1]
+    ledger = next(
+        row for row in successors.records() if row["id"] == "OCF-EDITORIAL-TITLE-CUES-004"
+    )
     assert {row["function_id"] for row in ledger["kept_decisions"]} == {
         "OCF-COG-005",
         "OCF-BOD-010",
@@ -152,10 +222,31 @@ def test_keep_decisions_and_historical_lookup_are_distinct_from_activation():
     for row in ledger["kept_decisions"]:
         owner = load_function_by_id(row["function_id"])
         name = owner.path.relative_to(REPO_ROOT).as_posix()
-        assert (
-            successors.sha(owner.path.read_text(encoding="utf-8"))
-            == ledger["unaffected_function_sha256"][name]
-        )
+        from ocf_tools.functional_metadata import record as metadata_record
+
+        metadata_ledger = metadata_record()
+        if owner.id in {"OCF-COG-005", "OCF-BOD-010"}:
+            assert (
+                successors.sha(metadata_ledger["predecessor_files"][name])
+                == metadata_ledger["source_files"][name]["before_sha256"]
+            )
+            assert (
+                successors.sha(owner.path.read_text(encoding="utf-8"))
+                == metadata_ledger["source_files"][name]["after_sha256"]
+            )
+        else:
+            assert (
+                successors.sha(owner.path.read_text(encoding="utf-8"))
+                == ledger["unaffected_function_sha256"][name]
+            )
+        if owner.id == "OCF-BOD-010":
+            assert owner.canonical_name == "Nutricia"
+            less = next(
+                command
+                for command in owner.command_records
+                if command.id == "OCF-CMD-BOD-010-FOOD-LESS"
+            )
+            assert less.role == "mode" and "modifies" not in less.data["relationships"]
         item = next(item for item in report["functions"] if item["function_id"] == owner.id)
         assert item["decision_status"] == "EXISTING PAIR RETAINED"
         assert item["unselected_proposal"] is None
@@ -183,7 +274,9 @@ def test_stale_cue_or_title_recording_never_falls_back_to_tts(tmp_path, mode, ow
     doc, config, path = fixture(tmp_path, mode=mode)
     row = next(
         row
-        for row in successors.records()[-1]["allowed_text_changes"]
+        for row in next(
+            row for row in successors.records() if row["id"] == "OCF-EDITORIAL-TITLE-CUES-004"
+        )["allowed_text_changes"]
         if row["function_id"] == owner and row["identity"].endswith("closer")
     )
     entry, _ = LocaleCatalog().resource(
@@ -201,7 +294,9 @@ def test_stale_cue_or_title_recording_never_falls_back_to_tts(tmp_path, mode, ow
 
 @pytest.mark.integration
 def test_batch_cannot_retire_release_or_retrieval_controls():
-    ledger = successors.records()[-1]
+    ledger = next(
+        row for row in successors.records() if row["id"] == "OCF-EDITORIAL-TITLE-CUES-004"
+    )
     decision = deepcopy(
         next(row for row in ledger["decisions"] if row["function_id"] == "OCF-BOD-015")
     )

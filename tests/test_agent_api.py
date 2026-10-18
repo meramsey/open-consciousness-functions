@@ -30,6 +30,21 @@ def test_compact_lookup_fields_changed_only_and_cli_parity(capsys):
     assert api.get_schema("../function.schema.json")["status"] == "failed"
 
 
+def test_compact_lookup_exposes_lifecycle_scopes_and_resolved_command_effects():
+    data = api.get_function("OCF-COG-004", fields=["purpose", "lifecycle", "command_metadata"])[
+        "data"
+    ]
+    assert data["lifecycle"]["persistence"] == "permanent"
+    assert data["lifecycle"]["scopes"]["baseline"]["persistence"] == "permanent"
+    commands = {row["id"]: row for row in data["command_metadata"]}
+    imprint = commands["OCF-CMD-COG-004-PRIMARY"]
+    recall = commands["OCF-CMD-COG-004-RECALL"]
+    assert imprint["effect_scope"] == "permanent"
+    assert imprint["invocation_scope"]["persistence"] == "temporary"
+    assert recall["effect_scope"] == "temporary"
+    assert recall["invocation_scope"]["activation"] == "manual"
+
+
 def test_pagination_schema_summary_and_workflow_commands():
     first = api.list_functions(limit=2)
     second = api.list_functions(offset=2, limit=2)

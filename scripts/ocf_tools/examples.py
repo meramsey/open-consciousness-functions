@@ -24,6 +24,7 @@ SCHEMA_FILES = {
     "brand-refinement": "brand/versions/0.2.0/identity.json",
     "command-procedure": "function-content/command-procedures.yaml",
     "editorial-cue-migration": "function-content/editorial/approved-title-cues-001.json",
+    "functional-metadata": "function-content/editorial/functional-metadata-001.json",
     "symbolic-cue-migration": "function-content/editorial/symbolic-cues-001.json",
     "community-voice": "templates/community-voice.yaml",
     "corpus-inventory": "docs/research/humanplus-corpus-inventory.json",

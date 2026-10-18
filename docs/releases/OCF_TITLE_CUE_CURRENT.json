@@ -5,7 +5,8 @@
     "OCF-EDITORIAL-TITLE-CUES-001",
     "OCF-EDITORIAL-TITLE-CUES-002",
     "OCF-EDITORIAL-TITLE-CUES-003",
-    "OCF-EDITORIAL-TITLE-CUES-004"
+    "OCF-EDITORIAL-TITLE-CUES-004",
+    "OCF-FUNCTIONAL-METADATA-001"
   ],
   "predecessor_commit": "85ba92896c2d6a2cea7b5668e49196838dd3ec2b",
   "source_scope": "Current approved successor. Earlier source-pinned proposals remain immutable history; this is not a repin or blanket approval of them.",
@@ -306,7 +307,7 @@
         "version": "1.0.0",
         "resource_status": "reviewed"
       },
-      "current_purpose": "Adjusts appetite signals in either direction.",
+      "current_purpose": "Supports deliberate eating choices and release of unnecessary cravings while preserving awareness of genuine nutritional needs.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "APPROVED AND IMPLEMENTED",
@@ -461,7 +462,7 @@
         "version": "1.0.0",
         "resource_status": "reviewed"
       },
-      "current_purpose": "Supports a felt sense of alertness and preparedness; not a medical claim.",
+      "current_purpose": "Supports a self-directed practice of immune surveillance, coordinated protective responses, immune memory, protection of healthy tissue, and return to balance after a threat is controlled.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "APPROVED AND IMPLEMENTED",
@@ -580,7 +581,7 @@
         "spoken_locale": "en-US",
         "authority": "function-yaml"
       },
-      "current_purpose": "Adjusts appetite and food drive in either direction using the MORE/LESS grammar.",
+      "current_purpose": "Supports conscious selection between fuller use of food energy and nourishment, or sufficient nourishment with reduced unnecessary energy retention and storage.",
       "decision_status": "EXISTING PAIR RETAINED",
       "metadata_teaching_consistent": true,
       "title_status": "UNCHANGED",
@@ -1676,7 +1677,7 @@
         "version": "1.0.0",
         "resource_status": "reviewed"
       },
-      "current_purpose": "Returns mind and body to a neutral, settled baseline.",
+      "current_purpose": "Supports a deliberately invoked shift from tiredness, weariness, or feeling emotionally low toward renewed wakefulness, energy, clarity, and confidence.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "APPROVED AND IMPLEMENTED",
@@ -2107,7 +2108,7 @@
         "version": "1.0.0",
         "resource_status": "reviewed"
       },
-      "current_purpose": "Improves the felt sense of inner vision and clarity.",
+      "current_purpose": "Supports physical seeing and inner visualization, including visual processing, visual memory, and deliberate creation and manipulation of mental images.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "APPROVED AND IMPLEMENTED",
@@ -2625,7 +2626,7 @@
         "visible": true,
         "order": 1
       },
-      "effect_scope_ref": "lifecycle.persistence",
+      "effect_scope_ref": "lifecycle.scopes.baseline.persistence",
       "procedure": {
         "ref": "OCF-PROC-INHALE-HOLD",
         "status": "documented",
@@ -2643,8 +2644,21 @@
       "relationships": {},
       "spoken": "Plus Automate",
       "spoken_review": "reviewed",
+      "invocation_scope_ref": "lifecycle.scopes.application",
       "phrase": "PLUS-AUTOMATE",
-      "effect_scope": "temporary",
+      "effect_scope": "permanent",
+      "effect_scope_details": {
+        "persistence": "permanent",
+        "description": "Correctly learned selected skill patterns are retained; each performance remains observable, adjustable and stoppable.",
+        "description_key": "functions.ocf-aut-001.lifecycle.scopes.baseline.description",
+        "activation": "automatic"
+      },
+      "invocation_scope": {
+        "persistence": "temporary",
+        "description": "One deliberate cue invocation or chosen performance; not continuously performing an action.",
+        "description_key": "functions.ocf-aut-001.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
       "resolved_procedure_steps": [
         {
           "id": "select-action",
@@ -3107,7 +3121,7 @@
         "visible": true,
         "order": 1
       },
-      "effect_scope_ref": "lifecycle.persistence",
+      "effect_scope_ref": "lifecycle.scopes.application.persistence",
       "procedure": {
         "ref": "OCF-PROC-INHALE-HOLD",
         "status": "documented",
@@ -3125,8 +3139,21 @@
       "relationships": {},
       "spoken": "Plus Satisfied Supplied",
       "spoken_review": "reviewed",
+      "invocation_scope_ref": "lifecycle.scopes.application",
       "phrase": "PLUS-SATISFIED, SUPPLIED",
       "effect_scope": "temporary",
+      "effect_scope_details": {
+        "persistence": "temporary",
+        "description": "Conscious release of one selected unnecessary craving; not permanent hunger suppression.",
+        "description_key": "functions.ocf-bod-005.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
+      "invocation_scope": {
+        "persistence": "temporary",
+        "description": "Conscious release of one selected unnecessary craving; not permanent hunger suppression.",
+        "description_key": "functions.ocf-bod-005.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
       "resolved_procedure_steps": [
         {
           "id": "select-food-response",
@@ -3275,7 +3302,7 @@
         "visible": true,
         "order": 1
       },
-      "effect_scope_ref": "lifecycle.persistence",
+      "effect_scope_ref": "lifecycle.scopes.application.persistence",
       "procedure": {
         "ref": "OCF-PROC-CLOSE-FOCUS",
         "status": "documented",
@@ -3292,8 +3319,21 @@
       },
       "spoken": "Plus Balance Blood Pressure",
       "spoken_review": "reviewed",
+      "invocation_scope_ref": "lifecycle.scopes.application",
       "phrase": "PLUS-BALANCE BLOOD PRESSURE",
       "effect_scope": "temporary",
+      "effect_scope_details": {
+        "persistence": "temporary",
+        "description": "Optional conscious reinforcement of the adaptive baseline; not a permanently intensified state.",
+        "description_key": "functions.ocf-bod-007.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
+      "invocation_scope": {
+        "persistence": "temporary",
+        "description": "Optional conscious reinforcement of the adaptive baseline; not a permanently intensified state.",
+        "description_key": "functions.ocf-bod-007.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
       "resolved_procedure_steps": [
         {
           "id": "close-eyes",
@@ -3584,7 +3624,7 @@
         "source": "canonical-mode",
         "command_id": "OCF-CMD-BOD-010-FOOD-LESS"
       },
-      "role": "decrease",
+      "role": "mode",
       "designation": "secondary",
       "localization": {
         "label_key": "commands.ocf-cmd-bod-010-food-less.label",
@@ -3613,9 +3653,6 @@
       },
       "relationships": {
         "pairs_with": [
-          "OCF-CMD-BOD-010-PRIMARY"
-        ],
-        "modifies": [
           "OCF-CMD-BOD-010-PRIMARY"
         ]
       },
@@ -3685,7 +3722,7 @@
         "visible": true,
         "order": 1
       },
-      "effect_scope_ref": "lifecycle.persistence",
+      "effect_scope_ref": "lifecycle.scopes.application.persistence",
       "procedure": {
         "ref": "OCF-PROC-INHALE-HOLD",
         "status": "documented",
@@ -3702,8 +3739,21 @@
         "narration_key": "hplus.function.ocf-bod-011.function-body",
         "relationship": "canonical-match"
       },
+      "invocation_scope_ref": "lifecycle.scopes.application",
       "phrase": "PLUS-HORMONE BALANCE",
       "effect_scope": "temporary",
+      "effect_scope_details": {
+        "persistence": "temporary",
+        "description": "Optional conscious reinforcement of regulation and adaptation.",
+        "description_key": "functions.ocf-bod-011.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
+      "invocation_scope": {
+        "persistence": "temporary",
+        "description": "Optional conscious reinforcement of regulation and adaptation.",
+        "description_key": "functions.ocf-bod-011.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
       "resolved_procedure_steps": [
         {
           "id": "inhale",
@@ -3999,7 +4049,7 @@
         "visible": true,
         "order": 1
       },
-      "effect_scope_ref": "lifecycle.persistence",
+      "effect_scope_ref": "lifecycle.scopes.application.persistence",
       "procedure": {
         "ref": "OCF-PROC-CLOSE-FOCUS-OPEN",
         "status": "documented",
@@ -4011,8 +4061,21 @@
       "relationships": {},
       "spoken": "Plus Balance Heal",
       "spoken_review": "reviewed",
+      "invocation_scope_ref": "lifecycle.scopes.application",
       "phrase": "PLUS-BALANCE, HEAL",
       "effect_scope": "temporary",
+      "effect_scope_details": {
+        "persistence": "temporary",
+        "description": "Conscious selected-area reinforcement; not continuous intensified repair in that area.",
+        "description_key": "functions.ocf-bod-013.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
+      "invocation_scope": {
+        "persistence": "temporary",
+        "description": "Conscious selected-area reinforcement; not continuous intensified repair in that area.",
+        "description_key": "functions.ocf-bod-013.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
       "resolved_procedure_steps": [
         {
           "id": "close-eyes",
@@ -4430,7 +4493,7 @@
         "visible": true,
         "order": 1
       },
-      "effect_scope_ref": "lifecycle.persistence",
+      "effect_scope_ref": "lifecycle.scopes.application.persistence",
       "procedure": {
         "ref": "OCF-PROC-QUESTION",
         "status": "documented",
@@ -4447,8 +4510,21 @@
         "narration_key": "hplus.function.ocf-cog-001.function-body",
         "relationship": "canonical-match"
       },
+      "invocation_scope_ref": "lifecycle.scopes.application",
       "phrase": "PLUS-ACCESS INFO",
       "effect_scope": "temporary",
+      "effect_scope_details": {
+        "persistence": "temporary",
+        "description": "One consciously chosen information request; not a permanently active search or stream of answers.",
+        "description_key": "functions.ocf-cog-001.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
+      "invocation_scope": {
+        "persistence": "temporary",
+        "description": "One consciously chosen information request; not a permanently active search or stream of answers.",
+        "description_key": "functions.ocf-cog-001.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
       "resolved_procedure_steps": [
         {
           "id": "question",
@@ -4706,7 +4782,7 @@
         "visible": true,
         "order": 1
       },
-      "effect_scope_ref": "lifecycle.persistence",
+      "effect_scope_ref": "lifecycle.scopes.baseline.persistence",
       "procedure": {
         "ref": "OCF-PROC-IMPRINT",
         "status": "documented",
@@ -4723,8 +4799,21 @@
       },
       "spoken": "Plus Imprint",
       "spoken_review": "reviewed",
+      "invocation_scope_ref": "lifecycle.scopes.application",
       "phrase": "PLUS-IMPRINT",
-      "effect_scope": "temporary",
+      "effect_scope": "permanent",
+      "effect_scope_details": {
+        "persistence": "permanent",
+        "description": "Deliberately imprinted material is retained and maintained; storage is distinct from an individual recall action.",
+        "description_key": "functions.ocf-cog-004.lifecycle.scopes.baseline.description",
+        "activation": "automatic"
+      },
+      "invocation_scope": {
+        "persistence": "temporary",
+        "description": "A single deliberate imprint or recall invocation; no continuously running imprinting or recall.",
+        "description_key": "functions.ocf-cog-004.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
       "resolved_procedure_steps": [
         {
           "id": "memory",
@@ -4791,7 +4880,7 @@
         "visible": true,
         "order": 11
       },
-      "effect_scope_ref": "lifecycle.persistence",
+      "effect_scope_ref": "lifecycle.scopes.application.persistence",
       "procedure": {
         "ref": "OCF-PROC-THINK-COMMAND",
         "status": "documented",
@@ -4807,8 +4896,21 @@
       },
       "spoken": "Plus Recall",
       "spoken_review": "reviewed",
+      "invocation_scope_ref": "lifecycle.scopes.application",
       "phrase": "PLUS-RECALL",
       "effect_scope": "temporary",
+      "effect_scope_details": {
+        "persistence": "temporary",
+        "description": "A single deliberate imprint or recall invocation; no continuously running imprinting or recall.",
+        "description_key": "functions.ocf-cog-004.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
+      "invocation_scope": {
+        "persistence": "temporary",
+        "description": "A single deliberate imprint or recall invocation; no continuously running imprinting or recall.",
+        "description_key": "functions.ocf-cog-004.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
       "resolved_procedure_steps": [
         {
           "id": "command",
@@ -4851,7 +4953,7 @@
       "spoken_review": "unresolved",
       "availability": "historical-lookup",
       "phrase": "PLUS-IMPRINT, IMPRINT",
-      "effect_scope": "temporary",
+      "effect_scope": "permanent",
       "cue_presentation": {
         "command_id": "OCF-CMD-COG-004-LEGACY-01",
         "display_cue": "PLUS-IMPRINT, IMPRINT",
@@ -4878,7 +4980,7 @@
         "visible": true,
         "order": 1
       },
-      "effect_scope_ref": "lifecycle.persistence",
+      "effect_scope_ref": "lifecycle.scopes.application.persistence",
       "procedure": {
         "ref": "OCF-PROC-OPTIONS",
         "status": "documented",
@@ -4895,8 +4997,21 @@
       },
       "spoken": null,
       "spoken_review": "unresolved",
+      "invocation_scope_ref": "lifecycle.scopes.application",
       "phrase": "PLUS-OPTIONS",
       "effect_scope": "temporary",
+      "effect_scope_details": {
+        "persistence": "temporary",
+        "description": "One consciously chosen, situation-focused exploration.",
+        "description_key": "functions.ocf-cog-005.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
+      "invocation_scope": {
+        "persistence": "temporary",
+        "description": "One consciously chosen, situation-focused exploration.",
+        "description_key": "functions.ocf-cog-005.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
       "resolved_procedure_steps": [
         {
           "id": "close-eyes",
@@ -5215,7 +5330,7 @@
         "visible": true,
         "order": 1
       },
-      "effect_scope_ref": "lifecycle.persistence",
+      "effect_scope_ref": "lifecycle.scopes.episode.persistence",
       "procedure": {
         "ref": "OCF-PROC-INHALE-HOLD",
         "status": "documented",
@@ -5227,8 +5342,22 @@
       "relationships": {},
       "spoken": "Plus Control Balance Restore",
       "spoken_review": "reviewed",
+      "invocation_scope_ref": "lifecycle.scopes.application",
       "phrase": "PLUS-CONTROL, BALANCE, RESTORE",
       "effect_scope": "temporary",
+      "effect_scope_details": {
+        "persistence": "temporary",
+        "activation": "conditional",
+        "trigger_conditions_ref": "lifecycle.trigger_conditions",
+        "description": "The narrated adaptive response lasts for the injury episode and adjusts as the injury stabilizes.",
+        "description_key": "functions.ocf-emg-001.lifecycle.scopes.episode.description"
+      },
+      "invocation_scope": {
+        "persistence": "temporary",
+        "description": "Optional manual reinforcement when conscious and able.",
+        "description_key": "functions.ocf-emg-001.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
       "resolved_procedure_steps": [
         {
           "id": "inhale",
@@ -5286,7 +5415,7 @@
         "visible": true,
         "order": 1
       },
-      "effect_scope_ref": "lifecycle.persistence",
+      "effect_scope_ref": "lifecycle.scopes.episode.persistence",
       "procedure": {
         "ref": "OCF-PROC-INHALE-HOLD",
         "status": "documented",
@@ -5298,8 +5427,22 @@
       "relationships": {},
       "spoken": "Plus Clear Remove",
       "spoken_review": "reviewed",
+      "invocation_scope_ref": "lifecycle.scopes.application",
       "phrase": "PLUS-CLEAR, REMOVE",
       "effect_scope": "temporary",
+      "effect_scope_details": {
+        "persistence": "temporary",
+        "activation": "conditional",
+        "trigger_conditions_ref": "lifecycle.trigger_conditions",
+        "description": "The narrated exposure response operates only as strongly and for as long as needed for the actual substance and exposure.",
+        "description_key": "functions.ocf-emg-002.lifecycle.scopes.episode.description"
+      },
+      "invocation_scope": {
+        "persistence": "temporary",
+        "description": "Optional manual reinforcement when conscious and able.",
+        "description_key": "functions.ocf-emg-002.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
       "resolved_procedure_steps": [
         {
           "id": "inhale",
@@ -6594,7 +6737,7 @@
         "visible": true,
         "order": 1
       },
-      "effect_scope_ref": "lifecycle.persistence",
+      "effect_scope_ref": "lifecycle.scopes.baseline.persistence",
       "procedure": {
         "ref": "OCF-PROC-INHALE-HOLD",
         "status": "documented",
@@ -6617,8 +6760,21 @@
         "narration_key": "hplus.function.ocf-lif-001.function-body",
         "relationship": "canonical-match"
       },
+      "invocation_scope_ref": "lifecycle.scopes.application",
       "phrase": "PLUS-FREE THIS HABIT",
-      "effect_scope": "temporary",
+      "effect_scope": "permanent",
+      "effect_scope_details": {
+        "persistence": "permanent",
+        "description": "The intended change to the deliberately selected habit is lasting; useful memories, knowledge and skills remain intact.",
+        "description_key": "functions.ocf-lif-001.lifecycle.scopes.baseline.description",
+        "activation": "automatic"
+      },
+      "invocation_scope": {
+        "persistence": "temporary",
+        "description": "One deliberate intervention when the selected habit arises; not continuous behavioral suppression or cancellation of other functions.",
+        "description_key": "functions.ocf-lif-001.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
       "resolved_procedure_steps": [
         {
           "id": "select-habit-pattern",
@@ -6959,7 +7115,7 @@
         "visible": true,
         "order": 1
       },
-      "effect_scope_ref": "lifecycle.persistence",
+      "effect_scope_ref": "lifecycle.scopes.application.persistence",
       "procedure": {
         "ref": "OCF-PROC-INHALE-HOLD",
         "status": "documented",
@@ -6982,8 +7138,21 @@
       },
       "spoken": "Plus Light Step",
       "spoken_review": "reviewed",
+      "invocation_scope_ref": "lifecycle.scopes.application",
       "phrase": "PLUS-LIGHT STEP",
       "effect_scope": "temporary",
+      "effect_scope_details": {
+        "persistence": "temporary",
+        "description": "Optional conscious reinforcement of the movement baseline; not permanently intensified movement.",
+        "description_key": "functions.ocf-prf-004.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
+      "invocation_scope": {
+        "persistence": "temporary",
+        "description": "Optional conscious reinforcement of the movement baseline; not permanently intensified movement.",
+        "description_key": "functions.ocf-prf-004.lifecycle.scopes.application.description",
+        "activation": "manual"
+      },
       "resolved_procedure_steps": [
         {
           "id": "select-movement-context",
@@ -7051,7 +7220,7 @@
       "spoken_review": "unresolved",
       "availability": "historical-lookup",
       "phrase": "PLUS-LIGHTER, LIGHTER",
-      "effect_scope": "temporary",
+      "effect_scope": "permanent",
       "cue_presentation": {
         "command_id": "OCF-CMD-PRF-004-LEGACY-01",
         "display_cue": "PLUS-LIGHTER, LIGHTER",
@@ -9055,8 +9224,7 @@
   "pending": [
     "HPLUS identifier migration",
     "Per-locale Plus policy and production translations",
-    "Human listening and release decisions",
-    "Separately flagged purpose, persistence and trigger metadata questions"
+    "Human listening and release decisions"
   ],
   "locales_requiring_review": [
     "es"
@@ -9152,32 +9320,32 @@
     }
   ],
   "input_sha256": {
-    "functions/automation/see-be.yaml": "5ce644ad2141c13f417bb4fdaf1cd68144ad15b6bc9d94ddbd5136ee597b4aae",
+    "functions/automation/see-be.yaml": "a99c260fbad4660711fb536d72a0e90e4ede15494b1e5d1bd69a3e50d17dcf54",
     "functions/body/brain-repairs.yaml": "3136af44bb811d9dfbd99e5dda6bc3d5ed7c7e53b40bbfedd81de1b231694bc2",
     "functions/body/circulation.yaml": "ab82119a99a67d80d423e48e2e335541b4da52d7d89407c855c4586e9ebe13d3",
     "functions/body/de-discomfort.yaml": "fc9ccf4d2d50ec56a81bf66791f292605839a7d33e9827e0543a50df9e6a012b",
     "functions/body/de-tox-body.yaml": "4b961558d4e3255f0f1d542f0b1459ecb2f382541c29857bf33f6a7f15c8df35",
-    "functions/body/eat-no-eat.yaml": "f9346642c5b4921742536c075c052e11fa5cba6cd56bf33f462e6c241a049647",
+    "functions/body/eat-no-eat.yaml": "1d961abee74f09a279a0c084aaf8b6ac761f61cc09716da948fc06d862c3a9cd",
     "functions/body/heart-repairs.yaml": "d2bc974f1e22e59f786c3c5835342080373c37b6376a8044d276c44a4a16090d",
-    "functions/body/hypertension.yaml": "66cbcc47ae341d5aef380670e331a1cc9aacf0df15398b86ad0c54d602c31314",
-    "functions/body/immunizing.yaml": "4eca3ba1529de44c9b10394ed5e7da3d49b49542f8c0eb08aa1bff0b130feb80",
+    "functions/body/hypertension.yaml": "c5cd9d777aa7a51ea3642903575565f870de4bb4cd07d4cfb0acb2eb0eb08bf2",
+    "functions/body/immunizing.yaml": "d65bdfa6594e5cf55f939def334580d77f8d84fb7f855910c86a38e4ca0abba6",
     "functions/body/lungs-repairs.yaml": "899b2e0248e4a452130d5460410f080790cb2a80ee81799f303cd6dcb1a3784c",
-    "functions/body/nutricia.yaml": "60dad96e4e57e0a16b7ba894e1e353068fc75445f859cf93b9c2af3e553a87cb",
-    "functions/body/passages.yaml": "cc8ef508b4b514d3eb22a87bb28651dc59b46891ebbbc65ebcb017fe50aaf05f",
+    "functions/body/nutricia.yaml": "c6ae8bbf7e8f57de44c0df1bafa9a5f080e16d597f6cd4c5049fdb389864113d",
+    "functions/body/passages.yaml": "6abd73d499a59373e1741af638f71e2a17a2a8c00965cb4de29d7fc82fe087b1",
     "functions/body/sex-drive.yaml": "1671db633b87d9702d9b6cf7bd3683dd2f18047b96bcba5101df53def812f99e",
-    "functions/body/tune-up.yaml": "3129ac226fe4847dbe32b26bcd1fb12a2261fec4a102244968d7199de872ec15",
+    "functions/body/tune-up.yaml": "a022cdc0b249634838ea068bf9e2e833a94d42858bdcdd4c2ef75d46fcd4ef9d",
     "functions/body/regenerate.yaml": "67a1ec3f847944e064e0ec2831ef2decc8af0b69208c3a027b437915ac8fbff8",
     "functions/body/short-fix.yaml": "1948dba8133693e4fa907d33aa4510a30c4474c3a4314a8337662dd9ffb44720",
-    "functions/cognition/access-to-information.yaml": "5442cbad113cd5cb7f684d10b0373d4fe0f7f2fa8d783e6934e35ed4e5dc60a2",
+    "functions/cognition/access-to-information.yaml": "bb2c38389388feea18ad42a22aec1e84e880eb32b343e0ae3db496a7b152f926",
     "functions/cognition/buy-the-numbers.yaml": "f28c4c7bf7cfae2fdd01907fa0d930fb5f2451cd3490a12e35e62c1f94e6e1d9",
     "functions/cognition/contemplation.yaml": "7791e189c7c153fe2c4292c0288f6d540826e3299b39ed7127a36067b13f1289",
-    "functions/cognition/imprint.yaml": "92e139659d5f60ba15f0dda75c03b3c6be0705eee15a21a8c56cebaad61612de",
-    "functions/cognition/options.yaml": "374a63375e1a31b6337a3e9b7a5f1af81f524aa4f9453679e1cdf4788deac364",
+    "functions/cognition/imprint.yaml": "e4c73efa6f196225b9fb478b8004da1ec8f6b9a3902824944abe48122a83423c",
+    "functions/cognition/options.yaml": "96bc140fb0a5d13b6793c4c67e1cfb5c17e6c4f98994b6c4a437130dfe27fd5b",
     "functions/cognition/recall.yaml": "aeb550a24153dcf23d3a1ae41b2b3da79e1a92345777e663b51aeb058e1c668f",
     "functions/cognition/think-fast.yaml": "e6ce234e058cf1d8bb6ab74c6843765ee22adcf497d8a8d30fbbfd5dc14012bd",
     "functions/communication/speak-up.yaml": "46d70a4e340d738ea2d03a42b5863cbfd9e2b08e6965b7e23e06ab0ca88ae5e3",
-    "functions/emergency/emergency-injury.yaml": "2649ef0c708c4b12242ee816b901d39d5798cbc7c2c83bd5e392b1c1905b7167",
-    "functions/emergency/emergency-toxic.yaml": "2c48283984ae6c9c9c90e4b70eda77d04bc02eb785040a2e7bc19744ae90cd6e",
+    "functions/emergency/emergency-injury.yaml": "9263cace0a2cac30d528d5b7bf2d1c65e294ea1ed2d4d338d413fc0b2639e66e",
+    "functions/emergency/emergency-toxic.yaml": "e08c1626b38383a99ee0c9443ef8f2c45d9329525647bd35de479965739e213f",
     "functions/emotion/let-go.yaml": "1b3ad890769212a0a95bcf534766c87c84171e3923087770b0b0b1c1b90f5433",
     "functions/emotion/off-loading.yaml": "c2a160d3ad0f196404b5cdbb9eac1b97456278417bb3dc0e7178d7e8e6df221c",
     "functions/emotion/empathizing.yaml": "c5d02479a626e1736bc3e6eea63d0f02fcc8217b7e04f5613762d0ac9e76b9e0",
@@ -9187,17 +9355,17 @@
     "functions/foundation/attention.yaml": "2385e4b894763480995fd4d4e471895f3edb00e378f4192ca3632a8a6742ae28",
     "functions/foundation/recharge.yaml": "4192369502c43aefa4efa0cd6a0988ae38fbdb66f6084849be971756149be465",
     "functions/foundation/relax.yaml": "7cc1df12f010d2942dd99c3a9cab6f67ac8c86039a6ce616f3ab381627d89c0b",
-    "functions/foundation/reset.yaml": "802d4701e65e82a600de358eb697b4abcf111337d740080c97c4adffa0bc77e3",
+    "functions/foundation/reset.yaml": "fb9819f5fc609a36e56b8e9e10359c980917f181c85feb0a415811681f1ebd68",
     "functions/foundation/release.yaml": "8aa17264ffe9de74dc42946d9c888279a8568251cdf1c727ef30a07e64bb1373",
-    "functions/lifestyle/de-hab.yaml": "6010a44925b8ec264d95d6eeb07e8c2fcfeddc9b30293c8287927c65694bb88a",
+    "functions/lifestyle/de-hab.yaml": "045b26ffb00bbf332ab335133b59453b4cd77df61bb281dfd4e9a78c763e8e63",
     "functions/performance/do-this-now.yaml": "e47a4d41673cb081c6204f6093848bae1e88d8233d79dd493249ab5dba1a98ab",
     "functions/performance/eight-great.yaml": "da690abd9584a4add00f942f9cf1dec639838233f31f09415bfa4c8e04d3f55d",
     "functions/performance/synchronizing.yaml": "baea84216a8dad234a7d1fef996f7d99e4f2336e7002d646437ef2a34e91250c",
-    "functions/performance/light-foot.yaml": "438c4566c96f50fef31b8939f7f1e8a253f73a8d8b9aa53d725c242a1a71b25e",
+    "functions/performance/light-foot.yaml": "0b05b201874db5ca4746dd0db2f3e0da0add168c2d545912af98e8efbaf54320",
     "functions/performance/make-your-day.yaml": "6f4ddd3b4654473aa1b3cddf72dc53e70d6f55af6d96421205d491044833db20",
     "functions/performance/strong-quick.yaml": "47738b98c483b64d938acdc5abc38eed144dea1a2487b45cabef204bc8c8c515",
     "functions/sensory/hearing.yaml": "9ff22aed5205f8fa17b5c9c397c2e44c39ea91fb0e56e7339b76f2f4beed3acb",
-    "functions/sensory/seeing.yaml": "d13be1a93446667fee4dc56ac98175df8f5a3c623a648145071b72b42665e9c1",
+    "functions/sensory/seeing.yaml": "d13a6589495e0da2cfd1846298b577e3b0e994d2ff922e6b47255a9a6e4cbb50",
     "functions/sensory/smell.yaml": "bbbbf254259ccbbdc2b452f691f7608144cbe2dea8d50d867078f14530d18962",
     "functions/sensory/taste.yaml": "88631efea0e6f856f21fd74fb4a39b2a40d62f25658c523eaa0094ecaf89620a",
     "functions/sensory/touch.yaml": "f45495dfe24cf0cde8f43c7392e068175a194d3b91547d61c74f8fca61872ab6",

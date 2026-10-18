@@ -62,7 +62,7 @@ Previous values: De-Tox: Body / `PLUS-DETOX`; complete teaching **Plus Clean Cle
 
 - Current display cue: `PLUS-SATISFIED, SUPPLIED`; complete teaching: **Plus Satisfied Supplied**.
 - Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
-- Purpose: Adjusts appetite signals in either direction.
+- Purpose: Supports deliberate eating choices and release of unnecessary cravings while preserving awareness of genuine nutritional needs.
 - Pending title: None.
 - Other unselected proposal: null
 
@@ -92,7 +92,7 @@ Previous values: Hypertension / `PLUS-BALANCE-BLOODPRESSURE`; complete teaching 
 
 - Current display cue: `PLUS-IMMUNE READY`; complete teaching: **Plus Immune Ready**.
 - Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
-- Purpose: Supports a felt sense of alertness and preparedness; not a medical claim.
+- Purpose: Supports a self-directed practice of immune surveillance, coordinated protective responses, immune memory, protection of healthy tissue, and return to balance after a threat is controlled.
 - Pending title: None.
 - Other unselected proposal: null
 
@@ -112,7 +112,7 @@ Previous values: Lungs: Repairs & Maintenance / `PLUS-BREATH BETTER`; complete t
 
 - Current display cue: `PLUS-FOOD MORE`; complete teaching: **Plus Food More**.
 - Status: EXISTING PAIR RETAINED; title: UNCHANGED.
-- Purpose: Adjusts appetite and food drive in either direction using the MORE/LESS grammar.
+- Purpose: Supports conscious selection between fuller use of food energy and nourishment, or sufficient nourishment with reduced unnecessary energy retention and storage.
 - Pending title: None.
 - Other unselected proposal: null
 
@@ -342,7 +342,7 @@ Previous values: Relax / `PLUS-RELAX`; complete teaching **Plus Relax Relax**.
 
 - Current display cue: `PLUS-RESET`; complete teaching: **Plus Reset**.
 - Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
-- Purpose: Returns mind and body to a neutral, settled baseline.
+- Purpose: Supports a deliberately invoked shift from tiredness, weariness, or feeling emotionally low toward renewed wakefulness, energy, clarity, and confidence.
 - Pending title: None.
 - Other unselected proposal: null
 
@@ -434,7 +434,7 @@ Previous values: Sensory: Hearing / `PLUS-HEAR MORE`; complete teaching **Plus H
 
 - Current display cue: `PLUS-SEE BETTER`; complete teaching: **Plus See Better**.
 - Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
-- Purpose: Improves the felt sense of inner vision and clarity.
+- Purpose: Supports physical seeing and inner visualization, including visual processing, visual memory, and deliberate creation and manipulation of mental images.
 - Pending title: None.
 - Other unselected proposal: null
 
@@ -543,4 +543,3 @@ Previous values: Stay Awake / `PLUS-AWAKE`; complete teaching **Plus One Awake A
 - HPLUS identifier migration
 - Per-locale Plus policy and production translations
 - Human listening and release decisions
-- Separately flagged purpose, persistence and trigger metadata questions

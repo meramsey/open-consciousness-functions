@@ -6,7 +6,7 @@ Canonical command phrases are shown exactly as registered and are not translated
 
 | Function | Command phrase | Role | Usage | Function persistence |
 | --- | --- | --- | --- | --- |
-| [Automatic Action](functions/OCF-AUT-001.md) | PLUS-AUTOMATE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
+| [Automatic Action](functions/OCF-AUT-001.md) | PLUS-AUTOMATE | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Brain Flow](functions/OCF-BOD-001.md) | PLUS-BRAIN FLOW | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Circulation](functions/OCF-BOD-002.md) | PLUS-FLOW SMOOTH | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Comfort](functions/OCF-BOD-003.md) | PLUS-COMFORT | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
@@ -17,7 +17,7 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Immune Readiness](functions/OCF-BOD-008.md) | PLUS-IMMUNE READY | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Breathe Better](functions/OCF-BOD-009.md) | PLUS-BREATHE BETTER | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Nutricia](functions/OCF-BOD-010.md) | PLUS-FOOD MORE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
-| [Nutricia](functions/OCF-BOD-010.md) | PLUS-FOOD LESS | Decrease mode | Use when you choose to decrease the selected function response. | Temporary |
+| [Nutricia](functions/OCF-BOD-010.md) | PLUS-FOOD LESS | Alternative food-energy mode | Use the complete Plus Food Less cue to select sufficient nourishment with reduced unnecessary retention and storage. | Temporary |
 | [Hormonal Transitions](functions/OCF-BOD-011.md) | PLUS-HORMONE BALANCE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Sex Drive](functions/OCF-BOD-012.md) | PLUS-SEX MORE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Sex Drive](functions/OCF-BOD-012.md) | PLUS-SEX LESS | Decrease mode | Use when you choose to decrease the selected function response. | Temporary |
@@ -31,7 +31,7 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Mental Calculation](functions/OCF-COG-002.md) | PLUS-CALCULATE | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Contemplation](functions/OCF-COG-003.md) | PLUS-OPEN | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Contemplation](functions/OCF-COG-003.md) | PLUS-CLOSED | Close command | Use to close the current function state; session return remains separate. | Temporary |
-| [Imprint](functions/OCF-COG-004.md) | PLUS-IMPRINT | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
+| [Imprint](functions/OCF-COG-004.md) | PLUS-IMPRINT | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Imprint](functions/OCF-COG-004.md) | PLUS-RECALL | Retrieval command | Use to retrieve information or experience selected or imprinted with this function. | Temporary |
 | [Options](functions/OCF-COG-005.md) | PLUS-OPTIONS | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Options](functions/OCF-COG-005.md) | PLUS-OPTIONS, CHOICES | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
@@ -54,7 +54,7 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Relax](functions/OCF-FND-004.md) | PLUS-RELAX | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Reset](functions/OCF-FND-005.md) | PLUS-RESET | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Release](functions/OCF-FND-006.md) | PLUS-RELEASE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
-| [Habit Freedom](functions/OCF-LIF-001.md) | PLUS-FREE THIS HABIT | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
+| [Habit Freedom](functions/OCF-LIF-001.md) | PLUS-FREE THIS HABIT | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Do This Now](functions/OCF-PRF-001.md) | PLUS-DO-THIS-NOW | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Inner Power](functions/OCF-PRF-002.md) | PLUS-INNER POWER | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Coordination](functions/OCF-PRF-003.md) | PLUS-SMOOTH, FAST | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
