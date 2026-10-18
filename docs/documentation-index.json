@@ -647,7 +647,7 @@
       "related_schemas": [
         "schemas/background-audio.schema.json"
       ],
-      "sha256": "e9b035c4e95c4623e352f3dc142933640b75117c8b793a771ed47de20c352d19",
+      "sha256": "782e912d134e8cf0e994fb96f3c4a5b804f5825c2fb31c62fbf7e2705798449a",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1635,7 +1635,7 @@
         "functions preview"
       ],
       "related_schemas": [],
-      "sha256": "b2511917bd59f2cc48e3d1d713cec4286af1d55641136535a471e0f6ca888fb5",
+      "sha256": "6bc85fd510c23b1dfbb99bb6f2df88021eefe631ba69a17e87f6c6dda53e07df",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4355,6 +4355,46 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "schemas/cue-completion-successor.schema.json",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "cue-completion-successor.schema",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/cue-completion-successor.schema.json"
+      ],
+      "sha256": "726bcb557312c5435e67549ee27207905a0f73b376396c453fb54d658395bcc3",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "schemas/cue-header-successor.schema.json",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "cue-header-successor.schema",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/cue-header-successor.schema.json"
+      ],
+      "sha256": "89de88d74e8fe13951ff00d1319a9ea53457563194e1e3ebaee09c0cc5e3197c",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "schemas/cue-profile.schema.json",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "cue-profile.schema",
@@ -5186,5 +5226,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 248
+  "total": 250
 }

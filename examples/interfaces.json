@@ -1857,6 +1857,18 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
+      "example_sha256": "d9e86b62cc0ecf849a721f0ce94263e6e5007b191cfc074b49bc9c9814ec26da",
+      "schema": "cue-completion-successor.schema.json",
+      "source": "function-content/editorial/cue-completion-001.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "734b2314b5591b2df67d1aa0fa46066423d64b6856a39fe86863df25384ecf8a",
+      "schema": "cue-header-successor.schema.json",
+      "source": "function-content/editorial/cue-headers-001.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
       "example_sha256": "d9fbbb26008a1ad345cf1ad9a2252d853a245ecaba96d00b63dd46cb50e9afa7",
       "schema": "cue-profile.schema.json",
       "source": "audio/cues/profiles/OCF-CUE-PROFILE-DEFAULT.yaml",
@@ -2008,7 +2020,7 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "242690a2d1df1dd81302fc2d11f47521347e45d2743ce63d97874c478cc6163d",
+      "example_sha256": "0f7408d218085590cd3e6d1c5a12cec7155f78ad033a24ee4f404ea23352277e",
       "schema": "session-plan.schema.json",
       "source": "audio/session-plans/en-US/OCF-FND-002.json",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
@@ -2068,6 +2080,8 @@
     "schemas/command-procedure.schema.json": "ce83b5e0ce5d297aa71c8e293fc4af0a0d32ac35d1a677e6b08bf9c3cf211747",
     "schemas/community-voice.schema.json": "c530fa8bb6783b56da06980dc943e5848ad0bee10168c4146ac0cc318ab0c9b3",
     "schemas/corpus-inventory.schema.json": "11a08e6c17c8409b6111b5de49018a36fa0310975f9917c9b8380c5815bdc6a5",
+    "schemas/cue-completion-successor.schema.json": "726bcb557312c5435e67549ee27207905a0f73b376396c453fb54d658395bcc3",
+    "schemas/cue-header-successor.schema.json": "89de88d74e8fe13951ff00d1319a9ea53457563194e1e3ebaee09c0cc5e3197c",
     "schemas/cue-profile.schema.json": "05500c0c486bf959ea4d952a9d9d487860bd67e80e333c0e99e990e234833b3a",
     "schemas/doctor.schema.json": "9b861ac28abab75f1aab4c78419d7faf731db099a6031704abbb07bf75f1ff74",
     "schemas/editorial-block.schema.json": "ef17e6b8bce5b318036b5c1618ee2dfa83473f45e93a9fd486bbef1fa72d26d0",
