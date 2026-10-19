@@ -165,7 +165,11 @@ def test_corpus_inventory_and_matrix_keep_classification_uncertainty(monkeypatch
     record = SimpleNamespace(
         id="OCF-FND-004",
         data={
-            "legacy": {"name": "Relax", "source_availability": "available"},
+            "legacy": {
+                "name": "Relax",
+                "source_availability": "available",
+                "source_system": "Monroe H-PLUS",
+            },
             "canonical": {"name": "Relax", "command": {"primary": "PLUS-RELAX"}},
             "aliases": {"names": []},
         },

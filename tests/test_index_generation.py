@@ -39,18 +39,18 @@ def test_function_index_markdown_has_rows():
     assert "PLUS-FOCUS" in text
 
 
-def test_function_index_csv_has_55_rows():
+def test_function_index_csv_has_57_rows():
     text = function_index_csv()
     assert text.startswith(GENERATED_HEADER)
     rows = _csv_rows(text)
-    assert len(rows) == 55
+    assert len(rows) == 57
     assert rows[0]["ocf_id"].startswith("OCF-")
 
 
-def test_function_index_json_has_55():
+def test_function_index_json_has_57():
     payload = json.loads(function_index_json().split("\n\n", 1)[1])
-    assert payload["count"] == 55
-    assert len(payload["functions"]) == 55
+    assert payload["count"] == 57
+    assert len(payload["functions"]) == 57
 
 
 def test_command_map_json_round_trips():

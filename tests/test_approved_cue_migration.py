@@ -487,6 +487,7 @@ def test_exact_user_decisions_integrity_and_unaffected_active_vocabulary():
     active = [
         row
         for record in records.values()
+        if record.data["legacy"]["source_system"] == "Monroe H-PLUS"
         for row in record.command_records
         if commands.is_active(row)
     ]

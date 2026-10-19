@@ -37,6 +37,8 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Empathize](functions/OCF-EMO-003.md) | PLUS-EMPATHIZE |  | Temporary | Develops consciously directed understanding and communication with another being through sensory, intuitive, and total-self awareness. |
 | [Manifest](functions/OCF-EXP-001.md) | PLUS-MANIFEST |  | Temporary | Sets a consciously selected future condition and completion time through intention and total-self alignment. |
 | [Insulate](functions/OCF-EXP-002.md) | PLUS-INSULATE | Cancellation command: PLUS-CANCEL; Release command: Plus Release | Temporary | Establishes an adjustable whole-body zone of temperature comfort; Cancel ends the current adjustment and Release places the selected application on hold. |
+| [Dissolve](functions/OCF-EXP-003.md) | PLUS-DISSOLVE |  | Permanent | Consciously dissolve a selected unwanted belief, expectation, emotional response or recurring life pattern while preserving useful learning. |
+| [Clear Zone](functions/OCF-EXP-005.md) | PLUS-CLEAR ZONE | Observe: PLUS-CLEAR ZONE, OBSERVE; Suspend: PLUS-CLEAR ZONE, SUSPEND | Permanent | Establish an ongoing intention to discourage unwanted insect contact while maintaining calm awareness. |
 | [Access to Energy](functions/OCF-FND-001.md) | PLUS-ENERGIZE | Access-channel close cue: Plus Release Eleven Access | Temporary | Restores a felt sense of available energy on demand. |
 | [Attention](functions/OCF-FND-002.md) | PLUS-FOCUS |  | Temporary | Directs and sustains focused attention. |
 | [Quick Recharge](functions/OCF-FND-003.md) | PLUS-RECHARGE |  | Temporary | Replenishes a felt sense of energy and freshness. |

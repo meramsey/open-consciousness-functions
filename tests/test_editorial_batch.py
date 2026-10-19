@@ -85,7 +85,11 @@ def test_all_28_approvals_preserve_procedures_controls_and_deferred_metadata():
         row["identity"] for row in ledger["allowed_text_changes"]
     }
     assert sum(current[key] == previous[key] for key in previous) == 136
-    owners = {owner.id: owner for owner in load_all_functions()}
+    owners = {
+        owner.id: owner
+        for owner in load_all_functions()
+        if owner.data["legacy"]["source_system"] == "Monroe H-PLUS"
+    }
     assert len(owners) == 55
     assert sum(len(owner.command_records) for owner in owners.values()) == 97
     assert (

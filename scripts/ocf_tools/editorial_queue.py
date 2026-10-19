@@ -72,7 +72,7 @@ def create():
     rows = []
     for row in current["functions"]:
         owner = row["function_id"]
-        if owner in approved or owner in kept:
+        if owner in approved or owner in kept or owner not in recommendations:
             continue
         prior = recommendations[owner]
         if row["decision_status"] == "EXISTING PAIR RETAINED" and owner != "OCF-BOD-006":

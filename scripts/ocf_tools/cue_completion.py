@@ -12,6 +12,9 @@ LEDGER = "function-content/editorial/cue-completion-001.json"
 
 
 def predecessor(root, name, text):
+    from .editorial_candidates import predecessor as before_candidates
+
+    text = before_candidates(root, name, text)
     path = root / LEDGER
     if not path.is_file():
         return text

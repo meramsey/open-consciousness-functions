@@ -21,7 +21,11 @@ def historical_data():
 
 
 def test_complete_function_command_audit_preserves_every_authoritative_phrase():
-    records = load_all_functions()
+    records = [
+        row
+        for row in load_all_functions()
+        if row.data["legacy"]["source_system"] == "Monroe H-PLUS"
+    ]
     data = historical_data()
     from ocf_tools.cue_migration import decision_record
     from ocf_tools.editorial_successors import records as successor_records

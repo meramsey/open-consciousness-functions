@@ -5,6 +5,14 @@ direction: ltr
 status: canonical
 semantic_version: 1.11.0
 resources:
+- file: original-OCF-EXP-003.yaml
+  domain: narration
+- file: original-OCF-EXP-005.yaml
+  domain: narration
+- file: original-draft-ui.yaml
+  domain: ui
+- file: original-draft-cues.yaml
+  domain: narration
 - file: activation-cues.yaml
   domain: narration
   description: Explicit user-approved en-US primary spoken cues; other locales require their own reviewed terminology.

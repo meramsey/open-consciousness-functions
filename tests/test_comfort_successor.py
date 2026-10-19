@@ -385,7 +385,11 @@ def test_comfort_decision_four_passes_controls_and_other_175_entries_preserved()
     assert record.persistence == "temporary" and record.command_modes == []
     assert record.legacy_commands == ["PLUS-55515"]
     assert {row.id for row in record.command_records if is_active(row)} == {PRIMARY}
-    all_records = load_all_functions()
+    all_records = [
+        row
+        for row in load_all_functions()
+        if row.data["legacy"]["source_system"] == "Monroe H-PLUS"
+    ]
     assert len(all_records) == 55 and sum(len(row.command_records) for row in all_records) == 97
     assert sum(is_active(command) for row in all_records for command in row.command_records) == 79
     plan = plan_narration(OWNER, locale="en-US")

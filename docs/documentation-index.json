@@ -179,7 +179,7 @@
       "purpose": "Function Index",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "adf8829b7850f40f75f13e118c89af06cec512c0afcfca15cde735d102ad1fe5",
+      "sha256": "d1b680d56ee079f0c9449fa6a8add55a0d7a1518258f5001f58643339fb982a9",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -755,7 +755,7 @@
       "purpose": "OCF Function Command Index",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "2926531f08e5b114631a94bd1644a7639a7c856fc1c9a2606f71bc303736a86a",
+      "sha256": "05cc66c0480906f9e1884eaf4dbc70bef6fca9554708aacaec0d71781f9e7d69",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -773,7 +773,7 @@
       "purpose": "OCF Function Commands — Quick Reference",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "6f9349f35add7f0d2e49ac3dc404691d85fd827b6ac9598ed141654b62c3c4c7",
+      "sha256": "5935b5eb875d624b537aca8b2e4d500eaf46f7d0faf5600b44853350ca669131",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -791,7 +791,7 @@
       "purpose": "Command Review Report",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "55e58bc81269682f4c91dc5db3d2428f6e86882ffab1988477a7c5b51227e4a2",
+      "sha256": "6bd312b251289c7c9963d0c7d4fe38fc09636ffa57e52d2d44bc3b88546153f3",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -929,6 +929,24 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "docs/EDITORIAL_CANDIDATES.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "New editorial candidates",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "f79e4013fe5dfb21761d52505bb9e4c1979651087f3113327b5ed6641a99fa19",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "docs/EDITORIAL_REVIEW.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "Title–cue decisions and historical audit review",
@@ -1015,7 +1033,7 @@
       "purpose": "Functional extraction review matrix",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "f69e2e9c7e135e90c35619653d1d274b45570ef8499c10431900da73fe974eb1",
+      "sha256": "b6f92fcc0e19a97dd0b2e36d74432f5c19bab7dd9b66270e2c35e371bc3fc5b7",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1375,7 +1393,7 @@
       "purpose": "Documentation map",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "d21712a7f4d405d83be8615d3dd2a5a2a23959930043eac8705cc9dc2467dd25",
+      "sha256": "ab8020cbdcb396e1f8c80ff9827eb554db2dbdfe970de0e9b04a9134bb564fcf",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1441,7 +1459,7 @@
       "purpose": "Safety Matrix",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "180f0dc043d6a813db6ac854ab1f7b18ec17aff1cbc12fbfd4be3caa84528f34",
+      "sha256": "502574d65e1444554c8085f783f7079fbd35a41c945f7380bff671d6a97e431d",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -2551,6 +2569,42 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "generated",
       "missing_information": [],
+      "path": "docs/functions/OCF-EXP-003.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Dissolve",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "8a09f82ea3d009b4fd3f651e92c437bed487abaf8674aeb79ba42ea4ac82d40b",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "generated",
+      "missing_information": [],
+      "path": "docs/functions/OCF-EXP-005.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Clear Zone",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "7f5a0140f9ee3b2ae503860cd9c5d3c4708eb507efed044534d423c0bac49e0d",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "generated",
+      "missing_information": [],
       "path": "docs/functions/OCF-FND-001.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "Access to Energy",
@@ -3645,7 +3699,7 @@
       "purpose": "Current exact-teaching status",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "e3acdc9216b5a02039aaaeeab46388aba97d1bb7ee805b18c6d93f17ea471f35",
+      "sha256": "fa6e50f0618f209898a8a83a6611889a1fdc5b59cbcddfe3fea10475ae31097f",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -3665,7 +3719,7 @@
       "purpose": "Current title–cue decisions and implementation",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "b9fd4789bc142ceb26e22bde54f99a22a92f2cc690895d3203ec9094713b961a",
+      "sha256": "a70c6d26d11235604a5dd5e78c4f4129ce697b700fce10743868ca7a935cd847",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5226,5 +5280,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 250
+  "total": 253
 }

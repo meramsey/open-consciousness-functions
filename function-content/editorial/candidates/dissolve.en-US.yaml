@@ -1,0 +1,132 @@
+# OCF-EXP-003 — Dissolve
+# New OCF narration proposal; function ID is provisional and not registered.
+# Proposed English title: Dissolve
+# Proposed English display cue: PLUS-DISSOLVE
+# Proposed English spoken cue: Plus Dissolve
+# Proposed command identity: OCF-CMD-EXP-003-PRIMARY
+# Review note: Newly authored wording informed by the user-supplied
+# Plus Dis-Create excerpt; not a recovered or authenticated transcript.
+# Review note: No source filename, line range, checksum, or inherited
+# rights approval is asserted for that comparison excerpt.
+# Review note: The unfinished end of the supplied excerpt is not reconstructed.
+# Review note: Existing resource-key shape is retained for integration;
+# the hplus namespace does not establish historical provenance.
+# Review note: The function, command, locale cue resources, and narration
+# bindings must be registered before symbolic cue resolution is available.
+# Review note: Deliberate pattern selection initiates the practice;
+# continuing integration and lasting availability are intended suggestions.
+# Review note: Existing approved functions and integrity records are unchanged.
+# Review note: Manifest is an optional companion, not a second Dissolve command.
+# Review note: Shared preparation, practice pauses, and state transitions
+# belong in session composition, not this reusable function body.
+schema_version: '1.0'
+locale: en-US
+domain: narration
+entries:
+  hplus.function.ocf-exp-003.opener:
+    status: draft
+    version: 1.0.0
+    notes: >-
+      New OCF-authored narration proposal informed by the user-supplied
+      Plus Dis-Create excerpt. Introduces conscious dissolution of selected
+      beliefs, emotional responses, and recurring life patterns. No historical
+      transcript identity or prior editorial approval is claimed.
+      Proposed identity OCF-EXP-003 remains subject to registration and review.
+    text: |-
+      This OCF exercise will teach you to dissolve unwanted beliefs,
+      emotional responses, and recurring life patterns,
+      freeing your energy and attention for what you choose to create.
+
+  hplus.function.ocf-exp-003.function-body:
+    status: draft
+    version: 1.0.0
+    notes: >-
+      New OCF-authored programming passage, not a transcription or synonym-only
+      rewrite of the supplied comparison. Preserves deliberate selection,
+      inhale-hold-command-exhale, total-self cooperation, dissolution rather
+      than temporary concealment, and energy available for constructive use.
+      Adds representation-neutral intention, useful learning retained without
+      repeating an old pattern, self-directed choice, and patient integration
+      without requiring distress or a fixed completion time. The ability is
+      intended to remain available; activation targets a consciously selected
+      pattern rather than every passing thought. No clinical or external
+      outcome is established by these suggestions. The supplied meditation
+      prerequisites and Focus-state sequence are not imported. One passage
+      is intended for four scheduled body repetitions; composition remains
+      separate. The proposed primary command is Plus Dissolve, supplied through
+      cue.primary after registration and review. Manifest remains independent.
+      Editorial, rights/provenance, integration, and audio review are pending.
+    cue_template:
+      function_id: OCF-EXP-003
+      allowed: [cue.primary]
+    text: |-
+      From this moment forward, you are free to dissolve
+      patterns that no longer belong in the life you choose to create.
+
+      Bring one unwanted pattern clearly into your awareness:
+      a belief, an expectation, an emotional response,
+      or a recurring pattern in your life.
+      Recognize what you are ready to release,
+      without replaying its history or explaining every cause.
+
+      Inhale deeply and gently hold your breath.
+      Think or say in your mind, "{{ cue.primary }}."
+      Then exhale slowly and easily.
+
+      Your conscious mind, subconscious mind, physical being,
+      and higher self unite around this intention.
+      Every level of your total self participates
+      in releasing the pattern you have chosen.
+
+      Picture, feel, or simply know its structure loosening.
+      The connections holding it together soften and separate.
+      Its emotional charge subsides. Its familiar pull releases.
+      The pattern loses its hold and dissolves
+      from the way you think, feel, and respond.
+
+      You are not required to fight what you are releasing.
+      Meet yourself with understanding and kindness.
+      The lessons and useful knowledge of your experience remain,
+      while you release the expectation that the past must repeat.
+
+      Energy and attention once tied to sustaining this pattern
+      return to your use, available for clarity, creativity,
+      love, and purposeful action.
+      You remain whole, grounded, and free to choose
+      what you wish to create in its place.
+
+      Let this change continue with steadiness and patience,
+      whether release is immediate or unfolds in layers.
+      Your total self carries the intention forward
+      without constant effort or repeated checking.
+
+      Your new freedom becomes a lasting part of your life.
+      The ability to dissolve a selected pattern remains
+      permanently available whenever you consciously choose it.
+
+      The more you use this function,
+      the more naturally you release what no longer serves you
+      and make room for what you choose next.
+
+  hplus.function.ocf-exp-003.closer:
+    status: draft
+    version: 1.0.0
+    notes: >-
+      New OCF-authored closer with one purpose reminder, deliberate pattern
+      selection, the proposed primary cue, and the inhale-hold-command-exhale
+      sequence. No repeated reinforcement, second function command, or
+      session-state transition is included. Cue resolution requires the
+      proposed function and its reviewed locale cue to be registered.
+      Editorial approval and finished-session review remain pending.
+    cue_template:
+      function_id: OCF-EXP-003
+      allowed: [cue.primary]
+    text: |-
+      Remember, to dissolve an unwanted pattern,
+      bring what you wish to release clearly into your awareness.
+
+      Inhale deeply and gently hold your breath.
+      Think or say in your mind, "{{ cue.primary }}."
+      Then exhale slowly and easily.
+
+      This concludes your OCF exercise.

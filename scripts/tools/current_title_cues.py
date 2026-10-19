@@ -37,6 +37,16 @@ def build():
     functions, commands = [], []
     catalog = LocaleCatalog()
     for record in sorted(load_all_functions(), key=lambda item: item.id):
+        is_new_draft = record.id not in prior
+        if is_new_draft:
+            primary = next(row for row in record.command_records if row.designation == "primary")
+            prior[record.id] = {
+                "exact_taught_cue": primary.data.get("spoken"),
+                "classification": "UNREVIEWED ORIGINAL DRAFT",
+                "recommended_title": record.canonical_name,
+                "recommended_primary_cue": record.canonical_command,
+                "contextual_review": "New original draft; no prior historical or editorial approval.",
+            }
         update = changed.get(record.id)
         current_commands = [
             command_view(record, command, locale="en-US", catalog=catalog)
@@ -56,7 +66,9 @@ def build():
                 "spoken_teaching": taught,
                 "cue_presentation": presentation,
                 "current_purpose": record.purpose_summary,
-                "decision_status": "APPROVED AND IMPLEMENTED"
+                "decision_status": "UNREVIEWED ORIGINAL DRAFT"
+                if is_new_draft
+                else "APPROVED AND IMPLEMENTED"
                 if update
                 else "EXISTING PAIR RETAINED"
                 if record.id in kept
@@ -80,7 +92,9 @@ def build():
                 else kept[record.id]["implementation_scope"]
                 if record.id in kept
                 else prior[record.id]["contextual_review"],
-                "teaching_source": "Approved exact substitutions, verified against immutable predecessor"
+                "teaching_source": "Supplied draft; not approved for production"
+                if is_new_draft
+                else "Approved exact substitutions, verified against immutable predecessor"
                 if update
                 else "Predecessor contextual review; unchanged protected text verified",
                 "changed_keys": update["narration_keys_changed"] if update else [],

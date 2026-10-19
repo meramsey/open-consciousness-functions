@@ -19,7 +19,7 @@ def test_capabilities_schema_and_live_state_dispatch(capsys):
 def test_function_discovery_preserves_commands_and_legacy_targets(capsys):
     assert main(["functions", "list", "--json"]) == 0
     data = json.loads(capsys.readouterr().out)
-    assert len(data["functions"]) == 55
+    assert len(data["functions"]) == 57
     assert (
         sum(row["legacy"]["source_availability"] == "unavailable" for row in data["functions"])
         == 16

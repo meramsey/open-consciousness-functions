@@ -11,11 +11,11 @@
   "predecessor_commit": "85ba92896c2d6a2cea7b5668e49196838dd3ec2b",
   "source_scope": "Current approved successor. Earlier source-pinned proposals remain immutable history; this is not a repin or blanket approval of them.",
   "counts": {
-    "functions": 55,
-    "structured_command_identities": 97,
-    "active_records": 79,
+    "functions": 57,
+    "structured_command_identities": 101,
+    "active_records": 83,
     "historical_only_command_records": 18,
-    "stable_primary_identities": 55,
+    "stable_primary_identities": 57,
     "approved_cues_implemented": 40,
     "protected_entries": 177,
     "allowlisted_text_changes": 66,
@@ -1509,6 +1509,64 @@
         "hplus.function.ocf-exp-002.function-body",
         "hplus.function.ocf-exp-002.closer"
       ]
+    },
+    {
+      "function_id": "OCF-EXP-003",
+      "current_title": "Dissolve",
+      "display_cue": "PLUS-DISSOLVE",
+      "spoken_teaching": "Plus Dissolve",
+      "cue_presentation": {
+        "command_id": "OCF-CMD-EXP-003-PRIMARY",
+        "display_cue": "PLUS-DISSOLVE",
+        "requested_locale": "en-US",
+        "spoken_cue": null,
+        "binding_status": "requires-locale-review",
+        "spoken_cue_key": "commands.ocf-cmd-exp-003-primary.spoken-cue",
+        "resource_status": "draft"
+      },
+      "current_purpose": "Consciously dissolve a selected unwanted belief, expectation, emotional response or recurring life pattern while preserving useful learning.",
+      "decision_status": "UNREVIEWED ORIGINAL DRAFT",
+      "metadata_teaching_consistent": true,
+      "title_status": "UNCHANGED",
+      "pending_title": null,
+      "previous_values": null,
+      "unselected_proposal": {
+        "title": "Dissolve",
+        "cue": "PLUS-DISSOLVE"
+      },
+      "historical_lookup": [],
+      "context": "New original draft; no prior historical or editorial approval.",
+      "teaching_source": "Supplied draft; not approved for production",
+      "changed_keys": []
+    },
+    {
+      "function_id": "OCF-EXP-005",
+      "current_title": "Clear Zone",
+      "display_cue": "PLUS-CLEAR ZONE",
+      "spoken_teaching": "Plus Clear Zone",
+      "cue_presentation": {
+        "command_id": "OCF-CMD-EXP-005-PRIMARY",
+        "display_cue": "PLUS-CLEAR ZONE",
+        "requested_locale": "en-US",
+        "spoken_cue": null,
+        "binding_status": "requires-locale-review",
+        "spoken_cue_key": "commands.ocf-cmd-exp-005-primary.spoken-cue",
+        "resource_status": "draft"
+      },
+      "current_purpose": "Establish an ongoing intention to discourage unwanted insect contact while maintaining calm awareness.",
+      "decision_status": "UNREVIEWED ORIGINAL DRAFT",
+      "metadata_teaching_consistent": true,
+      "title_status": "UNCHANGED",
+      "pending_title": null,
+      "previous_values": null,
+      "unselected_proposal": {
+        "title": "Clear Zone",
+        "cue": "PLUS-CLEAR ZONE"
+      },
+      "historical_lookup": [],
+      "context": "New original draft; no prior historical or editorial approval.",
+      "teaching_source": "Supplied draft; not approved for production",
+      "changed_keys": []
     },
     {
       "function_id": "OCF-FND-001",
@@ -6149,6 +6207,300 @@
       }
     },
     {
+      "id": "OCF-CMD-EXP-003-PRIMARY",
+      "function_id": "OCF-EXP-003",
+      "designation": "primary",
+      "role": "activation",
+      "phrase_ref": {
+        "source": "canonical-primary"
+      },
+      "spoken": "Plus Dissolve",
+      "spoken_review": "unresolved",
+      "effect_scope_ref": "lifecycle.scopes.application.persistence",
+      "procedure": {
+        "status": "documented",
+        "override_steps": [
+          {
+            "id": "select-pattern",
+            "operation": "select-intention"
+          },
+          {
+            "id": "inhale-deeply",
+            "operation": "inhale"
+          },
+          {
+            "id": "hold-gently",
+            "operation": "hold-breath"
+          },
+          {
+            "id": "think-or-say-in-mind",
+            "operation": "think-or-say-command"
+          },
+          {
+            "id": "exhale-slowly-easily",
+            "operation": "exhale"
+          }
+        ],
+        "evidence_keys": [
+          "hplus.function.ocf-exp-003.function-body"
+        ]
+      },
+      "localization": {
+        "spoken_cue_key": "commands.ocf-cmd-exp-003-primary.spoken-cue",
+        "label_key": "commands.ocf-cmd-exp-003-primary.label",
+        "usage_key": "commands.ocf-cmd-exp-003-primary.usage",
+        "explanation_key": "commands.ocf-cmd-exp-003-primary.explanation"
+      },
+      "phrase": "PLUS-DISSOLVE",
+      "effect_scope": "conditional",
+      "effect_scope_details": {
+        "persistence": "conditional",
+        "activation": "manual",
+        "description": "Each activation selects one unwanted belief, expectation, emotional response or recurring pattern; useful learning remains.",
+        "description_key": "functions.ocf-exp-003.application"
+      },
+      "resolved_procedure_steps": [
+        {
+          "id": "select-pattern",
+          "operation": "select-intention"
+        },
+        {
+          "id": "inhale-deeply",
+          "operation": "inhale"
+        },
+        {
+          "id": "hold-gently",
+          "operation": "hold-breath"
+        },
+        {
+          "id": "think-or-say-in-mind",
+          "operation": "think-or-say-command"
+        },
+        {
+          "id": "exhale-slowly-easily",
+          "operation": "exhale"
+        }
+      ],
+      "cue_presentation": {
+        "command_id": "OCF-CMD-EXP-003-PRIMARY",
+        "display_cue": "PLUS-DISSOLVE",
+        "requested_locale": "en-US",
+        "spoken_cue": null,
+        "binding_status": "requires-locale-review",
+        "spoken_cue_key": "commands.ocf-cmd-exp-003-primary.spoken-cue",
+        "resource_status": "draft"
+      }
+    },
+    {
+      "id": "OCF-CMD-EXP-005-PRIMARY",
+      "function_id": "OCF-EXP-005",
+      "designation": "primary",
+      "role": "activation",
+      "phrase_ref": {
+        "source": "canonical-primary"
+      },
+      "spoken": "Plus Clear Zone",
+      "spoken_review": "unresolved",
+      "effect_scope_ref": "lifecycle.scopes.baseline.persistence",
+      "procedure": {
+        "status": "documented",
+        "override_steps": [
+          {
+            "id": "inhale-easily",
+            "operation": "inhale"
+          },
+          {
+            "id": "think-or-say-in-mind",
+            "operation": "think-or-say-command"
+          },
+          {
+            "id": "exhale-naturally",
+            "operation": "exhale"
+          }
+        ],
+        "evidence_keys": [
+          "hplus.function.ocf-exp-005.function-body"
+        ]
+      },
+      "localization": {
+        "spoken_cue_key": "commands.ocf-cmd-exp-005-primary.spoken-cue",
+        "label_key": "commands.ocf-cmd-exp-005-primary.label",
+        "usage_key": "commands.ocf-cmd-exp-005-primary.usage",
+        "explanation_key": "commands.ocf-cmd-exp-005-primary.explanation"
+      },
+      "phrase": "PLUS-CLEAR ZONE",
+      "effect_scope": "permanent",
+      "effect_scope_details": {
+        "persistence": "permanent",
+        "activation": "automatic",
+        "description": "Intended automatic non-destructive insect discouragement and calm awareness.",
+        "description_key": "functions.ocf-exp-005.baseline"
+      },
+      "resolved_procedure_steps": [
+        {
+          "id": "inhale-easily",
+          "operation": "inhale"
+        },
+        {
+          "id": "think-or-say-in-mind",
+          "operation": "think-or-say-command"
+        },
+        {
+          "id": "exhale-naturally",
+          "operation": "exhale"
+        }
+      ],
+      "cue_presentation": {
+        "command_id": "OCF-CMD-EXP-005-PRIMARY",
+        "display_cue": "PLUS-CLEAR ZONE",
+        "requested_locale": "en-US",
+        "spoken_cue": null,
+        "binding_status": "requires-locale-review",
+        "spoken_cue_key": "commands.ocf-cmd-exp-005-primary.spoken-cue",
+        "resource_status": "draft"
+      }
+    },
+    {
+      "id": "OCF-CMD-EXP-005-OBSERVE",
+      "function_id": "OCF-EXP-005",
+      "designation": "secondary",
+      "role": "mode",
+      "phrase_ref": {
+        "source": "canonical-mode",
+        "command_id": "OCF-CMD-EXP-005-OBSERVE"
+      },
+      "spoken": "Plus Clear Zone, Observe",
+      "spoken_review": "unresolved",
+      "effect_scope_ref": "lifecycle.scopes.application.persistence",
+      "procedure": {
+        "status": "documented",
+        "override_steps": [
+          {
+            "id": "inhale-easily",
+            "operation": "inhale"
+          },
+          {
+            "id": "think-or-say-in-mind",
+            "operation": "think-or-say-command"
+          },
+          {
+            "id": "exhale-naturally",
+            "operation": "exhale"
+          }
+        ],
+        "evidence_keys": [
+          "hplus.function.ocf-exp-005.function-body"
+        ]
+      },
+      "localization": {
+        "spoken_cue_key": "commands.ocf-cmd-exp-005-observe.spoken-cue",
+        "label_key": "commands.ocf-cmd-exp-005-observe.label",
+        "usage_key": "commands.ocf-cmd-exp-005-observe.usage",
+        "explanation_key": "commands.ocf-cmd-exp-005-observe.explanation"
+      },
+      "phrase": "PLUS-CLEAR ZONE, OBSERVE",
+      "effect_scope": "conditional",
+      "effect_scope_details": {
+        "persistence": "conditional",
+        "activation": "manual",
+        "description": "Mutually exclusive Observe and Suspend overrides replace the prior mode and end at normal sleep onset, loss of consciousness or deliberate primary invocation.",
+        "description_key": "functions.ocf-exp-005.application"
+      },
+      "resolved_procedure_steps": [
+        {
+          "id": "inhale-easily",
+          "operation": "inhale"
+        },
+        {
+          "id": "think-or-say-in-mind",
+          "operation": "think-or-say-command"
+        },
+        {
+          "id": "exhale-naturally",
+          "operation": "exhale"
+        }
+      ],
+      "cue_presentation": {
+        "command_id": "OCF-CMD-EXP-005-OBSERVE",
+        "display_cue": "PLUS-CLEAR ZONE, OBSERVE",
+        "requested_locale": "en-US",
+        "spoken_cue": null,
+        "binding_status": "requires-locale-review",
+        "spoken_cue_key": "commands.ocf-cmd-exp-005-observe.spoken-cue",
+        "resource_status": "draft"
+      }
+    },
+    {
+      "id": "OCF-CMD-EXP-005-SUSPEND",
+      "function_id": "OCF-EXP-005",
+      "designation": "secondary",
+      "role": "mode",
+      "phrase_ref": {
+        "source": "canonical-mode",
+        "command_id": "OCF-CMD-EXP-005-SUSPEND"
+      },
+      "spoken": "Plus Clear Zone, Suspend",
+      "spoken_review": "unresolved",
+      "effect_scope_ref": "lifecycle.scopes.application.persistence",
+      "procedure": {
+        "status": "documented",
+        "override_steps": [
+          {
+            "id": "inhale-easily",
+            "operation": "inhale"
+          },
+          {
+            "id": "think-or-say-in-mind",
+            "operation": "think-or-say-command"
+          },
+          {
+            "id": "exhale-naturally",
+            "operation": "exhale"
+          }
+        ],
+        "evidence_keys": [
+          "hplus.function.ocf-exp-005.function-body"
+        ]
+      },
+      "localization": {
+        "spoken_cue_key": "commands.ocf-cmd-exp-005-suspend.spoken-cue",
+        "label_key": "commands.ocf-cmd-exp-005-suspend.label",
+        "usage_key": "commands.ocf-cmd-exp-005-suspend.usage",
+        "explanation_key": "commands.ocf-cmd-exp-005-suspend.explanation"
+      },
+      "phrase": "PLUS-CLEAR ZONE, SUSPEND",
+      "effect_scope": "conditional",
+      "effect_scope_details": {
+        "persistence": "conditional",
+        "activation": "manual",
+        "description": "Mutually exclusive Observe and Suspend overrides replace the prior mode and end at normal sleep onset, loss of consciousness or deliberate primary invocation.",
+        "description_key": "functions.ocf-exp-005.application"
+      },
+      "resolved_procedure_steps": [
+        {
+          "id": "inhale-easily",
+          "operation": "inhale"
+        },
+        {
+          "id": "think-or-say-in-mind",
+          "operation": "think-or-say-command"
+        },
+        {
+          "id": "exhale-naturally",
+          "operation": "exhale"
+        }
+      ],
+      "cue_presentation": {
+        "command_id": "OCF-CMD-EXP-005-SUSPEND",
+        "display_cue": "PLUS-CLEAR ZONE, SUSPEND",
+        "requested_locale": "en-US",
+        "spoken_cue": null,
+        "binding_status": "requires-locale-review",
+        "spoken_cue_key": "commands.ocf-cmd-exp-005-suspend.spoken-cue",
+        "resource_status": "draft"
+      }
+    },
+    {
       "id": "OCF-CMD-FND-001-PRIMARY",
       "function_id": "OCF-FND-001",
       "phrase_ref": {
@@ -9351,6 +9703,8 @@
     "functions/emotion/empathizing.yaml": "c5d02479a626e1736bc3e6eea63d0f02fcc8217b7e04f5613762d0ac9e76b9e0",
     "functions/experimental/mobius-west.yaml": "4ed60aadc94a22ab8ec88ff000a8cc05cc21ed5f693d467467aab87afde100d6",
     "functions/experimental/zoning.yaml": "f5f3aa75d3fdd7a20b0ae6959ab264a9019248169a56ec54e2140b8c1516bfa2",
+    "functions/experimental/dissolve.yaml": "54cbe5697c0e7e89d97b71a4eec122aee24b8bc8dcc56e2948c006d3587f97e0",
+    "functions/experimental/clear-zone.yaml": "a41fe22e01a8256f2e99a86178fe3fac81910928766777100b10451fb1442094",
     "functions/foundation/energize.yaml": "18c8a03827f47a11814362b9a11e80c73fa6dbba0a04f802fe0c76a38a0c1378",
     "functions/foundation/attention.yaml": "2385e4b894763480995fd4d4e471895f3edb00e378f4192ca3632a8a6742ae28",
     "functions/foundation/recharge.yaml": "4192369502c43aefa4efa0cd6a0988ae38fbdb66f6084849be971756149be465",

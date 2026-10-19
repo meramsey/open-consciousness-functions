@@ -53,7 +53,11 @@ SUPPLEMENTARY_CLOSERS = {
 SUPPLEMENTARY_OPENERS = {"OCF-BOD-008", "OCF-COG-005"}
 COMPLETE_OWNERS = sorted(
     owner
-    for owner in [record.id for record in load_all_functions()]
+    for owner in [
+        record.id
+        for record in load_all_functions()
+        if record.data["legacy"]["source_system"] == "Monroe H-PLUS"
+    ]
     if all(
         f"hplus.function.{owner.lower()}.{slot}"
         in yaml.safe_load((REPO_ROOT / "locales/en-US" / f"hplus-{owner}.yaml").read_text())[
@@ -93,7 +97,9 @@ def test_standard_shared_and_function_resources_resolve_without_local_sources(ow
 
 
 def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
-    owners = load_all_functions()
+    owners = [
+        r for r in load_all_functions() if r.data["legacy"]["source_system"] == "Monroe H-PLUS"
+    ]
     assert len(owners) == 55
     assert len(COMPLETE_OWNERS) == 55
     unavailable = [owner for owner in owners if owner.source_availability == "unavailable"]

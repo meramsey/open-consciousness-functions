@@ -99,7 +99,11 @@ def inventory(root: Path) -> dict:
         raise OCFError(
             f"reference corpus not found: {root}; supply --root without modifying source files"
         )
-    functions = load_all_functions()
+    functions = [
+        record
+        for record in load_all_functions()
+        if record.data.get("legacy", {}).get("source_system") == "Monroe H-PLUS"
+    ]
     titles = dict(TITLE_ALIASES)
     for function in functions:
         for title in [

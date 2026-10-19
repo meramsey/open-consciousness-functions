@@ -1,0 +1,132 @@
+schema_version: '1.0'
+id: OCF-EXP-003
+slug: dissolve
+canonical:
+  name: Dissolve
+  command:
+    primary: PLUS-DISSOLVE
+    modes: []
+    mode_ids: []
+legacy:
+  source_system: null
+  name: ''
+  commands: []
+  command_status: proposed
+  source_availability: pending-source-review
+  source_notes: New OCF draft informed by a user-supplied comparison; no historical
+    lineage or inherited rights approval.
+ocf:
+  reimplementation_status: draft
+  command_review: pending
+aliases:
+  names: []
+  commands: []
+  command_ids: []
+classification:
+  primary_domain: experimental
+  secondary_domains: []
+compatibility:
+  state: none
+  rationale: Original draft; no historical command is being replaced.
+status:
+  maturity: community-proposed
+  implementation: script-drafted
+  evidence: unverified
+lifecycle:
+  persistence: permanent
+  activation: manual
+  release:
+    required: false
+    command: null
+  trigger_conditions:
+  - Deliberate selection of an unwanted pattern followed by the command procedure.
+  scopes:
+    capability:
+      persistence: permanent
+      description: The learned ability is intended to remain available for deliberate
+        use.
+      description_key: functions.ocf-exp-003.capability
+    application:
+      persistence: conditional
+      activation: manual
+      description: Each activation selects one unwanted belief, expectation, emotional
+        response or recurring pattern; useful learning remains.
+      description_key: functions.ocf-exp-003.application
+purpose:
+  summary: Consciously dissolve a selected unwanted belief, expectation, emotional
+    response or recurring life pattern while preserving useful learning.
+  source_description: null
+  community_description: Release the sustaining pattern rather than ignore or suppress
+    a problem. Manifest is optional, not a prerequisite.
+safety:
+  level: experimental
+  medical_relevance: false
+  notes:
+  - Exercise intentions do not establish clinical or external outcomes.
+claims:
+  intended_effects:
+  - Deliberate release of a selected unwanted pattern with useful learning retained.
+  prohibited_claims:
+  - No guaranteed psychological
+  - physiological
+  - medical or external result is claimed.
+audio:
+  script_status: draft
+  implementation_status: not-started
+  background_audio:
+    strategy: optional
+    engine: farfield
+    preset: null
+sources: []
+attribution:
+  original_authors: []
+  ocf_contributors: []
+version:
+  current: 0.1.0
+  created: '2026-10-19'
+  updated: '2026-10-19'
+commands:
+- id: OCF-CMD-EXP-003-PRIMARY
+  function_id: OCF-EXP-003
+  designation: primary
+  role: activation
+  phrase_ref:
+    source: canonical-primary
+  spoken: Plus Dissolve
+  spoken_review: unresolved
+  effect_scope_ref: lifecycle.scopes.application.persistence
+  procedure:
+    status: documented
+    override_steps:
+    - id: select-pattern
+      operation: select-intention
+    - id: inhale-deeply
+      operation: inhale
+    - id: hold-gently
+      operation: hold-breath
+    - id: think-or-say-in-mind
+      operation: think-or-say-command
+    - id: exhale-slowly-easily
+      operation: exhale
+    evidence_keys:
+    - hplus.function.ocf-exp-003.function-body
+  localization:
+    spoken_cue_key: commands.ocf-cmd-exp-003-primary.spoken-cue
+    label_key: commands.ocf-cmd-exp-003-primary.label
+    usage_key: commands.ocf-cmd-exp-003-primary.usage
+    explanation_key: commands.ocf-cmd-exp-003-primary.explanation
+documentation:
+  title_key: functions.ocf-exp-003.title
+  purpose_key: functions.ocf-exp-003.purpose
+  short_description_key: functions.ocf-exp-003.purpose
+narration:
+  sequence:
+  - key: hplus.function.ocf-exp-003.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-exp-003.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-exp-003.closer
+    repetitions: 1
+    role: closer

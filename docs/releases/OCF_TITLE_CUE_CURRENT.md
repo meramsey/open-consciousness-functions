@@ -6,7 +6,7 @@ Current approved successor. Earlier source-pinned proposals remain immutable his
 
 Approved source: explicit user decisions recorded in the versioned title–cue ledgers. Approval covers primary English vocabulary and scoped teaching edits, not other proposals, mechanisms, listening or release. Heart Flow remains tentative; the committed heart title is retained.
 
-Counts: {"active_records": 79, "allowlisted_text_changes": 66, "approved_cues_implemented": 40, "functions": 55, "historical_only_command_records": 18, "protected_entries": 177, "remaining_metadata_teaching_differences": 1, "stable_primary_identities": 55, "structured_command_identities": 97}.
+Counts: {"active_records": 83, "allowlisted_text_changes": 66, "approved_cues_implemented": 40, "functions": 57, "historical_only_command_records": 18, "protected_entries": 177, "remaining_metadata_teaching_differences": 1, "stable_primary_identities": 57, "structured_command_identities": 101}.
 
 ## Approved implementation and remaining catalog decisions
 
@@ -301,6 +301,22 @@ Previous values: Mobius West / `PLUS-PROGRAM`; complete teaching **Plus Change C
 - Other unselected proposal: null
 
 Previous values: Zoning / `PLUS-ZONE`; complete teaching **Plus Insulate Insulate**.
+
+### OCF-EXP-003 — Dissolve
+
+- Current display cue: `PLUS-DISSOLVE`; complete teaching: **Plus Dissolve**.
+- Status: UNREVIEWED ORIGINAL DRAFT; title: UNCHANGED.
+- Purpose: Consciously dissolve a selected unwanted belief, expectation, emotional response or recurring life pattern while preserving useful learning.
+- Pending title: None.
+- Other unselected proposal: {"title": "Dissolve", "cue": "PLUS-DISSOLVE"}
+
+### OCF-EXP-005 — Clear Zone
+
+- Current display cue: `PLUS-CLEAR ZONE`; complete teaching: **Plus Clear Zone**.
+- Status: UNREVIEWED ORIGINAL DRAFT; title: UNCHANGED.
+- Purpose: Establish an ongoing intention to discourage unwanted insect contact while maintaining calm awareness.
+- Pending title: None.
+- Other unselected proposal: {"title": "Clear Zone", "cue": "PLUS-CLEAR ZONE"}
 
 ### OCF-FND-001 — Access to Energy
 
