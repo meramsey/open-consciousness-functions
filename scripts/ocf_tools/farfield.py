@@ -86,6 +86,10 @@ class OCFFarfieldMissing(RuntimeError):
     """Raised when a command requires Farfield but it is not installed."""
 
 
+class OCFFarfieldFailed(RuntimeError):
+    """A public engine command failed; callers must propagate a failure status."""
+
+
 def farfield_preset_dirs() -> list[Path]:
     """Directories holding Farfield session YAMLs, in priority order.
 
@@ -199,7 +203,12 @@ def describe_preset(preset: str) -> str:
         result = run_farfield(["describe", preset])
     except OCFFarfieldMissing as exc:
         return str(exc)
-    return f"$ farfield describe {preset}\n" + (result.stdout or result.stderr)
+    diagnostic = (result.stdout or "") + (result.stderr or "")
+    if result.returncode != 0:
+        raise OCFFarfieldFailed(
+            f"farfield describe failed (exit {result.returncode}):\n{diagnostic}"
+        )
+    return f"$ farfield describe {preset}\n" + diagnostic
 
 
 def render_preset(
@@ -222,7 +231,11 @@ def render_preset(
     except OCFFarfieldMissing as exc:
         return str(exc)
     if result.returncode != 0:
-        return f"farfield render failed (exit {result.returncode}):\n{result.stderr}"
+        raise OCFFarfieldFailed(
+            f"farfield render failed (exit {result.returncode}):\n"
+            + (result.stdout or "")
+            + (result.stderr or "")
+        )
     return f"Rendered to {output}\n$ farfield {' '.join(command)}"
 
 

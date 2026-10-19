@@ -69,7 +69,11 @@ def describe_background(preset: str, engine: str = "farfield") -> int:
     if engine == "sbagenx":
         print(sbagenx_mod.describe_preset(engine_file or preset))
     else:
-        print(farfield_mod.describe_preset(engine_file or preset))
+        try:
+            print(farfield_mod.describe_preset(engine_file or preset))
+        except farfield_mod.OCFFarfieldFailed as exc:
+            print(exc)
+            return 1
     return 0
 
 
@@ -94,7 +98,11 @@ def render_background(preset: str, output: str | None = None, engine: str = "far
                 seed = int(render["seed"])
             if render.get("deterministic") and seed is not None:
                 print(f"Deterministic render requested (seed {seed}).")
-        print(farfield_mod.render_preset(engine_file or preset, output=out_path, seed=seed))
+        try:
+            print(farfield_mod.render_preset(engine_file or preset, output=out_path, seed=seed))
+        except farfield_mod.OCFFarfieldFailed as exc:
+            print(exc)
+            return 1
     return 0
 
 

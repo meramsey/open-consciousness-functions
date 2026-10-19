@@ -191,7 +191,8 @@ def test_farfield_command_results_and_missing_guidance(monkeypatch, tmp_path):
     assert calls[-1] == ["render", "p", "--output", str(tmp_path / "out.wav"), "--seed", "0"]
     assert "p-x.wav" in farfield.render_preset("p:x")
     monkeypatch.setattr(farfield, "run_farfield", lambda argv: result(4, stderr="render error"))
-    assert "exit 4" in farfield.render_preset("p")
+    with pytest.raises(farfield.OCFFarfieldFailed, match="exit 4"):
+        farfield.render_preset("p")
 
     def missing(argv):
         raise farfield.OCFFarfieldMissing("optional missing")

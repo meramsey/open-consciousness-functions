@@ -93,6 +93,30 @@ def test_farfield_public_cli_only(fake_farfield):
         assert call[1] in ("--version", "list", "describe", "render")
 
 
+@pytest.mark.parametrize("operation", ["describe", "render"])
+@pytest.mark.parametrize("exit_code", [0, 2])
+def test_background_parser_failure_propagates(monkeypatch, capsys, tmp_path, operation, exit_code):
+    """Old engines can emit a parser error on stdout and still exit zero."""
+    monkeypatch.setattr(
+        farfield, "check_farfield", lambda: farfield.FarfieldStatus(True, "/engine/farfield")
+    )
+    monkeypatch.setattr(
+        farfield,
+        "workspace_run",
+        lambda *a, **kw: _Result(exit_code, "unknown fidelity 'best-effort'\n", "parser detail\n"),
+    )
+    if operation == "describe":
+        status = describe_background("invalid-preset")
+    else:
+        status = render_background("invalid-preset", str(tmp_path / "out.wav"))
+    assert status == 1
+    output = capsys.readouterr().out
+    assert "unknown fidelity" in output
+    assert "parser detail" in output
+    assert farfield.FARFIELD_COMPATIBLE_REVISION in output
+    assert "Rendered to" not in output
+
+
 def test_list_background_includes_ocf_presets(fake_farfield, capsys):
     from ocf_tools.audio import list_background
 
