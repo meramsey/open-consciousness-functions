@@ -73,7 +73,7 @@ def test_lsp_candidate_source_navigation():
     workspace = AuthoringService(REPO_ROOT)
     for name in ("intuition", "clear-zone"):
         path = REPO_ROOT / f"function-content/editorial/candidates/working/{name}.en-US.yaml"
-        text = path.read_text()
+        text = path.read_text(encoding="utf-8")
         _, _, definitions = workspace.definitions_at(
             path.as_uri(), text.index("{{ cue.primary }}") + 5
         )
@@ -114,7 +114,7 @@ def test_lsp_unavailable_staged_authority_returns_no_definition(monkeypatch, err
 
     monkeypatch.setattr(editorial_candidates, "context", unavailable)
     path = REPO_ROOT / "function-content/editorial/candidates/working/intuition.en-US.yaml"
-    text = path.read_text()
+    text = path.read_text(encoding="utf-8")
     _, _, definitions = AuthoringService(REPO_ROOT).definitions_at(
         path.as_uri(), text.index("{{ cue.primary }}") + 5
     )

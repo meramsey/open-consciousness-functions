@@ -221,12 +221,12 @@ def test_verifier_rejects_scope_drift_even_with_current_file_witness(evidence, c
     elif case == "baseline":
         write(subject.BASELINE, {})
     elif case == "engineering":
-        lock = json.loads((root / "new-lock.json").read_text())
+        lock = json.loads((root / "new-lock.json").read_text(encoding="utf-8"))
         lock["profiles"]["dsp"] = "retuned"
         write("new-lock.json", lock)
     else:
         name = subject.FUNCTION if case == "behavior" else subject.NARRATION
-        value = yaml.safe_load((root / name).read_text())
+        value = yaml.safe_load((root / name).read_text(encoding="utf-8"))
         if case == "behavior":
             value["lifecycle"]["persistence"] = "changed"
         else:
