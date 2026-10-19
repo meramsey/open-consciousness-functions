@@ -224,6 +224,14 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     function_preview.add_argument("id")
     function_preview.add_argument("--locale", default="en-US")
+    candidates = function_sub.add_parser(
+        "candidates", help="list or inspect unapproved editorial candidates"
+    )
+    candidates.add_argument("candidate", nargs="?")
+    candidates.add_argument(
+        "--preview", action="store_true", help="include full authored and resolved narration"
+    )
+    candidates.add_argument("--locale", default="en-US")
     function_lookup = function_sub.add_parser(
         "lookup",
         help="find current presentation by a historical name or phrase; never selects activation",
@@ -1336,6 +1344,13 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == "functions":
             import json
+
+            if args.function_kind == "candidates":
+                from .agent_api import inspect_candidates
+
+                result = inspect_candidates(args.candidate, args.locale, args.preview)
+                print(json.dumps(result, ensure_ascii=False, indent=2))
+                return int(result.get("status") == "error")
 
             if args.function_kind == "preview":
                 from .cue_templates import preview

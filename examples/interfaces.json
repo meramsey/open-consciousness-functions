@@ -321,6 +321,18 @@
     {
       "argv": [
         "functions",
+        "candidates"
+      ],
+      "path": [
+        "functions",
+        "candidates"
+      ],
+      "usage": "usage: ocf functions candidates [-h] [--preview] [--locale LOCALE] [candidate]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "functions",
         "lookup",
         "OCF-FND-002"
       ],
@@ -1544,6 +1556,12 @@
       "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
     },
     {
+      "arguments": {},
+      "name": "ocf_inspect_candidates",
+      "read_only_hint": false,
+      "verification": "signature/type checked only; no job, render, deletion or packaging dispatched"
+    },
+    {
       "arguments": {
         "function_id": "OCF-FND-002",
         "manifest": "YOUR_MANIFEST"
@@ -2020,7 +2038,7 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "0f7408d218085590cd3e6d1c5a12cec7155f78ad033a24ee4f404ea23352277e",
+      "example_sha256": "8ee4ed083df0405844cab1b41f31c56b38cbfbf3bd4186163caa836d2201b275",
       "schema": "session-plan.schema.json",
       "source": "audio/session-plans/en-US/OCF-FND-002.json",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
@@ -2114,8 +2132,8 @@
     "schemas/timed-transcript.schema.json": "c3e2798f7ace0ba81c1fb5f1d2fa5afad20066ac3285a2fb7772dbed995b5950",
     "schemas/voice-dataset.schema.json": "0307327f3f52eeaaaed71abaa6d1950c0b665fc677b43547e2452e9c31000ed8",
     "schemas/voice-profile.schema.json": "0204c3379a0540d22e3792ee5b78ad134bd2a8cb73ddf51c975a602dbcb2c23d",
-    "scripts/ocf_tools/agent_api.py": "5e6588bca9f91bff1a3d40a3a9aa0be4148c24e0121ec622c6f5d6a9df0e9c89",
-    "scripts/ocf_tools/cli.py": "153d7d205b9e94c9804bb3a85b9a67645ad124965862da42a9e0eaba78921a54",
+    "scripts/ocf_tools/agent_api.py": "d857d7ac1b9e118ba9a5614b1b86d16265b6fd6a6ac766d2a14099be8b7e7715",
+    "scripts/ocf_tools/cli.py": "20f6f0e73314e5a0bf2df8c4ea71692948354110d336cc086f34af2ec299ef42",
     "scripts/ocf_tools/lsp_server.py": "a753b91b1b73609ecd6886470a037a9bbf1259e2a77f08203546e55ef4cbae09",
     "scripts/ocf_tools/mcp_server.py": "d8641d4160888abbe7152fca2117623de4dfb061793b95b161dbfb4534a2be54",
     "scripts/ocf_tools/narration_cli.py": "5f13a05251816e5d3b80419d9ed67184b5c6c48722175700bbc88ec2b429bd41",

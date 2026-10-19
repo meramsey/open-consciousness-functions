@@ -13,7 +13,9 @@ LEDGER = "function-content/editorial/cue-completion-001.json"
 
 def predecessor(root, name, text):
     from .editorial_candidates import predecessor as before_candidates
+    from .options_successor import predecessor as before_options
 
+    text = before_options(root, name, text)
     text = before_candidates(root, name, text)
     path = root / LEDGER
     if not path.is_file():
@@ -77,7 +79,9 @@ def verify(root=REPO_ROOT):
         return errors
     for name in data["files"]:
         predecessor(root, name, contained(root, name).read_text(encoding="utf-8"))
-    if text_fingerprints(narration_texts(root)) != data["resolved_text_sha256"]:
+    from .options_successor import before_texts
+
+    if text_fingerprints(before_texts(root, narration_texts(root))) != data["resolved_text_sha256"]:
         errors.append("cue completion changed resolved speech")
     old_raw = contained(root, data["previous_defaults_lock"]).read_text(encoding="utf-8")
     old = json.loads(old_raw)

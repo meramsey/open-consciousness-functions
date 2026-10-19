@@ -2,6 +2,11 @@ schema_version: '1.0'
 locale: en-US
 domain: ui
 entries:
+  commands.ocf-cmd-cog-005-primary.display-cue:
+    text: PLUS-OPTIONS
+    status: reviewed
+    version: 1.0.0
+    notes: Explicit user approval OCF-OPTIONS-001; not listening or release approval.
   command.guide.canonical-note:
     text: Canonical command phrases are shown exactly as registered and are not translated. Script and
       legacy phrase differences are shown separately.

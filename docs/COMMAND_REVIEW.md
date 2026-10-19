@@ -26,7 +26,7 @@ Command-design review generated from the canonical function records.
 | `OCF-COG-002` | BUY THE NUMBERS | `PLUS-CALCULATE` | `PLUS-CALCULATE` |  | approved | unchanged |
 | `OCF-COG-003` | CONTEMPLATION | `PLUS-OPEN` / `PLUS-CLOSED` | `PLUS-OPEN` | `PLUS-CLOSED` | approved | unchanged |
 | `OCF-COG-004` | IMPRINT | `PLUS-IMPRINT, IMPRINT` / `PLUS-RECALL` | `PLUS-IMPRINT` | `PLUS-RECALL` | approved | historical-lookup |
-| `OCF-COG-005` | OPTIONS | `PLUS-OPTIONS, CHOICES` | `PLUS-OPTIONS` |  | approved | unchanged |
+| `OCF-COG-005` | OPTIONS | `PLUS-OPTIONS, CHOICES` | `PLUS-OPTIONS` |  | approved | historical-lookup |
 | `OCF-COG-006` | RECALL | `PLUS-RECALL` | `PLUS-RECALL` |  | approved | unchanged |
 | `OCF-COG-007` | THINK FAST | `PLUS-THINK` | `PLUS-THINK` |  | approved | unchanged |
 | `OCF-COM-001` | SPEAK UP | `PLUS-SPEAK UP` | `PLUS-SPEAK UP` |  | approved | unchanged |

@@ -25,7 +25,9 @@ def test_regenerate_exact_scope_and_all_predecessors_remain_valid():
     assert successors.verify() == verify_migration() == verify_structure() == []
     ledger = successors.records()[1]
     decision = ledger["decisions"][0]
-    current = text_fingerprints(narration_texts())
+    from ocf_tools.options_successor import before_texts
+
+    current = text_fingerprints(before_texts(REPO_ROOT, narration_texts()))
     for later in reversed(successors.records()[2:]):
         for change in later["allowed_text_changes"]:
             assert current[change["identity"]] == change["after_sha256"]

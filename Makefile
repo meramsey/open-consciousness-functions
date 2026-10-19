@@ -35,6 +35,7 @@ check: ## Validate functions and verify generated/pinned data freshness
 	$(OCF) audio plan --all --locale en-US --check
 	$(PY) -m ocf_tools.farfield_inventory
 	$(PY) -m ocf_tools.cue_headers
+	$(PY) -m ocf_tools.editorial_review --check
 
 doctor: ## Run the environment doctor
 	$(OCF) doctor

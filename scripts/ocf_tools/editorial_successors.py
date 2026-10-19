@@ -220,8 +220,9 @@ def before_file(root, name):
 
 def before_texts(root, texts):
     from .cue_migration import replay_change
+    from .options_successor import before_texts as before_options
 
-    previous = dict(texts)
+    previous = before_options(root, texts)
     for data in reversed(records(root)):
         for row in data["allowed_text_changes"]:
             current = previous.get(row["identity"])
@@ -264,6 +265,32 @@ def current_decision_record(root=REPO_ROOT):
         result["locales_requiring_review"] = sorted(
             set(result["locales_requiring_review"]) | set(data["locales_requiring_review"])
         )
+    from .options_successor import BASELINE, FUNCTION, NARRATION, NEW, OLD, OWNER, record
+
+    options = record(root)
+    if options:
+        result["id"] = options["id"]
+        result["decision_ids"].append(options["id"])
+        result["source_commit"] = options["source_commit"]
+        result["integrity_baseline"] = BASELINE
+        by_owner[OWNER] = {
+            "function_id": OWNER,
+            "primary_command_id": "OCF-CMD-COG-005-PRIMARY",
+            "previous": {"title": "Options", "display_cue": "PLUS-OPTIONS", "spoken_cue": OLD},
+            "current_title": "Options",
+            "display_cue": "PLUS-OPTIONS",
+            "spoken_cue": NEW,
+            "title_status": "UNCHANGED",
+            "cue_status": "APPROVED",
+            "narration_keys_changed": [identity.split("::")[1] for identity in options["speech"]],
+            "narration_file": NARRATION,
+            "function_file": FUNCTION,
+            "historical_command_ids": ["OCF-CMD-COG-005-LEGACY-01"],
+            "translator_notes": "Explicit approved English spoken correction only. Preserve Options behavior and stable IDs; other locales require separate review.",
+        }
+        result["allowed_text_changes"].extend(
+            {"identity": key, **row} for key, row in options["speech"].items()
+        )
     result["decisions"] = list(by_owner.values())
     return result
 
@@ -276,7 +303,12 @@ def verify(root=REPO_ROOT):
     from .cue_migration import contained, replay_change
 
     problems = verify_headers(root)
-    texts = narration_texts(root)
+    from .options_successor import before_texts as before_options
+    from .options_successor import verify as verify_options
+
+    if root == REPO_ROOT or (root / "function-content/editorial/options-001.json").is_file():
+        problems.extend(verify_options(root))
+    texts = before_options(root, narration_texts(root))
     file_view = {}
 
     def read(name):

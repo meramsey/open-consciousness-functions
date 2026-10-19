@@ -64,9 +64,9 @@ def test_current_report_refuses_integrity_drift_before_writing(monkeypatch, tmp_
 @pytest.mark.integration
 def test_current_catalog_report_is_fresh_complete_and_collision_scoped():
     data = reports.build()
-    assert data["counts"]["approved_cues_implemented"] == 40
-    assert data["counts"]["active_records"] == 83
-    assert data["counts"]["historical_only_command_records"] == 18
+    assert data["counts"]["approved_cues_implemented"] == 41
+    assert data["counts"]["active_records"] == 82
+    assert data["counts"]["historical_only_command_records"] == 19
     assert data["counts"]["stable_primary_identities"] == 57
     heart = next(row for row in data["functions"] if row["function_id"] == "OCF-BOD-006")
     assert heart["pending_title"] is None

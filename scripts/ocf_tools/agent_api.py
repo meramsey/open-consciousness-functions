@@ -319,6 +319,24 @@ def list_functions(
 
 
 @public
+def inspect_candidates(
+    candidate: str | None = None, locale: str = "en-US", preview: bool = False
+) -> dict:
+    """Explicit editorial discovery/preview, including staged proposals; no synthesis."""
+    from .editorial_candidates import discover, review
+
+    if locale != "en-US":
+        raise OCFError("candidate review requires exact en-US locale")
+    if candidate is None:
+        return {"candidates": discover(), "production_authorized": False}
+    result = review(candidate, locale=locale)
+    if not preview:
+        result.pop("entries")
+        result.pop("semantic_plan")
+    return result
+
+
+@public
 def get_function(
     function_id: str,
     fields: list[str] | None = None,
@@ -970,6 +988,7 @@ TOOLS = {
         validate_recordings,
         start_narration_render,
         inspect_voice_capabilities,
+        inspect_candidates,
     )
 }
 READ_ONLY = {

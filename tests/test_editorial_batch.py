@@ -77,7 +77,9 @@ def test_all_28_approvals_preserve_procedures_controls_and_deferred_metadata():
     assert len(ledger["decisions"]) == 28
     assert len(ledger["allowed_text_changes"]) == 41
     assert successors.verify() == []
-    texts = narration_texts()
+    from ocf_tools.options_successor import before_texts
+
+    texts = before_texts(REPO_ROOT, narration_texts())
     current = text_fingerprints(texts)
     previous = json.loads((REPO_ROOT / ledger["previous_integrity_baseline"]).read_text())
     assert len(current) == len(previous) == 177
@@ -94,7 +96,7 @@ def test_all_28_approvals_preserve_procedures_controls_and_deferred_metadata():
     assert sum(len(owner.command_records) for owner in owners.values()) == 97
     assert (
         sum(is_active(command) for owner in owners.values() for command in owner.command_records)
-        == 79
+        == 78
     )
     for decision in ledger["decisions"]:
         owner = owners[decision["function_id"]]
@@ -229,13 +231,17 @@ def test_keep_decisions_and_historical_lookup_are_distinct_from_activation():
         from ocf_tools.functional_metadata import record as metadata_record
 
         metadata_ledger = metadata_record()
+        from ocf_tools.options_successor import predecessor as before_options
+
         if owner.id in {"OCF-COG-005", "OCF-BOD-010"}:
             assert (
                 successors.sha(metadata_ledger["predecessor_files"][name])
                 == metadata_ledger["source_files"][name]["before_sha256"]
             )
             assert (
-                successors.sha(owner.path.read_text(encoding="utf-8"))
+                successors.sha(
+                    before_options(REPO_ROOT, name, owner.path.read_text(encoding="utf-8"))
+                )
                 == metadata_ledger["source_files"][name]["after_sha256"]
             )
         else:
@@ -252,7 +258,9 @@ def test_keep_decisions_and_historical_lookup_are_distinct_from_activation():
             )
             assert less.role == "mode" and "modifies" not in less.data["relationships"]
         item = next(item for item in report["functions"] if item["function_id"] == owner.id)
-        assert item["decision_status"] == "EXISTING PAIR RETAINED"
+        assert item["decision_status"] == (
+            "APPROVED AND IMPLEMENTED" if owner.id == "OCF-COG-005" else "EXISTING PAIR RETAINED"
+        )
         assert item["unselected_proposal"] is None
     for decision in ledger["decisions"]:
         for key, new in (("title", "current_title"), ("spoken_cue", "spoken_cue")):

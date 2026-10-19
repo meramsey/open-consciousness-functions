@@ -34,7 +34,6 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Imprint](functions/OCF-COG-004.md) | PLUS-IMPRINT | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Imprint](functions/OCF-COG-004.md) | PLUS-RECALL | Retrieval command | Use to retrieve information or experience selected or imprinted with this function. | Temporary |
 | [Options](functions/OCF-COG-005.md) | PLUS-OPTIONS | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
-| [Options](functions/OCF-COG-005.md) | PLUS-OPTIONS, CHOICES | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
 | [Recall](functions/OCF-COG-006.md) | PLUS-RECALL | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Think Fast](functions/OCF-COG-007.md) | PLUS-THINK | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Speak Up](functions/OCF-COM-001.md) | PLUS-SPEAK UP | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
@@ -90,4 +89,4 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Sleep Easy](functions/OCF-SLP-005.md) | PLUS-SLEEP EASY | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Stay Awake](functions/OCF-SLP-006.md) | PLUS-AWAKE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 
-57 functions; 83 structured command records.
+57 functions; 82 structured command records.

@@ -1,6 +1,6 @@
 {
   "canonical_locale": "en-US",
-  "command_count": 83,
+  "command_count": 82,
   "fallback_count": 0,
   "fallbacks": [],
   "function_count": 57,
@@ -5649,11 +5649,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "binding_status": "unbound",
+            "binding_status": "resolved",
             "command_id": "OCF-CMD-COG-005-PRIMARY",
             "display_cue": "PLUS-OPTIONS",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
-            "spoken_cue": null
+            "resource_status": "reviewed",
+            "spoken_cue": "Plus Options",
+            "spoken_cue_key": "commands.ocf-cmd-cog-005-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": "1.0.0"
           },
           "designation": "primary",
           "documentation": {
@@ -5699,15 +5706,17 @@
             "text": "Primary activation command"
           },
           "localization": {
+            "display_cue_key": "commands.ocf-cmd-cog-005-primary.display-cue",
             "explanation_key": "commands.ocf-cmd-cog-005-primary.explanation",
             "label_key": "commands.ocf-cmd-cog-005-primary.label",
             "purpose_key": "functions.ocf-cog-005.purpose",
+            "spoken_cue_key": "commands.ocf-cmd-cog-005-primary.spoken-cue",
             "usage_key": "commands.ocf-cmd-cog-005-primary.usage"
           },
           "observed_phrase": {
             "narration_key": "hplus.function.ocf-cog-005.function-body",
-            "relationship": "legacy-form",
-            "text": "Plus Options Choices"
+            "relationship": "canonical-match",
+            "text": "Plus Options"
           },
           "phrase": "PLUS-OPTIONS",
           "phrase_ref": {
@@ -5807,85 +5816,14 @@
             "resolved_locale": "en-US",
             "text": "Temporary"
           },
-          "spoken": null,
-          "spoken_review": "unresolved",
+          "spoken": "Plus Options",
+          "spoken_review": "reviewed",
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-cog-005-primary.usage",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
             "text": "Use only when you choose to activate the documented function."
-          }
-        },
-        {
-          "cue_presentation": {
-            "binding_status": "unbound",
-            "command_id": "OCF-CMD-COG-005-LEGACY-01",
-            "display_cue": "PLUS-OPTIONS, CHOICES",
-            "requested_locale": "en-US",
-            "spoken_cue": null
-          },
-          "designation": "secondary",
-          "documentation": {
-            "order": 101,
-            "visible": true
-          },
-          "effect_scope": "temporary",
-          "effect_scope_ref": "lifecycle.persistence",
-          "explanation": {
-            "fallback": false,
-            "key": "commands.ocf-cmd-cog-005-legacy-01.explanation",
-            "requested_locale": "en-US",
-            "resolved_locale": "en-US",
-            "text": "This is a compatibility phrase, not a new canonical command."
-          },
-          "function_id": "OCF-COG-005",
-          "id": "OCF-CMD-COG-005-LEGACY-01",
-          "label": {
-            "fallback": false,
-            "key": "commands.ocf-cmd-cog-005-legacy-01.label",
-            "requested_locale": "en-US",
-            "resolved_locale": "en-US",
-            "text": "Legacy compatibility phrase"
-          },
-          "localization": {
-            "explanation_key": "commands.ocf-cmd-cog-005-legacy-01.explanation",
-            "label_key": "commands.ocf-cmd-cog-005-legacy-01.label",
-            "purpose_key": "functions.ocf-cog-005.purpose",
-            "usage_key": "commands.ocf-cmd-cog-005-legacy-01.usage"
-          },
-          "phrase": "PLUS-OPTIONS, CHOICES",
-          "phrase_ref": {
-            "command_id": "OCF-CMD-COG-005-LEGACY-01",
-            "source": "legacy-command"
-          },
-          "procedure_status": "not-specified",
-          "procedure_steps": [],
-          "purpose": {
-            "fallback": false,
-            "key": "functions.ocf-cog-005.purpose",
-            "requested_locale": "en-US",
-            "resolved_locale": "en-US",
-            "text": "Opens perception of choices and alternatives."
-          },
-          "related_commands": [],
-          "relationships": {},
-          "role": "legacy-alias",
-          "scope_label": {
-            "fallback": false,
-            "key": "command.scope.temporary",
-            "requested_locale": "en-US",
-            "resolved_locale": "en-US",
-            "text": "Temporary"
-          },
-          "spoken": null,
-          "spoken_review": "unresolved",
-          "usage": {
-            "fallback": false,
-            "key": "commands.ocf-cmd-cog-005-legacy-01.usage",
-            "requested_locale": "en-US",
-            "resolved_locale": "en-US",
-            "text": "Compatibility phrase retained by the registry; historical authentication is not implied."
           }
         }
       ],

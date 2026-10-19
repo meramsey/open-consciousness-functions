@@ -22,7 +22,7 @@ Only explicitly approved substitutions were applied. Every affected entry's befo
 - OCF-COG-002: `PLUS-CALCULATE` / Plus Calculate; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-COG-003: `PLUS-OPEN` / Plus Open; metadata match True; Predecessor contextual review; unchanged protected text verified.
 - OCF-COG-004: `PLUS-IMPRINT` / Plus Imprint; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-COG-005: `PLUS-OPTIONS` / Plus Options Choices; metadata match False; Predecessor contextual review; unchanged protected text verified.
+- OCF-COG-005: `PLUS-OPTIONS` / Plus Options; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-COG-006: `PLUS-RECALL` / Plus Recall; metadata match True; Predecessor contextual review; unchanged protected text verified.
 - OCF-COG-007: `PLUS-THINK` / Plus Think; metadata match True; Predecessor contextual review; unchanged protected text verified.
 - OCF-COM-001: `PLUS-SPEAK UP` / Plus Speak Up; metadata match True; Predecessor contextual review; unchanged protected text verified.

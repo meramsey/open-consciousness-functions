@@ -49,8 +49,12 @@ def split_header(text: str) -> tuple[str, str]:
     raise OCFError("generated cue preview end marker is not on its own line")
 
 
-def header(owner, locale: str, catalog: LocaleCatalog, root: Path) -> str:
-    title, _ = value(owner, "function.title", locale, catalog)
+def header(owner, locale: str, catalog: LocaleCatalog, root: Path, *, draft_review=False) -> str:
+    title = (
+        owner.canonical_name
+        if draft_review and locale == "en-US"
+        else value(owner, "function.title", locale, catalog)[0]
+    )
     lines = [
         START.rstrip(),
         "# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers",
@@ -58,12 +62,19 @@ def header(owner, locale: str, catalog: LocaleCatalog, root: Path) -> str:
         + json.dumps({"function": owner.id, "title": title, "locale": locale}, ensure_ascii=False),
         "# English authority: " + owner.path.relative_to(root).as_posix(),
     ]
+    if draft_review:
+        lines.append(
+            "# Editorial status: draft awaiting explicit review; preview is not production approval."
+        )
+        lines.append(
+            "# Entire working view is generated; edit a versioned candidate authority, not this copy."
+        )
     for command in owner.command_records:
         if not is_active(command) or command.role == "legacy-alias":
             continue
         symbol = "cue.id." + command.id
         try:
-            spoken, provenance = value(owner, symbol, locale, catalog)
+            spoken, provenance = value(owner, symbol, locale, catalog, draft_review=draft_review)
         except (CueTemplateError, LocalizationError) as exc:
             lines.append(
                 "# "
@@ -110,6 +121,35 @@ def plans(root: Path = REPO_ROOT) -> dict[str, str]:
         if "\r\n" in text:
             preview = preview.replace("\n", "\r\n")
         result[path.relative_to(root).as_posix()] = preview + body
+    result.update(draft_plans(root))
+    return result
+
+
+def draft_plans(root: Path = REPO_ROOT) -> dict[str, str]:
+    """Generated working views retain the immutable supplied snapshots verbatim."""
+    from .editorial_candidates import CANDIDATES, context
+
+    directory = root / "function-content/editorial/candidates"
+    result = {}
+    for name in CANDIDATES:
+        source = directory / f"{name}.en-US.yaml"
+        if not source.is_file():
+            continue
+        owner, catalog = context(name, root=root)
+        with source.open(encoding="utf-8", newline="") as stream:
+            text = stream.read()
+        preview = header(owner, "en-US", catalog, root, draft_review=True)
+        if "\r\n" in text:
+            preview = preview.replace("\n", "\r\n")
+        target = directory / "working" / source.name
+        if target.is_file():
+            existing = target.read_text(encoding="utf-8")
+            if split_header(existing)[1] != split_header(text.replace("\r\n", "\n"))[1]:
+                raise OCFError(
+                    "edited generated candidate view; preserve edits in a versioned candidate before refresh: "
+                    + target.name
+                )
+        result[target.relative_to(root).as_posix()] = preview + split_header(text)[1]
     return result
 
 
@@ -178,7 +218,12 @@ def verify(root: Path = REPO_ROOT) -> list[str]:
         predecessor(root, name, contained(root, name).read_text(encoding="utf-8"))
     for name in record.get("plans", {}):
         predecessor(root, name, contained(root, name).read_text(encoding="utf-8"))
-    if text_fingerprints(narration_texts(root)) != record["resolved_text_sha256"]:
+    from .options_successor import before_texts
+
+    if (
+        text_fingerprints(before_texts(root, narration_texts(root)))
+        != record["resolved_text_sha256"]
+    ):
         errors.append("cue header successor changed resolved narration")
     old_raw = contained(root, record["previous_defaults_lock"]).read_text(encoding="utf-8")
     old = json.loads(old_raw)
@@ -209,11 +254,15 @@ def main(argv=None) -> int:
         if not (REPO_ROOT / LEDGER).is_file():
             raise OCFError("protected source preview requires an explicit successor ledger first")
         record = json.loads((REPO_ROOT / LEDGER).read_text(encoding="utf-8"))
-        if set(planned) - record["files"].keys():
+        drafts = draft_plans()
+        if set(planned) - record["files"].keys() - drafts.keys():
             raise OCFError("every preview write requires an explicit successor file record")
         for name, text in planned.items():
-            predecessor(REPO_ROOT, name, text.replace("\r\n", "\n"))
+            if name not in drafts:
+                predecessor(REPO_ROOT, name, text.replace("\r\n", "\n"))
         for name, text in planned.items():
+            if name in drafts:
+                (REPO_ROOT / name).parent.mkdir(parents=True, exist_ok=True)
             (REPO_ROOT / name).write_bytes(text.encode("utf-8"))
     stale = check()
     print("\n".join(stale) if stale else "Generated cue previews: PASS")

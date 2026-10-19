@@ -1,25 +1,26 @@
 {
   "schema_version": "1.0",
-  "decision_id": "OCF-EDITORIAL-TITLE-CUES-004",
+  "decision_id": "OCF-OPTIONS-001",
   "decision_ids": [
     "OCF-EDITORIAL-TITLE-CUES-001",
     "OCF-EDITORIAL-TITLE-CUES-002",
     "OCF-EDITORIAL-TITLE-CUES-003",
     "OCF-EDITORIAL-TITLE-CUES-004",
-    "OCF-FUNCTIONAL-METADATA-001"
+    "OCF-FUNCTIONAL-METADATA-001",
+    "OCF-OPTIONS-001"
   ],
-  "predecessor_commit": "85ba92896c2d6a2cea7b5668e49196838dd3ec2b",
+  "predecessor_commit": "e4226aac3feac72d62049314f807175175717a48",
   "source_scope": "Current approved successor. Earlier source-pinned proposals remain immutable history; this is not a repin or blanket approval of them.",
   "counts": {
     "functions": 57,
     "structured_command_identities": 101,
-    "active_records": 83,
-    "historical_only_command_records": 18,
+    "active_records": 82,
+    "historical_only_command_records": 19,
     "stable_primary_identities": 57,
-    "approved_cues_implemented": 40,
+    "approved_cues_implemented": 41,
     "protected_entries": 177,
-    "allowlisted_text_changes": 66,
-    "remaining_metadata_teaching_differences": 1
+    "allowlisted_text_changes": 68,
+    "remaining_metadata_teaching_differences": 0
   },
   "functions": [
     {
@@ -1006,25 +1007,46 @@
       "function_id": "OCF-COG-005",
       "current_title": "Options",
       "display_cue": "PLUS-OPTIONS",
-      "spoken_teaching": "Plus Options Choices",
+      "spoken_teaching": "Plus Options",
       "cue_presentation": {
         "command_id": "OCF-CMD-COG-005-PRIMARY",
         "display_cue": "PLUS-OPTIONS",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Options",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-cog-005-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Opens perception of choices and alternatives.",
-      "decision_status": "EXISTING PAIR RETAINED",
-      "metadata_teaching_consistent": false,
+      "decision_status": "APPROVED AND IMPLEMENTED",
+      "metadata_teaching_consistent": true,
       "title_status": "UNCHANGED",
       "pending_title": null,
-      "previous_values": null,
+      "previous_values": {
+        "title": "Options",
+        "display_cue": "PLUS-OPTIONS",
+        "spoken_cue": "Plus Options Choices"
+      },
       "unselected_proposal": null,
-      "historical_lookup": [],
-      "context": "Keep all current Options wording and metadata unchanged, including actual taught Plus Options Choices. Do not implement the proposed shortening to Plus Options or retire its active legacy alias.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "historical_lookup": [
+        {
+          "text": "Plus Options Choices",
+          "kind": "former-teaching",
+          "command_id": "OCF-CMD-COG-005-LEGACY-01",
+          "decision": "OCF-OPTIONS-001"
+        }
+      ],
+      "context": "Explicit approved English spoken correction only. Preserve Options behavior and stable IDs; other locales require separate review.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-cog-005.closer",
+        "hplus.function.ocf-cog-005.function-body"
+      ]
     },
     {
       "function_id": "OCF-COG-006",
@@ -5032,7 +5054,9 @@
         "label_key": "commands.ocf-cmd-cog-005-primary.label",
         "usage_key": "commands.ocf-cmd-cog-005-primary.usage",
         "purpose_key": "functions.ocf-cog-005.purpose",
-        "explanation_key": "commands.ocf-cmd-cog-005-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-cog-005-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-cog-005-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-cog-005-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -5049,12 +5073,12 @@
       },
       "relationships": {},
       "observed_phrase": {
-        "text": "Plus Options Choices",
+        "text": "Plus Options",
         "narration_key": "hplus.function.ocf-cog-005.function-body",
-        "relationship": "legacy-form"
+        "relationship": "canonical-match"
       },
-      "spoken": null,
-      "spoken_review": "unresolved",
+      "spoken": "Plus Options",
+      "spoken_review": "reviewed",
       "invocation_scope_ref": "lifecycle.scopes.application",
       "phrase": "PLUS-OPTIONS",
       "effect_scope": "temporary",
@@ -5106,8 +5130,15 @@
         "command_id": "OCF-CMD-COG-005-PRIMARY",
         "display_cue": "PLUS-OPTIONS",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "unbound"
+        "spoken_cue": "Plus Options",
+        "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-cog-005-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": "1.0.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -5126,13 +5157,14 @@
         "explanation_key": "commands.ocf-cmd-cog-005-legacy-01.explanation"
       },
       "documentation": {
-        "visible": true,
+        "visible": false,
         "order": 101
       },
       "effect_scope_ref": "lifecycle.persistence",
       "relationships": {},
       "spoken": null,
       "spoken_review": "unresolved",
+      "availability": "historical-lookup",
       "phrase": "PLUS-OPTIONS, CHOICES",
       "effect_scope": "temporary",
       "cue_presentation": {
@@ -9692,7 +9724,7 @@
     "functions/cognition/buy-the-numbers.yaml": "f28c4c7bf7cfae2fdd01907fa0d930fb5f2451cd3490a12e35e62c1f94e6e1d9",
     "functions/cognition/contemplation.yaml": "7791e189c7c153fe2c4292c0288f6d540826e3299b39ed7127a36067b13f1289",
     "functions/cognition/imprint.yaml": "e4c73efa6f196225b9fb478b8004da1ec8f6b9a3902824944abe48122a83423c",
-    "functions/cognition/options.yaml": "96bc140fb0a5d13b6793c4c67e1cfb5c17e6c4f98994b6c4a437130dfe27fd5b",
+    "functions/cognition/options.yaml": "acd8ad6025cf49971117bae7f652a5f7a927f0d3931296f6f3d8d5670db58c81",
     "functions/cognition/recall.yaml": "aeb550a24153dcf23d3a1ae41b2b3da79e1a92345777e663b51aeb058e1c668f",
     "functions/cognition/think-fast.yaml": "e6ce234e058cf1d8bb6ab74c6843765ee22adcf497d8a8d30fbbfd5dc14012bd",
     "functions/communication/speak-up.yaml": "46d70a4e340d738ea2d03a42b5863cbfd9e2b08e6965b7e23e06ab0ca88ae5e3",

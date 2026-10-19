@@ -1,12 +1,12 @@
 # Current title–cue decisions and implementation
 
-Decision: `OCF-EDITORIAL-TITLE-CUES-004`. Predecessor commit: `85ba92896c2d6a2cea7b5668e49196838dd3ec2b`.
+Decision: `OCF-OPTIONS-001`. Predecessor commit: `e4226aac3feac72d62049314f807175175717a48`.
 
 Current approved successor. Earlier source-pinned proposals remain immutable history; this is not a repin or blanket approval of them.
 
 Approved source: explicit user decisions recorded in the versioned title–cue ledgers. Approval covers primary English vocabulary and scoped teaching edits, not other proposals, mechanisms, listening or release. Heart Flow remains tentative; the committed heart title is retained.
 
-Counts: {"active_records": 83, "allowlisted_text_changes": 66, "approved_cues_implemented": 40, "functions": 57, "historical_only_command_records": 18, "protected_entries": 177, "remaining_metadata_teaching_differences": 1, "stable_primary_identities": 57, "structured_command_identities": 101}.
+Counts: {"active_records": 82, "allowlisted_text_changes": 68, "approved_cues_implemented": 41, "functions": 57, "historical_only_command_records": 19, "protected_entries": 177, "remaining_metadata_teaching_differences": 0, "stable_primary_identities": 57, "structured_command_identities": 101}.
 
 ## Approved implementation and remaining catalog decisions
 
@@ -204,11 +204,13 @@ Previous values: Imprint / `PLUS-IMPRINT`; complete teaching **Plus Imprint Impr
 
 ### OCF-COG-005 — Options
 
-- Current display cue: `PLUS-OPTIONS`; complete teaching: **Plus Options Choices**.
-- Status: EXISTING PAIR RETAINED; title: UNCHANGED.
+- Current display cue: `PLUS-OPTIONS`; complete teaching: **Plus Options**.
+- Status: APPROVED AND IMPLEMENTED; title: UNCHANGED.
 - Purpose: Opens perception of choices and alternatives.
 - Pending title: None.
 - Other unselected proposal: null
+
+Previous values: Options / `PLUS-OPTIONS`; complete teaching **Plus Options Choices**.
 
 ### OCF-COG-006 — Recall
 

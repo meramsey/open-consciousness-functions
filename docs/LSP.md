@@ -12,6 +12,12 @@ same resolver as runtime preview. Completion/hover/definition and diagnostics
 observe unsaved function and locale buffers. Definitions point to the owning
 function's source spoken field; no server or permission reconfiguration is needed.
 
+Draft cue definitions also navigate from candidate working previews to registered
+function authority or the saved staged Intuition definition, with draft status
+shown explicitly. Missing/invalid staged authority returns no definition rather
+than registering a production function. Generated candidate working views are
+read-only review copies; preserve proposed edits in a versioned candidate.
+
 From a checkout using Python 3.11 or newer:
 
 ```bash

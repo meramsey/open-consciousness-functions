@@ -1,5 +1,10 @@
 domain: narration
 entries:
+  commands.ocf-cmd-cog-005-primary.spoken-cue:
+    text: Plus Options
+    status: reviewed
+    version: 1.0.0
+    notes: Explicit user approval OCF-OPTIONS-001; not listening or release approval.
   commands.ocf-cmd-bod-001-primary.spoken-cue:
     notes: Exact en-US spoken realization approved by the user in OCF-EDITORIAL-TITLE-CUES-001. Terminology
       approval is not listening or release approval.

@@ -30,7 +30,7 @@ This is the primary command for the function.
 
 **Command invocation**: One consciously chosen, situation-focused exploration.
 
-**Recorded source phrase (not the canonical phrase)**: Plus Options Choices `(legacy-form; hplus.function.ocf-cog-005.function-body)`
+**Recorded source phrase (not the canonical phrase)**: Plus Options `(canonical-match; hplus.function.ocf-cog-005.function-body)`
 
 ### Activation sequence
 
@@ -40,13 +40,5 @@ This is the primary command for the function.
 4. Focus attention on the selected target.
 5. Think or say the command.
 6. Exhale.
-
-## PLUS-OPTIONS, CHOICES
-
-### Legacy compatibility phrase
-
-Compatibility phrase retained by the registry; historical authentication is not implied.
-
-This is a compatibility phrase, not a new canonical command.
 
 Canonical command phrases are shown exactly as registered and are not translated. Script and legacy phrase differences are shown separately.

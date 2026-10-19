@@ -26,7 +26,7 @@ Complete index of every OCF function record. Sorted by OCF ID.
 | `OCF-COG-002` | Mental Calculation | BUY THE NUMBERS | `PLUS-CALCULATE` | `PLUS-CALCULATE` | cognition | permanent | available | planned | approved | unchanged | 0 | 0 | functions/cognition/buy-the-numbers.yaml |
 | `OCF-COG-003` | Contemplation | CONTEMPLATION | `PLUS-OPEN` | `PLUS-OPEN` / `PLUS-CLOSED` | cognition | temporary | available | planned | approved | unchanged | 0 | 0 | functions/cognition/contemplation.yaml |
 | `OCF-COG-004` | Imprint | IMPRINT | `PLUS-IMPRINT` | `PLUS-IMPRINT, IMPRINT` / `PLUS-RECALL` | cognition | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/cognition/imprint.yaml |
-| `OCF-COG-005` | Options | OPTIONS | `PLUS-OPTIONS` | `PLUS-OPTIONS, CHOICES` | cognition | temporary | available | planned | approved | unchanged | 0 | 0 | functions/cognition/options.yaml |
+| `OCF-COG-005` | Options | OPTIONS | `PLUS-OPTIONS` | `PLUS-OPTIONS, CHOICES` | cognition | temporary | available | planned | approved | historical-lookup | 0 | 0 | functions/cognition/options.yaml |
 | `OCF-COG-006` | Recall | RECALL | `PLUS-RECALL` | `PLUS-RECALL` | cognition | temporary | available | planned | approved | unchanged | 0 | 0 | functions/cognition/recall.yaml |
 | `OCF-COG-007` | Think Fast | THINK FAST | `PLUS-THINK` | `PLUS-THINK` | cognition | permanent | available | planned | approved | unchanged | 0 | 0 | functions/cognition/think-fast.yaml |
 | `OCF-COM-001` | Speak Up | SPEAK UP | `PLUS-SPEAK UP` | `PLUS-SPEAK UP` | communication | permanent | available | planned | approved | unchanged | 0 | 0 | functions/communication/speak-up.yaml |

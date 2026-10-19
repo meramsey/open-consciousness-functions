@@ -31,6 +31,7 @@ Discovery normalization uses NFC, case folding and whitespace folding only. It i
 - OCF-COG-001 → Information Access / `PLUS-ACCESS INFO`; historical matches: Access to Information; PLUS-RETRIEVE; Plus Retrieve.
 - OCF-COG-002 → Mental Calculation / `PLUS-CALCULATE`; historical matches: Buy the Numbers.
 - OCF-COG-004 → Imprint / `PLUS-IMPRINT`; historical matches: Plus Imprint Imprint.
+- OCF-COG-005 → Options / `PLUS-OPTIONS`; historical matches: Plus Options Choices.
 - OCF-EMG-001 → Injury Response / `PLUS-CONTROL, BALANCE, RESTORE`; historical matches: Emergency: Injury.
 - OCF-EMG-002 → Toxic Exposure Response / `PLUS-CLEAR, REMOVE`; historical matches: Emergency: Toxic.
 - OCF-EMO-002 → Offload / `PLUS-OFFLOAD`; historical matches: Off-Loading; PLUS-CLEAR; Plus Fade Fade.

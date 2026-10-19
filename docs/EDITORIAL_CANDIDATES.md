@@ -23,6 +23,10 @@ does not enter the production registry; review rejects a later ID collision.
 
 ## Explicit preview
 
+Read the [full inline review](EDITORIAL_CANDIDATE_REVIEW.md) for all four
+complete authored templates and resolved spoken texts, command procedures,
+provenance notes and the Manifest predecessor comparison.
+
 Run from the repository root with the supported Python environment:
 
 ```bash
@@ -30,6 +34,9 @@ PYTHONPATH=scripts python -m ocf_tools.editorial_candidates manifest-v2
 PYTHONPATH=scripts python -m ocf_tools.editorial_candidates dissolve
 PYTHONPATH=scripts python -m ocf_tools.editorial_candidates clear-zone
 PYTHONPATH=scripts python -m ocf_tools.editorial_candidates intuition
+python scripts/ocf.py functions candidates
+python scripts/ocf.py functions candidates intuition --preview
+python scripts/ocf.py dev ocf_inspect_candidates --arguments '{"candidate":"clear-zone","preview":true}'
 ```
 
 This returns exact resolved draft text, independent raw-template/resolved-text
@@ -78,8 +85,34 @@ Ongoing beneficial development is the intended baseline; the cue reinforces
 deliberate deeper understanding. Impressions remain optional and are not proof
 of external facts or access to anyone's private thoughts.
 
-## Pending implementation checkpoint
+## Authoring and generated views
 
-The separately authorized Options correction is not implemented by this draft
-checkpoint. Its existing active wording remains unchanged until the scoped
-approved successor and integrity projection are implemented and verified.
+Author source-English cues in the linked function definition. Intuition uses its
+staged `intuition.function.yaml`; it is not registered in production. Keep draft
+locale copies aligned with their function authority. Existing supplied snapshots
+are immutable review evidence; new wording requires a versioned candidate rather
+than overwriting a supplied snapshot. Preserve status `draft`, provenance notes
+and stable command IDs; registration does not confer approval or historical rights.
+
+Refresh generated working views and the inline document with:
+
+```bash
+PYTHONPATH=scripts python -m ocf_tools.cue_headers --write
+PYTHONPATH=scripts python -m ocf_tools.editorial_review
+PYTHONPATH=scripts python -m ocf_tools.editorial_review --check
+```
+
+The `candidates/working/` YAML files are generated readable views of those
+snapshots, not a second editable authority. Headers expose title, locale, source
+definition, exact stable command identities and proposed spoken cues. Missing
+cue bindings are visible diagnostics. LSP cue navigation opens function authority
+and identifies draft status. CLI and MCP discovery are compact by default;
+explicit preview includes full raw and resolved speech without synthesis.
+
+After explicit approval, create a controlled editorial successor recording exact
+predecessor files, raw/resolved speech and hashes, allowed substitutions and
+unchanged protected entries. Update active resource versions/bindings only within
+the approved scope; retain predecessor ledgers and recordings. Regenerate affected
+headers, indexes and plans, and validate normal recording fingerprints. Listening
+and release approval remain separate. The [Options successor](OPTIONS_SUCCESSOR.md)
+is a scoped spoken-text example, not a blanket promotion tool.

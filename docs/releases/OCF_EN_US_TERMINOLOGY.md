@@ -178,6 +178,17 @@ Translator context: Shorten two body mentions and one closer mention from Plus I
 
 Review: English primary cue approved and implemented. Preserve controls/procedures. Other language terminology and prefix treatment require review.
 
+## OCF-COG-005 / OCF-CMD-COG-005-PRIMARY
+
+Title: Options. Title status: UNCHANGED.
+Display: `PLUS-OPTIONS`. Complete speech: **Plus Options**.
+
+Opens perception of choices and alternatives.
+
+Translator context: Explicit approved English spoken correction only. Preserve Options behavior and stable IDs; other locales require separate review.
+
+Review: English primary cue approved and implemented. Preserve controls/procedures. Other language terminology and prefix treatment require review.
+
 ## OCF-EMG-001 / OCF-CMD-EMG-001-PRIMARY
 
 Title: Injury Response. Title status: APPROVED AND IMPLEMENTED.

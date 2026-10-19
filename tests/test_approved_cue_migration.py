@@ -491,7 +491,7 @@ def test_exact_user_decisions_integrity_and_unaffected_active_vocabulary():
         for row in record.command_records
         if commands.is_active(row)
     ]
-    assert len(active) == 79  # Approved successors retire only superseded primary aliases.
+    assert len(active) == 78  # Includes the approved Options historical-only successor.
     assert len({row.id for row in active if row.designation == "primary"}) == 55
 
 

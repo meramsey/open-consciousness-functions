@@ -9,7 +9,7 @@ import json
 from .audio_defaults import DSP_ID, PACING_ID, TEMPLATE_ID
 from .complete_session import _slot_keys, _verify_session_structure
 from .cue_templates import expand
-from .indexes import load_all_functions, load_yaml_file
+from .indexes import load_yaml_file
 from .locale import LocaleCatalog, NarrationResource
 from .models import function_from_dict
 from .paths import REPO_ROOT
@@ -48,13 +48,16 @@ def predecessor(root, name, text):
     return row["predecessor"]
 
 
-def review(name: str, *, locale: str = "en-US") -> dict:
-    """Validate and expand one explicit draft without mutating live resources."""
+def context(name: str, *, locale: str = "en-US", root=REPO_ROOT):
+    """Resolve registered or staged authority without adding production records."""
     if name not in CANDIDATES or locale != "en-US":
         raise OCFError("candidate review requires a registered candidate and exact en-US locale")
-    records = load_all_functions()
+    records = [
+        function_from_dict(load_yaml_file(path), path)
+        for path in sorted((root / "functions").rglob("*.yaml"))
+    ]
     if name == "intuition":
-        path = DIRECTORY / "intuition.function.yaml"
+        path = root / "function-content/editorial/candidates/intuition.function.yaml"
         data = load_yaml_file(path)
         errors = validate_against_schema(data, _load_schema("function.schema.json"))
         if errors:
@@ -63,13 +66,22 @@ def review(name: str, *, locale: str = "en-US") -> dict:
             raise OCFError("staged Intuition identity collides with the live registry")
         records.append(function_from_dict(data, path))
     owner = next(record for record in records if record.id == CANDIDATES[name])
-    catalog = LocaleCatalog(function_records=lambda: records)
+    catalog = LocaleCatalog(root / "locales", function_records=lambda: records)
     if name == "intuition":
         command = owner.command_records[0]
         key = "commands." + command.id.lower() + ".spoken-cue"
         catalog.canonical.entries[key] = NarrationResource(
             key, locale, "narration", command.data["spoken"], status="draft"
         )
+    return owner, catalog
+
+
+def review(name: str, *, locale: str = "en-US") -> dict:
+    """Validate and expand one explicit draft without mutating live resources."""
+    from .commands import load_procedure_catalog, resolve_procedure
+    from .cue_templates import value as cue_value
+
+    owner, catalog = context(name, locale=locale)
     path = DIRECTORY / f"{name}.en-US.yaml"
     data = load_yaml_file(path)
     errors = validate_against_schema(data, _load_schema("locale-resource.schema.json"))
@@ -103,6 +115,8 @@ def review(name: str, *, locale: str = "en-US") -> dict:
                 "version": entry.version,
                 "status": "draft",
                 "text": text,
+                "raw_template": entry.text,
+                "notes": value.get("notes"),
                 "raw_template_sha256": hashlib.sha256(entry.text.encode()).hexdigest(),
                 "resolved_text_sha256": hashlib.sha256(text.encode()).hexdigest(),
                 "references": references,
@@ -118,10 +132,36 @@ def review(name: str, *, locale: str = "en-US") -> dict:
         pacing_profile=load_pacing_profile(PACING_ID),
     )
     _verify_session_structure(document, binding, load_profile(DSP_ID))
+    commands = []
+    for command in owner.command_records:
+        if command.data.get("availability", "active") != "active" or command.role == "legacy-alias":
+            continue
+        spoken, provenance = cue_value(
+            owner, "cue.id." + command.id, locale, catalog, draft_review=True
+        )
+        commands.append(
+            {
+                "id": command.id,
+                "role": command.role,
+                "designation": command.designation,
+                "display": provenance.get("display_cue"),
+                "spoken": spoken,
+                "procedure": command.procedure,
+                "steps": resolve_procedure(command, load_procedure_catalog()),
+            }
+        )
     return {
         "candidate": name,
         "function_id": owner.id,
         "locale": locale,
+        "title": owner.canonical_name,
+        "registration": "staged proposal" if name == "intuition" else "registered",
+        "authority": owner.path.relative_to(REPO_ROOT).as_posix(),
+        "narration_authority": path.relative_to(REPO_ROOT).as_posix(),
+        "purpose": owner.data["purpose"],
+        "lifecycle": owner.data["lifecycle"],
+        "commands": commands,
+        "pending_approval": True,
         "editorial_status": "draft",
         "production_authorized": False,
         "release_ready": False,
@@ -134,6 +174,26 @@ def review(name: str, *, locale: str = "en-US") -> dict:
             if command.data.get("availability", "active") == "active"
         ],
     }
+
+
+def discover():
+    """Compact discovery for CLI/MCP; full speech is an explicit preview."""
+    return [
+        {
+            key: result[key]
+            for key in (
+                "candidate",
+                "function_id",
+                "title",
+                "registration",
+                "editorial_status",
+                "pending_approval",
+                "authority",
+                "commands",
+            )
+        }
+        for result in (review(name) for name in CANDIDATES)
+    ]
 
 
 def main(argv=None) -> int:

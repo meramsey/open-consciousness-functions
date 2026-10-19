@@ -367,7 +367,9 @@ def test_comfort_decision_four_passes_controls_and_other_175_entries_preserved()
 
     assert successors.verify() == []
     data = successors.records()[0]
-    current = text_fingerprints(narration_texts())
+    from ocf_tools.options_successor import before_texts
+
+    current = text_fingerprints(before_texts(REPO_ROOT, narration_texts()))
     # Check Comfort's historical revision after authenticating later successors.
     for later in reversed(successors.records()[1:]):
         for change in later["allowed_text_changes"]:
@@ -391,7 +393,7 @@ def test_comfort_decision_four_passes_controls_and_other_175_entries_preserved()
         if row.data["legacy"]["source_system"] == "Monroe H-PLUS"
     ]
     assert len(all_records) == 55 and sum(len(row.command_records) for row in all_records) == 97
-    assert sum(is_active(command) for row in all_records for command in row.command_records) == 79
+    assert sum(is_active(command) for row in all_records for command in row.command_records) == 78
     plan = plan_narration(OWNER, locale="en-US")
     for playback in range(1, 5):
         text = "\n\n".join(

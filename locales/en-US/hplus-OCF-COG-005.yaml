@@ -2,7 +2,7 @@
 # Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
 # {"function": "OCF-COG-005", "title": "Options", "locale": "en-US"}
 # English authority: functions/cognition/options.yaml
-# {"command": "OCF-CMD-COG-005-PRIMARY", "binding_status": "unavailable", "reason": "OCF-CMD-COG-005-PRIMARY: no reviewed spoken cue for en-US"}
+# {"symbol": "cue.primary", "command": "OCF-CMD-COG-005-PRIMARY", "role": "activation", "display": "PLUS-OPTIONS", "spoken": "Plus Options", "locale_definition": "commands.ocf-cmd-cog-005-primary.spoken-cue"}
 # END GENERATED CUE PREVIEW
 # OCF-COG-005 — Options
 # English function-specific OCF-adapted narration.
@@ -52,7 +52,7 @@ entries:
 
   hplus.function.ocf-cog-005.function-body:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
     notes: >-
       OCF-adapted narration based on the partial, unverified
       Options transcript. Original SOURCE +Transcripts From
@@ -84,6 +84,9 @@ entries:
       verified predictions of future events.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-COG-005
+      allowed: [cue.primary]
     text: |-
       From this moment forward, you have the ability
       to explore the possibilities and choices
@@ -106,7 +109,7 @@ entries:
       you wish to understand.
 
       Think or say in your mind,
-      "Plus Options Choices."
+      "{{ cue.primary }}."
 
       Then exhale slowly through your mouth,
       keeping your eyes closed.
@@ -159,7 +162,7 @@ entries:
       bringing new understanding into
       your awareness whenever it is needed.
 
-      Each time you use Plus Options Choices,
+      Each time you use {{ cue.primary }},
       your ability to perceive and understand
       your available options becomes easier,
       clearer, and more effective.
@@ -170,7 +173,7 @@ entries:
 
   hplus.function.ocf-cog-005.closer:
     status: reviewed
-    version: 1.2.0
+    version: 1.3.0
     notes: >-
       OCF-authored closer adapted from the previously approved
       Options function reminder. The partial historical transcript
@@ -188,6 +191,9 @@ entries:
       This is OCF-authored wording, not historical transcript text.
       Rights: user_cleared, per user's lawyer-clearance
       attestation. Finished-session release remains pending.
+    cue_template:
+      function_id: OCF-COG-005
+      allowed: [cue.primary]
     text: |-
       Remember, whenever you wish to explore
       the choices and possibilities available to you,
@@ -197,7 +203,7 @@ entries:
       the situation you wish to understand.
 
       Think or say in your mind,
-      "Plus Options Choices."
+      "{{ cue.primary }}."
 
       Then exhale slowly through your mouth,
       keeping your eyes closed.
