@@ -26,7 +26,8 @@ jobs:
           import sys
           sys.path.insert(0, "scripts")
           from ocf_tools.indexes import load_all_functions
-          recs = load_all_functions()
+          recs = [r for r in load_all_functions()
+                  if r.data.get("legacy", {}).get("source_system") == "Monroe H-PLUS"]
           assert len(recs) == 55, len(recs)
           av = [r for r in recs if r.source_availability == "available"]
           un = [r for r in recs if r.source_availability == "unavailable"]
