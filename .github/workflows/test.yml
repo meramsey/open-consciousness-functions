@@ -102,7 +102,9 @@ jobs:
         run: python -m pytest -m integration -n 2 --dist loadfile
   coverage:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    # The full instrumented suite measured 21m53s before report generation.
+    # Include setup/report/upload headroom without filtering tests or coverage.
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
         with:
