@@ -1,4 +1,11 @@
 {
+  "audition-edition.schema.json": {
+    "schema_version": "1.0", "kind": "private-audition", "function_id": "OCF-TST-999",
+    "locale": "en-US", "version": "0.1.0", "voice_profile_id": "YOUR_VOICE_PROFILE",
+    "master_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "session_report_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "publication_approval": false, "human_listening_approval": null
+  },
   "authoring-plan.schema.json": {
     "schema_version": "1.0", "template": "OCF-TPL-SESSION-LEARN-001",
     "locale": "en-US", "narration_source": "tts", "voice": "espeak-en",

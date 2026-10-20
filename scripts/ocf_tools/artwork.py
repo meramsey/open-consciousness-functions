@@ -7,6 +7,7 @@ import io
 import json
 import math
 import os
+import re
 import unicodedata
 from html import escape
 from pathlib import Path
@@ -406,6 +407,7 @@ def generate_cover(
     output: Path | None = None,
     dry_run: bool = False,
     title_override: str | None = None,
+    status_label: str | None = None,
 ) -> dict:
     if (
         type(resolution) is not int
@@ -415,6 +417,10 @@ def generate_cover(
         raise OCFError("artwork requires 256..4096 pixels and png/jpeg format")
     if version is not None and (len(version) > 32 or any(ord(c) < 32 for c in version)):
         raise OCFError("cover version must be at most 32 printable characters")
+    if status_label is not None and (
+        len(status_label) > 32 or any(ord(c) < 32 for c in status_label)
+    ):
+        raise OCFError("cover status label must be at most 32 printable characters")
     record = load_function_by_id(function_id)
     if record is None:
         raise OCFError("unknown function")
@@ -445,7 +451,13 @@ def generate_cover(
     else:
         brand = identity()
     font_bytes, glyphs = _font_assets(data["font"])
-    footer = function_id + (f" - {version}" if version else "")
+    version_label = (
+        f"v{version}" if version and re.fullmatch(r"\d+\.\d+\.\d+", version) else version
+    )
+    suffix = (f" - {version_label}" if version_label else "") + (
+        f" - {status_label}" if status_label else ""
+    )
+    footer = function_id + suffix
     texts = [brand["name"], title, footer]
     missing = sorted(
         {ord(c) for text in texts for c in text if not c.isspace() and ord(c) not in glyphs}
@@ -475,6 +487,8 @@ def generate_cover(
         "resolution": resolution,
         "format": format,
         "release_version": version,
+        "version_label": version_label,
+        "status_label": status_label,
         "font_sha256": hashlib.sha256(font_bytes).hexdigest(),
         "pillow": pillow_version,
         "freetype": features.version_module("freetype2"),
@@ -490,7 +504,7 @@ def generate_cover(
         )
         settings["supplied_emblem"] = asset("icon", data, "png").name
         settings["composition"] = "supplied-emblem-with-localized-ocf-layout"
-        footer = function_id + " / " + locale + (f" - {version}" if version else "")
+        footer = function_id + " / " + locale + suffix
         # Validate the final footer, including the locale, through the same font contract.
         if any(ord(c) not in glyphs for c in footer if not c.isspace()):
             raise OCFError("font lacks required Unicode glyphs for cover metadata")
@@ -513,6 +527,7 @@ def generate_cover(
             "fallback": False,
             "source": "operator-title-override",
         }
+    settings["visible_text"] = [brand["name"], title, footer]
     fingerprint = digest(settings)
     root = work_path("cache", "artwork", fingerprint)
     filename = ArtifactNamer().filename(

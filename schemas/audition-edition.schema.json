@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-consciousness-functions.org/schemas/audition-edition.schema.json",
+  "title": "Private complete-session audition edition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "function_id", "locale", "version", "voice_profile_id", "master_sha256", "session_report_sha256", "publication_approval", "human_listening_approval"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "kind": {"const": "private-audition"},
+    "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[A-Z0-9]{3,4}$"},
+    "locale": {"type": "string", "minLength": 2},
+    "version": {"type": "string", "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$", "maxLength": 30},
+    "voice_profile_id": {"type": "string", "minLength": 1},
+    "master_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "session_report_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "publication_approval": {"const": false},
+    "human_listening_approval": {"const": null}
+  }
+}

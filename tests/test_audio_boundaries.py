@@ -314,6 +314,22 @@ def build_boundary(monkeypatch, tmp_path):
         return "fixture"
 
     monkeypatch.setattr(ab, "_encode", encode)
+    # Artwork is a separate dependency at this isolated build boundary. Its real
+    # pixels, metadata and codec round trips are covered by audition integration.
+    from ocf_tools import audition_exports
+
+    cover = tmp_path / "fixture-cover.png"
+    cover.write_bytes(b"isolated cover fixture")
+    monkeypatch.setattr(
+        audition_exports,
+        "select_cover",
+        lambda *a, **kw: (cover, {"source": "fixture", "publication_approval": False}, None),
+    )
+    monkeypatch.setattr(
+        audition_exports,
+        "copy_cover",
+        lambda source, target: target.write_bytes(source.read_bytes()),
+    )
 
     def write(path, text, **kw):
         calls.append(("manifest", path, yaml.safe_load(text.split("\n\n", 1)[1])))
@@ -377,6 +393,8 @@ def test_build_master_is_wav_independent_of_selected_derivatives(build_boundary,
     assert result["master"]["file"] == "OCF-AUDIO-9999-master.wav"
     assert result["master"]["format"] == "wav" and result["master"]["sample_rate"] == 100
     assert result["master"]["channels"] == 1 and result["master"]["duration"] == 1
+    assert result["artwork"]["file"] == "OCF-AUDIO-9999-cover.png"
+    assert (f.root / "outputs" / result["artwork"]["file"]).is_file()
     expected = ["wav"] if formats is None else list(dict.fromkeys(formats))
     assert result["formats"] == expected
     assert [cue["duration"] for cue in result["narration_timing"]["cues"]] == [0.2, 0.2]

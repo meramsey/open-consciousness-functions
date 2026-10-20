@@ -238,9 +238,74 @@ The complete-session output contains a stereo master WAV, retained background
 stem, UTF-8 transcript, composed session plan, measured session timing report,
 and JSON report. Profile-declared pacing excerpts and per-excerpt timing reports
 are written under `pacing-auditions/`. It does not require an audio
-implementation manifest, artwork, or release metadata. The report marks the
+implementation manifest or release metadata; its configured companion artwork
+is generated automatically. The report marks the
 draft template and function review state and never approves a release. Existing
 audition directories are never overwritten.
+
+New full-session and narration-only audition renders automatically retain a
+companion `cover.png`, including WAV-only renders. They use the configured OCF
+artwork surface and a visible **BETA / PRIVATE** marker rather than hiding art
+when release approval is pending. New private sessions initialize an explicitly
+private `audition_version: 0.1.0`; full sessions can select another deliberate
+edition using `audio render --audition-version X.Y.Z`. `--artwork` and
+`--artwork-theme` override full-session cover selection. These rendering
+workflows require the existing optional artwork dependencies (`.[artwork]`);
+development/test environments include them. They never infer a production
+release version or approval. Existing completed sessions are updated through
+the non-rendering export step below, preserving their original reports.
+Registered `audio build` outputs likewise generate a companion cover and embed
+it into FLAC/MP3 by default, using their registered audio version. An explicit
+cover supplied by the release/package layer retains priority.
+
+### Private listening exports from completed sessions
+
+`audio export-audition` is the ordinary FLAC/MP3 listening-copy step after
+`audio render` or `audio render-many`. It never runs TTS, background synthesis,
+mixing or the production release workflow. Artwork defaults to the configured
+artwork surface (`ocf-cosmic-dark`), with visible `vX.Y.Z` edition labeling.
+Private covers also display `BETA / PRIVATE`; pending approval never suppresses
+their artwork.
+
+```bash
+python scripts/ocf.py audio export-audition .ocf-work/renders/YOUR_COMPLETED_SESSION \
+  --edition-version 0.1.0 --dry-run
+python scripts/ocf.py audio export-audition .ocf-work/renders/YOUR_COMPLETED_SESSION \
+  --edition-version 0.1.0
+```
+
+The first export must have an authoritative audio/session version: a registered
+audio implementation version, explicit render `audition_version`, or deliberate
+`--edition-version X.Y.Z`. There is no fallback to a narration-entry, function,
+template, brand, repository or voice-model version. `0.1.0` above is an explicitly
+chosen initial **private audition edition**, not a guessed production release.
+The output `audition-edition.json` binds that version to the exact function,
+locale, voice, master and original session-report hashes. Reuse it with
+`--edition FILE`; conflicts and different source audio fail.
+
+By default both formats are encoded directly from the completed master (MP3 at
+320 kbps). For existing listening copies, pass `--flac-source FILE` and
+`--mp3-source FILE`: the compressed packets are stream-copied, never transcoded
+again. Their original tags (including track numbering) are retained except for
+the authoritative title/album, narrator, OCF album artist, function/locale and
+edition fields. Existing masters and narration/render manifests are verified
+before and after export and remain unchanged. Packet and decoded-PCM hashes
+verify stream-copy integrity; FLAC PCM must also match the master.
+
+Cover precedence: `--artwork FILE`, then `--artwork-theme THEME_OR_FILE`, function
+artwork preference, then configured artwork-surface default. Dark/light/custom
+themes use the same supplied OCF assets and localized layout. `--no-artwork`
+explicitly disables artwork and conflicts with cover/theme overrides. A custom
+cover must be square, at least 320 pixels and already display the intended
+edition; its text is operator-supplied rather than machine-certified.
+
+New unique export directories stay under `.ocf-work/`; `--output DIRECTORY`
+also refuses existing destinations. Outputs include `cover.png` when enabled,
+FLAC native front-cover PICTURE / MP3 ID3v2.3 APIC, the edition record, artwork
+provenance and verified metadata/audio hashes in `manifest.json`. Raw version
+tags and manifest `version` match; `OCF_VERSION_LABEL` and manifest
+`version_label` match the visible `vX.Y.Z` cover label. Candidate artwork and
+private packaging do not grant listening or finished-release approval.
 
 ### Local OCF workspace
 

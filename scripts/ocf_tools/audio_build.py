@@ -208,6 +208,9 @@ def _encode(
     out_path: Path,
     tags: dict[str, str] | None = None,
     artwork: str | Path | None = None,
+    *,
+    copy_audio: bool = False,
+    mp3_bitrate: str | None = None,
 ) -> str:
     """Encode a WAV to another format; returns encoder name.
 
@@ -234,7 +237,9 @@ def _encode(
                 "-metadata:s:v:0",
                 "comment=Cover (front)",
             ]
-        cmd += ["-codec:a", codec]
+        cmd += ["-map_metadata", "0", "-codec:a", "copy" if copy_audio else codec]
+        if fmt == "mp3" and mp3_bitrate and not copy_audio:
+            cmd += ["-b:a", mp3_bitrate]
         for key, value in tags.items():
             cmd += ["-metadata", f"{key}={value}"]
         if fmt == "mp3":
@@ -245,6 +250,8 @@ def _encode(
             return "ffmpeg"
         raise OCFError(f"ffmpeg encode to {fmt} failed: {result.stderr[-200:]}")
 
+    if copy_audio:
+        raise OCFError("stream-copy listening exports require ffmpeg; install ffmpeg")
     if fmt == "flac":
         if artwork is not None:
             raise OCFError("embedding release artwork requires ffmpeg; install ffmpeg")
@@ -812,8 +819,16 @@ def build(
     render_name = f"OCF-RENDER-{audio_id.split('-')[-1]}"
     render_manifest = out_root / f"{render_name}.yaml"
     background_stem_path = out_root / f"{audio_id}-background.wav"
+    default_cover = (
+        artwork is None
+        and registered_audio_id
+        and manifest.get("function_id")
+        and load_function_by_id(manifest["function_id"]) is not None
+    )
+    cover_output = out_root / f"{audio_id}-cover.png"
     planned_outputs = (
         [master_path, render_manifest]
+        + ([cover_output] if default_cover else [])
         + ([background_stem_path] if retain_background_stem else [])
         + [out_root / f"{audio_id}-master.{value}" for value in formats if value != "wav"]
     )
@@ -933,6 +948,26 @@ def build(
         )
 
     tags = _resolve_tags(manifest, doc, narration_meta, tag_overrides)
+    cover_provenance = None
+    if default_cover:
+        from .audition_exports import copy_cover, select_cover
+
+        edition_version = str(manifest.get("version") or "0.1.0")
+        selected, cover_provenance, _ = select_cover(
+            manifest["function_id"],
+            locale or manifest.get("language") or "en-US",
+            edition_version,
+            artwork_theme=manifest.get("artwork_theme"),
+        )
+        # Build's ordinary overwrite policy is unchanged; cover files obey it too.
+        if cover_output.exists():
+            if not overwrite:
+                raise OCFError("refusing to overwrite existing build cover")
+            cover_output.unlink()
+        copy_cover(selected, cover_output)
+        artwork = cover_output
+        tags.setdefault("OCF_AUDIO_VERSION", edition_version)
+        tags.setdefault("OCF_VERSION_LABEL", "v" + edition_version)
 
     outputs: list[dict[str, Any]] = []
     for out_fmt in formats:
@@ -1096,6 +1131,12 @@ def build(
             "sample_rate": DEFAULT_SAMPLE_RATE,
             "channels": 2,
             "checksum_sha256": sha256_of_file(background_stem_path),
+        }
+    if cover_provenance:
+        render_doc["artwork"] = {
+            "file": cover_output.name,
+            "sha256": sha256_of_file(cover_output),
+            "provenance": cover_provenance,
         }
     write_text_atomic(render_manifest, generated_content(yaml_safe_dump(render_doc)))
 

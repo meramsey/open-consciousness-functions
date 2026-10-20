@@ -87,6 +87,12 @@ Auditions, receipts, cache and logs remain in `.ocf-work/`; nothing uploads audi
 
 Inspect `session-report.json`, `session-timing-report.json`, the transcript and
 the three `pacing-auditions/` excerpts. Listen and record human review separately.
+For ordinary private FLAC/MP3 listening copies, run `audio export-audition
+COMPLETED_SESSION_DIRECTORY --edition-version 0.1.0` with a deliberately selected
+private edition. This defaults to configured OCF artwork with a visible edition
+label. Existing compressed copies can be stream-copied with `--flac-source` and
+`--mp3-source`; use `--no-artwork` only to disable the default explicitly. See
+[private listening exports](AUDIO_PIPELINE.md#private-listening-exports-from-completed-sessions).
 For a release, use the existing [release workflow](AUDIO_PIPELINE.md#final-release-packages)
 with a registered implementation, explicit artwork and required rights/release
 review. A generated plan is not an audio implementation or release clearance.

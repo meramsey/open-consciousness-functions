@@ -616,7 +616,8 @@ class TestAudioBuild:
 
         calls: list[dict] = []
 
-        def fake_encode(intermediate, fmt, out_path, tags=None):
+        def fake_encode(intermediate, fmt, out_path, tags=None, artwork=None):
+            assert artwork is not None and artwork.is_file()
             out_path.write_bytes(intermediate.read_bytes())
             calls.append({"fmt": fmt, "tags": tags})
             return "ffmpeg"
@@ -634,6 +635,7 @@ class TestAudioBuild:
         assert (out_root / "OCF-AUDIO-9997-master.wav").is_file()
         assert (out_root / "OCF-AUDIO-9997-master.flac").is_file()
         assert (out_root / "OCF-AUDIO-9997-master.mp3").is_file()
+        assert (out_root / "OCF-AUDIO-9997-cover.png").is_file()
         assert result["formats"] == ["wav", "flac", "mp3"]
         assert [o["format"] for o in result["outputs"]] == ["wav", "flac", "mp3"]
         flac_tagset = calls[0]["tags"]

@@ -735,6 +735,9 @@ def render_narration_first(
             "created_at": created.astimezone(UTC).isoformat().replace("+00:00", "Z"),
             "release_ready": bool(plan["approval_state"]["release_ready"]),
         }
+        from .audition_exports import attach_render_artwork
+
+        attach_render_artwork(manifest, stage)
         plan_path = stage / "tts-plan.json"
         manifest_path = stage / "render-manifest.json"
         plan_path.write_text(

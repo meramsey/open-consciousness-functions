@@ -916,6 +916,9 @@ def render_complete_session(
     narration_sources: str | Path | None = None,
     narration_source: str | None = None,
     mix_profile: str | Path | dict | None = None,
+    audition_version: str = "0.1.0",
+    artwork_file: str | Path | None = None,
+    artwork_theme: str | None = None,
 ) -> dict[str, Any]:
     """Expand the bound complete session and render/mix it using OCF's engines."""
     from . import audio_build
@@ -1294,6 +1297,15 @@ def render_complete_session(
             },
             "created_at": created.isoformat().replace("+00:00", "Z"),
         }
+        from .audition_exports import attach_render_artwork
+
+        attach_render_artwork(
+            manifest,
+            stage,
+            version=audition_version,
+            artwork_file=artwork_file,
+            artwork_theme=artwork_theme,
+        )
         report_path = stage / "session-report.json"
         report_path.write_text(
             json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",

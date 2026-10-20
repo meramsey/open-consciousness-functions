@@ -131,7 +131,7 @@ def _verify_audio(
     *,
     function_id: str,
     title: str,
-    artwork: Path,
+    artwork: Path | None,
     expected_tags: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     ffmpeg = _ffmpeg()
@@ -171,13 +171,27 @@ def _verify_audio(
         ),
         None,
     )
-    if picture_stream is None:
+    if artwork is not None and picture_stream is None:
         raise OCFError(f"{path.name}: embedded cover artwork was not found")
+    if artwork is not None:
+        _verify_embedded_cover(path, artwork)
+    audio_stream = next((s for s in info.get("streams", []) if s.get("codec_type") == "audio"), {})
+    return {
+        "codec": audio_stream.get("codec_name"),
+        "sample_rate": int(audio_stream.get("sample_rate") or 0),
+        "channels": int(audio_stream.get("channels") or 0),
+        "duration_seconds": float(info.get("format", {}).get("duration") or 0),
+        "bit_rate": int(info.get("format", {}).get("bit_rate") or 0) or None,
+        "tags": tags,
+    }
+
+
+def _verify_embedded_cover(path: Path, artwork: Path) -> None:
     extracted = path.with_name(f".{path.stem}.cover{artwork.suffix}")
     try:
         result = workspace_run(
             [
-                ffmpeg,
+                _ffmpeg(),
                 "-v",
                 "error",
                 "-y",
@@ -198,15 +212,6 @@ def _verify_audio(
             raise OCFError(f"{path.name}: embedded artwork does not match release cover")
     finally:
         extracted.unlink(missing_ok=True)
-    audio_stream = next((s for s in info.get("streams", []) if s.get("codec_type") == "audio"), {})
-    return {
-        "codec": audio_stream.get("codec_name"),
-        "sample_rate": int(audio_stream.get("sample_rate") or 0),
-        "channels": int(audio_stream.get("channels") or 0),
-        "duration_seconds": float(info.get("format", {}).get("duration") or 0),
-        "bit_rate": int(info.get("format", {}).get("bit_rate") or 0) or None,
-        "tags": tags,
-    }
 
 
 def _manifest_schema() -> dict[str, Any]:
@@ -316,6 +321,13 @@ def package_release(
         raise OCFError("release formats must contain one or more of: mp3, flac")
     audio_manifest, record, selected_theme, theme_source = artwork_selection(query, artwork_theme)
     function_id = record.id
+    release_version = version or str(
+        audio_manifest.get("version") or record.data.get("version", {}).get("current") or "1.0.0"
+    )
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._+-]{0,63}", release_version):
+        raise OCFError(
+            "release version must use only letters, digits, dot, underscore, plus, or hyphen"
+        )
     if artwork is None and selected_theme is None:
         raise OCFError(
             "release artwork is required; pass an explicitly approved --artwork image or select an artwork theme"
@@ -328,7 +340,7 @@ def package_release(
             locale=locale or "en-US",
             theme=selected_theme,
             resolution=artwork_resolution,
-            version=version,
+            version=release_version,
             title_override=overrides.get("title"),
             dry_run=dry_run,
         )
@@ -370,13 +382,6 @@ def package_release(
             "resource_key": None,
             "source": "operator-title-override",
         }
-    release_version = version or str(
-        audio_manifest.get("version") or record.data.get("version", {}).get("current") or "1.0.0"
-    )
-    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._+-]{0,63}", release_version):
-        raise OCFError(
-            "release version must use only letters, digits, dot, underscore, plus, or hyphen"
-        )
     namer = ArtifactNamer()
     artifact_names = {
         fmt: namer.filename(

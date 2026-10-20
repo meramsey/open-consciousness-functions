@@ -319,6 +319,33 @@ def _build_parser() -> argparse.ArgumentParser:
 
     audio = sub.add_parser("audio", help="audio tooling")
     audio_sub = audio.add_subparsers(dest="audio_kind")
+    export_cmd = audio_sub.add_parser(
+        "export-audition",
+        help="export completed session listening copies with versioned artwork; never synthesize or mix",
+    )
+    export_cmd.add_argument(
+        "source", type=Path, help="completed session directory with session-report.json"
+    )
+    export_cmd.add_argument(
+        "--edition-version", help="explicit new private audio/session edition X.Y.Z"
+    )
+    export_cmd.add_argument("--edition", type=Path, help="reuse a hash-bound audition-edition.json")
+    export_cmd.add_argument(
+        "--flac-source", type=Path, help="stream-copy an existing lossless listening export"
+    )
+    export_cmd.add_argument(
+        "--mp3-source", type=Path, help="stream-copy an existing MP3 without re-encoding"
+    )
+    export_cmd.add_argument(
+        "--artwork", type=Path, help="explicit custom cover, higher priority than themes"
+    )
+    export_cmd.add_argument("--artwork-theme", help="explicit artwork theme or custom theme file")
+    export_cmd.add_argument(
+        "--no-artwork", action="store_true", help="explicitly disable default artwork"
+    )
+    export_cmd.add_argument("--artwork-resolution", type=int, default=1400)
+    export_cmd.add_argument("--output", type=Path, help="new directory inside the OCF workspace")
+    export_cmd.add_argument("--dry-run", action="store_true")
     review_sessions_cmd = audio_sub.add_parser(
         "review-sessions",
         help="compare 1..8 actual session bindings; optional short exact-sentence speech excerpts",
@@ -463,6 +490,15 @@ def _build_parser() -> argparse.ArgumentParser:
         "--dsp-profile", help="explicit state/background profile override"
     )
     narration_render.add_argument("--output", help="new audition directory (never overwritten)")
+    narration_render.add_argument(
+        "--audition-version",
+        default="0.1.0",
+        help="private session edition, independent of narration/template versions",
+    )
+    narration_render.add_argument("--artwork", type=Path, help="explicit custom session cover")
+    narration_render.add_argument(
+        "--artwork-theme", help="session cover theme; configured artwork surface by default"
+    )
     narration_render.add_argument("--rate", type=int, default=44100, help="sample rate (Hz)")
     narration_render.add_argument(
         "--mix-profile",
@@ -1514,6 +1550,26 @@ def main(argv: list[str] | None = None) -> int:
                     create_lock()
                 print(json.dumps(check_lock(), indent=2, ensure_ascii=False))
                 return 0
+            if args.audio_kind == "export-audition":
+                import json
+
+                from .audition_exports import export_audition
+
+                result = export_audition(
+                    args.source,
+                    edition_version=args.edition_version,
+                    edition=args.edition,
+                    flac_source=args.flac_source,
+                    mp3_source=args.mp3_source,
+                    artwork_file=args.artwork,
+                    artwork_theme=args.artwork_theme,
+                    no_artwork=args.no_artwork,
+                    artwork_resolution=args.artwork_resolution,
+                    output=args.output,
+                    dry_run=args.dry_run,
+                )
+                print(json.dumps(result, ensure_ascii=False, indent=2))
+                return 0
             if args.audio_kind == "render-many":
                 import json
 
@@ -1620,6 +1676,8 @@ def main(argv: list[str] | None = None) -> int:
                         or args.narration_sources
                         or args.narration_source
                         or args.mix_profile
+                        or args.artwork
+                        or args.artwork_theme
                         or not args.voice
                     ):
                         raise OCFError(
@@ -1648,6 +1706,13 @@ def main(argv: list[str] | None = None) -> int:
                         overrides=read_json_object(args.overrides) if args.overrides else None,
                         voice_gain=args.voice_gain,
                         background_gain=args.background_gain,
+                        **(
+                            {"audition_version": args.audition_version}
+                            if args.audition_version != "0.1.0"
+                            else {}
+                        ),
+                        **({"artwork_file": args.artwork} if args.artwork else {}),
+                        **({"artwork_theme": args.artwork_theme} if args.artwork_theme else {}),
                         **(
                             {"mix_profile": args.mix_profile}
                             if args.mix_profile is not None

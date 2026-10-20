@@ -550,6 +550,7 @@
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "OCF Audio Pipeline",
       "related_commands": [
+        "audio export-audition",
         "audio release",
         "audio render",
         "voice doctor",
@@ -559,7 +560,7 @@
         "schemas/audio-release.schema.json",
         "schemas/mix-profile.schema.json"
       ],
-      "sha256": "2c08c07836dbde9b26ec0e36eb9b4147aafd74ab68a8df186a7abaf596483768",
+      "sha256": "87aa49e3ab6c6492ad880c4550d00de05bd922a168d5f44654332d6e4572ec33",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -691,7 +692,7 @@
         "artwork themes"
       ],
       "related_schemas": [],
-      "sha256": "0e9dd4ce6807136a134b7c532b6d61f192607d71cd4fe06ef8def545fb097d11",
+      "sha256": "4c2dbce683d70c7b6181600d942b7af9987438adec5b0f56a584ed137a4ad851",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -717,7 +718,7 @@
         "voice doctor"
       ],
       "related_schemas": [],
-      "sha256": "36480721584ce340738d6bc2437b5eff041cf9155e8db5df7d7f4de65c688cc8",
+      "sha256": "dc507dca654f2e86033880e1b72d2233f157bbdf41821c362680fe9ec972865b",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4307,6 +4308,26 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "schemas/audition-edition.schema.json",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "audition-edition.schema",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/audition-edition.schema.json"
+      ],
+      "sha256": "727a5c8045ae6fc6ed645cceaa4b0cbbced2d6c0b23d9754ef2fd5c74b215ac1",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "schemas/authoring-plan.schema.json",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "authoring-plan.schema",
@@ -5245,7 +5266,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "20f6f0e73314e5a0bf2df8c4ea71692948354110d336cc086f34af2ec299ef42",
+      "sha256": "5a975bfeb63865d18a660df007133494b281b0d1e2a0213c68f09b4acc6ee88d",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5358,5 +5379,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 257
+  "total": 258
 }

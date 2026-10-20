@@ -29,6 +29,13 @@ geometry/assets remain unchanged.
 
 ## Supplied Cosmic Path import 0.3.0
 
+Private full-session listening copies use the same artwork generator through
+`audio export-audition`, including default dark, light/custom overrides and
+explicit `--no-artwork`. See [private listening exports](AUDIO_PIPELINE.md#private-listening-exports-from-completed-sessions).
+The visible `vX.Y.Z` label is the hash-bound audition edition, independent of
+brand version 0.3.0. Registered release covers likewise receive their resolved
+audio/release version even when no CLI version override is supplied.
+
 The [offline comparison gallery](../brand/versions/0.3.0/gallery/index.html)
 compares the actual supplied artwork with 0.2.0, including 32/64/128-pixel app
 icons, full-resolution 1200 × 1200 albums and 1280 × 640 GitHub social artwork.
