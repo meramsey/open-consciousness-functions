@@ -7,6 +7,7 @@ loading the entire documentation tree:
   [source-first narration](SOURCE_FIRST_AUTHORING.md).
 - Review current titles/cues and historical lookup: [implemented decisions](EDITORIAL_REVIEW.md).
 - Review new original drafts and the Manifest successor: [editorial candidates](EDITORIAL_CANDIDATES.md).
+- Inspect the implemented four-function approval: [batch successor](EDITORIAL_BATCH_APPROVAL.md).
 - Review functional purpose, persistence and triggers: [functional metadata](FUNCTIONAL_METADATA.md).
 - Author symbolic narration and preview resolved speech: [strict cue references](SYMBOLIC_CUES.md).
 - Translate: [localization](LOCALIZATION.md) and [locale packs](../locales/README.md).

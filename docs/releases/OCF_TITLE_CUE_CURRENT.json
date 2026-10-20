@@ -12,12 +12,13 @@
   "predecessor_commit": "e4226aac3feac72d62049314f807175175717a48",
   "source_scope": "Current approved successor. Earlier source-pinned proposals remain immutable history; this is not a repin or blanket approval of them.",
   "counts": {
-    "functions": 57,
-    "structured_command_identities": 101,
-    "active_records": 82,
+    "functions": 58,
+    "structured_command_identities": 102,
+    "active_records": 83,
     "historical_only_command_records": 19,
-    "stable_primary_identities": 57,
+    "stable_primary_identities": 58,
     "approved_cues_implemented": 41,
+    "approved_candidate_narrations": 4,
     "protected_entries": 177,
     "allowlisted_text_changes": 68,
     "remaining_metadata_teaching_differences": 0
@@ -1408,9 +1409,9 @@
         "resource_status": "reviewed"
       },
       "current_purpose": "Sets a consciously selected future condition and completion time through intention and total-self alignment.",
-      "decision_status": "APPROVED AND IMPLEMENTED",
+      "decision_status": "APPROVED CANDIDATE IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "APPROVED AND IMPLEMENTED",
+      "title_status": "APPROVED",
       "pending_title": null,
       "previous_values": {
         "title": "Mobius West",
@@ -1454,7 +1455,7 @@
         }
       ],
       "context": "Retain desired future-condition selection, completion time and total-self manifestation; not generic productivity or loop-breaking.",
-      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "teaching_source": "Explicit full candidate approval OCF-APPROVED-CANDIDATES-001; exact presented narration preserved",
       "changed_keys": [
         "hplus.function.ocf-exp-001.function-body",
         "hplus.function.ocf-exp-001.closer"
@@ -1541,24 +1542,24 @@
         "command_id": "OCF-CMD-EXP-003-PRIMARY",
         "display_cue": "PLUS-DISSOLVE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "requires-locale-review",
+        "spoken_cue": "Plus Dissolve",
+        "binding_status": "resolved",
         "spoken_cue_key": "commands.ocf-cmd-exp-003-primary.spoken-cue",
-        "resource_status": "draft"
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       },
       "current_purpose": "Consciously dissolve a selected unwanted belief, expectation, emotional response or recurring life pattern while preserving useful learning.",
-      "decision_status": "UNREVIEWED ORIGINAL DRAFT",
+      "decision_status": "APPROVED CANDIDATE IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED",
       "pending_title": null,
       "previous_values": null,
-      "unselected_proposal": {
-        "title": "Dissolve",
-        "cue": "PLUS-DISSOLVE"
-      },
+      "unselected_proposal": null,
       "historical_lookup": [],
       "context": "New original draft; no prior historical or editorial approval.",
-      "teaching_source": "Supplied draft; not approved for production",
+      "teaching_source": "Explicit full candidate approval OCF-APPROVED-CANDIDATES-001; exact presented narration preserved",
       "changed_keys": []
     },
     {
@@ -1570,24 +1571,53 @@
         "command_id": "OCF-CMD-EXP-005-PRIMARY",
         "display_cue": "PLUS-CLEAR ZONE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "requires-locale-review",
+        "spoken_cue": "Plus Clear Zone",
+        "binding_status": "resolved",
         "spoken_cue_key": "commands.ocf-cmd-exp-005-primary.spoken-cue",
-        "resource_status": "draft"
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       },
       "current_purpose": "Establish an ongoing intention to discourage unwanted insect contact while maintaining calm awareness.",
-      "decision_status": "UNREVIEWED ORIGINAL DRAFT",
+      "decision_status": "APPROVED CANDIDATE IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED",
       "pending_title": null,
       "previous_values": null,
-      "unselected_proposal": {
-        "title": "Clear Zone",
-        "cue": "PLUS-CLEAR ZONE"
-      },
+      "unselected_proposal": null,
       "historical_lookup": [],
       "context": "New original draft; no prior historical or editorial approval.",
-      "teaching_source": "Supplied draft; not approved for production",
+      "teaching_source": "Explicit full candidate approval OCF-APPROVED-CANDIDATES-001; exact presented narration preserved",
+      "changed_keys": []
+    },
+    {
+      "function_id": "OCF-EXP-006",
+      "current_title": "Intuition",
+      "display_cue": "PLUS-INTUITION",
+      "spoken_teaching": "Plus Intuition",
+      "cue_presentation": {
+        "command_id": "OCF-CMD-EXP-006-PRIMARY",
+        "display_cue": "PLUS-INTUITION",
+        "requested_locale": "en-US",
+        "spoken_cue": "Plus Intuition",
+        "binding_status": "resolved",
+        "spoken_cue_key": "commands.ocf-cmd-exp-006-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
+      },
+      "current_purpose": "Recognize, receive and understand intuitive guidance through the total self, heart-centered awareness, subconscious, higher self and wider consciousness.",
+      "decision_status": "APPROVED CANDIDATE IMPLEMENTED",
+      "metadata_teaching_consistent": true,
+      "title_status": "APPROVED",
+      "pending_title": null,
+      "previous_values": null,
+      "unselected_proposal": null,
+      "historical_lookup": [],
+      "context": "New original draft; no prior historical or editorial approval.",
+      "teaching_source": "Explicit full candidate approval OCF-APPROVED-CANDIDATES-001; exact presented narration preserved",
       "changed_keys": []
     },
     {
@@ -6247,7 +6277,7 @@
         "source": "canonical-primary"
       },
       "spoken": "Plus Dissolve",
-      "spoken_review": "unresolved",
+      "spoken_review": "reviewed",
       "effect_scope_ref": "lifecycle.scopes.application.persistence",
       "procedure": {
         "status": "documented",
@@ -6317,10 +6347,13 @@
         "command_id": "OCF-CMD-EXP-003-PRIMARY",
         "display_cue": "PLUS-DISSOLVE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "requires-locale-review",
+        "spoken_cue": "Plus Dissolve",
+        "binding_status": "resolved",
         "spoken_cue_key": "commands.ocf-cmd-exp-003-primary.spoken-cue",
-        "resource_status": "draft"
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -6332,7 +6365,7 @@
         "source": "canonical-primary"
       },
       "spoken": "Plus Clear Zone",
-      "spoken_review": "unresolved",
+      "spoken_review": "reviewed",
       "effect_scope_ref": "lifecycle.scopes.baseline.persistence",
       "procedure": {
         "status": "documented",
@@ -6386,10 +6419,13 @@
         "command_id": "OCF-CMD-EXP-005-PRIMARY",
         "display_cue": "PLUS-CLEAR ZONE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "requires-locale-review",
+        "spoken_cue": "Plus Clear Zone",
+        "binding_status": "resolved",
         "spoken_cue_key": "commands.ocf-cmd-exp-005-primary.spoken-cue",
-        "resource_status": "draft"
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -6402,7 +6438,7 @@
         "command_id": "OCF-CMD-EXP-005-OBSERVE"
       },
       "spoken": "Plus Clear Zone, Observe",
-      "spoken_review": "unresolved",
+      "spoken_review": "reviewed",
       "effect_scope_ref": "lifecycle.scopes.application.persistence",
       "procedure": {
         "status": "documented",
@@ -6456,10 +6492,13 @@
         "command_id": "OCF-CMD-EXP-005-OBSERVE",
         "display_cue": "PLUS-CLEAR ZONE, OBSERVE",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "requires-locale-review",
+        "spoken_cue": "Plus Clear Zone, Observe",
+        "binding_status": "resolved",
         "spoken_cue_key": "commands.ocf-cmd-exp-005-observe.spoken-cue",
-        "resource_status": "draft"
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -6472,7 +6511,7 @@
         "command_id": "OCF-CMD-EXP-005-SUSPEND"
       },
       "spoken": "Plus Clear Zone, Suspend",
-      "spoken_review": "unresolved",
+      "spoken_review": "reviewed",
       "effect_scope_ref": "lifecycle.scopes.application.persistence",
       "procedure": {
         "status": "documented",
@@ -6526,10 +6565,82 @@
         "command_id": "OCF-CMD-EXP-005-SUSPEND",
         "display_cue": "PLUS-CLEAR ZONE, SUSPEND",
         "requested_locale": "en-US",
-        "spoken_cue": null,
-        "binding_status": "requires-locale-review",
+        "spoken_cue": "Plus Clear Zone, Suspend",
+        "binding_status": "resolved",
         "spoken_cue_key": "commands.ocf-cmd-exp-005-suspend.spoken-cue",
-        "resource_status": "draft"
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
+      }
+    },
+    {
+      "id": "OCF-CMD-EXP-006-PRIMARY",
+      "function_id": "OCF-EXP-006",
+      "designation": "primary",
+      "role": "activation",
+      "phrase_ref": {
+        "source": "canonical-primary"
+      },
+      "spoken": "Plus Intuition",
+      "spoken_review": "reviewed",
+      "localization": {
+        "spoken_cue_key": "commands.ocf-cmd-exp-006-primary.spoken-cue",
+        "label_key": "commands.ocf-cmd-exp-006-primary.label",
+        "usage_key": "commands.ocf-cmd-exp-006-primary.usage",
+        "explanation_key": "commands.ocf-cmd-exp-006-primary.explanation"
+      },
+      "procedure": {
+        "status": "documented",
+        "override_steps": [
+          {
+            "id": "select-question-or-situation",
+            "operation": "select-question"
+          },
+          {
+            "id": "think-or-say-in-mind",
+            "operation": "think-or-say-command"
+          },
+          {
+            "id": "allow-quiet-moment",
+            "operation": "other"
+          },
+          {
+            "id": "consider-and-choose-response",
+            "operation": "other"
+          }
+        ]
+      },
+      "phrase": "PLUS-INTUITION",
+      "resolved_procedure_steps": [
+        {
+          "id": "select-question-or-situation",
+          "operation": "select-question"
+        },
+        {
+          "id": "think-or-say-in-mind",
+          "operation": "think-or-say-command"
+        },
+        {
+          "id": "allow-quiet-moment",
+          "operation": "other"
+        },
+        {
+          "id": "consider-and-choose-response",
+          "operation": "other"
+        }
+      ],
+      "cue_presentation": {
+        "command_id": "OCF-CMD-EXP-006-PRIMARY",
+        "display_cue": "PLUS-INTUITION",
+        "requested_locale": "en-US",
+        "spoken_cue": "Plus Intuition",
+        "binding_status": "resolved",
+        "spoken_cue_key": "commands.ocf-cmd-exp-006-primary.spoken-cue",
+        "spoken_locale": "en-US",
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -9735,8 +9846,9 @@
     "functions/emotion/empathizing.yaml": "c5d02479a626e1736bc3e6eea63d0f02fcc8217b7e04f5613762d0ac9e76b9e0",
     "functions/experimental/mobius-west.yaml": "4ed60aadc94a22ab8ec88ff000a8cc05cc21ed5f693d467467aab87afde100d6",
     "functions/experimental/zoning.yaml": "f5f3aa75d3fdd7a20b0ae6959ab264a9019248169a56ec54e2140b8c1516bfa2",
-    "functions/experimental/dissolve.yaml": "54cbe5697c0e7e89d97b71a4eec122aee24b8bc8dcc56e2948c006d3587f97e0",
-    "functions/experimental/clear-zone.yaml": "a41fe22e01a8256f2e99a86178fe3fac81910928766777100b10451fb1442094",
+    "functions/experimental/dissolve.yaml": "4764264dfca2244e58c2870fbcdf03a2569d9a3f736809572d9c1b22c30d170b",
+    "functions/experimental/clear-zone.yaml": "79cd4028d02ddb84f6b72437d20d551b030440acadfaccd42582c3704d1a53dc",
+    "functions/experimental/intuition.yaml": "170285741ed6d062232be4fab6a9ece08375d0d3f860d6183384426373f4a107",
     "functions/foundation/energize.yaml": "18c8a03827f47a11814362b9a11e80c73fa6dbba0a04f802fe0c76a38a0c1378",
     "functions/foundation/attention.yaml": "2385e4b894763480995fd4d4e471895f3edb00e378f4192ca3632a8a6742ae28",
     "functions/foundation/recharge.yaml": "4192369502c43aefa4efa0cd6a0988ae38fbdb66f6084849be971756149be465",

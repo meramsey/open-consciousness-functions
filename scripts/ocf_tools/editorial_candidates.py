@@ -56,7 +56,11 @@ def context(name: str, *, locale: str = "en-US", root=REPO_ROOT):
         function_from_dict(load_yaml_file(path), path)
         for path in sorted((root / "functions").rglob("*.yaml"))
     ]
-    if name == "intuition":
+    from .candidate_approval import record as approval_record
+
+    approval = approval_record(root)
+    registered = any(row.id == CANDIDATES[name] for row in records)
+    if name == "intuition" and not (registered and approval):
         path = root / "function-content/editorial/candidates/intuition.function.yaml"
         data = load_yaml_file(path)
         errors = validate_against_schema(data, _load_schema("function.schema.json"))
@@ -67,7 +71,7 @@ def context(name: str, *, locale: str = "en-US", root=REPO_ROOT):
         records.append(function_from_dict(data, path))
     owner = next(record for record in records if record.id == CANDIDATES[name])
     catalog = LocaleCatalog(root / "locales", function_records=lambda: records)
-    if name == "intuition":
+    if name == "intuition" and not registered:
         command = owner.command_records[0]
         key = "commands." + command.id.lower() + ".spoken-cue"
         catalog.canonical.entries[key] = NarrationResource(
@@ -78,10 +82,12 @@ def context(name: str, *, locale: str = "en-US", root=REPO_ROOT):
 
 def review(name: str, *, locale: str = "en-US") -> dict:
     """Validate and expand one explicit draft without mutating live resources."""
-    from .commands import load_procedure_catalog, resolve_procedure
+    from .candidate_approval import record as approval_record
+    from .commands import load_procedure_catalog, resolve_phrase, resolve_procedure
     from .cue_templates import value as cue_value
 
     owner, catalog = context(name, locale=locale)
+    approval = approval_record()
     path = DIRECTORY / f"{name}.en-US.yaml"
     data = load_yaml_file(path)
     errors = validate_against_schema(data, _load_schema("locale-resource.schema.json"))
@@ -144,7 +150,7 @@ def review(name: str, *, locale: str = "en-US") -> dict:
                 "id": command.id,
                 "role": command.role,
                 "designation": command.designation,
-                "display": provenance.get("display_cue"),
+                "display": resolve_phrase(owner, command),
                 "spoken": spoken,
                 "procedure": command.procedure,
                 "steps": resolve_procedure(command, load_procedure_catalog()),
@@ -155,15 +161,17 @@ def review(name: str, *, locale: str = "en-US") -> dict:
         "function_id": owner.id,
         "locale": locale,
         "title": owner.canonical_name,
-        "registration": "staged proposal" if name == "intuition" else "registered",
+        "registration": "staged proposal" if name == "intuition" and not approval else "registered",
         "authority": owner.path.relative_to(REPO_ROOT).as_posix(),
         "narration_authority": path.relative_to(REPO_ROOT).as_posix(),
         "purpose": owner.data["purpose"],
         "lifecycle": owner.data["lifecycle"],
         "commands": commands,
-        "pending_approval": True,
-        "editorial_status": "draft",
-        "production_authorized": False,
+        "pending_approval": not bool(approval),
+        "editorial_status": "approved" if approval else "draft",
+        "approval_id": approval["id"] if approval else None,
+        "snapshot_status": "draft",
+        "production_authorized": bool(approval),
         "release_ready": False,
         "timing": "unmeasured editorial preview",
         "entries": entries,

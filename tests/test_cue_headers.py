@@ -105,7 +105,7 @@ def test_successor_rejects_changed_body_and_changed_preview(tmp_path):
 @pytest.mark.integration
 def test_all_55_previews_and_177_resolved_entries_are_current():
     plans = cue_headers.plans()
-    assert len([name for name in plans if name.startswith("locales/")]) == 55
+    assert len([name for name in plans if name.startswith("locales/")]) == 58
     assert len(cue_headers.draft_plans()) == 4
     assert cue_headers.check() == []
     assert cue_headers.verify() == []

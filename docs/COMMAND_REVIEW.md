@@ -4,7 +4,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 Command-design review generated from the canonical function records.
 
-57 functions total.
+58 functions total.
 
 ## Commands retained unchanged
 
@@ -64,7 +64,7 @@ Adjustable-magnitude commands are normalized to the MORE/LESS grammar `N`.
 
 These commands have a proposed canonical form that has not been approved. Legacy commands are always retained as aliases/metadata.
 
-19 commands requiring review:
+20 commands requiring review:
 
 | OCF ID | Legacy name | Legacy command | Canonical | Modes | Review | Compat |
 |---|---|---|---|---|---|---|
@@ -75,8 +75,9 @@ These commands have a proposed canonical form that has not been approved. Legacy
 | `OCF-EMO-002` | OFF-LOADING | `PLUS-FADE, FADE` | `PLUS-OFFLOAD` |  | approved | historical-lookup |
 | `OCF-EXP-001` | MOBIUS WEST | `PLUS-CHANGE, CHANGE` | `PLUS-MANIFEST` |  | approved | historical-lookup |
 | `OCF-EXP-002` | ZONING | `PLUS-INSULATE, INSULATE` / `PLUS-CANCEL` | `PLUS-INSULATE` | `PLUS-CANCEL` | approved | historical-lookup |
-| `OCF-EXP-003` |  |  | `PLUS-DISSOLVE` |  | pending | none |
-| `OCF-EXP-005` |  |  | `PLUS-CLEAR ZONE` | `PLUS-CLEAR ZONE, OBSERVE` / `PLUS-CLEAR ZONE, SUSPEND` | pending | none |
+| `OCF-EXP-003` |  |  | `PLUS-DISSOLVE` |  | approved | none |
+| `OCF-EXP-005` |  |  | `PLUS-CLEAR ZONE` | `PLUS-CLEAR ZONE, OBSERVE` / `PLUS-CLEAR ZONE, SUSPEND` | approved | none |
+| `OCF-EXP-006` |  |  | `PLUS-INTUITION` |  | approved | none |
 | `OCF-LIF-001` | DE-HAB | `PLUS-NO MORE, NO MORE` | `PLUS-FREE THIS HABIT` |  | approved | historical-lookup |
 | `OCF-PRF-002` | EIGHT-GREAT | `PLUS-EIGHT, GREAT` | `PLUS-INNER POWER` |  | approved | historical-lookup |
 | `OCF-PRF-004` | LIGHT FOOT | `PLUS-LIGHTER, LIGHTER` | `PLUS-LIGHT STEP` |  | approved | historical-lookup |

@@ -17,10 +17,10 @@ def test_cli_and_agent_candidate_discovery_and_explicit_preview(capsys):
     assert main(["functions", "candidates"]) == 0
     data = json.loads(capsys.readouterr().out)
     assert len(data["candidates"]) == 4
-    assert all(row["pending_approval"] for row in data["candidates"])
+    assert all(not row["pending_approval"] for row in data["candidates"])
     data = dispatch("ocf_inspect_candidates", {"candidate": "intuition", "preview": True})
-    assert data["registration"] == "staged proposal"
-    assert not data["production_authorized"]
+    assert data["registration"] == "registered"
+    assert data["production_authorized"] and not data["release_ready"]
     assert len(data["entries"]) == 3
     assert "entries" not in dispatch("ocf_inspect_candidates", {"candidate": "dissolve"})
 
@@ -33,10 +33,10 @@ def test_draft_headers_preserve_snapshot_and_resolve_staged_authority():
         header, body = cue_headers.split_header(text)
         snapshot = REPO_ROOT / name.replace("/working/", "/")
         assert body == cue_headers.split_header(snapshot.read_text(encoding="utf-8"))[1]
-        assert "draft awaiting explicit review" in header
+        assert "approved by OCF-APPROVED-CANDIDATES-001" in header
         assert '"spoken": "Plus ' in header
         assert "unavailable" not in header
-    assert "intuition.function.yaml" in next(
+    assert "functions/experimental/intuition.yaml" in next(
         text for name, text in plans.items() if "intuition" in name
     )
 
@@ -56,7 +56,8 @@ def test_full_review_is_deterministic_and_contains_every_authored_and_resolved_e
             assert entry["raw_template"] in text
             assert entry["text"] in text
     assert "Approved current wording | Proposed revised wording" in text
-    assert "newly AI-authored and unreviewed" in text
+    assert "explicit full approval and final batch confirmation" in text
+    assert "display: `None`" not in text
 
 
 @pytest.mark.parametrize("newline", ["\n", "\r\n"])
@@ -79,7 +80,7 @@ def test_lsp_candidate_source_navigation():
         )
         assert definitions
         assert definitions[0].path == REPO_ROOT / review(name)["authority"]
-        assert "draft awaiting review" in definitions[0].description
+        assert "explicit reviewed cue" in definitions[0].description
 
 
 @pytest.mark.parametrize("newline", ["\n", "\r\n"])
@@ -113,6 +114,10 @@ def test_lsp_unavailable_staged_authority_returns_no_definition(monkeypatch, err
         raise error
 
     monkeypatch.setattr(editorial_candidates, "context", unavailable)
+    from ocf_tools import indexes
+
+    records = [row for row in indexes.load_all_functions() if row.id != "OCF-EXP-006"]
+    monkeypatch.setattr(AuthoringService, "records", lambda self: records)
     path = REPO_ROOT / "function-content/editorial/candidates/working/intuition.en-US.yaml"
     text = path.read_text(encoding="utf-8")
     _, _, definitions = AuthoringService(REPO_ROOT).definitions_at(

@@ -1,0 +1,109 @@
+schema_version: '1.0'
+id: OCF-EXP-006
+slug: intuition
+canonical:
+  name: Intuition
+  command:
+    primary: PLUS-INTUITION
+    modes: []
+    mode_ids: []
+legacy:
+  source_system: null
+  name: ''
+  commands: []
+  command_status: proposed
+  source_availability: pending-source-review
+ocf:
+  reimplementation_status: in-progress
+  command_review: approved
+aliases:
+  names: []
+  commands: []
+classification:
+  primary_domain: experimental
+  secondary_domains: []
+compatibility:
+  state: none
+status:
+  maturity: community-proposed
+  implementation: script-approved
+  evidence: unverified
+lifecycle:
+  persistence: permanent
+  activation: automatic
+  release:
+    required: false
+    command: null
+  trigger_conditions:
+  - Ongoing beneficial intuitive development is the intended baseline.
+  - Deliberate command use reinforces deeper understanding without compulsory impressions.
+purpose:
+  summary: Recognize, receive and understand intuitive guidance through the total self, heart-centered
+    awareness, subconscious, higher self and wider consciousness.
+  source_description: null
+  community_description: Calm discernment and constructive purposeful response; impressions are not unquestionable
+    evidence of external facts.
+safety:
+  level: experimental
+  notes:
+  - No access to private thoughts or guaranteed external knowledge is claimed.
+claims:
+  intended_effects:
+  - Ongoing intuitive development and deliberate deeper understanding.
+  prohibited_claims:
+  - Intuitive impressions are not proof of external facts.
+audio:
+  script_status: approved
+  implementation_status: not-started
+  background_audio:
+    strategy: optional
+    engine: farfield
+    preset: null
+sources: []
+attribution:
+  original_authors: []
+  ocf_contributors: []
+version:
+  current: 0.1.0
+  created: '2026-10-19'
+  updated: '2026-10-19'
+commands:
+- id: OCF-CMD-EXP-006-PRIMARY
+  function_id: OCF-EXP-006
+  designation: primary
+  role: activation
+  phrase_ref:
+    source: canonical-primary
+  spoken: Plus Intuition
+  spoken_review: reviewed
+  localization:
+    spoken_cue_key: commands.ocf-cmd-exp-006-primary.spoken-cue
+    label_key: commands.ocf-cmd-exp-006-primary.label
+    usage_key: commands.ocf-cmd-exp-006-primary.usage
+    explanation_key: commands.ocf-cmd-exp-006-primary.explanation
+  procedure:
+    status: documented
+    override_steps:
+    - id: select-question-or-situation
+      operation: select-question
+    - id: think-or-say-in-mind
+      operation: think-or-say-command
+    - id: allow-quiet-moment
+      operation: other
+    - id: consider-and-choose-response
+      operation: other
+narration:
+  sequence:
+  - key: hplus.function.ocf-exp-006.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-exp-006.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-exp-006.closer
+    repetitions: 1
+    role: closer
+documentation:
+  title_key: functions.ocf-exp-006.title
+  purpose_key: functions.ocf-exp-006.purpose
+  short_description_key: functions.ocf-exp-006.purpose

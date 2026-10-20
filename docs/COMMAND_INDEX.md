@@ -50,6 +50,7 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Clear Zone](functions/OCF-EXP-005.md) | PLUS-CLEAR ZONE, OBSERVE | Observe | Deliberately follow the ordered procedure; proposed exercise instructions, not software execution. | Conditional application |
 | [Clear Zone](functions/OCF-EXP-005.md) | PLUS-CLEAR ZONE | Primary | Deliberately follow the ordered procedure; proposed exercise instructions, not software execution. | Permanent |
 | [Clear Zone](functions/OCF-EXP-005.md) | PLUS-CLEAR ZONE, SUSPEND | Suspend | Deliberately follow the ordered procedure; proposed exercise instructions, not software execution. | Conditional application |
+| [Intuition](functions/OCF-EXP-006.md) | PLUS-INTUITION | Deliberate intuitive reinforcement | Bring one question or situation into awareness; think or say Plus Intuition in the mind; allow a quiet moment; consider and choose a response. | Permanent |
 | [Access to Energy](functions/OCF-FND-001.md) | PLUS-ENERGIZE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Access to Energy](functions/OCF-FND-001.md) | Plus Release Eleven Access | Access-channel close cue | Use to close the Access Channel; this cue is distinct from function activation. | Access channel (separate from function persistence) |
 | [Attention](functions/OCF-FND-002.md) | PLUS-FOCUS | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
@@ -89,4 +90,4 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Sleep Easy](functions/OCF-SLP-005.md) | PLUS-SLEEP EASY | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Stay Awake](functions/OCF-SLP-006.md) | PLUS-AWAKE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 
-57 functions; 82 structured command records.
+58 functions; 83 structured command records.

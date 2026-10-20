@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+from copy import deepcopy
 
 import pytest
 from ocf_tools.commands import resolve_procedure, validate_command_collection
@@ -20,8 +21,10 @@ pytestmark = pytest.mark.integration
 def test_candidate_preview_preserves_status_text_and_four_passes(name):
     before = (REPO_ROOT / "locales/en-US/hplus-OCF-EXP-001.yaml").read_bytes()
     result = review(name)
-    assert result["editorial_status"] == "draft"
-    assert result["production_authorized"] is result["release_ready"] is False
+    assert result["editorial_status"] == "approved"
+    assert result["snapshot_status"] == "draft"
+    assert result["production_authorized"] is True
+    assert result["release_ready"] is False
     assert [row["repetitions"] for row in result["entries"]] == [1, 4, 1]
     events = list(iter_events(result["semantic_plan"]))
     assert len([row for row in events if row.get("slot_ref") == "function_body"]) == 4
@@ -32,13 +35,15 @@ def test_candidate_preview_preserves_status_text_and_four_passes(name):
 
 
 def test_supplied_snapshots_and_generated_resources_remain_exact():
-    ledger = json.loads((REPO_ROOT / LEDGER).read_text())
+    ledger = json.loads((REPO_ROOT / LEDGER).read_text(encoding="utf-8"))
     for name, checksum in ledger["snapshots"].items():
         assert hashlib.sha256((DIRECTORY / name).read_bytes()).hexdigest() == checksum
     for slug, identifier in (("dissolve", "OCF-EXP-003"), ("clear-zone", "OCF-EXP-005")):
-        assert (DIRECTORY / f"{slug}.en-US.yaml").read_bytes() == (
-            REPO_ROOT / f"locales/en-US/original-{identifier}.yaml"
-        ).read_bytes()
+        original = load_yaml_file(DIRECTORY / f"{slug}.en-US.yaml")
+        approved = deepcopy(original)
+        for entry in approved["entries"].values():
+            entry["status"] = "reviewed"
+        assert load_yaml_file(REPO_ROOT / f"locales/en-US/original-{identifier}.yaml") == approved
     assert [row["version"] for row in review("manifest-v2")["entries"]] == [
         "1.2.0",
         "2.0.0",
@@ -47,19 +52,18 @@ def test_supplied_snapshots_and_generated_resources_remain_exact():
 
 
 @pytest.mark.parametrize("identifier", ["OCF-EXP-003", "OCF-EXP-005"])
-def test_drafts_registered_but_never_production_approved(identifier):
+def test_explicitly_approved_originals_keep_provenance_and_locale_gates(identifier):
     owner = next(row for row in load_all_functions() if row.id == identifier)
-    assert owner.audio_script_status == "draft"
+    assert owner.audio_script_status == "approved"
     assert owner.data["legacy"]["source_system"] is None
     assert not owner.data["sources"]
     assert not validate_command_collection([owner])
     assert validate_command_collection([owner, owner])
-    with pytest.raises(OCFError, match="not approved"):
-        plan_narration(identifier)
-    with pytest.raises(OCFError, match="review"):
+    assert plan_narration(identifier)
+    with pytest.raises(OCFError):
         LocaleCatalog().resource(
             f"hplus.function.{identifier.lower()}.function-body",
-            "en-US",
+            "es",
             domain="narration",
             fallback=False,
         )
@@ -105,8 +109,8 @@ def test_dissolve_procedure_and_intuition_staging():
         "think-or-say-command",
         "exhale",
     ]
-    assert next_function_id("experimental") == "OCF-EXP-006"
-    assert "OCF-EXP-006" not in {row.id for row in load_all_functions()}
+    assert next_function_id("experimental") == "OCF-EXP-007"
+    assert "OCF-EXP-006" in {row.id for row in load_all_functions()}
     candidate = load_yaml_file(DIRECTORY / "intuition.function.yaml")
     assert candidate["commands"][0]["procedure"]["status"] == "unresolved"
     assert review("intuition")["entries"][0]["text"] == (

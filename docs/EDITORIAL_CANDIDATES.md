@@ -1,25 +1,29 @@
 # New editorial candidates
 
-All four candidates remain unreviewed drafts. Registration, validation and
-untimed preview do not establish editorial, scientific, listening or release
-approval. The 55 historical functions and their 177 protected narration entries
-remain a separate integrity cohort.
+All four presented candidates received explicit full editorial approval and one
+final batch implementation confirmation. Their exact approved narration is active;
+Intuition is now registered. The original draft snapshots remain immutable review
+evidence. See the [approval successor](EDITORIAL_BATCH_APPROVAL.md).
+Registration, validation and preview do not establish scientific, listening or
+release approval. The 55 historical functions and their 177 protected narration
+entries remain a separate integrity cohort.
 
 ## Review inventory
 
 | Candidate | Identity | Narration | Procedure and status |
 | --- | --- | --- | --- |
-| Manifest revision | OCF-EXP-001 | [Exact supplied successor](../function-content/editorial/candidates/manifest-v2.en-US.yaml), versions 1.2.0 / 2.0.0 / 1.3.0 | Existing Plus Manifest procedure; approved active predecessor remains selected. |
-| Dissolve | OCF-EXP-003 | [Exact supplied draft](../function-content/editorial/candidates/dissolve.en-US.yaml), all 1.0.0 | Select pattern, inhale deeply, gently hold, think or say Plus Dissolve in the mind, exhale slowly and easily. Registered draft. |
-| Clear Zone | OCF-EXP-005 | [Exact supplied draft](../function-content/editorial/candidates/clear-zone.en-US.yaml), all 1.0.0 | Easy inhale, selected cue in the mind, natural exhale. Registered draft with three stable command identities. |
-| Intuition | OCF-EXP-006 (staged) | [New complete candidate](../function-content/editorial/candidates/intuition.en-US.yaml), all 1.0.0 | [Proposed definition](../function-content/editorial/candidates/intuition.function.yaml); body, closer and procedure newly authored and unreviewed. |
+| Manifest revision | OCF-EXP-001 | [Exact supplied snapshot](../function-content/editorial/candidates/manifest-v2.en-US.yaml), versions 1.2.0 / 2.0.0 / 1.3.0 | Approved revision active; predecessor preserved. Existing Plus Manifest procedure retained. |
+| Dissolve | OCF-EXP-003 | [Exact supplied snapshot](../function-content/editorial/candidates/dissolve.en-US.yaml), all 1.0.0 | Approved: select pattern, inhale deeply, gently hold, cue in the mind, exhale slowly and easily. |
+| Intuition | OCF-EXP-006 | [Exact approved snapshot](../function-content/editorial/candidates/intuition.en-US.yaml), all 1.0.0 | [Registered authority](../functions/experimental/intuition.yaml); new body, closer and procedure explicitly approved. |
+| Clear Zone | OCF-EXP-005 | [Exact supplied snapshot](../function-content/editorial/candidates/clear-zone.en-US.yaml), all 1.0.0 | Approved: easy inhale, selected cue in the mind, natural exhale; all three stable identities retained. |
 
 The source snapshot comments retain the author's original provisional-ID wording.
 The [integration record](../function-content/editorial/candidates-001.json)
 records subsequent allocation separately. Dissolve and Clear Zone retain the
 proposed IDs. The existing allocator chooses max registered suffix plus one;
-after EXP-005 this is EXP-006. EXP-004 is not treated as reserved. Staged Intuition
-does not enter the production registry; review rejects a later ID collision.
+after EXP-005 this is EXP-006. EXP-004 is not treated as reserved. Intuition was
+collision-checked before its explicitly approved registration; its staged
+definition is retained as immutable predecessor evidence.
 
 ## Explicit preview
 
@@ -39,15 +43,15 @@ python scripts/ocf.py functions candidates intuition --preview
 python scripts/ocf.py dev ocf_inspect_candidates --arguments '{"candidate":"clear-zone","preview":true}'
 ```
 
-This returns exact resolved draft text, independent raw-template/resolved-text
+This returns exact resolved snapshot text, independent raw-template/resolved-text
 hashes and an unmeasured semantic structure using the existing locked template,
 pacing and DSP profiles. Each body has four passes. There is no synthesis or
-promotion. Standard locale resolution and production rendering still require
-reviewed cues and approved narration. Bulk production plan generation reports
-draft functions as pending editorial review; explicitly selecting a draft for
-production planning remains an error.
+promotion. Current discovery reports the explicit approval separately from each
+historical snapshot's draft status. Standard locale resolution and production
+rendering still require reviewed cues and approved narration. All 58 current
+functions have production source plans; future unapproved drafts remain gated.
 
-Source-English titles and spoken cues belong to function YAML. Draft locale
+Source-English titles and spoken cues belong to function YAML. Locale
 copies must agree. Draft review uses the same symbolic scanner and stable
 command selector as production; it labels proposed realizations as draft and
 does not mutate review status. Only en-US candidates are supplied.
@@ -66,14 +70,15 @@ hearing a cue in narration are not triggers. These are instructional description
 not software sensors or physiological controls. Physical repellency and disease
 protection are not established.
 
-## Intuition: complete unreviewed wording
+## Intuition: approved original wording
 
 The exact opener, complete new body and concise closer are available together in
 the [candidate wording authority](../function-content/editorial/candidates/intuition.en-US.yaml).
 The opener is the previously supplied sentence. All body and closer wording is
-newly AI-authored, not historical material or an earlier approval.
+newly AI-authored, not historical material. The complete presented wording and
+procedure subsequently received explicit human approval in this batch.
 
-Proposed activation procedure (unreviewed):
+Approved activation procedure:
 
 1. Bring one question or situation into awareness.
 2. Think or say Plus Intuition in the mind.
@@ -87,12 +92,13 @@ of external facts or access to anyone's private thoughts.
 
 ## Authoring and generated views
 
-Author source-English cues in the linked function definition. Intuition uses its
-staged `intuition.function.yaml`; it is not registered in production. Keep draft
+Author source-English cues in the linked registered function definition. Intuition's
+staged `intuition.function.yaml` is immutable predecessor evidence. Keep
 locale copies aligned with their function authority. Existing supplied snapshots
 are immutable review evidence; new wording requires a versioned candidate rather
-than overwriting a supplied snapshot. Preserve status `draft`, provenance notes
-and stable command IDs; registration does not confer approval or historical rights.
+than overwriting a supplied snapshot. Preserve their original status `draft`,
+provenance notes and stable command IDs. Active copies have status `reviewed`
+under the separately recorded approval; historical rights are not inferred.
 
 Refresh generated working views and the inline document with:
 

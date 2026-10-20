@@ -1,3 +1,9 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-EXP-003", "title": "Dissolve", "locale": "en-US"}
+# English authority: functions/experimental/dissolve.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-EXP-003-PRIMARY", "role": "activation", "display": "PLUS-DISSOLVE", "spoken": "Plus Dissolve", "locale_definition": "commands.ocf-cmd-exp-003-primary.spoken-cue"}
+# END GENERATED CUE PREVIEW
 # OCF-EXP-003 — Dissolve
 # New OCF narration proposal; function ID is provisional and not registered.
 # Proposed English title: Dissolve
@@ -24,7 +30,7 @@ locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-exp-003.opener:
-    status: draft
+    status: reviewed
     version: 1.0.0
     notes: >-
       New OCF-authored narration proposal informed by the user-supplied
@@ -38,7 +44,7 @@ entries:
       freeing your energy and attention for what you choose to create.
 
   hplus.function.ocf-exp-003.function-body:
-    status: draft
+    status: reviewed
     version: 1.0.0
     notes: >-
       New OCF-authored programming passage, not a transcription or synonym-only
@@ -109,7 +115,7 @@ entries:
       and make room for what you choose next.
 
   hplus.function.ocf-exp-003.closer:
-    status: draft
+    status: reviewed
     version: 1.0.0
     notes: >-
       New OCF-authored closer with one purpose reminder, deliberate pattern

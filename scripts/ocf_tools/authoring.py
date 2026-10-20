@@ -1072,7 +1072,7 @@ class AuthoringService:
                             "cue-symbol",
                             owner.path,
                             target_span,
-                            f"{owner.id}: {text} ({doc.data['locale']}; {'draft awaiting review' if draft else 'explicit reviewed cue'})",
+                            f"{owner.id}: {text} ({doc.data['locale']}; {'draft awaiting review' if draft and owner.audio_script_status != 'approved' else 'explicit reviewed cue'})",
                         )
                     ],
                 )

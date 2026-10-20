@@ -31,10 +31,11 @@ Only explicitly approved substitutions were applied. Every affected entry's befo
 - OCF-EMO-001: `PLUS-LET GO` / Plus Let Go; metadata match True; Predecessor contextual review; unchanged protected text verified.
 - OCF-EMO-002: `PLUS-OFFLOAD` / Plus Offload; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-EMO-003: `PLUS-EMPATHIZE` / Plus Empathize; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-EXP-001: `PLUS-MANIFEST` / Plus Manifest; metadata match True; Approved exact substitutions, verified against immutable predecessor.
+- OCF-EXP-001: `PLUS-MANIFEST` / Plus Manifest; metadata match True; Explicit full candidate approval OCF-APPROVED-CANDIDATES-001; exact presented narration preserved.
 - OCF-EXP-002: `PLUS-INSULATE` / Plus Insulate; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-EXP-003: `PLUS-DISSOLVE` / Plus Dissolve; metadata match True; Supplied draft; not approved for production.
-- OCF-EXP-005: `PLUS-CLEAR ZONE` / Plus Clear Zone; metadata match True; Supplied draft; not approved for production.
+- OCF-EXP-003: `PLUS-DISSOLVE` / Plus Dissolve; metadata match True; Explicit full candidate approval OCF-APPROVED-CANDIDATES-001; exact presented narration preserved.
+- OCF-EXP-005: `PLUS-CLEAR ZONE` / Plus Clear Zone; metadata match True; Explicit full candidate approval OCF-APPROVED-CANDIDATES-001; exact presented narration preserved.
+- OCF-EXP-006: `PLUS-INTUITION` / Plus Intuition; metadata match True; Explicit full candidate approval OCF-APPROVED-CANDIDATES-001; exact presented narration preserved.
 - OCF-FND-001: `PLUS-ENERGIZE` / Plus Energize; metadata match True; Predecessor contextual review; unchanged protected text verified.
 - OCF-FND-002: `PLUS-FOCUS` / Plus Focus; metadata match True; Predecessor contextual review; unchanged protected text verified.
 - OCF-FND-003: `PLUS-RECHARGE` / Plus Recharge; metadata match True; Approved exact substitutions, verified against immutable predecessor.

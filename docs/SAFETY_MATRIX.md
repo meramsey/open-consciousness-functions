@@ -39,6 +39,7 @@ Safety classification of every function. Health and emergency functions carry ex
 | `OCF-EXP-002` | ZONING | general |  |  |
 | `OCF-EXP-003` |  | experimental |  | Exercise intentions do not establish clinical or external outcomes. |
 | `OCF-EXP-005` |  | experimental |  | Physical repellency or protection against bites, stings or insect-borne disease is not established. |
+| `OCF-EXP-006` |  | experimental |  | No access to private thoughts or guaranteed external knowledge is claimed. |
 | `OCF-FND-001` | ACCESS TO ENERGY | general |  |  |
 | `OCF-FND-002` | ATTENTION | general |  |  |
 | `OCF-FND-003` | RECHARGE | general |  |  |

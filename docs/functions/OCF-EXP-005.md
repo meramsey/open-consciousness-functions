@@ -10,7 +10,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 Source availability does not establish historical authentication or provenance.
 
-**Command review state**: Pending review (`pending`)
+**Command review state**: Approved (`approved`)
 
 [Command index](../COMMAND_INDEX.md)
 

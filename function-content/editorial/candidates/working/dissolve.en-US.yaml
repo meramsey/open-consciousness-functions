@@ -2,9 +2,9 @@
 # Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
 # {"function": "OCF-EXP-003", "title": "Dissolve", "locale": "en-US"}
 # English authority: functions/experimental/dissolve.yaml
-# Editorial status: draft awaiting explicit review; preview is not production approval.
+# Editorial status: approved by OCF-APPROVED-CANDIDATES-001; original draft snapshot retained; release pending.
 # Entire working view is generated; edit a versioned candidate authority, not this copy.
-# {"symbol": "cue.primary", "command": "OCF-CMD-EXP-003-PRIMARY", "role": "activation", "display": null, "spoken": "Plus Dissolve", "locale_definition": null}
+# {"symbol": "cue.primary", "command": "OCF-CMD-EXP-003-PRIMARY", "role": "activation", "display": "PLUS-DISSOLVE", "spoken": "Plus Dissolve", "locale_definition": "commands.ocf-cmd-exp-003-primary.spoken-cue"}
 # END GENERATED CUE PREVIEW
 # OCF-EXP-003 — Dissolve
 # New OCF narration proposal; function ID is provisional and not registered.

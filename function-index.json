@@ -1,7 +1,7 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
 {
-  "count": 57,
+  "count": 58,
   "functions": [
     {
       "audio_impl_count": 0,
@@ -14137,13 +14137,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "requires-locale-review",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-EXP-003-PRIMARY",
               "display_cue": "PLUS-DISSOLVE",
               "requested_locale": "en-US",
-              "resource_status": "draft",
-              "spoken_cue": null,
-              "spoken_cue_key": "commands.ocf-cmd-exp-003-primary.spoken-cue"
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Dissolve",
+              "spoken_cue_key": "commands.ocf-cmd-exp-003-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": null
             },
             "designation": "primary",
             "effect_scope": "conditional",
@@ -14218,7 +14221,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ],
             "role": "activation",
             "spoken": "Plus Dissolve",
-            "spoken_review": "unresolved"
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": null,
@@ -14293,7 +14296,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "states": null,
         "status": {
           "evidence": "unverified",
-          "implementation": "script-drafted",
+          "implementation": "script-approved",
           "maturity": "community-proposed"
         },
         "title": "Dissolve",
@@ -14301,14 +14304,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "tts"
         ]
       },
-      "command_review": "pending",
+      "command_review": "approved",
       "compatibility": "none",
       "domains": "experimental",
       "legacy_command": "",
       "legacy_name": "",
       "ocf_id": "OCF-EXP-003",
       "persistence": "permanent",
-      "reimplementation_status": "draft",
+      "reimplementation_status": "in-progress",
       "source_availability": "pending-source-review",
       "source_file": "functions/experimental/dissolve.yaml"
     },
@@ -14334,13 +14337,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "requires-locale-review",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-EXP-005-PRIMARY",
               "display_cue": "PLUS-CLEAR ZONE",
               "requested_locale": "en-US",
-              "resource_status": "draft",
-              "spoken_cue": null,
-              "spoken_cue_key": "commands.ocf-cmd-exp-005-primary.spoken-cue"
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Clear Zone",
+              "spoken_cue_key": "commands.ocf-cmd-exp-005-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": null
             },
             "designation": "primary",
             "effect_scope": "permanent",
@@ -14399,17 +14405,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ],
             "role": "activation",
             "spoken": "Plus Clear Zone",
-            "spoken_review": "unresolved"
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
-              "binding_status": "requires-locale-review",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-EXP-005-OBSERVE",
               "display_cue": "PLUS-CLEAR ZONE, OBSERVE",
               "requested_locale": "en-US",
-              "resource_status": "draft",
-              "spoken_cue": null,
-              "spoken_cue_key": "commands.ocf-cmd-exp-005-observe.spoken-cue"
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Clear Zone, Observe",
+              "spoken_cue_key": "commands.ocf-cmd-exp-005-observe.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": null
             },
             "designation": "secondary",
             "effect_scope": "conditional",
@@ -14469,17 +14478,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ],
             "role": "mode",
             "spoken": "Plus Clear Zone, Observe",
-            "spoken_review": "unresolved"
+            "spoken_review": "reviewed"
           },
           {
             "cue_presentation": {
-              "binding_status": "requires-locale-review",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-EXP-005-SUSPEND",
               "display_cue": "PLUS-CLEAR ZONE, SUSPEND",
               "requested_locale": "en-US",
-              "resource_status": "draft",
-              "spoken_cue": null,
-              "spoken_cue_key": "commands.ocf-cmd-exp-005-suspend.spoken-cue"
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Clear Zone, Suspend",
+              "spoken_cue_key": "commands.ocf-cmd-exp-005-suspend.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": null
             },
             "designation": "secondary",
             "effect_scope": "conditional",
@@ -14539,7 +14551,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             ],
             "role": "mode",
             "spoken": "Plus Clear Zone, Suspend",
-            "spoken_review": "unresolved"
+            "spoken_review": "reviewed"
           }
         ],
         "content_maturity": null,
@@ -14626,7 +14638,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "states": null,
         "status": {
           "evidence": "unverified",
-          "implementation": "script-drafted",
+          "implementation": "script-approved",
           "maturity": "community-proposed"
         },
         "title": "Clear Zone",
@@ -14634,16 +14646,181 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "tts"
         ]
       },
-      "command_review": "pending",
+      "command_review": "approved",
       "compatibility": "none",
       "domains": "experimental",
       "legacy_command": "",
       "legacy_name": "",
       "ocf_id": "OCF-EXP-005",
       "persistence": "permanent",
-      "reimplementation_status": "draft",
+      "reimplementation_status": "in-progress",
       "source_availability": "pending-source-review",
       "source_file": "functions/experimental/clear-zone.yaml"
+    },
+    {
+      "audio_impl_count": 0,
+      "background_preset_count": 0,
+      "canonical_command": "PLUS-INTUITION",
+      "canonical_name": "Intuition",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-INTUITION"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "commands": [
+          {
+            "cue_presentation": {
+              "binding_status": "resolved",
+              "command_id": "OCF-CMD-EXP-006-PRIMARY",
+              "display_cue": "PLUS-INTUITION",
+              "requested_locale": "en-US",
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Intuition",
+              "spoken_cue_key": "commands.ocf-cmd-exp-006-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": null
+            },
+            "designation": "primary",
+            "function_id": "OCF-EXP-006",
+            "id": "OCF-CMD-EXP-006-PRIMARY",
+            "localization": {
+              "explanation_key": "commands.ocf-cmd-exp-006-primary.explanation",
+              "label_key": "commands.ocf-cmd-exp-006-primary.label",
+              "spoken_cue_key": "commands.ocf-cmd-exp-006-primary.spoken-cue",
+              "usage_key": "commands.ocf-cmd-exp-006-primary.usage"
+            },
+            "phrase": "PLUS-INTUITION",
+            "phrase_ref": {
+              "source": "canonical-primary"
+            },
+            "procedure": {
+              "override_steps": [
+                {
+                  "id": "select-question-or-situation",
+                  "operation": "select-question"
+                },
+                {
+                  "id": "think-or-say-in-mind",
+                  "operation": "think-or-say-command"
+                },
+                {
+                  "id": "allow-quiet-moment",
+                  "operation": "other"
+                },
+                {
+                  "id": "consider-and-choose-response",
+                  "operation": "other"
+                }
+              ],
+              "status": "documented"
+            },
+            "resolved_procedure_steps": [
+              {
+                "id": "select-question-or-situation",
+                "operation": "select-question"
+              },
+              {
+                "id": "think-or-say-in-mind",
+                "operation": "think-or-say-command"
+              },
+              {
+                "id": "allow-quiet-moment",
+                "operation": "other"
+              },
+              {
+                "id": "consider-and-choose-response",
+                "operation": "other"
+              }
+            ],
+            "role": "activation",
+            "spoken": "Plus Intuition",
+            "spoken_review": "reviewed"
+          }
+        ],
+        "content_maturity": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
+        "duration": null,
+        "evidence_classes": [],
+        "extraction_review": null,
+        "extraction_status": "unknown",
+        "function_id": "OCF-EXP-006",
+        "human_review": "unknown",
+        "layers": [
+          "bindings"
+        ],
+        "lifecycle": {
+          "activation": "automatic",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": [
+            "Ongoing beneficial intuitive development is the intended baseline.",
+            "Deliberate command use reinforces deeper understanding without compulsory impressions."
+          ]
+        },
+        "locales": [],
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-exp-006.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-exp-006.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-exp-006.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
+        "narration_resources": [],
+        "preparation": null,
+        "purpose": "Recognize, receive and understand intuitive guidance through the total self, heart-centered awareness, subconscious, higher self and wider consciousness.",
+        "safety": {
+          "level": "experimental",
+          "notes": [
+            "No access to private thoughts or guaranteed external knowledge is claimed."
+          ]
+        },
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
+        "source_availability": "pending-source-review",
+        "states": null,
+        "status": {
+          "evidence": "unverified",
+          "implementation": "script-approved",
+          "maturity": "community-proposed"
+        },
+        "title": "Intuition",
+        "voice_sources": [
+          "tts"
+        ]
+      },
+      "command_review": "approved",
+      "compatibility": "none",
+      "domains": "experimental",
+      "legacy_command": "",
+      "legacy_name": "",
+      "ocf_id": "OCF-EXP-006",
+      "persistence": "permanent",
+      "reimplementation_status": "in-progress",
+      "source_availability": "pending-source-review",
+      "source_file": "functions/experimental/intuition.yaml"
     },
     {
       "audio_impl_count": 0,

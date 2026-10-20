@@ -2,11 +2,11 @@
 # Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
 # {"function": "OCF-EXP-005", "title": "Clear Zone", "locale": "en-US"}
 # English authority: functions/experimental/clear-zone.yaml
-# Editorial status: draft awaiting explicit review; preview is not production approval.
+# Editorial status: approved by OCF-APPROVED-CANDIDATES-001; original draft snapshot retained; release pending.
 # Entire working view is generated; edit a versioned candidate authority, not this copy.
-# {"symbol": "cue.primary", "command": "OCF-CMD-EXP-005-PRIMARY", "role": "activation", "display": null, "spoken": "Plus Clear Zone", "locale_definition": null}
-# {"symbol": "cue.id.OCF-CMD-EXP-005-OBSERVE", "command": "OCF-CMD-EXP-005-OBSERVE", "role": "mode", "display": null, "spoken": "Plus Clear Zone, Observe", "locale_definition": null}
-# {"symbol": "cue.id.OCF-CMD-EXP-005-SUSPEND", "command": "OCF-CMD-EXP-005-SUSPEND", "role": "mode", "display": null, "spoken": "Plus Clear Zone, Suspend", "locale_definition": null}
+# {"symbol": "cue.primary", "command": "OCF-CMD-EXP-005-PRIMARY", "role": "activation", "display": "PLUS-CLEAR ZONE", "spoken": "Plus Clear Zone", "locale_definition": "commands.ocf-cmd-exp-005-primary.spoken-cue"}
+# {"symbol": "cue.id.OCF-CMD-EXP-005-OBSERVE", "command": "OCF-CMD-EXP-005-OBSERVE", "role": "mode", "display": "PLUS-CLEAR ZONE, OBSERVE", "spoken": "Plus Clear Zone, Observe", "locale_definition": "commands.ocf-cmd-exp-005-observe.spoken-cue"}
+# {"symbol": "cue.id.OCF-CMD-EXP-005-SUSPEND", "command": "OCF-CMD-EXP-005-SUSPEND", "role": "mode", "display": "PLUS-CLEAR ZONE, SUSPEND", "spoken": "Plus Clear Zone, Suspend", "locale_definition": "commands.ocf-cmd-exp-005-suspend.spoken-cue"}
 # END GENERATED CUE PREVIEW
 # OCF-EXP-005 — Clear Zone
 # New OCF narration proposal; function ID is provisional and not registered.

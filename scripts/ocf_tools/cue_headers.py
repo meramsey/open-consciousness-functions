@@ -9,8 +9,8 @@ from pathlib import Path
 
 import yaml
 
-from .cue_templates import CueTemplateError, is_active, value
-from .locale import LocaleCatalog, LocalizationError
+from .cue_templates import is_active, value
+from .locale import LocaleCatalog
 from .models import function_from_dict
 from .paths import REPO_ROOT
 from .utils import OCFError
@@ -63,8 +63,13 @@ def header(owner, locale: str, catalog: LocaleCatalog, root: Path, *, draft_revi
         "# English authority: " + owner.path.relative_to(root).as_posix(),
     ]
     if draft_review:
+        from .candidate_approval import record as approval_record
+
+        approval = approval_record(root)
         lines.append(
-            "# Editorial status: draft awaiting explicit review; preview is not production approval."
+            "# Editorial status: approved by OCF-APPROVED-CANDIDATES-001; original draft snapshot retained; release pending."
+            if approval
+            else "# Editorial status: draft awaiting explicit review; preview is not production approval."
         )
         lines.append(
             "# Entire working view is generated; edit a versioned candidate authority, not this copy."
@@ -75,7 +80,7 @@ def header(owner, locale: str, catalog: LocaleCatalog, root: Path, *, draft_revi
         symbol = "cue.id." + command.id
         try:
             spoken, provenance = value(owner, symbol, locale, catalog, draft_review=draft_review)
-        except (CueTemplateError, LocalizationError) as exc:
+        except OCFError as exc:
             lines.append(
                 "# "
                 + json.dumps(
@@ -112,6 +117,8 @@ def plans(root: Path = REPO_ROOT) -> dict[str, str]:
         # Existing complete source-English files only. Translated previews use
         # header() with their reviewed locale; there is no English fallback.
         path = root / "locales/en-US" / f"hplus-{owner.id}.yaml"
+        if not path.is_file():
+            path = root / "locales/en-US" / f"original-{owner.id}.yaml"
         if not path.is_file():
             continue
         with path.open(encoding="utf-8", newline="") as stream:
@@ -255,7 +262,10 @@ def main(argv=None) -> int:
             raise OCFError("protected source preview requires an explicit successor ledger first")
         record = json.loads((REPO_ROOT / LEDGER).read_text(encoding="utf-8"))
         drafts = draft_plans()
-        if set(planned) - record["files"].keys() - drafts.keys():
+        from .candidate_approval import record as approval_record
+
+        approved_files = (approval_record() or {}).get("files", {})
+        if set(planned) - record["files"].keys() - drafts.keys() - approved_files.keys():
             raise OCFError("every preview write requires an explicit successor file record")
         for name, text in planned.items():
             if name not in drafts:

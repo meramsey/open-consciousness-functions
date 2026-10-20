@@ -6,7 +6,7 @@ Current approved successor. Earlier source-pinned proposals remain immutable his
 
 Approved source: explicit user decisions recorded in the versioned title–cue ledgers. Approval covers primary English vocabulary and scoped teaching edits, not other proposals, mechanisms, listening or release. Heart Flow remains tentative; the committed heart title is retained.
 
-Counts: {"active_records": 82, "allowlisted_text_changes": 68, "approved_cues_implemented": 41, "functions": 57, "historical_only_command_records": 19, "protected_entries": 177, "remaining_metadata_teaching_differences": 0, "stable_primary_identities": 57, "structured_command_identities": 101}.
+Counts: {"active_records": 83, "allowlisted_text_changes": 68, "approved_candidate_narrations": 4, "approved_cues_implemented": 41, "functions": 58, "historical_only_command_records": 19, "protected_entries": 177, "remaining_metadata_teaching_differences": 0, "stable_primary_identities": 58, "structured_command_identities": 102}.
 
 ## Approved implementation and remaining catalog decisions
 
@@ -287,7 +287,7 @@ Previous values: Empathizing / `PLUS-PROFILE, PROFILE`; complete teaching **Plus
 ### OCF-EXP-001 — Manifest
 
 - Current display cue: `PLUS-MANIFEST`; complete teaching: **Plus Manifest**.
-- Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
+- Status: APPROVED CANDIDATE IMPLEMENTED; title: APPROVED.
 - Purpose: Sets a consciously selected future condition and completion time through intention and total-self alignment.
 - Pending title: None.
 - Other unselected proposal: null
@@ -307,18 +307,26 @@ Previous values: Zoning / `PLUS-ZONE`; complete teaching **Plus Insulate Insulat
 ### OCF-EXP-003 — Dissolve
 
 - Current display cue: `PLUS-DISSOLVE`; complete teaching: **Plus Dissolve**.
-- Status: UNREVIEWED ORIGINAL DRAFT; title: UNCHANGED.
+- Status: APPROVED CANDIDATE IMPLEMENTED; title: APPROVED.
 - Purpose: Consciously dissolve a selected unwanted belief, expectation, emotional response or recurring life pattern while preserving useful learning.
 - Pending title: None.
-- Other unselected proposal: {"title": "Dissolve", "cue": "PLUS-DISSOLVE"}
+- Other unselected proposal: null
 
 ### OCF-EXP-005 — Clear Zone
 
 - Current display cue: `PLUS-CLEAR ZONE`; complete teaching: **Plus Clear Zone**.
-- Status: UNREVIEWED ORIGINAL DRAFT; title: UNCHANGED.
+- Status: APPROVED CANDIDATE IMPLEMENTED; title: APPROVED.
 - Purpose: Establish an ongoing intention to discourage unwanted insect contact while maintaining calm awareness.
 - Pending title: None.
-- Other unselected proposal: {"title": "Clear Zone", "cue": "PLUS-CLEAR ZONE"}
+- Other unselected proposal: null
+
+### OCF-EXP-006 — Intuition
+
+- Current display cue: `PLUS-INTUITION`; complete teaching: **Plus Intuition**.
+- Status: APPROVED CANDIDATE IMPLEMENTED; title: APPROVED.
+- Purpose: Recognize, receive and understand intuitive guidance through the total self, heart-centered awareness, subconscious, higher self and wider consciousness.
+- Pending title: None.
+- Other unselected proposal: null
 
 ### OCF-FND-001 — Access to Energy
 

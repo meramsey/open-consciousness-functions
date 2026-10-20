@@ -32,8 +32,9 @@ OCF-EMO-002,Offload,OFF-LOADING,PLUS-OFFLOAD,"PLUS-FADE, FADE",emotion;foundatio
 OCF-EMO-003,Empathize,EMPATHIZING,PLUS-EMPATHIZE,"PLUS-PROFILE, PROFILE",emotion;communication,temporary,unavailable,planned,approved,historical-lookup,0,0,functions/emotion/empathizing.yaml
 OCF-EXP-001,Manifest,MOBIUS WEST,PLUS-MANIFEST,"PLUS-CHANGE, CHANGE",experimental;foundation,temporary,available,planned,approved,historical-lookup,0,0,functions/experimental/mobius-west.yaml
 OCF-EXP-002,Insulate,ZONING,PLUS-INSULATE,"PLUS-INSULATE, INSULATE / PLUS-CANCEL",experimental,temporary,unavailable,planned,approved,historical-lookup,0,0,functions/experimental/zoning.yaml
-OCF-EXP-003,Dissolve,,PLUS-DISSOLVE,,experimental,permanent,pending-source-review,draft,pending,none,0,0,functions/experimental/dissolve.yaml
-OCF-EXP-005,Clear Zone,,PLUS-CLEAR ZONE,,experimental,permanent,pending-source-review,draft,pending,none,0,0,functions/experimental/clear-zone.yaml
+OCF-EXP-003,Dissolve,,PLUS-DISSOLVE,,experimental,permanent,pending-source-review,in-progress,approved,none,0,0,functions/experimental/dissolve.yaml
+OCF-EXP-005,Clear Zone,,PLUS-CLEAR ZONE,,experimental,permanent,pending-source-review,in-progress,approved,none,0,0,functions/experimental/clear-zone.yaml
+OCF-EXP-006,Intuition,,PLUS-INTUITION,,experimental,permanent,pending-source-review,in-progress,approved,none,0,0,functions/experimental/intuition.yaml
 OCF-FND-001,Access to Energy,ACCESS TO ENERGY,PLUS-ENERGIZE,PLUS-ENERGIZE,foundation;performance,temporary,available,planned,approved,unchanged,0,0,functions/foundation/energize.yaml
 OCF-FND-002,Attention,ATTENTION,PLUS-FOCUS,PLUS-FOCUS,foundation;cognition,temporary,available,complete,approved,unchanged,1,11,functions/foundation/attention.yaml
 OCF-FND-003,Quick Recharge,RECHARGE,PLUS-RECHARGE,PLUS-RECHARGE,foundation;body,temporary,available,planned,approved,unchanged,0,0,functions/foundation/recharge.yaml

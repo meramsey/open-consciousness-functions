@@ -22,6 +22,14 @@ from tools.title_cue_review import words  # noqa: E402
 
 
 def build():
+    from ocf_tools.candidate_approval import record as approval_record
+
+    candidate_approval = approval_record()
+    approved_candidates = (
+        {row["function_id"] for row in candidate_approval["approvals"].values()}
+        if candidate_approval
+        else set()
+    )
     problems = verify_migration()
     if not problems:
         problems = verify_successors()
@@ -66,7 +74,9 @@ def build():
                 "spoken_teaching": taught,
                 "cue_presentation": presentation,
                 "current_purpose": record.purpose_summary,
-                "decision_status": "UNREVIEWED ORIGINAL DRAFT"
+                "decision_status": "APPROVED CANDIDATE IMPLEMENTED"
+                if record.id in approved_candidates
+                else "UNREVIEWED ORIGINAL DRAFT"
                 if is_new_draft
                 else "APPROVED AND IMPLEMENTED"
                 if update
@@ -77,11 +87,15 @@ def build():
                 != "KEEP — TITLE, CUE, AND TEACHING ALREADY CONSISTENT"
                 else "EXISTING PAIR RETAINED",
                 "metadata_teaching_consistent": matched,
-                "title_status": update["title_status"] if update else "UNCHANGED",
+                "title_status": "APPROVED"
+                if record.id in approved_candidates
+                else update["title_status"]
+                if update
+                else "UNCHANGED",
                 "pending_title": update.get("pending_title") if update else None,
                 "previous_values": update["previous"] if update else None,
                 "unselected_proposal": None
-                if update or record.id in kept
+                if update or record.id in kept or record.id in approved_candidates
                 else {
                     "title": prior[record.id]["recommended_title"],
                     "cue": prior[record.id]["recommended_primary_cue"],
@@ -92,7 +106,9 @@ def build():
                 else kept[record.id]["implementation_scope"]
                 if record.id in kept
                 else prior[record.id]["contextual_review"],
-                "teaching_source": "Supplied draft; not approved for production"
+                "teaching_source": "Explicit full candidate approval OCF-APPROVED-CANDIDATES-001; exact presented narration preserved"
+                if record.id in approved_candidates
+                else "Supplied draft; not approved for production"
                 if is_new_draft
                 else "Approved exact substitutions, verified against immutable predecessor"
                 if update
@@ -123,6 +139,7 @@ def build():
             ),
             "stable_primary_identities": sum(row["designation"] == "primary" for row in commands),
             "approved_cues_implemented": len(changed),
+            "approved_candidate_narrations": len(approved_candidates),
             "protected_entries": len(
                 json.loads((REPO_ROOT / decision["integrity_baseline"]).read_text())
             ),

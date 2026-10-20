@@ -57,6 +57,9 @@ def record(root=REPO_ROOT):
 
 
 def predecessor(root, name, text):
+    from .candidate_approval import predecessor as before_candidates
+
+    text = before_candidates(root, name, text)
     data = record(root)
     row = data["files"].get(name) if data else None
     if row is None:
@@ -67,6 +70,9 @@ def predecessor(root, name, text):
 
 
 def before_texts(root, texts):
+    from .candidate_approval import before_texts as before_candidates
+
+    texts = before_candidates(root, texts)
     data = record(root)
     result = dict(texts)
     for identity, row in data["speech"].items() if data else []:
@@ -123,7 +129,11 @@ def verify(root=REPO_ROOT):
     texts = narration_texts(root)
     if text_fingerprints(before_texts(root, texts)) != previous:
         raise OCFError("Options changed unrelated protected speech")
-    if text_fingerprints(texts) != json.loads((root / BASELINE).read_text(encoding="utf-8")):
+    from .candidate_approval import before_texts as before_candidates
+
+    if text_fingerprints(before_candidates(root, texts)) != json.loads(
+        (root / BASELINE).read_text(encoding="utf-8")
+    ):
         raise OCFError("Options successor baseline drift")
     old = yaml.safe_load(data["files"][FUNCTION]["before"])
     if approved_function(old) != yaml.safe_load((root / FUNCTION).read_text(encoding="utf-8")):

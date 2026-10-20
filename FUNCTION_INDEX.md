@@ -37,8 +37,9 @@ Complete index of every OCF function record. Sorted by OCF ID.
 | `OCF-EMO-003` | Empathize | EMPATHIZING | `PLUS-EMPATHIZE` | `PLUS-PROFILE, PROFILE` | emotion | temporary | unavailable | planned | approved | historical-lookup | 0 | 0 | functions/emotion/empathizing.yaml |
 | `OCF-EXP-001` | Manifest | MOBIUS WEST | `PLUS-MANIFEST` | `PLUS-CHANGE, CHANGE` | experimental | temporary | available | planned | approved | historical-lookup | 0 | 0 | functions/experimental/mobius-west.yaml |
 | `OCF-EXP-002` | Insulate | ZONING | `PLUS-INSULATE` | `PLUS-INSULATE, INSULATE` / `PLUS-CANCEL` | experimental | temporary | unavailable | planned | approved | historical-lookup | 0 | 0 | functions/experimental/zoning.yaml |
-| `OCF-EXP-003` | Dissolve |  | `PLUS-DISSOLVE` |  | experimental | permanent | pending-source-review | draft | pending | none | 0 | 0 | functions/experimental/dissolve.yaml |
-| `OCF-EXP-005` | Clear Zone |  | `PLUS-CLEAR ZONE` |  | experimental | permanent | pending-source-review | draft | pending | none | 0 | 0 | functions/experimental/clear-zone.yaml |
+| `OCF-EXP-003` | Dissolve |  | `PLUS-DISSOLVE` |  | experimental | permanent | pending-source-review | in-progress | approved | none | 0 | 0 | functions/experimental/dissolve.yaml |
+| `OCF-EXP-005` | Clear Zone |  | `PLUS-CLEAR ZONE` |  | experimental | permanent | pending-source-review | in-progress | approved | none | 0 | 0 | functions/experimental/clear-zone.yaml |
+| `OCF-EXP-006` | Intuition |  | `PLUS-INTUITION` |  | experimental | permanent | pending-source-review | in-progress | approved | none | 0 | 0 | functions/experimental/intuition.yaml |
 | `OCF-FND-001` | Access to Energy | ACCESS TO ENERGY | `PLUS-ENERGIZE` | `PLUS-ENERGIZE` | foundation | temporary | available | planned | approved | unchanged | 0 | 0 | functions/foundation/energize.yaml |
 | `OCF-FND-002` | Attention | ATTENTION | `PLUS-FOCUS` | `PLUS-FOCUS` | foundation | temporary | available | complete | approved | unchanged | 1 | 11 | functions/foundation/attention.yaml |
 | `OCF-FND-003` | Quick Recharge | RECHARGE | `PLUS-RECHARGE` | `PLUS-RECHARGE` | foundation | temporary | available | planned | approved | unchanged | 0 | 0 | functions/foundation/recharge.yaml |
@@ -64,4 +65,4 @@ Complete index of every OCF function record. Sorted by OCF ID.
 | `OCF-SLP-005` | Sleep Easy | SLEEP EASY | `PLUS-SLEEP EASY` | `PLUS-QUIET, SLEEP` | sleep | temporary | unavailable | planned | approved | historical-lookup | 0 | 0 | functions/sleep/sleep-easy.yaml |
 | `OCF-SLP-006` | Stay Awake | STAY AWAKE | `PLUS-AWAKE` | `PLUS-ONE, AWAKE, ALERT, ONE, ONE` | sleep | temporary | unavailable | planned | approved | historical-lookup | 0 | 0 | functions/sleep/stay-awake.yaml |
 
-57 functions listed.
+58 functions listed.

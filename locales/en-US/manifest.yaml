@@ -5,6 +5,12 @@ direction: ltr
 status: canonical
 semantic_version: 1.11.0
 resources:
+- file: original-OCF-EXP-006.yaml
+  domain: narration
+- file: intuition-ui.yaml
+  domain: ui
+- file: intuition-cues.yaml
+  domain: narration
 - file: original-OCF-EXP-003.yaml
   domain: narration
 - file: original-OCF-EXP-005.yaml

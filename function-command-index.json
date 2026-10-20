@@ -1,9 +1,9 @@
 {
   "canonical_locale": "en-US",
-  "command_count": 82,
+  "command_count": 83,
   "fallback_count": 0,
   "fallbacks": [],
-  "function_count": 57,
+  "function_count": 58,
   "functions": [
     {
       "canonical_command_review": "approved",
@@ -8380,24 +8380,27 @@
       }
     },
     {
-      "canonical_command_review": "pending",
+      "canonical_command_review": "approved",
       "command_review_label": {
         "fallback": false,
-        "key": "command.review.pending",
+        "key": "command.review.approved",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Pending review"
+        "text": "Approved"
       },
       "commands": [
         {
           "cue_presentation": {
-            "binding_status": "requires-locale-review",
+            "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-003-PRIMARY",
             "display_cue": "PLUS-DISSOLVE",
             "requested_locale": "en-US",
-            "resource_status": "draft",
-            "spoken_cue": null,
-            "spoken_cue_key": "commands.ocf-cmd-exp-003-primary.spoken-cue"
+            "resource_status": "reviewed",
+            "spoken_cue": "Plus Dissolve",
+            "spoken_cue_key": "commands.ocf-cmd-exp-003-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "effect_scope": "conditional",
@@ -8530,7 +8533,7 @@
             "text": "Conditional application"
           },
           "spoken": "Plus Dissolve",
-          "spoken_review": "unresolved",
+          "spoken_review": "reviewed",
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-exp-003-primary.usage",
@@ -8597,7 +8600,7 @@
         "resolved_locale": "en-US",
         "text": "Consciously dissolve a selected unwanted belief, expectation, emotional response or recurring life pattern while preserving useful learning."
       },
-      "reimplementation_status": "draft",
+      "reimplementation_status": "in-progress",
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-exp-003.purpose",
@@ -8623,24 +8626,27 @@
       }
     },
     {
-      "canonical_command_review": "pending",
+      "canonical_command_review": "approved",
       "command_review_label": {
         "fallback": false,
-        "key": "command.review.pending",
+        "key": "command.review.approved",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Pending review"
+        "text": "Approved"
       },
       "commands": [
         {
           "cue_presentation": {
-            "binding_status": "requires-locale-review",
+            "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-005-OBSERVE",
             "display_cue": "PLUS-CLEAR ZONE, OBSERVE",
             "requested_locale": "en-US",
-            "resource_status": "draft",
-            "spoken_cue": null,
-            "spoken_cue_key": "commands.ocf-cmd-exp-005-observe.spoken-cue"
+            "resource_status": "reviewed",
+            "spoken_cue": "Plus Clear Zone, Observe",
+            "spoken_cue_key": "commands.ocf-cmd-exp-005-observe.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "effect_scope": "conditional",
@@ -8744,7 +8750,7 @@
             "text": "Conditional application"
           },
           "spoken": "Plus Clear Zone, Observe",
-          "spoken_review": "unresolved",
+          "spoken_review": "reviewed",
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-exp-005-observe.usage",
@@ -8755,13 +8761,16 @@
         },
         {
           "cue_presentation": {
-            "binding_status": "requires-locale-review",
+            "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-005-PRIMARY",
             "display_cue": "PLUS-CLEAR ZONE",
             "requested_locale": "en-US",
-            "resource_status": "draft",
-            "spoken_cue": null,
-            "spoken_cue_key": "commands.ocf-cmd-exp-005-primary.spoken-cue"
+            "resource_status": "reviewed",
+            "spoken_cue": "Plus Clear Zone",
+            "spoken_cue_key": "commands.ocf-cmd-exp-005-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "effect_scope": "permanent",
@@ -8864,7 +8873,7 @@
             "text": "Permanent"
           },
           "spoken": "Plus Clear Zone",
-          "spoken_review": "unresolved",
+          "spoken_review": "reviewed",
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-exp-005-primary.usage",
@@ -8875,13 +8884,16 @@
         },
         {
           "cue_presentation": {
-            "binding_status": "requires-locale-review",
+            "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-005-SUSPEND",
             "display_cue": "PLUS-CLEAR ZONE, SUSPEND",
             "requested_locale": "en-US",
-            "resource_status": "draft",
-            "spoken_cue": null,
-            "spoken_cue_key": "commands.ocf-cmd-exp-005-suspend.spoken-cue"
+            "resource_status": "reviewed",
+            "spoken_cue": "Plus Clear Zone, Suspend",
+            "spoken_cue_key": "commands.ocf-cmd-exp-005-suspend.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "effect_scope": "conditional",
@@ -8985,7 +8997,7 @@
             "text": "Conditional application"
           },
           "spoken": "Plus Clear Zone, Suspend",
-          "spoken_review": "unresolved",
+          "spoken_review": "reviewed",
           "usage": {
             "fallback": false,
             "key": "commands.ocf-cmd-exp-005-suspend.usage",
@@ -9071,7 +9083,7 @@
         "resolved_locale": "en-US",
         "text": "Establish an ongoing intention to discourage unwanted insect contact while maintaining calm awareness."
       },
-      "reimplementation_status": "draft",
+      "reimplementation_status": "in-progress",
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-exp-005.purpose",
@@ -9094,6 +9106,187 @@
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
         "text": "Clear Zone"
+      }
+    },
+    {
+      "canonical_command_review": "approved",
+      "command_review_label": {
+        "fallback": false,
+        "key": "command.review.approved",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Approved"
+      },
+      "commands": [
+        {
+          "cue_presentation": {
+            "binding_status": "resolved",
+            "command_id": "OCF-CMD-EXP-006-PRIMARY",
+            "display_cue": "PLUS-INTUITION",
+            "requested_locale": "en-US",
+            "resource_status": "reviewed",
+            "spoken_cue": "Plus Intuition",
+            "spoken_cue_key": "commands.ocf-cmd-exp-006-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
+          },
+          "designation": "primary",
+          "explanation": {
+            "fallback": false,
+            "key": "commands.ocf-cmd-exp-006-primary.explanation",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Calm discernment and constructive purposeful response; impressions are not unquestionable evidence of external facts."
+          },
+          "function_id": "OCF-EXP-006",
+          "id": "OCF-CMD-EXP-006-PRIMARY",
+          "label": {
+            "fallback": false,
+            "key": "commands.ocf-cmd-exp-006-primary.label",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Deliberate intuitive reinforcement"
+          },
+          "localization": {
+            "explanation_key": "commands.ocf-cmd-exp-006-primary.explanation",
+            "label_key": "commands.ocf-cmd-exp-006-primary.label",
+            "spoken_cue_key": "commands.ocf-cmd-exp-006-primary.spoken-cue",
+            "usage_key": "commands.ocf-cmd-exp-006-primary.usage"
+          },
+          "phrase": "PLUS-INTUITION",
+          "phrase_ref": {
+            "source": "canonical-primary"
+          },
+          "procedure": {
+            "override_steps": [
+              {
+                "id": "select-question-or-situation",
+                "operation": "select-question"
+              },
+              {
+                "id": "think-or-say-in-mind",
+                "operation": "think-or-say-command"
+              },
+              {
+                "id": "allow-quiet-moment",
+                "operation": "other"
+              },
+              {
+                "id": "consider-and-choose-response",
+                "operation": "other"
+              }
+            ],
+            "status": "documented"
+          },
+          "procedure_status": "documented",
+          "procedure_steps": [
+            {
+              "id": "select-question-or-situation",
+              "instruction": {
+                "fallback": false,
+                "key": "command.procedure.select-question",
+                "requested_locale": "en-US",
+                "resolved_locale": "en-US",
+                "text": "Choose a question to explore."
+              },
+              "operation": "select-question"
+            },
+            {
+              "id": "think-or-say-in-mind",
+              "instruction": {
+                "fallback": false,
+                "key": "command.procedure.think-or-say-command",
+                "requested_locale": "en-US",
+                "resolved_locale": "en-US",
+                "text": "Think or say the command."
+              },
+              "operation": "think-or-say-command"
+            },
+            {
+              "id": "allow-quiet-moment",
+              "instruction": {
+                "fallback": false,
+                "key": "command.procedure.other",
+                "requested_locale": "en-US",
+                "resolved_locale": "en-US",
+                "text": "Follow the function-specific instruction recorded for this step."
+              },
+              "operation": "other"
+            },
+            {
+              "id": "consider-and-choose-response",
+              "instruction": {
+                "fallback": false,
+                "key": "command.procedure.other",
+                "requested_locale": "en-US",
+                "resolved_locale": "en-US",
+                "text": "Follow the function-specific instruction recorded for this step."
+              },
+              "operation": "other"
+            }
+          ],
+          "related_commands": [],
+          "role": "activation",
+          "scope_label": {
+            "fallback": false,
+            "key": "command.scope.permanent",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Permanent"
+          },
+          "spoken": "Plus Intuition",
+          "spoken_review": "reviewed",
+          "usage": {
+            "fallback": false,
+            "key": "commands.ocf-cmd-exp-006-primary.usage",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Bring one question or situation into awareness; think or say Plus Intuition in the mind; allow a quiet moment; consider and choose a response."
+          }
+        }
+      ],
+      "effects": null,
+      "function_id": "OCF-EXP-006",
+      "lifecycle_scopes": [],
+      "persistence": "permanent",
+      "persistence_label": {
+        "fallback": false,
+        "key": "command.scope.permanent",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Permanent"
+      },
+      "purpose": {
+        "fallback": false,
+        "key": "functions.ocf-exp-006.purpose",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Recognize, receive and understand intuitive guidance through the total self, heart-centered awareness, subconscious, higher self and wider consciousness."
+      },
+      "reimplementation_status": "in-progress",
+      "short_description": {
+        "fallback": false,
+        "key": "functions.ocf-exp-006.purpose",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Recognize, receive and understand intuitive guidance through the total self, heart-centered awareness, subconscious, higher self and wider consciousness."
+      },
+      "slug": "intuition",
+      "source_availability": "pending-source-review",
+      "source_availability_label": {
+        "fallback": false,
+        "key": "command.source.pending-source-review",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Source availability is pending review."
+      },
+      "title": {
+        "fallback": false,
+        "key": "functions.ocf-exp-006.title",
+        "requested_locale": "en-US",
+        "resolved_locale": "en-US",
+        "text": "Intuition"
       }
     },
     {

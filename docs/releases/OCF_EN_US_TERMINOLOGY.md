@@ -235,7 +235,7 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 
 ## OCF-EXP-001 / OCF-CMD-EXP-001-PRIMARY
 
-Title: Manifest. Title status: APPROVED AND IMPLEMENTED.
+Title: Manifest. Title status: APPROVED.
 Display: `PLUS-MANIFEST`. Complete speech: **Plus Manifest**.
 
 Sets a consciously selected future condition and completion time through intention and total-self alignment.

@@ -17,11 +17,11 @@ legacy:
   commands: []
   command_status: proposed
   source_availability: pending-source-review
-  source_notes: New adaptation of the supplied draft; no authenticated historical
-    lineage or inherited rights approval.
+  source_notes: New adaptation of the supplied draft; no authenticated historical lineage or inherited
+    rights approval.
 ocf:
-  reimplementation_status: draft
-  command_review: pending
+  reimplementation_status: in-progress
+  command_review: approved
 aliases:
   names: []
   commands: []
@@ -34,7 +34,7 @@ compatibility:
   rationale: Original draft; no historical command is being replaced.
 status:
   maturity: community-proposed
-  implementation: script-drafted
+  implementation: script-approved
   evidence: unverified
 lifecycle:
   persistence: permanent
@@ -43,17 +43,13 @@ lifecycle:
     required: false
     command: null
   trigger_conditions:
-  - Automatic is the intended baseline; deliberate primary invocation strengthens
-    or restores it.
-  - Observe pauses outward-directed insect-discouragement intention while calm awareness
-    remains.
-  - Suspend pauses the entire Clear Zone application, preserving ordinary awareness
-    and natural bodily responses.
+  - Automatic is the intended baseline; deliberate primary invocation strengthens or restores it.
+  - Observe pauses outward-directed insect-discouragement intention while calm awareness remains.
+  - Suspend pauses the entire Clear Zone application, preserving ordinary awareness and natural bodily
+    responses.
   - Modes are mutually exclusive; each deliberate selection replaces the prior mode.
-  - Either override ends at normal sleep onset, loss of consciousness or deliberate
-    primary invocation.
-  - Relaxation, Focus-state labels and hearing a cue during narration are not reset
-    or selection triggers.
+  - Either override ends at normal sleep onset, loss of consciousness or deliberate primary invocation.
+  - Relaxation, Focus-state labels and hearing a cue during narration are not reset or selection triggers.
   - These are exercise instructions, not executable detection or physiological control.
   scopes:
     capability:
@@ -63,35 +59,32 @@ lifecycle:
     baseline:
       persistence: permanent
       activation: automatic
-      description: Intended automatic non-destructive insect discouragement and calm
-        awareness.
+      description: Intended automatic non-destructive insect discouragement and calm awareness.
       description_key: functions.ocf-exp-005.baseline
     application:
       persistence: conditional
       activation: manual
-      description: Mutually exclusive Observe and Suspend overrides replace the prior
-        mode and end at normal sleep onset, loss of consciousness or deliberate primary
-        invocation.
+      description: Mutually exclusive Observe and Suspend overrides replace the prior mode and end at
+        normal sleep onset, loss of consciousness or deliberate primary invocation.
       description_key: functions.ocf-exp-005.application
 purpose:
-  summary: Establish an ongoing intention to discourage unwanted insect contact while
-    maintaining calm awareness.
+  summary: Establish an ongoing intention to discourage unwanted insect contact while maintaining calm
+    awareness.
   source_description: null
-  community_description: Experimental non-destructive intention with distinct automatic,
-    Observe and Suspend modes.
+  community_description: Experimental non-destructive intention with distinct automatic, Observe and Suspend
+    modes.
 safety:
   level: experimental
   medical_relevance: false
   notes:
-  - Physical repellency or protection against bites, stings or insect-borne disease
-    is not established.
+  - Physical repellency or protection against bites, stings or insect-borne disease is not established.
 claims:
   intended_effects:
   - Calm awareness and non-destructive intention to discourage unwanted insect contact.
   prohibited_claims:
   - No verified physical repellency or protection against insect-borne disease.
 audio:
-  script_status: draft
+  script_status: approved
   implementation_status: not-started
   background_audio:
     strategy: optional
@@ -113,7 +106,7 @@ commands:
   phrase_ref:
     source: canonical-primary
   spoken: Plus Clear Zone
-  spoken_review: unresolved
+  spoken_review: reviewed
   effect_scope_ref: lifecycle.scopes.baseline.persistence
   procedure:
     status: documented
@@ -139,7 +132,7 @@ commands:
     source: canonical-mode
     command_id: OCF-CMD-EXP-005-OBSERVE
   spoken: Plus Clear Zone, Observe
-  spoken_review: unresolved
+  spoken_review: reviewed
   effect_scope_ref: lifecycle.scopes.application.persistence
   procedure:
     status: documented
@@ -165,7 +158,7 @@ commands:
     source: canonical-mode
     command_id: OCF-CMD-EXP-005-SUSPEND
   spoken: Plus Clear Zone, Suspend
-  spoken_review: unresolved
+  spoken_review: reviewed
   effect_scope_ref: lifecycle.scopes.application.persistence
   procedure:
     status: documented
