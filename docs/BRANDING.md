@@ -72,6 +72,15 @@ of FFmpeg's generic `description` alias, which can overwrite an existing comment
 Existing valid comments/track numbering and original embedded artwork remain
 intact in their historical files; enhanced copies use new output directories.
 
+An existing verified private listening-export directory may itself be supplied
+to `audio export-audition`. This supports retagging after an operator removes
+large renderer/WAV staging files. The exporter validates the retained edition,
+source-reference hashes, file checksums, packet/PCM evidence and narrator/voice
+tags, then stream-copies both formats. It records a predecessor-manifest hash
+and explicitly distinguishes inherited master-PCM evidence from a current WAV
+comparison. It never fabricates a replacement session report or regenerates a
+deleted WAV. Completed-session inputs still require their original artifacts.
+
 Private full-session listening copies use the same artwork generator through
 `audio export-audition`, including default dark, light/custom overrides and
 explicit `--no-artwork`. See [private listening exports](AUDIO_PIPELINE.md#private-listening-exports-from-completed-sessions).

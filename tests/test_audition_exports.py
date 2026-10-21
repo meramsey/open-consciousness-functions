@@ -297,3 +297,45 @@ def test_cli_routes_private_export_without_release_or_render(monkeypatch, capsys
     assert calls[0][0] == Path(".ocf-work/session")
     assert calls[0][1]["no_artwork"] and calls[0][1]["edition_version"] == "0.1.0"
     assert '"dry_run": true' in capsys.readouterr().out
+
+
+@pytest.mark.integration
+@pytest.mark.audio_integration
+@pytest.mark.external_tool
+def test_retained_export_retags_after_operator_removes_session_artifacts(tmp_path, monkeypatch):
+    _tools()
+    source, _, _ = _session(tmp_path)
+    work = tmp_path / "work"
+    monkeypatch.setenv("OCF_WORK_DIR", str(work))
+    first = exports.export_audition(
+        source, edition_version="0.1.0", artwork_resolution=320, output=work / "first"
+    )
+    packet_baseline = {
+        fmt: first["manifest"]["artifacts"][fmt]["packet_sha256"] for fmt in ("flac", "mp3")
+    }
+    # Compatibility with earlier verified encode-from-master manifest receipts.
+    for fmt in ("flac", "mp3"):
+        first["manifest"]["artifacts"][fmt]["packet_sha256"] = None
+    (work / "first/manifest.json").write_text(json.dumps(first["manifest"]), encoding="utf-8")
+    before = {p.name: sha256_of_file(p) for p in (work / "first").iterdir() if p.is_file()}
+    shutil.rmtree(source)  # Only this synthetic fixture, never repository auditions.
+    second = exports.export_audition(work / "first", artwork_resolution=320, output=work / "second")
+    manifest = second["manifest"]
+    assert manifest["version"] == "0.1.0" and manifest["edition"] == first["manifest"]["edition"]
+    assert manifest["source_mode"] == "verified-private-export"
+    assert manifest["original_master_verified_this_export"] is False
+    assert manifest["master_pcm_verification"] == "verified predecessor FLAC evidence"
+    assert manifest["predecessor_export_manifest"]["sha256"] == before["manifest.json"]
+    assert not source.exists()  # No invented report/WAV or synthesis fallback.
+    for fmt in ["flac", "mp3"]:
+        item = manifest["artifacts"][fmt]
+        assert item["operation"] == "stream-copy" and item["embedded_cover_verified"]
+        assert item["packet_sha256"] == packet_baseline[fmt]
+        assert item["pcm_sha256"] == first["manifest"]["artifacts"][fmt]["pcm_sha256"]
+    assert {p.name: sha256_of_file(p) for p in (work / "first").iterdir() if p.is_file()} == before
+    damaged = json.loads((work / "first/manifest.json").read_text())
+    damaged["artifacts"]["mp3"]["pcm_sha256"] = "0" * 64
+    (work / "first/manifest.json").write_text(json.dumps(damaged), encoding="utf-8")
+    with pytest.raises(OCFError, match="checksum evidence"):
+        exports.export_audition(work / "first", output=work / "must-not-appear", no_artwork=True)
+    assert not (work / "must-not-appear").exists()

@@ -330,7 +330,9 @@ def _build_parser() -> argparse.ArgumentParser:
         help="export completed session listening copies with versioned artwork; never synthesize or mix",
     )
     export_cmd.add_argument(
-        "source", type=Path, help="completed session directory with session-report.json"
+        "source",
+        type=Path,
+        help="completed session directory or verified private listening-export directory",
     )
     export_cmd.add_argument(
         "--edition-version", help="explicit new private audio/session edition X.Y.Z"

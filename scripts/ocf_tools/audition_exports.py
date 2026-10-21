@@ -296,6 +296,56 @@ def attach_render_artwork(
         }
 
 
+def _retained_export(source: Path, version: str | None, edition: str | Path | None) -> dict:
+    """Open verified listening copies without inventing a missing session report/WAV."""
+    path = source / "manifest.json"
+    previous = read_json_object(path)
+    if previous.get("kind") != "private-audition-export":
+        raise OCFError("source must be a completed session or a verified private audition export")
+    record = read_json_object(Path(edition) if edition else source / "audition-edition.json")
+    errors = validate_against_schema(record, _load_schema("audition-edition.schema.json"))
+    if errors:
+        raise OCFError("invalid retained audition edition: " + " | ".join(errors))
+    if (
+        record != previous.get("edition")
+        or record["function_id"] != previous.get("function_id")
+        or record["locale"] != previous.get("locale")
+        or record["version"] != previous.get("version")
+        or record["master_sha256"] != previous.get("source_master", {}).get("sha256")
+        or record["session_report_sha256"] != previous.get("source_report", {}).get("sha256")
+    ):
+        raise OCFError("retained export edition/source identity does not match")
+    if version and version != record["version"]:
+        raise OCFError("requested edition version conflicts with retained export")
+    items = previous.get("artifacts", {})
+    if not all(fmt in items for fmt in ("flac", "mp3")):
+        raise OCFError("retained export requires verified FLAC and MP3 sources")
+    inputs = {fmt: _source_artifact(source, items[fmt]) for fmt in ("flac", "mp3")}
+    for fmt in inputs:
+        item = items[fmt]
+        pcm_valid = isinstance(item.get("pcm_sha256"), str) and len(item["pcm_sha256"]) == 64
+        packet = item.get("packet_sha256")
+        packet_valid = isinstance(packet, str) and len(packet) == 64
+        # Older encode-from-master receipts recorded decoded PCM and the exact
+        # encoded file checksum, but not a separate packet digest. That verified
+        # file checksum still binds every packet; compute the digest on read.
+        legacy_encoded = packet is None and item.get("operation") == "encode-from-master"
+        if not pcm_valid or not (packet_valid or legacy_encoded):
+            raise OCFError("retained export requires packet and PCM checksum evidence")
+        tags = item.get("tags", {})
+        if (
+            tags.get("ocf_function_id") != record["function_id"]
+            or tags.get("ocf_locale") != record["locale"]
+            or tags.get("ocf_voice_profile") != record["voice_profile_id"]
+            or tags.get("ocf_audio_version") != record["version"]
+        ):
+            raise OCFError("retained export tags do not match its edition")
+    narrator = items["flac"]["tags"].get("ocf_narrator")
+    if not narrator or narrator != items["mp3"]["tags"].get("ocf_narrator"):
+        raise OCFError("retained export narrator identity is missing/inconsistent")
+    return {"document": previous, "edition": record, "inputs": inputs, "narrator": narrator}
+
+
 def export_audition(
     source: str | Path,
     *,
@@ -317,21 +367,42 @@ def export_audition(
         raise OCFError("--no-artwork cannot be combined with artwork/theme overrides")
     source = Path(source).expanduser().resolve()
     report_path = source / "session-report.json"
-    report = read_json_object(report_path)
-    if report.get("render_type") != "complete-session-audition":
-        raise OCFError("export requires a completed complete-session audition report")
-    artifacts = report.get("artifacts", {})
-    if "wav" not in artifacts:
-        raise OCFError("complete-session report has no master WAV")
-    originals = {key: _source_artifact(source, item) for key, item in artifacts.items()}
-    master = originals["wav"]
-    edition_record, version_source = _edition(
-        report, report_path, edition_version, Path(edition) if edition else None
-    )
+    retained = None
+    if report_path.is_file():
+        report = read_json_object(report_path)
+        if report.get("render_type") != "complete-session-audition":
+            raise OCFError("export requires a completed complete-session audition report")
+        artifacts = report.get("artifacts", {})
+        if "wav" not in artifacts:
+            raise OCFError("complete-session report has no master WAV")
+        originals = {key: _source_artifact(source, item) for key, item in artifacts.items()}
+        master = originals["wav"]
+        edition_record, version_source = _edition(
+            report, report_path, edition_version, Path(edition) if edition else None
+        )
+        narrator = report.get("voice_profile", {}).get("name")
+        inputs = {
+            "flac": Path(flac_source).resolve() if flac_source else master,
+            "mp3": Path(mp3_source).resolve() if mp3_source else master,
+        }
+    else:
+        retained = _retained_export(source, edition_version, edition)
+        report_path = source / "manifest.json"
+        report, edition_record, inputs, narrator = (
+            retained[key] for key in ("document", "edition", "inputs", "narrator")
+        )
+        artifacts = dict(report["artifacts"])
+        if report.get("cover"):
+            artifacts["cover"] = report["cover"]
+        for fmt, supplied in (("flac", flac_source), ("mp3", mp3_source)):
+            if supplied and Path(supplied).resolve() != inputs[fmt].resolve():
+                raise OCFError("retained export source overrides must use its verified artifacts")
+        master = None
+        version_source = "verified-private-export-edition"
+    document_sha256 = sha256_of_file(report_path)
     version = edition_record["version"]
     function_id, locale = edition_record["function_id"], edition_record["locale"]
     title, title_resolution = _function_title(function_id, locale, LocaleCatalog())
-    narrator = report.get("voice_profile", {}).get("name")
     if not narrator:
         raise OCFError("completed report must declare its narrator/voice display name")
     final = (
@@ -343,12 +414,8 @@ def export_audition(
         raise OCFError("private audition exports must remain inside the OCF workspace")
     if final.exists():
         raise OCFError("refusing to overwrite an existing private audition export")
-    inputs = {
-        "flac": Path(flac_source).resolve() if flac_source else master,
-        "mp3": Path(mp3_source).resolve() if mp3_source else master,
-    }
     probes = {fmt: _probe(path) for fmt, path in inputs.items()}
-    master_info = _probe(master)
+    master_info = _probe(master or inputs["flac"])
     if master_info["channels"] != 2:
         raise OCFError("complete-session listening master must retain stereo")
     for fmt, info in probes.items():
@@ -361,7 +428,7 @@ def export_audition(
             raise OCFError(
                 f"{fmt} source codec, stereo format or duration differs from session master"
             )
-    if not master_info["codec"].startswith("pcm_"):
+    if master is not None and not master_info["codec"].startswith("pcm_"):
         raise OCFError("session master must be PCM")
     tags = {
         "title": title,
@@ -412,7 +479,9 @@ def export_audition(
                 for fmt, path in inputs.items()
             },
         }
-    master_hash = audio_hash(master)
+    master_hash = (
+        audio_hash(master) if master is not None else report["artifacts"]["flac"]["pcm_sha256"]
+    )
     input_checks = {
         fmt: {
             "file": _artifact(path),
@@ -423,6 +492,13 @@ def export_audition(
     }
     if input_checks["flac"]["pcm_sha256"] != master_hash:
         raise OCFError("FLAC input is not PCM-identical to the session master")
+    if retained and any(
+        report["artifacts"][fmt].get(key) is not None
+        and input_checks[fmt][key] != report["artifacts"][fmt][key]
+        for fmt in inputs
+        for key in ("pcm_sha256", "packet_sha256")
+    ):
+        raise OCFError("retained export audio differs from its verified checksum evidence")
     stage = workspace_temp_directory(prefix="ocf-audition-export-")
     try:
         if cover_path:
@@ -447,7 +523,7 @@ def export_audition(
             ):
                 raise OCFError("export changed stereo format or duration")
             pcm = audio_hash(target)
-            packets = audio_hash(target, packets=True) if path != master else None
+            packets = audio_hash(target, packets=True)
             if path != master and (
                 pcm != input_checks[fmt]["pcm_sha256"]
                 or packets != input_checks[fmt]["packet_sha256"]
@@ -474,7 +550,7 @@ def export_audition(
             }
         for key, item in artifacts.items():
             _source_artifact(source, item)
-        if sha256_of_file(report_path) != edition_record["session_report_sha256"]:
+        if sha256_of_file(report_path) != document_sha256:
             raise OCFError("source narration/render report changed during export")
         for fmt, path in inputs.items():
             if sha256_of_file(path) != input_checks[fmt]["file"]["sha256"]:
@@ -492,8 +568,14 @@ def export_audition(
             "edition": edition_record,
             "publication_approval": False,
             "human_listening_approval": None,
-            "source_report": _artifact(report_path),
-            "source_master": _artifact(master),
+            "source_report": report["source_report"] if retained else _artifact(report_path),
+            "source_master": report["source_master"] if retained else _artifact(master),
+            "source_mode": "verified-private-export" if retained else "completed-session",
+            "predecessor_export_manifest": _artifact(report_path) if retained else None,
+            "original_master_verified_this_export": master is not None,
+            "master_pcm_verification": "verified predecessor FLAC evidence"
+            if retained
+            else "direct master PCM",
             "source_exports": input_checks,
             "artwork": provenance,
             "artifacts": verified,
