@@ -1,6 +1,6 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
-# Attention
+# Focus
 
 **Purpose**: Directs and sustains focused attention.
 

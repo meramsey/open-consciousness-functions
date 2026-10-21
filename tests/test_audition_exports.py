@@ -62,6 +62,12 @@ def test_edition_requires_deliberate_version_and_binds_actual_audio(tmp_path):
     file = tmp_path / "edition.json"
     file.write_text(json.dumps(edition))
     assert exports._edition(report, path, None, file)[0] == edition
+    report["background_variant"] = "REFERENCE-F10-F11-V4"
+    with pytest.raises(OCFError, match="different audio, voice"):
+        exports._edition(report, path, None, file)
+    variant_edition, _ = exports._edition(report, path, "0.2.0", None)
+    assert variant_edition["background_variant"] == "REFERENCE-F10-F11-V4"
+    report.pop("background_variant")
     with pytest.raises(OCFError, match="conflicts"):
         exports._edition(report, path, "0.2.0", file)
     report["voice_profile"]["id"] = "OCF-VOICE-9998"
@@ -128,7 +134,10 @@ def test_private_streamcopy_artwork_tags_and_pcm_roundtrip(tmp_path, monkeypatch
     from ocf_tools import complete_session, voice
     from PIL import Image
 
-    source, master, _ = _session(tmp_path)
+    source, master, source_report = _session(tmp_path)
+    if choice == "default":
+        source_report["background_variant"] = "REFERENCE-F10-F11-V4"
+        (source / "session-report.json").write_text(json.dumps(source_report), encoding="utf-8")
     workspace = tmp_path / "work"
     monkeypatch.setenv("OCF_WORK_DIR", str(workspace))
     snapshot = {p.name: p.read_bytes() for p in source.iterdir()}
@@ -194,7 +203,9 @@ def test_private_streamcopy_artwork_tags_and_pcm_roundtrip(tmp_path, monkeypatch
             == "Align your intention with the reality you choose"
         )
         assert item["tags"]["ocf_function_purpose"] == manifest["function_content"]["purpose"]
-        assert item["tags"]["ocf_description_review"] == "draft"
+        assert item["tags"]["ocf_description_review"] == "reviewed"
+        if choice == "default":
+            assert item["tags"]["ocf_background_variant"] == "REFERENCE-F10-F11-V4"
         if choice != "none":
             assert exports.front_cover_type(path) == 3
         else:

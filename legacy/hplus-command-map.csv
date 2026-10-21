@@ -3,18 +3,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 legacy_name,legacy_command,ocf_id,canonical_command,command_status,command_review,compatibility,source_availability,reimplementation_status
 SEE-BE,PLUS-AUTOMATE,OCF-AUT-001,PLUS-AUTOMATE,unchanged,approved,unchanged,unavailable,planned
 BRAIN: REPAIRS & MAINTENANCE,PLUS-FLOW BETTER,OCF-BOD-001,PLUS-BRAIN FLOW,unchanged,approved,historical-lookup,available,planned
-CIRCULATION,PLUS-FLOW SMOOTH,OCF-BOD-002,PLUS-FLOW SMOOTH,unchanged,approved,unchanged,available,planned
+CIRCULATION,PLUS-FLOW SMOOTH,OCF-BOD-002,PLUS-CIRCULATE,unchanged,approved,historical-lookup,available,planned
 DE-DISCOMFORT,PLUS-55515,OCF-BOD-003,PLUS-COMFORT,proposed,approved,historical-lookup,available,planned
 DE-TOX: BODY,"PLUS-CLEAN, CLEAR",OCF-BOD-004,PLUS-DETOX,proposed,approved,historical-lookup,available,planned
-EAT/NO EAT,"PLUS-SATISFIED, SUPPLIED",OCF-BOD-005,"PLUS-SATISFIED, SUPPLIED",unchanged,approved,unchanged,available,planned
-HEART: REPAIRS & MAINTENANCE,"PLUS-HEART, BETTER, BETTER",OCF-BOD-006,PLUS-HEART-BETTER,unchanged,approved,historical-lookup,available,planned
+EAT/NO EAT,"PLUS-SATISFIED, SUPPLIED",OCF-BOD-005,PLUS-SATISFIED,unchanged,approved,historical-lookup,available,planned
+HEART: REPAIRS & MAINTENANCE,"PLUS-HEART, BETTER, BETTER",OCF-BOD-006,PLUS-HEART-FLOW,unchanged,approved,historical-lookup,available,planned
 HYPERTENSION,PLUS-BALANCE-BLOODPRESSURE,OCF-BOD-007,PLUS-BALANCE BLOOD PRESSURE,unchanged,approved,unchanged,available,planned
 IMMUNIZING,"PLUS-ALERT, DESTROY",OCF-BOD-008,PLUS-IMMUNE READY,unchanged,approved,historical-lookup,available,planned
 LUNGS: REPAIRS & MAINTENANCE,PLUS-BREATH BETTER,OCF-BOD-009,PLUS-BREATHE BETTER,unchanged,approved,historical-lookup,available,planned
 NUTRICIA,PLUS-FOOD MORE / PLUS-FOOD LESS,OCF-BOD-010,PLUS-FOOD MORE,normalized,needs-review,alias-listed,available,planned
 PASSAGES,PLUS-EQUALIZE-HARMONIZE,OCF-BOD-011,PLUS-HORMONE BALANCE,unchanged,approved,historical-lookup,available,planned
 SEX DRIVE,PLUS-SEX GREATER / PLUS-SEX LESSER,OCF-BOD-012,PLUS-SEX MORE,normalized,needs-review,alias-listed,available,planned
-TUNE-UP,"PLUS-BALANCE, HEAL",OCF-BOD-013,"PLUS-BALANCE, HEAL",unchanged,approved,unchanged,available,planned
+TUNE-UP,"PLUS-BALANCE, HEAL",OCF-BOD-013,PLUS-TUNE-UP,unchanged,approved,historical-lookup,available,planned
 REGENERATE,"PLUS-BUILD, LIVE",OCF-BOD-014,PLUS-REGENERATE,proposed,approved,historical-lookup,unavailable,planned
 SHORT FIX,"PLUS-GO NUMB, GO NUMB / PLUS-RELEASE",OCF-BOD-015,PLUS-NUMB,proposed,approved,historical-lookup,unavailable,planned
 ACCESS TO INFORMATION,PLUS-RETRIEVE,OCF-COG-001,PLUS-ACCESS INFO,unchanged,approved,historical-lookup,available,planned
@@ -25,15 +25,15 @@ OPTIONS,"PLUS-OPTIONS, CHOICES",OCF-COG-005,PLUS-OPTIONS,unchanged,approved,hist
 RECALL,PLUS-RECALL,OCF-COG-006,PLUS-RECALL,unchanged,approved,unchanged,available,planned
 THINK FAST,PLUS-THINK,OCF-COG-007,PLUS-THINK,unchanged,approved,unchanged,available,planned
 SPEAK UP,PLUS-SPEAK UP,OCF-COM-001,PLUS-SPEAK UP,unchanged,approved,unchanged,available,planned
-EMERGENCY: INJURY,"PLUS-CONTROL, BALANCE, RESTORE",OCF-EMG-001,"PLUS-CONTROL, BALANCE, RESTORE",unchanged,approved,unchanged,unavailable,planned
-EMERGENCY: TOXIC,"PLUS-CLEAR, REMOVE",OCF-EMG-002,"PLUS-CLEAR, REMOVE",unchanged,approved,unchanged,unavailable,planned
+EMERGENCY: INJURY,"PLUS-CONTROL, BALANCE, RESTORE",OCF-EMG-001,PLUS-INJURY-RESPONSE,unchanged,approved,historical-lookup,unavailable,planned
+EMERGENCY: TOXIC,"PLUS-CLEAR, REMOVE",OCF-EMG-002,PLUS-TOXIC-CLEAR,unchanged,approved,historical-lookup,unavailable,planned
 LET GO,PLUS-LET GO,OCF-EMO-001,PLUS-LET GO,unchanged,approved,unchanged,available,planned
 OFF-LOADING,"PLUS-FADE, FADE",OCF-EMO-002,PLUS-OFFLOAD,proposed,approved,historical-lookup,available,planned
 EMPATHIZING,"PLUS-PROFILE, PROFILE",OCF-EMO-003,PLUS-EMPATHIZE,unchanged,approved,historical-lookup,unavailable,planned
 MOBIUS WEST,"PLUS-CHANGE, CHANGE",OCF-EXP-001,PLUS-MANIFEST,proposed,approved,historical-lookup,available,planned
 ZONING,"PLUS-INSULATE, INSULATE / PLUS-CANCEL",OCF-EXP-002,PLUS-INSULATE,proposed,approved,historical-lookup,unavailable,planned
 ACCESS TO ENERGY,PLUS-ENERGIZE,OCF-FND-001,PLUS-ENERGIZE,unchanged,approved,unchanged,available,planned
-ATTENTION,PLUS-FOCUS,OCF-FND-002,PLUS-FOCUS,unchanged,approved,unchanged,available,complete
+ATTENTION,PLUS-FOCUS,OCF-FND-002,PLUS-FOCUS,unchanged,approved,historical-lookup,available,complete
 RECHARGE,PLUS-RECHARGE,OCF-FND-003,PLUS-RECHARGE,unchanged,approved,unchanged,available,planned
 RELAX,"PLUS-RELAX, RELAX",OCF-FND-004,PLUS-RELAX,unchanged,approved,historical-lookup,available,planned
 RESET,"PLUS-RESET, RESET",OCF-FND-005,PLUS-RESET,unchanged,approved,historical-lookup,available,planned
@@ -41,7 +41,7 @@ RELEASE,PLUS-RELEASE,OCF-FND-006,PLUS-RELEASE,unchanged,approved,unchanged,unava
 DE-HAB,"PLUS-NO MORE, NO MORE",OCF-LIF-001,PLUS-FREE THIS HABIT,review-required,approved,historical-lookup,available,planned
 DO THIS NOW,PLUS-DO-THIS-NOW,OCF-PRF-001,PLUS-DO-THIS-NOW,unchanged,approved,unchanged,available,planned
 EIGHT-GREAT,"PLUS-EIGHT, GREAT",OCF-PRF-002,PLUS-INNER POWER,proposed,approved,historical-lookup,available,planned
-SYNCHRONIZING,"PLUS-SMOOTH, FAST",OCF-PRF-003,"PLUS-SMOOTH, FAST",unchanged,approved,unchanged,available,planned
+SYNCHRONIZING,"PLUS-SMOOTH, FAST",OCF-PRF-003,PLUS-COORDINATE,unchanged,approved,historical-lookup,available,planned
 LIGHT FOOT,"PLUS-LIGHTER, LIGHTER",OCF-PRF-004,PLUS-LIGHT STEP,proposed,approved,historical-lookup,unavailable,planned
 MAKE YOUR DAY,PLUS-THIS DAY,OCF-PRF-005,PLUS-THIS DAY,unchanged,approved,unchanged,unavailable,planned
 STRONG-QUICK,PLUS-STRONG-QUICK,OCF-PRF-006,PLUS-STRONG QUICK,proposed,review-required,bridge-trainable,unavailable,planned

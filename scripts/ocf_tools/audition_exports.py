@@ -174,6 +174,8 @@ def _edition(report: dict, report_path: Path, version: str | None, edition: Path
         "publication_approval": False,
         "human_listening_approval": None,
     }
+    if report.get("background_variant"):
+        record["background_variant"] = report["background_variant"]
     errors = validate_against_schema(record, _load_schema("audition-edition.schema.json"))
     if errors:
         raise OCFError("invalid audition edition: " + " | ".join(errors))
@@ -445,6 +447,8 @@ def export_audition(
         "OCF_VERSION_LABEL": "v" + version,
         "OCF_EDITION_KIND": "private-audition",
     }
+    if edition_record.get("background_variant"):
+        tags["OCF_BACKGROUND_VARIANT"] = edition_record["background_variant"]
     from .artwork_content import content_tags, function_artwork_content
 
     function_content = function_artwork_content(function_id, locale)

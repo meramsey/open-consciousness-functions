@@ -2,6 +2,16 @@ schema_version: '1.0'
 locale: en-US
 domain: ui
 entries:
+  commands.ocf-cmd-fnd-002-primary.display-cue:
+    text: PLUS-FOCUS
+    status: reviewed
+    version: 0.1.0
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
+  commands.ocf-cmd-bod-002-primary.display-cue:
+    text: PLUS-CIRCULATE
+    status: reviewed
+    version: 0.1.0
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
   commands.ocf-cmd-cog-005-primary.display-cue:
     text: PLUS-OPTIONS
     status: reviewed
@@ -1896,9 +1906,9 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-fnd-002.title:
-    text: Attention
-    status: canonical
-    version: 1.0.0
+    text: Focus
+    status: reviewed
+    version: 1.1.0
   functions.ocf-fnd-003.purpose:
     text: Replenishes a felt sense of energy and freshness.
     status: canonical
@@ -2183,7 +2193,11 @@ entries:
   commands.ocf-cmd-slp-004-primary.display-cue: PLUS-SLEEP INSIGHT
   commands.ocf-cmd-prf-002-primary.display-cue: PLUS-INNER POWER
   commands.ocf-cmd-bod-004-primary.display-cue: PLUS-DETOX
-  commands.ocf-cmd-bod-006-primary.display-cue: PLUS-HEART-BETTER
+  commands.ocf-cmd-bod-006-primary.display-cue:
+    text: PLUS-HEART-FLOW
+    version: 1.1.0
+    status: reviewed
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
   commands.ocf-cmd-bod-003-primary.display-cue: PLUS-COMFORT
   commands.ocf-cmd-bod-014-primary.display-cue: PLUS-REGENERATE
   commands.ocf-cmd-bod-015-primary.display-cue: PLUS-NUMB
@@ -2195,19 +2209,39 @@ entries:
   commands.ocf-cmd-slp-002-primary.display-cue: PLUS-SLEEP
   commands.ocf-cmd-slp-003-primary.display-cue: PLUS-DREAM
   commands.ocf-cmd-slp-006-primary.display-cue: PLUS-AWAKE
-  commands.ocf-cmd-bod-005-primary.display-cue: PLUS-SATISFIED, SUPPLIED
-  commands.ocf-cmd-emg-001-primary.display-cue: PLUS-CONTROL, BALANCE, RESTORE
-  commands.ocf-cmd-emg-002-primary.display-cue: PLUS-CLEAR, REMOVE
+  commands.ocf-cmd-bod-005-primary.display-cue:
+    text: PLUS-SATISFIED
+    version: 1.1.0
+    status: reviewed
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
+  commands.ocf-cmd-emg-001-primary.display-cue:
+    text: PLUS-INJURY-RESPONSE
+    version: 1.1.0
+    status: reviewed
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
+  commands.ocf-cmd-emg-002-primary.display-cue:
+    text: PLUS-TOXIC-CLEAR
+    version: 1.1.0
+    status: reviewed
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
   commands.ocf-cmd-aut-001-primary.display-cue: PLUS-AUTOMATE
   commands.ocf-cmd-bod-007-primary.display-cue: PLUS-BALANCE BLOOD PRESSURE
   commands.ocf-cmd-bod-008-primary.display-cue: PLUS-IMMUNE READY
   commands.ocf-cmd-bod-011-primary.display-cue: PLUS-HORMONE BALANCE
-  commands.ocf-cmd-bod-013-primary.display-cue: PLUS-BALANCE, HEAL
+  commands.ocf-cmd-bod-013-primary.display-cue:
+    text: PLUS-TUNE-UP
+    version: 1.1.0
+    status: reviewed
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
   commands.ocf-cmd-cog-001-primary.display-cue: PLUS-ACCESS INFO
   commands.ocf-cmd-cog-002-primary.display-cue: PLUS-CALCULATE
   commands.ocf-cmd-fnd-003-primary.display-cue: PLUS-RECHARGE
   commands.ocf-cmd-lif-001-primary.display-cue: PLUS-FREE THIS HABIT
-  commands.ocf-cmd-prf-003-primary.display-cue: PLUS-SMOOTH, FAST
+  commands.ocf-cmd-prf-003-primary.display-cue:
+    text: PLUS-COORDINATE
+    version: 1.1.0
+    status: reviewed
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
   commands.ocf-cmd-sen-001-primary.display-cue: PLUS-HEAR MORE
   commands.ocf-cmd-sen-002-primary.display-cue: PLUS-SEE BETTER
   commands.ocf-cmd-sen-003-primary.display-cue: PLUS-SMELL MORE

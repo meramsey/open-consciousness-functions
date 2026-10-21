@@ -2,7 +2,7 @@
 # Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
 # {"function": "OCF-BOD-005", "title": "Appetite Choice", "locale": "en-US"}
 # English authority: functions/body/eat-no-eat.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-005-PRIMARY", "role": "activation", "display": "PLUS-SATISFIED, SUPPLIED", "spoken": "Plus Satisfied Supplied", "locale_definition": "commands.ocf-cmd-bod-005-primary.spoken-cue"}
+# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-005-PRIMARY", "role": "activation", "display": "PLUS-SATISFIED", "spoken": "Plus Satisfied", "locale_definition": "commands.ocf-cmd-bod-005-primary.spoken-cue"}
 # END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-BOD-005 — Eat/No Eat
@@ -45,7 +45,7 @@ entries:
 
   hplus.function.ocf-bod-005.function-body:
     status: reviewed
-    version: 1.2.0
+    version: 1.3.0
     notes: >-
       OCF-adapted narration based on the unverified Eat-No Eat
       transcript. Original SOURCE +Transcripts From available
@@ -170,7 +170,7 @@ entries:
       will continue strengthening every day.
   hplus.function.ocf-bod-005.closer:
     status: reviewed
-    version: 1.2.1
+    version: 1.3.0
     notes: >-
       OCF-adapted narration based on the unverified Eat-No Eat
       transcript. Original SOURCE +Transcripts From available

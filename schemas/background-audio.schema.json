@@ -74,6 +74,7 @@
       "properties": {
         "source": { "type": "string", "minLength": 1 },
         "format": { "type": ["string", "null"] },
+        "preserve_precision": { "type": "boolean", "description": "Decode an independent unspliced reference state directly to stereo 24-bit PCM; never normalize or modify its source." },
         "splices": {
           "type": "array",
           "items": {

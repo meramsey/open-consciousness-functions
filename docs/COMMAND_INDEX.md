@@ -8,11 +8,11 @@ Canonical command phrases are shown exactly as registered and are not translated
 | --- | --- | --- | --- | --- |
 | [Automatic Action](functions/OCF-AUT-001.md) | PLUS-AUTOMATE | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Brain Flow](functions/OCF-BOD-001.md) | PLUS-BRAIN FLOW | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
-| [Circulation](functions/OCF-BOD-002.md) | PLUS-FLOW SMOOTH | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
+| [Circulation](functions/OCF-BOD-002.md) | PLUS-CIRCULATE | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Comfort](functions/OCF-BOD-003.md) | PLUS-COMFORT | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Detox](functions/OCF-BOD-004.md) | PLUS-DETOX | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
-| [Appetite Choice](functions/OCF-BOD-005.md) | PLUS-SATISFIED, SUPPLIED | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
-| [Heart Flow](functions/OCF-BOD-006.md) | PLUS-HEART-BETTER | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
+| [Appetite Choice](functions/OCF-BOD-005.md) | PLUS-SATISFIED | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
+| [Heart Flow](functions/OCF-BOD-006.md) | PLUS-HEART-FLOW | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Blood Pressure Balance](functions/OCF-BOD-007.md) | PLUS-BALANCE BLOOD PRESSURE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Immune Readiness](functions/OCF-BOD-008.md) | PLUS-IMMUNE READY | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Breathe Better](functions/OCF-BOD-009.md) | PLUS-BREATHE BETTER | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
@@ -23,7 +23,7 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Sex Drive](functions/OCF-BOD-012.md) | PLUS-SEX LESS | Decrease mode | Use when you choose to decrease the selected function response. | Temporary |
 | [Sex Drive](functions/OCF-BOD-012.md) | PLUS-SEX GREATER | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
 | [Sex Drive](functions/OCF-BOD-012.md) | PLUS-SEX LESSER | Legacy compatibility phrase | Compatibility phrase retained by the registry; historical authentication is not implied. | Temporary |
-| [Body Tune-Up](functions/OCF-BOD-013.md) | PLUS-BALANCE, HEAL | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
+| [Body Tune-Up](functions/OCF-BOD-013.md) | PLUS-TUNE-UP | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Regenerate](functions/OCF-BOD-014.md) | PLUS-REGENERATE | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Temporary Numbing](functions/OCF-BOD-015.md) | PLUS-NUMB | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Temporary Numbing](functions/OCF-BOD-015.md) | PLUS-RELEASE | Release command | Ends the temporary numbing response; normal sensitivity returns while the learned ability remains available. | Temporary |
@@ -37,8 +37,8 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Recall](functions/OCF-COG-006.md) | PLUS-RECALL | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Think Fast](functions/OCF-COG-007.md) | PLUS-THINK | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Speak Up](functions/OCF-COM-001.md) | PLUS-SPEAK UP | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
-| [Injury Response](functions/OCF-EMG-001.md) | PLUS-CONTROL, BALANCE, RESTORE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
-| [Toxic Exposure Response](functions/OCF-EMG-002.md) | PLUS-CLEAR, REMOVE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
+| [Injury Response](functions/OCF-EMG-001.md) | PLUS-INJURY-RESPONSE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
+| [Toxic Exposure Response](functions/OCF-EMG-002.md) | PLUS-TOXIC-CLEAR | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Let Go](functions/OCF-EMO-001.md) | PLUS-LET GO | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Offload](functions/OCF-EMO-002.md) | PLUS-OFFLOAD | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Empathize](functions/OCF-EMO-003.md) | PLUS-EMPATHIZE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
@@ -53,7 +53,7 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Intuition](functions/OCF-EXP-006.md) | PLUS-INTUITION | Deliberate intuitive reinforcement | Bring one question or situation into awareness; think or say Plus Intuition in the mind; allow a quiet moment; consider and choose a response. | Permanent |
 | [Access to Energy](functions/OCF-FND-001.md) | PLUS-ENERGIZE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Access to Energy](functions/OCF-FND-001.md) | Plus Release Eleven Access | Access-channel close cue | Use to close the Access Channel; this cue is distinct from function activation. | Access channel (separate from function persistence) |
-| [Attention](functions/OCF-FND-002.md) | PLUS-FOCUS | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
+| [Focus](functions/OCF-FND-002.md) | PLUS-FOCUS | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Quick Recharge](functions/OCF-FND-003.md) | PLUS-RECHARGE | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Relax](functions/OCF-FND-004.md) | PLUS-RELAX | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Reset](functions/OCF-FND-005.md) | PLUS-RESET | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
@@ -61,7 +61,7 @@ Canonical command phrases are shown exactly as registered and are not translated
 | [Habit Freedom](functions/OCF-LIF-001.md) | PLUS-FREE THIS HABIT | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Do This Now](functions/OCF-PRF-001.md) | PLUS-DO-THIS-NOW | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Inner Power](functions/OCF-PRF-002.md) | PLUS-INNER POWER | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
-| [Coordination](functions/OCF-PRF-003.md) | PLUS-SMOOTH, FAST | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
+| [Coordination](functions/OCF-PRF-003.md) | PLUS-COORDINATE | Primary activation command | Use only when you choose to activate the documented function. | Permanent |
 | [Light Foot](functions/OCF-PRF-004.md) | PLUS-LIGHT STEP | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Make Your Day](functions/OCF-PRF-005.md) | PLUS-THIS DAY | Primary activation command | Use only when you choose to activate the documented function. | Temporary |
 | [Strong-Quick](functions/OCF-PRF-006.md) | PLUS-STRONG QUICK | Primary activation command | Use only when you choose to activate the documented function. | Temporary |

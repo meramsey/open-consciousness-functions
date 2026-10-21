@@ -107,6 +107,35 @@ def load_profile(reference: str | Path) -> dict:
     return data
 
 
+def dependency_identity(reference: str | Path) -> dict:
+    """Bind bulk resume to the selected profile, manifests and actual local sources."""
+    from .audio_build import _resolve_background_manifest
+
+    profile = load_profile(reference)
+    inputs = {}
+    for state, selection in profile["states"].items():
+        if selection["mode"] == "disabled":
+            continue
+        manifest = _resolve_background_manifest(selection["preset"])
+        if manifest is None:
+            raise OCFError("unknown background manifest: " + selection["preset"])
+        row = {"manifest": manifest, "sources": {}}
+        ref = manifest.get("reference") or {}
+        sources = [ref["source"]] if ref.get("source") else []
+        sources.extend(item["source"] for item in ref.get("splices", []))
+        preset = (manifest.get("preset") or {}).get("file")
+        if preset:
+            sources.append(preset)
+        for source in sources:
+            path = REPO_ROOT / source
+            row["sources"][source] = _sha(path)
+        expected = (manifest.get("provenance") or {}).get("reference_sha256")
+        if ref.get("source") and expected and row["sources"].get(ref["source"]) != expected:
+            raise OCFError("reference master checksum mismatch: " + ref["source"])
+        inputs[state] = row
+    return {"profile": profile, "inputs": inputs}
+
+
 def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: dict) -> dict:
     """Resolve required states and measured transition windows before synthesis."""
     errors = validate_against_schema(profile, _load_schema("semantic-dsp-profile.schema.json"))
@@ -288,6 +317,12 @@ def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: 
             "preset_file": (manifest.get("preset") or {}).get("file"),
             "provenance": manifest.get("provenance"),
         }
+        manifest_path = Path(choice["preset"]).expanduser()
+        if not manifest_path.is_absolute():
+            manifest_path = REPO_ROOT / manifest_path
+        if manifest_path.is_file():
+            selections[state]["manifest_reference"] = choice["preset"]
+            selections[state]["manifest_sha256"] = _sha(manifest_path)
         if selections[state]["preset_file"]:
             selections[state]["preset_sha256"] = _sha(REPO_ROOT / selections[state]["preset_file"])
     program = {
@@ -480,7 +515,7 @@ def render_program(
             from .audio_build import _render_background
 
             stem, note = _render_background(
-                selection["preset_id"],
+                selection.get("manifest_reference", selection["preset_id"]),
                 "required",
                 selection["backend"],
                 max_seconds=duration,

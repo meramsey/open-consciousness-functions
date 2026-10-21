@@ -709,7 +709,7 @@
         "audio",
         "render-many"
       ],
-      "usage": "usage: ocf audio render-many [-h] [--all] [--locale LOCALE] --voice VOICE\n                             [--pacing {normal,relaxed,sleep}] [--rate RATE]\n                             [--dry-run] [--resume] [--force]\n                             [function_ids ...]",
+      "usage": "usage: ocf audio render-many [-h] [--all] [--locale LOCALE] --voice VOICE\n                             [--pacing {normal,relaxed,sleep}] [--rate RATE]\n                             [--dsp-profile DSP_PROFILE] [--dry-run]\n                             [--resume] [--force]\n                             [function_ids ...]",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -1997,7 +1997,7 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "97abec6613db4d935dad39312fbb49a6f8f9b974cce8e76193a7374762f1bbb1",
+      "example_sha256": "105b7ae97261589558ef7e5ce13dd0176eaab9e3336811dff07bc1c1e2df5a34",
       "schema": "locale-resource.schema.json",
       "source": "locales/en-US/ui.yaml",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
@@ -2057,7 +2057,7 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "af17efbdf5ea575e16e6845bc0f4a47dd7e19e257966bbde7321d2f2a0a260a3",
+      "example_sha256": "f743f563caad8aefdb1dd162058081b0d89b2fa47c78ff969146526261f5a2bf",
       "schema": "session-plan.schema.json",
       "source": "audio/session-plans/en-US/OCF-FND-002.json",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
@@ -2108,9 +2108,9 @@
   "source_hashes": {
     "schemas/audio-implementation.schema.json": "8a785e8968d5c9cee2a2f1c5ad360e4d47c33dc71846ef6c73bec11af48c1899",
     "schemas/audio-release.schema.json": "66b708e5a7dc282557a5aa718b133940b45c1d34420183f5d421eb338b196a9a",
-    "schemas/audition-edition.schema.json": "727a5c8045ae6fc6ed645cceaa4b0cbbced2d6c0b23d9754ef2fd5c74b215ac1",
+    "schemas/audition-edition.schema.json": "8d4d036c4095310872fb637f18b389757ad4e860ea915624089e1707de56fe7a",
     "schemas/authoring-plan.schema.json": "1de8a1ac424fd28a154579132f6f29a99c8bda17ba140829445b02f8a00c0694",
-    "schemas/background-audio.schema.json": "3155cbc979820b16f746a0ff93a8c829a861134cfd334a59489dff6f92f44dca",
+    "schemas/background-audio.schema.json": "f5a99af7a55c482274f22598f5d39380a0368d91456b4c767c5f439c11793a73",
     "schemas/brand-import.schema.json": "e152f47e9e49daf1d118e9f2a61ecdcc8fe5429e7a9983bde534e255d3cdb801",
     "schemas/brand-refinement.schema.json": "45940b6ab35b0b087982e7096e1ea82548eceb09d9c9949bc839dfaa61822922",
     "schemas/brand.schema.json": "24bc85b77437021c01e20b60442c796e2faf55dd6f6e1f68341f955f4837f3c1",
@@ -2153,7 +2153,7 @@
     "schemas/voice-dataset.schema.json": "0307327f3f52eeaaaed71abaa6d1950c0b665fc677b43547e2452e9c31000ed8",
     "schemas/voice-profile.schema.json": "0204c3379a0540d22e3792ee5b78ad134bd2a8cb73ddf51c975a602dbcb2c23d",
     "scripts/ocf_tools/agent_api.py": "d857d7ac1b9e118ba9a5614b1b86d16265b6fd6a6ac766d2a14099be8b7e7715",
-    "scripts/ocf_tools/cli.py": "942e2f57ad2f40ac0204dfd7866e272018eeb43fa9a7e4b792d084864b891310",
+    "scripts/ocf_tools/cli.py": "707221d609c7397e3a23ca57c2743be8b10e3ac494d89a5816e0561d5b2619f6",
     "scripts/ocf_tools/lsp_server.py": "a753b91b1b73609ecd6886470a037a9bbf1259e2a77f08203546e55ef4cbae09",
     "scripts/ocf_tools/mcp_server.py": "d8641d4160888abbe7152fca2117623de4dfb061793b95b161dbfb4534a2be54",
     "scripts/ocf_tools/narration_cli.py": "5f13a05251816e5d3b80419d9ed67184b5c6c48722175700bbc88ec2b429bd41",

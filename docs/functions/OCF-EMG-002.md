@@ -20,7 +20,7 @@ Source availability does not establish historical authentication or provenance.
 - **Individual invocation / application** (`temporary`, `manual`): Optional manual reinforcement when conscious and able.
 - **Conditional response episode** (`temporary`, `conditional`): The narrated exposure response operates only as strongly and for as long as needed for the actual substance and exposure.
 
-## PLUS-CLEAR, REMOVE
+## PLUS-TOXIC-CLEAR
 
 ### Primary activation command
 

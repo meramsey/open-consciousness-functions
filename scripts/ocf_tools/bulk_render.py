@@ -48,7 +48,11 @@ def render_many(
     force: bool = False,
     resume: bool = True,
     sample_rate: int = 44100,
+    dsp_profile: str | None = None,
 ) -> dict:
+    from .semantic_dsp import dependency_identity
+
+    dsp_identity = dependency_identity(dsp_profile) if dsp_profile else None
     ids = sorted(
         set(function_ids if function_ids is not None else [r.id for r in load_all_functions()])
     )
@@ -61,6 +65,12 @@ def render_many(
         try:
             plan, shared, _ = source_plan(owner, locale)
             if dry_run:
+                if dsp_profile:
+                    from .complete_session import build_complete_session_plan
+
+                    build_complete_session_plan(
+                        owner, locale=locale, pacing=pacing, dsp_profile=dsp_profile
+                    )
                 statuses.append(
                     {"function_id": owner, "status": "planned", "plan_sha256": digest(plan)}
                 )
@@ -83,6 +93,8 @@ def render_many(
                     )
                 },
             }
+            if dsp_identity is not None:
+                identity["dsp_override"] = dsp_identity
             key = digest(identity)
             receipt_path = work_path("cache", "bulk-renders", key + ".json")
             previous = {}
@@ -102,7 +114,12 @@ def render_many(
                     continue
             with enabled(not force):
                 result = render_complete_session(
-                    owner, locale=locale, voice=voice, pacing=pacing, sample_rate=sample_rate
+                    owner,
+                    locale=locale,
+                    voice=voice,
+                    pacing=pacing,
+                    sample_rate=sample_rate,
+                    **({"dsp_profile": dsp_profile} if dsp_profile else {}),
                 )
             root = Path(result["output_directory"])
             receipt = {

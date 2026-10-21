@@ -70,7 +70,7 @@ def test_protocol_capabilities_diagnostics_completions_navigation_and_preview(cl
     completion = rpc.request("textDocument/completion", params)
     assert "OCF-FND-002" in {item["label"] for item in completion["result"]["items"]}
     hover = rpc.request("textDocument/hover", params)
-    assert "Attention" in hover["result"]["contents"]["value"]
+    assert "Focus" in hover["result"]["contents"]["value"]
     definitions = rpc.request("textDocument/definition", params)
     assert definitions["result"][0]["uri"].endswith("functions/foundation/focus.yaml")
     references = rpc.request(

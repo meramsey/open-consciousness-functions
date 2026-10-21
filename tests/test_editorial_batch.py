@@ -77,6 +77,7 @@ def test_all_28_approvals_preserve_procedures_controls_and_deferred_metadata():
     assert len(ledger["decisions"]) == 28
     assert len(ledger["allowed_text_changes"]) == 41
     assert successors.verify() == []
+    from ocf_tools.command_simplification import PAIRS
     from ocf_tools.options_successor import before_texts
 
     texts = before_texts(REPO_ROOT, narration_texts())
@@ -101,9 +102,12 @@ def test_all_28_approvals_preserve_procedures_controls_and_deferred_metadata():
     for decision in ledger["decisions"]:
         owner = owners[decision["function_id"]]
         old = yaml.safe_load(ledger["predecessor_files"][decision["function_file"]])
-        assert owner.canonical_name == decision["current_title"]
-        assert owner.canonical_command == decision["display_cue"]
-        assert cue_presentation(owner, strict=True)["spoken_cue"] == decision["spoken_cue"]
+        selected = PAIRS.get(owner.id)
+        assert owner.canonical_name == (selected[0] if selected else decision["current_title"])
+        assert owner.canonical_command == (selected[1] if selected else decision["display_cue"])
+        assert cue_presentation(owner, strict=True)["spoken_cue"] == (
+            selected[3] if selected else decision["spoken_cue"]
+        )
         # These are intentionally outside every naming approval, including known mismatches.
         for field in (
             "legacy",
@@ -200,7 +204,10 @@ def test_all_28_approvals_preserve_procedures_controls_and_deferred_metadata():
                     for segment in plan["segments"]
                     if segment["resource_key"] == key and segment["playback"] == playback
                 )
-                assert speech == texts[decision["narration_file"] + "::" + key]
+                expected_speech = texts[decision["narration_file"] + "::" + key]
+                if selected:
+                    expected_speech = expected_speech.replace(selected[2], selected[3])
+                assert speech == expected_speech
                 assert "{{" not in speech
     # Frozen shared/pilot resources fall outside the batch's two allowed resource roles.
     assert all(
@@ -208,11 +215,12 @@ def test_all_28_approvals_preserve_procedures_controls_and_deferred_metadata():
         for row in ledger["allowed_text_changes"]
     )
     assert owners["OCF-BOD-006"].canonical_name == "Heart Flow"
-    assert cue_presentation(owners["OCF-BOD-006"], strict=True)["spoken_cue"] == "Plus Heart Better"
+    assert cue_presentation(owners["OCF-BOD-006"], strict=True)["spoken_cue"] == "Plus Heart Flow"
 
 
 @pytest.mark.integration
 def test_keep_decisions_and_historical_lookup_are_distinct_from_activation():
+    from ocf_tools.command_simplification import PAIRS
     from ocf_tools.indexes import load_function_by_id
     from ocf_tools.vocabulary import lookup
     from tools.current_title_cues import build
@@ -270,8 +278,11 @@ def test_keep_decisions_and_historical_lookup_are_distinct_from_activation():
             item = next(
                 item for item in lookup(prior) if item["function_id"] == decision["function_id"]
             )
-            assert item["title"] == decision["current_title"]
-            assert item["cue"]["spoken_cue"] == decision["spoken_cue"]
+            selected = PAIRS.get(decision["function_id"])
+            assert item["title"] == (selected[0] if selected else decision["current_title"])
+            assert item["cue"]["spoken_cue"] == (
+                selected[3] if selected else decision["spoken_cue"]
+            )
             assert item["activation_selected"] is False
 
 

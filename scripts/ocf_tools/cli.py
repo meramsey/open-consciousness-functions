@@ -379,6 +379,9 @@ def _build_parser() -> argparse.ArgumentParser:
     bulk_cmd.add_argument("--voice", required=True)
     bulk_cmd.add_argument("--pacing", choices=["normal", "relaxed", "sleep"], default="sleep")
     bulk_cmd.add_argument("--rate", type=int, default=44100)
+    bulk_cmd.add_argument(
+        "--dsp-profile", help="Explicit semantic DSP profile ID or local YAML path"
+    )
     bulk_cmd.add_argument("--dry-run", action="store_true")
     bulk_cmd.add_argument(
         "--resume",
@@ -1604,6 +1607,7 @@ def main(argv: list[str] | None = None) -> int:
                     force=args.force,
                     resume=args.resume,
                     sample_rate=args.rate,
+                    dsp_profile=args.dsp_profile,
                 )
                 print(json.dumps(result, ensure_ascii=False, indent=2))
                 return 1 if result["failed"] else 0

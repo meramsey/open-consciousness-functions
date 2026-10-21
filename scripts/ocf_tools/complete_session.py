@@ -1029,7 +1029,7 @@ def render_complete_session(
         raise OCFError(f"cannot create session audition staging directory: {exc}") from exc
 
     try:
-        if options:
+        if options or dsp_profile:
             resolved_dsp_path = stage / "resolved-dsp.yaml"
             resolved_dsp_path.write_text(
                 yaml_safe_dump(session_plan["resolved_dsp_profile"]), encoding="utf-8"
@@ -1200,6 +1200,11 @@ def render_complete_session(
             "render_type": "complete-session-audition",
             "function_id": function_id,
             "audio_implementation_id": None,
+            **(
+                {"background_variant": session_plan["resolved_dsp_profile"]["id"]}
+                if dsp_profile
+                else {}
+            ),
             "title": tts_plan["title"],
             "requested_locale": tts_plan["requested_locale"],
             "voice_profile": tts_plan["voice_profile"],

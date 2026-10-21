@@ -2,7 +2,7 @@
 # Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
 # {"function": "OCF-BOD-006", "title": "Heart Flow", "locale": "en-US"}
 # English authority: functions/body/heart-repairs.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-006-PRIMARY", "role": "activation", "display": "PLUS-HEART-BETTER", "spoken": "Plus Heart Better", "locale_definition": "commands.ocf-cmd-bod-006-primary.spoken-cue"}
+# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-006-PRIMARY", "role": "activation", "display": "PLUS-HEART-FLOW", "spoken": "Plus Heart Flow", "locale_definition": "commands.ocf-cmd-bod-006-primary.spoken-cue"}
 # END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # Editorial successor OCF-EDITORIAL-TITLE-CUES-001: prior cue-preservation notes describe predecessor versions; only approved title/cue substitutions changed.
@@ -46,7 +46,7 @@ entries:
 
   hplus.function.ocf-bod-006.function-body:
     status: reviewed
-    version: 1.2.1
+    version: 1.3.0
     notes: >-
       OCF-adapted narration based on the unverified Heart Support
       and Maintenance transcript. Original SOURCE +Transcripts From
@@ -251,7 +251,7 @@ entries:
 
   hplus.function.ocf-bod-006.closer:
     status: reviewed
-    version: 1.2.2
+    version: 1.3.0
     notes: >-
       OCF-authored closer revised from previously approved
       user-supplied wording. The historical Heart Support

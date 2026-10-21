@@ -24,6 +24,17 @@ Translator context: Brain/neck circulation support and maintenance; not generic 
 
 Review: English primary cue approved and implemented. Preserve controls/procedures. Other language terminology and prefix treatment require review.
 
+## OCF-BOD-002 / OCF-CMD-BOD-002-PRIMARY
+
+Title: Circulation. Title status: UNCHANGED.
+Display: `PLUS-CIRCULATE`. Complete speech: **Plus Circulate**.
+
+Promotes a felt sense of smooth, comfortable circulation.
+
+Translator context: Explicit twelve-decision approval; English presentation only. Preserve procedures, lifecycle and historical vocabulary. Other locales require separate review.
+
+Review: English primary cue approved and implemented. Preserve controls/procedures. Other language terminology and prefix treatment require review.
+
 ## OCF-BOD-003 / OCF-CMD-BOD-003-PRIMARY
 
 Title: Comfort. Title status: APPROVED AND IMPLEMENTED.
@@ -48,23 +59,23 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 
 ## OCF-BOD-005 / OCF-CMD-BOD-005-PRIMARY
 
-Title: Appetite Choice. Title status: APPROVED AND IMPLEMENTED.
-Display: `PLUS-SATISFIED, SUPPLIED`. Complete speech: **Plus Satisfied Supplied**.
+Title: Appetite Choice. Title status: UNCHANGED.
+Display: `PLUS-SATISFIED`. Complete speech: **Plus Satisfied**.
 
 Supports deliberate eating choices and release of unnecessary cravings while preserving awareness of genuine nutritional needs.
 
-Translator context: Change title from Eat/No Eat to Appetite Choice and update exercise sign-off. Keep complete display and spoken cue unchanged. Preserve breathing sequence, automatic reinforcement, genuine nutritional need recognition and freedom to eat when chosen. Retain Eat/No Eat as historical lookup. Satisfied Supplied remains one complete cue; introduce no separate appetite-increase or appetite-decrease mode.
+Translator context: Explicit twelve-decision approval; English presentation only. Preserve procedures, lifecycle and historical vocabulary. Other locales require separate review.
 
 Review: English primary cue approved and implemented. Preserve controls/procedures. Other language terminology and prefix treatment require review.
 
 ## OCF-BOD-006 / OCF-CMD-BOD-006-PRIMARY
 
-Title: Heart Flow. Title status: APPROVED AND IMPLEMENTED.
-Display: `PLUS-HEART-BETTER`. Complete speech: **Plus Heart Better**.
+Title: Heart Flow. Title status: UNCHANGED.
+Display: `PLUS-HEART-FLOW`. Complete speech: **Plus Heart Flow**.
 
 Self-directed wellness practice supporting a felt sense of calm, steady heart function.
 
-Translator context: Finalize previously tentative title Heart Flow, replacing Heart: Repairs & Maintenance and updating exercise sign-off. Keep already-approved display PLUS-HEART-BETTER and spoken Plus Heart Better unchanged; do not restore the historical second Better. Preserve full heart muscle, vessel, circulation, rhythm, coordination, maintenance and renewal scope, lasting automatic pattern, optional reinforcement and breathing sequence. Retain former title as historical lookup; introduce no mode or release.
+Translator context: Explicit twelve-decision approval; English presentation only. Preserve procedures, lifecycle and historical vocabulary. Other locales require separate review.
 
 Review: English primary cue approved and implemented. Preserve controls/procedures. Other language terminology and prefix treatment require review.
 
@@ -114,12 +125,12 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 
 ## OCF-BOD-013 / OCF-CMD-BOD-013-PRIMARY
 
-Title: Body Tune-Up. Title status: APPROVED AND IMPLEMENTED.
-Display: `PLUS-BALANCE, HEAL`. Complete speech: **Plus Balance Heal**.
+Title: Body Tune-Up. Title status: UNCHANGED.
+Display: `PLUS-TUNE-UP`. Complete speech: **Plus Tune Up**.
 
 A general self-directed balance-and-heal tune-up practice.
 
-Translator context: Change title from Tune-Up to Body Tune-Up and update exercise sign-off. Keep display and spoken cue unchanged. Preserve selected-area inward attention, close eyes/inhale/hold/complete cue/slow mouth exhale/open eyes sequence and surrounding automatic whole-body maintenance, repair and renewal suggestions. Retain Tune-Up as historical lookup. Balance Heal remains one complete cue, not separate modes.
+Translator context: Explicit twelve-decision approval; English presentation only. Preserve procedures, lifecycle and historical vocabulary. Other locales require separate review.
 
 Review: English primary cue approved and implemented. Preserve controls/procedures. Other language terminology and prefix treatment require review.
 
@@ -191,23 +202,23 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 
 ## OCF-EMG-001 / OCF-CMD-EMG-001-PRIMARY
 
-Title: Injury Response. Title status: APPROVED AND IMPLEMENTED.
-Display: `PLUS-CONTROL, BALANCE, RESTORE`. Complete speech: **Plus Control Balance Restore**.
+Title: Injury Response. Title status: UNCHANGED.
+Display: `PLUS-INJURY-RESPONSE`. Complete speech: **Plus Injury Response**.
 
 Emergency-oriented practice to stay calm and take helpful action. Does NOT replace emergency services, first aid, or professional care.
 
-Translator context: Change title from Emergency: Injury to Injury Response and update exercise sign-off. Keep display and spoken cue unchanged. Preserve inhale/hold/complete cue/slow mouth exhale and surrounding protection, balance, healing and restoration suggestions. Retain Emergency: Injury as historical lookup. Control Balance Restore remains one ordered cue, not three modes.
+Translator context: Explicit twelve-decision approval; English presentation only. Preserve procedures, lifecycle and historical vocabulary. Other locales require separate review.
 
 Review: English primary cue approved and implemented. Preserve controls/procedures. Other language terminology and prefix treatment require review.
 
 ## OCF-EMG-002 / OCF-CMD-EMG-002-PRIMARY
 
-Title: Toxic Exposure Response. Title status: APPROVED AND IMPLEMENTED.
-Display: `PLUS-CLEAR, REMOVE`. Complete speech: **Plus Clear Remove**.
+Title: Toxic Exposure Response. Title status: UNCHANGED.
+Display: `PLUS-TOXIC-CLEAR`. Complete speech: **Plus Toxic Clear**.
 
 Emergency-oriented practice for toxic-exposure situations. Does NOT replace poison control, emergency services, or medical evaluation.
 
-Translator context: Change title from Emergency: Toxic to Toxic Exposure Response and update exercise sign-off. Keep display and spoken cue unchanged. Preserve inhale/hold/complete cue/slow mouth exhale and surrounding physical harmful-exposure response suggestions. Retain Emergency: Toxic as historical lookup. Clear Remove remains one complete cue, not separate modes. Preserve historical source-unavailable reconstruction status.
+Translator context: Explicit twelve-decision approval; English presentation only. Preserve procedures, lifecycle and historical vocabulary. Other locales require separate review.
 
 Review: English primary cue approved and implemented. Preserve controls/procedures. Other language terminology and prefix treatment require review.
 
@@ -252,6 +263,17 @@ Display: `PLUS-INSULATE`. Complete speech: **Plus Insulate**.
 Establishes an adjustable whole-body zone of temperature comfort; Cancel ends the current adjustment and Release places the selected application on hold.
 
 Translator context: Temperature-comfort scope. Cancel ends the current adjustment; Release puts the selected application on hold. Preserve both operations.
+
+Review: English primary cue approved and implemented. Preserve controls/procedures. Other language terminology and prefix treatment require review.
+
+## OCF-FND-002 / OCF-CMD-FND-002-PRIMARY
+
+Title: Focus. Title status: APPROVED.
+Display: `PLUS-FOCUS`. Complete speech: **Plus Focus**.
+
+Directs and sustains focused attention.
+
+Translator context: Explicit twelve-decision approval; English presentation only. Preserve procedures, lifecycle and historical vocabulary. Other locales require separate review.
 
 Review: English primary cue approved and implemented. Preserve controls/procedures. Other language terminology and prefix treatment require review.
 
@@ -312,12 +334,12 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 
 ## OCF-PRF-003 / OCF-CMD-PRF-003-PRIMARY
 
-Title: Coordination. Title status: APPROVED AND IMPLEMENTED.
-Display: `PLUS-SMOOTH, FAST`. Complete speech: **Plus Smooth Fast**.
+Title: Coordination. Title status: UNCHANGED.
+Display: `PLUS-COORDINATE`. Complete speech: **Plus Coordinate**.
 
 Aligns and smooths internal rhythms toward feeling faster and steadier.
 
-Translator context: Change title from Synchronizing to Coordination and update exercise sign-off. Keep display and spoken cue unchanged. Preserve automatic everyday improvement, optional conscious reinforcement, mind/nervous-system/muscle coordination, balance, precision, timing and inhale/hold/cue/candle-like exhale. Retain Synchronizing as historical lookup. Smooth Fast remains one complete cue, not separate modes. Preserve quick responses when needed and steady precision when careful control is needed, with speed coordinated with intention and accuracy.
+Translator context: Explicit twelve-decision approval; English presentation only. Preserve procedures, lifecycle and historical vocabulary. Other locales require separate review.
 
 Review: English primary cue approved and implemented. Preserve controls/procedures. Other language terminology and prefix treatment require review.
 

@@ -97,6 +97,34 @@ def test_bulk_resume_verifies_artifacts_force_preserves_history_and_failure_cont
     (outputs[1] / "master.wav").write_bytes(b"corrupt")
     bulk_render.render_many(["ok"], voice="fixture")
     assert len(outputs) == 3
+    from ocf_tools import semantic_dsp
+
+    dependencies = {"profile": "reference-v4", "source_sha256": "first-source"}
+    monkeypatch.setattr(semantic_dsp, "dependency_identity", lambda _: dict(dependencies))
+    selected = []
+
+    def render_override(owner, **kwargs):
+        selected.append(kwargs["dsp_profile"])
+        return render(owner, **kwargs)
+
+    monkeypatch.setattr(bulk_render, "render_complete_session", render_override)
+    overridden = bulk_render.render_many(["ok"], voice="fixture", dsp_profile="private.yaml")
+    assert overridden["results"][0]["status"] == "rendered"
+    assert selected == ["private.yaml"]
+    assert (
+        bulk_render.render_many(["ok"], voice="fixture", dsp_profile="private.yaml")["results"][0][
+            "status"
+        ]
+        == "skipped-verified"
+    )
+    dependencies["source_sha256"] = "changed-source"
+    assert (
+        bulk_render.render_many(["ok"], voice="fixture", dsp_profile="private.yaml")["results"][0][
+            "status"
+        ]
+        == "rendered"
+    )
+    assert len(outputs) == 5
 
 
 @pytest.mark.unit

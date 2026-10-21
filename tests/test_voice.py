@@ -641,8 +641,8 @@ class TestAudioBuild:
         flac_tagset = calls[0]["tags"]
         assert flac_tagset["title"] == "Multi-format build"
         assert flac_tagset["artist"] == "Override Artist"
-        assert flac_tagset["album"] == "Attention"
-        assert flac_tagset["OCF_FUNCTION"] == "Attention"
+        assert flac_tagset["album"] == "Focus"
+        assert flac_tagset["OCF_FUNCTION"] == "Focus"
         assert "OCF_AUDIO_ID" in flac_tagset
         assert "OCF_AUDIO_VERSION" in flac_tagset
         assert "citation-only" in flac_tagset["comment"]

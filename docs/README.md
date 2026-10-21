@@ -8,6 +8,7 @@ loading the entire documentation tree:
 - Review current titles/cues and historical lookup: [implemented decisions](EDITORIAL_REVIEW.md).
 - Review new original drafts and the Manifest successor: [editorial candidates](EDITORIAL_CANDIDATES.md).
 - Inspect the implemented four-function approval: [batch successor](EDITORIAL_BATCH_APPROVAL.md).
+- Inspect the twelve confirmed cue/artwork decisions: [command simplification](COMMAND_SIMPLIFICATION.md).
 - Review functional purpose, persistence and triggers: [functional metadata](FUNCTIONAL_METADATA.md).
 - Author symbolic narration and preview resolved speech: [strict cue references](SYMBOLIC_CUES.md).
 - Translate: [localization](LOCALIZATION.md) and [locale packs](../locales/README.md).

@@ -71,6 +71,9 @@ def record(root=REPO_ROOT):
 
 
 def predecessor(root, name, text):
+    from .command_simplification import predecessor as before_simplification
+
+    text = before_simplification(root, name, text)
     data = record(root)
     row = data["files"].get(name) if data else None
     if row is None:
@@ -85,6 +88,9 @@ def predecessor(root, name, text):
 
 
 def before_texts(root, texts):
+    from .command_simplification import before_texts as before_simplification
+
+    texts = before_simplification(root, texts)
     data = record(root)
     result = dict(texts)
     for identity, row in data["speech"].items() if data else []:
@@ -119,11 +125,16 @@ def verify(root=REPO_ROOT):
     for name, row in data["files"].items():
         predecessor(root, name, (root / name).read_text(encoding="utf-8"))
     for name, checksum in data["immutable_files"].items():
-        if sha((root / name).read_text(encoding="utf-8")) != checksum:
+        from .command_simplification import predecessor as before_simplification_file
+
+        current = before_simplification_file(root, name, (root / name).read_text(encoding="utf-8"))
+        if sha(current) != checksum:
             raise OCFError("immutable approval predecessor changed: " + name)
-    texts = narration_texts(root)
+    from .command_simplification import before_texts as before_simplification
+
+    texts = before_simplification(root, narration_texts(root))
     previous = json.loads((root / data["previous_baseline"]).read_text(encoding="utf-8"))
-    if text_fingerprints(before_texts(root, texts)) != previous:
+    if text_fingerprints(before_texts(root, narration_texts(root))) != previous:
         raise OCFError("candidate approval changed unrelated protected narration")
     if text_fingerprints(texts) != json.loads((root / BASELINE).read_text(encoding="utf-8")):
         raise OCFError("candidate approval baseline drift")

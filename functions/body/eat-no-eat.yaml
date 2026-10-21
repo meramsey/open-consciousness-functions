@@ -18,7 +18,7 @@ canonical:
   command:
     modes: []
     mode_ids: []
-    primary: PLUS-SATISFIED, SUPPLIED
+    primary: PLUS-SATISFIED
   name: Appetite Choice
 commands:
 - id: OCF-CMD-BOD-005-PRIMARY
@@ -48,7 +48,7 @@ commands:
       operation: select-intention
       localization_key: command.procedure.select-intention
   relationships: {}
-  spoken: Plus Satisfied Supplied
+  spoken: Plus Satisfied
   spoken_review: reviewed
   invocation_scope_ref: lifecycle.scopes.application
 chains: []
@@ -62,7 +62,9 @@ classification:
   - lifestyle
 companions: []
 compatibility:
-  state: unchanged
+  state: historical-lookup
+  rationale: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording remains
+    historical lookup.
 contributor:
   contact: null
   name: null
@@ -154,3 +156,11 @@ historical_lookup:
 - text: Eat/No Eat
   kind: former-title
   decision: OCF-EDITORIAL-TITLE-CUES-004
+- text: PLUS-SATISFIED, SUPPLIED
+  kind: former-primary
+  decision: OCF-COMMAND-SIMPLIFICATION-001
+  command_id: OCF-CMD-BOD-005-PRIMARY
+- text: Plus Satisfied Supplied
+  kind: former-teaching
+  decision: OCF-COMMAND-SIMPLIFICATION-001
+  command_id: OCF-CMD-BOD-005-PRIMARY

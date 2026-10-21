@@ -4,18 +4,18 @@ Only explicitly approved substitutions were applied. Every affected entry's befo
 
 - OCF-AUT-001: `PLUS-AUTOMATE` / Plus Automate; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-BOD-001: `PLUS-BRAIN FLOW` / Plus Brain Flow; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-BOD-002: `PLUS-FLOW SMOOTH` / Plus Flow Smooth; metadata match True; Predecessor contextual review; unchanged protected text verified.
+- OCF-BOD-002: `PLUS-CIRCULATE` / Plus Circulate; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-BOD-003: `PLUS-COMFORT` / Plus Comfort; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-BOD-004: `PLUS-DETOX` / Plus Detox; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-BOD-005: `PLUS-SATISFIED, SUPPLIED` / Plus Satisfied Supplied; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-BOD-006: `PLUS-HEART-BETTER` / Plus Heart Better; metadata match True; Approved exact substitutions, verified against immutable predecessor.
+- OCF-BOD-005: `PLUS-SATISFIED` / Plus Satisfied; metadata match True; Approved exact substitutions, verified against immutable predecessor.
+- OCF-BOD-006: `PLUS-HEART-FLOW` / Plus Heart Flow; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-BOD-007: `PLUS-BALANCE BLOOD PRESSURE` / Plus Balance Blood Pressure; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-BOD-008: `PLUS-IMMUNE READY` / Plus Immune Ready; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-BOD-009: `PLUS-BREATHE BETTER` / Plus Breathe Better; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-BOD-010: `PLUS-FOOD MORE` / Plus Food More; metadata match True; Predecessor contextual review; unchanged protected text verified.
 - OCF-BOD-011: `PLUS-HORMONE BALANCE` / Plus Hormone Balance; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-BOD-012: `PLUS-SEX MORE` / Plus Sex More; metadata match True; Predecessor contextual review; unchanged protected text verified.
-- OCF-BOD-013: `PLUS-BALANCE, HEAL` / Plus Balance Heal; metadata match True; Approved exact substitutions, verified against immutable predecessor.
+- OCF-BOD-013: `PLUS-TUNE-UP` / Plus Tune Up; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-BOD-014: `PLUS-REGENERATE` / Plus Regenerate; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-BOD-015: `PLUS-NUMB` / Plus Numb; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-COG-001: `PLUS-ACCESS INFO` / Plus Access Info; metadata match True; Approved exact substitutions, verified against immutable predecessor.
@@ -26,8 +26,8 @@ Only explicitly approved substitutions were applied. Every affected entry's befo
 - OCF-COG-006: `PLUS-RECALL` / Plus Recall; metadata match True; Predecessor contextual review; unchanged protected text verified.
 - OCF-COG-007: `PLUS-THINK` / Plus Think; metadata match True; Predecessor contextual review; unchanged protected text verified.
 - OCF-COM-001: `PLUS-SPEAK UP` / Plus Speak Up; metadata match True; Predecessor contextual review; unchanged protected text verified.
-- OCF-EMG-001: `PLUS-CONTROL, BALANCE, RESTORE` / Plus Control Balance Restore; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-EMG-002: `PLUS-CLEAR, REMOVE` / Plus Clear Remove; metadata match True; Approved exact substitutions, verified against immutable predecessor.
+- OCF-EMG-001: `PLUS-INJURY-RESPONSE` / Plus Injury Response; metadata match True; Approved exact substitutions, verified against immutable predecessor.
+- OCF-EMG-002: `PLUS-TOXIC-CLEAR` / Plus Toxic Clear; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-EMO-001: `PLUS-LET GO` / Plus Let Go; metadata match True; Predecessor contextual review; unchanged protected text verified.
 - OCF-EMO-002: `PLUS-OFFLOAD` / Plus Offload; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-EMO-003: `PLUS-EMPATHIZE` / Plus Empathize; metadata match True; Approved exact substitutions, verified against immutable predecessor.
@@ -37,7 +37,7 @@ Only explicitly approved substitutions were applied. Every affected entry's befo
 - OCF-EXP-005: `PLUS-CLEAR ZONE` / Plus Clear Zone; metadata match True; Explicit full candidate approval OCF-APPROVED-CANDIDATES-001; exact presented narration preserved.
 - OCF-EXP-006: `PLUS-INTUITION` / Plus Intuition; metadata match True; Explicit full candidate approval OCF-APPROVED-CANDIDATES-001; exact presented narration preserved.
 - OCF-FND-001: `PLUS-ENERGIZE` / Plus Energize; metadata match True; Predecessor contextual review; unchanged protected text verified.
-- OCF-FND-002: `PLUS-FOCUS` / Plus Focus; metadata match True; Predecessor contextual review; unchanged protected text verified.
+- OCF-FND-002: `PLUS-FOCUS` / Plus Focus; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-FND-003: `PLUS-RECHARGE` / Plus Recharge; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-FND-004: `PLUS-RELAX` / Plus Relax; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-FND-005: `PLUS-RESET` / Plus Reset; metadata match True; Approved exact substitutions, verified against immutable predecessor.
@@ -45,7 +45,7 @@ Only explicitly approved substitutions were applied. Every affected entry's befo
 - OCF-LIF-001: `PLUS-FREE THIS HABIT` / Plus Free This Habit; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-PRF-001: `PLUS-DO-THIS-NOW` / Plus Do This Now; metadata match True; Predecessor contextual review; unchanged protected text verified.
 - OCF-PRF-002: `PLUS-INNER POWER` / Plus Inner Power; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-PRF-003: `PLUS-SMOOTH, FAST` / Plus Smooth Fast; metadata match True; Approved exact substitutions, verified against immutable predecessor.
+- OCF-PRF-003: `PLUS-COORDINATE` / Plus Coordinate; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-PRF-004: `PLUS-LIGHT STEP` / Plus Light Step; metadata match True; Approved exact substitutions, verified against immutable predecessor.
 - OCF-PRF-005: `PLUS-THIS DAY` / Plus This Day; metadata match True; Predecessor contextual review; unchanged protected text verified.
 - OCF-PRF-006: `PLUS-STRONG QUICK` / Plus Strong Quick; metadata match True; Predecessor contextual review; unchanged protected text verified.

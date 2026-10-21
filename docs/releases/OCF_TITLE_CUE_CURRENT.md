@@ -1,12 +1,12 @@
 # Current title–cue decisions and implementation
 
-Decision: `OCF-OPTIONS-001`. Predecessor commit: `e4226aac3feac72d62049314f807175175717a48`.
+Decision: `OCF-COMMAND-SIMPLIFICATION-001`. Predecessor commit: `8ec5b0395c7a5c05fa629d64297d3bf048b097f9`.
 
 Current approved successor. Earlier source-pinned proposals remain immutable history; this is not a repin or blanket approval of them.
 
 Approved source: explicit user decisions recorded in the versioned title–cue ledgers. Approval covers primary English vocabulary and scoped teaching edits, not other proposals, mechanisms, listening or release. Heart Flow remains tentative; the committed heart title is retained.
 
-Counts: {"active_records": 83, "allowlisted_text_changes": 68, "approved_candidate_narrations": 4, "approved_cues_implemented": 41, "functions": 58, "historical_only_command_records": 19, "protected_entries": 177, "remaining_metadata_teaching_differences": 0, "stable_primary_identities": 58, "structured_command_identities": 102}.
+Counts: {"active_records": 83, "allowlisted_text_changes": 83, "approved_candidate_narrations": 4, "approved_cues_implemented": 43, "functions": 58, "historical_only_command_records": 19, "protected_entries": 177, "remaining_metadata_teaching_differences": 0, "stable_primary_identities": 58, "structured_command_identities": 102}.
 
 ## Approved implementation and remaining catalog decisions
 
@@ -32,11 +32,13 @@ Previous values: Brain: Repairs & Maintenance / `PLUS-FLOW BETTER`; complete tea
 
 ### OCF-BOD-002 — Circulation
 
-- Current display cue: `PLUS-FLOW SMOOTH`; complete teaching: **Plus Flow Smooth**.
-- Status: EXISTING PAIR RETAINED; title: UNCHANGED.
+- Current display cue: `PLUS-CIRCULATE`; complete teaching: **Plus Circulate**.
+- Status: APPROVED AND IMPLEMENTED; title: UNCHANGED.
 - Purpose: Promotes a felt sense of smooth, comfortable circulation.
 - Pending title: None.
-- Other unselected proposal: {"title": "Circulation", "cue": "PLUS-FLOW SMOOTH"}
+- Other unselected proposal: null
+
+Previous values: Circulation / `PLUS-FLOW SMOOTH`; complete teaching **Plus Flow Smooth**.
 
 ### OCF-BOD-003 — Comfort
 
@@ -60,23 +62,23 @@ Previous values: De-Tox: Body / `PLUS-DETOX`; complete teaching **Plus Clean Cle
 
 ### OCF-BOD-005 — Appetite Choice
 
-- Current display cue: `PLUS-SATISFIED, SUPPLIED`; complete teaching: **Plus Satisfied Supplied**.
-- Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
+- Current display cue: `PLUS-SATISFIED`; complete teaching: **Plus Satisfied**.
+- Status: APPROVED AND IMPLEMENTED; title: UNCHANGED.
 - Purpose: Supports deliberate eating choices and release of unnecessary cravings while preserving awareness of genuine nutritional needs.
 - Pending title: None.
 - Other unselected proposal: null
 
-Previous values: Eat/No Eat / `PLUS-SATISFIED, SUPPLIED`; complete teaching **Plus Satisfied Supplied**.
+Previous values: Appetite Choice / `PLUS-SATISFIED, SUPPLIED`; complete teaching **Plus Satisfied Supplied**.
 
 ### OCF-BOD-006 — Heart Flow
 
-- Current display cue: `PLUS-HEART-BETTER`; complete teaching: **Plus Heart Better**.
-- Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
+- Current display cue: `PLUS-HEART-FLOW`; complete teaching: **Plus Heart Flow**.
+- Status: APPROVED AND IMPLEMENTED; title: UNCHANGED.
 - Purpose: Self-directed wellness practice supporting a felt sense of calm, steady heart function.
 - Pending title: None.
 - Other unselected proposal: null
 
-Previous values: Heart: Repairs & Maintenance / `PLUS-HEART-BETTER`; complete teaching **Plus Heart Better**.
+Previous values: Heart Flow / `PLUS-HEART-BETTER`; complete teaching **Plus Heart Better**.
 
 ### OCF-BOD-007 — Blood Pressure Balance
 
@@ -136,13 +138,13 @@ Previous values: Passages / `PLUS-EQUALIZE-HARMONIZE`; complete teaching **Plus 
 
 ### OCF-BOD-013 — Body Tune-Up
 
-- Current display cue: `PLUS-BALANCE, HEAL`; complete teaching: **Plus Balance Heal**.
-- Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
+- Current display cue: `PLUS-TUNE-UP`; complete teaching: **Plus Tune Up**.
+- Status: APPROVED AND IMPLEMENTED; title: UNCHANGED.
 - Purpose: A general self-directed balance-and-heal tune-up practice.
 - Pending title: None.
 - Other unselected proposal: null
 
-Previous values: Tune-Up / `PLUS-BALANCE, HEAL`; complete teaching **Plus Balance Heal**.
+Previous values: Body Tune-Up / `PLUS-BALANCE, HEAL`; complete teaching **Plus Balance Heal**.
 
 ### OCF-BOD-014 — Regenerate
 
@@ -238,23 +240,23 @@ Previous values: Options / `PLUS-OPTIONS`; complete teaching **Plus Options Choi
 
 ### OCF-EMG-001 — Injury Response
 
-- Current display cue: `PLUS-CONTROL, BALANCE, RESTORE`; complete teaching: **Plus Control Balance Restore**.
-- Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
+- Current display cue: `PLUS-INJURY-RESPONSE`; complete teaching: **Plus Injury Response**.
+- Status: APPROVED AND IMPLEMENTED; title: UNCHANGED.
 - Purpose: Emergency-oriented practice to stay calm and take helpful action. Does NOT replace emergency services, first aid, or professional care.
 - Pending title: None.
 - Other unselected proposal: null
 
-Previous values: Emergency: Injury / `PLUS-CONTROL, BALANCE, RESTORE`; complete teaching **Plus Control Balance Restore**.
+Previous values: Injury Response / `PLUS-CONTROL, BALANCE, RESTORE`; complete teaching **Plus Control Balance Restore**.
 
 ### OCF-EMG-002 — Toxic Exposure Response
 
-- Current display cue: `PLUS-CLEAR, REMOVE`; complete teaching: **Plus Clear Remove**.
-- Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
+- Current display cue: `PLUS-TOXIC-CLEAR`; complete teaching: **Plus Toxic Clear**.
+- Status: APPROVED AND IMPLEMENTED; title: UNCHANGED.
 - Purpose: Emergency-oriented practice for toxic-exposure situations. Does NOT replace poison control, emergency services, or medical evaluation.
 - Pending title: None.
 - Other unselected proposal: null
 
-Previous values: Emergency: Toxic / `PLUS-CLEAR, REMOVE`; complete teaching **Plus Clear Remove**.
+Previous values: Toxic Exposure Response / `PLUS-CLEAR, REMOVE`; complete teaching **Plus Clear Remove**.
 
 ### OCF-EMO-001 — Let Go
 
@@ -336,13 +338,15 @@ Previous values: Zoning / `PLUS-ZONE`; complete teaching **Plus Insulate Insulat
 - Pending title: None.
 - Other unselected proposal: {"title": "Access to Energy", "cue": "PLUS-ENERGIZE"}
 
-### OCF-FND-002 — Attention
+### OCF-FND-002 — Focus
 
 - Current display cue: `PLUS-FOCUS`; complete teaching: **Plus Focus**.
-- Status: EXISTING PAIR RETAINED; title: UNCHANGED.
+- Status: APPROVED AND IMPLEMENTED; title: APPROVED.
 - Purpose: Directs and sustains focused attention.
 - Pending title: None.
-- Other unselected proposal: {"title": "Attention", "cue": "PLUS-FOCUS"}
+- Other unselected proposal: null
+
+Previous values: Attention / `PLUS-FOCUS`; complete teaching **Plus Focus**.
 
 ### OCF-FND-003 — Quick Recharge
 
@@ -412,13 +416,13 @@ Previous values: Eight-Great / `PLUS-STRONG`; complete teaching **Plus Eight Gre
 
 ### OCF-PRF-003 — Coordination
 
-- Current display cue: `PLUS-SMOOTH, FAST`; complete teaching: **Plus Smooth Fast**.
-- Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
+- Current display cue: `PLUS-COORDINATE`; complete teaching: **Plus Coordinate**.
+- Status: APPROVED AND IMPLEMENTED; title: UNCHANGED.
 - Purpose: Aligns and smooths internal rhythms toward feeling faster and steadier.
 - Pending title: None.
 - Other unselected proposal: null
 
-Previous values: Synchronizing / `PLUS-SMOOTH, FAST`; complete teaching **Plus Smooth Fast**.
+Previous values: Coordination / `PLUS-SMOOTH, FAST`; complete teaching **Plus Smooth Fast**.
 
 ### OCF-PRF-004 — Light Foot
 

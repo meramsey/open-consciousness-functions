@@ -511,13 +511,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-BOD-002-PRIMARY",
-            "display_cue": "PLUS-FLOW SMOOTH",
+            "display_cue": "PLUS-CIRCULATE",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
-            "spoken_cue": "Plus Flow Smooth",
-            "spoken_locale": "en-US"
+            "resource_status": "reviewed",
+            "spoken_cue": "Plus Circulate",
+            "spoken_cue_key": "commands.ocf-cmd-bod-002-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": "0.1.0"
           },
           "designation": "primary",
           "documentation": {
@@ -543,12 +548,14 @@
             "text": "Primary activation command"
           },
           "localization": {
+            "display_cue_key": "commands.ocf-cmd-bod-002-primary.display-cue",
             "explanation_key": "commands.ocf-cmd-bod-002-primary.explanation",
             "label_key": "commands.ocf-cmd-bod-002-primary.label",
             "purpose_key": "functions.ocf-bod-002.purpose",
+            "spoken_cue_key": "commands.ocf-cmd-bod-002-primary.spoken-cue",
             "usage_key": "commands.ocf-cmd-bod-002-primary.usage"
           },
-          "phrase": "PLUS-FLOW SMOOTH",
+          "phrase": "PLUS-CIRCULATE",
           "phrase_ref": {
             "source": "canonical-primary"
           },
@@ -646,7 +653,7 @@
             "resolved_locale": "en-US",
             "text": "Permanent"
           },
-          "spoken": "Plus Flow Smooth",
+          "spoken": "Plus Circulate",
           "spoken_review": "reviewed",
           "usage": {
             "fallback": false,
@@ -1140,16 +1147,16 @@
           "cue_presentation": {
             "binding_status": "resolved",
             "command_id": "OCF-CMD-BOD-005-PRIMARY",
-            "display_cue": "PLUS-SATISFIED, SUPPLIED",
+            "display_cue": "PLUS-SATISFIED",
             "display_fallback": false,
             "display_locale": "en-US",
             "requested_locale": "en-US",
             "resource_status": "reviewed",
-            "spoken_cue": "Plus Satisfied Supplied",
+            "spoken_cue": "Plus Satisfied",
             "spoken_cue_key": "commands.ocf-cmd-bod-005-primary.spoken-cue",
             "spoken_fallback": false,
             "spoken_locale": "en-US",
-            "version": "1.0.0"
+            "version": "1.1.0"
           },
           "designation": "primary",
           "documentation": {
@@ -1202,7 +1209,7 @@
             "spoken_cue_key": "commands.ocf-cmd-bod-005-primary.spoken-cue",
             "usage_key": "commands.ocf-cmd-bod-005-primary.usage"
           },
-          "phrase": "PLUS-SATISFIED, SUPPLIED",
+          "phrase": "PLUS-SATISFIED",
           "phrase_ref": {
             "source": "canonical-primary"
           },
@@ -1295,7 +1302,7 @@
             "resolved_locale": "en-US",
             "text": "Temporary"
           },
-          "spoken": "Plus Satisfied Supplied",
+          "spoken": "Plus Satisfied",
           "spoken_review": "reviewed",
           "usage": {
             "fallback": false,
@@ -1421,16 +1428,16 @@
           "cue_presentation": {
             "binding_status": "resolved",
             "command_id": "OCF-CMD-BOD-006-PRIMARY",
-            "display_cue": "PLUS-HEART-BETTER",
+            "display_cue": "PLUS-HEART-FLOW",
             "display_fallback": false,
             "display_locale": "en-US",
             "requested_locale": "en-US",
             "resource_status": "reviewed",
-            "spoken_cue": "Plus Heart Better",
+            "spoken_cue": "Plus Heart Flow",
             "spoken_cue_key": "commands.ocf-cmd-bod-006-primary.spoken-cue",
             "spoken_fallback": false,
             "spoken_locale": "en-US",
-            "version": "1.0.0"
+            "version": "1.1.0"
           },
           "designation": "primary",
           "documentation": {
@@ -1466,9 +1473,9 @@
           "observed_phrase": {
             "narration_key": "hplus.function.ocf-bod-006.function-body",
             "relationship": "canonical-match",
-            "text": "Plus Heart Better"
+            "text": "Plus Heart Flow"
           },
-          "phrase": "PLUS-HEART-BETTER",
+          "phrase": "PLUS-HEART-FLOW",
           "phrase_ref": {
             "source": "canonical-primary"
           },
@@ -1566,7 +1573,7 @@
             "resolved_locale": "en-US",
             "text": "Permanent"
           },
-          "spoken": "Plus Heart Better",
+          "spoken": "Plus Heart Flow",
           "spoken_review": "reviewed",
           "usage": {
             "fallback": false,
@@ -3543,16 +3550,16 @@
           "cue_presentation": {
             "binding_status": "resolved",
             "command_id": "OCF-CMD-BOD-013-PRIMARY",
-            "display_cue": "PLUS-BALANCE, HEAL",
+            "display_cue": "PLUS-TUNE-UP",
             "display_fallback": false,
             "display_locale": "en-US",
             "requested_locale": "en-US",
             "resource_status": "reviewed",
-            "spoken_cue": "Plus Balance Heal",
+            "spoken_cue": "Plus Tune Up",
             "spoken_cue_key": "commands.ocf-cmd-bod-013-primary.spoken-cue",
             "spoken_fallback": false,
             "spoken_locale": "en-US",
-            "version": "1.0.0"
+            "version": "1.1.0"
           },
           "designation": "primary",
           "documentation": {
@@ -3605,7 +3612,7 @@
             "spoken_cue_key": "commands.ocf-cmd-bod-013-primary.spoken-cue",
             "usage_key": "commands.ocf-cmd-bod-013-primary.usage"
           },
-          "phrase": "PLUS-BALANCE, HEAL",
+          "phrase": "PLUS-TUNE-UP",
           "phrase_ref": {
             "source": "canonical-primary"
           },
@@ -3714,7 +3721,7 @@
             "resolved_locale": "en-US",
             "text": "Temporary"
           },
-          "spoken": "Plus Balance Heal",
+          "spoken": "Plus Tune Up",
           "spoken_review": "reviewed",
           "usage": {
             "fallback": false,
@@ -6530,16 +6537,16 @@
           "cue_presentation": {
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EMG-001-PRIMARY",
-            "display_cue": "PLUS-CONTROL, BALANCE, RESTORE",
+            "display_cue": "PLUS-INJURY-RESPONSE",
             "display_fallback": false,
             "display_locale": "en-US",
             "requested_locale": "en-US",
             "resource_status": "reviewed",
-            "spoken_cue": "Plus Control Balance Restore",
+            "spoken_cue": "Plus Injury Response",
             "spoken_cue_key": "commands.ocf-cmd-emg-001-primary.spoken-cue",
             "spoken_fallback": false,
             "spoken_locale": "en-US",
-            "version": "1.0.0"
+            "version": "1.1.0"
           },
           "designation": "primary",
           "documentation": {
@@ -6593,7 +6600,7 @@
             "spoken_cue_key": "commands.ocf-cmd-emg-001-primary.spoken-cue",
             "usage_key": "commands.ocf-cmd-emg-001-primary.usage"
           },
-          "phrase": "PLUS-CONTROL, BALANCE, RESTORE",
+          "phrase": "PLUS-INJURY-RESPONSE",
           "phrase_ref": {
             "source": "canonical-primary"
           },
@@ -6669,7 +6676,7 @@
             "resolved_locale": "en-US",
             "text": "Temporary"
           },
-          "spoken": "Plus Control Balance Restore",
+          "spoken": "Plus Injury Response",
           "spoken_review": "reviewed",
           "usage": {
             "fallback": false,
@@ -6795,16 +6802,16 @@
           "cue_presentation": {
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EMG-002-PRIMARY",
-            "display_cue": "PLUS-CLEAR, REMOVE",
+            "display_cue": "PLUS-TOXIC-CLEAR",
             "display_fallback": false,
             "display_locale": "en-US",
             "requested_locale": "en-US",
             "resource_status": "reviewed",
-            "spoken_cue": "Plus Clear Remove",
+            "spoken_cue": "Plus Toxic Clear",
             "spoken_cue_key": "commands.ocf-cmd-emg-002-primary.spoken-cue",
             "spoken_fallback": false,
             "spoken_locale": "en-US",
-            "version": "1.0.0"
+            "version": "1.1.0"
           },
           "designation": "primary",
           "documentation": {
@@ -6858,7 +6865,7 @@
             "spoken_cue_key": "commands.ocf-cmd-emg-002-primary.spoken-cue",
             "usage_key": "commands.ocf-cmd-emg-002-primary.usage"
           },
-          "phrase": "PLUS-CLEAR, REMOVE",
+          "phrase": "PLUS-TOXIC-CLEAR",
           "phrase_ref": {
             "source": "canonical-primary"
           },
@@ -6934,7 +6941,7 @@
             "resolved_locale": "en-US",
             "text": "Temporary"
           },
-          "spoken": "Plus Clear Remove",
+          "spoken": "Plus Toxic Clear",
           "spoken_review": "reviewed",
           "usage": {
             "fallback": false,
@@ -9560,13 +9567,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-FND-002-PRIMARY",
             "display_cue": "PLUS-FOCUS",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Focus",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-fnd-002-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": "0.1.0"
           },
           "designation": "primary",
           "documentation": {
@@ -9592,9 +9604,11 @@
             "text": "Primary activation command"
           },
           "localization": {
+            "display_cue_key": "commands.ocf-cmd-fnd-002-primary.display-cue",
             "explanation_key": "commands.ocf-cmd-fnd-002-primary.explanation",
             "label_key": "commands.ocf-cmd-fnd-002-primary.label",
             "purpose_key": "functions.ocf-fnd-002.purpose",
+            "spoken_cue_key": "commands.ocf-cmd-fnd-002-primary.spoken-cue",
             "usage_key": "commands.ocf-cmd-fnd-002-primary.usage"
           },
           "phrase": "PLUS-FOCUS",
@@ -9741,7 +9755,7 @@
         "key": "functions.ocf-fnd-002.title",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Attention"
+        "text": "Focus"
       }
     },
     {
@@ -11251,16 +11265,16 @@
           "cue_presentation": {
             "binding_status": "resolved",
             "command_id": "OCF-CMD-PRF-003-PRIMARY",
-            "display_cue": "PLUS-SMOOTH, FAST",
+            "display_cue": "PLUS-COORDINATE",
             "display_fallback": false,
             "display_locale": "en-US",
             "requested_locale": "en-US",
             "resource_status": "reviewed",
-            "spoken_cue": "Plus Smooth Fast",
+            "spoken_cue": "Plus Coordinate",
             "spoken_cue_key": "commands.ocf-cmd-prf-003-primary.spoken-cue",
             "spoken_fallback": false,
             "spoken_locale": "en-US",
-            "version": "1.0.0"
+            "version": "1.1.0"
           },
           "designation": "primary",
           "documentation": {
@@ -11293,7 +11307,7 @@
             "spoken_cue_key": "commands.ocf-cmd-prf-003-primary.spoken-cue",
             "usage_key": "commands.ocf-cmd-prf-003-primary.usage"
           },
-          "phrase": "PLUS-SMOOTH, FAST",
+          "phrase": "PLUS-COORDINATE",
           "phrase_ref": {
             "source": "canonical-primary"
           },
@@ -11386,7 +11400,7 @@
             "resolved_locale": "en-US",
             "text": "Permanent"
           },
-          "spoken": "Plus Smooth Fast",
+          "spoken": "Plus Coordinate",
           "spoken_review": "reviewed",
           "usage": {
             "fallback": false,

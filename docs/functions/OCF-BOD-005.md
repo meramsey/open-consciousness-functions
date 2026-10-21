@@ -20,7 +20,7 @@ Source availability does not establish historical authentication or provenance.
 - **Lasting baseline / retained effect** (`permanent`, `automatic`): Appetite awareness and deliberate eating choices persist while genuine nutritional needs and freedom to eat remain intact.
 - **Individual invocation / application** (`temporary`, `manual`): Conscious release of one selected unnecessary craving; not permanent hunger suppression.
 
-## PLUS-SATISFIED, SUPPLIED
+## PLUS-SATISFIED
 
 ### Primary activation command
 

@@ -574,9 +574,21 @@ def _sbagenx_sequence_file(preset: str) -> str:
 
 
 def _resolve_background_manifest(preset: str | None) -> dict[str, Any] | None:
-    """Load the background manifest whose id or name matches ``preset``."""
+    """Load a registered ID/name or an explicit validated local manifest path."""
     if not preset:
         return None
+    path = Path(preset).expanduser()
+    if not path.is_absolute():
+        path = REPO_ROOT / path
+    if path.is_file():
+        from .indexes import load_yaml_file
+        from .validators import _load_schema, validate_against_schema
+
+        manifest = load_yaml_file(path)
+        errors = validate_against_schema(manifest, _load_schema("background-audio.schema.json"))
+        if errors:
+            raise OCFError("background manifest: " + " | ".join(errors))
+        return manifest
     for manifest in load_background_manifests():
         if manifest.get("id") == preset or manifest.get("name") == preset:
             return manifest
@@ -646,6 +658,23 @@ def _render_reference_master(
         return _degrade(f"reference master not found (citation-only, keep it local): {source}")
     if shutil.which("ffmpeg") is None:
         return _degrade("ffmpeg is required to decode reference-master audio")
+    expected_hash = (manifest.get("provenance") or {}).get("reference_sha256")
+    if expected_hash and sha256_of_file(source) != expected_hash:
+        raise OCFError("reference master checksum mismatch: " + str(source))
+    if ref.get("preserve_precision"):
+        if ref.get("splices"):
+            raise OCFError("precision-preserving reference stems cannot declare fixed splices")
+        tmp = scratch_dir or workspace_temp_directory(prefix="ocf-reference-")
+        out = tmp / f"reference-{_preset_stem(preset)}-{unique_run_id('stem')}.wav"
+        ensure_dir(out.parent)
+        command = [_require_ffmpeg(), "-v", "error", "-nostdin", "-i", str(source)]
+        if max_seconds is not None and max_seconds > 0:
+            command += ["-t", str(max_seconds)]
+        command += ["-ar", str(DEFAULT_SAMPLE_RATE), "-ac", "2", "-c:a", "pcm_s24le", str(out)]
+        result = workspace_run(command, capture_output=True, text=True)
+        if result.returncode:
+            raise OCFError("reference master decode failed: " + result.stderr[-600:])
+        return out, "reference-master"
 
     from array import array
 

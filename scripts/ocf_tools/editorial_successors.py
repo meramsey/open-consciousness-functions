@@ -291,6 +291,45 @@ def current_decision_record(root=REPO_ROOT):
         result["allowed_text_changes"].extend(
             {"identity": key, **row} for key, row in options["speech"].items()
         )
+    from . import command_simplification as simplification
+
+    latest = simplification.record(root)
+    if latest:
+        result["id"] = simplification.ID
+        result["decision_ids"].append(simplification.ID)
+        result["source_commit"] = latest["source_commit"]
+        result["integrity_baseline"] = simplification.BASELINE
+        for name in latest["function_files"]:
+            before = yaml.safe_load(latest["files"][name]["before"])
+            owner = before["id"]
+            title, display, old, spoken = simplification.PAIRS[owner]
+            primary = next(row for row in before["commands"] if row.get("designation") == "primary")
+            by_owner[owner] = {
+                "function_id": owner,
+                "primary_command_id": primary["id"],
+                "previous": {
+                    "title": before["canonical"]["name"],
+                    "display_cue": before["canonical"]["command"]["primary"],
+                    "spoken_cue": old,
+                },
+                "current_title": title,
+                "display_cue": display,
+                "spoken_cue": spoken,
+                "title_status": "APPROVED" if title != before["canonical"]["name"] else "UNCHANGED",
+                "cue_status": "APPROVED",
+                "narration_keys_changed": [
+                    identity.split("::")[1]
+                    for identity in latest["speech"]
+                    if identity.startswith(f"locales/en-US/hplus-{owner}.yaml::")
+                ],
+                "narration_file": f"locales/en-US/hplus-{owner}.yaml",
+                "function_file": name,
+                "historical_command_ids": [],
+                "translator_notes": "Explicit twelve-decision approval; English presentation only. Preserve procedures, lifecycle and historical vocabulary. Other locales require separate review.",
+            }
+        result["allowed_text_changes"].extend(
+            {"identity": key, **row} for key, row in latest["speech"].items()
+        )
     result["decisions"] = list(by_owner.values())
     return result
 

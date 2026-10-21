@@ -14,16 +14,16 @@ FUNCTIONS = [
     ("OCF-EXP-001", "PLUS-MANIFEST", "Align your intention with the reality you choose"),
     ("OCF-EXP-003", "PLUS-DISSOLVE", "Release unwanted beliefs and recurring patterns"),
     ("OCF-EXP-006", "PLUS-INTUITION", "Strengthen intuitive awareness and understanding"),
-    ("OCF-EXP-005", "PLUS-CLEAR ZONE", "An intention for calm, undisturbed personal space"),
+    ("OCF-EXP-005", "PLUS-CLEAR ZONE", "Set an intention to discourage unwanted insects"),
 ]
 
 
 @pytest.mark.parametrize("owner,cue,description", FUNCTIONS)
-def test_content_uses_reviewed_primary_and_independent_proposed_copy(owner, cue, description):
+def test_content_uses_reviewed_primary_and_independent_approved_copy(owner, cue, description):
     content = artwork_content.function_artwork_content(owner)
     assert content["primary"]["display_cue"] == cue
     assert content["description"] == description
-    assert content["description_resolution"]["status"] == "draft"
+    assert content["description_resolution"]["status"] == "reviewed"
     assert content["purpose"]
     tags = artwork_content.content_tags(content)
     assert tags["OCF_PRIMARY_SPOKEN_CUE"] == content["primary"]["spoken_cue"]

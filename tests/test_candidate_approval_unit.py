@@ -18,7 +18,7 @@ def test_absent_ledger_does_not_create_approval(tmp_path):
     assert approval.verify(tmp_path) == ["candidate approval ledger missing"]
 
 
-def test_checked_predecessor_rejects_tampering_and_preserves_new_files(monkeypatch):
+def test_checked_predecessor_rejects_tampering_and_preserves_new_files(monkeypatch, tmp_path):
     rows = {
         "old": {
             "before": "previous",
@@ -28,11 +28,11 @@ def test_checked_predecessor_rejects_tampering_and_preserves_new_files(monkeypat
         "new": {"before": None, "before_sha256": None, "after_sha256": approval.sha("new")},
     }
     monkeypatch.setattr(approval, "record", lambda root: {"files": rows})
-    assert approval.predecessor(None, "old", "current") == "previous"
-    assert approval.predecessor(None, "new", "new") == "new"
+    assert approval.predecessor(tmp_path, "old", "current") == "previous"
+    assert approval.predecessor(tmp_path, "new", "new") == "new"
     rows["old"]["before"] = "tampered"
     with pytest.raises(OCFError, match="predecessor drift"):
-        approval.predecessor(None, "old", "current")
+        approval.predecessor(tmp_path, "old", "current")
 
 
 @pytest.mark.parametrize(

@@ -1,15 +1,16 @@
 {
   "schema_version": "1.0",
-  "decision_id": "OCF-OPTIONS-001",
+  "decision_id": "OCF-COMMAND-SIMPLIFICATION-001",
   "decision_ids": [
     "OCF-EDITORIAL-TITLE-CUES-001",
     "OCF-EDITORIAL-TITLE-CUES-002",
     "OCF-EDITORIAL-TITLE-CUES-003",
     "OCF-EDITORIAL-TITLE-CUES-004",
     "OCF-FUNCTIONAL-METADATA-001",
-    "OCF-OPTIONS-001"
+    "OCF-OPTIONS-001",
+    "OCF-COMMAND-SIMPLIFICATION-001"
   ],
-  "predecessor_commit": "e4226aac3feac72d62049314f807175175717a48",
+  "predecessor_commit": "8ec5b0395c7a5c05fa629d64297d3bf048b097f9",
   "source_scope": "Current approved successor. Earlier source-pinned proposals remain immutable history; this is not a repin or blanket approval of them.",
   "counts": {
     "functions": 58,
@@ -17,10 +18,10 @@
     "active_records": 83,
     "historical_only_command_records": 19,
     "stable_primary_identities": 58,
-    "approved_cues_implemented": 41,
+    "approved_cues_implemented": 43,
     "approved_candidate_narrations": 4,
     "protected_entries": 177,
-    "allowlisted_text_changes": 68,
+    "allowlisted_text_changes": 83,
     "remaining_metadata_teaching_differences": 0
   },
   "functions": [
@@ -135,31 +136,53 @@
     {
       "function_id": "OCF-BOD-002",
       "current_title": "Circulation",
-      "display_cue": "PLUS-FLOW SMOOTH",
-      "spoken_teaching": "Plus Flow Smooth",
+      "display_cue": "PLUS-CIRCULATE",
+      "spoken_teaching": "Plus Circulate",
       "cue_presentation": {
         "command_id": "OCF-CMD-BOD-002-PRIMARY",
-        "display_cue": "PLUS-FLOW SMOOTH",
+        "display_cue": "PLUS-CIRCULATE",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Flow Smooth",
+        "spoken_cue": "Plus Circulate",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-002-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "0.1.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Promotes a felt sense of smooth, comfortable circulation.",
-      "decision_status": "EXISTING PAIR RETAINED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "UNCHANGED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
+      "previous_values": {
         "title": "Circulation",
-        "cue": "PLUS-FLOW SMOOTH"
+        "display_cue": "PLUS-FLOW SMOOTH",
+        "spoken_cue": "Plus Flow Smooth"
       },
-      "historical_lookup": [],
-      "context": "Whole-body circulation and vessel maintenance, distinct from brain/neck emphasis. Select area, close eyes, inhale/hold/cue/slow mouth exhale; automatic baseline plus reinforcement.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "PLUS-FLOW SMOOTH",
+          "kind": "former-primary",
+          "decision": "OCF-COMMAND-SIMPLIFICATION-001",
+          "command_id": "OCF-CMD-BOD-002-PRIMARY"
+        },
+        {
+          "text": "Plus Flow Smooth",
+          "kind": "former-teaching",
+          "decision": "OCF-COMMAND-SIMPLIFICATION-001",
+          "command_id": "OCF-CMD-BOD-002-PRIMARY"
+        }
+      ],
+      "context": "Explicit twelve-decision approval; English presentation only. Preserve procedures, lifecycle and historical vocabulary. Other locales require separate review.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-bod-002.closer",
+        "hplus.function.ocf-bod-002.function-body"
+      ]
     },
     {
       "function_id": "OCF-BOD-003",
@@ -293,32 +316,31 @@
     {
       "function_id": "OCF-BOD-005",
       "current_title": "Appetite Choice",
-      "display_cue": "PLUS-SATISFIED, SUPPLIED",
-      "spoken_teaching": "Plus Satisfied Supplied",
+      "display_cue": "PLUS-SATISFIED",
+      "spoken_teaching": "Plus Satisfied",
       "cue_presentation": {
         "command_id": "OCF-CMD-BOD-005-PRIMARY",
-        "display_cue": "PLUS-SATISFIED, SUPPLIED",
+        "display_cue": "PLUS-SATISFIED",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Satisfied Supplied",
+        "spoken_cue": "Plus Satisfied",
         "binding_status": "resolved",
         "display_locale": "en-US",
         "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-bod-005-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
-        "version": "1.0.0",
+        "version": "1.1.0",
         "resource_status": "reviewed"
       },
       "current_purpose": "Supports deliberate eating choices and release of unnecessary cravings while preserving awareness of genuine nutritional needs.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "APPROVED AND IMPLEMENTED",
+      "title_status": "UNCHANGED",
       "pending_title": null,
       "previous_values": {
-        "title": "Eat/No Eat",
+        "title": "Appetite Choice",
         "display_cue": "PLUS-SATISFIED, SUPPLIED",
-        "spoken_cue": "Plus Satisfied Supplied",
-        "source_spoken": "Plus Satisfied Supplied"
+        "spoken_cue": "Plus Satisfied Supplied"
       },
       "unselected_proposal": null,
       "historical_lookup": [
@@ -326,43 +348,55 @@
           "text": "Eat/No Eat",
           "kind": "former-title",
           "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        },
+        {
+          "text": "PLUS-SATISFIED, SUPPLIED",
+          "kind": "former-primary",
+          "decision": "OCF-COMMAND-SIMPLIFICATION-001",
+          "command_id": "OCF-CMD-BOD-005-PRIMARY"
+        },
+        {
+          "text": "Plus Satisfied Supplied",
+          "kind": "former-teaching",
+          "decision": "OCF-COMMAND-SIMPLIFICATION-001",
+          "command_id": "OCF-CMD-BOD-005-PRIMARY"
         }
       ],
-      "context": "Change title from Eat/No Eat to Appetite Choice and update exercise sign-off. Keep complete display and spoken cue unchanged. Preserve breathing sequence, automatic reinforcement, genuine nutritional need recognition and freedom to eat when chosen. Retain Eat/No Eat as historical lookup. Satisfied Supplied remains one complete cue; introduce no separate appetite-increase or appetite-decrease mode.",
+      "context": "Explicit twelve-decision approval; English presentation only. Preserve procedures, lifecycle and historical vocabulary. Other locales require separate review.",
       "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
       "changed_keys": [
-        "hplus.function.ocf-bod-005.closer"
+        "hplus.function.ocf-bod-005.closer",
+        "hplus.function.ocf-bod-005.function-body"
       ]
     },
     {
       "function_id": "OCF-BOD-006",
       "current_title": "Heart Flow",
-      "display_cue": "PLUS-HEART-BETTER",
-      "spoken_teaching": "Plus Heart Better",
+      "display_cue": "PLUS-HEART-FLOW",
+      "spoken_teaching": "Plus Heart Flow",
       "cue_presentation": {
         "command_id": "OCF-CMD-BOD-006-PRIMARY",
-        "display_cue": "PLUS-HEART-BETTER",
+        "display_cue": "PLUS-HEART-FLOW",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Heart Better",
+        "spoken_cue": "Plus Heart Flow",
         "binding_status": "resolved",
         "display_locale": "en-US",
         "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-bod-006-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
-        "version": "1.0.0",
+        "version": "1.1.0",
         "resource_status": "reviewed"
       },
       "current_purpose": "Self-directed wellness practice supporting a felt sense of calm, steady heart function.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "APPROVED AND IMPLEMENTED",
+      "title_status": "UNCHANGED",
       "pending_title": null,
       "previous_values": {
-        "title": "Heart: Repairs & Maintenance",
+        "title": "Heart Flow",
         "display_cue": "PLUS-HEART-BETTER",
-        "spoken_cue": "Plus Heart Better",
-        "source_spoken": "Plus Heart Better"
+        "spoken_cue": "Plus Heart Better"
       },
       "unselected_proposal": null,
       "historical_lookup": [
@@ -387,12 +421,25 @@
           "text": "Heart: Repairs & Maintenance",
           "kind": "former-title",
           "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        },
+        {
+          "text": "PLUS-HEART-BETTER",
+          "kind": "former-primary",
+          "decision": "OCF-COMMAND-SIMPLIFICATION-001",
+          "command_id": "OCF-CMD-BOD-006-PRIMARY"
+        },
+        {
+          "text": "Plus Heart Better",
+          "kind": "former-teaching",
+          "decision": "OCF-COMMAND-SIMPLIFICATION-001",
+          "command_id": "OCF-CMD-BOD-006-PRIMARY"
         }
       ],
-      "context": "Finalize previously tentative title Heart Flow, replacing Heart: Repairs & Maintenance and updating exercise sign-off. Keep already-approved display PLUS-HEART-BETTER and spoken Plus Heart Better unchanged; do not restore the historical second Better. Preserve full heart muscle, vessel, circulation, rhythm, coordination, maintenance and renewal scope, lasting automatic pattern, optional reinforcement and breathing sequence. Retain former title as historical lookup; introduce no mode or release.",
+      "context": "Explicit twelve-decision approval; English presentation only. Preserve procedures, lifecycle and historical vocabulary. Other locales require separate review.",
       "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
       "changed_keys": [
-        "hplus.function.ocf-bod-006.closer"
+        "hplus.function.ocf-bod-006.closer",
+        "hplus.function.ocf-bod-006.function-body"
       ]
     },
     {
@@ -684,32 +731,31 @@
     {
       "function_id": "OCF-BOD-013",
       "current_title": "Body Tune-Up",
-      "display_cue": "PLUS-BALANCE, HEAL",
-      "spoken_teaching": "Plus Balance Heal",
+      "display_cue": "PLUS-TUNE-UP",
+      "spoken_teaching": "Plus Tune Up",
       "cue_presentation": {
         "command_id": "OCF-CMD-BOD-013-PRIMARY",
-        "display_cue": "PLUS-BALANCE, HEAL",
+        "display_cue": "PLUS-TUNE-UP",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Balance Heal",
+        "spoken_cue": "Plus Tune Up",
         "binding_status": "resolved",
         "display_locale": "en-US",
         "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-bod-013-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
-        "version": "1.0.0",
+        "version": "1.1.0",
         "resource_status": "reviewed"
       },
       "current_purpose": "A general self-directed balance-and-heal tune-up practice.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "APPROVED AND IMPLEMENTED",
+      "title_status": "UNCHANGED",
       "pending_title": null,
       "previous_values": {
-        "title": "Tune-Up",
+        "title": "Body Tune-Up",
         "display_cue": "PLUS-BALANCE, HEAL",
-        "spoken_cue": "Plus Balance Heal",
-        "source_spoken": "Plus Balance Heal"
+        "spoken_cue": "Plus Balance Heal"
       },
       "unselected_proposal": null,
       "historical_lookup": [
@@ -717,12 +763,25 @@
           "text": "Tune-Up",
           "kind": "former-title",
           "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        },
+        {
+          "text": "PLUS-BALANCE, HEAL",
+          "kind": "former-primary",
+          "decision": "OCF-COMMAND-SIMPLIFICATION-001",
+          "command_id": "OCF-CMD-BOD-013-PRIMARY"
+        },
+        {
+          "text": "Plus Balance Heal",
+          "kind": "former-teaching",
+          "decision": "OCF-COMMAND-SIMPLIFICATION-001",
+          "command_id": "OCF-CMD-BOD-013-PRIMARY"
         }
       ],
-      "context": "Change title from Tune-Up to Body Tune-Up and update exercise sign-off. Keep display and spoken cue unchanged. Preserve selected-area inward attention, close eyes/inhale/hold/complete cue/slow mouth exhale/open eyes sequence and surrounding automatic whole-body maintenance, repair and renewal suggestions. Retain Tune-Up as historical lookup. Balance Heal remains one complete cue, not separate modes.",
+      "context": "Explicit twelve-decision approval; English presentation only. Preserve procedures, lifecycle and historical vocabulary. Other locales require separate review.",
       "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
       "changed_keys": [
-        "hplus.function.ocf-bod-013.closer"
+        "hplus.function.ocf-bod-013.closer",
+        "hplus.function.ocf-bod-013.function-body"
       ]
     },
     {
@@ -1139,32 +1198,31 @@
     {
       "function_id": "OCF-EMG-001",
       "current_title": "Injury Response",
-      "display_cue": "PLUS-CONTROL, BALANCE, RESTORE",
-      "spoken_teaching": "Plus Control Balance Restore",
+      "display_cue": "PLUS-INJURY-RESPONSE",
+      "spoken_teaching": "Plus Injury Response",
       "cue_presentation": {
         "command_id": "OCF-CMD-EMG-001-PRIMARY",
-        "display_cue": "PLUS-CONTROL, BALANCE, RESTORE",
+        "display_cue": "PLUS-INJURY-RESPONSE",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Control Balance Restore",
+        "spoken_cue": "Plus Injury Response",
         "binding_status": "resolved",
         "display_locale": "en-US",
         "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-emg-001-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
-        "version": "1.0.0",
+        "version": "1.1.0",
         "resource_status": "reviewed"
       },
       "current_purpose": "Emergency-oriented practice to stay calm and take helpful action. Does NOT replace emergency services, first aid, or professional care.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "APPROVED AND IMPLEMENTED",
+      "title_status": "UNCHANGED",
       "pending_title": null,
       "previous_values": {
-        "title": "Emergency: Injury",
+        "title": "Injury Response",
         "display_cue": "PLUS-CONTROL, BALANCE, RESTORE",
-        "spoken_cue": "Plus Control Balance Restore",
-        "source_spoken": "Plus Control Balance Restore"
+        "spoken_cue": "Plus Control Balance Restore"
       },
       "unselected_proposal": null,
       "historical_lookup": [
@@ -1172,43 +1230,55 @@
           "text": "Emergency: Injury",
           "kind": "former-title",
           "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        },
+        {
+          "text": "PLUS-CONTROL, BALANCE, RESTORE",
+          "kind": "former-primary",
+          "decision": "OCF-COMMAND-SIMPLIFICATION-001",
+          "command_id": "OCF-CMD-EMG-001-PRIMARY"
+        },
+        {
+          "text": "Plus Control Balance Restore",
+          "kind": "former-teaching",
+          "decision": "OCF-COMMAND-SIMPLIFICATION-001",
+          "command_id": "OCF-CMD-EMG-001-PRIMARY"
         }
       ],
-      "context": "Change title from Emergency: Injury to Injury Response and update exercise sign-off. Keep display and spoken cue unchanged. Preserve inhale/hold/complete cue/slow mouth exhale and surrounding protection, balance, healing and restoration suggestions. Retain Emergency: Injury as historical lookup. Control Balance Restore remains one ordered cue, not three modes.",
+      "context": "Explicit twelve-decision approval; English presentation only. Preserve procedures, lifecycle and historical vocabulary. Other locales require separate review.",
       "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
       "changed_keys": [
-        "hplus.function.ocf-emg-001.closer"
+        "hplus.function.ocf-emg-001.closer",
+        "hplus.function.ocf-emg-001.function-body"
       ]
     },
     {
       "function_id": "OCF-EMG-002",
       "current_title": "Toxic Exposure Response",
-      "display_cue": "PLUS-CLEAR, REMOVE",
-      "spoken_teaching": "Plus Clear Remove",
+      "display_cue": "PLUS-TOXIC-CLEAR",
+      "spoken_teaching": "Plus Toxic Clear",
       "cue_presentation": {
         "command_id": "OCF-CMD-EMG-002-PRIMARY",
-        "display_cue": "PLUS-CLEAR, REMOVE",
+        "display_cue": "PLUS-TOXIC-CLEAR",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Clear Remove",
+        "spoken_cue": "Plus Toxic Clear",
         "binding_status": "resolved",
         "display_locale": "en-US",
         "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-emg-002-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
-        "version": "1.0.0",
+        "version": "1.1.0",
         "resource_status": "reviewed"
       },
       "current_purpose": "Emergency-oriented practice for toxic-exposure situations. Does NOT replace poison control, emergency services, or medical evaluation.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "APPROVED AND IMPLEMENTED",
+      "title_status": "UNCHANGED",
       "pending_title": null,
       "previous_values": {
-        "title": "Emergency: Toxic",
+        "title": "Toxic Exposure Response",
         "display_cue": "PLUS-CLEAR, REMOVE",
-        "spoken_cue": "Plus Clear Remove",
-        "source_spoken": "Plus Clear Remove"
+        "spoken_cue": "Plus Clear Remove"
       },
       "unselected_proposal": null,
       "historical_lookup": [
@@ -1216,12 +1286,25 @@
           "text": "Emergency: Toxic",
           "kind": "former-title",
           "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        },
+        {
+          "text": "PLUS-CLEAR, REMOVE",
+          "kind": "former-primary",
+          "decision": "OCF-COMMAND-SIMPLIFICATION-001",
+          "command_id": "OCF-CMD-EMG-002-PRIMARY"
+        },
+        {
+          "text": "Plus Clear Remove",
+          "kind": "former-teaching",
+          "decision": "OCF-COMMAND-SIMPLIFICATION-001",
+          "command_id": "OCF-CMD-EMG-002-PRIMARY"
         }
       ],
-      "context": "Change title from Emergency: Toxic to Toxic Exposure Response and update exercise sign-off. Keep display and spoken cue unchanged. Preserve inhale/hold/complete cue/slow mouth exhale and surrounding physical harmful-exposure response suggestions. Retain Emergency: Toxic as historical lookup. Clear Remove remains one complete cue, not separate modes. Preserve historical source-unavailable reconstruction status.",
+      "context": "Explicit twelve-decision approval; English presentation only. Preserve procedures, lifecycle and historical vocabulary. Other locales require separate review.",
       "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
       "changed_keys": [
-        "hplus.function.ocf-emg-002.closer"
+        "hplus.function.ocf-emg-002.closer",
+        "hplus.function.ocf-emg-002.function-body"
       ]
     },
     {
@@ -1651,7 +1734,7 @@
     },
     {
       "function_id": "OCF-FND-002",
-      "current_title": "Attention",
+      "current_title": "Focus",
       "display_cue": "PLUS-FOCUS",
       "spoken_teaching": "Plus Focus",
       "cue_presentation": {
@@ -1660,23 +1743,37 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Focus",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-fnd-002-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "0.1.0",
+        "resource_status": "reviewed"
       },
       "current_purpose": "Directs and sustains focused attention.",
-      "decision_status": "EXISTING PAIR RETAINED",
+      "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "UNCHANGED",
+      "title_status": "APPROVED",
       "pending_title": null,
-      "previous_values": null,
-      "unselected_proposal": {
+      "previous_values": {
         "title": "Attention",
-        "cue": "PLUS-FOCUS"
+        "display_cue": "PLUS-FOCUS",
+        "spoken_cue": "Plus Focus"
       },
-      "historical_lookup": [],
-      "context": "Select activity/thought/experience, inhale/hold/cue/candle-like exhale. Sustained attention permits conscious shifts; not entry to a numbered Focus state. Preserve protected FOCUS.",
-      "teaching_source": "Predecessor contextual review; unchanged protected text verified",
-      "changed_keys": []
+      "unselected_proposal": null,
+      "historical_lookup": [
+        {
+          "text": "Attention",
+          "kind": "former-title",
+          "decision": "OCF-COMMAND-SIMPLIFICATION-001"
+        }
+      ],
+      "context": "Explicit twelve-decision approval; English presentation only. Preserve procedures, lifecycle and historical vocabulary. Other locales require separate review.",
+      "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
+      "changed_keys": [
+        "hplus.function.ocf-fnd-002.closer"
+      ]
     },
     {
       "function_id": "OCF-FND-003",
@@ -2004,32 +2101,31 @@
     {
       "function_id": "OCF-PRF-003",
       "current_title": "Coordination",
-      "display_cue": "PLUS-SMOOTH, FAST",
-      "spoken_teaching": "Plus Smooth Fast",
+      "display_cue": "PLUS-COORDINATE",
+      "spoken_teaching": "Plus Coordinate",
       "cue_presentation": {
         "command_id": "OCF-CMD-PRF-003-PRIMARY",
-        "display_cue": "PLUS-SMOOTH, FAST",
+        "display_cue": "PLUS-COORDINATE",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Smooth Fast",
+        "spoken_cue": "Plus Coordinate",
         "binding_status": "resolved",
         "display_locale": "en-US",
         "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-prf-003-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
-        "version": "1.0.0",
+        "version": "1.1.0",
         "resource_status": "reviewed"
       },
       "current_purpose": "Aligns and smooths internal rhythms toward feeling faster and steadier.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
-      "title_status": "APPROVED AND IMPLEMENTED",
+      "title_status": "UNCHANGED",
       "pending_title": null,
       "previous_values": {
-        "title": "Synchronizing",
+        "title": "Coordination",
         "display_cue": "PLUS-SMOOTH, FAST",
-        "spoken_cue": "Plus Smooth Fast",
-        "source_spoken": "Plus Smooth Fast"
+        "spoken_cue": "Plus Smooth Fast"
       },
       "unselected_proposal": null,
       "historical_lookup": [
@@ -2037,12 +2133,25 @@
           "text": "Synchronizing",
           "kind": "former-title",
           "decision": "OCF-EDITORIAL-TITLE-CUES-004"
+        },
+        {
+          "text": "PLUS-SMOOTH, FAST",
+          "kind": "former-primary",
+          "decision": "OCF-COMMAND-SIMPLIFICATION-001",
+          "command_id": "OCF-CMD-PRF-003-PRIMARY"
+        },
+        {
+          "text": "Plus Smooth Fast",
+          "kind": "former-teaching",
+          "decision": "OCF-COMMAND-SIMPLIFICATION-001",
+          "command_id": "OCF-CMD-PRF-003-PRIMARY"
         }
       ],
-      "context": "Change title from Synchronizing to Coordination and update exercise sign-off. Keep display and spoken cue unchanged. Preserve automatic everyday improvement, optional conscious reinforcement, mind/nervous-system/muscle coordination, balance, precision, timing and inhale/hold/cue/candle-like exhale. Retain Synchronizing as historical lookup. Smooth Fast remains one complete cue, not separate modes. Preserve quick responses when needed and steady precision when careful control is needed, with speed coordinated with intention and accuracy.",
+      "context": "Explicit twelve-decision approval; English presentation only. Preserve procedures, lifecycle and historical vocabulary. Other locales require separate review.",
       "teaching_source": "Approved exact substitutions, verified against immutable predecessor",
       "changed_keys": [
-        "hplus.function.ocf-prf-003.closer"
+        "hplus.function.ocf-prf-003.closer",
+        "hplus.function.ocf-prf-003.function-body"
       ]
     },
     {
@@ -2909,7 +3018,9 @@
         "label_key": "commands.ocf-cmd-bod-002-primary.label",
         "usage_key": "commands.ocf-cmd-bod-002-primary.usage",
         "purpose_key": "functions.ocf-bod-002.purpose",
-        "explanation_key": "commands.ocf-cmd-bod-002-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-bod-002-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-bod-002-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-bod-002-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -2925,9 +3036,9 @@
         "before_steps": []
       },
       "relationships": {},
-      "spoken": "Plus Flow Smooth",
+      "spoken": "Plus Circulate",
       "spoken_review": "reviewed",
-      "phrase": "PLUS-FLOW SMOOTH",
+      "phrase": "PLUS-CIRCULATE",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
         {
@@ -2963,12 +3074,17 @@
       ],
       "cue_presentation": {
         "command_id": "OCF-CMD-BOD-002-PRIMARY",
-        "display_cue": "PLUS-FLOW SMOOTH",
+        "display_cue": "PLUS-CIRCULATE",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Flow Smooth",
+        "spoken_cue": "Plus Circulate",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-002-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "0.1.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -3247,10 +3363,10 @@
         ]
       },
       "relationships": {},
-      "spoken": "Plus Satisfied Supplied",
+      "spoken": "Plus Satisfied",
       "spoken_review": "reviewed",
       "invocation_scope_ref": "lifecycle.scopes.application",
-      "phrase": "PLUS-SATISFIED, SUPPLIED",
+      "phrase": "PLUS-SATISFIED",
       "effect_scope": "temporary",
       "effect_scope_details": {
         "persistence": "temporary",
@@ -3293,16 +3409,16 @@
       ],
       "cue_presentation": {
         "command_id": "OCF-CMD-BOD-005-PRIMARY",
-        "display_cue": "PLUS-SATISFIED, SUPPLIED",
+        "display_cue": "PLUS-SATISFIED",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Satisfied Supplied",
+        "spoken_cue": "Plus Satisfied",
         "binding_status": "resolved",
         "display_locale": "en-US",
         "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-bod-005-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
-        "version": "1.0.0",
+        "version": "1.1.0",
         "resource_status": "reviewed"
       }
     },
@@ -3326,7 +3442,7 @@
       "observed_phrase": {
         "narration_key": "hplus.function.ocf-bod-006.function-body",
         "relationship": "canonical-match",
-        "text": "Plus Heart Better"
+        "text": "Plus Heart Flow"
       },
       "phrase_ref": {
         "source": "canonical-primary"
@@ -3341,9 +3457,9 @@
       },
       "relationships": {},
       "role": "activation",
-      "spoken": "Plus Heart Better",
+      "spoken": "Plus Heart Flow",
       "spoken_review": "reviewed",
-      "phrase": "PLUS-HEART-BETTER",
+      "phrase": "PLUS-HEART-FLOW",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
         {
@@ -3379,16 +3495,16 @@
       ],
       "cue_presentation": {
         "command_id": "OCF-CMD-BOD-006-PRIMARY",
-        "display_cue": "PLUS-HEART-BETTER",
+        "display_cue": "PLUS-HEART-FLOW",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Heart Better",
+        "spoken_cue": "Plus Heart Flow",
         "binding_status": "resolved",
         "display_locale": "en-US",
         "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-bod-006-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
-        "version": "1.0.0",
+        "version": "1.1.0",
         "resource_status": "reviewed"
       }
     },
@@ -4169,10 +4285,10 @@
         "before_steps": []
       },
       "relationships": {},
-      "spoken": "Plus Balance Heal",
+      "spoken": "Plus Tune Up",
       "spoken_review": "reviewed",
       "invocation_scope_ref": "lifecycle.scopes.application",
-      "phrase": "PLUS-BALANCE, HEAL",
+      "phrase": "PLUS-TUNE-UP",
       "effect_scope": "temporary",
       "effect_scope_details": {
         "persistence": "temporary",
@@ -4225,16 +4341,16 @@
       ],
       "cue_presentation": {
         "command_id": "OCF-CMD-BOD-013-PRIMARY",
-        "display_cue": "PLUS-BALANCE, HEAL",
+        "display_cue": "PLUS-TUNE-UP",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Balance Heal",
+        "spoken_cue": "Plus Tune Up",
         "binding_status": "resolved",
         "display_locale": "en-US",
         "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-bod-013-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
-        "version": "1.0.0",
+        "version": "1.1.0",
         "resource_status": "reviewed"
       }
     },
@@ -5460,10 +5576,10 @@
         "before_steps": []
       },
       "relationships": {},
-      "spoken": "Plus Control Balance Restore",
+      "spoken": "Plus Injury Response",
       "spoken_review": "reviewed",
       "invocation_scope_ref": "lifecycle.scopes.application",
-      "phrase": "PLUS-CONTROL, BALANCE, RESTORE",
+      "phrase": "PLUS-INJURY-RESPONSE",
       "effect_scope": "temporary",
       "effect_scope_details": {
         "persistence": "temporary",
@@ -5502,16 +5618,16 @@
       ],
       "cue_presentation": {
         "command_id": "OCF-CMD-EMG-001-PRIMARY",
-        "display_cue": "PLUS-CONTROL, BALANCE, RESTORE",
+        "display_cue": "PLUS-INJURY-RESPONSE",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Control Balance Restore",
+        "spoken_cue": "Plus Injury Response",
         "binding_status": "resolved",
         "display_locale": "en-US",
         "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-emg-001-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
-        "version": "1.0.0",
+        "version": "1.1.0",
         "resource_status": "reviewed"
       }
     },
@@ -5545,10 +5661,10 @@
         "before_steps": []
       },
       "relationships": {},
-      "spoken": "Plus Clear Remove",
+      "spoken": "Plus Toxic Clear",
       "spoken_review": "reviewed",
       "invocation_scope_ref": "lifecycle.scopes.application",
-      "phrase": "PLUS-CLEAR, REMOVE",
+      "phrase": "PLUS-TOXIC-CLEAR",
       "effect_scope": "temporary",
       "effect_scope_details": {
         "persistence": "temporary",
@@ -5587,16 +5703,16 @@
       ],
       "cue_presentation": {
         "command_id": "OCF-CMD-EMG-002-PRIMARY",
-        "display_cue": "PLUS-CLEAR, REMOVE",
+        "display_cue": "PLUS-TOXIC-CLEAR",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Clear Remove",
+        "spoken_cue": "Plus Toxic Clear",
         "binding_status": "resolved",
         "display_locale": "en-US",
         "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-emg-002-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
-        "version": "1.0.0",
+        "version": "1.1.0",
         "resource_status": "reviewed"
       }
     },
@@ -6762,7 +6878,9 @@
         "label_key": "commands.ocf-cmd-fnd-002-primary.label",
         "usage_key": "commands.ocf-cmd-fnd-002-primary.usage",
         "purpose_key": "functions.ocf-fnd-002.purpose",
-        "explanation_key": "commands.ocf-cmd-fnd-002-primary.explanation"
+        "explanation_key": "commands.ocf-cmd-fnd-002-primary.explanation",
+        "display_cue_key": "commands.ocf-cmd-fnd-002-primary.display-cue",
+        "spoken_cue_key": "commands.ocf-cmd-fnd-002-primary.spoken-cue"
       },
       "documentation": {
         "visible": true,
@@ -6821,8 +6939,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Focus",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-fnd-002-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": "0.1.0",
+        "resource_status": "reviewed"
       }
     },
     {
@@ -7544,9 +7667,9 @@
         ]
       },
       "relationships": {},
-      "spoken": "Plus Smooth Fast",
+      "spoken": "Plus Coordinate",
       "spoken_review": "reviewed",
-      "phrase": "PLUS-SMOOTH, FAST",
+      "phrase": "PLUS-COORDINATE",
       "effect_scope": "permanent",
       "resolved_procedure_steps": [
         {
@@ -7577,16 +7700,16 @@
       ],
       "cue_presentation": {
         "command_id": "OCF-CMD-PRF-003-PRIMARY",
-        "display_cue": "PLUS-SMOOTH, FAST",
+        "display_cue": "PLUS-COORDINATE",
         "requested_locale": "en-US",
-        "spoken_cue": "Plus Smooth Fast",
+        "spoken_cue": "Plus Coordinate",
         "binding_status": "resolved",
         "display_locale": "en-US",
         "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-prf-003-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
-        "version": "1.0.0",
+        "version": "1.1.0",
         "resource_status": "reviewed"
       }
     },
@@ -9817,18 +9940,18 @@
   "input_sha256": {
     "functions/automation/see-be.yaml": "a99c260fbad4660711fb536d72a0e90e4ede15494b1e5d1bd69a3e50d17dcf54",
     "functions/body/brain-repairs.yaml": "3136af44bb811d9dfbd99e5dda6bc3d5ed7c7e53b40bbfedd81de1b231694bc2",
-    "functions/body/circulation.yaml": "ab82119a99a67d80d423e48e2e335541b4da52d7d89407c855c4586e9ebe13d3",
+    "functions/body/circulation.yaml": "ccc8d2fa3e0e5ff6fc695b7f2b3acb9ca66816349517a87bf4ebb43ca94af269",
     "functions/body/de-discomfort.yaml": "fc9ccf4d2d50ec56a81bf66791f292605839a7d33e9827e0543a50df9e6a012b",
     "functions/body/de-tox-body.yaml": "4b961558d4e3255f0f1d542f0b1459ecb2f382541c29857bf33f6a7f15c8df35",
-    "functions/body/eat-no-eat.yaml": "1d961abee74f09a279a0c084aaf8b6ac761f61cc09716da948fc06d862c3a9cd",
-    "functions/body/heart-repairs.yaml": "d2bc974f1e22e59f786c3c5835342080373c37b6376a8044d276c44a4a16090d",
+    "functions/body/eat-no-eat.yaml": "7e743eb2a1027373434579ecaee6d2302960b60407e67188551eb5635a8ddb06",
+    "functions/body/heart-repairs.yaml": "807e760409aeb70668ad9b3ad7ddbf90fd4f6c7be35cd91861574976c7ff79e8",
     "functions/body/hypertension.yaml": "c5cd9d777aa7a51ea3642903575565f870de4bb4cd07d4cfb0acb2eb0eb08bf2",
     "functions/body/immunizing.yaml": "d65bdfa6594e5cf55f939def334580d77f8d84fb7f855910c86a38e4ca0abba6",
     "functions/body/lungs-repairs.yaml": "899b2e0248e4a452130d5460410f080790cb2a80ee81799f303cd6dcb1a3784c",
     "functions/body/nutricia.yaml": "c6ae8bbf7e8f57de44c0df1bafa9a5f080e16d597f6cd4c5049fdb389864113d",
     "functions/body/passages.yaml": "6abd73d499a59373e1741af638f71e2a17a2a8c00965cb4de29d7fc82fe087b1",
     "functions/body/sex-drive.yaml": "1671db633b87d9702d9b6cf7bd3683dd2f18047b96bcba5101df53def812f99e",
-    "functions/body/tune-up.yaml": "a022cdc0b249634838ea068bf9e2e833a94d42858bdcdd4c2ef75d46fcd4ef9d",
+    "functions/body/tune-up.yaml": "f54207238221bc435930dafe539dd9d219888ba2c90c65547581fe3105a7d1d4",
     "functions/body/regenerate.yaml": "67a1ec3f847944e064e0ec2831ef2decc8af0b69208c3a027b437915ac8fbff8",
     "functions/body/short-fix.yaml": "1948dba8133693e4fa907d33aa4510a30c4474c3a4314a8337662dd9ffb44720",
     "functions/cognition/access-to-information.yaml": "bb2c38389388feea18ad42a22aec1e84e880eb32b343e0ae3db496a7b152f926",
@@ -9839,8 +9962,8 @@
     "functions/cognition/recall.yaml": "aeb550a24153dcf23d3a1ae41b2b3da79e1a92345777e663b51aeb058e1c668f",
     "functions/cognition/think-fast.yaml": "e6ce234e058cf1d8bb6ab74c6843765ee22adcf497d8a8d30fbbfd5dc14012bd",
     "functions/communication/speak-up.yaml": "46d70a4e340d738ea2d03a42b5863cbfd9e2b08e6965b7e23e06ab0ca88ae5e3",
-    "functions/emergency/emergency-injury.yaml": "9263cace0a2cac30d528d5b7bf2d1c65e294ea1ed2d4d338d413fc0b2639e66e",
-    "functions/emergency/emergency-toxic.yaml": "e08c1626b38383a99ee0c9443ef8f2c45d9329525647bd35de479965739e213f",
+    "functions/emergency/emergency-injury.yaml": "8410e3752a6deed1505afd0c40e3f364b09a7034b7e17535fbc71babd43d2172",
+    "functions/emergency/emergency-toxic.yaml": "08cb2da5fbd0ea1cc6fa8f4e082d3e3da4630353d9817052e1cb264bd4ef4cf9",
     "functions/emotion/let-go.yaml": "1b3ad890769212a0a95bcf534766c87c84171e3923087770b0b0b1c1b90f5433",
     "functions/emotion/off-loading.yaml": "c2a160d3ad0f196404b5cdbb9eac1b97456278417bb3dc0e7178d7e8e6df221c",
     "functions/emotion/empathizing.yaml": "c5d02479a626e1736bc3e6eea63d0f02fcc8217b7e04f5613762d0ac9e76b9e0",
@@ -9850,7 +9973,7 @@
     "functions/experimental/clear-zone.yaml": "79cd4028d02ddb84f6b72437d20d551b030440acadfaccd42582c3704d1a53dc",
     "functions/experimental/intuition.yaml": "170285741ed6d062232be4fab6a9ece08375d0d3f860d6183384426373f4a107",
     "functions/foundation/energize.yaml": "18c8a03827f47a11814362b9a11e80c73fa6dbba0a04f802fe0c76a38a0c1378",
-    "functions/foundation/attention.yaml": "2385e4b894763480995fd4d4e471895f3edb00e378f4192ca3632a8a6742ae28",
+    "functions/foundation/attention.yaml": "f79b1780ea403926900eed6cb7cef7077dba9b03bf3b2b5a4b4077e4ad496e8b",
     "functions/foundation/recharge.yaml": "4192369502c43aefa4efa0cd6a0988ae38fbdb66f6084849be971756149be465",
     "functions/foundation/relax.yaml": "7cc1df12f010d2942dd99c3a9cab6f67ac8c86039a6ce616f3ab381627d89c0b",
     "functions/foundation/reset.yaml": "fb9819f5fc609a36e56b8e9e10359c980917f181c85feb0a415811681f1ebd68",
@@ -9858,7 +9981,7 @@
     "functions/lifestyle/de-hab.yaml": "045b26ffb00bbf332ab335133b59453b4cd77df61bb281dfd4e9a78c763e8e63",
     "functions/performance/do-this-now.yaml": "e47a4d41673cb081c6204f6093848bae1e88d8233d79dd493249ab5dba1a98ab",
     "functions/performance/eight-great.yaml": "da690abd9584a4add00f942f9cf1dec639838233f31f09415bfa4c8e04d3f55d",
-    "functions/performance/synchronizing.yaml": "baea84216a8dad234a7d1fef996f7d99e4f2336e7002d646437ef2a34e91250c",
+    "functions/performance/synchronizing.yaml": "45bfba5c02fa4ba5e6ba2b8f8b1d70896c93996eb4fd702880b3506e3524b050",
     "functions/performance/light-foot.yaml": "0b05b201874db5ca4746dd0db2f3e0da0add168c2d545912af98e8efbaf54320",
     "functions/performance/make-your-day.yaml": "6f4ddd3b4654473aa1b3cddf72dc53e70d6f55af6d96421205d491044833db20",
     "functions/performance/strong-quick.yaml": "47738b98c483b64d938acdc5abc38eed144dea1a2487b45cabef204bc8c8c515",

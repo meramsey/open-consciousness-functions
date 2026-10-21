@@ -14,7 +14,7 @@ Source availability does not establish historical authentication or provenance.
 
 [Command index](../COMMAND_INDEX.md)
 
-## PLUS-SMOOTH, FAST
+## PLUS-COORDINATE
 
 ### Primary activation command
 

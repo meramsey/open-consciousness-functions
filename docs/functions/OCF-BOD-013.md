@@ -20,7 +20,7 @@ Source availability does not establish historical authentication or provenance.
 - **Lasting baseline / retained effect** (`permanent`, `automatic`): The narrated whole-body maintenance and renewal baseline persists.
 - **Individual invocation / application** (`temporary`, `manual`): Conscious selected-area reinforcement; not continuous intensified repair in that area.
 
-## PLUS-BALANCE, HEAL
+## PLUS-TUNE-UP
 
 ### Primary activation command
 

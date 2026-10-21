@@ -2,7 +2,7 @@
 # Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
 # {"function": "OCF-PRF-003", "title": "Coordination", "locale": "en-US"}
 # English authority: functions/performance/synchronizing.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-PRF-003-PRIMARY", "role": "activation", "display": "PLUS-SMOOTH, FAST", "spoken": "Plus Smooth Fast", "locale_definition": "commands.ocf-cmd-prf-003-primary.spoken-cue"}
+# {"symbol": "cue.primary", "command": "OCF-CMD-PRF-003-PRIMARY", "role": "activation", "display": "PLUS-COORDINATE", "spoken": "Plus Coordinate", "locale_definition": "commands.ocf-cmd-prf-003-primary.spoken-cue"}
 # END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-PRF-003 — Synchronizing
@@ -40,7 +40,7 @@ entries:
 
   hplus.function.ocf-prf-003.function-body:
     status: reviewed
-    version: 1.2.0
+    version: 1.3.0
     notes: >-
       OCF-adapted body based on unverified Synchronizing transcript.
       Original SOURCE +Transcripts From available tapes/Synchronizing/Synchronizing.txt;
@@ -111,7 +111,7 @@ entries:
       will become easier, stronger, and more effective.
   hplus.function.ocf-prf-003.closer:
     status: reviewed
-    version: 1.2.1
+    version: 1.3.0
     notes: >-
       OCF-adapted closer based on unverified Synchronizing transcript.
       Original SOURCE +Transcripts From available tapes/Synchronizing/Synchronizing.txt;
