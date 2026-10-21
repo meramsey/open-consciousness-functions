@@ -119,7 +119,7 @@ def export(output, variant, theme, resolution):
     }
 
 
-def cover_layout(title, footer, font_bytes, resolution):
+def cover_layout(title, footer, font_bytes, resolution, *, cue=None, description=None):
     """Fit localized text around supplied art; fail before cache writes or dry-run."""
     from PIL import Image, ImageDraw, ImageFont
 
@@ -144,6 +144,95 @@ def cover_layout(title, footer, font_bytes, resolution):
         else:
             raise OCFError("cover header/identifier cannot fit legibly")
         nodes.append({"text": text, "y": y, "size": size, "anchor": anchor, "box": bounds})
+    if cue or description:
+        # Keep the supplied emblem and header/footer in their existing positions.
+        # Fit only the title/cue/description stack into the space beneath it.
+        def wrap(text, size, maximum):
+            lines, current = [], ""
+            for character in text:
+                if draw.textlength(current + character, font=font(size)) > 840 * scale:
+                    split = current.rfind(" ")
+                    if split > 0:
+                        lines.append(current[:split])
+                        current = current[split + 1 :] + character
+                    else:
+                        lines.append(current)
+                        current = character
+                else:
+                    current += character
+            if current:
+                lines.append(current)
+            return lines if len(lines) <= maximum else None
+
+        hidden = bool(description and resolution < 512)
+        shown_description = None if hidden else description
+        # Size the master for real player thumbnails too: a 72-unit cue retains
+        # roughly nine pixels of type at 128px, without relying on a separate UI.
+        initial = 104
+        for title_size in range(initial, 41, -1):
+            title_lines = wrap(title, title_size, 2)
+            if not title_lines:
+                continue
+            cue_size = min(72, title_size / 1.4)
+            cue_lines = wrap(cue, cue_size, 2) if cue else []
+            description_size = min(22, title_size / 2.7)
+            description_lines = (
+                wrap(shown_description, description_size, 2) if shown_description else []
+            )
+            if cue_lines is None or description_lines is None:
+                continue
+            stack, boxes = [], {"title": [], "cue": [], "description": []}
+            y = 715 if resolution < 320 else 725
+            for role, lines, size in (
+                ("title", title_lines, title_size),
+                ("cue", cue_lines, cue_size),
+                ("description", description_lines, description_size),
+            ):
+                for line_index, line in enumerate(lines):
+                    bounds = box(line, y, size)
+                    stack.append(
+                        {
+                            "text": line,
+                            "y": y,
+                            "size": size,
+                            "anchor": "mt",
+                            "box": bounds,
+                            "color_role": role,
+                        }
+                    )
+                    boxes[role].append(bounds)
+                    y = y + size * 1.15 if line_index + 1 < len(lines) else bounds[3] / scale
+                if lines:
+                    y += 12
+            if all(
+                b[0] >= 80 * scale
+                and b[2] <= 920 * scale
+                and b[3] < min(925 * scale, nodes[1]["box"][1])
+                for role in boxes.values()
+                for b in role
+            ):
+                nodes.extend(stack)
+                bounds = {
+                    "header": [v / 2 for v in nodes[0]["box"]],
+                    "footer": [v / 2 for v in nodes[1]["box"]],
+                    **{
+                        role: [[v / 2 for v in b] for b in values] for role, values in boxes.items()
+                    },
+                }
+                return {
+                    "nodes": nodes,
+                    "title_lines": title_lines,
+                    "bounds": bounds,
+                    "cue_lines": cue_lines,
+                    "description_lines": description_lines,
+                    "description_hidden_reason": "small-artwork" if hidden else None,
+                    "font_sizes": {
+                        "title": title_size,
+                        "cue": cue_size,
+                        "description": description_size,
+                    },
+                }
+        raise OCFError("localized title/cue/description cannot fit legibly without clipping")
     for size in range(70, 27, -1):
         lines, current = [], ""
         for character in title:
@@ -181,7 +270,7 @@ def cover_layout(title, footer, font_bytes, resolution):
     return {"nodes": nodes, "title_lines": lines, "bounds": bounds}
 
 
-def cover_raster(layout, theme, font_bytes, resolution):
+def cover_raster(layout, theme, font_bytes, resolution, *, description_color=None):
     from PIL import Image, ImageDraw, ImageFont
 
     width = resolution * 2
@@ -201,7 +290,11 @@ def cover_raster(layout, theme, font_bytes, resolution):
             node["text"],
             anchor=node["anchor"],
             font=ImageFont.truetype(io.BytesIO(font_bytes), max(1, round(node["size"] * scale))),
-            fill=theme["palette"]["foreground"],
+            fill=theme["palette"]["accent"]
+            if node.get("color_role") == "cue"
+            else description_color
+            if node.get("color_role") == "description" and description_color
+            else theme["palette"]["foreground"],
         )
     return image.resize((resolution, resolution), Image.Resampling.LANCZOS)
 

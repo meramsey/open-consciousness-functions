@@ -352,6 +352,14 @@ def _resolve_tags(
         "date": str(manifest.get("release_date") or ""),
     }
     tags.update(extra)
+    if function_id and record and getattr(record, "documentation", None):
+        from .artwork_content import content_tags, function_artwork_content
+
+        tags.update(
+            content_tags(
+                function_artwork_content(function_id, str(manifest.get("language") or "en-US"))
+            )
+        )
     for key, value in (tag_overrides or {}).items():
         tags[key] = value
     return {k: v for k, v in tags.items() if v}

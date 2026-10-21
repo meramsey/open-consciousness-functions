@@ -187,6 +187,14 @@ def test_private_streamcopy_artwork_tags_and_pcm_roundtrip(tmp_path, monkeypatch
         assert item["tags"]["ocf_audio_version"] == "0.1.0"
         assert item["tags"]["ocf_version_label"] == "v0.1.0"
         assert item["tags"]["artist"] == "Amy"
+        assert item["tags"]["ocf_primary_display_cue"] == "PLUS-MANIFEST"
+        assert item["tags"]["ocf_primary_spoken_cue"] == "Plus Manifest"
+        assert (
+            item["tags"]["ocf_short_description"]
+            == "Align your intention with the reality you choose"
+        )
+        assert item["tags"]["ocf_function_purpose"] == manifest["function_content"]["purpose"]
+        assert item["tags"]["ocf_description_review"] == "draft"
         if choice != "none":
             assert exports.front_cover_type(path) == 3
         else:

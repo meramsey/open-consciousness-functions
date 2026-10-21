@@ -460,6 +460,9 @@ def package_release(
             "OCF_RELEASE_VERSION": release_version,
             **overrides,
         }
+        from .artwork_content import content_tags, function_artwork_content
+
+        tag_values.update(content_tags(function_artwork_content(function_id, requested_locale)))
         built = audio_build.build(
             str(audio_manifest["id"]),
             out_root=render_dir,

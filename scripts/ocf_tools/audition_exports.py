@@ -194,6 +194,8 @@ def select_cover(
     no_artwork=False,
     artwork_resolution=1400,
     dry_run=False,
+    show_cue=True,
+    show_description=True,
 ):
     """Common render/export cover policy; approval never suppresses artwork."""
     if no_artwork:
@@ -225,6 +227,8 @@ def select_cover(
         version=version,
         status_label="BETA / PRIVATE",
         dry_run=dry_run,
+        show_cue=show_cue,
+        show_description=show_description,
     )
     return (
         Path(generated["path"]),
@@ -305,6 +309,8 @@ def export_audition(
     artwork_resolution: int = 1400,
     output: str | Path | None = None,
     dry_run: bool = False,
+    show_cue: bool = True,
+    show_description: bool = True,
 ) -> dict:
     """Export a completed session privately, reusing existing compressed audio when supplied."""
     if no_artwork and (artwork_file or artwork_theme):
@@ -372,6 +378,10 @@ def export_audition(
         "OCF_VERSION_LABEL": "v" + version,
         "OCF_EDITION_KIND": "private-audition",
     }
+    from .artwork_content import content_tags, function_artwork_content
+
+    function_content = function_artwork_content(function_id, locale)
+    tags.update(content_tags(function_content))
     cover_path, provenance, generated = select_cover(
         function_id,
         locale,
@@ -381,6 +391,8 @@ def export_audition(
         no_artwork=no_artwork,
         artwork_resolution=artwork_resolution,
         dry_run=dry_run,
+        show_cue=show_cue,
+        show_description=show_description,
     )
     namer = ArtifactNamer()
     names = {
@@ -487,6 +499,8 @@ def export_audition(
             "artifacts": verified,
             "cover": _artifact(cover_path) if cover_path else None,
             "source_artifacts_unchanged": True,
+            "function_content": function_content,
+            "cover_options": {"show_cue": show_cue, "show_description": show_description},
         }
         write_text_atomic(
             stage / "audition-edition.json", json.dumps(edition_record, indent=2) + "\n"

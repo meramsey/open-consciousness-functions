@@ -29,6 +29,49 @@ geometry/assets remain unchanged.
 
 ## Supplied Cosmic Path import 0.3.0
 
+### Primary cues and localized artwork copy
+
+Cosmic covers keep the supplied emblem, palette and typography. Their text
+hierarchy is brand → emblem → dominant title → primary display cue in the theme
+accent → optional subdued description → ID/version/status footer. The cue is
+resolved from the function's structured **primary** command through the shared
+command/LocaleCatalog services. Artwork configuration never defines a second cue.
+Clear Zone covers show `PLUS-CLEAR ZONE`; its secondary modes remain in metadata.
+
+Optional UI entries `functions.<lowercase-function-id>.artwork-description`
+own independently editable short artwork copy. The four en-US proposals live
+in the existing `locales/en-US/ui.yaml`, explicitly marked `draft`; their wording remains
+pending human artwork-copy review and is not narration or a behavior change.
+The full purpose still resolves from the function's existing `purpose_key`.
+The locale registry and existing editorial approval records remain unchanged;
+these optional new fields carry their own entry versions.
+
+Strict locale resolution is the default for these additions: no silent English
+cue, description or purpose fallback. Missing optional descriptions are omitted;
+unreviewed translated descriptions/cues fail. English proposal previews retain
+their draft status in provenance and metadata rather than being promoted.
+Library callers deliberately reviewing fallback UI may set `strict_locale=False`,
+which is recorded in the artwork report. No translations are fabricated.
+
+`artwork generate` and `audio export-audition` accept `--no-description` and
+`--no-cue`. Hiding cover elements does not remove authoritative cue/purpose
+metadata from listening exports. Dark, cosmic-light and custom themes extending
+them share the same layout and contrast checks. Existing baseline/refined
+identity compositions retain their original layouts.
+
+Master listening covers remain 2400 × 2400. Responsive cosmic previews also
+support 512, 256 and 128 pixels: descriptions are omitted below 512, title/cue
+type takes priority, and long text wraps within bounded regions or fails instead
+of clipping. The renderer records visible text, font sizes, layout bounds,
+locale/review provenance and content fingerprints for QA.
+
+Listening metadata includes primary display/spoken cues, full purpose, optional
+short description, review state and secondary-command metadata as ordinary
+textual ID3 TXXX / Vorbis comment fields. `OCF_SHORT_DESCRIPTION` is used instead
+of FFmpeg's generic `description` alias, which can overwrite an existing comment.
+Existing valid comments/track numbering and original embedded artwork remain
+intact in their historical files; enhanced copies use new output directories.
+
 Private full-session listening copies use the same artwork generator through
 `audio export-audition`, including default dark, light/custom overrides and
 explicit `--no-artwork`. See [private listening exports](AUDIO_PIPELINE.md#private-listening-exports-from-completed-sessions).

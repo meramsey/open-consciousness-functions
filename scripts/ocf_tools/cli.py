@@ -178,6 +178,12 @@ def _build_parser() -> argparse.ArgumentParser:
     cover_cmd.add_argument("--format", choices=["png", "jpeg"], default="png")
     cover_cmd.add_argument("--version")
     cover_cmd.add_argument("--font", help="explicit installed licensed TTF/OTF override")
+    cover_cmd.add_argument(
+        "--no-cue", action="store_true", help="minimalist cover without the primary cue"
+    )
+    cover_cmd.add_argument(
+        "--no-description", action="store_true", help="omit optional localized artwork copy"
+    )
     cover_cmd.add_argument("--output", type=Path)
     dev = sub.add_parser(
         "dev",
@@ -344,6 +350,12 @@ def _build_parser() -> argparse.ArgumentParser:
         "--no-artwork", action="store_true", help="explicitly disable default artwork"
     )
     export_cmd.add_argument("--artwork-resolution", type=int, default=1400)
+    export_cmd.add_argument(
+        "--no-cue", action="store_true", help="minimalist generated cover; cue metadata retained"
+    )
+    export_cmd.add_argument(
+        "--no-description", action="store_true", help="omit cover description; metadata retained"
+    )
     export_cmd.add_argument("--output", type=Path, help="new directory inside the OCF workspace")
     export_cmd.add_argument("--dry-run", action="store_true")
     review_sessions_cmd = audio_sub.add_parser(
@@ -1302,6 +1314,8 @@ def main(argv: list[str] | None = None) -> int:
                     version=args.version,
                     overrides={"font": args.font} if args.font else None,
                     output=args.output,
+                    show_cue=not args.no_cue,
+                    show_description=not args.no_description,
                 )
             print(json.dumps(result, ensure_ascii=False, indent=2))
             return 0
@@ -1565,6 +1579,8 @@ def main(argv: list[str] | None = None) -> int:
                     artwork_theme=args.artwork_theme,
                     no_artwork=args.no_artwork,
                     artwork_resolution=args.artwork_resolution,
+                    show_cue=not args.no_cue,
+                    show_description=not args.no_description,
                     output=args.output,
                     dry_run=args.dry_run,
                 )
