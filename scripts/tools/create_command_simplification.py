@@ -76,7 +76,7 @@ def main():
 
     function_files = {}
     for path in sorted((root / "functions").rglob("*.yaml")):
-        owner = yaml.safe_load(path.read_text())["id"]
+        owner = yaml.safe_load(path.read_text(encoding="utf-8"))["id"]
         if owner in PAIRS:
             function_files[owner] = path.relative_to(root).as_posix()
     if set(function_files) != set(PAIRS):
@@ -125,7 +125,7 @@ def main():
             write(
                 locale_file,
                 replace_entry(
-                    (root / locale_file).read_text(),
+                    (root / locale_file).read_text(encoding="utf-8"),
                     primary["localization"][kind + "_cue_key"],
                     edit,
                 ),
@@ -141,7 +141,9 @@ def main():
             write(
                 locale_file,
                 replace_entry(
-                    (root / locale_file).read_text(), "functions.ocf-fnd-002.title", edit_title
+                    (root / locale_file).read_text(encoding="utf-8"),
+                    "functions.ocf-fnd-002.title",
+                    edit_title,
                 ),
             )
         name = f"locales/en-US/hplus-{owner}.yaml"
@@ -186,7 +188,11 @@ def main():
         if name in before:
             write(name, text)
     if not LOCK_PATH.exists():
-        create_lock(dependency_names=list(json.loads((root / PREVIOUS_LOCK).read_text())["files"]))
+        create_lock(
+            dependency_names=list(
+                json.loads((root / PREVIOUS_LOCK).read_text(encoding="utf-8"))["files"]
+            )
+        )
     else:
         from ocf_tools.audio_defaults import check_lock
 
@@ -211,7 +217,9 @@ def main():
                     )
                 )
                 old_texts[identity] = texts[identity].replace(left, right)
-        if text_fingerprints(old_texts) != json.loads((root / PREVIOUS_BASELINE).read_text()):
+        if text_fingerprints(old_texts) != json.loads(
+            (root / PREVIOUS_BASELINE).read_text(encoding="utf-8")
+        ):
             raise OCFError("recovery cannot prove the exact predecessor narration")
     speech = {
         identity: {
@@ -253,12 +261,14 @@ def main():
             name: {
                 "before": raw,
                 "before_sha256": sha(raw),
-                "after_sha256": sha((root / name).read_text()),
+                "after_sha256": sha((root / name).read_text(encoding="utf-8")),
             }
             for name, raw in before.items()
-            if raw != (root / name).read_text()
+            if raw != (root / name).read_text(encoding="utf-8")
         },
-        "immutable_files": {name: sha((root / name).read_text()) for name in immutable},
+        "immutable_files": {
+            name: sha((root / name).read_text(encoding="utf-8")) for name in immutable
+        },
         "recording_cache_impact": "Only approved resolved cue/sign-off changes invalidate speech hashes. Preserve originals and require matching speech before rebinding recordings.",
     }
     write(BASELINE, dump(text_fingerprints(texts)))

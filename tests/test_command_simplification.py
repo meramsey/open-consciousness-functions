@@ -1,6 +1,7 @@
 """Approved speech scope, procedure preservation and fail-closed history."""
 
 import json
+from pathlib import Path
 
 import pytest
 import yaml
@@ -23,6 +24,16 @@ def test_exact_fifteen_entry_successor_and_immutable_history():
     assert sum(texts[key] != before[key] for key in texts) == 15
     assert sum(texts[key] == before[key] for key in texts) == 162
     assert not any("shared" in key or key.endswith(".opener") for key in data["speech"])
+
+
+def test_verifier_decodes_utf8_independently_of_host_default(monkeypatch):
+    original = Path.read_text
+
+    def windows_default(path, encoding=None, errors=None):
+        return original(path, encoding=encoding or "cp1252", errors=errors)
+
+    monkeypatch.setattr(Path, "read_text", windows_default)
+    assert subject.verify() == []
 
 
 @pytest.mark.parametrize("owner", subject.PAIRS)

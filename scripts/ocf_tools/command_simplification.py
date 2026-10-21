@@ -148,10 +148,10 @@ def verify(root=REPO_ROOT):
             raise OCFError("command simplification immutable predecessor drift: " + name)
     texts = narration_texts(root)
     if text_fingerprints(before_texts(root, texts)) != json.loads(
-        (root / PREVIOUS_BASELINE).read_text()
+        (root / PREVIOUS_BASELINE).read_text(encoding="utf-8")
     ):
         raise OCFError("command simplification changed unrelated protected speech")
-    if text_fingerprints(texts) != json.loads((root / BASELINE).read_text()):
+    if text_fingerprints(texts) != json.loads((root / BASELINE).read_text(encoding="utf-8")):
         raise OCFError("command simplification baseline drift")
     expected_scope = set()
     for owner, (_, _, old, new) in PAIRS.items():
@@ -177,15 +177,15 @@ def verify(root=REPO_ROOT):
         raise OCFError("command simplification speech scope drift")
     for name in data["function_files"]:
         old = yaml.safe_load(data["files"][name]["before"])
-        if yaml.safe_load((root / name).read_text()) != approved_function(old):
+        if yaml.safe_load((root / name).read_text(encoding="utf-8")) != approved_function(old):
             raise OCFError("command simplification changed behavior: " + name)
-    ui = yaml.safe_load((root / "locales/en-US/ui.yaml").read_text())["entries"]
+    ui = yaml.safe_load((root / "locales/en-US/ui.yaml").read_text(encoding="utf-8"))["entries"]
     for owner, text in ARTWORK.items():
         entry = ui[f"functions.{owner.lower()}.artwork-description"]
         if entry["text"] != text or entry["status"] != "reviewed":
             raise OCFError("artwork differs from explicit approval: " + owner)
-    old_lock = json.loads((root / PREVIOUS_LOCK).read_text())
-    new_lock = json.loads((root / data["lock"]).read_text())
+    old_lock = json.loads((root / PREVIOUS_LOCK).read_text(encoding="utf-8"))
+    new_lock = json.loads((root / data["lock"]).read_text(encoding="utf-8"))
     expected = deepcopy(old_lock)
     expected.update(id=new_lock["id"], version=new_lock["version"])
     for name in expected["files"]:
