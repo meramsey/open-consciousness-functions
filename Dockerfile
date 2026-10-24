@@ -26,6 +26,7 @@ COPY audio/background/manifests/ audio/background/manifests/
 COPY audio/background/presets/ audio/background/presets/
 COPY audio/background/state-profiles/ audio/background/state-profiles/
 ENV HOME=/home/ocf
+ENV OCF_WORK_DIR=/home/ocf/.ocf/work
 RUN chmod -R a+rX /opt/ocf && mkdir -p /home/ocf/.ocf && chown ocf:ocf /home/ocf/.ocf
 USER ocf
 VOLUME ["/out", "/home/ocf/.ocf"]

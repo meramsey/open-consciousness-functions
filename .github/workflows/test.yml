@@ -9,6 +9,19 @@ permissions:
   contents: read
 
 jobs:
+  container-workspace:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements-dev.txt
+      - run: docker build -t ocf-workspace-smoke .
+      - name: Non-root workspace with read-only application and no network
+        env:
+          OCF_TEST_CONTAINER_IMAGE: ocf-workspace-smoke
+        run: python -m pytest tests/test_container_config.py
   python-lsp:
     strategy:
       fail-fast: false

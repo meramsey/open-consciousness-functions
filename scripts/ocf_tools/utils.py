@@ -7,6 +7,8 @@ import hashlib
 import json
 import os
 import tempfile
+from contextlib import contextmanager, suppress
+from contextvars import ContextVar
 from copy import deepcopy
 from functools import lru_cache
 from pathlib import Path
@@ -22,6 +24,17 @@ from .paths import (
 )
 
 UTF8 = "utf-8"
+_file_hashes: ContextVar[dict | None] = ContextVar("ocf_verified_file_hashes", default=None)
+
+
+@contextmanager
+def verified_file_hashes():
+    """Reuse measured hashes only within a job while file identity is unchanged."""
+    token = _file_hashes.set({})
+    try:
+        yield
+    finally:
+        _file_hashes.reset(token)
 
 
 class OCFError(Exception):
@@ -82,7 +95,7 @@ def read_text(path: Path) -> str:
 
 
 def write_text_atomic(path: Path, content: str, *, overwrite: bool = True) -> None:
-    """Write UTF-8 text atomically (temp file + os.replace).
+    """Publish complete UTF-8 text, exclusively unless overwrite is allowed.
 
     Raises OCFFileExistsError if the target exists and overwrite is False.
     """
@@ -91,18 +104,18 @@ def write_text_atomic(path: Path, content: str, *, overwrite: bool = True) -> No
     path.parent.mkdir(parents=True, exist_ok=True)
     fd, tmp = workspace_temp_file(prefix="ocf-atomic-write-", suffix=".tmp")
     fallback: str | None = None
+    publish = os.replace if overwrite else os.link
     try:
         with os.fdopen(fd, "w", encoding=UTF8, newline="\n") as handle:
             handle.write(content)
             handle.flush()
             os.fsync(handle.fileno())
         try:
-            os.replace(tmp, path)
+            publish(tmp, path)
         except OSError as exc:
             if exc.errno != errno.EXDEV:
                 raise
-            # Atomic rename is only possible within the explicitly selected
-            # output filesystem; this fallback is confined to that target.
+            # Stage complete bytes on the target filesystem before publication.
             descriptor, fallback = tempfile.mkstemp(
                 dir=str(path.parent), prefix=f".{path.name}.", suffix=".tmp"
             )
@@ -110,24 +123,73 @@ def write_text_atomic(path: Path, content: str, *, overwrite: bool = True) -> No
                 handle.write(content)
                 handle.flush()
                 os.fsync(handle.fileno())
-            os.replace(fallback, path)
+            publish(fallback, path)
+            Path(fallback).unlink(missing_ok=True)
             fallback = None
-            tmp.unlink(missing_ok=True)
+        tmp.unlink(missing_ok=True)
         cleanup_workspace_temp(tmp.parent)
     except BaseException as exc:
         if fallback is not None:
-            Path(fallback).unlink(missing_ok=True)
+            with suppress(OSError):
+                Path(fallback).unlink(missing_ok=True)
+        with suppress(OSError):
+            tmp.unlink(missing_ok=True)
+            cleanup_workspace_temp(tmp.parent)
         record_workspace_failure(tmp.stem, f"atomic write failed for {path}: {exc}")
+        if not overwrite and isinstance(exc, FileExistsError):
+            raise OCFFileExistsError(f"Refusing to overwrite existing file: {path}") from exc
+        if (
+            not overwrite
+            and isinstance(exc, OSError)
+            and exc.errno
+            in {
+                errno.EPERM,
+                errno.ENOSYS,
+                errno.EOPNOTSUPP,
+                errno.ENOTSUP,
+            }
+        ):
+            raise OCFError(
+                f"filesystem does not support atomic no-overwrite publication: {path}: {exc}"
+            ) from exc
         raise
 
 
 def sha256_of_file(path: Path) -> str:
     """Return the lowercase hex SHA-256 digest of a file."""
+    cache = _file_hashes.get()
+    key = None
+    if cache is not None:
+        path = path.resolve()
+        before = path.stat()
+        key = (
+            path,
+            before.st_dev,
+            before.st_ino,
+            before.st_size,
+            before.st_mtime_ns,
+            before.st_ctime_ns,
+        )
+        if key in cache:
+            return cache[key]
     digest = hashlib.sha256()
     with open(path, "rb") as handle:
         for chunk in iter(lambda: handle.read(65536), b""):
             digest.update(chunk)
-    return digest.hexdigest()
+    result = digest.hexdigest()
+    if cache is not None:
+        after = path.stat()
+        if key != (
+            path,
+            after.st_dev,
+            after.st_ino,
+            after.st_size,
+            after.st_mtime_ns,
+            after.st_ctime_ns,
+        ):
+            raise OCFError(f"file changed while hashing: {path}")
+        cache[key] = result
+    return result
 
 
 def slugify(text: str) -> str:

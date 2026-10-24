@@ -56,7 +56,14 @@ def test_bulk_resume_verifies_artifacts_force_preserves_history_and_failure_cont
     monkeypatch, tmp_path
 ):
     monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
-    monkeypatch.setattr(bulk_render, "source_plan", lambda owner, locale: ({"id": owner}, {}, {}))
+    from ocf_tools import semantic_dsp
+
+    monkeypatch.setattr(
+        bulk_render,
+        "source_plan",
+        lambda owner, locale: ({"id": owner}, {}, {"resolved_dsp_profile": {"id": "fixture"}}),
+    )
+    monkeypatch.setattr(semantic_dsp, "dependency_identity", lambda _: {"verified": True})
     monkeypatch.setattr(bulk_render, "LocaleCatalog", lambda: None)
     monkeypatch.setattr(bulk_render, "_voice_profile", lambda *_: ({}, {}))
     monkeypatch.setattr(bulk_render, "voice_identity", lambda _: {"fixture": True})
@@ -97,9 +104,8 @@ def test_bulk_resume_verifies_artifacts_force_preserves_history_and_failure_cont
     (outputs[1] / "master.wav").write_bytes(b"corrupt")
     bulk_render.render_many(["ok"], voice="fixture")
     assert len(outputs) == 3
-    from ocf_tools import semantic_dsp
 
-    dependencies = {"profile": "reference-v4", "source_sha256": "first-source"}
+    dependencies = {"profile": "reference-v4", "source_sha256": "first-source", "verified": True}
     monkeypatch.setattr(semantic_dsp, "dependency_identity", lambda _: dict(dependencies))
     selected = []
 

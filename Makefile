@@ -1,7 +1,7 @@
 PY?=python3
 OCF:=$(PY) scripts/ocf.py
 
-.PHONY: help test validate indexes check lint clean
+.PHONY: help test validate indexes check lint lint-markdown clean
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*##' Makefile | awk 'BEGIN {FS = ":.*?## "}; {printf "  %-12s %s\n", $$1, $$2}'
@@ -27,7 +27,10 @@ lint: ## Lint Python (ruff), Markdown, and internal links
 	$(PY) scripts/tools/check_markdown_links.py
 	$(PY) scripts/tools/brand_presentation.py --check
 	$(PY) -m ocf_tools.examples --check
-	-command -v markdownlint >/dev/null && markdownlint . || echo "markdownlint not installed; skipping"
+	$(MAKE) lint-markdown
+
+lint-markdown: ## Run optional Markdown lint without hiding installed-tool failures
+	@if command -v markdownlint >/dev/null; then markdownlint .; else echo "markdownlint not installed; skipping"; fi
 
 check: ## Validate functions and verify generated/pinned data freshness
 	$(OCF) validate --all

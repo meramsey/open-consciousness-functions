@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import hashlib
 import math
 import os
 import re
@@ -15,18 +14,13 @@ from typing import Any
 from .indexes import load_yaml_file
 from .locale import iter_events
 from .paths import REPO_ROOT, cleanup_workspace_temp, workspace_run, workspace_temp_directory
-from .utils import OCFError, yaml_safe_dump
+from .utils import OCFError, sha256_of_file, yaml_safe_dump
 from .validators import _load_schema, validate_against_schema
 
 PROFILES_DIR = REPO_ROOT / "audio/background/state-profiles"
 
 
-def _sha(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as stream:
-        for block in iter(lambda: stream.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
+_sha = sha256_of_file
 
 
 def _duration_seconds(value: Any) -> float | None:
@@ -107,12 +101,16 @@ def load_profile(reference: str | Path) -> dict:
     return data
 
 
-def dependency_identity(reference: str | Path) -> dict:
+def dependency_identity(reference: str | Path | dict) -> dict:
     """Bind bulk resume to the selected profile, manifests and actual local sources."""
     from .audio_build import _resolve_background_manifest
 
-    profile = load_profile(reference)
-    inputs = {}
+    profile = reference if isinstance(reference, dict) else load_profile(reference)
+    inputs, engines = {}, {}
+    processing = {
+        name: _sha(Path(binary)) if (binary := shutil.which(name)) else None
+        for name in ("ffmpeg", "ffprobe")
+    }
     for state, selection in profile["states"].items():
         if selection["mode"] == "disabled":
             continue
@@ -120,6 +118,16 @@ def dependency_identity(reference: str | Path) -> dict:
         if manifest is None:
             raise OCFError("unknown background manifest: " + selection["preset"])
         row = {"manifest": manifest, "sources": {}}
+        backend = manifest["engine"]
+        if backend not in engines:
+            if backend == "farfield":
+                from .farfield import engine_identity
+
+                engines[backend] = engine_identity()
+            elif backend == "reference-master":
+                engines[backend] = {"mode": "local-source"}
+            else:
+                engines[backend] = None
         ref = manifest.get("reference") or {}
         sources = [ref["source"]] if ref.get("source") else []
         sources.extend(item["source"] for item in ref.get("splices", []))
@@ -133,7 +141,17 @@ def dependency_identity(reference: str | Path) -> dict:
         if ref.get("source") and expected and row["sources"].get(ref["source"]) != expected:
             raise OCFError("reference master checksum mismatch: " + ref["source"])
         inputs[state] = row
-    return {"profile": profile, "inputs": inputs}
+    return {
+        "profile": profile,
+        "inputs": inputs,
+        "engines": engines,
+        "processing": processing,
+        "verified": all(value is not None for value in [*engines.values(), *processing.values()]),
+        "adapters": {
+            name: _sha(Path(__file__).with_name(name))
+            for name in ("semantic_dsp.py", "audio_build.py", "farfield.py", "dsp_cache.py")
+        },
+    }
 
 
 def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: dict) -> dict:
