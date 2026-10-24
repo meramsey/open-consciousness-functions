@@ -261,6 +261,7 @@ def package_release(
     overwrite: bool = False,
     created_at: datetime | None = None,
     lyrics: bool = False,
+    guides: str | Path | None = None,
 ) -> dict[str, Any]:
     """Render, verify, and publish one complete function release directory."""
     from . import audio_build
@@ -408,6 +409,7 @@ def package_release(
             "manifest.json",
         ],
         "embedded_lyrics": lyrics,
+        "include_guides": guides is not None,
     }
     if dry_run:
         return {
@@ -444,6 +446,13 @@ def package_release(
         ) from exc
     backup: Path | None = None
     try:
+        guide_artifacts = []
+        if guides is not None:
+            from .listener_packages import attach_guides
+
+            guide_artifacts = attach_guides(
+                stage, [function_id], source=Path(guides), locale=requested_locale
+            )
         render_dir = stage / "render"
         tag_values = {
             "title": title,
@@ -598,6 +607,7 @@ def package_release(
                 },
             ],
         }
+        manifest["artifacts"].extend(guide_artifacts)
         _validate_manifest(manifest)
         _verify_manifest(stage, manifest)
         if transcript_path.read_bytes().decode(

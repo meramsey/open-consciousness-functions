@@ -4,8 +4,9 @@ Get things done with OCF tooling.
 
 ## Current checkpoint
 
-The catalog retains 55 functions/legacy mappings, 97 structured command records,
-55 generated en-US session plans and all 177 protected narration entries.
+The catalog contains 58 functions, preserves 55 historical mappings, and has
+102 structured command records, 58 generated en-US session plans and all 177
+protected narration entries.
 Historical source availability remains 39 available / 16 unavailable; it is not
 modern TTS eligibility or release approval. Canonical `PLUS-THINK`, `PLUS-FOCUS`
 and `PLUS-SEE BETTER` remain unchanged. Source wording, review status and measured

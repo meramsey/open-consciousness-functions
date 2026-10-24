@@ -303,13 +303,8 @@ def attach_render_artwork(
         }
 
 
-def _retained_export(source: Path, version: str | None, edition: str | Path | None) -> dict:
-    """Open verified listening copies without inventing a missing session report/WAV."""
-    path = source / "manifest.json"
-    previous = read_json_object(path)
-    if previous.get("kind") != "private-audition-export":
-        raise OCFError("source must be a completed session or a verified private audition export")
-    record = read_json_object(Path(edition) if edition else source / "audition-edition.json")
+def _verify_export_identity(previous: dict, record: dict) -> str:
+    """Validate portable edition/provenance identity without reading or decoding audio."""
     errors = validate_against_schema(record, _load_schema("audition-edition.schema.json"))
     if errors:
         raise OCFError("invalid retained audition edition: " + " | ".join(errors))
@@ -322,13 +317,10 @@ def _retained_export(source: Path, version: str | None, edition: str | Path | No
         or record["session_report_sha256"] != previous.get("source_report", {}).get("sha256")
     ):
         raise OCFError("retained export edition/source identity does not match")
-    if version and version != record["version"]:
-        raise OCFError("requested edition version conflicts with retained export")
     items = previous.get("artifacts", {})
     if not all(fmt in items for fmt in ("flac", "mp3")):
         raise OCFError("retained export requires verified FLAC and MP3 sources")
-    inputs = {fmt: _source_artifact(source, items[fmt]) for fmt in ("flac", "mp3")}
-    for fmt in inputs:
+    for fmt in ("flac", "mp3"):
         item = items[fmt]
         pcm_valid = isinstance(item.get("pcm_sha256"), str) and len(item["pcm_sha256"]) == 64
         packet = item.get("packet_sha256")
@@ -350,6 +342,19 @@ def _retained_export(source: Path, version: str | None, edition: str | Path | No
     narrator = items["flac"]["tags"].get("ocf_narrator")
     if not narrator or narrator != items["mp3"]["tags"].get("ocf_narrator"):
         raise OCFError("retained export narrator identity is missing/inconsistent")
+    return narrator
+
+
+def _retained_export(source: Path, version: str | None, edition: str | Path | None) -> dict:
+    """Open verified listening copies without inventing a missing session report/WAV."""
+    previous = read_json_object(source / "manifest.json")
+    if previous.get("kind") != "private-audition-export":
+        raise OCFError("source must be a completed session or a verified private audition export")
+    record = read_json_object(Path(edition) if edition else source / "audition-edition.json")
+    narrator = _verify_export_identity(previous, record)
+    if version and version != record["version"]:
+        raise OCFError("requested edition version conflicts with retained export")
+    inputs = {fmt: _source_artifact(source, previous["artifacts"][fmt]) for fmt in ("flac", "mp3")}
     return {"document": previous, "edition": record, "inputs": inputs, "narrator": narrator}
 
 
@@ -369,6 +374,7 @@ def export_audition(
     show_cue: bool = True,
     show_description: bool = True,
     lyrics: bool = False,
+    guides: str | Path | None = None,
 ) -> dict:
     """Export a completed session privately, reusing existing compressed audio when supplied."""
     if no_artwork and (artwork_file or artwork_theme):
@@ -498,6 +504,7 @@ def export_audition(
             "tags": tags,
             "files": names,
             "lyrics": lyrics,
+            "include_guides": guides is not None,
             "audio_operations": {
                 fmt: "stream-copy" if path != master else "encode-from-master"
                 for fmt, path in inputs.items()
@@ -525,6 +532,13 @@ def export_audition(
         raise OCFError("retained export audio differs from its verified checksum evidence")
     stage = workspace_temp_directory(prefix="ocf-audition-export-")
     try:
+        guide_artifacts = []
+        if guides is not None:
+            from .listener_packages import attach_guides
+
+            guide_artifacts = attach_guides(
+                stage, [function_id], source=Path(guides), locale=locale
+            )
         if cover_path:
             # Normalize only custom JPEG imagery to the requested separate cover.png.
             # Generated PNG bytes stay exact, including their embedded copies.
@@ -619,6 +633,7 @@ def export_audition(
             "function_content": function_content,
             "cover_options": {"show_cue": show_cue, "show_description": show_description},
             "listener_text": listener_text,
+            "guides": guide_artifacts,
         }
         write_text_atomic(
             stage / "audition-edition.json", json.dumps(edition_record, indent=2) + "\n"

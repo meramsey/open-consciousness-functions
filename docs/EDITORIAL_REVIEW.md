@@ -103,7 +103,7 @@ editing its old wording or substitutions cannot silently enlarge the approval.
 
 Twenty-eight approvals change 41 protected body/closer entries; the other 136
 entries are byte-identical to the preceding revision. Titles and/or primary cues
-change only as selected. Current totals are 55 functions, 97 stable command
+change only as selected. At that batch checkpoint there were 55 functions, 97 stable command
 identities, 79 active records, 18 historical-only records and 40 implemented
 approved primary pairs. Nine superseded primary aliases become historical-only.
 Retrieval, release and sensory LESS controls retain their exact data and speech.

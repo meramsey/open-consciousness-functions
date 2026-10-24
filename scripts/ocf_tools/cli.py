@@ -360,6 +360,7 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     export_cmd.add_argument("--output", type=Path, help="new directory inside the OCF workspace")
     export_cmd.add_argument("--dry-run", action="store_true")
+    export_cmd.add_argument("--guides", type=Path, help="attach current cached listener guides")
     export_cmd.add_argument(
         "--lyrics",
         action="store_true",
@@ -618,6 +619,7 @@ def _build_parser() -> argparse.ArgumentParser:
     release_cmd.add_argument("--artwork-resolution", type=int, default=1400)
     release_cmd.add_argument("--output", help="release root directory (default: releases/)")
     release_cmd.add_argument("--version", help="explicit release version")
+    release_cmd.add_argument("--guides", type=Path, help="attach current cached listener guides")
     release_cmd.add_argument(
         "--lyrics", action="store_true", help="embed measured MP3/FLAC lyrics; requires .[listener]"
     )
@@ -1586,6 +1588,8 @@ def main(argv: list[str] | None = None) -> int:
                 result = export_audition(
                     args.source,
                     edition_version=args.edition_version,
+                    lyrics=args.lyrics,
+                    guides=args.guides,
                     edition=args.edition,
                     flac_source=args.flac_source,
                     mp3_source=args.mp3_source,
@@ -1889,6 +1893,7 @@ def main(argv: list[str] | None = None) -> int:
                     dry_run=args.dry_run,
                     overwrite=args.force,
                     lyrics=args.lyrics,
+                    guides=args.guides,
                 )
                 print(json.dumps(result, ensure_ascii=False, indent=2))
                 return 0

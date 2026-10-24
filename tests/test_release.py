@@ -240,6 +240,7 @@ def test_release_cli_routes_options_to_release_builder(monkeypatch, capsys):
                 "dry_run": True,
                 "overwrite": False,
                 "lyrics": True,
+                "guides": None,
             },
         )
     ]
@@ -417,6 +418,23 @@ def test_package_publishes_complete_verified_release_and_blocks_collision(
         return render
 
     monkeypatch.setattr(audio_build, "build", fake_build)
+
+    def fixture_guides(stage, function_ids, *, source, locale):
+        assert function_ids == ["OCF-BOD-010"] and locale == "en-US"
+        assert source == tmp_path / "guide-cache"
+        target = stage / "guides" / "listening-guide.pdf"
+        target.parent.mkdir()
+        target.write_bytes(b"synthetic guide")
+        return [
+            {
+                "path": "guides/listening-guide.pdf",
+                "format": "application/pdf",
+                "size_bytes": target.stat().st_size,
+                "sha256": sha256_of_file(target),
+            }
+        ]
+
+    monkeypatch.setattr("ocf_tools.listener_packages.attach_guides", fixture_guides)
     timestamp = datetime(2026, 10, 13, tzinfo=UTC)
     result = rel.package_release(
         "OCF-BOD-010",
@@ -426,6 +444,7 @@ def test_package_publishes_complete_verified_release_and_blocks_collision(
         created_at=timestamp,
         lyrics=lyrics,
         voice="fixture-voice",
+        guides=tmp_path / "guide-cache",
     )
     release_dir = Path(result["release_directory"])
     assert result["manifest"]["title"] == "Nutricia"
@@ -454,6 +473,7 @@ def test_package_publishes_complete_verified_release_and_blocks_collision(
     assert (release_dir / "manifest.json").is_file()
     manifest = json.loads((release_dir / "manifest.json").read_text(encoding="utf-8"))
     rel._verify_manifest(release_dir, manifest)
+    assert (release_dir / "guides/listening-guide.pdf").read_bytes() == b"synthetic guide"
     with pytest.raises(OCFError, match="already exists"):
         rel.package_release(
             "OCF-BOD-010",

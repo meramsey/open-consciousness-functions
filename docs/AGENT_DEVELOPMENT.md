@@ -5,7 +5,7 @@ map for targeted investigation, not a replacement for schemas or tests.
 
 ## Repository map
 
-- `functions/`: 55 canonical function records; YAML owns identity and command
+- `functions/`: 58 canonical function records, including 55 historical targets; YAML owns identity and command
   metadata.
 - `function-content/`: evidence, extracted specifications, OCF decisions, and
   runtime bindings; provenance layers must not be merged.

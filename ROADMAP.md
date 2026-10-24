@@ -64,8 +64,8 @@ the "Planned: focus-state auditory cue events" section of
 
 - [~] First original OCF training scripts for the 16 source-unavailable
       legacy functions (proposal pathway).
-- [ ] Community review of the 18 commands currently marked
-      `review-required`.
+- [ ] Community review of the remaining function command-review records:
+      1 `review-required` and 2 `needs-review` (55 approved, 58 functions total).
 - [ ] Bridge-training script design (legacy cue ↔ OCF cue association) as a
       labeled training design, not established science.
 
