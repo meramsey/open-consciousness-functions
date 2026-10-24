@@ -111,8 +111,28 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install -r requirements-dev.txt
+      - name: Windows cache/runtime boundary regressions
+        if: runner.os == 'Windows'
+        run: python -m pytest tests/test_farfield_identity.py tests/test_cache_policy.py --junitxml=.ocf-work/logs/integration-results.xml
       - name: Repository and available external-audio integration
-        run: python -m pytest -m integration -n 2 --dist loadfile
+        run: python -m pytest -m integration -n 2 --dist loadfile --junitxml=.ocf-work/logs/integration-results.xml
+      - name: Report integration failure details
+        if: failure()
+        shell: bash
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          path = Path('.ocf-work/logs/integration-results.xml')
+          if path.is_file():
+              for case in ET.parse(path).iter('testcase'):
+                  for failure in [*case.findall('failure'), *case.findall('error')]:
+                      message = f"{case.get('classname')}::{case.get('name')}\n{failure.text or failure.get('message', '')}"
+                      message = message[:16000].replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+                      print(f'::error title=Pytest integration failure::{message}')
+          PY
   coverage:
     runs-on: ubuntu-latest
     # The full instrumented suite measured 21m53s before report generation.
