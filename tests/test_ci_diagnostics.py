@@ -1,6 +1,5 @@
 """Public CI annotations retain actionable failure details without log access."""
 
-import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import pytest
@@ -31,11 +30,13 @@ def test_integration_reporter_only_annotates_actual_failures(
     if outcome != "missing":
         path = Path(".ocf-work/logs/pytest-results.xml")
         path.parent.mkdir(parents=True)
-        suite = ET.Element("testsuite")
-        case = ET.SubElement(suite, "testcase", classname="tests.test_fixture", name="test_unicode")
-        ET.SubElement(case, outcome).text = "Café: expected 100%\r\nactual regression"
-        ET.ElementTree(suite).write(path, encoding="utf-8")
-        path.write_bytes(path.read_bytes().replace(b"\r", b"&#13;"))
+        path.write_bytes(
+            (
+                '<testsuite><testcase classname="tests.test_fixture" name="test_unicode">'
+                f"<{outcome}>Café: expected 100%&#13;\nactual regression</{outcome}>"
+                "</testcase></testsuite>"
+            ).encode()
+        )
     count = report_failures(Path(".ocf-work/logs/pytest-results.xml"))
     output = capsys.readouterr().out
     if outcome in {"failure", "error"}:
