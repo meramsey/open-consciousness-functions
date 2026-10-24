@@ -31,3 +31,15 @@ instruction substitute, report it: it is a defect.
 
 Security fixes are applied to the current `main` branch. There are no LTS
 releases yet.
+
+## Dependency review
+
+Pull requests are checked for newly introduced high/critical vulnerabilities in
+runtime, development and unknown dependency scopes. The review uses read-only
+permissions, immutable action references and no advisory allowlists. It does not
+assert license clearance or dismiss existing alerts.
+
+See [dependency security and parser exposure](docs/DEPENDENCY_SECURITY.md).
+Private alert inventories belong under ignored `.ocf-work/security/`, not in
+public issues. Never paste credentials into a report; existing GitHub CLI
+authentication should be used without changing credential storage.

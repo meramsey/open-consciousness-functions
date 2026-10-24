@@ -250,7 +250,7 @@
         "voice doctor"
       ],
       "related_schemas": [],
-      "sha256": "a0e215174040dc07e908b232ff5c99ba6a933b05f850b8c73dab05bda6369dbf",
+      "sha256": "9b4e081651a9802ce44081dda350d71650d19c6627dee86b8ff82ce749500d4b",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -292,7 +292,7 @@
       "purpose": "Security Policy",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "b0f8244c531bde0b5c159708e32087005bacf30dedb0f309ba8cba396b05459f",
+      "sha256": "7a93d54c590c33d5c54b7da1d43559771aa61062cfe90135152ed1b5a71ee323",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -891,6 +891,24 @@
       ],
       "related_schemas": [],
       "sha256": "fd89132a1594db6e5d24eff334620f56722616919cd24f88401d2b18e92c2c11",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "docs/DEPENDENCY_SECURITY.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Dependency security boundaries",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "cbcdffc63311271df2a8fcf1e11f3e5c118b6e5daf4465155683544f38a97124",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1677,7 +1695,7 @@
         "capabilities"
       ],
       "related_schemas": [],
-      "sha256": "311255bd3ad7b9b82ff86538b277e53e082c446df2c58f0264ba636d51c96e41",
+      "sha256": "831db79bbe661de0d175592bceaa332dd94bb64a34c4b9668ea4a197a33e78e8",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5433,5 +5451,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 261
+  "total": 262
 }

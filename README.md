@@ -43,6 +43,7 @@ commands from the checkout root. Use Python 3.11 or newer.
 git lfs pull
 python3 -m venv .venv
 source .venv/bin/activate
+python -m pip install --only-binary=:all: --upgrade pip==26.2.0
 python -m pip install -e ".[artwork,mcp]"
 python scripts/ocf.py doctor --json
 ```
@@ -53,6 +54,7 @@ python scripts/ocf.py doctor --json
 git lfs pull
 py -3.12 -m venv .venv
 .venv\Scripts\Activate.ps1
+python -m pip install --only-binary=:all: --upgrade pip==26.2.0
 python -m pip install -e ".[artwork,mcp]"
 python scripts/ocf.py doctor --json
 ```

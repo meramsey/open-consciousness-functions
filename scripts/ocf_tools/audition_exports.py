@@ -252,12 +252,17 @@ def select_cover(
 def copy_cover(source: Path, destination: Path) -> None:
     if destination.exists():
         raise OCFError("refusing to overwrite existing cover")
-    if _image_info(source)[0] == "image/png":
+    mime, width, height = _image_info(source)
+    if mime == "image/png":
         shutil.copyfile(source, destination)
     else:
         from PIL import Image
 
-        with Image.open(source) as image:
+        with Image.open(source, formats=("JPEG",)) as image:
+            if image.size != (width, height):
+                raise OCFError(
+                    "cover dimensions changed between header inspection and JPEG decoding"
+                )
             image.convert("RGB").save(destination, format="PNG")
 
 

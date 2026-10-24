@@ -4,7 +4,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg=7:5.1.9-
     && useradd --create-home --uid 10001 ocf
 WORKDIR /opt/ocf
 COPY containers/requirements.txt /opt/ocf/requirements.txt
-RUN python -m pip install --no-cache-dir -r requirements.txt
+RUN python -m pip install --no-cache-dir --only-binary=:all: --upgrade pip==26.2.0 \
+    && python -m pip install --no-cache-dir -r requirements.txt
 COPY scripts/ scripts/
 COPY schemas/ schemas/
 COPY functions/ functions/

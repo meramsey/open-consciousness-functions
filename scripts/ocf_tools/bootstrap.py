@@ -12,6 +12,7 @@ from pathlib import Path
 from .paths import REPO_ROOT, workspace_run
 
 CORE_REQUIREMENTS = ["PyYAML>=6.0", "jsonschema>=4.18", "referencing>=0.30"]
+PIP_REQUIREMENT = "pip==26.2.0"
 
 
 def setup_plan(prefix: Path, *, system: str | None = None, root: Path = REPO_ROOT) -> dict:
@@ -34,6 +35,15 @@ def setup_plan(prefix: Path, *, system: str | None = None, root: Path = REPO_ROO
         "interpreter": str(interpreter),
         "commands": ([] if prefix.exists() else [[sys.executable, "-m", "venv", str(prefix)]])
         + [
+            [
+                str(interpreter),
+                "-m",
+                "pip",
+                "install",
+                "--only-binary=:all:",
+                "--upgrade",
+                PIP_REQUIREMENT,
+            ],
             [str(interpreter), "-m", "pip", "install", *CORE_REQUIREMENTS],
             [str(interpreter), str(root / "scripts/ocf.py"), "doctor", "--json"],
         ],
