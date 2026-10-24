@@ -26,6 +26,7 @@ def test_integration_reporter_only_annotates_actual_failures(
         == "python scripts/tools/report_pytest_failures.py .ocf-work/logs/pytest-results.xml"
     )
     assert any(row.get("run") == step["run"] for row in workflow["jobs"]["unit"]["steps"])
+    assert any(row.get("run") == step["run"] for row in workflow["jobs"]["agent-tools"]["steps"])
     monkeypatch.chdir(tmp_path)
     if outcome != "missing":
         path = Path(".ocf-work/logs/pytest-results.xml")
