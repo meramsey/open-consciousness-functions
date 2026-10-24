@@ -560,7 +560,7 @@
         "schemas/audio-release.schema.json",
         "schemas/mix-profile.schema.json"
       ],
-      "sha256": "87aa49e3ab6c6492ad880c4550d00de05bd922a168d5f44654332d6e4572ec33",
+      "sha256": "b4b7996210c7afb4b34c3754ee7e6cd3dc77154f1424efa04ce3be561b64a29a",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1104,6 +1104,24 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "docs/FUNCTION_GUIDES.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Generating listening and function guides",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "f6485e76dff83383e7a2226ecc6c2487bcf5b5e4afece1b0fb08ee304a1e8761",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "docs/FUNCTION_LIFECYCLE.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "Function Lifecycle",
@@ -1222,6 +1240,24 @@
       ],
       "related_schemas": [],
       "sha256": "5d1efe423061f319077a38c86e84d53e90ce0bbccbcde952b3608d5ab94e552f",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "docs/LISTENING_GUIDE.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Welcome to OCF",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "92f334a2a0abede3fcb6589ce4cd30e70dad183517823b5be875fc47a06fed4d",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1472,7 +1508,7 @@
       "purpose": "Documentation map",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "634cacc196d3c872ed4319f96bbdb9564946388e844f17b2b73b1afde81cefb6",
+      "sha256": "7d59f032431d59cffefbea54e2bd14db7dc16d11198a8af28226750b1a511918",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5284,7 +5320,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "707221d609c7397e3a23ca57c2743be8b10e3ac494d89a5816e0561d5b2619f6",
+      "sha256": "735a6d3332aa1ccfd2438e0c1dd1db18d29019b7b9ae5791343af7b9c74fbcc3",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5397,5 +5433,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 259
+  "total": 261
 }

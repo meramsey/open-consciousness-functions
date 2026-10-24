@@ -20,16 +20,19 @@ def target(monkeypatch, tmp_path):
 
 @pytest.mark.parametrize("cross_device", [False, True])
 @pytest.mark.parametrize("competing", [False, True])
+@pytest.mark.parametrize("binary", [False, True])
 def test_exclusive_publication_is_complete_and_preserves_late_creator(
-    monkeypatch, target, cross_device, competing
+    monkeypatch, target, cross_device, competing, binary
 ):
     content = "Complete café — 日本語\n" * 100
+    payload = b"\xff\x00%PDF binary\n" * 100 if binary else content.encode("utf-8")
+    writer = utils.write_bytes_atomic if binary else utils.write_text_atomic
     link = os.link
     calls = []
 
     def publish(source, destination):
         calls.append(Path(source))
-        assert Path(source).read_bytes() == content.encode("utf-8")
+        assert Path(source).read_bytes() == payload
         if cross_device and len(calls) == 1:
             assert not target.exists()
             raise OSError(errno.EXDEV, "different filesystem")
@@ -43,11 +46,11 @@ def test_exclusive_publication_is_complete_and_preserves_late_creator(
     monkeypatch.setattr(utils.os, "link", publish)
     if competing:
         with pytest.raises(utils.OCFFileExistsError):
-            utils.write_text_atomic(target, content, overwrite=False)
+            writer(target, payload if binary else content, overwrite=False)
         assert target.read_text() == "concurrent human data\n"
     else:
-        utils.write_text_atomic(target, content, overwrite=False)
-        assert target.read_text(encoding="utf-8") == content
+        writer(target, payload if binary else content, overwrite=False)
+        assert target.read_bytes() == payload
     assert len(calls) == (2 if cross_device else 1)
     assert list(target.parent.iterdir()) == [target]
     assert list(paths.work_path("tmp").iterdir()) == []
@@ -121,3 +124,17 @@ def test_overwrite_true_still_replaces_complete_utf8(target):
     utils.write_text_atomic(target, "new café\n", overwrite=True)
     assert target.read_bytes() == "new café\n".encode()
     assert list(paths.work_path("tmp").iterdir()) == []
+
+
+@pytest.mark.parametrize(
+    "writer,invalid",
+    [
+        (utils.write_text_atomic, b"\xff"),
+        (utils.write_bytes_atomic, "not bytes"),
+    ],
+)
+def test_text_and_binary_writers_keep_their_input_contract(target, writer, invalid):
+    with pytest.raises(TypeError):
+        writer(target, invalid, overwrite=False)
+    assert not target.exists()
+    assert not target.parent.exists()

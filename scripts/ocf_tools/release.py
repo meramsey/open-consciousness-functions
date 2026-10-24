@@ -13,6 +13,7 @@ from typing import Any
 
 from .artifact_names import ArtifactNamer, safe_component
 from .indexes import find_audio_manifest, load_audio_manifests, load_function_by_id
+from .listener_text import plain_transcript as transcript_from_render
 from .locale import LocaleCatalog, normalize_tag
 from .paths import (
     REPO_ROOT,
@@ -229,28 +230,6 @@ def _validate_manifest(manifest: dict[str, Any]) -> None:
         )
 
 
-def transcript_from_render(render_doc: dict[str, Any]) -> str:
-    """Export exactly the post-transform utterances submitted to synthesis."""
-    cues = render_doc.get("narration_timing", {}).get("cues", [])
-    ordered = sorted(
-        cues,
-        key=lambda cue: (float(cue.get("at", 0)), str(cue.get("id", ""))),
-    )
-    lines: list[str] = []
-    for cue in ordered:
-        if "spoken_text" not in cue:
-            raise OCFError(
-                f"render cue {cue.get('id', '?')!r} has no final spoken_text; rebuild with current OCF"
-            )
-        text = str(cue["spoken_text"]).strip()
-        from .cue_templates import reject_unexpanded
-
-        reject_unexpanded(text)
-        if text:
-            lines.append(text)
-    return "\n\n".join(lines).rstrip() + "\n"
-
-
 def artwork_selection(query: str, explicit_theme: str | None = None):
     """Shared registered-implementation/function theme lookup; never renders."""
     from .artwork import select_theme
@@ -281,6 +260,7 @@ def package_release(
     dry_run: bool = False,
     overwrite: bool = False,
     created_at: datetime | None = None,
+    lyrics: bool = False,
 ) -> dict[str, Any]:
     """Render, verify, and publish one complete function release directory."""
     from . import audio_build
@@ -383,13 +363,17 @@ def package_release(
             "source": "operator-title-override",
         }
     namer = ArtifactNamer()
-    artifact_names = {
-        fmt: namer.filename(
-            function_id, title, requested_locale, fmt, variant=voice, version=version
-        )
-        for fmt in formats
-    }
-    transcript_name = namer.filename(function_id, title, requested_locale, "txt", version=version)
+    names = namer.filenames(
+        function_id,
+        title,
+        requested_locale,
+        [*formats, "txt", "lrc", "srt", "vtt", "timing.json"],
+        variant=voice,
+        version=version,
+    )
+    artifact_names = {fmt: names[fmt] for fmt in formats}
+    transcript_name = names["txt"]
+    listener_names = [names[fmt] for fmt in ("lrc", "srt", "vtt", "timing.json")]
     expected_suffix = ".png" if mime == "image/png" else ".jpg"
     if artwork_path.suffix.lower() not in ({".png"} if mime == "image/png" else {".jpg", ".jpeg"}):
         raise OCFError("artwork filename extension does not match its image format")
@@ -403,14 +387,27 @@ def package_release(
     final_dir = output_root / requested_locale / directory_name
     if any(
         len(str(final_dir / name)) > 240
-        for name in [*artifact_names.values(), transcript_name, cover_name, "manifest.json"]
+        for name in [
+            *artifact_names.values(),
+            transcript_name,
+            *listener_names,
+            cover_name,
+            "manifest.json",
+        ]
     ):
         raise OCFError(
             "release output path would exceed the portable 240-character path limit; choose a shorter output root or title"
         )
     planned = {
         "release_directory": str(final_dir),
-        "artifacts": [*artifact_names.values(), transcript_name, cover_name, "manifest.json"],
+        "artifacts": [
+            *artifact_names.values(),
+            transcript_name,
+            *listener_names,
+            cover_name,
+            "manifest.json",
+        ],
+        "embedded_lyrics": lyrics,
     }
     if dry_run:
         return {
@@ -508,7 +505,32 @@ def package_release(
         render_doc = load_yaml_file(render_manifest_path)
         transcript_text = transcript_from_render(render_doc)
         transcript_path = stage / transcript_name
-        transcript_path.write_text(transcript_text, encoding="utf-8", newline="\n")
+        from .listener_text import embed_listener_text, write_listener_text
+
+        duration = float(built["master"]["duration"])
+        listener_text = write_listener_text(render_doc, duration, transcript_path)
+        if lyrics:
+            from .audition_exports import audio_hash
+
+            for fmt in formats:
+                destination = stage / artifact_names[fmt]
+                packets = audio_hash(destination, packets=True)
+                pcm = audio_hash(destination)
+                embed_listener_text(destination, render_doc, duration, requested_locale)
+                if packets != audio_hash(destination, packets=True) or pcm != audio_hash(
+                    destination
+                ):
+                    raise OCFError("embedded lyrics changed audio packets or decoded PCM")
+                _verify_audio(
+                    destination,
+                    function_id=function_id,
+                    title=title,
+                    artwork=artwork_path,
+                    expected_tags=tag_values,
+                )
+                stage_artifacts[fmt].update(
+                    size_bytes=destination.stat().st_size, sha256=sha256_of_file(destination)
+                )
         cover_path = stage / cover_name
         shutil.copy2(artwork_path, cover_path)
         _image_info(cover_path)
@@ -560,6 +582,12 @@ def package_release(
                     "size_bytes": transcript_path.stat().st_size,
                     "sha256": sha256_of_file(transcript_path),
                 },
+                *[
+                    {**item, "format": fmt}
+                    for fmt, item in listener_text["artifacts"].items()
+                    if fmt != "txt"
+                ],
+                {**listener_text["timing_receipt"], "format": "application/json"},
                 {
                     "path": cover_name,
                     "format": mime,

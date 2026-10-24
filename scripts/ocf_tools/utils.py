@@ -99,6 +99,19 @@ def write_text_atomic(path: Path, content: str, *, overwrite: bool = True) -> No
 
     Raises OCFFileExistsError if the target exists and overwrite is False.
     """
+    if not isinstance(content, str):
+        raise TypeError("write_text_atomic requires str content")
+    _write_atomic(path, content, overwrite=overwrite)
+
+
+def write_bytes_atomic(path: Path, content: bytes, *, overwrite: bool = True) -> None:
+    """Publish binary artifacts with the same exclusive, complete-file contract."""
+    if not isinstance(content, bytes):
+        raise TypeError("write_bytes_atomic requires bytes content")
+    _write_atomic(path, content, overwrite=overwrite)
+
+
+def _write_atomic(path: Path, content: str | bytes, *, overwrite: bool) -> None:
     if path.exists() and not overwrite:
         raise OCFFileExistsError(f"Refusing to overwrite existing file: {path}")
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -106,8 +119,9 @@ def write_text_atomic(path: Path, content: str, *, overwrite: bool = True) -> No
     fallback: str | None = None
     publish = os.replace if overwrite else os.link
     try:
-        with os.fdopen(fd, "w", encoding=UTF8, newline="\n") as handle:
-            handle.write(content)
+        with os.fdopen(fd, "wb") as handle:
+            payload = content.encode(UTF8) if isinstance(content, str) else content
+            handle.write(payload)
             handle.flush()
             os.fsync(handle.fileno())
         try:
@@ -119,8 +133,8 @@ def write_text_atomic(path: Path, content: str, *, overwrite: bool = True) -> No
             descriptor, fallback = tempfile.mkstemp(
                 dir=str(path.parent), prefix=f".{path.name}.", suffix=".tmp"
             )
-            with os.fdopen(descriptor, "w", encoding=UTF8, newline="\n") as handle:
-                handle.write(content)
+            with os.fdopen(descriptor, "wb") as handle:
+                handle.write(payload)
                 handle.flush()
                 os.fsync(handle.fileno())
             publish(fallback, path)

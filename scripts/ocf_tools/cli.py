@@ -360,6 +360,11 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     export_cmd.add_argument("--output", type=Path, help="new directory inside the OCF workspace")
     export_cmd.add_argument("--dry-run", action="store_true")
+    export_cmd.add_argument(
+        "--lyrics",
+        action="store_true",
+        help="measured sidecars and native MP3/FLAC lyrics; requires .[listener]",
+    )
     review_sessions_cmd = audio_sub.add_parser(
         "review-sessions",
         help="compare 1..8 actual session bindings; optional short exact-sentence speech excerpts",
@@ -613,6 +618,9 @@ def _build_parser() -> argparse.ArgumentParser:
     release_cmd.add_argument("--artwork-resolution", type=int, default=1400)
     release_cmd.add_argument("--output", help="release root directory (default: releases/)")
     release_cmd.add_argument("--version", help="explicit release version")
+    release_cmd.add_argument(
+        "--lyrics", action="store_true", help="embed measured MP3/FLAC lyrics; requires .[listener]"
+    )
     release_cmd.add_argument(
         "--tag", action="append", default=[], help="metadata override KEY=VALUE"
     )
@@ -1321,6 +1329,7 @@ def main(argv: list[str] | None = None) -> int:
                     output=args.output,
                     show_cue=not args.no_cue,
                     show_description=not args.no_description,
+                    lyrics=args.lyrics,
                 )
             print(json.dumps(result, ensure_ascii=False, indent=2))
             return 0
@@ -1879,6 +1888,7 @@ def main(argv: list[str] | None = None) -> int:
                     metadata_overrides=metadata_overrides,
                     dry_run=args.dry_run,
                     overwrite=args.force,
+                    lyrics=args.lyrics,
                 )
                 print(json.dumps(result, ensure_ascii=False, indent=2))
                 return 0

@@ -15,6 +15,8 @@ loading the entire documentation tree:
 - Plan and audition: [bulk sessions](BULK_SESSIONS.md), then
   [audio pipeline](AUDIO_PIPELINE.md).
 - Choose a voice: [community voices](COMMUNITY_VOICES.md).
+- Read the [general listening guide](LISTENING_GUIDE.md) and generate
+  [function-specific Markdown/PDF/HTML guides](FUNCTION_GUIDES.md).
 - Import/record/compare private voices: [voice workflows](VOICE_WORKFLOWS.md).
 - Use existing audio as speech: [recorded narration](RECORDED_NARRATION.md),
   including complete marked stems; mix sources with [hybrid narration](HYBRID_NARRATION.md).

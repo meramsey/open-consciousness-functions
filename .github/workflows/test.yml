@@ -64,9 +64,9 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install -r requirements-dev.txt
-      - run: python -m pip install -e ".[mcp,artwork,lsp]"
+      - run: python -m pip install -e ".[mcp,artwork,lsp,listener,guides]"
       - name: Optional SDK protocol and persistent job integration
-        run: python -m pytest tests/test_agent_api.py tests/test_agent_workflows.py tests/test_dev_jobs.py tests/test_mcp_protocol.py tests/test_artwork.py tests/test_brand_refinement.py tests/test_brand_import.py tests/test_public_branding.py tests/test_voice_datasets.py tests/test_session_overrides.py tests/test_media_tools.py tests/test_authoring.py tests/test_lsp_protocol.py
+        run: python -m pytest tests/test_agent_api.py tests/test_agent_workflows.py tests/test_dev_jobs.py tests/test_mcp_protocol.py tests/test_artwork.py tests/test_brand_refinement.py tests/test_brand_import.py tests/test_public_branding.py tests/test_voice_datasets.py tests/test_session_overrides.py tests/test_media_tools.py tests/test_authoring.py tests/test_lsp_protocol.py tests/test_listener_text.py tests/test_listening_guides.py
       - name: Retain failed job diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
@@ -145,7 +145,7 @@ jobs:
         with:
           node-version: "22"
       - name: Install development and optional adapter dependencies
-        run: python -m pip install -r requirements-dev.txt -e ".[mcp,artwork,lsp,python-lsp]"
+        run: python -m pip install -r requirements-dev.txt -e ".[mcp,artwork,lsp,python-lsp,listener,guides]"
       - name: Measure the full suite and gate statement and branch metrics separately
         run: python -m ocf_tools.coverage_report run --output .ocf-work/logs/coverage/ci
       - name: Retain coverage and failure diagnostics

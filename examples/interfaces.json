@@ -682,7 +682,7 @@
         "audio",
         "export-audition"
       ],
-      "usage": "usage: ocf audio export-audition [-h] [--edition-version EDITION_VERSION]\n                                 [--edition EDITION]\n                                 [--flac-source FLAC_SOURCE]\n                                 [--mp3-source MP3_SOURCE] [--artwork ARTWORK]\n                                 [--artwork-theme ARTWORK_THEME]\n                                 [--no-artwork]\n                                 [--artwork-resolution ARTWORK_RESOLUTION]\n                                 [--no-cue] [--no-description]\n                                 [--output OUTPUT] [--dry-run]\n                                 source",
+      "usage": "usage: ocf audio export-audition [-h] [--edition-version EDITION_VERSION]\n                                 [--edition EDITION]\n                                 [--flac-source FLAC_SOURCE]\n                                 [--mp3-source MP3_SOURCE] [--artwork ARTWORK]\n                                 [--artwork-theme ARTWORK_THEME]\n                                 [--no-artwork]\n                                 [--artwork-resolution ARTWORK_RESOLUTION]\n                                 [--no-cue] [--no-description]\n                                 [--output OUTPUT] [--dry-run] [--lyrics]\n                                 source",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -875,7 +875,7 @@
         "audio",
         "release"
       ],
-      "usage": "usage: ocf audio release [-h] [--locale LOCALE] [--format {mp3,flac}]\n                         [--voice VOICE] [--artwork ARTWORK]\n                         [--artwork-theme ARTWORK_THEME]\n                         [--artwork-resolution ARTWORK_RESOLUTION]\n                         [--output OUTPUT] [--version VERSION] [--tag TAG]\n                         [--dry-run] [--force]\n                         query",
+      "usage": "usage: ocf audio release [-h] [--locale LOCALE] [--format {mp3,flac}]\n                         [--voice VOICE] [--artwork ARTWORK]\n                         [--artwork-theme ARTWORK_THEME]\n                         [--artwork-resolution ARTWORK_RESOLUTION]\n                         [--output OUTPUT] [--version VERSION] [--lyrics]\n                         [--tag TAG] [--dry-run] [--force]\n                         query",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -2153,7 +2153,7 @@
     "schemas/voice-dataset.schema.json": "0307327f3f52eeaaaed71abaa6d1950c0b665fc677b43547e2452e9c31000ed8",
     "schemas/voice-profile.schema.json": "0204c3379a0540d22e3792ee5b78ad134bd2a8cb73ddf51c975a602dbcb2c23d",
     "scripts/ocf_tools/agent_api.py": "d857d7ac1b9e118ba9a5614b1b86d16265b6fd6a6ac766d2a14099be8b7e7715",
-    "scripts/ocf_tools/cli.py": "707221d609c7397e3a23ca57c2743be8b10e3ac494d89a5816e0561d5b2619f6",
+    "scripts/ocf_tools/cli.py": "735a6d3332aa1ccfd2438e0c1dd1db18d29019b7b9ae5791343af7b9c74fbcc3",
     "scripts/ocf_tools/lsp_server.py": "a753b91b1b73609ecd6886470a037a9bbf1259e2a77f08203546e55ef4cbae09",
     "scripts/ocf_tools/mcp_server.py": "d8641d4160888abbe7152fca2117623de4dfb061793b95b161dbfb4534a2be54",
     "scripts/ocf_tools/narration_cli.py": "5f13a05251816e5d3b80419d9ed67184b5c6c48722175700bbc88ec2b429bd41",

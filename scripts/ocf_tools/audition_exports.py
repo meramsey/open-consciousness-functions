@@ -363,6 +363,7 @@ def export_audition(
     dry_run: bool = False,
     show_cue: bool = True,
     show_description: bool = True,
+    lyrics: bool = False,
 ) -> dict:
     """Export a completed session privately, reusing existing compressed audio when supplied."""
     if no_artwork and (artwork_file or artwork_theme):
@@ -402,6 +403,14 @@ def export_audition(
         master = None
         version_source = "verified-private-export-edition"
     document_sha256 = sha256_of_file(report_path)
+    if lyrics:
+        from .listener_text import measured_document
+
+        if retained:
+            raise OCFError(
+                "lyrics require the original measured session report, not a retained export"
+            )
+        measured_document(report, float(report.get("measurements", {}).get("duration_seconds", 0)))
     version = edition_record["version"]
     function_id, locale = edition_record["function_id"], edition_record["locale"]
     title, title_resolution = _function_title(function_id, locale, LocaleCatalog())
@@ -466,10 +475,15 @@ def export_audition(
         show_description=show_description,
     )
     namer = ArtifactNamer()
-    names = {
-        fmt: namer.filename(function_id, title, locale, fmt, variant=narrator, version=version)
-        for fmt in ("flac", "mp3")
-    }
+    all_names = namer.filenames(
+        function_id,
+        title,
+        locale,
+        ["flac", "mp3", *(["txt", "lrc", "srt", "vtt", "timing.json"] if lyrics else [])],
+        variant=narrator,
+        version=version,
+    )
+    names = {fmt: all_names[fmt] for fmt in ("flac", "mp3")}
     if dry_run:
         return {
             "dry_run": True,
@@ -478,6 +492,7 @@ def export_audition(
             "artwork": provenance,
             "tags": tags,
             "files": names,
+            "lyrics": lyrics,
             "audio_operations": {
                 fmt: "stream-copy" if path != master else "encode-from-master"
                 for fmt, path in inputs.items()
@@ -512,11 +527,22 @@ def export_audition(
             copy_cover(cover_path, target)
             cover_path = target
         verified = {}
+        listener_text = None
+        if lyrics:
+            from .listener_text import write_listener_text
+
+            listener_text = write_listener_text(
+                report, master_info["duration_seconds"], stage / names["mp3"]
+            )
         for fmt, path in inputs.items():
             target = stage / names[fmt]
             audio_build._encode(
                 path, fmt, target, tags, cover_path, copy_audio=path != master, mp3_bitrate="320k"
             )
+            if lyrics:
+                from .listener_text import embed_listener_text
+
+                embed_listener_text(target, report, master_info["duration_seconds"], locale)
             info = _verify_audio(
                 target, function_id=function_id, title=title, artwork=cover_path, expected_tags=tags
             )
@@ -587,6 +613,7 @@ def export_audition(
             "source_artifacts_unchanged": True,
             "function_content": function_content,
             "cover_options": {"show_cue": show_cue, "show_description": show_description},
+            "listener_text": listener_text,
         }
         write_text_atomic(
             stage / "audition-edition.json", json.dumps(edition_record, indent=2) + "\n"

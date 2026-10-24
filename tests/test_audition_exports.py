@@ -128,13 +128,22 @@ def test_version_is_drawn_in_existing_cover_footer(tmp_path, monkeypatch, theme)
 @pytest.mark.integration
 @pytest.mark.audio_integration
 @pytest.mark.external_tool
-@pytest.mark.parametrize("choice", ["default", "light", "custom-theme", "custom-cover", "none"])
+@pytest.mark.parametrize(
+    "choice", ["default", "light", "custom-theme", "custom-cover", "none", "lyrics"]
+)
 def test_private_streamcopy_artwork_tags_and_pcm_roundtrip(tmp_path, monkeypatch, choice):
     _tools()
     from ocf_tools import complete_session, voice
     from PIL import Image
 
     source, master, source_report = _session(tmp_path)
+    if choice == "lyrics":
+        pytest.importorskip("mutagen")
+        source_report["measurements"] = {"duration_seconds": 1.0}
+        source_report["narration_timing"] = {
+            "cues": [{"id": "a", "at": 0, "duration": 0.9, "spoken_text": "Plus Manifest."}]
+        }
+        (source / "session-report.json").write_text(json.dumps(source_report), encoding="utf-8")
     if choice == "default":
         source_report["background_variant"] = "REFERENCE-F10-F11-V4"
         (source / "session-report.json").write_text(json.dumps(source_report), encoding="utf-8")
@@ -161,6 +170,8 @@ def test_private_streamcopy_artwork_tags_and_pcm_roundtrip(tmp_path, monkeypatch
     monkeypatch.setattr(audio_build, "build", forbidden)
     monkeypatch.setattr(voice, "render_narration", forbidden)
     options = {}
+    if choice == "lyrics":
+        options["lyrics"] = True
     if choice == "light":
         options["artwork_theme"] = "ocf-cosmic-light"
     elif choice == "custom-theme":
@@ -184,6 +195,11 @@ def test_private_streamcopy_artwork_tags_and_pcm_roundtrip(tmp_path, monkeypatch
         **options,
     )
     manifest = result["manifest"]
+    if choice == "lyrics":
+        assert set(manifest["listener_text"]["artifacts"]) == {"txt", "lrc", "srt", "vtt"}
+        assert (
+            output / manifest["listener_text"]["artifacts"]["txt"]["path"]
+        ).read_text() == "Plus Manifest.\n"
     assert manifest["version"] == "0.1.0" and manifest["publication_approval"] is False
     for fmt, item in manifest["artifacts"].items():
         path = output / item["path"]

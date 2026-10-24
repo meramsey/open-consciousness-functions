@@ -1116,13 +1116,14 @@ def render_complete_session(
         if not background_info:
             raise OCFError("complete session rendered no retained background layer")
         render_background = render_dir / background_info["file"]
-        master_name = ArtifactNamer().filename(
+        listener_names = ArtifactNamer().filenames(
             function_id,
             tts_plan["title"],
             tts_plan["requested_locale"],
-            "wav",
+            ["wav", "txt", "lrc", "srt", "vtt", "timing.json"],
             variant=f"{tts_plan['voice_profile']['id']}-session",
         )
+        master_name = listener_names["wav"]
         background_name = ArtifactNamer().filename(
             function_id,
             tts_plan["title"],
@@ -1172,10 +1173,12 @@ def render_complete_session(
             if str(cue.get("spoken_text") or "").strip()
         )
         transcript += "\n"
-        transcript_path = stage / ArtifactNamer().filename(
-            function_id, tts_plan["title"], tts_plan["requested_locale"], "txt", variant="session"
+        transcript_path = stage / listener_names["txt"]
+        from .listener_text import write_listener_text
+
+        listener_text = write_listener_text(
+            built, float(built["master"]["duration"]), transcript_path
         )
-        transcript_path.write_text(transcript, encoding="utf-8", newline="\n")
 
         from .pacing_auditions import write_timing_reports_and_auditions
 
@@ -1293,6 +1296,12 @@ def render_complete_session(
                     "sha256": sha256_of_file(script_path),
                 },
                 "timing_report": timing_artifact,
+                **{
+                    f"listener_{fmt}": item
+                    for fmt, item in listener_text["artifacts"].items()
+                    if fmt != "txt"
+                },
+                "listener_timing": listener_text["timing_receipt"],
                 **{
                     f"pacing_{audition_id}_{artifact_name}": artifact
                     for audition_id, audition in pacing_auditions.items()

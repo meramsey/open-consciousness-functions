@@ -307,6 +307,26 @@ tags and manifest `version` match; `OCF_VERSION_LABEL` and manifest
 `version_label` match the visible `vX.Y.Z` cover label. Candidate artwork and
 private packaging do not grant listening or finished-release approval.
 
+### Measured listener transcripts and native lyrics
+
+Complete sessions, narration-only auditions and release packages include exact
+plain TXT plus same-basename LRC/SRT/VTT and a timing receipt. They use measured
+speech units where supplied, otherwise measured whole utterances; they are not
+estimated word alignment. Repeated speech remains repeated. LRC uses truncated
+centiseconds; SRT/VTT and MP3 synchronized lyrics use milliseconds.
+
+Install `.[listener]` and explicitly request `--lyrics` on `audio export-audition`
+or `audio release` to embed MP3 USLT/SYLT and FLAC LYRICS/UNSYNCEDLYRICS. Retained
+export backfills require the original measured session report. Only staged copies
+are tagged; packet and decoded-PCM checks preserve audio, existing covers and
+unrelated metadata. Existing source masters and listening copies are not edited.
+
+Tag readback and same-basename sidecars do not certify a player's lyric UI or
+automatic subtitle discovery. SYLT and FLAC lyric-tag support vary by player;
+select the matching SRT/VTT explicitly where supported, or read TXT/LRC in a
+separate viewer. No player-specific UI compatibility or listening approval is
+claimed here. See [listener and function guides](FUNCTION_GUIDES.md).
+
 ### Local OCF workspace
 
 OCF scratch, caches, render staging, diagnostic logs, and default audition
