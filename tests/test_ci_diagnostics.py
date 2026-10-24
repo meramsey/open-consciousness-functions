@@ -47,3 +47,20 @@ def test_integration_reporter_only_annotates_actual_failures(
         assert "100%25%0D%0Aactual regression" in output
     else:
         assert count == 0 and output == ""
+
+
+def test_reporter_keeps_node_identity_and_root_error_at_end_of_large_trace(tmp_path, capsys):
+    path = tmp_path / "results.xml"
+    path.write_bytes(
+        (
+            '<testsuite><testcase classname="tests.test_large" name="test_failure"><failure>'
+            + "context " * 3000
+            + "Actual error: preserve this final cause"
+            + "</failure></testcase></testsuite>"
+        ).encode()
+    )
+    assert report_failures(path) == 1
+    output = capsys.readouterr().out
+    assert "tests.test_large::test_failure%0A" in output
+    assert "Actual error: preserve this final cause" in output
+    assert len(output) < 16000

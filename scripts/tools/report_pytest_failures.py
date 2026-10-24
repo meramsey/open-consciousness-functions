@@ -15,9 +15,9 @@ def report_failures(path: Path) -> int:
         for failure in [*case.findall("failure"), *case.findall("error")]:
             message = (
                 f"{case.get('classname')}::{case.get('name')}\n"
-                f"{failure.text or failure.get('message', '')}"
+                f"{(failure.text or failure.get('message', ''))[-15000:]}"
             )
-            message = message[:16000].replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+            message = message.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
             print(f"::error title=Pytest failure::{message}")
             count += 1
     return count
