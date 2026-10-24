@@ -151,10 +151,11 @@ def test_pdf_deterministic_searchable_unicode_bookmarks_and_links(tmp_path):
     assert b"index.pdf" in data
     path = tmp_path / "guide.pdf"
     path.write_bytes(data)
-    result = subprocess.run(
-        [tool, "-enc", "UTF-8", str(path), "-"], check=True, capture_output=True
+    extracted = tmp_path / "guide.txt"
+    subprocess.run(
+        [tool, "-enc", "UTF-8", str(path), str(extracted)], check=True, capture_output=True
     )
-    text = result.stdout.decode("utf-8")
+    text = extracted.read_text(encoding="utf-8")
     assert "Café listening" in text
     assert "Spoken cue: Plus Focus" in text
     assert "1" in text
