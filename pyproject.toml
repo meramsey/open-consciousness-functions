@@ -28,7 +28,7 @@ dependencies = [
 [project.optional-dependencies]
 listener = ["mutagen==1.47.0"]
 guides = ["reportlab==4.4.10"]
-artwork = ["Pillow==12.3.0", "fonttools==4.67.0"]
+artwork = ["Pillow==13.0.0", "fonttools==4.67.0"]
 mcp = ["mcp==1.30.0"]
 lsp = ["pygls==2.1.1", "lsprotocol==2025.0.0"]
 python-lsp = ["pyright==1.1.408"]
@@ -42,7 +42,7 @@ dev = [
   "numpy>=2.0",
   "scipy>=1.13",
   "soundfile>=0.12",
-  "Pillow==12.3.0",
+  "Pillow==13.0.0",
   "fonttools==4.67.0",
 ]
 farfield = [
