@@ -152,11 +152,12 @@ def test_pdf_deterministic_searchable_unicode_bookmarks_and_links(tmp_path):
     path = tmp_path / "guide.pdf"
     path.write_bytes(data)
     result = subprocess.run(
-        [tool, str(path), "-"], check=True, capture_output=True, text=True, encoding="utf-8"
+        [tool, "-enc", "UTF-8", str(path), "-"], check=True, capture_output=True
     )
-    assert "Café listening" in result.stdout
-    assert "Spoken cue: Plus Focus" in result.stdout
-    assert "1" in result.stdout
+    text = result.stdout.decode("utf-8")
+    assert "Café listening" in text
+    assert "Spoken cue: Plus Focus" in text
+    assert "1" in text
 
 
 @pytest.mark.integration
