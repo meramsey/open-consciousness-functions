@@ -189,12 +189,13 @@ def test_current_cached_guides_subset_and_corruption(tmp_path):
     cache = tmp_path / "cache"
     cache.mkdir()
     artifacts = packages.attach_guides(cache, ["OCF-EXP-003"])
-    assert len(artifacts) == 9
+    assert len(artifacts) == 12
+    assert (cache / "guides/functions/OCF-EXP-006.pdf").is_file()
     for item in artifacts:
         assert (cache / item["path"]).is_file()
     output = tmp_path / "output"
     output.mkdir()
-    assert len(packages.attach_guides(output, ["OCF-EXP-003"], source=cache / "guides")) == 9
+    assert len(packages.attach_guides(output, ["OCF-EXP-003"], source=cache / "guides")) == 12
     (cache / "guides/functions/OCF-EXP-003.pdf").write_bytes(b"%PDF-corrupt")
     with pytest.raises(OCFError, match="corrupt or stale guide"):
         packages.attach_guides(tmp_path / "bad", ["OCF-EXP-003"], source=cache / "guides")
@@ -301,3 +302,34 @@ def test_private_export_cannot_be_selected_as_registered_release(source):
 @pytest.mark.unit
 def test_portable_filename_comparison_handles_unicode_normalization():
     assert packages._filename_key("Café.MP3") == packages._filename_key("Cafe\u0301.mp3")
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize("link", ["missing.pdf", "../../outside.txt", "file:///outside.txt"])
+def test_package_verification_rejects_broken_or_escaping_guide_links(source, tmp_path, link):
+    folder, _ = source
+    output = tmp_path / "output"
+    document = packages.package_auditions([folder], output)
+    target = output / "guides/index.md"
+    target.write_text(f"[Bad]({link})", encoding="utf-8")
+    for item in document["artifacts"]:
+        if item["path"] == "guides/index.md":
+            item.update({k: v for k, v in _artifact(target).items() if k != "path"})
+    (output / "package.json").write_text(json.dumps(document), encoding="utf-8")
+    with pytest.raises(OCFError, match="package guide link"):
+        packages.verify_package(output)
+
+
+@pytest.mark.integration
+def test_related_guide_closure_and_encoded_edition_navigation(tmp_path):
+    pytest.importorskip("reportlab")
+    artifacts = packages.attach_guides(
+        tmp_path,
+        ["OCF-EXP-001"],
+        edition_files={"OCF-EXP-001": [{"path": "OCF-EXP-001/Café test.mp3", "label": ".mp3"}]},
+    )
+    assert len(artifacts) == 15
+    assert (tmp_path / "guides/functions/OCF-EXP-006.pdf").is_file()
+    index = (tmp_path / "guides/index.md").read_text(encoding="utf-8")
+    assert "Caf%C3%A9%20test.mp3" in index and "FLAC audio" not in index
+    assert "MP3 audio" in index and "do not imply" in index

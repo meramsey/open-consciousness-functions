@@ -4,14 +4,16 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import shutil
 import unicodedata
 from pathlib import Path, PureWindowsPath
+from urllib.parse import quote, unquote, urlsplit
 
-from .artwork_content import function_artwork_content
 from .audition_exports import _artifact, _source_artifact, _verify_export_identity
 from .indexes import load_function_by_id
-from .listening_guides import function_markdown, html_bytes, pdf_bytes
+from .listening_guides import function_guide_markdown, html_bytes, pdf_bytes
+from .locale import LocaleCatalog
 from .paths import (
     REPO_ROOT,
     publish_workspace_temp_directory,
@@ -59,7 +61,9 @@ def _session_items(manifest):
     ]
 
 
-def attach_guides(stage: Path, function_ids, *, source: Path | None = None, locale="en-US"):
+def attach_guides(
+    stage: Path, function_ids, *, source: Path | None = None, locale="en-US", edition_files=None
+):
     """Attach only selected guides; cached bytes must match current authoritative content."""
     if locale != "en-US":
         raise OCFError(
@@ -69,15 +73,55 @@ def attach_guides(stage: Path, function_ids, *, source: Path | None = None, loca
         "listening-guide.md": (REPO_ROOT / "docs/LISTENING_GUIDE.md").read_text(encoding="utf-8")
     }
     index = ["# Included function guides", "", "[General listening guide](listening-guide.md)", ""]
-    for fid in sorted(set(function_ids)):
+    from .guide_review import relationships
+
+    catalog = LocaleCatalog()
+    selected = set(function_ids)
+    pending = list(selected)
+    records = {}
+    while pending:
+        fid = pending.pop()
+        if fid in records:
+            continue
         record = load_function_by_id(fid)
         if record is None:
             raise OCFError(f"unknown guide function: {fid}")
+        records[fid] = record
+        pending.extend(row["related_id"] for row in relationships(record))
+    for fid, record in sorted(records.items()):
         name = f"functions/{fid}.md"
-        documents[name] = function_markdown(
-            record, function_artwork_content(fid, locale, strict=False)
-        )
+        documents[name] = function_guide_markdown(record, catalog=catalog, locale=locale)
         index.append(f"- [{fid}]({name})")
+    index += ["", "Related guides do not imply that their recordings are included.", ""]
+    if edition_files:
+        index += ["## Included edition files", ""]
+        labels = {
+            ".flac": "FLAC audio",
+            ".mp3": "MP3 audio",
+            ".txt": "Plain transcript",
+            ".lrc": "Timed lyrics (LRC)",
+            ".srt": "Subtitles (SRT)",
+            ".vtt": "WebVTT captions",
+            ".json": "Timing provenance",
+            ".png": "Cover artwork",
+            ".jpg": "Cover artwork",
+        }
+        for fid, files in sorted(edition_files.items()):
+            if fid not in selected:
+                raise OCFError("edition navigation belongs to a different function")
+            for item in files:
+                path = item["path"]
+                if (
+                    Path(path).is_absolute()
+                    or PureWindowsPath(path).drive
+                    or PureWindowsPath(path).root
+                    or ".." in PureWindowsPath(path).parts
+                ):
+                    raise OCFError("unsafe edition navigation path")
+                label = item.get("label", Path(path).suffix)
+                if Path(path).name == "manifest.json":
+                    label = "Edition and provenance manifest"
+                index.append(f"- [{fid}: {labels.get(label, label)}](../{quote(path)})")
     artifacts = []
     for name, text in {**documents, "index.md": "\n".join(index) + "\n"}.items():
         for suffix, data in (
@@ -156,6 +200,28 @@ def verify_package(root: Path):
     actual = {_filename_key(p.relative_to(root).as_posix()) for p in root.rglob("*") if p.is_file()}
     if actual - {".ocf-owned"} != seen | {"package.json"}:
         raise OCFError("undeclared or missing package files")
+    for item in document["artifacts"]:
+        path = root / item["path"]
+        if path.suffix not in {".md", ".html"}:
+            continue
+        text = path.read_text(encoding="utf-8")
+        links = (
+            re.findall(r"\]\(([^)]+)\)", text)
+            if path.suffix == ".md"
+            else re.findall(r'href="([^"]+)"', text)
+        )
+        for link in links:
+            target = urlsplit(link)
+            if target.scheme in {"http", "https"} or not target.path:
+                continue
+            resolved = (path.parent / unquote(target.path)).resolve()
+            if (
+                target.scheme
+                or target.netloc
+                or not resolved.is_relative_to(root.resolve())
+                or not resolved.is_file()
+            ):
+                raise OCFError("broken or escaping package guide link: " + link)
     return document
 
 
@@ -202,7 +268,20 @@ def package_auditions(sources, output, *, guides=None, resume=False):
         return existing
     stage = workspace_temp_directory(prefix="ocf-listener-package-")
     try:
-        artifacts = attach_guides(stage, ids, source=Path(guides) if guides else None)
+        edition_files = {
+            m["function_id"]: [
+                {"path": f"{m['function_id']}/{item['path']}", "label": Path(item["path"]).suffix}
+                for item in items
+            ]
+            for _, m, items, _ in inputs
+        }
+        for fid, files in edition_files.items():
+            files.append(
+                {"path": f"{fid}/manifest.json", "label": "Edition and provenance manifest"}
+            )
+        artifacts = attach_guides(
+            stage, ids, source=Path(guides) if guides else None, edition_files=edition_files
+        )
         for source, manifest, items, digest in inputs:
             folder = stage / manifest["function_id"]
             folder.mkdir()
@@ -230,6 +309,7 @@ def package_auditions(sources, output, *, guides=None, resume=False):
             "sessions": identities,
             "artifacts": artifacts,
             "audio_operation": "byte-for-byte copy; no reencoding or tag changes",
+            "guide_review": "OCF-GUIDE-REVIEW-001",
         }
         write_text_atomic(
             stage / "package.json", json.dumps(document, ensure_ascii=False, indent=2) + "\n"

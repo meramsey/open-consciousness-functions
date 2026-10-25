@@ -129,7 +129,10 @@ upload private source transcripts, voice recordings, or health details by defaul
 
 ## Function guides
 
-The accompanying guides are deterministic snapshots of canonical metadata and
-localized cue bindings. They label missing structured instructions and unreviewed
-descriptions honestly. They do not authorize release or replace instructions and
-review records for a specific listening edition.
+The accompanying guides resolve current display and spoken cues, documented
+activation steps, secondary-command meanings, and declared lifecycle/mode behavior
+from canonical metadata and locale resources. Optional related practices are
+shown only where explicitly approved; they are not prerequisites. Guides label
+missing data honestly and link included edition files through package navigation.
+They do not establish effects, authorize release, or replace review records for a
+specific listening edition.

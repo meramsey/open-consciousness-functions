@@ -537,6 +537,19 @@ def validate_collection() -> ValidationResult:
                     record.id,
                 )
 
+    for record in records:
+        companions = record.data.get("companions", [])
+        if not isinstance(companions, list):
+            continue  # The schema reports malformed containers.
+        for target in companions:
+            if not isinstance(target, str) or target == record.id or target not in seen_ids:
+                result.add(
+                    "error",
+                    "invalid-companion",
+                    f"companion must identify another registered function: {target}",
+                    record.id,
+                )
+
     # Canonical primary command uniqueness (modes may repeat across functions).
     primary_seen: dict[str, list[str]] = {}
     for record in records:

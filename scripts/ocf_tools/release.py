@@ -451,7 +451,22 @@ def package_release(
             from .listener_packages import attach_guides
 
             guide_artifacts = attach_guides(
-                stage, [function_id], source=Path(guides), locale=requested_locale
+                stage,
+                [function_id],
+                source=Path(guides),
+                locale=requested_locale,
+                edition_files={
+                    function_id: [
+                        {"path": name, "label": Path(name).suffix}
+                        for name in [
+                            *artifact_names.values(),
+                            transcript_name,
+                            *listener_names,
+                            cover_name,
+                            "manifest.json",
+                        ]
+                    ]
+                },
             )
         render_dir = stage / "render"
         tag_values = {

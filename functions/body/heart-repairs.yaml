@@ -59,7 +59,8 @@ commands:
   role: activation
   spoken: Plus Heart Flow
   spoken_review: reviewed
-companions: []
+companions:
+- OCF-BOD-002
 compatibility:
   state: historical-lookup
   rationale: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording remains

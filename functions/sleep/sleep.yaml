@@ -1,8 +1,6 @@
 aliases:
-  commands:
-    []
-  command_ids:
-    []
+  commands: []
+  command_ids: []
   names:
   - Sleep
 applications: []
@@ -54,8 +52,8 @@ commands:
     text: Plus Sleep
     narration_key: hplus.function.ocf-slp-002.function-body
     relationship: canonical-match
-  spoken: "Plus Sleep"
-  spoken_review: "reviewed"
+  spoken: Plus Sleep
+  spoken_review: reviewed
 - id: OCF-CMD-SLP-002-LEGACY-01
   function_id: OCF-SLP-002
   phrase_ref:
@@ -75,7 +73,7 @@ commands:
   relationships: {}
   spoken: null
   spoken_review: unresolved
-  availability: "historical-lookup"
+  availability: historical-lookup
 chains: []
 claims:
   intended_effects: []
@@ -121,12 +119,12 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: "approved"
+  command_review: approved
   reimplementation_status: planned
 purpose:
-  community_description: Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP.
+  community_description: Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP.
   source_description: null
-  summary: Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP.
+  summary: Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP.
 safety:
   level: general
   medical_relevance: false

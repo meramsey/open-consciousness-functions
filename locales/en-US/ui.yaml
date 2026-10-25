@@ -2,6 +2,64 @@ schema_version: "1.0"
 locale: "en-US"
 domain: "ui"
 entries:
+  relationships.rel-fnd002-cog007.description:
+    text: Compare directed-attention practice with thinking-oriented practice. Choose either independently;
+      neither is required to activate or benefit from the other. The Focus function is not a Focus 10/11
+      audio stage.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  relationships.rel-slp005-slp001.description:
+    text: Compare sleep support for unfamiliar or distracting surroundings with an exercise oriented toward
+      restorative rest. Choose independently; this link does not prescribe combining or stacking recordings.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  relationships.rel-bod006-bod002.description:
+    text: Compare heart-oriented calm and steadiness with broader circulation-oriented comfort. These are
+      independently selectable wellness exercises, not a combined treatment or a proven way to improve cardiovascular
+      function.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  relationships.rel-exp003-exp006.description:
+    text: Distinguish releasing a selected unwanted pattern from exploring intuitive understanding. Either
+      exercise may be chosen independently; neither is a prerequisite for the other.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  relationships.rel-exp001-exp006.description:
+    text: Intuition offers a separately chosen exercise for exploring understanding alongside purposeful
+      intention-setting. Intuitive impressions are not proof or instructions that must be followed.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  relationships.rel-exp001-exp003.description:
+    text: Compare intention-setting with releasing a selected unwanted pattern. These remain independent
+      exercises, not a required sequence.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  functions.ocf-exp-006.procedure.consider-and-choose-response:
+    text: Consider its meaning and choose a response with care and discernment.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  functions.ocf-exp-006.procedure.allow-quiet-moment:
+    text: Allow a quiet moment to notice what arises.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  functions.ocf-exp-006.procedure.think-or-say-in-mind:
+    text: Think or say the selected command in the mind.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  functions.ocf-exp-006.procedure.select-question-or-situation:
+    text: Bring one question or situation into awareness.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
   # Simple form: a message with no variables stays a bare string.
   locale.list.header: "Locale packs"
   locale.validate.header: "Locale validation"

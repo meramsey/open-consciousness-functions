@@ -9,6 +9,7 @@ Final user confirmation: **Please do**. No deferred decisions. All 177 resolved 
 Descriptive scopes only; no runtime trigger evaluation, sensors, command execution or physiological controls.
 
 See [scope semantics](../FUNCTIONAL_METADATA.md) and the [immutable approval ledger](../../function-content/editorial/functional-metadata-001.json).
+Current descriptions also include documentation-only successor OCF-GUIDE-REVIEW-001; original functional decisions and narration remain unchanged.
 
 ## OCF-AUT-001 — Automatic Action
 
@@ -32,7 +33,7 @@ Function summary: `permanent` / `manual`; triggers: `[]`.
 - **baseline** (`permanent`): Appetite awareness and deliberate eating choices persist while genuine nutritional needs and freedom to eat remain intact.
 - **application** (`temporary`): Conscious release of one selected unnecessary craving; not permanent hunger suppression.
 
-- `OCF-CMD-BOD-005-PRIMARY`: `PLUS-SATISFIED, SUPPLIED`; role `activation`; effect `temporary`; invocation `manual` / `temporary`.
+- `OCF-CMD-BOD-005-PRIMARY`: `PLUS-SATISFIED`; role `activation`; effect `temporary`; invocation `manual` / `temporary`.
 
 ## OCF-BOD-007 — Blood Pressure Balance
 
@@ -85,7 +86,7 @@ Function summary: `permanent` / `manual`; triggers: `[]`.
 - **baseline** (`permanent`): The narrated whole-body maintenance and renewal baseline persists.
 - **application** (`temporary`): Conscious selected-area reinforcement; not continuous intensified repair in that area.
 
-- `OCF-CMD-BOD-013-PRIMARY`: `PLUS-BALANCE, HEAL`; role `activation`; effect `temporary`; invocation `manual` / `temporary`.
+- `OCF-CMD-BOD-013-PRIMARY`: `PLUS-TUNE-UP`; role `activation`; effect `temporary`; invocation `manual` / `temporary`.
 
 ## OCF-COG-001 — Information Access
 
@@ -101,7 +102,7 @@ Function summary: `temporary` / `manual`; triggers: `[]`.
 
 ## OCF-COG-004 — Imprint
 
-Imprints a chosen suggestion or intention using the IMPRINT rehearsal.
+Consciously capture and retain selected information or experiences, with Plus Recall for deliberate retrieval.
 
 Function summary: `permanent` / `manual`; triggers: `[]`.
 
@@ -123,7 +124,6 @@ Function summary: `temporary` / `manual`; triggers: `[]`.
 - **application** (`temporary`): One consciously chosen, situation-focused exploration.
 
 - `OCF-CMD-COG-005-PRIMARY`: `PLUS-OPTIONS`; role `activation`; effect `temporary`; invocation `manual` / `temporary`.
-- `OCF-CMD-COG-005-LEGACY-01`: `PLUS-OPTIONS, CHOICES`; role `legacy-alias`; effect `temporary`; invocation `manual` / `unspecified`.
 
 ## OCF-EMG-001 — Injury Response
 
@@ -135,7 +135,7 @@ Function summary: `temporary` / `conditional`; triggers: `["physical injury occu
 - **application** (`temporary`): Optional manual reinforcement when conscious and able.
 - **episode** (`temporary`): The narrated adaptive response lasts for the injury episode and adjusts as the injury stabilizes.
 
-- `OCF-CMD-EMG-001-PRIMARY`: `PLUS-CONTROL, BALANCE, RESTORE`; role `activation`; effect `temporary`; invocation `manual` / `temporary`.
+- `OCF-CMD-EMG-001-PRIMARY`: `PLUS-INJURY-RESPONSE`; role `activation`; effect `temporary`; invocation `manual` / `temporary`.
 
 ## OCF-EMG-002 — Toxic Exposure Response
 
@@ -147,7 +147,7 @@ Function summary: `temporary` / `conditional`; triggers: `["a harmful foreign su
 - **application** (`temporary`): Optional manual reinforcement when conscious and able.
 - **episode** (`temporary`): The narrated exposure response operates only as strongly and for as long as needed for the actual substance and exposure.
 
-- `OCF-CMD-EMG-002-PRIMARY`: `PLUS-CLEAR, REMOVE`; role `activation`; effect `temporary`; invocation `manual` / `temporary`.
+- `OCF-CMD-EMG-002-PRIMARY`: `PLUS-TOXIC-CLEAR`; role `activation`; effect `temporary`; invocation `manual` / `temporary`.
 
 ## OCF-FND-005 — Reset
 
@@ -171,7 +171,7 @@ Function summary: `permanent` / `manual`; triggers: `[]`.
 
 ## OCF-PRF-004 — Light Foot
 
-Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.
+Eases the felt sense of physical lightness and ease of movement; activation cue PLUS-LIGHT STEP.
 
 Function summary: `permanent` / `manual`; triggers: `[]`.
 
@@ -192,4 +192,4 @@ Function summary: `permanent` / `manual`; triggers: `[]`.
 
 ## Localization and audio
 
-English purpose, role and scope descriptions are synchronized with canonical YAML. Partial Spanish requires descriptive terminology review; no production translation was changed. Speech inputs, templates, DSP, pacing, gains, repetitions, recording text fingerprints and all 55 source plans remain unchanged.
+English purpose, role and scope descriptions are synchronized with canonical YAML. Partial Spanish requires descriptive terminology review; no production translation was changed. Speech inputs, templates, DSP, pacing, gains, repetitions and recording text fingerprints remain unchanged. The current catalog has 58 source plans and preserves the separate 55-function historical cohort.

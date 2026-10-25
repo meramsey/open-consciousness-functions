@@ -169,6 +169,7 @@ def discover(record) -> dict:
         "title": record.canonical_name,
         "purpose": record.data["purpose"]["summary"],
         "lifecycle": record.data["lifecycle"],
+        "companions": record.data.get("companions", []),
         # Keep the historic response shape; stable mode IDs are added only in
         # the separate structured commands view below.
         "activation": {key: command[key] for key in ("primary", "modes") if key in command},

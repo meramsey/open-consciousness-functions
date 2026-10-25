@@ -150,7 +150,7 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 Title: Temporary Numbing. Title status: APPROVED AND IMPLEMENTED.
 Display: `PLUS-NUMB`. Complete speech: **Plus Numb**.
 
-Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB.
+Legacy rapid numbing practice (GO NUMB) with a release; activation cue PLUS-NUMB.
 
 Translator context: One body and one closer primary-cue substitution; Short Fix body reference and exercise sign-off become Temporary Numbing. Retain Short Fix and repeated legacy primary wording as historical lookup. Keep active PLUS-RELEASE / Plus Release, procedures, temporary response, lasting learned ability, existing restriction and reconstruction provenance unchanged.
 
@@ -183,7 +183,7 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 Title: Imprint. Title status: APPROVED AND IMPLEMENTED.
 Display: `PLUS-IMPRINT`. Complete speech: **Plus Imprint**.
 
-Imprints a chosen suggestion or intention using the IMPRINT rehearsal.
+Consciously capture and retain selected information or experiences, with Plus Recall for deliberate retrieval.
 
 Translator context: Shorten two body mentions and one closer mention from Plus Imprint Imprint to Plus Imprint. Preserve title, breathing/attention sequence and memory suggestions. Keep Plus Recall active and unchanged; retain repeated legacy phrase as historical lookup.
 
@@ -348,7 +348,7 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 Title: Light Foot. Title status: APPROVED AND IMPLEMENTED.
 Display: `PLUS-LIGHT STEP`. Complete speech: **Plus Light Step**.
 
-Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.
+Eases the felt sense of physical lightness and ease of movement; activation cue PLUS-LIGHT STEP.
 
 Translator context: Change display cue to PLUS-LIGHT STEP; replace two body mentions and one closer mention with Plus Light Step. Keep Light Foot title, automatic everyday baseline, optional reinforcement, breathing procedure and surrounding movement suggestions. Retain superseded cue wording as historical lookup; introduce no mode or release.
 
@@ -414,7 +414,7 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 Title: Restorative Sleep. Title status: APPROVED AND IMPLEMENTED.
 Display: `PLUS-RESTORATIVE SLEEP`. Complete speech: **Plus Restorative Sleep**.
 
-Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE.
+Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP.
 
 Translator context: Change display cue to PLUS-RESTORATIVE SLEEP. Replace one body mention and one closer mention from Plus Heal Heal to Plus Restorative Sleep. Preserve title, restoration suggestions, chosen intention, overall balance and inhale/hold/cue/candle-like exhale. Retain superseded cue wording as historical lookup; introduce no mode or release. Preserve restoration during the selected sleep period and lasting availability of the ability. Frozen Sleep Easy pilot resources remain untouched.
 
@@ -425,7 +425,7 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 Title: Sleep. Title status: APPROVED AND IMPLEMENTED.
 Display: `PLUS-SLEEP`. Complete speech: **Plus Sleep**.
 
-Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP.
+Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP.
 
 Translator context: Replace two body mentions and one closer mention from Plus Twenty Twenty to Plus Sleep. Preserve title, cue during exhalation, successive gentle-breath repetition, chosen waking time and surrounding suggestions. Do not add breath-hold or candle-blowing instructions. Retain superseded numeric phrase as historical lookup; introduce no mode or release. Preserve deliberately invoked sleep, lasting learned ability and clear ordinary waking awareness at other times.
 
@@ -436,7 +436,7 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 Title: Dream Theme. Title status: APPROVED AND IMPLEMENTED.
 Display: `PLUS-DREAM`. Complete speech: **Plus Dream**.
 
-Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM.
+Sets dream themes and a restful dream-sleep mindset; activation cue PLUS-DREAM.
 
 Translator context: Change title from Sweet Dreams to Dream Theme and update exercise sign-off. Replace two body mentions and one closer mention from Plus Theme Dream Sleep to Plus Dream. Preserve theme selection, inhale/hold/cue/exhale followed by slow deep breathing, dream suggestions and clear joyful waking recall. Retain Sweet Dreams and superseded cue wording as historical lookup; introduce no lucid-control, cancellation or release mode. Preserve a theme selected for each use and lasting availability of the learned ability.
 
@@ -469,7 +469,7 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 Title: Stay Awake. Title status: APPROVED AND IMPLEMENTED.
 Display: `PLUS-AWAKE`. Complete speech: **Plus Awake**.
 
-Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE.
+Supports staying awake and alert when needed; activation cue PLUS-AWAKE.
 
 Translator context: Replace one body mention and one closer mention from Plus One Awake Alert One One to Plus Awake. Preserve title, essential immediate selected-need focus, inhale/hold/cue/slow mouth exhale and surrounding alertness suggestions. Retain longer legacy phrase as historical lookup; introduce no mode or release. Preserve temporary purposeful response yielding naturally when the need passes and rest is possible, and lasting availability without continuous stimulation.
 

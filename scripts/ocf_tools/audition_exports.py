@@ -537,7 +537,25 @@ def export_audition(
             from .listener_packages import attach_guides
 
             guide_artifacts = attach_guides(
-                stage, [function_id], source=Path(guides), locale=locale
+                stage,
+                [function_id],
+                source=Path(guides),
+                locale=locale,
+                edition_files={
+                    function_id: [
+                        {"path": name, "label": Path(name).suffix}
+                        for name in [
+                            *names.values(),
+                            "manifest.json",
+                            *(
+                                [all_names[f] for f in ("txt", "lrc", "srt", "vtt", "timing.json")]
+                                if lyrics
+                                else []
+                            ),
+                            *(["cover.png"] if cover_path else []),
+                        ]
+                    ]
+                },
             )
         if cover_path:
             # Normalize only custom JPEG imagery to the requested separate cover.png.

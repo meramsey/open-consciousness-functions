@@ -287,7 +287,9 @@
     },
     "companions": {
       "type": "array",
-      "items": { "type": "string" }
+      "description": "Optional related function IDs, never prerequisites. Listener-guide publication requires explicit relationship approval.",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^OCF-[A-Z]{3}-[A-Z0-9]{3,4}$" }
     },
     "incompatible_functions": {
       "type": "array",

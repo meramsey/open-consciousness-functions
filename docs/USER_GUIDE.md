@@ -19,6 +19,23 @@ auditions and frozen editorial/listening decisions retain their existing status.
 
 ## Entry points
 
+For listener-facing instructions, use the
+[function guide workflow](FUNCTION_GUIDES.md). Guides show current display/spoken
+cues, ordered documented activation steps, secondary controls, and declared
+persistence/mode/reset behavior. Optional related practices are approved
+directional suggestions, never required sequences or evidence of combined effects.
+Food More/Food Less belong to Nutricia; Appetite Choice uses Plus Satisfied.
+The Focus function is distinct from Focus 10/11 audio stages.
+
+Inside a private listener package, open `guides/index.html` (or its PDF/Markdown
+counterpart) to find the included guides, audio, transcripts and edition manifest.
+Related guides may be included without their recordings. Keep older package
+variants intact when documentation changes; new guide bytes require a new output
+directory/receipt, not an overwritten audition edition.
+Some readers restrict local-file launching. If a link cannot open an audio file,
+use the file manager and keep its matching transcript/lyrics sidecars together;
+working relative links do not establish native player or PDF-reader UI support.
+
 Use Python 3.11 or newer in the environment where OCF is installed. See the
 [README installation steps](../README.md#get-started) for platform-specific activation.
 The [interface example library](../examples/README.md) inventories every shipped

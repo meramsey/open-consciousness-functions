@@ -29,6 +29,7 @@
         "purpose": { "type": "string" },
         "activation": { "type": "object" },
         "lifecycle": {"$ref": "function.schema.json#/properties/lifecycle"},
+        "companions": {"$ref": "function.schema.json#/properties/companions"},
         "commands": { "type": "array", "items": { "$ref": "#/definitions/command" } },
         "status": { "type": "object" },
         "content_maturity": { "type": ["string", "null"] },

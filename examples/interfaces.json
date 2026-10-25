@@ -1997,7 +1997,7 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "105b7ae97261589558ef7e5ce13dd0176eaab9e3336811dff07bc1c1e2df5a34",
+      "example_sha256": "bd5836a272ae53affac397c5375d234c356db6c640d7f945e7e34212eeac22cf",
       "schema": "locale-resource.schema.json",
       "source": "locales/en-US/ui.yaml",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
@@ -2127,10 +2127,10 @@
     "schemas/editorial-function.schema.json": "f43a058da0c9e1815d975b255f8f96c420c2385da88627c9e78e6878cd42c6cf",
     "schemas/function-binding.schema.json": "d3095a31cf1edf746a9d6ec230b7a545765774be446a4028d8b03519df6fb33f",
     "schemas/function-decisions.schema.json": "5882d26b99b7bb3005a334926ec879cf77df8dfdfc8041219eba0e59df871a52",
-    "schemas/function-discovery.schema.json": "a7a0e886391da83485fba62727dc12511a876327681327f8ab7399081c11cc49",
+    "schemas/function-discovery.schema.json": "232fab932622ecf2332d6a409ec355a69abe081d520c7ae9602d8ad27de852aa",
     "schemas/function-evidence.schema.json": "e541f1af76323fb9b059c4e39ceb5ab5f2eceaa0cbf4d6e37d0230d303b919a8",
     "schemas/function-specification.schema.json": "f7348ab2cba5a5fc8b4216efd00dc3e8300e053c77d78004527ea176354409ea",
-    "schemas/function.schema.json": "46036add72bf27ca85288a28b246c7b8c32da424d5d1c723a4d41d825f6d470a",
+    "schemas/function.schema.json": "b3bbc6e5415146af47c98a45d848b5bd625a3ef92015ed1fa4cb5b107fe08fcc",
     "schemas/functional-metadata.schema.json": "e8bcf6a722735269065ef8c308ac03e6a4dcae6210538209dec87d738a0d072a",
     "schemas/hplus-review-selection.schema.json": "2e65fa5465bd6a70185dbcbb5ae3d933b81e2e7034ba17b4699b7998a392ac19",
     "schemas/locale-manifest.schema.json": "3d1188d454415a4b111beca2545ed0627e89b112943ab523e81e632c3e1558b6",
@@ -2152,7 +2152,7 @@
     "schemas/timed-transcript.schema.json": "c3e2798f7ace0ba81c1fb5f1d2fa5afad20066ac3285a2fb7772dbed995b5950",
     "schemas/voice-dataset.schema.json": "0307327f3f52eeaaaed71abaa6d1950c0b665fc677b43547e2452e9c31000ed8",
     "schemas/voice-profile.schema.json": "0204c3379a0540d22e3792ee5b78ad134bd2a8cb73ddf51c975a602dbcb2c23d",
-    "scripts/ocf_tools/agent_api.py": "d857d7ac1b9e118ba9a5614b1b86d16265b6fd6a6ac766d2a14099be8b7e7715",
+    "scripts/ocf_tools/agent_api.py": "0f1e3b563fc5cc85e0798522cb9573541ced9631ba20768d307a51c9e93bfcdb",
     "scripts/ocf_tools/cli.py": "a71446e122ef7f52c403265f8d4dd780b4b570a3bd722d865f4e30bdcc57c697",
     "scripts/ocf_tools/lsp_server.py": "a753b91b1b73609ecd6886470a037a9bbf1259e2a77f08203546e55ef4cbae09",
     "scripts/ocf_tools/mcp_server.py": "d8641d4160888abbe7152fca2117623de4dfb061793b95b161dbfb4534a2be54",

@@ -25,12 +25,14 @@ def _literal(value):
     return "`" + str(value).replace("`", "&#96;").replace("\n", " ") + "`"
 
 
-def function_markdown(record, content):
+def function_markdown(record, content, *, documentation=None):
     """Render a registry record and existing artwork/cue helper result."""
     lines = [
-        f"# {record.id}: {record.canonical_name}",
+        f"# {record.id}: {documentation['title']['text'] if documentation else record.canonical_name}",
         "",
-        "Metadata snapshot, not reviewed session instructions or release approval.",
+        "Current catalog and documented instructions; not listening or release approval."
+        if documentation
+        else "Metadata snapshot, not reviewed session instructions or release approval.",
         "",
         "[All function guides](../index.md)",
         "",
@@ -40,6 +42,11 @@ def function_markdown(record, content):
     for name in ("purpose", "description"):
         resolution = content.get(f"{name}_resolution") or {}
         value = content.get(name)
+        if name == "description" and documentation:
+            value = documentation["short_description"]["text"]
+            resolution = {"status": "canonical catalog description"}
+            if value == content.get("purpose"):
+                continue
         lines += [
             f"{name.title()} ({resolution.get('status', 'not-supplied')}): "
             + (_literal(value) if value else "Not supplied."),
@@ -68,17 +75,128 @@ def function_markdown(record, content):
             f"Cue binding status: {_literal(cue['binding_status'])}",
             "",
         ]
-    lines += [
-        "## Activation procedures and relationships",
-        "",
-        MISSING,
-        "",
-        "This guide does not publish procedures or relationships without a uniform "
-        "review gate; consult reviewed instructions for the specific edition.",
-        "",
-        "## Declared catalog metadata",
-        "",
-    ]
+        if documentation:
+            command = next(c for c in documentation["commands"] if c["id"] == cue["command_id"])
+            lines += [
+                f"Role: {_literal(command['role'])}",
+                "",
+                f"Usage: {command['usage']['text']}",
+                "",
+                f"Meaning: {command['explanation']['text']}",
+                "",
+                "Ordered activation procedure:",
+                "",
+            ]
+            steps = command["procedure_steps"]
+            if steps:
+                lines += [f"{i}. {step['instruction']['text']}" for i, step in enumerate(steps, 1)]
+            else:
+                lines += ["Not specified; do not infer an activation ritual."]
+            lines += [
+                "",
+                f"Intended effect scope: {_literal(command.get('effect_scope', 'not specified'))}.",
+                "",
+            ]
+            invocation = command.get("invocation_scope")
+            if invocation:
+                lines += [
+                    f"Invocation: {_literal(invocation.get('activation'))}; {_literal(invocation['persistence'])}. {invocation['description']}",
+                    "",
+                ]
+            for relation in command.get("related_commands", []):
+                lines += [
+                    relation["label"]["text"]
+                    + ": "
+                    + ", ".join(_literal(x["phrase"]) for x in relation["commands"]),
+                    "",
+                ]
+            evidence = set((command.get("procedure") or {}).get("evidence_keys", []))
+            bound = {item["key"] for item in record.data.get("narration", {}).get("sequence", [])}
+            if evidence and evidence.isdisjoint(bound):
+                lines += [
+                    "Procedure evidence points outside this function's bound narration sequence. Do not assume an existing recording teaches this command.",
+                    "",
+                ]
+    if documentation:
+        life = record.data.get("lifecycle", {})
+        lines += [
+            "## Operating behavior and modes",
+            "",
+            "These are intended exercise behaviors, not software sensors, physiological controls or demonstrated effects.",
+            "",
+            f"Function activation: {_literal(life.get('activation'))}. Intended persistence: {_literal(life.get('persistence'))}.",
+            "",
+        ]
+        for scope in documentation["lifecycle_scopes"]:
+            activation = f"; activation: {scope['activation']}" if scope.get("activation") else ""
+            lines += [
+                f"- {scope['label']['text']} ({scope['persistence']}{activation}): {scope['description']['text']}"
+            ]
+        for condition in life.get("trigger_conditions", []):
+            lines += [f"- Declared condition or reset: {condition}"]
+        release = life.get("release", {})
+        lines += [
+            "",
+            "Declared return/release command: "
+            + (
+                _literal(release["command"])
+                if release.get("command")
+                else "None separately specified."
+            ),
+            "",
+            "If no duration or reset condition is declared, no clock duration or additional reset is inferred. Playback controls are not semantic release commands.",
+            "",
+            "## Related functions",
+            "",
+        ]
+        for relation in documentation.get("related_functions", []):
+            lines += [
+                f"- Optional: [{relation['title']['text']}]({relation['function_id']}.md). {relation['description']['text']} Approval: {relation['approval']}."
+            ]
+        if not documentation.get("related_functions"):
+            lines += [
+                "No approved complementary-function link is declared. This does not prevent independent choice."
+            ]
+        lines += ["", "## Historical lookup and compatibility", ""]
+        from .commands import is_active, resolve_phrase
+
+        historical = record.data.get("historical_lookup", [])
+        lines += [
+            f"- Historical only ({item['kind']}): {_literal(item['text'])}." for item in historical
+        ]
+        for command in record.command_records:
+            if not is_active(command):
+                lines += [
+                    f"- Historical command identity {_literal(command.id)}: {_literal(resolve_phrase(record, command))}. Not a current activation instruction."
+                ]
+            elif command.role == "legacy-alias":
+                lines += [
+                    f"- Retained compatibility alias {_literal(command.id)}: {_literal(resolve_phrase(record, command))}. Not an additional mode or a new primary command."
+                ]
+        if not historical and not any(
+            c.role == "legacy-alias" or not is_active(c) for c in record.command_records
+        ):
+            lines += ["No separate historical lookup wording is declared."]
+        lines += [
+            "",
+            "## Practice and edition materials",
+            "",
+            "Use the documented procedure for your chosen command; do not add repetition, breath holds or prerequisite functions. Practice remains optional. The listed steps use structured instruction metadata; edition narration supplies any further qualifications.",
+            "",
+            "Narration wording and recordings are edition-specific. [Guide and edition navigation](../index.md) lists included files when this guide is packaged. A source plan or approved script is not evidence of a released recording.",
+            "",
+        ]
+    else:
+        lines += [
+            "## Activation procedures and relationships",
+            "",
+            MISSING,
+            "",
+            "This guide does not publish procedures or relationships without a uniform "
+            "review gate; consult reviewed instructions for the specific edition.",
+            "",
+        ]
+    lines += ["## Declared catalog metadata", ""]
     for label, value in (
         ("Domain", record.primary_domain),
         ("Activation", record.activation),
@@ -124,6 +242,22 @@ def function_markdown(record, content):
     return "\n".join(lines)
 
 
+def function_guide_markdown(record, *, catalog=None, locale="en-US"):
+    """One production projection of existing command/locale/lifecycle services."""
+    from .command_docs import _function_document
+
+    if locale != "en-US":
+        raise OCFError(
+            "listener guides currently support en-US only; no silent translation fallback"
+        )
+    catalog = catalog or LocaleCatalog()
+    return function_markdown(
+        record,
+        function_artwork_content(record.id, locale, catalog=catalog, strict=False),
+        documentation=_function_document(record, locale, catalog),
+    )
+
+
 def markdown_documents():
     """Build the ordered source snapshot using existing content authority."""
     catalog = LocaleCatalog()
@@ -133,8 +267,7 @@ def markdown_documents():
     index = ["# OCF function guides", "", "[General listening guide](listening-guide.md)", ""]
     for record in load_all_functions():
         filename = f"functions/{record.id}.md"
-        content = function_artwork_content(record.id, catalog=catalog, strict=False)
-        documents[filename] = function_markdown(record, content)
+        documents[filename] = function_guide_markdown(record, catalog=catalog)
         index.append(f"- [{record.id}: {record.canonical_name}]({filename})")
     documents["index.md"] = "\n".join(index) + "\n"
     return documents
@@ -171,6 +304,15 @@ def html_bytes(markdown):
         if heading:
             level = len(heading.group(1))
             blocks.append(f"<h{level}>{_inline(heading.group(2), '.html')}</h{level}>")
+        elif re.match(r"^\d+\. ", block):
+            blocks.append(
+                "<ol>"
+                + "".join(
+                    "<li>" + _inline(line.split(". ", 1)[1], ".html") + "</li>"
+                    for line in block.splitlines()
+                )
+                + "</ol>"
+            )
         elif block.startswith("- "):
             blocks.append(
                 "<ul>"
@@ -229,7 +371,9 @@ def pdf_bytes(markdown):
 
     story = []
     for block in re.split(r"\n\s*\n", markdown.strip()):
-        for line in [block] if not block.startswith("- ") else block.splitlines():
+        for line in (
+            block.splitlines() if block.startswith("- ") or re.match(r"^\d+\. ", block) else [block]
+        ):
             heading = re.match(r"^(#{1,3}) (.*)", line, re.DOTALL)
             if heading:
                 story.append(
@@ -237,6 +381,9 @@ def pdf_bytes(markdown):
                 )
             elif line.startswith("- "):
                 story.append(Paragraph(_inline(line[2:]), body, bulletText="•"))
+            elif re.match(r"^\d+\. ", line):
+                number, text = line.split(". ", 1)
+                story.append(Paragraph(_inline(text), body, bulletText=number + "."))
             else:
                 story.append(Paragraph(_inline(line.replace("\n", " ")), body))
         story.append(Spacer(1, 3))

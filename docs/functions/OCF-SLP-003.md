@@ -2,7 +2,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Dream Theme
 
-**Purpose**: Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM.
+**Purpose**: Sets dream themes and a restful dream-sleep mindset; activation cue PLUS-DREAM.
 
 **Function persistence**: Temporary (`temporary`)
 

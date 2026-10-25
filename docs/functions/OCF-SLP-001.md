@@ -2,7 +2,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Restorative Sleep
 
-**Purpose**: Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE.
+**Purpose**: Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP.
 
 **Function persistence**: Temporary (`temporary`)
 

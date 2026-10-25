@@ -855,7 +855,7 @@
         "version": "1.0.0",
         "resource_status": "reviewed"
       },
-      "current_purpose": "Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB.",
+      "current_purpose": "Legacy rapid numbing practice (GO NUMB) with a release; activation cue PLUS-NUMB.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "APPROVED AND IMPLEMENTED",
@@ -1036,7 +1036,7 @@
         "version": "1.0.0",
         "resource_status": "reviewed"
       },
-      "current_purpose": "Imprints a chosen suggestion or intention using the IMPRINT rehearsal.",
+      "current_purpose": "Consciously capture and retain selected information or experiences, with Plus Recall for deliberate retrieval.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "APPROVED AND IMPLEMENTED",
@@ -2173,7 +2173,7 @@
         "version": "1.0.0",
         "resource_status": "reviewed"
       },
-      "current_purpose": "Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.",
+      "current_purpose": "Eases the felt sense of physical lightness and ease of movement; activation cue PLUS-LIGHT STEP.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "APPROVED AND IMPLEMENTED",
@@ -2249,7 +2249,7 @@
         "spoken_locale": "en-US",
         "authority": "function-yaml"
       },
-      "current_purpose": "Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK.",
+      "current_purpose": "Combines strength and quickness in a single felt state; activation cue PLUS-STRONG QUICK.",
       "decision_status": "EXISTING PAIR RETAINED",
       "metadata_teaching_consistent": true,
       "title_status": "UNCHANGED",
@@ -2503,7 +2503,7 @@
         "version": "1.0.0",
         "resource_status": "reviewed"
       },
-      "current_purpose": "Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE.",
+      "current_purpose": "Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "APPROVED AND IMPLEMENTED",
@@ -2555,7 +2555,7 @@
         "version": "1.0.0",
         "resource_status": "reviewed"
       },
-      "current_purpose": "Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP.",
+      "current_purpose": "Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "APPROVED AND IMPLEMENTED",
@@ -2601,7 +2601,7 @@
         "version": "1.0.0",
         "resource_status": "reviewed"
       },
-      "current_purpose": "Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM.",
+      "current_purpose": "Sets dream themes and a restful dream-sleep mindset; activation cue PLUS-DREAM.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "APPROVED AND IMPLEMENTED",
@@ -2796,7 +2796,7 @@
         "version": "1.0.0",
         "resource_status": "reviewed"
       },
-      "current_purpose": "Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE.",
+      "current_purpose": "Supports staying awake and alert when needed; activation cue PLUS-AWAKE.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "APPROVED AND IMPLEMENTED",
@@ -6711,19 +6711,23 @@
         "override_steps": [
           {
             "id": "select-question-or-situation",
-            "operation": "select-question"
+            "operation": "select-question",
+            "localization_key": "functions.ocf-exp-006.procedure.select-question-or-situation"
           },
           {
             "id": "think-or-say-in-mind",
-            "operation": "think-or-say-command"
+            "operation": "think-or-say-command",
+            "localization_key": "functions.ocf-exp-006.procedure.think-or-say-in-mind"
           },
           {
             "id": "allow-quiet-moment",
-            "operation": "other"
+            "operation": "other",
+            "localization_key": "functions.ocf-exp-006.procedure.allow-quiet-moment"
           },
           {
             "id": "consider-and-choose-response",
-            "operation": "other"
+            "operation": "other",
+            "localization_key": "functions.ocf-exp-006.procedure.consider-and-choose-response"
           }
         ]
       },
@@ -6731,19 +6735,23 @@
       "resolved_procedure_steps": [
         {
           "id": "select-question-or-situation",
-          "operation": "select-question"
+          "operation": "select-question",
+          "localization_key": "functions.ocf-exp-006.procedure.select-question-or-situation"
         },
         {
           "id": "think-or-say-in-mind",
-          "operation": "think-or-say-command"
+          "operation": "think-or-say-command",
+          "localization_key": "functions.ocf-exp-006.procedure.think-or-say-in-mind"
         },
         {
           "id": "allow-quiet-moment",
-          "operation": "other"
+          "operation": "other",
+          "localization_key": "functions.ocf-exp-006.procedure.allow-quiet-moment"
         },
         {
           "id": "consider-and-choose-response",
-          "operation": "other"
+          "operation": "other",
+          "localization_key": "functions.ocf-exp-006.procedure.consider-and-choose-response"
         }
       ],
       "cue_presentation": {
@@ -9944,7 +9952,7 @@
     "functions/body/de-discomfort.yaml": "fc9ccf4d2d50ec56a81bf66791f292605839a7d33e9827e0543a50df9e6a012b",
     "functions/body/de-tox-body.yaml": "4b961558d4e3255f0f1d542f0b1459ecb2f382541c29857bf33f6a7f15c8df35",
     "functions/body/eat-no-eat.yaml": "7e743eb2a1027373434579ecaee6d2302960b60407e67188551eb5635a8ddb06",
-    "functions/body/heart-repairs.yaml": "807e760409aeb70668ad9b3ad7ddbf90fd4f6c7be35cd91861574976c7ff79e8",
+    "functions/body/heart-repairs.yaml": "5d8b0dda475890b041fe8f2489a3303b157f32312718da9afb9e26f7a86434b8",
     "functions/body/hypertension.yaml": "c5cd9d777aa7a51ea3642903575565f870de4bb4cd07d4cfb0acb2eb0eb08bf2",
     "functions/body/immunizing.yaml": "d65bdfa6594e5cf55f939def334580d77f8d84fb7f855910c86a38e4ca0abba6",
     "functions/body/lungs-repairs.yaml": "899b2e0248e4a452130d5460410f080790cb2a80ee81799f303cd6dcb1a3784c",
@@ -9953,11 +9961,11 @@
     "functions/body/sex-drive.yaml": "1671db633b87d9702d9b6cf7bd3683dd2f18047b96bcba5101df53def812f99e",
     "functions/body/tune-up.yaml": "f54207238221bc435930dafe539dd9d219888ba2c90c65547581fe3105a7d1d4",
     "functions/body/regenerate.yaml": "67a1ec3f847944e064e0ec2831ef2decc8af0b69208c3a027b437915ac8fbff8",
-    "functions/body/short-fix.yaml": "1948dba8133693e4fa907d33aa4510a30c4474c3a4314a8337662dd9ffb44720",
+    "functions/body/short-fix.yaml": "c1559b1f2b664a0b1d78116474fcbcc80877630319cbad3134c6eb3ff7973cfd",
     "functions/cognition/access-to-information.yaml": "bb2c38389388feea18ad42a22aec1e84e880eb32b343e0ae3db496a7b152f926",
     "functions/cognition/buy-the-numbers.yaml": "f28c4c7bf7cfae2fdd01907fa0d930fb5f2451cd3490a12e35e62c1f94e6e1d9",
     "functions/cognition/contemplation.yaml": "7791e189c7c153fe2c4292c0288f6d540826e3299b39ed7127a36067b13f1289",
-    "functions/cognition/imprint.yaml": "e4c73efa6f196225b9fb478b8004da1ec8f6b9a3902824944abe48122a83423c",
+    "functions/cognition/imprint.yaml": "fc69bc74c580c6271d2f11abed14566774a9e807c76667c2e27ea65b4abd3693",
     "functions/cognition/options.yaml": "acd8ad6025cf49971117bae7f652a5f7a927f0d3931296f6f3d8d5670db58c81",
     "functions/cognition/recall.yaml": "aeb550a24153dcf23d3a1ae41b2b3da79e1a92345777e663b51aeb058e1c668f",
     "functions/cognition/think-fast.yaml": "e6ce234e058cf1d8bb6ab74c6843765ee22adcf497d8a8d30fbbfd5dc14012bd",
@@ -9967,13 +9975,13 @@
     "functions/emotion/let-go.yaml": "1b3ad890769212a0a95bcf534766c87c84171e3923087770b0b0b1c1b90f5433",
     "functions/emotion/off-loading.yaml": "c2a160d3ad0f196404b5cdbb9eac1b97456278417bb3dc0e7178d7e8e6df221c",
     "functions/emotion/empathizing.yaml": "c5d02479a626e1736bc3e6eea63d0f02fcc8217b7e04f5613762d0ac9e76b9e0",
-    "functions/experimental/mobius-west.yaml": "4ed60aadc94a22ab8ec88ff000a8cc05cc21ed5f693d467467aab87afde100d6",
+    "functions/experimental/mobius-west.yaml": "c0c57f4cde00cf6df9c42bd27221bb1d6fb473f24aeff868154d5ad9e33f8324",
     "functions/experimental/zoning.yaml": "f5f3aa75d3fdd7a20b0ae6959ab264a9019248169a56ec54e2140b8c1516bfa2",
-    "functions/experimental/dissolve.yaml": "4764264dfca2244e58c2870fbcdf03a2569d9a3f736809572d9c1b22c30d170b",
+    "functions/experimental/dissolve.yaml": "750b4f6aa2349ad838ae1592906a0938c73743be8372768e45961e20f10e6803",
     "functions/experimental/clear-zone.yaml": "79cd4028d02ddb84f6b72437d20d551b030440acadfaccd42582c3704d1a53dc",
-    "functions/experimental/intuition.yaml": "170285741ed6d062232be4fab6a9ece08375d0d3f860d6183384426373f4a107",
+    "functions/experimental/intuition.yaml": "2fa17272cca3074dfaaa93c64fb04c26d92da2390275aa9988cdc8b7ecfeaf2c",
     "functions/foundation/energize.yaml": "18c8a03827f47a11814362b9a11e80c73fa6dbba0a04f802fe0c76a38a0c1378",
-    "functions/foundation/attention.yaml": "f79b1780ea403926900eed6cb7cef7077dba9b03bf3b2b5a4b4077e4ad496e8b",
+    "functions/foundation/attention.yaml": "d6a341c20640843f30106aba9ebd448a57bc04b819d356280dfc5223d7cbbb56",
     "functions/foundation/recharge.yaml": "4192369502c43aefa4efa0cd6a0988ae38fbdb66f6084849be971756149be465",
     "functions/foundation/relax.yaml": "7cc1df12f010d2942dd99c3a9cab6f67ac8c86039a6ce616f3ab381627d89c0b",
     "functions/foundation/reset.yaml": "fb9819f5fc609a36e56b8e9e10359c980917f181c85feb0a415811681f1ebd68",
@@ -9982,19 +9990,19 @@
     "functions/performance/do-this-now.yaml": "e47a4d41673cb081c6204f6093848bae1e88d8233d79dd493249ab5dba1a98ab",
     "functions/performance/eight-great.yaml": "da690abd9584a4add00f942f9cf1dec639838233f31f09415bfa4c8e04d3f55d",
     "functions/performance/synchronizing.yaml": "45bfba5c02fa4ba5e6ba2b8f8b1d70896c93996eb4fd702880b3506e3524b050",
-    "functions/performance/light-foot.yaml": "0b05b201874db5ca4746dd0db2f3e0da0add168c2d545912af98e8efbaf54320",
+    "functions/performance/light-foot.yaml": "8b5d832a75d455de9510663908c26d3ed6dba31151893dcc0180a4f68ccaac4e",
     "functions/performance/make-your-day.yaml": "6f4ddd3b4654473aa1b3cddf72dc53e70d6f55af6d96421205d491044833db20",
-    "functions/performance/strong-quick.yaml": "47738b98c483b64d938acdc5abc38eed144dea1a2487b45cabef204bc8c8c515",
+    "functions/performance/strong-quick.yaml": "eb1b1fc8766fd06a0820bddee2d4b527ae4fa23eaf7bbadc717f586d9aec4696",
     "functions/sensory/hearing.yaml": "9ff22aed5205f8fa17b5c9c397c2e44c39ea91fb0e56e7339b76f2f4beed3acb",
     "functions/sensory/seeing.yaml": "d13a6589495e0da2cfd1846298b577e3b0e994d2ff922e6b47255a9a6e4cbb50",
     "functions/sensory/smell.yaml": "bbbbf254259ccbbdc2b452f691f7608144cbe2dea8d50d867078f14530d18962",
     "functions/sensory/taste.yaml": "88631efea0e6f856f21fd74fb4a39b2a40d62f25658c523eaa0094ecaf89620a",
     "functions/sensory/touch.yaml": "f45495dfe24cf0cde8f43c7392e068175a194d3b91547d61c74f8fca61872ab6",
-    "functions/sleep/restorative-sleep.yaml": "a850dc573d920bcd4166c84ed3aa13c67133571055a32c3e228370dcdd62f4f4",
-    "functions/sleep/sleep.yaml": "006fb6bd23c7159fd9d7b8cf24a6c4bc32175db7bc64a1ed8e2473564d0e9dcd",
-    "functions/sleep/sweet-dreams.yaml": "797f95278bfb23d3c4423d4e9028853f22928d3e0dc4c8d15acfa818d82bc2eb",
+    "functions/sleep/restorative-sleep.yaml": "0165452fea3ae65c55b423ab3069fd2209c914a2cc96bd1e29a0d6ffe91bfb4c",
+    "functions/sleep/sleep.yaml": "6a1930af516d72dea1bccb9afad3d220fcd43458fd2cea110fca05f19619a501",
+    "functions/sleep/sweet-dreams.yaml": "36fddfa368fde9e27d9853e17ad0ff675bfd89b1015e44bfa2caec7c8be66c33",
     "functions/sleep/wake-know.yaml": "6671c425e8ecc5f74deb78f0a43eaac10d2a3b26bce011fa64f32593c94de95c",
-    "functions/sleep/sleep-easy.yaml": "3e69cddf48e0183f68642925ef15af20080e4875cfd4cc2a5d488b90ca5ff930",
-    "functions/sleep/stay-awake.yaml": "2ad207fb933134239c3c7bd9e1cba70520f677733b096dadd0989e3f48d38d85"
+    "functions/sleep/sleep-easy.yaml": "76a542635a5dd9a365bc9f83bf97d245f7736c0739c1f1b836cf99b0ac63effa",
+    "functions/sleep/stay-awake.yaml": "40cb8d6fca132cba7a127e73d0fd32afbf1a9538cd133fe9870a157f4a9375fb"
   }
 }

@@ -2,7 +2,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Strong-Quick
 
-**Purpose**: Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK.
+**Purpose**: Combines strength and quickness in a single felt state; activation cue PLUS-STRONG QUICK.
 
 **Function persistence**: Temporary (`temporary`)
 

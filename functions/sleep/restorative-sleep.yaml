@@ -1,8 +1,6 @@
 aliases:
-  commands:
-    []
-  command_ids:
-    []
+  commands: []
+  command_ids: []
   names:
   - Restorative Sleep
 applications: []
@@ -20,7 +18,7 @@ canonical:
   command:
     modes: []
     mode_ids: []
-    primary: "PLUS-RESTORATIVE SLEEP"
+    primary: PLUS-RESTORATIVE SLEEP
   name: Restorative Sleep
 commands:
 - id: OCF-CMD-SLP-001-PRIMARY
@@ -54,8 +52,8 @@ commands:
     text: Plus Restorative Sleep
     narration_key: hplus.function.ocf-slp-001.function-body
     relationship: canonical-match
-  spoken: "Plus Restorative Sleep"
-  spoken_review: "reviewed"
+  spoken: Plus Restorative Sleep
+  spoken_review: reviewed
 - id: OCF-CMD-SLP-001-LEGACY-01
   function_id: OCF-SLP-001
   phrase_ref:
@@ -75,7 +73,7 @@ commands:
   relationships: {}
   spoken: null
   spoken_review: unresolved
-  availability: "historical-lookup"
+  availability: historical-lookup
 chains: []
 claims:
   intended_effects: []
@@ -122,12 +120,13 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: "approved"
+  command_review: approved
   reimplementation_status: planned
 purpose:
-  community_description: Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE.
+  community_description: Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE
+    SLEEP.
   source_description: null
-  summary: Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE.
+  summary: Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP.
 safety:
   level: health
   medical_relevance: true

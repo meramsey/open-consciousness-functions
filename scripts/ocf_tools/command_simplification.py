@@ -116,6 +116,9 @@ def record(root=REPO_ROOT):
 
 
 def predecessor(root, name, text):
+    from .guide_review import predecessor as before_guides
+
+    text = before_guides(root, name, text)
     data = record(root)
     row = data["files"].get(name) if data else None
     if row is None:
@@ -138,13 +141,18 @@ def before_texts(root, texts):
 def verify(root=REPO_ROOT):
     from tools.check_hplus_narration_integrity import narration_texts, text_fingerprints
 
+    from .guide_review import predecessor as before_guides
+    from .guide_review import verify as verify_guides
+
+    verify_guides(root)
     data = record(root)
     if data is None:
         return ["command simplification successor missing"]
     for name in data["files"]:
         predecessor(root, name, (root / name).read_text(encoding="utf-8"))
     for name, checksum in data["immutable_files"].items():
-        if sha((root / name).read_text(encoding="utf-8")) != checksum:
+        current = before_guides(root, name, (root / name).read_text(encoding="utf-8"))
+        if sha(current) != checksum:
             raise OCFError("command simplification immutable predecessor drift: " + name)
     texts = narration_texts(root)
     if text_fingerprints(before_texts(root, texts)) != json.loads(
@@ -177,7 +185,8 @@ def verify(root=REPO_ROOT):
         raise OCFError("command simplification speech scope drift")
     for name in data["function_files"]:
         old = yaml.safe_load(data["files"][name]["before"])
-        if yaml.safe_load((root / name).read_text(encoding="utf-8")) != approved_function(old):
+        current = before_guides(root, name, (root / name).read_text(encoding="utf-8"))
+        if yaml.safe_load(current) != approved_function(old):
             raise OCFError("command simplification changed behavior: " + name)
     ui = yaml.safe_load((root / "locales/en-US/ui.yaml").read_text(encoding="utf-8"))["entries"]
     for owner, text in ARTWORK.items():

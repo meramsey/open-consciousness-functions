@@ -66,6 +66,7 @@ def test_intermediate_shared_file_drift_cannot_be_hidden_by_latest_successor(tmp
 @pytest.mark.integration
 def test_all_28_approvals_preserve_procedures_controls_and_deferred_metadata():
     from ocf_tools.commands import command_view, cue_presentation, is_active
+    from ocf_tools.guide_review import predecessor as before_guide_metadata
     from ocf_tools.indexes import load_all_functions
     from ocf_tools.narration_first import plan_narration
     from tools.check_hplus_narration_integrity import narration_texts, text_fingerprints
@@ -125,7 +126,13 @@ def test_all_28_approvals_preserve_procedures_controls_and_deferred_metadata():
             "OCF-BOD-008",
             "OCF-SEN-002",
         }:
-            assert owner.data["purpose"] == old["purpose"]
+            # Compare the naming-era purpose through the checked metadata successor.
+            naming_view = yaml.safe_load(
+                before_guide_metadata(
+                    REPO_ROOT, decision["function_file"], owner.path.read_text(encoding="utf-8")
+                )
+            )
+            assert naming_view["purpose"] == old["purpose"]
         if owner.id not in {
             "OCF-COG-004",
             "OCF-COG-005",

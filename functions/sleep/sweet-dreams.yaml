@@ -1,8 +1,6 @@
 aliases:
-  commands:
-    []
-  command_ids:
-    []
+  commands: []
+  command_ids: []
   names:
   - Sweet Dreams
 applications: []
@@ -21,7 +19,7 @@ canonical:
     modes: []
     mode_ids: []
     primary: PLUS-DREAM
-  name: "Dream Theme"
+  name: Dream Theme
 commands:
 - id: OCF-CMD-SLP-003-PRIMARY
   function_id: OCF-SLP-003
@@ -54,8 +52,8 @@ commands:
     text: Plus Dream
     narration_key: hplus.function.ocf-slp-003.function-body
     relationship: canonical-match
-  spoken: "Plus Dream"
-  spoken_review: "reviewed"
+  spoken: Plus Dream
+  spoken_review: reviewed
 - id: OCF-CMD-SLP-003-LEGACY-01
   function_id: OCF-SLP-003
   phrase_ref:
@@ -75,7 +73,7 @@ commands:
   relationships: {}
   spoken: null
   spoken_review: unresolved
-  availability: "historical-lookup"
+  availability: historical-lookup
 chains: []
 claims:
   intended_effects: []
@@ -121,12 +119,12 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: "approved"
+  command_review: approved
   reimplementation_status: planned
 purpose:
-  community_description: Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM.
+  community_description: Sets dream themes and a restful dream-sleep mindset; activation cue PLUS-DREAM.
   source_description: null
-  summary: Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM.
+  summary: Sets dream themes and a restful dream-sleep mindset; activation cue PLUS-DREAM.
 safety:
   level: general
   medical_relevance: false

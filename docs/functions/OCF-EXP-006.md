@@ -24,9 +24,9 @@ Calm discernment and constructive purposeful response; impressions are not unque
 
 ### Activation sequence
 
-1. Choose a question to explore.
-2. Think or say the command.
-3. Follow the function-specific instruction recorded for this step.
-4. Follow the function-specific instruction recorded for this step.
+1. Bring one question or situation into awareness.
+2. Think or say the selected command in the mind.
+3. Allow a quiet moment to notice what arises.
+4. Consider its meaning and choose a response with care and discernment.
 
 Canonical command phrases are shown exactly as registered and are not translated. Script and legacy phrase differences are shown separately.

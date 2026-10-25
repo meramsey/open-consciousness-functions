@@ -1,8 +1,6 @@
 aliases:
-  commands:
-    []
-  command_ids:
-    []
+  commands: []
+  command_ids: []
   names:
   - Stay Awake
 applications: []
@@ -54,8 +52,8 @@ commands:
     text: Plus Awake
     narration_key: hplus.function.ocf-slp-006.function-body
     relationship: canonical-match
-  spoken: "Plus Awake"
-  spoken_review: "reviewed"
+  spoken: Plus Awake
+  spoken_review: reviewed
 - id: OCF-CMD-SLP-006-LEGACY-01
   function_id: OCF-SLP-006
   phrase_ref:
@@ -75,7 +73,7 @@ commands:
   relationships: {}
   spoken: null
   spoken_review: unresolved
-  availability: "historical-lookup"
+  availability: historical-lookup
 chains: []
 claims:
   intended_effects: []
@@ -122,12 +120,12 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: "approved"
+  command_review: approved
   reimplementation_status: planned
 purpose:
-  community_description: Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE.
+  community_description: Supports staying awake and alert when needed; activation cue PLUS-AWAKE.
   source_description: null
-  summary: Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE.
+  summary: Supports staying awake and alert when needed; activation cue PLUS-AWAKE.
 safety:
   level: general
   medical_relevance: false

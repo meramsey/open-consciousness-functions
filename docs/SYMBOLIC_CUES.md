@@ -35,8 +35,9 @@ entries:
 
 The function's `narration.sequence` must explicitly authorize this resource key.
 Its primary command supplies display `PLUS-SLEEP EASY` and complete speech
-`Plus Sleep Easy`. Heart's exact display remains `PLUS-HEART-BETTER`; its complete
-speech is `Plus Heart Better`. No global punctuation normalization is performed.
+`Plus Sleep Easy`. Heart Flow's current display is `PLUS-HEART-FLOW`; its complete
+speech is `Plus Heart Flow`. Former wording remains historical lookup under its
+approved successor. No global punctuation normalization is performed.
 
 Documented selectors:
 
@@ -122,11 +123,10 @@ their resolved-text hashes and update raw-template/defaults provenance separatel
 Historical notes/quotations and the separate, unbound Access to Energy
 `access-close` entry remain literal.
 
-One explicit technical review item remains: `OCF-COG-005` has null/unresolved
-authoritative spoken metadata although its narration contains “Plus Options
-Choices”. Its preview says unavailable and its literal teaching is retained;
-maintenance does not infer a reviewed cue definition from narration. This does
-not reopen the completed naming queue.
+The approved [Options successor](OPTIONS_SUCCESSOR.md) resolved the former
+unbound-cue review item: `OCF-COG-005` now owns reviewed speech **Plus Options**.
+“Plus Options Choices” remains historical lookup only. The earlier unresolved
+state is predecessor evidence, not the current cue or an open naming question.
 
 ```bash
 python scripts/ocf.py functions preview OCF-SLP-005 --locale en-US

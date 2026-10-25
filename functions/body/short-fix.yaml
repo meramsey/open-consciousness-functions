@@ -21,7 +21,7 @@ canonical:
     modes: []
     mode_ids: []
     primary: PLUS-NUMB
-  name: "Temporary Numbing"
+  name: Temporary Numbing
 commands:
 - id: OCF-CMD-BOD-015-PRIMARY
   function_id: OCF-BOD-015
@@ -51,8 +51,8 @@ commands:
     text: Plus Numb
     narration_key: hplus.function.ocf-bod-015.function-body
     relationship: canonical-match
-  spoken: "Plus Numb"
-  spoken_review: "reviewed"
+  spoken: Plus Numb
+  spoken_review: reviewed
 - id: OCF-CMD-BOD-015-LEGACY-01
   function_id: OCF-BOD-015
   phrase_ref:
@@ -72,7 +72,7 @@ commands:
   relationships: {}
   spoken: null
   spoken_review: unresolved
-  availability: "historical-lookup"
+  availability: historical-lookup
 - id: OCF-CMD-BOD-015-LEGACY-02
   function_id: OCF-BOD-015
   phrase_ref:
@@ -113,7 +113,7 @@ commands:
   relationships:
     releases:
     - OCF-CMD-BOD-015-PRIMARY
-  spoken: "Plus Release"
+  spoken: Plus Release
   spoken_review: reviewed
 chains: []
 claims:
@@ -164,13 +164,12 @@ lifecycle:
     required: false
   trigger_conditions: []
 ocf:
-  command_review: "approved"
+  command_review: approved
   reimplementation_status: planned
 purpose:
-  community_description: Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue
-    PLUS-NUMB.
+  community_description: Legacy rapid numbing practice (GO NUMB) with a release; activation cue PLUS-NUMB.
   source_description: null
-  summary: Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB.
+  summary: Legacy rapid numbing practice (GO NUMB) with a release; activation cue PLUS-NUMB.
 safety:
   level: health
   medical_relevance: true

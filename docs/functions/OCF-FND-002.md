@@ -30,4 +30,8 @@ This is the primary command for the function.
 4. Think or say the command.
 5. Exhale.
 
+## Related commands
+
+- [Think Fast](OCF-COG-007.md): Compare directed-attention practice with thinking-oriented practice. Choose either independently; neither is required to activate or benefit from the other. The Focus function is not a Focus 10/11 audio stage. (`optional`; `OCF-GUIDE-REVIEW-001`).
+
 Canonical command phrases are shown exactly as registered and are not translated. Script and legacy phrase differences are shown separately.

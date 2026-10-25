@@ -35,4 +35,8 @@ Consciously dissolve a selected unwanted belief, expectation, emotional response
 4. Think or say the command.
 5. Exhale.
 
+## Related commands
+
+- [Intuition](OCF-EXP-006.md): Distinguish releasing a selected unwanted pattern from exploring intuitive understanding. Either exercise may be chosen independently; neither is a prerequisite for the other. (`optional`; `OCF-GUIDE-REVIEW-001`).
+
 Canonical command phrases are shown exactly as registered and are not translated. Script and legacy phrase differences are shown separately.

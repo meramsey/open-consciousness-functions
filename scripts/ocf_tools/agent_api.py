@@ -355,6 +355,7 @@ def get_function(
         "commands": record.data["canonical"]["command"],
         "purpose": record.purpose_summary,
         "lifecycle": record.data["lifecycle"],
+        "companions": record.data.get("companions", []),
         "command_metadata": [command_view(record, command) for command in record.command_records],
         "source_availability": record.source_availability,
         "human_review": layers.get("specifications", {}).get("human_review", "unknown"),

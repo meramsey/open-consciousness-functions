@@ -262,6 +262,7 @@
         "text": "Automates a desired way of being so it runs without active effort."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-aut-001.short-description",
@@ -475,6 +476,7 @@
         "text": "Supports balanced brain and neck circulation and maintenance, with conscious reinforcement when desired."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-001.short-description",
@@ -683,6 +685,7 @@
         "text": "Promotes a felt sense of smooth, comfortable circulation."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-002.short-description",
@@ -896,6 +899,7 @@
         "text": "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-003.short-description",
@@ -1109,6 +1113,7 @@
         "text": "Supports the body's self-regulating cleansing, renewal, and maintenance, with conscious reinforcement when desired."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-004.short-description",
@@ -1390,6 +1395,7 @@
         "text": "Supports deliberate eating choices and release of unnecessary cravings while preserving awareness of genuine nutritional needs."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-005.short-description",
@@ -1603,6 +1609,28 @@
         "text": "Self-directed wellness practice supporting a felt sense of calm, steady heart function."
       },
       "reimplementation_status": "planned",
+      "related_functions": [
+        {
+          "approval": "OCF-GUIDE-REVIEW-001",
+          "dependency": "optional",
+          "description": {
+            "fallback": false,
+            "key": "relationships.rel-bod006-bod002.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Compare heart-oriented calm and steadiness with broader circulation-oriented comfort. These are independently selectable wellness exercises, not a combined treatment or a proven way to improve cardiovascular function."
+          },
+          "function_id": "OCF-BOD-002",
+          "relationship_id": "REL-BOD006-BOD002",
+          "title": {
+            "fallback": false,
+            "key": "functions.ocf-bod-002.title",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Circulation"
+          }
+        }
+      ],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-006.short-description",
@@ -1894,6 +1922,7 @@
         "text": "Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for medical care."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-007.short-description",
@@ -2085,6 +2114,7 @@
         "text": "Supports a self-directed practice of immune surveillance, coordinated protective responses, immune memory, protection of healthy tissue, and return to balance after a threat is controlled."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-008.short-description",
@@ -2276,6 +2306,7 @@
         "text": "Supports efficient breathing and respiratory maintenance, with conscious reinforcement when desired."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-009.short-description",
@@ -2679,6 +2710,7 @@
         "text": "Supports conscious selection between fuller use of food energy and nourishment, or sufficient nourishment with reduced unnecessary energy retention and storage."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-010.short-description",
@@ -2948,6 +2980,7 @@
         "text": "Supports graceful passage through internal transitions."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-011.short-description",
@@ -3512,6 +3545,7 @@
         "text": "Adjusts felt sexual drive in either direction using the MORE/LESS grammar."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-012.short-description",
@@ -3809,6 +3843,7 @@
         "text": "A general self-directed balance-and-heal tune-up practice."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-013.short-description",
@@ -4033,6 +4068,7 @@
         "text": "Supports a felt sense of body-wide regeneration and renewal; activation cue PLUS-REGENERATE."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-014.short-description",
@@ -4204,7 +4240,7 @@
             "key": "functions.ocf-bod-015.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB."
+            "text": "Legacy rapid numbing practice (GO NUMB) with a release; activation cue PLUS-NUMB."
           },
           "related_commands": [],
           "relationships": {},
@@ -4367,7 +4403,7 @@
             "key": "functions.ocf-bod-015.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB."
+            "text": "Legacy rapid numbing practice (GO NUMB) with a release; activation cue PLUS-NUMB."
           },
           "related_commands": [
             {
@@ -4427,15 +4463,16 @@
         "key": "functions.ocf-bod-015.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB."
+        "text": "Legacy rapid numbing practice (GO NUMB) with a release; activation cue PLUS-NUMB."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-015.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB."
+        "text": "Legacy rapid numbing practice (GO NUMB) with a release; activation cue PLUS-NUMB."
       },
       "slug": "short-fix",
       "source_availability": "unavailable",
@@ -4677,6 +4714,7 @@
         "text": "Accesses intuition, memory, and inner knowledge on demand."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-cog-001.short-description",
@@ -4880,6 +4918,7 @@
         "text": "Speeds mental arithmetic and number processing."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-cog-002.short-description",
@@ -5195,6 +5234,7 @@
         "text": "Opens an internal space for quiet reflection; closes it again on completion."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-cog-003.short-description",
@@ -5386,7 +5426,7 @@
             "key": "functions.ocf-cog-004.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Imprints a chosen suggestion or intention using the IMPRINT rehearsal."
+            "text": "Consciously capture and retain selected information or experiences, with Plus Recall for deliberate retrieval."
           },
           "related_commands": [],
           "relationships": {},
@@ -5499,7 +5539,7 @@
             "key": "functions.ocf-cog-004.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Imprints a chosen suggestion or intention using the IMPRINT rehearsal."
+            "text": "Consciously capture and retain selected information or experiences, with Plus Recall for deliberate retrieval."
           },
           "related_commands": [
             {
@@ -5617,15 +5657,16 @@
         "key": "functions.ocf-cog-004.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Imprints a chosen suggestion or intention using the IMPRINT rehearsal."
+        "text": "Consciously capture and retain selected information or experiences, with Plus Recall for deliberate retrieval."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-cog-004.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Imprints a chosen suggestion or intention using the IMPRINT rehearsal."
+        "text": "Consciously capture and retain selected information or experiences, with Plus Recall for deliberate retrieval."
       },
       "slug": "imprint",
       "source_availability": "available",
@@ -5911,6 +5952,7 @@
         "text": "Opens perception of choices and alternatives."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-cog-005.short-description",
@@ -6107,6 +6149,7 @@
         "text": "Brings specific memories or learned material to mind on request."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-cog-006.short-description",
@@ -6303,6 +6346,7 @@
         "text": "Accelerates thinking speed and mental processing."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-cog-007.short-description",
@@ -6499,6 +6543,7 @@
         "text": "Supports confident, clear verbal expression."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-com-001.short-description",
@@ -6764,6 +6809,7 @@
         "text": "Emergency-oriented practice to stay calm and take helpful action. Does NOT replace emergency services, first aid, or professional care."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-emg-001.short-description",
@@ -7029,6 +7075,7 @@
         "text": "Emergency-oriented practice for toxic-exposure situations. Does NOT replace poison control, emergency services, or medical evaluation."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-emg-002.short-description",
@@ -7225,6 +7272,7 @@
         "text": "Releases clinging, tension, or unwanted mental objects."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-emo-001.short-description",
@@ -7444,6 +7492,7 @@
         "text": "Reduces selected recurring thought and emotional-pattern interference while retaining useful memories and conscious choice."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-emo-002.short-description",
@@ -7635,6 +7684,7 @@
         "text": "Develops consciously directed understanding and communication with another being through sensory, intuitive, and total-self awareness."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-emo-003.short-description",
@@ -7843,6 +7893,48 @@
         "text": "Sets a consciously selected future condition and completion time through intention and total-self alignment."
       },
       "reimplementation_status": "planned",
+      "related_functions": [
+        {
+          "approval": "OCF-GUIDE-REVIEW-001",
+          "dependency": "optional",
+          "description": {
+            "fallback": false,
+            "key": "relationships.rel-exp001-exp003.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Compare intention-setting with releasing a selected unwanted pattern. These remain independent exercises, not a required sequence."
+          },
+          "function_id": "OCF-EXP-003",
+          "relationship_id": "REL-EXP001-EXP003",
+          "title": {
+            "fallback": false,
+            "key": "functions.ocf-exp-003.title",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Dissolve"
+          }
+        },
+        {
+          "approval": "OCF-GUIDE-REVIEW-001",
+          "dependency": "optional",
+          "description": {
+            "fallback": false,
+            "key": "relationships.rel-exp001-exp006.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Intuition offers a separately chosen exercise for exploring understanding alongside purposeful intention-setting. Intuitive impressions are not proof or instructions that must be followed."
+          },
+          "function_id": "OCF-EXP-006",
+          "relationship_id": "REL-EXP001-EXP006",
+          "title": {
+            "fallback": false,
+            "key": "functions.ocf-exp-006.title",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Intuition"
+          }
+        }
+      ],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-exp-001.short-description",
@@ -8362,6 +8454,7 @@
         "text": "Establishes an adjustable whole-body zone of temperature comfort; Cancel ends the current adjustment and Release places the selected application on hold."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-exp-002.short-description",
@@ -8608,6 +8701,28 @@
         "text": "Consciously dissolve a selected unwanted belief, expectation, emotional response or recurring life pattern while preserving useful learning."
       },
       "reimplementation_status": "in-progress",
+      "related_functions": [
+        {
+          "approval": "OCF-GUIDE-REVIEW-001",
+          "dependency": "optional",
+          "description": {
+            "fallback": false,
+            "key": "relationships.rel-exp003-exp006.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Distinguish releasing a selected unwanted pattern from exploring intuitive understanding. Either exercise may be chosen independently; neither is a prerequisite for the other."
+          },
+          "function_id": "OCF-EXP-006",
+          "relationship_id": "REL-EXP003-EXP006",
+          "title": {
+            "fallback": false,
+            "key": "functions.ocf-exp-006.title",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Intuition"
+          }
+        }
+      ],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-exp-003.purpose",
@@ -9091,6 +9206,7 @@
         "text": "Establish an ongoing intention to discourage unwanted insect contact while maintaining calm awareness."
       },
       "reimplementation_status": "in-progress",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-exp-005.purpose",
@@ -9169,18 +9285,22 @@
             "override_steps": [
               {
                 "id": "select-question-or-situation",
+                "localization_key": "functions.ocf-exp-006.procedure.select-question-or-situation",
                 "operation": "select-question"
               },
               {
                 "id": "think-or-say-in-mind",
+                "localization_key": "functions.ocf-exp-006.procedure.think-or-say-in-mind",
                 "operation": "think-or-say-command"
               },
               {
                 "id": "allow-quiet-moment",
+                "localization_key": "functions.ocf-exp-006.procedure.allow-quiet-moment",
                 "operation": "other"
               },
               {
                 "id": "consider-and-choose-response",
+                "localization_key": "functions.ocf-exp-006.procedure.consider-and-choose-response",
                 "operation": "other"
               }
             ],
@@ -9192,10 +9312,10 @@
               "id": "select-question-or-situation",
               "instruction": {
                 "fallback": false,
-                "key": "command.procedure.select-question",
+                "key": "functions.ocf-exp-006.procedure.select-question-or-situation",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "text": "Choose a question to explore."
+                "text": "Bring one question or situation into awareness."
               },
               "operation": "select-question"
             },
@@ -9203,10 +9323,10 @@
               "id": "think-or-say-in-mind",
               "instruction": {
                 "fallback": false,
-                "key": "command.procedure.think-or-say-command",
+                "key": "functions.ocf-exp-006.procedure.think-or-say-in-mind",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "text": "Think or say the command."
+                "text": "Think or say the selected command in the mind."
               },
               "operation": "think-or-say-command"
             },
@@ -9214,10 +9334,10 @@
               "id": "allow-quiet-moment",
               "instruction": {
                 "fallback": false,
-                "key": "command.procedure.other",
+                "key": "functions.ocf-exp-006.procedure.allow-quiet-moment",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "text": "Follow the function-specific instruction recorded for this step."
+                "text": "Allow a quiet moment to notice what arises."
               },
               "operation": "other"
             },
@@ -9225,10 +9345,10 @@
               "id": "consider-and-choose-response",
               "instruction": {
                 "fallback": false,
-                "key": "command.procedure.other",
+                "key": "functions.ocf-exp-006.procedure.consider-and-choose-response",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "text": "Follow the function-specific instruction recorded for this step."
+                "text": "Consider its meaning and choose a response with care and discernment."
               },
               "operation": "other"
             }
@@ -9272,6 +9392,7 @@
         "text": "Recognize, receive and understand intuitive guidance through the total self, heart-centered awareness, subconscious, higher self and wider consciousness."
       },
       "reimplementation_status": "in-progress",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-exp-006.purpose",
@@ -9531,6 +9652,7 @@
         "text": "Restores a felt sense of available energy on demand."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-fnd-001.short-description",
@@ -9734,6 +9856,28 @@
         "text": "Directs and sustains focused attention."
       },
       "reimplementation_status": "complete",
+      "related_functions": [
+        {
+          "approval": "OCF-GUIDE-REVIEW-001",
+          "dependency": "optional",
+          "description": {
+            "fallback": false,
+            "key": "relationships.rel-fnd002-cog007.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Compare directed-attention practice with thinking-oriented practice. Choose either independently; neither is required to activate or benefit from the other. The Focus function is not a Focus 10/11 audio stage."
+          },
+          "function_id": "OCF-COG-007",
+          "relationship_id": "REL-FND002-COG007",
+          "title": {
+            "fallback": false,
+            "key": "functions.ocf-cog-007.title",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Think Fast"
+          }
+        }
+      ],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-fnd-002.short-description",
@@ -9937,6 +10081,7 @@
         "text": "Replenishes a felt sense of energy and freshness."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-fnd-003.short-description",
@@ -10128,6 +10273,7 @@
         "text": "Deepens physical and mental relaxation."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-fnd-004.short-description",
@@ -10341,6 +10487,7 @@
         "text": "Supports a deliberately invoked shift from tiredness, weariness, or feeling emotionally low toward renewed wakefulness, energy, clarity, and confidence."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-fnd-005.short-description",
@@ -10537,6 +10684,7 @@
         "text": "Releases unhelpful states, prompts, or lingering experiences."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-fnd-006.short-description",
@@ -10823,6 +10971,7 @@
         "text": "Supports stepping away from habitual, repeated behavior patterns."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-lif-001.short-description",
@@ -11019,6 +11168,7 @@
         "text": "Moves from deliberation into immediate, present action."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-prf-001.short-description",
@@ -11227,6 +11377,7 @@
         "text": "Strengthens recognition and expression of total-self strength, unity, resources, and power throughout daily life."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-prf-002.short-description",
@@ -11430,6 +11581,7 @@
         "text": "Aligns and smooths internal rhythms toward feeling faster and steadier."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-prf-003.short-description",
@@ -11616,7 +11768,7 @@
             "key": "functions.ocf-prf-004.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT."
+            "text": "Eases the felt sense of physical lightness and ease of movement; activation cue PLUS-LIGHT STEP."
           },
           "related_commands": [],
           "relationships": {},
@@ -11713,15 +11865,16 @@
         "key": "functions.ocf-prf-004.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT."
+        "text": "Eases the felt sense of physical lightness and ease of movement; activation cue PLUS-LIGHT STEP."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-prf-004.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT."
+        "text": "Eases the felt sense of physical lightness and ease of movement; activation cue PLUS-LIGHT STEP."
       },
       "slug": "light-foot",
       "source_availability": "unavailable",
@@ -11912,6 +12065,7 @@
         "text": "Sets a deliberate tone for the day ahead."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-prf-005.short-description",
@@ -12066,7 +12220,7 @@
             "key": "functions.ocf-prf-006.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK."
+            "text": "Combines strength and quickness in a single felt state; activation cue PLUS-STRONG QUICK."
           },
           "related_commands": [],
           "relationships": {},
@@ -12137,7 +12291,7 @@
             "key": "functions.ocf-prf-006.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK."
+            "text": "Combines strength and quickness in a single felt state; activation cue PLUS-STRONG QUICK."
           },
           "related_commands": [],
           "relationships": {},
@@ -12280,7 +12434,7 @@
             "key": "functions.ocf-prf-006.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK."
+            "text": "Combines strength and quickness in a single felt state; activation cue PLUS-STRONG QUICK."
           },
           "related_commands": [
             {
@@ -12340,15 +12494,16 @@
         "key": "functions.ocf-prf-006.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK."
+        "text": "Combines strength and quickness in a single felt state; activation cue PLUS-STRONG QUICK."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-prf-006.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK."
+        "text": "Combines strength and quickness in a single felt state; activation cue PLUS-STRONG QUICK."
       },
       "slug": "strong-quick",
       "source_availability": "unavailable",
@@ -12760,6 +12915,7 @@
         "text": "Adjusts inward listening and perception in either direction using the MORE/LESS grammar."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-sen-001.short-description",
@@ -13022,6 +13178,7 @@
         "text": "Supports physical seeing and inner visualization, including visual processing, visual memory, and deliberate creation and manipulation of mental images."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-sen-002.short-description",
@@ -13581,6 +13738,7 @@
         "text": "Adjusts the felt sense of smell in either direction using the MORE/LESS grammar."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-sen-003.short-description",
@@ -14140,6 +14298,7 @@
         "text": "Adjusts the felt sense of taste in either direction using the MORE/LESS grammar."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-sen-004.short-description",
@@ -14699,6 +14858,7 @@
         "text": "Adjusts the felt sense of touch or skin sensation using the MORE/LESS grammar."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-sen-005.short-description",
@@ -14865,7 +15025,7 @@
             "key": "functions.ocf-slp-001.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE."
+            "text": "Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP."
           },
           "related_commands": [],
           "relationships": {},
@@ -14904,15 +15064,16 @@
         "key": "functions.ocf-slp-001.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE."
+        "text": "Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-slp-001.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE."
+        "text": "Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP."
       },
       "slug": "restorative-sleep",
       "source_availability": "available",
@@ -15073,7 +15234,7 @@
             "key": "functions.ocf-slp-002.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP."
+            "text": "Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP."
           },
           "related_commands": [],
           "relationships": {},
@@ -15112,15 +15273,16 @@
         "key": "functions.ocf-slp-002.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP."
+        "text": "Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-slp-002.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP."
+        "text": "Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP."
       },
       "slug": "sleep",
       "source_availability": "available",
@@ -15292,7 +15454,7 @@
             "key": "functions.ocf-slp-003.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM."
+            "text": "Sets dream themes and a restful dream-sleep mindset; activation cue PLUS-DREAM."
           },
           "related_commands": [],
           "relationships": {},
@@ -15331,15 +15493,16 @@
         "key": "functions.ocf-slp-003.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM."
+        "text": "Sets dream themes and a restful dream-sleep mindset; activation cue PLUS-DREAM."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-slp-003.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM."
+        "text": "Sets dream themes and a restful dream-sleep mindset; activation cue PLUS-DREAM."
       },
       "slug": "sweet-dreams",
       "source_availability": "available",
@@ -15553,6 +15716,7 @@
         "text": "Requests an answer or constructive solution through sleep, with useful insight recognized on awakening."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-slp-004.short-description",
@@ -15783,6 +15947,28 @@
         "text": "Supports entering, remaining in, and returning to natural sleep amid unfamiliar or distracting surroundings."
       },
       "reimplementation_status": "planned",
+      "related_functions": [
+        {
+          "approval": "OCF-GUIDE-REVIEW-001",
+          "dependency": "optional",
+          "description": {
+            "fallback": false,
+            "key": "relationships.rel-slp005-slp001.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Compare sleep support for unfamiliar or distracting surroundings with an exercise oriented toward restorative rest. Choose independently; this link does not prescribe combining or stacking recordings."
+          },
+          "function_id": "OCF-SLP-001",
+          "relationship_id": "REL-SLP005-SLP001",
+          "title": {
+            "fallback": false,
+            "key": "functions.ocf-slp-001.title",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Restorative Sleep"
+          }
+        }
+      ],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-slp-005.short-description",
@@ -15949,7 +16135,7 @@
             "key": "functions.ocf-slp-006.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE."
+            "text": "Supports staying awake and alert when needed; activation cue PLUS-AWAKE."
           },
           "related_commands": [],
           "relationships": {},
@@ -15988,15 +16174,16 @@
         "key": "functions.ocf-slp-006.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE."
+        "text": "Supports staying awake and alert when needed; activation cue PLUS-AWAKE."
       },
       "reimplementation_status": "planned",
+      "related_functions": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-slp-006.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE."
+        "text": "Supports staying awake and alert when needed; activation cue PLUS-AWAKE."
       },
       "slug": "stay-awake",
       "source_availability": "unavailable",

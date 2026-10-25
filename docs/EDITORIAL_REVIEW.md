@@ -108,10 +108,14 @@ identities, 79 active records, 18 historical-only records and 40 implemented
 approved primary pairs. Nine superseded primary aliases become historical-only.
 Retrieval, release and sensory LESS controls retain their exact data and speech.
 
-Options retains **Plus Options Choices**, and Nutricia retains **Plus Food More**
-and **Plus Food Less**. Their function YAML and narration remain unchanged.
+At that naming checkpoint, Options retained **Plus Options Choices**. The later
+[approved Options successor](OPTIONS_SUCCESSOR.md) established current speech
+**Plus Options**, preserving the former phrase as historical lookup. Nutricia
+retains **Plus Food More** and **Plus Food Less**; this guide review does not
+change either control.
 The completed queue does not reopen these keep-current decisions or Heart Flow.
-The remaining Options display/teaching difference is intentional and visible.
+The former Options display/teaching difference is historical, not an unresolved
+current cue discrepancy.
 
 Fixture 005 and engineering defaults lock 006 are the current successors.
 All previous ledgers, fixtures and locks remain immutable. The lock updates only

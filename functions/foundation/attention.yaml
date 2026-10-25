@@ -59,7 +59,8 @@ classification:
   primary_domain: foundation
   secondary_domains:
   - cognition
-companions: []
+companions:
+- OCF-COG-007
 compatibility:
   state: historical-lookup
   rationale: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording remains

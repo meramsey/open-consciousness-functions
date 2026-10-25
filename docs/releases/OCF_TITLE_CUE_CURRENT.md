@@ -160,7 +160,7 @@ Previous values: Regenerate / `PLUS-REGENERATE`; complete teaching **Plus Build 
 
 - Current display cue: `PLUS-NUMB`; complete teaching: **Plus Numb**.
 - Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
-- Purpose: Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB.
+- Purpose: Legacy rapid numbing practice (GO NUMB) with a release; activation cue PLUS-NUMB.
 - Pending title: None.
 - Other unselected proposal: null
 
@@ -198,7 +198,7 @@ Previous values: Buy the Numbers / `PLUS-CALCULATE`; complete teaching **Plus Ca
 
 - Current display cue: `PLUS-IMPRINT`; complete teaching: **Plus Imprint**.
 - Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
-- Purpose: Imprints a chosen suggestion or intention using the IMPRINT rehearsal.
+- Purpose: Consciously capture and retain selected information or experiences, with Plus Recall for deliberate retrieval.
 - Pending title: None.
 - Other unselected proposal: null
 
@@ -428,7 +428,7 @@ Previous values: Coordination / `PLUS-SMOOTH, FAST`; complete teaching **Plus Sm
 
 - Current display cue: `PLUS-LIGHT STEP`; complete teaching: **Plus Light Step**.
 - Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
-- Purpose: Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.
+- Purpose: Eases the felt sense of physical lightness and ease of movement; activation cue PLUS-LIGHT STEP.
 - Pending title: None.
 - Other unselected proposal: null
 
@@ -446,7 +446,7 @@ Previous values: Light Foot / `PLUS-LIGHT`; complete teaching **Plus Lighter Lig
 
 - Current display cue: `PLUS-STRONG QUICK`; complete teaching: **Plus Strong Quick**.
 - Status: EXISTING PAIR RETAINED; title: UNCHANGED.
-- Purpose: Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK.
+- Purpose: Combines strength and quickness in a single felt state; activation cue PLUS-STRONG QUICK.
 - Pending title: None.
 - Other unselected proposal: {"title": "Strong-Quick", "cue": "PLUS-STRONG QUICK"}
 
@@ -504,7 +504,7 @@ Previous values: Sensory: Touch / `PLUS-TOUCH MORE`; complete teaching **Plus To
 
 - Current display cue: `PLUS-RESTORATIVE SLEEP`; complete teaching: **Plus Restorative Sleep**.
 - Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
-- Purpose: Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE.
+- Purpose: Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP.
 - Pending title: None.
 - Other unselected proposal: null
 
@@ -514,7 +514,7 @@ Previous values: Restorative Sleep / `PLUS-RESTORE`; complete teaching **Plus He
 
 - Current display cue: `PLUS-SLEEP`; complete teaching: **Plus Sleep**.
 - Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
-- Purpose: Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP.
+- Purpose: Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP.
 - Pending title: None.
 - Other unselected proposal: null
 
@@ -524,7 +524,7 @@ Previous values: Sleep / `PLUS-SLEEP`; complete teaching **Plus Twenty Twenty**.
 
 - Current display cue: `PLUS-DREAM`; complete teaching: **Plus Dream**.
 - Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
-- Purpose: Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM.
+- Purpose: Sets dream themes and a restful dream-sleep mindset; activation cue PLUS-DREAM.
 - Pending title: None.
 - Other unselected proposal: null
 
@@ -554,7 +554,7 @@ Previous values: Sleep Easy / `PLUS-SLEEP EASY`; complete teaching **Plus Quiet 
 
 - Current display cue: `PLUS-AWAKE`; complete teaching: **Plus Awake**.
 - Status: APPROVED AND IMPLEMENTED; title: APPROVED AND IMPLEMENTED.
-- Purpose: Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE.
+- Purpose: Supports staying awake and alert when needed; activation cue PLUS-AWAKE.
 - Pending title: None.
 - Other unselected proposal: null
 

@@ -32,10 +32,19 @@ artwork descriptions retain resource status; drafts are not promoted to reviewed
 text. Lifecycle and availability values are catalog metadata, not efficacy,
 eligibility, persistence guarantees, or listening approval.
 
-This version deliberately does not publish activation procedures or relationships:
-the guide helpers do not expose a uniform human-review gate for those declarations.
-Each guide labels that omission rather than turning empty fields or names into
-instructions. No narration, legacy mapping, or canonical metadata is changed.
+Listener guides now reuse the existing command-documentation service for ordered
+procedures, command meanings, invocation/effect scopes, and lifecycle descriptions.
+They do not invent a universal activation ritual or a missing duration/reset rule.
+Historical lookup wording and retained compatibility aliases are separated from
+primary/secondary controls. Source plans are not represented as released recordings.
+
+The documentation-only approval `OCF-GUIDE-REVIEW-001` records the six directional
+optional companion links and final batch confirmation. Canonical `companions`
+must agree with that approval before links are published. The guide generator
+resolves descriptions through locale keys; neither a similar name nor a matching
+topic is approval. No cue, procedure operation/order, lifecycle, narration or DSP
+change is authorized by this documentation batch. Immutable predecessors remain
+verifiable through the checked metadata-only successor.
 
 ## PDF behavior and limits
 
@@ -78,6 +87,16 @@ is the package checkpoint checksum, not an archive checksum. `--resume` verifies
 all existing bytes and exact source identities, refusing corrupt or foreign output.
 Interrupted unpublished stages retain diagnostics in the workspace; retry publishes
 a new stage, not a partial edition. Private output must stay in the OCF workspace.
+Approved related-function guide dependencies are included transitively, without
+implying that their audio is included. Package navigation links to the actual
+edition audio, artwork, transcripts and timing receipt, with percent-encoded
+filenames. Verification rejects missing or escaping relative guide links.
+
+Guide changes require a new output directory and new package receipt. Resume
+never replaces older guide bytes. Keep the audio edition unchanged when only
+documentation changes; the package's guide approval and artifact hashes identify
+the new guide snapshot separately. Existing packages and source exports remain
+immutable; no reference-derived material is made eligible for public release.
 
 The optional `--guides` cache must contain the current selected general/function
 Markdown, PDF and HTML. Missing, corrupt or stale content fails explicitly; no
@@ -91,7 +110,7 @@ option does not grant rights, listening approval or publication approval. This
 bundle command is private-only and cannot promote reference-derived auditions
 to formal releases. Do not upload private bundles, source recordings or lyrics.
 
-## Guide completeness audit and review inventory
+## Guide completeness and approved relationships
 
 All 58 current guides derive titles and primary/secondary cues from current
 registry/locale data. Current en-US titles match canonical titles. They expose
@@ -99,53 +118,57 @@ review states, purpose, precautions, persistence and availability as metadata,
 not promises. Searchable PDF text, bookmarks and links do not establish PDF/UA
 compliance, visual clipping clearance or screen-reader usability.
 
-Known completeness gap: the generator does **not** publish exact activation
-procedures, command explanations, scoped lifecycle modes or historical lookup
-aliases. It explicitly labels missing reviewed guidance. Those omissions are
-not evidence that procedures are absent from YAML. In particular, Appetite
-Choice's per-application scope must not become permanent hunger suppression;
-Clear Zone Observe and Suspend are distinct mutually exclusive overrides;
-Injury/Toxic Exposure metadata is not emergency treatment; Focus is a function,
-not a Focus 10/11 stage. Manifest, Dissolve and Intuition remain independent.
-Do not infer steps or prerequisites to fill these omissions. A future reviewed
-guide projection must use existing procedure/scope resolvers and locale review
-status rather than creating another English instruction authority.
+All 73 operational primary/secondary commands have documented procedures. The
+58 listener guides show those steps and the existing command explanations; 14
+functions have additional scoped lifecycle metadata. Intuition's quiet-moment
+and discernment steps use specific approved instructions rather than generic
+`other` placeholders. Optional artwork copy is not required to show the existing
+canonical short community description.
 
-No nonempty function-level `companions`, `chains` or `incompatible_functions`
-entries were found in the current registry audit. The following is a consolidated
-**proposed review inventory**, not approved relationships or practice advice.
-Every row is optional, status `proposed / awaiting human review`; none is a
-required prerequisite. Evidence is catalog purpose/name adjacency and the user's
-review request, not evidence of synergy, safety, sequence or efficacy.
+Appetite Choice's per-application scope is not permanent hunger suppression;
+Food More/Food Less belong to Nutricia, not Appetite Choice. Body Tune-Up retains
+its whole-body maintenance baseline and selected-area reinforcement. Clear Zone
+Observe and Suspend are distinct mutually exclusive overrides with the declared
+reset conditions. Injury/Toxic Exposure metadata is not emergency detection or
+treatment. Focus is a function, not a Focus 10/11 stage. Manifest, Dissolve and
+Intuition remain independent.
+
+The six proposals first recorded at checkpoint `2b26883` received six explicit
+approvals followed by final batch confirmation. Their exact approved explanations
+and responses are retained in
+[the documentation successor](../function-content/editorial/guide-review-001.json).
+All are **optional and directional**. No reciprocal link, required sequence,
+proven synergy, clinical benefit or listening/release approval is implied.
 
 - Source `OCF-EXP-001` Manifest → related `OCF-EXP-003` Dissolve;
-  category: contrasting intentions. Candidate explanation: compare separate
+  category: contrasting intentions. Approved optional link: compare separate
   intention-setting and letting-go functions without prescribing a sequence.
   Provenance: canonical experimental function YAML; editorial review request.
 - Source `OCF-EXP-001` Manifest → related `OCF-EXP-006` Intuition;
-  category: complementary reflection. Candidate explanation: offer a separately
+  category: complementary reflection. Approved optional link: offer a separately
   chosen intuition exercise, not a required part of Manifest.
   Provenance: canonical experimental function YAML; editorial review request.
 - Source `OCF-EXP-003` Dissolve → related `OCF-EXP-006` Intuition;
-  category: complementary reflection. Candidate explanation: distinguish letting
+  category: complementary reflection. Approved optional link: distinguish letting
   go from seeking understanding; neither enables or depends on the other.
   Provenance: canonical experimental function YAML; editorial review request.
 - Source `OCF-BOD-006` Heart Flow → related `OCF-BOD-002` Circulation;
-  category: adjacent body-awareness topics. Candidate explanation: show separately
+  category: adjacent body-awareness topics. Approved optional link: show separately
   selectable catalog topics without implying a combined physiological effect.
   Provenance: canonical body function YAML; editorial review request.
 - Source `OCF-SLP-005` Sleep Easy → related `OCF-SLP-001` Restorative Sleep;
-  category: adjacent sleep topics. Candidate explanation: compare intended use
+  category: adjacent sleep topics. Approved optional link: compare intended use
   and ending before choosing one; do not prescribe stacking recordings.
   Provenance: canonical sleep function YAML; editorial review request.
 - Source `OCF-FND-002` Focus → related `OCF-COG-007` Think Fast;
-  category: adjacent cognitive topics. Candidate explanation: compare attention
+  category: adjacent cognitive topics. Approved optional link: compare attention
   and thinking-oriented practice without confusing Focus with a Focus 10/11 stage
   or claiming either function improves the other's effects.
   Provenance: canonical foundation/cognition YAML; editorial review request.
 
-Reciprocal links are not automatically approved. Review the complete inventory
-once before adding any relationship to public guide generation.
+The current full instructions and localized relationship text are generated in
+the function guides. Earlier candidate wording is historical review evidence,
+not an independently editable source for current guide behavior.
 
 ## Player compatibility: documented versus exercised
 
@@ -185,6 +208,10 @@ Use the existing Amy `OCF-EXP-006` Intuition v0.2.0 reference-V4 package, locall
 only. Copy its MP3 plus **all same-basename sidecars** and `cover.png` into a
 private player library; test FLAC in a separate folder afterward. Do not rename
 only the audio. Do not enable lyrics upload/search plugins or public Plex sharing.
+On Android, choose a local-only folder the player can access, grant only the
+needed folder/media permission, and confirm the audio and sidecars remain together
+after transfer. Check file extensions are visible and avoid cloud-synced test
+folders. For Plexamp, use a private server/library under your control.
 
 1. Record app/build, OS, format, import folder and lyrics settings. Keep normal
    speed; disable repeat, shuffle, crossfade and lyric offset adjustments.

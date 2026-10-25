@@ -611,38 +611,46 @@ lifecycle:
     "override_steps": [
       {
         "id": "select-question-or-situation",
-        "operation": "select-question"
+        "operation": "select-question",
+        "localization_key": "functions.ocf-exp-006.procedure.select-question-or-situation"
       },
       {
         "id": "think-or-say-in-mind",
-        "operation": "think-or-say-command"
+        "operation": "think-or-say-command",
+        "localization_key": "functions.ocf-exp-006.procedure.think-or-say-in-mind"
       },
       {
         "id": "allow-quiet-moment",
-        "operation": "other"
+        "operation": "other",
+        "localization_key": "functions.ocf-exp-006.procedure.allow-quiet-moment"
       },
       {
         "id": "consider-and-choose-response",
-        "operation": "other"
+        "operation": "other",
+        "localization_key": "functions.ocf-exp-006.procedure.consider-and-choose-response"
       }
     ]
   },
   "resolved_steps": [
     {
       "id": "select-question-or-situation",
-      "operation": "select-question"
+      "operation": "select-question",
+      "localization_key": "functions.ocf-exp-006.procedure.select-question-or-situation"
     },
     {
       "id": "think-or-say-in-mind",
-      "operation": "think-or-say-command"
+      "operation": "think-or-say-command",
+      "localization_key": "functions.ocf-exp-006.procedure.think-or-say-in-mind"
     },
     {
       "id": "allow-quiet-moment",
-      "operation": "other"
+      "operation": "other",
+      "localization_key": "functions.ocf-exp-006.procedure.allow-quiet-moment"
     },
     {
       "id": "consider-and-choose-response",
-      "operation": "other"
+      "operation": "other",
+      "localization_key": "functions.ocf-exp-006.procedure.consider-and-choose-response"
     }
   ]
 }

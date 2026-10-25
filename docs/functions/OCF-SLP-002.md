@@ -2,7 +2,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Sleep
 
-**Purpose**: Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP.
+**Purpose**: Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP.
 
 **Function persistence**: Temporary (`temporary`)
 

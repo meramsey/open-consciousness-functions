@@ -419,9 +419,10 @@ def test_package_publishes_complete_verified_release_and_blocks_collision(
 
     monkeypatch.setattr(audio_build, "build", fake_build)
 
-    def fixture_guides(stage, function_ids, *, source, locale):
+    def fixture_guides(stage, function_ids, *, source, locale, edition_files):
         assert function_ids == ["OCF-BOD-010"] and locale == "en-US"
         assert source == tmp_path / "guide-cache"
+        assert edition_files["OCF-BOD-010"]
         target = stage / "guides" / "listening-guide.pdf"
         target.parent.mkdir()
         target.write_bytes(b"synthetic guide")

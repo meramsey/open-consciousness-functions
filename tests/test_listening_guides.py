@@ -127,7 +127,9 @@ def test_current_registry_all_58_guides_have_exact_active_cues():
     for record in records:
         text = documents[f"functions/{record.id}.md"]
         assert f"# {record.id}: {record.canonical_name}" in text
-        assert guides.MISSING in text
+        assert guides.MISSING not in text
+        assert "Ordered activation procedure:" in text
+        assert "## Operating behavior and modes" in text
         for command in record.command_records:
             if not is_active(command) or command.role == "legacy-alias":
                 continue

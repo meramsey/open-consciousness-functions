@@ -171,7 +171,10 @@ def verify(root=REPO_ROOT):
         if name == "intuition":
             expected_function["documentation"] = data["intuition_documentation"]
             expected_function["commands"][0]["localization"] = data["intuition_localization"]
-        if yaml.safe_load((root / function).read_text(encoding="utf-8")) != expected_function:
+        current = before_simplification_file(
+            root, function, (root / function).read_text(encoding="utf-8")
+        )
+        if yaml.safe_load(current) != expected_function:
             raise OCFError("candidate approval changed function behavior: " + name)
     old_lock = json.loads((root / data["previous_lock"]).read_text(encoding="utf-8"))
     new_lock = json.loads((root / data["lock"]).read_text(encoding="utf-8"))
