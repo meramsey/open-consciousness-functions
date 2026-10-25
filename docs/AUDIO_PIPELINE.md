@@ -121,6 +121,25 @@ mix profile; final-mix fades default to zero. Filter graphs, parameters and
 requested loudness measurements are recorded in the audition report. Sample
 peak limiting is not a guarantee of true-peak compliance or listening approval.
 
+When ducking is enabled, only the compressor's bed/detector inputs are
+silence-padded. The original unpadded narration remains the first `amix` input
+with `duration=first`, so padding cannot lengthen the session or add semantic
+silence. This prevents early EOF propagation in `sidechaincompress` from
+discarding buffered peer samples and removing the bed near the ending. Gains,
+windows, compressor law, stereo linking, headroom, limiting and fades are unchanged.
+
+This was reproduced with deterministic five-second stereo tones under Ubuntu's
+FFmpeg 8.0.1: thread limiting and independent detector decoding did not prevent
+the loss. Inline frame traces showed complete five-second input on one branch
+but truncated compressor output, consistent with the FIFO/status handling in
+[upstream activate()](https://github.com/FFmpeg/FFmpeg/blob/n8.0.1/libavfilter/af_sidechaincompress.c).
+It is not a rounding-tolerance or private-session fixture issue. Padded-input
+trials on FFmpeg 6.1.1 and 8.0.1 produced the same complete known-good PCM.
+The regression checks the original gain/coherence assertions, the full bed tail,
+and empty/unequal input durations. Coverage CI retains that test's synthetic WAVs
+and native-version/filtergraph/hash diagnostics on failure; no private audio is
+included. Passing these engineering checks is not listening approval.
+
 ## Final release packages
 
 `python3 scripts/ocf.py audio release <AUDIO_ID|FUNCTION_ID> --artwork

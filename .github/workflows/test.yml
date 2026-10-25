@@ -170,7 +170,12 @@ jobs:
         with:
           name: full-suite-coverage-linux-python312
           include-hidden-files: true
+          # WAV patterns select only deterministic test tones, never private auditions.
           path: |
             .ocf-work/logs/coverage/ci/*.json
             .ocf-work/logs/coverage/ci/tests.xml
             .ocf-work/logs/coverage/ci/pytest.log
+            .ocf-work/tmp/ocf-c-*/p/popen-gw*/test_ducking_shared_envelope*/speech.wav
+            .ocf-work/tmp/ocf-c-*/p/popen-gw*/test_ducking_shared_envelope*/bed.wav
+            .ocf-work/tmp/ocf-c-*/p/popen-gw*/test_ducking_shared_envelope*/out.wav
+            .ocf-work/tmp/ocf-c-*/p/popen-gw*/test_ducking_shared_envelope*/ducking-diagnostics.json

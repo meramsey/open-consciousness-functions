@@ -13,7 +13,7 @@ from types import SimpleNamespace
 import pytest
 from ocf_tools import audio_build as ab
 from ocf_tools import mix_profiles as mp
-from ocf_tools.utils import OCFError, yaml_safe_load
+from ocf_tools.utils import OCFError, sha256_of_file, yaml_safe_load
 
 
 def _wav(path, samples, rate=ab.DEFAULT_SAMPLE_RATE, channels=2):
@@ -182,6 +182,8 @@ class TestProfileContracts:
         assert "volume=0.800000,volume=0.063096:enable='between(t,1.000,2.000)'[n]" in graph
         assert "[1:a]volume=0.200000[b]" in graph
         assert "[n]asplit=2[voice][sc]" in graph
+        assert "[b]apad[duck_bed];[sc]apad[duck_sc];[duck_bed][duck_sc]sidechaincompress=" in graph
+        assert graph.count("apad") == 2
         assert ":link=maximum:detection=rms:" in graph
         assert "[voice][d]amix=inputs=2:duration=first:normalize=0,volume=" in graph
         assert "level=false:latency=false" in graph
@@ -380,9 +382,23 @@ class TestRealFFmpegMix:
         assert len(actual) == len(samples)
         assert max(abs(a - b) for a, b in zip(actual, samples, strict=True)) <= 1
         assert "sidechaincompress" not in result["filtergraph"]
+        assert "apad" not in result["filtergraph"]
         assert "afade" not in result["filtergraph"]
 
-    def test_ducking_shared_envelope_expected_ratio_and_window_detector(self, tmp_path):
+    @pytest.mark.parametrize("paced_input", [None, "speech", "bed"])
+    def test_ducking_shared_envelope_expected_ratio_and_window_detector(
+        self, tmp_path, monkeypatch, paced_input
+    ):
+        if paced_input:
+            run = mp._run
+
+            def paced(argv, **kwargs):
+                index = argv.index(str(tmp_path / (paced_input + ".wav"))) - 1
+                assert argv[index] == "-i"
+                argv[index:index] = ["-re"]
+                return run(argv, **kwargs)
+
+            monkeypatch.setattr(mp, "_run", paced)
         rate = ab.DEFAULT_SAMPLE_RATE
         speech, bed, out = [tmp_path / name for name in ("speech.wav", "bed.wav", "out.wav")]
         voice = array("h")
@@ -399,7 +415,7 @@ class TestRealFFmpegMix:
         _wav(speech, voice)
         _wav(bed, background)
         threshold_db = 20 * math.log10(0.1)
-        ab._mix_master_ffmpeg(
+        receipt = ab._mix_master_ffmpeg(
             speech,
             bed,
             out,
@@ -419,7 +435,25 @@ class TestRealFFmpegMix:
             },
         )
         actual = _read(out)
+        diagnostic = {
+            "paced_input": paced_input,
+            "ffmpeg_version": subprocess.run(
+                [receipt["argv"][0], "-version"],
+                capture_output=True,
+                text=True,
+                check=True,
+                timeout=10,
+            ).stdout.splitlines()[0],
+            "receipt": receipt,
+            "input_sha256": {p.name: sha256_of_file(p) for p in (speech, bed)},
+            "output_sha256": sha256_of_file(out),
+            "expected_frames": rate * 5,
+            "actual_frames": len(actual) // 2,
+        }
+        details = tmp_path / "ducking-diagnostics.json"
+        details.write_text(json.dumps(diagnostic, indent=2) + "\n", encoding="utf-8")
         # Steady compressor law: output/input = (threshold / detector)^(1-1/ratio).
+        assert len(actual) == len(background)
         expected = (0.1 / (13107 / 32768)) ** 0.75
 
         def gains_at(i, gain=1):
@@ -441,8 +475,56 @@ class TestRealFFmpegMix:
         assert max(abs(pair[0] - pair[1]) for pair in transition if pair) < 0.002
         # -20 dB narration window drops the detector below threshold: no duck.
         recovered = [gains_at(i, 0.1) for i in range(int(3.5 * rate), int(3.9 * rate))]
-        assert max(abs(g - 1) for pair in recovered if pair for g in pair) < 0.002
-        assert all(abs(a - b) <= 1 for a, b in zip(actual[:rate], background[:rate], strict=True))
+        worst = max(
+            (abs(g - 1), int(3.5 * rate) + offset, channel, g)
+            for offset, pair in enumerate(recovered)
+            if pair
+            for channel, g in enumerate(pair)
+        )
+        diagnostic["worst_recovery"] = dict(
+            zip(("absolute_error", "frame", "channel", "signed_gain"), worst, strict=True)
+        )
+        details.write_text(json.dumps(diagnostic, indent=2) + "\n", encoding="utf-8")
+        assert max(abs(g - 1) for pair in recovered if pair for g in pair) < 0.002, diagnostic
+        assert all(
+            abs(a - b) <= 1 for a, b in zip(actual[: 2 * rate], background[: 2 * rate], strict=True)
+        )
+        tail = 2 * int(4.2 * rate)
+        assert max(abs(a - b) for a, b in zip(actual[tail:], background[tail:], strict=True)) <= 1
+
+    @pytest.mark.parametrize(
+        "voice_frames,bed_frames",
+        [
+            (0, 2 * ab.DEFAULT_SAMPLE_RATE + 37),
+            (2 * ab.DEFAULT_SAMPLE_RATE + 37, 0),
+            (2 * ab.DEFAULT_SAMPLE_RATE + 37, ab.DEFAULT_SAMPLE_RATE + 11),
+            (ab.DEFAULT_SAMPLE_RATE + 11, 2 * ab.DEFAULT_SAMPLE_RATE + 37),
+        ],
+    )
+    def test_ducking_eof_preserves_narration_duration_without_padding_output(
+        self, tmp_path, voice_frames, bed_frames
+    ):
+        speech, bed, out = [tmp_path / name for name in ("speech.wav", "bed.wav", "out.wav")]
+        _wav(speech, [0, 0] * voice_frames)
+        _wav(bed, [1300, -2100] * bed_frames)
+        ab._mix_master_ffmpeg(
+            speech,
+            bed,
+            out,
+            background_gain=1,
+            mix_profile={
+                "limiter": {"enabled": False},
+                "background_ducking": {"enabled": True},
+            },
+        )
+        actual = _read(out)
+        expected = array(
+            "h",
+            [1300, -2100] * min(voice_frames, bed_frames)
+            + [0, 0] * max(0, voice_frames - bed_frames),
+        )
+        assert len(actual) == 2 * voice_frames
+        assert all(abs(a - b) <= 1 for a, b in zip(actual, expected, strict=True))
 
     def test_sum_headroom_before_pcm_quantization_avoids_unintended_clipping(self, tmp_path):
         rate = ab.DEFAULT_SAMPLE_RATE
