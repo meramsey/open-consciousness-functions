@@ -24,7 +24,7 @@
   "mcp": {
     "ocf": {
       "type": "local",
-      "command": ["python", "scripts/start_ocf_mcp.py"],
+      "command": ["python3", "scripts/start_ocf_mcp.py"],
       "enabled": true
     }
   },
