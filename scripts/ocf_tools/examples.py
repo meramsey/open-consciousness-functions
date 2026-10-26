@@ -195,6 +195,16 @@ def schema_examples():
         stem = path.name.removesuffix(".schema.json")
         if stem in SCHEMA_FILES:
             source = SCHEMA_FILES[stem]
+            if not (REPO_ROOT / source).is_file():
+                if stem != "audio-implementation":
+                    raise OCFError(f"schema example source is missing: {source}")
+                rows.append(
+                    {
+                        "schema": path.name,
+                        "verification": "no committed audio implementation example; local reference manifests are excluded",
+                    }
+                )
+                continue
             data = yaml_safe_load((REPO_ROOT / source).read_text(encoding="utf-8"))
         elif path.name in bundle:
             source = "examples/contracts.json#/" + path.name

@@ -1820,10 +1820,8 @@
   "schema_version": "1.0",
   "schemas": [
     {
-      "example_sha256": "2b14224c71dbc22d510c6fec93f16ba3f0266eee0fd2b2097029c871e4267e43",
       "schema": "audio-implementation.schema.json",
-      "source": "audio/manifests/OCF-AUDIO-0001.yaml",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
+      "verification": "no committed audio implementation example; local reference manifests are excluded"
     },
     {
       "example_sha256": "f998280115a8de20760e907e9ab40795aeca6a2caeeec829468535c42c8f4b2e",

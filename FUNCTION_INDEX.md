@@ -41,7 +41,7 @@ Complete index of every OCF function record. Sorted by OCF ID.
 | `OCF-EXP-005` | Clear Zone |  | `PLUS-CLEAR ZONE` |  | experimental | permanent | pending-source-review | in-progress | approved | none | 0 | 0 | functions/experimental/clear-zone.yaml |
 | `OCF-EXP-006` | Intuition |  | `PLUS-INTUITION` |  | experimental | permanent | pending-source-review | in-progress | approved | none | 0 | 0 | functions/experimental/intuition.yaml |
 | `OCF-FND-001` | Access to Energy | ACCESS TO ENERGY | `PLUS-ENERGIZE` | `PLUS-ENERGIZE` | foundation | temporary | available | planned | approved | unchanged | 0 | 0 | functions/foundation/energize.yaml |
-| `OCF-FND-002` | Focus | ATTENTION | `PLUS-FOCUS` | `PLUS-FOCUS` | foundation | temporary | available | complete | approved | historical-lookup | 1 | 11 | functions/foundation/attention.yaml |
+| `OCF-FND-002` | Focus | ATTENTION | `PLUS-FOCUS` | `PLUS-FOCUS` | foundation | temporary | available | complete | approved | historical-lookup | 0 | 11 | functions/foundation/attention.yaml |
 | `OCF-FND-003` | Quick Recharge | RECHARGE | `PLUS-RECHARGE` | `PLUS-RECHARGE` | foundation | temporary | available | planned | approved | unchanged | 0 | 0 | functions/foundation/recharge.yaml |
 | `OCF-FND-004` | Relax | RELAX | `PLUS-RELAX` | `PLUS-RELAX, RELAX` | foundation | temporary | available | planned | approved | historical-lookup | 0 | 0 | functions/foundation/relax.yaml |
 | `OCF-FND-005` | Reset | RESET | `PLUS-RESET` | `PLUS-RESET, RESET` | foundation | temporary | available | planned | approved | historical-lookup | 0 | 0 | functions/foundation/reset.yaml |

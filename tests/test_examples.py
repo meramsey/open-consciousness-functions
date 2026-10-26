@@ -19,6 +19,36 @@ def test_all_public_examples_are_fresh_without_dispatching_operations(monkeypatc
 
 
 @pytest.mark.unit
+def test_audio_manifest_schema_does_not_require_private_or_removed_manifest(monkeypatch, tmp_path):
+    from ocf_tools import examples
+
+    monkeypatch.setattr(examples, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(examples, "SCHEMAS_DIR", tmp_path / "schemas")
+    monkeypatch.setattr(examples.validators, "_load_schema", lambda _: {})
+    monkeypatch.setattr(examples.validators, "validate_against_schema", lambda *_: [])
+    monkeypatch.setattr(examples, "yaml_safe_load", lambda *_: {})
+    monkeypatch.setattr(examples, "SCHEMA_FILES", {"audio-implementation": "private.yaml"})
+    (tmp_path / "schemas").mkdir()
+    (tmp_path / "schemas/audio-implementation.schema.json").write_text("{}", encoding="utf-8")
+    monkeypatch.setattr(examples, "RUNTIME_SCHEMAS", {})
+    monkeypatch.setattr(examples, "SCHEMAS_DIR", tmp_path / "schemas")
+    monkeypatch.setattr(
+        examples,
+        "REPO_ROOT",
+        tmp_path,
+    )
+    bundle = tmp_path / "examples/contracts.json"
+    bundle.parent.mkdir(exist_ok=True)
+    bundle.write_text("{}", encoding="utf-8")
+    assert examples.schema_examples() == [
+        {
+            "schema": "audio-implementation.schema.json",
+            "verification": "no committed audio implementation example; local reference manifests are excluded",
+        }
+    ]
+
+
+@pytest.mark.unit
 def test_required_mutually_exclusive_flags_and_typed_positionals_parse():
     parser = argparse.ArgumentParser()
     child = parser.add_subparsers(dest="command").add_parser("example")
