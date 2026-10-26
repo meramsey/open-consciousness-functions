@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
+import zipfile
 from io import BytesIO
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -321,10 +323,17 @@ def html_bytes(markdown):
             )
         else:
             blocks.append("<p>" + _inline(block.replace("\n", " "), ".html") + "</p>")
+    css = """
+    :root{color-scheme:light dark;--bg:#f6f7f5;--fg:#172d38;--card:#fff;--accent:#2c6e72}
+    @media(prefers-color-scheme:dark){:root{--bg:#172027;--fg:#eef5f2;--card:#223039;--accent:#8bd0c8}}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+    main{max-width:960px;margin:0 auto;padding:2rem 1rem 4rem}a{color:var(--accent)}h1,h2,h3{line-height:1.2}
+    nav{margin-bottom:1.5rem}code{font-family:ui-monospace,SFMono-Regular,monospace}
+    """
     return (
         '<!doctype html><html lang="en"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width, initial-scale=1">'
-        f"<title>{title}</title></head><body><main>\n"
+        f"<title>{title}</title><style>{css}</style></head><body><main>\n"
         + "\n".join(blocks)
         + "\n</main></body></html>\n"
     ).encode("utf-8")
@@ -363,7 +372,8 @@ def pdf_bytes(markdown):
             if isinstance(flowable, Paragraph) and flowable.style.name.startswith("Heading"):
                 key = f"heading-{self.seq.nextf('heading')}"
                 self.canv.bookmarkPage(key)
-                self.canv.addOutlineEntry(flowable.getPlainText(), key, level=0)
+                level = max(0, int(flowable.style.name.removeprefix("Heading")) - 1)
+                self.canv.addOutlineEntry(flowable.getPlainText(), key, level=level)
 
     def page_number(canvas, document):
         canvas.setFont("OCFGuide", 8)
@@ -421,12 +431,141 @@ def write_documents(documents, output, *, check=False, markdown_only=False):
     return len(targets)
 
 
+def portable_index_html(records, *, edition="0.3.0") -> bytes:
+    """Build a self-contained, searchable offline browser for the 58 guides."""
+    cards = []
+    for record in records:
+        content = function_artwork_content(
+            record.id, "en-US", catalog=LocaleCatalog(), strict=False
+        )
+        cue = (content.get("primary") or {}).get("display_cue", "Not supplied")
+        description = (
+            content.get("description") or content.get("purpose") or "No description supplied."
+        )
+        cards.append(
+            "<article class='card' data-search='{}'>"
+            "<h2><a href='functions/{}.html'>{}</a></h2>"
+            "<p class='meta'>{} · {}</p><p>{}</p>"
+            "<p><a href='functions/{}.html'>Read guide</a> · "
+            "<a href='functions/{}.pdf'>PDF</a> · "
+            "<a href='functions/{}.md'>Markdown</a></p></article>".format(
+                escape(
+                    " ".join(str(x) for x in (record.id, record.canonical_name, cue, description))
+                ),
+                record.id,
+                escape(record.canonical_name),
+                escape(record.id),
+                escape(cue),
+                escape(str(description)),
+                record.id,
+                record.id,
+                record.id,
+            )
+        )
+    css = """
+    :root{color-scheme:light dark;--bg:#f6f7f5;--fg:#172d38;--card:#fff;--accent:#2c6e72;--muted:#61747a}
+    @media(prefers-color-scheme:dark){:root{--bg:#172027;--fg:#eef5f2;--card:#223039;--accent:#8bd0c8;--muted:#b4c7c4}}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+    main{max-width:1120px;margin:auto;padding:2rem 1rem 4rem}a{color:var(--accent)}.hero{padding:2rem 0 1rem}
+    .hero h1{font-size:clamp(2rem,5vw,4rem);margin:.2rem 0}.meta{color:var(--muted);font-size:.92rem}
+    input{width:100%;padding:.8rem 1rem;border:1px solid var(--muted);border-radius:.6rem;background:var(--card);color:var(--fg);font-size:1rem;margin:1rem 0 1.5rem}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1rem}.card{background:var(--card);border-radius:.8rem;padding:1rem 1.1rem;box-shadow:0 2px 12px #0002}.card h2{font-size:1.2rem;margin:.1rem 0}.card p{margin:.45rem 0}.no-results{display:none}
+    @media print{input{display:none}.card{box-shadow:none;border:1px solid #ccc;break-inside:avoid}.grid{display:block}.card{margin:.5rem 0}}
+    """
+    js = """
+    const q=document.querySelector('#search'),cards=[...document.querySelectorAll('.card')],empty=document.querySelector('.no-results');
+    q.addEventListener('input',()=>{const v=q.value.toLowerCase().trim();let n=0;cards.forEach(c=>{const ok=!v||c.dataset.search.toLowerCase().includes(v);c.hidden=!ok;if(ok)n++});empty.hidden=n>0});
+    """
+    return (
+        "<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>"
+        f"<title>Open Consciousness Functions — Guide Collection v{escape(edition)}</title><style>{css}</style></head><body><main>"
+        f"<header class='hero'><p class='meta'>Open Consciousness Functions · portable offline documentation · v{escape(edition)}</p>"
+        "<h1>Function Guides</h1><p>Readable, self-contained guides for all implemented OCF functions. These documents are not listening approval or release authorization.</p>"
+        "<p><a href='listening-guide.html'>General listening guide</a> · <a href='complete-guide.pdf'>Complete PDF handbook</a> · <a href='index.pdf'>PDF directory</a></p>"
+        "<label for='search'>Search by title, ID, cue, or description</label><input id='search' type='search' placeholder='Search the 58 function guides'></header>"
+        "<p class='no-results' hidden>No matching guides.</p><section class='grid'>"
+        + "".join(cards)
+        + f"</section><script>{js}</script></main></body></html>\n"
+    ).encode("utf-8")
+
+
+def build_portable_collection(
+    output: Path, *, edition="0.3.0", zip_path: Path | None = None
+) -> dict:
+    """Generate a self-contained guide package without private audio dependencies."""
+    output = Path(output).resolve()
+    if output.exists() and any(output.iterdir()):
+        raise OCFError(f"refusing to overwrite non-empty guide collection: {output}")
+    records = load_all_functions()
+    markdown = markdown_documents()
+    output.mkdir(parents=True, exist_ok=True)
+    write_documents(markdown, output, markdown_only=True)
+    # Replace the raw registry list with the reader-facing searchable index.
+    (output / "index.md").write_text(
+        "# Open Consciousness Functions — Guide Collection\n\n"
+        f"Portable offline documentation, edition {edition}.\n\n"
+        "[General listening guide](listening-guide.md) · [Complete handbook](complete-guide.pdf)\n\n"
+        + "\n".join(
+            f"- [{record.canonical_name}](functions/{record.id}.md) — `{record.id}`"
+            for record in records
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    for name, text in markdown.items():
+        if name == "index.md":
+            continue
+        path = output / name
+        write_bytes_atomic(path.with_suffix(".html"), html_bytes(text), overwrite=False)
+        write_bytes_atomic(path.with_suffix(".pdf"), pdf_bytes(text), overwrite=False)
+    complete = "# Open Consciousness Functions — Complete Guide\n\n" + "\n\n".join(
+        markdown[name]
+        for name in (
+            "listening-guide.md",
+            *sorted(n for n in markdown if n.startswith("functions/")),
+        )
+    )
+    write_bytes_atomic(output / "complete-guide.pdf", pdf_bytes(complete), overwrite=False)
+    write_bytes_atomic(
+        output / "index.html", portable_index_html(records, edition=edition), overwrite=False
+    )
+    write_bytes_atomic(
+        output / "index.pdf",
+        pdf_bytes((output / "index.md").read_text(encoding="utf-8")),
+        overwrite=False,
+    )
+    if zip_path:
+        zip_path = Path(zip_path).resolve()
+        zip_path.parent.mkdir(parents=True, exist_ok=True)
+        with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+            for path in sorted(output.rglob("*")):
+                if path.is_file():
+                    archive.write(path, path.relative_to(output).as_posix())
+    return {
+        "functions": len(records),
+        "files": len([p for p in output.rglob("*") if p.is_file()]),
+        "output": str(output),
+        "zip": str(zip_path) if zip_path else None,
+    }
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--output", type=Path)
+    parser.add_argument("--portable-output", type=Path)
+    parser.add_argument("--zip", type=Path, help="ZIP path for --portable-output")
     parser.add_argument("--check", action="store_true", help="Check freshness without writing")
     parser.add_argument("--markdown-only", action="store_true")
     args = parser.parse_args(argv)
+    if args.portable_output:
+        try:
+            result = build_portable_collection(args.portable_output, zip_path=args.zip)
+        except (OCFError, OSError) as exc:
+            parser.exit(1, f"{exc}\n")
+        print(json.dumps(result, indent=2))
+        return 0
+    if not args.output:
+        parser.error("--output is required unless --portable-output is used")
     output = args.output if args.output.is_absolute() else REPO_ROOT / args.output
     try:
         count = write_documents(
