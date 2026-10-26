@@ -307,7 +307,9 @@ def run_collection(
     exports = []
     for function_id, row in by_id.items():
         source_report = Path(row["session_report"]) if row.get("session_report") else None
-        export_path = export_root / function_id
+        export_path = (
+            Path(row["export_path"]) if row.get("export_path") else export_root / function_id
+        )
         if source_report and _verified_export(export_path, source_report):
             exports.append(export_path)
 
