@@ -1,4 +1,4 @@
-default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-001
+default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-004
 duration: null
 function_id: OCF-SEN-004
 narration_plan:
@@ -15,6 +15,6 @@ narration_plan:
 narration_resources: []
 schema_version: '1.0'
 session_templates:
-- OCF-TPL-SESSION-HPLUS-LOCKED-001
+- OCF-TPL-SESSION-HPLUS-LOCKED-004
 voice_sources:
 - tts

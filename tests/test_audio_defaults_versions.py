@@ -32,7 +32,10 @@ def test_explicit_successor_and_predecessor_verify_matching_versions(monkeypatch
     source, old, new = setup(monkeypatch, tmp_path)
     original = old.read_bytes()
     defaults.create_lock(new, dependency_names=["content.yaml"])
-    assert defaults.check_lock(old)["version"] == "1.0.0"
+    assert (
+        defaults.check_lock(old)["version"]
+        == defaults.BASELINE_VERSIONS[defaults.PREVIOUS_BASELINE_ID]
+    )
     assert defaults.check_lock(new)["version"] == defaults.BASELINE_VERSIONS[defaults.BASELINE_ID]
     assert defaults.check_lock(new)["profiles"] == defaults.check_lock(old)["profiles"]
     assert old.read_bytes() == original

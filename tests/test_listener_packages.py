@@ -155,6 +155,7 @@ def test_invalid_sources_fail_closed(source, tmp_path, change, match):
 @pytest.mark.unit
 def test_collection_and_duplicate_identity(source, tmp_path):
     folder, manifest = source
+    first_id = manifest["function_id"]
     with pytest.raises(OCFError, match="duplicate function"):
         packages.package_auditions([folder, folder], tmp_path / "bad")
     second = tmp_path / "second"
@@ -166,6 +167,9 @@ def test_collection_and_duplicate_identity(source, tmp_path):
     result = packages.package_auditions([folder, second], tmp_path / "collection")
     assert len(result["sessions"]) == 2
     assert len(list((tmp_path / "collection").glob("*/manifest.json"))) == 2
+    for function_id in (first_id, "OCF-EXP-001"):
+        assert (tmp_path / "collection" / function_id / "listening-guide.pdf").is_file()
+        assert (tmp_path / "collection" / function_id / "function-guide.pdf").is_file()
 
 
 @pytest.mark.unit

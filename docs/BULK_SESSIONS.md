@@ -1,7 +1,8 @@
 # Complete-session plans and bulk auditions
 
-All 55 current functions resolve complete English narration. The historical
-39/16 source-availability split is unchanged. Script/resource review, technical
+All 58 current OCF function records resolve complete English narration: 55
+legacy-mapped records plus 3 OCF-original records. The historical 39/16
+source-availability split applies only to legacy mappings. Script/resource review, technical
 renderability, measured audio and release approval are different states.
 `audio eligibility` derives them rather than persisting conflicting booleans.
 Audio-rendered is unknown until a local output manifest is verified;
@@ -45,19 +46,23 @@ Never hand-edit generated plans or indexes.
 
 ## Locked engineering defaults
 
-`audio defaults` verifies `OCF-AUDIO-DEFAULTS-HPLUS-001`, version 1.0.0.
-The new LOCKED template and pacing profiles inherit the retained STANDARD
-drafts; the lock fingerprints their transitive runtime inputs. New revisions
-need a new baseline identity; do not rewrite the locked files in place.
+`audio defaults` verifies the current immutable `OCF-AUDIO-DEFAULTS-HPLUS-014`
+lock, version 14.0.0. The `...LOCKED-004` template/pacing successors preserve
+their predecessors and select DSP successor `OCF-DSP-HPLUS-LOCKED-002`; the lock
+fingerprints transitive runtime inputs. New revisions need a new baseline
+identity; do not rewrite locked files in place.
 
 Focus 10 starts immediately (OCF-BG-0012, approximate V4-derived candidate).
 Focus 11 (OCF-BG-0006, canonical newer pure SAM) is selected only for access
-and programming, with 25-second equal-power transitions. Focus 10 continues
+and programming; entry is a 25-second equal-power transition and exit is a
+10-second equal-power transition beginning at the measured close-instruction
+onset. Focus 10 continues
 through pauses, sleep, waking return and closer, with a 10-second ending fade.
 There are two programming and two -24 dB sleep body passes, and no automatic
-Focus 20 DSP. Semantic pacing retains relaxation and count defaults; body
-comfort/transmutation-box preparation gains 3-second instruction pauses at
-rate scale 1.0. No approved wording was edited. Configuration locking does not
+Focus 20 DSP. The shared preparation timeline includes a measured 20-second
+breathing hold after “I will wait while you do this” and preserves the separate
+20-second Transmutation Box hold after “Set it all aside for now.” Function-body blocks use measured
+sentence units. No function wording was edited. Configuration locking does not
 constitute human listening approval.
 
 ## Render explicitly
@@ -65,22 +70,26 @@ constitute human listening approval.
 ```bash
 python3 scripts/ocf.py voice doctor
 python3 scripts/ocf.py audio render-many OCF-FND-002 OCF-SLP-005 \
-  --locale en-US --voice OCF-VOICE-0002 --dry-run
+  --locale en-US --voice OCF-VOICE-0002 --workers 2 --dry-run
 python3 scripts/ocf.py audio render-many OCF-FND-002 \
-  --locale en-US --voice OCF-VOICE-0002 --resume
+  --locale en-US --voice OCF-VOICE-0002 --workers 2 --resume
 ```
 
 `--all` selects all eligible records but only when explicitly requested. It
 does not run as part of planning or CI. `--dry-run` validates source plans
 without requiring optional engines; run `voice doctor` and the existing
 single-function `audio render --dry-run` for selected-engine preflight.
-Full sessions run serially (one memory-bounded worker). Failure is reported
-per function and the batch continues; interruption preserves completed receipts.
+Full sessions default to at most two concurrent jobs; available RAM, CPU load
+and free disk can reduce this, including to one worker. A process lock prevents
+competing batches. Failure is reported per function and the batch continues;
+interruption preserves per-function statuses and completed receipts.
 
 Resume skips only matching configuration/voice/renderer inputs whose complete
 manifest and every artifact still match checksums and sizes. Corrupt/missing
-outputs produce a new unique audition. `--force` regenerates audio and bypasses
-speech-cache reuse; it never overwrites earlier auditions. Speech-cache identity
+outputs produce a new unique audition. `--fresh-synthesis` bypasses every speech
+cache while still skipping verified complete-session receipts; `--force` creates
+a new audition even when one is already verified. Neither overwrites earlier
+auditions. Speech-cache identity
 includes exact text, locale, engine/model/configuration bytes, settings, rate,
 package versions and renderer identity. Cache PCM is verified before reuse.
 Auditions, receipts, cache and logs remain in `.ocf-work/`; nothing uploads audio.

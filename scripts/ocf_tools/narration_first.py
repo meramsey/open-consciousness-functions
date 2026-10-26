@@ -85,11 +85,18 @@ def _voice_profile(
     if profile is None:
         raise OCFError(f"unknown voice profile {query!r}; use `ocf voice list`")
     resolved = resolve_backend(profile, profiles, locale=locale, catalog=catalog)
-    executable = shutil.which(resolved["binary"])
+    discovery = resolved.get("environment") or {}
+    executable = (
+        discovery.get("executable")
+        if discovery.get("status") == "ready"
+        else shutil.which(resolved["binary"])
+    )
     if not executable:
+        reason = discovery.get("reason") or "not on PATH or in existing local tool directories"
         raise OCFError(
-            f"voice backend {resolved['name']} executable is not available: {resolved['binary']}"
+            f"voice backend {resolved['name']} executable is unavailable: {reason}"
         )
+    resolved["binary"] = executable
     if resolved["name"] == "piper" and (
         not resolved.get("model") or not Path(str(resolved["model"])).is_file()
     ):

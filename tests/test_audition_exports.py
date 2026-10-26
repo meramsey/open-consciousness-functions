@@ -103,6 +103,25 @@ def test_new_render_gets_companion_art_even_without_release_approval(tmp_path, m
     assert master.read_bytes() == before
 
 
+@pytest.mark.integration
+@pytest.mark.audio_integration
+@pytest.mark.external_tool
+def test_new_complete_track_uses_ocf_artist_and_one_track_album_metadata(tmp_path, monkeypatch):
+    _tools()
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    source, _master, _report = _session(tmp_path)
+    result = exports.export_audition(
+        source,
+        edition_version="0.1.0",
+        no_artwork=True,
+        output=tmp_path / "work/export",
+    )
+    tags = result["manifest"]["artifacts"]["flac"]["tags"]
+    assert tags["artist"] == tags["album_artist"] == "Open Consciousness Functions"
+    assert tags["album"] == "Manifest" and tags["track"] == "1"
+    assert tags["ocf_narrator"] == "Amy"
+
+
 @pytest.mark.parametrize("theme", ["ocf-cosmic-dark", "ocf-cosmic-light"])
 def test_version_is_drawn_in_existing_cover_footer(tmp_path, monkeypatch, theme):
     pytest.importorskip("PIL")
@@ -211,7 +230,9 @@ def test_private_streamcopy_artwork_tags_and_pcm_roundtrip(tmp_path, monkeypatch
         assert item["tags"]["comment"] == "retain valid metadata"
         assert item["tags"]["ocf_audio_version"] == "0.1.0"
         assert item["tags"]["ocf_version_label"] == "v0.1.0"
-        assert item["tags"]["artist"] == "Amy"
+        assert item["tags"]["artist"] == "Open Consciousness Functions"
+        assert item["tags"]["album_artist"] == "Open Consciousness Functions"
+        assert item["tags"]["ocf_narrator"] == "Amy"
         assert item["tags"]["ocf_primary_display_cue"] == "PLUS-MANIFEST"
         assert item["tags"]["ocf_primary_spoken_cue"] == "Plus Manifest"
         assert (

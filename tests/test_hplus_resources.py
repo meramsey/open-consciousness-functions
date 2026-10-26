@@ -5,7 +5,8 @@ from types import SimpleNamespace
 import pytest
 import yaml
 from ocf_tools.indexes import load_all_functions
-from ocf_tools.locale import LocalizationError, iter_events, resolve_document
+from ocf_tools.locale import LocaleCatalog, LocalizationError, iter_events, resolve_document
+from ocf_tools.narration_pacing import plan_event_pacing
 from ocf_tools.paths import REPO_ROOT
 from ocf_tools.session import compose, load_template, run_compose
 from ocf_tools.utils import OCFError
@@ -51,26 +52,31 @@ SUPPLEMENTARY_CLOSERS = {
     "OCF-PRF-001",
 }
 SUPPLEMENTARY_OPENERS = {"OCF-BOD-008", "OCF-COG-005"}
+
+
+def _has_complete_narration(owner):
+    catalog = LocaleCatalog()
+    try:
+        for slot in ("opener", "function-body", "closer"):
+            catalog.resource(
+                f"hplus.function.{owner.lower()}.{slot}",
+                "en-US",
+                domain="narration",
+                fallback=False,
+            )
+    except LocalizationError:
+        return False
+    return True
+
+
 COMPLETE_OWNERS = sorted(
-    owner
-    for owner in [
-        record.id
-        for record in load_all_functions()
-        if record.data["legacy"]["source_system"] == "Monroe H-PLUS"
-    ]
-    if all(
-        f"hplus.function.{owner.lower()}.{slot}"
-        in yaml.safe_load((REPO_ROOT / "locales/en-US" / f"hplus-{owner}.yaml").read_text())[
-            "entries"
-        ]
-        for slot in ("opener", "function-body", "closer")
-    )
+    record.id for record in load_all_functions() if _has_complete_narration(record.id)
 )
 
 
 @pytest.mark.parametrize("owner", COMPLETE_OWNERS)
 def test_standard_shared_and_function_resources_resolve_without_local_sources(owner):
-    template = load_template("OCF-TPL-SESSION-HPLUS-STANDARD-001")
+    template = load_template("OCF-TPL-SESSION-HPLUS-STANDARD-003")
     keys = {
         slot: f"hplus.function.{owner.lower()}.{slot.replace('_', '-')}"
         for slot in ("opener", "function_body", "closer")
@@ -84,6 +90,10 @@ def test_standard_shared_and_function_resources_resolve_without_local_sources(ow
     assert doc["slots"] == {}
     resolved = resolve_document(doc, "en-US")
     assert all(event.get("text") for event in iter_events(resolved) if event.get("narration_key"))
+    resolved_body = [
+        event for event in iter_events(resolved) if event.get("slot_ref") == "function_body"
+    ]
+    assert all(plan_event_pacing(resolved, event) for event in resolved_body)
     relaxation = next(section for section in resolved["sections"] if section["id"] == "relaxation")
     assert [
         event["narration_key"] for event in relaxation["timeline"] if event.get("narration_key")
@@ -96,12 +106,21 @@ def test_standard_shared_and_function_resources_resolve_without_local_sources(ow
         resolve_document(doc, "es")
 
 
-def test_all_55_functions_have_review_files_without_fabricated_missing_speech():
+def test_all_55_legacy_functions_have_review_files_without_fabricated_missing_speech():
     owners = [
-        r for r in load_all_functions() if r.data["legacy"]["source_system"] == "Monroe H-PLUS"
+        r
+        for r in load_all_functions()
+        if (r.data.get("legacy") or {}).get("source_system") == "Monroe H-PLUS"
     ]
+    all_functions = load_all_functions()
     assert len(owners) == 55
-    assert len(COMPLETE_OWNERS) == 55
+    assert len(all_functions) == 58
+    assert len(COMPLETE_OWNERS) == 58
+    assert {r.id for r in all_functions} - {r.id for r in owners} == {
+        "OCF-EXP-003",
+        "OCF-EXP-005",
+        "OCF-EXP-006",
+    }
     unavailable = [owner for owner in owners if owner.source_availability == "unavailable"]
     assert len(unavailable) == 16
     for owner in owners:

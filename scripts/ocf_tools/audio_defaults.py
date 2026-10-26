@@ -9,8 +9,8 @@ from pathlib import Path
 from .paths import REPO_ROOT
 from .utils import OCFError, sha256_of_file, write_text_atomic
 
-PREVIOUS_BASELINE_ID = "OCF-AUDIO-DEFAULTS-HPLUS-001"
-BASELINE_ID = "OCF-AUDIO-DEFAULTS-HPLUS-011"
+PREVIOUS_BASELINE_ID = "OCF-AUDIO-DEFAULTS-HPLUS-013"
+BASELINE_ID = "OCF-AUDIO-DEFAULTS-HPLUS-014"
 BASELINE_VERSIONS = {
     PREVIOUS_BASELINE_ID: "1.0.0",
     "OCF-AUDIO-DEFAULTS-HPLUS-002": "2.0.0",
@@ -22,11 +22,14 @@ BASELINE_VERSIONS = {
     "OCF-AUDIO-DEFAULTS-HPLUS-008": "8.0.0",
     "OCF-AUDIO-DEFAULTS-HPLUS-009": "9.0.0",
     "OCF-AUDIO-DEFAULTS-HPLUS-010": "10.0.0",
-    BASELINE_ID: "11.0.0",
+    "OCF-AUDIO-DEFAULTS-HPLUS-011": "11.0.0",
+    "OCF-AUDIO-DEFAULTS-HPLUS-012": "12.0.0",
+    "OCF-AUDIO-DEFAULTS-HPLUS-013": "13.0.0",
+    BASELINE_ID: "14.0.0",
 }
-TEMPLATE_ID = "OCF-TPL-SESSION-HPLUS-LOCKED-001"
-PACING_ID = "OCF-PACING-HPLUS-LOCKED-001"
-DSP_ID = "OCF-DSP-HPLUS-LOCKED-001"
+TEMPLATE_ID = "OCF-TPL-SESSION-HPLUS-LOCKED-004"
+PACING_ID = "OCF-PACING-HPLUS-LOCKED-004"
+DSP_ID = "OCF-DSP-HPLUS-LOCKED-002"
 LOCK_PATH = REPO_ROOT / "audio" / "defaults" / f"{BASELINE_ID}.json"
 
 
@@ -109,10 +112,8 @@ def check_lock(path: Path = LOCK_PATH) -> dict:
                 encoding="utf-8"
             )
         )
-        if set(recorded.get("files", {})) != set(predecessor["files"]):
-            raise OCFError(
-                "successor audio defaults dependency membership differs from predecessor"
-            )
+        if not set(predecessor["files"]).issubset(recorded.get("files", {})):
+            raise OCFError("successor audio defaults must retain all predecessor dependencies")
     # New unrelated functions/locales do not mutate an existing baseline.
     # A change to a locked input still fails exact content verification.
     expected = configuration_lock(list(recorded.get("files", {})), baseline_id=baseline_id)

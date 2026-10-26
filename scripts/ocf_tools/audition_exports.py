@@ -455,7 +455,7 @@ def export_audition(
     tags = {
         "title": title,
         "album": title,
-        "artist": narrator,
+        "artist": "Open Consciousness Functions",
         "album_artist": "Open Consciousness Functions",
         "language": locale,
         "OCF_FUNCTION_ID": function_id,
@@ -469,6 +469,8 @@ def export_audition(
     }
     if edition_record.get("background_variant"):
         tags["OCF_BACKGROUND_VARIANT"] = edition_record["background_variant"]
+    if master is not None and all(path == master for path in inputs.values()):
+        tags["track"] = "1"
     from .artwork_content import content_tags, function_artwork_content
 
     function_content = function_artwork_content(function_id, locale)

@@ -1,0 +1,9 @@
+schema_version: '1.0'
+id: OCF-TPL-SESSION-HPLUS-LOCKED-004
+version: 4.0.0
+extends: OCF-TPL-SESSION-HPLUS-STANDARD-004
+name: Human Plus shared locked engineering baseline with measured sentence and practice
+  holds
+pacing_profile: OCF-PACING-HPLUS-LOCKED-004
+dsp_profile: OCF-DSP-HPLUS-LOCKED-002
+content_status: draft

@@ -84,6 +84,12 @@ def event_pacing(
     key = event.get("narration_key")
     policy = doc.get("narration_pacing") or {}
     profile_id = (policy.get("entries") or {}).get(key)
+    if (
+        profile_id is None
+        and event.get("slot_ref") == "function_body"
+        and "function-body" in (policy.get("profiles") or {})
+    ):
+        profile_id = "function-body"
     if profile_id is None:
         return None
     profile = (policy.get("profiles") or {}).get(profile_id)

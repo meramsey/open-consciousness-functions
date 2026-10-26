@@ -14,6 +14,7 @@ loading the entire documentation tree:
 - Translate: [localization](LOCALIZATION.md) and [locale packs](../locales/README.md).
 - Plan and audition: [bulk sessions](BULK_SESSIONS.md), then
   [audio pipeline](AUDIO_PIPELINE.md).
+- Build private reference-V4 listening editions: [private workflow](PRIVATE_REFERENCE_V4.md).
 - Choose a voice: [community voices](COMMUNITY_VOICES.md).
 - Read the [general listening guide](LISTENING_GUIDE.md) and generate
   [function-specific Markdown/PDF/HTML guides](FUNCTION_GUIDES.md).

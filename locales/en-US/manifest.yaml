@@ -3,7 +3,7 @@ locale: en-US
 language_name: English (United States)
 direction: ltr
 status: canonical
-semantic_version: 1.11.0
+semantic_version: 1.12.0
 resources:
 - file: original-OCF-EXP-006.yaml
   domain: narration
@@ -49,6 +49,9 @@ resources:
 - file: hplus-focus10.yaml
   domain: narration
   description: Shared Focus 10 induction and return-ready wording
+- file: hplus-shared-session-002.yaml
+  domain: narration
+  description: Versioned shared-session narration successor for the pre-waking twentieth-state instruction
 - file: hplus-focus11-open.yaml
   domain: narration
   description: Shared Focus 11 opening and learning explanation

@@ -4,11 +4,14 @@ from __future__ import annotations
 
 import json
 import math
+import re
 from pathlib import Path
 
 from .cue_templates import reject_unexpanded
 from .transcript import export_lrc, export_srt, export_vtt, format_timestamp, parse_timestamp
 from .utils import OCFError, sha256_of_file, write_text_atomic
+
+_BODY_PASS = re.compile(r"^(focus11-body|sleep20-body)\.pass-([1-9][0-9]*)$")
 
 
 def _ordered_cues(render: dict) -> list[dict]:
@@ -96,14 +99,31 @@ def measured_document(render: dict, duration: float) -> dict:
             ):
                 raise OCFError("invalid, unordered or out-of-bounds measured speech interval")
             previous = onset
-            timeline.append(
-                {
-                    "id": f"speech-{len(timeline) + 1}",
-                    "at": format_timestamp(onset),
-                    "ends_at": format_timestamp(min(finish, duration)),
-                    "text": " ".join(spoken.split()),
-                }
-            )
+            source_ids = [str(value) for value in cue.get("source_ids", [])]
+            if not source_ids:
+                source_ids = [str(cue.get("id", ""))]
+            sections = [value.split(".", 1)[0] for value in source_ids if value]
+            body_passes = [match for value in source_ids if (match := _BODY_PASS.match(value))]
+            pass_types = {
+                "programming" if match.group(1) == "focus11-body" else "sleep_reinforcement"
+                for match in body_passes
+            }
+            pass_indexes = {int(match.group(2)) for match in body_passes}
+            if len(pass_types) > 1 or len(pass_indexes) > 1:
+                raise OCFError("one measured speech unit maps to conflicting body passes")
+            row = {
+                "id": f"speech-{len(timeline) + 1}",
+                "at": format_timestamp(onset),
+                "ends_at": format_timestamp(min(finish, duration)),
+                "text": " ".join(spoken.split()),
+                "granularity": "measured_speech_unit" if units else "utterance",
+                "source_event_ids": source_ids,
+                "semantic_section": sections[0] if len(set(sections)) == 1 and sections else None,
+            }
+            if pass_types:
+                row["pass_type"] = next(iter(pass_types))
+                row["pass_index"] = next(iter(pass_indexes))
+            timeline.append(row)
     if not timeline:
         raise OCFError("listener text has no spoken passages")
     return {"timeline": timeline}
@@ -124,11 +144,20 @@ def write_listener_text(render: dict, duration: float, audio_path: Path) -> dict
         "vtt": export_vtt(doc, measured=measured),
     }
     receipt = {
+        "schema_version": "1.0",
         "timing_source": "measured narration ledger",
         "granularity": "measured speech units where available, otherwise utterances; not word alignment",
         "timestamp_precision": "SRT/VTT/SYLT milliseconds; LRC centiseconds (truncated)",
         "media_duration_seconds": duration,
         "spoken_intervals": len(doc["timeline"]),
+        "timeline": doc["timeline"],
+        "body_pass_coverage": {
+            kind: sorted(
+                {row["pass_index"] for row in doc["timeline"] if row.get("pass_type") == kind}
+            )
+            for kind in ("programming", "sleep_reinforcement")
+            if any(row.get("pass_type") == kind for row in doc["timeline"])
+        },
         "artifacts": {},
     }
     for fmt, content in contents.items():

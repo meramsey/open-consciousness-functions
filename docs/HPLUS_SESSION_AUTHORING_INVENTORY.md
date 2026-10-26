@@ -6,6 +6,12 @@ reference material and source-first working snapshots remain local. The shared
 resource migration described below is now versioned separately; its editable
 locale files supersede local preview wording snapshots.
 
+Superseding registry/rendering note (2026-10-25): the verified `origin/main`
+registry contains 58 OCF functions (55 legacy-mapped plus 3 OCF-original), with
+58 generated English session plans and a bound complete-session template on
+each function. The historical 2026-10-08 statements below describe that earlier
+checkpoint only; they are not current render or editorial-approval claims.
+
 ## Direct answer
 
 There is **not one full, tracked OCF script per each of the 55 mapped

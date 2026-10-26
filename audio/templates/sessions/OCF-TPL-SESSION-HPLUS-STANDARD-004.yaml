@@ -1,0 +1,239 @@
+schema_version: '1.0'
+version: 4.0.0
+id: OCF-TPL-SESSION-HPLUS-STANDARD-004
+name: Human Plus function session — reusable shared narration
+author: OCF
+origin: reference-derived
+license: User reports all rights cleared by lawyer; recorded as user clearance, not
+  an independently verified license grant.
+composition_kind: human-plus-function
+content_status: draft
+session_completeness: complete
+dsp_profile: OCF-DSP-HPLUS-STANDARD-DRAFT-002
+cue_profile: OCF-CUE-PROFILE-DEFAULT
+pacing_profile: OCF-PACING-HPLUS-STANDARD-004
+voice_profile: OCF-VOICE-0003
+description: One reusable session structure. Ordinary functions supply only an opener,
+  one function_body resource and a closer. The body is referenced twice in the Focus
+  11 programming section and twice via from_slot in the low-level sleep section. The
+  selected standard DSP profile keeps the Focus 10 bed through sleep. Shared HPlus
+  narration is maintained in locales/<locale>/hplus-*.yaml. Shared wording is approved
+  for reuse; function-specific candidates and measured audio timing still require
+  review before a finished session release.
+slots:
+  required:
+  - opener
+  - function_body
+  - closer
+  optional:
+  - affirmation
+  - resonant_tuning
+  - energy_ball
+features: []
+defaults:
+  line_seconds: 3.0
+  duration: 0.0
+sections:
+- id: function-opener
+  type: function-intro
+  role: function-specific opener
+  start: 0.0
+  slot: opener
+  pace: block
+  semantic: function.purpose
+- id: body-comfort
+  stage: OCF-TPL-STAGE-HPLUS-BODY-COMFORT-002
+  after: $previous
+- id: transmutation-box
+  stage: OCF-TPL-STAGE-SETTING-ASIDE-001
+  role: shared transmutation-box preparation candidate
+  after: $previous
+  narration:
+    begin:
+      narration_key: hplus.shared.transmutation-box.begin
+    place:
+      narration_key: hplus.shared.transmutation-box.place
+    complete:
+      narration_key: hplus.shared.transmutation-box.complete
+  pacing_overrides:
+    begin: pauses.transmutation_box_begin_s
+    place: pauses.transmutation_box_place_s
+    complete: pauses.transmutation_box_complete_s
+- id: affirmation
+  stage: OCF-TPL-STAGE-HPLUS-AFFIRMATION-001
+  role: optional affirmation stage; disabled by default
+  after: $previous
+  enabled_by: affirmation
+  narration:
+    practice:
+      slot: affirmation
+- id: resonant-tuning
+  stage: OCF-TPL-STAGE-HPLUS-TUNING-001
+  role: optional resonant tuning, distinct from ordinary breathing; disabled by default
+  after: $previous
+  enabled_by: resonant-tuning
+  narration:
+    practice:
+      slot: resonant_tuning
+- id: energy-ball
+  stage: OCF-TPL-STAGE-HPLUS-ENERGY-BALL-001
+  role: optional sensory-flexible Energy Ball mockup stage; disabled by default
+  after: $previous
+  enabled_by: energy-ball
+  narration:
+    practice:
+      slot: energy_ball
+- id: relaxation
+  stage: OCF-TPL-STAGE-HPLUS-RELAXATION-001
+  role: shared relaxation candidate
+  after: $previous
+  narration:
+    begin:
+      narration_key: hplus.shared.relaxation.begin
+    face:
+      narration_key: hplus.shared.relaxation.face
+    shoulders:
+      narration_key: hplus.shared.relaxation.shoulders
+    hands:
+      narration_key: hplus.shared.relaxation.hands
+    torso:
+      narration_key: hplus.shared.relaxation.torso
+    legs:
+      narration_key: hplus.shared.relaxation.legs
+- id: focus-ten
+  stage: OCF-TPL-STAGE-FOCUS-TEN-001
+  role: shared Focus 10 induction candidate
+  after: $previous
+  narration:
+    learn:
+      narration_key: hplus.shared.focus10.learn
+    count-one:
+      narration_key: hplus.shared.focus10.count
+      variables:
+        count: 2
+    count-two:
+      narration_key: hplus.shared.focus10.count
+      variables:
+        count: 3
+    count-three:
+      narration_key: hplus.shared.focus10.count
+      variables:
+        count: 4
+    count-four:
+      narration_key: hplus.shared.focus10.count
+      variables:
+        count: 5
+    count-five:
+      narration_key: hplus.shared.focus10.count
+      variables:
+        count: 6
+    count-six:
+      narration_key: hplus.shared.focus10.count
+      variables:
+        count: 7
+    count-seven:
+      narration_key: hplus.shared.focus10.count
+      variables:
+        count: 8
+    count-eight:
+      narration_key: hplus.shared.focus10.count
+      variables:
+        count: 9
+    count-nine:
+      narration_key: hplus.shared.focus10.count
+      variables:
+        count: 10
+    enter:
+      narration_key: hplus.shared.focus10.enter
+    ready:
+      narration_key: hplus.shared.focus10.ready
+  pacing_overrides:
+    learn: pauses.focus10_learn_s
+    count-one: pauses.focus10_count_s
+    count-two: pauses.focus10_count_s
+    count-three: pauses.focus10_count_s
+    count-four: pauses.focus10_count_s
+    count-five: pauses.focus10_count_s
+    count-six: pauses.focus10_count_s
+    count-seven: pauses.focus10_count_s
+    count-eight: pauses.focus10_count_s
+    count-nine: pauses.focus10_count_s
+    ready: pauses.focus10_initial_hold_s
+- id: open
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-ELEVEN-OPEN-001
+  role: shared Focus 10 to Focus 11 transition candidate
+  after: $previous
+  narration:
+    prepare:
+      narration_key: hplus.shared.focus11.open.prepare
+    open:
+      narration_key: hplus.shared.focus11.open
+    ready:
+      narration_key: hplus.shared.focus11.ready
+- id: focus11-body
+  type: installation
+  role: function-specific Focus 11 body, repeated twice
+  after: $previous
+  after_anchor: event-end
+  slot: function_body
+  pace: block
+  repeat_pacing_key: repetitions.focus11
+  repeat_gap_pacing_key: pauses.focus11_repeat_gap_s
+  semantic: function.instruction
+- id: close
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-ELEVEN-CLOSE-002
+  role: shared Access Channel close and return to Focus 10 candidate
+  after: $previous
+  narration:
+    prepare:
+      narration_key: hplus.shared.focus11.close.prepare
+    close:
+      narration_key: hplus.shared.focus11.close
+    ready:
+      narration_key: hplus.shared.focus10.return.ready
+- id: focus10-hold
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-TEN-HOLD-001
+  role: shared 60-second Focus 10 hold
+  after: $previous
+- id: focus20-enter
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-TWENTY-ENTER-001
+  role: shared sleep-entry narration; the standard DSP profile keeps the Focus 10
+    bed
+  after: $previous
+- id: sleep20-body
+  type: sleep
+  role: same function_body slot, two low-level sleep repetitions
+  after: $previous
+  after_anchor: event-end
+  from_slot: function_body
+  pace: block
+  repeat_pacing_key: repetitions.focus20
+  repeat_gap_pacing_key: pauses.sleep20_repeat_gap_s
+  pause_after_pacing_key: pauses.sleep20_post_repeat_s
+  gain_db_pacing_key: underlay.gain_db
+  semantic: function.instruction
+- id: focus20-close
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-TWENTY-CLOSE-001
+  role: shared sleep-section close narration; background remains Focus 10
+  after: $previous
+  narration:
+    ready:
+      narration_key: hplus.shared.focus20.close.ready
+  pacing_overrides:
+    ready: pauses.focus10_return_ready_s
+- id: return
+  stage: OCF-TPL-STAGE-HPLUS-WAKING-RETURN-001
+  role: shared return-to-waking narration; the selected profile keeps Focus 10
+  after: $previous
+- id: function-closer
+  type: outro
+  role: function-specific closer
+  after: $previous
+  after_anchor: event-end
+  slot: closer
+  pace: block
+  semantic: function.closer
+- id: session-complete
+  stage: OCF-TPL-STAGE-HPLUS-SESSION-COMPLETE-001
+  role: operational session completion marker
+  after: $previous

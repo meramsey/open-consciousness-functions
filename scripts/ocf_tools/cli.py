@@ -51,7 +51,7 @@ Usage:
   ocf dev OPERATION --arguments JSON  Compact agent APIs and persistent jobs
   ocf audio eligibility [FUNCTION_ID|--all] --locale en-US
   ocf audio plan [FUNCTION_ID|--all] [--locale TAG] [--dry-run|--check]
-  ocf audio render-many [FUNCTION_ID ...|--all] --voice PROFILE [--dry-run|--resume|--force]
+  ocf audio render-many [FUNCTION_ID ...|--all] --voice PROFILE [--workers N] [--dry-run|--resume|--force|--fresh-synthesis]
   ocf audio defaults          Verify immutable shared configuration hashes
   ocf import source           Fingerprint (and optionally copy) a source file
   ocf edit function <id|slug> Open a function record in $EDITOR
@@ -64,6 +64,7 @@ Usage:
   ocf audio render-background <preset> [--output FILE] [--engine farfield|sbagenx|reference-master]
   ocf voice list-backends     List detected TTS backends (espeak-ng/espeak/piper)
   ocf voice doctor            Backend + voice-profile health check
+  ocf voice smoke PROFILE     Fresh one-sentence synthesis and PCM check
   ocf voice list              List voice profiles (audio/voices/profiles/)
   ocf voice render SCRIPT [--voice NAME] [--output WAV] [--fit] [--flow] [--even-counts] [--force]
   ocf audio render-speech SCRIPT [--voice NAME] [--output WAV] [--force]
@@ -386,6 +387,12 @@ def _build_parser() -> argparse.ArgumentParser:
     bulk_cmd.add_argument("--pacing", choices=["normal", "relaxed", "sleep"], default="sleep")
     bulk_cmd.add_argument("--rate", type=int, default=44100)
     bulk_cmd.add_argument(
+        "--workers",
+        type=int,
+        default=2,
+        help="maximum concurrent complete-session jobs; resource checks may reduce it",
+    )
+    bulk_cmd.add_argument(
         "--dsp-profile", help="Explicit semantic DSP profile ID or local YAML path"
     )
     bulk_cmd.add_argument("--dry-run", action="store_true")
@@ -397,6 +404,11 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     bulk_cmd.add_argument(
         "--force", action="store_true", help="create new auditions even if verified outputs exist"
+    )
+    bulk_cmd.add_argument(
+        "--fresh-synthesis",
+        action="store_true",
+        help="bypass all speech caches while retaining verified full-session resume",
     )
     plan_cmd = audio_sub.add_parser(
         "plan", help="generate compact voice-independent complete-session source plans"
@@ -718,6 +730,11 @@ def _build_parser() -> argparse.ArgumentParser:
     recording_import.add_argument("--output", required=True)
     voice_sub.add_parser("list-backends", help="list detected TTS backends")
     voice_sub.add_parser("doctor", help="backend + profile health check")
+    voice_smoke = voice_sub.add_parser(
+        "smoke", help="freshly synthesize one short sentence; export no audio file"
+    )
+    voice_smoke.add_argument("profile", help="voice profile id/slug")
+    voice_smoke.add_argument("--locale", default="en-US")
     voice_sub.add_parser("list", help="list voice profiles")
     voice_render = voice_sub.add_parser("render", help="render narration speech to WAV")
     voice_render.add_argument("file", help="OCF timed YAML document")
@@ -1621,6 +1638,8 @@ def main(argv: list[str] | None = None) -> int:
                     resume=args.resume,
                     sample_rate=args.rate,
                     dsp_profile=args.dsp_profile,
+                    fresh_synthesis=args.fresh_synthesis,
+                    workers=args.workers,
                 )
                 print(json.dumps(result, ensure_ascii=False, indent=2))
                 return 1 if result["failed"] else 0
@@ -2026,6 +2045,8 @@ def main(argv: list[str] | None = None) -> int:
                 return voice_mod.list_backends_cmd()
             if args.voice_kind == "doctor":
                 return voice_mod.voice_doctor()
+            if args.voice_kind == "smoke":
+                return voice_mod.voice_smoke(args.profile, locale=args.locale)
             if args.voice_kind == "list":
                 return voice_mod.list_profiles_cmd()
             if args.voice_kind == "render":

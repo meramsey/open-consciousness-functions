@@ -1,19 +1,19 @@
 {
-  "defaults_lock": "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-011.json",
-  "defaults_sha256": "a5ac3884956008db336a83623257616797b2cde934930a692d29bfc954787cf6",
+  "defaults_lock": "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-014.json",
+  "defaults_sha256": "70147b5baaee71f3215a3b8b8417517c3a01938ffda03c13fc74e4d8cdb958ac",
   "generator": "ocf.audio.plan/1",
   "profiles": {
     "dsp": {
-      "id": "OCF-DSP-HPLUS-LOCKED-001",
-      "version": "1.0.0"
+      "id": "OCF-DSP-HPLUS-LOCKED-002",
+      "version": "2.0.0"
     },
     "pacing": {
-      "id": "OCF-PACING-HPLUS-LOCKED-001",
-      "version": "1.0.0"
+      "id": "OCF-PACING-HPLUS-LOCKED-004",
+      "version": "4.0.0"
     },
     "template": {
-      "id": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
-      "version": "1.0.0"
+      "id": "OCF-TPL-SESSION-HPLUS-LOCKED-004",
+      "version": "4.0.0"
     }
   },
   "resources": [
@@ -114,6 +114,15 @@
       "requested_locale": "en-US",
       "status": "reviewed",
       "text_sha256": "1b1117a21a0b6ec991e91976642e636938c5b13e27e0933285fb4e95bef15ec0",
+      "version": "1.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.focus20.close.ready",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "0065778a691960cfeb9f1f6722eccdc8feadc373ddb17b23153d459348bbaadc",
       "version": "1.0.0"
     },
     {

@@ -33,7 +33,7 @@ def test_locked_defaults_and_relative_session_regression():
     assert dsp["ending_fade_seconds"] == 10
     assert dsp["transitions"] == {"curve": "equal-power", "fallback_seconds": 25}
     assert pacing["transitions"]["focus10_to_focus11_s"] == 25
-    assert pacing["transitions"]["focus11_to_focus10_s"] == 25
+    assert pacing["transitions"]["focus11_to_focus10_s"] == 10
     assert pacing["repetitions"] == {"focus11": 2, "focus20": 2}
     assert next(s for s in doc["sections"] if s["id"] == "sleep20-body")["gain_db"] == -24
     resolved = resolve_document(doc, "en-US", strict=True)

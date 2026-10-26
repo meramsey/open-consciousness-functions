@@ -6,13 +6,21 @@ and measured-ledger DSP dispatch are shipped. Cue playback and the dedicated
 preparation CLI remain unshipped. Preparation Learning en-US RC1 has a verified
 development audition; three function rehearsals are draft pilots requiring review.
 
+Current inventory snapshot (2026-10-25): the verified registry has **58 OCF
+function records**: 55 legacy-mapped targets plus 3 OCF-original records. The
+55 legacy mappings split into 39 source-available and 16 source-unavailable;
+source availability does not mean that an OCF function is absent. The registry
+has 83 structured command records and 58 generated English session plans.
+Plan validity, rendering/technical verification, human listening approval and
+publication authorization remain independent statuses.
+
 Legend: `[x] done · [~] in progress · [ ] planned`
 
 ## Current foundation checkpoints
 
 - [x] Extend permanent `docs/NARRATION_STANDARD.md` with purposeful operations,
       sensory flexibility, secular framing, silence and original expression.
-- [x] `corpus inventory`:277 local files/all55 targets; fingerprints and candidate
+- [x] `corpus inventory`:277 local files/all55 historical targets; fingerprints and candidate
       locators, no reference wording redistributed or mockups promoted.
 - [x] Relax/Hearing/Sleep Easy DRAFT PILOT rehearsals and local voice previews;
       no mass conversion or human content approval implied.
@@ -20,7 +28,7 @@ Legend: `[x] done · [~] in progress · [ ] planned`
 - [x] Combined-suite coverage audit; see `docs/TEST_COVERAGE.md` for the actual gap.
 - [x] Separate function evidence/specification/decision/binding schemas and rich
       discovery; uncertain values remain explicit and separate from runtime defaults.
-- [x] Complete available-evidence analytical extraction for all55 specifications,
+- [x] Complete available-evidence analytical extraction for all55 historical specifications,
       full-source reviews and source locators; no historical/narration approval implied.
 - [ ] Unit-only100% lines/branches and CI gates across the documented testable scope.
 - [x] Cross-OS core CI configuration, installed-wheel data discovery and Linux smoke.
@@ -54,6 +62,7 @@ the "Planned: focus-state auditory cue events" section of
       audio implementation, background audio).
 - [x] All 55 documented legacy functions as OCF records
       (39 source-available, 16 source-unavailable reimplementation targets).
+- [x] Three OCF-original function records, separate from legacy-source counts.
 - [x] Interactive contributor CLI (`./scripts/ocf`) with wizards.
 - [x] Validation (schema, duplicate id/command, command rules, invariants).
 - [x] Generated indexes with freshness checks and CI enforcement.

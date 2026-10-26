@@ -73,6 +73,11 @@ Review remaining vocabulary ONE function at a time; wait for explicit user input
   vendored optional engines or undocumented dependencies.
 - Farfield/SBaGenX/TTS remain optional. Resolve committed presets deterministically;
   never infer identity from filenames or frequencies. Use `doctor`/`voice doctor`.
+- Before reporting Piper missing, run `python scripts/ocf.py voice doctor` from
+  the repo root: it checks the existing `.venv`, pyenv-selected interpreter,
+  PATH and user-local Piper launcher/model hashes without installing/downloading.
+  Use `voice smoke OCF-VOICE-9003 --locale en-US` for a one-sentence synthesis;
+  see [setup](docs/SETUP.md) for supported overrides and troubleshooting.
 - All routine scratch/cache/logs and default auditions use `.ocf-work/`, resolved
   from the repository root. Honor validated `OCF_WORK_DIR`; TMPDIR/TMP/TEMP
   overrides apply only to OCF-launched subprocesses. Preserve failed diagnostics.

@@ -116,6 +116,9 @@ def record(root=REPO_ROOT):
 
 
 def predecessor(root, name, text):
+    from .shared_session_successor import predecessor as before_shared_session
+
+    text = before_shared_session(root, name, text)
     from .guide_review import predecessor as before_guides
 
     text = before_guides(root, name, text)
@@ -152,6 +155,9 @@ def verify(root=REPO_ROOT):
         predecessor(root, name, (root / name).read_text(encoding="utf-8"))
     for name, checksum in data["immutable_files"].items():
         current = before_guides(root, name, (root / name).read_text(encoding="utf-8"))
+        from .shared_session_successor import predecessor as before_shared_session
+
+        current = before_shared_session(root, name, current)
         if sha(current) != checksum:
             raise OCFError("command simplification immutable predecessor drift: " + name)
     texts = narration_texts(root)

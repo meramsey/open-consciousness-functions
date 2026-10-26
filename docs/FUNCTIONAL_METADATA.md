@@ -69,7 +69,8 @@ No narration changes are authorized: all 177 protected resolved entries and raw
 narration resources remain unchanged. The existing text fixture 005 and defaults
 lock 006 stay current; there is no new audio baseline. The metadata successor
 pins the confirmed decision set, exact predecessor/current files, all engineering
-dependencies and all 55 generated source plans. Historical naming verifiers use
+dependencies and all 58 generated source plans (55 legacy-mapped plus 3
+OCF-original function records). Historical naming verifiers use
 the authenticated predecessor view, without rewriting older ledgers.
 
 Speech cache inputs and recording fingerprints remain unchanged. Existing stale

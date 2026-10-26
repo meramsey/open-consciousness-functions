@@ -722,6 +722,24 @@ class TestCli:
         assert cli_main(["voice", "doctor"]) == 1
         assert "not on PATH" in capsys.readouterr().out
 
+    @pytest.mark.unit
+    def test_voice_smoke_synthesizes_one_sentence_and_verifies_pcm(self, monkeypatch, capsys):
+        from ocf_tools import voice
+
+        calls = []
+        monkeypatch.setattr(
+            "ocf_tools.narration_first._voice_profile",
+            lambda profile, locale, catalog: ({"id": profile}, {"name": "piper"}),
+        )
+        monkeypatch.setattr(
+            voice,
+            "render_cue_wav",
+            lambda spec, text: (calls.append((spec["name"], text)) or make_wav_bytes(22050, [1000] * 2205)),
+        )
+        assert voice.voice_smoke("OCF-VOICE-9003", locale="en-US") == 0
+        assert calls == [("piper", "This is a short local OCF voice readiness check.")]
+        assert "fresh synthesis" in capsys.readouterr().out
+
     def test_voice_render_missing_backend_fails(self, tmp_path):
         script = tmp_path / "script.yaml"
         script.write_bytes(yaml_safe_dump(simple_timed_doc([0.0])).encode("utf-8"))

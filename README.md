@@ -80,9 +80,13 @@ template, pacing and background policy without synthesizing speech.
 
 ## Explore the functions
 
-The catalog contains **55 functions**, **97 structured command records** and
-**55 generated English session plans**. Historical source availability is
-tracked independently: 39 available, 16 unavailable/planned reimplementations.
+The current registry contains **58 OCF function records**, **83 structured
+command records** and **58 generated English session plans**. It comprises 55
+legacy-mapped functions (39 with historical source available and 16 without)
+plus 3 OCF-original functions. Historical source availability is not OCF
+implementation status. Plan validity, audio rendering/verification, human
+listening approval and publication authorization are tracked separately; a
+valid plan or rendered file does not imply listening or publication approval.
 
 | Area | Functions | Explore |
 | --- | --- | --- |
@@ -91,7 +95,7 @@ tracked independently: 39 available, 16 unavailable/planned reimplementations.
 | Emotion and communication | 4 | Let Go, Off-Loading, Empathizing, Speak Up |
 | Performance and automation | 7 | Do This Now, Synchronizing, See-Be |
 | Sleep | 6 | Sleep, Sleep Easy, Sweet Dreams, Stay Awake |
-| Lifestyle, experimental and emergency | 5 | Habit patterns and specialized practices |
+| Lifestyle, experimental and emergency | 8 | Habit patterns and specialized practices |
 
 [Browse the generated catalog](FUNCTION_INDEX.md) or use
 `python scripts/ocf.py commands describe OCF-SLP-005` for command roles and
@@ -111,6 +115,7 @@ no proposed command or narration renames have been applied.
 | Mix recordings and synthesis cue by cue | [Hybrid narration](docs/HYBRID_NARRATION.md) |
 | Import a private voice or prepare a dataset | [Voice workflows](docs/VOICE_WORKFLOWS.md) |
 | Inspect timing, gains and Focus backgrounds | [Audio pipeline](docs/AUDIO_PIPELINE.md) · [Semantic DSP](docs/SEMANTIC_DSP.md) |
+| Build private reference-V4 listening editions | [Private workflow](docs/PRIVATE_REFERENCE_V4.md) |
 
 ### Audition a complete session
 

@@ -1,4 +1,4 @@
-default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-001
+default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-004
 duration: null
 function_id: OCF-SLP-005
 narration_plan:
@@ -27,7 +27,7 @@ narration_resources:
   locale: en-US
 schema_version: '1.0'
 session_templates:
-- OCF-TPL-SESSION-HPLUS-LOCKED-001
+- OCF-TPL-SESSION-HPLUS-LOCKED-004
 - OCF-TPL-SESSION-HPLUS-STANDARD-001
 - OCF-TPL-SESSION-PILOT-SLEEP-EASY-001
 voice_sources:

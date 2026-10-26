@@ -403,16 +403,20 @@ INSTALL_GUIDANCE = (
 
 
 def detect_backends() -> list[dict[str, Any]]:
-    """Probe PATH for supported TTS binaries (ordered, deterministic)."""
+    """Discover installed backends in PATH, project environments and user-local bins."""
+    from .environment import resolve_executable
+
     found = []
     for name, spec in BACKENDS.items():
-        executable = shutil.which(spec["binary"])
+        discovery = resolve_executable(spec["binary"])
+        executable = discovery.get("executable") if discovery["status"] == "ready" else None
         found.append(
             {
                 "name": name,
                 "binary": spec["binary"],
                 "executable": executable,
                 "available": executable is not None,
+                "discovery": discovery,
             }
         )
     return found
@@ -495,6 +499,12 @@ def _load_profile(profile: dict[str, Any]) -> dict[str, Any]:
         "gain_db": profile.get("gain_db") or 0,
         "processing_defaults": profile.get("processing_defaults", {}),
     }
+    from .environment import resolve_executable
+
+    executable = resolve_executable(resolved["binary"])
+    resolved["environment"] = executable
+    if executable.get("status") == "ready":
+        resolved["binary"] = executable["executable"]
     if profile.get("model"):
         from .custom_voices import model_path
 
@@ -708,6 +718,7 @@ def _render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes
             input=text.encode("utf-8") if spec_mode == "file" else None,
             capture_output=True,
             timeout=timeout,
+            env=(spec.get("environment") or {}).get("runtime", {}).get("subprocess_env"),
         )
     except OSError as exc:
         if out_path is not None:
@@ -1756,22 +1767,71 @@ def render_script(
 
 def voice_doctor() -> int:
     """`ocf voice doctor` — backend + profile health."""
+    from .environment import discover_environment
+
     available = 0
+    environment = discover_environment()
+    python = environment["python"]
+    print(
+        f"python: {python.get('status')} ({python.get('version') or 'version unknown'}) "
+        f"{python.get('executable')} [{python.get('source', 'configured')}]"
+    )
     for entry in detect_backends():
         if entry["available"]:
             available += 1
             print(f"[ok]  {entry['name']}: {entry['executable']}")
         else:
-            print(f"[!!] {entry['name']}: not on PATH (install {entry['binary']})")
+            discovery = entry.get("discovery") or {}
+            if discovery.get("status") == "broken":
+                print(
+                    f"[!!] {entry['name']}: found at {discovery.get('executable')} "
+                    f"but unusable ({discovery.get('reason')})"
+                )
+            else:
+                print(
+                    f"[!!] {entry['name']}: not on PATH or configured local tool paths "
+                    f"(install {entry['binary']} only if genuinely absent)"
+                )
     profiles = load_voice_profiles()
     print(f"voice profiles: {len(profiles)} in audio/voices/profiles/")
     if profile := next(iter(profiles), None):
         print(f"  default: {profile.get('slug')} (backend {profile.get('backend')})")
+    amy = next((item for item in profiles if item.get("id") == "OCF-VOICE-9003"), None)
+    amy = amy or next(
+        (item for item in profiles if str(item.get("name", "")).casefold() == "amy"), None
+    )
+    if amy:
+        resolved = discover_environment(voice_profile=amy)
+        model = resolved["model"]
+        print(
+            f"  {amy['id']} Amy Medium model: {model['status']} "
+            f"{model.get('model_path') or ''}"
+        )
+        if model.get("model_sha256"):
+            print(f"    model sha256: {model['model_sha256']}")
+            print(f"    config sha256: {model['config_sha256']}")
     if not profiles:
         print("  (none; copy templates/voice-profile.yaml, e.g. as espeak-en.yaml)")
     if available == 0:
         print("\nNo TTS backend available (optional): " + INSTALL_GUIDANCE.splitlines()[1])
     return 0 if available > 0 else 1
+
+
+def voice_smoke(profile_id: str, *, locale: str = "en-US") -> int:
+    """Perform one fresh, short Piper/espeak synthesis and verify returned PCM."""
+    from .locale import LocaleCatalog
+    from .narration_first import _voice_profile
+
+    profile, spec = _voice_profile(profile_id, locale, LocaleCatalog())
+    phrase = "This is a short local OCF voice readiness check."
+    sample_rate, samples = _read_pcm_from_bytes(render_cue_wav(spec, phrase))
+    if sample_rate <= 0 or not samples or not any(samples):
+        raise OCFError("voice smoke synthesis returned empty or silent PCM")
+    print(
+        f"Voice smoke PASS: {profile['id']} ({spec['name']}, {sample_rate} Hz, "
+        f"{len(samples) / sample_rate:.2f}s); fresh synthesis, no file exported."
+    )
+    return 0
 
 
 def list_backends_cmd() -> int:

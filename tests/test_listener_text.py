@@ -81,6 +81,48 @@ def test_whole_utterance_paragraphs_remain_one_complete_measured_subtitle(tmp_pa
 
 
 @pytest.mark.unit
+def test_timing_manifest_preserves_all_four_body_passes_and_sections(tmp_path):
+    cues = []
+    for event_id, start in (
+        ("focus11-body.pass-1", 0),
+        ("focus11-body.pass-2", 3),
+        ("sleep20-body.pass-1", 6),
+        ("sleep20-body.pass-2", 9),
+    ):
+        cues.append(
+            {
+                "id": event_id,
+                "source_ids": [event_id],
+                "at": start,
+                "duration": 2,
+                "spoken_text": "First sentence. Second sentence.",
+                "spoken_units": [
+                    {"text": "First sentence.", "start_seconds": start, "end_seconds": start + 1},
+                    {
+                        "text": "Second sentence.",
+                        "start_seconds": start + 1,
+                        "end_seconds": start + 2,
+                    },
+                ],
+            }
+        )
+    audio = tmp_path / "session.mp3"
+    receipt = lt.write_listener_text({"narration_timing": {"cues": cues}}, 12, audio)
+    manifest = json.loads(audio.with_suffix(".timing.json").read_text(encoding="utf-8"))
+    assert receipt["body_pass_coverage"] == {
+        "programming": [1, 2],
+        "sleep_reinforcement": [1, 2],
+    }
+    assert len(manifest["timeline"]) == 8
+    assert manifest["timeline"][0]["semantic_section"] == "focus11-body"
+    assert manifest["timeline"][0]["pass_type"] == "programming"
+    assert manifest["timeline"][0]["pass_index"] == 1
+    assert manifest["timeline"][6]["pass_type"] == "sleep_reinforcement"
+    assert manifest["timeline"][6]["pass_index"] == 2
+    assert all(row["granularity"] == "measured_speech_unit" for row in manifest["timeline"])
+
+
+@pytest.mark.unit
 def test_tied_onsets_use_the_same_canonical_plain_and_subtitle_order(tmp_path):
     from ocf_tools.release import transcript_from_render
 

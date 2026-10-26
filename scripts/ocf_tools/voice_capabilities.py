@@ -87,11 +87,19 @@ def backend_capability(backend: str) -> dict:
     if backend not in _BACKENDS:
         raise OCFError(f"unknown voice backend: {backend}")
     spec = deepcopy(_BACKENDS[backend])
-    executable = shutil.which(spec["binary"]) if spec["binary"] else None
+    from .environment import resolve_executable
+
+    discovery = resolve_executable(spec["binary"]) if spec["binary"] else None
+    executable = discovery.get("executable") if discovery and discovery["status"] == "ready" else None
     spec["backend"] = backend
     spec["installation"] = {
         "executable_found": executable is not None,
-        "package_found": _package_present(spec["package"]) if spec["package"] else False,
+        "package_found": (
+            bool(discovery and discovery.get("runtime", {}).get("status") == "ready")
+            if backend == "piper"
+            else _package_present(spec["package"]) if spec["package"] else False
+        ),
+        "discovery": discovery,
     }
     # Existing adapters execute binaries, not arbitrary importable Python packages.
     spec["available"] = spec["ocf"]["inference_supported"] and executable is not None
@@ -146,7 +154,9 @@ def profile_capability(profile: dict) -> dict:
     if method not in capability["ocf"]["customization_methods"]:
         blockers.append(f"OCF adapter does not support customization method {method}.")
     if not capability["installation"]["executable_found"]:
-        blockers.append("Required inference executable is not installed for this adapter.")
+        discovery = capability["installation"].get("discovery") or {}
+        reason = discovery.get("reason") or discovery.get("status") or "not discovered"
+        blockers.append(f"Required inference executable is unavailable ({reason}).")
     return {
         "backend": profile["backend"],
         "customization_method": method,

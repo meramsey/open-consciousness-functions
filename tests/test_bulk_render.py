@@ -1,7 +1,9 @@
 import hashlib
 import io
 import json
+import threading
 import wave
+from contextlib import contextmanager
 
 import pytest
 from ocf_tools import bulk_render, speech_cache
@@ -64,6 +66,11 @@ def test_bulk_resume_verifies_artifacts_force_preserves_history_and_failure_cont
         lambda owner, locale: ({"id": owner}, {}, {"resolved_dsp_profile": {"id": "fixture"}}),
     )
     monkeypatch.setattr(semantic_dsp, "dependency_identity", lambda _: {"verified": True})
+    from ocf_tools import complete_session
+
+    monkeypatch.setattr(
+        complete_session, "build_complete_session_plan", lambda *_args, **_kwargs: {}
+    )
     monkeypatch.setattr(bulk_render, "LocaleCatalog", lambda: None)
     monkeypatch.setattr(bulk_render, "_voice_profile", lambda *_: ({}, {}))
     monkeypatch.setattr(bulk_render, "voice_identity", lambda _: {"fixture": True})
@@ -143,6 +150,247 @@ def test_bulk_dry_run_needs_no_engine_and_writes_nothing(monkeypatch, tmp_path):
     result = bulk_render.render_many(["fixture"], voice="unavailable", dry_run=True)
     assert result["results"][0]["status"] == "planned"
     assert not (tmp_path / "work").exists()
+
+
+@pytest.mark.unit
+def test_render_batch_lease_blocks_duplicate_and_stale_owners(monkeypatch, tmp_path):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    lease = bulk_render._single_batch_owner
+
+    @lease
+    def nested():
+        @lease
+        def duplicate():
+            return None
+
+        with pytest.raises(OCFError, match="another render batch owns PID"):
+            duplicate()
+        return "owned"
+
+    assert nested() == "owned"
+    lock = tmp_path / "work/logs/bulk-render.lock"
+    assert not lock.exists()
+
+    lock.parent.mkdir(parents=True, exist_ok=True)
+    lock.write_text('{"pid": 2147483647, "owner": "interrupted"}\n')
+    with pytest.raises(OCFError, match="stale or unreadable"):
+        nested()
+    assert lock.exists()
+
+
+@pytest.mark.integration
+def test_render_receipts_bind_to_current_worktree_head_and_branch():
+    from ocf_tools.paths import REPO_ROOT
+
+    identity = bulk_render._git_worktree_identity()
+    assert identity["verified"] is True
+    assert len(identity["head"]) == 40
+    assert identity["branch"] == "engineering/shared-template-v4-20261025"
+    assert identity["worktree"] == str(REPO_ROOT.resolve())
+
+
+@pytest.mark.unit
+def test_fresh_synthesis_skips_cache_and_publishes_durable_function_progress(monkeypatch, tmp_path):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    from ocf_tools import semantic_dsp
+    from ocf_tools.progress import observing
+
+    monkeypatch.setattr(
+        bulk_render,
+        "source_plan",
+        lambda owner, locale: ({"id": owner}, {}, {"resolved_dsp_profile": {"id": "fixture"}}),
+    )
+    monkeypatch.setattr(semantic_dsp, "dependency_identity", lambda _: {"verified": True})
+    monkeypatch.setattr(bulk_render, "LocaleCatalog", lambda: None)
+    monkeypatch.setattr(bulk_render, "_voice_profile", lambda *_: ({}, {}))
+    monkeypatch.setattr(bulk_render, "voice_identity", lambda _: {"fixture": True})
+    cache_states = []
+
+    @contextmanager
+    def record_cache_state(active=True):
+        cache_states.append(active)
+        yield
+
+    monkeypatch.setattr(bulk_render, "enabled", record_cache_state)
+    output = tmp_path / "audition"
+    output.mkdir()
+    data = pcm()
+    (output / "master.wav").write_bytes(data)
+    (output / "session-report.json").write_text(
+        json.dumps(
+            {
+                "artifacts": {
+                    "wav": {
+                        "path": "master.wav",
+                        "size_bytes": len(data),
+                        "sha256": hashlib.sha256(data).hexdigest(),
+                    }
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        bulk_render,
+        "render_complete_session",
+        lambda *_args, **_kwargs: {"output_directory": str(output)},
+    )
+    events = []
+    with observing(events.append):
+        result = bulk_render.render_many(["fresh"], voice="fixture", fresh_synthesis=True)
+    assert result["failed"] == 0
+    assert cache_states == [False]
+    assert [(row["phase"], row.get("detail")) for row in events] == [
+        ("function-preflight", "fresh"),
+        ("function-start", "fresh"),
+        ("function-rendered", "fresh"),
+    ]
+
+
+@pytest.mark.unit
+def test_resource_worker_limit_reduces_for_memory_disk_cpu_and_load():
+    gib = 1024**3
+    assert (
+        bulk_render._select_workers(
+            2, memory_bytes=40 * gib, disk_bytes=100 * gib, cpu_count=16, load_average=0
+        )
+        == 2
+    )
+    assert (
+        bulk_render._select_workers(
+            2, memory_bytes=14 * gib, disk_bytes=100 * gib, cpu_count=16, load_average=0
+        )
+        == 2
+    )
+    assert (
+        bulk_render._select_workers(
+            2, memory_bytes=10 * gib, disk_bytes=100 * gib, cpu_count=16, load_average=0
+        )
+        == 1
+    )
+    assert (
+        bulk_render._select_workers(
+            2, memory_bytes=40 * gib, disk_bytes=100 * gib, cpu_count=1, load_average=0
+        )
+        == 1
+    )
+    assert (
+        bulk_render._select_workers(
+            2, memory_bytes=40 * gib, disk_bytes=100 * gib, cpu_count=8, load_average=7
+        )
+        == 1
+    )
+    with pytest.raises(OCFError, match="disk"):
+        bulk_render._select_workers(
+            2, memory_bytes=40 * gib, disk_bytes=10 * gib, cpu_count=8, load_average=0
+        )
+
+
+@pytest.mark.unit
+def test_two_worker_batch_runs_distinct_functions_without_shared_output_races(
+    monkeypatch, tmp_path
+):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    from ocf_tools import semantic_dsp
+
+    monkeypatch.setattr(
+        bulk_render,
+        "source_plan",
+        lambda owner, locale: ({"id": owner}, {}, {"resolved_dsp_profile": {"id": "fixture"}}),
+    )
+    monkeypatch.setattr(semantic_dsp, "dependency_identity", lambda _: {"verified": True})
+    monkeypatch.setattr(bulk_render, "LocaleCatalog", lambda: None)
+    monkeypatch.setattr(bulk_render, "_voice_profile", lambda *_: ({}, {}))
+    monkeypatch.setattr(bulk_render, "voice_identity", lambda _: {"fixture": True})
+    monkeypatch.setattr(
+        bulk_render,
+        "_batch_resource_state",
+        lambda requested: {"selected_workers": 2, "requested_workers": requested},
+    )
+    barrier = threading.Barrier(2)
+
+    def render(owner, **kwargs):
+        barrier.wait(timeout=2)
+        root = tmp_path / f"audition-{owner}"
+        root.mkdir()
+        data = pcm()
+        (root / "master.wav").write_bytes(data)
+        (root / "session-report.json").write_text(
+            json.dumps(
+                {
+                    "artifacts": {
+                        "wav": {
+                            "path": "master.wav",
+                            "size_bytes": len(data),
+                            "sha256": hashlib.sha256(data).hexdigest(),
+                        }
+                    }
+                }
+            ),
+            encoding="utf-8",
+        )
+        return {"output_directory": str(root)}
+
+    monkeypatch.setattr(bulk_render, "render_complete_session", render)
+    result = bulk_render.render_many(
+        ["one", "two"], voice="fixture", workers=2, fresh_synthesis=True
+    )
+    assert result["workers"] == 2
+    assert {row["status"] for row in result["results"]} == {"rendered"}
+
+
+@pytest.mark.unit
+def test_render_job_retries_one_transient_error_but_not_deterministic_failure(
+    monkeypatch, tmp_path
+):
+    import errno
+
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    calls = []
+    monkeypatch.setattr(bulk_render, "verified_output", lambda *_: True)
+    monkeypatch.setattr(bulk_render, "sha256_of_file", lambda *_: "a" * 64)
+
+    def transient_then_success(*args, **kwargs):
+        calls.append(1)
+        if len(calls) == 1:
+            raise OSError(errno.EAGAIN, "resource temporarily unavailable")
+        return {"output_directory": str(tmp_path / "ready")}
+
+    monkeypatch.setattr(bulk_render, "render_complete_session", transient_then_success)
+    result = bulk_render._render_job(
+        "transient",
+        {"key": "key", "receipt_path": tmp_path / "receipt", "resume_verified": False},
+        locale="en-US",
+        voice="fixture",
+        pacing="sleep",
+        sample_rate=44100,
+        dsp_profile=None,
+        force=False,
+        fresh_synthesis=True,
+        progress_sink=lambda _event: None,
+    )
+    assert result["status"] == "rendered" and result["attempts"] == 2
+    assert len(calls) == 2
+
+    calls.clear()
+    monkeypatch.setattr(
+        bulk_render,
+        "render_complete_session",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(OCFError("invalid canonical plan")),
+    )
+    result = bulk_render._render_job(
+        "deterministic",
+        {"key": "key", "receipt_path": tmp_path / "receipt", "resume_verified": False},
+        locale="en-US",
+        voice="fixture",
+        pacing="sleep",
+        sample_rate=44100,
+        dsp_profile=None,
+        force=False,
+        fresh_synthesis=True,
+        progress_sink=lambda _event: None,
+    )
+    assert result["status"] == "failed" and result["attempts"] == 1
 
 
 @pytest.mark.unit

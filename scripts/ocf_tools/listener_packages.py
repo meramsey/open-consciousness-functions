@@ -54,11 +54,16 @@ def _session_items(manifest):
         raise OCFError("missing measured listener transcripts")
     if not manifest.get("cover") or not text.get("timing_receipt"):
         raise OCFError("missing cover or timing provenance")
-    return [manifest["artifacts"][fmt] for fmt in ("flac", "mp3")] + [
+    items = [manifest["artifacts"][fmt] for fmt in ("flac", "mp3")] + [
         manifest["cover"],
         *text["artifacts"].values(),
         text["timing_receipt"],
     ]
+    if manifest.get("artifacts", {}).get("build_provenance"):
+        items.append(manifest["artifacts"]["build_provenance"])
+    if manifest.get("artifacts", {}).get("audio_quality"):
+        items.append(manifest["artifacts"]["audio_quality"])
+    return items
 
 
 def attach_guides(
@@ -190,6 +195,11 @@ def verify_package(root: Path):
                 included[k] != required[k] for k in ("size_bytes", "sha256")
             ):
                 raise OCFError("missing or conflicting session artifact receipt")
+        if any(
+            f"{fid}/{name}" not in receipts
+            for name in ("listening-guide.pdf", "function-guide.pdf")
+        ):
+            raise OCFError("missing per-function listening/function guide PDFs")
     guide_stems = ["listening-guide", "index", *(f"functions/{fid}" for fid in session_ids)]
     if any(
         f"guides/{stem}.{fmt}" not in receipts
@@ -285,6 +295,21 @@ def package_auditions(sources, output, *, guides=None, resume=False):
         for source, manifest, items, digest in inputs:
             folder = stage / manifest["function_id"]
             folder.mkdir()
+            for source_name, target_name in (
+                ("guides/listening-guide.pdf", "listening-guide.pdf"),
+                (
+                    f"guides/functions/{manifest['function_id']}.pdf",
+                    "function-guide.pdf",
+                ),
+            ):
+                guide = stage / source_name
+                if not guide.is_file():
+                    raise OCFError(f"missing generated per-function guide: {source_name}")
+                target = folder / target_name
+                shutil.copyfile(guide, target)
+                artifacts.append(
+                    {**_artifact(target), "path": target.relative_to(stage).as_posix()}
+                )
             for item in items:
                 original = _source_artifact(source, item)
                 target = folder / item["path"]

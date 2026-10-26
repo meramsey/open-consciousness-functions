@@ -1,0 +1,18 @@
+schema_version: '1.0'
+id: OCF-PACING-HPLUS-LOCKED-003
+version: 3.0.0
+extends: OCF-PACING-HPLUS-STANDARD-003
+status: draft
+narration_pacing:
+  profiles:
+    preparation:
+      rate_scale: 1.0
+      default_unit: instruction
+      pauses:
+        instruction: 3.0
+        paragraph: 4.0
+  entries:
+    hplus.shared.body-comfort: preparation
+    hplus.shared.transmutation-box.begin: preparation
+    hplus.shared.transmutation-box.place: preparation
+    hplus.shared.transmutation-box.complete: preparation

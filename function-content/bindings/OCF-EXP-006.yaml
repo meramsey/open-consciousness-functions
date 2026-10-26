@@ -1,8 +1,8 @@
 schema_version: '1.0'
 function_id: OCF-EXP-006
-default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-001
+default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-004
 session_templates:
-- OCF-TPL-SESSION-HPLUS-LOCKED-001
+- OCF-TPL-SESSION-HPLUS-LOCKED-004
 narration_resources: []
 voice_sources:
 - tts

@@ -18,7 +18,15 @@ def test_migration_preserves_sources_reviews_and_all_functions():
         r for r in report["functions"] if r["historical_source_availability"] == "unavailable"
     )
     current = eligibility(unavailable["function_id"])
-    assert current == unavailable
+    previous_reviews = unavailable["narration_review_status"]
+    current_reviews = current.pop("narration_review_status")
+    previous = dict(unavailable)
+    previous.pop("narration_review_status")
+    assert current == previous
+    assert {key: current_reviews[key] for key in previous_reviews} == previous_reviews
+    assert {
+        key: value for key, value in current_reviews.items() if key not in previous_reviews
+    } == {"hplus.shared.focus20.close.ready": "reviewed"}
 
 
 def test_spoken_locale_missing_dependency_is_reported_without_cross_language_fallback():
@@ -37,5 +45,6 @@ def test_binding_migration_is_idempotent_and_retains_old_sleep_template():
     from ocf_tools.content import load_layers
 
     binding = load_layers("OCF-SLP-005")["bindings"]
-    assert "OCF-TPL-SESSION-HPLUS-STANDARD-001" in binding["session_templates"]
+    assert binding["default_session_template"] == "OCF-TPL-SESSION-HPLUS-LOCKED-003"
+    assert "OCF-TPL-SESSION-PILOT-SLEEP-EASY-001" in binding["session_templates"]
     assert binding["narration_plan"]["sequence"][1]["repetitions"] == 4
