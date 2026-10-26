@@ -1803,10 +1803,7 @@ def voice_doctor() -> int:
     if amy:
         resolved = discover_environment(voice_profile=amy)
         model = resolved["model"]
-        print(
-            f"  {amy['id']} Amy Medium model: {model['status']} "
-            f"{model.get('model_path') or ''}"
-        )
+        print(f"  {amy['id']} Amy Medium model: {model['status']} {model.get('model_path') or ''}")
         if model.get("model_sha256"):
             print(f"    model sha256: {model['model_sha256']}")
             print(f"    config sha256: {model['config_sha256']}")

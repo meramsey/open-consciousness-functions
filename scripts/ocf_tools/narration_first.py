@@ -93,9 +93,7 @@ def _voice_profile(
     )
     if not executable:
         reason = discovery.get("reason") or "not on PATH or in existing local tool directories"
-        raise OCFError(
-            f"voice backend {resolved['name']} executable is unavailable: {reason}"
-        )
+        raise OCFError(f"voice backend {resolved['name']} executable is unavailable: {reason}")
     resolved["binary"] = executable
     if resolved["name"] == "piper" and (
         not resolved.get("model") or not Path(str(resolved["model"])).is_file()

@@ -90,14 +90,18 @@ def backend_capability(backend: str) -> dict:
     from .environment import resolve_executable
 
     discovery = resolve_executable(spec["binary"]) if spec["binary"] else None
-    executable = discovery.get("executable") if discovery and discovery["status"] == "ready" else None
+    executable = (
+        discovery.get("executable") if discovery and discovery["status"] == "ready" else None
+    )
     spec["backend"] = backend
     spec["installation"] = {
         "executable_found": executable is not None,
         "package_found": (
             bool(discovery and discovery.get("runtime", {}).get("status") == "ready")
             if backend == "piper"
-            else _package_present(spec["package"]) if spec["package"] else False
+            else _package_present(spec["package"])
+            if spec["package"]
+            else False
         ),
         "discovery": discovery,
     }

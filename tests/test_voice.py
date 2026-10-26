@@ -734,7 +734,9 @@ class TestCli:
         monkeypatch.setattr(
             voice,
             "render_cue_wav",
-            lambda spec, text: (calls.append((spec["name"], text)) or make_wav_bytes(22050, [1000] * 2205)),
+            lambda spec, text: (
+                calls.append((spec["name"], text)) or make_wav_bytes(22050, [1000] * 2205)
+            ),
         )
         assert voice.voice_smoke("OCF-VOICE-9003", locale="en-US") == 0
         assert calls == [("piper", "This is a short local OCF voice readiness check.")]

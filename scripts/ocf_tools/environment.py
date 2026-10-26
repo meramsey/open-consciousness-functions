@@ -159,7 +159,11 @@ def _piper_python_environment(executable: Path) -> dict:
     # Use the already-installed Python to query site paths. Import checks are
     # filesystem-only; no package installation or model download is attempted.
     probe = subprocess.run(
-        [interpreter, "-c", "import site,sys; print(sys.version.split()[0]); print(site.getusersitepackages())"],
+        [
+            interpreter,
+            "-c",
+            "import site,sys; print(sys.version.split()[0]); print(site.getusersitepackages())",
+        ],
         capture_output=True,
         text=True,
         env={**os.environ, "HOME": str(_user_home())},
@@ -187,7 +191,9 @@ def _piper_python_environment(executable: Path) -> dict:
     env = os.environ.copy()
     if site_paths:
         existing = env.get("PYTHONPATH", "")
-        paths = site_paths + ([item for item in existing.split(os.pathsep) if item] if existing else [])
+        paths = site_paths + (
+            [item for item in existing.split(os.pathsep) if item] if existing else []
+        )
         env["PYTHONPATH"] = os.pathsep.join(dict.fromkeys(paths))
     check = subprocess.run(
         [interpreter, "-c", "import piper, importlib.metadata as m; print(m.version('piper-tts'))"],
@@ -204,7 +210,9 @@ def _piper_python_environment(executable: Path) -> dict:
         "package_version": check.stdout.strip() if check.returncode == 0 else None,
         "package_paths": site_paths,
         "subprocess_env": {"PYTHONPATH": env["PYTHONPATH"]} if site_paths else {},
-        "reason": None if check.returncode == 0 else "Piper CLI package is not importable by its configured interpreter",
+        "reason": None
+        if check.returncode == 0
+        else "Piper CLI package is not importable by its configured interpreter",
     }
 
 
@@ -224,7 +232,9 @@ def resolve_executable(binary: str, *, root: Path = REPO_ROOT) -> dict:
                 "status": "ready",
                 "binary": binary,
                 "executable": str(executable),
-                "source": "PATH" if shutil.which(binary) == str(executable) else "existing local installation",
+                "source": "PATH"
+                if shutil.which(binary) == str(executable)
+                else "existing local installation",
             }
         runtime = _piper_python_environment(executable)
         if runtime["status"] == "ready":
@@ -232,7 +242,9 @@ def resolve_executable(binary: str, *, root: Path = REPO_ROOT) -> dict:
                 "status": "ready",
                 "binary": binary,
                 "executable": str(executable),
-                "source": "PATH" if shutil.which(binary) == str(executable) else "existing local installation",
+                "source": "PATH"
+                if shutil.which(binary) == str(executable)
+                else "existing local installation",
                 "runtime": runtime,
             }
     runtime = _piper_python_environment(candidates[0])
@@ -255,7 +267,11 @@ def discover_environment(*, root: Path = REPO_ROOT, voice_profile: dict | None =
     if node_executable:
         try:
             probe = subprocess.run(
-                [node_executable, "--version"], capture_output=True, text=True, timeout=4, check=False
+                [node_executable, "--version"],
+                capture_output=True,
+                text=True,
+                timeout=4,
+                check=False,
             )
             if probe.returncode == 0:
                 node_version = probe.stdout.strip()
@@ -263,7 +279,9 @@ def discover_environment(*, root: Path = REPO_ROOT, voice_profile: dict | None =
             pass
     report = {
         "python": project_python(root),
-        "tools": {name: resolve_executable(name, root=root) for name in ("ffmpeg", "ffprobe", "piper")},
+        "tools": {
+            name: resolve_executable(name, root=root) for name in ("ffmpeg", "ffprobe", "piper")
+        },
         "node": {
             "executable": node_executable,
             "version": node_version,
@@ -271,7 +289,9 @@ def discover_environment(*, root: Path = REPO_ROOT, voice_profile: dict | None =
             "status": "not-installed"
             if not node_executable
             else "version-mismatch"
-            if node_expected and node_version and node_version.lstrip("v") != node_expected.lstrip("v")
+            if node_expected
+            and node_version
+            and node_version.lstrip("v") != node_expected.lstrip("v")
             else "ready",
             "version_file": str(node_file) if node_expected else None,
             "note": "Uses the active nvm/PATH selection; OCF never changes global nvm defaults.",
@@ -285,10 +305,16 @@ def discover_environment(*, root: Path = REPO_ROOT, voice_profile: dict | None =
 
             model = Path(model_path(voice_profile))
         else:
-            model = Path(os.path.expandvars(os.path.expanduser(configured))).resolve() if configured else None
+            model = (
+                Path(os.path.expandvars(os.path.expanduser(configured))).resolve()
+                if configured
+                else None
+            )
         config = Path(str(model) + ".json") if model else None
         report["model"] = {
-            "status": "ready" if model and model.is_file() and config and config.is_file() else "missing",
+            "status": "ready"
+            if model and model.is_file() and config and config.is_file()
+            else "missing",
             "model_path": str(model) if model else None,
             "config_path": str(config) if config else None,
             "model_sha256": _sha256(model) if model and model.is_file() else None,
