@@ -119,6 +119,15 @@ def test_piper_resolves_nondefault_user_local_installation_and_reports_broken_ru
     assert result["executable"] == str((prefix / "bin/piper").resolve())
     assert result["runtime"]["package_version"] == "1.2.3"
 
+    monkeypatch.setattr(
+        environment.subprocess,
+        "run",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(FileNotFoundError("loader unavailable")),
+    )
+    result = environment.resolve_executable("piper", root=root)
+    assert result["status"] == "broken"
+    assert "probe failed" in result["reason"]
+
     _script(prefix / "bin/piper", "#!/missing/python\n")
     result = environment.resolve_executable("piper", root=root)
     assert result["status"] == "broken"
@@ -134,6 +143,7 @@ def test_model_discovery_honors_explicit_nondefault_configured_path(tmp_path, mo
     monkeypatch.setattr(environment.shutil, "which", lambda *_: None)
     monkeypatch.setattr(environment, "_user_home", lambda: tmp_path / "empty-home")
     monkeypatch.setenv("OCF_PIPER_EXECUTABLE", str(tmp_path / "no-piper"))
+    _stub_python_probes(monkeypatch, sys.version.split()[0])
     result = environment.discover_environment(
         root=tmp_path / "repo",
         voice_profile={"backend": "piper", "piper_model": str(model)},

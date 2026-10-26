@@ -20,7 +20,7 @@ def _user_home() -> Path:
         account_home = Path(pwd.getpwuid(os.getuid()).pw_dir)
         if account_home.is_dir():
             return account_home
-    except (AttributeError, KeyError, OSError):
+    except (AttributeError, ImportError, KeyError, OSError):
         pass
     return Path.home()
 
@@ -64,6 +64,7 @@ def project_python(root: Path = REPO_ROOT) -> dict:
         pyenv_root = Path(os.environ.get("PYENV_ROOT", _user_home() / ".pyenv"))
         for name in ("python", "python3"):
             candidates.append(pyenv_root / "versions" / version / "bin" / name)
+    candidates.append(Path(sys.executable))
     for name in ("python3", "python"):
         if located := shutil.which(name):
             candidates.append(Path(located))
@@ -76,16 +77,19 @@ def project_python(root: Path = REPO_ROOT) -> dict:
         if resolved in seen or not resolved.is_file() or not os.access(resolved, os.X_OK):
             continue
         seen.add(resolved)
-        version, supported = _python_version(resolved)
+        version, supported = _python_version(candidate.absolute())
         if supported:
+            active = candidate.absolute() == Path(sys.executable).absolute()
             return {
                 "status": "ready",
-                "executable": str(resolved),
+                "executable": str(candidate.absolute()),
                 "source": (
                     "OCF_PYTHON"
                     if configured and candidate == candidates[0]
                     else "project .venv"
                     if ".venv" in candidate.parts
+                    else "active interpreter"
+                    if active
                     else "pyenv .python-version"
                     if version_file.is_file() and version in version_file.read_text().strip()
                     else "PATH/active Python"
@@ -158,18 +162,25 @@ def _piper_python_environment(executable: Path) -> dict:
 
     # Use the already-installed Python to query site paths. Import checks are
     # filesystem-only; no package installation or model download is attempted.
-    probe = subprocess.run(
-        [
-            interpreter,
-            "-c",
-            "import site,sys; print(sys.version.split()[0]); print(site.getusersitepackages())",
-        ],
-        capture_output=True,
-        text=True,
-        env={**os.environ, "HOME": str(_user_home())},
-        timeout=5,
-        check=False,
-    )
+    try:
+        probe = subprocess.run(
+            [
+                interpreter,
+                "-c",
+                "import site,sys; print(sys.version.split()[0]); print(site.getusersitepackages())",
+            ],
+            capture_output=True,
+            text=True,
+            env={**os.environ, "HOME": str(_user_home())},
+            timeout=5,
+            check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        return {
+            "status": "broken",
+            "interpreter": str(Path(interpreter)),
+            "reason": f"Piper shebang interpreter probe failed: {type(exc).__name__}",
+        }
     if probe.returncode:
         return {"status": "broken", "reason": "Piper interpreter failed a read-only version probe"}
     lines = probe.stdout.splitlines()
@@ -195,14 +206,27 @@ def _piper_python_environment(executable: Path) -> dict:
             [item for item in existing.split(os.pathsep) if item] if existing else []
         )
         env["PYTHONPATH"] = os.pathsep.join(dict.fromkeys(paths))
-    check = subprocess.run(
-        [interpreter, "-c", "import piper, importlib.metadata as m; print(m.version('piper-tts'))"],
-        capture_output=True,
-        text=True,
-        env=env,
-        timeout=5,
-        check=False,
-    )
+    try:
+        check = subprocess.run(
+            [
+                interpreter,
+                "-c",
+                "import piper, importlib.metadata as m; print(m.version('piper-tts'))",
+            ],
+            capture_output=True,
+            text=True,
+            env=env,
+            timeout=5,
+            check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        return {
+            "status": "broken",
+            "interpreter": str(Path(interpreter)),
+            "python_version": version,
+            "package_paths": site_paths,
+            "reason": f"Piper package probe failed: {type(exc).__name__}",
+        }
     return {
         "status": "ready" if check.returncode == 0 else "broken",
         "interpreter": str(Path(interpreter).resolve()),

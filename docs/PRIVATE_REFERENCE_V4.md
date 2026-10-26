@@ -36,12 +36,25 @@ edition collection. The original source files and prior editions are inputs,
 not output destinations.
 
 Use the configured Python 3.11+ environment, local Piper `en_US-amy-medium`,
-and the selected `OCF-VOICE-9003` profile. Render with
-`audio render-many ... --workers 2 --fresh-synthesis`; this bypasses all speech caches while
-still skipping checksummed complete-session receipts from the same edition.
-Never import speech caches from an earlier edition. Existing complete-session
-receipts are validated by contents, not filename presence. A batch lock prevents concurrent `render-many` owners;
-an unreadable/stale lock requires checking the recorded process before removal.
+and selected `OCF-VOICE-9003` profile. After Hearing passes technical gates,
+continue the private collection with the batch driver:
+
+```bash
+OCF_WORK_DIR="$PWD/.ocf-work" \
+  .venv/bin/python scripts/tools/render_private_reference_v4.py --all \
+  --profile "$OCF_REFERENCE_V4_PROFILE" --voice OCF-VOICE-9003 \
+  --version 0.3.0 --workers 2 --fresh-synthesis
+```
+
+The scheduler reduces concurrency based on available memory, disk and CPU load.
+Each function status is persisted; individual failures do not block others.
+Fresh synthesis bypasses speech caches from prior editions while checksummed
+whole-session receipts support safe resume. Exports, measured lyrics, provenance,
+quality evidence, guides, package and relative-path indexes are built privately.
+Set `OCF_REFERENCE_V4_PROFILE` to the local YAML containing the configured
+Focus 10/11 preset locations; never commit that machine-specific file.
+Never overwrite historical editions. A batch lock prevents competing render
+owners; inspect the recorded PID before removing an unreadable/stale lock.
 
 The reference-V4 edition is private-only. MP3 and FLAC exports carry measured
 plain and synchronized lyrics where supported, with portable TXT/LRC/SRT/VTT
