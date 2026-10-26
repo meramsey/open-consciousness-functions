@@ -77,7 +77,15 @@ def start() -> int:
         child = subprocess.Popen(
             args,
             cwd=ROOT,
-            env={**os.environ, "OCF_WORK_DIR": str(WORK)},
+            env={
+                **os.environ,
+                "OCF_WORK_DIR": str(WORK),
+                "PYTHONPATH": os.pathsep.join(
+                    item
+                    for item in (str(ROOT / "scripts"), os.environ.get("PYTHONPATH", ""))
+                    if item
+                ),
+            },
             stdin=subprocess.DEVNULL,
             stdout=stream,
             stderr=subprocess.STDOUT,
