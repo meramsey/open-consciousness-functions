@@ -136,7 +136,7 @@ def test_project_configuration_retains_mcp_watchers_and_read_only_agents(repo_ro
     config = json.loads((repo_root / ".opencode/opencode.json").read_text(encoding="utf-8"))
     assert config["mcp"]["ocf"] == {
         "type": "local",
-        "command": ["python", "scripts/start_ocf_mcp.py"],
+        "command": ["python3", "scripts/start_ocf_mcp.py"],
         "enabled": True,
     }
     assert "audio/rendered/**" in config["watcher"]["ignore"]
