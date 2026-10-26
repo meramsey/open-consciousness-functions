@@ -107,8 +107,28 @@ def run_collection(
         status["updated_at"] = datetime.now(UTC).isoformat()
         _atomic_json(status_path, status)
 
+    recovered = {}
+    render_ids = []
+    for function_id in function_ids:
+        row = by_id[function_id]
+        report_path = Path(row["session_report"]) if row.get("session_report") else None
+        if report_path and report_path.is_file():
+            try:
+                report = json.loads(report_path.read_text(encoding="utf-8"))
+                if report.get("template", {}).get("id") == "OCF-TPL-SESSION-HPLUS-LOCKED-004":
+                    recovered[function_id] = {
+                        "function_id": function_id,
+                        "status": "skipped-verified",
+                        "output_directory": str(report_path.parent),
+                    }
+                    row["status"] = "SESSION_RENDER_VERIFIED"
+                    continue
+            except (OSError, ValueError, TypeError):
+                pass
+        render_ids.append(function_id)
+
     rendered = render_many(
-        function_ids,
+        render_ids,
         voice=voice,
         locale=locale,
         pacing="sleep",
@@ -118,7 +138,7 @@ def run_collection(
         dsp_profile=profile,
         progress_callback=progress,
     )
-    latest_by_id = {row["function_id"]: row for row in rendered["results"]}
+    latest_by_id = {**recovered, **{row["function_id"]: row for row in rendered["results"]}}
     exports = []
     for function_id in function_ids:
         result = latest_by_id.get(function_id, {})
