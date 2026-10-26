@@ -449,6 +449,41 @@ def _gain_expression(program: dict, state: str) -> str:
     return envelope
 
 
+def _required_state_end(program: dict, state: str) -> float:
+    """Return the last timeline point at which a state must have source audio."""
+    current = program["initial_state"]
+    required_end = 0.0
+    for transition in program["transitions"]:
+        if transition["from"] == state or transition["to"] == state:
+            required_end = max(required_end, float(transition["end_s"]))
+        current = transition["to"]
+    return float(program["duration_s"]) if current == state else required_end
+
+
+def _pad_state_stem(stem: Path, duration: float, scratch_dir: Path, ffmpeg: str) -> Path:
+    """Pad only the non-audible tail of a finite state stem with digital silence."""
+    padded = scratch_dir / f"{stem.stem}-padded-{duration:.3f}.wav"
+    _command(
+        [
+            ffmpeg,
+            "-hide_banner",
+            "-y",
+            "-i",
+            str(stem),
+            "-af",
+            f"apad=whole_dur={duration:.9f},atrim=duration={duration:.9f}",
+            "-ar",
+            "44100",
+            "-ac",
+            "2",
+            "-c:a",
+            "pcm_s24le",
+            str(padded),
+        ]
+    )
+    return padded
+
+
 def _command(command: list[str]) -> subprocess.CompletedProcess:
     result = workspace_run(command, capture_output=True, text=True, timeout=600)
     if result.returncode:
@@ -548,10 +583,20 @@ def render_program(
 
         state_duration = float(json.loads(metadata.stdout)["format"]["duration"])
         if state_duration + 0.001 < duration:
-            raise OCFError(
-                f"state {state} stem ({state_duration:.3f}s) is shorter than the session "
-                f"({duration:.3f}s); refusing a silent loop/fallback"
-            )
+            required_end = _required_state_end(program, state)
+            if state_duration + 0.001 < required_end:
+                raise OCFError(
+                    f"state {state} stem ({state_duration:.3f}s) is shorter than its "
+                    f"required audible interval ({required_end:.3f}s); refusing a silent "
+                    "loop/fallback"
+                )
+            stem = _pad_state_stem(stem, duration, scratch_dir, ffmpeg)
+            selection["duration_padding"] = {
+                "source_duration_s": state_duration,
+                "required_audible_end_s": required_end,
+                "padded_duration_s": duration,
+                "mode": "digital-silence-outside-audible-window",
+            }
         calibration = 1.0
         if profile.get("target_state_rms_dbfs") is not None:
             stats = _command(

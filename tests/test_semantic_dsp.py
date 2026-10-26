@@ -11,7 +11,14 @@ import pytest
 import yaml
 from conftest import REPO_ROOT
 from ocf_tools.indexes import load_yaml_file
-from ocf_tools.semantic_dsp import _gain_expression, gain_at, load_profile, plan_program
+from ocf_tools.semantic_dsp import (
+    _gain_expression,
+    _pad_state_stem,
+    _required_state_end,
+    gain_at,
+    load_profile,
+    plan_program,
+)
 from ocf_tools.utils import OCFError
 
 
@@ -508,7 +515,7 @@ def test_renderer_verifies_rendered_state_duration_before_mixing(monkeypatch, tm
     )
 
 
-def test_renderer_rejects_short_state_stem_without_silent_extension(monkeypatch, tmp_path):
+def test_renderer_rejects_short_state_stem_for_required_audible_interval(monkeypatch, tmp_path):
     import json
 
     from ocf_tools import semantic_dsp
@@ -524,7 +531,7 @@ def test_renderer_rejects_short_state_stem_without_silent_extension(monkeypatch,
     )
     stem = tmp_path / "short.wav"
     stem.touch()
-    with pytest.raises(OCFError, match="shorter than the session"):
+    with pytest.raises(OCFError, match="required audible interval"):
         semantic_dsp.render_program(
             state_doc(),
             TIMES,
@@ -533,6 +540,26 @@ def test_renderer_rejects_short_state_stem_without_silent_extension(monkeypatch,
             tmp_path / "mix.wav",
             render_state=lambda *_args: stem,
         )
+
+
+def test_finite_nonfinal_state_uses_silence_padding_only_after_audible_interval(
+    monkeypatch, tmp_path
+):
+    from ocf_tools import semantic_dsp
+
+    profile = load_profile("OCF-DSP-DEVELOPMENT-V4-001")
+    profile.pop("target_state_rms_dbfs", None)
+    program = plan_program(state_doc(), TIMES, 100, profile)
+    assert _required_state_end(program, "focus-11") == 70
+    assert _required_state_end(program, "focus-10") == 98
+    commands = []
+    monkeypatch.setattr(semantic_dsp, "_command", lambda command: commands.append(command))
+    source = tmp_path / "focus-11.wav"
+    source.write_bytes(b"source")
+    padded = _pad_state_stem(source, 100, tmp_path, "/usr/bin/ffmpeg")
+    assert padded.name.startswith("focus-11-padded-")
+    assert any("apad=whole_dur=100.000000000" in item for item in commands[0])
+    assert any("atrim=duration=100.000000000" in item for item in commands[0])
 
 
 def test_farfield_render_boundary_records_commands_and_validates_outputs(monkeypatch, tmp_path):
