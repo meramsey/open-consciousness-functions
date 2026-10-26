@@ -1,6 +1,4 @@
-import os
 import sys
-from types import SimpleNamespace
 
 import pytest
 from ocf_tools import environment
@@ -13,41 +11,20 @@ def _script(path, body):
     return path
 
 
-def _stub_python_probes(monkeypatch, version=None, *, import_ok=True):
-    version = version or sys.version.split()[0]
-
-    def run(command, **kwargs):
-        if command[-1] == "--version":
-            return SimpleNamespace(returncode=0, stdout=f"Python {version}\n", stderr="")
-        if "site.getusersitepackages()" in command[-1]:
-            return SimpleNamespace(
-                returncode=0,
-                stdout=f"{version}\n{kwargs.get('env', {}).get('OCF_TEST_SITE', '')}\n",
-                stderr="",
-            )
-        return SimpleNamespace(
-            returncode=0 if import_ok else 1,
-            stdout=f"{os.environ.get('OCF_TEST_PIPER_VERSION', '1.2.3')}\n" if import_ok else "",
-            stderr="" if import_ok else "ModuleNotFoundError",
-        )
-
-    monkeypatch.setattr(environment.subprocess, "run", run)
-
-
 @pytest.mark.unit
 def test_project_python_prefers_valid_existing_venv_and_rejects_stale_candidate(
     tmp_path, monkeypatch
 ):
     root = tmp_path / "repo"
     _script(root / ".venv/bin/python", f"#!{sys.executable}\nimport sys\nprint('Python 3.12.3')\n")
-    _stub_python_probes(monkeypatch, "3.12.3")
+    (root / ".venv/pyvenv.cfg").write_text("version = 3.12.3\n", encoding="utf-8")
     result = environment.project_python(root)
     assert result["status"] == "ready"
     assert result["source"] == "project .venv"
     assert result["version"] == "3.12.3"
 
     _script(root / ".venv/bin/python", "#!/bin/sh\nexit 7\n")
-    _stub_python_probes(monkeypatch, "3.10.0")
+    (root / ".venv/pyvenv.cfg").write_text("version = 3.10.0\n", encoding="utf-8")
     monkeypatch.setenv("OCF_PYTHON", str(root / ".venv/bin/python"))
     assert environment.project_python(root)["status"] == "configured-python-invalid"
 
@@ -63,7 +40,6 @@ def test_project_python_honors_pyenv_version_without_changing_global_selection(
     _script(pyenv / "versions/3.12.3/bin/python", "#!/bin/sh\nexit 0\n")
     monkeypatch.setenv("PYENV_ROOT", str(pyenv))
     monkeypatch.setenv("PATH", str(tmp_path / "empty"))
-    _stub_python_probes(monkeypatch, "3.12.3")
     result = environment.project_python(root)
     assert result["status"] == "ready"
     assert result["source"] == "pyenv .python-version"
@@ -84,9 +60,6 @@ def test_piper_is_discovered_in_project_venv_without_global_path(tmp_path, monke
     monkeypatch.setenv("PATH", str(tmp_path / "empty-path"))
     monkeypatch.delenv("OCF_PIPER_EXECUTABLE", raising=False)
     monkeypatch.setattr(environment, "_user_home", lambda: tmp_path / "isolated-home")
-    monkeypatch.setenv("OCF_TEST_SITE", str(site))
-    monkeypatch.setenv("OCF_TEST_PIPER_VERSION", "9.8.7")
-    _stub_python_probes(monkeypatch, sys.version.split()[0])
     result = environment.resolve_executable("piper", root=root)
     assert result["status"] == "ready"
     assert result["source"] == "existing local installation"
@@ -111,22 +84,10 @@ def test_piper_resolves_nondefault_user_local_installation_and_reports_broken_ru
     monkeypatch.setenv("PATH", str(tmp_path / "empty"))
     monkeypatch.setenv("OCF_PIPER_EXECUTABLE", str(prefix / "bin/piper"))
     monkeypatch.setattr(environment, "_user_home", lambda: tmp_path / "isolated-home")
-    monkeypatch.setenv("OCF_TEST_SITE", str(site))
-    monkeypatch.setenv("OCF_TEST_PIPER_VERSION", "1.2.3")
-    _stub_python_probes(monkeypatch, sys.version.split()[0])
     result = environment.resolve_executable("piper", root=root)
     assert result["status"] == "ready"
     assert result["executable"] == str((prefix / "bin/piper").resolve())
     assert result["runtime"]["package_version"] == "1.2.3"
-
-    monkeypatch.setattr(
-        environment.subprocess,
-        "run",
-        lambda *_args, **_kwargs: (_ for _ in ()).throw(FileNotFoundError("loader unavailable")),
-    )
-    result = environment.resolve_executable("piper", root=root)
-    assert result["status"] == "broken"
-    assert "probe failed" in result["reason"]
 
     _script(prefix / "bin/piper", "#!/missing/python\n")
     result = environment.resolve_executable("piper", root=root)
@@ -143,7 +104,6 @@ def test_model_discovery_honors_explicit_nondefault_configured_path(tmp_path, mo
     monkeypatch.setattr(environment.shutil, "which", lambda *_: None)
     monkeypatch.setattr(environment, "_user_home", lambda: tmp_path / "empty-home")
     monkeypatch.setenv("OCF_PIPER_EXECUTABLE", str(tmp_path / "no-piper"))
-    _stub_python_probes(monkeypatch, sys.version.split()[0])
     result = environment.discover_environment(
         root=tmp_path / "repo",
         voice_profile={"backend": "piper", "piper_model": str(model)},

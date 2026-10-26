@@ -30,8 +30,8 @@ def test_sleep_easy_complete_template_expands_existing_focus_and_sleep_sequence(
     )
     assert plan["session_completeness"] == "complete"
     assert plan["template"] == {
-        "id": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
-        "version": "1.0.0",
+        "id": "OCF-TPL-SESSION-HPLUS-LOCKED-004",
+        "version": "4.0.0",
         "origin": "reference-derived",
         "content_status": "draft",
     }
@@ -303,7 +303,7 @@ def test_optional_complete_farfield_piper_session():
     wav = output_directory / manifest["artifacts"]["wav"]["path"]
     _verify_decode(wav)
     metrics = _stereo_metrics(wav, sample_rate=44100)
-    assert manifest["template"]["id"] == "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+    assert manifest["template"]["id"] == "OCF-TPL-SESSION-HPLUS-LOCKED-004"
     assert metrics["channels"] == 2 and metrics["clipped_sample_count"] == 0
     checks = manifest["background_activity_checks"]
     assert {layer["state"] for check in checks for layer in check["layers"]} == {

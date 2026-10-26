@@ -94,6 +94,25 @@ def backend_capability(backend: str) -> dict:
         discovery.get("executable") if discovery and discovery["status"] == "ready" else None
     )
     spec["backend"] = backend
+    runtime = discovery.get("runtime", {}) if discovery else {}
+    safe_discovery = (
+        {
+            "status": discovery.get("status"),
+            "source": discovery.get("source"),
+            "reason": discovery.get("reason"),
+            "runtime": {
+                key: runtime.get(key)
+                for key in (
+                    "python_version",
+                    "package_version",
+                    "package_metadata_found",
+                    "inference_verified",
+                )
+            },
+        }
+        if discovery
+        else None
+    )
     spec["installation"] = {
         "executable_found": executable is not None,
         "package_found": (
@@ -103,7 +122,7 @@ def backend_capability(backend: str) -> dict:
             if spec["package"]
             else False
         ),
-        "discovery": discovery,
+        "discovery": safe_discovery,
     }
     # Existing adapters execute binaries, not arbitrary importable Python packages.
     spec["available"] = spec["ocf"]["inference_supported"] and executable is not None

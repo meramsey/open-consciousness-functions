@@ -5,7 +5,6 @@ from __future__ import annotations
 import os
 import re
 import shutil
-import subprocess
 import sys
 from pathlib import Path
 
@@ -26,17 +25,24 @@ def _user_home() -> Path:
 
 
 def _python_version(executable: Path) -> tuple[str | None, bool]:
-    try:
-        probe = subprocess.run(
-            [str(executable), "--version"], capture_output=True, text=True, timeout=4, check=False
+    if executable.absolute() == Path(sys.executable).absolute():
+        version_text = sys.version.split()[0]
+    else:
+        version_text = next(
+            (item for item in executable.parts if re.fullmatch(r"\d+\.\d+\.\d+", item)),
+            None,
         )
-    except (OSError, subprocess.TimeoutExpired):
+        match = re.search(r"python(\d+\.\d+)", executable.name.casefold())
+        version_text = version_text or (match.group(1) if match else None)
+        config = executable.parent.parent / "pyvenv.cfg"
+        if version_text is None and config.is_file():
+            match = re.search(r"(?m)^version\s*=\s*(\d+\.\d+(?:\.\d+)?)", config.read_text())
+            version_text = match.group(1) if match else None
+    if not version_text:
         return None, False
-    match = re.search(r"Python\s+(\d+)\.(\d+)\.(\d+)", probe.stdout + probe.stderr)
-    if probe.returncode or not match:
-        return None, False
-    version = tuple(map(int, match.groups()))
-    return ".".join(map(str, version)), version >= (3, 11, 0)
+    parts = tuple(int(part) for part in version_text.split("."))
+    supported = parts[0] > 3 or (parts[0] == 3 and parts[1] >= 11)
+    return version_text, supported
 
 
 def project_python(root: Path = REPO_ROOT) -> dict:
@@ -64,6 +70,14 @@ def project_python(root: Path = REPO_ROOT) -> dict:
         pyenv_root = Path(os.environ.get("PYENV_ROOT", _user_home() / ".pyenv"))
         for name in ("python", "python3"):
             candidates.append(pyenv_root / "versions" / version / "bin" / name)
+    if sys.prefix != sys.base_prefix:
+        candidates.extend(
+            [
+                Path(sys.prefix) / "bin/python",
+                Path(sys.prefix) / "bin/python3",
+                Path(sys.prefix) / "Scripts/python.exe",
+            ]
+        )
     candidates.append(Path(sys.executable))
     for name in ("python3", "python"):
         if located := shutil.which(name):
@@ -90,11 +104,19 @@ def project_python(root: Path = REPO_ROOT) -> dict:
                     if ".venv" in candidate.parts
                     else "active interpreter"
                     if active
+                    else "active virtualenv"
+                    if sys.prefix != sys.base_prefix and candidate.is_relative_to(Path(sys.prefix))
                     else "pyenv .python-version"
                     if version_file.is_file() and version in version_file.read_text().strip()
                     else "PATH/active Python"
                 ),
                 "version": version,
+            }
+        if configured and candidate == candidates[0]:
+            return {
+                "status": "configured-python-invalid",
+                "executable": str(candidate),
+                "reason": "OCF_PYTHON is missing, cannot run, or is older than Python 3.11",
             }
     if configured:
         return {
@@ -160,37 +182,24 @@ def _piper_python_environment(executable: Path) -> dict:
     if not interpreter or not Path(interpreter).is_file():
         return {"status": "broken", "reason": "Piper shebang interpreter is unavailable"}
 
-    # Use the already-installed Python to query site paths. Import checks are
-    # filesystem-only; no package installation or model download is attempted.
-    try:
-        probe = subprocess.run(
-            [
-                interpreter,
-                "-c",
-                "import site,sys; print(sys.version.split()[0]); print(site.getusersitepackages())",
-            ],
-            capture_output=True,
-            text=True,
-            env={**os.environ, "HOME": str(_user_home())},
-            timeout=5,
-            check=False,
-        )
-    except (OSError, subprocess.TimeoutExpired) as exc:
-        return {
-            "status": "broken",
-            "interpreter": str(Path(interpreter)),
-            "reason": f"Piper shebang interpreter probe failed: {type(exc).__name__}",
-        }
-    if probe.returncode:
-        return {"status": "broken", "reason": "Piper interpreter failed a read-only version probe"}
-    lines = probe.stdout.splitlines()
-    version = lines[0] if lines else None
-    user_site = Path(lines[1]).expanduser() if len(lines) > 1 else None
+    # Resolve package metadata from installed files; inference is verified by
+    # the explicit voice smoke, never by import-time or unit-test subprocesses.
+    interpreter_path = Path(interpreter).resolve()
+    version, _supported = _python_version(interpreter_path)
     site_paths = []
     executable_prefix = executable.parent.parent
     python_minor = ".".join(version.split(".")[:2]) if version else None
+    interpreter_prefix = interpreter_path.parent.parent
+    user_site = (
+        _user_home() / ".local" / "lib" / f"python{python_minor}" / "site-packages"
+        if python_minor
+        else None
+    )
     for path in (
         user_site,
+        interpreter_prefix / "lib" / f"python{python_minor}" / "site-packages"
+        if python_minor
+        else None,
         executable_prefix / "lib" / f"python{python_minor}" / "site-packages"
         if python_minor
         else None,
@@ -199,44 +208,42 @@ def _piper_python_environment(executable: Path) -> dict:
             resolved_path = str(path.resolve())
             if resolved_path not in site_paths:
                 site_paths.append(resolved_path)
-    env = os.environ.copy()
+    env = {**os.environ, "HOME": str(_user_home())}
     if site_paths:
         existing = env.get("PYTHONPATH", "")
         paths = site_paths + (
             [item for item in existing.split(os.pathsep) if item] if existing else []
         )
         env["PYTHONPATH"] = os.pathsep.join(dict.fromkeys(paths))
-    try:
-        check = subprocess.run(
-            [
-                interpreter,
-                "-c",
-                "import piper, importlib.metadata as m; print(m.version('piper-tts'))",
-            ],
-            capture_output=True,
-            text=True,
-            env=env,
-            timeout=5,
-            check=False,
-        )
-    except (OSError, subprocess.TimeoutExpired) as exc:
-        return {
-            "status": "broken",
-            "interpreter": str(Path(interpreter)),
-            "python_version": version,
-            "package_paths": site_paths,
-            "reason": f"Piper package probe failed: {type(exc).__name__}",
-        }
+    package_version = None
+    for site_path in map(Path, site_paths):
+        for metadata in sorted(site_path.glob("piper_tts-*.dist-info/METADATA")):
+            try:
+                fields = dict(
+                    line.split(": ", 1)
+                    for line in metadata.read_text(encoding="utf-8").splitlines()
+                    if ": " in line and line.split(": ", 1)[0] in {"Name", "Version"}
+                )
+            except OSError:
+                continue
+            if fields.get("Name", "").casefold() == "piper-tts":
+                package_version = fields.get("Version")
+                break
+        if package_version:
+            break
+    runtime_ready = bool(site_paths and package_version)
     return {
-        "status": "ready" if check.returncode == 0 else "broken",
+        "status": "ready" if runtime_ready else "broken",
         "interpreter": str(Path(interpreter).resolve()),
         "python_version": version,
-        "package_version": check.stdout.strip() if check.returncode == 0 else None,
+        "package_version": package_version,
         "package_paths": site_paths,
         "subprocess_env": {"PYTHONPATH": env["PYTHONPATH"]} if site_paths else {},
+        "package_metadata_found": bool(package_version),
+        "inference_verified": False,
         "reason": None
-        if check.returncode == 0
-        else "Piper CLI package is not importable by its configured interpreter",
+        if runtime_ready
+        else "Piper package files/metadata are not discoverable for its configured interpreter",
     }
 
 
@@ -287,20 +294,7 @@ def discover_environment(*, root: Path = REPO_ROOT, voice_profile: dict | None =
     node_file = root / ".nvmrc"
     node_expected = node_file.read_text(encoding="utf-8").strip() if node_file.is_file() else None
     node_executable = shutil.which("node")
-    node_version = None
-    if node_executable:
-        try:
-            probe = subprocess.run(
-                [node_executable, "--version"],
-                capture_output=True,
-                text=True,
-                timeout=4,
-                check=False,
-            )
-            if probe.returncode == 0:
-                node_version = probe.stdout.strip()
-        except (OSError, subprocess.TimeoutExpired):
-            pass
+    node_version = "not-probed; use the active nvm node --version" if node_executable else None
     report = {
         "python": project_python(root),
         "tools": {
@@ -310,13 +304,7 @@ def discover_environment(*, root: Path = REPO_ROOT, voice_profile: dict | None =
             "executable": node_executable,
             "version": node_version,
             "expected_version": node_expected,
-            "status": "not-installed"
-            if not node_executable
-            else "version-mismatch"
-            if node_expected
-            and node_version
-            and node_version.lstrip("v") != node_expected.lstrip("v")
-            else "ready",
+            "status": "not-installed" if not node_executable else "present-unverified",
             "version_file": str(node_file) if node_expected else None,
             "note": "Uses the active nvm/PATH selection; OCF never changes global nvm defaults.",
         },

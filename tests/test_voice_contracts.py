@@ -96,7 +96,23 @@ def test_request_pronunciation_only_changes_backend_input():
 
 
 def test_backend_profile_precedence_detection_and_model_expansion(monkeypatch, tmp_path):
-    monkeypatch.setattr(v.shutil, "which", lambda name: "engine" if name == "espeak" else None)
+    from ocf_tools import environment
+
+    monkeypatch.setattr(environment, "_user_home", lambda: tmp_path / "empty-home")
+    monkeypatch.setenv("OCF_PIPER_EXECUTABLE", str(tmp_path / "no-piper"))
+
+    available = {"espeak": True}
+
+    def discover(name, *, root=environment.REPO_ROOT):
+        ready = available.get(name, False)
+        return {
+            "status": "ready" if ready else "not-found",
+            "executable": f"/fixture/{name}" if ready else None,
+            "binary": name,
+            "source": "fixture",
+        }
+
+    monkeypatch.setattr(environment, "resolve_executable", discover)
     assert v.first_available_backend() == "espeak"
     assert [item["name"] for item in v.detect_backends()] == ["espeak-ng", "espeak", "piper"]
     monkeypatch.setenv("MODEL_DIR", str(tmp_path))
@@ -112,7 +128,7 @@ def test_backend_profile_precedence_detection_and_model_expansion(monkeypatch, t
         v.resolve_backend("unknown", [])
     with pytest.raises(OCFError, match="not supported"):
         v.resolve_backend({"backend": "unknown"}, [])
-    monkeypatch.setattr(v.shutil, "which", lambda name: None)
+    available.clear()
     with pytest.raises(OCFError, match="No text-to-speech"):
         v.resolve_backend(None, [])
     assert v._locale_voice_name("espeak", "fr-CA") == "fr"
@@ -176,6 +192,19 @@ def test_language_probe_plans_command_and_rejects_unsupported(monkeypatch, case)
 def test_native_cue_boundary_closes_descriptor_and_cleans_every_outcome(
     monkeypatch, tmp_path, backend, case
 ):
+    from ocf_tools import environment
+
+    monkeypatch.setattr(
+        environment,
+        "resolve_executable",
+        lambda name: {
+            "status": "ready",
+            "binary": name,
+            "executable": "engine",
+            "source": "test fixture",
+            "runtime": {"status": "ready"},
+        },
+    )
     spec = v.resolve_backend({"backend": backend, "piper_model": "model.onnx"}, [])
     monkeypatch.setattr(v.shutil, "which", lambda name: None if case == "missing" else "engine")
     original_temp_file, original_close = v.workspace_temp_file, os.close
@@ -253,12 +282,27 @@ def test_pcm_width_channels_corruption_and_linear_resampling():
 
 
 def test_voice_status_commands_have_no_execution_or_downloads(monkeypatch, capsys):
-    monkeypatch.setattr(v.shutil, "which", lambda name: None)
+    from ocf_tools import environment
+
+    monkeypatch.setattr(environment, "_user_home", lambda: Path("/nonexistent/ocf-test-home"))
+    monkeypatch.setenv("OCF_PIPER_EXECUTABLE", "/nonexistent/ocf-test-piper")
+
+    available = {"ready": False}
+
+    def discover(name, *, root=environment.REPO_ROOT):
+        return {
+            "status": "ready" if available["ready"] else "not-found",
+            "executable": "/fixture/engine" if available["ready"] else None,
+            "binary": name,
+            "source": "fixture",
+        }
+
+    monkeypatch.setattr(environment, "resolve_executable", discover)
     monkeypatch.setattr(v, "load_voice_profiles", lambda: [])
     assert v.voice_doctor() == 1
     assert v.list_profiles_cmd() == 0 and v.list_backends_cmd() == 0
     assert "No voice profiles" in capsys.readouterr().out
-    monkeypatch.setattr(v.shutil, "which", lambda name: "engine")
+    available["ready"] = True
     monkeypatch.setattr(
         v, "load_voice_profiles", lambda: [{"id": "profile", "slug": "voice", "backend": "espeak"}]
     )

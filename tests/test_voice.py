@@ -99,17 +99,30 @@ def _read_samples(path) -> tuple[int, list[int]]:
 
 
 class TestBackendDetection:
-    def test_detects_none_when_binaries_missing(self):
+    def test_detects_none_when_binaries_missing(self, monkeypatch, tmp_path):
+        from ocf_tools import environment
+
+        monkeypatch.setattr(voice_mod.shutil, "which", lambda _name: None)
+        monkeypatch.setattr(environment, "_user_home", lambda: tmp_path / "empty-home")
+        monkeypatch.setenv("OCF_PIPER_EXECUTABLE", str(tmp_path / "missing-piper"))
         entries = voice_mod.detect_backends()
         assert len(entries) == 3
         assert all(not e["available"] for e in entries)
         assert voice_mod.first_available_backend() is None
 
     def test_detects_first_available_backend(self, monkeypatch):
-        def fake_which(name):
-            return "/usr/bin/" + name if name == "espeak-ng" else None
+        from ocf_tools import environment
 
-        monkeypatch.setattr(voice_mod.shutil, "which", fake_which)
+        monkeypatch.setattr(
+            environment,
+            "resolve_executable",
+            lambda name: {
+                "status": "ready" if name == "espeak-ng" else "not-found",
+                "binary": name,
+                "executable": "/fixture/espeak-ng" if name == "espeak-ng" else None,
+                "source": "fixture",
+            },
+        )
         by_name = {e["name"]: e for e in voice_mod.detect_backends()}
         assert by_name["espeak-ng"]["available"] is True
         assert by_name["espeak"]["available"] is False
@@ -140,7 +153,12 @@ class TestModelPathExpansion:
 
 
 class TestRenderNarration:
-    def test_raises_when_no_backend(self, tmp_path):
+    def test_raises_when_no_backend(self, tmp_path, monkeypatch):
+        from ocf_tools import environment
+
+        monkeypatch.setattr(voice_mod.shutil, "which", lambda _name: None)
+        monkeypatch.setattr(environment, "_user_home", lambda: tmp_path / "empty-home")
+        monkeypatch.setenv("OCF_PIPER_EXECUTABLE", str(tmp_path / "missing-piper"))
         with pytest.raises(OCFError, match="No text-to-speech backend"):
             render_narration(
                 simple_timed_doc([0.0]),
@@ -718,7 +736,12 @@ class TestCli:
         assert cli_main(["voice", "list-backends"]) == 0
         assert "espeak" in capsys.readouterr().out
 
-    def test_voice_doctor_missing_backend(self, capsys):
+    def test_voice_doctor_missing_backend(self, monkeypatch, capsys, tmp_path):
+        from ocf_tools import environment
+
+        monkeypatch.setenv("PATH", str(tmp_path / "empty-path"))
+        monkeypatch.setenv("OCF_PIPER_EXECUTABLE", str(tmp_path / "missing-piper"))
+        monkeypatch.setattr(environment, "_user_home", lambda: tmp_path / "empty-home")
         assert cli_main(["voice", "doctor"]) == 1
         assert "not on PATH" in capsys.readouterr().out
 

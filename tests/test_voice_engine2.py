@@ -72,7 +72,26 @@ def minimal_dataset(tmp_path):
 
 
 def test_registry_distinguishes_installed_from_supported(monkeypatch):
+    from ocf_tools import environment
+
     monkeypatch.setattr(capabilities.shutil, "which", lambda name: f"/local/{name}")
+    monkeypatch.setattr(
+        environment,
+        "resolve_executable",
+        lambda name: {
+            "status": "ready",
+            "binary": name,
+            "executable": f"/local/{name}",
+            "source": "PATH",
+            "runtime": {
+                "status": "ready",
+                "python_version": "3.12.0",
+                "package_version": "1.0.0",
+                "package_metadata_found": True,
+                "inference_verified": False,
+            },
+        },
+    )
     monkeypatch.setattr(capabilities, "_package_present", lambda name: True)
     f5 = capabilities.backend_capability("f5-tts")
     assert f5["upstream"]["reference_inference"] and f5["upstream"]["training"]
@@ -481,8 +500,17 @@ def test_existing_profiles_stay_schema_valid_and_unmodified():
 
 
 def test_missing_binary_and_unsupported_method_are_unavailable(monkeypatch):
+    from ocf_tools import environment
+
     monkeypatch.setattr(capabilities, "_package_present", lambda name: True)
     monkeypatch.setattr(capabilities.shutil, "which", lambda name: None)
+    monkeypatch.setattr(environment, "_user_home", lambda: Path("/nonexistent/ocf-test-home"))
+    monkeypatch.setenv("OCF_PIPER_EXECUTABLE", "/nonexistent/ocf-test-piper")
+    monkeypatch.setattr(
+        environment,
+        "resolve_executable",
+        lambda name: {"status": "not-found", "reason": "not on PATH"},
+    )
     assert not capabilities.backend_capability("piper")["available"]
     monkeypatch.setattr(capabilities.shutil, "which", lambda name: "/local/piper")
     report = capabilities.profile_capability(

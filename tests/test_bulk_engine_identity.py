@@ -44,6 +44,7 @@ def bulk(monkeypatch, tmp_path):
         "source_plan",
         lambda owner, locale: ({"id": owner}, {}, {"resolved_dsp_profile": profile}),
     )
+    monkeypatch.setattr(complete_session, "build_complete_session_plan", lambda *_a, **_k: {})
     monkeypatch.setattr(semantic_dsp, "load_profile", lambda _: profile)
     monkeypatch.setattr(bulk_render, "LocaleCatalog", lambda: None)
     monkeypatch.setattr(bulk_render, "_voice_profile", lambda *_: ({}, {}))

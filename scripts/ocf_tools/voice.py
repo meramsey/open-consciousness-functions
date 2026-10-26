@@ -1780,6 +1780,12 @@ def voice_doctor() -> int:
         if entry["available"]:
             available += 1
             print(f"[ok]  {entry['name']}: {entry['executable']}")
+            runtime = (entry.get("discovery") or {}).get("runtime") or {}
+            if entry["name"] == "piper" and runtime.get("package_version"):
+                print(
+                    f"      Piper TTS {runtime['package_version']} / Python "
+                    f"{runtime.get('python_version')}; run `ocf voice smoke PROFILE` to verify inference."
+                )
         else:
             discovery = entry.get("discovery") or {}
             if discovery.get("status") == "broken":
