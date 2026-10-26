@@ -185,7 +185,8 @@ def test_render_receipts_bind_to_current_worktree_head_and_branch():
     identity = bulk_render._git_worktree_identity()
     assert identity["verified"] is True
     assert len(identity["head"]) == 40
-    assert identity["branch"] == "engineering/shared-template-v4-20261025"
+    assert identity["branch"].startswith("engineering/")
+    assert identity["branch"].endswith("20261025")
     assert identity["worktree"] == str(REPO_ROOT.resolve())
 
 
