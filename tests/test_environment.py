@@ -1,9 +1,8 @@
-import sys
 import os
+import sys
 from types import SimpleNamespace
 
 import pytest
-
 from ocf_tools import environment
 
 
@@ -54,7 +53,9 @@ def test_project_python_prefers_valid_existing_venv_and_rejects_stale_candidate(
 
 
 @pytest.mark.unit
-def test_project_python_honors_pyenv_version_without_changing_global_selection(tmp_path, monkeypatch):
+def test_project_python_honors_pyenv_version_without_changing_global_selection(
+    tmp_path, monkeypatch
+):
     root = tmp_path / "repo"
     root.mkdir()
     (root / ".python-version").write_text("3.12.3\n", encoding="utf-8")
