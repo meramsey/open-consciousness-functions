@@ -99,10 +99,16 @@ def test_localized_artwork_cache_integrity_and_no_overwrite(monkeypatch, tmp_pat
     assert all(0 <= v <= 256 for box in long["layout_bounds"]["title"] for v in box)
 
 
-def test_generated_release_preview_is_nonmutating_and_custom_cover_wins(monkeypatch, tmp_path):
+def test_generated_release_preview_is_nonmutating_and_custom_cover_wins(
+    monkeypatch, tmp_path_factory
+):
     pytest.importorskip("PIL")
     pytest.importorskip("fontTools")
     from ocf_tools import release
+
+    # Leave room for localized output names under long Windows/worktree roots.
+    # Overlong-path rejection remains a separate release regression.
+    tmp_path = tmp_path_factory.mktemp("art")
 
     monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
     monkeypatch.setattr(

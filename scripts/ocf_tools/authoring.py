@@ -1026,10 +1026,24 @@ class AuthoringService:
             entry = doc.data["entries"][span.path[1]]
             owner_id = entry.get("cue_template", {}).get("function_id")
             owner = next((record for record in self.records() if record.id == owner_id), None)
+            catalog = self.catalog()
+            draft = entry.get("status") == "draft"
+            if owner is None and draft:
+                from .editorial_candidates import CANDIDATES, context
+
+                name = next(
+                    (name for name, identifier in CANDIDATES.items() if identifier == owner_id),
+                    None,
+                )
+                if name:
+                    try:
+                        owner, catalog = context(name, root=self.root)
+                    except (OCFError, OSError, ValueError):
+                        return doc, span, []
             if owner is None:
                 return doc, span, []
             try:
-                text, _ = value(owner, span.value, doc.data["locale"], self.catalog())
+                text, _ = value(owner, span.value, doc.data["locale"], catalog, draft_review=draft)
                 target = self.document(owner.path)
                 if span.value == "function.title":
                     target_span = target.span(("canonical", "name"))
@@ -1058,7 +1072,7 @@ class AuthoringService:
                             "cue-symbol",
                             owner.path,
                             target_span,
-                            f"{owner.id}: {text} ({doc.data['locale']}; explicit reviewed cue)",
+                            f"{owner.id}: {text} ({doc.data['locale']}; {'draft awaiting review' if draft and owner.audio_script_status != 'approved' else 'explicit reviewed cue'})",
                         )
                     ],
                 )

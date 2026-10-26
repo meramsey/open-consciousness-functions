@@ -12,7 +12,8 @@ def test_dry_run_and_windows_adapter_do_not_create_files(tmp_path):
     plan = setup_plan(target, system="Windows")
     assert plan["dry_run"] and not target.exists()
     assert Path(plan["interpreter"]).parts[-2:] == ("Scripts", "python.exe")
-    assert plan["optional_installs"] == [] and len(plan["commands"]) == 3
+    assert plan["optional_installs"] == [] and len(plan["commands"]) == 4
+    assert plan["commands"][1][-3:] == ["--only-binary=:all:", "--upgrade", "pip==26.2.0"]
     target.mkdir()
     with pytest.raises(ValueError, match="already exists"):
         setup_plan(target)
@@ -60,3 +61,23 @@ def test_setup_cli_dry_run_and_conflict_error(tmp_path, capsys):
     with pytest.raises(SystemExit) as error:
         main(["--venv", str(target)])
     assert error.value.code == 2
+
+
+def test_failed_pip_bootstrap_stops_before_core_install_or_doctor(tmp_path):
+    target = tmp_path / "environment"
+    target.mkdir()
+    (target / "pyvenv.cfg").write_text("home = fixture\n")
+    plan = setup_plan(target)
+    calls = []
+
+    def runner(command, **kwargs):
+        calls.append(command)
+        if "-c" in command:
+            return SimpleNamespace(returncode=0, stdout="3.12", stderr="")
+        return SimpleNamespace(returncode=2, stdout="", stderr="fixture pip installation failed")
+
+    with pytest.raises(RuntimeError, match="setup step failed.*pip"):
+        apply_setup(plan, runner=runner)
+    assert len(calls) == 2
+    assert calls[-1][-1] == "pip==26.2.0"
+    assert all("doctor" not in command for command in calls)

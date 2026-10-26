@@ -174,9 +174,12 @@ def mix_master(
         bed = "[b]"
         if duck["enabled"]:
             threshold = 10.0 ** (duck["threshold_dbfs"] / 20.0)
+            # Avoid sidechaincompress EOF dropping buffered peer samples.
+            # Only its inputs are padded; the original voice still owns duration.
             graph += (
                 "[n]asplit=2[voice][sc];"
-                f"[b][sc]sidechaincompress=threshold={threshold}:ratio={duck['ratio']}"
+                "[b]apad[duck_bed];[sc]apad[duck_sc];"
+                f"[duck_bed][duck_sc]sidechaincompress=threshold={threshold}:ratio={duck['ratio']}"
                 f":attack={duck['attack_ms']}:release={duck['release_ms']}:knee={duck['knee']}"
                 ":mode=downward:link=maximum:detection=rms:level_in=1:level_sc=1:makeup=1:mix=1[d];"
             )

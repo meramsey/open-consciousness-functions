@@ -64,7 +64,9 @@ def test_localized_import_cover_custom_theme_cache_and_release_override(tmp_path
             {"extends": "ocf-cosmic-light", "id": "custom-cosmic", "palette": {"accent": "#125577"}}
         )
     )
-    kwargs = dict(locale="es", theme=str(custom), resolution=1200, version="review-1")
+    kwargs = dict(
+        locale="es", theme=str(custom), resolution=1200, version="review-1", strict_locale=False
+    )
     report = artwork.generate_cover("OCF-SLP-005", **kwargs)
     assert report["settings"]["brand"]["version"] == "0.3.0"
     assert report["settings"]["locale"] == "es"

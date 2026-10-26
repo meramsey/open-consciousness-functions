@@ -20,7 +20,7 @@ Source availability does not establish historical authentication or provenance.
 - **Individual invocation / application** (`temporary`, `manual`): Optional manual reinforcement when conscious and able.
 - **Conditional response episode** (`temporary`, `conditional`): The narrated adaptive response lasts for the injury episode and adjusts as the injury stabilizes.
 
-## PLUS-CONTROL, BALANCE, RESTORE
+## PLUS-INJURY-RESPONSE
 
 ### Primary activation command
 

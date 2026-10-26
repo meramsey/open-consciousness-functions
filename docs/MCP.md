@@ -14,6 +14,12 @@ a source checkout. Core OCF works without the SDK.
 text and identity/hash provenance. CLI `functions preview` uses that same service.
 It does not synthesize audio, approve vocabulary or change a release state.
 
+`ocf_inspect_candidates` lists the current editorial candidates, including staged
+Intuition, with registration/review status, titles, spoken cues and procedures.
+Pass `candidate` and `preview: true` for full authored/resolved English wording.
+The CLI equivalent is `functions candidates NAME --preview --locale en-US`.
+See the [candidate workflow and full review](EDITORIAL_CANDIDATES.md).
+
 From the repository root, using Python 3.11+ in your local environment:
 
 ```bash

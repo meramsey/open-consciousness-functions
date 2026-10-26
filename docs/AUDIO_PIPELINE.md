@@ -121,6 +121,25 @@ mix profile; final-mix fades default to zero. Filter graphs, parameters and
 requested loudness measurements are recorded in the audition report. Sample
 peak limiting is not a guarantee of true-peak compliance or listening approval.
 
+When ducking is enabled, only the compressor's bed/detector inputs are
+silence-padded. The original unpadded narration remains the first `amix` input
+with `duration=first`, so padding cannot lengthen the session or add semantic
+silence. This prevents early EOF propagation in `sidechaincompress` from
+discarding buffered peer samples and removing the bed near the ending. Gains,
+windows, compressor law, stereo linking, headroom, limiting and fades are unchanged.
+
+This was reproduced with deterministic five-second stereo tones under Ubuntu's
+FFmpeg 8.0.1: thread limiting and independent detector decoding did not prevent
+the loss. Inline frame traces showed complete five-second input on one branch
+but truncated compressor output, consistent with the FIFO/status handling in
+[upstream activate()](https://github.com/FFmpeg/FFmpeg/blob/n8.0.1/libavfilter/af_sidechaincompress.c).
+It is not a rounding-tolerance or private-session fixture issue. Padded-input
+trials on FFmpeg 6.1.1 and 8.0.1 produced the same complete known-good PCM.
+The regression checks the original gain/coherence assertions, the full bed tail,
+and empty/unequal input durations. Coverage CI retains that test's synthetic WAVs
+and native-version/filtergraph/hash diagnostics on failure; no private audio is
+included. Passing these engineering checks is not listening approval.
+
 ## Final release packages
 
 `python3 scripts/ocf.py audio release <AUDIO_ID|FUNCTION_ID> --artwork
@@ -238,9 +257,94 @@ The complete-session output contains a stereo master WAV, retained background
 stem, UTF-8 transcript, composed session plan, measured session timing report,
 and JSON report. Profile-declared pacing excerpts and per-excerpt timing reports
 are written under `pacing-auditions/`. It does not require an audio
-implementation manifest, artwork, or release metadata. The report marks the
+implementation manifest or release metadata; its configured companion artwork
+is generated automatically. The report marks the
 draft template and function review state and never approves a release. Existing
 audition directories are never overwritten.
+
+New full-session and narration-only audition renders automatically retain a
+companion `cover.png`, including WAV-only renders. They use the configured OCF
+artwork surface and a visible **BETA / PRIVATE** marker rather than hiding art
+when release approval is pending. New private sessions initialize an explicitly
+private `audition_version: 0.1.0`; full sessions can select another deliberate
+edition using `audio render --audition-version X.Y.Z`. `--artwork` and
+`--artwork-theme` override full-session cover selection. These rendering
+workflows require the existing optional artwork dependencies (`.[artwork]`);
+development/test environments include them. They never infer a production
+release version or approval. Existing completed sessions are updated through
+the non-rendering export step below, preserving their original reports.
+Registered `audio build` outputs likewise generate a companion cover and embed
+it into FLAC/MP3 by default, using their registered audio version. An explicit
+cover supplied by the release/package layer retains priority.
+
+### Private listening exports from completed sessions
+
+`audio export-audition` is the ordinary FLAC/MP3 listening-copy step after
+`audio render` or `audio render-many`. It never runs TTS, background synthesis,
+mixing or the production release workflow. Artwork defaults to the configured
+artwork surface (`ocf-cosmic-dark`), with visible `vX.Y.Z` edition labeling.
+Private covers also display `BETA / PRIVATE`; pending approval never suppresses
+their artwork.
+
+```bash
+python scripts/ocf.py audio export-audition .ocf-work/renders/YOUR_COMPLETED_SESSION \
+  --edition-version 0.1.0 --dry-run
+python scripts/ocf.py audio export-audition .ocf-work/renders/YOUR_COMPLETED_SESSION \
+  --edition-version 0.1.0
+```
+
+The first export must have an authoritative audio/session version: a registered
+audio implementation version, explicit render `audition_version`, or deliberate
+`--edition-version X.Y.Z`. There is no fallback to a narration-entry, function,
+template, brand, repository or voice-model version. `0.1.0` above is an explicitly
+chosen initial **private audition edition**, not a guessed production release.
+The output `audition-edition.json` binds that version to the exact function,
+locale, voice, master and original session-report hashes. Reuse it with
+`--edition FILE`; conflicts and different source audio fail.
+
+By default both formats are encoded directly from the completed master (MP3 at
+320 kbps). For existing listening copies, pass `--flac-source FILE` and
+`--mp3-source FILE`: the compressed packets are stream-copied, never transcoded
+again. Their original tags (including track numbering) are retained except for
+the authoritative title/album, narrator, OCF album artist, function/locale and
+edition fields. Existing masters and narration/render manifests are verified
+before and after export and remain unchanged. Packet and decoded-PCM hashes
+verify stream-copy integrity; FLAC PCM must also match the master.
+
+Cover precedence: `--artwork FILE`, then `--artwork-theme THEME_OR_FILE`, function
+artwork preference, then configured artwork-surface default. Dark/light/custom
+themes use the same supplied OCF assets and localized layout. `--no-artwork`
+explicitly disables artwork and conflicts with cover/theme overrides. A custom
+cover must be square, at least 320 pixels and already display the intended
+edition; its text is operator-supplied rather than machine-certified.
+
+New unique export directories stay under `.ocf-work/`; `--output DIRECTORY`
+also refuses existing destinations. Outputs include `cover.png` when enabled,
+FLAC native front-cover PICTURE / MP3 ID3v2.3 APIC, the edition record, artwork
+provenance and verified metadata/audio hashes in `manifest.json`. Raw version
+tags and manifest `version` match; `OCF_VERSION_LABEL` and manifest
+`version_label` match the visible `vX.Y.Z` cover label. Candidate artwork and
+private packaging do not grant listening or finished-release approval.
+
+### Measured listener transcripts and native lyrics
+
+Complete sessions, narration-only auditions and release packages include exact
+plain TXT plus same-basename LRC/SRT/VTT and a timing receipt. They use measured
+speech units where supplied, otherwise measured whole utterances; they are not
+estimated word alignment. Repeated speech remains repeated. LRC uses truncated
+centiseconds; SRT/VTT and MP3 synchronized lyrics use milliseconds.
+
+Install `.[listener]` and explicitly request `--lyrics` on `audio export-audition`
+or `audio release` to embed MP3 USLT/SYLT and FLAC LYRICS/UNSYNCEDLYRICS. Retained
+export backfills require the original measured session report. Only staged copies
+are tagged; packet and decoded-PCM checks preserve audio, existing covers and
+unrelated metadata. Existing source masters and listening copies are not edited.
+
+Tag readback and same-basename sidecars do not certify a player's lyric UI or
+automatic subtitle discovery. SYLT and FLAC lyric-tag support vary by player;
+select the matching SRT/VTT explicitly where supported, or read TXT/LRC in a
+separate viewer. No player-specific UI compatibility or listening approval is
+claimed here. See [listener and function guides](FUNCTION_GUIDES.md).
 
 ### Local OCF workspace
 

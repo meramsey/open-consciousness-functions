@@ -2,7 +2,7 @@
 # Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
 # {"function": "OCF-EMG-002", "title": "Toxic Exposure Response", "locale": "en-US"}
 # English authority: functions/emergency/emergency-toxic.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-EMG-002-PRIMARY", "role": "activation", "display": "PLUS-CLEAR, REMOVE", "spoken": "Plus Clear Remove", "locale_definition": "commands.ocf-cmd-emg-002-primary.spoken-cue"}
+# {"symbol": "cue.primary", "command": "OCF-CMD-EMG-002-PRIMARY", "role": "activation", "display": "PLUS-TOXIC-CLEAR", "spoken": "Plus Toxic Clear", "locale_definition": "commands.ocf-cmd-emg-002-primary.spoken-cue"}
 # END GENERATED CUE PREVIEW
 # OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
 # OCF-EMG-002 — Emergency: Toxic
@@ -61,7 +61,7 @@ entries:
 
   hplus.function.ocf-emg-002.function-body:
     status: reviewed
-    version: 1.2.0
+    version: 1.3.0
     notes: >-
       OCF-adapted narration based on the user-proposed
       Emergency: Toxic reconstruction. Proposed input:
@@ -181,7 +181,7 @@ entries:
       whenever such a response is needed.
   hplus.function.ocf-emg-002.closer:
     status: reviewed
-    version: 1.2.1
+    version: 1.3.0
     notes: >-
       OCF-adapted closer based on the user-proposed Emergency:
       Toxic reconstruction. Proposed input:

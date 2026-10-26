@@ -44,12 +44,17 @@ def seed(root):
             "locale": "en-US",
             "domain": "narration",
             "entries": {
+                "commands.ocf-cmd-fnd-002-primary.spoken-cue": {
+                    "text": "Plus Focus",
+                    "status": "reviewed",
+                    "version": "1.0.0",
+                },
                 "test.guidance": {
                     "text": "Observe {count}.",
                     "variables": ["count"],
                     "status": "draft",
                     "version": "1.0.0",
-                }
+                },
             },
         },
     )
@@ -59,7 +64,10 @@ def seed(root):
             "schema_version": "1.0",
             "locale": "en-US",
             "domain": "ui",
-            "entries": {"test.label": "Original fixture label"},
+            "entries": {
+                "test.label": "Original fixture label",
+                "commands.ocf-cmd-fnd-002-primary.display-cue": "PLUS-FOCUS",
+            },
         },
     )
     write(

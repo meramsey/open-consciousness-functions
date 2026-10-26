@@ -269,6 +269,11 @@ def test_narration_first_audition_writes_verified_dynamic_fixture_and_no_overwri
     assert manifest["measurements"]["clipped_sample_count"] == 0
     audio_artifact = target / manifest["artifacts"]["wav"]["path"]
     transcript = target / manifest["artifacts"]["transcript"]["path"]
+    assert transcript.stem == audio_artifact.stem
+    assert all(
+        audio_artifact.with_suffix("." + extension).is_file()
+        for extension in ("txt", "lrc", "srt", "vtt", "timing.json")
+    )
     assert audio_artifact.is_file() and audio_artifact.stat().st_size > 0
     assert transcript.read_text(encoding="utf-8").endswith("\n")
     assert sha256_file(audio_artifact) == manifest["artifacts"]["wav"]["sha256"]

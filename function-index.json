@@ -1,7 +1,7 @@
 GENERATED FILE — DO NOT EDIT DIRECTLY
 
 {
-  "count": 55,
+  "count": 58,
   "functions": [
     {
       "audio_impl_count": 0,
@@ -116,6 +116,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -609,6 +610,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -926,12 +928,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-FLOW SMOOTH",
+      "canonical_command": "PLUS-CIRCULATE",
       "canonical_name": "Circulation",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-FLOW SMOOTH"
+          "primary": "PLUS-CIRCULATE"
         },
         "background": {
           "engine": "farfield",
@@ -942,13 +944,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-002-PRIMARY",
-              "display_cue": "PLUS-FLOW SMOOTH",
+              "display_cue": "PLUS-CIRCULATE",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
-              "spoken_cue": "Plus Flow Smooth",
-              "spoken_locale": "en-US"
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Circulate",
+              "spoken_cue_key": "commands.ocf-cmd-bod-002-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "0.1.0"
             },
             "designation": "primary",
             "documentation": {
@@ -960,12 +967,14 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-BOD-002",
             "id": "OCF-CMD-BOD-002-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-bod-002-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-bod-002-primary.explanation",
               "label_key": "commands.ocf-cmd-bod-002-primary.label",
               "purpose_key": "functions.ocf-bod-002.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-bod-002-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-bod-002-primary.usage"
             },
-            "phrase": "PLUS-FLOW SMOOTH",
+            "phrase": "PLUS-CIRCULATE",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -1011,10 +1020,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": "Plus Flow Smooth",
+            "spoken": "Plus Circulate",
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -1320,7 +1330,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "body;foundation",
       "legacy_command": "PLUS-FLOW SMOOTH",
       "legacy_name": "CIRCULATION",
@@ -1434,6 +1444,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -1851,6 +1862,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -2168,12 +2180,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-SATISFIED, SUPPLIED",
+      "canonical_command": "PLUS-SATISFIED",
       "canonical_name": "Appetite Choice",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-SATISFIED, SUPPLIED"
+          "primary": "PLUS-SATISFIED"
         },
         "background": {
           "engine": "farfield",
@@ -2186,16 +2198,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "cue_presentation": {
               "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-005-PRIMARY",
-              "display_cue": "PLUS-SATISFIED, SUPPLIED",
+              "display_cue": "PLUS-SATISFIED",
               "display_fallback": false,
               "display_locale": "en-US",
               "requested_locale": "en-US",
               "resource_status": "reviewed",
-              "spoken_cue": "Plus Satisfied Supplied",
+              "spoken_cue": "Plus Satisfied",
               "spoken_cue_key": "commands.ocf-cmd-bod-005-primary.spoken-cue",
               "spoken_fallback": false,
               "spoken_locale": "en-US",
-              "version": "1.0.0"
+              "version": "1.1.0"
             },
             "designation": "primary",
             "documentation": {
@@ -2227,7 +2239,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "spoken_cue_key": "commands.ocf-cmd-bod-005-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-bod-005-primary.usage"
             },
-            "phrase": "PLUS-SATISFIED, SUPPLIED",
+            "phrase": "PLUS-SATISFIED",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -2274,10 +2286,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": "Plus Satisfied Supplied",
+            "spoken": "Plus Satisfied",
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -2599,7 +2612,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "body;lifestyle",
       "legacy_command": "PLUS-SATISFIED, SUPPLIED",
       "legacy_name": "EAT/NO EAT",
@@ -2612,12 +2625,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-HEART-BETTER",
+      "canonical_command": "PLUS-HEART-FLOW",
       "canonical_name": "Heart Flow",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-HEART-BETTER"
+          "primary": "PLUS-HEART-FLOW"
         },
         "background": {
           "engine": "farfield",
@@ -2630,16 +2643,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "cue_presentation": {
               "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-006-PRIMARY",
-              "display_cue": "PLUS-HEART-BETTER",
+              "display_cue": "PLUS-HEART-FLOW",
               "display_fallback": false,
               "display_locale": "en-US",
               "requested_locale": "en-US",
               "resource_status": "reviewed",
-              "spoken_cue": "Plus Heart Better",
+              "spoken_cue": "Plus Heart Flow",
               "spoken_cue_key": "commands.ocf-cmd-bod-006-primary.spoken-cue",
               "spoken_fallback": false,
               "spoken_locale": "en-US",
-              "version": "1.0.0"
+              "version": "1.1.0"
             },
             "designation": "primary",
             "documentation": {
@@ -2661,9 +2674,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-bod-006.function-body",
               "relationship": "canonical-match",
-              "text": "Plus Heart Better"
+              "text": "Plus Heart Flow"
             },
-            "phrase": "PLUS-HEART-BETTER",
+            "phrase": "PLUS-HEART-FLOW",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -2709,9 +2722,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": "Plus Heart Better",
+            "spoken": "Plus Heart Flow",
             "spoken_review": "reviewed"
           }
+        ],
+        "companions": [
+          "OCF-BOD-002"
         ],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
@@ -3144,6 +3160,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -3569,6 +3586,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -3976,6 +3994,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -4480,6 +4499,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -4900,6 +4920,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -5488,6 +5509,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "unresolved"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -5804,12 +5826,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-BALANCE, HEAL",
+      "canonical_command": "PLUS-TUNE-UP",
       "canonical_name": "Body Tune-Up",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-BALANCE, HEAL"
+          "primary": "PLUS-TUNE-UP"
         },
         "background": {
           "engine": "farfield",
@@ -5822,16 +5844,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "cue_presentation": {
               "binding_status": "resolved",
               "command_id": "OCF-CMD-BOD-013-PRIMARY",
-              "display_cue": "PLUS-BALANCE, HEAL",
+              "display_cue": "PLUS-TUNE-UP",
               "display_fallback": false,
               "display_locale": "en-US",
               "requested_locale": "en-US",
               "resource_status": "reviewed",
-              "spoken_cue": "Plus Balance Heal",
+              "spoken_cue": "Plus Tune Up",
               "spoken_cue_key": "commands.ocf-cmd-bod-013-primary.spoken-cue",
               "spoken_fallback": false,
               "spoken_locale": "en-US",
-              "version": "1.0.0"
+              "version": "1.1.0"
             },
             "designation": "primary",
             "documentation": {
@@ -5863,7 +5885,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "spoken_cue_key": "commands.ocf-cmd-bod-013-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-bod-013-primary.usage"
             },
-            "phrase": "PLUS-BALANCE, HEAL",
+            "phrase": "PLUS-TUNE-UP",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -5914,10 +5936,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": "Plus Balance Heal",
+            "spoken": "Plus Tune Up",
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -6240,7 +6263,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "body",
       "legacy_command": "PLUS-BALANCE, HEAL",
       "legacy_name": "TUNE-UP",
@@ -6359,6 +6382,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -6935,6 +6959,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -7270,7 +7295,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB.",
+        "purpose": "Legacy rapid numbing practice (GO NUMB) with a release; activation cue PLUS-NUMB.",
         "safety": {
           "level": "health",
           "medical_relevance": true,
@@ -7405,6 +7430,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -7834,6 +7860,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -8293,6 +8320,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -8792,6 +8820,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -9087,7 +9116,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Imprints a chosen suggestion or intention using the IMPRINT rehearsal.",
+        "purpose": "Consciously capture and retain selected information or experiences, with Plus Recall for deliberate retrieval.",
         "safety": {
           "level": "general",
           "medical_relevance": false,
@@ -9142,11 +9171,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "binding_status": "unbound",
+              "binding_status": "resolved",
               "command_id": "OCF-CMD-COG-005-PRIMARY",
               "display_cue": "PLUS-OPTIONS",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
-              "spoken_cue": null
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Options",
+              "spoken_cue_key": "commands.ocf-cmd-cog-005-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "1.0.0"
             },
             "designation": "primary",
             "documentation": {
@@ -9171,15 +9207,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             },
             "invocation_scope_ref": "lifecycle.scopes.application",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-cog-005-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-cog-005-primary.explanation",
               "label_key": "commands.ocf-cmd-cog-005-primary.label",
               "purpose_key": "functions.ocf-cog-005.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-cog-005-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-cog-005-primary.usage"
             },
             "observed_phrase": {
               "narration_key": "hplus.function.ocf-cog-005.function-body",
-              "relationship": "legacy-form",
-              "text": "Plus Options Choices"
+              "relationship": "canonical-match",
+              "text": "Plus Options"
             },
             "phrase": "PLUS-OPTIONS",
             "phrase_ref": {
@@ -9227,43 +9265,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": null,
-            "spoken_review": "unresolved"
-          },
-          {
-            "cue_presentation": {
-              "binding_status": "unbound",
-              "command_id": "OCF-CMD-COG-005-LEGACY-01",
-              "display_cue": "PLUS-OPTIONS, CHOICES",
-              "requested_locale": "en-US",
-              "spoken_cue": null
-            },
-            "designation": "secondary",
-            "documentation": {
-              "order": 101,
-              "visible": true
-            },
-            "effect_scope": "temporary",
-            "effect_scope_ref": "lifecycle.persistence",
-            "function_id": "OCF-COG-005",
-            "id": "OCF-CMD-COG-005-LEGACY-01",
-            "localization": {
-              "explanation_key": "commands.ocf-cmd-cog-005-legacy-01.explanation",
-              "label_key": "commands.ocf-cmd-cog-005-legacy-01.label",
-              "purpose_key": "functions.ocf-cog-005.purpose",
-              "usage_key": "commands.ocf-cmd-cog-005-legacy-01.usage"
-            },
-            "phrase": "PLUS-OPTIONS, CHOICES",
-            "phrase_ref": {
-              "command_id": "OCF-CMD-COG-005-LEGACY-01",
-              "source": "legacy-command"
-            },
-            "relationships": {},
-            "role": "legacy-alias",
-            "spoken": null,
-            "spoken_review": "unresolved"
+            "spoken": "Plus Options",
+            "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -9586,7 +9592,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "cognition",
       "legacy_command": "PLUS-OPTIONS, CHOICES",
       "legacy_name": "OPTIONS",
@@ -9689,6 +9695,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -10094,6 +10101,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -10498,6 +10506,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -10813,12 +10822,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-CONTROL, BALANCE, RESTORE",
+      "canonical_command": "PLUS-INJURY-RESPONSE",
       "canonical_name": "Injury Response",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-CONTROL, BALANCE, RESTORE"
+          "primary": "PLUS-INJURY-RESPONSE"
         },
         "background": {
           "engine": "farfield",
@@ -10831,16 +10840,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "cue_presentation": {
               "binding_status": "resolved",
               "command_id": "OCF-CMD-EMG-001-PRIMARY",
-              "display_cue": "PLUS-CONTROL, BALANCE, RESTORE",
+              "display_cue": "PLUS-INJURY-RESPONSE",
               "display_fallback": false,
               "display_locale": "en-US",
               "requested_locale": "en-US",
               "resource_status": "reviewed",
-              "spoken_cue": "Plus Control Balance Restore",
+              "spoken_cue": "Plus Injury Response",
               "spoken_cue_key": "commands.ocf-cmd-emg-001-primary.spoken-cue",
               "spoken_fallback": false,
               "spoken_locale": "en-US",
-              "version": "1.0.0"
+              "version": "1.1.0"
             },
             "designation": "primary",
             "documentation": {
@@ -10873,7 +10882,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "spoken_cue_key": "commands.ocf-cmd-emg-001-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-emg-001-primary.usage"
             },
-            "phrase": "PLUS-CONTROL, BALANCE, RESTORE",
+            "phrase": "PLUS-INJURY-RESPONSE",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -10909,10 +10918,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": "Plus Control Balance Restore",
+            "spoken": "Plus Injury Response",
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -11298,7 +11308,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "emergency;foundation",
       "legacy_command": "PLUS-CONTROL, BALANCE, RESTORE",
       "legacy_name": "EMERGENCY: INJURY",
@@ -11311,12 +11321,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-CLEAR, REMOVE",
+      "canonical_command": "PLUS-TOXIC-CLEAR",
       "canonical_name": "Toxic Exposure Response",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-CLEAR, REMOVE"
+          "primary": "PLUS-TOXIC-CLEAR"
         },
         "background": {
           "engine": "farfield",
@@ -11329,16 +11339,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "cue_presentation": {
               "binding_status": "resolved",
               "command_id": "OCF-CMD-EMG-002-PRIMARY",
-              "display_cue": "PLUS-CLEAR, REMOVE",
+              "display_cue": "PLUS-TOXIC-CLEAR",
               "display_fallback": false,
               "display_locale": "en-US",
               "requested_locale": "en-US",
               "resource_status": "reviewed",
-              "spoken_cue": "Plus Clear Remove",
+              "spoken_cue": "Plus Toxic Clear",
               "spoken_cue_key": "commands.ocf-cmd-emg-002-primary.spoken-cue",
               "spoken_fallback": false,
               "spoken_locale": "en-US",
-              "version": "1.0.0"
+              "version": "1.1.0"
             },
             "designation": "primary",
             "documentation": {
@@ -11371,7 +11381,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "spoken_cue_key": "commands.ocf-cmd-emg-002-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-emg-002-primary.usage"
             },
-            "phrase": "PLUS-CLEAR, REMOVE",
+            "phrase": "PLUS-TOXIC-CLEAR",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -11407,10 +11417,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": "Plus Clear Remove",
+            "spoken": "Plus Toxic Clear",
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -11796,7 +11807,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "emergency",
       "legacy_command": "PLUS-CLEAR, REMOVE",
       "legacy_name": "EMERGENCY: TOXIC",
@@ -11899,6 +11910,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -12321,6 +12333,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -12726,6 +12739,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -13201,6 +13215,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken": "Plus Manifest",
             "spoken_review": "reviewed"
           }
+        ],
+        "companions": [
+          "OCF-EXP-003",
+          "OCF-EXP-006"
         ],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
@@ -13770,6 +13788,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -14145,6 +14164,723 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
+      "canonical_command": "PLUS-DISSOLVE",
+      "canonical_name": "Dissolve",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-DISSOLVE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "commands": [
+          {
+            "cue_presentation": {
+              "binding_status": "resolved",
+              "command_id": "OCF-CMD-EXP-003-PRIMARY",
+              "display_cue": "PLUS-DISSOLVE",
+              "requested_locale": "en-US",
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Dissolve",
+              "spoken_cue_key": "commands.ocf-cmd-exp-003-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": null
+            },
+            "designation": "primary",
+            "effect_scope": "conditional",
+            "effect_scope_details": {
+              "activation": "manual",
+              "description": "Each activation selects one unwanted belief, expectation, emotional response or recurring pattern; useful learning remains.",
+              "description_key": "functions.ocf-exp-003.application",
+              "persistence": "conditional"
+            },
+            "effect_scope_ref": "lifecycle.scopes.application.persistence",
+            "function_id": "OCF-EXP-003",
+            "id": "OCF-CMD-EXP-003-PRIMARY",
+            "localization": {
+              "explanation_key": "commands.ocf-cmd-exp-003-primary.explanation",
+              "label_key": "commands.ocf-cmd-exp-003-primary.label",
+              "spoken_cue_key": "commands.ocf-cmd-exp-003-primary.spoken-cue",
+              "usage_key": "commands.ocf-cmd-exp-003-primary.usage"
+            },
+            "phrase": "PLUS-DISSOLVE",
+            "phrase_ref": {
+              "source": "canonical-primary"
+            },
+            "procedure": {
+              "evidence_keys": [
+                "hplus.function.ocf-exp-003.function-body"
+              ],
+              "override_steps": [
+                {
+                  "id": "select-pattern",
+                  "operation": "select-intention"
+                },
+                {
+                  "id": "inhale-deeply",
+                  "operation": "inhale"
+                },
+                {
+                  "id": "hold-gently",
+                  "operation": "hold-breath"
+                },
+                {
+                  "id": "think-or-say-in-mind",
+                  "operation": "think-or-say-command"
+                },
+                {
+                  "id": "exhale-slowly-easily",
+                  "operation": "exhale"
+                }
+              ],
+              "status": "documented"
+            },
+            "resolved_procedure_steps": [
+              {
+                "id": "select-pattern",
+                "operation": "select-intention"
+              },
+              {
+                "id": "inhale-deeply",
+                "operation": "inhale"
+              },
+              {
+                "id": "hold-gently",
+                "operation": "hold-breath"
+              },
+              {
+                "id": "think-or-say-in-mind",
+                "operation": "think-or-say-command"
+              },
+              {
+                "id": "exhale-slowly-easily",
+                "operation": "exhale"
+              }
+            ],
+            "role": "activation",
+            "spoken": "Plus Dissolve",
+            "spoken_review": "reviewed"
+          }
+        ],
+        "companions": [
+          "OCF-EXP-006"
+        ],
+        "content_maturity": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
+        "duration": null,
+        "evidence_classes": [],
+        "extraction_review": null,
+        "extraction_status": "unknown",
+        "function_id": "OCF-EXP-003",
+        "human_review": "unknown",
+        "layers": [
+          "bindings"
+        ],
+        "lifecycle": {
+          "activation": "manual",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "scopes": {
+            "application": {
+              "activation": "manual",
+              "description": "Each activation selects one unwanted belief, expectation, emotional response or recurring pattern; useful learning remains.",
+              "description_key": "functions.ocf-exp-003.application",
+              "persistence": "conditional"
+            },
+            "capability": {
+              "description": "The learned ability is intended to remain available for deliberate use.",
+              "description_key": "functions.ocf-exp-003.capability",
+              "persistence": "permanent"
+            }
+          },
+          "trigger_conditions": [
+            "Deliberate selection of an unwanted pattern followed by the command procedure."
+          ]
+        },
+        "locales": [],
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-exp-003.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-exp-003.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-exp-003.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
+        "narration_resources": [],
+        "preparation": null,
+        "purpose": "Consciously dissolve a selected unwanted belief, expectation, emotional response or recurring life pattern while preserving useful learning.",
+        "safety": {
+          "level": "experimental",
+          "medical_relevance": false,
+          "notes": [
+            "Exercise intentions do not establish clinical or external outcomes."
+          ]
+        },
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
+        "source_availability": "pending-source-review",
+        "states": null,
+        "status": {
+          "evidence": "unverified",
+          "implementation": "script-approved",
+          "maturity": "community-proposed"
+        },
+        "title": "Dissolve",
+        "voice_sources": [
+          "tts"
+        ]
+      },
+      "command_review": "approved",
+      "compatibility": "none",
+      "domains": "experimental",
+      "legacy_command": "",
+      "legacy_name": "",
+      "ocf_id": "OCF-EXP-003",
+      "persistence": "permanent",
+      "reimplementation_status": "in-progress",
+      "source_availability": "pending-source-review",
+      "source_file": "functions/experimental/dissolve.yaml"
+    },
+    {
+      "audio_impl_count": 0,
+      "background_preset_count": 0,
+      "canonical_command": "PLUS-CLEAR ZONE",
+      "canonical_name": "Clear Zone",
+      "capabilities": {
+        "activation": {
+          "modes": [
+            "PLUS-CLEAR ZONE, OBSERVE",
+            "PLUS-CLEAR ZONE, SUSPEND"
+          ],
+          "primary": "PLUS-CLEAR ZONE"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "commands": [
+          {
+            "cue_presentation": {
+              "binding_status": "resolved",
+              "command_id": "OCF-CMD-EXP-005-PRIMARY",
+              "display_cue": "PLUS-CLEAR ZONE",
+              "requested_locale": "en-US",
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Clear Zone",
+              "spoken_cue_key": "commands.ocf-cmd-exp-005-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": null
+            },
+            "designation": "primary",
+            "effect_scope": "permanent",
+            "effect_scope_details": {
+              "activation": "automatic",
+              "description": "Intended automatic non-destructive insect discouragement and calm awareness.",
+              "description_key": "functions.ocf-exp-005.baseline",
+              "persistence": "permanent"
+            },
+            "effect_scope_ref": "lifecycle.scopes.baseline.persistence",
+            "function_id": "OCF-EXP-005",
+            "id": "OCF-CMD-EXP-005-PRIMARY",
+            "localization": {
+              "explanation_key": "commands.ocf-cmd-exp-005-primary.explanation",
+              "label_key": "commands.ocf-cmd-exp-005-primary.label",
+              "spoken_cue_key": "commands.ocf-cmd-exp-005-primary.spoken-cue",
+              "usage_key": "commands.ocf-cmd-exp-005-primary.usage"
+            },
+            "phrase": "PLUS-CLEAR ZONE",
+            "phrase_ref": {
+              "source": "canonical-primary"
+            },
+            "procedure": {
+              "evidence_keys": [
+                "hplus.function.ocf-exp-005.function-body"
+              ],
+              "override_steps": [
+                {
+                  "id": "inhale-easily",
+                  "operation": "inhale"
+                },
+                {
+                  "id": "think-or-say-in-mind",
+                  "operation": "think-or-say-command"
+                },
+                {
+                  "id": "exhale-naturally",
+                  "operation": "exhale"
+                }
+              ],
+              "status": "documented"
+            },
+            "resolved_procedure_steps": [
+              {
+                "id": "inhale-easily",
+                "operation": "inhale"
+              },
+              {
+                "id": "think-or-say-in-mind",
+                "operation": "think-or-say-command"
+              },
+              {
+                "id": "exhale-naturally",
+                "operation": "exhale"
+              }
+            ],
+            "role": "activation",
+            "spoken": "Plus Clear Zone",
+            "spoken_review": "reviewed"
+          },
+          {
+            "cue_presentation": {
+              "binding_status": "resolved",
+              "command_id": "OCF-CMD-EXP-005-OBSERVE",
+              "display_cue": "PLUS-CLEAR ZONE, OBSERVE",
+              "requested_locale": "en-US",
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Clear Zone, Observe",
+              "spoken_cue_key": "commands.ocf-cmd-exp-005-observe.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": null
+            },
+            "designation": "secondary",
+            "effect_scope": "conditional",
+            "effect_scope_details": {
+              "activation": "manual",
+              "description": "Mutually exclusive Observe and Suspend overrides replace the prior mode and end at normal sleep onset, loss of consciousness or deliberate primary invocation.",
+              "description_key": "functions.ocf-exp-005.application",
+              "persistence": "conditional"
+            },
+            "effect_scope_ref": "lifecycle.scopes.application.persistence",
+            "function_id": "OCF-EXP-005",
+            "id": "OCF-CMD-EXP-005-OBSERVE",
+            "localization": {
+              "explanation_key": "commands.ocf-cmd-exp-005-observe.explanation",
+              "label_key": "commands.ocf-cmd-exp-005-observe.label",
+              "spoken_cue_key": "commands.ocf-cmd-exp-005-observe.spoken-cue",
+              "usage_key": "commands.ocf-cmd-exp-005-observe.usage"
+            },
+            "phrase": "PLUS-CLEAR ZONE, OBSERVE",
+            "phrase_ref": {
+              "command_id": "OCF-CMD-EXP-005-OBSERVE",
+              "source": "canonical-mode"
+            },
+            "procedure": {
+              "evidence_keys": [
+                "hplus.function.ocf-exp-005.function-body"
+              ],
+              "override_steps": [
+                {
+                  "id": "inhale-easily",
+                  "operation": "inhale"
+                },
+                {
+                  "id": "think-or-say-in-mind",
+                  "operation": "think-or-say-command"
+                },
+                {
+                  "id": "exhale-naturally",
+                  "operation": "exhale"
+                }
+              ],
+              "status": "documented"
+            },
+            "resolved_procedure_steps": [
+              {
+                "id": "inhale-easily",
+                "operation": "inhale"
+              },
+              {
+                "id": "think-or-say-in-mind",
+                "operation": "think-or-say-command"
+              },
+              {
+                "id": "exhale-naturally",
+                "operation": "exhale"
+              }
+            ],
+            "role": "mode",
+            "spoken": "Plus Clear Zone, Observe",
+            "spoken_review": "reviewed"
+          },
+          {
+            "cue_presentation": {
+              "binding_status": "resolved",
+              "command_id": "OCF-CMD-EXP-005-SUSPEND",
+              "display_cue": "PLUS-CLEAR ZONE, SUSPEND",
+              "requested_locale": "en-US",
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Clear Zone, Suspend",
+              "spoken_cue_key": "commands.ocf-cmd-exp-005-suspend.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": null
+            },
+            "designation": "secondary",
+            "effect_scope": "conditional",
+            "effect_scope_details": {
+              "activation": "manual",
+              "description": "Mutually exclusive Observe and Suspend overrides replace the prior mode and end at normal sleep onset, loss of consciousness or deliberate primary invocation.",
+              "description_key": "functions.ocf-exp-005.application",
+              "persistence": "conditional"
+            },
+            "effect_scope_ref": "lifecycle.scopes.application.persistence",
+            "function_id": "OCF-EXP-005",
+            "id": "OCF-CMD-EXP-005-SUSPEND",
+            "localization": {
+              "explanation_key": "commands.ocf-cmd-exp-005-suspend.explanation",
+              "label_key": "commands.ocf-cmd-exp-005-suspend.label",
+              "spoken_cue_key": "commands.ocf-cmd-exp-005-suspend.spoken-cue",
+              "usage_key": "commands.ocf-cmd-exp-005-suspend.usage"
+            },
+            "phrase": "PLUS-CLEAR ZONE, SUSPEND",
+            "phrase_ref": {
+              "command_id": "OCF-CMD-EXP-005-SUSPEND",
+              "source": "canonical-mode"
+            },
+            "procedure": {
+              "evidence_keys": [
+                "hplus.function.ocf-exp-005.function-body"
+              ],
+              "override_steps": [
+                {
+                  "id": "inhale-easily",
+                  "operation": "inhale"
+                },
+                {
+                  "id": "think-or-say-in-mind",
+                  "operation": "think-or-say-command"
+                },
+                {
+                  "id": "exhale-naturally",
+                  "operation": "exhale"
+                }
+              ],
+              "status": "documented"
+            },
+            "resolved_procedure_steps": [
+              {
+                "id": "inhale-easily",
+                "operation": "inhale"
+              },
+              {
+                "id": "think-or-say-in-mind",
+                "operation": "think-or-say-command"
+              },
+              {
+                "id": "exhale-naturally",
+                "operation": "exhale"
+              }
+            ],
+            "role": "mode",
+            "spoken": "Plus Clear Zone, Suspend",
+            "spoken_review": "reviewed"
+          }
+        ],
+        "companions": [],
+        "content_maturity": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
+        "duration": null,
+        "evidence_classes": [],
+        "extraction_review": null,
+        "extraction_status": "unknown",
+        "function_id": "OCF-EXP-005",
+        "human_review": "unknown",
+        "layers": [
+          "bindings"
+        ],
+        "lifecycle": {
+          "activation": "automatic",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "scopes": {
+            "application": {
+              "activation": "manual",
+              "description": "Mutually exclusive Observe and Suspend overrides replace the prior mode and end at normal sleep onset, loss of consciousness or deliberate primary invocation.",
+              "description_key": "functions.ocf-exp-005.application",
+              "persistence": "conditional"
+            },
+            "baseline": {
+              "activation": "automatic",
+              "description": "Intended automatic non-destructive insect discouragement and calm awareness.",
+              "description_key": "functions.ocf-exp-005.baseline",
+              "persistence": "permanent"
+            },
+            "capability": {
+              "description": "Intended learned availability persists in every mode.",
+              "description_key": "functions.ocf-exp-005.capability",
+              "persistence": "permanent"
+            }
+          },
+          "trigger_conditions": [
+            "Automatic is the intended baseline; deliberate primary invocation strengthens or restores it.",
+            "Observe pauses outward-directed insect-discouragement intention while calm awareness remains.",
+            "Suspend pauses the entire Clear Zone application, preserving ordinary awareness and natural bodily responses.",
+            "Modes are mutually exclusive; each deliberate selection replaces the prior mode.",
+            "Either override ends at normal sleep onset, loss of consciousness or deliberate primary invocation.",
+            "Relaxation, Focus-state labels and hearing a cue during narration are not reset or selection triggers.",
+            "These are exercise instructions, not executable detection or physiological control."
+          ]
+        },
+        "locales": [],
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-exp-005.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-exp-005.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-exp-005.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
+        "narration_resources": [],
+        "preparation": null,
+        "purpose": "Establish an ongoing intention to discourage unwanted insect contact while maintaining calm awareness.",
+        "safety": {
+          "level": "experimental",
+          "medical_relevance": false,
+          "notes": [
+            "Physical repellency or protection against bites, stings or insect-borne disease is not established."
+          ]
+        },
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
+        "source_availability": "pending-source-review",
+        "states": null,
+        "status": {
+          "evidence": "unverified",
+          "implementation": "script-approved",
+          "maturity": "community-proposed"
+        },
+        "title": "Clear Zone",
+        "voice_sources": [
+          "tts"
+        ]
+      },
+      "command_review": "approved",
+      "compatibility": "none",
+      "domains": "experimental",
+      "legacy_command": "",
+      "legacy_name": "",
+      "ocf_id": "OCF-EXP-005",
+      "persistence": "permanent",
+      "reimplementation_status": "in-progress",
+      "source_availability": "pending-source-review",
+      "source_file": "functions/experimental/clear-zone.yaml"
+    },
+    {
+      "audio_impl_count": 0,
+      "background_preset_count": 0,
+      "canonical_command": "PLUS-INTUITION",
+      "canonical_name": "Intuition",
+      "capabilities": {
+        "activation": {
+          "modes": [],
+          "primary": "PLUS-INTUITION"
+        },
+        "background": {
+          "engine": "farfield",
+          "preset": null,
+          "strategy": "optional"
+        },
+        "claim_review": "pending-source-review",
+        "commands": [
+          {
+            "cue_presentation": {
+              "binding_status": "resolved",
+              "command_id": "OCF-CMD-EXP-006-PRIMARY",
+              "display_cue": "PLUS-INTUITION",
+              "requested_locale": "en-US",
+              "resource_status": "reviewed",
+              "spoken_cue": "Plus Intuition",
+              "spoken_cue_key": "commands.ocf-cmd-exp-006-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": null
+            },
+            "designation": "primary",
+            "function_id": "OCF-EXP-006",
+            "id": "OCF-CMD-EXP-006-PRIMARY",
+            "localization": {
+              "explanation_key": "commands.ocf-cmd-exp-006-primary.explanation",
+              "label_key": "commands.ocf-cmd-exp-006-primary.label",
+              "spoken_cue_key": "commands.ocf-cmd-exp-006-primary.spoken-cue",
+              "usage_key": "commands.ocf-cmd-exp-006-primary.usage"
+            },
+            "phrase": "PLUS-INTUITION",
+            "phrase_ref": {
+              "source": "canonical-primary"
+            },
+            "procedure": {
+              "override_steps": [
+                {
+                  "id": "select-question-or-situation",
+                  "localization_key": "functions.ocf-exp-006.procedure.select-question-or-situation",
+                  "operation": "select-question"
+                },
+                {
+                  "id": "think-or-say-in-mind",
+                  "localization_key": "functions.ocf-exp-006.procedure.think-or-say-in-mind",
+                  "operation": "think-or-say-command"
+                },
+                {
+                  "id": "allow-quiet-moment",
+                  "localization_key": "functions.ocf-exp-006.procedure.allow-quiet-moment",
+                  "operation": "other"
+                },
+                {
+                  "id": "consider-and-choose-response",
+                  "localization_key": "functions.ocf-exp-006.procedure.consider-and-choose-response",
+                  "operation": "other"
+                }
+              ],
+              "status": "documented"
+            },
+            "resolved_procedure_steps": [
+              {
+                "id": "select-question-or-situation",
+                "localization_key": "functions.ocf-exp-006.procedure.select-question-or-situation",
+                "operation": "select-question"
+              },
+              {
+                "id": "think-or-say-in-mind",
+                "localization_key": "functions.ocf-exp-006.procedure.think-or-say-in-mind",
+                "operation": "think-or-say-command"
+              },
+              {
+                "id": "allow-quiet-moment",
+                "localization_key": "functions.ocf-exp-006.procedure.allow-quiet-moment",
+                "operation": "other"
+              },
+              {
+                "id": "consider-and-choose-response",
+                "localization_key": "functions.ocf-exp-006.procedure.consider-and-choose-response",
+                "operation": "other"
+              }
+            ],
+            "role": "activation",
+            "spoken": "Plus Intuition",
+            "spoken_review": "reviewed"
+          }
+        ],
+        "companions": [],
+        "content_maturity": null,
+        "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
+        "duration": null,
+        "evidence_classes": [],
+        "extraction_review": null,
+        "extraction_status": "unknown",
+        "function_id": "OCF-EXP-006",
+        "human_review": "unknown",
+        "layers": [
+          "bindings"
+        ],
+        "lifecycle": {
+          "activation": "automatic",
+          "persistence": "permanent",
+          "release": {
+            "command": null,
+            "required": false
+          },
+          "trigger_conditions": [
+            "Ongoing beneficial intuitive development is the intended baseline.",
+            "Deliberate command use reinforces deeper understanding without compulsory impressions."
+          ]
+        },
+        "locales": [],
+        "narration_plan": {
+          "sequence": [
+            {
+              "key": "hplus.function.ocf-exp-006.opener",
+              "repetitions": 1,
+              "role": "opener"
+            },
+            {
+              "key": "hplus.function.ocf-exp-006.function-body",
+              "repetitions": 4,
+              "role": "function-body"
+            },
+            {
+              "key": "hplus.function.ocf-exp-006.closer",
+              "repetitions": 1,
+              "role": "closer"
+            }
+          ]
+        },
+        "narration_resources": [],
+        "preparation": null,
+        "purpose": "Recognize, receive and understand intuitive guidance through the total self, heart-centered awareness, subconscious, higher self and wider consciousness.",
+        "safety": {
+          "level": "experimental",
+          "notes": [
+            "No access to private thoughts or guaranteed external knowledge is claimed."
+          ]
+        },
+        "session_templates": [
+          "OCF-TPL-SESSION-HPLUS-LOCKED-001"
+        ],
+        "source_availability": "pending-source-review",
+        "states": null,
+        "status": {
+          "evidence": "unverified",
+          "implementation": "script-approved",
+          "maturity": "community-proposed"
+        },
+        "title": "Intuition",
+        "voice_sources": [
+          "tts"
+        ]
+      },
+      "command_review": "approved",
+      "compatibility": "none",
+      "domains": "experimental",
+      "legacy_command": "",
+      "legacy_name": "",
+      "ocf_id": "OCF-EXP-006",
+      "persistence": "permanent",
+      "reimplementation_status": "in-progress",
+      "source_availability": "pending-source-review",
+      "source_file": "functions/experimental/intuition.yaml"
+    },
+    {
+      "audio_impl_count": 0,
+      "background_preset_count": 0,
       "canonical_command": "PLUS-ENERGIZE",
       "canonical_name": "Access to Energy",
       "capabilities": {
@@ -14267,6 +15003,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -14582,7 +15319,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "audio_impl_count": 1,
       "background_preset_count": 11,
       "canonical_command": "PLUS-FOCUS",
-      "canonical_name": "Attention",
+      "canonical_name": "Focus",
       "capabilities": {
         "activation": {
           "modes": [],
@@ -14597,13 +15334,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "commands": [
           {
             "cue_presentation": {
-              "authority": "function-yaml",
               "binding_status": "resolved",
               "command_id": "OCF-CMD-FND-002-PRIMARY",
               "display_cue": "PLUS-FOCUS",
+              "display_fallback": false,
+              "display_locale": "en-US",
               "requested_locale": "en-US",
+              "resource_status": "reviewed",
               "spoken_cue": "Plus Focus",
-              "spoken_locale": "en-US"
+              "spoken_cue_key": "commands.ocf-cmd-fnd-002-primary.spoken-cue",
+              "spoken_fallback": false,
+              "spoken_locale": "en-US",
+              "version": "0.1.0"
             },
             "designation": "primary",
             "documentation": {
@@ -14615,9 +15357,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "function_id": "OCF-FND-002",
             "id": "OCF-CMD-FND-002-PRIMARY",
             "localization": {
+              "display_cue_key": "commands.ocf-cmd-fnd-002-primary.display-cue",
               "explanation_key": "commands.ocf-cmd-fnd-002-primary.explanation",
               "label_key": "commands.ocf-cmd-fnd-002-primary.label",
               "purpose_key": "functions.ocf-fnd-002.purpose",
+              "spoken_cue_key": "commands.ocf-cmd-fnd-002-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-fnd-002-primary.usage"
             },
             "phrase": "PLUS-FOCUS",
@@ -14670,6 +15414,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken": "Plus Focus",
             "spoken_review": "reviewed"
           }
+        ],
+        "companions": [
+          "OCF-COG-007"
         ],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
@@ -14966,13 +15713,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "implemented",
           "maturity": "legacy-mapped"
         },
-        "title": "Attention",
+        "title": "Focus",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "foundation;cognition",
       "legacy_command": "PLUS-FOCUS",
       "legacy_name": "ATTENTION",
@@ -15082,6 +15829,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -15488,6 +16236,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "pilot",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -15933,6 +16682,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -16338,6 +17088,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -16826,6 +17577,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -17249,6 +18001,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -17665,6 +18418,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -17979,12 +18733,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
     {
       "audio_impl_count": 0,
       "background_preset_count": 0,
-      "canonical_command": "PLUS-SMOOTH, FAST",
+      "canonical_command": "PLUS-COORDINATE",
       "canonical_name": "Coordination",
       "capabilities": {
         "activation": {
           "modes": [],
-          "primary": "PLUS-SMOOTH, FAST"
+          "primary": "PLUS-COORDINATE"
         },
         "background": {
           "engine": "farfield",
@@ -17997,16 +18751,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "cue_presentation": {
               "binding_status": "resolved",
               "command_id": "OCF-CMD-PRF-003-PRIMARY",
-              "display_cue": "PLUS-SMOOTH, FAST",
+              "display_cue": "PLUS-COORDINATE",
               "display_fallback": false,
               "display_locale": "en-US",
               "requested_locale": "en-US",
               "resource_status": "reviewed",
-              "spoken_cue": "Plus Smooth Fast",
+              "spoken_cue": "Plus Coordinate",
               "spoken_cue_key": "commands.ocf-cmd-prf-003-primary.spoken-cue",
               "spoken_fallback": false,
               "spoken_locale": "en-US",
-              "version": "1.0.0"
+              "version": "1.1.0"
             },
             "designation": "primary",
             "documentation": {
@@ -18025,7 +18779,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "spoken_cue_key": "commands.ocf-cmd-prf-003-primary.spoken-cue",
               "usage_key": "commands.ocf-cmd-prf-003-primary.usage"
             },
-            "phrase": "PLUS-SMOOTH, FAST",
+            "phrase": "PLUS-COORDINATE",
             "phrase_ref": {
               "source": "canonical-primary"
             },
@@ -18072,10 +18826,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               }
             ],
             "role": "activation",
-            "spoken": "Plus Smooth Fast",
+            "spoken": "Plus Coordinate",
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -18377,7 +19132,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         ]
       },
       "command_review": "approved",
-      "compatibility": "unchanged",
+      "compatibility": "historical-lookup",
       "domains": "performance;body",
       "legacy_command": "PLUS-SMOOTH, FAST",
       "legacy_name": "SYNCHRONIZING",
@@ -18505,6 +19260,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -18858,7 +19614,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.",
+        "purpose": "Eases the felt sense of physical lightness and ease of movement; activation cue PLUS-LIGHT STEP.",
         "safety": {
           "level": "general",
           "medical_relevance": false,
@@ -18987,6 +19743,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -19563,6 +20320,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -19898,7 +20656,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK.",
+        "purpose": "Combines strength and quickness in a single felt state; activation cue PLUS-STRONG QUICK.",
         "safety": {
           "level": "general",
           "medical_relevance": false,
@@ -20121,6 +20879,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "pilot",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -20590,6 +21349,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "unresolved"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -21155,6 +21915,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "unresolved"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -21778,6 +22539,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "unresolved"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -22401,6 +23163,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "unresolved"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -22876,6 +23639,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -23151,7 +23915,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE.",
+        "purpose": "Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP.",
         "safety": {
           "level": "health",
           "medical_relevance": true,
@@ -23294,6 +24058,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -23569,7 +24334,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP.",
+        "purpose": "Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP.",
         "safety": {
           "level": "general",
           "medical_relevance": false,
@@ -23715,6 +24480,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -23990,7 +24756,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM.",
+        "purpose": "Sets dream themes and a restful dream-sleep mindset; activation cue PLUS-DREAM.",
         "safety": {
           "level": "general",
           "medical_relevance": false,
@@ -24136,6 +24902,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -24561,6 +25328,9 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken": "Plus Sleep Easy",
             "spoken_review": "reviewed"
           }
+        ],
+        "companions": [
+          "OCF-SLP-001"
         ],
         "content_maturity": "pilot",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
@@ -25068,6 +25838,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-001",
         "duration": null,
@@ -25402,7 +26173,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE.",
+        "purpose": "Supports staying awake and alert when needed; activation cue PLUS-AWAKE.",
         "safety": {
           "level": "general",
           "medical_relevance": false,

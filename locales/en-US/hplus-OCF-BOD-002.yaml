@@ -2,7 +2,7 @@
 # Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
 # {"function": "OCF-BOD-002", "title": "Circulation", "locale": "en-US"}
 # English authority: functions/body/circulation.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-002-PRIMARY", "role": "activation", "display": "PLUS-FLOW SMOOTH", "spoken": "Plus Flow Smooth", "locale_definition": null}
+# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-002-PRIMARY", "role": "activation", "display": "PLUS-CIRCULATE", "spoken": "Plus Circulate", "locale_definition": "commands.ocf-cmd-bod-002-primary.spoken-cue"}
 # END GENERATED CUE PREVIEW
 # OCF-BOD-002 — Circulation
 # English function-specific OCF-adapted narration.
@@ -36,7 +36,7 @@ entries:
 
   hplus.function.ocf-bod-002.function-body:
     status: reviewed
-    version: "1.2.0"
+    version: "1.3.0"
     notes: >-
       OCF-adapted narration based on the partial, unverified Circulation
       transcript, lines 47–74. Original reference remains unchanged.
@@ -157,7 +157,7 @@ entries:
       your body.
   hplus.function.ocf-bod-002.closer:
     status: reviewed
-    version: "1.2.0"
+    version: "1.3.0"
     notes: >-
       OCF-adapted narration based on the partial, unverified Circulation
       transcript, lines 161–166. Original reference remains unchanged.

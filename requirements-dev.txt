@@ -1,4 +1,4 @@
-pytest>=8.0
+pytest>=9.0.3
 pytest-xdist==3.8.0
 ruff>=0.5
 PyYAML>=6.0
@@ -7,7 +7,9 @@ referencing>=0.30
 pre-commit>=3.0
 coverage==7.16.2
 pytest-cov==7.1.0
-setuptools>=68
+setuptools>=84.1.0
 numpy>=2.0
 scipy>=1.13
 soundfile>=0.12
+Pillow==13.0.0
+fonttools==4.67.0

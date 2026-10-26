@@ -34,4 +34,8 @@ This is the primary command for the function.
 6. Exhale.
 7. Continue breathing normally.
 
+## Related commands
+
+- [Restorative Sleep](OCF-SLP-001.md): Compare sleep support for unfamiliar or distracting surroundings with an exercise oriented toward restorative rest. Choose independently; this link does not prescribe combining or stacking recordings. (`optional`; `OCF-GUIDE-REVIEW-001`).
+
 Canonical command phrases are shown exactly as registered and are not translated. Script and legacy phrase differences are shown separately.

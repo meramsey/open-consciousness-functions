@@ -1,5 +1,20 @@
 domain: narration
 entries:
+  commands.ocf-cmd-fnd-002-primary.spoken-cue:
+    text: Plus Focus
+    status: reviewed
+    version: 0.1.0
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
+  commands.ocf-cmd-bod-002-primary.spoken-cue:
+    text: Plus Circulate
+    status: reviewed
+    version: 0.1.0
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
+  commands.ocf-cmd-cog-005-primary.spoken-cue:
+    text: Plus Options
+    status: reviewed
+    version: 1.0.0
+    notes: Explicit user approval OCF-OPTIONS-001; not listening or release approval.
   commands.ocf-cmd-bod-001-primary.spoken-cue:
     notes: Exact en-US spoken realization approved by the user in OCF-EDITORIAL-TITLE-CUES-001. Terminology
       approval is not listening or release approval.
@@ -13,11 +28,10 @@ entries:
     text: Plus Detox
     version: 1.0.0
   commands.ocf-cmd-bod-006-primary.spoken-cue:
-    notes: Exact en-US spoken realization approved by the user in OCF-EDITORIAL-TITLE-CUES-001. Terminology
-      approval is not listening or release approval.
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
     status: reviewed
-    text: "Plus Heart Better"
-    version: 1.0.0
+    text: Plus Heart Flow
+    version: 1.1.0
   commands.ocf-cmd-bod-009-primary.spoken-cue:
     notes: Exact en-US spoken realization approved by the user in OCF-EDITORIAL-TITLE-CUES-001. Terminology
       approval is not listening or release approval.
@@ -133,23 +147,20 @@ entries:
     notes: Explicit naming approval in OCF-EDITORIAL-TITLE-CUES-004; listening and release
       remain separate.
   commands.ocf-cmd-bod-005-primary.spoken-cue:
-    text: Plus Satisfied Supplied
+    text: Plus Satisfied
     status: reviewed
-    version: 1.0.0
-    notes: Explicit naming approval in OCF-EDITORIAL-TITLE-CUES-004; listening and release
-      remain separate.
+    version: 1.1.0
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
   commands.ocf-cmd-emg-001-primary.spoken-cue:
-    text: Plus Control Balance Restore
+    text: Plus Injury Response
     status: reviewed
-    version: 1.0.0
-    notes: Explicit naming approval in OCF-EDITORIAL-TITLE-CUES-004; listening and release
-      remain separate.
+    version: 1.1.0
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
   commands.ocf-cmd-emg-002-primary.spoken-cue:
-    text: Plus Clear Remove
+    text: Plus Toxic Clear
     status: reviewed
-    version: 1.0.0
-    notes: Explicit naming approval in OCF-EDITORIAL-TITLE-CUES-004; listening and release
-      remain separate.
+    version: 1.1.0
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
   commands.ocf-cmd-aut-001-primary.spoken-cue:
     text: Plus Automate
     status: reviewed
@@ -175,11 +186,10 @@ entries:
     notes: Explicit naming approval in OCF-EDITORIAL-TITLE-CUES-004; listening and release
       remain separate.
   commands.ocf-cmd-bod-013-primary.spoken-cue:
-    text: Plus Balance Heal
+    text: Plus Tune Up
     status: reviewed
-    version: 1.0.0
-    notes: Explicit naming approval in OCF-EDITORIAL-TITLE-CUES-004; listening and release
-      remain separate.
+    version: 1.1.0
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
   commands.ocf-cmd-cog-001-primary.spoken-cue:
     text: Plus Access Info
     status: reviewed
@@ -205,11 +215,10 @@ entries:
     notes: Explicit naming approval in OCF-EDITORIAL-TITLE-CUES-004; listening and release
       remain separate.
   commands.ocf-cmd-prf-003-primary.spoken-cue:
-    text: Plus Smooth Fast
+    text: Plus Coordinate
     status: reviewed
-    version: 1.0.0
-    notes: Explicit naming approval in OCF-EDITORIAL-TITLE-CUES-004; listening and release
-      remain separate.
+    version: 1.1.0
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
   commands.ocf-cmd-sen-001-primary.spoken-cue:
     text: Plus Hear More
     status: reviewed

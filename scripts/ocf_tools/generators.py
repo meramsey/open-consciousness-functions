@@ -165,6 +165,8 @@ def function_index_json() -> str:
 def hplus_command_map_json() -> str:
     payload = {"source_system": "Monroe H-PLUS", "count": 0, "mappings": []}
     for record in load_all_functions():
+        if record.data.get("legacy", {}).get("source_system") != "Monroe H-PLUS":
+            continue
         entry = {
             "legacy_name": record.legacy_name,
             "legacy_commands": record.legacy_commands,
@@ -200,6 +202,8 @@ def hplus_command_map_csv() -> str:
     writer = csv.DictWriter(buffer, fieldnames=headers, lineterminator="\n")
     writer.writeheader()
     for record in load_all_functions():
+        if record.data.get("legacy", {}).get("source_system") != "Monroe H-PLUS":
+            continue
         writer.writerow(
             {
                 "legacy_name": record.legacy_name,

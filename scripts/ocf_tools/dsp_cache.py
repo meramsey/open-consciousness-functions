@@ -22,43 +22,16 @@ def cache_key(source: Path, seed: int, duration: float) -> str | None:
         return None
     from . import farfield
 
-    status = farfield.check_farfield()
-    if not status.available or not status.executable:
-        return None
-    engine_files = {}
-    for presets in farfield._source_preset_dirs():
-        for root in (presets.parent / "src/farfield", presets.parent / "farfield"):
-            for path in sorted(root.rglob("*.py")):
-                engine_files[path.relative_to(presets.parent).as_posix()] = sha256_of_file(path)
-    executable = Path(status.executable).resolve()
-    prefix = executable.parent.parent
-    with executable.open("rb") as handle:
-        first = handle.read(512).split(b"\n", 1)[0]
-    if first.startswith(b"#!"):
-        interpreter = Path(first[2:].decode("utf-8", "replace").strip())
-        if interpreter.is_file():
-            prefix = interpreter.parent.parent
-    for library in (prefix / "lib", prefix / "Lib"):
-        for package in ("farfield", "numpy", "scipy", "soundfile"):
-            for pattern in (
-                f"python*/site-packages/{package}*.dist-info/METADATA",
-                f"site-packages/{package}*.dist-info/METADATA",
-                f"python*/site-packages/{package}*.dist-info/RECORD",
-                f"site-packages/{package}*.dist-info/RECORD",
-            ):
-                for path in library.glob(pattern):
-                    engine_files[path.relative_to(prefix).as_posix()] = sha256_of_file(path)
-    if not engine_files:
+    engine = farfield.engine_identity()
+    if engine is None:
         return None
     return digest(
         {
-            "version": "ocf-dsp-stem/1",
+            "version": "ocf-dsp-stem/2",
             "preset": sha256_of_file(source),
             "seed": seed,
             "duration": format(duration, ".9f"),
-            "engine_version": status.version,
-            "executable": sha256_of_file(executable),
-            "engine_files": engine_files,
+            "engine": engine,
             "adapter": sha256_of_file(Path(__file__).with_name("farfield.py")),
             "renderer": sha256_of_file(Path(__file__).with_name("semantic_dsp.py")),
         }

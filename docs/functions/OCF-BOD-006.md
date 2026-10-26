@@ -14,7 +14,7 @@ Source availability does not establish historical authentication or provenance.
 
 [Command index](../COMMAND_INDEX.md)
 
-## PLUS-HEART-BETTER
+## PLUS-HEART-FLOW
 
 ### Primary activation command
 
@@ -22,7 +22,7 @@ Use only when you choose to activate the documented function.
 
 This is the primary command for the function.
 
-**Recorded source phrase (not the canonical phrase)**: Plus Heart Better `(canonical-match; hplus.function.ocf-bod-006.function-body)`
+**Recorded source phrase (not the canonical phrase)**: Plus Heart Flow `(canonical-match; hplus.function.ocf-bod-006.function-body)`
 
 ### Activation sequence
 
@@ -32,5 +32,9 @@ This is the primary command for the function.
 4. Hold your breath.
 5. Think or say the command.
 6. Exhale.
+
+## Related commands
+
+- [Circulation](OCF-BOD-002.md): Compare heart-oriented calm and steadiness with broader circulation-oriented comfort. These are independently selectable wellness exercises, not a combined treatment or a proven way to improve cardiovascular function. (`optional`; `OCF-GUIDE-REVIEW-001`).
 
 Canonical command phrases are shown exactly as registered and are not translated. Script and legacy phrase differences are shown separately.

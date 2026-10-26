@@ -2,7 +2,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Temporary Numbing
 
-**Purpose**: Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB.
+**Purpose**: Legacy rapid numbing practice (GO NUMB) with a release; activation cue PLUS-NUMB.
 
 **Function persistence**: Temporary (`temporary`)
 

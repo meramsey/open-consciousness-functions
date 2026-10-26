@@ -32,4 +32,9 @@ This is the primary command for the function.
 4. Think or say the command.
 5. Exhale.
 
+## Related commands
+
+- [Dissolve](OCF-EXP-003.md): Compare intention-setting with releasing a selected unwanted pattern. These remain independent exercises, not a required sequence. (`optional`; `OCF-GUIDE-REVIEW-001`).
+- [Intuition](OCF-EXP-006.md): Intuition offers a separately chosen exercise for exploring understanding alongside purposeful intention-setting. Intuitive impressions are not proof or instructions that must be followed. (`optional`; `OCF-GUIDE-REVIEW-001`).
+
 Canonical command phrases are shown exactly as registered and are not translated. Script and legacy phrase differences are shown separately.

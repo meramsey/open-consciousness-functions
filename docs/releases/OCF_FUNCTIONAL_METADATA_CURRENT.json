@@ -200,10 +200,10 @@
             ]
           },
           "relationships": {},
-          "spoken": "Plus Satisfied Supplied",
+          "spoken": "Plus Satisfied",
           "spoken_review": "reviewed",
           "invocation_scope_ref": "lifecycle.scopes.application",
-          "phrase": "PLUS-SATISFIED, SUPPLIED",
+          "phrase": "PLUS-SATISFIED",
           "effect_scope": "temporary",
           "effect_scope_details": {
             "persistence": "temporary",
@@ -802,10 +802,10 @@
             "before_steps": []
           },
           "relationships": {},
-          "spoken": "Plus Balance Heal",
+          "spoken": "Plus Tune Up",
           "spoken_review": "reviewed",
           "invocation_scope_ref": "lifecycle.scopes.application",
-          "phrase": "PLUS-BALANCE, HEAL",
+          "phrase": "PLUS-TUNE-UP",
           "effect_scope": "temporary",
           "effect_scope_details": {
             "persistence": "temporary",
@@ -968,7 +968,7 @@
     {
       "id": "OCF-COG-004",
       "title": "Imprint",
-      "purpose": "Imprints a chosen suggestion or intention using the IMPRINT rehearsal.",
+      "purpose": "Consciously capture and retain selected information or experiences, with Plus Recall for deliberate retrieval.",
       "lifecycle": {
         "activation": "manual",
         "persistence": "permanent",
@@ -1218,7 +1218,9 @@
             "label_key": "commands.ocf-cmd-cog-005-primary.label",
             "usage_key": "commands.ocf-cmd-cog-005-primary.usage",
             "purpose_key": "functions.ocf-cog-005.purpose",
-            "explanation_key": "commands.ocf-cmd-cog-005-primary.explanation"
+            "explanation_key": "commands.ocf-cmd-cog-005-primary.explanation",
+            "display_cue_key": "commands.ocf-cmd-cog-005-primary.display-cue",
+            "spoken_cue_key": "commands.ocf-cmd-cog-005-primary.spoken-cue"
           },
           "documentation": {
             "visible": true,
@@ -1235,12 +1237,12 @@
           },
           "relationships": {},
           "observed_phrase": {
-            "text": "Plus Options Choices",
+            "text": "Plus Options",
             "narration_key": "hplus.function.ocf-cog-005.function-body",
-            "relationship": "legacy-form"
+            "relationship": "canonical-match"
           },
-          "spoken": null,
-          "spoken_review": "unresolved",
+          "spoken": "Plus Options",
+          "spoken_review": "reviewed",
           "invocation_scope_ref": "lifecycle.scopes.application",
           "phrase": "PLUS-OPTIONS",
           "effect_scope": "temporary",
@@ -1305,13 +1307,14 @@
             "explanation_key": "commands.ocf-cmd-cog-005-legacy-01.explanation"
           },
           "documentation": {
-            "visible": true,
+            "visible": false,
             "order": 101
           },
           "effect_scope_ref": "lifecycle.persistence",
           "relationships": {},
           "spoken": null,
           "spoken_review": "unresolved",
+          "availability": "historical-lookup",
           "phrase": "PLUS-OPTIONS, CHOICES",
           "effect_scope": "temporary"
         }
@@ -1386,10 +1389,10 @@
             "before_steps": []
           },
           "relationships": {},
-          "spoken": "Plus Control Balance Restore",
+          "spoken": "Plus Injury Response",
           "spoken_review": "reviewed",
           "invocation_scope_ref": "lifecycle.scopes.application",
-          "phrase": "PLUS-CONTROL, BALANCE, RESTORE",
+          "phrase": "PLUS-INJURY-RESPONSE",
           "effect_scope": "temporary",
           "effect_scope_details": {
             "persistence": "temporary",
@@ -1498,10 +1501,10 @@
             "before_steps": []
           },
           "relationships": {},
-          "spoken": "Plus Clear Remove",
+          "spoken": "Plus Toxic Clear",
           "spoken_review": "reviewed",
           "invocation_scope_ref": "lifecycle.scopes.application",
-          "phrase": "PLUS-CLEAR, REMOVE",
+          "phrase": "PLUS-TOXIC-CLEAR",
           "effect_scope": "temporary",
           "effect_scope_details": {
             "persistence": "temporary",
@@ -1789,7 +1792,7 @@
     {
       "id": "OCF-PRF-004",
       "title": "Light Foot",
-      "purpose": "Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.",
+      "purpose": "Eases the felt sense of physical lightness and ease of movement; activation cue PLUS-LIGHT STEP.",
       "lifecycle": {
         "activation": "manual",
         "persistence": "permanent",

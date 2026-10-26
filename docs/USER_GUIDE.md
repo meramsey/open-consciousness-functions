@@ -4,8 +4,9 @@ Get things done with OCF tooling.
 
 ## Current checkpoint
 
-The catalog retains 55 functions/legacy mappings, 97 structured command records,
-55 generated en-US session plans and all 177 protected narration entries.
+The catalog contains 58 functions, preserves 55 historical mappings, and has
+102 structured command records, 58 generated en-US session plans and all 177
+protected narration entries.
 Historical source availability remains 39 available / 16 unavailable; it is not
 modern TTS eligibility or release approval. Canonical `PLUS-THINK`, `PLUS-FOCUS`
 and `PLUS-SEE BETTER` remain unchanged. Source wording, review status and measured
@@ -17,6 +18,23 @@ approved identity. See [branding](BRANDING.md). Engineering locks, RC1/V2/V2.1
 auditions and frozen editorial/listening decisions retain their existing status.
 
 ## Entry points
+
+For listener-facing instructions, use the
+[function guide workflow](FUNCTION_GUIDES.md). Guides show current display/spoken
+cues, ordered documented activation steps, secondary controls, and declared
+persistence/mode/reset behavior. Optional related practices are approved
+directional suggestions, never required sequences or evidence of combined effects.
+Food More/Food Less belong to Nutricia; Appetite Choice uses Plus Satisfied.
+The Focus function is distinct from Focus 10/11 audio stages.
+
+Inside a private listener package, open `guides/index.html` (or its PDF/Markdown
+counterpart) to find the included guides, audio, transcripts and edition manifest.
+Related guides may be included without their recordings. Keep older package
+variants intact when documentation changes; new guide bytes require a new output
+directory/receipt, not an overwritten audition edition.
+Some readers restrict local-file launching. If a link cannot open an audio file,
+use the file manager and keep its matching transcript/lyrics sidecars together;
+working relative links do not establish native player or PDF-reader UI support.
 
 Use Python 3.11 or newer in the environment where OCF is installed. See the
 [README installation steps](../README.md#get-started) for platform-specific activation.

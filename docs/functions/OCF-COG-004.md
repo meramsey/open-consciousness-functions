@@ -2,7 +2,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Imprint
 
-**Purpose**: Imprints a chosen suggestion or intention using the IMPRINT rehearsal.
+**Purpose**: Consciously capture and retain selected information or experiences, with Plus Recall for deliberate retrieval.
 
 **Function persistence**: Permanent (`permanent`)
 

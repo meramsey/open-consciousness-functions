@@ -2,6 +2,21 @@ schema_version: '1.0'
 locale: en-US
 domain: ui
 entries:
+  commands.ocf-cmd-fnd-002-primary.display-cue:
+    text: PLUS-FOCUS
+    status: reviewed
+    version: 0.1.0
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
+  commands.ocf-cmd-bod-002-primary.display-cue:
+    text: PLUS-CIRCULATE
+    status: reviewed
+    version: 0.1.0
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
+  commands.ocf-cmd-cog-005-primary.display-cue:
+    text: PLUS-OPTIONS
+    status: reviewed
+    version: 1.0.0
+    notes: Explicit user approval OCF-OPTIONS-001; not listening or release approval.
   command.guide.canonical-note:
     text: Canonical command phrases are shown exactly as registered and are not translated. Script and
       legacy phrase differences are shown separately.
@@ -1667,13 +1682,15 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-bod-015.purpose:
-    text: Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB.
-    status: canonical
-    version: 1.0.0
+    text: Legacy rapid numbing practice (GO NUMB) with a release; activation cue PLUS-NUMB.
+    status: reviewed
+    version: 1.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
   functions.ocf-bod-015.short-description:
-    text: Legacy rapid numbing practice (GO NUMB) with a release; proposed concise cue PLUS-NUMB.
-    status: canonical
-    version: 1.0.0
+    text: Legacy rapid numbing practice (GO NUMB) with a release; activation cue PLUS-NUMB.
+    status: reviewed
+    version: 1.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
   functions.ocf-bod-015.title:
     text: Temporary Numbing
     status: canonical
@@ -1715,13 +1732,17 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-cog-004.purpose:
-    text: Imprints a chosen suggestion or intention using the IMPRINT rehearsal.
-    status: canonical
-    version: 1.0.0
+    text: Consciously capture and retain selected information or experiences, with Plus Recall for deliberate
+      retrieval.
+    status: reviewed
+    version: 1.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
   functions.ocf-cog-004.short-description:
-    text: Imprints a chosen suggestion or intention using the IMPRINT rehearsal.
-    status: canonical
-    version: 1.0.0
+    text: Consciously capture and retain selected information or experiences, with Plus Recall for deliberate
+      retrieval.
+    status: reviewed
+    version: 1.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
   functions.ocf-cog-004.title:
     text: Imprint
     status: canonical
@@ -1891,9 +1912,9 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-fnd-002.title:
-    text: Attention
-    status: canonical
-    version: 1.0.0
+    text: Focus
+    status: reviewed
+    version: 1.1.0
   functions.ocf-fnd-003.purpose:
     text: Replenishes a felt sense of energy and freshness.
     status: canonical
@@ -1995,13 +2016,15 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-prf-004.purpose:
-    text: Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.
-    status: canonical
-    version: 1.0.0
+    text: Eases the felt sense of physical lightness and ease of movement; activation cue PLUS-LIGHT STEP.
+    status: reviewed
+    version: 1.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
   functions.ocf-prf-004.short-description:
-    text: Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.
-    status: canonical
-    version: 1.0.0
+    text: Eases the felt sense of physical lightness and ease of movement; activation cue PLUS-LIGHT STEP.
+    status: reviewed
+    version: 1.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
   functions.ocf-prf-004.title:
     text: Light Foot
     status: canonical
@@ -2019,13 +2042,15 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-prf-006.purpose:
-    text: Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK.
-    status: canonical
-    version: 1.0.0
+    text: Combines strength and quickness in a single felt state; activation cue PLUS-STRONG QUICK.
+    status: reviewed
+    version: 1.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
   functions.ocf-prf-006.short-description:
-    text: Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK.
-    status: canonical
-    version: 1.0.0
+    text: Combines strength and quickness in a single felt state; activation cue PLUS-STRONG QUICK.
+    status: reviewed
+    version: 1.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
   functions.ocf-prf-006.title:
     text: Strong-Quick
     status: canonical
@@ -2093,37 +2118,43 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-slp-001.purpose:
-    text: Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE.
-    status: canonical
-    version: 1.0.0
+    text: Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP.
+    status: reviewed
+    version: 1.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
   functions.ocf-slp-001.short-description:
-    text: Supports deep, restorative rest and recovery; proposed concise cue PLUS-RESTORE.
-    status: canonical
-    version: 1.0.0
+    text: Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP.
+    status: reviewed
+    version: 1.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
   functions.ocf-slp-001.title:
     text: Restorative Sleep
     status: canonical
     version: 1.0.0
   functions.ocf-slp-002.purpose:
-    text: Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP.
-    status: canonical
-    version: 1.0.0
+    text: Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP.
+    status: reviewed
+    version: 1.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
   functions.ocf-slp-002.short-description:
-    text: Induces a felt, deliberate movement into sleep onset; proposed concise cue PLUS-SLEEP.
-    status: canonical
-    version: 1.0.0
+    text: Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP.
+    status: reviewed
+    version: 1.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
   functions.ocf-slp-002.title:
     text: Sleep
     status: canonical
     version: 1.0.0
   functions.ocf-slp-003.purpose:
-    text: Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM.
-    status: canonical
-    version: 1.0.0
+    text: Sets dream themes and a restful dream-sleep mindset; activation cue PLUS-DREAM.
+    status: reviewed
+    version: 1.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
   functions.ocf-slp-003.short-description:
-    text: Sets dream themes and a restful dream-sleep mindset; proposed concise cue PLUS-DREAM.
-    status: canonical
-    version: 1.0.0
+    text: Sets dream themes and a restful dream-sleep mindset; activation cue PLUS-DREAM.
+    status: reviewed
+    version: 1.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
   functions.ocf-slp-003.title:
     text: Dream Theme
     status: canonical
@@ -2157,13 +2188,15 @@ entries:
     status: canonical
     version: 1.0.0
   functions.ocf-slp-006.purpose:
-    text: Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE.
-    status: canonical
-    version: 1.0.0
+    text: Supports staying awake and alert when needed; activation cue PLUS-AWAKE.
+    status: reviewed
+    version: 1.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
   functions.ocf-slp-006.short-description:
-    text: Supports staying awake and alert when needed; proposed concise cue PLUS-AWAKE.
-    status: canonical
-    version: 1.0.0
+    text: Supports staying awake and alert when needed; activation cue PLUS-AWAKE.
+    status: reviewed
+    version: 1.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
   functions.ocf-slp-006.title:
     text: Stay Awake
     status: canonical
@@ -2178,7 +2211,11 @@ entries:
   commands.ocf-cmd-slp-004-primary.display-cue: PLUS-SLEEP INSIGHT
   commands.ocf-cmd-prf-002-primary.display-cue: PLUS-INNER POWER
   commands.ocf-cmd-bod-004-primary.display-cue: PLUS-DETOX
-  commands.ocf-cmd-bod-006-primary.display-cue: PLUS-HEART-BETTER
+  commands.ocf-cmd-bod-006-primary.display-cue:
+    text: PLUS-HEART-FLOW
+    version: 1.1.0
+    status: reviewed
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
   commands.ocf-cmd-bod-003-primary.display-cue: PLUS-COMFORT
   commands.ocf-cmd-bod-014-primary.display-cue: PLUS-REGENERATE
   commands.ocf-cmd-bod-015-primary.display-cue: PLUS-NUMB
@@ -2190,19 +2227,39 @@ entries:
   commands.ocf-cmd-slp-002-primary.display-cue: PLUS-SLEEP
   commands.ocf-cmd-slp-003-primary.display-cue: PLUS-DREAM
   commands.ocf-cmd-slp-006-primary.display-cue: PLUS-AWAKE
-  commands.ocf-cmd-bod-005-primary.display-cue: PLUS-SATISFIED, SUPPLIED
-  commands.ocf-cmd-emg-001-primary.display-cue: PLUS-CONTROL, BALANCE, RESTORE
-  commands.ocf-cmd-emg-002-primary.display-cue: PLUS-CLEAR, REMOVE
+  commands.ocf-cmd-bod-005-primary.display-cue:
+    text: PLUS-SATISFIED
+    version: 1.1.0
+    status: reviewed
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
+  commands.ocf-cmd-emg-001-primary.display-cue:
+    text: PLUS-INJURY-RESPONSE
+    version: 1.1.0
+    status: reviewed
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
+  commands.ocf-cmd-emg-002-primary.display-cue:
+    text: PLUS-TOXIC-CLEAR
+    version: 1.1.0
+    status: reviewed
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
   commands.ocf-cmd-aut-001-primary.display-cue: PLUS-AUTOMATE
   commands.ocf-cmd-bod-007-primary.display-cue: PLUS-BALANCE BLOOD PRESSURE
   commands.ocf-cmd-bod-008-primary.display-cue: PLUS-IMMUNE READY
   commands.ocf-cmd-bod-011-primary.display-cue: PLUS-HORMONE BALANCE
-  commands.ocf-cmd-bod-013-primary.display-cue: PLUS-BALANCE, HEAL
+  commands.ocf-cmd-bod-013-primary.display-cue:
+    text: PLUS-TUNE-UP
+    version: 1.1.0
+    status: reviewed
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
   commands.ocf-cmd-cog-001-primary.display-cue: PLUS-ACCESS INFO
   commands.ocf-cmd-cog-002-primary.display-cue: PLUS-CALCULATE
   commands.ocf-cmd-fnd-003-primary.display-cue: PLUS-RECHARGE
   commands.ocf-cmd-lif-001-primary.display-cue: PLUS-FREE THIS HABIT
-  commands.ocf-cmd-prf-003-primary.display-cue: PLUS-SMOOTH, FAST
+  commands.ocf-cmd-prf-003-primary.display-cue:
+    text: PLUS-COORDINATE
+    version: 1.1.0
+    status: reviewed
+    notes: Explicit user approval OCF-COMMAND-SIMPLIFICATION-001; not listening or release approval.
   commands.ocf-cmd-sen-001-primary.display-cue: PLUS-HEAR MORE
   commands.ocf-cmd-sen-002-primary.display-cue: PLUS-SEE BETTER
   commands.ocf-cmd-sen-003-primary.display-cue: PLUS-SMELL MORE

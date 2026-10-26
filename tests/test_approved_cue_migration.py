@@ -460,6 +460,7 @@ def test_exact_user_decisions_integrity_and_unaffected_active_vocabulary():
     for owner, (title, display, speech) in EXPECTED.items():
         if owner == "OCF-BOD-006":
             title = "Heart Flow"  # Explicitly finalized by review 17 in successor 004.
+            display, speech = "PLUS-HEART-FLOW", "Plus Heart Flow"
         record = records[owner]
         primary = next(row for row in record.command_records if row.designation == "primary")
         assert (record.canonical_name, record.canonical_command) == (title, display)
@@ -487,10 +488,11 @@ def test_exact_user_decisions_integrity_and_unaffected_active_vocabulary():
     active = [
         row
         for record in records.values()
+        if record.data["legacy"]["source_system"] == "Monroe H-PLUS"
         for row in record.command_records
         if commands.is_active(row)
     ]
-    assert len(active) == 79  # Approved successors retire only superseded primary aliases.
+    assert len(active) == 78  # Includes the approved Options historical-only successor.
     assert len({row.id for row in active if row.designation == "primary"}) == 55
 
 
@@ -501,6 +503,8 @@ def test_all_four_body_passes_and_closer_resolve_the_approved_cue(owner):
 
     plan = plan_narration(owner, locale="en-US")
     cue = EXPECTED[owner][2]
+    if owner == "OCF-BOD-006":
+        cue = "Plus Heart Flow"
     body = [row for row in plan["segments"] if row["role"] == "function-body"]
     assert {row["playback"] for row in body} == {1, 2, 3, 4}
     for playback in range(1, 5):
@@ -531,7 +535,7 @@ def test_historical_lookup_returns_current_cues_without_reviving_aliases():
             rows = lookup(query)
             match = next(row for row in rows if row["function_id"] == decision["function_id"])
             assert match["title"] == latest[decision["function_id"]]["current_title"]
-            assert match["cue"]["spoken_cue"] == decision["spoken_cue"]
+            assert match["cue"]["spoken_cue"] == latest[decision["function_id"]]["spoken_cue"]
             assert match["activation_selected"] is False
     insulate = next(row for row in load_all_functions() if row.id == "OCF-EXP-002")
     assert {row.role for row in insulate.command_records if commands.is_active(row)} == {

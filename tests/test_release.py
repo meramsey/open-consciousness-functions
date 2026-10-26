@@ -83,6 +83,7 @@ def test_transcript_uses_synthesis_text_in_timeline_order_and_is_utf8_ready():
     }
     expected = "Final spoken form.\n\nCafé is ready.\n"
     assert rel.transcript_from_render(render) == expected
+    assert rel.transcript_from_render(render_doc=render) == expected
     assert rel.transcript_from_render(render).encode("utf-8").decode("utf-8") == expected
     assert rel.transcript_from_render({"narration_timing": {"cues": []}}) == "\n"
     with pytest.raises(OCFError, match="spoken_text"):
@@ -173,6 +174,30 @@ def test_release_rejects_unsupported_or_path_bearing_metadata(tmp_path):
         rel.package_release("OCF-BOD-010", artwork=image, metadata_overrides={"api_key": "secret"})
 
 
+def test_portable_path_guard_includes_longer_timing_sidecar(tmp_path_factory, monkeypatch):
+    root = tmp_path_factory.mktemp("r")
+    monkeypatch.setattr(
+        rel,
+        "_select_audio_manifest",
+        lambda _: {"id": "OCF-AUDIO-9910", "function_id": "OCF-BOD-010"},
+    )
+    image = _png(root / "cover.png")
+    options = {"artwork": image, "dry_run": True, "metadata_overrides": {"title": "T"}}
+    planned = rel.package_release("OCF-BOD-010", output=root / "o", **options)
+    directory = Path(planned["release_directory"])
+    old_names = [
+        name
+        for name in planned["artifacts"]
+        if not name.endswith((".lrc", ".srt", ".vtt", ".timing.json"))
+    ]
+    padding = 240 - max(len(str(directory / name)) for name in old_names)
+    assert padding >= 0
+    output = root / ("o" + "x" * padding)
+    with pytest.raises(OCFError, match="240-character"):
+        rel.package_release("OCF-BOD-010", output=output, **options)
+    assert not output.exists()
+
+
 def test_release_cli_routes_options_to_release_builder(monkeypatch, capsys):
     from ocf_tools import cli
 
@@ -195,6 +220,7 @@ def test_release_cli_routes_options_to_release_builder(monkeypatch, capsys):
                 "flac",
                 "--tag",
                 "artist=Configured Voice",
+                "--lyrics",
                 "--dry-run",
             ]
         )
@@ -213,6 +239,8 @@ def test_release_cli_routes_options_to_release_builder(monkeypatch, capsys):
                 "metadata_overrides": {"artist": "Configured Voice"},
                 "dry_run": True,
                 "overwrite": False,
+                "lyrics": True,
+                "guides": None,
             },
         )
     ]
@@ -335,7 +363,13 @@ def test_real_codec_metadata_and_artwork_round_trip(tmp_path, fmt, cover_kind, m
 @pytest.mark.integration
 @pytest.mark.audio_integration
 @pytest.mark.external_tool
-def test_package_publishes_complete_verified_release_and_blocks_collision(tmp_path, monkeypatch):
+@pytest.mark.parametrize("lyrics", [False, True])
+def test_package_publishes_complete_verified_release_and_blocks_collision(
+    tmp_path_factory, monkeypatch, lyrics
+):
+    tmp_path = tmp_path_factory.mktemp("p")
+    if lyrics:
+        pytest.importorskip("mutagen")
     if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
         pytest.skip("real package verification requires optional ffmpeg and ffprobe")
     audio_manifest = {
@@ -369,8 +403,13 @@ def test_package_publishes_complete_verified_release_and_blocks_collision(tmp_pa
             "timing_mode": "fixture",
             "narration_timing": {
                 "cues": [
-                    {"id": "second", "at": 2, "spoken_text": "Second sentence."},
-                    {"id": "first", "at": 1, "spoken_text": "First transformed text."},
+                    {"id": "second", "at": 0.5, "duration": 0.4, "spoken_text": "Second sentence."},
+                    {
+                        "id": "first",
+                        "at": 0,
+                        "duration": 0.4,
+                        "spoken_text": "First transformed text.",
+                    },
                 ]
             },
         }
@@ -379,6 +418,24 @@ def test_package_publishes_complete_verified_release_and_blocks_collision(tmp_pa
         return render
 
     monkeypatch.setattr(audio_build, "build", fake_build)
+
+    def fixture_guides(stage, function_ids, *, source, locale, edition_files):
+        assert function_ids == ["OCF-BOD-010"] and locale == "en-US"
+        assert source == tmp_path / "guide-cache"
+        assert edition_files["OCF-BOD-010"]
+        target = stage / "guides" / "listening-guide.pdf"
+        target.parent.mkdir()
+        target.write_bytes(b"synthetic guide")
+        return [
+            {
+                "path": "guides/listening-guide.pdf",
+                "format": "application/pdf",
+                "size_bytes": target.stat().st_size,
+                "sha256": sha256_of_file(target),
+            }
+        ]
+
+    monkeypatch.setattr("ocf_tools.listener_packages.attach_guides", fixture_guides)
     timestamp = datetime(2026, 10, 13, tzinfo=UTC)
     result = rel.package_release(
         "OCF-BOD-010",
@@ -386,28 +443,53 @@ def test_package_publishes_complete_verified_release_and_blocks_collision(tmp_pa
         artwork=cover,
         output=tmp_path / "out",
         created_at=timestamp,
+        lyrics=lyrics,
+        voice="fixture-voice",
+        guides=tmp_path / "guide-cache",
     )
     release_dir = Path(result["release_directory"])
     assert result["manifest"]["title"] == "Nutricia"
     assert result["manifest"]["title_resolution"]["fallback"] is False
     audio_names = [name for name in result["artifacts"] if name.endswith((".flac", ".mp3"))]
     assert audio_names == [
-        "OCF-BOD-010 - Nutricia - en-US.flac",
-        "OCF-BOD-010 - Nutricia - en-US.mp3",
+        "OCF-BOD-010 - Nutricia - en-US - fixture-voice.flac",
+        "OCF-BOD-010 - Nutricia - en-US - fixture-voice.mp3",
     ]
     transcript = next(release_dir.glob("*.txt"))
     assert transcript.read_text(encoding="utf-8") == "First transformed text.\n\nSecond sentence.\n"
+    assert all(
+        transcript.with_suffix("." + fmt).is_file() for fmt in ("lrc", "srt", "vtt", "timing.json")
+    )
+    for name in audio_names:
+        assert all(
+            (release_dir / name).with_suffix("." + extension).is_file()
+            for extension in ("txt", "lrc", "srt", "vtt", "timing.json")
+        )
+    if lyrics:
+        from mutagen.flac import FLAC
+        from mutagen.id3 import ID3
+
+        assert ID3(next(release_dir.glob("*.mp3"))).getall("USLT")[0].text == transcript.read_text()
+        assert FLAC(next(release_dir.glob("*.flac")))["UNSYNCEDLYRICS"] == [transcript.read_text()]
     assert (release_dir / "manifest.json").is_file()
     manifest = json.loads((release_dir / "manifest.json").read_text(encoding="utf-8"))
     rel._verify_manifest(release_dir, manifest)
+    assert (release_dir / "guides/listening-guide.pdf").read_bytes() == b"synthetic guide"
     with pytest.raises(OCFError, match="already exists"):
-        rel.package_release("OCF-BOD-010", formats=["flac"], artwork=cover, output=tmp_path / "out")
+        rel.package_release(
+            "OCF-BOD-010",
+            formats=["flac"],
+            artwork=cover,
+            output=tmp_path / "out",
+            voice="fixture-voice",
+        )
     replaced = rel.package_release(
         "OCF-BOD-010",
         formats=["flac"],
         artwork=cover,
         output=tmp_path / "out",
         overwrite=True,
+        voice="fixture-voice",
     )
     previous = list(release_dir.parent.glob(f".{release_dir.name}.previous-*"))
     assert Path(replaced["release_directory"]) == release_dir
@@ -446,8 +528,10 @@ def test_failed_manifest_validation_never_publishes_partial_release(tmp_path, mo
             (out_root / f"{query}-master.{fmt}").write_bytes(b"fixture")
         render = {
             "voice": {},
-            "master": {"sample_rate": 16000, "channels": 1},
-            "narration_timing": {"cues": []},
+            "master": {"sample_rate": 16000, "channels": 1, "duration": 1.0},
+            "narration_timing": {
+                "cues": [{"id": "fixture", "at": 0, "duration": 0.5, "spoken_text": "Fixture."}]
+            },
         }
         (out_root / "OCF-RENDER-9910.yaml").write_text(yaml_safe_dump(render), encoding="utf-8")
         return render

@@ -496,7 +496,9 @@ def historical_report():
 def canonical_audit():
     records = sorted(load_all_functions(), key=lambda item: item.id)
     if set(DECISIONS) != {record.id for record in records}:
-        raise OCFError("editorial decisions must cover every canonical function exactly")
+        raise OCFError(
+            "historical editorial audit input drift; editorial decisions must cover every canonical function exactly"
+        )
     previous = historical_report()
     if any(
         sha256_of_file(REPO_ROOT / name) != checksum

@@ -5,7 +5,7 @@ from ocf_tools.session_plans import generate_plans, source_plan
 from ocf_tools.utils import OCFError
 
 
-def test_all_55_source_plans_are_valid_and_fresh_without_audio_tools(monkeypatch):
+def test_all_58_source_plans_are_valid_and_fresh_without_audio_tools(monkeypatch):
     from ocf_tools import narration_first
 
     def forbidden(*args, **kwargs):
@@ -13,7 +13,7 @@ def test_all_55_source_plans_are_valid_and_fresh_without_audio_tools(monkeypatch
 
     monkeypatch.setattr(narration_first, "_voice_profile", forbidden)
     result = generate_plans(check=True)
-    assert result["total"] == result["validated"] == 55
+    assert result["total"] == result["validated"] == 58
 
 
 def test_generation_determinism_manual_ownership_and_staleness(tmp_path):

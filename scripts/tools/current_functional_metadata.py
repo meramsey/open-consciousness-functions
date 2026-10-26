@@ -61,6 +61,7 @@ def render(data):
         data["runtime_policy"],
         "",
         "See [scope semantics](../FUNCTIONAL_METADATA.md) and the [immutable approval ledger](../../function-content/editorial/functional-metadata-001.json).",
+        "Current descriptions also include documentation-only successor OCF-GUIDE-REVIEW-001; original functional decisions and narration remain unchanged.",
         "",
     ]
     for function in data["functions"]:
@@ -91,7 +92,7 @@ def render(data):
         [
             "## Localization and audio",
             "",
-            "English purpose, role and scope descriptions are synchronized with canonical YAML. Partial Spanish requires descriptive terminology review; no production translation was changed. Speech inputs, templates, DSP, pacing, gains, repetitions, recording text fingerprints and all 55 source plans remain unchanged.",
+            "English purpose, role and scope descriptions are synchronized with canonical YAML. Partial Spanish requires descriptive terminology review; no production translation was changed. Speech inputs, templates, DSP, pacing, gains, repetitions and recording text fingerprints remain unchanged. The current catalog has 58 source plans and preserves the separate 55-function historical cohort.",
             "",
         ]
     )

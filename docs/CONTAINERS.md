@@ -25,6 +25,18 @@ match that identity. The image does not silently chown user assets. CPU is defau
 GPU is neither required nor automatically enabled. After build/assets are present,
 recorded narration generation does not require runtime network.
 
+The container workspace defaults to `/home/ocf/.ocf/work` inside the existing
+cache volume. Application files stay read-only to the non-root user. To verify
+scratch creation, exclusive text publication, subprocesses and cleanup locally:
+
+```bash
+docker build -t ocf-workspace-smoke .
+OCF_TEST_CONTAINER_IMAGE=ocf-workspace-smoke python -m pytest tests/test_container_config.py
+```
+
+The smoke uses a read-only application filesystem, an isolated writable tmpfs,
+no host bind mounts and no runtime network. CI runs the same smoke.
+
 All container commands are explicit user invocations, never automatically run by
 doctor/planning. Build/run verification is recorded in the Phase2B checkpoint;
 static configuration tests alone do not certify Docker or other host platforms.

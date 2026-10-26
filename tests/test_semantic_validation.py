@@ -56,12 +56,25 @@ def test_literal_wrong_command_cannot_bypass_owner_validation():
 
 
 def test_command_owner_matches_and_canonical_identity_survives_localization():
-    from ocf_tools.locale import resolve_document
+    from ocf_tools.indexes import load_all_functions
+    from ocf_tools.locale import LocaleCatalog, NarrationResource, resolve_document
 
+    catalog = LocaleCatalog()
+    # Synthetic locale declarations test identity without proposing translations.
+    for kind, domain, text in (
+        ("display", "ui", "TEST-FOCUS-ES"),
+        ("spoken", "narration", "TEST SPOKEN ES"),
+    ):
+        key = "commands.ocf-cmd-fnd-002-primary." + kind + "-cue"
+        catalog.require("es").entries[key] = NarrationResource(
+            key, "es", domain, text, status="reviewed"
+        )
     doc = command_doc()
-    resolved = resolve_document(doc, "es")
+    resolved = resolve_document(doc, "es", catalog=catalog)
     assert resolved["timeline"][0]["variables"]["command"] == "PLUS-FOCUS"
-    assert not validate_narration_usage(resolved, Path("owner.yaml")).errors
+    assert not validate_narration_usage(
+        resolved, Path("owner.yaml"), catalog, records=load_all_functions()
+    ).errors
 
 
 def test_bad_command_blocks_tts_before_any_synthesis(tmp_path):
@@ -187,7 +200,7 @@ def test_live_compose_cli_binds_function_metadata_and_optional_stages(tmp_path, 
     doc = yaml.safe_load(output.read_text())
     assert doc["function_id"] == "OCF-FND-002"
     assert doc["sections"][1]["id"] == "examples"
-    assert doc["sections"][2]["timeline"][0]["variables"] == {"command": "PLUS-FOCUS"}
+    assert doc["sections"][2]["timeline"][0]["variables"] == {"command": "Plus Focus"}
     assert "Architecture draft" in capsys.readouterr().out
 
 

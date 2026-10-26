@@ -67,6 +67,7 @@ def test_legacy_commands_preserved_when_changed():
         r
         for r in load_all_functions()
         if r.command_status in ("proposed", "normalized", "review-required")
+        and r.data["legacy"]["source_system"] == "Monroe H-PLUS"
     ]
     assert records, "expected at least one changed command"
     for record in records:

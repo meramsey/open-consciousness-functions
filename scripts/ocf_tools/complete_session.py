@@ -916,6 +916,9 @@ def render_complete_session(
     narration_sources: str | Path | None = None,
     narration_source: str | None = None,
     mix_profile: str | Path | dict | None = None,
+    audition_version: str = "0.1.0",
+    artwork_file: str | Path | None = None,
+    artwork_theme: str | None = None,
 ) -> dict[str, Any]:
     """Expand the bound complete session and render/mix it using OCF's engines."""
     from . import audio_build
@@ -1026,7 +1029,7 @@ def render_complete_session(
         raise OCFError(f"cannot create session audition staging directory: {exc}") from exc
 
     try:
-        if options:
+        if options or dsp_profile:
             resolved_dsp_path = stage / "resolved-dsp.yaml"
             resolved_dsp_path.write_text(
                 yaml_safe_dump(session_plan["resolved_dsp_profile"]), encoding="utf-8"
@@ -1113,13 +1116,14 @@ def render_complete_session(
         if not background_info:
             raise OCFError("complete session rendered no retained background layer")
         render_background = render_dir / background_info["file"]
-        master_name = ArtifactNamer().filename(
+        listener_names = ArtifactNamer().filenames(
             function_id,
             tts_plan["title"],
             tts_plan["requested_locale"],
-            "wav",
+            ["wav", "txt", "lrc", "srt", "vtt", "timing.json"],
             variant=f"{tts_plan['voice_profile']['id']}-session",
         )
+        master_name = listener_names["wav"]
         background_name = ArtifactNamer().filename(
             function_id,
             tts_plan["title"],
@@ -1169,10 +1173,12 @@ def render_complete_session(
             if str(cue.get("spoken_text") or "").strip()
         )
         transcript += "\n"
-        transcript_path = stage / ArtifactNamer().filename(
-            function_id, tts_plan["title"], tts_plan["requested_locale"], "txt", variant="session"
+        transcript_path = stage / listener_names["txt"]
+        from .listener_text import write_listener_text
+
+        listener_text = write_listener_text(
+            built, float(built["master"]["duration"]), transcript_path
         )
-        transcript_path.write_text(transcript, encoding="utf-8", newline="\n")
 
         from .pacing_auditions import write_timing_reports_and_auditions
 
@@ -1197,6 +1203,11 @@ def render_complete_session(
             "render_type": "complete-session-audition",
             "function_id": function_id,
             "audio_implementation_id": None,
+            **(
+                {"background_variant": session_plan["resolved_dsp_profile"]["id"]}
+                if dsp_profile
+                else {}
+            ),
             "title": tts_plan["title"],
             "requested_locale": tts_plan["requested_locale"],
             "voice_profile": tts_plan["voice_profile"],
@@ -1286,6 +1297,12 @@ def render_complete_session(
                 },
                 "timing_report": timing_artifact,
                 **{
+                    f"listener_{fmt}": item
+                    for fmt, item in listener_text["artifacts"].items()
+                    if fmt != "txt"
+                },
+                "listener_timing": listener_text["timing_receipt"],
+                **{
                     f"pacing_{audition_id}_{artifact_name}": artifact
                     for audition_id, audition in pacing_auditions.items()
                     for artifact_name, artifact in audition.items()
@@ -1294,6 +1311,15 @@ def render_complete_session(
             },
             "created_at": created.isoformat().replace("+00:00", "Z"),
         }
+        from .audition_exports import attach_render_artwork
+
+        attach_render_artwork(
+            manifest,
+            stage,
+            version=audition_version,
+            artwork_file=artwork_file,
+            artwork_theme=artwork_theme,
+        )
         report_path = stage / "session-report.json"
         report_path.write_text(
             json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",

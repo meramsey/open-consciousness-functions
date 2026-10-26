@@ -1,0 +1,56 @@
+{
+  "approval": {
+    "human_review": "unknown",
+    "release_ready": false
+  },
+  "defaults": {
+    "file": "_shared.json",
+    "sha256": "11bbba20ac07012fbafa93e9d70fc420ec7408070455f42a49aab0d862f11229"
+  },
+  "function_id": "OCF-EXP-005",
+  "generation": {
+    "binding_sha256": "d04c93be9f154bfccd21d1a99b894f3f7c064cfa3cdadf1ba36a66fd838e4048",
+    "semantic_plan_sha256": "de6ea03c2ecc730948b1e1770abec860cdc639cc656848af54c8eb1934ac79ac"
+  },
+  "generator": "ocf.audio.plan/1",
+  "locale": "en-US",
+  "resources": [
+    {
+      "fallback": false,
+      "key": "hplus.function.ocf-exp-005.closer",
+      "locale": "en-US",
+      "raw_template_sha256": "6c5af19bd164989dfaa9cf58a1e373888caa787a3bee6f51486ec0e148d2e45f",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "480a5560ec23dcd86b5ea87a9cbda107916f55c9cf6a23f2ac9247dc7886167d",
+      "version": "1.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.function.ocf-exp-005.function-body",
+      "locale": "en-US",
+      "raw_template_sha256": "c12ef5c1c778caf7b55bc67669fb67ea03504a96526c79bd83c539a85f95117b",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "ab2f8441abac506565e46dad40676f90e7c151400746d402f49127de0972d188",
+      "version": "1.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.function.ocf-exp-005.opener",
+      "locale": "en-US",
+      "raw_template_sha256": "5a70cd9a7690f11fbeb213ed33fa1e12466c2d2125e62d3c23d353e0e5d95850",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "cb1bcf475d10fcb82a4afbdfe03acaeb39021ddb2b2b5b87e83f2aea11ba37f5",
+      "version": "1.0.0"
+    }
+  ],
+  "schema_version": "1.0",
+  "slots": {
+    "closer": "hplus.function.ocf-exp-005.closer",
+    "function_body": "hplus.function.ocf-exp-005.function-body",
+    "opener": "hplus.function.ocf-exp-005.opener"
+  },
+  "timing": "measured-speech-relative; expand template at render time"
+}

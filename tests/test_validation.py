@@ -49,7 +49,16 @@ def test_no_duplicate_primary_commands():
 
 
 def test_fifty_five_legacy_functions():
-    assert len(load_all_functions()) == 55
+    assert (
+        len(
+            [
+                r
+                for r in load_all_functions()
+                if r.data["legacy"]["source_system"] == "Monroe H-PLUS"
+            ]
+        )
+        == 55
+    )
 
 
 def test_collection_duplicate_id_detection(monkeypatch):

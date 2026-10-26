@@ -132,8 +132,18 @@ def generate_plans(
     locale = normalize_tag(locale)
     if not locale:
         raise OCFError("invalid locale")
+    records = load_all_functions()
+    pending = {
+        record.id: "draft narration requires explicit editorial candidate review"
+        for record in records
+        if record.data.get("audio", {}).get("script_status") == "draft"
+    }
     ids = sorted(
-        set(function_ids if function_ids is not None else [r.id for r in load_all_functions()])
+        set(
+            function_ids
+            if function_ids is not None
+            else [record.id for record in records if record.id not in pending]
+        )
     )
     if not ids:
         raise OCFError("no functions selected")
@@ -181,6 +191,7 @@ def generate_plans(
     return {
         "total": len(ids),
         "validated": len(ids),
+        "pending_editorial_review": pending if function_ids is None else {},
         "locale": locale,
         "functions": ids,
         "dry_run": dry_run,

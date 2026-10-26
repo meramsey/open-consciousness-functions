@@ -4,8 +4,9 @@
 # English authority: functions/experimental/mobius-west.yaml
 # {"symbol": "cue.primary", "command": "OCF-CMD-EXP-001-PRIMARY", "role": "activation", "display": "PLUS-MANIFEST", "spoken": "Plus Manifest", "locale_definition": "commands.ocf-cmd-exp-001-primary.spoken-cue"}
 # END GENERATED CUE PREVIEW
-# Editorial successor OCF-EDITORIAL-TITLE-CUES-001: prior cue-preservation notes describe predecessor versions; only approved title/cue substitutions changed.
-# OCF-EXP-001 — Möbius West
+# Editorial successor OCF-EDITORIAL-TITLE-CUES-001 established Manifest / Plus Manifest;
+# this candidate proposes a separate content revision, not another title/cue change.
+# OCF-EXP-001 — Manifest
 # English function-specific OCF-adapted narration.
 # Edit this file as the wording source of truth.
 # Source status: transcript_unverified; authentication remains unverified.
@@ -14,136 +15,150 @@
 # Review note: Original body lines 55–84; duplicate pass remains excluded.
 # Review note: Source ends in numeric runs; no historical function-specific closer recovered.
 # Review note: The closer is OCF-authored, not historical transcription.
-# Review note: Exact command Plus Change Change and original breath sequence retained.
+# Review note: Former teaching phrase Plus Change Change remains historical context;
+# the active cue resolves to Plus Manifest. The original breath sequence is retained.
 # Review note: Source intentions concerning the total self, desired completion time,
 # nonphysical influence, and non-destructive outcomes remain in the adaptation.
 # Review note: Manifestation mechanisms and outcomes are unverified source claims.
 # Review note: One function body supports four-pass playback.
+# Review note: The user-supplied Plus Create comparison informs new editorial wording;
+# it is not treated as a recovered Möbius West transcript or an authenticated source.
+# Review note: New wording adds positive intention, heart-centered alignment,
+# receptivity, supportive guidance, and fulfillment consistent with the desired essence.
+# Review note: Revised text is a draft successor; prior approvals and integrity
+# records remain unchanged until this revision receives explicit approval.
 schema_version: '1.0'
 locale: en-US
 domain: narration
 entries:
   hplus.function.ocf-exp-001.opener:
     status: reviewed
-    version: 1.1.0
+    version: 1.2.0
     notes: >-
       OCF-adapted opener based on the unverified Möbius West transcript.
       Original SOURCE +Transcripts From available tapes/Möbius West/Möbius West.txt;
       SHA-256 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78;
-      line 1. Original reference remains unchanged. Expanded purpose emphasizes
-      deliberate future-pattern creation through intention and the total self.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
+      line 1. Original reference remains unchanged. Rewords the existing
+      future-patterning purpose around clear, positive intention and total-self
+      alignment. This is adapted narration, not historical transcript wording.
+      Existing source rights: user_cleared, per user's lawyer-clearance attestation.
+      Revised wording awaits explicit editorial approval; that earlier
+      attestation does not independently authenticate the comparison passage.
       Finished-session release remains pending.
     text: |-
-      This OCF exercise will teach you to set a desired future
-      into motion, aligning your intention and total self
-      with the reality you choose to create.
-
+      This OCF exercise will teach you to manifest with clear,
+      positive intention, aligning your total self with the reality
+      you choose to create.
   hplus.function.ocf-exp-001.function-body:
     status: reviewed
-    version: 1.2.1
+    version: 2.0.0
     notes: >-
       OCF-adapted narration based on the unverified Möbius West transcript.
       Original SOURCE +Transcripts From available tapes/Möbius West/Möbius West.txt;
       SHA-256 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78;
       lines 55–84. Original reference remains unchanged; duplicate second pass
-      remains excluded. Adaptation preserves conscious selection of a future
-      condition and desired completion time, exact Plus Change Change command,
-      physical and mental alignment, intention reaching beyond the physical self,
-      and the source condition of greater well-being without destructive effects
-      on others. The exercise allows changes to unfold immediately or over time,
-      and avoids establishing a fixed guaranteed completion. Lasting availability
-      applies to the conscious patterning ability rather than uncontrolled
-      alteration of the listener's circumstances. The purported manifestation
-      mechanism and outcomes are unverified; affirmations are intended narration.
-      Shared preparation, state, and return wording remain excluded.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
+      remains excluded. Preserves outcome and desired-time selection, the original
+      inhale-hold-command-exhale sequence, total-self alignment, intention beyond
+      the physical self, continuing operation, and greater well-being without
+      destructive effects on others. The active command remains the reviewed
+      Plus Manifest supplied through cue.primary; no command definition changes.
+      Version 2.0.0 adds substantive editorial content informed by the user-supplied
+      Plus Create comparison: release of struggle and impatience, heart-centered
+      love, balanced energy centers, grounded receptivity, worthiness, supportive
+      guidance, and the intended outcome or an aligned improvement. The comparison
+      has no independently verified bibliographic attribution in this review;
+      additions are not represented as recovered historical wording. Clear
+      intention is supported through imagery, feeling, or conceptual knowing.
+      Everyday use retains the existing breath and command without requiring a
+      new meditation or Focus-state transition. The process is intended to begin
+      immediately while fulfillment is not assigned a guaranteed deadline.
+      Lasting availability applies to deliberately chosen patterns, not every
+      passing thought. Spiritual and energetic language expresses the practice's
+      intention, not an established physical mechanism. Shared preparation,
+      state, and return wording remain excluded. One body retains four-pass reuse.
+      Existing source rights: user_cleared, per user's lawyer-clearance attestation.
+      Revised wording awaits explicit editorial approval; predecessor approval
+      and integrity records remain unchanged. Finished-session release remains pending.
     cue_template:
       function_id: OCF-EXP-001
       allowed: [cue.primary]
     text: |-
-      From this moment forward, you have the ability
-      to set in motion a new pattern for your future.
+      From this moment forward, you will direct your total self
+      toward the reality you choose to create,
+      with clear, positive intention.
 
-      Whenever you desire a different state of being,
-      choose clearly what you wish to create.
-      See yourself already living that reality.
-      Feel its meaning, its harmony,
-      and the change it brings into your life.
-
-      Know the condition you desire,
-      and choose when you wish it to be complete.
-      Hold that intention clearly within your awareness.
+      Whenever you desire a change, choose the outcome
+      and when you wish it to take form.
+      Whether the need is immediate or further ahead,
+      picture, feel, or simply know the result as fulfilled.
 
       Inhale deeply and gently hold your breath.
-
       Think or say in your mind, "{{ cue.primary }}."
-
       Then exhale slowly through your mouth.
 
-      Your total self will immediately begin
-      aligning with the pattern you have chosen.
-      Your thoughts, feelings, actions, and physical being
-      will move into harmony with your intention.
+      Your total self will immediately align with your intention.
+      Your conscious mind, subconscious mind, higher self,
+      and physical being will work together in harmony.
 
-      Your greater self will extend its awareness
-      beyond the limits of your physical body,
-      reaching into the wider field of consciousness
-      and the possibilities available to you.
+      Struggle, fear, harsh judgment, and impatience will fall away.
+      Your intention remains clear as you release the need
+      to force each step or continually check the result.
 
-      Your intention will become a clear pattern,
-      drawing together the conditions, connections,
-      opportunities, and changes that support
-      the reality you wish to experience.
+      Center yourself in your heart.
+      Let love fill your being and bring your energy centers
+      into open, balanced harmony.
+      Remain grounded and present, receptive to energy and light.
+      You are worthy to create and receive good.
 
-      Some changes will begin at once.
-      Others will unfold in their proper sequence,
-      moving toward the completion you have envisioned.
+      Welcome the loving guidance of your higher self
+      and the helpers you recognize.
+      Your intuition will become clearer,
+      guiding you to recognize opportunities and act.
 
-      Your total self will continue this process
-      without the need for constant conscious effort.
-      You will recognize opportunities and act upon them
-      naturally, confidently, and at the appropriate time.
+      Your greater awareness will reach beyond your physical body,
+      connecting with universal consciousness.
+      Your intention will draw together and sustain
+      the conditions and connections that support your chosen reality.
 
-      This pattern will operate in harmony
-      with your greater well-being,
-      without destructive effects upon others.
+      Hold the essence of your desire while welcoming
+      its fulfillment or something better,
+      in harmony with your highest good and the good of others,
+      without destructive effects upon anyone.
 
-      From this moment forward, the ability
-      to create and direct future patterns
-      is permanently available to you.
+      This pattern will continue without constant conscious effort,
+      unfolding immediately or through its natural sequence.
+      Once learned, this ability remains permanently available,
+      ready for everyday use with your intention, breath, and command.
 
-      Each time you use {{ cue.primary }},
-      your intention becomes clearer,
-      your alignment stronger,
-      and this process easier and more effective.
-
+      The more you use this function,
+      the clearer your intention, the stronger your alignment,
+      and the easier and more effective manifestation becomes.
   hplus.function.ocf-exp-001.closer:
     status: reviewed
-    version: 1.2.1
+    version: 1.3.0
     notes: >-
       OCF-authored closer adapted from the previously approved reminder.
       Original SOURCE +Transcripts From available tapes/Möbius West/Möbius West.txt;
       SHA-256 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78.
       The unverified source ends in numeric runs and has no recoverable
-      function-specific closer. The closer contains one purpose reminder,
-      the original intention/time selection and inhale-hold-command-exhale
-      sequence, and the standard OCF ending. This is not historical wording.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
+      function-specific closer. Retains one purpose reminder, desired outcome
+      and timing, the original inhale-hold-command-exhale sequence, and the
+      existing OCF ending. Representation-neutral wording includes nonvisual
+      intention. Plus Manifest remains resolved through cue.primary.
+      This is OCF-authored wording, not historical transcription.
+      Existing source rights: user_cleared, per user's lawyer-clearance attestation.
+      Revised wording awaits explicit editorial approval.
       Finished-session release remains pending.
     cue_template:
       function_id: OCF-EXP-001
       allowed: [cue.primary]
     text: |-
-      Remember, whenever you wish to create
-      a new future pattern, clearly envision
-      the condition you desire and when it will be complete.
+      Remember, to manifest a chosen outcome,
+      bring it clearly into your awareness
+      and choose when you wish it to take form.
 
-      Inhale deeply and hold your breath.
-
+      Inhale deeply and gently hold your breath.
       Think or say in your mind, "{{ cue.primary }}."
-
       Then exhale slowly through your mouth.
 
       This concludes your OCF exercise.

@@ -406,13 +406,27 @@ def validate_command_metadata(records: list[FunctionRecord]) -> ValidationResult
                 from .commands import localized_cue
 
                 try:
-                    presentation = localized_cue(
-                        record,
-                        command,
-                        locale_catalog.canonical_locale,
-                        catalog=locale_catalog,
-                        strict=True,
-                    )
+                    if (
+                        record.data.get("audio", {}).get("script_status") == "draft"
+                        and command.data.get("spoken_review") == "unresolved"
+                    ):
+                        from .cue_templates import draft_cue
+
+                        proposed, _ = draft_cue(
+                            record, command, locale_catalog.canonical_locale, locale_catalog
+                        )
+                        presentation = {
+                            "display_cue": resolve_phrase(record, command),
+                            "spoken_cue": proposed,
+                        }
+                    else:
+                        presentation = localized_cue(
+                            record,
+                            command,
+                            locale_catalog.canonical_locale,
+                            catalog=locale_catalog,
+                            strict=True,
+                        )
                     if presentation["display_cue"] != resolve_phrase(record, command):
                         result.add(
                             "error",
@@ -520,6 +534,19 @@ def validate_collection() -> ValidationResult:
                     "warning",
                     "alias-equals-canonical",
                     f"alias command equals canonical command: {alias}",
+                    record.id,
+                )
+
+    for record in records:
+        companions = record.data.get("companions", [])
+        if not isinstance(companions, list):
+            continue  # The schema reports malformed containers.
+        for target in companions:
+            if not isinstance(target, str) or target == record.id or target not in seen_ids:
+                result.add(
+                    "error",
+                    "invalid-companion",
+                    f"companion must identify another registered function: {target}",
                     record.id,
                 )
 
@@ -1060,7 +1087,12 @@ def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationRes
                 for problem in entry.check_contract():
                     result.add("error", "locale-variable-contract", f"{key}: {problem}", where)
                 if getattr(entry, "cue_template", None) is not None:
-                    catalog.resource(key, locale, domain=entry.domain, fallback=False)
+                    if entry.status == "draft":
+                        from .cue_templates import expand
+
+                        expand(entry, locale, catalog, draft_review=True)
+                    else:
+                        catalog.resource(key, locale, domain=entry.domain, fallback=False)
                 else:
                     message_variables(entry.text)
             except (LocalizationError, OCFError) as exc:

@@ -48,3 +48,29 @@ def test_duplicate_titles_are_case_insensitively_disambiguated():
 def test_rejects_invalid_identity_locale_and_extension(function_id, locale, extension):
     with pytest.raises(OCFError):
         ArtifactNamer().filename(function_id, "title", locale, extension)
+
+
+@pytest.mark.unit
+def test_media_and_sidecars_share_one_stem_even_at_length_limit():
+    types = ["mp3", "flac", "wav", "txt", "lrc", "srt", "vtt", "timing.json"]
+    names = ArtifactNamer(max_filename_length=80).filenames(
+        "OCF-BOD-010",
+        "Café title " * 20,
+        "en-US",
+        types,
+        variant="narrator-" * 10,
+        version="1234567890.1234567890.1234567890",
+    )
+    assert len({name[: -len(extension) - 1] for extension, name in names.items()}) == 1
+    assert all(len(name) <= 80 for name in names.values())
+
+
+@pytest.mark.unit
+def test_group_disambiguates_collisions_in_any_extension():
+    namer = ArtifactNamer()
+    existing = namer.filename("OCF-BOD-010", "Nutricia", "en-US", "mp3")
+    names = namer.filenames("OCF-BOD-010", "Nutricia", "en-US", ["flac", "mp3", "timing.json"])
+    assert all("(2)." in name and name.casefold() != existing.casefold() for name in names.values())
+    for invalid in ([], ["exe"]):
+        with pytest.raises(OCFError, match="artifact group"):
+            namer.filenames("OCF-BOD-010", "Nutricia", "en-US", invalid)

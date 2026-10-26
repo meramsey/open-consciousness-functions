@@ -15,7 +15,9 @@ pytestmark = pytest.mark.integration
 
 
 def test_all_55_function_commands_resolve_with_legacy_fields_unchanged():
-    functions = load_all_functions()
+    functions = [
+        r for r in load_all_functions() if r.data["legacy"]["source_system"] == "Monroe H-PLUS"
+    ]
     assert len(functions) == 55
     command_ids = []
     primary_count = mode_count = legacy_phrase_count = 0

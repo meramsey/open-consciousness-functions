@@ -601,16 +601,14 @@ def render_narration_first(
         encoding="utf-8",
     )
     try:
-        wav_name = ArtifactNamer().filename(
+        listener_names = ArtifactNamer().filenames(
             function_id,
             plan["title"],
             plan["requested_locale"],
-            "wav",
+            ["wav", "txt", "lrc", "srt", "vtt", "timing.json"],
             variant=plan["voice_profile"]["id"],
         )
-        transcript_name = ArtifactNamer().filename(
-            function_id, plan["title"], plan["requested_locale"], "txt"
-        )
+        wav_name, transcript_name = listener_names["wav"], listener_names["txt"]
         source_doc = _dynamic_document(plan)
         from .validators import validate_timed_transcript
 
@@ -676,7 +674,20 @@ def render_narration_first(
         ]
         transcript = "\n\n".join(line for line in transcript_lines if line) + "\n"
         transcript_path = stage / transcript_name
-        transcript_path.write_text(transcript, encoding="utf-8", newline="\n")
+        from .listener_text import write_listener_text
+
+        listener_text = write_listener_text(
+            {
+                "narration_timing": {
+                    "cues": [
+                        {**cue, "spoken_text": cue["text"]}
+                        for cue in sorted(render["cue_stats"], key=lambda item: float(item["at"]))
+                    ]
+                }
+            },
+            measurements["duration_seconds"],
+            transcript_path,
+        )
         created = created_at or datetime.now(UTC)
         if created.tzinfo is None:
             created = created.replace(tzinfo=UTC)
@@ -731,10 +742,19 @@ def render_narration_first(
                     "size_bytes": transcript_path.stat().st_size,
                     "sha256": sha256_of_file(transcript_path),
                 },
+                **{
+                    f"listener_{fmt}": item
+                    for fmt, item in listener_text["artifacts"].items()
+                    if fmt != "txt"
+                },
+                "listener_timing": listener_text["timing_receipt"],
             },
             "created_at": created.astimezone(UTC).isoformat().replace("+00:00", "Z"),
             "release_ready": bool(plan["approval_state"]["release_ready"]),
         }
+        from .audition_exports import attach_render_artwork
+
+        attach_render_artwork(manifest, stage)
         plan_path = stage / "tts-plan.json"
         manifest_path = stage / "render-manifest.json"
         plan_path.write_text(

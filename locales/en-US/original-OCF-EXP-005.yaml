@@ -1,0 +1,167 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-EXP-005", "title": "Clear Zone", "locale": "en-US"}
+# English authority: functions/experimental/clear-zone.yaml
+# {"symbol": "cue.primary", "command": "OCF-CMD-EXP-005-PRIMARY", "role": "activation", "display": "PLUS-CLEAR ZONE", "spoken": "Plus Clear Zone", "locale_definition": "commands.ocf-cmd-exp-005-primary.spoken-cue"}
+# {"symbol": "cue.id.OCF-CMD-EXP-005-OBSERVE", "command": "OCF-CMD-EXP-005-OBSERVE", "role": "mode", "display": "PLUS-CLEAR ZONE, OBSERVE", "spoken": "Plus Clear Zone, Observe", "locale_definition": "commands.ocf-cmd-exp-005-observe.spoken-cue"}
+# {"symbol": "cue.id.OCF-CMD-EXP-005-SUSPEND", "command": "OCF-CMD-EXP-005-SUSPEND", "role": "mode", "display": "PLUS-CLEAR ZONE, SUSPEND", "spoken": "Plus Clear Zone, Suspend", "locale_definition": "commands.ocf-cmd-exp-005-suspend.spoken-cue"}
+# END GENERATED CUE PREVIEW
+# OCF-EXP-005 — Clear Zone
+# New OCF narration proposal; function ID is provisional and not registered.
+# Proposed English title: Clear Zone
+# Proposed English display cue: PLUS-CLEAR ZONE
+# Proposed English spoken cue: Plus Clear Zone
+# Proposed Observe display cue: PLUS-CLEAR ZONE, OBSERVE
+# Proposed Observe spoken cue: Plus Clear Zone, Observe
+# Proposed Suspend display cue: PLUS-CLEAR ZONE, SUSPEND
+# Proposed Suspend spoken cue: Plus Clear Zone, Suspend
+# Proposed command IDs: OCF-CMD-EXP-005-PRIMARY, OCF-CMD-EXP-005-OBSERVE,
+# OCF-CMD-EXP-005-SUSPEND.
+# Review note: New OCF adaptation of the maintainer-supplied Clear Zone draft;
+# no recovered historical transcript or inherited approval is asserted.
+# Review note: Permanent automatic baseline with two temporary, mutually
+# exclusive overrides. The primary command reinforces or restores the baseline.
+# Review note: Observe pauses outward insect-discouragement intention only.
+# Review note: Suspend pauses all Clear Zone activity, not ordinary awareness
+# or physiology.
+# Review note: Either override ends at the next normal sleep onset, loss of
+# consciousness, or deliberate primary invocation. Automatic mode then resumes.
+# Review note: Relaxation and Focus-state labels alone are not reset triggers.
+# Review note: Inhale, think or say the selected cue, and exhale naturally;
+# no breath hold, eye closure, or new release command is introduced.
+# Review note: Intended insect discouragement is experimental; physical
+# repellency or protection against bites, stings, or disease is not established.
+# Review note: Function registration, locale cue resources, and narration
+# bindings are required before repository cue resolution and rendering.
+# Review note: Shared Access Channel opening/closing and practice pauses
+# remain in session composition; no duplicate first-person rehearsal is embedded.
+schema_version: '1.0'
+locale: en-US
+domain: narration
+entries:
+  hplus.function.ocf-exp-005.opener:
+    status: reviewed
+    version: 1.0.0
+    notes: >-
+      New OCF-authored adaptation of the supplied Clear Zone exercise.
+      Introduces an ongoing, consciously chosen intention to discourage
+      unwanted insect contact while maintaining calm awareness.
+      No independently authenticated source, source checksum, or historical
+      lineage is claimed. Proposed identity remains subject to registry
+      allocation and explicit editorial review.
+    cue_template:
+      function_id: OCF-EXP-005
+      allowed: [function.title]
+    text: |-
+      This OCF exercise will teach you to establish {{ function.title }},
+      a lasting intention for a calm space around your body,
+      encouraging unwanted insects to keep their distance
+      and move peacefully elsewhere.
+
+  hplus.function.ocf-exp-005.function-body:
+    status: reviewed
+    version: 1.0.0
+    notes: >-
+      New OCF wording based on the maintainer-supplied Clear Zone draft.
+      Preserves permanent automatic operation as the intended baseline,
+      whole-self participation, non-destructive insect discouragement,
+      primary reinforcement and restoration, and distinct Observe and
+      Suspend overrides. Observe pauses the outward-directed intention
+      while Clear Zone's calm awareness remains; Suspend pauses the whole
+      application without removing learning or ordinary bodily responses.
+      Only one mode is selected at a time; a new selection replaces the
+      previous mode. Normal sleep onset, loss of consciousness, or deliberate
+      primary invocation restores automatic mode. Meditation or hearing a
+      command during instruction does not itself select an override.
+      Natural exhalation completes the supplied inhale-and-command procedure;
+      no breath hold or eye closure is added. Quantum terminology is replaced
+      with total-self and intention language rather than a claimed physical
+      mechanism. Primary and mode cues require separate stable command records;
+      the two mode references use explicit same-owner command IDs.
+      One reusable body is intended for four scheduled passes. Shared state
+      transitions and practice pauses remain outside this body. Intended
+      effects and automatic operation are exercise suggestions, not verified
+      insect repellency. Editorial and integration review remain pending.
+    cue_template:
+      function_id: OCF-EXP-005
+      allowed:
+      - function.title
+      - cue.primary
+      - cue.id.OCF-CMD-EXP-005-OBSERVE
+      - cue.id.OCF-CMD-EXP-005-SUSPEND
+    text: |-
+      From this moment forward, {{ function.title }} is permanently
+      established within your total self,
+      operating automatically whenever needed.
+
+      Become aware of your body and the space around it.
+      Picture, feel, or simply know this space as calm and clear.
+
+      When unwanted insects or similar small pests approach
+      or make contact, your total self carries one steady intention:
+      remain away, move away, and continue peacefully elsewhere.
+      This intention extends around your whole body,
+      welcoming undisturbed space without harm to other life.
+
+      Your conscious mind, subconscious awareness, physical being,
+      and higher self work together around this purpose.
+      Your calm attention and natural actions cooperate with it,
+      without constant effort or repeated checking.
+
+      Whenever you wish to strengthen this pattern
+      or restore its automatic operation, inhale easily.
+      Think or say in your mind, "{{ cue.primary }}."
+      Then let your breath flow out naturally.
+      Your total self renews this intention as one.
+
+      For deliberate observation or interaction with insects,
+      use the same breath and think or say in your mind,
+      "{{ cue.id.OCF-CMD-EXP-005-OBSERVE }}."
+      The outward encouragement pauses,
+      while your calm awareness remains active.
+
+      To pause the entire function, use the same breath
+      and think or say in your mind,
+      "{{ cue.id.OCF-CMD-EXP-005-SUSPEND }}."
+      All activity of this function pauses.
+      Your ordinary awareness and natural responses remain intact.
+
+      Each chosen mode replaces the previous one.
+      Both overrides are temporary.
+      When you next enter normal sleep or become unconscious,
+      either override ends and automatic operation resumes.
+      Deliberately using the primary command restores it sooner.
+
+      Your learned ability remains with you in every mode.
+      The more you use this function,
+      the more naturally your attention, intention,
+      and total self work together.
+
+  hplus.function.ocf-exp-005.closer:
+    status: reviewed
+    version: 1.0.0
+    notes: >-
+      New OCF-authored reminder, not historical transcript wording.
+      Includes the primary reinforcement/restoration cue and both distinct
+      overrides. The body teaches automatic reset conditions; the closer
+      does not repeat reinforcement or install a new control command.
+      All three commands use an easy inhale and natural exhale, without a
+      breath hold. Requires registered function and reviewed locale cues.
+      Editorial approval and finished-session review remain pending.
+    cue_template:
+      function_id: OCF-EXP-005
+      allowed:
+      - function.title
+      - cue.primary
+      - cue.id.OCF-CMD-EXP-005-OBSERVE
+      - cue.id.OCF-CMD-EXP-005-SUSPEND
+    text: |-
+      Remember, to strengthen or restore {{ function.title }},
+      inhale easily, think or say in your mind, "{{ cue.primary }},"
+      and exhale naturally.
+
+      With the same breath, use "{{ cue.id.OCF-CMD-EXP-005-OBSERVE }}"
+      to allow intentional contact,
+      or "{{ cue.id.OCF-CMD-EXP-005-SUSPEND }}" to pause the entire function.
+
+      This concludes your OCF exercise.

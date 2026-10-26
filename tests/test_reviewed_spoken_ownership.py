@@ -14,7 +14,8 @@ pytestmark = pytest.mark.integration
         ("OCF-SLP-005", "Plus Sleep Easy", True),
         ("OCF-SLP-005", "Plus Quiet Sleep", False),
         ("OCF-EXP-001", "Plus Sleep Easy", False),
-        ("OCF-BOD-006", "Plus Heart Better", True),
+        ("OCF-BOD-006", "Plus Heart Flow", True),
+        ("OCF-BOD-006", "Plus Heart Better", False),
         ("OCF-BOD-006", "Plus Heart Better Better", False),
     ],
 )

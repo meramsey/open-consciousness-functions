@@ -28,6 +28,7 @@ def records(monkeypatch, tmp_path):
                     },
                 },
                 "legacy": {
+                    "source_system": "Monroe H-PLUS",
                     "name": f"Source {index}",
                     "commands": ["PLUS-OLD, COMMAND"],
                     "command_status": status,

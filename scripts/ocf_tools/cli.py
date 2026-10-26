@@ -178,6 +178,12 @@ def _build_parser() -> argparse.ArgumentParser:
     cover_cmd.add_argument("--format", choices=["png", "jpeg"], default="png")
     cover_cmd.add_argument("--version")
     cover_cmd.add_argument("--font", help="explicit installed licensed TTF/OTF override")
+    cover_cmd.add_argument(
+        "--no-cue", action="store_true", help="minimalist cover without the primary cue"
+    )
+    cover_cmd.add_argument(
+        "--no-description", action="store_true", help="omit optional localized artwork copy"
+    )
     cover_cmd.add_argument("--output", type=Path)
     dev = sub.add_parser(
         "dev",
@@ -224,6 +230,14 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     function_preview.add_argument("id")
     function_preview.add_argument("--locale", default="en-US")
+    candidates = function_sub.add_parser(
+        "candidates", help="list or inspect unapproved editorial candidates"
+    )
+    candidates.add_argument("candidate", nargs="?")
+    candidates.add_argument(
+        "--preview", action="store_true", help="include full authored and resolved narration"
+    )
+    candidates.add_argument("--locale", default="en-US")
     function_lookup = function_sub.add_parser(
         "lookup",
         help="find current presentation by a historical name or phrase; never selects activation",
@@ -311,6 +325,47 @@ def _build_parser() -> argparse.ArgumentParser:
 
     audio = sub.add_parser("audio", help="audio tooling")
     audio_sub = audio.add_subparsers(dest="audio_kind")
+    export_cmd = audio_sub.add_parser(
+        "export-audition",
+        help="export completed session listening copies with versioned artwork; never synthesize or mix",
+    )
+    export_cmd.add_argument(
+        "source",
+        type=Path,
+        help="completed session directory or verified private listening-export directory",
+    )
+    export_cmd.add_argument(
+        "--edition-version", help="explicit new private audio/session edition X.Y.Z"
+    )
+    export_cmd.add_argument("--edition", type=Path, help="reuse a hash-bound audition-edition.json")
+    export_cmd.add_argument(
+        "--flac-source", type=Path, help="stream-copy an existing lossless listening export"
+    )
+    export_cmd.add_argument(
+        "--mp3-source", type=Path, help="stream-copy an existing MP3 without re-encoding"
+    )
+    export_cmd.add_argument(
+        "--artwork", type=Path, help="explicit custom cover, higher priority than themes"
+    )
+    export_cmd.add_argument("--artwork-theme", help="explicit artwork theme or custom theme file")
+    export_cmd.add_argument(
+        "--no-artwork", action="store_true", help="explicitly disable default artwork"
+    )
+    export_cmd.add_argument("--artwork-resolution", type=int, default=1400)
+    export_cmd.add_argument(
+        "--no-cue", action="store_true", help="minimalist generated cover; cue metadata retained"
+    )
+    export_cmd.add_argument(
+        "--no-description", action="store_true", help="omit cover description; metadata retained"
+    )
+    export_cmd.add_argument("--output", type=Path, help="new directory inside the OCF workspace")
+    export_cmd.add_argument("--dry-run", action="store_true")
+    export_cmd.add_argument("--guides", type=Path, help="attach current cached listener guides")
+    export_cmd.add_argument(
+        "--lyrics",
+        action="store_true",
+        help="measured sidecars and native MP3/FLAC lyrics; requires .[listener]",
+    )
     review_sessions_cmd = audio_sub.add_parser(
         "review-sessions",
         help="compare 1..8 actual session bindings; optional short exact-sentence speech excerpts",
@@ -330,6 +385,9 @@ def _build_parser() -> argparse.ArgumentParser:
     bulk_cmd.add_argument("--voice", required=True)
     bulk_cmd.add_argument("--pacing", choices=["normal", "relaxed", "sleep"], default="sleep")
     bulk_cmd.add_argument("--rate", type=int, default=44100)
+    bulk_cmd.add_argument(
+        "--dsp-profile", help="Explicit semantic DSP profile ID or local YAML path"
+    )
     bulk_cmd.add_argument("--dry-run", action="store_true")
     bulk_cmd.add_argument(
         "--resume",
@@ -455,6 +513,15 @@ def _build_parser() -> argparse.ArgumentParser:
         "--dsp-profile", help="explicit state/background profile override"
     )
     narration_render.add_argument("--output", help="new audition directory (never overwritten)")
+    narration_render.add_argument(
+        "--audition-version",
+        default="0.1.0",
+        help="private session edition, independent of narration/template versions",
+    )
+    narration_render.add_argument("--artwork", type=Path, help="explicit custom session cover")
+    narration_render.add_argument(
+        "--artwork-theme", help="session cover theme; configured artwork surface by default"
+    )
     narration_render.add_argument("--rate", type=int, default=44100, help="sample rate (Hz)")
     narration_render.add_argument(
         "--mix-profile",
@@ -552,6 +619,10 @@ def _build_parser() -> argparse.ArgumentParser:
     release_cmd.add_argument("--artwork-resolution", type=int, default=1400)
     release_cmd.add_argument("--output", help="release root directory (default: releases/)")
     release_cmd.add_argument("--version", help="explicit release version")
+    release_cmd.add_argument("--guides", type=Path, help="attach current cached listener guides")
+    release_cmd.add_argument(
+        "--lyrics", action="store_true", help="embed measured MP3/FLAC lyrics; requires .[listener]"
+    )
     release_cmd.add_argument(
         "--tag", action="append", default=[], help="metadata override KEY=VALUE"
     )
@@ -1258,6 +1329,9 @@ def main(argv: list[str] | None = None) -> int:
                     version=args.version,
                     overrides={"font": args.font} if args.font else None,
                     output=args.output,
+                    show_cue=not args.no_cue,
+                    show_description=not args.no_description,
+                    lyrics=args.lyrics,
                 )
             print(json.dumps(result, ensure_ascii=False, indent=2))
             return 0
@@ -1336,6 +1410,13 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == "functions":
             import json
+
+            if args.function_kind == "candidates":
+                from .agent_api import inspect_candidates
+
+                result = inspect_candidates(args.candidate, args.locale, args.preview)
+                print(json.dumps(result, ensure_ascii=False, indent=2))
+                return int(result.get("status") == "error")
 
             if args.function_kind == "preview":
                 from .cue_templates import preview
@@ -1499,6 +1580,30 @@ def main(argv: list[str] | None = None) -> int:
                     create_lock()
                 print(json.dumps(check_lock(), indent=2, ensure_ascii=False))
                 return 0
+            if args.audio_kind == "export-audition":
+                import json
+
+                from .audition_exports import export_audition
+
+                result = export_audition(
+                    args.source,
+                    edition_version=args.edition_version,
+                    lyrics=args.lyrics,
+                    guides=args.guides,
+                    edition=args.edition,
+                    flac_source=args.flac_source,
+                    mp3_source=args.mp3_source,
+                    artwork_file=args.artwork,
+                    artwork_theme=args.artwork_theme,
+                    no_artwork=args.no_artwork,
+                    artwork_resolution=args.artwork_resolution,
+                    show_cue=not args.no_cue,
+                    show_description=not args.no_description,
+                    output=args.output,
+                    dry_run=args.dry_run,
+                )
+                print(json.dumps(result, ensure_ascii=False, indent=2))
+                return 0
             if args.audio_kind == "render-many":
                 import json
 
@@ -1515,6 +1620,7 @@ def main(argv: list[str] | None = None) -> int:
                     force=args.force,
                     resume=args.resume,
                     sample_rate=args.rate,
+                    dsp_profile=args.dsp_profile,
                 )
                 print(json.dumps(result, ensure_ascii=False, indent=2))
                 return 1 if result["failed"] else 0
@@ -1605,6 +1711,8 @@ def main(argv: list[str] | None = None) -> int:
                         or args.narration_sources
                         or args.narration_source
                         or args.mix_profile
+                        or args.artwork
+                        or args.artwork_theme
                         or not args.voice
                     ):
                         raise OCFError(
@@ -1633,6 +1741,13 @@ def main(argv: list[str] | None = None) -> int:
                         overrides=read_json_object(args.overrides) if args.overrides else None,
                         voice_gain=args.voice_gain,
                         background_gain=args.background_gain,
+                        **(
+                            {"audition_version": args.audition_version}
+                            if args.audition_version != "0.1.0"
+                            else {}
+                        ),
+                        **({"artwork_file": args.artwork} if args.artwork else {}),
+                        **({"artwork_theme": args.artwork_theme} if args.artwork_theme else {}),
                         **(
                             {"mix_profile": args.mix_profile}
                             if args.mix_profile is not None
@@ -1777,6 +1892,8 @@ def main(argv: list[str] | None = None) -> int:
                     metadata_overrides=metadata_overrides,
                     dry_run=args.dry_run,
                     overwrite=args.force,
+                    lyrics=args.lyrics,
+                    guides=args.guides,
                 )
                 print(json.dumps(result, ensure_ascii=False, indent=2))
                 return 0

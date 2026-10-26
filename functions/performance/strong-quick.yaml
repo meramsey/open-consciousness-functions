@@ -48,7 +48,7 @@ commands:
       operation: select-activity
       localization_key: command.procedure.select-activity
   relationships: {}
-  spoken: "Plus Strong Quick"
+  spoken: Plus Strong Quick
   spoken_review: reviewed
 - id: OCF-CMD-PRF-006-LEGACY-01
   function_id: OCF-PRF-006
@@ -97,7 +97,7 @@ commands:
   relationships:
     releases:
     - OCF-CMD-PRF-006-PRIMARY
-  spoken: "Plus Release"
+  spoken: Plus Release
   spoken_review: reviewed
 command_phrases:
 - id: OCF-CMD-PRF-006-RELEASE
@@ -154,10 +154,10 @@ ocf:
   command_review: review-required
   reimplementation_status: planned
 purpose:
-  community_description: Combines strength and quickness in a single felt state; proposed concise cue
-    PLUS-STRONG QUICK.
+  community_description: Combines strength and quickness in a single felt state; activation cue PLUS-STRONG
+    QUICK.
   source_description: null
-  summary: Combines strength and quickness in a single felt state; proposed concise cue PLUS-STRONG QUICK.
+  summary: Combines strength and quickness in a single felt state; activation cue PLUS-STRONG QUICK.
 safety:
   level: general
   medical_relevance: false

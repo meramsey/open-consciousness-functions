@@ -198,6 +198,24 @@ def _function_document(
             )
         commands.append(view)
 
+    from .guide_review import relationships
+    from .indexes import load_function_by_id
+
+    related_functions = []
+    for relation in relationships(record):
+        target = load_function_by_id(relation["related_id"])
+        if target is None:
+            raise CommandDocumentationError("unknown approved related function")
+        related_functions.append(
+            {
+                "relationship_id": relation["relationship_id"],
+                "function_id": target.id,
+                "title": _localized(catalog, target.documentation["title_key"], locale),
+                "description": _localized(catalog, relation["description_key"], locale),
+                "dependency": "optional",
+                "approval": "OCF-GUIDE-REVIEW-001",
+            }
+        )
     return {
         "function_id": record.id,
         "slug": record.slug,
@@ -223,6 +241,7 @@ def _function_document(
         ],
         "reimplementation_status": record.reimplementation_status,
         "commands": commands,
+        "related_functions": related_functions,
     }
 
 
@@ -240,6 +259,17 @@ def build_command_index(locale: str | None = None, catalog: LocaleCatalog | None
         if value["fallback"]
     ]
     for function in functions:
+        for relation in function.get("related_functions", []):
+            for field in ("title", "description"):
+                value = relation[field]
+                if value.get("fallback"):
+                    fallback_rows.append(
+                        {
+                            "function_id": function["function_id"],
+                            "key": value["key"],
+                            "locale": value["resolved_locale"],
+                        }
+                    )
         for scope in function.get("lifecycle_scopes", []):
             for field in ("label", "description"):
                 value = scope[field]
@@ -495,6 +525,13 @@ def render_function_sheet(function: dict, index: dict) -> str:
                 targets = ", ".join(f"`{item['phrase']}`" for item in relation["commands"])
                 lines.append(f"- {relation['label']['text']}: {targets}")
             lines.append("")
+    if function.get("related_functions"):
+        lines += [f"## {strings['command.guide.relationships']['text']}", ""]
+        for relation in function["related_functions"]:
+            lines += [
+                f"- [{relation['title']['text']}]({relation['function_id']}.md): {relation['description']['text']} (`optional`; `{relation['approval']}`)."
+            ]
+        lines.append("")
     fallback_count = index["fallback_count"]
     if fallback_count:
         lines.extend([f"> {strings['command.guide.fallback-note']['text']}", ""])

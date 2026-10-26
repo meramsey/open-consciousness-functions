@@ -8,37 +8,40 @@ Complete index of every OCF function record. Sorted by OCF ID.
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | `OCF-AUT-001` | Automatic Action | SEE-BE | `PLUS-AUTOMATE` | `PLUS-AUTOMATE` | automation | permanent | unavailable | planned | approved | unchanged | 0 | 0 | functions/automation/see-be.yaml |
 | `OCF-BOD-001` | Brain Flow | BRAIN: REPAIRS & MAINTENANCE | `PLUS-BRAIN FLOW` | `PLUS-FLOW BETTER` | body | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/body/brain-repairs.yaml |
-| `OCF-BOD-002` | Circulation | CIRCULATION | `PLUS-FLOW SMOOTH` | `PLUS-FLOW SMOOTH` | body | permanent | available | planned | approved | unchanged | 0 | 0 | functions/body/circulation.yaml |
+| `OCF-BOD-002` | Circulation | CIRCULATION | `PLUS-CIRCULATE` | `PLUS-FLOW SMOOTH` | body | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/body/circulation.yaml |
 | `OCF-BOD-003` | Comfort | DE-DISCOMFORT | `PLUS-COMFORT` | `PLUS-55515` | body | temporary | available | planned | approved | historical-lookup | 0 | 0 | functions/body/de-discomfort.yaml |
 | `OCF-BOD-004` | Detox | DE-TOX: BODY | `PLUS-DETOX` | `PLUS-CLEAN, CLEAR` | body | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/body/de-tox-body.yaml |
-| `OCF-BOD-005` | Appetite Choice | EAT/NO EAT | `PLUS-SATISFIED, SUPPLIED` | `PLUS-SATISFIED, SUPPLIED` | body | permanent | available | planned | approved | unchanged | 0 | 0 | functions/body/eat-no-eat.yaml |
-| `OCF-BOD-006` | Heart Flow | HEART: REPAIRS & MAINTENANCE | `PLUS-HEART-BETTER` | `PLUS-HEART, BETTER, BETTER` | body | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/body/heart-repairs.yaml |
+| `OCF-BOD-005` | Appetite Choice | EAT/NO EAT | `PLUS-SATISFIED` | `PLUS-SATISFIED, SUPPLIED` | body | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/body/eat-no-eat.yaml |
+| `OCF-BOD-006` | Heart Flow | HEART: REPAIRS & MAINTENANCE | `PLUS-HEART-FLOW` | `PLUS-HEART, BETTER, BETTER` | body | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/body/heart-repairs.yaml |
 | `OCF-BOD-007` | Blood Pressure Balance | HYPERTENSION | `PLUS-BALANCE BLOOD PRESSURE` | `PLUS-BALANCE-BLOODPRESSURE` | body | permanent | available | planned | approved | unchanged | 0 | 0 | functions/body/hypertension.yaml |
 | `OCF-BOD-008` | Immune Readiness | IMMUNIZING | `PLUS-IMMUNE READY` | `PLUS-ALERT, DESTROY` | body | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/body/immunizing.yaml |
 | `OCF-BOD-009` | Breathe Better | LUNGS: REPAIRS & MAINTENANCE | `PLUS-BREATHE BETTER` | `PLUS-BREATH BETTER` | body | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/body/lungs-repairs.yaml |
 | `OCF-BOD-010` | Nutricia | NUTRICIA | `PLUS-FOOD MORE` | `PLUS-FOOD MORE` / `PLUS-FOOD LESS` | body | temporary | available | planned | needs-review | alias-listed | 0 | 0 | functions/body/nutricia.yaml |
 | `OCF-BOD-011` | Hormonal Transitions | PASSAGES | `PLUS-HORMONE BALANCE` | `PLUS-EQUALIZE-HARMONIZE` | body | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/body/passages.yaml |
 | `OCF-BOD-012` | Sex Drive | SEX DRIVE | `PLUS-SEX MORE` | `PLUS-SEX GREATER` / `PLUS-SEX LESSER` | body | temporary | available | planned | needs-review | alias-listed | 0 | 0 | functions/body/sex-drive.yaml |
-| `OCF-BOD-013` | Body Tune-Up | TUNE-UP | `PLUS-BALANCE, HEAL` | `PLUS-BALANCE, HEAL` | body | permanent | available | planned | approved | unchanged | 0 | 0 | functions/body/tune-up.yaml |
+| `OCF-BOD-013` | Body Tune-Up | TUNE-UP | `PLUS-TUNE-UP` | `PLUS-BALANCE, HEAL` | body | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/body/tune-up.yaml |
 | `OCF-BOD-014` | Regenerate | REGENERATE | `PLUS-REGENERATE` | `PLUS-BUILD, LIVE` | body | permanent | unavailable | planned | approved | historical-lookup | 0 | 0 | functions/body/regenerate.yaml |
 | `OCF-BOD-015` | Temporary Numbing | SHORT FIX | `PLUS-NUMB` | `PLUS-GO NUMB, GO NUMB` / `PLUS-RELEASE` | body | temporary | unavailable | planned | approved | historical-lookup | 0 | 0 | functions/body/short-fix.yaml |
 | `OCF-COG-001` | Information Access | ACCESS TO INFORMATION | `PLUS-ACCESS INFO` | `PLUS-RETRIEVE` | cognition | temporary | available | planned | approved | historical-lookup | 0 | 0 | functions/cognition/access-to-information.yaml |
 | `OCF-COG-002` | Mental Calculation | BUY THE NUMBERS | `PLUS-CALCULATE` | `PLUS-CALCULATE` | cognition | permanent | available | planned | approved | unchanged | 0 | 0 | functions/cognition/buy-the-numbers.yaml |
 | `OCF-COG-003` | Contemplation | CONTEMPLATION | `PLUS-OPEN` | `PLUS-OPEN` / `PLUS-CLOSED` | cognition | temporary | available | planned | approved | unchanged | 0 | 0 | functions/cognition/contemplation.yaml |
 | `OCF-COG-004` | Imprint | IMPRINT | `PLUS-IMPRINT` | `PLUS-IMPRINT, IMPRINT` / `PLUS-RECALL` | cognition | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/cognition/imprint.yaml |
-| `OCF-COG-005` | Options | OPTIONS | `PLUS-OPTIONS` | `PLUS-OPTIONS, CHOICES` | cognition | temporary | available | planned | approved | unchanged | 0 | 0 | functions/cognition/options.yaml |
+| `OCF-COG-005` | Options | OPTIONS | `PLUS-OPTIONS` | `PLUS-OPTIONS, CHOICES` | cognition | temporary | available | planned | approved | historical-lookup | 0 | 0 | functions/cognition/options.yaml |
 | `OCF-COG-006` | Recall | RECALL | `PLUS-RECALL` | `PLUS-RECALL` | cognition | temporary | available | planned | approved | unchanged | 0 | 0 | functions/cognition/recall.yaml |
 | `OCF-COG-007` | Think Fast | THINK FAST | `PLUS-THINK` | `PLUS-THINK` | cognition | permanent | available | planned | approved | unchanged | 0 | 0 | functions/cognition/think-fast.yaml |
 | `OCF-COM-001` | Speak Up | SPEAK UP | `PLUS-SPEAK UP` | `PLUS-SPEAK UP` | communication | permanent | available | planned | approved | unchanged | 0 | 0 | functions/communication/speak-up.yaml |
-| `OCF-EMG-001` | Injury Response | EMERGENCY: INJURY | `PLUS-CONTROL, BALANCE, RESTORE` | `PLUS-CONTROL, BALANCE, RESTORE` | emergency | temporary | unavailable | planned | approved | unchanged | 0 | 0 | functions/emergency/emergency-injury.yaml |
-| `OCF-EMG-002` | Toxic Exposure Response | EMERGENCY: TOXIC | `PLUS-CLEAR, REMOVE` | `PLUS-CLEAR, REMOVE` | emergency | temporary | unavailable | planned | approved | unchanged | 0 | 0 | functions/emergency/emergency-toxic.yaml |
+| `OCF-EMG-001` | Injury Response | EMERGENCY: INJURY | `PLUS-INJURY-RESPONSE` | `PLUS-CONTROL, BALANCE, RESTORE` | emergency | temporary | unavailable | planned | approved | historical-lookup | 0 | 0 | functions/emergency/emergency-injury.yaml |
+| `OCF-EMG-002` | Toxic Exposure Response | EMERGENCY: TOXIC | `PLUS-TOXIC-CLEAR` | `PLUS-CLEAR, REMOVE` | emergency | temporary | unavailable | planned | approved | historical-lookup | 0 | 0 | functions/emergency/emergency-toxic.yaml |
 | `OCF-EMO-001` | Let Go | LET GO | `PLUS-LET GO` | `PLUS-LET GO` | emotion | temporary | available | planned | approved | unchanged | 0 | 0 | functions/emotion/let-go.yaml |
 | `OCF-EMO-002` | Offload | OFF-LOADING | `PLUS-OFFLOAD` | `PLUS-FADE, FADE` | emotion | temporary | available | planned | approved | historical-lookup | 0 | 0 | functions/emotion/off-loading.yaml |
 | `OCF-EMO-003` | Empathize | EMPATHIZING | `PLUS-EMPATHIZE` | `PLUS-PROFILE, PROFILE` | emotion | temporary | unavailable | planned | approved | historical-lookup | 0 | 0 | functions/emotion/empathizing.yaml |
 | `OCF-EXP-001` | Manifest | MOBIUS WEST | `PLUS-MANIFEST` | `PLUS-CHANGE, CHANGE` | experimental | temporary | available | planned | approved | historical-lookup | 0 | 0 | functions/experimental/mobius-west.yaml |
 | `OCF-EXP-002` | Insulate | ZONING | `PLUS-INSULATE` | `PLUS-INSULATE, INSULATE` / `PLUS-CANCEL` | experimental | temporary | unavailable | planned | approved | historical-lookup | 0 | 0 | functions/experimental/zoning.yaml |
+| `OCF-EXP-003` | Dissolve |  | `PLUS-DISSOLVE` |  | experimental | permanent | pending-source-review | in-progress | approved | none | 0 | 0 | functions/experimental/dissolve.yaml |
+| `OCF-EXP-005` | Clear Zone |  | `PLUS-CLEAR ZONE` |  | experimental | permanent | pending-source-review | in-progress | approved | none | 0 | 0 | functions/experimental/clear-zone.yaml |
+| `OCF-EXP-006` | Intuition |  | `PLUS-INTUITION` |  | experimental | permanent | pending-source-review | in-progress | approved | none | 0 | 0 | functions/experimental/intuition.yaml |
 | `OCF-FND-001` | Access to Energy | ACCESS TO ENERGY | `PLUS-ENERGIZE` | `PLUS-ENERGIZE` | foundation | temporary | available | planned | approved | unchanged | 0 | 0 | functions/foundation/energize.yaml |
-| `OCF-FND-002` | Attention | ATTENTION | `PLUS-FOCUS` | `PLUS-FOCUS` | foundation | temporary | available | complete | approved | unchanged | 1 | 11 | functions/foundation/attention.yaml |
+| `OCF-FND-002` | Focus | ATTENTION | `PLUS-FOCUS` | `PLUS-FOCUS` | foundation | temporary | available | complete | approved | historical-lookup | 1 | 11 | functions/foundation/attention.yaml |
 | `OCF-FND-003` | Quick Recharge | RECHARGE | `PLUS-RECHARGE` | `PLUS-RECHARGE` | foundation | temporary | available | planned | approved | unchanged | 0 | 0 | functions/foundation/recharge.yaml |
 | `OCF-FND-004` | Relax | RELAX | `PLUS-RELAX` | `PLUS-RELAX, RELAX` | foundation | temporary | available | planned | approved | historical-lookup | 0 | 0 | functions/foundation/relax.yaml |
 | `OCF-FND-005` | Reset | RESET | `PLUS-RESET` | `PLUS-RESET, RESET` | foundation | temporary | available | planned | approved | historical-lookup | 0 | 0 | functions/foundation/reset.yaml |
@@ -46,7 +49,7 @@ Complete index of every OCF function record. Sorted by OCF ID.
 | `OCF-LIF-001` | Habit Freedom | DE-HAB | `PLUS-FREE THIS HABIT` | `PLUS-NO MORE, NO MORE` | lifestyle | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/lifestyle/de-hab.yaml |
 | `OCF-PRF-001` | Do This Now | DO THIS NOW | `PLUS-DO-THIS-NOW` | `PLUS-DO-THIS-NOW` | performance | temporary | available | planned | approved | unchanged | 0 | 0 | functions/performance/do-this-now.yaml |
 | `OCF-PRF-002` | Inner Power | EIGHT-GREAT | `PLUS-INNER POWER` | `PLUS-EIGHT, GREAT` | performance | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/performance/eight-great.yaml |
-| `OCF-PRF-003` | Coordination | SYNCHRONIZING | `PLUS-SMOOTH, FAST` | `PLUS-SMOOTH, FAST` | performance | permanent | available | planned | approved | unchanged | 0 | 0 | functions/performance/synchronizing.yaml |
+| `OCF-PRF-003` | Coordination | SYNCHRONIZING | `PLUS-COORDINATE` | `PLUS-SMOOTH, FAST` | performance | permanent | available | planned | approved | historical-lookup | 0 | 0 | functions/performance/synchronizing.yaml |
 | `OCF-PRF-004` | Light Foot | LIGHT FOOT | `PLUS-LIGHT STEP` | `PLUS-LIGHTER, LIGHTER` | performance | permanent | unavailable | planned | approved | historical-lookup | 0 | 0 | functions/performance/light-foot.yaml |
 | `OCF-PRF-005` | Make Your Day | MAKE YOUR DAY | `PLUS-THIS DAY` | `PLUS-THIS DAY` | performance | temporary | unavailable | planned | approved | unchanged | 0 | 0 | functions/performance/make-your-day.yaml |
 | `OCF-PRF-006` | Strong-Quick | STRONG-QUICK | `PLUS-STRONG QUICK` | `PLUS-STRONG-QUICK` | performance | temporary | unavailable | planned | review-required | bridge-trainable | 0 | 0 | functions/performance/strong-quick.yaml |
@@ -62,4 +65,4 @@ Complete index of every OCF function record. Sorted by OCF ID.
 | `OCF-SLP-005` | Sleep Easy | SLEEP EASY | `PLUS-SLEEP EASY` | `PLUS-QUIET, SLEEP` | sleep | temporary | unavailable | planned | approved | historical-lookup | 0 | 0 | functions/sleep/sleep-easy.yaml |
 | `OCF-SLP-006` | Stay Awake | STAY AWAKE | `PLUS-AWAKE` | `PLUS-ONE, AWAKE, ALERT, ONE, ONE` | sleep | temporary | unavailable | planned | approved | historical-lookup | 0 | 0 | functions/sleep/stay-awake.yaml |
 
-55 functions listed.
+58 functions listed.

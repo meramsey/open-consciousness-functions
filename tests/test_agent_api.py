@@ -48,7 +48,7 @@ def test_compact_lookup_exposes_lifecycle_scopes_and_resolved_command_effects():
 def test_pagination_schema_summary_and_workflow_commands():
     first = api.list_functions(limit=2)
     second = api.list_functions(offset=2, limit=2)
-    assert first["total"] == 55 and first["next_offset"] == 2
+    assert first["total"] == 58 and first["next_offset"] == 2
     assert not set(r["id"] for r in first["items"]) & set(r["id"] for r in second["items"])
     assert api.list_functions(limit=500)["status"] == "failed"
     assert "canonical" in api.get_schema("function.schema.json")["fields"]

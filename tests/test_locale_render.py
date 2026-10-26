@@ -369,6 +369,15 @@ class TestLocaleCli:
 # ---------------------------------------------------------------------------
 
 
+def timing_fixture_cover(tmp_path):
+    """Keep narration-timing fixtures independent of artwork locale review."""
+    from PIL import Image
+
+    path = tmp_path / "timing-fixture-cover.png"
+    Image.new("RGB", (320, 320), "navy").save(path)
+    return path
+
+
 class TestBuildManifest:
     """`ocf audio build --locale` must record measured speech timings."""
 
@@ -405,6 +414,7 @@ class TestBuildManifest:
             render_cue=fixed_cue,
             locale="es",
             overwrite=True,
+            artwork=timing_fixture_cover(tmp_path),
         )
         assert report["voice"]["locale"] == "es"
         assert report["narration_timing"]["measured"] is True
@@ -424,6 +434,7 @@ class TestBuildManifest:
             render_cue=fixed_cue,
             locale="es",
             overwrite=True,
+            artwork=timing_fixture_cover(tmp_path),
         )
         render_manifest = next(out_root.glob("OCF-RENDER-*.yaml"))
         assert (
@@ -500,6 +511,7 @@ class TestRegressions:
             render_cue=fixed_cue,  # 0.25 s of audio
             locale="es",
             overwrite=True,
+            artwork=timing_fixture_cover(tmp_path),
         )
         assert report["narration_timing"]["cues"][0]["duration"] == pytest.approx(0.25, abs=0.01)
 

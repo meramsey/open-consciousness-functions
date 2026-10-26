@@ -85,8 +85,36 @@ includes exact text, locale, engine/model/configuration bytes, settings, rate,
 package versions and renderer identity. Cache PCM is verified before reuse.
 Auditions, receipts, cache and logs remain in `.ocf-work/`; nothing uploads audio.
 
+Resume also verifies the effective background profile, preset/source bytes and
+engine identity, including when no `--dsp-profile` override is supplied. Farfield
+stem caching and bulk resume share one installed-runtime fingerprint: supported
+Python console launchers bind the executable, interpreter, installed dependency
+files and resolved implementation trees. Unknown/custom launchers or missing
+identity disable verified resume and report that explicitly; they do not prevent
+an otherwise supported render. The runtime must expose dependency metadata and
+the optional `packaging` requirement parser for verified Farfield reuse; otherwise
+reuse is bypassed. Active dependency markers/extras are respected, and unresolved
+dependencies or bytecode-only imports cannot authorize reuse. No optional engine
+is probed during dry-run.
+
+Reference-master profiles bind the actual local source and splice files, profile
+settings, without requiring Farfield. All backgrounds also bind the common
+FFmpeg/FFprobe executables. Within one batch,
+measured file hashes are reused only while resolved path, device/inode, size,
+modification time and change time remain unchanged. Replacements are rehashed;
+there is no persistent trust cache for private masters. This optimization assumes
+ordinary local filesystem metadata, not hostile concurrent metadata manipulation.
+`--force` bypasses both speech and DSP stem caches throughout nested render calls;
+the normal cache policy is restored after the forced scope ends.
+
 Inspect `session-report.json`, `session-timing-report.json`, the transcript and
 the three `pacing-auditions/` excerpts. Listen and record human review separately.
+For ordinary private FLAC/MP3 listening copies, run `audio export-audition
+COMPLETED_SESSION_DIRECTORY --edition-version 0.1.0` with a deliberately selected
+private edition. This defaults to configured OCF artwork with a visible edition
+label. Existing compressed copies can be stream-copied with `--flac-source` and
+`--mp3-source`; use `--no-artwork` only to disable the default explicitly. See
+[private listening exports](AUDIO_PIPELINE.md#private-listening-exports-from-completed-sessions).
 For a release, use the existing [release workflow](AUDIO_PIPELINE.md#final-release-packages)
 with a registered implementation, explicit artwork and required rights/release
 review. A generated plan is not an audio implementation or release clearance.

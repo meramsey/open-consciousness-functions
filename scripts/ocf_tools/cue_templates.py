@@ -105,7 +105,7 @@ def choices(owner):
     return result
 
 
-def value(owner, symbol, locale, catalog):
+def value(owner, symbol, locale, catalog, *, draft_review=False):
     if symbol == "function.title":
         key = owner.documentation.get("title_key")
         if not key:
@@ -119,6 +119,8 @@ def value(owner, symbol, locale, catalog):
             )
         return entry.text, {"key": key, "locale": resolution.origin_locale, "function_id": owner.id}
     command = select_command(owner, symbol)
+    if draft_review and command.data.get("spoken_review") == "unresolved":
+        return draft_cue(owner, command, locale, catalog)
     if ".variant." in symbol:
         variant = symbol.split(".variant.", 1)[1]
         key = command.localization.get("spoken_variant_keys", {}).get(variant)
@@ -150,10 +152,35 @@ def value(owner, symbol, locale, catalog):
     return resolved["spoken_cue"], resolved
 
 
-def expand(entry, locale, catalog):
+def draft_cue(owner, command, locale, catalog):
+    """Inspect proposed vocabulary without authorizing production speech."""
+    if owner.data.get("audio", {}).get("script_status") != "draft":
+        raise CueTemplateError(f"{owner.id}: proposed cues require a draft function")
+    key = command.localization.get("spoken_cue_key")
+    if not key:
+        raise CueTemplateError(f"{command.id}: missing proposed locale cue binding")
+    entry, resolution = catalog.raw_resource(key, locale, domain="narration", fallback=False)
+    if entry.cue_template is not None or "{" in entry.text or "}" in entry.text:
+        raise CueTemplateError(f"{command.id}: proposed cue must be literal")
+    if not entry.text.strip() or entry.status != "draft":
+        raise CueTemplateError(f"{command.id}: proposed cue must have draft status and text")
+    if resolution.origin_locale == "en-US" and entry.text != command.data.get("spoken"):
+        raise CueTemplateError(f"{command.id}: proposed cue conflicts with function YAML")
+    return entry.text, {
+        "command_id": command.id,
+        "key": key,
+        "locale": resolution.origin_locale,
+        "status": "draft",
+        "production_authorized": False,
+    }
+
+
+def expand(entry, locale, catalog, *, draft_review=False):
     contract = entry.cue_template
     owner_id = contract.get("function_id")
     try:
+        if draft_review and entry.status != "draft":
+            raise CueTemplateError("draft review requires a draft narration resource")
         if entry.domain != "narration":
             raise CueTemplateError("cue templates are authorized only for narration resources")
         if entry.variables:
@@ -197,7 +224,9 @@ def expand(entry, locale, catalog):
             if "text" in piece:
                 result.append(piece["text"])
                 continue
-            text, provenance = value(owner, piece["symbol"], locale, catalog)
+            text, provenance = value(
+                owner, piece["symbol"], locale, catalog, draft_review=draft_review
+            )
             if not isinstance(text, str) or not text.strip() or "{" in text or "}" in text:
                 raise CueTemplateError(
                     f"{piece['symbol']}: empty/circular/nested cue value is forbidden"

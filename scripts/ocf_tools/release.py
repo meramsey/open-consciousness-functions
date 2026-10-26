@@ -13,6 +13,7 @@ from typing import Any
 
 from .artifact_names import ArtifactNamer, safe_component
 from .indexes import find_audio_manifest, load_audio_manifests, load_function_by_id
+from .listener_text import plain_transcript as transcript_from_render
 from .locale import LocaleCatalog, normalize_tag
 from .paths import (
     REPO_ROOT,
@@ -131,7 +132,7 @@ def _verify_audio(
     *,
     function_id: str,
     title: str,
-    artwork: Path,
+    artwork: Path | None,
     expected_tags: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     ffmpeg = _ffmpeg()
@@ -171,13 +172,27 @@ def _verify_audio(
         ),
         None,
     )
-    if picture_stream is None:
+    if artwork is not None and picture_stream is None:
         raise OCFError(f"{path.name}: embedded cover artwork was not found")
+    if artwork is not None:
+        _verify_embedded_cover(path, artwork)
+    audio_stream = next((s for s in info.get("streams", []) if s.get("codec_type") == "audio"), {})
+    return {
+        "codec": audio_stream.get("codec_name"),
+        "sample_rate": int(audio_stream.get("sample_rate") or 0),
+        "channels": int(audio_stream.get("channels") or 0),
+        "duration_seconds": float(info.get("format", {}).get("duration") or 0),
+        "bit_rate": int(info.get("format", {}).get("bit_rate") or 0) or None,
+        "tags": tags,
+    }
+
+
+def _verify_embedded_cover(path: Path, artwork: Path) -> None:
     extracted = path.with_name(f".{path.stem}.cover{artwork.suffix}")
     try:
         result = workspace_run(
             [
-                ffmpeg,
+                _ffmpeg(),
                 "-v",
                 "error",
                 "-y",
@@ -198,15 +213,6 @@ def _verify_audio(
             raise OCFError(f"{path.name}: embedded artwork does not match release cover")
     finally:
         extracted.unlink(missing_ok=True)
-    audio_stream = next((s for s in info.get("streams", []) if s.get("codec_type") == "audio"), {})
-    return {
-        "codec": audio_stream.get("codec_name"),
-        "sample_rate": int(audio_stream.get("sample_rate") or 0),
-        "channels": int(audio_stream.get("channels") or 0),
-        "duration_seconds": float(info.get("format", {}).get("duration") or 0),
-        "bit_rate": int(info.get("format", {}).get("bit_rate") or 0) or None,
-        "tags": tags,
-    }
 
 
 def _manifest_schema() -> dict[str, Any]:
@@ -222,28 +228,6 @@ def _validate_manifest(manifest: dict[str, Any]) -> None:
         raise OCFError(
             "release manifest validation failed: " + "; ".join(e.message for e in errors)
         )
-
-
-def transcript_from_render(render_doc: dict[str, Any]) -> str:
-    """Export exactly the post-transform utterances submitted to synthesis."""
-    cues = render_doc.get("narration_timing", {}).get("cues", [])
-    ordered = sorted(
-        cues,
-        key=lambda cue: (float(cue.get("at", 0)), str(cue.get("id", ""))),
-    )
-    lines: list[str] = []
-    for cue in ordered:
-        if "spoken_text" not in cue:
-            raise OCFError(
-                f"render cue {cue.get('id', '?')!r} has no final spoken_text; rebuild with current OCF"
-            )
-        text = str(cue["spoken_text"]).strip()
-        from .cue_templates import reject_unexpanded
-
-        reject_unexpanded(text)
-        if text:
-            lines.append(text)
-    return "\n\n".join(lines).rstrip() + "\n"
 
 
 def artwork_selection(query: str, explicit_theme: str | None = None):
@@ -276,6 +260,8 @@ def package_release(
     dry_run: bool = False,
     overwrite: bool = False,
     created_at: datetime | None = None,
+    lyrics: bool = False,
+    guides: str | Path | None = None,
 ) -> dict[str, Any]:
     """Render, verify, and publish one complete function release directory."""
     from . import audio_build
@@ -316,6 +302,13 @@ def package_release(
         raise OCFError("release formats must contain one or more of: mp3, flac")
     audio_manifest, record, selected_theme, theme_source = artwork_selection(query, artwork_theme)
     function_id = record.id
+    release_version = version or str(
+        audio_manifest.get("version") or record.data.get("version", {}).get("current") or "1.0.0"
+    )
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._+-]{0,63}", release_version):
+        raise OCFError(
+            "release version must use only letters, digits, dot, underscore, plus, or hyphen"
+        )
     if artwork is None and selected_theme is None:
         raise OCFError(
             "release artwork is required; pass an explicitly approved --artwork image or select an artwork theme"
@@ -328,7 +321,7 @@ def package_release(
             locale=locale or "en-US",
             theme=selected_theme,
             resolution=artwork_resolution,
-            version=version,
+            version=release_version,
             title_override=overrides.get("title"),
             dry_run=dry_run,
         )
@@ -370,21 +363,18 @@ def package_release(
             "resource_key": None,
             "source": "operator-title-override",
         }
-    release_version = version or str(
-        audio_manifest.get("version") or record.data.get("version", {}).get("current") or "1.0.0"
-    )
-    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._+-]{0,63}", release_version):
-        raise OCFError(
-            "release version must use only letters, digits, dot, underscore, plus, or hyphen"
-        )
     namer = ArtifactNamer()
-    artifact_names = {
-        fmt: namer.filename(
-            function_id, title, requested_locale, fmt, variant=voice, version=version
-        )
-        for fmt in formats
-    }
-    transcript_name = namer.filename(function_id, title, requested_locale, "txt", version=version)
+    names = namer.filenames(
+        function_id,
+        title,
+        requested_locale,
+        [*formats, "txt", "lrc", "srt", "vtt", "timing.json"],
+        variant=voice,
+        version=version,
+    )
+    artifact_names = {fmt: names[fmt] for fmt in formats}
+    transcript_name = names["txt"]
+    listener_names = [names[fmt] for fmt in ("lrc", "srt", "vtt", "timing.json")]
     expected_suffix = ".png" if mime == "image/png" else ".jpg"
     if artwork_path.suffix.lower() not in ({".png"} if mime == "image/png" else {".jpg", ".jpeg"}):
         raise OCFError("artwork filename extension does not match its image format")
@@ -398,14 +388,28 @@ def package_release(
     final_dir = output_root / requested_locale / directory_name
     if any(
         len(str(final_dir / name)) > 240
-        for name in [*artifact_names.values(), transcript_name, cover_name, "manifest.json"]
+        for name in [
+            *artifact_names.values(),
+            transcript_name,
+            *listener_names,
+            cover_name,
+            "manifest.json",
+        ]
     ):
         raise OCFError(
             "release output path would exceed the portable 240-character path limit; choose a shorter output root or title"
         )
     planned = {
         "release_directory": str(final_dir),
-        "artifacts": [*artifact_names.values(), transcript_name, cover_name, "manifest.json"],
+        "artifacts": [
+            *artifact_names.values(),
+            transcript_name,
+            *listener_names,
+            cover_name,
+            "manifest.json",
+        ],
+        "embedded_lyrics": lyrics,
+        "include_guides": guides is not None,
     }
     if dry_run:
         return {
@@ -442,6 +446,28 @@ def package_release(
         ) from exc
     backup: Path | None = None
     try:
+        guide_artifacts = []
+        if guides is not None:
+            from .listener_packages import attach_guides
+
+            guide_artifacts = attach_guides(
+                stage,
+                [function_id],
+                source=Path(guides),
+                locale=requested_locale,
+                edition_files={
+                    function_id: [
+                        {"path": name, "label": Path(name).suffix}
+                        for name in [
+                            *artifact_names.values(),
+                            transcript_name,
+                            *listener_names,
+                            cover_name,
+                            "manifest.json",
+                        ]
+                    ]
+                },
+            )
         render_dir = stage / "render"
         tag_values = {
             "title": title,
@@ -455,6 +481,9 @@ def package_release(
             "OCF_RELEASE_VERSION": release_version,
             **overrides,
         }
+        from .artwork_content import content_tags, function_artwork_content
+
+        tag_values.update(content_tags(function_artwork_content(function_id, requested_locale)))
         built = audio_build.build(
             str(audio_manifest["id"]),
             out_root=render_dir,
@@ -500,7 +529,32 @@ def package_release(
         render_doc = load_yaml_file(render_manifest_path)
         transcript_text = transcript_from_render(render_doc)
         transcript_path = stage / transcript_name
-        transcript_path.write_text(transcript_text, encoding="utf-8", newline="\n")
+        from .listener_text import embed_listener_text, write_listener_text
+
+        duration = float(built["master"]["duration"])
+        listener_text = write_listener_text(render_doc, duration, transcript_path)
+        if lyrics:
+            from .audition_exports import audio_hash
+
+            for fmt in formats:
+                destination = stage / artifact_names[fmt]
+                packets = audio_hash(destination, packets=True)
+                pcm = audio_hash(destination)
+                embed_listener_text(destination, render_doc, duration, requested_locale)
+                if packets != audio_hash(destination, packets=True) or pcm != audio_hash(
+                    destination
+                ):
+                    raise OCFError("embedded lyrics changed audio packets or decoded PCM")
+                _verify_audio(
+                    destination,
+                    function_id=function_id,
+                    title=title,
+                    artwork=artwork_path,
+                    expected_tags=tag_values,
+                )
+                stage_artifacts[fmt].update(
+                    size_bytes=destination.stat().st_size, sha256=sha256_of_file(destination)
+                )
         cover_path = stage / cover_name
         shutil.copy2(artwork_path, cover_path)
         _image_info(cover_path)
@@ -552,6 +606,12 @@ def package_release(
                     "size_bytes": transcript_path.stat().st_size,
                     "sha256": sha256_of_file(transcript_path),
                 },
+                *[
+                    {**item, "format": fmt}
+                    for fmt, item in listener_text["artifacts"].items()
+                    if fmt != "txt"
+                ],
+                {**listener_text["timing_receipt"], "format": "application/json"},
                 {
                     "path": cover_name,
                     "format": mime,
@@ -562,6 +622,7 @@ def package_release(
                 },
             ],
         }
+        manifest["artifacts"].extend(guide_artifacts)
         _validate_manifest(manifest)
         _verify_manifest(stage, manifest)
         if transcript_path.read_bytes().decode(

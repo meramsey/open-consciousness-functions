@@ -12,7 +12,7 @@ from .narration_first import _voice_profile
 from .paths import work_path
 from .session_plans import digest, source_plan
 from .speech_cache import STATS, enabled, voice_identity
-from .utils import OCFError, sha256_of_file, write_text_atomic
+from .utils import OCFError, sha256_of_file, verified_file_hashes, write_text_atomic
 
 
 def verified_output(receipt: dict, key: str) -> bool:
@@ -38,6 +38,7 @@ def verified_output(receipt: dict, key: str) -> bool:
         return False
 
 
+@verified_file_hashes()
 def render_many(
     function_ids: list[str] | None,
     *,
@@ -48,7 +49,10 @@ def render_many(
     force: bool = False,
     resume: bool = True,
     sample_rate: int = 44100,
+    dsp_profile: str | None = None,
 ) -> dict:
+    from .semantic_dsp import dependency_identity
+
     ids = sorted(
         set(function_ids if function_ids is not None else [r.id for r in load_all_functions()])
     )
@@ -59,13 +63,21 @@ def render_many(
     # Separate invocations remain safe through unique auditions/atomic caches.
     for owner in ids:
         try:
-            plan, shared, _ = source_plan(owner, locale)
+            plan, shared, expanded = source_plan(owner, locale)
             if dry_run:
+                if dsp_profile:
+                    from .complete_session import build_complete_session_plan
+
+                    build_complete_session_plan(
+                        owner, locale=locale, pacing=pacing, dsp_profile=dsp_profile
+                    )
                 statuses.append(
                     {"function_id": owner, "status": "planned", "plan_sha256": digest(plan)}
                 )
                 continue
             _, spec = _voice_profile(voice, locale, LocaleCatalog())
+            dsp_identity = dependency_identity(dsp_profile or expanded["resolved_dsp_profile"])
+            resume_verified = dsp_identity["verified"]
             identity = {
                 "plan": plan,
                 "shared": shared,
@@ -83,10 +95,11 @@ def render_many(
                     )
                 },
             }
+            identity["background"] = dsp_identity
             key = digest(identity)
             receipt_path = work_path("cache", "bulk-renders", key + ".json")
             previous = {}
-            if resume and not force:
+            if resume and not force and resume_verified:
                 try:
                     previous = json.loads(receipt_path.read_text(encoding="utf-8"))
                 except (OSError, ValueError):
@@ -102,7 +115,12 @@ def render_many(
                     continue
             with enabled(not force):
                 result = render_complete_session(
-                    owner, locale=locale, voice=voice, pacing=pacing, sample_rate=sample_rate
+                    owner,
+                    locale=locale,
+                    voice=voice,
+                    pacing=pacing,
+                    sample_rate=sample_rate,
+                    **({"dsp_profile": dsp_profile} if dsp_profile else {}),
                 )
             root = Path(result["output_directory"])
             receipt = {
@@ -112,9 +130,17 @@ def render_many(
             }
             if not verified_output(receipt, key):
                 raise OCFError(f"render artifact verification failed for {owner}")
-            write_text_atomic(receipt_path, json.dumps(receipt, sort_keys=True) + "\n")
+            if resume_verified:
+                write_text_atomic(receipt_path, json.dumps(receipt, sort_keys=True) + "\n")
             statuses.append(
-                {"function_id": owner, "status": "rendered", "output_directory": str(root)}
+                {
+                    "function_id": owner,
+                    "status": "rendered",
+                    "output_directory": str(root),
+                    "resume_verification": "available"
+                    if resume_verified
+                    else "unavailable: background engine identity is unverified",
+                }
             )
         except (OCFError, OSError, ValueError) as exc:
             statuses.append({"function_id": owner, "status": "failed", "error": str(exc)})

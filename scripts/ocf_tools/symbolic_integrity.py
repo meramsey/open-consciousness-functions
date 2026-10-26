@@ -83,9 +83,10 @@ def verify(root=REPO_ROOT):
         resolved = texts[row["path"] + "::" + row["key"]]
         if resolved.encode("utf-8") != row["before_text"].encode("utf-8"):
             problems.append("resolved byte drift: " + row["key"])
-    for owner in catalog.function_records():
-        if owner.data.get("narration") != data["narration_bindings"][owner.id]:
-            problems.append("function narration binding drift: " + owner.id)
+    owners = {owner.id: owner for owner in catalog.function_records()}
+    for identifier, binding in data["narration_bindings"].items():
+        if identifier not in owners or owners[identifier].data.get("narration") != binding:
+            problems.append("function narration binding drift: " + identifier)
     old_path = root / "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-002.json"
     old_raw = old_path.read_text(encoding="utf-8")
     old = json.loads(old_raw)

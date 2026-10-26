@@ -20,12 +20,13 @@ from .utils import OCFError, sha256_of_file
 CACHE_VERSION = "ocf-tts-pcm/1"
 MAX_CACHE_BYTES = 2 * 1024**3
 STATS = {"hit": 0, "miss": 0, "invalidated": 0, "bypassed": 0}
-_active: ContextVar[bool] = ContextVar("ocf_speech_cache", default=False)
+_active: ContextVar[bool | None] = ContextVar("ocf_speech_cache", default=None)
 
 
 @contextmanager
 def enabled(active: bool = True):
-    token = _active.set(active)
+    # None is unselected; an explicit outer False wins over nested opt-ins.
+    token = _active.set(active and _active.get() is not False)
     try:
         yield
     finally:

@@ -2,7 +2,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
 
 # Light Foot
 
-**Purpose**: Eases the felt sense of physical lightness and ease of movement; proposed concise cue PLUS-LIGHT.
+**Purpose**: Eases the felt sense of physical lightness and ease of movement; activation cue PLUS-LIGHT STEP.
 
 **Function persistence**: Permanent (`permanent`)
 

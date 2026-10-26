@@ -1,0 +1,94 @@
+# BEGIN GENERATED CUE PREVIEW
+# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
+# {"function": "OCF-EXP-006", "title": "Intuition", "locale": "en-US"}
+# English authority: functions/experimental/intuition.yaml
+# Editorial status: approved by OCF-APPROVED-CANDIDATES-001; original draft snapshot retained; release pending.
+# Entire working view is generated; edit a versioned candidate authority, not this copy.
+# {"symbol": "cue.primary", "command": "OCF-CMD-EXP-006-PRIMARY", "role": "activation", "display": "PLUS-INTUITION", "spoken": "Plus Intuition", "locale_definition": "commands.ocf-cmd-exp-006-primary.spoken-cue"}
+# END GENERATED CUE PREVIEW
+# Intuition — new, unreviewed OCF candidate.
+# The opener is the exact previously proposed sentence supplied by the user.
+# Body, closer and procedure are newly AI-authored proposals, not prior approvals.
+# No historical source, authentication or inherited rights approval is asserted.
+schema_version: '1.0'
+locale: en-US
+domain: narration
+entries:
+  hplus.function.ocf-exp-006.opener:
+    status: draft
+    version: 1.0.0
+    notes: Exact previously proposed opener supplied in the authoring brief; unreviewed.
+    text: This OCF exercise will strengthen your intuitive awareness, bringing the wisdom of your heart, subconscious mind, and higher self into clear understanding and purposeful action.
+  hplus.function.ocf-exp-006.function-body:
+    status: draft
+    version: 1.0.0
+    notes: >-
+      Newly AI-authored original candidate. Ongoing intuitive development is the
+      intended baseline; deliberate command use reinforces deeper understanding.
+      The proposed procedure has no prescribed breath pattern or eye closure.
+      Consciousness-oriented language describes the practice, not verified access
+      to external facts or another person's private thoughts. Editorial, procedure,
+      rights and listening review remain pending. One body is proposed for four
+      composed passes; shared preparation and return remain separate.
+    cue_template:
+      function_id: OCF-EXP-006
+      allowed: [cue.primary]
+    text: |-
+      From this moment forward, your intuitive awareness develops
+      as a calm and beneficial part of your everyday life.
+      Your conscious mind, subconscious mind, physical being,
+      and higher self cooperate in deeper understanding.
+
+      Center your attention in your heart.
+      Welcome an attitude of kindness, openness, and discernment.
+      You may recognize guidance as a feeling, an image,
+      a quiet understanding, or a connection that becomes clear over time.
+      Your own way of experiencing awareness is welcome.
+
+      Whenever you wish to understand something more deeply,
+      bring one question or situation into your awareness.
+      Think or say in your mind, "{{ cue.primary }}."
+      Allow a quiet moment to notice what arises,
+      then consider what it means and choose your response.
+
+      Your total self works together around your intention.
+      The wisdom of your heart, subconscious mind, and higher self
+      becomes available to your conscious understanding.
+      Remain open to the wider consciousness you recognize,
+      grounded in your present experience and free to discern.
+
+      An impression is an invitation to explore.
+      You can welcome it, reflect upon it, or let it pass.
+      Compare what you sense with what you can observe and learn.
+      Give important decisions the time, evidence, and care they deserve.
+      Clear understanding includes recognizing when you do not yet know.
+
+      Your intuition supports constructive, purposeful action.
+      Choose responses that respect your well-being
+      and the freedom and well-being of others.
+      When greater clarity is needed, allow understanding to develop
+      through reflection, experience, and thoughtful conversation.
+
+      This beneficial development continues without constant effort.
+      Your attention remains available for the life before you.
+      Intuitive impressions can come gently and leave freely;
+      you decide which deserve your attention and how to respond.
+
+      The more you practice with openness and discernment,
+      the more naturally your total self contributes
+      to clear understanding and purposeful action.
+  hplus.function.ocf-exp-006.closer:
+    status: draft
+    version: 1.0.0
+    notes: Newly AI-authored closer and procedure reminder; unreviewed proposal.
+    cue_template:
+      function_id: OCF-EXP-006
+      allowed: [cue.primary]
+    text: |-
+      Remember, for deeper intuitive understanding,
+      bring one question or situation into your awareness.
+      Think or say in your mind, "{{ cue.primary }}."
+      Allow a quiet moment, consider what arises,
+      and choose your response with care and discernment.
+
+      This concludes your OCF exercise.

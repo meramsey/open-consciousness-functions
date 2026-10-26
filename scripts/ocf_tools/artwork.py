@@ -7,6 +7,7 @@ import io
 import json
 import math
 import os
+import re
 import unicodedata
 from html import escape
 from pathlib import Path
@@ -406,15 +407,23 @@ def generate_cover(
     output: Path | None = None,
     dry_run: bool = False,
     title_override: str | None = None,
+    status_label: str | None = None,
+    show_cue: bool = True,
+    show_description: bool = True,
+    strict_locale: bool = True,
 ) -> dict:
     if (
         type(resolution) is not int
-        or not 256 <= resolution <= 4096
+        or not 128 <= resolution <= 4096
         or format not in ("png", "jpeg")
     ):
-        raise OCFError("artwork requires 256..4096 pixels and png/jpeg format")
+        raise OCFError("artwork requires 128..4096 pixels and png/jpeg format")
     if version is not None and (len(version) > 32 or any(ord(c) < 32 for c in version)):
         raise OCFError("cover version must be at most 32 printable characters")
+    if status_label is not None and (
+        len(status_label) > 32 or any(ord(c) < 32 for c in status_label)
+    ):
+        raise OCFError("cover status label must be at most 32 printable characters")
     record = load_function_by_id(function_id)
     if record is None:
         raise OCFError("unknown function")
@@ -432,8 +441,42 @@ def generate_cover(
         raise OCFError("OCF artwork cannot include third-party brand names")
     theme_reference, theme_source = select_theme(record, theme)
     data = load_theme(theme_reference, overrides=overrides)
-    if data.get("brand_revision") in ("0.2.0", "0.3.0") and resolution < 320:
+    if data.get("brand_revision") == "0.2.0" and resolution < 320:
         raise OCFError("refined covers require at least 320 pixels for legible typography")
+    if data.get("brand_revision") not in {"0.2.0", "0.3.0"} and resolution < 256:
+        raise OCFError("baseline covers require at least 256 pixels")
+    content = None
+    cue_text = description_text = None
+    description_color = data["palette"]["foreground"]
+    if data.get("brand_revision") == "0.3.0" and (show_cue or show_description):
+        from .artwork_content import function_artwork_content
+        from .locale import LocalizationError, locale_language
+
+        if strict_locale and locale_language(
+            title_resolution["resolved_locale"]
+        ) != locale_language(locale):
+            raise LocalizationError(
+                "strict artwork title cannot silently fall back across languages"
+            )
+        content = function_artwork_content(
+            function_id, locale, catalog=catalog, strict=strict_locale
+        )
+        cue_text = (content["primary"] or {}).get("display_cue") if show_cue else None
+        description_text = content["description"] if show_description else None
+        if (
+            cue_text
+            and contrast(data["palette"]["accent"], data["palette"]["background"])
+            < data["minimum_contrast"]
+        ):
+            raise OCFError("artwork cue accent contrast is below the theme minimum")
+        foreground, background = data["palette"]["foreground"], data["palette"]["background"]
+        for weight in (0.72, 0.80, 0.90, 1.0):
+            description_color = "#" + "".join(
+                f"{round(int(foreground[i : i + 2], 16) * weight + int(background[i : i + 2], 16) * (1 - weight)):02X}"
+                for i in (1, 3, 5)
+            )
+            if contrast(description_color, background) >= data["minimum_contrast"]:
+                break
     if data.get("brand_revision") == "0.2.0":
         from .brand_refinement import identity as refined_identity
 
@@ -445,8 +488,14 @@ def generate_cover(
     else:
         brand = identity()
     font_bytes, glyphs = _font_assets(data["font"])
-    footer = function_id + (f" - {version}" if version else "")
-    texts = [brand["name"], title, footer]
+    version_label = (
+        f"v{version}" if version and re.fullmatch(r"\d+\.\d+\.\d+", version) else version
+    )
+    suffix = (f" - {version_label}" if version_label else "") + (
+        f" - {status_label}" if status_label else ""
+    )
+    footer = function_id + suffix
+    texts = [brand["name"], title, footer, cue_text or "", description_text or ""]
     missing = sorted(
         {ord(c) for text in texts for c in text if not c.isspace() and ord(c) not in glyphs}
     )
@@ -459,9 +508,9 @@ def generate_cover(
     from PIL import Image, ImageDraw, ImageFont, features
     from PIL import __version__ as pillow_version
 
-    if any(unicodedata.bidirectional(c) in {"R", "AL", "AN"} for c in title) and not features.check(
-        "raqm"
-    ):
+    if any(
+        unicodedata.bidirectional(c) in {"R", "AL", "AN"} for text in texts for c in text
+    ) and not features.check("raqm"):
         raise OCFError("RTL artwork requires Pillow with RAQM shaping support")
     settings = {
         "brand": brand,
@@ -475,11 +524,19 @@ def generate_cover(
         "resolution": resolution,
         "format": format,
         "release_version": version,
+        "version_label": version_label,
+        "status_label": status_label,
         "font_sha256": hashlib.sha256(font_bytes).hexdigest(),
         "pillow": pillow_version,
         "freetype": features.version_module("freetype2"),
         "raqm": features.version("raqm"),
         "renderer_sha256": sha256_of_file(Path(__file__)),
+        "function_content": content,
+        "show_cue": show_cue,
+        "show_description": show_description,
+        "strict_locale": strict_locale,
+        "cue_color": data["palette"]["accent"],
+        "description_color": description_color,
     }
     if data.get("brand_revision") == "0.3.0":
         from .brand_import import asset, verify
@@ -490,13 +547,18 @@ def generate_cover(
         )
         settings["supplied_emblem"] = asset("icon", data, "png").name
         settings["composition"] = "supplied-emblem-with-localized-ocf-layout"
-        footer = function_id + " / " + locale + (f" - {version}" if version else "")
+        footer = function_id + " / " + locale + suffix
         # Validate the final footer, including the locale, through the same font contract.
         if any(ord(c) not in glyphs for c in footer if not c.isspace()):
             raise OCFError("font lacks required Unicode glyphs for cover metadata")
         from .brand_import import cover_layout
 
-        imported_layout = cover_layout(title, footer, font_bytes, resolution)
+        imported_layout = cover_layout(
+            title, footer, font_bytes, resolution, cue=cue_text, description=description_text
+        )
+        settings["content_layout"] = {
+            key: value for key, value in imported_layout.items() if key not in {"nodes", "bounds"}
+        }
     if data.get("brand_revision") == "0.2.0":
         settings["refinement_renderer_sha256"] = sha256_of_file(
             Path(__file__).with_name("brand_refinement.py")
@@ -513,6 +575,13 @@ def generate_cover(
             "fallback": False,
             "source": "operator-title-override",
         }
+    settings["visible_text"] = [
+        brand["name"],
+        title,
+        *([cue_text] if cue_text else []),
+        *([description_text] if description_text and resolution >= 512 else []),
+        footer,
+    ]
     fingerprint = digest(settings)
     root = work_path("cache", "artwork", fingerprint)
     filename = ArtifactNamer().filename(
@@ -550,7 +619,9 @@ def generate_cover(
         from .brand_import import cover_raster
 
         return _save_cover(
-            cover_raster(imported_layout, data, font_bytes, resolution),
+            cover_raster(
+                imported_layout, data, font_bytes, resolution, description_color=description_color
+            ),
             settings,
             fingerprint,
             path,

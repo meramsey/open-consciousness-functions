@@ -9,6 +9,20 @@ permissions:
   contents: read
 
 jobs:
+  container-workspace:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: "python -m pip install --only-binary=:all: --upgrade pip==26.2.0"
+      - run: python -m pip install -r requirements-dev.txt
+      - run: docker build -t ocf-workspace-smoke .
+      - name: Non-root workspace with read-only application and no network
+        env:
+          OCF_TEST_CONTAINER_IMAGE: ocf-workspace-smoke
+        run: python -m pytest tests/test_container_config.py
   python-lsp:
     strategy:
       fail-fast: false
@@ -23,6 +37,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+      - run: "python -m pip install --only-binary=:all: --upgrade pip==26.2.0"
       - run: python -m pip install -r requirements-dev.txt -e ".[lsp,python-lsp]"
       - name: Real Python and OCF language-server protocols
         env:
@@ -50,10 +65,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - run: "python -m pip install --only-binary=:all: --upgrade pip==26.2.0"
       - run: python -m pip install -r requirements-dev.txt
-      - run: python -m pip install -e ".[mcp,artwork,lsp]"
+      - run: python -m pip install -e ".[mcp,artwork,lsp,listener,guides]"
+      - name: Windows listener export and guide regressions
+        if: runner.os == 'Windows'
+        run: python -m pytest tests/test_listener_text.py tests/test_listening_guides.py --junitxml=.ocf-work/logs/pytest-results.xml
       - name: Optional SDK protocol and persistent job integration
-        run: python -m pytest tests/test_agent_api.py tests/test_agent_workflows.py tests/test_dev_jobs.py tests/test_mcp_protocol.py tests/test_artwork.py tests/test_brand_refinement.py tests/test_brand_import.py tests/test_public_branding.py tests/test_voice_datasets.py tests/test_session_overrides.py tests/test_media_tools.py tests/test_authoring.py tests/test_lsp_protocol.py
+        run: python -m pytest tests/test_agent_api.py tests/test_agent_workflows.py tests/test_dev_jobs.py tests/test_mcp_protocol.py tests/test_artwork.py tests/test_brand_refinement.py tests/test_brand_import.py tests/test_public_branding.py tests/test_voice_datasets.py tests/test_session_overrides.py tests/test_media_tools.py tests/test_authoring.py tests/test_lsp_protocol.py tests/test_listener_text.py tests/test_listening_guides.py --junitxml=.ocf-work/logs/pytest-results.xml
+      - name: Report agent-tool failure details
+        if: failure()
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python scripts/tools/report_pytest_failures.py .ocf-work/logs/pytest-results.xml
       - name: Retain failed job diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
@@ -79,9 +103,16 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install
+        run: "python -m pip install --only-binary=:all: --upgrade pip==26.2.0"
+      - name: Install development dependencies
         run: python -m pip install -r requirements-dev.txt
       - name: Run isolated unit contracts
-        run: python -m pytest -m unit -n 2 --dist loadfile
+        run: python -m pytest -m unit -n 2 --dist loadfile --junitxml=.ocf-work/logs/pytest-results.xml
+      - name: Report unit failure details
+        if: failure()
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python scripts/tools/report_pytest_failures.py .ocf-work/logs/pytest-results.xml
   integration:
     strategy:
       fail-fast: false
@@ -97,12 +128,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - run: "python -m pip install --only-binary=:all: --upgrade pip==26.2.0"
       - run: python -m pip install -r requirements-dev.txt
+      - name: Windows cache/runtime boundary regressions
+        if: runner.os == 'Windows'
+        run: python -m pytest tests/test_farfield_identity.py tests/test_cache_policy.py --junitxml=.ocf-work/logs/pytest-results.xml
       - name: Repository and available external-audio integration
-        run: python -m pytest -m integration -n 2 --dist loadfile
+        run: python -m pytest -m integration -n 2 --dist loadfile --junitxml=.ocf-work/logs/pytest-results.xml
+      - name: Report integration failure details
+        if: failure()
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python scripts/tools/report_pytest_failures.py .ocf-work/logs/pytest-results.xml
   coverage:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    # The full instrumented suite measured 21m53s before report generation.
+    # Include setup/report/upload headroom without filtering tests or coverage.
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
         with:
@@ -116,8 +158,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+      - name: Bootstrap patched pip
+        run: "python -m pip install --only-binary=:all: --upgrade pip==26.2.0"
       - name: Install development and optional adapter dependencies
-        run: python -m pip install -r requirements-dev.txt -e ".[mcp,artwork,lsp,python-lsp]"
+        run: python -m pip install -r requirements-dev.txt -e ".[mcp,artwork,lsp,python-lsp,listener,guides]"
       - name: Measure the full suite and gate statement and branch metrics separately
         run: python -m ocf_tools.coverage_report run --output .ocf-work/logs/coverage/ci
       - name: Retain coverage and failure diagnostics
@@ -126,7 +170,12 @@ jobs:
         with:
           name: full-suite-coverage-linux-python312
           include-hidden-files: true
+          # WAV patterns select only deterministic test tones, never private auditions.
           path: |
             .ocf-work/logs/coverage/ci/*.json
             .ocf-work/logs/coverage/ci/tests.xml
             .ocf-work/logs/coverage/ci/pytest.log
+            .ocf-work/tmp/ocf-c-*/p/popen-gw*/test_ducking_shared_envelope*/speech.wav
+            .ocf-work/tmp/ocf-c-*/p/popen-gw*/test_ducking_shared_envelope*/bed.wav
+            .ocf-work/tmp/ocf-c-*/p/popen-gw*/test_ducking_shared_envelope*/out.wav
+            .ocf-work/tmp/ocf-c-*/p/popen-gw*/test_ducking_shared_envelope*/ducking-diagnostics.json

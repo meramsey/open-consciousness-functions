@@ -715,7 +715,7 @@ def _cue_duration(
     if measured:
         seconds = measured.get(event.id)
         if seconds is not None:
-            return max(0.1, seconds)
+            return max(0.001, seconds)
     return estimate_duration(events, index)
 
 

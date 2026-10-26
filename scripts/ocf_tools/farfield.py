@@ -8,9 +8,11 @@ Farfield APIs are hardcoded.
 
 from __future__ import annotations
 
+import inspect
 import json
 import os
 import re
+import shlex
 import shutil
 import subprocess
 from dataclasses import dataclass
@@ -49,6 +51,214 @@ def check_farfield() -> FarfieldStatus:
     except (OSError, subprocess.TimeoutExpired):
         pass
     return FarfieldStatus(available=True, executable=executable, version=version)
+
+
+def _runtime_fingerprint() -> dict:
+    """Run in the launcher's interpreter; hash installed and actually resolved code."""
+    import ast
+    import csv
+    import hashlib
+    import importlib.metadata as metadata
+    import importlib.util
+    import json
+    import sys
+    import sysconfig
+    from io import StringIO
+    from pathlib import Path
+
+    from packaging.requirements import Requirement
+
+    launcher = Path(sys.argv[1])
+    sys.path[0] = str(launcher.parent)  # Match console-script imports, not OCF.
+    hashes, signatures = {}, {}
+
+    def fingerprint(path):
+        path = Path(path).resolve()
+        if not path.is_file():
+            return
+        if path.suffix == ".pyc":
+            raise ValueError("bytecode-only implementation cannot authorize verified reuse")
+        before = path.stat()
+        signature = (
+            before.st_dev,
+            before.st_ino,
+            before.st_size,
+            before.st_mtime_ns,
+            before.st_ctime_ns,
+        )
+        if signatures.get(str(path)) == signature:
+            return
+        digest = hashlib.sha256()
+        with path.open("rb") as stream:
+            for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+                digest.update(chunk)
+        after = path.stat()
+        if signature != (
+            after.st_dev,
+            after.st_ino,
+            after.st_size,
+            after.st_mtime_ns,
+            after.st_ctime_ns,
+        ):
+            raise ValueError("engine input changed while fingerprinting")
+        hashes[str(path)] = digest.hexdigest()
+        signatures[str(path)] = signature
+
+    engine = metadata.distribution("farfield")
+    entry = next(
+        e for e in engine.entry_points if e.group == "console_scripts" and e.name == "farfield"
+    )
+    # Only standard console stubs can be probed without executing custom setup.
+    tree = ast.parse(launcher.read_text(encoding="utf-8-sig"))
+    imports = [node for node in ast.walk(tree) if isinstance(node, ast.ImportFrom)]
+    if (
+        len(imports) != 1
+        or imports[0].module != entry.module
+        or [(item.name, item.asname) for item in imports[0].names] != [(entry.attr, None)]
+    ):
+        raise ValueError("unverified console entry point")
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import) and any(
+            (item.name not in {"sys", "re"} or item.asname) for item in node.names
+        ):
+            raise ValueError("custom launcher imports")
+        if isinstance(node, ast.Call) and ast.unparse(node.func) not in {
+            entry.attr,
+            "sys.exit",
+            "re.sub",
+            "sys.argv[0].endswith",
+        }:
+            raise ValueError("custom launcher calls")
+        if isinstance(node, ast.Assign) and any(
+            ast.unparse(target) != "sys.argv[0]" for target in node.targets
+        ):
+            raise ValueError("custom launcher assignment")
+        if isinstance(
+            node,
+            (
+                ast.AugAssign,
+                ast.AnnAssign,
+                ast.NamedExpr,
+                ast.Delete,
+                ast.FunctionDef,
+                ast.ClassDef,
+                ast.For,
+                ast.AsyncFor,
+                ast.While,
+                ast.With,
+                ast.AsyncWith,
+                ast.Try,
+                ast.comprehension,
+            ),
+        ):
+            raise ValueError("custom launcher setup")
+    pending, seen, packages = [("farfield", frozenset())], set(), {}
+    while pending:
+        name, extras = pending.pop()
+        normalized = name.lower().replace("_", "-").replace(".", "-")
+        if (normalized, extras) in seen:
+            continue
+        seen.add((normalized, extras))
+        distribution = metadata.distribution(name)
+        files = distribution.files
+        # Python 3.12's files property omits missing RECORD entries.
+        record = distribution.read_text("RECORD")
+        if record is not None:
+            files = [metadata.PackagePath(row[0]) for row in csv.reader(StringIO(record)) if row]
+        if files is None:
+            raise ValueError("installed distribution has no file inventory")
+        packages[normalized] = distribution.version
+        roots = {entry.module.split(".")[0]} if normalized == "farfield" else set()
+        for file in files:
+            if "__pycache__" in file.parts:
+                continue
+            path = Path(distribution.locate_file(file))
+            if not path.is_file():
+                raise ValueError("installed engine/dependency file is missing")
+            fingerprint(path)
+            root = file.parts[0].removesuffix(".py")
+            if root.isidentifier():
+                roots.add(root)
+        for root in roots:
+            spec = importlib.util.find_spec(root)
+            if spec is None:
+                raise ValueError("engine/dependency import cannot be resolved")
+            if spec.origin and spec.origin.endswith(".pyc"):
+                raise ValueError("bytecode-only import cannot authorize verified reuse")
+            if spec.origin not in (None, "built-in", "frozen"):
+                fingerprint(spec.origin)
+            for directory in spec.submodule_search_locations or ():
+                for path in sorted(Path(directory).rglob("*")):
+                    if "__pycache__" not in path.parts:
+                        fingerprint(path)
+        for requirement in distribution.requires or ():
+            requirement = Requirement(requirement)
+            if requirement.marker is None or any(
+                requirement.marker.evaluate({"extra": extra}) for extra in (extras or {""})
+            ):
+                pending.append((requirement.name, frozenset(requirement.extras)))
+    fingerprint(sys.executable)
+    library = Path(sysconfig.get_config_var("LIBDIR") or "") / (
+        sysconfig.get_config_var("LDLIBRARY") or ""
+    )
+    fingerprint(library)
+    return {
+        "python": sys.version,
+        "platform": sys.platform,
+        "packages": packages,
+        "implementation_sha256": hashlib.sha256(
+            json.dumps(hashes, sort_keys=True).encode()
+        ).hexdigest(),
+    }
+
+
+def engine_identity() -> dict | None:
+    """Unknown launchers/runtimes disable verified reuse, never guess from presets."""
+    from .utils import sha256_of_file
+
+    status = check_farfield()
+    if not status.available or not status.executable:
+        return None
+    executable = Path(status.executable).resolve()
+    try:
+        with executable.open("rb") as stream:
+            header = stream.read(4096).split(b"\n", 1)[0].decode("utf-8")
+        if not header.startswith("#!"):
+            return None
+        command = shlex.split(header[2:].strip(), posix=os.name != "nt")
+        interpreter = Path(command[0].strip('"'))
+        if not interpreter.is_absolute() or not interpreter.is_file():
+            return None
+        # env/shell launchers cannot prove which Python imports the engine.
+        if not interpreter.name.lower().startswith("python"):
+            return None
+        probe = inspect.getsource(_runtime_fingerprint)
+        result = workspace_run(
+            [
+                str(interpreter),
+                *command[1:],
+                "-c",
+                "import json\n" + probe + "\nprint(json.dumps(_runtime_fingerprint()))",
+                str(executable),
+            ],
+            capture_output=True,
+            text=True,
+            timeout=120,
+        )
+        if result.returncode:
+            return None
+        runtime = json.loads(result.stdout)
+        if not isinstance(runtime, dict) or not re.fullmatch(
+            r"[a-f0-9]{64}", runtime.get("implementation_sha256", "")
+        ):
+            return None
+        return {
+            "version": status.version,
+            "executable": sha256_of_file(executable),
+            "runtime": runtime,
+        }
+    except (OSError, ValueError, TypeError, IndexError, subprocess.SubprocessError):
+        return None
 
 
 def installation_guidance() -> str:

@@ -169,7 +169,17 @@ def test_resource_variables_are_declared_and_used():
         for entry in pack.entries.values():
             assert entry.check_contract() == []
             if entry.cue_template is not None:
-                entry, _ = catalog.resource(entry.key, locale, domain=entry.domain, fallback=False)
+                if entry.status == "draft":
+                    from dataclasses import replace
+
+                    from ocf_tools.cue_templates import expand
+
+                    text, _ = expand(entry, locale, catalog, draft_review=True)
+                    entry = replace(entry, text=text, cue_template=None)
+                else:
+                    entry, _ = catalog.resource(
+                        entry.key, locale, domain=entry.domain, fallback=False
+                    )
             entry.render(entry.sample_variables(), plural_rules=pack.plural_rules())
 
 

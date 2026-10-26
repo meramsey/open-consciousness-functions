@@ -21,7 +21,11 @@ def historical_data():
 
 
 def test_complete_function_command_audit_preserves_every_authoritative_phrase():
-    records = load_all_functions()
+    records = [
+        row
+        for row in load_all_functions()
+        if row.data["legacy"]["source_system"] == "Monroe H-PLUS"
+    ]
     data = historical_data()
     from ocf_tools.cue_migration import decision_record
     from ocf_tools.editorial_successors import records as successor_records
@@ -35,6 +39,15 @@ def test_complete_function_command_audit_preserves_every_authoritative_phrase():
             if "primary_command_id" not in decision:
                 continue
             migrated.setdefault(decision["primary_command_id"], decision["previous"]["display_cue"])
+    from ocf_tools.command_simplification import record as simplification_record
+
+    latest = simplification_record()
+    for name in latest["function_files"]:
+        import yaml
+
+        before = yaml.safe_load(latest["files"][name]["before"])
+        primary = next(row for row in before["commands"] if row.get("designation") == "primary")
+        migrated.setdefault(primary["id"], before["canonical"]["command"]["primary"])
     actual = {row["id"]: row["phrase"] for row in data["commands"]}
     expected = {
         command.id: migrated.get(command.id, resolve_phrase(record, command))

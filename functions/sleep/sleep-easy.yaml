@@ -60,7 +60,7 @@ commands:
     status: documented
   relationships: {}
   role: activation
-  spoken: "Plus Sleep Easy"
+  spoken: Plus Sleep Easy
   spoken_review: reviewed
 - availability: historical-lookup
   designation: secondary
@@ -82,7 +82,8 @@ commands:
   role: legacy-alias
   spoken: null
   spoken_review: unresolved
-companions: []
+companions:
+- OCF-SLP-001
 compatibility:
   rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
     operational commands remain unchanged.
