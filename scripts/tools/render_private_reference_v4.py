@@ -134,7 +134,7 @@ def run_collection(
             root
             / "renders"
             / f"amy-reference-v4-v{version}"
-            / "verified-exports-locked-004"
+            / "verified-exports-final"
             / function_id
         )
         if export_path.exists():
@@ -303,7 +303,7 @@ def run_collection(
         status["updated_at"] = datetime.now(UTC).isoformat()
         _atomic_json(status_path, status)
 
-    export_root = root / "renders" / f"amy-reference-v4-v{version}" / "verified-exports-locked-004"
+    export_root = root / "renders" / f"amy-reference-v4-v{version}" / "verified-exports-final"
     exports = []
     for function_id, row in by_id.items():
         source_report = Path(row["session_report"]) if row.get("session_report") else None

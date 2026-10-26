@@ -72,10 +72,11 @@
       "purpose": "OCF Agent Contract",
       "related_commands": [
         "dev",
-        "dev ocf"
+        "dev ocf",
+        "voice doctor"
       ],
       "related_schemas": [],
-      "sha256": "42d1afc1e91ff3de03ba80f07983ade8c53062d949f1992b04a541a4e9d91d98",
+      "sha256": "39e1c3b6863a7c521351fedb84a35e11f6bf2341e96667449cf243aaaebbbc43",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -179,7 +180,7 @@
       "purpose": "Function Index",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "e72db0e9f680eb3ad8f528a93d055277b714e445c1b0a0ae48c12f06fdec9e44",
+      "sha256": "59318de279d6ca8056b1e6ff166c166a384527544af12bd2ffdc357fd81f39cf",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -533,7 +534,7 @@
       "purpose": "Audio Implementation Index",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "f10c72168dfc4772ea0b6298438dc0d08c534f97f0c651603be2411326010498",
+      "sha256": "545c71e6eee5ff93b19aed7cbe9f4d87b1b9d876fb53ed0c757af91a555a0bcd",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -718,7 +719,7 @@
         "voice doctor"
       ],
       "related_schemas": [],
-      "sha256": "6b894e7e26926e878b711dd30a0e8af28b67c524b88ca14c4cd7d254aa4f4896",
+      "sha256": "6aaa22f8691913733f9edccfd4b0b82f0aaa6f937c32d7add97ea95abd0433ee",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1510,7 +1511,7 @@
         "audio inspect"
       ],
       "related_schemas": [],
-      "sha256": "146e3bb39f9cdaa758948e2748022b39f08706dd48c265dd513011c1b02fce66",
+      "sha256": "3a48953d64a415bfc81b738b9b1be01d60aefe23a766e5ae7150dc262021e6f8",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1712,10 +1713,13 @@
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "Native core setup",
       "related_commands": [
-        "capabilities"
+        "audio render",
+        "capabilities",
+        "voice doctor",
+        "voice smoke"
       ],
       "related_schemas": [],
-      "sha256": "831db79bbe661de0d175592bceaa332dd94bb64a34c4b9668ea4a197a33e78e8",
+      "sha256": "a4a2e208e01b438d5b88d5bb02d217a4f5c0dec1d22b9a2203ddd39f98284262",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5354,11 +5358,12 @@
         "voice list",
         "voice list-backends",
         "voice render",
+        "voice smoke",
         "voice training-plan",
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "aa31a66c108189931d785e7c7cc201be3c3855dce102c361bf5f9922c317e6ec",
+      "sha256": "7538860e0300ddbfe731d873070374993baacb2ee09635e90959ed2f4fc19681",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
