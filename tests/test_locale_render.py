@@ -625,13 +625,32 @@ class TestBackgroundPresetResolution:
         transcript = REPO_ROOT / "audio" / "scripts" / "attention-ocf.yaml"
         if not transcript.is_file():
             pytest.skip("legacy attention script not present")
-        manifest = yaml.safe_load(
-            (REPO_ROOT / "audio" / "manifests" / "OCF-AUDIO-0001.yaml").read_text(encoding="utf-8")
-        )
-        manifest["id"] = "OCF-AUDIO-9003"
-        manifest["transcript_path"] = str(transcript)
-        manifest["background_audio"] = {"strategy": "required", "preset": "OCF-BG-0007"}
-        manifest["technical"].pop("checksum_sha256", None)
+        # This test exercises the engine-bed mixer, not the removed private
+        # legacy implementation manifest. Keep its minimal synthetic input local.
+        manifest = {
+            "schema_version": "1.0",
+            "id": "OCF-AUDIO-9003",
+            "function_id": "OCF-FND-002",
+            "title": "Engine mix fixture",
+            "version": "0.1.0",
+            "contributor": "OCF test",
+            "narrator": "fixture",
+            "language": "en-US",
+            "license": "test-only",
+            "training_type": "training",
+            "duration_minutes": None,
+            "induction": "fixture",
+            "command_rehearsal": "fixture",
+            "legacy_bridge": None,
+            "mode_rehearsal": None,
+            "release_rehearsal": None,
+            "safety_intro": None,
+            "transcript_path": str(transcript),
+            "background_audio": {"strategy": "required", "preset": "OCF-BG-0007"},
+            "technical": {"sample_rate": 44100, "channels": 2, "format": "wav"},
+            "testing_notes": "synthetic mixer input",
+            "review_state": "draft",
+        }
         manifest_path = tmp_path / "audio-9003.yaml"
         manifest_path.write_text(yaml.safe_dump(manifest), encoding="utf-8")
         try:
