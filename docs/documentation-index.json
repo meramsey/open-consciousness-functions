@@ -1477,6 +1477,24 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "docs/PORTABLE_GUIDES.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Portable OCF guide collection",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "f4f7bd608923d1e19945d2ab885aa1ede8b5dbbb12d703938e78611f4adf72eb",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "docs/PREPARATION_MODULE.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "Preparation Module",
@@ -5476,5 +5494,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 263
+  "total": 264
 }
