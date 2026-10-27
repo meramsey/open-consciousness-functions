@@ -1,6 +1,7 @@
 import hashlib
 import io
 import json
+import subprocess
 import threading
 import wave
 from contextlib import contextmanager
@@ -185,9 +186,21 @@ def test_render_receipts_bind_to_current_worktree_head_and_branch():
     identity = bulk_render._git_worktree_identity()
     assert identity["verified"] is True
     assert len(identity["head"]) == 40
-    assert identity["branch"] == "main" or (
-        identity["branch"].startswith("engineering/") and identity["branch"].endswith("20261025")
+    expected_head = subprocess.run(
+        ["git", "rev-parse", "HEAD"], cwd=REPO_ROOT, capture_output=True, text=True, check=True
+    ).stdout.strip()
+    expected_branch = (
+        subprocess.run(
+            ["git", "branch", "--show-current"],
+            cwd=REPO_ROOT,
+            capture_output=True,
+            text=True,
+            check=True,
+        ).stdout.strip()
+        or None
     )
+    assert identity["head"] == expected_head
+    assert identity["branch"] == expected_branch
     assert identity["worktree"] == str(REPO_ROOT.resolve())
 
 
