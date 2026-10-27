@@ -78,6 +78,12 @@ def apply(
     dsp["stage_backgrounds"] = {
         k: v for k, v in dsp.get("stage_backgrounds", {}).items() if k not in removed
     }
+    if "transition_end_anchors" in dsp:
+        dsp["transition_end_anchors"] = {
+            key: value
+            for key, value in dsp["transition_end_anchors"].items()
+            if key.split(".")[0] not in removed
+        }
     pacing["pacing_auditions"] = {
         k: v
         for k, v in pacing.get("pacing_auditions", {}).items()

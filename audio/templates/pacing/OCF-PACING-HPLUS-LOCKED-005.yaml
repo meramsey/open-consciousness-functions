@@ -1,0 +1,19 @@
+schema_version: '1.0'
+id: OCF-PACING-HPLUS-LOCKED-005
+version: 5.0.0
+extends: OCF-PACING-HPLUS-LOCKED-004
+status: draft
+pauses:
+  sleep20_pre_repeat_s: 60
+  sleep20_repeat_gap_s: 60
+  sleep20_post_repeat_s: 3
+duration_preference:
+  minimum_seconds: 1800
+  maximum_seconds: 2700
+  preferred_seconds: 2520
+  advisory: true
+evidence_notes:
+- User-authorized successor of LOCKED-004; fixed preparation and narration pacing unchanged.
+- Rest is measured after the relocated calm sentence, between complete body passes, and before waking.
+- The 30–45 minute window and approximately 42-minute preference are advisory, never padding or truncation instructions.
+- Explicit function/profile pacing overrides remain authoritative; optional modules remain additive.

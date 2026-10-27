@@ -1,12 +1,6 @@
-schema_version: '1.0'
-function_id: OCF-EXP-003
-default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-004
-session_templates:
-- OCF-TPL-SESSION-HPLUS-LOCKED-004
-narration_resources: []
-voice_sources:
-- tts
+default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
 duration: null
+function_id: OCF-EXP-003
 narration_plan:
   sequence:
   - key: hplus.function.ocf-exp-003.opener
@@ -18,3 +12,10 @@ narration_plan:
   - key: hplus.function.ocf-exp-003.closer
     repetitions: 1
     role: closer
+narration_resources: []
+schema_version: '1.0'
+session_templates:
+- OCF-TPL-SESSION-HPLUS-LOCKED-004
+- OCF-TPL-SESSION-HPLUS-LOCKED-005
+voice_sources:
+- tts

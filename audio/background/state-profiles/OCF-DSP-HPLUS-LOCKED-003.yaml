@@ -1,0 +1,32 @@
+schema_version: '1.0'
+id: OCF-DSP-HPLUS-LOCKED-003
+version: 3.0.0
+initial_state: focus-10
+default_background_state: focus-10
+seed: 0
+target_state_rms_dbfs: -18.0
+states:
+  focus-10: {mode: preset, preset: OCF-BG-0012}
+  focus-11: {mode: preset, preset: OCF-BG-0006}
+transitions: {curve: equal-power, fallback_seconds: 25}
+transition_end_anchors:
+  close.close:
+    semantic: focus.eleven.close
+    unit_text: The access signal, the access channel is closed.
+ignored_state_events:
+- focus-ten.transition
+- focus20-enter.transition
+- focus20-close.transition
+- return.complete
+stage_backgrounds:
+  open: [focus-10, focus-11]
+  focus11-body: [focus-11]
+  close: [focus-11, focus-10]
+ending_fade_seconds: 10
+notes: |
+  User-authorized successor of LOCKED-002. Only exit alignment changes: the
+  existing event's configured duration ends at the uniquely measured audible
+  endpoint of the approved closure confirmation unit, not its onset or padding.
+  Equal-power gain functions, entry, levels, compression and fade are unchanged.
+  Focus 10 remains active during sleep/waking; no Focus 20 DSP. Private reference
+  editions must explicitly select their existing owned source manifests.

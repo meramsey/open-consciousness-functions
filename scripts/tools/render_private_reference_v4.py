@@ -10,16 +10,19 @@ import tempfile
 from datetime import UTC, datetime
 from pathlib import Path
 
+from ocf_tools.audio_defaults import BASELINE_ID, DSP_ID, PACING_ID, TEMPLATE_ID
 from ocf_tools.audio_quality import measure_ebur128
 from ocf_tools.audition_exports import export_audition
 from ocf_tools.build_provenance import attach_audio_quality, attach_build_provenance
-from ocf_tools.bulk_render import render_many
+from ocf_tools.bulk_render import _git_worktree_identity, render_many
 from ocf_tools.environment import discover_environment
 from ocf_tools.indexes import load_voice_profiles
 from ocf_tools.listener_packages import package_auditions, verify_package
 from ocf_tools.paths import work_root
 from ocf_tools.private_collection_index import build_private_collection_index
-from ocf_tools.utils import OCFError, sha256_of_file
+from ocf_tools.session import load_pacing_profile
+from ocf_tools.session_pacing_audit import audit_session
+from ocf_tools.utils import OCFError, sha256_of_file, yaml_safe_load
 
 
 def _atomic_json(path: Path, value: dict) -> None:
@@ -71,6 +74,7 @@ def run_collection(
     locale: str = "en-US",
     workers: int = 2,
     fresh_synthesis: bool = False,
+    prune_verified_wav: bool = False,
 ) -> dict:
     root = work_root()
     status_path = (
@@ -99,6 +103,7 @@ def run_collection(
             row["status"] = "SESSION_RENDER_VERIFIED"
         elif phase == "function-rendered":
             row["status"] = "SESSION_RENDER_VERIFIED"
+            row["session_report"] = str(Path(event["output_directory"]) / "session-report.json")
         elif not phase.startswith("function-"):
             row["render_phase"] = phase
             return
@@ -106,6 +111,12 @@ def run_collection(
         status["active_function"] = event.get("function_id")
         status["updated_at"] = datetime.now(UTC).isoformat()
         _atomic_json(status_path, status)
+
+        if phase == "function-rendered" and event.get("output_directory"):
+            finish_function(
+                event["function_id"],
+                {"status": "rendered", "output_directory": event["output_directory"]},
+            )
 
     recovered = {}
     render_ids = []
@@ -115,7 +126,36 @@ def run_collection(
         if report_path and report_path.is_file():
             try:
                 report = json.loads(report_path.read_text(encoding="utf-8"))
-                if report.get("template", {}).get("id") == "OCF-TPL-SESSION-HPLUS-LOCKED-004":
+                if (
+                    report.get("template", {}).get("id") == TEMPLATE_ID
+                    and report.get("background_variant")
+                    == yaml_safe_load(Path(profile).read_text(encoding="utf-8"))["id"]
+                ):
+                    export_path = (
+                        root
+                        / "renders"
+                        / f"amy-reference-v4-v{version}"
+                        / "verified-exports-final"
+                        / function_id
+                    )
+                    if (
+                        row.get("session_report_sha256")
+                        and sha256_of_file(report_path) != row["session_report_sha256"]
+                    ):
+                        raise OCFError(
+                            "existing session report checksum changed; preserve for investigation"
+                        )
+                    if not _verified_export(export_path, report_path):
+                        for item in report["artifacts"].values():
+                            artifact = (report_path.parent / item["path"]).resolve()
+                            if (
+                                not artifact.is_relative_to(report_path.parent.resolve())
+                                or not artifact.is_file()
+                                or sha256_of_file(artifact) != item["sha256"]
+                            ):
+                                raise OCFError(
+                                    "existing session artifacts failed verification; do not regenerate silently"
+                                )
                     recovered[function_id] = {
                         "function_id": function_id,
                         "status": "skipped-verified",
@@ -127,29 +167,17 @@ def run_collection(
                 pass
         render_ids.append(function_id)
 
-    rendered = render_many(
-        render_ids,
-        voice=voice,
-        locale=locale,
-        pacing="sleep",
-        resume=True,
-        fresh_synthesis=fresh_synthesis,
-        workers=workers,
-        dsp_profile=profile,
-        progress_callback=progress,
-    )
-    latest_by_id = {**recovered, **{row["function_id"]: row for row in rendered["results"]}}
-    exports = []
-    for function_id in function_ids:
-        result = latest_by_id.get(function_id, {})
+    def finish_function(function_id, result):
         row = by_id[function_id]
         if result.get("status") not in {"rendered", "skipped-verified"}:
             row["status"] = result.get("status", "BLOCKED").upper()
             row["technical_verification"] = result.get("error", "session renderer did not complete")
-            continue
+            return
         session = Path(result["output_directory"]).resolve()
         session_report_path = session / "session-report.json"
         session_report = json.loads(session_report_path.read_text(encoding="utf-8"))
+        pacing_profile = load_pacing_profile(PACING_ID)
+        timing_audit = audit_session(session_report, pacing=pacing_profile, verify_successor=True)
         export_path = (
             root
             / "renders"
@@ -163,7 +191,7 @@ def run_collection(
                 row["technical_verification"] = (
                     "existing export is not a checksum-matching receipt; preserved without overwrite"
                 )
-                continue
+                return
         else:
             master_path = session / session_report["artifacts"]["wav"]["path"]
             edition_path = (
@@ -215,6 +243,7 @@ def run_collection(
                 "transitions": session_report["state_transitions"],
                 "ending_fade_seconds": session_report["mix"]["ending_fade_seconds"],
                 "sleep_reinforcement_gain_db": -24,
+                "session_pacing_audit": timing_audit,
                 "mastering_target_applied": False,
                 "human_listening_approval": None,
                 "publication_authorized": False,
@@ -227,10 +256,10 @@ def run_collection(
                 "runtime", {}
             )
             source_files = (
-                "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-014.json",
-                "audio/templates/sessions/OCF-TPL-SESSION-HPLUS-LOCKED-004.yaml",
-                "audio/templates/pacing/OCF-PACING-HPLUS-LOCKED-004.yaml",
-                "audio/background/state-profiles/OCF-DSP-HPLUS-LOCKED-002.yaml",
+                f"audio/defaults/{BASELINE_ID}.json",
+                f"audio/templates/sessions/{TEMPLATE_ID}.yaml",
+                f"audio/templates/pacing/{PACING_ID}.yaml",
+                f"audio/background/state-profiles/{DSP_ID}.yaml",
                 "scripts/ocf_tools/complete_session.py",
                 "scripts/ocf_tools/voice.py",
                 "scripts/ocf_tools/listener_text.py",
@@ -278,7 +307,7 @@ def run_collection(
                         "python": piper_runtime.get("python_version"),
                         "piper_tts": piper_runtime.get("package_version"),
                     },
-                    "fresh_synthesis": True,
+                    "fresh_synthesis": fresh_synthesis,
                     "reference_background_variant": session_report["background_variant"],
                     "reference_background_source_sha256": {
                         "focus10": "18c71de3fa72e3252147fc9d3cae2f360304fcc4ef45ce5f96cca4590a4bb02a",
@@ -295,8 +324,8 @@ def run_collection(
                         "timing_receipt"
                     ]["sha256"],
                     "session_report_sha256": sha256_of_file(session_report_path),
-                    "git_base_sha": "dc01ecc9bc4dd93ef05bbd4c1a8cdd35f035b815",
-                    "git_worktree_branch": "engineering/reference-v4-cp-20261025",
+                    "git_base_sha": _git_worktree_identity()["head"],
+                    "git_worktree_branch": _git_worktree_identity()["branch"],
                     "source_component_sha256": source_hashes,
                     "artifacts": {
                         fmt: item["sha256"]
@@ -313,6 +342,8 @@ def run_collection(
                 "status": "EXPORTED_PENDING_PACKAGE",
                 "technical_verification": "FLAC/MP3/lyrics/artwork checksummed export verified",
                 "session_report": str(session_report_path),
+                "export_path": str(export_path),
+                "timing_audit": timing_audit,
                 "session_report_sha256": sha256_of_file(session_report_path),
                 "export_manifest_sha256": sha256_of_file(export_path / "manifest.json"),
                 "duration_seconds": session_report["measurements"]["duration_seconds"],
@@ -322,6 +353,40 @@ def run_collection(
         )
         status["updated_at"] = datetime.now(UTC).isoformat()
         _atomic_json(status_path, status)
+
+        if prune_verified_wav:
+            if version == "0.3.0" or not _verified_export(export_path, session_report_path):
+                raise OCFError("refusing to prune historical or unverified session intermediates")
+            if not session.is_relative_to((root / "renders").resolve()):
+                raise OCFError("refusing to prune outside the owned render workspace")
+            for item in session_report["artifacts"].values():
+                artifact = (session / item["path"]).resolve()
+                if artifact.suffix == ".wav":
+                    if not artifact.is_relative_to(session):
+                        raise OCFError("render intermediate escapes owned session")
+                    if artifact.exists():
+                        if sha256_of_file(artifact) != item["sha256"]:
+                            raise OCFError(
+                                "render intermediate changed; preserve for investigation"
+                            )
+                        artifact.unlink()
+            row["retention"] = "verified export retained; receipt-owned WAV intermediates removed"
+            _atomic_json(status_path, status)
+
+    rendered = render_many(
+        render_ids,
+        voice=voice,
+        locale=locale,
+        pacing="sleep",
+        resume=True,
+        fresh_synthesis=fresh_synthesis,
+        workers=workers,
+        dsp_profile=profile,
+        progress_callback=progress,
+    )
+    latest_by_id = {**recovered, **{row["function_id"]: row for row in rendered["results"]}}
+    for function_id in function_ids:
+        finish_function(function_id, latest_by_id.get(function_id, {}))
 
     export_root = root / "renders" / f"amy-reference-v4-v{version}" / "verified-exports-final"
     exports = []
@@ -388,6 +453,7 @@ def main(argv=None):
     parser.add_argument("--version", default="0.3.0")
     parser.add_argument("--workers", type=int, default=2)
     parser.add_argument("--fresh-synthesis", action="store_true")
+    parser.add_argument("--prune-verified-wav", action="store_true")
     args = parser.parse_args(argv)
     ids = args.function_ids
     if args.all:
@@ -419,6 +485,7 @@ def main(argv=None):
         version=args.version,
         workers=args.workers,
         fresh_synthesis=args.fresh_synthesis,
+        prune_verified_wav=args.prune_verified_wav,
     )
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 1 if result["render"]["failed"] or result["render"].get("blocked", 0) else 0

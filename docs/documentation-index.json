@@ -1529,7 +1529,7 @@
         "audio inspect"
       ],
       "related_schemas": [],
-      "sha256": "3a48953d64a415bfc81b738b9b1be01d60aefe23a766e5ae7150dc262021e6f8",
+      "sha256": "a97c6f28ed380c86c38d3121733866bacd47a865a6817667253afc9555e5c706",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1715,6 +1715,24 @@
         "schemas/session-overrides.schema.json"
       ],
       "sha256": "cf9ebdf6c2a5b174e941b217e3513529bd73d18731b219cce5c5278730e29394",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "docs/SESSION_PACING_REFINEMENT.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Complete-session pacing successor",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "2419370c53a1ac04873e5fe203a34eba8db4e036c1962bed7cd35b790a4da9d6",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5093,7 +5111,7 @@
       "related_schemas": [
         "schemas/semantic-dsp-profile.schema.json"
       ],
-      "sha256": "6e4782d6c775da1494196d72d12f155739acf9336fe1c145080c3016ffcfec1f",
+      "sha256": "478ea33458d43cb670c8d9e732d76dc71b937ea3328c47ff2876196bb7777803",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5133,7 +5151,7 @@
       "related_schemas": [
         "schemas/session-pacing.schema.json"
       ],
-      "sha256": "7e660f9d37de36f457e15fdd7463f00d9688433ae2dacc567cfd4ef37ff10379",
+      "sha256": "0d98b739d792ed3f34d772531a2348bb29ff0b969342df6231e8225c44c684c4",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5494,5 +5512,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 264
+  "total": 265
 }

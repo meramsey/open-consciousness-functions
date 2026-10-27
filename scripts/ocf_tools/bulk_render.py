@@ -507,6 +507,7 @@ def render_many(
                         "phase": "function-" + statuses[owner]["status"],
                         "function_id": owner,
                         "detail": statuses[owner].get("error", owner),
+                        "output_directory": statuses[owner].get("output_directory"),
                     }
                 )
                 publish()

@@ -46,7 +46,11 @@ def migrate_bindings(function_ids: list[str], *, dry_run: bool = True) -> list[d
                     {"key": key, "role": role, "repetitions": 4 if role == "function-body" else 1}
                 )
             binding["narration_plan"] = {"sequence": sequence}
-        if binding.get("default_session_template") in (None, "OCF-TPL-SESSION-HPLUS-STANDARD-001"):
+        if binding.get("default_session_template") in (
+            None,
+            "OCF-TPL-SESSION-HPLUS-STANDARD-001",
+            "OCF-TPL-SESSION-HPLUS-LOCKED-004",
+        ):
             binding["default_session_template"] = TEMPLATE_ID
             binding["session_templates"] = sorted(set(binding["session_templates"]) | {TEMPLATE_ID})
         binding["voice_sources"] = sorted(set(binding.get("voice_sources") or []) | {"tts"})

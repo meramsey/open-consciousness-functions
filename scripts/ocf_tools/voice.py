@@ -1294,6 +1294,8 @@ def render_narration(
                     )
                 unit_samples = _source_pcm(wav_bytes, sample_rate, channels)
                 unit_samples = _source_fade(unit_samples, sample_rate, channels)
+                # Measure before quiet reinforcement gain; do not mistake -24 dB speech for silence.
+                audible_first, audible_last = _active_bounds(unit_samples, sample_rate * channels)
                 if unit_source:
                     unit_samples = _source_gain(
                         unit_samples,
@@ -1326,6 +1328,11 @@ def render_narration(
                         "start_offset_s": round(unit_start, 6),
                         "speech_duration_s": round(unit_duration, 6),
                         "end_offset_s": round(unit_start + unit_duration, 6),
+                        "audible_end_offset_s": round(
+                            unit_start + audible_last / (sample_rate * channels), 6
+                        )
+                        if audible_last > audible_first
+                        else None,
                         "pause_after_s": round(pause_after, 6),
                         "pause_inside_event": pause_inside_event,
                         **(
@@ -1501,6 +1508,10 @@ def render_narration(
         for unit in cue.get("spoken_units", []):
             unit["start_seconds"] = round(cue["at"] + unit.pop("start_offset_s"), 6)
             unit["end_seconds"] = round(cue["at"] + unit.pop("end_offset_s"), 6)
+            audible_end = unit.pop("audible_end_offset_s", None)
+            unit["audible_end_seconds"] = (
+                round(cue["at"] + audible_end, 6) if audible_end is not None else None
+            )
         offset = int(round(cue["at"] * sample_rate)) * channels
         samples = rendered[cue["id"]]
         if offset + len(samples) > len(track):
@@ -1529,6 +1540,12 @@ def render_narration(
                 "utterance_ids": groups,
                 "at": min(actual[group]["at"] for group in groups),
                 "end": max(actual[group]["end"] for group in groups),
+                "spoken_units": [
+                    unit
+                    for cue in cue_stats
+                    if cue["id"] in groups
+                    for unit in cue.get("spoken_units", [])
+                ],
             }
         )
 

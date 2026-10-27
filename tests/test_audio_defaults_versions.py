@@ -23,6 +23,17 @@ def setup(monkeypatch, tmp_path):
     source.write_text("original content\n")
     old_path = tmp_path / "audio/defaults" / (defaults.PREVIOUS_BASELINE_ID + ".json")
     old_path.parent.mkdir(parents=True)
+    old_path.write_text(
+        json.dumps(
+            {
+                "profiles": {
+                    "template": {"id": "OCF-TPL-SESSION-HPLUS-LOCKED-004"},
+                    "pacing": {"id": "OCF-PACING-HPLUS-LOCKED-004"},
+                    "dsp": {"id": "OCF-DSP-HPLUS-LOCKED-002"},
+                }
+            }
+        )
+    )
     old = defaults.configuration_lock(["content.yaml"], baseline_id=defaults.PREVIOUS_BASELINE_ID)
     old_path.write_text(json.dumps(old))
     return source, old_path, old_path.with_name(defaults.BASELINE_ID + ".json")
@@ -37,7 +48,7 @@ def test_explicit_successor_and_predecessor_verify_matching_versions(monkeypatch
         == defaults.BASELINE_VERSIONS[defaults.PREVIOUS_BASELINE_ID]
     )
     assert defaults.check_lock(new)["version"] == defaults.BASELINE_VERSIONS[defaults.BASELINE_ID]
-    assert defaults.check_lock(new)["profiles"] == defaults.check_lock(old)["profiles"]
+    assert defaults.check_lock(new)["profiles"] != defaults.check_lock(old)["profiles"]
     assert old.read_bytes() == original
     with pytest.raises(OCFError, match="immutable"):
         defaults.create_lock(old, baseline_id=defaults.PREVIOUS_BASELINE_ID)

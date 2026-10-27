@@ -214,7 +214,35 @@ def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: 
             and float(timing[child["id"]]["at"]) > start
         ]
         declared = (event.get("dsp") or {}).get("transition_s")
-        if any(item["state_event"] == event["id"] for item in profile.get("approaches", [])):
+        anchor = profile.get("transition_end_anchors", {}).get(event["id"])
+        if anchor is not None:
+            if anchor["semantic"] != event.get("semantic") or declared is None:
+                raise OCFError(
+                    "closure end anchor requires matching semantic and explicit transition duration"
+                )
+            units = [
+                unit
+                for unit in timing[event["id"]].get("spoken_units", [])
+                if unit.get("text") == anchor["unit_text"]
+            ]
+            if len(units) != 1 or units[0].get("audible_end_seconds") is None:
+                raise OCFError(
+                    "closure end anchor requires one measured audible speech unit; missing/ambiguous confirmation"
+                )
+            unit = units[0]
+            end = float(unit["audible_end_seconds"])
+            if (
+                not float(unit["start_seconds"])
+                < end
+                <= float(unit["end_seconds"])
+                <= float(timing[event["id"]]["end"])
+            ):
+                raise OCFError("closure audible endpoint outside measured speech interval")
+            start = end - float(declared)
+            if start < float(timing[event["id"]]["at"]):
+                raise OCFError("closure transition would begin before its measured narration event")
+            provenance = "explicit duration ending at uniquely measured audible closure-confirmation endpoint"
+        elif any(item["state_event"] == event["id"] for item in profile.get("approaches", [])):
             end = start
             provenance = "configured approach arrival; anchor validation follows"
         elif declared is not None:
@@ -247,6 +275,8 @@ def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: 
         current = target
     if not transitions and not profile.get("allow_static", False):
         raise OCFError("semantic DSP requested but session contains no state directives")
+    if set(profile.get("transition_end_anchors", {})) - {row["event_id"] for row in transitions}:
+        raise OCFError("closure end anchor refers to missing or ignored state event")
     if not transitions and profile["states"][current].get("mode") != "preset":
         raise OCFError("explicit static DSP requires an audible initial-state preset")
     unknown_ignored = ignored_state_events - observed_directives

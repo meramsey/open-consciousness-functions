@@ -45,6 +45,6 @@ def test_binding_migration_is_idempotent_and_retains_old_sleep_template():
     from ocf_tools.content import load_layers
 
     binding = load_layers("OCF-SLP-005")["bindings"]
-    assert binding["default_session_template"] == "OCF-TPL-SESSION-HPLUS-LOCKED-004"
+    assert binding["default_session_template"] == "OCF-TPL-SESSION-HPLUS-LOCKED-005"
     assert "OCF-TPL-SESSION-PILOT-SLEEP-EASY-001" in binding["session_templates"]
     assert binding["narration_plan"]["sequence"][1]["repetitions"] == 4

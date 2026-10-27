@@ -1,0 +1,17 @@
+schema_version: '1.0'
+id: OCF-TPL-STAGE-HPLUS-FOCUS-TWENTY-CLOSE-002
+version: 2.0.0
+origin: original-ocf
+type: state-transition
+description: User-authorized successor of CLOSE-001; calm sentence moved to ENTER-002 without duplication. Silent logical return marker, no DSP ramp or extra wait before waking.
+events:
+- id: prepare
+  at: 0
+  semantic: focus.twenty.close.prepare
+  narration_required: false
+- id: transition
+  after: prepare
+  offset: 0
+  timing: {anchor: event-end}
+  semantic: focus.twenty.transition.close
+  dsp: {state: {from: focus-20, to: focus-10}, transition_s: 0}

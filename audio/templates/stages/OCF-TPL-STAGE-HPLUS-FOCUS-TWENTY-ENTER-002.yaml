@@ -1,0 +1,32 @@
+schema_version: '1.0'
+id: OCF-TPL-STAGE-HPLUS-FOCUS-TWENTY-ENTER-002
+version: 2.0.0
+origin: original-ocf
+type: state-transition
+description: User-authorized successor of ENTER-001; unchanged count, then the relocated approved calm sentence, then one explicit sleep rest. No Focus 20 DSP.
+events:
+- id: enter
+  at: 0
+  semantic: focus.twenty.enter
+  narration_key: hplus.shared.focus20.enter
+  narration_required: true
+- id: transition
+  after: enter
+  offset: 0
+  timing: {anchor: speech-end}
+  semantic: focus.twenty.transition.open
+  dsp: {state: {from: focus-10, to: focus-20}, transition_s: 0}
+- id: calm
+  after: transition
+  offset: 0
+  timing: {anchor: event-end}
+  semantic: focus.twenty.rest.prepare
+  narration_key: hplus.shared.focus20.close.ready
+  narration_required: true
+- id: wait
+  after: calm
+  offset: 0
+  timing: {anchor: speech-end}
+  semantic: focus.twenty.hold
+  pacing_key: pauses.sleep20_pre_repeat_s
+  narration_required: false

@@ -108,7 +108,7 @@ def test_run_collection_reuses_verified_session_and_packages_one_new_fixture(mon
     continuity.mkdir(parents=True)
     recovered_id, rendered_id = "OCF-FND-001", "OCF-FND-002"
     recovered_report = _session_fixture(
-        tmp_path / "recovered-session", recovered_id, "OCF-TPL-SESSION-HPLUS-LOCKED-004"
+        tmp_path / "recovered-session", recovered_id, batch.TEMPLATE_ID
     )
     rendered_report = _session_fixture(
         tmp_path / "rendered-session", rendered_id, "fixture-template"
@@ -135,13 +135,24 @@ def test_run_collection_reuses_verified_session_and_packages_one_new_fixture(mon
     _export_fixture(recovered_export, recovered_report)
 
     monkeypatch.setattr(batch, "work_root", lambda: root)
+    profile = tmp_path / "fixture.yaml"
+    profile.write_text("id: fixture\n")
+    monkeypatch.setattr(
+        batch, "audit_session", lambda *_args, **_kwargs: {"successor_checks": "fixture"}
+    )
     rendered_ids = []
 
     def render_many(function_ids, **kwargs):
         rendered_ids.extend(function_ids)
         kwargs["progress_callback"]({"phase": "function-start", "function_id": rendered_id})
         kwargs["progress_callback"]({"phase": "worker-progress", "function_id": rendered_id})
-        kwargs["progress_callback"]({"phase": "function-rendered", "function_id": rendered_id})
+        kwargs["progress_callback"](
+            {
+                "phase": "function-rendered",
+                "function_id": rendered_id,
+                "output_directory": str(rendered_report.parent),
+            }
+        )
         return {
             "results": [
                 {
@@ -202,7 +213,7 @@ def test_run_collection_reuses_verified_session_and_packages_one_new_fixture(mon
     )
 
     result = batch.run_collection(
-        [recovered_id, rendered_id], voice="OCF-VOICE-FIXTURE", profile="fixture.yaml", workers=1
+        [recovered_id, rendered_id], voice="OCF-VOICE-FIXTURE", profile=str(profile), workers=1
     )
 
     assert rendered_ids == [rendered_id]
@@ -319,6 +330,7 @@ def test_batch_cli_filters_completed_functions_and_dispatches_only_pending(
                 "version": "0.3.0",
                 "workers": 1,
                 "fresh_synthesis": False,
+                "prune_verified_wav": False,
             },
         )
     ]

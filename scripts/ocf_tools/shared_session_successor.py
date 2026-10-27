@@ -31,11 +31,14 @@ def record(root: Path = REPO_ROOT) -> dict | None:
 
 
 def predecessor(root: Path, name: str, text: str) -> str:
+    from .session_pacing_successor import predecessor as before_pacing
+
     ledger = record(root)
     row = ledger["files"].get(name) if ledger else None
-    if row is None:
+    if row is not None and _sha(text) == row["before_sha256"] and text == row["before"]:
         return text
-    if _sha(text) == row["before_sha256"] and text == row["before"]:
+    text = before_pacing(root, name, text)
+    if row is None:
         return text
     if _sha(text) != row["after_sha256"]:
         raise OCFError("shared-session successor source drift: " + name)

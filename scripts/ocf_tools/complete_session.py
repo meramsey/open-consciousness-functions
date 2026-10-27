@@ -419,9 +419,9 @@ def build_complete_session_plan(
                 ),
             }
         )
-    section_report = _session_plan_summary(
-        doc, template_record, resolved_resources, dsp, narration_pacing_plan, selected_pacing
-    )
+        section_report = _session_plan_summary(
+            doc, template_record, resolved_resources, dsp, narration_pacing_plan, selected_pacing
+        )
     function_review = (layers.get("specifications") or {}).get("human_review", "unknown")
     return {
         "schema_version": "1.0",
@@ -465,6 +465,7 @@ def build_complete_session_plan(
         "resolved_overrides": options,
         "override_provenance": option_provenance,
         "resolved_pacing_profile": selected_pacing,
+        "duration_preference": selected_pacing.get("duration_preference", {}),
         "resolved_dsp_profile": dsp,
     }
 
@@ -1312,6 +1313,13 @@ def render_complete_session(
             "created_at": created.isoformat().replace("+00:00", "Z"),
         }
         from .audition_exports import attach_render_artwork
+
+        if session_plan["template"]["id"] == "OCF-TPL-SESSION-HPLUS-LOCKED-005" and not options:
+            from .session_pacing_audit import audit_session
+
+            manifest["session_pacing_audit"] = audit_session(
+                manifest, pacing=session_pacing_profile, verify_successor=True
+            )
 
         attach_render_artwork(
             manifest,

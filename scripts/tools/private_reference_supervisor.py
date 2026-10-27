@@ -6,6 +6,7 @@ import argparse
 import datetime as dt
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -15,8 +16,12 @@ from ocf_tools.process_status import process_is_alive
 
 ROOT = Path(__file__).resolve().parents[2]
 WORK = Path(os.environ.get("OCF_WORK_DIR", ROOT / ".ocf-work")).expanduser().resolve()
-STATE = WORK / "agent-continuity" / "private-reference-v4-supervisor.json"
-LOG = WORK / "logs" / "private-reference-v4-supervisor.log"
+VERSION = os.environ.get("OCF_REFERENCE_V4_VERSION", "0.3.0")
+if not re.fullmatch(r"\d+\.\d+\.\d+", VERSION):
+    raise ValueError("invalid private edition version")
+SUFFIX = "" if VERSION == "0.3.0" else f"-v{VERSION}"
+STATE = WORK / "agent-continuity" / f"private-reference-v4{SUFFIX}-supervisor.json"
+LOG = WORK / "logs" / f"private-reference-v4{SUFFIX}-supervisor.log"
 
 
 def now() -> str:
@@ -39,22 +44,33 @@ def alive(pid: int | None) -> bool:
 
 
 def command() -> list[str]:
-    return [
+    args = [
         sys.executable,
         str(ROOT / "scripts/tools/render_private_reference_v4.py"),
-        "--all",
+        *(
+            os.environ["OCF_REFERENCE_V4_FUNCTIONS"].split()
+            if os.environ.get("OCF_REFERENCE_V4_FUNCTIONS")
+            else ["--all"]
+        ),
         "--profile",
         str(
-            WORK / "agent-continuity/corrective-reference-v4-v0.3.0/reference-v4-edition-0.3.0.yaml"
+            os.environ.get(
+                "OCF_REFERENCE_V4_PROFILE",
+                WORK
+                / "agent-continuity/corrective-reference-v4-v0.3.0/reference-v4-edition-0.3.0.yaml",
+            )
         ),
         "--voice",
         "OCF-VOICE-9003",
         "--version",
-        "0.3.0",
+        VERSION,
         "--workers",
         "2",
         "--fresh-synthesis",
     ]
+    if os.environ.get("OCF_REFERENCE_V4_PRUNE_VERIFIED_WAV") == "1":
+        args.append("--prune-verified-wav")
+    return args
 
 
 def start() -> int:

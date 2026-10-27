@@ -7,6 +7,10 @@ publication authorization are separate statuses.
 
 ## Current shared-session successor
 
+HPLUS-015 is the current pacing successor; see the exact approved scope,
+version chain and recovery settings in [session pacing](SESSION_PACING_REFINEMENT.md).
+The HPLUS-014 behavior below describes the preserved v0.3.0 predecessor.
+
 The immutable HPLUS-014 lock selects the `...LOCKED-004` session and pacing
 successors, plus the `...LOCKED-002` DSP successor. Function-body blocks are
 now synthesized and timed as measured sentence units, with the configured

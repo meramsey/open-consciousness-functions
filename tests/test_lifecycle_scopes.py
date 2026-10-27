@@ -207,7 +207,7 @@ def test_scope_only_migration_preserves_plans_timings_and_engineering_locks():
     old = json.loads((REPO_ROOT / "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-006.json").read_text())
     current = check_lock()
     assert old["profiles"]["template"]["id"] == "OCF-TPL-SESSION-HPLUS-LOCKED-001"
-    assert current["id"] == "OCF-AUDIO-DEFAULTS-HPLUS-014"
-    assert current["profiles"]["template"]["id"] == "OCF-TPL-SESSION-HPLUS-LOCKED-004"
-    assert current["profiles"]["pacing"]["id"] == "OCF-PACING-HPLUS-LOCKED-004"
-    assert current["profiles"]["dsp"]["id"] == "OCF-DSP-HPLUS-LOCKED-002"
+    assert current["id"] == "OCF-AUDIO-DEFAULTS-HPLUS-015"
+    assert current["profiles"]["template"]["id"] == "OCF-TPL-SESSION-HPLUS-LOCKED-005"
+    assert current["profiles"]["pacing"]["id"] == "OCF-PACING-HPLUS-LOCKED-005"
+    assert current["profiles"]["dsp"]["id"] == "OCF-DSP-HPLUS-LOCKED-003"

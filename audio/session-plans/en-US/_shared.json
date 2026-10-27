@@ -1,19 +1,19 @@
 {
-  "defaults_lock": "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-014.json",
-  "defaults_sha256": "70147b5baaee71f3215a3b8b8417517c3a01938ffda03c13fc74e4d8cdb958ac",
+  "defaults_lock": "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-015.json",
+  "defaults_sha256": "ee1a3cd80f416c3afd35d72581a2c2b92ba098c2ab899bd47e267725dfb4eb5e",
   "generator": "ocf.audio.plan/1",
   "profiles": {
     "dsp": {
-      "id": "OCF-DSP-HPLUS-LOCKED-002",
-      "version": "2.0.0"
+      "id": "OCF-DSP-HPLUS-LOCKED-003",
+      "version": "3.0.0"
     },
     "pacing": {
-      "id": "OCF-PACING-HPLUS-LOCKED-004",
-      "version": "4.0.0"
+      "id": "OCF-PACING-HPLUS-LOCKED-005",
+      "version": "5.0.0"
     },
     "template": {
-      "id": "OCF-TPL-SESSION-HPLUS-LOCKED-004",
-      "version": "4.0.0"
+      "id": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
+      "version": "5.0.0"
     }
   },
   "resources": [

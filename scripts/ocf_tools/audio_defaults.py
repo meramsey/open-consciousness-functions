@@ -9,10 +9,10 @@ from pathlib import Path
 from .paths import REPO_ROOT
 from .utils import OCFError, sha256_of_file, write_text_atomic
 
-PREVIOUS_BASELINE_ID = "OCF-AUDIO-DEFAULTS-HPLUS-013"
-BASELINE_ID = "OCF-AUDIO-DEFAULTS-HPLUS-014"
+PREVIOUS_BASELINE_ID = "OCF-AUDIO-DEFAULTS-HPLUS-014"
+BASELINE_ID = "OCF-AUDIO-DEFAULTS-HPLUS-015"
 BASELINE_VERSIONS = {
-    PREVIOUS_BASELINE_ID: "1.0.0",
+    "OCF-AUDIO-DEFAULTS-HPLUS-001": "1.0.0",
     "OCF-AUDIO-DEFAULTS-HPLUS-002": "2.0.0",
     "OCF-AUDIO-DEFAULTS-HPLUS-003": "3.0.0",
     "OCF-AUDIO-DEFAULTS-HPLUS-004": "4.0.0",
@@ -25,11 +25,12 @@ BASELINE_VERSIONS = {
     "OCF-AUDIO-DEFAULTS-HPLUS-011": "11.0.0",
     "OCF-AUDIO-DEFAULTS-HPLUS-012": "12.0.0",
     "OCF-AUDIO-DEFAULTS-HPLUS-013": "13.0.0",
-    BASELINE_ID: "14.0.0",
+    PREVIOUS_BASELINE_ID: "14.0.0",
+    BASELINE_ID: "15.0.0",
 }
-TEMPLATE_ID = "OCF-TPL-SESSION-HPLUS-LOCKED-004"
-PACING_ID = "OCF-PACING-HPLUS-LOCKED-004"
-DSP_ID = "OCF-DSP-HPLUS-LOCKED-002"
+TEMPLATE_ID = "OCF-TPL-SESSION-HPLUS-LOCKED-005"
+PACING_ID = "OCF-PACING-HPLUS-LOCKED-005"
+DSP_ID = "OCF-DSP-HPLUS-LOCKED-003"
 LOCK_PATH = REPO_ROOT / "audio" / "defaults" / f"{BASELINE_ID}.json"
 
 
@@ -53,9 +54,16 @@ def configuration_lock(
 
     if baseline_id not in BASELINE_VERSIONS:
         raise OCFError(f"unknown audio defaults baseline: {baseline_id}")
-    template = load_template(TEMPLATE_ID)
-    pacing = load_pacing_profile(PACING_ID)
-    dsp = load_profile(DSP_ID)
+    if baseline_id != BASELINE_ID:
+        historical = json.loads(
+            (REPO_ROOT / "audio/defaults" / f"{baseline_id}.json").read_text(encoding="utf-8")
+        )
+        ids = {name: value["id"] for name, value in historical["profiles"].items()}
+    else:
+        ids = {"template": TEMPLATE_ID, "pacing": PACING_ID, "dsp": DSP_ID}
+    template = load_template(ids["template"])
+    pacing = load_pacing_profile(ids["pacing"])
+    dsp = load_profile(ids["dsp"])
     # Lock transitive stage, cue, preset and locale timing inputs too. Only
     # committed runtime inputs are inspected, never reference/source corpora.
     paths = set()
