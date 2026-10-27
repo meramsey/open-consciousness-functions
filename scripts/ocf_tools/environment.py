@@ -25,7 +25,7 @@ def _user_home() -> Path:
 
 
 def _python_version(executable: Path) -> tuple[str | None, bool]:
-    if executable.absolute() == Path(sys.executable).absolute():
+    if executable.resolve() == Path(sys.executable).resolve():
         version_text = sys.version.split()[0]
     else:
         version_text = next(

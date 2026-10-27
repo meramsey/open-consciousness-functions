@@ -1,4 +1,5 @@
 import sys
+from pathlib import Path
 
 import pytest
 from ocf_tools import environment
@@ -9,6 +10,13 @@ def _script(path, body):
     path.write_text(body, encoding="utf-8")
     path.chmod(0o755)
     return path
+
+
+@pytest.mark.unit
+def test_python_version_uses_active_interpreter_metadata_after_path_resolution():
+    version, supported = environment._python_version(Path(sys.executable).resolve())
+    assert version == sys.version.split()[0]
+    assert supported
 
 
 @pytest.mark.unit
