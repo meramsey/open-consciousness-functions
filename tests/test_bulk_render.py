@@ -179,6 +179,39 @@ def test_render_batch_lease_blocks_duplicate_and_stale_owners(monkeypatch, tmp_p
     assert lock.exists()
 
 
+@pytest.mark.unit
+def test_windows_process_probe_uses_query_handle_and_treats_access_denied_as_live():
+    calls = []
+
+    class Kernel:
+        def OpenProcess(self, access, inherit, pid):
+            calls.append(("open", access, inherit, pid))
+            return 101 if pid == 42 else None
+
+        @staticmethod
+        def GetExitCodeProcess(_process, result):
+            result._obj.value = 259
+            return 1
+
+        @staticmethod
+        def CloseHandle(process):
+            calls.append(("close", process))
+            return 1
+
+    errors = {7: 87, 99: 5}
+    assert bulk_render._windows_process_is_alive(42, kernel32=Kernel(), last_error=lambda: 0)
+    assert (
+        bulk_render._windows_process_is_alive(7, kernel32=Kernel(), last_error=lambda: errors[7])
+        is False
+    )
+    assert (
+        bulk_render._windows_process_is_alive(99, kernel32=Kernel(), last_error=lambda: errors[99])
+        is True
+    )
+    assert calls[0] == ("open", 0x1000, False, 42)
+    assert ("close", 101) in calls
+
+
 @pytest.mark.integration
 def test_render_receipts_bind_to_current_worktree_head_and_branch():
     from ocf_tools.paths import REPO_ROOT

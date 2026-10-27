@@ -209,6 +209,49 @@ def _render_job(
     raise AssertionError("bounded render retry loop ended unexpectedly")
 
 
+def _windows_process_is_alive(pid, *, kernel32=None, last_error=None):
+    """Probe process state without sending a signal to the target process."""
+    import ctypes
+    from ctypes import wintypes
+
+    if kernel32 is None:
+        kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        kernel32.OpenProcess.argtypes = [wintypes.DWORD, wintypes.BOOL, wintypes.DWORD]
+        kernel32.OpenProcess.restype = wintypes.HANDLE
+    process = kernel32.OpenProcess(0x1000, False, pid)  # PROCESS_QUERY_LIMITED_INFORMATION
+    if not process:
+        error = (last_error or ctypes.get_last_error)()
+        if error == 5:  # ERROR_ACCESS_DENIED: conservatively regard the PID as live.
+            return True
+        if error in {87, 1168}:  # ERROR_INVALID_PARAMETER / ERROR_NOT_FOUND
+            return False
+        if hasattr(ctypes, "WinError"):
+            raise ctypes.WinError(error)
+        raise OSError(error, "OpenProcess failed")
+    try:
+        exit_code = wintypes.DWORD()
+        if not kernel32.GetExitCodeProcess(process, ctypes.byref(exit_code)):
+            error = (last_error or ctypes.get_last_error)()
+            if hasattr(ctypes, "WinError"):
+                raise ctypes.WinError(error)
+            raise OSError(error, "GetExitCodeProcess failed")
+        return exit_code.value == 259  # STILL_ACTIVE
+    finally:
+        kernel32.CloseHandle(process)
+
+
+def _process_is_alive(pid):
+    if os.name == "nt":
+        return _windows_process_is_alive(pid)
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    return True
+
+
 def _single_batch_owner(function):
     """Keep separate render-many invocations from racing shared receipts."""
 
@@ -225,7 +268,8 @@ def _single_batch_owner(function):
             try:
                 owner = json.loads(lock.read_text(encoding="utf-8"))
                 pid = int(owner["pid"])
-                os.kill(pid, 0)
+                if not _process_is_alive(pid):
+                    raise ProcessLookupError(pid)
             except (OSError, ValueError, KeyError, TypeError, json.JSONDecodeError):
                 raise OCFError(
                     f"render batch lock is stale or unreadable; verify ownership before removing: {lock}"
