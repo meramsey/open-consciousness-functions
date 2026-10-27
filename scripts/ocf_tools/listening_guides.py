@@ -266,13 +266,37 @@ def markdown_documents():
     documents = {
         "listening-guide.md": (REPO_ROOT / "docs/LISTENING_GUIDE.md").read_text(encoding="utf-8")
     }
-    index = ["# OCF function guides", "", "[General listening guide](listening-guide.md)", ""]
-    for record in load_all_functions():
+    records = load_all_functions()
+    index = [
+        "# Open Consciousness Functions — Guide Collection",
+        "",
+        "Portable offline documentation. Historical source availability, technical implementation, listening approval, and publication status are separate.",
+        "",
+        "[General listening guide](listening-guide.md) · [Complete PDF handbook](complete-guide.pdf)",
+        "",
+    ]
+    for record in records:
         filename = f"functions/{record.id}.md"
         documents[filename] = function_guide_markdown(record, catalog=catalog)
-        index.append(f"- [{record.id}: {record.canonical_name}]({filename})")
+    for category in sorted({record.primary_domain or "Uncategorized" for record in records}):
+        index += [f"## {category}", ""]
+        for record in records:
+            if (record.primary_domain or "Uncategorized") != category:
+                continue
+            content = function_artwork_content(record.id, "en-US", catalog=catalog, strict=False)
+            cue = content.get("primary") or {}
+            description = content.get("description") or content.get("purpose") or "Description not supplied."
+            index.append(
+                f"- [{record.canonical_name}]({filename_for(record.id)}) — `{record.id}`; "
+                f"Primary cue: {cue.get('display_cue', 'Not supplied')}; {description}."
+            )
+        index.append("")
     documents["index.md"] = "\n".join(index) + "\n"
     return documents
+
+
+def filename_for(function_id: str) -> str:
+    return f"functions/{function_id}.md"
 
 
 def _inline(text, suffix=".pdf"):
