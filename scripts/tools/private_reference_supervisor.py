@@ -11,6 +11,8 @@ import sys
 import tempfile
 from pathlib import Path
 
+from ocf_tools.process_status import process_is_alive
+
 ROOT = Path(__file__).resolve().parents[2]
 WORK = Path(os.environ.get("OCF_WORK_DIR", ROOT / ".ocf-work")).expanduser().resolve()
 STATE = WORK / "agent-continuity" / "private-reference-v4-supervisor.json"
@@ -33,15 +35,7 @@ def write_atomic(path: Path, value: dict) -> None:
 
 
 def alive(pid: int | None) -> bool:
-    if not pid:
-        return False
-    try:
-        os.kill(pid, 0)
-        return True
-    except ProcessLookupError:
-        return False
-    except PermissionError:
-        return True
+    return process_is_alive(pid)
 
 
 def command() -> list[str]:
