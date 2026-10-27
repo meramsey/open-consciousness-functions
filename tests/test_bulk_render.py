@@ -186,8 +186,7 @@ def test_render_receipts_bind_to_current_worktree_head_and_branch():
     assert identity["verified"] is True
     assert len(identity["head"]) == 40
     assert identity["branch"] == "main" or (
-        identity["branch"].startswith("engineering/")
-        and identity["branch"].endswith("20261025")
+        identity["branch"].startswith("engineering/") and identity["branch"].endswith("20261025")
     )
     assert identity["worktree"] == str(REPO_ROOT.resolve())
 
