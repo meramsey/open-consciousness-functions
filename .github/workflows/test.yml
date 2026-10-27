@@ -142,9 +142,9 @@ jobs:
         run: python scripts/tools/report_pytest_failures.py .ocf-work/logs/pytest-results.xml
   coverage:
     runs-on: ubuntu-latest
-    # The full instrumented suite measured 21m53s before report generation.
-    # Include setup/report/upload headroom without filtering tests or coverage.
-    timeout-minutes: 40
+    # The full instrumented suite exceeded the 40-minute limit on a recent PR run.
+    # Allow report/upload headroom without filtering tests or coverage.
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
         with:

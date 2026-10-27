@@ -51,7 +51,7 @@ def test_project_python_honors_pyenv_version_without_changing_global_selection(
     result = environment.project_python(root)
     assert result["status"] == "ready"
     assert result["source"] == "pyenv .python-version"
-    assert result["executable"].endswith("/versions/3.12.3/bin/python")
+    assert Path(result["executable"]).resolve() == (pyenv / "versions/3.12.3/bin/python").resolve()
 
 
 @pytest.mark.unit
