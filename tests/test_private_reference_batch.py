@@ -170,7 +170,7 @@ def test_run_collection_reuses_verified_session_and_packages_one_new_fixture(mon
         tmp_path / "recovered-session", recovered_id, batch.TEMPLATE_ID
     )
     rendered_report = _session_fixture(
-        tmp_path / "rendered-session", rendered_id, "fixture-template"
+        tmp_path / "rendered-session", rendered_id, batch.TEMPLATE_ID
     )
     status_path = continuity / "REFERENCE_V4_V0_3_0_STATUS.json"
     status_path.write_text(
@@ -250,8 +250,8 @@ def test_run_collection_reuses_verified_session_and_packages_one_new_fixture(mon
     )
 
     def package_auditions(exports, output, *, resume):
-        assert len(exports) == 2 and resume is False
-        output.mkdir(parents=True)
+        assert len(exports) == 2 and resume == output.exists()
+        output.mkdir(parents=True, exist_ok=True)
         (output / "package.json").write_text("{}\n", encoding="utf-8")
         return {"package_path": str(output)}
 
@@ -292,6 +292,16 @@ def test_run_collection_reuses_verified_session_and_packages_one_new_fixture(mon
             (exported_outputs[0], rendered_report),
         )
     )
+    monkeypatch.setattr(
+        batch,
+        "render_many",
+        lambda *_args, **_kwargs: pytest.fail("verified sessions must not be rendered again"),
+    )
+    resumed = batch.run_collection(
+        [recovered_id, rendered_id], voice="OCF-VOICE-FIXTURE", profile=str(profile), workers=1
+    )
+    assert resumed["export_count"] == 2
+    assert len(exported_outputs) == 1
 
 
 @pytest.mark.unit

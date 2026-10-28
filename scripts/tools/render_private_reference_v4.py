@@ -400,16 +400,20 @@ def run_collection(
             row["retention"] = "verified export retained; receipt-owned WAV intermediates removed"
             _atomic_json(status_path, status)
 
-    rendered = render_many(
-        render_ids,
-        voice=voice,
-        locale=locale,
-        pacing="sleep",
-        resume=True,
-        fresh_synthesis=fresh_synthesis,
-        workers=workers,
-        dsp_profile=profile,
-        progress_callback=progress,
+    rendered = (
+        render_many(
+            render_ids,
+            voice=voice,
+            locale=locale,
+            pacing="sleep",
+            resume=True,
+            fresh_synthesis=fresh_synthesis,
+            workers=workers,
+            dsp_profile=profile,
+            progress_callback=progress,
+        )
+        if render_ids
+        else {"results": [], "failed": 0, "blocked": 0, "workers": 0}
     )
     latest_by_id = {**recovered, **{row["function_id"]: row for row in rendered["results"]}}
     for function_id in function_ids:
