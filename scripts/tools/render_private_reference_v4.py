@@ -65,6 +65,43 @@ def _verified_export(path: Path, session_report: Path) -> bool:
         return False
 
 
+def narration_identities(report: dict) -> list[dict]:
+    cues = {cue["id"]: cue for cue in report.get("narration_timing", {}).get("cues", [])}
+    identities = []
+    for item in report.get("narration_resources", []):
+        cue = cues.get(item["id"])
+        if cue is None or not cue.get("spoken_text"):
+            raise OCFError("build provenance requires the actual resolved narration text")
+        identities.append(
+            {
+                **{key: item[key] for key in ("id", "key", "locale", "version", "status")},
+                "text_sha256": hashlib.sha256(cue["spoken_text"].encode("utf-8")).hexdigest(),
+            }
+        )
+    return identities
+
+
+def prune_verified_wavs(
+    session: Path, report: dict, export: Path, root: Path, version: str
+) -> None:
+    if version == "0.3.0" or not _verified_export(export, session / "session-report.json"):
+        raise OCFError("refusing to prune historical or unverified session intermediates")
+    if not session.is_relative_to((root / "renders").resolve()):
+        raise OCFError("refusing to prune outside the owned render workspace")
+    candidates = []
+    for item in report["artifacts"].values():
+        artifact = (session / item["path"]).resolve()
+        if artifact.suffix == ".wav":
+            if not artifact.is_relative_to(session):
+                raise OCFError("render intermediate escapes owned session")
+            if artifact.exists():
+                if sha256_of_file(artifact) != item["sha256"]:
+                    raise OCFError("render intermediate changed; preserve for investigation")
+                candidates.append(artifact)
+    for artifact in candidates:
+        artifact.unlink()
+
+
 def run_collection(
     function_ids: list[str],
     *,
@@ -96,6 +133,7 @@ def run_collection(
         phase = event["phase"]
         if phase == "function-start":
             row["status"] = "RENDERING"
+            row["render_git_sha"] = _git_worktree_identity()["head"]
         elif phase in {"function-blocked", "function-failed"}:
             row["status"] = "BLOCKED" if phase.endswith("blocked") else "FAILED"
             row["error"] = event.get("detail")
@@ -132,11 +170,15 @@ def run_collection(
                     == yaml_safe_load(Path(profile).read_text(encoding="utf-8"))["id"]
                 ):
                     export_path = (
-                        root
-                        / "renders"
-                        / f"amy-reference-v4-v{version}"
-                        / "verified-exports-final"
-                        / function_id
+                        Path(row["export_path"])
+                        if row.get("export_path")
+                        else (
+                            root
+                            / "renders"
+                            / f"amy-reference-v4-v{version}"
+                            / "verified-exports-final"
+                            / function_id
+                        )
                     )
                     if (
                         row.get("session_report_sha256")
@@ -179,11 +221,15 @@ def run_collection(
         pacing_profile = load_pacing_profile(PACING_ID)
         timing_audit = audit_session(session_report, pacing=pacing_profile, verify_successor=True)
         export_path = (
-            root
-            / "renders"
-            / f"amy-reference-v4-v{version}"
-            / "verified-exports-final"
-            / function_id
+            Path(row["export_path"])
+            if row.get("export_path")
+            else (
+                root
+                / "renders"
+                / f"amy-reference-v4-v{version}"
+                / "verified-exports-final"
+                / function_id
+            )
         )
         if export_path.exists():
             if not _verified_export(export_path, session_report_path):
@@ -282,9 +328,9 @@ def run_collection(
                     "function_id": function_id,
                     "function_title": session_report["title"],
                     "locale": locale,
-                    "activation_cue": exported["manifest"]["function_content"].get(
-                        "primary_command"
-                    ),
+                    "activation_cue": exported["manifest"]["function_content"]["primary"][
+                        "display_cue"
+                    ],
                     "versioned_template": session_report["template"],
                     "versioned_pacing_profile": session_report.get("session_pacing_profile"),
                     "dsp_profile": {
@@ -313,18 +359,13 @@ def run_collection(
                         "focus10": "18c71de3fa72e3252147fc9d3cae2f360304fcc4ef45ce5f96cca4590a4bb02a",
                         "focus11": "6d0feff8c0e02282b8d8098d1eda126029159a56f8b1b447527a7e80f8c3312e",
                     },
-                    "narration_resources": [
-                        {
-                            key: item.get(key)
-                            for key in ("key", "locale", "version", "status", "text_sha256")
-                        }
-                        for item in session_report.get("narration_resources", [])
-                    ],
+                    "narration_resources": narration_identities(session_report),
                     "listener_timing_receipt_sha256": exported["manifest"]["listener_text"][
                         "timing_receipt"
                     ]["sha256"],
                     "session_report_sha256": sha256_of_file(session_report_path),
                     "git_base_sha": _git_worktree_identity()["head"],
+                    "render_git_sha": row.get("render_git_sha", status.get("source_git_sha")),
                     "git_worktree_branch": _git_worktree_identity()["branch"],
                     "source_component_sha256": source_hashes,
                     "artifacts": {
@@ -355,21 +396,7 @@ def run_collection(
         _atomic_json(status_path, status)
 
         if prune_verified_wav:
-            if version == "0.3.0" or not _verified_export(export_path, session_report_path):
-                raise OCFError("refusing to prune historical or unverified session intermediates")
-            if not session.is_relative_to((root / "renders").resolve()):
-                raise OCFError("refusing to prune outside the owned render workspace")
-            for item in session_report["artifacts"].values():
-                artifact = (session / item["path"]).resolve()
-                if artifact.suffix == ".wav":
-                    if not artifact.is_relative_to(session):
-                        raise OCFError("render intermediate escapes owned session")
-                    if artifact.exists():
-                        if sha256_of_file(artifact) != item["sha256"]:
-                            raise OCFError(
-                                "render intermediate changed; preserve for investigation"
-                            )
-                        artifact.unlink()
+            prune_verified_wavs(session, session_report, export_path, root, version)
             row["retention"] = "verified export retained; receipt-owned WAV intermediates removed"
             _atomic_json(status_path, status)
 

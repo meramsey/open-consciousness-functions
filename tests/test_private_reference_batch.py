@@ -6,8 +6,67 @@ from types import SimpleNamespace
 import pytest
 import tools.render_private_reference_v4 as batch
 from ocf_tools import indexes
-from ocf_tools.utils import sha256_of_file
+from ocf_tools.utils import OCFError, sha256_of_file
 from tools.render_private_reference_v4 import _verified_export
+
+
+@pytest.mark.unit
+def test_narration_provenance_has_resolved_text_hash_and_rejects_missing_text():
+    item = {
+        "id": "body.pass-1",
+        "key": "function.body",
+        "locale": "en-US",
+        "version": "1.0.0",
+        "status": "reviewed",
+    }
+    report = {
+        "narration_resources": [item],
+        "narration_timing": {
+            "cues": [{"id": item["id"], "spoken_text": "Approved Unicode — wording."}]
+        },
+    }
+    identity = batch.narration_identities(report)[0]
+    assert (
+        identity["text_sha256"]
+        == hashlib.sha256("Approved Unicode — wording.".encode()).hexdigest()
+    )
+    assert identity["key"] == "function.body"
+    report["narration_timing"]["cues"] = []
+    with pytest.raises(OCFError, match="actual resolved narration"):
+        batch.narration_identities(report)
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize("failure", [None, "historical", "unverified", "changed", "escape"])
+def test_retention_removes_only_verified_owned_wavs(monkeypatch, tmp_path, failure):
+    root = tmp_path.resolve()
+    session = root / "renders/new-session"
+    session.mkdir(parents=True)
+    wav = session / "master.wav"
+    wav.write_bytes(b"owned-wave")
+    retained = session / "receipt.json"
+    retained.write_text("keep")
+    item = {"path": wav.name, "sha256": sha256_of_file(wav)}
+    report = {"artifacts": {"wav": item, "receipt": {"path": retained.name}}}
+    monkeypatch.setattr(batch, "_verified_export", lambda *_: failure != "unverified")
+    if failure == "changed":
+        wav.write_bytes(b"human-change")
+    if failure == "escape":
+        item["path"] = "../../outside.wav"
+    if failure:
+        with pytest.raises(OCFError):
+            batch.prune_verified_wavs(
+                session,
+                report,
+                root / "export",
+                root,
+                "0.3.0" if failure == "historical" else "0.4.0",
+            )
+        assert wav.exists()
+    else:
+        batch.prune_verified_wavs(session, report, root / "export", root, "0.4.0")
+        assert not wav.exists()
+    assert retained.read_text() == "keep"
 
 
 @pytest.mark.unit
@@ -95,7 +154,7 @@ def _export_fixture(output: Path, source_report: Path) -> dict:
         "source_report": {"sha256": sha256_of_file(source_report)},
         "artifacts": {key: receipts[key] for key in ("fixture.flac", "fixture.mp3")},
         "listener_text": {"artifacts": {}, "timing_receipt": receipts["timing.json"]},
-        "function_content": {"primary_command": "PLUS-DISPOSABLE-FIXTURE"},
+        "function_content": {"primary": {"display_cue": "PLUS-DISPOSABLE-FIXTURE"}},
     }
     (output / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
     return manifest
