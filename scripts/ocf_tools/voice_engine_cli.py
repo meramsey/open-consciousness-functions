@@ -38,6 +38,33 @@ def add_commands(voice_subparsers) -> None:
     profile_import.add_argument("--id", help="new private voice ID")
     profile_import.add_argument("--consent-record", help="local portable consent reference")
 
+    pack_create = voice_subparsers.add_parser(
+        "create-pack", help="create a private reference-based voice pack from a prepared WAV"
+    )
+    pack_create.add_argument("--reference", type=Path, required=True)
+    pack_create.add_argument("--id", required=True)
+    pack_create.add_argument("--name", required=True)
+    pack_create.add_argument("--locale", default="en-US")
+    pack_create.add_argument("--transcript", required=True, help="exact confirmed reference words")
+    pack_create.add_argument("--consent-declaration", required=True)
+    pack_create.add_argument(
+        "--source-type",
+        choices=("original-recording", "generated-tts", "authorized-other"),
+        default="original-recording",
+    )
+
+    pack_inspect = voice_subparsers.add_parser(
+        "inspect-pack", help="validate and inspect a private OCF reference voice pack"
+    )
+    pack_inspect.add_argument("voice_id")
+
+    prepare = voice_subparsers.add_parser(
+        "prepare-reference", help="inspect and prepare a local WAV/FLAC/MP3 reference clip"
+    )
+    prepare.add_argument("sample", type=Path)
+    prepare.add_argument("--start", type=float)
+    prepare.add_argument("--duration", type=float)
+
     recording = voice_subparsers.add_parser(
         "dataset-record", help="import an externally recorded WAV into one dataset prompt slot"
     )
@@ -131,6 +158,26 @@ def dispatch(args: Namespace) -> dict:
             voice_id=args.id,
             consent_record=args.consent_record,
         )
+    if kind == "create-pack":
+        from .voice_packs import create_pack
+
+        return create_pack(
+            args.reference,
+            voice_id=args.id,
+            name=args.name,
+            locale=args.locale,
+            transcript=args.transcript,
+            consent_declaration=args.consent_declaration,
+            source_type=args.source_type,
+        )
+    if kind == "inspect-pack":
+        from .voice_packs import inspect_pack
+
+        return inspect_pack(args.voice_id)
+    if kind == "prepare-reference":
+        from .voice_packs import prepare_reference
+
+        return prepare_reference(args.sample, start_s=args.start, duration_s=args.duration)
     if kind == "dataset-record":
         return voice_datasets.import_recording(
             args.manifest,

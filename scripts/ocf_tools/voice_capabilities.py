@@ -67,6 +67,20 @@ _BACKENDS = {
         "guide": "https://github.com/SWivid/F5-TTS",
         "license_note": "MIT code; upstream pretrained models documented as CC-BY-NC. Do not infer redistribution permission.",
     },
+    "chatterbox-nano": {
+        "binary": None,
+        "package": "chatterbox",
+        "upstream": {"basic_tts": True, "reference_inference": True, "training": False},
+        "ocf": {
+            "inference_supported": False,
+            "training_supported": False,
+            "cpu_tts": False,
+            "customization_methods": [],
+            "adapter_status": "unverified-unsupported",
+        },
+        "guide": "https://github.com/resemble-ai/chatterbox",
+        "license_note": "Chatterbox Nano model card reports MIT; verify the exact selected model revision and dependency licenses.",
+    },
 }
 
 

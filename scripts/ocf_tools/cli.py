@@ -1938,6 +1938,9 @@ def main(argv: list[str] | None = None) -> int:
                 "import-profile",
                 "dataset-record",
                 "dataset-guide",
+                "create-pack",
+                "inspect-pack",
+                "prepare-reference",
             }:
                 import json
 
