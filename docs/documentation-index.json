@@ -719,7 +719,7 @@
         "voice doctor"
       ],
       "related_schemas": [],
-      "sha256": "6aaa22f8691913733f9edccfd4b0b82f0aaa6f937c32d7add97ea95abd0433ee",
+      "sha256": "1a8824f313f9e76e7c0f74a46616d5743e8053804c90171f46e52cb05b514395",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -2068,6 +2068,8 @@
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "Private zero-shot voice packs (MVP)",
       "related_commands": [
+        "audio render",
+        "audio render-many",
         "voice audition-pack",
         "voice create-pack",
         "voice export-profile",
@@ -2076,7 +2078,7 @@
         "voice prepare-reference"
       ],
       "related_schemas": [],
-      "sha256": "3dc51f58303357b5df4466efe9ad6ef3f16fe385c56fdee623c65e0221079c55",
+      "sha256": "a24628c40d353f1ad98fd7bcaa92f599a045b8bec9ece10c881f93d6ea2f7778",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5343,7 +5345,7 @@
       "related_schemas": [
         "schemas/voice-profile.schema.json"
       ],
-      "sha256": "860a5fa19632d96449b2bfd3e3a794980bc04a9aeaac0070c0d1513110900197",
+      "sha256": "bff61d964e36686802129b9631fed45c3baa5262d5359d330a0b3f59763ee40e",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5424,7 +5426,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "6a3466d97a7b8a13d57218c473bc6378b125865355838b6a1d0ba0805b07ccc8",
+      "sha256": "cdc6f108418d69730a68a14fd48630f190a7e200f599ba2ee2913c79537b586c",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {

@@ -45,7 +45,10 @@ def add_commands(voice_subparsers) -> None:
     pack_create.add_argument("--id", required=True)
     pack_create.add_argument("--name", required=True)
     pack_create.add_argument("--locale", default="en-US")
-    pack_create.add_argument("--transcript", required=True, help="exact confirmed reference words")
+    pack_create.add_argument(
+        "--transcript",
+        help="optional exact reference transcript; Chatterbox Nano does not require it",
+    )
     pack_create.add_argument("--consent-declaration", required=True)
     pack_create.add_argument(
         "--source-type",
@@ -129,8 +132,8 @@ def capabilities_report(*, probe_gpu: bool = False) -> dict:
             )
         if backend == "chatterbox-nano" and capability["available"]:
             actions.append(
-                "First inference downloads the upstream model into the local workspace cache; "
-                "use voice audition-pack with an explicitly authorized reference."
+                "Use audio render-many with the selected voice profile and --speech-cache auto/off/refresh; "
+                "first inference downloads the model into the local workspace cache."
             )
         backends.append(
             {

@@ -42,7 +42,13 @@ def save(path: Path, data: dict):
 
 
 @contextmanager
-def lock(name: str, *, wait: bool = False):
+def lock(name: str, *, wait: bool = False, timeout: float = 10.0):
+    if (
+        not isinstance(timeout, (int, float))
+        or isinstance(timeout, bool)
+        or not 0 <= timeout < float("inf")
+    ):
+        raise OCFError("lock timeout must be a finite nonnegative number")
     root = work_path("logs", "jobs")
     root.mkdir(parents=True, exist_ok=True)
     with (root / (name + ".lock")).open("a+b") as handle:
@@ -51,7 +57,7 @@ def lock(name: str, *, wait: bool = False):
             handle.write(b"0")
             handle.flush()
         acquired = False
-        deadline = time.monotonic() + 10
+        deadline = time.monotonic() + timeout
         while not acquired:
             try:
                 handle.seek(0)
@@ -90,10 +96,26 @@ def validate_request(operation: str, arguments: dict) -> dict:
         "voice-audition": {"voices", "locale"},
         "voice-dataset": {"manifest"},
         "narration-validate": {"function_id", "manifest", "locale"},
-        "narration-render": {"function_id", "manifest", "locale", "voice", "pacing", "mix_profile"},
+        "narration-render": {
+            "function_id",
+            "manifest",
+            "locale",
+            "voice",
+            "pacing",
+            "mix_profile",
+            "speech_cache_mode",
+        },
         "tests": {"paths", "full", "workers"},
         "plans": {"function_id", "locale", "generate"},
-        "render": {"function_id", "locale", "voice", "pacing", "force"},
+        "render": {
+            "function_id",
+            "locale",
+            "voice",
+            "pacing",
+            "force",
+            "speech_cache_mode",
+            "dsp_profile",
+        },
         "release": {"function_id", "locale", "voice", "artwork", "artwork_theme", "dry_run"},
         "validate": set(),
     }
@@ -183,6 +205,12 @@ def validate_request(operation: str, arguments: dict) -> dict:
         if operation == "render":
             if not args.get("voice") or args.get("pacing") not in ("normal", "relaxed", "sleep"):
                 raise OCFError("voice and valid pacing are required")
+        if operation in {"render", "narration-render"}:
+            args["speech_cache_mode"] = args.get("speech_cache_mode", "auto")
+            if args["speech_cache_mode"] not in {"auto", "off", "refresh"}:
+                raise OCFError("speech_cache_mode must be auto, off or refresh")
+        if operation == "render" and args.get("dsp_profile") is not None:
+            safe_path(args["dsp_profile"], work_root())
         if operation == "release":
             if args.get("artwork"):
                 safe_path(args["artwork"], work_root())
@@ -259,6 +287,10 @@ def input_identity(operation: str, args: dict) -> dict:
 
         _, spec = _voice_profile(args["voice"], args["locale"], LocaleCatalog())
         sources["voice"] = voice_identity(spec)
+        if args.get("dsp_profile") is not None:
+            from .agent_api import safe_path
+
+            sources["dsp_profile"] = sha256_of_file(safe_path(args["dsp_profile"], work_root()))
     if operation == "voice-audition":
         from .locale import LocaleCatalog
         from .narration_first import _voice_profile
@@ -679,8 +711,11 @@ def _execute(job_id: str) -> int:
             }
             passed = True
         elif operation == "render":
+            from .agent_api import safe_path
             from .bulk_render import render_many
 
+            if args.get("dsp_profile") is not None:
+                args["dsp_profile"] = str(safe_path(args["dsp_profile"], work_root()))
             result = render_many([args.pop("function_id")], **args)
             passed = result["failed"] == 0
         elif operation == "plans":

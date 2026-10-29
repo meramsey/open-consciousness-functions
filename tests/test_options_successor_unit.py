@@ -131,12 +131,12 @@ def test_absent_successor_is_explicit(tmp_path):
 
 
 def test_approved_spoken_change_selects_new_cache_identity(tmp_path, monkeypatch):
-    import hashlib
     import io
     import wave
 
     from ocf_tools import speech_cache
 
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
     output = io.BytesIO()
     with wave.open(output, "wb") as writer:
         writer.setparams((1, 2, 16000, 0, "NONE", "not compressed"))
@@ -145,15 +145,6 @@ def test_approved_spoken_change_selects_new_cache_identity(tmp_path, monkeypatch
     calls = []
     monkeypatch.setattr(speech_cache, "voice_identity", lambda spec: {"synthetic": True})
     monkeypatch.setattr(speech_cache, "work_path", lambda *parts: tmp_path.joinpath(*parts))
-
-    def publish(root, key, data):
-        root.mkdir(parents=True)
-        (root / "speech.wav").write_bytes(data)
-        (root / "manifest.json").write_text(
-            json.dumps({"key": key, "sha256": hashlib.sha256(data).hexdigest()})
-        )
-
-    monkeypatch.setattr(speech_cache, "_publish", publish)
 
     def synthesize():
         calls.append(True)

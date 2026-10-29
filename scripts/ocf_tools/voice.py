@@ -37,6 +37,7 @@ operator supplies their own lawfully held source material.
 
 from __future__ import annotations
 
+import hashlib
 import io
 import json
 import math
@@ -518,6 +519,7 @@ def _load_profile(profile: dict[str, Any]) -> dict[str, Any]:
         "piper_length_scale": profile.get("piper_length_scale"),
         "piper_sentence_silence_s": profile.get("piper_sentence_silence_s"),
         "profile_id": profile.get("id"),
+        "profile_version": profile.get("version"),
         "gain_db": profile.get("gain_db") or 0,
         "processing_defaults": profile.get("processing_defaults", {}),
     }
@@ -531,6 +533,10 @@ def _load_profile(profile: dict[str, Any]) -> dict[str, Any]:
             {
                 "reference_audio": str(asset_root() / reference["asset"]),
                 "reference_sha256": reference["sha256"],
+                "reference_text_sha256": hashlib.sha256(
+                    reference.get("reference_text", "").encode("utf-8")
+                ).hexdigest(),
+                "profile_version": profile.get("version"),
                 "model_identity": {
                     "identifier": reference["model_identifier"],
                     "revision": cached_model_revision() or reference["model_revision"],
@@ -539,6 +545,8 @@ def _load_profile(profile: dict[str, Any]) -> dict[str, Any]:
                 },
             }
         )
+        if profile.get("pronunciation"):
+            resolved["pronunciation"] = profile["pronunciation"]
         return resolved
     from .environment import resolve_executable
 

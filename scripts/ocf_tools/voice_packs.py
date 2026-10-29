@@ -7,20 +7,157 @@ import io
 import json
 import math
 import os
+import queue
 import re
 import subprocess
 import sys
+import threading
 import wave
 from array import array
+from contextlib import contextmanager
+from contextvars import ContextVar
 from datetime import UTC, datetime
 from pathlib import Path
 
 from . import custom_voices
 from .indexes import load_voice_profiles
-from .paths import REPO_ROOT, unique_run_id, work_path, workspace_run
+from .paths import REPO_ROOT, unique_run_id, work_path, workspace_environment, workspace_run
 from .utils import OCFError, sha256_of_file, write_text_atomic, yaml_safe_dump
 
 CHATTERBOX_REVISION = "5de7a54aa4e5e2baadb0182dde554908b48b85c2"
+_worker_scope_lock = threading.Lock()
+_worker_io_lock = threading.RLock()
+_worker_scopes = 0
+_worker_process: subprocess.Popen | None = None
+_worker_responses: queue.Queue[str | None] | None = None
+_worker_log_path: Path | None = None
+_active_voice_pack: ContextVar[dict | None] = ContextVar("ocf_active_zero_shot_pack", default=None)
+
+
+@contextmanager
+def persistent_worker(voice_id: str | None = None):
+    """Share one optional Chatterbox model across an OCF render scope."""
+    global _worker_scopes
+    inherited_pack = _active_voice_pack.get()
+    selected_pack = inherited_pack
+    if voice_id:
+        if inherited_pack and inherited_pack["id"] == voice_id:
+            selected_pack = inherited_pack
+        else:
+            try:
+                candidate = inspect_pack(voice_id)["profile"]
+                selected_pack = (
+                    candidate if candidate.get("backend") == "chatterbox-nano" else inherited_pack
+                )
+            except OCFError:
+                selected_pack = inherited_pack
+    pack_token = _active_voice_pack.set(selected_pack)
+    with _worker_scope_lock:
+        _worker_scopes += 1
+    try:
+        yield
+    finally:
+        with _worker_scope_lock:
+            _worker_scopes -= 1
+            if _worker_scopes == 0:
+                _stop_worker()
+        _active_voice_pack.reset(pack_token)
+
+
+def _profile_for_synthesis(query: str) -> dict:
+    active = _active_voice_pack.get()
+    return active if active and active["id"] == query else inspect_pack(query)["profile"]
+
+
+def _read_worker_stdout(process: subprocess.Popen, responses: queue.Queue) -> None:
+    try:
+        for line in process.stdout:
+            responses.put(line)
+    finally:
+        responses.put(None)
+
+
+def _stop_worker() -> None:
+    global _worker_process, _worker_responses, _worker_log_path
+    with _worker_io_lock:
+        process = _worker_process
+        _worker_process = None
+        _worker_responses = None
+        _worker_log_path = None
+        if process is None:
+            return
+        if process.stdin:
+            process.stdin.close()
+        try:
+            process.wait(timeout=10)
+        except subprocess.TimeoutExpired:
+            process.terminate()
+            try:
+                process.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                process.kill()
+                process.wait()
+        if process.stdout:
+            process.stdout.close()
+
+
+def _persistent_inference(request: dict, interpreter: Path, timeout: int) -> dict:
+    global _worker_process, _worker_responses, _worker_log_path
+    with _worker_io_lock:
+        process = _worker_process
+        if process is None or process.poll() is not None:
+            if process is not None:
+                _stop_worker()
+            log_dir = work_path("logs", "voice-inference", "workers")
+            log_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
+            log_dir.chmod(0o700)
+            _worker_log_path = log_dir / (unique_run_id("chatterbox-worker") + ".log")
+            env = workspace_environment(
+                {
+                    "PYTHONPATH": str(REPO_ROOT / "scripts")
+                    + os.pathsep
+                    + os.environ.get("PYTHONPATH", "")
+                }
+            )
+            with _worker_log_path.open("ab") as stderr:
+                _worker_log_path.chmod(0o600)
+                _worker_process = subprocess.Popen(
+                    [str(interpreter), "-m", "ocf_tools.chatterbox_backend", "--worker"],
+                    cwd=REPO_ROOT,
+                    env=env,
+                    stdin=subprocess.PIPE,
+                    stdout=subprocess.PIPE,
+                    stderr=stderr,
+                    text=True,
+                    encoding="utf-8",
+                    bufsize=1,
+                )
+            _worker_responses = queue.Queue()
+            threading.Thread(
+                target=_read_worker_stdout,
+                args=(_worker_process, _worker_responses),
+                daemon=True,
+                name="ocf-chatterbox-output",
+            ).start()
+        process = _worker_process
+        responses = _worker_responses
+        try:
+            assert process and process.stdin and responses
+            process.stdin.write(json.dumps(request, ensure_ascii=False) + "\n")
+            process.stdin.flush()
+            line = responses.get(timeout=timeout)
+        except (OSError, queue.Empty) as exc:
+            _stop_worker()
+            raise OCFError(f"persistent Chatterbox worker failed or timed out: {exc}") from exc
+        if line is None:
+            log_hint = f"; see {_worker_log_path}" if _worker_log_path else ""
+            _stop_worker()
+            raise OCFError("persistent Chatterbox worker exited unexpectedly" + log_hint)
+        try:
+            return json.loads(line)
+        except ValueError as exc:
+            _stop_worker()
+            raise OCFError("persistent Chatterbox worker returned invalid JSON") from exc
 
 
 def create_pack(
@@ -29,7 +166,7 @@ def create_pack(
     voice_id: str,
     name: str,
     locale: str,
-    transcript: str,
+    transcript: str | None = None,
     consent_declaration: str,
     source_type: str = "original-recording",
     model_identifier: str = "ResembleAI/chatterbox-nano",
@@ -44,10 +181,10 @@ def create_pack(
         raise OCFError("unsupported reference source type")
     if not locale.lower().startswith("en-"):
         raise OCFError("Chatterbox Nano voice packs currently support English locales only")
-    if not transcript.strip() or not consent_declaration.strip():
-        raise OCFError(
-            "an exact reference transcript and explicit consent declaration are required"
-        )
+    if transcript is not None and not transcript.strip():
+        raise OCFError("a supplied reference transcript must not be empty")
+    if not consent_declaration.strip():
+        raise OCFError("an explicit consent declaration is required")
     reference = Path(reference).expanduser().resolve()
     if not reference.is_file() or reference.suffix.lower() != ".wav":
         raise OCFError("voice-pack reference must be a prepared local WAV file")
@@ -71,12 +208,15 @@ def create_pack(
     asset_dir = root / voice_id
     if asset_dir.exists() or asset_dir.is_symlink():
         raise OCFError("private voice-pack asset directory already exists")
-    asset_dir.mkdir(parents=True)
+    asset_dir.mkdir(parents=True, mode=0o700)
+    asset_dir.chmod(0o700)
     asset = asset_dir / "reference.wav"
     try:
         asset.write_bytes(reference.read_bytes())
+        asset.chmod(0o600)
         consent = asset_dir / "consent.txt"
         consent.write_text(consent_declaration.strip() + "\n", encoding="utf-8")
+        consent.chmod(0o600)
         digest = sha256_of_file(asset)
         profile = {
             "schema_version": "1.0",
@@ -99,7 +239,7 @@ def create_pack(
             "reference_audio": {
                 "asset": f"{voice_id}/reference.wav",
                 "sha256": digest,
-                "reference_text": transcript.strip(),
+                **({"reference_text": transcript.strip()} if transcript else {}),
                 "locale": locale,
                 "speaker": voice_id,
                 "consent_status": "self-recorded"
@@ -107,7 +247,7 @@ def create_pack(
                 else "authorized-contributor",
                 "consent_record": f"{voice_id}/consent.txt",
                 "source_type": source_type,
-                "transcript_status": "confirmed",
+                "transcript_status": "confirmed" if transcript else "not-provided",
                 "model_identifier": model_identifier,
                 "model_revision": model_revision,
                 "adapter_revision": CHATTERBOX_REVISION,
@@ -187,10 +327,23 @@ def _receipt_proves_inference(receipt: dict, reference_sha256: str | None = None
 
 
 def inference_verified(profile: dict) -> bool:
-    return any(
-        _receipt_proves_inference(receipt, profile.get("reference_audio", {}).get("sha256"))
-        for receipt in inference_receipts(profile["id"])
-    )
+    root = work_path("renders", "voice-pack-auditions", profile["id"]).resolve()
+    for receipt in inference_receipts(profile["id"]):
+        if not _receipt_proves_inference(receipt, profile.get("reference_audio", {}).get("sha256")):
+            continue
+        output = Path(receipt.get("output", ""))
+        try:
+            resolved = output.resolve(strict=True)
+            if (
+                output.is_symlink()
+                or not resolved.is_relative_to(root)
+                or sha256_of_file(resolved) != receipt["output_sha256"]
+            ):
+                continue
+        except OSError:
+            continue
+        return True
+    return False
 
 
 def cached_model_revision() -> str | None:
@@ -233,9 +386,13 @@ def _cached_model_file_hashes(revision: str) -> dict[str, str]:
 
 def synthesize(query: str, text: str, *, device: str = "auto", timeout: int = 900) -> dict:
     """Run the real optional Chatterbox worker without importing ML into OCF Python."""
-    profile = inspect_pack(query)["profile"]
+    profile = _profile_for_synthesis(query)
     if profile.get("backend") != "chatterbox-nano":
         raise OCFError("this MVP audition supports only chatterbox-nano voice packs")
+    if profile.get("reference_audio", {}).get("model_identifier") != "ResembleAI/chatterbox-nano":
+        raise OCFError(
+            "voice pack model identifier differs from the implemented Chatterbox Nano adapter"
+        )
     if not text.strip():
         raise OCFError("audition text must not be empty")
     configured = os.environ.get("OCF_CHATTERBOX_PYTHON")
@@ -252,6 +409,8 @@ def synthesize(query: str, text: str, *, device: str = "auto", timeout: int = 90
     reference = custom_voices._contained(
         custom_voices.asset_root(), profile["reference_audio"]["asset"]
     )
+    if not reference.is_file() or sha256_of_file(reference) != profile["reference_audio"]["sha256"]:
+        raise OCFError("Chatterbox voice-pack reference is missing or fails its checksum")
     output = work_path(
         "renders", "voice-pack-auditions", profile["id"], unique_run_id("audition") + ".wav"
     )
@@ -259,7 +418,7 @@ def synthesize(query: str, text: str, *, device: str = "auto", timeout: int = 90
         {
             "reference": str(reference),
             "reference_text_sha256": hashlib.sha256(
-                profile["reference_audio"]["reference_text"].encode()
+                profile["reference_audio"].get("reference_text", "").encode()
             ).hexdigest(),
             "text": text,
             "output": str(output),
@@ -267,35 +426,49 @@ def synthesize(query: str, text: str, *, device: str = "auto", timeout: int = 90
         }
     )
     try:
-        env = os.environ.copy()
-        env["PYTHONPATH"] = str(REPO_ROOT / "scripts") + os.pathsep + env.get("PYTHONPATH", "")
-        result = workspace_run(
-            [str(interpreter), "-m", "ocf_tools.chatterbox_backend"],
-            input=request,
-            capture_output=True,
-            text=True,
-            timeout=timeout,
-            env=env,
-        )
+        with _worker_scope_lock:
+            persistent = _worker_scopes > 0
+        if persistent:
+            report = _persistent_inference(json.loads(request), interpreter, timeout)
+            result = None
+        else:
+            env = os.environ.copy()
+            env["PYTHONPATH"] = str(REPO_ROOT / "scripts") + os.pathsep + env.get("PYTHONPATH", "")
+            result = workspace_run(
+                [str(interpreter), "-m", "ocf_tools.chatterbox_backend"],
+                input=request,
+                capture_output=True,
+                text=True,
+                timeout=timeout,
+                env=env,
+            )
     except (OSError, subprocess.TimeoutExpired) as exc:
         raise OCFError(f"Chatterbox worker could not complete: {exc}") from exc
-    if result.returncode:
-        raise OCFError((result.stderr or result.stdout or "Chatterbox inference failed")[-3000:])
-    try:
-        report = json.loads(result.stdout)
-    except (ValueError, TypeError) as exc:
-        raise OCFError("Chatterbox worker returned invalid result metadata") from exc
+    if result is not None:
+        if result.returncode:
+            raise OCFError(
+                (result.stderr or result.stdout or "Chatterbox inference failed")[-3000:]
+            )
+        try:
+            report = json.loads(result.stdout)
+        except (ValueError, TypeError) as exc:
+            raise OCFError("Chatterbox worker returned invalid result metadata") from exc
     if report.get("error") or not output.is_file() or not output.stat().st_size:
         raise OCFError(report.get("error", "Chatterbox produced no WAV output"))
     report_model = report.get("model_revision")
     declared_model = profile["reference_audio"]["model_revision"]
     if declared_model not in {"main", report_model}:
         raise OCFError("loaded Chatterbox model revision differs from the voice-pack declaration")
+    declared_adapter = profile["reference_audio"].get("adapter_revision")
+    if declared_adapter and report.get("adapter_revision") != declared_adapter:
+        raise OCFError(
+            "installed Chatterbox adapter revision differs from the voice-pack declaration"
+        )
     if report.get("reference_sha256") != profile["reference_audio"]["sha256"]:
         raise OCFError("Chatterbox used an unexpected reference fingerprint")
     if (
         report.get("reference_text_sha256")
-        != hashlib.sha256(profile["reference_audio"]["reference_text"].encode()).hexdigest()
+        != hashlib.sha256(profile["reference_audio"].get("reference_text", "").encode()).hexdigest()
     ):
         raise OCFError("Chatterbox transcript fingerprint differs from the pack metadata")
     if report.get("text_sha256") != hashlib.sha256(text.encode()).hexdigest():
@@ -324,6 +497,7 @@ def synthesize(query: str, text: str, *, device: str = "auto", timeout: int = 90
         raise OCFError("Chatterbox output SHA-256 differs from its inference receipt")
     report["output"] = str(output)
     report["voice_id"] = profile["id"]
+    previous_reference_metadata = dict(profile["reference_audio"])
     profile["reference_audio"]["model_revision"] = report_model or declared_model
     profile["reference_audio"]["adapter_revision"] = report.get("adapter_revision") or profile[
         "reference_audio"
@@ -332,8 +506,9 @@ def synthesize(query: str, text: str, *, device: str = "auto", timeout: int = 90
         profile["reference_audio"]["model_tree_sha256"] = report["model_tree_sha256"]
     if report.get("model_files"):
         profile["reference_audio"]["model_files"] = report["model_files"]
-    profile_path = work_path("cache", "voices", "profiles", profile["id"] + ".yaml")
-    write_text_atomic(profile_path, yaml_safe_dump(profile))
+    if profile["reference_audio"] != previous_reference_metadata:
+        profile_path = work_path("cache", "voices", "profiles", profile["id"] + ".yaml")
+        write_text_atomic(profile_path, yaml_safe_dump(profile))
     receipt = {
         **report,
         "status": "success",
@@ -342,12 +517,16 @@ def synthesize(query: str, text: str, *, device: str = "auto", timeout: int = 90
         "created_at": datetime.now(UTC).isoformat(),
     }
     receipt_root = work_path("logs", "voice-inference", profile["id"])
-    receipt_root.mkdir(parents=True, exist_ok=True)
+    receipt_root.mkdir(parents=True, exist_ok=True, mode=0o700)
+    receipt_root.chmod(0o700)
     write_text_atomic(
         receipt_root / (Path(report["output"]).stem + ".json"),
         json.dumps(receipt, ensure_ascii=False, indent=2) + "\n",
         overwrite=False,
     )
+    from .speech_cache import record_inference_report
+
+    record_inference_report(report)
     return report
 
 
@@ -407,7 +586,8 @@ def prepare_reference(
         raise OCFError("reference clip must be at least one second")
     peak = max((abs(value) for value in selected), default=0) / 32768
     out = work_path("cache", "voices", "prepared")
-    out.mkdir(parents=True, exist_ok=True)
+    out.mkdir(parents=True, exist_ok=True, mode=0o700)
+    out.chmod(0o700)
     digest = sha256_of_file(source)
     destination = out / f"{digest[:16]}-{first}-{last}.wav"
     if not destination.exists():
@@ -416,6 +596,7 @@ def prepare_reference(
             writer.setsampwidth(2)
             writer.setframerate(rate)
             writer.writeframes(selected.tobytes())
+    destination.chmod(0o600)
     metadata = {
         "schema_version": "1.0",
         "source_sha256": digest,

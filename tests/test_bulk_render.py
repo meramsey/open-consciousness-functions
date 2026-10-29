@@ -4,7 +4,6 @@ import json
 import subprocess
 import threading
 import wave
-from contextlib import contextmanager
 
 import pytest
 from ocf_tools import bulk_render, speech_cache
@@ -107,11 +106,12 @@ def test_bulk_resume_verifies_artifacts_force_preserves_history_and_failure_cont
         bulk_render.render_many(["ok"], voice="fixture")["results"][0]["status"]
         == "skipped-verified"
     )
-    bulk_render.render_many(["ok"], voice="fixture", force=True)
+    forced = bulk_render.render_many(["ok"], voice="fixture", force=True)
+    assert forced["speech_cache"]["mode"] == "off"
     assert len(outputs) == 2 and outputs[0].exists()
     (outputs[1] / "master.wav").write_bytes(b"corrupt")
-    bulk_render.render_many(["ok"], voice="fixture")
-    assert len(outputs) == 3
+    third = bulk_render.render_many(["ok"], voice="fixture")
+    assert len(outputs) == 3, third["results"]
 
     dependencies = {"profile": "reference-v4", "source_sha256": "first-source", "verified": True}
     monkeypatch.setattr(semantic_dsp, "dependency_identity", lambda _: dict(dependencies))
@@ -219,14 +219,7 @@ def test_fresh_synthesis_skips_cache_and_publishes_durable_function_progress(mon
     monkeypatch.setattr(bulk_render, "LocaleCatalog", lambda: None)
     monkeypatch.setattr(bulk_render, "_voice_profile", lambda *_: ({}, {}))
     monkeypatch.setattr(bulk_render, "voice_identity", lambda _: {"fixture": True})
-    cache_states = []
-
-    @contextmanager
-    def record_cache_state(active=True):
-        cache_states.append(active)
-        yield
-
-    monkeypatch.setattr(bulk_render, "enabled", record_cache_state)
+    cache_modes = []
     output = tmp_path / "audition"
     output.mkdir()
     data = pcm()
@@ -245,16 +238,17 @@ def test_fresh_synthesis_skips_cache_and_publishes_durable_function_progress(mon
         ),
         encoding="utf-8",
     )
-    monkeypatch.setattr(
-        bulk_render,
-        "render_complete_session",
-        lambda *_args, **_kwargs: {"output_directory": str(output)},
-    )
+
+    def render(*_args, **kwargs):
+        cache_modes.append(kwargs["speech_cache_mode"])
+        return {"output_directory": str(output)}
+
+    monkeypatch.setattr(bulk_render, "render_complete_session", render)
     events = []
     with observing(events.append):
         result = bulk_render.render_many(["fresh"], voice="fixture", fresh_synthesis=True)
     assert result["failed"] == 0
-    assert cache_states == [False]
+    assert cache_modes == ["off"]
     assert [(row["phase"], row.get("detail")) for row in events] == [
         ("function-preflight", "fresh"),
         ("function-start", "fresh"),
@@ -439,7 +433,7 @@ def test_concurrent_cache_publish_reserves_capacity(monkeypatch, tmp_path):
 
     def publish(key):
         try:
-            speech_cache._publish(work_path("cache", "tts", key), key, b"x" * 200)
+            speech_cache._publish(work_path("cache", "tts", key), key, pcm())
             return True
         except OCFError:
             return False

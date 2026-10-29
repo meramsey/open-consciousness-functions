@@ -51,7 +51,7 @@ Usage:
   ocf dev OPERATION --arguments JSON  Compact agent APIs and persistent jobs
   ocf audio eligibility [FUNCTION_ID|--all] --locale en-US
   ocf audio plan [FUNCTION_ID|--all] [--locale TAG] [--dry-run|--check]
-  ocf audio render-many [FUNCTION_ID ...|--all] --voice PROFILE [--workers N] [--dry-run|--resume|--force|--fresh-synthesis]
+  ocf audio render-many [FUNCTION_ID ...|--all] --voice PROFILE [--workers N] [--speech-cache auto|off|refresh]
   ocf audio defaults          Verify immutable shared configuration hashes
   ocf import source           Fingerprint (and optionally copy) a source file
   ocf edit function <id|slug> Open a function record in $EDITOR
@@ -410,6 +410,12 @@ def _build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="bypass all speech caches while retaining verified full-session resume",
     )
+    bulk_cmd.add_argument(
+        "--speech-cache",
+        choices=("auto", "off", "refresh"),
+        default="auto",
+        help="reuse compatible speech, bypass speech reuse, or regenerate while preserving history",
+    )
     plan_cmd = audio_sub.add_parser(
         "plan", help="generate compact voice-independent complete-session source plans"
     )
@@ -553,6 +559,12 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     narration_render.add_argument(
         "--dry-run", action="store_true", help="print the resolved TTS plan"
+    )
+    narration_render.add_argument(
+        "--speech-cache",
+        choices=("auto", "off", "refresh"),
+        default="auto",
+        help="complete-session speech cache policy",
     )
     mix = audio_sub.add_parser("mix", help="mix narration with background audio")
     mix.add_argument("--speech", required=True, help="narration WAV")
@@ -1639,6 +1651,7 @@ def main(argv: list[str] | None = None) -> int:
                     sample_rate=args.rate,
                     dsp_profile=args.dsp_profile,
                     fresh_synthesis=args.fresh_synthesis,
+                    speech_cache_mode=args.speech_cache,
                     workers=args.workers,
                 )
                 print(json.dumps(result, ensure_ascii=False, indent=2))
@@ -1725,6 +1738,8 @@ def main(argv: list[str] | None = None) -> int:
                 if args.mode == "narration-only":
                     from .narration_first import render_narration_first
 
+                    if args.speech_cache != "auto":
+                        raise OCFError("--speech-cache applies only to complete-session rendering")
                     if (
                         args.overrides
                         or args.narration_sources
@@ -1760,6 +1775,7 @@ def main(argv: list[str] | None = None) -> int:
                         overrides=read_json_object(args.overrides) if args.overrides else None,
                         voice_gain=args.voice_gain,
                         background_gain=args.background_gain,
+                        speech_cache_mode=args.speech_cache,
                         **(
                             {"audition_version": args.audition_version}
                             if args.audition_version != "0.1.0"

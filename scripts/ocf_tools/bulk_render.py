@@ -3,14 +3,17 @@
 from __future__ import annotations
 
 import errno
+import hashlib
 import json
 import os
 import shutil
 import sys
 import threading
+import time
 from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from functools import wraps
 from pathlib import Path
+from uuid import uuid4
 
 from .complete_session import render_complete_session
 from .indexes import load_all_functions
@@ -166,18 +169,26 @@ def _render_job(
     force,
     fresh_synthesis,
     progress_sink,
+    speech_cache_mode="auto",
+    speech_cache_scope=None,
 ):
     for attempt in (1, 2):
         try:
-            with observing(progress_sink), enabled(not force and not fresh_synthesis):
+            with (
+                observing(progress_sink),
+                enabled(speech_cache_mode != "off" and not fresh_synthesis),
+            ):
                 result = render_complete_session(
                     owner,
                     locale=locale,
                     voice=voice,
                     pacing=pacing,
                     sample_rate=sample_rate,
+                    speech_cache_mode="off" if fresh_synthesis else speech_cache_mode,
+                    speech_cache_scope=speech_cache_scope,
                     **({"dsp_profile": dsp_profile} if dsp_profile else {}),
                 )
+            session_report = result.get("manifest", {}).get("speech_cache", {})
             root = Path(result["output_directory"])
             receipt = {
                 "key": job["key"],
@@ -193,6 +204,10 @@ def _render_job(
                 "status": "rendered",
                 "output_directory": str(root),
                 "attempts": attempt,
+                "speech_cache": {
+                    key: value for key, value in session_report.items() if key != "units"
+                },
+                "speech_cache_unit_count": len(session_report.get("units", [])),
                 "resume_verification": "available"
                 if job["resume_verified"]
                 else "unavailable: background engine identity is unverified",
@@ -249,6 +264,21 @@ def _single_batch_owner(function):
     return guarded
 
 
+def _persistent_inference_worker(function):
+    """Keep the optional speech model alive across sessions in one render batch."""
+
+    @wraps(function)
+    def guarded(*args, **kwargs):
+        from .voice_packs import persistent_worker
+
+        if kwargs.get("dry_run"):
+            return function(*args, **kwargs)
+        with persistent_worker(kwargs.get("voice")):
+            return function(*args, **kwargs)
+
+    return guarded
+
+
 def verified_output(receipt: dict, key: str) -> bool:
     """Trust only the completed manifest plus every contained artifact checksum."""
     try:
@@ -272,8 +302,216 @@ def verified_output(receipt: dict, key: str) -> bool:
         return False
 
 
+def _speech_cache_summary(results: list[dict], mode: str, elapsed_s: float) -> dict:
+    sessions = []
+    events = []
+    for row in results:
+        if row.get("status") != "rendered" or not row.get("output_directory"):
+            continue
+        try:
+            manifest = json.loads(
+                (Path(row["output_directory"]) / "session-report.json").read_text(encoding="utf-8")
+            )
+            report = manifest.get("speech_cache", {})
+        except (OSError, ValueError, TypeError):
+            continue
+        if report:
+            sessions.append(report)
+            events.extend(report.get("units", []))
+    owners: dict[str, set[str]] = {}
+    generated_counts: dict[str, int] = {}
+    for event in events:
+        key = event.get("cache_key") or (
+            f"{event.get('identity_kind', 'text')}:{event.get('profile_id')}:"
+            f"{event.get('text_sha256')}:{event.get('sample_rate')}:{event.get('channels')}"
+        )
+        if not key:
+            continue
+        if event.get("function_id"):
+            owners.setdefault(key, set()).add(event["function_id"])
+        if event.get("action") in {
+            "miss",
+            "invalidated",
+            "refreshed",
+            "generated-uncached",
+            "bypassed",
+        }:
+            generated_counts[key] = generated_counts.get(key, 0) + 1
+    return {
+        "mode": mode,
+        "sessions_with_synthesis": len(sessions),
+        "synthesis_requests": len(events),
+        "unique_synthesis_units": len(
+            {event.get("cache_key") or event["text_sha256"] for event in events}
+        ),
+        "newly_generated_unique_units": len(generated_counts),
+        "shared_units_generated_once": sum(
+            generated_counts.get(key) == 1 and len(functions) > 1
+            for key, functions in owners.items()
+        ),
+        "function_specific_generated_units": sum(
+            generated_counts.get(key, 0) > 0 and len(functions) == 1
+            for key, functions in owners.items()
+        ),
+        "duplicate_uncached_generations": sum(
+            max(0, count - 1) for count in generated_counts.values()
+        )
+        if mode == "off"
+        else 0,
+        "shared_units_across_functions": sum(len(functions) > 1 for functions in owners.values()),
+        "cache_hits": sum(int(session.get("hit", 0)) for session in sessions),
+        "cache_misses": sum(int(session.get("miss", 0)) for session in sessions),
+        "invalidated_entries": sum(int(session.get("invalidated", 0)) for session in sessions),
+        "refreshed_units": sum(int(session.get("refreshed", 0)) for session in sessions),
+        "cache_write_bypasses": sum(int(session.get("bypassed", 0)) for session in sessions),
+        "voice_ids": sorted({event["profile_id"] for event in events if event.get("profile_id")}),
+        "voice_fingerprints": sorted(
+            {event["voice_fingerprint"] for event in events if event.get("voice_fingerprint")}
+        ),
+        "model_fingerprints": sorted(
+            {
+                hashlib.sha256(
+                    json.dumps(event["model_identity"], sort_keys=True).encode()
+                ).hexdigest()
+                for event in events
+                if event.get("model_identity")
+            }
+        ),
+        "conditioning_reference_sha256": sorted(
+            {
+                event["conditioning_reference_sha256"]
+                for event in events
+                if event.get("conditioning_reference_sha256")
+            }
+        ),
+        "inference_seconds": sum(
+            float(session.get("inference_seconds", 0)) for session in sessions
+        ),
+        "model_load_seconds": sum(
+            float((event.get("inference") or {}).get("model_load_seconds") or 0) for event in events
+        ),
+        "conditioning_seconds": sum(
+            float((event.get("inference") or {}).get("conditioning_seconds") or 0)
+            for event in events
+        ),
+        "persistent_model_reuses": sum(
+            bool((event.get("inference") or {}).get("model_reused")) for event in events
+        ),
+        "speaker_conditioning_reuses": sum(
+            bool((event.get("inference") or {}).get("speaker_conditioning_reused"))
+            for event in events
+        ),
+        "estimated_seconds_saved": sum(
+            float(session.get("saved_generation_seconds", 0)) for session in sessions
+        ),
+        "batch_elapsed_seconds": elapsed_s,
+        "reused_audio_sha256": sorted(
+            {event["audio_sha256"] for event in events if event.get("action") == "hit"}
+        ),
+        "shared_cache_keys": sorted(key for key, functions in owners.items() if len(functions) > 1),
+    }
+
+
+def _candidate_speech_plan(
+    plans: list[tuple[str, dict, dict]], voice_spec: dict | None = None
+) -> dict:
+    """Preflight exact cache-compatible spoken units without exposing their text."""
+    from .locale import LocaleCatalog, iter_events, resolve_document
+    from .narration_pacing import event_pacing, split_speech_units
+    from .voice import _paced_voice_spec, apply_pronunciation
+
+    owners: dict[str, set[str]] = {}
+    requests: dict[str, int] = {}
+    body_pass_requests: dict[tuple[str, str], int] = {}
+    shared_resources: dict[tuple[str, str, str], set[str]] = {}
+    compatible_keys: set[str] = set()
+    voice_fingerprints = {}
+    catalog = LocaleCatalog()
+    for function_id, shared, expanded in plans:
+        template_doc = expanded.get("template_plan")
+        if not isinstance(template_doc, dict):
+            continue
+        locale = expanded.get("locale", template_doc.get("locale", "en-US"))
+        doc = resolve_document(template_doc, locale, catalog=catalog, strict=True)
+        hints = {}
+        if voice_spec:
+            from .narration_first import _pronunciation_hints
+
+            hints = _pronunciation_hints(doc, locale, catalog, voice_spec["name"])
+        for event in iter_events(doc):
+            text = str(event.get("text") or "").strip()
+            if not text:
+                continue
+            pacing = event_pacing(doc, event, len(split_speech_units(text)))
+            units = split_speech_units(text) if pacing else [{"text": text}]
+            rate_scales = pacing["unit_rate_scales"] if pacing else [1.0] * len(units)
+            for index, unit in enumerate(units):
+                spoken = unit["text"]
+                if voice_spec:
+                    event_hints = {
+                        **hints.get(event["id"], {}),
+                        **(voice_spec.get("pronunciation") or {}),
+                    }
+                    if event_hints:
+                        spoken = apply_pronunciation(spoken, event_hints, voice_spec["name"])
+                    effective_voice, _ = _paced_voice_spec(voice_spec, rate_scales[index])
+                    effective_key = json.dumps(effective_voice, sort_keys=True, default=str)
+                    if effective_key not in voice_fingerprints:
+                        voice_fingerprints[effective_key] = voice_identity(effective_voice)
+                    voice_identity_key = voice_fingerprints[effective_key]
+                else:
+                    voice_identity_key = {"voice_selection": "unresolved-dry-run"}
+                cache_identity = {
+                    "voice": voice_identity_key,
+                    "text": spoken,
+                    "locale": locale,
+                    "text_processing_version": "ocf-spoken-text/1",
+                    "chunk_context_version": "ocf-isolated-cue/1",
+                }
+                fingerprint = hashlib.sha256(
+                    json.dumps(cache_identity, sort_keys=True, ensure_ascii=False).encode("utf-8")
+                ).hexdigest()
+                owners.setdefault(fingerprint, set()).add(function_id)
+                requests[fingerprint] = requests.get(fingerprint, 0) + 1
+                compatible_keys.add(fingerprint)
+                if event.get("slot_ref") == "function_body":
+                    body_key = (function_id, fingerprint)
+                    body_pass_requests[body_key] = body_pass_requests.get(body_key, 0) + 1
+        for resource in shared.get("resources", []):
+            identity = (
+                resource["key"],
+                resource["locale"],
+                resource["text_sha256"],
+            )
+            shared_resources.setdefault(identity, set()).add(function_id)
+    return {
+        "candidate_unique_spoken_units": len(owners),
+        "candidate_repeated_synthesis_requests": sum(requests.values()) - len(owners),
+        "candidate_body_unit_groups": len(body_pass_requests),
+        "candidate_body_playback_requests": sum(body_pass_requests.values()),
+        "candidate_four_pass_body_units": sum(count == 4 for count in body_pass_requests.values()),
+        "candidate_units_shared_across_functions": sum(
+            len(functions) > 1 for functions in owners.values()
+        ),
+        "compatible_unit_fingerprints": sorted(compatible_keys),
+        "template_resources_shared_across_functions": [
+            {
+                "resource_key": key,
+                "locale": locale,
+                "resolved_text_sha256": text_sha256,
+                "function_ids": sorted(functions),
+            }
+            for (key, locale, text_sha256), functions in sorted(shared_resources.items())
+            if len(functions) > 1
+        ],
+        "unit_text_hashes": sorted(owners),
+        "equivalence_basis": "resolved spoken text only; runtime cache also fingerprints voice/model/settings/context",
+    }
+
+
 @_single_batch_owner
 @verified_file_hashes()
+@_persistent_inference_worker
 def render_many(
     function_ids: list[str] | None,
     *,
@@ -286,9 +524,11 @@ def render_many(
     sample_rate: int = 44100,
     dsp_profile: str | None = None,
     fresh_synthesis: bool = False,
+    speech_cache_mode: str = "auto",
     workers: int = 1,
     progress_callback=None,
 ) -> dict:
+    started_at = time.perf_counter()
     from .semantic_dsp import dependency_identity
 
     ids = sorted(
@@ -298,9 +538,30 @@ def render_many(
         raise OCFError("no functions selected")
     if isinstance(workers, bool) or not isinstance(workers, int) or workers < 1:
         raise OCFError("render worker limit must be a positive integer")
+    if speech_cache_mode not in {"auto", "off", "refresh"}:
+        raise OCFError("speech_cache_mode must be auto, off or refresh")
+    if fresh_synthesis and speech_cache_mode != "auto":
+        raise OCFError("--fresh-synthesis cannot be combined with --speech-cache")
+    requested_speech_cache_mode = "off" if fresh_synthesis else speech_cache_mode
+    effective_speech_cache_mode = (
+        "off"
+        if requested_speech_cache_mode == "off" or (force and requested_speech_cache_mode == "auto")
+        else requested_speech_cache_mode
+    )
+    speech_cache_scope = uuid4().hex if requested_speech_cache_mode in {"off", "refresh"} else None
+    batch_cache_before = dict(STATS)
+
+    def cache_summary(rows, elapsed):
+        return {
+            **_speech_cache_summary(rows, effective_speech_cache_mode, elapsed),
+            "process_counters": {
+                key: value - batch_cache_before.get(key, 0) for key, value in STATS.items()
+            },
+        }
 
     statuses = {owner: {"function_id": owner, "status": "pending"} for owner in ids}
     jobs = {}
+    speech_plans = []
 
     def notify_external(event):
         if progress_callback is not None:
@@ -313,10 +574,12 @@ def render_many(
         report(event["phase"], detail=event.get("detail"))
         notify_external(event)
 
+    voice_spec = None
     if not dry_run:
         # Missing voice/model or a broken shared reference profile blocks the batch,
         # rather than producing dozens of identical per-function failures.
         _, spec = _voice_profile(voice, locale, LocaleCatalog())
+        voice_spec = spec
         identity_voice = voice_identity(spec)
         git_identity = _git_worktree_identity()
         if dsp_profile:
@@ -331,6 +594,7 @@ def render_many(
         notify({"phase": "function-preflight", "function_id": owner, "detail": owner})
         try:
             plan, shared, expanded = source_plan(owner, locale)
+            speech_plans.append((owner, shared, expanded))
             if dsp_profile:
                 from .complete_session import build_complete_session_plan
 
@@ -355,6 +619,8 @@ def render_many(
                 "pacing": pacing,
                 "sample_rate": sample_rate,
                 "fresh_synthesis_required": fresh_synthesis,
+                "speech_cache_mode": requested_speech_cache_mode,
+                "speech_cache_scope": speech_cache_scope,
                 "renderer": renderer_identity,
                 "background": dsp_identity,
             }
@@ -396,7 +662,8 @@ def render_many(
         return {
             "workers": 1,
             "requested_workers": workers,
-            "speech_cache": dict(STATS),
+            "speech_cache": cache_summary(ordered_statuses, time.perf_counter() - started_at),
+            "speech_plan": _candidate_speech_plan(speech_plans, voice_spec),
             "dry_run": True,
             "results": ordered_statuses,
             "failed": 0,
@@ -406,7 +673,8 @@ def render_many(
         return {
             "workers": 0,
             "requested_workers": workers,
-            "speech_cache": dict(STATS),
+            "speech_cache": cache_summary(ordered_statuses, time.perf_counter() - started_at),
+            "speech_plan": _candidate_speech_plan(speech_plans, voice_spec),
             "dry_run": False,
             "results": ordered_statuses,
             "failed": 0,
@@ -485,6 +753,8 @@ def render_many(
                     dsp_profile=dsp_profile,
                     force=force,
                     fresh_synthesis=fresh_synthesis,
+                    speech_cache_mode=effective_speech_cache_mode,
+                    speech_cache_scope=speech_cache_scope,
                     progress_sink=progress_sink,
                 )
                 active[future] = owner
@@ -517,7 +787,8 @@ def render_many(
         "workers": max_active,
         "requested_workers": workers,
         "resource_decision": resource_state,
-        "speech_cache": dict(STATS),
+        "speech_cache": cache_summary(results, time.perf_counter() - started_at),
+        "speech_plan": _candidate_speech_plan(speech_plans, voice_spec),
         "dry_run": False,
         "results": results,
         "failed": sum(row["status"] == "failed" for row in results),

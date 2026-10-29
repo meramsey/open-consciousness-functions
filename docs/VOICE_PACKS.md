@@ -4,7 +4,9 @@ OCF reference packs are private OCF voice profiles, not trained models. They kee
 the reference WAV and consent declaration under `.ocf-work/cache/voices/models/`
 and register metadata in `.ocf-work/cache/voices/profiles/`. Model weights are
 external dependencies and are not copied into each pack. Piper remains the
-default narrator.
+default narrator. On POSIX, pack directories are mode 0700 and reference,
+consent, cache and audition files are mode 0600; Windows uses its normal account
+ACLs and was not platform-tested in this MVP.
 
 Prepare a local WAV, FLAC or MP3. FFmpeg/ffprobe are needed for compressed input
 and rate conversion; no network service is used. Automatic selection picks the
@@ -23,14 +25,16 @@ the exact spoken words yourself; OCF does not invent or automatically verify a
 transcript.
 
 Create a private profile-backed pack with an explicit ownership/authorization
-declaration. The declaration is recorded locally but does not verify legal
-ownership or consent:
+declaration. Chatterbox Nano does not require reference transcription; when the
+words are not confirmed, omit `--transcript` and OCF records `not-provided`
+instead of inventing a transcript. A supplied transcript is provenance only,
+not sent as conditioning text. The declaration is recorded locally but does
+not independently verify legal ownership or consent:
 
 ```bash
 python scripts/ocf.py voice create-pack \
   --reference .ocf-work/cache/voices/prepared/REPLACE.wav \
   --id OCF-VOICE-9100 --name "My private voice" --locale en-US \
-  --transcript "Exact words spoken in the selected reference clip." \
   --consent-declaration "I own this voice recording and authorize its private use."
 python scripts/ocf.py voice inspect-pack OCF-VOICE-9100
 python scripts/ocf.py voice export-profile OCF-VOICE-9100 \
@@ -95,5 +99,53 @@ from reference audio. Output receives downward-only scalar gain if needed to kee
 sample peaks below full scale; it is not clipped, stretched or pitch-shifted.
 Nano has no OCF speaking-rate control yet; OCF measures the generated duration
 instead of stretching audio to a target.
+
+## Select the narrator and reuse speech across sessions
+
+After a successful audition, explicitly select the private voice by stable ID
+for one complete session:
+
+```bash
+python scripts/ocf.py audio render OCF-FUNCTION-ID --mode session \
+  --voice OCF-VOICE-9100 --locale en-US --pacing sleep \
+  --output .ocf-work/renders/my-voice-smoke
+```
+
+For a deliberately selected batch, OCF's content-addressed dry-speech cache
+reuses matching narration across functions and repeated function-body passes.
+Background audio and DSP mixes remain per-session; -24 dB reinforcement gain is
+applied during assembly, after shared narration clips are read. Cache keys
+include exact post-pronunciation text, voice/profile and model fingerprints,
+reference and transcript hashes, locale, rate/style settings, and processing /
+chunk-context versions. Reused WAV bytes are independently hash/decode checked.
+
+```bash
+python scripts/ocf.py audio render-many OCF-SEN-001 OCF-SEN-002 OCF-BOD-006 \
+  --voice OCF-VOICE-9100 --locale en-US --pacing sleep --workers 1 \
+  --speech-cache auto --dry-run
+python scripts/ocf.py audio render-many OCF-SEN-001 OCF-SEN-002 OCF-BOD-006 \
+  --voice OCF-VOICE-9100 --locale en-US --pacing sleep --workers 1 \
+  --speech-cache auto
+```
+
+`auto` is the default and reuses only verified compatible dry speech; `off`
+regenerates every unit for a fresh comparison; `refresh` regenerates each
+compatible unit once in that batch and preserves prior cache generations. The
+legacy `--fresh-synthesis` option aliases `--speech-cache off`. Cache summaries
+record requests, unique units, hits/misses, reused hashes, inference time and
+estimated saved generation time. Chatterbox uses one private worker/model per
+render batch and reuses speaker conditioning only for an identical reference
+hash; failures reset the worker. Stochastic regenerated speech may differ, so
+the first verified cached WAV remains the artifact for its fingerprint until
+an explicit refresh.
+
+These commands render only the selected functions; do not add `--all` unless a
+58-function render is separately requested. A full session still requires its
+configured background/DSP engine and is never replaced by narration-only audio.
+The command in [`BULK_SESSIONS.md`](BULK_SESSIONS.md) reports verified complete-
+session cache receipts and the content-based candidate speech plan before it
+starts synthesis.
+The same guide documents the opt-in three-function actual-narration cache
+benchmark; it intentionally does not mix a full session or alter approved DSP.
 
 Never commit reference audio, consent records, embeddings or cloned narration.

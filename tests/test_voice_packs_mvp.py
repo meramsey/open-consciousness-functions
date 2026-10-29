@@ -2,6 +2,7 @@
 
 import math
 import os
+import stat
 import wave
 from array import array
 from pathlib import Path
@@ -12,10 +13,12 @@ from ocf_tools.custom_voices import asset_root, validate_profile
 from ocf_tools.utils import OCFError, sha256_of_file
 
 
-def tone(path: Path, seconds=6, rate=24000, silence_prefix=0):
+def tone(path: Path, seconds=6, rate=24000, silence_prefix=0, frequency=220):
     pcm = array("h")
     pcm.extend([0] * int(silence_prefix * rate))
-    pcm.extend(round(6000 * math.sin(2 * math.pi * 220 * i / rate)) for i in range(seconds * rate))
+    pcm.extend(
+        round(6000 * math.sin(2 * math.pi * frequency * i / rate)) for i in range(seconds * rate)
+    )
     with wave.open(str(path), "wb") as out:
         out.setnchannels(1)
         out.setsampwidth(2)
@@ -39,6 +42,8 @@ def test_prepare_reference_selects_active_audio_and_preserves_source(private_sto
     assert source.read_bytes() == original
     assert prepared["metadata"]["source_sha256"] == sha256_of_file(source)
     assert prepared["metadata"]["clip"]["start_s"] >= 0.9
+    if os.name == "posix":
+        assert stat.S_IMODE(output.stat().st_mode) == 0o600
     pack = voice_packs.create_pack(
         output,
         voice_id="OCF-VOICE-9893",
@@ -87,12 +92,32 @@ def test_private_pack_registry_integrity_and_duplicate_id(private_store):
             consent_declaration="Declared",
         )
     asset = asset_root() / profile["reference_audio"]["asset"]
+    if os.name == "posix":
+        assert stat.S_IMODE(asset.parent.stat().st_mode) == 0o700
+        assert stat.S_IMODE(asset.stat().st_mode) == 0o600
     asset.write_bytes(b"tampered")
     with pytest.raises(OCFError, match="checksum"):
         validate_profile(profile)
 
 
-def test_pack_requires_exact_transcript_and_consent(private_store):
+def test_chatterbox_pack_allows_untranscribed_reference_without_claiming_transcript(
+    private_store,
+):
+    reference = tone(private_store / "reference.wav")
+    created = voice_packs.create_pack(
+        reference,
+        voice_id="OCF-VOICE-9890",
+        name="Untranscribed local reference",
+        locale="en-US",
+        consent_declaration="Owner authorizes private local reference-conditioned inference.",
+    )
+    pack = created["profile"]["reference_audio"]
+    assert pack["transcript_status"] == "not-provided"
+    assert "reference_text" not in pack
+    assert validate_profile(created["profile"])["valid"]
+
+
+def test_pack_allows_missing_transcript_but_requires_consent(private_store):
     source = tone(private_store / "reference.wav")
     with pytest.raises(OCFError, match="transcript"):
         voice_packs.create_pack(
@@ -246,6 +271,10 @@ def test_synthesis_receipt_promotes_only_after_success(private_store, monkeypatc
             stdout=__import__("json").dumps(
                 {
                     "backend": "chatterbox-nano",
+                    "model_identifier": "ResembleAI/chatterbox-nano",
+                    "model_revision": "a" * 40,
+                    "model_tree_sha256": "b" * 64,
+                    "adapter_revision": profile["reference_audio"]["adapter_revision"],
                     "output": request["output"],
                     "output_sha256": sha256_of_file(output),
                     "reference_sha256": profile["reference_audio"]["sha256"],
@@ -268,8 +297,8 @@ def test_synthesis_receipt_promotes_only_after_success(private_store, monkeypatc
     assert report["output_sha256"] == sha256_of_file(output)
     inspected = voice_packs.inspect_pack("OCF-VOICE-9891")
     assert inspected["inference_receipts"][0]["status"] == "success"
-    assert inspected["inference_verified"] is False
-    assert inspected["validation"]["inference_verified"] is False
+    assert inspected["inference_verified"] is True
+    assert inspected["validation"]["inference_verified"] is True
 
 
 def test_pack_export_import_is_portable_and_requires_local_consent(private_store, monkeypatch):
@@ -330,6 +359,40 @@ def test_chatterbox_output_uses_only_downward_peak_gain():
     assert unity_gain == 1
 
 
+def test_persistent_engine_reuses_model_and_never_reuses_other_reference_conditioning(
+    private_store,
+):
+    from ocf_tools.chatterbox_backend import PersistentEngine
+
+    loaded = []
+
+    class Model:
+        def __init__(self):
+            self.references = []
+
+        def prepare_conditionals(self, reference, **kwargs):
+            self.references.append(reference)
+
+    class ModelClass:
+        @classmethod
+        def from_pretrained(cls, **kwargs):
+            loaded.append(kwargs)
+            return Model()
+
+    first_ref = tone(private_store / "speaker-a.wav")
+    second_ref = tone(private_store / "speaker-b.wav", frequency=330)
+    engine = PersistentEngine()
+    torch = object()
+    first = engine.prepare(torch, ModelClass, "cpu", first_ref)
+    repeated = engine.prepare(torch, ModelClass, "cpu", first_ref)
+    other = engine.prepare(torch, ModelClass, "cpu", second_ref)
+    assert len(loaded) == 1
+    assert first[1:3] == (False, False)
+    assert repeated[1:3] == (True, True)
+    assert other[1:3] == (True, False)
+    assert len(engine.model.references) == 2
+
+
 @pytest.mark.skipif(
     not os.environ.get("OCF_CHATTERBOX_INTEGRATION_VOICE_ID"),
     reason="requires an explicitly supplied local voice pack and downloaded Chatterbox Nano model",
@@ -339,13 +402,16 @@ def test_opt_in_real_chatterbox_inference_reuses_pack_for_new_text(monkeypatch):
 
     monkeypatch.setenv("OCF_WORK_DIR", str(REPO_ROOT / ".ocf-work"))
     voice_id = os.environ["OCF_CHATTERBOX_INTEGRATION_VOICE_ID"]
-    first = voice_packs.synthesize(voice_id, "A first original test sentence.", device="auto")
-    second = voice_packs.synthesize(
-        voice_id, "A different sentence, followed by three, two, one.", device="auto"
-    )
+    with voice_packs.persistent_worker():
+        first = voice_packs.synthesize(voice_id, "A first original test sentence.", device="auto")
+        second = voice_packs.synthesize(
+            voice_id, "A different sentence, followed by three, two, one.", device="auto"
+        )
     assert first["reference_sha256"] == second["reference_sha256"]
     assert first["text_sha256"] != second["text_sha256"]
     assert first["output_sha256"] != second["output_sha256"]
+    assert not first["model_reused"] and second["model_reused"]
+    assert second["speaker_conditioning_reused"]
     for result in (first, second):
         with wave.open(result["output"], "rb") as wav:
             assert wav.getnframes() / wav.getframerate() > 0

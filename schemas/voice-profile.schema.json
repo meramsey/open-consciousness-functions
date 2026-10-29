@@ -14,7 +14,7 @@
     "customization_method": {"enum":["installed-model","reference-audio","trained-adapted"]},
     "reference_audio": {
       "type":"object","additionalProperties":false,
-      "required":["asset","sha256","reference_text","locale","speaker","consent_status"],
+      "required":["asset","sha256","locale","speaker","consent_status"],
       "properties":{
         "asset":{"type":"string","pattern":"^[A-Za-z0-9][A-Za-z0-9._/-]*$"},
         "sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
@@ -27,7 +27,7 @@
         "config_asset":{"type":"string","pattern":"^[A-Za-z0-9][A-Za-z0-9._/-]*$"},
         "config_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
         "source_type":{"enum":["original-recording","generated-tts","authorized-other"]},
-        "transcript_status":{"enum":["confirmed","draft"]},
+        "transcript_status":{"enum":["confirmed","draft","not-provided"]},
         "source_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
         "model_identifier":{"type":"string","minLength":1},
         "model_revision":{"type":"string","minLength":1},

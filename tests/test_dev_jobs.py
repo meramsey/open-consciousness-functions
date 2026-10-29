@@ -6,6 +6,41 @@ from ocf_tools import dev_jobs as jobs
 from ocf_tools.utils import OCFError
 
 
+@pytest.mark.unit
+@pytest.mark.parametrize("mode", ["auto", "off", "refresh"])
+def test_complete_session_job_accepts_speech_cache_policy(mode, monkeypatch, tmp_path):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    profile = tmp_path / "work" / "reference-v4.yaml"
+    profile.parent.mkdir(parents=True)
+    profile.write_text("fixture")
+    request = jobs.validate_request(
+        "render",
+        {
+            "function_id": "OCF-SEN-001",
+            "voice": "OCF-VOICE-9003",
+            "locale": "en-US",
+            "pacing": "sleep",
+            "force": False,
+            "speech_cache_mode": mode,
+            "dsp_profile": "reference-v4.yaml",
+        },
+    )
+    assert request["speech_cache_mode"] == mode
+    assert request["dsp_profile"] == "reference-v4.yaml"
+    with pytest.raises(OCFError, match="speech_cache_mode"):
+        jobs.validate_request(
+            "render",
+            {
+                "function_id": "OCF-SEN-001",
+                "voice": "OCF-VOICE-9003",
+                "locale": "en-US",
+                "pacing": "sleep",
+                "force": False,
+                "speech_cache_mode": "danger",
+            },
+        )
+
+
 def wait(job_id, timeout=90):
     deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:
