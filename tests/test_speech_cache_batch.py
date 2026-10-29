@@ -154,15 +154,20 @@ def test_render_cli_accepts_explicit_speech_cache_mode(mode):
     assert many.speech_cache == session.speech_cache == mode
 
 
-def test_representative_session_plan_identifies_shared_resources_and_four_body_passes():
-    from ocf_tools.bulk_render import _candidate_speech_plan
+def test_representative_session_plan_identifies_shared_resources_and_four_body_passes(monkeypatch):
+    from ocf_tools import bulk_render
     from ocf_tools.session_plans import source_plan
+
+    monkeypatch.setattr(bulk_render, "voice_identity", lambda _spec: {"fixture": "piper"})
 
     plans = []
     for function_id in ("OCF-SEN-001", "OCF-SEN-002", "OCF-BOD-006"):
         _plan, shared, expanded = source_plan(function_id, "en-US")
         plans.append((function_id, shared, expanded))
-    summary = _candidate_speech_plan(plans)
+    summary = bulk_render._candidate_speech_plan(plans)
+    compatible_summary = bulk_render._candidate_speech_plan(
+        plans, {"name": "piper", "language": "en_US", "binary": "piper", "wpm": None}
+    )
     shared_keys = {
         item["resource_key"] for item in summary["template_resources_shared_across_functions"]
     }
@@ -170,6 +175,7 @@ def test_representative_session_plan_identifies_shared_resources_and_four_body_p
     assert "hplus.shared.focus10.count" in shared_keys
     assert summary["candidate_four_pass_body_units"] > 0
     assert summary["candidate_unique_spoken_units"] > 0
+    assert compatible_summary["compatible_unit_fingerprints"]
 
 
 def test_four_identical_body_passes_synthesize_once_and_keep_reinforcement_outside_cache(

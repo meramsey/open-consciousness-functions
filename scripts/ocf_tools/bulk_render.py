@@ -418,7 +418,7 @@ def _candidate_speech_plan(
     """Preflight exact cache-compatible spoken units without exposing their text."""
     from .locale import LocaleCatalog, iter_events, resolve_document
     from .narration_pacing import event_pacing, split_speech_units
-    from .voice import _paced_voice_spec, apply_pronunciation
+    from .voice import _paced_voice_spec, _pronunciation_hints, apply_pronunciation
 
     owners: dict[str, set[str]] = {}
     requests: dict[str, int] = {}
@@ -435,8 +435,6 @@ def _candidate_speech_plan(
         doc = resolve_document(template_doc, locale, catalog=catalog, strict=True)
         hints = {}
         if voice_spec:
-            from .narration_first import _pronunciation_hints
-
             hints = _pronunciation_hints(doc, locale, catalog, voice_spec["name"])
         for event in iter_events(doc):
             text = str(event.get("text") or "").strip()
