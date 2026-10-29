@@ -7,7 +7,7 @@ import shutil
 import subprocess
 from copy import deepcopy
 
-from .paths import workspace_run
+from .paths import work_path, workspace_run
 from .utils import OCFError
 
 _BACKENDS = {
@@ -72,11 +72,11 @@ _BACKENDS = {
         "package": "chatterbox",
         "upstream": {"basic_tts": True, "reference_inference": True, "training": False},
         "ocf": {
-            "inference_supported": False,
+            "inference_supported": True,
             "training_supported": False,
-            "cpu_tts": False,
-            "customization_methods": [],
-            "adapter_status": "unverified-unsupported",
+            "cpu_tts": True,
+            "customization_methods": ["reference-audio"],
+            "adapter_status": "implemented-inference-unverified",
         },
         "guide": "https://github.com/resemble-ai/chatterbox",
         "license_note": "Chatterbox Nano model card reports MIT; verify the exact selected model revision and dependency licenses.",
@@ -101,6 +101,47 @@ def backend_capability(backend: str) -> dict:
     if backend not in _BACKENDS:
         raise OCFError(f"unknown voice backend: {backend}")
     spec = deepcopy(_BACKENDS[backend])
+    if backend == "chatterbox-nano":
+        root = work_path("cache").parent / "voice-envs/chatterbox"
+        executable = (
+            root / "Scripts/python.exe"
+            if __import__("sys").platform == "win32"
+            else root / "bin/python"
+        )
+        package = (
+            any(root.glob("lib/python*/site-packages/chatterbox/__init__.py"))
+            or (root / "Lib/site-packages/chatterbox/__init__.py").is_file()
+        )
+        metadata_files = list(
+            root.glob("lib/python*/site-packages/chatterbox_tts-*.dist-info/METADATA")
+        )
+        try:
+            version = next(
+                (
+                    line.partition(":")[2].strip()
+                    for path in metadata_files
+                    for line in path.read_text(encoding="utf-8").splitlines()
+                    if line.startswith("Version:")
+                ),
+                None,
+            )
+        except OSError:
+            version = None
+        spec["backend"] = backend
+        spec["installation"] = {
+            "executable_found": executable.is_file(),
+            "package_found": package,
+            "discovery": {
+                "status": "ready" if executable.is_file() and package else "not-found",
+                "source": "project-local optional environment" if executable.is_file() else None,
+                "reason": None
+                if executable.is_file() and package
+                else "install docs/VOICE_PACKS.md optional dependencies",
+                "runtime": {"package_version": version},
+            },
+        }
+        spec["available"] = executable.is_file() and package
+        return spec
     from .environment import resolve_executable
 
     discovery = resolve_executable(spec["binary"]) if spec["binary"] else None
@@ -194,12 +235,17 @@ def profile_capability(profile: dict) -> dict:
         discovery = capability["installation"].get("discovery") or {}
         reason = discovery.get("reason") or discovery.get("status") or "not discovered"
         blockers.append(f"Required inference executable is unavailable ({reason}).")
+    verified = False
+    if profile.get("backend") == "chatterbox-nano" and capability["available"]:
+        from .voice_packs import inference_verified
+
+        verified = inference_verified(profile)
     return {
         "backend": profile["backend"],
         "customization_method": method,
         "available": not blockers,
         "inference_supported": capability["ocf"]["inference_supported"],
-        "inference_verified": False,
+        "inference_verified": verified,
         "blockers": blockers,
         "capability": capability,
     }

@@ -1,14 +1,14 @@
 # Voice capabilities and portable profiles
 
-OCF supports local basic TTS through Piper and eSpeak adapters. Upstream
-reference-conditioned speech (for example F5-TTS) is distinct from a working OCF
-adapter: its OCF inference and training remain unsupported. Installing a package
-or importing profile metadata does not verify inference or create a cloned voice.
+OCF supports Piper/eSpeak and an optional local Chatterbox Nano reference-audio
+adapter. Chatterbox Nano runs in a separate project-local Python environment;
+Piper's existing environment/default is unchanged. F5-TTS remains unsupported.
+Installing a package or importing profile metadata does not itself verify
+inference or create a personalized voice.
 
-Once wired into the shared CLI, the commands below use
-`voice_engine_cli.add_commands` and `dispatch`. Regression tests exercise the real
-shared parser and main-to-service forwarding with mocked capability/profile
-services; they do not run model inference.
+The pack and audition commands use the shared `voice_engine_cli.add_commands`
+and `dispatch` paths. Unit tests use synthetic signals; actual inference is an
+explicit opt-in integration test and is not required by public CI.
 
 ```bash
 python scripts/ocf.py voice capabilities --json
@@ -48,8 +48,13 @@ directory. A consent declaration is not independent authorization verification,
 and portable metadata grants no redistribution rights.
 
 Private profiles/models use `.ocf-work/cache/voices/{profiles,models}/`;
-`OCF_VOICE_ASSETS` overrides the asset root. Import validates metadata and asset
-identity, leaving `inference_verified: false`. Use existing `voice doctor`,
-`voice validate-profile` and `voice audition` for the supported adapter workflow.
+`OCF_VOICE_ASSETS` overrides the asset root. Packs use `voice prepare-reference`,
+`voice create-pack`, `voice inspect-pack`, `voice export-profile` and
+`voice import-profile`; see [private packs](VOICE_PACKS.md). Test new text with
+`voice audition-pack ID --text ...`, then route a single OCF voice smoke through
+`voice smoke ID --locale en-US`. The `inference_verified` capability field is
+conservative process-level status, so keep the individual audition receipt as
+evidence of a real run. Do not infer personal identity or quality from a
+synthetic test reference.
 See [recording/training preparation](VOICE_TRAINING.md) and
 [voice workflows](VOICE_WORKFLOWS.md) for the existing model-import path.

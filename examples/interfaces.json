@@ -953,6 +953,69 @@
     {
       "argv": [
         "voice",
+        "create-pack",
+        "--reference",
+        "YOUR_REFERENCE",
+        "--id",
+        "YOUR_ID",
+        "--name",
+        "YOUR_NAME",
+        "--transcript",
+        "YOUR_TRANSCRIPT",
+        "--consent-declaration",
+        "YOUR_CONSENT_DECLARATION"
+      ],
+      "path": [
+        "voice",
+        "create-pack"
+      ],
+      "usage": "usage: ocf voice create-pack [-h] --reference REFERENCE --id ID --name NAME\n                             [--locale LOCALE] --transcript TRANSCRIPT\n                             --consent-declaration CONSENT_DECLARATION\n                             [--source-type {original-recording,generated-tts,authorized-other}]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "inspect-pack",
+        "espeak-en"
+      ],
+      "path": [
+        "voice",
+        "inspect-pack"
+      ],
+      "usage": "usage: ocf voice inspect-pack [-h] voice_id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "audition-pack",
+        "espeak-en",
+        "--text",
+        "YOUR_TEXT"
+      ],
+      "path": [
+        "voice",
+        "audition-pack"
+      ],
+      "usage": "usage: ocf voice audition-pack [-h] --text TEXT [--device {auto,cpu,cuda}]\n                               voice_id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "prepare-reference",
+        "YOUR_SAMPLE"
+      ],
+      "path": [
+        "voice",
+        "prepare-reference"
+      ],
+      "usage": "usage: ocf voice prepare-reference [-h] [--start START] [--duration DURATION]\n                                   sample",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
         "dataset-record",
         "YOUR_MANIFEST",
         "YOUR_PROMPT",
@@ -2162,14 +2225,14 @@
     "schemas/theme.schema.json": "e4316f7acbd55c53c255d06efba8ecd8d3f7b69541219ee360d24f4779ccb6fb",
     "schemas/timed-transcript.schema.json": "c3e2798f7ace0ba81c1fb5f1d2fa5afad20066ac3285a2fb7772dbed995b5950",
     "schemas/voice-dataset.schema.json": "0307327f3f52eeaaaed71abaa6d1950c0b665fc677b43547e2452e9c31000ed8",
-    "schemas/voice-profile.schema.json": "0204c3379a0540d22e3792ee5b78ad134bd2a8cb73ddf51c975a602dbcb2c23d",
+    "schemas/voice-profile.schema.json": "860a5fa19632d96449b2bfd3e3a794980bc04a9aeaac0070c0d1513110900197",
     "scripts/ocf_tools/agent_api.py": "0f1e3b563fc5cc85e0798522cb9573541ced9631ba20768d307a51c9e93bfcdb",
-    "scripts/ocf_tools/cli.py": "7538860e0300ddbfe731d873070374993baacb2ee09635e90959ed2f4fc19681",
+    "scripts/ocf_tools/cli.py": "6a3466d97a7b8a13d57218c473bc6378b125865355838b6a1d0ba0805b07ccc8",
     "scripts/ocf_tools/lsp_server.py": "a753b91b1b73609ecd6886470a037a9bbf1259e2a77f08203546e55ef4cbae09",
     "scripts/ocf_tools/mcp_server.py": "d8641d4160888abbe7152fca2117623de4dfb061793b95b161dbfb4534a2be54",
     "scripts/ocf_tools/narration_cli.py": "5f13a05251816e5d3b80419d9ed67184b5c6c48722175700bbc88ec2b429bd41",
     "scripts/ocf_tools/prompts.py": "3ac363286118b80afb1c7b9fc0424228f3c1721dfb1f627128a50c47a3c5e6c3",
-    "scripts/ocf_tools/voice_engine_cli.py": "da5904aff97e0dc9923c80b891adc9a8131d8cd8da71b54cc44e8a71f84c99d6"
+    "scripts/ocf_tools/voice_engine_cli.py": "3b11edd9357ba9ec30f52cedb61150b97f3e6dcac60e870c49aa4589a4285eff"
   },
   "workflows": {
     "schema_version": "1.0",

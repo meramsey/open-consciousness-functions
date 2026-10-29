@@ -58,6 +58,13 @@ def add_commands(voice_subparsers) -> None:
     )
     pack_inspect.add_argument("voice_id")
 
+    pack_audition = voice_subparsers.add_parser(
+        "audition-pack", help="synthesize new text with a private reference voice pack"
+    )
+    pack_audition.add_argument("voice_id")
+    pack_audition.add_argument("--text", required=True)
+    pack_audition.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto")
+
     prepare = voice_subparsers.add_parser(
         "prepare-reference", help="inspect and prepare a local WAV/FLAC/MP3 reference clip"
     )
@@ -103,10 +110,13 @@ def capabilities_report(*, probe_gpu: bool = False) -> dict:
             )
         elif not capability["available"]:
             blockers.append("The required local inference executable is missing.")
-            actions.append(
-                f"Install {capability['binary']} locally, then run ocf voice doctor and an explicit "
-                "ocf voice audition with a compatible profile."
-            )
+            if backend == "chatterbox-nano":
+                actions.append("Install the optional environment from docs/VOICE_PACKS.md.")
+            else:
+                actions.append(
+                    f"Install {capability['binary']} locally, then run ocf voice doctor and an explicit "
+                    "ocf voice audition with a compatible profile."
+                )
         else:
             actions.append(
                 "Run ocf voice doctor and ocf voice audition PROFILE to verify inference."
@@ -116,6 +126,11 @@ def capabilities_report(*, probe_gpu: bool = False) -> dict:
             actions.append(
                 "Run ocf voice training-plan with an authorized dataset to inspect blockers "
                 "and the upstream guide; no OCF train/clone command is available."
+            )
+        if backend == "chatterbox-nano" and capability["available"]:
+            actions.append(
+                "First inference downloads the upstream model into the local workspace cache; "
+                "use voice audition-pack with an explicitly authorized reference."
             )
         backends.append(
             {
@@ -174,6 +189,10 @@ def dispatch(args: Namespace) -> dict:
         from .voice_packs import inspect_pack
 
         return inspect_pack(args.voice_id)
+    if kind == "audition-pack":
+        from .voice_packs import synthesize
+
+        return synthesize(args.voice_id, args.text, device=args.device)
     if kind == "prepare-reference":
         from .voice_packs import prepare_reference
 

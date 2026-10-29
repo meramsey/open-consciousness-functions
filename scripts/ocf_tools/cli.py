@@ -1941,6 +1941,7 @@ def main(argv: list[str] | None = None) -> int:
                 "create-pack",
                 "inspect-pack",
                 "prepare-reference",
+                "audition-pack",
             }:
                 import json
 

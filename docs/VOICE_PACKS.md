@@ -39,15 +39,61 @@ python scripts/ocf.py voice export-profile OCF-VOICE-9100 \
 
 The export contains the selected reference asset only when `--include-assets` is
 explicit. Consent records are never transferred; importing a cloned profile
-requires a new local consent-record attachment:
+requires a new local consent-record attachment. Create that local declaration
+file under the private voice asset root before import; its contents are not
+exported:
 
 ```bash
+mkdir -p .ocf-work/cache/voices/models/OCF-VOICE-9101
+printf '%s\n' "I authorize private use of this voice pack on this computer." \
+  > .ocf-work/cache/voices/models/OCF-VOICE-9101/consent.txt
 python scripts/ocf.py voice import-profile /private/path/my-voice.json \
   --include-assets --id OCF-VOICE-9101 --consent-record OCF-VOICE-9101/consent.txt
 ```
 
-Pack creation and preparation are implemented; Chatterbox Nano inference is not
-yet enabled by this MVP. Do not select a pack for synthesis until OCF reports a
-verified inference adapter. A Chatterbox Nano reference must exceed five seconds
-according to its upstream implementation; shorter clips are not suitable.
+Install the optional backend into a project-local environment without modifying
+OCF's Piper environment. Install dependencies explicitly; the pretrained Nano
+model is then fetched on first inference and cached in the OCF workspace:
+
+```bash
+python -m venv .ocf-work/voice-envs/chatterbox && \
+  .ocf-work/voice-envs/chatterbox/bin/python -m pip install "chatterbox-tts==0.1.7" && \
+  .ocf-work/voice-envs/chatterbox/bin/python -m pip install --no-deps --upgrade \
+    "git+https://github.com/resemble-ai/chatterbox.git@5de7a54aa4e5e2baadb0182dde554908b48b85c2" && \
+  .ocf-work/voice-envs/chatterbox/bin/python -m pip install 'setuptools<81'
+```
+
+For Windows PowerShell, use the equivalent interpreter path in each pip step:
+
+```powershell
+python -m venv .ocf-work\voice-envs\chatterbox
+& .ocf-work\voice-envs\chatterbox\Scripts\python.exe -m pip install "chatterbox-tts==0.1.7"
+& .ocf-work\voice-envs\chatterbox\Scripts\python.exe -m pip install --no-deps --upgrade "git+https://github.com/resemble-ai/chatterbox.git@5de7a54aa4e5e2baadb0182dde554908b48b85c2"
+& .ocf-work\voice-envs\chatterbox\Scripts\python.exe -m pip install 'setuptools<81'
+```
+
+If `OCF_WORK_DIR` is set, replace `.ocf-work` in these paths with that workspace.
+The pinned upstream source adds the Nano API absent from the published PyPI
+wheel; the setuptools pin keeps `pkg_resources` available for the upstream
+`resemble-perth` watermarker. Then synthesize previously unseen text:
+
+```bash
+python scripts/ocf.py voice audition-pack OCF-VOICE-9100 \
+  --text "A short original sentence for a private voice audition." --device auto
+```
+
+Set `OCF_CHATTERBOX_PYTHON` to another compatible optional-environment Python
+executable if desired. Chatterbox Nano's upstream implementation requires a
+reference longer than five seconds. The local audio is retained under
+`.ocf-work/renders/voice-pack-auditions/`; inference is not claimed successful
+until that command produces and verifies a WAV. A successful run writes a private
+receipt under `.ocf-work/logs/voice-inference/VOICE-ID/`; inspect the pack to
+review receipts and its measured readiness. The exact model weights and
+transitive dependency licenses must be reviewed before redistribution.
+This adapter currently accepts English locales only; it does not infer a locale
+from reference audio. Output receives downward-only scalar gain if needed to keep
+sample peaks below full scale; it is not clipped, stretched or pitch-shifted.
+Nano has no OCF speaking-rate control yet; OCF measures the generated duration
+instead of stretching audio to a target.
+
 Never commit reference audio, consent records, embeddings or cloned narration.

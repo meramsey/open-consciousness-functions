@@ -201,6 +201,7 @@ def test_capabilities_are_actionable_without_promoting_installation(parser, monk
     assert not backends["f5-tts"]["ocf"]["inference_supported"]
     assert "unsupported" in " ".join(backends["f5-tts"]["blockers"])
     assert "Install piper" in " ".join(backends["piper"]["next_actions"])
+    assert "Install None" not in " ".join(backends["chatterbox-nano"]["next_actions"])
     assert backends["espeak"]["available"] and not backends["espeak"]["inference_verified"]
     assert all(b["blockers"] and b["next_actions"] and b["guide"] for b in result["backends"])
     json.dumps(result)  # The shared CLI can render this directly, including --json.

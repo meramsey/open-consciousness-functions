@@ -2,19 +2,25 @@
 
 from __future__ import annotations
 
-import json
+import hashlib
 import io
+import json
 import math
+import os
 import re
+import subprocess
+import sys
 import wave
 from array import array
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from . import custom_voices
 from .indexes import load_voice_profiles
-from .paths import work_path
+from .paths import REPO_ROOT, unique_run_id, work_path, workspace_run
 from .utils import OCFError, sha256_of_file, write_text_atomic, yaml_safe_dump
+
+CHATTERBOX_REVISION = "5de7a54aa4e5e2baadb0182dde554908b48b85c2"
 
 
 def create_pack(
@@ -36,11 +42,25 @@ def create_pack(
         raise OCFError(f"voice ID already exists: {voice_id}")
     if source_type not in {"original-recording", "generated-tts", "authorized-other"}:
         raise OCFError("unsupported reference source type")
+    if not locale.lower().startswith("en-"):
+        raise OCFError("Chatterbox Nano voice packs currently support English locales only")
     if not transcript.strip() or not consent_declaration.strip():
-        raise OCFError("an exact reference transcript and explicit consent declaration are required")
+        raise OCFError(
+            "an exact reference transcript and explicit consent declaration are required"
+        )
     reference = Path(reference).expanduser().resolve()
     if not reference.is_file() or reference.suffix.lower() != ".wav":
         raise OCFError("voice-pack reference must be a prepared local WAV file")
+    try:
+        with wave.open(str(reference), "rb") as wav:
+            if wav.getnframes() / wav.getframerate() <= 5:
+                raise OCFError("Chatterbox Nano requires a reference longer than five seconds")
+            if (wav.getnchannels(), wav.getframerate(), wav.getsampwidth()) != (1, 24000, 2):
+                raise OCFError(
+                    "voice-pack references must be mono 24 kHz PCM16; run prepare-reference"
+                )
+    except (wave.Error, ZeroDivisionError) as exc:
+        raise OCFError(f"prepared reference is not a valid WAV: {exc}") from exc
     prepared_digest = sha256_of_file(reference)
     prep_path = reference.with_suffix(".json")
     preparation = json.loads(prep_path.read_text(encoding="utf-8")) if prep_path.is_file() else {}
@@ -71,26 +91,31 @@ def create_pack(
             "language": locale.split("-")[0],
             "privacy": "private",
             "distribution_permission": "private-only",
-            "consent_status": "self-recorded" if source_type == "original-recording" else "authorized-contributor",
+            "consent_status": "self-recorded"
+            if source_type == "original-recording"
+            else "authorized-contributor",
             "consent_record": f"{voice_id}/consent.txt",
-            "license": "Model weights are external; verify the selected model revision license before use or redistribution.",
+            "license": "Chatterbox Nano model card reports MIT; review transitive dependency licenses separately.",
             "reference_audio": {
                 "asset": f"{voice_id}/reference.wav",
                 "sha256": digest,
                 "reference_text": transcript.strip(),
                 "locale": locale,
                 "speaker": voice_id,
-                "consent_status": "self-recorded" if source_type == "original-recording" else "authorized-contributor",
+                "consent_status": "self-recorded"
+                if source_type == "original-recording"
+                else "authorized-contributor",
                 "consent_record": f"{voice_id}/consent.txt",
                 "source_type": source_type,
                 "transcript_status": "confirmed",
                 "model_identifier": model_identifier,
                 "model_revision": model_revision,
+                "adapter_revision": CHATTERBOX_REVISION,
                 "source_sha256": source_digest,
             },
             "creation_provenance": {
                 "created_by": "OCF local voice-pack CLI",
-                "created_at": datetime.now(timezone.utc).isoformat(),
+                "created_at": datetime.now(UTC).isoformat(),
                 "pack_type": "reference-based-zero-shot",
                 "source_sha256": source_digest,
             },
@@ -119,7 +144,211 @@ def inspect_pack(query: str) -> dict:
         "profile": profile,
         "validation": custom_voices.validate_profile(profile),
         "pack_type": (profile.get("creation_provenance") or {}).get("pack_type", "legacy-profile"),
+        "inference_verified": inference_verified(profile),
+        "inference_receipts": inference_receipts(profile["id"]),
     }
+
+
+def inference_receipts(voice_id: str) -> list[dict]:
+    root = work_path("logs", "voice-inference", voice_id)
+    receipts = []
+    for path in sorted(root.glob("*.json")) if root.is_dir() else ():
+        try:
+            receipt = json.loads(path.read_text(encoding="utf-8"))
+            if receipt.get("voice_id") == voice_id and receipt.get("status") == "success":
+                receipts.append(receipt)
+        except (OSError, ValueError):
+            continue
+    return receipts
+
+
+def _receipt_proves_inference(receipt: dict, reference_sha256: str | None = None) -> bool:
+    def valid_sha(value: object) -> bool:
+        return isinstance(value, str) and bool(re.fullmatch(r"[a-f0-9]{64}", value))
+
+    return (
+        receipt.get("status") == "success"
+        and receipt.get("backend") == "chatterbox-nano"
+        and receipt.get("model_identifier") == "ResembleAI/chatterbox-nano"
+        and bool(re.fullmatch(r"[a-f0-9]{40}", str(receipt.get("model_revision", ""))))
+        and bool(re.fullmatch(r"[a-f0-9]{40}", str(receipt.get("adapter_revision", ""))))
+        and valid_sha(receipt.get("model_tree_sha256"))
+        and valid_sha(receipt.get("output_sha256"))
+        and valid_sha(receipt.get("reference_sha256"))
+        and valid_sha(receipt.get("reference_text_sha256"))
+        and valid_sha(receipt.get("text_sha256"))
+        and (reference_sha256 is None or receipt.get("reference_sha256") == reference_sha256)
+        and receipt.get("sample_rate") == 24000
+        and isinstance(receipt.get("duration_s"), (int, float))
+        and receipt["duration_s"] > 0
+        and isinstance(receipt.get("sample_peak"), (int, float))
+        and 0 < receipt["sample_peak"] <= 0.98
+    )
+
+
+def inference_verified(profile: dict) -> bool:
+    return any(
+        _receipt_proves_inference(receipt, profile.get("reference_audio", {}).get("sha256"))
+        for receipt in inference_receipts(profile["id"])
+    )
+
+
+def cached_model_revision() -> str | None:
+    ref = work_path(
+        "cache", "huggingface", "hub", "models--ResembleAI--chatterbox-nano", "refs", "main"
+    )
+    try:
+        return ref.read_text(encoding="ascii").strip() if ref.is_file() else None
+    except OSError:
+        return None
+
+
+def cached_model_tree_fingerprint() -> str | None:
+    revision = cached_model_revision()
+    if not revision:
+        return None
+    try:
+        entries = _cached_model_file_hashes(revision)
+        if not entries:
+            return None
+        return hashlib.sha256(
+            json.dumps(entries, sort_keys=True, separators=(",", ":")).encode()
+        ).hexdigest()
+    except OSError:
+        return None
+
+
+def _cached_model_file_hashes(revision: str) -> dict[str, str]:
+    snapshot = (
+        work_path("cache").parent
+        / "cache/huggingface/hub/models--ResembleAI--chatterbox-nano/snapshots"
+        / revision
+    )
+    return {
+        path.relative_to(snapshot).as_posix(): sha256_of_file(path)
+        for path in sorted(snapshot.rglob("*"))
+        if path.is_file()
+    }
+
+
+def synthesize(query: str, text: str, *, device: str = "auto", timeout: int = 900) -> dict:
+    """Run the real optional Chatterbox worker without importing ML into OCF Python."""
+    profile = inspect_pack(query)["profile"]
+    if profile.get("backend") != "chatterbox-nano":
+        raise OCFError("this MVP audition supports only chatterbox-nano voice packs")
+    if not text.strip():
+        raise OCFError("audition text must not be empty")
+    configured = os.environ.get("OCF_CHATTERBOX_PYTHON")
+    if configured:
+        interpreter = Path(configured).expanduser().resolve()
+    elif sys.platform == "win32":
+        interpreter = work_path("cache").parent / "voice-envs/chatterbox/Scripts/python.exe"
+    else:
+        interpreter = work_path("cache").parent / "voice-envs/chatterbox/bin/python"
+    if not interpreter.is_file():
+        raise OCFError(
+            "Chatterbox optional environment is missing; see docs/VOICE_PACKS.md for setup"
+        )
+    reference = custom_voices._contained(
+        custom_voices.asset_root(), profile["reference_audio"]["asset"]
+    )
+    output = work_path(
+        "renders", "voice-pack-auditions", profile["id"], unique_run_id("audition") + ".wav"
+    )
+    request = json.dumps(
+        {
+            "reference": str(reference),
+            "reference_text_sha256": hashlib.sha256(
+                profile["reference_audio"]["reference_text"].encode()
+            ).hexdigest(),
+            "text": text,
+            "output": str(output),
+            "device": device,
+        }
+    )
+    try:
+        env = os.environ.copy()
+        env["PYTHONPATH"] = str(REPO_ROOT / "scripts") + os.pathsep + env.get("PYTHONPATH", "")
+        result = workspace_run(
+            [str(interpreter), "-m", "ocf_tools.chatterbox_backend"],
+            input=request,
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+            env=env,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        raise OCFError(f"Chatterbox worker could not complete: {exc}") from exc
+    if result.returncode:
+        raise OCFError((result.stderr or result.stdout or "Chatterbox inference failed")[-3000:])
+    try:
+        report = json.loads(result.stdout)
+    except (ValueError, TypeError) as exc:
+        raise OCFError("Chatterbox worker returned invalid result metadata") from exc
+    if report.get("error") or not output.is_file() or not output.stat().st_size:
+        raise OCFError(report.get("error", "Chatterbox produced no WAV output"))
+    report_model = report.get("model_revision")
+    declared_model = profile["reference_audio"]["model_revision"]
+    if declared_model not in {"main", report_model}:
+        raise OCFError("loaded Chatterbox model revision differs from the voice-pack declaration")
+    if report.get("reference_sha256") != profile["reference_audio"]["sha256"]:
+        raise OCFError("Chatterbox used an unexpected reference fingerprint")
+    if (
+        report.get("reference_text_sha256")
+        != hashlib.sha256(profile["reference_audio"]["reference_text"].encode()).hexdigest()
+    ):
+        raise OCFError("Chatterbox transcript fingerprint differs from the pack metadata")
+    if report.get("text_sha256") != hashlib.sha256(text.encode()).hexdigest():
+        raise OCFError("Chatterbox output text fingerprint differs from the requested text")
+    if (
+        not isinstance(report.get("sample_peak"), (int, float))
+        or not 0 < report["sample_peak"] <= 0.98
+    ):
+        raise OCFError("Chatterbox output peak failed audio integrity checks")
+    try:
+        import wave
+
+        with wave.open(str(output), "rb") as wav:
+            if wav.getnframes() <= 0 or wav.getsampwidth() != 2 or wav.getnchannels() != 1:
+                raise OCFError("Chatterbox output failed WAV/PCM integrity checks")
+            if wav.getframerate() != report.get("sample_rate"):
+                raise OCFError("Chatterbox output sample rate differs from its report")
+            if (
+                abs(wav.getnframes() / wav.getframerate() - report.get("duration_s", 0))
+                > 1 / wav.getframerate()
+            ):
+                raise OCFError("Chatterbox output duration differs from its report")
+    except (wave.Error, OSError, ZeroDivisionError) as exc:
+        raise OCFError(f"Chatterbox output is not a valid WAV: {exc}") from exc
+    if sha256_of_file(output) != report.get("output_sha256"):
+        raise OCFError("Chatterbox output SHA-256 differs from its inference receipt")
+    report["output"] = str(output)
+    report["voice_id"] = profile["id"]
+    profile["reference_audio"]["model_revision"] = report_model or declared_model
+    profile["reference_audio"]["adapter_revision"] = report.get("adapter_revision") or profile[
+        "reference_audio"
+    ].get("adapter_revision")
+    if report.get("model_tree_sha256"):
+        profile["reference_audio"]["model_tree_sha256"] = report["model_tree_sha256"]
+    if report.get("model_files"):
+        profile["reference_audio"]["model_files"] = report["model_files"]
+    profile_path = work_path("cache", "voices", "profiles", profile["id"] + ".yaml")
+    write_text_atomic(profile_path, yaml_safe_dump(profile))
+    receipt = {
+        **report,
+        "status": "success",
+        "text": text,
+        "profile_version": profile.get("version"),
+        "created_at": datetime.now(UTC).isoformat(),
+    }
+    receipt_root = work_path("logs", "voice-inference", profile["id"])
+    receipt_root.mkdir(parents=True, exist_ok=True)
+    write_text_atomic(
+        receipt_root / (Path(report["output"]).stem + ".json"),
+        json.dumps(receipt, ensure_ascii=False, indent=2) + "\n",
+        overwrite=False,
+    )
+    return report
 
 
 def prepare_reference(

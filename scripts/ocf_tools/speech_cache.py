@@ -35,6 +35,34 @@ def enabled(active: bool = True):
 
 def voice_identity(spec: dict) -> dict:
     """Fingerprint actual engine/model/config bytes, not filenames or voice labels."""
+    if spec.get("name") == "chatterbox-nano":
+        from .paths import REPO_ROOT, work_path
+
+        settings = {
+            key: value
+            for key, value in spec.items()
+            if key not in {"reference_audio", "environment"}
+        }
+        assets = {
+            "reference_audio": spec["reference_sha256"],
+            "renderer": sha256_of_file(Path(__file__).with_name("voice.py")),
+            "adapter": sha256_of_file(REPO_ROOT / "scripts/ocf_tools/chatterbox_backend.py"),
+        }
+        optional_root = work_path("cache").parent / "voice-envs/chatterbox"
+        for pattern in (
+            "lib/python*/site-packages/chatterbox_tts-*.dist-info/METADATA",
+            "lib/python*/site-packages/torch-*.dist-info/METADATA",
+            "lib/python*/site-packages/transformers-*.dist-info/METADATA",
+            "lib/python*/site-packages/resemble_perth-*.dist-info/METADATA",
+            "Lib/site-packages/chatterbox_tts-*.dist-info/METADATA",
+        ):
+            for metadata in optional_root.glob(pattern):
+                assets[metadata.name] = sha256_of_file(metadata)
+        return {
+            "assets": assets,
+            "settings": settings,
+            "cache_version": CACHE_VERSION,
+        }
     binary = shutil.which(spec["binary"])
     if not binary:
         raise OCFError(f"voice backend is unavailable: {spec['binary']}")

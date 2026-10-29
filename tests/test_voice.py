@@ -106,7 +106,7 @@ class TestBackendDetection:
         monkeypatch.setattr(environment, "_user_home", lambda: tmp_path / "empty-home")
         monkeypatch.setenv("OCF_PIPER_EXECUTABLE", str(tmp_path / "missing-piper"))
         entries = voice_mod.detect_backends()
-        assert len(entries) == 3
+        assert len(entries) == 4
         assert all(not e["available"] for e in entries)
         assert voice_mod.first_available_backend() is None
 
