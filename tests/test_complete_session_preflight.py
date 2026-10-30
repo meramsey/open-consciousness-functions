@@ -1,7 +1,14 @@
 """Isolated invalid-input boundaries; no synthesis or renderer rewrite."""
 
 import pytest
-from ocf_tools import complete_session, narration_first, semantic_dsp, session, session_overrides
+from ocf_tools import (
+    complete_session,
+    dev_jobs,
+    narration_first,
+    semantic_dsp,
+    session,
+    session_overrides,
+)
 from ocf_tools.utils import OCFError
 
 pytestmark = pytest.mark.unit
@@ -70,6 +77,29 @@ def test_missing_tts_voice_is_allowed_for_planning_but_fails_before_output(
     else:
         with pytest.raises(OCFError, match="requires a voice profile"):
             complete_session.render_complete_session("test", output=output)
+    assert not output.exists()
+
+
+def test_duplicate_explicit_render_destination_fails_before_rendering(monkeypatch, tmp_path):
+    from contextlib import contextmanager
+
+    output = tmp_path / "private-session"
+    locks = []
+
+    @contextmanager
+    def busy(name, *, wait=False, timeout=10):
+        locks.append((name, wait, timeout))
+        yield False
+
+    monkeypatch.setattr(dev_jobs, "lock", busy)
+    monkeypatch.setattr(
+        complete_session,
+        "_render_complete_session_unlocked",
+        lambda *args, **kwargs: pytest.fail("duplicate render must fail before synthesis/render"),
+    )
+    with pytest.raises(OCFError, match="already being rendered"):
+        complete_session.render_complete_session("OCF-SEN-001", output=output)
+    assert len(locks) == 1 and locks[0][1] is False
     assert not output.exists()
 
 
