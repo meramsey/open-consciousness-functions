@@ -41,6 +41,21 @@ def test_statement_and_branch_gates_are_independent_and_exclusions_fail():
     assert report.metrics(totals(lines=0, branches=0))["statement_percent"] == 0
 
 
+def test_compact_receipt_source_sha_is_validated(monkeypatch):
+    monkeypatch.setattr(
+        report.subprocess,
+        "run",
+        lambda *args, **kwargs: SimpleNamespace(stdout="a" * 40 + "\n"),
+    )
+    assert report.source_sha() == "a" * 40
+    monkeypatch.setattr(
+        report.subprocess,
+        "run",
+        lambda *args, **kwargs: SimpleNamespace(stdout="not-a-git-sha\n"),
+    )
+    assert report.source_sha() is None
+
+
 def test_existing_output_is_preserved_and_escape_is_rejected(tmp_path, monkeypatch):
     monkeypatch.setattr(report, "work_root", lambda: tmp_path)
     sentinel = tmp_path / "retained.log"
@@ -76,6 +91,7 @@ def test_context_reports_do_not_relabel_startup_as_unit_or_sum_contributions(
         encoding="utf-8",
     )
     monkeypatch.setattr(report, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(report, "source_sha", lambda: "a" * 40)
     output = tmp_path / "reports"
     output.mkdir()
     monkeypatch.chdir(tmp_path)

@@ -27,6 +27,21 @@ from .utils import OCFError
 FLOORS = REPO_ROOT / "tests/coverage-floors.json"
 
 
+def source_sha() -> str | None:
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "--verify", "HEAD"],
+            cwd=REPO_ROOT,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    value = result.stdout.strip()
+    return value if re.fullmatch(r"[0-9a-f]{40,64}", value) else None
+
+
 def metrics(totals):
     """Keep statement percentage distinct from coverage.py's combined score."""
     result = {
@@ -135,6 +150,7 @@ def _summarize(directory, *, exit_code, elapsed, retain_detail_json=False):
         "runtime_seconds": elapsed,
         "python": platform.python_version(),
         "platform": sys.platform,
+        "source_sha": source_sha(),
         "scope": ["scripts/ocf_tools", "scripts/tools"],
         "workers": 2,
         "taxonomy_errors": [
