@@ -104,8 +104,10 @@ def _summarize(directory, *, exit_code, elapsed, retain_detail_json=False):
             if retain_detail_json
             else directory / f".{name}-{uuid.uuid4().hex}.json"
         )
-        if retain_detail_json and report_path.exists():
+        report_path_existed = report_path.exists()
+        if retain_detail_json and report_path_existed:
             raise OCFError(f"refusing to overwrite existing detailed coverage report: {report_path}")
+        extracted = False
         try:
             coverage.json_report(
                 outfile=str(report_path),
@@ -116,8 +118,9 @@ def _summarize(directory, *, exit_code, elapsed, retain_detail_json=False):
             reports[name] = metrics(
                 json.loads(report_path.read_text(encoding="utf-8"))["totals"]
             )
+            extracted = True
         finally:
-            if not retain_detail_json:
+            if not retain_detail_json and extracted and not report_path_existed:
                 report_path.unlink(missing_ok=True)
     root = ET.parse(directory / "tests.xml").getroot()
     suites = list(root.iter("testsuite"))

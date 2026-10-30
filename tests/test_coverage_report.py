@@ -135,6 +135,40 @@ def test_context_reports_do_not_relabel_startup_as_unit_or_sum_contributions(
     assert json.loads((detailed_output / "combined.json").read_text())["meta"]["show_contexts"] is True
 
 
+def test_failed_compact_export_retains_partial_report(tmp_path, monkeypatch):
+    from coverage import Coverage
+
+    root = tmp_path / "repo"
+    root.mkdir()
+    (root / "scripts/ocf_tools").mkdir(parents=True)
+    (root / "scripts/tools").mkdir()
+    (root / "pyproject.toml").write_text("[tool.coverage.run]\nbranch = true\n")
+    directory = root / "coverage"
+    directory.mkdir()
+    coverage_data = Coverage(data_file=str(directory / ".coverage"), config_file=False)
+    coverage_data.erase()
+    coverage_data.save()
+    (directory / "collection-serial.json").write_text(
+        json.dumps([{"nodeid": "tests/test.py::test_one", "unit": True, "integration": False}])
+    )
+    (directory / "tests.xml").write_text(
+        '<testsuites><testsuite tests="1" failures="0" errors="0" skipped="0"/></testsuites>'
+    )
+    monkeypatch.setattr(report, "REPO_ROOT", root)
+    original = Coverage.json_report
+
+    def partial_then_fail(self, *args, **kwargs):
+        Path(kwargs["outfile"]).write_text('{"partial": true}')
+        raise OSError("fixture report failure")
+
+    monkeypatch.setattr(Coverage, "json_report", partial_then_fail)
+    with pytest.raises(OSError, match="fixture report failure"):
+        report.summarize(directory, exit_code=0, elapsed=1)
+    details = list(directory.glob(".combined-*.json"))
+    assert len(details) == 1 and json.loads(details[0].read_text()) == {"partial": True}
+    monkeypatch.setattr(Coverage, "json_report", original)
+
+
 @pytest.mark.parametrize("exit_code", [0, 1])
 def test_full_runner_neutralizes_selection_and_cleans_only_successful_scratch(
     tmp_path, monkeypatch, exit_code
