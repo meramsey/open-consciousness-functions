@@ -296,6 +296,8 @@ def _resolve_tags(
     doc: dict[str, Any],
     narration_meta: dict[str, Any],
     tag_overrides: dict[str, str] | None = None,
+    *,
+    voice_profile_id: str | None = None,
 ) -> dict[str, str]:
     """Derive the FLAC/MP3 tag set from manifests and narration metadata.
 
@@ -333,6 +335,8 @@ def _resolve_tags(
         "OCF_GENERATOR": f"OCF audio build v{OCF_VERSION}",
         "OCF_TIMING_MODE": str(narration_meta.get("timing_mode") or ""),
     }
+    if voice_profile_id:
+        extra["OCF_VOICE_PROFILE"] = voice_profile_id
     doc_template = doc.get("template") if isinstance(doc, dict) else None
     if isinstance(doc_template, dict) and doc_template.get("id"):
         extra["OCF_SESSION_TEMPLATE"] = str(doc_template["id"])
@@ -841,6 +845,14 @@ def build(
     if manifest.get("function_id"):
         doc["function_id"] = manifest["function_id"]
     selected_voice = voice or manifest.get("voice_profile") or doc.get("voice_profile")
+    selected_voice_id = (
+        selected_voice.get("profile_id") or selected_voice.get("id")
+        if isinstance(selected_voice, dict)
+        else selected_voice
+    )
+    selected_voice_id = (
+        selected_voice_id or manifest.get("voice_profile") or doc.get("voice_profile")
+    )
     if (
         not isinstance(voice_gain, (int, float))
         or isinstance(voice_gain, bool)
@@ -984,7 +996,9 @@ def build(
             overwrite=overwrite,
         )
 
-    tags = _resolve_tags(manifest, doc, narration_meta, tag_overrides)
+    tags = _resolve_tags(
+        manifest, doc, narration_meta, tag_overrides, voice_profile_id=selected_voice_id
+    )
     cover_provenance = None
     if default_cover:
         from .audition_exports import copy_cover, select_cover
@@ -1063,7 +1077,7 @@ def build(
             "title": manifest.get("title"),
             "narrator": manifest.get("narrator"),
             "language": manifest.get("language"),
-            "voice_profile": manifest.get("voice_profile") or doc.get("voice_profile"),
+            "voice_profile": selected_voice_id,
         },
         "transcript_path": str(transcript_rel) if transcript_rel else None,
         "pacing_profile": doc.get("pacing_profile"),
