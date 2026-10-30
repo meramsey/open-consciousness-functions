@@ -47,11 +47,23 @@ class TestProfileContracts:
         }
         assert profile["background_ducking"]["enabled"] is False
         assert profile["background_gain_windows"] == []
+        assert profile["profile_id"] is None and profile["profile_version"] is None
         assert profile["output_headroom_db"] == profile["fade_in_s"] == profile["fade_out_s"] == 0
         assert profile["measure_loudness"] is False
         profile["limiter"]["ceiling"] = 0.5
         assert original == {"limiter": {"ceiling": 0.8}}
         assert mp.load_mix_profile({})["limiter"]["ceiling"] == 0.97
+
+    def test_private_profile_identity_is_recorded_without_changing_defaults(self):
+        override = mp.load_mix_profile(
+            {"profile_id": "OCF-MIX-PRIVATE-TEST", "profile_version": "1.0.0"}
+        )
+        assert (override["profile_id"], override["profile_version"]) == (
+            "OCF-MIX-PRIVATE-TEST",
+            "1.0.0",
+        )
+        assert override["background_gain_windows"] == []
+        assert override["background_ducking"]["enabled"] is False
 
     @pytest.mark.parametrize(
         "suffix,text",
