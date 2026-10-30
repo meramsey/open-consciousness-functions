@@ -203,11 +203,16 @@ def _build_parser() -> argparse.ArgumentParser:
     capabilities.add_argument("--json", action="store_true")
     workspace = sub.add_parser("workspace", help="clean OCF-owned local scratch safely")
     workspace_sub = workspace.add_subparsers(dest="workspace_kind", required=True)
+    workspace_status = workspace_sub.add_parser(
+        "status", help="show project identity and resolved OCF workspace paths"
+    )
+    workspace_status.add_argument("--json", action="store_true")
     workspace_clean = workspace_sub.add_parser(
         "clean", help="remove stale marked scratch directories under OCF_WORK_DIR/tmp"
     )
     workspace_clean.add_argument("--older-than-hours", type=float, default=24.0)
     workspace_clean.add_argument("--dry-run", action="store_true")
+    workspace_clean.add_argument("--json", action="store_true")
     author_plan = sub.add_parser(
         "plan", help="validate a structured authoring request without rendering"
     )
@@ -1423,14 +1428,47 @@ def main(argv: list[str] | None = None) -> int:
                 else "\n".join("ocf " + " ".join(row["path"]) for row in data["commands"])
             )
             return 0
+        if args.command == "workspace" and args.workspace_kind == "status":
+            import json
+
+            from .paths import workspace_report
+
+            report = workspace_report()
+            if args.json:
+                print(json.dumps(report, indent=2))
+            else:
+                print(f"Project identity: {report['project_identity']}")
+                print(f"Checkout: {report['checkout']}")
+                print(f"Workspace: {report['workspace']}")
+                for area, value in report["areas"].items():
+                    print(f"  {area}: {value['path']} ({value['direct_entries']} direct entries)")
+                print(f"Legacy nested workspaces: {len(report['legacy_nested_workspaces'])}")
+                for path in report["legacy_nested_workspaces"]:
+                    print(f"  {path}")
+            return 0
         if args.command == "workspace" and args.workspace_kind == "clean":
+            import json
             import math
 
-            from .paths import cleanup_workspace
+            from .paths import cleanup_workspace, work_root
 
             if not math.isfinite(args.older_than_hours) or args.older_than_hours < 0:
                 raise OCFError("--older-than-hours must be finite and nonnegative")
             candidates = cleanup_workspace(args.older_than_hours * 3600, dry_run=args.dry_run)
+            if args.json:
+                print(
+                    json.dumps(
+                        {
+                            "dry_run": args.dry_run,
+                            "older_than_hours": args.older_than_hours,
+                            "workspace": str(work_root()),
+                            "candidate_count": len(candidates),
+                            "paths": [str(path) for path in candidates],
+                        },
+                        indent=2,
+                    )
+                )
+                return 0
             action = "Would clean" if args.dry_run else "Cleaned"
             for path in candidates:
                 print(f"{action} {path}")

@@ -107,6 +107,8 @@ def test_context_reports_do_not_relabel_startup_as_unit_or_sum_contributions(
         '<testsuites><testsuite tests="2" failures="0" errors="0" skipped="0"/></testsuites>',
         encoding="utf-8",
     )
+    preexisting_detail = output / "combined.json"
+    preexisting_detail.write_text("keep historical detail\n", encoding="utf-8")
     monkeypatch.chdir(tmp_path.parent)
     summary = report.summarize(output, exit_code=0, elapsed=1)
     assert Path.cwd() == tmp_path.parent
@@ -118,6 +120,19 @@ def test_context_reports_do_not_relabel_startup_as_unit_or_sum_contributions(
     assert unit["covered_lines"] == integration["covered_lines"] == 2
     assert unit["covered_branches"] == integration["covered_branches"] == 1
     assert summary["unit_100_percent_achieved"] is False
+    assert preexisting_detail.read_text(encoding="utf-8") == "keep historical detail\n"
+    assert not list(output.glob(".combined-*.json"))
+    import shutil
+
+    detailed_output = tmp_path / "detailed-reports"
+    shutil.copytree(output, detailed_output)
+    (detailed_output / "combined.json").unlink()
+    detailed = report.summarize(
+        detailed_output, exit_code=0, elapsed=1, retain_detail_json=True
+    )
+    assert detailed["reports"] == summary["reports"]
+    assert (detailed_output / "combined.json").is_file()
+    assert json.loads((detailed_output / "combined.json").read_text())["meta"]["show_contexts"] is True
 
 
 @pytest.mark.parametrize("exit_code", [0, 1])

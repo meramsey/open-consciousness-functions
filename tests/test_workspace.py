@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import errno
+import json
 import os
 import subprocess
 import time
@@ -13,10 +14,39 @@ from ocf_tools.utils import write_text_atomic
 
 def test_default_and_relative_override_are_resolved_from_repository(monkeypatch):
     monkeypatch.delenv("OCF_WORK_DIR", raising=False)
-    assert paths.work_root() == paths.REPO_ROOT / ".ocf-work"
+    assert paths.work_root() == paths.canonical_project_root() / ".ocf-work"
     monkeypatch.setenv("OCF_WORK_DIR", "private-work")
-    assert paths.work_root() == (paths.REPO_ROOT / "private-work").resolve()
+    assert paths.work_root() == (paths.canonical_project_root() / "private-work").resolve()
     assert paths.work_path("renders", "auditions").is_relative_to(paths.work_root())
+
+
+def test_workspace_status_cli_reports_resolved_paths(monkeypatch, tmp_path, capsys):
+    from ocf_tools.cli import main
+
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "private-work"))
+    assert main(["workspace", "status", "--json"]) == 0
+    report = json.loads(capsys.readouterr().out)
+    assert report["project_identity"] == str(paths.canonical_project_root())
+    assert report["workspace"] == str((tmp_path / "private-work").resolve())
+    assert set(report["areas"]) == {"tmp", "cache", "renders", "logs"}
+
+
+def test_linked_worktree_uses_common_project_workspace(tmp_path, monkeypatch):
+    project = tmp_path / "project"
+    worktree = project / ".ocf-work" / "feature-worktree"
+    common_git = project / ".git"
+    git_dir = common_git / "worktrees" / "feature-worktree"
+    for directory in (project / "schemas", project / "functions", worktree, git_dir):
+        directory.mkdir(parents=True, exist_ok=True)
+    (worktree / ".ocf-work").mkdir()
+    (common_git / "worktrees").mkdir(parents=True, exist_ok=True)
+    (git_dir / "commondir").write_text("../..\n", encoding="utf-8")
+    (worktree / ".git").write_text(f"gitdir: {git_dir}\n", encoding="utf-8")
+    monkeypatch.setattr(paths, "REPO_ROOT", worktree)
+    monkeypatch.delenv("OCF_WORK_DIR", raising=False)
+    assert paths.canonical_project_root() == project
+    assert paths.work_root() == project / ".ocf-work"
+    assert str(worktree / ".ocf-work") in paths.workspace_report()["legacy_nested_workspaces"]
 
 
 def test_workspace_override_and_joined_paths_are_validated(monkeypatch):
@@ -119,6 +149,8 @@ def test_temp_paths_are_marked_scoped_collision_safe_and_recoverable(monkeypatch
     assert paths.unique_run_id("complete-session") != paths.unique_run_id("complete-session")
     assert first.is_relative_to(paths.work_path("tmp"))
     assert (first / ".ocf-owned").is_file()
+    marker = json.loads((first / ".ocf-owned").read_text(encoding="utf-8"))
+    assert marker["owner_pid"] == os.getpid()
     (first / "render-context.json").write_text('{"status":"interrupted"}\n')
     assert (first / "render-context.json").is_file()
     old_time = time.time() - 60
@@ -129,6 +161,21 @@ def test_temp_paths_are_marked_scoped_collision_safe_and_recoverable(monkeypatch
     removed = paths.cleanup_workspace(older_than_seconds=0)
     assert first in removed and second in removed
     assert not first.exists() and not second.exists()
+
+
+def test_cleanup_skips_a_stale_temp_directory_owned_by_live_foreign_pid(
+    monkeypatch, tmp_path
+):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "ocf-work"))
+    scratch = paths.workspace_temp_directory()
+    (scratch / ".ocf-owned").write_text(
+        json.dumps({"schema_version": "1.0", "owner_pid": os.getppid(), "token": "live"}),
+        encoding="utf-8",
+    )
+    old_time = time.time() - 3600
+    os.utime(scratch, (old_time, old_time))
+    assert scratch not in paths.cleanup_workspace(older_than_seconds=1, dry_run=True)
+    assert scratch.is_dir()
 
 
 def test_cleanup_rejects_unowned_files_and_respects_retention(monkeypatch, tmp_path):
@@ -217,11 +264,14 @@ def test_workspace_clean_cli_removes_only_old_marked_scratch(monkeypatch, tmp_pa
     unrelated.mkdir()
     old_time = old.stat().st_mtime - 7200
     os.utime(old, (old_time, old_time))
-    assert main(["workspace", "clean", "--older-than-hours", "1", "--dry-run"]) == 0
+    assert main(["workspace", "clean", "--older-than-hours", "1", "--dry-run", "--json"]) == 0
+    preview = json.loads(capsys.readouterr().out)
+    assert preview["dry_run"] is True and str(old) in preview["paths"]
     assert old.exists() and unrelated.exists()
-    assert main(["workspace", "clean", "--older-than-hours", "1"]) == 0
+    assert main(["workspace", "clean", "--older-than-hours", "1", "--json"]) == 0
+    cleaned = json.loads(capsys.readouterr().out)
+    assert cleaned["dry_run"] is False and str(old) in cleaned["paths"]
     assert not old.exists() and unrelated.exists()
-    assert "Cleaned" in capsys.readouterr().out
 
 
 def test_failed_workspace_run_keeps_error_in_caller_environment(monkeypatch, tmp_path):
