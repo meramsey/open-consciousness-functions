@@ -75,7 +75,9 @@ def work_root() -> Path:
     override = os.environ.get("OCF_WORK_DIR")
     if override:
         configured = Path(override).expanduser()
-        candidate = (configured if configured.is_absolute() else project_root / configured).resolve()
+        candidate = (
+            configured if configured.is_absolute() else project_root / configured
+        ).resolve()
     else:
         candidate = (project_root / ".ocf-work").resolve()
     if candidate == Path(candidate.anchor) or candidate in {project_root, REPO_ROOT.resolve()}:

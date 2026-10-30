@@ -143,12 +143,12 @@ def test_context_reports_do_not_relabel_startup_as_unit_or_sum_contributions(
     detailed_output = tmp_path / "detailed-reports"
     shutil.copytree(output, detailed_output)
     (detailed_output / "combined.json").unlink()
-    detailed = report.summarize(
-        detailed_output, exit_code=0, elapsed=1, retain_detail_json=True
-    )
+    detailed = report.summarize(detailed_output, exit_code=0, elapsed=1, retain_detail_json=True)
     assert detailed["reports"] == summary["reports"]
     assert (detailed_output / "combined.json").is_file()
-    assert json.loads((detailed_output / "combined.json").read_text())["meta"]["show_contexts"] is True
+    assert (
+        json.loads((detailed_output / "combined.json").read_text())["meta"]["show_contexts"] is True
+    )
 
 
 def test_failed_compact_export_retains_partial_report(tmp_path, monkeypatch):

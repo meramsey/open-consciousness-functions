@@ -121,7 +121,9 @@ def _summarize(directory, *, exit_code, elapsed, retain_detail_json=False):
         )
         report_path_existed = report_path.exists()
         if retain_detail_json and report_path_existed:
-            raise OCFError(f"refusing to overwrite existing detailed coverage report: {report_path}")
+            raise OCFError(
+                f"refusing to overwrite existing detailed coverage report: {report_path}"
+            )
         extracted = False
         try:
             coverage.json_report(
@@ -130,9 +132,7 @@ def _summarize(directory, *, exit_code, elapsed, retain_detail_json=False):
                 pretty_print=retain_detail_json,
                 show_contexts=retain_detail_json,
             )
-            reports[name] = metrics(
-                json.loads(report_path.read_text(encoding="utf-8"))["totals"]
-            )
+            reports[name] = metrics(json.loads(report_path.read_text(encoding="utf-8"))["totals"])
             extracted = True
         finally:
             if not retain_detail_json and extracted and not report_path_existed:
@@ -253,7 +253,9 @@ def run(directory=None, *, retain_detail_json=False):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
-    start = sub.add_parser("run", help="explicit full-suite measurement; retains compact diagnostics")
+    start = sub.add_parser(
+        "run", help="explicit full-suite measurement; retains compact diagnostics"
+    )
     start.add_argument("--output", type=Path)
     start.add_argument(
         "--retain-detail-json",

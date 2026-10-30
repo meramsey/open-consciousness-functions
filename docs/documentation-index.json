@@ -73,10 +73,11 @@
       "related_commands": [
         "dev",
         "dev ocf",
-        "voice doctor"
+        "voice doctor",
+        "workspace status"
       ],
       "related_schemas": [],
-      "sha256": "39e1c3b6863a7c521351fedb84a35e11f6bf2341e96667449cf243aaaebbbc43",
+      "sha256": "89046895beccf85630a256a0114221d3127ff058149aa8d1bb75e5b6e56ca4aa",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -555,13 +556,14 @@
         "audio release",
         "audio render",
         "voice doctor",
-        "workspace clean"
+        "workspace clean",
+        "workspace status"
       ],
       "related_schemas": [
         "schemas/audio-release.schema.json",
         "schemas/mix-profile.schema.json"
       ],
-      "sha256": "2212a4efbadd8287114a8b50be9b6e728b99f1885079599c233be666d8ddb4d5",
+      "sha256": "e9ad0367e10bffe74310456aad343ea151076afc188af3f39060c07a19188034",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1882,7 +1884,7 @@
       "purpose": "Unit coverage policy and current gap",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "24782bf2266210f688c3d4683ab4c1f192644a70a264a96a2d0f772da1f34679",
+      "sha256": "1778fc06f3a0c283e6f05527e4f71a929e4a60e5c9eb393d8e124d8cae553eba",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5426,7 +5428,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "cdc6f108418d69730a68a14fd48630f190a7e200f599ba2ee2913c79537b586c",
+      "sha256": "be1033a381def8852b045442c0afe6042d15a6f2d8646712507e66eeb727b59b",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {

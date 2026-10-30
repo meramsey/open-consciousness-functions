@@ -163,9 +163,7 @@ def test_temp_paths_are_marked_scoped_collision_safe_and_recoverable(monkeypatch
     assert not first.exists() and not second.exists()
 
 
-def test_cleanup_skips_a_stale_temp_directory_owned_by_live_foreign_pid(
-    monkeypatch, tmp_path
-):
+def test_cleanup_skips_a_stale_temp_directory_owned_by_live_foreign_pid(monkeypatch, tmp_path):
     monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "ocf-work"))
     scratch = paths.workspace_temp_directory()
     (scratch / ".ocf-owned").write_text(
