@@ -189,6 +189,88 @@ documented in `docs/LOCALIZATION.md` and `locales/README.md`.
 - [ ] Proposal-process stabilization.
 - [ ] Accessibility pass (transcripts, loudness, captions).
 
+## Additional approved backlog — 2026-10-29
+
+These are approved future tasks, not shipped behavior. The three proposed
+functions below remain editorial backlog only and must not be registered until
+their separate authoring/review process is authorized. The verified registry
+remains at 58 functions.
+
+### Function knowledge, localization, and guides
+
+- [ ] Per-locale comprehensive OCF function handbook, including general use
+      guidance, definitions for all current functions, and a fundamentals-first
+      suggested learning pathway.
+- [ ] Per-locale displayed/spoken activation-cue reference and complete cue
+      index, sourced from the authoritative localized data.
+- [ ] Verified complementary-function maps, common-use examples, related
+      learning guidance, and complementary functions in user-facing guides.
+- [ ] Individual downloadable function PDFs containing readable complete
+      canonical transcripts: title, stable ID, locale, description, display and
+      exact spoken cues, uses, activation instructions, opener/body/closer and
+      approved sections, secondary commands, complementary functions, concise
+      cue reminder, and version metadata. Playback repetition is not duplicate
+      canonical transcript text.
+- [ ] Simplify bloated localized YAML metadata and comments; retain meaningful
+      evidence/provenance/history in the established structured audit system.
+- [ ] Make localized YAML the authority for localized function data, with
+      first-class title, description, primary displayed/spoken cues, secondary
+      cues, tags, common uses, complementary relationship descriptions,
+      narration, and concise changelog fields. Keep stable IDs and
+      locale-independent command IDs in their technical registries.
+- [ ] Remove generated cue-preview comment banners as an authority. Generate
+      master indexes, command lists, and guides from structured localized YAML.
+- [ ] Migrate localized filenames to stable-ID-first readable names such as
+      `OCF-EMO-003-Empathize.yaml`, with stable-ID lookup and backward-compatible
+      path/ID resolution during migration.
+- [ ] Preserve approved spoken narration and cues byte-for-byte during
+      structural conversion; verify resolved-text hashes and immutable
+      provenance before migration.
+
+### Audio baselines, voice privacy, and listening review
+
+- [ ] Treat the latest approved, technically verified 58-function session
+      settings as the current baseline for future editions; preserve historical
+      editions and immutable source/profile manifests.
+- [ ] Retire superseded temporary pilot references only after inventory and
+      verified preservation of immutable historical records and editions.
+- [ ] Beginner-friendly zero-shot voice-cloning documentation: recording,
+      reference preparation, pack creation/import, audition, narrator selection,
+      complete-session render, portable private backup/restore, optional runtime
+      setup, troubleshooting, privacy, licensing boundaries, and limitations.
+- [ ] Private daily affirmations generator using user-owned voice packs; local
+      output only unless separately authorized.
+- [ ] Accessible user-facing discovery of private voice profiles, references,
+      auditions, and completed renders, with stable workspace/path reporting.
+- [ ] Portable private voice-pack backup/export/restore, with checksum
+      validation, consent/provenance preservation, and isolated restore tests.
+- [ ] Canonical shared `.ocf-work` runtime across linked worktrees, explicit
+      `OCF_WORK_DIR`, safe legacy nested-workspace discovery/migration, and
+      per-project isolation. Migrate existing private assets only with an
+      inventory, verified copy, and ownership/provenance checks.
+- [ ] Focus 11 narrator/background intelligibility analysis and corrected
+      audition candidates; preserve approved DSP and require human listening
+      preference before promoting a profile.
+- [ ] Controlled authentic Farfield/reference-V4 A/B comparisons using one
+      verified speech source and the shared OCF mixer, with reproducible level,
+      timeline, DSP, and provenance receipts.
+- [ ] Separate technical QC from human listening feedback and explicit approval
+      tracking; neither technical renderability nor successful packaging is
+      human approval or publication authorization.
+- [ ] Bounded private workspace retention, compact default coverage summaries,
+      opt-in detailed coverage diagnostics, active-job protection, and receipts
+      for cleanup of verified disposable artifacts.
+
+### Proposed function concepts — editorial backlog only
+
+- [ ] `PLUS LUCKY`: positive intention, favorable opportunities, and recognition
+      of beneficial possibilities.
+- [ ] `PLUS PROTECT`: rapid one-breath REBAL/resonant energy-balloon activation,
+      preserving original OCF wording and mechanics.
+- [ ] `PLUS HAIR GROWTH`: intention-based focus for encouraging desired hair
+      growth in selected regions; do not present unverified physiological
+      outcomes as established medical effects.
+
 ## Non-goals
 
 - Redistribute or reconstruct Monroe audio.
