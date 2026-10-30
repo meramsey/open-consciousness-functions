@@ -544,7 +544,7 @@ def _build_parser() -> argparse.ArgumentParser:
     narration_render.add_argument(
         "--mix-profile",
         type=Path,
-        help="explicit linked-stereo ducking/headroom/limiter configuration",
+        help="explicit fixed bed-gain windows, linked-stereo ducking, headroom and limiter",
     )
     narration_render.add_argument(
         "--voice-gain",
