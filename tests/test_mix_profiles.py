@@ -47,6 +47,7 @@ class TestProfileContracts:
         }
         assert profile["background_ducking"]["enabled"] is False
         assert profile["background_gain_windows"] == []
+        assert profile["semantic_state_gains_db"] == {}
         assert profile["profile_id"] is None and profile["profile_version"] is None
         assert profile["output_headroom_db"] == profile["fade_in_s"] == profile["fade_out_s"] == 0
         assert profile["measure_loudness"] is False
@@ -64,6 +65,10 @@ class TestProfileContracts:
         )
         assert override["background_gain_windows"] == []
         assert override["background_ducking"]["enabled"] is False
+
+    def test_fixed_semantic_state_gain_is_preserved_as_profile_data(self):
+        profile = mp.load_mix_profile({"semantic_state_gains_db": {"focus-11": -11}})
+        assert profile["semantic_state_gains_db"] == {"focus-11": -11}
 
     @pytest.mark.parametrize(
         "suffix,text",

@@ -40,6 +40,10 @@
         }
       }
     },
+    "semantic_state_gains_db": {
+      "type": "object", "default": {}, "additionalProperties": {"type": "number", "minimum": -60, "maximum": 24},
+      "description": "Optional fixed gain applied to each named semantic background state before its existing session-time transition envelope."
+    },
     "output_headroom_db": {
       "type": "number", "minimum": 0, "maximum": 60, "default": 0,
       "description": "Nonnegative dB attenuation of the sum before limiting; not automatic normalization."

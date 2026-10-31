@@ -951,6 +951,11 @@ def build(
             profile,
             bg_path,
             scratch_dir=stage_dir,
+            **(
+                {"state_gains_db": mix_profile["semantic_state_gains_db"]}
+                if mix_profile and mix_profile.get("semantic_state_gains_db")
+                else {}
+            ),
         )
         bg_note = "semantic-state-program"
     else:

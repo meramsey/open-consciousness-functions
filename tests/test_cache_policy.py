@@ -5,6 +5,7 @@ import wave
 
 import pytest
 from ocf_tools import complete_session, narration_first, speech_cache, voice
+from ocf_tools.utils import OCFError
 
 
 def pcm():
@@ -37,6 +38,18 @@ def test_nested_disable_is_sticky_and_restores_default_reuse(monkeypatch, tmp_pa
     assert speech_cache.STATS["hit"] - before["hit"] == 3
     assert speech_cache.STATS["bypassed"] - before["bypassed"] == 2
     assert not speech_cache._active.get()
+
+
+@pytest.mark.unit
+def test_require_hit_blocks_missing_speech_without_calling_synthesizer(monkeypatch, tmp_path):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    monkeypatch.setattr(speech_cache, "voice_identity", lambda spec: spec)
+    calls = []
+    monkeypatch.setattr(voice, "_render_cue_wav", lambda *args: calls.append(args) or pcm())
+    with speech_cache.policy("require-hit"), speech_cache.policy("auto"), speech_cache.enabled():
+        with pytest.raises(OCFError, match="synthesis was blocked"):
+            voice.render_cue_wav({"name": "fixture"}, "not cached")
+    assert calls == []
 
 
 @pytest.mark.integration

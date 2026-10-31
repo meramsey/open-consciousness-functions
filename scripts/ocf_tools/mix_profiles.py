@@ -53,10 +53,14 @@ def load_mix_profile(profile: dict[str, Any] | str | Path) -> dict[str, Any]:
     normalized = {}
     for name, spec in schema["properties"].items():
         if spec.get("type") == "object":
-            normalized[name] = {
-                key: value.get(name, {}).get(key, field["default"])
-                for key, field in spec["properties"].items()
-            }
+            normalized[name] = (
+                dict(value.get(name, {}))
+                if not spec.get("properties")
+                else {
+                    key: value.get(name, {}).get(key, field["default"])
+                    for key, field in spec["properties"].items()
+                }
+            )
         else:
             normalized[name] = value.get(name, spec.get("default"))
     return normalized

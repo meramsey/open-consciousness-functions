@@ -204,12 +204,12 @@ def _uncached_identity_hint(spec: dict, text: str) -> str:
 @contextmanager
 def policy(mode: str = "auto", *, refresh_scope: str | None = None, function_id: str | None = None):
     """Select cache policy for one render; nested off always wins."""
-    if mode not in {"auto", "off", "refresh"}:
-        raise OCFError("speech cache mode must be auto, off or refresh")
+    if mode not in {"auto", "off", "refresh", "require-hit"}:
+        raise OCFError("speech cache mode must be auto, off, refresh or require-hit")
     parent_mode = _mode.get()
     selected = (
-        "off"
-        if parent_mode == "off"
+        parent_mode
+        if parent_mode in {"off", "require-hit"}
         else "refresh"
         if parent_mode == "refresh" and mode == "auto"
         else mode
@@ -442,7 +442,8 @@ def cached_cue(spec: dict, text: str, render) -> bytes:
     with lock("speech-cache-key-" + key, wait=True, timeout=900):
         existing = _read_verified(root, key)
         if existing and (
-            selected_mode == "auto" or existing[1].get("refresh_scope") == _refresh_scope.get()
+            selected_mode in {"auto", "require-hit"}
+            or existing[1].get("refresh_scope") == _refresh_scope.get()
         ):
             _increment("hit")
             _add_seconds(
@@ -463,6 +464,18 @@ def cached_cue(spec: dict, text: str, render) -> bytes:
             _increment("refreshed")
         else:
             _increment("invalidated" if manifest.exists() else "miss")
+        if selected_mode == "require-hit":
+            _event(
+                "miss-blocked",
+                key,
+                text,
+                None,
+                None,
+                profile_id=spec.get("profile_id"),
+                identity=identity,
+                voice_spec=spec,
+            )
+            raise OCFError("required cached speech is missing or invalid; synthesis was blocked")
         started = time.perf_counter()
         token = _last_inference_report.set(None)
         try:

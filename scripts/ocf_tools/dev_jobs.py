@@ -207,8 +207,8 @@ def validate_request(operation: str, arguments: dict) -> dict:
                 raise OCFError("voice and valid pacing are required")
         if operation in {"render", "narration-render"}:
             args["speech_cache_mode"] = args.get("speech_cache_mode", "auto")
-            if args["speech_cache_mode"] not in {"auto", "off", "refresh"}:
-                raise OCFError("speech_cache_mode must be auto, off or refresh")
+            if args["speech_cache_mode"] not in {"auto", "off", "refresh", "require-hit"}:
+                raise OCFError("speech_cache_mode must be auto, off, refresh or require-hit")
         if operation == "render" and args.get("dsp_profile") is not None:
             safe_path(args["dsp_profile"], work_root())
         if operation == "release":

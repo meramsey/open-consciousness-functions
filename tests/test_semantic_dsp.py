@@ -320,12 +320,12 @@ def test_repeated_state_is_noop_not_a_gain_swell():
     assert "(t-10.000000000)" not in _gain_expression(program, "ordinary-waking")
 
 
-def constant_stem(directory, state, level):
+def constant_stem(directory, state, level, duration_s=10):
     """A flat calibrated probe stem; output level then reads out the envelope."""
     path = directory / f"{state}.wav"
     with wave.open(str(path), "wb") as writer:
         writer.setparams((2, 2, 8000, 0, "NONE", "not compressed"))
-        writer.writeframes(array("h", [level, level] * 80000).tobytes())
+        writer.writeframes(array("h", [level, level] * 8000 * duration_s).tobytes())
     return path
 
 
@@ -859,6 +859,48 @@ def test_actual_ffmpeg_approach_envelope_matches_planned_gain(tmp_path):
             raw[round(9.99 * 44100) * 6 : round(9.99 * 44100) * 6 + 3], "little", signed=True
         )
         == 0
+    )
+
+
+@pytest.mark.integration
+def test_fixed_semantic_state_gain_stays_on_through_silent_gap_and_closure(tmp_path):
+    """A Focus 11 bed stays attenuated between speech and until the exit fade."""
+    from ocf_tools.semantic_dsp import render_program
+
+    if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
+        pytest.skip("ffmpeg/ffprobe integration dependency unavailable")
+    stems = {
+        state: constant_stem(tmp_path, state, level, duration_s=100)
+        for state, level in [("focus-10", 3277), ("focus-11", 6554)]
+    }
+    output = tmp_path / "continuous-focus11.wav"
+    program = render_program(
+        state_doc(),
+        TIMES,
+        100,
+        load_profile("OCF-DSP-DEVELOPMENT-V4-001"),
+        output,
+        render_state=lambda state, selection, seed, duration: stems[state],
+        state_gains_db={"focus-11": -11},
+    )
+    raw = subprocess.run(
+        ["ffmpeg", "-v", "error", "-i", str(output), "-f", "s24le", "-c:a", "pcm_s24le", "-"],
+        capture_output=True,
+        check=True,
+    ).stdout
+    fixed = 10 ** (-11 / 20)
+    calibration = program["selections"]["focus-11"]["renderer_gain"]
+    assert program["fixed_state_gains_db"] == {"focus-11": -11}
+    # Same Focus 11 contribution during pass speech, the full silent gap, and closure.
+    for time in (42, 48, 52, 58):
+        index = round(time * 44100) * 6
+        sample = int.from_bytes(raw[index : index + 3], "little", signed=True)
+        expected = round(6554 * calibration * gain_at(program, "focus-11", time) * fixed * 256)
+        assert sample == pytest.approx(expected, abs=2)
+    index = round(20 * 44100) * 6
+    f10 = program["selections"]["focus-10"]["renderer_gain"]
+    assert int.from_bytes(raw[index : index + 3], "little", signed=True) == pytest.approx(
+        3277 * f10 * 256, abs=2
     )
 
 

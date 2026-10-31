@@ -709,7 +709,7 @@
         "audio",
         "render-many"
       ],
-      "usage": "usage: ocf audio render-many [-h] [--all] [--locale LOCALE] --voice VOICE\n                             [--pacing {normal,relaxed,sleep}] [--rate RATE]\n                             [--workers WORKERS] [--dsp-profile DSP_PROFILE]\n                             [--dry-run] [--resume] [--force]\n                             [--fresh-synthesis]\n                             [--speech-cache {auto,off,refresh}]\n                             [function_ids ...]",
+      "usage": "usage: ocf audio render-many [-h] [--all] [--locale LOCALE] --voice VOICE\n                             [--pacing {normal,relaxed,sleep}] [--rate RATE]\n                             [--workers WORKERS] [--dsp-profile DSP_PROFILE]\n                             [--dry-run] [--resume] [--force]\n                             [--fresh-synthesis]\n                             [--speech-cache {auto,off,refresh,require-hit}]\n                             [function_ids ...]",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -833,7 +833,7 @@
         "audio",
         "render"
       ],
-      "usage": "usage: ocf audio render [-h] [--mode {session,narration-only}]\n                        [--locale LOCALE]\n                        [--narration-sources NARRATION_SOURCES]\n                        [--narration-source {tts,recording,hybrid,silence}]\n                        [--voice VOICE] [--overrides OVERRIDES]\n                        [--pacing {normal,relaxed,sleep}]\n                        [--template TEMPLATE] [--dsp-profile DSP_PROFILE]\n                        [--output OUTPUT]\n                        [--audition-version AUDITION_VERSION]\n                        [--artwork ARTWORK] [--artwork-theme ARTWORK_THEME]\n                        [--rate RATE] [--mix-profile MIX_PROFILE]\n                        [--voice-gain VOICE_GAIN]\n                        [--background-gain BACKGROUND_GAIN] [--dry-run]\n                        [--speech-cache {auto,off,refresh}]\n                        function_id",
+      "usage": "usage: ocf audio render [-h] [--mode {session,narration-only}]\n                        [--locale LOCALE]\n                        [--narration-sources NARRATION_SOURCES]\n                        [--narration-source {tts,recording,hybrid,silence}]\n                        [--voice VOICE] [--overrides OVERRIDES]\n                        [--pacing {normal,relaxed,sleep}]\n                        [--template TEMPLATE] [--dsp-profile DSP_PROFILE]\n                        [--output OUTPUT]\n                        [--audition-version AUDITION_VERSION]\n                        [--artwork ARTWORK] [--artwork-theme ARTWORK_THEME]\n                        [--rate RATE] [--mix-profile MIX_PROFILE]\n                        [--voice-gain VOICE_GAIN]\n                        [--background-gain BACKGROUND_GAIN] [--dry-run]\n                        [--speech-cache {auto,off,refresh,require-hit}]\n                        function_id",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -2207,7 +2207,7 @@
     "schemas/hplus-review-selection.schema.json": "2e65fa5465bd6a70185dbcbb5ae3d933b81e2e7034ba17b4699b7998a392ac19",
     "schemas/locale-manifest.schema.json": "3d1188d454415a4b111beca2545ed0627e89b112943ab523e81e632c3e1558b6",
     "schemas/locale-resource.schema.json": "1573a212f7aad08201444d34f7f10b7c035307f30ea713f6d1897dfe72dab7a7",
-    "schemas/mix-profile.schema.json": "886100c645c44bffbe52b3f919bc15fb574f4d324029d9a442c2d65a611e359e",
+    "schemas/mix-profile.schema.json": "05ac30c768cb95eb76f6cb300fcc29e20499c2c36a0a4b5692d169174050b40b",
     "schemas/narration-package.schema.json": "8a9e55379eec1481cdde5fbfa55b91af471dc45fe0ae30c64da36ab5d9b1a15d",
     "schemas/narration-sources.schema.json": "5c084f128351d6a2a879b5a971007cbc9efe3fb269deb3eeb12832895e729c3e",
     "schemas/narration-stem.schema.json": "6e377d585c16ed0c77178862a99f6de5be75786183cef36361ed4e717faa1efd",
@@ -2225,7 +2225,7 @@
     "schemas/voice-dataset.schema.json": "0307327f3f52eeaaaed71abaa6d1950c0b665fc677b43547e2452e9c31000ed8",
     "schemas/voice-profile.schema.json": "bff61d964e36686802129b9631fed45c3baa5262d5359d330a0b3f59763ee40e",
     "scripts/ocf_tools/agent_api.py": "ac978df4e808bbc8b1541139b4760e0244faa5d62101b78ab954c9b43f0ed7a0",
-    "scripts/ocf_tools/cli.py": "0ce47b45164af3240e39020b2be3797b8bc8a28f6c1136f6a21374afd527f550",
+    "scripts/ocf_tools/cli.py": "76485b3fa056fa1b7a34872f220125e0e73414fe6e5de91c01070954888f6116",
     "scripts/ocf_tools/lsp_server.py": "a753b91b1b73609ecd6886470a037a9bbf1259e2a77f08203546e55ef4cbae09",
     "scripts/ocf_tools/mcp_server.py": "d8641d4160888abbe7152fca2117623de4dfb061793b95b161dbfb4534a2be54",
     "scripts/ocf_tools/narration_cli.py": "5f13a05251816e5d3b80419d9ed67184b5c6c48722175700bbc88ec2b429bd41",
