@@ -863,8 +863,8 @@ def test_actual_ffmpeg_approach_envelope_matches_planned_gain(tmp_path):
 
 
 @pytest.mark.integration
-def test_fixed_semantic_state_gain_stays_on_through_silent_gap_and_closure(tmp_path):
-    """A Focus 11 bed stays attenuated between speech and until the exit fade."""
+def test_fixed_semantic_state_gains_stay_on_through_gaps_and_transition(tmp_path):
+    """Fixed state gains precede transitions, so silence never restores gain."""
     from ocf_tools.semantic_dsp import render_program
 
     if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
@@ -881,27 +881,34 @@ def test_fixed_semantic_state_gain_stays_on_through_silent_gap_and_closure(tmp_p
         load_profile("OCF-DSP-DEVELOPMENT-V4-001"),
         output,
         render_state=lambda state, selection, seed, duration: stems[state],
-        state_gains_db={"focus-11": -11},
+        state_gains_db={"focus-10": -1, "focus-11": -11},
     )
     raw = subprocess.run(
         ["ffmpeg", "-v", "error", "-i", str(output), "-f", "s24le", "-c:a", "pcm_s24le", "-"],
         capture_output=True,
         check=True,
     ).stdout
-    fixed = 10 ** (-11 / 20)
-    calibration = program["selections"]["focus-11"]["renderer_gain"]
-    assert program["fixed_state_gains_db"] == {"focus-11": -11}
-    # Same Focus 11 contribution during pass speech, the full silent gap, and closure.
+    fixed11 = 10 ** (-11 / 20)
+    fixed10 = 10 ** (-1 / 20)
+    calibration11 = program["selections"]["focus-11"]["renderer_gain"]
+    calibration10 = program["selections"]["focus-10"]["renderer_gain"]
+    assert program["fixed_state_gains_db"] == {"focus-10": -1, "focus-11": -11}
+    # Focus 11 stays -11 dB over both programming passes, the silent gap, and close.
     for time in (42, 48, 52, 58):
         index = round(time * 44100) * 6
         sample = int.from_bytes(raw[index : index + 3], "little", signed=True)
-        expected = round(6554 * calibration * gain_at(program, "focus-11", time) * fixed * 256)
+        expected = round(6554 * calibration11 * gain_at(program, "focus-11", time) * fixed11 * 256)
         assert sample == pytest.approx(expected, abs=2)
-    index = round(20 * 44100) * 6
-    f10 = program["selections"]["focus-10"]["renderer_gain"]
-    assert int.from_bytes(raw[index : index + 3], "little", signed=True) == pytest.approx(
-        3277 * f10 * 256, abs=2
-    )
+    # At crossfades the combined level also includes the independently attenuated
+    # Focus 11 contribution; verify each source's state envelope and fixed gain.
+    for time in (20, 35, 65, 80):
+        index = round(time * 44100) * 6
+        sample = int.from_bytes(raw[index : index + 3], "little", signed=True)
+        expected = round(
+            3277 * calibration10 * gain_at(program, "focus-10", time) * fixed10 * 256
+            + 6554 * calibration11 * gain_at(program, "focus-11", time) * fixed11 * 256
+        )
+        assert sample == pytest.approx(expected, abs=2)
 
 
 @pytest.mark.unit
