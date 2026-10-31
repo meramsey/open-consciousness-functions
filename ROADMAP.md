@@ -238,6 +238,10 @@ remains at 58 functions.
       reference preparation, pack creation/import, audition, narrator selection,
       complete-session render, portable private backup/restore, optional runtime
       setup, troubleshooting, privacy, licensing boundaries, and limitations.
+- [x] A short user-facing zero-shot voice-pack quick start linked from the
+      repository entry points; reuse and verify the existing voice-pack CLI and
+      `docs/VOICE_PACKS.md` and capability/privacy guidance in `docs/VOICE_CLONING.md`
+      rather than creating a second workflow.
 - [ ] Private daily affirmations generator using user-owned voice packs; local
       output only unless separately authorized.
 - [ ] Accessible user-facing discovery of private voice profiles, references,
@@ -256,8 +260,11 @@ remains at 58 functions.
       timeline, DSP, and provenance receipts.
 - [ ] Complete the private Farfield A3/A4 listening decision. A4 tests a fixed
       -11 dB gain on the entire active Focus 11 bed, including speech gaps and
-      closure; preserve A3 and keep A4 private until explicit human approval.
-      Technical QC is not listening approval or publication authorization.
+      closure; preserve A3. The user has listened to the complete A4 Hearing
+      session and likes its mix, and requested a private A5 successor with only
+      an additional fixed -1 dB on Focus 10 while preserving A4 Focus 11. A5
+      listening remains pending; neither edition is publicly authorized.
+      Technical QC and favorable A4 feedback are not publication authorization.
 - [ ] Enforce one crash-recoverable owner per complete-render artifact identity:
       atomic reservation, verified process identity, terminal-state recovery,
       cache-only synthesis blocking when requested, safe stage retention, and
@@ -278,6 +285,10 @@ remains at 58 functions.
 - [ ] Bounded private workspace retention, compact default coverage summaries,
       opt-in detailed coverage diagnostics, active-job protection, and receipts
       for cleanup of verified disposable artifacts.
+- [ ] Retire only clean, inactive Git worktrees whose source is proven integrated;
+      inventory and preserve unique private assets first. Inspect legacy nested
+      `.ocf-work` locations, migrate only verified unique artifacts, remove only
+      proven disposable duplicates, and retain a hash/path cleanup receipt.
 
 ### Proposed function concepts — editorial backlog only
 
