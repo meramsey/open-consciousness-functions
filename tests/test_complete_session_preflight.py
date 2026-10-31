@@ -1,5 +1,11 @@
 """Isolated invalid-input boundaries; no synthesis or renderer rewrite."""
 
+import hashlib
+import json
+from concurrent.futures import ThreadPoolExecutor
+from contextlib import contextmanager
+from threading import Event
+
 import pytest
 from ocf_tools import (
     complete_session,
@@ -81,8 +87,6 @@ def test_missing_tts_voice_is_allowed_for_planning_but_fails_before_output(
 
 
 def test_duplicate_explicit_render_destination_fails_before_rendering(monkeypatch, tmp_path):
-    from contextlib import contextmanager
-
     output = tmp_path / "private-session"
     locks = []
 
@@ -101,6 +105,171 @@ def test_duplicate_explicit_render_destination_fails_before_rendering(monkeypatc
         complete_session.render_complete_session("OCF-SEN-001", output=output)
     assert len(locks) == 1 and locks[0][1] is False
     assert not output.exists()
+
+
+def _verified_session_fixture(output, identity="a" * 64):
+    output.mkdir()
+    artifacts = {}
+    for name, key in (
+        ("master.wav", "wav"),
+        ("background.wav", "background_stem"),
+        ("transcript.txt", "transcript"),
+    ):
+        data = f"verified {key}".encode()
+        (output / name).write_bytes(data)
+        artifacts[key] = {
+            "path": name,
+            "size_bytes": len(data),
+            "sha256": hashlib.sha256(data).hexdigest(),
+        }
+    (output / "session-report.json").write_text(
+        json.dumps({"render_identity_sha256": identity, "artifacts": artifacts})
+    )
+
+
+def test_complete_session_identity_is_deterministic_and_binds_mix_and_source_hashes(tmp_path):
+    plan = {
+        "locale": "en-US",
+        "voice_selection": {"profile_id": "OCF-VOICE-TEST"},
+        "template": {"id": "template", "version": "1"},
+        "resolved_dsp_profile": {"id": "dsp", "version": "1"},
+        "narration_resources": [{"key": "fixture", "resolved_text_sha256": "abc"}],
+    }
+    source = tmp_path / "sources.json"
+    source.write_text('{"mode":"recording"}')
+    base = {
+        "locale": "en-US",
+        "voice": "OCF-VOICE-TEST",
+        "pacing": "sleep",
+        "dsp_profile": tmp_path / "profile.yaml",
+        "sample_rate": 44100,
+        "narration_sources": source,
+    }
+    identity = complete_session._complete_session_identity("fixture", plan, None, **base)
+    assert identity == complete_session._complete_session_identity("fixture", plan, None, **base)
+    assert identity != complete_session._complete_session_identity(
+        "fixture", plan, {"profile_id": "different"}, **base
+    )
+    source.write_text('{"mode":"different"}')
+    assert identity != complete_session._complete_session_identity("fixture", plan, None, **base)
+
+
+def test_complete_session_identity_binds_private_voice_profile_revision(monkeypatch):
+    from ocf_tools import indexes
+
+    plan = {"tts_plan": {"voice_profile": {"id": "OCF-VOICE-TEST"}}}
+    request = {"voice": "OCF-VOICE-TEST"}
+    profile = {"id": "OCF-VOICE-TEST", "reference_audio": {"sha256": "a" * 64}}
+    monkeypatch.setattr(indexes, "load_voice_profiles", lambda: [profile])
+    original = complete_session._complete_session_identity("fixture", plan, None, **request)
+    profile["reference_audio"]["sha256"] = "b" * 64
+    revised = complete_session._complete_session_identity("fixture", plan, None, **request)
+    assert original != revised
+
+
+def test_verified_matching_output_is_reused_without_rendering(monkeypatch, tmp_path):
+    output = tmp_path / "verified-output"
+    _verified_session_fixture(output)
+
+    @contextmanager
+    def owned(*args, **kwargs):
+        yield True
+
+    def dry_run(*args, **kwargs):
+        assert kwargs["dry_run"] is True
+        return {"dry_run": True, "render_identity_sha256": "a" * 64}
+
+    monkeypatch.setattr(dev_jobs, "lock", owned)
+    monkeypatch.setattr(complete_session, "_render_complete_session_unlocked", dry_run)
+    result = complete_session.render_complete_session("fixture", output=output)
+    assert result["reused"] is True
+    assert result["output_directory"] == str(output.resolve())
+    assert (output / "master.wav").is_file()
+
+
+@pytest.mark.parametrize("mutation", ["different-identity", "missing-report", "corrupt-artifact"])
+def test_existing_partial_or_unmatched_output_is_preserved_and_refused(
+    monkeypatch, tmp_path, mutation
+):
+    output = tmp_path / "existing-output"
+    _verified_session_fixture(output)
+    if mutation == "different-identity":
+        (output / "session-report.json").write_text(
+            json.dumps({"render_identity_sha256": "b" * 64, "artifacts": {}})
+        )
+    elif mutation == "missing-report":
+        (output / "session-report.json").unlink()
+    else:
+        (output / "master.wav").write_bytes(b"tampered")
+
+    @contextmanager
+    def owned(*args, **kwargs):
+        yield True
+
+    monkeypatch.setattr(dev_jobs, "lock", owned)
+    monkeypatch.setattr(
+        complete_session,
+        "_render_complete_session_unlocked",
+        lambda *a, **k: {"dry_run": True, "render_identity_sha256": "a" * 64},
+    )
+    with pytest.raises(OCFError, match="existing complete-session"):
+        complete_session.render_complete_session("fixture", output=output)
+    assert output.is_dir()
+    assert (output / "master.wav").is_file()
+
+
+def test_concurrent_identical_destination_has_one_owner(monkeypatch, tmp_path):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    output = tmp_path / "concurrent-output"
+    entered, release = Event(), Event()
+    calls = []
+
+    def render(*args, **kwargs):
+        calls.append(1)
+        entered.set()
+        assert release.wait(5)
+        return {"dry_run": False, "output_directory": str(output)}
+
+    monkeypatch.setattr(complete_session, "_render_complete_session_unlocked", render)
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        first = pool.submit(complete_session.render_complete_session, "fixture", output=output)
+        assert entered.wait(5)
+        with pytest.raises(OCFError, match="already being rendered"):
+            complete_session.render_complete_session("fixture", output=output)
+        release.set()
+        assert first.result(timeout=5)["output_directory"] == str(output)
+    assert calls == [1]
+
+
+def test_output_lock_is_released_after_interrupted_owner(monkeypatch, tmp_path):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    output = tmp_path / "reentry-output"
+    calls = []
+
+    def render(*args, **kwargs):
+        calls.append(1)
+        if len(calls) == 1:
+            raise RuntimeError("simulated interrupted render")
+        return {"dry_run": False, "output_directory": str(output)}
+
+    monkeypatch.setattr(complete_session, "_render_complete_session_unlocked", render)
+    with pytest.raises(RuntimeError, match="simulated interrupted"):
+        complete_session.render_complete_session("fixture", output=output)
+    assert complete_session.render_complete_session("fixture", output=output)[
+        "output_directory"
+    ] == str(output)
+    assert calls == [1, 1]
+
+
+def test_stale_pid_text_does_not_impersonate_kernel_lock_owner(monkeypatch, tmp_path):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    lock_path = tmp_path / "work/logs/jobs/complete-session-output-fixture.lock"
+    lock_path.parent.mkdir(parents=True)
+    stale = b'{"pid": 2147483647, "started_at": "before-reboot"}\n'
+    lock_path.write_bytes(stale)
+    with dev_jobs.lock("complete-session-output-fixture", wait=False) as acquired:
+        assert acquired
+    assert lock_path.read_bytes() == stale
 
 
 @pytest.mark.parametrize("source_mode", [None, "recording", "hybrid"])
