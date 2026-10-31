@@ -2087,6 +2087,12 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
+      "example_sha256": "553718d9d99f3b121e39663d9b71a13409436c09142089e03a1304584c8432a8",
+      "schema": "localized-function.schema.json",
+      "source": "examples/contracts.json#/localized-function.schema.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
       "example_sha256": "0d4301477945fcdf01f9da80d1b68d4ff01ac5f9ee9c76faeb76855edb619e3a",
       "schema": "mix-profile.schema.json",
       "source": "examples/contracts.json#/mix-profile.schema.json",
@@ -2217,8 +2223,9 @@
     "schemas/function.schema.json": "b3bbc6e5415146af47c98a45d848b5bd625a3ef92015ed1fa4cb5b107fe08fcc",
     "schemas/functional-metadata.schema.json": "e8bcf6a722735269065ef8c308ac03e6a4dcae6210538209dec87d738a0d072a",
     "schemas/hplus-review-selection.schema.json": "2e65fa5465bd6a70185dbcbb5ae3d933b81e2e7034ba17b4699b7998a392ac19",
-    "schemas/locale-manifest.schema.json": "3d1188d454415a4b111beca2545ed0627e89b112943ab523e81e632c3e1558b6",
+    "schemas/locale-manifest.schema.json": "f352c493429c07707427784522bbec47ae249ef0654da801b9bf954c56160a24",
     "schemas/locale-resource.schema.json": "1573a212f7aad08201444d34f7f10b7c035307f30ea713f6d1897dfe72dab7a7",
+    "schemas/localized-function.schema.json": "4f7eb8e0ced12e5c75305227e8c22058e6e7d0f1fb0606092a96e93036543643",
     "schemas/mix-profile.schema.json": "05ac30c768cb95eb76f6cb300fcc29e20499c2c36a0a4b5692d169174050b40b",
     "schemas/narration-package.schema.json": "8a9e55379eec1481cdde5fbfa55b91af471dc45fe0ae30c64da36ab5d9b1a15d",
     "schemas/narration-sources.schema.json": "5c084f128351d6a2a879b5a971007cbc9efe3fb269deb3eeb12832895e729c3e",

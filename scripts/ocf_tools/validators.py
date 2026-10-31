@@ -29,6 +29,8 @@ from .indexes import (
     load_yaml_file,
 )
 from .locale import (
+    CANONICAL_LOCALE,
+    NARRATION_DOMAIN,
     LocaleCatalog,
     LocalizationError,
     document_key_usage,
@@ -1045,6 +1047,7 @@ def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationRes
 
     manifest_schema = _load_schema("locale-manifest.schema.json")
     resource_schema = _load_schema("locale-resource.schema.json")
+    function_resource_schema = _load_schema("localized-function.schema.json")
     canonical = catalog.canonical
     commands = known_commands()
 
@@ -1072,8 +1075,62 @@ def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationRes
         for resource in pack.manifest.get("resources") or []:
             filename = str(resource.get("file", ""))
             data = load_yaml_file(Path(pack.path) / filename) if pack.path else {}
-            for message in validate_against_schema(data, resource_schema):
+            function_resource = resource.get("domain") == "function"
+            schema = function_resource_schema if function_resource else resource_schema
+            for message in validate_against_schema(data, schema):
                 result.add("error", "locale-resource-schema", message, f"{target}/{filename}")
+            if function_resource:
+                function_ids = {record.id for record in catalog.function_records()}
+                if data.get("locale") != locale or data.get("function_id") not in function_ids:
+                    result.add(
+                        "error",
+                        "localized-function-identity",
+                        "localized function ID/locale does not match a registered function and locale",
+                        f"{target}/{filename}",
+                    )
+                if not filename.startswith(str(data.get("function_id", "")) + "-"):
+                    result.add(
+                        "error",
+                        "localized-function-filename",
+                        "localized function filename must begin with its stable ID and readable title",
+                        f"{target}/{filename}",
+                    )
+                localized_fields = [data.get("title"), data.get("description")]
+                activation = data.get("activation") or {}
+                localized_fields.extend(
+                    activation.get(key) for key in ("display_cue", "spoken_cue")
+                )
+                if locale == CANONICAL_LOCALE:
+                    invalid = any(
+                        not isinstance(value, dict) or value.get("source") != "function-yaml"
+                        for value in localized_fields
+                    )
+                    if invalid:
+                        result.add(
+                            "error",
+                            "canonical-localized-function-authority",
+                            "en-US title/description/cues must reference function YAML; do not create a second English authority",
+                            f"{target}/{filename}",
+                        )
+                elif any(
+                    not isinstance(value, dict) or "text" not in value for value in localized_fields
+                ):
+                    result.add(
+                        "error",
+                        "localized-function-field-missing",
+                        "non-canonical locales require reviewed localized title, description, and cue text",
+                        f"{target}/{filename}",
+                    )
+                entry_pack = {
+                    "schema_version": "1.0",
+                    "locale": locale,
+                    "domain": NARRATION_DOMAIN,
+                    "entries": data.get("entries", {}),
+                }
+                for message in validate_against_schema(entry_pack, resource_schema):
+                    result.add(
+                        "error", "locale-resource-schema", message, f"{target}/{filename}#entries"
+                    )
 
         for key, entry in pack.entries.items():
             where = f"{target}/{entry.file or '?'}#{key}"
