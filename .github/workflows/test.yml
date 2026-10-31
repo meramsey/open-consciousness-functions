@@ -112,7 +112,7 @@ jobs:
       - name: Run isolated unit contracts with Windows interrupt diagnostics
         if: runner.os == 'Windows'
         run: >-
-          python -c "import sys, pytest; result=pytest.main(['-m','unit','-n','0','-vv','--full-trace','--junitxml=.ocf-work/logs/pytest-results.xml']); print('PYTEST_MAIN_RETURN_CODE='+str(int(result)), flush=True); raise SystemExit(int(result))"
+          python -c "import atexit, os, sys, pytest; atexit.register(lambda: print('PYTEST_PROCESS_ATEXIT pid='+str(os.getpid()), flush=True)); result=pytest.main(['-m','unit','-n','0','-vv','--full-trace','--junitxml=.ocf-work/logs/pytest-results.xml']); print('PYTEST_MAIN_RETURN_CODE='+str(int(result))+' pid='+str(os.getpid()), flush=True); raise SystemExit(int(result))"
       - name: Report unit failure details
         if: failure()
         env:

@@ -41,12 +41,35 @@ def test_linked_worktree_uses_common_project_workspace(tmp_path, monkeypatch):
     (worktree / ".ocf-work").mkdir()
     (common_git / "worktrees").mkdir(parents=True, exist_ok=True)
     (git_dir / "commondir").write_text("../..\n", encoding="utf-8")
-    (worktree / ".git").write_text(f"gitdir: {git_dir}\n", encoding="utf-8")
+    pointer = os.path.relpath(git_dir, worktree)
+    (worktree / ".git").write_text(f"gitdir: {pointer}\n", encoding="utf-8")
     monkeypatch.setattr(paths, "REPO_ROOT", worktree)
     monkeypatch.delenv("OCF_WORK_DIR", raising=False)
     assert paths.canonical_project_root() == project
     assert paths.work_root() == project / ".ocf-work"
     assert str(worktree / ".ocf-work") in paths.workspace_report()["legacy_nested_workspaces"]
+
+
+@pytest.mark.unit
+def test_malformed_git_pointer_falls_back_to_checkout_root(tmp_path, monkeypatch):
+    checkout = tmp_path / "checkout"
+    checkout.mkdir()
+    (checkout / ".git").write_text("", encoding="utf-8")
+    monkeypatch.setattr(paths, "REPO_ROOT", checkout)
+    assert paths.canonical_project_root() == checkout
+
+
+@pytest.mark.unit
+def test_workspace_report_keeps_paths_when_disk_usage_is_unavailable(monkeypatch, tmp_path):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "private-work"))
+
+    def unavailable(path):
+        raise PermissionError("fixture filesystem denies usage query")
+
+    monkeypatch.setattr(paths.shutil, "disk_usage", unavailable)
+    report = paths.workspace_report()
+    assert report["workspace"] == str((tmp_path / "private-work").resolve())
+    assert report["filesystem"] is None
 
 
 def test_workspace_override_and_joined_paths_are_validated(monkeypatch):
