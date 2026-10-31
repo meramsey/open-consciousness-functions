@@ -29,8 +29,15 @@ def test_tags_classify_provenance_without_claiming_release_rights(monkeypatch):
         "source": {"format": "manual"},
         "template": {"id": "fixture", "origin": "original-ocf"},
     }
-    tags = ab._resolve_tags(manifest, original, {"timing_mode": "measured"}, {"title": "Override"})
+    tags = ab._resolve_tags(
+        manifest,
+        original,
+        {"timing_mode": "measured"},
+        {"title": "Override"},
+        voice_profile_id="OCF-VOICE-9100",
+    )
     assert tags["title"] == "Override" and tags["album"] == "Café"
+    assert tags["OCF_VOICE_PROFILE"] == "OCF-VOICE-9100"
     assert tags["OCF_COMMAND"] == "PLUS-FOCUS" and tags["OCF_SESSION_TEMPLATE"] == "fixture"
     assert (
         "committable" not in tags["comment"] and "rights clearance are separate" in tags["comment"]
@@ -377,12 +384,18 @@ def test_build_overwrite_false_protects_all_planned_outputs_before_tts(build_bou
 
 
 @pytest.mark.parametrize("formats", [None, ["mp3"], [], ["wav", "wav", "flac"]])
-def test_build_master_is_wav_independent_of_selected_derivatives(build_boundary, formats):
+@pytest.mark.parametrize(
+    ("voice", "expected_voice"),
+    [("profile", "profile"), ({"profile_id": "OCF-VOICE-9100"}, "OCF-VOICE-9100")],
+)
+def test_build_master_is_wav_independent_of_selected_derivatives(
+    build_boundary, formats, voice, expected_voice
+):
     f = build_boundary
     result = ab.build(
         "fixture",
         formats=formats,
-        voice="profile",
+        voice=voice,
         locale="fr",
         strict=False,
         recordings="recordings.yaml",
@@ -406,6 +419,7 @@ def test_build_master_is_wav_independent_of_selected_derivatives(build_boundary,
     )
     assert kwargs["fit"] and kwargs["flow"] and kwargs["even_counts"]
     assert f.calls[-1][0] == "manifest"
+    assert f.calls[-1][2]["audio_manifest"]["voice_profile"] == expected_voice
 
 
 def test_failed_derivative_keeps_usable_master_and_manifest(monkeypatch, build_boundary, capsys):
