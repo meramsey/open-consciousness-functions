@@ -271,6 +271,17 @@ remains at 58 functions.
       growth in selected regions; do not present unverified physiological
       outcomes as established medical effects.
 
+## Post-v1.0 — Per-state narration intelligibility
+
+- [ ] Add explicit, opt-in foreground/background preferences per semantic
+      state, including background level and speech-aware ducking depth, attack,
+      and release. Preserve stereo/binaural relationships with linked-channel
+      gain; retain current defaults unless separately approved. Keep user-level
+      overrides distinct from immutable DSP/profile locks, version every
+      approved successor, and require measured QC plus human listening before
+      promotion. Do not apply a Focus 11 preference to Focus 10, sleep,
+      transitions, or closure by inheritance.
+
 ## Non-goals
 
 - Redistribute or reconstruct Monroe audio.
