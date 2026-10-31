@@ -107,7 +107,22 @@ jobs:
       - name: Install development dependencies
         run: python -m pip install -r requirements-dev.txt
       - name: Run isolated unit contracts
+        if: runner.os != 'Windows'
         run: python -m pytest -m unit -n 2 --dist loadfile --junitxml=.ocf-work/logs/pytest-results.xml
+      - name: Run isolated unit contracts with Windows interrupt diagnostics
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $python = (Get-Command python.exe -ErrorAction Stop).Source
+          $stdout = Join-Path $env:RUNNER_TEMP 'pytest-unit.stdout.log'
+          $stderr = Join-Path $env:RUNNER_TEMP 'pytest-unit.stderr.log'
+          $process = Start-Process -FilePath $python -ArgumentList @('-m', 'pytest', '-m', 'unit', '-n', '0', '-vv', '--full-trace', '--junitxml=.ocf-work/logs/pytest-results.xml') -Wait -PassThru -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+          if (-not (Test-Path $stdout)) { throw 'pytest stdout capture was not created' }
+          Get-Content $stdout
+          if (Test-Path $stderr) { Get-Content $stderr }
+          $pytestProcessExitCode = $process.ExitCode
+          Write-Host "PYTEST_PROCESS_EXIT_CODE=$pytestProcessExitCode"
+          exit $pytestProcessExitCode
       - name: Report unit failure details
         if: failure()
         env:
@@ -154,7 +169,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install supported codec and speech integration tools
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg espeak-ng
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg espeak-ng poppler-utils
       - uses: actions/setup-node@v4
         with:
           node-version: "22"

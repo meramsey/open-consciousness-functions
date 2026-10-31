@@ -61,6 +61,23 @@ unverified system packages. `doctor --json --workflow NAME` distinguishes core,
 selected-workflow, and optional tools. Native engines and ffmpeg are integration
 dependencies, not unit-test dependencies.
 
+## Retiring worktrees and local artifacts
+
+Before removing a linked worktree, inspect `git worktree list --porcelain`, the
+worktree's status, its branch/head, open PR references, and active jobs. Require
+a clean tree and proof the source is integrated: an ancestry check for normal
+merges, or the exact merged PR head and changed-file scope for squash merges.
+Use `git worktree remove PATH` without `--force`; if it refuses, preserve the
+worktree and investigate. Do not delete the branch or remote ref as a side effect.
+
+Worktree `.ocf-work/` directories can contain private voice assets, recordings,
+rendered editions, immutable manifests, coverage receipts, or failed-stage
+diagnostics even when Git reports a clean tree. Inventory those separately and
+verify hashes before moving or removing anything. Use `workspace clean --dry-run`
+for marked temporary scratch only; never use `git clean -xfd` or remove a whole
+workspace to reclaim test/cache space. Preserve ambiguous assets and retain a
+path/hash cleanup receipt for any authorized private-workspace migration.
+
 ## Code and data entry points
 
 - CLI entry: `scripts/ocf.py` delegates to `ocf_tools.cli.main`.

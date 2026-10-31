@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import errno
+import json
 import os
 import subprocess
 import time
@@ -13,10 +14,69 @@ from ocf_tools.utils import write_text_atomic
 
 def test_default_and_relative_override_are_resolved_from_repository(monkeypatch):
     monkeypatch.delenv("OCF_WORK_DIR", raising=False)
-    assert paths.work_root() == paths.REPO_ROOT / ".ocf-work"
+    assert paths.work_root() == paths.canonical_project_root() / ".ocf-work"
     monkeypatch.setenv("OCF_WORK_DIR", "private-work")
-    assert paths.work_root() == (paths.REPO_ROOT / "private-work").resolve()
+    assert paths.work_root() == (paths.canonical_project_root() / "private-work").resolve()
     assert paths.work_path("renders", "auditions").is_relative_to(paths.work_root())
+
+
+def test_workspace_status_cli_reports_resolved_paths(monkeypatch, tmp_path, capsys):
+    from ocf_tools.cli import main
+
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "private-work"))
+    assert main(["workspace", "status", "--json"]) == 0
+    report = json.loads(capsys.readouterr().out)
+    assert report["project_identity"] == str(paths.canonical_project_root())
+    assert report["workspace"] == str((tmp_path / "private-work").resolve())
+    assert set(report["areas"]) == {"tmp", "cache", "renders", "logs"}
+
+
+@pytest.mark.unit
+def test_ordinary_checkout_is_its_own_canonical_project_root(tmp_path):
+    checkout = tmp_path / "checkout"
+    (checkout / ".git").mkdir(parents=True)
+    assert paths.canonical_project_root(checkout) == checkout
+
+
+def test_linked_worktree_uses_common_project_workspace(tmp_path, monkeypatch):
+    project = tmp_path / "project"
+    worktree = project / ".ocf-work" / "feature-worktree"
+    common_git = project / ".git"
+    git_dir = common_git / "worktrees" / "feature-worktree"
+    for directory in (project / "schemas", project / "functions", worktree, git_dir):
+        directory.mkdir(parents=True, exist_ok=True)
+    (worktree / ".ocf-work").mkdir()
+    (common_git / "worktrees").mkdir(parents=True, exist_ok=True)
+    (git_dir / "commondir").write_text("../..\n", encoding="utf-8")
+    pointer = os.path.relpath(git_dir, worktree)
+    (worktree / ".git").write_text(f"gitdir: {pointer}\n", encoding="utf-8")
+    monkeypatch.setattr(paths, "REPO_ROOT", worktree)
+    monkeypatch.delenv("OCF_WORK_DIR", raising=False)
+    assert paths.canonical_project_root() == project
+    assert paths.work_root() == project / ".ocf-work"
+    assert str(worktree / ".ocf-work") in paths.workspace_report()["legacy_nested_workspaces"]
+
+
+@pytest.mark.unit
+def test_malformed_git_pointer_falls_back_to_checkout_root(tmp_path, monkeypatch):
+    checkout = tmp_path / "checkout"
+    checkout.mkdir()
+    (checkout / ".git").write_text("", encoding="utf-8")
+    monkeypatch.setattr(paths, "REPO_ROOT", checkout)
+    assert paths.canonical_project_root() == checkout
+
+
+@pytest.mark.unit
+def test_workspace_report_keeps_paths_when_disk_usage_is_unavailable(monkeypatch, tmp_path):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "private-work"))
+
+    def unavailable(path):
+        raise PermissionError("fixture filesystem denies usage query")
+
+    monkeypatch.setattr(paths.shutil, "disk_usage", unavailable)
+    report = paths.workspace_report()
+    assert report["workspace"] == str((tmp_path / "private-work").resolve())
+    assert report["filesystem"] is None
 
 
 def test_workspace_override_and_joined_paths_are_validated(monkeypatch):
@@ -28,6 +88,18 @@ def test_workspace_override_and_joined_paths_are_validated(monkeypatch):
         paths.work_path("tmp", "..", "..", "outside")
     with pytest.raises(ValueError, match="unknown OCF work area"):
         paths.work_path("arbitrary")
+
+
+@pytest.mark.unit
+def test_workspace_override_rejects_existing_file(tmp_path, monkeypatch):
+    configured = tmp_path / "not-a-directory"
+    configured.write_text("preserve this file", encoding="utf-8")
+    monkeypatch.setenv("OCF_WORK_DIR", str(configured))
+
+    with pytest.raises(RuntimeError, match="not a directory"):
+        paths.work_root()
+
+    assert configured.read_text(encoding="utf-8") == "preserve this file"
 
 
 @pytest.mark.unit
@@ -119,6 +191,8 @@ def test_temp_paths_are_marked_scoped_collision_safe_and_recoverable(monkeypatch
     assert paths.unique_run_id("complete-session") != paths.unique_run_id("complete-session")
     assert first.is_relative_to(paths.work_path("tmp"))
     assert (first / ".ocf-owned").is_file()
+    marker = json.loads((first / ".ocf-owned").read_text(encoding="utf-8"))
+    assert marker["owner_pid"] == os.getpid()
     (first / "render-context.json").write_text('{"status":"interrupted"}\n')
     assert (first / "render-context.json").is_file()
     old_time = time.time() - 60
@@ -129,6 +203,89 @@ def test_temp_paths_are_marked_scoped_collision_safe_and_recoverable(monkeypatch
     removed = paths.cleanup_workspace(older_than_seconds=0)
     assert first in removed and second in removed
     assert not first.exists() and not second.exists()
+
+
+def test_cleanup_skips_a_stale_temp_directory_owned_by_live_foreign_pid(monkeypatch, tmp_path):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "ocf-work"))
+    scratch = paths.workspace_temp_directory()
+    (scratch / ".ocf-owned").write_text(
+        json.dumps({"schema_version": "1.0", "owner_pid": 4242, "token": "live"}),
+        encoding="utf-8",
+    )
+    observed = []
+
+    def live_foreign_pid(pid, signal):
+        observed.append((pid, signal))
+
+    monkeypatch.setattr(paths.os, "kill", live_foreign_pid)
+    old_time = time.time() - 3600
+    os.utime(scratch, (old_time, old_time))
+    assert scratch not in paths.cleanup_workspace(older_than_seconds=1, dry_run=True)
+    assert paths.cleanup_workspace_temp(scratch) is False
+    assert scratch.is_dir()
+    assert observed == [(4242, 0), (4242, 0)]
+
+
+@pytest.mark.unit
+def test_workspace_temp_file_normalizes_unsafe_prefix(monkeypatch, tmp_path):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "ocf-work"))
+    descriptor, filename = paths.workspace_temp_file(prefix="unsafe prefix", suffix=".wav")
+    try:
+        assert filename.name.startswith("ocf-unsafe-prefix")
+        assert filename.suffix == ".wav"
+    finally:
+        os.close(descriptor)
+    assert paths.cleanup_workspace_temp(filename.parent)
+
+
+@pytest.mark.unit
+def test_cleanup_workspace_rejects_invalid_ages_and_handles_missing_temp_root(
+    monkeypatch, tmp_path
+):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "ocf-work"))
+    with pytest.raises(ValueError, match="nonnegative"):
+        paths.cleanup_workspace(older_than_seconds=-1)
+    with pytest.raises(ValueError, match="nonnegative"):
+        paths.cleanup_workspace(older_than_seconds=float("nan"))
+    assert paths.cleanup_workspace() == []
+
+
+@pytest.mark.unit
+def test_publish_workspace_temp_directory_rejects_unowned_source(monkeypatch, tmp_path):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "ocf-work"))
+    unowned = paths.work_path("tmp", "ocf-unowned")
+    unowned.mkdir(parents=True)
+    with pytest.raises(ValueError, match="not an OCF-owned"):
+        paths.publish_workspace_temp_directory(unowned, tmp_path / "published")
+
+
+@pytest.mark.parametrize(
+    "probe_error,expected",
+    [(ProcessLookupError(), False), (PermissionError(), True)],
+)
+def test_foreign_owner_probe_distinguishes_dead_and_inaccessible_pids(
+    monkeypatch, tmp_path, probe_error, expected
+):
+    marker = tmp_path / ".ocf-owned"
+    marker.write_text(
+        json.dumps({"schema_version": "1.0", "owner_pid": 987654321, "token": "fixture"}),
+        encoding="utf-8",
+    )
+
+    def probe(pid, signal):
+        raise probe_error
+
+    monkeypatch.setattr(paths.os, "kill", probe)
+    assert paths._active_temp_owner(marker) is expected
+
+
+@pytest.mark.unit
+def test_legacy_and_malformed_owner_markers_remain_age_cleanable(tmp_path):
+    marker = tmp_path / ".ocf-owned"
+    marker.write_text("legacy-uuid-token\n", encoding="ascii")
+    assert paths._active_temp_owner(marker) is False
+    marker.write_text("{not-json", encoding="utf-8")
+    assert paths._active_temp_owner(marker) is False
 
 
 def test_cleanup_rejects_unowned_files_and_respects_retention(monkeypatch, tmp_path):
@@ -217,11 +374,14 @@ def test_workspace_clean_cli_removes_only_old_marked_scratch(monkeypatch, tmp_pa
     unrelated.mkdir()
     old_time = old.stat().st_mtime - 7200
     os.utime(old, (old_time, old_time))
-    assert main(["workspace", "clean", "--older-than-hours", "1", "--dry-run"]) == 0
+    assert main(["workspace", "clean", "--older-than-hours", "1", "--dry-run", "--json"]) == 0
+    preview = json.loads(capsys.readouterr().out)
+    assert preview["dry_run"] is True and str(old) in preview["paths"]
     assert old.exists() and unrelated.exists()
-    assert main(["workspace", "clean", "--older-than-hours", "1"]) == 0
+    assert main(["workspace", "clean", "--older-than-hours", "1", "--json"]) == 0
+    cleaned = json.loads(capsys.readouterr().out)
+    assert cleaned["dry_run"] is False and str(old) in cleaned["paths"]
     assert not old.exists() and unrelated.exists()
-    assert "Cleaned" in capsys.readouterr().out
 
 
 def test_failed_workspace_run_keeps_error_in_caller_environment(monkeypatch, tmp_path):
