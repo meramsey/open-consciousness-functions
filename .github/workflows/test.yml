@@ -111,8 +111,14 @@ jobs:
         run: python -m pytest -m unit -n 2 --dist loadfile --junitxml=.ocf-work/logs/pytest-results.xml
       - name: Run isolated unit contracts with Windows interrupt diagnostics
         if: runner.os == 'Windows'
-        shell: cmd
-        run: python -m pytest -m unit -n 0 -vv --full-trace --junitxml=.ocf-work/logs/pytest-results.xml
+        shell: pwsh
+        run: |
+          $PSNativeCommandUseErrorActionPreference = $false
+          $python = (Get-Command python.exe -ErrorAction Stop).Source
+          & $python -m pytest -m unit -n 0 -vv --full-trace --junitxml=.ocf-work/logs/pytest-results.xml
+          $pytestProcessExitCode = $LASTEXITCODE
+          Write-Host "PYTEST_PROCESS_EXIT_CODE=$pytestProcessExitCode"
+          exit $pytestProcessExitCode
       - name: Report unit failure details
         if: failure()
         env:
