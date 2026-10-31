@@ -901,6 +901,104 @@ def _build_stage_report(doc: dict, render: dict, dsp: dict) -> list[dict[str, An
     return report
 
 
+def _complete_session_identity(
+    function_id: str,
+    session_plan: dict[str, Any],
+    mix_profile: dict[str, Any] | None,
+    **request: Any,
+) -> str:
+    """Fingerprint the resolved inputs that define a reusable session output."""
+    from .paths import REPO_ROOT
+
+    files = (
+        Path(__file__),
+        REPO_ROOT / "scripts/ocf_tools/audio_build.py",
+        REPO_ROOT / "scripts/ocf_tools/semantic_dsp.py",
+        REPO_ROOT / "scripts/ocf_tools/voice.py",
+        REPO_ROOT / "scripts/ocf_tools/narration_first.py",
+        REPO_ROOT / "scripts/ocf_tools/speech_cache.py",
+        REPO_ROOT / "scripts/ocf_tools/chatterbox_backend.py",
+    )
+    voice_id = session_plan.get("tts_plan", {}).get("voice_profile", {}).get("id")
+    voice_profile = None
+    if voice_id:
+        from .indexes import load_voice_profiles
+
+        voice_profile = next(
+            (item for item in load_voice_profiles() if item["id"] == voice_id), None
+        )
+
+    def optional_hash(value):
+        if value is None:
+            return None
+        path = Path(value).expanduser()
+        return sha256_of_file(path) if path.is_file() else None
+
+    identity = {
+        "schema_version": "1",
+        "function_id": function_id,
+        "resolved_session_plan": session_plan,
+        "voice_profile": voice_profile,
+        "mix_profile": mix_profile,
+        "request": {
+            key: value
+            for key, value in request.items()
+            if key not in {"narration_sources", "artwork_file", "dsp_profile"}
+        },
+        "narration_sources_sha256": optional_hash(request.get("narration_sources")),
+        "artwork_file_sha256": optional_hash(request.get("artwork_file")),
+        "implementation_sha256": {
+            str(path.relative_to(REPO_ROOT)): sha256_of_file(path) for path in files
+        },
+    }
+    try:
+        encoded = json.dumps(identity, sort_keys=True, ensure_ascii=False, allow_nan=False).encode(
+            "utf-8"
+        )
+    except (TypeError, ValueError) as exc:
+        raise OCFError(f"complete-session request identity is not canonical JSON: {exc}") from exc
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def _verified_existing_complete_session(output: Path, identity: str) -> dict[str, Any]:
+    """Return a fully hash-verified matching output; never adopt a partial stage."""
+    if output.is_symlink() or not output.is_dir():
+        raise OCFError(f"existing complete-session output is not a regular directory: {output}")
+    report_path = output / "session-report.json"
+    if report_path.is_symlink() or not report_path.is_file():
+        raise OCFError(f"existing complete-session output is incomplete: {output}")
+    try:
+        manifest = json.loads(report_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        raise OCFError(f"existing complete-session report is unreadable: {output}") from exc
+    if manifest.get("render_identity_sha256") != identity:
+        raise OCFError(
+            f"existing complete-session output has a different or legacy identity: {output}"
+        )
+    artifacts = manifest.get("artifacts")
+    if not isinstance(artifacts, dict) or not {"wav", "background_stem", "transcript"} <= set(
+        artifacts
+    ):
+        raise OCFError(
+            f"existing complete-session output has an incomplete artifact manifest: {output}"
+        )
+    for item in artifacts.values():
+        if not isinstance(item, dict):
+            raise OCFError("existing complete-session artifact entry is malformed")
+        relative = Path(item.get("path", ""))
+        if relative.is_absolute() or ".." in relative.parts:
+            raise OCFError("existing complete-session artifact path escapes its output directory")
+        path = output / relative
+        if (
+            path.is_symlink()
+            or not path.is_file()
+            or path.stat().st_size != item.get("size_bytes")
+            or sha256_of_file(path) != item.get("sha256")
+        ):
+            raise OCFError(f"existing complete-session artifact failed verification: {relative}")
+    return {"dry_run": False, "reused": True, "output_directory": str(output), "manifest": manifest}
+
+
 def _render_complete_session_unlocked(
     function_id: str,
     *,
@@ -998,9 +1096,30 @@ def _render_complete_session_unlocked(
         }
     elif narration_source in ("recording", "hybrid"):
         raise OCFError("recording/hybrid mode requires --narration-sources")
+    render_identity_sha256 = _complete_session_identity(
+        function_id,
+        session_plan,
+        mix_profile,
+        locale=locale,
+        voice=voice,
+        pacing=pacing,
+        template=template,
+        dsp_profile=dsp_profile,
+        voice_gain=voice_gain,
+        background_gain=background_gain,
+        sample_rate=sample_rate,
+        overrides=overrides,
+        narration_sources=narration_sources,
+        narration_source=narration_source,
+        audition_version=audition_version,
+        artwork_theme=artwork_theme,
+        artwork_file=artwork_file,
+        created_at=created_at.isoformat() if created_at else None,
+    )
     if dry_run:
         return {
             "dry_run": True,
+            "render_identity_sha256": render_identity_sha256,
             "session_plan": session_plan,
             **({"mix_profile": mix_profile} if mix_profile is not None else {}),
         }
@@ -1220,6 +1339,7 @@ def _render_complete_session_unlocked(
         manifest = {
             "schema_version": "1.0",
             "render_type": "complete-session-audition",
+            "render_identity_sha256": render_identity_sha256,
             "function_id": function_id,
             "audio_implementation_id": None,
             **(
@@ -1401,4 +1521,7 @@ def render_complete_session(*args, **kwargs) -> dict[str, Any]:
         if not acquired:
             raise OCFError(f"complete-session output is already being rendered: {target}")
         kwargs["output"] = target
+        if target.exists():
+            preview = _render_complete_session_unlocked(*args, **{**kwargs, "dry_run": True})
+            return _verified_existing_complete_session(target, preview["render_identity_sha256"])
         return _render_complete_session_unlocked(*args, **kwargs)
