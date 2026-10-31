@@ -4,6 +4,7 @@ import json
 
 import pytest
 from ocf_tools import voice_packs
+from ocf_tools.utils import OCFError
 
 pytestmark = pytest.mark.unit
 
@@ -59,6 +60,54 @@ def test_receipt_proof_rejects_unbound_or_invalid_inference(changes, reference):
 def test_receipt_proof_accepts_complete_matching_inference():
     assert voice_packs._receipt_proves_inference(receipt(), REFERENCE)
     assert not voice_packs._receipt_proves_inference(receipt(), "f" * 64)
+
+
+@pytest.mark.parametrize(
+    "case,match",
+    [
+        ("wrong-backend", "only chatterbox-nano"),
+        ("wrong-model", "model identifier differs"),
+        ("empty-text", "text must not be empty"),
+        ("no-interpreter", "optional environment is missing"),
+        ("missing-reference", "reference is missing or fails its checksum"),
+        ("reference-mismatch", "reference is missing or fails its checksum"),
+    ],
+)
+def test_synthesis_preflight_rejects_invalid_pack_without_subprocess(
+    monkeypatch, tmp_path, case, match
+):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    assets = tmp_path / "assets"
+    monkeypatch.setenv("OCF_VOICE_ASSETS", str(assets))
+    interpreter = tmp_path / "chatterbox-python"
+    interpreter.write_text("fake interpreter path; no subprocess is launched")
+    monkeypatch.setenv("OCF_CHATTERBOX_PYTHON", str(interpreter))
+    reference = assets / "OCF-VOICE-9899/reference.wav"
+    profile = {
+        "id": "OCF-VOICE-9899",
+        "backend": "chatterbox-nano",
+        "reference_audio": {
+            "model_identifier": "ResembleAI/chatterbox-nano",
+            "asset": "OCF-VOICE-9899/reference.wav",
+            "sha256": "a" * 64,
+        },
+    }
+    text = "A new utterance."
+    if case == "wrong-backend":
+        profile["backend"] = "piper"
+    elif case == "wrong-model":
+        profile["reference_audio"]["model_identifier"] = "other-model"
+    elif case == "empty-text":
+        text = "   "
+    elif case == "no-interpreter":
+        monkeypatch.delenv("OCF_CHATTERBOX_PYTHON")
+    elif case == "reference-mismatch":
+        reference.parent.mkdir(parents=True, exist_ok=True)
+        reference.write_bytes(b"different reference bytes")
+
+    monkeypatch.setattr(voice_packs, "_profile_for_synthesis", lambda _query: profile)
+    with pytest.raises(OCFError, match=match):
+        voice_packs.synthesize("OCF-VOICE-9899", text)
 
 
 def test_inference_receipts_ignores_corrupt_wrong_voice_and_failed_records(monkeypatch, tmp_path):
