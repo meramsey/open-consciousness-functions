@@ -1,9 +1,11 @@
 """Localized function metadata resources share the stable-ID locale catalog."""
 
+import shutil
 from types import SimpleNamespace
 
 import pytest
 from ocf_tools.locale import LocaleCatalog
+from ocf_tools.paths import REPO_ROOT
 from ocf_tools.validators import _load_schema, validate_against_schema, validate_locale_packs
 
 pytestmark = pytest.mark.unit
@@ -137,6 +139,22 @@ def test_function_filename_compatibility_uses_stable_id_not_title(tmp_path):
     data, _ = catalog.localized_function(FUNCTION_ID, "en-US")
     assert data["function_id"] == FUNCTION_ID
     assert "Empathize" not in catalog.packs["en-US"].localized_functions.keys()
+
+
+def test_noncanonical_locale_root_loads_its_sibling_function_registry(tmp_path):
+    root = tmp_path / "locales"
+    write_pack(root, function_resource())
+    source = REPO_ROOT / "functions/emotion/empathizing.yaml"
+    target = tmp_path / "functions/emotion/empathizing.yaml"
+    target.parent.mkdir(parents=True)
+    shutil.copyfile(source, target)
+    (tmp_path / "functions/notes.txt").write_text("not a function", encoding="utf-8")
+
+    catalog = LocaleCatalog(root)
+    localized, resolution = catalog.localized_function(FUNCTION_ID, "en-US", fallback=False)
+    assert localized["function_id"] == FUNCTION_ID
+    assert resolution.origin_locale == "en-US"
+    assert catalog.problems == []
 
 
 def test_function_metadata_alias_collision_is_reported_instead_of_shadowed(tmp_path):
