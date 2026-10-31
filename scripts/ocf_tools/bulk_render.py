@@ -537,7 +537,7 @@ def render_many(
     if isinstance(workers, bool) or not isinstance(workers, int) or workers < 1:
         raise OCFError("render worker limit must be a positive integer")
     if speech_cache_mode not in {"auto", "off", "refresh", "require-hit"}:
-        raise OCFError("speech_cache_mode must be auto, off or refresh")
+        raise OCFError("speech_cache_mode must be auto, off, refresh or require-hit")
     if fresh_synthesis and speech_cache_mode != "auto":
         raise OCFError("--fresh-synthesis cannot be combined with --speech-cache")
     requested_speech_cache_mode = "off" if fresh_synthesis else speech_cache_mode
