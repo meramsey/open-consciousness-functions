@@ -7,6 +7,7 @@ root from the project layout itself, so the CLI works from nested directories.
 from __future__ import annotations
 
 import errno
+import json
 import math
 import os
 import re
@@ -44,23 +45,68 @@ def resolve_data_root(
 REPO_ROOT = resolve_data_root(Path(__file__), os.environ.get("OCF_DATA_ROOT"))
 
 
+def canonical_project_root(repo_root: Path | None = None) -> Path:
+    """Resolve linked worktrees to their shared checkout without invoking Git."""
+    repo_root = (repo_root or REPO_ROOT).resolve()
+    marker = repo_root / ".git"
+    if marker.is_dir():
+        return repo_root
+    try:
+        line = marker.read_text(encoding="utf-8").splitlines()[0]
+        if not line.startswith("gitdir:"):
+            return repo_root
+        git_dir = Path(line.partition(":")[2].strip()).expanduser()
+        if not git_dir.is_absolute():
+            git_dir = repo_root / git_dir
+        git_dir = git_dir.resolve()
+        common_file = git_dir / "commondir"
+        common_dir = (git_dir / common_file.read_text(encoding="utf-8").strip()).resolve()
+        project = common_dir.parent
+        if (project / "schemas").is_dir() and (project / "functions").is_dir():
+            return project
+    except (OSError, IndexError, ValueError):
+        pass
+    return repo_root
+
+
 def work_root() -> Path:
     """Resolve OCF's private working root, relative overrides from the repository."""
+    project_root = canonical_project_root()
     override = os.environ.get("OCF_WORK_DIR")
     if override:
         configured = Path(override).expanduser()
-        candidate = (configured if configured.is_absolute() else REPO_ROOT / configured).resolve()
+        candidate = (
+            configured if configured.is_absolute() else project_root / configured
+        ).resolve()
     else:
-        candidate = (REPO_ROOT / ".ocf-work").resolve()
-    if candidate == Path(candidate.anchor) or candidate == REPO_ROOT:
+        candidate = (project_root / ".ocf-work").resolve()
+    if candidate == Path(candidate.anchor) or candidate in {project_root, REPO_ROOT.resolve()}:
         raise RuntimeError(
             "OCF_WORK_DIR must be a dedicated directory, not a filesystem or repository root"
         )
     if candidate.exists() and not candidate.is_dir():
         raise RuntimeError(f"OCF working path is not a directory: {candidate}")
-    if not override and not candidate.is_relative_to(REPO_ROOT):
+    if not override and not candidate.is_relative_to(project_root):
         raise RuntimeError("the default OCF working directory must remain inside the repository")
     return candidate
+
+
+def _active_temp_owner(marker: Path) -> bool:
+    """Treat a live foreign PID as active; legacy UUID markers remain age-cleanable."""
+    try:
+        metadata = json.loads(marker.read_text(encoding="utf-8"))
+        pid = metadata.get("owner_pid") if isinstance(metadata, dict) else None
+        if not isinstance(pid, int) or isinstance(pid, bool) or pid <= 0 or pid == os.getpid():
+            return False
+        try:
+            os.kill(pid, 0)
+        except ProcessLookupError:
+            return False
+        except PermissionError:
+            return True
+        return True
+    except (OSError, ValueError, TypeError):
+        return False
 
 
 def work_path(area: str, *parts: str) -> Path:
@@ -90,6 +136,40 @@ def ensure_workspace() -> dict[str, Path]:
     return layout
 
 
+def workspace_report() -> dict[str, Any]:
+    """Report canonical identity, configured workspace, areas, and legacy nested roots."""
+    project = canonical_project_root()
+    root = work_root()
+    areas = {}
+    for area in ("tmp", "cache", "renders", "logs"):
+        path = root / area
+        areas[area] = {
+            "path": str(path),
+            "exists": path.is_dir(),
+            "direct_entries": sum(1 for _ in path.iterdir()) if path.is_dir() else 0,
+        }
+    nested = []
+    worktrees = project / ".ocf-work"
+    if worktrees.is_dir():
+        for child in worktrees.iterdir():
+            if child.is_dir() and (child / ".git").is_file() and (child / ".ocf-work").is_dir():
+                nested.append(str(child / ".ocf-work"))
+    try:
+        disk = shutil.disk_usage(root)
+        disk_report = {"total_bytes": disk.total, "used_bytes": disk.used, "free_bytes": disk.free}
+    except OSError:
+        disk_report = None
+    return {
+        "project_identity": str(project),
+        "checkout": str(REPO_ROOT),
+        "workspace": str(root),
+        "workspace_override": os.environ.get("OCF_WORK_DIR"),
+        "areas": areas,
+        "legacy_nested_workspaces": nested,
+        "filesystem": disk_report,
+    }
+
+
 def workspace_temp_directory(prefix: str = "ocf-") -> Path:
     """Create a marked temporary directory owned by OCF under ``.ocf-work/tmp``."""
     layout = ensure_workspace()
@@ -97,7 +177,11 @@ def workspace_temp_directory(prefix: str = "ocf-") -> Path:
     if not safe_prefix.startswith("ocf-"):
         safe_prefix = "ocf-" + safe_prefix
     path = Path(tempfile.mkdtemp(prefix=safe_prefix, dir=layout["tmp"]))
-    (path / ".ocf-owned").write_text(uuid.uuid4().hex + "\n", encoding="ascii")
+    (path / ".ocf-owned").write_text(
+        json.dumps({"schema_version": "1.0", "owner_pid": os.getpid(), "token": uuid.uuid4().hex})
+        + "\n",
+        encoding="utf-8",
+    )
     return path
 
 
@@ -120,6 +204,8 @@ def cleanup_workspace_temp(path: str | Path, *, force: bool = False) -> bool:
     marker = target / ".ocf-owned"
     if not marker.is_file():
         raise ValueError(f"refusing to clean an unmarked OCF temporary directory: {target}")
+    if _active_temp_owner(marker):
+        return False
     retain = os.environ.get("OCF_KEEP_WORK", "").strip().lower() in {"1", "true", "yes", "on"}
     if retain and not force:
         return False
@@ -145,6 +231,7 @@ def cleanup_workspace(
             or not resolved.is_dir()
             or not resolved.name.startswith("ocf-")
             or not (resolved / ".ocf-owned").is_file()
+            or _active_temp_owner(resolved / ".ocf-owned")
             or resolved.stat().st_mtime > cutoff
         ):
             continue

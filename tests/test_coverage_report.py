@@ -41,6 +41,21 @@ def test_statement_and_branch_gates_are_independent_and_exclusions_fail():
     assert report.metrics(totals(lines=0, branches=0))["statement_percent"] == 0
 
 
+def test_compact_receipt_source_sha_is_validated(monkeypatch):
+    monkeypatch.setattr(
+        report.subprocess,
+        "run",
+        lambda *args, **kwargs: SimpleNamespace(stdout="a" * 40 + "\n"),
+    )
+    assert report.source_sha() == "a" * 40
+    monkeypatch.setattr(
+        report.subprocess,
+        "run",
+        lambda *args, **kwargs: SimpleNamespace(stdout="not-a-git-sha\n"),
+    )
+    assert report.source_sha() is None
+
+
 def test_existing_output_is_preserved_and_escape_is_rejected(tmp_path, monkeypatch):
     monkeypatch.setattr(report, "work_root", lambda: tmp_path)
     sentinel = tmp_path / "retained.log"
@@ -76,6 +91,7 @@ def test_context_reports_do_not_relabel_startup_as_unit_or_sum_contributions(
         encoding="utf-8",
     )
     monkeypatch.setattr(report, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(report, "source_sha", lambda: "a" * 40)
     output = tmp_path / "reports"
     output.mkdir()
     monkeypatch.chdir(tmp_path)
@@ -107,6 +123,8 @@ def test_context_reports_do_not_relabel_startup_as_unit_or_sum_contributions(
         '<testsuites><testsuite tests="2" failures="0" errors="0" skipped="0"/></testsuites>',
         encoding="utf-8",
     )
+    preexisting_detail = output / "combined.json"
+    preexisting_detail.write_text("keep historical detail\n", encoding="utf-8")
     monkeypatch.chdir(tmp_path.parent)
     summary = report.summarize(output, exit_code=0, elapsed=1)
     assert Path.cwd() == tmp_path.parent
@@ -118,6 +136,53 @@ def test_context_reports_do_not_relabel_startup_as_unit_or_sum_contributions(
     assert unit["covered_lines"] == integration["covered_lines"] == 2
     assert unit["covered_branches"] == integration["covered_branches"] == 1
     assert summary["unit_100_percent_achieved"] is False
+    assert preexisting_detail.read_text(encoding="utf-8") == "keep historical detail\n"
+    assert not list(output.glob(".combined-*.json"))
+    import shutil
+
+    detailed_output = tmp_path / "detailed-reports"
+    shutil.copytree(output, detailed_output)
+    (detailed_output / "combined.json").unlink()
+    detailed = report.summarize(detailed_output, exit_code=0, elapsed=1, retain_detail_json=True)
+    assert detailed["reports"] == summary["reports"]
+    assert (detailed_output / "combined.json").is_file()
+    assert (
+        json.loads((detailed_output / "combined.json").read_text())["meta"]["show_contexts"] is True
+    )
+
+
+def test_failed_compact_export_retains_partial_report(tmp_path, monkeypatch):
+    from coverage import Coverage
+
+    root = tmp_path / "repo"
+    root.mkdir()
+    (root / "scripts/ocf_tools").mkdir(parents=True)
+    (root / "scripts/tools").mkdir()
+    (root / "pyproject.toml").write_text("[tool.coverage.run]\nbranch = true\n")
+    directory = root / "coverage"
+    directory.mkdir()
+    coverage_data = Coverage(data_file=str(directory / ".coverage"), config_file=False)
+    coverage_data.erase()
+    coverage_data.save()
+    (directory / "collection-serial.json").write_text(
+        json.dumps([{"nodeid": "tests/test.py::test_one", "unit": True, "integration": False}])
+    )
+    (directory / "tests.xml").write_text(
+        '<testsuites><testsuite tests="1" failures="0" errors="0" skipped="0"/></testsuites>'
+    )
+    monkeypatch.setattr(report, "REPO_ROOT", root)
+    original = Coverage.json_report
+
+    def partial_then_fail(self, *args, **kwargs):
+        Path(kwargs["outfile"]).write_text('{"partial": true}')
+        raise OSError("fixture report failure")
+
+    monkeypatch.setattr(Coverage, "json_report", partial_then_fail)
+    with pytest.raises(OSError, match="fixture report failure"):
+        report.summarize(directory, exit_code=0, elapsed=1)
+    details = list(directory.glob(".combined-*.json"))
+    assert len(details) == 1 and json.loads(details[0].read_text()) == {"partial": True}
+    monkeypatch.setattr(Coverage, "json_report", original)
 
 
 @pytest.mark.parametrize("exit_code", [0, 1])
