@@ -84,6 +84,18 @@ def test_workspace_override_and_joined_paths_are_validated(monkeypatch):
 
 
 @pytest.mark.unit
+def test_workspace_override_rejects_existing_file(tmp_path, monkeypatch):
+    configured = tmp_path / "not-a-directory"
+    configured.write_text("preserve this file", encoding="utf-8")
+    monkeypatch.setenv("OCF_WORK_DIR", str(configured))
+
+    with pytest.raises(RuntimeError, match="not a directory"):
+        paths.work_root()
+
+    assert configured.read_text(encoding="utf-8") == "preserve this file"
+
+
+@pytest.mark.unit
 def test_workspace_rechecks_canonical_root_after_concurrent_creation(monkeypatch, tmp_path):
     root = tmp_path / "work"
     canonical = tmp_path / "canonical-work"
