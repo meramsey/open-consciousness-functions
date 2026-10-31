@@ -31,6 +31,13 @@ def test_workspace_status_cli_reports_resolved_paths(monkeypatch, tmp_path, caps
     assert set(report["areas"]) == {"tmp", "cache", "renders", "logs"}
 
 
+@pytest.mark.unit
+def test_ordinary_checkout_is_its_own_canonical_project_root(tmp_path):
+    checkout = tmp_path / "checkout"
+    (checkout / ".git").mkdir(parents=True)
+    assert paths.canonical_project_root(checkout) == checkout
+
+
 def test_linked_worktree_uses_common_project_workspace(tmp_path, monkeypatch):
     project = tmp_path / "project"
     worktree = project / ".ocf-work" / "feature-worktree"
@@ -214,8 +221,21 @@ def test_cleanup_skips_a_stale_temp_directory_owned_by_live_foreign_pid(monkeypa
     old_time = time.time() - 3600
     os.utime(scratch, (old_time, old_time))
     assert scratch not in paths.cleanup_workspace(older_than_seconds=1, dry_run=True)
+    assert paths.cleanup_workspace_temp(scratch) is False
     assert scratch.is_dir()
-    assert observed == [(4242, 0)]
+    assert observed == [(4242, 0), (4242, 0)]
+
+
+@pytest.mark.unit
+def test_workspace_temp_file_normalizes_unsafe_prefix(monkeypatch, tmp_path):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "ocf-work"))
+    descriptor, filename = paths.workspace_temp_file(prefix="unsafe prefix", suffix=".wav")
+    try:
+        assert filename.name.startswith("ocf-unsafe-prefix")
+        assert filename.suffix == ".wav"
+    finally:
+        os.close(descriptor)
+    assert paths.cleanup_workspace_temp(filename.parent)
 
 
 @pytest.mark.parametrize(
