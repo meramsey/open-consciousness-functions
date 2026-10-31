@@ -141,6 +141,33 @@ def test_function_filename_compatibility_uses_stable_id_not_title(tmp_path):
     assert "Empathize" not in catalog.packs["en-US"].localized_functions.keys()
 
 
+def test_repository_empathize_resource_uses_stable_filename_and_preserves_cues():
+    catalog = LocaleCatalog(REPO_ROOT / "locales")
+    assert catalog.problems == []
+    assert catalog.packs["en-US"].localized_function_files[FUNCTION_ID] == (
+        "OCF-EMO-003-Empathize.yaml"
+    )
+    assert "hplus-OCF-EMO-003.yaml" not in {
+        resource["file"] for resource in catalog.packs["en-US"].manifest["resources"]
+    }
+    assert (
+        catalog.resource(
+            f"commands.{COMMAND_ID.lower()}.display-cue",
+            "en-US",
+            domain="ui",
+            fallback=False,
+        )[0].text
+        == "PLUS-EMPATHIZE"
+    )
+    spoken = catalog.resource(
+        f"commands.{COMMAND_ID.lower()}.spoken-cue",
+        "en-US",
+        domain="narration",
+        fallback=False,
+    )[0]
+    assert spoken.text == "Plus Empathize" and spoken.status == "reviewed"
+
+
 def test_noncanonical_locale_root_loads_its_sibling_function_registry(tmp_path):
     root = tmp_path / "locales"
     write_pack(root, function_resource())

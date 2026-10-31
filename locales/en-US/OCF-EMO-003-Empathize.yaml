@@ -1,0 +1,162 @@
+schema_version: '1.0'
+locale: en-US
+domain: function
+function_id: OCF-EMO-003
+title:
+  source: function-yaml
+  field: title
+description:
+  source: function-yaml
+  field: description
+activation:
+  command_id: OCF-CMD-EMO-003-PRIMARY
+  display_cue:
+    source: function-yaml
+    field: primary-command
+    command_id: OCF-CMD-EMO-003-PRIMARY
+  spoken_cue:
+    source: function-yaml
+    field: spoken-command
+    command_id: OCF-CMD-EMO-003-PRIMARY
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Migrated existing en-US metadata and narration under the stable function ID; raw narration and
+    cue semantics are unchanged. Spoken cue remains reviewed in the function command record.
+entries:
+  hplus.function.ocf-emo-003.opener:
+    status: reviewed
+    version: 1.1.0
+    notes: 'OCF-adapted opener based on the user-proposed Empathizing reconstruction. Proposed input:
+      Empathizing/Empathizing_881049_reconstructed_clean.txt; SHA-256 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06.
+      Original reconstruction remains unchanged; historical authenticity is unverified. Wording expands
+      awareness of another being beyond ordinary physical senses to include total-self perception, nonverbal
+      and nonphysical communication intentions. Rights: user_cleared, per user''s lawyer-clearance attestation.
+      Finished-session release remains pending.'
+    text: |-
+      This OCF exercise will strengthen your ability
+      to perceive, understand, and communicate with
+      another being through all levels of awareness,
+      including your senses, intuition, and total self.
+  hplus.function.ocf-emo-003.function-body:
+    status: reviewed
+    version: 1.2.1
+    notes: 'OCF-adapted body based on the user-proposed Empathizing reconstruction. Proposed input: Empathizing/Empathizing_881049_reconstructed_clean.txt;
+      SHA-256 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06. Original reconstruction
+      remains unchanged; historical source availability and authenticity remain unverified. Preserves
+      conscious target selection, calm receptivity, whole-being awareness, the original breath-command
+      sequence, and growing effectiveness with use. OCF-authored expansion explicitly includes physical
+      sensory perception, intuitive impressions, the subconscious and higher self, the sense of connection
+      to all life, nonverbal and telepathic-style communication, and out-of-body or nonphysical experience.
+      Such claims are exercise intentions, not independently verified mechanisms. The exact Plus Profile
+      Profile command is unchanged. Companion-function instructions and repeated activation are omitted;
+      one body is used across four playback passes. The exercise is directed toward understanding rather
+      than control, with the listener retaining judgment and boundaries. Rights: user_cleared, per user''s
+      lawyer-clearance attestation. Finished-session release remains pending.'
+    cue_template:
+      function_id: OCF-EMO-003
+      allowed:
+      - cue.primary
+    text: |-
+      From this moment forward, your ability to perceive
+      and understand another being is becoming deeper,
+      clearer, and more complete.
+
+      You are connected to the greater whole of life.
+      Your conscious mind, subconscious mind,
+      and higher self work together as your total self,
+      opening every available way of knowing.
+
+      Whenever you desire to understand another being,
+      bring that being clearly into your awareness.
+      Relax your body, quiet your own expectations,
+      and become calm, open, and receptive.
+
+      Through your physical senses, you recognize
+      expression, movement, voice, and subtle changes.
+      Beyond those senses, you remain open to intuition,
+      emotional impressions, images, feelings,
+      and direct, wordless understanding.
+
+      Inhale deeply and gently hold your breath.
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth.
+
+      Your total self will now bring together
+      every form of information available to you,
+      revealing a clearer understanding of the
+      other being's feelings, needs, intentions,
+      and state of being.
+
+      Communication will become possible beyond words:
+      feeling to feeling, awareness to awareness,
+      and thought to thought.
+
+      Whether you are physically present or exploring
+      in an out-of-body state, your greater awareness
+      will remain open to subtle and nonphysical
+      impressions and communication.
+
+      Your higher self will help you recognize
+      the connection between yourself, the other being,
+      and the greater consciousness of which all are part.
+
+      Understanding will arrive in the form most natural
+      to you: a clear feeling, an image, a thought,
+      a sensation, or immediate inner knowing.
+
+      You will remain centered in your own awareness,
+      understanding without imposing your desires
+      or losing your sense of self.
+
+      From this moment forward, this ability
+      is permanently available whenever you choose
+      to open yourself to deeper understanding.
+
+      The more you use {{ cue.primary }},
+      the easier, clearer, and more effective
+      this communion and understanding will become.
+  hplus.function.ocf-emo-003.closer:
+    status: reviewed
+    version: 1.2.1
+    notes: 'OCF-authored closer adapted from the user-proposed Empathizing reconstruction. Proposed input:
+      Empathizing/Empathizing_881049_reconstructed_clean.txt; SHA-256 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06.
+      No authenticated historical closer is asserted; the source handoff remains separate. The closer
+      contains one purpose reminder, the exact command and breathing sequence, and the standard OCF ending.
+      Rights: user_cleared, per user''s lawyer-clearance attestation. Finished-session release remains
+      pending.'
+    cue_template:
+      function_id: OCF-EMO-003
+      allowed:
+      - cue.primary
+    text: |-
+      Remember, whenever you wish to understand
+      another being through your senses and total self,
+      bring that being clearly into your awareness.
+
+      Inhale deeply and hold your breath.
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth.
+
+      This concludes your OCF Empathize exercise.
