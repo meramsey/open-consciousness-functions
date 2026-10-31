@@ -903,9 +903,16 @@ class LocalePack:
         manifest: Mapping[str, Any],
         entries: Mapping[str, NarrationResource],
         path: Path | None = None,
+        localized_functions: Mapping[str, Mapping[str, Any]] | None = None,
+        localized_function_files: Mapping[str, str] | None = None,
     ) -> None:
         self.manifest = dict(manifest)
         self.entries: dict[str, NarrationResource] = dict(entries)
+        self.localized_functions = {
+            str(function_id): dict(value)
+            for function_id, value in (localized_functions or {}).items()
+        }
+        self.localized_function_files = dict(localized_function_files or {})
         self.path = path
 
     @property
@@ -1035,6 +1042,8 @@ def load_pack(path: Path, *, reader=None, exists=None) -> LocalePack:
     if locale is None:
         raise LocalizationError(f"locale pack {path}: manifest declares no `locale`")
     entries: dict[str, NarrationResource] = {}
+    localized_functions: dict[str, dict[str, Any]] = {}
+    localized_function_files: dict[str, str] = {}
     resources = manifest.get("resources")
     resources = [] if resources is None else resources
     if not isinstance(resources, list) or any(
@@ -1071,6 +1080,17 @@ def load_pack(path: Path, *, reader=None, exists=None) -> LocalePack:
                 f"{locale} {filename}: resource locale {data.get('locale')!r} does not match "
                 f"pack locale {locale!r}"
             )
+        if file_domain == "function":
+            function_id = str(data.get("function_id", ""))
+            if not re.fullmatch(r"OCF-[A-Z]{3}-[0-9]{3}", function_id):
+                raise LocalizationError(f"{locale} {filename}: invalid or missing function_id")
+            if function_id in localized_functions:
+                raise LocalizationError(f"{locale}: duplicate localized function {function_id}")
+            localized_functions[function_id] = data
+            localized_function_files[function_id] = filename
+            # A localized function file is also the sole canonical narration resource
+            # for that function; metadata aliases are projected by LocaleCatalog.
+            file_domain = NARRATION_DOMAIN
         values = data.get("entries")
         values = {} if values is None else values
         if not isinstance(values, dict):
@@ -1085,7 +1105,9 @@ def load_pack(path: Path, *, reader=None, exists=None) -> LocalePack:
                 raise LocalizationError(f"{locale}: duplicate key {str(key)!r} in {filename}")
             entries[str(key)] = _entry_from_value(str(key), value, locale, file_domain, filename)
     # Normalize identity in memory without rewriting the operator's manifest.
-    return LocalePack({**manifest, "locale": locale}, entries, path)
+    return LocalePack(
+        {**manifest, "locale": locale}, entries, path, localized_functions, localized_function_files
+    )
 
 
 @dataclass(frozen=True)
@@ -1142,6 +1164,126 @@ class LocaleCatalog:
                 self.problems.append(f"duplicate locale pack: {normalized}")
                 continue
             self.packs[normalized] = pack
+        self._project_localized_function_aliases()
+
+    @staticmethod
+    def _localized_value(
+        value: Mapping[str, Any], record, command=None
+    ) -> tuple[str, str | None, str | None]:
+        """Resolve a localized value or its canonical function-YAML reference."""
+        if "text" in value:
+            return str(value["text"]), value.get("status"), value.get("version")
+        source = value.get("source")
+        field_name = value.get("field")
+        if source != "function-yaml":
+            raise LocalizationError("localized function metadata has an unknown value source")
+        if field_name == "title":
+            return record.canonical_name, "canonical", None
+        if field_name == "description":
+            return record.purpose_summary, "canonical", None
+        if command is None or value.get("command_id") != command.id:
+            raise LocalizationError(
+                "localized command metadata reference does not match command ID"
+            )
+        if field_name == "primary-command":
+            from .commands import resolve_phrase
+
+            return resolve_phrase(record, command), "canonical", None
+        if field_name == "spoken-command":
+            spoken = command.data.get("spoken")
+            if not spoken or command.data.get("spoken_review") != "reviewed":
+                raise LocalizationError(f"{command.id}: canonical spoken cue is not reviewed")
+            return str(spoken), "reviewed", None
+        raise LocalizationError(f"unknown canonical localized-function field: {field_name!r}")
+
+    def _project_localized_function_aliases(self) -> None:
+        """Expose per-function YAML fields to old key-based callers during migration."""
+        if not any(pack.localized_functions for pack in self.packs.values()):
+            return
+        records = {record.id: record for record in self.function_records()}
+        for pack in self.packs.values():
+            for function_id, metadata in pack.localized_functions.items():
+                record = records.get(function_id)
+                if record is None:
+                    self.problems.append(
+                        f"{pack.locale}: localized function {function_id} has no stable registry record"
+                    )
+                    continue
+                key_prefix = f"functions.{function_id.lower()}"
+                for field_name, suffix in (
+                    ("title", "title"),
+                    ("description", "short-description"),
+                    ("description", "purpose"),
+                ):
+                    value = metadata.get(field_name)
+                    if not isinstance(value, dict):
+                        continue
+                    key = f"{key_prefix}.{suffix}"
+                    if key in pack.entries:
+                        self.problems.append(
+                            f"{pack.locale}: localized function metadata duplicates active resource {key}"
+                        )
+                        continue
+                    text, status, version = self._localized_value(value, record)
+                    pack.entries[key] = NarrationResource(
+                        key=key,
+                        locale=pack.locale,
+                        domain=UI_DOMAIN,
+                        text=text,
+                        status=status,
+                        version=version,
+                        file=pack.localized_function_files[function_id],
+                    )
+                activation = metadata.get("activation") or {}
+                command_id = activation.get("command_id")
+                command = next(
+                    (item for item in record.command_records if item.id == command_id), None
+                )
+                if command is None:
+                    self.problems.append(
+                        f"{pack.locale}: localized activation cue references unknown command {command_id!r}"
+                    )
+                    continue
+                command_prefix = f"commands.{command_id.lower()}"
+                command_rows = [(command_id, activation)] + [
+                    (row.get("command_id"), row) for row in metadata.get("secondary_commands", [])
+                ]
+                for row_command_id, row in command_rows:
+                    row_command = next(
+                        (item for item in record.command_records if item.id == row_command_id), None
+                    )
+                    if row_command is None:
+                        self.problems.append(
+                            f"{pack.locale}: localized function metadata references unknown command {row_command_id!r}"
+                        )
+                        continue
+                    command_prefix = f"commands.{row_command_id.lower()}"
+                    for field_name, suffix, domain in (
+                        ("display_cue", "display-cue", UI_DOMAIN),
+                        ("spoken_cue", "spoken-cue", NARRATION_DOMAIN),
+                        ("label", "label", UI_DOMAIN),
+                        ("explanation", "explanation", UI_DOMAIN),
+                        ("usage", "usage", UI_DOMAIN),
+                    ):
+                        value = row.get(field_name)
+                        if not isinstance(value, dict):
+                            continue
+                        key = f"{command_prefix}.{suffix}"
+                        if key in pack.entries:
+                            self.problems.append(
+                                f"{pack.locale}: localized function metadata duplicates active resource {key}"
+                            )
+                            continue
+                        text, status, version = self._localized_value(value, record, row_command)
+                        pack.entries[key] = NarrationResource(
+                            key=key,
+                            locale=pack.locale,
+                            domain=domain,
+                            text=text,
+                            status=status,
+                            version=version,
+                            file=pack.localized_function_files[function_id],
+                        )
 
     @classmethod
     def from_packs(cls, packs: list[tuple[str, LocalePack]]) -> LocaleCatalog:
@@ -1161,6 +1303,7 @@ class LocaleCatalog:
                 instance.problems.append(f"duplicate locale pack: {normalized}")
                 continue
             instance.packs[normalized] = pack
+        instance._project_localized_function_aliases()
         return instance
 
     # -- lookups ----------------------------------------------------------
@@ -1182,6 +1325,30 @@ class LocaleCatalog:
     def get(self, locale: str | None) -> LocalePack | None:
         normalized = normalize_tag(locale)
         return self.packs.get(normalized) if normalized else None
+
+    def localized_function(
+        self,
+        function_id: str,
+        locale: str | None = None,
+        *,
+        fallback: bool = True,
+    ) -> tuple[Mapping[str, Any], Resolution]:
+        """Resolve one localized function record by stable ID, never filename."""
+        requested = normalize_tag(locale) or self.canonical_locale
+        chain = self.chain(requested) if fallback else [requested]
+        for candidate in chain:
+            pack = self.packs.get(candidate)
+            if pack and function_id in pack.localized_functions:
+                return pack.localized_functions[function_id], Resolution(
+                    key=function_id,
+                    locale=requested,
+                    origin_locale=candidate,
+                    domain="function",
+                    fallback=candidate != requested,
+                )
+        raise LocalizationError(
+            f"no localized function metadata for {function_id!r} in {requested!r}"
+        )
 
     def require(self, locale: str | None) -> LocalePack:
         pack = self.get(locale)

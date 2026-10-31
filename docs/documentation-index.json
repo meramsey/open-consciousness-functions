@@ -4976,7 +4976,7 @@
       "related_schemas": [
         "schemas/locale-manifest.schema.json"
       ],
-      "sha256": "3d1188d454415a4b111beca2545ed0627e89b112943ab523e81e632c3e1558b6",
+      "sha256": "f352c493429c07707427784522bbec47ae249ef0654da801b9bf954c56160a24",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4999,6 +4999,26 @@
         "schemas/locale-resource.schema.json"
       ],
       "sha256": "1573a212f7aad08201444d34f7f10b7c035307f30ea713f6d1897dfe72dab7a7",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "schemas/localized-function.schema.json",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "localized-function.schema",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/localized-function.schema.json"
+      ],
+      "sha256": "4f7eb8e0ced12e5c75305227e8c22058e6e7d0f1fb0606092a96e93036543643",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5539,5 +5559,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 266
+  "total": 267
 }

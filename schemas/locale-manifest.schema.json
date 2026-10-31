@@ -59,7 +59,7 @@
           "domain": {
             "description": "ui = operator- and player-facing labels that may fall back to the canonical locale; narration = spoken text for listeners, which must exist in the target locale before rendering.",
             "type": "string",
-            "enum": ["ui", "narration"]
+            "enum": ["ui", "narration", "function"]
           },
           "description": { "type": ["string", "null"] }
         }
