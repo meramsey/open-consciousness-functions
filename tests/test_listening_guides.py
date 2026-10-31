@@ -62,6 +62,33 @@ def test_unreviewed_speech_is_not_published():
 
 
 @pytest.mark.unit
+def test_canonical_narration_is_printed_once_with_playback_repetitions():
+    record = FunctionRecord("OCF-TST-001", "test", Path("test.yaml"), {})
+    text = guides.function_markdown(
+        record,
+        {"locale": "en-US"},
+        documentation={
+            "title": {"text": "Test"},
+            "short_description": {"text": "Test description"},
+            "lifecycle_scopes": [],
+            "related_functions": [],
+            "commands": [],
+        },
+        narration_sections=[
+            {
+                "key": "hplus.function.ocf-tst-001.function-body",
+                "role": "function-body",
+                "status": "reviewed",
+                "text": "One exact readable transcript.",
+                "repetitions": 4,
+            }
+        ],
+    )
+    assert text.count("One exact readable transcript.") == 1
+    assert "Audio playback repetitions: 4; transcript text shown once." in text
+
+
+@pytest.mark.unit
 def test_write_refuses_existing_and_checks_without_writing(tmp_path):
     docs = {"index.md": "# Test\n", "functions/test.md": "# Function\n"}
     assert guides.write_documents(docs, tmp_path, markdown_only=True) == 2
@@ -130,6 +157,7 @@ def test_current_registry_all_58_guides_have_exact_active_cues():
         assert guides.MISSING not in text
         assert "Ordered activation procedure:" in text
         assert "## Operating behavior and modes" in text
+        assert "## Complete readable canonical narration" in text
         for command in record.command_records:
             if not is_active(command) or command.role == "legacy-alias":
                 continue
@@ -178,3 +206,34 @@ def test_current_registry_pdf_and_markdown_freshness(tmp_path):
     assert guides.write_documents(documents, tmp_path, check=True) == 180
     assert len(list(tmp_path.rglob("*.pdf"))) == 60
     assert len(list(tmp_path.rglob("*.html"))) == 60
+    tool = shutil.which("pdftotext")
+    if not tool:
+        pytest.skip("pdftotext is not installed")
+    import re
+
+    catalog = LocaleCatalog()
+    for record in load_all_functions():
+        path = tmp_path / "functions" / f"{record.id}.pdf"
+        result = subprocess.run(
+            [tool, "-enc", "UTF-8", str(path), "-"], check=True, capture_output=True
+        )
+        extracted = re.sub(r"(?<=\w)-\s+(?=\w)", "", result.stdout.decode("utf-8"))
+        extracted = re.sub(r"\s+", " ", extracted)
+        seen = set()
+        for item in (record.data.get("narration") or {}).get("sequence", []):
+            key = item.get("key")
+            if not key:
+                continue
+            variables = item.get("variables") or {}
+            identity = (key, str(sorted(variables.items())))
+            if identity in seen:
+                continue
+            seen.add(identity)
+            spoken = catalog.spoken(key, "en-US", variables, strict=True)
+            spoken = re.sub(r"(?<=\w)-\s+(?=\w)", "", spoken)
+            spoken = re.sub(r"\s+", " ", spoken)
+            # PDF extraction inserts page numbers/line breaks inside long paragraphs.
+            remaining = iter(extracted)
+            assert all(
+                any(character == candidate for candidate in remaining) for character in spoken
+            ), f"{record.id}: incomplete transcript {key} in {path.name}"
