@@ -100,6 +100,17 @@ def test_locale_catalog_projects_canonical_references_and_loads_narration_by_key
         "functions.ocf-emo-003.title", "en-US", domain="ui", fallback=False
     )
     assert title.text == "Empathize" and title_resolution.origin_locale == "en-US"
+    description, _ = catalog.resource(
+        "functions.ocf-emo-003.short-description", "en-US", domain="ui", fallback=False
+    )
+    assert description.text == "Develops understanding through awareness."
+    display, _ = catalog.resource(
+        f"commands.{COMMAND_ID.lower()}.display-cue",
+        "en-US",
+        domain="ui",
+        fallback=False,
+    )
+    assert display.text == "PLUS-EMPATHIZE"
     spoken, spoken_resolution = catalog.resource(
         f"commands.{COMMAND_ID.lower()}.spoken-cue",
         "en-US",
