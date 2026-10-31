@@ -46,11 +46,29 @@ class TestProfileContracts:
             "release_ms": 50,
         }
         assert profile["background_ducking"]["enabled"] is False
+        assert profile["background_gain_windows"] == []
+        assert profile["semantic_state_gains_db"] == {}
+        assert profile["profile_id"] is None and profile["profile_version"] is None
         assert profile["output_headroom_db"] == profile["fade_in_s"] == profile["fade_out_s"] == 0
         assert profile["measure_loudness"] is False
         profile["limiter"]["ceiling"] = 0.5
         assert original == {"limiter": {"ceiling": 0.8}}
         assert mp.load_mix_profile({})["limiter"]["ceiling"] == 0.97
+
+    def test_private_profile_identity_is_recorded_without_changing_defaults(self):
+        override = mp.load_mix_profile(
+            {"profile_id": "OCF-MIX-PRIVATE-TEST", "profile_version": "1.0.0"}
+        )
+        assert (override["profile_id"], override["profile_version"]) == (
+            "OCF-MIX-PRIVATE-TEST",
+            "1.0.0",
+        )
+        assert override["background_gain_windows"] == []
+        assert override["background_ducking"]["enabled"] is False
+
+    def test_fixed_semantic_state_gain_is_preserved_as_profile_data(self):
+        profile = mp.load_mix_profile({"semantic_state_gains_db": {"focus-11": -11}})
+        assert profile["semantic_state_gains_db"] == {"focus-11": -11}
 
     @pytest.mark.parametrize(
         "suffix,text",
@@ -85,6 +103,30 @@ class TestProfileContracts:
             {"background_ducking": {"attack_ms": 2001}},
             {"background_ducking": {"release_ms": 9001}},
             {"background_ducking": {"knee": 0.9}},
+            {
+                "background_gain_windows": [
+                    {
+                        "event_id": "x",
+                        "start_s": 1,
+                        "end_s": 2,
+                        "gain_db": 1,
+                        "attack_s": 0,
+                        "release_s": 0,
+                    }
+                ]
+            },
+            {
+                "background_gain_windows": [
+                    {
+                        "event_id": "x",
+                        "start_s": 1,
+                        "end_s": 2,
+                        "gain_db": -10,
+                        "attack_s": -0.1,
+                        "release_s": 0,
+                    }
+                ]
+            },
             {"output_headroom_db": -1},
             {"output_headroom_db": 61},
             {"fade_in_s": 31},
@@ -195,6 +237,77 @@ class TestProfileContracts:
             10 ** (-24 / 20)
         )
         json.dumps(result, allow_nan=False)
+
+    def test_fixed_background_gain_window_is_time_only_and_stereo_linked(
+        self, monkeypatch, tmp_path
+    ):
+        calls = []
+        monkeypatch.setattr(mp.shutil, "which", lambda _: "ffmpeg")
+        monkeypatch.setattr(
+            mp,
+            "workspace_run",
+            lambda argv, **kwargs: calls.append(argv) or SimpleNamespace(returncode=0),
+        )
+        speech = tmp_path / "speech.wav"
+        _wav(speech, [0] * (4 * ab.DEFAULT_SAMPLE_RATE), channels=1)
+        window = {
+            "event_id": "focus11-body.pass-2",
+            "start_s": 1.0,
+            "end_s": 3.0,
+            "gain_db": -10.0,
+            "attack_s": 0.25,
+            "release_s": 0.5,
+        }
+        result = ab._mix_master_ffmpeg(
+            speech,
+            tmp_path / "one-farfield-bed.wav",
+            tmp_path / "out.wav",
+            speech_gain=1.0,
+            background_gain=1.0,
+            mix_profile={"background_gain_windows": [window], "limiter": {"enabled": False}},
+        )
+        graph = result["filtergraph"]
+        assert "[1:a]volume=1.000000,volume='if(lt(t,1.000000000),1," in graph
+        assert (
+            "0.316227766017+(1-0.316227766017)*(0.5-0.5*cos(PI*(t-3.000000000)/0.500000000))"
+            in graph
+        )
+        assert ":eval=frame[b]" in graph
+        assert "sidechaincompress" not in graph and "loudnorm" not in graph
+        assert "amix=inputs=2:duration=first:normalize=0" in graph
+        assert graph.count("[1:a]") == 1
+        assert result["parameters"]["speech_gain"] == 1.0
+        assert result["parameters"]["background_gain_windows"] == [window]
+        assert calls and calls[0] == result["argv"]
+
+    def test_background_gain_windows_require_bed_and_ordered_ramp_intervals(self, tmp_path):
+        speech = tmp_path / "speech.wav"
+        _wav(speech, [0] * (4 * ab.DEFAULT_SAMPLE_RATE), channels=1)
+        one = {
+            "event_id": "focus11.pass-1",
+            "start_s": 1,
+            "end_s": 2,
+            "gain_db": -10,
+            "attack_s": 0.25,
+            "release_s": 1,
+        }
+        with pytest.raises(OCFError, match="requires a background stem"):
+            ab._mix_master_ffmpeg(
+                speech,
+                None,
+                tmp_path / "no-bed.wav",
+                mix_profile={"background_gain_windows": [one]},
+            )
+        overlapping = [one, {**one, "event_id": "focus11.pass-2", "start_s": 2.5, "end_s": 3}]
+        out = tmp_path / "not-written.wav"
+        with pytest.raises(OCFError, match="ordered, nonoverlapping"):
+            ab._mix_master_ffmpeg(
+                speech,
+                tmp_path / "bed.wav",
+                out,
+                mix_profile={"background_gain_windows": overlapping},
+            )
+        assert not out.exists()
 
     def test_ducking_without_background_rejected_before_outputs(self, tmp_path):
         out = tmp_path / "absent" / "out.wav"
@@ -384,6 +497,69 @@ class TestRealFFmpegMix:
         assert "sidechaincompress" not in result["filtergraph"]
         assert "apad" not in result["filtergraph"]
         assert "afade" not in result["filtergraph"]
+
+    def test_fixed_time_window_attenuates_bed_in_speech_and_silence_then_recovers(self, tmp_path):
+        rate = ab.DEFAULT_SAMPLE_RATE
+        speech, bed, out = [tmp_path / name for name in ("speech.wav", "bed.wav", "out.wav")]
+        frames = rate * 4
+        voice = array("h")
+        binaural = array("h")
+        for frame in range(frames):
+            active = frame < rate or rate <= frame < int(1.7 * rate) or frame >= int(3.5 * rate)
+            voice.append(round(3000 * math.sin(2 * math.pi * 1000 * frame / rate)) if active else 0)
+            binaural.extend(
+                (
+                    round(7000 * math.sin(2 * math.pi * 311 * frame / rate + 0.23)),
+                    round(4200 * math.sin(2 * math.pi * 563 * frame / rate + 1.07)),
+                )
+            )
+        _wav(speech, voice, channels=1)
+        _wav(bed, binaural)
+        window = {
+            "event_id": "focus11-body.pass-2",
+            "start_s": 1.0,
+            "end_s": 3.0,
+            "gain_db": -10.0,
+            "attack_s": 0.25,
+            "release_s": 0.5,
+        }
+        receipt = ab._mix_master_ffmpeg(
+            speech,
+            bed,
+            out,
+            speech_gain=1.0,
+            background_gain=1.0,
+            mix_profile={"background_gain_windows": [window], "limiter": {"enabled": False}},
+        )
+        mixed = _read(out)
+
+        def estimate(start_s, end_s):
+            lo, hi = int(start_s * rate), int(end_s * rate)
+            result = []
+            for channel in range(2):
+                source = array("h", binaural[2 * lo + channel : 2 * hi : 2])
+                rendered = array("h", mixed[2 * lo + channel : 2 * hi : 2])
+                original_voice = array("h", voice[lo:hi])
+                denominator = sum(value * value for value in source)
+                result.append(
+                    sum(
+                        (y - v) * x
+                        for y, v, x in zip(rendered, original_voice, source, strict=True)
+                    )
+                    / denominator
+                )
+            return result
+
+        before = estimate(0.2, 0.8)
+        inside_speech = estimate(1.4, 1.6)
+        inside_silence = estimate(2.0, 2.4)
+        after = estimate(3.7, 3.9)
+        expected = 10 ** (-10 / 20)
+        assert min(before) > 0.98 and max(before) < 1.02
+        assert all(abs(gain - expected) < 0.03 for gain in inside_speech + inside_silence)
+        assert min(after) > 0.98 and max(after) < 1.02
+        assert abs(inside_speech[0] - inside_speech[1]) < 0.01
+        assert "sidechaincompress" not in receipt["filtergraph"]
 
     @pytest.mark.parametrize("paced_input", [None, "speech", "bed"])
     def test_ducking_shared_envelope_expected_ratio_and_window_detector(

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 import shutil
@@ -9,6 +10,7 @@ import sys
 import wave
 from array import array
 from datetime import UTC, datetime
+from functools import wraps
 from pathlib import Path
 from typing import Any
 
@@ -899,7 +901,7 @@ def _build_stage_report(doc: dict, render: dict, dsp: dict) -> list[dict[str, An
     return report
 
 
-def render_complete_session(
+def _render_complete_session_unlocked(
     function_id: str,
     *,
     locale: str | None = None,
@@ -1377,3 +1379,26 @@ def render_complete_session(
                 f"render failure: {type(exc).__name__}: {exc}; retained scratch: {stage}",
             )
         raise
+
+
+@wraps(_render_complete_session_unlocked)
+def render_complete_session(*args, **kwargs) -> dict[str, Any]:
+    """Serialize explicit output destinations before rendering or publishing.
+
+    Default outputs already have unique run IDs. Explicit destinations are
+    protected by a stable OCF job lock so concurrent workers fail before doing
+    duplicate synthesis/render work; the existing atomic publish check remains
+    the final no-overwrite boundary.
+    """
+    output = kwargs.get("output")
+    if output is None or kwargs.get("dry_run"):
+        return _render_complete_session_unlocked(*args, **kwargs)
+    target = Path(output).expanduser().resolve()
+    lock_id = hashlib.sha256(str(target).encode("utf-8")).hexdigest()
+    from .dev_jobs import lock
+
+    with lock("complete-session-output-" + lock_id, wait=False) as acquired:
+        if not acquired:
+            raise OCFError(f"complete-session output is already being rendered: {target}")
+        kwargs["output"] = target
+        return _render_complete_session_unlocked(*args, **kwargs)

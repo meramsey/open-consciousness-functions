@@ -530,9 +530,17 @@ def render_program(
     *,
     render_state: Any = None,
     scratch_dir: Path | None = None,
+    state_gains_db: dict[str, float] | None = None,
 ) -> dict:
-    """Render selected independent states and continuous envelopes; never source audio fallback."""
+    """Render state stems with fixed optional gains before their transition envelopes."""
     program = plan_program(doc, event_timing, duration, profile)
+    state_gains_db = state_gains_db or {}
+    if set(state_gains_db) - set(program["selections"]):
+        raise OCFError("semantic state gain references an inactive background state")
+    state_gains = {state: 10 ** (float(db) / 20) for state, db in state_gains_db.items()}
+    if any(not math.isfinite(gain) or gain < 0 for gain in state_gains.values()):
+        raise OCFError("semantic state gains must be finite linear multipliers")
+    program["fixed_state_gains_db"] = dict(state_gains_db)
     ffmpeg = shutil.which("ffmpeg")
     if not ffmpeg:
         raise OCFError("semantic DSP requires ffmpeg; states will not silently fall back")
@@ -650,8 +658,9 @@ def render_program(
     for index, (state, stem, calibration) in enumerate(sources):
         command += ["-i", str(stem)]
         envelope = _gain_expression(program, state)
+        fixed_gain = state_gains.get(state, 1.0)
         chains.append(
-            f"[{index}:a]aresample=44100,aformat=channel_layouts=stereo,atrim=duration={duration:.9f},volume={calibration:.9f},aeval='val(0)*({envelope})|val(1)*({envelope})'[s{index}]"
+            f"[{index}:a]aresample=44100,aformat=channel_layouts=stereo,atrim=duration={duration:.9f},volume={calibration * fixed_gain:.9f},aeval='val(0)*({envelope})|val(1)*({envelope})'[s{index}]"
         )
     if not sources:
         command += ["-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo", "-t", str(duration)]

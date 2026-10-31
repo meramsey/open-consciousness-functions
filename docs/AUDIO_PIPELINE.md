@@ -98,11 +98,14 @@ Its fixtures are synthetic tones, not human narration matching a transcript.
 
 Complete-session rendering, `audio build` and `audio mix` accept an optional
 `--mix-profile FILE`. Without it, the established engineering mix is preserved.
-The JSON contract is `schemas/mix-profile.schema.json`: optional shared-envelope
-stereo background ducking, headroom attenuation, limiter settings, explicit
-final-mix fades and streamed loudness measurements. Narration preprocessing is
-still separate from the bed. Ducking changes a shared amplitude envelope; it
-does not downmix, crossfeed or phase-process the binaural channels.
+The JSON contract is `schemas/mix-profile.schema.json`: optional fixed
+session-time background gain windows, shared-envelope stereo background ducking,
+headroom attenuation, limiter settings, explicit final-mix fades and streamed
+loudness measurements. Narration preprocessing is still separate from the bed.
+Fixed background windows use explicit times and raised-cosine attack/release
+ramps; they do not inspect speech activity. Both fixed windows and ducking apply
+one shared amplitude envelope to the stereo bed and do not downmix, crossfeed or
+phase-process binaural channels.
 
 For example, a local profile may contain:
 
@@ -110,6 +113,19 @@ For example, a local profile may contain:
 {"output_headroom_db": 3, "measure_loudness": true,
  "background_ducking": {"enabled": true, "ratio": 2}}
 ```
+
+A private, session-specific override can instead declare fixed bed-only windows:
+
+```json
+{"background_gain_windows": [
+  {"event_id":"focus11-body.pass-2","start_s":981.138,"end_s":1093.617,
+   "gain_db":-10,"attack_s":0.25,"release_s":0.5}
+]}
+```
+
+Windows are ordered, nonoverlapping and bounded by the narration duration. Their
+event IDs and times are recorded for provenance; the mixer does not infer event
+boundaries or respond to speech. Absent windows preserve historical output.
 
 ```bash
 python scripts/ocf.py audio render OCF-SLP-005 --voice OCF-VOICE-0002 --mix-profile .ocf-work/my-mix.json --dry-run

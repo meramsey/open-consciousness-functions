@@ -412,7 +412,7 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     bulk_cmd.add_argument(
         "--speech-cache",
-        choices=("auto", "off", "refresh"),
+        choices=("auto", "off", "refresh", "require-hit"),
         default="auto",
         help="reuse compatible speech, bypass speech reuse, or regenerate while preserving history",
     )
@@ -544,7 +544,7 @@ def _build_parser() -> argparse.ArgumentParser:
     narration_render.add_argument(
         "--mix-profile",
         type=Path,
-        help="explicit linked-stereo ducking/headroom/limiter configuration",
+        help="explicit fixed bed gains/windows, semantic-state gains, linked-stereo ducking, headroom and limiter",
     )
     narration_render.add_argument(
         "--voice-gain",
@@ -562,9 +562,9 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     narration_render.add_argument(
         "--speech-cache",
-        choices=("auto", "off", "refresh"),
+        choices=("auto", "off", "refresh", "require-hit"),
         default="auto",
-        help="complete-session speech cache policy",
+        help="complete-session speech cache policy; require-hit blocks synthesis on a missing cache entry",
     )
     mix = audio_sub.add_parser("mix", help="mix narration with background audio")
     mix.add_argument("--speech", required=True, help="narration WAV")

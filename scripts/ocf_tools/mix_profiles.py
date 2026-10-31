@@ -53,12 +53,16 @@ def load_mix_profile(profile: dict[str, Any] | str | Path) -> dict[str, Any]:
     normalized = {}
     for name, spec in schema["properties"].items():
         if spec.get("type") == "object":
-            normalized[name] = {
-                key: value.get(name, {}).get(key, field["default"])
-                for key, field in spec["properties"].items()
-            }
+            normalized[name] = (
+                dict(value.get(name, {}))
+                if not spec.get("properties")
+                else {
+                    key: value.get(name, {}).get(key, field["default"])
+                    for key, field in spec["properties"].items()
+                }
+            )
         else:
-            normalized[name] = value.get(name, spec["default"])
+            normalized[name] = value.get(name, spec.get("default"))
     return normalized
 
 
@@ -135,8 +139,9 @@ def mix_master(
     """
     profile = load_mix_profile(mix_profile)
     duck = profile["background_ducking"]
-    if duck["enabled"] and background_path is None:
-        raise OCFError("mix profile background ducking requires a background stem")
+    bed_windows = profile["background_gain_windows"]
+    if (duck["enabled"] or bed_windows) and background_path is None:
+        raise OCFError("mix profile background processing requires a background stem")
     windows = list(speech_gain_windows or [])
     numbers = [speech_gain, background_gain, *(v for window in windows for v in window)]
     try:
@@ -148,6 +153,33 @@ def mix_master(
         valid = False
     if not valid or speech_gain < 0 or background_gain < 0:
         raise OCFError("mix gains and windows must be finite; linear gains must be nonnegative")
+    duration = None
+    if bed_windows:
+        try:
+            with wave.open(str(speech_path), "rb") as reader:
+                duration = reader.getnframes() / reader.getframerate()
+        except (OSError, wave.Error, EOFError, ZeroDivisionError) as exc:
+            raise OCFError(
+                f"cannot read narration duration for background gain windows: {exc}"
+            ) from exc
+        previous_end = -math.inf
+        for window in bed_windows:
+            start, end = window["start_s"], window["end_s"]
+            attack, release = window["attack_s"], window["release_s"]
+            if (
+                not all(math.isfinite(value) for value in (start, end, attack, release))
+                or end <= start
+                or attack > end - start
+                or start < previous_end
+                or end + release > duration
+            ):
+                raise OCFError(
+                    "background gain windows must be ordered, nonoverlapping and inside narration duration"
+                )
+            factor = 10.0 ** (window["gain_db"] / 20.0)
+            if not math.isfinite(factor):
+                raise OCFError("background gain window is unrepresentable")
+            previous_end = end + release
     narration = [f"aformat=channel_layouts=stereo,volume={speech_gain:.6f}"]
     try:
         for start, end, db in windows:
@@ -165,12 +197,35 @@ def mix_master(
         "speech_gain_windows": [
             {"start": start, "end": end, "gain_db": db} for start, end, db in windows
         ],
+        "background_gain_windows": bed_windows,
         "headroom_linear_gain": 10.0 ** (-profile["output_headroom_db"] / 20.0),
         "limiter_auto_level": False,
         "limiter_latency_compensation": False,
     }
     if background_path is not None:
-        graph += f"[1:a]volume={background_gain:.6f}[b];"
+        bed_filters = [f"volume={background_gain:.6f}"]
+        for window in bed_windows:
+            start = window["start_s"]
+            end = window["end_s"]
+            attack = window["attack_s"]
+            release = window["release_s"]
+            target = 10.0 ** (window["gain_db"] / 20.0)
+            if release:
+                release_expr = (
+                    f"if(lt(t,{end + release:.9f}),{target:.12f}+(1-{target:.12f})*"
+                    f"(0.5-0.5*cos(PI*(t-{end:.9f})/{release:.9f})),1)"
+                )
+            else:
+                release_expr = "1"
+            hold_expr = f"if(lt(t,{end:.9f}),{target:.12f},{release_expr})"
+            if attack:
+                attack_curve = f"1+({target:.12f}-1)*(0.5-0.5*cos(PI*(t-{start:.9f})/{attack:.9f}))"
+                window_expr = f"if(lt(t,{start + attack:.9f}),{attack_curve},{hold_expr})"
+            else:
+                window_expr = hold_expr
+            expression = f"if(lt(t,{start:.9f}),1,{window_expr})"
+            bed_filters.append(f"volume='{expression}':eval=frame")
+        graph += f"[1:a]{','.join(bed_filters)}[b];"
         bed = "[b]"
         if duck["enabled"]:
             threshold = 10.0 ** (duck["threshold_dbfs"] / 20.0)
