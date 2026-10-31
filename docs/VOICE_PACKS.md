@@ -87,8 +87,10 @@ python scripts/ocf.py voice audition-pack OCF-VOICE-9100 \
 ```
 
 Set `OCF_CHATTERBOX_PYTHON` to another compatible optional-environment Python
-executable if desired. Chatterbox Nano's upstream implementation requires a
-reference longer than five seconds. The local audio is retained under
+executable if desired. Keep a virtual environment's `bin/python` (or
+`Scripts/python.exe`) path as written: resolving its symlink can select the base
+Python and lose the optional environment's PyTorch packages. Chatterbox Nano's
+upstream implementation requires a reference longer than five seconds. The local audio is retained under
 `.ocf-work/renders/voice-pack-auditions/`; inference is not claimed successful
 until that command produces and verifies a WAV. A successful run writes a private
 receipt under `.ocf-work/logs/voice-inference/VOICE-ID/`; inspect the pack to
