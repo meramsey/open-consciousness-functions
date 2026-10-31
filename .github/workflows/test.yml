@@ -116,7 +116,8 @@ jobs:
           $python = (Get-Command python.exe -ErrorAction Stop).Source
           $stdout = Join-Path $env:RUNNER_TEMP 'pytest-unit.stdout.log'
           $stderr = Join-Path $env:RUNNER_TEMP 'pytest-unit.stderr.log'
-          $process = Start-Process -FilePath $python -ArgumentList @('-m', 'pytest', '-m', 'unit', '-n', '0', '-vv', '--full-trace', '--junitxml=.ocf-work/logs/pytest-results.xml') -NoNewWindow -Wait -PassThru -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+          $process = Start-Process -FilePath $python -ArgumentList @('-m', 'pytest', '-m', 'unit', '-n', '0', '-vv', '--full-trace', '--junitxml=.ocf-work/logs/pytest-results.xml') -Wait -PassThru -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+          if (-not (Test-Path $stdout)) { throw 'pytest stdout capture was not created' }
           Get-Content $stdout
           if (Test-Path $stderr) { Get-Content $stderr }
           $pytestProcessExitCode = $process.ExitCode
