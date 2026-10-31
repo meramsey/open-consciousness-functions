@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/localized-function.schema.json",
+  "title": "Localized function metadata and narration resource",
+  "description": "One stable function identity in one locale. English canonical wording is referenced from the function record instead of duplicated.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "locale", "domain", "function_id", "title", "description", "activation", "secondary_commands", "tags", "common_uses", "relationships", "changelog", "entries"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "locale": {"type": "string", "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?$"},
+    "domain": {"const": "function"},
+    "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
+    "title": {"$ref": "#/definitions/localizedValue"},
+    "description": {"$ref": "#/definitions/localizedValue"},
+    "activation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["command_id", "display_cue", "spoken_cue"],
+      "properties": {
+        "command_id": {"type": "string", "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"},
+        "display_cue": {"$ref": "#/definitions/localizedValue"},
+        "spoken_cue": {"$ref": "#/definitions/localizedValue"},
+        "label": {"$ref": "#/definitions/localizedValue"},
+        "explanation": {"$ref": "#/definitions/localizedValue"},
+        "usage": {"$ref": "#/definitions/localizedValue"}
+      }
+    },
+    "secondary_commands": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["command_id", "role"], "properties": {"command_id": {"type": "string", "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"}, "role": {"type": "string", "minLength": 1}, "display_cue": {"$ref": "#/definitions/localizedValue"}, "spoken_cue": {"$ref": "#/definitions/localizedValue"}}}},
+    "tags": {"type": "array", "items": {"$ref": "#/definitions/localizedValue"}, "uniqueItems": true},
+    "common_uses": {"type": "array", "items": {"$ref": "#/definitions/localizedValue"}},
+    "relationships": {
+      "type": "object", "additionalProperties": false,
+      "required": ["related_functions", "complementary_functions"],
+      "properties": {
+        "related_functions": {"$ref": "#/definitions/relationships"},
+        "complementary_functions": {"$ref": "#/definitions/relationships"}
+      }
+    },
+    "changelog": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["version", "change"], "properties": {"version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}, "change": {"type": "string", "minLength": 1}}}},
+    "entries": {"description": "Canonical readable narration entries. Four-pass playback repetition is not duplicated here.", "type": "object", "minProperties": 1, "propertyNames": {"pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"}}
+  },
+  "definitions": {
+    "localizedValue": {
+      "oneOf": [
+        {"type": "object", "additionalProperties": false, "required": ["text", "status", "version"], "properties": {"text": {"type": "string", "minLength": 1}, "status": {"enum": ["canonical", "draft", "machine", "reviewed"]}, "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}, "notes": {"type": ["string", "null"]}}},
+        {"type": "object", "additionalProperties": false, "required": ["source", "field"], "properties": {"source": {"const": "function-yaml"}, "field": {"enum": ["title", "description", "primary-command", "spoken-command"]}, "command_id": {"type": "string", "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"}}}
+      ]
+    },
+    "relationships": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["function_id", "description"], "properties": {"function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"}, "description": {"$ref": "#/definitions/localizedValue"}}}, "uniqueItems": true}
+  }
+}

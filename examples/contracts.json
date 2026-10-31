@@ -1,4 +1,23 @@
 {
+  "localized-function.schema.json": {
+    "schema_version": "1.0",
+    "locale": "en-US",
+    "domain": "function",
+    "function_id": "OCF-TST-999",
+    "title": {"source": "function-yaml", "field": "title"},
+    "description": {"source": "function-yaml", "field": "description"},
+    "activation": {
+      "command_id": "OCF-CMD-TST-999-PRIMARY",
+      "display_cue": {"source": "function-yaml", "field": "primary-command", "command_id": "OCF-CMD-TST-999-PRIMARY"},
+      "spoken_cue": {"source": "function-yaml", "field": "spoken-command", "command_id": "OCF-CMD-TST-999-PRIMARY"}
+    },
+    "secondary_commands": [],
+    "tags": [],
+    "common_uses": [],
+    "relationships": {"related_functions": [], "complementary_functions": []},
+    "changelog": [{"version": "1.0.0", "change": "Initial localized function record."}],
+    "entries": {"hplus.function.ocf-tst-999.opener": "An illustrative narration entry."}
+  },
   "audition-edition.schema.json": {
     "schema_version": "1.0", "kind": "private-audition", "function_id": "OCF-TST-999",
     "locale": "en-US", "version": "0.1.0", "voice_profile_id": "YOUR_VOICE_PROFILE",
