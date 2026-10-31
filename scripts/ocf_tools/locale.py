@@ -1693,6 +1693,54 @@ def build_pseudo_pack(
         )
         for key, entry in source.entries.items()
     }
+    localized_functions = {}
+    for function_id, metadata in source.localized_functions.items():
+        result = copy.deepcopy(metadata)
+        result["locale"] = locale
+        prefix = f"functions.{function_id.lower()}"
+
+        def pseudo_alias(key: str) -> dict[str, str]:
+            entry = entries[key]
+            return {
+                "text": entry.text,
+                "status": "machine",
+                "version": source.semantic_version,
+            }
+
+        result["title"] = pseudo_alias(f"{prefix}.title")
+        result["description"] = pseudo_alias(f"{prefix}.short-description")
+        activation = result.get("activation") or {}
+        command_id = str(activation.get("command_id", ""))
+        command_prefix = f"commands.{command_id.lower()}"
+        for field_name, suffix in (
+            ("display_cue", "display-cue"),
+            ("spoken_cue", "spoken-cue"),
+            ("label", "label"),
+            ("explanation", "explanation"),
+            ("usage", "usage"),
+        ):
+            if f"{command_prefix}.{suffix}" in entries:
+                activation[field_name] = pseudo_alias(f"{command_prefix}.{suffix}")
+        result["activation"] = activation
+        for command in result.get("secondary_commands") or []:
+            command_id = str(command.get("command_id", ""))
+            command_prefix = f"commands.{command_id.lower()}"
+            for field_name, suffix in (
+                ("display_cue", "display-cue"),
+                ("spoken_cue", "spoken-cue"),
+            ):
+                if f"{command_prefix}.{suffix}" in entries:
+                    command[field_name] = pseudo_alias(f"{command_prefix}.{suffix}")
+        result["entries"] = {
+            key: {
+                **copy.deepcopy(value),
+                "text": entries[key].text,
+                "status": "machine",
+                "version": source.semantic_version,
+            }
+            for key, value in (metadata.get("entries") or {}).items()
+        }
+        localized_functions[function_id] = result
     manifest = {
         "schema_version": "1.0",
         "locale": locale,
@@ -1720,7 +1768,13 @@ def build_pseudo_pack(
     if source.plural_rules():
         # Pseudo text has the source's shape, so it keeps the source grammar.
         manifest["plural_rules"] = dict(source.plural_rules())
-    return LocalePack(manifest, entries, None)
+    return LocalePack(
+        manifest,
+        entries,
+        None,
+        localized_functions,
+        source.localized_function_files,
+    )
 
 
 # ---------------------------------------------------------------------------
