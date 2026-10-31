@@ -397,7 +397,9 @@ def synthesize(query: str, text: str, *, device: str = "auto", timeout: int = 90
         raise OCFError("audition text must not be empty")
     configured = os.environ.get("OCF_CHATTERBOX_PYTHON")
     if configured:
-        interpreter = Path(configured).expanduser().resolve()
+        # Venv entry points often symlink to the base interpreter; resolving it
+        # bypasses the optional environment's site-packages.
+        interpreter = Path(configured).expanduser()
     elif sys.platform == "win32":
         interpreter = work_path("cache").parent / "voice-envs/chatterbox/Scripts/python.exe"
     else:

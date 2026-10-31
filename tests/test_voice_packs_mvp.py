@@ -301,6 +301,41 @@ def test_synthesis_receipt_promotes_only_after_success(private_store, monkeypatc
     assert inspected["validation"]["inference_verified"] is True
 
 
+@pytest.mark.unit
+def test_configured_symlinked_chatterbox_venv_python_is_not_resolved(private_store, monkeypatch):
+    pack = voice_packs.create_pack(
+        tone(private_store / "reference.wav"),
+        voice_id="OCF-VOICE-9889",
+        name="Synthetic fixture",
+        locale="en-US",
+        transcript="Fixture words.",
+        consent_declaration="Test fixture only.",
+    )
+    target = private_store / "base-python"
+    target.write_text("base interpreter placeholder")
+    interpreter = private_store / "venv" / "bin" / "python"
+    interpreter.parent.mkdir(parents=True)
+    interpreter.write_text("venv entry point")
+    original_resolve = Path.resolve
+
+    def resolve_venv_symlink(path, *args, **kwargs):
+        return target if path == interpreter else original_resolve(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "resolve", resolve_venv_symlink)
+    monkeypatch.setenv("OCF_CHATTERBOX_PYTHON", str(interpreter))
+
+    class StopBeforeInference(Exception):
+        pass
+
+    def stop(command, **kwargs):
+        assert command[0] == str(interpreter)
+        raise StopBeforeInference
+
+    monkeypatch.setattr(voice_packs, "workspace_run", stop)
+    with pytest.raises(StopBeforeInference):
+        voice_packs.synthesize(pack["profile"]["id"], "New text.")
+
+
 def test_pack_export_import_is_portable_and_requires_local_consent(private_store, monkeypatch):
     source = tone(private_store / "reference.wav")
     pack = voice_packs.create_pack(
