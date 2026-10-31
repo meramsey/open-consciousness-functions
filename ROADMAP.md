@@ -238,9 +238,10 @@ remains at 58 functions.
       reference preparation, pack creation/import, audition, narrator selection,
       complete-session render, portable private backup/restore, optional runtime
       setup, troubleshooting, privacy, licensing boundaries, and limitations.
-- [ ] A short user-facing zero-shot voice-pack README/quick start linked from the
+- [x] A short user-facing zero-shot voice-pack quick start linked from the
       repository entry points; reuse and verify the existing voice-pack CLI and
-      `docs/VOICE_CLONING.md` rather than creating a second workflow.
+      `docs/VOICE_PACKS.md` and capability/privacy guidance in `docs/VOICE_CLONING.md`
+      rather than creating a second workflow.
 - [ ] Private daily affirmations generator using user-owned voice packs; local
       output only unless separately authorized.
 - [ ] Accessible user-facing discovery of private voice profiles, references,
