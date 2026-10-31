@@ -113,10 +113,13 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
-          $PSNativeCommandUseErrorActionPreference = $false
           $python = (Get-Command python.exe -ErrorAction Stop).Source
-          & $python -m pytest -m unit -n 0 -vv --full-trace --junitxml=.ocf-work/logs/pytest-results.xml
-          $pytestProcessExitCode = $LASTEXITCODE
+          $stdout = Join-Path $env:RUNNER_TEMP 'pytest-unit.stdout.log'
+          $stderr = Join-Path $env:RUNNER_TEMP 'pytest-unit.stderr.log'
+          $process = Start-Process -FilePath $python -ArgumentList @('-m', 'pytest', '-m', 'unit', '-n', '0', '-vv', '--full-trace', '--junitxml=.ocf-work/logs/pytest-results.xml') -NoNewWindow -Wait -PassThru -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+          Get-Content $stdout
+          if (Test-Path $stderr) { Get-Content $stderr }
+          $pytestProcessExitCode = $process.ExitCode
           Write-Host "PYTEST_PROCESS_EXIT_CODE=$pytestProcessExitCode"
           exit $pytestProcessExitCode
       - name: Report unit failure details
