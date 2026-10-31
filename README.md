@@ -146,8 +146,10 @@ Use explicit event/resource/unit mappings or a complete all-event-marked stem.
 Recorded-only mode never silently falls back; hybrid mode requires a declared
 policy. Original files are preserved, and narration processing never touches
 the independent binaural bed. Text hashes do not verify speech content.
-Reference-voice cloning and training remain [explicitly unavailable until a
-working adapter is verified](docs/VOICE_CLONING.md).
+Private reference-voice packs are supported through the optional local
+Chatterbox Nano adapter; see the [voice-pack quick start](docs/VOICE_PACKS.md)
+and [voice privacy and capability notes](docs/VOICE_CLONING.md). Model training
+is not provided by this workflow.
 
 ## Artwork with a cosmic identity
 
