@@ -199,6 +199,35 @@ def test_cleanup_skips_a_stale_temp_directory_owned_by_live_foreign_pid(monkeypa
     assert scratch.is_dir()
 
 
+@pytest.mark.parametrize(
+    "probe_error,expected",
+    [(ProcessLookupError(), False), (PermissionError(), True)],
+)
+def test_foreign_owner_probe_distinguishes_dead_and_inaccessible_pids(
+    monkeypatch, tmp_path, probe_error, expected
+):
+    marker = tmp_path / ".ocf-owned"
+    marker.write_text(
+        json.dumps({"schema_version": "1.0", "owner_pid": 987654321, "token": "fixture"}),
+        encoding="utf-8",
+    )
+
+    def probe(pid, signal):
+        raise probe_error
+
+    monkeypatch.setattr(paths.os, "kill", probe)
+    assert paths._active_temp_owner(marker) is expected
+
+
+@pytest.mark.unit
+def test_legacy_and_malformed_owner_markers_remain_age_cleanable(tmp_path):
+    marker = tmp_path / ".ocf-owned"
+    marker.write_text("legacy-uuid-token\n", encoding="ascii")
+    assert paths._active_temp_owner(marker) is False
+    marker.write_text("{not-json", encoding="utf-8")
+    assert paths._active_temp_owner(marker) is False
+
+
 def test_cleanup_rejects_unowned_files_and_respects_retention(monkeypatch, tmp_path):
     monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "ocf-work"))
     scratch = paths.workspace_temp_directory()
