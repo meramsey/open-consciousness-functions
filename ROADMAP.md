@@ -254,6 +254,24 @@ remains at 58 functions.
 - [ ] Controlled authentic Farfield/reference-V4 A/B comparisons using one
       verified speech source and the shared OCF mixer, with reproducible level,
       timeline, DSP, and provenance receipts.
+- [ ] Complete the private Farfield A3/A4 listening decision. A4 tests a fixed
+      -11 dB gain on the entire active Focus 11 bed, including speech gaps and
+      closure; preserve A3 and keep A4 private until explicit human approval.
+      Technical QC is not listening approval or publication authorization.
+- [ ] Enforce one crash-recoverable owner per complete-render artifact identity:
+      atomic reservation, verified process identity, terminal-state recovery,
+      cache-only synthesis blocking when requested, safe stage retention, and
+      idempotent reuse of verified outputs. Post-publication reporting failures
+      must not misreport or invalidate a verified artifact.
+- [ ] Finish the private six-session V4 Hearing/Seeing narrator comparison
+      across Amy Medium, the original voice, and the TTS.ai-derived reference;
+      reuse verified editions and cache receipts, preserve one V4 background
+      baseline, and provide an offline index with relative links and hashes.
+- [ ] Keep portable private voice-pack metadata minimally identifying: preserve
+      accurate consent/provenance and checksums while excluding account names,
+      usernames, absolute machine/repository/virtual-environment paths, and
+      unrelated personal voice metadata. Voice audio remains potentially
+      identifying and private unless separately authorized.
 - [ ] Separate technical QC from human listening feedback and explicit approval
       tracking; neither technical renderability nor successful packaging is
       human approval or publication authorization.
