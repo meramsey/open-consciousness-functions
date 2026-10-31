@@ -262,9 +262,27 @@ remains at 58 functions.
       -11 dB gain on the entire active Focus 11 bed, including speech gaps and
       closure; preserve A3. The user has listened to the complete A4 Hearing
       session and likes its mix, and requested a private A5 successor with only
-      an additional fixed -1 dB on Focus 10 while preserving A4 Focus 11. A5
-      listening remains pending; neither edition is publicly authorized.
-      Technical QC and favorable A4 feedback are not publication authorization.
+       an additional fixed -1 dB on Focus 10 while preserving A4 Focus 11. A5
+       is approved for Mike's private local use; neither edition is publicly
+       authorized.
+       Technical QC and favorable A4 feedback are not publication authorization.
+- [ ] Resolve PR #7's Windows process-exit and coverage gates before beginning
+       further private feature work; retain the 89.5% coverage floor and the
+       required Windows matrix.
+- [ ] Make the approved immutable private A5 mix profile the local-only default
+       for this user's new sessions, with explicit version/fingerprint checks,
+       durable-job propagation, clear missing-asset failure, and an explicit
+       override. Keep public defaults and historical profiles unchanged.
+- [ ] Add a private, versioned 0.75x pitch-preserving narration-delivery
+       preference for Mike and authorized private alternates. Preserve 1.0x
+       speech/cache artifacts, measure transformed clip durations, recompute
+       session timing/closure/lyrics from those clips, and keep voice delivery
+       independent from A5 background mix selection.
+- [ ] Create the authorized additional private Chatterbox voice pack,
+       privacy-audited portable import/export, matched 1.0x/0.75x auditions,
+       and Hearing/Seeing A5 comparison sessions after PR #7 is green. Preserve
+       Bob's pack without generating additional Bob sessions; no private voice
+       or audio is public.
 - [ ] Enforce one crash-recoverable owner per complete-render artifact identity:
       atomic reservation, verified process identity, terminal-state recovery,
       cache-only synthesis blocking when requested, safe stage retention, and
