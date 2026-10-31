@@ -904,6 +904,52 @@ def test_fixed_semantic_state_gain_stays_on_through_silent_gap_and_closure(tmp_p
     )
 
 
+@pytest.mark.unit
+def test_fixed_state_gain_rejects_inactive_semantic_state_before_engine(monkeypatch, tmp_path):
+    with pytest.raises(OCFError, match="inactive background state"):
+        from ocf_tools.semantic_dsp import render_program
+
+        render_program(
+            state_doc(),
+            TIMES,
+            100,
+            load_profile("OCF-DSP-DEVELOPMENT-V4-001"),
+            tmp_path / "unused.wav",
+            state_gains_db={"inactive-state": -11},
+        )
+
+
+@pytest.mark.unit
+def test_fixed_state_gain_rejects_nonfinite_value_before_engine(monkeypatch, tmp_path):
+    from ocf_tools.semantic_dsp import render_program
+
+    with pytest.raises(OCFError, match="finite linear multipliers"):
+        render_program(
+            state_doc(),
+            TIMES,
+            100,
+            load_profile("OCF-DSP-DEVELOPMENT-V4-001"),
+            tmp_path / "unused.wav",
+            state_gains_db={"focus-11": float("nan")},
+        )
+
+
+@pytest.mark.unit
+def test_fixed_state_gain_is_validated_before_optional_renderer_lookup(monkeypatch, tmp_path):
+    from ocf_tools import semantic_dsp
+
+    monkeypatch.setattr(semantic_dsp.shutil, "which", lambda name: None)
+    with pytest.raises(OCFError, match="requires ffmpeg"):
+        semantic_dsp.render_program(
+            state_doc(),
+            TIMES,
+            100,
+            load_profile("OCF-DSP-DEVELOPMENT-V4-001"),
+            tmp_path / "unused.wav",
+            state_gains_db={"focus-11": -11},
+        )
+
+
 def test_cli_state_program_uses_existing_measured_ledger(monkeypatch, tmp_path):
     from ocf_tools import semantic_dsp
     from ocf_tools.cli import main
