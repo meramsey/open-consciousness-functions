@@ -29,7 +29,7 @@ def _literal(value):
     return "`" + str(value).replace("`", "&#96;").replace("\n", " ") + "`"
 
 
-def function_markdown(record, content, *, documentation=None):
+def function_markdown(record, content, *, documentation=None, narration_sections=None):
     """Render a registry record and existing artwork/cue helper result."""
     lines = [
         f"# {record.id}: {documentation['title']['text'] if documentation else record.canonical_name}",
@@ -190,6 +190,26 @@ def function_markdown(record, content, *, documentation=None):
             "Narration wording and recordings are edition-specific. [Guide and edition navigation](../index.md) lists included files when this guide is packaged. A source plan or approved script is not evidence of a released recording.",
             "",
         ]
+        if narration_sections:
+            lines += [
+                "## Complete readable canonical narration",
+                "",
+                "Each canonical narration section is printed once; repetition counts describe playback, not duplicate transcript text.",
+                "",
+            ]
+            for section in narration_sections:
+                lines += [
+                    f"### {section['role']} — `{section['key']}`",
+                    "",
+                    f"Narration status: {_literal(section['status'] or 'not labeled')}.",
+                    "",
+                ]
+                if section["repetitions"] > 1:
+                    lines += [
+                        f"Audio playback repetitions: {section['repetitions']}; transcript text shown once.",
+                        "",
+                    ]
+                lines += [section["text"], ""]
     else:
         lines += [
             "## Activation procedures and relationships",
@@ -255,10 +275,38 @@ def function_guide_markdown(record, *, catalog=None, locale="en-US"):
             "listener guides currently support en-US only; no silent translation fallback"
         )
     catalog = catalog or LocaleCatalog()
+    narration_sections = []
+    seen_sections = {}
+    for item in (record.data.get("narration") or {}).get("sequence", []):
+        key = item.get("key")
+        if not key:
+            continue
+        variables = item.get("variables") or {}
+        identity = (key, json.dumps(variables, sort_keys=True, ensure_ascii=False))
+        repetitions = item.get("repetitions", 1)
+        if isinstance(repetitions, bool) or not isinstance(repetitions, int) or repetitions < 1:
+            raise OCFError(f"{record.id}: invalid narration repetition count for {key}")
+        if identity in seen_sections:
+            narration_sections[seen_sections[identity]]["repetitions"] += repetitions
+            continue
+        entry, resolution = catalog.resource(key, locale, domain="narration", fallback=False)
+        narration_sections.append(
+            {
+                "key": key,
+                "role": item.get("role") or "narration",
+                "status": entry.status,
+                "text": entry.render(
+                    variables, plural_rules=catalog.plural_rules_for(resolution.origin_locale)
+                ),
+                "repetitions": repetitions,
+            }
+        )
+        seen_sections[identity] = len(narration_sections) - 1
     return function_markdown(
         record,
         function_artwork_content(record.id, locale, catalog=catalog, strict=False),
         documentation=_function_document(record, locale, catalog),
+        narration_sections=narration_sections,
     )
 
 
