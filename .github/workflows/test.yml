@@ -111,7 +111,8 @@ jobs:
         run: python -m pytest -m unit -n 2 --dist loadfile --junitxml=.ocf-work/logs/pytest-results.xml
       - name: Run isolated unit contracts with Windows interrupt diagnostics
         if: runner.os == 'Windows'
-        run: python -m pytest -m unit -n 0 -vv --full-trace --junitxml=.ocf-work/logs/pytest-results.xml
+        run: >-
+          python -c "import sys, pytest; result=pytest.main(['-m','unit','-n','0','-vv','--full-trace','--junitxml=.ocf-work/logs/pytest-results.xml']); print('PYTEST_MAIN_RETURN_CODE='+str(int(result)), flush=True); raise SystemExit(int(result))"
       - name: Report unit failure details
         if: failure()
         env:
