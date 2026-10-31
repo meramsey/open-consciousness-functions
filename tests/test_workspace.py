@@ -202,13 +202,20 @@ def test_cleanup_skips_a_stale_temp_directory_owned_by_live_foreign_pid(monkeypa
     monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "ocf-work"))
     scratch = paths.workspace_temp_directory()
     (scratch / ".ocf-owned").write_text(
-        json.dumps({"schema_version": "1.0", "owner_pid": os.getppid(), "token": "live"}),
+        json.dumps({"schema_version": "1.0", "owner_pid": 4242, "token": "live"}),
         encoding="utf-8",
     )
+    observed = []
+
+    def live_foreign_pid(pid, signal):
+        observed.append((pid, signal))
+
+    monkeypatch.setattr(paths.os, "kill", live_foreign_pid)
     old_time = time.time() - 3600
     os.utime(scratch, (old_time, old_time))
     assert scratch not in paths.cleanup_workspace(older_than_seconds=1, dry_run=True)
     assert scratch.is_dir()
+    assert observed == [(4242, 0)]
 
 
 @pytest.mark.parametrize(
