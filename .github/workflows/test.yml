@@ -113,6 +113,8 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
+          # Preserve native process status so the next lines can capture and propagate it.
+          $PSNativeCommandUseErrorActionPreference = $false
           python -c "import atexit, os, pytest; atexit.register(lambda: print('PYTEST_PROCESS_ATEXIT pid='+str(os.getpid()), flush=True)); result=pytest.main(['-m','unit','-n','0','-vv','--full-trace','--junitxml=.ocf-work/logs/pytest-results.xml']); print('PYTEST_MAIN_RETURN_CODE='+str(int(result))+' pid='+str(os.getpid()), flush=True); raise SystemExit(int(result))"
           $pytestProcessExitCode = $LASTEXITCODE
           Write-Host "POWERSHELL_PYTEST_PROCESS_EXIT_CODE=$pytestProcessExitCode"
