@@ -38,6 +38,43 @@ def add_commands(voice_subparsers) -> None:
     profile_import.add_argument("--id", help="new private voice ID")
     profile_import.add_argument("--consent-record", help="local portable consent reference")
 
+    pack_create = voice_subparsers.add_parser(
+        "create-pack", help="create a private reference-based voice pack from a prepared WAV"
+    )
+    pack_create.add_argument("--reference", type=Path, required=True)
+    pack_create.add_argument("--id", required=True)
+    pack_create.add_argument("--name", required=True)
+    pack_create.add_argument("--locale", default="en-US")
+    pack_create.add_argument(
+        "--transcript",
+        help="optional exact reference transcript; Chatterbox Nano does not require it",
+    )
+    pack_create.add_argument("--consent-declaration", required=True)
+    pack_create.add_argument(
+        "--source-type",
+        choices=("original-recording", "generated-tts", "authorized-other"),
+        default="original-recording",
+    )
+
+    pack_inspect = voice_subparsers.add_parser(
+        "inspect-pack", help="validate and inspect a private OCF reference voice pack"
+    )
+    pack_inspect.add_argument("voice_id")
+
+    pack_audition = voice_subparsers.add_parser(
+        "audition-pack", help="synthesize new text with a private reference voice pack"
+    )
+    pack_audition.add_argument("voice_id")
+    pack_audition.add_argument("--text", required=True)
+    pack_audition.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto")
+
+    prepare = voice_subparsers.add_parser(
+        "prepare-reference", help="inspect and prepare a local WAV/FLAC/MP3 reference clip"
+    )
+    prepare.add_argument("sample", type=Path)
+    prepare.add_argument("--start", type=float)
+    prepare.add_argument("--duration", type=float)
+
     recording = voice_subparsers.add_parser(
         "dataset-record", help="import an externally recorded WAV into one dataset prompt slot"
     )
@@ -76,10 +113,13 @@ def capabilities_report(*, probe_gpu: bool = False) -> dict:
             )
         elif not capability["available"]:
             blockers.append("The required local inference executable is missing.")
-            actions.append(
-                f"Install {capability['binary']} locally, then run ocf voice doctor and an explicit "
-                "ocf voice audition with a compatible profile."
-            )
+            if backend == "chatterbox-nano":
+                actions.append("Install the optional environment from docs/VOICE_PACKS.md.")
+            else:
+                actions.append(
+                    f"Install {capability['binary']} locally, then run ocf voice doctor and an explicit "
+                    "ocf voice audition with a compatible profile."
+                )
         else:
             actions.append(
                 "Run ocf voice doctor and ocf voice audition PROFILE to verify inference."
@@ -89,6 +129,11 @@ def capabilities_report(*, probe_gpu: bool = False) -> dict:
             actions.append(
                 "Run ocf voice training-plan with an authorized dataset to inspect blockers "
                 "and the upstream guide; no OCF train/clone command is available."
+            )
+        if backend == "chatterbox-nano" and capability["available"]:
+            actions.append(
+                "Use audio render-many with the selected voice profile and --speech-cache auto/off/refresh; "
+                "first inference downloads the model into the local workspace cache."
             )
         backends.append(
             {
@@ -131,6 +176,30 @@ def dispatch(args: Namespace) -> dict:
             voice_id=args.id,
             consent_record=args.consent_record,
         )
+    if kind == "create-pack":
+        from .voice_packs import create_pack
+
+        return create_pack(
+            args.reference,
+            voice_id=args.id,
+            name=args.name,
+            locale=args.locale,
+            transcript=args.transcript,
+            consent_declaration=args.consent_declaration,
+            source_type=args.source_type,
+        )
+    if kind == "inspect-pack":
+        from .voice_packs import inspect_pack
+
+        return inspect_pack(args.voice_id)
+    if kind == "audition-pack":
+        from .voice_packs import synthesize
+
+        return synthesize(args.voice_id, args.text, device=args.device)
+    if kind == "prepare-reference":
+        from .voice_packs import prepare_reference
+
+        return prepare_reference(args.sample, start_s=args.start, duration_s=args.duration)
     if kind == "dataset-record":
         return voice_datasets.import_recording(
             args.manifest,

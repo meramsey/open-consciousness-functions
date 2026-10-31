@@ -85,16 +85,26 @@ def _voice_profile(
     if profile is None:
         raise OCFError(f"unknown voice profile {query!r}; use `ocf voice list`")
     resolved = resolve_backend(profile, profiles, locale=locale, catalog=catalog)
-    discovery = resolved.get("environment") or {}
-    executable = (
-        discovery.get("executable")
-        if discovery.get("status") == "ready"
-        else shutil.which(resolved["binary"])
-    )
-    if not executable:
-        reason = discovery.get("reason") or "not on PATH or in existing local tool directories"
-        raise OCFError(f"voice backend {resolved['name']} executable is unavailable: {reason}")
-    resolved["binary"] = executable
+    if resolved["name"] == "chatterbox-nano":
+        from .voice_capabilities import backend_capability
+
+        capability = backend_capability(resolved["name"])
+        if not capability["available"]:
+            raise OCFError(
+                "Chatterbox Nano optional environment is unavailable: "
+                + capability["installation"]["discovery"]["reason"]
+            )
+    else:
+        discovery = resolved.get("environment") or {}
+        executable = (
+            discovery.get("executable")
+            if discovery.get("status") == "ready"
+            else shutil.which(resolved["binary"])
+        )
+        if not executable:
+            reason = discovery.get("reason") or "not on PATH or in existing local tool directories"
+            raise OCFError(f"voice backend {resolved['name']} executable is unavailable: {reason}")
+        resolved["binary"] = executable
     if resolved["name"] == "piper" and (
         not resolved.get("model") or not Path(str(resolved["model"])).is_file()
     ):

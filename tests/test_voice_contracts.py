@@ -114,7 +114,12 @@ def test_backend_profile_precedence_detection_and_model_expansion(monkeypatch, t
 
     monkeypatch.setattr(environment, "resolve_executable", discover)
     assert v.first_available_backend() == "espeak"
-    assert [item["name"] for item in v.detect_backends()] == ["espeak-ng", "espeak", "piper"]
+    assert [item["name"] for item in v.detect_backends()] == [
+        "espeak-ng",
+        "espeak",
+        "piper",
+        "chatterbox-nano",
+    ]
     monkeypatch.setenv("MODEL_DIR", str(tmp_path))
     expected = str((tmp_path / "voice.onnx").resolve())
     actual = v._expand_model_path("$MODEL_DIR/voice.onnx")
@@ -281,9 +286,10 @@ def test_pcm_width_channels_corruption_and_linear_resampling():
     assert 105 <= len(fitted) <= 115 and fitted[0] == fitted[-1] == 1000
 
 
-def test_voice_status_commands_have_no_execution_or_downloads(monkeypatch, capsys):
+def test_voice_status_commands_have_no_execution_or_downloads(monkeypatch, capsys, tmp_path):
     from ocf_tools import environment
 
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
     monkeypatch.setattr(environment, "_user_home", lambda: Path("/nonexistent/ocf-test-home"))
     monkeypatch.setenv("OCF_PIPER_EXECUTABLE", "/nonexistent/ocf-test-piper")
 
@@ -301,13 +307,45 @@ def test_voice_status_commands_have_no_execution_or_downloads(monkeypatch, capsy
     monkeypatch.setattr(v, "load_voice_profiles", lambda: [])
     assert v.voice_doctor() == 1
     assert v.list_profiles_cmd() == 0 and v.list_backends_cmd() == 0
-    assert "No voice profiles" in capsys.readouterr().out
+    output = capsys.readouterr().out
+    assert "No voice profiles" in output
+    assert "chatterbox-nano: project-local" not in output
     available["ready"] = True
     monkeypatch.setattr(
         v, "load_voice_profiles", lambda: [{"id": "profile", "slug": "voice", "backend": "espeak"}]
     )
     assert v.voice_doctor() == 0 and v.list_profiles_cmd() == 0
     assert "profile" in capsys.readouterr().out
+
+
+def test_voice_doctor_reports_optional_python_backend_without_fake_binary(monkeypatch, capsys):
+    from ocf_tools import environment
+
+    monkeypatch.setattr(
+        environment,
+        "discover_environment",
+        lambda **kwargs: {"python": {"status": "ready", "version": "3.12", "executable": "python"}},
+    )
+    monkeypatch.setattr(
+        v,
+        "detect_backends",
+        lambda: [
+            {
+                "name": "chatterbox-nano",
+                "available": True,
+                "executable": None,
+                "discovery": {
+                    "source": "project-local optional environment",
+                    "runtime": {"package_version": "0.1.7"},
+                },
+            }
+        ],
+    )
+    monkeypatch.setattr(v, "load_voice_profiles", lambda: [])
+    assert v.voice_doctor() == 0
+    result = capsys.readouterr().out
+    assert "chatterbox-nano: project-local optional environment" in result
+    assert "Chatterbox TTS 0.1.7" in result
 
 
 @pytest.mark.parametrize("case", ["ok", "empty", "nonzero", "oserror", "timeout"])

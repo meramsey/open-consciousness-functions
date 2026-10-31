@@ -238,6 +238,7 @@ def start_narration_render(
     locale: str = "en-US",
     voice: str | None = None,
     pacing: str = "sleep",
+    speech_cache_mode: str = "auto",
     idempotency_key: str | None = None,
     mix_profile: str | None = None,
 ) -> dict:
@@ -252,6 +253,7 @@ def start_narration_render(
             "locale": locale,
             "voice": voice,
             "pacing": pacing,
+            "speech_cache_mode": speech_cache_mode,
             **({"mix_profile": mix_profile} if mix_profile is not None else {}),
         },
         idempotency_key,
@@ -564,25 +566,64 @@ def select_tests(changed_files: list[str]) -> dict:
 
 
 @public
-def plan_audio(function_id: str, voice: str, locale: str = "en-US", pacing: str = "sleep") -> dict:
+def plan_audio(
+    function_id: str,
+    voice: str,
+    locale: str = "en-US",
+    pacing: str = "sleep",
+    dsp_profile: str | None = None,
+) -> dict:
     from .complete_session import render_complete_session
     from .diagnostics import diagnose
 
     owner(function_id)
+    if dsp_profile and (
+        "/" in dsp_profile or "\\" in dsp_profile or (work_root() / dsp_profile).is_file()
+    ):
+        dsp_profile = str(safe_path(dsp_profile, work_root()))
     result = render_complete_session(
-        function_id, voice=voice, locale=locale, pacing=pacing, dry_run=True
+        function_id,
+        voice=voice,
+        locale=locale,
+        pacing=pacing,
+        dsp_profile=dsp_profile,
+        dry_run=True,
     )["session_plan"]
-    tools = diagnose("farfield")
+    from .audio_build import _resolve_background_manifest
+
+    engines = {
+        manifest["engine"]
+        for state in result["resolved_dsp_profile"]["states"].values()
+        if state.get("mode") != "disabled"
+        and (manifest := _resolve_background_manifest(state["preset"])) is not None
+    }
+    workflows = []
+    if "farfield" in engines:
+        workflows.append(diagnose("farfield"))
+    else:
+        if "sbagenx" in engines:
+            workflows.append(diagnose("sbagenx"))
+        if "reference-master" in engines or "sbagenx" in engines:
+            workflows.append(diagnose("encode"))
+        if not workflows:
+            workflows.append(diagnose("core"))
+    failures = sorted({failure for item in workflows for failure in item["failures"]})
     return {
-        "status": "ready" if tools["ok"] else "blocked",
+        "status": "ready" if not failures else "blocked",
         "dry_run": True,
         "function_id": function_id,
         "voice": result["voice"],
         "stage_count": len(result["stages"]),
         "function_narration_estimate_seconds": result["tts_plan"]["estimated_duration_seconds"],
         "estimate_basis": "function-specific word-rate estimate only; excludes shared narration/holds; not measured full-session duration or cost",
-        "missing_dependencies": tools["failures"],
-        "cache": "verified per segment/output at explicit start",
+        "missing_dependencies": failures,
+        "resolved_dsp_profile": result["resolved_dsp_profile"]["id"],
+        "background_engines": sorted(engines),
+        "cache": {
+            "default": "auto",
+            "modes": ["auto", "off", "refresh"],
+            "unit": "content-addressed dry narration cue; complete mixes are never cached as speech",
+        },
         "output_policy": ".ocf-work/renders/; unique non-overwriting audition",
         "requires_explicit_start": True,
     }
@@ -594,12 +635,14 @@ def start_audio_render(
     voice: str,
     locale: str = "en-US",
     pacing: str = "sleep",
+    speech_cache_mode: str = "auto",
     force: bool = False,
     idempotency_key: str | None = None,
+    dsp_profile: str | None = None,
 ) -> dict:
     from .dev_jobs import start
 
-    preview = plan_audio(function_id, voice, locale, pacing)
+    preview = plan_audio(function_id, voice, locale, pacing, dsp_profile)
     if preview.get("status") != "ready":
         return preview
     return start(
@@ -609,6 +652,8 @@ def start_audio_render(
             "voice": voice,
             "locale": locale,
             "pacing": pacing,
+            "speech_cache_mode": speech_cache_mode,
+            **({"dsp_profile": dsp_profile} if dsp_profile is not None else {}),
             "force": force,
         },
         idempotency_key,
@@ -720,7 +765,7 @@ def cache_diagnostics() -> dict:
     from .paths import work_path
     from .speech_cache import MAX_CACHE_BYTES, STATS
 
-    entries = list(work_path("cache", "tts").glob("*/speech.wav"))
+    entries = list(work_path("cache", "tts").glob("*/manifest.json"))
     from .dsp_cache import MAX_BYTES
 
     dsp_files = [p for p in work_path("cache", "dsp").glob("*/*") if p.is_file()]
@@ -733,10 +778,10 @@ def cache_diagnostics() -> dict:
         "process_counters": dict(STATS),
         "entries": len(entries),
         "bytes": sum(
-            p.lstat().st_size for p in work_path("cache", "tts").glob("*/*") if p.is_file()
+            p.lstat().st_size for p in work_path("cache", "tts").rglob("*") if p.is_file()
         ),
         "max_bytes": MAX_CACHE_BYTES,
-        "policy": "content-addressed; writes bypassed at limit; explicit cleanup only",
+        "policy": "content-addressed; verified refresh history retained; explicit cleanup only",
     }
 
 

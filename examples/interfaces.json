@@ -709,7 +709,7 @@
         "audio",
         "render-many"
       ],
-      "usage": "usage: ocf audio render-many [-h] [--all] [--locale LOCALE] --voice VOICE\n                             [--pacing {normal,relaxed,sleep}] [--rate RATE]\n                             [--workers WORKERS] [--dsp-profile DSP_PROFILE]\n                             [--dry-run] [--resume] [--force]\n                             [--fresh-synthesis]\n                             [function_ids ...]",
+      "usage": "usage: ocf audio render-many [-h] [--all] [--locale LOCALE] --voice VOICE\n                             [--pacing {normal,relaxed,sleep}] [--rate RATE]\n                             [--workers WORKERS] [--dsp-profile DSP_PROFILE]\n                             [--dry-run] [--resume] [--force]\n                             [--fresh-synthesis]\n                             [--speech-cache {auto,off,refresh}]\n                             [function_ids ...]",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -833,7 +833,7 @@
         "audio",
         "render"
       ],
-      "usage": "usage: ocf audio render [-h] [--mode {session,narration-only}]\n                        [--locale LOCALE]\n                        [--narration-sources NARRATION_SOURCES]\n                        [--narration-source {tts,recording,hybrid,silence}]\n                        [--voice VOICE] [--overrides OVERRIDES]\n                        [--pacing {normal,relaxed,sleep}]\n                        [--template TEMPLATE] [--dsp-profile DSP_PROFILE]\n                        [--output OUTPUT]\n                        [--audition-version AUDITION_VERSION]\n                        [--artwork ARTWORK] [--artwork-theme ARTWORK_THEME]\n                        [--rate RATE] [--mix-profile MIX_PROFILE]\n                        [--voice-gain VOICE_GAIN]\n                        [--background-gain BACKGROUND_GAIN] [--dry-run]\n                        function_id",
+      "usage": "usage: ocf audio render [-h] [--mode {session,narration-only}]\n                        [--locale LOCALE]\n                        [--narration-sources NARRATION_SOURCES]\n                        [--narration-source {tts,recording,hybrid,silence}]\n                        [--voice VOICE] [--overrides OVERRIDES]\n                        [--pacing {normal,relaxed,sleep}]\n                        [--template TEMPLATE] [--dsp-profile DSP_PROFILE]\n                        [--output OUTPUT]\n                        [--audition-version AUDITION_VERSION]\n                        [--artwork ARTWORK] [--artwork-theme ARTWORK_THEME]\n                        [--rate RATE] [--mix-profile MIX_PROFILE]\n                        [--voice-gain VOICE_GAIN]\n                        [--background-gain BACKGROUND_GAIN] [--dry-run]\n                        [--speech-cache {auto,off,refresh}]\n                        function_id",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -948,6 +948,67 @@
         "import-profile"
       ],
       "usage": "usage: ocf voice import-profile [-h] [--include-assets] [--id ID]\n                                [--consent-record CONSENT_RECORD]\n                                FILE",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "create-pack",
+        "--reference",
+        "YOUR_REFERENCE",
+        "--id",
+        "YOUR_ID",
+        "--name",
+        "YOUR_NAME",
+        "--consent-declaration",
+        "YOUR_CONSENT_DECLARATION"
+      ],
+      "path": [
+        "voice",
+        "create-pack"
+      ],
+      "usage": "usage: ocf voice create-pack [-h] --reference REFERENCE --id ID --name NAME\n                             [--locale LOCALE] [--transcript TRANSCRIPT]\n                             --consent-declaration CONSENT_DECLARATION\n                             [--source-type {original-recording,generated-tts,authorized-other}]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "inspect-pack",
+        "espeak-en"
+      ],
+      "path": [
+        "voice",
+        "inspect-pack"
+      ],
+      "usage": "usage: ocf voice inspect-pack [-h] voice_id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "audition-pack",
+        "espeak-en",
+        "--text",
+        "YOUR_TEXT"
+      ],
+      "path": [
+        "voice",
+        "audition-pack"
+      ],
+      "usage": "usage: ocf voice audition-pack [-h] --text TEXT [--device {auto,cpu,cuda}]\n                               voice_id",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "voice",
+        "prepare-reference",
+        "YOUR_SAMPLE"
+      ],
+      "path": [
+        "voice",
+        "prepare-reference"
+      ],
+      "usage": "usage: ocf voice prepare-reference [-h] [--start START] [--duration DURATION]\n                                   sample",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -2162,14 +2223,14 @@
     "schemas/theme.schema.json": "e4316f7acbd55c53c255d06efba8ecd8d3f7b69541219ee360d24f4779ccb6fb",
     "schemas/timed-transcript.schema.json": "c3e2798f7ace0ba81c1fb5f1d2fa5afad20066ac3285a2fb7772dbed995b5950",
     "schemas/voice-dataset.schema.json": "0307327f3f52eeaaaed71abaa6d1950c0b665fc677b43547e2452e9c31000ed8",
-    "schemas/voice-profile.schema.json": "0204c3379a0540d22e3792ee5b78ad134bd2a8cb73ddf51c975a602dbcb2c23d",
-    "scripts/ocf_tools/agent_api.py": "0f1e3b563fc5cc85e0798522cb9573541ced9631ba20768d307a51c9e93bfcdb",
-    "scripts/ocf_tools/cli.py": "7538860e0300ddbfe731d873070374993baacb2ee09635e90959ed2f4fc19681",
+    "schemas/voice-profile.schema.json": "bff61d964e36686802129b9631fed45c3baa5262d5359d330a0b3f59763ee40e",
+    "scripts/ocf_tools/agent_api.py": "ac978df4e808bbc8b1541139b4760e0244faa5d62101b78ab954c9b43f0ed7a0",
+    "scripts/ocf_tools/cli.py": "cdc6f108418d69730a68a14fd48630f190a7e200f599ba2ee2913c79537b586c",
     "scripts/ocf_tools/lsp_server.py": "a753b91b1b73609ecd6886470a037a9bbf1259e2a77f08203546e55ef4cbae09",
     "scripts/ocf_tools/mcp_server.py": "d8641d4160888abbe7152fca2117623de4dfb061793b95b161dbfb4534a2be54",
     "scripts/ocf_tools/narration_cli.py": "5f13a05251816e5d3b80419d9ed67184b5c6c48722175700bbc88ec2b429bd41",
     "scripts/ocf_tools/prompts.py": "3ac363286118b80afb1c7b9fc0424228f3c1721dfb1f627128a50c47a3c5e6c3",
-    "scripts/ocf_tools/voice_engine_cli.py": "da5904aff97e0dc9923c80b891adc9a8131d8cd8da71b54cc44e8a71f84c99d6"
+    "scripts/ocf_tools/voice_engine_cli.py": "8072498f87f5509f7a18016d8d12f221dc36f3a393699c63ea18e6f6d39c77eb"
   },
   "workflows": {
     "schema_version": "1.0",

@@ -37,6 +37,7 @@ operator supplies their own lawfully held source material.
 
 from __future__ import annotations
 
+import hashlib
 import io
 import json
 import math
@@ -309,6 +310,14 @@ BACKENDS: dict[str, dict[str, Any]] = {
             else [exe, text]
         ),
     },
+    "chatterbox-nano": {
+        "binary": None,
+        "default_language": "en",
+        "default_wpm": None,
+        "mode": "reference",
+        "locale_style": "language-only",
+        "phonemes": None,
+    },
 }
 
 LOCALE_STYLES = ("lower-hyphen", "language-only", "model")
@@ -408,6 +417,20 @@ def detect_backends() -> list[dict[str, Any]]:
 
     found = []
     for name, spec in BACKENDS.items():
+        if name == "chatterbox-nano":
+            from .voice_capabilities import backend_capability
+
+            capability = backend_capability(name)
+            found.append(
+                {
+                    "name": name,
+                    "binary": None,
+                    "executable": None,
+                    "available": capability["available"],
+                    "discovery": capability["installation"]["discovery"],
+                }
+            )
+            continue
         discovery = resolve_executable(spec["binary"])
         executable = discovery.get("executable") if discovery["status"] == "ready" else None
         found.append(
@@ -425,7 +448,7 @@ def detect_backends() -> list[dict[str, Any]]:
 def first_available_backend() -> str | None:
     """Return the first detected backend name, or None."""
     for entry in detect_backends():
-        if entry["available"]:
+        if entry["available"] and entry["name"] != "chatterbox-nano":
             return entry["name"]
     return None
 
@@ -496,9 +519,35 @@ def _load_profile(profile: dict[str, Any]) -> dict[str, Any]:
         "piper_length_scale": profile.get("piper_length_scale"),
         "piper_sentence_silence_s": profile.get("piper_sentence_silence_s"),
         "profile_id": profile.get("id"),
+        "profile_version": profile.get("version"),
         "gain_db": profile.get("gain_db") or 0,
         "processing_defaults": profile.get("processing_defaults", {}),
     }
+    if name == "chatterbox-nano":
+        from .custom_voices import asset_root, validate_profile
+        from .voice_packs import cached_model_revision, cached_model_tree_fingerprint
+
+        validate_profile(profile)
+        reference = profile["reference_audio"]
+        resolved.update(
+            {
+                "reference_audio": str(asset_root() / reference["asset"]),
+                "reference_sha256": reference["sha256"],
+                "reference_text_sha256": hashlib.sha256(
+                    reference.get("reference_text", "").encode("utf-8")
+                ).hexdigest(),
+                "profile_version": profile.get("version"),
+                "model_identity": {
+                    "identifier": reference["model_identifier"],
+                    "revision": cached_model_revision() or reference["model_revision"],
+                    "sha256": cached_model_tree_fingerprint() or reference.get("model_tree_sha256"),
+                    "adapter_revision": reference.get("adapter_revision"),
+                },
+            }
+        )
+        if profile.get("pronunciation"):
+            resolved["pronunciation"] = profile["pronunciation"]
+        return resolved
     from .environment import resolve_executable
 
     executable = resolve_executable(resolved["binary"])
@@ -577,6 +626,10 @@ def resolve_backend(
                 f"id/slug or one of {', '.join(sorted(BACKENDS))})"
             )
         name = lowered
+        if name == "chatterbox-nano":
+            raise OCFError(
+                "chatterbox-nano requires selecting a registered reference voice-pack ID"
+            )
         spec_entry = BACKENDS[name]
         return _retarget_locale(
             {
@@ -658,7 +711,7 @@ def _retarget_locale(spec: dict[str, Any], locale: str | None, catalog: Any) -> 
 
 def check_backend_locale(spec: dict[str, Any]) -> None:
     """Probe an installed language-switchable backend before synthesizing speech."""
-    if not spec.get("locale") or spec["name"] == "piper":
+    if not spec.get("locale") or spec["name"] in {"piper", "chatterbox-nano"}:
         return
     executable = shutil.which(spec["binary"])
     if not executable:
@@ -683,6 +736,11 @@ def render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes:
 
 
 def _render_cue_wav(spec: dict[str, Any], text: str, timeout: int = 60) -> bytes:
+    if spec["name"] == "chatterbox-nano":
+        from .voice_packs import synthesize
+
+        report = synthesize(spec["profile_id"], text, timeout=max(timeout, 900))
+        return Path(report["output"]).read_bytes()
     executable = shutil.which(spec["binary"])
     if not executable:
         raise OCFError(
@@ -1794,29 +1852,47 @@ def voice_doctor() -> int:
         f"{python.get('executable')} [{python.get('source', 'configured')}]"
     )
     for entry in detect_backends():
+        discovery = entry.get("discovery") or {}
         if entry["available"]:
             available += 1
-            print(f"[ok]  {entry['name']}: {entry['executable']}")
-            runtime = (entry.get("discovery") or {}).get("runtime") or {}
+            location = entry["executable"] or discovery.get("source") or "available"
+            print(f"[ok]  {entry['name']}: {location}")
+            runtime = discovery.get("runtime") or {}
             if entry["name"] == "piper" and runtime.get("package_version"):
                 print(
                     f"      Piper TTS {runtime['package_version']} / Python "
                     f"{runtime.get('python_version')}; run `ocf voice smoke PROFILE` to verify inference."
                 )
+            elif entry["name"] == "chatterbox-nano" and runtime.get("package_version"):
+                print(
+                    f"      Chatterbox TTS {runtime['package_version']}; run "
+                    "`ocf voice audition-pack ID --text TEXT` to verify inference."
+                )
         else:
-            discovery = entry.get("discovery") or {}
             if discovery.get("status") == "broken":
                 print(
                     f"[!!] {entry['name']}: found at {discovery.get('executable')} "
                     f"but unusable ({discovery.get('reason')})"
                 )
             else:
-                print(
-                    f"[!!] {entry['name']}: not on PATH or configured local tool paths "
-                    f"(install {entry['binary']} only if genuinely absent)"
-                )
+                if entry["name"] == "chatterbox-nano":
+                    print(
+                        f"[!!] {entry['name']}: {discovery.get('reason') or 'optional environment is absent'}"
+                    )
+                else:
+                    print(
+                        f"[!!] {entry['name']}: not on PATH or configured local tool paths "
+                        f"(install {entry['binary']} only if genuinely absent)"
+                    )
+    from .indexes import discover_voice_profiles
+
     profiles = load_voice_profiles()
-    print(f"voice profiles: {len(profiles)} in audio/voices/profiles/")
+    shipped_profiles = len(discover_voice_profiles())
+    private_profiles = len(profiles) - shipped_profiles
+    print(
+        f"voice profiles: {len(profiles)} total "
+        f"({shipped_profiles} shipped, {private_profiles} private)"
+    )
     if profile := next(iter(profiles), None):
         print(f"  default: {profile.get('slug')} (backend {profile.get('backend')})")
     amy = next((item for item in profiles if item.get("id") == "OCF-VOICE-9003"), None)
@@ -1838,7 +1914,7 @@ def voice_doctor() -> int:
 
 
 def voice_smoke(profile_id: str, *, locale: str = "en-US") -> int:
-    """Perform one fresh, short Piper/espeak synthesis and verify returned PCM."""
+    """Perform one fresh, short local voice synthesis and verify returned PCM."""
     from .locale import LocaleCatalog
     from .narration_first import _voice_profile
 
@@ -1857,7 +1933,11 @@ def voice_smoke(profile_id: str, *, locale: str = "en-US") -> int:
 def list_backends_cmd() -> int:
     """`ocf voice list-backends`."""
     for entry in detect_backends():
-        state = f"{entry['executable']}" if entry["available"] else "not installed"
+        state = (
+            str(entry["executable"] or (entry.get("discovery") or {}).get("source") or "available")
+            if entry["available"]
+            else "not installed"
+        )
         print(f"{entry['name']}: {state}")
         support = backend_locale_support(entry["name"])
         style = LOCALE_STYLE_LABELS.get(

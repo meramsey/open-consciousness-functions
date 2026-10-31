@@ -84,6 +84,21 @@ and free disk can reduce this, including to one worker. A process lock prevents
 competing batches. Failure is reported per function and the batch continues;
 interruption preserves per-function statuses and completed receipts.
 
+Background engines come from the effective DSP profile, not the selected voice.
+When using a local reference-master profile, select it explicitly in both the
+preflight and render command:
+
+```bash
+python3 scripts/ocf.py audio render-many OCF-SEN-001 --voice PROFILE \
+  --dsp-profile .ocf-work/private/reference-v4.yaml --dry-run --workers 1
+python3 scripts/ocf.py audio render-many OCF-SEN-001 --voice PROFILE \
+  --dsp-profile .ocf-work/private/reference-v4.yaml --speech-cache auto --workers 1
+```
+
+An omitted override keeps the session template's standard HPLUS/Farfield
+profile, including its Farfield requirement. Choosing a reference voice never
+silently switches or substitutes that background.
+
 Resume skips only matching configuration/voice/renderer inputs whose complete
 manifest and every artifact still match checksums and sizes. Corrupt/missing
 outputs produce a new unique audition. `--fresh-synthesis` bypasses every speech
@@ -93,6 +108,32 @@ auditions. Speech-cache identity
 includes exact text, locale, engine/model/configuration bytes, settings, rate,
 package versions and renderer identity. Cache PCM is verified before reuse.
 Auditions, receipts, cache and logs remain in `.ocf-work/`; nothing uploads audio.
+
+`--speech-cache auto|off|refresh` makes speech reuse explicit. `auto` is the
+default and reuses only checksum-verified matching dry narration WAVs; `off`
+regenerates each request; `refresh` generates each compatible key once per batch
+and keeps superseded verified clips under that key's `history/`. `--fresh-synthesis`
+remains an alias for `off`; `--force` maps the default `auto` policy to `off`
+while still creating a new session audition. Choose `--speech-cache refresh` with
+`--force` to regenerate speech units while preserving prior clip generations. The Chatterbox worker and same
+reference conditioning remain resident through one `render-many` batch only.
+Per-session manifests record unit hits/misses, audio hashes and measured timing;
+the batch summary reports unique/repeated units, cross-function shared units,
+worker/conditioning reuse and estimated saved generation time. A stochastic
+regeneration may differ; normal reuse returns the first verified cached bytes.
+
+The opt-in integration test measures selected actual narration units from Hearing,
+Seeing and BOD-006 without packaging/mixing a full session:
+
+```bash
+OCF_CHATTERBOX_INTEGRATION_VOICE_ID=OCF-VOICE-9900 \
+python -m pytest tests/test_speech_cache_batch.py \
+  -k opt_in_representative_shared_narration_cache_benchmark -q -s
+```
+
+Replace the ID with an explicitly authorized local reference pack. This test does
+not bypass the complete-session DSP/background pipeline; full sessions still need
+their configured engines and approved profiles.
 
 Resume also verifies the effective background profile, preset/source bytes and
 engine identity, including when no `--dsp-profile` override is supplied. Farfield
@@ -115,6 +156,15 @@ there is no persistent trust cache for private masters. This optimization assume
 ordinary local filesystem metadata, not hostile concurrent metadata manipulation.
 `--force` bypasses both speech and DSP stem caches throughout nested render calls;
 the normal cache policy is restored after the forced scope ends.
+
+`--speech-cache auto|off|refresh` makes TTS reuse explicit: `auto` reuses verified
+compatible clips (the default), `off` synthesizes fresh speech, and `refresh`
+creates one new generation per compatible unit while retaining the prior clip
+and receipt in cache history. `--fresh-synthesis` remains an alias for `off`.
+`--force` maps the default `auto` policy to `off` (preserving its historical
+speech/DSP bypass); explicitly choose `--speech-cache refresh` to force a new
+speech generation while retaining history. Full-session output resumption is
+controlled separately.
 
 Inspect `session-report.json`, `session-timing-report.json`, the transcript and
 the three `pacing-auditions/` excerpts. Listen and record human review separately.

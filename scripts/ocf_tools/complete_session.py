@@ -920,6 +920,8 @@ def render_complete_session(
     audition_version: str = "0.1.0",
     artwork_file: str | Path | None = None,
     artwork_theme: str | None = None,
+    speech_cache_mode: str = "auto",
+    speech_cache_scope: str | None = None,
 ) -> dict[str, Any]:
     """Expand the bound complete session and render/mix it using OCF's engines."""
     from . import audio_build
@@ -1076,10 +1078,18 @@ def render_complete_session(
         bg_gain = 1.0 if background_gain is None else float(background_gain)
         if not math.isfinite(bg_gain) or bg_gain < 0:
             raise OCFError("background_gain must be a finite nonnegative linear gain")
-        from .speech_cache import STATS, enabled
+        from .speech_cache import policy
+        from .voice_packs import persistent_worker
 
-        cache_before = dict(STATS)
-        with enabled():
+        with (
+            policy(
+                speech_cache_mode,
+                refresh_scope=speech_cache_scope,
+                function_id=function_id,
+            ) as cache_context,
+            persistent_worker(voice),
+        ):
+            speech_cache_stats, speech_cache_events, cache_refresh_scope = cache_context
             built = audio_build.build(
                 "complete-session",
                 manifest_override=transient_manifest,
@@ -1109,7 +1119,13 @@ def render_complete_session(
                 ),
             )
         speech_cache_report = {
-            key: value - cache_before.get(key, 0) for key, value in STATS.items()
+            "mode": speech_cache_mode,
+            "refresh_scope": cache_refresh_scope,
+            **speech_cache_stats,
+            "unique_synthesis_units": len(
+                {event["cache_key"] for event in speech_cache_events if event.get("cache_key")}
+            ),
+            "units": speech_cache_events,
         }
         verify_stage_limits(doc, built["event_timing"], options.get("stage_maximum_seconds", {}))
         render_master = render_dir / built["master"]["file"]

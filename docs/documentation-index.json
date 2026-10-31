@@ -719,7 +719,7 @@
         "voice doctor"
       ],
       "related_schemas": [],
-      "sha256": "6aaa22f8691913733f9edccfd4b0b82f0aaa6f937c32d7add97ea95abd0433ee",
+      "sha256": "1a8824f313f9e76e7c0f74a46616d5743e8053804c90171f46e52cb05b514395",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -2051,7 +2051,34 @@
         "voice import-profile"
       ],
       "related_schemas": [],
-      "sha256": "81e3bc700b2a2a61309ae84d8246016e532fac5d9bd8af0c2f15ad9dae119095",
+      "sha256": "393df74160dd7ad5ac6183652543f1bb9eb8c4110fc7fa7e94fc18bf8583ce50",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "docs/VOICE_PACKS.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Private zero-shot voice packs (MVP)",
+      "related_commands": [
+        "audio render",
+        "audio render-many",
+        "voice audition-pack",
+        "voice create-pack",
+        "voice export-profile",
+        "voice import-profile",
+        "voice inspect-pack",
+        "voice prepare-reference"
+      ],
+      "related_schemas": [],
+      "sha256": "f5dc3bd1a121cb9b785ebefed6fb634bea566f9590ee0ae46508a7a69789f684",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5318,7 +5345,7 @@
       "related_schemas": [
         "schemas/voice-profile.schema.json"
       ],
-      "sha256": "0204c3379a0540d22e3792ee5b78ad134bd2a8cb73ddf51c975a602dbcb2c23d",
+      "sha256": "bff61d964e36686802129b9631fed45c3baa5262d5359d330a0b3f59763ee40e",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5399,7 +5426,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "7538860e0300ddbfe731d873070374993baacb2ee09635e90959ed2f4fc19681",
+      "sha256": "cdc6f108418d69730a68a14fd48630f190a7e200f599ba2ee2913c79537b586c",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5512,5 +5539,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 265
+  "total": 266
 }

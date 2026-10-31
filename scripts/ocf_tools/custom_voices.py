@@ -96,6 +96,10 @@ def validate_profile(profile: dict, *, assets: bool = True) -> dict:
     errors = validate_against_schema(profile, _load_schema("voice-profile.schema.json"))
     if errors:
         raise OCFError("voice profile: " + " | ".join(errors))
+    if profile.get("backend") == "chatterbox-nano" and not str(
+        profile.get("locale", "")
+    ).lower().startswith("en-"):
+        errors.append("Chatterbox Nano voice profiles currently support English locales only")
     for value in [
         *profile.get("required_assets", []),
         *([profile["consent_record"]] if profile.get("consent_record") else []),
@@ -203,6 +207,11 @@ def validate_profile(profile: dict, *, assets: bool = True) -> dict:
     from .voice_capabilities import profile_capability
 
     capability = profile_capability(profile)
+    inference_verified = False
+    if profile.get("backend") == "chatterbox-nano":
+        from .voice_packs import inference_verified as has_verified_inference
+
+        inference_verified = has_verified_inference(profile)
     return {
         "id": profile["id"],
         "valid": True,
@@ -210,7 +219,7 @@ def validate_profile(profile: dict, *, assets: bool = True) -> dict:
         "distribution_permission": profile.get("distribution_permission", "unknown"),
         "available": capability["available"] if assets else False,
         "inference_supported": capability["inference_supported"],
-        "inference_verified": False,
+        "inference_verified": inference_verified,
         "blockers": capability["blockers"] + ([] if assets else ["Assets have not been checked."]),
     }
 
@@ -423,7 +432,12 @@ def export_profile(query: str | dict, output: Path, include_assets: bool = False
             transfers.append((source, destination, checksum, asset, relative))
     bundle = {
         "schema_version": "1.0",
-        "kind": "ocf-voice-profile",
+        "kind": (
+            "ocf-voice-pack"
+            if profile.get("creation_provenance", {}).get("pack_type")
+            == "reference-based-zero-shot"
+            else "ocf-voice-profile"
+        ),
         "profile": profile,
         "consent_records_redacted": True,
         "assets": [
@@ -467,7 +481,7 @@ def import_profile(
     bundle = read_json_object(path)
     _validate_finite_json(bundle, "portable profile")
     if (
-        bundle.get("kind") != "ocf-voice-profile"
+        bundle.get("kind") not in {"ocf-voice-profile", "ocf-voice-pack"}
         or bundle.get("schema_version") != "1.0"
         or not isinstance(bundle.get("profile"), dict)
     ):

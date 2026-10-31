@@ -64,6 +64,86 @@ def test_pagination_schema_summary_and_workflow_commands():
                 assert exc.code == 0
 
 
+@pytest.mark.unit
+def test_plan_audio_diagnoses_explicit_background_profile_not_voice_default(monkeypatch, tmp_path):
+    from ocf_tools import audio_build, complete_session, diagnostics
+
+    work = tmp_path / "work"
+    work.mkdir()
+    profile_path = work / "ref-profile.yaml"
+    profile_path.write_text("fixture")
+    monkeypatch.setenv("OCF_WORK_DIR", str(work))
+    selected_profiles = []
+    workflows = []
+
+    def render(function_id, *, voice, dsp_profile, **_kwargs):
+        selected_profiles.append(dsp_profile)
+        return {
+            "session_plan": {
+                "voice": {
+                    "id": voice,
+                    "backend": "piper" if "PIPER" in voice else "chatterbox-nano",
+                },
+                "stages": [{"id": "one"}],
+                "tts_plan": {"estimated_duration_seconds": 3},
+                "resolved_dsp_profile": {
+                    "id": "REFERENCE-F10-F11-V4",
+                    "states": {"focus-10": {"mode": "preset", "preset": "reference"}},
+                },
+            }
+        }
+
+    monkeypatch.setattr(complete_session, "render_complete_session", render)
+    monkeypatch.setattr(
+        audio_build, "_resolve_background_manifest", lambda _preset: {"engine": "reference-master"}
+    )
+    monkeypatch.setattr(
+        diagnostics,
+        "diagnose",
+        lambda workflow: workflows.append(workflow) or {"ok": True, "failures": [], "checks": []},
+    )
+    first = api.plan_audio("OCF-SEN-001", "OCF-VOICE-PIPER", dsp_profile="ref-profile.yaml")
+    second = api.plan_audio("OCF-SEN-001", "OCF-VOICE-CLONE", dsp_profile="ref-profile.yaml")
+    assert first["status"] == second["status"] == "ready"
+    assert first["resolved_dsp_profile"] == second["resolved_dsp_profile"] == "REFERENCE-F10-F11-V4"
+    assert first["background_engines"] == second["background_engines"] == ["reference-master"]
+    assert selected_profiles == [str(profile_path.resolve())] * 2
+    assert workflows == ["encode", "encode"]
+
+
+@pytest.mark.unit
+def test_plan_audio_keeps_standard_farfield_requirement(monkeypatch):
+    from ocf_tools import audio_build, complete_session, diagnostics
+
+    monkeypatch.setattr(
+        complete_session,
+        "render_complete_session",
+        lambda *_args, **_kwargs: {
+            "session_plan": {
+                "voice": {"id": "OCF-VOICE-9100", "backend": "chatterbox-nano"},
+                "stages": [],
+                "tts_plan": {"estimated_duration_seconds": 1},
+                "resolved_dsp_profile": {
+                    "id": "OCF-DSP-HPLUS-LOCKED-003",
+                    "states": {"focus-10": {"mode": "preset", "preset": "hplus"}},
+                },
+            }
+        },
+    )
+    monkeypatch.setattr(
+        audio_build, "_resolve_background_manifest", lambda _preset: {"engine": "farfield"}
+    )
+    monkeypatch.setattr(
+        diagnostics,
+        "diagnose",
+        lambda workflow: {"ok": False, "failures": ["farfield"], "checks": []},
+    )
+    result = api.plan_audio("OCF-SEN-001", "OCF-VOICE-9100")
+    assert result["status"] == "blocked"
+    assert result["missing_dependencies"] == ["farfield"]
+    assert result["background_engines"] == ["farfield"]
+
+
 def test_targeted_validation_and_source_plan_summary():
     validation = api.validate_function("OCF-FND-002", limit=1)
     assert validation["errors"] == 0

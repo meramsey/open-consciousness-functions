@@ -14,7 +14,7 @@
     "customization_method": {"enum":["installed-model","reference-audio","trained-adapted"]},
     "reference_audio": {
       "type":"object","additionalProperties":false,
-      "required":["asset","sha256","reference_text","locale","speaker","consent_status"],
+      "required":["asset","sha256","locale","speaker","consent_status"],
       "properties":{
         "asset":{"type":"string","pattern":"^[A-Za-z0-9][A-Za-z0-9._/-]*$"},
         "sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
@@ -25,7 +25,15 @@
         "consent_status":{"enum":["unknown","self-recorded","authorized-contributor"]},
         "consent_record":{"type":"string","minLength":1},
         "config_asset":{"type":"string","pattern":"^[A-Za-z0-9][A-Za-z0-9._/-]*$"},
-        "config_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"}
+        "config_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+        "source_type":{"enum":["original-recording","generated-tts","authorized-other"]},
+        "transcript_status":{"enum":["confirmed","draft","not-provided"]},
+        "source_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+        "model_identifier":{"type":"string","minLength":1},
+        "model_revision":{"type":"string","minLength":1},
+        "adapter_revision":{"type":"string","minLength":1},
+        "model_tree_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+        "model_files":{"type":"object","additionalProperties":{"type":"string","pattern":"^[a-f0-9]{64}$"}}
       },
       "dependencies":{"config_asset":["config_sha256"],"config_sha256":["config_asset"]}
     },
@@ -80,14 +88,15 @@
     "id": { "type": "string", "pattern": "^OCF-VOICE-[0-9]{4}$" },
     "slug": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
     "name": { "type": "string", "minLength": 1 },
-    "backend": { "type": "string", "enum": ["espeak-ng", "espeak", "piper", "f5-tts"] },
+    "backend": { "type": "string", "enum": ["espeak-ng", "espeak", "piper", "f5-tts", "chatterbox-nano"] },
     "language": { "type": ["string", "null"], "default": null },
     "words_per_min": { "type": ["integer", "null"], "minimum": 40, "default": null },
     "piper_model": { "type": ["string", "null"], "default": null },
     "piper_length_scale": { "type": ["number", "null"], "exclusiveMinimum": 0, "default": null },
     "piper_sentence_silence_s": { "type": ["number", "null"], "minimum": 0, "default": null },
     "gain_db": { "type": ["number", "null"], "default": null },
-    "notes": { "type": ["string", "null"], "default": null }
+    "notes": { "type": ["string", "null"], "default": null },
+    "creation_provenance": {"type":"object","additionalProperties":false,"required":["created_by","created_at","pack_type"],"properties":{"created_by":{"type":"string","minLength":1},"created_at":{"type":"string","format":"date-time"},"pack_type":{"const":"reference-based-zero-shot"},"source_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"}}}
   },
   "allOf":[
     {"if":{"required":["reference_audio"]},"then":{"required":["customization_method"],"properties":{"customization_method":{"const":"reference-audio"}}}},
