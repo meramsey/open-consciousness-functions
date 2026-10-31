@@ -27,6 +27,21 @@ from .utils import OCFError
 FLOORS = REPO_ROOT / "tests/coverage-floors.json"
 
 
+def source_sha() -> str | None:
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "--verify", "HEAD"],
+            cwd=REPO_ROOT,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    value = result.stdout.strip()
+    return value if re.fullmatch(r"[0-9a-f]{40,64}", value) else None
+
+
 def metrics(totals):
     """Keep statement percentage distinct from coverage.py's combined score."""
     result = {
@@ -69,14 +84,19 @@ def check(summary, floors):
     return failures
 
 
-def summarize(directory, *, exit_code, elapsed):
+def summarize(directory, *, exit_code, elapsed, retain_detail_json=False):
     directory = directory.resolve()
     # Relative coverage filenames use the same root as the pytest process.
     with contextlib.chdir(REPO_ROOT):
-        return _summarize(directory, exit_code=exit_code, elapsed=elapsed)
+        return _summarize(
+            directory,
+            exit_code=exit_code,
+            elapsed=elapsed,
+            retain_detail_json=retain_detail_json,
+        )
 
 
-def _summarize(directory, *, exit_code, elapsed):
+def _summarize(directory, *, exit_code, elapsed, retain_detail_json=False):
     from coverage import Coverage
 
     coverage = Coverage(
@@ -94,12 +114,29 @@ def _summarize(directory, *, exit_code, elapsed):
         if name != "combined":
             nodes = [re.escape(node) for node, row in rows.items() if row[name]]
             contexts = ["^(?:" + "|".join(nodes) + ")(?:\\||$)"] if nodes else ["(?!)"]
-        coverage.json_report(
-            outfile=str(directory / (name + ".json")), contexts=contexts, pretty_print=True
+        report_path = (
+            directory / (name + ".json")
+            if retain_detail_json
+            else directory / f".{name}-{uuid.uuid4().hex}.json"
         )
-        reports[name] = metrics(
-            json.loads((directory / (name + ".json")).read_text(encoding="utf-8"))["totals"]
-        )
+        report_path_existed = report_path.exists()
+        if retain_detail_json and report_path_existed:
+            raise OCFError(
+                f"refusing to overwrite existing detailed coverage report: {report_path}"
+            )
+        extracted = False
+        try:
+            coverage.json_report(
+                outfile=str(report_path),
+                contexts=contexts,
+                pretty_print=retain_detail_json,
+                show_contexts=retain_detail_json,
+            )
+            reports[name] = metrics(json.loads(report_path.read_text(encoding="utf-8"))["totals"])
+            extracted = True
+        finally:
+            if not retain_detail_json and extracted and not report_path_existed:
+                report_path.unlink(missing_ok=True)
     root = ET.parse(directory / "tests.xml").getroot()
     suites = list(root.iter("testsuite"))
     counts = {
@@ -113,6 +150,7 @@ def _summarize(directory, *, exit_code, elapsed):
         "runtime_seconds": elapsed,
         "python": platform.python_version(),
         "platform": sys.platform,
+        "source_sha": source_sha(),
         "scope": ["scripts/ocf_tools", "scripts/tools"],
         "workers": 2,
         "taxonomy_errors": [
@@ -136,7 +174,7 @@ def _summarize(directory, *, exit_code, elapsed):
     return result
 
 
-def run(directory=None):
+def run(directory=None, *, retain_detail_json=False):
     # No filtering: two workers execute the complete existing suite and all new
     # tests. The shorter basetemp preserves the release path-length guard.
     root = work_root()
@@ -195,7 +233,13 @@ def run(directory=None):
         )
     pytest_elapsed = time.monotonic() - start
     reporting_start = time.monotonic()
-    summary = summarize(directory, exit_code=completed.returncode, elapsed=pytest_elapsed)
+    summary = summarize(
+        directory,
+        exit_code=completed.returncode,
+        elapsed=pytest_elapsed,
+        retain_detail_json=retain_detail_json,
+    )
+    summary["detail_json_retained"] = retain_detail_json
     summary["reporting_seconds"] = time.monotonic() - reporting_start
     summary["total_runtime_seconds"] = time.monotonic() - start
     summary["scratch_retained"] = True
@@ -209,14 +253,21 @@ def run(directory=None):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
-    start = sub.add_parser("run", help="explicit full-suite measurement; retains diagnostics")
+    start = sub.add_parser(
+        "run", help="explicit full-suite measurement; retains compact diagnostics"
+    )
     start.add_argument("--output", type=Path)
+    start.add_argument(
+        "--retain-detail-json",
+        action="store_true",
+        help="retain per-file/per-context coverage JSON (can require several GB); defaults to compact summary only",
+    )
     report = sub.add_parser("check", help="check an existing summary; does not run pytest")
     report.add_argument("summary", type=Path)
     args = parser.parse_args(argv)
     try:
         if args.command == "run":
-            directory, summary = run(args.output)
+            directory, summary = run(args.output, retain_detail_json=args.retain_detail_json)
         else:
             directory = args.summary.parent
             summary = json.loads(args.summary.read_text(encoding="utf-8"))

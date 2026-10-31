@@ -378,14 +378,19 @@ narration-only auditions are published under the stable ignored `renders/`
 area with collision-resistant run IDs; explicit output paths are never
 overwritten.
 
-Set `OCF_WORK_DIR` to select another dedicated workspace. Relative overrides
-resolve from the repository root; the target must be a dedicated writable
-directory. Stale scratch cleanup is scoped to marked OCF-created temporary
-directories only:
+Linked worktrees share the canonical repository's `.ocf-work` by default.
+`python3 scripts/ocf.py workspace status --json` reports the project identity,
+resolved workspace, areas, and legacy nested workspaces. Set `OCF_WORK_DIR` to
+select another dedicated workspace. Relative overrides resolve from the
+canonical project root; the target must be a dedicated writable directory.
+Stale scratch cleanup is scoped to marked OCF-created temporary directories;
+new scratch markers record their owner PID, and a live foreign owner is skipped.
+Use JSON output for a machine-readable cleanup candidate list:
 
 ```bash
 python3 scripts/ocf.py workspace clean --older-than-hours 24 --dry-run
-python3 scripts/ocf.py workspace clean --older-than-hours 24
+python3 scripts/ocf.py workspace clean --older-than-hours 24 --dry-run --json
+python3 scripts/ocf.py workspace clean --older-than-hours 24 --json
 ```
 
 Use `OCF_KEEP_WORK=1` to retain successful intermediates, or set

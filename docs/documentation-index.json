@@ -73,10 +73,11 @@
       "related_commands": [
         "dev",
         "dev ocf",
-        "voice doctor"
+        "voice doctor",
+        "workspace status"
       ],
       "related_schemas": [],
-      "sha256": "39e1c3b6863a7c521351fedb84a35e11f6bf2341e96667449cf243aaaebbbc43",
+      "sha256": "89046895beccf85630a256a0114221d3127ff058149aa8d1bb75e5b6e56ca4aa",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -492,7 +493,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "7c784e879d7882095b2b8c71de0d3b1a93a661f56a36aec7169b8e23a9f80e8e",
+      "sha256": "912e9e8abfccd0f567dc99de9c84212c06db8fd1e76bc4537604182c43a7d9fa",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -555,13 +556,14 @@
         "audio release",
         "audio render",
         "voice doctor",
-        "workspace clean"
+        "workspace clean",
+        "workspace status"
       ],
       "related_schemas": [
         "schemas/audio-release.schema.json",
         "schemas/mix-profile.schema.json"
       ],
-      "sha256": "dc3579667b042c9a133c98eab9638ebbbdc11647716f193811de9bf083e3936f",
+      "sha256": "017ebeadfeade5458d7a7c8a1d11ee4848b2946ce2b6889121c8ff70cc1038bf",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1882,7 +1884,7 @@
       "purpose": "Unit coverage policy and current gap",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "24782bf2266210f688c3d4683ab4c1f192644a70a264a96a2d0f772da1f34679",
+      "sha256": "1778fc06f3a0c283e6f05527e4f71a929e4a60e5c9eb393d8e124d8cae553eba",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5446,7 +5448,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "d70a8871a3bf8547c4de81e4a4fa83976a871c4bce5e715828896f30dd94cf50",
+      "sha256": "62c8f2a1610b947d175f4ba43b98b023dad75ae5ff9728f8cfa5d3ac7409c43c",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {

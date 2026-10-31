@@ -29,9 +29,13 @@ relative coverage filenames at the repository root, even from another directory.
 Inherited `PYTEST_ADDOPTS` and configured `addopts` cannot filter this explicit
 full-suite run, and unexpected deselection fails its gate.
 
-Reports include raw combined, unit-context and integration-context JSON, exact
-missing statements/branches, JUnit, collection taxonomy, pytest logs and a compact
-summary with platform/version/counts. Unit/integration rows are **strict
+By default, the run retains compact aggregate metrics in `summary.json`, JUnit,
+collection taxonomy, pytest logs, and the raw `.coverage` database. Temporary
+coverage.py JSON exports are removed after their totals have been extracted; this
+avoids multi-gigabyte per-line/per-test context reports in routine runs. When
+investigating uncovered lines, explicitly pass `--retain-detail-json` to retain
+the detailed combined/unit/integration reports. They include exact missing
+statements and branches and can consume several gigabytes. Unit/integration rows are **strict
 attributed contributions**, not separate complete process runs: startup and
 unattributed subprocess execution are combined-only. Contributions overlap and
 must not be summed. Hard-killed processes cannot be assumed to flush coverage.

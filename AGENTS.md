@@ -78,8 +78,12 @@ Review remaining vocabulary ONE function at a time; wait for explicit user input
   PATH and user-local Piper launcher/model hashes without installing/downloading.
   Use `voice smoke OCF-VOICE-9003 --locale en-US` for a one-sentence synthesis;
   see [setup](docs/SETUP.md) for supported overrides and troubleshooting.
-- All routine scratch/cache/logs and default auditions use `.ocf-work/`, resolved
-  from the repository root. Honor validated `OCF_WORK_DIR`; TMPDIR/TMP/TEMP
+- All routine scratch/cache/logs and default auditions use the canonical shared
+  `.ocf-work/` for linked worktrees. Run `python scripts/ocf.py workspace status`
+  before searching for old artifacts; it reports the shared project workspace
+  and any legacy nested worktree workspaces. Use explicit `OCF_WORK_DIR` only to
+  inspect or preserve legacy nested data; do not move it without inventory and
+  checksum verification. Honor validated `OCF_WORK_DIR`; TMPDIR/TMP/TEMP
   overrides apply only to OCF-launched subprocesses. Preserve failed diagnostics.
   Use `workspace clean --dry-run` before deleting marked scratch.
 - Do not expose secrets, upload references, execute arbitrary downloaded code,
