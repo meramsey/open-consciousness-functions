@@ -238,6 +238,27 @@ def test_workspace_temp_file_normalizes_unsafe_prefix(monkeypatch, tmp_path):
     assert paths.cleanup_workspace_temp(filename.parent)
 
 
+@pytest.mark.unit
+def test_cleanup_workspace_rejects_invalid_ages_and_handles_missing_temp_root(
+    monkeypatch, tmp_path
+):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "ocf-work"))
+    with pytest.raises(ValueError, match="nonnegative"):
+        paths.cleanup_workspace(older_than_seconds=-1)
+    with pytest.raises(ValueError, match="nonnegative"):
+        paths.cleanup_workspace(older_than_seconds=float("nan"))
+    assert paths.cleanup_workspace() == []
+
+
+@pytest.mark.unit
+def test_publish_workspace_temp_directory_rejects_unowned_source(monkeypatch, tmp_path):
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "ocf-work"))
+    unowned = paths.work_path("tmp", "ocf-unowned")
+    unowned.mkdir(parents=True)
+    with pytest.raises(ValueError, match="not an OCF-owned"):
+        paths.publish_workspace_temp_directory(unowned, tmp_path / "published")
+
+
 @pytest.mark.parametrize(
     "probe_error,expected",
     [(ProcessLookupError(), False), (PermissionError(), True)],
