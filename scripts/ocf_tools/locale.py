@@ -1178,9 +1178,9 @@ class LocaleCatalog:
         if source != "function-yaml":
             raise LocalizationError("localized function metadata has an unknown value source")
         if field_name == "title":
-            return record.canonical_name, "canonical", None
+            return record.canonical_name, "canonical", value.get("version")
         if field_name == "description":
-            return record.purpose_summary, "canonical", None
+            return record.purpose_summary, "canonical", value.get("version")
         if command is None or value.get("command_id") != command.id:
             raise LocalizationError(
                 "localized command metadata reference does not match command ID"
@@ -1188,12 +1188,12 @@ class LocaleCatalog:
         if field_name == "primary-command":
             from .commands import resolve_phrase
 
-            return resolve_phrase(record, command), "canonical", None
+            return resolve_phrase(record, command), "canonical", value.get("version")
         if field_name == "spoken-command":
             spoken = command.data.get("spoken")
             if not spoken or command.data.get("spoken_review") != "reviewed":
                 raise LocalizationError(f"{command.id}: canonical spoken cue is not reviewed")
-            return str(spoken), "reviewed", None
+            return str(spoken), "reviewed", value.get("version")
         raise LocalizationError(f"unknown canonical localized-function field: {field_name!r}")
 
     def _project_localized_function_aliases(self) -> None:

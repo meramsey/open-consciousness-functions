@@ -81,10 +81,13 @@ def record(root=REPO_ROOT):
 
 
 def predecessor(root, name, text):
+    from .locale_history import predecessor as before_localized_resources
+
     data = record(root)
     row = data["files"].get(name) if data else None
     if row is None:
         return text
+    text = before_localized_resources(root, name, text)
     if sha(text) != row["after_sha256"] or sha(row["before"]) != row["before_sha256"]:
         raise OCFError("guide review source fingerprint drift: " + name)
     if name.startswith("functions/"):

@@ -132,6 +132,22 @@ def test_locale_catalog_projects_canonical_references_and_loads_narration_by_key
     assert not validation.errors and not validation.warnings
 
 
+def test_canonical_reference_preserves_explicit_resource_version():
+    command = function_record().command_records[0]
+    for field_name in ("title", "description", "primary-command", "spoken-command"):
+        _, _, version = LocaleCatalog._localized_value(
+            {
+                "source": "function-yaml",
+                "field": field_name,
+                "command_id": COMMAND_ID,
+                "version": "1.0.0",
+            },
+            function_record(),
+            command,
+        )
+        assert version == "1.0.0"
+
+
 def test_function_filename_compatibility_uses_stable_id_not_title(tmp_path):
     root = tmp_path / "locales"
     write_pack(root, function_resource())

@@ -1185,6 +1185,19 @@ def cmd_locale_pseudo(args: argparse.Namespace) -> int:
         root = ensure_dir(Path(args.output))
         (root / "manifest.yaml").write_text(yaml_safe_dump(pack.manifest), encoding="utf-8")
         for filename in sorted({entry.file for entry in pack.entries.values() if entry.file}):
+            function_id = next(
+                (
+                    owner
+                    for owner, name in pack.localized_function_files.items()
+                    if name == filename
+                ),
+                None,
+            )
+            if function_id is not None:
+                (root / filename).write_text(
+                    yaml_safe_dump(pack.localized_functions[function_id]), encoding="utf-8"
+                )
+                continue
             by_domain: dict[str, dict[str, Any]] = {}
             for key, entry in sorted(pack.entries.items()):
                 if entry.file != filename:

@@ -5,19 +5,23 @@ function_id: OCF-EMO-003
 title:
   source: function-yaml
   field: title
+  version: 1.0.0
 description:
   source: function-yaml
   field: description
+  version: 1.0.0
 activation:
   command_id: OCF-CMD-EMO-003-PRIMARY
   display_cue:
     source: function-yaml
     field: primary-command
     command_id: OCF-CMD-EMO-003-PRIMARY
+    version: 1.0.0
   spoken_cue:
     source: function-yaml
     field: spoken-command
     command_id: OCF-CMD-EMO-003-PRIMARY
+    version: 1.0.0
   label:
     text: Primary activation command
     status: canonical
