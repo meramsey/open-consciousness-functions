@@ -77,7 +77,7 @@
         "workspace status"
       ],
       "related_schemas": [],
-      "sha256": "89046895beccf85630a256a0114221d3127ff058149aa8d1bb75e5b6e56ca4aa",
+      "sha256": "c6428719545afcdadd38e071f005a236a95233f995ef0072e518c7881e2d4283",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -276,7 +276,7 @@
         "voice"
       ],
       "related_schemas": [],
-      "sha256": "68c3cead9ce21e494e7de730a8b69c9c5aca71b9ee0628fe2a223716fd23c157",
+      "sha256": "06e40cfaf3d512dd0f98a626750d386ab67179582dca8dbbcf0b85563b33ceb9",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1544,6 +1544,24 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "docs/PRODUCTION_SUPERVISION.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Independent continuous production supervision",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "3f184cebc70cc2e6b377416988df2a574f38e775065d8624bfe15b65ed84bb6a",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "docs/PROJECT_TERMINOLOGY.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "Project Terminology",
@@ -1567,7 +1585,7 @@
       "purpose": "Documentation map",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "9d2387fd13008d5776130f8d86741caeb233ea6be4f7762041462712a33466e7",
+      "sha256": "6bd2a23ed9990eec661ac76ad02a1092d559f9273937e484bd18b428a359f58d",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5561,5 +5579,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 267
+  "total": 268
 }
