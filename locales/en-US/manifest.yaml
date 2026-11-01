@@ -154,9 +154,10 @@ resources:
 - file: hplus-OCF-EMO-002.yaml
   domain: narration
   description: Human-approved OCF adaptation; historical source authentication remains unverified.
-- file: hplus-OCF-EMO-003.yaml
-  domain: narration
-  description: Human-approved OCF narration based on a user-proposed reconstruction; historical source unavailable.
+# The old filename below is retained as an unlisted HPLUS-015 lock snapshot; only the stable-ID file is active.
+- file: OCF-EMO-003-Empathize.yaml
+  domain: function
+  description: Localized function metadata and canonical narration.
 - file: hplus-OCF-EXP-001.yaml
   domain: narration
   description: Human-approved OCF adaptation; historical source authentication remains unverified.

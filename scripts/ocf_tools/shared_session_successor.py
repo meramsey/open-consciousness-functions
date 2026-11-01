@@ -31,12 +31,14 @@ def record(root: Path = REPO_ROOT) -> dict | None:
 
 
 def predecessor(root: Path, name: str, text: str) -> str:
+    from .locale_history import predecessor as before_localized_resources
     from .session_pacing_successor import predecessor as before_pacing
 
     ledger = record(root)
     row = ledger["files"].get(name) if ledger else None
     if row is not None and _sha(text) == row["before_sha256"] and text == row["before"]:
         return text
+    text = before_localized_resources(root, name, text)
     text = before_pacing(root, name, text)
     if row is None:
         return text

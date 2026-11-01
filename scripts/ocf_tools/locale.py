@@ -1178,9 +1178,9 @@ class LocaleCatalog:
         if source != "function-yaml":
             raise LocalizationError("localized function metadata has an unknown value source")
         if field_name == "title":
-            return record.canonical_name, "canonical", None
+            return record.canonical_name, "canonical", value.get("version")
         if field_name == "description":
-            return record.purpose_summary, "canonical", None
+            return record.purpose_summary, "canonical", value.get("version")
         if command is None or value.get("command_id") != command.id:
             raise LocalizationError(
                 "localized command metadata reference does not match command ID"
@@ -1188,12 +1188,12 @@ class LocaleCatalog:
         if field_name == "primary-command":
             from .commands import resolve_phrase
 
-            return resolve_phrase(record, command), "canonical", None
+            return resolve_phrase(record, command), "canonical", value.get("version")
         if field_name == "spoken-command":
             spoken = command.data.get("spoken")
             if not spoken or command.data.get("spoken_review") != "reviewed":
                 raise LocalizationError(f"{command.id}: canonical spoken cue is not reviewed")
-            return str(spoken), "reviewed", None
+            return str(spoken), "reviewed", value.get("version")
         raise LocalizationError(f"unknown canonical localized-function field: {field_name!r}")
 
     def _project_localized_function_aliases(self) -> None:
@@ -1693,6 +1693,54 @@ def build_pseudo_pack(
         )
         for key, entry in source.entries.items()
     }
+    localized_functions = {}
+    for function_id, metadata in source.localized_functions.items():
+        result = copy.deepcopy(metadata)
+        result["locale"] = locale
+        prefix = f"functions.{function_id.lower()}"
+
+        def pseudo_alias(key: str) -> dict[str, str]:
+            entry = entries[key]
+            return {
+                "text": entry.text,
+                "status": "machine",
+                "version": source.semantic_version,
+            }
+
+        result["title"] = pseudo_alias(f"{prefix}.title")
+        result["description"] = pseudo_alias(f"{prefix}.short-description")
+        activation = result.get("activation") or {}
+        command_id = str(activation.get("command_id", ""))
+        command_prefix = f"commands.{command_id.lower()}"
+        for field_name, suffix in (
+            ("display_cue", "display-cue"),
+            ("spoken_cue", "spoken-cue"),
+            ("label", "label"),
+            ("explanation", "explanation"),
+            ("usage", "usage"),
+        ):
+            if f"{command_prefix}.{suffix}" in entries:
+                activation[field_name] = pseudo_alias(f"{command_prefix}.{suffix}")
+        result["activation"] = activation
+        for command in result.get("secondary_commands") or []:
+            command_id = str(command.get("command_id", ""))
+            command_prefix = f"commands.{command_id.lower()}"
+            for field_name, suffix in (
+                ("display_cue", "display-cue"),
+                ("spoken_cue", "spoken-cue"),
+            ):
+                if f"{command_prefix}.{suffix}" in entries:
+                    command[field_name] = pseudo_alias(f"{command_prefix}.{suffix}")
+        result["entries"] = {
+            key: {
+                **copy.deepcopy(value),
+                "text": entries[key].text,
+                "status": "machine",
+                "version": source.semantic_version,
+            }
+            for key, value in (metadata.get("entries") or {}).items()
+        }
+        localized_functions[function_id] = result
     manifest = {
         "schema_version": "1.0",
         "locale": locale,
@@ -1720,7 +1768,13 @@ def build_pseudo_pack(
     if source.plural_rules():
         # Pseudo text has the source's shape, so it keeps the source grammar.
         manifest["plural_rules"] = dict(source.plural_rules())
-    return LocalePack(manifest, entries, None)
+    return LocalePack(
+        manifest,
+        entries,
+        None,
+        localized_functions,
+        source.localized_function_files,
+    )
 
 
 # ---------------------------------------------------------------------------
