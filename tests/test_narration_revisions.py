@@ -79,6 +79,74 @@ def test_revision_is_explicit_nonmutating_and_survives_reresolution(catalog):
 
 
 @pytest.mark.unit
+@pytest.mark.parametrize("saved", [True, False])
+def test_revision_uses_unsaved_editor_reader_and_exists_callbacks(catalog, saved):
+    target = catalog.root / "en-US/fixture-revision.yaml"
+    if not saved:
+        target.unlink()
+    unsaved = {
+        "locale": "en-US",
+        "domain": "narration",
+        "entries": {"fixture.line": "Unsaved fixture wording."},
+    }
+
+    def reader(path):
+        return deepcopy(unsaved) if path == target else yaml_safe_load(path.read_text())
+
+    view = LocaleCatalog(
+        catalog.root,
+        reader=reader,
+        exists=lambda path: path == target or path.is_file(),
+        function_records=lambda: [],
+    )
+    selected = view.with_revision(REVISION, "en-US")
+    assert selected.canonical.get("fixture.line").text == "Unsaved fixture wording."
+    assert view.canonical.get("fixture.line").text == "Original fixture."
+
+
+@pytest.mark.unit
+def test_pathless_pack_revision_has_a_resource_diagnostic():
+    pack = locales.LocalePack(
+        {
+            "locale": "en-US",
+            "resources": [{"file": "revision.yaml", "domain": "narration", "revision": REVISION}],
+        },
+        {},
+        None,
+    )
+    with pytest.raises(LocalizationError, match="no resource path"):
+        LocaleCatalog.from_packs([("en-US", pack)]).with_revision(REVISION, "en-US")
+
+
+@pytest.mark.integration
+@pytest.mark.parametrize("problem", ["unavailable", "empty", "malformed"])
+def test_revision_selection_errors_are_validator_diagnostics(catalog, problem):
+    from ocf_tools.validators import (
+        _load_schema,
+        validate_against_schema,
+        validate_timed_transcript,
+    )
+
+    if problem != "unavailable":
+        content = (
+            "locale: en-US\ndomain: narration\nentries: {}\n"
+            if problem == "empty"
+            else "entries: [unterminated"
+        )
+        (catalog.root / "en-US/fixture-revision.yaml").write_text(content, encoding="utf-8")
+    doc = {
+        "schema_version": "1.0",
+        "title": "Synthetic revision fixture",
+        "locale": "en-US",
+        "narration_revision": "UNKNOWN" if problem == "unavailable" else REVISION,
+        "timeline": [{"id": "line", "at": "00:00:00.000", "narration_key": "fixture.line"}],
+    }
+    assert validate_against_schema(doc, _load_schema("timed-transcript.schema.json")) == []
+    result = validate_timed_transcript(doc, Path("fixture.yaml"), catalog=catalog, records=[])
+    assert "narration-revision" in {issue.code for issue in result.errors}
+
+
+@pytest.mark.unit
 @pytest.mark.parametrize("entries", ["", "entries: null\n", "entries: {}\n"])
 def test_empty_revision_fails_closed(catalog, entries):
     (catalog.root / "en-US/fixture-revision.yaml").write_text(

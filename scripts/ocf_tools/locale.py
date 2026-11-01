@@ -1145,6 +1145,8 @@ class LocaleCatalog:
     ) -> None:
         self.root = Path(root) if root else LOCALES_DIR
         self._function_records = function_records
+        self._reader = reader
+        self._exists = exists
         self.packs: dict[str, LocalePack] = {}
         self.problems: list[str] = []
         if directories is None and not self.root.is_dir():
@@ -1194,7 +1196,9 @@ class LocaleCatalog:
         )
         if pack is None:
             raise LocalizationError(f"narration revision {revision!r} is unavailable for {locale}")
-        overlay = load_pack(pack.path, revision=revision)
+        if pack.path is None:
+            raise LocalizationError(f"narration revision {revision!r} has no resource path")
+        overlay = load_pack(pack.path, reader=self._reader, exists=self._exists, revision=revision)
         if any(entry.domain != NARRATION_DOMAIN for entry in overlay.entries.values()):
             raise LocalizationError("narration revisions may contain spoken resources only")
         selected = copy.copy(self)
@@ -1335,6 +1339,8 @@ class LocaleCatalog:
         instance.packs = {}
         instance.problems = []
         instance._function_records = None
+        instance._reader = None
+        instance._exists = None
         for locale, pack in packs:
             normalized = normalize_tag(locale)
             if normalized in instance.packs:

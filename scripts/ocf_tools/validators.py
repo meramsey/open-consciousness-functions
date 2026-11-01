@@ -663,7 +663,11 @@ def validate_timed_transcript(
             result.add("error", "timed-timeline", problem, str(path))
         catalog = catalog or LocaleCatalog()
         if data.get("narration_revision") is not None:
-            catalog = catalog.with_revision(data["narration_revision"], document_locale(data))
+            try:
+                catalog = catalog.with_revision(data["narration_revision"], document_locale(data))
+            except LocalizationError as exc:
+                result.add("error", "narration-revision", str(exc), str(path))
+                return result
         result.extend(
             validate_narration_usage(data, path, catalog)
             if records is None
