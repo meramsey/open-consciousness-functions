@@ -1422,6 +1422,24 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "docs/NARRATION_REVISIONS.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Explicit narration revisions and affirmation selection",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "cdf8fc0d42d2c51507a85a91ada06896eaa123fce252a309954c3ba2bee8c803",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "docs/NARRATION_STANDARD.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "OCF Authoring and Narration Standard",
@@ -1567,7 +1585,7 @@
       "purpose": "Documentation map",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "9d2387fd13008d5776130f8d86741caeb233ea6be4f7762041462712a33466e7",
+      "sha256": "a047001c3e82042d6894798bdf054bd2f422ea53c8b83f6d43cfa5b1d1333ce6",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4496,7 +4514,7 @@
       "related_schemas": [
         "schemas/authoring-plan.schema.json"
       ],
-      "sha256": "1de8a1ac424fd28a154579132f6f29a99c8bda17ba140829445b02f8a00c0694",
+      "sha256": "0ed3a2954e1e13c7642d3b802df53550b6c21a8c7ce43361ee894ec888a5bc79",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4978,7 +4996,7 @@
       "related_schemas": [
         "schemas/locale-manifest.schema.json"
       ],
-      "sha256": "f352c493429c07707427784522bbec47ae249ef0654da801b9bf954c56160a24",
+      "sha256": "5f4b2372c1da00a9dea220ea6ef20cc920c77ae4225cc52f6818ef0c08b2e652",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5180,7 +5198,7 @@
       "related_schemas": [
         "schemas/session-overrides.schema.json"
       ],
-      "sha256": "e2a8867050ebfd3ff2f974cb5b588012047bf196ee0280469a5cedbbea6eeade",
+      "sha256": "837643fffa6c410997b30c6a76de023d654aa4ee5e3e27e302a92d6a78b2143f",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5262,7 +5280,7 @@
         "schemas/session-template.schema.json",
         "schemas/timed-transcript.schema.json"
       ],
-      "sha256": "a6e0d4d7485ba4ea09057cbfbc743a6ab737ccec7bdc71d28825acc760333ef2",
+      "sha256": "238dc37d49bfff0ce2cba8a6f00c73aaba1bd7e8b3c44104246fc468dddbf72c",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5324,7 +5342,7 @@
       "related_schemas": [
         "schemas/timed-transcript.schema.json"
       ],
-      "sha256": "c3e2798f7ace0ba81c1fb5f1d2fa5afad20066ac3285a2fb7772dbed995b5950",
+      "sha256": "cad4e2345ddaf67b082c580cb61222e6a210c764feb593ea04894c773df4bf37",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5448,7 +5466,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "62c8f2a1610b947d175f4ba43b98b023dad75ae5ff9728f8cfa5d3ac7409c43c",
+      "sha256": "f386950164b72d9543e98b1c8ed33f390609d102aced00330e3e38c30328f664",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5561,5 +5579,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 267
+  "total": 268
 }

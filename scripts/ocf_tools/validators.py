@@ -662,6 +662,8 @@ def validate_timed_transcript(
         for problem in problems:
             result.add("error", "timed-timeline", problem, str(path))
         catalog = catalog or LocaleCatalog()
+        if data.get("narration_revision") is not None:
+            catalog = catalog.with_revision(data["narration_revision"], document_locale(data))
         result.extend(
             validate_narration_usage(data, path, catalog)
             if records is None
@@ -897,7 +899,12 @@ def validate_narration_hygiene(
         if "text" in event and not key and (not isinstance(text, str) or not text.strip()):
             result.add("error", "narration-empty", f"event {event_id}: empty narration", str(path))
         if isinstance(text, str):
-            if re.search(r"\{[a-z][a-z0-9_]*(?:[,}])", text):
+            literal_custom = (
+                data.get("affirmation_selection") == "custom"
+                and event_id == "affirmation.practice"
+                and not key
+            )
+            if not literal_custom and re.search(r"\{[a-z][a-z0-9_]*(?:[,}])", text):
                 result.add(
                     "error",
                     "narration-variable",

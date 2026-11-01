@@ -518,6 +518,9 @@ def compose(
     pacing_profile: dict[str, Any] | str | None = None,
     slot_provenance: dict[str, Any] | None = None,
     slot_keys: dict[str, str] | None = None,
+    affirmation: str | None = None,
+    custom_affirmation_locale: str | None = None,
+    locale: str | None = None,
 ) -> dict[str, Any]:
     """Resolve a session template into a canonical timed-transcript document.
 
@@ -530,6 +533,31 @@ def compose(
     without rewriting it.
     """
     slot_keys = dict(slot_keys or {})
+    slots = dict(slots)
+    choices = {"none", "Gateway", "SyncCreation", "OCF", "custom"}
+    if affirmation is not None and (not isinstance(affirmation, str) or affirmation not in choices):
+        raise OCFError("unknown affirmation selection")
+    supplied = "affirmation" in slots or "affirmation" in slot_keys
+    if supplied and affirmation not in (None, "custom"):
+        raise OCFError("affirmation selection conflicts with custom text")
+    if custom_affirmation_locale is not None:
+        from .locale import normalize_tag
+
+        if not supplied or normalize_tag(custom_affirmation_locale) != normalize_tag(
+            locale or template.get("locale") or "en-US"
+        ):
+            raise OCFError("custom affirmation locale must match the session locale")
+    if supplied and any(
+        not isinstance(value, str) or not value.strip()
+        for value in [
+            mapping["affirmation"] for mapping in (slots, slot_keys) if "affirmation" in mapping
+        ]
+    ):
+        raise OCFError("custom affirmation must contain explicit nonempty text")
+    if affirmation == "custom" and not supplied:
+        raise OCFError("custom affirmation requires explicit text")
+    if affirmation in {"Gateway", "SyncCreation", "OCF"}:
+        slot_keys["affirmation"] = "hplus.optional.affirmation." + affirmation.lower()
     if set(slot_keys) & set(slots):
         raise OCFError("a slot cannot supply both plain text and a narration key")
     slots = {**slots, **slot_keys}
@@ -573,6 +601,12 @@ def compose(
     used_slots: dict[str, list[str]] = {}
     counter = 0
     features = set(template.get("features") or []) | set(enabled_stages or [])
+    if affirmation == "none" or (
+        affirmation is None and not supplied and template.get("narration_revision")
+    ):
+        features.discard("affirmation")
+    elif affirmation is not None:
+        features.add("affirmation")
     available = {
         section["enabled_by"] for section in template["sections"] if section.get("enabled_by")
     }
@@ -790,13 +824,19 @@ def compose(
         }
         if used_provenance:
             doc["slot_provenance"] = deepcopy(used_provenance)
-    for key in ("function_id", "cue_profile", "voice_profile"):
+    for key in ("function_id", "cue_profile", "voice_profile", "narration_revision"):
         if template.get(key):
             doc[key] = template[key]
     if function_id:
         doc["function_id"] = function_id
+    if affirmation is not None or template.get("narration_revision"):
+        doc["affirmation_selection"] = affirmation or (
+            "custom" if supplied and "affirmation" in features else "none"
+        )
     if template.get("locale"):
         doc["locale"] = str(template["locale"])
+    if locale and (affirmation is not None or template.get("narration_revision")):
+        doc["locale"] = locale
     template_source = template.get("source")
     if isinstance(template_source, dict):
         doc["source"] = dict(template_source)
@@ -858,6 +898,9 @@ def run_compose(args: Any) -> int:
     """CLI handler for `ocf session compose`."""
     from .paths import ensure_dir
 
+    if getattr(args, "affirmation", None) is not None and getattr(args, "allow_fallback", False):
+        raise OCFError("explicit affirmation selection requires strict locale resolution")
+
     template = load_template(args.template)
     slots: dict[str, str] = {}
     slot_provenance: dict[str, Any] = {}
@@ -907,6 +950,9 @@ def run_compose(args: Any) -> int:
         pacing_profile=pacing_profile,
         slot_provenance=slot_provenance,
         slot_keys=slot_keys,
+        affirmation=getattr(args, "affirmation", None),
+        custom_affirmation_locale=getattr(args, "custom_affirmation_locale", None),
+        locale=getattr(args, "locale", None),
     )
 
     locale = getattr(args, "locale", None)

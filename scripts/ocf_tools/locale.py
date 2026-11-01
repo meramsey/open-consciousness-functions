@@ -1027,7 +1027,7 @@ def _entry_from_value(
     )
 
 
-def load_pack(path: Path, *, reader=None, exists=None) -> LocalePack:
+def load_pack(path: Path, *, reader=None, exists=None, revision=None) -> LocalePack:
     """Load one locale pack directory (manifest plus declared resource files)."""
     reader = reader or load_yaml_file
     exists = exists or Path.is_file
@@ -1051,12 +1051,18 @@ def load_pack(path: Path, *, reader=None, exists=None) -> LocalePack:
     ):
         raise LocalizationError(f"{locale}: resources must be an array of objects")
     for resource in resources:
+        if resource.get("revision") != revision:
+            continue
         filename = str(resource.get("file", ""))
         if not re.fullmatch(r"[A-Za-z0-9._-]+\.yaml", filename):
             raise LocalizationError(
                 f"{locale}: resource file must be a local .yaml filename: {filename!r}"
             )
         declared_domain = str(resource.get("domain", UI_DOMAIN))
+        if revision is not None and declared_domain != NARRATION_DOMAIN:
+            raise LocalizationError(
+                f"{locale} {filename}: narration revisions require narration resources"
+            )
         resource_path = path / filename
         if not resource_path.resolve().is_relative_to(path.resolve()):
             raise LocalizationError(f"{locale}: resource escapes locale pack: {filename!r}")
@@ -1092,6 +1098,10 @@ def load_pack(path: Path, *, reader=None, exists=None) -> LocalePack:
             # for that function; metadata aliases are projected by LocaleCatalog.
             file_domain = NARRATION_DOMAIN
         values = data.get("entries")
+        if revision is not None and not values:
+            raise LocalizationError(
+                f"{locale} {filename}: revision resource requires nonempty entries"
+            )
         values = {} if values is None else values
         if not isinstance(values, dict):
             raise LocalizationError(f"{locale} {filename}: entries must be an object")
@@ -1165,6 +1175,34 @@ class LocaleCatalog:
                 continue
             self.packs[normalized] = pack
         self._project_localized_function_aliases()
+
+    def with_revision(self, revision: str | None, locale: str) -> LocaleCatalog:
+        """Select an explicit spoken successor without changing historical resources."""
+        if revision is None:
+            return self
+        serving = self.spoken_chain(locale)
+        pack = next(
+            (
+                self.require(tag)
+                for tag in serving
+                if any(
+                    row.get("revision") == revision
+                    for row in self.require(tag).manifest.get("resources", [])
+                )
+            ),
+            None,
+        )
+        if pack is None:
+            raise LocalizationError(f"narration revision {revision!r} is unavailable for {locale}")
+        overlay = load_pack(pack.path, revision=revision)
+        if any(entry.domain != NARRATION_DOMAIN for entry in overlay.entries.values()):
+            raise LocalizationError("narration revisions may contain spoken resources only")
+        selected = copy.copy(self)
+        selected.packs = dict(self.packs)
+        selected_pack = copy.copy(pack)
+        selected_pack.entries = {**pack.entries, **overlay.entries}
+        selected.packs[pack.locale] = selected_pack
+        return selected
 
     @staticmethod
     def _localized_value(
@@ -1714,6 +1752,7 @@ def build_pseudo_pack(
                 "description": f"Pseudo-locale copy of {source.locale} {resource.get('file')}",
             }
             for resource in source.manifest.get("resources") or []
+            if not resource.get("revision")
         ],
         "notes": "Generated pseudo-locale; accents expose untranslated strings.",
     }
@@ -1782,6 +1821,8 @@ def resolve_document(
     """
     catalog = catalog or LocaleCatalog()
     target = normalize_tag(locale) or document_locale(doc)
+    if doc.get("narration_revision") is not None:
+        catalog = catalog.with_revision(doc["narration_revision"], target)
     # A regional tag may be served by an installed parent pack, so consult the
     # chain the same way ``lookup`` will instead of requiring the exact tag.
     pack = catalog.get(target)

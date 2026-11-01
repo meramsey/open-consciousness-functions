@@ -36,6 +36,9 @@ def plan(request: dict, base: Path = Path(".")) -> dict:
         title=template["name"],
         function_id=request.get("function_id"),
         enabled_stages=request.get("enabled_stages", []),
+        affirmation=request.get("affirmation"),
+        custom_affirmation_locale=request.get("custom_affirmation_locale"),
+        locale=request["locale"],
     )
     resolved = resolve_document(doc, request["locale"], strict=True)
     events = list(iter_events(resolved))
