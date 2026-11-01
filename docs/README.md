@@ -27,6 +27,8 @@ loading the entire documentation tree:
   The supplied Cosmic Path 0.3.0 kit has an offline comparison gallery and
   SHA-256 import verification; it remains a human-review candidate.
 - Configure intentional session variants: [override precedence](SESSION_OVERRIDES.md).
+- Scope versioned spoken resources and explicit optional affirmations:
+  [narration revisions](NARRATION_REVISIONS.md).
 - Understand state audio: [semantic DSP](SEMANTIC_DSP.md) and
   [background audio](../audio/background/README.md).
 - Package: [verified releases](AUDIO_PIPELINE.md#final-release-packages).

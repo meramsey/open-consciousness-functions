@@ -364,12 +364,15 @@ def build_complete_session_plan(
 
     doc = compose(
         template_record,
-        {},
+        {"affirmation": options["custom_affirmation"]} if "custom_affirmation" in options else {},
         title=plan["title"],
         document_id=f"{function_id.lower()}-{plan['requested_locale'].lower()}-complete-session",
         function_id=function_id,
         pacing_profile=selected_pacing,
         slot_keys=slot_keys,
+        affirmation=options.get("affirmation"),
+        custom_affirmation_locale=options.get("custom_affirmation_locale"),
+        locale=plan["requested_locale"],
     )
     doc["semantic_dsp_profile"] = selected_dsp
     if voice is None:
@@ -386,9 +389,11 @@ def build_complete_session_plan(
     from .locale import NARRATION_DOMAIN
     from .narration_pacing import plan_event_pacing
 
-    catalog = LocaleCatalog()
+    catalog = LocaleCatalog().with_revision(doc.get("narration_revision"), plan["requested_locale"])
     for item in resolved_resources:
         if item.get("key") == "inline":
+            if item.get("id") == "affirmation.practice" and options.get("affirmation") == "custom":
+                continue
             raise OCFError(
                 "complete session includes inline text rather than bound canonical narration"
             )

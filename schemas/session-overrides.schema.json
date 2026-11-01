@@ -2,6 +2,9 @@
  "$schema":"http://json-schema.org/draft-07/schema#","$id":"https://open-consciousness-functions.dev/schemas/session-overrides.schema.json",
  "title":"Explicit function or CLI complete-session overrides","type":"object","additionalProperties":false,
  "properties":{
+  "affirmation":{"enum":["none","Gateway","SyncCreation","OCF","custom"]},
+  "custom_affirmation":{"type":"string","minLength":1},
+  "custom_affirmation_locale":{"type":"string","pattern":"^[a-z]{2,3}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?$"},
   "ending":{"enum":["waking","sleep"]},"sleep_continuation":{"type":"boolean"},"waking_return":{"type":"boolean"},
   "repetitions":{"type":"object","additionalProperties":false,"properties":{"programming":{"type":"integer","minimum":1,"maximum":8},"sleep":{"type":"integer","minimum":0,"maximum":8}}},
   "focus_stages":{"type":"array","uniqueItems":true,"minItems":1,"items":{"enum":["focus-10","focus-11"]}},

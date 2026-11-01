@@ -662,6 +662,12 @@ def validate_timed_transcript(
         for problem in problems:
             result.add("error", "timed-timeline", problem, str(path))
         catalog = catalog or LocaleCatalog()
+        if data.get("narration_revision") is not None:
+            try:
+                catalog = catalog.with_revision(data["narration_revision"], document_locale(data))
+            except LocalizationError as exc:
+                result.add("error", "narration-revision", str(exc), str(path))
+                return result
         result.extend(
             validate_narration_usage(data, path, catalog)
             if records is None
@@ -897,7 +903,12 @@ def validate_narration_hygiene(
         if "text" in event and not key and (not isinstance(text, str) or not text.strip()):
             result.add("error", "narration-empty", f"event {event_id}: empty narration", str(path))
         if isinstance(text, str):
-            if re.search(r"\{[a-z][a-z0-9_]*(?:[,}])", text):
+            literal_custom = (
+                data.get("affirmation_selection") == "custom"
+                and event_id == "affirmation.practice"
+                and not key
+            )
+            if not literal_custom and re.search(r"\{[a-z][a-z0-9_]*(?:[,}])", text):
                 result.add(
                     "error",
                     "narration-variable",
@@ -1074,7 +1085,12 @@ def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationRes
                 )
         for resource in pack.manifest.get("resources") or []:
             filename = str(resource.get("file", ""))
-            data = load_yaml_file(Path(pack.path) / filename) if pack.path else {}
+            try:
+                reader = getattr(catalog, "_reader", None) or load_yaml_file
+                data = reader(Path(pack.path) / filename) if pack.path else {}
+            except OCFError as exc:
+                result.add("error", "locale-resource-read", str(exc), f"{target}/{filename}")
+                continue
             function_resource = resource.get("domain") == "function"
             schema = function_resource_schema if function_resource else resource_schema
             for message in validate_against_schema(data, schema):

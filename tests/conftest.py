@@ -18,7 +18,9 @@ if str(SCRIPTS_DIR) not in sys.path:
 
 def pytest_configure(config):
     """Keep pytest and every worker's OCF subprocess scratch local and isolated."""
-    root = REPO_ROOT / ".ocf-work" / "tmp"
+    from ocf_tools.paths import work_root
+
+    root = work_root() / "tmp"
     root.mkdir(parents=True, exist_ok=True)
     if not config.option.basetemp:
         config.option.basetemp = tempfile.mkdtemp(prefix="pytest-run-", dir=root)

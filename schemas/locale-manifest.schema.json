@@ -56,6 +56,7 @@
         "required": ["file", "domain"],
         "properties": {
           "file": { "type": "string", "pattern": "^[A-Za-z0-9._-]+\\.yaml$" },
+          "revision": {"type": "string", "pattern": "^[A-Z0-9-]+$"},
           "domain": {
             "description": "ui = operator- and player-facing labels that may fall back to the canonical locale; narration = spoken text for listeners, which must exist in the target locale before rendering.",
             "type": "string",
