@@ -1051,18 +1051,12 @@ def load_pack(path: Path, *, reader=None, exists=None, revision=None) -> LocaleP
     ):
         raise LocalizationError(f"{locale}: resources must be an array of objects")
     for resource in resources:
-        if resource.get("revision") != revision:
-            continue
         filename = str(resource.get("file", ""))
         if not re.fullmatch(r"[A-Za-z0-9._-]+\.yaml", filename):
             raise LocalizationError(
                 f"{locale}: resource file must be a local .yaml filename: {filename!r}"
             )
         declared_domain = str(resource.get("domain", UI_DOMAIN))
-        if revision is not None and declared_domain != NARRATION_DOMAIN:
-            raise LocalizationError(
-                f"{locale} {filename}: narration revisions require narration resources"
-            )
         resource_path = path / filename
         if not resource_path.resolve().is_relative_to(path.resolve()):
             raise LocalizationError(f"{locale}: resource escapes locale pack: {filename!r}")
@@ -1070,6 +1064,12 @@ def load_pack(path: Path, *, reader=None, exists=None, revision=None) -> LocaleP
             raise LocalizationError(
                 f"{locale} pack {path.name}: manifest declares resource {filename!r} "
                 "but the file is missing"
+            )
+        if resource.get("revision") != revision:
+            continue
+        if revision is not None and declared_domain != NARRATION_DOMAIN:
+            raise LocalizationError(
+                f"{locale} {filename}: narration revisions require narration resources"
             )
         try:
             data = reader(resource_path)

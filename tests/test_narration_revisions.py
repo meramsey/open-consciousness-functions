@@ -118,6 +118,37 @@ def test_pathless_pack_revision_has_a_resource_diagnostic():
         LocaleCatalog.from_packs([("en-US", pack)]).with_revision(REVISION, "en-US")
 
 
+@pytest.mark.unit
+def test_unselected_revision_cannot_bypass_resource_path_containment(catalog):
+    manifest_path = catalog.root / "en-US/manifest.yaml"
+    manifest = yaml_safe_load(manifest_path.read_text())
+    manifest["resources"][-1]["file"] = "../outside.yaml"
+    manifest_path.write_text(yaml_safe_dump(manifest), encoding="utf-8")
+    outside = catalog.root / "outside.yaml"
+    outside.write_text("entries: {}\n", encoding="utf-8")
+    reads = []
+
+    def reader(path):
+        reads.append(path)
+        return yaml_safe_load(path.read_text())
+
+    rejected = LocaleCatalog(catalog.root, reader=reader, function_records=lambda: [])
+    assert rejected.problems
+    assert outside not in reads
+
+
+@pytest.mark.integration
+def test_malformed_unselected_revision_returns_locale_diagnostics(catalog):
+    from ocf_tools.validators import validate_locale_packs
+
+    (catalog.root / "en-US/fixture-revision.yaml").write_text(
+        "entries: [unterminated", encoding="utf-8"
+    )
+    assert catalog.canonical.get("fixture.line").text == "Original fixture."
+    result = validate_locale_packs(catalog)
+    assert "locale-resource-read" in {issue.code for issue in result.errors}
+
+
 @pytest.mark.integration
 @pytest.mark.parametrize("problem", ["unavailable", "empty", "malformed"])
 def test_revision_selection_errors_are_validator_diagnostics(catalog, problem):
@@ -238,6 +269,28 @@ def routine(tmp_path):
 
 
 @pytest.mark.integration
+def test_locale_validation_uses_unsaved_revision_resources(routine):
+    from ocf_tools.indexes import load_all_functions
+    from ocf_tools.validators import validate_locale_packs
+
+    _template, _slots, catalog = routine
+    target = catalog.root / "en-US/fixture-revision.yaml"
+    payload = yaml_safe_load(target.read_text())
+    target.unlink()
+
+    def reader(path):
+        return deepcopy(payload) if path == target else locales.load_yaml_file(path)
+
+    view = LocaleCatalog(
+        catalog.root,
+        reader=reader,
+        exists=lambda path: path == target or path.is_file(),
+        function_records=load_all_functions,
+    )
+    assert validate_locale_packs(view).errors == []
+
+
+@pytest.mark.integration
 @pytest.mark.parametrize("choice", ["none", "Gateway", "SyncCreation", "OCF", "custom"])
 def test_affirmation_selector_matrix_without_supplied_wording(routine, choice):
     template, slots, catalog = routine
@@ -325,8 +378,8 @@ def test_legacy_enabled_behavior_and_new_default_off_are_distinct(routine):
     )
 
 
-@pytest.mark.integration
-def test_complete_session_custom_exception_uses_the_same_strict_revision(routine, monkeypatch):
+@pytest.fixture
+def scoped_planner(routine, monkeypatch):
     from ocf_tools import complete_session, validators
     from ocf_tools.content import load_layers
 
@@ -339,6 +392,12 @@ def test_complete_session_custom_exception_uses_the_same_strict_revision(routine
     monkeypatch.setattr(locales, "LocaleCatalog", lambda: catalog)
     monkeypatch.setattr(complete_session, "LocaleCatalog", lambda: catalog)
     monkeypatch.setattr(validators, "LocaleCatalog", lambda: catalog)
+    return complete_session, catalog
+
+
+@pytest.mark.integration
+def test_complete_session_custom_exception_uses_the_same_strict_revision(scoped_planner):
+    complete_session, catalog = scoped_planner
     plan = complete_session.build_complete_session_plan(
         "OCF-SEN-001",
         overrides={
@@ -352,3 +411,40 @@ def test_complete_session_custom_exception_uses_the_same_strict_revision(routine
         next(event for event in iter_events(doc) if event["id"] == "affirmation.practice")["text"]
         == "Synthetic {{literal}} custom."
     )
+
+
+@pytest.mark.integration
+def test_custom_selection_does_not_allow_another_inline_event(scoped_planner, monkeypatch):
+    from ocf_tools import session
+
+    complete_session, _catalog = scoped_planner
+    original = session.compose
+
+    def unexpected_inline(*args, **kwargs):
+        doc = original(*args, **kwargs)
+        timeline = doc["sections"][-1]["timeline"]
+        timeline.append(
+            {
+                "id": "another.inline",
+                "after": timeline[-1]["id"],
+                "offset": 0,
+                "timing": {"anchor": "event-end"},
+                "text": "Synthetic unrelated inline.",
+            }
+        )
+        return doc
+
+    monkeypatch.setattr(session, "compose", unexpected_inline)
+    with pytest.raises(OCFError, match="inline text"):
+        complete_session.build_complete_session_plan(
+            "OCF-SEN-001",
+            overrides={"affirmation": "custom", "custom_affirmation": "Synthetic explicit custom."},
+        )
+
+
+@pytest.mark.integration
+def test_unbound_template_remains_rejected():
+    from ocf_tools.complete_session import build_complete_session_plan
+
+    with pytest.raises(OCFError, match="not bound"):
+        build_complete_session_plan("OCF-SEN-001", template="OCF-TPL-SESSION-NOT-BOUND-001")

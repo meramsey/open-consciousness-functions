@@ -1085,7 +1085,12 @@ def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationRes
                 )
         for resource in pack.manifest.get("resources") or []:
             filename = str(resource.get("file", ""))
-            data = load_yaml_file(Path(pack.path) / filename) if pack.path else {}
+            try:
+                reader = getattr(catalog, "_reader", None) or load_yaml_file
+                data = reader(Path(pack.path) / filename) if pack.path else {}
+            except OCFError as exc:
+                result.add("error", "locale-resource-read", str(exc), f"{target}/{filename}")
+                continue
             function_resource = resource.get("domain") == "function"
             schema = function_resource_schema if function_resource else resource_schema
             for message in validate_against_schema(data, schema):
