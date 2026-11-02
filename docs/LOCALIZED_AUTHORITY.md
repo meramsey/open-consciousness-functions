@@ -79,3 +79,14 @@ Generated cue-preview banners are unnecessary in consolidated YAML because the
 real metadata is present. Their exact predecessor comments remain in the ledger.
 Human listening, rights clearance and publication approval remain separate from
 schema, speech-equivalence and historical-fingerprint validation.
+
+## L2 preparation: field-source trace
+
+`LocaleCatalog.function_field_sources` provides a read-only trace for an active
+localized function resource. Each literal value has its logical YAML filename
+and an unambiguous JSON pointer into that document. Narration keys, cue versions,
+secondary commands, relationships, tags and uses use the same trace mechanism.
+The method refuses opaque registry-reference values rather than falsely claiming
+that their words came from the locale file. Locale fallback is disabled unless
+explicitly requested. Adding this interface does not activate staged resources,
+retire old metadata or migrate any generated consumer by itself.

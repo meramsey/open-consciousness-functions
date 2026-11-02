@@ -1403,6 +1403,60 @@ class LocaleCatalog:
             )
         return pack
 
+    def function_field_sources(
+        self, function_id: str, locale: str | None = None, *, fallback: bool = False
+    ) -> dict[str, Any]:
+        """Trace literal localized attributes without introducing another registry.
+
+        JSON pointers address actual YAML attributes, including dotted narration
+        keys. Legacy registry-reference metadata must be consolidated before it
+        can be described as a localized YAML authority. This read-only method
+        does not activate staged narration-domain resources or change consumers.
+        """
+        metadata, resolution = self.localized_function(function_id, locale, fallback=fallback)
+        pack = self.require(resolution.origin_locale)
+        source = "locales/" + pack.locale + "/" + pack.localized_function_files[function_id]
+        fields: dict[str, Any] = {}
+
+        def trace(value: Any, pointer: str) -> None:
+            if isinstance(value, Mapping):
+                if value.get("source") == "function-yaml":
+                    raise LocalizationError(
+                        "field-source trace requires literal localized metadata: " + pointer
+                    )
+                for key, item in value.items():
+                    escaped = str(key).replace("~", "~0").replace("/", "~1")
+                    trace(item, pointer + "/" + escaped)
+            elif isinstance(value, list) and value:
+                for index, item in enumerate(value):
+                    trace(item, pointer + "/" + str(index))
+            else:
+                fields[pointer] = {"file": source, "yaml_pointer": pointer, "value": value}
+
+        for name in (
+            "function_id",
+            "locale",
+            "schema_version",
+            "title",
+            "description",
+            "activation",
+            "secondary_commands",
+            "tags",
+            "common_uses",
+            "relationships",
+            "entries",
+            "changelog",
+        ):
+            if name in metadata:
+                trace(metadata[name], "/" + name)
+        return {
+            "function_id": function_id,
+            "requested_locale": resolution.locale,
+            "resolved_locale": resolution.origin_locale,
+            "fallback": resolution.fallback,
+            "fields": fields,
+        }
+
     def chain(self, requested: str | None, *, default: str = CANONICAL_LOCALE) -> list[str]:
         """Installed locales consulted for ``requested``, canonical last."""
         fallback = normalize_tag(default) or CANONICAL_LOCALE
