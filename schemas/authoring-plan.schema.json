@@ -5,6 +5,8 @@
   "type": "object", "additionalProperties": false,
   "required": ["schema_version", "template", "locale", "narration_source"],
   "properties": {
+    "affirmation": {"enum": ["none", "Gateway", "SyncCreation", "OCF", "custom"]},
+    "custom_affirmation_locale": {"type": "string", "minLength": 2},
     "schema_version": {"const": "1.0"}, "template": {"type": "string", "minLength": 1},
     "locale": {"type": "string", "minLength": 2}, "function_id": {"type": "string"},
     "narration_source": {"enum": ["tts", "prerecorded-user", "externally-generated"]},

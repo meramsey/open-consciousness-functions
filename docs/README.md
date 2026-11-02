@@ -29,6 +29,8 @@ loading the entire documentation tree:
 - Configure intentional session variants: [override precedence](SESSION_OVERRIDES.md).
 - Keep authorized production running independently of chat sessions:
   [continuous production supervision](PRODUCTION_SUPERVISION.md).
+- Scope versioned spoken resources and explicit optional affirmations:
+  [narration revisions](NARRATION_REVISIONS.md).
 - Understand state audio: [semantic DSP](SEMANTIC_DSP.md) and
   [background audio](../audio/background/README.md).
 - Package: [verified releases](AUDIO_PIPELINE.md#final-release-packages).
