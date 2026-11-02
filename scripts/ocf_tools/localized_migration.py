@@ -53,11 +53,14 @@ _ReadableDumper.add_representer(str, _string)
 def _literal(entry) -> dict:
     if not entry.text.strip():
         raise OCFError("cannot migrate empty localized metadata")
-    return {
-        "text": entry.text,
-        "status": entry.status or "canonical",
-        "version": entry.version or "1.0.0",
-    }
+    value = {"text": entry.text}
+    # Missing predecessor metadata is not a new editorial decision. In
+    # particular, inventing a cue version changes generated/cache identities.
+    if entry.status is not None:
+        value["status"] = entry.status
+    if entry.version is not None:
+        value["version"] = entry.version
+    return value
 
 
 def build_batch(root: Path = REPO_ROOT, *, records=None, catalog=None) -> dict:
@@ -162,18 +165,12 @@ def build_batch(root: Path = REPO_ROOT, *, records=None, catalog=None) -> dict:
                         snapshot("locales/en-US/" + entry.file)
             row = {
                 "command_id": command.id,
-                "display_cue": bound.get("display_cue_key")
-                or {
-                    "text": resolved["display_cue"],
-                    "status": "canonical",
-                    "version": "1.0.0",
-                },
+                "display_cue": bound.get("display_cue_key") or {"text": resolved["display_cue"]},
             }
             if resolved["binding_status"] == "resolved":
                 row["spoken_cue"] = bound.get("spoken_cue_key") or {
                     "text": resolved["spoken_cue"],
                     "status": "reviewed",
-                    "version": resolved.get("version") or "1.0.0",
                 }
             for field in ("label", "explanation", "usage"):
                 key = command.localization.get(field + "_key")

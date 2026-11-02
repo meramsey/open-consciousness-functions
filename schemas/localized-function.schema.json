@@ -42,7 +42,7 @@
   "definitions": {
     "localizedValue": {
       "oneOf": [
-        {"type": "object", "additionalProperties": false, "required": ["text", "status", "version"], "properties": {"text": {"type": "string", "minLength": 1}, "status": {"enum": ["canonical", "draft", "machine", "reviewed"]}, "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}, "notes": {"type": ["string", "null"]}}},
+        {"type": "object", "additionalProperties": false, "required": ["text"], "properties": {"text": {"type": "string", "minLength": 1}, "status": {"enum": ["canonical", "draft", "machine", "reviewed"]}, "version": {"description": "Preserve existing versions without inventing one for unversioned predecessors.", "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}, "notes": {"type": ["string", "null"]}}},
         {"type": "object", "additionalProperties": false, "required": ["source", "field"], "properties": {"source": {"const": "function-yaml"}, "field": {"enum": ["title", "description", "primary-command", "spoken-command"]}, "command_id": {"type": "string", "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"}, "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}}}
       ]
     },

@@ -272,3 +272,13 @@ def test_optional_entries_outside_playback_sequence_are_not_dropped(source):
     assert batch["mapping"][0]["narration_notes"]["fixture.optional"] == (
         "Preserve the original editorial decision separately."
     )
+
+
+@pytest.mark.unit
+def test_unversioned_resources_do_not_acquire_invented_versions_or_review():
+    assert migration._literal(
+        SimpleNamespace(text="Existing cue", status="reviewed", version=None)
+    ) == {"text": "Existing cue", "status": "reviewed"}
+    assert migration._literal(
+        SimpleNamespace(text="Existing label", status=None, version=None)
+    ) == {"text": "Existing label"}

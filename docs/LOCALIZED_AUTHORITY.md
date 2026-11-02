@@ -90,3 +90,9 @@ The method refuses opaque registry-reference values rather than falsely claiming
 that their words came from the locale file. Locale fallback is disabled unless
 explicitly requested. Adding this interface does not activate staged resources,
 retire old metadata or migrate any generated consumer by itself.
+
+The isolated complete-catalog activation fixture compares every resolved cue
+and all 175 narration entries with the current catalog. It also verifies title
+propagation to the command index without changing the global record. Existing
+cue versions are copied exactly; formerly unversioned resources do not acquire
+an invented `1.0.0` version. This fixture is not activation of the live catalog.
