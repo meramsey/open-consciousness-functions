@@ -19,6 +19,23 @@ def identity(pid):
     }
 
 
+@pytest.mark.unit
+def test_watchdog_rate_limit_allows_routine_timer_cadence():
+    root = Path(__file__).resolve().parents[1]
+    unit = root / "deploy/systemd/ocf-production-watchdog.service.in"
+    timer = root / "deploy/systemd/ocf-production-watchdog.timer.in"
+    settings = dict(
+        line.split("=", 1)
+        for line in unit.read_text().splitlines()
+        if "=" in line and not line.startswith("#")
+    )
+    assert "OnCalendar=" in timer.read_text()
+    # Three nominal 20-second checks per minute leave no headroom for the
+    # documented five-second failure restart; this formerly caused start-limit-hit.
+    assert int(settings["StartLimitBurst"]) >= 12
+    assert int(settings["StartLimitIntervalSec"]) == 60
+
+
 @pytest.fixture
 def config(tmp_path):
     status = tmp_path / "status.json"

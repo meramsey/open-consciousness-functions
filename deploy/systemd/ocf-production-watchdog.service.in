@@ -1,7 +1,7 @@
 [Unit]
 Description=OCF independent production health reconciliation
 StartLimitIntervalSec=60
-StartLimitBurst=3
+StartLimitBurst=12
 
 [Service]
 Type=oneshot

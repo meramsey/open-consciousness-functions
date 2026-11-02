@@ -15,6 +15,9 @@ is independent of function completion. Process IO and receipt/log changes are
 progress evidence; CPU utilization alone is never health proof.
 
 An independently supervised oneshot watchdog runs nominally every 20 seconds.
+Its unit permits twelve starts per minute, so the ordinary timer cadence and
+bounded five-second watchdog-process restarts do not trip the unit start limit.
+This scheduling headroom does not increase production recovery budgets.
 The default heartbeat deadline is 75 seconds, long-job diagnosis begins from
 actual progress receipts, and no-progress timeout is 90 minutes. Reconciliation
 has its own 10-minute deadline; systemd transitions are bounded separately.
