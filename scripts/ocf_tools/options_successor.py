@@ -139,7 +139,11 @@ def verify(root=REPO_ROOT):
     if approved_function(old) != yaml.safe_load((root / FUNCTION).read_text(encoding="utf-8")):
         raise OCFError("Options changed function behavior or stable identities")
     old = yaml.safe_load(data["files"][NARRATION]["before"])
-    new = yaml.safe_load((root / NARRATION).read_text(encoding="utf-8"))
+    from .locale_history import before_consolidation
+
+    new = yaml.safe_load(
+        before_consolidation(root, NARRATION, (root / NARRATION).read_text(encoding="utf-8"))
+    )
     for identity, row in data["speech"].items():
         key = identity.split("::")[1]
         entry = new["entries"][key]

@@ -1,86 +1,61 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-AUT-001", "title": "Automatic Action", "locale": "en-US"}
-# English authority: functions/automation/see-be.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-AUT-001-PRIMARY", "role": "activation", "display": "PLUS-AUTOMATE", "spoken": "Plus Automate", "locale_definition": "commands.ocf-cmd-aut-001-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-AUT-001 — See-Be
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered
-# historical Human Plus transcript.
-# Review note: Historical source remains unavailable;
-# reimplementation remains planned.
-# Review note: Proposed input:
-# See-Be/See_Be_881044_reconstructed_clean.txt
-# SHA-256:
-# 574d8a0921cd4cd91b6a3e5794510dbeecfd06838cb5569123b14e6777e6df5c
-# Review note: Source identity was checked against the document
-# title and listed legacy commands, not inferred from filename.
-# Claims of historical authenticity remain unverified.
-# Review note: Shared preparation, state, return, production
-# directions, and non-narration notes remain excluded.
-# Review note: The Plus Automate activation command is preserved.
-# Review note: OCF adaptation establishes lasting, automatic
-# learned patterns with continued conscious control.
-# Review note: One concise function body supports four-pass playback.
-# Review note: Closer follows the standardized OCF reminder format.
-
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-AUT-001
+title:
+  text: Automatic Action
+  status: canonical
+  version: 1.0.0
+description:
+  text: Automates a desired way of being so it runs without active effort.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-AUT-001-PRIMARY
+  display_cue:
+    text: PLUS-AUTOMATE
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Automate
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-aut-001.opener:
     status: reviewed
     version: 1.1.0
-    notes: >-
-      OCF-adapted opener based on the user-proposed See-Be
-      reconstruction. Proposed input:
-      See-Be/See_Be_881044_reconstructed_clean.txt;
-      SHA-256 574d8a0921cd4cd91b6a3e5794510dbeecfd06838cb5569123b14e6777e6df5c;
-      lines 39–40. Original reconstruction remains unchanged.
-      Historical source availability remains unavailable.
-      Wording simplified to emphasize transforming learned
-      physical actions and mental-motor skills into lasting,
-      automatic abilities. This is OCF-authored adapted
-      narration, not a recovered historical transcript.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to transform learned
       actions and skills into smooth, natural, and automatic
       abilities that you can use whenever you choose.
-
   hplus.function.ocf-aut-001.function-body:
     status: reviewed
     version: 1.1.0
-    notes: >-
-      OCF-adapted narration based on the user-proposed See-Be
-      reconstruction. Proposed input:
-      See-Be/See_Be_881044_reconstructed_clean.txt;
-      SHA-256 574d8a0921cd4cd91b6a3e5794510dbeecfd06838cb5569123b14e6777e6df5c;
-      proposed extent lines 139–210. Original reconstruction
-      remains unchanged. Historical source availability remains
-      unavailable and reimplementation remains planned.
-      The narration has been condensed into action selection,
-      mental rehearsal, coordinated learning, conscious
-      activation, automatic performance, and reinforcement.
-      The exact Plus Automate command and breathing sequence
-      are preserved. OCF-authored suggestions establish
-      lasting, automatic execution of selected learned
-      patterns while maintaining conscious control,
-      adaptability, and continued improvement.
-      Duplicate command instructions and companion function
-      references have been removed from spoken narration.
-      Companion functions remain available for separate
-      session configuration and documentation.
-      One reusable body supports repeated playback across
-      Focus 11 and Focus 20.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-AUT-001", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-AUT-001
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, you have the ability
       to transform any correctly learned action
@@ -159,25 +134,10 @@ entries:
   hplus.function.ocf-aut-001.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted closer based on the user-proposed See-Be
-      reconstruction. Proposed input:
-      See-Be/See_Be_881044_reconstructed_clean.txt;
-      SHA-256 574d8a0921cd4cd91b6a3e5794510dbeecfd06838cb5569123b14e6777e6df5c;
-      proposed extent lines 331–346. Original reconstruction
-      remains unchanged. Historical source availability
-      remains unavailable. Closer shortened to one purpose
-      reminder, the exact Plus Automate activation command,
-      the breathing sequence, and the standard OCF ending.
-      Additional reinforcement and practice guidance are
-      reserved for the function body and documentation.
-      This is OCF-authored adapted narration, not historical
-      transcript wording.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-AUT-001
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to make a learned
       action or skill automatic, picture yourself

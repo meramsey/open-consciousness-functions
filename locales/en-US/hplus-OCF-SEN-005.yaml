@@ -1,74 +1,120 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-SEN-005", "title": "Touch", "locale": "en-US"}
-# English authority: functions/sensory/touch.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-SEN-005-PRIMARY", "role": "activation", "display": "PLUS-TOUCH MORE", "spoken": "Plus Touch More", "locale_definition": "commands.ocf-cmd-sen-005-primary.spoken-cue"}
-# {"symbol": "cue.id.OCF-CMD-SEN-005-TOUCH-LESS", "command": "OCF-CMD-SEN-005-TOUCH-LESS", "role": "decrease", "display": "PLUS-TOUCH LESS", "spoken": "Plus Touch Less", "locale_definition": null}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-SEN-005 — Sensory: Touch
-# English function-specific OCF-adapted narration; wording source of truth.
-# Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered historical transcript.
-# Review note: Historical source unavailable; reimplementation remains planned.
-# Proposed input: Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt
-# SHA-256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
-# Proposed header: SENSORY: TOUCH — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT, VERSION 2.
-# Review note: Input ranges: opener line 31; body lines 123–141; closer lines 247–253.
-# Review note: Clean Version 2 selected; annotated and script variants remain separate.
-# Review note: Authentication claims and proposed timings are not independently verified.
-# Review note: Canonical MORE/LESS cues replace proposed GREATER/LESSER wording;
-# original source reference remains unchanged.
-# Review note: Lasting tactile imagination is a user-requested OCF addition,
-# not recovered historical source text.
-# Review note: Shared production, state, and return material excluded.
-# Review note: One reusable function body supports four-pass playback.
-# Review note: Physical sensitivity changes are intended exercise suggestions,
-# not established biological effects or protection against injury.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-SEN-005
+title:
+  text: Touch
+  status: canonical
+  version: 1.0.0
+description:
+  text: Adjusts the felt sense of touch or skin sensation using the MORE/LESS grammar.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-SEN-005-PRIMARY
+  display_cue:
+    text: PLUS-TOUCH MORE
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Touch More
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-SEN-005-TOUCH-LESS
+  display_cue:
+    text: PLUS-TOUCH LESS
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Touch Less
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Decrease mode
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This command selects the decrease mode.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use when you choose to decrease the selected function response.
+    status: canonical
+    version: 1.0.0
+  role: decrease
+- command_id: OCF-CMD-SEN-005-LEGACY-01
+  display_cue:
+    text: PLUS-TOUCH GREATER
+    status: canonical
+    version: 1.0.0
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+- command_id: OCF-CMD-SEN-005-LEGACY-02
+  display_cue:
+    text: PLUS-TOUCH LESSER
+    status: canonical
+    version: 1.0.0
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-sen-005.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF adaptation of user-proposed Sensory: Touch reconstruction,
-      proposed input Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt;
-      SHA-256 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066;
-      source line 31. Clean Version 2 selected; other variants remain separate.
-      Historical source unavailable and authenticity unverified. Adds permanent
-      inner tactile imagination alongside deliberate physical touch regulation.
-      Rights: user_cleared per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to regulate
       your physical sense of touch and strengthen your ability
       to remember, imagine, and experience touch within your mind.
-
   hplus.function.ocf-sen-005.function-body:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF adaptation of user-proposed Sensory: Touch reconstruction,
-      proposed input Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt;
-      SHA-256 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066;
-      source lines 123–141. Clean Version 2 selected; original reference
-      unchanged and historical authenticity unverified. Retains the user-canonical
-      Plus Touch More and Plus Touch Less commands instead of proposed
-      GREATER/LESSER cues, and the close-eyes-inhale-hold-command-exhale-open-eyes
-      sequence. Physical adjustments to pressure, texture, temperature, and
-      other touch perceptions remain consciously selected and reversible.
-      User-directed OCF expansion establishes lasting internal tactile imagery,
-      sensory recall, imagined contact, and deliberate modification of texture,
-      pressure, warmth, coolness, and movement without actual contact. Existing
-      commands can reinforce or diminish an intended imagined sensation without
-      introducing an unverified third command. Imagined sensations remain
-      distinguishable from physical contact. One body supports four passes
-      across Focus 11 and Focus 20. Intended sensory effects are exercise
-      suggestions rather than established physiological outcomes. Rights:
-      user_cleared per user's lawyer-clearance attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-SEN-005", "allowed": ["cue.id.OCF-CMD-SEN-005-TOUCH-LESS", "cue.primary"]}
+    cue_template:
+      function_id: OCF-SEN-005
+      allowed:
+      - cue.id.OCF-CMD-SEN-005-TOUCH-LESS
+      - cue.primary
     text: |-
       From this moment forward, you have the ability
       to regulate your sense of touch and develop
@@ -121,18 +167,11 @@ entries:
   hplus.function.ocf-sen-005.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted closer based on user-proposed Sensory: Touch reconstruction,
-      proposed input Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt;
-      SHA-256 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066;
-      source lines 247–253. Original historical source unavailable and
-      authenticity unverified. Preserves canonical Plus Touch More and Plus
-      Touch Less commands and close-eyes-inhale-hold-command-candle-exhale-
-      open-eyes sequence. Includes one reminder of physical and imagined
-      touch and the standard OCF sign-off. Rights: user_cleared per user's
-      lawyer-clearance attestation. Finished-session release remains pending.
     cue_template:
-      {"function_id": "OCF-SEN-005", "allowed": ["cue.id.OCF-CMD-SEN-005-TOUCH-LESS", "cue.primary"]}
+      function_id: OCF-SEN-005
+      allowed:
+      - cue.id.OCF-CMD-SEN-005-TOUCH-LESS
+      - cue.primary
     text: |-
       Remember, to regulate your physical sense of touch
       or strengthen your inner experience of it, close your eyes,

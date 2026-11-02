@@ -151,7 +151,11 @@ def verify(root=REPO_ROOT):
         if sha(raw) != SNAPSHOTS[name]:
             raise OCFError("approved candidate snapshot changed: " + name)
         snapshot = yaml.safe_load(raw)
-        live = yaml.safe_load((root / resource).read_text(encoding="utf-8"))
+        from .locale_history import before_consolidation
+
+        live = yaml.safe_load(
+            before_consolidation(root, resource, (root / resource).read_text(encoding="utf-8"))
+        )
         expected = deepcopy(snapshot)
         for key, entry in expected["entries"].items():
             entry["status"] = "reviewed"

@@ -1,84 +1,63 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-EMO-003", "title": "Empathize", "locale": "en-US"}
-# English authority: functions/emotion/empathizing.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-EMO-003-PRIMARY", "role": "activation", "display": "PLUS-EMPATHIZE", "spoken": "Plus Empathize", "locale_definition": "commands.ocf-cmd-emo-003-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# Editorial successor OCF-EDITORIAL-TITLE-CUES-001: prior cue-preservation notes describe predecessor versions; only approved title/cue substitutions changed.
-# OCF-EMO-003 — Empathizing
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered historical transcript.
-# Review note: Historical source availability remains unavailable;
-# reimplementation remains planned.
-# Review note: Proposed input:
-# Empathizing/Empathizing_881049_reconstructed_clean.txt
-# SHA-256: 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06
-# Review note: Proposed header: EMPATHIZING (881049) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT.
-# Review note: Identity and historical authenticity are not independently verified.
-# Review note: Shared preparation, state, return, production instructions,
-# and non-narration notes remain excluded; proposed timings are unverified.
-# Review note: The exact Plus Profile Profile command is preserved.
-# Review note: OCF adaptation includes physical, intuitive, nonverbal,
-# telepathic-style, and nonphysical/out-of-body communication intentions.
-# Review note: These expanded perceptions are intended contemplative
-# experiences, not independently established perceptual abilities.
-# Review note: The function is consciously directed and remains available
-# in both ordinary waking and deeper states of consciousness.
-# Review note: One concise body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-EMO-003
+title:
+  text: Empathize
+  status: canonical
+  version: 1.0.0
+description:
+  text: Develops consciously directed understanding and communication with another being through sensory,
+    intuitive, and total-self awareness.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-EMO-003-PRIMARY
+  display_cue:
+    text: PLUS-EMPATHIZE
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Empathize
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-emo-003.opener:
     status: reviewed
     version: 1.1.0
-    notes: >-
-      OCF-adapted opener based on the user-proposed Empathizing
-      reconstruction. Proposed input:
-      Empathizing/Empathizing_881049_reconstructed_clean.txt;
-      SHA-256 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06.
-      Original reconstruction remains unchanged; historical authenticity
-      is unverified. Wording expands awareness of another being beyond
-      ordinary physical senses to include total-self perception,
-      nonverbal and nonphysical communication intentions.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     text: |-
       This OCF exercise will strengthen your ability
       to perceive, understand, and communicate with
       another being through all levels of awareness,
       including your senses, intuition, and total self.
-
   hplus.function.ocf-emo-003.function-body:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted body based on the user-proposed Empathizing
-      reconstruction. Proposed input:
-      Empathizing/Empathizing_881049_reconstructed_clean.txt;
-      SHA-256 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06.
-      Original reconstruction remains unchanged; historical source
-      availability and authenticity remain unverified. Preserves
-      conscious target selection, calm receptivity, whole-being
-      awareness, the original breath-command sequence, and growing
-      effectiveness with use. OCF-authored expansion explicitly
-      includes physical sensory perception, intuitive impressions,
-      the subconscious and higher self, the sense of connection to
-      all life, nonverbal and telepathic-style communication, and
-      out-of-body or nonphysical experience. Such claims are
-      exercise intentions, not independently verified mechanisms.
-      The exact Plus Profile Profile command is unchanged.
-      Companion-function instructions and repeated activation are
-      omitted; one body is used across four playback passes.
-      The exercise is directed toward understanding rather than
-      control, with the listener retaining judgment and boundaries.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     cue_template:
       function_id: OCF-EMO-003
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, your ability to perceive
       and understand another being is becoming deeper,
@@ -140,23 +119,13 @@ entries:
       The more you use {{ cue.primary }},
       the easier, clearer, and more effective
       this communion and understanding will become.
-
   hplus.function.ocf-emo-003.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-authored closer adapted from the user-proposed Empathizing
-      reconstruction. Proposed input:
-      Empathizing/Empathizing_881049_reconstructed_clean.txt;
-      SHA-256 423aac8c941818fbc850a9fbdd3ebc9b08a3745ab1b2a93c79f6280c717f1b06.
-      No authenticated historical closer is asserted; the source
-      handoff remains separate. The closer contains one purpose
-      reminder, the exact command and breathing sequence, and
-      the standard OCF ending. Rights: user_cleared, per user's
-      lawyer-clearance attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-EMO-003
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to understand
       another being through your senses and total self,

@@ -1,86 +1,104 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-COG-004", "title": "Imprint", "locale": "en-US"}
-# English authority: functions/cognition/imprint.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-COG-004-PRIMARY", "role": "activation", "display": "PLUS-IMPRINT", "spoken": "Plus Imprint", "locale_definition": "commands.ocf-cmd-cog-004-primary.spoken-cue"}
-# {"symbol": "cue.id.OCF-CMD-COG-004-RECALL", "command": "OCF-CMD-COG-004-RECALL", "role": "retrieval", "display": "PLUS-RECALL", "spoken": "Plus Recall", "locale_definition": null}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-COG-004 — Imprint
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: The original source repetition remains excluded.
-# Review note: The exact Plus Imprint Imprint command is preserved.
-# Review note: Plus Recall remains the associated retrieval command.
-# Review note: Imprint establishes lasting, consciously selected
-# memories with automatic consolidation and retention.
-# Review note: The ability to imprint is permanently available,
-# but deliberate activation determines what receives emphasis.
-# Review note: One concise function body supports four-pass playback.
-# Review note: The closer follows the standardized OCF reminder format.
-# Review note: The historical session handoff remains separate
-# from the OCF-authored function-specific closer.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-COG-004
+title:
+  text: Imprint
+  status: canonical
+  version: 1.0.0
+description:
+  text: Consciously capture and retain selected information or experiences, with Plus Recall for deliberate
+    retrieval.
+  status: reviewed
+  version: 1.0.1
+activation:
+  command_id: OCF-CMD-COG-004-PRIMARY
+  display_cue:
+    text: PLUS-IMPRINT
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Imprint
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-COG-004-RECALL
+  display_cue:
+    text: PLUS-RECALL
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Recall
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Retrieval command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This command retrieves selected or imprinted information.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use to retrieve information or experience selected or imprinted with this function.
+    status: canonical
+    version: 1.0.0
+  role: retrieval
+- command_id: OCF-CMD-COG-004-LEGACY-01
+  display_cue:
+    text: PLUS-IMPRINT, IMPRINT
+    status: canonical
+    version: 1.0.0
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-cog-004.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the unverified Imprint
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Imprint/Imprint.txt;
-      SHA-256 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9;
-      lines 1–2. Original reference remains unchanged.
-      H-plus terminology changed to OCF.
-      Previously approved wording has been simplified to
-      emphasize conscious memory placement, detailed
-      retention, and lasting access to selected information
-      and experiences. This is adapted narration, not
-      a verbatim source transcription.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to capture and
       permanently store information, knowledge, and
       experiences deep within your memory, preserving
       them clearly and accurately for future recall.
-
   hplus.function.ocf-cog-004.function-body:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted narration based on the unverified Imprint
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Imprint/Imprint.txt;
-      SHA-256 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9;
-      lines 32–51. Original reference remains unchanged.
-      The previously approved body has been reorganized into
-      conscious selection, sensory perception, memory placement,
-      automatic consolidation, lasting retention, and recall.
-      The duplicate historical instruction pass remains excluded.
-      The exact Plus Imprint Imprint activation command and
-      original breathing sequence are preserved.
-      The original Plus Recall retrieval relationship remains
-      explicit and distinct from Plus Retrieve.
-      OCF-authored additions reinforce automatic organization
-      and retention of intentionally imprinted memories,
-      including consolidation during normal sleep.
-      Permanent availability applies to the learned function,
-      while imprinting remains consciously directed.
-      Affirmative suggestions preserve the intended certainty
-      of detailed memory storage and immediate retrieval.
-      One reusable function body supports repeated playback
-      across Focus 11 and Focus 20.
-      Shared preparation, state, and return wording excluded.
-      Suggested outcomes are exercise intentions rather than
-      independently verified memory capabilities.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
-      {"function_id": "OCF-COG-004", "allowed": ["cue.id.OCF-CMD-COG-004-RECALL", "cue.primary"]}
+      function_id: OCF-COG-004
+      allowed:
+      - cue.id.OCF-CMD-COG-004-RECALL
+      - cue.primary
     text: |-
       From this moment forward, your ability to capture,
       store, and remember information and experiences
@@ -151,24 +169,10 @@ entries:
   hplus.function.ocf-cog-004.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-authored closer adapted from the previously approved
-      Imprint function reminder. Original SOURCE +Transcripts
-      From available tapes/Imprint/Imprint.txt;
-      SHA-256 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9.
-      The historical session handoff remains separate from
-      this function-specific closer.
-      The closer contains one purpose reminder, the exact
-      Plus Imprint Imprint activation command, the original
-      breathing and attention sequence, and the standard
-      OCF ending. Additional reinforcement and the Plus Recall
-      retrieval explanation remain in the function body.
-      This is OCF-authored wording, not historical transcript text.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-COG-004
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to preserve
       information or an experience in your memory,

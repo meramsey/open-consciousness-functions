@@ -1,75 +1,120 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-BOD-012", "title": "Sex Drive", "locale": "en-US"}
-# English authority: functions/body/sex-drive.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-012-PRIMARY", "role": "activation", "display": "PLUS-SEX MORE", "spoken": "Plus Sex More", "locale_definition": null}
-# {"symbol": "cue.id.OCF-CMD-BOD-012-SEX-LESS", "command": "OCF-CMD-BOD-012-SEX-LESS", "role": "decrease", "display": "PLUS-SEX LESS", "spoken": "Plus Sex Less", "locale_definition": null}
-# END GENERATED CUE PREVIEW
-# OCF-BOD-012 — Sex Drive
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: Embedded numeric transcript labels are treated as
-# transcription artifacts, not semantic count events.
-# Review note: Both activation commands are preserved:
-# Plus Sex More and Plus Sex Less.
-# Review note: OCF adaptation establishes lasting, automatic
-# responsiveness to conscious intention, without permanently
-# activating either command.
-# Review note: Energy redirection remains an intentional
-# visualization and affirmative suggestion.
-# Review note: One concise function body supports four-pass playback.
-# Review note: Closer follows the standardized OCF reminder format.
-
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-BOD-012
+title:
+  text: Sex Drive
+  status: canonical
+  version: 1.0.0
+description:
+  text: Adjusts felt sexual drive in either direction using the MORE/LESS grammar.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-BOD-012-PRIMARY
+  display_cue:
+    text: PLUS-SEX MORE
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Sex More
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-BOD-012-SEX-LESS
+  display_cue:
+    text: PLUS-SEX LESS
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Sex Less
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Decrease mode
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This command selects the decrease mode.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use when you choose to decrease the selected function response.
+    status: canonical
+    version: 1.0.0
+  role: decrease
+- command_id: OCF-CMD-BOD-012-LEGACY-01
+  display_cue:
+    text: PLUS-SEX GREATER
+    status: canonical
+    version: 1.0.0
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+- command_id: OCF-CMD-BOD-012-LEGACY-02
+  display_cue:
+    text: PLUS-SEX LESSER
+    status: canonical
+    version: 1.0.0
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-bod-012.opener:
     status: reviewed
     version: 1.1.0
-    notes: >-
-      OCF-adapted narration based on the unverified Sex Drive
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Sex Drive/Sex Drive.txt;
-      SHA-256 ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76;
-      line 2. Original reference remains unchanged.
-      Previously approved wording has been simplified to emphasize
-      conscious direction of sexual desire, arousal, sensitivity,
-      and responsiveness. This is adapted narration, not a
-      verbatim source transcription.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to consciously direct
       your sexual desire and arousal, increasing or decreasing
       your responsiveness whenever you choose.
-
   hplus.function.ocf-bod-012.function-body:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the unverified Sex Drive
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Sex Drive/Sex Drive.txt;
-      SHA-256 ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76;
-      lines 29–47. Original reference remains unchanged.
-      Embedded transcript count labels have been excluded as
-      transcription artifacts. The two distinct activation
-      commands Plus Sex More and Plus Sex Less are preserved.
-      The body clarifies increased arousal, sensitivity,
-      decreased arousal, and constructive energy redirection.
-      OCF-authored suggestions establish lasting, automatic
-      responsiveness to conscious intention without permanently
-      increasing or suppressing sexual desire.
-      The shared breathing and activation sequence is retained.
-      One reusable body supports repeated playback across
-      Focus 11 and Focus 20. Energy redirection and suggested
-      outcomes express the exercise's intended experience,
-      not independently established physiological effects.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-BOD-012", "allowed": ["cue.id.OCF-CMD-BOD-012-SEX-LESS", "cue.primary"]}
+    cue_template:
+      function_id: OCF-BOD-012
+      allowed:
+      - cue.id.OCF-CMD-BOD-012-SEX-LESS
+      - cue.primary
     text: |-
       From this moment forward, you have the ability
       to consciously direct your sexual desire
@@ -143,20 +188,11 @@ entries:
   hplus.function.ocf-bod-012.closer:
     status: reviewed
     version: 1.1.0
-    notes: >-
-      OCF-adapted closer based on the unverified Sex Drive
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Sex Drive/Sex Drive.txt;
-      SHA-256 ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76;
-      lines 81–84. Original reference remains unchanged.
-      Closer simplified to one purpose reminder, both exact
-      activation commands, the breathing sequence, and the
-      standard OCF ending. Additional reinforcement remains
-      in the function body. This is adapted narration,
-      not verbatim source wording.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-BOD-012", "allowed": ["cue.id.OCF-CMD-BOD-012-SEX-LESS", "cue.primary"]}
+    cue_template:
+      function_id: OCF-BOD-012
+      allowed:
+      - cue.id.OCF-CMD-BOD-012-SEX-LESS
+      - cue.primary
     text: |-
       Remember, whenever you wish to regulate
       your sexual arousal, inhale deeply

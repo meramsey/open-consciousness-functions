@@ -28,7 +28,16 @@ def test_batch_covers_all_registered_functions_without_authoring_speech(batch):
         data = yaml_safe_load(batch["files"][row["destination"]])
         assert data["function_id"] == owner.id
         assert data["title"]["text"] == owner.canonical_name
-        assert row["destination"].startswith("locales/en-US/" + owner.id + "-")
+        assert (migration.REPO_ROOT / row["destination"]).is_file()
+        first_key = next(iter(data["entries"]))
+        source_file = catalog.raw_resource(first_key, "en-US", domain="narration", fallback=False)[
+            0
+        ].file
+        assert row["destination"] == (
+            "locales/en-US/hplus-OCF-EMO-003.yaml"
+            if owner.id == "OCF-EMO-003"
+            else "locales/en-US/" + source_file
+        )
         assert len(data["secondary_commands"]) == len(owner.command_records) - 1
         commands = {command.id: command for command in owner.command_records}
         for cue in [data["activation"], *data["secondary_commands"]]:
@@ -157,14 +166,14 @@ def source(tmp_path, monkeypatch):
 
 
 @pytest.mark.unit
-def test_batch_rejects_duplicate_ids_and_destination_collision(source):
+def test_batch_rejects_duplicate_ids_without_touching_readable_title_file(source):
     root, owner, catalog = source
-    with pytest.raises(OCFError, match="duplicate localized function filename"):
+    with pytest.raises(OCFError, match="duplicate localized function identity"):
         migration.build_batch(root, records=[owner, owner], catalog=catalog)
     target = root / "locales/en-US/OCF-EMO-003-Exact-wording.yaml"
     target.write_text("existing operator data", encoding="utf-8")
-    with pytest.raises(OCFError, match="destination already exists"):
-        migration.build_batch(root, records=[owner], catalog=catalog)
+    batch = migration.build_batch(root, records=[owner], catalog=catalog)
+    assert list(batch["files"]) == ["locales/en-US/fixture.yaml"]
     assert target.read_text() == "existing operator data"
 
 
@@ -217,3 +226,49 @@ def test_preview_cli_and_empty_metadata_boundary(tmp_path, monkeypatch, capsys):
     assert "preview-only" in capsys.readouterr().out
     with pytest.raises(OCFError, match="empty localized metadata"):
         migration._literal(SimpleNamespace(text=" "))
+
+
+@pytest.mark.unit
+def test_consolidation_retains_other_sources_and_is_resumable(source):
+    root, owner, catalog = source
+    batch = migration.build_batch(root, records=[owner], catalog=catalog)
+    source_file = root / "locales/en-US/fixture.yaml"
+    manifest = root / "locales/en-US/manifest.yaml"
+    manifest_before = manifest.read_bytes()
+    before = source_file.read_text()
+    (root / migration.LEDGER).parent.mkdir(parents=True)
+    receipt = migration.activate_batch(batch, root, records=[owner])
+    assert receipt["count"] == 1
+    assert manifest.read_bytes() == manifest_before
+    after = source_file.read_text()
+    data = yaml_safe_load(after)
+    assert data["domain"] == "narration"
+    assert data["title"]["text"] == "Exact wording."
+    assert data["entries"]["fixture.opener"]["text"] == "Exact wording."
+    assert "already-consolidated" == migration.activate_batch(batch, root)["status"]
+    source_file.write_text(before)
+    assert "resumed" == migration.activate_batch(batch, root)["status"]
+    assert source_file.read_text() == after
+    source_file.write_text("human edit; preserve")
+    with pytest.raises(OCFError, match="resource drift"):
+        migration.activate_batch(batch, root)
+    assert source_file.read_text() == "human edit; preserve"
+
+
+@pytest.mark.unit
+def test_optional_entries_outside_playback_sequence_are_not_dropped(source):
+    root, owner, catalog = source
+    path = root / "locales/en-US/fixture.yaml"
+    path.write_text(
+        "entries:\n  fixture.opener:\n    text: Exact wording.\n"
+        "  fixture.optional:\n    text: Exact wording.\n    version: 2.0.0\n"
+        "    notes: Preserve the original editorial decision separately.\n",
+        encoding="utf-8",
+    )
+    batch = migration.build_batch(root, records=[owner], catalog=catalog)
+    data = yaml_safe_load(batch["files"]["locales/en-US/fixture.yaml"])
+    assert set(data["entries"]) == {"fixture.opener", "fixture.optional"}
+    assert data["entries"]["fixture.optional"] == {"text": "Exact wording.", "version": "2.0.0"}
+    assert batch["mapping"][0]["narration_notes"]["fixture.optional"] == (
+        "Preserve the original editorial decision separately."
+    )

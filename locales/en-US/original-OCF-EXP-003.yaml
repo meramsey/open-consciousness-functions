@@ -1,70 +1,69 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-EXP-003", "title": "Dissolve", "locale": "en-US"}
-# English authority: functions/experimental/dissolve.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-EXP-003-PRIMARY", "role": "activation", "display": "PLUS-DISSOLVE", "spoken": "Plus Dissolve", "locale_definition": "commands.ocf-cmd-exp-003-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-EXP-003 — Dissolve
-# New OCF narration proposal; function ID is provisional and not registered.
-# Proposed English title: Dissolve
-# Proposed English display cue: PLUS-DISSOLVE
-# Proposed English spoken cue: Plus Dissolve
-# Proposed command identity: OCF-CMD-EXP-003-PRIMARY
-# Review note: Newly authored wording informed by the user-supplied
-# Plus Dis-Create excerpt; not a recovered or authenticated transcript.
-# Review note: No source filename, line range, checksum, or inherited
-# rights approval is asserted for that comparison excerpt.
-# Review note: The unfinished end of the supplied excerpt is not reconstructed.
-# Review note: Existing resource-key shape is retained for integration;
-# the hplus namespace does not establish historical provenance.
-# Review note: The function, command, locale cue resources, and narration
-# bindings must be registered before symbolic cue resolution is available.
-# Review note: Deliberate pattern selection initiates the practice;
-# continuing integration and lasting availability are intended suggestions.
-# Review note: Existing approved functions and integrity records are unchanged.
-# Review note: Manifest is an optional companion, not a second Dissolve command.
-# Review note: Shared preparation, practice pauses, and state transitions
-# belong in session composition, not this reusable function body.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-EXP-003
+title:
+  text: Dissolve
+  status: reviewed
+  version: 1.0.0
+description:
+  text: Consciously dissolve a selected unwanted belief, expectation, emotional response or recurring
+    life pattern while preserving useful learning.
+  status: reviewed
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-EXP-003-PRIMARY
+  display_cue:
+    text: PLUS-DISSOLVE
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Dissolve
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary
+    status: reviewed
+    version: 1.0.0
+  explanation:
+    text: Consciously dissolve a selected unwanted belief, expectation, emotional response or recurring
+      life pattern while preserving useful learning.
+    status: reviewed
+    version: 1.0.0
+  usage:
+    text: Deliberately follow the ordered procedure; proposed exercise instructions, not software execution.
+    status: reviewed
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions:
+  - function_id: OCF-EXP-006
+    description:
+      text: Distinguish releasing a selected unwanted pattern from exploring intuitive understanding.
+        Either exercise may be chosen independently; neither is a prerequisite for the other.
+      status: reviewed
+      version: 0.0.1
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-exp-003.opener:
     status: reviewed
     version: 1.0.0
-    notes: >-
-      New OCF-authored narration proposal informed by the user-supplied
-      Plus Dis-Create excerpt. Introduces conscious dissolution of selected
-      beliefs, emotional responses, and recurring life patterns. No historical
-      transcript identity or prior editorial approval is claimed.
-      Proposed identity OCF-EXP-003 remains subject to registration and review.
     text: |-
       This OCF exercise will teach you to dissolve unwanted beliefs,
       emotional responses, and recurring life patterns,
       freeing your energy and attention for what you choose to create.
-
   hplus.function.ocf-exp-003.function-body:
     status: reviewed
     version: 1.0.0
-    notes: >-
-      New OCF-authored programming passage, not a transcription or synonym-only
-      rewrite of the supplied comparison. Preserves deliberate selection,
-      inhale-hold-command-exhale, total-self cooperation, dissolution rather
-      than temporary concealment, and energy available for constructive use.
-      Adds representation-neutral intention, useful learning retained without
-      repeating an old pattern, self-directed choice, and patient integration
-      without requiring distress or a fixed completion time. The ability is
-      intended to remain available; activation targets a consciously selected
-      pattern rather than every passing thought. No clinical or external
-      outcome is established by these suggestions. The supplied meditation
-      prerequisites and Focus-state sequence are not imported. One passage
-      is intended for four scheduled body repetitions; composition remains
-      separate. The proposed primary command is Plus Dissolve, supplied through
-      cue.primary after registration and review. Manifest remains independent.
-      Editorial, rights/provenance, integration, and audio review are pending.
     cue_template:
       function_id: OCF-EXP-003
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, you are free to dissolve
       patterns that no longer belong in the life you choose to create.
@@ -113,20 +112,13 @@ entries:
       The more you use this function,
       the more naturally you release what no longer serves you
       and make room for what you choose next.
-
   hplus.function.ocf-exp-003.closer:
     status: reviewed
     version: 1.0.0
-    notes: >-
-      New OCF-authored closer with one purpose reminder, deliberate pattern
-      selection, the proposed primary cue, and the inhale-hold-command-exhale
-      sequence. No repeated reinforcement, second function command, or
-      session-state transition is included. Cue resolution requires the
-      proposed function and its reviewed locale cue to be registered.
-      Editorial approval and finished-session review remain pending.
     cue_template:
       function_id: OCF-EXP-003
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, to dissolve an unwanted pattern,
       bring what you wish to release clearly into your awareness.

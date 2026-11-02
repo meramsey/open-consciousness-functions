@@ -1,76 +1,62 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-COG-001", "title": "Information Access", "locale": "en-US"}
-# English authority: functions/cognition/access-to-information.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-COG-001-PRIMARY", "role": "activation", "display": "PLUS-ACCESS INFO", "spoken": "Plus Access Info", "locale_definition": "commands.ocf-cmd-cog-001-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-COG-001 — Access to Information
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: The final historical function-specific passage is an
-# exploration handoff, not a waking closer.
-# Review note: Source line 50 remains outside the function closer.
-# Review note: The Plus Retrieve activation command is preserved.
-# Review note: OCF adaptation establishes lasting access to personal
-# knowledge, automatic information organization, and retrieval.
-# Review note: One concise function body supports four-pass playback.
-# Review note: The closer follows the standardized OCF reminder format.
-
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-COG-001
+title:
+  text: Information Access
+  status: canonical
+  version: 1.0.0
+description:
+  text: Accesses intuition, memory, and inner knowledge on demand.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-COG-001-PRIMARY
+  display_cue:
+    text: PLUS-ACCESS INFO
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Access Info
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-cog-001.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the unverified Access to
-      Information transcript. Original SOURCE +Transcripts From
-      available tapes/Access to Information/Access to Information.txt;
-      SHA-256 f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14;
-      line 1. Original reference remains unchanged.
-      Previously approved wording has been revised to emphasize
-      direct access to the listener's personal library of
-      knowledge, information, and experience.
-      This is adapted narration, not a verbatim transcription.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to access your
       personal library of information, knowledge,
       and experience, bringing the information
       you desire directly into your conscious awareness.
-
   hplus.function.ocf-cog-001.function-body:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted narration based on the unverified Access to
-      Information transcript. Original SOURCE +Transcripts From
-      available tapes/Access to Information/Access to Information.txt;
-      SHA-256 f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14;
-      lines 39–49. Original reference remains unchanged.
-      The narration has been reorganized into personal knowledge
-      awareness, forms of information, permanent availability,
-      automatic organization, conscious retrieval, and affirmative
-      reinforcement. The exact Plus Retrieve command is preserved.
-      The original command-first, information-selection sequence
-      remains supported. Duplicate activation instructions have
-      been removed. OCF-authored suggestions establish lasting
-      access and automatic organization of personal knowledge.
-      No breathing instruction is added because the source
-      function does not specify one. One reusable body supports
-      four playback passes across Focus 11 and Focus 20.
-      Shared preparation, state, and return wording remains
-      excluded. Suggested outcomes are exercise intentions,
-      not independently verified retrieval capabilities.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-COG-001
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, your ability to access
       your personal library of information and knowledge
@@ -138,28 +124,13 @@ entries:
 
       Begin exploring your personal
       library of knowledge now.
-
   hplus.function.ocf-cog-001.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-authored closer adapted from the previously approved
-      proposal. The historical Access to Information transcript
-      contains a session exploration handoff at line 50 rather
-      than a complete function-specific waking closer.
-      Original SOURCE +Transcripts From available
-      tapes/Access to Information/Access to Information.txt;
-      SHA-256 f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14;
-      line 50 remains outside the function closer.
-      The closer contains one purpose reminder, the exact
-      Plus Retrieve activation command, and the standard
-      OCF ending. No additional reinforcement is included.
-      This is OCF-authored wording, not historical transcript
-      text. Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-COG-001
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to access
       your personal library of knowledge,

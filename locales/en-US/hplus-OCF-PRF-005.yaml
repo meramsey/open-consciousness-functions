@@ -1,71 +1,61 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-PRF-005", "title": "Make Your Day", "locale": "en-US"}
-# English authority: functions/performance/make-your-day.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-PRF-005-PRIMARY", "role": "activation", "display": "PLUS-THIS DAY", "spoken": "Plus This Day", "locale_definition": null}
-# END GENERATED CUE PREVIEW
-# OCF-PRF-005 — Make Your Day
-# English function-specific OCF-adapted narration; wording source of truth.
-# Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered historical transcript.
-# Review note: Historical source unavailable; reimplementation remains planned.
-# Proposed input: Make Your Day/Make_Your_Day_881042_reconstructed_clean.txt
-# SHA-256: 465e38a658e6a3a7abf3b8693714d8f3c297eb68c5e1f030ccb1f84a3d2da44e
-# Proposed header: MAKE YOUR DAY (881042) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT.
-# Review note: Identity based on proposed title and legacy command;
-# authenticity and proposed input timings are not independently verified.
-# Review note: Opener input line 39; body lines 138–207; closer lines 328–340.
-# Review note: Selected narration only; shared sections and production notes excluded.
-# Review note: Same-day manifestation scope preserves the intended influence on
-# internal states, events, opportunities, and favorable external conditions.
-# Review note: Visualization and verbal expression precede Plus This Day.
-# Review note: One body supports four-pass playback without state-specific cues.
-# Review note: Intended manifestation effects are exercise suggestions,
-# not verified control over external events.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-PRF-005
+title:
+  text: Make Your Day
+  status: canonical
+  version: 1.0.0
+description:
+  text: Sets a deliberate tone for the day ahead.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-PRF-005-PRIMARY
+  display_cue:
+    text: PLUS-THIS DAY
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus This Day
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-prf-005.opener:
     status: reviewed
     version: 1.1.0
-    notes: >-
-      OCF adaptation of the user-proposed Make Your Day reconstruction;
-      proposed input Make Your Day/Make_Your_Day_881042_reconstructed_clean.txt;
-      SHA-256 465e38a658e6a3a7abf3b8693714d8f3c297eb68c5e1f030ccb1f84a3d2da44e;
-      original input line 39. The proposed historical source is unavailable
-      and authenticity unverified. Opener broadens the day's desired pattern
-      beyond personal mood or behavior to include experiences and conditions.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to shape the day ahead,
       establishing the experiences, conditions, and outcomes
       you desire for yourself, beginning with this day.
-
   hplus.function.ocf-prf-005.function-body:
     status: reviewed
     version: 1.1.0
-    notes: >-
-      OCF adaptation of the user-proposed Make Your Day reconstruction;
-      proposed input Make Your Day/Make_Your_Day_881042_reconstructed_clean.txt;
-      SHA-256 465e38a658e6a3a7abf3b8693714d8f3c297eb68c5e1f030ccb1f84a3d2da44e;
-      original input lines 138–207. Reconstruction unchanged; historical
-      authenticity unverified. Preserves morning-before-activities preparation,
-      verbal and visual expression of desired physical, mental, and emotional
-      patterns, exact Plus This Day command, and inhale-hold-command-exhale
-      sequence. Broadens the manifestation intention to desired same-day
-      circumstances, meetings, opportunities, and outcomes rather than
-      restricting it to the listener's own behavior. Includes conscious,
-      subconscious, and higher-self participation, flexible recognition of
-      favorable possibilities, and completion within the present day.
-      Removes repeated command and companion-function references. This is a
-      daily invocation, not an indefinite future-pattern command. The suggested
-      influence on external circumstances is an experiential intention, not
-      an established effect. One body supports four passes across Focus 11
-      and Focus 20. Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-PRF-005", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-PRF-005
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, you can begin each morning
       by creating the pattern you desire for the day ahead.
@@ -113,16 +103,10 @@ entries:
   hplus.function.ocf-prf-005.closer:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted closer from user-proposed Make Your Day reconstruction;
-      proposed input Make Your Day/Make_Your_Day_881042_reconstructed_clean.txt;
-      SHA-256 465e38a658e6a3a7abf3b8693714d8f3c297eb68c5e1f030ccb1f84a3d2da44e;
-      original input lines 328–340. Historical source unavailable and
-      authenticity unverified. Retains first-thing-in-the-morning preparation,
-      verbal and visual expression, exact Plus This Day command, original
-      breathing sequence, and standard OCF sign-off. Rights: user_cleared,
-      per user's lawyer-clearance attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-PRF-005", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-PRF-005
+      allowed:
+      - cue.primary
     text: |-
       Remember, each morning, clearly picture and express
       the experiences and outcomes you desire for this day.

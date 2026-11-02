@@ -68,3 +68,31 @@ def test_missing_successor_is_not_silently_replaced_by_history(tmp_path, monkeyp
 
 def test_checkout_without_migration_record_is_unchanged(tmp_path):
     assert history.predecessor(tmp_path, "locales/en-US/manifest.yaml", "original") == "original"
+
+
+def test_consolidation_retains_exact_original_and_rechecks_cached_ledger(tmp_path, monkeypatch):
+    name = "locales/en-US/hplus-OCF-FND-001.yaml"
+    before = "entries:\n  fixture.optional:\n    text: Exact speech.\n"
+    after = "function_id: OCF-FND-001\n" + before
+    data = {
+        "files": {
+            name: {
+                "before": before,
+                "before_sha256": history._sha(before),
+                "after_sha256": history._sha(after),
+            }
+        }
+    }
+    path = tmp_path / history.CONSOLIDATION
+    path.parent.mkdir(parents=True)
+    path.write_text(json.dumps(data))
+    monkeypatch.setattr(history, "CONSOLIDATION_SHA256", history._sha(path.read_text()))
+    assert history.before_consolidation(tmp_path, name, after) == before
+    assert history.before_consolidation(tmp_path, name, before) == before
+    assert history.before_consolidation(tmp_path, "unrelated.yaml", "unchanged") == "unchanged"
+    with pytest.raises(OCFError, match="successor source drift"):
+        history.before_consolidation(tmp_path, name, after + "unknown edit")
+    data["files"][name]["before"] = "tampered predecessor"
+    path.write_text(json.dumps(data))
+    with pytest.raises(OCFError, match="immutable localized consolidation ledger drift"):
+        history.before_consolidation(tmp_path, name, after)

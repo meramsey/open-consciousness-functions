@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 from copy import deepcopy
 from pathlib import Path
@@ -49,6 +50,7 @@ def overlay(parent: dict, child: dict) -> dict:
 def configuration_lock(
     dependency_names: list[str] | None = None, *, baseline_id: str = BASELINE_ID
 ) -> dict:
+    from .locale_history import before_consolidation
     from .semantic_dsp import load_profile
     from .session import load_pacing_profile, load_template
 
@@ -104,7 +106,18 @@ def configuration_lock(
             for name, data in (("template", template), ("pacing", pacing), ("dsp", dsp))
         },
         "files": {
-            path.relative_to(REPO_ROOT).as_posix(): sha256_of_file(path) for path in sorted(paths)
+            path.relative_to(REPO_ROOT).as_posix(): (
+                hashlib.sha256(
+                    before_consolidation(
+                        REPO_ROOT,
+                        path.relative_to(REPO_ROOT).as_posix(),
+                        path.read_text(encoding="utf-8"),
+                    ).encode("utf-8")
+                ).hexdigest()
+                if path.suffix == ".yaml" and path.is_relative_to(REPO_ROOT / "locales")
+                else sha256_of_file(path)
+            )
+            for path in sorted(paths)
         },
     }
 

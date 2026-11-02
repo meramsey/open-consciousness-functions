@@ -1,67 +1,79 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-FND-004", "title": "Relax", "locale": "en-US"}
-# English authority: functions/foundation/relax.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-FND-004-PRIMARY", "role": "activation", "display": "PLUS-RELAX", "spoken": "Plus Relax", "locale_definition": "commands.ocf-cmd-fnd-004-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-FND-004 — Relax
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: Original SOURCE +Transcripts From available tapes/Relax/Relax.txt
-# SHA-256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
-# Review note: Opener lines 1–2; body lines 33–42; closer lines 186–188.
-# Review note: Source function introduction at line 33 belongs to the body.
-# Review note: Embedded count labels and repeated source passages remain excluded.
-# Review note: Shared preparation, state, and return material remain excluded.
-# Review note: The exact Plus Relax Relax command and breathing sequence are preserved.
-# Review note: This source-derived adaptation is separate from frozen Relax pilot resources.
-# Review note: One concise function body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-FND-004
+title:
+  text: Relax
+  status: canonical
+  version: 1.0.0
+description:
+  text: Deepens physical and mental relaxation.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-FND-004-PRIMARY
+  display_cue:
+    text: PLUS-RELAX
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Relax
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-FND-004-LEGACY-01
+  display_cue:
+    text: PLUS-RELAX, RELAX
+    status: canonical
+    version: 1.0.0
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-fnd-004.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted opener based on the unverified Relax transcript.
-      Original SOURCE +Transcripts From available tapes/Relax/Relax.txt;
-      SHA-256 c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209;
-      lines 1–2. Original reference remains unchanged. The opener
-      concisely introduces consciously directed relaxation of body
-      and mind. This revision is separate from frozen Relax pilot
-      resources. Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to release
       physical and mental tension and enter a state
       of deep, natural relaxation whenever you choose.
-
   hplus.function.ocf-fnd-004.function-body:
     status: reviewed
     version: 1.3.1
-    notes: >-
-      OCF-adapted body based on the unverified Relax transcript.
-      Original SOURCE +Transcripts From available tapes/Relax/Relax.txt;
-      SHA-256 c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209;
-      lines 33–42. The source function introduction at line 33
-      remains identified as body material. Source numeric labels,
-      duplicated instruction, and overlapping relaxation passage
-      remain excluded. The exact Plus Relax Relax command and
-      inhale-hold-command-candle-exhale sequence are preserved.
-      OCF-adapted suggestions reinforce full-body release of
-      tension, calm and clear awareness, lasting availability,
-      and consciously controlled use without permanent drowsiness.
-      One body is intended for four playback passes across Focus 11
-      and Focus 20. This is separate from frozen Relax pilot resources.
-      Affirmative effects are exercise suggestions. Rights:
-      user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     cue_template:
       function_id: OCF-FND-004
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, you have the ability
       to relax your entire body and mind deeply,
@@ -111,23 +123,13 @@ entries:
       Each time you use this function,
       becoming calm, comfortable, and relaxed
       will be easier, faster, and more effective.
-
   hplus.function.ocf-fnd-004.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted closer based on the unverified Relax transcript.
-      Original SOURCE +Transcripts From available tapes/Relax/Relax.txt;
-      SHA-256 c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209;
-      lines 186–188. The closer is shortened to one purpose reminder,
-      the exact Plus Relax Relax command, the source breathing sequence,
-      and the standard OCF ending. Original reference remains unchanged.
-      This revision is separate from frozen Relax pilot resources.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     cue_template:
       function_id: OCF-FND-004
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to relax
       your body and mind, inhale deeply

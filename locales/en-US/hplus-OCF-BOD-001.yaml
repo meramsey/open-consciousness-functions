@@ -1,66 +1,64 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-BOD-001", "title": "Brain Flow", "locale": "en-US"}
-# English authority: functions/body/brain-repairs.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-001-PRIMARY", "role": "activation", "display": "PLUS-BRAIN FLOW", "spoken": "Plus Brain Flow", "locale_definition": "commands.ocf-cmd-bod-001-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# Editorial successor OCF-EDITORIAL-TITLE-CUES-001: prior cue-preservation notes describe predecessor versions; only approved title/cue substitutions changed.
-# OCF-BOD-001 — Brain: Repairs & Maintenance
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: Shared consolidation at lines 48–49 and trailing video text
-# at line 165 remain excluded.
-# Review note: The Plus Flow Better activation command is preserved.
-# Review note: OCF adaptation adds lasting, automatic, self-regulating
-# maintenance suggestions; it is not a claim of medically verified effects.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-BOD-001
+title:
+  text: Brain Flow
+  status: canonical
+  version: 1.0.0
+description:
+  text: Supports balanced brain and neck circulation and maintenance, with conscious reinforcement when
+    desired.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-BOD-001-PRIMARY
+  display_cue:
+    text: PLUS-BRAIN FLOW
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Brain Flow
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-bod-001.opener:
     status: reviewed
     version: 1.3.0
-    notes: >-
-      OCF-adapted narration based on the unverified Brain Support and
-      Maintenance transcript. Original SOURCE +Transcripts From available
-      tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt;
-      SHA-256 b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf;
-      line 2. Original reference remains unchanged. H-plus terminology
-      changed to OCF. This adaptation reinforces lasting, automatic,
-      appropriately regulated brain and neck circulation maintenance.
-      This is not a verbatim source transcription or a medically established
-      outcome. Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release pending.
     text: |-
       This OCF exercise will strengthen and reinforce your body's natural
       ability to maintain healthy circulation throughout your brain and
       the blood vessels in your neck that supply it, establishing a lasting,
       automatic pattern of balanced circulation, clear thinking, and
       mental sharpness.
-
   hplus.function.ocf-bod-001.function-body:
     status: reviewed
     version: 1.3.1
-    notes: >-
-      OCF-adapted narration based on the unverified Brain Support and
-      Maintenance transcript. Original SOURCE +Transcripts From available
-      tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt;
-      SHA-256 b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf;
-      lines 36–47. Original reference remains unchanged. The version 1.2.0
-      adaptation is extended with permanent, automatic, appropriately
-      self-regulating maintenance suggestions that operate during waking,
-      rest, and sleep. Plus Flow Better remains the conscious reinforcement
-      command; the breath and visualization sequence is preserved.
-      Vessel renewal and clear-pathway language is guided imagery, not a
-      medically established way to repair vascular disease or remove an
-      obstruction. One body is reusable across Focus 11 and Focus 20.
-      Shared consolidation at lines 48–49 remains excluded.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release pending.
     cue_template:
       function_id: OCF-BOD-001
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, bring your awareness to the blood
       circulating throughout your brain and the blood vessels in your
@@ -149,30 +147,17 @@ entries:
 
       Your mind will remain clear, sharp, alert, and ready
       whenever you need it.
-
   hplus.function.ocf-bod-001.closer:
     status: reviewed
     version: 1.3.1
-    notes: >-
-      OCF-adapted narration based on the unverified Brain Support and
-      Maintenance transcript. Original SOURCE +Transcripts From available
-      tapes/Brain Support and Maintenance/Brain Support and Maintenance.txt;
-      SHA-256 b4bce2b3c67a7aceca9889b2b1aa7c51941f2fcf1d9092d0707793b1e55abedf;
-      lines 159–164. Original reference remains unchanged. The version
-      1.2.0 closer is extended with automatic, lasting, self-regulating
-      circulation maintenance reinforcement. Plus Flow Better remains
-      the conscious activation phrase. The previously excluded
-      source-of-renewal sentence and trailing video text at line 165
-      remain excluded. Adapted narration, not verbatim transcription.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release pending.
     cue_template:
       function_id: OCF-BOD-001
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, the natural pattern of healthy circulation, renewal,
       and maintenance in your brain and neck is now firmly established.
-      
+
       Whenever you wish to reinforce this pattern, simply close
       your eyes and bring your attention to the area you choose.
 

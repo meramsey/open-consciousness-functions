@@ -1,4 +1,10 @@
-"""Build an exact, reviewable batch migration without mutating active locale packs."""
+"""Build an exact, reviewable batch migration and activate it in place.
+
+Stage L1 keeps the existing function resource filenames: consolidated metadata
+is staged in the current narration file and exact predecessor bytes are
+recorded in an editorial ledger. Consumer activation and redundant source
+retirement are separate stages; this stage removes no resource files or keys.
+"""
 
 from __future__ import annotations
 
@@ -10,7 +16,6 @@ from pathlib import Path
 
 import yaml
 
-from .artifact_names import safe_component
 from .commands import localized_cue
 from .guide_review import relationships
 from .indexes import load_all_functions
@@ -23,6 +28,9 @@ from .paths import (
 )
 from .utils import OCFError, yaml_safe_load
 from .validators import _load_schema, validate_against_schema
+
+LEDGER = "function-content/editorial/localized-consolidation-002.json"
+SUPERSEDED_PILOT = "OCF-EMO-003-Empathize.yaml"
 
 
 def _sha(text: str) -> str:
@@ -53,18 +61,20 @@ def _literal(entry) -> dict:
 
 
 def build_batch(root: Path = REPO_ROOT, *, records=None, catalog=None) -> dict:
-    """Prepare every function, preserving raw templates and resolved speech separately.
+    """Prepare every function in place, preserving raw templates and resolved speech.
 
     Activation is intentionally separate: historical readers must be converted
-    before the old runtime resource paths can be retired safely.
+    before the old runtime resource keys can be retired safely.
     """
     root = root.resolve()
     records = list(load_all_functions() if records is None else records)
+    if len({record.id for record in records}) != len(records):
+        raise OCFError("duplicate localized function identity")
     catalog = catalog or LocaleCatalog(root / "locales", function_records=lambda: records)
     if catalog.problems:
         raise OCFError("invalid source locale catalog: " + "; ".join(catalog.problems))
     schema = _load_schema("localized-function.schema.json")
-    files, snapshots, mapping, filenames = {}, {}, [], set()
+    files, snapshots, mapping = {}, {}, []
 
     def snapshot(name: str) -> str:
         path = (root / name).resolve()
@@ -91,20 +101,16 @@ def build_batch(root: Path = REPO_ROOT, *, records=None, catalog=None) -> dict:
             raise OCFError(owner.id + ": missing primary command")
         documentation = owner.data.get("documentation") or {}
         title = metadata(documentation["title_key"])
-        filename = owner.id + "-" + safe_component(title["text"]) + ".yaml"
-        if filename.casefold() in filenames:
-            raise OCFError("duplicate localized function filename: " + filename)
-        filenames.add(filename.casefold())
-        destination = "locales/en-US/" + filename
-        existing = root / destination
-        active_name = catalog.require("en-US").localized_function_files.get(owner.id)
-        if existing.exists() and active_name != filename:
-            raise OCFError("migration destination already exists: " + destination)
         entries, raw_hashes, resolved_hashes, provenance, sources = {}, {}, {}, {}, set()
+        narration_file = None
         for section in owner.data["narration"]["sequence"]:
             key = section["key"]
             entry, _ = catalog.raw_resource(key, "en-US", domain="narration", fallback=False)
             name = "locales/en-US/" + entry.file
+            if narration_file is None:
+                narration_file = entry.file
+            elif narration_file != entry.file:
+                raise OCFError(owner.id + ": narration spans multiple resource files")
             source = yaml_safe_load(snapshot(name))["entries"][key]
             value = copy.deepcopy(source if isinstance(source, dict) else {"text": source})
             notes = value.pop("notes", None)
@@ -116,6 +122,33 @@ def build_batch(root: Path = REPO_ROOT, *, records=None, catalog=None) -> dict:
             resolved_hashes[key] = _sha(
                 catalog.resource(key, "en-US", domain="narration", fallback=False)[0].text
             )
+        # The playback sequence is not the full resource inventory. Historical
+        # and optional sections (for example Access to Energy's access-close)
+        # remain canonical even when absent from the current three-slot plan.
+        resource_entries = yaml_safe_load(snapshot("locales/en-US/" + narration_file))["entries"]
+        for key, source in resource_entries.items():
+            if key in entries:
+                continue
+            value = copy.deepcopy(source if isinstance(source, dict) else {"text": source})
+            notes = value.pop("notes", None)
+            if notes is not None:
+                provenance[key] = notes
+            entries[key] = value
+            raw = catalog.raw_resource(key, "en-US", domain="narration", fallback=False)[0]
+            resolved = catalog.resource(key, "en-US", domain="narration", fallback=False)[0]
+            raw_hashes[key] = _sha(raw.text)
+            resolved_hashes[key] = _sha(resolved.text)
+        active_name = catalog.require("en-US").localized_function_files.get(owner.id)
+        filename = narration_file
+        if filename == SUPERSEDED_PILOT:
+            # A branch-local pilot renamed one function; stage L1 restores the
+            # stable pre-pilot path as the single in-place authority.
+            filename = "hplus-" + owner.id + ".yaml"
+        destination = "locales/en-US/" + filename
+        if active_name not in (None, filename, SUPERSEDED_PILOT):
+            raise OCFError(owner.id + ": localized function already active as " + str(active_name))
+        if not (root / destination).is_file():
+            raise OCFError(owner.id + ": no existing localized file to consolidate: " + destination)
 
         def cue(command) -> dict:
             resolved = localized_cue(owner, command, "en-US", catalog=catalog)
@@ -230,15 +263,111 @@ def stage_batch(batch: dict, destination: Path) -> dict:
     return receipt
 
 
+def activate_batch(batch: dict, root: Path = REPO_ROOT, *, records=None) -> dict:
+    """Consolidate L1 metadata without activating or removing competing sources.
+
+    L2 is deliberately separate. Narration remains active through the existing
+    key-based reader; first-class metadata is schema-checked, staged data until
+    every consumer is migrated. The immutable pilot ledger is never rewritten.
+    """
+    root = root.resolve()
+    locale_dir = root / "locales/en-US"
+    outputs = {}
+    for name, text in batch["files"].items():
+        data = yaml_safe_load(text)
+        data["domain"] = "narration"
+        outputs[name] = yaml.dump(
+            data, Dumper=_ReadableDumper, allow_unicode=True, sort_keys=False, width=100
+        )
+    ledger_path = root / LEDGER
+    if ledger_path.is_file():
+        # A finished consolidation is a no-op, not an opportunity to replace
+        # predecessor evidence or silently absorb subsequent human edits.
+        prior = json.loads(ledger_path.read_text(encoding="utf-8"))
+        pending = []
+        for name, row in prior["files"].items():
+            path = root / name
+            if path.is_symlink() or not path.resolve().is_relative_to(locale_dir.resolve()):
+                raise OCFError("unsafe consolidation target: " + name)
+            if (
+                _sha(row["before"]) != row["before_sha256"]
+                or _sha(row["after"]) != row["after_sha256"]
+            ):
+                raise OCFError("consolidation evidence drift: " + name)
+            actual = _sha(path.read_text(encoding="utf-8"))
+            if actual not in {row["before_sha256"], row["after_sha256"]}:
+                raise OCFError("consolidated resource drift: " + name)
+            if actual != row["after_sha256"]:
+                pending.append((path, row["after"]))
+        for path, text in pending:
+            path.write_text(text, encoding="utf-8", newline="\n")
+        return {
+            "status": "resumed" if pending else "already-consolidated",
+            "count": prior["count"],
+            "ledger": LEDGER,
+        }
+    before_blobs = {name: (root / name).read_text(encoding="utf-8") for name in outputs}
+    for name, text in outputs.items():
+        target = (root / name).resolve()
+        if not target.is_relative_to(locale_dir.resolve()) or (root / name).is_symlink():
+            raise OCFError("unsafe consolidation target: " + name)
+        errors = validate_against_schema(
+            yaml_safe_load(text),
+            _load_schema(
+                "locale-manifest.schema.json"
+                if name.endswith("manifest.yaml")
+                else "locale-resource.schema.json"
+            ),
+        )
+        if errors:
+            raise OCFError(name + ": " + "; ".join(errors))
+    ledger = {
+        "schema_version": "1.0",
+        "purpose": "Stage L1 only: explicit metadata, exact narration and predecessor provenance; no source retirement.",
+        "count": batch["count"],
+        "mapping": batch["mapping"],
+        "files": {
+            name: {
+                "before": before_blobs[name],
+                "before_sha256": _sha(before_blobs[name]),
+                "after": text,
+                "after_sha256": _sha(text),
+            }
+            for name, text in outputs.items()
+        },
+    }
+    # Preserve all preimages before the first resource write. On interruption
+    # each target is still either the recorded preimage or the staged output.
+    (root / LEDGER).write_text(
+        json.dumps(ledger, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n"
+    )
+    for name, text in outputs.items():
+        (root / name).write_text(text, encoding="utf-8", newline="\n")
+    return {
+        "status": "consolidated; consumers unchanged until L2",
+        "count": len(batch["files"]),
+        "ledger": LEDGER,
+        "ledger_sha256": _sha(json.dumps(ledger, indent=2, ensure_ascii=False) + "\n"),
+        "source_files_removed": [],
+        "at_existing_filenames": True,
+    }
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--output", type=Path, help="new private preview directory; never activates"
     )
+    parser.add_argument(
+        "--activate", action="store_true", help="activate in place under existing filenames"
+    )
     args = parser.parse_args(argv)
     batch = build_batch()
     if args.output:
         stage_batch(batch, args.output)
+    if args.activate:
+        print(json.dumps(activate_batch(batch)))
+        return 0
     print(
         json.dumps(
             {"status": batch["status"], "count": batch["count"], "mapping": batch["mapping"]}

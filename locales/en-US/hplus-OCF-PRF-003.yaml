@@ -1,63 +1,62 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-PRF-003", "title": "Coordination", "locale": "en-US"}
-# English authority: functions/performance/synchronizing.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-PRF-003-PRIMARY", "role": "activation", "display": "PLUS-COORDINATE", "spoken": "Plus Coordinate", "locale_definition": "commands.ocf-cmd-prf-003-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-PRF-003 — Synchronizing
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: Original SOURCE +Transcripts From available tapes/Synchronizing/Synchronizing.txt
-# SHA-256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
-# Review note: Opener line 1; body candidate lines 44–66; closer lines 152–155.
-# Review note: Duplicate material, repeated endings, and extra breath rehearsals remain excluded.
-# Review note: Exact Plus Smooth Fast command and inhale-hold-command-candle-exhale retained.
-# Review note: Lasting baseline coordination is distinct from optional conscious reinforcement.
-# Review note: Source-derived effects are intended suggestions; original transcript unverified.
-# Review note: One reusable body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-PRF-003
+title:
+  text: Coordination
+  status: canonical
+  version: 1.0.0
+description:
+  text: Aligns and smooths internal rhythms toward feeling faster and steadier.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-PRF-003-PRIMARY
+  display_cue:
+    text: PLUS-COORDINATE
+    status: reviewed
+    version: 1.1.0
+  spoken_cue:
+    text: Plus Coordinate
+    status: reviewed
+    version: 1.1.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-prf-003.opener:
     status: reviewed
     version: 1.1.0
-    notes: >-
-      OCF-adapted opener based on unverified Synchronizing transcript.
-      Original SOURCE +Transcripts From available tapes/Synchronizing/Synchronizing.txt;
-      SHA-256 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248;
-      line 1. Broadens original rapid and smooth body-mind coordination to
-      include timing, balance, and precise physical response. Original SOURCE
-      remains unchanged. Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will strengthen the synchronization
       of your mind, nervous system, and muscles,
       allowing your body to move smoothly, rapidly,
       precisely, and with natural ease.
-
   hplus.function.ocf-prf-003.function-body:
     status: reviewed
     version: 1.3.0
-    notes: >-
-      OCF-adapted body based on unverified Synchronizing transcript.
-      Original SOURCE +Transcripts From available tapes/Synchronizing/Synchronizing.txt;
-      SHA-256 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248;
-      original candidate lines 44–66. Source remains unchanged. Previously
-      removed duplicate material, ending repetitions, and extra breath
-      rehearsal instructions remain excluded. Preserves coordinated neural
-      signaling and muscle response, progressively improving ease and speed
-      of movement, and the exact Plus Smooth Fast command with its original
-      inhale-hold-command-candle-exhale sequence. OCF expansion includes
-      timing, balance, precision, graceful transitions, economical motion,
-      and automatic baseline improvement with consciously initiated
-      reinforcement. Movement claims are intended exercise suggestions,
-      not independently established performance outcomes. One body supports
-      four passes across Focus 11 and Focus 20. Rights: user_cleared, per
-      user's lawyer-clearance attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-PRF-003", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-PRF-003
+      allowed:
+      - cue.primary
     text: |-
       Beginning now, and from this moment forward,
       your mind, nervous system, and muscles
@@ -112,17 +111,10 @@ entries:
   hplus.function.ocf-prf-003.closer:
     status: reviewed
     version: 1.3.0
-    notes: >-
-      OCF-adapted closer based on unverified Synchronizing transcript.
-      Original SOURCE +Transcripts From available tapes/Synchronizing/Synchronizing.txt;
-      SHA-256 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248;
-      lines 152–155. One purpose reminder, exact Plus Smooth Fast command,
-      source inhale-hold-command-candle-exhale sequence, and standard OCF
-      ending. Original SOURCE remains unchanged. Rights: user_cleared, per
-      user's lawyer-clearance attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-PRF-003
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to increase
       the speed, smoothness, and coordination

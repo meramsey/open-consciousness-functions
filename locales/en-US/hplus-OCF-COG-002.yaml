@@ -1,81 +1,62 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-COG-002", "title": "Mental Calculation", "locale": "en-US"}
-# English authority: functions/cognition/buy-the-numbers.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-COG-002-PRIMARY", "role": "activation", "display": "PLUS-CALCULATE", "spoken": "Plus Calculate", "locale_definition": "commands.ocf-cmd-cog-002-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-COG-002 — Buy the Numbers
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Missing closer: The source contains a shared channel closing
-# followed by punctuation runs, but no function-specific closer.
-# Review note: Punctuation-only lines 93–108 remain excluded.
-# Review note: The Plus Calculate activation command is preserved.
-# Review note: OCF adaptation establishes lasting, automatic
-# improvement in numerical understanding, memory, and calculation.
-# Review note: Mathematical intuition, pattern recognition,
-# and creative problem-solving suggestions are preserved.
-# Review note: Expanded coverage includes algebra, geometry,
-# trigonometry, and advanced mathematical reasoning.
-# Review note: One concise function body supports four-pass playback.
-# Review note: Closer follows the standardized OCF reminder format.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-COG-002
+title:
+  text: Mental Calculation
+  status: canonical
+  version: 1.0.0
+description:
+  text: Speeds mental arithmetic and number processing.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-COG-002-PRIMARY
+  display_cue:
+    text: PLUS-CALCULATE
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Calculate
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-cog-002.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the unverified Buy the Numbers
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Buy the Numbers/Buy the Numbers.txt;
-      SHA-256 d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b;
-      lines 7–8. Original reference remains unchanged.
-      H-plus terminology changed to OCF. Previously approved
-      wording has been simplified to emphasize numerical memory,
-      calculation, mathematical understanding, and confidence.
-      This is adapted narration, not a verbatim transcription.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will strengthen your ability
       to understand, remember, and work with numbers,
       improving your mathematical understanding,
       calculation speed, accuracy, and intuition.
-
   hplus.function.ocf-cog-002.function-body:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the unverified Buy the Numbers
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Buy the Numbers/Buy the Numbers.txt;
-      SHA-256 d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b;
-      lines 67–92. Original reference remains unchanged.
-      The narration has been reorganized into numerical
-      recognition, memory, arithmetic, mathematical relationships,
-      pattern recognition, mathematical intuition, automatic
-      improvement, conscious activation, and reinforcement.
-      Version 1.2.0 expands mathematical coverage to include
-      algebra, geometry, trigonometry, shapes, angles, equations,
-      visualization, advanced mathematics, and problem-solving.
-      OCF-authored additions establish lasting, automatic
-      development of mathematical understanding and numerical
-      confidence. Original suggestions concerning numbers,
-      equations, symbols, form, energy, and emerging mathematical
-      concepts are preserved and clarified.
-      The exact Plus Calculate activation command and original
-      breathing sequence remain unchanged.
-      One reusable function body supports repeated playback
-      across Focus 11 and Focus 20.
-      Shared preparation, state, and return wording excluded.
-      Affirmative outcomes represent intended exercise suggestions.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-COG-002", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-COG-002
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, your ability to understand,
       remember, and work with numbers is becoming
@@ -153,24 +134,10 @@ entries:
   hplus.function.ocf-cog-002.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-authored closer adapted from the previously approved
-      suggestion. The unverified Buy the Numbers transcript
-      contains a shared channel closing followed by
-      punctuation-only lines 93–108, with no recoverable
-      function-specific closer. Original SOURCE +Transcripts
-      From available tapes/Buy the Numbers/Buy the Numbers.txt;
-      SHA-256 d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b.
-      Closer shortened to one purpose reminder, the exact
-      Plus Calculate activation command, the original
-      breathing sequence, and the standard OCF ending.
-      Additional reinforcement remains in the function body.
-      This is OCF-authored wording, not historical transcript text.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-COG-002
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to strengthen
       your ability to calculate or understand numbers,

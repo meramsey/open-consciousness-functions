@@ -1,83 +1,62 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-COG-006", "title": "Recall", "locale": "en-US"}
-# English authority: functions/cognition/recall.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-COG-006-PRIMARY", "role": "activation", "display": "PLUS-RECALL", "spoken": "Plus Recall", "locale_definition": null}
-# END GENERATED CUE PREVIEW
-# OCF-COG-006 — Recall
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: partial_transcript; authentication remains unverified.
-# Missing closer: No final function-specific closer is recoverable;
-# the historical source ends in ellipsis runs.
-# Review note: The unassigned religious line at 26 remains excluded.
-# Review note: Embedded transcript labels 13 and 15 and the
-# duplicate source instruction pass remain excluded.
-# Review note: The exact Plus Recall activation command is preserved.
-# Review note: OCF adaptation establishes lasting availability
-# of detailed memory retrieval and automatic memory organization.
-# Review note: Recall remains consciously directed rather than
-# continuously bringing memories into waking awareness.
-# Review note: One concise function body supports four-pass playback.
-# Review note: Closer follows the standardized OCF reminder format.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-COG-006
+title:
+  text: Recall
+  status: canonical
+  version: 1.0.0
+description:
+  text: Brings specific memories or learned material to mind on request.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-COG-006-PRIMARY
+  display_cue:
+    text: PLUS-RECALL
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Recall
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-cog-006.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the partial, unverified Recall
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Recall/Recall.txt;
-      SHA-256 db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3;
-      lines 1–2, ending before shared preparation.
-      Original reference remains unchanged.
-      H-plus terminology changed to OCF.
-      Previously approved wording has been revised to emphasize
-      clear, accurate, detailed, and consciously directed recall.
-      This is adapted narration, not a verbatim transcription.
-      Shared preparation, state, and return wording excluded.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will strengthen your ability
       to recall information and past experiences
       clearly, accurately, and in great detail,
       whenever you desire.
-
   hplus.function.ocf-cog-006.function-body:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the partial, unverified Recall
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Recall/Recall.txt;
-      SHA-256 db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3;
-      lines 32–49. Original reference remains unchanged.
-      The narration has been reorganized into automatic memory
-      organization, conscious selection, breathing and activation,
-      detailed retrieval, permanent availability, and reinforcement.
-      Embedded transcript labels 13 and 15 and the duplicated
-      historical instruction pass remain excluded.
-      The exact Plus Recall command and original breathing
-      sequence are preserved.
-      OCF-authored additions establish lasting availability of
-      conscious memory retrieval and automatic organization
-      of personal knowledge and experiences.
-      Recall remains consciously directed rather than
-      continuously activating without the listener's intention.
-      Affirmative suggestions preserve the intended certainty
-      of immediate, clear, vivid, and detailed recall.
-      One reusable body supports repeated playback across
-      Focus 11 and Focus 20.
-      Shared preparation, state, and return wording excluded.
-      Suggested outcomes are exercise intentions rather than
-      independently verified memory capabilities.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-COG-006", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-COG-006
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, your ability to remember
       and recall information and experiences is becoming
@@ -127,21 +106,10 @@ entries:
   hplus.function.ocf-cog-006.closer:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-authored closer adapted from the previously approved
-      Recall function reminder. Original SOURCE +Transcripts
-      From available tapes/Recall/Recall.txt;
-      SHA-256 db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3.
-      The partial historical transcript ends in ellipsis runs
-      and provides no recoverable function-specific closer.
-      The closer has been shortened to one purpose reminder,
-      the exact Plus Recall activation command, the original
-      breathing sequence, and the standard OCF ending.
-      Additional reinforcement remains in the function body.
-      This is OCF-authored wording, not historical transcript text.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-COG-006", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-COG-006
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to recall
       information or a past experience,

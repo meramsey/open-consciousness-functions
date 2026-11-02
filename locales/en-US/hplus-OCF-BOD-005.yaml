@@ -1,75 +1,62 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-BOD-005", "title": "Appetite Choice", "locale": "en-US"}
-# English authority: functions/body/eat-no-eat.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-005-PRIMARY", "role": "activation", "display": "PLUS-SATISFIED", "spoken": "Plus Satisfied", "locale_definition": "commands.ocf-cmd-bod-005-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-BOD-005 — Eat/No Eat
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: Reprocessed from the replacement 66-line transcript;
-# selected instruction at lines 17–35 remains transcription-uncertain.
-# Review note: Transcript derivatives contain apparent omissions and
-# ASR errors; missing source wording has not been reconstructed.
-# Review note: Plus Satisfied Supplied is preserved as the
-# user-approved activation phrase, not independently authenticated
-# against the original recording.
-# Review note: Permanent automatic suggestions concern intentional
-# eating decisions, not suppression of genuine nutritional needs.
-
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-BOD-005
+title:
+  text: Appetite Choice
+  status: canonical
+  version: 1.0.0
+description:
+  text: Supports deliberate eating choices and release of unnecessary cravings while preserving awareness
+    of genuine nutritional needs.
+  status: canonical
+  version: 1.0.1
+activation:
+  command_id: OCF-CMD-BOD-005-PRIMARY
+  display_cue:
+    text: PLUS-SATISFIED
+    status: reviewed
+    version: 1.1.0
+  spoken_cue:
+    text: Plus Satisfied
+    status: reviewed
+    version: 1.1.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-bod-005.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the unverified Eat-No Eat
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Eat-No Eat/Eat-No Eat.txt;
-      SHA-256 3e39ac300dbbb7d9b1d1f659f1d238147283a5ca0a602767a7f275eaaf09292f;
-      line 1. Original reference remains unchanged.
-      H-plus terminology changed to OCF. Wording expanded to
-      emphasize conscious appetite direction, recognition of
-      physical needs, and confident eating decisions.
-      This is adapted narration, not a verbatim transcription.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release pending.
     text: |-
       This OCF exercise will teach you to consciously direct
       your appetite and desire for food, giving you greater
       control over when and why you choose to eat.
-
   hplus.function.ocf-bod-005.function-body:
     status: reviewed
     version: 1.3.0
-    notes: >-
-      OCF-adapted narration based on the unverified Eat-No Eat
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Eat-No Eat/Eat-No Eat.txt;
-      SHA-256 3e39ac300dbbb7d9b1d1f659f1d238147283a5ca0a602767a7f275eaaf09292f;
-      candidate lines 17–35. Original reference remains unchanged.
-      User-approved working command Plus Satisfied Supplied is
-      preserved without claiming independent authentication.
-      The source passage contains apparent ASR errors and
-      omissions. Adaptation clarifies conscious appetite
-      direction, breathing, activation, satisfaction, and
-      reinforcement. Suggestions of universal hunger suppression,
-      food-scent rejection, disabled taste responses, and
-      obtaining energy without nourishment have been replaced
-      with intentional eating and appropriate hunger awareness.
-      OCF-authored automatic reinforcement establishes a
-      lasting pattern of calm, deliberate eating decisions
-      while retaining normal nutritional signals.
-      One reusable body is intended for four playback passes
-      across Focus 11 and Focus 20.
-      This is adapted narration, not a verbatim transcription.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release pending.
-    cue_template: {"function_id": "OCF-BOD-005", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-BOD-005
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, you will have greater
       control over your appetite and your desire for food.
@@ -171,24 +158,10 @@ entries:
   hplus.function.ocf-bod-005.closer:
     status: reviewed
     version: 1.3.0
-    notes: >-
-      OCF-adapted narration based on the unverified Eat-No Eat
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Eat-No Eat/Eat-No Eat.txt;
-      SHA-256 3e39ac300dbbb7d9b1d1f659f1d238147283a5ca0a602767a7f275eaaf09292f;
-      lines 63–66. Original reference remains unchanged.
-      H-plus terminology changed to OCF. The activation
-      sequence has been clarified and aligned with the body.
-      The user-approved Plus Satisfied Supplied command
-      is preserved. OCF-authored reinforcement establishes
-      lasting conscious control of eating decisions without
-      permanently suppressing normal hunger signals.
-      This is adapted narration, not verbatim source wording.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release pending.
     cue_template:
       function_id: OCF-BOD-005
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, from this moment forward,
       you will recognize your body's genuine
