@@ -891,6 +891,12 @@ def _build_parser() -> argparse.ArgumentParser:
         help="enable an optional semantic stage feature (repeatable)",
     )
     compose_cmd.add_argument(
+        "--affirmation", choices=["none", "Gateway", "SyncCreation", "OCF", "custom"]
+    )
+    compose_cmd.add_argument(
+        "--custom-affirmation-locale", help="locale of explicit custom affirmation text"
+    )
+    compose_cmd.add_argument(
         "--function", help="function identity owning activation-command narration"
     )
     compose_cmd.add_argument(
