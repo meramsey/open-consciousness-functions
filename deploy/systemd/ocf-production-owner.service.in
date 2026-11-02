@@ -1,0 +1,19 @@
+[Unit]
+Description=OCF independent deterministic production owner
+StartLimitIntervalSec=600
+StartLimitBurst=5
+
+[Service]
+Type=simple
+WorkingDirectory=@WORKING_DIRECTORY@
+ExecStart=@PYTHON@ @SUPERVISOR@ run --config @CONFIG@
+Restart=on-failure
+RestartSec=30
+KillMode=control-group
+KillSignal=SIGINT
+TimeoutStopSec=720
+UMask=0077
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target
