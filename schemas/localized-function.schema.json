@@ -25,7 +25,7 @@
         "usage": {"$ref": "#/definitions/localizedValue"}
       }
     },
-    "secondary_commands": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["command_id", "role"], "properties": {"command_id": {"type": "string", "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"}, "role": {"type": "string", "minLength": 1}, "display_cue": {"$ref": "#/definitions/localizedValue"}, "spoken_cue": {"$ref": "#/definitions/localizedValue"}}}},
+    "secondary_commands": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["command_id", "role"], "properties": {"command_id": {"type": "string", "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"}, "role": {"type": "string", "minLength": 1}, "display_cue": {"$ref": "#/definitions/localizedValue"}, "spoken_cue": {"$ref": "#/definitions/localizedValue"}, "label": {"$ref": "#/definitions/localizedValue"}, "explanation": {"$ref": "#/definitions/localizedValue"}, "usage": {"$ref": "#/definitions/localizedValue"}}}},
     "tags": {"type": "array", "items": {"$ref": "#/definitions/localizedValue"}, "uniqueItems": true},
     "common_uses": {"type": "array", "items": {"$ref": "#/definitions/localizedValue"}},
     "relationships": {

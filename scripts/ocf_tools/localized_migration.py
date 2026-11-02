@@ -119,26 +119,33 @@ def build_batch(root: Path = REPO_ROOT, *, records=None, catalog=None) -> dict:
 
         def cue(command) -> dict:
             resolved = localized_cue(owner, command, "en-US", catalog=catalog)
+            bound = {}
             for binding, domain in (("display_cue_key", "ui"), ("spoken_cue_key", "narration")):
                 key = command.localization.get(binding)
                 if key:
                     entry, _ = catalog.raw_resource(key, "en-US", domain=domain, fallback=False)
+                    bound[binding] = _literal(entry)
                     if entry.file:
                         snapshot("locales/en-US/" + entry.file)
             row = {
                 "command_id": command.id,
-                "display_cue": {
+                "display_cue": bound.get("display_cue_key")
+                or {
                     "text": resolved["display_cue"],
                     "status": "canonical",
                     "version": "1.0.0",
                 },
             }
             if resolved["binding_status"] == "resolved":
-                row["spoken_cue"] = {
+                row["spoken_cue"] = bound.get("spoken_cue_key") or {
                     "text": resolved["spoken_cue"],
                     "status": "reviewed",
                     "version": resolved.get("version") or "1.0.0",
                 }
+            for field in ("label", "explanation", "usage"):
+                key = command.localization.get(field + "_key")
+                if key:
+                    row[field] = metadata(key)
             return row
 
         activation = cue(primary)

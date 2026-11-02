@@ -30,6 +30,20 @@ def test_batch_covers_all_registered_functions_without_authoring_speech(batch):
         assert data["title"]["text"] == owner.canonical_name
         assert row["destination"].startswith("locales/en-US/" + owner.id + "-")
         assert len(data["secondary_commands"]) == len(owner.command_records) - 1
+        commands = {command.id: command for command in owner.command_records}
+        for cue in [data["activation"], *data["secondary_commands"]]:
+            command = commands[cue["command_id"]]
+            for field, domain in (
+                ("display_cue", "ui"),
+                ("spoken_cue", "narration"),
+                ("label", "ui"),
+                ("explanation", "ui"),
+                ("usage", "ui"),
+            ):
+                key = command.localization.get(field + "_key")
+                if key and field in cue:
+                    entry = catalog.raw_resource(key, "en-US", domain=domain, fallback=False)[0]
+                    assert cue[field] == migration._literal(entry)
         assert "# BEGIN GENERATED CUE PREVIEW" not in batch["files"][row["destination"]]
         for key, value in data["entries"].items():
             original = catalog.raw_resource(key, "en-US", domain="narration", fallback=False)[0]
