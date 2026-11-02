@@ -357,3 +357,329 @@ def test_watchdog_failure_paths_are_bounded_and_unit_scoped(
         ]
     else:
         assert calls == []
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize("reply", ["", '{"safe_to_run": true}'])
+def test_execute_preserves_scoped_environment_and_timeout(config, monkeypatch, reply):
+    from types import SimpleNamespace
+
+    config["environment"] = {"OCF_SYNTHETIC": "fixture"}
+    calls = []
+
+    def run(command, **kwargs):
+        calls.append((command, kwargs))
+        return SimpleNamespace(returncode=0, stdout=reply, stderr="")
+
+    monkeypatch.setattr(supervisor.subprocess, "run", run)
+    assert supervisor.execute(["fixture"], config, timeout=9) == (
+        {"safe_to_run": True} if reply else {}
+    )
+    assert calls[0][1]["env"]["OCF_SYNTHETIC"] == "fixture"
+    assert calls[0][1]["timeout"] == 9
+    assert calls[0][1]["cwd"] == config["working_directory"]
+
+
+@pytest.mark.unit
+def test_execute_failed_operation_never_looks_successful(config, monkeypatch):
+    from types import SimpleNamespace
+
+    monkeypatch.setattr(
+        supervisor.subprocess,
+        "run",
+        lambda *a, **k: SimpleNamespace(returncode=7, stdout="{}", stderr="synthetic error"),
+    )
+    with pytest.raises(RuntimeError, match="exited 7"):
+        supervisor.execute(["fixture"], config)
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize("action", ["pause", "resume", "status", "run", "watchdog"])
+def test_cli_controls_only_its_explicit_unit(config, tmp_path, monkeypatch, capsys, action):
+    path = tmp_path / "config.json"
+    supervisor.write_json(path, config)
+    monkeypatch.setattr(supervisor.sys, "platform", "linux")
+    monkeypatch.setattr(supervisor.sys, "argv", ["supervisor", action, "--config", str(path)])
+    calls = []
+    monkeypatch.setattr(
+        supervisor.subprocess, "run", lambda command, **kwargs: calls.append(command)
+    )
+    monkeypatch.setattr(supervisor, "run", lambda value: 21)
+    monkeypatch.setattr(supervisor, "watchdog", lambda value: 22)
+    root = Path(config["state_directory"])
+    supervisor.write_json(root / "paused.json", {"reason": "fixture"})
+    result = supervisor.main()
+    if action == "pause":
+        assert supervisor.read_json(root / "paused.json")["reason"] == "explicit operator pause"
+        assert calls == [["systemctl", "--user", "stop", "ocf-test.service"]]
+    elif action == "resume":
+        assert not (root / "paused.json").exists()
+        assert calls == [["systemctl", "--user", "start", "ocf-test.service"]]
+    elif action == "status":
+        assert capsys.readouterr().out.strip() == "{}"
+        assert calls == []
+    else:
+        assert result == (21 if action == "run" else 22)
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize(
+    "platform,unit", [("win32", "ocf-test.service"), ("linux", "unrelated.service")]
+)
+def test_cli_rejects_unsupported_platform_and_unscoped_unit(
+    config, tmp_path, monkeypatch, platform, unit
+):
+    config["owner_unit"] = unit
+    path = tmp_path / "config.json"
+    supervisor.write_json(path, config)
+    monkeypatch.setattr(supervisor.sys, "platform", platform)
+    monkeypatch.setattr(supervisor.sys, "argv", ["supervisor", "run", "--config", str(path)])
+    with pytest.raises(SystemExit) as error:
+        supervisor.main()
+    assert error.value.code == 2
+
+
+@pytest.fixture
+def watched(config, monkeypatch):
+    from contextlib import contextmanager
+    from types import SimpleNamespace
+
+    @contextmanager
+    def lease(path):
+        yield True
+
+    root = Path(config["state_directory"])
+    heartbeat = {
+        "controller": identity(1),
+        "worker": identity(2),
+        "phase": "running",
+        "at": 100,
+        "last_progress_at": 100,
+        "worker_started_at": 100,
+        "active_reservations": 1,
+        "batch_owner_pid": 2,
+        "input_sha256": "a" * 64,
+    }
+    supervisor.write_json(root / "heartbeat.json", heartbeat)
+    now = [120]
+    properties = ["ActiveState=active\nMainPID=1\nControlGroup=/ocf-test.service\n"]
+    calls, events = [], []
+    monkeypatch.setattr(supervisor, "lease", lease)
+    monkeypatch.setattr(supervisor.time, "time", lambda: now[0])
+    monkeypatch.setattr(
+        supervisor.shutil, "disk_usage", lambda path: SimpleNamespace(free=100 * 1024**3)
+    )
+    monkeypatch.setattr(supervisor, "process_identity", identity)
+    monkeypatch.setattr(supervisor.subprocess, "check_output", lambda *a, **k: properties[0])
+    monkeypatch.setattr(supervisor.subprocess, "run", lambda args, **k: calls.append(args))
+    monkeypatch.setattr(supervisor, "emit", lambda *args: events.append(args))
+    return config, root, heartbeat, now, properties, calls, events
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize(
+    "kind",
+    ["batch-status", "duplicates", "reservation", "ownership", "main-pid", "budget", "integrity"],
+)
+def test_watchdog_protects_reservations_integrity_and_budgets(watched, kind):
+    config, root, heartbeat, now, properties, calls, events = watched
+    if kind == "batch-status":
+        heartbeat["batch_status_error"] = "invalid fixture"
+    elif kind == "duplicates":
+        heartbeat["active_reservations"] = 2
+    elif kind == "reservation":
+        config["verify_batch_owner"] = True
+        heartbeat["input_sha256"] = "invalid"
+    elif kind == "ownership":
+        config["verify_batch_owner"] = True
+        heartbeat["worker_started_at"] = 0
+        heartbeat["batch_owner_pid"] = 999
+    elif kind == "main-pid":
+        properties[0] = "ActiveState=active\nMainPID=999\n"
+    elif kind == "budget":
+        heartbeat["at"] = 0
+        config["max_recoveries_per_job"] = 0
+    elif kind == "integrity":
+        config["frozen_files"] = {str(root / "missing-frozen.fixture"): "0" * 64}
+    supervisor.write_json(root / "heartbeat.json", heartbeat)
+    assert supervisor.watchdog(config) == 0
+    if kind in {"integrity", "budget"}:
+        assert (root / "paused.json").exists()
+        assert events
+        assert calls == (
+            [["systemctl", "--user", "--no-block", "stop", "ocf-test.service"]]
+            if kind == "integrity"
+            else []
+        )
+    else:
+        assert calls == [["systemctl", "--user", "--no-block", "restart", "ocf-test.service"]]
+
+
+@pytest.mark.unit
+def test_service_transition_is_tolerated_only_until_its_deadline(watched):
+    config, root, heartbeat, now, properties, calls, events = watched
+    properties[0] = "ActiveState=deactivating\nMainPID=1\n"
+    config["transition_timeout"] = 30
+    assert supervisor.watchdog(config) == 0
+    assert calls == []
+    assert supervisor.read_json(root / "watchdog.json")["health"] == "healthy-service-transition"
+    now[0] += 31
+    assert supervisor.watchdog(config) == 0
+    assert calls == [["systemctl", "--user", "--no-block", "restart", "ocf-test.service"]]
+
+
+@pytest.mark.unit
+def test_worker_exit_reconciliation_has_bounded_grace(watched, monkeypatch):
+    config, root, heartbeat, now, properties, calls, events = watched
+    monkeypatch.setattr(
+        supervisor, "process_identity", lambda pid: None if pid == 2 else identity(pid)
+    )
+    assert supervisor.watchdog(config) == 0
+    assert calls == []
+    assert (
+        supervisor.read_json(root / "watchdog.json")["health"]
+        == "healthy-worker-exit-reconciliation"
+    )
+    now[0] += 11
+    assert supervisor.watchdog(config) == 0
+    assert calls == [["systemctl", "--user", "--no-block", "restart", "ocf-test.service"]]
+
+
+@pytest.mark.unit
+def test_disk_pause_recovers_only_after_reserve_returns(watched):
+    config, root, heartbeat, now, properties, calls, events = watched
+    supervisor.write_json(root / "paused.json", {"reason": "disk-safeguard"})
+    assert supervisor.watchdog(config) == 0
+    assert not (root / "paused.json").exists()
+    assert calls == []
+
+
+@pytest.mark.unit
+def test_progress_observes_descendant_io_not_cpu(config, tmp_path, monkeypatch):
+    proc = tmp_path / "synthetic-proc"
+    proc.mkdir()
+    for pid, parent in [(1, 0), (2, 1), (3, 2)]:
+        folder = proc / str(pid)
+        folder.mkdir()
+        (folder / "stat").write_text(f"{pid} (fixture process) S {parent}")
+    (proc / "1/io").write_text("read_bytes: 0")
+    (proc / "2/io").write_text("write_bytes: 10")
+    (proc / "nonnumeric").mkdir()
+    (proc / "4").mkdir()
+    (proc / "4/stat").write_text("invalid")
+
+    def path(value):
+        value = str(value)
+        return (
+            proc / value.removeprefix("/proc/")
+            if value.startswith("/proc/")
+            else proc
+            if value == "/proc"
+            else Path(value)
+        )
+
+    monkeypatch.setattr(supervisor, "Path", path)
+    first = supervisor.progress_token(config, identity(1))
+    (proc / "2/io").write_text("write_bytes: 11")
+    assert supervisor.progress_token(config, identity(1)) != first
+    assert supervisor.progress_token(config, None)
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize("case", ["terminal", "frozen-input", "paused", "budget-exhausted"])
+def test_owner_preflight_and_exhausted_recovery_never_dispatch_duplicates(
+    watched, monkeypatch, case
+):
+    config, root, heartbeat, now, properties, calls, events = watched
+    monkeypatch.setattr(supervisor, "progress_token", lambda *args: "synthetic")
+    monkeypatch.setattr(
+        supervisor, "execute", lambda *a, **k: {"terminal": case == "terminal", "safe_to_run": True}
+    )
+    if case == "budget-exhausted":
+        config["max_recoveries_per_job"] = 0
+        monkeypatch.setattr(supervisor.subprocess, "Popen", lambda *a, **k: FakeChild(7))
+    else:
+        monkeypatch.setattr(
+            supervisor.subprocess, "Popen", lambda *a, **k: pytest.fail("must not dispatch")
+        )
+    if case == "frozen-input":
+        config["frozen_files"] = {str(root / "missing.fixture"): "0" * 64}
+    elif case == "paused":
+        supervisor.write_json(root / "paused.json", {"reason": "operator"})
+    assert supervisor.run(config) == 0
+    if case == "terminal":
+        assert events[-1][1] == "completed"
+        assert not (root / "worker-exit.json").exists()
+    elif case != "paused":
+        pause = supervisor.read_json(root / "paused.json")
+        assert pause["reason"] == (
+            "controller-error" if case == "frozen-input" else "worker recovery budget exhausted"
+        )
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize("timeout", [False, True])
+def test_owner_shutdown_is_bounded_without_real_signals(watched, monkeypatch, timeout):
+    config, root, heartbeat, now, properties, calls, events = watched
+    handlers = {}
+
+    def register(sig, handler):
+        handlers[sig] = handler
+
+    class Child:
+        pid = 222
+
+        def poll(self):
+            handlers[supervisor.signal.SIGINT](None, None)
+            return None
+
+        def send_signal(self, value):
+            calls.append(("signal", value))
+
+        def wait(self, timeout=None):
+            if timeout == 45 and self.timeout:
+                raise supervisor.subprocess.TimeoutExpired("synthetic", timeout)
+            return 130
+
+        def terminate(self):
+            calls.append(("terminate",))
+
+    child = Child()
+    child.timeout = timeout
+    monkeypatch.setattr(supervisor.signal, "signal", register)
+    monkeypatch.setattr(supervisor, "progress_token", lambda *a: "synthetic")
+    monkeypatch.setattr(supervisor, "execute", lambda *a, **k: {"safe_to_run": True})
+    monkeypatch.setattr(supervisor.subprocess, "Popen", lambda *a, **k: child)
+    assert supervisor.run(config) == 0
+    assert ("signal", supervisor.signal.SIGINT) in calls
+    assert (("terminate",) in calls) == timeout
+    assert supervisor.read_json(root / "worker-exit.json")["stop_requested"] is True
+
+
+@pytest.mark.unit
+def test_escalation_acceptance_and_unreadable_state_are_recorded_once(config, monkeypatch):
+    from contextlib import contextmanager
+
+    @contextmanager
+    def lease(path):
+        yield True
+
+    monkeypatch.setattr(supervisor, "lease", lease)
+    Path(config["batch_status"]).unlink()
+    config["escalation_command"] = ["synthetic-bridge"]
+    calls = []
+
+    def execute(*args, **kwargs):
+        calls.append(args)
+        return {"acknowledged": True}
+
+    monkeypatch.setattr(supervisor, "execute", execute)
+    supervisor.emit(config, "engineering-required", "unreadable synthetic state")
+    supervisor.emit(config, "engineering-required", "unreadable synthetic state")
+    assert len(calls) == 1
+    receipt = next(
+        iter(supervisor.read_json(Path(config["state_directory"]) / "events.json").values())
+    )
+    assert receipt["identity"] == "unreadable-state"
+    assert receipt["delivery"] == "accepted"
+    assert receipt["result"] == {"acknowledged": True}
