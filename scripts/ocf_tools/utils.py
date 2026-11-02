@@ -60,9 +60,36 @@ def read_json_object(path: Path) -> dict:
     return value
 
 
+class _UniqueSafeLoader(getattr(yaml, "CSafeLoader", yaml.SafeLoader)):
+    def construct_mapping(self, node, deep=False):
+        seen = set()
+        for key_node, _value_node in node.value:
+            if key_node.tag == "tag:yaml.org,2002:merge":
+                continue
+            key = self.construct_object(key_node, deep=deep)
+            try:
+                duplicate = key in seen
+                seen.add(key)
+            except TypeError:
+                raise yaml.constructor.ConstructorError(
+                    "while constructing a mapping",
+                    node.start_mark,
+                    "unhashable mapping key",
+                    key_node.start_mark,
+                ) from None
+            if duplicate:
+                raise yaml.constructor.ConstructorError(
+                    "while constructing a mapping",
+                    node.start_mark,
+                    f"duplicate key {key!r}",
+                    key_node.start_mark,
+                )
+        return super().construct_mapping(node, deep=deep)
+
+
 def yaml_safe_load(data: str) -> Any:
     """Parse fresh file content safely; never share mutable parsed objects."""
-    loader = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
+    loader = _UniqueSafeLoader
     if isinstance(data, str) and len(data) <= 262144:
         return deepcopy(_parsed_yaml(data, loader))
     return yaml.load(data, Loader=loader)
