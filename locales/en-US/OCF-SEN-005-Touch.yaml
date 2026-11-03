@@ -99,6 +99,23 @@ common_uses:
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-PRF-003
+    relationship_type: complementary
+    description:
+      text: Attention to touch and attention to coordinated movement offer distinct body-awareness intentions
+        without implying protection from injury.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-SEN-005
+      field: description
+      sha256: c6215692359e2ce4272e470f52cd1c075bff7cf448f558a5c4a967ef7d454d73
+    - function_id: OCF-PRF-003
+      field: description
+      sha256: 56f2f35f08b831873fbaf58aeba4425962dfd125f63abdfbe54cc09eb93a729b
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

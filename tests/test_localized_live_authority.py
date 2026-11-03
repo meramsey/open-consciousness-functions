@@ -1,5 +1,6 @@
 """Live L2 reader contracts: literal YAML, immutable compatibility, no audio."""
 
+import hashlib
 import json
 
 import pytest
@@ -75,6 +76,27 @@ def test_yaml_title_and_description_propagate_across_reader_outputs(
     data["common_uses"] = [
         {"text": "Synthetic fixture use", "status": "reviewed", "version": "1.0.0"}
     ]
+    target = records[1]
+    proposal = {
+        "function_id": target.id,
+        "relationship_type": "complementary",
+        "description": {"text": "Synthetic optional separate practice.", "status": "draft"},
+        "status": "draft",
+        "dependency": "optional",
+        "reciprocal_proposed": False,
+        "evidence": [
+            {
+                "function_id": identity,
+                "field": "description",
+                "sha256": hashlib.sha256(text.encode()).hexdigest(),
+            }
+            for identity, text in [
+                (record.id, data["description"]["text"]),
+                (target.id, pack.localized_functions[target.id]["description"]["text"]),
+            ]
+        ],
+    }
+    data["relationships"]["proposals"] = [proposal]
     source.write_text(yaml.safe_dump(data), encoding="utf-8")
     changed = LocaleCatalog(catalog.root, function_records=lambda: records)
     changed.require("en-US").entries.update(
@@ -108,8 +130,27 @@ def test_yaml_title_and_description_propagate_across_reader_outputs(
     assert api["data"]["tags"] == data["tags"]
     assert discover(record)["common_uses"] == data["common_uses"]
     assert row["tags"] == data["tags"]
+    assert row["relationship_proposals"][0]["description"] == proposal["description"]
+    assert api["data"]["localized_relationships"]["proposals"] == [proposal]
+    assert discover(record)["localized_relationships"]["proposals"] == [proposal]
+    assert "Synthetic optional separate practice." in generators.function_index_json()
+    references = listening_guides.reference_documents(records, catalog=changed)
+    assert "DRAFT complementary" in references["complementary-map.md"]
+    assert "Synthetic fixture tag" in references["tag-discovery.md"]
+    from ocf_tools.localized_authority import matches
+
+    assert matches(record, catalog=changed, tag="synthetic fixture TAG")
+    assert matches(record, catalog=changed, query="fixture use")
+    assert not matches(record, catalog=changed, tag="absent-tag")
+    assert not matches(record, catalog=changed, query="absent-use")
+    assert agent_api.list_functions(tag="Synthetic fixture tag")["items"][0]["id"] == record.id
+    assert (
+        agent_api.list_functions(query="fixture use")["items"][0]["common_uses"]
+        == data["common_uses"]
+    )
     guide = listening_guides.function_guide_markdown(record, catalog=changed)
     assert "Synthetic fixture tag" in guide and "Synthetic fixture use" in guide
+    assert "Proposed optional relationships — DRAFT" in guide
     listing = agent_api.list_functions(limit=10)
     assert any(r["name"] == "Distinctive fixture title" for r in listing["items"])
     assert "Distinctive fixture title" in listening_guides._guide_catalog(records)
@@ -120,6 +161,21 @@ def test_yaml_title_and_description_propagate_across_reader_outputs(
     assert main(["functions", "describe", record.id, "--json"]) == 0
     cli_result = json.loads(capsys.readouterr().out)
     assert cli_result["functions"][0]["canonical"]["name"] == "Distinctive fixture title"
+    assert (
+        main(
+            [
+                "functions",
+                "list",
+                "--tag",
+                "Synthetic fixture tag",
+                "--search",
+                "fixture use",
+                "--json",
+            ]
+        )
+        == 0
+    )
+    assert [r["id"] for r in json.loads(capsys.readouterr().out)["functions"]] == [record.id]
     assert (
         lookup("Distinctive fixture title", records=records, catalog=changed)[0]["function_id"]
         == record.id
@@ -172,6 +228,39 @@ def test_approved_relationship_words_come_from_function_yaml(literal_catalog):
     assert relation["description"]["text"] in listening_guides.function_guide_markdown(
         record, catalog=changed
     )
+
+
+@pytest.mark.integration
+@pytest.mark.parametrize(
+    "mutation", ["reviewed", "prerequisite", "unknown", "self", "missing-evidence", "drift"]
+)
+def test_unapproved_proposal_cannot_gain_approval_or_lose_valid_evidence(literal_catalog, mutation):
+    from copy import deepcopy
+
+    records, original, catalog = literal_catalog
+    pack = catalog.require("en-US")
+    source = pack.path / pack.localized_function_files["OCF-COG-004"]
+    data = yaml.safe_load(source.read_text())
+    proposal = deepcopy(
+        original.require("en-US").localized_functions["OCF-COG-004"]["relationships"]["proposals"][
+            0
+        ]
+    )
+    if mutation == "reviewed":
+        proposal["status"] = proposal["description"]["status"] = "reviewed"
+    elif mutation == "prerequisite":
+        proposal["relationship_type"] = "prerequisite"
+    elif mutation == "unknown":
+        proposal["function_id"] = "OCF-COG-999"
+    elif mutation == "self":
+        proposal["function_id"] = "OCF-COG-004"
+    elif mutation == "missing-evidence":
+        proposal["evidence"][1] = {**proposal["evidence"][0], "sha256": "0" * 64}
+    else:
+        proposal["evidence"][0]["sha256"] = "0" * 64
+    data["relationships"]["proposals"] = [proposal]
+    source.write_text(yaml.safe_dump(data))
+    assert LocaleCatalog(catalog.root, function_records=lambda: records).problems
 
 
 @pytest.mark.integration

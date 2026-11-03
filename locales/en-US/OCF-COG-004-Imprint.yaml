@@ -91,6 +91,23 @@ common_uses:
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-COG-006
+    relationship_type: related
+    description:
+      text: Compare deliberate capture and retention with separately chosen retrieval of learned material.
+        The Imprint recall command is not the same function identity as Recall.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-COG-004
+      field: description
+      sha256: 098e88038844417a6241fc8ae022de3ada9529b0e189e64b2d68691b6c607c92
+    - function_id: OCF-COG-006
+      field: description
+      sha256: f1121b371e1d9c5a81ad6fd3197fb75a81f5d4ae79f40daf939066db0d4e0c01
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

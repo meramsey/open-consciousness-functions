@@ -46,6 +46,23 @@ common_uses:
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-COG-005
+    relationship_type: complementary
+    description:
+      text: Reasoning about details and exploring alternatives offer distinct approaches to considering
+        a problem, without requiring a combined exercise.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-COG-007
+      field: description
+      sha256: 3e3440b8f1061424dc185c48ec0fcd32ed71d524bdb20f8d2032cfd80e559562
+    - function_id: OCF-COG-005
+      field: description
+      sha256: 574105e00d0317828bef7d3ce5db9df7734faf5e1aa43b68fa433cdf70eb50cd
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

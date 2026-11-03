@@ -63,6 +63,23 @@ common_uses:
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-FND-004
+    relationship_type: complementary
+    description:
+      text: Area-focused comfort and whole-body relaxation offer separate intentions for ease, without dismissing
+        symptoms or replacing care.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-BOD-003
+      field: description
+      sha256: ec52113b6d7e845f6235c7b27e94cc87b0166f6c478f1fb69b5e3ab0c4a9c404
+    - function_id: OCF-FND-004
+      field: description
+      sha256: 7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

@@ -49,6 +49,23 @@ common_uses:
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-PRF-004
+    relationship_type: complementary
+    description:
+      text: Whole-body coordination and attention to lighter, quieter steps offer separate movement intentions;
+        both remain subject to physical limits.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-PRF-003
+      field: description
+      sha256: 56f2f35f08b831873fbaf58aeba4425962dfd125f63abdfbe54cc09eb93a729b
+    - function_id: OCF-PRF-004
+      field: description
+      sha256: a5f87338ce54fdd206623aae7f43f3949599780e756e96400e8911c8e5bc3765
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

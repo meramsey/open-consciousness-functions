@@ -65,6 +65,23 @@ common_uses:
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-EXP-003
+    relationship_type: related
+    description:
+      text: Compare recurring thought and emotional-pattern interference with a broader selected belief,
+        expectation or recurring life pattern; useful learning remains valued.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-EMO-002
+      field: description
+      sha256: f378a57210d0e3bb9ca07959bca9b895beb486615582a1c040afd2f7b3112e2f
+    - function_id: OCF-EXP-003
+      field: description
+      sha256: bff68807fb37db657e26d9bbfec0c53c91b73555b75a80ca2601a757f718726f
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

@@ -71,4 +71,24 @@ def registry_projection(record, locale="en-US", *, catalog=None):
     if localized is not None:
         result["tags"] = deepcopy(localized.get("tags", []))
         result["use_cases"] = deepcopy(localized.get("common_uses", []))
+        result["localized_relationships"] = deepcopy(localized.get("relationships", {}))
     return result
+
+
+def matches(record, locale="en-US", *, catalog=None, tag=None, query=None):
+    """Discovery only: never selects a command or changes historical lookup."""
+    from .vocabulary import lookup_form
+
+    data = metadata(record, locale, catalog=catalog) or {}
+    if tag and lookup_form(tag) not in {lookup_form(v["text"]) for v in data.get("tags", [])}:
+        return False
+    if query:
+        values = [
+            record.id,
+            title(record, locale, catalog=catalog),
+            description(record, locale, catalog=catalog),
+        ]
+        values += [v["text"] for field in ("tags", "common_uses") for v in data.get(field, [])]
+        if not any(lookup_form(query) in lookup_form(value) for value in values):
+            return False
+    return True

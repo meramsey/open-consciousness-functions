@@ -48,6 +48,23 @@ common_uses:
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-BOD-002
+    relationship_type: related
+    description:
+      text: Compare brain-and-neck circulation imagery with whole-body circulation imagery; these are wellness
+        intentions, not proven vascular treatments.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-BOD-001
+      field: description
+      sha256: b36a447f0ab1aa40ed7cbee48571818a187987599f70cbc8c28f9c329fca1cdd
+    - function_id: OCF-BOD-002
+      field: description
+      sha256: 7fc2e780a45fd9903a9813e306164e3b1a9782e8401a51f587c347c176d0665d
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

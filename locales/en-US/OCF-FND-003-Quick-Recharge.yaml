@@ -48,6 +48,23 @@ common_uses:
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-SLP-002
+    relationship_type: related
+    description:
+      text: Compare a short restorative rest with general sleep onset and a desired waking time; neither
+        replaces adequate sleep or a needed alarm.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-FND-003
+      field: description
+      sha256: c96ac8b11d5e8a7974e3be3c590432b8f299b5c1eeaa1fa6dd54de2d2ad0cf1b
+    - function_id: OCF-SLP-002
+      field: description
+      sha256: f25c3964bcb1d1c34e63bebd2bc7d271d5d05e9757459c0a65e171d7ca6c1bca
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

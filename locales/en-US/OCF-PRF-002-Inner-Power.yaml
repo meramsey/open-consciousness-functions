@@ -64,6 +64,23 @@ common_uses:
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-FND-005
+    relationship_type: related
+    description:
+      text: Compare ongoing recognition of inner resources with a deliberately invoked shift from weariness
+        toward renewed confidence.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-PRF-002
+      field: description
+      sha256: b5bcd3eb460963a8e14c23231c41f5ad7b43e97e8663f09fda3358e79470ebb1
+    - function_id: OCF-FND-005
+      field: description
+      sha256: f9cde5900e2d3cee6be500dea088f649423c46216824daa3a410fa32e9b5be5f
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

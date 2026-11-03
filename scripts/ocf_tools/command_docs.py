@@ -257,6 +257,17 @@ def _function_document(
         result["tags"] = function_metadata.get("tags", [])
         result["common_uses"] = function_metadata.get("common_uses", [])
         result["localized_relationships"] = function_metadata.get("relationships", {})
+        result["relationship_proposals"] = [
+            {
+                **proposal,
+                "title": _localized(
+                    catalog,
+                    load_function_by_id(proposal["function_id"]).documentation["title_key"],
+                    locale,
+                ),
+            }
+            for proposal in function_metadata.get("relationships", {}).get("proposals", [])
+        ]
     return result
 
 

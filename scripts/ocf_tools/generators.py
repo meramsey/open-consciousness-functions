@@ -39,18 +39,28 @@ INDEX_COLUMNS = [
     "audio_impl_count",
     "background_preset_count",
     "source_file",
+    "tags",
+    "common_uses",
 ]
 
 
 def row_for(record: FunctionRecord, *, catalog=None) -> dict[str, Any]:
     """Build one index row for a function record."""
-    from .localized_authority import display_command, title
+    from .localized_authority import display_command, metadata, title
 
     legacy_commands = " / ".join(record.legacy_commands) or ""
     domains = ";".join([record.primary_domain] + record.secondary_domains)
     audio_count = len(audio_implementations_for(record.id))
     background_count = len(background_presets_for(record.id))
     relative_path = record.path.relative_to(REPO_ROOT).as_posix()
+    localized = metadata(record, catalog=catalog) or {}
+
+    def display_values(field):
+        return "; ".join(
+            value["text"] + " (" + value.get("status", "unspecified") + ")"
+            for value in localized.get(field, [])
+        )
+
     return {
         "ocf_id": record.id,
         "canonical_name": title(record, catalog=catalog),
@@ -66,6 +76,8 @@ def row_for(record: FunctionRecord, *, catalog=None) -> dict[str, Any]:
         "audio_impl_count": audio_count,
         "background_preset_count": background_count,
         "source_file": relative_path,
+        "tags": display_values("tags"),
+        "common_uses": display_values("common_uses"),
     }
 
 
@@ -111,6 +123,7 @@ def function_index_markdown() -> str:
         "Audio",
         "BG",
         "File",
+        "Tags (review status)",
     ]
     rows: list[list[str]] = []
     for record in load_all_functions():
@@ -130,6 +143,7 @@ def function_index_markdown() -> str:
                 str(len(audio_implementations_for(record.id))),
                 str(len(background_presets_for(record.id))),
                 record.path.relative_to(REPO_ROOT).as_posix(),
+                row_for(record, catalog=catalog)["tags"],
             ]
         )
     body = "\n".join(

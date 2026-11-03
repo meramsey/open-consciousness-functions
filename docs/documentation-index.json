@@ -181,7 +181,7 @@
       "purpose": "Function Index",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "59318de279d6ca8056b1e6ff166c166a384527544af12bd2ffdc357fd81f39cf",
+      "sha256": "4d995fea1f87a6935508f7f4c6bf80e274f27dd32a6030b155db4df41b370d38",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -276,7 +276,7 @@
         "voice"
       ],
       "related_schemas": [],
-      "sha256": "b558e1b188fe8b369d28d9750f9ec3e3f9b2551f353407e1650de312ae3bcccb",
+      "sha256": "5b8c9630d08c945ae4be4609fda504d2742ea7a74bd0807572153cb4771b0eff",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -734,6 +734,24 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "docs/CATALOG_METADATA.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Function discovery metadata",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "730f87ebd680fc2bd23e0fcab1f580485f8bfdd1d10f608e699a93684ae0a0cb",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "docs/COMMAND_GRAMMAR.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "Command Grammar",
@@ -1169,7 +1187,7 @@
       "purpose": "English HPlus function review",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "cea80a05ff9a1da5e3273def37428b02ac197955d0d60dbfdbc7272664dc7268",
+      "sha256": "19c9e6d6fe085333fe73fb82bfbedd9f516755cd9eb20e7fa50027553dff79b9",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5074,7 +5092,7 @@
       "related_schemas": [
         "schemas/localized-function.schema.json"
       ],
-      "sha256": "dc8715add895f03ce085626a04d7a62fdfdcef4a7504d7176d4dd3a209277b92",
+      "sha256": "702b19f4647577b24f58aab39683b5ec656d2e3434061c609d767fe64be0e0fd",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5502,7 +5520,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "1ac5275e630792f10bb417c78849dd3770f2759d2dd8b375a2bf30caed370eaa",
+      "sha256": "cc5960bde3654c58e64595a8913b7cab34f38b3c347ac5bece22389ac4e5d069",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5615,5 +5633,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 270
+  "total": 271
 }

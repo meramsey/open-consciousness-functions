@@ -47,6 +47,23 @@ common_uses:
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-FND-002
+    relationship_type: complementary
+    description:
+      text: Number practice and directed attention address calculation and concentration respectively; either
+        may be practiced independently.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-COG-002
+      field: description
+      sha256: 57ff0a5168d935e358c53450af35cf5b5d20d57f4c4de0ce389d1353e4466c5b
+    - function_id: OCF-FND-002
+      field: description
+      sha256: 5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

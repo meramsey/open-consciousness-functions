@@ -99,6 +99,23 @@ common_uses:
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-SEN-004
+    relationship_type: related
+    description:
+      text: Compare aroma memory with flavor memory as distinct sensory intentions, not as tests of substance
+        or food safety.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-SEN-003
+      field: description
+      sha256: bc8e7fedeb81229219334941a92eba2e62bf55869bcf10c079ad8850e53a1d58
+    - function_id: OCF-SEN-004
+      field: description
+      sha256: 6a467469931140ade8c5b0819640983b47ca0e0d16ae37e5ba34be01973756a9
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

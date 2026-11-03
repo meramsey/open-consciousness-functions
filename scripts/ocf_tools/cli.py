@@ -225,6 +225,10 @@ def _build_parser() -> argparse.ArgumentParser:
     function_list.add_argument(
         "--rich", action="store_true", help="include separate content/evidence/runtime capabilities"
     )
+    function_list.add_argument("--tag", help="exact localized discovery tag (includes draft tags)")
+    function_list.add_argument(
+        "--search", help="search localized titles, descriptions, tags and uses"
+    )
     function_describe = function_sub.add_parser(
         "describe", help="describe a canonical function ID or slug"
     )
@@ -1539,11 +1543,14 @@ def main(argv: list[str] | None = None) -> int:
             catalog = LocaleCatalog()
 
             if args.function_kind == "list":
+                from .localized_authority import matches
+
                 data = [
                     discover(record, catalog=catalog)
                     if args.rich
                     else registry_projection(record, catalog=catalog)
                     for record in load_all_functions()
+                    if matches(record, catalog=catalog, tag=args.tag, query=args.search)
                 ]
             else:
                 record = load_function_by_slug_or_id(args.id)

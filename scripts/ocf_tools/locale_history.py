@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+from copy import deepcopy
 from functools import lru_cache
 from pathlib import Path
 
@@ -73,8 +74,14 @@ def historical_resources(root: Path) -> dict:
             if stat is None
             else (stat.st_dev, stat.st_ino, stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns)
         )
-    return _historical_resources(
-        root.resolve(), tuple(signatures), RESOURCE_MAP_SHA256, FILENAMES_SHA256, RETIREMENT_SHA256
+    return deepcopy(
+        _historical_resources(
+            root.resolve(),
+            tuple(signatures),
+            RESOURCE_MAP_SHA256,
+            FILENAMES_SHA256,
+            RETIREMENT_SHA256,
+        )
     )
 
 

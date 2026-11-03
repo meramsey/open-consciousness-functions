@@ -301,7 +301,7 @@
         "functions",
         "list"
       ],
-      "usage": "usage: ocf functions list [-h] [--json] [--rich]",
+      "usage": "usage: ocf functions list [-h] [--json] [--rich] [--tag TAG] [--search SEARCH]",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -2225,7 +2225,7 @@
     "schemas/hplus-review-selection.schema.json": "2e65fa5465bd6a70185dbcbb5ae3d933b81e2e7034ba17b4699b7998a392ac19",
     "schemas/locale-manifest.schema.json": "d996138250aae60e0a0135a67478a1cbc6be6a354ecdac5ceb169c20b51d8213",
     "schemas/locale-resource.schema.json": "789b8b96b6e95c1a8039931dfc306f86a67f59dc0769659f682ba2187cb71a07",
-    "schemas/localized-function.schema.json": "dc8715add895f03ce085626a04d7a62fdfdcef4a7504d7176d4dd3a209277b92",
+    "schemas/localized-function.schema.json": "702b19f4647577b24f58aab39683b5ec656d2e3434061c609d767fe64be0e0fd",
     "schemas/mix-profile.schema.json": "05ac30c768cb95eb76f6cb300fcc29e20499c2c36a0a4b5692d169174050b40b",
     "schemas/narration-package.schema.json": "8a9e55379eec1481cdde5fbfa55b91af471dc45fe0ae30c64da36ab5d9b1a15d",
     "schemas/narration-sources.schema.json": "5c084f128351d6a2a879b5a971007cbc9efe3fb269deb3eeb12832895e729c3e",
@@ -2243,8 +2243,8 @@
     "schemas/timed-transcript.schema.json": "cad4e2345ddaf67b082c580cb61222e6a210c764feb593ea04894c773df4bf37",
     "schemas/voice-dataset.schema.json": "0307327f3f52eeaaaed71abaa6d1950c0b665fc677b43547e2452e9c31000ed8",
     "schemas/voice-profile.schema.json": "bff61d964e36686802129b9631fed45c3baa5262d5359d330a0b3f59763ee40e",
-    "scripts/ocf_tools/agent_api.py": "b1a36247c38576c13e5cc67666fd1a2f3fcac6a036c094460b9e0bd6ff42a7cc",
-    "scripts/ocf_tools/cli.py": "1ac5275e630792f10bb417c78849dd3770f2759d2dd8b375a2bf30caed370eaa",
+    "scripts/ocf_tools/agent_api.py": "69a30da286d13a9c4b81b19a36f7bbfa6e3582c43d4abd84f9f0aa49efd0b11b",
+    "scripts/ocf_tools/cli.py": "cc5960bde3654c58e64595a8913b7cab34f38b3c347ac5bece22389ac4e5d069",
     "scripts/ocf_tools/lsp_server.py": "a753b91b1b73609ecd6886470a037a9bbf1259e2a77f08203546e55ef4cbae09",
     "scripts/ocf_tools/mcp_server.py": "d8641d4160888abbe7152fca2117623de4dfb061793b95b161dbfb4534a2be54",
     "scripts/ocf_tools/narration_cli.py": "5f13a05251816e5d3b80419d9ed67184b5c6c48722175700bbc88ec2b429bd41",

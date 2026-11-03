@@ -56,6 +56,23 @@ common_uses:
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-AUT-001
+    relationship_type: related
+    description:
+      text: Compare changing an unwanted repeated habit with cultivating a desired automatic way of responding;
+        these are different intentions, not a required sequence.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-LIF-001
+      field: description
+      sha256: b696385bce51f81503108a0c8b948eb5b0ff0765593b07dd1bf4e23248338ffe
+    - function_id: OCF-AUT-001
+      field: description
+      sha256: 95072a83ada3fc93d60106caad1df381f1b1c3d9884ea5e69915c0b5dff46063
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

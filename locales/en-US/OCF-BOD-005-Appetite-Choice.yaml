@@ -57,6 +57,23 @@ common_uses:
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-LIF-001
+    relationship_type: related
+    description:
+      text: Compare deliberate eating choices that preserve nourishment needs with changing a selected unwanted
+        habit; neither justifies ignoring hunger.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-BOD-005
+      field: description
+      sha256: 66ec6d5b0d7eaca812f487524dd3b4ee3e546456ef63785a84a45977a8615bd0
+    - function_id: OCF-LIF-001
+      field: description
+      sha256: b696385bce51f81503108a0c8b948eb5b0ff0765593b07dd1bf4e23248338ffe
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

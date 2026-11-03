@@ -64,6 +64,23 @@ common_uses:
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-SLP-005
+    relationship_type: related
+    description:
+      text: Compare general sleep onset with rest amid unfamiliar or distracting surroundings; first ensure
+        the surroundings are safe.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-SLP-002
+      field: description
+      sha256: f25c3964bcb1d1c34e63bebd2bc7d271d5d05e9757459c0a65e171d7ca6c1bca
+    - function_id: OCF-SLP-005
+      field: description
+      sha256: c3a871929526f06ce83de524a830914f8bfad2b355a3f0c4534564eb5a9156e3
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
