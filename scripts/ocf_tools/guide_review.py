@@ -96,6 +96,8 @@ def predecessor(root, name, text):
 
 
 def verify(root=REPO_ROOT):
+    from .locale_history import read_logical
+
     data = record(root)
     if data:
         for name in data["files"]:
@@ -104,7 +106,7 @@ def verify(root=REPO_ROOT):
                 or name in {"locales/en-US/commands.yaml", "locales/en-US/ui.yaml"}
             ):
                 raise OCFError("guide review file outside metadata-only scope")
-            predecessor(root, name, (root / name).read_text(encoding="utf-8"))
+            predecessor(root, name, read_logical(root, name))
     return []
 
 

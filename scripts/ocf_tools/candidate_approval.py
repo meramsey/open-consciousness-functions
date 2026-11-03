@@ -8,6 +8,7 @@ from copy import deepcopy
 
 import yaml
 
+from .locale_history import read_logical
 from .paths import REPO_ROOT
 from .utils import OCFError
 
@@ -123,11 +124,11 @@ def verify(root=REPO_ROOT):
     if data is None:
         return ["candidate approval ledger missing"]
     for name, row in data["files"].items():
-        predecessor(root, name, (root / name).read_text(encoding="utf-8"))
+        predecessor(root, name, read_logical(root, name))
     for name, checksum in data["immutable_files"].items():
         from .command_simplification import predecessor as before_simplification_file
 
-        current = before_simplification_file(root, name, (root / name).read_text(encoding="utf-8"))
+        current = before_simplification_file(root, name, read_logical(root, name))
         if sha(current) != checksum:
             raise OCFError("immutable approval predecessor changed: " + name)
     from .command_simplification import before_texts as before_simplification
@@ -153,9 +154,7 @@ def verify(root=REPO_ROOT):
         snapshot = yaml.safe_load(raw)
         from .locale_history import before_consolidation
 
-        live = yaml.safe_load(
-            before_consolidation(root, resource, (root / resource).read_text(encoding="utf-8"))
-        )
+        live = yaml.safe_load(before_consolidation(root, resource, read_logical(root, resource)))
         expected = deepcopy(snapshot)
         for key, entry in expected["entries"].items():
             entry["status"] = "reviewed"

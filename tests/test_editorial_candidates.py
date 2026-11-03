@@ -49,12 +49,14 @@ def test_supplied_snapshots_and_generated_resources_remain_exact():
         approved = deepcopy(original)
         for entry in approved["entries"].values():
             entry["status"] = "reviewed"
-        from ocf_tools.locale_history import before_consolidation
+        from ocf_tools.locale_history import before_consolidation, read_logical
         from ocf_tools.utils import yaml_safe_load
 
         name = f"locales/en-US/original-{identifier}.yaml"
-        path = REPO_ROOT / name
-        assert yaml_safe_load(before_consolidation(REPO_ROOT, name, path.read_text())) == approved
+        assert (
+            yaml_safe_load(before_consolidation(REPO_ROOT, name, read_logical(REPO_ROOT, name)))
+            == approved
+        )
         # Current speech and entry metadata must still match the entire approved
         # snapshot, with only separately preserved editorial notes removed.
         catalog = LocaleCatalog()

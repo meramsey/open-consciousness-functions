@@ -132,11 +132,11 @@ def test_all_55_legacy_functions_have_review_files_without_fabricated_missing_sp
             / catalog.require("en-US").localized_function_files[owner.id]
         )
         doc = yaml.safe_load(path.read_text())
-        from ocf_tools.locale_history import before_consolidation
+        from ocf_tools.locale_history import before_consolidation, read_logical
 
         logical = f"locales/en-US/hplus-{owner.id}.yaml"
         historical = yaml.safe_load(
-            before_consolidation(REPO_ROOT, logical, (REPO_ROOT / logical).read_text())
+            before_consolidation(REPO_ROOT, logical, read_logical(REPO_ROOT, logical))
         )
         # Editorial notes moved out of the human-editable resource. Bind the
         # current wording/status/version to its exact checked provenance copy.

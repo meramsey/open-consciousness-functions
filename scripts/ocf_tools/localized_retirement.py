@@ -108,13 +108,9 @@ def retirement_plan(root: Path = REPO_ROOT, *, locale: str = "en-US") -> dict:
             source = root / logical_path
             if source.parent != directory or source.name in files:
                 continue
-            if source.is_symlink() or not source.is_file():
-                raise OCFError(
-                    "missing historical pilot resource requires reconciliation: " + logical_path
-                )
-            from .locale_history import before_structural
+            from .locale_history import before_structural, read_logical
 
-            actual = sha(before_structural(root, logical_path, source.read_text(encoding="utf-8")))
+            actual = sha(before_structural(root, logical_path, read_logical(root, logical_path)))
             if actual != expected:
                 raise OCFError("historical pilot resource drift: " + logical_path)
             historical.append(

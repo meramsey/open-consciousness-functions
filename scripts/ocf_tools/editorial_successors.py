@@ -12,6 +12,7 @@ from copy import deepcopy
 
 import yaml
 
+from .locale_history import read_logical
 from .paths import REPO_ROOT
 from .utils import OCFError
 
@@ -202,9 +203,8 @@ def records(root=REPO_ROOT, *, required=False):
 
 def before_file(root, name):
     from .cue_headers import predecessor
-    from .cue_migration import contained
 
-    text = predecessor(root, name, contained(root, name).read_text(encoding="utf-8"))
+    text = predecessor(root, name, read_logical(root, name))
     for data in reversed(records(root)):
         row = data["source_files"].get(name)
         if row is None:
@@ -354,7 +354,7 @@ def verify(root=REPO_ROOT):
         return (
             file_view[name]
             if name in file_view
-            else predecessor(root, name, contained(root, name).read_text(encoding="utf-8"))
+            else predecessor(root, name, read_logical(root, name))
         )
 
     for data in reversed(records(root, required=True)):

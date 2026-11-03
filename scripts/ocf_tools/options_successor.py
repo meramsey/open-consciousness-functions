@@ -8,6 +8,7 @@ from copy import deepcopy
 
 import yaml
 
+from .locale_history import read_logical
 from .paths import REPO_ROOT
 from .utils import OCFError
 
@@ -119,7 +120,7 @@ def verify(root=REPO_ROOT):
     if data is None:
         return ["Options successor missing"]
     for name in data["files"]:
-        predecessor(root, name, (root / name).read_text(encoding="utf-8"))
+        predecessor(root, name, read_logical(root, name))
     previous = json.loads((root / data["previous_baseline"]).read_text(encoding="utf-8"))
     if (
         sha((root / data["previous_baseline"]).read_text(encoding="utf-8"))
@@ -141,9 +142,7 @@ def verify(root=REPO_ROOT):
     old = yaml.safe_load(data["files"][NARRATION]["before"])
     from .locale_history import before_consolidation
 
-    new = yaml.safe_load(
-        before_consolidation(root, NARRATION, (root / NARRATION).read_text(encoding="utf-8"))
-    )
+    new = yaml.safe_load(before_consolidation(root, NARRATION, read_logical(root, NARRATION)))
     for identity, row in data["speech"].items():
         key = identity.split("::")[1]
         entry = new["entries"][key]

@@ -50,7 +50,7 @@ def overlay(parent: dict, child: dict) -> dict:
 def configuration_lock(
     dependency_names: list[str] | None = None, *, baseline_id: str = BASELINE_ID
 ) -> dict:
-    from .locale_history import before_consolidation
+    from .locale_history import before_consolidation, historical_resources, read_logical
     from .semantic_dsp import load_profile
     from .session import load_pacing_profile, load_template
 
@@ -89,6 +89,12 @@ def configuration_lock(
             if Path(name).is_absolute() or not path.is_relative_to(REPO_ROOT):
                 raise OCFError("audio defaults dependency escapes repository")
             paths.add(path)
+    else:
+        paths.update(
+            REPO_ROOT / name
+            for name in historical_resources(REPO_ROOT)
+            if name.startswith("locales/en-US/hplus-") and name.endswith(".yaml")
+        )
     return {
         "schema_version": "1.0",
         "id": baseline_id,
@@ -111,7 +117,7 @@ def configuration_lock(
                     before_consolidation(
                         REPO_ROOT,
                         path.relative_to(REPO_ROOT).as_posix(),
-                        path.read_text(encoding="utf-8"),
+                        read_logical(REPO_ROOT, path.relative_to(REPO_ROOT).as_posix()),
                     ).encode("utf-8")
                 ).hexdigest()
                 if path.suffix == ".yaml" and path.is_relative_to(REPO_ROOT / "locales")

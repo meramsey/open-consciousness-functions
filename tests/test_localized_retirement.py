@@ -94,15 +94,20 @@ def test_existing_58_function_catalog_has_only_declared_retirement_candidates():
 @pytest.mark.integration
 def test_retired_catalog_matches_exact_predecessor_without_duplicate_authority():
     from ocf_tools.locale import LocaleCatalog
-    from ocf_tools.locale_history import before_structural
+    from ocf_tools.locale_history import before_structural, historical_resources, read_logical
     from ocf_tools.localized_retirement import LEDGER, REPO_ROOT
     from ocf_tools.utils import yaml_safe_load
 
     def historical_reader(path):
         name = path.relative_to(REPO_ROOT).as_posix()
-        return yaml_safe_load(before_structural(REPO_ROOT, name, path.read_text(encoding="utf-8")))
+        return yaml_safe_load(before_structural(REPO_ROOT, name, read_logical(REPO_ROOT, name)))
 
-    predecessor = LocaleCatalog(REPO_ROOT / "locales", reader=historical_reader)
+    names = historical_resources(REPO_ROOT)
+    predecessor = LocaleCatalog(
+        REPO_ROOT / "locales",
+        reader=historical_reader,
+        exists=lambda path: path.is_file() or path.relative_to(REPO_ROOT).as_posix() in names,
+    )
     current = LocaleCatalog()
     assert predecessor.problems == current.problems == []
     for locale in current.locales():
