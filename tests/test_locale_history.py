@@ -66,6 +66,17 @@ def test_missing_successor_is_not_silently_replaced_by_history(tmp_path, monkeyp
         history.predecessor(tmp_path, "locales/en-US/manifest.yaml", after)
 
 
+def test_active_resource_hash_preserves_crlf_bytes_on_every_platform(tmp_path, monkeypatch):
+    path, active, before, after = fixture_ledger(tmp_path, monkeypatch)
+    active.write_bytes(b"exact active narration\r\n")
+    data = json.loads(path.read_text())
+    name = next(iter(data["active_resources"]))
+    data["active_resources"][name] = hashlib.sha256(active.read_bytes()).hexdigest()
+    path.write_text(json.dumps(data), encoding="utf-8")
+    monkeypatch.setattr(history, "LEDGER_SHA256", history._sha(path.read_text()))
+    assert history.predecessor(tmp_path, "locales/en-US/manifest.yaml", after) == before
+
+
 def test_checkout_without_migration_record_is_unchanged(tmp_path):
     assert history.predecessor(tmp_path, "locales/en-US/manifest.yaml", "original") == "original"
 
