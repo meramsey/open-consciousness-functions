@@ -43,7 +43,9 @@ def test_portable_collection_can_be_relocated_without_external_links(tmp_path, c
         assert "localhost" not in text
     assert (relocated / "complete-guide.pdf").is_file()
     result = listening_guides.validate_portable_collection(relocated)
-    assert (result["files"], result["markdown"], result["html"], result["pdf"]) == (181, 60, 60, 61)
+    assert (result["files"], result["markdown"], result["html"], result["pdf"]) == (192, 63, 63, 64)
+    assert result["individual_function_pdfs"] == 58
+    assert result["extracted_canonical_resources"] == 175
     assert result["broken_links"] == 0
     assert result["toc_entries"] > 58
     assert result["toc_links"] == 2 * result["toc_entries"]
@@ -54,7 +56,8 @@ def test_category_indexes_share_canonical_order(collection):
     html = (collection / "index.html").read_text(encoding="utf-8")
     markdown = (collection / "index.md").read_text(encoding="utf-8")
     categories = sorted(
-        {record.primary_domain or "Uncategorized" for record in load_all_functions()}
+        {record.primary_domain or "Uncategorized" for record in load_all_functions()},
+        key=lambda category: (category != "foundation", category.casefold()),
     )
     assert re.findall(r"<h2>(.*?)</h2>", html) == categories
     assert re.findall(r"^## (.*)$", markdown, re.MULTILINE) == categories
