@@ -208,7 +208,12 @@ def function_markdown(record, content, *, documentation=None, narration_sections
                     f"Narration status: {_literal(section['status'] or 'not labeled')}.",
                     "",
                 ]
-                if section["repetitions"] > 1:
+                if section.get("in_playback_sequence") is False:
+                    lines += [
+                        "Retained canonical resource outside the current playback sequence; no playback or additional repetition is inferred.",
+                        "",
+                    ]
+                elif section["repetitions"] > 1:
                     lines += [
                         f"Audio playback repetitions: {section['repetitions']}; transcript text shown once.",
                         "",
@@ -306,6 +311,26 @@ def function_guide_markdown(record, *, catalog=None, locale="en-US"):
             }
         )
         seen_sections[identity] = len(narration_sections) - 1
+    from .localized_authority import metadata as localized_metadata
+
+    function_metadata = localized_metadata(record, locale, catalog=catalog) or {}
+    included_keys = {section["key"] for section in narration_sections}
+    for key in function_metadata.get("entries", {}):
+        if key in included_keys:
+            continue
+        entry, resolution = catalog.resource(key, locale, domain="narration", fallback=False)
+        narration_sections.append(
+            {
+                "key": key,
+                "role": key.rsplit(".", 1)[-1],
+                "status": entry.status,
+                "text": entry.render(
+                    {}, plural_rules=catalog.plural_rules_for(resolution.origin_locale)
+                ),
+                "repetitions": 0,
+                "in_playback_sequence": False,
+            }
+        )
     return function_markdown(
         record,
         function_artwork_content(record.id, locale, catalog=catalog, strict=False),
@@ -486,7 +511,9 @@ def _guide_catalog(records, page_map=None):
         "[General listening guide](listening-guide.md) · [Complete handbook](complete-guide.pdf)",
         "",
     ]
-    for category, entries in sorted(categories.items()):
+    for category, entries in sorted(
+        categories.items(), key=lambda item: (item[0] != "foundation", item[0].casefold())
+    ):
         lines.extend([f"## {category}", "", *entries, ""])
     return "\n".join(lines) + "\n"
 
@@ -614,7 +641,9 @@ def complete_pdf_bytes(records, documents):
     grouped = {}
     for record in records:
         grouped.setdefault(record.primary_domain or "Uncategorized", []).append(record)
-    for category, functions in sorted(grouped.items()):
+    for category, functions in sorted(
+        grouped.items(), key=lambda item: (item[0] != "foundation", item[0].casefold())
+    ):
         story.extend([PageBreak(), Paragraph(escape(category), category_style)])
         for record in functions:
             lines = documents[f"functions/{record.id}.md"].splitlines()
@@ -811,7 +840,10 @@ def portable_index_html(records, *, edition="0.3.0") -> bytes:
         f"<section class='category' data-category='{html_escape(category)}'><h2>{escape(category)}</h2><div class='grid'>"
         + "".join(cards)
         + "</div></section>"
-        for category, cards in sorted(cards_by_category.items())
+        for category, cards in sorted(
+            cards_by_category.items(),
+            key=lambda item: (item[0] != "foundation", item[0].casefold()),
+        )
     )
     css = """
     :root{color-scheme:light dark;--bg:#f6f7f5;--fg:#172d38;--card:#fff;--accent:#2c6e72;--muted:#61747a}
