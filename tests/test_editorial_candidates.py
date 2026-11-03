@@ -43,7 +43,18 @@ def test_supplied_snapshots_and_generated_resources_remain_exact():
         approved = deepcopy(original)
         for entry in approved["entries"].values():
             entry["status"] = "reviewed"
-        assert load_yaml_file(REPO_ROOT / f"locales/en-US/original-{identifier}.yaml") == approved
+        from ocf_tools.locale_history import before_consolidation
+        from ocf_tools.utils import yaml_safe_load
+
+        name = f"locales/en-US/original-{identifier}.yaml"
+        path = REPO_ROOT / name
+        assert yaml_safe_load(before_consolidation(REPO_ROOT, name, path.read_text())) == approved
+        # Current speech and entry metadata must still match the entire approved
+        # snapshot, with only separately preserved editorial notes removed.
+        assert load_yaml_file(path)["entries"] == {
+            key: {field: value for field, value in entry.items() if field != "notes"}
+            for key, entry in approved["entries"].items()
+        }
     assert [row["version"] for row in review("manifest-v2")["entries"]] == [
         "1.2.0",
         "2.0.0",

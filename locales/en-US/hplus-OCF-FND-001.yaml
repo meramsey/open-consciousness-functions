@@ -1,71 +1,84 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-FND-001", "title": "Access to Energy", "locale": "en-US"}
-# English authority: functions/foundation/energize.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-FND-001-PRIMARY", "role": "activation", "display": "PLUS-ENERGIZE", "spoken": "Plus Energize", "locale_definition": null}
-# {"symbol": "cue.id.OCF-CMD-FND-001-ACCESS-CLOSE", "command": "OCF-CMD-FND-001-ACCESS-CLOSE", "role": "access-close", "display": "Plus Release Eleven Access", "spoken": "plus, release, eleven, access", "locale_definition": null}
-# END GENERATED CUE PREVIEW
-# OCF-FND-001 — Access to Energy
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: Original SOURCE +Transcripts From available tapes/Access to Energy/Access to Energy.txt
-# SHA-256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
-# Review note: Opener lines 1–2; body ranges 66–96, 202–212, 214,
-# 244–246, 249–251; access-close line 228.
-# Review note: Disjoint source ranges exclude music markers and shared material.
-# Review note: The final specific passage invites exploration in Focus Ten;
-# it is not a historical waking closer. The OCF closer is newly authored.
-# Review note: Plus Release Eleven Access is a distinct access-channel cue,
-# preserved separately and not automatically consumed by the session template.
-# Review note: M energy and its directed uses are experiential exercise concepts;
-# proposed nonphysical effects are not established scientific mechanisms.
-# Review note: One reusable function body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-FND-001
+title:
+  text: Access to Energy
+  status: canonical
+  version: 1.0.0
+description:
+  text: Restores a felt sense of available energy on demand.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-FND-001-PRIMARY
+  display_cue:
+    text: PLUS-ENERGIZE
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Energize
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-FND-001-ACCESS-CLOSE
+  display_cue:
+    text: Plus Release Eleven Access
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: plus, release, eleven, access
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Access-channel close cue
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This distinct cue closes the Access Channel.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use to close the Access Channel; this cue is distinct from function activation.
+    status: canonical
+    version: 1.0.0
+  role: access-close
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-fnd-001.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted opener based on the unverified Access to Energy
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Access to Energy/Access to Energy.txt;
-      SHA-256 a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a;
-      lines 1–2. Original reference remains unchanged. This adaptation
-      broadens the intended uses of M energy without changing its identity.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to recognize,
       access, and direct your M energy, the vast reserve
       of energy within your total self, for any purpose
       you consciously choose.
-
   hplus.function.ocf-fnd-001.function-body:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the unverified Access to Energy
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Access to Energy/Access to Energy.txt;
-      SHA-256 a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a;
-      disjoint ranges 66–96, 202–212, 214, 244–246, and 249–251.
-      Original reference remains unchanged; music markers and shared
-      preparation, state, and return speech remain excluded. The original
-      final exploration invitation is retained in the body, not mistaken
-      for a waking closer. The exact Plus Energize cue and M energy concept
-      are preserved. OCF-authored additions include intention-directed
-      healing, protection, stamina, intellectual clarity, sensory awareness,
-      and wider applications of energy through the total self. The depiction
-      of nonphysical energy direction is an intended contemplative experience,
-      not a verified physical mechanism or guaranteed external effect.
-      The access-channel release cue remains a distinct entry.
-      One function body supports four playback passes across Focus 11
-      and Focus 20. Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-FND-001", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-FND-001
+      allowed:
+      - cue.primary
     text: |-
       Bring into your awareness a time when you felt
       strong, alert, energized, and completely alive.
@@ -115,35 +128,13 @@ entries:
       and experience your M energy responding.
 
       Begin now.
-  hplus.function.ocf-fnd-001.access-close:
-    status: reviewed
-    version: 1.1.0
-    notes: >-
-      Distinct source-aligned access-channel closing cue retained
-      unchanged from the previously reviewed entry. Original SOURCE
-      +Transcripts From available tapes/Access to Energy/Access to Energy.txt;
-      SHA-256 a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a;
-      line 228. The Plus Release Eleven Access instruction is separate
-      from the function-specific closer and is not automatically consumed
-      by the standard session template. Rights: user_cleared, per user's
-      lawyer-clearance attestation. Finished-session release pending.
-    text: To release your access channel, say in your mind, plus, release, eleven, access.
-
   hplus.function.ocf-fnd-001.closer:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-authored closer adapted from the previously approved reminder.
-      The unverified historical source ends its function-specific material
-      with an exploration invitation in Focus Ten, not a waking closer.
-      Original SOURCE +Transcripts From available tapes/Access to Energy/Access to Energy.txt;
-      SHA-256 a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a.
-      This closer uses one purpose reminder, the exact Plus Energize cue,
-      directed visualization, and the standard OCF ending. The distinct
-      Plus Release Eleven Access cue remains in its separate entry.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-FND-001", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-FND-001
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to access and direct
       your M energy, think or say in your mind,
@@ -153,3 +144,7 @@ entries:
       toward which you wish to direct it.
 
       This concludes your OCF Access to Energy exercise.
+  hplus.function.ocf-fnd-001.access-close:
+    status: reviewed
+    version: 1.1.0
+    text: To release your access channel, say in your mind, plus, release, eleven, access.

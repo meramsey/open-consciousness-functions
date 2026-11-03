@@ -1,63 +1,61 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-FND-003", "title": "Quick Recharge", "locale": "en-US"}
-# English authority: functions/foundation/recharge.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-FND-003-PRIMARY", "role": "activation", "display": "PLUS-RECHARGE", "spoken": "Plus Recharge", "locale_definition": "commands.ocf-cmd-fnd-003-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-FND-003 — Recharge
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: Original SOURCE +Transcripts From available tapes/Recharge/Recharge.txt
-# SHA-256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
-# Review note: Opener line 2; function body lines 38–60; closer lines 187–190.
-# Review note: Duplicate historical body pass remains excluded.
-# Review note: Unrelated speech at lines 61–62 remains excluded.
-# Review note: Plus Recharge and the inhale-hold-command-exhale sequence preserved.
-# Review note: This is a consciously invoked short-sleep restoration exercise;
-# its ability remains available without keeping the listener continuously sleepy.
-# Review note: One body supports four-pass playback; shared session material excluded.
-# Review note: Intended sleep and restoration effects are exercise suggestions.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-FND-003
+title:
+  text: Quick Recharge
+  status: canonical
+  version: 1.0.0
+description:
+  text: Replenishes a felt sense of energy and freshness.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-FND-003-PRIMARY
+  display_cue:
+    text: PLUS-RECHARGE
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Recharge
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-fnd-003.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted opener based on the unverified Recharge transcript.
-      Original SOURCE +Transcripts From available tapes/Recharge/Recharge.txt;
-      SHA-256 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4;
-      line 2. Original reference remains unchanged. Revised wording emphasizes
-      rapid restoration through a short period of natural sleep, rather than
-      general relaxation or continuous activation. Rights: user_cleared,
-      per user's lawyer-clearance attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to enter a short,
       natural sleep and rapidly recharge your body,
       mind, and total self, awakening refreshed and alert.
-
   hplus.function.ocf-fnd-003.function-body:
     status: reviewed
     version: 1.1.0
-    notes: >-
-      OCF-adapted function body based on the unverified Recharge transcript.
-      Original SOURCE +Transcripts From available tapes/Recharge/Recharge.txt;
-      SHA-256 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4;
-      lines 38–60. Original reference remains unchanged. The repeated source
-      passage and unrelated speech at lines 61–62 remain excluded. The exact
-      Plus Recharge command and original inhale-hold-command-candle-exhale
-      sequence are preserved. OCF additions emphasize consciously chosen
-      short sleep, whole-system balance and restoration, natural awakening,
-      and lasting availability of the function without persistent drowsiness.
-      One reusable body supports four playback passes across Focus 11 and
-      Focus 20. Statements of rapid restoration are intended exercise
-      suggestions, not established substitutes for ordinary sleep.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-FND-003", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-FND-003
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, you have the ability
       to recharge and restore yourself through
@@ -112,18 +110,10 @@ entries:
   hplus.function.ocf-fnd-003.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted closer based on the unverified Recharge transcript.
-      Original SOURCE +Transcripts From available tapes/Recharge/Recharge.txt;
-      SHA-256 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4;
-      lines 187–190. Original reference remains unchanged. Closer shortened
-      to one purpose reminder, the exact Plus Recharge command and original
-      breathing sequence, and the standard OCF ending. This is adapted
-      narration rather than verbatim historical wording. Rights: user_cleared,
-      per user's lawyer-clearance attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-FND-003
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to restore yourself
       through a short period of natural sleep,

@@ -1,100 +1,80 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-BOD-014", "title": "Regenerate", "locale": "en-US"}
-# English authority: functions/body/regenerate.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-014-PRIMARY", "role": "activation", "display": "PLUS-REGENERATE", "spoken": "Plus Regenerate", "locale_definition": "commands.ocf-cmd-bod-014-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-003: approved successor; earlier Build Live cue notes describe prior versions.
-# OCF-BOD-014 — Regenerate
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: unavailable; authentication remains unverified.
-# Review note: This is a user-proposed reconstruction, not a
-# recovered historical Human Plus transcript.
-# Review note: Historical source availability remains unavailable;
-# reimplementation remains planned.
-# Review note: Proposed input:
-# Regenerate/Regenerate_881050P_reconstructed_clean.txt
-# SHA-256:
-# 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1
-# Review note: The proposed document's historical identity and
-# authenticity have not been independently verified.
-# Review note: Shared preparation, state, return, production
-# directions, and non-narration notes remain excluded.
-# Review note: The Plus Build Live command is preserved.
-# Review note: OCF adaptation establishes lasting, automatic,
-# appropriately regulated repair and regeneration suggestions.
-# Review note: The intended scope includes rebuilding and
-# restoring damaged, impaired, or missing physical structures.
-# Review note: Narration expresses intended regenerative outcomes,
-# not clinically established regeneration of arbitrary body parts.
-# Review note: One concise function body supports four-pass playback.
-# Review note: Closer follows the standardized OCF reminder format.
-
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-BOD-014
+title:
+  text: Regenerate
+  status: canonical
+  version: 1.0.0
+description:
+  text: Supports a felt sense of body-wide regeneration and renewal; activation cue PLUS-REGENERATE.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-BOD-014-PRIMARY
+  display_cue:
+    text: PLUS-REGENERATE
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Regenerate
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-BOD-014-LEGACY-01
+  display_cue:
+    text: PLUS-BUILD, LIVE
+    status: canonical
+    version: 1.0.0
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-bod-014.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted opener based on the user-proposed Regenerate
-      reconstruction. Proposed input:
-      Regenerate/Regenerate_881050P_reconstructed_clean.txt;
-      SHA-256 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1;
-      line 51. Original reconstruction remains unchanged.
-      Historical source availability remains unavailable.
-      The previously approved opener has been expanded to
-      emphasize physical reconstruction, regeneration,
-      restoration, and natural repair processes.
-      This is OCF-authored adapted narration, not a
-      recovered historical transcript.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to direct your body's
       natural powers of repair, regeneration, and reconstruction,
       restoring damaged or missing physical structures
       toward their original healthy form and function.
-
   hplus.function.ocf-bod-014.function-body:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted narration based on the user-proposed Regenerate
-      reconstruction. Proposed input:
-      Regenerate/Regenerate_881050P_reconstructed_clean.txt;
-      SHA-256 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1;
-      user-selected proposed extent lines 150–227.
-      Original reconstruction remains unchanged.
-      Historical source availability remains unavailable
-      and reimplementation remains planned.
-      The narration has been condensed into natural regenerative
-      ability, targeted awareness, cellular coordination,
-      structural rebuilding, automatic maintenance, conscious
-      activation, and affirmative reinforcement.
-      OCF-authored additions describe regeneration-associated
-      cellular processes and the restoration of healthy
-      structure and function, including the intended
-      reconstruction of missing or damaged physical structures.
-      The exact Plus Build Live activation command and
-      breathing sequence are preserved.
-      Suggestions establish lasting, automatic,
-      appropriately regulated repair and regeneration.
-      Healthy tissue organization and appropriate limits
-      to cellular growth remain part of the intended pattern.
-      Companion function references are reserved for
-      session configuration and supporting documentation.
-      Intended regenerative outcomes are affirmative guided
-      suggestions, not independently verified clinical effects.
-      One reusable body supports repeated playback across
-      Focus 11 and Focus 20.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-BOD-014
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, your body's natural
       powers of repair, rebuilding, and regeneration
@@ -179,31 +159,13 @@ entries:
       will continue working automatically,
       restoring healthy structure and function
       wherever rebuilding is needed.
-
   hplus.function.ocf-bod-014.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted closer based on the user-proposed Regenerate
-      reconstruction. Proposed input:
-      Regenerate/Regenerate_881050P_reconstructed_clean.txt;
-      SHA-256 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1;
-      user-selected proposed extent lines 348–363.
-      Original reconstruction remains unchanged.
-      Historical source availability remains unavailable.
-      Closer shortened to one purpose reminder, the exact
-      Plus Build Live activation command, the original
-      visualization and breathing sequence, and the
-      standard OCF ending.
-      Additional reinforcement and companion function
-      guidance are reserved for the body and documentation.
-      This is OCF-authored adapted narration, not historical
-      transcript wording.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-BOD-014
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to direct regeneration
       toward any part of your physical body,

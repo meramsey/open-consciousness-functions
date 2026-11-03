@@ -802,18 +802,6 @@ entries:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
-  commands.ocf-cmd-emo-003-primary.explanation:
-    text: This is the primary command for the function.
-    status: canonical
-    version: 1.0.0
-  commands.ocf-cmd-emo-003-primary.label:
-    text: Primary activation command
-    status: canonical
-    version: 1.0.0
-  commands.ocf-cmd-emo-003-primary.usage:
-    text: Use only when you choose to activate the documented function.
-    status: canonical
-    version: 1.0.0
   commands.ocf-cmd-exp-001-legacy-01.explanation:
     text: This is a compatibility phrase, not a new canonical command.
     status: canonical
@@ -1849,20 +1837,6 @@ entries:
     text: Offload
     status: canonical
     version: 1.0.0
-  functions.ocf-emo-003.purpose:
-    text: Develops consciously directed understanding and communication with another being through sensory,
-      intuitive, and total-self awareness.
-    status: canonical
-    version: 1.0.0
-  functions.ocf-emo-003.short-description:
-    text: Develops consciously directed understanding and communication with another being through sensory,
-      intuitive, and total-self awareness.
-    status: canonical
-    version: 1.0.0
-  functions.ocf-emo-003.title:
-    text: Empathize
-    status: canonical
-    version: 1.0.0
   functions.ocf-exp-001.purpose:
     text: Sets a consciously selected future condition and completion time through intention and total-self
       alignment.
@@ -2206,7 +2180,6 @@ entries:
   commands.ocf-cmd-bod-001-primary.display-cue: PLUS-BRAIN FLOW
   commands.ocf-cmd-bod-009-primary.display-cue: PLUS-BREATHE BETTER
   commands.ocf-cmd-emo-002-primary.display-cue: PLUS-OFFLOAD
-  commands.ocf-cmd-emo-003-primary.display-cue: PLUS-EMPATHIZE
   commands.ocf-cmd-exp-002-primary.display-cue: PLUS-INSULATE
   commands.ocf-cmd-slp-004-primary.display-cue: PLUS-SLEEP INSIGHT
   commands.ocf-cmd-prf-002-primary.display-cue: PLUS-INNER POWER

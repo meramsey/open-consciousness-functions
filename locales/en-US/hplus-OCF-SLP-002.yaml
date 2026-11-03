@@ -1,65 +1,79 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-SLP-002", "title": "Sleep", "locale": "en-US"}
-# English authority: functions/sleep/sleep.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-SLP-002-PRIMARY", "role": "activation", "display": "PLUS-SLEEP", "spoken": "Plus Sleep", "locale_definition": "commands.ocf-cmd-slp-002-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-SLP-002 — Sleep
-# English function-specific OCF-adapted narration; wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: Source identified as Sleep; opener lines 7–8, body lines 72–116,
-# and closer lines 315–317, according to the supplied review candidate.
-# Review note: No original source path or SHA-256 was supplied for this review;
-# neither is invented. The repeated source body passage has been consolidated.
-# Review note: The exact spoken cue is Plus Twenty Twenty (source: PLUS-20, 20).
-# Review note: Unlike other functions, activation happens DURING the exhale
-# after slow, deep breathing; no breath hold or candle exhale is introduced.
-# Review note: Sleep enables consciously chosen natural sleep with waking at the
-# desired time; restoration during normal sleep is a supporting feature.
-# Review note: Distinct from Recharge (brief nap) and Restorative Sleep (healing).
-# Review note: One body supports four-pass playback across Focus 11 and Focus 20.
-# Review note: Sleep and bodily effects are intended exercise suggestions,
-# not independently established physiological outcomes.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-SLP-002
+title:
+  text: Sleep
+  status: canonical
+  version: 1.0.0
+description:
+  text: Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP.
+  status: reviewed
+  version: 1.0.1
+activation:
+  command_id: OCF-CMD-SLP-002-PRIMARY
+  display_cue:
+    text: PLUS-SLEEP
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Sleep
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-SLP-002-LEGACY-01
+  display_cue:
+    text: PLUS-20-20
+    status: canonical
+    version: 1.0.0
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-slp-002.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted opener based on the supplied unverified Sleep candidate,
-      source lines 7–8. Source document path and SHA-256 were not supplied.
-      Clarifies the core purpose of deliberately entering ordinary natural,
-      restful sleep and awakening at the desired time. This wording is an
-      adaptation, not a verified historical transcript. Rights: user_cleared
-      per user's lawyer-clearance attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to enter normal,
       natural, restful sleep whenever you choose,
       and awaken at the time you desire.
-
   hplus.function.ocf-slp-002.function-body:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted function body based on the supplied unverified Sleep candidate,
-      source lines 72–116. Source document path and SHA-256 were not supplied.
-      The repeated second passage is removed. Preserves the exact spoken cue
-      Plus Twenty Twenty, slow deep breathing with the command thought or said
-      during exhalation, repeated breath cycles as sleep deepens, consciously
-      chosen sleep, desired awakening, and the source's suggestions of bodily
-      equalization, nervous-system harmony, restoration, and refreshment.
-      No inhale-hold sequence is added. The learned sleep ability remains
-      available without causing unwanted sleepiness when not invoked.
-      One body is reused for four passes in Focus 11 and Focus 20, without
-      session-specific references or return instructions. Effects are intended
-      narration suggestions rather than independently verified outcomes.
-      Rights: user_cleared per user's lawyer-clearance attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-SLP-002
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, you have the ability
       to enter normal, natural, restful sleep
@@ -109,20 +123,13 @@ entries:
       Each time you use {{ cue.primary }},
       entering natural sleep and awakening
       refreshed will become easier and more effective.
-
   hplus.function.ocf-slp-002.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted closer based on the supplied unverified Sleep candidate,
-      source lines 315–317. Source document path and SHA-256 were not supplied.
-      Preserves one purpose reminder, slow deep breathing, Plus Twenty Twenty
-      during the exhale, and the standard OCF ending. No inhale-hold or
-      candle-blowing instruction has been added. Rights: user_cleared per
-      user's lawyer-clearance attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-SLP-002
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to enter normal,
       natural, restful sleep, breathe slowly and deeply.

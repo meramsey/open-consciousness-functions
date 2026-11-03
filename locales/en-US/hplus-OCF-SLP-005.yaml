@@ -1,76 +1,87 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-SLP-005", "title": "Sleep Easy", "locale": "en-US"}
-# English authority: functions/sleep/sleep-easy.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-SLP-005-PRIMARY", "role": "activation", "display": "PLUS-SLEEP EASY", "spoken": "Plus Sleep Easy", "locale_definition": "commands.ocf-cmd-slp-005-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# Editorial successor OCF-EDITORIAL-TITLE-CUES-001: prior cue-preservation notes describe predecessor versions; only approved title/cue substitutions changed.
-# OCF-SLP-005 — Sleep Easy
-# English function-specific OCF-adapted narration; wording source of truth.
-# Source status: unavailable; historical authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered historical transcript.
-# Proposed input: Sleep Easy/Sleep_Easy_reconstructed_clean.txt
-# SHA-256: 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309
-# Proposed header: SLEEP EASY — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT.
-# Proposed source ranges: opener line 50; body lines 149–206; closer lines 327–341.
-# Review note: Identity checked against title and listed legacy cue, not authenticated.
-# Review note: Spoken reconstruction cue is Plus Quiet Sleep; canonical registry
-# metadata Plus Sleep Easy differs. Do not silently substitute one for the other.
-# Review note: Historical source remains unavailable; reimplementation is planned.
-# Review note: Source timings are proposed, not measured; shared sections excluded.
-# Review note: User-directed OCF additions develop sleep amid unpredictable sounds,
-# motion, unfamiliar places, and recovery from ordinary interruptions.
-# Review note: Maintains responsiveness to genuinely important cues without
-# adding an alarm or safety guarantee; efficacy is not scientifically established.
-# Review note: Separate narration draft; frozen Sleep Easy pilot remains unchanged.
-# Review note: One state-independent function body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-SLP-005
+title:
+  text: Sleep Easy
+  status: canonical
+  version: 1.0.0
+description:
+  text: Supports entering, remaining in, and returning to natural sleep amid unfamiliar or distracting
+    surroundings.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-SLP-005-PRIMARY
+  display_cue:
+    text: PLUS-SLEEP EASY
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Sleep Easy
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-SLP-005-LEGACY-01
+  display_cue:
+    text: PLUS-QUIET, SLEEP
+    status: canonical
+    version: 1.0.0
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags: []
+common_uses: []
+relationships:
+  related_functions:
+  - function_id: OCF-SLP-001
+    description:
+      text: Compare sleep support for unfamiliar or distracting surroundings with an exercise oriented
+        toward restorative rest. Choose independently; this link does not prescribe combining or stacking
+        recordings.
+      status: reviewed
+      version: 0.0.1
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-slp-005.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF adaptation of user-proposed reconstruction; input
-      Sleep Easy/Sleep_Easy_reconstructed_clean.txt;
-      SHA-256 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309;
-      proposed line 50. Source unavailable and historical authenticity unverified.
-      Expands the original any-time, any-place purpose to include changing,
-      distracting, and unfamiliar conditions. Spoken cue remains Plus Quiet Sleep;
-      canonical Plus Sleep Easy registry naming is not asserted as source speech.
-      Rights: user_cleared per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
-      Frozen Sleep Easy pilot resources and decisions remain unchanged.
     text: |-
       This OCF exercise will teach you to enter and remain in
       peaceful, natural sleep, even when your surroundings
       are unfamiliar, noisy, changing, or distracting.
-
   hplus.function.ocf-slp-005.function-body:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF adaptation of user-proposed reconstruction; input
-      Sleep Easy/Sleep_Easy_reconstructed_clean.txt;
-      SHA-256 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309;
-      proposed lines 149–206. Original reference unchanged; authentication unverified.
-      Preserves spoken Plus Quiet Sleep, which differs from canonical registry
-      Plus Sleep Easy, and close-eyes-inhale-hold-command-exhale-normal-breathing
-      sequence. Retains natural sleep in difficult or unfamiliar surroundings.
-      User-directed OCF enhancements explicitly address unpredictable noises,
-      shifting motion, renewed alertness after brief ordinary interruptions,
-      adaptable attention, and a persistent learned ability invoked when desired.
-      No promise that external sounds or conditions are physically altered;
-      awareness of genuinely relevant signals is not intentionally disabled.
-      No duplicated cue rehearsal or other function references. One body supports
-      four passes across Focus 11 and Focus 20, with no session-return language.
-      Effects are experiential suggestions, not verified outcomes. Rights:
-      user_cleared per user's lawyer-clearance attestation. Finished-session release remains pending. Frozen pilot
-      resources and editorial decisions remain unchanged.
     cue_template:
       function_id: OCF-SLP-005
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, you have the ability
       to enter natural, restful sleep wherever you choose,
@@ -113,24 +124,13 @@ entries:
       Each use of {{ cue.primary }} will make it easier
       to fall asleep, remain asleep, and settle again
       amid the ordinary changes around you.
-
   hplus.function.ocf-slp-005.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-authored concise closer based on user-proposed reconstruction;
-      input Sleep Easy/Sleep_Easy_reconstructed_clean.txt;
-      SHA-256 3ba4db73fb7a6c35631d6bec1f23599c40e5e77d33975a533a87cc465ee03309;
-      proposed lines 327–341. Historical source unavailable and unverified.
-      One purpose reminder, original close-eyes-inhale-hold-Plus Quiet Sleep-
-      exhale-normal-breathing sequence, and standard OCF closing. Canonical
-      Plus Sleep Easy registry name is not silently substituted for the spoken
-      cue. Rights: user_cleared per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
-      Frozen pilot resources remain unchanged.
     cue_template:
       function_id: OCF-SLP-005
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, when you wish to sleep in unfamiliar
       or distracting surroundings, make yourself comfortable,

@@ -1,71 +1,62 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-FND-006", "title": "Release", "locale": "en-US"}
-# English authority: functions/foundation/release.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-FND-006-PRIMARY", "role": "activation", "display": "PLUS-RELEASE", "spoken": "Plus Release", "locale_definition": null}
-# END GENERATED CUE PREVIEW
-# OCF-FND-006 — Release
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered historical transcript.
-# Review note: Historical source remains unavailable; reimplementation remains planned.
-# Review note: Proposed input: Release/Release_881002_reconstructed_clean.txt
-# SHA-256: 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf
-# Review note: Proposed header: RELEASE (881002) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT.
-# Review note: Identity checked against document title and legacy commands;
-# authenticity claims and proposed timings are not independently verified.
-# Review note: Shared preparation, state, return, production directions,
-# and non-narration material remain excluded.
-# Review note: The exact Plus Release command is preserved.
-# Review note: Release ends selected temporary applications or active groupings;
-# it does not erase learned abilities or disable lasting baseline functions.
-# Review note: Function-specific close/cancel instructions remain distinct.
-# Review note: One concise function body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-FND-006
+title:
+  text: Release
+  status: canonical
+  version: 1.0.0
+description:
+  text: Releases unhelpful states, prompts, or lingering experiences.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-FND-006-PRIMARY
+  display_cue:
+    text: PLUS-RELEASE
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Release
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-fnd-006.opener:
     status: reviewed
     version: 1.1.0
-    notes: >-
-      OCF-adapted opener based on user-proposed Release reconstruction.
-      Proposed input: Release/Release_881002_reconstructed_clean.txt;
-      SHA-256 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf;
-      original input line 39. Historical source unavailable; this is
-      an OCF adaptation rather than a recovered transcript. The purpose
-      clarifies temporary application release without loss of learning.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to release
       the present application of a function when
       its purpose is complete, while preserving
       your ability to use it again whenever you choose.
-
   hplus.function.ocf-fnd-006.function-body:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted body based on user-proposed Release reconstruction.
-      Proposed input: Release/Release_881002_reconstructed_clean.txt;
-      SHA-256 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf;
-      original input lines 138–185. Original reconstruction unchanged;
-      historical source remains unavailable. Preserves conscious selection,
-      the exact Plus Release command, inhale-hold-command-exhale sequence,
-      cessation of the selected temporary application, smooth return to
-      normal balance, and the ability to release a clearly selected grouping.
-      Establishes lasting availability of release without erasing learned
-      abilities or disabling continuing baseline maintenance benefits.
-      Does not override distinct commands such as Plus Cancel or the
-      separate Plus Release Eleven Access channel instruction.
-      Duplicate activation statements removed. One reusable body supports
-      four playback passes across Focus 11 and Focus 20.
-      Effects described are intended exercise suggestions.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-FND-006", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-FND-006
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, you have the ability
       to release any temporary OCF function
@@ -117,17 +108,10 @@ entries:
   hplus.function.ocf-fnd-006.closer:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted closer based on user-proposed Release reconstruction.
-      Proposed input: Release/Release_881002_reconstructed_clean.txt;
-      SHA-256 9ed934ca3624cf5474757154f9342a761753604794a52a50e880b9c6a3b125bf;
-      original input lines 306–320. Historical source remains unavailable.
-      Closer reduced to one purpose reminder, the exact Plus Release command,
-      original breathing sequence, and standard OCF ending. The learned
-      ability and separate function-specific release commands remain intact.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-FND-006", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-FND-006
+      allowed:
+      - cue.primary
     text: |-
       Remember, when a temporary OCF function
       is no longer needed, bring that function

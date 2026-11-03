@@ -132,6 +132,22 @@ def test_locale_catalog_projects_canonical_references_and_loads_narration_by_key
     assert not validation.errors and not validation.warnings
 
 
+def test_canonical_reference_preserves_explicit_resource_version():
+    command = function_record().command_records[0]
+    for field_name in ("title", "description", "primary-command", "spoken-command"):
+        _, _, version = LocaleCatalog._localized_value(
+            {
+                "source": "function-yaml",
+                "field": field_name,
+                "command_id": COMMAND_ID,
+                "version": "1.0.0",
+            },
+            function_record(),
+            command,
+        )
+        assert version == "1.0.0"
+
+
 def test_function_filename_compatibility_uses_stable_id_not_title(tmp_path):
     root = tmp_path / "locales"
     write_pack(root, function_resource())
@@ -139,6 +155,33 @@ def test_function_filename_compatibility_uses_stable_id_not_title(tmp_path):
     data, _ = catalog.localized_function(FUNCTION_ID, "en-US")
     assert data["function_id"] == FUNCTION_ID
     assert "Empathize" not in catalog.packs["en-US"].localized_functions.keys()
+
+
+def test_repository_empathize_resource_uses_stable_filename_and_preserves_cues():
+    catalog = LocaleCatalog(REPO_ROOT / "locales")
+    assert catalog.problems == []
+    assert catalog.packs["en-US"].localized_function_files[FUNCTION_ID] == (
+        "OCF-EMO-003-Empathize.yaml"
+    )
+    assert "hplus-OCF-EMO-003.yaml" not in {
+        resource["file"] for resource in catalog.packs["en-US"].manifest["resources"]
+    }
+    assert (
+        catalog.resource(
+            f"commands.{COMMAND_ID.lower()}.display-cue",
+            "en-US",
+            domain="ui",
+            fallback=False,
+        )[0].text
+        == "PLUS-EMPATHIZE"
+    )
+    spoken = catalog.resource(
+        f"commands.{COMMAND_ID.lower()}.spoken-cue",
+        "en-US",
+        domain="narration",
+        fallback=False,
+    )[0]
+    assert spoken.text == "Plus Empathize" and spoken.status == "reviewed"
 
 
 def test_noncanonical_locale_root_loads_its_sibling_function_registry(tmp_path):

@@ -1,83 +1,85 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-COG-003", "title": "Contemplation", "locale": "en-US"}
-# English authority: functions/cognition/contemplation.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-COG-003-PRIMARY", "role": "activation", "display": "PLUS-OPEN", "spoken": "Plus Open", "locale_definition": null}
-# {"symbol": "cue.id.OCF-CMD-COG-003-CLOSED", "command": "OCF-CMD-COG-003-CLOSED", "role": "close", "display": "PLUS-CLOSED", "spoken": "Plus Closed", "locale_definition": null}
-# END GENERATED CUE PREVIEW
-# OCF-COG-003 — Contemplation
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: The original source repetition remains excluded.
-# Review note: The function concerns communion with the total self,
-# including conscious, subconscious, and higher aspects of awareness.
-# Review note: Both function commands are preserved:
-# Plus Open and Plus Closed.
-# Review note: Plus Closed ends the contemplation state;
-# shared Focus-state return procedures remain separate.
-# Review note: OCF adaptation establishes permanently available,
-# consciously controlled access to deeper self-communication.
-# Review note: One concise function body supports four-pass playback.
-# Review note: Closer follows the standardized OCF reminder format.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-COG-003
+title:
+  text: Contemplation
+  status: canonical
+  version: 1.0.0
+description:
+  text: Opens an internal space for quiet reflection; closes it again on completion.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-COG-003-PRIMARY
+  display_cue:
+    text: PLUS-OPEN
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Open
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-COG-003-CLOSED
+  display_cue:
+    text: PLUS-CLOSED
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Closed
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Close command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This command closes the current function state.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use to close the current function state; session return remains separate.
+    status: canonical
+    version: 1.0.0
+  role: close
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-cog-003.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the unverified
-      Contemplation transcript. Original SOURCE
-      +Transcripts From available tapes/Contemplation/Contemplation.txt;
-      SHA-256 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d;
-      lines 1–2, ending before shared preparation.
-      Original reference remains unchanged.
-      H-plus terminology changed to OCF.
-      Previously approved wording has been expanded to clarify
-      communion with the total self, including conscious,
-      subconscious, and higher aspects of awareness.
-      This is adapted narration, not a verbatim transcription.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to commune with
       your total self, opening communication between
       your conscious mind, your subconscious mind,
       your higher self, and the greater whole of your being.
-
   hplus.function.ocf-cog-003.function-body:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the unverified
-      Contemplation transcript. Original SOURCE
-      +Transcripts From available tapes/Contemplation/Contemplation.txt;
-      SHA-256 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d;
-      lines 31–54. Original reference remains unchanged.
-      The previously approved body has been revised to clarify
-      communication with the total self, including conscious,
-      subconscious, and higher aspects of awareness.
-      Suggestions concerning greater-self communication,
-      personal memory, understanding, serenity, and conscious
-      awareness remain central to the function.
-      OCF-authored additions establish lasting availability
-      of deeper self-communication, with consciously controlled
-      activation and release.
-      The exact Plus Open and Plus Closed commands are preserved.
-      Plus Closed ends the present contemplation state and does
-      not replace the shared OCF Focus-state return sequence.
-      The duplicate historical instruction pass remains excluded.
-      One reusable body supports repeated playback across
-      Focus 11 and Focus 20.
-      Shared preparation, state, and return wording excluded.
-      Affirmative suggestions express the intended contemplative
-      experience without asserting independently verified
-      metaphysical mechanisms.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-COG-003", "allowed": ["cue.id.OCF-CMD-COG-003-CLOSED", "cue.primary"]}
+    cue_template:
+      function_id: OCF-COG-003
+      allowed:
+      - cue.id.OCF-CMD-COG-003-CLOSED
+      - cue.primary
     text: |-
       From this moment forward, you have the ability
       to commune with your total self whenever you desire.
@@ -158,27 +160,11 @@ entries:
   hplus.function.ocf-cog-003.closer:
     status: reviewed
     version: 1.3.0
-    notes: >-
-      OCF-authored closer adapted from the previously approved
-      Contemplation function reminder.
-      Original SOURCE +Transcripts From available
-      tapes/Contemplation/Contemplation.txt;
-      SHA-256 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d.
-      The historical line stating that the listener will
-      be called when it is time to return is a session
-      handoff and remains separate from this closer.
-      The closer has been shortened to one purpose reminder,
-      the exact Plus Open and Plus Closed commands,
-      the activation sequence, and the standard OCF ending.
-      Plus Closed is identified as the function-specific
-      release command, not a substitute for the shared
-      Focus-state return sequence.
-      Additional reinforcement remains in the body.
-      This is OCF-authored wording, not a recovered
-      historical transcript excerpt.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-COG-003", "allowed": ["cue.id.OCF-CMD-COG-003-CLOSED", "cue.primary"]}
+    cue_template:
+      function_id: OCF-COG-003
+      allowed:
+      - cue.id.OCF-CMD-COG-003-CLOSED
+      - cue.primary
     text: |-
       Remember, whenever you wish to commune
       with your total self, close your eyes,

@@ -42,7 +42,15 @@ def narration_texts(root: Path = REPO_ROOT) -> dict[str, str]:
         raise ValueError(f"expected 55 function resources, found {len(function_files)}")
 
     paths = function_files + [locale_root / name for name in SHARED_RESOURCES]
-    manifest = yaml.safe_load((locale_root / "manifest.yaml").read_text(encoding="utf-8"))
+    from ocf_tools.locale_history import predecessor as before_localized_resources
+
+    manifest = yaml.safe_load(
+        before_localized_resources(
+            root,
+            "locales/en-US/manifest.yaml",
+            (locale_root / "manifest.yaml").read_text(encoding="utf-8"),
+        )
+    )
     declared_resources = {
         str(resource.get("file")): str(resource.get("domain"))
         for resource in manifest.get("resources", [])

@@ -1,92 +1,81 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-COG-005", "title": "Options", "locale": "en-US"}
-# English authority: functions/cognition/options.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-COG-005-PRIMARY", "role": "activation", "display": "PLUS-OPTIONS", "spoken": "Plus Options", "locale_definition": "commands.ocf-cmd-cog-005-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-COG-005 — Options
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: partial_transcript; authentication remains unverified.
-# Missing opener: The historical source begins with music and
-# shared preparation; its purpose statement at line 46 remains
-# part of the function body.
-# Missing closer: The historical source ends in ellipsis runs
-# without a recoverable function-specific closer.
-# Review note: The opener and closer are OCF-authored adaptations.
-# Review note: The Plus Options Choices command is preserved.
-# Review note: The function explores possibilities, probabilities,
-# potential outcomes, and information accessible through
-# the listener's total self and greater consciousness.
-# Review note: The listener retains conscious freedom of choice.
-# Review note: The ability remains permanently available,
-# with conscious activation whenever desired.
-# Review note: One concise function body supports four-pass playback.
-# Review note: Closer follows the standardized OCF reminder format.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-COG-005
+title:
+  text: Options
+  status: canonical
+  version: 1.0.0
+description:
+  text: Opens perception of choices and alternatives.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-COG-005-PRIMARY
+  display_cue:
+    text: PLUS-OPTIONS
+    status: reviewed
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Options
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-COG-005-LEGACY-01
+  display_cue:
+    text: PLUS-OPTIONS, CHOICES
+    status: canonical
+    version: 1.0.0
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-cog-005.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-authored opener adapted from the previously approved
-      Options function introduction. The partial historical
-      transcript contains no distinct function-specific opener.
-      The source purpose statement at line 46 remains assigned
-      to the body. Wording has been expanded to emphasize
-      conscious exploration of choices, possibilities,
-      probabilities, and potential outcomes through
-      the listener's greater awareness.
-      This is OCF-authored narration, not historical wording.
-      Historical source remains partial_transcript and unverified.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to explore
       the choices and possibilities available to you,
       drawing upon your greater consciousness
       to understand potential outcomes
       and discover new directions in your life.
-
   hplus.function.ocf-cog-005.function-body:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the partial, unverified
-      Options transcript. Original SOURCE +Transcripts From
-      available tapes/Options/Options.txt;
-      SHA-256 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195;
-      lines 38–56. Original reference remains unchanged.
-      The purpose statement at line 46 remains in the
-      original body source range.
-      Previously approved wording has been reorganized into
-      conscious intention, total-self awareness, exploration
-      of possibilities and probabilities, perception of
-      potential outcomes, freedom of choice, activation,
-      and reinforcement. The exact Plus Options Choices
-      command and original breathing sequence are preserved.
-      OCF-authored suggestions reinforce access to the
-      listener's greater self, including insights beyond
-      ordinary waking awareness and personal experience.
-      Possibilities and probabilities are presented as
-      potential pathways rather than a fixed future.
-      The listener retains conscious freedom to evaluate,
-      select, and act upon the information received.
-      The ability is established as permanently available,
-      with conscious activation whenever desired.
-      One reusable body supports repeated playback
-      across Focus 11 and Focus 20.
-      Shared preparation, state, and return wording excluded.
-      Affirmative suggestions express the intended
-      contemplative experience and are not independently
-      verified predictions of future events.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-COG-005
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, you have the ability
       to explore the possibilities and choices
@@ -170,30 +159,13 @@ entries:
       Your greater awareness is always available,
       ready to help you explore the possibilities
       and choices before you.
-
   hplus.function.ocf-cog-005.closer:
     status: reviewed
     version: 1.3.0
-    notes: >-
-      OCF-authored closer adapted from the previously approved
-      Options function reminder. The partial historical transcript
-      provides no recoverable function-specific closer.
-      Original SOURCE +Transcripts From available
-      tapes/Options/Options.txt;
-      SHA-256 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195.
-      The closer has been shortened to one purpose reminder,
-      the exact Plus Options Choices activation command,
-      the original attention and breathing sequence,
-      and the standard OCF ending.
-      The instruction to keep the eyes closed after
-      activation remains preserved.
-      Additional reinforcement remains in the function body.
-      This is OCF-authored wording, not historical transcript text.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-COG-005
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to explore
       the choices and possibilities available to you,

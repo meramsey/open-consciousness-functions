@@ -12,6 +12,7 @@ loading the entire documentation tree:
 - Review functional purpose, persistence and triggers: [functional metadata](FUNCTIONAL_METADATA.md).
 - Author symbolic narration and preview resolved speech: [strict cue references](SYMBOLIC_CUES.md).
 - Translate: [localization](LOCALIZATION.md) and [locale packs](../locales/README.md).
+- Migrate localized metadata: [staged authority migration](LOCALIZED_AUTHORITY.md).
 - Plan and audition: [bulk sessions](BULK_SESSIONS.md), then
   [audio pipeline](AUDIO_PIPELINE.md).
 - Build private reference-V4 listening editions: [private workflow](PRIVATE_REFERENCE_V4.md).

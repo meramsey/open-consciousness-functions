@@ -607,6 +607,8 @@ def test_pseudo_locale_serialization_uses_pack_metadata_not_engine_calls(
     pack = NS(
         locale="en-XA",
         manifest={"locale": "en-XA"},
+        localized_functions={},
+        localized_function_files={},
         entries={
             "narration.fixture": entry("narration.yaml", "narration", "Café"),
             "ui.fixture": entry("ui.yaml", "ui", "Label"),

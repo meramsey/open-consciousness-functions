@@ -1,78 +1,84 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-SEN-001", "title": "Hearing", "locale": "en-US"}
-# English authority: functions/sensory/hearing.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-SEN-001-PRIMARY", "role": "activation", "display": "PLUS-HEAR MORE", "spoken": "Plus Hear More", "locale_definition": "commands.ocf-cmd-sen-001-primary.spoken-cue"}
-# {"symbol": "cue.id.OCF-CMD-SEN-001-HEAR-LESS", "command": "OCF-CMD-SEN-001-HEAR-LESS", "role": "decrease", "display": "PLUS-HEAR LESS", "spoken": "Plus Hear Less", "locale_definition": null}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-
-# OCF-SEN-001 — Sensory: Hearing
-# English function-specific OCF-adapted narration; wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Original SOURCE: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
-# SHA-256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
-# Source ranges: opener line 1; body lines 36–47; closer lines 168–173.
-# Review note: All commands use 'hear', not the erroneous 'here'.
-# Review note: Plus Hear More and Plus Hear Less remain separate canonical cues.
-# Review note: Close eyes, inhale, hold, command, exhale, open eyes preserved.
-# Review note: No historical command for returning to normal hearing is established;
-# none is invented in this adaptation.
-# Review note: Permanent auditory imagery is a user-directed OCF enhancement,
-# not recovered historical transcript wording.
-# Review note: Physical sound adjustments are consciously selected, while inner
-# auditory imagery becomes an increasingly available baseline capability.
-# Review note: Subjective hearing changes are exercise suggestions, not verified
-# changes to hearing acuity or physical protection from sound exposure.
-# Review note: Shared session speech excluded; one body supports four passes.
-# Review note: Frozen Hearing pilot resources are not modified by this draft.
 schema_version: '1.0'
 locale: en-US
 domain: narration
+function_id: OCF-SEN-001
+title:
+  text: Hearing
+  status: canonical
+  version: 1.0.0
+description:
+  text: Adjusts inward listening and perception in either direction using the MORE/LESS grammar.
+  status: canonical
+  version: 1.0.0
+activation:
+  command_id: OCF-CMD-SEN-001-PRIMARY
+  display_cue:
+    text: PLUS-HEAR MORE
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Hear More
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-SEN-001-HEAR-LESS
+  display_cue:
+    text: PLUS-HEAR LESS
+    status: canonical
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Hear Less
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Decrease mode
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This command selects the decrease mode.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use when you choose to decrease the selected function response.
+    status: canonical
+    version: 1.0.0
+  role: decrease
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-sen-001.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF adaptation of the unverified Sensory (Hearing) transcript;
-      SOURCE +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt;
-      SHA-256 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e;
-      source line 1. Original source unchanged. User-directed addition establishes
-      lasting inner auditory imagery alongside voluntary regulation of physical
-      sound perception; this addition is not historical transcript wording.
-      Rights: user_cleared per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
-      Frozen Hearing pilot resources remain separate and unchanged.
     text: |-
       This OCF exercise will teach you to regulate
       your sense of hearing and strengthen your ability
       to remember, imagine, and experience sounds within your mind.
-
   hplus.function.ocf-sen-001.function-body:
     status: reviewed
     version: 1.3.0
-    notes: >-
-      OCF adaptation of the unverified Sensory (Hearing) transcript;
-      SOURCE +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt;
-      SHA-256 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e;
-      source lines 36–47. Original source unchanged. Preserves corrected
-      'hear' spelling, canonical Plus Hear More and Plus Hear Less commands,
-      closing the eyes, inhaling, holding, choosing a command, exhaling through
-      the mouth, and opening the eyes. Retains enhanced perception of faint,
-      high, and low sounds and reduced prominence of distracting sound, with
-      conscious choice to change or return to usual hearing. Adds user-directed
-      permanent inner auditory imagery: familiar and novel voices, music,
-      pitch, rhythm, timbre, spatial position, and auditory memory. The same
-      existing commands can intensify or soften intended imagined sounds;
-      no additional command is invented. Imagined and externally heard sounds
-      remain distinguishable. The physical adjustment is selected, not a
-      continuous default; the auditory imagination is a lasting learned ability.
-      Effects are experiential suggestions, not verified physiological changes.
-      One reusable body supports four passes across Focus 11 and Focus 20.
-      Rights: user_cleared per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
-      Frozen Hearing pilot resources remain unchanged.
-    cue_template: {"function_id": "OCF-SEN-001", "allowed": ["cue.id.OCF-CMD-SEN-001-HEAR-LESS", "cue.primary"]}
+    cue_template:
+      function_id: OCF-SEN-001
+      allowed:
+      - cue.id.OCF-CMD-SEN-001-HEAR-LESS
+      - cue.primary
     text: |-
       From this moment forward, you have the ability
       to regulate your hearing and develop vivid,
@@ -123,18 +129,11 @@ entries:
   hplus.function.ocf-sen-001.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-authored concise closer adapted from the unverified Sensory (Hearing)
-      transcript; SOURCE +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt;
-      SHA-256 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e;
-      source lines 168–173. Includes the user-directed inner auditory imagery
-      enhancement, both exact commands, complete eye-and-breath sequence,
-      and standard OCF ending. No new reset command is introduced.
-      Rights: user_cleared per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
-      Frozen Hearing pilot resources remain unchanged.
     cue_template:
-      {"function_id": "OCF-SEN-001", "allowed": ["cue.id.OCF-CMD-SEN-001-HEAR-LESS", "cue.primary"]}
+      function_id: OCF-SEN-001
+      allowed:
+      - cue.id.OCF-CMD-SEN-001-HEAR-LESS
+      - cue.primary
     text: |-
       Remember, to regulate your hearing or strengthen
       your inner experience of sound, close your eyes,
