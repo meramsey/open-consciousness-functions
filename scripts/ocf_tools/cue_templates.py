@@ -130,6 +130,14 @@ def value(owner, symbol, locale, catalog, *, draft_review=False):
             )
         return entry.text, {"key": key, "locale": resolution.origin_locale, "function_id": owner.id}
     command = select_command(owner, symbol)
+    if (
+        draft_review
+        and command.data.get("spoken_review") == "reviewed"
+        and not command.data.get("spoken")
+    ):
+        raise CueTemplateError(
+            f"{command.id}: reviewed candidate cue requires explicit source wording"
+        )
     if draft_review and command.data.get("spoken_review") == "unresolved":
         return draft_cue(owner, command, locale, catalog)
     if ".variant." in symbol:

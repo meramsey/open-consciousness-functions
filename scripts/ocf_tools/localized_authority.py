@@ -8,12 +8,15 @@ from .locale import LocaleCatalog, LocalizationError
 
 
 def metadata(record, locale="en-US", *, catalog=None):
+    function_id = getattr(record, "id", None)
+    if function_id is None:
+        return None
     catalog = catalog or LocaleCatalog()
     resolver = getattr(catalog, "localized_function", None)
     if resolver is None:
         return None  # Legacy key-only catalog adapters remain supported.
     try:
-        data, resolution = resolver(record.id, locale, fallback=False)
+        data, resolution = resolver(function_id, locale, fallback=False)
     except LocalizationError:
         return None
     if not isinstance(data.get("title"), dict) or "text" not in data["title"]:
@@ -22,10 +25,10 @@ def metadata(record, locale="en-US", *, catalog=None):
 
 
 def title(record, locale="en-US", *, catalog=None):
-    catalog = catalog or LocaleCatalog()
-    key = record.documentation.get("title_key")
+    key = (getattr(record, "documentation", None) or {}).get("title_key")
     if not key:
         return record.canonical_name  # Unlocalized historical records only.
+    catalog = catalog or LocaleCatalog()
     if not hasattr(catalog, "resource"):
         return catalog.text(key, locale)
     entry, _ = catalog.resource(key, locale, domain="ui", fallback=True)
@@ -33,12 +36,11 @@ def title(record, locale="en-US", *, catalog=None):
 
 
 def description(record, locale="en-US", *, catalog=None):
-    catalog = catalog or LocaleCatalog()
-    key = record.documentation.get("short_description_key") or record.documentation.get(
-        "purpose_key"
-    )
+    documentation = getattr(record, "documentation", None) or {}
+    key = documentation.get("short_description_key") or documentation.get("purpose_key")
     if not key:
         return record.purpose_summary
+    catalog = catalog or LocaleCatalog()
     if not hasattr(catalog, "resource"):
         return catalog.text(key, locale)
     entry, _ = catalog.resource(key, locale, domain="ui", fallback=True)
@@ -48,6 +50,8 @@ def description(record, locale="en-US", *, catalog=None):
 def display_command(record, locale="en-US", *, catalog=None):
     from .commands import cue_presentation
 
+    if not getattr(record, "command_records", []):
+        return record.canonical_command or ""
     cue = cue_presentation(record, locale, catalog=catalog)
     return cue["display_cue"] if cue else record.canonical_command or ""
 

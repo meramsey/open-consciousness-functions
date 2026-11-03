@@ -41,8 +41,19 @@ def test_artwork_cannot_override_or_ignore_function_cue_authority(monkeypatch):
     record = deepcopy(load_function_by_id("OCF-EXP-001"))
     record.data["canonical"]["command"]["primary"] = "PLUS-SYNTHETIC TEST"
     monkeypatch.setattr(artwork_content, "load_function_by_id", lambda _: record)
-    with pytest.raises(CommandMetadataError, match="conflicts with function YAML"):
-        artwork_content.function_artwork_content(record.id)
+    # The live localized YAML now owns the words; editing a former registry
+    # copy must not override it. An inconsistent alias is still rejected.
+    assert (
+        artwork_content.function_artwork_content(record.id)["primary"]["display_cue"]
+        == "PLUS-MANIFEST"
+    )
+    catalog = LocaleCatalog()
+    key = record.command_records[0].localization["display_cue_key"]
+    catalog.canonical.entries[key] = replace(catalog.canonical.entries[key], text="PLUS-SHADOW")
+    with pytest.raises(
+        CommandMetadataError, match="conflicts with authoritative localized function YAML"
+    ):
+        artwork_content.function_artwork_content(record.id, catalog=catalog)
 
 
 def localized_fixture():
