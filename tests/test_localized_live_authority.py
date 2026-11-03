@@ -125,6 +125,22 @@ def test_yaml_title_and_description_propagate_across_reader_outputs(
         == record.id
     )
     assert record.canonical_name != "Distinctive fixture title"
+    from dataclasses import replace
+
+    from ocf_tools import validators
+
+    monkeypatch.setattr(validators, "LocaleCatalog", lambda: changed)
+    checked = validators.validate_command_metadata(records)
+    assert not [issue for issue in checked.issues if issue.code == "function-source-authority"]
+    key = record.documentation["title_key"]
+    changed.require("en-US").entries[key] = replace(
+        changed.require("en-US").entries[key], text="Shadowing alias"
+    )
+    checked = validators.validate_command_metadata(records)
+    assert any(
+        issue.code == "function-source-authority" and issue.target == record.id
+        for issue in checked.issues
+    )
 
 
 @pytest.mark.integration

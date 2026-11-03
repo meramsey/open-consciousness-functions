@@ -370,10 +370,26 @@ def validate_command_metadata(records: list[FunctionRecord]) -> ValidationResult
 
     seen_ids: dict[str, str] = {}
     for record in records:
+        from .localized_authority import metadata as localized_metadata
+
+        literal_metadata = localized_metadata(record, "en-US", catalog=locale_catalog)
         for source_field, expected in (
-            ("title_key", record.canonical_name),
-            ("purpose_key", record.purpose_summary),
-            ("short_description_key", record.purpose_summary),
+            (
+                "title_key",
+                literal_metadata["title"]["text"] if literal_metadata else record.canonical_name,
+            ),
+            (
+                "purpose_key",
+                literal_metadata["description"]["text"]
+                if literal_metadata
+                else record.purpose_summary,
+            ),
+            (
+                "short_description_key",
+                literal_metadata["description"]["text"]
+                if literal_metadata
+                else record.purpose_summary,
+            ),
         ):
             key = record.documentation.get(source_field)
             entry = canonical_locale.get(key) if canonical_locale and key else None

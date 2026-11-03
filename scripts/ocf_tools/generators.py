@@ -197,6 +197,10 @@ def localized_field_sources_json() -> str:
 
 
 def hplus_command_map_json() -> str:
+    from .locale import LocaleCatalog
+    from .localized_authority import display_command, title
+
+    catalog = LocaleCatalog()
     payload = {"source_system": "Monroe H-PLUS", "count": 0, "mappings": []}
     for record in load_all_functions():
         if record.data.get("legacy", {}).get("source_system") != "Monroe H-PLUS":
@@ -205,8 +209,8 @@ def hplus_command_map_json() -> str:
             "legacy_name": record.legacy_name,
             "legacy_commands": record.legacy_commands,
             "ocf_id": record.id,
-            "canonical_name": record.canonical_name,
-            "canonical_commands": [record.canonical_command or ""] + record.command_modes,
+            "canonical_name": title(record, catalog=catalog),
+            "canonical_commands": [display_command(record, catalog=catalog)] + record.command_modes,
             "command_status": record.command_status,
             "command_review": record.command_review,
             "compatibility": record.compatibility,
@@ -221,6 +225,10 @@ def hplus_command_map_json() -> str:
 
 
 def hplus_command_map_csv() -> str:
+    from .locale import LocaleCatalog
+    from .localized_authority import display_command
+
+    catalog = LocaleCatalog()
     headers = [
         "legacy_name",
         "legacy_command",
@@ -243,7 +251,7 @@ def hplus_command_map_csv() -> str:
                 "legacy_name": record.legacy_name,
                 "legacy_command": " / ".join(record.legacy_commands),
                 "ocf_id": record.id,
-                "canonical_command": record.canonical_command or "",
+                "canonical_command": display_command(record, catalog=catalog),
                 "command_status": record.command_status,
                 "command_review": record.command_review,
                 "compatibility": record.compatibility,
@@ -255,6 +263,10 @@ def hplus_command_map_csv() -> str:
 
 
 def command_review_markdown() -> str:
+    from .locale import LocaleCatalog
+    from .localized_authority import display_command
+
+    catalog = LocaleCatalog()
     records = load_all_functions()
     unchanged = sorted([r for r in records if r.command_status == "unchanged"], key=lambda r: r.id)
     normalized = sorted(
@@ -273,7 +285,7 @@ def command_review_markdown() -> str:
                     f"`{record.id}`",
                     record.legacy_name,
                     " / ".join(f"`{c}`" for c in record.legacy_commands),
-                    f"`{record.canonical_command or ''}`",
+                    f"`{display_command(record, catalog=catalog)}`",
                     " / ".join(f"`{m}`" for m in record.command_modes),
                     record.command_review,
                     record.compatibility,
@@ -371,6 +383,10 @@ def availability_matrix_markdown() -> str:
 
 
 def reimplementation_roadmap_markdown() -> str:
+    from .locale import LocaleCatalog
+    from .localized_authority import title
+
+    catalog = LocaleCatalog()
     planned = sorted(
         [r for r in load_all_functions() if r.reimplementation_status == "planned"],
         key=lambda r: r.id,
@@ -380,7 +396,7 @@ def reimplementation_roadmap_markdown() -> str:
         rows.append(
             [
                 f"`{record.id}`",
-                record.canonical_name,
+                title(record, catalog=catalog),
                 record.legacy_name,
                 record.source_availability,
                 "available" if record.source_availability == "available" else "proposal pathway",

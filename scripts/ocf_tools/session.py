@@ -855,6 +855,8 @@ def compose(
     if doc.get("function_id"):
         from .indexes import load_all_functions
         from .locale import LocaleCatalog, iter_events
+        from .localized_authority import metadata as localized_metadata
+        from .localized_authority import title as localized_title
 
         owner = next(
             (record for record in load_all_functions() if record.id == doc["function_id"]), None
@@ -864,9 +866,12 @@ def compose(
         catalog = LocaleCatalog()
         from .commands import cue_presentation
 
-        opted_in = any(
-            command.designation == "primary" and command.localization.get("spoken_cue_key")
-            for command in getattr(owner, "command_records", [])
+        opted_in = (
+            any(
+                command.designation == "primary" and command.localization.get("spoken_cue_key")
+                for command in getattr(owner, "command_records", [])
+            )
+            or localized_metadata(owner, catalog=catalog) is not None
         )
         cue = (
             cue_presentation(owner, catalog.canonical_locale, catalog=catalog, strict=True)
@@ -880,7 +885,7 @@ def compose(
                     "command": cue["spoken_cue"]
                     if cue and cue["binding_status"] == "resolved"
                     else owner.canonical_command,
-                    "function_name": owner.canonical_name,
+                    "function_name": localized_title(owner, catalog=catalog),
                 }
                 values = event.setdefault("variables", {})
                 for name in entry.variables:
