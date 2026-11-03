@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-FND-002
 title:
   text: Focus
@@ -10,6 +10,7 @@ description:
   text: Directs and sustains focused attention.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-FND-002-PRIMARY
   display_cue:
@@ -38,6 +39,7 @@ common_uses: []
 relationships:
   related_functions:
   - function_id: OCF-COG-007
+    description_key: relationships.rel-fnd002-cog007.description
     description:
       text: Compare directed-attention practice with thinking-oriented practice. Choose either independently;
         neither is required to activate or benefit from the other. The Focus function is not a Focus 10/11

@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-SLP-005
 title:
   text: Sleep Easy
@@ -11,12 +11,11 @@ description:
     surroundings.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-SLP-005-PRIMARY
   display_cue:
     text: PLUS-SLEEP EASY
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Sleep Easy
     status: reviewed
@@ -37,8 +36,6 @@ secondary_commands:
 - command_id: OCF-CMD-SLP-005-LEGACY-01
   display_cue:
     text: PLUS-QUIET, SLEEP
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical
@@ -57,6 +54,7 @@ common_uses: []
 relationships:
   related_functions:
   - function_id: OCF-SLP-001
+    description_key: relationships.rel-slp005-slp001.description
     description:
       text: Compare sleep support for unfamiliar or distracting surroundings with an exercise oriented
         toward restorative rest. Choose independently; this link does not prescribe combining or stacking

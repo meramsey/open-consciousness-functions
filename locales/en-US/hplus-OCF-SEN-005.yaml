@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-SEN-005
 title:
   text: Touch
@@ -10,12 +10,11 @@ description:
   text: Adjusts the felt sense of touch or skin sensation using the MORE/LESS grammar.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-SEN-005-PRIMARY
   display_cue:
     text: PLUS-TOUCH MORE
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Touch More
     status: reviewed
@@ -36,12 +35,9 @@ secondary_commands:
 - command_id: OCF-CMD-SEN-005-TOUCH-LESS
   display_cue:
     text: PLUS-TOUCH LESS
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Touch Less
     status: reviewed
-    version: 1.0.0
   label:
     text: Decrease mode
     status: canonical
@@ -58,8 +54,6 @@ secondary_commands:
 - command_id: OCF-CMD-SEN-005-LEGACY-01
   display_cue:
     text: PLUS-TOUCH GREATER
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical
@@ -76,8 +70,6 @@ secondary_commands:
 - command_id: OCF-CMD-SEN-005-LEGACY-02
   display_cue:
     text: PLUS-TOUCH LESSER
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical

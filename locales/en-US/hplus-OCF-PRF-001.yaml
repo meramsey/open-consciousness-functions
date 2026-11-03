@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-PRF-001
 title:
   text: Do This Now
@@ -10,16 +10,14 @@ description:
   text: Moves from deliberation into immediate, present action.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-PRF-001-PRIMARY
   display_cue:
     text: PLUS-DO-THIS-NOW
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Do This Now
     status: reviewed
-    version: 1.0.0
   label:
     text: Primary activation command
     status: canonical

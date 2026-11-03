@@ -1104,11 +1104,15 @@ def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationRes
                         "localized function ID/locale does not match a registered function and locale",
                         f"{target}/{filename}",
                     )
-                if not filename.startswith(str(data.get("function_id", "")) + "-"):
+                identity = str(data.get("function_id", ""))
+                if not (
+                    filename.startswith(identity + "-")
+                    or filename in {"hplus-" + identity + ".yaml", "original-" + identity + ".yaml"}
+                ):
                     result.add(
                         "error",
                         "localized-function-filename",
-                        "localized function filename must begin with its stable ID and readable title",
+                        "localized function filename must match its stable ID (legacy paths remain supported)",
                         f"{target}/{filename}",
                     )
                 localized_fields = [data.get("title"), data.get("description")]
@@ -1118,14 +1122,15 @@ def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationRes
                 )
                 if locale == CANONICAL_LOCALE:
                     invalid = any(
-                        not isinstance(value, dict) or value.get("source") != "function-yaml"
+                        not isinstance(value, dict)
+                        or not ("text" in value or value.get("source") == "function-yaml")
                         for value in localized_fields
                     )
                     if invalid:
                         result.add(
                             "error",
                             "canonical-localized-function-authority",
-                            "en-US title/description/cues must reference function YAML; do not create a second English authority",
+                            "en-US function metadata requires literal localized values or a historical registry reference",
                             f"{target}/{filename}",
                         )
                 elif any(

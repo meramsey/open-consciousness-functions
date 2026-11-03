@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-EXP-002
 title:
   text: Insulate
@@ -11,12 +11,11 @@ description:
     and Release places the selected application on hold.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-EXP-002-PRIMARY
   display_cue:
     text: PLUS-INSULATE
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Insulate
     status: reviewed
@@ -37,12 +36,9 @@ secondary_commands:
 - command_id: OCF-CMD-EXP-002-CANCEL
   display_cue:
     text: PLUS-CANCEL
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Cancel
     status: reviewed
-    version: 1.0.0
   label:
     text: Cancellation command
     status: canonical
@@ -59,8 +55,6 @@ secondary_commands:
 - command_id: OCF-CMD-EXP-002-LEGACY-01
   display_cue:
     text: PLUS-INSULATE, INSULATE
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical
@@ -77,12 +71,9 @@ secondary_commands:
 - command_id: OCF-CMD-EXP-002-RELEASE
   display_cue:
     text: Plus Release
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Release
     status: reviewed
-    version: 1.0.0
   label:
     text: Release command
     status: canonical

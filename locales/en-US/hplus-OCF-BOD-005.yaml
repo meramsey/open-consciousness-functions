@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-BOD-005
 title:
   text: Appetite Choice
@@ -11,6 +11,14 @@ description:
     of genuine nutritional needs.
   status: canonical
   version: 1.0.1
+metadata_entries:
+  functions.ocf-bod-005.lifecycle.scopes.capability.description:
+    text: The ability to recognize unnecessary cravings and choose deliberately remains available.
+  functions.ocf-bod-005.lifecycle.scopes.baseline.description:
+    text: Appetite awareness and deliberate eating choices persist while genuine nutritional needs and
+      freedom to eat remain intact.
+  functions.ocf-bod-005.lifecycle.scopes.application.description:
+    text: Conscious release of one selected unnecessary craving; not permanent hunger suppression.
 activation:
   command_id: OCF-CMD-BOD-005-PRIMARY
   display_cue:

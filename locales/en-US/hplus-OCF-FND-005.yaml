@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-FND-005
 title:
   text: Reset
@@ -11,12 +11,11 @@ description:
     renewed wakefulness, energy, clarity, and confidence.
   status: canonical
   version: 1.0.1
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-FND-005-PRIMARY
   display_cue:
     text: PLUS-RESET
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Reset
     status: reviewed
@@ -37,8 +36,6 @@ secondary_commands:
 - command_id: OCF-CMD-FND-005-LEGACY-01
   display_cue:
     text: PLUS-RESET, RESET
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical

@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-SEN-002
 title:
   text: Seeing
@@ -11,12 +11,11 @@ description:
     and deliberate creation and manipulation of mental images.
   status: canonical
   version: 1.0.1
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-SEN-002-PRIMARY
   display_cue:
     text: PLUS-SEE BETTER
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus See Better
     status: reviewed
@@ -37,8 +36,6 @@ secondary_commands:
 - command_id: OCF-CMD-SEN-002-LEGACY-01
   display_cue:
     text: PLUS-SEE BETTER
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical

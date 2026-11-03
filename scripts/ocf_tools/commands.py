@@ -22,6 +22,9 @@ def localized_cue(owner, command, locale="en-US", *, catalog=None, strict=False)
     from .locale import LocaleCatalog, LocalizationError, normalize_tag
 
     catalog = catalog or LocaleCatalog()
+    from .localized_authority import metadata as localized_metadata
+
+    localized_owner = localized_metadata(owner, locale, catalog=catalog)
     target = normalize_tag(locale) or catalog.canonical_locale
     bindings = command.localization
     source_spoken = command.data.get("spoken")
@@ -45,7 +48,11 @@ def localized_cue(owner, command, locale="en-US", *, catalog=None, strict=False)
             raise CommandMetadataError(
                 f"{command.id}: display cue must be literal, not a nested template"
             )
-        if resolution.origin_locale == "en-US" and entry.text != resolve_phrase(owner, command):
+        if (
+            localized_owner is None
+            and resolution.origin_locale == "en-US"
+            and entry.text != resolve_phrase(owner, command)
+        ):
             raise CommandMetadataError(
                 f"{owner.id}/{command.id}: en-US display cue conflicts with function YAML"
             )
@@ -79,8 +86,10 @@ def localized_cue(owner, command, locale="en-US", *, catalog=None, strict=False)
             "binding_status": "requires-locale-review",
         }
     if (
-        "spoken" in command.data or "spoken_review" in command.data
-    ) and resolution.origin_locale == "en-US":
+        ("spoken" in command.data or "spoken_review" in command.data)
+        and resolution.origin_locale == "en-US"
+        and localized_owner is None
+    ):
         if (
             not source_spoken
             or entry.text != source_spoken
@@ -233,6 +242,7 @@ def command_view(
         result["resolved_procedure_steps"] = resolve_procedure(command, load_procedure_catalog())
     if locale is not None:
         result["cue_presentation"] = localized_cue(owner, command, locale, catalog=catalog)
+        result["phrase"] = result["cue_presentation"]["display_cue"]
     return result
 
 

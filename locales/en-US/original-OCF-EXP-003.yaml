@@ -1,45 +1,50 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-EXP-003
 title:
   text: Dissolve
   status: reviewed
-  version: 1.0.0
 description:
   text: Consciously dissolve a selected unwanted belief, expectation, emotional response or recurring
     life pattern while preserving useful learning.
   status: reviewed
-  version: 1.0.0
+metadata_entries:
+  functions.ocf-exp-003.capability:
+    text: The learned ability is intended to remain available for deliberate use.
+    status: reviewed
+  functions.ocf-exp-003.application:
+    text: Each activation selects one unwanted belief, expectation, emotional response or recurring pattern;
+      useful learning remains.
+    status: reviewed
+  functions.ocf-exp-003.artwork-description:
+    text: Release unwanted beliefs and recurring patterns
+    status: reviewed
+    version: 1.1.0
 activation:
   command_id: OCF-CMD-EXP-003-PRIMARY
   display_cue:
     text: PLUS-DISSOLVE
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Dissolve
     status: reviewed
-    version: 1.0.0
   label:
     text: Primary
     status: reviewed
-    version: 1.0.0
   explanation:
     text: Consciously dissolve a selected unwanted belief, expectation, emotional response or recurring
       life pattern while preserving useful learning.
     status: reviewed
-    version: 1.0.0
   usage:
     text: Deliberately follow the ordered procedure; proposed exercise instructions, not software execution.
     status: reviewed
-    version: 1.0.0
 secondary_commands: []
 tags: []
 common_uses: []
 relationships:
   related_functions:
   - function_id: OCF-EXP-006
+    description_key: relationships.rel-exp003-exp006.description
     description:
       text: Distinguish releasing a selected unwanted pattern from exploring intuitive understanding.
         Either exercise may be chosen independently; neither is a prerequisite for the other.

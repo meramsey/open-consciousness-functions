@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-EMG-001
 title:
   text: Injury Response
@@ -11,6 +11,14 @@ description:
     first aid, or professional care.
   status: canonical
   version: 1.0.0
+metadata_entries:
+  functions.ocf-emg-001.lifecycle.scopes.capability.description:
+    text: Narrated injury-response readiness remains available, including when conscious invocation is
+      unavailable.
+  functions.ocf-emg-001.lifecycle.scopes.application.description:
+    text: Optional manual reinforcement when conscious and able.
+  functions.ocf-emg-001.lifecycle.scopes.episode.description:
+    text: The narrated adaptive response lasts for the injury episode and adjusts as the injury stabilizes.
 activation:
   command_id: OCF-CMD-EMG-001-PRIMARY
   display_cue:

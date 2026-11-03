@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-LIF-001
 title:
   text: Habit Freedom
@@ -10,12 +10,19 @@ description:
   text: Supports stepping away from habitual, repeated behavior patterns.
   status: canonical
   version: 1.0.0
+metadata_entries:
+  functions.ocf-lif-001.lifecycle.scopes.capability.description:
+    text: The ability to change selected unwanted habits remains available.
+  functions.ocf-lif-001.lifecycle.scopes.baseline.description:
+    text: The intended change to the deliberately selected habit is lasting; useful memories, knowledge
+      and skills remain intact.
+  functions.ocf-lif-001.lifecycle.scopes.application.description:
+    text: One deliberate intervention when the selected habit arises; not continuous behavioral suppression
+      or cancellation of other functions.
 activation:
   command_id: OCF-CMD-LIF-001-PRIMARY
   display_cue:
     text: PLUS-FREE THIS HABIT
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Free This Habit
     status: reviewed

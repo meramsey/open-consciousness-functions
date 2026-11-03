@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-BOD-001
 title:
   text: Brain Flow
@@ -11,12 +11,11 @@ description:
     desired.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-BOD-001-PRIMARY
   display_cue:
     text: PLUS-BRAIN FLOW
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Brain Flow
     status: reviewed

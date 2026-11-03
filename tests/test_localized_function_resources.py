@@ -157,13 +157,14 @@ def test_function_filename_compatibility_uses_stable_id_not_title(tmp_path):
     assert "Empathize" not in catalog.packs["en-US"].localized_functions.keys()
 
 
-def test_repository_empathize_resource_uses_stable_filename_and_preserves_cues():
+def test_repository_catalog_uses_existing_paths_before_filename_stage_and_preserves_cues():
     catalog = LocaleCatalog(REPO_ROOT / "locales")
     assert catalog.problems == []
     assert catalog.packs["en-US"].localized_function_files[FUNCTION_ID] == (
-        "OCF-EMO-003-Empathize.yaml"
+        "hplus-OCF-EMO-003.yaml"
     )
-    assert "hplus-OCF-EMO-003.yaml" not in {
+    assert len(catalog.packs["en-US"].localized_functions) == 58
+    assert "OCF-EMO-003-Empathize.yaml" not in {
         resource["file"] for resource in catalog.packs["en-US"].manifest["resources"]
     }
     assert (

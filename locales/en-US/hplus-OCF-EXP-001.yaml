@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-EXP-001
 title:
   text: Manifest
@@ -11,12 +11,15 @@ description:
     alignment.
   status: canonical
   version: 1.0.0
+metadata_entries:
+  functions.ocf-exp-001.artwork-description:
+    text: Align your intention with the reality you choose
+    status: reviewed
+    version: 1.1.0
 activation:
   command_id: OCF-CMD-EXP-001-PRIMARY
   display_cue:
     text: PLUS-MANIFEST
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Manifest
     status: reviewed
@@ -37,8 +40,6 @@ secondary_commands:
 - command_id: OCF-CMD-EXP-001-LEGACY-01
   display_cue:
     text: PLUS-CHANGE, CHANGE
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical
@@ -57,12 +58,14 @@ common_uses: []
 relationships:
   related_functions:
   - function_id: OCF-EXP-003
+    description_key: relationships.rel-exp001-exp003.description
     description:
       text: Compare intention-setting with releasing a selected unwanted pattern. These remain independent
         exercises, not a required sequence.
       status: reviewed
       version: 0.0.1
   - function_id: OCF-EXP-006
+    description_key: relationships.rel-exp001-exp006.description
     description:
       text: Intuition offers a separately chosen exercise for exploring understanding alongside purposeful
         intention-setting. Intuitive impressions are not proof or instructions that must be followed.

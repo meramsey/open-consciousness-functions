@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-PRF-006
 title:
   text: Strong-Quick
@@ -10,16 +10,14 @@ description:
   text: Combines strength and quickness in a single felt state; activation cue PLUS-STRONG QUICK.
   status: reviewed
   version: 1.0.1
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-PRF-006-PRIMARY
   display_cue:
     text: PLUS-STRONG QUICK
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Strong Quick
     status: reviewed
-    version: 1.0.0
   label:
     text: Primary activation command
     status: canonical
@@ -36,8 +34,6 @@ secondary_commands:
 - command_id: OCF-CMD-PRF-006-LEGACY-01
   display_cue:
     text: PLUS-STRONG-QUICK
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical
@@ -54,12 +50,9 @@ secondary_commands:
 - command_id: OCF-CMD-PRF-006-RELEASE
   display_cue:
     text: Plus Release
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Release
     status: reviewed
-    version: 1.0.0
   label:
     text: Release command
     status: canonical

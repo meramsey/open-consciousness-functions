@@ -96,3 +96,30 @@ and all 175 narration entries with the current catalog. It also verifies title
 propagation to the command index without changing the global record. Existing
 cue versions are copied exactly; formerly unversioned resources do not acquire
 an invented `1.0.0` version. This fixture is not activation of the live catalog.
+
+## L2: live literal YAML authority
+
+`python -m ocf_tools.localized_activation` previews the complete activation;
+`--apply` registers the existing 58 resource paths as function resources without
+renaming or removing files. `metadata_entries` preserves the 49 additional
+function-specific lifecycle and procedure keys. Approved relationship descriptions
+retain their stable keys in their owning function resource and are checked against
+the existing approved structural edges. No new relationship is inferred.
+
+The manifest marks predecessor keys as superseded compatibility inputs and
+fingerprints their original parsed resource mapping. Those retained files cannot
+silently override the function YAML: changing them fails closed. Their remaining
+shared UI and unrelated keys remain active. Retirement is a later stage, not an
+automatic side effect of activating localized values.
+
+Master function and command indexes, CLI discovery, API/MCP presentation and guide
+titles/search/PDF bookmarks read the same locale resolver. Narration-first planning
+already resolves titles and speech through that resolver. Speech-cache keys still
+depend on effective spoken bytes and voice/configuration, not locale filenames.
+`function-field-sources.json` is generated from the live catalog and records the
+source YAML and attribute pointer for every localized field; it is not editable.
+
+The checked authority-003 predecessor layer is applied before consolidation-002
+and pilot-001 historical readers. None of those committed predecessor records or
+HPLUS-015 defaults is rewritten. Current speech, cue versions and all 175 function
+entries remain independently compared with the pre-consolidation baseline.

@@ -290,11 +290,13 @@ def list_functions(
     from .content import load_layers
     from .eligibility import eligibility
     from .indexes import load_all_functions
-    from .locale import normalize_tag
+    from .locale import LocaleCatalog, normalize_tag
+    from .localized_authority import title
 
     normalize_tag(locale)
     page([], offset, limit)
     rows = []
+    catalog = LocaleCatalog()
     for record in load_all_functions():
         domain = record.data["classification"]["primary_domain"]
         if category and domain != category:
@@ -306,7 +308,7 @@ def list_functions(
             continue  # Planning/audition APIs never establish release clearance.
         row = {
             "id": record.id,
-            "name": record.canonical_name,
+            "name": title(record, locale, catalog=catalog),
             "category": domain,
             "human_review": review,
             "source_availability": record.source_availability,
@@ -348,17 +350,23 @@ def get_function(
 ) -> dict:
     from .commands import command_view, cue_presentation
     from .content import load_layers
+    from .locale import LocaleCatalog
+    from .localized_authority import description, metadata, title
 
     record = owner(function_id)
     layers = load_layers(function_id)
+    catalog = LocaleCatalog()
     data = {
         "id": record.id,
-        "name": record.canonical_name,
+        "name": title(record, locale, catalog=catalog),
         "commands": record.data["canonical"]["command"],
-        "purpose": record.purpose_summary,
+        "purpose": description(record, locale, catalog=catalog),
         "lifecycle": record.data["lifecycle"],
         "companions": record.data.get("companions", []),
-        "command_metadata": [command_view(record, command) for command in record.command_records],
+        "command_metadata": [
+            command_view(record, command, locale=locale, catalog=catalog)
+            for command in record.command_records
+        ],
         "source_availability": record.source_availability,
         "human_review": layers.get("specifications", {}).get("human_review", "unknown"),
         "binding": layers.get("bindings", {}),
@@ -367,8 +375,15 @@ def get_function(
             "source_count": len(layers.get("evidence", {}).get("sources", [])),
         },
         "release_ready": False,
-        "cue_presentation": cue_presentation(record, locale),
+        "cue_presentation": cue_presentation(record, locale, catalog=catalog),
     }
+    localized = metadata(record, locale, catalog=catalog)
+    if localized is not None:
+        data.update(
+            tags=localized.get("tags", []),
+            common_uses=localized.get("common_uses", []),
+            localized_relationships=localized.get("relationships", {}),
+        )
     if preview:
         from .cue_templates import preview as preview_narration
 

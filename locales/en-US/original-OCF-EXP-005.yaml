@@ -1,82 +1,77 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-EXP-005
 title:
   text: Clear Zone
   status: reviewed
-  version: 1.0.0
 description:
   text: Establish an ongoing intention to discourage unwanted insect contact while maintaining calm awareness.
   status: reviewed
-  version: 1.0.0
+metadata_entries:
+  functions.ocf-exp-005.capability:
+    text: Intended learned availability persists in every mode.
+    status: reviewed
+  functions.ocf-exp-005.baseline:
+    text: Intended automatic non-destructive insect discouragement and calm awareness.
+    status: reviewed
+  functions.ocf-exp-005.application:
+    text: Mutually exclusive Observe and Suspend overrides replace the prior mode and end at normal sleep
+      onset, loss of consciousness or deliberate primary invocation.
+    status: reviewed
+  functions.ocf-exp-005.artwork-description:
+    text: Set an intention to discourage unwanted insects
+    status: reviewed
+    version: 1.1.0
 activation:
   command_id: OCF-CMD-EXP-005-PRIMARY
   display_cue:
     text: PLUS-CLEAR ZONE
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Clear Zone
     status: reviewed
-    version: 1.0.0
   label:
     text: Primary
     status: reviewed
-    version: 1.0.0
   explanation:
     text: Establish an ongoing intention to discourage unwanted insect contact while maintaining calm
       awareness.
     status: reviewed
-    version: 1.0.0
   usage:
     text: Deliberately follow the ordered procedure; proposed exercise instructions, not software execution.
     status: reviewed
-    version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-EXP-005-OBSERVE
   display_cue:
     text: PLUS-CLEAR ZONE, OBSERVE
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Clear Zone, Observe
     status: reviewed
-    version: 1.0.0
   label:
     text: Observe
     status: reviewed
-    version: 1.0.0
   explanation:
     text: Pause outward-directed insect-discouragement intention while calm awareness remains.
     status: reviewed
-    version: 1.0.0
   usage:
     text: Deliberately follow the ordered procedure; proposed exercise instructions, not software execution.
     status: reviewed
-    version: 1.0.0
   role: mode
 - command_id: OCF-CMD-EXP-005-SUSPEND
   display_cue:
     text: PLUS-CLEAR ZONE, SUSPEND
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Clear Zone, Suspend
     status: reviewed
-    version: 1.0.0
   label:
     text: Suspend
     status: reviewed
-    version: 1.0.0
   explanation:
     text: Pause the entire application while ordinary awareness and natural bodily responses remain intact.
     status: reviewed
-    version: 1.0.0
   usage:
     text: Deliberately follow the ordered procedure; proposed exercise instructions, not software execution.
     status: reviewed
-    version: 1.0.0
   role: mode
 tags: []
 common_uses: []

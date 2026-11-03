@@ -99,6 +99,8 @@ def test_fixture_title_reaches_command_index_without_global_registry_edit(litera
     prefix = "functions." + selected.id.lower()
     for suffix in ("title", "purpose", "short-description"):
         pack.entries.pop(prefix + "." + suffix, None)
+    for key in data.get("metadata_entries", {}):
+        pack.entries.pop(key, None)
     for command in selected.command_records:
         for suffix in ("display-cue", "spoken-cue", "label", "explanation", "usage"):
             pack.entries.pop("commands." + command.id.lower() + "." + suffix, None)

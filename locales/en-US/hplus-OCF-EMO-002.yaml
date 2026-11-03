@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-EMO-002
 title:
   text: Offload
@@ -11,12 +11,11 @@ description:
     and conscious choice.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-EMO-002-PRIMARY
   display_cue:
     text: PLUS-OFFLOAD
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Offload
     status: reviewed
@@ -37,8 +36,6 @@ secondary_commands:
 - command_id: OCF-CMD-EMO-002-LEGACY-01
   display_cue:
     text: PLUS-FADE, FADE
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical

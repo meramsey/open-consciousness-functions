@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-SLP-006
 title:
   text: Stay Awake
@@ -10,12 +10,11 @@ description:
   text: Supports staying awake and alert when needed; activation cue PLUS-AWAKE.
   status: reviewed
   version: 1.0.1
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-SLP-006-PRIMARY
   display_cue:
     text: PLUS-AWAKE
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Awake
     status: reviewed
@@ -36,8 +35,6 @@ secondary_commands:
 - command_id: OCF-CMD-SLP-006-LEGACY-01
   display_cue:
     text: PLUS-ONE, AWAKE, ALERT, ONE, ONE
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical

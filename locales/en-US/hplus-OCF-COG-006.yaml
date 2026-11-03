@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-COG-006
 title:
   text: Recall
@@ -10,16 +10,14 @@ description:
   text: Brings specific memories or learned material to mind on request.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-COG-006-PRIMARY
   display_cue:
     text: PLUS-RECALL
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Recall
     status: reviewed
-    version: 1.0.0
   label:
     text: Primary activation command
     status: canonical

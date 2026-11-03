@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-BOD-003
 title:
   text: Comfort
@@ -10,12 +10,11 @@ description:
   text: Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-BOD-003-PRIMARY
   display_cue:
     text: PLUS-COMFORT
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Comfort
     status: reviewed
@@ -36,8 +35,6 @@ secondary_commands:
 - command_id: OCF-CMD-BOD-003-LEGACY-01
   display_cue:
     text: PLUS-55515
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical

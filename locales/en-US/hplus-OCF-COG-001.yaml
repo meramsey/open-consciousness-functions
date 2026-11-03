@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-COG-001
 title:
   text: Information Access
@@ -10,12 +10,17 @@ description:
   text: Accesses intuition, memory, and inner knowledge on demand.
   status: canonical
   version: 1.0.0
+metadata_entries:
+  functions.ocf-cog-001.lifecycle.scopes.capability.description:
+    text: Access to the personal knowledge library remains available.
+  functions.ocf-cog-001.lifecycle.scopes.baseline.description:
+    text: Personal knowledge continues to be organized and connected in the background.
+  functions.ocf-cog-001.lifecycle.scopes.application.description:
+    text: One consciously chosen information request; not a permanently active search or stream of answers.
 activation:
   command_id: OCF-CMD-COG-001-PRIMARY
   display_cue:
     text: PLUS-ACCESS INFO
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Access Info
     status: reviewed

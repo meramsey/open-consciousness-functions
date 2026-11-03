@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-SLP-003
 title:
   text: Dream Theme
@@ -10,12 +10,11 @@ description:
   text: Sets dream themes and a restful dream-sleep mindset; activation cue PLUS-DREAM.
   status: reviewed
   version: 1.0.1
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-SLP-003-PRIMARY
   display_cue:
     text: PLUS-DREAM
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Dream
     status: reviewed
@@ -36,8 +35,6 @@ secondary_commands:
 - command_id: OCF-CMD-SLP-003-LEGACY-01
   display_cue:
     text: PLUS-THEME, DREAM, SLEEP
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical

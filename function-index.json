@@ -116,6 +116,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -449,6 +450,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -491,6 +496,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Automatic Action",
         "voice_sources": [
           "tts"
@@ -611,6 +617,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -867,6 +874,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -911,6 +922,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Brain Flow",
         "voice_sources": [
           "tts"
@@ -1026,6 +1038,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -1283,6 +1296,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -1327,6 +1344,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Circulation",
         "voice_sources": [
           "tts"
@@ -1447,6 +1465,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -1702,6 +1721,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -1746,6 +1769,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Comfort",
         "voice_sources": [
           "tts"
@@ -1866,6 +1890,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -2122,6 +2147,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -2166,6 +2195,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Detox",
         "voice_sources": [
           "tts"
@@ -2295,6 +2325,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -2568,6 +2599,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -2612,6 +2647,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Appetite Choice",
         "voice_sources": [
           "tts"
@@ -2732,6 +2768,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [
           "OCF-BOD-002"
         ],
@@ -2990,6 +3027,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": [
+            {
+              "description": {
+                "status": "reviewed",
+                "text": "Compare heart-oriented calm and steadiness with broader circulation-oriented comfort. These are independently selectable wellness exercises, not a combined treatment or a proven way to improve cardiovascular function.",
+                "version": "0.0.1"
+              },
+              "description_key": "relationships.rel-bod006-bod002.description",
+              "function_id": "OCF-BOD-002"
+            }
+          ]
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -3034,6 +3085,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Heart Flow",
         "voice_sources": [
           "tts"
@@ -3167,6 +3219,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -3440,6 +3493,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -3484,6 +3541,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Blood Pressure Balance",
         "voice_sources": [
           "tts"
@@ -3594,6 +3652,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -3849,6 +3908,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -3893,6 +3956,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Immune Readiness",
         "voice_sources": [
           "tts"
@@ -4003,6 +4067,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -4260,6 +4325,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -4304,6 +4373,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Breathe Better",
         "voice_sources": [
           "tts"
@@ -4509,6 +4579,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -4764,6 +4835,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -4808,6 +4883,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Nutricia",
         "voice_sources": [
           "tts"
@@ -4931,6 +5007,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -5205,6 +5282,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -5247,6 +5328,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Hormonal Transitions",
         "voice_sources": [
           "tts"
@@ -5521,6 +5603,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "unresolved"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -5776,6 +5859,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -5820,6 +5907,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Sex Drive",
         "voice_sources": [
           "tts"
@@ -5953,6 +6041,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -6227,6 +6316,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -6271,6 +6364,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Body Tune-Up",
         "voice_sources": [
           "tts"
@@ -6396,6 +6490,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -6710,6 +6805,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -6754,6 +6853,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Regenerate",
         "voice_sources": [
           "tts"
@@ -6974,6 +7074,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -7289,6 +7390,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -7333,6 +7438,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Temporary Numbing",
         "voice_sources": [
           "tts"
@@ -7446,6 +7552,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -7719,6 +7826,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -7761,6 +7872,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Information Access",
         "voice_sources": [
           "tts"
@@ -7877,6 +7989,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -8132,6 +8245,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -8174,6 +8291,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Mental Calculation",
         "voice_sources": [
           "tts"
@@ -8338,6 +8456,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -8595,6 +8714,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -8637,6 +8760,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Contemplation",
         "voice_sources": [
           "tts"
@@ -8839,6 +8963,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -9114,6 +9239,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -9156,6 +9285,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Imprint",
         "voice_sources": [
           "tts"
@@ -9289,6 +9419,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -9565,6 +9696,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -9607,6 +9742,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Options",
         "voice_sources": [
           "tts"
@@ -9716,6 +9852,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -9972,6 +10109,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -10014,6 +10155,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Recall",
         "voice_sources": [
           "tts"
@@ -10123,6 +10265,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -10378,6 +10521,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -10420,6 +10567,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Think Fast",
         "voice_sources": [
           "tts"
@@ -10529,6 +10677,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -10785,6 +10934,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -10827,6 +10980,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Speak Up",
         "voice_sources": [
           "tts"
@@ -10946,6 +11100,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -11282,6 +11437,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           ]
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -11327,6 +11486,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Injury Response",
         "voice_sources": [
           "tts"
@@ -11446,6 +11606,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -11782,6 +11943,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           ]
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -11827,6 +11992,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Toxic Exposure Response",
         "voice_sources": [
           "tts"
@@ -11936,6 +12102,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -12192,6 +12359,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -12234,6 +12405,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Let Go",
         "voice_sources": [
           "tts"
@@ -12360,6 +12532,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -12615,6 +12788,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -12657,6 +12834,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Offload",
         "voice_sources": [
           "tts"
@@ -12767,6 +12945,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -13082,6 +13261,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -13124,6 +13307,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Empathize",
         "voice_sources": [
           "tts"
@@ -13245,6 +13429,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [
           "OCF-EXP-003",
           "OCF-EXP-006"
@@ -13504,6 +13689,29 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": [
+            {
+              "description": {
+                "status": "reviewed",
+                "text": "Compare intention-setting with releasing a selected unwanted pattern. These remain independent exercises, not a required sequence.",
+                "version": "0.0.1"
+              },
+              "description_key": "relationships.rel-exp001-exp003.description",
+              "function_id": "OCF-EXP-003"
+            },
+            {
+              "description": {
+                "status": "reviewed",
+                "text": "Intuition offers a separately chosen exercise for exploring understanding alongside purposeful intention-setting. Intuitive impressions are not proof or instructions that must be followed.",
+                "version": "0.0.1"
+              },
+              "description_key": "relationships.rel-exp001-exp006.description",
+              "function_id": "OCF-EXP-006"
+            }
+          ]
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -13546,6 +13754,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Manifest",
         "voice_sources": [
           "tts"
@@ -13818,6 +14027,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -14134,6 +14344,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -14176,6 +14390,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Insulate",
         "voice_sources": [
           "tts"
@@ -14298,6 +14513,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [
           "OCF-EXP-006"
         ],
@@ -14337,6 +14553,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           ]
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": [
+            {
+              "description": {
+                "status": "reviewed",
+                "text": "Distinguish releasing a selected unwanted pattern from exploring intuitive understanding. Either exercise may be chosen independently; neither is a prerequisite for the other.",
+                "version": "0.0.1"
+              },
+              "description_key": "relationships.rel-exp003-exp006.description",
+              "function_id": "OCF-EXP-006"
+            }
+          ]
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -14377,6 +14607,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "script-approved",
           "maturity": "community-proposed"
         },
+        "tags": [],
         "title": "Dissolve",
         "voice_sources": [
           "tts"
@@ -14632,6 +14863,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": null,
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -14681,6 +14913,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           ]
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -14721,6 +14957,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "script-approved",
           "maturity": "community-proposed"
         },
+        "tags": [],
         "title": "Clear Zone",
         "voice_sources": [
           "tts"
@@ -14832,6 +15069,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": null,
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -14857,6 +15095,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           ]
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -14896,6 +15138,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "script-approved",
           "maturity": "community-proposed"
         },
+        "tags": [],
         "title": "Intuition",
         "voice_sources": [
           "tts"
@@ -15037,6 +15280,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -15292,6 +15536,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -15334,6 +15582,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Access to Energy",
         "voice_sources": [
           "tts"
@@ -15450,6 +15699,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [
           "OCF-COG-007"
         ],
@@ -15707,6 +15957,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": [
+            {
+              "description": {
+                "status": "reviewed",
+                "text": "Compare directed-attention practice with thinking-oriented practice. Choose either independently; neither is required to activate or benefit from the other. The Focus function is not a Focus 10/11 audio stage.",
+                "version": "0.0.1"
+              },
+              "description_key": "relationships.rel-fnd002-cog007.description",
+              "function_id": "OCF-COG-007"
+            }
+          ]
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -15749,6 +16013,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "implemented",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Focus",
         "voice_sources": [
           "tts"
@@ -15865,6 +16130,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -16121,6 +16387,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -16163,6 +16433,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Quick Recharge",
         "voice_sources": [
           "tts"
@@ -16273,6 +16544,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "pilot",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -16530,6 +16802,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [
           "en-US"
         ],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -16598,6 +16874,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Relax",
         "voice_sources": [
           "externally-generated",
@@ -16720,6 +16997,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -16976,6 +17254,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -17018,6 +17300,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Reset",
         "voice_sources": [
           "tts"
@@ -17127,6 +17410,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -17441,6 +17725,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -17483,6 +17771,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Release",
         "voice_sources": [
           "tts"
@@ -17617,6 +17906,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -17891,6 +18181,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -17933,6 +18227,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Habit Freedom",
         "voice_sources": [
           "tts"
@@ -18042,6 +18337,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -18297,6 +18593,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -18339,6 +18639,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Do This Now",
         "voice_sources": [
           "tts"
@@ -18460,6 +18761,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -18715,6 +19017,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -18757,6 +19063,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Inner Power",
         "voice_sources": [
           "tts"
@@ -18873,6 +19180,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -19128,6 +19436,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -19170,6 +19482,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Coordination",
         "voice_sources": [
           "tts"
@@ -19304,6 +19617,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -19637,6 +19951,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -19679,6 +19997,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Light Foot",
         "voice_sources": [
           "tts"
@@ -19788,6 +20107,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -20102,6 +20422,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -20144,6 +20468,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Make Your Day",
         "voice_sources": [
           "tts"
@@ -20366,6 +20691,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -20681,6 +21007,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -20723,6 +21053,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Strong-Quick",
         "voice_sources": [
           "tts"
@@ -20926,6 +21257,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "pilot",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -21184,6 +21516,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [
           "en-US"
         ],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -21252,6 +21588,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Hearing",
         "voice_sources": [
           "externally-generated",
@@ -21397,6 +21734,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "unresolved"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -21653,6 +21991,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -21695,6 +22037,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Seeing",
         "voice_sources": [
           "tts"
@@ -21964,6 +22307,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "unresolved"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -22278,6 +22622,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -22320,6 +22668,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Smell",
         "voice_sources": [
           "tts"
@@ -22589,6 +22938,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "unresolved"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -22903,6 +23253,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -22945,6 +23299,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Taste",
         "voice_sources": [
           "tts"
@@ -23214,6 +23569,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "unresolved"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -23528,6 +23884,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -23570,6 +23930,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Touch",
         "voice_sources": [
           "tts"
@@ -23691,6 +24052,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -23946,6 +24308,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -23990,6 +24356,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Restorative Sleep",
         "voice_sources": [
           "tts"
@@ -24111,6 +24478,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -24366,6 +24734,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -24408,6 +24780,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Sleep",
         "voice_sources": [
           "tts"
@@ -24534,6 +24907,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -24789,6 +25163,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -24831,6 +25209,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Dream Theme",
         "voice_sources": [
           "tts"
@@ -24957,6 +25336,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -25212,6 +25592,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -25254,6 +25638,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Sleep Insight",
         "voice_sources": [
           "tts"
@@ -25385,6 +25770,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [
           "OCF-SLP-001"
         ],
@@ -25703,6 +26089,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [
           "en-US"
         ],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": [
+            {
+              "description": {
+                "status": "reviewed",
+                "text": "Compare sleep support for unfamiliar or distracting surroundings with an exercise oriented toward restorative rest. Choose independently; this link does not prescribe combining or stacking recordings.",
+                "version": "0.0.1"
+              },
+              "description_key": "relationships.rel-slp005-slp001.description",
+              "function_id": "OCF-SLP-001"
+            }
+          ]
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -25772,6 +26172,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Sleep Easy",
         "voice_sources": [
           "externally-generated",
@@ -25895,6 +26296,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
+        "common_uses": [],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -26209,6 +26611,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "trigger_conditions": []
         },
         "locales": [],
+        "localized_relationships": {
+          "complementary_functions": [],
+          "related_functions": []
+        },
         "narration_plan": {
           "sequence": [
             {
@@ -26251,6 +26657,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
+        "tags": [],
         "title": "Stay Awake",
         "voice_sources": [
           "tts"

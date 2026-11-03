@@ -113,7 +113,13 @@ def value(owner, symbol, locale, catalog, *, draft_review=False):
         entry, resolution = catalog.raw_resource(key, locale, domain="ui", fallback=False)
         if resolution.origin_locale != "en-US" and entry.status not in {"reviewed", "canonical"}:
             raise CueTemplateError(f"{owner.id}: localized title requires review")
-        if resolution.origin_locale == "en-US" and entry.text != owner.canonical_name:
+        from .localized_authority import metadata as localized_metadata
+
+        if (
+            localized_metadata(owner, locale, catalog=catalog) is None
+            and resolution.origin_locale == "en-US"
+            and entry.text != owner.canonical_name
+        ):
             raise CueTemplateError(
                 f"{owner.id}: en-US title conflicts with authoritative function YAML"
             )

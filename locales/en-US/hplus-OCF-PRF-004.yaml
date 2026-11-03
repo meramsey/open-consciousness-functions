@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-PRF-004
 title:
   text: Light Foot
@@ -10,12 +10,17 @@ description:
   text: Eases the felt sense of physical lightness and ease of movement; activation cue PLUS-LIGHT STEP.
   status: reviewed
   version: 1.0.1
+metadata_entries:
+  functions.ocf-prf-004.lifecycle.scopes.capability.description:
+    text: The learned movement ability remains available.
+  functions.ocf-prf-004.lifecycle.scopes.baseline.description:
+    text: The everyday movement pattern continues without conscious cue use.
+  functions.ocf-prf-004.lifecycle.scopes.application.description:
+    text: Optional conscious reinforcement of the movement baseline; not permanently intensified movement.
 activation:
   command_id: OCF-CMD-PRF-004-PRIMARY
   display_cue:
     text: PLUS-LIGHT STEP
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Light Step
     status: reviewed
@@ -36,8 +41,6 @@ secondary_commands:
 - command_id: OCF-CMD-PRF-004-LEGACY-01
   display_cue:
     text: PLUS-LIGHTER, LIGHTER
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical

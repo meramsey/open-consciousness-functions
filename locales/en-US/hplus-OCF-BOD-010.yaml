@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-BOD-010
 title:
   text: Nutricia
@@ -11,16 +11,14 @@ description:
     nourishment with reduced unnecessary energy retention and storage.
   status: canonical
   version: 1.0.1
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-BOD-010-PRIMARY
   display_cue:
     text: PLUS-FOOD MORE
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Food More
     status: reviewed
-    version: 1.0.0
   label:
     text: Primary activation command
     status: canonical
@@ -37,12 +35,9 @@ secondary_commands:
 - command_id: OCF-CMD-BOD-010-FOOD-LESS
   display_cue:
     text: PLUS-FOOD LESS
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Food Less
     status: reviewed
-    version: 1.0.0
   label:
     text: Alternative food-energy mode
     status: canonical

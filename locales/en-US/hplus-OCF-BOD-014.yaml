@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-BOD-014
 title:
   text: Regenerate
@@ -10,12 +10,11 @@ description:
   text: Supports a felt sense of body-wide regeneration and renewal; activation cue PLUS-REGENERATE.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-BOD-014-PRIMARY
   display_cue:
     text: PLUS-REGENERATE
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Regenerate
     status: reviewed
@@ -36,8 +35,6 @@ secondary_commands:
 - command_id: OCF-CMD-BOD-014-LEGACY-01
   display_cue:
     text: PLUS-BUILD, LIVE
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical

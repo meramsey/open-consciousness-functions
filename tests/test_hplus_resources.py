@@ -143,7 +143,8 @@ def test_all_55_legacy_functions_have_review_files_without_fabricated_missing_sp
         prefix = f"hplus.function.{owner.id.lower()}."
         if owner.source_availability == "unavailable":
             assert owner.reimplementation_status == "planned"
-            assert doc["domain"] == "narration"
+            assert doc["domain"] == "function"
+            assert doc["function_id"] == owner.id
             proposal = PROPOSALS[owner.id]
             proposal_input = proposal["input"]
             proposal_slots = proposal["selection"]["slots"]
@@ -161,7 +162,8 @@ def test_all_55_legacy_functions_have_review_files_without_fabricated_missing_sp
                 assert proposal_input["file"] in historical["entries"][key]["notes"]
                 assert proposal_input["sha256"] in historical["entries"][key]["notes"]
         else:
-            assert doc["domain"] == "narration"
+            assert doc["domain"] == "function"
+            assert doc["function_id"] == owner.id
             selection = SELECTIONS[owner.id]
             for slot in ("opener", "function-body", "closer"):
                 entry_key = prefix + slot

@@ -187,7 +187,11 @@ def build_batch(root: Path = REPO_ROOT, *, records=None, catalog=None) -> dict:
             if command.id != primary.id
         ]
         related = [
-            {"function_id": edge["related_id"], "description": metadata(edge["description_key"])}
+            {
+                "function_id": edge["related_id"],
+                "description_key": edge["description_key"],
+                "description": metadata(edge["description_key"]),
+            }
             for edge in relationships(owner, root=root)
         ]
         data = {
@@ -197,6 +201,13 @@ def build_batch(root: Path = REPO_ROOT, *, records=None, catalog=None) -> dict:
             "function_id": owner.id,
             "title": title,
             "description": metadata(documentation["short_description_key"]),
+            "metadata_entries": {
+                key: _literal(entry)
+                for key, entry in getattr(catalog.require("en-US"), "entries", {}).items()
+                if key.startswith("functions." + owner.id.lower() + ".")
+                and key.rsplit(".", 1)[-1] not in {"title", "purpose", "short-description"}
+                and entry.domain == "ui"
+            },
             "activation": activation,
             "secondary_commands": secondary,
             "tags": copy.deepcopy(owner.data.get("tags") or []),

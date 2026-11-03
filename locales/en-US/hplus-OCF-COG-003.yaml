@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-COG-003
 title:
   text: Contemplation
@@ -10,16 +10,14 @@ description:
   text: Opens an internal space for quiet reflection; closes it again on completion.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-COG-003-PRIMARY
   display_cue:
     text: PLUS-OPEN
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Open
     status: reviewed
-    version: 1.0.0
   label:
     text: Primary activation command
     status: canonical
@@ -36,12 +34,9 @@ secondary_commands:
 - command_id: OCF-CMD-COG-003-CLOSED
   display_cue:
     text: PLUS-CLOSED
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Closed
     status: reviewed
-    version: 1.0.0
   label:
     text: Close command
     status: canonical
