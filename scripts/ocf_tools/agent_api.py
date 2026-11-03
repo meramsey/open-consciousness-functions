@@ -379,6 +379,7 @@ def get_function(
     }
     localized = metadata(record, locale, catalog=catalog)
     if localized is not None:
+        data["commands"] = {**data["commands"], "primary": data["cue_presentation"]["display_cue"]}
         data.update(
             tags=localized.get("tags", []),
             common_uses=localized.get("common_uses", []),

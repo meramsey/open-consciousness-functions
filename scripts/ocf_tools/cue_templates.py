@@ -115,6 +115,11 @@ def value(owner, symbol, locale, catalog, *, draft_review=False):
             raise CueTemplateError(f"{owner.id}: localized title requires review")
         from .localized_authority import metadata as localized_metadata
 
+        localized_owner = localized_metadata(owner, locale, catalog=catalog)
+        if localized_owner is not None and entry.text != localized_owner["title"]["text"]:
+            raise CueTemplateError(
+                f"{owner.id}: title alias conflicts with authoritative localized function YAML"
+            )
         if (
             localized_metadata(owner, locale, catalog=catalog) is None
             and resolution.origin_locale == "en-US"
@@ -147,8 +152,12 @@ def value(owner, symbol, locale, catalog, *, draft_review=False):
             "variant": variant,
         }
     resolved = localized_cue(owner, command, locale, catalog=catalog, strict=True)
-    if resolved.get("spoken_locale") == "en-US" and (
-        not command.data.get("spoken") or command.data.get("spoken_review") != "reviewed"
+    from .localized_authority import metadata as localized_metadata
+
+    if (
+        localized_metadata(owner, locale, catalog=catalog) is None
+        and resolved.get("spoken_locale") == "en-US"
+        and (not command.data.get("spoken") or command.data.get("spoken_review") != "reviewed")
     ):
         raise CueTemplateError(
             f"{command.id}: symbolic English speech requires authoritative reviewed function-YAML wording"

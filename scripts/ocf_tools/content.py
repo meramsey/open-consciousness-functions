@@ -168,6 +168,10 @@ def discover(record, *, catalog=None) -> dict:
     bindings = layers.get("bindings", {})
     command = record.data["canonical"]["command"]
     localized = metadata(record, catalog=catalog) or {}
+    if localized:
+        from .commands import cue_presentation
+
+        command = {**command, "primary": cue_presentation(record, catalog=catalog)["display_cue"]}
     return {
         "function_id": record.id,
         "title": title(record, catalog=catalog),

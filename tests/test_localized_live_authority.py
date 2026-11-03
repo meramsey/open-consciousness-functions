@@ -60,7 +60,9 @@ def test_superseded_compatibility_words_cannot_override_yaml_or_be_edited(tmp_pa
 
 
 @pytest.mark.integration
-def test_yaml_title_and_description_propagate_across_reader_outputs(literal_catalog, monkeypatch):
+def test_yaml_title_and_description_propagate_across_reader_outputs(
+    literal_catalog, monkeypatch, capsys
+):
     records, original, catalog = literal_catalog
     record = records[0]
     pack = catalog.require("en-US")
@@ -112,6 +114,16 @@ def test_yaml_title_and_description_propagate_across_reader_outputs(literal_cata
     assert any(r["name"] == "Distinctive fixture title" for r in listing["items"])
     assert "Distinctive fixture title" in listening_guides._guide_catalog(records)
     assert b"Distinctive fixture title" in listening_guides.portable_index_html(records)
+    from ocf_tools.cli import main
+    from ocf_tools.vocabulary import lookup
+
+    assert main(["functions", "describe", record.id, "--json"]) == 0
+    cli_result = json.loads(capsys.readouterr().out)
+    assert cli_result["functions"][0]["canonical"]["name"] == "Distinctive fixture title"
+    assert (
+        lookup("Distinctive fixture title", records=records, catalog=changed)[0]["function_id"]
+        == record.id
+    )
     assert record.canonical_name != "Distinctive fixture title"
 
 
@@ -144,3 +156,40 @@ def test_approved_relationship_words_come_from_function_yaml(literal_catalog):
     assert relation["description"]["text"] in listening_guides.function_guide_markdown(
         record, catalog=changed
     )
+
+
+@pytest.mark.integration
+def test_registry_fallback_cue_becomes_literal_yaml_authority_before_cache(
+    literal_catalog, monkeypatch
+):
+    from ocf_tools import speech_cache
+    from ocf_tools.commands import localized_cue
+    from ocf_tools.cue_templates import value
+
+    records, original, catalog = literal_catalog
+    record = next(record for record in records if record.id == "OCF-BOD-010")
+    primary = next(
+        command for command in record.command_records if command.designation == "primary"
+    )
+    assert not primary.localization.get("spoken_cue_key")
+    before = localized_cue(record, primary, catalog=catalog)
+    source = (
+        catalog.require("en-US").path / catalog.require("en-US").localized_function_files[record.id]
+    )
+    data = yaml.safe_load(source.read_text())
+    data["activation"]["spoken_cue"]["text"] = "Synthetic fixture spoken cue"
+    data["activation"]["display_cue"]["text"] = "SYNTHETIC-FIXTURE-CUE"
+    source.write_text(yaml.safe_dump(data), encoding="utf-8")
+    changed = LocaleCatalog(catalog.root, function_records=lambda: records)
+    assert changed.problems == []
+    cue = localized_cue(record, primary, catalog=changed, strict=True)
+    assert cue["spoken_cue"] == "Synthetic fixture spoken cue"
+    assert cue["display_cue"] == "SYNTHETIC-FIXTURE-CUE"
+    assert cue.get("version") == before.get("version")
+    assert value(record, "cue.primary", "en-US", changed)[0] == cue["spoken_cue"]
+    assert primary.data["spoken"] != cue["spoken_cue"]
+    monkeypatch.setattr(speech_cache, "voice_identity", lambda spec: {"fixture_voice": "unchanged"})
+    spec = {"locale": "en-US"}
+    old_key = speech_cache._synthesis_identity(spec, before["spoken_cue"])[1]
+    assert speech_cache._synthesis_identity(spec, before["spoken_cue"])[1] == old_key
+    assert speech_cache._synthesis_identity(spec, cue["spoken_cue"])[1] != old_key

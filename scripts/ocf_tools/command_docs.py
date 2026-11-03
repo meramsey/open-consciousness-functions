@@ -185,7 +185,14 @@ def _function_document(
                     raise CommandDocumentationError(
                         f"{record.id}/{metadata.id} refers to unknown related command {target_id}"
                     )
-                targets.append({"id": target.id, "phrase": command_view(record, target)["phrase"]})
+                targets.append(
+                    {
+                        "id": target.id,
+                        "phrase": command_view(record, target, locale=locale, catalog=catalog)[
+                            "phrase"
+                        ],
+                    }
+                )
             related_commands.append(
                 {"kind": relation, "label": relation_label, "commands": targets}
             )

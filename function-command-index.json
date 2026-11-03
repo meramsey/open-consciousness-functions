@@ -2413,13 +2413,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-BOD-010-PRIMARY",
             "display_cue": "PLUS-FOOD MORE",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Food More",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-bod-010-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -2587,13 +2592,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-BOD-010-FOOD-LESS",
             "display_cue": "PLUS-FOOD LESS",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Food Less",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-bod-010-food-less.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -3099,13 +3109,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-BOD-012-PRIMARY",
             "display_cue": "PLUS-SEX MORE",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Sex More",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-bod-012-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -3273,13 +3288,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-BOD-012-SEX-LESS",
             "display_cue": "PLUS-SEX LESS",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Sex Less",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-bod-012-sex-less.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -3470,6 +3490,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-BOD-012-LEGACY-01",
             "display_cue": "PLUS-SEX GREATER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -3541,6 +3563,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-BOD-012-LEGACY-02",
             "display_cue": "PLUS-SEX LESSER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -4364,13 +4388,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-BOD-015-LEGACY-02",
             "display_cue": "PLUS-RELEASE",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Release",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-bod-015-legacy-02.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -5073,13 +5102,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-COG-003-PRIMARY",
             "display_cue": "PLUS-OPEN",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Open",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-cog-003-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -5220,13 +5254,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-COG-003-CLOSED",
             "display_cue": "PLUS-CLOSED",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Closed",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-cog-003-closed.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -5574,13 +5613,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-COG-004-RECALL",
             "display_cue": "PLUS-RECALL",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Recall",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-cog-004-recall.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -6125,13 +6169,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-COG-006-PRIMARY",
             "display_cue": "PLUS-RECALL",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Recall",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-cog-006-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -6328,13 +6377,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-COG-007-PRIMARY",
             "display_cue": "PLUS-THINK",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Think",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-cog-007-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -6531,13 +6585,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-COM-001-PRIMARY",
             "display_cue": "PLUS-SPEAK UP",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Speak Up",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-com-001-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -7278,13 +7337,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EMO-001-PRIMARY",
             "display_cue": "PLUS-LET GO",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Let Go",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-emo-001-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -8334,13 +8398,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-002-CANCEL",
             "display_cue": "PLUS-CANCEL",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Cancel",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-exp-002-cancel.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -8481,13 +8550,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-002-RELEASE",
             "display_cue": "Plus Release",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Release",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-exp-002-release.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "special",
           "documentation": {
@@ -8709,6 +8783,8 @@
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-003-PRIMARY",
             "display_cue": "PLUS-DISSOLVE",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "resource_status": "reviewed",
             "spoken_cue": "Plus Dissolve",
@@ -8993,6 +9069,8 @@
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-005-OBSERVE",
             "display_cue": "PLUS-CLEAR ZONE, OBSERVE",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "resource_status": "reviewed",
             "spoken_cue": "Plus Clear Zone, Observe",
@@ -9117,6 +9195,8 @@
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-005-PRIMARY",
             "display_cue": "PLUS-CLEAR ZONE",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "resource_status": "reviewed",
             "spoken_cue": "Plus Clear Zone",
@@ -9240,6 +9320,8 @@
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-005-SUSPEND",
             "display_cue": "PLUS-CLEAR ZONE, SUSPEND",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "resource_status": "reviewed",
             "spoken_cue": "Plus Clear Zone, Suspend",
@@ -9483,6 +9565,8 @@
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-006-PRIMARY",
             "display_cue": "PLUS-INTUITION",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "resource_status": "reviewed",
             "spoken_cue": "Plus Intuition",
@@ -9672,13 +9756,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-FND-001-PRIMARY",
             "display_cue": "PLUS-ENERGIZE",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Energize",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-fnd-001-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -9786,13 +9875,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-FND-001-ACCESS-CLOSE",
             "display_cue": "Plus Release Eleven Access",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "plus, release, eleven, access",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-fnd-001-access-close.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "special",
           "documentation": {
@@ -10807,13 +10901,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-FND-006-PRIMARY",
             "display_cue": "PLUS-RELEASE",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Release",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-fnd-006-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -11303,13 +11402,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-PRF-001-PRIMARY",
             "display_cue": "PLUS-DO-THIS-NOW",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Do This Now",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-prf-001-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -12224,13 +12328,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-PRF-005-PRIMARY",
             "display_cue": "PLUS-THIS DAY",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus This Day",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-prf-005-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -12427,13 +12536,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-PRF-006-PRIMARY",
             "display_cue": "PLUS-STRONG QUICK",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Strong Quick",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-prf-006-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -12572,6 +12686,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-PRF-006-LEGACY-01",
             "display_cue": "PLUS-STRONG-QUICK",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -12640,13 +12756,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-PRF-006-RELEASE",
             "display_cue": "Plus Release",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Release",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-prf-006-release.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "special",
           "documentation": {
@@ -13040,13 +13161,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-SEN-001-HEAR-LESS",
             "display_cue": "PLUS-HEAR LESS",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Hear Less",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-sen-001-hear-less.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -13429,6 +13555,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-SEN-002-LEGACY-01",
             "display_cue": "PLUS-SEE BETTER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -13733,13 +13861,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-SEN-003-SMELL-LESS",
             "display_cue": "PLUS-SMELL LESS",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Smell Less",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-sen-003-smell-less.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -13924,6 +14057,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-SEN-003-LEGACY-01",
             "display_cue": "PLUS-SMELL GREATER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -13995,6 +14130,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-SEN-003-LEGACY-02",
             "display_cue": "PLUS-SMELL LESSER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -14299,13 +14436,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-SEN-004-TASTE-LESS",
             "display_cue": "PLUS-TASTE LESS",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Taste Less",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-sen-004-taste-less.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -14490,6 +14632,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-SEN-004-LEGACY-01",
             "display_cue": "PLUS-TASTE GREATER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -14561,6 +14705,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-SEN-004-LEGACY-02",
             "display_cue": "PLUS-TASTE LESSER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -14865,13 +15011,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-SEN-005-TOUCH-LESS",
             "display_cue": "PLUS-TOUCH LESS",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Touch Less",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-sen-005-touch-less.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -15056,6 +15207,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-SEN-005-LEGACY-01",
             "display_cue": "PLUS-TOUCH GREATER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -15127,6 +15280,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-SEN-005-LEGACY-02",
             "display_cue": "PLUS-TOUCH LESSER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },

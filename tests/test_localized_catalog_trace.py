@@ -81,9 +81,19 @@ def test_all_58_literal_sources_trace_and_preserve_175_entries(literal_catalog):
             )
             count += 1
         for command in record.command_records:
-            assert localized_cue(record, command, catalog=original) == localized_cue(
-                record, command, catalog=catalog
-            )
+            old = localized_cue(record, command, catalog=original)
+            new = localized_cue(record, command, catalog=catalog)
+            # Authority provenance changes deliberately; semantic words,
+            # review, locale, version and binding eligibility must not.
+            for field in (
+                "display_cue",
+                "spoken_cue",
+                "binding_status",
+                "spoken_locale",
+                "resource_status",
+                "version",
+            ):
+                assert old.get(field) == new.get(field), (record.id, command.id, field)
     assert count == 175
 
 
