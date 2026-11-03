@@ -135,3 +135,85 @@ def test_archive_parent_symlink_and_logical_parent_symlink_rejected(virtual):
     (root / "locales").symlink_to(moved, target_is_directory=True)
     with pytest.raises(OCFError, match="symlink"):
         history.read_logical(root, name)
+
+
+@pytest.fixture
+def overlay(virtual, monkeypatch):
+    import yaml
+
+    root, _, _, _, data = virtual
+    name = "locales/en-US/OCF-EMO-003-Empathize.yaml"
+    archive = "function-content/editorial/historical-locales/006/en-US/snapshot.yaml"
+    original = {
+        "title": {"text": "Fixture", "status": "canonical"},
+        "description": {"text": "Approved fixture description.", "status": "reviewed"},
+        "activation": {"command_id": "fixture", "spoken_cue": {"text": "Exact cue"}},
+        "entries": {"fixture.body": {"text": "Exact narration.\n"}},
+        "tags": [],
+        "common_uses": [],
+        "relationships": {
+            "related_functions": [
+                {"function_id": "target", "description": {"text": "Exact approved rationale."}}
+            ],
+            "complementary_functions": [],
+        },
+    }
+    raw = yaml.safe_dump(original).replace("\n", "\r\n").encode()
+    target = root / archive
+    target.parent.mkdir(parents=True)
+    target.write_bytes(raw)
+    data["discovery_overlays"] = {name: {"archive": archive, "sha256": digest(raw)}}
+    monkeypatch.setattr(
+        history, "RESOURCE_MAP_SHA256", write_record(root, history.RESOURCE_MAP, data)
+    )
+    return root, name, target, raw, original
+
+
+def test_discovery_only_overlay_replays_exact_bytes_and_rejects_archive_drift(overlay):
+    import yaml
+
+    root, name, archive, raw, source = overlay
+    source["tags"] = [{"text": "draft-tag", "status": "draft"}]
+    source["common_uses"] = [{"text": "Draft use.", "status": "draft"}]
+    source["relationships"]["proposals"] = [{"status": "draft"}]
+    text = yaml.safe_dump(source)
+    assert history.before_structural(root, name, text).encode() == raw
+    archive.write_bytes(raw + b"drift")
+    with pytest.raises(OCFError, match="archive drift"):
+        history.before_structural(root, name, text)
+
+
+@pytest.mark.parametrize(
+    "field",
+    [
+        "narration",
+        "title-status",
+        "description-status",
+        "activation",
+        "approved-link",
+        "malformed",
+        "null-relationships",
+        "list-relationships",
+    ],
+)
+def test_overlay_cannot_hide_protected_changes_or_malformed_sources(overlay, field):
+    import yaml
+
+    root, name, _, _, source = overlay
+    if field == "narration":
+        source["entries"]["fixture.body"]["text"] += " changed"
+    elif field == "title-status":
+        source["title"]["status"] = "draft"
+    elif field == "description-status":
+        source["description"]["status"] = "draft"
+    elif field == "activation":
+        source["activation"]["spoken_cue"]["text"] = "Changed cue"
+    elif field == "approved-link":
+        source["relationships"]["related_functions"][0]["description"]["text"] = "Changed rationale"
+    elif field == "null-relationships":
+        source["relationships"] = None
+    elif field == "list-relationships":
+        source["relationships"] = []
+    text = "[invalid YAML" if field == "malformed" else yaml.safe_dump(source)
+    with pytest.raises(OCFError, match="discovery successor"):
+        history.before_structural(root, name, text)

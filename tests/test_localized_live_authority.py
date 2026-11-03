@@ -232,7 +232,16 @@ def test_approved_relationship_words_come_from_function_yaml(literal_catalog):
 
 @pytest.mark.integration
 @pytest.mark.parametrize(
-    "mutation", ["reviewed", "prerequisite", "unknown", "self", "missing-evidence", "drift"]
+    "mutation",
+    [
+        "reviewed",
+        "prerequisite",
+        "unknown",
+        "self",
+        "missing-evidence",
+        "drift",
+        "missing-description",
+    ],
 )
 def test_unapproved_proposal_cannot_gain_approval_or_lose_valid_evidence(literal_catalog, mutation):
     from copy import deepcopy
@@ -256,6 +265,12 @@ def test_unapproved_proposal_cannot_gain_approval_or_lose_valid_evidence(literal
         proposal["function_id"] = "OCF-COG-004"
     elif mutation == "missing-evidence":
         proposal["evidence"][1] = {**proposal["evidence"][0], "sha256": "0" * 64}
+    elif mutation == "missing-description":
+        target_path = pack.path / pack.localized_function_files[proposal["function_id"]]
+        target = yaml.safe_load(target_path.read_text())
+        target["description"] = {"source": "function-yaml", "field": "description"}
+        target_path.write_text(yaml.safe_dump(target))
+        proposal["evidence"][1]["sha256"] = hashlib.sha256(b"").hexdigest()
     else:
         proposal["evidence"][0]["sha256"] = "0" * 64
     data["relationships"]["proposals"] = [proposal]

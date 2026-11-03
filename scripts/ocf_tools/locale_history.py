@@ -148,12 +148,15 @@ def _before_discovery(root: Path, name: str, text: str) -> str:
             return text
 
     def protected(raw):
-        value = yaml.safe_load(raw)
-        if not isinstance(value, dict):
+        try:
+            value = yaml.safe_load(raw)
+        except yaml.YAMLError as error:
+            raise OCFError("invalid historical discovery successor YAML") from error
+        if not isinstance(value, dict) or not isinstance(value.get("relationships"), dict):
             raise OCFError("invalid historical discovery successor")
         for field in ("tags", "common_uses"):
             value.pop(field, None)
-        value.get("relationships", {}).pop("proposals", None)
+        value["relationships"].pop("proposals", None)
         return value
 
     if protected(text) != protected(before):

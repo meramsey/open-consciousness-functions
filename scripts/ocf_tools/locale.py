@@ -1316,7 +1316,12 @@ class LocaleCatalog:
                         )
                     for evidence in proposal["evidence"]:
                         endpoint = pack.localized_functions.get(evidence["function_id"], {})
-                        text = endpoint.get("description", {}).get("text", "")
+                        text = endpoint.get("description", {}).get("text")
+                        if not isinstance(text, str) or not text.strip():
+                            self.problems.append(
+                                f"{pack.locale}: relationship evidence requires an existing literal localized description"
+                            )
+                            continue
                         if hashlib.sha256(text.encode("utf-8")).hexdigest() != evidence["sha256"]:
                             self.problems.append(
                                 f"{pack.locale}: relationship description evidence drift"
