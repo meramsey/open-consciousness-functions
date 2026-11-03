@@ -27,17 +27,18 @@ def test_batch_covers_all_registered_functions_without_authoring_speech(batch):
         owner = owners[row["function_id"]]
         data = yaml_safe_load(batch["files"][row["destination"]])
         assert data["function_id"] == owner.id
-        assert data["title"]["text"] == owner.canonical_name
+        assert (
+            data["title"]["text"]
+            == catalog.raw_resource(
+                owner.documentation["title_key"], "en-US", domain="ui", fallback=False
+            )[0].text
+        )
         assert (migration.REPO_ROOT / row["destination"]).is_file()
         first_key = next(iter(data["entries"]))
         source_file = catalog.raw_resource(first_key, "en-US", domain="narration", fallback=False)[
             0
         ].file
-        assert row["destination"] == (
-            "locales/en-US/hplus-OCF-EMO-003.yaml"
-            if owner.id == "OCF-EMO-003"
-            else "locales/en-US/" + source_file
-        )
+        assert row["destination"] == "locales/en-US/" + source_file
         assert len(data["secondary_commands"]) == len(owner.command_records) - 1
         commands = {command.id: command for command in owner.command_records}
         for cue in [data["activation"], *data["secondary_commands"]]:

@@ -1,0 +1,163 @@
+schema_version: '1.0'
+locale: en-US
+domain: function
+function_id: OCF-PRF-006
+title:
+  text: Strong-Quick
+  status: canonical
+  version: 1.0.0
+description:
+  text: Combines strength and quickness in a single felt state; activation cue PLUS-STRONG QUICK.
+  status: reviewed
+  version: 1.0.1
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-PRF-006-PRIMARY
+  display_cue:
+    text: PLUS-STRONG QUICK
+  spoken_cue:
+    text: Plus Strong Quick
+    status: reviewed
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-PRF-006-LEGACY-01
+  display_cue:
+    text: PLUS-STRONG-QUICK
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+- command_id: OCF-CMD-PRF-006-RELEASE
+  display_cue:
+    text: Plus Release
+  spoken_cue:
+    text: Plus Release
+    status: reviewed
+  label:
+    text: Release command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This command releases or suspends the current application as documented.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Ends the temporary Strong-Quick application; the learned ability remains available.
+    status: canonical
+    version: 1.0.0
+  role: release
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-prf-006.opener:
+    status: reviewed
+    version: 1.1.0
+    text: |-
+      This OCF exercise will teach you to call upon
+      extraordinary strength and quickness within your total self,
+      bringing them into action immediately when they are needed most.
+  hplus.function.ocf-prf-006.function-body:
+    status: reviewed
+    version: 1.2.0
+    cue_template:
+      function_id: OCF-PRF-006
+      allowed:
+      - cue.id.OCF-CMD-PRF-006-RELEASE
+      - cue.primary
+    text: |-
+      From this moment forward, within your total self
+      there is an exceptional reserve of strength and quickness,
+      ready to be called upon when an immediate need arises.
+
+      You will recognize the moment that calls for action.
+      Your awareness will become clear and direct.
+      Your mind and body will unite around what must be done.
+
+      When you need this extraordinary response,
+      bring the necessary action clearly into your awareness.
+      Inhale deeply and gently hold your breath.
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth.
+
+      Immediately, your total self will respond as one.
+      Your conscious mind, subconscious mind, nervous system,
+      and muscles will work together in complete coordination.
+
+      Hesitation and unnecessary thought will fall away.
+      Your movements will become direct, rapid, and precise.
+      Every part of your body needed for the action
+      will contribute its strength in perfect timing.
+
+      You will draw upon reserves of power and speed
+      beyond what you ordinarily recognize within yourself,
+      concentrating your entire capacity into the moment.
+
+      Your awareness will remain clear.
+      Your action will be decisive.
+      The strength and quickness you call upon
+      will be directed toward the immediate purpose.
+
+      This exceptional response is temporary,
+      arising when you deliberately call upon it.
+      When its purpose is complete, bring Strong-Quick
+      clearly into your awareness.
+
+      Inhale deeply, hold your breath,
+      think or say in your mind, "{{ cue.id.OCF-CMD-PRF-006-RELEASE }},"
+      and exhale slowly through your mouth.
+
+      The present application will end,
+      and your physical system will return smoothly to balance.
+      Your learned ability will remain available
+      whenever another need arises.
+
+      Each time you use this function,
+      your total self will recognize and respond
+      to your intention more readily and effectively.
+  hplus.function.ocf-prf-006.closer:
+    status: reviewed
+    version: 1.2.0
+    cue_template:
+      function_id: OCF-PRF-006
+      allowed:
+      - cue.id.OCF-CMD-PRF-006-RELEASE
+      - cue.primary
+    text: |-
+      Remember, when an immediate need calls for extraordinary
+      strength and quickness, inhale deeply, hold your breath,
+      and think or say in your mind, "{{ cue.primary }}."
+      Then exhale slowly through your mouth.
+
+      When the need has passed, bring Strong-Quick to mind,
+      inhale, hold your breath, think or say "{{ cue.id.OCF-CMD-PRF-006-RELEASE }},"
+      and exhale slowly through your mouth.
+
+      This concludes your OCF Strong-Quick exercise.

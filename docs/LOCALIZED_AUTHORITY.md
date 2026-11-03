@@ -146,3 +146,25 @@ the manifest, then retires inactive predecessor words. This preserves a complete
 active pack throughout the operation. Historical validation and present-day locale
 resolution remain deliberately separate. Readable function renaming is still L4;
 this stage keeps all 58 current function filenames unchanged.
+
+## L4: stable-ID-first readable filenames
+
+`python -m ocf_tools.localized_filenames` emits the deterministic 58-function
+path map. `--apply` stages every target with unchanged bytes, records exact
+predecessor archives, switches the manifest only when all targets exist, then
+replaces inactive old paths with word-free historical references. A shared
+migration lease prevents competing migrations. Existing destinations are never
+overwritten except the separately hash-verified historical Empathize reference;
+its earlier identity remains reproducible through both checked archive layers.
+
+All 58 active en-US filenames now use `OCF-…-Readable-Title.yaml`. Lookup still
+uses the stable ID inside the document, not a title suffix. The suffix is NFC,
+casefold collisions are rejected, Windows-invalid/reserved names are handled,
+and UTF-8 component lengths are bounded. Partial locales remain partial.
+
+The filename-005 map records original logical paths and unchanged content hashes.
+HPLUS-015 and original narration fingerprints continue to resolve their exact
+predecessor bytes; their locks are not rewritten to accept new filenames. Current
+readers, cue previews, authoring metadata and generated field-source traces use
+the manifest-selected filename. Older physical paths are compatibility references
+only and are never registered as duplicate active definitions.

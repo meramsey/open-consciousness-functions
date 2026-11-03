@@ -1,0 +1,165 @@
+schema_version: '1.0'
+locale: en-US
+domain: function
+function_id: OCF-BOD-010
+title:
+  text: Nutricia
+  status: canonical
+  version: 1.0.0
+description:
+  text: Supports conscious selection between fuller use of food energy and nourishment, or sufficient
+    nourishment with reduced unnecessary energy retention and storage.
+  status: canonical
+  version: 1.0.1
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-BOD-010-PRIMARY
+  display_cue:
+    text: PLUS-FOOD MORE
+  spoken_cue:
+    text: Plus Food More
+    status: reviewed
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-BOD-010-FOOD-LESS
+  display_cue:
+    text: PLUS-FOOD LESS
+  spoken_cue:
+    text: Plus Food Less
+    status: reviewed
+  label:
+    text: Alternative food-energy mode
+    status: canonical
+    version: 1.0.1
+  explanation:
+    text: Selects the alternative retention response; it does not decrement or modify a Food More intensity
+      level.
+    status: canonical
+    version: 1.0.1
+  usage:
+    text: Use the complete Plus Food Less cue to select sufficient nourishment with reduced unnecessary
+      retention and storage.
+    status: canonical
+    version: 1.0.1
+  role: mode
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-bod-010.opener:
+    status: reviewed
+    version: 1.3.0
+    text: |-
+      This OCF exercise will teach you to direct how your
+      body extracts, uses, and retains energy and nourishment
+      from the food you eat.
+  hplus.function.ocf-bod-010.function-body:
+    status: reviewed
+    version: 1.3.0
+    cue_template:
+      function_id: OCF-BOD-010
+      allowed:
+      - cue.id.OCF-CMD-BOD-010-FOOD-LESS
+      - cue.primary
+    text: |-
+      From this moment forward, your body's natural processes
+      of digestion, nourishment, and energy utilization
+      are becoming more efficient and balanced.
+
+      Your body knows how to obtain the nourishment it needs,
+      use that nourishment effectively, and maintain
+      its natural balance.
+
+      This healthy pattern is becoming a permanent,
+      automatic part of your body's everyday function.
+
+      Whenever you wish to direct how your body
+      uses the food you eat, you have two commands.
+
+      The first is "{{ cue.primary }}."
+
+      When you use {{ cue.primary }}, your body will
+      extract the greatest possible useful nourishment
+      and energy from the food you eat.
+
+      It will convert and distribute that nourishment
+      quickly and efficiently, making the fullest
+      possible use of the food available.
+
+      The second command is "{{ cue.id.OCF-CMD-BOD-010-FOOD-LESS }}."
+
+      When you use {{ cue.id.OCF-CMD-BOD-010-FOOD-LESS }}, your body will
+      recognize that nourishment is plentiful
+      and there is no need to store unnecessary excess.
+
+      Your body will take from the food you eat
+      exactly what it needs for healthy energy,
+      balance, and maintenance.
+
+      Any excess that is not needed will be
+      safely and efficiently processed and released
+      through your body's natural systems,
+      rather than unnecessarily retained or stored.
+
+      Your body will maintain the nourishment it needs
+      while releasing what serves no useful purpose.
+
+      Your body's natural intelligence knows the difference
+      between what is needed and what is unnecessary.
+
+      To activate either function, close your eyes.
+
+      Inhale deeply and gently hold your breath.
+
+      Think or say in your mind, "{{ cue.primary }}"
+      or "{{ cue.id.OCF-CMD-BOD-010-FOOD-LESS }}," according to your desire.
+
+      Then exhale slowly through your mouth
+      and open your eyes.
+
+      Your body will respond to your chosen command,
+      directing its use of food energy accordingly.
+
+      The more you use these functions,
+      the easier and more effective they will become.
+
+      Your body's natural processes of nourishment,
+      energy utilization, and metabolic balance
+      will continue working automatically,
+      every day and every night.
+  hplus.function.ocf-bod-010.closer:
+    status: reviewed
+    version: 1.3.0
+    cue_template:
+      function_id: OCF-BOD-010
+      allowed:
+      - cue.id.OCF-CMD-BOD-010-FOOD-LESS
+      - cue.primary
+    text: |-
+      Remember, whenever you wish to direct how your body
+      uses food energy, close your eyes, inhale deeply,
+      and hold your breath.
+
+      Think or say in your mind, "{{ cue.primary }}"
+      or "{{ cue.id.OCF-CMD-BOD-010-FOOD-LESS }}," according to your desire.
+
+      Then exhale slowly through your mouth
+      and open your eyes.
+
+      This concludes your OCF Nutricia exercise.

@@ -116,9 +116,11 @@ def test_all_55_previews_and_177_resolved_entries_are_current():
     assert len(records) == 58
     assert not [name for name in plans if name.startswith("locales/")]
     for owner in records:
-        source = cue_headers.REPO_ROOT / "locales/en-US" / f"hplus-{owner.id}.yaml"
-        if not source.exists():
-            source = source.with_name(f"original-{owner.id}.yaml")
+        source = (
+            cue_headers.REPO_ROOT
+            / "locales/en-US"
+            / catalog.require("en-US").localized_function_files[owner.id]
+        )
         data = yaml.safe_load(source.read_text())
         assert data["function_id"] == owner.id
         assert (

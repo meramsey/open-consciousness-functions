@@ -16,7 +16,7 @@ AUTHORITY_SHA256 = "b3fe1cd421aa10d6a6d9da1134f1110e08a731e201d1d6c126acb815efc8
 RETIREMENT = "function-content/editorial/localized-retirement-004.json"
 RETIREMENT_SHA256 = "97236e0165be4fa9f6757d6b6625e2250a1892497f200aff20e8ca64e38ceb81"
 FILENAMES = "function-content/editorial/localized-filenames-005.json"
-FILENAMES_SHA256 = "PENDING"
+FILENAMES_SHA256 = "ece5435b619e400bd3f2ddeb414ae07d69bd6265e38629cfab0c909dc793c11f"
 
 
 def _sha(text: str) -> str:
