@@ -127,7 +127,7 @@ def test_structural_replay_accepts_only_exact_independently_pinned_predecessors(
     monkeypatch.setattr(history, "LEDGER_SHA256", history._sha(old.read_text()))
     assert history.before_structural(tmp_path, name, current) == archive.read_text()
     assert history.before_structural(tmp_path, name, earlier) == earlier
-    with pytest.raises(OCFError, match="successor drift"):
+    with pytest.raises(OCFError, match="successor source drift"):
         history.before_structural(tmp_path, name, "arbitrary changed text")
     old.write_text("tampered older ledger")
     with pytest.raises(OCFError, match="immutable"):

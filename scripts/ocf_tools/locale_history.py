@@ -124,7 +124,7 @@ def before_structural(root: Path, name: str, text: str) -> str:
         if _sha(text) != row["after_sha256"]:
             if _known_predecessor(root, name, text):
                 continue  # Already projected by an older, independently pinned ledger.
-            raise OCFError("historical locale successor drift: " + name)
+            raise OCFError("historical locale successor source drift: " + name)
         text = before
     return text
 
