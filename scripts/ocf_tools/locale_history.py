@@ -45,7 +45,8 @@ def predecessor(root: Path, name: str, text: str) -> str:
         active = (root / relative).resolve()
         if not active.is_relative_to(root.resolve()) or not active.is_file():
             raise OCFError("missing or unsafe localized successor: " + relative)
-        active_text = before_structural(root, relative, active.read_text(encoding="utf-8"))
+        with active.open(encoding="utf-8", newline="") as stream:
+            active_text = before_structural(root, relative, stream.read())
         if _sha(active_text) != checksum:
             raise OCFError("localized resource active source drift: " + relative)
     return row["before"]
