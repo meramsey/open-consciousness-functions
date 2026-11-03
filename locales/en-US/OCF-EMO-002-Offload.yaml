@@ -1,0 +1,160 @@
+schema_version: '1.0'
+locale: en-US
+domain: function
+function_id: OCF-EMO-002
+title:
+  text: Offload
+  status: canonical
+  version: 1.0.0
+description:
+  text: Reduces selected recurring thought and emotional-pattern interference while retaining useful memories
+    and conscious choice.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-EMO-002-PRIMARY
+  display_cue:
+    text: PLUS-OFFLOAD
+  spoken_cue:
+    text: Plus Offload
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-EMO-002-LEGACY-01
+  display_cue:
+    text: PLUS-FADE, FADE
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-emo-002.opener:
+    status: reviewed
+    version: 1.1.0
+    text: |-
+      This OCF exercise will teach you to release
+      and fade away unwanted thoughts,
+      recurring emotional patterns, and mental
+      distractions whenever you choose.
+  hplus.function.ocf-emo-002.function-body:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-EMO-002
+      allowed:
+      - cue.primary
+    text: |-
+      From this moment forward, you have the ability
+      to release unwanted thoughts and emotional patterns
+      that continue to interfere with your awareness.
+
+      Whenever a recurring thought, feeling,
+      or mental pattern no longer serves you,
+      you can choose to release it completely.
+
+      Bring the particular thought or pattern
+      you wish to remove clearly into your mind.
+
+      Inhale deeply and gently hold your breath.
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth
+      and breathe deeply and naturally.
+
+      As you exhale, the unwanted thought
+      or emotional pattern will immediately
+      begin to fade from your awareness.
+
+      Feel it becoming weaker and weaker,
+      smaller and smaller, moving farther away
+      until it disappears completely.
+
+      Its influence over your attention
+      and emotions will fade away,
+      leaving your mind peaceful,
+      clear, and free.
+
+      The selected pattern will remain
+      outside your conscious awareness,
+      quiet and inactive,
+      until you consciously desire otherwise.
+
+      Your memories, knowledge, and useful
+      understanding will remain available,
+      while the unwanted interference
+      no longer occupies your mind.
+
+      Your thoughts will become calm and organized,
+      and your attention will return naturally
+      to whatever you choose.
+
+      From this moment forward, this ability
+      to off-load unwanted mental patterns
+      is permanently established within you.
+
+      Once you release a selected pattern,
+      your mind will naturally maintain
+      that freedom from unnecessary interference.
+
+      You remain in complete control,
+      choosing what to release
+      and what you wish to retain.
+
+      Each time you use {{ cue.primary }},
+      releasing unwanted thought patterns
+      becomes easier, faster, and more effective.
+
+      Your mind remains clear, calm, and free
+      to focus on the thoughts, feelings,
+      and experiences you truly desire.
+  hplus.function.ocf-emo-002.closer:
+    status: reviewed
+    version: 1.1.1
+    cue_template:
+      function_id: OCF-EMO-002
+      allowed:
+      - cue.primary
+    text: |-
+      Remember, whenever you wish to release
+      a recurring thought or unwanted emotional
+      pattern, bring it clearly into your mind.
+
+      Inhale deeply and hold your breath.
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth
+      and breathe deeply and naturally.
+
+      This concludes your OCF Offload exercise.

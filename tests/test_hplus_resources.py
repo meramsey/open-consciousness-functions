@@ -123,16 +123,20 @@ def test_all_55_legacy_functions_have_review_files_without_fabricated_missing_sp
     }
     unavailable = [owner for owner in owners if owner.source_availability == "unavailable"]
     assert len(unavailable) == 16
+    catalog = LocaleCatalog()
     for owner in owners:
         assert owner.audio_script_status == "approved"
-        path = REPO_ROOT / "locales/en-US" / f"hplus-{owner.id}.yaml"
+        path = (
+            REPO_ROOT
+            / "locales/en-US"
+            / catalog.require("en-US").localized_function_files[owner.id]
+        )
         doc = yaml.safe_load(path.read_text())
         from ocf_tools.locale_history import before_consolidation
 
+        logical = f"locales/en-US/hplus-{owner.id}.yaml"
         historical = yaml.safe_load(
-            before_consolidation(
-                REPO_ROOT, path.relative_to(REPO_ROOT).as_posix(), path.read_text()
-            )
+            before_consolidation(REPO_ROOT, logical, (REPO_ROOT / logical).read_text())
         )
         # Editorial notes moved out of the human-editable resource. Bind the
         # current wording/status/version to its exact checked provenance copy.

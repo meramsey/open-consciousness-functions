@@ -1,0 +1,151 @@
+schema_version: '1.0'
+locale: en-US
+domain: function
+function_id: OCF-COM-001
+title:
+  text: Speak Up
+  status: canonical
+  version: 1.0.0
+description:
+  text: Supports confident, clear verbal expression.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-COM-001-PRIMARY
+  display_cue:
+    text: PLUS-SPEAK UP
+  spoken_cue:
+    text: Plus Speak Up
+    status: reviewed
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-com-001.opener:
+    status: reviewed
+    version: 1.1.0
+    text: |-
+      This OCF exercise will strengthen your ability
+      to speak, read aloud, and communicate
+      clearly, confidently, and effectively,
+      expressing yourself naturally and with ease.
+  hplus.function.ocf-com-001.function-body:
+    status: reviewed
+    version: 1.1.0
+    cue_template:
+      function_id: OCF-COM-001
+      allowed:
+      - cue.primary
+    text: |-
+      From this moment forward, your ability to speak,
+      read aloud, and communicate with others
+      is becoming clearer, stronger, and more effective.
+
+      Your thoughts naturally organize themselves
+      into clear, meaningful words,
+      allowing you to express exactly
+      what you wish to communicate.
+
+      You speak calmly, confidently,
+      and fluently, without unnecessary
+      hesitation, effort, or strain.
+
+      Your breathing becomes smooth and natural,
+      providing the comfortable, steady airflow
+      needed for clear and effortless speech.
+
+      Your vocal cords, throat, mouth,
+      tongue, and lips work together
+      in smooth and precise coordination.
+
+      Words form naturally and easily,
+      with clear pronunciation,
+      comfortable rhythm, and confident expression.
+
+      Whenever you read aloud,
+      you recognize written words quickly,
+      understand their meaning,
+      and pronounce them clearly and accurately.
+
+      Your mind selects the appropriate words
+      and arranges them naturally,
+      allowing your ideas to flow
+      smoothly into spoken expression.
+
+      You communicate with clarity,
+      confidence, and understanding,
+      expressing your meaning exactly
+      as you intend.
+
+      Even in unfamiliar situations,
+      you remain calm and self-assured,
+      speaking naturally and effectively.
+
+      From this moment forward,
+      these abilities are permanently
+      established and growing within you.
+
+      Your mind, breathing, and voice
+      will automatically work together,
+      making fluent and confident
+      communication increasingly natural.
+
+      Whenever you wish to strengthen
+      your speaking ability even more,
+      inhale deeply and gently hold your breath.
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth,
+      as though gently blowing out a candle.
+
+      Your thoughts will flow smoothly
+      into clear, confident speech,
+      and you will express yourself
+      naturally, comfortably, and effectively.
+
+      Each time you use {{ cue.primary }},
+      your ability to speak and communicate
+      becomes easier, clearer, and more effective.
+
+      This growing ability remains with you,
+      strengthening naturally every day
+      through speaking, reading, and communication.
+  hplus.function.ocf-com-001.closer:
+    status: reviewed
+    version: 1.1.0
+    cue_template:
+      function_id: OCF-COM-001
+      allowed:
+      - cue.primary
+    text: |-
+      Remember, whenever you wish to speak,
+      read aloud, or communicate more clearly
+      and confidently, inhale deeply
+      and hold your breath.
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth,
+      as though gently blowing out a candle.
+
+      This concludes your OCF Speak Up exercise.

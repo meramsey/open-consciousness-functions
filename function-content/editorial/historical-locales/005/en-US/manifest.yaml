@@ -1,0 +1,240 @@
+schema_version: '1.0'
+locale: en-US
+language_name: English (United States)
+direction: ltr
+status: canonical
+semantic_version: 1.12.0
+resources:
+- file: original-OCF-EXP-006.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: original-OCF-EXP-003.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: original-OCF-EXP-005.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: shared-original-draft-ui.yaml
+  domain: ui
+  description: Shared locale labels retained after function metadata retirement.
+- file: shared-ui.yaml
+  domain: ui
+  description: Shared locale labels retained after function metadata retirement.
+- file: shared-commands.yaml
+  domain: ui
+  description: Shared locale labels retained after function metadata retirement.
+- file: narration.yaml
+  domain: narration
+  description: 'Listener-facing spoken narration. Never falls back: a missing key is a pre-render error.'
+- file: functions.yaml
+  domain: narration
+  description: Per-function narration templates. Command wording is metadata, never translated.
+- file: preparation-learning.yaml
+  domain: narration
+  description: Approved OCF Preparation Learning en-US RC1 fixed narration and reusable state/count/return
+    resources; production audio remains separate.
+- file: hplus-body-comfort.yaml
+  domain: narration
+  description: Shared HPlus body comfort
+- file: hplus-transmutation-box.yaml
+  domain: narration
+  description: Human-approved shared OCF Transmutation Box adaptation; historical source was not authenticated.
+- file: hplus-relaxation.yaml
+  domain: narration
+  description: Human-approved shared OCF relaxation adaptation; source provenance was not provided.
+- file: hplus-focus10.yaml
+  domain: narration
+  description: Shared Focus 10 induction and return-ready wording
+- file: hplus-shared-session-002.yaml
+  domain: narration
+  description: Versioned shared-session narration successor for the pre-waking twentieth-state instruction
+- file: hplus-focus11-open.yaml
+  domain: narration
+  description: Shared Focus 11 opening and learning explanation
+- file: hplus-focus11-close.yaml
+  domain: narration
+  description: Shared Focus 11 consolidation and close
+- file: hplus-focus20.yaml
+  domain: narration
+  description: Human-approved shared OCF Focus 20 narration; historical source provenance was not provided.
+- file: hplus-waking-return.yaml
+  domain: narration
+  description: Human-approved shared OCF waking-return adaptation; no authenticated historical source
+    was supplied.
+- file: hplus-OCF-FND-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SLP-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-AUT-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-003.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-004.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-005.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-006.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-007.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-008.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-009.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-010.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-011.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-012.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-013.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-014.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-015.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-COG-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-COG-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-COG-003.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-COG-004.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-COG-005.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-COG-006.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-COG-007.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-COM-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-EMG-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-EMG-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-EMO-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-EMO-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-EMO-003.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-EXP-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-EXP-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-FND-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-FND-003.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-FND-004.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-FND-005.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-FND-006.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-LIF-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-PRF-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-PRF-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-PRF-003.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-PRF-004.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-PRF-005.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-PRF-006.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SEN-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SEN-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SEN-003.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SEN-004.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SEN-005.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SLP-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SLP-003.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SLP-004.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SLP-005.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SLP-006.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+notes: 'Canonical locale. New narration keys are authored here first; a derived pack
+
+  is then filled from this one, recording its source semantic version.
+
+
+  Versioning: bump `semantic_version` minor for cosmetic rewordings (no stale
+
+  translations), major when the meaning of a key changes (translations go stale
+
+  and `ocf locale validate` reports them).
+
+  '

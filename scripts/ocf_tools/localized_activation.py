@@ -53,7 +53,14 @@ def plan(root=REPO_ROOT, *, records=None, catalog=None):
     compatibility = {}
     for resource in manifest["resources"]:
         filename = resource["file"]
-        if filename == "OCF-EMO-003-Empathize.yaml":
+        if (
+            filename == "OCF-EMO-003-Empathize.yaml"
+            and catalog.require("en-US")
+            .localized_functions.get("OCF-EMO-003", {})
+            .get("title", {})
+            .get("source")
+            == "function-yaml"
+        ):
             resource["file"] = "hplus-OCF-EMO-003.yaml"
             filename = resource["file"]
         if filename in filenames:

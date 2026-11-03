@@ -1,0 +1,149 @@
+schema_version: '1.0'
+locale: en-US
+domain: function
+function_id: OCF-COG-002
+title:
+  text: Mental Calculation
+  status: canonical
+  version: 1.0.0
+description:
+  text: Speeds mental arithmetic and number processing.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-COG-002-PRIMARY
+  display_cue:
+    text: PLUS-CALCULATE
+  spoken_cue:
+    text: Plus Calculate
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-cog-002.opener:
+    status: reviewed
+    version: 1.2.0
+    text: |-
+      This OCF exercise will strengthen your ability
+      to understand, remember, and work with numbers,
+      improving your mathematical understanding,
+      calculation speed, accuracy, and intuition.
+  hplus.function.ocf-cog-002.function-body:
+    status: reviewed
+    version: 1.2.0
+    cue_template:
+      function_id: OCF-COG-002
+      allowed:
+      - cue.primary
+    text: |-
+      From this moment forward, your ability to understand,
+      remember, and work with numbers is becoming
+      stronger, faster, and more accurate.
+
+      Whenever you see or hear numbers,
+      you recognize and understand them clearly.
+
+      Numbers and numerical sequences become easier
+      to remember and retrieve whenever you need them.
+
+      Your ability to perform arithmetic, algebra,
+      geometry, trigonometry, and other mathematical
+      operations becomes faster, clearer,
+      and increasingly accurate.
+
+      Mathematical equations and symbols
+      become clear and meaningful to you.
+
+      You recognize relationships between numbers,
+      shapes, angles, equations, and patterns,
+      understanding how they connect
+      and work together.
+
+      Your mind naturally recognizes the connections
+      between numbers, quantities, shapes,
+      patterns, form, and energy.
+
+      From basic arithmetic to advanced mathematics,
+      your mind will naturally recognize underlying
+      principles, visualize solutions, and solve
+      problems with increasing clarity and precision.
+
+      New mathematical ideas, insights, and solutions
+      will emerge naturally into your conscious awareness.
+
+      You will express these ideas with clarity,
+      confidence, and precise mathematical accuracy.
+
+      From this moment forward, this growing ability
+      is permanently established within you.
+
+      Your mind will automatically recognize,
+      organize, and understand numerical information
+      with increasing speed and efficiency.
+
+      Your mathematical knowledge and understanding
+      will continue expanding naturally,
+      becoming stronger with every experience.
+
+      Whenever you wish to focus your mathematical
+      abilities more intensely, inhale deeply
+      and gently hold your breath.
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth.
+
+      Your mind will immediately become clear,
+      focused, and responsive to the numbers
+      or mathematical problem before you.
+
+      Calculations will flow quickly and accurately,
+      and the relationships between numbers
+      will become clear and easy to understand.
+
+      Each time you use {{ cue.primary }},
+      your mathematical abilities become
+      easier, faster, and more effective.
+
+      Your natural ability to understand,
+      remember, and work with numbers
+      will continue strengthening automatically,
+      every day and every night.
+  hplus.function.ocf-cog-002.closer:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-COG-002
+      allowed:
+      - cue.primary
+    text: |-
+      Remember, whenever you wish to strengthen
+      your ability to calculate or understand numbers,
+      inhale deeply and hold your breath.
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth.
+
+      This concludes your OCF Mental Calculation exercise.

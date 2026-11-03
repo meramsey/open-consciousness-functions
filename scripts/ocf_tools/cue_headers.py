@@ -116,7 +116,8 @@ def plans(root: Path = REPO_ROOT) -> dict[str, str]:
     for owner in records:
         # Existing complete source-English files only. Translated previews use
         # header() with their reviewed locale; there is no English fallback.
-        path = root / "locales/en-US" / f"hplus-{owner.id}.yaml"
+        active_file = catalog.require("en-US").localized_function_files.get(owner.id)
+        path = root / "locales/en-US" / (active_file or f"hplus-{owner.id}.yaml")
         if not path.is_file():
             path = root / "locales/en-US" / f"original-{owner.id}.yaml"
         if not path.is_file():

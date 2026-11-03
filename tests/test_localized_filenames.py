@@ -41,8 +41,12 @@ def test_complete_catalog_plan_does_not_overwrite_unlisted_historical_pilot():
         for row in report["mapping"]
     )
     assert report["blockers"] == []
-    assert any(
-        row["function_id"] == "OCF-EMO-003"
-        for row in report["verified_historical_destination_reuse"]
-    )
+    assert report["verified_historical_destination_reuse"] == []
+    assert all(row["old_path"] == row["new_path"] for row in report["mapping"])
+    import json
+
+    from ocf_tools.localized_filenames import LEDGER, REPO_ROOT
+
+    ledger = json.loads((REPO_ROOT / LEDGER).read_text())
+    assert ledger["count"] == len(ledger["mapping"]) == 58
     assert filename_plan(locale="es")["count"] == 0  # Partial locale, not invented translations.
