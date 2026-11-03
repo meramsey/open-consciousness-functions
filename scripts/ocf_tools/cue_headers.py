@@ -11,6 +11,7 @@ import yaml
 
 from .cue_templates import is_active, value
 from .locale import LocaleCatalog
+from .locale_history import read_logical
 from .models import function_from_dict
 from .paths import REPO_ROOT
 from .utils import OCFError
@@ -227,9 +228,9 @@ def verify(root: Path = REPO_ROOT) -> list[str]:
     if errors:
         return errors
     for name in record["files"]:
-        predecessor(root, name, contained(root, name).read_text(encoding="utf-8"))
+        predecessor(root, name, read_logical(root, name))
     for name in record.get("plans", {}):
-        predecessor(root, name, contained(root, name).read_text(encoding="utf-8"))
+        predecessor(root, name, read_logical(root, name))
     from .options_successor import before_texts
 
     if (

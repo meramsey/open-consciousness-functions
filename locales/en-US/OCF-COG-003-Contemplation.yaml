@@ -50,11 +50,38 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: close
-tags: []
-common_uses: []
+tags:
+- text: reflection
+  status: draft
+- text: inner-awareness
+  status: draft
+- text: calm
+  status: draft
+common_uses:
+- text: Making room for quiet reflection on a personal question.
+  status: draft
+- text: Exploring internal dialogue while distinguishing impressions from verified facts.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-EXP-006
+    relationship_type: related
+    description:
+      text: Compare a deliberately opened and closed reflective space with ongoing intuitive awareness and
+        discernment.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-COG-003
+      field: description
+      sha256: 08c9b123c414deeb14992ee27edad26887bd199e9b85dbe80c576c2761bd6db6
+    - function_id: OCF-EXP-006
+      field: description
+      sha256: b10fe904bf3c9d6eb4f9bb5833b6499429bcfe5d8d9ed76340b5832d0ec617c5
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

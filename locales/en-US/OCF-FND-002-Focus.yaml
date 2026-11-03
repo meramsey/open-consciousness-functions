@@ -34,8 +34,18 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: attention
+  status: draft
+- text: concentration
+  status: draft
+- text: self-direction
+  status: draft
+common_uses:
+- text: Choosing one activity to receive sustained attention.
+  status: draft
+- text: Preparing for focused study or deliberate engagement with an experience.
+  status: draft
 relationships:
   related_functions:
   - function_id: OCF-COG-007
@@ -47,6 +57,23 @@ relationships:
       status: reviewed
       version: 0.0.1
   complementary_functions: []
+  proposals:
+  - function_id: OCF-COG-004
+    relationship_type: complementary
+    description:
+      text: Directed attention and deliberate memory capture have different learning intentions that may
+        be explored as separate practices.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-FND-002
+      field: description
+      sha256: 5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d
+    - function_id: OCF-COG-004
+      field: description
+      sha256: 098e88038844417a6241fc8ae022de3ada9529b0e189e64b2d68691b6c607c92
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

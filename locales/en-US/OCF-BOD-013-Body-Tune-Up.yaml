@@ -40,11 +40,38 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: body-awareness
+  status: draft
+- text: renewal
+  status: draft
+- text: balance
+  status: draft
+common_uses:
+- text: Directing kind attention toward a chosen part of the body.
+  status: draft
+- text: Visualizing whole-body maintenance and renewal without claiming healing or replacing treatment.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-BOD-014
+    relationship_type: related
+    description:
+      text: Compare general maintenance imagery with more specific regeneration imagery, without claiming
+        healing or tissue regrowth.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-BOD-013
+      field: description
+      sha256: a44fe521028bb9f0c208a287a719b331457a6e3ba2a33cdf36f688c8a08e8fcd
+    - function_id: OCF-BOD-014
+      field: description
+      sha256: 2cea77591e70794d361ca5fb500eebea9a729e02833f8b6a9b6d104a85d67468
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

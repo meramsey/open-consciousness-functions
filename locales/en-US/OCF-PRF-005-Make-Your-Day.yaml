@@ -31,11 +31,38 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: intention
+  status: draft
+- text: visualization
+  status: draft
+- text: confidence
+  status: draft
+common_uses:
+- text: Reflecting on the tone and experiences you would like for the coming day.
+  status: draft
+- text: Clarifying daily intentions without expecting control over other people or external events.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-EXP-001
+    relationship_type: related
+    description:
+      text: Compare a day-oriented intention with selecting a particular future condition and completion
+        time; neither guarantees external events.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-PRF-005
+      field: description
+      sha256: 886715fb4fe76c91f0300085673f0402228b0263c129b0bc2e52633de4dafcbc
+    - function_id: OCF-EXP-001
+      field: description
+      sha256: 96441a2896d4d0275209296acfa7772b18459b57d672c7a0d5a3932475680e74
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

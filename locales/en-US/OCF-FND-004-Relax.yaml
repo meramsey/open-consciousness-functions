@@ -48,11 +48,38 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
-tags: []
-common_uses: []
+tags:
+- text: relaxation
+  status: draft
+- text: calm
+  status: draft
+- text: body-awareness
+  status: draft
+common_uses:
+- text: Taking time to explore physical ease and reduced unnecessary tension.
+  status: draft
+- text: Practicing a quiet transition from mental busyness toward rest.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-EMO-001
+    relationship_type: complementary
+    description:
+      text: Physical and mental relaxation differs from releasing a selected interfering emotion; choose
+        whichever intention fits the situation.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-FND-004
+      field: description
+      sha256: 7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9
+    - function_id: OCF-EMO-001
+      field: description
+      sha256: 864bf2596a2262e1921925522d903dca921655e4d26850f86ba2b9a6e296d1b0
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

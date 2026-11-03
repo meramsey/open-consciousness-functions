@@ -33,8 +33,19 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: body-awareness
+  status: draft
+- text: visualization
+  status: draft
+- text: balance
+  status: draft
+common_uses:
+- text: Visualizing coordinated protective responses and a return to balance.
+  status: draft
+- text: Reflecting on immune readiness as an intention, not proof of protection from illness or a substitute
+    for care.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

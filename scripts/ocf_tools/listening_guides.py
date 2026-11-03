@@ -161,12 +161,38 @@ def function_markdown(record, content, *, documentation=None, narration_sections
             ]
         if not documentation.get("related_functions"):
             lines += [
-                "No approved complementary-function link is declared. This does not prevent independent choice."
+                "No approved related-function link is declared. This does not prevent independent choice."
             ]
+        lines += ["", "## Complementary functions", ""]
+        complementary = documentation.get("localized_relationships", {}).get(
+            "complementary_functions", []
+        )
+        for relation in complementary:
+            lines += [
+                f"- [{relation['function_id']}]({relation['function_id']}.md). {relation['description']['text']} (status: {relation['description'].get('status', 'unspecified')})."
+            ]
+        if not complementary:
+            lines += ["No approved complementary-function link is declared."]
+        proposals = documentation.get("relationship_proposals", [])
+        if proposals:
+            lines += [
+                "",
+                "## Proposed optional relationships — DRAFT",
+                "",
+                "Editorial suggestions, not reviewed guidance, prerequisites or instructions to stack recordings. Each practice remains independently chosen.",
+                "",
+            ]
+            for proposal in proposals:
+                lines += [
+                    f"- DRAFT {proposal['relationship_type']}: [{proposal['title']['text']}]({proposal['function_id']}.md). {proposal['description']['text']} No reciprocal link is implied."
+                ]
         for field, heading in (("common_uses", "Common uses"), ("tags", "Tags")):
             if documentation.get(field):
                 lines += ["", "## " + heading, ""]
-                lines += ["- " + value["text"] for value in documentation[field]]
+                lines += [
+                    "- " + value["text"] + " (" + value.get("status", "unspecified") + ")"
+                    for value in documentation[field]
+                ]
         lines += ["", "## Historical lookup and compatibility", ""]
         from .commands import is_active, resolve_phrase
 
@@ -373,9 +399,23 @@ def reference_documents(records, *, catalog=None):
     relations = [
         "# Relationship map",
         "",
-        "All links are approved optional comparisons, not prerequisites or combined protocols.",
+        "The reviewed links below are optional comparisons, not prerequisites or combined protocols. Draft proposals are separated and are not approvals.",
         "",
     ]
+    complementary = [
+        "# Complementary function map",
+        "",
+        "No new complementary links have human approval. DRAFT suggestions below are optional separate practices, not combined protocols or audio-stacking instructions.",
+        "",
+    ]
+    tags = [
+        "# Tag discovery",
+        "",
+        "All current tag assignments and common-use additions are DRAFT editorial metadata, not spoken commands or reviewed efficacy claims.",
+        "",
+    ]
+    tag_rows = {}
+    proposed = []
     for function in index["functions"]:
         identity = function["function_id"]
         cues += [f"## [{identity}: {function['title']['text']}](functions/{identity}.md)", ""]
@@ -391,6 +431,23 @@ def reference_documents(records, *, catalog=None):
             relations += [
                 f"- [{identity}: {function['title']['text']}](functions/{identity}.md) -> [{relation['function_id']}: {relation['title']['text']}](functions/{relation['function_id']}.md). {relation['description']['text']} Approval: {relation['approval']}."
             ]
+        for value in function.get("tags", []):
+            tag_rows.setdefault(value["text"], []).append(
+                (identity, function["title"]["text"], value.get("status", "unspecified"))
+            )
+        for proposal in function.get("relationship_proposals", []):
+            line = f"- DRAFT {proposal['relationship_type']}: [{identity}: {function['title']['text']}](functions/{identity}.md) -> [{proposal['function_id']}: {proposal['title']['text']}](functions/{proposal['function_id']}.md). {proposal['description']['text']} Reciprocal proposed: {str(proposal['reciprocal_proposed']).lower()}."
+            (
+                complementary if proposal["relationship_type"] == "complementary" else proposed
+            ).append(line)
+    relations += ["", "## Draft optional suggestions", "", *proposed]
+    for tag, members in sorted(tag_rows.items()):
+        tags += [f"## {tag}", ""]
+        tags += [
+            f"- [{identity}: {name}](functions/{identity}.md) ({status})."
+            for identity, name, status in members
+        ]
+        tags += [""]
     order = _guide_catalog(records).replace(
         "# Open Consciousness Functions — Guide Collection", "# Learning order", 1
     )
@@ -403,6 +460,8 @@ def reference_documents(records, *, catalog=None):
         "cue-reference.md": "\n".join(cues).rstrip() + "\n",
         "relationship-map.md": "\n".join(relations).rstrip() + "\n",
         "learning-order.md": order,
+        "tag-discovery.md": "\n".join(tags).rstrip() + "\n",
+        "complementary-map.md": "\n".join(complementary).rstrip() + "\n",
     }
 
 
@@ -707,7 +766,13 @@ def complete_pdf_bytes(records, documents, *, edition="0.3.0"):
                 )
             )
             append_markdown("\n".join(lines[1:]))
-    for name in ("cue-reference.md", "relationship-map.md", "learning-order.md"):
+    for name in (
+        "cue-reference.md",
+        "relationship-map.md",
+        "learning-order.md",
+        "tag-discovery.md",
+        "complementary-map.md",
+    ):
         if name in documents:
             heading = documents[name].splitlines()[0].removeprefix("# ")
             story.extend([PageBreak(), Paragraph(escape(heading), category_style)])
@@ -729,7 +794,22 @@ def complete_pdf_bytes(records, documents, *, edition="0.3.0"):
     )
     document.multiBuild(story, onFirstPage=page_number, onLaterPages=page_number)
     data = stream.getvalue()
-    validate_handbook(data, records, page_map)
+    validate_handbook(
+        data,
+        records,
+        page_map,
+        reference_titles={
+            documents[name].splitlines()[0].removeprefix("# ")
+            for name in (
+                "cue-reference.md",
+                "relationship-map.md",
+                "learning-order.md",
+                "tag-discovery.md",
+                "complementary-map.md",
+            )
+            if name in documents
+        },
+    )
     return data, page_map
 
 
@@ -764,7 +844,13 @@ def validate_handbook(data, records, page_map, *, reference_titles=None):
     expected.update(
         f"{record.id}: {localized_title(record, catalog=catalog)}" for record in records
     )
-    references = {"Cue reference", "Relationship map", "Learning order"}
+    references = {
+        "Cue reference",
+        "Relationship map",
+        "Learning order",
+        "Tag discovery",
+        "Complementary function map",
+    }
     if reference_titles is not None:
         expected.update(reference_titles)
     elif references & set(outlines):
@@ -885,6 +971,13 @@ def portable_index_html(records, *, edition="0.3.0", include_references=False) -
                             localized_title(record, catalog=catalog),
                             cue,
                             description,
+                            " ".join(
+                                value["text"]
+                                for field in ("tags", "common_uses")
+                                for value in (
+                                    catalog.require("en-US").localized_functions.get(record.id, {})
+                                ).get(field, [])
+                            ),
                         )
                     )
                 ),
@@ -929,12 +1022,12 @@ def portable_index_html(records, *, edition="0.3.0", include_references=False) -
         "<h1>Function Guides</h1><p>Readable, self-contained guides for all implemented OCF functions. These documents are not listening approval or release authorization.</p>"
         "<p><a href='listening-guide.html'>General listening guide</a> · <a href='complete-guide.pdf'>Complete PDF handbook</a> · <a href='index.pdf'>PDF directory</a>"
         + (
-            " · <a href='cue-reference.html'>Cue reference</a> · <a href='relationship-map.html'>Relationship map</a> · <a href='learning-order.html'>Learning order</a>"
+            " · <a href='cue-reference.html'>Cue reference</a> · <a href='relationship-map.html'>Relationship map</a> · <a href='learning-order.html'>Learning order</a> · <a href='tag-discovery.html'>Tag discovery</a> · <a href='complementary-map.html'>Complementary map</a>"
             if include_references
             else ""
         )
         + "</p>"
-        "<label for='search'>Search by title, ID, cue, or description</label><input id='search' type='search' placeholder='Search the 58 function guides'></header>"
+        "<label for='search'>Search by title, ID, cue, or description; also tags and common uses (draft metadata)</label><input id='search' type='search' placeholder='Search the 58 function guides'></header>"
         "<p class='no-results' hidden>No matching guides.</p>"
         + sections
         + f"<script>{js}</script></main></body></html>\n"
@@ -1175,6 +1268,8 @@ def guide_build_manifest(records, edition, *, source_revision=None):
             "cue-reference.md": "Cue reference",
             "relationship-map.md": "Relationship map",
             "learning-order.md": "Learning order",
+            "tag-discovery.md": "Tag discovery",
+            "complementary-map.md": "Complementary function map",
         },
         "audio_included": False,
         "source_inputs": {

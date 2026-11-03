@@ -39,8 +39,18 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: habits
+  status: draft
+- text: intention
+  status: draft
+- text: self-direction
+  status: draft
+common_uses:
+- text: Practicing a consciously selected way of responding in daily life.
+  status: draft
+- text: Reflecting on how a desired behavior could become more familiar and less effortful.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

@@ -232,6 +232,11 @@ remains at 58 functions.
       guide edition is claimed.
 - [ ] Add further human-approved common-use examples where the current source
       provides none; generation must not fabricate editorial content.
+- [x] Populate all 58 en-US function YAMLs with source-based **draft** tags and
+      common-use examples, and separately labeled, evidenced optional companion
+      proposals; these do not count as human editorial approval.
+- [x] Remove the 65 unlisted historical-reference stubs from active en-US storage
+      after verified stub-free historical replay through the existing resolver.
 
 ### Audio baselines, voice privacy, and listening review
 

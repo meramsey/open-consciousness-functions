@@ -1295,6 +1295,37 @@ class LocaleCatalog:
                     )
                     continue
                 key_prefix = f"functions.{function_id.lower()}"
+                for proposal in metadata.get("relationships", {}).get("proposals", []):
+                    if (
+                        proposal.get("status") != "draft"
+                        or proposal.get("description", {}).get("status") != "draft"
+                        or proposal.get("dependency") != "optional"
+                        or proposal.get("relationship_type")
+                        not in {"related", "complementary", "suggested-before", "suggested-after"}
+                    ):
+                        self.problems.append(
+                            f"{pack.locale}: invalid draft relationship classification"
+                        )
+                    target = proposal["function_id"]
+                    if target not in records or target == function_id:
+                        self.problems.append(f"{pack.locale}: invalid relationship target {target}")
+                    evidence_ids = {row["function_id"] for row in proposal["evidence"]}
+                    if evidence_ids != {function_id, target}:
+                        self.problems.append(
+                            f"{pack.locale}: relationship evidence must cover both endpoints"
+                        )
+                    for evidence in proposal["evidence"]:
+                        endpoint = pack.localized_functions.get(evidence["function_id"], {})
+                        text = endpoint.get("description", {}).get("text")
+                        if not isinstance(text, str) or not text.strip():
+                            self.problems.append(
+                                f"{pack.locale}: relationship evidence requires an existing literal localized description"
+                            )
+                            continue
+                        if hashlib.sha256(text.encode("utf-8")).hexdigest() != evidence["sha256"]:
+                            self.problems.append(
+                                f"{pack.locale}: relationship description evidence drift"
+                            )
                 for relation in metadata.get("relationships", {}).get("related_functions", []):
                     key = relation.get("description_key")
                     if not key:
@@ -1953,6 +1984,13 @@ def build_pseudo_pack(
             for key, value in (metadata.get("entries") or {}).items()
         }
         localized_functions[function_id] = result
+    for data in localized_functions.values():
+        for proposal in data.get("relationships", {}).get("proposals", []):
+            proposal["description"]["text"] = _pseudo_text(proposal["description"]["text"])
+            proposal["description"]["notes"] = "Pseudo-localized draft; no editorial approval."
+            for evidence in proposal["evidence"]:
+                text = localized_functions[evidence["function_id"]]["description"]["text"]
+                evidence["sha256"] = hashlib.sha256(text.encode("utf-8")).hexdigest()
     manifest = {
         "schema_version": "1.0",
         "locale": locale,

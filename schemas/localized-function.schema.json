@@ -34,13 +34,27 @@
       "required": ["related_functions", "complementary_functions"],
       "properties": {
         "related_functions": {"$ref": "#/definitions/relationships"},
-        "complementary_functions": {"$ref": "#/definitions/relationships"}
+        "complementary_functions": {"$ref": "#/definitions/relationships"},
+        "proposals": {"description": "Unapproved optional editorial suggestions; never prerequisites or approved canonical links. Source identity is the enclosing function_id.", "type": "array", "items": {"$ref": "#/definitions/relationshipProposal"}, "uniqueItems": true}
       }
     },
     "changelog": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["version", "change"], "properties": {"version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}, "change": {"type": "string", "minLength": 1}}}},
     "entries": {"description": "Canonical readable narration entries. Four-pass playback repetition is not duplicated here.", "type": "object", "minProperties": 1, "propertyNames": {"pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"}}
   },
   "definitions": {
+    "relationshipProposal": {
+      "type": "object", "additionalProperties": false,
+      "required": ["function_id", "relationship_type", "description", "status", "dependency", "reciprocal_proposed", "evidence"],
+      "properties": {
+        "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
+        "relationship_type": {"enum": ["related", "complementary", "suggested-before", "suggested-after"]},
+        "description": {"allOf": [{"$ref": "#/definitions/localizedValue"}, {"required": ["text", "status"], "properties": {"status": {"const": "draft"}}}]},
+        "status": {"const": "draft"},
+        "dependency": {"const": "optional"},
+        "reciprocal_proposed": {"type": "boolean"},
+        "evidence": {"type": "array", "minItems": 2, "uniqueItems": true, "items": {"type": "object", "additionalProperties": false, "required": ["function_id", "field", "sha256"], "properties": {"function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"}, "field": {"const": "description"}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}}
+      }
+    },
     "localizedValue": {
       "oneOf": [
         {"type": "object", "additionalProperties": false, "required": ["text"], "properties": {"text": {"type": "string", "minLength": 1}, "status": {"enum": ["canonical", "draft", "machine", "reviewed"]}, "version": {"description": "Preserve existing versions without inventing one for unversioned predecessors.", "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}, "notes": {"type": ["string", "null"]}}},

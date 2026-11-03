@@ -116,7 +116,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Practicing a consciously selected way of responding in daily life."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on how a desired behavior could become more familiar and less effortful."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -496,13 +505,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "habits"
+          },
+          {
+            "status": "draft",
+            "text": "intention"
+          },
+          {
+            "status": "draft",
+            "text": "self-direction"
+          }
+        ],
         "title": "Automatic Action",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Practicing a consciously selected way of responding in daily life. (draft); Reflecting on how a desired behavior could become more familiar and less effortful. (draft)",
       "compatibility": "unchanged",
       "domains": "automation",
       "legacy_command": "PLUS-AUTOMATE",
@@ -511,7 +534,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/automation/see-be.yaml"
+      "source_file": "functions/automation/see-be.yaml",
+      "tags": "habits (draft); intention (draft); self-direction (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -617,7 +641,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Directed visualization of balanced brain and neck circulation."
+          },
+          {
+            "status": "draft",
+            "text": "Reinforcing an intention toward clear, steady thinking without treating a medical condition."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -876,6 +909,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Compare brain-and-neck circulation imagery with whole-body circulation imagery; these are wellness intentions, not proven vascular treatments."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-BOD-001",
+                  "sha256": "b36a447f0ab1aa40ed7cbee48571818a187987599f70cbc8c28f9c329fca1cdd"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-BOD-002",
+                  "sha256": "7fc2e780a45fd9903a9813e306164e3b1a9782e8401a51f587c347c176d0665d"
+                }
+              ],
+              "function_id": "OCF-BOD-002",
+              "reciprocal_proposed": false,
+              "relationship_type": "related",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -922,13 +980,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "circulation"
+          },
+          {
+            "status": "draft",
+            "text": "visualization"
+          },
+          {
+            "status": "draft",
+            "text": "mental-clarity"
+          }
+        ],
         "title": "Brain Flow",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Directed visualization of balanced brain and neck circulation. (draft); Reinforcing an intention toward clear, steady thinking without treating a medical condition. (draft)",
       "compatibility": "historical-lookup",
       "domains": "body;foundation",
       "legacy_command": "PLUS-FLOW BETTER",
@@ -937,7 +1009,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/brain-repairs.yaml"
+      "source_file": "functions/body/brain-repairs.yaml",
+      "tags": "circulation (draft); visualization (draft); mental-clarity (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -1038,7 +1111,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Imagining smooth, comfortable circulation throughout the body."
+          },
+          {
+            "status": "draft",
+            "text": "Exploring a felt sense of nourishment and vitality as a wellness practice, not a circulation treatment."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -1344,13 +1426,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "circulation"
+          },
+          {
+            "status": "draft",
+            "text": "body-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "visualization"
+          }
+        ],
         "title": "Circulation",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Imagining smooth, comfortable circulation throughout the body. (draft); Exploring a felt sense of nourishment and vitality as a wellness practice, not a circulation treatment. (draft)",
       "compatibility": "historical-lookup",
       "domains": "body;foundation",
       "legacy_command": "PLUS-FLOW SMOOTH",
@@ -1359,7 +1455,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/circulation.yaml"
+      "source_file": "functions/body/circulation.yaml",
+      "tags": "circulation (draft); body-awareness (draft); visualization (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -1465,7 +1562,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Practicing attention to a sense of physical ease."
+          },
+          {
+            "status": "draft",
+            "text": "Exploring a calmer response to discomfort without ignoring symptoms or delaying appropriate care."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -1723,6 +1829,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Area-focused comfort and whole-body relaxation offer separate intentions for ease, without dismissing symptoms or replacing care."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-BOD-003",
+                  "sha256": "ec52113b6d7e845f6235c7b27e94cc87b0166f6c478f1fb69b5e3ab0c4a9c404"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-FND-004",
+                  "sha256": "7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9"
+                }
+              ],
+              "function_id": "OCF-FND-004",
+              "reciprocal_proposed": false,
+              "relationship_type": "complementary",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -1769,13 +1900,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "comfort"
+          },
+          {
+            "status": "draft",
+            "text": "body-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "relaxation"
+          }
+        ],
         "title": "Comfort",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Practicing attention to a sense of physical ease. (draft); Exploring a calmer response to discomfort without ignoring symptoms or delaying appropriate care. (draft)",
       "compatibility": "historical-lookup",
       "domains": "body",
       "legacy_command": "PLUS-55515",
@@ -1784,7 +1929,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/de-discomfort.yaml"
+      "source_file": "functions/body/de-discomfort.yaml",
+      "tags": "comfort (draft); body-awareness (draft); relaxation (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -1890,7 +2036,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Visualizing the body's ordinary cleansing and maintenance processes."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on a sense of freshness and balance without claiming removal of toxins or replacing medical care."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -2195,13 +2350,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "body-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "renewal"
+          },
+          {
+            "status": "draft",
+            "text": "visualization"
+          }
+        ],
         "title": "Detox",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Visualizing the body's ordinary cleansing and maintenance processes. (draft); Reflecting on a sense of freshness and balance without claiming removal of toxins or replacing medical care. (draft)",
       "compatibility": "historical-lookup",
       "domains": "body;lifestyle",
       "legacy_command": "PLUS-CLEAN, CLEAR",
@@ -2210,7 +2379,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/de-tox-body.yaml"
+      "source_file": "functions/body/de-tox-body.yaml",
+      "tags": "body-awareness (draft); renewal (draft); visualization (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -2325,7 +2495,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Reflecting on the difference between a passing craving and a genuine need for nourishment."
+          },
+          {
+            "status": "draft",
+            "text": "Practicing deliberate food choices while remaining responsive to hunger and nutritional needs."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -2601,6 +2780,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Compare deliberate eating choices that preserve nourishment needs with changing a selected unwanted habit; neither justifies ignoring hunger."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-BOD-005",
+                  "sha256": "66ec6d5b0d7eaca812f487524dd3b4ee3e546456ef63785a84a45977a8615bd0"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-LIF-001",
+                  "sha256": "b696385bce51f81503108a0c8b948eb5b0ff0765593b07dd1bf4e23248338ffe"
+                }
+              ],
+              "function_id": "OCF-LIF-001",
+              "reciprocal_proposed": false,
+              "relationship_type": "related",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -2647,13 +2851,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "eating-choices"
+          },
+          {
+            "status": "draft",
+            "text": "habits"
+          },
+          {
+            "status": "draft",
+            "text": "self-direction"
+          }
+        ],
         "title": "Appetite Choice",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Reflecting on the difference between a passing craving and a genuine need for nourishment. (draft); Practicing deliberate food choices while remaining responsive to hunger and nutritional needs. (draft)",
       "compatibility": "historical-lookup",
       "domains": "body;lifestyle",
       "legacy_command": "PLUS-SATISFIED, SUPPLIED",
@@ -2662,7 +2880,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/eat-no-eat.yaml"
+      "source_file": "functions/body/eat-no-eat.yaml",
+      "tags": "eating-choices (draft); habits (draft); self-direction (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -2768,7 +2987,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Exploring a felt sense of calm and steadiness around the heart."
+          },
+          {
+            "status": "draft",
+            "text": "Visualizing comfortable heart rhythm as a wellness exercise, not cardiovascular treatment."
+          }
+        ],
         "companions": [
           "OCF-BOD-002"
         ],
@@ -3085,13 +3313,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "circulation"
+          },
+          {
+            "status": "draft",
+            "text": "calm"
+          },
+          {
+            "status": "draft",
+            "text": "body-awareness"
+          }
+        ],
         "title": "Heart Flow",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Exploring a felt sense of calm and steadiness around the heart. (draft); Visualizing comfortable heart rhythm as a wellness exercise, not cardiovascular treatment. (draft)",
       "compatibility": "historical-lookup",
       "domains": "body",
       "legacy_command": "PLUS-HEART, BETTER, BETTER",
@@ -3100,7 +3342,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/heart-repairs.yaml"
+      "source_file": "functions/body/heart-repairs.yaml",
+      "tags": "circulation (draft); calm (draft); body-awareness (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -3219,7 +3462,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Practicing calm awareness of the heart and blood vessels."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on relaxation and balance without using felt sensations as a blood-pressure measurement or treatment."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -3541,13 +3793,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "calm"
+          },
+          {
+            "status": "draft",
+            "text": "relaxation"
+          },
+          {
+            "status": "draft",
+            "text": "body-awareness"
+          }
+        ],
         "title": "Blood Pressure Balance",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Practicing calm awareness of the heart and blood vessels. (draft); Reflecting on relaxation and balance without using felt sensations as a blood-pressure measurement or treatment. (draft)",
       "compatibility": "unchanged",
       "domains": "body",
       "legacy_command": "PLUS-BALANCE-BLOODPRESSURE",
@@ -3556,7 +3822,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/hypertension.yaml"
+      "source_file": "functions/body/hypertension.yaml",
+      "tags": "calm (draft); relaxation (draft); body-awareness (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -3652,7 +3919,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Visualizing coordinated protective responses and a return to balance."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on immune readiness as an intention, not proof of protection from illness or a substitute for care."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -3956,13 +4232,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "body-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "visualization"
+          },
+          {
+            "status": "draft",
+            "text": "balance"
+          }
+        ],
         "title": "Immune Readiness",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Visualizing coordinated protective responses and a return to balance. (draft); Reflecting on immune readiness as an intention, not proof of protection from illness or a substitute for care. (draft)",
       "compatibility": "historical-lookup",
       "domains": "body",
       "legacy_command": "PLUS-ALERT, DESTROY",
@@ -3971,7 +4261,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/immunizing.yaml"
+      "source_file": "functions/body/immunizing.yaml",
+      "tags": "body-awareness (draft); visualization (draft); balance (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -4067,7 +4358,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Exploring awareness of comfortable, unforced breathing."
+          },
+          {
+            "status": "draft",
+            "text": "Visualizing respiratory maintenance without treating breathing difficulty or delaying medical help."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -4327,6 +4627,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Comfortable breathing awareness and relaxation offer distinct wellness intentions; breathing difficulty still requires appropriate medical attention."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-BOD-009",
+                  "sha256": "e03a7abc8e329c42fc38ada310b455fb49bfdfda577ccc2fccfc382ffe02b3df"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-FND-004",
+                  "sha256": "7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9"
+                }
+              ],
+              "function_id": "OCF-FND-004",
+              "reciprocal_proposed": false,
+              "relationship_type": "complementary",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -4373,13 +4698,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "breathing"
+          },
+          {
+            "status": "draft",
+            "text": "body-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "comfort"
+          }
+        ],
         "title": "Breathe Better",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Exploring awareness of comfortable, unforced breathing. (draft); Visualizing respiratory maintenance without treating breathing difficulty or delaying medical help. (draft)",
       "compatibility": "historical-lookup",
       "domains": "body",
       "legacy_command": "PLUS-BREATH BETTER",
@@ -4388,7 +4727,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/lungs-repairs.yaml"
+      "source_file": "functions/body/lungs-repairs.yaml",
+      "tags": "breathing (draft); body-awareness (draft); comfort (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -4589,7 +4929,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Reflecting on the intention to make useful nourishment available from food."
+          },
+          {
+            "status": "draft",
+            "text": "Exploring the distinction between sufficient nourishment and unnecessary retention as imagery, not a way to control metabolism or replace adequate eating."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -4893,13 +5242,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "nourishment"
+          },
+          {
+            "status": "draft",
+            "text": "intention"
+          },
+          {
+            "status": "draft",
+            "text": "body-awareness"
+          }
+        ],
         "title": "Nutricia",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "needs-review",
+      "common_uses": "Reflecting on the intention to make useful nourishment available from food. (draft); Exploring the distinction between sufficient nourishment and unnecessary retention as imagery, not a way to control metabolism or replace adequate eating. (draft)",
       "compatibility": "alias-listed",
       "domains": "body;lifestyle",
       "legacy_command": "PLUS-FOOD MORE / PLUS-FOOD LESS",
@@ -4908,7 +5271,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/nutricia.yaml"
+      "source_file": "functions/body/nutricia.yaml",
+      "tags": "nourishment (draft); intention (draft); body-awareness (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -5017,7 +5381,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Practicing steadiness during personally experienced hormonal transitions."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on physical and emotional comfort without claiming to regulate hormone levels or replace care."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -5338,13 +5711,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "transitions"
+          },
+          {
+            "status": "draft",
+            "text": "emotional-balance"
+          },
+          {
+            "status": "draft",
+            "text": "comfort"
+          }
+        ],
         "title": "Hormonal Transitions",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Practicing steadiness during personally experienced hormonal transitions. (draft); Reflecting on physical and emotional comfort without claiming to regulate hormone levels or replace care. (draft)",
       "compatibility": "historical-lookup",
       "domains": "body;lifestyle",
       "legacy_command": "PLUS-EQUALIZE-HARMONIZE",
@@ -5353,7 +5740,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/passages.yaml"
+      "source_file": "functions/body/passages.yaml",
+      "tags": "transitions (draft); emotional-balance (draft); comfort (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -5627,7 +6015,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "unresolved"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Reflecting on a personally desired level of sexual arousal."
+          },
+          {
+            "status": "draft",
+            "text": "Practicing a shift of attention from unwanted arousal toward another chosen interest."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -5931,13 +6328,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "sexual-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "self-direction"
+          },
+          {
+            "status": "draft",
+            "text": "balance"
+          }
+        ],
         "title": "Sex Drive",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "needs-review",
+      "common_uses": "Reflecting on a personally desired level of sexual arousal. (draft); Practicing a shift of attention from unwanted arousal toward another chosen interest. (draft)",
       "compatibility": "alias-listed",
       "domains": "body;sensory",
       "legacy_command": "PLUS-SEX GREATER / PLUS-SEX LESSER",
@@ -5946,7 +6357,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/sex-drive.yaml"
+      "source_file": "functions/body/sex-drive.yaml",
+      "tags": "sexual-awareness (draft); self-direction (draft); balance (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -6065,7 +6477,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Directing kind attention toward a chosen part of the body."
+          },
+          {
+            "status": "draft",
+            "text": "Visualizing whole-body maintenance and renewal without claiming healing or replacing treatment."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -6342,6 +6763,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Compare general maintenance imagery with more specific regeneration imagery, without claiming healing or tissue regrowth."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-BOD-013",
+                  "sha256": "a44fe521028bb9f0c208a287a719b331457a6e3ba2a33cdf36f688c8a08e8fcd"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-BOD-014",
+                  "sha256": "2cea77591e70794d361ca5fb500eebea9a729e02833f8b6a9b6d104a85d67468"
+                }
+              ],
+              "function_id": "OCF-BOD-014",
+              "reciprocal_proposed": false,
+              "relationship_type": "related",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -6388,13 +6834,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "body-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "renewal"
+          },
+          {
+            "status": "draft",
+            "text": "balance"
+          }
+        ],
         "title": "Body Tune-Up",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Directing kind attention toward a chosen part of the body. (draft); Visualizing whole-body maintenance and renewal without claiming healing or replacing treatment. (draft)",
       "compatibility": "historical-lookup",
       "domains": "body",
       "legacy_command": "PLUS-BALANCE, HEAL",
@@ -6403,7 +6863,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/tune-up.yaml"
+      "source_file": "functions/body/tune-up.yaml",
+      "tags": "body-awareness (draft); renewal (draft); balance (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -6514,7 +6975,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Imagining a chosen area of the body in a comfortable, renewed state."
+          },
+          {
+            "status": "draft",
+            "text": "Exploring regeneration imagery without expecting tissue regrowth or substituting imagery for medical care."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -6877,13 +7347,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "renewal"
+          },
+          {
+            "status": "draft",
+            "text": "visualization"
+          },
+          {
+            "status": "draft",
+            "text": "body-awareness"
+          }
+        ],
         "title": "Regenerate",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Imagining a chosen area of the body in a comfortable, renewed state. (draft); Exploring regeneration imagery without expecting tissue regrowth or substituting imagery for medical care. (draft)",
       "compatibility": "historical-lookup",
       "domains": "body",
       "legacy_command": "PLUS-BUILD, LIVE",
@@ -6892,7 +7376,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/body/regenerate.yaml"
+      "source_file": "functions/body/regenerate.yaml",
+      "tags": "renewal (draft); visualization (draft); body-awareness (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -7103,7 +7588,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Comparing temporary, area-specific sensitivity imagery with general comfort practice."
+          },
+          {
+            "status": "draft",
+            "text": "Reviewing the documented distinction between temporary numbing and its release, without suppressing warning signs or delaying care."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -7467,13 +7961,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "comfort"
+          },
+          {
+            "status": "draft",
+            "text": "body-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "self-direction"
+          }
+        ],
         "title": "Temporary Numbing",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Comparing temporary, area-specific sensitivity imagery with general comfort practice. (draft); Reviewing the documented distinction between temporary numbing and its release, without suppressing warning signs or delaying care. (draft)",
       "compatibility": "historical-lookup",
       "domains": "body",
       "legacy_command": "PLUS-GO NUMB, GO NUMB / PLUS-RELEASE",
@@ -7482,7 +7990,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/body/short-fix.yaml"
+      "source_file": "functions/body/short-fix.yaml",
+      "tags": "comfort (draft); body-awareness (draft); self-direction (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -7581,7 +8090,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Reflecting on knowledge and experience already available to you."
+          },
+          {
+            "status": "draft",
+            "text": "Inviting relevant information to mind while checking impressions against reliable sources when accuracy matters."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -7901,13 +8419,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "memory"
+          },
+          {
+            "status": "draft",
+            "text": "reflection"
+          },
+          {
+            "status": "draft",
+            "text": "inner-awareness"
+          }
+        ],
         "title": "Information Access",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Reflecting on knowledge and experience already available to you. (draft); Inviting relevant information to mind while checking impressions against reliable sources when accuracy matters. (draft)",
       "compatibility": "historical-lookup",
       "domains": "cognition;experimental",
       "legacy_command": "PLUS-RETRIEVE",
@@ -7916,7 +8448,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/cognition/access-to-information.yaml"
+      "source_file": "functions/cognition/access-to-information.yaml",
+      "tags": "memory (draft); reflection (draft); inner-awareness (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -8018,7 +8551,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Preparing for mental arithmetic or number-based study."
+          },
+          {
+            "status": "draft",
+            "text": "Practicing attention to numerical patterns while independently checking calculations."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -8276,6 +8818,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Number practice and directed attention address calculation and concentration respectively; either may be practiced independently."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-COG-002",
+                  "sha256": "57ff0a5168d935e358c53450af35cf5b5d20d57f4c4de0ce389d1353e4466c5b"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-FND-002",
+                  "sha256": "5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d"
+                }
+              ],
+              "function_id": "OCF-FND-002",
+              "reciprocal_proposed": false,
+              "relationship_type": "complementary",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -8320,13 +8887,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "numbers"
+          },
+          {
+            "status": "draft",
+            "text": "concentration"
+          },
+          {
+            "status": "draft",
+            "text": "thinking"
+          }
+        ],
         "title": "Mental Calculation",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Preparing for mental arithmetic or number-based study. (draft); Practicing attention to numerical patterns while independently checking calculations. (draft)",
       "compatibility": "unchanged",
       "domains": "cognition",
       "legacy_command": "PLUS-CALCULATE",
@@ -8335,7 +8916,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/cognition/buy-the-numbers.yaml"
+      "source_file": "functions/cognition/buy-the-numbers.yaml",
+      "tags": "numbers (draft); concentration (draft); thinking (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -8495,7 +9077,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Making room for quiet reflection on a personal question."
+          },
+          {
+            "status": "draft",
+            "text": "Exploring internal dialogue while distinguishing impressions from verified facts."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -8755,6 +9346,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Compare a deliberately opened and closed reflective space with ongoing intuitive awareness and discernment."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-COG-003",
+                  "sha256": "08c9b123c414deeb14992ee27edad26887bd199e9b85dbe80c576c2761bd6db6"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-EXP-006",
+                  "sha256": "b10fe904bf3c9d6eb4f9bb5833b6499429bcfe5d8d9ed76340b5832d0ec617c5"
+                }
+              ],
+              "function_id": "OCF-EXP-006",
+              "reciprocal_proposed": false,
+              "relationship_type": "related",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -8799,13 +9415,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "reflection"
+          },
+          {
+            "status": "draft",
+            "text": "inner-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "calm"
+          }
+        ],
         "title": "Contemplation",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Making room for quiet reflection on a personal question. (draft); Exploring internal dialogue while distinguishing impressions from verified facts. (draft)",
       "compatibility": "unchanged",
       "domains": "cognition",
       "legacy_command": "PLUS-OPEN / PLUS-CLOSED",
@@ -8814,7 +9444,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/cognition/contemplation.yaml"
+      "source_file": "functions/cognition/contemplation.yaml",
+      "tags": "reflection (draft); inner-awareness (draft); calm (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -9007,7 +9638,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Giving deliberate attention to material you wish to remember."
+          },
+          {
+            "status": "draft",
+            "text": "Comparing information capture with the separately documented recall application, without assuming memory is infallible."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -9285,6 +9925,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Compare deliberate capture and retention with separately chosen retrieval of learned material. The Imprint recall command is not the same function identity as Recall."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-COG-004",
+                  "sha256": "098e88038844417a6241fc8ae022de3ada9529b0e189e64b2d68691b6c607c92"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-COG-006",
+                  "sha256": "f1121b371e1d9c5a81ad6fd3197fb75a81f5d4ae79f40daf939066db0d4e0c01"
+                }
+              ],
+              "function_id": "OCF-COG-006",
+              "reciprocal_proposed": false,
+              "relationship_type": "related",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -9329,13 +9994,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "memory"
+          },
+          {
+            "status": "draft",
+            "text": "learning"
+          },
+          {
+            "status": "draft",
+            "text": "attention"
+          }
+        ],
         "title": "Imprint",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Giving deliberate attention to material you wish to remember. (draft); Comparing information capture with the separately documented recall application, without assuming memory is infallible. (draft)",
       "compatibility": "historical-lookup",
       "domains": "cognition",
       "legacy_command": "PLUS-IMPRINT, IMPRINT / PLUS-RECALL",
@@ -9344,7 +10023,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/cognition/imprint.yaml"
+      "source_file": "functions/cognition/imprint.yaml",
+      "tags": "memory (draft); learning (draft); attention (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -9463,7 +10143,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Exploring alternatives when a decision feels narrow."
+          },
+          {
+            "status": "draft",
+            "text": "Considering possible directions without treating imagined outcomes as predictions."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -9742,6 +10431,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Exploring alternative choices and considering intuitive impressions offer different optional perspectives on a question; check facts independently."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-COG-005",
+                  "sha256": "574105e00d0317828bef7d3ce5db9df7734faf5e1aa43b68fa433cdf70eb50cd"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-EXP-006",
+                  "sha256": "b10fe904bf3c9d6eb4f9bb5833b6499429bcfe5d8d9ed76340b5832d0ec617c5"
+                }
+              ],
+              "function_id": "OCF-EXP-006",
+              "reciprocal_proposed": false,
+              "relationship_type": "complementary",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -9786,13 +10500,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "choices"
+          },
+          {
+            "status": "draft",
+            "text": "reflection"
+          },
+          {
+            "status": "draft",
+            "text": "thinking"
+          }
+        ],
         "title": "Options",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Exploring alternatives when a decision feels narrow. (draft); Considering possible directions without treating imagined outcomes as predictions. (draft)",
       "compatibility": "historical-lookup",
       "domains": "cognition",
       "legacy_command": "PLUS-OPTIONS, CHOICES",
@@ -9801,7 +10529,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/cognition/options.yaml"
+      "source_file": "functions/cognition/options.yaml",
+      "tags": "choices (draft); reflection (draft); thinking (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -9901,7 +10630,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Inviting previously learned material to mind during study."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on a past experience while recognizing that recollection can be incomplete or mistaken."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -10160,6 +10898,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Compare bringing a specific memory to mind with broader reflection on personal knowledge and experience; neither guarantees accurate information."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-COG-006",
+                  "sha256": "f1121b371e1d9c5a81ad6fd3197fb75a81f5d4ae79f40daf939066db0d4e0c01"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-COG-001",
+                  "sha256": "e6cc8c734bf0a96b4e47520263a133949dcaa134561fb74a5098843a8ffecbe3"
+                }
+              ],
+              "function_id": "OCF-COG-001",
+              "reciprocal_proposed": false,
+              "relationship_type": "related",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -10204,13 +10967,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "memory"
+          },
+          {
+            "status": "draft",
+            "text": "learning"
+          },
+          {
+            "status": "draft",
+            "text": "reflection"
+          }
+        ],
         "title": "Recall",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Inviting previously learned material to mind during study. (draft); Reflecting on a past experience while recognizing that recollection can be incomplete or mistaken. (draft)",
       "compatibility": "unchanged",
       "domains": "cognition",
       "legacy_command": "PLUS-RECALL",
@@ -10219,7 +10996,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/cognition/recall.yaml"
+      "source_file": "functions/cognition/recall.yaml",
+      "tags": "memory (draft); learning (draft); reflection (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -10319,7 +11097,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Preparing for reasoning or problem-solving practice."
+          },
+          {
+            "status": "draft",
+            "text": "Practicing organized attention to relevant details without equating speed with accuracy."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -10577,6 +11364,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Reasoning about details and exploring alternatives offer distinct approaches to considering a problem, without requiring a combined exercise."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-COG-007",
+                  "sha256": "3e3440b8f1061424dc185c48ec0fcd32ed71d524bdb20f8d2032cfd80e559562"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-COG-005",
+                  "sha256": "574105e00d0317828bef7d3ce5db9df7734faf5e1aa43b68fa433cdf70eb50cd"
+                }
+              ],
+              "function_id": "OCF-COG-005",
+              "reciprocal_proposed": false,
+              "relationship_type": "complementary",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -10621,13 +11433,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "thinking"
+          },
+          {
+            "status": "draft",
+            "text": "mental-clarity"
+          },
+          {
+            "status": "draft",
+            "text": "concentration"
+          }
+        ],
         "title": "Think Fast",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Preparing for reasoning or problem-solving practice. (draft); Practicing organized attention to relevant details without equating speed with accuracy. (draft)",
       "compatibility": "unchanged",
       "domains": "cognition;performance",
       "legacy_command": "PLUS-THINK",
@@ -10636,7 +11462,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/cognition/think-fast.yaml"
+      "source_file": "functions/cognition/think-fast.yaml",
+      "tags": "thinking (draft); mental-clarity (draft); concentration (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -10736,7 +11563,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Preparing to speak or read aloud with a sense of ease."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on clear expression before a conversation or presentation."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -11039,13 +11875,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "communication"
+          },
+          {
+            "status": "draft",
+            "text": "confidence"
+          },
+          {
+            "status": "draft",
+            "text": "expression"
+          }
+        ],
         "title": "Speak Up",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Preparing to speak or read aloud with a sense of ease. (draft); Reflecting on clear expression before a conversation or presentation. (draft)",
       "compatibility": "unchanged",
       "domains": "communication",
       "legacy_command": "PLUS-SPEAK UP",
@@ -11054,7 +11904,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/communication/speak-up.yaml"
+      "source_file": "functions/communication/speak-up.yaml",
+      "tags": "communication (draft); confidence (draft); expression (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -11159,7 +12010,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Reviewing the exercise's intention of calm during an injury response, alongside appropriate first aid."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on supportive awareness without postponing emergency services or professional care."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -11545,13 +12405,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "calm"
+          },
+          {
+            "status": "draft",
+            "text": "body-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "safety"
+          }
+        ],
         "title": "Injury Response",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Reviewing the exercise's intention of calm during an injury response, alongside appropriate first aid. (draft); Reflecting on supportive awareness without postponing emergency services or professional care. (draft)",
       "compatibility": "historical-lookup",
       "domains": "emergency;foundation",
       "legacy_command": "PLUS-CONTROL, BALANCE, RESTORE",
@@ -11560,7 +12434,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/emergency/emergency-injury.yaml"
+      "source_file": "functions/emergency/emergency-injury.yaml",
+      "tags": "calm (draft); body-awareness (draft); safety (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -11665,7 +12540,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Reviewing the exercise as an intention of calm in a toxic-exposure context, not an antidote."
+          },
+          {
+            "status": "draft",
+            "text": "Distinguishing a wellness intention from the need for prompt poison-control or emergency advice."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -12051,13 +12935,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "calm"
+          },
+          {
+            "status": "draft",
+            "text": "body-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "safety"
+          }
+        ],
         "title": "Toxic Exposure Response",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Reviewing the exercise as an intention of calm in a toxic-exposure context, not an antidote. (draft); Distinguishing a wellness intention from the need for prompt poison-control or emergency advice. (draft)",
       "compatibility": "historical-lookup",
       "domains": "emergency",
       "legacy_command": "PLUS-CLEAR, REMOVE",
@@ -12066,7 +12964,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/emergency/emergency-toxic.yaml"
+      "source_file": "functions/emergency/emergency-toxic.yaml",
+      "tags": "calm (draft); body-awareness (draft); safety (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -12166,7 +13065,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Reflecting on an emotion that is interfering with a chosen activity."
+          },
+          {
+            "status": "draft",
+            "text": "Practicing a calmer relationship to a feeling without denying useful emotional information."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -12469,13 +13377,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "emotional-balance"
+          },
+          {
+            "status": "draft",
+            "text": "letting-go"
+          },
+          {
+            "status": "draft",
+            "text": "calm"
+          }
+        ],
         "title": "Let Go",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Reflecting on an emotion that is interfering with a chosen activity. (draft); Practicing a calmer relationship to a feeling without denying useful emotional information. (draft)",
       "compatibility": "unchanged",
       "domains": "emotion;foundation",
       "legacy_command": "PLUS-LET GO",
@@ -12484,7 +13406,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/emotion/let-go.yaml"
+      "source_file": "functions/emotion/let-go.yaml",
+      "tags": "emotional-balance (draft); letting-go (draft); calm (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -12596,7 +13519,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Reflecting on a recurring thought that distracts from the present."
+          },
+          {
+            "status": "draft",
+            "text": "Exploring release of an unwanted emotional pattern while retaining useful memories and personal choice."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -12854,6 +13786,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Compare recurring thought and emotional-pattern interference with a broader selected belief, expectation or recurring life pattern; useful learning remains valued."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-EMO-002",
+                  "sha256": "f378a57210d0e3bb9ca07959bca9b895beb486615582a1c040afd2f7b3112e2f"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-EXP-003",
+                  "sha256": "bff68807fb37db657e26d9bbfec0c53c91b73555b75a80ca2601a757f718726f"
+                }
+              ],
+              "function_id": "OCF-EXP-003",
+              "reciprocal_proposed": false,
+              "relationship_type": "related",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -12898,13 +13855,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "emotional-balance"
+          },
+          {
+            "status": "draft",
+            "text": "letting-go"
+          },
+          {
+            "status": "draft",
+            "text": "attention"
+          }
+        ],
         "title": "Offload",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Reflecting on a recurring thought that distracts from the present. (draft); Exploring release of an unwanted emotional pattern while retaining useful memories and personal choice. (draft)",
       "compatibility": "historical-lookup",
       "domains": "emotion;foundation",
       "legacy_command": "PLUS-FADE, FADE",
@@ -12913,7 +13884,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/emotion/off-loading.yaml"
+      "source_file": "functions/emotion/off-loading.yaml",
+      "tags": "emotional-balance (draft); letting-go (draft); attention (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -13009,7 +13981,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Reflecting on another being's possible perspective with openness."
+          },
+          {
+            "status": "draft",
+            "text": "Preparing for attentive communication without assuming access to private thoughts or certainty about another's experience."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -13327,6 +14308,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Considering another being's perspective and practicing clear expression offer distinct intentions for communication; neither establishes knowledge of another's private thoughts."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-EMO-003",
+                  "sha256": "8f58776ae03f2ca89f2b5df60679b5efc69a3adbdc6d11523fecdbd576827033"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-COM-001",
+                  "sha256": "4064576c22f3f99553735cfd8b962c8389288b329ee75f16291026b90d280df0"
+                }
+              ],
+              "function_id": "OCF-COM-001",
+              "reciprocal_proposed": false,
+              "relationship_type": "complementary",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -13371,13 +14377,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "communication"
+          },
+          {
+            "status": "draft",
+            "text": "empathy"
+          },
+          {
+            "status": "draft",
+            "text": "inner-awareness"
+          }
+        ],
         "title": "Empathize",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Reflecting on another being's possible perspective with openness. (draft); Preparing for attentive communication without assuming access to private thoughts or certainty about another's experience. (draft)",
       "compatibility": "historical-lookup",
       "domains": "emotion;communication",
       "legacy_command": "PLUS-PROFILE, PROFILE",
@@ -13386,7 +14406,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/emotion/empathizing.yaml"
+      "source_file": "functions/emotion/empathizing.yaml",
+      "tags": "communication (draft); empathy (draft); inner-awareness (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -13493,7 +14514,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Clarifying a personally chosen outcome and desired completion time."
+          },
+          {
+            "status": "draft",
+            "text": "Exploring a felt or imagined fulfilled intention without treating it as a guarantee of external events."
+          }
+        ],
         "companions": [
           "OCF-EXP-003",
           "OCF-EXP-006"
@@ -13818,13 +14848,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "intention"
+          },
+          {
+            "status": "draft",
+            "text": "visualization"
+          },
+          {
+            "status": "draft",
+            "text": "self-direction"
+          }
+        ],
         "title": "Manifest",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Clarifying a personally chosen outcome and desired completion time. (draft); Exploring a felt or imagined fulfilled intention without treating it as a guarantee of external events. (draft)",
       "compatibility": "historical-lookup",
       "domains": "experimental;foundation",
       "legacy_command": "PLUS-CHANGE, CHANGE",
@@ -13833,7 +14877,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/experimental/mobius-west.yaml"
+      "source_file": "functions/experimental/mobius-west.yaml",
+      "tags": "intention (draft); visualization (draft); self-direction (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -14101,7 +15146,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Exploring an imagined whole-body zone of temperature comfort."
+          },
+          {
+            "status": "draft",
+            "text": "Reviewing adjustable comfort imagery without substituting it for suitable clothing, shelter, or protection from heat and cold."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -14464,13 +15518,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "comfort"
+          },
+          {
+            "status": "draft",
+            "text": "temperature"
+          },
+          {
+            "status": "draft",
+            "text": "visualization"
+          }
+        ],
         "title": "Insulate",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Exploring an imagined whole-body zone of temperature comfort. (draft); Reviewing adjustable comfort imagery without substituting it for suitable clothing, shelter, or protection from heat and cold. (draft)",
       "compatibility": "historical-lookup",
       "domains": "experimental",
       "legacy_command": "PLUS-INSULATE, INSULATE / PLUS-CANCEL",
@@ -14479,7 +15547,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/experimental/zoning.yaml"
+      "source_file": "functions/experimental/zoning.yaml",
+      "tags": "comfort (draft); temperature (draft); visualization (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -14589,7 +15658,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Reflecting on a selected unwanted belief or expectation."
+          },
+          {
+            "status": "draft",
+            "text": "Exploring release of a recurring pattern while preserving useful learning."
+          }
+        ],
         "companions": [
           "OCF-EXP-006"
         ],
@@ -14683,13 +15761,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "script-approved",
           "maturity": "community-proposed"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "letting-go"
+          },
+          {
+            "status": "draft",
+            "text": "emotional-balance"
+          },
+          {
+            "status": "draft",
+            "text": "self-direction"
+          }
+        ],
         "title": "Dissolve",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Reflecting on a selected unwanted belief or expectation. (draft); Exploring release of a recurring pattern while preserving useful learning. (draft)",
       "compatibility": "none",
       "domains": "experimental",
       "legacy_command": "",
@@ -14698,7 +15790,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "in-progress",
       "source_availability": "pending-source-review",
-      "source_file": "functions/experimental/dissolve.yaml"
+      "source_file": "functions/experimental/dissolve.yaml",
+      "tags": "letting-go (draft); emotional-balance (draft); self-direction (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -14945,7 +16038,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Imagining calm personal space during unwanted insect contact."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on the distinction between discouraging contact and intentionally observing, without replacing practical insect protection."
+          }
+        ],
         "companions": [],
         "content_maturity": null,
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -15039,13 +16141,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "script-approved",
           "maturity": "community-proposed"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "intention"
+          },
+          {
+            "status": "draft",
+            "text": "calm"
+          },
+          {
+            "status": "draft",
+            "text": "surroundings"
+          }
+        ],
         "title": "Clear Zone",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Imagining calm personal space during unwanted insect contact. (draft); Reflecting on the distinction between discouraging contact and intentionally observing, without replacing practical insect protection. (draft)",
       "compatibility": "none",
       "domains": "experimental",
       "legacy_command": "",
@@ -15054,7 +16170,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "in-progress",
       "source_availability": "pending-source-review",
-      "source_file": "functions/experimental/clear-zone.yaml"
+      "source_file": "functions/experimental/clear-zone.yaml",
+      "tags": "intention (draft); calm (draft); surroundings (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -15153,7 +16270,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Considering a question with openness to quiet impressions."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on possible guidance while checking facts and retaining responsibility for decisions."
+          }
+        ],
         "companions": [],
         "content_maturity": null,
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -15222,13 +16348,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "script-approved",
           "maturity": "community-proposed"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "inner-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "reflection"
+          },
+          {
+            "status": "draft",
+            "text": "discernment"
+          }
+        ],
         "title": "Intuition",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Considering a question with openness to quiet impressions. (draft); Reflecting on possible guidance while checking facts and retaining responsibility for decisions. (draft)",
       "compatibility": "none",
       "domains": "experimental",
       "legacy_command": "",
@@ -15237,7 +16377,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "in-progress",
       "source_availability": "pending-source-review",
-      "source_file": "functions/experimental/intuition.yaml"
+      "source_file": "functions/experimental/intuition.yaml",
+      "tags": "inner-awareness (draft); reflection (draft); discernment (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -15374,7 +16515,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Recalling a personal sense of vitality and available resources."
+          },
+          {
+            "status": "draft",
+            "text": "Exploring how to direct a felt sense of energy toward a chosen purpose."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -15676,13 +16826,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "energy"
+          },
+          {
+            "status": "draft",
+            "text": "intention"
+          },
+          {
+            "status": "draft",
+            "text": "inner-awareness"
+          }
+        ],
         "title": "Access to Energy",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Recalling a personal sense of vitality and available resources. (draft); Exploring how to direct a felt sense of energy toward a chosen purpose. (draft)",
       "compatibility": "unchanged",
       "domains": "foundation;performance",
       "legacy_command": "PLUS-ENERGIZE",
@@ -15691,7 +16855,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/foundation/energize.yaml"
+      "source_file": "functions/foundation/energize.yaml",
+      "tags": "energy (draft); intention (draft); inner-awareness (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -15793,7 +16958,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Choosing one activity to receive sustained attention."
+          },
+          {
+            "status": "draft",
+            "text": "Preparing for focused study or deliberate engagement with an experience."
+          }
+        ],
         "companions": [
           "OCF-COG-007"
         ],
@@ -16053,6 +17227,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Directed attention and deliberate memory capture have different learning intentions that may be explored as separate practices."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-FND-002",
+                  "sha256": "5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-COG-004",
+                  "sha256": "098e88038844417a6241fc8ae022de3ada9529b0e189e64b2d68691b6c607c92"
+                }
+              ],
+              "function_id": "OCF-COG-004",
+              "reciprocal_proposed": false,
+              "relationship_type": "complementary",
+              "status": "draft"
+            }
+          ],
           "related_functions": [
             {
               "description": {
@@ -16107,13 +17306,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "implemented",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "attention"
+          },
+          {
+            "status": "draft",
+            "text": "concentration"
+          },
+          {
+            "status": "draft",
+            "text": "self-direction"
+          }
+        ],
         "title": "Focus",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Choosing one activity to receive sustained attention. (draft); Preparing for focused study or deliberate engagement with an experience. (draft)",
       "compatibility": "historical-lookup",
       "domains": "foundation;cognition",
       "legacy_command": "PLUS-FOCUS",
@@ -16122,7 +17335,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "complete",
       "source_availability": "available",
-      "source_file": "functions/foundation/attention.yaml"
+      "source_file": "functions/foundation/attention.yaml",
+      "tags": "attention (draft); concentration (draft); self-direction (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -16224,7 +17438,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Choosing a brief rest when it is safe and appropriate to sleep."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on the intention to wake from a short rest feeling refreshed, without replacing adequate sleep."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -16483,6 +17706,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Compare a short restorative rest with general sleep onset and a desired waking time; neither replaces adequate sleep or a needed alarm."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-FND-003",
+                  "sha256": "c96ac8b11d5e8a7974e3be3c590432b8f299b5c1eeaa1fa6dd54de2d2ad0cf1b"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-SLP-002",
+                  "sha256": "f25c3964bcb1d1c34e63bebd2bc7d271d5d05e9757459c0a65e171d7ca6c1bca"
+                }
+              ],
+              "function_id": "OCF-SLP-002",
+              "reciprocal_proposed": false,
+              "relationship_type": "related",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -16527,13 +17775,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "rest"
+          },
+          {
+            "status": "draft",
+            "text": "sleep"
+          },
+          {
+            "status": "draft",
+            "text": "energy"
+          }
+        ],
         "title": "Quick Recharge",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Choosing a brief rest when it is safe and appropriate to sleep. (draft); Reflecting on the intention to wake from a short rest feeling refreshed, without replacing adequate sleep. (draft)",
       "compatibility": "unchanged",
       "domains": "foundation;body",
       "legacy_command": "PLUS-RECHARGE",
@@ -16542,7 +17804,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/foundation/recharge.yaml"
+      "source_file": "functions/foundation/recharge.yaml",
+      "tags": "rest (draft); sleep (draft); energy (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -16638,7 +17901,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Taking time to explore physical ease and reduced unnecessary tension."
+          },
+          {
+            "status": "draft",
+            "text": "Practicing a quiet transition from mental busyness toward rest."
+          }
+        ],
         "companions": [],
         "content_maturity": "pilot",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -16898,6 +18170,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         ],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Physical and mental relaxation differs from releasing a selected interfering emotion; choose whichever intention fits the situation."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-FND-004",
+                  "sha256": "7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-EMO-001",
+                  "sha256": "864bf2596a2262e1921925522d903dca921655e4d26850f86ba2b9a6e296d1b0"
+                }
+              ],
+              "function_id": "OCF-EMO-001",
+              "reciprocal_proposed": false,
+              "relationship_type": "complementary",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -16968,7 +18265,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "relaxation"
+          },
+          {
+            "status": "draft",
+            "text": "calm"
+          },
+          {
+            "status": "draft",
+            "text": "body-awareness"
+          }
+        ],
         "title": "Relax",
         "voice_sources": [
           "externally-generated",
@@ -16977,6 +18287,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         ]
       },
       "command_review": "approved",
+      "common_uses": "Taking time to explore physical ease and reduced unnecessary tension. (draft); Practicing a quiet transition from mental busyness toward rest. (draft)",
       "compatibility": "historical-lookup",
       "domains": "foundation;body",
       "legacy_command": "PLUS-RELAX, RELAX",
@@ -16985,7 +18296,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/foundation/relax.yaml"
+      "source_file": "functions/foundation/relax.yaml",
+      "tags": "relaxation (draft); calm (draft); body-awareness (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -17091,7 +18403,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Reflecting on a desired shift from weariness toward renewed engagement."
+          },
+          {
+            "status": "draft",
+            "text": "Practicing an intention of clarity and confidence without ignoring persistent fatigue or emotional distress."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -17394,13 +18715,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "energy"
+          },
+          {
+            "status": "draft",
+            "text": "confidence"
+          },
+          {
+            "status": "draft",
+            "text": "mental-clarity"
+          }
+        ],
         "title": "Reset",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Reflecting on a desired shift from weariness toward renewed engagement. (draft); Practicing an intention of clarity and confidence without ignoring persistent fatigue or emotional distress. (draft)",
       "compatibility": "historical-lookup",
       "domains": "foundation",
       "legacy_command": "PLUS-RESET, RESET",
@@ -17409,7 +18744,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/foundation/reset.yaml"
+      "source_file": "functions/foundation/reset.yaml",
+      "tags": "energy (draft); confidence (draft); mental-clarity (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -17509,7 +18845,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Reviewing how a current temporary application differs from the learned ability."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on placing a selected application on hold when its purpose is complete, using only its documented scope."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -17870,13 +19215,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "self-direction"
+          },
+          {
+            "status": "draft",
+            "text": "release"
+          },
+          {
+            "status": "draft",
+            "text": "function-lifecycle"
+          }
+        ],
         "title": "Release",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Reviewing how a current temporary application differs from the learned ability. (draft); Reflecting on placing a selected application on hold when its purpose is complete, using only its documented scope. (draft)",
       "compatibility": "unchanged",
       "domains": "foundation",
       "legacy_command": "PLUS-RELEASE",
@@ -17885,7 +19244,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/foundation/release.yaml"
+      "source_file": "functions/foundation/release.yaml",
+      "tags": "self-direction (draft); release (draft); function-lifecycle (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -18005,7 +19365,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Recognizing a specific unwanted repeated behavior."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on a chosen change in a habit without treating the exercise as a substitute for needed professional support."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -18282,6 +19651,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Compare changing an unwanted repeated habit with cultivating a desired automatic way of responding; these are different intentions, not a required sequence."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-LIF-001",
+                  "sha256": "b696385bce51f81503108a0c8b948eb5b0ff0765593b07dd1bf4e23248338ffe"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-AUT-001",
+                  "sha256": "95072a83ada3fc93d60106caad1df381f1b1c3d9884ea5e69915c0b5dff46063"
+                }
+              ],
+              "function_id": "OCF-AUT-001",
+              "reciprocal_proposed": false,
+              "relationship_type": "related",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -18326,13 +19720,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "habits"
+          },
+          {
+            "status": "draft",
+            "text": "self-direction"
+          },
+          {
+            "status": "draft",
+            "text": "letting-go"
+          }
+        ],
         "title": "Habit Freedom",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Recognizing a specific unwanted repeated behavior. (draft); Reflecting on a chosen change in a habit without treating the exercise as a substitute for needed professional support. (draft)",
       "compatibility": "historical-lookup",
       "domains": "lifestyle;emotion",
       "legacy_command": "PLUS-NO MORE, NO MORE",
@@ -18341,7 +19749,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/lifestyle/de-hab.yaml"
+      "source_file": "functions/lifestyle/de-hab.yaml",
+      "tags": "habits (draft); self-direction (draft); letting-go (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -18441,7 +19850,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Preparing to begin a chosen task with a clear next action."
+          },
+          {
+            "status": "draft",
+            "text": "Renewing an intention to continue or complete an activity."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -18699,6 +20117,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Starting or completing a task and sustaining attention address different aspects of chosen activity; no combined activation is required."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-PRF-001",
+                  "sha256": "b2fa2f63091e863dad0d7a819f82833cfef1a294ea68d6c36317dc76a7c7603e"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-FND-002",
+                  "sha256": "5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d"
+                }
+              ],
+              "function_id": "OCF-FND-002",
+              "reciprocal_proposed": false,
+              "relationship_type": "complementary",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -18743,13 +20186,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "action"
+          },
+          {
+            "status": "draft",
+            "text": "intention"
+          },
+          {
+            "status": "draft",
+            "text": "motivation"
+          }
+        ],
         "title": "Do This Now",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Preparing to begin a chosen task with a clear next action. (draft); Renewing an intention to continue or complete an activity. (draft)",
       "compatibility": "unchanged",
       "domains": "performance",
       "legacy_command": "PLUS-DO-THIS-NOW",
@@ -18758,7 +20215,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/performance/do-this-now.yaml"
+      "source_file": "functions/performance/do-this-now.yaml",
+      "tags": "action (draft); intention (draft); motivation (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -18865,7 +20323,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Reflecting on personal resources when facing a challenge."
+          },
+          {
+            "status": "draft",
+            "text": "Practicing a calm sense of inner strength in daily life without assuming extraordinary abilities."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -19123,6 +20590,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Compare ongoing recognition of inner resources with a deliberately invoked shift from weariness toward renewed confidence."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-PRF-002",
+                  "sha256": "b5bcd3eb460963a8e14c23231c41f5ad7b43e97e8663f09fda3358e79470ebb1"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-FND-005",
+                  "sha256": "f9cde5900e2d3cee6be500dea088f649423c46216824daa3a410fa32e9b5be5f"
+                }
+              ],
+              "function_id": "OCF-FND-005",
+              "reciprocal_proposed": false,
+              "relationship_type": "related",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -19167,13 +20659,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "confidence"
+          },
+          {
+            "status": "draft",
+            "text": "inner-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "self-direction"
+          }
+        ],
         "title": "Inner Power",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Reflecting on personal resources when facing a challenge. (draft); Practicing a calm sense of inner strength in daily life without assuming extraordinary abilities. (draft)",
       "compatibility": "historical-lookup",
       "domains": "performance;body",
       "legacy_command": "PLUS-EIGHT, GREAT",
@@ -19182,7 +20688,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/performance/eight-great.yaml"
+      "source_file": "functions/performance/eight-great.yaml",
+      "tags": "confidence (draft); inner-awareness (draft); self-direction (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -19284,7 +20791,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Exploring a felt sense of smooth, coordinated movement."
+          },
+          {
+            "status": "draft",
+            "text": "Preparing attentive movement practice while respecting physical limits and safe conditions."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -19542,6 +21058,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Whole-body coordination and attention to lighter, quieter steps offer separate movement intentions; both remain subject to physical limits."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-PRF-003",
+                  "sha256": "56f2f35f08b831873fbaf58aeba4425962dfd125f63abdfbe54cc09eb93a729b"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-PRF-004",
+                  "sha256": "a5f87338ce54fdd206623aae7f43f3949599780e756e96400e8911c8e5bc3765"
+                }
+              ],
+              "function_id": "OCF-PRF-004",
+              "reciprocal_proposed": false,
+              "relationship_type": "complementary",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -19586,13 +21127,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "movement"
+          },
+          {
+            "status": "draft",
+            "text": "coordination"
+          },
+          {
+            "status": "draft",
+            "text": "body-awareness"
+          }
+        ],
         "title": "Coordination",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Exploring a felt sense of smooth, coordinated movement. (draft); Preparing attentive movement practice while respecting physical limits and safe conditions. (draft)",
       "compatibility": "historical-lookup",
       "domains": "performance;body",
       "legacy_command": "PLUS-SMOOTH, FAST",
@@ -19601,7 +21156,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/performance/synchronizing.yaml"
+      "source_file": "functions/performance/synchronizing.yaml",
+      "tags": "movement (draft); coordination (draft); body-awareness (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -19721,7 +21277,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Bringing attention to lighter, quieter steps in ordinary movement."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on ease and precision in walking without assuming protection from falls or injury."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -20101,13 +21666,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "movement"
+          },
+          {
+            "status": "draft",
+            "text": "coordination"
+          },
+          {
+            "status": "draft",
+            "text": "body-awareness"
+          }
+        ],
         "title": "Light Foot",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Bringing attention to lighter, quieter steps in ordinary movement. (draft); Reflecting on ease and precision in walking without assuming protection from falls or injury. (draft)",
       "compatibility": "historical-lookup",
       "domains": "performance;body",
       "legacy_command": "PLUS-LIGHTER, LIGHTER",
@@ -20116,7 +21695,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/performance/light-foot.yaml"
+      "source_file": "functions/performance/light-foot.yaml",
+      "tags": "movement (draft); coordination (draft); body-awareness (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -20216,7 +21796,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Reflecting on the tone and experiences you would like for the coming day."
+          },
+          {
+            "status": "draft",
+            "text": "Clarifying daily intentions without expecting control over other people or external events."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -20533,6 +22122,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Compare a day-oriented intention with selecting a particular future condition and completion time; neither guarantees external events."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-PRF-005",
+                  "sha256": "886715fb4fe76c91f0300085673f0402228b0263c129b0bc2e52633de4dafcbc"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-EXP-001",
+                  "sha256": "96441a2896d4d0275209296acfa7772b18459b57d672c7a0d5a3932475680e74"
+                }
+              ],
+              "function_id": "OCF-EXP-001",
+              "reciprocal_proposed": false,
+              "relationship_type": "related",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -20577,13 +22191,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "intention"
+          },
+          {
+            "status": "draft",
+            "text": "visualization"
+          },
+          {
+            "status": "draft",
+            "text": "confidence"
+          }
+        ],
         "title": "Make Your Day",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Reflecting on the tone and experiences you would like for the coming day. (draft); Clarifying daily intentions without expecting control over other people or external events. (draft)",
       "compatibility": "unchanged",
       "domains": "performance",
       "legacy_command": "PLUS-THIS DAY",
@@ -20592,7 +22220,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/performance/make-your-day.yaml"
+      "source_file": "functions/performance/make-your-day.yaml",
+      "tags": "intention (draft); visualization (draft); confidence (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -20812,7 +22441,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Reviewing the exercise's intention of prompt, coordinated action."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on the documented release after an immediate need passes, without assuming exceptional strength or taking physical risks."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -21174,13 +22812,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "movement"
+          },
+          {
+            "status": "draft",
+            "text": "attention"
+          },
+          {
+            "status": "draft",
+            "text": "self-direction"
+          }
+        ],
         "title": "Strong-Quick",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "review-required",
+      "common_uses": "Reviewing the exercise's intention of prompt, coordinated action. (draft); Reflecting on the documented release after an immediate need passes, without assuming exceptional strength or taking physical risks. (draft)",
       "compatibility": "bridge-trainable",
       "domains": "performance;body",
       "legacy_command": "PLUS-STRONG-QUICK",
@@ -21189,7 +22841,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/performance/strong-quick.yaml"
+      "source_file": "functions/performance/strong-quick.yaml",
+      "tags": "movement (draft); attention (draft); self-direction (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -21383,7 +23036,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Exploring attention to sounds or remembered sound."
+          },
+          {
+            "status": "draft",
+            "text": "Comparing inward listening with imaginative sound experience without claiming hearing restoration or ignoring environmental warnings."
+          }
+        ],
         "companions": [],
         "content_maturity": "pilot",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -21714,7 +23376,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "sensory-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "hearing"
+          },
+          {
+            "status": "draft",
+            "text": "imagination"
+          }
+        ],
         "title": "Hearing",
         "voice_sources": [
           "externally-generated",
@@ -21723,6 +23398,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         ]
       },
       "command_review": "approved",
+      "common_uses": "Exploring attention to sounds or remembered sound. (draft); Comparing inward listening with imaginative sound experience without claiming hearing restoration or ignoring environmental warnings. (draft)",
       "compatibility": "alias-listed",
       "domains": "sensory",
       "legacy_command": "PLUS-HEAR MORE / PLUS-HEAR LESS",
@@ -21731,7 +23407,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/sensory/hearing.yaml"
+      "source_file": "functions/sensory/hearing.yaml",
+      "tags": "sensory-awareness (draft); hearing (draft); imagination (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -21862,7 +23539,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "unresolved"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Exploring remembered or deliberately imagined visual detail in your own way."
+          },
+          {
+            "status": "draft",
+            "text": "Practicing attention to seeing without treating imagery as vision correction or requiring vivid mental pictures."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -22121,6 +23807,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Visual imagery and inner sound offer different optional modes of imaginative awareness; vivid imagery is not required and sensory restoration is not claimed."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-SEN-002",
+                  "sha256": "1cc04c5b74cdd9b6b04881ccff576ea1a736a512e8385859f9a1078a0bf1e9fd"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-SEN-001",
+                  "sha256": "863922bf2c9a9ad33643e8de48977dde9489d1d48cae1de1b5dffcf63a03a185"
+                }
+              ],
+              "function_id": "OCF-SEN-001",
+              "reciprocal_proposed": false,
+              "relationship_type": "complementary",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -22165,13 +23876,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "sensory-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "visualization"
+          },
+          {
+            "status": "draft",
+            "text": "visual-memory"
+          }
+        ],
         "title": "Seeing",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Exploring remembered or deliberately imagined visual detail in your own way. (draft); Practicing attention to seeing without treating imagery as vision correction or requiring vivid mental pictures. (draft)",
       "compatibility": "alias-listed",
       "domains": "sensory",
       "legacy_command": "PLUS-SEE BETTER",
@@ -22180,7 +23905,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/sensory/seeing.yaml"
+      "source_file": "functions/sensory/seeing.yaml",
+      "tags": "sensory-awareness (draft); visualization (draft); visual-memory (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -22444,7 +24170,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "unresolved"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Exploring memories of familiar aromas."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on attention to scent without using the exercise to judge whether air or a substance is safe."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -22761,6 +24496,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Compare aroma memory with flavor memory as distinct sensory intentions, not as tests of substance or food safety."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-SEN-003",
+                  "sha256": "bc8e7fedeb81229219334941a92eba2e62bf55869bcf10c079ad8850e53a1d58"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-SEN-004",
+                  "sha256": "6a467469931140ade8c5b0819640983b47ca0e0d16ae37e5ba34be01973756a9"
+                }
+              ],
+              "function_id": "OCF-SEN-004",
+              "reciprocal_proposed": false,
+              "relationship_type": "related",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -22805,13 +24565,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "sensory-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "smell"
+          },
+          {
+            "status": "draft",
+            "text": "imagination"
+          }
+        ],
         "title": "Smell",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Exploring memories of familiar aromas. (draft); Reflecting on attention to scent without using the exercise to judge whether air or a substance is safe. (draft)",
       "compatibility": "alias-listed",
       "domains": "sensory",
       "legacy_command": "PLUS-SMELL GREATER / PLUS-SMELL LESSER",
@@ -22820,7 +24594,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/sensory/smell.yaml"
+      "source_file": "functions/sensory/smell.yaml",
+      "tags": "sensory-awareness (draft); smell (draft); imagination (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -23084,7 +24859,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "unresolved"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Exploring familiar flavor memories during sensory reflection."
+          },
+          {
+            "status": "draft",
+            "text": "Bringing deliberate attention to taste without using it as a food-safety test."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -23445,13 +25229,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "sensory-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "taste"
+          },
+          {
+            "status": "draft",
+            "text": "imagination"
+          }
+        ],
         "title": "Taste",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Exploring familiar flavor memories during sensory reflection. (draft); Bringing deliberate attention to taste without using it as a food-safety test. (draft)",
       "compatibility": "alias-listed",
       "domains": "sensory",
       "legacy_command": "PLUS-TASTE GREATER / PLUS-TASTE LESSER",
@@ -23460,7 +25258,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/sensory/taste.yaml"
+      "source_file": "functions/sensory/taste.yaml",
+      "tags": "sensory-awareness (draft); taste (draft); imagination (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -23724,7 +25523,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "unresolved"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Exploring remembered textures or an imagined sense of touch."
+          },
+          {
+            "status": "draft",
+            "text": "Practicing attention to skin sensations without suppressing warning signs or assuming protection from harm."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -24041,6 +25849,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Attention to touch and attention to coordinated movement offer distinct body-awareness intentions without implying protection from injury."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-SEN-005",
+                  "sha256": "c6215692359e2ce4272e470f52cd1c075bff7cf448f558a5c4a967ef7d454d73"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-PRF-003",
+                  "sha256": "56f2f35f08b831873fbaf58aeba4425962dfd125f63abdfbe54cc09eb93a729b"
+                }
+              ],
+              "function_id": "OCF-PRF-003",
+              "reciprocal_proposed": false,
+              "relationship_type": "complementary",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -24085,13 +25918,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "sensory-awareness"
+          },
+          {
+            "status": "draft",
+            "text": "touch"
+          },
+          {
+            "status": "draft",
+            "text": "imagination"
+          }
+        ],
         "title": "Touch",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Exploring remembered textures or an imagined sense of touch. (draft); Practicing attention to skin sensations without suppressing warning signs or assuming protection from harm. (draft)",
       "compatibility": "alias-listed",
       "domains": "sensory",
       "legacy_command": "PLUS-TOUCH GREATER / PLUS-TOUCH LESSER",
@@ -24100,7 +25947,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/sensory/touch.yaml"
+      "source_file": "functions/sensory/touch.yaml",
+      "tags": "sensory-awareness (draft); touch (draft); imagination (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -24207,7 +26055,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Setting an intention of restorative rest before sleep."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on a sense of renewal without assuming sleep imagery treats illness or replaces care."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -24511,13 +26368,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "sleep"
+          },
+          {
+            "status": "draft",
+            "text": "rest"
+          },
+          {
+            "status": "draft",
+            "text": "renewal"
+          }
+        ],
         "title": "Restorative Sleep",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Setting an intention of restorative rest before sleep. (draft); Reflecting on a sense of renewal without assuming sleep imagery treats illness or replaces care. (draft)",
       "compatibility": "historical-lookup",
       "domains": "sleep;body",
       "legacy_command": "PLUS-HEAL, HEAL",
@@ -24526,7 +26397,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/sleep/restorative-sleep.yaml"
+      "source_file": "functions/sleep/restorative-sleep.yaml",
+      "tags": "sleep (draft); rest (draft); renewal (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -24633,7 +26505,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Preparing for natural sleep in a safe place."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on a desired waking time without relying on the exercise instead of an alarm when timing matters."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -24891,6 +26772,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Compare general sleep onset with rest amid unfamiliar or distracting surroundings; first ensure the surroundings are safe."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-SLP-002",
+                  "sha256": "f25c3964bcb1d1c34e63bebd2bc7d271d5d05e9757459c0a65e171d7ca6c1bca"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-SLP-005",
+                  "sha256": "c3a871929526f06ce83de524a830914f8bfad2b355a3f0c4534564eb5a9156e3"
+                }
+              ],
+              "function_id": "OCF-SLP-005",
+              "reciprocal_proposed": false,
+              "relationship_type": "related",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -24935,13 +26841,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "sleep"
+          },
+          {
+            "status": "draft",
+            "text": "rest"
+          },
+          {
+            "status": "draft",
+            "text": "self-direction"
+          }
+        ],
         "title": "Sleep",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Preparing for natural sleep in a safe place. (draft); Reflecting on a desired waking time without relying on the exercise instead of an alarm when timing matters. (draft)",
       "compatibility": "historical-lookup",
       "domains": "sleep",
       "legacy_command": "PLUS-20-20",
@@ -24950,7 +26870,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/sleep/sleep.yaml"
+      "source_file": "functions/sleep/sleep.yaml",
+      "tags": "sleep (draft); rest (draft); self-direction (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -25062,7 +26983,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Choosing a personally meaningful dream theme."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on dream recall after waking without assuming dreams report external facts."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -25320,6 +27250,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Compare choosing a dream theme with inviting ideas about a question through sleep; dreams and morning impressions are not verified facts."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-SLP-003",
+                  "sha256": "20c0c076eef89d4f32a11e4a0002856094f2af32be035d08b83f3aef8d08c1a2"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-SLP-004",
+                  "sha256": "f30ef62a98a7374314d9354bc525b9755da92e31b094edb88da43bfd70844019"
+                }
+              ],
+              "function_id": "OCF-SLP-004",
+              "reciprocal_proposed": false,
+              "relationship_type": "related",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -25364,13 +27319,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "sleep"
+          },
+          {
+            "status": "draft",
+            "text": "dreams"
+          },
+          {
+            "status": "draft",
+            "text": "imagination"
+          }
+        ],
         "title": "Dream Theme",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Choosing a personally meaningful dream theme. (draft); Reflecting on dream recall after waking without assuming dreams report external facts. (draft)",
       "compatibility": "historical-lookup",
       "domains": "sleep",
       "legacy_command": "PLUS-THEME, DREAM, SLEEP",
@@ -25379,7 +27348,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/sleep/sweet-dreams.yaml"
+      "source_file": "functions/sleep/sweet-dreams.yaml",
+      "tags": "sleep (draft); dreams (draft); imagination (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -25491,7 +27461,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Considering a question you would like to reflect on through sleep."
+          },
+          {
+            "status": "draft",
+            "text": "Reviewing morning impressions as possible ideas rather than verified answers or instructions."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -25749,6 +27728,31 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         "locales": [],
         "localized_relationships": {
           "complementary_functions": [],
+          "proposals": [
+            {
+              "dependency": "optional",
+              "description": {
+                "status": "draft",
+                "text": "Sleep-oriented reflection and waking exploration of alternatives offer separate ways to consider a question without prescribing an order."
+              },
+              "evidence": [
+                {
+                  "field": "description",
+                  "function_id": "OCF-SLP-004",
+                  "sha256": "f30ef62a98a7374314d9354bc525b9755da92e31b094edb88da43bfd70844019"
+                },
+                {
+                  "field": "description",
+                  "function_id": "OCF-COG-005",
+                  "sha256": "574105e00d0317828bef7d3ce5db9df7734faf5e1aa43b68fa433cdf70eb50cd"
+                }
+              ],
+              "function_id": "OCF-COG-005",
+              "reciprocal_proposed": false,
+              "relationship_type": "complementary",
+              "status": "draft"
+            }
+          ],
           "related_functions": []
         },
         "narration_plan": {
@@ -25793,13 +27797,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "sleep"
+          },
+          {
+            "status": "draft",
+            "text": "reflection"
+          },
+          {
+            "status": "draft",
+            "text": "insight"
+          }
+        ],
         "title": "Sleep Insight",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Considering a question you would like to reflect on through sleep. (draft); Reviewing morning impressions as possible ideas rather than verified answers or instructions. (draft)",
       "compatibility": "historical-lookup",
       "domains": "sleep",
       "legacy_command": "PLUS-SLEEP, HELP",
@@ -25808,7 +27826,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/sleep/wake-know.yaml"
+      "source_file": "functions/sleep/wake-know.yaml",
+      "tags": "sleep (draft); reflection (draft); insight (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -25925,7 +27944,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Preparing for rest in unfamiliar but safe surroundings."
+          },
+          {
+            "status": "draft",
+            "text": "Reflecting on returning to sleep after ordinary distractions while remaining responsive to genuine safety needs."
+          }
+        ],
         "companions": [
           "OCF-SLP-001"
         ],
@@ -26327,7 +28355,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "sleep"
+          },
+          {
+            "status": "draft",
+            "text": "surroundings"
+          },
+          {
+            "status": "draft",
+            "text": "relaxation"
+          }
+        ],
         "title": "Sleep Easy",
         "voice_sources": [
           "externally-generated",
@@ -26336,6 +28377,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         ]
       },
       "command_review": "approved",
+      "common_uses": "Preparing for rest in unfamiliar but safe surroundings. (draft); Reflecting on returning to sleep after ordinary distractions while remaining responsive to genuine safety needs. (draft)",
       "compatibility": "historical-lookup",
       "domains": "sleep",
       "legacy_command": "PLUS-QUIET, SLEEP",
@@ -26344,7 +28386,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/sleep/sleep-easy.yaml"
+      "source_file": "functions/sleep/sleep-easy.yaml",
+      "tags": "sleep (draft); surroundings (draft); relaxation (draft)"
     },
     {
       "audio_impl_count": 0,
@@ -26451,7 +28494,16 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "spoken_review": "reviewed"
           }
         ],
-        "common_uses": [],
+        "common_uses": [
+          {
+            "status": "draft",
+            "text": "Reviewing the intention of short-term alertness when an immediate need arises."
+          },
+          {
+            "status": "draft",
+            "text": "Distinguishing a felt alertness practice from adequate sleep; never relying on it to make drowsy driving or hazardous work safe."
+          }
+        ],
         "companions": [],
         "content_maturity": "draft",
         "default_session_template": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
@@ -26812,13 +28864,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "implementation": "specification-only",
           "maturity": "legacy-mapped"
         },
-        "tags": [],
+        "tags": [
+          {
+            "status": "draft",
+            "text": "attention"
+          },
+          {
+            "status": "draft",
+            "text": "wakefulness"
+          },
+          {
+            "status": "draft",
+            "text": "self-direction"
+          }
+        ],
         "title": "Stay Awake",
         "voice_sources": [
           "tts"
         ]
       },
       "command_review": "approved",
+      "common_uses": "Reviewing the intention of short-term alertness when an immediate need arises. (draft); Distinguishing a felt alertness practice from adequate sleep; never relying on it to make drowsy driving or hazardous work safe. (draft)",
       "compatibility": "historical-lookup",
       "domains": "sleep;performance",
       "legacy_command": "PLUS-ONE, AWAKE, ALERT, ONE, ONE",
@@ -26827,7 +28893,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/sleep/stay-awake.yaml"
+      "source_file": "functions/sleep/stay-awake.yaml",
+      "tags": "attention (draft); wakefulness (draft); self-direction (draft)"
     }
   ],
   "generated": true

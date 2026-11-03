@@ -37,7 +37,14 @@ KEY_RE = re.compile(r"^[a-z][a-z0-9-]*(\.[a-z0-9-]+)+$")
 def narration_texts(root: Path = REPO_ROOT) -> dict[str, str]:
     """Return the exact parsed text for every targeted resource key."""
     locale_root = root / LOCALE_ROOT
-    function_files = sorted(locale_root.glob("hplus-OCF-*.yaml"))
+    from ocf_tools.locale_history import historical_resources, read_logical
+
+    virtual = {
+        root / name
+        for name in historical_resources(root)
+        if name.startswith("locales/en-US/hplus-OCF-") and name.endswith(".yaml")
+    }
+    function_files = sorted(set(locale_root.glob("hplus-OCF-*.yaml")) | virtual)
     if len(function_files) != 55:
         raise ValueError(f"expected 55 function resources, found {len(function_files)}")
 
@@ -60,8 +67,6 @@ def narration_texts(root: Path = REPO_ROOT) -> dict[str, str]:
     owners: dict[str, str] = {}
     symbolic_catalog = None
     for path in paths:
-        if not path.is_file():
-            raise ValueError(f"required narration resource is missing: {path}")
         if declared_resources.get(path.name) != "narration":
             raise ValueError(
                 f"resource is not declared as narration in the locale manifest: {path}"
@@ -70,7 +75,9 @@ def narration_texts(root: Path = REPO_ROOT) -> dict[str, str]:
 
         data: Any = yaml.safe_load(
             before_authority(
-                root, path.relative_to(root).as_posix(), path.read_text(encoding="utf-8")
+                root,
+                path.relative_to(root).as_posix(),
+                read_logical(root, path.relative_to(root).as_posix()),
             )
         )
         if not isinstance(data, dict) or data.get("locale") != "en-US":

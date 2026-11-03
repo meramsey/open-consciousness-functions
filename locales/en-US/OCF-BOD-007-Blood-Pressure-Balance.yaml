@@ -40,8 +40,19 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: calm
+  status: draft
+- text: relaxation
+  status: draft
+- text: body-awareness
+  status: draft
+common_uses:
+- text: Practicing calm awareness of the heart and blood vessels.
+  status: draft
+- text: Reflecting on relaxation and balance without using felt sensations as a blood-pressure measurement
+    or treatment.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

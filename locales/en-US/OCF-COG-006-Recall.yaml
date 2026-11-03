@@ -31,11 +31,38 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: memory
+  status: draft
+- text: learning
+  status: draft
+- text: reflection
+  status: draft
+common_uses:
+- text: Inviting previously learned material to mind during study.
+  status: draft
+- text: Reflecting on a past experience while recognizing that recollection can be incomplete or mistaken.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-COG-001
+    relationship_type: related
+    description:
+      text: Compare bringing a specific memory to mind with broader reflection on personal knowledge and
+        experience; neither guarantees accurate information.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-COG-006
+      field: description
+      sha256: f1121b371e1d9c5a81ad6fd3197fb75a81f5d4ae79f40daf939066db0d4e0c01
+    - function_id: OCF-COG-001
+      field: description
+      sha256: e6cc8c734bf0a96b4e47520263a133949dcaa134561fb74a5098843a8ffecbe3
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

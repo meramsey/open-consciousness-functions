@@ -49,8 +49,18 @@ activation:
       a quiet moment; consider and choose a response.
     status: reviewed
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: inner-awareness
+  status: draft
+- text: reflection
+  status: draft
+- text: discernment
+  status: draft
+common_uses:
+- text: Considering a question with openness to quiet impressions.
+  status: draft
+- text: Reflecting on possible guidance while checking facts and retaining responsibility for decisions.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

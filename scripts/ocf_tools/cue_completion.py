@@ -5,6 +5,7 @@ import json
 import yaml
 
 from .cue_headers import sha
+from .locale_history import read_logical
 from .paths import REPO_ROOT
 from .utils import OCFError
 
@@ -78,7 +79,7 @@ def verify(root=REPO_ROOT):
     if errors:
         return errors
     for name in data["files"]:
-        predecessor(root, name, contained(root, name).read_text(encoding="utf-8"))
+        predecessor(root, name, read_logical(root, name))
     from .options_successor import before_texts
 
     if text_fingerprints(before_texts(root, narration_texts(root))) != data["resolved_text_sha256"]:

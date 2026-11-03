@@ -48,11 +48,38 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
-tags: []
-common_uses: []
+tags:
+- text: sleep
+  status: draft
+- text: reflection
+  status: draft
+- text: insight
+  status: draft
+common_uses:
+- text: Considering a question you would like to reflect on through sleep.
+  status: draft
+- text: Reviewing morning impressions as possible ideas rather than verified answers or instructions.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-COG-005
+    relationship_type: complementary
+    description:
+      text: Sleep-oriented reflection and waking exploration of alternatives offer separate ways to consider
+        a question without prescribing an order.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-SLP-004
+      field: description
+      sha256: f30ef62a98a7374314d9354bc525b9755da92e31b094edb88da43bfd70844019
+    - function_id: OCF-COG-005
+      field: description
+      sha256: 574105e00d0317828bef7d3ce5db9df7734faf5e1aa43b68fa433cdf70eb50cd
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

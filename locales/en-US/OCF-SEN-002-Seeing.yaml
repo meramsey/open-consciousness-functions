@@ -49,11 +49,39 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
-tags: []
-common_uses: []
+tags:
+- text: sensory-awareness
+  status: draft
+- text: visualization
+  status: draft
+- text: visual-memory
+  status: draft
+common_uses:
+- text: Exploring remembered or deliberately imagined visual detail in your own way.
+  status: draft
+- text: Practicing attention to seeing without treating imagery as vision correction or requiring vivid
+    mental pictures.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-SEN-001
+    relationship_type: complementary
+    description:
+      text: Visual imagery and inner sound offer different optional modes of imaginative awareness; vivid
+        imagery is not required and sensory restoration is not claimed.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-SEN-002
+      field: description
+      sha256: 1cc04c5b74cdd9b6b04881ccff576ea1a736a512e8385859f9a1078a0bf1e9fd
+    - function_id: OCF-SEN-001
+      field: description
+      sha256: 863922bf2c9a9ad33643e8de48977dde9489d1d48cae1de1b5dffcf63a03a185
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

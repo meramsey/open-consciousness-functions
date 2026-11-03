@@ -35,11 +35,39 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: communication
+  status: draft
+- text: empathy
+  status: draft
+- text: inner-awareness
+  status: draft
+common_uses:
+- text: Reflecting on another being's possible perspective with openness.
+  status: draft
+- text: Preparing for attentive communication without assuming access to private thoughts or certainty
+    about another's experience.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-COM-001
+    relationship_type: complementary
+    description:
+      text: Considering another being's perspective and practicing clear expression offer distinct intentions
+        for communication; neither establishes knowledge of another's private thoughts.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-EMO-003
+      field: description
+      sha256: 8f58776ae03f2ca89f2b5df60679b5efc69a3adbdc6d11523fecdbd576827033
+    - function_id: OCF-COM-001
+      field: description
+      sha256: 4064576c22f3f99553735cfd8b962c8389288b329ee75f16291026b90d280df0
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

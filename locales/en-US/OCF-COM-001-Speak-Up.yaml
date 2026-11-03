@@ -31,8 +31,18 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: communication
+  status: draft
+- text: confidence
+  status: draft
+- text: expression
+  status: draft
+common_uses:
+- text: Preparing to speak or read aloud with a sense of ease.
+  status: draft
+- text: Reflecting on clear expression before a conversation or presentation.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

@@ -286,18 +286,22 @@ def list_functions(
     release_ready: bool | None = None,
     offset: int = 0,
     limit: int = 10,
+    tag: str | None = None,
+    query: str | None = None,
 ) -> dict:
     from .content import load_layers
     from .eligibility import eligibility
     from .indexes import load_all_functions
     from .locale import LocaleCatalog, normalize_tag
-    from .localized_authority import title
+    from .localized_authority import matches, metadata, title
 
     normalize_tag(locale)
     page([], offset, limit)
     rows = []
     catalog = LocaleCatalog()
     for record in load_all_functions():
+        if not matches(record, locale, catalog=catalog, tag=tag, query=query):
+            continue
         domain = record.data["classification"]["primary_domain"]
         if category and domain != category:
             continue
@@ -312,6 +316,8 @@ def list_functions(
             "category": domain,
             "human_review": review,
             "source_availability": record.source_availability,
+            "tags": (metadata(record, locale, catalog=catalog) or {}).get("tags", []),
+            "common_uses": (metadata(record, locale, catalog=catalog) or {}).get("common_uses", []),
         }
         if renderable is not None:
             eligible = eligibility(record.id, locale)["tts_renderable"]

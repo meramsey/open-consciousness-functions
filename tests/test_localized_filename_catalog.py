@@ -51,7 +51,7 @@ def test_execute_all_58_preserves_speech_and_hplus015_logical_identities(tmp_pat
         target = tmp_path / name
         if not target.exists():
             target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_bytes((REPO_ROOT / name).read_bytes())
+            target.write_bytes(locale_history.read_logical(REPO_ROOT, name).encode("utf-8"))
     before = LocaleCatalog(tmp_path / "locales", function_records=lambda: records)
     assert before.problems == []
     raw = {

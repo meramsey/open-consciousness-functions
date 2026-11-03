@@ -32,11 +32,39 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: breathing
+  status: draft
+- text: body-awareness
+  status: draft
+- text: comfort
+  status: draft
+common_uses:
+- text: Exploring awareness of comfortable, unforced breathing.
+  status: draft
+- text: Visualizing respiratory maintenance without treating breathing difficulty or delaying medical
+    help.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []
+  proposals:
+  - function_id: OCF-FND-004
+    relationship_type: complementary
+    description:
+      text: Comfortable breathing awareness and relaxation offer distinct wellness intentions; breathing
+        difficulty still requires appropriate medical attention.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-BOD-009
+      field: description
+      sha256: e03a7abc8e329c42fc38ada310b455fb49bfdfda577ccc2fccfc382ffe02b3df
+    - function_id: OCF-FND-004
+      field: description
+      sha256: 7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.

@@ -2,66 +2,69 @@
 
 Historical source selections and separately labeled user-proposed reconstructions prepared for human review; no narration has been approved or rendered by this importer.
 
-Edit the linked YAML file: its entries are the wording source of truth. Shared narration stays in the separate `hplus-*.yaml` resources.
+This is a historical importer report, not the current review state. Links below
+now point to immutable predecessor archives; do not edit them. Current editable
+wording lives in the 58 manifest-listed function files in `locales/en-US/`;
+see [the current index](../FUNCTION_INDEX.md). Shared narration remains separate.
 Missing spoken keys are omitted. User-proposed reconstructions are labeled separately from historical SOURCE; historical source-unavailable records remain unavailable and planned.
 
-| Function | Name | Historical source status | Wording basis | Opener | Body | Closer | Editable English file |
+| Function | Name | Historical source status | Wording basis | Opener | Body | Closer | Historical archive |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| OCF-AUT-001 | See-Be | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-AUT-001.yaml](../locales/en-US/hplus-OCF-AUT-001.yaml) |
-| OCF-BOD-001 | Brain: Repairs & Maintenance | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-001.yaml](../locales/en-US/hplus-OCF-BOD-001.yaml) |
-| OCF-BOD-002 | Circulation | partial_transcript | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-002.yaml](../locales/en-US/hplus-OCF-BOD-002.yaml) |
-| OCF-BOD-003 | De-Discomfort | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-003.yaml](../locales/en-US/hplus-OCF-BOD-003.yaml) |
-| OCF-BOD-004 | De-Tox: Body | partial_transcript | historical source selection | candidate | candidate | reviewed OCF suggestion | [hplus-OCF-BOD-004.yaml](../locales/en-US/hplus-OCF-BOD-004.yaml) |
-| OCF-BOD-005 | Eat/No Eat | transcript_unverified | historical source selection | candidate | missing | candidate | [hplus-OCF-BOD-005.yaml](../locales/en-US/hplus-OCF-BOD-005.yaml) |
-| OCF-BOD-006 | Heart: Repairs & Maintenance | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-006.yaml](../locales/en-US/hplus-OCF-BOD-006.yaml) |
-| OCF-BOD-007 | Hypertension | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-007.yaml](../locales/en-US/hplus-OCF-BOD-007.yaml) |
-| OCF-BOD-008 | Immunizing | transcript_unverified | historical source selection | reviewed OCF suggestion | candidate | candidate | [hplus-OCF-BOD-008.yaml](../locales/en-US/hplus-OCF-BOD-008.yaml) |
-| OCF-BOD-009 | Lungs: Repairs & Maintenance | partial_transcript | historical source selection | candidate | candidate | reviewed OCF suggestion | [hplus-OCF-BOD-009.yaml](../locales/en-US/hplus-OCF-BOD-009.yaml) |
-| OCF-BOD-010 | Nutricia | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-010.yaml](../locales/en-US/hplus-OCF-BOD-010.yaml) |
-| OCF-BOD-011 | Passages | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-011.yaml](../locales/en-US/hplus-OCF-BOD-011.yaml) |
-| OCF-BOD-012 | Sex Drive | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-012.yaml](../locales/en-US/hplus-OCF-BOD-012.yaml) |
-| OCF-BOD-013 | Tune-Up | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-013.yaml](../locales/en-US/hplus-OCF-BOD-013.yaml) |
-| OCF-BOD-014 | Regenerate | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-BOD-014.yaml](../locales/en-US/hplus-OCF-BOD-014.yaml) |
-| OCF-BOD-015 | Short Fix | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-BOD-015.yaml](../locales/en-US/hplus-OCF-BOD-015.yaml) |
-| OCF-COG-001 | Access to Information | transcript_unverified | historical source selection | candidate | candidate | reviewed OCF suggestion | [hplus-OCF-COG-001.yaml](../locales/en-US/hplus-OCF-COG-001.yaml) |
-| OCF-COG-002 | Buy the Numbers | transcript_unverified | historical source selection | candidate | candidate | suggestion pending approval | [hplus-OCF-COG-002.yaml](../locales/en-US/hplus-OCF-COG-002.yaml) |
-| OCF-COG-003 | Contemplation | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-003.yaml](../locales/en-US/hplus-OCF-COG-003.yaml) |
-| OCF-COG-004 | Imprint | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-004.yaml](../locales/en-US/hplus-OCF-COG-004.yaml) |
-| OCF-COG-005 | Options | partial_transcript | historical source selection | reviewed OCF suggestion | candidate | reviewed OCF suggestion | [hplus-OCF-COG-005.yaml](../locales/en-US/hplus-OCF-COG-005.yaml) |
-| OCF-COG-006 | Recall | partial_transcript | historical source selection | candidate | candidate | reviewed OCF suggestion | [hplus-OCF-COG-006.yaml](../locales/en-US/hplus-OCF-COG-006.yaml) |
-| OCF-COG-007 | Think Fast | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-007.yaml](../locales/en-US/hplus-OCF-COG-007.yaml) |
-| OCF-COM-001 | Speak Up | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COM-001.yaml](../locales/en-US/hplus-OCF-COM-001.yaml) |
-| OCF-EMG-001 | Emergency: Injury | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EMG-001.yaml](../locales/en-US/hplus-OCF-EMG-001.yaml) |
-| OCF-EMG-002 | Emergency: Toxic | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EMG-002.yaml](../locales/en-US/hplus-OCF-EMG-002.yaml) |
-| OCF-EMO-001 | Let Go | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-EMO-001.yaml](../locales/en-US/hplus-OCF-EMO-001.yaml) |
-| OCF-EMO-002 | Off-Loading | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-EMO-002.yaml](../locales/en-US/hplus-OCF-EMO-002.yaml) |
-| OCF-EMO-003 | Empathizing | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EMO-003.yaml](../locales/en-US/hplus-OCF-EMO-003.yaml) |
-| OCF-EXP-001 | Mobius West | transcript_unverified | historical source selection | candidate | candidate | reviewed OCF suggestion | [hplus-OCF-EXP-001.yaml](../locales/en-US/hplus-OCF-EXP-001.yaml) |
-| OCF-EXP-002 | Zoning | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EXP-002.yaml](../locales/en-US/hplus-OCF-EXP-002.yaml) |
-| OCF-FND-001 | Access to Energy | transcript_unverified | historical source selection | candidate | candidate | suggestion pending approval | [hplus-OCF-FND-001.yaml](../locales/en-US/hplus-OCF-FND-001.yaml) |
-| OCF-FND-002 | Attention | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-002.yaml](../locales/en-US/hplus-OCF-FND-002.yaml) |
-| OCF-FND-003 | Recharge | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-003.yaml](../locales/en-US/hplus-OCF-FND-003.yaml) |
-| OCF-FND-004 | Relax | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-004.yaml](../locales/en-US/hplus-OCF-FND-004.yaml) |
-| OCF-FND-005 | Reset | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-005.yaml](../locales/en-US/hplus-OCF-FND-005.yaml) |
-| OCF-FND-006 | Release | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-FND-006.yaml](../locales/en-US/hplus-OCF-FND-006.yaml) |
-| OCF-LIF-001 | De-Hab | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-LIF-001.yaml](../locales/en-US/hplus-OCF-LIF-001.yaml) |
-| OCF-PRF-001 | Do This Now | transcript_unverified | historical source selection | candidate | candidate | reviewed OCF suggestion | [hplus-OCF-PRF-001.yaml](../locales/en-US/hplus-OCF-PRF-001.yaml) |
-| OCF-PRF-002 | Eight-Great | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-PRF-002.yaml](../locales/en-US/hplus-OCF-PRF-002.yaml) |
-| OCF-PRF-003 | Synchronizing | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-PRF-003.yaml](../locales/en-US/hplus-OCF-PRF-003.yaml) |
-| OCF-PRF-004 | Light Foot | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-PRF-004.yaml](../locales/en-US/hplus-OCF-PRF-004.yaml) |
-| OCF-PRF-005 | Make Your Day | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-PRF-005.yaml](../locales/en-US/hplus-OCF-PRF-005.yaml) |
-| OCF-PRF-006 | Strong-Quick | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-PRF-006.yaml](../locales/en-US/hplus-OCF-PRF-006.yaml) |
-| OCF-SEN-001 | Sensory: Hearing | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-SEN-001.yaml](../locales/en-US/hplus-OCF-SEN-001.yaml) |
-| OCF-SEN-002 | Sensory: Seeing | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-SEN-002.yaml](../locales/en-US/hplus-OCF-SEN-002.yaml) |
-| OCF-SEN-003 | Sensory: Smell | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-SEN-003.yaml](../locales/en-US/hplus-OCF-SEN-003.yaml) |
-| OCF-SEN-004 | Sensory: Taste | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-SEN-004.yaml](../locales/en-US/hplus-OCF-SEN-004.yaml) |
-| OCF-SEN-005 | Sensory: Touch | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-SEN-005.yaml](../locales/en-US/hplus-OCF-SEN-005.yaml) |
-| OCF-SLP-001 | Restorative Sleep | transcript_unverified | historical source selection | candidate | candidate | missing | [hplus-OCF-SLP-001.yaml](../locales/en-US/hplus-OCF-SLP-001.yaml) |
-| OCF-SLP-002 | Sleep | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-SLP-002.yaml](../locales/en-US/hplus-OCF-SLP-002.yaml) |
-| OCF-SLP-003 | Sweet Dreams | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-SLP-003.yaml](../locales/en-US/hplus-OCF-SLP-003.yaml) |
-| OCF-SLP-004 | Wake/Know | transcript_unverified | historical source selection | candidate | candidate | missing | [hplus-OCF-SLP-004.yaml](../locales/en-US/hplus-OCF-SLP-004.yaml) |
-| OCF-SLP-005 | Sleep Easy | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-SLP-005.yaml](../locales/en-US/hplus-OCF-SLP-005.yaml) |
-| OCF-SLP-006 | Stay Awake | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-SLP-006.yaml](../locales/en-US/hplus-OCF-SLP-006.yaml) |
+| OCF-AUT-001 | See-Be | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-AUT-001.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-AUT-001.yaml) |
+| OCF-BOD-001 | Brain: Repairs & Maintenance | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-001.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-BOD-001.yaml) |
+| OCF-BOD-002 | Circulation | partial_transcript | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-002.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-BOD-002.yaml) |
+| OCF-BOD-003 | De-Discomfort | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-003.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-BOD-003.yaml) |
+| OCF-BOD-004 | De-Tox: Body | partial_transcript | historical source selection | candidate | candidate | reviewed OCF suggestion | [hplus-OCF-BOD-004.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-BOD-004.yaml) |
+| OCF-BOD-005 | Eat/No Eat | transcript_unverified | historical source selection | candidate | missing | candidate | [hplus-OCF-BOD-005.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-BOD-005.yaml) |
+| OCF-BOD-006 | Heart: Repairs & Maintenance | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-006.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-BOD-006.yaml) |
+| OCF-BOD-007 | Hypertension | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-007.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-BOD-007.yaml) |
+| OCF-BOD-008 | Immunizing | transcript_unverified | historical source selection | reviewed OCF suggestion | candidate | candidate | [hplus-OCF-BOD-008.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-BOD-008.yaml) |
+| OCF-BOD-009 | Lungs: Repairs & Maintenance | partial_transcript | historical source selection | candidate | candidate | reviewed OCF suggestion | [hplus-OCF-BOD-009.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-BOD-009.yaml) |
+| OCF-BOD-010 | Nutricia | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-010.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-BOD-010.yaml) |
+| OCF-BOD-011 | Passages | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-011.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-BOD-011.yaml) |
+| OCF-BOD-012 | Sex Drive | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-012.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-BOD-012.yaml) |
+| OCF-BOD-013 | Tune-Up | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-BOD-013.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-BOD-013.yaml) |
+| OCF-BOD-014 | Regenerate | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-BOD-014.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-BOD-014.yaml) |
+| OCF-BOD-015 | Short Fix | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-BOD-015.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-BOD-015.yaml) |
+| OCF-COG-001 | Access to Information | transcript_unverified | historical source selection | candidate | candidate | reviewed OCF suggestion | [hplus-OCF-COG-001.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-COG-001.yaml) |
+| OCF-COG-002 | Buy the Numbers | transcript_unverified | historical source selection | candidate | candidate | suggestion pending approval | [hplus-OCF-COG-002.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-COG-002.yaml) |
+| OCF-COG-003 | Contemplation | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-003.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-COG-003.yaml) |
+| OCF-COG-004 | Imprint | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-004.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-COG-004.yaml) |
+| OCF-COG-005 | Options | partial_transcript | historical source selection | reviewed OCF suggestion | candidate | reviewed OCF suggestion | [hplus-OCF-COG-005.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-COG-005.yaml) |
+| OCF-COG-006 | Recall | partial_transcript | historical source selection | candidate | candidate | reviewed OCF suggestion | [hplus-OCF-COG-006.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-COG-006.yaml) |
+| OCF-COG-007 | Think Fast | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COG-007.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-COG-007.yaml) |
+| OCF-COM-001 | Speak Up | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-COM-001.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-COM-001.yaml) |
+| OCF-EMG-001 | Emergency: Injury | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EMG-001.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-EMG-001.yaml) |
+| OCF-EMG-002 | Emergency: Toxic | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EMG-002.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-EMG-002.yaml) |
+| OCF-EMO-001 | Let Go | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-EMO-001.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-EMO-001.yaml) |
+| OCF-EMO-002 | Off-Loading | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-EMO-002.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-EMO-002.yaml) |
+| OCF-EMO-003 | Empathizing | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EMO-003.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-EMO-003.yaml) |
+| OCF-EXP-001 | Mobius West | transcript_unverified | historical source selection | candidate | candidate | reviewed OCF suggestion | [hplus-OCF-EXP-001.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-EXP-001.yaml) |
+| OCF-EXP-002 | Zoning | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-EXP-002.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-EXP-002.yaml) |
+| OCF-FND-001 | Access to Energy | transcript_unverified | historical source selection | candidate | candidate | suggestion pending approval | [hplus-OCF-FND-001.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-FND-001.yaml) |
+| OCF-FND-002 | Attention | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-002.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-FND-002.yaml) |
+| OCF-FND-003 | Recharge | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-003.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-FND-003.yaml) |
+| OCF-FND-004 | Relax | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-004.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-FND-004.yaml) |
+| OCF-FND-005 | Reset | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-FND-005.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-FND-005.yaml) |
+| OCF-FND-006 | Release | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-FND-006.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-FND-006.yaml) |
+| OCF-LIF-001 | De-Hab | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-LIF-001.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-LIF-001.yaml) |
+| OCF-PRF-001 | Do This Now | transcript_unverified | historical source selection | candidate | candidate | reviewed OCF suggestion | [hplus-OCF-PRF-001.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-PRF-001.yaml) |
+| OCF-PRF-002 | Eight-Great | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-PRF-002.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-PRF-002.yaml) |
+| OCF-PRF-003 | Synchronizing | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-PRF-003.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-PRF-003.yaml) |
+| OCF-PRF-004 | Light Foot | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-PRF-004.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-PRF-004.yaml) |
+| OCF-PRF-005 | Make Your Day | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-PRF-005.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-PRF-005.yaml) |
+| OCF-PRF-006 | Strong-Quick | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-PRF-006.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-PRF-006.yaml) |
+| OCF-SEN-001 | Sensory: Hearing | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-SEN-001.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-SEN-001.yaml) |
+| OCF-SEN-002 | Sensory: Seeing | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-SEN-002.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-SEN-002.yaml) |
+| OCF-SEN-003 | Sensory: Smell | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-SEN-003.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-SEN-003.yaml) |
+| OCF-SEN-004 | Sensory: Taste | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-SEN-004.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-SEN-004.yaml) |
+| OCF-SEN-005 | Sensory: Touch | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-SEN-005.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-SEN-005.yaml) |
+| OCF-SLP-001 | Restorative Sleep | transcript_unverified | historical source selection | candidate | candidate | missing | [hplus-OCF-SLP-001.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-SLP-001.yaml) |
+| OCF-SLP-002 | Sleep | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-SLP-002.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-SLP-002.yaml) |
+| OCF-SLP-003 | Sweet Dreams | transcript_unverified | historical source selection | candidate | candidate | candidate | [hplus-OCF-SLP-003.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-SLP-003.yaml) |
+| OCF-SLP-004 | Wake/Know | transcript_unverified | historical source selection | candidate | candidate | missing | [hplus-OCF-SLP-004.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-SLP-004.yaml) |
+| OCF-SLP-005 | Sleep Easy | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-SLP-005.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-SLP-005.yaml) |
+| OCF-SLP-006 | Stay Awake | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [hplus-OCF-SLP-006.yaml](../function-content/editorial/historical-locales/005/en-US/hplus-OCF-SLP-006.yaml) |
 
 ## Boundary and uncertainty notes
 

@@ -34,8 +34,18 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: circulation
+  status: draft
+- text: body-awareness
+  status: draft
+- text: visualization
+  status: draft
+common_uses:
+- text: Imagining smooth, comfortable circulation throughout the body.
+  status: draft
+- text: Exploring a felt sense of nourishment and vitality as a wellness practice, not a circulation treatment.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

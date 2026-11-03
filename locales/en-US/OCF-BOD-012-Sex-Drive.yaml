@@ -82,8 +82,18 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
-tags: []
-common_uses: []
+tags:
+- text: sexual-awareness
+  status: draft
+- text: self-direction
+  status: draft
+- text: balance
+  status: draft
+common_uses:
+- text: Reflecting on a personally desired level of sexual arousal.
+  status: draft
+- text: Practicing a shift of attention from unwanted arousal toward another chosen interest.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

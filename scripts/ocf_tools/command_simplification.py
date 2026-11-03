@@ -8,6 +8,7 @@ from copy import deepcopy
 
 import yaml
 
+from .locale_history import read_logical
 from .paths import REPO_ROOT
 from .utils import OCFError
 
@@ -152,9 +153,9 @@ def verify(root=REPO_ROOT):
     if data is None:
         return ["command simplification successor missing"]
     for name in data["files"]:
-        predecessor(root, name, (root / name).read_text(encoding="utf-8"))
+        predecessor(root, name, read_logical(root, name))
     for name, checksum in data["immutable_files"].items():
-        current = before_guides(root, name, (root / name).read_text(encoding="utf-8"))
+        current = before_guides(root, name, read_logical(root, name))
         from .shared_session_successor import predecessor as before_shared_session
 
         current = before_shared_session(root, name, current)
@@ -197,9 +198,7 @@ def verify(root=REPO_ROOT):
     from .locale_history import before_structural
 
     ui_name = "locales/en-US/ui.yaml"
-    ui = yaml.safe_load(
-        before_structural(root, ui_name, (root / ui_name).read_text(encoding="utf-8"))
-    )["entries"]
+    ui = yaml.safe_load(before_structural(root, ui_name, read_logical(root, ui_name)))["entries"]
     for owner, text in ARTWORK.items():
         entry = ui[f"functions.{owner.lower()}.artwork-description"]
         if entry["text"] != text or entry["status"] != "reviewed":

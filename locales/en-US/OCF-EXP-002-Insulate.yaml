@@ -87,8 +87,19 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: release
-tags: []
-common_uses: []
+tags:
+- text: comfort
+  status: draft
+- text: temperature
+  status: draft
+- text: visualization
+  status: draft
+common_uses:
+- text: Exploring an imagined whole-body zone of temperature comfort.
+  status: draft
+- text: Reviewing adjustable comfort imagery without substituting it for suitable clothing, shelter, or
+    protection from heat and cold.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

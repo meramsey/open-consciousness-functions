@@ -50,8 +50,18 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: access-close
-tags: []
-common_uses: []
+tags:
+- text: energy
+  status: draft
+- text: intention
+  status: draft
+- text: inner-awareness
+  status: draft
+common_uses:
+- text: Recalling a personal sense of vitality and available resources.
+  status: draft
+- text: Exploring how to direct a felt sense of energy toward a chosen purpose.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []
