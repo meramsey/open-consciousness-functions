@@ -1,0 +1,12 @@
+[Unit]
+Description=OCF continuous machine-level production watchdog
+
+[Timer]
+OnBootSec=15
+OnCalendar=*-*-* *:*:0/20
+AccuracySec=1
+Persistent=true
+Unit=@WATCHDOG_UNIT@
+
+[Install]
+WantedBy=timers.target
