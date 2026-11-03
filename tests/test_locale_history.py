@@ -96,3 +96,39 @@ def test_consolidation_retains_exact_original_and_rechecks_cached_ledger(tmp_pat
     path.write_text(json.dumps(data))
     with pytest.raises(OCFError, match="immutable localized consolidation ledger drift"):
         history.before_consolidation(tmp_path, name, after)
+
+
+def test_structural_replay_accepts_only_exact_independently_pinned_predecessors(
+    tmp_path, monkeypatch
+):
+    name = "locales/en-US/commands.yaml"
+    archive = tmp_path / "function-content/editorial/historical-locales/004/en-US/commands.yaml"
+    archive.parent.mkdir(parents=True)
+    archive.write_text("pre-retirement bytes\n", encoding="utf-8", newline="\n")
+    current = "word-free historical reference\n"
+    earlier = "older independently verified predecessor\n"
+    retired = {
+        "files": {
+            name: {
+                "archive": archive.relative_to(tmp_path).as_posix(),
+                "before_sha256": history._sha(archive.read_text()),
+                "after_sha256": history._sha(current),
+            }
+        }
+    }
+    retirement = tmp_path / history.RETIREMENT
+    retirement.parent.mkdir(parents=True, exist_ok=True)
+    retirement.write_text(json.dumps(retired))
+    monkeypatch.setattr(history, "RETIREMENT_SHA256", history._sha(retirement.read_text()))
+    old = tmp_path / history.LEDGER
+    old.write_text(
+        json.dumps({"files": {name: {"before": earlier, "before_sha256": history._sha(earlier)}}})
+    )
+    monkeypatch.setattr(history, "LEDGER_SHA256", history._sha(old.read_text()))
+    assert history.before_structural(tmp_path, name, current) == archive.read_text()
+    assert history.before_structural(tmp_path, name, earlier) == earlier
+    with pytest.raises(OCFError, match="successor drift"):
+        history.before_structural(tmp_path, name, "arbitrary changed text")
+    old.write_text("tampered older ledger")
+    with pytest.raises(OCFError, match="immutable"):
+        history.before_structural(tmp_path, name, earlier)

@@ -37,7 +37,7 @@ SCHEMA_FILES = {
     "function-evidence": "function-content/evidence/OCF-FND-002.yaml",
     "function-specification": "function-content/specifications/OCF-FND-002.yaml",
     "locale-manifest": "locales/en-US/manifest.yaml",
-    "locale-resource": "locales/en-US/ui.yaml",
+    "locale-resource": "locales/en-US/shared-ui.yaml",
     "semantic-dsp-profile": "audio/background/state-profiles/OCF-DSP-DEFAULT-001.yaml",
     "session-pacing": "audio/templates/pacing/OCF-PACING-HPLUS-STANDARD-001.yaml",
     "session-plan": "audio/session-plans/en-US/OCF-FND-002.json",

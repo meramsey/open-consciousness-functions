@@ -41,7 +41,7 @@ def filename_plan(root=REPO_ROOT, *, locale="en-US", catalog=None):
     pack = catalog.require(locale)
     owned = {collision_key(name): owner for owner, name in pack.localized_function_files.items()}
     destinations = set()
-    mapping, blockers = [], []
+    mapping, blockers, historical_reuse = [], [], []
     for identity, data in sorted(pack.localized_functions.items()):
         value = data.get("title") or {}
         if not isinstance(value.get("text"), str):
@@ -61,13 +61,30 @@ def filename_plan(root=REPO_ROOT, *, locale="en-US", catalog=None):
             raise OCFError("unsafe localized rename source: " + old)
         target = pack.path / new
         if target.exists() and new != old:
-            blockers.append(
-                {
-                    "function_id": identity,
-                    "path": new,
-                    "reason": "existing destination retained; resolve historical ownership before rename",
-                }
-            )
+            from .locale_history import before_structural
+            from .utils import yaml_safe_load
+
+            stub = yaml_safe_load(target.read_text(encoding="utf-8"))
+            logical = "locales/" + pack.locale + "/" + new
+            if (
+                isinstance(stub, dict)
+                and stub.get("kind") == "immutable-historical-locale-reference"
+                and stub.get("logical_path") == logical
+            ):
+                predecessor = before_structural(root, logical, target.read_text(encoding="utf-8"))
+                if hashlib.sha256(predecessor.encode("utf-8")).hexdigest() != stub["sha256"]:
+                    raise OCFError("historical destination identity drift: " + new)
+                historical_reuse.append(
+                    {"function_id": identity, "path": new, "archive": stub["archive"]}
+                )
+            else:
+                blockers.append(
+                    {
+                        "function_id": identity,
+                        "path": new,
+                        "reason": "existing destination retained; resolve historical ownership before rename",
+                    }
+                )
         mapping.append(
             {
                 "function_id": identity,
@@ -86,6 +103,7 @@ def filename_plan(root=REPO_ROOT, *, locale="en-US", catalog=None):
         "filename_policy": "stable ID from YAML; NFC readable suffix; casefold collision key; 72characters/128UTF8bytes maximum suffix; Windows reserved/path characters sanitized by existing safe_component",
         "mapping": mapping,
         "blockers": blockers,
+        "verified_historical_destination_reuse": historical_reuse,
         "required_before_apply": "L3 verified; exact historical logical-path resolver; staged target files and atomic manifest switch; Git rename detection and final gates",
     }
 

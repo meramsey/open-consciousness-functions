@@ -40,5 +40,9 @@ def test_complete_catalog_plan_does_not_overwrite_unlisted_historical_pilot():
         row["new_path"].split("/")[-1].startswith(row["function_id"] + "-")
         for row in report["mapping"]
     )
-    assert any(row["function_id"] == "OCF-EMO-003" for row in report["blockers"])
+    assert report["blockers"] == []
+    assert any(
+        row["function_id"] == "OCF-EMO-003"
+        for row in report["verified_historical_destination_reuse"]
+    )
     assert filename_plan(locale="es")["count"] == 0  # Partial locale, not invented translations.

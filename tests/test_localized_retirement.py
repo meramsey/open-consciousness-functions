@@ -81,11 +81,87 @@ def test_path_traversal_and_duplicate_resources_are_rejected(tmp_path):
 def test_existing_58_function_catalog_has_only_declared_retirement_candidates():
     report = retirement_plan()
     assert report["active_function_count"] == 58
-    assert len(report["retirement_candidates"]) == 7
-    assert report["retired_key_count"] == 615
+    assert report["retirement_candidates"] == []
+    assert report["retired_key_count"] == 0
     assert all(
         row["file"]
         not in {"locales/en-US/" + value["file"] for value in report["active_functions"].values()}
         for row in report["retirement_candidates"]
     )
     assert retirement_plan(locale="es")["active_function_count"] == 0
+
+
+@pytest.mark.integration
+def test_retired_catalog_matches_exact_predecessor_without_duplicate_authority():
+    from ocf_tools.locale import LocaleCatalog
+    from ocf_tools.locale_history import before_structural
+    from ocf_tools.localized_retirement import LEDGER, REPO_ROOT
+    from ocf_tools.utils import yaml_safe_load
+
+    def historical_reader(path):
+        name = path.relative_to(REPO_ROOT).as_posix()
+        return yaml_safe_load(before_structural(REPO_ROOT, name, path.read_text(encoding="utf-8")))
+
+    predecessor = LocaleCatalog(REPO_ROOT / "locales", reader=historical_reader)
+    current = LocaleCatalog()
+    assert predecessor.problems == current.problems == []
+    for locale in current.locales():
+
+        def values(catalog):
+            return {
+                key: (entry.text, entry.version, entry.status, entry.domain)
+                for key, entry in catalog.require(locale).entries.items()
+            }
+
+        assert values(predecessor) == values(current)
+    ledger = json.loads((REPO_ROOT / LEDGER).read_text())
+    assert ledger["retired_key_count"] == 615
+    assert len(ledger["created_resources"]) == 3
+    assert not any(
+        row.get("superseded_keys") for row in current.require("en-US").manifest["resources"]
+    )
+    assert len(current.require("en-US").localized_functions) == 58
+
+
+@pytest.mark.unit
+def test_apply_retires_words_preserves_shared_values_and_exact_archives(tmp_path, monkeypatch):
+    from ocf_tools import locale_history
+    from ocf_tools.localized_retirement import LEDGER, apply_retirement
+
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    path, manifest = source(tmp_path)
+    original = path.read_bytes()
+    result = apply_retirement(tmp_path)
+    assert result["keys"] == 1 and result["shared_resources"] == 1
+    stub = yaml.safe_load(path.read_text())
+    assert stub["kind"] == "immutable-historical-locale-reference" and "entries" not in stub
+    archive = tmp_path / stub["archive"]
+    assert archive.read_bytes() == original
+    shared = yaml.safe_load(path.with_name("shared-compat.yaml").read_text())
+    assert shared["entries"] == {"shared.label": "Required shared UI"}
+    active = yaml.safe_load(path.with_name("manifest.yaml").read_text())
+    assert active["resources"][0]["file"] == "shared-compat.yaml"
+    assert not any("superseded_keys" in row for row in active["resources"])
+    monkeypatch.setattr(locale_history, "RETIREMENT_SHA256", sha((tmp_path / LEDGER).read_text()))
+    assert apply_retirement(tmp_path)["status"] == "already-retired; no writes"
+    assert (
+        locale_history.before_structural(tmp_path, "locales/en-US/compat.yaml", path.read_text())
+        == original.decode()
+    )
+    archive.write_text("tampered archive")
+    with pytest.raises(OCFError, match="archive drift"):
+        locale_history.before_structural(tmp_path, "locales/en-US/compat.yaml", path.read_text())
+
+
+@pytest.mark.unit
+def test_apply_does_not_overwrite_an_unrelated_shared_destination(tmp_path, monkeypatch):
+    from ocf_tools.localized_retirement import LEDGER, apply_retirement
+
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    path, manifest = source(tmp_path)
+    original = path.read_bytes()
+    path.with_name("shared-compat.yaml").write_text("user data")
+    with pytest.raises(OCFError, match="refusing to overwrite"):
+        apply_retirement(tmp_path)
+    assert path.read_bytes() == original
+    assert not (tmp_path / LEDGER).exists()
