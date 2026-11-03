@@ -265,6 +265,10 @@ remains at 58 functions.
       an additional fixed -1 dB on Focus 10 while preserving A4 Focus 11. A5
       listening remains pending; neither edition is publicly authorized.
       Technical QC and favorable A4 feedback are not publication authorization.
+- [ ] Validate and deploy an independent Linux production service with mandatory
+      machine-level heartbeat/watchdog reconciliation, bounded safe recovery and
+      deduplicated engineering escalation. Keep frozen rendering inputs and
+      verified outputs intact; see [production supervision](docs/PRODUCTION_SUPERVISION.md).
 - [ ] Enforce one crash-recoverable owner per complete-render artifact identity:
       atomic reservation, verified process identity, terminal-state recovery,
       cache-only synthesis blocking when requested, safe stage retention, and

@@ -1,5 +1,33 @@
 # OCF Agent Contract
 
+## OCF continuous execution policy
+
+All authorized long-running OCF jobs MUST have continuous machine-level health
+monitoring. Every active production job MUST have an independent watchdog,
+heartbeat records, process identity checks, progress checks, durable job state,
+crash detection, safe automatic recovery, bounded retries and terminal-result
+verification. Monitoring is mandatory even when the agent is idle.
+
+Avoid wasteful repeated LLM calls for unchanged healthy progress. This
+token-efficiency guidance DOES NOT prohibit scheduled machine polling,
+independent watchdogs, automatic session recovery or event-driven agent
+continuation. A quiet job must still be monitored.
+
+A dead production owner with unfinished authorized work MUST trigger
+reconciliation and safe recovery without waiting for the user. Detect and
+correct stale running status with no matching live process. Diagnose a live
+but stalled worker after the configured heartbeat/progress threshold; do not
+use CPU utilization alone to declare a stall. If recovery cannot safely
+proceed, notify the user with the exact blocker. Do not ask the user to monitor
+authorized jobs or reauthorize previously approved work.
+
+Do not weaken output integrity, privacy, replay or duplicate-job protections.
+Use one canonical production controller and the existing OCF rendering APIs.
+Production must not depend on an OpenCode tool/location lifetime. Never claim
+that a parent service, accepted prompt or live PID alone proves job completion.
+Ponytail/token optimization must not disable this policy; OCF engineering uses
+the user's explicit Ponytail off mode.
+
 OCF is a declarative function/session authoring and audio toolchain. Schemas,
 canonical YAML, repository tests and cited evidence are authoritative. The
 agent reasons; OCF validates and executes. These instructions are provider-neutral.
