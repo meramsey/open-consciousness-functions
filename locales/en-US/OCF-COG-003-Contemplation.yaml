@@ -50,8 +50,18 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: close
-tags: []
-common_uses: []
+tags:
+- text: reflection
+  status: draft
+- text: inner-awareness
+  status: draft
+- text: calm
+  status: draft
+common_uses:
+- text: Making room for quiet reflection on a personal question.
+  status: draft
+- text: Exploring internal dialogue while distinguishing impressions from verified facts.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

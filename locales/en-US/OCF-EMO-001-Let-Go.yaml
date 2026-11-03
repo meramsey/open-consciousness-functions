@@ -31,8 +31,18 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: emotional-balance
+  status: draft
+- text: letting-go
+  status: draft
+- text: calm
+  status: draft
+common_uses:
+- text: Reflecting on an emotion that is interfering with a chosen activity.
+  status: draft
+- text: Practicing a calmer relationship to a feeling without denying useful emotional information.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

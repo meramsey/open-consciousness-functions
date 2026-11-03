@@ -48,8 +48,18 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
-tags: []
-common_uses: []
+tags:
+- text: comfort
+  status: draft
+- text: body-awareness
+  status: draft
+- text: relaxation
+  status: draft
+common_uses:
+- text: Practicing attention to a sense of physical ease.
+  status: draft
+- text: Exploring a calmer response to discomfort without ignoring symptoms or delaying appropriate care.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

@@ -40,8 +40,18 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: body-awareness
+  status: draft
+- text: renewal
+  status: draft
+- text: balance
+  status: draft
+common_uses:
+- text: Directing kind attention toward a chosen part of the body.
+  status: draft
+- text: Visualizing whole-body maintenance and renewal without claiming healing or replacing treatment.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

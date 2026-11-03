@@ -68,8 +68,19 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: release
-tags: []
-common_uses: []
+tags:
+- text: comfort
+  status: draft
+- text: body-awareness
+  status: draft
+- text: self-direction
+  status: draft
+common_uses:
+- text: Comparing temporary, area-specific sensitivity imagery with general comfort practice.
+  status: draft
+- text: Reviewing the documented distinction between temporary numbing and its release, without suppressing
+    warning signs or delaying care.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

@@ -73,8 +73,19 @@ secondary_commands:
     text: Deliberately follow the ordered procedure; proposed exercise instructions, not software execution.
     status: reviewed
   role: mode
-tags: []
-common_uses: []
+tags:
+- text: intention
+  status: draft
+- text: calm
+  status: draft
+- text: surroundings
+  status: draft
+common_uses:
+- text: Imagining calm personal space during unwanted insect contact.
+  status: draft
+- text: Reflecting on the distinction between discouraging contact and intentionally observing, without
+    replacing practical insect protection.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

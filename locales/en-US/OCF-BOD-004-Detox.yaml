@@ -49,8 +49,19 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
-tags: []
-common_uses: []
+tags:
+- text: body-awareness
+  status: draft
+- text: renewal
+  status: draft
+- text: visualization
+  status: draft
+common_uses:
+- text: Visualizing the body's ordinary cleansing and maintenance processes.
+  status: draft
+- text: Reflecting on a sense of freshness and balance without claiming removal of toxins or replacing
+    medical care.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

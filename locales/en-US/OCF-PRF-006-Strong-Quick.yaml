@@ -66,8 +66,19 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: release
-tags: []
-common_uses: []
+tags:
+- text: movement
+  status: draft
+- text: attention
+  status: draft
+- text: self-direction
+  status: draft
+common_uses:
+- text: Reviewing the exercise's intention of prompt, coordinated action.
+  status: draft
+- text: Reflecting on the documented release after an immediate need passes, without assuming exceptional
+    strength or taking physical risks.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

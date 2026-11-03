@@ -1,0 +1,296 @@
+{
+  "source_commit": "496647128c1403b0e34bfbc0d5b01f2ba164e925",
+  "scope": "Title, description, cues, secondary commands and narration unchanged; draft discovery metadata only. Not an approval receipt.",
+  "functions": {
+    "OCF-AUT-001": {
+      "path": "locales/en-US/OCF-AUT-001-Automatic-Action.yaml",
+      "protected_sha256": "04f1f3fa02fb101d6c4d730547f3b3c0ce2af7aca4e2b0830133beef628d0aaf",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-BOD-001": {
+      "path": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
+      "protected_sha256": "91ce7ae9d6616e7c473151d449b4d945a4d23319b1188baa4d25b7a4cdc3f839",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-BOD-002": {
+      "path": "locales/en-US/OCF-BOD-002-Circulation.yaml",
+      "protected_sha256": "7a8cebf383d4e8ee18296719c0cb94d3fc4b468ed05f44fbd839701ac8d33f04",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-BOD-003": {
+      "path": "locales/en-US/OCF-BOD-003-Comfort.yaml",
+      "protected_sha256": "a985781e6a3a000a2af7b5136c252a0916564110ac115bd7bdfbf439abced0a6",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-BOD-004": {
+      "path": "locales/en-US/OCF-BOD-004-Detox.yaml",
+      "protected_sha256": "265eb022da1d1c64f137bb93a0c84af339f708f4fbc8bf50c722623abc408328",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-BOD-005": {
+      "path": "locales/en-US/OCF-BOD-005-Appetite-Choice.yaml",
+      "protected_sha256": "a3e255810dcd0b16c0e5d8a4471e410600e291e1d5f944e38de96ae024c3b697",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-BOD-006": {
+      "path": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
+      "protected_sha256": "f262706519b1a1a02c9784f1ce6cbc3e9ee3e1054eedfaff9359bdb901164877",
+      "reviewed_relationships_sha256": "a4dcb70cfe4ffbe528b302448871b7925ae43cf712df12a87de6cf6eaa599aba"
+    },
+    "OCF-BOD-007": {
+      "path": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
+      "protected_sha256": "98265e672c55630596a68ed30592fc75f69de69d3c1a71968f895cc4218867c4",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-BOD-008": {
+      "path": "locales/en-US/OCF-BOD-008-Immune-Readiness.yaml",
+      "protected_sha256": "bfc6466fc8ff90a164de1980fabe4eb11fe44c2c8284d96114b72efb7ca002bc",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-BOD-009": {
+      "path": "locales/en-US/OCF-BOD-009-Breathe-Better.yaml",
+      "protected_sha256": "27d21408d657beb0515d6e8fd00cff0c0e86ed42a23ae4247b09a38d4b873545",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-BOD-010": {
+      "path": "locales/en-US/OCF-BOD-010-Nutricia.yaml",
+      "protected_sha256": "a039970f5ba8df7eaf1d032c4ffaef0c0ff4c35e642d5bdb1ad31aa5c111da16",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-BOD-011": {
+      "path": "locales/en-US/OCF-BOD-011-Hormonal-Transitions.yaml",
+      "protected_sha256": "f4dce574d84c814fb4cff1559a79faf5aa78a21655db2852512f4f12717f99f0",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-BOD-012": {
+      "path": "locales/en-US/OCF-BOD-012-Sex-Drive.yaml",
+      "protected_sha256": "5f26d803121f6df72dd86006e823b6afe2f6af4eb67b0a9c282ae3483fee04c7",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-BOD-013": {
+      "path": "locales/en-US/OCF-BOD-013-Body-Tune-Up.yaml",
+      "protected_sha256": "aba2cf3a9e5bd1c57cf268576255e198cc8ef94d5cb2fd2c05d874181b17f420",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-BOD-014": {
+      "path": "locales/en-US/OCF-BOD-014-Regenerate.yaml",
+      "protected_sha256": "a824f55b206978a262cba3e9602b988bbcf19ce04d69c40459619dc52780d5d0",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-BOD-015": {
+      "path": "locales/en-US/OCF-BOD-015-Temporary-Numbing.yaml",
+      "protected_sha256": "00f82fe54f8008c1aae493a9ba558bb94c4bd96b41bfe3fa1475c93785c05591",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-COG-001": {
+      "path": "locales/en-US/OCF-COG-001-Information-Access.yaml",
+      "protected_sha256": "f59f13dee752dcf89dc871e688bc58eaad31de9973b92669d66c4ee774e0f24d",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-COG-002": {
+      "path": "locales/en-US/OCF-COG-002-Mental-Calculation.yaml",
+      "protected_sha256": "9a1b783e6b93bc0f153796c630c28b1819dc621a957010245201342e564354d0",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-COG-003": {
+      "path": "locales/en-US/OCF-COG-003-Contemplation.yaml",
+      "protected_sha256": "c11243349743e28198ebaa10b3487902ef13895bddab948d05f02684f5d69464",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-COG-004": {
+      "path": "locales/en-US/OCF-COG-004-Imprint.yaml",
+      "protected_sha256": "6ce45bc7d83c8d67e56dd4d8880c94c3a92479850276fff5ca7fbcf7d80988fc",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-COG-005": {
+      "path": "locales/en-US/OCF-COG-005-Options.yaml",
+      "protected_sha256": "ad90adf3e66ba5499e8ac6e33ad876f8945503861cbc5ef4fba7c6aa3f82fdc1",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-COG-006": {
+      "path": "locales/en-US/OCF-COG-006-Recall.yaml",
+      "protected_sha256": "622eccef71e270e63bbec0794a3cdea5565c726a5313f0c7fe13cae66c8e1cae",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-COG-007": {
+      "path": "locales/en-US/OCF-COG-007-Think-Fast.yaml",
+      "protected_sha256": "eb4f284e79768abb28d0c8a3145949d2744a20fceba898c776d739e6611dc292",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-COM-001": {
+      "path": "locales/en-US/OCF-COM-001-Speak-Up.yaml",
+      "protected_sha256": "ec86675d94ed8879ca01e7bc13a99ee802e644e415484e897199796e7259d8ac",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-EMG-001": {
+      "path": "locales/en-US/OCF-EMG-001-Injury-Response.yaml",
+      "protected_sha256": "8e42e6edbfb5e10ad5d71aa7b52cc5d317b82106e99547c3e0907bd0b71cd3b4",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-EMG-002": {
+      "path": "locales/en-US/OCF-EMG-002-Toxic-Exposure-Response.yaml",
+      "protected_sha256": "84455f4c99bda160524f33181092f5c3c92b7101a0b6bfa8f7ed653dc6d03bcb",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-EMO-001": {
+      "path": "locales/en-US/OCF-EMO-001-Let-Go.yaml",
+      "protected_sha256": "00c47a22cce110ce32d2ab8e4b688b24b660eb5d1c4f1b03c9396b183fcfc3cd",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-EMO-002": {
+      "path": "locales/en-US/OCF-EMO-002-Offload.yaml",
+      "protected_sha256": "76113fad15aced67231cdece6e998689ae31c6da334cdb357b637ef64bd0beb7",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-EMO-003": {
+      "path": "locales/en-US/OCF-EMO-003-Empathize.yaml",
+      "protected_sha256": "5f5d699a9c0031735f84cf43e5a71aa152941d7bc9b957ed9c93b189f9b5f40d",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-EXP-001": {
+      "path": "locales/en-US/OCF-EXP-001-Manifest.yaml",
+      "protected_sha256": "a8f3ef68607b3e3bcfc63c52acb527e3c7a3017ddff460dcdb3f8dd90d31b80c",
+      "reviewed_relationships_sha256": "0a2d4a7030e0a02f57426e0f40dc5e85d1151ab4e8698f4684c00e15c4b160a7"
+    },
+    "OCF-EXP-002": {
+      "path": "locales/en-US/OCF-EXP-002-Insulate.yaml",
+      "protected_sha256": "b240c20e505234a9c0e9afb876edc71e83c50046de01bf6c1a5aec3bb59f1774",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-EXP-003": {
+      "path": "locales/en-US/OCF-EXP-003-Dissolve.yaml",
+      "protected_sha256": "0b15a4515800a0d63a711f3fa4dc354dc77787ea1d6477ce0dfc040abced3456",
+      "reviewed_relationships_sha256": "492a899ffc8c718290e3a6bcca1a8da7dd7f7e381322667158ee6ea084863688"
+    },
+    "OCF-EXP-005": {
+      "path": "locales/en-US/OCF-EXP-005-Clear-Zone.yaml",
+      "protected_sha256": "5efa4f1a3d49aab71d1e2eb81a33c82fd538be94066ea22ca6b913e638288b23",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-EXP-006": {
+      "path": "locales/en-US/OCF-EXP-006-Intuition.yaml",
+      "protected_sha256": "d26c13a17dce9593930b4809f8b362d365d4431dbbd7a1efa558dccaaf336fb9",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-FND-001": {
+      "path": "locales/en-US/OCF-FND-001-Access-to-Energy.yaml",
+      "protected_sha256": "fba50c8081e8c846b668ab4811acedaafa1dedffbe36ad8e5a5220df0cbc0510",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-FND-002": {
+      "path": "locales/en-US/OCF-FND-002-Focus.yaml",
+      "protected_sha256": "e867043312a0204a2f5b4f0c10169d59f820763703e429419a9efb316b0c9e3a",
+      "reviewed_relationships_sha256": "44fd6b6536297b944a33f56652eb21d25f1cfef248ac4fbf31d5f504bac26224"
+    },
+    "OCF-FND-003": {
+      "path": "locales/en-US/OCF-FND-003-Quick-Recharge.yaml",
+      "protected_sha256": "07e4257e9018a3ef9605eefe10dbd05eec66901fa43173dd989db0dfeff4e370",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-FND-004": {
+      "path": "locales/en-US/OCF-FND-004-Relax.yaml",
+      "protected_sha256": "da3bf4a631c88ee8439535849f0d39f88501bb4293f45f5c38fa3d61f0482bc3",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-FND-005": {
+      "path": "locales/en-US/OCF-FND-005-Reset.yaml",
+      "protected_sha256": "930e89c00a0bafcdb3a8e4caf7e3a8a33ad947bfd7caccf058412db9d55d8999",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-FND-006": {
+      "path": "locales/en-US/OCF-FND-006-Release.yaml",
+      "protected_sha256": "31745c1358dec5c15ab01e651d483e10738b6e7118e20bea6e097b6437bfc492",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-LIF-001": {
+      "path": "locales/en-US/OCF-LIF-001-Habit-Freedom.yaml",
+      "protected_sha256": "b95c6525c2cfd8b5e2c941a0aefd8b023aff103761d79970e960f9c02f233820",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-PRF-001": {
+      "path": "locales/en-US/OCF-PRF-001-Do-This-Now.yaml",
+      "protected_sha256": "884c6c8cb48904be0eeb36f10df4131b31ff8f5155466fef5c0686dbbfd6c2eb",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-PRF-002": {
+      "path": "locales/en-US/OCF-PRF-002-Inner-Power.yaml",
+      "protected_sha256": "30461b5f68e0ca0e749f659271d1791faee66e2cebed8e3c6f59229455704913",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-PRF-003": {
+      "path": "locales/en-US/OCF-PRF-003-Coordination.yaml",
+      "protected_sha256": "a30a2b732b91b0bcdeca6042de6338d3a966541c09ef5c4959eabfef8cc91cc7",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-PRF-004": {
+      "path": "locales/en-US/OCF-PRF-004-Light-Foot.yaml",
+      "protected_sha256": "799381a6ac58217cffa26b93ca0297d7e33499a359d928271bc589b4e4d8ab47",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-PRF-005": {
+      "path": "locales/en-US/OCF-PRF-005-Make-Your-Day.yaml",
+      "protected_sha256": "ddd1904eab7a1bab363b09bfc4a00017679e49fc9548027bda6b0569323920ef",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-PRF-006": {
+      "path": "locales/en-US/OCF-PRF-006-Strong-Quick.yaml",
+      "protected_sha256": "2dbdd862713900c3445f4ae3de2bd3bd088283be512cafa579294e6b1a54886c",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-SEN-001": {
+      "path": "locales/en-US/OCF-SEN-001-Hearing.yaml",
+      "protected_sha256": "2c1b74c3b594118313a11973929819bb1f2506c5f12c2a3bbd31052115ea5c05",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-SEN-002": {
+      "path": "locales/en-US/OCF-SEN-002-Seeing.yaml",
+      "protected_sha256": "cb8b130cb5a76fb7e4e1e0ace9ea30ba3db16158c59599eccb1c7d136553f002",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-SEN-003": {
+      "path": "locales/en-US/OCF-SEN-003-Smell.yaml",
+      "protected_sha256": "3d931fd1e48ec88824a6eccb1b86db4f6a7fcc7d177f54b3df1267cbb69896f1",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-SEN-004": {
+      "path": "locales/en-US/OCF-SEN-004-Taste.yaml",
+      "protected_sha256": "f39abdb1a285be568c876293f17e1bf6c97f129f1e41be5b6f8cf59b9abafde8",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-SEN-005": {
+      "path": "locales/en-US/OCF-SEN-005-Touch.yaml",
+      "protected_sha256": "97c0f66f05d8fcae38bc5baa5801b9407bd802278c747cf397cb767c9f48677c",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-SLP-001": {
+      "path": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
+      "protected_sha256": "e8fb2389da6c1ed28fb7c505bb8fd8877d546b791858da463de97ac27979e8ac",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-SLP-002": {
+      "path": "locales/en-US/OCF-SLP-002-Sleep.yaml",
+      "protected_sha256": "706f0563b77805475b2ce7a1fc321ad6f86b92c1a873c8e81c3cc02e646b535e",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-SLP-003": {
+      "path": "locales/en-US/OCF-SLP-003-Dream-Theme.yaml",
+      "protected_sha256": "0a54294b713f9b9f4bf54878c6d7eff35030e8f1c969d9a1a0dde00a7040ab2f",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-SLP-004": {
+      "path": "locales/en-US/OCF-SLP-004-Sleep-Insight.yaml",
+      "protected_sha256": "c8d1c231a4dd65bf69992ee7efb168802f830580f2a03a11b9614aff97ed54a9",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    },
+    "OCF-SLP-005": {
+      "path": "locales/en-US/OCF-SLP-005-Sleep-Easy.yaml",
+      "protected_sha256": "324c7b389459e1c71d3e2f84c06a03fb2d080733b22bdae93f4b5550b2309960",
+      "reviewed_relationships_sha256": "bb3f5234bf015630a32f0d81315e78d5f37c24f1a271dc752fb0ee429b71a89d"
+    },
+    "OCF-SLP-006": {
+      "path": "locales/en-US/OCF-SLP-006-Stay-Awake.yaml",
+      "protected_sha256": "355d7fc0a7d93021ded22a94d08b1b29cc564f602d48d8e5a1c07f6029a62d5e",
+      "reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262"
+    }
+  }
+}

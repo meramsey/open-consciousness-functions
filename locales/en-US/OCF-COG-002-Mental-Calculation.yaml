@@ -32,8 +32,18 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: numbers
+  status: draft
+- text: concentration
+  status: draft
+- text: thinking
+  status: draft
+common_uses:
+- text: Preparing for mental arithmetic or number-based study.
+  status: draft
+- text: Practicing attention to numerical patterns while independently checking calculations.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

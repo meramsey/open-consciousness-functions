@@ -33,8 +33,18 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: circulation
+  status: draft
+- text: visualization
+  status: draft
+- text: mental-clarity
+  status: draft
+common_uses:
+- text: Directed visualization of balanced brain and neck circulation.
+  status: draft
+- text: Reinforcing an intention toward clear, steady thinking without treating a medical condition.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

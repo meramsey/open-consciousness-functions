@@ -53,8 +53,19 @@ secondary_commands:
     status: canonical
     version: 1.0.1
   role: mode
-tags: []
-common_uses: []
+tags:
+- text: nourishment
+  status: draft
+- text: intention
+  status: draft
+- text: body-awareness
+  status: draft
+common_uses:
+- text: Reflecting on the intention to make useful nourishment available from food.
+  status: draft
+- text: Exploring the distinction between sufficient nourishment and unnecessary retention as imagery,
+    not a way to control metabolism or replace adequate eating.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

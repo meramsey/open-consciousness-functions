@@ -31,8 +31,18 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: action
+  status: draft
+- text: intention
+  status: draft
+- text: motivation
+  status: draft
+common_uses:
+- text: Preparing to begin a chosen task with a clear next action.
+  status: draft
+- text: Renewing an intention to continue or complete an activity.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

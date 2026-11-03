@@ -34,8 +34,18 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: attention
+  status: draft
+- text: concentration
+  status: draft
+- text: self-direction
+  status: draft
+common_uses:
+- text: Choosing one activity to receive sustained attention.
+  status: draft
+- text: Preparing for focused study or deliberate engagement with an experience.
+  status: draft
 relationships:
   related_functions:
   - function_id: OCF-COG-007

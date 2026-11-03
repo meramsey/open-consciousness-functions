@@ -39,8 +39,19 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: transitions
+  status: draft
+- text: emotional-balance
+  status: draft
+- text: comfort
+  status: draft
+common_uses:
+- text: Practicing steadiness during personally experienced hormonal transitions.
+  status: draft
+- text: Reflecting on physical and emotional comfort without claiming to regulate hormone levels or replace
+    care.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

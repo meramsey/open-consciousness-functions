@@ -40,8 +40,19 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: habits
+  status: draft
+- text: self-direction
+  status: draft
+- text: letting-go
+  status: draft
+common_uses:
+- text: Recognizing a specific unwanted repeated behavior.
+  status: draft
+- text: Reflecting on a chosen change in a habit without treating the exercise as a substitute for needed
+    professional support.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

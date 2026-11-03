@@ -32,8 +32,19 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: rest
+  status: draft
+- text: sleep
+  status: draft
+- text: energy
+  status: draft
+common_uses:
+- text: Choosing a brief rest when it is safe and appropriate to sleep.
+  status: draft
+- text: Reflecting on the intention to wake from a short rest feeling refreshed, without replacing adequate
+    sleep.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

@@ -48,8 +48,19 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
-tags: []
-common_uses: []
+tags:
+- text: sleep
+  status: draft
+- text: rest
+  status: draft
+- text: self-direction
+  status: draft
+common_uses:
+- text: Preparing for natural sleep in a safe place.
+  status: draft
+- text: Reflecting on a desired waking time without relying on the exercise instead of an alarm when timing
+    matters.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

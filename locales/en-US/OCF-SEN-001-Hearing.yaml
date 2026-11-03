@@ -51,8 +51,19 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: decrease
-tags: []
-common_uses: []
+tags:
+- text: sensory-awareness
+  status: draft
+- text: hearing
+  status: draft
+- text: imagination
+  status: draft
+common_uses:
+- text: Exploring attention to sounds or remembered sound.
+  status: draft
+- text: Comparing inward listening with imaginative sound experience without claiming hearing restoration
+    or ignoring environmental warnings.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

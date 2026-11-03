@@ -49,8 +49,19 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
-tags: []
-common_uses: []
+tags:
+- text: sensory-awareness
+  status: draft
+- text: visualization
+  status: draft
+- text: visual-memory
+  status: draft
+common_uses:
+- text: Exploring remembered or deliberately imagined visual detail in your own way.
+  status: draft
+- text: Practicing attention to seeing without treating imagery as vision correction or requiring vivid
+    mental pictures.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

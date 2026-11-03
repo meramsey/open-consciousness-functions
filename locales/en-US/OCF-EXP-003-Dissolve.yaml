@@ -39,8 +39,18 @@ activation:
     text: Deliberately follow the ordered procedure; proposed exercise instructions, not software execution.
     status: reviewed
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: letting-go
+  status: draft
+- text: emotional-balance
+  status: draft
+- text: self-direction
+  status: draft
+common_uses:
+- text: Reflecting on a selected unwanted belief or expectation.
+  status: draft
+- text: Exploring release of a recurring pattern while preserving useful learning.
+  status: draft
 relationships:
   related_functions:
   - function_id: OCF-EXP-006

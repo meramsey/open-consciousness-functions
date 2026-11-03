@@ -75,8 +75,19 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
-tags: []
-common_uses: []
+tags:
+- text: memory
+  status: draft
+- text: learning
+  status: draft
+- text: attention
+  status: draft
+common_uses:
+- text: Giving deliberate attention to material you wish to remember.
+  status: draft
+- text: Comparing information capture with the separately documented recall application, without assuming
+    memory is infallible.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

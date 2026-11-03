@@ -43,8 +43,18 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: calm
+  status: draft
+- text: body-awareness
+  status: draft
+- text: safety
+  status: draft
+common_uses:
+- text: Reviewing the exercise as an intention of calm in a toxic-exposure context, not an antidote.
+  status: draft
+- text: Distinguishing a wellness intention from the need for prompt poison-control or emergency advice.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

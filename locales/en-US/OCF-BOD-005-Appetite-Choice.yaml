@@ -42,8 +42,18 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: eating-choices
+  status: draft
+- text: habits
+  status: draft
+- text: self-direction
+  status: draft
+common_uses:
+- text: Reflecting on the difference between a passing craving and a genuine need for nourishment.
+  status: draft
+- text: Practicing deliberate food choices while remaining responsive to hunger and nutritional needs.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

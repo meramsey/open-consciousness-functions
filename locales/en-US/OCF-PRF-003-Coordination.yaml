@@ -34,8 +34,18 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: movement
+  status: draft
+- text: coordination
+  status: draft
+- text: body-awareness
+  status: draft
+common_uses:
+- text: Exploring a felt sense of smooth, coordinated movement.
+  status: draft
+- text: Preparing attentive movement practice while respecting physical limits and safe conditions.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

@@ -49,8 +49,19 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
-tags: []
-common_uses: []
+tags:
+- text: sleep
+  status: draft
+- text: surroundings
+  status: draft
+- text: relaxation
+  status: draft
+common_uses:
+- text: Preparing for rest in unfamiliar but safe surroundings.
+  status: draft
+- text: Reflecting on returning to sleep after ordinary distractions while remaining responsive to genuine
+    safety needs.
+  status: draft
 relationships:
   related_functions:
   - function_id: OCF-SLP-001

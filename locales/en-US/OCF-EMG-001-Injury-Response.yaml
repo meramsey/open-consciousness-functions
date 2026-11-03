@@ -42,8 +42,19 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: calm
+  status: draft
+- text: body-awareness
+  status: draft
+- text: safety
+  status: draft
+common_uses:
+- text: Reviewing the exercise's intention of calm during an injury response, alongside appropriate first
+    aid.
+  status: draft
+- text: Reflecting on supportive awareness without postponing emergency services or professional care.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

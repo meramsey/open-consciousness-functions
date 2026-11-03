@@ -32,8 +32,19 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: breathing
+  status: draft
+- text: body-awareness
+  status: draft
+- text: comfort
+  status: draft
+common_uses:
+- text: Exploring awareness of comfortable, unforced breathing.
+  status: draft
+- text: Visualizing respiratory maintenance without treating breathing difficulty or delaying medical
+    help.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

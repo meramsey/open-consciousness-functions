@@ -31,8 +31,18 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: intention
+  status: draft
+- text: visualization
+  status: draft
+- text: confidence
+  status: draft
+common_uses:
+- text: Reflecting on the tone and experiences you would like for the coming day.
+  status: draft
+- text: Clarifying daily intentions without expecting control over other people or external events.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

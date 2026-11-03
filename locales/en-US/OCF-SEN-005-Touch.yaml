@@ -83,8 +83,19 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
-tags: []
-common_uses: []
+tags:
+- text: sensory-awareness
+  status: draft
+- text: touch
+  status: draft
+- text: imagination
+  status: draft
+common_uses:
+- text: Exploring remembered textures or an imagined sense of touch.
+  status: draft
+- text: Practicing attention to skin sensations without suppressing warning signs or assuming protection
+    from harm.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

@@ -31,8 +31,19 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: self-direction
+  status: draft
+- text: release
+  status: draft
+- text: function-lifecycle
+  status: draft
+common_uses:
+- text: Reviewing how a current temporary application differs from the learned ability.
+  status: draft
+- text: Reflecting on placing a selected application on hold when its purpose is complete, using only
+    its documented scope.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

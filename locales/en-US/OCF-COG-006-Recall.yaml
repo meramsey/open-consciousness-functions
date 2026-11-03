@@ -31,8 +31,18 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: memory
+  status: draft
+- text: learning
+  status: draft
+- text: reflection
+  status: draft
+common_uses:
+- text: Inviting previously learned material to mind during study.
+  status: draft
+- text: Reflecting on a past experience while recognizing that recollection can be incomplete or mistaken.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []

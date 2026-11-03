@@ -38,8 +38,19 @@ activation:
     status: canonical
     version: 1.0.0
 secondary_commands: []
-tags: []
-common_uses: []
+tags:
+- text: memory
+  status: draft
+- text: reflection
+  status: draft
+- text: inner-awareness
+  status: draft
+common_uses:
+- text: Reflecting on knowledge and experience already available to you.
+  status: draft
+- text: Inviting relevant information to mind while checking impressions against reliable sources when
+    accuracy matters.
+  status: draft
 relationships:
   related_functions: []
   complementary_functions: []
