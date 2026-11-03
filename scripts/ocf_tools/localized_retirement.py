@@ -90,6 +90,31 @@ def retirement_plan(root: Path = REPO_ROOT, *, locale: str = "en-US") -> dict:
                 + name,
             }
         )
+    historical = []
+    pilot_ledger = root / "function-content/editorial/localized-resource-migration-001.json"
+    if pilot_ledger.is_file():
+        for logical_path, expected in (
+            json.loads(pilot_ledger.read_text(encoding="utf-8")).get("active_resources", {}).items()
+        ):
+            source = root / logical_path
+            if source.parent != directory or source.name in files:
+                continue
+            if source.is_symlink() or not source.is_file():
+                raise OCFError(
+                    "missing historical pilot resource requires reconciliation: " + logical_path
+                )
+            actual = hashlib.sha256(source.read_bytes()).hexdigest()
+            if actual != expected:
+                raise OCFError("historical pilot resource drift: " + logical_path)
+            historical.append(
+                {
+                    "file": logical_path,
+                    "decision": "ARCHIVE_WITH_LOGICAL_PATH_RESOLVER",
+                    "source_sha256": actual,
+                    "consumer": "immutable localized-resource-migration-001 active_resources",
+                    "reason": "unlisted predecessor, not an editable active authority; preserve exact bytes before moving outside locale namespace",
+                }
+            )
     return {
         "schema_version": "1.0",
         "stage": "L3 preparation only; no transformation applied",
@@ -99,6 +124,7 @@ def retirement_plan(root: Path = REPO_ROOT, *, locale: str = "en-US") -> dict:
         "active_function_count": len(active_functions),
         "active_functions": active_functions,
         "retirement_candidates": candidates,
+        "unlisted_historical_resources": historical,
         "retired_key_count": sum(row["retired_key_count"] for row in candidates),
         "retained_resources": shared,
         "immutable_records": "KEEP existing editorial, rights and defaults locks unchanged",
