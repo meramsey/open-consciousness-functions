@@ -50,7 +50,14 @@ def test_structural_converter_replays_pinned_sources_without_touching_runtime(
         name = path.relative_to(root).as_posix()
         return yaml.safe_load(sources[name] if name in sources else before_file(root, name))
 
-    historical_catalog = locale.LocaleCatalog(reader=historical_reader, function_records=records)
+    from ocf_tools.locale_history import historical_resources
+
+    virtual = historical_resources(root)
+    historical_catalog = locale.LocaleCatalog(
+        reader=historical_reader,
+        function_records=records,
+        exists=lambda path: path.is_file() or path.relative_to(root).as_posix() in virtual,
+    )
     monkeypatch.setattr(locale, "LocaleCatalog", lambda: historical_catalog)
     monkeypatch.setattr(conversion, "REPO_ROOT", tmp_path)
     monkeypatch.setattr(conversion, "source", lambda name: sources[name])
