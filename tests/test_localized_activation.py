@@ -24,7 +24,7 @@ def test_activation_preserves_preimage_and_is_idempotent(tmp_path):
     old.write_text("preserve compatibility source")
     receipt = activate(preview, tmp_path)
     ledger = json.loads((tmp_path / LEDGER).read_text())
-    row = ledger["files"][str(path.relative_to(tmp_path))]
+    row = ledger["files"][path.relative_to(tmp_path).as_posix()]
     assert row["before"] == "exact predecessor\n"
     assert row["before_sha256"] == digest(row["before"])
     assert path.read_text() == "exact successor\n"
