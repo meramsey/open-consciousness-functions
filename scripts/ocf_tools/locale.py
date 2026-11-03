@@ -27,6 +27,7 @@ import copy
 import hashlib
 import math
 import re
+import unicodedata
 from collections.abc import Iterable, Iterator, Mapping, Sequence
 from dataclasses import dataclass, field, replace
 from pathlib import Path
@@ -1027,6 +1028,30 @@ def _entry_from_value(
     )
 
 
+def resource_filename_valid(filename: str) -> bool:
+    if not filename.endswith(".yaml") or filename != unicodedata.normalize("NFC", filename):
+        return False
+    if re.search(r'[<>:"/\\|?*\x00-\x1f\x7f]', filename) or any(
+        unicodedata.category(char) == "Cs"
+        or unicodedata.bidirectional(char)
+        in {"LRE", "RLE", "LRO", "RLO", "PDF", "LRI", "RLI", "FSI", "PDI"}
+        for char in filename
+    ):
+        return False
+    if filename.rstrip(" .") != filename or len(filename.encode("utf-8")) > 255:
+        return False
+    if filename.split(".", 1)[0].upper() in {
+        "CON",
+        "PRN",
+        "AUX",
+        "NUL",
+        *["COM" + str(n) for n in range(1, 10)],
+        *["LPT" + str(n) for n in range(1, 10)],
+    }:
+        return False
+    return True
+
+
 def load_pack(path: Path, *, reader=None, exists=None, revision=None) -> LocalePack:
     """Load one locale pack directory (manifest plus declared resource files)."""
     reader = reader or load_yaml_file
@@ -1052,7 +1077,7 @@ def load_pack(path: Path, *, reader=None, exists=None, revision=None) -> LocaleP
         raise LocalizationError(f"{locale}: resources must be an array of objects")
     for resource in resources:
         filename = str(resource.get("file", ""))
-        if not re.fullmatch(r"[A-Za-z0-9._-]+\.yaml", filename):
+        if not resource_filename_valid(filename):
             raise LocalizationError(
                 f"{locale}: resource file must be a local .yaml filename: {filename!r}"
             )

@@ -143,7 +143,14 @@ def build_batch(root: Path = REPO_ROOT, *, records=None, catalog=None) -> dict:
             resolved_hashes[key] = _sha(resolved.text)
         active_name = catalog.require("en-US").localized_function_files.get(owner.id)
         filename = narration_file
-        if filename == SUPERSEDED_PILOT:
+        if (
+            filename == SUPERSEDED_PILOT
+            and catalog.require("en-US")
+            .localized_functions.get(owner.id, {})
+            .get("title", {})
+            .get("source")
+            == "function-yaml"
+        ):
             # A branch-local pilot renamed one function; stage L1 restores the
             # stable pre-pilot path as the single in-place authority.
             filename = "hplus-" + owner.id + ".yaml"

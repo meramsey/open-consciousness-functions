@@ -55,7 +55,7 @@
         "additionalProperties": false,
         "required": ["file", "domain"],
         "properties": {
-          "file": { "type": "string", "pattern": "^[A-Za-z0-9._-]+\\.yaml$" },
+          "file": { "type": "string", "maxLength": 255, "pattern": "^[^<>:\"/\\\\|?*\\u0000-\\u001f\\u007f]+\\.yaml$" },
           "revision": {"type": "string", "pattern": "^[A-Z0-9-]+$"},
           "superseded_keys": {"description": "Read-only compatibility keys whose editable authority moved to an active function resource; originals remain hash-checked until retirement.", "type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
           "compatibility_sha256": {"description": "SHA256 of the canonical JSON predecessor resource mapping; required when keys are superseded.", "type": "string", "pattern": "^[0-9a-f]{64}$"},
