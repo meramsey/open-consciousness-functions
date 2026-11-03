@@ -1034,6 +1034,9 @@ def validate_portable_collection(output):
             html_links += checked - before
         elif path.suffix == ".pdf":
             reader = PdfReader(path, strict=True)
+            pdf_text = "\n".join(page.extract_text() for page in reader.pages)
+            if any(token in pdf_text for token in ("/home/", "/mnt/", "file:///", "Documents/dev")):
+                raise OCFError("PDF contains machine-local paths: " + path.name)
             if path.parent.name == "functions" and path.stem in record_map:
                 record = record_map[path.stem]
                 if build_metadata:
@@ -1044,9 +1047,7 @@ def validate_portable_collection(output):
                         ].text
                         for key in metadata["entries"]
                     }
-                    extracted_resources += validate_extracted_narration(
-                        "\n".join(page.extract_text() for page in reader.pages), expected
-                    )
+                    extracted_resources += validate_extracted_narration(pdf_text, expected)
                 pdf_functions.add(record.id)
 
             def check_outlines(entries):
