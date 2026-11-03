@@ -1,53 +1,70 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-FND-002", "title": "Focus", "locale": "en-US"}
-# English authority: functions/foundation/attention.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-FND-002-PRIMARY", "role": "activation", "display": "PLUS-FOCUS", "spoken": "Plus Focus", "locale_definition": "commands.ocf-cmd-fnd-002-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-FND-002 — Attention
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: Original transcript reference ranges: opener lines 1–2,
-# body lines 31–50, and closer lines 84–86.
-# Review note: Shared preparation, state, and return wording excluded.
-# Review note: Duplicate historical body passage remains excluded.
-# Review note: Plus Focus and its inhale-hold-command-exhale sequence preserved.
-# Review note: Attention remains consciously directed, with lasting availability
-# and increasingly automatic concentration on the selected activity.
-# Review note: One concise body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
+function_id: OCF-FND-002
+title:
+  text: Focus
+  status: reviewed
+  version: 1.1.0
+description:
+  text: Directs and sustains focused attention.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-FND-002-PRIMARY
+  display_cue:
+    text: PLUS-FOCUS
+    status: reviewed
+    version: 0.1.0
+  spoken_cue:
+    text: Plus Focus
+    status: reviewed
+    version: 0.1.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions:
+  - function_id: OCF-COG-007
+    description_key: relationships.rel-fnd002-cog007.description
+    description:
+      text: Compare directed-attention practice with thinking-oriented practice. Choose either independently;
+        neither is required to activate or benefit from the other. The Focus function is not a Focus 10/11
+        audio stage.
+      status: reviewed
+      version: 0.0.1
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-fnd-002.opener:
     status: reviewed
     version: 1.3.0
-    notes: >-
-      OCF-adapted opener based on the unverified Attention transcript,
-      lines 1–2. Shared preparation remains excluded. Previously
-      reviewed wording retained with a concise emphasis on consciously
-      directed attention.
     text: |-
       This OCF exercise will strengthen your ability
       to focus your attention completely,
       whenever and wherever you choose.
-
   hplus.function.ocf-fnd-002.function-body:
     status: reviewed
     version: 1.3.0
-    notes: >-
-      OCF-adapted narration based on the unverified Attention transcript,
-      lines 31–50. Original source remains unchanged; duplicate source
-      passage and shared preparation, state, and return wording excluded.
-      The exact Plus Focus command and breath sequence are preserved.
-      Repeated activation instructions have been removed. Revisions
-      establish lasting availability, increasingly automatic maintenance
-      of selected attention, flexible conscious direction, sensory clarity,
-      detailed memory, and calm confidence. One reusable body supports
-      four playback passes across Focus 11 and Focus 20. Affirmative
-      effects are intended exercise suggestions.
-    cue_template: {"function_id": "OCF-FND-002", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-FND-002
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, your ability to direct
       and sustain your attention is becoming stronger,
@@ -108,13 +125,10 @@ entries:
   hplus.function.ocf-fnd-002.closer:
     status: reviewed
     version: 1.4.0
-    notes: >-
-      OCF-adapted closer based on the unverified Attention transcript,
-      lines 84–86. The previously approved activation and breathing
-      sequence remains unchanged. Removed extra reinforcement so the
-      closer contains one purpose reminder, the exact Plus Focus command,
-      and the standard OCF ending.
-    cue_template: {"function_id": "OCF-FND-002", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-FND-002
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to focus your attention
       completely, choose what you desire to concentrate on.

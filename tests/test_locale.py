@@ -17,7 +17,6 @@ from ocf_tools.locale import (
     format_message,
     format_number,
     iter_events,
-    load_pack,
     locale_direction,
     message_variables,
     normalize_tag,
@@ -215,7 +214,14 @@ def test_pseudo_pack_files_round_trip(tmp_path: Path):
     root = tmp_path / "en-XA"
     root.mkdir()
     (root / "manifest.yaml").write_text(yaml.safe_dump(pseudo.manifest), encoding="utf-8")
+    function_files = {
+        filename: function_id for function_id, filename in pseudo.localized_function_files.items()
+    }
     for filename in sorted({e.file for e in pseudo.entries.values() if e.file}):
+        if filename in function_files:
+            payload = pseudo.localized_functions[function_files[filename]]
+            (root / filename).write_text(yaml.safe_dump(payload), encoding="utf-8")
+            continue
         file_entries = {
             key: entry for key, entry in pseudo.entries.items() if entry.file == filename
         }
@@ -228,7 +234,9 @@ def test_pseudo_pack_files_round_trip(tmp_path: Path):
             "entries": {key: entry.text for key, entry in file_entries.items()},
         }
         (root / filename).write_text(yaml.safe_dump(payload), encoding="utf-8")
-    reloaded = load_pack(root)
+    reloaded = LocaleCatalog(tmp_path, function_records=catalog.function_records).require(
+        pseudo.locale
+    )
     assert reloaded.locale == "en-XA"
     assert len(reloaded.entries) == len(pseudo.entries)
 

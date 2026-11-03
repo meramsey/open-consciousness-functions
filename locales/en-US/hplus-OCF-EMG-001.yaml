@@ -1,95 +1,71 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-EMG-001", "title": "Injury Response", "locale": "en-US"}
-# English authority: functions/emergency/emergency-injury.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-EMG-001-PRIMARY", "role": "activation", "display": "PLUS-INJURY-RESPONSE", "spoken": "Plus Injury Response", "locale_definition": "commands.ocf-cmd-emg-001-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-EMG-001 — Emergency: Injury
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered
-# historical Human Plus transcript.
-# Review note: Historical source availability remains unavailable;
-# reimplementation remains planned.
-# Review note: Proposed input:
-# Emergency: Injury/Emergency_Injury_88R1040_reconstructed_clean.txt
-# SHA-256:
-# e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276
-# Review note: Source identity was checked against the document
-# title and listed legacy commands, not inferred from filename.
-# Claims of historical authenticity remain unverified.
-# Review note: Shared preparation, state, return, production
-# directions, and non-narration notes remain excluded.
-# Review note: The exact Plus Control Balance Restore command
-# and the original breathing sequence are preserved.
-# Review note: The exercise suggests automatic emergency activation,
-# including when conscious invocation is not possible.
-# Review note: Suggested physiological effects and unconscious
-# activation are exercise intentions, not verified capabilities.
-# Review note: Emergency response is intended to be self-regulating,
-# with lasting availability rather than continuous activation.
-# Review note: One concise body supports four-pass playback.
-# Review note: Closer follows the standardized OCF reminder format.
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
+function_id: OCF-EMG-001
+title:
+  text: Injury Response
+  status: canonical
+  version: 1.0.0
+description:
+  text: Emergency-oriented practice to stay calm and take helpful action. Does NOT replace emergency services,
+    first aid, or professional care.
+  status: canonical
+  version: 1.0.0
+metadata_entries:
+  functions.ocf-emg-001.lifecycle.scopes.capability.description:
+    text: Narrated injury-response readiness remains available, including when conscious invocation is
+      unavailable.
+  functions.ocf-emg-001.lifecycle.scopes.application.description:
+    text: Optional manual reinforcement when conscious and able.
+  functions.ocf-emg-001.lifecycle.scopes.episode.description:
+    text: The narrated adaptive response lasts for the injury episode and adjusts as the injury stabilizes.
+activation:
+  command_id: OCF-CMD-EMG-001-PRIMARY
+  display_cue:
+    text: PLUS-INJURY-RESPONSE
+    status: reviewed
+    version: 1.1.0
+  spoken_cue:
+    text: Plus Injury Response
+    status: reviewed
+    version: 1.1.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-emg-001.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted opener based on the user-proposed Emergency:
-      Injury reconstruction. Proposed input:
-      Emergency: Injury/Emergency_Injury_88R1040_reconstructed_clean.txt;
-      SHA-256 e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276;
-      line 48. Original reconstruction remains unchanged.
-      Historical source availability remains unavailable.
-      Wording expanded to emphasize automatic injury response,
-      physical stabilization, protection, and restoration.
-      This is OCF-authored adapted narration, not a recovered
-      historical transcript.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will strengthen your body's
       automatic response to physical injury,
       directing its natural abilities toward
       protection, balance, healing, and restoration.
-
   hplus.function.ocf-emg-001.function-body:
     status: reviewed
     version: 1.3.0
-    notes: >-
-      OCF-adapted narration based on the user-proposed
-      Emergency: Injury reconstruction. Proposed input:
-      Emergency: Injury/Emergency_Injury_88R1040_reconstructed_clean.txt;
-      SHA-256 e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276;
-      proposed extent lines 147–200. Original reconstruction
-      remains unchanged. Historical source availability
-      remains unavailable and reimplementation remains planned.
-      The narration has been reorganized into automatic injury
-      recognition, coordinated protection, physiological balance,
-      natural repair, conscious reinforcement, and continuing
-      restoration. The original proposal of automatic activation
-      when conscious command is unavailable remains preserved
-      as an intended suggestion, not an established capability.
-      The exact Plus Control Balance Restore command and original
-      inhale, hold, command, and exhale sequence are preserved.
-      OCF-authored suggestions add context-sensitive clotting,
-      circulation, immune defense, inflammatory regulation,
-      tissue regeneration, and coordinated restoration.
-      Permanent availability applies to the proposed adaptive
-      response, not continuously elevated emergency activity.
-      Redundant command repetition, companion-function references,
-      and extended medical-care narration are omitted.
-      One reusable body supports repeated playback across
-      Focus 11 and Focus 20.
-      Shared preparation, state, and return wording excluded.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-EMG-001", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-EMG-001
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, whenever physical injury
       occurs, your entire living system will immediately
@@ -170,26 +146,10 @@ entries:
   hplus.function.ocf-emg-001.closer:
     status: reviewed
     version: 1.3.0
-    notes: >-
-      OCF-adapted closer based on the user-proposed Emergency:
-      Injury reconstruction. Proposed input:
-      Emergency: Injury/Emergency_Injury_88R1040_reconstructed_clean.txt;
-      SHA-256 e3ff345f97c903b01f8b1a90d777147c2c24e19687d1a1fefd9d739500b72276;
-      proposed extent lines 321–336. Original reconstruction
-      remains unchanged. Historical source availability
-      remains unavailable.
-      The closer is shortened to one purpose reminder,
-      the exact Plus Control Balance Restore activation command,
-      the original breathing sequence, and the standard
-      OCF ending. Automatic/unconscious activation is taught
-      in the body rather than repeated in the closer.
-      This is OCF-authored adapted narration, not historical
-      transcript wording.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-EMG-001
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever physical injury occurs
       and you are conscious and able,

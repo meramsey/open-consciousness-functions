@@ -1,80 +1,69 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-BOD-007", "title": "Blood Pressure Balance", "locale": "en-US"}
-# English authority: functions/body/hypertension.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-007-PRIMARY", "role": "activation", "display": "PLUS-BALANCE BLOOD PRESSURE", "spoken": "Plus Balance Blood Pressure", "locale_definition": "commands.ocf-cmd-bod-007-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-BOD-007 — Hypertension
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: Original source repetitions, isolated transcription
-# artifacts, and fragmented wording have been consolidated.
-# Review note: Trailing video text remains excluded.
-# Review note: The Plus Balance Blood Pressure command is preserved.
-# Review note: OCF adaptation establishes lasting, automatic,
-# self-regulating cardiovascular maintenance suggestions.
-# Review note: Blood pressure regulation is framed as appropriate
-# physiological balance, not continuous pressure reduction.
-# Review note: Guided suggestion does not substitute for blood
-# pressure monitoring or medically indicated treatment.
-
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
+function_id: OCF-BOD-007
+title:
+  text: Blood Pressure Balance
+  status: canonical
+  version: 1.0.0
+description:
+  text: Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for
+    medical care.
+  status: canonical
+  version: 1.0.0
+metadata_entries:
+  functions.ocf-bod-007.lifecycle.scopes.capability.description:
+    text: The ability to reinforce cardiovascular awareness and relaxation remains available.
+  functions.ocf-bod-007.lifecycle.scopes.baseline.description:
+    text: The narrated adaptive cardiovascular maintenance baseline persists, adjusting to rest and activity;
+      not fixed pressure or continuous lowering.
+  functions.ocf-bod-007.lifecycle.scopes.application.description:
+    text: Optional conscious reinforcement of the adaptive baseline; not a permanently intensified state.
+activation:
+  command_id: OCF-CMD-BOD-007-PRIMARY
+  display_cue:
+    text: PLUS-BALANCE BLOOD PRESSURE
+  spoken_cue:
+    text: Plus Balance Blood Pressure
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-bod-007.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the unverified Hypertension
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Hypertension/Hypertension.txt;
-      SHA-256 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a;
-      lines 3–4. Original reference remains unchanged.
-      H-plus terminology changed to OCF. Previously approved
-      source wording has been revised to emphasize healthy
-      blood pressure regulation, cardiovascular balance,
-      and natural self-regulation.
-      This is adapted narration, not a verbatim transcription.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release pending.
     text: |-
       This OCF exercise will help you reinforce your body's
       natural ability to regulate blood pressure, supporting
       healthy circulation, cardiovascular balance, and
       the efficient functioning of your heart and blood vessels.
-
   hplus.function.ocf-bod-007.function-body:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the unverified Hypertension
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Hypertension/Hypertension.txt;
-      SHA-256 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a;
-      lines 51–81. Original reference remains unchanged.
-      Fragmented sentences, isolated transcription artifacts,
-      and redundant wording have been consolidated into one
-      reusable function body. Previously approved source
-      repetitions remain available in the original reference.
-      The narration has been reorganized into cardiovascular
-      awareness, natural regulation, circulation, relaxation,
-      automatic maintenance, conscious activation, and
-      reinforcement. OCF-authored suggestions establish a
-      lasting, automatic, appropriately self-regulating pattern
-      of cardiovascular awareness and maintenance.
-      The exact Plus Balance Blood Pressure activation command
-      and breathing sequence are preserved.
-      Claims of immediate diagnostic awareness or guaranteed
-      pressure normalization are not presented as established
-      physiological effects. One reusable function body is
-      intended for repeated playback across Focus 11 and
-      Focus 20. Trailing video text remains excluded.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release pending.
-    cue_template: {"function_id": "OCF-BOD-007", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-BOD-007
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, bring your awareness
       to your heart and the blood vessels throughout
@@ -235,28 +224,10 @@ entries:
   hplus.function.ocf-bod-007.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted narration based on the unverified Hypertension
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Hypertension/Hypertension.txt;
-      SHA-256 3765f87d7e0f095764dbf8e7b4435134b550a19682ce5c0ff94a0a424a93d09a;
-      lines 190–202. Original reference remains unchanged.
-      H-plus terminology changed to OCF. The transcription
-      phrase heart original blood vessel system has been
-      corrected to heart and blood vessel system.
-      Previously removed duplicate reminders remain excluded.
-      The exact Plus Balance Blood Pressure activation command
-      and breathing sequence are preserved.
-      OCF-authored suggestions reinforce lasting, automatic
-      cardiovascular awareness, relaxation, and appropriately
-      regulated maintenance. The closer does not assert
-      guaranteed normalization of measured blood pressure.
-      This is adapted narration, not a verbatim transcription.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release pending.
     cue_template:
       function_id: OCF-BOD-007
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, your body's natural systems
       of blood pressure regulation and

@@ -1,81 +1,61 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-BOD-009", "title": "Breathe Better", "locale": "en-US"}
-# English authority: functions/body/lungs-repairs.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-009-PRIMARY", "role": "activation", "display": "PLUS-BREATHE BETTER", "spoken": "Plus Breathe Better", "locale_definition": "commands.ocf-cmd-bod-009-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# Editorial successor OCF-EDITORIAL-TITLE-CUES-001: prior cue-preservation notes describe predecessor versions; only approved title/cue substitutions changed.
-# OCF-BOD-009 — Lungs: Repairs & Maintenance
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: partial_transcript; authentication remains unverified.
-# Missing closer: No final function-specific closer is recoverable;
-# the transcript ends in ellipsis runs.
-# Review note: Shared consolidation at lines 60–63 remains excluded.
-# Review note: The Plus Breathe Better activation command is preserved.
-# Review note: OCF adaptation establishes lasting, automatic,
-# self-regulating respiratory maintenance and renewal suggestions.
-# Review note: Anatomical imagery describes natural respiratory
-# processes and guided suggestion, not verified medical repair.
-# Review note: One concise function body supports four-pass playback.
-# Review note: The closer follows the standardized OCF reminder format.
-
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
+function_id: OCF-BOD-009
+title:
+  text: Breathe Better
+  status: canonical
+  version: 1.0.0
+description:
+  text: Supports efficient breathing and respiratory maintenance, with conscious reinforcement when desired.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-BOD-009-PRIMARY
+  display_cue:
+    text: PLUS-BREATHE BETTER
+  spoken_cue:
+    text: Plus Breathe Better
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-bod-009.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the partial, unverified Lung
-      Support and Maintenance transcript. Original SOURCE
-      +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt;
-      SHA-256 f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87;
-      line 1. Original reference remains unchanged.
-      Previously approved wording has been simplified to emphasize
-      natural respiratory strength, efficiency, and automatic
-      maintenance. This is adapted narration, not a verbatim
-      source transcription. Rights: user_cleared, per user's
-      lawyer-clearance attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will strengthen and reinforce your
       respiratory system's natural processes of breathing,
       renewal, and maintenance, establishing a lasting,
       automatic pattern of healthy, efficient breathing.
-
   hplus.function.ocf-bod-009.function-body:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the partial, unverified Lung
-      Support and Maintenance transcript. Original SOURCE
-      +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt;
-      SHA-256 f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87;
-      lines 31–59. Original reference remains unchanged.
-      The narration has been reorganized into airway function,
-      natural filtration, lung gas exchange, respiratory muscle
-      coordination, cellular maintenance, automatic regulation,
-      conscious activation, and reinforcement.
-      Source references to waving follicles are clarified as
-      cilia, and oxygen exchange is described through the alveoli.
-      Suggestions of tissue replacement have been adapted to
-      natural cellular maintenance and renewal rather than
-      guaranteed regeneration of damaged lung structures.
-      OCF-authored suggestions establish lasting, automatic,
-      appropriately regulated respiratory maintenance.
-      The exact Plus Breathe Better activation command and
-      breathing sequence are preserved. One reusable body is
-      intended for four playback passes across Focus 11 and
-      Focus 20. Shared preparation, state, return wording,
-      and consolidation at lines 60–63 remain excluded.
-      Affirmative suggestions express the intended exercise,
-      not medically established treatment effects.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-BOD-009
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, your entire respiratory
       system is becoming stronger, healthier,
@@ -148,26 +128,13 @@ entries:
       Your respiratory system will continue
       its natural maintenance and renewal
       automatically, every day and every night.
-
   hplus.function.ocf-bod-009.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-authored closer adapted from the previously approved
-      suggestion. The partial Lung Support and Maintenance
-      transcript ends in ellipsis runs and supplies no
-      recoverable function-specific closer. This is not
-      historical transcript wording. The closer has been
-      shortened to the standardized OCF format: one purpose
-      reminder, the exact Plus Breathe Better activation
-      command and breathing sequence, and the closing sentence.
-      Additional reinforcement is reserved for the function body.
-      Historical source remains partial_transcript and unverified.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-BOD-009
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to reinforce
       your respiratory system's natural strength

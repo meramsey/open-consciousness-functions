@@ -1,68 +1,78 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-FND-005", "title": "Reset", "locale": "en-US"}
-# English authority: functions/foundation/reset.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-FND-005-PRIMARY", "role": "activation", "display": "PLUS-RESET", "spoken": "Plus Reset", "locale_definition": "commands.ocf-cmd-fnd-005-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-FND-005 — Reset
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: Original SOURCE +Transcripts From available tapes/Reset/Reset.txt
-# SHA-256: 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2
-# Review note: Opener lines 1–2; body lines 30–51; closer lines 167–171.
-# Review note: Historical duplicate body pass remains excluded.
-# Review note: Shared preparation, state, and return material remain excluded.
-# Review note: Exact Plus Reset Reset command and eye-closing/eye-opening
-# activation sequence are preserved.
-# Review note: Reset is an immediate waking-state shift, distinct from Recharge.
-# Review note: Lasting availability does not mean continuous stimulation.
-# Review note: One concise function body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
+function_id: OCF-FND-005
+title:
+  text: Reset
+  status: canonical
+  version: 1.0.0
+description:
+  text: Supports a deliberately invoked shift from tiredness, weariness, or feeling emotionally low toward
+    renewed wakefulness, energy, clarity, and confidence.
+  status: canonical
+  version: 1.0.1
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-FND-005-PRIMARY
+  display_cue:
+    text: PLUS-RESET
+  spoken_cue:
+    text: Plus Reset
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-FND-005-LEGACY-01
+  display_cue:
+    text: PLUS-RESET, RESET
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-fnd-005.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted opener based on the unverified Reset transcript.
-      Original SOURCE +Transcripts From available tapes/Reset/Reset.txt;
-      SHA-256 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2;
-      lines 1–2. Original reference remains unchanged. The revised
-      purpose emphasizes the rapid transition from fatigue and low mood
-      to wakeful energy, clarity, calmness, and confidence. Rights:
-      user_cleared, per user's lawyer-clearance attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to reset your
       physical and mental state quickly, shifting from
       weariness and feeling low to renewed energy,
       clarity, strength, and confidence.
-
   hplus.function.ocf-fnd-005.function-body:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted body based on the unverified Reset transcript.
-      Original SOURCE +Transcripts From available tapes/Reset/Reset.txt;
-      SHA-256 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2;
-      lines 30–51. Original reference remains unchanged. The repeated
-      historical body pass remains excluded. The exact Plus Reset Reset
-      command and source sequence of inhale, close eyes, hold breath,
-      command, exhale, and open eyes are preserved. OCF-authored additions
-      strengthen immediate wakeful renewal, calm confidence, clarity,
-      and lasting availability with conscious activation. Reset remains
-      distinct from brief restorative sleep through Recharge and does not
-      establish permanent stimulation. One reusable body supports four
-      playback passes across Focus 11 and Focus 20. Shared preparation,
-      state, and return wording remains excluded. Effects described in the
-      narration are intended suggestions, not independently verified outcomes.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     cue_template:
       function_id: OCF-FND-005
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, you have the ability
       to change your physical and mental pattern
@@ -109,23 +119,13 @@ entries:
       Each time you use {{ cue.primary }},
       this shift becomes easier, faster,
       and more effective.
-
   hplus.function.ocf-fnd-005.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted closer based on the unverified Reset transcript.
-      Original SOURCE +Transcripts From available tapes/Reset/Reset.txt;
-      SHA-256 7c0ffbc8d6d4d781e1edcc474d1e8069651f7508a4f180b604309b6138646bc2;
-      lines 167–171. Original reference remains unchanged. The closer
-      contains one purpose reminder, the exact Plus Reset Reset command,
-      the original eye-closing and eye-opening breath sequence, and the
-      standard OCF ending. This is adapted narration rather than a verbatim
-      transcription. Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-FND-005
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to change
       from tired and low to energized and strong,

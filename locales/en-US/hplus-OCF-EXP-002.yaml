@@ -1,74 +1,118 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-EXP-002", "title": "Insulate", "locale": "en-US"}
-# English authority: functions/experimental/zoning.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-EXP-002-PRIMARY", "role": "activation", "display": "PLUS-INSULATE", "spoken": "Plus Insulate", "locale_definition": "commands.ocf-cmd-exp-002-primary.spoken-cue"}
-# {"symbol": "cue.id.OCF-CMD-EXP-002-CANCEL", "command": "OCF-CMD-EXP-002-CANCEL", "role": "cancel", "display": "PLUS-CANCEL", "spoken": "Plus Cancel", "locale_definition": null}
-# {"symbol": "cue.id.OCF-CMD-EXP-002-RELEASE", "command": "OCF-CMD-EXP-002-RELEASE", "role": "release", "display": "Plus Release", "spoken": "Plus Release", "locale_definition": null}
-# END GENERATED CUE PREVIEW
-# Editorial successor OCF-EDITORIAL-TITLE-CUES-001: prior cue-preservation notes describe predecessor versions; only approved title/cue substitutions changed.
-# OCF-EXP-002 — Zoning
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered historical transcript.
-# Review note: Historical source remains unavailable; reimplementation remains planned.
-# Review note: Proposed input: Zoning/Zoning_881033_reconstructed_clean.txt
-# SHA-256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
-# Review note: Proposed header: ZONING (881033) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT.
-# Review note: Document identity and historical authenticity remain unverified.
-# Review note: Shared preparation, state, return, and production directions excluded.
-# Review note: Exact commands preserved: Plus Insulate Insulate,
-# Plus Cancel, and Plus Release; their distinct purposes remain explicit.
-# Review note: The insulating-zone mechanism is an intended visualization,
-# not a verified physical barrier or established temperature-protection effect.
-# Review note: One function body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
+function_id: OCF-EXP-002
+title:
+  text: Insulate
+  status: canonical
+  version: 1.0.0
+description:
+  text: Establishes an adjustable whole-body zone of temperature comfort; Cancel ends the current adjustment
+    and Release places the selected application on hold.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-EXP-002-PRIMARY
+  display_cue:
+    text: PLUS-INSULATE
+  spoken_cue:
+    text: Plus Insulate
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-EXP-002-CANCEL
+  display_cue:
+    text: PLUS-CANCEL
+  spoken_cue:
+    text: Plus Cancel
+    status: reviewed
+  label:
+    text: Cancellation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This command cancels the current adjustment.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use to cancel the current adjustment.
+    status: canonical
+    version: 1.0.0
+  role: cancel
+- command_id: OCF-CMD-EXP-002-LEGACY-01
+  display_cue:
+    text: PLUS-INSULATE, INSULATE
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+- command_id: OCF-CMD-EXP-002-RELEASE
+  display_cue:
+    text: Plus Release
+  spoken_cue:
+    text: Plus Release
+    status: reviewed
+  label:
+    text: Release command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This command releases or suspends the current application as documented.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Places Insulate on hold; PLUS-CANCEL ends the current adjustment.
+    status: canonical
+    version: 1.0.0
+  role: release
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-exp-002.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted opener based on the user-proposed Zoning reconstruction.
-      Proposed input: Zoning/Zoning_881033_reconstructed_clean.txt;
-      SHA-256 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a;
-      line 53. Original reconstruction remains unchanged. Historical
-      source availability and authenticity remain unverified. Wording
-      emphasizes a consciously created, adjustable zone of temperature
-      comfort surrounding the entire physical body. Rights: user_cleared,
-      per user's lawyer-clearance attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to establish
       an insulating zone around your physical body,
       adjusting it to maintain your desired comfort
       as the surrounding temperature changes.
-
   hplus.function.ocf-exp-002.function-body:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted function body based on the user-proposed Zoning
-      reconstruction. Proposed input:
-      Zoning/Zoning_881033_reconstructed_clean.txt;
-      SHA-256 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a;
-      lines 152–220. Original reconstruction remains unchanged; source
-      authenticity is unverified. Preserves a continuous, adjustable
-      whole-body insulating-zone visualization, response to heat and cold,
-      and the original inhale-hold-command-exhale method. Plus Cancel
-      ends the current adjustment; Plus Release places the current
-      application on hold without removing the learned ability. The
-      function is consciously established and its intended regulation
-      adjusts as circumstances change. Redundant command repetitions
-      and companion-function references are omitted. Intended protection
-      and temperature outcomes are narration suggestions, not verified
-      physical insulation. One body supports four playback passes.
-      Shared preparation, state, and return material remain excluded.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     cue_template:
-      {"function_id": "OCF-EXP-002", "allowed": ["cue.id.OCF-CMD-EXP-002-CANCEL", "cue.id.OCF-CMD-EXP-002-RELEASE", "cue.primary"]}
+      function_id: OCF-EXP-002
+      allowed:
+      - cue.id.OCF-CMD-EXP-002-CANCEL
+      - cue.id.OCF-CMD-EXP-002-RELEASE
+      - cue.primary
     text: |-
       From this moment forward, you have the ability
       to create a balanced zone of temperature comfort
@@ -131,17 +175,12 @@ entries:
   hplus.function.ocf-exp-002.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted closer based on the user-proposed Zoning reconstruction.
-      Proposed input: Zoning/Zoning_881033_reconstructed_clean.txt;
-      SHA-256 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a;
-      lines 341–358. Original reconstruction remains unchanged; historical
-      authenticity remains unverified. Closer includes one purpose reminder,
-      the exact activation and adjustment/release commands, and the standard
-      OCF ending. Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
-      {"function_id": "OCF-EXP-002", "allowed": ["cue.id.OCF-CMD-EXP-002-CANCEL", "cue.id.OCF-CMD-EXP-002-RELEASE", "cue.primary"]}
+      function_id: OCF-EXP-002
+      allowed:
+      - cue.id.OCF-CMD-EXP-002-CANCEL
+      - cue.id.OCF-CMD-EXP-002-RELEASE
+      - cue.primary
     text: |-
       Remember, to establish your zone of temperature comfort,
       inhale deeply, hold your breath, and think

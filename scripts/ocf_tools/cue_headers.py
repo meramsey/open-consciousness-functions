@@ -123,6 +123,10 @@ def plans(root: Path = REPO_ROOT) -> dict[str, str]:
             continue
         with path.open(encoding="utf-8", newline="") as stream:
             text = stream.read()
+        if yaml.safe_load(text).get("function_id") == owner.id:
+            # Consolidated files expose actual cues; a generated preview is
+            # redundant. Historical bytes remain in the consolidation ledger.
+            continue
         _, body = split_header(text)
         preview = header(owner, "en-US", catalog, root)
         if "\r\n" in text:

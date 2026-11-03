@@ -1,69 +1,76 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-SLP-004", "title": "Sleep Insight", "locale": "en-US"}
-# English authority: functions/sleep/wake-know.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-SLP-004-PRIMARY", "role": "activation", "display": "PLUS-SLEEP INSIGHT", "spoken": "Plus Sleep Insight", "locale_definition": "commands.ocf-cmd-slp-004-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# Editorial successor OCF-EDITORIAL-TITLE-CUES-001: prior cue-preservation notes describe predecessor versions; only approved title/cue substitutions changed.
-# OCF-SLP-004 — Wake/Know
-# English function-specific OCF-adapted narration; wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Original SOURCE: +Transcripts From available tapes/Wake Know/Wake Know.txt
-# SHA-256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
-# Source ranges: opener lines 1–2; body lines 32–47.
-# Review note: No identifiable historical function-specific closer exists;
-# uncertain/unrelated tail at lines 158–194 is not used as closing speech.
-# Review note: Duplicate source passage, numeric labels, and shared session
-# preparation/state/return narration remain excluded.
-# Review note: Exact Plus Sleep Help cue and sequence of question, inhale,
-# hold, command, exhale, then slow deep breathing are preserved.
-# Review note: Broader intuitive and total-self insight and multiple ways an
-# answer may appear are OCF editorial enhancements, not recovered source text.
-# Review note: One state-independent body supports four-pass playback.
-# Review note: Answers and insights are intended contemplative experiences,
-# not guaranteed correct knowledge or independently verified information.
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
+function_id: OCF-SLP-004
+title:
+  text: Sleep Insight
+  status: canonical
+  version: 1.0.0
+description:
+  text: Requests an answer or constructive solution through sleep, with useful insight recognized on awakening.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-SLP-004-PRIMARY
+  display_cue:
+    text: PLUS-SLEEP INSIGHT
+  spoken_cue:
+    text: Plus Sleep Insight
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-SLP-004-LEGACY-01
+  display_cue:
+    text: PLUS-SLEEP, HELP
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-slp-004.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF adaptation of the unverified Wake Know transcript;
-      SOURCE +Transcripts From available tapes/Wake Know/Wake Know.txt;
-      SHA-256 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745;
-      lines 1–2. Original source remains unchanged. Introduces receiving
-      answers and constructive guidance from the total self through sleep.
-      Rights: user_cleared per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to seek an answer
       or solution from your total self during sleep,
       and awaken with the knowledge and guidance you desire.
-
   hplus.function.ocf-slp-004.function-body:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF adaptation of the unverified Wake Know transcript;
-      SOURCE +Transcripts From available tapes/Wake Know/Wake Know.txt;
-      SHA-256 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745;
-      lines 32–47. Original source remains unchanged; duplicate narration,
-      numeric transcript labels, and shared session instructions are excluded.
-      Preserves choosing a question, the exact Plus Sleep Help command,
-      inhale-hold-command-exhale followed by slow deep breathing, natural
-      sleep, total-self participation, constructive solutions, and recall
-      on awakening. OCF editorial additions invite subconscious, higher-self,
-      and intuitive insight and allow answers to emerge as knowing, words,
-      imagery, dream memory, or a clear next step without insisting on one
-      format. Intended answer and correctness claims are exercise suggestions.
-      One reusable body serves four passes across Focus 11 and Focus 20.
-      Rights: user_cleared per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     cue_template:
       function_id: OCF-SLP-004
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, whenever you desire
       an answer, understanding, or a constructive solution,
@@ -107,23 +114,13 @@ entries:
       Each time you use {{ cue.primary }},
       receiving and remembering useful insight
       will become easier, clearer, and more effective.
-
   hplus.function.ocf-slp-004.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-authored closer, not a recovered historical passage. The unverified
-      Wake Know source has no identifiable final function-specific closer;
-      unrelated or uncertain speech at lines 158–194 is excluded.
-      SOURCE +Transcripts From available tapes/Wake Know/Wake Know.txt;
-      SHA-256 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745.
-      Preserves one purpose reminder, exact Plus Sleep Help cue, question
-      selection, inhale-hold-command-exhale followed by slow deep breathing,
-      and standard OCF sign-off. Rights: user_cleared per user's
-      lawyer-clearance attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-SLP-004
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, when you wish to receive an answer
       or solution through sleep, bring your question to mind.

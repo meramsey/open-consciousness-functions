@@ -1,68 +1,77 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-PRF-002", "title": "Inner Power", "locale": "en-US"}
-# English authority: functions/performance/eight-great.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-PRF-002-PRIMARY", "role": "activation", "display": "PLUS-INNER POWER", "spoken": "Plus Inner Power", "locale_definition": "commands.ocf-cmd-prf-002-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# Editorial successor OCF-EDITORIAL-TITLE-CUES-001: prior cue-preservation notes describe predecessor versions; only approved title/cue substitutions changed.
-# OCF-PRF-002 — Eight-Great
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: Original SOURCE +Transcripts From available tapes/Eight-Great/Eight-Great.txt
-# SHA-256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
-# Review note: Opener line 1; body lines 33–49; closer lines 210–215.
-# Review note: Body starts with the function-specific continuation on line 33;
-# shared opening and consolidation at lines 50–53 remain excluded.
-# Review note: Exact Plus Eight Great command and breath sequence preserved.
-# Review note: This function strengthens awareness and expression of the
-# total self's inner greatness, capability, and quiet confidence.
-# Review note: One reusable body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
+function_id: OCF-PRF-002
+title:
+  text: Inner Power
+  status: canonical
+  version: 1.0.0
+description:
+  text: Strengthens recognition and expression of total-self strength, unity, resources, and power throughout
+    daily life.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-PRF-002-PRIMARY
+  display_cue:
+    text: PLUS-INNER POWER
+  spoken_cue:
+    text: Plus Inner Power
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-PRF-002-LEGACY-01
+  display_cue:
+    text: PLUS-EIGHT, GREAT
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-prf-002.opener:
     status: reviewed
     version: 1.1.0
-    notes: >-
-      OCF-adapted opener based on the unverified Eight-Great transcript.
-      Original SOURCE +Transcripts From available tapes/Eight-Great/Eight-Great.txt;
-      SHA-256 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f;
-      line 1. Original reference remains unchanged. Wording emphasizes
-      recognizing and expressing the innate greatness, strength, and full
-      capability of the total self. This is adapted narration, not a
-      verbatim historical transcript. Rights: user_cleared, per user's
-      lawyer-clearance attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to recognize
       and express the greatness, strength, and power
       of your total self in every part of your life.
-
   hplus.function.ocf-prf-002.function-body:
     status: reviewed
     version: 1.1.1
-    notes: >-
-      OCF-adapted function body based on the unverified Eight-Great transcript.
-      Original SOURCE +Transcripts From available tapes/Eight-Great/Eight-Great.txt;
-      SHA-256 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f;
-      lines 33–49, beginning with the function-specific continuation.
-      Shared opening and consolidation at lines 50–53 remain excluded.
-      The original source remains unchanged. Preserves recognition of
-      greatness and power within the total self, calm and effective handling
-      of life challenges, quiet happiness, lasting growth in self-knowing,
-      and the exact Plus Eight Great command with its inhale-hold-command-
-      candle-exhale sequence. OCF-authored wording develops conscious,
-      subconscious, and higher-self alignment while avoiding a narrower
-      interpretation limited to confidence or task performance. The ability
-      is established as permanently available, with optional conscious
-      reinforcement. One reusable body supports four passes across Focus 11
-      and Focus 20. Affirmative effects represent intended exercise
-      suggestions. Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-PRF-002
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Beginning now, and from this moment forward,
       you will recognize more fully the greatness
@@ -112,22 +121,13 @@ entries:
       The more you use {{ cue.primary }},
       the easier and more effective this recognition
       and expression of your total self will become.
-
   hplus.function.ocf-prf-002.closer:
     status: reviewed
     version: 1.1.1
-    notes: >-
-      OCF-adapted closer based on the unverified Eight-Great transcript.
-      Original SOURCE +Transcripts From available tapes/Eight-Great/Eight-Great.txt;
-      SHA-256 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f;
-      lines 210–215. Closer shortened to one purpose reminder, the exact
-      Plus Eight Great command, original breathing sequence, and standard
-      OCF ending. This is adapted narration, not verbatim source wording.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     cue_template:
       function_id: OCF-PRF-002
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to strengthen
       your awareness and expression of your total self,

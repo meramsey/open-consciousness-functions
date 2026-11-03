@@ -1,72 +1,61 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-BOD-008", "title": "Immune Readiness", "locale": "en-US"}
-# English authority: functions/body/immunizing.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-008-PRIMARY", "role": "activation", "display": "PLUS-IMMUNE READY", "spoken": "Plus Immune Ready", "locale_definition": "commands.ocf-cmd-bod-008-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-BOD-008 — Immunizing
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Missing opener: Source begins with music and shared preparation;
-# the purpose statement at lines 51–56 belongs to the function body.
-# Review note: Music runs and trailing website text remain excluded.
-# Review note: Plus Alert Destroy is the preserved activation command.
-# Review note: Automatic immune protection is appropriately regulated,
-# not indiscriminate or permanently heightened immune activation.
-# Review note: Scientific mechanisms describe established immunology;
-# the narration's suggested effects are not verified medical outcomes.
-
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
+function_id: OCF-BOD-008
+title:
+  text: Immune Readiness
+  status: canonical
+  version: 1.0.0
+description:
+  text: Supports a self-directed practice of immune surveillance, coordinated protective responses, immune
+    memory, protection of healthy tissue, and return to balance after a threat is controlled.
+  status: canonical
+  version: 1.0.1
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-BOD-008-PRIMARY
+  display_cue:
+    text: PLUS-IMMUNE READY
+  spoken_cue:
+    text: Plus Immune Ready
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-bod-008.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-authored opener adapted from the previously approved
-      proposal. The historical Immunizing transcript begins
-      with music and shared preparation and contains no
-      recoverable function-specific opener. The purpose
-      instruction at lines 51–56 remains assigned to the body.
-      Wording emphasizes automatic, coordinated immune
-      protection. This is not historical transcript wording.
-      Source status remains transcript_unverified.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     text: |-
       This OCF exercise will strengthen and reinforce your
       body's natural immune defenses, establishing a lasting,
       automatic pattern of protection, renewal, and healthy balance.
-
   hplus.function.ocf-bod-008.function-body:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted narration based on the unverified Immunizing
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Immunizing/Immunizing.txt;
-      SHA-256 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4;
-      lines 51–59. Original reference remains unchanged.
-      OCF-authored additions describe immune surveillance,
-      macrophages, dendritic cells, helper and cytotoxic T cells,
-      B cells, antibodies, immune memory, and response regulation.
-      Earlier expanded descriptions and duplicate activation
-      explanations have been condensed for four-pass playback.
-      The exact Plus Alert Destroy activation command and
-      breathing sequence are preserved.
-      Affirmative suggestions establish automatic, lasting,
-      appropriately regulated immune protection.
-      These suggestions do not establish a medical treatment
-      or guaranteed immunity against infection.
-      Shared preparation, state, and return wording excluded.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     cue_template:
       function_id: OCF-BOD-008
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, your body's natural immune
       defenses are becoming stronger, more accurate,
@@ -123,25 +112,13 @@ entries:
       Your body's natural protective systems will continue
       maintaining their readiness, memory, and balance,
       every day and every night.
-
   hplus.function.ocf-bod-008.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted closer based on the unverified Immunizing
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Immunizing/Immunizing.txt;
-      SHA-256 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4;
-      lines 202–207. Original reference remains unchanged.
-      Closer shortened to preserve the activation reminder
-      and reinforce lasting automatic immune maintenance.
-      The exact Plus Alert Destroy command is preserved.
-      This is adapted narration, not verbatim source wording.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     cue_template:
       function_id: OCF-BOD-008
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to strengthen your body's
       natural defenses against harmful organisms, inhale

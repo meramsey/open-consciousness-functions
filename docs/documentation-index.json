@@ -1310,7 +1310,25 @@
         "voice render"
       ],
       "related_schemas": [],
-      "sha256": "87e8072e282c8fbc28cbc3632a31caad0a8e8cc5fc5a745e46d82f65ab0a889f",
+      "sha256": "72676d862fde4e71776a680862dd1373119f39493b6063be111b5bf6429bdf7f",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "docs/LOCALIZED_AUTHORITY.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Staged localized function authority migration",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "56a0af7638389a211dc12e8da1eef651800347e6c81abe7d46d078a82855e4a9",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1603,7 +1621,7 @@
       "purpose": "Documentation map",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "dc99eba30a87354e4b87e3347f0e8e16a51d1f4bbb6a3549464603943aa11423",
+      "sha256": "e77fa7625e5ee44bb641b2826600a05b2dc3b325e4a9ec3e464ba9cc12fa7664",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4894,7 +4912,7 @@
       "related_schemas": [
         "schemas/function-discovery.schema.json"
       ],
-      "sha256": "232fab932622ecf2332d6a409ec355a69abe081d520c7ae9602d8ad27de852aa",
+      "sha256": "ab9e08f729d6b4b6ff51a6fcdd9d8066e7a65db32fb1144720e53b352160ce23",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5014,7 +5032,7 @@
       "related_schemas": [
         "schemas/locale-manifest.schema.json"
       ],
-      "sha256": "5f4b2372c1da00a9dea220ea6ef20cc920c77ae4225cc52f6818ef0c08b2e652",
+      "sha256": "2b7f9eed6db567beaac3467b4381df59d5045e645bc9d8fa1db76f01db3c32f4",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5036,7 +5054,7 @@
       "related_schemas": [
         "schemas/locale-resource.schema.json"
       ],
-      "sha256": "1573a212f7aad08201444d34f7f10b7c035307f30ea713f6d1897dfe72dab7a7",
+      "sha256": "789b8b96b6e95c1a8039931dfc306f86a67f59dc0769659f682ba2187cb71a07",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5056,7 +5074,7 @@
       "related_schemas": [
         "schemas/localized-function.schema.json"
       ],
-      "sha256": "4f7eb8e0ced12e5c75305227e8c22058e6e7d0f1fb0606092a96e93036543643",
+      "sha256": "dc8715add895f03ce085626a04d7a62fdfdcef4a7504d7176d4dd3a209277b92",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5484,7 +5502,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "f386950164b72d9543e98b1c8ed33f390609d102aced00330e3e38c30328f664",
+      "sha256": "1ac5275e630792f10bb417c78849dd3770f2759d2dd8b375a2bf30caed370eaa",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5597,5 +5615,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 269
+  "total": 270
 }

@@ -1,0 +1,143 @@
+schema_version: "1.0"
+locale: "en-US"
+domain: "ui"
+entries:
+  relationships.rel-fnd002-cog007.description:
+    text: Compare directed-attention practice with thinking-oriented practice. Choose either independently;
+      neither is required to activate or benefit from the other. The Focus function is not a Focus 10/11
+      audio stage.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  relationships.rel-slp005-slp001.description:
+    text: Compare sleep support for unfamiliar or distracting surroundings with an exercise oriented toward
+      restorative rest. Choose independently; this link does not prescribe combining or stacking recordings.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  relationships.rel-bod006-bod002.description:
+    text: Compare heart-oriented calm and steadiness with broader circulation-oriented comfort. These are
+      independently selectable wellness exercises, not a combined treatment or a proven way to improve cardiovascular
+      function.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  relationships.rel-exp003-exp006.description:
+    text: Distinguish releasing a selected unwanted pattern from exploring intuitive understanding. Either
+      exercise may be chosen independently; neither is a prerequisite for the other.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  relationships.rel-exp001-exp006.description:
+    text: Intuition offers a separately chosen exercise for exploring understanding alongside purposeful
+      intention-setting. Intuitive impressions are not proof or instructions that must be followed.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  relationships.rel-exp001-exp003.description:
+    text: Compare intention-setting with releasing a selected unwanted pattern. These remain independent
+      exercises, not a required sequence.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  functions.ocf-exp-006.procedure.consider-and-choose-response:
+    text: Consider its meaning and choose a response with care and discernment.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  functions.ocf-exp-006.procedure.allow-quiet-moment:
+    text: Allow a quiet moment to notice what arises.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  functions.ocf-exp-006.procedure.think-or-say-in-mind:
+    text: Think or say the selected command in the mind.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  functions.ocf-exp-006.procedure.select-question-or-situation:
+    text: Bring one question or situation into awareness.
+    status: reviewed
+    version: 0.0.1
+    notes: Documentation-only approval OCF-GUIDE-REVIEW-001; not narration, listening or release approval.
+  # Simple form: a message with no variables stays a bare string.
+  locale.list.header: "Locale packs"
+  locale.validate.header: "Locale validation"
+  locale.validate.ok: "All locale packs validate."
+  locale.validate.failed: "Locale validation failed."
+  locale.resolve.header: "Resolved narration"
+
+  # Structured form: declared variables make the contract checkable.
+  locale.resolve.wrote:
+    text: "Wrote {path} for locale {locale} ({keys} keys resolved)."
+    variables: ["path", "locale", "keys"]
+    version: "1.0.0"
+  locale.coverage.line:
+    text: "{locale}: {covered} of {total} canonical keys ({percent}%)"
+    variables: ["locale", "covered", "total", "percent"]
+    version: "1.0.0"
+  locale.coverage.narration:
+    text: "{locale} narration: {covered} of {total} canonical spoken keys"
+    variables: ["locale", "covered", "total"]
+    version: "1.0.0"
+  locale.missing.keys:
+    text: "{locale} is missing {count, plural, one {# canonical key} other {# canonical keys}}: {keys}"
+    variables: ["locale", "count", "keys"]
+    version: "1.0.0"
+  locale.unknown.keys:
+    text: "{locale} defines keys the canonical pack does not: {keys}"
+    variables: ["locale", "keys"]
+    version: "1.0.0"
+  locale.stale.translation:
+    text: "{locale} was translated from {source}@{version}; canonical is now {canonical}"
+    variables: ["locale", "source", "version", "canonical"]
+    version: "1.0.0"
+  locale.pseudo.built:
+    text: "Built pseudo-locale {locale} from {source}@{version} ({count} keys)."
+    variables: ["locale", "source", "version", "count"]
+    version: "1.0.0"
+  locale.unavailable:
+    text: "No locale pack for {locale}. Available: {available}"
+    variables: ["locale", "available"]
+    version: "1.0.0"
+  voice.locale.mismatch:
+    text: "Voice profile {profile} is set to {profile_language}; rendering {locale}."
+    variables: ["profile", "profile_language", "locale"]
+    version: "1.0.0"
+  voice.locale.phonemes:
+    text: "Applied {count, plural, one {# pronunciation hint} other {# pronunciation hints}} to {locale} narration."
+    variables: ["count", "locale"]
+    version: "1.0.0"
+  export.locale.measured:
+    text: "Subtitle timings taken from the rendered speech of {backend} ({cues} cues)."
+    variables: ["backend", "cues"]
+    version: "1.0.0"
+  export.locale.semantic:
+    text: "Subtitle timings taken from the semantic timeline; localized speech may run longer."
+    version: "1.0.0"
+
+  # Independently versioned proposed artwork copy; never listener narration.
+  functions.ocf-exp-001.artwork-description:
+    text: Align your intention with the reality you choose
+    status: reviewed
+    version: 1.1.0
+    notes: Artwork wording explicitly approved in OCF-COMMAND-SIMPLIFICATION-001. Not narration, listening
+      approval or release approval.
+  functions.ocf-exp-003.artwork-description:
+    text: Release unwanted beliefs and recurring patterns
+    status: reviewed
+    version: 1.1.0
+    notes: Artwork wording explicitly approved in OCF-COMMAND-SIMPLIFICATION-001. Not narration, listening
+      approval or release approval.
+  functions.ocf-exp-006.artwork-description:
+    text: Strengthen intuitive awareness and understanding
+    status: reviewed
+    version: 1.1.0
+    notes: Artwork wording explicitly approved in OCF-COMMAND-SIMPLIFICATION-001. Not narration, listening
+      approval or release approval.
+  functions.ocf-exp-005.artwork-description:
+    text: Set an intention to discourage unwanted insects
+    status: reviewed
+    version: 1.1.0
+    notes: Artwork wording explicitly approved in OCF-COMMAND-SIMPLIFICATION-001. Not narration, listening
+      approval or release approval.

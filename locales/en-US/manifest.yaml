@@ -6,28 +6,23 @@ status: canonical
 semantic_version: 1.12.0
 resources:
 - file: original-OCF-EXP-006.yaml
-  domain: narration
-- file: intuition-ui.yaml
-  domain: ui
-- file: intuition-cues.yaml
-  domain: narration
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: original-OCF-EXP-003.yaml
-  domain: narration
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: original-OCF-EXP-005.yaml
-  domain: narration
-- file: original-draft-ui.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: shared-original-draft-ui.yaml
   domain: ui
-- file: original-draft-cues.yaml
-  domain: narration
-- file: activation-cues.yaml
-  domain: narration
-  description: Explicit user-approved en-US primary spoken cues; other locales require their own reviewed terminology.
-- file: ui.yaml
+  description: Shared locale labels retained after function metadata retirement.
+- file: shared-ui.yaml
   domain: ui
-  description: Operator- and player-facing strings. May fall back to this locale.
-- file: commands.yaml
+  description: Shared locale labels retained after function metadata retirement.
+- file: shared-commands.yaml
   domain: ui
-  description: Localized function and structured-command reference text; canonical command phrases remain untranslated.
+  description: Shared locale labels retained after function metadata retirement.
 - file: narration.yaml
   domain: narration
   description: 'Listener-facing spoken narration. Never falls back: a missing key is a pre-render error.'
@@ -36,7 +31,8 @@ resources:
   description: Per-function narration templates. Command wording is metadata, never translated.
 - file: preparation-learning.yaml
   domain: narration
-  description: Approved OCF Preparation Learning en-US RC1 fixed narration and reusable state/count/return resources; production audio remains separate.
+  description: Approved OCF Preparation Learning en-US RC1 fixed narration and reusable state/count/return
+    resources; production audio remains separate.
 - file: hplus-body-comfort.yaml
   domain: narration
   description: Shared HPlus body comfort
@@ -63,176 +59,182 @@ resources:
   description: Human-approved shared OCF Focus 20 narration; historical source provenance was not provided.
 - file: hplus-waking-return.yaml
   domain: narration
-  description: Human-approved shared OCF waking-return adaptation; no authenticated historical source was supplied.
+  description: Human-approved shared OCF waking-return adaptation; no authenticated historical source
+    was supplied.
 - file: hplus-OCF-FND-002.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-BOD-002.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-SLP-002.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-AUT-001.yaml
-  domain: narration
-  description: Human-approved OCF narration based on a user-proposed reconstruction; historical source unavailable.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-BOD-001.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-BOD-003.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-BOD-004.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-BOD-005.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-BOD-006.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-BOD-007.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-BOD-008.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-BOD-009.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-BOD-010.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-BOD-011.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-BOD-012.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-BOD-013.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-BOD-014.yaml
-  domain: narration
-  description: Human-approved OCF narration based on a user-proposed reconstruction; historical source unavailable.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-BOD-015.yaml
-  domain: narration
-  description: Human-approved OCF narration based on a user-proposed reconstruction; historical source unavailable.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-COG-001.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-COG-002.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-COG-003.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-COG-004.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-COG-005.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-COG-006.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-COG-007.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-COM-001.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-EMG-001.yaml
-  domain: narration
-  description: Human-approved OCF narration based on a user-proposed reconstruction; historical source unavailable.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-EMG-002.yaml
-  domain: narration
-  description: Human-approved OCF narration based on a user-proposed reconstruction; historical source unavailable.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-EMO-001.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-EMO-002.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-EMO-003.yaml
-  domain: narration
-  description: Human-approved OCF narration based on a user-proposed reconstruction; historical source unavailable.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-EXP-001.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-EXP-002.yaml
-  domain: narration
-  description: Human-approved OCF narration based on a user-proposed reconstruction; historical source unavailable.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-FND-001.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-FND-003.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-FND-004.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-FND-005.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-FND-006.yaml
-  domain: narration
-  description: Human-approved OCF narration based on a user-proposed reconstruction; historical source unavailable.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-LIF-001.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-PRF-001.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-PRF-002.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-PRF-003.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-PRF-004.yaml
-  domain: narration
-  description: Human-approved OCF narration based on a user-proposed reconstruction; historical source unavailable.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-PRF-005.yaml
-  domain: narration
-  description: Human-approved OCF narration based on a user-proposed reconstruction; historical source unavailable.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-PRF-006.yaml
-  domain: narration
-  description: Human-approved OCF narration based on a user-proposed reconstruction; historical source unavailable.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-SEN-001.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-SEN-002.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-SEN-003.yaml
-  domain: narration
-  description: Human-approved OCF narration based on a user-proposed reconstruction; historical source unavailable.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-SEN-004.yaml
-  domain: narration
-  description: Human-approved OCF narration based on a user-proposed reconstruction; historical source unavailable.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-SEN-005.yaml
-  domain: narration
-  description: Human-approved OCF narration based on a user-proposed reconstruction; historical source unavailable.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-SLP-001.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-SLP-003.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-SLP-004.yaml
-  domain: narration
-  description: Human-approved OCF adaptation; historical source authentication remains unverified.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-SLP-005.yaml
-  domain: narration
-  description: Human-approved OCF narration based on a user-proposed reconstruction; historical source unavailable.
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
 - file: hplus-OCF-SLP-006.yaml
-  domain: narration
-  description: Human-approved OCF narration based on a user-proposed reconstruction; historical source unavailable.
-notes: |
-  Canonical locale. New narration keys are authored here first; a derived pack
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+notes: 'Canonical locale. New narration keys are authored here first; a derived pack
+
   is then filled from this one, recording its source semantic version.
 
+
   Versioning: bump `semantic_version` minor for cosmetic rewordings (no stale
+
   translations), major when the meaning of a key changes (translations go stale
+
   and `ocf locale validate` reports them).
+
+  '

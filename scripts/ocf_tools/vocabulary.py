@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import unicodedata
 
-from .commands import cue_presentation, is_active, resolve_phrase
+from .commands import cue_presentation, is_active
 from .indexes import load_all_functions
 from .locale import LocaleCatalog, normalize_tag
 
@@ -22,11 +22,14 @@ def lookup(query, *, locale="en-US", records=None, catalog=None):
     if not needle:
         return rows
     for owner in records if records is not None else load_all_functions():
+        from .localized_authority import title as localized_title
+
+        presentation = cue_presentation(owner, target, catalog=catalog)
         candidates = [
             (owner.id, "stable-id"),
             (owner.slug, "internal-slug"),
-            (owner.canonical_name, "current-title"),
-            (owner.canonical_command or "", "current-primary"),
+            (localized_title(owner, target, catalog=catalog), "current-title"),
+            (presentation["display_cue"], "current-primary"),
         ]
         candidates += [
             (row["text"], row["kind"]) for row in owner.data.get("historical_lookup", [])
@@ -52,7 +55,9 @@ def lookup(query, *, locale="en-US", records=None, catalog=None):
         for command in owner.command_records:
             if command.designation == "primary" or not is_active(command):
                 continue
-            phrase = resolve_phrase(owner, command)
+            from .commands import localized_cue
+
+            phrase = localized_cue(owner, command, target, catalog=catalog)["display_cue"]
             if lookup_form(phrase) == needle:
                 matched.append(
                     {
@@ -88,7 +93,7 @@ def lookup(query, *, locale="en-US", records=None, catalog=None):
                 if purpose
                 else owner.purpose_summary,
                 "purpose_locale": purpose.origin_locale if purpose else "canonical-record",
-                "cue": cue_presentation(owner, target, catalog=catalog),
+                "cue": presentation,
                 "matches": matched,
                 "activation_selected": False,
                 "historical_note": "Historical matches never select activation or deactivate current modes/controls. Current OCF intent may differ from its historical source; inspect each match's role and availability.",

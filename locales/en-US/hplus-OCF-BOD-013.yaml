@@ -1,77 +1,69 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-BOD-013", "title": "Body Tune-Up", "locale": "en-US"}
-# English authority: functions/body/tune-up.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-013-PRIMARY", "role": "activation", "display": "PLUS-TUNE-UP", "spoken": "Plus Tune Up", "locale_definition": "commands.ocf-cmd-bod-013-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-BOD-013 — Tune-Up
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: The Plus Balance Heal activation command is preserved.
-# Review note: OCF adaptation establishes lasting, automatic,
-# self-regulating whole-body maintenance and renewal suggestions.
-# Review note: Conscious activation directs additional attention
-# toward a specific area of the physical body.
-# Review note: One concise function body supports four-pass playback.
-# Review note: The closer follows the standardized OCF reminder format.
-# Review note: Intended healing effects are guided suggestions;
-# internal awareness is not a substitute for medical diagnosis.
-
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
+function_id: OCF-BOD-013
+title:
+  text: Body Tune-Up
+  status: canonical
+  version: 1.0.0
+description:
+  text: A general self-directed balance-and-heal tune-up practice.
+  status: canonical
+  version: 1.0.0
+metadata_entries:
+  functions.ocf-bod-013.lifecycle.scopes.capability.description:
+    text: The ability to direct attention toward a selected body area remains available.
+  functions.ocf-bod-013.lifecycle.scopes.baseline.description:
+    text: The narrated whole-body maintenance and renewal baseline persists.
+  functions.ocf-bod-013.lifecycle.scopes.application.description:
+    text: Conscious selected-area reinforcement; not continuous intensified repair in that area.
+activation:
+  command_id: OCF-CMD-BOD-013-PRIMARY
+  display_cue:
+    text: PLUS-TUNE-UP
+    status: reviewed
+    version: 1.1.0
+  spoken_cue:
+    text: Plus Tune Up
+    status: reviewed
+    version: 1.1.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-bod-013.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the unverified Tune-Up
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Tune-Up/Tune-Up.txt;
-      SHA-256 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1;
-      lines 1–2. Original reference remains unchanged.
-      Previously approved wording has been simplified to
-      emphasize whole-body awareness, balancing, healing,
-      regeneration, and automatic maintenance.
-      This is adapted narration, not a verbatim transcription.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to perceive, balance,
       and heal any part of your physical body, strengthening
       its natural processes of repair, regeneration,
       and ongoing maintenance.
-
   hplus.function.ocf-bod-013.function-body:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the unverified Tune-Up
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Tune-Up/Tune-Up.txt;
-      SHA-256 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1;
-      lines 31–48. Original reference remains unchanged.
-      Previously approved source wording has been condensed
-      into one reusable function body. The original concepts
-      of inward perception, targeted balancing, healing,
-      regeneration, and restoration are preserved.
-      OCF-authored suggestions establish lasting, automatic,
-      appropriately regulated whole-body maintenance.
-      Conscious activation remains available for directing
-      additional attention toward a selected area.
-      The exact Plus Balance Heal command and breathing
-      sequence are preserved. Affirmative suggestions retain
-      the original function's intended certainty and
-      reinforcement. Perceived internal conditions and
-      healing outcomes are exercise suggestions, not
-      verified diagnostic or therapeutic effects.
-      One reusable body supports four playback passes
-      across Focus 11 and Focus 20.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-BOD-013", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-BOD-013
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, your body's natural
       processes of balance, healing, and regeneration
@@ -144,23 +136,10 @@ entries:
   hplus.function.ocf-bod-013.closer:
     status: reviewed
     version: 1.3.0
-    notes: >-
-      OCF-adapted closer based on the unverified Tune-Up
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Tune-Up/Tune-Up.txt;
-      SHA-256 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1;
-      lines 190–196. Original reference remains unchanged.
-      Closer shortened to one purpose reminder, the exact
-      Plus Balance Heal activation command, the breathing
-      sequence, and the standard OCF ending. Targeted inward
-      attention remains part of the activation instructions.
-      Additional reinforcement is reserved for the body.
-      This is adapted narration, not verbatim source wording.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-BOD-013
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to perceive,
       balance, or heal any part of your physical body,

@@ -105,7 +105,30 @@ def test_successor_rejects_changed_body_and_changed_preview(tmp_path):
 @pytest.mark.integration
 def test_all_55_previews_and_177_resolved_entries_are_current():
     plans = cue_headers.plans()
-    assert len([name for name in plans if name.startswith("locales/")]) == 58
+    # Consolidated YAML carries the actual fields instead of a generated
+    # comment banner. Verify the complete catalog, not just absence of previews.
+    import yaml
+    from ocf_tools.indexes import load_all_functions
+    from ocf_tools.locale import LocaleCatalog
+
+    records = load_all_functions()
+    catalog = LocaleCatalog()
+    assert len(records) == 58
+    assert not [name for name in plans if name.startswith("locales/")]
+    for owner in records:
+        source = cue_headers.REPO_ROOT / "locales/en-US" / f"hplus-{owner.id}.yaml"
+        if not source.exists():
+            source = source.with_name(f"original-{owner.id}.yaml")
+        data = yaml.safe_load(source.read_text())
+        assert data["function_id"] == owner.id
+        assert (
+            data["title"]["text"] == cue_headers.value(owner, "function.title", "en-US", catalog)[0]
+        )
+        assert (
+            data["activation"]["spoken_cue"]["text"]
+            == cue_headers.value(owner, "cue.primary", "en-US", catalog)[0]
+        )
+        assert cue_headers.START not in source.read_text()
     assert len(cue_headers.draft_plans()) == 4
     assert cue_headers.check() == []
     assert cue_headers.verify() == []

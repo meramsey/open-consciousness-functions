@@ -1,70 +1,95 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-PRF-006", "title": "Strong-Quick", "locale": "en-US"}
-# English authority: functions/performance/strong-quick.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-PRF-006-PRIMARY", "role": "activation", "display": "PLUS-STRONG QUICK", "spoken": "Plus Strong Quick", "locale_definition": null}
-# {"symbol": "cue.id.OCF-CMD-PRF-006-RELEASE", "command": "OCF-CMD-PRF-006-RELEASE", "role": "release", "display": "Plus Release", "spoken": "Plus Release", "locale_definition": null}
-# END GENERATED CUE PREVIEW
-# OCF-PRF-006 — Strong-Quick
-# English function-specific OCF-adapted narration; wording source of truth.
-# Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered historical transcript.
-# Review note: Historical source unavailable; reimplementation remains planned.
-# Proposed input: Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt
-# SHA-256: e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32
-# Proposed header: STRONG-QUICK (88R1006) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT.
-# Review note: Identity checked against proposed title and command; authenticity
-# and suggested timing are not independently verified.
-# Review note: Opener input line 47; body lines 146–207; closer lines 328–343.
-# Review note: Shared preparation, state, return, and production material excluded.
-# Review note: Legacy PLUS-STRONG-QUICK and canonical PLUS-STRONG QUICK represent
-# the same spoken activation cue: Plus Strong Quick.
-# Review note: Exceptional strength and speed are the intended experiential aim,
-# not verified physiological capabilities or guaranteed external outcomes.
-# Review note: Temporary application with separate Plus Release instruction.
-# Review note: One function body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
+function_id: OCF-PRF-006
+title:
+  text: Strong-Quick
+  status: canonical
+  version: 1.0.0
+description:
+  text: Combines strength and quickness in a single felt state; activation cue PLUS-STRONG QUICK.
+  status: reviewed
+  version: 1.0.1
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-PRF-006-PRIMARY
+  display_cue:
+    text: PLUS-STRONG QUICK
+  spoken_cue:
+    text: Plus Strong Quick
+    status: reviewed
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-PRF-006-LEGACY-01
+  display_cue:
+    text: PLUS-STRONG-QUICK
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+- command_id: OCF-CMD-PRF-006-RELEASE
+  display_cue:
+    text: Plus Release
+  spoken_cue:
+    text: Plus Release
+    status: reviewed
+  label:
+    text: Release command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This command releases or suspends the current application as documented.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Ends the temporary Strong-Quick application; the learned ability remains available.
+    status: canonical
+    version: 1.0.0
+  role: release
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-prf-006.opener:
     status: reviewed
     version: 1.1.0
-    notes: >-
-      OCF adaptation of the user-proposed Strong-Quick reconstruction;
-      proposed input Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt;
-      SHA-256 e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32;
-      original input line 47. Historical source unavailable and authenticity
-      unverified. Preserves the intended exceptional, momentary strength
-      and quickness rather than reframing the function as ordinary training.
-      Rights: user_cleared per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to call upon
       extraordinary strength and quickness within your total self,
       bringing them into action immediately when they are needed most.
-
   hplus.function.ocf-prf-006.function-body:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF adaptation of the user-proposed Strong-Quick reconstruction;
-      proposed input Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt;
-      SHA-256 e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32;
-      original input lines 146–207. Historical source remains unavailable;
-      original reconstruction unchanged. Preserves an immediate and momentary
-      response to urgent necessity, intended unusual muscular strength and
-      speed, whole-body coordination, clear awareness, and the separate
-      Plus Release command. Spoken activation is Plus Strong Quick, reflecting
-      legacy PLUS-STRONG-QUICK and canonical PLUS-STRONG QUICK metadata.
-      The inhale-hold-command-exhale pattern is preserved for activation
-      and release. Repetitions, scenario examples, and companion-function
-      material removed. Exceptional performance and the suggested response
-      are intended experiences, not verified or guaranteed effects.
-      One body supports four passes across Focus 11 and Focus 20.
-      Rights: user_cleared per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-PRF-006", "allowed": ["cue.id.OCF-CMD-PRF-006-RELEASE", "cue.primary"]}
+    cue_template:
+      function_id: OCF-PRF-006
+      allowed:
+      - cue.id.OCF-CMD-PRF-006-RELEASE
+      - cue.primary
     text: |-
       From this moment forward, within your total self
       there is an exceptional reserve of strength and quickness,
@@ -120,16 +145,11 @@ entries:
   hplus.function.ocf-prf-006.closer:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted closer based on the user-proposed Strong-Quick reconstruction;
-      proposed input Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt;
-      SHA-256 e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32;
-      original input lines 328–343. Historical source unavailable and
-      authenticity unverified. Retains one purpose reminder, the activation
-      breathing sequence and exact spoken Plus Strong Quick command, the
-      separate Plus Release cue, and standard OCF sign-off. Rights:
-      user_cleared per user's lawyer-clearance attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-PRF-006", "allowed": ["cue.id.OCF-CMD-PRF-006-RELEASE", "cue.primary"]}
+    cue_template:
+      function_id: OCF-PRF-006
+      allowed:
+      - cue.id.OCF-CMD-PRF-006-RELEASE
+      - cue.primary
     text: |-
       Remember, when an immediate need calls for extraordinary
       strength and quickness, inhale deeply, hold your breath,

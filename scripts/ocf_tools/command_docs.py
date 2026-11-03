@@ -107,6 +107,9 @@ def _function_document(
     catalog: LocaleCatalog,
 ) -> dict[str, Any]:
     docs = record.documentation
+    from .localized_authority import metadata as localized_metadata
+
+    function_metadata = localized_metadata(record, locale, catalog=catalog)
     localized: dict[str, Any] = {}
     for field in ("title_key", "short_description_key", "purpose_key", "effect_key"):
         key = docs.get(field)
@@ -182,7 +185,14 @@ def _function_document(
                     raise CommandDocumentationError(
                         f"{record.id}/{metadata.id} refers to unknown related command {target_id}"
                     )
-                targets.append({"id": target.id, "phrase": command_view(record, target)["phrase"]})
+                targets.append(
+                    {
+                        "id": target.id,
+                        "phrase": command_view(record, target, locale=locale, catalog=catalog)[
+                            "phrase"
+                        ],
+                    }
+                )
             related_commands.append(
                 {"kind": relation, "label": relation_label, "commands": targets}
             )
@@ -216,7 +226,7 @@ def _function_document(
                 "approval": "OCF-GUIDE-REVIEW-001",
             }
         )
-    return {
+    result = {
         "function_id": record.id,
         "slug": record.slug,
         "title": localized["title"],
@@ -243,6 +253,11 @@ def _function_document(
         "commands": commands,
         "related_functions": related_functions,
     }
+    if function_metadata is not None:
+        result["tags"] = function_metadata.get("tags", [])
+        result["common_uses"] = function_metadata.get("common_uses", [])
+        result["localized_relationships"] = function_metadata.get("relationships", {})
+    return result
 
 
 def build_command_index(locale: str | None = None, catalog: LocaleCatalog | None = None) -> dict:

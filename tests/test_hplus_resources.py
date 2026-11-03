@@ -127,10 +127,24 @@ def test_all_55_legacy_functions_have_review_files_without_fabricated_missing_sp
         assert owner.audio_script_status == "approved"
         path = REPO_ROOT / "locales/en-US" / f"hplus-{owner.id}.yaml"
         doc = yaml.safe_load(path.read_text())
+        from ocf_tools.locale_history import before_consolidation
+
+        historical = yaml.safe_load(
+            before_consolidation(
+                REPO_ROOT, path.relative_to(REPO_ROOT).as_posix(), path.read_text()
+            )
+        )
+        # Editorial notes moved out of the human-editable resource. Bind the
+        # current wording/status/version to its exact checked provenance copy.
+        assert doc["entries"] == {
+            key: {field: value for field, value in entry.items() if field != "notes"}
+            for key, entry in historical["entries"].items()
+        }
         prefix = f"hplus.function.{owner.id.lower()}."
         if owner.source_availability == "unavailable":
             assert owner.reimplementation_status == "planned"
-            assert doc["domain"] == "narration"
+            assert doc["domain"] == "function"
+            assert doc["function_id"] == owner.id
             proposal = PROPOSALS[owner.id]
             proposal_input = proposal["input"]
             proposal_slots = proposal["selection"]["slots"]
@@ -140,15 +154,16 @@ def test_all_55_legacy_functions_have_review_files_without_fabricated_missing_sp
             assert set(doc["entries"]) == {
                 prefix + slot for slot in ("opener", "function-body", "closer")
             }
-            for entry in doc["entries"].values():
+            for key, entry in doc["entries"].items():
                 assert entry["status"] == "reviewed"
                 # The resource notes must bind this narration to the structured
                 # reconstruction record, without making prose capitalization or
                 # one preferred description part of the provenance contract.
-                assert proposal_input["file"] in entry["notes"]
-                assert proposal_input["sha256"] in entry["notes"]
+                assert proposal_input["file"] in historical["entries"][key]["notes"]
+                assert proposal_input["sha256"] in historical["entries"][key]["notes"]
         else:
-            assert doc["domain"] == "narration"
+            assert doc["domain"] == "function"
+            assert doc["function_id"] == owner.id
             selection = SELECTIONS[owner.id]
             for slot in ("opener", "function-body", "closer"):
                 entry_key = prefix + slot
@@ -157,12 +172,12 @@ def test_all_55_legacy_functions_have_review_files_without_fabricated_missing_sp
                     assert slot in selection["missing"]
                     assert entry_key in doc["entries"]
                     assert doc["entries"][entry_key]["status"] == "reviewed"
-                    assert doc["entries"][entry_key]["notes"].strip()
+                    assert historical["entries"][entry_key]["notes"].strip()
                 elif owner.id in SUPPLEMENTARY_OPENERS and slot == "opener":
                     assert slot in selection["missing"]
                     assert entry_key in doc["entries"]
                     assert doc["entries"][entry_key]["status"] == "reviewed"
-                    assert doc["entries"][entry_key]["notes"].strip()
+                    assert historical["entries"][entry_key]["notes"].strip()
                 else:
                     assert (entry_key in doc["entries"]) == (
                         slot in selection["slots"] or slot in selection["missing"]

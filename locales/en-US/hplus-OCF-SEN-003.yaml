@@ -1,72 +1,112 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-SEN-003", "title": "Smell", "locale": "en-US"}
-# English authority: functions/sensory/smell.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-SEN-003-PRIMARY", "role": "activation", "display": "PLUS-SMELL MORE", "spoken": "Plus Smell More", "locale_definition": "commands.ocf-cmd-sen-003-primary.spoken-cue"}
-# {"symbol": "cue.id.OCF-CMD-SEN-003-SMELL-LESS", "command": "OCF-CMD-SEN-003-SMELL-LESS", "role": "decrease", "display": "PLUS-SMELL LESS", "spoken": "Plus Smell Less", "locale_definition": null}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-SEN-003 — Sensory: Smell
-# English function-specific OCF-adapted narration; wording source of truth.
-# Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered historical transcript.
-# Review note: Historical source unavailable; reimplementation remains planned.
-# Proposed input: Sensory (Smell)/Sensory_Smell_reconstructed_clean.txt
-# SHA-256: 7a1b03b324f5842b5e0c9f4c0a4ae7febaa1a1edfa0c096cf37638c3f3923873
-# Proposed header: SENSORY: SMELL — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT.
-# Review note: Original input ranges: opener 37; body 128–146; closer 252–258.
-# Review note: Source authenticity and proposed timings are not independently verified.
-# Review note: Canonical MORE/LESS commands are user-directed replacements for
-# proposed GREATER/LESSER wording; original reference remains unchanged.
-# Review note: Permanent imagined-smell ability is a new user-directed OCF enhancement,
-# not recovered historical transcript wording.
-# Review note: Shared preparation, production, state, and return material excluded.
-# Review note: Four-pass reusable body; selected physical adjustments remain voluntary.
-# Review note: Changes in olfactory acuity are intended exercise suggestions,
-# not verified sensory improvements or protection against airborne hazards.
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
+function_id: OCF-SEN-003
+title:
+  text: Smell
+  status: canonical
+  version: 1.0.0
+description:
+  text: Adjusts the felt sense of smell in either direction using the MORE/LESS grammar.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-SEN-003-PRIMARY
+  display_cue:
+    text: PLUS-SMELL MORE
+  spoken_cue:
+    text: Plus Smell More
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-SEN-003-SMELL-LESS
+  display_cue:
+    text: PLUS-SMELL LESS
+  spoken_cue:
+    text: Plus Smell Less
+    status: reviewed
+  label:
+    text: Decrease mode
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This command selects the decrease mode.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use when you choose to decrease the selected function response.
+    status: canonical
+    version: 1.0.0
+  role: decrease
+- command_id: OCF-CMD-SEN-003-LEGACY-01
+  display_cue:
+    text: PLUS-SMELL GREATER
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+- command_id: OCF-CMD-SEN-003-LEGACY-02
+  display_cue:
+    text: PLUS-SMELL LESSER
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-sen-003.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF adaptation of user-proposed Sensory: Smell reconstruction,
-      input line 37; proposed source
-      Sensory (Smell)/Sensory_Smell_reconstructed_clean.txt;
-      SHA-256 7a1b03b324f5842b5e0c9f4c0a4ae7febaa1a1edfa0c096cf37638c3f3923873.
-      Historical authenticity unverified. Introduces both physical smell
-      regulation and newly requested permanent inner scent imagery.
-      Rights: user_cleared per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to regulate your sense
       of smell and strengthen your ability to remember,
       imagine, and experience aromas within your mind.
-
   hplus.function.ocf-sen-003.function-body:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF adaptation of user-proposed Sensory: Smell reconstruction,
-      input lines 128–146; proposed source
-      Sensory (Smell)/Sensory_Smell_reconstructed_clean.txt;
-      SHA-256 7a1b03b324f5842b5e0c9f4c0a4ae7febaa1a1edfa0c096cf37638c3f3923873.
-      Original reconstruction unchanged; authenticity unverified. Retains
-      user-canonical Plus Smell More and Plus Smell Less in place of proposed
-      GREATER/LESSER wording; closes eyes, inhales, holds, selects command,
-      exhales through mouth, then opens eyes. Physical smell adjustment is
-      conscious and temporary until changed or returned to normal.
-      User-directed OCF enhancement establishes permanently developing
-      olfactory imagination, scent recall, and deliberate construction of
-      imagined aromas without external odor. Same two commands may reinforce
-      the sensory quality of an intended inner scent, without inventing a
-      third cue. No claim of verified physical or nonphysical sensory effects.
-      One body serves four playback passes across Focus 11 and Focus 20.
-      Rights: user_cleared per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-SEN-003", "allowed": ["cue.id.OCF-CMD-SEN-003-SMELL-LESS", "cue.primary"]}
+    cue_template:
+      function_id: OCF-SEN-003
+      allowed:
+      - cue.id.OCF-CMD-SEN-003-SMELL-LESS
+      - cue.primary
     text: |-
       From this moment forward, you have the ability
       to regulate your sense of smell and develop
@@ -115,18 +155,11 @@ entries:
   hplus.function.ocf-sen-003.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted concise closer based on proposed reconstruction,
-      input lines 252–258; source
-      Sensory (Smell)/Sensory_Smell_reconstructed_clean.txt;
-      SHA-256 7a1b03b324f5842b5e0c9f4c0a4ae7febaa1a1edfa0c096cf37638c3f3923873.
-      Historical authenticity unverified. Includes newly requested imagined
-      scent ability as an OCF extension, canonical commands Plus Smell More
-      and Plus Smell Less, and full source eye/breath sequence, followed by
-      standard OCF ending. Rights: user_cleared per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
-      {"function_id": "OCF-SEN-003", "allowed": ["cue.id.OCF-CMD-SEN-003-SMELL-LESS", "cue.primary"]}
+      function_id: OCF-SEN-003
+      allowed:
+      - cue.id.OCF-CMD-SEN-003-SMELL-LESS
+      - cue.primary
     text: |-
       Remember, to regulate your perception of aromas
       or strengthen your inner sense of smell, close your eyes,

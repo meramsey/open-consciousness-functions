@@ -7,6 +7,7 @@ import json
 from .complete_session import build_complete_session_plan
 from .indexes import load_function_by_id
 from .locale import LocaleCatalog, iter_events, resolve_document
+from .localized_authority import title as localized_title
 from .narration_pacing import split_speech_units
 from .paths import unique_run_id, work_path
 from .speech_cache import enabled
@@ -29,7 +30,7 @@ def review_sessions(
         body = [e for e in events if e.get("slot_ref") == "function_body"]
         row = {
             "function_id": owner,
-            "title": record.canonical_name,
+            "title": localized_title(record, locale),
             "category": record.data["classification"]["primary_domain"],
             "template": plan["template"],
             "body_passes": len(body),

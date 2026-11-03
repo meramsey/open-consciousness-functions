@@ -1,84 +1,60 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-COM-001", "title": "Speak Up", "locale": "en-US"}
-# English authority: functions/communication/speak-up.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-COM-001-PRIMARY", "role": "activation", "display": "PLUS-SPEAK UP", "spoken": "Plus Speak Up", "locale_definition": null}
-# END GENERATED CUE PREVIEW
-# OCF-COM-001 — Speak Up
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: The shared waking instructions at source line 84
-# remain excluded from the function-specific closer.
-# Review note: The original duplicate body-ending lines remain excluded.
-# Review note: The exact Plus Speak Up activation command is preserved.
-# Review note: The function strengthens speaking, reading aloud,
-# verbal fluency, articulation, and effective communication.
-# Review note: Lasting, automatic improvement is established,
-# with optional conscious activation for additional fluency.
-# Review note: One concise body supports four-pass playback.
-# Review note: Closer follows the standardized OCF reminder format.
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
+function_id: OCF-COM-001
+title:
+  text: Speak Up
+  status: canonical
+  version: 1.0.0
+description:
+  text: Supports confident, clear verbal expression.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-COM-001-PRIMARY
+  display_cue:
+    text: PLUS-SPEAK UP
+  spoken_cue:
+    text: Plus Speak Up
+    status: reviewed
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-com-001.opener:
     status: reviewed
     version: 1.1.0
-    notes: >-
-      OCF-adapted narration based on the unverified Speak Up
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Speak Up/Speak Up.txt;
-      SHA-256 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc;
-      line 1. Original source remains unchanged.
-      Wording clarified to emphasize confident, fluent,
-      effective speaking, reading aloud, and communication.
-      This is adapted narration, not a verbatim transcription.
-      Shared preparation, state, and return wording excluded.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will strengthen your ability
       to speak, read aloud, and communicate
       clearly, confidently, and effectively,
       expressing yourself naturally and with ease.
-
   hplus.function.ocf-com-001.function-body:
     status: reviewed
     version: 1.1.0
-    notes: >-
-      OCF-adapted narration based on the unverified Speak Up
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Speak Up/Speak Up.txt;
-      SHA-256 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc;
-      lines 34–43. Original source remains unchanged.
-      Narration reorganized into natural speech, comfortable
-      vocal coordination, breathing, articulation, reading
-      comprehension, verbal fluency, confident expression,
-      permanent automatic improvement, conscious activation,
-      and reinforcement.
-      The original emphasis on vocal cords, throat, mouth,
-      tongue, lips, breathing, and speaking without strain
-      or hesitation is preserved.
-      OCF-authored additions include automatic translation
-      of thoughts into speech, appropriate word selection,
-      and clear organization of spoken ideas.
-      The exact Plus Speak Up command and original inhale,
-      hold, command, and candle-like exhale sequence
-      are preserved.
-      Permanent improvement applies to everyday speaking
-      and reading, with optional conscious activation
-      for additional fluency and confidence.
-      The previously removed duplicate body-ending lines
-      remain excluded.
-      One reusable body supports repeated playback
-      across Focus 11 and Focus 20.
-      Shared preparation, state, and return wording excluded.
-      Affirmative outcomes represent intended exercise
-      suggestions, not independently verified effects.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-COM-001", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-COM-001
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, your ability to speak,
       read aloud, and communicate with others
@@ -157,20 +133,10 @@ entries:
   hplus.function.ocf-com-001.closer:
     status: reviewed
     version: 1.1.0
-    notes: >-
-      OCF-adapted closer based on the unverified Speak Up
-      transcript. Original SOURCE +Transcripts From available
-      tapes/Speak Up/Speak Up.txt;
-      SHA-256 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc;
-      lines 84–87, beginning with the function reminder.
-      Shared waking words on line 84 remain excluded.
-      The closer is shortened to one purpose reminder,
-      the exact Plus Speak Up command, the original
-      breathing sequence, and the standard OCF ending.
-      This is adapted narration, not verbatim source wording.
-      Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-COM-001", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-COM-001
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to speak,
       read aloud, or communicate more clearly

@@ -1,66 +1,77 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-SEN-002", "title": "Seeing", "locale": "en-US"}
-# English authority: functions/sensory/seeing.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-SEN-002-PRIMARY", "role": "activation", "display": "PLUS-SEE BETTER", "spoken": "Plus See Better", "locale_definition": "commands.ocf-cmd-sen-002-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-SEN-002 — Sensory: Seeing
-# English function-specific OCF-adapted narration; wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Original SOURCE: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
-# SHA-256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
-# Source ranges: opener line 1; body lines 35–58; closer lines 232–234.
-# Review note: Shared consolidation at lines 59–63 and trailing speech at line 235 excluded.
-# Review note: Physical sight remains the transcript-derived core of the function.
-# Review note: Mental imagery, visualization, and visual memory are user-directed
-# OCF enhancements, not claims of wording found in the historical transcript.
-# Review note: Both physical seeing and internal visualization are intended
-# to develop as lasting abilities; Plus See Better reinforces either or both.
-# Review note: The inhale-hold-command-exhale sequence is preserved.
-# Review note: Physiological and extraordinary effects are exercise suggestions,
-# not independently verified outcomes.
-# Review note: One function body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
+function_id: OCF-SEN-002
+title:
+  text: Seeing
+  status: canonical
+  version: 1.0.0
+description:
+  text: Supports physical seeing and inner visualization, including visual processing, visual memory,
+    and deliberate creation and manipulation of mental images.
+  status: canonical
+  version: 1.0.1
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-SEN-002-PRIMARY
+  display_cue:
+    text: PLUS-SEE BETTER
+  spoken_cue:
+    text: Plus See Better
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-SEN-002-LEGACY-01
+  display_cue:
+    text: PLUS-SEE BETTER
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-sen-002.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF adaptation based on unverified Sensory (Seeing) transcript;
-      SOURCE +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt;
-      SHA-256 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c;
-      line 1. Original source remains unchanged. Physical-vision improvement
-      remains the source-derived purpose; mental visualization is a newly
-      requested OCF enhancement, not recovered historical wording. Rights:
-      user_cleared, per user's lawyer-clearance attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will strengthen your entire system
       of seeing, bringing greater clarity to your physical sight
       and to the images you create and perceive within your mind.
-
   hplus.function.ocf-sen-002.function-body:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF adaptation based on unverified Sensory (Seeing) transcript;
-      SOURCE +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt;
-      SHA-256 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c;
-      lines 35–58. Source unchanged; shared consolidation at lines 59–63
-      excluded. Preserves tear balance, blinking, light adaptation, focusing,
-      inner-eye signaling, brain interpretation, continuous development, and
-      exact Plus See Better cue with inhale-hold-command-exhale sequence.
-      Newly requested OCF expansion adds permanently developing mental
-      visualization, deliberate imagery, visual recall, and manipulation
-      of inner images; this content is not presented as historical source.
-      The command can reinforce physical seeing, internal imagery, or both
-      according to intention. One reusable body supports four playback passes
-      across Focus 11 and Focus 20. All improvements described are intended
-      exercise suggestions rather than established physiological outcomes.
-      Rights: user_cleared, per user's lawyer-clearance attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-SEN-002", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-SEN-002
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, your entire system of seeing,
       both physical and within your mind, will become
@@ -110,18 +121,10 @@ entries:
   hplus.function.ocf-sen-002.closer:
     status: reviewed
     version: 1.3.1
-    notes: >-
-      OCF-adapted closer based on unverified Sensory (Seeing) transcript;
-      SOURCE +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt;
-      SHA-256 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c;
-      lines 232–234. One purpose reminder now includes user-directed
-      inner-visualization enhancement, which is not historical wording.
-      Exact Plus See Better cue, original breathing sequence, and standard
-      OCF ending remain. Rights: user_cleared, per user's lawyer-clearance
-      attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-SEN-002
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to strengthen your
       physical sight or the clarity of your inner images,

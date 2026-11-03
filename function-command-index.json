@@ -185,6 +185,7 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-AUT-001",
       "lifecycle_scopes": [
@@ -246,6 +247,10 @@
           "persistence": "temporary"
         }
       ],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -279,6 +284,7 @@
         "resolved_locale": "en-US",
         "text": "Historical source unavailable."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-aut-001.title",
@@ -457,9 +463,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-BOD-001",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -493,6 +504,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-bod-001.title",
@@ -666,9 +678,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-BOD-002",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -702,6 +719,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-bod-002.title",
@@ -880,9 +898,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-BOD-003",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -916,6 +939,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-bod-003.title",
@@ -1094,9 +1118,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-BOD-004",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -1130,6 +1159,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-bod-004.title",
@@ -1318,6 +1348,7 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-BOD-005",
       "lifecycle_scopes": [
@@ -1379,6 +1410,10 @@
           "persistence": "temporary"
         }
       ],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -1412,6 +1447,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-bod-005.title",
@@ -1590,9 +1626,24 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-BOD-006",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": [
+          {
+            "description": {
+              "status": "reviewed",
+              "text": "Compare heart-oriented calm and steadiness with broader circulation-oriented comfort. These are independently selectable wellness exercises, not a combined treatment or a proven way to improve cardiovascular function.",
+              "version": "0.0.1"
+            },
+            "description_key": "relationships.rel-bod006-bod002.description",
+            "function_id": "OCF-BOD-002"
+          }
+        ]
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -1647,6 +1698,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-bod-006.title",
@@ -1845,6 +1897,7 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-BOD-007",
       "lifecycle_scopes": [
@@ -1906,6 +1959,10 @@
           "persistence": "temporary"
         }
       ],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -1939,6 +1996,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-bod-007.title",
@@ -2095,9 +2153,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-BOD-008",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -2131,6 +2194,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-bod-008.title",
@@ -2287,9 +2351,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-BOD-009",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -2323,6 +2392,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-bod-009.title",
@@ -2343,13 +2413,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-BOD-010-PRIMARY",
             "display_cue": "PLUS-FOOD MORE",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Food More",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-bod-010-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -2517,13 +2592,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-BOD-010-FOOD-LESS",
             "display_cue": "PLUS-FOOD LESS",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Food Less",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-bod-010-food-less.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -2691,9 +2771,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-BOD-010",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -2727,6 +2812,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-bod-010.title",
@@ -2903,6 +2989,7 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-BOD-011",
       "lifecycle_scopes": [
@@ -2964,6 +3051,10 @@
           "persistence": "temporary"
         }
       ],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -2997,6 +3088,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-bod-011.title",
@@ -3017,13 +3109,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-BOD-012-PRIMARY",
             "display_cue": "PLUS-SEX MORE",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Sex More",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-bod-012-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -3191,13 +3288,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-BOD-012-SEX-LESS",
             "display_cue": "PLUS-SEX LESS",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Sex Less",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-bod-012-sex-less.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -3388,6 +3490,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-BOD-012-LEGACY-01",
             "display_cue": "PLUS-SEX GREATER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -3459,6 +3563,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-BOD-012-LEGACY-02",
             "display_cue": "PLUS-SEX LESSER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -3526,9 +3632,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-BOD-012",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -3562,6 +3673,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-bod-012.title",
@@ -3766,6 +3878,7 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-BOD-013",
       "lifecycle_scopes": [
@@ -3827,6 +3940,10 @@
           "persistence": "temporary"
         }
       ],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -3860,6 +3977,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-bod-013.title",
@@ -4049,9 +4167,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-BOD-014",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -4085,6 +4208,7 @@
         "resolved_locale": "en-US",
         "text": "Historical source unavailable."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-bod-014.title",
@@ -4264,13 +4388,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-BOD-015-LEGACY-02",
             "display_cue": "PLUS-RELEASE",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Release",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-bod-015-legacy-02.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -4447,9 +4576,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-BOD-015",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -4483,6 +4617,7 @@
         "resolved_locale": "en-US",
         "text": "Historical source unavailable."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-bod-015.title",
@@ -4637,6 +4772,7 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-COG-001",
       "lifecycle_scopes": [
@@ -4698,6 +4834,10 @@
           "persistence": "temporary"
         }
       ],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -4731,6 +4871,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-cog-001.title",
@@ -4899,9 +5040,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-COG-002",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -4935,6 +5081,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-cog-002.title",
@@ -4955,13 +5102,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-COG-003-PRIMARY",
             "display_cue": "PLUS-OPEN",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Open",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-cog-003-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -5102,13 +5254,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-COG-003-CLOSED",
             "display_cue": "PLUS-CLOSED",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Closed",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-cog-003-closed.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -5215,9 +5372,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-COG-003",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -5251,6 +5413,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-cog-003.title",
@@ -5450,13 +5613,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-COG-004-RECALL",
             "display_cue": "PLUS-RECALL",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Recall",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-cog-004-recall.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -5583,6 +5751,7 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-COG-004",
       "lifecycle_scopes": [
@@ -5644,6 +5813,10 @@
           "persistence": "temporary"
         }
       ],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -5677,6 +5850,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-cog-004.title",
@@ -5875,6 +6049,7 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-COG-005",
       "lifecycle_scopes": [
@@ -5936,6 +6111,10 @@
           "persistence": "temporary"
         }
       ],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -5969,6 +6148,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-cog-005.title",
@@ -5989,13 +6169,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-COG-006-PRIMARY",
             "display_cue": "PLUS-RECALL",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Recall",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-cog-006-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -6130,9 +6315,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-COG-006",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -6166,6 +6356,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-cog-006.title",
@@ -6186,13 +6377,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-COG-007-PRIMARY",
             "display_cue": "PLUS-THINK",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Think",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-cog-007-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -6327,9 +6523,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-COG-007",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -6363,6 +6564,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-cog-007.title",
@@ -6383,13 +6585,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-COM-001-PRIMARY",
             "display_cue": "PLUS-SPEAK UP",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Speak Up",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-com-001-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -6524,9 +6731,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-COM-001",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -6560,6 +6772,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-com-001.title",
@@ -6732,6 +6945,7 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-EMG-001",
       "lifecycle_scopes": [
@@ -6793,6 +7007,10 @@
           "persistence": "temporary"
         }
       ],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -6826,6 +7044,7 @@
         "resolved_locale": "en-US",
         "text": "Historical source unavailable."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-emg-001.title",
@@ -6998,6 +7217,7 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-EMG-002",
       "lifecycle_scopes": [
@@ -7059,6 +7279,10 @@
           "persistence": "temporary"
         }
       ],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -7092,6 +7316,7 @@
         "resolved_locale": "en-US",
         "text": "Historical source unavailable."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-emg-002.title",
@@ -7112,13 +7337,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EMO-001-PRIMARY",
             "display_cue": "PLUS-LET GO",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Let Go",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-emo-001-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -7253,9 +7483,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-EMO-001",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -7289,6 +7524,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-emo-001.title",
@@ -7473,9 +7709,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-EMO-002",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -7509,6 +7750,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-emo-002.title",
@@ -7665,9 +7907,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-EMO-003",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -7701,6 +7948,7 @@
         "resolved_locale": "en-US",
         "text": "Historical source unavailable."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-emo-003.title",
@@ -7874,9 +8122,33 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-EXP-001",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": [
+          {
+            "description": {
+              "status": "reviewed",
+              "text": "Compare intention-setting with releasing a selected unwanted pattern. These remain independent exercises, not a required sequence.",
+              "version": "0.0.1"
+            },
+            "description_key": "relationships.rel-exp001-exp003.description",
+            "function_id": "OCF-EXP-003"
+          },
+          {
+            "description": {
+              "status": "reviewed",
+              "text": "Intuition offers a separately chosen exercise for exploring understanding alongside purposeful intention-setting. Intuitive impressions are not proof or instructions that must be followed.",
+              "version": "0.0.1"
+            },
+            "description_key": "relationships.rel-exp001-exp006.description",
+            "function_id": "OCF-EXP-006"
+          }
+        ]
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -7951,6 +8223,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-exp-001.title",
@@ -8125,13 +8398,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-002-CANCEL",
             "display_cue": "PLUS-CANCEL",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Cancel",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-exp-002-cancel.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -8272,13 +8550,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-002-RELEASE",
             "display_cue": "Plus Release",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Release",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-exp-002-release.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "special",
           "documentation": {
@@ -8435,9 +8718,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-EXP-002",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -8471,6 +8759,7 @@
         "resolved_locale": "en-US",
         "text": "Historical source unavailable."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-exp-002.title",
@@ -8494,6 +8783,8 @@
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-003-PRIMARY",
             "display_cue": "PLUS-DISSOLVE",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "resource_status": "reviewed",
             "spoken_cue": "Plus Dissolve",
@@ -8643,6 +8934,7 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-EXP-003",
       "lifecycle_scopes": [
@@ -8685,6 +8977,20 @@
           "persistence": "conditional"
         }
       ],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": [
+          {
+            "description": {
+              "status": "reviewed",
+              "text": "Distinguish releasing a selected unwanted pattern from exploring intuitive understanding. Either exercise may be chosen independently; neither is a prerequisite for the other.",
+              "version": "0.0.1"
+            },
+            "description_key": "relationships.rel-exp003-exp006.description",
+            "function_id": "OCF-EXP-006"
+          }
+        ]
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -8739,6 +9045,7 @@
         "resolved_locale": "en-US",
         "text": "Source availability is pending review."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-exp-003.title",
@@ -8762,6 +9069,8 @@
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-005-OBSERVE",
             "display_cue": "PLUS-CLEAR ZONE, OBSERVE",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "resource_status": "reviewed",
             "spoken_cue": "Plus Clear Zone, Observe",
@@ -8886,6 +9195,8 @@
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-005-PRIMARY",
             "display_cue": "PLUS-CLEAR ZONE",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "resource_status": "reviewed",
             "spoken_cue": "Plus Clear Zone",
@@ -9009,6 +9320,8 @@
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-005-SUSPEND",
             "display_cue": "PLUS-CLEAR ZONE, SUSPEND",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "resource_status": "reviewed",
             "spoken_cue": "Plus Clear Zone, Suspend",
@@ -9129,6 +9442,7 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-EXP-005",
       "lifecycle_scopes": [
@@ -9190,6 +9504,10 @@
           "persistence": "conditional"
         }
       ],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -9223,6 +9541,7 @@
         "resolved_locale": "en-US",
         "text": "Source availability is pending review."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-exp-005.title",
@@ -9246,6 +9565,8 @@
             "binding_status": "resolved",
             "command_id": "OCF-CMD-EXP-006-PRIMARY",
             "display_cue": "PLUS-INTUITION",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "resource_status": "reviewed",
             "spoken_cue": "Plus Intuition",
@@ -9373,9 +9694,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-EXP-006",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -9409,6 +9735,7 @@
         "resolved_locale": "en-US",
         "text": "Source availability is pending review."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-exp-006.title",
@@ -9429,13 +9756,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-FND-001-PRIMARY",
             "display_cue": "PLUS-ENERGIZE",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Energize",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-fnd-001-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -9543,13 +9875,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-FND-001-ACCESS-CLOSE",
             "display_cue": "Plus Release Eleven Access",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "plus, release, eleven, access",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-fnd-001-access-close.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "special",
           "documentation": {
@@ -9633,9 +9970,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-FND-001",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -9669,6 +10011,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-fnd-001.title",
@@ -9837,9 +10180,24 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-FND-002",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": [
+          {
+            "description": {
+              "status": "reviewed",
+              "text": "Compare directed-attention practice with thinking-oriented practice. Choose either independently; neither is required to activate or benefit from the other. The Focus function is not a Focus 10/11 audio stage.",
+              "version": "0.0.1"
+            },
+            "description_key": "relationships.rel-fnd002-cog007.description",
+            "function_id": "OCF-COG-007"
+          }
+        ]
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -9894,6 +10252,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-fnd-002.title",
@@ -10062,9 +10421,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-FND-003",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -10098,6 +10462,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-fnd-003.title",
@@ -10254,9 +10619,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-FND-004",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -10290,6 +10660,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-fnd-004.title",
@@ -10468,9 +10839,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-FND-005",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -10504,6 +10880,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-fnd-005.title",
@@ -10524,13 +10901,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-FND-006-PRIMARY",
             "display_cue": "PLUS-RELEASE",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Release",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-fnd-006-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -10665,9 +11047,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-FND-006",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -10701,6 +11088,7 @@
         "resolved_locale": "en-US",
         "text": "Historical source unavailable."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-fnd-006.title",
@@ -10894,6 +11282,7 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-LIF-001",
       "lifecycle_scopes": [
@@ -10955,6 +11344,10 @@
           "persistence": "temporary"
         }
       ],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -10988,6 +11381,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-lif-001.title",
@@ -11008,13 +11402,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-PRF-001-PRIMARY",
             "display_cue": "PLUS-DO-THIS-NOW",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Do This Now",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-prf-001-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -11149,9 +11548,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-PRF-001",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -11185,6 +11589,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-prf-001.title",
@@ -11358,9 +11763,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-PRF-002",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -11394,6 +11804,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-prf-002.title",
@@ -11562,9 +11973,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-PRF-003",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -11598,6 +12014,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-prf-003.title",
@@ -11791,6 +12208,7 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-PRF-004",
       "lifecycle_scopes": [
@@ -11852,6 +12270,10 @@
           "persistence": "temporary"
         }
       ],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -11885,6 +12307,7 @@
         "resolved_locale": "en-US",
         "text": "Historical source unavailable."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-prf-004.title",
@@ -11905,13 +12328,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-PRF-005-PRIMARY",
             "display_cue": "PLUS-THIS DAY",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus This Day",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-prf-005-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -12046,9 +12474,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-PRF-005",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -12082,6 +12515,7 @@
         "resolved_locale": "en-US",
         "text": "Historical source unavailable."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-prf-005.title",
@@ -12102,13 +12536,18 @@
       "commands": [
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-PRF-006-PRIMARY",
             "display_cue": "PLUS-STRONG QUICK",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Strong Quick",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-prf-006-primary.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "primary",
           "documentation": {
@@ -12247,6 +12686,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-PRF-006-LEGACY-01",
             "display_cue": "PLUS-STRONG-QUICK",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -12315,13 +12756,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-PRF-006-RELEASE",
             "display_cue": "Plus Release",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Release",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-prf-006-release.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "special",
           "documentation": {
@@ -12478,9 +12924,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-PRF-006",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -12514,6 +12965,7 @@
         "resolved_locale": "en-US",
         "text": "Historical source unavailable."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-prf-006.title",
@@ -12709,13 +13161,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-SEN-001-HEAR-LESS",
             "display_cue": "PLUS-HEAR LESS",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Hear Less",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-sen-001-hear-less.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -12896,9 +13353,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-SEN-001",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -12932,6 +13394,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-sen-001.title",
@@ -13092,6 +13555,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-SEN-002-LEGACY-01",
             "display_cue": "PLUS-SEE BETTER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -13159,9 +13624,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-SEN-002",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "permanent",
       "persistence_label": {
         "fallback": false,
@@ -13195,6 +13665,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-sen-002.title",
@@ -13390,13 +13861,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-SEN-003-SMELL-LESS",
             "display_cue": "PLUS-SMELL LESS",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Smell Less",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-sen-003-smell-less.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -13581,6 +14057,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-SEN-003-LEGACY-01",
             "display_cue": "PLUS-SMELL GREATER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -13652,6 +14130,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-SEN-003-LEGACY-02",
             "display_cue": "PLUS-SMELL LESSER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -13719,9 +14199,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-SEN-003",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -13755,6 +14240,7 @@
         "resolved_locale": "en-US",
         "text": "Historical source unavailable."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-sen-003.title",
@@ -13950,13 +14436,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-SEN-004-TASTE-LESS",
             "display_cue": "PLUS-TASTE LESS",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Taste Less",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-sen-004-taste-less.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -14141,6 +14632,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-SEN-004-LEGACY-01",
             "display_cue": "PLUS-TASTE GREATER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -14212,6 +14705,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-SEN-004-LEGACY-02",
             "display_cue": "PLUS-TASTE LESSER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -14279,9 +14774,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-SEN-004",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -14315,6 +14815,7 @@
         "resolved_locale": "en-US",
         "text": "Historical source unavailable."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-sen-004.title",
@@ -14510,13 +15011,18 @@
         },
         {
           "cue_presentation": {
-            "authority": "function-yaml",
             "binding_status": "resolved",
             "command_id": "OCF-CMD-SEN-005-TOUCH-LESS",
             "display_cue": "PLUS-TOUCH LESS",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
+            "resource_status": "reviewed",
             "spoken_cue": "Plus Touch Less",
-            "spoken_locale": "en-US"
+            "spoken_cue_key": "commands.ocf-cmd-sen-005-touch-less.spoken-cue",
+            "spoken_fallback": false,
+            "spoken_locale": "en-US",
+            "version": null
           },
           "designation": "secondary",
           "documentation": {
@@ -14701,6 +15207,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-SEN-005-LEGACY-01",
             "display_cue": "PLUS-TOUCH GREATER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -14772,6 +15280,8 @@
             "binding_status": "unbound",
             "command_id": "OCF-CMD-SEN-005-LEGACY-02",
             "display_cue": "PLUS-TOUCH LESSER",
+            "display_fallback": false,
+            "display_locale": "en-US",
             "requested_locale": "en-US",
             "spoken_cue": null
           },
@@ -14839,9 +15349,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-SEN-005",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -14875,6 +15390,7 @@
         "resolved_locale": "en-US",
         "text": "Historical source unavailable."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-sen-005.title",
@@ -15048,9 +15564,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-SLP-001",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -15084,6 +15605,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-slp-001.title",
@@ -15257,9 +15779,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-SLP-002",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -15293,6 +15820,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-slp-002.title",
@@ -15477,9 +16005,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-SLP-003",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -15513,6 +16046,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-slp-003.title",
@@ -15697,9 +16231,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-SLP-004",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -15733,6 +16272,7 @@
         "resolved_locale": "en-US",
         "text": "Available source material; historical authentication remains separately recorded."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-slp-004.title",
@@ -15928,9 +16468,24 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-SLP-005",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": [
+          {
+            "description": {
+              "status": "reviewed",
+              "text": "Compare sleep support for unfamiliar or distracting surroundings with an exercise oriented toward restorative rest. Choose independently; this link does not prescribe combining or stacking recordings.",
+              "version": "0.0.1"
+            },
+            "description_key": "relationships.rel-slp005-slp001.description",
+            "function_id": "OCF-SLP-001"
+          }
+        ]
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -15985,6 +16540,7 @@
         "resolved_locale": "en-US",
         "text": "Historical source unavailable."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-slp-005.title",
@@ -16158,9 +16714,14 @@
           }
         }
       ],
+      "common_uses": [],
       "effects": null,
       "function_id": "OCF-SLP-006",
       "lifecycle_scopes": [],
+      "localized_relationships": {
+        "complementary_functions": [],
+        "related_functions": []
+      },
       "persistence": "temporary",
       "persistence_label": {
         "fallback": false,
@@ -16194,6 +16755,7 @@
         "resolved_locale": "en-US",
         "text": "Historical source unavailable."
       },
+      "tags": [],
       "title": {
         "fallback": false,
         "key": "functions.ocf-slp-006.title",

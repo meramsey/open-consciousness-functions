@@ -42,7 +42,15 @@ def narration_texts(root: Path = REPO_ROOT) -> dict[str, str]:
         raise ValueError(f"expected 55 function resources, found {len(function_files)}")
 
     paths = function_files + [locale_root / name for name in SHARED_RESOURCES]
-    manifest = yaml.safe_load((locale_root / "manifest.yaml").read_text(encoding="utf-8"))
+    from ocf_tools.locale_history import predecessor as before_localized_resources
+
+    manifest = yaml.safe_load(
+        before_localized_resources(
+            root,
+            "locales/en-US/manifest.yaml",
+            (locale_root / "manifest.yaml").read_text(encoding="utf-8"),
+        )
+    )
     declared_resources = {
         str(resource.get("file")): str(resource.get("domain"))
         for resource in manifest.get("resources", [])
@@ -58,7 +66,13 @@ def narration_texts(root: Path = REPO_ROOT) -> dict[str, str]:
             raise ValueError(
                 f"resource is not declared as narration in the locale manifest: {path}"
             )
-        data: Any = yaml.safe_load(path.read_text(encoding="utf-8"))
+        from ocf_tools.locale_history import before_authority
+
+        data: Any = yaml.safe_load(
+            before_authority(
+                root, path.relative_to(root).as_posix(), path.read_text(encoding="utf-8")
+            )
+        )
         if not isinstance(data, dict) or data.get("locale") != "en-US":
             raise ValueError(f"resource must declare locale en-US: {path}")
         if data.get("domain") != "narration" or not isinstance(data.get("entries"), dict):

@@ -60,6 +60,31 @@ resource availability is not language/editorial approval.
 
 ## What this is not
 
+### Stable-ID function resource migration (in progress)
+
+The current migration pilot is `OCF-EMO-003-Empathize.yaml`; it is not completion
+of the 58-function migration. A registry-driven preview can be generated without
+changing active locale manifests, narration, or historical locks:
+
+```bash
+PYTHONPATH=scripts python -m ocf_tools.localized_migration
+PYTHONPATH=scripts python -m ocf_tools.localized_migration --output .ocf-work/migration-preview
+```
+
+The optional output must be a new directory inside the configured workspace.
+It contains all 58 proposed function files, real existing English metadata,
+separate raw-template/resolved-speech hashes, an old/new path map, and exact
+source snapshots (including notes and removed preview comments). It is a
+preview only: it does not activate the files or change metadata precedence.
+Unreviewed legacy cues remain unbound; no spoken wording is invented.
+
+Historical consumers must retain logical predecessor identities and verify
+immutable snapshots before activation. The hash-checked localized-resource
+migration ledger projects the pilot's current manifest/cue metadata back to its
+exact predecessor for historical checks, while active narration still resolves
+through LocaleCatalog. Public defaults, HPLUS-015 bytes, and Spanish content
+are not changed by preview generation.
+
 Localization changes words and measured speech duration. **Explicit semantic
 anchors remain fixed**; declared speech-end/event-end dependencies follow the
 localized render. Reflow is opt-in, not an arbitrary stretching of every track.

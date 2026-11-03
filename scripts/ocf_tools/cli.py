@@ -1191,6 +1191,19 @@ def cmd_locale_pseudo(args: argparse.Namespace) -> int:
         root = ensure_dir(Path(args.output))
         (root / "manifest.yaml").write_text(yaml_safe_dump(pack.manifest), encoding="utf-8")
         for filename in sorted({entry.file for entry in pack.entries.values() if entry.file}):
+            function_id = next(
+                (
+                    owner
+                    for owner, name in pack.localized_function_files.items()
+                    if name == filename
+                ),
+                None,
+            )
+            if function_id is not None:
+                (root / filename).write_text(
+                    yaml_safe_dump(pack.localized_functions[function_id]), encoding="utf-8"
+                )
+                continue
             by_domain: dict[str, dict[str, Any]] = {}
             for key, entry in sorted(pack.entries.items()):
                 if entry.file != filename:
@@ -1520,17 +1533,27 @@ def main(argv: list[str] | None = None) -> int:
 
             from .content import discover
             from .indexes import load_function_by_slug_or_id
+            from .locale import LocaleCatalog
+            from .localized_authority import registry_projection
+
+            catalog = LocaleCatalog()
 
             if args.function_kind == "list":
                 data = [
-                    discover(record) if args.rich else record.data
+                    discover(record, catalog=catalog)
+                    if args.rich
+                    else registry_projection(record, catalog=catalog)
                     for record in load_all_functions()
                 ]
             else:
                 record = load_function_by_slug_or_id(args.id)
                 if record is None:
                     raise OCFError(f"unknown function {args.id}; use ocf functions list")
-                data = discover(record) if args.rich else record.data
+                data = (
+                    discover(record, catalog=catalog)
+                    if args.rich
+                    else registry_projection(record, catalog=catalog)
+                )
             if args.json:
                 print(
                     json.dumps(

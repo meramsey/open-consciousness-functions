@@ -1086,6 +1086,22 @@ def load_pack(path: Path, *, reader=None, exists=None, revision=None) -> LocaleP
                 f"{locale} {filename}: resource locale {data.get('locale')!r} does not match "
                 f"pack locale {locale!r}"
             )
+        superseded = resource.get("superseded_keys", [])
+        if superseded:
+            import hashlib
+            import json
+
+            digest = hashlib.sha256(
+                json.dumps(data, sort_keys=True, ensure_ascii=False).encode("utf-8")
+            ).hexdigest()
+            if digest != resource.get("compatibility_sha256"):
+                raise LocalizationError(
+                    f"{locale} {filename}: read-only compatibility resource drift"
+                )
+            if not set(superseded).issubset(data.get("entries", {})):
+                raise LocalizationError(
+                    f"{locale} {filename}: unknown superseded compatibility key"
+                )
         if file_domain == "function":
             function_id = str(data.get("function_id", ""))
             if not re.fullmatch(r"OCF-[A-Z]{3}-[0-9]{3}", function_id):
@@ -1106,6 +1122,8 @@ def load_pack(path: Path, *, reader=None, exists=None, revision=None) -> LocaleP
         if not isinstance(values, dict):
             raise LocalizationError(f"{locale} {filename}: entries must be an object")
         for key, value in values.items():
+            if key in superseded:
+                continue
             if not KEY_RE.match(str(key)):
                 raise LocalizationError(
                     f"{locale} {filename}: invalid key {key!r} (expected a lowercase dotted "
@@ -1220,9 +1238,9 @@ class LocaleCatalog:
         if source != "function-yaml":
             raise LocalizationError("localized function metadata has an unknown value source")
         if field_name == "title":
-            return record.canonical_name, "canonical", None
+            return record.canonical_name, "canonical", value.get("version")
         if field_name == "description":
-            return record.purpose_summary, "canonical", None
+            return record.purpose_summary, "canonical", value.get("version")
         if command is None or value.get("command_id") != command.id:
             raise LocalizationError(
                 "localized command metadata reference does not match command ID"
@@ -1230,12 +1248,12 @@ class LocaleCatalog:
         if field_name == "primary-command":
             from .commands import resolve_phrase
 
-            return resolve_phrase(record, command), "canonical", None
+            return resolve_phrase(record, command), "canonical", value.get("version")
         if field_name == "spoken-command":
             spoken = command.data.get("spoken")
             if not spoken or command.data.get("spoken_review") != "reviewed":
                 raise LocalizationError(f"{command.id}: canonical spoken cue is not reviewed")
-            return str(spoken), "reviewed", None
+            return str(spoken), "reviewed", value.get("version")
         raise LocalizationError(f"unknown canonical localized-function field: {field_name!r}")
 
     def _project_localized_function_aliases(self) -> None:
@@ -1252,6 +1270,58 @@ class LocaleCatalog:
                     )
                     continue
                 key_prefix = f"functions.{function_id.lower()}"
+                for relation in metadata.get("relationships", {}).get("related_functions", []):
+                    key = relation.get("description_key")
+                    if not key:
+                        continue
+                    from .guide_review import relationships
+
+                    approved = relationships(record)
+                    if not any(
+                        row["description_key"] == key
+                        and row["related_id"] == relation["function_id"]
+                        for row in approved
+                    ):
+                        self.problems.append(
+                            f"{pack.locale}: unapproved localized relationship {key}"
+                        )
+                        continue
+                    if key in pack.entries:
+                        self.problems.append(
+                            f"{pack.locale}: duplicate localized relationship {key}"
+                        )
+                        continue
+                    text, status, version = self._localized_value(relation["description"], record)
+                    pack.entries[key] = NarrationResource(
+                        key=key,
+                        locale=pack.locale,
+                        domain=UI_DOMAIN,
+                        text=text,
+                        status=status,
+                        version=version,
+                        file=pack.localized_function_files[function_id],
+                    )
+                for key, value in metadata.get("metadata_entries", {}).items():
+                    if not key.startswith(key_prefix + "."):
+                        self.problems.append(
+                            f"{pack.locale}: localized metadata key belongs to another function: {key}"
+                        )
+                        continue
+                    if key in pack.entries:
+                        self.problems.append(
+                            f"{pack.locale}: duplicate localized metadata key {key}"
+                        )
+                        continue
+                    text, status, version = self._localized_value(value, record)
+                    pack.entries[key] = NarrationResource(
+                        key=key,
+                        locale=pack.locale,
+                        domain=UI_DOMAIN,
+                        text=text,
+                        status=status,
+                        version=version,
+                        file=pack.localized_function_files[function_id],
+                    )
                 for field_name, suffix in (
                     ("title", "title"),
                     ("description", "short-description"),
@@ -1402,6 +1472,61 @@ class LocaleCatalog:
                 f"no locale pack for {normalize_tag(locale) or locale!r} (available: {known})"
             )
         return pack
+
+    def function_field_sources(
+        self, function_id: str, locale: str | None = None, *, fallback: bool = False
+    ) -> dict[str, Any]:
+        """Trace literal localized attributes without introducing another registry.
+
+        JSON pointers address actual YAML attributes, including dotted narration
+        keys. Legacy registry-reference metadata must be consolidated before it
+        can be described as a localized YAML authority. This read-only method
+        does not activate staged narration-domain resources or change consumers.
+        """
+        metadata, resolution = self.localized_function(function_id, locale, fallback=fallback)
+        pack = self.require(resolution.origin_locale)
+        source = "locales/" + pack.locale + "/" + pack.localized_function_files[function_id]
+        fields: dict[str, Any] = {}
+
+        def trace(value: Any, pointer: str) -> None:
+            if isinstance(value, Mapping):
+                if value.get("source") == "function-yaml":
+                    raise LocalizationError(
+                        "field-source trace requires literal localized metadata: " + pointer
+                    )
+                for key, item in value.items():
+                    escaped = str(key).replace("~", "~0").replace("/", "~1")
+                    trace(item, pointer + "/" + escaped)
+            elif isinstance(value, list) and value:
+                for index, item in enumerate(value):
+                    trace(item, pointer + "/" + str(index))
+            else:
+                fields[pointer] = {"file": source, "yaml_pointer": pointer, "value": value}
+
+        for name in (
+            "function_id",
+            "locale",
+            "schema_version",
+            "title",
+            "description",
+            "activation",
+            "secondary_commands",
+            "tags",
+            "common_uses",
+            "relationships",
+            "entries",
+            "metadata_entries",
+            "changelog",
+        ):
+            if name in metadata:
+                trace(metadata[name], "/" + name)
+        return {
+            "function_id": function_id,
+            "requested_locale": resolution.locale,
+            "resolved_locale": resolution.origin_locale,
+            "fallback": resolution.fallback,
+            "fields": fields,
+        }
 
     def chain(self, requested: str | None, *, default: str = CANONICAL_LOCALE) -> list[str]:
         """Installed locales consulted for ``requested``, canonical last."""
@@ -1737,6 +1862,72 @@ def build_pseudo_pack(
         )
         for key, entry in source.entries.items()
     }
+    localized_functions = {}
+    for function_id, metadata in source.localized_functions.items():
+        result = copy.deepcopy(metadata)
+        result["locale"] = locale
+        prefix = f"functions.{function_id.lower()}"
+
+        def pseudo_alias(key: str) -> dict[str, str]:
+            entry = entries[key]
+            return {
+                "text": entry.text,
+                "status": "machine",
+                "version": source.semantic_version,
+            }
+
+        result["title"] = pseudo_alias(f"{prefix}.title")
+        result["description"] = pseudo_alias(f"{prefix}.short-description")
+        activation = result.get("activation") or {}
+        command_id = str(activation.get("command_id", ""))
+        command_prefix = f"commands.{command_id.lower()}"
+        for field_name, suffix in (
+            ("display_cue", "display-cue"),
+            ("spoken_cue", "spoken-cue"),
+            ("label", "label"),
+            ("explanation", "explanation"),
+            ("usage", "usage"),
+        ):
+            if f"{command_prefix}.{suffix}" in entries:
+                activation[field_name] = pseudo_alias(f"{command_prefix}.{suffix}")
+        result["activation"] = activation
+        for command in result.get("secondary_commands") or []:
+            command_id = str(command.get("command_id", ""))
+            command_prefix = f"commands.{command_id.lower()}"
+            for field_name, suffix in (
+                ("display_cue", "display-cue"),
+                ("spoken_cue", "spoken-cue"),
+                ("label", "label"),
+                ("explanation", "explanation"),
+                ("usage", "usage"),
+            ):
+                if f"{command_prefix}.{suffix}" in entries:
+                    command[field_name] = pseudo_alias(f"{command_prefix}.{suffix}")
+        result["metadata_entries"] = {
+            key: pseudo_alias(key) for key in metadata.get("metadata_entries", {})
+        }
+        for relation in result.get("relationships", {}).get("related_functions", []):
+            if relation.get("description_key"):
+                relation["description"] = pseudo_alias(relation["description_key"])
+        for field_name in ("tags", "common_uses"):
+            result[field_name] = [
+                {
+                    "text": _pseudo_text(value["text"]),
+                    "status": "machine",
+                    "version": source.semantic_version,
+                }
+                for value in result.get(field_name, [])
+            ]
+        result["entries"] = {
+            key: {
+                **copy.deepcopy(value),
+                "text": entries[key].text,
+                "status": "machine",
+                "version": source.semantic_version,
+            }
+            for key, value in (metadata.get("entries") or {}).items()
+        }
+        localized_functions[function_id] = result
     manifest = {
         "schema_version": "1.0",
         "locale": locale,
@@ -1759,13 +1950,20 @@ def build_pseudo_pack(
             }
             for resource in source.manifest.get("resources") or []
             if not resource.get("revision")
+            and resource.get("file") in {entry.file for entry in entries.values()}
         ],
         "notes": "Generated pseudo-locale; accents expose untranslated strings.",
     }
     if source.plural_rules():
         # Pseudo text has the source's shape, so it keeps the source grammar.
         manifest["plural_rules"] = dict(source.plural_rules())
-    return LocalePack(manifest, entries, None)
+    return LocalePack(
+        manifest,
+        entries,
+        None,
+        localized_functions,
+        source.localized_function_files,
+    )
 
 
 # ---------------------------------------------------------------------------

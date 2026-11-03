@@ -1,68 +1,60 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-PRF-001", "title": "Do This Now", "locale": "en-US"}
-# English authority: functions/performance/do-this-now.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-PRF-001-PRIMARY", "role": "activation", "display": "PLUS-DO-THIS-NOW", "spoken": "Plus Do This Now", "locale_definition": null}
-# END GENERATED CUE PREVIEW
-# OCF-PRF-001 — Do This Now
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: transcript_unverified; authentication remains unverified.
-# Review note: Original SOURCE +Transcripts From available tapes/Do This Now/Do This Now.txt
-# SHA-256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
-# Review note: Opener lines 1–5; body candidate lines 64–89; source line 97
-# is a Focus 10 integration invitation, not a waking or function closer.
-# Review note: Source attribution to Robert Monroe remains historical context;
-# it is not reassigned to OCF in the narration.
-# Review note: Original duplicate body passage and state-specific wording excluded.
-# Review note: The exact Plus Do This Now command and breathing sequence retained.
-# Review note: This function supports starting, continuing, and completing
-# consciously chosen activities, with lasting availability and immediate activation.
-# Review note: One self-contained body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
+function_id: OCF-PRF-001
+title:
+  text: Do This Now
+  status: canonical
+  version: 1.0.0
+description:
+  text: Moves from deliberation into immediate, present action.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-PRF-001-PRIMARY
+  display_cue:
+    text: PLUS-DO-THIS-NOW
+  spoken_cue:
+    text: Plus Do This Now
+    status: reviewed
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-prf-001.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted opener based on the unverified Do This Now transcript.
-      Original SOURCE +Transcripts From available tapes/Do This Now/Do This Now.txt;
-      SHA-256 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2;
-      lines 1–5. Original reference unchanged. Introductory access-channel
-      and source-attribution material remains separate from this concise
-      function-specific opener. The original attribution to Robert Monroe
-      is not transferred to OCF. Rights: user_cleared, per user's
-      lawyer-clearance attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to turn your
       intentions into action, bringing energy,
       enthusiasm, and momentum to starting,
       continuing, and completing what you choose.
-
   hplus.function.ocf-prf-001.function-body:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted function body based on the unverified Do This Now transcript.
-      Original SOURCE +Transcripts From available tapes/Do This Now/Do This Now.txt;
-      SHA-256 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2;
-      original candidate lines 64–89. Source retained unchanged. Historical
-      duplicated passage remains excluded. The original Open 11 reference is
-      omitted from the reusable function body; shared preparation, states,
-      and return instructions remain separate. Preserves conscious selection
-      of activity, the exact Plus Do This Now command, inhale-hold-command-
-      candle-exhale sequence, unison of the total self, release of inner
-      resistance, enjoyment of constructive action, and growing momentum.
-      The function is permanently available but consciously activated;
-      its suggested effect begins immediately and continues through
-      starting, continuing, and completing the selected activity.
-      One reusable body supports four passes across Focus 11 and Focus 20.
-      Affirmative outcomes are intended exercise suggestions.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-PRF-001", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-PRF-001
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, you have the ability
       to turn your intentions into action
@@ -115,18 +107,10 @@ entries:
   hplus.function.ocf-prf-001.closer:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-authored closer adapted from the previously approved
-      Do This Now reminder. Original SOURCE +Transcripts From available
-      tapes/Do This Now/Do This Now.txt;
-      SHA-256 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2.
-      Source line 97 is a Focus 10 integration invitation, not a
-      function-specific waking closer; it remains separate and is not
-      presented as historical closing wording. This closer retains one
-      purpose reminder, exact Plus Do This Now command, original breath
-      sequence, and standard OCF ending. Rights: user_cleared, per user's
-      lawyer-clearance attestation. Finished-session release remains pending.
-    cue_template: {"function_id": "OCF-PRF-001", "allowed": ["cue.primary"]}
+    cue_template:
+      function_id: OCF-PRF-001
+      allowed:
+      - cue.primary
     text: |-
       Remember, whenever you wish to begin,
       continue, or complete an activity,

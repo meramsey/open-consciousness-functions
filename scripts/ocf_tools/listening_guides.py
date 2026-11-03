@@ -161,6 +161,10 @@ def function_markdown(record, content, *, documentation=None, narration_sections
             lines += [
                 "No approved complementary-function link is declared. This does not prevent independent choice."
             ]
+        for field, heading in (("common_uses", "Common uses"), ("tags", "Tags")):
+            if documentation.get(field):
+                lines += ["", "## " + heading, ""]
+                lines += ["- " + value["text"] for value in documentation[field]]
         lines += ["", "## Historical lookup and compatibility", ""]
         from .commands import is_active, resolve_phrase
 
@@ -463,13 +467,16 @@ def pdf_bytes(markdown):
 def _guide_catalog(records, page_map=None):
     """Return registry-derived function directory text grouped by canonical domain."""
     categories = {}
+    from .localized_authority import title as localized_title
+
+    catalog = LocaleCatalog()
     for record in records:
         page = (page_map or {}).get(record.id)
         page_text = (
             f" · [Complete handbook p. {page}](complete-guide.pdf#page={page})" if page else ""
         )
         categories.setdefault(record.primary_domain or "Uncategorized", []).append(
-            f"- [{record.canonical_name}](functions/{record.id}.md) — `{record.id}`{page_text}."
+            f"- [{localized_title(record, catalog=catalog)}](functions/{record.id}.md) — `{record.id}`{page_text}."
         )
     lines = [
         "# Open Consciousness Functions — Guide Collection",
@@ -486,6 +493,9 @@ def _guide_catalog(records, page_map=None):
 
 def complete_pdf_bytes(records, documents):
     """Build the standalone handbook with a page-numbered, linked table of contents."""
+    from .localized_authority import title as localized_title
+
+    catalog = LocaleCatalog()
     try:
         import reportlab
         from reportlab.lib import colors
@@ -609,7 +619,10 @@ def complete_pdf_bytes(records, documents):
         for record in functions:
             lines = documents[f"functions/{record.id}.md"].splitlines()
             story.append(
-                Paragraph(_inline(f"{record.id}: {record.canonical_name}"), function_style)
+                Paragraph(
+                    _inline(f"{record.id}: {localized_title(record, catalog=catalog)}"),
+                    function_style,
+                )
             )
             append_markdown("\n".join(lines[1:]))
 
@@ -637,6 +650,10 @@ def validate_handbook(data, records, page_map):
     """Check the finished PDF, not estimated layout or renderer notifications."""
     from pypdf import PdfReader
 
+    from .localized_authority import title as localized_title
+
+    catalog = LocaleCatalog()
+
     reader = PdfReader(BytesIO(data), strict=True)
     texts = [page.extract_text() for page in reader.pages]
     outlines = {}
@@ -657,12 +674,17 @@ def validate_handbook(data, records, page_map):
     visit(reader.outline)
     expected = {"General Listening Guide"}
     expected.update(record.primary_domain or "Uncategorized" for record in records)
-    expected.update(f"{record.id}: {record.canonical_name}" for record in records)
+    expected.update(
+        f"{record.id}: {localized_title(record, catalog=catalog)}" for record in records
+    )
     if set(outlines) != expected or set(page_map) != {record.id for record in records}:
         raise OCFError("Handbook directory/outline inventory mismatch")
     for record in records:
         page = page_map[record.id]
-        if type(page) is not int or page != outlines[f"{record.id}: {record.canonical_name}"]:
+        if (
+            type(page) is not int
+            or page != outlines[f"{record.id}: {localized_title(record, catalog=catalog)}"]
+        ):
             raise OCFError(f"Handbook page reference mismatch: {record.id}")
 
     first_section = outlines["General Listening Guide"] - 1
@@ -746,6 +768,8 @@ def write_documents(documents, output, *, check=False, markdown_only=False):
 def portable_index_html(records, *, edition="0.3.0") -> bytes:
     """Build a self-contained, searchable offline browser for the 58 guides."""
     catalog = LocaleCatalog()
+    from .localized_authority import title as localized_title
+
     cards_by_category = {}
     for record in records:
         content = function_artwork_content(record.id, "en-US", catalog=catalog, strict=False)
@@ -762,11 +786,19 @@ def portable_index_html(records, *, edition="0.3.0") -> bytes:
             "<a href='functions/{}.pdf'>PDF</a> · "
             "<a href='functions/{}.md'>Markdown</a></p></article>".format(
                 html_escape(
-                    " ".join(str(x) for x in (record.id, record.canonical_name, cue, description))
+                    " ".join(
+                        str(x)
+                        for x in (
+                            record.id,
+                            localized_title(record, catalog=catalog),
+                            cue,
+                            description,
+                        )
+                    )
                 ),
                 html_escape(category),
                 record.id,
-                escape(record.canonical_name),
+                escape(localized_title(record, catalog=catalog)),
                 escape(record.id),
                 escape(cue),
                 escape(str(description)),
@@ -811,6 +843,10 @@ def portable_index_html(records, *, edition="0.3.0") -> bytes:
 def validate_portable_collection(output):
     """Validate relocated Markdown, HTML/assets and PDF navigation without audio."""
     from pypdf import PdfReader
+
+    from .localized_authority import title as localized_title
+
+    catalog = LocaleCatalog()
 
     output = Path(output).resolve()
     records = load_all_functions()
@@ -875,7 +911,7 @@ def validate_portable_collection(output):
             if path.name == "index.pdf":
                 text = " ".join(" ".join(page.extract_text().split()) for page in reader.pages)
                 for record in records:
-                    expected = f"{record.canonical_name} — {record.id} · Complete handbook p. {page_map[record.id]}"
+                    expected = f"{localized_title(record, catalog=catalog)} — {record.id} · Complete handbook p. {page_map[record.id]}"
                     if expected not in text:
                         raise OCFError(f"PDF directory reference mismatch: {record.id}")
             for page in reader.pages:

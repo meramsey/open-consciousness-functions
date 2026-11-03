@@ -1,69 +1,76 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-SLP-006", "title": "Stay Awake", "locale": "en-US"}
-# English authority: functions/sleep/stay-awake.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-SLP-006-PRIMARY", "role": "activation", "display": "PLUS-AWAKE", "spoken": "Plus Awake", "locale_definition": "commands.ocf-cmd-slp-006-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# OCF-EDITORIAL-TITLE-CUES-004: approved naming successor; earlier wording notes describe predecessor versions.
-# OCF-SLP-006 — Stay Awake
-# English function-specific OCF-adapted narration; wording source of truth.
-# Source status: unavailable; authentication remains unverified.
-# Review note: User-proposed reconstruction, not a recovered historical transcript.
-# Review note: Historical source unavailable; reimplementation remains planned.
-# Proposed input: Stay Awake/Stay_Awake_881001_reconstructed_clean.txt
-# SHA-256: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e
-# Proposed header: STAY AWAKE (881001) — RECONSTRUCTED H-PLUS-STYLE AUDIO SCRIPT.
-# Review note: Source ranges: opener line 47; body lines 146–191; closer lines 312–324.
-# Review note: Title and commands checked against proposed reconstruction;
-# authenticity claims and proposed timing are not independently verified.
-# Review note: Preserves exact Plus One Awake Alert One One command and
-# inhale-hold-command-exhale sequence; no scenario examples in narration.
-# Review note: Temporary emergency alertness application is distinct from
-# permanent availability of the learned command.
-# Review note: Described alertness effects are exercise intentions, not verified
-# protection against involuntary sleep or impairment.
-# Review note: Shared preparation, production, state, and return material excluded.
-# Review note: One state-independent function body supports four-pass playback.
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
+function_id: OCF-SLP-006
+title:
+  text: Stay Awake
+  status: canonical
+  version: 1.0.0
+description:
+  text: Supports staying awake and alert when needed; activation cue PLUS-AWAKE.
+  status: reviewed
+  version: 1.0.1
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-SLP-006-PRIMARY
+  display_cue:
+    text: PLUS-AWAKE
+  spoken_cue:
+    text: Plus Awake
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-SLP-006-LEGACY-01
+  display_cue:
+    text: PLUS-ONE, AWAKE, ALERT, ONE, ONE
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-slp-006.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF adaptation of user-proposed Stay Awake reconstruction; proposed input
-      Stay Awake/Stay_Awake_881001_reconstructed_clean.txt; SHA-256
-      f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e;
-      input line 47. Source unavailable and authenticity unverified. Emphasizes
-      consciously invoked, temporary alertness for an essential immediate need.
-      Rights: user_cleared per user's lawyer-clearance attestation. Finished-session release remains pending.
     text: |-
       This OCF exercise will teach you to call upon
       immediate mental and physical alertness when
       an essential need requires you to remain awake.
-
   hplus.function.ocf-slp-006.function-body:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF adaptation of user-proposed Stay Awake reconstruction; proposed input
-      Stay Awake/Stay_Awake_881001_reconstructed_clean.txt; SHA-256
-      f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e;
-      input lines 146–191. Historical transcript not recovered and authenticity
-      unverified. Preserves the exact five-part spoken command Plus One Awake
-      Alert One One, inhale-hold-command-exhale sequence, immediate temporary
-      alertness intention, clear cognition and senses, and focused responsive
-      movement. OCF adaptation strengthens coordinated total-self wakeful
-      awareness and the distinction between a temporary invocation and the
-      learned ability remaining available. Specific scenarios, repeated command
-      rehearsal, and non-narrative precaution language omitted. The exercise
-      does not establish verified resistance to sleep deprivation or involuntary
-      sleep. One reusable body supports four passes across Focus 11 and Focus 20.
-      Rights: user_cleared per user's lawyer-clearance attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-SLP-006
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, you have the ability
       to call upon a powerful state of waking alertness
@@ -110,21 +117,13 @@ entries:
       Each time you use this function,
       the response will become clearer,
       easier, and more effective.
-
   hplus.function.ocf-slp-006.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted closer based on user-proposed Stay Awake reconstruction;
-      proposed input Stay Awake/Stay_Awake_881001_reconstructed_clean.txt;
-      SHA-256 f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e;
-      input lines 312–324. Historical source unavailable and authenticity
-      unverified. Contains one purpose reminder, exact command and breathing
-      sequence, and standard OCF ending. Rights: user_cleared per user's
-      lawyer-clearance attestation. Finished-session release remains pending.
     cue_template:
       function_id: OCF-SLP-006
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, when an essential need requires
       immediate waking alertness, inhale deeply

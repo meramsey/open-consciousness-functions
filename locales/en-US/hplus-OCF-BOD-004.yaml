@@ -1,77 +1,78 @@
-# BEGIN GENERATED CUE PREVIEW
-# Generated preview, NOT editable authority. Refresh/check: python -m ocf_tools.cue_headers
-# {"function": "OCF-BOD-004", "title": "Detox", "locale": "en-US"}
-# English authority: functions/body/de-tox-body.yaml
-# {"symbol": "cue.primary", "command": "OCF-CMD-BOD-004-PRIMARY", "role": "activation", "display": "PLUS-DETOX", "spoken": "Plus Detox", "locale_definition": "commands.ocf-cmd-bod-004-primary.spoken-cue"}
-# END GENERATED CUE PREVIEW
-# Editorial successor OCF-EDITORIAL-TITLE-CUES-001: prior cue-preservation notes describe predecessor versions; only approved title/cue substitutions changed.
-# OCF-BOD-004 — De-Tox: Body
-# English function-specific OCF-adapted narration.
-# Edit this file as the wording source of truth.
-# Source status: partial_transcript; authentication remains unverified.
-# Missing closer: No function-specific final closer is recoverable;
-# the transcript ends in repeated numbers.
-# Review note: Standalone numeric transcription runs at 104–130
-# are not function instructions.
-# Review note: The Plus Clean Clear activation command is preserved.
-# Review note: OCF adaptation introduces permanent, automatic,
-# self-regulating cleansing and maintenance suggestions.
-# Review note: The narration describes guided suggestions, not
-# clinically established detoxification effects.
-
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
+function_id: OCF-BOD-004
+title:
+  text: Detox
+  status: canonical
+  version: 1.0.0
+description:
+  text: Supports the body's self-regulating cleansing, renewal, and maintenance, with conscious reinforcement
+    when desired.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-BOD-004-PRIMARY
+  display_cue:
+    text: PLUS-DETOX
+  spoken_cue:
+    text: Plus Detox
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-BOD-004-LEGACY-01
+  display_cue:
+    text: PLUS-CLEAN, CLEAR
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
 entries:
   hplus.function.ocf-bod-004.opener:
     status: reviewed
     version: 1.2.0
-    notes: >-
-      OCF-adapted narration based on the partial, unverified
-      De-Tox Body transcript. Original SOURCE +Transcripts From
-      available tapes/De-Tox Body/De-Tox Body.txt;
-      SHA-256 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc;
-      line 8. Original reference remains unchanged. Previously
-      approved wording has been expanded to emphasize the body's
-      natural cleansing, balance, renewal, and maintenance.
-      This is adapted narration, not a verbatim transcription.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release pending.
     text: |-
       This OCF exercise will strengthen and reinforce your body's
       natural ability to cleanse, renew, and maintain itself,
       establishing a lasting, automatic pattern of healthy balance
       and maintenance throughout your entire physical body.
-
   hplus.function.ocf-bod-004.function-body:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-adapted narration based on the partial, unverified
-      De-Tox Body transcript. Original SOURCE +Transcripts From
-      available tapes/De-Tox Body/De-Tox Body.txt;
-      SHA-256 2eba3f1368745e99e3473e8923fcc9236e55baf6159dacab6c98f327bb04c4fc;
-      lines 89–103. Original reference remains unchanged.
-      The body has been reorganized into awareness, natural
-      cleansing, waste elimination, whole-body coordination,
-      automatic maintenance, conscious activation, and
-      reinforcement. OCF-authored suggestions establish the
-      pattern as permanent, automatic, continuous, and
-      appropriately self-regulating. The Plus Clean Clear
-      activation command and breathing sequence are preserved.
-      Affirmative suggestions are retained without implying
-      that elimination should exceed the body's normal needs.
-      The narration is guided suggestion, not an established
-      treatment for poisoning or toxic exposure. One reusable
-      function body supports repeated playback across Focus 11
-      and Focus 20. Shared preparation, state, and return
-      wording remains excluded. Numeric transcription runs
-      at lines 104–130 remain excluded.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release pending.
     cue_template:
       function_id: OCF-BOD-004
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       From this moment forward, your body's natural processes
       of cleansing, renewal, and maintenance will become stronger,
@@ -188,27 +189,13 @@ entries:
       Your body knows how to maintain its natural
       balance, and this pattern will continue
       working for you every day and every night.
-
   hplus.function.ocf-bod-004.closer:
     status: reviewed
     version: 1.2.1
-    notes: >-
-      OCF-authored closer adapted from the previously approved
-      OCF suggestion and the Plus Clean Clear command in
-      function metadata. The partial De-Tox Body transcript
-      ends in repeated numbers and provides no recoverable
-      function-specific closer. This is not historical
-      transcript wording. The closer has been revised to
-      reinforce permanent, automatic, appropriately regulated
-      cleansing and maintenance, while preserving the exact
-      activation phrase and breathing sequence.
-      Historical source status remains partial_transcript
-      and unverified.
-      Rights: user_cleared, per user's lawyer-clearance attestation.
-      Finished-session release pending.
     cue_template:
       function_id: OCF-BOD-004
-      allowed: [cue.primary]
+      allowed:
+      - cue.primary
     text: |-
       Remember, your body's natural processes of cleansing,
       renewal, and maintenance are now firmly established
