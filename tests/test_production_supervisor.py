@@ -555,6 +555,37 @@ def test_disk_pause_recovers_only_after_reserve_returns(watched):
 
 
 @pytest.mark.unit
+def test_missing_first_heartbeat_has_bounded_startup_deadline(watched):
+    config, root, heartbeat, now, properties, calls, events = watched
+    (root / "heartbeat.json").unlink()
+    config["startup_timeout"] = 40
+    assert supervisor.watchdog(config) == 0
+    assert calls == []
+    first = supervisor.read_json(root / "watchdog.json")
+    assert first["health"] == "healthy-owner-startup" and first["startup_since"] == 120
+    now[0] += 20
+    assert supervisor.watchdog(config) == 0 and calls == []
+    assert supervisor.read_json(root / "watchdog.json")["startup_since"] == 120
+    now[0] += 21
+    assert supervisor.watchdog(config) == 0
+    assert supervisor.read_json(root / "watchdog.json")["health"] == "owner-startup-timeout"
+    assert calls == [["systemctl", "--user", "--no-block", "restart", "ocf-test.service"]]
+
+
+@pytest.mark.unit
+def test_startup_grace_requires_live_owner_in_expected_cgroup(watched, monkeypatch):
+    config, root, heartbeat, now, properties, calls, events = watched
+    (root / "heartbeat.json").unlink()
+    monkeypatch.setattr(
+        supervisor,
+        "process_identity",
+        lambda pid: dict(identity(pid), cgroup="0::/unrelated.service"),
+    )
+    assert supervisor.watchdog(config) == 0
+    assert calls == [["systemctl", "--user", "--no-block", "restart", "ocf-test.service"]]
+
+
+@pytest.mark.unit
 def test_progress_observes_descendant_io_not_cpu(config, tmp_path, monkeypatch):
     proc = tmp_path / "synthetic-proc"
     proc.mkdir()

@@ -22,6 +22,11 @@ The default heartbeat deadline is 75 seconds, long-job diagnosis begins from
 actual progress receipts, and no-progress timeout is 90 minutes. Reconciliation
 has its own 10-minute deadline; systemd transitions are bounded separately.
 These thresholds distinguish a dead process from slow but legitimate work.
+Before the first heartbeat, a live owner in the configured cgroup receives a
+durable, identity-bound startup grace of 75 seconds. Timer checks do not reset its
+deadline; expiry uses ordinary bounded recovery. This prevents an immediately
+firing calendar timer from killing a newly started interpreter while preserving
+dead-process, wrong-cgroup and frozen-input protections.
 No `WatchdogSec` is configured: this implementation does not claim sd_notify.
 
 Systemd restarts failures after 30 seconds and cleans the entire dedicated

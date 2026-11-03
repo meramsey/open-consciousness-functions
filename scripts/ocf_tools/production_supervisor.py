@@ -548,6 +548,28 @@ def watchdog(config):
             )
         elif controller and int(properties.get("MainPID", 0)) != controller["pid"]:
             health = "wrong-service-main-pid"
+        startup_identity, startup_since = None, None
+        if (
+            health in {"missing-heartbeat", "dead-or-reused-controller"}
+            and properties.get("ActiveState") == "active"
+        ):
+            main = process_identity(int(properties.get("MainPID", 0)))
+            if main and config["owner_unit"] in main["cgroup"].split("/"):
+                previous = (
+                    read_json(root / "watchdog.json") if (root / "watchdog.json").exists() else {}
+                )
+                startup_identity = main
+                startup_since = (
+                    previous.get("startup_since")
+                    if previous.get("startup_identity") == main
+                    else None
+                )
+                startup_since = startup_since if startup_since is not None else time.time()
+                health = (
+                    "healthy-owner-startup"
+                    if time.time() - startup_since < config.get("startup_timeout", 75)
+                    else "owner-startup-timeout"
+                )
         write_json(
             root / "watchdog.json",
             {
@@ -555,6 +577,8 @@ def watchdog(config):
                 "health": health,
                 "transition_since": transition_since,
                 "worker_gone_since": worker_gone_since,
+                "startup_identity": startup_identity,
+                "startup_since": startup_since,
                 "watchdog": process_identity(os.getpid()),
             },
         )
