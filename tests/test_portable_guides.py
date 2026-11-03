@@ -99,7 +99,46 @@ def test_relocation_validator_rejects_bad_links(tmp_path, collection, corruption
                 if corruption == "asset"
                 else '<a href="../outside.md">escape</a>'
             )
+    # Exercise the legacy link-validation boundary itself. New-edition checksum
+    # rejection is covered separately, so it cannot mask a broken link checker.
+    (package / "build-manifest.json").unlink()
+    (package / "checksums.sha256").unlink()
     with pytest.raises(OCFError):
+        listening_guides.validate_portable_collection(package)
+
+
+@pytest.mark.integration
+def test_legacy_navigation_contract_is_not_falsely_certified_as_new_transcript_coverage(
+    tmp_path, collection
+):
+    package = tmp_path / "legacy-guides"
+    shutil.copytree(collection, package)
+    (package / "build-manifest.json").unlink()
+    (package / "checksums.sha256").unlink()
+    result = listening_guides.validate_portable_collection(package)
+    assert result["individual_function_pdfs"] == 58
+    assert result["extracted_canonical_resources"] == 0
+    assert result["broken_links"] == 0
+
+
+@pytest.mark.integration
+@pytest.mark.parametrize(
+    "corruption", ["missing-manifest", "duplicate", "invalid-digest", "incomplete"]
+)
+def test_new_edition_checksums_fail_closed(tmp_path, collection, corruption):
+    package = tmp_path / "guides"
+    shutil.copytree(collection, package)
+    checks = package / "checksums.sha256"
+    lines = checks.read_text().splitlines()
+    if corruption == "missing-manifest":
+        checks.unlink()
+    elif corruption == "duplicate":
+        checks.write_text("\n".join([*lines, lines[0]]) + "\n")
+    elif corruption == "invalid-digest":
+        checks.write_text("invalid  build-manifest.json\n")
+    else:
+        checks.write_text("\n".join(lines[1:]) + "\n")
+    with pytest.raises(OCFError, match="checksum"):
         listening_guides.validate_portable_collection(package)
 
 
