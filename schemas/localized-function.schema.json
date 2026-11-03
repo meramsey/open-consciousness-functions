@@ -7,7 +7,19 @@
   "additionalProperties": false,
   "required": ["schema_version", "locale", "domain", "function_id", "title", "description", "activation", "secondary_commands", "tags", "common_uses", "relationships", "changelog", "entries"],
   "properties": {
-    "schema_version": {"const": "1.0"},
+    "schema_version": {"enum": ["1.0", "2.0"]},
+    "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "historical_record": {"type": "string", "pattern": "^functions/[a-z0-9-]+/[a-z0-9-]+\\.yaml$"},
+    "classification": {"$ref": "function.schema.json#/properties/classification"},
+    "category_labels": {"type": "object", "additionalProperties": {"$ref": "#/definitions/localizedValue"}},
+    "search_synonyms": {"type": "array", "items": {"$ref": "#/definitions/localizedValue"}},
+    "lifecycle": {"$ref": "#/definitions/localLifecycle"},
+    "audio": {"$ref": "function.schema.json#/properties/audio"},
+    "safety": {"$ref": "function.schema.json#/properties/safety"},
+    "function_version": {"$ref": "function.schema.json#/properties/version"},
+    "narration": {"$ref": "function.schema.json#/properties/narration"},
+    "editorial": {"type": "object", "additionalProperties": false, "required": ["command_review"], "properties": {"command_review": {"$ref": "function.schema.json#/properties/ocf/properties/command_review"}}},
+    "localization": {"type": "object", "additionalProperties": false, "required": ["status", "contract_sha256"], "properties": {"status": {"enum": ["complete", "partial", "missing", "needs-review"]}, "contract_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}},
     "locale": {"type": "string", "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?$"},
     "domain": {"const": "function"},
     "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
@@ -19,6 +31,9 @@
       "required": ["command_id", "display_cue", "spoken_cue"],
       "properties": {
         "command_id": {"type": "string", "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"},
+        "role": {"type": "string"},
+        "control": {"$ref": "#/definitions/control"},
+        "procedure_steps": {"$ref": "#/definitions/localSteps"},
         "display_cue": {"$ref": "#/definitions/localizedValue"},
         "spoken_cue": {"$ref": "#/definitions/localizedValue"},
         "label": {"$ref": "#/definitions/localizedValue"},
@@ -26,7 +41,7 @@
         "usage": {"$ref": "#/definitions/localizedValue"}
       }
     },
-    "secondary_commands": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["command_id", "role"], "properties": {"command_id": {"type": "string", "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"}, "role": {"type": "string", "minLength": 1}, "display_cue": {"$ref": "#/definitions/localizedValue"}, "spoken_cue": {"$ref": "#/definitions/localizedValue"}, "label": {"$ref": "#/definitions/localizedValue"}, "explanation": {"$ref": "#/definitions/localizedValue"}, "usage": {"$ref": "#/definitions/localizedValue"}}}},
+    "secondary_commands": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["command_id", "role"], "properties": {"command_id": {"type": "string", "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"}, "role": {"type": "string", "minLength": 1}, "control": {"$ref": "#/definitions/control"}, "procedure_steps": {"$ref": "#/definitions/localSteps"}, "display_cue": {"$ref": "#/definitions/localizedValue"}, "spoken_cue": {"$ref": "#/definitions/localizedValue"}, "label": {"$ref": "#/definitions/localizedValue"}, "explanation": {"$ref": "#/definitions/localizedValue"}, "usage": {"$ref": "#/definitions/localizedValue"}}}},
     "tags": {"type": "array", "items": {"$ref": "#/definitions/localizedValue"}, "uniqueItems": true},
     "common_uses": {"type": "array", "items": {"$ref": "#/definitions/localizedValue"}},
     "relationships": {
@@ -41,7 +56,30 @@
     "changelog": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["version", "change"], "properties": {"version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}, "change": {"type": "string", "minLength": 1}}}},
     "entries": {"description": "Canonical readable narration entries. Four-pass playback repetition is not duplicated here.", "type": "object", "minProperties": 1, "propertyNames": {"pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"}}
   },
+  "allOf": [{"if": {"properties": {"schema_version": {"const": "2.0"}}}, "then": {"required": ["slug", "historical_record", "classification", "category_labels", "lifecycle", "audio", "safety", "function_version", "narration", "editorial", "localization"], "properties": {"activation": {"required": ["control", "role", "procedure_steps"]}, "secondary_commands": {"items": {"required": ["control", "procedure_steps"]}}}}}],
   "definitions": {
+    "localLifecycle": {"type": "object", "additionalProperties": false, "required": ["persistence", "activation", "release"], "properties": {
+      "persistence": {"$ref": "function.schema.json#/properties/lifecycle/properties/persistence"},
+      "activation": {"$ref": "function.schema.json#/properties/lifecycle/properties/activation"},
+      "release": {"$ref": "function.schema.json#/properties/lifecycle/properties/release"},
+      "trigger_conditions": {"$ref": "function.schema.json#/properties/lifecycle/properties/trigger_conditions"},
+      "scopes": {"type": "object", "propertyNames": {"enum": ["capability", "baseline", "application", "episode"]}, "additionalProperties": {"type": "object", "additionalProperties": false, "required": ["persistence", "description_key"], "properties": {
+        "persistence": {"$ref": "function.schema.json#/definitions/lifecycleScope/properties/persistence"},
+        "activation": {"$ref": "function.schema.json#/definitions/lifecycleScope/properties/activation"},
+        "description_key": {"type": "string"}, "trigger_conditions_ref": {"const": "lifecycle.trigger_conditions"}
+      }}}
+    }},
+    "localSteps": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["id", "operation", "instruction"], "properties": {"id": {"type": "string"}, "operation": {"type": "string"}, "instruction": {"$ref": "#/definitions/localizedValue"}}}},
+    "control": {"type": "object", "additionalProperties": false, "required": ["designation", "phrase_ref"], "properties": {
+      "designation": {"$ref": "function.schema.json#/definitions/commandRecord/properties/designation"},
+      "phrase_ref": {"$ref": "function.schema.json#/definitions/commandRecord/properties/phrase_ref"},
+      "availability": {"$ref": "function.schema.json#/definitions/commandRecord/properties/availability"},
+      "documentation": {"$ref": "function.schema.json#/definitions/commandRecord/properties/documentation"},
+      "effect_scope_ref": {"$ref": "function.schema.json#/definitions/commandRecord/properties/effect_scope_ref"},
+      "invocation_scope_ref": {"$ref": "function.schema.json#/definitions/commandRecord/properties/invocation_scope_ref"},
+      "procedure": {"$ref": "function.schema.json#/definitions/commandRecord/properties/procedure"},
+      "relationships": {"$ref": "function.schema.json#/definitions/commandRecord/properties/relationships"}
+    }},
     "relationshipProposal": {
       "type": "object", "additionalProperties": false,
       "required": ["function_id", "relationship_type", "description", "status", "dependency", "reciprocal_proposed", "evidence"],
@@ -57,7 +95,7 @@
     },
     "localizedValue": {
       "oneOf": [
-        {"type": "object", "additionalProperties": false, "required": ["text"], "properties": {"text": {"type": "string", "minLength": 1}, "status": {"enum": ["canonical", "draft", "machine", "reviewed"]}, "version": {"description": "Preserve existing versions without inventing one for unversioned predecessors.", "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}, "notes": {"type": ["string", "null"]}}},
+        {"type": "object", "additionalProperties": false, "required": ["text"], "properties": {"text": {"type": "string", "minLength": 1}, "semantic_id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$"}, "status": {"enum": ["canonical", "draft", "machine", "reviewed"]}, "version": {"description": "Preserve existing versions without inventing one for unversioned predecessors.", "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}, "notes": {"type": ["string", "null"]}}},
         {"type": "object", "additionalProperties": false, "required": ["source", "field"], "properties": {"source": {"const": "function-yaml"}, "field": {"enum": ["title", "description", "primary-command", "spoken-command"]}, "command_id": {"type": "string", "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"}, "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}}}
       ]
     },
