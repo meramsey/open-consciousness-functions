@@ -19,7 +19,13 @@ pytestmark = pytest.mark.integration
 
 @pytest.mark.parametrize("name", CANDIDATES)
 def test_candidate_preview_preserves_status_text_and_four_passes(name):
-    before = (REPO_ROOT / "locales/en-US/hplus-OCF-EXP-001.yaml").read_bytes()
+    catalog = LocaleCatalog()
+    active = (
+        REPO_ROOT
+        / "locales/en-US"
+        / catalog.require("en-US").localized_function_files["OCF-EXP-001"]
+    )
+    before = active.read_bytes()
     result = review(name)
     assert result["editorial_status"] == "approved"
     assert result["snapshot_status"] == "draft"
@@ -29,7 +35,7 @@ def test_candidate_preview_preserves_status_text_and_four_passes(name):
     events = list(iter_events(result["semantic_plan"]))
     assert len([row for row in events if row.get("slot_ref") == "function_body"]) == 4
     assert all("{{" not in row["text"] for row in result["entries"])
-    assert before == (REPO_ROOT / "locales/en-US/hplus-OCF-EXP-001.yaml").read_bytes()
+    assert before == active.read_bytes()
     with pytest.raises(OCFError):
         review(name, locale="es")
 
@@ -51,7 +57,13 @@ def test_supplied_snapshots_and_generated_resources_remain_exact():
         assert yaml_safe_load(before_consolidation(REPO_ROOT, name, path.read_text())) == approved
         # Current speech and entry metadata must still match the entire approved
         # snapshot, with only separately preserved editorial notes removed.
-        assert load_yaml_file(path)["entries"] == {
+        catalog = LocaleCatalog()
+        active = (
+            REPO_ROOT
+            / "locales/en-US"
+            / catalog.require("en-US").localized_function_files[identifier]
+        )
+        assert load_yaml_file(active)["entries"] == {
             key: {field: value for field, value in entry.items() if field != "notes"}
             for key, entry in approved["entries"].items()
         }

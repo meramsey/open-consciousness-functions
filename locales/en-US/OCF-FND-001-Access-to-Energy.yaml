@@ -1,0 +1,145 @@
+schema_version: '1.0'
+locale: en-US
+domain: function
+function_id: OCF-FND-001
+title:
+  text: Access to Energy
+  status: canonical
+  version: 1.0.0
+description:
+  text: Restores a felt sense of available energy on demand.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-FND-001-PRIMARY
+  display_cue:
+    text: PLUS-ENERGIZE
+  spoken_cue:
+    text: Plus Energize
+    status: reviewed
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-FND-001-ACCESS-CLOSE
+  display_cue:
+    text: Plus Release Eleven Access
+  spoken_cue:
+    text: plus, release, eleven, access
+    status: reviewed
+  label:
+    text: Access-channel close cue
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This distinct cue closes the Access Channel.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use to close the Access Channel; this cue is distinct from function activation.
+    status: canonical
+    version: 1.0.0
+  role: access-close
+tags: []
+common_uses: []
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-fnd-001.opener:
+    status: reviewed
+    version: 1.2.0
+    text: |-
+      This OCF exercise will teach you to recognize,
+      access, and direct your M energy, the vast reserve
+      of energy within your total self, for any purpose
+      you consciously choose.
+  hplus.function.ocf-fnd-001.function-body:
+    status: reviewed
+    version: 1.2.0
+    cue_template:
+      function_id: OCF-FND-001
+      allowed:
+      - cue.primary
+    text: |-
+      Bring into your awareness a time when you felt
+      strong, alert, energized, and completely alive.
+
+      Remember that feeling of vitality and strength.
+      Recognize the energy present within you now.
+
+      This is your M energy, the energy of your total self.
+      It is always available for you to access,
+      shape, and direct through conscious intention.
+
+      Become aware of its presence.
+      You may perceive it as warmth, light, vibration,
+      movement, sensation, or simply a quiet knowing.
+
+      Your conscious mind, subconscious mind,
+      and higher self work together in directing
+      this energy toward the purpose you choose.
+
+      Whenever you desire to use your M energy,
+      think or say in your mind, "{{ cue.primary }}."
+
+      Then picture clearly the result you intend.
+      Give your energy a direction, a form,
+      and a purpose through your focused awareness.
+
+      You can direct it toward healing and restoration,
+      protection and balance, strength and stamina,
+      clear thinking, insight, and heightened awareness.
+
+      You can direct it within your physical body,
+      throughout your total self, or beyond the limits
+      of ordinary physical awareness, as you intend.
+
+      Your energy will respond to your intention,
+      gathering and flowing in the pattern you select.
+      Its expression will adjust to what is needed,
+      without unnecessary effort or depletion.
+
+      The ability to access and direct M energy
+      is permanently established within you.
+      Each use makes its direction clearer,
+      easier, and more effective.
+
+      Now explore this ability.
+      Choose a purpose, picture its fulfillment,
+      and experience your M energy responding.
+
+      Begin now.
+  hplus.function.ocf-fnd-001.closer:
+    status: reviewed
+    version: 1.2.0
+    cue_template:
+      function_id: OCF-FND-001
+      allowed:
+      - cue.primary
+    text: |-
+      Remember, whenever you wish to access and direct
+      your M energy, think or say in your mind,
+      "{{ cue.primary }}."
+
+      Then picture clearly the purpose
+      toward which you wish to direct it.
+
+      This concludes your OCF Access to Energy exercise.
+  hplus.function.ocf-fnd-001.access-close:
+    status: reviewed
+    version: 1.1.0
+    text: To release your access channel, say in your mind, plus, release, eleven, access.

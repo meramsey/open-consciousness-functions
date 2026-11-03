@@ -18,6 +18,14 @@ def test_execute_all_58_preserves_speech_and_hplus015_logical_identities(tmp_pat
     records = load_all_functions()
     shutil.copytree(REPO_ROOT / "functions", tmp_path / "functions")
     shutil.copytree(REPO_ROOT / "locales", tmp_path / "locales")
+    # Reconstruct the exact pre-L4 fixture from the checked path map, rather
+    # than expecting the now-renamed active source to still use old filenames.
+    predecessor_map = json.loads((REPO_ROOT / locale_history.FILENAMES).read_text())
+    for name, row in predecessor_map["files"].items():
+        (tmp_path / name).write_bytes((REPO_ROOT / row["archive"]).read_bytes())
+    for name in predecessor_map["created_resources"]:
+        if name not in predecessor_map["files"]:
+            (tmp_path / name).unlink()
     editorial = tmp_path / "function-content/editorial"
     editorial.mkdir(parents=True)
     for name in (
