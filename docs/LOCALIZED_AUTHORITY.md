@@ -123,3 +123,26 @@ The checked authority-003 predecessor layer is applied before consolidation-002
 and pilot-001 historical readers. None of those committed predecessor records or
 HPLUS-015 defaults is rewritten. Current speech, cue versions and all 175 function
 entries remain independently compared with the pre-consolidation baseline.
+
+## L3: retire superseded editable words, preserve exact historical inputs
+
+`python -m ocf_tools.localized_retirement --apply` retires the previously declared
+615 superseded keys across seven compatibility resources. The 99 shared keys
+that still have legitimate consumers are retained in three explicitly shared UI
+resources. No structural function/command identities, rights records or existing
+editorial/defaults ledgers are deleted.
+
+Exact predecessor resources, the prior manifest and the unlisted Empathize pilot
+are archived under `function-content/editorial/historical-locales/004/`. Their old
+logical paths contain only generated historical references, not localized values
+or active function definitions. Active manifests never register these references.
+The checked retirement-004 projection restores original bytes before older
+historical readers, including pilot-001's original path identity. Reapplying the
+retirement is a no-op only when all outputs and archives still match; unknown
+edits and shared overrides fail closed and are not overwritten.
+
+Publication prepares archives and new shared resources first, atomically switches
+the manifest, then retires inactive predecessor words. This preserves a complete
+active pack throughout the operation. Historical validation and present-day locale
+resolution remain deliberately separate. Readable function renaming is still L4;
+this stage keeps all 58 current function filenames unchanged.

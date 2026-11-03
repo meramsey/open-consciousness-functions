@@ -1,7 +1,5 @@
 schema_version: '1.0'
-locale: en-US
-domain: narration
-entries:
-  commands.ocf-cmd-exp-006-primary.spoken-cue:
-    text: Plus Intuition
-    status: reviewed
+kind: immutable-historical-locale-reference
+logical_path: locales/en-US/intuition-cues.yaml
+archive: function-content/editorial/historical-locales/004/en-US/intuition-cues.yaml
+sha256: d96b201fcd1fefb7ea5f59600b433db532f5ab09704408647309a9d40357ff46

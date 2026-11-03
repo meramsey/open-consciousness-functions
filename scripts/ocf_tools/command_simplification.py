@@ -194,7 +194,12 @@ def verify(root=REPO_ROOT):
         current = before_guides(root, name, (root / name).read_text(encoding="utf-8"))
         if yaml.safe_load(current) != approved_function(old):
             raise OCFError("command simplification changed behavior: " + name)
-    ui = yaml.safe_load((root / "locales/en-US/ui.yaml").read_text(encoding="utf-8"))["entries"]
+    from .locale_history import before_structural
+
+    ui_name = "locales/en-US/ui.yaml"
+    ui = yaml.safe_load(
+        before_structural(root, ui_name, (root / ui_name).read_text(encoding="utf-8"))
+    )["entries"]
     for owner, text in ARTWORK.items():
         entry = ui[f"functions.{owner.lower()}.artwork-description"]
         if entry["text"] != text or entry["status"] != "reviewed":

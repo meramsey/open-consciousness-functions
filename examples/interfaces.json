@@ -2075,15 +2075,15 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "fd0913aa9bbbf7a32db8e1140bad03c3ebc0b38775ac91b525cd7d17a461b5a5",
+      "example_sha256": "6163075991fac70e18f8eeb37eb6f6277003e8ff82fd3552395ffd0d7130006d",
       "schema": "locale-manifest.schema.json",
       "source": "locales/en-US/manifest.yaml",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "bd5836a272ae53affac397c5375d234c356db6c640d7f945e7e34212eeac22cf",
+      "example_sha256": "6cc9dd7b960d85b96ceb60085bb32bdcb692d878c3ecf8f97252466ae5cf9c14",
       "schema": "locale-resource.schema.json",
-      "source": "locales/en-US/ui.yaml",
+      "source": "locales/en-US/shared-ui.yaml",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {

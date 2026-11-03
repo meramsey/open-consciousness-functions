@@ -1,0 +1,874 @@
+schema_version: '1.0'
+locale: en-US
+language_name: English (United States)
+direction: ltr
+status: canonical
+semantic_version: 1.12.0
+resources:
+- file: original-OCF-EXP-006.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: intuition-ui.yaml
+  domain: ui
+  superseded_keys:
+  - commands.ocf-cmd-exp-006-primary.explanation
+  - commands.ocf-cmd-exp-006-primary.label
+  - commands.ocf-cmd-exp-006-primary.usage
+  - functions.ocf-exp-006.purpose
+  - functions.ocf-exp-006.title
+  compatibility_sha256: fc86da65e5bdce18317cd662b74c27f5204919105b4827ee96dca96694870571
+- file: intuition-cues.yaml
+  domain: narration
+  superseded_keys:
+  - commands.ocf-cmd-exp-006-primary.spoken-cue
+  compatibility_sha256: 3b147c7235d0fd5c738e96b6a5694f9c0795ac0818ca56bd2d8917ab9c1f0cb5
+- file: original-OCF-EXP-003.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: original-OCF-EXP-005.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: original-draft-ui.yaml
+  domain: ui
+  superseded_keys:
+  - commands.ocf-cmd-exp-003-primary.explanation
+  - commands.ocf-cmd-exp-003-primary.label
+  - commands.ocf-cmd-exp-003-primary.usage
+  - commands.ocf-cmd-exp-005-observe.explanation
+  - commands.ocf-cmd-exp-005-observe.label
+  - commands.ocf-cmd-exp-005-observe.usage
+  - commands.ocf-cmd-exp-005-primary.explanation
+  - commands.ocf-cmd-exp-005-primary.label
+  - commands.ocf-cmd-exp-005-primary.usage
+  - commands.ocf-cmd-exp-005-suspend.explanation
+  - commands.ocf-cmd-exp-005-suspend.label
+  - commands.ocf-cmd-exp-005-suspend.usage
+  - functions.ocf-exp-003.application
+  - functions.ocf-exp-003.capability
+  - functions.ocf-exp-003.purpose
+  - functions.ocf-exp-003.title
+  - functions.ocf-exp-005.application
+  - functions.ocf-exp-005.baseline
+  - functions.ocf-exp-005.capability
+  - functions.ocf-exp-005.purpose
+  - functions.ocf-exp-005.title
+  compatibility_sha256: 0164050ad8d7266900745d21329c8260adc72fac6efa1779751756baebf9f34d
+- file: original-draft-cues.yaml
+  domain: narration
+  superseded_keys:
+  - commands.ocf-cmd-exp-003-primary.spoken-cue
+  - commands.ocf-cmd-exp-005-observe.spoken-cue
+  - commands.ocf-cmd-exp-005-primary.spoken-cue
+  - commands.ocf-cmd-exp-005-suspend.spoken-cue
+  compatibility_sha256: e519da8156390d1b9935c0117201029a837408075d0d1ec3594c99316fb3bd09
+- file: activation-cues.yaml
+  domain: narration
+  description: Explicit user-approved en-US primary spoken cues; other locales require their own reviewed
+    terminology.
+  superseded_keys:
+  - commands.ocf-cmd-aut-001-primary.spoken-cue
+  - commands.ocf-cmd-bod-001-primary.spoken-cue
+  - commands.ocf-cmd-bod-002-primary.spoken-cue
+  - commands.ocf-cmd-bod-003-primary.spoken-cue
+  - commands.ocf-cmd-bod-004-primary.spoken-cue
+  - commands.ocf-cmd-bod-005-primary.spoken-cue
+  - commands.ocf-cmd-bod-006-primary.spoken-cue
+  - commands.ocf-cmd-bod-007-primary.spoken-cue
+  - commands.ocf-cmd-bod-008-primary.spoken-cue
+  - commands.ocf-cmd-bod-009-primary.spoken-cue
+  - commands.ocf-cmd-bod-011-primary.spoken-cue
+  - commands.ocf-cmd-bod-013-primary.spoken-cue
+  - commands.ocf-cmd-bod-014-primary.spoken-cue
+  - commands.ocf-cmd-bod-015-primary.spoken-cue
+  - commands.ocf-cmd-cog-001-primary.spoken-cue
+  - commands.ocf-cmd-cog-002-primary.spoken-cue
+  - commands.ocf-cmd-cog-004-primary.spoken-cue
+  - commands.ocf-cmd-cog-005-primary.spoken-cue
+  - commands.ocf-cmd-emg-001-primary.spoken-cue
+  - commands.ocf-cmd-emg-002-primary.spoken-cue
+  - commands.ocf-cmd-emo-002-primary.spoken-cue
+  - commands.ocf-cmd-exp-001-primary.spoken-cue
+  - commands.ocf-cmd-exp-002-primary.spoken-cue
+  - commands.ocf-cmd-fnd-002-primary.spoken-cue
+  - commands.ocf-cmd-fnd-003-primary.spoken-cue
+  - commands.ocf-cmd-fnd-004-primary.spoken-cue
+  - commands.ocf-cmd-fnd-005-primary.spoken-cue
+  - commands.ocf-cmd-lif-001-primary.spoken-cue
+  - commands.ocf-cmd-prf-002-primary.spoken-cue
+  - commands.ocf-cmd-prf-003-primary.spoken-cue
+  - commands.ocf-cmd-prf-004-primary.spoken-cue
+  - commands.ocf-cmd-sen-001-primary.spoken-cue
+  - commands.ocf-cmd-sen-002-primary.spoken-cue
+  - commands.ocf-cmd-sen-003-primary.spoken-cue
+  - commands.ocf-cmd-sen-004-primary.spoken-cue
+  - commands.ocf-cmd-sen-005-primary.spoken-cue
+  - commands.ocf-cmd-slp-001-primary.spoken-cue
+  - commands.ocf-cmd-slp-002-primary.spoken-cue
+  - commands.ocf-cmd-slp-003-primary.spoken-cue
+  - commands.ocf-cmd-slp-004-primary.spoken-cue
+  - commands.ocf-cmd-slp-005-primary.spoken-cue
+  - commands.ocf-cmd-slp-006-primary.spoken-cue
+  compatibility_sha256: 1484241754a68871d98a98d1a842140767388e01801eeacf2f3ad3d6fb6b409d
+- file: ui.yaml
+  domain: ui
+  description: Operator- and player-facing strings. May fall back to this locale.
+  superseded_keys:
+  - functions.ocf-exp-001.artwork-description
+  - functions.ocf-exp-003.artwork-description
+  - functions.ocf-exp-005.artwork-description
+  - functions.ocf-exp-006.artwork-description
+  - functions.ocf-exp-006.procedure.allow-quiet-moment
+  - functions.ocf-exp-006.procedure.consider-and-choose-response
+  - functions.ocf-exp-006.procedure.select-question-or-situation
+  - functions.ocf-exp-006.procedure.think-or-say-in-mind
+  - relationships.rel-bod006-bod002.description
+  - relationships.rel-exp001-exp003.description
+  - relationships.rel-exp001-exp006.description
+  - relationships.rel-exp003-exp006.description
+  - relationships.rel-fnd002-cog007.description
+  - relationships.rel-slp005-slp001.description
+  compatibility_sha256: bd5836a272ae53affac397c5375d234c356db6c640d7f945e7e34212eeac22cf
+- file: commands.yaml
+  domain: ui
+  description: Localized function and structured-command reference text; canonical command phrases remain
+    untranslated.
+  superseded_keys:
+  - commands.ocf-cmd-aut-001-primary.display-cue
+  - commands.ocf-cmd-aut-001-primary.explanation
+  - commands.ocf-cmd-aut-001-primary.label
+  - commands.ocf-cmd-aut-001-primary.usage
+  - commands.ocf-cmd-bod-001-primary.display-cue
+  - commands.ocf-cmd-bod-001-primary.explanation
+  - commands.ocf-cmd-bod-001-primary.label
+  - commands.ocf-cmd-bod-001-primary.usage
+  - commands.ocf-cmd-bod-002-primary.display-cue
+  - commands.ocf-cmd-bod-002-primary.explanation
+  - commands.ocf-cmd-bod-002-primary.label
+  - commands.ocf-cmd-bod-002-primary.usage
+  - commands.ocf-cmd-bod-003-legacy-01.explanation
+  - commands.ocf-cmd-bod-003-legacy-01.label
+  - commands.ocf-cmd-bod-003-legacy-01.usage
+  - commands.ocf-cmd-bod-003-primary.display-cue
+  - commands.ocf-cmd-bod-003-primary.explanation
+  - commands.ocf-cmd-bod-003-primary.label
+  - commands.ocf-cmd-bod-003-primary.usage
+  - commands.ocf-cmd-bod-004-legacy-01.explanation
+  - commands.ocf-cmd-bod-004-legacy-01.label
+  - commands.ocf-cmd-bod-004-legacy-01.usage
+  - commands.ocf-cmd-bod-004-primary.display-cue
+  - commands.ocf-cmd-bod-004-primary.explanation
+  - commands.ocf-cmd-bod-004-primary.label
+  - commands.ocf-cmd-bod-004-primary.usage
+  - commands.ocf-cmd-bod-005-primary.display-cue
+  - commands.ocf-cmd-bod-005-primary.explanation
+  - commands.ocf-cmd-bod-005-primary.label
+  - commands.ocf-cmd-bod-005-primary.usage
+  - commands.ocf-cmd-bod-006-primary.display-cue
+  - commands.ocf-cmd-bod-006-primary.explanation
+  - commands.ocf-cmd-bod-006-primary.label
+  - commands.ocf-cmd-bod-006-primary.usage
+  - commands.ocf-cmd-bod-007-primary.display-cue
+  - commands.ocf-cmd-bod-007-primary.explanation
+  - commands.ocf-cmd-bod-007-primary.label
+  - commands.ocf-cmd-bod-007-primary.usage
+  - commands.ocf-cmd-bod-008-primary.display-cue
+  - commands.ocf-cmd-bod-008-primary.explanation
+  - commands.ocf-cmd-bod-008-primary.label
+  - commands.ocf-cmd-bod-008-primary.usage
+  - commands.ocf-cmd-bod-009-primary.display-cue
+  - commands.ocf-cmd-bod-009-primary.explanation
+  - commands.ocf-cmd-bod-009-primary.label
+  - commands.ocf-cmd-bod-009-primary.usage
+  - commands.ocf-cmd-bod-010-food-less.explanation
+  - commands.ocf-cmd-bod-010-food-less.label
+  - commands.ocf-cmd-bod-010-food-less.usage
+  - commands.ocf-cmd-bod-010-primary.explanation
+  - commands.ocf-cmd-bod-010-primary.label
+  - commands.ocf-cmd-bod-010-primary.usage
+  - commands.ocf-cmd-bod-011-primary.display-cue
+  - commands.ocf-cmd-bod-011-primary.explanation
+  - commands.ocf-cmd-bod-011-primary.label
+  - commands.ocf-cmd-bod-011-primary.usage
+  - commands.ocf-cmd-bod-012-legacy-01.explanation
+  - commands.ocf-cmd-bod-012-legacy-01.label
+  - commands.ocf-cmd-bod-012-legacy-01.usage
+  - commands.ocf-cmd-bod-012-legacy-02.explanation
+  - commands.ocf-cmd-bod-012-legacy-02.label
+  - commands.ocf-cmd-bod-012-legacy-02.usage
+  - commands.ocf-cmd-bod-012-primary.explanation
+  - commands.ocf-cmd-bod-012-primary.label
+  - commands.ocf-cmd-bod-012-primary.usage
+  - commands.ocf-cmd-bod-012-sex-less.explanation
+  - commands.ocf-cmd-bod-012-sex-less.label
+  - commands.ocf-cmd-bod-012-sex-less.usage
+  - commands.ocf-cmd-bod-013-primary.display-cue
+  - commands.ocf-cmd-bod-013-primary.explanation
+  - commands.ocf-cmd-bod-013-primary.label
+  - commands.ocf-cmd-bod-013-primary.usage
+  - commands.ocf-cmd-bod-014-legacy-01.explanation
+  - commands.ocf-cmd-bod-014-legacy-01.label
+  - commands.ocf-cmd-bod-014-legacy-01.usage
+  - commands.ocf-cmd-bod-014-primary.display-cue
+  - commands.ocf-cmd-bod-014-primary.explanation
+  - commands.ocf-cmd-bod-014-primary.label
+  - commands.ocf-cmd-bod-014-primary.usage
+  - commands.ocf-cmd-bod-015-legacy-01.explanation
+  - commands.ocf-cmd-bod-015-legacy-01.label
+  - commands.ocf-cmd-bod-015-legacy-01.usage
+  - commands.ocf-cmd-bod-015-legacy-02.explanation
+  - commands.ocf-cmd-bod-015-legacy-02.label
+  - commands.ocf-cmd-bod-015-legacy-02.usage
+  - commands.ocf-cmd-bod-015-primary.display-cue
+  - commands.ocf-cmd-bod-015-primary.explanation
+  - commands.ocf-cmd-bod-015-primary.label
+  - commands.ocf-cmd-bod-015-primary.usage
+  - commands.ocf-cmd-cog-001-primary.display-cue
+  - commands.ocf-cmd-cog-001-primary.explanation
+  - commands.ocf-cmd-cog-001-primary.label
+  - commands.ocf-cmd-cog-001-primary.usage
+  - commands.ocf-cmd-cog-002-primary.display-cue
+  - commands.ocf-cmd-cog-002-primary.explanation
+  - commands.ocf-cmd-cog-002-primary.label
+  - commands.ocf-cmd-cog-002-primary.usage
+  - commands.ocf-cmd-cog-003-closed.explanation
+  - commands.ocf-cmd-cog-003-closed.label
+  - commands.ocf-cmd-cog-003-closed.usage
+  - commands.ocf-cmd-cog-003-primary.explanation
+  - commands.ocf-cmd-cog-003-primary.label
+  - commands.ocf-cmd-cog-003-primary.usage
+  - commands.ocf-cmd-cog-004-legacy-01.explanation
+  - commands.ocf-cmd-cog-004-legacy-01.label
+  - commands.ocf-cmd-cog-004-legacy-01.usage
+  - commands.ocf-cmd-cog-004-primary.display-cue
+  - commands.ocf-cmd-cog-004-primary.explanation
+  - commands.ocf-cmd-cog-004-primary.label
+  - commands.ocf-cmd-cog-004-primary.usage
+  - commands.ocf-cmd-cog-004-recall.explanation
+  - commands.ocf-cmd-cog-004-recall.label
+  - commands.ocf-cmd-cog-004-recall.usage
+  - commands.ocf-cmd-cog-005-legacy-01.explanation
+  - commands.ocf-cmd-cog-005-legacy-01.label
+  - commands.ocf-cmd-cog-005-legacy-01.usage
+  - commands.ocf-cmd-cog-005-primary.display-cue
+  - commands.ocf-cmd-cog-005-primary.explanation
+  - commands.ocf-cmd-cog-005-primary.label
+  - commands.ocf-cmd-cog-005-primary.usage
+  - commands.ocf-cmd-cog-006-primary.explanation
+  - commands.ocf-cmd-cog-006-primary.label
+  - commands.ocf-cmd-cog-006-primary.usage
+  - commands.ocf-cmd-cog-007-primary.explanation
+  - commands.ocf-cmd-cog-007-primary.label
+  - commands.ocf-cmd-cog-007-primary.usage
+  - commands.ocf-cmd-com-001-primary.explanation
+  - commands.ocf-cmd-com-001-primary.label
+  - commands.ocf-cmd-com-001-primary.usage
+  - commands.ocf-cmd-emg-001-primary.display-cue
+  - commands.ocf-cmd-emg-001-primary.explanation
+  - commands.ocf-cmd-emg-001-primary.label
+  - commands.ocf-cmd-emg-001-primary.usage
+  - commands.ocf-cmd-emg-002-primary.display-cue
+  - commands.ocf-cmd-emg-002-primary.explanation
+  - commands.ocf-cmd-emg-002-primary.label
+  - commands.ocf-cmd-emg-002-primary.usage
+  - commands.ocf-cmd-emo-001-primary.explanation
+  - commands.ocf-cmd-emo-001-primary.label
+  - commands.ocf-cmd-emo-001-primary.usage
+  - commands.ocf-cmd-emo-002-legacy-01.explanation
+  - commands.ocf-cmd-emo-002-legacy-01.label
+  - commands.ocf-cmd-emo-002-legacy-01.usage
+  - commands.ocf-cmd-emo-002-primary.display-cue
+  - commands.ocf-cmd-emo-002-primary.explanation
+  - commands.ocf-cmd-emo-002-primary.label
+  - commands.ocf-cmd-emo-002-primary.usage
+  - commands.ocf-cmd-exp-001-legacy-01.explanation
+  - commands.ocf-cmd-exp-001-legacy-01.label
+  - commands.ocf-cmd-exp-001-legacy-01.usage
+  - commands.ocf-cmd-exp-001-primary.display-cue
+  - commands.ocf-cmd-exp-001-primary.explanation
+  - commands.ocf-cmd-exp-001-primary.label
+  - commands.ocf-cmd-exp-001-primary.usage
+  - commands.ocf-cmd-exp-002-cancel.explanation
+  - commands.ocf-cmd-exp-002-cancel.label
+  - commands.ocf-cmd-exp-002-cancel.usage
+  - commands.ocf-cmd-exp-002-legacy-01.explanation
+  - commands.ocf-cmd-exp-002-legacy-01.label
+  - commands.ocf-cmd-exp-002-legacy-01.usage
+  - commands.ocf-cmd-exp-002-primary.display-cue
+  - commands.ocf-cmd-exp-002-primary.explanation
+  - commands.ocf-cmd-exp-002-primary.label
+  - commands.ocf-cmd-exp-002-primary.usage
+  - commands.ocf-cmd-exp-002-release.explanation
+  - commands.ocf-cmd-exp-002-release.label
+  - commands.ocf-cmd-exp-002-release.usage
+  - commands.ocf-cmd-fnd-001-access-close.explanation
+  - commands.ocf-cmd-fnd-001-access-close.label
+  - commands.ocf-cmd-fnd-001-access-close.usage
+  - commands.ocf-cmd-fnd-001-primary.explanation
+  - commands.ocf-cmd-fnd-001-primary.label
+  - commands.ocf-cmd-fnd-001-primary.usage
+  - commands.ocf-cmd-fnd-002-primary.display-cue
+  - commands.ocf-cmd-fnd-002-primary.explanation
+  - commands.ocf-cmd-fnd-002-primary.label
+  - commands.ocf-cmd-fnd-002-primary.usage
+  - commands.ocf-cmd-fnd-003-primary.display-cue
+  - commands.ocf-cmd-fnd-003-primary.explanation
+  - commands.ocf-cmd-fnd-003-primary.label
+  - commands.ocf-cmd-fnd-003-primary.usage
+  - commands.ocf-cmd-fnd-004-legacy-01.explanation
+  - commands.ocf-cmd-fnd-004-legacy-01.label
+  - commands.ocf-cmd-fnd-004-legacy-01.usage
+  - commands.ocf-cmd-fnd-004-primary.display-cue
+  - commands.ocf-cmd-fnd-004-primary.explanation
+  - commands.ocf-cmd-fnd-004-primary.label
+  - commands.ocf-cmd-fnd-004-primary.usage
+  - commands.ocf-cmd-fnd-005-legacy-01.explanation
+  - commands.ocf-cmd-fnd-005-legacy-01.label
+  - commands.ocf-cmd-fnd-005-legacy-01.usage
+  - commands.ocf-cmd-fnd-005-primary.display-cue
+  - commands.ocf-cmd-fnd-005-primary.explanation
+  - commands.ocf-cmd-fnd-005-primary.label
+  - commands.ocf-cmd-fnd-005-primary.usage
+  - commands.ocf-cmd-fnd-006-primary.explanation
+  - commands.ocf-cmd-fnd-006-primary.label
+  - commands.ocf-cmd-fnd-006-primary.usage
+  - commands.ocf-cmd-lif-001-primary.display-cue
+  - commands.ocf-cmd-lif-001-primary.explanation
+  - commands.ocf-cmd-lif-001-primary.label
+  - commands.ocf-cmd-lif-001-primary.usage
+  - commands.ocf-cmd-prf-001-primary.explanation
+  - commands.ocf-cmd-prf-001-primary.label
+  - commands.ocf-cmd-prf-001-primary.usage
+  - commands.ocf-cmd-prf-002-legacy-01.explanation
+  - commands.ocf-cmd-prf-002-legacy-01.label
+  - commands.ocf-cmd-prf-002-legacy-01.usage
+  - commands.ocf-cmd-prf-002-primary.display-cue
+  - commands.ocf-cmd-prf-002-primary.explanation
+  - commands.ocf-cmd-prf-002-primary.label
+  - commands.ocf-cmd-prf-002-primary.usage
+  - commands.ocf-cmd-prf-003-primary.display-cue
+  - commands.ocf-cmd-prf-003-primary.explanation
+  - commands.ocf-cmd-prf-003-primary.label
+  - commands.ocf-cmd-prf-003-primary.usage
+  - commands.ocf-cmd-prf-004-legacy-01.explanation
+  - commands.ocf-cmd-prf-004-legacy-01.label
+  - commands.ocf-cmd-prf-004-legacy-01.usage
+  - commands.ocf-cmd-prf-004-primary.display-cue
+  - commands.ocf-cmd-prf-004-primary.explanation
+  - commands.ocf-cmd-prf-004-primary.label
+  - commands.ocf-cmd-prf-004-primary.usage
+  - commands.ocf-cmd-prf-005-primary.explanation
+  - commands.ocf-cmd-prf-005-primary.label
+  - commands.ocf-cmd-prf-005-primary.usage
+  - commands.ocf-cmd-prf-006-legacy-01.explanation
+  - commands.ocf-cmd-prf-006-legacy-01.label
+  - commands.ocf-cmd-prf-006-legacy-01.usage
+  - commands.ocf-cmd-prf-006-primary.explanation
+  - commands.ocf-cmd-prf-006-primary.label
+  - commands.ocf-cmd-prf-006-primary.usage
+  - commands.ocf-cmd-prf-006-release.explanation
+  - commands.ocf-cmd-prf-006-release.label
+  - commands.ocf-cmd-prf-006-release.usage
+  - commands.ocf-cmd-sen-001-hear-less.explanation
+  - commands.ocf-cmd-sen-001-hear-less.label
+  - commands.ocf-cmd-sen-001-hear-less.usage
+  - commands.ocf-cmd-sen-001-primary.display-cue
+  - commands.ocf-cmd-sen-001-primary.explanation
+  - commands.ocf-cmd-sen-001-primary.label
+  - commands.ocf-cmd-sen-001-primary.usage
+  - commands.ocf-cmd-sen-002-legacy-01.explanation
+  - commands.ocf-cmd-sen-002-legacy-01.label
+  - commands.ocf-cmd-sen-002-legacy-01.usage
+  - commands.ocf-cmd-sen-002-primary.display-cue
+  - commands.ocf-cmd-sen-002-primary.explanation
+  - commands.ocf-cmd-sen-002-primary.label
+  - commands.ocf-cmd-sen-002-primary.usage
+  - commands.ocf-cmd-sen-003-legacy-01.explanation
+  - commands.ocf-cmd-sen-003-legacy-01.label
+  - commands.ocf-cmd-sen-003-legacy-01.usage
+  - commands.ocf-cmd-sen-003-legacy-02.explanation
+  - commands.ocf-cmd-sen-003-legacy-02.label
+  - commands.ocf-cmd-sen-003-legacy-02.usage
+  - commands.ocf-cmd-sen-003-primary.display-cue
+  - commands.ocf-cmd-sen-003-primary.explanation
+  - commands.ocf-cmd-sen-003-primary.label
+  - commands.ocf-cmd-sen-003-primary.usage
+  - commands.ocf-cmd-sen-003-smell-less.explanation
+  - commands.ocf-cmd-sen-003-smell-less.label
+  - commands.ocf-cmd-sen-003-smell-less.usage
+  - commands.ocf-cmd-sen-004-legacy-01.explanation
+  - commands.ocf-cmd-sen-004-legacy-01.label
+  - commands.ocf-cmd-sen-004-legacy-01.usage
+  - commands.ocf-cmd-sen-004-legacy-02.explanation
+  - commands.ocf-cmd-sen-004-legacy-02.label
+  - commands.ocf-cmd-sen-004-legacy-02.usage
+  - commands.ocf-cmd-sen-004-primary.display-cue
+  - commands.ocf-cmd-sen-004-primary.explanation
+  - commands.ocf-cmd-sen-004-primary.label
+  - commands.ocf-cmd-sen-004-primary.usage
+  - commands.ocf-cmd-sen-004-taste-less.explanation
+  - commands.ocf-cmd-sen-004-taste-less.label
+  - commands.ocf-cmd-sen-004-taste-less.usage
+  - commands.ocf-cmd-sen-005-legacy-01.explanation
+  - commands.ocf-cmd-sen-005-legacy-01.label
+  - commands.ocf-cmd-sen-005-legacy-01.usage
+  - commands.ocf-cmd-sen-005-legacy-02.explanation
+  - commands.ocf-cmd-sen-005-legacy-02.label
+  - commands.ocf-cmd-sen-005-legacy-02.usage
+  - commands.ocf-cmd-sen-005-primary.display-cue
+  - commands.ocf-cmd-sen-005-primary.explanation
+  - commands.ocf-cmd-sen-005-primary.label
+  - commands.ocf-cmd-sen-005-primary.usage
+  - commands.ocf-cmd-sen-005-touch-less.explanation
+  - commands.ocf-cmd-sen-005-touch-less.label
+  - commands.ocf-cmd-sen-005-touch-less.usage
+  - commands.ocf-cmd-slp-001-legacy-01.explanation
+  - commands.ocf-cmd-slp-001-legacy-01.label
+  - commands.ocf-cmd-slp-001-legacy-01.usage
+  - commands.ocf-cmd-slp-001-primary.display-cue
+  - commands.ocf-cmd-slp-001-primary.explanation
+  - commands.ocf-cmd-slp-001-primary.label
+  - commands.ocf-cmd-slp-001-primary.usage
+  - commands.ocf-cmd-slp-002-legacy-01.explanation
+  - commands.ocf-cmd-slp-002-legacy-01.label
+  - commands.ocf-cmd-slp-002-legacy-01.usage
+  - commands.ocf-cmd-slp-002-primary.display-cue
+  - commands.ocf-cmd-slp-002-primary.explanation
+  - commands.ocf-cmd-slp-002-primary.label
+  - commands.ocf-cmd-slp-002-primary.usage
+  - commands.ocf-cmd-slp-003-legacy-01.explanation
+  - commands.ocf-cmd-slp-003-legacy-01.label
+  - commands.ocf-cmd-slp-003-legacy-01.usage
+  - commands.ocf-cmd-slp-003-primary.display-cue
+  - commands.ocf-cmd-slp-003-primary.explanation
+  - commands.ocf-cmd-slp-003-primary.label
+  - commands.ocf-cmd-slp-003-primary.usage
+  - commands.ocf-cmd-slp-004-legacy-01.explanation
+  - commands.ocf-cmd-slp-004-legacy-01.label
+  - commands.ocf-cmd-slp-004-legacy-01.usage
+  - commands.ocf-cmd-slp-004-primary.display-cue
+  - commands.ocf-cmd-slp-004-primary.explanation
+  - commands.ocf-cmd-slp-004-primary.label
+  - commands.ocf-cmd-slp-004-primary.usage
+  - commands.ocf-cmd-slp-005-legacy-01.explanation
+  - commands.ocf-cmd-slp-005-legacy-01.label
+  - commands.ocf-cmd-slp-005-legacy-01.usage
+  - commands.ocf-cmd-slp-005-primary.display-cue
+  - commands.ocf-cmd-slp-005-primary.explanation
+  - commands.ocf-cmd-slp-005-primary.label
+  - commands.ocf-cmd-slp-005-primary.usage
+  - commands.ocf-cmd-slp-006-legacy-01.explanation
+  - commands.ocf-cmd-slp-006-legacy-01.label
+  - commands.ocf-cmd-slp-006-legacy-01.usage
+  - commands.ocf-cmd-slp-006-primary.display-cue
+  - commands.ocf-cmd-slp-006-primary.explanation
+  - commands.ocf-cmd-slp-006-primary.label
+  - commands.ocf-cmd-slp-006-primary.usage
+  - functions.ocf-aut-001.lifecycle.scopes.application.description
+  - functions.ocf-aut-001.lifecycle.scopes.baseline.description
+  - functions.ocf-aut-001.lifecycle.scopes.capability.description
+  - functions.ocf-aut-001.purpose
+  - functions.ocf-aut-001.short-description
+  - functions.ocf-aut-001.title
+  - functions.ocf-bod-001.purpose
+  - functions.ocf-bod-001.short-description
+  - functions.ocf-bod-001.title
+  - functions.ocf-bod-002.purpose
+  - functions.ocf-bod-002.short-description
+  - functions.ocf-bod-002.title
+  - functions.ocf-bod-003.purpose
+  - functions.ocf-bod-003.short-description
+  - functions.ocf-bod-003.title
+  - functions.ocf-bod-004.purpose
+  - functions.ocf-bod-004.short-description
+  - functions.ocf-bod-004.title
+  - functions.ocf-bod-005.lifecycle.scopes.application.description
+  - functions.ocf-bod-005.lifecycle.scopes.baseline.description
+  - functions.ocf-bod-005.lifecycle.scopes.capability.description
+  - functions.ocf-bod-005.purpose
+  - functions.ocf-bod-005.short-description
+  - functions.ocf-bod-005.title
+  - functions.ocf-bod-006.purpose
+  - functions.ocf-bod-006.short-description
+  - functions.ocf-bod-006.title
+  - functions.ocf-bod-007.lifecycle.scopes.application.description
+  - functions.ocf-bod-007.lifecycle.scopes.baseline.description
+  - functions.ocf-bod-007.lifecycle.scopes.capability.description
+  - functions.ocf-bod-007.purpose
+  - functions.ocf-bod-007.short-description
+  - functions.ocf-bod-007.title
+  - functions.ocf-bod-008.purpose
+  - functions.ocf-bod-008.short-description
+  - functions.ocf-bod-008.title
+  - functions.ocf-bod-009.purpose
+  - functions.ocf-bod-009.short-description
+  - functions.ocf-bod-009.title
+  - functions.ocf-bod-010.purpose
+  - functions.ocf-bod-010.short-description
+  - functions.ocf-bod-010.title
+  - functions.ocf-bod-011.lifecycle.scopes.application.description
+  - functions.ocf-bod-011.lifecycle.scopes.baseline.description
+  - functions.ocf-bod-011.lifecycle.scopes.capability.description
+  - functions.ocf-bod-011.purpose
+  - functions.ocf-bod-011.short-description
+  - functions.ocf-bod-011.title
+  - functions.ocf-bod-012.purpose
+  - functions.ocf-bod-012.short-description
+  - functions.ocf-bod-012.title
+  - functions.ocf-bod-013.lifecycle.scopes.application.description
+  - functions.ocf-bod-013.lifecycle.scopes.baseline.description
+  - functions.ocf-bod-013.lifecycle.scopes.capability.description
+  - functions.ocf-bod-013.purpose
+  - functions.ocf-bod-013.short-description
+  - functions.ocf-bod-013.title
+  - functions.ocf-bod-014.purpose
+  - functions.ocf-bod-014.short-description
+  - functions.ocf-bod-014.title
+  - functions.ocf-bod-015.purpose
+  - functions.ocf-bod-015.short-description
+  - functions.ocf-bod-015.title
+  - functions.ocf-cog-001.lifecycle.scopes.application.description
+  - functions.ocf-cog-001.lifecycle.scopes.baseline.description
+  - functions.ocf-cog-001.lifecycle.scopes.capability.description
+  - functions.ocf-cog-001.purpose
+  - functions.ocf-cog-001.short-description
+  - functions.ocf-cog-001.title
+  - functions.ocf-cog-002.purpose
+  - functions.ocf-cog-002.short-description
+  - functions.ocf-cog-002.title
+  - functions.ocf-cog-003.purpose
+  - functions.ocf-cog-003.short-description
+  - functions.ocf-cog-003.title
+  - functions.ocf-cog-004.lifecycle.scopes.application.description
+  - functions.ocf-cog-004.lifecycle.scopes.baseline.description
+  - functions.ocf-cog-004.lifecycle.scopes.capability.description
+  - functions.ocf-cog-004.purpose
+  - functions.ocf-cog-004.short-description
+  - functions.ocf-cog-004.title
+  - functions.ocf-cog-005.lifecycle.scopes.application.description
+  - functions.ocf-cog-005.lifecycle.scopes.baseline.description
+  - functions.ocf-cog-005.lifecycle.scopes.capability.description
+  - functions.ocf-cog-005.purpose
+  - functions.ocf-cog-005.short-description
+  - functions.ocf-cog-005.title
+  - functions.ocf-cog-006.purpose
+  - functions.ocf-cog-006.short-description
+  - functions.ocf-cog-006.title
+  - functions.ocf-cog-007.purpose
+  - functions.ocf-cog-007.short-description
+  - functions.ocf-cog-007.title
+  - functions.ocf-com-001.purpose
+  - functions.ocf-com-001.short-description
+  - functions.ocf-com-001.title
+  - functions.ocf-emg-001.lifecycle.scopes.application.description
+  - functions.ocf-emg-001.lifecycle.scopes.capability.description
+  - functions.ocf-emg-001.lifecycle.scopes.episode.description
+  - functions.ocf-emg-001.purpose
+  - functions.ocf-emg-001.short-description
+  - functions.ocf-emg-001.title
+  - functions.ocf-emg-002.lifecycle.scopes.application.description
+  - functions.ocf-emg-002.lifecycle.scopes.capability.description
+  - functions.ocf-emg-002.lifecycle.scopes.episode.description
+  - functions.ocf-emg-002.purpose
+  - functions.ocf-emg-002.short-description
+  - functions.ocf-emg-002.title
+  - functions.ocf-emo-001.purpose
+  - functions.ocf-emo-001.short-description
+  - functions.ocf-emo-001.title
+  - functions.ocf-emo-002.purpose
+  - functions.ocf-emo-002.short-description
+  - functions.ocf-emo-002.title
+  - functions.ocf-exp-001.purpose
+  - functions.ocf-exp-001.short-description
+  - functions.ocf-exp-001.title
+  - functions.ocf-exp-002.purpose
+  - functions.ocf-exp-002.short-description
+  - functions.ocf-exp-002.title
+  - functions.ocf-fnd-001.purpose
+  - functions.ocf-fnd-001.short-description
+  - functions.ocf-fnd-001.title
+  - functions.ocf-fnd-002.purpose
+  - functions.ocf-fnd-002.short-description
+  - functions.ocf-fnd-002.title
+  - functions.ocf-fnd-003.purpose
+  - functions.ocf-fnd-003.short-description
+  - functions.ocf-fnd-003.title
+  - functions.ocf-fnd-004.purpose
+  - functions.ocf-fnd-004.short-description
+  - functions.ocf-fnd-004.title
+  - functions.ocf-fnd-005.purpose
+  - functions.ocf-fnd-005.short-description
+  - functions.ocf-fnd-005.title
+  - functions.ocf-fnd-006.purpose
+  - functions.ocf-fnd-006.short-description
+  - functions.ocf-fnd-006.title
+  - functions.ocf-lif-001.lifecycle.scopes.application.description
+  - functions.ocf-lif-001.lifecycle.scopes.baseline.description
+  - functions.ocf-lif-001.lifecycle.scopes.capability.description
+  - functions.ocf-lif-001.purpose
+  - functions.ocf-lif-001.short-description
+  - functions.ocf-lif-001.title
+  - functions.ocf-prf-001.purpose
+  - functions.ocf-prf-001.short-description
+  - functions.ocf-prf-001.title
+  - functions.ocf-prf-002.purpose
+  - functions.ocf-prf-002.short-description
+  - functions.ocf-prf-002.title
+  - functions.ocf-prf-003.purpose
+  - functions.ocf-prf-003.short-description
+  - functions.ocf-prf-003.title
+  - functions.ocf-prf-004.lifecycle.scopes.application.description
+  - functions.ocf-prf-004.lifecycle.scopes.baseline.description
+  - functions.ocf-prf-004.lifecycle.scopes.capability.description
+  - functions.ocf-prf-004.purpose
+  - functions.ocf-prf-004.short-description
+  - functions.ocf-prf-004.title
+  - functions.ocf-prf-005.purpose
+  - functions.ocf-prf-005.short-description
+  - functions.ocf-prf-005.title
+  - functions.ocf-prf-006.purpose
+  - functions.ocf-prf-006.short-description
+  - functions.ocf-prf-006.title
+  - functions.ocf-sen-001.purpose
+  - functions.ocf-sen-001.short-description
+  - functions.ocf-sen-001.title
+  - functions.ocf-sen-002.purpose
+  - functions.ocf-sen-002.short-description
+  - functions.ocf-sen-002.title
+  - functions.ocf-sen-003.purpose
+  - functions.ocf-sen-003.short-description
+  - functions.ocf-sen-003.title
+  - functions.ocf-sen-004.purpose
+  - functions.ocf-sen-004.short-description
+  - functions.ocf-sen-004.title
+  - functions.ocf-sen-005.purpose
+  - functions.ocf-sen-005.short-description
+  - functions.ocf-sen-005.title
+  - functions.ocf-slp-001.purpose
+  - functions.ocf-slp-001.short-description
+  - functions.ocf-slp-001.title
+  - functions.ocf-slp-002.purpose
+  - functions.ocf-slp-002.short-description
+  - functions.ocf-slp-002.title
+  - functions.ocf-slp-003.purpose
+  - functions.ocf-slp-003.short-description
+  - functions.ocf-slp-003.title
+  - functions.ocf-slp-004.purpose
+  - functions.ocf-slp-004.short-description
+  - functions.ocf-slp-004.title
+  - functions.ocf-slp-005.purpose
+  - functions.ocf-slp-005.short-description
+  - functions.ocf-slp-005.title
+  - functions.ocf-slp-006.purpose
+  - functions.ocf-slp-006.short-description
+  - functions.ocf-slp-006.title
+  compatibility_sha256: b63b914a8680f7ae110051af8c8b8bfe821a7eee243d6f06e07fb7c024655714
+- file: narration.yaml
+  domain: narration
+  description: 'Listener-facing spoken narration. Never falls back: a missing key is a pre-render error.'
+- file: functions.yaml
+  domain: narration
+  description: Per-function narration templates. Command wording is metadata, never translated.
+- file: preparation-learning.yaml
+  domain: narration
+  description: Approved OCF Preparation Learning en-US RC1 fixed narration and reusable state/count/return
+    resources; production audio remains separate.
+- file: hplus-body-comfort.yaml
+  domain: narration
+  description: Shared HPlus body comfort
+- file: hplus-transmutation-box.yaml
+  domain: narration
+  description: Human-approved shared OCF Transmutation Box adaptation; historical source was not authenticated.
+- file: hplus-relaxation.yaml
+  domain: narration
+  description: Human-approved shared OCF relaxation adaptation; source provenance was not provided.
+- file: hplus-focus10.yaml
+  domain: narration
+  description: Shared Focus 10 induction and return-ready wording
+- file: hplus-shared-session-002.yaml
+  domain: narration
+  description: Versioned shared-session narration successor for the pre-waking twentieth-state instruction
+- file: hplus-focus11-open.yaml
+  domain: narration
+  description: Shared Focus 11 opening and learning explanation
+- file: hplus-focus11-close.yaml
+  domain: narration
+  description: Shared Focus 11 consolidation and close
+- file: hplus-focus20.yaml
+  domain: narration
+  description: Human-approved shared OCF Focus 20 narration; historical source provenance was not provided.
+- file: hplus-waking-return.yaml
+  domain: narration
+  description: Human-approved shared OCF waking-return adaptation; no authenticated historical source
+    was supplied.
+- file: hplus-OCF-FND-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SLP-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-AUT-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-003.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-004.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-005.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-006.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-007.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-008.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-009.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-010.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-011.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-012.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-013.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-014.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-BOD-015.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-COG-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-COG-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-COG-003.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-COG-004.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-COG-005.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-COG-006.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-COG-007.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-COM-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-EMG-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-EMG-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-EMO-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-EMO-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-EMO-003.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-EXP-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-EXP-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-FND-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-FND-003.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-FND-004.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-FND-005.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-FND-006.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-LIF-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-PRF-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-PRF-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-PRF-003.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-PRF-004.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-PRF-005.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-PRF-006.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SEN-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SEN-002.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SEN-003.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SEN-004.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SEN-005.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SLP-001.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SLP-003.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SLP-004.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SLP-005.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+- file: hplus-OCF-SLP-006.yaml
+  domain: function
+  description: Sole editable localized function metadata and canonical narration.
+notes: |
+  Canonical locale. New narration keys are authored here first; a derived pack
+  is then filled from this one, recording its source semantic version.
+
+  Versioning: bump `semantic_version` minor for cosmetic rewordings (no stale
+  translations), major when the meaning of a key changes (translations go stale
+  and `ocf locale validate` reports them).
