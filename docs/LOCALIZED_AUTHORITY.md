@@ -168,3 +168,34 @@ predecessor bytes; their locks are not rewritten to accept new filenames. Curren
 readers, cue previews, authoring metadata and generated field-source traces use
 the manifest-selected filename. Older physical paths are compatibility references
 only and are never registered as duplicate active definitions.
+
+## L5: versioned portable reader edition
+
+The existing guide builder accepts an explicit `--edition` and optional verified
+`--source-revision`. New editions must use fresh output and ZIP paths; existing
+editions are never overwritten. The collection includes all 175 canonical
+function resources, labeling optional resources outside the playback sequence
+without adding or implying audio events. General guidance and foundation
+navigation precede category-specific material.
+
+The handbook and standalone references include the cue directory, approved
+optional relationship map and learning-order directory. A source-input build
+manifest and complete SHA-256 inventory accompany the HTML, Markdown and PDFs.
+Portable validation checks each individual PDF's resource sections, all canonical
+text, bookmarks/TOC, relative links and package checksums. Older collections
+without the new manifest retain their prior navigation-validation contract;
+they are not silently relabeled as complete 175-resource new editions.
+
+Set `OCF_WORK_DIR` to the canonical shared workspace reported by `workspace status`
+before generating a deliberately new local edition:
+
+```sh
+PYTHONPATH=scripts python -m ocf_tools.listening_guides \
+  --portable-output "$OCF_WORK_DIR/guides/en-US-0.5.0" \
+  --zip "$OCF_WORK_DIR/guides/ocf-reader-en-US-0.5.0.zip" \
+  --edition 0.5.0 --source-revision "$(git rev-parse HEAD)"
+```
+
+This produces reader documentation, not listening approval or permission to
+publish private recordings. Spanish remains partial and no translated handbook
+is invented.

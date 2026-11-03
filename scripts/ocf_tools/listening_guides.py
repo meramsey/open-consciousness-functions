@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
+import unicodedata
 import zipfile
 from html import escape as html_escape
 from html.parser import HTMLParser
@@ -206,9 +208,15 @@ def function_markdown(record, content, *, documentation=None, narration_sections
                     f"### {section['role']} — `{section['key']}`",
                     "",
                     f"Narration status: {_literal(section['status'] or 'not labeled')}.",
+                    f"Narration version: {_literal(section.get('version') or 'unversioned predecessor')}.",
                     "",
                 ]
-                if section["repetitions"] > 1:
+                if section.get("in_playback_sequence") is False:
+                    lines += [
+                        "Retained canonical resource outside the current playback sequence; no playback or additional repetition is inferred.",
+                        "",
+                    ]
+                elif section["repetitions"] > 1:
                     lines += [
                         f"Audio playback repetitions: {section['repetitions']}; transcript text shown once.",
                         "",
@@ -299,6 +307,7 @@ def function_guide_markdown(record, *, catalog=None, locale="en-US"):
                 "key": key,
                 "role": item.get("role") or "narration",
                 "status": entry.status,
+                "version": entry.version,
                 "text": entry.render(
                     variables, plural_rules=catalog.plural_rules_for(resolution.origin_locale)
                 ),
@@ -306,6 +315,27 @@ def function_guide_markdown(record, *, catalog=None, locale="en-US"):
             }
         )
         seen_sections[identity] = len(narration_sections) - 1
+    from .localized_authority import metadata as localized_metadata
+
+    function_metadata = localized_metadata(record, locale, catalog=catalog) or {}
+    included_keys = {section["key"] for section in narration_sections}
+    for key in function_metadata.get("entries", {}):
+        if key in included_keys:
+            continue
+        entry, resolution = catalog.resource(key, locale, domain="narration", fallback=False)
+        narration_sections.append(
+            {
+                "key": key,
+                "role": key.rsplit(".", 1)[-1],
+                "status": entry.status,
+                "version": entry.version,
+                "text": entry.render(
+                    {}, plural_rules=catalog.plural_rules_for(resolution.origin_locale)
+                ),
+                "repetitions": 0,
+                "in_playback_sequence": False,
+            }
+        )
     return function_markdown(
         record,
         function_artwork_content(record.id, locale, catalog=catalog, strict=False),
@@ -326,6 +356,54 @@ def markdown_documents():
         documents[filename] = function_guide_markdown(record, catalog=catalog)
     documents["index.md"] = _guide_catalog(records)
     return documents
+
+
+def reference_documents(records, *, catalog=None):
+    """Source-derived references, not new procedures or relationship approvals."""
+    from .command_docs import build_command_index
+
+    catalog = catalog or LocaleCatalog()
+    index = build_command_index("en-US", catalog=catalog)
+    cues = [
+        "# Cue reference",
+        "",
+        "Only declared cues are listed. Unavailable spoken wording is not invented. Compatibility and legacy roles are lookup records, not additional activation instructions.",
+        "",
+    ]
+    relations = [
+        "# Relationship map",
+        "",
+        "All links are approved optional comparisons, not prerequisites or combined protocols.",
+        "",
+    ]
+    for function in index["functions"]:
+        identity = function["function_id"]
+        cues += [f"## [{identity}: {function['title']['text']}](functions/{identity}.md)", ""]
+        for command in function["commands"]:
+            cue = command["cue_presentation"]
+            spoken = cue.get("spoken_cue") or "Not supplied as reviewed spoken wording"
+            version = cue.get("version") or "unversioned predecessor"
+            cues += [
+                f"- `{command['id']}` ({command['role']}): display `{cue['display_cue']}`; spoken {_literal(spoken)}; version {_literal(version)}."
+            ]
+        cues += [""]
+        for relation in function["related_functions"]:
+            relations += [
+                f"- [{identity}: {function['title']['text']}](functions/{identity}.md) -> [{relation['function_id']}: {relation['title']['text']}](functions/{relation['function_id']}.md). {relation['description']['text']} Approval: {relation['approval']}."
+            ]
+    order = _guide_catalog(records).replace(
+        "# Open Consciousness Functions — Guide Collection", "# Learning order", 1
+    )
+    order = order.replace(
+        "Portable offline documentation.",
+        "Read the general guidance first, then the foundation directory before category-specific guides. This is navigation, not a prescribed activation sequence or prerequisite. Portable offline documentation.",
+        1,
+    )
+    return {
+        "cue-reference.md": "\n".join(cues).rstrip() + "\n",
+        "relationship-map.md": "\n".join(relations).rstrip() + "\n",
+        "learning-order.md": order,
+    }
 
 
 def _inline(text, suffix=".pdf"):
@@ -486,12 +564,14 @@ def _guide_catalog(records, page_map=None):
         "[General listening guide](listening-guide.md) · [Complete handbook](complete-guide.pdf)",
         "",
     ]
-    for category, entries in sorted(categories.items()):
+    for category, entries in sorted(
+        categories.items(), key=lambda item: (item[0] != "foundation", item[0].casefold())
+    ):
         lines.extend([f"## {category}", "", *entries, ""])
     return "\n".join(lines) + "\n"
 
 
-def complete_pdf_bytes(records, documents):
+def complete_pdf_bytes(records, documents, *, edition="0.3.0"):
     """Build the standalone handbook with a page-numbered, linked table of contents."""
     from .localized_authority import title as localized_title
 
@@ -559,7 +639,7 @@ def complete_pdf_bytes(records, documents):
     story = [
         Spacer(1, 100),
         Paragraph("Open Consciousness Functions", cover),
-        Paragraph("Complete Function Guide · Edition 0.3.0", styles["Heading2"]),
+        Paragraph("Complete Function Guide · Edition " + escape(edition), styles["Heading2"]),
         Spacer(1, 24),
         Paragraph(
             "Offline reference handbook. Function intent, technical implementation, listening approval, and publication authorization are separate.",
@@ -614,7 +694,9 @@ def complete_pdf_bytes(records, documents):
     grouped = {}
     for record in records:
         grouped.setdefault(record.primary_domain or "Uncategorized", []).append(record)
-    for category, functions in sorted(grouped.items()):
+    for category, functions in sorted(
+        grouped.items(), key=lambda item: (item[0] != "foundation", item[0].casefold())
+    ):
         story.extend([PageBreak(), Paragraph(escape(category), category_style)])
         for record in functions:
             lines = documents[f"functions/{record.id}.md"].splitlines()
@@ -625,6 +707,11 @@ def complete_pdf_bytes(records, documents):
                 )
             )
             append_markdown("\n".join(lines[1:]))
+    for name in ("cue-reference.md", "relationship-map.md", "learning-order.md"):
+        if name in documents:
+            heading = documents[name].splitlines()[0].removeprefix("# ")
+            story.extend([PageBreak(), Paragraph(escape(heading), category_style)])
+            append_markdown(documents[name], remove_title=True)
 
     def page_number(canvas, document):
         canvas.setFont("OCFGuide", 8)
@@ -646,7 +733,7 @@ def complete_pdf_bytes(records, documents):
     return data, page_map
 
 
-def validate_handbook(data, records, page_map):
+def validate_handbook(data, records, page_map, *, reference_titles=None):
     """Check the finished PDF, not estimated layout or renderer notifications."""
     from pypdf import PdfReader
 
@@ -677,6 +764,11 @@ def validate_handbook(data, records, page_map):
     expected.update(
         f"{record.id}: {localized_title(record, catalog=catalog)}" for record in records
     )
+    references = {"Cue reference", "Relationship map", "Learning order"}
+    if reference_titles is not None:
+        expected.update(reference_titles)
+    elif references & set(outlines):
+        expected.update(references)
     if set(outlines) != expected or set(page_map) != {record.id for record in records}:
         raise OCFError("Handbook directory/outline inventory mismatch")
     for record in records:
@@ -765,7 +857,7 @@ def write_documents(documents, output, *, check=False, markdown_only=False):
     return len(targets)
 
 
-def portable_index_html(records, *, edition="0.3.0") -> bytes:
+def portable_index_html(records, *, edition="0.3.0", include_references=False) -> bytes:
     """Build a self-contained, searchable offline browser for the 58 guides."""
     catalog = LocaleCatalog()
     from .localized_authority import title as localized_title
@@ -811,7 +903,10 @@ def portable_index_html(records, *, edition="0.3.0") -> bytes:
         f"<section class='category' data-category='{html_escape(category)}'><h2>{escape(category)}</h2><div class='grid'>"
         + "".join(cards)
         + "</div></section>"
-        for category, cards in sorted(cards_by_category.items())
+        for category, cards in sorted(
+            cards_by_category.items(),
+            key=lambda item: (item[0] != "foundation", item[0].casefold()),
+        )
     )
     css = """
     :root{color-scheme:light dark;--bg:#f6f7f5;--fg:#172d38;--card:#fff;--accent:#2c6e72;--muted:#61747a}
@@ -832,7 +927,13 @@ def portable_index_html(records, *, edition="0.3.0") -> bytes:
         f"<title>Open Consciousness Functions — Guide Collection v{escape(edition)}</title><style>{css}</style></head><body><main>"
         f"<header class='hero'><p class='meta'>Open Consciousness Functions · portable offline documentation · v{escape(edition)}</p>"
         "<h1>Function Guides</h1><p>Readable, self-contained guides for all implemented OCF functions. These documents are not listening approval or release authorization.</p>"
-        "<p><a href='listening-guide.html'>General listening guide</a> · <a href='complete-guide.pdf'>Complete PDF handbook</a> · <a href='index.pdf'>PDF directory</a></p>"
+        "<p><a href='listening-guide.html'>General listening guide</a> · <a href='complete-guide.pdf'>Complete PDF handbook</a> · <a href='index.pdf'>PDF directory</a>"
+        + (
+            " · <a href='cue-reference.html'>Cue reference</a> · <a href='relationship-map.html'>Relationship map</a> · <a href='learning-order.html'>Learning order</a>"
+            if include_references
+            else ""
+        )
+        + "</p>"
         "<label for='search'>Search by title, ID, cue, or description</label><input id='search' type='search' placeholder='Search the 58 function guides'></header>"
         "<p class='no-results' hidden>No matching guides.</p>"
         + sections
@@ -849,6 +950,32 @@ def validate_portable_collection(output):
     catalog = LocaleCatalog()
 
     output = Path(output).resolve()
+    build_metadata = None
+    if (output / "build-manifest.json").is_file():
+        build_metadata = json.loads((output / "build-manifest.json").read_text(encoding="utf-8"))
+        if not (output / "checksums.sha256").is_file():
+            raise OCFError("guide build has no checksum manifest")
+        seen = set()
+        for line in (output / "checksums.sha256").read_text(encoding="utf-8").splitlines():
+            checksum, name = line.split("  ", 1)
+            if name in seen or not re.fullmatch(r"[0-9a-f]{64}", checksum):
+                raise OCFError("duplicate/invalid guide checksum: " + name)
+            seen.add(name)
+            path = output / name
+            if (
+                path.is_symlink()
+                or not path.resolve().is_relative_to(output)
+                or not path.is_file()
+                or hashlib.sha256(path.read_bytes()).hexdigest() != checksum
+            ):
+                raise OCFError("guide package checksum/path mismatch: " + name)
+        expected_files = {
+            path.relative_to(output).as_posix()
+            for path in output.rglob("*")
+            if path.is_file() and path.name != "checksums.sha256"
+        }
+        if seen != expected_files:
+            raise OCFError("guide checksum inventory is incomplete or contains extra files")
     records = load_all_functions()
     directory = (output / "index.md").read_text(encoding="utf-8")
     references = re.findall(
@@ -860,9 +987,19 @@ def validate_portable_collection(output):
         if page != fragment or identity in page_map:
             raise OCFError("Duplicate or inconsistent directory page reference")
         page_map[identity] = int(page)
-    result = validate_handbook((output / "complete-guide.pdf").read_bytes(), records, page_map)
+    result = validate_handbook(
+        (output / "complete-guide.pdf").read_bytes(),
+        records,
+        page_map,
+        reference_titles=set(build_metadata["reference_documents"].values())
+        if build_metadata
+        else None,
+    )
     checked = 0
     html_links = 0
+    pdf_functions = set()
+    extracted_resources = 0
+    record_map = {record.id: record for record in records}
 
     def check_link(path, target):
         nonlocal checked
@@ -897,6 +1034,21 @@ def validate_portable_collection(output):
             html_links += checked - before
         elif path.suffix == ".pdf":
             reader = PdfReader(path, strict=True)
+            pdf_text = "\n".join(page.extract_text() for page in reader.pages)
+            if any(token in pdf_text for token in ("/home/", "/mnt/", "file:///", "Documents/dev")):
+                raise OCFError("PDF contains machine-local paths: " + path.name)
+            if path.parent.name == "functions" and path.stem in record_map:
+                record = record_map[path.stem]
+                if build_metadata:
+                    metadata, _ = catalog.localized_function(record.id, "en-US", fallback=False)
+                    expected = {
+                        key: catalog.resource(key, "en-US", domain="narration", fallback=False)[
+                            0
+                        ].text
+                        for key in metadata["entries"]
+                    }
+                    extracted_resources += validate_extracted_narration(pdf_text, expected)
+                pdf_functions.add(record.id)
 
             def check_outlines(entries):
                 for entry in entries:
@@ -932,6 +1084,13 @@ def validate_portable_collection(output):
                         if target is None or not 0 <= target < len(reader.pages):
                             raise OCFError(f"Dangling PDF destination: {path.name}")
                         checked += 1
+    if pdf_functions != set(record_map):
+        raise OCFError("individual PDF function inventory is incomplete")
+    if build_metadata and (
+        build_metadata["functions"] != len(pdf_functions)
+        or build_metadata["canonical_resources"] != extracted_resources
+    ):
+        raise OCFError("guide build manifest narration/function inventory mismatch")
     result.update(
         files=len(paths),
         markdown=sum(path.suffix == ".md" for path in paths),
@@ -940,19 +1099,115 @@ def validate_portable_collection(output):
         checked_links=checked,
         html_links=html_links,
         broken_links=0,
+        individual_function_pdfs=len(pdf_functions),
+        extracted_canonical_resources=extracted_resources,
     )
     return result
 
 
+def validate_extracted_narration(extracted: str, expected: dict[str, str]) -> int:
+    """Verify source letters/numbers inside each PDF resource section.
+
+    PDF line wrapping, punctuation shaping and page labels are not speech
+    edits. Resource-key boundaries prevent finding missing text in another
+    narration section. No timing or listening/content verification is implied.
+    """
+
+    def normalized(text):
+        return "".join(char for char in unicodedata.normalize("NFC", text) if char.isalnum())
+
+    text = normalized(extracted)
+    if len({normalized(key) for key in expected}) != len(expected):
+        raise OCFError("ambiguous canonical PDF resource markers")
+    markers = {key: text.rfind(normalized(key)) for key in expected}
+    if any(position < 0 for position in markers.values()):
+        raise OCFError("PDF extraction is missing a canonical narration key")
+    order = sorted(markers, key=markers.get)
+    for index, key in enumerate(order):
+        start = markers[key] + len(normalized(key))
+        end = markers[order[index + 1]] if index + 1 < len(order) else len(text)
+        remaining = iter(text[start:end])
+        if not all(
+            any(char == candidate for candidate in remaining) for char in normalized(expected[key])
+        ):
+            raise OCFError("PDF extraction is missing canonical narration text: " + key)
+    return len(expected)
+
+
+def guide_build_manifest(records, edition, *, source_revision=None):
+    if not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", edition):
+        raise OCFError("guide edition requires a semantic version")
+    if source_revision is not None and not re.fullmatch(r"[0-9a-f]{40}", source_revision):
+        raise OCFError("guide source revision must be an exact commit SHA")
+    catalog = LocaleCatalog()
+    pack = catalog.require("en-US")
+    sources = {
+        "locales/en-US/manifest.yaml",
+        "docs/LISTENING_GUIDE.md",
+        "function-content/editorial/guide-review-001.json",
+    }
+    sources.update("locales/en-US/" + row["file"] for row in pack.manifest["resources"])
+    sources.update(record.path.relative_to(REPO_ROOT).as_posix() for record in records)
+    sources.update(
+        "scripts/ocf_tools/" + name + ".py"
+        for name in (
+            "listening_guides",
+            "command_docs",
+            "locale",
+            "localized_authority",
+            "commands",
+            "cue_templates",
+            "guide_review",
+            "lifecycle",
+        )
+    )
+    return {
+        "schema_version": "1.0",
+        "kind": "source-driven-reader-guide-build",
+        "edition": edition,
+        "locale": "en-US",
+        "source_revision": source_revision,
+        "functions": len(records),
+        "canonical_resources": sum(
+            len(row["entries"]) for row in pack.localized_functions.values()
+        ),
+        "reference_documents": {
+            "cue-reference.md": "Cue reference",
+            "relationship-map.md": "Relationship map",
+            "learning-order.md": "Learning order",
+        },
+        "audio_included": False,
+        "source_inputs": {
+            name: hashlib.sha256((REPO_ROOT / name).read_bytes()).hexdigest()
+            for name in sorted(sources)
+        },
+    }
+
+
 def build_portable_collection(
-    output: Path, *, edition="0.3.0", zip_path: Path | None = None
+    output: Path,
+    *,
+    edition="0.3.0",
+    zip_path: Path | None = None,
+    source_revision: str | None = None,
 ) -> dict:
     """Generate a self-contained guide package without private audio dependencies."""
     output = Path(output).resolve()
+    if zip_path is not None and Path(zip_path).resolve().exists():
+        raise OCFError("refusing to overwrite existing guide archive")
+    if zip_path is not None and Path(zip_path).resolve().is_relative_to(output):
+        raise OCFError("guide archive must not be inside its input collection")
     if output.exists() and any(output.iterdir()):
         raise OCFError(f"refusing to overwrite non-empty guide collection: {output}")
     records = load_all_functions()
+    manifest = guide_build_manifest(records, edition, source_revision=source_revision)
     markdown = markdown_documents()
+    markdown.update(reference_documents(records))
+    for name, text in list(markdown.items()):
+        heading, separator, body = text.partition("\n")
+        markdown[name] = (
+            heading + separator + "\nReader guide edition: " + _literal(edition) + ".\n" + body
+        )
     output.mkdir(parents=True, exist_ok=True)
     write_documents(markdown, output, markdown_only=True)
     for name, text in markdown.items():
@@ -961,27 +1216,37 @@ def build_portable_collection(
         path = output / name
         write_bytes_atomic(path.with_suffix(".html"), html_bytes(text), overwrite=False)
         write_bytes_atomic(path.with_suffix(".pdf"), pdf_bytes(text), overwrite=False)
-    handbook, page_map = complete_pdf_bytes(records, markdown)
+    handbook, page_map = complete_pdf_bytes(records, markdown, edition=edition)
     directory = _guide_catalog(records, page_map)
+    heading, separator, body = directory.partition("\n")
+    directory = heading + separator + "\nReader guide edition: " + _literal(edition) + ".\n" + body
     write_text_atomic(output / "index.md", directory)
     write_bytes_atomic(output / "complete-guide.pdf", handbook, overwrite=False)
     write_bytes_atomic(
-        output / "index.html", portable_index_html(records, edition=edition), overwrite=False
+        output / "index.html",
+        portable_index_html(records, edition=edition, include_references=True),
+        overwrite=False,
     )
     write_bytes_atomic(output / "index.pdf", pdf_bytes(directory), overwrite=False)
+    write_text_atomic(
+        output / "build-manifest.json",
+        json.dumps(manifest, indent=2, ensure_ascii=False, sort_keys=True) + "\n",
+        overwrite=False,
+    )
+    checks = {
+        path.relative_to(output).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
+        for path in sorted(output.rglob("*"))
+        if path.is_file()
+    }
+    write_text_atomic(
+        output / "checksums.sha256",
+        "".join(checksum + "  " + name + "\n" for name, checksum in checks.items()),
+        overwrite=False,
+    )
     validation = validate_portable_collection(output)
     if zip_path:
         zip_path = Path(zip_path).resolve()
-        zip_path.parent.mkdir(parents=True, exist_ok=True)
-        with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-            for path in sorted(output.rglob("*")):
-                if path.is_file():
-                    info = zipfile.ZipInfo(
-                        path.relative_to(output).as_posix(), (1980, 1, 1, 0, 0, 0)
-                    )
-                    info.compress_type = zipfile.ZIP_DEFLATED
-                    info.external_attr = 0o100644 << 16
-                    archive.writestr(info, path.read_bytes())
+        write_guide_zip(output, zip_path)
     return {
         "functions": len(records),
         "files": len([p for p in output.rglob("*") if p.is_file()]),
@@ -989,6 +1254,24 @@ def build_portable_collection(
         "zip": str(zip_path) if zip_path else None,
         "validation": validation,
     }
+
+
+def write_guide_zip(output, zip_path):
+    """Package an existing verified guide collection without regenerating PDFs."""
+    output, zip_path = Path(output).resolve(), Path(zip_path).resolve()
+    if zip_path.exists():
+        raise OCFError("refusing to overwrite existing guide archive")
+    if zip_path.is_relative_to(output):
+        raise OCFError("guide archive must not be inside its input collection")
+    validate_portable_collection(output)
+    zip_path.parent.mkdir(parents=True, exist_ok=True)
+    with zipfile.ZipFile(zip_path, "x", compression=zipfile.ZIP_DEFLATED) as archive:
+        for path in sorted(output.rglob("*")):
+            if path.is_file():
+                info = zipfile.ZipInfo(path.relative_to(output).as_posix(), (1980, 1, 1, 0, 0, 0))
+                info.compress_type = zipfile.ZIP_DEFLATED
+                info.external_attr = 0o100644 << 16
+                archive.writestr(info, path.read_bytes())
 
 
 def main(argv=None):
@@ -999,6 +1282,10 @@ def main(argv=None):
         "--validate-portable", type=Path, help="Verify an existing relocated collection"
     )
     parser.add_argument("--zip", type=Path, help="ZIP path for --portable-output")
+    parser.add_argument("--edition", default="0.3.0", help="explicit reader guide edition version")
+    parser.add_argument(
+        "--source-revision", help="verified build source SHA supplied by the caller"
+    )
     parser.add_argument("--check", action="store_true", help="Check freshness without writing")
     parser.add_argument("--markdown-only", action="store_true")
     args = parser.parse_args(argv)
@@ -1011,7 +1298,12 @@ def main(argv=None):
         return 0
     if args.portable_output:
         try:
-            result = build_portable_collection(args.portable_output, zip_path=args.zip)
+            result = build_portable_collection(
+                args.portable_output,
+                edition=args.edition,
+                zip_path=args.zip,
+                source_revision=args.source_revision,
+            )
         except (OCFError, OSError) as exc:
             parser.exit(1, f"{exc}\n")
         print(json.dumps(result, indent=2))

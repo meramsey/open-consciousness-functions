@@ -191,41 +191,47 @@ documented in `docs/LOCALIZATION.md` and `locales/README.md`.
 
 ## Additional approved backlog — 2026-10-29
 
-These are approved future tasks, not shipped behavior. The three proposed
+Unchecked items remain approved future tasks, not shipped behavior; checked
+items record completed implementation within their stated locale/scope. The three proposed
 functions below remain editorial backlog only and must not be registered until
 their separate authoring/review process is authorized. The verified registry
 remains at 58 functions.
 
 ### Function knowledge, localization, and guides
 
-- [ ] Per-locale comprehensive OCF function handbook, including general use
-      guidance, definitions for all current functions, and a fundamentals-first
-      suggested learning pathway.
-- [ ] Per-locale displayed/spoken activation-cue reference and complete cue
-      index, sourced from the authoritative localized data.
-- [ ] Verified complementary-function maps, common-use examples, related
-      learning guidance, and complementary functions in user-facing guides.
-- [ ] Individual downloadable function PDFs containing readable complete
+- [x] Source-driven en-US reader edition 0.5.0: comprehensive handbook with
+      all 58 functions, general guidance, and fundamentals-first navigation.
+- [x] en-US displayed/spoken cue reference and complete current cue index,
+      sourced from the authoritative localized function YAML.
+- [x] Approved optional complementary-function maps and source-backed uses in
+      en-US guides; no relationships or examples invented where none are approved.
+- [x] All 58 en-US function PDFs containing readable complete
       canonical transcripts: title, stable ID, locale, description, display and
       exact spoken cues, uses, activation instructions, opener/body/closer and
       approved sections, secondary commands, complementary functions, concise
       cue reminder, and version metadata. Playback repetition is not duplicate
       canonical transcript text.
-- [ ] Simplify bloated localized YAML metadata and comments; retain meaningful
+- [x] Simplify all 58 en-US function YAMLs and comments; retain meaningful
       evidence/provenance/history in the established structured audit system.
-- [ ] Make localized YAML the authority for localized function data, with
+- [x] Make the implemented en-US function YAMLs the localized authority, with
       first-class title, description, primary displayed/spoken cues, secondary
       cues, tags, common uses, complementary relationship descriptions,
       narration, and concise changelog fields. Keep stable IDs and
       locale-independent command IDs in their technical registries.
-- [ ] Remove generated cue-preview comment banners as an authority. Generate
+- [x] Remove generated cue-preview comment banners from active function YAML.
+      Generate
       master indexes, command lists, and guides from structured localized YAML.
-- [ ] Migrate localized filenames to stable-ID-first readable names such as
+- [x] Migrate all 58 active en-US filenames to stable-ID-first readable names such as
       `OCF-EMO-003-Empathize.yaml`, with stable-ID lookup and backward-compatible
       path/ID resolution during migration.
-- [ ] Preserve approved spoken narration and cues byte-for-byte during
+- [x] Preserve approved spoken narration and cues byte-for-byte during
       structural conversion; verify resolved-text hashes and immutable
       provenance before migration.
+- [ ] Complete additional locale translations and corresponding handbooks,
+      cue references and PDFs. Spanish remains partial; no complete Spanish
+      guide edition is claimed.
+- [ ] Add further human-approved common-use examples where the current source
+      provides none; generation must not fabricate editorial content.
 
 ### Audio baselines, voice privacy, and listening review
 
