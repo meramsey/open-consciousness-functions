@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-SEN-001
 title:
   text: Hearing
@@ -10,12 +10,11 @@ description:
   text: Adjusts inward listening and perception in either direction using the MORE/LESS grammar.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-SEN-001-PRIMARY
   display_cue:
     text: PLUS-HEAR MORE
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Hear More
     status: reviewed
@@ -36,12 +35,9 @@ secondary_commands:
 - command_id: OCF-CMD-SEN-001-HEAR-LESS
   display_cue:
     text: PLUS-HEAR LESS
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Hear Less
     status: reviewed
-    version: 1.0.0
   label:
     text: Decrease mode
     status: canonical

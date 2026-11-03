@@ -113,12 +113,31 @@ def value(owner, symbol, locale, catalog, *, draft_review=False):
         entry, resolution = catalog.raw_resource(key, locale, domain="ui", fallback=False)
         if resolution.origin_locale != "en-US" and entry.status not in {"reviewed", "canonical"}:
             raise CueTemplateError(f"{owner.id}: localized title requires review")
-        if resolution.origin_locale == "en-US" and entry.text != owner.canonical_name:
+        from .localized_authority import metadata as localized_metadata
+
+        localized_owner = localized_metadata(owner, locale, catalog=catalog)
+        if localized_owner is not None and entry.text != localized_owner["title"]["text"]:
+            raise CueTemplateError(
+                f"{owner.id}: title alias conflicts with authoritative localized function YAML"
+            )
+        if (
+            localized_metadata(owner, locale, catalog=catalog) is None
+            and resolution.origin_locale == "en-US"
+            and entry.text != owner.canonical_name
+        ):
             raise CueTemplateError(
                 f"{owner.id}: en-US title conflicts with authoritative function YAML"
             )
         return entry.text, {"key": key, "locale": resolution.origin_locale, "function_id": owner.id}
     command = select_command(owner, symbol)
+    if (
+        draft_review
+        and command.data.get("spoken_review") == "reviewed"
+        and not command.data.get("spoken")
+    ):
+        raise CueTemplateError(
+            f"{command.id}: reviewed candidate cue requires explicit source wording"
+        )
     if draft_review and command.data.get("spoken_review") == "unresolved":
         return draft_cue(owner, command, locale, catalog)
     if ".variant." in symbol:
@@ -141,8 +160,12 @@ def value(owner, symbol, locale, catalog, *, draft_review=False):
             "variant": variant,
         }
     resolved = localized_cue(owner, command, locale, catalog=catalog, strict=True)
-    if resolved.get("spoken_locale") == "en-US" and (
-        not command.data.get("spoken") or command.data.get("spoken_review") != "reviewed"
+    from .localized_authority import metadata as localized_metadata
+
+    if (
+        localized_metadata(owner, locale, catalog=catalog) is None
+        and resolved.get("spoken_locale") == "en-US"
+        and (not command.data.get("spoken") or command.data.get("spoken_review") != "reviewed")
     ):
         raise CueTemplateError(
             f"{command.id}: symbolic English speech requires authoritative reviewed function-YAML wording"

@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-FND-001
 title:
   text: Access to Energy
@@ -10,16 +10,14 @@ description:
   text: Restores a felt sense of available energy on demand.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-FND-001-PRIMARY
   display_cue:
     text: PLUS-ENERGIZE
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Energize
     status: reviewed
-    version: 1.0.0
   label:
     text: Primary activation command
     status: canonical
@@ -36,12 +34,9 @@ secondary_commands:
 - command_id: OCF-CMD-FND-001-ACCESS-CLOSE
   display_cue:
     text: Plus Release Eleven Access
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: plus, release, eleven, access
     status: reviewed
-    version: 1.0.0
   label:
     text: Access-channel close cue
     status: canonical

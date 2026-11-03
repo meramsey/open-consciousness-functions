@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-EMO-003
 title:
   text: Empathize
@@ -11,6 +11,7 @@ description:
     intuitive, and total-self awareness.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-EMO-003-PRIMARY
   display_cue:

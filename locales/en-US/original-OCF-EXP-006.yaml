@@ -1,40 +1,53 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-EXP-006
 title:
   text: Intuition
   status: reviewed
-  version: 1.0.0
 description:
   text: Recognize, receive and understand intuitive guidance through the total self, heart-centered awareness,
     subconscious, higher self and wider consciousness.
   status: reviewed
-  version: 1.0.0
+metadata_entries:
+  functions.ocf-exp-006.procedure.consider-and-choose-response:
+    text: Consider its meaning and choose a response with care and discernment.
+    status: reviewed
+    version: 0.0.1
+  functions.ocf-exp-006.procedure.allow-quiet-moment:
+    text: Allow a quiet moment to notice what arises.
+    status: reviewed
+    version: 0.0.1
+  functions.ocf-exp-006.procedure.think-or-say-in-mind:
+    text: Think or say the selected command in the mind.
+    status: reviewed
+    version: 0.0.1
+  functions.ocf-exp-006.procedure.select-question-or-situation:
+    text: Bring one question or situation into awareness.
+    status: reviewed
+    version: 0.0.1
+  functions.ocf-exp-006.artwork-description:
+    text: Strengthen intuitive awareness and understanding
+    status: reviewed
+    version: 1.1.0
 activation:
   command_id: OCF-CMD-EXP-006-PRIMARY
   display_cue:
     text: PLUS-INTUITION
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Intuition
     status: reviewed
-    version: 1.0.0
   label:
     text: Deliberate intuitive reinforcement
     status: reviewed
-    version: 1.0.0
   explanation:
     text: Calm discernment and constructive purposeful response; impressions are not unquestionable evidence
       of external facts.
     status: reviewed
-    version: 1.0.0
   usage:
     text: Bring one question or situation into awareness; think or say Plus Intuition in the mind; allow
       a quiet moment; consider and choose a response.
     status: reviewed
-    version: 1.0.0
 secondary_commands: []
 tags: []
 common_uses: []

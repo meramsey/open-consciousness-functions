@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-BOD-011
 title:
   text: Hormonal Transitions
@@ -10,12 +10,18 @@ description:
   text: Supports graceful passage through internal transitions.
   status: canonical
   version: 1.0.0
+metadata_entries:
+  functions.ocf-bod-011.lifecycle.scopes.capability.description:
+    text: The ability to reinforce hormonal balance remains available.
+  functions.ocf-bod-011.lifecycle.scopes.baseline.description:
+    text: The narrated regulation and adaptation baseline persists as hormonal needs change; not fixed
+      levels or heightened endocrine activity.
+  functions.ocf-bod-011.lifecycle.scopes.application.description:
+    text: Optional conscious reinforcement of regulation and adaptation.
 activation:
   command_id: OCF-CMD-BOD-011-PRIMARY
   display_cue:
     text: PLUS-HORMONE BALANCE
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Hormone Balance
     status: reviewed

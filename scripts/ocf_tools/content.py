@@ -157,24 +157,35 @@ def load_layers(function_id: str, root: Path | None = None) -> dict:
     return layers
 
 
-def discover(record) -> dict:
+def discover(record, *, catalog=None) -> dict:
     from .commands import is_active
+    from .locale import LocaleCatalog
+    from .localized_authority import description, metadata, title
 
+    catalog = catalog or LocaleCatalog()
     layers = load_layers(record.id)
     spec = layers.get("specifications")
     bindings = layers.get("bindings", {})
     command = record.data["canonical"]["command"]
+    localized = metadata(record, catalog=catalog) or {}
+    if localized:
+        from .commands import cue_presentation
+
+        command = {**command, "primary": cue_presentation(record, catalog=catalog)["display_cue"]}
     return {
         "function_id": record.id,
-        "title": record.canonical_name,
-        "purpose": record.data["purpose"]["summary"],
+        "title": title(record, catalog=catalog),
+        "purpose": description(record, catalog=catalog),
+        "tags": localized.get("tags", []),
+        "common_uses": localized.get("common_uses", []),
+        "localized_relationships": localized.get("relationships", {}),
         "lifecycle": record.data["lifecycle"],
         "companions": record.data.get("companions", []),
         # Keep the historic response shape; stable mode IDs are added only in
         # the separate structured commands view below.
         "activation": {key: command[key] for key in ("primary", "modes") if key in command},
         "commands": [
-            command_view(record, item, locale="en-US")
+            command_view(record, item, locale="en-US", catalog=catalog)
             for item in record.command_records
             if is_active(item)
         ],

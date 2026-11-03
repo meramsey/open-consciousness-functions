@@ -66,7 +66,13 @@ def narration_texts(root: Path = REPO_ROOT) -> dict[str, str]:
             raise ValueError(
                 f"resource is not declared as narration in the locale manifest: {path}"
             )
-        data: Any = yaml.safe_load(path.read_text(encoding="utf-8"))
+        from ocf_tools.locale_history import before_authority
+
+        data: Any = yaml.safe_load(
+            before_authority(
+                root, path.relative_to(root).as_posix(), path.read_text(encoding="utf-8")
+            )
+        )
         if not isinstance(data, dict) or data.get("locale") != "en-US":
             raise ValueError(f"resource must declare locale en-US: {path}")
         if data.get("domain") != "narration" or not isinstance(data.get("entries"), dict):

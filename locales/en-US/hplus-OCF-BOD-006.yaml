@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-BOD-006
 title:
   text: Heart Flow
@@ -10,6 +10,7 @@ description:
   text: Self-directed wellness practice supporting a felt sense of calm, steady heart function.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-BOD-006-PRIMARY
   display_cue:
@@ -38,6 +39,7 @@ common_uses: []
 relationships:
   related_functions:
   - function_id: OCF-BOD-002
+    description_key: relationships.rel-bod006-bod002.description
     description:
       text: Compare heart-oriented calm and steadiness with broader circulation-oriented comfort. These
         are independently selectable wellness exercises, not a combined treatment or a proven way to improve

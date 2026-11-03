@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-EMG-002
 title:
   text: Toxic Exposure Response
@@ -11,6 +11,15 @@ description:
     services, or medical evaluation.
   status: canonical
   version: 1.0.0
+metadata_entries:
+  functions.ocf-emg-002.lifecycle.scopes.capability.description:
+    text: Narrated harmful-exposure response readiness remains available, including when conscious invocation
+      is unavailable.
+  functions.ocf-emg-002.lifecycle.scopes.application.description:
+    text: Optional manual reinforcement when conscious and able.
+  functions.ocf-emg-002.lifecycle.scopes.episode.description:
+    text: The narrated exposure response operates only as strongly and for as long as needed for the actual
+      substance and exposure.
 activation:
   command_id: OCF-CMD-EMG-002-PRIMARY
   display_cue:

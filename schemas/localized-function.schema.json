@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://open-consciousness-functions.dev/schemas/localized-function.schema.json",
   "title": "Localized function metadata and narration resource",
-  "description": "One stable function identity in one locale. English canonical wording is referenced from the function record instead of duplicated.",
+  "description": "One stable function identity in one locale. Active consolidated resources own literal localized values; registry-reference values remain supported only for historical compatibility.",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "locale", "domain", "function_id", "title", "description", "activation", "secondary_commands", "tags", "common_uses", "relationships", "changelog", "entries"],
@@ -11,6 +11,7 @@
     "locale": {"type": "string", "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?$"},
     "domain": {"const": "function"},
     "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
+    "metadata_entries": {"description": "Other approved function-specific localized UI keys, preserving stable lifecycle/procedure/relationship references.", "type": "object", "additionalProperties": {"$ref": "#/definitions/localizedValue"}},
     "title": {"$ref": "#/definitions/localizedValue"},
     "description": {"$ref": "#/definitions/localizedValue"},
     "activation": {
@@ -42,10 +43,10 @@
   "definitions": {
     "localizedValue": {
       "oneOf": [
-        {"type": "object", "additionalProperties": false, "required": ["text", "status", "version"], "properties": {"text": {"type": "string", "minLength": 1}, "status": {"enum": ["canonical", "draft", "machine", "reviewed"]}, "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}, "notes": {"type": ["string", "null"]}}},
+        {"type": "object", "additionalProperties": false, "required": ["text"], "properties": {"text": {"type": "string", "minLength": 1}, "status": {"enum": ["canonical", "draft", "machine", "reviewed"]}, "version": {"description": "Preserve existing versions without inventing one for unversioned predecessors.", "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}, "notes": {"type": ["string", "null"]}}},
         {"type": "object", "additionalProperties": false, "required": ["source", "field"], "properties": {"source": {"const": "function-yaml"}, "field": {"enum": ["title", "description", "primary-command", "spoken-command"]}, "command_id": {"type": "string", "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"}, "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}}}
       ]
     },
-    "relationships": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["function_id", "description"], "properties": {"function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"}, "description": {"$ref": "#/definitions/localizedValue"}}}, "uniqueItems": true}
+    "relationships": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["function_id", "description"], "properties": {"function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"}, "description_key": {"type": "string", "pattern": "^relationships\\.[a-z0-9-]+\\.description$"}, "description": {"$ref": "#/definitions/localizedValue"}}}, "uniqueItems": true}
   }
 }

@@ -11,6 +11,7 @@
     "locale": { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?$" },
     "domain": { "type": "string", "enum": ["ui", "narration"] },
     "function_id": {"$ref": "localized-function.schema.json#/properties/function_id"},
+    "metadata_entries": {"$ref": "localized-function.schema.json#/properties/metadata_entries"},
     "title": {"$ref": "localized-function.schema.json#/properties/title"},
     "description": {"$ref": "localized-function.schema.json#/properties/description"},
     "activation": {"$ref": "localized-function.schema.json#/properties/activation"},

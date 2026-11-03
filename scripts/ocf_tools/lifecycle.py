@@ -66,6 +66,9 @@ def validate_scopes(owner):
 
 
 def validate_scope_descriptions(owner, catalog):
+    from .localized_authority import metadata as localized_metadata
+
+    literal_metadata = localized_metadata(owner, "en-US", catalog=catalog)
     scopes = owner.data.get("lifecycle", {}).get("scopes", {})
     if not isinstance(scopes, dict):
         return []  # Structural validation reports the malformed scope collection.
@@ -75,7 +78,12 @@ def validate_scope_descriptions(owner, catalog):
             continue
         key = scope.get("description_key")
         entry = catalog.canonical.get(key) if catalog.canonical and isinstance(key, str) else None
-        if entry is None or entry.domain != "ui" or entry.text != scope.get("description"):
+        expected = (
+            literal_metadata.get("metadata_entries", {}).get(key, {}).get("text")
+            if literal_metadata
+            else scope.get("description")
+        )
+        if entry is None or entry.domain != "ui" or entry.text != expected:
             errors.append(
                 f"{kind}: source-English scope description must match function YAML at {key!r}"
             )

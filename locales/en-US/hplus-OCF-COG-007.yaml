@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-COG-007
 title:
   text: Think Fast
@@ -10,16 +10,14 @@ description:
   text: Accelerates thinking speed and mental processing.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-COG-007-PRIMARY
   display_cue:
     text: PLUS-THINK
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Think
     status: reviewed
-    version: 1.0.0
   label:
     text: Primary activation command
     status: canonical

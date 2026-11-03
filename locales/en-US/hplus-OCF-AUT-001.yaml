@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-AUT-001
 title:
   text: Automatic Action
@@ -10,12 +10,18 @@ description:
   text: Automates a desired way of being so it runs without active effort.
   status: canonical
   version: 1.0.0
+metadata_entries:
+  functions.ocf-aut-001.lifecycle.scopes.capability.description:
+    text: The ability to develop automatic skills remains available.
+  functions.ocf-aut-001.lifecycle.scopes.baseline.description:
+    text: Correctly learned selected skill patterns are retained; each performance remains observable,
+      adjustable and stoppable.
+  functions.ocf-aut-001.lifecycle.scopes.application.description:
+    text: One deliberate cue invocation or chosen performance; not continuously performing an action.
 activation:
   command_id: OCF-CMD-AUT-001-PRIMARY
   display_cue:
     text: PLUS-AUTOMATE
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Automate
     status: reviewed

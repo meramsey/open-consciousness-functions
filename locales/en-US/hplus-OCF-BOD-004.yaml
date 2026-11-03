@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-BOD-004
 title:
   text: Detox
@@ -11,12 +11,11 @@ description:
     when desired.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-BOD-004-PRIMARY
   display_cue:
     text: PLUS-DETOX
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Detox
     status: reviewed
@@ -37,8 +36,6 @@ secondary_commands:
 - command_id: OCF-CMD-BOD-004-LEGACY-01
   display_cue:
     text: PLUS-CLEAN, CLEAR
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical

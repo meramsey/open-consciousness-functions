@@ -1533,17 +1533,27 @@ def main(argv: list[str] | None = None) -> int:
 
             from .content import discover
             from .indexes import load_function_by_slug_or_id
+            from .locale import LocaleCatalog
+            from .localized_authority import registry_projection
+
+            catalog = LocaleCatalog()
 
             if args.function_kind == "list":
                 data = [
-                    discover(record) if args.rich else record.data
+                    discover(record, catalog=catalog)
+                    if args.rich
+                    else registry_projection(record, catalog=catalog)
                     for record in load_all_functions()
                 ]
             else:
                 record = load_function_by_slug_or_id(args.id)
                 if record is None:
                     raise OCFError(f"unknown function {args.id}; use ocf functions list")
-                data = discover(record) if args.rich else record.data
+                data = (
+                    discover(record, catalog=catalog)
+                    if args.rich
+                    else registry_projection(record, catalog=catalog)
+                )
             if args.json:
                 print(
                     json.dumps(

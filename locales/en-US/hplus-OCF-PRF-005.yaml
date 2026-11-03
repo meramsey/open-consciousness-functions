@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-PRF-005
 title:
   text: Make Your Day
@@ -10,16 +10,14 @@ description:
   text: Sets a deliberate tone for the day ahead.
   status: canonical
   version: 1.0.0
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-PRF-005-PRIMARY
   display_cue:
     text: PLUS-THIS DAY
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus This Day
     status: reviewed
-    version: 1.0.0
   label:
     text: Primary activation command
     status: canonical

@@ -627,8 +627,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Food More",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-010-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       },
       "current_purpose": "Supports conscious selection between fuller use of food energy and nourishment, or sufficient nourishment with reduced unnecessary energy retention and storage.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -710,8 +715,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Sex More",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-012-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       },
       "current_purpose": "Adjusts felt sexual drive in either direction using the MORE/LESS grammar.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -999,8 +1009,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Open",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-cog-003-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       },
       "current_purpose": "Opens an internal space for quiet reflection; closes it again on completion.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -1119,8 +1134,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Recall",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-cog-006-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       },
       "current_purpose": "Brings specific memories or learned material to mind on request.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -1148,8 +1168,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Think",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-cog-007-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       },
       "current_purpose": "Accelerates thinking speed and mental processing.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -1177,8 +1202,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Speak Up",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-com-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       },
       "current_purpose": "Supports confident, clear verbal expression.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -1318,8 +1348,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Let Go",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-emo-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       },
       "current_purpose": "Releases clinging, tension, or unwanted mental objects.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -1627,6 +1662,8 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Dissolve",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-exp-003-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
@@ -1656,6 +1693,8 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Clear Zone",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-exp-005-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
@@ -1685,6 +1724,8 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Intuition",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-exp-006-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
@@ -1714,8 +1755,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Energize",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-fnd-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       },
       "current_purpose": "Restores a felt sense of available energy on demand.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -1922,8 +1968,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Release",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-fnd-006-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       },
       "current_purpose": "Releases unhelpful states, prompts, or lingering experiences.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -2008,8 +2059,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Do This Now",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-prf-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       },
       "current_purpose": "Moves from deliberation into immediate, present action.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -2217,8 +2273,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus This Day",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-prf-005-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       },
       "current_purpose": "Sets a deliberate tone for the day ahead.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -2246,8 +2307,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Strong Quick",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-prf-006-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       },
       "current_purpose": "Combines strength and quickness in a single felt state; activation cue PLUS-STRONG QUICK.",
       "decision_status": "EXISTING PAIR RETAINED",
@@ -3204,7 +3270,9 @@
         "display_cue": "PLUS-55515",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -3324,7 +3392,9 @@
         "display_cue": "PLUS-CLEAN, CLEAR",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -3839,8 +3909,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Food More",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-010-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -3924,8 +3999,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Food Less",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-010-food-less.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -4097,8 +4177,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Sex More",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-012-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -4185,8 +4270,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Sex Less",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-012-sex-less.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -4219,7 +4309,9 @@
         "display_cue": "PLUS-SEX GREATER",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -4252,7 +4344,9 @@
         "display_cue": "PLUS-SEX LESSER",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -4476,7 +4570,9 @@
         "display_cue": "PLUS-BUILD, LIVE",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -4596,7 +4692,9 @@
         "display_cue": "PLUS-GO NUMB, GO NUMB",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -4695,8 +4793,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Release",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-bod-015-legacy-02.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -4930,8 +5033,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Open",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-cog-003-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -4984,8 +5092,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Closed",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-cog-003-closed.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -5150,8 +5263,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Recall",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-cog-004-recall.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -5185,7 +5303,9 @@
         "display_cue": "PLUS-IMPRINT, IMPRINT",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -5318,7 +5438,9 @@
         "display_cue": "PLUS-OPTIONS, CHOICES",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -5392,8 +5514,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Recall",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-cog-006-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -5467,8 +5594,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Think",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-cog-007-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -5542,8 +5674,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Speak Up",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-com-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -5787,8 +5924,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Let Go",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-emo-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -5914,7 +6056,9 @@
         "display_cue": "PLUS-FADE, FADE",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -6111,7 +6255,9 @@
         "display_cue": "PLUS-CHANGE, CHANGE",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -6266,8 +6412,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Cancel",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-exp-002-cancel.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -6301,7 +6452,9 @@
         "display_cue": "PLUS-INSULATE, INSULATE",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -6380,8 +6533,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Release",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-exp-002-release.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -6465,6 +6623,8 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Dissolve",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-exp-003-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
@@ -6537,6 +6697,8 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Clear Zone",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-exp-005-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
@@ -6610,6 +6772,8 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Clear Zone, Observe",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-exp-005-observe.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
@@ -6683,6 +6847,8 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Clear Zone, Suspend",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-exp-005-suspend.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
@@ -6760,6 +6926,8 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Intuition",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
         "spoken_cue_key": "commands.ocf-cmd-exp-006-primary.spoken-cue",
         "spoken_locale": "en-US",
         "spoken_fallback": false,
@@ -6822,8 +6990,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Energize",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-fnd-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -6870,8 +7043,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "plus, release, eleven, access",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-fnd-001-access-close.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -7145,7 +7323,9 @@
         "display_cue": "PLUS-RELAX, RELAX",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -7265,7 +7445,9 @@
         "display_cue": "PLUS-RESET, RESET",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -7339,8 +7521,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Release",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-fnd-006-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -7514,8 +7701,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Do This Now",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-prf-001-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -7636,7 +7828,9 @@
         "display_cue": "PLUS-EIGHT, GREAT",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -7852,7 +8046,9 @@
         "display_cue": "PLUS-LIGHTER, LIGHTER",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -7926,8 +8122,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus This Day",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-prf-005-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -8001,8 +8202,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Strong Quick",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-prf-006-primary.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -8035,7 +8241,9 @@
         "display_cue": "PLUS-STRONG-QUICK",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -8114,8 +8322,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Release",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-prf-006-release.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -8281,8 +8494,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Hear Less",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-sen-001-hear-less.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -8391,7 +8609,9 @@
         "display_cue": "PLUS-SEE BETTER",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -8557,8 +8777,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Smell Less",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-sen-003-smell-less.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -8591,7 +8816,9 @@
         "display_cue": "PLUS-SMELL GREATER",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -8624,7 +8851,9 @@
         "display_cue": "PLUS-SMELL LESSER",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -8790,8 +9019,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Taste Less",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-sen-004-taste-less.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -8824,7 +9058,9 @@
         "display_cue": "PLUS-TASTE GREATER",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -8857,7 +9093,9 @@
         "display_cue": "PLUS-TASTE LESSER",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -9023,8 +9261,13 @@
         "requested_locale": "en-US",
         "spoken_cue": "Plus Touch Less",
         "binding_status": "resolved",
+        "display_locale": "en-US",
+        "display_fallback": false,
+        "spoken_cue_key": "commands.ocf-cmd-sen-005-touch-less.spoken-cue",
         "spoken_locale": "en-US",
-        "authority": "function-yaml"
+        "spoken_fallback": false,
+        "version": null,
+        "resource_status": "reviewed"
       }
     },
     {
@@ -9057,7 +9300,9 @@
         "display_cue": "PLUS-TOUCH GREATER",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -9090,7 +9335,9 @@
         "display_cue": "PLUS-TOUCH LESSER",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -9211,7 +9458,9 @@
         "display_cue": "PLUS-HEAL, HEAL",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -9332,7 +9581,9 @@
         "display_cue": "PLUS-20-20",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -9458,7 +9709,9 @@
         "display_cue": "PLUS-THEME, DREAM, SLEEP",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -9584,7 +9837,9 @@
         "display_cue": "PLUS-SLEEP, HELP",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -9715,7 +9970,9 @@
         "display_cue": "PLUS-QUIET, SLEEP",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     },
     {
@@ -9836,7 +10093,9 @@
         "display_cue": "PLUS-ONE, AWAKE, ALERT, ONE, ONE",
         "requested_locale": "en-US",
         "spoken_cue": null,
-        "binding_status": "unbound"
+        "binding_status": "unbound",
+        "display_locale": "en-US",
+        "display_fallback": false
       }
     }
   ],

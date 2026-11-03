@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-COG-005
 title:
   text: Options
@@ -10,6 +10,14 @@ description:
   text: Opens perception of choices and alternatives.
   status: canonical
   version: 1.0.0
+metadata_entries:
+  functions.ocf-cog-005.lifecycle.scopes.capability.description:
+    text: The ability to explore possibilities remains available.
+  functions.ocf-cog-005.lifecycle.scopes.baseline.description:
+    text: Connections and insights continue forming in the background; no selected situation remains permanently
+      active.
+  functions.ocf-cog-005.lifecycle.scopes.application.description:
+    text: One consciously chosen, situation-focused exploration.
 activation:
   command_id: OCF-CMD-COG-005-PRIMARY
   display_cue:
@@ -36,8 +44,6 @@ secondary_commands:
 - command_id: OCF-CMD-COG-005-LEGACY-01
   display_cue:
     text: PLUS-OPTIONS, CHOICES
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical

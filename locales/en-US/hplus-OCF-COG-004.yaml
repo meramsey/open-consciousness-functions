@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-COG-004
 title:
   text: Imprint
@@ -11,12 +11,18 @@ description:
     retrieval.
   status: reviewed
   version: 1.0.1
+metadata_entries:
+  functions.ocf-cog-004.lifecycle.scopes.capability.description:
+    text: Learned imprinting ability remains available.
+  functions.ocf-cog-004.lifecycle.scopes.baseline.description:
+    text: Deliberately imprinted material is retained and maintained; storage is distinct from an individual
+      recall action.
+  functions.ocf-cog-004.lifecycle.scopes.application.description:
+    text: A single deliberate imprint or recall invocation; no continuously running imprinting or recall.
 activation:
   command_id: OCF-CMD-COG-004-PRIMARY
   display_cue:
     text: PLUS-IMPRINT
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Imprint
     status: reviewed
@@ -37,12 +43,9 @@ secondary_commands:
 - command_id: OCF-CMD-COG-004-RECALL
   display_cue:
     text: PLUS-RECALL
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Recall
     status: reviewed
-    version: 1.0.0
   label:
     text: Retrieval command
     status: canonical
@@ -59,8 +62,6 @@ secondary_commands:
 - command_id: OCF-CMD-COG-004-LEGACY-01
   display_cue:
     text: PLUS-IMPRINT, IMPRINT
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical

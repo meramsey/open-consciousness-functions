@@ -1,6 +1,6 @@
 schema_version: '1.0'
 locale: en-US
-domain: narration
+domain: function
 function_id: OCF-SLP-002
 title:
   text: Sleep
@@ -10,12 +10,11 @@ description:
   text: Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP.
   status: reviewed
   version: 1.0.1
+metadata_entries: {}
 activation:
   command_id: OCF-CMD-SLP-002-PRIMARY
   display_cue:
     text: PLUS-SLEEP
-    status: canonical
-    version: 1.0.0
   spoken_cue:
     text: Plus Sleep
     status: reviewed
@@ -36,8 +35,6 @@ secondary_commands:
 - command_id: OCF-CMD-SLP-002-LEGACY-01
   display_cue:
     text: PLUS-20-20
-    status: canonical
-    version: 1.0.0
   label:
     text: Legacy compatibility phrase
     status: canonical
