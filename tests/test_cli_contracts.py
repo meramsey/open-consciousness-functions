@@ -24,6 +24,7 @@ from ocf_tools import (
     validators,
     voice_registry,
 )
+from ocf_tools.models import FunctionRecord
 from ocf_tools.utils import OCFError
 
 pytestmark = pytest.mark.unit
@@ -134,7 +135,7 @@ def test_function_listing_output_contract_and_identity(
         "canonical": {"name": "Café", "command": {"primary": "PLUS-FOCUS"}},
         "purpose": {"summary": "Fixture"},
     }
-    record = NS(data=raw)
+    record = FunctionRecord(id=raw["id"], slug="fixture", path=Path("fixture.yaml"), data=raw)
     detailed = {
         "function_id": raw["id"],
         "title": "Café",
@@ -144,7 +145,7 @@ def test_function_listing_output_contract_and_identity(
     }
     monkeypatch.setattr(cli, "load_all_functions", lambda: [record])
     monkeypatch.setattr(indexes, "load_function_by_slug_or_id", lambda q: record)
-    monkeypatch.setattr(content, "discover", lambda r: detailed)
+    monkeypatch.setattr(content, "discover", lambda r, **kwargs: detailed)
     argv = ["functions", "describe", raw["id"]] if describe else ["functions", "list"]
     argv += (["--rich"] if rich else []) + (["--json"] if json_output else [])
     assert cli.main(argv) == 0

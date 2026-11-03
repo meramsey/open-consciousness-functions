@@ -48,7 +48,8 @@ def description(record, locale="en-US", *, catalog=None):
 def display_command(record, locale="en-US", *, catalog=None):
     from .commands import cue_presentation
 
-    return cue_presentation(record, locale, catalog=catalog)["display_cue"]
+    cue = cue_presentation(record, locale, catalog=catalog)
+    return cue["display_cue"] if cue else record.canonical_command or ""
 
 
 def registry_projection(record, locale="en-US", *, catalog=None):
