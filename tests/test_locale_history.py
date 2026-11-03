@@ -25,7 +25,7 @@ def fixture_ledger(tmp_path, monkeypatch):
             }
         },
         "active_resources": {
-            str(active.relative_to(tmp_path)): hashlib.sha256(active.read_bytes()).hexdigest()
+            active.relative_to(tmp_path).as_posix(): hashlib.sha256(active.read_bytes()).hexdigest()
         },
     }
     path = tmp_path / history.LEDGER

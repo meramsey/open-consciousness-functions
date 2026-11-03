@@ -56,6 +56,16 @@ def test_replay_without_physical_stub_preserves_crlf(virtual):
     assert (root / archive).read_bytes() == raw
 
 
+def test_physical_text_and_explicit_byte_fingerprint_read_modes(virtual):
+    root = virtual[0]
+    name = "functions/cognition/current.yaml"
+    path = root / name
+    path.parent.mkdir(parents=True)
+    path.write_bytes(b"exact text\r\n")
+    assert history.read_logical(root, name) == "exact text\n"
+    assert history.read_logical(root, name, preserve_newlines=True).encode() == b"exact text\r\n"
+
+
 def test_modified_archive_and_present_modified_stub_are_rejected(virtual):
     root, name, archive, raw, _ = virtual
     (root / archive).write_bytes(raw + b"drift")

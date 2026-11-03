@@ -111,12 +111,15 @@ def _historical_resources(root, signatures, map_sha, filenames_sha, retirement_s
     return data["files"]
 
 
-def read_logical(root: Path, name: str) -> str:
+def read_logical(root: Path, name: str, *, preserve_newlines: bool = False) -> str:
     """Read a physical resource or verified virtual structural predecessor.
 
     This does not run earlier semantic projections: each caller retains its
     chosen replay depth. Present modified stubs fail closed, never hide drift.
     Active LocaleCatalog resources are deliberately NOT loaded through here.
+    Physical files retain the legacy text-reader newline behavior unless a
+    byte-fingerprint caller explicitly opts out; virtual archives are ALWAYS
+    returned byte-exact, including CRLF.
     """
     path = _safe_path(root, name)
     row = historical_resources(root).get(name)
@@ -131,7 +134,9 @@ def read_logical(root: Path, name: str) -> str:
         raise OCFError(
             "missing or unsafe localized successor (unknown historical logical resource): " + name
         )
-    return path.read_bytes().decode("utf-8")
+    return (
+        path.read_bytes().decode("utf-8") if preserve_newlines else path.read_text(encoding="utf-8")
+    )
 
 
 def _before_discovery(root: Path, name: str, text: str) -> str:
@@ -187,7 +192,9 @@ def predecessor(root: Path, name: str, text: str) -> str:
     if _sha(text) != row["after_sha256"]:
         raise OCFError("localized resource successor source drift: " + name)
     for relative, checksum in data["active_resources"].items():
-        active_text = before_structural(root, relative, read_logical(root, relative))
+        active_text = before_structural(
+            root, relative, read_logical(root, relative, preserve_newlines=True)
+        )
         if _sha(active_text) != checksum:
             raise OCFError("localized resource active source drift: " + relative)
     return row["before"]
