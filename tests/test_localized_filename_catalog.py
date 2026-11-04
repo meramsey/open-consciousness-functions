@@ -16,7 +16,13 @@ pytestmark = pytest.mark.integration
 def test_execute_all_58_preserves_speech_and_hplus015_logical_identities(tmp_path, monkeypatch):
     monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
     records = load_all_functions()
-    shutil.copytree(REPO_ROOT / "functions", tmp_path / "functions")
+    migration = json.loads(
+        (REPO_ROOT / "function-content/editorial/function-authority-migration-007.json").read_text()
+    )
+    for name, row in migration["files"].items():
+        target = tmp_path / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes((REPO_ROOT / row["archive"]).read_bytes())
     shutil.copytree(REPO_ROOT / "locales", tmp_path / "locales")
     # Reconstruct the exact pre-L4 fixture from the checked path map, rather
     # than expecting the now-renamed active source to still use old filenames.

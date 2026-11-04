@@ -154,6 +154,14 @@ def read_logical(root: Path, name: str, *, preserve_newlines: bool = False) -> s
     )
 
 
+def logical_function_path(root: Path, function_id: str) -> str:
+    """Return the pre-migration logical path for a function identity."""
+    for name, row in historical_function_resources(root).items():
+        if row.get("function_id") == function_id:
+            return name
+    raise OCFError(f"no historical function path for {function_id!r}")
+
+
 def historical_function_resources(root: Path) -> dict:
     path = _safe_path(root, FUNCTION_AUTHORITY)
     stat = path.stat() if path.is_file() else None

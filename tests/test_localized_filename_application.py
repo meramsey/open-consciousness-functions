@@ -25,7 +25,12 @@ def setup_source(tmp_path, monkeypatch):
     (folder / "manifest.yaml").write_text(yaml.safe_dump(manifest), encoding="utf-8", newline="\n")
     function = tmp_path / "functions/emotion/empathizing.yaml"
     function.parent.mkdir(parents=True)
-    function.write_bytes((REPO_ROOT / "functions/emotion/empathizing.yaml").read_bytes())
+    function.write_bytes(
+        (
+            REPO_ROOT
+            / "function-content/editorial/historical-functions/007/emotion/empathizing.yaml"
+        ).read_bytes()
+    )
     return folder, old
 
 

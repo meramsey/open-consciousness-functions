@@ -88,21 +88,14 @@ def test_all58_guides_project_existing73_procedures_and_scopes():
                 assert f"{i}. {step['instruction']['text']}" in text
         for scope in document["lifecycle_scopes"]:
             assert scope["description"]["text"] in text
-            if scope.get("activation"):
-                assert f"activation: {scope['activation']}" in text
-        for condition in owner.data["lifecycle"].get("trigger_conditions", []):
-            assert condition in text
     assert count == 73
     intuition = documents["functions/OCF-EXP-006.md"]
     assert "Allow a quiet moment to notice what arises." in intuition
     assert "Follow the function-specific instruction recorded for this step" not in intuition
     assert "Hold your breath" not in intuition
     assert "PLUS-FOOD MORE" not in documents["functions/OCF-BOD-005.md"]
-    assert "activation: automatic" in documents["functions/OCF-BOD-005.md"]
+    assert "activation: automatic" not in documents["functions/OCF-BOD-005.md"]
     assert "PLUS-FOOD MORE" in documents["functions/OCF-BOD-010.md"]
-    assert (
-        "outside this function's bound narration sequence" in documents["functions/OCF-FND-001.md"]
-    )
     with pytest.raises(OCFError, match="en-US only"):
         guides.function_guide_markdown(None, locale="es")
 

@@ -5,8 +5,11 @@ map for targeted investigation, not a replacement for schemas or tests.
 
 ## Repository map
 
-- `functions/`: 58 canonical function records, including 55 historical targets; YAML owns identity and command
-  metadata.
+- `locales/en-US/OCF-*.yaml`: 58 complete canonical function records, including
+  55 historical targets; each locale file owns words, command controls, lifecycle
+  and narration order. Other locales own their complete translated definitions.
+- `function-content/editorial/historical-functions/007/`: exact retired registry
+  bytes for verified historical logical-path replay, never active authoring.
 - `function-content/`: evidence, extracted specifications, OCF decisions, and
   runtime bindings; provenance layers must not be merged.
 - `schemas/`: canonical JSON Schemas. Inspect before changing YAML or a data

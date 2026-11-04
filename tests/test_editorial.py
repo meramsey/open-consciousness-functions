@@ -1042,7 +1042,8 @@ def test_package_staging_excludes_exact_authoring_source_even_from_existing_targ
     tmp_path, contaminated
 ):
     root, target = tmp_path / "checkout", tmp_path / "staged"
-    write_yaml(root / "functions" / "OCF-TST-001.yaml", {"id": "OCF-TST-001"})
+    (root / "schemas").mkdir(parents=True)
+    write_yaml(root / "locales/en-US/manifest.yaml", {"resources": []})
     write_yaml(root / ".ocf-authoring" / "sources" / "exact.yaml", {"text": SOURCE})
     write_yaml(root / ".ocf-authoring" / "blocks" / "working.yaml", {"working": {"text": SOURCE}})
     if contaminated:
@@ -1051,7 +1052,7 @@ def test_package_staging_excludes_exact_authoring_source_even_from_existing_targ
             target / ".ocf-authoring" / "blocks" / "working.yaml", {"working": {"text": SOURCE}}
         )
     report = stage_data(root, target)
-    assert (target / "functions" / "OCF-TST-001.yaml").is_file()
+    assert (target / "locales/en-US/manifest.yaml").is_file()
     assert not (target / ".ocf-authoring").exists()
     assert all(".ocf-authoring" not in path for path in report["included"])
     assert all(
@@ -1083,15 +1084,15 @@ def test_staging_does_not_follow_private_source_symlink(tmp_path):
     root, target = tmp_path / "root", tmp_path / "staged"
     private = root / ".ocf-authoring/source.yaml"
     write_yaml(private, {"text": "Private source wording"})
-    linked = root / "functions/private.yaml"
-    linked.parent.mkdir()
+    linked = root / "locales/en-US/private.yaml"
+    linked.parent.mkdir(parents=True)
     try:
         linked.symlink_to(private)
     except OSError:
         pytest.skip("symlinks unavailable on this platform")
     report = stage_data(root, target)
-    assert "functions/private.yaml" not in report["included"]
-    assert not (target / "functions/private.yaml").exists()
+    assert "locales/en-US/private.yaml" not in report["included"]
+    assert not (target / "locales/en-US/private.yaml").exists()
 
 
 def test_shared_template_source_cannot_be_tampered_through_consumer(authoring):

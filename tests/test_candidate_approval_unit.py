@@ -109,7 +109,13 @@ def test_one_shot_driver_replays_pinned_inputs_without_audio_or_processes(
         "function-content/bindings/OCF-EXP-003.yaml",
         "functions/experimental/mobius-west.yaml",
     ):
-        originals[name] = (source / name).read_text(encoding="utf-8")
+        if name == "functions/experimental/mobius-west.yaml":
+            originals[name] = (
+                source
+                / "function-content/editorial/historical-functions/007/experimental/mobius-west.yaml"
+            ).read_text(encoding="utf-8")
+        else:
+            originals[name] = (source / name).read_text(encoding="utf-8")
     for name, text in originals.items():
         target = tmp_path / name
         target.parent.mkdir(parents=True, exist_ok=True)

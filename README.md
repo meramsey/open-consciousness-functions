@@ -80,7 +80,7 @@ template, pacing and background policy without synthesizing speech.
 
 ## Explore the functions
 
-The current registry contains **58 OCF function records**, **83 structured
+The current catalog contains **58 OCF function records**, **83 structured
 command records** and **58 generated English session plans**. It comprises 55
 legacy-mapped functions (39 with historical source available and 16 without)
 plus 3 OCF-original functions. Historical source availability is not OCF

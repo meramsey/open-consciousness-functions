@@ -163,7 +163,7 @@
         "voice"
       ],
       "related_schemas": [],
-      "sha256": "0fa5033d96527eb587a5e77d4ce3abd2e9f85585c000274399611bd1306a7ad7",
+      "sha256": "390bdeccad60007768a2c6ea1a9ba08cbae12e3e2921597124fce645932fccce",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -252,7 +252,7 @@
         "voice doctor"
       ],
       "related_schemas": [],
-      "sha256": "a47bc436ab722f4aff48058b7b0333985bea90db43228f75bdf422704939a41e",
+      "sha256": "c946a28fd92e9b3fec4b76e0c45d9618fe6c4ad12a76f97b6847b2b9ad4b1124",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -276,7 +276,7 @@
         "voice"
       ],
       "related_schemas": [],
-      "sha256": "5b8c9630d08c945ae4be4609fda504d2742ea7a74bd0807572153cb4771b0eff",
+      "sha256": "22ce2c269b60458d4a0a049778fe6b55d9cbae9123f81fcc7deb13419efd4d28",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -493,7 +493,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "912e9e8abfccd0f567dc99de9c84212c06db8fd1e76bc4537604182c43a7d9fa",
+      "sha256": "a2bebd954326d0e29d6132f3f45de2639ee49a63781ab8df238ac421460d51e7",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -517,7 +517,7 @@
         "voice"
       ],
       "related_schemas": [],
-      "sha256": "403899ed6b22609bb7a68e185b14ff930384dd02d6af522f92a2ff8dd2e1da9b",
+      "sha256": "bf6a571d7411fd9cf8c54ae912ee9cc793a60a1836ac93addb87764902f5b3bd",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -851,9 +851,10 @@
         "functions list"
       ],
       "related_schemas": [
-        "schemas/function.schema.json"
+        "schemas/function.schema.json",
+        "schemas/localized-function.schema.json"
       ],
-      "sha256": "f01dd48aad67f5bebb1100408eaddf6c2882b6b899708f9c6dfcde6e4fd80ea2",
+      "sha256": "d7f0110a8c45a8aa7fac089dc8bf8b2f617129b3924bd969864dfcc71463c3bb",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1387,7 +1388,7 @@
       "related_schemas": [
         "schemas/function.schema.json"
       ],
-      "sha256": "4773063fe02239849ead0bf042c00714d25417973762fdd6fe1cbf4ce2cff60f",
+      "sha256": "325a512c906c809276c1115e6e8cdb2a9ec6e38d210117e5d69bcb917cfb90e9",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1657,7 +1658,7 @@
       "purpose": "Documentation map",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "e77fa7625e5ee44bb641b2826600a05b2dc3b325e4a9ec3e464ba9cc12fa7664",
+      "sha256": "f58b1b787f417283c6189a639d857da5bb12e4b313db6a360dd40803ce38e727",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -2016,7 +2017,7 @@
         "schemas/timed-transcript.schema.json",
         "schemas/voice-profile.schema.json"
       ],
-      "sha256": "c781fca569e36024a707d4b8e1a80b456b2d3e54db76bba673eac5ac3b6e6c53",
+      "sha256": "73f76c677606671884fd980d667ade736e264f7c0886f67afed8158f71bc0fa6",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4371,7 +4372,7 @@
         "locale validate"
       ],
       "related_schemas": [],
-      "sha256": "e7decff9e96ea02574e4a4dfd0332da053e98f7fee709ef0c570ee9308590025",
+      "sha256": "3696ab6153975757694157be4066617aa8fd79459290ab6c4cfb9861ba51f814",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5110,7 +5111,7 @@
       "related_schemas": [
         "schemas/localized-function.schema.json"
       ],
-      "sha256": "4252c4f68491282ed669be4ebc15fb6c7f4c01c47c35debfe820ed8e4eb28e74",
+      "sha256": "ea3c94099c2dfaaba07ab963495ef422e09863bf8d9884cea1978d0546c4d274",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {

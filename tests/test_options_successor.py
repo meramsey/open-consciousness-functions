@@ -22,7 +22,9 @@ def test_options_exact_speech_scope_behavior_and_predecessors():
     assert len(record["unchanged_protected"]) == 175
     assert sum(row["before"].count(successor.OLD) for row in record["speech"].values()) == 3
     before = yaml.safe_load(record["files"][successor.FUNCTION]["before"])
-    after = yaml.safe_load((REPO_ROOT / successor.FUNCTION).read_text(encoding="utf-8"))
+    from ocf_tools.locale_history import read_logical
+
+    after = yaml.safe_load(read_logical(REPO_ROOT, successor.FUNCTION, preserve_newlines=True))
     assert after == successor.approved_function(before)
     assert after["lifecycle"] == before["lifecycle"]
     assert after["commands"][0]["procedure"] == before["commands"][0]["procedure"]

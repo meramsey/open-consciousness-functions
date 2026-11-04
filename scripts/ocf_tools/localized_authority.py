@@ -93,9 +93,10 @@ def matches(record, locale="en-US", *, catalog=None, tag=None, query=None):
             description(record, locale, catalog=catalog),
         ]
         values += [
-            v["text"]
+            value
             for field in ("tags", "common_uses", "search_synonyms")
             for v in data.get(field, [])
+            for value in (v["text"], v.get("semantic_id", v["text"]))
         ]
         if not any(lookup_form(query) in lookup_form(value) for value in values):
             return False

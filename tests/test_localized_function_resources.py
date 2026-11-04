@@ -188,7 +188,9 @@ def test_repository_catalog_uses_readable_paths_and_preserves_cues():
 def test_noncanonical_locale_root_loads_its_sibling_function_registry(tmp_path):
     root = tmp_path / "locales"
     write_pack(root, function_resource())
-    source = REPO_ROOT / "functions/emotion/empathizing.yaml"
+    source = (
+        REPO_ROOT / "function-content/editorial/historical-functions/007/emotion/empathizing.yaml"
+    )
     target = tmp_path / "functions/emotion/empathizing.yaml"
     target.parent.mkdir(parents=True)
     shutil.copyfile(source, target)

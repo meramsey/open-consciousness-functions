@@ -170,11 +170,11 @@ def test_generation_and_freshness_contracts_are_deterministic_and_detect_drift(r
     _, root = records
     first = g.generate_all_content()
     assert first == g.generate_all_content()
-    assert len(first) == 13 and len({path for path, _ in first}) == 13
+    assert len(first) == 14 and len({path for path, _ in first}) == 14
     assert "function-field-sources.json" in {path for path, _ in first}
     assert not g.indexes_are_fresh()
     paths = g.build_all_generated_files()
-    assert len(paths) == 13 and all(path.is_relative_to(root) for path in paths)
+    assert len(paths) == 14 and all(path.is_relative_to(root) for path in paths)
     assert g.indexes_are_fresh()
     paths[0].write_text("changed metadata")
     assert not g.indexes_are_fresh()

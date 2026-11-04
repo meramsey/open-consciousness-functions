@@ -98,7 +98,7 @@ every event to be timed; a schedule-less (untimed) script must be timed first
 | Timed script (canonical) | `audio/scripts/<slug>.yaml`                   |
 | Timed transcript schema  | `schemas/timed-transcript.schema.json`        |
 | Template                 | `templates/timed-transcript.yaml`             |
-| Function records         | `functions/<domain>/<slug>.yaml`              |
+| Function records         | `locales/<tag>/OCF-XXX-000-Name.yaml`         |
 | Audio manifests          | `audio/manifests/OCF-AUDIO-*.yaml`            |
 | DSP state profiles       | `audio/background/state-profiles/`            |
 | Reusable sections        | `audio/templates/`                            |
@@ -256,7 +256,7 @@ sections:
 ocf new function
 ```
 
-Associate the script with a function (`functions/<domain>/<slug>.yaml`). If
+Associate the script with a function (`locales/en-US/OCF-XXX-000-Name.yaml`). If
 none exists yet, the wizard walks you through it. The function record holds
 the purpose, canonical command (`PLUS-FOCUS`, …), legacy mapping, safety
 level, and audio status — the timed script itself stays in `audio/scripts/`.

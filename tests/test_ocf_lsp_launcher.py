@@ -45,7 +45,7 @@ def checkout_launcher(repo_root, tmp_path):
 def test_launcher_symbols_cross_file_definition_unsaved_error_and_clean_shutdown(
     repo_root, tmp_path, checkout_launcher
 ):
-    path = repo_root / "functions/sleep/sleep-easy.yaml"
+    path = repo_root / "locales/en-US/OCF-SLP-005-Sleep-Easy.yaml"
     original = path.read_text(encoding="utf-8")
     command = [sys.executable, str(checkout_launcher), "--stdio"]
     rpc = Client(repo_root, tmp_path / "launcher-stderr.log", command=command)

@@ -230,7 +230,9 @@ def test_legacy_function_records_still_expose_existing_command_accessors():
 
 
 def test_function_schema_accepts_optional_structured_commands():
-    path = REPO_ROOT / "functions/foundation/attention.yaml"
+    path = (
+        REPO_ROOT / "function-content/editorial/historical-functions/007/foundation/attention.yaml"
+    )
     data = yaml.safe_load(path.read_text(encoding="utf-8"))
     data["commands"] = [
         {

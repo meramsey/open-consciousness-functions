@@ -36,7 +36,7 @@ def test_draft_headers_preserve_snapshot_and_resolve_staged_authority():
         assert "approved by OCF-APPROVED-CANDIDATES-001" in header
         assert '"spoken": "Plus ' in header
         assert "unavailable" not in header
-    assert "functions/experimental/intuition.yaml" in next(
+    assert "locales/en-US/OCF-EXP-006-Intuition.yaml" in next(
         text for name, text in plans.items() if "intuition" in name
     )
 

@@ -8,7 +8,9 @@ locales/
     manifest.yaml
     ui.yaml            operator- and player-facing strings
     narration.yaml     listener-facing spoken narration
-    functions.yaml     per-function narration templates
+    functions.yaml     shared generic function narration templates, when present
+    OCF-XXX-000-Name.yaml
+                       one complete function definition (domain: function)
   es/
     ...
 ```
@@ -21,6 +23,13 @@ Listener resources follow [the narration standard](../docs/NARRATION_STANDARD.md
 Translations preserve intent, autonomy, cue associations and pacing, using
 natural target-language phrasing rather than word-for-word English syntax.
 Canonical commands remain metadata and are never automatically translated.
+
+Complete function resources (`domain: function`) own a function's localized
+title, description, cues, ordered instructions, lifecycle, classification,
+narration sequence and readable narration together. They are discovered from the
+manifest and validated against the canonical en-US structural contract. A
+partial locale reports missing sections; it never inherits English speech. See
+[per-locale function authority](../docs/PER_LOCALE_FUNCTION_AUTHORITY.md).
 
 ## Adding a language
 
@@ -46,7 +55,7 @@ Canonical commands remain metadata and are never automatically translated.
 | `status`                           | `canonical`, `draft`, `machine`, `reviewed`               |
 | `semantic_version`                 | Semver for the *meaning* of the keys (see below)          |
 | `translation`                      | Source locale/version, translator, review date, notes     |
-| `resources[]`                      | `file`, `domain` (`ui` or `narration`), `description`     |
+| `resources[]`                      | `file`, `domain` (`ui`, `narration`, or `function`), `description` |
 | `plural_rules`                     | Optional CLDR-style overrides for this language           |
 
 ## Entries

@@ -4,7 +4,8 @@ Start with [the project README](../README.md). Pick one workflow rather than
 loading the entire documentation tree:
 
 - Author a function: [lifecycle](FUNCTION_LIFECYCLE.md), then
-  [source-first narration](SOURCE_FIRST_AUTHORING.md).
+  [source-first narration](SOURCE_FIRST_AUTHORING.md), within the
+  [per-locale function authority](PER_LOCALE_FUNCTION_AUTHORITY.md) model.
 - Review current titles/cues and historical lookup: [implemented decisions](EDITORIAL_REVIEW.md).
 - Review new original drafts and the Manifest successor: [editorial candidates](EDITORIAL_CANDIDATES.md).
 - Inspect the implemented four-function approval: [batch successor](EDITORIAL_BATCH_APPROVAL.md).

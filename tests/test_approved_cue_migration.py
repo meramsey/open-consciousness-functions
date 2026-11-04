@@ -470,8 +470,10 @@ def test_exact_user_decisions_integrity_and_unaffected_active_vocabulary():
         assert primary.id == f"OCF-CMD-{owner[4:]}-PRIMARY"
         name = ArtifactNamer().filename(owner, title, "en-US", "wav")
         assert owner in name and title.replace(":", "-").split()[0] in name
+        from ocf_tools.locale_history import logical_function_path
+
         before = yaml.safe_load(
-            author.source_text(record.path.relative_to(author.REPO_ROOT).as_posix())
+            author.source_text(logical_function_path(author.REPO_ROOT, record.id))
         )
         assert record.data["legacy"] == before["legacy"]
         assert record.data["lifecycle"] == before["lifecycle"]

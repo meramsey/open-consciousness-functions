@@ -229,3 +229,14 @@ def test_new_function_draft_is_local_self_contained_and_unrenderable():
     projected = project(data, REPO_ROOT / "locales/en-US/OCF-COG-999-Fixture.yaml", REPO_ROOT)
     assert projected.id == record.id
     assert projected.command_records[0].data["spoken"] is None
+
+
+@pytest.mark.unit
+def test_active_checkout_retires_the_legacy_function_registry():
+    from ocf_tools.function_catalog import load_functions
+    from ocf_tools.paths import REPO_ROOT
+
+    assert not (REPO_ROOT / "functions").exists()
+    records = load_functions(REPO_ROOT)
+    assert len(records) == 58
+    assert all(record.path.is_relative_to(REPO_ROOT / "locales/en-US") for record in records)

@@ -39,7 +39,9 @@ def test_verifier_decodes_utf8_independently_of_host_default(monkeypatch):
 @pytest.mark.parametrize("owner", subject.PAIRS)
 def test_current_cue_preserves_all_behavior_and_legacy_mappings(owner):
     record = load_function_by_id(owner)
-    name = record.path.relative_to(REPO_ROOT).as_posix()
+    from ocf_tools.locale_history import logical_function_path
+
+    name = logical_function_path(REPO_ROOT, owner)
     before = yaml.safe_load(subject.record()["files"][name]["before"])
     title, display, _, spoken = subject.PAIRS[owner]
     assert record.canonical_name == title

@@ -11,7 +11,6 @@ from setuptools.command.build_py import build_py
 DIRECTORIES = (
     "brand",
     "schemas",
-    "functions",
     "function-content",
     "locales",
     "templates",

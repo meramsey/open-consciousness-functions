@@ -127,9 +127,13 @@ def test_all_28_approvals_preserve_procedures_controls_and_deferred_metadata():
             "OCF-SEN-002",
         }:
             # Compare the naming-era purpose through the checked metadata successor.
+            from ocf_tools.locale_history import read_logical
+
             naming_view = yaml.safe_load(
                 before_guide_metadata(
-                    REPO_ROOT, decision["function_file"], owner.path.read_text(encoding="utf-8")
+                    REPO_ROOT,
+                    decision["function_file"],
+                    read_logical(REPO_ROOT, decision["function_file"], preserve_newlines=True),
                 )
             )
             assert naming_view["purpose"] == old["purpose"]
@@ -242,7 +246,9 @@ def test_keep_decisions_and_historical_lookup_are_distinct_from_activation():
     report = build()
     for row in ledger["kept_decisions"]:
         owner = load_function_by_id(row["function_id"])
-        name = owner.path.relative_to(REPO_ROOT).as_posix()
+        from ocf_tools.locale_history import logical_function_path, read_logical
+
+        name = logical_function_path(REPO_ROOT, owner.id)
         from ocf_tools.functional_metadata import record as metadata_record
 
         metadata_ledger = metadata_record()
@@ -255,7 +261,9 @@ def test_keep_decisions_and_historical_lookup_are_distinct_from_activation():
             )
             assert (
                 successors.sha(
-                    before_options(REPO_ROOT, name, owner.path.read_text(encoding="utf-8"))
+                    before_options(
+                        REPO_ROOT, name, read_logical(REPO_ROOT, name, preserve_newlines=True)
+                    )
                 )
                 == metadata_ledger["source_files"][name]["after_sha256"]
             )
