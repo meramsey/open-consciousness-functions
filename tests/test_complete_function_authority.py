@@ -81,3 +81,41 @@ def test_all_58_dry_run_resources_preserve_behavior_and_validate():
         )
         assert completeness(data, data)["status"] == "complete"
         assert not raw.startswith(b"\n")
+
+
+@pytest.mark.integration
+def test_all_functions_load_without_any_physical_global_registry(tmp_path):
+    import hashlib
+    import shutil
+
+    from ocf_tools.commands import localized_cue
+    from ocf_tools.function_catalog import load_functions
+    from ocf_tools.locale import LocaleCatalog
+    from ocf_tools.locale_history import historical_function_resources, read_logical
+    from ocf_tools.paths import REPO_ROOT
+
+    shutil.copytree(REPO_ROOT / "locales", tmp_path / "locales")
+    shutil.copytree(
+        REPO_ROOT / "function-content/editorial", tmp_path / "function-content/editorial"
+    )
+    assert not (tmp_path / "functions").exists()
+    records = load_functions(tmp_path)
+    catalog = LocaleCatalog(tmp_path / "locales")
+    assert not catalog.problems
+    assert len(records) == 58
+    assert all(record.path.is_relative_to(tmp_path / "locales/en-US") for record in records)
+    assert {row["status"] for row in catalog.function_completeness("es").values()} == {"missing"}
+    for record in records:
+        for command in record.command_records:
+            if command.data.get("availability", "active") == "active" and command.data.get(
+                "spoken"
+            ):
+                cue = localized_cue(record, command, catalog=catalog, strict=True)
+                assert cue["spoken_cue"] == command.data["spoken"]
+    for name, row in historical_function_resources(tmp_path).items():
+        assert (
+            hashlib.sha256(
+                read_logical(tmp_path, name, preserve_newlines=True).encode()
+            ).hexdigest()
+            == row["sha256"]
+        )

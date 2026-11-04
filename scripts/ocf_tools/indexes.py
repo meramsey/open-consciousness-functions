@@ -66,7 +66,10 @@ def discover_function_files() -> list[Path]:
     A deliberately overridden legacy directory remains a fixture/import adapter;
     the production registry never discovers old authoring files.
     """
-    if FUNCTIONS_DIR == REPO_ROOT / "functions" and (REPO_ROOT / "locales/en-US/manifest.yaml").is_file():
+    if (
+        FUNCTIONS_DIR == REPO_ROOT / "functions"
+        and (REPO_ROOT / "locales/en-US/manifest.yaml").is_file()
+    ):
         from .function_catalog import resources
 
         return [path for path, data in resources(REPO_ROOT)]

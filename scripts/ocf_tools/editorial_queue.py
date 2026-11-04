@@ -35,9 +35,21 @@ def fingerprint(function_id):
                 "locale": resolution.origin_locale,
             }
         )
+    source = owner.path.read_bytes()
+    from .locale_history import FUNCTION_AUTHORITY, FUNCTION_AUTHORITY_SHA256, _record, read_logical
+
+    migration = _record(REPO_ROOT, FUNCTION_AUTHORITY, FUNCTION_AUTHORITY_SHA256) or {}
+    relative = (
+        owner.path.relative_to(REPO_ROOT).as_posix() if owner.path.is_relative_to(REPO_ROOT) else ""
+    )
+    row = migration.get("locale_files", {}).get(relative)
+    if row and hashlib.sha256(source).hexdigest() == row["after_sha256"]:
+        logical = next(
+            name for name, value in migration["files"].items() if value["function_id"] == owner.id
+        )
+        source = read_logical(REPO_ROOT, logical, preserve_newlines=True).encode("utf-8")
     return hashlib.sha256(
-        owner.path.read_bytes()
-        + json.dumps(evidence, ensure_ascii=False, sort_keys=True).encode("utf-8")
+        source + json.dumps(evidence, ensure_ascii=False, sort_keys=True).encode("utf-8")
     ).hexdigest()
 
 

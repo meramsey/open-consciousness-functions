@@ -155,9 +155,11 @@ def test_current_registry_all_58_guides_have_exact_active_cues():
         text = documents[f"functions/{record.id}.md"]
         assert f"# {record.id}: {record.canonical_name}" in text
         assert guides.MISSING not in text
-        assert "Ordered activation procedure:" in text
-        assert "## Operating behavior and modes" in text
-        assert "## Complete readable canonical narration" in text
+        assert "## Activation" in text
+        assert "## Complete narration" in text
+        assert "## Declared catalog metadata" not in text
+        assert "hplus.function." not in text
+        assert "Canonical function:" not in text
         for command in record.command_records:
             if not is_active(command) or command.role == "legacy-alias":
                 continue

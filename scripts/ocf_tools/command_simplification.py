@@ -192,7 +192,7 @@ def verify(root=REPO_ROOT):
         raise OCFError("command simplification speech scope drift")
     for name in data["function_files"]:
         old = yaml.safe_load(data["files"][name]["before"])
-        current = before_guides(root, name, (root / name).read_text(encoding="utf-8"))
+        current = before_guides(root, name, read_logical(root, name))
         if yaml.safe_load(current) != approved_function(old):
             raise OCFError("command simplification changed behavior: " + name)
     from .locale_history import before_structural

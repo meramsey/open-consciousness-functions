@@ -466,6 +466,19 @@ def run_function_wizard() -> None:
         if slug.value
         else FUNCTIONS_DIR / primary_domain / f"{function_id.lower()}.yaml"
     )
+    locale_manifest = None
+    if (
+        FUNCTIONS_DIR == REPO_ROOT / "functions"
+        and (REPO_ROOT / "locales/en-US/manifest.yaml").is_file()
+    ):
+        from .function_catalog import draft_resource
+        from .locale import LocaleCatalog
+        from .models import function_from_dict
+        from .utils import yaml_safe_load
+
+        record = draft_resource(function_from_dict(record, target), LocaleCatalog())
+        target = REPO_ROOT / "locales/en-US" / f"{function_id}-{slug.value}.yaml"
+        locale_manifest = REPO_ROOT / "locales/en-US/manifest.yaml"
     print("\n--- Final review ---")
     print(yaml_safe_dump(record))
     confirm = ask_yes_no("Write this file?", default=True)
@@ -476,6 +489,11 @@ def run_function_wizard() -> None:
         print("Overwrite declined; nothing written.")
         return
     write_text_atomic(target, yaml_safe_dump(record))
+    if locale_manifest is not None:
+        manifest = yaml_safe_load(locale_manifest.read_text(encoding="utf-8"))
+        if not any(row["file"] == target.name for row in manifest["resources"]):
+            manifest["resources"].append({"file": target.name, "domain": "function"})
+            write_text_atomic(locale_manifest, yaml_safe_dump(manifest))
     result = validate_function_file(target)
     print_result(result)
     print("\nCreated: " + str(target.relative_to(REPO_ROOT)))

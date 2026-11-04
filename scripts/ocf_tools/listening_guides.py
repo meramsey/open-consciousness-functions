@@ -362,12 +362,108 @@ def function_guide_markdown(record, *, catalog=None, locale="en-US"):
                 "in_playback_sequence": False,
             }
         )
-    return function_markdown(
+    return reader_function_markdown(
         record,
         function_artwork_content(record.id, locale, catalog=catalog, strict=False),
         documentation=_function_document(record, locale, catalog),
         narration_sections=narration_sections,
     )
+
+
+def reader_function_markdown(record, content, *, documentation, narration_sections):
+    """Listener layout: exact useful wording, not an engineering inventory."""
+    lines = [
+        f"# {record.id}: {documentation['title']['text']}",
+        "",
+        "[All function guides](../index.md) · [General listening guide](../listening-guide.md)",
+        "",
+        documentation["short_description"]["text"],
+        "",
+    ]
+    for command in documentation["commands"]:
+        cue = command["cue_presentation"]
+        lines += [
+            "## "
+            + (
+                "Activation"
+                if command["designation"] == "primary"
+                else command["role"].replace("-", " ").title()
+            ),
+            "",
+            "Display cue: " + _literal(cue["display_cue"]),
+            "",
+        ]
+        if cue.get("spoken_cue"):
+            lines += ["Spoken cue: " + _literal(cue["spoken_cue"]), ""]
+        if command["procedure_steps"]:
+            lines += [
+                f"{index}. {step['instruction']['text']}"
+                for index, step in enumerate(command["procedure_steps"], 1)
+            ]
+            lines += [""]
+        for field in ("usage", "explanation"):
+            text = command.get(field, {}).get("text", "")
+            if text and text not in {
+                "This is the primary command for the function.",
+                "Use only when you choose to activate the documented function.",
+            }:
+                lines += [text, ""]
+    if documentation.get("lifecycle_scopes"):
+        lines += ["## Use and duration", ""]
+        lines += [
+            scope["description"]["text"] + "\n" for scope in documentation["lifecycle_scopes"]
+        ]
+    for field, heading in (("common_uses", "Common uses"), ("tags", "Tags")):
+        if documentation.get(field):
+            lines += ["## " + heading, ""]
+            lines += [
+                "- " + value["text"] + (" (draft)" if value.get("status") == "draft" else "")
+                for value in documentation[field]
+            ]
+            lines += [""]
+    if documentation["related_functions"]:
+        lines += ["## Related functions", ""]
+        lines += [
+            f"- [{row['title']['text']}]({row['function_id']}.md). {row['description']['text']}"
+            for row in documentation["related_functions"]
+        ]
+        lines += [""]
+    proposals = documentation.get("relationship_proposals", [])
+    if proposals:
+        lines += [
+            "## Draft optional suggestions",
+            "",
+            "Editorial suggestions for separate practices, not approved guidance or instructions to combine recordings.",
+            "",
+        ]
+        lines += [
+            f"- Draft {row['relationship_type']}: [{row['title']['text']}]({row['function_id']}.md). {row['description']['text']}"
+            for row in proposals
+        ]
+        lines += [""]
+    if record.safety_notes:
+        lines += ["## Function-specific precautions", ""]
+        lines += ["- " + note for note in record.safety_notes]
+        lines += [""]
+    lines += ["## Complete narration", ""]
+    headings = {
+        "opener": "Introduction",
+        "function-body": "Practice",
+        "closer": "Closing",
+        "access-close": "Access channel closure",
+    }
+    for section in narration_sections:
+        lines += [
+            "### " + headings.get(section["role"], section["role"].replace("-", " ").capitalize()),
+            "",
+            section["text"],
+            "",
+        ]
+    lines += [
+        f"Locale: {content['locale']} · Function version: {record.data['version']['current']}",
+        "",
+    ]
+    return "\n".join(lines)
 
 
 def markdown_documents():
@@ -1140,7 +1236,11 @@ def validate_portable_collection(output):
                         ].text
                         for key in metadata["entries"]
                     }
-                    extracted_resources += validate_extracted_narration(pdf_text, expected)
+                    extracted_resources += validate_extracted_narration(
+                        pdf_text,
+                        expected,
+                        markers=build_metadata.get("reader_layout") != "listener-focused-2",
+                    )
                 pdf_functions.add(record.id)
 
             def check_outlines(entries):
@@ -1198,7 +1298,7 @@ def validate_portable_collection(output):
     return result
 
 
-def validate_extracted_narration(extracted: str, expected: dict[str, str]) -> int:
+def validate_extracted_narration(extracted: str, expected: dict[str, str], *, markers=True) -> int:
     """Verify source letters/numbers inside each PDF resource section.
 
     PDF line wrapping, punctuation shaping and page labels are not speech
@@ -1210,6 +1310,11 @@ def validate_extracted_narration(extracted: str, expected: dict[str, str]) -> in
         return "".join(char for char in unicodedata.normalize("NFC", text) if char.isalnum())
 
     text = normalized(extracted)
+    if not markers:
+        for key, value in expected.items():
+            if normalized(value) not in text:
+                raise OCFError("PDF extraction is missing canonical narration text: " + key)
+        return len(expected)
     if len({normalized(key) for key in expected}) != len(expected):
         raise OCFError("ambiguous canonical PDF resource markers")
     markers = {key: text.rfind(normalized(key)) for key in expected}
@@ -1241,6 +1346,11 @@ def guide_build_manifest(records, edition, *, source_revision=None):
     }
     sources.update("locales/en-US/" + row["file"] for row in pack.manifest["resources"])
     sources.update(record.path.relative_to(REPO_ROOT).as_posix() for record in records)
+    from .locale_history import FUNCTION_AUTHORITY, historical_function_resources
+
+    if (REPO_ROOT / FUNCTION_AUTHORITY).is_file():
+        sources.add(FUNCTION_AUTHORITY)
+        sources.update(row["archive"] for row in historical_function_resources(REPO_ROOT).values())
     sources.update(
         "scripts/ocf_tools/" + name + ".py"
         for name in (
@@ -1252,11 +1362,14 @@ def guide_build_manifest(records, edition, *, source_revision=None):
             "cue_templates",
             "guide_review",
             "lifecycle",
+            "function_catalog",
+            "locale_history",
         )
     )
     return {
         "schema_version": "1.0",
         "kind": "source-driven-reader-guide-build",
+        "reader_layout": "listener-focused-2",
         "edition": edition,
         "locale": "en-US",
         "source_revision": source_revision,
@@ -1323,6 +1436,18 @@ def build_portable_collection(
         overwrite=False,
     )
     write_bytes_atomic(output / "index.pdf", pdf_bytes(directory), overwrite=False)
+    catalog = LocaleCatalog()
+    audit = {record.id: catalog.function_field_sources(record.id, "en-US") for record in records}
+    write_text_atomic(
+        output / "developer-audit.json",
+        json.dumps(
+            {"generated": True, "edition": edition, "functions": audit},
+            indent=2,
+            ensure_ascii=False,
+        )
+        + "\n",
+        overwrite=False,
+    )
     write_text_atomic(
         output / "build-manifest.json",
         json.dumps(manifest, indent=2, ensure_ascii=False, sort_keys=True) + "\n",

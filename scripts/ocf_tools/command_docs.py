@@ -171,6 +171,29 @@ def _function_document(
                     }
                 )
         view["procedure_steps"] = localized_steps
+        if function_metadata is not None and function_metadata.get("schema_version") == "2.0":
+            local_command = next(
+                row
+                for row in [
+                    function_metadata["activation"],
+                    *function_metadata["secondary_commands"],
+                ]
+                if row["command_id"] == metadata.id
+            )
+            view["procedure_steps"] = [
+                {
+                    "id": step["id"],
+                    "operation": step["operation"],
+                    "instruction": {
+                        **step["instruction"],
+                        "requested_locale": locale,
+                        "resolved_locale": locale,
+                        "fallback": False,
+                        "key": f"{record.id}/{metadata.id}/procedure_steps/{index}",
+                    },
+                }
+                for index, step in enumerate(local_command["procedure_steps"])
+            ]
 
         related_commands = []
         for relation, target_ids in (view.get("relationships") or {}).items():

@@ -181,7 +181,7 @@
       "purpose": "Function Index",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "4d995fea1f87a6935508f7f4c6bf80e274f27dd32a6030b155db4df41b370d38",
+      "sha256": "9965faf7a60e2f7bc689947b1375e702e88aa9cf6dd987560c0dea8a4917bc0c",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1013,7 +1013,7 @@
         "functions candidates"
       ],
       "related_schemas": [],
-      "sha256": "877468919977c0451d3c55100093ed39df4335952650811b4c12dc2cf39e51d4",
+      "sha256": "a3e5c4a3b65e88470c0c9a62098e5ab3a58ca5aa495bcc31bf7eebfa8c55e9ec",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1031,7 +1031,7 @@
       "purpose": "Editorial candidate review",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "e3a2b7b18307e082055dd6b6a37d288c60d02a7c73a089c054057b8fb9fa2914",
+      "sha256": "d8c6927e7eb70935a4eec45970005339a8c7dc1c34d6092f1d539c5b277aa87d",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1296,7 +1296,7 @@
       "purpose": "Welcome to OCF",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "85dfa0ef8078ff95a6f33af050e5885dce230069386dfd875b0fd9f665ed4726",
+      "sha256": "f26250c423e00cd25f2f8d11f3af278cabed8c0d3f375631fd410ebb6e10ec24",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1503,6 +1503,24 @@
       ],
       "related_schemas": [],
       "sha256": "55af85ddeaecf8413b11a71fea8114da37453fc8ba56e9f7a5cf7e9f46375859",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "docs/PER_LOCALE_FUNCTION_AUTHORITY.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Per-locale function authority (Option A)",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "b513ded0d42e09a7b129587f5a149c245441763d5188a5d98a4ef3773e12c775",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5092,7 +5110,7 @@
       "related_schemas": [
         "schemas/localized-function.schema.json"
       ],
-      "sha256": "702b19f4647577b24f58aab39683b5ec656d2e3434061c609d767fe64be0e0fd",
+      "sha256": "4252c4f68491282ed669be4ebc15fb6c7f4c01c47c35debfe820ed8e4eb28e74",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5520,7 +5538,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "cc5960bde3654c58e64595a8913b7cab34f38b3c347ac5bece22389ac4e5d069",
+      "sha256": "469403e96915268495c8ee45aaa2900bd9fa8386df91b120da2e4da57ae9e9a8",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5553,7 +5571,7 @@
         "voice audition"
       ],
       "related_schemas": [],
-      "sha256": "3ac363286118b80afb1c7b9fc0424228f3c1721dfb1f627128a50c47a3c5e6c3",
+      "sha256": "708ab3e88edc24f7373c835635ab98e3baabc011c75aa521309c3a012079d40c",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -5633,5 +5651,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 271
+  "total": 272
 }

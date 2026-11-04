@@ -150,7 +150,7 @@ def test_yaml_title_and_description_propagate_across_reader_outputs(
     )
     guide = listening_guides.function_guide_markdown(record, catalog=changed)
     assert "Synthetic fixture tag" in guide and "Synthetic fixture use" in guide
-    assert "Proposed optional relationships — DRAFT" in guide
+    assert "Draft optional suggestions" in guide
     listing = agent_api.list_functions(limit=10)
     assert any(r["name"] == "Distinctive fixture title" for r in listing["items"])
     assert "Distinctive fixture title" in listening_guides._guide_catalog(records)

@@ -166,6 +166,8 @@ def project(data, path, root):
             },
         }
     )
+    if data.get("historical_record") and history.get("id") != data["function_id"]:
+        raise OCFError("historical function identity does not match locale function")
     historical_fields = (
         "legacy",
         "aliases",

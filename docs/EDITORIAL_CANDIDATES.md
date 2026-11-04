@@ -14,7 +14,7 @@ entries remain a separate integrity cohort.
 | --- | --- | --- | --- |
 | Manifest revision | OCF-EXP-001 | [Exact supplied snapshot](../function-content/editorial/candidates/manifest-v2.en-US.yaml), versions 1.2.0 / 2.0.0 / 1.3.0 | Approved revision active; predecessor preserved. Existing Plus Manifest procedure retained. |
 | Dissolve | OCF-EXP-003 | [Exact supplied snapshot](../function-content/editorial/candidates/dissolve.en-US.yaml), all 1.0.0 | Approved: select pattern, inhale deeply, gently hold, cue in the mind, exhale slowly and easily. |
-| Intuition | OCF-EXP-006 | [Exact approved snapshot](../function-content/editorial/candidates/intuition.en-US.yaml), all 1.0.0 | [Registered authority](../functions/experimental/intuition.yaml); new body, closer and procedure explicitly approved. |
+| Intuition | OCF-EXP-006 | [Exact approved snapshot](../function-content/editorial/candidates/intuition.en-US.yaml), all 1.0.0 | [Registered authority](../locales/en-US/OCF-EXP-006-Intuition.yaml); new body, closer and procedure explicitly approved. |
 | Clear Zone | OCF-EXP-005 | [Exact supplied snapshot](../function-content/editorial/candidates/clear-zone.en-US.yaml), all 1.0.0 | Approved: easy inhale, selected cue in the mind, natural exhale; all three stable identities retained. |
 
 The source snapshot comments retain the author's original provisional-ID wording.

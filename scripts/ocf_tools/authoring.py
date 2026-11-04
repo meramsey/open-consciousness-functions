@@ -307,6 +307,8 @@ def schema_name(path: Path, data, root: Path, associations=None):
     if route_path.startswith("audio/session-plans/") and path.name == "_shared.json":
         return None  # Generator metadata, not a per-function declaration.
     if route_path.startswith("locales/"):
+        if isinstance(data, dict) and data.get("domain") == "function":
+            return "localized-function.schema.json"
         return (
             "locale-manifest.schema.json"
             if path.name == "manifest.yaml"
@@ -604,7 +606,38 @@ class AuthoringService:
                             str(identifier), kind, path, doc.span(("id",)), str(description)[:600]
                         )
                     )
-                if name == "locale-resource.schema.json":
+                if name == "localized-function.schema.json":
+                    identity = str(doc.data.get("function_id", ""))
+                    definitions.setdefault(identity, []).append(
+                        Definition(
+                            identity,
+                            "function",
+                            path,
+                            doc.span(("function_id",)),
+                            str(doc.data.get("title", {}).get("text", identity)),
+                            str(doc.data.get("locale", "")),
+                        )
+                    )
+                    for prefix, command in [
+                        (("activation",), doc.data.get("activation", {})),
+                        *[
+                            (("secondary_commands", index), command)
+                            for index, command in enumerate(doc.data.get("secondary_commands", []))
+                        ],
+                    ]:
+                        identity = command.get("command_id")
+                        if identity:
+                            definitions.setdefault(identity, []).append(
+                                Definition(
+                                    identity,
+                                    "command",
+                                    path,
+                                    doc.span((*prefix, "command_id")),
+                                    str(command.get("role", "activation")),
+                                    str(doc.data.get("locale", "")),
+                                )
+                            )
+                if name in {"locale-resource.schema.json", "localized-function.schema.json"}:
                     locale = str(doc.data.get("locale", ""))
                     for key, entry in (doc.data.get("entries") or {}).items():
                         description = (
@@ -721,8 +754,24 @@ class AuthoringService:
     def records(self):
         self.refresh()
         result = []
+        from .function_catalog import project
+
+        complete = {
+            doc.data["function_id"]: doc
+            for doc in self.documents.values()
+            if doc.data.get("domain") == "function"
+            and doc.data.get("schema_version") == "2.0"
+            and doc.data.get("locale") == "en-US"
+        }
+        for doc in complete.values():
+            try:
+                result.append(project(doc.data, doc.path, self.root))
+            except (OCFError, KeyError, TypeError, ValueError):
+                continue  # The document's own schema diagnostics explain incomplete edits.
         for doc in self.documents.values():
             data = doc.data
+            if data.get("id") in complete:
+                continue
             if schema_name(doc.path, data, self.root, self.associations) != "function.schema.json":
                 continue
             canonical = data.get("canonical")
@@ -821,7 +870,11 @@ class AuthoringService:
                                     "ocf.pacing-reference", str(exc), start=span.start, end=span.end
                                 )
                             )
-            if schema in {"locale-manifest.schema.json", "locale-resource.schema.json"}:
+            if schema in {
+                "locale-manifest.schema.json",
+                "locale-resource.schema.json",
+                "localized-function.schema.json",
+            }:
                 diagnostics.extend(
                     Diagnostic("ocf.locale-pack", problem) for problem in self.catalog().problems
                 )

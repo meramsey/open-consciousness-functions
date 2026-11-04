@@ -10,7 +10,7 @@ All four presented drafts received explicit full approval and final batch confir
 
 - Identity: `OCF-EXP-001` (registered).
 - Decision: approved and implemented; narration planning authorized; listening/release approval: false.
-- [Function authority](../functions/experimental/mobius-west.yaml)
+- [Function authority](../locales/en-US/OCF-EXP-001-Manifest.yaml)
 - [Exact candidate narration](../function-content/editorial/candidates/manifest-v2.en-US.yaml)
 
 - `OCF-CMD-EXP-001-PRIMARY` — activation / primary; display: `PLUS-MANIFEST`; spoken: **Plus Manifest**.
@@ -19,11 +19,11 @@ All four presented drafts received explicit full approval and final batch confir
 
 ```yaml
 purpose:
-  community_description: Sets a consciously selected future condition and completion
-    time through intention and total-self alignment.
-  source_description: null
   summary: Sets a consciously selected future condition and completion time through
     intention and total-self alignment.
+  source_description: null
+  community_description: Sets a consciously selected future condition and completion
+    time through intention and total-self alignment.
 lifecycle:
   activation: manual
   persistence: temporary
@@ -297,7 +297,7 @@ Listening and finished-session release remain pending. No approval is inferred f
 
 - Identity: `OCF-EXP-003` (registered).
 - Decision: approved and implemented; narration planning authorized; listening/release approval: false.
-- [Function authority](../functions/experimental/dissolve.yaml)
+- [Function authority](../locales/en-US/OCF-EXP-003-Dissolve.yaml)
 - [Exact candidate narration](../function-content/editorial/candidates/dissolve.en-US.yaml)
 
 - `OCF-CMD-EXP-003-PRIMARY` — activation / primary; display: `PLUS-DISSOLVE`; spoken: **Plus Dissolve**.
@@ -309,8 +309,8 @@ purpose:
   summary: Consciously dissolve a selected unwanted belief, expectation, emotional
     response or recurring life pattern while preserving useful learning.
   source_description: null
-  community_description: Release the sustaining pattern rather than ignore or suppress
-    a problem. Manifest is optional, not a prerequisite.
+  community_description: Consciously dissolve a selected unwanted belief, expectation,
+    emotional response or recurring life pattern while preserving useful learning.
 lifecycle:
   persistence: permanent
   activation: manual
@@ -322,15 +322,15 @@ lifecycle:
   scopes:
     capability:
       persistence: permanent
+      description_key: functions.ocf-exp-003.capability
       description: The learned ability is intended to remain available for deliberate
         use.
-      description_key: functions.ocf-exp-003.capability
     application:
       persistence: conditional
       activation: manual
+      description_key: functions.ocf-exp-003.application
       description: Each activation selects one unwanted belief, expectation, emotional
         response or recurring pattern; useful learning remains.
-      description_key: functions.ocf-exp-003.application
 ```
 
 ### Activation and command procedures
@@ -575,7 +575,7 @@ Listening and finished-session release remain pending. No approval is inferred f
 
 - Identity: `OCF-EXP-006` (registered).
 - Decision: approved and implemented; narration planning authorized; listening/release approval: false.
-- [Function authority](../functions/experimental/intuition.yaml)
+- [Function authority](../locales/en-US/OCF-EXP-006-Intuition.yaml)
 - [Exact candidate narration](../function-content/editorial/candidates/intuition.en-US.yaml)
 
 - `OCF-CMD-EXP-006-PRIMARY` — activation / primary; display: `PLUS-INTUITION`; spoken: **Plus Intuition**.
@@ -587,8 +587,9 @@ purpose:
   summary: Recognize, receive and understand intuitive guidance through the total
     self, heart-centered awareness, subconscious, higher self and wider consciousness.
   source_description: null
-  community_description: Calm discernment and constructive purposeful response; impressions
-    are not unquestionable evidence of external facts.
+  community_description: Recognize, receive and understand intuitive guidance through
+    the total self, heart-centered awareness, subconscious, higher self and wider
+    consciousness.
 lifecycle:
   persistence: permanent
   activation: automatic
@@ -827,7 +828,7 @@ Listening and finished-session release remain pending. No approval is inferred f
 
 - Identity: `OCF-EXP-005` (registered).
 - Decision: approved and implemented; narration planning authorized; listening/release approval: false.
-- [Function authority](../functions/experimental/clear-zone.yaml)
+- [Function authority](../locales/en-US/OCF-EXP-005-Clear-Zone.yaml)
 - [Exact candidate narration](../function-content/editorial/candidates/clear-zone.en-US.yaml)
 
 - `OCF-CMD-EXP-005-PRIMARY` — activation / primary; display: `PLUS-CLEAR ZONE`; spoken: **Plus Clear Zone**.
@@ -841,8 +842,8 @@ purpose:
   summary: Establish an ongoing intention to discourage unwanted insect contact while
     maintaining calm awareness.
   source_description: null
-  community_description: Experimental non-destructive intention with distinct automatic,
-    Observe and Suspend modes.
+  community_description: Establish an ongoing intention to discourage unwanted insect
+    contact while maintaining calm awareness.
 lifecycle:
   persistence: permanent
   activation: automatic
@@ -865,21 +866,21 @@ lifecycle:
   scopes:
     capability:
       persistence: permanent
-      description: Intended learned availability persists in every mode.
       description_key: functions.ocf-exp-005.capability
+      description: Intended learned availability persists in every mode.
     baseline:
       persistence: permanent
       activation: automatic
+      description_key: functions.ocf-exp-005.baseline
       description: Intended automatic non-destructive insect discouragement and calm
         awareness.
-      description_key: functions.ocf-exp-005.baseline
     application:
       persistence: conditional
       activation: manual
+      description_key: functions.ocf-exp-005.application
       description: Mutually exclusive Observe and Suspend overrides replace the prior
         mode and end at normal sleep onset, loss of consciousness or deliberate primary
         invocation.
-      description_key: functions.ocf-exp-005.application
 ```
 
 ### Activation and command procedures

@@ -56,6 +56,9 @@ def context(name: str, *, locale: str = "en-US", root=REPO_ROOT):
         function_from_dict(load_yaml_file(path), path)
         for path in sorted((root / "functions").rglob("*.yaml"))
     ]
+    from .function_catalog import load_functions
+
+    records = load_functions(root) or records
     from .candidate_approval import record as approval_record
 
     approval = approval_record(root)

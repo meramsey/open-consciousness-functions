@@ -137,7 +137,7 @@ def verify(root=REPO_ROOT):
     ):
         raise OCFError("Options successor baseline drift")
     old = yaml.safe_load(data["files"][FUNCTION]["before"])
-    if approved_function(old) != yaml.safe_load((root / FUNCTION).read_text(encoding="utf-8")):
+    if approved_function(old) != yaml.safe_load(read_logical(root, FUNCTION)):
         raise OCFError("Options changed function behavior or stable identities")
     old = yaml.safe_load(data["files"][NARRATION]["before"])
     from .locale_history import before_consolidation

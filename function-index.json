@@ -507,14 +507,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "habits",
             "status": "draft",
             "text": "habits"
           },
           {
+            "semantic_id": "intention",
             "status": "draft",
             "text": "intention"
           },
           {
+            "semantic_id": "self-direction",
             "status": "draft",
             "text": "self-direction"
           }
@@ -534,7 +537,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/automation/see-be.yaml",
+      "source_file": "locales/en-US/OCF-AUT-001-Automatic-Action.yaml",
       "tags": "habits (draft); intention (draft); self-direction (draft)"
     },
     {
@@ -982,14 +985,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "circulation",
             "status": "draft",
             "text": "circulation"
           },
           {
+            "semantic_id": "visualization",
             "status": "draft",
             "text": "visualization"
           },
           {
+            "semantic_id": "mental-clarity",
             "status": "draft",
             "text": "mental-clarity"
           }
@@ -1009,7 +1015,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/brain-repairs.yaml",
+      "source_file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
       "tags": "circulation (draft); visualization (draft); mental-clarity (draft)"
     },
     {
@@ -1428,14 +1434,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "circulation",
             "status": "draft",
             "text": "circulation"
           },
           {
+            "semantic_id": "body-awareness",
             "status": "draft",
             "text": "body-awareness"
           },
           {
+            "semantic_id": "visualization",
             "status": "draft",
             "text": "visualization"
           }
@@ -1455,7 +1464,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/circulation.yaml",
+      "source_file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
       "tags": "circulation (draft); body-awareness (draft); visualization (draft)"
     },
     {
@@ -1902,14 +1911,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "comfort",
             "status": "draft",
             "text": "comfort"
           },
           {
+            "semantic_id": "body-awareness",
             "status": "draft",
             "text": "body-awareness"
           },
           {
+            "semantic_id": "relaxation",
             "status": "draft",
             "text": "relaxation"
           }
@@ -1929,7 +1941,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/de-discomfort.yaml",
+      "source_file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
       "tags": "comfort (draft); body-awareness (draft); relaxation (draft)"
     },
     {
@@ -2352,14 +2364,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "body-awareness",
             "status": "draft",
             "text": "body-awareness"
           },
           {
+            "semantic_id": "renewal",
             "status": "draft",
             "text": "renewal"
           },
           {
+            "semantic_id": "visualization",
             "status": "draft",
             "text": "visualization"
           }
@@ -2379,7 +2394,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/de-tox-body.yaml",
+      "source_file": "locales/en-US/OCF-BOD-004-Detox.yaml",
       "tags": "body-awareness (draft); renewal (draft); visualization (draft)"
     },
     {
@@ -2853,14 +2868,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "eating-choices",
             "status": "draft",
             "text": "eating-choices"
           },
           {
+            "semantic_id": "habits",
             "status": "draft",
             "text": "habits"
           },
           {
+            "semantic_id": "self-direction",
             "status": "draft",
             "text": "self-direction"
           }
@@ -2880,7 +2898,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/eat-no-eat.yaml",
+      "source_file": "locales/en-US/OCF-BOD-005-Appetite-Choice.yaml",
       "tags": "eating-choices (draft); habits (draft); self-direction (draft)"
     },
     {
@@ -3315,14 +3333,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "circulation",
             "status": "draft",
             "text": "circulation"
           },
           {
+            "semantic_id": "calm",
             "status": "draft",
             "text": "calm"
           },
           {
+            "semantic_id": "body-awareness",
             "status": "draft",
             "text": "body-awareness"
           }
@@ -3342,7 +3363,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/heart-repairs.yaml",
+      "source_file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
       "tags": "circulation (draft); calm (draft); body-awareness (draft)"
     },
     {
@@ -3795,14 +3816,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "calm",
             "status": "draft",
             "text": "calm"
           },
           {
+            "semantic_id": "relaxation",
             "status": "draft",
             "text": "relaxation"
           },
           {
+            "semantic_id": "body-awareness",
             "status": "draft",
             "text": "body-awareness"
           }
@@ -3822,7 +3846,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/hypertension.yaml",
+      "source_file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
       "tags": "calm (draft); relaxation (draft); body-awareness (draft)"
     },
     {
@@ -4234,14 +4258,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "body-awareness",
             "status": "draft",
             "text": "body-awareness"
           },
           {
+            "semantic_id": "visualization",
             "status": "draft",
             "text": "visualization"
           },
           {
+            "semantic_id": "balance",
             "status": "draft",
             "text": "balance"
           }
@@ -4261,7 +4288,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/immunizing.yaml",
+      "source_file": "locales/en-US/OCF-BOD-008-Immune-Readiness.yaml",
       "tags": "body-awareness (draft); visualization (draft); balance (draft)"
     },
     {
@@ -4700,14 +4727,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "breathing",
             "status": "draft",
             "text": "breathing"
           },
           {
+            "semantic_id": "body-awareness",
             "status": "draft",
             "text": "body-awareness"
           },
           {
+            "semantic_id": "comfort",
             "status": "draft",
             "text": "comfort"
           }
@@ -4727,7 +4757,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/lungs-repairs.yaml",
+      "source_file": "locales/en-US/OCF-BOD-009-Breathe-Better.yaml",
       "tags": "breathing (draft); body-awareness (draft); comfort (draft)"
     },
     {
@@ -5244,14 +5274,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "nourishment",
             "status": "draft",
             "text": "nourishment"
           },
           {
+            "semantic_id": "intention",
             "status": "draft",
             "text": "intention"
           },
           {
+            "semantic_id": "body-awareness",
             "status": "draft",
             "text": "body-awareness"
           }
@@ -5271,7 +5304,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/nutricia.yaml",
+      "source_file": "locales/en-US/OCF-BOD-010-Nutricia.yaml",
       "tags": "nourishment (draft); intention (draft); body-awareness (draft)"
     },
     {
@@ -5713,14 +5746,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "transitions",
             "status": "draft",
             "text": "transitions"
           },
           {
+            "semantic_id": "emotional-balance",
             "status": "draft",
             "text": "emotional-balance"
           },
           {
+            "semantic_id": "comfort",
             "status": "draft",
             "text": "comfort"
           }
@@ -5740,7 +5776,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/passages.yaml",
+      "source_file": "locales/en-US/OCF-BOD-011-Hormonal-Transitions.yaml",
       "tags": "transitions (draft); emotional-balance (draft); comfort (draft)"
     },
     {
@@ -6330,14 +6366,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "sexual-awareness",
             "status": "draft",
             "text": "sexual-awareness"
           },
           {
+            "semantic_id": "self-direction",
             "status": "draft",
             "text": "self-direction"
           },
           {
+            "semantic_id": "balance",
             "status": "draft",
             "text": "balance"
           }
@@ -6357,7 +6396,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/sex-drive.yaml",
+      "source_file": "locales/en-US/OCF-BOD-012-Sex-Drive.yaml",
       "tags": "sexual-awareness (draft); self-direction (draft); balance (draft)"
     },
     {
@@ -6836,14 +6875,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "body-awareness",
             "status": "draft",
             "text": "body-awareness"
           },
           {
+            "semantic_id": "renewal",
             "status": "draft",
             "text": "renewal"
           },
           {
+            "semantic_id": "balance",
             "status": "draft",
             "text": "balance"
           }
@@ -6863,7 +6905,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/body/tune-up.yaml",
+      "source_file": "locales/en-US/OCF-BOD-013-Body-Tune-Up.yaml",
       "tags": "body-awareness (draft); renewal (draft); balance (draft)"
     },
     {
@@ -7349,14 +7391,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "renewal",
             "status": "draft",
             "text": "renewal"
           },
           {
+            "semantic_id": "visualization",
             "status": "draft",
             "text": "visualization"
           },
           {
+            "semantic_id": "body-awareness",
             "status": "draft",
             "text": "body-awareness"
           }
@@ -7376,7 +7421,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/body/regenerate.yaml",
+      "source_file": "locales/en-US/OCF-BOD-014-Regenerate.yaml",
       "tags": "renewal (draft); visualization (draft); body-awareness (draft)"
     },
     {
@@ -7963,14 +8008,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "comfort",
             "status": "draft",
             "text": "comfort"
           },
           {
+            "semantic_id": "body-awareness",
             "status": "draft",
             "text": "body-awareness"
           },
           {
+            "semantic_id": "self-direction",
             "status": "draft",
             "text": "self-direction"
           }
@@ -7990,7 +8038,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/body/short-fix.yaml",
+      "source_file": "locales/en-US/OCF-BOD-015-Temporary-Numbing.yaml",
       "tags": "comfort (draft); body-awareness (draft); self-direction (draft)"
     },
     {
@@ -8421,14 +8469,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "memory",
             "status": "draft",
             "text": "memory"
           },
           {
+            "semantic_id": "reflection",
             "status": "draft",
             "text": "reflection"
           },
           {
+            "semantic_id": "inner-awareness",
             "status": "draft",
             "text": "inner-awareness"
           }
@@ -8448,7 +8499,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/cognition/access-to-information.yaml",
+      "source_file": "locales/en-US/OCF-COG-001-Information-Access.yaml",
       "tags": "memory (draft); reflection (draft); inner-awareness (draft)"
     },
     {
@@ -8889,14 +8940,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "numbers",
             "status": "draft",
             "text": "numbers"
           },
           {
+            "semantic_id": "concentration",
             "status": "draft",
             "text": "concentration"
           },
           {
+            "semantic_id": "thinking",
             "status": "draft",
             "text": "thinking"
           }
@@ -8916,7 +8970,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/cognition/buy-the-numbers.yaml",
+      "source_file": "locales/en-US/OCF-COG-002-Mental-Calculation.yaml",
       "tags": "numbers (draft); concentration (draft); thinking (draft)"
     },
     {
@@ -9417,14 +9471,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "reflection",
             "status": "draft",
             "text": "reflection"
           },
           {
+            "semantic_id": "inner-awareness",
             "status": "draft",
             "text": "inner-awareness"
           },
           {
+            "semantic_id": "calm",
             "status": "draft",
             "text": "calm"
           }
@@ -9444,7 +9501,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/cognition/contemplation.yaml",
+      "source_file": "locales/en-US/OCF-COG-003-Contemplation.yaml",
       "tags": "reflection (draft); inner-awareness (draft); calm (draft)"
     },
     {
@@ -9996,14 +10053,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "memory",
             "status": "draft",
             "text": "memory"
           },
           {
+            "semantic_id": "learning",
             "status": "draft",
             "text": "learning"
           },
           {
+            "semantic_id": "attention",
             "status": "draft",
             "text": "attention"
           }
@@ -10023,7 +10083,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/cognition/imprint.yaml",
+      "source_file": "locales/en-US/OCF-COG-004-Imprint.yaml",
       "tags": "memory (draft); learning (draft); attention (draft)"
     },
     {
@@ -10502,14 +10562,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "choices",
             "status": "draft",
             "text": "choices"
           },
           {
+            "semantic_id": "reflection",
             "status": "draft",
             "text": "reflection"
           },
           {
+            "semantic_id": "thinking",
             "status": "draft",
             "text": "thinking"
           }
@@ -10529,7 +10592,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/cognition/options.yaml",
+      "source_file": "locales/en-US/OCF-COG-005-Options.yaml",
       "tags": "choices (draft); reflection (draft); thinking (draft)"
     },
     {
@@ -10969,14 +11032,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "memory",
             "status": "draft",
             "text": "memory"
           },
           {
+            "semantic_id": "learning",
             "status": "draft",
             "text": "learning"
           },
           {
+            "semantic_id": "reflection",
             "status": "draft",
             "text": "reflection"
           }
@@ -10996,7 +11062,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/cognition/recall.yaml",
+      "source_file": "locales/en-US/OCF-COG-006-Recall.yaml",
       "tags": "memory (draft); learning (draft); reflection (draft)"
     },
     {
@@ -11435,14 +11501,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "thinking",
             "status": "draft",
             "text": "thinking"
           },
           {
+            "semantic_id": "mental-clarity",
             "status": "draft",
             "text": "mental-clarity"
           },
           {
+            "semantic_id": "concentration",
             "status": "draft",
             "text": "concentration"
           }
@@ -11462,7 +11531,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/cognition/think-fast.yaml",
+      "source_file": "locales/en-US/OCF-COG-007-Think-Fast.yaml",
       "tags": "thinking (draft); mental-clarity (draft); concentration (draft)"
     },
     {
@@ -11877,14 +11946,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "communication",
             "status": "draft",
             "text": "communication"
           },
           {
+            "semantic_id": "confidence",
             "status": "draft",
             "text": "confidence"
           },
           {
+            "semantic_id": "expression",
             "status": "draft",
             "text": "expression"
           }
@@ -11904,7 +11976,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/communication/speak-up.yaml",
+      "source_file": "locales/en-US/OCF-COM-001-Speak-Up.yaml",
       "tags": "communication (draft); confidence (draft); expression (draft)"
     },
     {
@@ -12407,14 +12479,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "calm",
             "status": "draft",
             "text": "calm"
           },
           {
+            "semantic_id": "body-awareness",
             "status": "draft",
             "text": "body-awareness"
           },
           {
+            "semantic_id": "safety",
             "status": "draft",
             "text": "safety"
           }
@@ -12434,7 +12509,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/emergency/emergency-injury.yaml",
+      "source_file": "locales/en-US/OCF-EMG-001-Injury-Response.yaml",
       "tags": "calm (draft); body-awareness (draft); safety (draft)"
     },
     {
@@ -12937,14 +13012,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "calm",
             "status": "draft",
             "text": "calm"
           },
           {
+            "semantic_id": "body-awareness",
             "status": "draft",
             "text": "body-awareness"
           },
           {
+            "semantic_id": "safety",
             "status": "draft",
             "text": "safety"
           }
@@ -12964,7 +13042,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/emergency/emergency-toxic.yaml",
+      "source_file": "locales/en-US/OCF-EMG-002-Toxic-Exposure-Response.yaml",
       "tags": "calm (draft); body-awareness (draft); safety (draft)"
     },
     {
@@ -13379,14 +13457,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "emotional-balance",
             "status": "draft",
             "text": "emotional-balance"
           },
           {
+            "semantic_id": "letting-go",
             "status": "draft",
             "text": "letting-go"
           },
           {
+            "semantic_id": "calm",
             "status": "draft",
             "text": "calm"
           }
@@ -13406,7 +13487,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/emotion/let-go.yaml",
+      "source_file": "locales/en-US/OCF-EMO-001-Let-Go.yaml",
       "tags": "emotional-balance (draft); letting-go (draft); calm (draft)"
     },
     {
@@ -13857,14 +13938,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "emotional-balance",
             "status": "draft",
             "text": "emotional-balance"
           },
           {
+            "semantic_id": "letting-go",
             "status": "draft",
             "text": "letting-go"
           },
           {
+            "semantic_id": "attention",
             "status": "draft",
             "text": "attention"
           }
@@ -13884,7 +13968,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/emotion/off-loading.yaml",
+      "source_file": "locales/en-US/OCF-EMO-002-Offload.yaml",
       "tags": "emotional-balance (draft); letting-go (draft); attention (draft)"
     },
     {
@@ -14379,14 +14463,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "communication",
             "status": "draft",
             "text": "communication"
           },
           {
+            "semantic_id": "empathy",
             "status": "draft",
             "text": "empathy"
           },
           {
+            "semantic_id": "inner-awareness",
             "status": "draft",
             "text": "inner-awareness"
           }
@@ -14406,7 +14493,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/emotion/empathizing.yaml",
+      "source_file": "locales/en-US/OCF-EMO-003-Empathize.yaml",
       "tags": "communication (draft); empathy (draft); inner-awareness (draft)"
     },
     {
@@ -14850,14 +14937,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "intention",
             "status": "draft",
             "text": "intention"
           },
           {
+            "semantic_id": "visualization",
             "status": "draft",
             "text": "visualization"
           },
           {
+            "semantic_id": "self-direction",
             "status": "draft",
             "text": "self-direction"
           }
@@ -14877,7 +14967,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/experimental/mobius-west.yaml",
+      "source_file": "locales/en-US/OCF-EXP-001-Manifest.yaml",
       "tags": "intention (draft); visualization (draft); self-direction (draft)"
     },
     {
@@ -15520,14 +15610,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "comfort",
             "status": "draft",
             "text": "comfort"
           },
           {
+            "semantic_id": "temperature",
             "status": "draft",
             "text": "temperature"
           },
           {
+            "semantic_id": "visualization",
             "status": "draft",
             "text": "visualization"
           }
@@ -15547,7 +15640,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/experimental/zoning.yaml",
+      "source_file": "locales/en-US/OCF-EXP-002-Insulate.yaml",
       "tags": "comfort (draft); temperature (draft); visualization (draft)"
     },
     {
@@ -15763,14 +15856,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "letting-go",
             "status": "draft",
             "text": "letting-go"
           },
           {
+            "semantic_id": "emotional-balance",
             "status": "draft",
             "text": "emotional-balance"
           },
           {
+            "semantic_id": "self-direction",
             "status": "draft",
             "text": "self-direction"
           }
@@ -15790,7 +15886,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "in-progress",
       "source_availability": "pending-source-review",
-      "source_file": "functions/experimental/dissolve.yaml",
+      "source_file": "locales/en-US/OCF-EXP-003-Dissolve.yaml",
       "tags": "letting-go (draft); emotional-balance (draft); self-direction (draft)"
     },
     {
@@ -16143,14 +16239,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "intention",
             "status": "draft",
             "text": "intention"
           },
           {
+            "semantic_id": "calm",
             "status": "draft",
             "text": "calm"
           },
           {
+            "semantic_id": "surroundings",
             "status": "draft",
             "text": "surroundings"
           }
@@ -16170,7 +16269,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "in-progress",
       "source_availability": "pending-source-review",
-      "source_file": "functions/experimental/clear-zone.yaml",
+      "source_file": "locales/en-US/OCF-EXP-005-Clear-Zone.yaml",
       "tags": "intention (draft); calm (draft); surroundings (draft)"
     },
     {
@@ -16350,14 +16449,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "inner-awareness",
             "status": "draft",
             "text": "inner-awareness"
           },
           {
+            "semantic_id": "reflection",
             "status": "draft",
             "text": "reflection"
           },
           {
+            "semantic_id": "discernment",
             "status": "draft",
             "text": "discernment"
           }
@@ -16377,7 +16479,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "in-progress",
       "source_availability": "pending-source-review",
-      "source_file": "functions/experimental/intuition.yaml",
+      "source_file": "locales/en-US/OCF-EXP-006-Intuition.yaml",
       "tags": "inner-awareness (draft); reflection (draft); discernment (draft)"
     },
     {
@@ -16828,14 +16930,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "energy",
             "status": "draft",
             "text": "energy"
           },
           {
+            "semantic_id": "intention",
             "status": "draft",
             "text": "intention"
           },
           {
+            "semantic_id": "inner-awareness",
             "status": "draft",
             "text": "inner-awareness"
           }
@@ -16855,7 +16960,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/foundation/energize.yaml",
+      "source_file": "locales/en-US/OCF-FND-001-Access-to-Energy.yaml",
       "tags": "energy (draft); intention (draft); inner-awareness (draft)"
     },
     {
@@ -17308,14 +17413,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "attention",
             "status": "draft",
             "text": "attention"
           },
           {
+            "semantic_id": "concentration",
             "status": "draft",
             "text": "concentration"
           },
           {
+            "semantic_id": "self-direction",
             "status": "draft",
             "text": "self-direction"
           }
@@ -17335,7 +17443,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "complete",
       "source_availability": "available",
-      "source_file": "functions/foundation/attention.yaml",
+      "source_file": "locales/en-US/OCF-FND-002-Focus.yaml",
       "tags": "attention (draft); concentration (draft); self-direction (draft)"
     },
     {
@@ -17777,14 +17885,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "rest",
             "status": "draft",
             "text": "rest"
           },
           {
+            "semantic_id": "sleep",
             "status": "draft",
             "text": "sleep"
           },
           {
+            "semantic_id": "energy",
             "status": "draft",
             "text": "energy"
           }
@@ -17804,7 +17915,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/foundation/recharge.yaml",
+      "source_file": "locales/en-US/OCF-FND-003-Quick-Recharge.yaml",
       "tags": "rest (draft); sleep (draft); energy (draft)"
     },
     {
@@ -18267,14 +18378,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "relaxation",
             "status": "draft",
             "text": "relaxation"
           },
           {
+            "semantic_id": "calm",
             "status": "draft",
             "text": "calm"
           },
           {
+            "semantic_id": "body-awareness",
             "status": "draft",
             "text": "body-awareness"
           }
@@ -18296,7 +18410,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/foundation/relax.yaml",
+      "source_file": "locales/en-US/OCF-FND-004-Relax.yaml",
       "tags": "relaxation (draft); calm (draft); body-awareness (draft)"
     },
     {
@@ -18717,14 +18831,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "energy",
             "status": "draft",
             "text": "energy"
           },
           {
+            "semantic_id": "confidence",
             "status": "draft",
             "text": "confidence"
           },
           {
+            "semantic_id": "mental-clarity",
             "status": "draft",
             "text": "mental-clarity"
           }
@@ -18744,7 +18861,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/foundation/reset.yaml",
+      "source_file": "locales/en-US/OCF-FND-005-Reset.yaml",
       "tags": "energy (draft); confidence (draft); mental-clarity (draft)"
     },
     {
@@ -19217,14 +19334,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "self-direction",
             "status": "draft",
             "text": "self-direction"
           },
           {
+            "semantic_id": "release",
             "status": "draft",
             "text": "release"
           },
           {
+            "semantic_id": "function-lifecycle",
             "status": "draft",
             "text": "function-lifecycle"
           }
@@ -19244,7 +19364,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/foundation/release.yaml",
+      "source_file": "locales/en-US/OCF-FND-006-Release.yaml",
       "tags": "self-direction (draft); release (draft); function-lifecycle (draft)"
     },
     {
@@ -19722,14 +19842,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "habits",
             "status": "draft",
             "text": "habits"
           },
           {
+            "semantic_id": "self-direction",
             "status": "draft",
             "text": "self-direction"
           },
           {
+            "semantic_id": "letting-go",
             "status": "draft",
             "text": "letting-go"
           }
@@ -19749,7 +19872,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/lifestyle/de-hab.yaml",
+      "source_file": "locales/en-US/OCF-LIF-001-Habit-Freedom.yaml",
       "tags": "habits (draft); self-direction (draft); letting-go (draft)"
     },
     {
@@ -20188,14 +20311,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "action",
             "status": "draft",
             "text": "action"
           },
           {
+            "semantic_id": "intention",
             "status": "draft",
             "text": "intention"
           },
           {
+            "semantic_id": "motivation",
             "status": "draft",
             "text": "motivation"
           }
@@ -20215,7 +20341,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/performance/do-this-now.yaml",
+      "source_file": "locales/en-US/OCF-PRF-001-Do-This-Now.yaml",
       "tags": "action (draft); intention (draft); motivation (draft)"
     },
     {
@@ -20661,14 +20787,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "confidence",
             "status": "draft",
             "text": "confidence"
           },
           {
+            "semantic_id": "inner-awareness",
             "status": "draft",
             "text": "inner-awareness"
           },
           {
+            "semantic_id": "self-direction",
             "status": "draft",
             "text": "self-direction"
           }
@@ -20688,7 +20817,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/performance/eight-great.yaml",
+      "source_file": "locales/en-US/OCF-PRF-002-Inner-Power.yaml",
       "tags": "confidence (draft); inner-awareness (draft); self-direction (draft)"
     },
     {
@@ -21129,14 +21258,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "movement",
             "status": "draft",
             "text": "movement"
           },
           {
+            "semantic_id": "coordination",
             "status": "draft",
             "text": "coordination"
           },
           {
+            "semantic_id": "body-awareness",
             "status": "draft",
             "text": "body-awareness"
           }
@@ -21156,7 +21288,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/performance/synchronizing.yaml",
+      "source_file": "locales/en-US/OCF-PRF-003-Coordination.yaml",
       "tags": "movement (draft); coordination (draft); body-awareness (draft)"
     },
     {
@@ -21668,14 +21800,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "movement",
             "status": "draft",
             "text": "movement"
           },
           {
+            "semantic_id": "coordination",
             "status": "draft",
             "text": "coordination"
           },
           {
+            "semantic_id": "body-awareness",
             "status": "draft",
             "text": "body-awareness"
           }
@@ -21695,7 +21830,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/performance/light-foot.yaml",
+      "source_file": "locales/en-US/OCF-PRF-004-Light-Foot.yaml",
       "tags": "movement (draft); coordination (draft); body-awareness (draft)"
     },
     {
@@ -22193,14 +22328,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "intention",
             "status": "draft",
             "text": "intention"
           },
           {
+            "semantic_id": "visualization",
             "status": "draft",
             "text": "visualization"
           },
           {
+            "semantic_id": "confidence",
             "status": "draft",
             "text": "confidence"
           }
@@ -22220,7 +22358,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/performance/make-your-day.yaml",
+      "source_file": "locales/en-US/OCF-PRF-005-Make-Your-Day.yaml",
       "tags": "intention (draft); visualization (draft); confidence (draft)"
     },
     {
@@ -22814,14 +22952,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "movement",
             "status": "draft",
             "text": "movement"
           },
           {
+            "semantic_id": "attention",
             "status": "draft",
             "text": "attention"
           },
           {
+            "semantic_id": "self-direction",
             "status": "draft",
             "text": "self-direction"
           }
@@ -22841,7 +22982,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/performance/strong-quick.yaml",
+      "source_file": "locales/en-US/OCF-PRF-006-Strong-Quick.yaml",
       "tags": "movement (draft); attention (draft); self-direction (draft)"
     },
     {
@@ -23378,14 +23519,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "sensory-awareness",
             "status": "draft",
             "text": "sensory-awareness"
           },
           {
+            "semantic_id": "hearing",
             "status": "draft",
             "text": "hearing"
           },
           {
+            "semantic_id": "imagination",
             "status": "draft",
             "text": "imagination"
           }
@@ -23407,7 +23551,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/sensory/hearing.yaml",
+      "source_file": "locales/en-US/OCF-SEN-001-Hearing.yaml",
       "tags": "sensory-awareness (draft); hearing (draft); imagination (draft)"
     },
     {
@@ -23878,14 +24022,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "sensory-awareness",
             "status": "draft",
             "text": "sensory-awareness"
           },
           {
+            "semantic_id": "visualization",
             "status": "draft",
             "text": "visualization"
           },
           {
+            "semantic_id": "visual-memory",
             "status": "draft",
             "text": "visual-memory"
           }
@@ -23905,7 +24052,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "permanent",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/sensory/seeing.yaml",
+      "source_file": "locales/en-US/OCF-SEN-002-Seeing.yaml",
       "tags": "sensory-awareness (draft); visualization (draft); visual-memory (draft)"
     },
     {
@@ -24567,14 +24714,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "sensory-awareness",
             "status": "draft",
             "text": "sensory-awareness"
           },
           {
+            "semantic_id": "smell",
             "status": "draft",
             "text": "smell"
           },
           {
+            "semantic_id": "imagination",
             "status": "draft",
             "text": "imagination"
           }
@@ -24594,7 +24744,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/sensory/smell.yaml",
+      "source_file": "locales/en-US/OCF-SEN-003-Smell.yaml",
       "tags": "sensory-awareness (draft); smell (draft); imagination (draft)"
     },
     {
@@ -25231,14 +25381,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "sensory-awareness",
             "status": "draft",
             "text": "sensory-awareness"
           },
           {
+            "semantic_id": "taste",
             "status": "draft",
             "text": "taste"
           },
           {
+            "semantic_id": "imagination",
             "status": "draft",
             "text": "imagination"
           }
@@ -25258,7 +25411,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/sensory/taste.yaml",
+      "source_file": "locales/en-US/OCF-SEN-004-Taste.yaml",
       "tags": "sensory-awareness (draft); taste (draft); imagination (draft)"
     },
     {
@@ -25920,14 +26073,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "sensory-awareness",
             "status": "draft",
             "text": "sensory-awareness"
           },
           {
+            "semantic_id": "touch",
             "status": "draft",
             "text": "touch"
           },
           {
+            "semantic_id": "imagination",
             "status": "draft",
             "text": "imagination"
           }
@@ -25947,7 +26103,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/sensory/touch.yaml",
+      "source_file": "locales/en-US/OCF-SEN-005-Touch.yaml",
       "tags": "sensory-awareness (draft); touch (draft); imagination (draft)"
     },
     {
@@ -26370,14 +26526,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "sleep",
             "status": "draft",
             "text": "sleep"
           },
           {
+            "semantic_id": "rest",
             "status": "draft",
             "text": "rest"
           },
           {
+            "semantic_id": "renewal",
             "status": "draft",
             "text": "renewal"
           }
@@ -26397,7 +26556,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/sleep/restorative-sleep.yaml",
+      "source_file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
       "tags": "sleep (draft); rest (draft); renewal (draft)"
     },
     {
@@ -26843,14 +27002,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "sleep",
             "status": "draft",
             "text": "sleep"
           },
           {
+            "semantic_id": "rest",
             "status": "draft",
             "text": "rest"
           },
           {
+            "semantic_id": "self-direction",
             "status": "draft",
             "text": "self-direction"
           }
@@ -26870,7 +27032,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/sleep/sleep.yaml",
+      "source_file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
       "tags": "sleep (draft); rest (draft); self-direction (draft)"
     },
     {
@@ -27321,14 +27483,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "sleep",
             "status": "draft",
             "text": "sleep"
           },
           {
+            "semantic_id": "dreams",
             "status": "draft",
             "text": "dreams"
           },
           {
+            "semantic_id": "imagination",
             "status": "draft",
             "text": "imagination"
           }
@@ -27348,7 +27513,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/sleep/sweet-dreams.yaml",
+      "source_file": "locales/en-US/OCF-SLP-003-Dream-Theme.yaml",
       "tags": "sleep (draft); dreams (draft); imagination (draft)"
     },
     {
@@ -27799,14 +27964,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "sleep",
             "status": "draft",
             "text": "sleep"
           },
           {
+            "semantic_id": "reflection",
             "status": "draft",
             "text": "reflection"
           },
           {
+            "semantic_id": "insight",
             "status": "draft",
             "text": "insight"
           }
@@ -27826,7 +27994,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "available",
-      "source_file": "functions/sleep/wake-know.yaml",
+      "source_file": "locales/en-US/OCF-SLP-004-Sleep-Insight.yaml",
       "tags": "sleep (draft); reflection (draft); insight (draft)"
     },
     {
@@ -28357,14 +28525,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "sleep",
             "status": "draft",
             "text": "sleep"
           },
           {
+            "semantic_id": "surroundings",
             "status": "draft",
             "text": "surroundings"
           },
           {
+            "semantic_id": "relaxation",
             "status": "draft",
             "text": "relaxation"
           }
@@ -28386,7 +28557,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/sleep/sleep-easy.yaml",
+      "source_file": "locales/en-US/OCF-SLP-005-Sleep-Easy.yaml",
       "tags": "sleep (draft); surroundings (draft); relaxation (draft)"
     },
     {
@@ -28866,14 +29037,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "tags": [
           {
+            "semantic_id": "attention",
             "status": "draft",
             "text": "attention"
           },
           {
+            "semantic_id": "wakefulness",
             "status": "draft",
             "text": "wakefulness"
           },
           {
+            "semantic_id": "self-direction",
             "status": "draft",
             "text": "self-direction"
           }
@@ -28893,7 +29067,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
       "persistence": "temporary",
       "reimplementation_status": "planned",
       "source_availability": "unavailable",
-      "source_file": "functions/sleep/stay-awake.yaml",
+      "source_file": "locales/en-US/OCF-SLP-006-Stay-Awake.yaml",
       "tags": "attention (draft); wakefulness (draft); self-direction (draft)"
     }
   ],

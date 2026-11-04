@@ -324,6 +324,16 @@ def build_complete_session_plan(
     from .validators import validate_timed_transcript
 
     plan = plan_narration(function_id, locale=locale, voice=voice, pacing=pacing)
+    completeness_catalog = LocaleCatalog()
+    canonical = completeness_catalog.require("en-US").localized_functions.get(function_id, {})
+    if canonical.get("schema_version") == "2.0":
+        state = completeness_catalog.function_completeness(plan["requested_locale"]).get(
+            function_id, {"status": "missing"}
+        )
+        if state["status"] != "complete":
+            raise OCFError(
+                f"{function_id}: {plan['requested_locale']} function localization is {state['status']}; no inherited spoken function definition"
+            )
     layers = load_layers(function_id)
     binding = layers.get("bindings", {})
     template_record, _binding = _resolve_template(function_id, template)

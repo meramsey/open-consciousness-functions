@@ -108,10 +108,13 @@ def header(owner, locale: str, catalog: LocaleCatalog, root: Path, *, draft_revi
 
 
 def plans(root: Path = REPO_ROOT) -> dict[str, str]:
+    from .function_catalog import load_functions
+
     records = [
         function_from_dict(yaml.safe_load(path.read_text(encoding="utf-8")), path)
         for path in sorted((root / "functions").rglob("*.yaml"))
     ]
+    records = load_functions(root) or records
     catalog = LocaleCatalog(root / "locales", function_records=lambda: records)
     result = {}
     for owner in records:
