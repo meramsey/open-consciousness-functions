@@ -608,6 +608,20 @@ class AuthoringService:
                     )
                 if name == "localized-function.schema.json":
                     identity = str(doc.data.get("function_id", ""))
+                    aliases = {
+                        f"functions.{identity.lower()}.{suffix}": (field, "text")
+                        for suffix, field in (
+                            ("title", "title"),
+                            ("short-description", "description"),
+                            ("purpose", "description"),
+                        )
+                    }
+                    aliases.update(
+                        {
+                            key: ("metadata_entries", key, "text")
+                            for key in doc.data.get("metadata_entries", {})
+                        }
+                    )
                     definitions.setdefault(identity, []).append(
                         Definition(
                             identity,
@@ -627,6 +641,17 @@ class AuthoringService:
                     ]:
                         identity = command.get("command_id")
                         if identity:
+                            for field in (
+                                "display_cue",
+                                "spoken_cue",
+                                "label",
+                                "usage",
+                                "explanation",
+                            ):
+                                if field in command:
+                                    aliases[
+                                        f"commands.{identity.lower()}.{field.replace('_', '-')}"
+                                    ] = (*prefix, field, "text")
                             definitions.setdefault(identity, []).append(
                                 Definition(
                                     identity,
@@ -637,6 +662,17 @@ class AuthoringService:
                                     str(doc.data.get("locale", "")),
                                 )
                             )
+                    for key, pointer in aliases.items():
+                        definitions.setdefault(key, []).append(
+                            Definition(
+                                key,
+                                "locale-key",
+                                path,
+                                doc.span(pointer),
+                                key,
+                                str(doc.data.get("locale", "")),
+                            )
+                        )
                 if name in {"locale-resource.schema.json", "localized-function.schema.json"}:
                     locale = str(doc.data.get("locale", ""))
                     for key, entry in (doc.data.get("entries") or {}).items():
@@ -648,7 +684,9 @@ class AuthoringService:
                             else ""
                         )
                         entry_kind = (
-                            "narration" if doc.data.get("domain") == "narration" else "locale-key"
+                            "narration"
+                            if doc.data.get("domain") in {"narration", "function"}
+                            else "locale-key"
                         )
                         definitions.setdefault(key, []).append(
                             Definition(

@@ -299,6 +299,7 @@ def list_functions(
     page([], offset, limit)
     rows = []
     catalog = LocaleCatalog()
+    locale_functions = catalog.function_completeness(locale) if catalog.get(locale) else {}
     for record in load_all_functions():
         if not matches(record, locale, catalog=catalog, tag=tag, query=query):
             continue
@@ -316,6 +317,7 @@ def list_functions(
             "category": domain,
             "human_review": review,
             "source_availability": record.source_availability,
+            "localization": locale_functions.get(record.id, {"status": "missing"}),
             "tags": (metadata(record, locale, catalog=catalog) or {}).get("tags", []),
             "common_uses": (metadata(record, locale, catalog=catalog) or {}).get("common_uses", []),
         }
@@ -384,6 +386,11 @@ def get_function(
         "cue_presentation": cue_presentation(record, locale, catalog=catalog),
     }
     localized = metadata(record, locale, catalog=catalog)
+    data["localization"] = (
+        catalog.function_completeness(locale).get(record.id, {"status": "missing"})
+        if catalog.get(locale)
+        else {"status": "missing"}
+    )
     if localized is not None:
         data["commands"] = {**data["commands"], "primary": data["cue_presentation"]["display_cue"]}
         data.update(

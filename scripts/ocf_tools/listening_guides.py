@@ -518,14 +518,13 @@ def reference_documents(records, *, catalog=None):
         for command in function["commands"]:
             cue = command["cue_presentation"]
             spoken = cue.get("spoken_cue") or "Not supplied as reviewed spoken wording"
-            version = cue.get("version") or "unversioned predecessor"
             cues += [
-                f"- `{command['id']}` ({command['role']}): display `{cue['display_cue']}`; spoken {_literal(spoken)}; version {_literal(version)}."
+                f"- {command['role'].replace('-', ' ').capitalize()}: display `{cue['display_cue']}`; spoken {_literal(spoken)}."
             ]
         cues += [""]
         for relation in function["related_functions"]:
             relations += [
-                f"- [{identity}: {function['title']['text']}](functions/{identity}.md) -> [{relation['function_id']}: {relation['title']['text']}](functions/{relation['function_id']}.md). {relation['description']['text']} Approval: {relation['approval']}."
+                f"- [{identity}: {function['title']['text']}](functions/{identity}.md) -> [{relation['function_id']}: {relation['title']['text']}](functions/{relation['function_id']}.md). {relation['description']['text']}"
             ]
         for value in function.get("tags", []):
             tag_rows.setdefault(value["text"], []).append(

@@ -103,6 +103,17 @@ def test_all_functions_load_without_any_physical_global_registry(tmp_path):
     catalog = LocaleCatalog(tmp_path / "locales")
     assert not catalog.problems
     assert len(records) == 58
+    from ocf_tools.authoring import AuthoringService, schema_name
+
+    service = AuthoringService(tmp_path)
+    assert len(service.records()) == 58
+    first = records[0]
+    data = catalog.require("en-US").localized_functions[first.id]
+    assert schema_name(first.path, data, tmp_path) == "localized-function.schema.json"
+    assert all(
+        definition.path.is_relative_to(tmp_path / "locales/en-US")
+        for definition in service.definitions[first.id]
+    )
     assert all(record.path.is_relative_to(tmp_path / "locales/en-US") for record in records)
     assert {row["status"] for row in catalog.function_completeness("es").values()} == {"missing"}
     for record in records:
