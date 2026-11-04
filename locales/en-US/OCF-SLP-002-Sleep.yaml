@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-SLP-002
@@ -31,6 +31,56 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-SLEEP-EXHALE
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-slp-002.function-body
+      before_steps:
+      - id: select-sleep-and-wake-intention
+        operation: select-purpose
+        localization_key: command.procedure.select-purpose
+    relationships: {}
+  procedure_steps:
+  - id: select-sleep-and-wake-intention
+    operation: select-purpose
+    instruction:
+      text: Choose the purpose for using this function.
+      status: canonical
+      version: 1.0.0
+  - id: sleep-intention
+    operation: select-purpose
+    instruction:
+      text: Choose the purpose for using this function.
+      status: canonical
+      version: 1.0.0
+  - id: breathe-slowly
+    operation: breathe-slowly-deeply
+    instruction:
+      text: Breathe slowly and deeply.
+      status: canonical
+      version: 1.0.0
+  - id: command-during-exhale
+    operation: think-command-during-exhale
+    instruction:
+      text: Think the command during exhalation.
+      status: canonical
+      version: 1.0.0
+  - id: continue-breathing
+    operation: breathe-normally
+    instruction:
+      text: Continue breathing normally.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-SLP-002-LEGACY-01
   display_cue:
@@ -48,13 +98,28 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-SLP-002-LEGACY-01
+    availability: historical-lookup
+    documentation:
+      visible: false
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: sleep
   status: draft
+  semantic_id: sleep
 - text: rest
   status: draft
+  semantic_id: rest
 - text: self-direction
   status: draft
+  semantic_id: self-direction
 common_uses:
 - text: Preparing for natural sleep in a safe place.
   status: draft
@@ -88,10 +153,11 @@ entries:
   hplus.function.ocf-slp-002.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to enter normal,
+    text: 'This OCF exercise will teach you to enter normal,
+
       natural, restful sleep whenever you choose,
-      and awaken at the time you desire.
+
+      and awaken at the time you desire.'
   hplus.function.ocf-slp-002.function-body:
     status: reviewed
     version: 1.2.1
@@ -99,55 +165,91 @@ entries:
       function_id: OCF-SLP-002
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, you have the ability
+    text: 'From this moment forward, you have the ability
+
       to enter normal, natural, restful sleep
+
       whenever you consciously desire.
 
+
       When you choose to sleep, allow your body
+
       to settle comfortably and begin breathing
+
       slowly, deeply, and easily.
 
+
       As you exhale, think or say in your mind,
+
       "{{ cue.primary }}."
 
+
       With each gentle breath and each repetition
+
       of this command, you will move more deeply
+
       into calm, peaceful, natural sleep.
 
+
       Your thoughts will become quiet.
+
       Unnecessary effort and tension will fade.
+
       Your mind and body will recognize that
+
       the time for comfortable sleep has arrived.
 
+
       You will fall asleep smoothly and naturally,
+
       without needing to force or follow the process.
 
+
       During sleep, your total self will work
+
       toward harmony, balance, and equalization.
+
       Your nervous system and physical body
+
       will cooperate in their natural patterns
+
       of rest, maintenance, and renewal.
 
+
       Each part of your system will settle
+
       into the rhythms appropriate for sleep,
+
       allowing your body and mind to recover
+
       and restore their natural vitality.
 
+
       You will remain peacefully asleep for
+
       the rest you desire, and awaken at the
+
       time you have chosen, refreshed, alert,
+
       and ready to begin again.
 
+
       This ability to enter restful sleep
+
       will remain permanently available to you.
+
       It begins when you choose to use it,
+
       leaving your ordinary waking state
+
       clear and active at other times.
 
+
       Each time you use {{ cue.primary }},
+
       entering natural sleep and awakening
-      refreshed will become easier and more effective.
+
+      refreshed will become easier and more effective.'
   hplus.function.ocf-slp-002.closer:
     status: reviewed
     version: 1.2.1
@@ -155,10 +257,60 @@ entries:
       function_id: OCF-SLP-002
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to enter normal,
+    text: 'Remember, whenever you wish to enter normal,
+
       natural, restful sleep, breathe slowly and deeply.
+
       As you exhale, think or say in your mind,
+
       "{{ cue.primary }}."
 
-      This concludes your OCF Sleep exercise.
+
+      This concludes your OCF Sleep exercise.'
+slug: sleep
+historical_record: functions/sleep/sleep.yaml
+classification:
+  primary_domain: sleep
+  secondary_domains: []
+category_labels:
+  sleep:
+    text: sleep
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-slp-002.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-slp-002.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-slp-002.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 7a0d9986ba8883e9837ad2c40f85ce4478e6302b03c64b2d8a1baa6c3e75e4df

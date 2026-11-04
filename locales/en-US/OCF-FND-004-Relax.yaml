@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-FND-004
@@ -31,6 +31,47 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-fnd-004.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-FND-004-LEGACY-01
   display_cue:
@@ -48,13 +89,28 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-FND-004-LEGACY-01
+    availability: historical-lookup
+    documentation:
+      visible: false
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: relaxation
   status: draft
+  semantic_id: relaxation
 - text: calm
   status: draft
+  semantic_id: calm
 - text: body-awareness
   status: draft
+  semantic_id: body-awareness
 common_uses:
 - text: Taking time to explore physical ease and reduced unnecessary tension.
   status: draft
@@ -87,10 +143,11 @@ entries:
   hplus.function.ocf-fnd-004.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to release
+    text: 'This OCF exercise will teach you to release
+
       physical and mental tension and enter a state
-      of deep, natural relaxation whenever you choose.
+
+      of deep, natural relaxation whenever you choose.'
   hplus.function.ocf-fnd-004.function-body:
     status: reviewed
     version: 1.3.1
@@ -98,55 +155,89 @@ entries:
       function_id: OCF-FND-004
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, you have the ability
+    text: 'From this moment forward, you have the ability
+
       to relax your entire body and mind deeply,
+
       naturally, and whenever you desire.
 
+
       Your body knows how to release unnecessary
+
       effort, strain, and tension, returning
+
       to a comfortable state of balance.
 
+
       Whenever you wish to relax, inhale deeply
+
       and gently hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
+
       With this breath, all unnecessary tension
+
       and stress will flow out of your body,
+
       leaving you comfortably relaxed.
 
+
       Your muscles will soften and release,
+
       from your face and shoulders to your hands,
+
       back, legs, and feet.
 
+
       Your breathing will become smooth and easy.
+
       Your nervous system will settle into
+
       a calm, balanced rhythm throughout your body.
 
+
       Your thoughts will become quiet and clear.
+
       Your mind will remain serene and at ease,
+
       free of unnecessary effort or distraction.
 
+
       You can enter this peaceful state while resting
+
       or remain comfortably alert when you need
+
       to think, move, or act.
 
+
       From this moment forward, your ability
+
       to release tension is permanently available,
+
       and your body will return to balance
+
       more naturally with each experience.
 
+
       Whenever you use {{ cue.primary }},
+
       relaxation will flow through your total self,
+
       deeper and more easily than before.
 
+
       Each time you use this function,
+
       becoming calm, comfortable, and relaxed
-      will be easier, faster, and more effective.
+
+      will be easier, faster, and more effective.'
   hplus.function.ocf-fnd-004.closer:
     status: reviewed
     version: 1.2.1
@@ -154,14 +245,70 @@ entries:
       function_id: OCF-FND-004
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to relax
+    text: 'Remember, whenever you wish to relax
+
       your body and mind, inhale deeply
+
       and hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
-      This concludes your OCF Relax exercise.
+
+      This concludes your OCF Relax exercise.'
+slug: relax
+historical_record: functions/foundation/relax.yaml
+classification:
+  primary_domain: foundation
+  secondary_domains:
+  - body
+category_labels:
+  foundation:
+    text: foundation
+    status: canonical
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-fnd-004.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-fnd-004.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-fnd-004.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 4a0ecf86317880a63f43b1738232aed7e90bb3d1c54ec144420fcfed7f3c2518

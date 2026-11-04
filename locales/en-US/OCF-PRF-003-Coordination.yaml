@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-PRF-003
@@ -33,14 +33,67 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-prf-003.function-body
+      before_steps:
+      - id: select-movement-pattern
+        operation: select-purpose
+        localization_key: command.procedure.select-purpose
+    relationships: {}
+  procedure_steps:
+  - id: select-movement-pattern
+    operation: select-purpose
+    instruction:
+      text: Choose the purpose for using this function.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: movement
   status: draft
+  semantic_id: movement
 - text: coordination
   status: draft
+  semantic_id: coordination
 - text: body-awareness
   status: draft
+  semantic_id: body-awareness
 common_uses:
 - text: Exploring a felt sense of smooth, coordinated movement.
   status: draft
@@ -73,11 +126,13 @@ entries:
   hplus.function.ocf-prf-003.opener:
     status: reviewed
     version: 1.1.0
-    text: |-
-      This OCF exercise will strengthen the synchronization
+    text: 'This OCF exercise will strengthen the synchronization
+
       of your mind, nervous system, and muscles,
+
       allowing your body to move smoothly, rapidly,
-      precisely, and with natural ease.
+
+      precisely, and with natural ease.'
   hplus.function.ocf-prf-003.function-body:
     status: reviewed
     version: 1.3.0
@@ -85,57 +140,95 @@ entries:
       function_id: OCF-PRF-003
       allowed:
       - cue.primary
-    text: |-
-      Beginning now, and from this moment forward,
+    text: 'Beginning now, and from this moment forward,
+
       your mind, nervous system, and muscles
+
       will work together in ever greater harmony.
 
+
       Signals throughout your nervous system
+
       will travel smoothly, evenly, and rapidly.
+
       Your muscles will respond in precise coordination,
+
       producing the movement you intend
+
       at exactly the time it is needed.
 
+
       Your entire body will move with greater balance,
+
       grace, accuracy, and natural ease.
+
       Each motion will flow into the next,
+
       without unnecessary hesitation, tension, or effort.
 
-      Your awareness of your body's position,
+
+      Your awareness of your body''s position,
+
       movement, and timing will become clearer.
+
       Your hands, feet, eyes, and entire physical system
+
       will coordinate naturally as one.
 
+
       When quick movement is needed,
+
       your responses will be swift and accurate.
+
       When careful control is needed,
+
       your movements will be steady and precise.
+
       Speed and smoothness will work together,
+
       each in harmony with your intention.
 
+
       This improved coordination will become
+
       an increasingly natural part of your daily life,
+
       growing stronger through movement and experience.
+
       You will not need to consciously manage
+
       each separate muscle or action.
+
       Your total self will coordinate them together.
 
+
       Whenever you wish to strengthen
+
       this synchronization even further,
+
       inhale deeply and gently hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
+
       Your entire physical system will immediately
+
       come into clearer, smoother coordination,
+
       responding with effortless speed and control.
 
+
       Each time you use {{ cue.primary }},
+
       this natural harmony of mind and body
-      will become easier, stronger, and more effective.
+
+      will become easier, stronger, and more effective.'
   hplus.function.ocf-prf-003.closer:
     status: reviewed
     version: 1.3.0
@@ -143,15 +236,72 @@ entries:
       function_id: OCF-PRF-003
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to increase
+    text: 'Remember, whenever you wish to increase
+
       the speed, smoothness, and coordination
+
       of your movement, inhale deeply
+
       and hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
-      This concludes your OCF Coordination exercise.
+
+      This concludes your OCF Coordination exercise.'
+slug: synchronizing
+historical_record: functions/performance/synchronizing.yaml
+classification:
+  primary_domain: performance
+  secondary_domains:
+  - body
+category_labels:
+  performance:
+    text: performance
+    status: canonical
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-prf-003.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-prf-003.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-prf-003.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 6948c79ed3d82f0109ad159e3529674ceb83f3a445cfb4b8ee541e315c8cd321

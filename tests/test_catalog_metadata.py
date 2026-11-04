@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+from copy import deepcopy
 
 import pytest
 from ocf_tools.locale import LocaleCatalog
@@ -27,9 +28,13 @@ def test_all_function_metadata_is_useful_draft_without_changing_approved_content
             for value in data[field]
         )
         protected = {
-            key: data[key]
+            key: deepcopy(data[key])
             for key in ("title", "description", "activation", "secondary_commands", "entries")
         }
+        for command in [protected["activation"], *protected["secondary_commands"]]:
+            command.pop("control", None)
+            command.pop("procedure_steps", None)
+        protected["activation"].pop("role", None)
         digest = hashlib.sha256(
             json.dumps(protected, sort_keys=True, ensure_ascii=False).encode()
         ).hexdigest()

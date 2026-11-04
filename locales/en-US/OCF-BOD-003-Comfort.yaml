@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-BOD-003
@@ -31,6 +31,59 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-FOCUS
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-003.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: focus-target
+    operation: focus-target
+    instruction:
+      text: Focus attention on the selected target.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-BOD-003-LEGACY-01
   display_cue:
@@ -48,13 +101,28 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-BOD-003-LEGACY-01
+    availability: historical-lookup
+    documentation:
+      visible: false
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: comfort
   status: draft
+  semantic_id: comfort
 - text: body-awareness
   status: draft
+  semantic_id: body-awareness
 - text: relaxation
   status: draft
+  semantic_id: relaxation
 common_uses:
 - text: Practicing attention to a sense of physical ease.
   status: draft
@@ -67,8 +135,8 @@ relationships:
   - function_id: OCF-FND-004
     relationship_type: complementary
     description:
-      text: Area-focused comfort and whole-body relaxation offer separate intentions for ease, without dismissing
-        symptoms or replacing care.
+      text: Area-focused comfort and whole-body relaxation offer separate intentions for ease, without
+        dismissing symptoms or replacing care.
       status: draft
     status: draft
     dependency: optional
@@ -87,10 +155,11 @@ entries:
   hplus.function.ocf-bod-003.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to reduce and control
+    text: 'This OCF exercise will teach you to reduce and control
+
       physical discomfort signals within your body,
-      whenever and wherever you choose.
+
+      whenever and wherever you choose.'
   hplus.function.ocf-bod-003.function-body:
     status: reviewed
     version: 1.2.1
@@ -98,61 +167,96 @@ entries:
       function_id: OCF-BOD-003
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, whenever you wish to reduce
+    text: 'From this moment forward, whenever you wish to reduce
+
       physical discomfort in any part of your body,
+
       you can do so quickly and easily.
 
+
       Begin by bringing your awareness to the area
+
       where the discomfort begins.
+
 
       Close your eyes and focus your attention on that area.
 
+
       Take a deep breath in and gently hold it.
 
+
       While holding your breath, silently say to yourself,
+
       "{{ cue.primary }}."
 
+
       Then slowly exhale through your mouth,
+
       as though gently blowing out a candle.
 
+
       As you exhale, the discomfort signals will begin
+
       to diminish, becoming weaker and weaker.
 
+
       Feel the discomfort fading away,
+
       less and less, until it no longer demands
+
       your attention.
 
+
       Your body will become more comfortable,
+
       calm, and relaxed.
 
+
       Your mind will become clear and peaceful,
+
       free to focus on whatever you choose.
 
-      You will remain aware of your body's needs
+
+      You will remain aware of your body''s needs
+
       while experiencing greater comfort and ease.
 
+
       Whenever you wish to reduce discomfort,
+
       simply close your eyes, inhale deeply,
+
       and gently hold your breath.
 
+
       Focus on the area of discomfort and silently
+
       say to yourself, "{{ cue.primary }}."
+
 
       Then exhale slowly through your mouth.
 
+
       The discomfort will quickly become less and less,
+
       fading into the background until it is
+
       no longer important to you.
 
+
       Each time you use {{ cue.primary }},
+
       this process becomes easier, smoother,
+
       faster, and more effective.
+
 
       You are in control of your response to discomfort.
 
+
       You can return to a state of calm,
-      comfort, and relaxation whenever you desire.
+
+      comfort, and relaxation whenever you desire.'
   hplus.function.ocf-bod-003.closer:
     status: reviewed
     version: 1.2.1
@@ -160,22 +264,81 @@ entries:
       function_id: OCF-BOD-003
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to reduce discomfort
+    text: 'Remember, whenever you wish to reduce discomfort
+
       in any part of your body, simply close your eyes.
 
+
       Bring your attention to the area
+
       where the discomfort begins.
+
 
       Inhale deeply and gently hold your breath.
 
+
       Silently say to yourself,
+
       "{{ cue.primary }}."
 
+
       Then slowly exhale through your mouth,
+
       as though gently blowing out a candle.
 
+
       The discomfort will diminish,
+
       becoming less and less important to you.
 
-      This concludes your OCF Comfort exercise.
+
+      This concludes your OCF Comfort exercise.'
+slug: de-discomfort
+historical_record: functions/body/de-discomfort.yaml
+classification:
+  primary_domain: body
+  secondary_domains: []
+category_labels:
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-003.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-003.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-003.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 472133be89c48549b940230a333baf2a52bb200f038b341f7674f39325287ee9

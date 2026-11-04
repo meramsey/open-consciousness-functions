@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-FND-005
@@ -32,6 +32,59 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-CLOSE-OPEN
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-fnd-005.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: open-eyes
+    operation: open-eyes
+    instruction:
+      text: Open your eyes.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-FND-005-LEGACY-01
   display_cue:
@@ -49,13 +102,28 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-FND-005-LEGACY-01
+    availability: historical-lookup
+    documentation:
+      visible: false
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: energy
   status: draft
+  semantic_id: energy
 - text: confidence
   status: draft
+  semantic_id: confidence
 - text: mental-clarity
   status: draft
+  semantic_id: mental-clarity
 common_uses:
 - text: Reflecting on a desired shift from weariness toward renewed engagement.
   status: draft
@@ -72,11 +140,13 @@ entries:
   hplus.function.ocf-fnd-005.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to reset your
+    text: 'This OCF exercise will teach you to reset your
+
       physical and mental state quickly, shifting from
+
       weariness and feeling low to renewed energy,
-      clarity, strength, and confidence.
+
+      clarity, strength, and confidence.'
   hplus.function.ocf-fnd-005.function-body:
     status: reviewed
     version: 1.2.1
@@ -84,52 +154,84 @@ entries:
       function_id: OCF-FND-005
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, you have the ability
+    text: 'From this moment forward, you have the ability
+
       to change your physical and mental pattern
+
       quickly and completely whenever you desire.
 
+
       Whenever you feel tired, weary, or emotionally low,
+
       you can immediately reset your state and return
+
       to renewed strength, clarity, and confidence.
 
+
       Inhale deeply, close your eyes,
+
       and gently hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth
+
       and open your eyes.
 
+
       As you exhale, weariness and heaviness
+
       will flow out of your body and mind.
+
       With each new breath, fresh energy and vitality
+
       will flow throughout your entire system.
 
+
       Your body will feel renewed, balanced,
+
       comfortable, and ready for action.
+
       Your mind will become clear, clean, sharp,
+
       and smooth, with bright, steady awareness.
 
+
       Your emotions will return to balance.
+
       You will feel strong and sure,
+
       calm and confident, ready to move forward.
 
+
       This change will take place immediately,
+
       bringing your entire being into the
+
       clear, energized state you have chosen.
 
+
       From this moment forward, this ability
+
       to reset your state is permanently
+
       available whenever you wish to use it.
 
+
       Your natural balance remains intact,
+
       and you can invoke this renewed wakefulness
+
       whenever a change of pattern is desired.
 
+
       Each time you use {{ cue.primary }},
+
       this shift becomes easier, faster,
-      and more effective.
+
+      and more effective.'
   hplus.function.ocf-fnd-005.closer:
     status: reviewed
     version: 1.2.1
@@ -137,14 +239,66 @@ entries:
       function_id: OCF-FND-005
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to change
+    text: 'Remember, whenever you wish to change
+
       from tired and low to energized and strong,
+
       inhale deeply, close your eyes, and hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth
+
       and open your eyes.
 
-      This concludes your OCF Reset exercise.
+
+      This concludes your OCF Reset exercise.'
+slug: reset
+historical_record: functions/foundation/reset.yaml
+classification:
+  primary_domain: foundation
+  secondary_domains: []
+category_labels:
+  foundation:
+    text: foundation
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-fnd-005.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-fnd-005.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-fnd-005.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 71c6c922351c2a383f5a1ea3cde92e80341bfadfa265701014753e1667c23356

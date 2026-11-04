@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-FND-001
@@ -30,6 +30,41 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-M-ENERGY
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-fnd-001.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: purpose
+    operation: select-purpose
+    instruction:
+      text: Choose the purpose for using this function.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: result
+    operation: represent-result
+    instruction:
+      text: Represent the intended result in your own way.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-FND-001-ACCESS-CLOSE
   display_cue:
@@ -50,13 +85,38 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: access-close
+  control:
+    designation: special
+    phrase_ref:
+      source: special-phrase
+      phrase_id: OCF-CMD-FND-001-ACCESS-CLOSE
+    documentation:
+      visible: true
+      order: 200
+    procedure:
+      ref: OCF-PROC-THINK-COMMAND
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-fnd-001.access-close
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
 tags:
 - text: energy
   status: draft
+  semantic_id: energy
 - text: intention
   status: draft
+  semantic_id: intention
 - text: inner-awareness
   status: draft
+  semantic_id: inner-awareness
 common_uses:
 - text: Recalling a personal sense of vitality and available resources.
   status: draft
@@ -72,11 +132,13 @@ entries:
   hplus.function.ocf-fnd-001.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to recognize,
+    text: 'This OCF exercise will teach you to recognize,
+
       access, and direct your M energy, the vast reserve
+
       of energy within your total self, for any purpose
-      you consciously choose.
+
+      you consciously choose.'
   hplus.function.ocf-fnd-001.function-body:
     status: reviewed
     version: 1.2.0
@@ -84,55 +146,89 @@ entries:
       function_id: OCF-FND-001
       allowed:
       - cue.primary
-    text: |-
-      Bring into your awareness a time when you felt
+    text: 'Bring into your awareness a time when you felt
+
       strong, alert, energized, and completely alive.
 
+
       Remember that feeling of vitality and strength.
+
       Recognize the energy present within you now.
 
+
       This is your M energy, the energy of your total self.
+
       It is always available for you to access,
+
       shape, and direct through conscious intention.
 
+
       Become aware of its presence.
+
       You may perceive it as warmth, light, vibration,
+
       movement, sensation, or simply a quiet knowing.
 
+
       Your conscious mind, subconscious mind,
+
       and higher self work together in directing
+
       this energy toward the purpose you choose.
 
+
       Whenever you desire to use your M energy,
+
       think or say in your mind, "{{ cue.primary }}."
 
+
       Then picture clearly the result you intend.
+
       Give your energy a direction, a form,
+
       and a purpose through your focused awareness.
 
+
       You can direct it toward healing and restoration,
+
       protection and balance, strength and stamina,
+
       clear thinking, insight, and heightened awareness.
 
+
       You can direct it within your physical body,
+
       throughout your total self, or beyond the limits
+
       of ordinary physical awareness, as you intend.
 
+
       Your energy will respond to your intention,
+
       gathering and flowing in the pattern you select.
+
       Its expression will adjust to what is needed,
+
       without unnecessary effort or depletion.
 
+
       The ability to access and direct M energy
+
       is permanently established within you.
+
       Each use makes its direction clearer,
+
       easier, and more effective.
 
+
       Now explore this ability.
+
       Choose a purpose, picture its fulfillment,
+
       and experience your M energy responding.
 
-      Begin now.
+
+      Begin now.'
   hplus.function.ocf-fnd-001.closer:
     status: reviewed
     version: 1.2.0
@@ -140,16 +236,71 @@ entries:
       function_id: OCF-FND-001
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to access and direct
+    text: 'Remember, whenever you wish to access and direct
+
       your M energy, think or say in your mind,
+
       "{{ cue.primary }}."
 
+
       Then picture clearly the purpose
+
       toward which you wish to direct it.
 
-      This concludes your OCF Access to Energy exercise.
+
+      This concludes your OCF Access to Energy exercise.'
   hplus.function.ocf-fnd-001.access-close:
     status: reviewed
     version: 1.1.0
     text: To release your access channel, say in your mind, plus, release, eleven, access.
+slug: energize
+historical_record: functions/foundation/energize.yaml
+classification:
+  primary_domain: foundation
+  secondary_domains:
+  - performance
+category_labels:
+  foundation:
+    text: foundation
+    status: canonical
+  performance:
+    text: performance
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-fnd-001.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-fnd-001.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-fnd-001.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 3c6e20879a801778abcb143c97074e85919fd2f163c86e7665585ffe84f2e4c6

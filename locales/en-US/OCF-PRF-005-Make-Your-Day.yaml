@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-PRF-005
@@ -30,14 +30,67 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-prf-005.function-body
+      before_steps:
+      - id: select-day-outcome
+        operation: select-intention
+        localization_key: command.procedure.select-intention
+    relationships: {}
+  procedure_steps:
+  - id: select-day-outcome
+    operation: select-intention
+    instruction:
+      text: Choose an intention.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: intention
   status: draft
+  semantic_id: intention
 - text: visualization
   status: draft
+  semantic_id: visualization
 - text: confidence
   status: draft
+  semantic_id: confidence
 common_uses:
 - text: Reflecting on the tone and experiences you would like for the coming day.
   status: draft
@@ -70,10 +123,11 @@ entries:
   hplus.function.ocf-prf-005.opener:
     status: reviewed
     version: 1.1.0
-    text: |-
-      This OCF exercise will teach you to shape the day ahead,
+    text: 'This OCF exercise will teach you to shape the day ahead,
+
       establishing the experiences, conditions, and outcomes
-      you desire for yourself, beginning with this day.
+
+      you desire for yourself, beginning with this day.'
   hplus.function.ocf-prf-005.function-body:
     status: reviewed
     version: 1.1.0
@@ -81,50 +135,83 @@ entries:
       function_id: OCF-PRF-005
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, you can begin each morning
+    text: 'From this moment forward, you can begin each morning
+
       by creating the pattern you desire for the day ahead.
 
+
       Before the activities of the day begin,
+
       bring this day clearly into your awareness.
+
       See it unfolding as you most desire.
 
+
       Picture your physical self strong, comfortable,
+
       and moving through the day with ease.
+
       See your mind clear, capable, and aware.
+
       Feel the emotional harmony and confidence
+
       you wish to experience throughout this day.
 
+
       Now look beyond yourself to the day around you.
+
       See the meetings, events, opportunities,
+
       and circumstances taking shape in your favor.
+
       Picture the outcomes you desire as already
-      becoming part of this day's unfolding pattern.
+
+      becoming part of this day''s unfolding pattern.
+
 
       Express your intention clearly, in words
+
       and in the image or knowing you hold within.
+
       Be definite about what you wish to experience
+
       and accomplish before this day is complete.
 
+
       Inhale deeply and gently hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Then exhale slowly through your mouth.
 
+
       Your conscious mind, subconscious mind,
+
       higher self, and total being will immediately
+
       begin working together toward the pattern selected.
+
       Your thoughts, feelings, choices, and actions
+
       will align with the day you have envisioned.
 
+
       Opportunities and favorable possibilities
+
       will become apparent as events unfold.
+
       Remain open to unexpected ways your intention
+
       may take form, even better than you imagined.
 
+
       This pattern is for today, here and now.
+
       Each morning you may create a new one,
+
       and with each use, shaping your day through
-      clear intention will become easier and stronger.
+
+      clear intention will become easier and stronger.'
   hplus.function.ocf-prf-005.closer:
     status: reviewed
     version: 1.2.0
@@ -132,11 +219,62 @@ entries:
       function_id: OCF-PRF-005
       allowed:
       - cue.primary
-    text: |-
-      Remember, each morning, clearly picture and express
+    text: 'Remember, each morning, clearly picture and express
+
       the experiences and outcomes you desire for this day.
+
       Inhale deeply and hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Then exhale slowly through your mouth.
 
-      This concludes your OCF Make Your Day exercise.
+
+      This concludes your OCF Make Your Day exercise.'
+slug: make-your-day
+historical_record: functions/performance/make-your-day.yaml
+classification:
+  primary_domain: performance
+  secondary_domains: []
+category_labels:
+  performance:
+    text: performance
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-prf-005.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-prf-005.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-prf-005.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: da258856804a482c086e13c028a773629a3095900be7b3fa18c3e4ae91aba1c5

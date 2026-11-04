@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-PRF-002
@@ -32,6 +32,56 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      order: 1
+      visible: true
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      before_steps:
+      - id: select-quality
+        localization_key: command.procedure.select-purpose
+        operation: select-purpose
+      evidence_keys:
+      - hplus.function.ocf-prf-002.function-body
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+    relationships: {}
+  procedure_steps:
+  - id: select-quality
+    operation: select-purpose
+    instruction:
+      text: Choose the purpose for using this function.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-PRF-002-LEGACY-01
   display_cue:
@@ -49,13 +99,28 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      command_id: OCF-CMD-PRF-002-LEGACY-01
+      source: legacy-command
+    availability: historical-lookup
+    documentation:
+      order: 101
+      visible: false
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: confidence
   status: draft
+  semantic_id: confidence
 - text: inner-awareness
   status: draft
+  semantic_id: inner-awareness
 - text: self-direction
   status: draft
+  semantic_id: self-direction
 common_uses:
 - text: Reflecting on personal resources when facing a challenge.
   status: draft
@@ -88,10 +153,11 @@ entries:
   hplus.function.ocf-prf-002.opener:
     status: reviewed
     version: 1.1.0
-    text: |-
-      This OCF exercise will teach you to recognize
+    text: 'This OCF exercise will teach you to recognize
+
       and express the greatness, strength, and power
-      of your total self in every part of your life.
+
+      of your total self in every part of your life.'
   hplus.function.ocf-prf-002.function-body:
     status: reviewed
     version: 1.1.1
@@ -99,55 +165,89 @@ entries:
       function_id: OCF-PRF-002
       allowed:
       - cue.primary
-    text: |-
-      Beginning now, and from this moment forward,
+    text: 'Beginning now, and from this moment forward,
+
       you will recognize more fully the greatness
+
       and power that are already within your total self.
 
+
       Your conscious mind, subconscious mind,
+
       higher self, and entire being are united
+
       in the knowledge of your true inner strength.
 
+
       This greatness is a natural part of who you are.
+
       You will recognize it clearly, trust it completely,
+
       and express it calmly in your daily life.
 
+
       Whenever you encounter questions, challenges,
+
       or important moments, your total self will respond
+
       with wisdom, clarity, strength, and assurance.
 
+
       You will think and act smoothly, quickly,
+
       and effectively, drawing upon the full range
+
       of your abilities without strain or hesitation.
 
-      You will meet life's experiences with quiet happiness,
+
+      You will meet life''s experiences with quiet happiness,
+
       calm confidence, and the certainty that your
+
       inner resources are available whenever needed.
 
+
       Each day, your awareness of the strength,
+
       knowledge, and capability of your total self
+
       will become clearer and more complete.
 
+
       This knowing is permanently established within you,
+
       growing naturally through everything you experience.
 
+
       Whenever you wish to bring this awareness
+
       even more strongly into your life,
+
       inhale deeply and gently hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
+
       Your awareness of your total self will immediately
+
       become stronger, clearer, and more complete.
+
       You will feel and express your natural inner power
+
       with calmness, confidence, and ease.
 
+
       The more you use {{ cue.primary }},
+
       the easier and more effective this recognition
-      and expression of your total self will become.
+
+      and expression of your total self will become.'
   hplus.function.ocf-prf-002.closer:
     status: reviewed
     version: 1.1.1
@@ -155,14 +255,70 @@ entries:
       function_id: OCF-PRF-002
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to strengthen
+    text: 'Remember, whenever you wish to strengthen
+
       your awareness and expression of your total self,
+
       inhale deeply and hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
-      This concludes your OCF Inner Power exercise.
+
+      This concludes your OCF Inner Power exercise.'
+slug: eight-great
+historical_record: functions/performance/eight-great.yaml
+classification:
+  primary_domain: performance
+  secondary_domains:
+  - body
+category_labels:
+  performance:
+    text: performance
+    status: canonical
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-prf-002.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-prf-002.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-prf-002.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 227715d8cdf59d28091e128e0561039e1e4c6a418a9a395c26a76b8c5992be6d

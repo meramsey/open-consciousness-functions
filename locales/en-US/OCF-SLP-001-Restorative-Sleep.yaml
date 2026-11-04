@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-SLP-001
@@ -31,6 +31,56 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-slp-001.function-body
+      before_steps:
+      - id: select-restoration-target
+        operation: select-target-area
+        localization_key: command.procedure.select-target-area
+    relationships: {}
+  procedure_steps:
+  - id: select-restoration-target
+    operation: select-target-area
+    instruction:
+      text: Choose a target area.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-SLP-001-LEGACY-01
   display_cue:
@@ -48,13 +98,28 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-SLP-001-LEGACY-01
+    availability: historical-lookup
+    documentation:
+      visible: false
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: sleep
   status: draft
+  semantic_id: sleep
 - text: rest
   status: draft
+  semantic_id: rest
 - text: renewal
   status: draft
+  semantic_id: renewal
 common_uses:
 - text: Setting an intention of restorative rest before sleep.
   status: draft
@@ -70,10 +135,11 @@ entries:
   hplus.function.ocf-slp-001.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to direct your total self
+    text: 'This OCF exercise will teach you to direct your total self
+
       toward deep restoration, healing, and regeneration
-      throughout your natural sleep.
+
+      throughout your natural sleep.'
   hplus.function.ocf-slp-001.function-body:
     status: reviewed
     version: 1.2.1
@@ -81,53 +147,88 @@ entries:
       function_id: OCF-SLP-001
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, whenever you prepare for sleep,
+    text: 'From this moment forward, whenever you prepare for sleep,
+
       you can direct your total self toward deep healing,
+
       restoration, and regeneration throughout your rest.
 
+
       Bring into awareness any part of your physical body
+
       or total being that you desire to restore.
+
       Form a clear intention for complete balance,
+
       renewal, and natural, healthy functioning.
 
+
       Inhale deeply and gently hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
+
       You will move easily and calmly into deep,
+
       peaceful, natural sleep.
 
+
       As you sleep, your conscious mind can rest
+
       while your subconscious mind and higher self
+
       work together with your physical body,
+
       directing their resources toward restoration.
 
+
       Your entire system will adjust, equalize,
+
       and return toward its natural balance.
+
       Areas of weariness, strain, or imbalance
+
       will receive the attention needed for renewal.
 
+
       Your total self will continue this restorative pattern
+
       smoothly and automatically throughout your sleep,
+
       supporting the healing, repair, and regeneration
+
       you have clearly intended.
 
+
       Each part of your being will cooperate with the others,
+
       restoring harmony and strengthening natural vitality.
+
       There is no need to follow or direct each step.
+
       The process continues while you rest.
 
+
       As your sleep is complete, you will awaken
+
       naturally, deeply rested and refreshed,
+
       with renewed energy, clarity, and strength.
 
+
       Your ability to invoke this restorative sleep pattern
+
       will remain permanently available whenever you choose.
+
       Each use will make entering restful sleep
+
       and directing your total self toward healing
-      easier, smoother, and more effective.
+
+      easier, smoother, and more effective.'
   hplus.function.ocf-slp-001.closer:
     status: reviewed
     version: 1.2.1
@@ -135,13 +236,71 @@ entries:
       function_id: OCF-SLP-001
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to direct your total self
+    text: 'Remember, whenever you wish to direct your total self
+
       toward healing and restoration during sleep,
+
       inhale deeply and hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
-      This concludes your OCF Restorative Sleep exercise.
+
+      This concludes your OCF Restorative Sleep exercise.'
+slug: restorative-sleep
+historical_record: functions/sleep/restorative-sleep.yaml
+classification:
+  primary_domain: sleep
+  secondary_domains:
+  - body
+category_labels:
+  sleep:
+    text: sleep
+    status: canonical
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-slp-001.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-slp-001.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-slp-001.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: b1f95c85f6ab31f2589fd4f75914bfd66c8d6aa283089c7dc288f5a869537999

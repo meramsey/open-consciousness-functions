@@ -1,0 +1,181 @@
+schema_version: '1.0'
+locale: en-US
+domain: function
+function_id: OCF-SEN-004
+title:
+  text: Taste
+  status: canonical
+  version: 1.0.0
+description:
+  text: Adjusts the felt sense of taste in either direction using the MORE/LESS grammar.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-SEN-004-PRIMARY
+  display_cue:
+    text: PLUS-TASTE MORE
+  spoken_cue:
+    text: Plus Taste More
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-SEN-004-TASTE-LESS
+  display_cue:
+    text: PLUS-TASTE LESS
+  spoken_cue:
+    text: Plus Taste Less
+    status: reviewed
+  label:
+    text: Decrease mode
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This command selects the decrease mode.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use when you choose to decrease the selected function response.
+    status: canonical
+    version: 1.0.0
+  role: decrease
+- command_id: OCF-CMD-SEN-004-LEGACY-01
+  display_cue:
+    text: PLUS-TASTE GREATER
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+- command_id: OCF-CMD-SEN-004-LEGACY-02
+  display_cue:
+    text: PLUS-TASTE LESSER
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags:
+- text: sensory-awareness
+  status: draft
+- text: taste
+  status: draft
+- text: imagination
+  status: draft
+common_uses:
+- text: Exploring familiar flavor memories during sensory reflection.
+  status: draft
+- text: Bringing deliberate attention to taste without using it as a food-safety test.
+  status: draft
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-sen-004.opener:
+    status: reviewed
+    version: 1.2.0
+    text: |-
+      This OCF exercise will teach you to regulate your
+      physical sense of taste and strengthen your ability
+      to remember, imagine, and experience flavors within your mind.
+  hplus.function.ocf-sen-004.function-body:
+    status: reviewed
+    version: 1.2.0
+    cue_template:
+      function_id: OCF-SEN-004
+      allowed:
+      - cue.id.OCF-CMD-SEN-004-TASTE-LESS
+      - cue.primary
+    text: |-
+      From this moment forward, you have the ability
+      to regulate your sense of taste and develop
+      the vividness of flavors within your imagination.
+
+      Your sense of taste will respond to your intention.
+      You can notice delicate flavors more clearly,
+      or allow unwanted taste sensations to fade.
+
+      To enhance your physical sense of taste,
+      close your eyes, inhale deeply, and hold your breath.
+      Think or say in your mind, "{{ cue.primary }}."
+      Then exhale slowly through your mouth and open your eyes.
+
+      Subtle flavors will become more distinct.
+      You will recognize their sweetness, sourness,
+      saltiness, bitterness, and savory qualities,
+      appreciating their richness and differences.
+
+      To reduce a taste you do not wish to experience
+      as strongly, use the same eye and breath sequence,
+      thinking or saying, "{{ cue.id.OCF-CMD-SEN-004-TASTE-LESS }}."
+      The selected sensation will become less prominent.
+      You can soften even an enjoyable flavor when desired,
+      and return to your usual sense of taste at will.
+
+      Your inner sense of taste will also grow stronger.
+      You will remember familiar flavors and imagine new ones,
+      even when no food or drink is present.
+      You can bring a flavor into your awareness,
+      experience its distinct qualities, and hold it clearly.
+
+      You can imagine combinations of flavors,
+      changing their intensity, balance, or character.
+      Taste memories will connect more vividly with
+      places, experiences, aromas, and inner images.
+
+      This ability to recall and create flavors in your mind
+      will become a lasting, natural part of your total self.
+      Whenever you choose, your intention and these commands
+      can strengthen an imagined flavor or let it gently fade.
+
+      Each time you use this function, physical taste regulation
+      and inner flavor imagery will become easier,
+      clearer, and more effective.
+  hplus.function.ocf-sen-004.closer:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-SEN-004
+      allowed:
+      - cue.id.OCF-CMD-SEN-004-TASTE-LESS
+      - cue.primary
+    text: |-
+      Remember, to regulate your sense of taste
+      or strengthen your inner experience of flavor,
+      close your eyes, inhale deeply, and hold your breath.
+      Think or say in your mind, "{{ cue.primary }}"
+      or "{{ cue.id.OCF-CMD-SEN-004-TASTE-LESS }}," according to your intention.
+      Then exhale slowly through your mouth and open your eyes.
+
+      This concludes your OCF Taste exercise.

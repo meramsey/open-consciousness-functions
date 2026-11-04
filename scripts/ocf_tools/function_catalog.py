@@ -105,10 +105,20 @@ def completeness(data, canonical):
         if not data.get("entries", {}).get(key, {}).get("text"):
             missing.append(key)
     outdated = data.get("localization", {}).get("contract_sha256") != contract_hash(canonical)
+    unreviewed = any(
+        entry.get("status") not in {"canonical", "reviewed"}
+        for entry in data.get("entries", {}).values()
+    )
+    unreviewed |= any(
+        row.get("spoken_cue", {}).get("status") not in {"canonical", "reviewed"}
+        for row in [data.get("activation", {}), *data.get("secondary_commands", [])]
+        if row.get("spoken_cue")
+        and row.get("control", {}).get("availability", "active") == "active"
+    )
     declared = data.get("localization", {}).get("status", "partial")
     status = (
         "needs-review"
-        if outdated or declared == "needs-review"
+        if outdated or unreviewed or declared == "needs-review"
         else "partial"
         if missing or declared == "partial"
         else "complete"
@@ -126,7 +136,36 @@ def project(data, path, root):
     from .locale_history import read_logical
     from .models import function_from_dict
 
-    history = yaml_safe_load(read_logical(root, data["historical_record"]))
+    history = (
+        yaml_safe_load(read_logical(root, data["historical_record"]))
+        if data.get("historical_record")
+        else {
+            "legacy": {
+                "source_system": None,
+                "name": "",
+                "commands": [],
+                "command_status": "proposed",
+                "source_availability": "pending-source-review",
+            },
+            "aliases": {"names": [], "commands": []},
+            "compatibility": {"state": "none"},
+            "status": {
+                "maturity": "community-proposed",
+                "implementation": "specification-only",
+                "evidence": "unverified",
+            },
+            "sources": [],
+            "claims": {"intended_effects": [], "prohibited_claims": []},
+            "attribution": {"original_authors": [], "ocf_contributors": []},
+            "ocf": {"reimplementation_status": "draft", "command_review": "pending"},
+            "commands": [],
+            "documentation": {
+                "title_key": f"functions.{data['function_id'].lower()}.title",
+                "short_description_key": f"functions.{data['function_id'].lower()}.short-description",
+                "purpose_key": f"functions.{data['function_id'].lower()}.purpose",
+            },
+        }
+    )
     historical_fields = (
         "legacy",
         "aliases",
@@ -176,10 +215,22 @@ def project(data, path, root):
             "function_id": data["function_id"],
             "role": row.get("role", "activation"),
         }
-        old = old_commands[identity]
-        command["localization"] = deepcopy(old.get("localization", {}))
+        old = old_commands.get(identity, {})
+        command["localization"] = deepcopy(
+            old.get(
+                "localization",
+                {
+                    field + "_key": "commands." + identity.lower() + "." + field
+                    for field in ("label", "usage", "explanation")
+                },
+            )
+        )
         command["spoken"] = row.get("spoken_cue", {}).get("text")
-        command["spoken_review"] = row.get("spoken_cue", {}).get("status", "unresolved")
+        command["spoken_review"] = (
+            "reviewed"
+            if row.get("spoken_cue", {}).get("status") in {"reviewed", "canonical"}
+            else "unresolved"
+        )
         if "observed_phrase" in old:
             command["observed_phrase"] = deepcopy(old["observed_phrase"])
         commands.append(command)
@@ -212,3 +263,40 @@ def project(data, path, root):
 def load_functions(root, locale=CANONICAL_LOCALE):
     rows = resources(root, locale)
     return [project(data, path, root) for path, data in rows if data.get("schema_version") == "2.0"]
+
+
+def draft_resource(record, catalog):
+    """An unrenderable local draft; no fabricated narration or approved speech."""
+    from .commands import resolve_phrase
+    from .function_authority_migration import complete_resource
+
+    commands = []
+    for command in record.command_records:
+        row = {
+            "command_id": command.id,
+            "role": command.role,
+            "display_cue": {"text": resolve_phrase(record, command), "status": "draft"},
+        }
+        if command.data.get("spoken"):
+            row["spoken_cue"] = {"text": command.data["spoken"], "status": "draft"}
+        commands.append(row)
+    old = {
+        "schema_version": "1.0",
+        "domain": "function",
+        "locale": "en-US",
+        "function_id": record.id,
+        "title": {"text": record.canonical_name, "status": "draft"},
+        "description": {"text": record.purpose_summary, "status": "draft"},
+        "activation": commands[0],
+        "secondary_commands": commands[1:],
+        "tags": [],
+        "common_uses": [],
+        "relationships": {"related_functions": [], "complementary_functions": []},
+        "metadata_entries": {},
+        "entries": {},
+        "changelog": [],
+    }
+    data = complete_resource(old, record, catalog)
+    data.pop("historical_record")
+    data["localization"]["status"] = "partial"
+    return data

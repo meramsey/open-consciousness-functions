@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-BOD-012
@@ -30,6 +30,64 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD-NATURAL
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-012.function-body
+      before_steps:
+      - id: select-arousal-response
+        operation: select-intention
+        localization_key: command.procedure.select-intention
+    relationships:
+      pairs_with:
+      - OCF-CMD-BOD-012-SEX-LESS
+  procedure_steps:
+  - id: select-arousal-response
+    operation: select-intention
+    instruction:
+      text: Choose an intention.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: breathe-normally
+    operation: breathe-normally
+    instruction:
+      text: Continue breathing normally.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-BOD-012-SEX-LESS
   display_cue:
@@ -50,6 +108,66 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: decrease
+  control:
+    designation: secondary
+    phrase_ref:
+      source: canonical-mode
+      command_id: OCF-CMD-BOD-012-SEX-LESS
+    documentation:
+      visible: true
+      order: 11
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD-NATURAL
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-012.function-body
+      before_steps:
+      - id: select-arousal-response
+        operation: select-intention
+        localization_key: command.procedure.select-intention
+    relationships:
+      pairs_with:
+      - OCF-CMD-BOD-012-PRIMARY
+      modifies:
+      - OCF-CMD-BOD-012-PRIMARY
+  procedure_steps:
+  - id: select-arousal-response
+    operation: select-intention
+    instruction:
+      text: Choose an intention.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: breathe-normally
+    operation: breathe-normally
+    instruction:
+      text: Continue breathing normally.
+      status: canonical
+      version: 1.0.0
 - command_id: OCF-CMD-BOD-012-LEGACY-01
   display_cue:
     text: PLUS-SEX GREATER
@@ -66,6 +184,17 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-BOD-012-LEGACY-01
+    documentation:
+      visible: true
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 - command_id: OCF-CMD-BOD-012-LEGACY-02
   display_cue:
     text: PLUS-SEX LESSER
@@ -82,13 +211,27 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-BOD-012-LEGACY-02
+    documentation:
+      visible: true
+      order: 102
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: sexual-awareness
   status: draft
+  semantic_id: sexual-awareness
 - text: self-direction
   status: draft
+  semantic_id: self-direction
 - text: balance
   status: draft
+  semantic_id: balance
 common_uses:
 - text: Reflecting on a personally desired level of sexual arousal.
   status: draft
@@ -104,10 +247,11 @@ entries:
   hplus.function.ocf-bod-012.opener:
     status: reviewed
     version: 1.1.0
-    text: |-
-      This OCF exercise will teach you to consciously direct
+    text: 'This OCF exercise will teach you to consciously direct
+
       your sexual desire and arousal, increasing or decreasing
-      your responsiveness whenever you choose.
+
+      your responsiveness whenever you choose.'
   hplus.function.ocf-bod-012.function-body:
     status: reviewed
     version: 1.2.0
@@ -116,76 +260,125 @@ entries:
       allowed:
       - cue.id.OCF-CMD-BOD-012-SEX-LESS
       - cue.primary
-    text: |-
-      From this moment forward, you have the ability
+    text: 'From this moment forward, you have the ability
+
       to consciously direct your sexual desire
+
       and physical arousal whenever you choose.
 
+
       Your mind and body work together in harmony,
+
       responding quickly and naturally to your intentions.
 
+
       Whenever you wish to increase your sexual desire
+
       and arousal, use the command "{{ cue.primary }}."
 
+
       Your sexual energy will increase,
+
       bringing greater desire, sensitivity,
+
       and physical responsiveness.
 
+
       Feel this energy flowing naturally
+
       throughout your body, strengthening
+
       your sense of pleasure, vitality,
+
       and intimate connection.
 
+
       Whenever you wish to reduce sexual arousal,
+
       use the command "{{ cue.id.OCF-CMD-BOD-012-SEX-LESS }}."
 
+
       Your arousal will quickly and comfortably diminish,
+
       becoming less and less until your mind
+
       and body return to a calm, balanced state.
 
+
       The sexual energy you no longer wish to express
+
       will be redirected toward other constructive purposes,
+
       strengthening your physical vitality,
+
       mental clarity, creativity, and concentration.
 
+
       Your attention will shift naturally
+
       toward whatever you choose,
+
       free from unwanted sexual distraction.
 
+
       To activate either function,
+
       take a deep breath in and gently hold it.
 
+
       Think or say in your mind,
+
       "{{ cue.primary }}" or "{{ cue.id.OCF-CMD-BOD-012-SEX-LESS }},"
+
       according to your desire.
 
+
       Then exhale slowly through your mouth
+
       and resume breathing naturally.
 
+
       Your mind and body will respond
+
       quickly and effectively to your chosen command.
 
+
       From this moment forward, this ability
+
       to consciously regulate your sexual arousal
+
       is permanently established within you.
 
+
       Your natural sexual responsiveness will remain
+
       balanced and adaptable, responding appropriately
+
       to your intentions and circumstances.
 
+
       Whenever you wish greater arousal,
+
       you can increase it.
 
+
       Whenever you wish less arousal,
+
       you can comfortably release it.
 
+
       Each time you use these functions,
+
       directing your sexual energy becomes
+
       easier, faster, and more effective.
 
+
       This lasting ability is always available,
+
       allowing you to direct your sexual desire
-      and responsiveness whenever you choose.
+
+      and responsiveness whenever you choose.'
   hplus.function.ocf-bod-012.closer:
     status: reviewed
     version: 1.1.0
@@ -194,16 +387,76 @@ entries:
       allowed:
       - cue.id.OCF-CMD-BOD-012-SEX-LESS
       - cue.primary
-    text: |-
-      Remember, whenever you wish to regulate
+    text: 'Remember, whenever you wish to regulate
+
       your sexual arousal, inhale deeply
+
       and hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}"
+
       to increase arousal, or "{{ cue.id.OCF-CMD-BOD-012-SEX-LESS }}"
+
       to reduce and redirect it.
 
+
       Then exhale slowly through your mouth
+
       and resume breathing naturally.
 
-      This concludes your OCF Sex Drive exercise.
+
+      This concludes your OCF Sex Drive exercise.'
+slug: sex-drive
+historical_record: functions/body/sex-drive.yaml
+classification:
+  primary_domain: body
+  secondary_domains:
+  - sensory
+category_labels:
+  body:
+    text: body
+    status: canonical
+  sensory:
+    text: sensory
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-012.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-012.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-012.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: needs-review
+localization:
+  status: complete
+  contract_sha256: 96a6b9e6ba85d2c8c393369bde584da380814eea5b6284284fa11a5b20514fc8

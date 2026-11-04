@@ -1,0 +1,171 @@
+aliases:
+  command_ids: []
+  commands: []
+  names:
+  - Eight-Great
+applications: []
+attribution:
+  ocf_contributors: []
+  original_authors: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+canonical:
+  command:
+    mode_ids: []
+    modes: []
+    primary: PLUS-INNER POWER
+  name: Inner Power
+chains: []
+claims:
+  intended_effects: []
+  prohibited_claims:
+  - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+classification:
+  primary_domain: performance
+  secondary_domains:
+  - body
+commands:
+- designation: primary
+  documentation:
+    order: 1
+    visible: true
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-PRF-002
+  id: OCF-CMD-PRF-002-PRIMARY
+  localization:
+    display_cue_key: commands.ocf-cmd-prf-002-primary.display-cue
+    explanation_key: commands.ocf-cmd-prf-002-primary.explanation
+    label_key: commands.ocf-cmd-prf-002-primary.label
+    purpose_key: functions.ocf-prf-002.purpose
+    spoken_cue_key: commands.ocf-cmd-prf-002-primary.spoken-cue
+    usage_key: commands.ocf-cmd-prf-002-primary.usage
+  observed_phrase:
+    narration_key: hplus.function.ocf-prf-002.function-body
+    relationship: canonical-match
+    text: Plus Inner Power
+  phrase_ref:
+    source: canonical-primary
+  procedure:
+    before_steps:
+    - id: select-quality
+      localization_key: command.procedure.select-purpose
+      operation: select-purpose
+    evidence_keys:
+    - hplus.function.ocf-prf-002.function-body
+    ref: OCF-PROC-INHALE-HOLD
+    status: documented
+  relationships: {}
+  role: activation
+  spoken: "Plus Inner Power"
+  spoken_review: reviewed
+- availability: historical-lookup
+  designation: secondary
+  documentation:
+    order: 101
+    visible: false
+  effect_scope_ref: lifecycle.persistence
+  function_id: OCF-PRF-002
+  id: OCF-CMD-PRF-002-LEGACY-01
+  localization:
+    explanation_key: commands.ocf-cmd-prf-002-legacy-01.explanation
+    label_key: commands.ocf-cmd-prf-002-legacy-01.label
+    purpose_key: functions.ocf-prf-002.purpose
+    usage_key: commands.ocf-cmd-prf-002-legacy-01.usage
+  phrase_ref:
+    command_id: OCF-CMD-PRF-002-LEGACY-01
+    source: legacy-command
+  relationships: {}
+  role: legacy-alias
+  spoken: null
+  spoken_review: unresolved
+companions: []
+compatibility:
+  rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
+    operational commands remain unchanged.
+  state: historical-lookup
+contributor:
+  contact: null
+  name: null
+documentation:
+  purpose_key: functions.ocf-prf-002.purpose
+  short_description_key: functions.ocf-prf-002.short-description
+  title_key: functions.ocf-prf-002.title
+historical_lookup:
+- decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-title
+  text: Eight-Great
+- command_id: OCF-CMD-PRF-002-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-primary
+  text: PLUS-STRONG
+- command_id: OCF-CMD-PRF-002-PRIMARY
+  decision: OCF-EDITORIAL-TITLE-CUES-001
+  kind: former-teaching
+  text: Plus Eight Great
+history:
+- date: '2026-09-12'
+  note: Initial legacy mapping record created by bootstrap generator.
+  version: 0.1.0
+id: OCF-PRF-002
+incompatible_functions: []
+legacy:
+  command_ids:
+  - OCF-CMD-PRF-002-LEGACY-01
+  command_status: proposed
+  commands:
+  - PLUS-EIGHT, GREAT
+  name: EIGHT-GREAT
+  source_availability: available
+  source_system: Monroe H-PLUS
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+ocf:
+  command_review: approved
+  reimplementation_status: planned
+purpose:
+  community_description: Strengthens recognition and expression of total-self strength, unity, resources,
+    and power throughout daily life.
+  source_description: null
+  summary: Strengthens recognition and expression of total-self strength, unity, resources, and power
+    throughout daily life.
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+schema_version: '1.0'
+slug: eight-great
+sources:
+- locator: null
+  title: OCF Bootstrap Specification — Legacy Function Index
+  type: legacy-reference
+  url: null
+status:
+  evidence: community-hypothesis
+  implementation: specification-only
+  maturity: legacy-mapped
+use_cases: []
+version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-prf-002.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-prf-002.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-prf-002.closer
+    repetitions: 1
+    role: closer

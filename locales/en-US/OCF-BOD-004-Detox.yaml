@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-BOD-004
@@ -32,6 +32,59 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      order: 1
+      visible: true
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      before_steps: []
+      evidence_keys:
+      - hplus.function.ocf-bod-004.function-body
+      ref: OCF-PROC-CLOSE-FOCUS
+      status: documented
+    relationships: {}
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: focus-target
+    operation: focus-target
+    instruction:
+      text: Focus attention on the selected target.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-BOD-004-LEGACY-01
   display_cue:
@@ -49,13 +102,28 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      command_id: OCF-CMD-BOD-004-LEGACY-01
+      source: legacy-command
+    availability: historical-lookup
+    documentation:
+      order: 101
+      visible: false
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: body-awareness
   status: draft
+  semantic_id: body-awareness
 - text: renewal
   status: draft
+  semantic_id: renewal
 - text: visualization
   status: draft
+  semantic_id: visualization
 common_uses:
 - text: Visualizing the body's ordinary cleansing and maintenance processes.
   status: draft
@@ -72,11 +140,13 @@ entries:
   hplus.function.ocf-bod-004.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will strengthen and reinforce your body's
+    text: 'This OCF exercise will strengthen and reinforce your body''s
+
       natural ability to cleanse, renew, and maintain itself,
+
       establishing a lasting, automatic pattern of healthy balance
-      and maintenance throughout your entire physical body.
+
+      and maintenance throughout your entire physical body.'
   hplus.function.ocf-bod-004.function-body:
     status: reviewed
     version: 1.2.1
@@ -84,122 +154,203 @@ entries:
       function_id: OCF-BOD-004
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, your body's natural processes
+    text: 'From this moment forward, your body''s natural processes
+
       of cleansing, renewal, and maintenance will become stronger,
+
       smoother, and more effective.
 
+
       Every part of your body will work together in complete
+
       harmony, maintaining the healthy balance you are
+
       naturally designed to achieve.
 
+
       Bring your awareness to the many systems within your
+
       body that continually cleanse, protect, and renew you.
 
+
       Your liver, kidneys, lungs, digestive system, and other
+
       natural cleansing systems work together, each performing
+
       its own important function.
 
+
       See and feel these systems working smoothly, efficiently,
+
       and in perfect coordination.
 
+
       Your body recognizes what it needs and what it no
+
       longer needs.
 
+
       Everything useful and beneficial is retained and used
+
       where it is needed.
 
+
       Unwanted substances and natural waste products are
-      processed and eliminated through your body's normal
+
+      processed and eliminated through your body''s normal
+
       cleansing pathways.
 
+
       Visualize these processes becoming clearer, smoother,
+
       and more effective throughout your entire body.
 
+
       Imagine every cell receiving the nourishment it needs,
-      while your body's natural maintenance systems keep
+
+      while your body''s natural maintenance systems keep
+
       your internal environment clean and balanced.
 
+
       Feel this sense of balance spreading throughout
+
       your entire physical body.
 
+
       Every organ, every tissue, and every system works
+
       together to maintain your natural health and vitality.
 
+
       Now know that this pattern of cleansing, renewal,
+
       and maintenance is becoming permanently established
+
       within you.
 
+
       From this moment forward, your body will maintain
+
       this pattern automatically, without any need for
+
       conscious thought or effort.
 
+
       Whether you are awake, resting, or sleeping,
-      your body's natural cleansing and maintenance
+
+      your body''s natural cleansing and maintenance
+
       processes will continue working for you.
 
+
       These processes will always respond intelligently
-      to your body's needs, becoming more active when
+
+      to your body''s needs, becoming more active when
+
       needed and returning to their normal balanced
+
       activity when their work is complete.
 
+
       Your body will continuously maintain this healthy
+
       balance, retaining what is beneficial and
+
       eliminating what is no longer needed.
 
+
       This automatic pattern is now a natural and lasting
+
       part of your everyday life.
 
-      Each day, your body's natural processes of
+
+      Each day, your body''s natural processes of
+
       cleansing and renewal will operate more smoothly,
+
       efficiently, and effectively.
 
+
       You will feel increasingly clean, refreshed,
+
       balanced, and full of natural vitality.
 
+
       Whenever you wish to consciously strengthen
+
       or reinforce this cleansing pattern,
+
       you can do so quickly and easily.
 
+
       Simply close your eyes and bring your awareness
-      to your body's natural cleansing systems.
+
+      to your body''s natural cleansing systems.
+
 
       Take a deep breath in and gently hold it.
 
+
       While holding your breath, silently say to yourself,
+
       "{{ cue.primary }}."
 
+
       Then slowly exhale through your mouth,
+
       as though gently blowing out a candle.
 
-      As you exhale, visualize your body's cleansing
+
+      As you exhale, visualize your body''s cleansing
+
       and maintenance systems working together
+
       smoothly and in complete harmony.
 
+
       Your body will reinforce its natural pattern
+
       of cleansing, renewal, and healthy balance.
 
+
       Every system will perform its function at exactly
+
       the level needed to maintain your well-being.
 
+
       Each time you use {{ cue.primary }},
+
       your ability to consciously reinforce
+
       this pattern becomes easier, faster,
+
       and more effective.
+
 
       Remember, this process is now automatic.
 
+
       Your body will continue its natural cleansing
+
       and maintenance whether or not you
+
       consciously think about it.
 
+
       {{ cue.primary }} is always available whenever
+
       you wish to give this established pattern
+
       additional attention and reinforcement.
 
+
       Your body knows how to maintain its natural
+
       balance, and this pattern will continue
-      working for you every day and every night.
+
+      working for you every day and every night.'
   hplus.function.ocf-bod-004.closer:
     status: reviewed
     version: 1.2.1
@@ -207,19 +358,80 @@ entries:
       function_id: OCF-BOD-004
       allowed:
       - cue.primary
-    text: |-
-      Remember, your body's natural processes of cleansing,
+    text: 'Remember, your body''s natural processes of cleansing,
+
       renewal, and maintenance are now firmly established
+
       as a lasting, automatic pattern.
 
+
       Whenever you wish to reinforce this pattern,
+
       simply close your eyes.
+
 
       Inhale deeply and gently hold your breath.
 
+
       Silently say to yourself, "{{ cue.primary }}."
 
+
       Then slowly exhale through your mouth,
+
       as though gently blowing out a candle.
 
-      This concludes your OCF Detox exercise.
+
+      This concludes your OCF Detox exercise.'
+slug: de-tox-body
+historical_record: functions/body/de-tox-body.yaml
+classification:
+  primary_domain: body
+  secondary_domains:
+  - lifestyle
+category_labels:
+  body:
+    text: body
+    status: canonical
+  lifestyle:
+    text: lifestyle
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-004.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-004.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-004.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: acabbac24a597c9cc3357ebe82c28e52fbc4c08a30da6ac3b38ce9c3d712a980

@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-EMG-001
@@ -41,14 +41,59 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.scopes.episode.persistence
+    invocation_scope_ref: lifecycle.scopes.application
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-emg-001.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: calm
   status: draft
+  semantic_id: calm
 - text: body-awareness
   status: draft
+  semantic_id: body-awareness
 - text: safety
   status: draft
+  semantic_id: safety
 common_uses:
 - text: Reviewing the exercise's intention of calm during an injury response, alongside appropriate first
     aid.
@@ -65,11 +110,13 @@ entries:
   hplus.function.ocf-emg-001.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will strengthen your body's
+    text: 'This OCF exercise will strengthen your body''s
+
       automatic response to physical injury,
+
       directing its natural abilities toward
-      protection, balance, healing, and restoration.
+
+      protection, balance, healing, and restoration.'
   hplus.function.ocf-emg-001.function-body:
     status: reviewed
     version: 1.3.0
@@ -77,83 +124,140 @@ entries:
       function_id: OCF-EMG-001
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, whenever physical injury
+    text: 'From this moment forward, whenever physical injury
+
       occurs, your entire living system will immediately
+
       begin its natural processes of protection,
+
       balance, healing, and restoration.
 
+
       Your body will recognize the injury
+
       and automatically coordinate its responses
+
       according to what is needed.
 
+
       Your nervous system, circulation,
+
       immune defenses, and healing processes
+
       will work together in precise coordination.
 
+
       Your body will protect the injured area,
+
       control bleeding when necessary,
+
       maintain appropriate circulation,
+
       and preserve the strength and resources
+
       needed for recovery.
 
+
       Your natural inflammatory and immune responses
+
       will operate in proper balance,
+
       protecting damaged tissues
+
       and preparing the area for repair.
 
+
       Cells and tissues will begin the processes
+
       of healing, rebuilding, and regeneration,
+
       restoring damaged structures
+
       toward their healthy form and function.
 
+
       Every part of your physical system
+
       will work together to support
+
       the best possible recovery.
 
+
       This automatic response is now
+
       permanently established within you,
+
       ready whenever physical injury occurs.
 
+
       Whether you are awake, asleep,
+
       or temporarily unconscious,
-      your body's protective and restorative
+
+      your body''s protective and restorative
+
       processes will activate automatically,
+
       without requiring conscious direction.
 
+
       When you are conscious and able,
+
       you can strengthen this response
+
       through a simple command.
+
 
       Inhale deeply and gently hold your breath.
 
+
       Think or say in your mind,
+
       "{{ cue.primary }}."
+
 
       Then exhale slowly through your mouth.
 
-      Your body's natural protective,
+
+      Your body''s natural protective,
+
       balancing, and healing processes
+
       will become stronger and more coordinated.
 
+
       Your mind will remain as calm,
+
       clear, and responsive as possible,
+
       helping you recognize what is needed
+
       and take appropriate action.
 
+
       As the injury stabilizes,
+
       your body will naturally adjust its response,
+
       directing more energy toward repair,
+
       restoration, and complete recovery.
 
+
       The more you use this function,
+
       the easier and more effective
+
       its conscious reinforcement will become.
 
-      Your body's natural intelligence
+
+      Your body''s natural intelligence
+
       will continue directing its resources
+
       toward protection, balance,
-      and restoration whenever needed.
+
+      and restoration whenever needed.'
   hplus.function.ocf-emg-001.closer:
     status: reviewed
     version: 1.3.0
@@ -161,17 +265,91 @@ entries:
       function_id: OCF-EMG-001
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever physical injury occurs
+    text: 'Remember, whenever physical injury occurs
+
       and you are conscious and able,
-      you can reinforce your body's natural
+
+      you can reinforce your body''s natural
+
       protective and healing response.
+
 
       Inhale deeply and hold your breath.
 
+
       Think or say in your mind,
+
       "{{ cue.primary }}."
+
 
       Then exhale slowly through your mouth.
 
-      This concludes your OCF Injury Response exercise.
+
+      This concludes your OCF Injury Response exercise.'
+slug: emergency-injury
+historical_record: functions/emergency/emergency-injury.yaml
+classification:
+  primary_domain: emergency
+  secondary_domains:
+  - foundation
+category_labels:
+  emergency:
+    text: emergency
+    status: canonical
+  foundation:
+    text: foundation
+    status: canonical
+lifecycle:
+  activation: conditional
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions:
+  - physical injury occurs
+  scopes:
+    capability:
+      persistence: permanent
+      description_key: functions.ocf-emg-001.lifecycle.scopes.capability.description
+    application:
+      persistence: temporary
+      description_key: functions.ocf-emg-001.lifecycle.scopes.application.description
+      activation: manual
+    episode:
+      persistence: temporary
+      activation: conditional
+      trigger_conditions_ref: lifecycle.trigger_conditions
+      description_key: functions.ocf-emg-001.lifecycle.scopes.episode.description
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: emergency
+  medical_relevance: true
+  notes:
+  - Does NOT replace emergency services, first aid, poison control, or medical evaluation.
+  - If you believe you have an emergency or poisoning, call your local emergency number first.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-emg-001.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-emg-001.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-emg-001.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: fca13bb0dfefe8460bb69be3dee622535bce87c9787ff62efb1c74ce95ad2daa

@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-BOD-015
@@ -31,6 +31,59 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-FOCUS
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-015.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: focus-target
+    operation: focus-target
+    instruction:
+      text: Focus attention on the selected target.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-BOD-015-LEGACY-01
   display_cue:
@@ -48,6 +101,18 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-BOD-015-LEGACY-01
+    availability: historical-lookup
+    documentation:
+      visible: false
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 - command_id: OCF-CMD-BOD-015-LEGACY-02
   display_cue:
     text: PLUS-RELEASE
@@ -68,13 +133,80 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: release
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-BOD-015-LEGACY-02
+    documentation:
+      visible: true
+      order: 102
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-FOCUS
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-015.function-body
+      override_steps:
+      - id: focus-selected-area
+        operation: focus-target
+        localization_key: command.procedure.focus-target
+      - id: inhale
+        operation: inhale
+        localization_key: command.procedure.inhale
+      - id: hold
+        operation: hold-breath
+        localization_key: command.procedure.hold-breath
+      - id: command
+        operation: think-or-say-command
+        localization_key: command.procedure.think-or-say-command
+      - id: exhale
+        operation: exhale
+        localization_key: command.procedure.exhale
+    relationships:
+      releases:
+      - OCF-CMD-BOD-015-PRIMARY
+  procedure_steps:
+  - id: focus-selected-area
+    operation: focus-target
+    instruction:
+      text: Focus attention on the selected target.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 tags:
 - text: comfort
   status: draft
+  semantic_id: comfort
 - text: body-awareness
   status: draft
+  semantic_id: body-awareness
 - text: self-direction
   status: draft
+  semantic_id: self-direction
 common_uses:
 - text: Comparing temporary, area-specific sensitivity imagery with general comfort practice.
   status: draft
@@ -91,11 +223,13 @@ entries:
   hplus.function.ocf-bod-015.opener:
     status: reviewed
     version: 1.1.0
-    text: |-
-      This OCF exercise will teach you to quickly and
+    text: 'This OCF exercise will teach you to quickly and
+
       temporarily reduce discomfort and sensitivity
+
       in a specific part of your physical body,
-      whenever you choose.
+
+      whenever you choose.'
   hplus.function.ocf-bod-015.function-body:
     status: reviewed
     version: 1.1.1
@@ -104,78 +238,126 @@ entries:
       allowed:
       - cue.id.OCF-CMD-BOD-015-LEGACY-02
       - cue.primary
-    text: |-
-      From this moment forward, you have the ability
+    text: 'From this moment forward, you have the ability
+
       to quickly and temporarily reduce discomfort
+
       and sensitivity in a chosen part of your body.
 
+
       Whenever a new, temporary discomfort or pain
+
       signal arises, and you desire immediate relief,
+
       bring the exact area clearly into your awareness.
 
+
       Close your eyes and focus your attention
+
       on the part of your body you wish to affect.
+
 
       Inhale deeply and gently hold your breath.
 
+
       Think or say in your mind,
+
       "{{ cue.primary }}."
+
 
       Then exhale slowly through your mouth.
 
+
       The discomfort signals from the selected area
+
       will immediately begin to diminish.
 
+
       Feel the sensitivity decreasing,
+
       becoming less and less,
+
       as the area grows comfortably numb.
 
+
       The discomfort will quickly fade,
+
       becoming weaker and less important
+
       until it no longer demands your attention.
 
+
       Your mind will remain clear and alert,
+
       free to concentrate on whatever is needed.
 
+
       This temporary numbing response
+
       will remain directed toward the
+
       specific area you have chosen.
 
-      You will remain aware of your body's needs
+
+      You will remain aware of your body''s needs
+
       and the importance of appropriate care.
 
+
       Whenever you wish to end the temporary
+
       numbing response, you can do so
+
       quickly and easily.
+
 
       Bring the selected area into your awareness.
 
+
       Inhale deeply and gently hold your breath.
+
 
       Think or say in your mind, "{{ cue.id.OCF-CMD-BOD-015-LEGACY-02 }}."
 
+
       Then exhale slowly through your mouth.
 
+
       The temporary numbing response will end,
+
       and normal sensitivity will return
+
       smoothly and naturally to the selected area.
 
+
       You remain in complete control,
+
       able to activate or release
+
       this temporary response whenever appropriate.
 
+
       From this moment forward, this ability
+
       is permanently available to you.
 
+
       Each time you use Temporary Numbing,
+
       directing and releasing the temporary
+
       response becomes easier, faster,
+
       and more effective.
 
+
       The function remains ready for conscious
+
       use whenever you need it,
-      while your body's normal sensitivity
-      continues at all other times.
+
+      while your body''s normal sensitivity
+
+      continues at all other times.'
   hplus.function.ocf-bod-015.closer:
     status: reviewed
     version: 1.2.1
@@ -184,19 +366,77 @@ entries:
       allowed:
       - cue.id.OCF-CMD-BOD-015-LEGACY-02
       - cue.primary
-    text: |-
-      Remember, whenever you wish to temporarily
+    text: 'Remember, whenever you wish to temporarily
+
       reduce discomfort in a specific part of your body,
+
       close your eyes and focus on that area.
+
 
       Inhale deeply and hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
+
 
       Then exhale slowly through your mouth.
 
+
       When you wish to restore normal sensitivity,
+
       repeat the breathing sequence and think
+
       or say in your mind, "{{ cue.id.OCF-CMD-BOD-015-LEGACY-02 }}."
 
-      This concludes your OCF Temporary Numbing exercise.
+
+      This concludes your OCF Temporary Numbing exercise.'
+slug: short-fix
+historical_record: functions/body/short-fix.yaml
+classification:
+  primary_domain: body
+  secondary_domains: []
+category_labels:
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    command_id: OCF-CMD-BOD-015-LEGACY-02
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-015.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-015.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-015.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: b74e76e6121ca0717551e7953edce68b1576ae2a63b9f32ad200b497f9713fe4

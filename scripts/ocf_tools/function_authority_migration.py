@@ -80,8 +80,8 @@ def complete_resource(old, record, catalog):
 
 
 def build(root=REPO_ROOT):
-    from .indexes import load_all_functions
     from .locale import LocaleCatalog
+    from .models import function_from_dict
 
     if (root / LEDGER).exists():
         ledger = json.loads((root / LEDGER).read_text())
@@ -90,7 +90,12 @@ def build(root=REPO_ROOT):
     if root.resolve() != REPO_ROOT.resolve():
         raise OCFError("migration uses the selected OCF_DATA_ROOT; do not mix checkout identities")
     catalog = LocaleCatalog()
-    records = {r.id: r for r in load_all_functions()}
+    records = {}
+    for source in sorted((root / "functions").rglob("*.yaml")):
+        record = function_from_dict(yaml_safe_load(source.read_text(encoding="utf-8")), source)
+        if record.id in records:
+            raise OCFError("duplicate structural migration identity: " + record.id)
+        records[record.id] = record
     rows = resources(root)
     if len(rows) != len(records) or len(rows) != 58:
         raise OCFError("Option A requires the exact complete 58-function baseline")
@@ -115,9 +120,13 @@ def build(root=REPO_ROOT):
             "function-content/editorial/historical-locales/007/"
             + locale_name.removeprefix("locales/")
         )
-        before = path.read_bytes()
+        archive_path = root / locale_archive
+        before = archive_path.read_bytes() if archive_path.is_file() else path.read_bytes()
+        old = yaml_safe_load(before.decode("utf-8"))
         new = complete_resource(old, record, catalog)
         after = yaml.safe_dump(new, sort_keys=False, allow_unicode=True, width=100).encode()
+        if path.read_bytes() not in (before, after):
+            raise OCFError("migration resume refuses an edited locale successor: " + locale_name)
         if after.startswith(b"\n") or new["entries"] != old["entries"]:
             raise OCFError("migration changed canonical narration")
         projected = project(new, path, root)

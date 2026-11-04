@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-SEN-002
@@ -32,6 +32,47 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-sen-002.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-SEN-002-LEGACY-01
   display_cue:
@@ -49,13 +90,27 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-SEN-002-LEGACY-01
+    documentation:
+      visible: true
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: sensory-awareness
   status: draft
+  semantic_id: sensory-awareness
 - text: visualization
   status: draft
+  semantic_id: visualization
 - text: visual-memory
   status: draft
+  semantic_id: visual-memory
 common_uses:
 - text: Exploring remembered or deliberately imagined visual detail in your own way.
   status: draft
@@ -89,10 +144,11 @@ entries:
   hplus.function.ocf-sen-002.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will strengthen your entire system
+    text: 'This OCF exercise will strengthen your entire system
+
       of seeing, bringing greater clarity to your physical sight
-      and to the images you create and perceive within your mind.
+
+      and to the images you create and perceive within your mind.'
   hplus.function.ocf-sen-002.function-body:
     status: reviewed
     version: 1.2.0
@@ -100,52 +156,84 @@ entries:
       function_id: OCF-SEN-002
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, your entire system of seeing,
+    text: 'From this moment forward, your entire system of seeing,
+
       both physical and within your mind, will become
+
       clearer, sharper, and more effective.
 
+
       Your eyes will maintain comfortable, balanced moisture.
+
       Your eyelids will blink smoothly, distributing
+
       tear fluid evenly and protecting your eyes.
 
+
       Your eyes will adapt naturally to changing light.
+
       Their focusing structures will bring the patterns
+
       of light into increasingly clear detail.
 
+
       Your inner eyes will receive these patterns accurately,
+
       and your visual centers will process and understand
+
       them with greater clarity, ease, and precision.
 
+
       At the same time, your inner vision will grow stronger.
+
       You will create images within your mind more readily,
+
       seeing them vividly, clearly, and in rich detail.
 
+
       You can picture people, places, objects, and events;
+
       hold an image steadily; and change its shape,
+
       color, distance, or movement whenever you choose.
 
+
       Images from memory will become easier to recall,
+
       and new possibilities easier to picture.
-      Your mind's eye will respond naturally to intention,
+
+      Your mind''s eye will respond naturally to intention,
+
       imagination, and the direction of your total self.
 
+
       These abilities will continue developing together,
+
       becoming a permanent part of the way you see,
+
       remember, imagine, and understand.
 
+
       Whenever you wish to strengthen your physical sight,
+
       your inner visualization, or both, inhale deeply
+
       and gently hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth.
 
+
       Your entire seeing system will respond to your intention,
+
       becoming clearer, smoother, and more capable.
+
       Each time you use {{ cue.primary }}, these abilities
-      will become easier, stronger, and more effective.
+
+      will become easier, stronger, and more effective.'
   hplus.function.ocf-sen-002.closer:
     status: reviewed
     version: 1.3.1
@@ -153,13 +241,64 @@ entries:
       function_id: OCF-SEN-002
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to strengthen your
+    text: 'Remember, whenever you wish to strengthen your
+
       physical sight or the clarity of your inner images,
+
       inhale deeply and hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth.
 
-      This concludes your OCF Seeing exercise.
+
+      This concludes your OCF Seeing exercise.'
+slug: seeing
+historical_record: functions/sensory/seeing.yaml
+classification:
+  primary_domain: sensory
+  secondary_domains: []
+category_labels:
+  sensory:
+    text: sensory
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-sen-002.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-sen-002.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-sen-002.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 816178b999e737fbfb8d0d32a3df82ffd75a667fdd379e4c7a7b4f715296f511

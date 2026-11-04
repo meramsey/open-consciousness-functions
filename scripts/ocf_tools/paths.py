@@ -26,16 +26,22 @@ def resolve_data_root(
 ) -> Path:
     if override:
         path = Path(override).expanduser().resolve()
-        if not (path / "schemas").is_dir() or not (path / "functions").is_dir():
+        if not (path / "schemas").is_dir() or not (
+            (path / "locales/en-US/manifest.yaml").is_file() or (path / "functions").is_dir()
+        ):
             raise RuntimeError(
-                "OCF_DATA_ROOT must contain schemas/ and functions/; use a complete writable OCF checkout"
+                "OCF_DATA_ROOT must contain schemas/ and a canonical locale manifest (or historical functions/); use a complete writable OCF checkout"
             )
         return path
     source = module_file.resolve().parent.parent.parent
-    if (source / "schemas").is_dir() and (source / "functions").is_dir():
+    if (source / "schemas").is_dir() and (
+        (source / "locales/en-US/manifest.yaml").is_file() or (source / "functions").is_dir()
+    ):
         return source
     packaged = bundled if bundled is not None else Path(str(files("ocf_tools").joinpath("data")))
-    if (packaged / "schemas").is_dir() and (packaged / "functions").is_dir():
+    if (packaged / "schemas").is_dir() and (
+        (packaged / "locales/en-US/manifest.yaml").is_file() or (packaged / "functions").is_dir()
+    ):
         return packaged
     raise RuntimeError(
         "OCF runtime data unavailable; reinstall the wheel or set OCF_DATA_ROOT to a complete checkout"
@@ -62,7 +68,9 @@ def canonical_project_root(repo_root: Path | None = None) -> Path:
         common_file = git_dir / "commondir"
         common_dir = (git_dir / common_file.read_text(encoding="utf-8").strip()).resolve()
         project = common_dir.parent
-        if (project / "schemas").is_dir() and (project / "functions").is_dir():
+        if (project / "schemas").is_dir() and (
+            (project / "locales/en-US/manifest.yaml").is_file() or (project / "functions").is_dir()
+        ):
             return project
     except (OSError, IndexError, ValueError):
         pass

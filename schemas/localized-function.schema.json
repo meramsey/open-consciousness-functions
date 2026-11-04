@@ -28,7 +28,7 @@
     "description": {"$ref": "#/definitions/localizedValue"},
     "activation": {
       "type": "object", "additionalProperties": false,
-      "required": ["command_id", "display_cue", "spoken_cue"],
+      "required": ["command_id"],
       "properties": {
         "command_id": {"type": "string", "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"},
         "role": {"type": "string"},
@@ -54,9 +54,13 @@
       }
     },
     "changelog": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["version", "change"], "properties": {"version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}, "change": {"type": "string", "minLength": 1}}}},
-    "entries": {"description": "Canonical readable narration entries. Four-pass playback repetition is not duplicated here.", "type": "object", "minProperties": 1, "propertyNames": {"pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"}}
+    "entries": {"description": "Canonical readable narration entries. Four-pass playback repetition is not duplicated here.", "type": "object", "propertyNames": {"pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"}}
   },
-  "allOf": [{"if": {"properties": {"schema_version": {"const": "2.0"}}}, "then": {"required": ["slug", "historical_record", "classification", "category_labels", "lifecycle", "audio", "safety", "function_version", "narration", "editorial", "localization"], "properties": {"activation": {"required": ["control", "role", "procedure_steps"]}, "secondary_commands": {"items": {"required": ["control", "procedure_steps"]}}}}}],
+  "allOf": [
+    {"if": {"properties": {"schema_version": {"const": "1.0"}}}, "then": {"properties": {"activation": {"required": ["display_cue", "spoken_cue"]}, "entries": {"minProperties": 1}}}},
+    {"if": {"properties": {"schema_version": {"const": "2.0"}}}, "then": {"required": ["slug", "classification", "category_labels", "lifecycle", "audio", "safety", "function_version", "narration", "editorial", "localization"], "properties": {"activation": {"required": ["control", "role", "procedure_steps"]}, "secondary_commands": {"items": {"required": ["control", "procedure_steps"]}}}}},
+    {"if": {"properties": {"schema_version": {"const": "2.0"}, "localization": {"properties": {"status": {"const": "complete"}}}}}, "then": {"properties": {"activation": {"required": ["display_cue", "spoken_cue"]}, "entries": {"minProperties": 1}}}}
+  ],
   "definitions": {
     "localLifecycle": {"type": "object", "additionalProperties": false, "required": ["persistence", "activation", "release"], "properties": {
       "persistence": {"$ref": "function.schema.json#/properties/lifecycle/properties/persistence"},

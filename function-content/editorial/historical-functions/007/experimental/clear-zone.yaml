@@ -1,0 +1,193 @@
+schema_version: '1.0'
+id: OCF-EXP-005
+slug: clear-zone
+canonical:
+  name: Clear Zone
+  command:
+    primary: PLUS-CLEAR ZONE
+    modes:
+    - PLUS-CLEAR ZONE, OBSERVE
+    - PLUS-CLEAR ZONE, SUSPEND
+    mode_ids:
+    - OCF-CMD-EXP-005-OBSERVE
+    - OCF-CMD-EXP-005-SUSPEND
+legacy:
+  source_system: null
+  name: ''
+  commands: []
+  command_status: proposed
+  source_availability: pending-source-review
+  source_notes: New adaptation of the supplied draft; no authenticated historical lineage or inherited
+    rights approval.
+ocf:
+  reimplementation_status: in-progress
+  command_review: approved
+aliases:
+  names: []
+  commands: []
+  command_ids: []
+classification:
+  primary_domain: experimental
+  secondary_domains: []
+compatibility:
+  state: none
+  rationale: Original draft; no historical command is being replaced.
+status:
+  maturity: community-proposed
+  implementation: script-approved
+  evidence: unverified
+lifecycle:
+  persistence: permanent
+  activation: automatic
+  release:
+    required: false
+    command: null
+  trigger_conditions:
+  - Automatic is the intended baseline; deliberate primary invocation strengthens or restores it.
+  - Observe pauses outward-directed insect-discouragement intention while calm awareness remains.
+  - Suspend pauses the entire Clear Zone application, preserving ordinary awareness and natural bodily
+    responses.
+  - Modes are mutually exclusive; each deliberate selection replaces the prior mode.
+  - Either override ends at normal sleep onset, loss of consciousness or deliberate primary invocation.
+  - Relaxation, Focus-state labels and hearing a cue during narration are not reset or selection triggers.
+  - These are exercise instructions, not executable detection or physiological control.
+  scopes:
+    capability:
+      persistence: permanent
+      description: Intended learned availability persists in every mode.
+      description_key: functions.ocf-exp-005.capability
+    baseline:
+      persistence: permanent
+      activation: automatic
+      description: Intended automatic non-destructive insect discouragement and calm awareness.
+      description_key: functions.ocf-exp-005.baseline
+    application:
+      persistence: conditional
+      activation: manual
+      description: Mutually exclusive Observe and Suspend overrides replace the prior mode and end at
+        normal sleep onset, loss of consciousness or deliberate primary invocation.
+      description_key: functions.ocf-exp-005.application
+purpose:
+  summary: Establish an ongoing intention to discourage unwanted insect contact while maintaining calm
+    awareness.
+  source_description: null
+  community_description: Experimental non-destructive intention with distinct automatic, Observe and Suspend
+    modes.
+safety:
+  level: experimental
+  medical_relevance: false
+  notes:
+  - Physical repellency or protection against bites, stings or insect-borne disease is not established.
+claims:
+  intended_effects:
+  - Calm awareness and non-destructive intention to discourage unwanted insect contact.
+  prohibited_claims:
+  - No verified physical repellency or protection against insect-borne disease.
+audio:
+  script_status: approved
+  implementation_status: not-started
+  background_audio:
+    strategy: optional
+    engine: farfield
+    preset: null
+sources: []
+attribution:
+  original_authors: []
+  ocf_contributors: []
+version:
+  current: 0.1.0
+  created: '2026-10-19'
+  updated: '2026-10-19'
+commands:
+- id: OCF-CMD-EXP-005-PRIMARY
+  function_id: OCF-EXP-005
+  designation: primary
+  role: activation
+  phrase_ref:
+    source: canonical-primary
+  spoken: Plus Clear Zone
+  spoken_review: reviewed
+  effect_scope_ref: lifecycle.scopes.baseline.persistence
+  procedure:
+    status: documented
+    override_steps:
+    - id: inhale-easily
+      operation: inhale
+    - id: think-or-say-in-mind
+      operation: think-or-say-command
+    - id: exhale-naturally
+      operation: exhale
+    evidence_keys:
+    - hplus.function.ocf-exp-005.function-body
+  localization:
+    spoken_cue_key: commands.ocf-cmd-exp-005-primary.spoken-cue
+    label_key: commands.ocf-cmd-exp-005-primary.label
+    usage_key: commands.ocf-cmd-exp-005-primary.usage
+    explanation_key: commands.ocf-cmd-exp-005-primary.explanation
+- id: OCF-CMD-EXP-005-OBSERVE
+  function_id: OCF-EXP-005
+  designation: secondary
+  role: mode
+  phrase_ref:
+    source: canonical-mode
+    command_id: OCF-CMD-EXP-005-OBSERVE
+  spoken: Plus Clear Zone, Observe
+  spoken_review: reviewed
+  effect_scope_ref: lifecycle.scopes.application.persistence
+  procedure:
+    status: documented
+    override_steps:
+    - id: inhale-easily
+      operation: inhale
+    - id: think-or-say-in-mind
+      operation: think-or-say-command
+    - id: exhale-naturally
+      operation: exhale
+    evidence_keys:
+    - hplus.function.ocf-exp-005.function-body
+  localization:
+    spoken_cue_key: commands.ocf-cmd-exp-005-observe.spoken-cue
+    label_key: commands.ocf-cmd-exp-005-observe.label
+    usage_key: commands.ocf-cmd-exp-005-observe.usage
+    explanation_key: commands.ocf-cmd-exp-005-observe.explanation
+- id: OCF-CMD-EXP-005-SUSPEND
+  function_id: OCF-EXP-005
+  designation: secondary
+  role: mode
+  phrase_ref:
+    source: canonical-mode
+    command_id: OCF-CMD-EXP-005-SUSPEND
+  spoken: Plus Clear Zone, Suspend
+  spoken_review: reviewed
+  effect_scope_ref: lifecycle.scopes.application.persistence
+  procedure:
+    status: documented
+    override_steps:
+    - id: inhale-easily
+      operation: inhale
+    - id: think-or-say-in-mind
+      operation: think-or-say-command
+    - id: exhale-naturally
+      operation: exhale
+    evidence_keys:
+    - hplus.function.ocf-exp-005.function-body
+  localization:
+    spoken_cue_key: commands.ocf-cmd-exp-005-suspend.spoken-cue
+    label_key: commands.ocf-cmd-exp-005-suspend.label
+    usage_key: commands.ocf-cmd-exp-005-suspend.usage
+    explanation_key: commands.ocf-cmd-exp-005-suspend.explanation
+documentation:
+  title_key: functions.ocf-exp-005.title
+  purpose_key: functions.ocf-exp-005.purpose
+  short_description_key: functions.ocf-exp-005.purpose
+narration:
+  sequence:
+  - key: hplus.function.ocf-exp-005.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-exp-005.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-exp-005.closer
+    repetitions: 1
+    role: closer

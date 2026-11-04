@@ -22,6 +22,8 @@ FILENAMES = "function-content/editorial/localized-filenames-005.json"
 FILENAMES_SHA256 = "ece5435b619e400bd3f2ddeb414ae07d69bd6265e38629cfab0c909dc793c11f"
 RESOURCE_MAP = "function-content/editorial/historical-resource-map-006.json"
 RESOURCE_MAP_SHA256 = "23633eae6aa72898c135906782d694dfb011957ffd195396fbba8641f249f217"
+FUNCTION_AUTHORITY = "function-content/editorial/function-authority-migration-007.json"
+FUNCTION_AUTHORITY_SHA256 = "c149699f9a08d32a41e9b9ea74a7d3bd47562471b5b65fc920c104394f05e09a"
 
 
 def _safe_path(root: Path, name: str) -> Path:
@@ -52,7 +54,12 @@ def _record(root: Path, name: str, expected: str) -> dict | None:
 
 
 def _archive_text(root: Path, name: str, checksum: str) -> str:
-    if not name.startswith("function-content/editorial/historical-locales/"):
+    if not name.startswith(
+        (
+            "function-content/editorial/historical-locales/",
+            "function-content/editorial/historical-functions/",
+        )
+    ):
         raise OCFError("unsafe historical locale archive: " + name)
     path = _safe_path(root, name)
     if not path.is_file():
@@ -122,6 +129,14 @@ def read_logical(root: Path, name: str, *, preserve_newlines: bool = False) -> s
     returned byte-exact, including CRLF.
     """
     path = _safe_path(root, name)
+    function = historical_function_resources(root).get(name)
+    if function is not None:
+        if path.exists() and (
+            not path.is_file()
+            or hashlib.sha256(path.read_bytes()).hexdigest() != function["sha256"]
+        ):
+            raise OCFError("historical function successor source drift: " + name)
+        return _archive_text(root, function["archive"], function["sha256"])
     row = historical_resources(root).get(name)
     if row is not None:
         if path.exists() and (
@@ -137,6 +152,51 @@ def read_logical(root: Path, name: str, *, preserve_newlines: bool = False) -> s
     return (
         path.read_bytes().decode("utf-8") if preserve_newlines else path.read_text(encoding="utf-8")
     )
+
+
+def historical_function_resources(root: Path) -> dict:
+    path = _safe_path(root, FUNCTION_AUTHORITY)
+    stat = path.stat() if path.is_file() else None
+    signature = (
+        None
+        if stat is None
+        else (stat.st_dev, stat.st_ino, stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns)
+    )
+    return deepcopy(_function_archive_map(root.resolve(), signature, FUNCTION_AUTHORITY_SHA256))
+
+
+@lru_cache(maxsize=8)
+def _function_archive_map(root, signature, expected):
+    data = _record(root, FUNCTION_AUTHORITY, expected)
+    rows = (data or {}).get("files", {})
+    archives = set()
+    for name, row in rows.items():
+        _safe_path(root, name)
+        if not name.startswith("functions/") or not row["archive"].startswith(
+            "function-content/editorial/historical-functions/007/"
+        ):
+            raise OCFError("invalid historical function identity")
+        if row["archive"] in archives:
+            raise OCFError("historical function archive identity collision")
+        archives.add(row["archive"])
+    return rows
+
+
+def _before_function_authority(root: Path, name: str, text: str) -> str:
+    data = _record(root, FUNCTION_AUTHORITY, FUNCTION_AUTHORITY_SHA256)
+    row = (data or {}).get("locale_files", {}).get(name)
+    if row is None:
+        return text
+    before = _archive_text(root, row["archive"], row["before_sha256"])
+    if _sha(text) == row["after_sha256"]:
+        return before
+    if text == before or _known_predecessor(root, name, text):
+        return text
+    for ledger, expected in ((FILENAMES, FILENAMES_SHA256), (RETIREMENT, RETIREMENT_SHA256)):
+        prior = (_record(root, ledger, expected) or {}).get("files", {}).get(name)
+        if prior and _sha(text) == prior["before_sha256"]:
+            return text
+    raise OCFError("complete function authority successor drift: " + name)
 
 
 def _before_discovery(root: Path, name: str, text: str) -> str:
@@ -245,6 +305,7 @@ def before_structural(root: Path, name: str, text: str) -> str:
     Active locale manifests never declare those stubs as resources. Archive
     content and the current compatibility/successor bytes both fail closed.
     """
+    text = _before_function_authority(root, name, text)
     text = _before_discovery(root, name, text)
     for ledger_name, expected in ((FILENAMES, FILENAMES_SHA256), (RETIREMENT, RETIREMENT_SHA256)):
         path = root / ledger_name

@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-SEN-003
@@ -31,6 +31,61 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-OPEN
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-sen-003.function-body
+      before_steps: []
+    relationships:
+      pairs_with:
+      - OCF-CMD-SEN-003-SMELL-LESS
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: open-eyes
+    operation: open-eyes
+    instruction:
+      text: Open your eyes.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-SEN-003-SMELL-LESS
   display_cue:
@@ -51,6 +106,63 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: decrease
+  control:
+    designation: secondary
+    phrase_ref:
+      source: canonical-mode
+      command_id: OCF-CMD-SEN-003-SMELL-LESS
+    documentation:
+      visible: true
+      order: 11
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-OPEN
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-sen-003.function-body
+      before_steps: []
+    relationships:
+      pairs_with:
+      - OCF-CMD-SEN-003-PRIMARY
+      modifies:
+      - OCF-CMD-SEN-003-PRIMARY
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: open-eyes
+    operation: open-eyes
+    instruction:
+      text: Open your eyes.
+      status: canonical
+      version: 1.0.0
 - command_id: OCF-CMD-SEN-003-LEGACY-01
   display_cue:
     text: PLUS-SMELL GREATER
@@ -67,6 +179,17 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-SEN-003-LEGACY-01
+    documentation:
+      visible: true
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 - command_id: OCF-CMD-SEN-003-LEGACY-02
   display_cue:
     text: PLUS-SMELL LESSER
@@ -83,13 +206,27 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-SEN-003-LEGACY-02
+    documentation:
+      visible: true
+      order: 102
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: sensory-awareness
   status: draft
+  semantic_id: sensory-awareness
 - text: smell
   status: draft
+  semantic_id: smell
 - text: imagination
   status: draft
+  semantic_id: imagination
 common_uses:
 - text: Exploring memories of familiar aromas.
   status: draft
@@ -123,10 +260,11 @@ entries:
   hplus.function.ocf-sen-003.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to regulate your sense
+    text: 'This OCF exercise will teach you to regulate your sense
+
       of smell and strengthen your ability to remember,
-      imagine, and experience aromas within your mind.
+
+      imagine, and experience aromas within your mind.'
   hplus.function.ocf-sen-003.function-body:
     status: reviewed
     version: 1.2.0
@@ -135,51 +273,85 @@ entries:
       allowed:
       - cue.id.OCF-CMD-SEN-003-SMELL-LESS
       - cue.primary
-    text: |-
-      From this moment forward, you have the ability
+    text: 'From this moment forward, you have the ability
+
       to regulate your sense of smell and develop
+
       the richness of your inner scent awareness.
 
+
       Your sense of smell will become more responsive
+
       to your conscious intention. You can notice
+
       delicate aromas more clearly or allow unwanted
+
       odors to fade into the background.
 
+
       To increase your perception of smell, close your eyes,
+
       inhale deeply, and gently hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Then exhale slowly through your mouth and open your eyes.
 
+
       Faint scents will become clearer and more distinct.
+
       You will recognize subtle differences between aromas
+
       and appreciate their character and richness.
 
+
       To reduce the prominence of an unwanted odor,
+
       use the same eye and breathing sequence,
+
       thinking or saying, "{{ cue.id.OCF-CMD-SEN-003-SMELL-LESS }}."
+
       Its presence in your awareness will grow quieter,
+
       while you remain free to change your adjustment
+
       or return to your usual sense of smell.
 
+
       Your inner sense of smell will also grow stronger.
+
       You will recall familiar fragrances and imagine
+
       new ones, even when no physical aroma is present.
+
       You can bring a remembered scent into awareness,
+
       hold it clearly, distinguish its subtle qualities,
+
       and combine or transform aromas through imagination.
 
+
       Your mind will connect scents with memories,
+
       places, experiences, and images more vividly.
+
       This ability to imagine and remember aromas
+
       will become a lasting part of your total self.
 
+
       Whenever you choose, your intention and these
+
       commands can help make an inner aroma more vivid
+
       or let an imagined scent gently fade.
 
+
       With each use, your physical smell regulation
+
       and inner scent imagery will become easier,
-      clearer, and more effective.
+
+      clearer, and more effective.'
   hplus.function.ocf-sen-003.closer:
     status: reviewed
     version: 1.2.1
@@ -188,12 +360,64 @@ entries:
       allowed:
       - cue.id.OCF-CMD-SEN-003-SMELL-LESS
       - cue.primary
-    text: |-
-      Remember, to regulate your perception of aromas
+    text: 'Remember, to regulate your perception of aromas
+
       or strengthen your inner sense of smell, close your eyes,
+
       inhale deeply, and hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}"
+
       or "{{ cue.id.OCF-CMD-SEN-003-SMELL-LESS }}," according to your intention.
+
       Then exhale slowly through your mouth and open your eyes.
 
-      This concludes your OCF Smell exercise.
+
+      This concludes your OCF Smell exercise.'
+slug: smell
+historical_record: functions/sensory/smell.yaml
+classification:
+  primary_domain: sensory
+  secondary_domains: []
+category_labels:
+  sensory:
+    text: sensory
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-sen-003.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-sen-003.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-sen-003.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 65931109abf61710520b1410782fa48f8bb87dfa0831c766547cec48b09891fe

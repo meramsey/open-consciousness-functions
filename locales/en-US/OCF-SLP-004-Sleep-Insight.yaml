@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-SLP-004
@@ -31,6 +31,62 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      order: 1
+      visible: true
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      before_steps:
+      - id: select-question
+        localization_key: command.procedure.select-question
+        operation: select-question
+      evidence_keys:
+      - hplus.function.ocf-slp-004.function-body
+      ref: OCF-PROC-SLOW-BREATH
+      status: documented
+    relationships: {}
+  procedure_steps:
+  - id: select-question
+    operation: select-question
+    instruction:
+      text: Choose a question to explore.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: breathe-slowly
+    operation: breathe-slowly-deeply
+    instruction:
+      text: Breathe slowly and deeply.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-SLP-004-LEGACY-01
   display_cue:
@@ -48,13 +104,28 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      command_id: OCF-CMD-SLP-004-LEGACY-01
+      source: legacy-command
+    availability: historical-lookup
+    documentation:
+      order: 101
+      visible: false
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: sleep
   status: draft
+  semantic_id: sleep
 - text: reflection
   status: draft
+  semantic_id: reflection
 - text: insight
   status: draft
+  semantic_id: insight
 common_uses:
 - text: Considering a question you would like to reflect on through sleep.
   status: draft
@@ -87,10 +158,11 @@ entries:
   hplus.function.ocf-slp-004.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to seek an answer
+    text: 'This OCF exercise will teach you to seek an answer
+
       or solution from your total self during sleep,
-      and awaken with the knowledge and guidance you desire.
+
+      and awaken with the knowledge and guidance you desire.'
   hplus.function.ocf-slp-004.function-body:
     status: reviewed
     version: 1.2.1
@@ -98,49 +170,82 @@ entries:
       function_id: OCF-SLP-004
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, whenever you desire
+    text: 'From this moment forward, whenever you desire
+
       an answer, understanding, or a constructive solution,
+
       you can invite your total self to help you during sleep.
 
+
       Bring your question or problem clearly into your mind.
+
       Know what you wish to understand or resolve.
+
       State your intention simply and directly,
+
       then allow the question to rest within you.
 
+
       Inhale deeply and gently hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Then exhale and breathe slowly and deeply.
 
+
       You will move calmly and easily into
+
       normal, natural, restful sleep.
+
       Your conscious mind can rest while your
+
       subconscious awareness, higher self,
+
       and total being work together on your request.
 
+
       You will draw upon your experience, memory,
+
       deeper understanding, and the wider awareness
+
       available through your total self.
+
       Connections and possibilities will come together,
+
       revealing the most constructive answer or direction.
 
+
       The answer may emerge as clear inner knowing,
+
       a remembered dream, a picture, a phrase,
+
       a feeling of certainty, or a practical next step.
+
       You need not control how it arrives.
+
       Your total self will bring forward what is useful
+
       in a form you can recognize and understand.
 
+
       When you awaken, the answer or guidance
+
       will come clearly into your awareness.
+
       You will remember what matters, recognize
+
       its meaning, and know how to begin using it.
 
+
       This ability to seek help through sleep
+
       will remain permanently available to you.
+
       Each time you use {{ cue.primary }},
+
       receiving and remembering useful insight
-      will become easier, clearer, and more effective.
+
+      will become easier, clearer, and more effective.'
   hplus.function.ocf-slp-004.closer:
     status: reviewed
     version: 1.2.1
@@ -148,11 +253,62 @@ entries:
       function_id: OCF-SLP-004
       allowed:
       - cue.primary
-    text: |-
-      Remember, when you wish to receive an answer
+    text: 'Remember, when you wish to receive an answer
+
       or solution through sleep, bring your question to mind.
+
       Inhale deeply and hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Then exhale and breathe slowly and deeply.
 
-      This concludes your OCF Sleep Insight exercise.
+
+      This concludes your OCF Sleep Insight exercise.'
+slug: wake-know
+historical_record: functions/sleep/wake-know.yaml
+classification:
+  primary_domain: sleep
+  secondary_domains: []
+category_labels:
+  sleep:
+    text: sleep
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-slp-004.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-slp-004.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-slp-004.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 128a558a2b9b2f985f865395c4b8b7431688fa6a1df6f33cba033ebe9e0af4ef

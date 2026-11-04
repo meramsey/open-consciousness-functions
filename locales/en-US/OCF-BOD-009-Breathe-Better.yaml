@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-BOD-009
@@ -31,14 +31,58 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      order: 1
+      visible: true
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      before_steps: []
+      evidence_keys:
+      - hplus.function.ocf-bod-009.function-body
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+    relationships: {}
+  procedure_steps:
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: breathing
   status: draft
+  semantic_id: breathing
 - text: body-awareness
   status: draft
+  semantic_id: body-awareness
 - text: comfort
   status: draft
+  semantic_id: comfort
 common_uses:
 - text: Exploring awareness of comfortable, unforced breathing.
   status: draft
@@ -72,11 +116,13 @@ entries:
   hplus.function.ocf-bod-009.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will strengthen and reinforce your
-      respiratory system's natural processes of breathing,
+    text: 'This OCF exercise will strengthen and reinforce your
+
+      respiratory system''s natural processes of breathing,
+
       renewal, and maintenance, establishing a lasting,
-      automatic pattern of healthy, efficient breathing.
+
+      automatic pattern of healthy, efficient breathing.'
   hplus.function.ocf-bod-009.function-body:
     status: reviewed
     version: 1.2.0
@@ -84,78 +130,128 @@ entries:
       function_id: OCF-BOD-009
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, your entire respiratory
+    text: 'From this moment forward, your entire respiratory
+
       system is becoming stronger, healthier,
+
       and more efficient.
 
+
       Bring your awareness to your nose, throat,
+
       airways, and lungs, working together
+
       to provide the oxygen your body needs.
 
+
       Feel your nasal passages becoming clear
+
       and comfortable, allowing air to flow
+
       smoothly and naturally.
 
+
       Tiny protective cilia help move mucus
+
       and trapped particles out of your airways,
+
       while incoming air is warmed and moistened.
 
+
       Your airways remain clear and open,
+
       supporting smooth, comfortable breathing.
+
 
       Now bring your awareness to your lungs.
 
+
       Deep within them, millions of tiny air sacs
+
       called alveoli exchange oxygen and carbon dioxide.
 
+
       Oxygen passes into your bloodstream,
+
       while carbon dioxide moves from your blood
+
       into your lungs to be released as you exhale.
 
+
       This exchange is becoming smoother,
+
       more balanced, and more efficient.
 
+
       Your diaphragm and breathing muscles
+
       work together with strength and coordination,
+
       moving air naturally and without unnecessary effort.
 
-      Your body's natural processes of cellular
+
+      Your body''s natural processes of cellular
+
       maintenance and renewal continually support
+
       the healthy function of your respiratory system.
 
+
       From this moment forward, this pattern
+
       of efficient breathing and maintenance
+
       is permanently established within you.
 
+
       Whether awake, resting, or sleeping,
+
       your breathing continues automatically,
-      adjusting smoothly to your body's needs.
+
+      adjusting smoothly to your body''s needs.
+
 
       Your respiratory system maintains
+
       its natural strength, flexibility,
+
       and efficient function without conscious effort.
 
+
       Whenever you wish to reinforce this
+
       improving pattern, inhale deeply
+
       and gently hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth.
 
+
       Your breathing will become smoother,
+
       easier, and more efficient,
+
       strengthening this established pattern
+
       of healthy respiratory function.
 
+
       Each time you use {{ cue.primary }},
+
       this reinforcement becomes easier,
+
       faster, and more effective.
 
+
       Your respiratory system will continue
+
       its natural maintenance and renewal
-      automatically, every day and every night.
+
+      automatically, every day and every night.'
   hplus.function.ocf-bod-009.closer:
     status: reviewed
     version: 1.2.1
@@ -163,14 +259,68 @@ entries:
       function_id: OCF-BOD-009
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to reinforce
-      your respiratory system's natural strength
+    text: 'Remember, whenever you wish to reinforce
+
+      your respiratory system''s natural strength
+
       and healthy function, inhale deeply
+
       and hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth.
 
-      This concludes your OCF Breathe Better exercise.
+
+      This concludes your OCF Breathe Better exercise.'
+slug: lungs-repairs
+historical_record: functions/body/lungs-repairs.yaml
+classification:
+  primary_domain: body
+  secondary_domains: []
+category_labels:
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-009.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-009.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-009.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 7d15134464bb5c196efbe563828092e7bb0e286a9be61f930bf36e1f0c685dca

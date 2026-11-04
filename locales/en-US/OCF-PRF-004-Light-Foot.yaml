@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-PRF-004
@@ -37,6 +37,57 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.scopes.application.persistence
+    invocation_scope_ref: lifecycle.scopes.application
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-prf-004.function-body
+      before_steps:
+      - id: select-movement-context
+        operation: select-purpose
+        localization_key: command.procedure.select-purpose
+    relationships: {}
+  procedure_steps:
+  - id: select-movement-context
+    operation: select-purpose
+    instruction:
+      text: Choose the purpose for using this function.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-PRF-004-LEGACY-01
   display_cue:
@@ -54,13 +105,28 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-PRF-004-LEGACY-01
+    availability: historical-lookup
+    documentation:
+      visible: false
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: movement
   status: draft
+  semantic_id: movement
 - text: coordination
   status: draft
+  semantic_id: coordination
 - text: body-awareness
   status: draft
+  semantic_id: body-awareness
 common_uses:
 - text: Bringing attention to lighter, quieter steps in ordinary movement.
   status: draft
@@ -76,10 +142,11 @@ entries:
   hplus.function.ocf-prf-004.opener:
     status: reviewed
     version: 1.1.0
-    text: |-
-      This OCF exercise will teach you to move with lightness,
+    text: 'This OCF exercise will teach you to move with lightness,
+
       quiet precision, and natural efficiency, making smooth,
-      effortless steps an increasingly permanent part of the way you move.
+
+      effortless steps an increasingly permanent part of the way you move.'
   hplus.function.ocf-prf-004.function-body:
     status: reviewed
     version: 1.2.1
@@ -87,53 +154,86 @@ entries:
       function_id: OCF-PRF-004
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, your body will learn
+    text: 'From this moment forward, your body will learn
+
       a lighter, quieter, and more efficient way of moving.
 
+
       Whether walking through daily life, climbing steps,
+
       jogging, or running, your feet and legs will work
+
       together with natural ease and precision.
 
+
       Your feet will lift cleanly from the ground,
+
       moving forward without dragging or scraping.
+
       Each foot will return gently and deliberately,
+
       with just the pressure needed for stable support.
 
+
       Your steps will grow quieter, smoother, and lighter.
+
       Unnecessary impact, tension, and wasted motion
+
       will fade from the way you move.
 
+
       Your posture, balance, and rhythm will adjust together.
+
       You will place each foot where you intend,
+
       adapting naturally to the ground beneath you
+
       and the movement you have chosen.
 
+
       Your total self will learn this pattern so thoroughly
+
       that it becomes your natural way of walking,
+
       without needing to think about each separate step.
 
+
       This improvement will remain part of your everyday
+
       movement, even when you are not consciously
+
       using the Light Foot command.
 
+
       Whenever you wish to strengthen this lightness
+
       and efficiency even further, inhale deeply
+
       and gently hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth.
 
+
       Your movement will immediately become lighter,
+
       quieter, more balanced, and more economical,
+
       while maintaining the awareness and control
+
       appropriate to your surroundings.
 
+
       Each time you move, your body will reinforce
+
       this effortless pattern. Each time you use
+
       {{ cue.primary }}, it will become easier
-      and more effective to express at will.
+
+      and more effective to express at will.'
   hplus.function.ocf-prf-004.closer:
     status: reviewed
     version: 1.2.1
@@ -141,13 +241,81 @@ entries:
       function_id: OCF-PRF-004
       allowed:
       - cue.primary
-    text: |-
-      Remember, your lighter, quieter, more efficient way
+    text: 'Remember, your lighter, quieter, more efficient way
+
       of moving will continue naturally, and whenever
+
       you wish to strengthen it, inhale deeply,
+
       hold your breath, and think or say in your mind,
+
       "{{ cue.primary }}."
+
 
       Then exhale slowly through your mouth.
 
-      This concludes your OCF Light Foot exercise.
+
+      This concludes your OCF Light Foot exercise.'
+slug: light-foot
+historical_record: functions/performance/light-foot.yaml
+classification:
+  primary_domain: performance
+  secondary_domains:
+  - body
+category_labels:
+  performance:
+    text: performance
+    status: canonical
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description_key: functions.ocf-prf-004.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description_key: functions.ocf-prf-004.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description_key: functions.ocf-prf-004.lifecycle.scopes.application.description
+      activation: manual
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-prf-004.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-prf-004.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-prf-004.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: f124f44697d726ae367d7a02c137e8d50dfd146c0728a7ac2378891201c7a1c0

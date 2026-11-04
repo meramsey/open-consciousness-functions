@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-BOD-008
@@ -32,14 +32,58 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-008.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: body-awareness
   status: draft
+  semantic_id: body-awareness
 - text: visualization
   status: draft
+  semantic_id: visualization
 - text: balance
   status: draft
+  semantic_id: balance
 common_uses:
 - text: Visualizing coordinated protective responses and a return to balance.
   status: draft
@@ -56,10 +100,11 @@ entries:
   hplus.function.ocf-bod-008.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will strengthen and reinforce your
-      body's natural immune defenses, establishing a lasting,
-      automatic pattern of protection, renewal, and healthy balance.
+    text: 'This OCF exercise will strengthen and reinforce your
+
+      body''s natural immune defenses, establishing a lasting,
+
+      automatic pattern of protection, renewal, and healthy balance.'
   hplus.function.ocf-bod-008.function-body:
     status: reviewed
     version: 1.2.1
@@ -67,62 +112,99 @@ entries:
       function_id: OCF-BOD-008
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, your body's natural immune
+    text: 'From this moment forward, your body''s natural immune
+
       defenses are becoming stronger, more accurate,
+
       and more effective.
 
+
       Throughout your body, specialized white blood cells
+
       continually monitor for harmful organisms,
+
       recognizing threats and responding quickly.
 
+
       Neutrophils and macrophages move to affected areas,
+
       engulfing harmful organisms and clearing damaged cells.
 
+
       Dendritic cells identify threats and communicate
+
       this information to your T cells.
 
+
       Helper T cells coordinate the immune response,
+
       activating the protective cells needed.
 
+
       Cytotoxic T cells identify and eliminate infected cells,
+
       while B cells produce antibodies that recognize
+
       and help neutralize harmful organisms.
 
+
       Your immune cells work together with precision,
+
       protecting healthy tissue while eliminating threats.
 
+
       Your immune system remembers previous encounters,
+
       maintaining specialized memory cells that provide
+
       faster, stronger protection against familiar threats.
 
+
       Once a threat is controlled, your immune response
+
       returns to its natural, healthy balance.
 
+
       From this moment forward, this coordinated pattern
+
       of immune protection is firmly established within you.
 
-      Whether awake, resting, or sleeping, your body's
+
+      Whether awake, resting, or sleeping, your body''s
+
       natural defenses continue working automatically,
+
       responding whenever needed without conscious effort.
 
+
       Whenever you wish to reinforce this protective
+
       pattern, inhale deeply and gently hold your breath.
+
 
       Silently say to yourself, "{{ cue.primary }}."
 
+
       Then slowly exhale through your mouth.
 
+
       Your immune system will respond with accuracy,
+
       strength, and coordination, directing its defenses
+
       toward harmful organisms while protecting healthy tissue.
 
+
       Each time you use {{ cue.primary }}, reinforcing
+
       this pattern becomes easier, faster, and more effective.
 
-      Your body's natural protective systems will continue
+
+      Your body''s natural protective systems will continue
+
       maintaining their readiness, memory, and balance,
-      every day and every night.
+
+      every day and every night.'
   hplus.function.ocf-bod-008.closer:
     status: reviewed
     version: 1.2.1
@@ -130,13 +212,66 @@ entries:
       function_id: OCF-BOD-008
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to strengthen your body's
+    text: 'Remember, whenever you wish to strengthen your body''s
+
       natural defenses against harmful organisms, inhale
+
       deeply and hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth.
 
-      This concludes your OCF Immune Readiness exercise.
+
+      This concludes your OCF Immune Readiness exercise.'
+slug: immunizing
+historical_record: functions/body/immunizing.yaml
+classification:
+  primary_domain: body
+  secondary_domains: []
+category_labels:
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-008.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-008.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-008.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 2d86f21865a8948a28e6d613d9004a2a1a7a4f7371558f1509dff0b1fe81e9da

@@ -1,0 +1,142 @@
+schema_version: '1.0'
+locale: en-US
+domain: function
+function_id: OCF-BOD-008
+title:
+  text: Immune Readiness
+  status: canonical
+  version: 1.0.0
+description:
+  text: Supports a self-directed practice of immune surveillance, coordinated protective responses, immune
+    memory, protection of healthy tissue, and return to balance after a threat is controlled.
+  status: canonical
+  version: 1.0.1
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-BOD-008-PRIMARY
+  display_cue:
+    text: PLUS-IMMUNE READY
+  spoken_cue:
+    text: Plus Immune Ready
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags:
+- text: body-awareness
+  status: draft
+- text: visualization
+  status: draft
+- text: balance
+  status: draft
+common_uses:
+- text: Visualizing coordinated protective responses and a return to balance.
+  status: draft
+- text: Reflecting on immune readiness as an intention, not proof of protection from illness or a substitute
+    for care.
+  status: draft
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-bod-008.opener:
+    status: reviewed
+    version: 1.2.0
+    text: |-
+      This OCF exercise will strengthen and reinforce your
+      body's natural immune defenses, establishing a lasting,
+      automatic pattern of protection, renewal, and healthy balance.
+  hplus.function.ocf-bod-008.function-body:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-BOD-008
+      allowed:
+      - cue.primary
+    text: |-
+      From this moment forward, your body's natural immune
+      defenses are becoming stronger, more accurate,
+      and more effective.
+
+      Throughout your body, specialized white blood cells
+      continually monitor for harmful organisms,
+      recognizing threats and responding quickly.
+
+      Neutrophils and macrophages move to affected areas,
+      engulfing harmful organisms and clearing damaged cells.
+
+      Dendritic cells identify threats and communicate
+      this information to your T cells.
+
+      Helper T cells coordinate the immune response,
+      activating the protective cells needed.
+
+      Cytotoxic T cells identify and eliminate infected cells,
+      while B cells produce antibodies that recognize
+      and help neutralize harmful organisms.
+
+      Your immune cells work together with precision,
+      protecting healthy tissue while eliminating threats.
+
+      Your immune system remembers previous encounters,
+      maintaining specialized memory cells that provide
+      faster, stronger protection against familiar threats.
+
+      Once a threat is controlled, your immune response
+      returns to its natural, healthy balance.
+
+      From this moment forward, this coordinated pattern
+      of immune protection is firmly established within you.
+
+      Whether awake, resting, or sleeping, your body's
+      natural defenses continue working automatically,
+      responding whenever needed without conscious effort.
+
+      Whenever you wish to reinforce this protective
+      pattern, inhale deeply and gently hold your breath.
+
+      Silently say to yourself, "{{ cue.primary }}."
+
+      Then slowly exhale through your mouth.
+
+      Your immune system will respond with accuracy,
+      strength, and coordination, directing its defenses
+      toward harmful organisms while protecting healthy tissue.
+
+      Each time you use {{ cue.primary }}, reinforcing
+      this pattern becomes easier, faster, and more effective.
+
+      Your body's natural protective systems will continue
+      maintaining their readiness, memory, and balance,
+      every day and every night.
+  hplus.function.ocf-bod-008.closer:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-BOD-008
+      allowed:
+      - cue.primary
+    text: |-
+      Remember, whenever you wish to strengthen your body's
+      natural defenses against harmful organisms, inhale
+      deeply and hold your breath.
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth.
+
+      This concludes your OCF Immune Readiness exercise.

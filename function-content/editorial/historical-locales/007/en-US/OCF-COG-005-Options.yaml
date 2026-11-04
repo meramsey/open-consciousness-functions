@@ -1,0 +1,216 @@
+schema_version: '1.0'
+locale: en-US
+domain: function
+function_id: OCF-COG-005
+title:
+  text: Options
+  status: canonical
+  version: 1.0.0
+description:
+  text: Opens perception of choices and alternatives.
+  status: canonical
+  version: 1.0.0
+metadata_entries:
+  functions.ocf-cog-005.lifecycle.scopes.capability.description:
+    text: The ability to explore possibilities remains available.
+  functions.ocf-cog-005.lifecycle.scopes.baseline.description:
+    text: Connections and insights continue forming in the background; no selected situation remains permanently
+      active.
+  functions.ocf-cog-005.lifecycle.scopes.application.description:
+    text: One consciously chosen, situation-focused exploration.
+activation:
+  command_id: OCF-CMD-COG-005-PRIMARY
+  display_cue:
+    text: PLUS-OPTIONS
+    status: reviewed
+    version: 1.0.0
+  spoken_cue:
+    text: Plus Options
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-COG-005-LEGACY-01
+  display_cue:
+    text: PLUS-OPTIONS, CHOICES
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags:
+- text: choices
+  status: draft
+- text: reflection
+  status: draft
+- text: thinking
+  status: draft
+common_uses:
+- text: Exploring alternatives when a decision feels narrow.
+  status: draft
+- text: Considering possible directions without treating imagined outcomes as predictions.
+  status: draft
+relationships:
+  related_functions: []
+  complementary_functions: []
+  proposals:
+  - function_id: OCF-EXP-006
+    relationship_type: complementary
+    description:
+      text: Exploring alternative choices and considering intuitive impressions offer different optional
+        perspectives on a question; check facts independently.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-COG-005
+      field: description
+      sha256: 574105e00d0317828bef7d3ce5db9df7734faf5e1aa43b68fa433cdf70eb50cd
+    - function_id: OCF-EXP-006
+      field: description
+      sha256: b10fe904bf3c9d6eb4f9bb5833b6499429bcfe5d8d9ed76340b5832d0ec617c5
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-cog-005.opener:
+    status: reviewed
+    version: 1.2.0
+    text: |-
+      This OCF exercise will teach you to explore
+      the choices and possibilities available to you,
+      drawing upon your greater consciousness
+      to understand potential outcomes
+      and discover new directions in your life.
+  hplus.function.ocf-cog-005.function-body:
+    status: reviewed
+    version: 1.2.0
+    cue_template:
+      function_id: OCF-COG-005
+      allowed:
+      - cue.primary
+    text: |-
+      From this moment forward, you have the ability
+      to explore the possibilities and choices
+      available to you in any area of your life.
+
+      Your total self holds a greater perspective,
+      drawing upon your experiences, knowledge,
+      subconscious awareness, and higher consciousness.
+
+      Through this greater awareness,
+      you can perceive possibilities and pathways
+      beyond those ordinarily recognized
+      by your waking conscious mind.
+
+      Whenever you wish to explore your options,
+      close your eyes and inhale deeply.
+
+      Gently hold your breath and think clearly
+      of the situation, decision, or life activity
+      you wish to understand.
+
+      Think or say in your mind,
+      "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth,
+      keeping your eyes closed.
+
+      Your greater self will bring into
+      your conscious awareness the possibilities,
+      choices, and potential outcomes
+      related to your selected situation.
+
+      You will recognize different paths
+      available to you and understand
+      where each choice can lead.
+
+      The probabilities, opportunities,
+      advantages, and consequences
+      of these paths will become clearer.
+
+      Your greater self will draw upon
+      your personal experiences and knowledge,
+      together with information and understanding
+      beyond your ordinary waking awareness.
+
+      These insights will come to you as
+      images, words, feelings, intuitive knowing,
+      or clear and direct understanding.
+
+      You will perceive and understand
+      the information calmly and confidently,
+      recognizing possibilities you had
+      not previously considered.
+
+      New choices and opportunities
+      will become visible to you,
+      expanding your understanding
+      of what is possible.
+
+      You remain completely free to choose
+      the direction you wish to follow.
+
+      Each choice creates new possibilities,
+      and your greater awareness will help
+      you recognize the paths available.
+
+      From this moment forward, this ability
+      to explore possibilities and probabilities
+      is permanently established within you.
+
+      Your mind and greater self will continue
+      forming useful connections and insights,
+      bringing new understanding into
+      your awareness whenever it is needed.
+
+      Each time you use {{ cue.primary }},
+      your ability to perceive and understand
+      your available options becomes easier,
+      clearer, and more effective.
+
+      Your greater awareness is always available,
+      ready to help you explore the possibilities
+      and choices before you.
+  hplus.function.ocf-cog-005.closer:
+    status: reviewed
+    version: 1.3.0
+    cue_template:
+      function_id: OCF-COG-005
+      allowed:
+      - cue.primary
+    text: |-
+      Remember, whenever you wish to explore
+      the choices and possibilities available to you,
+      close your eyes and inhale deeply.
+
+      Hold your breath and focus on
+      the situation you wish to understand.
+
+      Think or say in your mind,
+      "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth,
+      keeping your eyes closed.
+
+      This concludes your OCF Options exercise.

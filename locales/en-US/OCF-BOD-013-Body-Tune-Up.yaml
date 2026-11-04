@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-BOD-013
@@ -39,14 +39,77 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.scopes.application.persistence
+    invocation_scope_ref: lifecycle.scopes.application
+    procedure:
+      ref: OCF-PROC-CLOSE-FOCUS-OPEN
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-013.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: focus-target
+    operation: focus-target
+    instruction:
+      text: Focus attention on the selected target.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: open-eyes
+    operation: open-eyes
+    instruction:
+      text: Open your eyes.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: body-awareness
   status: draft
+  semantic_id: body-awareness
 - text: renewal
   status: draft
+  semantic_id: renewal
 - text: balance
   status: draft
+  semantic_id: balance
 common_uses:
 - text: Directing kind attention toward a chosen part of the body.
   status: draft
@@ -79,11 +142,13 @@ entries:
   hplus.function.ocf-bod-013.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to perceive, balance,
+    text: 'This OCF exercise will teach you to perceive, balance,
+
       and heal any part of your physical body, strengthening
+
       its natural processes of repair, regeneration,
-      and ongoing maintenance.
+
+      and ongoing maintenance.'
   hplus.function.ocf-bod-013.function-body:
     status: reviewed
     version: 1.2.0
@@ -91,75 +156,124 @@ entries:
       function_id: OCF-BOD-013
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, your body's natural
+    text: 'From this moment forward, your body''s natural
+
       processes of balance, healing, and regeneration
+
       are becoming stronger, smoother, and more effective.
 
+
       Every part of your physical body is supported
+
       by its natural ability to maintain, repair,
+
       and renew itself.
 
-      Your body's systems work together in harmony,
+
+      Your body''s systems work together in harmony,
+
       recognizing what needs attention and directing
+
       the appropriate processes of restoration.
 
+
       Your cells, tissues, and organs receive
+
       the nourishment and support they need
+
       to maintain their healthy function.
 
+
       Whenever an area requires additional care,
-      your body's natural processes of healing
+
+      your body''s natural processes of healing
+
       and regeneration will respond,
+
       restoring strength, balance, and harmony.
 
+
       From this moment forward, this pattern
+
       of whole-body maintenance and renewal
+
       is permanently established within you.
 
+
       Whether awake, resting, or sleeping,
+
       your body continues these processes
+
       automatically, without conscious effort.
 
+
       Whenever you wish to perceive and improve
+
       any particular part of your body,
+
       you can do so quickly and easily.
 
+
       Simply close your eyes and bring
+
       your awareness to the area you wish to improve.
 
+
       Look inward and become consciously aware
+
       of that part of your physical body.
+
 
       Take a deep breath in and gently hold it.
 
+
       Think or say in your mind,
+
       "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth
+
       and open your eyes.
 
-      Your body's natural processes of repair
+
+      Your body''s natural processes of repair
+
       and regeneration will respond,
+
       directing their activity toward the chosen area.
 
+
       That part of your body will move steadily
+
       toward its natural state of health,
+
       strength, and balanced function.
 
+
       Your entire system knows how to coordinate
+
       these processes and will perform
+
       them smoothly and effectively.
 
+
       Each time you use {{ cue.primary }},
+
       your ability to perceive and direct
+
       this process becomes easier,
+
       faster, and more effective.
 
-      Your body's natural pattern of healing,
+
+      Your body''s natural pattern of healing,
+
       renewal, and balanced maintenance
+
       will continue automatically,
-      every day and every night.
+
+      every day and every night.'
   hplus.function.ocf-bod-013.closer:
     status: reviewed
     version: 1.3.0
@@ -167,16 +281,83 @@ entries:
       function_id: OCF-BOD-013
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to perceive,
+    text: 'Remember, whenever you wish to perceive,
+
       balance, or heal any part of your physical body,
+
       close your eyes and focus on that area.
+
 
       Inhale deeply and hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth
+
       and open your eyes.
 
-      This concludes your OCF Body Tune-Up exercise.
+
+      This concludes your OCF Body Tune-Up exercise.'
+slug: tune-up
+historical_record: functions/body/tune-up.yaml
+classification:
+  primary_domain: body
+  secondary_domains: []
+category_labels:
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description_key: functions.ocf-bod-013.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description_key: functions.ocf-bod-013.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description_key: functions.ocf-bod-013.lifecycle.scopes.application.description
+      activation: manual
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-013.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-013.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-013.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 18338f405b1531a9c4da9bc87c5c1122ab4abb01fa2d70b6ef2379d220eec50a

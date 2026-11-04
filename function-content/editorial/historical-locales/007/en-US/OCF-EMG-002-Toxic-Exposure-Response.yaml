@@ -1,0 +1,180 @@
+schema_version: '1.0'
+locale: en-US
+domain: function
+function_id: OCF-EMG-002
+title:
+  text: Toxic Exposure Response
+  status: canonical
+  version: 1.0.0
+description:
+  text: Emergency-oriented practice for toxic-exposure situations. Does NOT replace poison control, emergency
+    services, or medical evaluation.
+  status: canonical
+  version: 1.0.0
+metadata_entries:
+  functions.ocf-emg-002.lifecycle.scopes.capability.description:
+    text: Narrated harmful-exposure response readiness remains available, including when conscious invocation
+      is unavailable.
+  functions.ocf-emg-002.lifecycle.scopes.application.description:
+    text: Optional manual reinforcement when conscious and able.
+  functions.ocf-emg-002.lifecycle.scopes.episode.description:
+    text: The narrated exposure response operates only as strongly and for as long as needed for the actual
+      substance and exposure.
+activation:
+  command_id: OCF-CMD-EMG-002-PRIMARY
+  display_cue:
+    text: PLUS-TOXIC-CLEAR
+    status: reviewed
+    version: 1.1.0
+  spoken_cue:
+    text: Plus Toxic Clear
+    status: reviewed
+    version: 1.1.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands: []
+tags:
+- text: calm
+  status: draft
+- text: body-awareness
+  status: draft
+- text: safety
+  status: draft
+common_uses:
+- text: Reviewing the exercise as an intention of calm in a toxic-exposure context, not an antidote.
+  status: draft
+- text: Distinguishing a wellness intention from the need for prompt poison-control or emergency advice.
+  status: draft
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-emg-002.opener:
+    status: reviewed
+    version: 1.2.0
+    text: |-
+      This OCF exercise will strengthen your body's
+      protective response to harmful foreign substances,
+      directing its natural abilities toward recognition,
+      protection, detoxification, and safe elimination.
+  hplus.function.ocf-emg-002.function-body:
+    status: reviewed
+    version: 1.3.0
+    cue_template:
+      function_id: OCF-EMG-002
+      allowed:
+      - cue.primary
+    text: |-
+      From this moment forward, whenever a harmful
+      foreign substance enters or contacts your body,
+      your natural protective systems will immediately
+      begin responding with greater speed,
+      coordination, and effectiveness.
+
+      Whether the substance is a chemical,
+      poison, pesticide, herbicide, venom,
+      or something introduced through a bite
+      or sting, your body will recognize
+      the disturbance and respond appropriately.
+
+      Your protective systems will work together
+      to limit the harmful substance's effects
+      and maintain the best possible balance.
+
+      Your circulation, immune defenses,
+      liver, kidneys, lungs, and digestive system
+      will coordinate their natural functions
+      according to what your body requires.
+
+      Harmful substances will be identified,
+      contained where appropriate,
+      processed and neutralized when possible,
+      and directed toward safe elimination
+      through the proper pathways.
+
+      Your body's natural protective responses
+      will operate in intelligent balance,
+      responding only as strongly
+      and for as long as needed.
+
+      The affected areas will receive
+      the protection and support needed
+      to restore healthy function.
+
+      From this moment forward, this automatic
+      protective response is permanently
+      established within you.
+
+      Whether awake, asleep, or unable
+      to consciously direct the response,
+      your body's protective systems
+      will activate whenever harmful
+      exposure is recognized.
+
+      Whenever you are conscious and able,
+      you can strengthen this response
+      through a simple command.
+
+      Inhale deeply and gently hold your breath.
+
+      Think or say in your mind,
+      "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth.
+
+      Your body's protective and elimination
+      processes will become more coordinated,
+      directing their efforts toward
+      controlling and clearing the disturbance.
+
+      Your mind will remain as calm,
+      clear, and responsive as possible,
+      allowing you to recognize what is needed
+      and take appropriate action.
+
+      As the harmful exposure is addressed,
+      your body will continue working
+      toward balance, recovery,
+      and restoration of normal function.
+
+      Each time you use {{ cue.primary }},
+      consciously reinforcing this protective
+      response becomes easier and more effective.
+
+      Your body's natural intelligence
+      remains ready to protect, balance,
+      and restore your physical system
+      whenever such a response is needed.
+  hplus.function.ocf-emg-002.closer:
+    status: reviewed
+    version: 1.3.0
+    cue_template:
+      function_id: OCF-EMG-002
+      allowed:
+      - cue.primary
+    text: |-
+      Remember, whenever harmful foreign substances
+      enter or contact your body, you can consciously
+      reinforce its natural protective response.
+
+      Inhale deeply and hold your breath.
+
+      Think or say in your mind,
+      "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth.
+
+      This concludes your OCF Toxic Exposure Response exercise.

@@ -80,7 +80,11 @@ def matches(record, locale="en-US", *, catalog=None, tag=None, query=None):
     from .vocabulary import lookup_form
 
     data = metadata(record, locale, catalog=catalog) or {}
-    if tag and lookup_form(tag) not in {lookup_form(v["text"]) for v in data.get("tags", [])}:
+    if tag and lookup_form(tag) not in {
+        lookup_form(value)
+        for v in data.get("tags", [])
+        for value in (v["text"], v.get("semantic_id", v["text"]))
+    }:
         return False
     if query:
         values = [

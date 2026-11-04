@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-COG-004
@@ -39,6 +39,60 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.scopes.baseline.persistence
+    invocation_scope_ref: lifecycle.scopes.application
+    procedure:
+      ref: OCF-PROC-IMPRINT
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-cog-004.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: memory
+    operation: select-memory
+    instruction:
+      text: Select information or an experience to remember.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: focus-memory
+    operation: focus-target
+    instruction:
+      text: Focus attention on the selected target.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-COG-004-RECALL
   display_cue:
@@ -59,6 +113,32 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: retrieval
+  control:
+    designation: secondary
+    phrase_ref:
+      source: canonical-mode
+      command_id: OCF-CMD-COG-004-RECALL
+    documentation:
+      visible: true
+      order: 11
+    effect_scope_ref: lifecycle.scopes.application.persistence
+    invocation_scope_ref: lifecycle.scopes.application
+    procedure:
+      ref: OCF-PROC-THINK-COMMAND
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-cog-004.function-body
+      before_steps: []
+    relationships:
+      retrieves:
+      - OCF-CMD-COG-004-PRIMARY
+  procedure_steps:
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
 - command_id: OCF-CMD-COG-004-LEGACY-01
   display_cue:
     text: PLUS-IMPRINT, IMPRINT
@@ -75,13 +155,28 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-COG-004-LEGACY-01
+    availability: historical-lookup
+    documentation:
+      visible: false
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: memory
   status: draft
+  semantic_id: memory
 - text: learning
   status: draft
+  semantic_id: learning
 - text: attention
   status: draft
+  semantic_id: attention
 common_uses:
 - text: Giving deliberate attention to material you wish to remember.
   status: draft
@@ -115,11 +210,13 @@ entries:
   hplus.function.ocf-cog-004.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to capture and
+    text: 'This OCF exercise will teach you to capture and
+
       permanently store information, knowledge, and
+
       experiences deep within your memory, preserving
-      them clearly and accurately for future recall.
+
+      them clearly and accurately for future recall.'
   hplus.function.ocf-cog-004.function-body:
     status: reviewed
     version: 1.2.1
@@ -128,73 +225,120 @@ entries:
       allowed:
       - cue.id.OCF-CMD-COG-004-RECALL
       - cue.primary
-    text: |-
-      From this moment forward, your ability to capture,
+    text: 'From this moment forward, your ability to capture,
+
       store, and remember information and experiences
+
       is becoming stronger, clearer, and more accurate.
 
+
       Whenever you wish to preserve something in memory,
+
       bring your complete attention to the information
+
       or experience you desire to remember.
+
 
       Inhale deeply and gently hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Focus clearly on what you wish to remember,
+
       then exhale slowly and easily.
 
+
       Your senses will become more attentive
+
       to every important detail of your experience.
 
+
       Images, sounds, words, feelings, and sensations
+
       will be perceived clearly and precisely.
 
+
       Your mind will organize this information,
+
       connecting it with your existing knowledge
+
       and placing it securely into long-term memory.
 
+
       Every important detail will be preserved,
+
       clear, complete, and accurate.
 
+
       The information you have chosen to imprint
+
       will remain firmly established within you,
+
       available whenever you desire to remember it.
 
+
       From this moment forward, your mind will
+
       automatically strengthen and maintain
+
       the memories you have consciously imprinted.
 
+
       Whether awake, resting, or sleeping,
+
       your natural processes of memory consolidation
+
       will continue organizing and reinforcing
+
       the information you have chosen to preserve.
 
+
       Whenever you wish to remember an imprinted
+
       experience or any part of its details,
+
       simply think or say in your mind,
+
       "{{ cue.id.OCF-CMD-COG-004-RECALL }}."
 
+
       The information will return immediately
+
       into your conscious awareness,
+
       clear, vivid, and complete.
 
+
       You will remember the knowledge,
+
       sensations, and details you have stored
+
       with confidence and accuracy.
 
+
       From this moment forward, this ability
+
       to consciously imprint information
+
       is permanently available to you.
 
+
       Each time you use {{ cue.primary }},
+
       your ability to capture and retain
+
       information becomes easier, faster,
+
       and more effective.
 
+
       Your selected memories will remain
+
       clear and accessible, ready to return
-      to your awareness whenever you desire.
+
+      to your awareness whenever you desire.'
   hplus.function.ocf-cog-004.closer:
     status: reviewed
     version: 1.2.1
@@ -202,14 +346,78 @@ entries:
       function_id: OCF-COG-004
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to preserve
+    text: 'Remember, whenever you wish to preserve
+
       information or an experience in your memory,
+
       inhale deeply and hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Focus on what you wish to remember,
+
       then exhale slowly and easily.
 
-      This concludes your OCF Imprint exercise.
+
+      This concludes your OCF Imprint exercise.'
+slug: imprint
+historical_record: functions/cognition/imprint.yaml
+classification:
+  primary_domain: cognition
+  secondary_domains: []
+category_labels:
+  cognition:
+    text: cognition
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description_key: functions.ocf-cog-004.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description_key: functions.ocf-cog-004.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description_key: functions.ocf-cog-004.lifecycle.scopes.application.description
+      activation: manual
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-cog-004.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-cog-004.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-cog-004.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 3cc419ea11d9988060954c83c760b030a8725f081fc67b72f34155f9bc5140bb

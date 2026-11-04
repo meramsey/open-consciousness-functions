@@ -20,7 +20,7 @@ def fixture():
         "activation": {
             "command_id": "OCF-CMD-COG-001-PRIMARY",
             "display_cue": {"text": "PLUS-FIXTURE"},
-            "spoken_cue": {"text": "Plus Fixture"},
+            "spoken_cue": {"text": "Plus Fixture", "status": "reviewed"},
             "control": {"designation": "primary", "phrase_ref": {"source": "canonical-primary"}},
         },
         "secondary_commands": [],
@@ -28,7 +28,7 @@ def fixture():
         "narration": {
             "sequence": [{"key": "fixture.body", "role": "function-body", "repetitions": 4}]
         },
-        "entries": {"fixture.body": {"text": "Exact local speech"}},
+        "entries": {"fixture.body": {"text": "Exact local speech", "status": "reviewed"}},
     }
     data["localization"] = {"status": "complete", "contract_sha256": contract_hash(data)}
     return data

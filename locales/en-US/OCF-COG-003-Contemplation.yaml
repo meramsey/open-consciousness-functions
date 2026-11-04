@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-COG-003
@@ -30,6 +30,59 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-NATURAL
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-cog-003.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: breathe-normally
+    operation: breathe-normally
+    instruction:
+      text: Continue breathing normally.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-COG-003-CLOSED
   display_cue:
@@ -50,13 +103,41 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: close
+  control:
+    designation: secondary
+    phrase_ref:
+      source: canonical-mode
+      command_id: OCF-CMD-COG-003-CLOSED
+    documentation:
+      visible: true
+      order: 11
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-THINK-COMMAND
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-cog-003.function-body
+      before_steps: []
+    relationships:
+      closes:
+      - OCF-CMD-COG-003-PRIMARY
+  procedure_steps:
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
 tags:
 - text: reflection
   status: draft
+  semantic_id: reflection
 - text: inner-awareness
   status: draft
+  semantic_id: inner-awareness
 - text: calm
   status: draft
+  semantic_id: calm
 common_uses:
 - text: Making room for quiet reflection on a personal question.
   status: draft
@@ -69,8 +150,8 @@ relationships:
   - function_id: OCF-EXP-006
     relationship_type: related
     description:
-      text: Compare a deliberately opened and closed reflective space with ongoing intuitive awareness and
-        discernment.
+      text: Compare a deliberately opened and closed reflective space with ongoing intuitive awareness
+        and discernment.
       status: draft
     status: draft
     dependency: optional
@@ -89,11 +170,13 @@ entries:
   hplus.function.ocf-cog-003.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to commune with
+    text: 'This OCF exercise will teach you to commune with
+
       your total self, opening communication between
+
       your conscious mind, your subconscious mind,
-      your higher self, and the greater whole of your being.
+
+      your higher self, and the greater whole of your being.'
   hplus.function.ocf-cog-003.function-body:
     status: reviewed
     version: 1.2.0
@@ -102,83 +185,138 @@ entries:
       allowed:
       - cue.id.OCF-CMD-COG-003-CLOSED
       - cue.primary
-    text: |-
-      From this moment forward, you have the ability
+    text: 'From this moment forward, you have the ability
+
       to commune with your total self whenever you desire.
 
+
       Your conscious mind, your subconscious mind,
+
       your higher self, and all deeper aspects
+
       of your being are connected as one complete self.
 
+
       Whenever you wish to open this communication,
+
       simply close your eyes, inhale deeply,
+
       and gently hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth
+
       and breathe naturally.
 
+
       Your physical body will become deeply relaxed,
+
       while your mind remains bright, awake,
+
       calm, and fully aware.
 
+
       Communication throughout your total self
+
       will become clear, open, and effortless.
 
+
       You will be able to ask questions,
+
       receive answers, and understand the knowledge,
+
       wisdom, and experiences within your greater self.
 
+
       Information will come into your awareness
+
       as words, images, memories, feelings,
+
       sensations, or direct intuitive understanding.
 
+
       Your subconscious mind will communicate
+
       freely with your conscious awareness,
+
       bringing forward knowledge and understanding
+
       that was previously beyond your waking attention.
 
+
       Your higher self will become open
+
       to communication, offering its greater
+
       perspective, wisdom, and understanding.
 
+
       Memories and experiences held within
+
       your total self will become available
+
       whenever you desire to perceive them.
 
+
       You will recognize, understand, and remember
+
       what you experience, remaining calm,
+
       confident, and serene throughout.
 
+
       From this moment forward, this ability
+
       to communicate with your total self
+
       is permanently established within you.
 
+
       Whenever you choose to enter contemplation,
+
       this deeper communication will open
+
       naturally and easily.
 
+
       Whenever you wish to end the present
+
       state of contemplation, simply think
+
       or say in your mind, "{{ cue.id.OCF-CMD-COG-003-CLOSED }}."
 
+
       Your conscious awareness will return
+
       smoothly to its normal state,
+
       while the knowledge and understanding
+
       you have gained remain available to you.
 
+
       You remain in complete control,
+
       able to open or close this communication
+
       whenever you choose.
 
+
       Each time you use this function,
+
       communion with your total self
+
       becomes easier, clearer, and more effective.
 
+
       This lasting ability is always available,
+
       ready whenever you choose to explore
-      the deeper consciousness of your total self.
+
+      the deeper consciousness of your total self.'
   hplus.function.ocf-cog-003.closer:
     status: reviewed
     version: 1.3.0
@@ -187,17 +325,72 @@ entries:
       allowed:
       - cue.id.OCF-CMD-COG-003-CLOSED
       - cue.primary
-    text: |-
-      Remember, whenever you wish to commune
+    text: 'Remember, whenever you wish to commune
+
       with your total self, close your eyes,
+
       inhale deeply, and hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth
+
       and breathe naturally.
 
+
       When you wish to end the contemplation,
+
       think or say in your mind, "{{ cue.id.OCF-CMD-COG-003-CLOSED }}."
 
-      This concludes your OCF Contemplation exercise.
+
+      This concludes your OCF Contemplation exercise.'
+slug: contemplation
+historical_record: functions/cognition/contemplation.yaml
+classification:
+  primary_domain: cognition
+  secondary_domains: []
+category_labels:
+  cognition:
+    text: cognition
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    command_id: OCF-CMD-COG-003-CLOSED
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-cog-003.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-cog-003.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-cog-003.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 7c691443d97b2aa41b18b2584d3191d1a063c52866b3f6ee5957d4a1326eac5c

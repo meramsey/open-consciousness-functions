@@ -25,6 +25,7 @@ from __future__ import annotations
 import ast
 import copy
 import hashlib
+import json
 import math
 import re
 import unicodedata
@@ -1188,6 +1189,7 @@ class LocaleCatalog:
     ) -> None:
         self.root = Path(root) if root else LOCALES_DIR
         self._function_records = function_records
+        self._complete_record_cache = None
         self._reader = reader
         self._exists = exists
         self.packs: dict[str, LocalePack] = {}
@@ -1295,6 +1297,21 @@ class LocaleCatalog:
                     )
                     continue
                 key_prefix = f"functions.{function_id.lower()}"
+                if metadata.get("schema_version") == "2.0" and pack.locale != "en-US":
+                    from .function_catalog import contract_hash
+
+                    canonical = self.packs.get("en-US")
+                    reference = (
+                        canonical.localized_functions.get(function_id) if canonical else None
+                    )
+                    if reference is None:
+                        self.problems.append(
+                            f"{pack.locale}: function has no canonical identity: {function_id}"
+                        )
+                    elif contract_hash(metadata) != contract_hash(reference):
+                        self.problems.append(
+                            f"{pack.locale}: function structural contract differs: {function_id}"
+                        )
                 for proposal in metadata.get("relationships", {}).get("proposals", []):
                     if (
                         proposal.get("status") != "draft"
@@ -1573,6 +1590,17 @@ class LocaleCatalog:
             "entries",
             "metadata_entries",
             "changelog",
+            "slug",
+            "classification",
+            "category_labels",
+            "lifecycle",
+            "narration",
+            "audio",
+            "safety",
+            "function_version",
+            "editorial",
+            "localization",
+            "historical_record",
         ):
             if name in metadata:
                 trace(metadata[name], "/" + name)
@@ -1743,6 +1771,37 @@ class LocaleCatalog:
     def function_records(self):
         if self._function_records is not None:
             return self._function_records()
+        canonical = self.packs.get("en-US")
+        if (
+            canonical
+            and canonical.localized_functions
+            and all(
+                data.get("schema_version") == "2.0"
+                for data in canonical.localized_functions.values()
+            )
+        ):
+            from .function_catalog import project
+
+            signature = hashlib.sha256(
+                json.dumps(
+                    canonical.localized_functions, sort_keys=True, ensure_ascii=False
+                ).encode()
+            ).hexdigest()
+            if (
+                self._complete_record_cache is not None
+                and self._complete_record_cache[0] == signature
+            ):
+                return self._complete_record_cache[1]
+            records = [
+                project(
+                    data,
+                    canonical.path / canonical.localized_function_files[identity],
+                    self.root.parent,
+                )
+                for identity, data in sorted(canonical.localized_functions.items())
+            ]
+            self._complete_record_cache = (signature, records)
+            return records
         from .indexes import load_all_functions
         from .models import function_from_dict
 
@@ -1757,6 +1816,17 @@ class LocaleCatalog:
                 raise LocalizationError("cue authority escapes its function root")
             result.append(function_from_dict(load_yaml_file(path), path))
         return result
+
+    def function_completeness(self, locale):
+        from .function_catalog import completeness
+
+        canonical = self.require("en-US")
+        target = self.require(locale)
+        return {
+            identity: completeness(target.localized_functions.get(identity), data)
+            for identity, data in canonical.localized_functions.items()
+            if data.get("schema_version") == "2.0"
+        }
 
     def provenance(self) -> dict[str, Any]:
         """Per-pack translation provenance, for `ocf locale list`."""

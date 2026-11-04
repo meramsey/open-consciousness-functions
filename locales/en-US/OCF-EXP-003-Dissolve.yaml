@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-EXP-003
@@ -38,14 +38,69 @@ activation:
   usage:
     text: Deliberately follow the ordered procedure; proposed exercise instructions, not software execution.
     status: reviewed
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    effect_scope_ref: lifecycle.scopes.application.persistence
+    procedure:
+      status: documented
+      override_steps:
+      - id: select-pattern
+        operation: select-intention
+      - id: inhale-deeply
+        operation: inhale
+      - id: hold-gently
+        operation: hold-breath
+      - id: think-or-say-in-mind
+        operation: think-or-say-command
+      - id: exhale-slowly-easily
+        operation: exhale
+      evidence_keys:
+      - hplus.function.ocf-exp-003.function-body
+  procedure_steps:
+  - id: select-pattern
+    operation: select-intention
+    instruction:
+      text: Choose an intention.
+      status: canonical
+      version: 1.0.0
+  - id: inhale-deeply
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold-gently
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: think-or-say-in-mind
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale-slowly-easily
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: letting-go
   status: draft
+  semantic_id: letting-go
 - text: emotional-balance
   status: draft
+  semantic_id: emotional-balance
 - text: self-direction
   status: draft
+  semantic_id: self-direction
 common_uses:
 - text: Reflecting on a selected unwanted belief or expectation.
   status: draft
@@ -68,10 +123,11 @@ entries:
   hplus.function.ocf-exp-003.opener:
     status: reviewed
     version: 1.0.0
-    text: |-
-      This OCF exercise will teach you to dissolve unwanted beliefs,
+    text: 'This OCF exercise will teach you to dissolve unwanted beliefs,
+
       emotional responses, and recurring life patterns,
-      freeing your energy and attention for what you choose to create.
+
+      freeing your energy and attention for what you choose to create.'
   hplus.function.ocf-exp-003.function-body:
     status: reviewed
     version: 1.0.0
@@ -79,54 +135,90 @@ entries:
       function_id: OCF-EXP-003
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, you are free to dissolve
+    text: 'From this moment forward, you are free to dissolve
+
       patterns that no longer belong in the life you choose to create.
 
+
       Bring one unwanted pattern clearly into your awareness:
+
       a belief, an expectation, an emotional response,
+
       or a recurring pattern in your life.
+
       Recognize what you are ready to release,
+
       without replaying its history or explaining every cause.
 
+
       Inhale deeply and gently hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Then exhale slowly and easily.
 
+
       Your conscious mind, subconscious mind, physical being,
+
       and higher self unite around this intention.
+
       Every level of your total self participates
+
       in releasing the pattern you have chosen.
 
+
       Picture, feel, or simply know its structure loosening.
+
       The connections holding it together soften and separate.
+
       Its emotional charge subsides. Its familiar pull releases.
+
       The pattern loses its hold and dissolves
+
       from the way you think, feel, and respond.
 
+
       You are not required to fight what you are releasing.
+
       Meet yourself with understanding and kindness.
+
       The lessons and useful knowledge of your experience remain,
+
       while you release the expectation that the past must repeat.
 
+
       Energy and attention once tied to sustaining this pattern
+
       return to your use, available for clarity, creativity,
+
       love, and purposeful action.
+
       You remain whole, grounded, and free to choose
+
       what you wish to create in its place.
 
+
       Let this change continue with steadiness and patience,
+
       whether release is immediate or unfolds in layers.
+
       Your total self carries the intention forward
+
       without constant effort or repeated checking.
 
+
       Your new freedom becomes a lasting part of your life.
+
       The ability to dissolve a selected pattern remains
+
       permanently available whenever you consciously choose it.
 
+
       The more you use this function,
+
       the more naturally you release what no longer serves you
-      and make room for what you choose next.
+
+      and make room for what you choose next.'
   hplus.function.ocf-exp-003.closer:
     status: reviewed
     version: 1.0.0
@@ -134,12 +226,73 @@ entries:
       function_id: OCF-EXP-003
       allowed:
       - cue.primary
-    text: |-
-      Remember, to dissolve an unwanted pattern,
+    text: 'Remember, to dissolve an unwanted pattern,
+
       bring what you wish to release clearly into your awareness.
 
+
       Inhale deeply and gently hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Then exhale slowly and easily.
 
-      This concludes your OCF exercise.
+
+      This concludes your OCF exercise.'
+slug: dissolve
+historical_record: functions/experimental/dissolve.yaml
+classification:
+  primary_domain: experimental
+  secondary_domains: []
+category_labels:
+  experimental:
+    text: experimental
+    status: canonical
+lifecycle:
+  persistence: permanent
+  activation: manual
+  release:
+    required: false
+    command: null
+  trigger_conditions:
+  - Deliberate selection of an unwanted pattern followed by the command procedure.
+  scopes:
+    capability:
+      persistence: permanent
+      description_key: functions.ocf-exp-003.capability
+    application:
+      persistence: conditional
+      activation: manual
+      description_key: functions.ocf-exp-003.application
+audio:
+  script_status: approved
+  implementation_status: not-started
+  background_audio:
+    strategy: optional
+    engine: farfield
+    preset: null
+safety:
+  level: experimental
+  medical_relevance: false
+  notes:
+  - Exercise intentions do not establish clinical or external outcomes.
+function_version:
+  current: 0.1.0
+  created: '2026-10-19'
+  updated: '2026-10-19'
+narration:
+  sequence:
+  - key: hplus.function.ocf-exp-003.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-exp-003.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-exp-003.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: efa9755bcc5b08e38278c1234dfab43e55cf8e062671b7148b29b8adc8a46d46

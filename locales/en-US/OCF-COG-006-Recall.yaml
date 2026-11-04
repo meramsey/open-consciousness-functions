@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-COG-006
@@ -30,14 +30,67 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-cog-006.function-body
+      before_steps:
+      - id: select-memory
+        operation: select-memory
+        localization_key: command.procedure.select-memory
+    relationships: {}
+  procedure_steps:
+  - id: select-memory
+    operation: select-memory
+    instruction:
+      text: Select information or an experience to remember.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: memory
   status: draft
+  semantic_id: memory
 - text: learning
   status: draft
+  semantic_id: learning
 - text: reflection
   status: draft
+  semantic_id: reflection
 common_uses:
 - text: Inviting previously learned material to mind during study.
   status: draft
@@ -70,11 +123,13 @@ entries:
   hplus.function.ocf-cog-006.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will strengthen your ability
+    text: 'This OCF exercise will strengthen your ability
+
       to recall information and past experiences
+
       clearly, accurately, and in great detail,
-      whenever you desire.
+
+      whenever you desire.'
   hplus.function.ocf-cog-006.function-body:
     status: reviewed
     version: 1.2.0
@@ -82,52 +137,83 @@ entries:
       function_id: OCF-COG-006
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, your ability to remember
+    text: 'From this moment forward, your ability to remember
+
       and recall information and experiences is becoming
+
       stronger, clearer, and more effective.
 
+
       Your mind naturally organizes and preserves your memories,
+
       keeping the knowledge and experiences of your life
+
       available whenever you wish to remember them.
 
+
       Whenever you desire to recall something,
+
       begin by focusing on the information
+
       or experience you wish to remember.
+
 
       Inhale deeply and gently hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
+
       The memory you seek will immediately come into
+
       your conscious awareness, clear, vivid, and complete.
 
+
       You will remember the details of the experience,
+
       including the images, words, sounds, feelings,
+
       and sensations associated with it.
 
+
       The information will return naturally and effortlessly,
+
       allowing you to recognize and understand
+
       what you remember.
 
+
       From this moment forward, this ability to recall
+
       information and experiences is permanently
+
       established within you.
 
+
       Whenever you use {{ cue.primary }}, your mind will bring
+
       the desired information into your awareness
+
       quickly, clearly, and in great detail.
 
+
       Each time you use this function, recalling
+
       information becomes easier, faster,
+
       and more effective.
 
+
       Your memories remain available to you,
+
       ready to return to your conscious awareness
-      whenever you desire.
+
+      whenever you desire.'
   hplus.function.ocf-cog-006.closer:
     status: reviewed
     version: 1.2.0
@@ -135,15 +221,67 @@ entries:
       function_id: OCF-COG-006
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to recall
+    text: 'Remember, whenever you wish to recall
+
       information or a past experience,
+
       focus on what you desire to remember.
+
 
       Inhale deeply and hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
+
 
       Then exhale slowly through your mouth.
 
-      This concludes your OCF Recall exercise.
+
+      This concludes your OCF Recall exercise.'
+slug: recall
+historical_record: functions/cognition/recall.yaml
+classification:
+  primary_domain: cognition
+  secondary_domains: []
+category_labels:
+  cognition:
+    text: cognition
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-cog-006.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-cog-006.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-cog-006.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 4d3d2a277035b8d08893b9d51073500a2eb49cbdf2f893037f474285e55de02a

@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-PRF-001
@@ -30,14 +30,67 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-prf-001.function-body
+      before_steps:
+      - id: select-activity
+        operation: select-activity
+        localization_key: command.procedure.select-activity
+    relationships: {}
+  procedure_steps:
+  - id: select-activity
+    operation: select-activity
+    instruction:
+      text: Choose an activity.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: action
   status: draft
+  semantic_id: action
 - text: intention
   status: draft
+  semantic_id: intention
 - text: motivation
   status: draft
+  semantic_id: motivation
 common_uses:
 - text: Preparing to begin a chosen task with a clear next action.
   status: draft
@@ -50,8 +103,8 @@ relationships:
   - function_id: OCF-FND-002
     relationship_type: complementary
     description:
-      text: Starting or completing a task and sustaining attention address different aspects of chosen activity;
-        no combined activation is required.
+      text: Starting or completing a task and sustaining attention address different aspects of chosen
+        activity; no combined activation is required.
       status: draft
     status: draft
     dependency: optional
@@ -70,11 +123,13 @@ entries:
   hplus.function.ocf-prf-001.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to turn your
+    text: 'This OCF exercise will teach you to turn your
+
       intentions into action, bringing energy,
+
       enthusiasm, and momentum to starting,
-      continuing, and completing what you choose.
+
+      continuing, and completing what you choose.'
   hplus.function.ocf-prf-001.function-body:
     status: reviewed
     version: 1.2.0
@@ -82,55 +137,90 @@ entries:
       function_id: OCF-PRF-001
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, you have the ability
+    text: 'From this moment forward, you have the ability
+
       to turn your intentions into action
+
       whenever you choose.
 
+
       Whether you wish to begin something new,
+
       continue what you have started,
+
       or bring an activity to completion,
+
       your total self is ready to move forward.
 
+
       Bring the activity you desire clearly into your mind.
+
       Know what you intend to do and the next action to take.
+
 
       Inhale deeply and gently hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
+
       Immediately, your conscious mind,
+
       subconscious mind, physical body,
+
       and higher self will work together
+
       in harmony with your chosen purpose.
 
+
       Hesitation, delay, and unnecessary resistance
+
       will release and fade away.
+
       Energy, willingness, and enthusiasm
+
       will rise naturally within you.
 
+
       You will move into action with confidence,
+
       ease, and a clear sense of direction.
+
       Each step will create momentum for the next,
+
       making it easier to continue and complete
+
       what you have chosen to accomplish.
 
+
       You will recognize the satisfaction of progress
+
       and the pleasure of creating positive change.
+
       Your attention and energy will remain aligned
+
       with the activity until its purpose is fulfilled.
 
+
       From this moment forward, this ability
+
       to begin, continue, and complete
+
       your chosen activities is permanently
+
       available whenever you desire.
 
+
       Each time you use {{ cue.primary }},
+
       moving from intention into action
-      becomes easier, quicker, and more effective.
+
+      becomes easier, quicker, and more effective.'
   hplus.function.ocf-prf-001.closer:
     status: reviewed
     version: 1.2.0
@@ -138,16 +228,69 @@ entries:
       function_id: OCF-PRF-001
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to begin,
+    text: 'Remember, whenever you wish to begin,
+
       continue, or complete an activity,
+
       bring that activity clearly into your mind.
+
 
       Inhale deeply and hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
-      This concludes your OCF Do This Now exercise.
+
+      This concludes your OCF Do This Now exercise.'
+slug: do-this-now
+historical_record: functions/performance/do-this-now.yaml
+classification:
+  primary_domain: performance
+  secondary_domains: []
+category_labels:
+  performance:
+    text: performance
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-prf-001.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-prf-001.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-prf-001.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 782ffc0caf81140bff7f948b21f7a2ae29542241e76c4afca83cef3419d6a778

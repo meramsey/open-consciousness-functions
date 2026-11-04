@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-AUT-001
@@ -38,14 +38,68 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.scopes.baseline.persistence
+    invocation_scope_ref: lifecycle.scopes.application
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-aut-001.function-body
+      before_steps:
+      - id: select-action
+        operation: select-activity
+        localization_key: command.procedure.select-activity
+    relationships: {}
+  procedure_steps:
+  - id: select-action
+    operation: select-activity
+    instruction:
+      text: Choose an activity.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: habits
   status: draft
+  semantic_id: habits
 - text: intention
   status: draft
+  semantic_id: intention
 - text: self-direction
   status: draft
+  semantic_id: self-direction
 common_uses:
 - text: Practicing a consciously selected way of responding in daily life.
   status: draft
@@ -61,10 +115,11 @@ entries:
   hplus.function.ocf-aut-001.opener:
     status: reviewed
     version: 1.1.0
-    text: |-
-      This OCF exercise will teach you to transform learned
+    text: 'This OCF exercise will teach you to transform learned
+
       actions and skills into smooth, natural, and automatic
-      abilities that you can use whenever you choose.
+
+      abilities that you can use whenever you choose.'
   hplus.function.ocf-aut-001.function-body:
     status: reviewed
     version: 1.1.0
@@ -72,81 +127,133 @@ entries:
       function_id: OCF-AUT-001
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, you have the ability
+    text: 'From this moment forward, you have the ability
+
       to transform any correctly learned action
+
       or skill into a natural, automatic response.
 
+
       Your mind and body work together,
+
       developing smooth, coordinated patterns
+
       that become easier and more effortless
+
       each time you perform them.
 
+
       Whenever you wish to automate an activity,
+
       first bring that activity clearly into your mind.
 
+
       See yourself performing it correctly,
+
       smoothly, and with complete confidence.
 
+
       Imagine the beginning of the action,
+
       each important movement or step,
+
       and its successful completion.
 
+
       Feel the entire sequence flowing naturally,
+
       with every part working together
+
       in perfect coordination.
 
+
       Your brain and nervous system recognize
+
       this complete pattern and organize it
+
       into an efficient, automatic response.
 
+
       Each correct repetition strengthens
+
       the connections that support this skill,
+
       making the action smoother, faster,
+
       and more precise.
 
+
       Unnecessary effort and hesitation disappear,
+
       allowing the activity to flow naturally
+
       without requiring constant conscious thought.
 
+
       Now bring the complete action clearly
+
       into your awareness.
+
 
       Inhale deeply and gently hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
+
 
       Then exhale slowly through your mouth.
 
+
       The selected pattern is now becoming
+
       firmly and permanently established within you.
 
+
       Your mind and body will automatically
+
       coordinate the learned activity
+
       whenever you choose to perform it.
 
+
       The action will become natural,
+
       accurate, efficient, and effortless.
 
+
       Your conscious mind remains free
+
       to observe, guide, and adjust the activity
+
       whenever necessary.
 
+
       You remain in complete control,
+
       able to begin, modify, improve,
+
       or stop the action whenever you choose.
 
+
       Each time you perform the selected skill,
+
       its automatic pattern becomes stronger,
+
       smoother, and more reliable.
 
+
       The more you use {{ cue.primary }},
+
       the easier and more effective
+
       this process will become.
 
+
       This lasting ability to develop
+
       automatic skills is now permanently
-      available to you whenever you desire.
+
+      available to you whenever you desire.'
   hplus.function.ocf-aut-001.closer:
     status: reviewed
     version: 1.2.1
@@ -154,15 +261,79 @@ entries:
       function_id: OCF-AUT-001
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to make a learned
+    text: 'Remember, whenever you wish to make a learned
+
       action or skill automatic, picture yourself
+
       performing it correctly and completely.
+
 
       Inhale deeply and hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
+
 
       Then exhale slowly through your mouth.
 
-      This concludes your OCF Automatic Action exercise.
+
+      This concludes your OCF Automatic Action exercise.'
+slug: see-be
+historical_record: functions/automation/see-be.yaml
+classification:
+  primary_domain: automation
+  secondary_domains: []
+category_labels:
+  automation:
+    text: automation
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description_key: functions.ocf-aut-001.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description_key: functions.ocf-aut-001.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description_key: functions.ocf-aut-001.lifecycle.scopes.application.description
+      activation: manual
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-aut-001.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-aut-001.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-aut-001.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 57611d926cbb4751150b486e6d2498d102eb6950c0d74e687339368aabd5a5e7

@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-EMO-003
@@ -34,14 +34,58 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      order: 1
+      visible: true
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      before_steps: []
+      evidence_keys:
+      - hplus.function.ocf-emo-003.function-body
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+    relationships: {}
+  procedure_steps:
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: communication
   status: draft
+  semantic_id: communication
 - text: empathy
   status: draft
+  semantic_id: empathy
 - text: inner-awareness
   status: draft
+  semantic_id: inner-awareness
 common_uses:
 - text: Reflecting on another being's possible perspective with openness.
   status: draft
@@ -75,11 +119,13 @@ entries:
   hplus.function.ocf-emo-003.opener:
     status: reviewed
     version: 1.1.0
-    text: |-
-      This OCF exercise will strengthen your ability
+    text: 'This OCF exercise will strengthen your ability
+
       to perceive, understand, and communicate with
+
       another being through all levels of awareness,
-      including your senses, intuition, and total self.
+
+      including your senses, intuition, and total self.'
   hplus.function.ocf-emo-003.function-body:
     status: reviewed
     version: 1.2.1
@@ -87,67 +133,111 @@ entries:
       function_id: OCF-EMO-003
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, your ability to perceive
+    text: 'From this moment forward, your ability to perceive
+
       and understand another being is becoming deeper,
+
       clearer, and more complete.
 
+
       You are connected to the greater whole of life.
+
       Your conscious mind, subconscious mind,
+
       and higher self work together as your total self,
+
       opening every available way of knowing.
 
+
       Whenever you desire to understand another being,
+
       bring that being clearly into your awareness.
+
       Relax your body, quiet your own expectations,
+
       and become calm, open, and receptive.
 
+
       Through your physical senses, you recognize
+
       expression, movement, voice, and subtle changes.
+
       Beyond those senses, you remain open to intuition,
+
       emotional impressions, images, feelings,
+
       and direct, wordless understanding.
+
 
       Inhale deeply and gently hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
+
 
       Then exhale slowly through your mouth.
 
+
       Your total self will now bring together
+
       every form of information available to you,
+
       revealing a clearer understanding of the
-      other being's feelings, needs, intentions,
+
+      other being''s feelings, needs, intentions,
+
       and state of being.
 
+
       Communication will become possible beyond words:
+
       feeling to feeling, awareness to awareness,
+
       and thought to thought.
 
+
       Whether you are physically present or exploring
+
       in an out-of-body state, your greater awareness
+
       will remain open to subtle and nonphysical
+
       impressions and communication.
 
+
       Your higher self will help you recognize
+
       the connection between yourself, the other being,
+
       and the greater consciousness of which all are part.
 
+
       Understanding will arrive in the form most natural
+
       to you: a clear feeling, an image, a thought,
+
       a sensation, or immediate inner knowing.
 
+
       You will remain centered in your own awareness,
+
       understanding without imposing your desires
+
       or losing your sense of self.
 
+
       From this moment forward, this ability
+
       is permanently available whenever you choose
+
       to open yourself to deeper understanding.
 
+
       The more you use {{ cue.primary }},
+
       the easier, clearer, and more effective
-      this communion and understanding will become.
+
+      this communion and understanding will become.'
   hplus.function.ocf-emo-003.closer:
     status: reviewed
     version: 1.2.1
@@ -155,15 +245,71 @@ entries:
       function_id: OCF-EMO-003
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to understand
+    text: 'Remember, whenever you wish to understand
+
       another being through your senses and total self,
+
       bring that being clearly into your awareness.
+
 
       Inhale deeply and hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
+
 
       Then exhale slowly through your mouth.
 
-      This concludes your OCF Empathize exercise.
+
+      This concludes your OCF Empathize exercise.'
+slug: empathizing
+historical_record: functions/emotion/empathizing.yaml
+classification:
+  primary_domain: emotion
+  secondary_domains:
+  - communication
+category_labels:
+  emotion:
+    text: emotion
+    status: canonical
+  communication:
+    text: communication
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-emo-003.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-emo-003.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-emo-003.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 98f9a6302f7761bf34ae6c9ff76a7075f8925bcc27635e481913ab4e65315b35

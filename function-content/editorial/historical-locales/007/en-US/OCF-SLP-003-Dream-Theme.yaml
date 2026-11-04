@@ -1,0 +1,162 @@
+schema_version: '1.0'
+locale: en-US
+domain: function
+function_id: OCF-SLP-003
+title:
+  text: Dream Theme
+  status: canonical
+  version: 1.0.0
+description:
+  text: Sets dream themes and a restful dream-sleep mindset; activation cue PLUS-DREAM.
+  status: reviewed
+  version: 1.0.1
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-SLP-003-PRIMARY
+  display_cue:
+    text: PLUS-DREAM
+  spoken_cue:
+    text: Plus Dream
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-SLP-003-LEGACY-01
+  display_cue:
+    text: PLUS-THEME, DREAM, SLEEP
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags:
+- text: sleep
+  status: draft
+- text: dreams
+  status: draft
+- text: imagination
+  status: draft
+common_uses:
+- text: Choosing a personally meaningful dream theme.
+  status: draft
+- text: Reflecting on dream recall after waking without assuming dreams report external facts.
+  status: draft
+relationships:
+  related_functions: []
+  complementary_functions: []
+  proposals:
+  - function_id: OCF-SLP-004
+    relationship_type: related
+    description:
+      text: Compare choosing a dream theme with inviting ideas about a question through sleep; dreams and
+        morning impressions are not verified facts.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-SLP-003
+      field: description
+      sha256: 20c0c076eef89d4f32a11e4a0002856094f2af32be035d08b83f3aef8d08c1a2
+    - function_id: OCF-SLP-004
+      field: description
+      sha256: f30ef62a98a7374314d9354bc525b9755da92e31b094edb88da43bfd70844019
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-slp-003.opener:
+    status: reviewed
+    version: 1.2.0
+    text: |-
+      This OCF exercise will teach you to choose the dreams
+      you wish to experience, allowing your total self
+      to create them during sleep and helping you remember
+      them clearly and joyfully when you awaken.
+  hplus.function.ocf-slp-003.function-body:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-SLP-003
+      allowed:
+      - cue.primary
+    text: |-
+      From this moment forward, you can choose
+      the dreams you desire to experience during sleep.
+
+      Whenever you wish to dream a particular dream,
+      bring its theme clearly into your awareness.
+      It may be a place, a person, an experience,
+      a question, a possibility, or a world of your creation.
+
+      Picture what you wish to experience.
+      Know how you wish the dream to feel.
+      Include the sights, sounds, sensations,
+      and emotions that give your dream its character.
+
+      Inhale deeply and gently hold your breath.
+      Think or say in your mind, "{{ cue.primary }}."
+      Then exhale and breathe slowly and deeply.
+
+      You will move calmly and easily
+      into peaceful, normal, natural sleep.
+      As you sleep, your total self will receive
+      the pattern you have chosen and begin
+      composing a dream experience around it.
+
+      Your conscious intention, subconscious awareness,
+      and higher self will work together,
+      shaping a living dream of images, feelings,
+      movement, and meaningful experience.
+
+      The dream may unfold in ways beyond
+      what you first imagined, while remaining
+      connected to the theme you have selected.
+      You will experience it naturally and vividly,
+      allowing each scene to lead into the next.
+
+      When you awaken, the dream will return
+      clearly to your awareness. You will remember
+      its scenes, sensations, emotions, and details
+      with joy, and recognize the experience as your own.
+
+      This ability to choose, experience, and remember
+      your dreams will remain permanently available.
+      Each time you use {{ cue.primary }},
+      your dream experiences and their recall
+      will become clearer, richer, and easier.
+  hplus.function.ocf-slp-003.closer:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-SLP-003
+      allowed:
+      - cue.primary
+    text: |-
+      Remember, whenever you wish to experience
+      a dream of your choosing and recall it clearly,
+      bring your desired dream theme into your mind.
+      Inhale deeply and hold your breath.
+      Think or say in your mind, "{{ cue.primary }}."
+      Then exhale and breathe slowly and deeply.
+
+      This concludes your OCF Dream Theme exercise.

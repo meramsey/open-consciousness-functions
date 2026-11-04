@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-SLP-005
@@ -32,6 +32,68 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      order: 1
+      visible: true
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      before_steps:
+      - id: settle-for-rest
+        localization_key: command.procedure.select-purpose
+        operation: select-purpose
+      evidence_keys:
+      - hplus.function.ocf-slp-005.function-body
+      ref: OCF-PROC-CLOSE-NATURAL
+      status: documented
+    relationships: {}
+  procedure_steps:
+  - id: settle-for-rest
+    operation: select-purpose
+    instruction:
+      text: Choose the purpose for using this function.
+      status: canonical
+      version: 1.0.0
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: breathe-normally
+    operation: breathe-normally
+    instruction:
+      text: Continue breathing normally.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-SLP-005-LEGACY-01
   display_cue:
@@ -49,13 +111,28 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      command_id: OCF-CMD-SLP-005-LEGACY-01
+      source: legacy-command
+    availability: historical-lookup
+    documentation:
+      order: 101
+      visible: false
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: sleep
   status: draft
+  semantic_id: sleep
 - text: surroundings
   status: draft
+  semantic_id: surroundings
 - text: relaxation
   status: draft
+  semantic_id: relaxation
 common_uses:
 - text: Preparing for rest in unfamiliar but safe surroundings.
   status: draft
@@ -80,10 +157,11 @@ entries:
   hplus.function.ocf-slp-005.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to enter and remain in
+    text: 'This OCF exercise will teach you to enter and remain in
+
       peaceful, natural sleep, even when your surroundings
-      are unfamiliar, noisy, changing, or distracting.
+
+      are unfamiliar, noisy, changing, or distracting.'
   hplus.function.ocf-slp-005.function-body:
     status: reviewed
     version: 1.2.1
@@ -91,48 +169,80 @@ entries:
       function_id: OCF-SLP-005
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, you have the ability
+    text: 'From this moment forward, you have the ability
+
       to enter natural, restful sleep wherever you choose,
+
       even when the place around you is unfamiliar
+
       or the conditions are changing and distracting.
 
+
       Make yourself as comfortable as the situation permits.
+
       Close your eyes, inhale deeply, and hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Then exhale slowly through your mouth
+
       and allow your breathing to become easy and natural.
 
+
       Your physical body will loosen and relax.
+
       Your thoughts will become quiet and unhurried.
+
       The unfamiliar place will begin to feel ordinary,
+
       and your mind will accept it as a place for sleep.
 
+
       Sounds may rise and fade around you.
+
       Some may be sudden, irregular, or unexpected.
+
       Movement, voices, light, and changing conditions
+
       will no longer need to capture your attention.
 
+
       Your total self will distinguish what matters
+
       from ordinary background activity.
+
       Unimportant disturbances will pass through awareness
+
       without drawing you away from your chosen rest.
 
+
       If a passing sound or movement briefly stirs you,
+
       your body will settle again naturally.
+
       Your mind will release the interruption,
+
       your breathing will remain comfortable,
+
       and sleep will return smoothly and easily.
 
+
       You will no longer need perfect silence,
+
       familiar surroundings, or unchanging conditions
+
       to allow yourself peaceful, natural sleep.
 
+
       This ability will remain permanently available,
+
       ready whenever you choose to rest.
+
       Each use of {{ cue.primary }} will make it easier
+
       to fall asleep, remain asleep, and settle again
-      amid the ordinary changes around you.
+
+      amid the ordinary changes around you.'
   hplus.function.ocf-slp-005.closer:
     status: reviewed
     version: 1.2.1
@@ -140,12 +250,64 @@ entries:
       function_id: OCF-SLP-005
       allowed:
       - cue.primary
-    text: |-
-      Remember, when you wish to sleep in unfamiliar
+    text: 'Remember, when you wish to sleep in unfamiliar
+
       or distracting surroundings, make yourself comfortable,
+
       close your eyes, inhale deeply, and hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Then exhale slowly through your mouth
+
       and continue breathing naturally.
 
-      This concludes your OCF Sleep Easy exercise.
+
+      This concludes your OCF Sleep Easy exercise.'
+slug: sleep-easy
+historical_record: functions/sleep/sleep-easy.yaml
+classification:
+  primary_domain: sleep
+  secondary_domains: []
+category_labels:
+  sleep:
+    text: sleep
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-slp-005.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-slp-005.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-slp-005.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 5c2582cc9d77c9aa47ee299cd82bda9c3d83d0ec916ac4d07dc1457b55111631

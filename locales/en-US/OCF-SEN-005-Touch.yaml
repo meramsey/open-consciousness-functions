@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-SEN-005
@@ -31,6 +31,61 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-OPEN
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-sen-005.function-body
+      before_steps: []
+    relationships:
+      pairs_with:
+      - OCF-CMD-SEN-005-TOUCH-LESS
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: open-eyes
+    operation: open-eyes
+    instruction:
+      text: Open your eyes.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-SEN-005-TOUCH-LESS
   display_cue:
@@ -51,6 +106,63 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: decrease
+  control:
+    designation: secondary
+    phrase_ref:
+      source: canonical-mode
+      command_id: OCF-CMD-SEN-005-TOUCH-LESS
+    documentation:
+      visible: true
+      order: 11
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-OPEN
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-sen-005.function-body
+      before_steps: []
+    relationships:
+      pairs_with:
+      - OCF-CMD-SEN-005-PRIMARY
+      modifies:
+      - OCF-CMD-SEN-005-PRIMARY
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: open-eyes
+    operation: open-eyes
+    instruction:
+      text: Open your eyes.
+      status: canonical
+      version: 1.0.0
 - command_id: OCF-CMD-SEN-005-LEGACY-01
   display_cue:
     text: PLUS-TOUCH GREATER
@@ -67,6 +179,17 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-SEN-005-LEGACY-01
+    documentation:
+      visible: true
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 - command_id: OCF-CMD-SEN-005-LEGACY-02
   display_cue:
     text: PLUS-TOUCH LESSER
@@ -83,13 +206,27 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-SEN-005-LEGACY-02
+    documentation:
+      visible: true
+      order: 102
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: sensory-awareness
   status: draft
+  semantic_id: sensory-awareness
 - text: touch
   status: draft
+  semantic_id: touch
 - text: imagination
   status: draft
+  semantic_id: imagination
 common_uses:
 - text: Exploring remembered textures or an imagined sense of touch.
   status: draft
@@ -123,10 +260,11 @@ entries:
   hplus.function.ocf-sen-005.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to regulate
+    text: 'This OCF exercise will teach you to regulate
+
       your physical sense of touch and strengthen your ability
-      to remember, imagine, and experience touch within your mind.
+
+      to remember, imagine, and experience touch within your mind.'
   hplus.function.ocf-sen-005.function-body:
     status: reviewed
     version: 1.2.0
@@ -135,55 +273,92 @@ entries:
       allowed:
       - cue.id.OCF-CMD-SEN-005-TOUCH-LESS
       - cue.primary
-    text: |-
-      From this moment forward, you have the ability
+    text: 'From this moment forward, you have the ability
+
       to regulate your sense of touch and develop
+
       a clear, vivid sense of touch within your mind.
 
+
       Your physical sense of touch will respond to your intention.
+
       You can notice delicate sensations more clearly,
+
       or allow unwanted sensations to fade into the background.
 
+
       To increase your awareness of touch, close your eyes,
+
       inhale deeply, and gently hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Then exhale slowly through your mouth and open your eyes.
 
+
       The lightest contact will become more distinct.
+
       You will recognize subtle differences in texture,
+
       pressure, warmth, coolness, and movement across your skin.
 
+
       To reduce the prominence of an unwanted sensation,
+
       use the same eye and breathing sequence,
+
       thinking or saying, "{{ cue.id.OCF-CMD-SEN-005-TOUCH-LESS }}."
+
       The selected feeling will become less distracting,
+
       and you can return to your usual sense of touch
+
       whenever you consciously choose.
 
+
       Your inner sense of touch will also grow stronger.
+
       You will remember the softness of fabric,
+
       the smoothness of stone, the warmth of sunlight,
+
       and the gentle pressure of a familiar touch.
 
+
       Even without physical contact, you can imagine
+
       these sensations clearly, hold them in awareness,
+
       and change their texture, pressure, temperature,
+
       location, or movement through intention.
 
+
       Your tactile imagination will work naturally
+
       with remembered sights, sounds, smells, and tastes,
+
       allowing you to create richer inner experiences.
+
       You will know the difference between an imagined
+
       sensation and what your physical body is feeling.
 
+
       This ability to recall and create touch within your mind
+
       will become a lasting part of your total self.
+
       When desired, the same commands can make an imagined
+
       sensation more vivid or allow it to fade.
 
+
       Each time you use this function, physical touch regulation
+
       and inner tactile imagery will become clearer,
-      easier, and more effective.
+
+      easier, and more effective.'
   hplus.function.ocf-sen-005.closer:
     status: reviewed
     version: 1.2.1
@@ -192,13 +367,66 @@ entries:
       allowed:
       - cue.id.OCF-CMD-SEN-005-TOUCH-LESS
       - cue.primary
-    text: |-
-      Remember, to regulate your physical sense of touch
+    text: 'Remember, to regulate your physical sense of touch
+
       or strengthen your inner experience of it, close your eyes,
+
       inhale deeply, and hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}"
+
       or "{{ cue.id.OCF-CMD-SEN-005-TOUCH-LESS }}," according to your intention.
+
       Then exhale through your mouth as though gently
+
       blowing out a candle, and open your eyes.
 
-      This concludes your OCF Touch exercise.
+
+      This concludes your OCF Touch exercise.'
+slug: touch
+historical_record: functions/sensory/touch.yaml
+classification:
+  primary_domain: sensory
+  secondary_domains: []
+category_labels:
+  sensory:
+    text: sensory
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-sen-005.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-sen-005.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-sen-005.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: ad613f74d8559f5faba88d282558305e8ed312957cbf6334035ac80a905cd101

@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-FND-003
@@ -31,14 +31,67 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-fnd-003.function-body
+      before_steps:
+      - id: select-rest-period
+        operation: select-purpose
+        localization_key: command.procedure.select-purpose
+    relationships: {}
+  procedure_steps:
+  - id: select-rest-period
+    operation: select-purpose
+    instruction:
+      text: Choose the purpose for using this function.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: rest
   status: draft
+  semantic_id: rest
 - text: sleep
   status: draft
+  semantic_id: sleep
 - text: energy
   status: draft
+  semantic_id: energy
 common_uses:
 - text: Choosing a brief rest when it is safe and appropriate to sleep.
   status: draft
@@ -72,10 +125,11 @@ entries:
   hplus.function.ocf-fnd-003.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to enter a short,
+    text: 'This OCF exercise will teach you to enter a short,
+
       natural sleep and rapidly recharge your body,
-      mind, and total self, awakening refreshed and alert.
+
+      mind, and total self, awakening refreshed and alert.'
   hplus.function.ocf-fnd-003.function-body:
     status: reviewed
     version: 1.1.0
@@ -83,57 +137,92 @@ entries:
       function_id: OCF-FND-003
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, you have the ability
+    text: 'From this moment forward, you have the ability
+
       to recharge and restore yourself through
+
       a short period of natural, restful sleep.
 
+
       Whenever you choose to take a brief rest,
+
       settle comfortably and allow your body
+
       and mind to become quiet and relaxed.
+
 
       Inhale deeply and gently hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
+
       You will move easily and quickly
+
       into peaceful, natural sleep.
 
+
       As you sleep, your total self will begin
+
       a rapid process of balance, equalization,
+
       and restoration throughout your system.
 
+
       Your body will release unnecessary tension.
+
       Your mind will settle and become clear.
+
       Your natural energies will replenish,
+
       bringing renewed strength and vitality.
 
+
       Every part of your being will work together,
+
       restoring harmony and refreshing you
+
       in the short time you have chosen to rest.
 
+
       Within minutes, as your brief sleep completes,
+
       you will awaken naturally, calm and confident,
+
       with a clear mind and renewed energy.
 
+
       You will feel refreshed, alert, and ready
+
       to continue what you wish to do.
 
+
       From this moment forward, the ability
+
       to enter restorative short sleep
+
       is permanently available whenever you choose.
 
+
       Your normal wakefulness remains bright and clear,
+
       and this response begins when you deliberately
+
       choose to use {{ cue.primary }}.
 
+
       Each time you use this function,
+
       falling asleep briefly, restoring your energy,
+
       and awakening refreshed will become
-      easier, smoother, and more effective.
+
+      easier, smoother, and more effective.'
   hplus.function.ocf-fnd-003.closer:
     status: reviewed
     version: 1.2.1
@@ -141,14 +230,70 @@ entries:
       function_id: OCF-FND-003
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to restore yourself
+    text: 'Remember, whenever you wish to restore yourself
+
       through a short period of natural sleep,
+
       inhale deeply and hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
-      This concludes your OCF Quick Recharge exercise.
+
+      This concludes your OCF Quick Recharge exercise.'
+slug: recharge
+historical_record: functions/foundation/recharge.yaml
+classification:
+  primary_domain: foundation
+  secondary_domains:
+  - body
+category_labels:
+  foundation:
+    text: foundation
+    status: canonical
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-fnd-003.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-fnd-003.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-fnd-003.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: e19b3271950e6925f0c326d0aac5f2ffc386a1b5eeed8936a23d17a63bc999dc

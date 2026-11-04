@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-BOD-011
@@ -38,14 +38,59 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.scopes.application.persistence
+    invocation_scope_ref: lifecycle.scopes.application
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-011.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: transitions
   status: draft
+  semantic_id: transitions
 - text: emotional-balance
   status: draft
+  semantic_id: emotional-balance
 - text: comfort
   status: draft
+  semantic_id: comfort
 common_uses:
 - text: Practicing steadiness during personally experienced hormonal transitions.
   status: draft
@@ -62,13 +107,17 @@ entries:
   hplus.function.ocf-bod-011.opener:
     status: reviewed
     version: 1.1.0
-    text: |-
-      This OCF exercise will strengthen your body's natural
+    text: 'This OCF exercise will strengthen your body''s natural
+
       ability to maintain hormonal balance and harmony,
+
       supporting your physical, emotional, mental, and
+
       spiritual well-being throughout the hormonal changes
+
       of premenstrual cycles, perimenopause, menopause,
-      and postmenopause.
+
+      and postmenopause.'
   hplus.function.ocf-bod-011.function-body:
     status: reviewed
     version: 1.2.1
@@ -76,68 +125,113 @@ entries:
       function_id: OCF-BOD-011
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, your body's natural
+    text: 'From this moment forward, your body''s natural
+
       processes of hormonal regulation are becoming
+
       smoother, more balanced, and more harmonious.
 
+
       Your body recognizes its changing needs
+
       and adjusts naturally and appropriately
+
       through every stage of life.
 
+
       Your hormonal systems work together
+
       in harmony, maintaining the balance
+
       needed for your physical and emotional
+
       well-being.
 
+
       As your hormone levels naturally change,
+
       your body adapts smoothly and efficiently,
+
       maintaining its strength, comfort, and stability.
 
+
       Unnecessary physical discomfort and tension
+
       will diminish, allowing your body
+
       to remain comfortable and at ease.
 
+
       Your emotions will become calm and steady,
+
       your thoughts clear and focused,
+
       and your sense of inner balance stronger.
 
+
       You will move through hormonal changes
+
       with greater comfort, confidence,
+
       and emotional stability.
 
+
       From this moment forward, this pattern
+
       of healthy regulation and adaptation
+
       is firmly and permanently established within you.
 
+
       Whether awake, resting, or sleeping,
-      your body's natural regulatory systems
+
+      your body''s natural regulatory systems
+
       continue working automatically,
+
       maintaining the balance appropriate
+
       for your changing needs.
 
+
       Whenever you wish to reinforce this
+
       pattern of hormonal balance and harmony,
+
       inhale deeply and gently hold your breath.
 
+
       Think or say in your mind,
+
       "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
+
       Your body will return to its natural balance,
+
       easing unwanted physical, mental,
+
       and emotional effects of hormonal changes.
 
+
       Each time you use {{ cue.primary }},
+
       this process becomes easier, smoother,
+
       and more effective.
 
+
       Your natural pattern of hormonal regulation,
+
       comfort, and harmony will continue
+
       working automatically,
-      every day and every night.
+
+      every day and every night.'
   hplus.function.ocf-bod-011.closer:
     status: reviewed
     version: 1.2.1
@@ -145,19 +239,91 @@ entries:
       function_id: OCF-BOD-011
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to restore
+    text: 'Remember, whenever you wish to restore
+
       physical, mental, and emotional balance
+
       during hormonal changes, inhale deeply
+
       and hold your breath.
 
+
       Think or say in your mind,
+
       "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
+
       As you exhale, you may also express gratitude
+
       to amplify the entire process.
 
-      This concludes your OCF Hormonal Transitions exercise.
+
+      This concludes your OCF Hormonal Transitions exercise.'
+slug: passages
+historical_record: functions/body/passages.yaml
+classification:
+  primary_domain: body
+  secondary_domains:
+  - lifestyle
+category_labels:
+  body:
+    text: body
+    status: canonical
+  lifestyle:
+    text: lifestyle
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description_key: functions.ocf-bod-011.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description_key: functions.ocf-bod-011.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description_key: functions.ocf-bod-011.lifecycle.scopes.application.description
+      activation: manual
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-011.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-011.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-011.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: b8039f6b6e415d031aa406a1245380303d61d895d2f8611d856caebc79206d63

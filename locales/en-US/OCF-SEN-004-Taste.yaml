@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-SEN-004
@@ -31,6 +31,61 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-OPEN
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-sen-004.function-body
+      before_steps: []
+    relationships:
+      pairs_with:
+      - OCF-CMD-SEN-004-TASTE-LESS
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: open-eyes
+    operation: open-eyes
+    instruction:
+      text: Open your eyes.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-SEN-004-TASTE-LESS
   display_cue:
@@ -51,6 +106,63 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: decrease
+  control:
+    designation: secondary
+    phrase_ref:
+      source: canonical-mode
+      command_id: OCF-CMD-SEN-004-TASTE-LESS
+    documentation:
+      visible: true
+      order: 11
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-OPEN
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-sen-004.function-body
+      before_steps: []
+    relationships:
+      pairs_with:
+      - OCF-CMD-SEN-004-PRIMARY
+      modifies:
+      - OCF-CMD-SEN-004-PRIMARY
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: open-eyes
+    operation: open-eyes
+    instruction:
+      text: Open your eyes.
+      status: canonical
+      version: 1.0.0
 - command_id: OCF-CMD-SEN-004-LEGACY-01
   display_cue:
     text: PLUS-TASTE GREATER
@@ -67,6 +179,17 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-SEN-004-LEGACY-01
+    documentation:
+      visible: true
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 - command_id: OCF-CMD-SEN-004-LEGACY-02
   display_cue:
     text: PLUS-TASTE LESSER
@@ -83,13 +206,27 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-SEN-004-LEGACY-02
+    documentation:
+      visible: true
+      order: 102
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: sensory-awareness
   status: draft
+  semantic_id: sensory-awareness
 - text: taste
   status: draft
+  semantic_id: taste
 - text: imagination
   status: draft
+  semantic_id: imagination
 common_uses:
 - text: Exploring familiar flavor memories during sensory reflection.
   status: draft
@@ -105,10 +242,11 @@ entries:
   hplus.function.ocf-sen-004.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to regulate your
+    text: 'This OCF exercise will teach you to regulate your
+
       physical sense of taste and strengthen your ability
-      to remember, imagine, and experience flavors within your mind.
+
+      to remember, imagine, and experience flavors within your mind.'
   hplus.function.ocf-sen-004.function-body:
     status: reviewed
     version: 1.2.0
@@ -117,51 +255,85 @@ entries:
       allowed:
       - cue.id.OCF-CMD-SEN-004-TASTE-LESS
       - cue.primary
-    text: |-
-      From this moment forward, you have the ability
+    text: 'From this moment forward, you have the ability
+
       to regulate your sense of taste and develop
+
       the vividness of flavors within your imagination.
 
+
       Your sense of taste will respond to your intention.
+
       You can notice delicate flavors more clearly,
+
       or allow unwanted taste sensations to fade.
 
+
       To enhance your physical sense of taste,
+
       close your eyes, inhale deeply, and hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Then exhale slowly through your mouth and open your eyes.
 
+
       Subtle flavors will become more distinct.
+
       You will recognize their sweetness, sourness,
+
       saltiness, bitterness, and savory qualities,
+
       appreciating their richness and differences.
 
+
       To reduce a taste you do not wish to experience
+
       as strongly, use the same eye and breath sequence,
+
       thinking or saying, "{{ cue.id.OCF-CMD-SEN-004-TASTE-LESS }}."
+
       The selected sensation will become less prominent.
+
       You can soften even an enjoyable flavor when desired,
+
       and return to your usual sense of taste at will.
 
+
       Your inner sense of taste will also grow stronger.
+
       You will remember familiar flavors and imagine new ones,
+
       even when no food or drink is present.
+
       You can bring a flavor into your awareness,
+
       experience its distinct qualities, and hold it clearly.
 
+
       You can imagine combinations of flavors,
+
       changing their intensity, balance, or character.
+
       Taste memories will connect more vividly with
+
       places, experiences, aromas, and inner images.
 
+
       This ability to recall and create flavors in your mind
+
       will become a lasting, natural part of your total self.
+
       Whenever you choose, your intention and these commands
+
       can strengthen an imagined flavor or let it gently fade.
 
+
       Each time you use this function, physical taste regulation
+
       and inner flavor imagery will become easier,
-      clearer, and more effective.
+
+      clearer, and more effective.'
   hplus.function.ocf-sen-004.closer:
     status: reviewed
     version: 1.2.1
@@ -170,12 +342,64 @@ entries:
       allowed:
       - cue.id.OCF-CMD-SEN-004-TASTE-LESS
       - cue.primary
-    text: |-
-      Remember, to regulate your sense of taste
+    text: 'Remember, to regulate your sense of taste
+
       or strengthen your inner experience of flavor,
+
       close your eyes, inhale deeply, and hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}"
+
       or "{{ cue.id.OCF-CMD-SEN-004-TASTE-LESS }}," according to your intention.
+
       Then exhale slowly through your mouth and open your eyes.
 
-      This concludes your OCF Taste exercise.
+
+      This concludes your OCF Taste exercise.'
+slug: taste
+historical_record: functions/sensory/taste.yaml
+classification:
+  primary_domain: sensory
+  secondary_domains: []
+category_labels:
+  sensory:
+    text: sensory
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-sen-004.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-sen-004.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-sen-004.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 21b735298863bae8e6c77bc8fd9305649bd333bac2537b9d1c43357f3990c2fd

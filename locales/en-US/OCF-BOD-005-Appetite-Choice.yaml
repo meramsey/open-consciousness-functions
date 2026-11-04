@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-BOD-005
@@ -41,14 +41,68 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.scopes.application.persistence
+    invocation_scope_ref: lifecycle.scopes.application
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-005.function-body
+      before_steps:
+      - id: select-food-response
+        operation: select-intention
+        localization_key: command.procedure.select-intention
+    relationships: {}
+  procedure_steps:
+  - id: select-food-response
+    operation: select-intention
+    instruction:
+      text: Choose an intention.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: eating-choices
   status: draft
+  semantic_id: eating-choices
 - text: habits
   status: draft
+  semantic_id: habits
 - text: self-direction
   status: draft
+  semantic_id: self-direction
 common_uses:
 - text: Reflecting on the difference between a passing craving and a genuine need for nourishment.
   status: draft
@@ -61,8 +115,8 @@ relationships:
   - function_id: OCF-LIF-001
     relationship_type: related
     description:
-      text: Compare deliberate eating choices that preserve nourishment needs with changing a selected unwanted
-        habit; neither justifies ignoring hunger.
+      text: Compare deliberate eating choices that preserve nourishment needs with changing a selected
+        unwanted habit; neither justifies ignoring hunger.
       status: draft
     status: draft
     dependency: optional
@@ -81,10 +135,11 @@ entries:
   hplus.function.ocf-bod-005.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to consciously direct
+    text: 'This OCF exercise will teach you to consciously direct
+
       your appetite and desire for food, giving you greater
-      control over when and why you choose to eat.
+
+      control over when and why you choose to eat.'
   hplus.function.ocf-bod-005.function-body:
     status: reviewed
     version: 1.3.0
@@ -92,104 +147,172 @@ entries:
       function_id: OCF-BOD-005
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, you will have greater
+    text: 'From this moment forward, you will have greater
+
       control over your appetite and your desire for food.
 
-      You will recognize the difference between your body's
+
+      You will recognize the difference between your body''s
+
       genuine need for nourishment and the passing desire
+
       to eat out of habit, boredom, or impulse.
 
+
       Your mind and body will work together in harmony,
+
       helping you make clear, confident decisions
+
       about when and what you choose to eat.
 
+
       When your body needs nourishment, you will recognize
+
       that need clearly and respond appropriately.
 
+
       When a temporary craving arises and you consciously
+
       choose not to eat, you will remain calm,
+
       comfortable, and in complete control of your decision.
 
+
       From this moment forward, this awareness
+
       will become a natural and automatic part
+
       of your everyday life.
 
+
       You will find it easier to recognize when you
+
       have eaten enough, to enjoy the food you choose,
+
       and to stop eating when you are comfortably satisfied.
 
+
       Your choices will become clearer,
+
       your habits more intentional,
+
       and your confidence stronger.
 
+
       Whenever you wish to release a passing craving
+
       or an unnecessary desire for food,
+
       you can do so quickly and easily.
 
+
       Simply pause and bring your awareness
+
       to the desire you wish to release.
 
+
       Take a comfortable breath in
+
       and gently hold it.
 
+
       While holding your breath, silently
+
       say to yourself, "{{ cue.primary }}."
 
+
       Then slowly exhale through your mouth,
+
       as though gently blowing out a candle.
 
+
       As you exhale, the unnecessary desire to eat
+
       will become less and less important to you.
+
 
       Your thoughts will become calm and clear.
 
+
       You will feel satisfied with your decision
+
       and free to direct your attention
+
       toward whatever you choose.
 
+
       Food will no longer demand your attention
+
       simply because it is present,
+
       because you see it, or because you smell it.
 
+
       You will remain free to enjoy food
+
       when you consciously choose to eat.
 
+
       Your body will continue to communicate
+
       its genuine needs clearly and naturally.
 
+
       You will respond to those needs with confidence,
+
       maintaining the nourishment and balance
+
       your body requires.
 
+
       Now know that this pattern of conscious choice
+
       is becoming firmly established within you.
 
+
       From this moment forward, your ability
+
       to recognize unnecessary cravings
+
       and release them will operate automatically.
 
+
       Your mind will naturally pause before
+
       habitual or impulsive eating,
+
       allowing you to make a clear decision.
 
+
       You will feel comfortable and confident
+
       choosing when to eat and when to wait.
 
+
       Each time you use {{ cue.primary }},
+
       your ability to release unnecessary cravings
+
       becomes easier, smoother, and more effective.
 
+
       Remember, your appetite is something
+
       you can understand and consciously direct.
 
-      You will recognize your body's needs,
+
+      You will recognize your body''s needs,
+
       make your decisions clearly,
+
       and remain in control of your choices.
 
+
       This lasting pattern of awareness,
+
       satisfaction, and self-control
-      will continue strengthening every day.
+
+      will continue strengthening every day.'
   hplus.function.ocf-bod-005.closer:
     status: reviewed
     version: 1.3.0
@@ -197,21 +320,96 @@ entries:
       function_id: OCF-BOD-005
       allowed:
       - cue.primary
-    text: |-
-      Remember, from this moment forward,
-      you will recognize your body's genuine
+    text: 'Remember, from this moment forward,
+
+      you will recognize your body''s genuine
+
       need for nourishment and remain in control
+
       of your eating decisions.
 
+
       Whenever you wish to release an unnecessary
+
       craving or desire for food, simply pause.
+
 
       Inhale and gently hold your breath.
 
+
       Silently say to yourself,
+
       "{{ cue.primary }}."
 
+
       Then slowly exhale through your mouth,
+
       as though gently blowing out a candle.
 
-      This concludes your OCF Appetite Choice exercise.
+
+      This concludes your OCF Appetite Choice exercise.'
+slug: eat-no-eat
+historical_record: functions/body/eat-no-eat.yaml
+classification:
+  primary_domain: body
+  secondary_domains:
+  - lifestyle
+category_labels:
+  body:
+    text: body
+    status: canonical
+  lifestyle:
+    text: lifestyle
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description_key: functions.ocf-bod-005.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description_key: functions.ocf-bod-005.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description_key: functions.ocf-bod-005.lifecycle.scopes.application.description
+      activation: manual
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-005.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-005.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-005.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 1f56bda829eb5501ab32cf7d61a1a8d25326040c820b06699a4559ba52cabb18

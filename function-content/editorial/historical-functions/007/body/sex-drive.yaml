@@ -1,0 +1,215 @@
+aliases:
+  commands:
+  - PLUS-SEX GREATER
+  - PLUS-SEX LESSER
+  command_ids:
+  - OCF-CMD-BOD-012-LEGACY-01
+  - OCF-CMD-BOD-012-LEGACY-02
+  names:
+  - Sex Drive
+applications: []
+attribution:
+  ocf_contributors: []
+  original_authors: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+canonical:
+  command:
+    modes:
+    - PLUS-SEX LESS
+    mode_ids:
+    - OCF-CMD-BOD-012-SEX-LESS
+    primary: PLUS-SEX MORE
+  name: Sex Drive
+commands:
+- id: OCF-CMD-BOD-012-PRIMARY
+  function_id: OCF-BOD-012
+  phrase_ref:
+    source: canonical-primary
+  role: activation
+  designation: primary
+  localization:
+    label_key: commands.ocf-cmd-bod-012-primary.label
+    usage_key: commands.ocf-cmd-bod-012-primary.usage
+    purpose_key: functions.ocf-bod-012.purpose
+    explanation_key: commands.ocf-cmd-bod-012-primary.explanation
+  documentation:
+    visible: true
+    order: 1
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-INHALE-HOLD-NATURAL
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-bod-012.function-body
+    before_steps:
+    - id: select-arousal-response
+      operation: select-intention
+      localization_key: command.procedure.select-intention
+  relationships:
+    pairs_with:
+    - OCF-CMD-BOD-012-SEX-LESS
+  spoken: "Plus Sex More"
+  spoken_review: reviewed
+- id: OCF-CMD-BOD-012-SEX-LESS
+  function_id: OCF-BOD-012
+  phrase_ref:
+    source: canonical-mode
+    command_id: OCF-CMD-BOD-012-SEX-LESS
+  role: decrease
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-bod-012-sex-less.label
+    usage_key: commands.ocf-cmd-bod-012-sex-less.usage
+    purpose_key: functions.ocf-bod-012.purpose
+    explanation_key: commands.ocf-cmd-bod-012-sex-less.explanation
+  documentation:
+    visible: true
+    order: 11
+  effect_scope_ref: lifecycle.persistence
+  procedure:
+    ref: OCF-PROC-INHALE-HOLD-NATURAL
+    status: documented
+    evidence_keys:
+    - hplus.function.ocf-bod-012.function-body
+    before_steps:
+    - id: select-arousal-response
+      operation: select-intention
+      localization_key: command.procedure.select-intention
+  relationships:
+    pairs_with:
+    - OCF-CMD-BOD-012-PRIMARY
+    modifies:
+    - OCF-CMD-BOD-012-PRIMARY
+  spoken: "Plus Sex Less"
+  spoken_review: reviewed
+- id: OCF-CMD-BOD-012-LEGACY-01
+  function_id: OCF-BOD-012
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-BOD-012-LEGACY-01
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-bod-012-legacy-01.label
+    usage_key: commands.ocf-cmd-bod-012-legacy-01.usage
+    purpose_key: functions.ocf-bod-012.purpose
+    explanation_key: commands.ocf-cmd-bod-012-legacy-01.explanation
+  documentation:
+    visible: true
+    order: 101
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
+  spoken: null
+  spoken_review: unresolved
+- id: OCF-CMD-BOD-012-LEGACY-02
+  function_id: OCF-BOD-012
+  phrase_ref:
+    source: legacy-command
+    command_id: OCF-CMD-BOD-012-LEGACY-02
+  role: legacy-alias
+  designation: secondary
+  localization:
+    label_key: commands.ocf-cmd-bod-012-legacy-02.label
+    usage_key: commands.ocf-cmd-bod-012-legacy-02.usage
+    purpose_key: functions.ocf-bod-012.purpose
+    explanation_key: commands.ocf-cmd-bod-012-legacy-02.explanation
+  documentation:
+    visible: true
+    order: 102
+  effect_scope_ref: lifecycle.persistence
+  relationships: {}
+  spoken: null
+  spoken_review: unresolved
+chains: []
+claims:
+  intended_effects: []
+  prohibited_claims:
+  - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+classification:
+  primary_domain: body
+  secondary_domains:
+  - sensory
+companions: []
+compatibility:
+  legacy_commands:
+  - PLUS-SEX GREATER
+  - PLUS-SEX LESSER
+  rationale: 'Vocabulary normalization: GREATER/LESSER magnitudes standardize on MORE/LESS.'
+  state: alias-listed
+contributor:
+  contact: null
+  name: null
+documentation:
+  title_key: functions.ocf-bod-012.title
+  short_description_key: functions.ocf-bod-012.short-description
+  purpose_key: functions.ocf-bod-012.purpose
+history:
+- date: '2026-09-12'
+  note: Initial legacy mapping record created by bootstrap generator.
+  version: 0.1.0
+id: OCF-BOD-012
+incompatible_functions: []
+legacy:
+  command_ids:
+  - OCF-CMD-BOD-012-LEGACY-01
+  - OCF-CMD-BOD-012-LEGACY-02
+  command_status: normalized
+  commands:
+  - PLUS-SEX GREATER
+  - PLUS-SEX LESSER
+  name: SEX DRIVE
+  source_availability: available
+  source_system: Monroe H-PLUS
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+ocf:
+  command_review: needs-review
+  reimplementation_status: planned
+purpose:
+  community_description: Adjusts felt sexual drive in either direction using the MORE/LESS grammar.
+  source_description: null
+  summary: Adjusts felt sexual drive in either direction using the MORE/LESS grammar.
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+schema_version: '1.0'
+slug: sex-drive
+sources:
+- locator: null
+  title: OCF Bootstrap Specification — Legacy Function Index
+  type: legacy-reference
+  url: null
+status:
+  evidence: community-hypothesis
+  implementation: specification-only
+  maturity: legacy-mapped
+use_cases: []
+version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-012.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-012.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-012.closer
+    repetitions: 1
+    role: closer

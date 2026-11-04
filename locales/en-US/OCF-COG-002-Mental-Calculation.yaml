@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-COG-002
@@ -31,14 +31,67 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-cog-002.function-body
+      before_steps:
+      - id: select-mathematical-task
+        operation: select-purpose
+        localization_key: command.procedure.select-purpose
+    relationships: {}
+  procedure_steps:
+  - id: select-mathematical-task
+    operation: select-purpose
+    instruction:
+      text: Choose the purpose for using this function.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: numbers
   status: draft
+  semantic_id: numbers
 - text: concentration
   status: draft
+  semantic_id: concentration
 - text: thinking
   status: draft
+  semantic_id: thinking
 common_uses:
 - text: Preparing for mental arithmetic or number-based study.
   status: draft
@@ -51,8 +104,8 @@ relationships:
   - function_id: OCF-FND-002
     relationship_type: complementary
     description:
-      text: Number practice and directed attention address calculation and concentration respectively; either
-        may be practiced independently.
+      text: Number practice and directed attention address calculation and concentration respectively;
+        either may be practiced independently.
       status: draft
     status: draft
     dependency: optional
@@ -71,11 +124,13 @@ entries:
   hplus.function.ocf-cog-002.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will strengthen your ability
+    text: 'This OCF exercise will strengthen your ability
+
       to understand, remember, and work with numbers,
+
       improving your mathematical understanding,
-      calculation speed, accuracy, and intuition.
+
+      calculation speed, accuracy, and intuition.'
   hplus.function.ocf-cog-002.function-body:
     status: reviewed
     version: 1.2.0
@@ -83,80 +138,132 @@ entries:
       function_id: OCF-COG-002
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, your ability to understand,
+    text: 'From this moment forward, your ability to understand,
+
       remember, and work with numbers is becoming
+
       stronger, faster, and more accurate.
 
+
       Whenever you see or hear numbers,
+
       you recognize and understand them clearly.
 
+
       Numbers and numerical sequences become easier
+
       to remember and retrieve whenever you need them.
 
+
       Your ability to perform arithmetic, algebra,
+
       geometry, trigonometry, and other mathematical
+
       operations becomes faster, clearer,
+
       and increasingly accurate.
 
+
       Mathematical equations and symbols
+
       become clear and meaningful to you.
 
+
       You recognize relationships between numbers,
+
       shapes, angles, equations, and patterns,
+
       understanding how they connect
+
       and work together.
 
+
       Your mind naturally recognizes the connections
+
       between numbers, quantities, shapes,
+
       patterns, form, and energy.
 
+
       From basic arithmetic to advanced mathematics,
+
       your mind will naturally recognize underlying
+
       principles, visualize solutions, and solve
+
       problems with increasing clarity and precision.
 
+
       New mathematical ideas, insights, and solutions
+
       will emerge naturally into your conscious awareness.
 
+
       You will express these ideas with clarity,
+
       confidence, and precise mathematical accuracy.
 
+
       From this moment forward, this growing ability
+
       is permanently established within you.
 
+
       Your mind will automatically recognize,
+
       organize, and understand numerical information
+
       with increasing speed and efficiency.
 
+
       Your mathematical knowledge and understanding
+
       will continue expanding naturally,
+
       becoming stronger with every experience.
 
+
       Whenever you wish to focus your mathematical
+
       abilities more intensely, inhale deeply
+
       and gently hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth.
 
+
       Your mind will immediately become clear,
+
       focused, and responsive to the numbers
+
       or mathematical problem before you.
 
+
       Calculations will flow quickly and accurately,
+
       and the relationships between numbers
+
       will become clear and easy to understand.
 
+
       Each time you use {{ cue.primary }},
+
       your mathematical abilities become
+
       easier, faster, and more effective.
 
+
       Your natural ability to understand,
+
       remember, and work with numbers
+
       will continue strengthening automatically,
-      every day and every night.
+
+      every day and every night.'
   hplus.function.ocf-cog-002.closer:
     status: reviewed
     version: 1.2.1
@@ -164,13 +271,64 @@ entries:
       function_id: OCF-COG-002
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to strengthen
+    text: 'Remember, whenever you wish to strengthen
+
       your ability to calculate or understand numbers,
+
       inhale deeply and hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth.
 
-      This concludes your OCF Mental Calculation exercise.
+
+      This concludes your OCF Mental Calculation exercise.'
+slug: buy-the-numbers
+historical_record: functions/cognition/buy-the-numbers.yaml
+classification:
+  primary_domain: cognition
+  secondary_domains: []
+category_labels:
+  cognition:
+    text: cognition
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-cog-002.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-cog-002.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-cog-002.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: 5656a5a46370303d583ca0ca8ce7cb375e7bedf4ded73561b0d1088d1730ff2d

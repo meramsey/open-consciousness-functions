@@ -61,7 +61,15 @@ def load_yaml_file(path: Path) -> dict[str, Any]:
 
 
 def discover_function_files() -> list[Path]:
-    """Return every *.yaml/*.yml function record under functions/."""
+    """Discover current functions from the canonical manifest.
+
+    A deliberately overridden legacy directory remains a fixture/import adapter;
+    the production registry never discovers old authoring files.
+    """
+    if FUNCTIONS_DIR == REPO_ROOT / "functions" and (REPO_ROOT / "locales/en-US/manifest.yaml").is_file():
+        from .function_catalog import resources
+
+        return [path for path, data in resources(REPO_ROOT)]
     if not FUNCTIONS_DIR.is_dir():
         return []
     files: list[Path] = []
@@ -71,11 +79,18 @@ def discover_function_files() -> list[Path]:
     return sorted(files)
 
 
-def load_all_functions() -> list[FunctionRecord]:
+def load_all_functions(locale: str = "en-US") -> list[FunctionRecord]:
     """Load and parse every function record, sorted by OCF id."""
     records: list[FunctionRecord] = []
     for path in discover_function_files():
         data = load_yaml_file(path)
+        if data.get("schema_version") == "2.0" and data.get("domain") == "function":
+            from .function_catalog import load_functions, project
+
+            if locale != "en-US":
+                return load_functions(REPO_ROOT, locale)
+            records.append(project(data, path, REPO_ROOT))
+            continue
         try:
             records.append(function_from_dict(data, path))
         except ValueError as exc:

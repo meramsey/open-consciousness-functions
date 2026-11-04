@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-BOD-014
@@ -31,6 +31,65 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-FOCUS-OPEN
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-014.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: focus-target
+    operation: focus-target
+    instruction:
+      text: Focus attention on the selected target.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: open-eyes
+    operation: open-eyes
+    instruction:
+      text: Open your eyes.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-BOD-014-LEGACY-01
   display_cue:
@@ -48,13 +107,28 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-BOD-014-LEGACY-01
+    availability: historical-lookup
+    documentation:
+      visible: false
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: renewal
   status: draft
+  semantic_id: renewal
 - text: visualization
   status: draft
+  semantic_id: visualization
 - text: body-awareness
   status: draft
+  semantic_id: body-awareness
 common_uses:
 - text: Imagining a chosen area of the body in a comfortable, renewed state.
   status: draft
@@ -71,11 +145,13 @@ entries:
   hplus.function.ocf-bod-014.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to direct your body's
+    text: 'This OCF exercise will teach you to direct your body''s
+
       natural powers of repair, regeneration, and reconstruction,
+
       restoring damaged or missing physical structures
-      toward their original healthy form and function.
+
+      toward their original healthy form and function.'
   hplus.function.ocf-bod-014.function-body:
     status: reviewed
     version: 1.2.1
@@ -83,90 +159,151 @@ entries:
       function_id: OCF-BOD-014
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, your body's natural
+    text: 'From this moment forward, your body''s natural
+
       powers of repair, rebuilding, and regeneration
+
       are becoming stronger and more effective.
 
+
       Your physical body contains the knowledge
+
       and biological patterns from which
+
       its healthy structures were originally formed.
 
-      These patterns guide your body's natural
+
+      These patterns guide your body''s natural
+
       processes of cellular renewal, repair,
+
       and organized tissue growth.
 
+
       Whenever any part of your body is injured,
+
       damaged, weakened, or missing,
+
       your regenerative processes will respond,
+
       working toward the restoration
+
       of its healthy form and function.
 
+
       Bring your awareness to the remarkable
+
       ability of living cells to renew,
+
       multiply, specialize, and work together
+
       to create healthy tissue.
 
-      Your body's natural regenerative signals
+
+      Your body''s natural regenerative signals
+
       coordinate these processes,
+
       directing rebuilding where it is needed.
 
+
       Healthy circulation provides the oxygen
+
       and nourishment required for this work,
-      while your body's maintenance systems
+
+      while your body''s maintenance systems
+
       clear away damaged and unnecessary material.
 
+
       New healthy tissue forms in the proper
+
       structure, position, and organization,
+
       restoring strength, connection, and function.
 
+
       Every part of this process works in harmony
+
       with the rest of your physical body.
 
+
       Regeneration proceeds accurately,
+
       creating what is needed and completing
+
       its work when the proper structure is restored.
 
+
       From this moment forward, this pattern
+
       of repair, reconstruction, and regeneration
+
       is permanently established within you.
 
+
       Whether awake, resting, or sleeping,
-      your body's natural regenerative processes
+
+      your body''s natural regenerative processes
+
       continue automatically, without conscious effort.
 
+
       Whenever you wish to direct additional
+
       regenerative activity toward a particular area,
+
       close your eyes and focus your attention
+
       on the part you wish to restore.
 
+
       Picture its complete, healthy form
+
       and the function it is designed to perform.
 
+
       If its precise internal structure is unknown,
-      allow your body's natural intelligence
+
+      allow your body''s natural intelligence
+
       to guide the rebuilding process.
+
 
       Inhale deeply and gently hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth
+
       and open your eyes.
 
+
       Your entire physical system will respond,
+
       directing its coordinated processes
+
       of repair, rebuilding, and regeneration
+
       toward the selected area.
 
+
       Each time you use {{ cue.primary }},
+
       directing this regenerative pattern
+
       becomes easier, faster, and more effective.
 
-      Your body's natural powers of regeneration
+
+      Your body''s natural powers of regeneration
+
       will continue working automatically,
+
       restoring healthy structure and function
-      wherever rebuilding is needed.
+
+      wherever rebuilding is needed.'
   hplus.function.ocf-bod-014.closer:
     status: reviewed
     version: 1.2.1
@@ -174,17 +311,73 @@ entries:
       function_id: OCF-BOD-014
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to direct regeneration
+    text: 'Remember, whenever you wish to direct regeneration
+
       toward any part of your physical body,
+
       close your eyes and picture that area
+
       restored to its healthy form and function.
+
 
       Inhale deeply and hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth
+
       and open your eyes.
 
-      This concludes your OCF Regenerate exercise.
+
+      This concludes your OCF Regenerate exercise.'
+slug: regenerate
+historical_record: functions/body/regenerate.yaml
+classification:
+  primary_domain: body
+  secondary_domains: []
+category_labels:
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-014.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-014.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-014.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: e69d0305a5263926e46b7e36b4c19c86be0e6852cb867bc823a860ba21dfd1b3

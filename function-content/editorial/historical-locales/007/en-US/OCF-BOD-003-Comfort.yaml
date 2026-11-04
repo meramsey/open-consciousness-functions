@@ -1,0 +1,181 @@
+schema_version: '1.0'
+locale: en-US
+domain: function
+function_id: OCF-BOD-003
+title:
+  text: Comfort
+  status: canonical
+  version: 1.0.0
+description:
+  text: Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-BOD-003-PRIMARY
+  display_cue:
+    text: PLUS-COMFORT
+  spoken_cue:
+    text: Plus Comfort
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-BOD-003-LEGACY-01
+  display_cue:
+    text: PLUS-55515
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+tags:
+- text: comfort
+  status: draft
+- text: body-awareness
+  status: draft
+- text: relaxation
+  status: draft
+common_uses:
+- text: Practicing attention to a sense of physical ease.
+  status: draft
+- text: Exploring a calmer response to discomfort without ignoring symptoms or delaying appropriate care.
+  status: draft
+relationships:
+  related_functions: []
+  complementary_functions: []
+  proposals:
+  - function_id: OCF-FND-004
+    relationship_type: complementary
+    description:
+      text: Area-focused comfort and whole-body relaxation offer separate intentions for ease, without dismissing
+        symptoms or replacing care.
+      status: draft
+    status: draft
+    dependency: optional
+    reciprocal_proposed: false
+    evidence:
+    - function_id: OCF-BOD-003
+      field: description
+      sha256: ec52113b6d7e845f6235c7b27e94cc87b0166f6c478f1fb69b5e3ab0c4a9c404
+    - function_id: OCF-FND-004
+      field: description
+      sha256: 7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-bod-003.opener:
+    status: reviewed
+    version: 1.2.0
+    text: |-
+      This OCF exercise will teach you to reduce and control
+      physical discomfort signals within your body,
+      whenever and wherever you choose.
+  hplus.function.ocf-bod-003.function-body:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-BOD-003
+      allowed:
+      - cue.primary
+    text: |-
+      From this moment forward, whenever you wish to reduce
+      physical discomfort in any part of your body,
+      you can do so quickly and easily.
+
+      Begin by bringing your awareness to the area
+      where the discomfort begins.
+
+      Close your eyes and focus your attention on that area.
+
+      Take a deep breath in and gently hold it.
+
+      While holding your breath, silently say to yourself,
+      "{{ cue.primary }}."
+
+      Then slowly exhale through your mouth,
+      as though gently blowing out a candle.
+
+      As you exhale, the discomfort signals will begin
+      to diminish, becoming weaker and weaker.
+
+      Feel the discomfort fading away,
+      less and less, until it no longer demands
+      your attention.
+
+      Your body will become more comfortable,
+      calm, and relaxed.
+
+      Your mind will become clear and peaceful,
+      free to focus on whatever you choose.
+
+      You will remain aware of your body's needs
+      while experiencing greater comfort and ease.
+
+      Whenever you wish to reduce discomfort,
+      simply close your eyes, inhale deeply,
+      and gently hold your breath.
+
+      Focus on the area of discomfort and silently
+      say to yourself, "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth.
+
+      The discomfort will quickly become less and less,
+      fading into the background until it is
+      no longer important to you.
+
+      Each time you use {{ cue.primary }},
+      this process becomes easier, smoother,
+      faster, and more effective.
+
+      You are in control of your response to discomfort.
+
+      You can return to a state of calm,
+      comfort, and relaxation whenever you desire.
+  hplus.function.ocf-bod-003.closer:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-BOD-003
+      allowed:
+      - cue.primary
+    text: |-
+      Remember, whenever you wish to reduce discomfort
+      in any part of your body, simply close your eyes.
+
+      Bring your attention to the area
+      where the discomfort begins.
+
+      Inhale deeply and gently hold your breath.
+
+      Silently say to yourself,
+      "{{ cue.primary }}."
+
+      Then slowly exhale through your mouth,
+      as though gently blowing out a candle.
+
+      The discomfort will diminish,
+      becoming less and less important to you.
+
+      This concludes your OCF Comfort exercise.
