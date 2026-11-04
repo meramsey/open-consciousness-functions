@@ -119,3 +119,102 @@ def test_all_functions_load_without_any_physical_global_registry(tmp_path):
             ).hexdigest()
             == row["sha256"]
         )
+
+
+@pytest.mark.integration
+def test_full_migration_resumes_after_publication_interruption_and_is_idempotent(
+    tmp_path, monkeypatch
+):
+    import json
+    import shutil
+
+    from ocf_tools import function_authority_migration as migration
+    from ocf_tools.paths import REPO_ROOT
+    from ocf_tools.utils import OCFError
+
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    shutil.copytree(REPO_ROOT / "locales", tmp_path / "locales")
+    original = json.loads((REPO_ROOT / migration.LEDGER).read_text())
+    for name, row in original["files"].items():
+        target = tmp_path / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes((REPO_ROOT / row["archive"]).read_bytes())
+    for name, row in original["locale_files"].items():
+        (tmp_path / name).write_bytes((REPO_ROOT / row["archive"]).read_bytes())
+    monkeypatch.setattr(migration, "REPO_ROOT", tmp_path)
+    _, planned = migration.build(tmp_path)
+    assert len(planned) == 174
+    write = migration.write_text_atomic
+
+    def interrupted(path, text, **kwargs):
+        if path == tmp_path / migration.LEDGER:
+            raise OSError("synthetic interruption before terminal ledger publication")
+        return write(path, text, **kwargs)
+
+    monkeypatch.setattr(migration, "write_text_atomic", interrupted)
+    with pytest.raises(OSError, match="synthetic interruption"):
+        migration.apply(tmp_path)
+    assert not (tmp_path / migration.LEDGER).exists()
+    monkeypatch.setattr(migration, "write_text_atomic", write)
+    receipt = migration.apply(tmp_path)
+    assert receipt["functions"] == 58 and receipt["speech_unchanged"]
+    assert migration.apply(tmp_path)["status"] == "already-migrated; no writes"
+    first = next(iter(original["files"].values()))
+    (tmp_path / first["archive"]).write_bytes(b"unauthorized drift")
+    with pytest.raises(OCFError, match="archive drift"):
+        migration.apply(tmp_path)
+
+
+@pytest.mark.unit
+def test_manifest_discovery_rejects_unknown_locale_and_duplicate_id(tmp_path):
+    import yaml
+    from ocf_tools.function_catalog import resources
+    from ocf_tools.utils import OCFError
+
+    with pytest.raises(OCFError, match="unsafe"):
+        resources(tmp_path, "../en-US")
+    directory = tmp_path / "locales/en-US"
+    directory.mkdir(parents=True)
+    (directory / "manifest.yaml").write_text(
+        yaml.safe_dump(
+            {
+                "resources": [
+                    {"file": "first.yaml", "domain": "function"},
+                    {"file": "second.yaml", "domain": "function"},
+                ]
+            }
+        )
+    )
+    for name in ("first.yaml", "second.yaml"):
+        (directory / name).write_text(
+            yaml.safe_dump({"function_id": "OCF-COG-001", "locale": "en-US"})
+        )
+    with pytest.raises(OCFError, match="duplicate"):
+        resources(tmp_path)
+
+
+@pytest.mark.integration
+def test_new_function_draft_is_local_self_contained_and_unrenderable():
+    from ocf_tools.function_catalog import draft_resource, project
+    from ocf_tools.locale import LocaleCatalog
+    from ocf_tools.models import function_from_dict
+    from ocf_tools.paths import REPO_ROOT
+    from ocf_tools.prompts import build_function_yaml
+    from ocf_tools.validators import _load_schema, validate_against_schema
+
+    source = build_function_yaml(
+        function_id="OCF-COG-999",
+        slug="fixture",
+        name="Fixture",
+        primary_domain="cognition",
+        canonical_command="PLUS-FIXTURE",
+        short_name="Synthetic authoring fixture",
+    )
+    record = function_from_dict(source, REPO_ROOT / "functions/cognition/fixture.yaml")
+    data = draft_resource(record, LocaleCatalog())
+    assert not validate_against_schema(data, _load_schema("localized-function.schema.json"))
+    assert data["entries"] == {} and data["localization"]["status"] == "partial"
+    assert "historical_record" not in data
+    projected = project(data, REPO_ROOT / "locales/en-US/OCF-COG-999-Fixture.yaml", REPO_ROOT)
+    assert projected.id == record.id
+    assert projected.command_records[0].data["spoken"] is None

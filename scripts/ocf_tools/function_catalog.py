@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from copy import deepcopy
 from pathlib import Path
 
@@ -15,10 +16,16 @@ CANONICAL_LOCALE = "en-US"
 def resources(root: Path, locale: str = CANONICAL_LOCALE, *, reader=None):
     """Discover only manifest-listed function resources, never title-derived IDs."""
     reader = reader or (lambda path: yaml_safe_load(path.read_text(encoding="utf-8")))
+    if not re.fullmatch(r"[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*", locale):
+        raise OCFError("unsafe function catalog locale")
     directory = root / "locales" / locale
     manifest = directory / "manifest.yaml"
     if not manifest.is_file():
         return []
+    if not directory.resolve().is_relative_to(root.resolve()) or any(
+        node.is_symlink() for node in (root / "locales", directory, manifest)
+    ):
+        raise OCFError("unsafe function catalog manifest")
     result, seen = [], set()
     for row in reader(manifest).get("resources", []):
         if row.get("domain") != "function" or row.get("revision"):
@@ -34,7 +41,12 @@ def resources(root: Path, locale: str = CANONICAL_LOCALE, *, reader=None):
             raise OCFError("unsafe function catalog resource: " + name)
         data = reader(path)
         identity = data.get("function_id")
-        if not identity or identity in seen or data.get("locale") != locale:
+        if (
+            not isinstance(identity, str)
+            or not re.fullmatch(r"OCF-[A-Z]{3}-[0-9]{3}", identity)
+            or identity in seen
+            or data.get("locale") != locale
+        ):
             raise OCFError("duplicate or inconsistent function catalog identity: " + str(identity))
         seen.add(identity)
         result.append((path, data))
@@ -264,6 +276,14 @@ def project(data, path, root):
 
 def load_functions(root, locale=CANONICAL_LOCALE):
     rows = resources(root, locale)
+    if locale != CANONICAL_LOCALE:
+        canonical = {data["function_id"]: data for _, data in resources(root)}
+        for _, data in rows:
+            reference = canonical.get(data["function_id"])
+            if reference is None or contract_hash(data) != contract_hash(reference):
+                raise OCFError(
+                    "locale function has unknown or inconsistent canonical structural identity"
+                )
     return [project(data, path, root) for path, data in rows if data.get("schema_version") == "2.0"]
 
 

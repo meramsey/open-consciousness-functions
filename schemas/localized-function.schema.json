@@ -59,7 +59,12 @@
   "allOf": [
     {"if": {"properties": {"schema_version": {"const": "1.0"}}}, "then": {"properties": {"activation": {"required": ["display_cue", "spoken_cue"]}, "entries": {"minProperties": 1}}}},
     {"if": {"properties": {"schema_version": {"const": "2.0"}}}, "then": {"required": ["slug", "classification", "category_labels", "lifecycle", "audio", "safety", "function_version", "narration", "editorial", "localization"], "properties": {"activation": {"required": ["control", "role", "procedure_steps"]}, "secondary_commands": {"items": {"required": ["control", "procedure_steps"]}}}}},
-    {"if": {"properties": {"schema_version": {"const": "2.0"}, "localization": {"properties": {"status": {"const": "complete"}}}}}, "then": {"properties": {"activation": {"required": ["display_cue", "spoken_cue"]}, "entries": {"minProperties": 1}}}}
+    {"if": {"properties": {"schema_version": {"const": "2.0"}, "localization": {"properties": {"status": {"const": "complete"}}}}}, "then": {"properties": {"activation": {"required": ["display_cue", "spoken_cue"]}, "entries": {"minProperties": 1}}}},
+    {"if": {"properties": {"schema_version": {"const": "2.0"}}}, "then": {"properties": {
+      "title": {"required": ["text"]}, "description": {"required": ["text"]},
+      "activation": {"properties": {"display_cue": {"required": ["text"]}, "spoken_cue": {"required": ["text"]}}},
+      "secondary_commands": {"items": {"properties": {"display_cue": {"required": ["text"]}, "spoken_cue": {"required": ["text"]}}}}
+    }}}
   ],
   "definitions": {
     "localLifecycle": {"type": "object", "additionalProperties": false, "required": ["persistence", "activation", "release"], "properties": {
