@@ -11,6 +11,24 @@ from ocf_tools.utils import OCFError
 pytestmark = pytest.mark.unit
 
 
+def test_reader_headings_preserve_section_bounds_while_allowing_page_footers():
+    expected = {
+        "fixture.opener": "Exact opening words.",
+        "fixture.function-body": "Complete body words.",
+        "fixture.closer": "Final words.",
+    }
+    text = "Introduction Exact opening words. Practice Complete body 12 words. Closing Final words."
+    assert validate_extracted_narration(text, expected, markers=False) == 3
+    with pytest.raises(OCFError, match="missing canonical narration text"):
+        validate_extracted_narration(
+            "Introduction Omitted. Practice Exact opening words. Complete body words. Closing Final words.",
+            expected,
+            markers=False,
+        )
+    with pytest.raises(OCFError, match="section heading"):
+        validate_extracted_narration("Introduction Exact opening words.", expected, markers=False)
+
+
 def test_pdf_resource_sections_allow_wrapping_but_not_missing_text_or_cross_section_matches():
     expected = {"fixture.opener": "Exact opening words.", "fixture.body": "Complete body words."}
     text = "fixture.opener Narration status reviewed Exact opening\n1\nwords. fixture.body Complete body words."

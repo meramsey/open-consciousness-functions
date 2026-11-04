@@ -1310,8 +1310,38 @@ def validate_extracted_narration(extracted: str, expected: dict[str, str], *, ma
 
     text = normalized(extracted)
     if not markers:
-        for key, value in expected.items():
-            if normalized(value) not in text:
+        headings = {
+            "opener": "Introduction",
+            "function-body": "Practice",
+            "closer": "Closing",
+            "access-close": "Access channel closure",
+        }
+        positions = {
+            key: text.rfind(
+                normalized(
+                    headings.get(
+                        key.rsplit(".", 1)[-1],
+                        key.rsplit(".", 1)[-1].replace("-", " ").capitalize(),
+                    )
+                )
+            )
+            for key in expected
+        }
+        if any(position < 0 for position in positions.values()) or len(
+            set(positions.values())
+        ) != len(positions):
+            raise OCFError("PDF extraction is missing an unambiguous narration section heading")
+        order = sorted(positions, key=positions.get)
+        for index, key in enumerate(order):
+            end = positions[order[index + 1]] if index + 1 < len(order) else len(text)
+            # Preserve the existing per-section ordered-character check. PDF
+            # page footers can occur within a body; neither footers nor line
+            # wrapping become spoken words or hide a missing source character.
+            remaining = iter(text[positions[key] : end])
+            if not all(
+                any(char == candidate for candidate in remaining)
+                for char in normalized(expected[key])
+            ):
                 raise OCFError("PDF extraction is missing canonical narration text: " + key)
         return len(expected)
     if len({normalized(key) for key in expected}) != len(expected):
