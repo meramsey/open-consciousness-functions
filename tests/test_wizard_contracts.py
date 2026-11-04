@@ -155,6 +155,39 @@ def test_function_overwrite_decline_and_list_prompt_quit_do_not_write(
     assert not writes and "nothing written" in capsys.readouterr().out
 
 
+@pytest.mark.parametrize("registered", [False, True])
+def test_function_wizard_publishes_only_local_draft_and_manifest(
+    monkeypatch, authoring_boundary, registered
+):
+    from ocf_tools import locale
+    from ocf_tools.utils import yaml_safe_dump, yaml_safe_load
+
+    root, writes = authoring_boundary
+    manifest_path = root / "locales/en-US/manifest.yaml"
+    manifest_path.parent.mkdir(parents=True)
+    entry = {"file": "OCF-FND-001-fixture.yaml", "domain": "function"}
+    manifest_path.write_text(
+        yaml_safe_dump({"resources": [entry] if registered else []}), encoding="utf-8"
+    )
+    canonical = locale.LocaleCatalog()
+    monkeypatch.setattr(locale, "LocaleCatalog", lambda: canonical)
+    monkeypatch.setattr(
+        prompts, "ask", lambda prompt, **kw: prompts.PromptResult(kw.get("default") or "Fixture")
+    )
+    prompts.run_function_wizard()
+    assert writes[0][0] == manifest_path.parent / entry["file"]
+    data = yaml_safe_load(writes[0][1])
+    assert data["schema_version"] == "2.0"
+    assert data["localization"]["status"] == "partial"
+    assert data["entries"] == {} and "historical_record" not in data
+    if registered:
+        assert len(writes) == 1
+    else:
+        assert len(writes) == 2 and writes[1][0] == manifest_path
+        assert yaml_safe_load(writes[1][1])["resources"] == [entry]
+    assert not (root / "functions").exists()
+
+
 @pytest.mark.parametrize("answer", ["quit", "skip", "back", "yes", "no"])
 def test_source_import_copy_requires_explicit_choice(monkeypatch, tmp_path, capsys, answer):
     source = tmp_path / "input/source.txt"
