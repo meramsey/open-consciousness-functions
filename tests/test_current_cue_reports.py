@@ -50,6 +50,11 @@ def test_current_report_keeps_tentative_title_and_rejected_names_out_of_active_v
     assert "TENTATIVE TITLE" in outputs["OCF_EN_US_TERMINOLOGY.md"]
     assert "Rejected or superseded" in outputs["OCF_TITLE_CUE_CURRENT.md"]
     assert "Previous values: Former title" in outputs["OCF_TITLE_CUE_CURRENT.md"]
+
+    data["rejected_or_superseded"] = []
+    without_rejections = reports.render(data)["OCF_TITLE_CUE_CURRENT.md"]
+    assert "## Rejected or superseded proposals\n\n## Still pending" in without_rejections
+    data["rejected_or_superseded"] = ["Heart Renewal"]
     assert reports.main(["--check"]) == 1
     assert "stale" in capsys.readouterr().err
     assert reports.main([]) == 0 and reports.main(["--check"]) == 0

@@ -476,7 +476,6 @@ Counts: {"active_records": 83, "approved_candidate_narrations": 4, "embedded_app
 
 ## Rejected or superseded proposals
 
-
 ## Still pending
 
 - OCF-TITLE-CUE-BOD-010

@@ -240,9 +240,9 @@ def render(data):
                 "Review: English primary cue approved and implemented. Preserve controls/procedures. Other language terminology and prefix treatment require review.",
                 "",
             ]
-    lines += ["## Rejected or superseded proposals", ""] + [
-        "- " + text for text in data["rejected_or_superseded"]
-    ]
+    lines += ["## Rejected or superseded proposals"]
+    if data["rejected_or_superseded"]:
+        lines += ["", *["- " + text for text in data["rejected_or_superseded"]]]
     lines += ["", "## Still pending", ""] + ["- " + text for text in data["pending"]]
     history = [
         "# Historical lookup and active cue separation",
