@@ -693,6 +693,12 @@ def test_second_controller_owner_does_not_reconcile_or_start_a_worker(config, mo
 @pytest.mark.unit
 @pytest.mark.parametrize("status_case", ["active", "missing-start", "invalid"])
 def test_worker_reconciliation_pulse_records_owned_job_identity(config, monkeypatch, status_case):
+    from contextlib import contextmanager
+
+    @contextmanager
+    def lease(_path):
+        yield True
+
     status_path = Path(config["batch_status"])
     if status_case == "invalid":
         status_path.write_text("{invalid", encoding="utf-8")
@@ -736,6 +742,7 @@ def test_worker_reconciliation_pulse_records_owned_job_identity(config, monkeypa
             pass
 
     stop = Stop()
+    monkeypatch.setattr(supervisor, "lease", lease)
     monkeypatch.setattr(supervisor.threading, "Event", lambda: stop)
     monkeypatch.setattr(supervisor.threading, "Thread", Thread)
     monkeypatch.setattr(supervisor, "write_json", capture)
