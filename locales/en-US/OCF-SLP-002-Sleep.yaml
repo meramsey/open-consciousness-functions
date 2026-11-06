@@ -268,7 +268,6 @@ entries:
 
       This concludes your OCF Sleep exercise.'
 slug: sleep
-historical_record: functions/sleep/sleep.yaml
 classification:
   primary_domain: sleep
   secondary_domains: []
@@ -311,6 +310,622 @@ narration:
     role: closer
 editorial:
   command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-SLP-002
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: bd0d79b8ee2aa4fe52868a811a6606fb1c5dadb8b8651cc6b034283c42c66362
+    classification: KEEP CUE — ALIGN TITLE OR NARRATION
+    recommended_title: Sleep
+    recommended_primary_cue: PLUS-SLEEP
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Choose sleep, breathe slowly/deeply/easily and cue DURING EXHALATION, repeating
+      with successive breaths. Retain chosen waking time. Do not insert inhale/hold or candle procedure;
+      registry SLEEP is not taught.
+    pair_reason: The title and direct sleep-onset cue align. Preserve the distinct exhalation procedure
+      and desire-dependent waking; do not merge with Sleep Easy or question incubation.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. The title and direct
+      sleep-onset cue align. Preserve the distinct exhalation procedure and desire-dependent waking; do
+      not merge with Sleep Easy or question incubation.
+    teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
+    documentary_intent: Move into normal restful sleep when desired, with progressive cue use and desire-dependent
+      waking.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
 localization:
   status: complete
   contract_sha256: 7a0d9986ba8883e9837ad2c40f85ce4478e6302b03c64b2d8a1baa6c3e75e4df
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-SLP-002-LEGACY-01
+    command_status: proposed
+    commands:
+    - PLUS-20-20
+    name: SLEEP
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Sleep
+  compatibility:
+    legacy_commands:
+    - PLUS-20-20
+    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is
+      historical lookup. Existing controls remain unchanged.
+    state: historical-lookup
+  historical_lookup:
+  - text: Plus Twenty Twenty
+    kind: former-teaching
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+    command_id: OCF-CMD-SLP-002-PRIMARY
+  status:
+    evidence: community-hypothesis
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-slp-002.title
+    short_description_key: functions.ocf-slp-002.short-description
+    purpose_key: functions.ocf-slp-002.purpose
+  commands:
+  - id: OCF-CMD-SLP-002-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-slp-002-primary.label
+      usage_key: commands.ocf-cmd-slp-002-primary.usage
+      purpose_key: functions.ocf-slp-002.purpose
+      explanation_key: commands.ocf-cmd-slp-002-primary.explanation
+      display_cue_key: commands.ocf-cmd-slp-002-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-slp-002-primary.spoken-cue
+    observed_phrase:
+      text: Plus Sleep
+      narration_key: hplus.function.ocf-slp-002.function-body
+      relationship: canonical-match
+  - id: OCF-CMD-SLP-002-LEGACY-01
+    localization:
+      label_key: commands.ocf-cmd-slp-002-legacy-01.label
+      usage_key: commands.ocf-cmd-slp-002-legacy-01.usage
+      purpose_key: functions.ocf-slp-002.purpose
+      explanation_key: commands.ocf-cmd-slp-002-legacy-01.explanation
+  predecessor_resource_sha256: ef12220882a4647866086c6ee3d58aea710519eb1d897948ba99caf8aa6a6886
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
+      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
+      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: cf7b3c96ec93f05e8f2750ca04364f046755dd24d2863348d1ee1acaa3a1286f
+    status: accepted
+    previous_values_sha256: 2ec460ec74d06ce541d2cf4bd7c1ff5e0d8c37b2dc9bbec2480b236831689d96
+    current_values_sha256: c901893178ab71141ff336cfa7a434e3b8a5a0e6542f208547151f111a939246
+    changed_narration_keys:
+    - hplus.function.ocf-slp-002.closer
+    - hplus.function.ocf-slp-002.function-body
+    previous_resolved_text_sha256:
+      hplus.function.ocf-slp-002.function-body: e3d9a599c924d6ba84d3d04545d2c215024a13bd058b5e5388e4328bcb67bd6e
+      hplus.function.ocf-slp-002.closer: 4d90fe37f7d72191e0be35e5661fc0b4c3298489f0378483237beb671791ff5f
+    current_resolved_text_sha256:
+      hplus.function.ocf-slp-002.function-body: 4a30cab667ad3cdf68ba3c3254e949f8e99495412fe1b0be3c2ff0854e09bd33
+      hplus.function.ocf-slp-002.closer: ef9c2624e22f72ce0e38238747fca833456fc82f29955e99ef022b37c920ba3e
+    review_note: Replace two body mentions and one closer mention from Plus Twenty Twenty to Plus Sleep.
+      Preserve title, cue during exhalation, successive gentle-breath repetition, chosen waking time and
+      surrounding suggestions. Do not add breath-hold or candle-blowing instructions. Retain superseded
+      numeric phrase as historical lookup; introduce no mode or release. Preserve deliberately invoked
+      sleep, lasting learned ability and clear ordinary waking awareness at other times.
+    approval_response: '1'
+    review_position: 10
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd:opener
+      kind: structural-inference
+      line_candidates:
+      - 7
+      - 10
+      - 132
+      - 317
+      scope: document
+      source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    - category: closer
+      confidence: low
+      id: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd:closer
+      kind: structural-inference
+      line_candidates:
+      - 124
+      - 317
+      scope: document
+      source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    - category: preparation
+      confidence: low
+      id: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd:preparation
+      kind: structural-inference
+      line_candidates:
+      - 11
+      - 18
+      - 24
+      - 127
+      - 134
+      scope: document
+      source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    - category: command_association
+      confidence: low
+      id: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd:command_association
+      kind: structural-inference
+      line_candidates:
+      - 76
+      - 101
+      - 121
+      - 315
+      scope: document
+      source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    - category: future_use
+      confidence: low
+      id: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd:future_use
+      kind: structural-inference
+      line_candidates:
+      - 122
+      scope: document
+      source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    - category: return
+      confidence: low
+      id: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd:return
+      kind: structural-inference
+      line_candidates:
+      - 91
+      - 115
+      - 138
+      - 306
+      - 314
+      scope: document
+      source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    - category: purpose
+      confidence: medium
+      id: review:OCF-SLP-002:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 7
+      - 8
+      scope: document
+      source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    - category: opener
+      confidence: medium
+      id: review:OCF-SLP-002:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 56
+      - 71
+      scope: document
+      source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    - category: main
+      confidence: medium
+      id: review:OCF-SLP-002:main
+      kind: function-specification-inference
+      line_candidates:
+      - 72
+      - 116
+      scope: document
+      source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    - category: association
+      confidence: medium
+      id: review:OCF-SLP-002:association
+      kind: function-specification-inference
+      line_candidates:
+      - 72
+      - 79
+      scope: document
+      source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-SLP-002:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 72
+      - 123
+      scope: document
+      source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    - category: future_use
+      confidence: medium
+      id: review:OCF-SLP-002:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 72
+      - 123
+      scope: document
+      source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-SLP-002:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 317
+      scope: document
+      source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    - category: closer
+      confidence: medium
+      id: review:OCF-SLP-002:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 117
+      - 134
+      scope: document
+      source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-SLP-002:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 135
+      - 289
+      scope: document
+      source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    - category: handoff
+      confidence: medium
+      id: review:OCF-SLP-002:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 290
+      - 317
+      scope: document
+      source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-SLP-002:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 80
+      - 116
+      scope: document
+      source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+      path: +Transcripts From available tapes/Sleep/Sleep.lrc
+      related_sha256:
+      - 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+      - 2aca1f1992c9750dec96f009c1e468a74354c33045f89fc889bd00ec2b5ce236
+      sha256: f60a3bb24203dcf4ba79f48ed5365a512b72f2dda84108ef3eb512be0d44a306
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Sleep/Sleep.ocr.pdf
+      related_sha256: []
+      sha256: 192f4ad852e22a67a3057f6cff27e886c6c65f869f32923604d99154cf96b8d7
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+      path: +Transcripts From available tapes/Sleep/Sleep.srt
+      related_sha256:
+      - 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+      - f60a3bb24203dcf4ba79f48ed5365a512b72f2dda84108ef3eb512be0d44a306
+      sha256: 2aca1f1992c9750dec96f009c1e468a74354c33045f89fc889bd00ec2b5ce236
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+      path: +Transcripts From available tapes/Sleep/Sleep.txt
+      related_sha256:
+      - 2aca1f1992c9750dec96f009c1e468a74354c33045f89fc889bd00ec2b5ce236
+      - f60a3bb24203dcf4ba79f48ed5365a512b72f2dda84108ef3eb512be0d44a306
+      sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Sleep/folder.jpg
+      related_sha256: []
+      sha256: 1f5d1f5c2ab8ddbfcc556be4abae873bf68e5bc377605fda417540239b284280
+  specifications:
+    analysis_review:
+      claim_categories:
+      - guaranteed-sleep-entry
+      - physiological-equalization-and-restoration
+      - desire-dependent-awakening
+      family: sleep-on-exhalation
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+            end_line: 79
+            file: +Transcripts From available tapes/Sleep/Sleep.txt
+            source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+            start_line: 72
+          status: supported
+          summary: Exhalation rather than a required breath hold pairs with the cue; repeated cue is associated
+            with deeper sleep.
+        closer:
+          locators:
+          - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+            end_line: 134
+            file: +Transcripts From available tapes/Sleep/Sleep.txt
+            source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+            start_line: 117
+          status: supported
+          summary: Future-use reinforcement and learning-context closure to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+            end_line: 289
+            file: +Transcripts From available tapes/Sleep/Sleep.txt
+            source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+            start_line: 135
+          status: supported
+          summary: Sleep-to-twenty shell present; repeated ASR numbers do not establish reinforcement
+            or measured timing.
+        conversion:
+          locators:
+          - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+            end_line: 116
+            file: +Transcripts From available tapes/Sleep/Sleep.txt
+            source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+            start_line: 72
+          status: inferred
+          summary: Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath
+            holding and automatic whole-system learning need review. Reframing a physical/metaphysical
+            goal is a material choice, not assumed equivalence.
+        future_use:
+          locators:
+          - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+            end_line: 123
+            file: +Transcripts From available tapes/Sleep/Sleep.txt
+            source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+            start_line: 72
+          status: supported
+          summary: Use cue during slow breathing/exhalation; waking is described as desire-dependent,
+            without a measured timer or explicit cancel phrase.
+        handoff:
+          locators:
+          - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+            end_line: 317
+            file: +Transcripts From available tapes/Sleep/Sleep.txt
+            source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+            start_line: 290
+          status: supported
+          summary: Waking countdown, eyes-open return and target reminder where preserved.
+        identity:
+          locators:
+          - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+            end_line: 79
+            file: +Transcripts From available tapes/Sleep/Sleep.txt
+            source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+            start_line: 72
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+            end_line: 116
+            file: +Transcripts From available tapes/Sleep/Sleep.txt
+            source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+            start_line: 72
+          status: supported
+          summary: choose-sleep; breathe-slowly-and-deeply; issue-legacy-twenty-cue-during-exhalation;
+            repeat-cue-for-deeper-relaxation
+        opener:
+          locators:
+          - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+            end_line: 71
+            file: +Transcripts From available tapes/Sleep/Sleep.txt
+            source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+            start_line: 56
+          status: supported
+          summary: Orient to the function and establish receptive learning context before the target instruction.
+        preparation:
+          locators:
+          - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+            end_line: 55
+            file: +Transcripts From available tapes/Sleep/Sleep.txt
+            source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+            start_line: 10
+          status: supported
+          summary: Supported uninterrupted relaxation, temporary repository setting-aside and counted
+            ten-state entry where described.
+        provenance:
+          locators:
+          - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+            end_line: 317
+            file: +Transcripts From available tapes/Sleep/Sleep.txt
+            source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+            text is unauthenticated; corrupted counts/ambient material cannot establish original repetition,
+            timing or mechanism.
+        purpose:
+          locators:
+          - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+            end_line: 8
+            file: +Transcripts From available tapes/Sleep/Sleep.txt
+            source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+            start_line: 7
+          status: supported
+          summary: Move into normal restful sleep when desired, with progressive cue use and desire-dependent
+            waking.
+        rehearsal:
+          locators:
+          - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+            end_line: 123
+            file: +Transcripts From available tapes/Sleep/Sleep.txt
+            source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+            start_line: 72
+          status: not-present
+          summary: Repeated teaching does not prove an explicit listener performance trial; no distinct
+            intelligible trial established in the available text.
+        safety_claims:
+          locators:
+          - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+            end_line: 116
+            file: +Transcripts From available tapes/Sleep/Sleep.txt
+            source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+            start_line: 80
+          status: supported
+          summary: guaranteed-sleep-entry; physiological-equalization-and-restoration; desire-dependent-awakening.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+            end_line: 71
+            file: +Transcripts From available tapes/Sleep/Sleep.txt
+            source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+            start_line: 56
+          status: supported
+          summary: Reference learning shell uses ten preparation, eleven opening, ten close and sleep-to-twenty/waking
+            return where preserved; not runtime OCF state requirements.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+            end_line: 317
+            file: +Transcripts From available tapes/Sleep/Sleep.txt
+            source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Source-designated
+            text is unauthenticated; corrupted counts/ambient material cannot establish original repetition,
+            timing or mechanism.
+      source_extent:
+        content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
+        end_line: 317
+        file: +Transcripts From available tapes/Sleep/Sleep.txt
+        source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-SLP-002:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-SLP-002:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-SLP-002:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-SLP-002:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-SLP-002:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-SLP-002:main
+        operations:
+        - choose-sleep
+        - breathe-slowly-and-deeply
+        - issue-legacy-twenty-cue-during-exhalation
+        - repeat-cue-for-deeper-relaxation
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-SLP-002:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-SLP-002:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-SLP-002:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-SLP-002:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-SLP-002:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Source-designated text is unauthenticated; corrupted counts/ambient material cannot establish original
+      repetition, timing or mechanism.
+    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and automatic
+      whole-system learning need review. Reframing a physical/metaphysical goal is a material choice,
+      not assumed equivalence.
+    states:
+      preferred: []
+      required: []
+      status: unknown

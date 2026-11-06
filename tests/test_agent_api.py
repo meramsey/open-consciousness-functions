@@ -45,6 +45,22 @@ def test_compact_lookup_exposes_lifecycle_scopes_and_resolved_command_effects():
     assert recall["invocation_scope"]["activation"] == "manual"
 
 
+def test_function_pages_filter_canonical_categories_without_release_promotion():
+    foundation = api.list_functions(category="foundation", limit=50)
+    assert foundation["items"]
+    assert all(row["category"] == "foundation" for row in foundation["items"])
+    assert all("function_id" not in row and "source_path" not in row for row in foundation["items"])
+
+    incomplete = api.list_functions(locale="es", limit=50)
+    assert incomplete["items"]
+    assert all(
+        row["localization"]["status"] in {"missing", "partial"} for row in incomplete["items"]
+    )
+
+    released = api.list_functions(release_ready=True, limit=50)
+    assert released["items"] == [] and released["total"] == 0
+
+
 def test_pagination_schema_summary_and_workflow_commands():
     first = api.list_functions(limit=2)
     second = api.list_functions(offset=2, limit=2)

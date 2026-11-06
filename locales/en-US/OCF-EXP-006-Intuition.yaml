@@ -121,6 +121,7 @@ entries:
     version: 1.0.0
     text: This OCF exercise will strengthen your intuitive awareness, bringing the wisdom of your heart,
       subconscious mind, and higher self into clear understanding and purposeful action.
+    notes: Exact previously proposed opener supplied in the authoring brief; unreviewed.
   hplus.function.ocf-exp-006.function-body:
     status: reviewed
     version: 1.0.0
@@ -206,6 +207,12 @@ entries:
       the more naturally your total self contributes
 
       to clear understanding and purposeful action.'
+    notes: Newly AI-authored original candidate. Ongoing intuitive development is the intended baseline;
+      deliberate command use reinforces deeper understanding. The proposed procedure has no prescribed
+      breath pattern or eye closure. Consciousness-oriented language describes the practice, not verified
+      access to external facts or another person's private thoughts. Editorial, procedure, rights and
+      listening review remain pending. One body is proposed for four composed passes; shared preparation
+      and return remain separate.
   hplus.function.ocf-exp-006.closer:
     status: reviewed
     version: 1.0.0
@@ -225,8 +232,8 @@ entries:
 
 
       This concludes your OCF exercise.'
+    notes: Newly AI-authored closer and procedure reminder; unreviewed proposal.
 slug: intuition
-historical_record: functions/experimental/intuition.yaml
 classification:
   primary_domain: experimental
   secondary_domains: []
@@ -274,3 +281,68 @@ editorial:
 localization:
   status: complete
   contract_sha256: e387e2f28f729030a58d34a33736bd4765cc99c258b78d83673a65bdd312cda1
+record_metadata:
+  legacy:
+    source_system: null
+    name: ''
+    commands: []
+    command_status: proposed
+    source_availability: pending-source-review
+  aliases:
+    names: []
+    commands: []
+  compatibility:
+    state: none
+  status:
+    maturity: community-proposed
+    implementation: script-approved
+    evidence: unverified
+  sources: []
+  claims:
+    intended_effects:
+    - Ongoing intuitive development and deliberate deeper understanding.
+    prohibited_claims:
+    - Intuitive impressions are not proof of external facts.
+  attribution:
+    original_authors: []
+    ocf_contributors: []
+  ocf:
+    reimplementation_status: in-progress
+    command_review: approved
+  documentation:
+    title_key: functions.ocf-exp-006.title
+    purpose_key: functions.ocf-exp-006.purpose
+    short_description_key: functions.ocf-exp-006.purpose
+  commands:
+  - id: OCF-CMD-EXP-006-PRIMARY
+    localization:
+      spoken_cue_key: commands.ocf-cmd-exp-006-primary.spoken-cue
+      label_key: commands.ocf-cmd-exp-006-primary.label
+      usage_key: commands.ocf-cmd-exp-006-primary.usage
+      explanation_key: commands.ocf-cmd-exp-006-primary.explanation
+  editorial_approval:
+    approval_id: OCF-APPROVED-CANDIDATES-001
+    decision: approve_full_draft
+    user_response: '1'
+    implementation_confirmation: Confirm implementation
+    scope: Exact presented narration, cues and procedures for all four candidates; Intuition registration;
+      no DSP, pacing, listening or release approval.
+    presented_snapshot_sha256: 7f5d38d589943fbac4ca6fe7212ee25ab27d4416ec5141455bab386f0a3cc147
+    resolved_text_sha256:
+      hplus.function.ocf-exp-006.closer: 1e1dbf210da5cadcd7e0da1f77a386a257045354e2d3f6c5b77f34febc2edb31
+      hplus.function.ocf-exp-006.function-body: 4639860bd9f4177b4346656b2d29d596f19157875fdd66178714ee60e26db74b
+      hplus.function.ocf-exp-006.opener: fa53287ad9d36f4c925d6c5d963356688e1bab6af4acc1084c33785b54180d30
+    listening_approval: false
+    release_ready: false
+    presented_function_sha256: e53019783b04050b80ff6633035ded78df2fb99229be5b3be2a2eded468234e2
+    source_commit: 911dbd0f24618091e34e8a816275ab7eabbf97bb
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts

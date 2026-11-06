@@ -408,7 +408,6 @@ entries:
 
       This concludes your OCF Sex Drive exercise.'
 slug: sex-drive
-historical_record: functions/body/sex-drive.yaml
 classification:
   primary_domain: body
   secondary_domains:
@@ -457,6 +456,606 @@ narration:
     role: closer
 editorial:
   command_review: needs-review
+  proposals:
+  - id: OCF-TITLE-CUE-BOD-012
+    status: pending
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: d428452095ffcc8e967884189b249bdb5be9e5b0ae05c02962a0d6cc5289b70f
+    classification: KEEP — TITLE, CUE, AND TEACHING ALREADY CONSISTENT
+    recommended_title: Sex Drive
+    recommended_primary_cue: PLUS-SEX MORE
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: MORE/LESS select personal arousal directions and chosen redirection of attention/energy.
+      Inhale/hold/chosen cue/exhale. Permanent learned availability does not leave either mode continuously
+      active; GREATER/LESSER aliases are not current teaching.
+    pair_reason: The paired personal-arousal directions are concise and meaningful. Keep them self-directed,
+      retain exact legacy GREATER/LESSER records, and do not change magnitudes for uniformity.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. The paired personal-arousal
+      directions are concise and meaningful. Keep them self-directed, retain exact legacy GREATER/LESSER
+      records, and do not change magnitudes for uniformity.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Voluntarily regulate one's own sexual arousal in stronger/weaker directions.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
 localization:
   status: complete
   contract_sha256: 96a6b9e6ba85d2c8c393369bde584da380814eea5b6284284fa11a5b20514fc8
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-BOD-012-LEGACY-01
+    - OCF-CMD-BOD-012-LEGACY-02
+    command_status: normalized
+    commands:
+    - PLUS-SEX GREATER
+    - PLUS-SEX LESSER
+    name: SEX DRIVE
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands:
+    - PLUS-SEX GREATER
+    - PLUS-SEX LESSER
+    command_ids:
+    - OCF-CMD-BOD-012-LEGACY-01
+    - OCF-CMD-BOD-012-LEGACY-02
+    names:
+    - Sex Drive
+  compatibility:
+    legacy_commands:
+    - PLUS-SEX GREATER
+    - PLUS-SEX LESSER
+    rationale: 'Vocabulary normalization: GREATER/LESSER magnitudes standardize on MORE/LESS.'
+    state: alias-listed
+  status:
+    evidence: community-hypothesis
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: needs-review
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-bod-012.title
+    short_description_key: functions.ocf-bod-012.short-description
+    purpose_key: functions.ocf-bod-012.purpose
+  commands:
+  - id: OCF-CMD-BOD-012-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-bod-012-primary.label
+      usage_key: commands.ocf-cmd-bod-012-primary.usage
+      purpose_key: functions.ocf-bod-012.purpose
+      explanation_key: commands.ocf-cmd-bod-012-primary.explanation
+  - id: OCF-CMD-BOD-012-SEX-LESS
+    localization:
+      label_key: commands.ocf-cmd-bod-012-sex-less.label
+      usage_key: commands.ocf-cmd-bod-012-sex-less.usage
+      purpose_key: functions.ocf-bod-012.purpose
+      explanation_key: commands.ocf-cmd-bod-012-sex-less.explanation
+  - id: OCF-CMD-BOD-012-LEGACY-01
+    localization:
+      label_key: commands.ocf-cmd-bod-012-legacy-01.label
+      usage_key: commands.ocf-cmd-bod-012-legacy-01.usage
+      purpose_key: functions.ocf-bod-012.purpose
+      explanation_key: commands.ocf-cmd-bod-012-legacy-01.explanation
+  - id: OCF-CMD-BOD-012-LEGACY-02
+    localization:
+      label_key: commands.ocf-cmd-bod-012-legacy-02.label
+      usage_key: commands.ocf-cmd-bod-012-legacy-02.usage
+      purpose_key: functions.ocf-bod-012.purpose
+      explanation_key: commands.ocf-cmd-bod-012-legacy-02.explanation
+  predecessor_resource_sha256: 385497e469468d2ebdf6c3f601875d01b399e8521fe18884722d70470f8a91f7
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:opener
+      kind: structural-inference
+      line_candidates:
+      - 3
+      - 84
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - category: main
+      confidence: low
+      id: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:main
+      kind: structural-inference
+      line_candidates:
+      - 29
+      - 38
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - category: closer
+      confidence: low
+      id: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:closer
+      kind: structural-inference
+      line_candidates:
+      - 51
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - category: preparation
+      confidence: low
+      id: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:preparation
+      kind: structural-inference
+      line_candidates:
+      - 3
+      - 11
+      - 17
+      - 52
+      - 55
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - category: command_association
+      confidence: low
+      id: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:command_association
+      kind: structural-inference
+      line_candidates:
+      - 30
+      - 39
+      - 50
+      - 82
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - category: future_use
+      confidence: low
+      id: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:future_use
+      kind: structural-inference
+      line_candidates:
+      - 29
+      - 38
+      - 46
+      - 50
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - category: return
+      confidence: low
+      id: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76:return
+      kind: structural-inference
+      line_candidates:
+      - 69
+      - 70
+      - 72
+      - 76
+      - 80
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - category: purpose
+      confidence: medium
+      id: review:OCF-BOD-012:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 2
+      - 2
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - category: opener
+      confidence: medium
+      id: review:OCF-BOD-012:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 25
+      - 28
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - category: main
+      confidence: medium
+      id: review:OCF-BOD-012:main
+      kind: function-specification-inference
+      line_candidates:
+      - 29
+      - 47
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - category: association
+      confidence: medium
+      id: review:OCF-BOD-012:association
+      kind: function-specification-inference
+      line_candidates:
+      - 29
+      - 37
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-BOD-012:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 29
+      - 47
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - category: future_use
+      confidence: medium
+      id: review:OCF-BOD-012:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 29
+      - 51
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-BOD-012:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 84
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - category: closer
+      confidence: medium
+      id: review:OCF-BOD-012:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 48
+      - 55
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-BOD-012:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 56
+      - 68
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - category: handoff
+      confidence: medium
+      id: review:OCF-BOD-012:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 69
+      - 84
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-BOD-012:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 29
+      - 47
+      scope: document
+      source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+      path: +Transcripts From available tapes/Sex Drive/Sex Drive.lrc
+      related_sha256:
+      - a325b3a03869ad8467931aa62a4dcd9dbb0d09f2dd49e8296b543bd6e4110530
+      - ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+      sha256: a3dba2ba552b5ceb2945e43577710d348470863c6bfa5c496cbb67b6390d9b02
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Sex Drive/Sex Drive.ocr.pdf
+      related_sha256: []
+      sha256: 7519222764a2be252dc6614ec73cfcf26c5a370d3c49ca95bab22245ba0f5f5d
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+      path: +Transcripts From available tapes/Sex Drive/Sex Drive.srt
+      related_sha256:
+      - a3dba2ba552b5ceb2945e43577710d348470863c6bfa5c496cbb67b6390d9b02
+      - ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+      sha256: a325b3a03869ad8467931aa62a4dcd9dbb0d09f2dd49e8296b543bd6e4110530
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+      path: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+      related_sha256:
+      - a325b3a03869ad8467931aa62a4dcd9dbb0d09f2dd49e8296b543bd6e4110530
+      - a3dba2ba552b5ceb2945e43577710d348470863c6bfa5c496cbb67b6390d9b02
+      sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Sex Drive/folder.jpg
+      related_sha256: []
+      sha256: 34f6554b760e8ca33b1c2ae10eac8b1056cfc0e7213452816a07118cf5bd731c
+  specifications:
+    analysis_review:
+      claim_categories:
+      - guaranteed-arousal-control
+      - sexual-energy-conversion
+      - automatic-whole-system-learning
+      family: adjustable-personal-arousal
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+            end_line: 37
+            file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+            source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+            start_line: 29
+          status: supported
+          summary: Opposing cues are associated with increased sensitivity versus reduced arousal/claimed
+            energy conversion; canonical MORE/LESS normalizes magnitude metadata only.
+        closer:
+          locators:
+          - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+            end_line: 55
+            file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+            source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+            start_line: 48
+          status: supported
+          summary: Reinforce remembered future use and close the learning context to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+            end_line: 68
+            file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+            source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+            start_line: 56
+          status: supported
+          summary: Sleep-to-twenty shell present; physiological/automatic integration is not established
+            by that instruction.
+        conversion:
+          locators:
+          - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+            end_line: 47
+            file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+            source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+            start_line: 29
+          status: inferred
+          summary: Preserve self-directed agency and avoid guaranteed physiological effects; canonical
+            normalization does not prove equivalence or historical wording change.
+        future_use:
+          locators:
+          - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+            end_line: 51
+            file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+            source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+            start_line: 29
+          status: supported
+          summary: Intentionally select an arousal direction; no involuntary trigger, effect on another
+            person or cancellation phrase established.
+        handoff:
+          locators:
+          - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+            end_line: 84
+            file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+            source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+            start_line: 69
+          status: supported
+          summary: Counted waking/eyes-open return with target command reminder where intelligible.
+        identity:
+          locators:
+          - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+            end_line: 37
+            file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+            source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+            start_line: 29
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+            end_line: 47
+            file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+            source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+            start_line: 29
+          status: supported
+          summary: choose-personal-arousal-direction; inhale-and-hold; issue-selected-legacy-greater-or-lesser-cue;
+            exhale-and-breathe-normally
+        opener:
+          locators:
+          - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+            end_line: 28
+            file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+            source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+            start_line: 25
+          status: supported
+          summary: Introduce a body-oriented intended response and receptive learning context, not evidence
+            that the physiology changed.
+        preparation:
+          locators:
+          - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+            end_line: 24
+            file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+            source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+            start_line: 3
+          status: supported
+          summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+            for temporary setting-aside and counted ten-state preparation.
+        provenance:
+          locators:
+          - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+            end_line: 84
+            file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+            source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
+            or original underlay; unspecified cancellation remains unknown.
+        purpose:
+          locators:
+          - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+            end_line: 2
+            file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+            source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+            start_line: 2
+          status: supported
+          summary: Voluntarily regulate one's own sexual arousal in stronger/weaker directions.
+        rehearsal:
+          locators:
+          - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+            end_line: 47
+            file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+            source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+            start_line: 29
+          status: not-present
+          summary: No distinct listener test of physiological outcome is established; teaching repetition
+            and ASR ambient tokens are not outcome verification.
+        safety_claims:
+          locators:
+          - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+            end_line: 47
+            file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+            source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+            start_line: 29
+          status: supported
+          summary: guaranteed-arousal-control; sexual-energy-conversion; automatic-whole-system-learning.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+            end_line: 28
+            file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+            source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+            start_line: 25
+          status: supported
+          summary: Reference learning shell prepares ten, opens eleven, closes to ten and uses sleep-to-twenty
+            plus waking return where preserved; runtime OCF requirements remain separate and unknown.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+            end_line: 84
+            file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+            source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Source-designated
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
+            or original underlay; unspecified cancellation remains unknown.
+      source_extent:
+        content_group_sha256: 53350834e4db911f01532d35e5d44583824777ed237b654b3dcfcc44f858daa4
+        end_line: 84
+        file: +Transcripts From available tapes/Sex Drive/Sex Drive.txt
+        source_sha256: ce1a42464e82bde47dd1d72c3f5ca64305755afae44814a65727d5185c17ae76
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-BOD-012:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-BOD-012:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-BOD-012:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-BOD-012:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-BOD-012:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-BOD-012:main
+        operations:
+        - choose-personal-arousal-direction
+        - inhale-and-hold
+        - issue-selected-legacy-greater-or-lesser-cue
+        - exhale-and-breathe-normally
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-BOD-012:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-BOD-012:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-BOD-012:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-BOD-012:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-BOD-012:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Source-designated derivative is unauthenticated. Count/repetition/ambient artifacts do not establish
+      exact timing or original underlay; unspecified cancellation remains unknown.
+    - Preserve self-directed agency and avoid guaranteed physiological effects; canonical normalization
+      does not prove equivalence or historical wording change.
+    states:
+      preferred: []
+      required: []
+      status: unknown

@@ -20,7 +20,6 @@ from .indexes import load_all_functions, load_yaml_file
 from .models import DOMAINS
 from .paths import (
     AUDIO_MANIFESTS_DIR,
-    FUNCTIONS_DIR,
     PROPOSALS_DIR,
     REPO_ROOT,
     TEMPLATES_DIR,
@@ -461,24 +460,16 @@ def run_function_wizard() -> None:
         notes=str(notes.value),
     )
 
-    target = (
-        FUNCTIONS_DIR / primary_domain / f"{slug.value}.yaml"
-        if slug.value
-        else FUNCTIONS_DIR / primary_domain / f"{function_id.lower()}.yaml"
-    )
-    locale_manifest = None
-    if (
-        FUNCTIONS_DIR == REPO_ROOT / "functions"
-        and (REPO_ROOT / "locales/en-US/manifest.yaml").is_file()
-    ):
-        from .function_catalog import draft_resource
-        from .locale import LocaleCatalog
-        from .models import function_from_dict
-        from .utils import yaml_safe_load
+    locale_manifest = REPO_ROOT / "locales/en-US/manifest.yaml"
+    if not locale_manifest.is_file():
+        raise OCFError("canonical en-US locale manifest is required to author a function")
+    from .function_catalog import draft_resource
+    from .locale import LocaleCatalog
+    from .models import function_from_dict
+    from .utils import yaml_safe_load
 
-        record = draft_resource(function_from_dict(record, target), LocaleCatalog())
-        target = REPO_ROOT / "locales/en-US" / f"{function_id}-{slug.value}.yaml"
-        locale_manifest = REPO_ROOT / "locales/en-US/manifest.yaml"
+    target = locale_manifest.parent / f"{function_id}-{slug.value or 'function'}.yaml"
+    record = draft_resource(function_from_dict(record, target), LocaleCatalog())
     print("\n--- Final review ---")
     print(yaml_safe_dump(record))
     confirm = ask_yes_no("Write this file?", default=True)

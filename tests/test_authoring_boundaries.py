@@ -1,10 +1,12 @@
 """Synthetic authoring-provider contracts, independent of canonical repository data."""
 
 import json
+import shutil
 
 import pytest
 from ocf_tools import authoring
 from ocf_tools.authoring import AuthoringService, Document, Span, schema_at
+from ocf_tools.paths import REPO_ROOT
 from ocf_tools.utils import OCFError, yaml_safe_dump
 
 pytestmark = pytest.mark.unit
@@ -21,19 +23,10 @@ def put(root, relative, data):
 
 @pytest.fixture
 def source(tmp_path):
-    put(
-        tmp_path,
-        "functions/example.yaml",
-        {
-            "id": "OCF-TST-999",
-            "slug": "example",
-            "canonical": {"name": "Original fixture", "command": {"primary": "PLUS-EXAMPLE"}},
-            "lifecycle": {},
-            "commands": [
-                {"id": "OCF-CMD-TST-999-PRIMARY", "role": "primary", "designation": "canonical"}
-            ],
-        },
-    )
+    canonical_function = REPO_ROOT / "locales/en-US/OCF-FND-002-Focus.yaml"
+    function_target = tmp_path / "locales/en-US/OCF-FND-002-Focus.yaml"
+    function_target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(canonical_function, function_target)
     put(
         tmp_path,
         "locales/en-US/manifest.yaml",
@@ -44,6 +37,7 @@ def source(tmp_path):
             "status": "canonical",
             "semantic_version": "1.0.0",
             "resources": [
+                {"file": "OCF-FND-002-Focus.yaml", "domain": "function"},
                 {"file": "narration.yaml", "domain": "narration"},
                 {"file": "ui.yaml", "domain": "ui"},
             ],
@@ -94,7 +88,7 @@ def source(tmp_path):
             "schema_version": "1.0",
             "id": "original-example",
             "title": "Original test fixture",
-            "function_id": "OCF-TST-999",
+            "function_id": "OCF-FND-002",
             "locale": "en-US",
             "source": {"format": "manual", "filename": "synthetic-original"},
             "timeline": [
@@ -119,13 +113,13 @@ def test_synthetic_timeline_uses_locale_and_commands_without_repository_records(
     assert any(item.code == "narration-unknown-key" for item in findings)
     service.close(path.as_uri())
     assert service.analyze(path.as_uri()) == []
-    assert service.records()[0].id == "OCF-TST-999"
+    assert service.records()[0].id == "OCF-FND-002"
 
 
 @pytest.mark.parametrize(
     "field,prefix,expected",
     [
-        ("function_id", "OCF-TST-", "OCF-TST-999"),
+        ("function_id", "OCF-FND-", "OCF-FND-002"),
         ("narration_key", "example.", "example.spoken"),
         ("title_key", "example.", "example.title"),
         ("template", "OCF-TPL-", "OCF-TPL-SESSION-EXAMPLE-001"),
@@ -135,7 +129,7 @@ def test_synthetic_timeline_uses_locale_and_commands_without_repository_records(
         ("voice_profile", "OCF-VOICE-", "OCF-VOICE-9999"),
         ("preset", "OCF-BG-", "OCF-BG-9999"),
         ("artwork_theme", "ocf-", "ocf-example"),
-        ("command_id", "OCF-CMD-", "OCF-CMD-TST-999-PRIMARY"),
+        ("command_id", "OCF-CMD-FND-", "OCF-CMD-FND-002-PRIMARY"),
         ("locale", "en", "en-US"),
     ],
 )
@@ -181,12 +175,15 @@ def test_schema_properties_enums_and_local_event_navigation(source):
 def test_reference_search_respects_declaration_filter_and_preview_bounds(source):
     service, script = source
     code = put(service.root, "scripts/ocf_tools/literal.py", {})
-    code.write_text('VALUE = "OCF-TST-999"\n', encoding="utf-8")
-    refs = service.references("OCF-TST-999", include_declarations=False)
+    code.write_text('VALUE = "OCF-FND-002"\n', encoding="utf-8")
+    refs = service.references("OCF-FND-002", include_declarations=False)
     assert any(doc.path == code for doc, _span in refs)
-    assert not any(doc.path.name == "example.yaml" and span.path == ("id",) for doc, span in refs)
-    at = script.read_text().index("OCF-TST-999")
-    result = service.rename_preview(script.as_uri(), at, "OCF-TST-999", limit=1)
+    assert not any(
+        doc.path.name == "OCF-FND-002-Focus.yaml" and span.path == ("function_id",)
+        for doc, span in refs
+    )
+    at = script.read_text().index("OCF-FND-002")
+    result = service.rename_preview(script.as_uri(), at, "OCF-FND-002", limit=1)
     assert result["collision"] is True and result["next_offset"] == 1
     assert result["automatic_rename"] is False
     for kwargs in ({"limit": 0}, {"offset": -1}, {"limit": True}):

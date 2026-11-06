@@ -229,8 +229,15 @@ def skeletonize(source_root: Path, workspace: Path, records: list, content_root:
         raise OCFError("workspace must be outside immutable source root")
     pending = []
     for record in records:
-        spec = load_yaml_file(content_root / "specifications" / f"{record.id}.yaml")
-        evidence = load_yaml_file(content_root / "evidence" / f"{record.id}.yaml")
+        if hasattr(record, "data"):
+            content = record.data.get("content", {})
+            spec = content.get("specifications", {})
+            evidence = content.get("evidence", {"sources": [], "observations": [], "questions": []})
+        else:
+            # Isolated synthetic test/import records may provide explicit layer
+            # fixtures; repository records always use their canonical resource.
+            spec = load_yaml_file(content_root / "specifications" / f"{record.id}.yaml")
+            evidence = load_yaml_file(content_root / "evidence" / f"{record.id}.yaml")
         review = spec.get("analysis_review", {})
         raw = None
         if record.source_availability == "available":

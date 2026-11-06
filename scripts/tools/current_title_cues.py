@@ -5,67 +5,61 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import sys
 from collections import defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from ocf_tools.commands import command_view, cue_presentation  # noqa: E402
-from ocf_tools.cue_migration import verify_migration  # noqa: E402
-from ocf_tools.editorial_successors import current_decision_record  # noqa: E402
-from ocf_tools.editorial_successors import verify as verify_successors
 from ocf_tools.indexes import load_all_functions  # noqa: E402
 from ocf_tools.locale import LocaleCatalog  # noqa: E402
 from ocf_tools.paths import REPO_ROOT  # noqa: E402
 from ocf_tools.utils import OCFError, write_text_atomic  # noqa: E402
-from tools.title_cue_review import words  # noqa: E402
+
+
+def words(value: str) -> tuple[str, ...]:
+    """Normalize cue words for a display/report-only comparison."""
+    return tuple(re.findall(r"\w+", value.casefold()))
 
 
 def build():
-    from ocf_tools.candidate_approval import record as approval_record
-
-    candidate_approval = approval_record()
-    approved_candidates = (
-        {row["function_id"] for row in candidate_approval["approvals"].values()}
-        if candidate_approval
-        else set()
-    )
-    problems = verify_migration()
-    if not problems:
-        problems = verify_successors()
-    if problems:
-        raise OCFError("approved migration drift: " + " | ".join(problems))
-    decision = current_decision_record()
-    changed = {row["function_id"]: row for row in decision["decisions"]}
-    kept = {row["function_id"]: row for row in decision["kept_decisions"]}
-    previous = json.loads(
-        (REPO_ROOT / "docs/releases/OCF_TITLE_CUE_REVIEW.json").read_text(encoding="utf-8")
-    )
-    prior = {row["function_id"]: row for row in previous["functions"]}
-    functions, commands = [], []
+    """Generate current teaching metadata directly from canonical locale resources."""
     catalog = LocaleCatalog()
-    for record in sorted(load_all_functions(), key=lambda item: item.id):
-        is_new_draft = record.id not in prior
-        if is_new_draft:
-            primary = next(row for row in record.command_records if row.designation == "primary")
-            prior[record.id] = {
-                "exact_taught_cue": primary.data.get("spoken"),
-                "classification": "UNREVIEWED ORIGINAL DRAFT",
-                "recommended_title": record.canonical_name,
-                "recommended_primary_cue": record.canonical_command,
-                "contextual_review": "New original draft; no prior historical or editorial approval.",
-            }
-        update = changed.get(record.id)
+    from ocf_tools.editorial_candidates import CANDIDATES, verify_approvals
+
+    problems = verify_approvals()
+    if problems:
+        raise OCFError("canonical editorial approval drift: " + " | ".join(problems))
+    from tools.check_hplus_narration_integrity import check as check_narration
+
+    problems = check_narration()
+    if problems:
+        raise OCFError("canonical narration integrity drift: " + " | ".join(problems))
+
+    approval_ids = set(CANDIDATES.values())
+    function_data = catalog.require("en-US").localized_functions
+    records = sorted(load_all_functions(), key=lambda item: item.id)
+    functions, commands = [], []
+    for record in records:
+        local = function_data[record.id]
         current_commands = [
             command_view(record, command, locale="en-US", catalog=catalog)
             for command in record.command_records
         ]
         commands.extend(current_commands)
-        presentation = cue_presentation(record, "en-US", catalog=catalog, strict=bool(update))
-        taught = update["spoken_cue"] if update else prior[record.id]["exact_taught_cue"]
-        matched = words(record.canonical_command) == words(taught)
-        if record.id == "OCF-BOD-007":
-            matched = True  # Existing explicit Bloodpressure/Blood Pressure realization.
+        presentation = cue_presentation(record, "en-US", catalog=catalog)
+        taught = presentation.get("spoken_cue")
+        approval = local.get("record_metadata", {}).get("editorial_approval")
+        decisions = local.get("record_metadata", {}).get("editorial_decisions", [])
+        proposals = local.get("editorial", {}).get("proposals", [])
+        command_review = record.data.get("ocf", {}).get("command_review")
+        changed_keys = sorted((approval or {}).get("resolved_text_sha256", {}))
+        changed_keys.extend(
+            key
+            for decision in decisions
+            for key in decision.get("current_resolved_text_sha256", {})
+        )
         functions.append(
             {
                 "function_id": record.id,
@@ -74,46 +68,31 @@ def build():
                 "spoken_teaching": taught,
                 "cue_presentation": presentation,
                 "current_purpose": record.purpose_summary,
-                "decision_status": "APPROVED CANDIDATE IMPLEMENTED"
-                if record.id in approved_candidates
-                else "UNREVIEWED ORIGINAL DRAFT"
-                if is_new_draft
-                else "APPROVED AND IMPLEMENTED"
-                if update
-                else "EXISTING PAIR RETAINED"
-                if record.id in kept
-                else "STILL UNDECIDED"
-                if prior[record.id]["classification"]
-                != "KEEP — TITLE, CUE, AND TEACHING ALREADY CONSISTENT"
-                else "EXISTING PAIR RETAINED",
-                "metadata_teaching_consistent": matched,
-                "title_status": "APPROVED"
-                if record.id in approved_candidates
-                else update["title_status"]
-                if update
-                else "UNCHANGED",
-                "pending_title": update.get("pending_title") if update else None,
-                "previous_values": update["previous"] if update else None,
-                "unselected_proposal": None
-                if update or record.id in kept or record.id in approved_candidates
-                else {
-                    "title": prior[record.id]["recommended_title"],
-                    "cue": prior[record.id]["recommended_primary_cue"],
-                },
+                "decision_status": "APPROVED AND IMPLEMENTED"
+                if approval
+                or decisions
+                or command_review == "approved"
+                or record.id in approval_ids
+                else "REVIEW REQUIRED",
+                "metadata_teaching_consistent": bool(taught)
+                and words(record.canonical_command) == words(taught),
+                "title_status": local.get("title", {}).get("status", "unknown"),
+                "pending_title": next(
+                    (
+                        item["recommended_title"]
+                        for item in proposals
+                        if item["status"] == "pending"
+                    ),
+                    None,
+                ),
+                "previous_values": None,
+                "unselected_proposal": None,
                 "historical_lookup": record.data.get("historical_lookup", []),
-                "context": update["translator_notes"]
-                if update
-                else kept[record.id]["implementation_scope"]
-                if record.id in kept
-                else prior[record.id]["contextual_review"],
-                "teaching_source": "Explicit full candidate approval OCF-APPROVED-CANDIDATES-001; exact presented narration preserved"
-                if record.id in approved_candidates
-                else "Supplied draft; not approved for production"
-                if is_new_draft
-                else "Approved exact substitutions, verified against immutable predecessor"
-                if update
-                else "Predecessor contextual review; unchanged protected text verified",
-                "changed_keys": update["narration_keys_changed"] if update else [],
+                "context": record.data.get("compatibility", {}).get("rationale")
+                or "Canonical locale function resource.",
+                "teaching_source": "Canonical locale resource; missing speech is not inherited.",
+                "changed_keys": sorted(set(changed_keys)),
+                "editorial_proposals": proposals,
             }
         )
     groups = defaultdict(list)
@@ -122,12 +101,29 @@ def build():
             groups[words(row["phrase"])].append(
                 {"id": row["id"], "function_id": row["function_id"], "role": row["role"]}
             )
+    baseline = json.loads(
+        (REPO_ROOT / "tests/fixtures/hplus-narration-text-baseline-008.json").read_text(
+            encoding="utf-8"
+        )
+    )
     return {
         "schema_version": "1.0",
-        "decision_id": decision["id"],
-        "decision_ids": decision["decision_ids"],
-        "predecessor_commit": decision["source_commit"],
-        "source_scope": "Current approved successor. Earlier source-pinned proposals remain immutable history; this is not a repin or blanket approval of them.",
+        "decision_id": "canonical-locale-function-authority",
+        "decision_ids": sorted(
+            {"OCF-APPROVED-CANDIDATES-001"}
+            | {
+                decision["id"]
+                for data in function_data.values()
+                for decision in data.get("record_metadata", {}).get("editorial_decisions", [])
+            }
+            | {
+                proposal["id"]
+                for data in function_data.values()
+                for proposal in data.get("editorial", {}).get("proposals", [])
+            }
+        ),
+        "predecessor_commit": "b61ad1fcf3224d98c15ac6a589bdefe6151d6adb",
+        "source_scope": "Current titles, commands, and narration resolve only from canonical locale resources; editorial approvals and historical lookup remain separate metadata.",
         "counts": {
             "functions": len(functions),
             "structured_command_identities": len(commands),
@@ -138,21 +134,33 @@ def build():
                 row.get("availability") == "historical-lookup" for row in commands
             ),
             "stable_primary_identities": sum(row["designation"] == "primary" for row in commands),
-            "approved_cues_implemented": len(changed),
-            "approved_candidate_narrations": len(approved_candidates),
-            "protected_entries": len(
-                json.loads((REPO_ROOT / decision["integrity_baseline"]).read_text())
+            "resolved_active_spoken_cues": sum(
+                row.get("availability", "active") == "active"
+                and row.get("cue_presentation", {}).get("binding_status") == "resolved"
+                for row in commands
             ),
-            "allowlisted_text_changes": len(decision["allowed_text_changes"]),
+            "approved_candidate_narrations": len(approval_ids),
+            "protected_entries": len(baseline),
+            "embedded_approval_text_hashes": sum(len(row["changed_keys"]) for row in functions),
             "remaining_metadata_teaching_differences": sum(
                 not row["metadata_teaching_consistent"] for row in functions
             ),
         },
         "functions": functions,
         "commands": commands,
-        "rejected_or_superseded": decision["rejected_or_superseded"],
-        "pending": decision["pending"],
-        "locales_requiring_review": decision["locales_requiring_review"],
+        "rejected_or_superseded": [
+            proposal["id"]
+            for data in function_data.values()
+            for proposal in data.get("editorial", {}).get("proposals", [])
+            if proposal["status"] == "superseded"
+        ],
+        "pending": [
+            proposal["id"]
+            for data in function_data.values()
+            for proposal in data.get("editorial", {}).get("proposals", [])
+            if proposal["status"] == "pending"
+        ],
+        "locales_requiring_review": ["es: function narration and spoken cues remain partial"],
         "collision_groups": [
             {
                 "source_english_words": list(key),
@@ -166,7 +174,7 @@ def build():
             record.path.relative_to(REPO_ROOT).as_posix(): hashlib.sha256(
                 record.path.read_bytes()
             ).hexdigest()
-            for record in load_all_functions()
+            for record in records
         },
     }
 
@@ -179,7 +187,7 @@ def render(data):
         "",
         data["source_scope"],
         "",
-        "Approved source: explicit user decisions recorded in the versioned title–cue ledgers. Approval covers primary English vocabulary and scoped teaching edits, not other proposals, mechanisms, listening or release. Heart Flow remains tentative; the committed heart title is retained.",
+        "Approved decisions are embedded in canonical locale resources. This report is a derived view, not another source authority. Approval does not imply listening or release approval.",
         "",
         "Counts: " + json.dumps(data["counts"], sort_keys=True) + ".",
         "",
@@ -195,7 +203,7 @@ def render(data):
     teaching = [
         "# Current exact-teaching status",
         "",
-        "Only explicitly approved substitutions were applied. Every affected entry's before/after hashes, exact substitutions, occurrence counts and unified diff are in [the migration record](../../function-content/editorial/approved-title-cues-001.json). All other protected text remains identical. Literal teaching is separate from source quotation and historical lookup.",
+        "Exact current wording and any approval hashes are stored with canonical locale resources. The path-free semantic and narration fixtures verify current approved invariants. Literal teaching is separate from source quotation and historical lookup.",
         "",
     ]
     for row in data["functions"]:

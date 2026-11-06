@@ -239,7 +239,6 @@ entries:
 
       This concludes your OCF Recall exercise.'
 slug: recall
-historical_record: functions/cognition/recall.yaml
 classification:
   primary_domain: cognition
   secondary_domains: []
@@ -282,6 +281,570 @@ narration:
     role: closer
 editorial:
   command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-COG-006
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: bd2cba172fa0161f855eedbb0e822e4a7127eb6ca9a543a6f4d278777efa023d
+    classification: KEEP — TITLE, CUE, AND TEACHING ALREADY CONSISTENT
+    recommended_title: Recall
+    recommended_primary_cue: PLUS-RECALL
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Select memory/information, inhale/hold/cue/candle-like exhale for detailed retrieval.
+      Shared Imprint retrieval is related but uses its own context/procedure; no global dispatcher precedence
+      is implied.
+    pair_reason: RECALL is a strong, specific retrieval cue and is intentionally shared with Imprint retrieval.
+      Clarify experience recall versus Information Access through purpose documentation, not arbitrary
+      vocabulary churn.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. RECALL is a strong,
+      specific retrieval cue and is intentionally shared with Imprint retrieval. Clarify experience recall
+      versus Information Access through purpose documentation, not arbitrary vocabulary churn.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Recall a chosen past experience/information in detail.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
 localization:
   status: complete
   contract_sha256: 4d3d2a277035b8d08893b9d51073500a2eb49cbdf2f893037f474285e55de02a
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-COG-006-PRIMARY
+    command_status: unchanged
+    commands:
+    - PLUS-RECALL
+    name: RECALL
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Recall
+  compatibility:
+    state: unchanged
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-cog-006.title
+    short_description_key: functions.ocf-cog-006.short-description
+    purpose_key: functions.ocf-cog-006.purpose
+  commands:
+  - id: OCF-CMD-COG-006-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-cog-006-primary.label
+      usage_key: commands.ocf-cmd-cog-006-primary.usage
+      purpose_key: functions.ocf-cog-006.purpose
+      explanation_key: commands.ocf-cmd-cog-006-primary.explanation
+  predecessor_resource_sha256: 4af80f09eacd62aa71cc3891f726ce2cac01c56100d2e6b83e7768ae7b6c30f6
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3:opener
+      kind: structural-inference
+      line_candidates:
+      - 1
+      - 2
+      - 56
+      scope: document
+      source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    - category: main
+      confidence: low
+      id: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3:main
+      kind: structural-inference
+      line_candidates:
+      - 31
+      - 32
+      - 41
+      scope: document
+      source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    - category: closer
+      confidence: low
+      id: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3:closer
+      kind: structural-inference
+      line_candidates:
+      - 53
+      scope: document
+      source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    - category: preparation
+      confidence: low
+      id: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3:preparation
+      kind: structural-inference
+      line_candidates:
+      - 3
+      - 8
+      - 12
+      - 25
+      - 54
+      - 57
+      scope: document
+      source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    - category: command_association
+      confidence: low
+      id: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3:command_association
+      kind: structural-inference
+      line_candidates:
+      - 33
+      - 35
+      - 42
+      - 44
+      - 52
+      scope: document
+      source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    - category: future_use
+      confidence: low
+      id: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3:future_use
+      kind: structural-inference
+      line_candidates:
+      - 32
+      - 38
+      - 41
+      - 47
+      - 52
+      scope: document
+      source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    - category: purpose
+      confidence: medium
+      id: review:OCF-COG-006:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 2
+      scope: document
+      source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    - category: opener
+      confidence: medium
+      id: review:OCF-COG-006:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 27
+      - 31
+      scope: document
+      source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    - category: main
+      confidence: medium
+      id: review:OCF-COG-006:main
+      kind: function-specification-inference
+      line_candidates:
+      - 32
+      - 49
+      scope: document
+      source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    - category: association
+      confidence: medium
+      id: review:OCF-COG-006:association
+      kind: function-specification-inference
+      line_candidates:
+      - 32
+      - 40
+      scope: document
+      source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-COG-006:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 32
+      - 49
+      scope: document
+      source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    - category: future_use
+      confidence: medium
+      id: review:OCF-COG-006:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 32
+      - 53
+      scope: document
+      source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-COG-006:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 189
+      scope: document
+      source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    - category: closer
+      confidence: medium
+      id: review:OCF-COG-006:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 50
+      - 57
+      scope: document
+      source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-COG-006:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 58
+      - 189
+      scope: document
+      source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    - category: handoff
+      confidence: unknown
+      id: review:OCF-COG-006:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 88
+      - 189
+      scope: document
+      source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-COG-006:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 26
+      - 49
+      scope: document
+      source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+      path: +Transcripts From available tapes/Recall/Recall.lrc
+      related_sha256:
+      - 7788c429c68a7f67c60c2a009b8317e3381591ab8061e2959afdc259433d7116
+      - db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+      sha256: 7aa0ea7075432c1e46b4eab57ff9104fbc00a028b138ccff1c798409b938b18e
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Recall/Recall.ocr.pdf
+      related_sha256: []
+      sha256: 82f3ce302167d33f146f09b6ff42cc95e94adc5d65894c7d5edd780093582339
+    - authentication: operator-designated
+      completeness: explicit gaps
+      evidence_class: partial_source_transcript
+      normalized_content_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+      path: +Transcripts From available tapes/Recall/Recall.srt
+      related_sha256:
+      - 7aa0ea7075432c1e46b4eab57ff9104fbc00a028b138ccff1c798409b938b18e
+      - db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+      sha256: 7788c429c68a7f67c60c2a009b8317e3381591ab8061e2959afdc259433d7116
+    - authentication: operator-designated
+      completeness: explicit gaps
+      evidence_class: partial_source_transcript
+      normalized_content_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+      path: +Transcripts From available tapes/Recall/Recall.txt
+      related_sha256:
+      - 7788c429c68a7f67c60c2a009b8317e3381591ab8061e2959afdc259433d7116
+      - 7aa0ea7075432c1e46b4eab57ff9104fbc00a028b138ccff1c798409b938b18e
+      sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Recall/folder.jpg
+      related_sha256: []
+      sha256: a7302eed57b25cf1dc25dc6f6a449237df79cca20554bdaac79f6c9dc1572480
+  specifications:
+    analysis_review:
+      claim_categories:
+      - guaranteed-immediate-detailed-memory
+      - automatic-whole-system-learning
+      - ambiguous-religious-insertion
+      family: cognitive-retrieval
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+            end_line: 40
+            file: +Transcripts From available tapes/Recall/Recall.txt
+            source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+            start_line: 32
+          status: supported
+          summary: Recall cue plus specified target is associated with immediate conscious detailed remembering.
+        closer:
+          locators:
+          - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+            end_line: 57
+            file: +Transcripts From available tapes/Recall/Recall.txt
+            source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+            start_line: 50
+          status: supported
+          summary: Reinforce future remembering and close learning context to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+            end_line: 189
+            file: +Transcripts From available tapes/Recall/Recall.txt
+            source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+            start_line: 58
+          status: supported
+          summary: Sleep-to-twenty explanation/count is present; later gap is not evidence of a particular
+            reinforcement segment.
+        conversion:
+          locators:
+          - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+            end_line: 49
+            file: +Transcripts From available tapes/Recall/Recall.txt
+            source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+            start_line: 32
+          status: inferred
+          summary: Preserve voluntary retrieval strategy without asserting remembered material is necessarily
+            accurate. Religious sentence in derivative is not a verified legacy instruction or OCF requirement.
+        future_use:
+          locators:
+          - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+            end_line: 53
+            file: +Transcripts From available tapes/Recall/Recall.txt
+            source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+            start_line: 32
+          status: supported
+          summary: Target-selective recall procedure, with asserted ease from repeated use.
+        handoff:
+          locators:
+          - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+            end_line: 189
+            file: +Transcripts From available tapes/Recall/Recall.txt
+            source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+            start_line: 88
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Line26 religious
+            insertion and numerous count/gap artifacts require audio authentication; final return missing.
+            Do not silently correct the reference.
+        identity:
+          locators:
+          - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+            end_line: 40
+            file: +Transcripts From available tapes/Recall/Recall.txt
+            source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+            start_line: 32
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+            end_line: 49
+            file: +Transcripts From available tapes/Recall/Recall.txt
+            source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+            start_line: 32
+          status: supported
+          summary: select-past-experience; inhale-and-hold; internally-issue-recall-cue; attend-to-target-area;
+            exhale
+        opener:
+          locators:
+          - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+            end_line: 31
+            file: +Transcripts From available tapes/Recall/Recall.txt
+            source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+            start_line: 27
+          status: supported
+          summary: Introduce remembering and receptive learning context.
+        preparation:
+          locators:
+          - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+            end_line: 25
+            file: +Transcripts From available tapes/Recall/Recall.txt
+            source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+            start_line: 2
+          status: supported
+          summary: Supported uninterrupted relaxation, temporary setting-aside and counted ten-state entry.
+        provenance:
+          locators:
+          - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+            end_line: 189
+            file: +Transcripts From available tapes/Recall/Recall.txt
+            source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+            start_line: 1
+          status: supported
+          summary: Complete available partial_source_transcript text inspected; shared representations
+            are not independent corroboration. Source accuracy/authentication remains unresolved. Line26
+            religious insertion and numerous count/gap artifacts require audio authentication; final return
+            missing. Do not silently correct the reference.
+        purpose:
+          locators:
+          - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+            end_line: 2
+            file: +Transcripts From available tapes/Recall/Recall.txt
+            source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+            start_line: 1
+          status: supported
+          summary: Recall a chosen past experience/information in detail.
+        rehearsal:
+          locators:
+          - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+            end_line: 49
+            file: +Transcripts From available tapes/Recall/Recall.txt
+            source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+            start_line: 32
+          status: supported
+          summary: Two teaching presentations; no distinct explicit listener recall trial is established.
+        safety_claims:
+          locators:
+          - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+            end_line: 49
+            file: +Transcripts From available tapes/Recall/Recall.txt
+            source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+            start_line: 26
+          status: supported
+          summary: guaranteed-immediate-detailed-memory; automatic-whole-system-learning; ambiguous-religious-insertion.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+            end_line: 31
+            file: +Transcripts From available tapes/Recall/Recall.txt
+            source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+            start_line: 27
+          status: supported
+          summary: Eleven opening, ten close, sleep-to-twenty shell; waking ending absent in the inspected
+            derivative.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+            end_line: 189
+            file: +Transcripts From available tapes/Recall/Recall.txt
+            source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Line26 religious
+            insertion and numerous count/gap artifacts require audio authentication; final return missing.
+            Do not silently correct the reference.
+      source_extent:
+        content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
+        end_line: 189
+        file: +Transcripts From available tapes/Recall/Recall.txt
+        source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-COG-006:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-COG-006:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-COG-006:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-COG-006:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-COG-006:handoff
+        operations: []
+        status: unknown
+      main:
+        evidence_refs:
+        - review:OCF-COG-006:main
+        operations:
+        - select-past-experience
+        - inhale-and-hold
+        - internally-issue-recall-cue
+        - attend-to-target-area
+        - exhale
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-COG-006:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-COG-006:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-COG-006:rehearsal
+        operations:
+        - documented-rehearsal
+        status: inferred
+      safety_claims:
+        evidence_refs:
+        - review:OCF-COG-006:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-COG-006:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Line26 religious insertion and numerous count/gap artifacts require audio authentication; final
+      return missing. Do not silently correct the reference.
+    - Preserve voluntary retrieval strategy without asserting remembered material is necessarily accurate.
+      Religious sentence in derivative is not a verified legacy instruction or OCF requirement.
+    states:
+      preferred: []
+      required: []
+      status: unknown

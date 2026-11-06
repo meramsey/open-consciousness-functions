@@ -155,14 +155,13 @@ def test_evidence_observation_identity_and_source_references_are_unique():
 
 def test_validation_checks_explicit_source_review_and_runtime_bindings(monkeypatch):
     from ocf_tools import session
-    from ocf_tools.indexes import load_yaml_file
-    from ocf_tools.paths import REPO_ROOT
+    from ocf_tools.indexes import load_function_by_id
 
     data = layers()
     spec = data["specifications"]
-    review = load_yaml_file(REPO_ROOT / "function-content/specifications/OCF-FND-004.yaml")[
-        "analysis_review"
-    ]
+    review = deepcopy(
+        load_function_by_id("OCF-FND-004").data["content"]["specifications"]["analysis_review"]
+    )
     review["source_extent"].update(file="mockup.txt", source_sha256="a" * 64, start_line=2)
     for answer in review["sections"].values():
         for locator in answer["locators"]:
@@ -203,11 +202,14 @@ def test_library_reports_unknown_records_and_bad_layers(monkeypatch, tmp_path):
 
 
 def test_layer_loader_and_library_report_invalid_content(monkeypatch, tmp_path):
-    from ocf_tools import content
+    from ocf_tools import content, indexes
 
     monkeypatch.setattr(content, "validate_layers", lambda *_args: ["invalid synthetic layer"])
+    monkeypatch.setattr(
+        indexes, "load_function_by_id", lambda _identity: load_function_by_id("OCF-FND-004")
+    )
     with pytest.raises(OCFError, match="function content: invalid synthetic layer"):
-        content.load_layers("OCF-FND-004", tmp_path)
+        content.load_layers("OCF-FND-004")
 
     monkeypatch.setattr(content, "CONTENT_DIR", tmp_path)
     monkeypatch.setattr(content, "load_all_functions", lambda: [load_function_by_id("OCF-FND-004")])

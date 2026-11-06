@@ -174,13 +174,14 @@ def test_nutricia_food_less_is_alternative_mode_and_all_resolved_speech_is_exact
     assert owner.canonical_command == "PLUS-FOOD MORE"
     assert owner.data["canonical"]["command"]["modes"] == ["PLUS-FOOD LESS"]
     catalog = LocaleCatalog()
+    source = catalog.require("en-US").localized_function_files[owner.id]
     for key in (
         "hplus.function.ocf-bod-010.opener",
         "hplus.function.ocf-bod-010.function-body",
         "hplus.function.ocf-bod-010.closer",
     ):
         entry, _ = catalog.resource(key, "en-US", domain="narration", fallback=False)
-        assert entry.text == narration_texts()[f"locales/en-US/hplus-OCF-BOD-010.yaml::{key}"]
+        assert entry.text == narration_texts()[f"locales/en-US/{source}::{key}"]
     assert all(is_active(item) for item in (commands["OCF-CMD-BOD-010-PRIMARY"], less))
 
 

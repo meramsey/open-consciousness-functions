@@ -1,7 +1,7 @@
 """Small, original editor workspace fixtures; no speech engines or private assets."""
 
 import json
-from copy import deepcopy
+import shutil
 
 from ocf_tools import artwork, session
 from ocf_tools.indexes import load_function_by_id, load_yaml_file
@@ -21,8 +21,10 @@ def write(path, data):
 
 
 def seed(root):
-    record = deepcopy(load_function_by_id("OCF-FND-002").data)
-    write(root / "functions/foundation/focus.yaml", record)
+    function = load_function_by_id("OCF-FND-002")
+    function_name = function.path.name
+    (root / "locales/en-US").mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(function.path, root / "locales/en-US" / function_name)
     write(
         root / "locales/en-US/manifest.yaml",
         {
@@ -32,6 +34,7 @@ def seed(root):
             "status": "canonical",
             "semantic_version": "1.0.0",
             "resources": [
+                {"file": function_name, "domain": "function"},
                 {"file": "narration.yaml", "domain": "narration"},
                 {"file": "ui.yaml", "domain": "ui"},
             ],

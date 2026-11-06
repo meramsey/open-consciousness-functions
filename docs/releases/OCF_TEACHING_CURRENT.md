@@ -1,62 +1,62 @@
 # Current exact-teaching status
 
-Only explicitly approved substitutions were applied. Every affected entry's before/after hashes, exact substitutions, occurrence counts and unified diff are in [the migration record](../../function-content/editorial/approved-title-cues-001.json). All other protected text remains identical. Literal teaching is separate from source quotation and historical lookup.
+Exact current wording and any approval hashes are stored with canonical locale resources. The path-free semantic and narration fixtures verify current approved invariants. Literal teaching is separate from source quotation and historical lookup.
 
-- OCF-AUT-001: `PLUS-AUTOMATE` / Plus Automate; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-BOD-001: `PLUS-BRAIN FLOW` / Plus Brain Flow; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-BOD-002: `PLUS-CIRCULATE` / Plus Circulate; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-BOD-003: `PLUS-COMFORT` / Plus Comfort; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-BOD-004: `PLUS-DETOX` / Plus Detox; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-BOD-005: `PLUS-SATISFIED` / Plus Satisfied; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-BOD-006: `PLUS-HEART-FLOW` / Plus Heart Flow; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-BOD-007: `PLUS-BALANCE BLOOD PRESSURE` / Plus Balance Blood Pressure; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-BOD-008: `PLUS-IMMUNE READY` / Plus Immune Ready; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-BOD-009: `PLUS-BREATHE BETTER` / Plus Breathe Better; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-BOD-010: `PLUS-FOOD MORE` / Plus Food More; metadata match True; Predecessor contextual review; unchanged protected text verified.
-- OCF-BOD-011: `PLUS-HORMONE BALANCE` / Plus Hormone Balance; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-BOD-012: `PLUS-SEX MORE` / Plus Sex More; metadata match True; Predecessor contextual review; unchanged protected text verified.
-- OCF-BOD-013: `PLUS-TUNE-UP` / Plus Tune Up; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-BOD-014: `PLUS-REGENERATE` / Plus Regenerate; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-BOD-015: `PLUS-NUMB` / Plus Numb; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-COG-001: `PLUS-ACCESS INFO` / Plus Access Info; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-COG-002: `PLUS-CALCULATE` / Plus Calculate; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-COG-003: `PLUS-OPEN` / Plus Open; metadata match True; Predecessor contextual review; unchanged protected text verified.
-- OCF-COG-004: `PLUS-IMPRINT` / Plus Imprint; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-COG-005: `PLUS-OPTIONS` / Plus Options; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-COG-006: `PLUS-RECALL` / Plus Recall; metadata match True; Predecessor contextual review; unchanged protected text verified.
-- OCF-COG-007: `PLUS-THINK` / Plus Think; metadata match True; Predecessor contextual review; unchanged protected text verified.
-- OCF-COM-001: `PLUS-SPEAK UP` / Plus Speak Up; metadata match True; Predecessor contextual review; unchanged protected text verified.
-- OCF-EMG-001: `PLUS-INJURY-RESPONSE` / Plus Injury Response; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-EMG-002: `PLUS-TOXIC-CLEAR` / Plus Toxic Clear; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-EMO-001: `PLUS-LET GO` / Plus Let Go; metadata match True; Predecessor contextual review; unchanged protected text verified.
-- OCF-EMO-002: `PLUS-OFFLOAD` / Plus Offload; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-EMO-003: `PLUS-EMPATHIZE` / Plus Empathize; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-EXP-001: `PLUS-MANIFEST` / Plus Manifest; metadata match True; Explicit full candidate approval OCF-APPROVED-CANDIDATES-001; exact presented narration preserved.
-- OCF-EXP-002: `PLUS-INSULATE` / Plus Insulate; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-EXP-003: `PLUS-DISSOLVE` / Plus Dissolve; metadata match True; Explicit full candidate approval OCF-APPROVED-CANDIDATES-001; exact presented narration preserved.
-- OCF-EXP-005: `PLUS-CLEAR ZONE` / Plus Clear Zone; metadata match True; Explicit full candidate approval OCF-APPROVED-CANDIDATES-001; exact presented narration preserved.
-- OCF-EXP-006: `PLUS-INTUITION` / Plus Intuition; metadata match True; Explicit full candidate approval OCF-APPROVED-CANDIDATES-001; exact presented narration preserved.
-- OCF-FND-001: `PLUS-ENERGIZE` / Plus Energize; metadata match True; Predecessor contextual review; unchanged protected text verified.
-- OCF-FND-002: `PLUS-FOCUS` / Plus Focus; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-FND-003: `PLUS-RECHARGE` / Plus Recharge; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-FND-004: `PLUS-RELAX` / Plus Relax; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-FND-005: `PLUS-RESET` / Plus Reset; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-FND-006: `PLUS-RELEASE` / Plus Release; metadata match True; Predecessor contextual review; unchanged protected text verified.
-- OCF-LIF-001: `PLUS-FREE THIS HABIT` / Plus Free This Habit; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-PRF-001: `PLUS-DO-THIS-NOW` / Plus Do This Now; metadata match True; Predecessor contextual review; unchanged protected text verified.
-- OCF-PRF-002: `PLUS-INNER POWER` / Plus Inner Power; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-PRF-003: `PLUS-COORDINATE` / Plus Coordinate; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-PRF-004: `PLUS-LIGHT STEP` / Plus Light Step; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-PRF-005: `PLUS-THIS DAY` / Plus This Day; metadata match True; Predecessor contextual review; unchanged protected text verified.
-- OCF-PRF-006: `PLUS-STRONG QUICK` / Plus Strong Quick; metadata match True; Predecessor contextual review; unchanged protected text verified.
-- OCF-SEN-001: `PLUS-HEAR MORE` / Plus Hear More; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-SEN-002: `PLUS-SEE BETTER` / Plus See Better; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-SEN-003: `PLUS-SMELL MORE` / Plus Smell More; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-SEN-004: `PLUS-TASTE MORE` / Plus Taste More; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-SEN-005: `PLUS-TOUCH MORE` / Plus Touch More; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-SLP-001: `PLUS-RESTORATIVE SLEEP` / Plus Restorative Sleep; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-SLP-002: `PLUS-SLEEP` / Plus Sleep; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-SLP-003: `PLUS-DREAM` / Plus Dream; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-SLP-004: `PLUS-SLEEP INSIGHT` / Plus Sleep Insight; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-SLP-005: `PLUS-SLEEP EASY` / Plus Sleep Easy; metadata match True; Approved exact substitutions, verified against immutable predecessor.
-- OCF-SLP-006: `PLUS-AWAKE` / Plus Awake; metadata match True; Approved exact substitutions, verified against immutable predecessor.
+- OCF-AUT-001: `PLUS-AUTOMATE` / Plus Automate; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-BOD-001: `PLUS-BRAIN FLOW` / Plus Brain Flow; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-BOD-002: `PLUS-CIRCULATE` / Plus Circulate; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-BOD-003: `PLUS-COMFORT` / Plus Comfort; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-BOD-004: `PLUS-DETOX` / Plus Detox; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-BOD-005: `PLUS-SATISFIED` / Plus Satisfied; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-BOD-006: `PLUS-HEART-FLOW` / Plus Heart Flow; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-BOD-007: `PLUS-BALANCE BLOOD PRESSURE` / Plus Balance Blood Pressure; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-BOD-008: `PLUS-IMMUNE READY` / Plus Immune Ready; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-BOD-009: `PLUS-BREATHE BETTER` / Plus Breathe Better; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-BOD-010: `PLUS-FOOD MORE` / Plus Food More; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-BOD-011: `PLUS-HORMONE BALANCE` / Plus Hormone Balance; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-BOD-012: `PLUS-SEX MORE` / Plus Sex More; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-BOD-013: `PLUS-TUNE-UP` / Plus Tune Up; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-BOD-014: `PLUS-REGENERATE` / Plus Regenerate; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-BOD-015: `PLUS-NUMB` / Plus Numb; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-COG-001: `PLUS-ACCESS INFO` / Plus Access Info; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-COG-002: `PLUS-CALCULATE` / Plus Calculate; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-COG-003: `PLUS-OPEN` / Plus Open; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-COG-004: `PLUS-IMPRINT` / Plus Imprint; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-COG-005: `PLUS-OPTIONS` / Plus Options; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-COG-006: `PLUS-RECALL` / Plus Recall; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-COG-007: `PLUS-THINK` / Plus Think; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-COM-001: `PLUS-SPEAK UP` / Plus Speak Up; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-EMG-001: `PLUS-INJURY-RESPONSE` / Plus Injury Response; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-EMG-002: `PLUS-TOXIC-CLEAR` / Plus Toxic Clear; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-EMO-001: `PLUS-LET GO` / Plus Let Go; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-EMO-002: `PLUS-OFFLOAD` / Plus Offload; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-EMO-003: `PLUS-EMPATHIZE` / Plus Empathize; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-EXP-001: `PLUS-MANIFEST` / Plus Manifest; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-EXP-002: `PLUS-INSULATE` / Plus Insulate; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-EXP-003: `PLUS-DISSOLVE` / Plus Dissolve; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-EXP-005: `PLUS-CLEAR ZONE` / Plus Clear Zone; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-EXP-006: `PLUS-INTUITION` / Plus Intuition; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-FND-001: `PLUS-ENERGIZE` / Plus Energize; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-FND-002: `PLUS-FOCUS` / Plus Focus; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-FND-003: `PLUS-RECHARGE` / Plus Recharge; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-FND-004: `PLUS-RELAX` / Plus Relax; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-FND-005: `PLUS-RESET` / Plus Reset; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-FND-006: `PLUS-RELEASE` / Plus Release; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-LIF-001: `PLUS-FREE THIS HABIT` / Plus Free This Habit; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-PRF-001: `PLUS-DO-THIS-NOW` / Plus Do This Now; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-PRF-002: `PLUS-INNER POWER` / Plus Inner Power; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-PRF-003: `PLUS-COORDINATE` / Plus Coordinate; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-PRF-004: `PLUS-LIGHT STEP` / Plus Light Step; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-PRF-005: `PLUS-THIS DAY` / Plus This Day; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-PRF-006: `PLUS-STRONG QUICK` / Plus Strong Quick; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-SEN-001: `PLUS-HEAR MORE` / Plus Hear More; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-SEN-002: `PLUS-SEE BETTER` / Plus See Better; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-SEN-003: `PLUS-SMELL MORE` / Plus Smell More; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-SEN-004: `PLUS-TASTE MORE` / Plus Taste More; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-SEN-005: `PLUS-TOUCH MORE` / Plus Touch More; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-SLP-001: `PLUS-RESTORATIVE SLEEP` / Plus Restorative Sleep; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-SLP-002: `PLUS-SLEEP` / Plus Sleep; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-SLP-003: `PLUS-DREAM` / Plus Dream; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-SLP-004: `PLUS-SLEEP INSIGHT` / Plus Sleep Insight; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-SLP-005: `PLUS-SLEEP EASY` / Plus Sleep Easy; metadata match True; Canonical locale resource; missing speech is not inherited..
+- OCF-SLP-006: `PLUS-AWAKE` / Plus Awake; metadata match True; Canonical locale resource; missing speech is not inherited..

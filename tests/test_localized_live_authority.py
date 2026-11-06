@@ -9,7 +9,6 @@ from ocf_tools import agent_api, generators, listening_guides, locale
 from ocf_tools.command_docs import build_command_index
 from ocf_tools.content import discover
 from ocf_tools.locale import LocaleCatalog
-from ocf_tools.localized_activation import digest
 from ocf_tools.localized_authority import description, title
 from test_localized_catalog_trace import literal_catalog as isolated_catalog
 from test_localized_function_resources import function_record, function_resource, write_pack
@@ -39,9 +38,9 @@ def test_superseded_compatibility_words_cannot_override_yaml_or_be_edited(tmp_pa
             "file": "old.yaml",
             "domain": "ui",
             "superseded_keys": ["functions.ocf-emo-003.title"],
-            "compatibility_sha256": digest(
-                json.dumps(predecessor, sort_keys=True, ensure_ascii=False)
-            ),
+            "compatibility_sha256": hashlib.sha256(
+                json.dumps(predecessor, sort_keys=True, ensure_ascii=False).encode("utf-8")
+            ).hexdigest(),
         },
     )
     (folder / "manifest.yaml").write_text(yaml.safe_dump(manifest), encoding="utf-8")
@@ -65,7 +64,7 @@ def test_yaml_title_and_description_propagate_across_reader_outputs(
     literal_catalog, monkeypatch, capsys
 ):
     records, original, catalog = literal_catalog
-    record = records[0]
+    record = next(row for row in records if row.id == "OCF-EMG-001")
     pack = catalog.require("en-US")
     # Change the isolated YAML, then reconstruct the ordinary resource catalog.
     source = pack.path / pack.localized_function_files[record.id]
@@ -76,7 +75,7 @@ def test_yaml_title_and_description_propagate_across_reader_outputs(
     data["common_uses"] = [
         {"text": "Synthetic fixture use", "status": "reviewed", "version": "1.0.0"}
     ]
-    target = records[1]
+    target = next(row for row in records if row.id == "OCF-BOD-002")
     proposal = {
         "function_id": target.id,
         "relationship_type": "complementary",
@@ -151,7 +150,7 @@ def test_yaml_title_and_description_propagate_across_reader_outputs(
     guide = listening_guides.function_guide_markdown(record, catalog=changed)
     assert "Synthetic fixture tag" in guide and "Synthetic fixture use" in guide
     assert "Draft optional suggestions" in guide
-    listing = agent_api.list_functions(limit=10)
+    listing = agent_api.list_functions(query="Distinctive fixture title")
     assert any(r["name"] == "Distinctive fixture title" for r in listing["items"])
     assert "Distinctive fixture title" in listening_guides._guide_catalog(records)
     assert b"Distinctive fixture title" in listening_guides.portable_index_html(records)

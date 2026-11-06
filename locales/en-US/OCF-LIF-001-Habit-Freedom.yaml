@@ -261,7 +261,6 @@ entries:
 
       This concludes your OCF Habit Freedom exercise.'
 slug: de-hab
-historical_record: functions/lifestyle/de-hab.yaml
 classification:
   primary_domain: lifestyle
   secondary_domains:
@@ -320,6 +319,635 @@ narration:
     role: closer
 editorial:
   command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-LIF-001
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 69b0ec561328d58dec96076542457d8582c8e2cea7a467dc307b493f474b108b
+    classification: RENAME TITLE/CUE — UPDATE TEACHING
+    recommended_title: Habit Freedom
+    recommended_primary_cue: PLUS-FREE THIS HABIT
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Recognize selected unwanted physical/mental habit as it arises, inhale/hold/complete
+      cue/candle-like exhale for progressive lasting elimination. Preserve wanted memories/skills. This
+      is habit change, not ending a temporary OCF application.
+    pair_reason: Targeted lasting habit change stays distinct from temporary application Release; cue
+      explicitly selects this habit rather than ending every pattern.
+    title_cue_relationship_or_exception: Targeted lasting habit change stays distinct from temporary application
+      Release; cue explicitly selects this habit rather than ending every pattern.
+    teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
+    documentary_intent: Reduce/remove an unwanted physical or mental habit pattern when it arises.
+    alternatives:
+    - title: End This Habit
+      cue: PLUS-END THIS HABIT
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
 localization:
   status: complete
   contract_sha256: 35147cea2f310c6e40e0c3f6f24ac34082ce9d5af8ad5cbc5557197b2d337cdc
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-LIF-001-PRIMARY
+    command_status: review-required
+    commands:
+    - PLUS-NO MORE, NO MORE
+    name: DE-HAB
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - De-Hab
+  compatibility:
+    legacy_commands:
+    - PLUS-NO MORE, NO MORE
+    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is
+      historical lookup. Existing controls remain unchanged.
+    state: historical-lookup
+  historical_lookup:
+  - text: De-Hab
+    kind: former-title
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+  - text: PLUS-NO MORE, NO MORE
+    kind: former-primary
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+    command_id: OCF-CMD-LIF-001-PRIMARY
+  - text: Plus No More No More
+    kind: former-teaching
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+    command_id: OCF-CMD-LIF-001-PRIMARY
+  status:
+    evidence: community-hypothesis
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-lif-001.title
+    short_description_key: functions.ocf-lif-001.short-description
+    purpose_key: functions.ocf-lif-001.purpose
+  commands:
+  - id: OCF-CMD-LIF-001-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-lif-001-primary.label
+      usage_key: commands.ocf-cmd-lif-001-primary.usage
+      purpose_key: functions.ocf-lif-001.purpose
+      explanation_key: commands.ocf-cmd-lif-001-primary.explanation
+      display_cue_key: commands.ocf-cmd-lif-001-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-lif-001-primary.spoken-cue
+    observed_phrase:
+      text: Plus Free This Habit
+      narration_key: hplus.function.ocf-lif-001.function-body
+      relationship: canonical-match
+  predecessor_resource_sha256: 3557fcd51563c091a7df3396c5abacc27f41cd0d59ee1084ebaccfeffb6cd096
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
+      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
+      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: 8fe3d2f67a8ec07622253ac0d17085222c81d9ce5f2060593b4767540a0ceb19
+    status: accepted
+    previous_values_sha256: fa1afccbdedc5c4abcd187d7f0a91c9f576a2764b5a4c1fe984566a1235cb133
+    current_values_sha256: fa38566762746f4ab097eccce2758a6f3982432f70596883d617bda0e56c72d0
+    changed_narration_keys:
+    - hplus.function.ocf-lif-001.closer
+    - hplus.function.ocf-lif-001.function-body
+    previous_resolved_text_sha256:
+      hplus.function.ocf-lif-001.function-body: f7c82522f0d9581abd13e0bf991c328bf336854a65b9f47e707be143b5c07ecc
+      hplus.function.ocf-lif-001.closer: c7d0ce6859afc74ae1a1f7b7b4d4c63973d6a989c8d3fcd565df164c54e9e8f7
+    current_resolved_text_sha256:
+      hplus.function.ocf-lif-001.function-body: 1dcf1e26f65825ffe40c066373507b607470e7b627c8abe3cc64760002965ed7
+      hplus.function.ocf-lif-001.closer: 862738bbea56f75de688dadb7bcaf9fd05df21fdf770210913d1493c2a7650b8
+    review_note: Change title from De-Hab to Habit Freedom and update exercise sign-off. Replace two body
+      mentions and one closer mention from Plus No More No More to Plus Free This Habit. Preserve deliberate
+      recognition and selection of the unwanted physical or mental habit as it arises, progressive lasting
+      change, inhale/hold/cue/candle-like exhale and useful memories, knowledge and skills. Retain De-Hab
+      and superseded cue as historical lookup; introduce no mode or release. Do not reinterpret as cancelling
+      other functions or stopping a temporary application.
+    approval_response: '1'
+    review_position: 26
+    separate_review_needed: true
+  - id: OCF-FUNCTIONAL-METADATA-PERSISTENCE
+    kind: approved-functional-metadata
+    source_commit: 4da47a5740ead0be6bc3127437ee7b36a9c86ddf
+    scope: OCF-LIF-001:persistence
+    decision_source: Please do
+    source_row_sha256: 4697d109dc90fb05461d04a4bcfa9ab6a77314326dc034940b1ef1225782a7b4
+    status: accepted
+    current_values_sha256: 65873d6180b659d7ee6a058db8e4d29cd6c8931b0d35be86a81e7fe39bd8afc3
+    review_note: 'Habit Freedom: 1'
+    approval_response: approve
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6:opener
+      kind: structural-inference
+      line_candidates:
+      - 8
+      - 174
+      scope: document
+      source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    - category: closer
+      confidence: low
+      id: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6:closer
+      kind: structural-inference
+      line_candidates:
+      - 171
+      scope: document
+      source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    - category: preparation
+      confidence: low
+      id: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6:preparation
+      kind: structural-inference
+      line_candidates:
+      - 8
+      - 16
+      - 22
+      - 143
+      - 172
+      - 175
+      scope: document
+      source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    - category: command_association
+      confidence: low
+      id: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6:command_association
+      kind: structural-inference
+      line_candidates:
+      - 150
+      - 160
+      - 169
+      - 220
+      scope: document
+      source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    - category: future_use
+      confidence: low
+      id: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6:future_use
+      kind: structural-inference
+      line_candidates:
+      - 155
+      - 165
+      - 170
+      scope: document
+      source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    - category: return
+      confidence: low
+      id: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6:return
+      kind: structural-inference
+      line_candidates:
+      - 177
+      - 208
+      - 209
+      - 211
+      - 214
+      - 218
+      scope: document
+      source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    - category: purpose
+      confidence: medium
+      id: review:OCF-LIF-001:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 6
+      - 7
+      scope: document
+      source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    - category: opener
+      confidence: medium
+      id: review:OCF-LIF-001:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 144
+      - 147
+      scope: document
+      source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    - category: main
+      confidence: medium
+      id: review:OCF-LIF-001:main
+      kind: function-specification-inference
+      line_candidates:
+      - 148
+      - 166
+      scope: document
+      source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    - category: association
+      confidence: medium
+      id: review:OCF-LIF-001:association
+      kind: function-specification-inference
+      line_candidates:
+      - 148
+      - 156
+      scope: document
+      source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-LIF-001:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 148
+      - 166
+      scope: document
+      source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    - category: future_use
+      confidence: medium
+      id: review:OCF-LIF-001:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 148
+      - 170
+      scope: document
+      source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-LIF-001:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 222
+      scope: document
+      source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    - category: closer
+      confidence: medium
+      id: review:OCF-LIF-001:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 167
+      - 175
+      scope: document
+      source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-LIF-001:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 176
+      - 207
+      scope: document
+      source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    - category: handoff
+      confidence: medium
+      id: review:OCF-LIF-001:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 208
+      - 222
+      scope: document
+      source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-LIF-001:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 148
+      - 166
+      scope: document
+      source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+      path: +Transcripts From available tapes/De-Hab/De-Hab.lrc
+      related_sha256:
+      - 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+      - bea2d2791d0b885e6368540b6f9038ae8a2410cb07604f21cd52631c87ef963d
+      sha256: 0e36818885f96ee26386c08f34b78c33597b246f8b2b83de5490be9cc5ecfff8
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/De-Hab/De-Hab.ocr.pdf
+      related_sha256: []
+      sha256: 6bf70de4cd63ff17efaf730f54f9fd8dbea205fdb3da554aa24fcdcdb4ea5d14
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+      path: +Transcripts From available tapes/De-Hab/De-Hab.srt
+      related_sha256:
+      - 0e36818885f96ee26386c08f34b78c33597b246f8b2b83de5490be9cc5ecfff8
+      - 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+      sha256: bea2d2791d0b885e6368540b6f9038ae8a2410cb07604f21cd52631c87ef963d
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+      path: +Transcripts From available tapes/De-Hab/De-Hab.txt
+      related_sha256:
+      - 0e36818885f96ee26386c08f34b78c33597b246f8b2b83de5490be9cc5ecfff8
+      - bea2d2791d0b885e6368540b6f9038ae8a2410cb07604f21cd52631c87ef963d
+      sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/De-Hab/folder.jpg
+      related_sha256: []
+      sha256: 0cd01a8acab3e191103e78941b56fbcc658a3c09838b3e7e3f83c9d575f8498e
+  specifications:
+    analysis_review:
+      claim_categories:
+      - guaranteed-habit-erasure
+      - whole-system-pattern-removal
+      - automatic-whole-system-learning
+      family: habit-pattern-reduction
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+            end_line: 156
+            file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+            source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+            start_line: 148
+          status: supported
+          summary: Deliberate legacy cue paired with selected goal and breathing; canonical variants/aliases
+            are separate identity metadata, not silently changed source speech.
+        closer:
+          locators:
+          - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+            end_line: 175
+            file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+            source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+            start_line: 167
+          status: supported
+          summary: Future-use reinforcement and learning-context closure to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+            end_line: 207
+            file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+            source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+            start_line: 176
+          status: supported
+          summary: Sleep-to-twenty shell present; repeated ASR numbers do not establish reinforcement
+            or measured timing.
+        conversion:
+          locators:
+          - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+            end_line: 166
+            file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+            source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+            start_line: 148
+          status: inferred
+          summary: Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath
+            holding and automatic whole-system learning need review. Reframing a physical/metaphysical
+            goal is a material choice, not assumed equivalence.
+        future_use:
+          locators:
+          - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+            end_line: 170
+            file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+            source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+            start_line: 148
+          status: supported
+          summary: Conditional use when selected habit appears; deliberate desire/recognition matters,
+            not any accidental cue occurrence.
+        handoff:
+          locators:
+          - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+            end_line: 222
+            file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+            source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+            start_line: 208
+          status: supported
+          summary: Waking countdown, eyes-open return and target reminder where preserved.
+        identity:
+          locators:
+          - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+            end_line: 156
+            file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+            source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+            start_line: 148
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+            end_line: 166
+            file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+            source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+            start_line: 148
+          status: supported
+          summary: recognize-unwanted-pattern-as-it-arises; inhale-and-hold; issue-no-more-cue; exhale;
+            associate-pattern-with-progressive-reduction
+        opener:
+          locators:
+          - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+            end_line: 147
+            file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+            source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+            start_line: 144
+          status: supported
+          summary: Orient to the function and establish receptive learning context before the target instruction.
+        preparation:
+          locators:
+          - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+            end_line: 143
+            file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+            source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+            start_line: 8
+          status: supported
+          summary: Supported uninterrupted relaxation, temporary repository setting-aside and counted
+            ten-state entry where described.
+        provenance:
+          locators:
+          - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+            end_line: 222
+            file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+            source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Corrupted counts
+            and possible underlay196-207 are not authenticated reinforcement. No specific undo/reversal
+            or habit-type exception is supplied.
+        purpose:
+          locators:
+          - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+            end_line: 7
+            file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+            source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+            start_line: 6
+          status: supported
+          summary: Reduce/remove an unwanted physical or mental habit pattern when it arises.
+        rehearsal:
+          locators:
+          - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+            end_line: 166
+            file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+            source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+            start_line: 148
+          status: not-present
+          summary: Repeated teaching does not prove an explicit listener performance trial; no distinct
+            intelligible trial established in the available text.
+        safety_claims:
+          locators:
+          - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+            end_line: 166
+            file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+            source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+            start_line: 148
+          status: supported
+          summary: guaranteed-habit-erasure; whole-system-pattern-removal; automatic-whole-system-learning.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+            end_line: 147
+            file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+            source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+            start_line: 144
+          status: supported
+          summary: Reference learning shell uses ten preparation, eleven opening, ten close and sleep-to-twenty/waking
+            return where preserved; not runtime OCF state requirements.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+            end_line: 222
+            file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+            source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Corrupted
+            counts and possible underlay196-207 are not authenticated reinforcement. No specific undo/reversal
+            or habit-type exception is supplied.
+      source_extent:
+        content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
+        end_line: 222
+        file: +Transcripts From available tapes/De-Hab/De-Hab.txt
+        source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-LIF-001:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-LIF-001:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-LIF-001:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-LIF-001:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-LIF-001:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-LIF-001:main
+        operations:
+        - recognize-unwanted-pattern-as-it-arises
+        - inhale-and-hold
+        - issue-no-more-cue
+        - exhale
+        - associate-pattern-with-progressive-reduction
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-LIF-001:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-LIF-001:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-LIF-001:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-LIF-001:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-LIF-001:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Corrupted counts and possible underlay196-207 are not authenticated reinforcement. No specific undo/reversal
+      or habit-type exception is supplied.
+    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and automatic
+      whole-system learning need review. Reframing a physical/metaphysical goal is a material choice,
+      not assumed equivalence.
+    states:
+      preferred: []
+      required: []
+      status: unknown

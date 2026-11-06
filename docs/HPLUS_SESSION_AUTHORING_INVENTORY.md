@@ -17,8 +17,9 @@ checkpoint only; they are not current render or editorial-approval claims.
 There is **not one full, tracked OCF script per each of the 55 mapped
 functions**. The original transcripts are local input under
 `references/HumanPlusTranscripts/`. The 55 canonical function identities and
-the source analysis that points into those files are tracked under `functions/`
-and `function-content/`. Exact source snapshots and source-first block drafts
+the stable function identities are tracked in complete per-locale function
+resources under `locales/<tag>/`, with non-restricted analysis and binding
+metadata embedded in those resources. Exact source snapshots and source-first block drafts
 for all 55 are in the ignored `.ocf-authoring/` workspace (39 source snapshots;
 16 records remain source-unavailable). Only Attention currently has a complete
 tracked timed-session path: the citation-only import `audio/scripts/attention.yaml`,
@@ -62,7 +63,7 @@ Attention template or any function audio manifest.
 | `references/HumanPlusTranscripts/+Transcripts From available tapes/*/` | User-supplied `.txt`, `.srt`, `.lrc`, OCR PDFs and associated notes; available transcript text is unauthenticated or partial as marked in sidecars | Untracked user input; read-only, not committed | Research/source input only. It is not a runtime package resource. |
 | `references/HumanPlusTranscripts/<function>/*_reconstructed_clean.txt` and `*_reconstructed_annotated.txt` | Explicit reconstructions/mockups, not recovered transcripts | Untracked user input; not committed | Separate local reconstruction candidates. Does not change the 16 canonical source-unavailable statuses. |
 | `references/HumanPlusTranscripts/Preparation/PreparationExample{1,2,3}.txt` | User-selected preparation examples; authentication/completeness remain unverified | Untracked user input; not committed | Local Preparation Learning text review. Example 2 remains separate from the Example 1/3 basis. |
-| `functions/**/*.yaml` | Canonical 55 function identities, commands, availability, safety and reimplementation status | Tracked | Discovery/ownership metadata; not full narration scripts. Keep all 16 unavailable records `planned`. |
+| `locales/en-US/OCF-*.yaml` | Canonical 58 complete function resources, including identity, commands, availability, safety, narration, and embedded review/runtime metadata | Tracked | Sole function authority. Keep all 16 unavailable source mappings `planned`; availability never proves rights or authenticity. |
 | `function-content/{evidence,specifications,decisions,bindings}/OCF-*.yaml` | Hash-addressed observations, exact source extents, candidate section locators, OCF decisions and bindings | Tracked | Analytical/provenance sidecars. They do not authenticate source, approve wording, or define runtime state timing. |
 | `.ocf-authoring/functions/OCF-*.yaml`, `.ocf-authoring/sources/*.yaml`, `.ocf-authoring/blocks/*.yaml` | Exact SOURCE snapshots and initial WORKING blocks; candidate semantic partitioning | Ignored local workspace; 55 skeletons, 39 available source snapshots, 16 source-unavailable skeletons | `ocf content` workspace/review only. Not imported by `ocf audio build`, not packaged. |
 | `.ocf-authoring/preparation-learning-shared-defaults.yaml` | Previous human-selected local preparation wording defaults, including explicit edits | Ignored local workspace | Preparation Learning WIP only; not a global function-session template. |

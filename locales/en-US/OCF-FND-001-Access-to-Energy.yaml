@@ -254,7 +254,6 @@ entries:
     version: 1.1.0
     text: To release your access channel, say in your mind, plus, release, eleven, access.
 slug: energize
-historical_record: functions/foundation/energize.yaml
 classification:
   primary_domain: foundation
   secondary_domains:
@@ -301,6 +300,558 @@ narration:
     role: closer
 editorial:
   command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-FND-001
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 61275e52b81522939fc992001948f33ac55353a6731d1b196106ffaede45ef62
+    classification: KEEP — TITLE, CUE, AND TEACHING ALREADY CONSISTENT
+    recommended_title: Access to Energy
+    recommended_primary_cue: PLUS-ENERGIZE
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Cue, picture result, direct M energy to selected purpose; no breath requirement.
+      Healing/protection/total-self direction exceeds simple energy restoration. Separate Plus Release
+      Eleven Access closes access channel; it is not generic Release.
+    pair_reason: ENERGIZE is a clear positive cue. Distinguish experiential access/direction of an energy
+      reserve from a restorative nap; preserve the separate Release Eleven Access resource and command.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. ENERGIZE is a clear
+      positive cue. Distinguish experiential access/direction of an energy reserve from a restorative
+      nap; preserve the separate Release Eleven Access resource and command.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Explore a purported internal energy reserve and direct a selected portion toward
+      an imagined use.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
 localization:
   status: complete
   contract_sha256: 3c6e20879a801778abcb143c97074e85919fd2f163c86e7665585ffe84f2e4c6
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-FND-001-PRIMARY
+    command_status: unchanged
+    commands:
+    - PLUS-ENERGIZE
+    name: ACCESS TO ENERGY
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Access to Energy
+  compatibility:
+    state: unchanged
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-fnd-001.title
+    short_description_key: functions.ocf-fnd-001.short-description
+    purpose_key: functions.ocf-fnd-001.purpose
+  commands:
+  - id: OCF-CMD-FND-001-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-fnd-001-primary.label
+      usage_key: commands.ocf-cmd-fnd-001-primary.usage
+      purpose_key: functions.ocf-fnd-001.purpose
+      explanation_key: commands.ocf-cmd-fnd-001-primary.explanation
+  - id: OCF-CMD-FND-001-ACCESS-CLOSE
+    localization:
+      label_key: commands.ocf-cmd-fnd-001-access-close.label
+      usage_key: commands.ocf-cmd-fnd-001-access-close.usage
+      purpose_key: functions.ocf-fnd-001.purpose
+      explanation_key: commands.ocf-cmd-fnd-001-access-close.explanation
+  command_phrases:
+  - id: OCF-CMD-FND-001-ACCESS-CLOSE
+    phrase: Plus Release Eleven Access
+    source_narration_key: hplus.function.ocf-fnd-001.access-close
+    status: observed
+  predecessor_resource_sha256: 163b3601fefff57c66963dabc02a2da396e92e4a9e5643e4068b12fda55d7d6a
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: main
+      confidence: low
+      id: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a:main
+      kind: structural-inference
+      line_candidates:
+      - 205
+      - 208
+      scope: document
+      source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+    - category: preparation
+      confidence: low
+      id: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a:preparation
+      kind: structural-inference
+      line_candidates:
+      - 3
+      - 226
+      - 239
+      scope: document
+      source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+    - category: command_association
+      confidence: low
+      id: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a:command_association
+      kind: structural-inference
+      line_candidates:
+      - 73
+      - 206
+      - 211
+      - 228
+      scope: document
+      source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+    - category: future_use
+      confidence: low
+      id: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a:future_use
+      kind: structural-inference
+      line_candidates:
+      - 205
+      - 208
+      scope: document
+      source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+    - category: purpose
+      confidence: medium
+      id: review:OCF-FND-001:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 2
+      scope: document
+      source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+    - category: opener
+      confidence: medium
+      id: review:OCF-FND-001:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 55
+      - 65
+      scope: document
+      source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+    - category: main
+      confidence: medium
+      id: review:OCF-FND-001:main
+      kind: function-specification-inference
+      line_candidates:
+      - 66
+      - 96
+      scope: document
+      source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+    - category: association
+      confidence: medium
+      id: review:OCF-FND-001:association
+      kind: function-specification-inference
+      line_candidates:
+      - 73
+      - 96
+      scope: document
+      source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-FND-001:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 66
+      - 96
+      scope: document
+      source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+    - category: future_use
+      confidence: medium
+      id: review:OCF-FND-001:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 202
+      - 214
+      scope: document
+      source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+    - category: suspend_cancel_reset
+      confidence: medium
+      id: review:OCF-FND-001:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 226
+      - 239
+      scope: document
+      source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+    - category: closer
+      confidence: medium
+      id: review:OCF-FND-001:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 226
+      - 239
+      scope: document
+      source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-FND-001:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 244
+      - 251
+      scope: document
+      source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+    - category: handoff
+      confidence: unknown
+      id: review:OCF-FND-001:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 252
+      - 379
+      scope: document
+      source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-FND-001:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 76
+      - 96
+      scope: document
+      source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+      path: +Transcripts From available tapes/Access to Energy/Access to Energy.lrc
+      related_sha256:
+      - 9069cc4073e3e71c7fca207e1ef73e7514109a270f23adda09aa13475f46feb2
+      - a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+      sha256: c04536fedd5eba592fda4a7cbc6d595b4668df6a663dd7f826aaa65f38837933
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+      path: +Transcripts From available tapes/Access to Energy/Access to Energy.srt
+      related_sha256:
+      - a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+      - c04536fedd5eba592fda4a7cbc6d595b4668df6a663dd7f826aaa65f38837933
+      sha256: 9069cc4073e3e71c7fca207e1ef73e7514109a270f23adda09aa13475f46feb2
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+      path: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+      related_sha256:
+      - 9069cc4073e3e71c7fca207e1ef73e7514109a270f23adda09aa13475f46feb2
+      - c04536fedd5eba592fda4a7cbc6d595b4668df6a663dd7f826aaa65f38837933
+      sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Access to Energy/folder.jpg
+      related_sha256: []
+      sha256: dd4d869bce574585cf3cfb1dd54c24d933ee0427734f51c28cc12d45a64a3bb1
+  specifications:
+    analysis_review:
+      claim_categories:
+      - inner-energy-reserve
+      - energy-as-identity-or-metaphysical-mechanism
+      - enhanced-ability
+      - experiential-vigor-recall
+      family: experiential-energy-exploration
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+            end_line: 96
+            file: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+            source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+            start_line: 73
+          status: supported
+          summary: Energize cue is paired with recalled vigor and representation of a desired form of
+            use; no breath-hold requirement is stated in this main instruction.
+        closer:
+          locators:
+          - content_group_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+            end_line: 239
+            file: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+            source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+            start_line: 226
+          status: supported
+          summary: Leave exploration/access and close to ten, then practice imaginative use rather than
+            the usual immediate sleep consolidation.
+        consolidation:
+          locators:
+          - content_group_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+            end_line: 251
+            file: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+            source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+            start_line: 244
+          status: supported
+          summary: Post-close imaginative experimentation is described; sleep-to-twenty is not established
+            in this available text.
+        conversion:
+          locators:
+          - content_group_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+            end_line: 96
+            file: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+            source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+            start_line: 66
+          status: inferred
+          summary: Preserve voluntary target selection and learned association where appropriate; breath
+            holding, guaranteed response and automatic whole-system learning require editorial review
+            rather than scientific endorsement.
+        future_use:
+          locators:
+          - content_group_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+            end_line: 214
+            file: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+            source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+            start_line: 202
+          status: supported
+          summary: Energize cue followed by a representation of intended use; growing effectiveness is
+            asserted with deliberate repeated use.
+        handoff:
+          locators:
+          - content_group_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+            end_line: 379
+            file: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+            source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+            start_line: 252
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Ending after
+            imaginative practice is absent; source naming of M-energy does not establish a physical mechanism
+            or generation identity.
+        identity:
+          locators:
+          - content_group_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+            end_line: 96
+            file: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+            source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+            start_line: 73
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+            end_line: 96
+            file: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+            source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+            start_line: 66
+          status: supported
+          summary: recall-vigorous-experience; internally-issue-energize-cue; explore-felt-energy-source;
+            become-familiar-with-experience; gather-portion-for-use; represent-intended-use
+        opener:
+          locators:
+          - content_group_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+            end_line: 65
+            file: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+            source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+            start_line: 55
+          status: supported
+          summary: Orient to the target function and establish receptive learning context before the instruction.
+        preparation:
+          locators:
+          - content_group_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+            end_line: 54
+            file: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+            source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+            start_line: 3
+          status: supported
+          summary: Comfortable posture, loosen clothing, eyes closed and counted ten-state entry; no repository-box
+            step established in this version.
+        provenance:
+          locators:
+          - content_group_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+            end_line: 379
+            file: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+            source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Ending after
+            imaginative practice is absent; source naming of M-energy does not establish a physical mechanism
+            or generation identity.
+        purpose:
+          locators:
+          - content_group_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+            end_line: 2
+            file: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+            source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+            start_line: 1
+          status: supported
+          summary: Explore a purported internal energy reserve and direct a selected portion toward an
+            imagined use.
+        rehearsal:
+          locators:
+          - content_group_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+            end_line: 96
+            file: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+            source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+            start_line: 66
+          status: supported
+          summary: Explicit guided inner exploration followed by post-close imaginative play applying
+            the function to senses/emotions/thoughts.
+        safety_claims:
+          locators:
+          - content_group_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+            end_line: 96
+            file: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+            source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+            start_line: 76
+          status: supported
+          summary: inner-energy-reserve; energy-as-identity-or-metaphysical-mechanism; enhanced-ability;
+            experiential-vigor-recall. Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+            end_line: 65
+            file: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+            source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+            start_line: 55
+          status: supported
+          summary: Access/exploration context closes to ten; subsequent imaginative play occurs in ten.
+            A final waking exit is not supplied.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+            end_line: 239
+            file: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+            source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+            start_line: 226
+          status: supported
+          summary: Release-eleven-access phrase closes the training context, not an established universal
+            cancellation of the energy function.
+      source_extent:
+        content_group_sha256: b27f5af0adf19a49b88a8e3fe782ca62896b2710c0edf584a14cff737753299f
+        end_line: 379
+        file: +Transcripts From available tapes/Access to Energy/Access to Energy.txt
+        source_sha256: a78342b7802c66ffb76d8f1ac368487a2c7b09b6f75a92ffd657fbf4fddcaf3a
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-FND-001:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-FND-001:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-FND-001:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-FND-001:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-FND-001:handoff
+        operations: []
+        status: unknown
+      main:
+        evidence_refs:
+        - review:OCF-FND-001:main
+        operations:
+        - recall-vigorous-experience
+        - internally-issue-energize-cue
+        - explore-felt-energy-source
+        - become-familiar-with-experience
+        - gather-portion-for-use
+        - represent-intended-use
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-FND-001:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-FND-001:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-FND-001:rehearsal
+        operations:
+        - documented-rehearsal
+        status: inferred
+      safety_claims:
+        evidence_refs:
+        - review:OCF-FND-001:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-FND-001:suspend_cancel_reset
+        operations:
+        - documented-suspend-cancel-reset
+        status: inferred
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Ending after imaginative practice is absent; source naming of M-energy does not establish a physical
+      mechanism or generation identity.
+    - Preserve voluntary target selection and learned association where appropriate; breath holding, guaranteed
+      response and automatic whole-system learning require editorial review rather than scientific endorsement.
+    states:
+      preferred: []
+      required: []
+      status: unknown

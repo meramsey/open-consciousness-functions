@@ -1073,7 +1073,7 @@ def test_staging_removes_previously_eligible_citation_only_files(tmp_path):
     stage_data(root, target)
     assert (target / "audio/templates/sessions/session.yaml").exists()
     write_yaml(template, {"origin": "reference-derived"})
-    stale = target / "function-content/bindings/OCF-FND-002.yaml"
+    stale = target / "function-content/obsolete-layer/OCF-FND-002.yaml"
     write_yaml(stale, {"private": "citation-only"})
     stage_data(root, target)
     assert not stale.exists()

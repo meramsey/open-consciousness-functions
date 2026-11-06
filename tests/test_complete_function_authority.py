@@ -64,41 +64,37 @@ def test_partial_missing_and_stale_locales_never_inherit_speech():
 
 @pytest.mark.integration
 def test_all_58_dry_run_resources_preserve_behavior_and_validate():
-    from ocf_tools.function_authority_migration import build
-    from ocf_tools.utils import yaml_safe_load
+    from ocf_tools.indexes import load_all_functions
+    from ocf_tools.locale import LocaleCatalog
+    from ocf_tools.paths import REPO_ROOT
     from ocf_tools.validators import _load_schema, validate_against_schema
 
-    ledger, writes = build()
-    assert len(ledger["files"]) == len(ledger["locale_files"]) == 58
-    if not writes:
-        return  # Committed successor is checked by build.verify on every call.
-    for name, raw in writes.items():
-        if not name.startswith("locales/"):
-            continue
-        data = yaml_safe_load(raw.decode())
-        assert not validate_against_schema(data, _load_schema("localized-function.schema.json")), (
-            name
-        )
+    resources = LocaleCatalog().require("en-US").localized_functions
+    records = load_all_functions()
+    assert len(resources) == len(records) == 58
+    for record in records:
+        data = resources[record.id]
+        assert not validate_against_schema(data, _load_schema("localized-function.schema.json"))
         assert completeness(data, data)["status"] == "complete"
+        assert data["record_metadata"] and isinstance(data["content"], dict)
+        raw = record.path.read_bytes()
         assert not raw.startswith(b"\n")
+    assert not (REPO_ROOT / "functions").exists()
 
 
 @pytest.mark.integration
 def test_all_functions_load_without_any_physical_global_registry(tmp_path):
-    import hashlib
     import shutil
 
     from ocf_tools.commands import localized_cue
     from ocf_tools.function_catalog import load_functions
     from ocf_tools.locale import LocaleCatalog
-    from ocf_tools.locale_history import historical_function_resources, read_logical
     from ocf_tools.paths import REPO_ROOT
 
     shutil.copytree(REPO_ROOT / "locales", tmp_path / "locales")
-    shutil.copytree(
-        REPO_ROOT / "function-content/editorial", tmp_path / "function-content/editorial"
-    )
+    shutil.copytree(REPO_ROOT / "schemas", tmp_path / "schemas")
     assert not (tmp_path / "functions").exists()
+    assert not (tmp_path / "function-content").exists()
     records = load_functions(tmp_path)
     catalog = LocaleCatalog(tmp_path / "locales")
     assert not catalog.problems
@@ -123,57 +119,8 @@ def test_all_functions_load_without_any_physical_global_registry(tmp_path):
             ):
                 cue = localized_cue(record, command, catalog=catalog, strict=True)
                 assert cue["spoken_cue"] == command.data["spoken"]
-    for name, row in historical_function_resources(tmp_path).items():
-        assert (
-            hashlib.sha256(
-                read_logical(tmp_path, name, preserve_newlines=True).encode()
-            ).hexdigest()
-            == row["sha256"]
-        )
-
-
-@pytest.mark.integration
-def test_full_migration_resumes_after_publication_interruption_and_is_idempotent(
-    tmp_path, monkeypatch
-):
-    import json
-    import shutil
-
-    from ocf_tools import function_authority_migration as migration
-    from ocf_tools.paths import REPO_ROOT
-    from ocf_tools.utils import OCFError
-
-    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
-    shutil.copytree(REPO_ROOT / "locales", tmp_path / "locales")
-    original = json.loads((REPO_ROOT / migration.LEDGER).read_text())
-    for name, row in original["files"].items():
-        target = tmp_path / name
-        target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_bytes((REPO_ROOT / row["archive"]).read_bytes())
-    for name, row in original["locale_files"].items():
-        (tmp_path / name).write_bytes((REPO_ROOT / row["archive"]).read_bytes())
-    monkeypatch.setattr(migration, "REPO_ROOT", tmp_path)
-    _, planned = migration.build(tmp_path)
-    assert len(planned) == 174
-    write = migration.write_text_atomic
-
-    def interrupted(path, text, **kwargs):
-        if path == tmp_path / migration.LEDGER:
-            raise OSError("synthetic interruption before terminal ledger publication")
-        return write(path, text, **kwargs)
-
-    monkeypatch.setattr(migration, "write_text_atomic", interrupted)
-    with pytest.raises(OSError, match="synthetic interruption"):
-        migration.apply(tmp_path)
-    assert not (tmp_path / migration.LEDGER).exists()
-    monkeypatch.setattr(migration, "write_text_atomic", write)
-    receipt = migration.apply(tmp_path)
-    assert receipt["functions"] == 58 and receipt["speech_unchanged"]
-    assert migration.apply(tmp_path)["status"] == "already-migrated; no writes"
-    first = next(iter(original["files"].values()))
-    (tmp_path / first["archive"]).write_bytes(b"unauthorized drift")
-    with pytest.raises(OCFError, match="archive drift"):
-        migration.apply(tmp_path)
+    assert all("content" in record.data for record in records)
+    assert len(list((tmp_path / "locales/en-US").glob("OCF-*.yaml"))) == 58
 
 
 @pytest.mark.unit
@@ -221,14 +168,73 @@ def test_new_function_draft_is_local_self_contained_and_unrenderable():
         canonical_command="PLUS-FIXTURE",
         short_name="Synthetic authoring fixture",
     )
-    record = function_from_dict(source, REPO_ROOT / "functions/cognition/fixture.yaml")
+    record = function_from_dict(source, REPO_ROOT / "locales/en-US/OCF-COG-999-Fixture.yaml")
     data = draft_resource(record, LocaleCatalog())
     assert not validate_against_schema(data, _load_schema("localized-function.schema.json"))
     assert data["entries"] == {} and data["localization"]["status"] == "partial"
-    assert "historical_record" not in data
+    assert data["record_metadata"] and isinstance(data["content"], dict)
     projected = project(data, REPO_ROOT / "locales/en-US/OCF-COG-999-Fixture.yaml", REPO_ROOT)
     assert projected.id == record.id
     assert projected.command_records[0].data["spoken"] is None
+
+
+@pytest.mark.integration
+def test_new_draft_projects_localized_command_procedure_steps():
+    from ocf_tools.function_catalog import draft_resource
+    from ocf_tools.indexes import load_function_by_id
+    from ocf_tools.locale import LocaleCatalog
+
+    record = load_function_by_id("OCF-AUT-001")
+    draft = draft_resource(record, LocaleCatalog())
+    procedure = next(
+        row["procedure_steps"]
+        for row in [draft["activation"], *draft["secondary_commands"]]
+        if row["command_id"] == "OCF-CMD-AUT-001-PRIMARY"
+    )
+
+    assert procedure
+    assert procedure[0]["operation"] == "select-activity"
+    assert procedure[0]["instruction"]["text"]
+    assert procedure[0]["instruction"]["status"] == "canonical"
+
+    metadata_record = load_function_by_id("OCF-EXP-002")
+    metadata_draft = draft_resource(metadata_record, LocaleCatalog())
+    assert (
+        metadata_draft["record_metadata"]["command_phrases"]
+        == metadata_record.data["command_phrases"]
+    )
+
+
+@pytest.mark.unit
+def test_new_draft_resolves_procedure_operation_fallback_key(monkeypatch):
+    from types import SimpleNamespace
+
+    from ocf_tools import commands
+    from ocf_tools.function_catalog import draft_resource
+    from ocf_tools.indexes import load_function_by_id
+
+    monkeypatch.setattr(
+        commands,
+        "command_view",
+        lambda *args, **kwargs: {
+            "resolved_procedure_steps": [{"id": "select", "operation": "select-activity"}]
+        },
+    )
+
+    class Catalog:
+        def __init__(self):
+            self.keys = []
+
+        def raw_resource(self, key, locale, **kwargs):
+            self.keys.append((key, locale, kwargs))
+            return SimpleNamespace(text="Choose an activity", status=None, version="1.0.0"), None
+
+    catalog = Catalog()
+    draft = draft_resource(load_function_by_id("OCF-AUT-001"), catalog)
+    step = draft["activation"]["procedure_steps"][0]
+
+    assert catalog.keys[0][0] == "command.procedure.select-activity"
+    assert step["instruction"] == {"text": "Choose an activity", "version": "1.0.0"}
 
 
 @pytest.mark.unit

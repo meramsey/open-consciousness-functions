@@ -6,7 +6,6 @@ from types import SimpleNamespace
 import pytest
 from ocf_tools.utils import OCFError
 from tools import (
-    bootstrap_legacy_map,
     check_markdown_links,
     container_smoke_fixture,
     enrich_function_evidence,
@@ -105,71 +104,16 @@ def test_container_smoke_fixture_is_synthetic_deterministic_and_non_overwriting(
 
 
 @pytest.mark.unit
-def test_legacy_bootstrap_builds_all_frozen_mappings_and_reports_count(
-    monkeypatch, tmp_path, capsys
-):
-    monkeypatch.setattr(bootstrap_legacy_map, "REPO", tmp_path)
-    monkeypatch.setattr(bootstrap_legacy_map, "current_date", lambda: "2026-10-04")
-    records = [bootstrap_legacy_map.build_record(entry) for entry in bootstrap_legacy_map.E]
-    assert len(records) == 55
-    assert all(record["ocf"]["reimplementation_status"] == "planned" for record in records)
-    assert {record["legacy"]["source_availability"] for record in records} == {
-        "available",
-        "unavailable",
-    }
-    assert any(record["safety"]["notes"] for record in records)
-    assert all(record["version"]["created"] == "2026-10-04" for record in records)
-    assert bootstrap_legacy_map.main() == 0
-    assert len(list((tmp_path / "functions").rglob("*.yaml"))) == 55
-    assert "Wrote 55 function records" in capsys.readouterr().out
+def test_all_legacy_mappings_are_owned_by_canonical_locale_records():
+    from ocf_tools.indexes import load_all_functions
 
-    monkeypatch.setattr(bootstrap_legacy_map, "E", bootstrap_legacy_map.E[:1])
-    assert bootstrap_legacy_map.main() == 1
-    assert "expected 55, wrote 1" in capsys.readouterr().out
-
-
-@pytest.mark.unit
-def test_legacy_bootstrap_script_entrypoint_writes_only_to_temporary_root(
-    tmp_path, capsys, monkeypatch
-):
-    import runpy
-    import sys
-
-    script = Path(bootstrap_legacy_map.__file__).resolve()
-    isolated_root = tmp_path / "isolated"
-    original_resolve = Path.resolve
-
-    def resolve(path, *args, **kwargs):
-        if path.name == "bootstrap_legacy_map.py" and path.parent.name == "tools":
-            return isolated_root / "scripts/tools/bootstrap_legacy_map.py"
-        return original_resolve(path, *args, **kwargs)
-
-    monkeypatch.setattr(Path, "resolve", resolve)
-    monkeypatch.setattr(sys, "argv", [str(script)])
-    with pytest.raises(SystemExit) as exit_info:
-        runpy.run_path(str(script), run_name="__main__")
-    assert exit_info.value.code == 0
-    assert len(list((isolated_root / "functions").rglob("*.yaml"))) == 55
-    assert "Wrote 55 function records" in capsys.readouterr().out
-
-
-@pytest.mark.unit
-def test_legacy_bootstrap_script_guard_routes_only_to_injected_writer(monkeypatch):
-    import runpy
-    import sys
-
-    from ocf_tools import utils
-
-    writes = []
-    monkeypatch.setattr(
-        utils, "write_text_atomic", lambda path, content: writes.append((path, content))
-    )
-    monkeypatch.setattr(sys, "argv", [bootstrap_legacy_map.__file__])
-    with pytest.raises(SystemExit) as exit_info:
-        runpy.run_path(bootstrap_legacy_map.__file__, run_name="__main__")
-    assert exit_info.value.code == 0
-    assert len(writes) == 55
-    assert all("functions" in path.parts for path, _ in writes)
+    records = load_all_functions()
+    legacy = [
+        record for record in records if record.data["legacy"]["source_system"] == "Monroe H-PLUS"
+    ]
+    unavailable = [row for row in legacy if row.source_availability == "unavailable"]
+    assert len(records) == 58 and len(legacy) == 55 and len(unavailable) == 16
+    assert not Path("functions").exists()
 
 
 @pytest.mark.unit
@@ -632,7 +576,10 @@ def test_evidence_enrichment_cli_validates_by_default_and_applies_explicitly(
     import json
     import sys
 
-    record = SimpleNamespace(id="OCF-TST-001")
+    canonical = tmp_path / "locales/en-US/OCF-TST-001-Test.yaml"
+    canonical.parent.mkdir(parents=True)
+    canonical.write_text("function_id: OCF-TST-001\ncontent: {}\n", encoding="utf-8")
+    record = SimpleNamespace(id="OCF-TST-001", path=canonical)
     layer_data = {"evidence": {"sources": []}}
     report = {"files": [], "content_equivalence_groups": []}
     report_path = tmp_path / "report.json"
@@ -654,7 +601,7 @@ def test_evidence_enrichment_cli_validates_by_default_and_applies_explicitly(
 
     monkeypatch.setattr(sys, "argv", ["enrich_function_evidence", str(report_path), "--apply"])
     enrich_function_evidence.main()
-    assert written and written[0][0] == tmp_path / "function-content/evidence/OCF-TST-001.yaml"
+    assert written and written[0][0] == canonical
 
     import runpy
 

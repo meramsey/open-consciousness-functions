@@ -1,160 +1,674 @@
-schema_version: '2.0'
-locale: en-US
-domain: function
-function_id: OCF-FND-004
-title:
-  text: Relax
-  status: canonical
-  version: 1.0.0
-description:
-  text: Deepens physical and mental relaxation.
-  status: canonical
-  version: 1.0.0
-metadata_entries: {}
 activation:
   command_id: OCF-CMD-FND-004-PRIMARY
-  display_cue:
-    text: PLUS-RELAX
-  spoken_cue:
-    text: Plus Relax
-    status: reviewed
-    version: 1.0.0
-  label:
-    text: Primary activation command
-    status: canonical
-    version: 1.0.0
-  explanation:
-    text: This is the primary command for the function.
-    status: canonical
-    version: 1.0.0
-  usage:
-    text: Use only when you choose to activate the documented function.
-    status: canonical
-    version: 1.0.0
-  role: activation
   control:
     designation: primary
+    documentation:
+      order: 1
+      visible: true
+    effect_scope_ref: lifecycle.persistence
     phrase_ref:
       source: canonical-primary
-    documentation:
-      visible: true
-      order: 1
-    effect_scope_ref: lifecycle.persistence
     procedure:
-      ref: OCF-PROC-INHALE-HOLD
-      status: documented
+      before_steps: []
       evidence_keys:
       - hplus.function.ocf-fnd-004.function-body
-      before_steps: []
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
     relationships: {}
+  display_cue:
+    text: PLUS-RELAX
+  explanation:
+    status: canonical
+    text: This is the primary command for the function.
+    version: 1.0.0
+  label:
+    status: canonical
+    text: Primary activation command
+    version: 1.0.0
   procedure_steps:
   - id: inhale
-    operation: inhale
     instruction:
+      status: canonical
       text: Inhale.
-      status: canonical
       version: 1.0.0
+    operation: inhale
   - id: hold
-    operation: hold-breath
     instruction:
+      status: canonical
       text: Hold your breath.
-      status: canonical
       version: 1.0.0
+    operation: hold-breath
   - id: command
-    operation: think-or-say-command
     instruction:
+      status: canonical
       text: Think or say the command.
-      status: canonical
       version: 1.0.0
+    operation: think-or-say-command
   - id: exhale
-    operation: exhale
     instruction:
-      text: Exhale.
       status: canonical
+      text: Exhale.
       version: 1.0.0
-secondary_commands:
-- command_id: OCF-CMD-FND-004-LEGACY-01
-  display_cue:
-    text: PLUS-RELAX, RELAX
-  label:
-    text: Legacy compatibility phrase
-    status: canonical
-    version: 1.0.0
-  explanation:
-    text: This is a compatibility phrase, not a new canonical command.
-    status: canonical
+    operation: exhale
+  role: activation
+  spoken_cue:
+    status: reviewed
+    text: Plus Relax
     version: 1.0.0
   usage:
-    text: Compatibility phrase retained by the registry; historical authentication is not implied.
     status: canonical
+    text: Use only when you choose to activate the documented function.
     version: 1.0.0
-  role: legacy-alias
-  control:
-    designation: secondary
-    phrase_ref:
-      source: legacy-command
-      command_id: OCF-CMD-FND-004-LEGACY-01
-    availability: historical-lookup
-    documentation:
-      visible: false
-      order: 101
-    effect_scope_ref: lifecycle.persistence
-    relationships: {}
-  procedure_steps: []
-tags:
-- text: relaxation
-  status: draft
-  semantic_id: relaxation
-- text: calm
-  status: draft
-  semantic_id: calm
-- text: body-awareness
-  status: draft
-  semantic_id: body-awareness
-common_uses:
-- text: Taking time to explore physical ease and reduced unnecessary tension.
-  status: draft
-- text: Practicing a quiet transition from mental busyness toward rest.
-  status: draft
-relationships:
-  related_functions: []
-  complementary_functions: []
-  proposals:
-  - function_id: OCF-EMO-001
-    relationship_type: complementary
-    description:
-      text: Physical and mental relaxation differs from releasing a selected interfering emotion; choose
-        whichever intention fits the situation.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-FND-004
-      field: description
-      sha256: 7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9
-    - function_id: OCF-EMO-001
-      field: description
-      sha256: 864bf2596a2262e1921925522d903dca921655e4d26850f86ba2b9a6e296d1b0
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+category_labels:
+  body:
+    status: canonical
+    text: body
+  foundation:
+    status: canonical
+    text: foundation
 changelog:
-- version: 1.0.0
-  change: Structural migration; narration and cues unchanged.
+- change: Structural migration; narration and cues unchanged.
+  version: 1.0.0
+classification:
+  primary_domain: foundation
+  secondary_domains:
+  - body
+common_uses:
+- status: draft
+  text: Taking time to explore physical ease and reduced unnecessary tension.
+- status: draft
+  text: Practicing a quiet transition from mental busyness toward rest.
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources:
+    - key: pilot.function.complete
+      locale: en-US
+    - key: pilot.relax.associate
+      locale: en-US
+    - key: pilot.relax.future
+      locale: en-US
+    - key: pilot.relax.practice
+      locale: en-US
+    - key: pilot.relax.purpose
+      locale: en-US
+    - key: pilot.relax.rehearse
+      locale: en-US
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-PILOT-RELAX-001
+    voice_sources:
+    - externally-generated
+    - prerecorded-user
+    - tts
+  decisions:
+    decisions:
+    - description: Existing frozen pilot uses voluntary effort reduction instead of automatic physiological-release
+        claims; applies only to that pilot.
+      human_review: required
+      id: relax-pilot-operationalization
+      kind: ocf-design-choice
+      material_change: true
+      scope: pilot
+      status: provisional
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209:opener
+      kind: structural-inference
+      line_candidates:
+      - 1
+      - 2
+      - 49
+      - 188
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - category: main
+      confidence: low
+      id: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209:main
+      kind: structural-inference
+      line_candidates:
+      - 32
+      - 33
+      - 38
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - category: closer
+      confidence: low
+      id: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209:closer
+      kind: structural-inference
+      line_candidates:
+      - 45
+      - 188
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - category: preparation
+      confidence: low
+      id: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209:preparation
+      kind: structural-inference
+      line_candidates:
+      - 3
+      - 8
+      - 11
+      - 21
+      - 46
+      - 50
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - category: command_association
+      confidence: low
+      id: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209:command_association
+      kind: structural-inference
+      line_candidates:
+      - 34
+      - 39
+      - 43
+      - 187
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - category: future_use
+      confidence: low
+      id: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209:future_use
+      kind: structural-inference
+      line_candidates:
+      - 36
+      - 37
+      - 41
+      - 42
+      - 44
+      - 152
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - category: return
+      confidence: low
+      id: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209:return
+      kind: structural-inference
+      line_candidates:
+      - 52
+      - 154
+      - 155
+      - 172
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - category: purpose
+      confidence: medium
+      id: review:OCF-FND-004:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 2
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - category: opener
+      confidence: medium
+      id: review:OCF-FND-004:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 30
+      - 33
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - category: main
+      confidence: medium
+      id: review:OCF-FND-004:main
+      kind: function-specification-inference
+      line_candidates:
+      - 34
+      - 42
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - category: association
+      confidence: medium
+      id: review:OCF-FND-004:association
+      kind: function-specification-inference
+      line_candidates:
+      - 34
+      - 42
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-FND-004:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 33
+      - 44
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - category: future_use
+      confidence: medium
+      id: review:OCF-FND-004:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 34
+      - 44
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-FND-004:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 188
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - category: closer
+      confidence: medium
+      id: review:OCF-FND-004:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 43
+      - 50
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-FND-004:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 51
+      - 153
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - category: handoff
+      confidence: medium
+      id: review:OCF-FND-004:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 154
+      - 188
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-FND-004:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 42
+      scope: document
+      source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+      path: +Transcripts From available tapes/Relax/Relax.lrc
+      related_sha256:
+      - c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+      - ceb0f64951e935652c198bdd436b8aa8322f296625aaa38779fc0638964b30c4
+      sha256: f1ac45a76aa43a7647b9fe83033bc04d6b97cf616885bcea18efa827dec8d2fb
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Relax/Relax.ocr.pdf
+      related_sha256: []
+      sha256: ce6de3e5dbba2cf93626da37e4157303caca345953d0990b5f21504a469a41e6
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+      path: +Transcripts From available tapes/Relax/Relax.srt
+      related_sha256:
+      - c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+      - f1ac45a76aa43a7647b9fe83033bc04d6b97cf616885bcea18efa827dec8d2fb
+      sha256: ceb0f64951e935652c198bdd436b8aa8322f296625aaa38779fc0638964b30c4
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+      path: +Transcripts From available tapes/Relax/Relax.txt
+      related_sha256:
+      - ceb0f64951e935652c198bdd436b8aa8322f296625aaa38779fc0638964b30c4
+      - f1ac45a76aa43a7647b9fe83033bc04d6b97cf616885bcea18efa827dec8d2fb
+      sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Relax/folder.jpg
+      related_sha256: []
+      sha256: 2dafabac162157573f5e6dd81885562368c2115e8e6f9244cf353223a6c0c081
+  specifications:
+    analysis_review:
+      claim_categories:
+      - guaranteed-total-tension-release
+      - nervous-system-signal-mechanism
+      - automatic-whole-system-learning
+      family: relaxation-release
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+            end_line: 42
+            file: +Transcripts From available tapes/Relax/Relax.txt
+            source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+            start_line: 34
+          status: supported
+          summary: Pair the deliberately selected legacy cue with the target response and breathing procedure;
+            canonical spelling/compatibility remains separate metadata.
+        closer:
+          locators:
+          - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+            end_line: 50
+            file: +Transcripts From available tapes/Relax/Relax.txt
+            source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+            start_line: 43
+          status: supported
+          summary: Reinforce future remembering/use and close the learning context to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+            end_line: 153
+            file: +Transcripts From available tapes/Relax/Relax.txt
+            source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+            start_line: 51
+          status: supported
+          summary: Counted sleep-to-twenty segment is present; automatic integration is a source assertion,
+            not established mechanism.
+        conversion:
+          locators:
+          - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+            end_line: 42
+            file: +Transcripts From available tapes/Relax/Relax.txt
+            source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+            start_line: 34
+          status: inferred
+          summary: Existing Relax pilot remains frozen/provisional; this documents legacy breath/cue and
+            physiological claims without approving that pilot's reframing or source mechanism.
+        future_use:
+          locators:
+          - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+            end_line: 44
+            file: +Transcripts From available tapes/Relax/Relax.txt
+            source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+            start_line: 34
+          status: supported
+          summary: Use the breathing/cue routine when relaxation is desired; repeated use is asserted
+            to increase ease.
+        handoff:
+          locators:
+          - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+            end_line: 188
+            file: +Transcripts From available tapes/Relax/Relax.txt
+            source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+            start_line: 154
+          status: supported
+          summary: Waking countdown and eyes-open return, followed by target cue reminder.
+        identity:
+          locators:
+          - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+            end_line: 42
+            file: +Transcripts From available tapes/Relax/Relax.txt
+            source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+            start_line: 34
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+            end_line: 42
+            file: +Transcripts From available tapes/Relax/Relax.txt
+            source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+            start_line: 34
+          status: supported
+          summary: inhale-and-hold; internally-issue-legacy-relax-cue; exhale-through-mouth; associate-exhalation-with-release-of-tension
+        opener:
+          locators:
+          - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+            end_line: 33
+            file: +Transcripts From available tapes/Relax/Relax.txt
+            source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+            start_line: 30
+          status: supported
+          summary: Orient to the target function and establish receptive learning context before the instruction.
+        preparation:
+          locators:
+          - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+            end_line: 29
+            file: +Transcripts From available tapes/Relax/Relax.txt
+            source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+            start_line: 2
+          status: supported
+          summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary setting-aside
+            in repository representation and counted ten-state entry.
+        provenance:
+          locators:
+          - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+            end_line: 188
+            file: +Transcripts From available tapes/Relax/Relax.txt
+            source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Apparent underlay/ASR
+            content at120-153 is not authenticated reinforcement wording. Canonical cue shortening is
+            metadata, not a rewritten reference.
+        purpose:
+          locators:
+          - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+            end_line: 2
+            file: +Transcripts From available tapes/Relax/Relax.txt
+            source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+            start_line: 1
+          status: supported
+          summary: Relax body/mind by associating a breathing/cue routine with tension release.
+        rehearsal:
+          locators:
+          - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+            end_line: 44
+            file: +Transcripts From available tapes/Relax/Relax.txt
+            source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+            start_line: 33
+          status: not-present
+          summary: Repeated instruction does not establish a distinct listener performance trial; apparent
+            ambient transcription artifacts are not practice evidence.
+        safety_claims:
+          locators:
+          - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+            end_line: 42
+            file: +Transcripts From available tapes/Relax/Relax.txt
+            source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+            start_line: 31
+          status: supported
+          summary: guaranteed-total-tension-release; nervous-system-signal-mechanism; automatic-whole-system-learning.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+            end_line: 32
+            file: +Transcripts From available tapes/Relax/Relax.txt
+            source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+            start_line: 30
+          status: supported
+          summary: Reference learning shell uses ten preparation, eleven opening, ten closure, sleep-to-twenty
+            and waking return where the available ending supports it; not an OCF runtime requirement.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+            end_line: 188
+            file: +Transcripts From available tapes/Relax/Relax.txt
+            source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Apparent
+            underlay/ASR content at120-153 is not authenticated reinforcement wording. Canonical cue shortening
+            is metadata, not a rewritten reference.
+      source_extent:
+        content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
+        end_line: 188
+        file: +Transcripts From available tapes/Relax/Relax.txt
+        source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-FND-004:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-FND-004:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-FND-004:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-FND-004:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-FND-004:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-FND-004:main
+        operations:
+        - inhale-and-hold
+        - internally-issue-legacy-relax-cue
+        - exhale-through-mouth
+        - associate-exhalation-with-release-of-tension
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-FND-004:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-FND-004:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-FND-004:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-FND-004:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-FND-004:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: pilot
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Apparent underlay/ASR content at120-153 is not authenticated reinforcement wording. Canonical cue
+      shortening is metadata, not a rewritten reference.
+    - Existing Relax pilot remains frozen/provisional; this documents legacy breath/cue and physiological
+      claims without approving that pilot's reframing or source mechanism.
+    states:
+      preferred: []
+      required: []
+      status: unknown
+description:
+  status: canonical
+  text: Deepens physical and mental relaxation.
+  version: 1.0.0
+domain: function
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-FND-004
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 90934a8b84588c8be2f8371257ffaf40f60ed3e1ac79267f43cc1294c0a9fc18
+    classification: KEEP CUE — ALIGN TITLE OR NARRATION
+    recommended_title: Relax
+    recommended_primary_cue: PLUS-RELAX
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Inhale/hold/complete repeated cue/candle-like exhale releases physical/mental tension
+      while allowing relaxed alert activity. Shorter RELAX is not independently taught; frozen editorial
+      checkpoint remains pending.
+    pair_reason: RELAX is direct and positive. The repeated spoken association remains frozen; no spelling
+      or grammar uniformity requires changing it.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. RELAX is direct and
+      positive. The repeated spoken association remains frozen; no spelling or grammar uniformity requires
+      changing it.
+    teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
+    documentary_intent: Relax body/mind by associating a breathing/cue routine with tension release.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
 entries:
-  hplus.function.ocf-fnd-004.opener:
-    status: reviewed
-    version: 1.2.0
-    text: 'This OCF exercise will teach you to release
-
-      physical and mental tension and enter a state
-
-      of deep, natural relaxation whenever you choose.'
-  hplus.function.ocf-fnd-004.function-body:
-    status: reviewed
-    version: 1.3.1
+  hplus.function.ocf-fnd-004.closer:
     cue_template:
-      function_id: OCF-FND-004
       allowed:
       - cue.primary
+      function_id: OCF-FND-004
+    status: reviewed
+    text: 'Remember, whenever you wish to relax
+
+      your body and mind, inhale deeply
+
+      and hold your breath.
+
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+
+      Then exhale slowly through your mouth,
+
+      as though gently blowing out a candle.
+
+
+      This concludes your OCF Relax exercise.'
+    version: 1.2.1
+  hplus.function.ocf-fnd-004.function-body:
+    cue_template:
+      allowed:
+      - cue.primary
+      function_id: OCF-FND-004
+    status: reviewed
     text: 'From this moment forward, you have the ability
 
       to relax your entire body and mind deeply,
@@ -238,42 +752,20 @@ entries:
       becoming calm, comfortable, and relaxed
 
       will be easier, faster, and more effective.'
-  hplus.function.ocf-fnd-004.closer:
+    version: 1.3.1
+  hplus.function.ocf-fnd-004.opener:
     status: reviewed
-    version: 1.2.1
-    cue_template:
-      function_id: OCF-FND-004
-      allowed:
-      - cue.primary
-    text: 'Remember, whenever you wish to relax
+    text: 'This OCF exercise will teach you to release
 
-      your body and mind, inhale deeply
+      physical and mental tension and enter a state
 
-      and hold your breath.
-
-
-      Think or say in your mind, "{{ cue.primary }}."
-
-
-      Then exhale slowly through your mouth,
-
-      as though gently blowing out a candle.
-
-
-      This concludes your OCF Relax exercise.'
-slug: relax
-historical_record: functions/foundation/relax.yaml
-classification:
-  primary_domain: foundation
-  secondary_domains:
-  - body
-category_labels:
-  foundation:
-    text: foundation
-    status: canonical
-  body:
-    text: body
-    status: canonical
+      of deep, natural relaxation whenever you choose.'
+    version: 1.2.0
+function_id: OCF-FND-004
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
 lifecycle:
   activation: manual
   persistence: temporary
@@ -281,21 +773,11 @@ lifecycle:
     command: null
     required: false
   trigger_conditions: []
-audio:
-  background_audio:
-    engine: farfield
-    preset: null
-    strategy: optional
-  implementation_status: not-started
-  script_status: approved
-safety:
-  level: general
-  medical_relevance: false
-  notes: []
-function_version:
-  created: '2026-09-12'
-  current: 0.1.0
-  updated: '2026-09-12'
+locale: en-US
+localization:
+  contract_sha256: 4a0ecf86317880a63f43b1738232aed7e90bb3d1c54ec144420fcfed7f3c2518
+  status: complete
+metadata_entries: {}
 narration:
   sequence:
   - key: hplus.function.ocf-fnd-004.opener
@@ -307,8 +789,172 @@ narration:
   - key: hplus.function.ocf-fnd-004.closer
     repetitions: 1
     role: closer
-editorial:
-  command_review: approved
-localization:
-  status: complete
-  contract_sha256: 4a0ecf86317880a63f43b1738232aed7e90bb3d1c54ec144420fcfed7f3c2518
+record_metadata:
+  aliases:
+    command_ids: []
+    commands: []
+    names:
+    - Relax
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  commands:
+  - id: OCF-CMD-FND-004-PRIMARY
+    localization:
+      display_cue_key: commands.ocf-cmd-fnd-004-primary.display-cue
+      explanation_key: commands.ocf-cmd-fnd-004-primary.explanation
+      label_key: commands.ocf-cmd-fnd-004-primary.label
+      purpose_key: functions.ocf-fnd-004.purpose
+      spoken_cue_key: commands.ocf-cmd-fnd-004-primary.spoken-cue
+      usage_key: commands.ocf-cmd-fnd-004-primary.usage
+    observed_phrase:
+      narration_key: hplus.function.ocf-fnd-004.function-body
+      relationship: canonical-match
+      text: Plus Relax
+  - id: OCF-CMD-FND-004-LEGACY-01
+    localization:
+      explanation_key: commands.ocf-cmd-fnd-004-legacy-01.explanation
+      label_key: commands.ocf-cmd-fnd-004-legacy-01.label
+      purpose_key: functions.ocf-fnd-004.purpose
+      usage_key: commands.ocf-cmd-fnd-004-legacy-01.usage
+  compatibility:
+    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is
+      historical lookup. Existing controls remain unchanged.
+    state: historical-lookup
+  documentation:
+    purpose_key: functions.ocf-fnd-004.purpose
+    short_description_key: functions.ocf-fnd-004.short-description
+    title_key: functions.ocf-fnd-004.title
+  historical_lookup:
+  - command_id: OCF-CMD-FND-004-PRIMARY
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+    kind: former-teaching
+    text: Plus Relax Relax
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  legacy:
+    command_ids:
+    - OCF-CMD-FND-004-LEGACY-01
+    command_status: unchanged
+    commands:
+    - PLUS-RELAX, RELAX
+    name: RELAX
+    source_availability: available
+    source_system: Monroe H-PLUS
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  predecessor_resource_sha256: 69861a0439aa8ec80f96f7f8a9dede9a61857ed523dfe5d824af8ab5ea6deed7
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
+      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
+      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: 0e0e2868d893c6677b34e55273cbbf51299486823b55189f676c029ed62803bb
+    status: accepted
+    previous_values_sha256: 00ed167545e8781ed5f34bbc1a6847b9151e6fa0792c8d3b26aa499ccfcf2555
+    current_values_sha256: 848f09d28cffdb25a9a3acb9303e1214e3c000cd0d4530594cb9fd7817cabd93
+    changed_narration_keys:
+    - hplus.function.ocf-fnd-004.closer
+    - hplus.function.ocf-fnd-004.function-body
+    previous_resolved_text_sha256:
+      hplus.function.ocf-fnd-004.function-body: fff6ea64533f065d0e168e79c9b4affe2e26ee8fd883bb1984389d084fa40025
+      hplus.function.ocf-fnd-004.closer: b50e92a4a87c11711876c96f23638848d1920c11c295e93dc6ed75acd770441f
+    current_resolved_text_sha256:
+      hplus.function.ocf-fnd-004.function-body: 9798a9e119c48a21e1cc8395e95273389855df3cff80de3920c7a8cd9e21b8c0
+      hplus.function.ocf-fnd-004.closer: 92c53b9251e5167cc02235548ab3c290deb01870e991c2290a6cce9eb4bbe64c
+    review_note: Shorten two current function-body mentions and one closer mention from Plus Relax Relax
+      to Plus Relax. Preserve title, breathing sequence, surrounding suggestions and alert activity. Retain
+      repeated legacy phrase as historical lookup; introduce no mode or release. This approval covers
+      current function-specific narration only; frozen Relax pilot resources and listening checkpoints
+      remain untouched.
+    approval_response: '1'
+    review_position: 6
+relationships:
+  complementary_functions: []
+  proposals:
+  - dependency: optional
+    description:
+      status: draft
+      text: Physical and mental relaxation differs from releasing a selected interfering emotion; choose
+        whichever intention fits the situation.
+    evidence:
+    - field: description
+      function_id: OCF-FND-004
+      sha256: 7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9
+    - field: description
+      function_id: OCF-EMO-001
+      sha256: 864bf2596a2262e1921925522d903dca921655e4d26850f86ba2b9a6e296d1b0
+    function_id: OCF-EMO-001
+    reciprocal_proposed: false
+    relationship_type: complementary
+    status: draft
+  related_functions: []
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+schema_version: '2.0'
+secondary_commands:
+- command_id: OCF-CMD-FND-004-LEGACY-01
+  control:
+    availability: historical-lookup
+    designation: secondary
+    documentation:
+      order: 101
+      visible: false
+    effect_scope_ref: lifecycle.persistence
+    phrase_ref:
+      command_id: OCF-CMD-FND-004-LEGACY-01
+      source: legacy-command
+    relationships: {}
+  display_cue:
+    text: PLUS-RELAX, RELAX
+  explanation:
+    status: canonical
+    text: This is a compatibility phrase, not a new canonical command.
+    version: 1.0.0
+  label:
+    status: canonical
+    text: Legacy compatibility phrase
+    version: 1.0.0
+  procedure_steps: []
+  role: legacy-alias
+  usage:
+    status: canonical
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    version: 1.0.0
+slug: relax
+tags:
+- semantic_id: relaxation
+  status: draft
+  text: relaxation
+- semantic_id: calm
+  status: draft
+  text: calm
+- semantic_id: body-awareness
+  status: draft
+  text: body-awareness
+title:
+  status: canonical
+  text: Relax
+  version: 1.0.0

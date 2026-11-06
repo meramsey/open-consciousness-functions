@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 from ocf_tools.content import load_layers, validate_layers  # noqa: E402
 from ocf_tools.indexes import load_all_functions  # noqa: E402
-from ocf_tools.utils import OCFError, write_text_atomic, yaml_safe_dump  # noqa: E402
+from ocf_tools.utils import OCFError, write_text_atomic, yaml_safe_dump, yaml_safe_load  # noqa: E402
 
 
 def enrich(layers: dict, report: dict) -> dict:
@@ -52,10 +52,13 @@ def main():
         if errors:
             raise OCFError(" | ".join(errors))
         if args.apply:
-            write_text_atomic(
-                ROOT / "function-content/evidence" / f"{record.id}.yaml",
-                yaml_safe_dump(layers["evidence"]),
-            )
+            data = yaml_safe_load(record.path.read_text(encoding="utf-8"))
+            data.setdefault("content", {})["evidence"] = {
+                key: value
+                for key, value in layers["evidence"].items()
+                if key not in {"schema_version", "function_id"}
+            }
+            write_text_atomic(record.path, yaml_safe_dump(data))
     print("Validated documentary refinements for55 functions; no authentication or wording changes")
 
 

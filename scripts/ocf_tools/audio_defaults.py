@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-import hashlib
 import json
+import re
 from copy import deepcopy
 from pathlib import Path
 
@@ -50,7 +50,7 @@ def overlay(parent: dict, child: dict) -> dict:
 def configuration_lock(
     dependency_names: list[str] | None = None, *, baseline_id: str = BASELINE_ID
 ) -> dict:
-    from .locale_history import before_consolidation, historical_resources, read_logical
+    from .function_catalog import resources
     from .semantic_dsp import load_profile
     from .session import load_pacing_profile, load_template
 
@@ -79,7 +79,6 @@ def configuration_lock(
         "audio/background/presets/focus-10-v4-candidate.yaml",
         "audio/background/presets/farfield/focus-11-b.yaml",
         "audio/background/state-profiles/OCF-DSP-HPLUS-*.yaml",
-        "locales/en-US/hplus-*.yaml",
     ):
         paths.update(REPO_ROOT.glob(pattern))
     if dependency_names is not None:
@@ -90,11 +89,21 @@ def configuration_lock(
                 raise OCFError("audio defaults dependency escapes repository")
             paths.add(path)
     else:
-        paths.update(
-            REPO_ROOT / name
-            for name in historical_resources(REPO_ROOT)
-            if name.startswith("locales/en-US/hplus-") and name.endswith(".yaml")
-        )
+        paths.update(path for path, _data in resources(REPO_ROOT))
+    predecessor_hashes = {
+        data["function_id"]: digest
+        for _path, data in resources(REPO_ROOT)
+        if (digest := data.get("record_metadata", {}).get("predecessor_resource_sha256"))
+    }
+
+    def file_hash(path):
+        if not path.is_file():
+            identity = re.search(r"OCF-[A-Z]{3}-[0-9]{3}", path.name)
+            if identity and identity.group(0) in predecessor_hashes:
+                return predecessor_hashes[identity.group(0)]
+            raise OCFError("locked dependency is missing from the canonical checkout")
+        return sha256_of_file(path)
+
     return {
         "schema_version": "1.0",
         "id": baseline_id,
@@ -112,18 +121,7 @@ def configuration_lock(
             for name, data in (("template", template), ("pacing", pacing), ("dsp", dsp))
         },
         "files": {
-            path.relative_to(REPO_ROOT).as_posix(): (
-                hashlib.sha256(
-                    before_consolidation(
-                        REPO_ROOT,
-                        path.relative_to(REPO_ROOT).as_posix(),
-                        read_logical(REPO_ROOT, path.relative_to(REPO_ROOT).as_posix()),
-                    ).encode("utf-8")
-                ).hexdigest()
-                if path.suffix == ".yaml" and path.is_relative_to(REPO_ROOT / "locales")
-                else sha256_of_file(path)
-            )
-            for path in sorted(paths)
+            path.relative_to(REPO_ROOT).as_posix(): file_hash(path) for path in sorted(paths)
         },
     }
 

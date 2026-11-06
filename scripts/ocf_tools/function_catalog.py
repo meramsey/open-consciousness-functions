@@ -8,6 +8,8 @@ import re
 from copy import deepcopy
 from pathlib import Path
 
+import yaml
+
 from .utils import OCFError, yaml_safe_load
 
 CANONICAL_LOCALE = "en-US"
@@ -26,11 +28,12 @@ def resources(root: Path, locale: str = CANONICAL_LOCALE, *, reader=None):
         node.is_symlink() for node in (root / "locales", directory, manifest)
     ):
         raise OCFError("unsafe function catalog manifest")
-    result, seen = [], set()
+    result, seen, registered = [], set(), set()
     for row in reader(manifest).get("resources", []):
         if row.get("domain") != "function" or row.get("revision"):
             continue
         name = row["file"]
+        registered.add(name)
         path = directory / name
         if (
             Path(name).name != name
@@ -50,6 +53,20 @@ def resources(root: Path, locale: str = CANONICAL_LOCALE, *, reader=None):
             raise OCFError("duplicate or inconsistent function catalog identity: " + str(identity))
         seen.add(identity)
         result.append((path, data))
+    # Manifest omission must never hide a second active function definition.
+    for path in sorted(directory.iterdir()):
+        if path.suffix.lower() not in {".yaml", ".yml"} or path.name in registered:
+            continue
+        if path.is_symlink():
+            raise OCFError("unsafe unregistered function catalog resource: " + path.name)
+        try:
+            candidate = reader(path)
+        except (OSError, yaml.YAMLError, OCFError):
+            continue  # Other resource domains are validated by their owner.
+        if isinstance(candidate, dict) and (
+            candidate.get("domain") == "function" or candidate.get("schema_version") == "2.0"
+        ):
+            raise OCFError("unregistered duplicate function definition: " + path.name)
     return sorted(result, key=lambda item: item[1]["function_id"])
 
 
@@ -141,45 +158,14 @@ def completeness(data, canonical):
 def project(data, path, root):
     """Adapt the old Python interface, not another writable function definition.
 
-    Only explicitly historical/provenance fields are obtained from the exact
-    archive. Every active behavior and every current spoken word comes from
-    this locale's complete resource.
+    Every field comes from this canonical locale resource. Predecessor Git
+    revisions may be inspected by audit tools, but are never function inputs.
     """
-    from .locale_history import read_logical
     from .models import function_from_dict
 
-    history = (
-        yaml_safe_load(read_logical(root, data["historical_record"]))
-        if data.get("historical_record")
-        else {
-            "legacy": {
-                "source_system": None,
-                "name": "",
-                "commands": [],
-                "command_status": "proposed",
-                "source_availability": "pending-source-review",
-            },
-            "aliases": {"names": [], "commands": []},
-            "compatibility": {"state": "none"},
-            "status": {
-                "maturity": "community-proposed",
-                "implementation": "specification-only",
-                "evidence": "unverified",
-            },
-            "sources": [],
-            "claims": {"intended_effects": [], "prohibited_claims": []},
-            "attribution": {"original_authors": [], "ocf_contributors": []},
-            "ocf": {"reimplementation_status": "draft", "command_review": "pending"},
-            "commands": [],
-            "documentation": {
-                "title_key": f"functions.{data['function_id'].lower()}.title",
-                "short_description_key": f"functions.{data['function_id'].lower()}.short-description",
-                "purpose_key": f"functions.{data['function_id'].lower()}.purpose",
-            },
-        }
-    )
-    if data.get("historical_record") and history.get("id") != data["function_id"]:
-        raise OCFError("historical function identity does not match locale function")
+    history = data.get("record_metadata")
+    if not isinstance(history, dict):
+        raise OCFError("canonical function record metadata is incomplete")
     historical_fields = (
         "legacy",
         "aliases",
@@ -219,7 +205,7 @@ def project(data, path, root):
         if key:
             scope["description"] = data["metadata_entries"][key]["text"]
     commands, modes, mode_ids, phrases = [], [], [], []
-    old_commands = {row["id"]: row for row in history["commands"]}
+    old_commands = {row["id"]: row for row in history.get("commands", [])}
     for row in [data["activation"], *data["secondary_commands"]]:
         identity = row["command_id"]
         control = deepcopy(row["control"])
@@ -254,7 +240,7 @@ def project(data, path, root):
             mode_ids.append(identity)
         if source == "special-phrase":
             phrase = deepcopy(
-                next(item for item in history["command_phrases"] if item["id"] == identity)
+                next(item for item in history.get("command_phrases", []) if item["id"] == identity)
             )
             phrase["phrase"] = row["display_cue"]["text"]
             phrases.append(phrase)
@@ -270,6 +256,7 @@ def project(data, path, root):
     if phrases:
         result["command_phrases"] = phrases
     result["documentation"] = deepcopy(history["documentation"])
+    result["content"] = deepcopy(data.get("content", {}))
     record = function_from_dict(result, path)
     return record
 
@@ -289,8 +276,8 @@ def load_functions(root, locale=CANONICAL_LOCALE):
 
 def draft_resource(record, catalog):
     """An unrenderable local draft; no fabricated narration or approved speech."""
+    from .canonical_authoring import complete_resource
     from .commands import resolve_phrase
-    from .function_authority_migration import complete_resource
 
     commands = []
     for command in record.command_records:
@@ -319,6 +306,5 @@ def draft_resource(record, catalog):
         "changelog": [],
     }
     data = complete_resource(old, record, catalog)
-    data.pop("historical_record")
     data["localization"]["status"] = "partial"
     return data

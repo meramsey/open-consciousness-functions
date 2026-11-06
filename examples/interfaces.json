@@ -203,7 +203,7 @@
         "artwork",
         "generate"
       ],
-      "usage": "usage: ocf artwork generate [-h] [--locale LOCALE] [--theme THEME]\n                            [--resolution RESOLUTION] [--format {png,jpeg}]\n                            [--version VERSION] [--font FONT] [--no-cue]\n                            [--no-description] [--output OUTPUT]\n                            function_id",
+      "usage": "usage: ocf artwork generate [-h] [--locale LOCALE] [--theme THEME]\n                            [--resolution RESOLUTION] [--format {png,jpeg}]\n                            [--version VERSION] [--font FONT] [--no-cue]\n                            [--no-description] [--lyrics] [--output OUTPUT]\n                            function_id",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -1990,18 +1990,6 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "d9e86b62cc0ecf849a721f0ce94263e6e5007b191cfc074b49bc9c9814ec26da",
-      "schema": "cue-completion-successor.schema.json",
-      "source": "function-content/editorial/cue-completion-001.json",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
-    },
-    {
-      "example_sha256": "734b2314b5591b2df67d1aa0fa46066423d64b6856a39fe86863df25384ecf8a",
-      "schema": "cue-header-successor.schema.json",
-      "source": "function-content/editorial/cue-headers-001.json",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
-    },
-    {
       "example_sha256": "d9fbbb26008a1ad345cf1ad9a2252d853a245ecaba96d00b63dd46cb50e9afa7",
       "schema": "cue-profile.schema.json",
       "source": "audio/cues/profiles/OCF-CUE-PROFILE-DEFAULT.yaml",
@@ -2022,28 +2010,18 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "5742257d6bda15fbc9688c26b15020473fddd6b979b2bc7dc5e0da5f82eda2c9",
-      "schema": "editorial-cue-migration.schema.json",
-      "source": "function-content/editorial/approved-title-cues-001.json",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
-    },
-    {
       "example_sha256": "e6f996f69203f39e9c2b7929f775401d9ce6145f5897614dcde5e9546f2291ec",
       "schema": "editorial-function.schema.json",
       "source": "examples/contracts.json#/editorial-function.schema.json",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "4af38b6f9cea0b94bb0a5af56a4ba9cf43e8b40c5c6ecdee9bdead1f9f774728",
       "schema": "function-binding.schema.json",
-      "source": "function-content/bindings/OCF-FND-002.yaml",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
+      "verification": "standalone function layer retired; canonical data is nested in per-locale function resources"
     },
     {
-      "example_sha256": "867ad5e5f139d2e118212a7eedb2886cea9f3abfceb1f0b6a9a618f25519fe4e",
       "schema": "function-decisions.schema.json",
-      "source": "function-content/decisions/OCF-FND-002.yaml",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
+      "verification": "standalone function layer retired; canonical data is nested in per-locale function resources"
     },
     {
       "argv": [
@@ -2057,27 +2035,17 @@
       "verification": "runtime JSON schema checked by --execute-read-only"
     },
     {
-      "example_sha256": "8020433b1fe70be8202f8e11a12a799991f3b41bf9897b63b2a0cf2e0d1e56d0",
       "schema": "function-evidence.schema.json",
-      "source": "function-content/evidence/OCF-FND-002.yaml",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
+      "verification": "standalone function layer retired; canonical data is nested in per-locale function resources"
     },
     {
-      "example_sha256": "560a4b25c66d2a81a0ec3724cf0707d6732bdbd8a3dafb92e31dbf4e66bd0750",
       "schema": "function-specification.schema.json",
-      "source": "function-content/specifications/OCF-FND-002.yaml",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
+      "verification": "standalone function layer retired; canonical data is nested in per-locale function resources"
     },
     {
       "example_sha256": "7b929a3b098d32b86d6d7cdf06234a004e1d1b2488624237b823235530cdcc14",
       "schema": "function.schema.json",
       "source": "tests/fixtures/function-sample.yaml",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
-    },
-    {
-      "example_sha256": "09603d115243e85912884425ca845200fa02195d8ca2761dc12c1075373d1e59",
-      "schema": "functional-metadata.schema.json",
-      "source": "function-content/editorial/functional-metadata-001.json",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
@@ -2099,7 +2067,7 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "553718d9d99f3b121e39663d9b71a13409436c09142089e03a1304584c8432a8",
+      "example_sha256": "15a3eb4a840096fdb96f0a8cc8867110c933b2903b917d52a82652a0f53405ac",
       "schema": "localized-function.schema.json",
       "source": "examples/contracts.json#/localized-function.schema.json",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
@@ -2177,12 +2145,6 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "50fa58764174ba1609e05165347715cd673846ad22269c35d17aa475b3add05b",
-      "schema": "symbolic-cue-migration.schema.json",
-      "source": "function-content/editorial/symbolic-cues-001.json",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
-    },
-    {
       "example_sha256": "561561612deb65292ffdf18daf9eadd523057af547c4eca4c87d6fd14d7563f7",
       "schema": "theme.schema.json",
       "source": "brand/themes/ocf-dark.json",
@@ -2220,12 +2182,9 @@
     "schemas/command-procedure.schema.json": "ce83b5e0ce5d297aa71c8e293fc4af0a0d32ac35d1a677e6b08bf9c3cf211747",
     "schemas/community-voice.schema.json": "c530fa8bb6783b56da06980dc943e5848ad0bee10168c4146ac0cc318ab0c9b3",
     "schemas/corpus-inventory.schema.json": "11a08e6c17c8409b6111b5de49018a36fa0310975f9917c9b8380c5815bdc6a5",
-    "schemas/cue-completion-successor.schema.json": "726bcb557312c5435e67549ee27207905a0f73b376396c453fb54d658395bcc3",
-    "schemas/cue-header-successor.schema.json": "89de88d74e8fe13951ff00d1319a9ea53457563194e1e3ebaee09c0cc5e3197c",
     "schemas/cue-profile.schema.json": "05500c0c486bf959ea4d952a9d9d487860bd67e80e333c0e99e990e234833b3a",
     "schemas/doctor.schema.json": "9b861ac28abab75f1aab4c78419d7faf731db099a6031704abbb07bf75f1ff74",
     "schemas/editorial-block.schema.json": "ef17e6b8bce5b318036b5c1618ee2dfa83473f45e93a9fd486bbef1fa72d26d0",
-    "schemas/editorial-cue-migration.schema.json": "cf1d4b64d850bbfa2b77661ad2a34ed777ffa55a8ccb38ff74a6a1026f1ad9e3",
     "schemas/editorial-function.schema.json": "f43a058da0c9e1815d975b255f8f96c420c2385da88627c9e78e6878cd42c6cf",
     "schemas/function-binding.schema.json": "d3095a31cf1edf746a9d6ec230b7a545765774be446a4028d8b03519df6fb33f",
     "schemas/function-decisions.schema.json": "5882d26b99b7bb3005a334926ec879cf77df8dfdfc8041219eba0e59df871a52",
@@ -2233,11 +2192,10 @@
     "schemas/function-evidence.schema.json": "e541f1af76323fb9b059c4e39ceb5ab5f2eceaa0cbf4d6e37d0230d303b919a8",
     "schemas/function-specification.schema.json": "f7348ab2cba5a5fc8b4216efd00dc3e8300e053c77d78004527ea176354409ea",
     "schemas/function.schema.json": "b3bbc6e5415146af47c98a45d848b5bd625a3ef92015ed1fa4cb5b107fe08fcc",
-    "schemas/functional-metadata.schema.json": "e8bcf6a722735269065ef8c308ac03e6a4dcae6210538209dec87d738a0d072a",
     "schemas/hplus-review-selection.schema.json": "2e65fa5465bd6a70185dbcbb5ae3d933b81e2e7034ba17b4699b7998a392ac19",
     "schemas/locale-manifest.schema.json": "d996138250aae60e0a0135a67478a1cbc6be6a354ecdac5ceb169c20b51d8213",
     "schemas/locale-resource.schema.json": "789b8b96b6e95c1a8039931dfc306f86a67f59dc0769659f682ba2187cb71a07",
-    "schemas/localized-function.schema.json": "ea3c94099c2dfaaba07ab963495ef422e09863bf8d9884cea1978d0546c4d274",
+    "schemas/localized-function.schema.json": "4c16b15194f43a92b728c00eb0ae6b6d82e614da275cf9d36e75f8e25f01b7bd",
     "schemas/mix-profile.schema.json": "05ac30c768cb95eb76f6cb300fcc29e20499c2c36a0a4b5692d169174050b40b",
     "schemas/narration-package.schema.json": "8a9e55379eec1481cdde5fbfa55b91af471dc45fe0ae30c64da36ab5d9b1a15d",
     "schemas/narration-sources.schema.json": "5c084f128351d6a2a879b5a971007cbc9efe3fb269deb3eeb12832895e729c3e",
@@ -2250,17 +2208,16 @@
     "schemas/session-plan.schema.json": "824a833d7751536b8a1ded3784d6268847bc3bc101b06d8b649b25c163487805",
     "schemas/session-stage.schema.json": "fcdccd53577a0df9f444439199332bcc097cd9083a30c2b583f23811e48f2981",
     "schemas/session-template.schema.json": "238dc37d49bfff0ce2cba8a6f00c73aaba1bd7e8b3c44104246fc468dddbf72c",
-    "schemas/symbolic-cue-migration.schema.json": "6d73f31a786e2e874a708b570339d12aa5319d18cfb4d6349abfb9c46becda1f",
     "schemas/theme.schema.json": "e4316f7acbd55c53c255d06efba8ecd8d3f7b69541219ee360d24f4779ccb6fb",
     "schemas/timed-transcript.schema.json": "cad4e2345ddaf67b082c580cb61222e6a210c764feb593ea04894c773df4bf37",
     "schemas/voice-dataset.schema.json": "0307327f3f52eeaaaed71abaa6d1950c0b665fc677b43547e2452e9c31000ed8",
     "schemas/voice-profile.schema.json": "bff61d964e36686802129b9631fed45c3baa5262d5359d330a0b3f59763ee40e",
-    "scripts/ocf_tools/agent_api.py": "503833c566cb54e26abb23822f7b902b4310d649e9192ff1302e8df1c5d4eb2a",
-    "scripts/ocf_tools/cli.py": "469403e96915268495c8ee45aaa2900bd9fa8386df91b120da2e4da57ae9e9a8",
+    "scripts/ocf_tools/agent_api.py": "9d6d5453ff75639b6ca8c0ea8977593f393fa5f3674eb070fb94665e0631d706",
+    "scripts/ocf_tools/cli.py": "a79a916dc5385f891970a53eaa71520e4ca2b29a5057f735313973ed5ea5cb44",
     "scripts/ocf_tools/lsp_server.py": "a753b91b1b73609ecd6886470a037a9bbf1259e2a77f08203546e55ef4cbae09",
     "scripts/ocf_tools/mcp_server.py": "d8641d4160888abbe7152fca2117623de4dfb061793b95b161dbfb4534a2be54",
     "scripts/ocf_tools/narration_cli.py": "5f13a05251816e5d3b80419d9ed67184b5c6c48722175700bbc88ec2b429bd41",
-    "scripts/ocf_tools/prompts.py": "708ab3e88edc24f7373c835635ab98e3baabc011c75aa521309c3a012079d40c",
+    "scripts/ocf_tools/prompts.py": "576bcefd8dde296159b2047693a63df5c85a1879a11f9b9ebcb0002a41288599",
     "scripts/ocf_tools/voice_engine_cli.py": "8072498f87f5509f7a18016d8d12f221dc36f3a393699c63ea18e6f6d39c77eb"
   },
   "workflows": {

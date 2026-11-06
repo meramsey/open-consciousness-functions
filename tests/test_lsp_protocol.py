@@ -72,7 +72,7 @@ def test_protocol_capabilities_diagnostics_completions_navigation_and_preview(cl
     hover = rpc.request("textDocument/hover", params)
     assert "Focus" in hover["result"]["contents"]["value"]
     definitions = rpc.request("textDocument/definition", params)
-    assert definitions["result"][0]["uri"].endswith("functions/foundation/focus.yaml")
+    assert definitions["result"][0]["uri"].endswith("locales/en-US/OCF-FND-002-Focus.yaml")
     references = rpc.request(
         "textDocument/references", {**params, "context": {"includeDeclaration": True}}
     )

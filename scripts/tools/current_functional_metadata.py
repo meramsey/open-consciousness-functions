@@ -6,8 +6,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from ocf_tools.canonical_integrity import verify as verify_canonical  # noqa: E402
 from ocf_tools.commands import command_view  # noqa: E402
-from ocf_tools.editorial_successors import verify  # noqa: E402
 from ocf_tools.functional_metadata import record  # noqa: E402
 from ocf_tools.indexes import load_all_functions  # noqa: E402
 from ocf_tools.paths import REPO_ROOT  # noqa: E402
@@ -15,7 +15,7 @@ from ocf_tools.utils import OCFError, write_text_atomic  # noqa: E402
 
 
 def build():
-    problems = verify()
+    problems = verify_canonical()
     if problems:
         raise OCFError("functional metadata integrity: " + " | ".join(problems))
     ledger = record()
@@ -28,7 +28,11 @@ def build():
         "approved": len(ledger["decisions"]),
         "deferred": [],
         "narration_changed": 0,
-        "narration_unchanged": len(ledger["resolved_baseline"]),
+        "narration_unchanged": len(
+            json.loads(
+                (REPO_ROOT / "tests/fixtures/hplus-narration-text-baseline-008.json").read_text()
+            )
+        ),
         "runtime_policy": ledger["runtime_policy"],
         "locales_requiring_review": ledger["locales_requiring_review"],
         "functions": [
@@ -60,8 +64,7 @@ def render(data):
         "",
         data["runtime_policy"],
         "",
-        "See [scope semantics](../FUNCTIONAL_METADATA.md) and the [immutable approval ledger](../../function-content/editorial/functional-metadata-001.json).",
-        "Current descriptions also include documentation-only successor OCF-GUIDE-REVIEW-001; original functional decisions and narration remain unchanged.",
+        "See [scope semantics](../FUNCTIONAL_METADATA.md). Functional metadata decision notes, provenance hashes, and their current values are stored with each canonical locale resource; this report is derived.",
         "",
     ]
     for function in data["functions"]:

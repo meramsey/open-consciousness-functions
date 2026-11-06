@@ -29,7 +29,6 @@ SHARED_RESOURCES = (
     "hplus-transmutation-box.yaml",
     "hplus-waking-return.yaml",
 )
-PREVIOUS_BASELINE_PATH = REPO_ROOT / "tests/fixtures/hplus-narration-text-baseline.json"
 BASELINE_PATH = REPO_ROOT / "tests/fixtures/hplus-narration-text-baseline-008.json"
 KEY_RE = re.compile(r"^[a-z][a-z0-9-]*(\.[a-z0-9-]+)+$")
 
@@ -37,27 +36,23 @@ KEY_RE = re.compile(r"^[a-z][a-z0-9-]*(\.[a-z0-9-]+)+$")
 def narration_texts(root: Path = REPO_ROOT) -> dict[str, str]:
     """Return the exact parsed text for every targeted resource key."""
     locale_root = root / LOCALE_ROOT
-    from ocf_tools.locale_history import historical_resources, read_logical
-
-    virtual = {
-        root / name
-        for name in historical_resources(root)
-        if name.startswith("locales/en-US/hplus-OCF-") and name.endswith(".yaml")
-    }
-    function_files = sorted(set(locale_root.glob("hplus-OCF-*.yaml")) | virtual)
+    manifest = yaml.safe_load((locale_root / "manifest.yaml").read_text(encoding="utf-8"))
+    function_files = []
+    for resource in manifest.get("resources", []):
+        if resource.get("domain") != "function":
+            continue
+        path = locale_root / resource["file"]
+        data = yaml.safe_load(path.read_text(encoding="utf-8"))
+        if (
+            data.get("record_metadata", {}).get("legacy", {}).get("source_system")
+            == "Monroe H-PLUS"
+        ):
+            function_files.append(path)
+    function_files.sort()
     if len(function_files) != 55:
         raise ValueError(f"expected 55 function resources, found {len(function_files)}")
 
     paths = function_files + [locale_root / name for name in SHARED_RESOURCES]
-    from ocf_tools.locale_history import predecessor as before_localized_resources
-
-    manifest = yaml.safe_load(
-        before_localized_resources(
-            root,
-            "locales/en-US/manifest.yaml",
-            (locale_root / "manifest.yaml").read_text(encoding="utf-8"),
-        )
-    )
     declared_resources = {
         str(resource.get("file")): str(resource.get("domain"))
         for resource in manifest.get("resources", [])
@@ -67,22 +62,16 @@ def narration_texts(root: Path = REPO_ROOT) -> dict[str, str]:
     owners: dict[str, str] = {}
     symbolic_catalog = None
     for path in paths:
-        if declared_resources.get(path.name) != "narration":
+        if declared_resources.get(path.name) not in {"narration", "function"}:
             raise ValueError(
                 f"resource is not declared as narration in the locale manifest: {path}"
             )
-        from ocf_tools.locale_history import before_authority
-
-        data: Any = yaml.safe_load(
-            before_authority(
-                root,
-                path.relative_to(root).as_posix(),
-                read_logical(root, path.relative_to(root).as_posix()),
-            )
-        )
+        data: Any = yaml.safe_load(path.read_text(encoding="utf-8"))
         if not isinstance(data, dict) or data.get("locale") != "en-US":
             raise ValueError(f"resource must declare locale en-US: {path}")
-        if data.get("domain") != "narration" or not isinstance(data.get("entries"), dict):
+        if data.get("domain") not in {"narration", "function"} or not isinstance(
+            data.get("entries"), dict
+        ):
             raise ValueError(f"resource must declare narration entries: {path}")
 
         for key, value in data["entries"].items():
@@ -108,7 +97,8 @@ def narration_texts(root: Path = REPO_ROOT) -> dict[str, str]:
                 text = symbolic_catalog.resource(key, "en-US", domain="narration", fallback=False)[
                     0
                 ].text
-            owners[key] = path.relative_to(root).as_posix()
+            logical_name = path.relative_to(root).as_posix()
+            owners[key] = logical_name
             texts[f"{owners[key]}::{key}"] = text
     return texts
 
@@ -143,22 +133,11 @@ def check(root: Path = REPO_ROOT, baseline: Path = BASELINE_PATH) -> list[str]:
     current = text_fingerprints(narration_texts(root))
     problems = differences(expected, current)
     if baseline == BASELINE_PATH and root == REPO_ROOT:
-        from ocf_tools.cue_migration import verify_migration
+        from ocf_tools.canonical_integrity import verify as verify_semantics
+        from ocf_tools.editorial_candidates import verify_approvals
 
-        problems.extend(verify_migration())
-        if (root / "function-content/editorial/symbolic-cues-001.json").is_file():
-            from ocf_tools.symbolic_integrity import verify
-
-            problems.extend(verify(root))
-        from ocf_tools.editorial_successors import verify as verify_successors
-
-        problems.extend(verify_successors(root))
-        from ocf_tools.candidate_approval import verify as verify_candidates
-
-        problems.extend(verify_candidates(root))
-        from ocf_tools.command_simplification import verify as verify_simplification
-
-        problems.extend(verify_simplification(root))
+        problems.extend(verify_semantics(root))
+        problems.extend(verify_approvals(root))
     return problems
 
 

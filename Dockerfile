@@ -8,7 +8,7 @@ RUN python -m pip install --no-cache-dir --only-binary=:all: --upgrade pip==26.2
     && python -m pip install --no-cache-dir -r requirements.txt
 COPY scripts/ scripts/
 COPY schemas/ schemas/
-COPY function-content/ function-content/
+COPY function-content/command-procedures.yaml function-content/command-procedures.yaml
 COPY locales/ locales/
 COPY templates/ templates/
 COPY audio/templates/stages/ audio/templates/stages/

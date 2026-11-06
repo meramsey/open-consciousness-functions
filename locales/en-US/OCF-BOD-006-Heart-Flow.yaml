@@ -464,7 +464,6 @@ entries:
 
       This concludes your OCF Heart Flow exercise.'
 slug: heart-repairs
-historical_record: functions/body/heart-repairs.yaml
 classification:
   primary_domain: body
   secondary_domains: []
@@ -509,6 +508,687 @@ narration:
     role: closer
 editorial:
   command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-BOD-006
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: b6143aa1892ee6df2565b6ed35cf98915534fba0d134f7f0cdeb5eadf1e8c2a4
+    classification: KEEP CUE — ALIGN TITLE OR NARRATION
+    recommended_title: Heart Renewal
+    recommended_primary_cue: PLUS-HEART, BETTER, BETTER
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Automatic heart muscle, vessel, rhythm and renewal maintenance plus reinforcement.
+      Close eyes, heart attention, inhale/hold/complete repeated cue/exhale. Preserve the second Better;
+      not merely heart-rate steadiness.
+    pair_reason: Short descriptive title with the complete repeated reinforcement; shortening would change
+      an established association without a clear usability need.
+    title_cue_relationship_or_exception: Short descriptive title with the complete repeated reinforcement;
+      shortening would change an established association without a clear usability need.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Claimed heart muscle/nerve/vessel renewal with optional acceleration.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
 localization:
   status: complete
   contract_sha256: 058070bc25682576ef4b4ebcb8974bc8f2f025d311ca8e79a63c3b65639b5aa9
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-BOD-006-PRIMARY
+    command_status: unchanged
+    commands:
+    - PLUS-HEART, BETTER, BETTER
+    name: 'HEART: REPAIRS & MAINTENANCE'
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    command_ids: []
+    commands: []
+    names:
+    - 'Heart: Repairs & Maintenance'
+  compatibility:
+    state: historical-lookup
+    rationale: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording remains
+      historical lookup.
+  historical_lookup:
+  - decision: OCF-EDITORIAL-TITLE-CUES-001
+    kind: former-title
+    text: 'Heart: Repairs & Maintenance'
+  - command_id: OCF-CMD-BOD-006-PRIMARY
+    decision: OCF-EDITORIAL-TITLE-CUES-001
+    kind: former-primary
+    text: PLUS-HEART, BETTER, BETTER
+  - command_id: OCF-CMD-BOD-006-PRIMARY
+    decision: OCF-EDITORIAL-TITLE-CUES-001
+    kind: former-teaching
+    text: Plus Heart Better Better
+  - text: 'Heart: Repairs & Maintenance'
+    kind: former-title
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+  - text: PLUS-HEART-BETTER
+    kind: former-primary
+    decision: OCF-COMMAND-SIMPLIFICATION-001
+    command_id: OCF-CMD-BOD-006-PRIMARY
+  - text: Plus Heart Better
+    kind: former-teaching
+    decision: OCF-COMMAND-SIMPLIFICATION-001
+    command_id: OCF-CMD-BOD-006-PRIMARY
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    purpose_key: functions.ocf-bod-006.purpose
+    short_description_key: functions.ocf-bod-006.short-description
+    title_key: functions.ocf-bod-006.title
+  commands:
+  - id: OCF-CMD-BOD-006-PRIMARY
+    localization:
+      display_cue_key: commands.ocf-cmd-bod-006-primary.display-cue
+      explanation_key: commands.ocf-cmd-bod-006-primary.explanation
+      label_key: commands.ocf-cmd-bod-006-primary.label
+      purpose_key: functions.ocf-bod-006.purpose
+      spoken_cue_key: commands.ocf-cmd-bod-006-primary.spoken-cue
+      usage_key: commands.ocf-cmd-bod-006-primary.usage
+    observed_phrase:
+      narration_key: hplus.function.ocf-bod-006.function-body
+      relationship: canonical-match
+      text: Plus Heart Flow
+  predecessor_resource_sha256: a3a66f0dc363405f51f59d80b75bd26b2250eafaf452192e79f8d345ca268bae
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-001
+    kind: approved-title-cue
+    source_commit: 21e63ac6f8bf5a7bce9506f033330df967aa4f97
+    scope: Heart primary cue only; committed title and purposes retained. Heart Flow remains tentative.
+    decision_source: Explicit user approval in the approved English title-cue migration task
+    source_row_sha256: fc3d0f5ea8876c3e415b10828e543580febdfa8d718b25aa2c9fdae96f5b0b06
+    status: accepted
+    previous_values_sha256: 23f2f07fa47cddc41df9478d00641187f10953825702114cd2b1df935b404a87
+    current_values_sha256: 8667bd793c681eb37ca45984bd588e196599a9e1e463854677184cdb1d0ebf7b
+    changed_narration_keys:
+    - hplus.function.ocf-bod-006.closer
+    - hplus.function.ocf-bod-006.function-body
+    previous_resolved_text_sha256:
+      hplus.function.ocf-bod-006.function-body: 0e3493510b988d50fdace364cbbfeee84997362d85c9aabd566692d8130c4459
+      hplus.function.ocf-bod-006.closer: cdc495b698feff389872bf54ad2150c6d94cf0c19f7e8dab88cd4e1495b7f6cf
+    current_resolved_text_sha256:
+      hplus.function.ocf-bod-006.function-body: d17eec8958f44d5e0bf36e53c4ff9f210e617fc564232059f60bf7634e18deb4
+      hplus.function.ocf-bod-006.closer: a582c7c02d135ee31618bc7ff38f995bdcd76b52d4c6de93aa1821e6852af9ad
+    review_note: Cue contains Better once. Retain the committed heart title, purpose and scope; Heart
+      Flow is tentative and Heart Renewal is rejected.
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
+      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
+      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: f120696caccb7612ce4371732951898e3faebcab0b7a1cb1d7689075afc0da4b
+    status: accepted
+    previous_values_sha256: 2562a2a9f671a116daa44058b2f6857f55b1a29ff976a1397a92ff78a267af8d
+    current_values_sha256: 2ca9d589fecd131c22ad3f603d01c73cbcc204478ce113b2508ed6fbd85a7baf
+    changed_narration_keys:
+    - hplus.function.ocf-bod-006.closer
+    previous_resolved_text_sha256:
+      hplus.function.ocf-bod-006.closer: a582c7c02d135ee31618bc7ff38f995bdcd76b52d4c6de93aa1821e6852af9ad
+    current_resolved_text_sha256:
+      hplus.function.ocf-bod-006.closer: bf2eecc80f1b0d210b823f072e6b776c975c2eaf8d97c3a3ae9b7e66e8398a41
+    review_note: 'Finalize previously tentative title Heart Flow, replacing Heart: Repairs & Maintenance
+      and updating exercise sign-off. Keep already-approved display PLUS-HEART-BETTER and spoken Plus
+      Heart Better unchanged; do not restore the historical second Better. Preserve full heart muscle,
+      vessel, circulation, rhythm, coordination, maintenance and renewal scope, lasting automatic pattern,
+      optional reinforcement and breathing sequence. Retain former title as historical lookup; introduce
+      no mode or release.'
+    approval_response: '1'
+    review_position: 17
+  - id: OCF-COMMAND-SIMPLIFICATION-001
+    kind: approved-command-simplification
+    source_commit: 8ec5b0395c7a5c05fa629d64297d3bf048b097f9
+    scope: Explicitly approved command title/display/spoken substitutions only; commands, lifecycle, procedure
+      and audio settings are unchanged.
+    decision_source: 'Explicit user confirmation: Confirm implementation'
+    source_row_sha256: 70bd6d5faa122f195b914b4567a445cc22358bc16a7d402a1e3e0ed171cd6099
+    status: accepted
+    previous_values_sha256: d37a8f86f0f8efe5e1dd57364fe28d82b1dfa90fe1e603cd921832493a5aed28
+    current_values_sha256: 3d16dfd5cd008a9e428c7cf8aa455e48269128f89fbaba48c1f35d889d02e800
+    changed_narration_keys: []
+    previous_resolved_text_sha256: {}
+    current_resolved_text_sha256: {}
+    review_note: Narration fingerprints and synthesis cache identity follow the approved canonical wording;
+      listening and release approval remain false.
+  - id: REL-BOD006-BOD002
+    kind: approved-relationship
+    source_commit: 2b26883148ee1c218a917cd7ff4119943d2eb03f
+    scope: Optional approved function relationship; discovery guidance only, never a runtime prerequisite.
+    decision_source: Explicit user-approved guide relationship review.
+    source_row_sha256: 63bea062a3fcaf79ecb3d714362fadf6d03c8fd373de980ca9dc47c33a413960
+    status: accepted
+    current_values_sha256: ed123b0eaa76f1490c9730407a16c432814878288fda64880914fdf79398aeb4
+    review_note: Approved optional relationship remains embedded in the canonical locale resource. Evidence
+      provenance and reciprocal approval are retained as metadata.
+    approval_response: '1'
+    relationship_id: REL-BOD006-BOD002
+    related_function_id: OCF-BOD-002
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31:opener
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 63
+      - 169
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - category: main
+      confidence: low
+      id: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31:main
+      kind: structural-inference
+      line_candidates:
+      - 36
+      - 50
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - category: closer
+      confidence: low
+      id: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31:closer
+      kind: structural-inference
+      line_candidates:
+      - 60
+      - 169
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - category: preparation
+      confidence: low
+      id: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31:preparation
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 10
+      - 16
+      - 31
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - category: command_association
+      confidence: low
+      id: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31:command_association
+      kind: structural-inference
+      line_candidates:
+      - 53
+      - 58
+      - 166
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - category: future_use
+      confidence: low
+      id: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31:future_use
+      kind: structural-inference
+      line_candidates:
+      - 55
+      - 59
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - category: return
+      confidence: low
+      id: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31:return
+      kind: structural-inference
+      line_candidates:
+      - 135
+      - 136
+      - 154
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - category: purpose
+      confidence: medium
+      id: review:OCF-BOD-006:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 1
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - category: opener
+      confidence: medium
+      id: review:OCF-BOD-006:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 32
+      - 35
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - category: main
+      confidence: medium
+      id: review:OCF-BOD-006:main
+      kind: function-specification-inference
+      line_candidates:
+      - 36
+      - 55
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - category: association
+      confidence: medium
+      id: review:OCF-BOD-006:association
+      kind: function-specification-inference
+      line_candidates:
+      - 52
+      - 55
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-BOD-006:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 36
+      - 59
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - category: future_use
+      confidence: medium
+      id: review:OCF-BOD-006:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 52
+      - 59
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-BOD-006:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 171
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - category: closer
+      confidence: medium
+      id: review:OCF-BOD-006:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 56
+      - 64
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-BOD-006:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 65
+      - 134
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - category: handoff
+      confidence: medium
+      id: review:OCF-BOD-006:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 135
+      - 171
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-BOD-006:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 36
+      - 55
+      scope: document
+      source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+      path: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.lrc
+      related_sha256:
+      - d6341565f0520b52fcadf007710771b3f025ba960541a7454e76d8f66c59aedc
+      - f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+      sha256: c1b9a96b3937424418549aa7f21d46292a71b7ad86268bbe1c6fd23d2f8752cf
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.ocr.pdf
+      related_sha256: []
+      sha256: d654bd10b2f6cc6ea2d326525d0d5077bda4f06ea3ed1cb3e64fbd1365d33e12
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+      path: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.srt
+      related_sha256:
+      - c1b9a96b3937424418549aa7f21d46292a71b7ad86268bbe1c6fd23d2f8752cf
+      - f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+      sha256: d6341565f0520b52fcadf007710771b3f025ba960541a7454e76d8f66c59aedc
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+      path: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+      related_sha256:
+      - c1b9a96b3937424418549aa7f21d46292a71b7ad86268bbe1c6fd23d2f8752cf
+      - d6341565f0520b52fcadf007710771b3f025ba960541a7454e76d8f66c59aedc
+      sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Heart Support and Maintenance/folder.jpg
+      related_sha256: []
+      sha256: af27a7c98ffe3e7f9802f081d51db9490ea51ef2942eb3311bfa0fec3831e45d
+  specifications:
+    analysis_review:
+      claim_categories:
+      - heart-renewal
+      - vascular-obstruction-removal
+      - improved-heart-nerve-signalling
+      - persistent-physiological-perfection
+      family: organ-renewal-intensification
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+            end_line: 55
+            file: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+            source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+            start_line: 52
+          status: supported
+          summary: Pair source cue/breathing with the selected body-related response; actual canonical
+            and legacy command variants stay in identity metadata.
+        closer:
+          locators:
+          - content_group_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+            end_line: 64
+            file: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+            source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+            start_line: 56
+          status: supported
+          summary: Reinforce remembered future use and close the learning context to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+            end_line: 134
+            file: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+            source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+            start_line: 65
+          status: supported
+          summary: Sleep-to-twenty shell present; physiological/automatic integration is not established
+            by that instruction.
+        conversion:
+          locators:
+          - content_group_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+            end_line: 55
+            file: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+            source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+            start_line: 36
+          status: inferred
+          summary: Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
+            reinterpretation is equivalent. Useful experiential operations and material purpose changes
+            require explicit content review; medical management and breath-hold issues remain outside
+            software efficacy claims.
+        future_use:
+          locators:
+          - content_group_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+            end_line: 59
+            file: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+            source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+            start_line: 52
+          status: supported
+          summary: Use the cue/breathing procedure as described for the selected response; asserted effectiveness
+            is a claim, not an observed result.
+        handoff:
+          locators:
+          - content_group_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+            end_line: 171
+            file: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+            source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+            start_line: 135
+          status: supported
+          summary: Counted waking/eyes-open return with target command reminder where intelligible.
+        identity:
+          locators:
+          - content_group_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+            end_line: 55
+            file: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+            source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+            start_line: 52
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+            end_line: 55
+            file: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+            source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+            start_line: 36
+          status: supported
+          summary: represent-heart-muscle-vessels-and-nerves; imagine-strength-flexibility-and-obstruction-removal;
+            associate-heart-with-renewal; close-eyes-inhale-hold-and-issue-heart-better-cue; exhale
+        opener:
+          locators:
+          - content_group_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+            end_line: 35
+            file: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+            source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+            start_line: 32
+          status: supported
+          summary: Introduce a body-oriented intended response and receptive learning context, not evidence
+            that the physiology changed.
+        preparation:
+          locators:
+          - content_group_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+            end_line: 31
+            file: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+            source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+            start_line: 2
+          status: supported
+          summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+            for temporary setting-aside and counted ten-state preparation.
+        provenance:
+          locators:
+          - content_group_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+            end_line: 171
+            file: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+            source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
+            or original underlay; unspecified cancellation remains unknown.
+        purpose:
+          locators:
+          - content_group_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+            end_line: 1
+            file: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+            source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+            start_line: 1
+          status: supported
+          summary: Claimed heart muscle/nerve/vessel renewal with optional acceleration.
+        rehearsal:
+          locators:
+          - content_group_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+            end_line: 59
+            file: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+            source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+            start_line: 36
+          status: not-present
+          summary: No distinct listener test of physiological outcome is established; teaching repetition
+            and ASR ambient tokens are not outcome verification.
+        safety_claims:
+          locators:
+          - content_group_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+            end_line: 55
+            file: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+            source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+            start_line: 36
+          status: supported
+          summary: heart-renewal; vascular-obstruction-removal; improved-heart-nerve-signalling; persistent-physiological-perfection.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+            end_line: 35
+            file: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+            source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+            start_line: 32
+          status: supported
+          summary: Reference learning shell prepares ten, opens eleven, closes to ten and uses sleep-to-twenty
+            plus waking return where preserved; runtime OCF requirements remain separate and unknown.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+            end_line: 171
+            file: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+            source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Source-designated
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
+            or original underlay; unspecified cancellation remains unknown.
+      source_extent:
+        content_group_sha256: 0712920875f816ce5fc277509c1671ec4773f80b7ff2e6bf25ab366473ae87b6
+        end_line: 171
+        file: +Transcripts From available tapes/Heart Support and Maintenance/Heart Support and Maintenance.txt
+        source_sha256: f76a1fa970bac47adbde3cdb52f0bccf0e12468654b9596fe9dac68178738f31
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-BOD-006:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-BOD-006:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-BOD-006:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-BOD-006:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-BOD-006:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-BOD-006:main
+        operations:
+        - represent-heart-muscle-vessels-and-nerves
+        - imagine-strength-flexibility-and-obstruction-removal
+        - associate-heart-with-renewal
+        - close-eyes-inhale-hold-and-issue-heart-better-cue
+        - exhale
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-BOD-006:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-BOD-006:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-BOD-006:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-BOD-006:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-BOD-006:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Source-designated derivative is unauthenticated. Count/repetition/ambient artifacts do not establish
+      exact timing or original underlay; unspecified cancellation remains unknown.
+    - Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
+      reinterpretation is equivalent. Useful experiential operations and material purpose changes require
+      explicit content review; medical management and breath-hold issues remain outside software efficacy
+      claims.
+    states:
+      preferred: []
+      required: []
+      status: unknown

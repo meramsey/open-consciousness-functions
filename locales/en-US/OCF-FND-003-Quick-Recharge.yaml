@@ -247,7 +247,6 @@ entries:
 
       This concludes your OCF Quick Recharge exercise.'
 slug: recharge
-historical_record: functions/foundation/recharge.yaml
 classification:
   primary_domain: foundation
   secondary_domains:
@@ -294,6 +293,619 @@ narration:
     role: closer
 editorial:
   command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-FND-003
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 775ab67bf8c426b4c25521fff049fb272b8e2b6c61aadaa5da04d94a20b531c7
+    classification: KEEP CUE — ALIGN TITLE OR NARRATION
+    recommended_title: Quick Recharge
+    recommended_primary_cue: PLUS-RECHARGE
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Settle for brief natural sleep/rest, inhale/hold/cue/candle-like exhale; awakening
+      within minutes. No programmable timer or wake/abort cue is supplied; distinguish energy access and
+      overnight restoration.
+    pair_reason: RECHARGE naturally communicates the short-rest intended outcome. Preserve the nap/waking
+      mechanics rather than merging it with general energy access or overnight restoration.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. RECHARGE naturally
+      communicates the short-rest intended outcome. Preserve the nap/waking mechanics rather than merging
+      it with general energy access or overnight restoration.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Enter a short nap with claimed rapid restoration and awakening after minutes.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
 localization:
   status: complete
   contract_sha256: e19b3271950e6925f0c326d0aac5f2ffc386a1b5eeed8936a23d17a63bc999dc
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-FND-003-PRIMARY
+    command_status: unchanged
+    commands:
+    - PLUS-RECHARGE
+    name: RECHARGE
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Recharge
+  compatibility:
+    state: unchanged
+  historical_lookup:
+  - text: Recharge
+    kind: former-title
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-fnd-003.title
+    short_description_key: functions.ocf-fnd-003.short-description
+    purpose_key: functions.ocf-fnd-003.purpose
+  commands:
+  - id: OCF-CMD-FND-003-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-fnd-003-primary.label
+      usage_key: commands.ocf-cmd-fnd-003-primary.usage
+      purpose_key: functions.ocf-fnd-003.purpose
+      explanation_key: commands.ocf-cmd-fnd-003-primary.explanation
+      display_cue_key: commands.ocf-cmd-fnd-003-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-fnd-003-primary.spoken-cue
+  predecessor_resource_sha256: 856a02db3ca015bfe37ef9989e5af50865e88a62d3ceddc0e37528676c228b71
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
+      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
+      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: 22386ace19503614491524c3b11e918b8441eb39026ceab3f0ec899f6d8625bf
+    status: accepted
+    previous_values_sha256: d75756fa97568be3848fdf2997e2b8403f45f8464f72a55666778cd2944bd295
+    current_values_sha256: 881a09d1e2ac2f8521799111d1c0d8a87d67ee01e5123e07cbb1aad5ac09ab53
+    changed_narration_keys:
+    - hplus.function.ocf-fnd-003.closer
+    previous_resolved_text_sha256:
+      hplus.function.ocf-fnd-003.closer: 4249c526990b9bddf49cbc2cbb4e8cf8b05f56d1293263f33aa2a7174b661af1
+    current_resolved_text_sha256:
+      hplus.function.ocf-fnd-003.closer: 60a480ee63089a5f1b323040657bf3eb137c1d95a3fd96a5d3153908fcc7be19
+    review_note: Change title from Recharge to Quick Recharge and update exercise sign-off. Keep display
+      and spoken cue unchanged. Preserve deliberately chosen brief natural sleep, restoration, natural
+      awakening within minutes and inhale/hold/cue/candle-like exhale sequence. Retain Recharge as former-title
+      lookup. Introduce no programmable timer, wake-up cue or release command. Preserve lasting learned
+      availability without persistent drowsiness.
+    approval_response: '1'
+    review_position: 25
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:opener
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 3
+      - 79
+      - 190
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - category: main
+      confidence: low
+      id: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:main
+      kind: structural-inference
+      line_candidates:
+      - 37
+      - 38
+      - 49
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - category: closer
+      confidence: low
+      id: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:closer
+      kind: structural-inference
+      line_candidates:
+      - 69
+      - 190
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - category: preparation
+      confidence: low
+      id: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:preparation
+      kind: structural-inference
+      line_candidates:
+      - 3
+      - 11
+      - 17
+      - 72
+      - 80
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - category: command_association
+      confidence: low
+      id: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:command_association
+      kind: structural-inference
+      line_candidates:
+      - 40
+      - 51
+      - 66
+      - 188
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - category: future_use
+      confidence: low
+      id: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:future_use
+      kind: structural-inference
+      line_candidates:
+      - 38
+      - 47
+      - 49
+      - 59
+      - 67
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - category: return
+      confidence: low
+      id: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4:return
+      kind: structural-inference
+      line_candidates:
+      - 82
+      - 174
+      - 175
+      - 178
+      - 181
+      - 186
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - category: purpose
+      confidence: medium
+      id: review:OCF-FND-003:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 2
+      - 2
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - category: opener
+      confidence: medium
+      id: review:OCF-FND-003:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 32
+      - 37
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - category: main
+      confidence: medium
+      id: review:OCF-FND-003:main
+      kind: function-specification-inference
+      line_candidates:
+      - 38
+      - 60
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - category: association
+      confidence: medium
+      id: review:OCF-FND-003:association
+      kind: function-specification-inference
+      line_candidates:
+      - 38
+      - 48
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-FND-003:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 38
+      - 60
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - category: future_use
+      confidence: medium
+      id: review:OCF-FND-003:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 38
+      - 68
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-FND-003:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 190
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - category: closer
+      confidence: medium
+      id: review:OCF-FND-003:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 63
+      - 80
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-FND-003:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 81
+      - 173
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - category: handoff
+      confidence: medium
+      id: review:OCF-FND-003:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 174
+      - 190
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-FND-003:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 34
+      - 60
+      scope: document
+      source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+      path: +Transcripts From available tapes/Recharge/Recharge.lrc
+      related_sha256:
+      - 4e74e767c817e7913083508eb62ba8c48737cbad959007c84b747ee40ed844c0
+      - 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+      sha256: 0080e866dc5a36589bc5fb1f0518e424074081e2236fb06ae66f26b4213ce543
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Recharge/Recharge.ocr.pdf
+      related_sha256: []
+      sha256: 2ce14ddb74a4d1fdbcc50a134ac69ea949aa1a090bcb4c52de0349b5f5079f61
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+      path: +Transcripts From available tapes/Recharge/Recharge.srt
+      related_sha256:
+      - 0080e866dc5a36589bc5fb1f0518e424074081e2236fb06ae66f26b4213ce543
+      - 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+      sha256: 4e74e767c817e7913083508eb62ba8c48737cbad959007c84b747ee40ed844c0
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+      path: +Transcripts From available tapes/Recharge/Recharge.txt
+      related_sha256:
+      - 0080e866dc5a36589bc5fb1f0518e424074081e2236fb06ae66f26b4213ce543
+      - 4e74e767c817e7913083508eb62ba8c48737cbad959007c84b747ee40ed844c0
+      sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Recharge/folder.jpg
+      related_sha256: []
+      sha256: 3e1b9d3d5997a0e6bbef00dd78f02945eea64ab1b41e24367b9e98c4ceb2a77b
+  specifications:
+    analysis_review:
+      claim_categories:
+      - guaranteed-rapid-sleep
+      - physiological-balance-restoration
+      - automatic-minutes-later-awakening
+      - automatic-whole-system-learning
+      family: short-sleep-restoration
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+            end_line: 48
+            file: +Transcripts From available tapes/Recharge/Recharge.txt
+            source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+            start_line: 38
+          status: supported
+          summary: Pair the deliberately selected legacy cue with the target response and breathing procedure;
+            canonical spelling/compatibility remains separate metadata.
+        closer:
+          locators:
+          - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+            end_line: 80
+            file: +Transcripts From available tapes/Recharge/Recharge.txt
+            source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+            start_line: 63
+          status: supported
+          summary: Reinforce future remembering/use and close the learning context to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+            end_line: 173
+            file: +Transcripts From available tapes/Recharge/Recharge.txt
+            source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+            start_line: 81
+          status: supported
+          summary: Counted sleep-to-twenty segment is present; automatic integration is a source assertion,
+            not established mechanism.
+        conversion:
+          locators:
+          - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+            end_line: 60
+            file: +Transcripts From available tapes/Recharge/Recharge.txt
+            source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+            start_line: 38
+          status: inferred
+          summary: Safe short-rest planning is useful but source restoration/timing claims are not guarantees.
+            Rest context and breath holding require review.
+        future_use:
+          locators:
+          - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+            end_line: 68
+            file: +Transcripts From available tapes/Recharge/Recharge.txt
+            source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+            start_line: 38
+          status: supported
+          summary: Breathing/cue routine for a short sleep; source claims automatic restoration and waking
+            within minutes, not an explicit programmable timer.
+        handoff:
+          locators:
+          - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+            end_line: 190
+            file: +Transcripts From available tapes/Recharge/Recharge.txt
+            source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+            start_line: 174
+          status: supported
+          summary: Waking countdown and eyes-open return, followed by target cue reminder.
+        identity:
+          locators:
+          - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+            end_line: 48
+            file: +Transcripts From available tapes/Recharge/Recharge.txt
+            source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+            start_line: 38
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+            end_line: 60
+            file: +Transcripts From available tapes/Recharge/Recharge.txt
+            source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+            start_line: 38
+          status: supported
+          summary: select-short-rest-period; inhale-and-hold; internally-issue-recharge-cue; exhale; enter-sleep;
+            anticipate-near-term-waking
+        opener:
+          locators:
+          - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+            end_line: 37
+            file: +Transcripts From available tapes/Recharge/Recharge.txt
+            source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+            start_line: 32
+          status: supported
+          summary: Orient to the target function and establish receptive learning context before the instruction.
+        preparation:
+          locators:
+          - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+            end_line: 31
+            file: +Transcripts From available tapes/Recharge/Recharge.txt
+            source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+            start_line: 3
+          status: supported
+          summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary setting-aside
+            in repository representation and counted ten-state entry.
+        provenance:
+          locators:
+          - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+            end_line: 190
+            file: +Transcripts From available tapes/Recharge/Recharge.txt
+            source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Generic video
+            sign-off insertions at61-62 and ASR repetition are not historical instructions; no user-set
+            wake duration or suspend cue established.
+        purpose:
+          locators:
+          - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+            end_line: 2
+            file: +Transcripts From available tapes/Recharge/Recharge.txt
+            source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+            start_line: 2
+          status: supported
+          summary: Enter a short nap with claimed rapid restoration and awakening after minutes.
+        rehearsal:
+          locators:
+          - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+            end_line: 60
+            file: +Transcripts From available tapes/Recharge/Recharge.txt
+            source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+            start_line: 38
+          status: not-present
+          summary: Repeated instruction does not establish a distinct listener performance trial; apparent
+            ambient transcription artifacts are not practice evidence.
+        safety_claims:
+          locators:
+          - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+            end_line: 60
+            file: +Transcripts From available tapes/Recharge/Recharge.txt
+            source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+            start_line: 34
+          status: supported
+          summary: guaranteed-rapid-sleep; physiological-balance-restoration; automatic-minutes-later-awakening;
+            automatic-whole-system-learning. Claims are classified as source assertions, not accepted
+            OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+            end_line: 37
+            file: +Transcripts From available tapes/Recharge/Recharge.txt
+            source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+            start_line: 32
+          status: supported
+          summary: Reference learning shell uses ten preparation, eleven opening, ten closure, sleep-to-twenty
+            and waking return where the available ending supports it; not an OCF runtime requirement.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+            end_line: 190
+            file: +Transcripts From available tapes/Recharge/Recharge.txt
+            source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Generic
+            video sign-off insertions at61-62 and ASR repetition are not historical instructions; no user-set
+            wake duration or suspend cue established.
+      source_extent:
+        content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
+        end_line: 190
+        file: +Transcripts From available tapes/Recharge/Recharge.txt
+        source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-FND-003:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-FND-003:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-FND-003:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-FND-003:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-FND-003:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-FND-003:main
+        operations:
+        - select-short-rest-period
+        - inhale-and-hold
+        - internally-issue-recharge-cue
+        - exhale
+        - enter-sleep
+        - anticipate-near-term-waking
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-FND-003:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-FND-003:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-FND-003:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-FND-003:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-FND-003:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Generic video sign-off insertions at61-62 and ASR repetition are not historical instructions; no
+      user-set wake duration or suspend cue established.
+    - Safe short-rest planning is useful but source restoration/timing claims are not guarantees. Rest
+      context and breath holding require review.
+    states:
+      preferred: []
+      required: []
+      status: unknown

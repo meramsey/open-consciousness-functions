@@ -356,7 +356,6 @@ entries:
 
       This concludes your OCF Options exercise.'
 slug: options
-historical_record: functions/cognition/options.yaml
 classification:
   primary_domain: cognition
   secondary_domains: []
@@ -411,6 +410,637 @@ narration:
     role: closer
 editorial:
   command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-COG-005
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 5512bc72e74006795040da21341790e28ceb5ae31408fcd9f430fe3c104645ae
+    classification: KEEP CUE — ALIGN TITLE OR NARRATION
+    recommended_title: Options
+    recommended_primary_cue: PLUS-OPTIONS
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Close eyes, inhale/hold, select situation, complete cue, exhale with eyes remaining
+      closed. Explore greater-self possibilities/probabilities and consequences while preserving choice.
+      Plus Options is nested only, not independently taught or verified prediction.
+    pair_reason: OPTIONS directly evokes alternatives and is concise. Distinguish selected possibilities
+      from verified predictions without flattening the intended contemplative approach.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. OPTIONS directly
+      evokes alternatives and is concise. Distinguish selected possibilities from verified predictions
+      without flattening the intended contemplative approach.
+    teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
+    documentary_intent: Consider possibilities/probabilities for a chosen life activity, including claimed
+      information beyond personal experience.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
 localization:
   status: complete
   contract_sha256: 91f318b7db02f1dcb6f05acc17bab70f239f5f2a19e138c1396cce8ae174d10e
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-COG-005-LEGACY-01
+    command_status: unchanged
+    commands:
+    - PLUS-OPTIONS, CHOICES
+    name: OPTIONS
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Options
+  compatibility:
+    state: historical-lookup
+    rationale: Plus Options Choices is historical vocabulary; the approved active cue is Plus Options.
+  historical_lookup:
+  - text: Plus Options Choices
+    kind: former-teaching
+    command_id: OCF-CMD-COG-005-LEGACY-01
+    decision: OCF-OPTIONS-001
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-cog-005.title
+    short_description_key: functions.ocf-cog-005.short-description
+    purpose_key: functions.ocf-cog-005.purpose
+  commands:
+  - id: OCF-CMD-COG-005-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-cog-005-primary.label
+      usage_key: commands.ocf-cmd-cog-005-primary.usage
+      purpose_key: functions.ocf-cog-005.purpose
+      explanation_key: commands.ocf-cmd-cog-005-primary.explanation
+      display_cue_key: commands.ocf-cmd-cog-005-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-cog-005-primary.spoken-cue
+    observed_phrase:
+      text: Plus Options
+      narration_key: hplus.function.ocf-cog-005.function-body
+      relationship: canonical-match
+  - id: OCF-CMD-COG-005-LEGACY-01
+    localization:
+      label_key: commands.ocf-cmd-cog-005-legacy-01.label
+      usage_key: commands.ocf-cmd-cog-005-legacy-01.usage
+      purpose_key: functions.ocf-cog-005.purpose
+      explanation_key: commands.ocf-cmd-cog-005-legacy-01.explanation
+  predecessor_resource_sha256: ba35e3c78529f4b51005a70a178305941634f35739c2b45c3388259578a84a30
+  editorial_decisions:
+  - id: OCF-OPTIONS-001
+    kind: approved-command-presentation-change
+    decision_source: 'Explicit user approval: OCF COMPLETE OPTIONS MIGRATION AND EDITORIAL CANDIDATE INTEGRATION'
+    source_commit: e4226aac3feac72d62049314f807175175717a48
+    command_id: OCF-CMD-COG-005-PRIMARY
+    scope: Approved substitution of the primary Options command from the historical teaching phrase to
+      the canonical cue; only two narration entries changed. No DSP, pacing, listening, or release approval.
+    previous_resolved_text_sha256:
+      hplus.function.ocf-cog-005.closer: 5116920052aab54b5e9fca23909db9d9cc0af7b4203f5caae663b1e9f772e848
+      hplus.function.ocf-cog-005.function-body: 311b98d65798bb5b6e35c4ee78002e98e8372c53cfcfa580e3ea7eb462126b3e
+    current_resolved_text_sha256:
+      hplus.function.ocf-cog-005.closer: d80d2493b8529d3f6968897c8cc40f316216e35324bee745291402bfedd36ce2
+      hplus.function.ocf-cog-005.function-body: 7e83a3bf12972e1c85bf87c0e06adf3f83b369bd2255feb83ece4a7bc2aed9ac
+    previous_raw_template_sha256:
+      hplus.function.ocf-cog-005.closer: 37057b339d1466e6e02c28504726d4209255bfdd6d297b1b181892331a775454
+      hplus.function.ocf-cog-005.function-body: 167106b02f9dca55f45c3e63608bb8894404afbdc76fb23ef24fe84508a66ce5
+    unchanged_protected_count: 175
+    listening_approval: false
+    release_ready: false
+  - id: OCF-EDITORIAL-TITLE-CUES-004-KEPT
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Keep all current Options wording and metadata unchanged, including actual taught Plus Options
+      Choices. Do not implement the proposed shortening to Plus Options or retire its active legacy alias.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: d0ae183302fa48de2fee709bffc9aac4b37788bc48a29f86ebbd6b305aa021db
+    status: retained
+    current_values_sha256: 875f0d9d70d51af56f578c34fd4ff36dbdbf55801e833464ae764463ba3d2545
+    changed_narration_keys: []
+    previous_resolved_text_sha256: {}
+    current_resolved_text_sha256: {}
+    review_note: Close eyes, inhale/hold, select situation, complete cue, exhale with eyes remaining closed.
+      Explore greater-self possibilities/probabilities and consequences while preserving choice. Plus
+      Options is nested only, not independently taught or verified prediction.
+  - id: OCF-FUNCTIONAL-METADATA-PERSISTENCE
+    kind: approved-functional-metadata
+    source_commit: 4da47a5740ead0be6bc3127437ee7b36a9c86ddf
+    scope: OCF-COG-005:persistence
+    decision_source: Please do
+    source_row_sha256: 51036e767548c34c70ea3ad2d48d337d3c2f45a181b20e2592218b5afeb8574c
+    status: accepted
+    current_values_sha256: 3a40971c1021c1b9f971ef5e4f5488a1efd2f5a8e429c36f90b91ede84ba2285
+    review_note: 'Options: 1'
+    approval_response: approve
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195:opener
+      kind: structural-inference
+      line_candidates:
+      - 69
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - category: main
+      confidence: low
+      id: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195:main
+      kind: structural-inference
+      line_candidates:
+      - 37
+      - 38
+      - 47
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - category: closer
+      confidence: low
+      id: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195:closer
+      kind: structural-inference
+      line_candidates:
+      - 61
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - category: preparation
+      confidence: low
+      id: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195:preparation
+      kind: structural-inference
+      line_candidates:
+      - 11
+      - 16
+      - 21
+      - 64
+      - 70
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - category: command_association
+      confidence: low
+      id: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195:command_association
+      kind: structural-inference
+      line_candidates:
+      - 41
+      - 50
+      - 58
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - category: future_use
+      confidence: low
+      id: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195:future_use
+      kind: structural-inference
+      line_candidates:
+      - 38
+      - 46
+      - 47
+      - 56
+      - 60
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - category: return
+      confidence: low
+      id: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195:return
+      kind: structural-inference
+      line_candidates:
+      - 72
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - category: purpose
+      confidence: medium
+      id: review:OCF-COG-005:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 38
+      - 46
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - category: opener
+      confidence: medium
+      id: review:OCF-COG-005:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 34
+      - 37
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - category: main
+      confidence: medium
+      id: review:OCF-COG-005:main
+      kind: function-specification-inference
+      line_candidates:
+      - 38
+      - 56
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - category: association
+      confidence: medium
+      id: review:OCF-COG-005:association
+      kind: function-specification-inference
+      line_candidates:
+      - 38
+      - 45
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-COG-005:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 38
+      - 56
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - category: future_use
+      confidence: medium
+      id: review:OCF-COG-005:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 38
+      - 60
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-COG-005:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 183
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - category: closer
+      confidence: medium
+      id: review:OCF-COG-005:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 57
+      - 70
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-COG-005:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 71
+      - 183
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - category: handoff
+      confidence: unknown
+      id: review:OCF-COG-005:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 100
+      - 183
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-COG-005:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 35
+      - 56
+      scope: document
+      source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+      path: +Transcripts From available tapes/Options/Options.lrc
+      related_sha256:
+      - 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+      - 7e53c471ec9a9965bf07fd27acf21c3c0879cafeb5af9553d3424f06c603ec65
+      sha256: 8bab079e156d915ee13677ca878fbcef17141a5417d30c3b324bc816e3fe546a
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Options/Options.ocr.pdf
+      related_sha256: []
+      sha256: 18e573515cd1cde9cbea27a7a64a0d4fd7e01ddb3160f19991b4bc9055352cb3
+    - authentication: operator-designated
+      completeness: explicit gaps
+      evidence_class: partial_source_transcript
+      normalized_content_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+      path: +Transcripts From available tapes/Options/Options.srt
+      related_sha256:
+      - 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+      - 8bab079e156d915ee13677ca878fbcef17141a5417d30c3b324bc816e3fe546a
+      sha256: 7e53c471ec9a9965bf07fd27acf21c3c0879cafeb5af9553d3424f06c603ec65
+    - authentication: operator-designated
+      completeness: explicit gaps
+      evidence_class: partial_source_transcript
+      normalized_content_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+      path: +Transcripts From available tapes/Options/Options.txt
+      related_sha256:
+      - 7e53c471ec9a9965bf07fd27acf21c3c0879cafeb5af9553d3424f06c603ec65
+      - 8bab079e156d915ee13677ca878fbcef17141a5417d30c3b324bc816e3fe546a
+      sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Options/folder.jpg
+      related_sha256: []
+      sha256: cf943b4b7bcb8a3d821d38d4f4d0270bf0b45859feb08b38db501b486af3a7c1
+  specifications:
+    analysis_review:
+      claim_categories:
+      - accurate-probability-foresight
+      - beyond-experience-information
+      - greater-self-agency
+      - automatic-whole-system-learning
+      family: cognitive-alternatives
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+            end_line: 45
+            file: +Transcripts From available tapes/Options/Options.txt
+            source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+            start_line: 38
+          status: supported
+          summary: Cue plus chosen activity is associated with clear detailed options, purportedly supplied
+            by a greater self.
+        closer:
+          locators:
+          - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+            end_line: 70
+            file: +Transcripts From available tapes/Options/Options.txt
+            source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+            start_line: 57
+          status: supported
+          summary: Future-use reinforcement and learning-channel close to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+            end_line: 183
+            file: +Transcripts From available tapes/Options/Options.txt
+            source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+            start_line: 71
+          status: supported
+          summary: Sleep-to-twenty explanation/count is present, followed by uninterpretable gaps/repetition.
+        conversion:
+          locators:
+          - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+            end_line: 56
+            file: +Transcripts From available tapes/Options/Options.txt
+            source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+            start_line: 38
+          status: inferred
+          summary: Deliberate option generation may be useful but is not equivalent to verified foresight;
+            material purpose/claim changes require editorial review.
+        future_use:
+          locators:
+          - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+            end_line: 60
+            file: +Transcripts From available tapes/Options/Options.txt
+            source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+            start_line: 38
+          status: supported
+          summary: Request alternatives for a chosen activity; repeated use is asserted to improve effectiveness.
+        handoff:
+          locators:
+          - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+            end_line: 183
+            file: +Transcripts From available tapes/Options/Options.txt
+            source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+            start_line: 100
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Missing
+            ending and ASR artifacts preclude exact return/timing claims. No suspend/reset cue established.
+        identity:
+          locators:
+          - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+            end_line: 45
+            file: +Transcripts From available tapes/Options/Options.txt
+            source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+            start_line: 38
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+            end_line: 56
+            file: +Transcripts From available tapes/Options/Options.txt
+            source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+            start_line: 38
+          status: supported
+          summary: select-life-activity; close-eyes-and-hold-breath; internally-issue-options-cue; exhale-with-eyes-closed;
+            attend-to-presented-possibilities
+        opener:
+          locators:
+          - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+            end_line: 37
+            file: +Transcripts From available tapes/Options/Options.txt
+            source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+            start_line: 34
+          status: supported
+          summary: Establish learning context before defining an activity-specific options request.
+        preparation:
+          locators:
+          - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+            end_line: 33
+            file: +Transcripts From available tapes/Options/Options.txt
+            source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+            start_line: 11
+          status: supported
+          summary: Supported uninterrupted relaxation, temporary setting-aside and counted ten-state entry;
+            ASR counts are corrupted.
+        provenance:
+          locators:
+          - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+            end_line: 183
+            file: +Transcripts From available tapes/Options/Options.txt
+            source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+            start_line: 1
+          status: supported
+          summary: Complete available partial_source_transcript text inspected; shared representations
+            are not independent corroboration. Source accuracy/authentication remains unresolved. Missing
+            ending and ASR artifacts preclude exact return/timing claims. No suspend/reset cue established.
+        purpose:
+          locators:
+          - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+            end_line: 46
+            file: +Transcripts From available tapes/Options/Options.txt
+            source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+            start_line: 38
+          status: supported
+          summary: Consider possibilities/probabilities for a chosen life activity, including claimed
+            information beyond personal experience.
+        rehearsal:
+          locators:
+          - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+            end_line: 56
+            file: +Transcripts From available tapes/Options/Options.txt
+            source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+            start_line: 38
+          status: supported
+          summary: Two teaching presentations; no separate explicit practice/selection trial is established.
+        safety_claims:
+          locators:
+          - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+            end_line: 56
+            file: +Transcripts From available tapes/Options/Options.txt
+            source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+            start_line: 35
+          status: supported
+          summary: accurate-probability-foresight; beyond-experience-information; greater-self-agency;
+            automatic-whole-system-learning. Claims are classified as source assertions, not accepted
+            OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+            end_line: 37
+            file: +Transcripts From available tapes/Options/Options.txt
+            source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+            start_line: 34
+          status: supported
+          summary: Eleven learning opening, ten close, sleep-to-twenty instructions; final waking return
+            unavailable in this derivative.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+            end_line: 183
+            file: +Transcripts From available tapes/Options/Options.txt
+            source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Missing
+            ending and ASR artifacts preclude exact return/timing claims. No suspend/reset cue established.
+      source_extent:
+        content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
+        end_line: 183
+        file: +Transcripts From available tapes/Options/Options.txt
+        source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-COG-005:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-COG-005:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-COG-005:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-COG-005:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-COG-005:handoff
+        operations: []
+        status: unknown
+      main:
+        evidence_refs:
+        - review:OCF-COG-005:main
+        operations:
+        - select-life-activity
+        - close-eyes-and-hold-breath
+        - internally-issue-options-cue
+        - exhale-with-eyes-closed
+        - attend-to-presented-possibilities
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-COG-005:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-COG-005:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-COG-005:rehearsal
+        operations:
+        - documented-rehearsal
+        status: inferred
+      safety_claims:
+        evidence_refs:
+        - review:OCF-COG-005:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-COG-005:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Missing ending and ASR artifacts preclude exact return/timing claims. No suspend/reset cue established.
+    - Deliberate option generation may be useful but is not equivalent to verified foresight; material
+      purpose/claim changes require editorial review.
+    states:
+      preferred: []
+      required: []
+      status: unknown

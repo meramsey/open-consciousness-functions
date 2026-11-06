@@ -133,11 +133,11 @@ reset conditions. Injury/Toxic Exposure metadata is not emergency detection or
 treatment. Focus is a function, not a Focus 10/11 stage. Manifest, Dissolve and
 Intuition remain independent.
 
-The six proposals first recorded at checkpoint `2b26883` received six explicit
-approvals followed by final batch confirmation. Their exact approved explanations
-and responses are retained in
-[the documentation successor](../function-content/editorial/guide-review-001.json).
-All are **optional and directional**. No reciprocal link, required sequence,
+Six optional relationship decisions are represented in the owning canonical
+locale resources, with hash-only approval provenance in
+`record_metadata.editorial_decisions`. Their explanations are rendered from the
+same canonical resources as the functions. All links are **optional and
+directional**. No reciprocal link, required sequence,
 proven synergy, clinical benefit or listening/release approval is implied.
 
 - Source `OCF-EXP-001` Manifest → related `OCF-EXP-003` Dissolve;

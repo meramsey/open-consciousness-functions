@@ -10,6 +10,7 @@ from .commands import command_view
 from .indexes import load_all_functions
 from .locale import UI_DOMAIN, LocaleCatalog, LocalizationError, normalize_tag
 from .models import FunctionRecord
+from .paths import REPO_ROOT
 from .utils import OCFError, generated_content, write_text_atomic
 
 
@@ -251,6 +252,7 @@ def _function_document(
         )
     result = {
         "function_id": record.id,
+        "canonical_resource": "../" + record.path.relative_to(REPO_ROOT).as_posix(),
         "slug": record.slug,
         "title": localized["title"],
         "short_description": localized["short_description"],
@@ -424,7 +426,7 @@ def render_command_index(index: dict) -> str:
                 + " | ".join(
                     _markdown_cell(value)
                     for value in (
-                        f"[{function['title']['text']}](functions/{function['function_id']}.md)",
+                        f"[{function['title']['text']}]({function['canonical_resource']})",
                         command["phrase"],
                         command["label"]["text"],
                         command["usage"]["text"],
@@ -494,7 +496,9 @@ def render_function_sheet(function: dict, index: dict) -> str:
         "",
         f"**{strings['command.guide.command-review']['text']}**: {function['command_review_label']['text']} (`{function['canonical_command_review']}`)",
         "",
-        "[Command index](../COMMAND_INDEX.md)",
+        "Commands: `ocf commands list`; details: `ocf commands describe "
+        + function["function_id"]
+        + "`.",
         "",
     ]
     if function.get("lifecycle_scopes"):
@@ -578,7 +582,7 @@ def render_function_sheet(function: dict, index: dict) -> str:
         lines += [f"## {strings['command.guide.relationships']['text']}", ""]
         for relation in function["related_functions"]:
             lines += [
-                f"- [{relation['title']['text']}]({relation['function_id']}.md): {relation['description']['text']} (`optional`; `{relation['approval']}`)."
+                f"- {relation['title']['text']} ({relation['function_id']}): {relation['description']['text']} (`optional`; `{relation['approval']}`)."
             ]
         lines.append("")
     fallback_count = index["fallback_count"]
@@ -611,7 +615,7 @@ def render_quick_reference(index: dict) -> str:
                 + " | ".join(
                     _markdown_cell(value)
                     for value in (
-                        f"[{function['title']['text']}](functions/{function['function_id']}.md)",
+                        f"[{function['title']['text']}]({function['canonical_resource']})",
                         primary["phrase"],
                         modes,
                         function["persistence_label"]["text"],
@@ -655,13 +659,6 @@ def generated_command_documents() -> list[tuple[str, str]]:
             json.dumps(index, indent=2, ensure_ascii=False, sort_keys=True) + "\n",
         ),
     ]
-    outputs.extend(
-        (
-            f"docs/functions/{function['function_id']}.md",
-            render_function_sheet(function, index),
-        )
-        for function in index["functions"]
-    )
     return [
         (
             path,

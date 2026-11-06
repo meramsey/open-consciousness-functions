@@ -162,7 +162,13 @@ def validate_function_schema(record: FunctionRecord) -> ValidationResult:
     """Validate one function record against function.schema.json."""
     result = ValidationResult()
     schema = _load_schema("function.schema.json")
-    for message in validate_against_schema(record.data, schema):
+    # The FunctionRecord API includes a read-only projection of consolidated
+    # locale content. Its legacy structural schema intentionally validates only
+    # the compatibility view; the full localized-function schema validates the
+    # embedded content authority separately.
+    compatibility = dict(record.data)
+    compatibility.pop("content", None)
+    for message in validate_against_schema(compatibility, schema):
         result.add("error", "schema", message, record.id)
     return result
 

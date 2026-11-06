@@ -58,32 +58,14 @@ Each future locale must decide its own complete title/cue pair and Plus-prefix
 treatment. Title, explicit cue and actual teaching must be reviewed together;
 resource availability is not language/editorial approval.
 
-## What this is not
+## Canonical function locales
 
-### Stable-ID function resource migration (in progress)
-
-The current migration pilot is `OCF-EMO-003-Empathize.yaml`; it is not completion
-of the 58-function migration. A registry-driven preview can be generated without
-changing active locale manifests, narration, or historical locks:
-
-```bash
-PYTHONPATH=scripts python -m ocf_tools.localized_migration
-PYTHONPATH=scripts python -m ocf_tools.localized_migration --output .ocf-work/migration-preview
-```
-
-The optional output must be a new directory inside the configured workspace.
-It contains all 58 proposed function files, real existing English metadata,
-separate raw-template/resolved-speech hashes, an old/new path map, and exact
-source snapshots (including notes and removed preview comments). It is a
-preview only: it does not activate the files or change metadata precedence.
-Unreviewed legacy cues remain unbound; no spoken wording is invented.
-
-Historical consumers must retain logical predecessor identities and verify
-immutable snapshots before activation. The hash-checked localized-resource
-migration ledger projects the pilot's current manifest/cue metadata back to its
-exact predecessor for historical checks, while active narration still resolves
-through LocaleCatalog. Public defaults, HPLUS-015 bytes, and Spanish content
-are not changed by preview generation.
+The 58 English function resources are complete canonical locale resources under
+`locales/en-US/`. Each owns its localized presentation, command controls,
+lifecycle, narration, and function-specific editorial/provenance metadata.
+Runtime loading does not consult a separate function registry or predecessor
+archive. The Spanish pack remains partial; missing function text is reported and
+never inherited from English. See the [per-locale authority contract](PER_LOCALE_FUNCTION_AUTHORITY.md).
 
 Localization changes words and measured speech duration. **Explicit semantic
 anchors remain fixed**; declared speech-end/event-end dependencies follow the
@@ -361,9 +343,9 @@ ocf transcript export /tmp/focus-cycle.yaml --format srt --locale es
 
 ## Not yet done
 
-- **Function-record translations.** Per-function narration is keyed
-  (`function.*`) and localizable today; a translated *function record* (one
-  source language plus a list of translations) needs its own schema change.
+- **Function records.** Complete per-locale function resources are shipped;
+  untranslated function resources remain explicitly missing/partial and never
+  inherit English speech.
 - **A real ICU runtime.** The subset covers what OCF messages need. Adopting
   PyICU or Babel is a dependency decision for a later proposal.
 - **Right-to-left layout.** `direction` is resolved, recorded, and exported in

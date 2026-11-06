@@ -6,7 +6,8 @@ locked HPlus template, including two programming/two sleep passes and waking
 return. These are engineering bindings, not a claim that every future function
 should use that ending or that human review is complete.
 
-`function-content/bindings/<ID>.yaml` may declare `session_overrides`, validated
+The canonical locale function resource may declare embedded
+`content.bindings.session_overrides`, validated
 against `schemas/session-overrides.schema.json`. Precedence is explicit CLI
 arguments/override file, then function overrides, then selected template, then
 its inherited locked defaults. Mappings merge recursively; no locked file is

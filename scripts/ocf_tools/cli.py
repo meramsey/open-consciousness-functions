@@ -185,6 +185,9 @@ def _build_parser() -> argparse.ArgumentParser:
     cover_cmd.add_argument(
         "--no-description", action="store_true", help="omit optional localized artwork copy"
     )
+    cover_cmd.add_argument(
+        "--lyrics", action="store_true", help="embed compatible measured artwork lyrics"
+    )
     cover_cmd.add_argument("--output", type=Path)
     dev = sub.add_parser(
         "dev",

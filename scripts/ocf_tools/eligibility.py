@@ -3,10 +3,9 @@
 from __future__ import annotations
 
 from .audio_defaults import TEMPLATE_ID
-from .content import CONTENT_DIR, load_layers
 from .indexes import load_all_functions, load_function_by_id
 from .locale import LocaleCatalog
-from .utils import OCFError, write_text_atomic, yaml_safe_dump
+from .utils import OCFError, write_text_atomic, yaml_safe_dump, yaml_safe_load
 
 
 def migrate_bindings(function_ids: list[str], *, dry_run: bool = True) -> list[dict]:
@@ -18,24 +17,26 @@ def migrate_bindings(function_ids: list[str], *, dry_run: bool = True) -> list[d
     """
     catalog = LocaleCatalog()
     pending = []
-    authority_updates = []
     for owner in sorted(set(function_ids)):
         if load_function_by_id(owner) is None:
             raise OCFError(f"unknown function {owner}")
-        # Explicit migration may populate null authority from an existing
-        # compatibility plan. Runtime load_layers still rejects conflicts.
-        layers = load_layers(owner, CONTENT_DIR)
-        binding = layers.get("bindings")
+        record = load_function_by_id(owner)
+        binding = record.data.get("content", {}).get("bindings")
+        if binding is not None:
+            binding = dict(binding)
+        else:
+            binding = None
         if binding is None:
             binding = {
-                "schema_version": "1.0",
-                "function_id": owner,
                 "session_templates": [],
                 "narration_resources": [],
                 "voice_sources": ["tts"],
                 "duration": None,
             }
-        if not binding.get("narration_plan"):
+        declared_sequence = record.data.get("narration")
+        if declared_sequence:
+            binding["narration_plan"] = declared_sequence
+        elif not binding.get("narration_plan"):
             sequence = []
             for role in ("opener", "function-body", "closer"):
                 key = f"hplus.function.{owner.lower()}.{role}"
@@ -56,40 +57,28 @@ def migrate_bindings(function_ids: list[str], *, dry_run: bool = True) -> list[d
         binding["voice_sources"] = sorted(set(binding.get("voice_sources") or []) | {"tts"})
         from .content import validate_layers
 
-        errors = validate_layers({"bindings": binding}, owner)
+        if not declared_sequence:
+            raise OCFError(f"{owner}: canonical narration sequence is missing")
+        payload = {k: v for k, v in binding.items() if k != "narration_plan"}
+        errors = validate_layers(
+            {"bindings": {"schema_version": "1.0", "function_id": owner, **payload}}, owner
+        )
         if errors:
             raise OCFError(" | ".join(errors))
-        pending.append((CONTENT_DIR / "bindings" / f"{owner}.yaml", binding))
-        record = load_function_by_id(owner)
-        if record is not None:
-            declared = record.data.get("narration")
-            if declared is not None and declared != binding["narration_plan"]:
-                raise OCFError(f"{owner}: binding migration conflicts with authoritative narration")
-            if declared is None:
-                import yaml
-
-                raw = record.path.read_text(encoding="utf-8")
-                node = yaml.compose(raw)
-                field = next((value for key, value in node.value if key.value == "narration"), None)
-                rendered = yaml_safe_dump({"narration": binding["narration_plan"]})
-                if field is None:
-                    raw = raw.rstrip() + "\n" + rendered
-                else:
-                    start = raw.rfind("\n", 0, field.start_mark.index) + 1
-                    raw = raw[:start] + rendered + raw[field.end_mark.index :].lstrip("\n")
-                authority_updates.append((record.path, raw))
+        current = yaml_safe_load(record.path.read_text(encoding="utf-8"))
+        current.setdefault("content", {})["bindings"] = payload
+        pending.append((owner, record.path, current))
     if not dry_run:
-        for path, text in authority_updates:
-            write_text_atomic(path, text)
-        for path, binding in pending:
-            write_text_atomic(path, yaml_safe_dump(binding))
+        for _owner, path, data in pending:
+            write_text_atomic(path, yaml_safe_dump(data))
     return [
         {
-            "function_id": binding["function_id"],
+            "function_id": owner,
             "default_session_template": binding.get("default_session_template"),
             "dry_run": dry_run,
         }
-        for _, binding in pending
+        for owner, _path, data in pending
+        for binding in (data["content"]["bindings"],)
     ]
 
 

@@ -1371,15 +1371,9 @@ def guide_build_manifest(records, edition, *, source_revision=None):
     sources = {
         "locales/en-US/manifest.yaml",
         "docs/LISTENING_GUIDE.md",
-        "function-content/editorial/guide-review-001.json",
     }
     sources.update("locales/en-US/" + row["file"] for row in pack.manifest["resources"])
     sources.update(record.path.relative_to(REPO_ROOT).as_posix() for record in records)
-    from .locale_history import FUNCTION_AUTHORITY, historical_function_resources
-
-    if (REPO_ROOT / FUNCTION_AUTHORITY).is_file():
-        sources.add(FUNCTION_AUTHORITY)
-        sources.update(row["archive"] for row in historical_function_resources(REPO_ROOT).values())
     sources.update(
         "scripts/ocf_tools/" + name + ".py"
         for name in (
@@ -1392,7 +1386,6 @@ def guide_build_manifest(records, edition, *, source_revision=None):
             "guide_review",
             "lifecycle",
             "function_catalog",
-            "locale_history",
         )
     )
     return {

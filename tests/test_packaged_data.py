@@ -28,6 +28,14 @@ def test_source_packaged_override_and_missing_data(tmp_path, monkeypatch):
 
 def test_packaging_excludes_source_wording_and_binary_assets(tmp_path):
     root = fixture_root(tmp_path / "root")
+    old_metadata = root / "function-content/editorial"
+    old_metadata.mkdir(parents=True)
+    for filename in (
+        "obsolete-map-a.json",
+        "obsolete-map-b.json",
+        "obsolete-map-c.json",
+    ):
+        (old_metadata / filename).write_text("{}\n", encoding="utf-8")
     directory = root / "audio/templates/sessions"
     directory.mkdir(parents=True)
     (directory / "original.yaml").write_text("origin: original-ocf\n")
@@ -43,6 +51,8 @@ def test_packaging_excludes_source_wording_and_binary_assets(tmp_path):
     assert not (output / "locales/en-US/audio.wav").exists()
     assert not (output / "locales/en-US/cover.png").exists()
     assert (output / "brand/candidate.png").read_bytes() == b"unchanged supplied pixels"
+    assert not (output / "function-content/editorial").exists()
+    assert not any("function-content/editorial/" in path for path in report["included"])
     assert report["omitted_citation_only_bindings"] == ["audio/templates/sessions/reference.yaml"]
 
 
@@ -61,16 +71,16 @@ def test_packaging_refuses_targets_containing_source_and_target_symlinks(tmp_pat
         stage_data(root, target)
 
 
-def test_package_staging_excludes_citation_binding_and_unsupported_suffixes(tmp_path):
+def test_package_staging_excludes_duplicate_function_layers_and_unsupported_suffixes(tmp_path):
     root = fixture_root(tmp_path / "root")
-    binding = root / "function-content/bindings/OCF-FND-002.yaml"
+    binding = root / "function-content/obsolete-layer/OCF-FND-002.yaml"
     binding.parent.mkdir(parents=True)
     binding.write_text("function_id: OCF-FND-002\n")
     (root / "schemas/ignored.bin").write_bytes(b"not package data")
     output = tmp_path / "package"
     report = stage_data(root, output)
-    assert "function-content/bindings/OCF-FND-002.yaml" in report["omitted_citation_only_bindings"]
-    assert not (output / "function-content/bindings/OCF-FND-002.yaml").exists()
+    assert "function-content/obsolete-layer/OCF-FND-002.yaml" not in report["included"]
+    assert not (output / "function-content/obsolete-layer/OCF-FND-002.yaml").exists()
     assert not (output / "schemas/ignored.bin").exists()
 
 

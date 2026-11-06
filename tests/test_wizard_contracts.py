@@ -63,7 +63,9 @@ def test_quit_after_an_optional_field_is_not_serialized(monkeypatch, capsys):
 def authoring_boundary(monkeypatch, tmp_path):
     writes = []
     monkeypatch.setattr(prompts, "REPO_ROOT", tmp_path)
-    monkeypatch.setattr(prompts, "FUNCTIONS_DIR", tmp_path / "functions")
+    manifest = tmp_path / "locales/en-US/manifest.yaml"
+    manifest.parent.mkdir(parents=True)
+    manifest.write_text(utils.yaml_safe_dump({"resources": []}), encoding="utf-8")
     monkeypatch.setattr(prompts, "PROPOSALS_DIR", tmp_path / "proposals")
     monkeypatch.setattr(prompts, "AUDIO_MANIFESTS_DIR", tmp_path / "audio/manifests")
     monkeypatch.setattr(prompts, "load_all_functions", lambda: [])
@@ -118,9 +120,13 @@ def test_function_collection_compatibility_release_and_final_review(
 
     monkeypatch.setattr(prompts, "ask_yes_no", yes_no)
     records = []
-    monkeypatch.setattr(
-        prompts, "build_function_yaml", lambda **kw: records.append(kw) or {"fixture": status}
-    )
+    build_function = prompts.build_function_yaml
+
+    def build(**kwargs):
+        records.append(kwargs)
+        return build_function(**kwargs)
+
+    monkeypatch.setattr(prompts, "build_function_yaml", build)
     prompts.run_function_wizard()
     assert bool(writes) is confirm
     assert (
@@ -133,7 +139,7 @@ def test_function_collection_compatibility_release_and_final_review(
     assert bool(records[0]["release_command"]) is release
     assert records[0]["canonical_command"] == "PLUS-TEST"
     if confirm:
-        assert writes[0][0] == root / "functions/foundation/fixture.yaml"
+        assert writes[0][0] == root / "locales/en-US/OCF-FND-001-fixture.yaml"
 
 
 def test_function_overwrite_decline_and_list_prompt_quit_do_not_write(
@@ -164,7 +170,6 @@ def test_function_wizard_publishes_only_local_draft_and_manifest(
 
     root, writes = authoring_boundary
     manifest_path = root / "locales/en-US/manifest.yaml"
-    manifest_path.parent.mkdir(parents=True)
     entry = {"file": "OCF-FND-001-fixture.yaml", "domain": "function"}
     manifest_path.write_text(
         yaml_safe_dump({"resources": [entry] if registered else []}), encoding="utf-8"
@@ -179,7 +184,7 @@ def test_function_wizard_publishes_only_local_draft_and_manifest(
     data = yaml_safe_load(writes[0][1])
     assert data["schema_version"] == "2.0"
     assert data["localization"]["status"] == "partial"
-    assert data["entries"] == {} and "historical_record" not in data
+    assert data["entries"] == {} and isinstance(data["record_metadata"], dict)
     if registered:
         assert len(writes) == 1
     else:
@@ -366,9 +371,13 @@ def test_optional_contributor_fields_can_remain_empty(monkeypatch, authoring_bou
 
     monkeypatch.setattr(prompts, "ask", ask)
     collected = []
-    monkeypatch.setattr(
-        prompts, "build_function_yaml", lambda **kw: collected.append(kw) or {"fixture": True}
-    )
+    build_function = prompts.build_function_yaml
+
+    def build(**kwargs):
+        collected.append(kwargs)
+        return build_function(**kwargs)
+
+    monkeypatch.setattr(prompts, "build_function_yaml", build)
     prompts.run_function_wizard()
     assert writes
     assert collected[0]["contributor_name"] is None and collected[0]["contributor_contact"] is None

@@ -1257,31 +1257,12 @@ class LocaleCatalog:
     def _localized_value(
         value: Mapping[str, Any], record, command=None
     ) -> tuple[str, str | None, str | None]:
-        """Resolve a localized value or its canonical function-YAML reference."""
+        """Resolve only literal localized values owned by this locale resource."""
         if "text" in value:
             return str(value["text"]), value.get("status"), value.get("version")
-        source = value.get("source")
-        field_name = value.get("field")
-        if source != "function-yaml":
-            raise LocalizationError("localized function metadata has an unknown value source")
-        if field_name == "title":
-            return record.canonical_name, "canonical", value.get("version")
-        if field_name == "description":
-            return record.purpose_summary, "canonical", value.get("version")
-        if command is None or value.get("command_id") != command.id:
-            raise LocalizationError(
-                "localized command metadata reference does not match command ID"
-            )
-        if field_name == "primary-command":
-            from .commands import resolve_phrase
-
-            return resolve_phrase(record, command), "canonical", value.get("version")
-        if field_name == "spoken-command":
-            spoken = command.data.get("spoken")
-            if not spoken or command.data.get("spoken_review") != "reviewed":
-                raise LocalizationError(f"{command.id}: canonical spoken cue is not reviewed")
-            return str(spoken), "reviewed", value.get("version")
-        raise LocalizationError(f"unknown canonical localized-function field: {field_name!r}")
+        raise LocalizationError(
+            "localized function values must be literal in the canonical locale resource"
+        )
 
     def _project_localized_function_aliases(self) -> None:
         """Expose per-function YAML fields to old key-based callers during migration."""
@@ -1292,9 +1273,10 @@ class LocaleCatalog:
             for function_id, metadata in pack.localized_functions.items():
                 record = records.get(function_id)
                 if record is None:
-                    self.problems.append(
-                        f"{pack.locale}: localized function {function_id} has no stable registry record"
-                    )
+                    if metadata.get("schema_version") == "2.0":
+                        self.problems.append(
+                            f"{pack.locale}: canonical function {function_id} could not be projected"
+                        )
                     continue
                 key_prefix = f"functions.{function_id.lower()}"
                 if metadata.get("schema_version") == "2.0" and pack.locale != "en-US":
@@ -1364,7 +1346,13 @@ class LocaleCatalog:
                             f"{pack.locale}: duplicate localized relationship {key}"
                         )
                         continue
-                    text, status, version = self._localized_value(relation["description"], record)
+                    try:
+                        text, status, version = self._localized_value(
+                            relation["description"], record
+                        )
+                    except LocalizationError as exc:
+                        self.problems.append(f"{pack.locale}: {exc}")
+                        continue
                     pack.entries[key] = NarrationResource(
                         key=key,
                         locale=pack.locale,
@@ -1385,7 +1373,11 @@ class LocaleCatalog:
                             f"{pack.locale}: duplicate localized metadata key {key}"
                         )
                         continue
-                    text, status, version = self._localized_value(value, record)
+                    try:
+                        text, status, version = self._localized_value(value, record)
+                    except LocalizationError as exc:
+                        self.problems.append(f"{pack.locale}: {exc}")
+                        continue
                     pack.entries[key] = NarrationResource(
                         key=key,
                         locale=pack.locale,
@@ -1409,7 +1401,11 @@ class LocaleCatalog:
                             f"{pack.locale}: localized function metadata duplicates active resource {key}"
                         )
                         continue
-                    text, status, version = self._localized_value(value, record)
+                    try:
+                        text, status, version = self._localized_value(value, record)
+                    except LocalizationError as exc:
+                        self.problems.append(f"{pack.locale}: {exc}")
+                        continue
                     pack.entries[key] = NarrationResource(
                         key=key,
                         locale=pack.locale,
@@ -1459,7 +1455,13 @@ class LocaleCatalog:
                                 f"{pack.locale}: localized function metadata duplicates active resource {key}"
                             )
                             continue
-                        text, status, version = self._localized_value(value, record, row_command)
+                        try:
+                            text, status, version = self._localized_value(
+                                value, record, row_command
+                            )
+                        except LocalizationError as exc:
+                            self.problems.append(f"{pack.locale}: {exc}")
+                            continue
                         pack.entries[key] = NarrationResource(
                             key=key,
                             locale=pack.locale,
@@ -1600,7 +1602,8 @@ class LocaleCatalog:
             "function_version",
             "editorial",
             "localization",
-            "historical_record",
+            "record_metadata",
+            "content",
         ):
             if name in metadata:
                 trace(metadata[name], "/" + name)
@@ -1802,20 +1805,11 @@ class LocaleCatalog:
             ]
             self._complete_record_cache = (signature, records)
             return records
-        from .indexes import load_all_functions
-        from .models import function_from_dict
-
         if self.root.resolve() == LOCALES_DIR.resolve():
+            from .indexes import load_all_functions
+
             return load_all_functions()
-        functions = self.root.parent / "functions"
-        result = []
-        for path in sorted(functions.rglob("*")):
-            if not path.is_file() or path.suffix not in {".yaml", ".yml"}:
-                continue
-            if not path.resolve().is_relative_to(functions.resolve()):
-                raise LocalizationError("cue authority escapes its function root")
-            result.append(function_from_dict(load_yaml_file(path), path))
-        return result
+        return []
 
     def function_completeness(self, locale):
         from .function_catalog import completeness

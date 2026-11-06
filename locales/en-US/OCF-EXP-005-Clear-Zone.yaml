@@ -218,6 +218,10 @@ entries:
       encouraging unwanted insects to keep their distance
 
       and move peacefully elsewhere.'
+    notes: New OCF-authored adaptation of the supplied Clear Zone exercise. Introduces an ongoing, consciously
+      chosen intention to discourage unwanted insect contact while maintaining calm awareness. No independently
+      authenticated source, source checksum, or historical lineage is claimed. Proposed identity remains
+      subject to registry allocation and explicit editorial review.
   hplus.function.ocf-exp-005.function-body:
     status: reviewed
     version: 1.0.0
@@ -311,6 +315,20 @@ entries:
       the more naturally your attention, intention,
 
       and total self work together.'
+    notes: New OCF wording based on the maintainer-supplied Clear Zone draft. Preserves permanent automatic
+      operation as the intended baseline, whole-self participation, non-destructive insect discouragement,
+      primary reinforcement and restoration, and distinct Observe and Suspend overrides. Observe pauses
+      the outward-directed intention while Clear Zone's calm awareness remains; Suspend pauses the whole
+      application without removing learning or ordinary bodily responses. Only one mode is selected at
+      a time; a new selection replaces the previous mode. Normal sleep onset, loss of consciousness, or
+      deliberate primary invocation restores automatic mode. Meditation or hearing a command during instruction
+      does not itself select an override. Natural exhalation completes the supplied inhale-and-command
+      procedure; no breath hold or eye closure is added. Quantum terminology is replaced with total-self
+      and intention language rather than a claimed physical mechanism. Primary and mode cues require separate
+      stable command records; the two mode references use explicit same-owner command IDs. One reusable
+      body is intended for four scheduled passes. Shared state transitions and practice pauses remain
+      outside this body. Intended effects and automatic operation are exercise suggestions, not verified
+      insect repellency. Editorial and integration review remain pending.
   hplus.function.ocf-exp-005.closer:
     status: reviewed
     version: 1.0.0
@@ -336,8 +354,12 @@ entries:
 
 
       This concludes your OCF exercise.'
+    notes: New OCF-authored reminder, not historical transcript wording. Includes the primary reinforcement/restoration
+      cue and both distinct overrides. The body teaches automatic reset conditions; the closer does not
+      repeat reinforcement or install a new control command. All three commands use an easy inhale and
+      natural exhale, without a breath hold. Requires registered function and reviewed locale cues. Editorial
+      approval and finished-session review remain pending.
 slug: clear-zone
-historical_record: functions/experimental/clear-zone.yaml
 classification:
   primary_domain: experimental
   secondary_domains: []
@@ -404,3 +426,83 @@ editorial:
 localization:
   status: complete
   contract_sha256: 8ebfbbf4053a38a80e4070e20b8207c57a0b7ae400aca817436e1e0b63611c90
+record_metadata:
+  legacy:
+    source_system: null
+    name: ''
+    commands: []
+    command_status: proposed
+    source_availability: pending-source-review
+    source_notes: New adaptation of the supplied draft; no authenticated historical lineage or inherited
+      rights approval.
+  aliases:
+    names: []
+    commands: []
+    command_ids: []
+  compatibility:
+    state: none
+    rationale: Original draft; no historical command is being replaced.
+  status:
+    maturity: community-proposed
+    implementation: script-approved
+    evidence: unverified
+  sources: []
+  claims:
+    intended_effects:
+    - Calm awareness and non-destructive intention to discourage unwanted insect contact.
+    prohibited_claims:
+    - No verified physical repellency or protection against insect-borne disease.
+  attribution:
+    original_authors: []
+    ocf_contributors: []
+  ocf:
+    reimplementation_status: in-progress
+    command_review: approved
+  documentation:
+    title_key: functions.ocf-exp-005.title
+    purpose_key: functions.ocf-exp-005.purpose
+    short_description_key: functions.ocf-exp-005.purpose
+  commands:
+  - id: OCF-CMD-EXP-005-PRIMARY
+    localization:
+      spoken_cue_key: commands.ocf-cmd-exp-005-primary.spoken-cue
+      label_key: commands.ocf-cmd-exp-005-primary.label
+      usage_key: commands.ocf-cmd-exp-005-primary.usage
+      explanation_key: commands.ocf-cmd-exp-005-primary.explanation
+  - id: OCF-CMD-EXP-005-OBSERVE
+    localization:
+      spoken_cue_key: commands.ocf-cmd-exp-005-observe.spoken-cue
+      label_key: commands.ocf-cmd-exp-005-observe.label
+      usage_key: commands.ocf-cmd-exp-005-observe.usage
+      explanation_key: commands.ocf-cmd-exp-005-observe.explanation
+  - id: OCF-CMD-EXP-005-SUSPEND
+    localization:
+      spoken_cue_key: commands.ocf-cmd-exp-005-suspend.spoken-cue
+      label_key: commands.ocf-cmd-exp-005-suspend.label
+      usage_key: commands.ocf-cmd-exp-005-suspend.usage
+      explanation_key: commands.ocf-cmd-exp-005-suspend.explanation
+  editorial_approval:
+    approval_id: OCF-APPROVED-CANDIDATES-001
+    decision: approve_full_draft
+    user_response: '1'
+    implementation_confirmation: Confirm implementation
+    scope: Exact presented narration, cues and procedures for all four candidates; Intuition registration;
+      no DSP, pacing, listening or release approval.
+    presented_snapshot_sha256: f2bd428f97719b926f1c8bab5d9c8c11546ad65f0c025f6cbb7f2f74f5a79e80
+    resolved_text_sha256:
+      hplus.function.ocf-exp-005.closer: 480a5560ec23dcd86b5ea87a9cbda107916f55c9cf6a23f2ac9247dc7886167d
+      hplus.function.ocf-exp-005.function-body: ab2f8441abac506565e46dad40676f90e7c151400746d402f49127de0972d188
+      hplus.function.ocf-exp-005.opener: cb1bcf475d10fcb82a4afbdfe03acaeb39021ddb2b2b5b87e83f2aea11ba37f5
+    listening_approval: false
+    release_ready: false
+    source_commit: 911dbd0f24618091e34e8a816275ab7eabbf97bb
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts

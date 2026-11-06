@@ -48,17 +48,20 @@ agent reasons; OCF validates and executes. These instructions are provider-neutr
 
 ## Canonical map
 
-Function YAML also owns source-English command `spoken`/`spoken_review` and
-`narration.sequence`. Locale copies and content bindings must agree; never create
-a second English authority. Use [strict cue templates](docs/SYMBOLIC_CUES.md)
-through LocaleCatalog before segmentation, cache keys or recording fingerprints.
-Check raw-template and resolved-text hashes separately. Structural conversions
-must preserve all resolved speech bytes and immutable predecessor manifests.
+Each `locales/<tag>/OCF-*.yaml` function resource is the only function
+definition for that identity and locale. It owns localized words, command
+controls, lifecycle, narration order/repetition and function-specific evidence,
+specification, decisions and bindings. Bindings never duplicate narration order.
+Do not add an external function-definition archive, registry, binding, or
+fallback. Use [strict cue templates](docs/SYMBOLIC_CUES.md) through LocaleCatalog
+before segmentation, cache keys or recording fingerprints. Check raw-template
+and resolved-text hashes separately.
 Review remaining vocabulary ONE function at a time; wait for explicit user input.
 
-- `functions/`: identity, commands, legacy mappings and source availability.
-- `function-content/`: separate evidence, specifications, decisions and bindings.
-- `locales/`: stable localized narration/UI IDs and review/provenance metadata.
+- `locales/`: the sole per-locale function definitions plus shared localized
+  UI/narration resources; see `docs/PER_LOCALE_FUNCTION_AUTHORITY.md`.
+- `function-content/`: shared command procedures and editorial review inputs;
+  function-specific layers are being consolidated into canonical locale files.
 - `schemas/`: contracts; `scripts/ocf_tools/`: implementation and CLI services.
 - `audio/templates/`: session/stage/pacing inheritance; `audio/background/`: DSP
   profiles and explicit presets; `audio/voices/`: optional voice profiles.

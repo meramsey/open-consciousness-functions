@@ -68,10 +68,12 @@ def config(tmp_path):
         ("stalled", "stalled-progress"),
         ("reconciling", "healthy-reconciliation"),
         ("reconcile-timeout", "reconciliation-timeout"),
+        ("long-running", "healthy-long-job"),
         ("paused", "paused"),
     ],
 )
 def test_health_is_not_just_pid_or_cpu(change, expected):
+    now = 120
     controller, worker = identity(1), identity(2)
     heartbeat = {
         "controller": deepcopy(controller),
@@ -101,6 +103,10 @@ def test_health_is_not_just_pid_or_cpu(change, expected):
         heartbeat["worker"] = deepcopy(worker)
     elif change == "stalled":
         heartbeat["last_progress_at"] = 0
+    elif change == "long-running":
+        heartbeat["job_started_at"] = 100
+        now = 2000
+        heartbeat["at"] = heartbeat["last_progress_at"] = now
     elif change in {"reconciling", "reconcile-timeout"}:
         heartbeat["phase"] = "reconciling"
         heartbeat["phase_deadline"] = 300 if change == "reconciling" else 10
@@ -111,7 +117,7 @@ def test_health_is_not_just_pid_or_cpu(change, expected):
             heartbeat,
             controller,
             worker,
-            now=120,
+            now=now,
             heartbeat_timeout=75,
             progress_timeout=100,
             expected_unit="ocf-test.service",
@@ -546,6 +552,17 @@ def test_worker_exit_reconciliation_has_bounded_grace(watched, monkeypatch):
 
 
 @pytest.mark.unit
+def test_owner_exit_grace_prevents_restart_during_final_receipt(watched, monkeypatch):
+    config, root, heartbeat, now, properties, calls, events = watched
+    heartbeat["owner_exited"] = True
+    supervisor.write_json(root / "heartbeat.json", heartbeat)
+    monkeypatch.setattr(supervisor, "process_identity", lambda _pid: None)
+
+    assert supervisor.watchdog(config) == 0
+    assert calls == []
+
+
+@pytest.mark.unit
 def test_disk_pause_recovers_only_after_reserve_returns(watched):
     config, root, heartbeat, now, properties, calls, events = watched
     supervisor.write_json(root / "paused.json", {"reason": "disk-safeguard"})
@@ -614,6 +631,315 @@ def test_progress_observes_descendant_io_not_cpu(config, tmp_path, monkeypatch):
     (proc / "2/io").write_text("write_bytes: 11")
     assert supervisor.progress_token(config, identity(1)) != first
     assert supervisor.progress_token(config, None)
+
+
+@pytest.mark.unit
+def test_progress_token_tracks_receipts_and_real_worker_io(config, tmp_path):
+    first = supervisor.progress_token(config, None)
+    log = Path(config["worker_log"])
+    log.write_text("worker began\n", encoding="utf-8")
+    second = supervisor.progress_token(config, identity(os.getpid()))
+    assert second != first
+    log.write_text("worker advanced\n", encoding="utf-8")
+    assert supervisor.progress_token(config, identity(os.getpid())) != second
+
+
+@pytest.mark.unit
+def test_progress_token_changes_when_the_worker_log_is_missing_then_created(config, tmp_path):
+    log = Path(config["worker_log"])
+    if log.exists():
+        log.unlink()
+    before = supervisor.progress_token(config, None)
+    log.write_text("started\n", encoding="utf-8")
+
+    assert supervisor.progress_token(config, None) != before
+
+
+@pytest.mark.unit
+def test_emit_and_recovery_budget_fail_closed_when_their_lease_is_busy(config, monkeypatch):
+    from contextlib import contextmanager
+
+    @contextmanager
+    def busy(_path):
+        yield False
+
+    monkeypatch.setattr(supervisor, "lease", busy)
+    supervisor.emit(config, "engineering-required", "fixture")
+    assert not (Path(config["state_directory"]) / "events.json").exists()
+    assert not supervisor.budget(config, "fixture", "job")
+    assert not (Path(config["state_directory"]) / "recoveries.json").exists()
+
+
+@pytest.mark.unit
+def test_second_controller_owner_does_not_reconcile_or_start_a_worker(config, monkeypatch):
+    from contextlib import contextmanager
+
+    @contextmanager
+    def busy(_path):
+        yield False
+
+    monkeypatch.setattr(supervisor, "lease", busy)
+    monkeypatch.setattr(
+        supervisor, "execute", lambda *_a, **_k: pytest.fail("duplicate owner must not run")
+    )
+    monkeypatch.setattr(
+        supervisor.subprocess,
+        "Popen",
+        lambda *_a, **_k: pytest.fail("duplicate owner must not dispatch"),
+    )
+    assert supervisor.run(config) == 0
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize("status_case", ["active", "missing-start", "invalid"])
+def test_worker_reconciliation_pulse_records_owned_job_identity(config, monkeypatch, status_case):
+    status_path = Path(config["batch_status"])
+    if status_case == "invalid":
+        status_path.write_text("{invalid", encoding="utf-8")
+    else:
+        row = {"state": "running"}
+        if status_case == "active":
+            row["started_at"] = "1970-01-01T00:01:40+00:00"
+        supervisor.write_json(status_path, {"owner_pid": 222, "sessions": {"job-1": row}})
+    snapshots = []
+    original_write = supervisor.write_json
+
+    def capture(path, data):
+        if Path(path).name == "heartbeat.json":
+            snapshots.append(dict(data))
+        return original_write(path, data)
+
+    class Stop:
+        stopped = False
+        waits = 0
+
+        def is_set(self):
+            return self.stopped
+
+        def set(self):
+            self.stopped = True
+
+        def wait(self, _timeout=None):
+            self.waits += 1
+            if self.waits >= 2:
+                self.stopped = True
+            return self.stopped
+
+    class Thread:
+        def __init__(self, target, **_kwargs):
+            self.target = target
+
+        def start(self):
+            self.target()
+
+        def join(self, timeout=None):
+            pass
+
+    stop = Stop()
+    monkeypatch.setattr(supervisor.threading, "Event", lambda: stop)
+    monkeypatch.setattr(supervisor.threading, "Thread", Thread)
+    monkeypatch.setattr(supervisor, "write_json", capture)
+    monkeypatch.setattr(supervisor, "process_identity", identity)
+    monkeypatch.setattr(supervisor, "progress_token", lambda *_a: "stable fixture")
+    monkeypatch.setattr(supervisor, "execute", lambda *_a, **_k: {"safe_to_run": True})
+    monkeypatch.setattr(
+        supervisor.subprocess,
+        "Popen",
+        lambda *_a, **_k: pytest.fail("stop requested before worker dispatch"),
+    )
+
+    assert supervisor.run(config) == 0
+    if status_case == "invalid":
+        assert any(row.get("batch_status_error") == "JSONDecodeError" for row in snapshots)
+    else:
+        assert any(
+            row.get("job_identity") == "job-1"
+            and row.get("batch_owner_pid") == 222
+            and (
+                row.get("job_started_at") == 100
+                if status_case == "active"
+                else "job_started_at" not in row
+            )
+            for row in snapshots
+        )
+
+
+@pytest.mark.unit
+def test_run_stop_before_dispatch_and_during_final_reconciliation(config, monkeypatch):
+    class Stop:
+        stopped = False
+
+        def is_set(self):
+            return self.stopped
+
+        def set(self):
+            self.stopped = True
+
+        def wait(self, _timeout=None):
+            return self.stopped
+
+    class Thread:
+        def __init__(self, **_kwargs):
+            pass
+
+        def start(self):
+            pass
+
+        def join(self, timeout=None):
+            pass
+
+    stop = Stop()
+    monkeypatch.setattr(supervisor.threading, "Event", lambda: stop)
+    monkeypatch.setattr(supervisor.threading, "Thread", Thread)
+
+    class Context:
+        def __init__(self, value):
+            self.value = value
+
+        def __enter__(self):
+            return self.value
+
+        def __exit__(self, *_args):
+            pass
+
+    monkeypatch.setattr(supervisor, "lease", lambda _path: Context(True))
+    monkeypatch.setattr(supervisor, "execute", lambda *_a, **_k: {"safe_to_run": True})
+    monkeypatch.setattr(
+        supervisor.subprocess, "Popen", lambda *_a, **_k: pytest.fail("stopped owner dispatched")
+    )
+    stop.set()
+    assert supervisor.run(config) == 0
+
+
+@pytest.mark.unit
+def test_duplicate_controller_lock_exits_without_startup_work(config, monkeypatch):
+    from contextlib import contextmanager
+
+    @contextmanager
+    def busy(_path):
+        yield False
+
+    monkeypatch.setattr(supervisor, "lease", busy)
+    monkeypatch.setattr(supervisor, "changed_inputs", lambda *_: pytest.fail("must not probe"))
+    assert supervisor.run(config) == 0
+
+
+@pytest.mark.unit
+def test_run_honors_stop_after_final_nonterminal_reconciliation(config, monkeypatch):
+    from contextlib import contextmanager
+
+    real_event = supervisor.threading.Event
+    stop = real_event()
+
+    class Thread:
+        def __init__(self, **_kwargs):
+            pass
+
+        def start(self):
+            pass
+
+        def join(self, timeout=None):
+            pass
+
+    class Child:
+        pid = 222
+
+        def __init__(self):
+            self.polls = 0
+
+        def poll(self):
+            self.polls += 1
+            return None if self.polls == 1 else 0
+
+        def wait(self, timeout=None):
+            return 0
+
+    @contextmanager
+    def lease(_path):
+        yield True
+
+    calls = []
+
+    def execute(*_args, **_kwargs):
+        calls.append(True)
+        if len(calls) == 1:
+            return {"safe_to_run": True}
+        stop.set()
+        return {"terminal": False, "safe_to_run": True, "active_identity": "fixture"}
+
+    monkeypatch.setattr(supervisor.threading, "Event", lambda: stop)
+    monkeypatch.setattr(supervisor.threading, "Thread", Thread)
+    monkeypatch.setattr(supervisor, "lease", lease)
+    monkeypatch.setattr(supervisor, "process_identity", identity)
+    monkeypatch.setattr(supervisor, "progress_token", lambda *_a: "unchanged fixture")
+    monkeypatch.setattr(supervisor, "execute", execute)
+    monkeypatch.setattr(supervisor.subprocess, "Popen", lambda *_a, **_k: Child())
+
+    assert supervisor.run(config) == 0
+    assert len(calls) == 2
+    assert (
+        supervisor.read_json(Path(config["state_directory"]) / "worker-exit.json")["stop_requested"]
+        is False
+    )
+
+
+@pytest.mark.unit
+def test_worker_loop_observes_one_progress_poll_before_exit(config, monkeypatch):
+    from contextlib import contextmanager
+
+    class Thread:
+        def __init__(self, **_kwargs):
+            pass
+
+        def start(self):
+            pass
+
+        def join(self, timeout=None):
+            pass
+
+    class Child:
+        pid = 222
+
+        def __init__(self):
+            self.polls = 0
+
+        def poll(self):
+            self.polls += 1
+            return None if self.polls == 1 else 0
+
+        def wait(self, timeout=None):
+            return 0
+
+    @contextmanager
+    def lease(_path):
+        yield True
+
+    monkeypatch.setattr(supervisor.threading, "Thread", Thread)
+    monkeypatch.setattr(supervisor, "lease", lease)
+    monkeypatch.setattr(supervisor, "process_identity", identity)
+    monkeypatch.setattr(supervisor, "progress_token", lambda *_args: "steady fixture")
+    calls = []
+
+    def execute(*_args, **_kwargs):
+        calls.append(True)
+        return {"terminal": len(calls) > 1, "safe_to_run": True}
+
+    monkeypatch.setattr(supervisor, "execute", execute)
+    child = Child()
+    monkeypatch.setattr(supervisor.subprocess, "Popen", lambda *_args, **_kwargs: child)
+
+    assert supervisor.run(config) == 0
+    assert child.polls == 2
+
+
+@pytest.mark.unit
+def test_supervisor_module_help_entrypoint_is_executable(monkeypatch):
+    import runpy
+
+    monkeypatch.setattr(supervisor.sys, "argv", ["production_supervisor", "--help"])
+    with pytest.raises(SystemExit) as exc:
+        runpy.run_path(str(Path(supervisor.__file__)), run_name="__main__")
+    assert exc.value.code == 0
 
 
 @pytest.mark.unit

@@ -9,9 +9,10 @@ Translations do not inherit English spoken cues or narration. Shared session
 preparation remains a separate reusable resource.
 
 The existing `FunctionRecord` interface remains a read-only compatibility view,
-not an additional editable registry. Historical provenance is immutable and may
-be read separately; active behavior comes from the locale resource. Structural
-contracts are generated from canonical en-US resources, not a hand-edited index.
+not an additional editable registry. Historical identity and approved provenance
+are embedded as non-authoritative metadata in each locale resource. Runtime
+resolution never reads historical function YAML or separate function content
+files. Structural contracts are generated from canonical en-US resources.
 
 ## Field migration map
 
@@ -35,15 +36,27 @@ contracts are generated from canonical en-US resources, not a hand-edited index.
 | safety | active guidance | locale safety; original classifications and wording preserved |
 | audio | active engineering configuration | locale audio; no audio generation or status promotion |
 | version | identity history | locale function_version; original values retained |
-| legacy/aliases/historical_lookup/compatibility | historical identity | immutable history reference; no second active word authority |
-| status/ocf/sources/claims/attribution/history | historical/editorial | exact immutable source, separately exposed in audit views |
+| legacy/aliases/historical_lookup/compatibility | historical identity | embedded non-active metadata; no predecessor source lookup |
+| status/ocf/sources/claims/attribution/history | historical/editorial | embedded metadata, distinct from runtime behavior and approval |
 | documentation keys | derived compatibility | generated from stable function/command IDs and existing local metadata keys |
-| empty applications/chains/incompatible_functions/contributor | obsolete scaffolding | archival preservation; no empty editable boilerplate in active locale files |
+| empty applications/chains/incompatible_functions/contributor | obsolete scaffolding | omitted; no empty editable boilerplate or duplicate archive |
 
-The before inventory includes all 58 records and 147 observed leaf paths. The
-private continuity audit retains the complete field-by-function matrix and exact
-predecessor hashes. Historical files and locks must not be rewritten to make a
-new source appear equivalent.
+The before inventory includes all 58 records and 147 observed leaf paths. Git
+history remains the recovery mechanism for predecessors; no archived function
+definition participates in current resolution.
+
+### Immutable audio-default provenance
+
+The immutable `audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-001.json` through
+`...-015.json` locks are preserved byte-for-byte. Their 825 historical
+`locales/en-US/hplus-OCF-*.yaml` dependency keys are hash-bound provenance, not
+function definitions and not paths that runtime resolves or reads. When a
+historical key's file is absent, audio-default verification may match its
+stable function ID to the canonical resource's recorded predecessor digest;
+it does not open or restore a retired YAML file. Do not edit these historical
+locks or create successor locks as part of the single-source migration. The
+active function catalog, authoring, validation, and session-plan paths use the
+locale manifest and canonical locale resources only.
 
 ## Locale completeness
 

@@ -1,8 +1,12 @@
-# Confirmed command simplification
+# Confirmed command presentation decisions
 
-The twelve decisions were reviewed individually and authorized with **Confirm
-implementation**. The [pinned successor](../function-content/editorial/command-simplification-001.json)
-preserves exact predecessor files and resolved speech. It implements:
+The reviewed command and title decisions are part of the canonical locale
+function resources under `record_metadata.editorial_decisions`. Current titles,
+display cues, spoken cues, procedures, lifecycle semantics, and narration are
+read from the same per-locale resources used at runtime. Decision hashes retain
+approval provenance without keeping predecessor YAML or narration copies.
+
+The implemented presentation includes:
 
 - Circulation: `PLUS-CIRCULATE` / Plus Circulate.
 - Appetite Choice: `PLUS-SATISFIED` / Plus Satisfied.
@@ -10,25 +14,14 @@ preserves exact predecessor files and resolved speech. It implements:
 - Body Tune-Up: `PLUS-TUNE-UP` / Plus Tune Up.
 - Injury Response: `PLUS-INJURY-RESPONSE` / Plus Injury Response.
 - Toxic Exposure Response: `PLUS-TOXIC-CLEAR` / Plus Toxic Clear.
-- Focus: title replaces Attention; `PLUS-FOCUS` / Plus Focus remains. Only the
-  title-specific closing sentence changes in its narration.
+- Focus is titled Focus; `PLUS-FOCUS` / Plus Focus remains.
 - Coordination: `PLUS-COORDINATE` / Plus Coordinate.
 
-Manifest, Dissolve and Intuition artwork descriptions retain their exact text
-with reviewed status. Clear Zone uses the reviewed description “Set an intention
-to discourage unwanted insects”. These four approvals concern artwork copy.
-
-Baseline 008 accounts for exactly 15 changed entries and 162 unchanged entries
-in the protected 177-entry cohort. Defaults lock 011 updates only the eight
-narration dependencies; all DSP, pacing, template and background parameters and
-previous lock revisions remain immutable. All function/command IDs, historical
-legacy mappings, procedures, modes, lifecycle scopes and triggers are preserved.
-Nutricia's separate Food More/Food Less commands are retained.
-
-Earlier editorial verifiers first check and project this successor backward.
-Changed resolved speech gets new normal synthesis/recording fingerprints;
-original recordings are retained and are never relabelled as matching speech.
-Editorial approval does not establish listening, rights or release approval.
+Manifest, Dissolve, Intuition, and Clear Zone retain reviewed artwork copy in
+their canonical locale resources. These decisions do not imply listening,
+rights, or release approval. Approved narration integrity and semantic
+equivalence are checked by the path-free fixtures and canonical validators;
+there is no predecessor replay at runtime.
 
 ## Private reference background overrides
 

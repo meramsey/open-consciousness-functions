@@ -32,10 +32,14 @@ def test_sample_function_is_schema_valid(sample_function_path):
 
 
 def test_every_function_is_schema_valid():
-    schema = _schema()
-    for record in load_all_functions():
-        errors = validate_against_schema(record.data, schema)
-        assert errors == [], f"{record.id}: {errors}"
+    from ocf_tools.function_catalog import resources
+    from ocf_tools.paths import REPO_ROOT
+    from ocf_tools.validators import _load_schema
+
+    schema = _load_schema("localized-function.schema.json")
+    for path, data in resources(REPO_ROOT):
+        errors = validate_against_schema(data, schema)
+        assert errors == [], f"{path}: {errors}"
 
 
 def test_no_duplicate_ids():

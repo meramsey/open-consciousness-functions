@@ -6,10 +6,9 @@ OCF-FUNCTIONAL-METADATA-001: 18 explicitly approved decisions across 16 function
 
 Final user confirmation: **Please do**. No deferred decisions. All 177 resolved narration entries are unchanged.
 
-Descriptive scopes only; no runtime trigger evaluation, sensors, command execution or physiological controls.
+editorial metadata does not alter function runtime semantics
 
-See [scope semantics](../FUNCTIONAL_METADATA.md) and the [immutable approval ledger](../../function-content/editorial/functional-metadata-001.json).
-Current descriptions also include documentation-only successor OCF-GUIDE-REVIEW-001; original functional decisions and narration remain unchanged.
+See [scope semantics](../FUNCTIONAL_METADATA.md). Functional metadata decision notes, provenance hashes, and their current values are stored with each canonical locale resource; this report is derived.
 
 ## OCF-AUT-001 — Automatic Action
 

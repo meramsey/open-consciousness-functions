@@ -347,7 +347,6 @@ entries:
 
       This concludes your OCF Contemplation exercise.'
 slug: contemplation
-historical_record: functions/cognition/contemplation.yaml
 classification:
   primary_domain: cognition
   secondary_domains: []
@@ -391,6 +390,592 @@ narration:
     role: closer
 editorial:
   command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-COG-003
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: d8d43d0a4833e3d60495512d797dfe8c1c703db87cf1574d6497522050f22951
+    classification: KEEP — TITLE, CUE, AND TEACHING ALREADY CONSISTENT
+    recommended_title: Contemplation
+    recommended_primary_cue: PLUS-OPEN
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Close eyes, inhale/hold/Open/exhale, then natural breathing opens total/greater-self
+      communication. Plus Closed ends current contemplation, not learned access or a shared numbered Focus-state
+      return. Review the reciprocal operation together.
+    pair_reason: Opening and closing total-self communication form an explicitly taught reciprocal operation;
+      semantic reinforcement justifies not copying the full title.
+    title_cue_relationship_or_exception: Opening and closing total-self communication form an explicitly
+      taught reciprocal operation; semantic reinforcement justifies not copying the full title.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Enter a voluntary contemplative communication/recall context described as communion
+      with a greater/total self.
+    alternatives:
+    - title: Contemplation
+      cue: PLUS-CONTEMPLATE
+      secondary: PLUS-CLOSED
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
 localization:
   status: complete
   contract_sha256: 7c691443d97b2aa41b18b2584d3191d1a063c52866b3f6ee5957d4a1326eac5c
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-COG-003-PRIMARY
+    - OCF-CMD-COG-003-CLOSED
+    command_status: unchanged
+    commands:
+    - PLUS-OPEN
+    - PLUS-CLOSED
+    name: CONTEMPLATION
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Contemplation
+  compatibility:
+    state: unchanged
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-cog-003.title
+    short_description_key: functions.ocf-cog-003.short-description
+    purpose_key: functions.ocf-cog-003.purpose
+  commands:
+  - id: OCF-CMD-COG-003-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-cog-003-primary.label
+      usage_key: commands.ocf-cmd-cog-003-primary.usage
+      purpose_key: functions.ocf-cog-003.purpose
+      explanation_key: commands.ocf-cmd-cog-003-primary.explanation
+  - id: OCF-CMD-COG-003-CLOSED
+    localization:
+      label_key: commands.ocf-cmd-cog-003-closed.label
+      usage_key: commands.ocf-cmd-cog-003-closed.usage
+      purpose_key: functions.ocf-cog-003.purpose
+      explanation_key: commands.ocf-cmd-cog-003-closed.explanation
+  predecessor_resource_sha256: 619f2751456247cfed5664626cbf6fe5465df95db0cffe81e0c38b1c5b4f4172
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d:opener
+      kind: structural-inference
+      line_candidates:
+      - 1
+      - 2
+      - 93
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - category: main
+      confidence: low
+      id: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d:main
+      kind: structural-inference
+      line_candidates:
+      - 30
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - category: closer
+      confidence: low
+      id: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d:closer
+      kind: structural-inference
+      line_candidates:
+      - 58
+      - 93
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - category: preparation
+      confidence: low
+      id: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d:preparation
+      kind: structural-inference
+      line_candidates:
+      - 3
+      - 7
+      - 11
+      - 59
+      - 62
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - category: command_association
+      confidence: low
+      id: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d:command_association
+      kind: structural-inference
+      line_candidates:
+      - 32
+      - 40
+      - 44
+      - 52
+      - 57
+      - 91
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - category: future_use
+      confidence: low
+      id: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d:future_use
+      kind: structural-inference
+      line_candidates:
+      - 42
+      - 53
+      - 57
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - category: return
+      confidence: low
+      id: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d:return
+      kind: structural-inference
+      line_candidates:
+      - 64
+      - 76
+      - 77
+      - 79
+      - 85
+      - 89
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - category: purpose
+      confidence: medium
+      id: review:OCF-COG-003:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 2
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - category: opener
+      confidence: medium
+      id: review:OCF-COG-003:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 25
+      - 30
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - category: main
+      confidence: medium
+      id: review:OCF-COG-003:main
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 54
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - category: association
+      confidence: medium
+      id: review:OCF-COG-003:association
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 41
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-COG-003:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 54
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - category: future_use
+      confidence: medium
+      id: review:OCF-COG-003:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 58
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - category: suspend_cancel_reset
+      confidence: medium
+      id: review:OCF-COG-003:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 39
+      - 41
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - category: closer
+      confidence: medium
+      id: review:OCF-COG-003:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 55
+      - 62
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-COG-003:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 63
+      - 75
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - category: handoff
+      confidence: medium
+      id: review:OCF-COG-003:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 76
+      - 93
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-COG-003:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 27
+      - 54
+      scope: document
+      source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+      path: +Transcripts From available tapes/Contemplation/Contemplation.lrc
+      related_sha256:
+      - 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+      - 92c459fe6011833dc9a82c405330201c58edb52d24abf02d060ce97c07bc57c0
+      sha256: 180e3e396b4a9cad876f31fffb6ecac190affe2e41404a68a903b289efb5e983
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Contemplation/Contemplation.ocr.pdf
+      related_sha256: []
+      sha256: 9216c8866fb002b76f55a4f84d68824100b5ab2075640eccc6aba9270dae76de
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+      path: +Transcripts From available tapes/Contemplation/Contemplation.srt
+      related_sha256:
+      - 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+      - 180e3e396b4a9cad876f31fffb6ecac190affe2e41404a68a903b289efb5e983
+      sha256: 92c459fe6011833dc9a82c405330201c58edb52d24abf02d060ce97c07bc57c0
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+      path: +Transcripts From available tapes/Contemplation/Contemplation.txt
+      related_sha256:
+      - 180e3e396b4a9cad876f31fffb6ecac190affe2e41404a68a903b289efb5e983
+      - 92c459fe6011833dc9a82c405330201c58edb52d24abf02d060ce97c07bc57c0
+      sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Contemplation/folder.jpg
+      related_sha256: []
+      sha256: 5cb49051aab363fd73b8e8fb6648222a9822bdb0bf1b2f6c640fa0b13e900c36
+  specifications:
+    analysis_review:
+      claim_categories:
+      - greater-self-communication
+      - guaranteed-memory-availability
+      - physiological-relaxation
+      - automatic-whole-system-learning
+      family: cognitive-open-close
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+            end_line: 41
+            file: +Transcripts From available tapes/Contemplation/Contemplation.txt
+            source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+            start_line: 31
+          status: supported
+          summary: Open cue initiates contemplation; closed cue terminates it and is paired with ordinary
+            waking return.
+        closer:
+          locators:
+          - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+            end_line: 62
+            file: +Transcripts From available tapes/Contemplation/Contemplation.txt
+            source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+            start_line: 55
+          status: supported
+          summary: Future-use reinforcement, learning-channel closure to ten, sleep/consolidation and
+            waking return with open-cue reminder.
+        consolidation:
+          locators:
+          - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+            end_line: 75
+            file: +Transcripts From available tapes/Contemplation/Contemplation.txt
+            source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+            start_line: 63
+          status: supported
+          summary: Counted sleep-to-twenty shell present; effectiveness/automatic consolidation not established.
+        conversion:
+          locators:
+          - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+            end_line: 54
+            file: +Transcripts From available tapes/Contemplation/Contemplation.txt
+            source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+            start_line: 31
+          status: inferred
+          summary: Preserve deliberate open/close control; metaphysical and perfect-memory interpretations
+            require explicit review rather than automatic secular equivalence.
+        future_use:
+          locators:
+          - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+            end_line: 58
+            file: +Transcripts From available tapes/Contemplation/Contemplation.txt
+            source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+            start_line: 31
+          status: supported
+          summary: Activate and communicate/recall as desired; terminate deliberately with the closed
+            cue.
+        handoff:
+          locators:
+          - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+            end_line: 93
+            file: +Transcripts From available tapes/Contemplation/Contemplation.txt
+            source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+            start_line: 76
+          status: supported
+          summary: Counted waking return, eyes open; final reminder of future contemplation procedure.
+        identity:
+          locators:
+          - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+            end_line: 41
+            file: +Transcripts From available tapes/Contemplation/Contemplation.txt
+            source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+            start_line: 31
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+            end_line: 54
+            file: +Transcripts From available tapes/Contemplation/Contemplation.txt
+            source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+            start_line: 31
+          status: supported
+          summary: close-eyes; inhale-and-hold; internally-issue-open-cue; exhale-and-rest-with-mind-awake;
+            attend-to-remembered-experience-or-self-communication
+        opener:
+          locators:
+          - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+            end_line: 30
+            file: +Transcripts From available tapes/Contemplation/Contemplation.txt
+            source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+            start_line: 25
+          status: supported
+          summary: Prepare receptivity and distinguish learning context from future contemplation activation.
+        preparation:
+          locators:
+          - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+            end_line: 24
+            file: +Transcripts From available tapes/Contemplation/Contemplation.txt
+            source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+            start_line: 2
+          status: supported
+          summary: Supported uninterrupted relaxation and temporary setting-aside; counted ten-state preparation.
+        provenance:
+          locators:
+          - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+            end_line: 93
+            file: +Transcripts From available tapes/Contemplation/Contemplation.txt
+            source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Transcript is
+            source-designated but not authenticated; breath holding and automatic outcome claims need
+            content review.
+        purpose:
+          locators:
+          - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+            end_line: 2
+            file: +Transcripts From available tapes/Contemplation/Contemplation.txt
+            source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+            start_line: 1
+          status: supported
+          summary: Enter a voluntary contemplative communication/recall context described as communion
+            with a greater/total self.
+        rehearsal:
+          locators:
+          - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+            end_line: 54
+            file: +Transcripts From available tapes/Contemplation/Contemplation.txt
+            source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+            start_line: 31
+          status: not-present
+          summary: Two full instruction presentations are present; they are repeated teaching, not proof
+            of two explicit listener performance trials.
+        safety_claims:
+          locators:
+          - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+            end_line: 54
+            file: +Transcripts From available tapes/Contemplation/Contemplation.txt
+            source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+            start_line: 27
+          status: supported
+          summary: greater-self-communication; guaranteed-memory-availability; physiological-relaxation;
+            automatic-whole-system-learning. Claims are classified as source assertions, not accepted
+            OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+            end_line: 30
+            file: +Transcripts From available tapes/Contemplation/Contemplation.txt
+            source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+            start_line: 25
+          status: supported
+          summary: Eleven learning context closes to ten; sleep-to-twenty and waking-to-one shell are
+            present. Future contemplative state is described separately.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+            end_line: 41
+            file: +Transcripts From available tapes/Contemplation/Contemplation.txt
+            source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+            start_line: 39
+          status: supported
+          summary: Internal closed cue explicitly ends the activated context.
+      source_extent:
+        content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
+        end_line: 93
+        file: +Transcripts From available tapes/Contemplation/Contemplation.txt
+        source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-COG-003:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-COG-003:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-COG-003:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-COG-003:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-COG-003:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-COG-003:main
+        operations:
+        - close-eyes
+        - inhale-and-hold
+        - internally-issue-open-cue
+        - exhale-and-rest-with-mind-awake
+        - attend-to-remembered-experience-or-self-communication
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-COG-003:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-COG-003:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-COG-003:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-COG-003:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-COG-003:suspend_cancel_reset
+        operations:
+        - documented-suspend-cancel-reset
+        status: inferred
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Transcript is source-designated but not authenticated; breath holding and automatic outcome claims
+      need content review.
+    - Preserve deliberate open/close control; metaphysical and perfect-memory interpretations require
+      explicit review rather than automatic secular equivalence.
+    states:
+      preferred: []
+      required: []
+      status: unknown

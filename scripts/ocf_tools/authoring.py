@@ -26,7 +26,6 @@ from yaml.nodes import MappingNode, ScalarNode, SequenceNode
 
 from . import validators
 from .locale import LocaleCatalog
-from .models import FunctionRecord
 from .paths import SCHEMAS_DIR
 from .utils import OCFError, yaml_safe_load
 
@@ -36,7 +35,7 @@ MAX_DEPTH = 64
 MAX_FILES = 1500
 WORD = re.compile(r"[A-Za-z0-9_][A-Za-z0-9_.:/-]*")
 SCHEMAS = {
-    "function": "function.schema.json",
+    "function": "localized-function.schema.json",
     "template": "session-template.schema.json",
     "pacing": "session-pacing.schema.json",
     "stage": "session-stage.schema.json",
@@ -48,8 +47,6 @@ SCHEMAS = {
     "locale-key": "locale-resource.schema.json",
 }
 SOURCE_FOLDERS = (
-    "functions",
-    "function-content/bindings",
     "locales",
     "audio/templates/sessions",
     "audio/templates/pacing",
@@ -278,15 +275,14 @@ def schema_name(path: Path, data, root: Path, associations=None):
     relative = path.relative_to(root).as_posix()
     for pattern, name in (associations or {}).items():
         if fnmatch.fnmatch(relative, pattern):
+            if name == "function.schema.json":
+                raise OCFError(
+                    "standalone function YAML registries are retired; author a canonical locale resource"
+                )
             if name not in {file.name for file in SCHEMAS_DIR.glob("*.schema.json")}:
                 raise OCFError("schema associations must name a registered local OCF schema")
             return name
     routes = {
-        "functions/": "function.schema.json",
-        "function-content/bindings/": "function-binding.schema.json",
-        "function-content/evidence/": "function-evidence.schema.json",
-        "function-content/specifications/": "function-specification.schema.json",
-        "function-content/decisions/": "function-decisions.schema.json",
         "audio/templates/sessions/": "session-template.schema.json",
         "audio/templates/pacing/": "session-pacing.schema.json",
         "audio/templates/stages/": "session-stage.schema.json",
@@ -322,10 +318,12 @@ def schema_name(path: Path, data, root: Path, associations=None):
     if data.get("$schema"):
         for file in SCHEMAS_DIR.glob("*.schema.json"):
             if validators._load_schema(file.name).get("$id") == data["$schema"]:
+                if file.name == "function.schema.json":
+                    raise OCFError(
+                        "standalone function YAML registries are retired; author a canonical locale resource"
+                    )
                 return file.name
         raise OCFError("unknown schema URI; OCF authoring never fetches remote schemas")
-    if {"canonical", "legacy"} <= data.keys():
-        return "function.schema.json"
     if {"locale", "entries", "domain"} <= data.keys():
         return "locale-resource.schema.json"
     if {"locale", "resources", "language_name"} <= data.keys():
@@ -710,20 +708,6 @@ class AuthoringService:
                             locale,
                         )
                     )
-                for index, command in enumerate(
-                    doc.data.get("commands", []) if name == "function.schema.json" else []
-                ):
-                    if isinstance(command, dict) and command.get("id"):
-                        key = command["id"]
-                        definitions.setdefault(key, []).append(
-                            Definition(
-                                key,
-                                "command",
-                                path,
-                                doc.span(("commands", index, "id")),
-                                f"{command.get('role')} / {command.get('designation')} — phrase remains in its canonical owner",
-                            )
-                        )
             except (OSError, UnicodeError, OCFError, AttributeError, TypeError, ValueError):
                 continue
         self.documents, self.definitions, self._literal_sources = documents, definitions, literals
@@ -806,24 +790,6 @@ class AuthoringService:
                 result.append(project(doc.data, doc.path, self.root))
             except (OCFError, KeyError, TypeError, ValueError):
                 continue  # The document's own schema diagnostics explain incomplete edits.
-        for doc in self.documents.values():
-            data = doc.data
-            if data.get("id") in complete:
-                continue
-            if schema_name(doc.path, data, self.root, self.associations) != "function.schema.json":
-                continue
-            canonical = data.get("canonical")
-            lifecycle = data.get("lifecycle", {})
-            if (
-                not isinstance(canonical, dict)
-                or not isinstance(canonical.get("command"), dict)
-                or not isinstance(lifecycle, dict)
-                or not isinstance(lifecycle.get("release", {}), dict)
-            ):
-                continue
-            result.append(
-                FunctionRecord(str(data.get("id", "")), str(data.get("slug", "")), doc.path, data)
-            )
         return result
 
     def analyze(self, uri):
@@ -931,32 +897,24 @@ class AuthoringService:
                                     "ocf.cue-template", str(exc), start=span.start, end=span.end
                                 )
                             )
-            if schema == "function.schema.json":
-                record = FunctionRecord(str(data["id"]), str(data["slug"]), path, data)
-                result = validators.validate_command_rules(record)
-                diagnostics.extend(
-                    Diagnostic(issue.code, issue.message, issue.severity) for issue in result.issues
-                )
-                from .commands import localized_cue, validate_command_records
-                from .lifecycle import validate_scope_descriptions
-
-                diagnostics.extend(
-                    Diagnostic("ocf.cue-authority", error)
-                    for error in validate_command_records(record)
-                )
-                diagnostics.extend(
-                    Diagnostic("ocf.lifecycle-authority", error)
-                    for error in validate_scope_descriptions(record, self.catalog())
-                )
-
-                for command in record.command_records:
-                    if command.data.get("spoken") is not None:
+                elif schema == "localized-function.schema.json":
+                    for key, entry in data.get("entries", {}).items():
+                        if not isinstance(entry, dict) or not entry.get("cue_template"):
+                            continue
+                        span = doc.span(("entries", key, "text"))
                         try:
-                            localized_cue(
-                                record, command, "en-US", catalog=self.catalog(), strict=True
+                            self.catalog().resource(
+                                key,
+                                data["locale"],
+                                domain="narration",
+                                fallback=False,
                             )
                         except OCFError as exc:
-                            diagnostics.append(Diagnostic("ocf.cue-authority", str(exc)))
+                            diagnostics.append(
+                                Diagnostic(
+                                    "ocf.cue-template", str(exc), start=span.start, end=span.end
+                                )
+                            )
             if schema == "timed-transcript.schema.json":
                 result = validators.validate_timed_transcript(
                     data, path, self.catalog(), self.records()

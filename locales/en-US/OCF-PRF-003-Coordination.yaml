@@ -255,7 +255,6 @@ entries:
 
       This concludes your OCF Coordination exercise.'
 slug: synchronizing
-historical_record: functions/performance/synchronizing.yaml
 classification:
   primary_domain: performance
   secondary_domains:
@@ -302,6 +301,640 @@ narration:
     role: closer
 editorial:
   command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-PRF-003
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 1abb1e737a147763b7cb2fe6e79caf6077f23382c393c3f3736fdf3f28c52999
+    classification: KEEP CUE — ALIGN TITLE OR NARRATION
+    recommended_title: Coordination
+    recommended_primary_cue: PLUS-SMOOTH, FAST
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Increasing mind/nervous-system/muscle coordination, balance, precision and timing;
+      optional inhale/hold/cue/candle-like reinforcement. Smooth and Fast are one cue; steady precision,
+      not indiscriminate speed.
+    pair_reason: The paired positive outcomes fit motor coordination. Prefer a clearer title/purpose over
+      changing a strong meaningful cue merely for uniformity.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. The paired positive
+      outcomes fit motor coordination. Prefer a clearer title/purpose over changing a strong meaningful
+      cue merely for uniformity.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Claimed faster/smoother body-mind and nerve-muscle coordination.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
 localization:
   status: complete
   contract_sha256: 6948c79ed3d82f0109ad159e3529674ceb83f3a445cfb4b8ee541e315c8cd321
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-PRF-003-PRIMARY
+    command_status: unchanged
+    commands:
+    - PLUS-SMOOTH, FAST
+    name: SYNCHRONIZING
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Synchronizing
+  compatibility:
+    state: historical-lookup
+    rationale: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording remains
+      historical lookup.
+  historical_lookup:
+  - text: Synchronizing
+    kind: former-title
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+  - text: PLUS-SMOOTH, FAST
+    kind: former-primary
+    decision: OCF-COMMAND-SIMPLIFICATION-001
+    command_id: OCF-CMD-PRF-003-PRIMARY
+  - text: Plus Smooth Fast
+    kind: former-teaching
+    decision: OCF-COMMAND-SIMPLIFICATION-001
+    command_id: OCF-CMD-PRF-003-PRIMARY
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-prf-003.title
+    short_description_key: functions.ocf-prf-003.short-description
+    purpose_key: functions.ocf-prf-003.purpose
+  commands:
+  - id: OCF-CMD-PRF-003-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-prf-003-primary.label
+      usage_key: commands.ocf-cmd-prf-003-primary.usage
+      purpose_key: functions.ocf-prf-003.purpose
+      explanation_key: commands.ocf-cmd-prf-003-primary.explanation
+      display_cue_key: commands.ocf-cmd-prf-003-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-prf-003-primary.spoken-cue
+  predecessor_resource_sha256: f0bdcc325194683046110bebc3bb98b4f4ca6114977b1de19512caca78d08aee
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
+      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
+      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: 84bc6c3217800482a75d78f51ed40d67173a378fc0e801f9c34c4586cc25216e
+    status: accepted
+    previous_values_sha256: e867eeb684536265da7bf776c9ef4b63055b291c62577fe5407c6f9e402e6b96
+    current_values_sha256: 71a1dbc91514dd6311f35fd2a512e8138a3556ea316e46e44f2b0415eecc6f76
+    changed_narration_keys:
+    - hplus.function.ocf-prf-003.closer
+    previous_resolved_text_sha256:
+      hplus.function.ocf-prf-003.closer: 9af3232852fba1dd3116d16ba69c2e18832736d98770d474a95746430b9d4e68
+    current_resolved_text_sha256:
+      hplus.function.ocf-prf-003.closer: 9089cdaf69de706439c62972e923cbe1912d2d5b4721a36056d545adfecbc254
+    review_note: Change title from Synchronizing to Coordination and update exercise sign-off. Keep display
+      and spoken cue unchanged. Preserve automatic everyday improvement, optional conscious reinforcement,
+      mind/nervous-system/muscle coordination, balance, precision, timing and inhale/hold/cue/candle-like
+      exhale. Retain Synchronizing as historical lookup. Smooth Fast remains one complete cue, not separate
+      modes. Preserve quick responses when needed and steady precision when careful control is needed,
+      with speed coordinated with intention and accuracy.
+    approval_response: '1'
+    review_position: 27
+  - id: OCF-COMMAND-SIMPLIFICATION-001
+    kind: approved-command-simplification
+    source_commit: 8ec5b0395c7a5c05fa629d64297d3bf048b097f9
+    scope: Explicitly approved command title/display/spoken substitutions only; commands, lifecycle, procedure
+      and audio settings are unchanged.
+    decision_source: 'Explicit user confirmation: Confirm implementation'
+    source_row_sha256: 64afb85258b9e7f9341d166e0ed971fd31e91840a02c568a51793ae971b8966e
+    status: accepted
+    previous_values_sha256: b06732d735f45a3c7e99a70b83c242f8d54cebe481652714edc9bb81d41aa9dd
+    current_values_sha256: 04813ab6c2d3768d990ef752cb8ec00eb1e320da2c15669c32b1a729e13bb099
+    changed_narration_keys: []
+    previous_resolved_text_sha256: {}
+    current_resolved_text_sha256: {}
+    review_note: Narration fingerprints and synthesis cache identity follow the approved canonical wording;
+      listening and release approval remain false.
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248:opener
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 75
+      - 155
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - category: main
+      confidence: low
+      id: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248:main
+      kind: structural-inference
+      line_candidates:
+      - 43
+      - 49
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - category: closer
+      confidence: low
+      id: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248:closer
+      kind: structural-inference
+      line_candidates:
+      - 70
+      - 155
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - category: preparation
+      confidence: low
+      id: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248:preparation
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 10
+      - 16
+      - 72
+      - 76
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - category: command_association
+      confidence: low
+      id: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248:command_association
+      kind: structural-inference
+      line_candidates:
+      - 51
+      - 68
+      - 153
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - category: future_use
+      confidence: low
+      id: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248:future_use
+      kind: structural-inference
+      line_candidates:
+      - 49
+      - 53
+      - 55
+      - 57
+      - 69
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - category: return
+      confidence: low
+      id: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248:return
+      kind: structural-inference
+      line_candidates:
+      - 78
+      - 122
+      - 123
+      - 140
+      - 151
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - category: purpose
+      confidence: medium
+      id: review:OCF-PRF-003:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 1
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - category: opener
+      confidence: medium
+      id: review:OCF-PRF-003:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 38
+      - 43
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - category: main
+      confidence: medium
+      id: review:OCF-PRF-003:main
+      kind: function-specification-inference
+      line_candidates:
+      - 44
+      - 53
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - category: association
+      confidence: medium
+      id: review:OCF-PRF-003:association
+      kind: function-specification-inference
+      line_candidates:
+      - 49
+      - 53
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - category: rehearsal
+      confidence: unknown
+      id: review:OCF-PRF-003:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 54
+      - 66
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - category: future_use
+      confidence: medium
+      id: review:OCF-PRF-003:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 49
+      - 69
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-PRF-003:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 155
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - category: closer
+      confidence: medium
+      id: review:OCF-PRF-003:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 67
+      - 76
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-PRF-003:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 77
+      - 121
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - category: handoff
+      confidence: medium
+      id: review:OCF-PRF-003:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 122
+      - 155
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-PRF-003:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 44
+      - 53
+      scope: document
+      source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+      path: +Transcripts From available tapes/Synchronizing/Synchronizing.lrc
+      related_sha256:
+      - 6aa7d73e1a812fd67d1c62fca150518a06824c84c615ed2a91386200723c19d6
+      - 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+      sha256: 934e8a438579187e79d0aff34fe232d8d57a7cfa6244d583f7e68dffbb3f424e
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Synchronizing/Synchronizing.ocr.pdf
+      related_sha256: []
+      sha256: 7aaa9a8d96f0e2d8dec6dca0a65a18de415b3a06a814daff759a309328c877f1
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+      path: +Transcripts From available tapes/Synchronizing/Synchronizing.srt
+      related_sha256:
+      - 934e8a438579187e79d0aff34fe232d8d57a7cfa6244d583f7e68dffbb3f424e
+      - 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+      sha256: 6aa7d73e1a812fd67d1c62fca150518a06824c84c615ed2a91386200723c19d6
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+      path: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+      related_sha256:
+      - 6aa7d73e1a812fd67d1c62fca150518a06824c84c615ed2a91386200723c19d6
+      - 934e8a438579187e79d0aff34fe232d8d57a7cfa6244d583f7e68dffbb3f424e
+      sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Synchronizing/folder.jpg
+      related_sha256: []
+      sha256: 74b4e85915e862a9881fc936b2b93475c3a69eddc046b3b5a91e507b6b11857b
+  specifications:
+    analysis_review:
+      claim_categories:
+      - persistent-nerve-muscle-improvement
+      - guaranteed-motor-coordination
+      - automatic-whole-system-learning
+      family: motor-coordination-intensification
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+            end_line: 53
+            file: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+            source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+            start_line: 49
+          status: supported
+          summary: Deliberate legacy cue paired with selected goal and breathing; canonical variants/aliases
+            are separate identity metadata, not silently changed source speech.
+        closer:
+          locators:
+          - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+            end_line: 76
+            file: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+            source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+            start_line: 67
+          status: supported
+          summary: Future-use reinforcement and learning-context closure to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+            end_line: 121
+            file: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+            source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+            start_line: 77
+          status: supported
+          summary: Sleep-to-twenty shell present; repeated ASR numbers do not establish reinforcement
+            or measured timing.
+        conversion:
+          locators:
+          - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+            end_line: 53
+            file: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+            source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+            start_line: 44
+          status: inferred
+          summary: Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath
+            holding and automatic whole-system learning need review. Reframing a physical/metaphysical
+            goal is a material choice, not assumed equivalence.
+        future_use:
+          locators:
+          - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+            end_line: 69
+            file: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+            source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+            start_line: 49
+          status: supported
+          summary: Optional cue intensifies asserted ongoing motor coordination; repeated breathing material
+            does not establish a body-movement practice trial.
+        handoff:
+          locators:
+          - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+            end_line: 155
+            file: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+            source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+            start_line: 122
+          status: supported
+          summary: Waking countdown, eyes-open return and target reminder where preserved.
+        identity:
+          locators:
+          - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+            end_line: 53
+            file: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+            source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+            start_line: 49
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+            end_line: 53
+            file: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+            source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+            start_line: 44
+          status: supported
+          summary: associate-nerve-and-muscle-signals-with-smooth-movement; inhale-and-hold; issue-smooth-fast-cue;
+            exhale
+        opener:
+          locators:
+          - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+            end_line: 43
+            file: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+            source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+            start_line: 38
+          status: supported
+          summary: Orient to the function and establish receptive learning context before the target instruction.
+        preparation:
+          locators:
+          - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+            end_line: 37
+            file: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+            source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+            start_line: 2
+          status: supported
+          summary: Supported uninterrupted relaxation, temporary repository setting-aside and counted
+            ten-state entry where described.
+        provenance:
+          locators:
+          - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+            end_line: 155
+            file: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+            source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Repeated exhalation
+            material54-66 may be instruction or ASR duplication; no observed performance or verified neurological
+            mechanism.
+        purpose:
+          locators:
+          - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+            end_line: 1
+            file: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+            source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+            start_line: 1
+          status: supported
+          summary: Claimed faster/smoother body-mind and nerve-muscle coordination.
+        rehearsal:
+          locators:
+          - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+            end_line: 66
+            file: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+            source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+            start_line: 54
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Repeated
+            exhalation material54-66 may be instruction or ASR duplication; no observed performance or
+            verified neurological mechanism.
+        safety_claims:
+          locators:
+          - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+            end_line: 53
+            file: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+            source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+            start_line: 44
+          status: supported
+          summary: persistent-nerve-muscle-improvement; guaranteed-motor-coordination; automatic-whole-system-learning.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+            end_line: 43
+            file: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+            source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+            start_line: 38
+          status: supported
+          summary: Reference learning shell uses ten preparation, eleven opening, ten close and sleep-to-twenty/waking
+            return where preserved; not runtime OCF state requirements.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+            end_line: 155
+            file: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+            source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Repeated
+            exhalation material54-66 may be instruction or ASR duplication; no observed performance or
+            verified neurological mechanism.
+      source_extent:
+        content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
+        end_line: 155
+        file: +Transcripts From available tapes/Synchronizing/Synchronizing.txt
+        source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-PRF-003:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-PRF-003:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-PRF-003:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-PRF-003:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-PRF-003:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-PRF-003:main
+        operations:
+        - associate-nerve-and-muscle-signals-with-smooth-movement
+        - inhale-and-hold
+        - issue-smooth-fast-cue
+        - exhale
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-PRF-003:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-PRF-003:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-PRF-003:rehearsal
+        operations: []
+        status: unknown
+      safety_claims:
+        evidence_refs:
+        - review:OCF-PRF-003:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-PRF-003:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Repeated exhalation material54-66 may be instruction or ASR duplication; no observed performance
+      or verified neurological mechanism.
+    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and automatic
+      whole-system learning need review. Reframing a physical/metaphysical goal is a material choice,
+      not assumed equivalence.
+    states:
+      preferred: []
+      required: []
+      status: unknown

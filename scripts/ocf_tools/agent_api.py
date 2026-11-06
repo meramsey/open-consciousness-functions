@@ -379,7 +379,7 @@ def get_function(
         "human_review": layers.get("specifications", {}).get("human_review", "unknown"),
         "binding": layers.get("bindings", {}),
         "provenance": {
-            "evidence_file": f"function-content/evidence/{record.id}.yaml",
+            "canonical_resource": record.path.relative_to(REPO_ROOT).as_posix(),
             "source_count": len(layers.get("evidence", {}).get("sources", [])),
         },
         "release_ready": False,

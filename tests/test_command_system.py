@@ -13,7 +13,7 @@ from ocf_tools.commands import (
     validate_command_records,
 )
 from ocf_tools.models import FunctionCommand, FunctionRecord
-from ocf_tools.paths import REPO_ROOT, schema_path
+from ocf_tools.paths import schema_path
 from ocf_tools.validators import validate_against_schema, validate_command_metadata
 
 pytestmark = pytest.mark.unit
@@ -230,10 +230,10 @@ def test_legacy_function_records_still_expose_existing_command_accessors():
 
 
 def test_function_schema_accepts_optional_structured_commands():
-    path = (
-        REPO_ROOT / "function-content/editorial/historical-functions/007/foundation/attention.yaml"
-    )
-    data = yaml.safe_load(path.read_text(encoding="utf-8"))
+    from ocf_tools.indexes import load_function_by_id
+
+    data = dict(load_function_by_id("OCF-FND-002").data)
+    data.pop("content", None)
     data["commands"] = [
         {
             "id": "OCF-CMD-FND-002-ACTIVATE",

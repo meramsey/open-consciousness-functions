@@ -2,8 +2,10 @@
 
 import hashlib
 from copy import deepcopy
+from pathlib import Path
 
 import pytest
+import yaml
 from ocf_tools.utils import OCFError
 from test_content import layers
 from tools import apply_function_reviews as tool
@@ -140,6 +142,7 @@ def test_review_cli_merges_defaults_and_writes_only_when_apply_is_explicit(
     monkeypatch, tmp_path, capsys
 ):
     import sys
+    from types import SimpleNamespace
 
     notes = {
         "defaults": {"family": "default-family", "uncertainties": "default uncertainty"},
@@ -147,7 +150,19 @@ def test_review_cli_merges_defaults_and_writes_only_when_apply_is_explicit(
     }
     captured = []
     monkeypatch.setattr(tool, "ROOT", tmp_path)
-    monkeypatch.setattr(tool, "load_yaml_file", lambda _path: notes)
+    canonical = tmp_path / "locales/en-US/OCF-FND-004-Relax.yaml"
+    canonical.parent.mkdir(parents=True, exist_ok=True)
+    canonical.write_text("function_id: OCF-FND-004\ncontent: {}\n", encoding="utf-8")
+    monkeypatch.setattr(
+        tool,
+        "load_yaml_file",
+        lambda path: (
+            notes if Path(path).name == "review.yaml" else yaml.safe_load(Path(path).read_text())
+        ),
+    )
+    monkeypatch.setattr(
+        tool, "load_function_by_id", lambda _identity: SimpleNamespace(path=canonical)
+    )
     monkeypatch.setattr(
         tool,
         "apply_review",
@@ -173,8 +188,9 @@ def test_review_cli_merges_defaults_and_writes_only_when_apply_is_explicit(
         ["apply_function_reviews", "review.yaml", "--corpus", str(tmp_path), "--apply"],
     )
     tool.main()
-    assert (tmp_path / "function-content/evidence/OCF-FND-004.yaml").is_file()
-    assert (tmp_path / "function-content/specifications/OCF-FND-004.yaml").is_file()
+    content = yaml.safe_load(canonical.read_text())["content"]
+    assert "evidence" in content and "specifications" in content
+    assert not (tmp_path / "function-content").exists()
 
     import runpy
 

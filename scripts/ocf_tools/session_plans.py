@@ -6,14 +6,16 @@ import hashlib
 import json
 from pathlib import Path
 
+import yaml
+
 from .audio_defaults import LOCK_PATH, check_lock
 from .complete_session import _slot_keys, build_complete_session_plan
-from .content import CONTENT_DIR, load_layers
+from .content import load_layers
 from .indexes import load_all_functions
 from .locale import LocaleCatalog, normalize_tag
 from .paths import REPO_ROOT
 from .session import load_template
-from .utils import OCFError, sha256_of_file, write_text_atomic
+from .utils import OCFError, write_text_atomic
 from .validators import _load_schema, validate_against_schema
 
 PLAN_DIR = REPO_ROOT / "audio" / "session-plans"
@@ -100,7 +102,12 @@ def source_plan(function_id: str, locale: str = "en-US") -> tuple[dict, dict, di
         "resources": [resources[k] for k in sorted(resources) if k in slots.values()],
         "timing": "measured-speech-relative; expand template at render time",
         "generation": {
-            "binding_sha256": sha256_of_file(CONTENT_DIR / "bindings" / f"{function_id}.yaml"),
+            # The compatibility-shaped binding is projected from the single
+            # canonical locale resource. Preserve the historic deterministic
+            # YAML fingerprint without reading a sidecar file.
+            "binding_sha256": hashlib.sha256(
+                yaml.safe_dump(binding, sort_keys=True, allow_unicode=True).encode("utf-8")
+            ).hexdigest(),
             "semantic_plan_sha256": digest(expanded["template_plan"]),
         },
         "approval": {

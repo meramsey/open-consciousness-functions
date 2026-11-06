@@ -2,112 +2,1749 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://open-consciousness-functions.dev/schemas/localized-function.schema.json",
   "title": "Localized function metadata and narration resource",
-  "description": "One stable function identity in one locale. Active consolidated resources own literal localized values; registry-reference values remain supported only for historical compatibility.",
+  "description": "One stable function identity in one locale. Every localized value and active behavior is literal in this canonical locale resource; external registry-reference values are forbidden.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "locale", "domain", "function_id", "title", "description", "activation", "secondary_commands", "tags", "common_uses", "relationships", "changelog", "entries"],
+  "required": [
+    "schema_version",
+    "locale",
+    "domain",
+    "function_id",
+    "title",
+    "description",
+    "activation",
+    "secondary_commands",
+    "tags",
+    "common_uses",
+    "relationships",
+    "changelog",
+    "entries"
+  ],
   "properties": {
-    "schema_version": {"enum": ["1.0", "2.0"]},
-    "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
-    "historical_record": {"type": "string", "pattern": "^functions/[a-z0-9-]+/[a-z0-9-]+\\.yaml$"},
-    "classification": {"$ref": "function.schema.json#/properties/classification"},
-    "category_labels": {"type": "object", "additionalProperties": {"$ref": "#/definitions/localizedValue"}},
-    "search_synonyms": {"type": "array", "items": {"$ref": "#/definitions/localizedValue"}},
-    "lifecycle": {"$ref": "#/definitions/localLifecycle"},
-    "audio": {"$ref": "function.schema.json#/properties/audio"},
-    "safety": {"$ref": "function.schema.json#/properties/safety"},
-    "function_version": {"$ref": "function.schema.json#/properties/version"},
-    "narration": {"$ref": "function.schema.json#/properties/narration"},
-    "editorial": {"type": "object", "additionalProperties": false, "required": ["command_review"], "properties": {"command_review": {"$ref": "function.schema.json#/properties/ocf/properties/command_review"}}},
-    "localization": {"type": "object", "additionalProperties": false, "required": ["status", "contract_sha256"], "properties": {"status": {"enum": ["complete", "partial", "missing", "needs-review"]}, "contract_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}},
-    "locale": {"type": "string", "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?$"},
-    "domain": {"const": "function"},
-    "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
-    "metadata_entries": {"description": "Other approved function-specific localized UI keys, preserving stable lifecycle/procedure/relationship references.", "type": "object", "additionalProperties": {"$ref": "#/definitions/localizedValue"}},
-    "title": {"$ref": "#/definitions/localizedValue"},
-    "description": {"$ref": "#/definitions/localizedValue"},
+    "schema_version": {
+      "enum": [
+        "1.0",
+        "2.0"
+      ]
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "classification": {
+      "$ref": "function.schema.json#/properties/classification"
+    },
+    "category_labels": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/localizedValue"
+      }
+    },
+    "search_synonyms": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/localizedValue"
+      }
+    },
+    "lifecycle": {
+      "$ref": "#/definitions/localLifecycle"
+    },
+    "audio": {
+      "$ref": "function.schema.json#/properties/audio"
+    },
+    "safety": {
+      "$ref": "function.schema.json#/properties/safety"
+    },
+    "function_version": {
+      "$ref": "function.schema.json#/properties/version"
+    },
+    "narration": {
+      "$ref": "function.schema.json#/properties/narration"
+    },
+    "editorial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "command_review"
+      ],
+      "properties": {
+        "command_review": {
+          "$ref": "function.schema.json#/properties/ocf/properties/command_review"
+        },
+        "proposals": {
+          "description": "Historical and pending editorial suggestions; never a function authority or runtime fallback.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "status",
+              "source_revision",
+              "source_row_sha256",
+              "classification",
+              "recommended_title",
+              "recommended_primary_cue",
+              "prior_review_note",
+              "contextual_review",
+              "pair_reason",
+              "title_cue_relationship_or_exception",
+              "teaching_disposition",
+              "documentary_intent",
+              "alternatives",
+              "technical_impact"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^OCF-TITLE-CUE-[A-Z]{3}-[0-9]{3}$"
+              },
+              "status": {
+                "enum": [
+                  "pending",
+                  "implemented",
+                  "retained",
+                  "superseded",
+                  "historical-review"
+                ]
+              },
+              "source_revision": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{40}$"
+              },
+              "source_row_sha256": {
+                "$ref": "#/definitions/hash"
+              },
+              "classification": {
+                "type": "string",
+                "minLength": 1
+              },
+              "recommended_title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "recommended_primary_cue": {
+                "type": "string",
+                "minLength": 1
+              },
+              "prior_review_note": {
+                "type": "string"
+              },
+              "contextual_review": {
+                "type": "string"
+              },
+              "pair_reason": {
+                "type": "string"
+              },
+              "title_cue_relationship_or_exception": {
+                "type": "string"
+              },
+              "teaching_disposition": {
+                "type": "string"
+              },
+              "documentary_intent": {
+                "type": "string"
+              },
+              "alternatives": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "title",
+                    "cue"
+                  ],
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "cue": {
+                      "type": "string"
+                    },
+                    "note": {
+                      "type": "string"
+                    },
+                    "secondary": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "technical_impact": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "cache",
+                  "generated",
+                  "recordings",
+                  "rendered_transcripts"
+                ],
+                "properties": {
+                  "cache": {
+                    "type": "string"
+                  },
+                  "generated": {
+                    "type": "string"
+                  },
+                  "recordings": {
+                    "type": "string"
+                  },
+                  "rendered_transcripts": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "localization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "contract_sha256"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "complete",
+            "partial",
+            "missing",
+            "needs-review"
+          ]
+        },
+        "contract_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "locale": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?$"
+    },
+    "domain": {
+      "const": "function"
+    },
+    "function_id": {
+      "type": "string",
+      "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"
+    },
+    "metadata_entries": {
+      "description": "Other approved function-specific localized UI keys, preserving stable lifecycle/procedure/relationship references.",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/localizedValue"
+      }
+    },
+    "title": {
+      "$ref": "#/definitions/localizedValue"
+    },
+    "description": {
+      "$ref": "#/definitions/localizedValue"
+    },
     "activation": {
-      "type": "object", "additionalProperties": false,
-      "required": ["command_id"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "command_id"
+      ],
       "properties": {
-        "command_id": {"type": "string", "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"},
-        "role": {"type": "string"},
-        "control": {"$ref": "#/definitions/control"},
-        "procedure_steps": {"$ref": "#/definitions/localSteps"},
-        "display_cue": {"$ref": "#/definitions/localizedValue"},
-        "spoken_cue": {"$ref": "#/definitions/localizedValue"},
-        "label": {"$ref": "#/definitions/localizedValue"},
-        "explanation": {"$ref": "#/definitions/localizedValue"},
-        "usage": {"$ref": "#/definitions/localizedValue"}
+        "command_id": {
+          "type": "string",
+          "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"
+        },
+        "role": {
+          "type": "string"
+        },
+        "control": {
+          "$ref": "#/definitions/control"
+        },
+        "procedure_steps": {
+          "$ref": "#/definitions/localSteps"
+        },
+        "display_cue": {
+          "$ref": "#/definitions/localizedValue"
+        },
+        "spoken_cue": {
+          "$ref": "#/definitions/localizedValue"
+        },
+        "label": {
+          "$ref": "#/definitions/localizedValue"
+        },
+        "explanation": {
+          "$ref": "#/definitions/localizedValue"
+        },
+        "usage": {
+          "$ref": "#/definitions/localizedValue"
+        }
       }
     },
-    "secondary_commands": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["command_id", "role"], "properties": {"command_id": {"type": "string", "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"}, "role": {"type": "string", "minLength": 1}, "control": {"$ref": "#/definitions/control"}, "procedure_steps": {"$ref": "#/definitions/localSteps"}, "display_cue": {"$ref": "#/definitions/localizedValue"}, "spoken_cue": {"$ref": "#/definitions/localizedValue"}, "label": {"$ref": "#/definitions/localizedValue"}, "explanation": {"$ref": "#/definitions/localizedValue"}, "usage": {"$ref": "#/definitions/localizedValue"}}}},
-    "tags": {"type": "array", "items": {"$ref": "#/definitions/localizedValue"}, "uniqueItems": true},
-    "common_uses": {"type": "array", "items": {"$ref": "#/definitions/localizedValue"}},
+    "secondary_commands": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "command_id",
+          "role"
+        ],
+        "properties": {
+          "command_id": {
+            "type": "string",
+            "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "control": {
+            "$ref": "#/definitions/control"
+          },
+          "procedure_steps": {
+            "$ref": "#/definitions/localSteps"
+          },
+          "display_cue": {
+            "$ref": "#/definitions/localizedValue"
+          },
+          "spoken_cue": {
+            "$ref": "#/definitions/localizedValue"
+          },
+          "label": {
+            "$ref": "#/definitions/localizedValue"
+          },
+          "explanation": {
+            "$ref": "#/definitions/localizedValue"
+          },
+          "usage": {
+            "$ref": "#/definitions/localizedValue"
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/localizedValue"
+      },
+      "uniqueItems": true
+    },
+    "common_uses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/localizedValue"
+      }
+    },
     "relationships": {
-      "type": "object", "additionalProperties": false,
-      "required": ["related_functions", "complementary_functions"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "related_functions",
+        "complementary_functions"
+      ],
       "properties": {
-        "related_functions": {"$ref": "#/definitions/relationships"},
-        "complementary_functions": {"$ref": "#/definitions/relationships"},
-        "proposals": {"description": "Unapproved optional editorial suggestions; never prerequisites or approved canonical links. Source identity is the enclosing function_id.", "type": "array", "items": {"$ref": "#/definitions/relationshipProposal"}, "uniqueItems": true}
+        "related_functions": {
+          "$ref": "#/definitions/relationships"
+        },
+        "complementary_functions": {
+          "$ref": "#/definitions/relationships"
+        },
+        "proposals": {
+          "description": "Unapproved optional editorial suggestions; never prerequisites or approved canonical links. Source identity is the enclosing function_id.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/relationshipProposal"
+          },
+          "uniqueItems": true
+        }
       }
     },
-    "changelog": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["version", "change"], "properties": {"version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}, "change": {"type": "string", "minLength": 1}}}},
-    "entries": {"description": "Canonical readable narration entries. Four-pass playback repetition is not duplicated here.", "type": "object", "propertyNames": {"pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"}}
+    "changelog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "version",
+          "change"
+        ],
+        "properties": {
+          "version": {
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+          },
+          "change": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "entries": {
+      "description": "Canonical readable narration entries. Four-pass playback repetition is not duplicated here.",
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"
+      }
+    },
+    "record_metadata": {
+      "description": "Function-specific historical identity, approval and attribution metadata migrated into canonical locale authority. This is not a complete alternate function record.",
+      "$ref": "#/definitions/recordMetadata"
+    },
+    "content": {
+      "description": "Function-specific evidence, extraction, decisions and runtime references migrated into this canonical resource. Evidence retains only metadata and locators, never source material.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {
+          "$ref": "#/definitions/evidenceLayer"
+        },
+        "specifications": {
+          "$ref": "#/definitions/specificationLayer"
+        },
+        "decisions": {
+          "$ref": "#/definitions/decisionLayer"
+        },
+        "bindings": {
+          "$ref": "#/definitions/bindingLayer"
+        }
+      }
+    }
   },
   "allOf": [
-    {"if": {"properties": {"schema_version": {"const": "1.0"}}}, "then": {"properties": {"activation": {"required": ["display_cue", "spoken_cue"]}, "entries": {"minProperties": 1}}}},
-    {"if": {"properties": {"schema_version": {"const": "2.0"}}}, "then": {"required": ["slug", "classification", "category_labels", "lifecycle", "audio", "safety", "function_version", "narration", "editorial", "localization"], "properties": {"activation": {"required": ["control", "role", "procedure_steps"]}, "secondary_commands": {"items": {"required": ["control", "procedure_steps"]}}}}},
-    {"if": {"properties": {"schema_version": {"const": "2.0"}, "localization": {"properties": {"status": {"const": "complete"}}}}}, "then": {"properties": {"activation": {"required": ["display_cue", "spoken_cue"]}, "entries": {"minProperties": 1}}}},
-    {"if": {"properties": {"schema_version": {"const": "2.0"}}}, "then": {"properties": {
-      "title": {"required": ["text"]}, "description": {"required": ["text"]},
-      "activation": {"properties": {"display_cue": {"required": ["text"]}, "spoken_cue": {"required": ["text"]}}},
-      "secondary_commands": {"items": {"properties": {"display_cue": {"required": ["text"]}, "spoken_cue": {"required": ["text"]}}}}
-    }}}
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "1.0"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "activation": {
+            "required": [
+              "display_cue",
+              "spoken_cue"
+            ]
+          },
+          "entries": {
+            "minProperties": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "2.0"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "slug",
+          "classification",
+          "category_labels",
+          "lifecycle",
+          "audio",
+          "safety",
+          "function_version",
+          "narration",
+          "editorial",
+          "localization",
+          "record_metadata",
+          "content"
+        ],
+        "properties": {
+          "activation": {
+            "required": [
+              "control",
+              "role",
+              "procedure_steps"
+            ]
+          },
+          "secondary_commands": {
+            "items": {
+              "required": [
+                "control",
+                "procedure_steps"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "2.0"
+          },
+          "localization": {
+            "properties": {
+              "status": {
+                "const": "complete"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "activation": {
+            "required": [
+              "display_cue",
+              "spoken_cue"
+            ]
+          },
+          "entries": {
+            "minProperties": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "2.0"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "title": {
+            "required": [
+              "text"
+            ]
+          },
+          "description": {
+            "required": [
+              "text"
+            ]
+          },
+          "activation": {
+            "properties": {
+              "display_cue": {
+                "required": [
+                  "text"
+                ]
+              },
+              "spoken_cue": {
+                "required": [
+                  "text"
+                ]
+              }
+            }
+          },
+          "secondary_commands": {
+            "items": {
+              "properties": {
+                "display_cue": {
+                  "required": [
+                    "text"
+                  ]
+                },
+                "spoken_cue": {
+                  "required": [
+                    "text"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   ],
   "definitions": {
-    "localLifecycle": {"type": "object", "additionalProperties": false, "required": ["persistence", "activation", "release"], "properties": {
-      "persistence": {"$ref": "function.schema.json#/properties/lifecycle/properties/persistence"},
-      "activation": {"$ref": "function.schema.json#/properties/lifecycle/properties/activation"},
-      "release": {"$ref": "function.schema.json#/properties/lifecycle/properties/release"},
-      "trigger_conditions": {"$ref": "function.schema.json#/properties/lifecycle/properties/trigger_conditions"},
-      "scopes": {"type": "object", "propertyNames": {"enum": ["capability", "baseline", "application", "episode"]}, "additionalProperties": {"type": "object", "additionalProperties": false, "required": ["persistence", "description_key"], "properties": {
-        "persistence": {"$ref": "function.schema.json#/definitions/lifecycleScope/properties/persistence"},
-        "activation": {"$ref": "function.schema.json#/definitions/lifecycleScope/properties/activation"},
-        "description_key": {"type": "string"}, "trigger_conditions_ref": {"const": "lifecycle.trigger_conditions"}
-      }}}
-    }},
-    "localSteps": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["id", "operation", "instruction"], "properties": {"id": {"type": "string"}, "operation": {"type": "string"}, "instruction": {"$ref": "#/definitions/localizedValue"}}}},
-    "control": {"type": "object", "additionalProperties": false, "required": ["designation", "phrase_ref"], "properties": {
-      "designation": {"$ref": "function.schema.json#/definitions/commandRecord/properties/designation"},
-      "phrase_ref": {"$ref": "function.schema.json#/definitions/commandRecord/properties/phrase_ref"},
-      "availability": {"$ref": "function.schema.json#/definitions/commandRecord/properties/availability"},
-      "documentation": {"$ref": "function.schema.json#/definitions/commandRecord/properties/documentation"},
-      "effect_scope_ref": {"$ref": "function.schema.json#/definitions/commandRecord/properties/effect_scope_ref"},
-      "invocation_scope_ref": {"$ref": "function.schema.json#/definitions/commandRecord/properties/invocation_scope_ref"},
-      "procedure": {"$ref": "function.schema.json#/definitions/commandRecord/properties/procedure"},
-      "relationships": {"$ref": "function.schema.json#/definitions/commandRecord/properties/relationships"}
-    }},
-    "relationshipProposal": {
-      "type": "object", "additionalProperties": false,
-      "required": ["function_id", "relationship_type", "description", "status", "dependency", "reciprocal_proposed", "evidence"],
+    "recordMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "legacy",
+        "aliases",
+        "compatibility",
+        "status",
+        "sources",
+        "claims",
+        "attribution",
+        "ocf",
+        "documentation",
+        "commands"
+      ],
       "properties": {
-        "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
-        "relationship_type": {"enum": ["related", "complementary", "suggested-before", "suggested-after"]},
-        "description": {"allOf": [{"$ref": "#/definitions/localizedValue"}, {"required": ["text", "status"], "properties": {"status": {"const": "draft"}}}]},
-        "status": {"const": "draft"},
-        "dependency": {"const": "optional"},
-        "reciprocal_proposed": {"type": "boolean"},
-        "evidence": {"type": "array", "minItems": 2, "uniqueItems": true, "items": {"type": "object", "additionalProperties": false, "required": ["function_id", "field", "sha256"], "properties": {"function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"}, "field": {"const": "description"}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}}
+        "legacy": {
+          "$ref": "function.schema.json#/properties/legacy"
+        },
+        "aliases": {
+          "$ref": "function.schema.json#/properties/aliases"
+        },
+        "compatibility": {
+          "$ref": "function.schema.json#/properties/compatibility"
+        },
+        "historical_lookup": {
+          "$ref": "function.schema.json#/properties/historical_lookup"
+        },
+        "status": {
+          "$ref": "function.schema.json#/properties/status"
+        },
+        "sources": {
+          "$ref": "function.schema.json#/properties/sources"
+        },
+        "claims": {
+          "$ref": "function.schema.json#/properties/claims"
+        },
+        "attribution": {
+          "$ref": "function.schema.json#/properties/attribution"
+        },
+        "history": {
+          "$ref": "function.schema.json#/properties/history"
+        },
+        "ocf": {
+          "$ref": "function.schema.json#/properties/ocf"
+        },
+        "documentation": {
+          "$ref": "function.schema.json#/properties/documentation"
+        },
+        "predecessor_resource_sha256": {
+          "description": "Non-authoritative hash of the pre-consolidation locale bytes, retained for immutable lock verification; it cannot resolve or supply function data.",
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "commands": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "function.schema.json#/definitions/commandId"
+              },
+              "localization": {
+                "type": "object"
+              },
+              "observed_phrase": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "command_phrases": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "editorial_approval": {
+          "description": "Human approval and implementation provenance for the canonical narration. Hashes identify the reviewed snapshots; this record does not imply listening, rights, or release approval.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "approval_id",
+            "decision",
+            "user_response",
+            "implementation_confirmation",
+            "scope",
+            "presented_snapshot_sha256",
+            "resolved_text_sha256",
+            "listening_approval",
+            "release_ready"
+          ],
+          "properties": {
+            "approval_id": {
+              "const": "OCF-APPROVED-CANDIDATES-001"
+            },
+            "decision": {
+              "const": "approve_full_draft"
+            },
+            "user_response": {
+              "const": "1"
+            },
+            "implementation_confirmation": {
+              "const": "Confirm implementation"
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_commit": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{40}$"
+            },
+            "implementation_note": {
+              "type": "string",
+              "minLength": 1
+            },
+            "presented_snapshot_sha256": {
+              "$ref": "#/definitions/hash"
+            },
+            "presented_function_sha256": {
+              "$ref": "#/definitions/hash"
+            },
+            "resolved_text_sha256": {
+              "type": "object",
+              "minProperties": 1,
+              "additionalProperties": {
+                "$ref": "#/definitions/hash"
+              }
+            },
+            "listening_approval": {
+              "const": false
+            },
+            "release_ready": {
+              "const": false
+            }
+          }
+        },
+        "editorial_decisions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "kind",
+              "source_commit",
+              "scope"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^(OCF|REL)-[A-Z0-9-]+$"
+              },
+              "kind": {
+                "enum": [
+                  "approved-command-presentation-change",
+                  "approved-title-cue",
+                  "approved-functional-metadata",
+                  "approved-command-simplification",
+                  "approved-relationship"
+                ]
+              },
+              "decision_source": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source_commit": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{40}$"
+              },
+              "command_id": {
+                "type": "string",
+                "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"
+              },
+              "scope": {
+                "type": "string",
+                "minLength": 1
+              },
+              "previous_resolved_text_sha256": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/definitions/hash"
+                },
+                "propertyNames": {
+                  "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"
+                }
+              },
+              "current_resolved_text_sha256": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/definitions/hash"
+                },
+                "propertyNames": {
+                  "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"
+                }
+              },
+              "previous_raw_template_sha256": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/definitions/hash"
+                },
+                "propertyNames": {
+                  "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"
+                }
+              },
+              "unchanged_protected_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "listening_approval": {
+                "const": false
+              },
+              "release_ready": {
+                "const": false
+              },
+              "source_row_sha256": {
+                "$ref": "#/definitions/hash"
+              },
+              "status": {
+                "enum": [
+                  "accepted",
+                  "retained",
+                  "pending",
+                  "superseded"
+                ]
+              },
+              "previous_values_sha256": {
+                "$ref": "#/definitions/hash"
+              },
+              "current_values_sha256": {
+                "$ref": "#/definitions/hash"
+              },
+              "changed_narration_keys": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"
+                },
+                "uniqueItems": true
+              },
+              "approval_response": {
+                "type": "string",
+                "minLength": 1
+              },
+              "review_position": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "review_note": {
+                "type": "string"
+              },
+              "separate_review_needed": {
+                "type": "boolean"
+              },
+              "issue_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "decision_number": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "relationship_id": {
+                "type": "string",
+                "pattern": "^REL-[A-Z0-9-]+$"
+              },
+              "related_function_id": {
+                "type": "string",
+                "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"
+              },
+              "relationship_type": {
+                "enum": ["related", "complementary", "suggested-before", "suggested-after"]
+              },
+              "dependency": {
+                "enum": ["optional"]
+              },
+              "reciprocal_approved": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "localLifecycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "persistence",
+        "activation",
+        "release"
+      ],
+      "properties": {
+        "persistence": {
+          "$ref": "function.schema.json#/properties/lifecycle/properties/persistence"
+        },
+        "activation": {
+          "$ref": "function.schema.json#/properties/lifecycle/properties/activation"
+        },
+        "release": {
+          "$ref": "function.schema.json#/properties/lifecycle/properties/release"
+        },
+        "trigger_conditions": {
+          "$ref": "function.schema.json#/properties/lifecycle/properties/trigger_conditions"
+        },
+        "scopes": {
+          "type": "object",
+          "propertyNames": {
+            "enum": [
+              "capability",
+              "baseline",
+              "application",
+              "episode"
+            ]
+          },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "persistence",
+              "description_key"
+            ],
+            "properties": {
+              "persistence": {
+                "$ref": "function.schema.json#/definitions/lifecycleScope/properties/persistence"
+              },
+              "activation": {
+                "$ref": "function.schema.json#/definitions/lifecycleScope/properties/activation"
+              },
+              "description_key": {
+                "type": "string"
+              },
+              "trigger_conditions_ref": {
+                "const": "lifecycle.trigger_conditions"
+              }
+            }
+          }
+        }
+      }
+    },
+    "localSteps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "operation",
+          "instruction"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "operation": {
+            "type": "string"
+          },
+          "instruction": {
+            "$ref": "#/definitions/localizedValue"
+          }
+        }
+      }
+    },
+    "control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "designation",
+        "phrase_ref"
+      ],
+      "properties": {
+        "designation": {
+          "$ref": "function.schema.json#/definitions/commandRecord/properties/designation"
+        },
+        "phrase_ref": {
+          "$ref": "function.schema.json#/definitions/commandRecord/properties/phrase_ref"
+        },
+        "availability": {
+          "$ref": "function.schema.json#/definitions/commandRecord/properties/availability"
+        },
+        "documentation": {
+          "$ref": "function.schema.json#/definitions/commandRecord/properties/documentation"
+        },
+        "effect_scope_ref": {
+          "$ref": "function.schema.json#/definitions/commandRecord/properties/effect_scope_ref"
+        },
+        "invocation_scope_ref": {
+          "$ref": "function.schema.json#/definitions/commandRecord/properties/invocation_scope_ref"
+        },
+        "procedure": {
+          "$ref": "function.schema.json#/definitions/commandRecord/properties/procedure"
+        },
+        "relationships": {
+          "$ref": "function.schema.json#/definitions/commandRecord/properties/relationships"
+        }
+      }
+    },
+    "relationshipProposal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "function_id",
+        "relationship_type",
+        "description",
+        "status",
+        "dependency",
+        "reciprocal_proposed",
+        "evidence"
+      ],
+      "properties": {
+        "function_id": {
+          "type": "string",
+          "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"
+        },
+        "relationship_type": {
+          "enum": [
+            "related",
+            "complementary",
+            "suggested-before",
+            "suggested-after"
+          ]
+        },
+        "description": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/localizedValue"
+            },
+            {
+              "required": [
+                "text",
+                "status"
+              ],
+              "properties": {
+                "status": {
+                  "const": "draft"
+                }
+              }
+            }
+          ]
+        },
+        "status": {
+          "const": "draft"
+        },
+        "dependency": {
+          "const": "optional"
+        },
+        "reciprocal_proposed": {
+          "type": "boolean"
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "function_id",
+              "field",
+              "sha256"
+            ],
+            "properties": {
+              "function_id": {
+                "type": "string",
+                "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"
+              },
+              "field": {
+                "const": "description"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          }
+        }
       }
     },
     "localizedValue": {
-      "oneOf": [
-        {"type": "object", "additionalProperties": false, "required": ["text"], "properties": {"text": {"type": "string", "minLength": 1}, "semantic_id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$"}, "status": {"enum": ["canonical", "draft", "machine", "reviewed"]}, "version": {"description": "Preserve existing versions without inventing one for unversioned predecessors.", "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}, "notes": {"type": ["string", "null"]}}},
-        {"type": "object", "additionalProperties": false, "required": ["source", "field"], "properties": {"source": {"const": "function-yaml"}, "field": {"enum": ["title", "description", "primary-command", "spoken-command"]}, "command_id": {"type": "string", "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"}, "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}}}
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "semantic_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "status": {
+          "enum": [
+            "canonical",
+            "draft",
+            "machine",
+            "reviewed"
+          ]
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "function_id",
+          "description"
+        ],
+        "properties": {
+          "function_id": {
+            "type": "string",
+            "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"
+          },
+          "description_key": {
+            "type": "string",
+            "pattern": "^relationships\\.[a-z0-9-]+\\.description$"
+          },
+          "description": {
+            "$ref": "#/definitions/localizedValue"
+          }
+        }
+      },
+      "uniqueItems": true
+    },
+    "evidenceLayer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sources",
+        "observations",
+        "questions"
+      ],
+      "properties": {
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sha256",
+              "path",
+              "evidence_class",
+              "authentication",
+              "completeness"
+            ],
+            "properties": {
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "path": {
+                "type": "string"
+              },
+              "evidence_class": {
+                "enum": [
+                  "source_transcript",
+                  "partial_source_transcript",
+                  "reconstructed_mockup",
+                  "inferred_missing_function",
+                  "secondary_description",
+                  "unknown"
+                ]
+              },
+              "authentication": {
+                "enum": [
+                  "unverified",
+                  "operator-designated",
+                  "authenticated"
+                ]
+              },
+              "completeness": {
+                "type": "string"
+              },
+              "authentication_record": {
+                "type": "string",
+                "minLength": 1
+              },
+              "normalized_content_sha256": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "related_sha256": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "authentication": {
+                      "const": "authenticated"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "authentication_record"
+                  ],
+                  "properties": {
+                    "evidence_class": {
+                      "enum": [
+                        "source_transcript",
+                        "partial_source_transcript"
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "evidence_class": {
+                      "enum": [
+                        "reconstructed_mockup",
+                        "inferred_missing_function",
+                        "unknown"
+                      ]
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "authentication": {
+                      "const": "unverified"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "observations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "kind",
+              "scope",
+              "source_sha256",
+              "category",
+              "line_candidates",
+              "confidence"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "kind": {
+                "enum": [
+                  "source-fact",
+                  "structural-inference",
+                  "function-specification-inference"
+                ]
+              },
+              "scope": {
+                "enum": [
+                  "document",
+                  "historical"
+                ]
+              },
+              "source_sha256": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "line_candidates": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "confidence": {
+                "enum": [
+                  "high",
+                  "medium",
+                  "low",
+                  "unknown"
+                ]
+              }
+            }
+          }
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "specificationLayer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metadata_ref",
+        "command_ref",
+        "extraction_status",
+        "maturity",
+        "human_review",
+        "states",
+        "preparation",
+        "blocks",
+        "questions"
+      ],
+      "properties": {
+        "metadata_ref": {
+          "const": "canonical-function-record"
+        },
+        "command_ref": {
+          "const": "canonical.command"
+        },
+        "extraction_status": {
+          "enum": [
+            "complete",
+            "partial",
+            "unknown",
+            "blocked"
+          ]
+        },
+        "maturity": {
+          "enum": [
+            "draft",
+            "pilot",
+            "reviewed"
+          ]
+        },
+        "human_review": {
+          "enum": [
+            "required",
+            "approved"
+          ]
+        },
+        "states": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "required",
+            "preferred"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "unknown",
+                "inferred",
+                "specified"
+              ]
+            },
+            "required": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "preferred": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "preparation": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "blocks": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/specification_block"
+          },
+          "required": [
+            "purpose",
+            "opener",
+            "main",
+            "association",
+            "rehearsal",
+            "future_use",
+            "suspend_cancel_reset",
+            "closer",
+            "consolidation",
+            "handoff",
+            "safety_claims"
+          ]
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "analysis_review": {
+          "$ref": "#/definitions/specification_review"
+        }
+      }
+    },
+    "decisionLayer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decisions"
+      ],
+      "properties": {
+        "decisions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "kind",
+              "status",
+              "description",
+              "material_change",
+              "human_review"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "kind": {
+                "const": "ocf-design-choice"
+              },
+              "status": {
+                "enum": [
+                  "provisional",
+                  "accepted"
+                ]
+              },
+              "scope": {
+                "enum": [
+                  "pilot",
+                  "function",
+                  "session"
+                ]
+              },
+              "description": {
+                "type": "string"
+              },
+              "material_change": {
+                "type": "boolean"
+              },
+              "human_review": {
+                "enum": [
+                  "required",
+                  "approved"
+                ]
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "status": {
+                      "const": "provisional"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "human_review": {
+                      "const": "required"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "bindingLayer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_templates",
+        "narration_resources",
+        "voice_sources",
+        "duration"
+      ],
+      "properties": {
+        "session_overrides": {
+          "$ref": "https://open-consciousness-functions.dev/schemas/session-overrides.schema.json"
+        },
+        "session_templates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "narration_resources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "locale",
+              "key"
+            ],
+            "properties": {
+              "locale": {
+                "type": "string"
+              },
+              "key": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "default_session_template": {
+          "type": "string",
+          "minLength": 1
+        },
+        "voice_sources": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "enum": [
+              "tts",
+              "prerecorded-user",
+              "externally-generated"
+            ]
+          }
+        },
+        "duration": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "required": [
+            "seconds",
+            "basis"
+          ],
+          "properties": {
+            "seconds": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "basis": {
+              "enum": [
+                "measured",
+                "estimated"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "specification_locator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_sha256",
+        "file"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "start_line",
+            "end_line"
+          ]
+        },
+        {
+          "required": [
+            "page"
+          ]
+        }
+      ],
+      "properties": {
+        "source_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "file": {
+          "type": "string"
+        },
+        "content_group_sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "start_line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "end_line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "specification_answer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "summary",
+        "locators"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "supported",
+            "unknown",
+            "not-present",
+            "not-applicable",
+            "inferred"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locators": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/specification_locator"
+          }
+        }
+      }
+    },
+    "specification_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "family",
+        "source_extent",
+        "sections",
+        "claim_categories",
+        "scope"
+      ],
+      "properties": {
+        "method": {
+          "const": "complete-available-source-content-review"
+        },
+        "family": {
+          "type": "string"
+        },
+        "source_extent": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/specification_locator"
+            },
+            {
+              "required": [
+                "start_line",
+                "end_line"
+              ]
+            }
+          ]
+        },
+        "scope": {
+          "const": "documentary extraction; not narration approval, historical authentication or runtime state binding"
+        },
+        "claim_categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sections": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/specification_answer"
+          },
+          "required": [
+            "identity",
+            "purpose",
+            "preparation",
+            "state",
+            "opener",
+            "main",
+            "association",
+            "rehearsal",
+            "future_use",
+            "suspend_cancel_reset",
+            "closer",
+            "consolidation",
+            "handoff",
+            "safety_claims",
+            "conversion",
+            "provenance"
+          ]
+        }
+      }
+    },
+    "specification_block": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "operations",
+        "evidence_refs"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "unknown",
+            "not-present",
+            "not-applicable",
+            "inferred",
+            "specified"
+          ]
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "unknown",
+                  "not-present",
+                  "not-applicable"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "operations": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
       ]
     },
-    "relationships": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["function_id", "description"], "properties": {"function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"}, "description_key": {"type": "string", "pattern": "^relationships\\.[a-z0-9-]+\\.description$"}, "description": {"$ref": "#/definitions/localizedValue"}}}, "uniqueItems": true}
+    "hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
   }
 }

@@ -1,26 +1,26 @@
-# Function content and provenance layers
+# Function content and provenance
 
-Shipped validation/discovery for additive sidecars (OCFP-0002 draft). Existing
-function YAML remains authoritative identity/display/purpose/activation/pronunciation
-ownership metadata; no legacy format or command was changed.
+Every function identity has exactly one canonical locale YAML resource at
+`locales/<tag>/OCF-*.yaml`. The complete English catalog contains 58 such
+resources. Identity, commands, lifecycle, narration, safety, editorial state,
+provenance metadata, analysis and runtime references are embedded there.
+`FunctionRecord` and rich CLI/API views are read-only projections.
 
-| Layer | Authority |
-| --- | --- |
-| `function-content/evidence/` | SHA-addressed source class/authentication/completeness; documentary observations and categorical confidence |
-| `function-content/specifications/` | Extracted operations, state/preparation requirements, block status and unresolved questions |
-| `function-content/decisions/` | OCF design choices/claim transformations, material change and human review |
-| `function-content/bindings/` | Runtime session/locale/voice references and known duration, never historical provenance |
-| `locales/` | Localized expression and pronunciation, never source facts or semantic identity |
+Function-specific evidence, specification, decisions and bindings are embedded
+under the canonical resource's `content` mapping. Their semantic distinctions
+remain explicit, but there are no function-content sidecar files and narration
+order is derived only from the canonical `narration.sequence`. The only remaining
+shared function-content input is `function-content/command-procedures.yaml`.
 
 `source-fact`, `structural-inference`, `function-specification-inference`,
 `ocf-design-choice` and localized expression are distinct. Evidence claims are
 about a document unless explicitly historical; historical assertions require
-authenticated source records. Mockups cannot authenticate themselves. Bindings
-cannot inject historical fields. Cross-layer identities/references and actual
-locale/template availability are checked by `validate --all`.
+authenticated source records. Mockups cannot authenticate themselves. Runtime
+bindings cannot inject historical facts. Cross-layer identities/references and
+actual locale/template availability are checked by `validate --all`.
 
-The initial55 partial sidecars now have **complete available-evidence analytical
-reviews**. Completion requires every analytical question, a full inspected source
+The 55 evidence-backed functions retain **complete available-evidence analytical
+reviews** inside their canonical locale resources. Completion requires every analytical question, a full inspected source
 extent, substantive answers (including investigated unknowns) and hash-addressed
 line/page locators. It does not authenticate historical recordings, bind runtime
 states or approve narration. Keyword candidates are preserved separately and do
@@ -32,8 +32,8 @@ frozen pilot/RC1 wording changes. See[review matrix](FUNCTION_EXTRACTION_REVIEW.
 `functions list|describe --rich --json` exposes these capabilities using
 `schemas/function-discovery.schema.json`. `build-index` adds the same capabilities
 to generated JSON while retaining existing CSV and raw CLI output compatibility.
-Missing durations, requirements and compatibility remain null/unknown. A locale
-binding indicates available draft resources, not approval or scientific evidence.
+Missing durations, requirements and compatibility remain null/unknown. Embedded
+locale bindings indicate available draft resources, not approval or scientific evidence.
 
 ## Source-first working authoring (planned CLI)
 
