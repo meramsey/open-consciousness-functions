@@ -27,6 +27,8 @@ def test_editorial_rejects_all_packaged_and_audio_roots(tmp_path, monkeypatch, d
     with pytest.raises(OCFError, match="packaged runtime"):
         editorial.require_local_output(tmp_path / directory / "draft.yaml")
     with pytest.raises(OCFError, match="packaged runtime"):
+        editorial.save(tmp_path / directory / "draft.yaml", {"draft": True})
+    with pytest.raises(OCFError, match="packaged runtime"):
         editorial.require_local_output(tmp_path)
 
 

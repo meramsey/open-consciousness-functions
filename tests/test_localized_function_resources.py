@@ -151,9 +151,15 @@ def test_repository_catalog_uses_readable_paths_and_preserves_cues():
         "OCF-EMO-003-Empathize.yaml"
     )
     assert len(catalog.packs["en-US"].localized_functions) == 58
-    assert "hplus-OCF-EMO-003.yaml" not in {
-        resource["file"] for resource in catalog.packs["en-US"].manifest["resources"]
-    }
+    # One manifest-listed function resource owns the identity, independent of
+    # any historical filename that must never become a second authority.
+    pack = catalog.packs["en-US"]
+    assert [
+        resource["file"]
+        for resource in pack.manifest["resources"]
+        if resource["domain"] == "function"
+        and resource["file"] == pack.localized_function_files[FUNCTION_ID]
+    ] == ["OCF-EMO-003-Empathize.yaml"]
     assert (
         catalog.resource(
             f"commands.{COMMAND_ID.lower()}.display-cue",
