@@ -2,13 +2,13 @@
 
 Historical source selections and separately labeled user-proposed reconstructions prepared for human review; no narration has been approved or rendered by this importer.
 
-This is a historical importer report, not the current review state. Links below
-now point to immutable predecessor archives; do not edit them. Current editable
+This is a historical preparation report, not the current review state. Links below
+point to current canonical resources, not immutable predecessor archives. Editable
 wording lives in the 58 manifest-listed function files in `locales/en-US/`;
 see [the current index](../FUNCTION_INDEX.md). Shared narration remains separate.
 Missing spoken keys are omitted. User-proposed reconstructions are labeled separately from historical SOURCE; historical source-unavailable records remain unavailable and planned.
 
-| Function | Name | Historical source status | Wording basis | Opener | Body | Closer | Historical archive |
+| Function | Name | Historical source status | Wording basis | Opener | Body | Closer | Canonical resource |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | OCF-AUT-001 | See-Be | unavailable | user-proposed reconstruction | candidate | candidate | candidate | [OCF-AUT-001 canonical resource](../locales/en-US/OCF-AUT-001-Automatic-Action.yaml) |
 | OCF-BOD-001 | Brain: Repairs & Maintenance | transcript_unverified | historical source selection | candidate | candidate | candidate | [OCF-BOD-001 canonical resource](../locales/en-US/OCF-BOD-001-Brain-Flow.yaml) |
@@ -382,6 +382,17 @@ This is the end of your OCF function exercise.
 
 ## Import behavior
 
-`scripts/tools/prepare_hplus_function_review.py` reads the historical selection recipe and the separately labeled proposal recipe in `function-content/hplus-proposed-review-selections.yaml` only during offline editorial preparation. It verifies input hashes and identities. `--apply-proposals` replaces only untouched status-only placeholders; existing narration/human edits are preserved. Runtime composition reads committed locale resources only.
+`scripts/tools/prepare_hplus_function_review.py` reads canonical locale metadata
+and explicit source/proposal selection recipes only during offline preparation.
+It verifies source hashes, source-root containment, title/command identity and
+clean-script boundaries. An explicit `--output` directory is required and must
+be outside runtime and immutable source roots. `--write` creates local
+`*.review-proposal.json` documents with `authority: none`, nested candidate
+entries and pending human review. It never writes locale resources or manifests,
+never replaces a status placeholder and never promotes a reconstruction.
+Existing edited proposals are refused rather than overwritten; choose a new
+local output directory when inputs change. Keep these potentially restricted
+drafts private and out of packages. Applying owner-approved wording is a separate
+reviewed Git edit to its canonical resource. Runtime never loads these proposals.
 
 These are separate draft candidates with their wording basis recorded. Existing Relax, Hearing and Sleep Easy pilot editorial resources and RC1/V2/V2.1 material remain frozen.

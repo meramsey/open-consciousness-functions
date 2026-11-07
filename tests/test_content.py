@@ -236,14 +236,24 @@ def test_extract_driver_preflights_and_persists_idempotent_partial_layers(
 
     extract_function_content.main()
     assert "Initialized 1 partial research records" in capsys.readouterr().out
-    for layer in ("evidence", "specifications", "decisions", "bindings"):
-        assert (output / layer / f"{record.id}.yaml").is_file()
-    before = {path: path.read_bytes() for path in output.rglob("*.yaml")}
+    target = output / f"{record.id}.research-proposal.json"
+    proposal = json.loads(target.read_text())
+    assert proposal["authority"] == "none"
+    assert proposal["release_status"] == "pending-human-review"
+    assert set(proposal["candidate_layers"]) == {
+        "evidence",
+        "specifications",
+        "decisions",
+        "bindings",
+    }
+    assert not {"function_id", "domain", "entries"} & proposal.keys()
+    assert not list(output.rglob("*.yaml"))
+    before = target.read_bytes()
     extract_function_content.main()
-    assert before == {path: path.read_bytes() for path in output.rglob("*.yaml")}
+    assert before == target.read_bytes()
 
-    conflict = output / "evidence" / f"{record.id}.yaml"
-    conflict.write_text("customized: true\n", encoding="utf-8")
+    conflict = target
+    conflict.write_text('{"customized": true}\n', encoding="utf-8")
     with pytest.raises(OCFError, match="refusing to overwrite reviewed/customized"):
         extract_function_content.main()
 
@@ -265,6 +275,72 @@ def test_extract_driver_validation_failure_writes_no_partial_layers(monkeypatch,
     with pytest.raises(OCFError, match="bad layer"):
         extract_function_content.main()
     assert not output.exists()
+
+
+@pytest.mark.parametrize(
+    "directory",
+    ["locales/en-US", "function-content", "audio/scripts", "references", "ReusablePrompts"],
+)
+def test_extract_driver_rejects_runtime_and_protected_outputs_before_input(monkeypatch, directory):
+    from ocf_tools.paths import REPO_ROOT
+
+    monkeypatch.setattr(
+        extract_function_content.sys,
+        "argv",
+        [
+            "extract",
+            "--inventory",
+            "missing-input.json",
+            "--output",
+            str(REPO_ROOT / directory),
+        ],
+    )
+    with pytest.raises(OCFError, match="packaged runtime"):
+        extract_function_content.main()
+
+
+def test_extract_driver_preflights_the_entire_batch_and_rejects_symlinks(monkeypatch, tmp_path):
+    from types import SimpleNamespace
+
+    inventory = tmp_path / "inventory.json"
+    inventory.write_text('{"files": []}')
+    output = tmp_path / "proposals"
+    output.mkdir()
+    second = output / "OCF-TST-002.research-proposal.json"
+    second.write_text('{"human": "edit"}')
+    monkeypatch.setattr(extract_function_content, "ROOT", tmp_path)
+    monkeypatch.setattr(
+        extract_function_content,
+        "load_all_functions",
+        lambda: [
+            SimpleNamespace(id="OCF-TST-001"),
+            SimpleNamespace(id="OCF-TST-002"),
+        ],
+    )
+    monkeypatch.setattr(extract_function_content, "initialize", lambda *args: {})
+    monkeypatch.setattr(extract_function_content, "validate_layers", lambda *args: [])
+    monkeypatch.setattr(
+        extract_function_content.sys,
+        "argv",
+        [
+            "extract",
+            "--inventory",
+            str(inventory),
+            "--output",
+            str(output),
+        ],
+    )
+    with pytest.raises(OCFError, match="reviewed/customized"):
+        extract_function_content.main()
+    assert not (output / "OCF-TST-001.research-proposal.json").exists()
+    assert second.read_text() == '{"human": "edit"}'
+    outside = tmp_path / "outside.json"
+    outside.write_bytes(second.read_bytes())
+    second.unlink()
+    second.symlink_to(outside)
+    with pytest.raises(OCFError, match="must not be a symlink"):
+        extract_function_content.main()
+    assert not (output / "OCF-TST-001.research-proposal.json").exists()
 
 
 def test_extract_driver_script_entrypoint_runs_main(monkeypatch, tmp_path, capsys):
@@ -295,7 +371,7 @@ def test_extract_driver_script_entrypoint_runs_main(monkeypatch, tmp_path, capsy
     )
     runpy.run_path(str(Path(extract_function_content.__file__)), run_name="__main__")
     assert "Initialized 1 partial research records" in capsys.readouterr().out
-    assert (output / "evidence" / f"{record.id}.yaml").is_file()
+    assert (output / f"{record.id}.research-proposal.json").is_file()
 
 
 def test_library_and_rich_discovery_keep_unknown_requirements_explicit():

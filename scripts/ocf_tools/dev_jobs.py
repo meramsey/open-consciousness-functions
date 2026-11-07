@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import errno
 import json
 import os
 import re
@@ -42,12 +43,21 @@ def save(path: Path, data: dict):
 
 
 def _read_state(path: Path) -> dict:
-    """Retry only transient Windows sharing denials while reading job state."""
+    """Bound Windows sharing races, including CRT open errors without winerror.
+
+    Windows' CRT can report a sharing denial as EACCES alone. Such a denial
+    cannot be distinguished from a permanent ACL failure here: retry briefly,
+    then propagate the original error. Other platforms/errors fail immediately.
+    """
     for attempt in range(8):
         try:
             return json.loads(path.read_text(encoding="utf-8"))
         except PermissionError as error:
-            if getattr(error, "winerror", None) not in {5, 32, 33} or attempt == 7:
+            winerror = getattr(error, "winerror", None)
+            sharing_denial = winerror in {5, 32, 33} or (
+                os.name == "nt" and winerror is None and error.errno == errno.EACCES
+            )
+            if not sharing_denial or attempt == 7:
                 raise
             time.sleep(min(0.01 * 2**attempt, 0.25))
 
@@ -372,6 +382,10 @@ def start(operation: str, arguments: dict, idempotency_key: str | None = None) -
                 previous = status(path.parent.name)
                 if "request_hash" not in request:
                     continue
+            except PermissionError:
+                # An unreadable active record is not an incomplete publication.
+                # Fail closed instead of spawning a possible duplicate worker.
+                raise
             except (OSError, ValueError, KeyError, TypeError):
                 # Incomplete publication never spawned a worker; retain it for
                 # diagnostics without disabling unrelated jobs.
@@ -566,7 +580,7 @@ def worker(job_id: str):
         except (OSError, OCFError, subprocess.SubprocessError) as exc:
             cleanup_error = str(exc)
         reader.join(timeout=10)
-        state = json.loads((root / "state.json").read_text(encoding="utf-8"))
+        state = _read_state(root / "state.json")
         if cleanup_error:
             state.update(
                 state="failed",
@@ -586,7 +600,7 @@ def worker(job_id: str):
 def managed_execute(job_id: str):
     """Execution owns the lease, so supervisor failure cannot release capacity."""
     root = directory(job_id)
-    state = json.loads((root / "state.json").read_text(encoding="utf-8"))
+    state = _read_state(root / "state.json")
     while True:
         state["heartbeat"] = time.time()
         save(root / "state.json", state)

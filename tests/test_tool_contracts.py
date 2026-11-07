@@ -132,12 +132,12 @@ def test_frozen_audition_renderer_preflights_inputs_before_any_output(
     source.write_bytes(b"preserved V1 bytes")
     output = tmp_path / "audition"
     expected_speech_hash = hashlib.sha256(source.read_bytes()).hexdigest()
-    rc1 = tmp_path / "locales/en-US/functions.yaml"
+    rc1 = tmp_path / "locales/en-US/hplus-focus11-open.yaml"
     rc1.parent.mkdir(parents=True)
     rc1.write_bytes(b"frozen RC1 source")
     rc1_hash = hashlib.sha256(rc1.read_bytes()).hexdigest()
     manifest = {
-        "rc1_source_sha256": {"locales/en-US/functions.yaml": rc1_hash},
+        "rc1_source_sha256": {"locales/en-US/hplus-focus11-open.yaml": rc1_hash},
         "artifacts": {source.name: {"sha256": expected_speech_hash}},
     }
     if failure == "changed-rc1":
@@ -327,7 +327,7 @@ def test_frozen_audition_renderer_orchestrates_only_synthetic_outputs(
         writer.setparams((1, 2, 8000, 0, "NONE", "not compressed"))
         writer.writeframes(b"\x00\x10" * 800)
     expected = hashlib.sha256(source.read_bytes()).hexdigest()
-    relative_resource = "locales/en-US/functions.yaml"
+    relative_resource = "locales/en-US/hplus-focus11-open.yaml"
     resource = tmp_path / relative_resource
     resource.parent.mkdir(parents=True)
     resource.write_text("synthetic frozen resource", encoding="utf-8")

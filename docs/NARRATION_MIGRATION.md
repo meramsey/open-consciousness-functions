@@ -26,7 +26,7 @@ Multiple dispositions can apply to different parts of one file.
 | `audio/templates/sessions/OCF-TPL-SESSION-LEARN-001.yaml` original bridge | REWRITE; EXTRACT TO LOCALIZATION | Three automatic-learning statements repaired in Phase 8A using draft localized resources. Remaining bridge review is pending; slot contracts are retained. |
 | Same template's twentieth-state/sleep arc | DEPRECATED as universal default | Keep the historical optional workflow available; do not require it for Prep Learning or every function. |
 | `locales/en-US/narration.yaml` | KEEP resource architecture; REWRITE content where needed | Review imperatives, assumed outcomes, Focus explanations and opening/closing intent under the new standard. |
-| `locales/en-US/functions.yaml` | KEEP parameterized command metadata; REWRITE reusable explanation where needed | Maintain canonical command identity; improve autonomy/rehearsal and function-purpose resources. |
+| Manifest-listed `locales/en-US/OCF-*.yaml` resources | KEEP parameterized command metadata; REWRITE reusable explanation only with approval | Maintain canonical command identity; improve autonomy/rehearsal and function-purpose resources. |
 | `OCF-TPL-SESSION-FOCUS-CYCLE-001.yaml` | KEEP keyed demonstration; EXTRACT TO LOCALIZATION already complete | Preserve the demo; do not describe it as full Preparation Learning. |
 | `templates/audio-manifest.yaml` safety introduction | EXTRACT TO LOCALIZATION candidate | Provide a reusable resource when spoken; retain inline metadata compatibility. |
 | `scripts/ocf_tools/prompts.py` safety-introduction default | EXTRACT TO LOCALIZATION candidate | Resolve a shared resource when generating canonical spoken content. The current field is metadata, not automatically rendered speech. |
@@ -50,7 +50,8 @@ resources. The old quotations below are retained only as this migration record:
 | “Every word is received easily by your mind.” | Asserts an internal experience and guaranteed reception |
 | “All that you have absorbed is being integrated beneath awareness.” | Implies automatic learning/integration beneath awareness |
 
-Replacements in `locales/en-US/functions.yaml`:
+Proposed wording changes in the corresponding canonical en-US function resource
+(not authorization to replace approved wording):
 
 - `function.learning.attend`: listener-selected attention and making sense of material.
 - `function.learning.rehearse`: deliberate skill practice, recognition and repetition.
