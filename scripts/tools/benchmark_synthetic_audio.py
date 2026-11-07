@@ -24,7 +24,7 @@ from uuid import uuid4
 
 from ocf_tools import audio_build, speech_cache, voice
 from ocf_tools.bulk_render import _batch_resource_state
-from ocf_tools.paths import REPO_ROOT, work_root, workspace_run
+from ocf_tools.paths import REPO_ROOT, work_root, workspace_run, workspace_temp_directory
 from ocf_tools.utils import OCFError, sha256_of_file, write_bytes_atomic, write_text_atomic
 
 COMMON = "This is a public synthetic audio benchmark."
@@ -205,9 +205,11 @@ def benchmark(output, *, sessions, seconds, worker_counts, source_sha):
         write_text_atomic(marker, "public-synthetic-audio-v1", overwrite=False)
     root = output / uuid4().hex
     root.mkdir()
+    # eSpeak-NG 1.51 silently produces an empty file for -w paths >=200 chars.
+    # Keep tool scratch short under the canonical workspace, independent of the
+    # retained artifact tree. Never switch backend or alter synthesized inputs.
+    scratch = workspace_temp_directory(prefix="ab-")
     original = os.environ.get("OCF_WORK_DIR")
-    os.environ["OCF_WORK_DIR"] = str(root / "work")
-    work_root().mkdir()
     try:
         config = {
             "format": "public-synthetic-audio-v1",
@@ -220,7 +222,7 @@ def benchmark(output, *, sessions, seconds, worker_counts, source_sha):
         for requested in worker_counts:
             case = root / f"workers-{requested}"
             case.mkdir()
-            os.environ["OCF_WORK_DIR"] = str(case / "work")
+            os.environ["OCF_WORK_DIR"] = str(scratch / f"w{requested}")
             work_root().mkdir()
             resources = _batch_resource_state(requested)
             workers = resources["selected_workers"]
@@ -270,7 +272,9 @@ def benchmark(output, *, sessions, seconds, worker_counts, source_sha):
             "scope": "real public eSpeak TTS, OCF narration/PCM mix/FLAC; synthetic AM bed; fixture ZIP only",
             "not_measured": ["private voices", "GPU", "Farfield", "production release packaging"],
             "cases": cases,
-            "retained_fixture_bytes": sum(p.stat().st_size for p in root.rglob("*") if p.is_file()),
+            "retained_fixture_bytes": sum(
+                p.stat().st_size for tree in (root, scratch) for p in tree.rglob("*") if p.is_file()
+            ),
         }
     finally:
         if original is None:
