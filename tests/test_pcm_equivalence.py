@@ -31,6 +31,34 @@ def test_every_pcm16_value_decodes_and_serializes_exactly():
     assert voice.struct_unpack_le16(b"x") == []
 
 
+def test_pcm_conversion_uses_one_bulk_primitive_per_buffer(monkeypatch):
+    """Timing-independent smoke guard against returning to per-sample byte I/O."""
+    native = voice.array
+    reads, writes = [], []
+
+    class MeasuredArray:
+        def __init__(self, *args):
+            self.value = native(*args)
+
+        def __getattr__(self, name):
+            return getattr(self.value, name)
+
+        def frombytes(self, data):
+            reads.append(len(data))
+            self.value.frombytes(data)
+
+        def tobytes(self):
+            writes.append(len(self.value))
+            return self.value.tobytes()
+
+    monkeypatch.setattr(voice, "array", MeasuredArray)
+    values = list(range(-10000, 10000))
+    data = reference_bytes(values)
+    assert voice.struct_unpack_le16(data) == values
+    assert voice._pcm16_bytes(values) == data
+    assert reads == [len(data)] and writes == [len(values)]
+
+
 @pytest.mark.parametrize(
     "value",
     [

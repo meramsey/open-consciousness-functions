@@ -52,6 +52,8 @@ Protection/equivalence evidence:
 - Exhaustive unit comparison covers every signed PCM16 value, odd-byte decoder
   behavior, clipping/float/NaN/infinity return semantics, big-endian array
   handling, complete mono/stereo WAV bytes and negative downmix rounding.
+  A timing-independent smoke guard requires one bulk conversion per buffer,
+  preventing a silent return to the profiled per-sample byte I/O path.
 - Only equivalent clipping comparisons and stdlib array decoding/packing changed;
   gain arithmetic, synthesis inputs, timing, sample rate selection, fades,
   crossfades, DSP profiles, encoding policy and atomic publication remain intact.
