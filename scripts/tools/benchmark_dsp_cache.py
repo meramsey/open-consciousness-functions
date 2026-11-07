@@ -3,6 +3,7 @@
 import json
 import sys
 import time
+from copy import deepcopy
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -13,10 +14,14 @@ from ocf_tools.speech_cache import enabled  # noqa: E402
 from ocf_tools.utils import write_text_atomic  # noqa: E402
 
 
-def main():
-    profile = load_profile(DSP_ID)
+def benchmark_inputs():
+    """Tone-only synthetic timeline; never modify a production profile/anchor."""
+    profile = deepcopy(load_profile(DSP_ID))
     profile["ignored_state_events"] = []
     profile["stage_backgrounds"] = {}
+    # This fixture has no narration or close.close event to measure. The
+    # production profile's closure anchor remains mandatory for real sessions.
+    profile["transition_end_anchors"] = {}
     document = {
         "schema_version": "1.0",
         "title": "Bounded DSP cache verification",
@@ -29,6 +34,11 @@ def main():
             }
         ],
     }
+    return profile, document
+
+
+def main():
+    profile, document = benchmark_inputs()
     root = work_path("renders", unique_run_id("dsp-cache-review"))
     root.mkdir(parents=True)
     rows = []
