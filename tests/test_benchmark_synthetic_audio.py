@@ -73,6 +73,25 @@ def test_output_boundary_and_unmarked_directory_preserved(fixtures):
     assert list(existing.iterdir()) == []
 
 
+def test_tool_scratch_is_independent_of_long_artifact_paths(fixtures, monkeypatch):
+    output = fixtures / ("long-artifact-path-" * 5)
+    seen = []
+    original = bench.voice.render_narration
+
+    def checked(*args, **kwargs):
+        from pathlib import Path
+
+        scratch = Path(bench.os.environ["OCF_WORK_DIR"])
+        assert not scratch.is_relative_to(output)
+        assert scratch.parent.name.startswith("ab-")
+        seen.append(scratch)
+        return original(*args, **kwargs)
+
+    monkeypatch.setattr(bench.voice, "render_narration", checked)
+    bench.benchmark(output, sessions=1, seconds=6, worker_counts=[1], source_sha="a")
+    assert seen and bench.os.environ["OCF_WORK_DIR"] == str(fixtures)
+
+
 def test_fixture_identity_collision_and_corrupt_resume_fail_closed(fixtures):
     root = fixtures / "fixture"
     root.mkdir()
