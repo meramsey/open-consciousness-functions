@@ -1,7 +1,7 @@
 PY?=python3
 OCF:=$(PY) scripts/ocf.py
 
-.PHONY: help test validate indexes check lint lint-markdown clean
+.PHONY: help test test-parallel test-fast test-full coverage validate indexes check lint lint-markdown clean
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*##' Makefile | awk 'BEGIN {FS = ":.*?## "}; {printf "  %-12s %s\n", $$1, $$2}'
@@ -11,6 +11,11 @@ test: ## Run the pytest suite
 
 test-parallel: ## Run the entire suite with two isolated workers (pytest-xdist)
 	$(PY) -m pytest -n 2 --dist loadfile
+
+test-fast: ## Development loop, no coverage; optional PYTEST_ARGS selects a tier
+	$(PY) -m pytest -n 2 --dist loadfile $(PYTEST_ARGS)
+
+test-full: coverage ## Complete suite and mandatory statement/branch coverage gates
 
 coverage: ## Measure the complete suite with subprocesses and separate coverage gates
 	$(PY) -m ocf_tools.coverage_report run
