@@ -8,7 +8,13 @@ pytestmark = pytest.mark.integration
 
 
 def test_performance_pushes_run_all_existing_verification_workflows():
-    branches = {"main", "perf/test-execution-20261106", "perf/bulk-generation-20261106"}
+    branches = {
+        "main",
+        "perf/test-execution-20261106",
+        "perf/bulk-generation-20261106",
+        "codex/integrate-test-performance-20261107",
+        "codex/integrate-bulk-performance-20261107",
+    }
     for name in ("test", "lint", "validate", "generated-index-check"):
         data = yaml.safe_load((REPO_ROOT / f".github/workflows/{name}.yml").read_text())
         events = data.get("on", data.get(True))
