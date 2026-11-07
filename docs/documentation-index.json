@@ -947,13 +947,15 @@
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "Design Specification",
       "related_commands": [
+        "new function",
         "review commands",
         "validate"
       ],
       "related_schemas": [
-        "schemas/function.schema.json"
+        "schemas/function.schema.json",
+        "schemas/localized-function.schema.json"
       ],
-      "sha256": "09bae200ab8351657b0a9e7c9be64fabaa4e9e9f43117db9632b2efbc3b06873",
+      "sha256": "fd48849773fee2ff01d7d0222c0ac6cff0bce62b4de19f8c9e3618f7be7433d6",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1573,7 +1575,7 @@
       "purpose": "PR 27 final authoring boundary review",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "e9ffaef6281538e4f930ba49153e0aae310533d4168d29c2addec8e91045cc77",
+      "sha256": "ce7ba8e5a65c017af5876cf6aaad83dc2af1eb5f1e70f6c58e456f0f0ed4b19c",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
