@@ -1,0 +1,97 @@
+name: export-verified-ci-metrics
+
+on:
+  push:
+    branches: [automation/open-roadmap-pr-20261107]
+
+permissions:
+  contents: read
+  checks: read
+  actions: read
+
+jobs:
+  numeric-evidence-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      # No checkout, extraction, code writes or audio output. The credential
+      # stays on GitHub and is never forwarded to redirected artifact storage.
+      - name: Read only compact summaries from already successful coverage jobs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import io
+          import json
+          import os
+          import re
+          import urllib.error
+          import urllib.parse
+          import urllib.request
+          import zipfile
+
+          root = 'https://api.github.com/repos/meramsey/open-consciousness-functions'
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, *args, **kwargs):
+                  return None
+          opener = urllib.request.build_opener(NoRedirect)
+          def request(path):
+              return urllib.request.Request(root + path, headers={
+                  'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
+                  'Accept': 'application/vnd.github+json',
+                  'User-Agent': 'OCF-verified-numeric-evidence',
+              })
+          def api(path):
+              with opener.open(request(path), timeout=30) as response:
+                  return json.load(response)
+          for head in [
+              'e65634eadb3567566568931ae00f293f2300812f',
+              'f9408ec2d3393dec7ea3e1c6e67cbc34f624a622',
+              'c1093b752ee14e17a380b0b17869d7d0089ea5d2',
+          ]:
+              checks = api('/commits/' + head + '/check-runs?per_page=100')['check_runs']
+              coverage = next(row for row in checks if row['name'] == 'coverage')
+              if coverage['conclusion'] != 'success':
+                  raise RuntimeError('Coverage has not succeeded at the requested head')
+              run = re.search(r'/actions/runs/(\d+)/', coverage['html_url']).group(1)
+              if api('/actions/runs/' + run)['head_sha'] != head:
+                  raise RuntimeError('Workflow source identity mismatch')
+              items = api('/actions/runs/' + run + '/artifacts?per_page=100')['artifacts']
+              artifact = next(item for item in items if item['name'] == 'full-suite-coverage-linux-python312' and not item['expired'])
+              try:
+                  opener.open(request('/actions/artifacts/' + str(artifact['id']) + '/zip'), timeout=30)
+                  raise RuntimeError('Expected a signed storage redirect')
+              except urllib.error.HTTPError as error:
+                  if error.code != 302:
+                      raise RuntimeError('Artifact access was denied') from None
+                  location = error.headers['Location']
+              target = urllib.parse.urlparse(location)
+              if target.scheme != 'https' or not any(target.hostname.endswith(suffix) for suffix in ('.blob.core.windows.net', '.actions.githubusercontent.com', '.githubusercontent.com')):
+                  raise RuntimeError('Unexpected artifact storage host')
+              # This new unauthenticated request cannot leak GH_TOKEN across hosts.
+              with urllib.request.urlopen(location, timeout=60) as response:
+                  payload = response.read(64 * 1024**2 + 1)
+              if len(payload) > 64 * 1024**2:
+                  raise RuntimeError('Artifact exceeds the bounded read budget')
+              with zipfile.ZipFile(io.BytesIO(payload)) as archive:
+                  matches = [item for item in archive.infolist() if item.filename.split('/')[-1] == 'summary.json']
+                  if len(matches) != 1 or matches[0].file_size > 2 * 1024**2:
+                      raise RuntimeError('Unexpected compact summary inventory')
+                  summary = json.loads(archive.read(matches[0]))
+              tested = summary['source_sha']
+              if tested != head and api('/git/commits/' + tested)['tree']['sha'] != api('/git/commits/' + head)['tree']['sha']:
+                  raise RuntimeError('PR merge checkout does not have the requested source tree')
+              combined = summary['reports']['combined']
+              if summary['pytest_exit_code'] or summary.get('deselected_count') or summary.get('taxonomy_errors'):
+                  raise RuntimeError('Incomplete or unsuccessful full-suite measurement')
+              if combined['excluded_lines'] or combined['statement_percent'] < 89.5 or combined['branch_percent'] < 84.0:
+                  raise RuntimeError('Original coverage obligations did not pass')
+              safe = {
+                  'head_sha': head, 'tested_sha': tested, 'same_source_tree_verified': True,
+                  'counts': summary['counts'], 'coverage': combined,
+                  'python': summary['python'], 'platform': summary['platform'],
+                  'workers': summary['workers'], 'full_pytest_seconds': summary['runtime_seconds'],
+                  'coverage_url': coverage['html_url'],
+              }
+              print('::notice title=Verified full-suite numeric evidence::' + json.dumps(safe), flush=True)
+          PY

@@ -1,8 +1,7 @@
 name: publish-review-packet
 
 on:
-  push:
-    branches: [automation/open-roadmap-pr-20261107]
+  workflow_dispatch:
 
 permissions:
   contents: read
