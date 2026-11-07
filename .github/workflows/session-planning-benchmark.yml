@@ -43,4 +43,5 @@ jobs:
         if: always()
         with:
           name: public-session-planning-benchmark
+          include-hidden-files: true
           path: .ocf-work/planning-benchmark/
