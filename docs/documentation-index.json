@@ -276,7 +276,7 @@
         "voice"
       ],
       "related_schemas": [],
-      "sha256": "95bfe21bba9939f5ee321b1a44da8ef005222e3788a26209c8598fbb4336a49f",
+      "sha256": "eb9d14dd4c3647df875426b9c648266529da295d1fe087ae5af34660e0595345",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1743,6 +1743,24 @@
       "related_commands": [],
       "related_schemas": [],
       "sha256": "4894d79e1a171a153af3e68d3901668910733a6ae7a55d883fae92dcd489cf0c",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "docs/ROADMAP_RECONCILIATION_20261106.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Roadmap reconciliation — 2026-11-06",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "ccc64c4590b7cbadb5ba4927a019b6e31db9e35d9de2f86eda4814b222071b6f",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
