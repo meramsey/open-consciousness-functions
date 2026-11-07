@@ -45,7 +45,9 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 import wave
+from array import array
 from collections.abc import Callable, Mapping
 from copy import deepcopy
 from dataclasses import dataclass, field, replace
@@ -843,8 +845,12 @@ def _read_pcm_from_bytes(data: bytes) -> tuple[int, list[int]]:
 
 def struct_unpack_le16(frames: bytes) -> list[int]:
     """Unpack signed little-endian 16-bit PCM frames."""
-    count = len(frames) // 2
-    return [int.from_bytes(frames[i * 2 : i * 2 + 2], "little", signed=True) for i in range(count)]
+    samples = array("h")
+    # Preserve the previous decoder's treatment of an incomplete trailing byte.
+    samples.frombytes(frames[: len(frames) // 2 * 2])
+    if sys.byteorder != "little":
+        samples.byteswap()
+    return samples.tolist()
 
 
 def _resample(samples: list[int], src_rate: int, dst_rate: int) -> list[int]:
@@ -957,7 +963,19 @@ def _pronunciation_hints(
 
 
 def _clip(value: int) -> int:
-    return max(-32768, min(32767, value))
+    # Same ordered comparisons as max(-32768, min(32767, value)), including
+    # NaN and the exact return types at the two bounds, without two calls/sample.
+    if value < 32767:
+        return value if value > -32768 else -32768
+    return 32767
+
+
+def _pcm16_bytes(samples) -> bytes:
+    """Serialize the same clipped/truncated samples with native array packing."""
+    frames = array("h", (int(_clip(sample)) for sample in samples))
+    if sys.byteorder != "little":
+        frames.byteswap()
+    return frames.tobytes()
 
 
 def _fade_spoken_unit(
@@ -1749,10 +1767,7 @@ def _write_wav(
         writer.setnchannels(channels)
         writer.setsampwidth(2)
         writer.setframerate(sample_rate)
-        frames = bytearray()
-        for sample in samples:
-            frames.extend(int(_clip(sample)).to_bytes(2, "little", signed=True))
-        writer.writeframes(bytes(frames))
+        writer.writeframes(_pcm16_bytes(samples))
     target = Path(path)
     if target.exists() and not overwrite:
         raise OCFFileExistsError(f"Refusing to overwrite existing file: {target}")
