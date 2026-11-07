@@ -6,15 +6,22 @@ and measured-ledger DSP dispatch are shipped. Cue playback and the dedicated
 preparation CLI remain unshipped. Preparation Learning en-US RC1 has a verified
 development audition; three function rehearsals are draft pilots requiring review.
 
-Current inventory snapshot (2026-10-25): the verified registry has **58 OCF
-function records**: 55 legacy-mapped targets plus 3 OCF-original records. The
+Current inventory snapshot (2026-11-06): the canonical en-US locale has **58 OCF
+function definitions**: 55 legacy-mapped targets plus 3 OCF-original records. The
 55 legacy mappings split into 39 source-available and 16 source-unavailable;
-source availability does not mean that an OCF function is absent. The registry
+source availability does not mean that an OCF function is absent. The canonical catalog
 has 83 structured command records and 58 generated English session plans.
 Plan validity, rendering/technical verification, human listening approval and
 publication authorization remain independent statuses.
 
 Legend: `[x] done · [~] in progress · [ ] planned`
+
+Reconciliation: every pre-existing workstream below is retained. An old checked
+milestone records its original scope, not a claim that its current successor is
+complete. Partial implementations do not close broader unchecked goals. The
+three editorial requests already recorded here are expanded in place, not
+duplicated; two new high-priority performance workstreams are added separately.
+See [reconciliation evidence](docs/ROADMAP_RECONCILIATION_20261106.md).
 
 ## Current foundation checkpoints
 
@@ -27,12 +34,16 @@ Legend: `[x] done · [~] in progress · [ ] planned`
 - [x] `capabilities --json`, `functions list|describe --json`, concise agent entry.
 - [x] Combined-suite coverage audit; see `docs/TEST_COVERAGE.md` for the actual gap.
 - [x] Separate function evidence/specification/decision/binding schemas and rich
-      discovery; uncertain values remain explicit and separate from runtime defaults.
+      discovery; these function-specific layers are now embedded in canonical
+      locale resources, not separate definition files. Uncertainty remains
+      explicit and separate from runtime defaults.
 - [x] Complete available-evidence analytical extraction for all55 historical specifications,
       full-source reviews and source locators; no historical/narration approval implied.
 - [ ] Unit-only100% lines/branches and CI gates across the documented testable scope.
 - [x] Cross-OS core CI configuration, installed-wheel data discovery and Linux smoke.
 - [ ] Actual macOS/Windows runtime verification and remaining process adapters.
+      PR 27's historical head passed cross-platform Python 3.11/3.12 CI; this
+      does not close native audio-engine, private-asset or remaining adapter work.
 - [x] Event-mapped prerecorded narration alternative to TTS, measured timing and
       original-file provenance; directory import/GUI recording still planned.
 - [x] Idempotent native core setup planner and optional non-root CPU container;
@@ -218,13 +229,15 @@ remains at 58 functions.
       first-class title, description, primary displayed/spoken cues, secondary
       cues, tags, common uses, complementary relationship descriptions,
       narration, and concise changelog fields. Keep stable IDs and
-      locale-independent command IDs in their technical registries.
+      locale-independent command IDs within the same canonical resources;
+      generated technical indexes are read-only views.
 - [x] Remove generated cue-preview comment banners from active function YAML.
       Generate
       master indexes, command lists, and guides from structured localized YAML.
 - [x] Migrate all 58 active en-US filenames to stable-ID-first readable names such as
       `OCF-EMO-003-Empathize.yaml`, with stable-ID lookup and backward-compatible
-      path/ID resolution during migration.
+      stable-ID resolution. Predecessor path readers are retired; immutable
+      audio dependency keys remain provenance only.
 - [x] Preserve approved spoken narration and cues byte-for-byte during
       structural conversion; verify resolved-text hashes and immutable
       provenance before migration.
@@ -237,7 +250,8 @@ remains at 58 functions.
       common-use examples, and separately labeled, evidenced optional companion
       proposals; these do not count as human editorial approval.
 - [x] Remove the 65 unlisted historical-reference stubs from active en-US storage
-      after verified stub-free historical replay through the existing resolver.
+      after canonical-resource equivalence verification. Historical records are
+      recoverable from Git only; no archive reader or replay fallback remains.
 
 ### Audio baselines, voice privacy, and listening review
 
@@ -306,37 +320,133 @@ remains at 58 functions.
       `.ocf-work` locations, migrate only verified unique artifacts, remove only
       proven disposable duplicates, and retain a hash/path cleanup receipt.
 
+### High-priority engineering — measurement before optimization
+
+- [ ] **TODO D — HIGH / P1: automated test performance, including full coverage.**
+  - Scope: baseline full pytest without coverage, instrumented FULL verification,
+    unit and integration tiers, setup/install, collection/import and slowest 50
+    tests/modules. Profile fixture setup, subprocess startup, audio generation,
+    schema/catalog/index loading, temporary I/O and cleanup, coverage subprocess
+    startup/combining/reporting, worker contention and platform process overhead.
+  - Evidence: record exact SHA, test node population, Python/platform/dependencies,
+    worker count, run fingerprint, cache state, wall/CPU time, peak RAM, disk I/O,
+    failures and retained CI job/critical-path timings. Compare repeated equivalent
+    runs; investigate both pytest-xdist distribution and bounded resource limits.
+  - Acceptance: all meaningful tests, integration/failure-path checks and OS gates
+    remain; no blanket skips/xfails, unjustified exclusions, reduced test counts
+    claimed as speedups or weakened checks. Statement floor stays >=89.5% and
+    branch floor >=84.0%; aim to retain/exceed 89.7314% / 84.5798% rather than
+    merely clear floors. A reproducible >=30% wall-time reduction is a target,
+    not permission to compromise correctness or a guaranteed result.
+  - Deliver FAST selected-tier commands without instrumentation and a mandatory
+    FULL all-tests statement/branch/subprocess coverage gate, both optimized.
+    Preserve Python 3.11/3.12 and Linux/macOS/Windows; publish a performance report
+    with equivalent before/after populations, resources, failures and coverage.
+  - Dependencies: audited test taxonomy and current full-suite baseline. Immutable
+    parsed inputs may be reused only with mutation isolation and correct cache
+    invalidation. Never move expensive required checks outside the mandatory gate.
+    Engineering work belongs on its own branch/PR, not PR 27.
+
+- [ ] **TODO E — HIGH / P1: batch and bulk session generation performance.**
+  - Scope: profile bulk/complete-session planning, TTS and speech-cache reuse,
+    Farfield/DSP, composition/mixing, repeated ffmpeg startup, PCM copies,
+    hashing/validation, manifests, encoding/packaging and resource scheduling.
+  - Benchmarks: public synthetic single-session and multi-function cold/warm
+    workloads; partial resume; cache reuse; failure/recovery; worker scaling;
+    all 58 planning identities where feasible. Do not rerender private editions
+    merely to benchmark. Record wall time/session, sessions/hour, stage timings,
+    CPU/GPU utilization, peak RAM/VRAM, temporary disk/I/O, cache hits/misses,
+    failed/retried jobs and integrity results with exact SHA/environment/cache state.
+  - Acceptance: reproducible equivalent before/after cold, warm, partial-resume,
+    recovery and scaling runs demonstrate actual improvement. Deterministic
+    output remains byte-exact where contracted; nondeterministic stages need
+    documented PCM/sample/semantic invariants and measured tolerances. Preserve
+    narration, voices, IDs/order, Focus 10/11, crossfades, loudness, DSP/default
+    locks, manifests/fingerprints, privacy, checkpoints, resumability, job identity,
+    collision protection and atomic publication. No silent mix change.
+  - Deliver profile-backed changes only, lightweight performance smoke tests,
+    an optional benchmark workflow, and a report of remaining bottlenecks and
+    resource-aware concurrency limits. Keep long benchmarks out of ordinary PR
+    checks; retain real integration checks. No private models/recordings published.
+  - Dependencies: verified rendering/cache/reservation contracts, reproducible
+    public fixtures and independent watchdog/recovery. Reuse TODO D's measurement
+    conventions, not its performance claims. Use a separate engineering branch/PR.
+
 ### Planned editorial reviews — approval pending
 
 - [ ] **PLANNED — editorial approval pending: optional short/long relaxation
-      preparation modes.**
+      preparation modes (TODO A / P2).**
   - Scope: review and design short and long preparation variants, including
-    revised wording, pacing, and transitions. Keep the current default unchanged
+    review of current narration, rewritten wording, pacing, holds and transitions.
+    Keep the current default unchanged
     until the revised wording and behavior receive explicit approval.
   - Acceptance criteria: each proposed mode has separately reviewed wording,
     pacing, and transition behavior; the selected mode is explicit; the current
     default and its plan/lock remain unchanged until approval; tests verify that
-    opting into a variant does not silently alter the default.
+    opting into a variant does not silently alter the default. Preserve Focus
+    10/11 entry, validate localized narration and generated session plans, and
+    require explicit human editorial AND listening approval before production
+    adoption. No successor default is approved by this TODO.
+  - Dependencies: composable preparation and locale/timing contracts; distinguish
+    short/long relaxation duration from the older expert-mode stage omission.
+    Proposed order: current-text review → wording proposals → owner review →
+    opt-in configuration/planning tests → timed auditions → listening decision.
 - [ ] **PLANNED — editorial approval pending: OCF-BOD-010 Nutricia mode
-      persistence and activation.**
+      persistence and activation (TODO B / P2).**
   - Scope: review and design whether a last-used mode is remembered or selected
     only at activation, and define the change/reset controls and approved
-    behavior semantics. Do not claim or imply weight-loss efficacy.
+    behavior semantics. Review current modes, activation semantics and narration.
+    Desired convenience: default to the last selected mode without repeatedly
+    selecting or activating the same mode. Separately evaluate persisted mode
+    selection, persisted activation state, automatic behavior or a combination;
+    remembering a choice must not silently activate a function. Do not claim or
+    imply weight-loss efficacy; this supports a weight-management practice.
   - Acceptance criteria: an approved specification distinguishes mode selection,
     persistence, and activation; defines the change and reset behavior; preserves
     existing command/lifecycle semantics unless explicitly approved otherwise;
     and contains no weight-loss efficacy claim. Add behavior tests before any
-    implementation is considered complete.
-- [ ] **PLANNED — editorial approval pending: Focus 11 opener and closer review.**
+    implementation is considered complete. Preserve explicit user control,
+    manual override and reset; review any activation wording and persistence
+    semantic changes before implementation, including restart/default behavior.
+  - Dependencies/order: inspect canonical Nutricia modes/lifecycle → specify
+    distinct selection/activation/automatic options and reset → owner semantic
+    and wording review → persistence implementation and restart/override tests.
+- [ ] **PLANNED — editorial approval pending: Focus 11 opener and closer review
+      (TODO C / P2).**
   - Scope: review and rewrite the opener and closer while preserving the current
-    Focus 11 transitions and timing. Do not edit or replace immutable editions;
+    Focus 10/11 transitions and timing. Inspect `locales/en-US/hplus-focus11-open.yaml`
+    and `locales/en-US/hplus-focus11-close.yaml`; improve wording, clarity, natural
+    delivery and consistency. Do not edit or replace immutable editions;
     leave `audio/scripts/attention.yaml` untouched and do not change the V2.1
     induction curve or level before the V2/V2.1 listening comparison.
   - Acceptance criteria: approved successor wording is versioned separately;
     event order, focus transitions, and measured timing anchors remain intact;
     existing immutable editions and their hashes are unchanged; and validation
     tests cover the transition/timing contract. Listening and release approval
-    remain separate decisions.
+    remain separate decisions. Preserve the count sequence and repeated Ten
+    cues unless separately approved, established exit crossfade and timing
+    contracts; require owner wording approval before production replacement.
+  - Dependencies/order: capture current text/timing/crossfade contracts → propose
+    opening/closing text together → owner wording review → localized/timing
+    validation → separately versioned audition → listening/release decisions.
+
+### Proposed order for the five additions
+
+1. Finish PR 27 authoring-boundary verification and exact-head CI; wait for
+   required independent human review and owner merge authorization.
+2. TODO D: freeze a comparable baseline, profile, implement measured test changes
+   separately, then run equivalent full-suite/coverage/cross-platform verification.
+3. TODO E: establish cold/warm/resume/recovery baselines, then optimize measured
+   rendering bottlenecks separately and prove output equivalence and resource safety.
+4. TODO A and TODO C: prepare human-review wording proposals together where
+   transition contracts overlap, but approve and version each change separately.
+5. TODO B: review persistence semantics independently, then implement only after
+   the owner approves behavior and wording. Editorial review may proceed in
+   parallel with D/E; no pending human approval blocks unrelated safe engineering.
+
+This order prioritizes measurement and safety; it does not defer or remove
+localization, guides, private voice packs, audio profiles, preparation stages,
+supervision, cleanup, UI/mobile work or the proposed function concepts below.
 
 ### Proposed function concepts — editorial backlog only
 
