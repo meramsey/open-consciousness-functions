@@ -1,0 +1,48 @@
+name: Publish integration drafts 20261107
+on:
+  push:
+    branches: [automation/codex-integration-drafts-20261107]
+    paths: [.github/workflows/publish-integration-drafts-20261107.yml]
+permissions:
+  contents: read
+  pull-requests: write
+concurrency:
+  group: ocf-integration-drafts-20261107
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'meramsey/open-consciousness-functions' && github.ref == 'refs/heads/automation/codex-integration-drafts-20261107' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Verify pinned refs and publish draft stack
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const {owner, repo} = context.repo;
+            const plans = [{"title": "Preserve the complete OCF roadmap after PR 27", "body": "Base `main` at `9fe1de6d6ac2cce29b0963b94b5910734f9d403d`\nHead `codex/integrate-roadmap-20261107`\n\n## Scope\n\nMerge current main into the roadmap source and retain all prior roadmap work and check states. Reconcile the inventory with canonical en-US definitions and record the rationale in the roadmap reconciliation guide.\n\nThe open work covers short and long relaxation wording, Nutricia last-mode persistence, Focus 11 opener and closer wording, test execution performance, and bulk session generation performance. Wording and persistence work remain subject to explicit human review. The roadmap leaves performance acceptance open.\n\n## Verification and publication\n\nThe focused Linux documentation tests passed (5). See `roadmap.validation.log` and `status.json` for final-SHA local gates. Existing workflows do not run on a push to this branch. Review the checklist and the three-file diff against main. Draft publication is authorized. Keep this PR in draft while final verification and human review remain outstanding. Coverage and CI results must be checked at the final head before any readiness claim.\n\n\nPublication through GITHUB_TOKEN does not itself trigger downstream pull-request workflows. Existing push CI is separate evidence; no native macOS or Windows pass is claimed here. Local log filenames refer to private verification receipts, not repository files.", "head": "codex/integrate-roadmap-20261107", "head_sha": "f61e4190f26aab01f8f985058e6d591e59573641", "base": "main", "base_sha": "9fe1de6d6ac2cce29b0963b94b5910734f9d403d"}, {"title": "Speed up test execution while preserving coverage", "body": "Base `codex/integrate-roadmap-20261107`\nHead `codex/integrate-test-performance-20261107`\n\n## Scope\n\nMerge current main and the reconciled roadmap into the test-performance source. Reuse validated relationship inputs within one operation and retain tests for refresh behavior and benchmark failures. Keep the historical benchmark evidence with its original measured inputs. Run the existing test, lint, validation, and generated-index workflows on both Codex performance branches with the existing permissions and gates.\n\n## Verification and publication\n\nFocused Linux tests passed (9). See `test-performance.validation.log`, `status.json`, and [exact-head test CI](https://github.com/meramsey/open-consciousness-functions/actions/runs/42387914461) for verification. The full suite must satisfy 89.5% statement and 84% branch coverage without exclusions or reduced scope. Human review and a verified final CI result remain required. Draft publication is authorized. Keep this PR in draft while final verification and human review remain outstanding. Coverage and CI results must be checked at the final head before any readiness claim.\n\n\nPublication through GITHUB_TOKEN does not itself trigger downstream pull-request workflows. Existing push CI is separate evidence; no native macOS or Windows pass is claimed here. Local log filenames refer to private verification receipts, not repository files.", "head": "codex/integrate-test-performance-20261107", "head_sha": "405a1b9bab13f01e8da9fd407d58a7ae433c2568", "base": "codex/integrate-roadmap-20261107", "base_sha": "f61e4190f26aab01f8f985058e6d591e59573641"}, {"title": "Improve bulk session planning and PCM processing", "body": "Base `codex/integrate-test-performance-20261107`\nHead `codex/integrate-bulk-performance-20261107`\n\n## Scope\n\nMerge current main and the reconciled test branch into the bulk source. The source already contains the test-performance tip. Stacking keeps the review diff focused on catalog reuse during complete-session planning, byte-exact PCM processing, and bounded synthetic and planning benchmark workflows. Historical measurements retain their original baselines. The manual workflows are scoped to benchmark reports.\n\n## Verification and publication\n\nFocused Linux tests passed (52), including PCM equivalence and benchmark failure paths. See `bulk-performance.validation.log`, `status.json`, and [exact-head test CI](https://github.com/meramsey/open-consciousness-functions/actions/runs/42387914414) for verification. Human review and a verified final CI result remain required. Draft publication is authorized. Keep this PR in draft while final verification and human review remain outstanding. Coverage and CI results must be checked at the final head before any readiness claim.\n\nIndependent review found three benchmark defects. The corrected head binds receipts to the synthetic bed hash, counts only new successful renders in throughput, and points reproduction examples to the shared workspace. The benchmark regression tests cover reused and failed fixtures, bed changes during mixing, and stale receipt rejection.\n\n\nPublication through GITHUB_TOKEN does not itself trigger downstream pull-request workflows. Existing push CI is separate evidence; no native macOS or Windows pass is claimed here. Local log filenames refer to private verification receipts, not repository files.", "head": "codex/integrate-bulk-performance-20261107", "head_sha": "62ec70871ff9c72f95b516fec16ed0230f4ed8d7", "base": "codex/integrate-test-performance-20261107", "base_sha": "405a1b9bab13f01e8da9fd407d58a7ae433c2568"}];
+            async function verifyRefs() {
+              for (const p of plans) {
+                for (const [ref, expected] of [[p.head,p.head_sha],[p.base,p.base_sha]]) {
+                  const {data} = await github.rest.git.getRef({owner,repo,ref:`heads/${ref}`});
+                  if (data.object.sha !== expected) throw new Error(`Ref moved: ${ref}; stop and reconcile`);
+                }
+              }
+            }
+            await verifyRefs();
+            for (const p of plans) {
+              await verifyRefs();
+              const existing = await github.paginate(github.rest.pulls.list,{owner,repo,state:'all',head:`${owner}:${p.head}`,base:p.base,per_page:100});
+              let pr;
+              if (existing.length) {
+                if (existing.length !== 1 || existing[0].state !== 'open' || !existing[0].draft) throw new Error(`Existing PR requires reconciliation: ${p.head}`);
+                pr=existing[0];
+              } else {
+                ({data:pr}=await github.rest.pulls.create({owner,repo,head:p.head,base:p.base,title:p.title,body:p.body,draft:true}));
+              }
+              if (pr.head.sha !== p.head_sha || pr.base.sha !== p.base_sha || !pr.draft) throw new Error(`PR state differs: ${pr.html_url}; stop and reconcile`);
+              core.info(JSON.stringify({number:pr.number,url:pr.html_url,head:pr.head.ref,head_sha:pr.head.sha,base:pr.base.ref,base_sha:pr.base.sha,draft:pr.draft}));
+              await core.summary.addRaw(`${pr.html_url} | draft | ${pr.head.sha} -> ${pr.base.sha}
+            `).write();
+            }
+            await verifyRefs();
