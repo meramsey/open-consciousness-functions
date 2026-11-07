@@ -83,7 +83,8 @@ def test_tool_scratch_is_independent_of_long_artifact_paths(fixtures, monkeypatc
 
         scratch = Path(bench.os.environ["OCF_WORK_DIR"])
         assert not scratch.is_relative_to(output)
-        assert scratch.parent.name.startswith("ab-")
+        assert (scratch.parent / ".ocf-owned").is_file()
+        assert len(str(scratch)) < len(str(output))
         seen.append(scratch)
         return original(*args, **kwargs)
 
