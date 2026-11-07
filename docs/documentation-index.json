@@ -276,7 +276,7 @@
         "voice"
       ],
       "related_schemas": [],
-      "sha256": "22ce2c269b60458d4a0a049778fe6b55d9cbae9123f81fcc7deb13419efd4d28",
+      "sha256": "95bfe21bba9939f5ee321b1a44da8ef005222e3788a26209c8598fbb4336a49f",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1187,7 +1187,7 @@
       "purpose": "English HPlus function review",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "4d64b73094470512f0920881db8a932c0695203b5b8c206e784612aa5790db55",
+      "sha256": "1cde34796b46420cd5eb9a8d88880d26d41d152a3c81092c1bd0c282f04e63f8",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1231,7 +1231,7 @@
         "voice render"
       ],
       "related_schemas": [],
-      "sha256": "f56a66a9fe648289ded8bf32ebe0be1c1420a39fb86011dc81a19234298a39d3",
+      "sha256": "29720732d0f56db4478a54d5ff3afae186187fa338ff9f87eeeede0cf926b8f9",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1447,7 +1447,7 @@
       "purpose": "Narration migration inventory",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "a13ccc6e96ccdbb99d9e488dbc7bbccb53647a01474a6df9ed79cac30577c5c9",
+      "sha256": "7a0da8c6a1d70856cf2b7d9434bcb6a56d307f74cd3377b201d101a9dede81e5",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1556,6 +1556,24 @@
       "related_commands": [],
       "related_schemas": [],
       "sha256": "7c2a2879ddcf76f9327a64570c1a13f604d4d042342398671d12e32f4d61ad79",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "docs/PR27_FINAL_AUTHORING_REVIEW.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "PR 27 final authoring boundary review",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "fc602c4ea28a65fc68d72dc290f3d180e7ec88163b91248dc17d41fef3a60e88",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -3067,7 +3085,7 @@
         "voice render"
       ],
       "related_schemas": [],
-      "sha256": "0cf041e331a9d1b29de7f4606ac7480db1d771468e76dfcb2eb3f6e7a895ade0",
+      "sha256": "cdd518b035824cfdb3ff39e4cc5534cac956cd9164d7d3d9cd57a72b1f32b796",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -3180,7 +3198,7 @@
         "build-index"
       ],
       "related_schemas": [],
-      "sha256": "6a77424df5a5a38171b9d9147f6ab80bd0afcc4f08a1b372f0ac2650b78856d2",
+      "sha256": "8456af32210b6ddd55ffb8f2dd2769b2a8be2d0d4ae167341a0665225fd9fb2b",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4383,5 +4401,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 203
+  "total": 204
 }
