@@ -93,7 +93,7 @@ anchors remain unchanged. Production validation was not relaxed.
 ## Benchmark failure diagnosis and reproduction
 
 The initial bulk full suite stopped with 2912 passed / 5 skipped / 2 failures:
-the optional planning workflow had an unquoted `: ` in its pip command. Quoting
+the optional planning workflow had an unquoted colon followed by a space in its pip command. Quoting
 the YAML fixed both the security-workflow parser and structural-audit failures;
 neither assertion was weakened. The first optimized audio probe also exposed
 eSpeak-NG's silent empty-output behavior at WAV path lengths >=200 characters
