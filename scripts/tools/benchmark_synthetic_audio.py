@@ -69,7 +69,9 @@ def make_bed(path, seconds):
 def render_fixture(root, identity, config, *, fail=False):
     job = root / f"fixture-{identity:03}"
     job.mkdir(exist_ok=True)
-    key = digest({"identity": identity, **config})
+    bed = root / "bed.wav"
+    bed_hash = sha256_of_file(bed)
+    key = digest({**config, "identity": identity, "bed_sha256": bed_hash})
     inputs = job / "input.json"
     expected = {"key": key}
     if inputs.exists():
@@ -106,13 +108,15 @@ def render_fixture(root, identity, config, *, fail=False):
     started = time.perf_counter()
     audio_build.mix(
         job / "speech.wav",
-        root / "bed.wav",
+        bed,
         job / "master.wav",
         background_gain=0.25,
         speech_gain=1.0,
         speech_gain_windows=[(1.0, 2.0, -3.0)],
     )
     stages["mixing"] = time.perf_counter() - started
+    if sha256_of_file(bed) != bed_hash:
+        raise OCFError("fixture bed changed during mixing")
     started = time.perf_counter()
     audio_build._encode(job / "master.wav", "flac", job / "master.flac")
     stages["encoding"] = time.perf_counter() - started
@@ -184,10 +188,12 @@ def batch(root, config, count, workers, *, fail_id=None):
         with ThreadPoolExecutor(max_workers=workers) as pool:
             rows = list(pool.map(run, range(count)))
     wall = time.perf_counter() - started
+    rendered = sum(row.get("reused") is False for row in rows)
     return {
         "wall_seconds": wall,
         "parent_cpu_seconds": time.process_time() - cpu,
-        "sessions_per_hour": 3600 * count / wall,
+        "rendered_sessions": rendered,
+        "sessions_per_hour": 3600 * rendered / wall,
         "rows": rows,
     }
 

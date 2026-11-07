@@ -106,11 +106,17 @@ from performance statistics. No backend/voice switch or input rewrite hid the
 failure. Long custom production eSpeak workspaces remain a separate limitation.
 
 ```bash
+workspace_root=$(PYTHONPATH=scripts python -c 'from ocf_tools.paths import work_root; print(work_root())')
 PYTHONPATH=scripts python scripts/tools/benchmark_synthetic_audio.py \
-  --output .ocf-work/benchmarks/public-audio --sessions 4 --seconds 20 --workers 1 2
+  --output "$workspace_root/benchmarks/public-audio" --sessions 4 --seconds 20 --workers 1 2
 PYTHONPATH=scripts python scripts/tools/benchmark_synthetic_audio.py \
-  --output .ocf-work/benchmarks/public-profile --sessions 1 --seconds 6 --workers 1 --profile
+  --output "$workspace_root/benchmarks/public-profile" --sessions 1 --seconds 6 --workers 1 --profile
 ```
+
+New reports count only newly rendered fixtures in `sessions_per_hour`. Use phase
+wall time to compare verified resume, and compare historical throughput only
+where every requested fixture completed a fresh render. Resume receipts bind the
+input bed hash as well as the rendered artifact hashes.
 
 Profiling requires one worker so it actually instruments worker CPU; profiled
 times are not mixed into the normal timing pairs. The optional

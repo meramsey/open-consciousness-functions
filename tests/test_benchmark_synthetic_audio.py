@@ -54,12 +54,23 @@ def test_real_pcm_and_atomic_fixture_receipts_cover_warm_resume_recovery_and_wor
         assert all(row["reused"] for row in case["verified_resume"]["rows"])
         assert sum(row["reused"] for row in case["recovery"]["rows"]) == 1
         assert case["injected_interruption"]["rows"][0]["injected_failure"]
+        for phase, rendered in (
+            ("cold", 2),
+            ("warm", 2),
+            ("verified_resume", 0),
+            ("injected_interruption", 1),
+            ("recovery", 1),
+        ):
+            measurement = case[phase]
+            assert measurement["rendered_sessions"] == rendered
+            assert measurement["sessions_per_hour"] == 3600 * rendered / measurement["wall_seconds"]
     # Subsequent invocation keeps the old marked family intact and creates a
     # separate run, never reuses a partially warm run as a new cold measurement.
     again = bench.benchmark(
         fixtures / "audio", sessions=1, seconds=6, worker_counts=[1], source_sha="a" * 40
     )
     assert again["cases"][0]["all_artifacts_byte_exact"]
+    assert again["cases"][0]["injected_interruption"]["sessions_per_hour"] == 0
 
 
 def test_output_boundary_and_unmarked_directory_preserved(fixtures):
@@ -106,6 +117,30 @@ def test_fixture_identity_collision_and_corrupt_resume_fail_closed(fixtures):
     with pytest.raises(OCFError, match="resume integrity"):
         bench.render_fixture(root, 0, config)
     assert target.read_bytes() == b"corrupted"
+
+
+def test_bed_changes_invalidate_receipts_and_prevent_publication(fixtures, monkeypatch):
+    root = fixtures / "fixture"
+    root.mkdir()
+    bed = root / "bed.wav"
+    bench.make_bed(bed, 6)
+    config = {"seconds": 6}
+    bench.render_fixture(root, 0, config)
+    original_mix = bench.audio_build.mix
+
+    def replace_bed():
+        bench.audio_build._write_wav(bed, [200, -200] * 16, 22050, channels=2, overwrite=True)
+
+    def mix_then_replace(*args, **kwargs):
+        original_mix(*args, **kwargs)
+        replace_bed()
+
+    monkeypatch.setattr(bench.audio_build, "mix", mix_then_replace)
+    with pytest.raises(OCFError, match="bed changed during mixing"):
+        bench.render_fixture(root, 1, config)
+    assert not (root / "fixture-001/receipt.json").exists()
+    with pytest.raises(OCFError, match="identity collision"):
+        bench.render_fixture(root, 0, config)
 
 
 def test_lossless_decode_validation_and_unexpected_failure_are_not_hidden(fixtures, monkeypatch):
