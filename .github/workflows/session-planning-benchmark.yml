@@ -1,0 +1,47 @@
+name: session-planning-benchmark
+
+on:
+  workflow_dispatch:
+    inputs:
+      all_functions:
+        description: Plan all 58 public canonical functions (no audio)
+        type: boolean
+        default: false
+      iterations:
+        description: Repetitions (1 to 10)
+        type: string
+        default: "1"
+
+permissions:
+  contents: read
+
+jobs:
+  public-planning:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Bootstrap patched pip
+        run: "python -m pip install --only-binary=:all: --upgrade pip==26.2.0"
+      - name: Install core only
+        run: python -m pip install -e .
+      - name: Measure public planning and resource use
+        env:
+          ALL_FUNCTIONS: ${{ inputs.all_functions }}
+          ITERATIONS: ${{ inputs.iterations }}
+        run: |
+          mkdir -p .ocf-work/planning-benchmark
+          args=(--iterations "$ITERATIONS")
+          if [[ "$ALL_FUNCTIONS" == "true" ]]; then args+=(--all); fi
+          /usr/bin/time -v -o .ocf-work/planning-benchmark/resources.txt \
+            python scripts/tools/benchmark_session_planning.py "${args[@]}" \
+            > .ocf-work/planning-benchmark/results.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-session-planning-benchmark
+          include-hidden-files: true
+          path: .ocf-work/planning-benchmark/
