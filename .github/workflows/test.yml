@@ -159,7 +159,7 @@ jobs:
     runs-on: ubuntu-latest
     # The full instrumented suite exceeded the previous limit. Allow full-suite
     # coverage plus report/upload headroom without filtering tests or coverage.
-    timeout-minutes: 120
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
         with:

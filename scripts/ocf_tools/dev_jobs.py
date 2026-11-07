@@ -41,6 +41,17 @@ def save(path: Path, data: dict):
     write_text_atomic(path, json.dumps(data, ensure_ascii=False, sort_keys=True, indent=2) + "\n")
 
 
+def _read_state(path: Path) -> dict:
+    """Retry only transient Windows sharing denials while reading job state."""
+    for attempt in range(8):
+        try:
+            return json.loads(path.read_text(encoding="utf-8"))
+        except PermissionError as error:
+            if getattr(error, "winerror", None) not in {5, 32, 33} or attempt == 7:
+                raise
+            time.sleep(min(0.01 * 2**attempt, 0.25))
+
+
 @contextmanager
 def lock(name: str, *, wait: bool = False, timeout: float = 10.0):
     if (
@@ -228,7 +239,7 @@ def validate_request(operation: str, arguments: dict) -> dict:
 
 def status(job_id: str) -> dict:
     root = directory(job_id)
-    state = json.loads((root / "state.json").read_text(encoding="utf-8"))
+    state = _read_state(root / "state.json")
     if state["state"] not in TERMINAL and time.time() - state.get("heartbeat", 0) > 30:
         state = {
             **state,
