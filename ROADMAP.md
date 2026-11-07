@@ -306,6 +306,38 @@ remains at 58 functions.
       `.ocf-work` locations, migrate only verified unique artifacts, remove only
       proven disposable duplicates, and retain a hash/path cleanup receipt.
 
+### Planned editorial reviews — approval pending
+
+- [ ] **PLANNED — editorial approval pending: optional short/long relaxation
+      preparation modes.**
+  - Scope: review and design short and long preparation variants, including
+    revised wording, pacing, and transitions. Keep the current default unchanged
+    until the revised wording and behavior receive explicit approval.
+  - Acceptance criteria: each proposed mode has separately reviewed wording,
+    pacing, and transition behavior; the selected mode is explicit; the current
+    default and its plan/lock remain unchanged until approval; tests verify that
+    opting into a variant does not silently alter the default.
+- [ ] **PLANNED — editorial approval pending: OCF-BOD-010 Nutricia mode
+      persistence and activation.**
+  - Scope: review and design whether a last-used mode is remembered or selected
+    only at activation, and define the change/reset controls and approved
+    behavior semantics. Do not claim or imply weight-loss efficacy.
+  - Acceptance criteria: an approved specification distinguishes mode selection,
+    persistence, and activation; defines the change and reset behavior; preserves
+    existing command/lifecycle semantics unless explicitly approved otherwise;
+    and contains no weight-loss efficacy claim. Add behavior tests before any
+    implementation is considered complete.
+- [ ] **PLANNED — editorial approval pending: Focus 11 opener and closer review.**
+  - Scope: review and rewrite the opener and closer while preserving the current
+    Focus 11 transitions and timing. Do not edit or replace immutable editions;
+    leave `audio/scripts/attention.yaml` untouched and do not change the V2.1
+    induction curve or level before the V2/V2.1 listening comparison.
+  - Acceptance criteria: approved successor wording is versioned separately;
+    event order, focus transitions, and measured timing anchors remain intact;
+    existing immutable editions and their hashes are unchanged; and validation
+    tests cover the transition/timing contract. Listening and release approval
+    remain separate decisions.
+
 ### Proposed function concepts — editorial backlog only
 
 - [ ] `PLUS LUCKY`: positive intention, favorable opportunities, and recognition
