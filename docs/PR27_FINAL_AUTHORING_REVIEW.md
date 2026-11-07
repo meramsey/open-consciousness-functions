@@ -20,6 +20,10 @@ It is not owner approval or a claim that later CI has passed.
 - Editorial skeletons use embedded canonical evidence/specifications only.
   The synthetic-only predecessor-layer reader is removed, and synthetic tests
   supply the same canonical-shaped records as application callers.
+- The research extraction driver also emits nested, non-authoritative local JSON
+  proposals, never installable per-function layer YAML. It preserves all-input
+  preflight, create-once publication and customized-data protection. Research
+  roots and reusable private prompts reject editorial writes as well.
 - Negative filename/directory inventories are replaced with a tracked-tree
   structural audit. Two pinned dummy schema/projection examples are explicit
   non-runtime exceptions; real canonical identities cannot use that exception.
@@ -38,6 +42,13 @@ Focused boundary/importer/editorial/catalog tests passed locally on Linux with
 Python 3.12.3 (141 tests); additional workflow/tool contracts passed (49 tests,
 overlapping the first selection). `make lint` passed; optional markdownlint was
 not installed. These are focused checks, not a full-suite or coverage result.
+The exhaustive follow-up also passed 144 editorial/importer/authority tests and
+9 selected extraction-driver tests (12 other content tests deliberately not in
+that focused selection). A broader foreground content-test attempt exceeded its
+timeout and is not a full-module pass. All 381 tracked YAML/JSON files passed the
+structural audit; remaining explicit historical path keys in source tests verify
+immutable audio provenance only. All 15 locks and 825 historical dependency keys
+remain unchanged, as do every locale resource and generated session declaration.
 The first foreground `make check` attempt exceeded its execution timeout and
 is not a pass. Final full-suite, coverage and exact-head cross-platform CI must
 be recorded before treating this follow-up as verified for PR 27.

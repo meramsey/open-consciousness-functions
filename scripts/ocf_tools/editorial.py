@@ -21,6 +21,8 @@ from .validators import _load_schema, validate_against_schema
 REVIEWED = {"reviewed_unchanged", "reviewed_modified"}
 RIGHTS = {"verified_redistributable", "user_cleared"}
 RUNTIME_ROOTS = (
+    "references",
+    "ReusablePrompts",
     "brand",
     "schemas",
     "function-content",
@@ -66,7 +68,7 @@ def require_local_output(path: Path) -> None:
         for name in RUNTIME_ROOTS
     ):
         raise OCFError(
-            "editorial workspace/output cannot be inside packaged runtime resource roots"
+            "editorial workspace/output cannot be inside packaged runtime resource roots or protected research roots"
         )
 
 
@@ -77,6 +79,7 @@ def validate(data: dict, kind: str) -> None:
 
 
 def save(path: Path, data: dict, *, overwrite: bool = True) -> None:
+    require_local_output(path)
     write_text_atomic(path, yaml_safe_dump(data), overwrite=overwrite)
 
 
@@ -313,6 +316,7 @@ def skeletonize(source_root: Path, workspace: Path, records: list, content_root:
 
 
 def load_function(workspace: Path, function_id: str) -> dict:
+    require_local_output(workspace)
     if not re.fullmatch(r"OCF-[A-Z]{3}-[0-9]{3}", function_id):
         raise OCFError("invalid function ID")
     doc = load_yaml_file(checked_path(workspace, f"functions/{function_id}.yaml"))
