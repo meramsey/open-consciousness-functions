@@ -3,7 +3,7 @@ name: test
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, perf/test-execution-20261106, perf/bulk-generation-20261106]
 
 permissions:
   contents: read
