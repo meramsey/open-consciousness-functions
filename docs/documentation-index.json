@@ -3029,6 +3029,26 @@
       "missing_information": [
         "per-document semantic review not recorded"
       ],
+      "path": "docs/releases/OCF_VERIFIED_ENGINEERING_2026-11-07.md",
+      "proposed_correction": "retain historical claims; consult current workflow guides",
+      "purpose": "Verified engineering handoff — 2026-11-07",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "cddc84497f1e6e25faae2763ab1cf56af8c3da756780e87c0c31fc97c5e0856e",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "maintainers/research reviewers",
+      "broken_references": [],
+      "canonical_source": "historical checkpoint (not current implementation)",
+      "duplicate_or_contradictory_information": [],
+      "historical": true,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [
+        "per-document semantic review not recorded"
+      ],
       "path": "docs/research/FOCUS_STATE_EVIDENCE_AUDIT.md",
       "proposed_correction": "retain historical claims; consult current workflow guides",
       "purpose": "Focus Ten evidence gate and Focus Eleven variant provenance",
@@ -4457,5 +4477,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 207
+  "total": 208
 }

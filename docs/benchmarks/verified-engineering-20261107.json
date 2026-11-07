@@ -1,0 +1,210 @@
+{
+  "scope": "documentation-only acceptance receipt; tested engineering heads remain unchanged",
+  "ci": {
+    "export_url": "https://github.com/meramsey/open-consciousness-functions/actions/runs/42383823720/job/128436867212",
+    "heads": [
+      {
+        "head_sha": "c1093b752ee14e17a380b0b17869d7d0089ea5d2",
+        "tested_sha": "c1093b752ee14e17a380b0b17869d7d0089ea5d2",
+        "same_source_tree_verified": true,
+        "counts": {
+          "tests": 2975,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5,
+          "passed": 2970
+        },
+        "coverage": {
+          "covered_lines": 21672,
+          "num_statements": 24085,
+          "missing_lines": 2413,
+          "excluded_lines": 0,
+          "covered_branches": 8292,
+          "num_branches": 9790,
+          "missing_branches": 1498,
+          "statement_percent": 89.98131617189122,
+          "branch_percent": 84.69867211440246
+        },
+        "python": "3.12.16",
+        "platform": "linux",
+        "workers": 2,
+        "full_pytest_seconds": 2530.774415232,
+        "coverage_url": "https://github.com/meramsey/open-consciousness-functions/actions/runs/42379605309/job/128424235038"
+      },
+      {
+        "head_sha": "f9408ec2d3393dec7ea3e1c6e67cbc34f624a622",
+        "tested_sha": "f9408ec2d3393dec7ea3e1c6e67cbc34f624a622",
+        "same_source_tree_verified": true,
+        "counts": {
+          "tests": 2925,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5,
+          "passed": 2920
+        },
+        "coverage": {
+          "covered_lines": 21432,
+          "num_statements": 23868,
+          "missing_lines": 2436,
+          "excluded_lines": 0,
+          "covered_branches": 8235,
+          "num_branches": 9732,
+          "missing_branches": 1497,
+          "statement_percent": 89.7938662644545,
+          "branch_percent": 84.61775585696671
+        },
+        "python": "3.12.16",
+        "platform": "linux",
+        "workers": 2,
+        "full_pytest_seconds": 2486.113488981,
+        "coverage_url": "https://github.com/meramsey/open-consciousness-functions/actions/runs/42371518857/job/128400461315"
+      },
+      {
+        "head_sha": "e65634eadb3567566568931ae00f293f2300812f",
+        "tested_sha": "124d9c730469ea9e30d3d780c94e7f4485c42183",
+        "same_source_tree_verified": true,
+        "counts": {
+          "tests": 2916,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5,
+          "passed": 2911
+        },
+        "coverage": {
+          "covered_lines": 21383,
+          "num_statements": 23825,
+          "missing_lines": 2442,
+          "excluded_lines": 0,
+          "covered_branches": 8223,
+          "num_branches": 9722,
+          "missing_branches": 1499,
+          "statement_percent": 89.75026232948584,
+          "branch_percent": 84.58136185969965
+        },
+        "python": "3.12.16",
+        "platform": "linux",
+        "workers": 2,
+        "full_pytest_seconds": 6170.506058998,
+        "coverage_url": "https://github.com/meramsey/open-consciousness-functions/actions/runs/42370863148/job/128398512694"
+      }
+    ]
+  },
+  "local_full_suite_comparison": {
+    "baseline_sha": "c8ea153ef18e0d349bdb687f7ad445edc0bdbe01",
+    "optimized_sha": "9690b686340aab4898ed6a2f7a955cbc29c37901",
+    "baseline_population": 2905,
+    "optimized_population": 2913,
+    "removed_identities": [],
+    "added_identities": 8,
+    "baseline_counts": {
+      "tests": 2905,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5,
+      "passed": 2900
+    },
+    "optimized_counts": {
+      "tests": 2913,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5,
+      "passed": 2908
+    },
+    "baseline_coverage": {
+      "covered_lines": 21393,
+      "num_statements": 23820,
+      "missing_lines": 2427,
+      "excluded_lines": 0,
+      "covered_branches": 8230,
+      "num_branches": 9722,
+      "missing_branches": 1492,
+      "statement_percent": 89.81108312342569,
+      "branch_percent": 84.65336350545155
+    },
+    "optimized_coverage": {
+      "covered_lines": 21437,
+      "num_statements": 23863,
+      "missing_lines": 2426,
+      "excluded_lines": 0,
+      "covered_branches": 8241,
+      "num_branches": 9732,
+      "missing_branches": 1491,
+      "statement_percent": 89.83363365880233,
+      "branch_percent": 84.67940813810111
+    },
+    "coverage_percentage_changes": {
+      "statement_percent": 0.02255053537663798,
+      "branch_percent": 0.026044632649558253
+    },
+    "instrumented_pytest_wall_baseline": 6948.666220795014,
+    "instrumented_pytest_wall_optimized": 2797.651691003004,
+    "instrumented_pytest_reduction_percent": 59.73829218288573,
+    "total_coverage_wall_baseline": 6956.585252118995,
+    "total_coverage_wall_optimized": 2805.4807048590155,
+    "total_coverage_reduction_percent": 59.671583065779885,
+    "cross_platform_result": "not established by local measurements"
+  },
+  "observed_hosted_ci_timing": {
+    "baseline": {
+      "source_sha": "e65634eadb3567566568931ae00f293f2300812f",
+      "common_successful_checks": 22,
+      "observed_check_span_seconds": 6233.0,
+      "coverage_job_seconds": 6232.0,
+      "coverage_url": "https://github.com/meramsey/open-consciousness-functions/actions/runs/42370863148/job/128398512694"
+    },
+    "optimized": {
+      "source_sha": "f9408ec2d3393dec7ea3e1c6e67cbc34f624a622",
+      "common_successful_checks": 22,
+      "observed_check_span_seconds": 2560.0,
+      "coverage_job_seconds": 2559.0,
+      "coverage_url": "https://github.com/meramsey/open-consciousness-functions/actions/runs/42371518857/job/128400461315"
+    },
+    "scope": "Observed hosted CI check spans; separate hosted runners/queue/install effects, not controlled local benchmark",
+    "coverage_job_reduction_percent": 58.9377406931964,
+    "check_span_reduction_percent": 58.92828493502327
+  },
+  "single_session_audio": {
+    "baseline_sha": "83094a3c6f781a87a315d1b6185f136c9df69e4c",
+    "optimized_sha": "c1093b752ee14e17a380b0b17869d7d0089ea5d2",
+    "sessions_per_batch": 1,
+    "independent_pairs": 3,
+    "all_artifacts_byte_exact": true,
+    "phases": {
+      "cold": {
+        "baseline_median_seconds": 2.4327995538478717,
+        "optimized_median_seconds": 1.4051675961818546,
+        "reduction_percent": 42.24071629907399
+      },
+      "warm": {
+        "baseline_median_seconds": 1.8287719020154327,
+        "optimized_median_seconds": 0.8045197990722954,
+        "reduction_percent": 56.00764654215984
+      },
+      "verified_resume": {
+        "baseline_median_seconds": 0.002127682091668248,
+        "optimized_median_seconds": 0.0021129919914528728,
+        "reduction_percent": 0.6904274032713875
+      },
+      "recovery": {
+        "baseline_median_seconds": 1.7806103710317984,
+        "optimized_median_seconds": 0.7747850309824571,
+        "reduction_percent": 56.48767166657029
+      }
+    }
+  },
+  "release_stage_integration_probe": {
+    "baseline_sha": "c8ea153ef18e0d349bdb687f7ad445edc0bdbe01",
+    "optimized_sha": "c1093b752ee14e17a380b0b17869d7d0089ea5d2",
+    "scope": "existing identical release integration module; upstream render supplied by existing public-tone fixture, real codecs/artwork/readback/manifests/publication checks",
+    "same_test_identities": 31,
+    "passed_each": 31,
+    "skipped_each": 0,
+    "baseline_pytest_seconds": 38.33,
+    "optimized_pytest_seconds": 20.38,
+    "integration_probe_reduction_percent": 46.83015914427342,
+    "not_a_full_production_release_throughput_claim": true
+  },
+  "batch_audio_and_all58_evidence": "bulk-generation-20261107.json",
+  "roadmap_pr_creation": "blocked by repository Actions PR-creation policy; one attempt; no settings changed",
+  "human_review_or_merge_authorization_inferred": false
+}
