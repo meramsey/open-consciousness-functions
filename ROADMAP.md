@@ -237,7 +237,8 @@ remains at 58 functions.
       common-use examples, and separately labeled, evidenced optional companion
       proposals; these do not count as human editorial approval.
 - [x] Remove the 65 unlisted historical-reference stubs from active en-US storage
-      after verified stub-free historical replay through the existing resolver.
+      after canonical-resource equivalence verification. Historical records are
+      recoverable from Git only; no archive reader or replay fallback remains.
 
 ### Audio baselines, voice privacy, and listening review
 

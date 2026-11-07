@@ -8,7 +8,7 @@ from ocf_tools.paths import REPO_ROOT
 pytestmark = pytest.mark.integration
 
 
-def test_exactly_one_canonical_resource_per_function_without_historical_trees():
+def test_exactly_one_canonical_resource_per_function_in_tracked_tree():
     catalog = LocaleCatalog()
     assert not catalog.problems
     pack = catalog.require("en-US")
@@ -21,15 +21,8 @@ def test_exactly_one_canonical_resource_per_function_without_historical_trees():
         (REPO_ROOT / "locales/en-US" / name).is_file()
         for name in pack.localized_function_files.values()
     )
-    assert not (REPO_ROOT / "functions").exists()
-    for directory in (
-        "function-content/editorial/historical-functions",
-        "function-content/editorial/historical-locales",
-        "function-content/bindings",
-        "function-content/specifications",
-        "function-content/decisions",
-        "function-content/evidence",
-    ):
-        assert not (REPO_ROOT / directory).exists()
+    from tools.audit_function_authority import audit
+
+    assert audit()["problems"] == []
     assert all(isinstance(data.get("record_metadata"), dict) for _, data in rows)
     assert all(data.get("record_metadata") and "content" in data for _, data in rows)

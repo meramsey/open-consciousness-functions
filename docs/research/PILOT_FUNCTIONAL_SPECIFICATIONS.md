@@ -3,7 +3,8 @@
 **DRAFT / PILOT / REQUIRES HUMAN CONTENT REVIEW**. No mass conversion.
 These are brief ordinary-waking learning/rehearsal prototypes, not full
 Preparation/Focus Eleven installations. The session templates are independent
-semantic implementations; English resources are in `locales/en-US/functions.yaml`.
+semantic implementations; current English definitions and wording are in the
+manifest-listed `locales/en-US/OCF-*.yaml` resources.
 Canonical function records, commands, historical availability and all16 planned
 legacy-source-unavailable reimplementations are preserved.
 
