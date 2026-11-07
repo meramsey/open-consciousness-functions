@@ -29,6 +29,9 @@ It is not owner approval or a claim that later CI has passed.
   non-runtime exceptions; real canonical identities cannot use that exception.
   Generated guide paths are not function sources. Immutable dependency hash
   keys remain provenance, not executable source locations.
+- The design specification now distinguishes the complete locale schema from
+  the compatibility-shaped Python record schema and dummy template. Neither
+  that template nor generated legacy maps is a current authoring authority.
 
 ## Verification and owner review
 

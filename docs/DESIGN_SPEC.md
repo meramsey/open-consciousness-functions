@@ -40,8 +40,34 @@ across renames.
 
 ## 3. Canonical format
 
-Function records are YAML conforming to `schemas/function.schema.json` and
-following `templates/function.yaml`. Key blocks:
+Each manifest-listed `locales/<tag>/OCF-*.yaml` resource is the sole complete
+function definition for its identity and locale. Current complete resources use
+`schema_version: "2.0"`, `domain: function` and
+`schemas/localized-function.schema.json`. See
+[per-locale function authority](PER_LOCALE_FUNCTION_AUTHORITY.md).
+
+| Canonical resource block | Meaning |
+| --- | --- |
+| `function_id`, `locale`, `slug` | Stable identity, locale and local lookup |
+| `title`, `description` | Literal localized name and purpose |
+| `activation`, `secondary_commands` | Stable command IDs, localized display/spoken cues, controls and ordered instructions |
+| `classification`, `lifecycle`, `safety`, `audio` | Function behavior and configuration, distinct from narration and approval |
+| `narration`, `entries` | Narration sequence/repetition plus its localized words |
+| `content` | Embedded function-specific evidence, specification, decisions and binding |
+| `record_metadata` | Historical identity/provenance and read-only projection inputs, not a second definition |
+
+The `schemas/function.schema.json` contract and `templates/function.yaml` dummy
+example describe the compatibility-shaped Python record used by library callers
+and tests. They are **not** the current on-disk function-authoring format.
+`ocf new function` validates and installs a canonical locale resource; it must
+never install the compatibility record or a separate narration sidecar.
+Offline editorial tools create isolated non-authoritative proposals only;
+promotion of approved wording requires a separately reviewed canonical edit.
+
+### Compatibility projection vocabulary
+
+The following fields are read-only projections from the owning locale resource,
+not instructions to recreate a separate function file:
 
 | Block           | Meaning                                                   |
 | --------------- | --------------------------------------------------------- |
