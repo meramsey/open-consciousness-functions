@@ -1,0 +1,63 @@
+name: publish-review-packet
+
+on:
+  push:
+    branches: [automation/open-roadmap-pr-20261107]
+
+permissions:
+  contents: read
+  checks: read
+  pull-requests: write
+
+jobs:
+  comment-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const {owner, repo} = context.repo;
+            if (owner !== 'meramsey' || repo !== 'open-consciousness-functions') {
+              throw new Error('Unexpected repository');
+            }
+            const sha = 'e65634eadb3567566568931ae00f293f2300812f';
+            const pull = (await github.rest.pulls.get({owner, repo, pull_number: 27})).data;
+            if (pull.head.sha !== sha || pull.state !== 'open' || pull.merged) {
+              throw new Error('PR head/state changed; refusing a stale review packet');
+            }
+            const required = ['coverage', 'validate', 'freshness', 'python', 'markdown', 'internal-links', 'dependency-review', 'container-workspace'];
+            for (const os of ['ubuntu-latest', 'macos-latest', 'windows-latest']) {
+              required.push(`integration (${os})`, `agent-tools (${os})`, `python-lsp (${os})`);
+              for (const python of ['3.11', '3.12']) required.push(`unit (${python}, ${os})`);
+            }
+            const rows = (await github.rest.checks.listForRef({owner, repo, ref: sha, per_page: 100})).data.check_runs;
+            const latest = new Map();
+            for (const row of rows) if (!latest.has(row.name)) latest.set(row.name, row);
+            if (!required.every(name => latest.get(name)?.conclusion === 'success')) {
+              throw new Error('Not every required exact-head check passed');
+            }
+            const marker = '<!-- ocf-verified-review-e65634e -->';
+            const comments = await github.paginate(github.rest.issues.listComments, {owner, repo, issue_number: 27, per_page: 100});
+            if (comments.some(comment => comment.body?.includes(marker))) {
+              core.notice('Verified review packet already present');
+              return;
+            }
+            const result = await github.rest.issues.createComment({owner, repo, issue_number: 27, body: [
+              marker,
+              '## Exact-head technical verification — human approval still required',
+              '',
+              `Verified head: ${sha}. All 23 required checks pass, including Windows integration, full coverage, Python 3.11/3.12 OS matrix, lint, validation, generated indexes and dependency review.`,
+              'Checks: https://github.com/meramsey/open-consciousness-functions/actions/runs/42370863148',
+              '',
+              'The Windows correction handles CRT EACCES without winerror using the existing bounded 0.81-second backoff budget. Permanent errors propagate; unreadable existing jobs fail closed rather than allowing duplicate dispatch. Existing cancellation/process-tree assertions are unchanged; 26 focused tests passed locally before push.',
+              '',
+              'Single-source audit: 58 canonical en-US definitions, 177 protected narration entries verified, all 15 immutable locks and 825 historical dependency keys unchanged. No private audio editions were rerendered, and no narration wording, default mix or authoring authority was promoted.',
+              '',
+              'Independent follow-ups remain outside this PR: the test-performance branch retains every baseline test identity and measures 58.34% faster full pytest / 59.67% faster full coverage with increased local coverage; its exact-head native CI passes. Public synthetic audio benchmarks show byte-exact outputs with 51–59% faster cold/warm batches, and all 58 plans match with 67.46% faster planning. These are bounded public fixtures, not a claim about private production-session throughput.',
+              '',
+              'The complete roadmap preserves all 102 previous checkbox states and all five additions; the synchronized documentation branch is published. Its separate PR creation was denied by repository Actions policy, and no policy setting was changed.',
+              '',
+              '**This comment is not a GitHub review, listening/editorial approval, publication permission or merge authorization. Required owner/human review remains outstanding. No merge has been performed.**'
+            ].join('\n')});
+            core.notice(`Published verified review packet: ${result.data.html_url}`);

@@ -1,8 +1,9 @@
 name: open-roadmap-pr
 
 on:
-  push:
-    branches: [automation/open-roadmap-pr-20261107]
+  # The single automatic attempt was denied by repository policy. No repeated
+  # attempts or settings changes; an owner may dispatch this after access changes.
+  workflow_dispatch:
 
 permissions:
   contents: read
