@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-EXP-006
@@ -48,14 +48,62 @@ activation:
     text: Bring one question or situation into awareness; think or say Plus Intuition in the mind; allow
       a quiet moment; consider and choose a response.
     status: reviewed
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    procedure:
+      status: documented
+      override_steps:
+      - id: select-question-or-situation
+        operation: select-question
+        localization_key: functions.ocf-exp-006.procedure.select-question-or-situation
+      - id: think-or-say-in-mind
+        operation: think-or-say-command
+        localization_key: functions.ocf-exp-006.procedure.think-or-say-in-mind
+      - id: allow-quiet-moment
+        operation: other
+        localization_key: functions.ocf-exp-006.procedure.allow-quiet-moment
+      - id: consider-and-choose-response
+        operation: other
+        localization_key: functions.ocf-exp-006.procedure.consider-and-choose-response
+  procedure_steps:
+  - id: select-question-or-situation
+    operation: select-question
+    instruction:
+      text: Bring one question or situation into awareness.
+      status: reviewed
+      version: 0.0.1
+  - id: think-or-say-in-mind
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the selected command in the mind.
+      status: reviewed
+      version: 0.0.1
+  - id: allow-quiet-moment
+    operation: other
+    instruction:
+      text: Allow a quiet moment to notice what arises.
+      status: reviewed
+      version: 0.0.1
+  - id: consider-and-choose-response
+    operation: other
+    instruction:
+      text: Consider its meaning and choose a response with care and discernment.
+      status: reviewed
+      version: 0.0.1
 secondary_commands: []
 tags:
 - text: inner-awareness
   status: draft
+  semantic_id: inner-awareness
 - text: reflection
   status: draft
+  semantic_id: reflection
 - text: discernment
   status: draft
+  semantic_id: discernment
 common_uses:
 - text: Considering a question with openness to quiet impressions.
   status: draft
@@ -73,6 +121,7 @@ entries:
     version: 1.0.0
     text: This OCF exercise will strengthen your intuitive awareness, bringing the wisdom of your heart,
       subconscious mind, and higher self into clear understanding and purposeful action.
+    notes: Exact previously proposed opener supplied in the authoring brief; unreviewed.
   hplus.function.ocf-exp-006.function-body:
     status: reviewed
     version: 1.0.0
@@ -80,50 +129,90 @@ entries:
       function_id: OCF-EXP-006
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, your intuitive awareness develops
+    text: 'From this moment forward, your intuitive awareness develops
+
       as a calm and beneficial part of your everyday life.
+
       Your conscious mind, subconscious mind, physical being,
+
       and higher self cooperate in deeper understanding.
 
+
       Center your attention in your heart.
+
       Welcome an attitude of kindness, openness, and discernment.
+
       You may recognize guidance as a feeling, an image,
+
       a quiet understanding, or a connection that becomes clear over time.
+
       Your own way of experiencing awareness is welcome.
 
+
       Whenever you wish to understand something more deeply,
+
       bring one question or situation into your awareness.
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Allow a quiet moment to notice what arises,
+
       then consider what it means and choose your response.
 
+
       Your total self works together around your intention.
+
       The wisdom of your heart, subconscious mind, and higher self
+
       becomes available to your conscious understanding.
+
       Remain open to the wider consciousness you recognize,
+
       grounded in your present experience and free to discern.
 
+
       An impression is an invitation to explore.
+
       You can welcome it, reflect upon it, or let it pass.
+
       Compare what you sense with what you can observe and learn.
+
       Give important decisions the time, evidence, and care they deserve.
+
       Clear understanding includes recognizing when you do not yet know.
 
+
       Your intuition supports constructive, purposeful action.
+
       Choose responses that respect your well-being
+
       and the freedom and well-being of others.
+
       When greater clarity is needed, allow understanding to develop
+
       through reflection, experience, and thoughtful conversation.
 
+
       This beneficial development continues without constant effort.
+
       Your attention remains available for the life before you.
+
       Intuitive impressions can come gently and leave freely;
+
       you decide which deserve your attention and how to respond.
 
+
       The more you practice with openness and discernment,
+
       the more naturally your total self contributes
-      to clear understanding and purposeful action.
+
+      to clear understanding and purposeful action.'
+    notes: Newly AI-authored original candidate. Ongoing intuitive development is the intended baseline;
+      deliberate command use reinforces deeper understanding. The proposed procedure has no prescribed
+      breath pattern or eye closure. Consciousness-oriented language describes the practice, not verified
+      access to external facts or another person's private thoughts. Editorial, procedure, rights and
+      listening review remain pending. One body is proposed for four composed passes; shared preparation
+      and return remain separate.
   hplus.function.ocf-exp-006.closer:
     status: reviewed
     version: 1.0.0
@@ -131,11 +220,129 @@ entries:
       function_id: OCF-EXP-006
       allowed:
       - cue.primary
-    text: |-
-      Remember, for deeper intuitive understanding,
+    text: 'Remember, for deeper intuitive understanding,
+
       bring one question or situation into your awareness.
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Allow a quiet moment, consider what arises,
+
       and choose your response with care and discernment.
 
-      This concludes your OCF exercise.
+
+      This concludes your OCF exercise.'
+    notes: Newly AI-authored closer and procedure reminder; unreviewed proposal.
+slug: intuition
+classification:
+  primary_domain: experimental
+  secondary_domains: []
+category_labels:
+  experimental:
+    text: experimental
+    status: canonical
+lifecycle:
+  persistence: permanent
+  activation: automatic
+  release:
+    required: false
+    command: null
+  trigger_conditions:
+  - Ongoing beneficial intuitive development is the intended baseline.
+  - Deliberate command use reinforces deeper understanding without compulsory impressions.
+audio:
+  script_status: approved
+  implementation_status: not-started
+  background_audio:
+    strategy: optional
+    engine: farfield
+    preset: null
+safety:
+  level: experimental
+  notes:
+  - No access to private thoughts or guaranteed external knowledge is claimed.
+function_version:
+  current: 0.1.0
+  created: '2026-10-19'
+  updated: '2026-10-19'
+narration:
+  sequence:
+  - key: hplus.function.ocf-exp-006.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-exp-006.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-exp-006.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: e387e2f28f729030a58d34a33736bd4765cc99c258b78d83673a65bdd312cda1
+record_metadata:
+  legacy:
+    source_system: null
+    name: ''
+    commands: []
+    command_status: proposed
+    source_availability: pending-source-review
+  aliases:
+    names: []
+    commands: []
+  compatibility:
+    state: none
+  status:
+    maturity: community-proposed
+    implementation: script-approved
+    evidence: unverified
+  sources: []
+  claims:
+    intended_effects:
+    - Ongoing intuitive development and deliberate deeper understanding.
+    prohibited_claims:
+    - Intuitive impressions are not proof of external facts.
+  attribution:
+    original_authors: []
+    ocf_contributors: []
+  ocf:
+    reimplementation_status: in-progress
+    command_review: approved
+  documentation:
+    title_key: functions.ocf-exp-006.title
+    purpose_key: functions.ocf-exp-006.purpose
+    short_description_key: functions.ocf-exp-006.purpose
+  commands:
+  - id: OCF-CMD-EXP-006-PRIMARY
+    localization:
+      spoken_cue_key: commands.ocf-cmd-exp-006-primary.spoken-cue
+      label_key: commands.ocf-cmd-exp-006-primary.label
+      usage_key: commands.ocf-cmd-exp-006-primary.usage
+      explanation_key: commands.ocf-cmd-exp-006-primary.explanation
+  editorial_approval:
+    approval_id: OCF-APPROVED-CANDIDATES-001
+    decision: approve_full_draft
+    user_response: '1'
+    implementation_confirmation: Confirm implementation
+    scope: Exact presented narration, cues and procedures for all four candidates; Intuition registration;
+      no DSP, pacing, listening or release approval.
+    presented_snapshot_sha256: 7f5d38d589943fbac4ca6fe7212ee25ab27d4416ec5141455bab386f0a3cc147
+    resolved_text_sha256:
+      hplus.function.ocf-exp-006.closer: 1e1dbf210da5cadcd7e0da1f77a386a257045354e2d3f6c5b77f34febc2edb31
+      hplus.function.ocf-exp-006.function-body: 4639860bd9f4177b4346656b2d29d596f19157875fdd66178714ee60e26db74b
+      hplus.function.ocf-exp-006.opener: fa53287ad9d36f4c925d6c5d963356688e1bab6af4acc1084c33785b54180d30
+    listening_approval: false
+    release_ready: false
+    presented_function_sha256: e53019783b04050b80ff6633035ded78df2fb99229be5b3be2a2eded468234e2
+    source_commit: 911dbd0f24618091e34e8a816275ab7eabbf97bb
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts

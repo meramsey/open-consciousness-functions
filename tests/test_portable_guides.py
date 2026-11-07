@@ -43,7 +43,7 @@ def test_portable_collection_can_be_relocated_without_external_links(tmp_path, c
         assert "localhost" not in text
     assert (relocated / "complete-guide.pdf").is_file()
     result = listening_guides.validate_portable_collection(relocated)
-    assert (result["files"], result["markdown"], result["html"], result["pdf"]) == (198, 65, 65, 66)
+    assert (result["files"], result["markdown"], result["html"], result["pdf"]) == (199, 65, 65, 66)
     assert result["individual_function_pdfs"] == 58
     assert result["extracted_canonical_resources"] == 175
     assert result["broken_links"] == 0

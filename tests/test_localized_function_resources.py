@@ -4,7 +4,7 @@ import shutil
 from types import SimpleNamespace
 
 import pytest
-from ocf_tools.locale import LocaleCatalog
+from ocf_tools.locale import LocaleCatalog, LocalizationError
 from ocf_tools.paths import REPO_ROOT
 from ocf_tools.validators import _load_schema, validate_against_schema, validate_locale_packs
 
@@ -20,20 +20,16 @@ def function_resource():
         "locale": "en-US",
         "domain": "function",
         "function_id": FUNCTION_ID,
-        "title": {"source": "function-yaml", "field": "title"},
-        "description": {"source": "function-yaml", "field": "description"},
+        "title": {"text": "Empathize", "status": "canonical", "version": "1.0.0"},
+        "description": {
+            "text": "Develops understanding through awareness.",
+            "status": "canonical",
+            "version": "1.0.0",
+        },
         "activation": {
             "command_id": COMMAND_ID,
-            "display_cue": {
-                "source": "function-yaml",
-                "field": "primary-command",
-                "command_id": COMMAND_ID,
-            },
-            "spoken_cue": {
-                "source": "function-yaml",
-                "field": "spoken-command",
-                "command_id": COMMAND_ID,
-            },
+            "display_cue": {"text": "PLUS-EMPATHIZE", "status": "canonical", "version": "1.0.0"},
+            "spoken_cue": {"text": "Plus Empathize", "status": "reviewed", "version": "1.0.0"},
         },
         "secondary_commands": [],
         "tags": [],
@@ -132,20 +128,11 @@ def test_locale_catalog_projects_canonical_references_and_loads_narration_by_key
     assert not validation.errors and not validation.warnings
 
 
-def test_canonical_reference_preserves_explicit_resource_version():
-    command = function_record().command_records[0]
-    for field_name in ("title", "description", "primary-command", "spoken-command"):
-        _, _, version = LocaleCatalog._localized_value(
-            {
-                "source": "function-yaml",
-                "field": field_name,
-                "command_id": COMMAND_ID,
-                "version": "1.0.0",
-            },
-            function_record(),
-            command,
+def test_registry_reference_values_are_rejected():
+    with pytest.raises(LocalizationError, match="must be literal"):
+        LocaleCatalog._localized_value(
+            {"source": "function-yaml", "field": "title"}, function_record()
         )
-        assert version == "1.0.0"
 
 
 def test_function_filename_compatibility_uses_stable_id_not_title(tmp_path):
@@ -164,9 +151,15 @@ def test_repository_catalog_uses_readable_paths_and_preserves_cues():
         "OCF-EMO-003-Empathize.yaml"
     )
     assert len(catalog.packs["en-US"].localized_functions) == 58
-    assert "hplus-OCF-EMO-003.yaml" not in {
-        resource["file"] for resource in catalog.packs["en-US"].manifest["resources"]
-    }
+    # One manifest-listed function resource owns the identity, independent of
+    # any historical filename that must never become a second authority.
+    pack = catalog.packs["en-US"]
+    assert [
+        resource["file"]
+        for resource in pack.manifest["resources"]
+        if resource["domain"] == "function"
+        and resource["file"] == pack.localized_function_files[FUNCTION_ID]
+    ] == ["OCF-EMO-003-Empathize.yaml"]
     assert (
         catalog.resource(
             f"commands.{COMMAND_ID.lower()}.display-cue",
@@ -185,20 +178,15 @@ def test_repository_catalog_uses_readable_paths_and_preserves_cues():
     assert spoken.text == "Plus Empathize" and spoken.status == "reviewed"
 
 
-def test_noncanonical_locale_root_loads_its_sibling_function_registry(tmp_path):
+def test_noncanonical_locale_root_projects_complete_resources_without_sibling_registry(tmp_path):
     root = tmp_path / "locales"
-    write_pack(root, function_resource())
-    source = REPO_ROOT / "functions/emotion/empathizing.yaml"
-    target = tmp_path / "functions/emotion/empathizing.yaml"
-    target.parent.mkdir(parents=True)
-    shutil.copyfile(source, target)
-    (tmp_path / "functions/notes.txt").write_text("not a function", encoding="utf-8")
-
+    shutil.copytree(REPO_ROOT / "locales", root)
     catalog = LocaleCatalog(root)
     localized, resolution = catalog.localized_function(FUNCTION_ID, "en-US", fallback=False)
     assert localized["function_id"] == FUNCTION_ID
     assert resolution.origin_locale == "en-US"
     assert catalog.problems == []
+    assert not (tmp_path / "functions").exists()
 
 
 def test_function_metadata_alias_collision_is_reported_instead_of_shadowed(tmp_path):

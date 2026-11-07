@@ -8,12 +8,11 @@ from typing import Any
 
 import yaml
 
-from .models import FunctionRecord, function_from_dict
+from .models import FunctionRecord
 from .paths import (
     AUDIO_IMPLEMENTATIONS_DIR,
     AUDIO_MANIFESTS_DIR,
     AUDIO_SCRIPTS_DIR,
-    FUNCTIONS_DIR,
     GENERATED_HEADER,
     REPO_ROOT,
     VOICES_PROFILES_DIR,
@@ -60,32 +59,23 @@ def load_yaml_file(path: Path) -> dict[str, Any]:
     return data
 
 
-def discover_function_files() -> list[Path]:
-    """Return every *.yaml/*.yml function record under functions/."""
-    if not FUNCTIONS_DIR.is_dir():
-        return []
-    files: list[Path] = []
-    for path in FUNCTIONS_DIR.rglob("*"):
-        if path.is_file() and path.suffix.lower() in (".yaml", ".yml"):
-            files.append(path)
-    return sorted(files)
+def discover_function_files(root: Path = REPO_ROOT, locale: str = "en-US") -> list[Path]:
+    """Discover only manifest-listed canonical locale function resources."""
+    from .function_catalog import resources
+
+    return [path for path, _data in resources(root, locale)]
 
 
-def load_all_functions() -> list[FunctionRecord]:
-    """Load and parse every function record, sorted by OCF id."""
-    records: list[FunctionRecord] = []
-    for path in discover_function_files():
-        data = load_yaml_file(path)
-        try:
-            records.append(function_from_dict(data, path))
-        except ValueError as exc:
-            raise OCFError(str(exc)) from exc
-    return sorted(records, key=lambda r: r.id)
+def load_all_functions(locale: str = "en-US", *, root: Path = REPO_ROOT) -> list[FunctionRecord]:
+    """Project records exclusively from the requested locale manifest."""
+    from .function_catalog import load_functions
+
+    return load_functions(root, locale)
 
 
-def load_function_by_id(function_id: str) -> FunctionRecord | None:
+def load_function_by_id(function_id: str, *, root: Path = REPO_ROOT) -> FunctionRecord | None:
     """Return the record with the given OCF id, or None."""
-    for record in load_all_functions():
+    for record in load_all_functions(root=root):
         if record.id == function_id:
             return record
     return None

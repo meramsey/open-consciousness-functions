@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-BOD-010
@@ -31,6 +31,64 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-010.function-body
+      before_steps:
+      - id: select-food-response
+        operation: select-intention
+        localization_key: command.procedure.select-intention
+    relationships:
+      pairs_with:
+      - OCF-CMD-BOD-010-FOOD-LESS
+  procedure_steps:
+  - id: select-food-response
+    operation: select-intention
+    instruction:
+      text: Choose an intention.
+      status: canonical
+      version: 1.0.0
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-BOD-010-FOOD-LESS
   display_cue:
@@ -53,13 +111,74 @@ secondary_commands:
     status: canonical
     version: 1.0.1
   role: mode
+  control:
+    designation: secondary
+    phrase_ref:
+      source: canonical-mode
+      command_id: OCF-CMD-BOD-010-FOOD-LESS
+    documentation:
+      visible: true
+      order: 11
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-010.function-body
+      before_steps:
+      - id: select-food-response
+        operation: select-intention
+        localization_key: command.procedure.select-intention
+    relationships:
+      pairs_with:
+      - OCF-CMD-BOD-010-PRIMARY
+  procedure_steps:
+  - id: select-food-response
+    operation: select-intention
+    instruction:
+      text: Choose an intention.
+      status: canonical
+      version: 1.0.0
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 tags:
 - text: nourishment
   status: draft
+  semantic_id: nourishment
 - text: intention
   status: draft
+  semantic_id: intention
 - text: body-awareness
   status: draft
+  semantic_id: body-awareness
 common_uses:
 - text: Reflecting on the intention to make useful nourishment available from food.
   status: draft
@@ -76,10 +195,11 @@ entries:
   hplus.function.ocf-bod-010.opener:
     status: reviewed
     version: 1.3.0
-    text: |-
-      This OCF exercise will teach you to direct how your
+    text: 'This OCF exercise will teach you to direct how your
+
       body extracts, uses, and retains energy and nourishment
-      from the food you eat.
+
+      from the food you eat.'
   hplus.function.ocf-bod-010.function-body:
     status: reviewed
     version: 1.3.0
@@ -88,72 +208,116 @@ entries:
       allowed:
       - cue.id.OCF-CMD-BOD-010-FOOD-LESS
       - cue.primary
-    text: |-
-      From this moment forward, your body's natural processes
+    text: 'From this moment forward, your body''s natural processes
+
       of digestion, nourishment, and energy utilization
+
       are becoming more efficient and balanced.
 
+
       Your body knows how to obtain the nourishment it needs,
+
       use that nourishment effectively, and maintain
+
       its natural balance.
 
+
       This healthy pattern is becoming a permanent,
-      automatic part of your body's everyday function.
+
+      automatic part of your body''s everyday function.
+
 
       Whenever you wish to direct how your body
+
       uses the food you eat, you have two commands.
+
 
       The first is "{{ cue.primary }}."
 
+
       When you use {{ cue.primary }}, your body will
+
       extract the greatest possible useful nourishment
+
       and energy from the food you eat.
 
+
       It will convert and distribute that nourishment
+
       quickly and efficiently, making the fullest
+
       possible use of the food available.
+
 
       The second command is "{{ cue.id.OCF-CMD-BOD-010-FOOD-LESS }}."
 
+
       When you use {{ cue.id.OCF-CMD-BOD-010-FOOD-LESS }}, your body will
+
       recognize that nourishment is plentiful
+
       and there is no need to store unnecessary excess.
 
+
       Your body will take from the food you eat
+
       exactly what it needs for healthy energy,
+
       balance, and maintenance.
 
+
       Any excess that is not needed will be
+
       safely and efficiently processed and released
-      through your body's natural systems,
+
+      through your body''s natural systems,
+
       rather than unnecessarily retained or stored.
 
+
       Your body will maintain the nourishment it needs
+
       while releasing what serves no useful purpose.
 
-      Your body's natural intelligence knows the difference
+
+      Your body''s natural intelligence knows the difference
+
       between what is needed and what is unnecessary.
+
 
       To activate either function, close your eyes.
 
+
       Inhale deeply and gently hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}"
+
       or "{{ cue.id.OCF-CMD-BOD-010-FOOD-LESS }}," according to your desire.
 
+
       Then exhale slowly through your mouth
+
       and open your eyes.
 
+
       Your body will respond to your chosen command,
+
       directing its use of food energy accordingly.
 
+
       The more you use these functions,
+
       the easier and more effective they will become.
 
-      Your body's natural processes of nourishment,
+
+      Your body''s natural processes of nourishment,
+
       energy utilization, and metabolic balance
+
       will continue working automatically,
-      every day and every night.
+
+      every day and every night.'
   hplus.function.ocf-bod-010.closer:
     status: reviewed
     version: 1.3.0
@@ -162,15 +326,710 @@ entries:
       allowed:
       - cue.id.OCF-CMD-BOD-010-FOOD-LESS
       - cue.primary
-    text: |-
-      Remember, whenever you wish to direct how your body
+    text: 'Remember, whenever you wish to direct how your body
+
       uses food energy, close your eyes, inhale deeply,
+
       and hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}"
+
       or "{{ cue.id.OCF-CMD-BOD-010-FOOD-LESS }}," according to your desire.
 
+
       Then exhale slowly through your mouth
+
       and open your eyes.
 
-      This concludes your OCF Nutricia exercise.
+
+      This concludes your OCF Nutricia exercise.'
+slug: nutricia
+classification:
+  primary_domain: body
+  secondary_domains:
+  - lifestyle
+category_labels:
+  body:
+    text: body
+    status: canonical
+  lifestyle:
+    text: lifestyle
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-010.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-010.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-010.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: needs-review
+  proposals:
+  - id: OCF-TITLE-CUE-BOD-010
+    status: pending
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: bd98d44b085cc75c7be78e57af3982b1cf50b0fed5ef804d75b1b8bea7c9a91d
+    classification: RESOLVE PURPOSE OR MODES BEFORE NAMING
+    recommended_title: Food Energy Use
+    recommended_primary_cue: PLUS-USE FOOD ENERGY
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: MORE selects useful food-energy extraction/conversion/distribution/use; LESS selects
+      sufficient nourishment with reduced unnecessary retention/storage. Close eyes, inhale/hold/select
+      complete cue/exhale/open eyes. Neither mode is permanently active; automatic baseline differs. Not
+      appetite control.
+    pair_reason: Useful energy utilization and reduced unnecessary retention are asymmetric operations.
+      Avoid Nourish Less, which can imply inadequate nourishment; decide both modes together.
+    title_cue_relationship_or_exception: Useful energy utilization and reduced unnecessary retention are
+      asymmetric operations. Avoid Nourish Less, which can imply inadequate nourishment; decide both modes
+      together.
+    teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
+    documentary_intent: Claimed control of food energy absorption/use rather than merely food desire.
+    alternatives:
+    - title: Food Energy
+      cue: PLUS-FOOD MORE
+      secondary: PLUS-FOOD LESS
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: 4cf93f0341d01e2c061ef0030baa6ff7f608f6dbd767e0488729951e3b2188e7
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-BOD-010-PRIMARY
+    - OCF-CMD-BOD-010-FOOD-LESS
+    command_status: normalized
+    commands:
+    - PLUS-FOOD MORE
+    - PLUS-FOOD LESS
+    name: NUTRICIA
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Nutricia
+  compatibility:
+    legacy_commands:
+    - PLUS-FOOD MORE
+    - PLUS-FOOD LESS
+    rationale: Historical Food More/Food Less wording is retained for alternative food-energy responses,
+      not an incremental appetite or intensity scale.
+    state: alias-listed
+  status:
+    evidence: community-hypothesis
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: needs-review
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-bod-010.title
+    short_description_key: functions.ocf-bod-010.short-description
+    purpose_key: functions.ocf-bod-010.purpose
+  commands:
+  - id: OCF-CMD-BOD-010-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-bod-010-primary.label
+      usage_key: commands.ocf-cmd-bod-010-primary.usage
+      purpose_key: functions.ocf-bod-010.purpose
+      explanation_key: commands.ocf-cmd-bod-010-primary.explanation
+  - id: OCF-CMD-BOD-010-FOOD-LESS
+    localization:
+      label_key: commands.ocf-cmd-bod-010-food-less.label
+      usage_key: commands.ocf-cmd-bod-010-food-less.usage
+      purpose_key: functions.ocf-bod-010.purpose
+      explanation_key: commands.ocf-cmd-bod-010-food-less.explanation
+  predecessor_resource_sha256: eb9330abc8fd5b03ccc15aea644ceb4990051a1dae42797f41dc036c9b40c494
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004-KEPT
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: 'Keep Nutricia and BOTH current cues unchanged: PLUS-FOOD MORE / Plus Food More and PLUS-FOOD
+      LESS / Plus Food Less. Preserve all existing wording, metadata, distinct operations and active command
+      identities. Do not implement Food Energy Use, Plus Use Food Energy or Plus Retain Less Excess, and
+      do not retire either current cue.'
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: 547f9531cf8ef9c0ff48923a4c0a86e7f9eafc10ea411bccc3629cd3e782c093
+    status: retained
+    current_values_sha256: dd087fa5457ce8e25a20235c2edf2b0077c75b4f90b0164246374919b3b521ea
+    changed_narration_keys: []
+    previous_resolved_text_sha256: {}
+    current_resolved_text_sha256: {}
+    review_note: MORE selects useful food-energy extraction/conversion/distribution/use; LESS selects
+      sufficient nourishment with reduced unnecessary retention/storage. Close eyes, inhale/hold/select
+      complete cue/exhale/open eyes. Neither mode is permanently active; automatic baseline differs. Not
+      appetite control.
+  - id: OCF-FUNCTIONAL-METADATA-PURPOSE
+    kind: approved-functional-metadata
+    source_commit: 4da47a5740ead0be6bc3127437ee7b36a9c86ddf
+    scope: OCF-BOD-010:purpose
+    decision_source: Please do
+    source_row_sha256: 17874ba4fa9d434761e3d770f3c35595b5c27d7f846c40baba99c1cc0033d0be
+    status: accepted
+    current_values_sha256: 8472dacf832847ea7b6e789ad1c8df2fe52abe25656bcedb3ffcb6d4944407ef
+    review_note: 'Nutricia: 1'
+    approval_response: approve
+  - id: OCF-FUNCTIONAL-METADATA-COMMAND-ROLE
+    kind: approved-functional-metadata
+    source_commit: 4da47a5740ead0be6bc3127437ee7b36a9c86ddf
+    scope: OCF-BOD-010:command-role
+    decision_source: Please do
+    source_row_sha256: 843e2e12b809a8162ce84f51d168e51d1eecba7ff9e83fd7d9f0ed0f3227443f
+    status: accepted
+    current_values_sha256: 2048b2a29d0c559175475e736d92fc279994d25f7a23270d3b6504f14f49928e
+    review_note: 'Nutricia: 1'
+    approval_response: approve
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6:opener
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 3
+      - 64
+      - 199
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - category: main
+      confidence: low
+      id: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6:main
+      kind: structural-inference
+      line_candidates:
+      - 32
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - category: closer
+      confidence: low
+      id: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6:closer
+      kind: structural-inference
+      line_candidates:
+      - 60
+      - 199
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - category: preparation
+      confidence: low
+      id: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6:preparation
+      kind: structural-inference
+      line_candidates:
+      - 3
+      - 8
+      - 12
+      - 14
+      - 26
+      - 61
+      - 64
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - category: command_association
+      confidence: low
+      id: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6:command_association
+      kind: structural-inference
+      line_candidates:
+      - 36
+      - 48
+      - 59
+      - 197
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - category: future_use
+      confidence: low
+      id: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6:future_use
+      kind: structural-inference
+      line_candidates:
+      - 43
+      - 55
+      - 59
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - category: return
+      confidence: low
+      id: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6:return
+      kind: structural-inference
+      line_candidates:
+      - 66
+      - 182
+      - 183
+      - 186
+      - 189
+      - 194
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - category: purpose
+      confidence: medium
+      id: review:OCF-BOD-010:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 2
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - category: opener
+      confidence: medium
+      id: review:OCF-BOD-010:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 27
+      - 32
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - category: main
+      confidence: medium
+      id: review:OCF-BOD-010:main
+      kind: function-specification-inference
+      line_candidates:
+      - 33
+      - 56
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - category: association
+      confidence: medium
+      id: review:OCF-BOD-010:association
+      kind: function-specification-inference
+      line_candidates:
+      - 33
+      - 44
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-BOD-010:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 33
+      - 56
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - category: future_use
+      confidence: medium
+      id: review:OCF-BOD-010:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 33
+      - 60
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-BOD-010:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 199
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - category: closer
+      confidence: medium
+      id: review:OCF-BOD-010:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 57
+      - 64
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-BOD-010:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 65
+      - 181
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - category: handoff
+      confidence: medium
+      id: review:OCF-BOD-010:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 182
+      - 199
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-BOD-010:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 33
+      - 56
+      scope: document
+      source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+      path: +Transcripts From available tapes/Nutricia/Nutricia.lrc
+      related_sha256:
+      - 17226b5e7ec35c4a7f771f090b6a2f8c2ec9d771706324ec9ec163b86c2c53db
+      - c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+      sha256: 20d515d74eddaa25f957c96fb9839c990c261709879ff1b58b7ff4232b1c82ae
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Nutricia/Nutricia.ocr.pdf
+      related_sha256: []
+      sha256: 285d226e3a57f6988003d70a30fa145c92ee628d6f4f99b2609efb960035f45e
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+      path: +Transcripts From available tapes/Nutricia/Nutricia.srt
+      related_sha256:
+      - 20d515d74eddaa25f957c96fb9839c990c261709879ff1b58b7ff4232b1c82ae
+      - c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+      sha256: 17226b5e7ec35c4a7f771f090b6a2f8c2ec9d771706324ec9ec163b86c2c53db
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+      path: +Transcripts From available tapes/Nutricia/Nutricia.txt
+      related_sha256:
+      - 17226b5e7ec35c4a7f771f090b6a2f8c2ec9d771706324ec9ec163b86c2c53db
+      - 20d515d74eddaa25f957c96fb9839c990c261709879ff1b58b7ff4232b1c82ae
+      sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Nutricia/folder.jpg
+      related_sha256: []
+      sha256: 6caa9ac63c8118466ef96f9ae7f0f5d143da7df2b467a79517a2afcda9835cd6
+  specifications:
+    analysis_review:
+      claim_categories:
+      - voluntary-caloric-absorption-control
+      - excess-energy-elimination
+      - perfect-nutritional-balance
+      family: adjustable-food-energy-claims
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+            end_line: 44
+            file: +Transcripts From available tapes/Nutricia/Nutricia.txt
+            source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+            start_line: 33
+          status: supported
+          summary: MORE cue claims maximal energy extraction; LESS cue claims only maintenance needs with
+            excess passing out. Opposing modes are not inferred from the title.
+        closer:
+          locators:
+          - content_group_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+            end_line: 64
+            file: +Transcripts From available tapes/Nutricia/Nutricia.txt
+            source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+            start_line: 57
+          status: supported
+          summary: Reinforce remembered future use and close the learning context to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+            end_line: 181
+            file: +Transcripts From available tapes/Nutricia/Nutricia.txt
+            source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+            start_line: 65
+          status: supported
+          summary: Sleep-to-twenty shell present; physiological/automatic integration is not established
+            by that instruction.
+        conversion:
+          locators:
+          - content_group_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+            end_line: 56
+            file: +Transcripts From available tapes/Nutricia/Nutricia.txt
+            source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+            start_line: 33
+          status: inferred
+          summary: Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
+            reinterpretation is equivalent. Useful experiential operations and material purpose changes
+            require explicit content review; medical management and breath-hold issues remain outside
+            software efficacy claims.
+        future_use:
+          locators:
+          - content_group_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+            end_line: 60
+            file: +Transcripts From available tapes/Nutricia/Nutricia.txt
+            source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+            start_line: 33
+          status: supported
+          summary: Select food-energy mode with the same procedure; source does not supply a mode-reset
+            phrase or measured nutritional effect.
+        handoff:
+          locators:
+          - content_group_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+            end_line: 199
+            file: +Transcripts From available tapes/Nutricia/Nutricia.txt
+            source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+            start_line: 182
+          status: supported
+          summary: Counted waking/eyes-open return with target command reminder where intelligible.
+        identity:
+          locators:
+          - content_group_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+            end_line: 44
+            file: +Transcripts From available tapes/Nutricia/Nutricia.txt
+            source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+            start_line: 33
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+            end_line: 56
+            file: +Transcripts From available tapes/Nutricia/Nutricia.txt
+            source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+            start_line: 33
+          status: supported
+          summary: choose-more-or-less-food-energy-use; close-eyes-inhale-and-hold; represent-food-processing-region;
+            issue-selected-food-mode-cue; exhale-and-open-eyes
+        opener:
+          locators:
+          - content_group_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+            end_line: 32
+            file: +Transcripts From available tapes/Nutricia/Nutricia.txt
+            source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+            start_line: 27
+          status: supported
+          summary: Introduce a body-oriented intended response and receptive learning context, not evidence
+            that the physiology changed.
+        preparation:
+          locators:
+          - content_group_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+            end_line: 26
+            file: +Transcripts From available tapes/Nutricia/Nutricia.txt
+            source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+            start_line: 3
+          status: supported
+          summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+            for temporary setting-aside and counted ten-state preparation.
+        provenance:
+          locators:
+          - content_group_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+            end_line: 199
+            file: +Transcripts From available tapes/Nutricia/Nutricia.txt
+            source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
+            or original underlay; unspecified cancellation remains unknown.
+        purpose:
+          locators:
+          - content_group_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+            end_line: 2
+            file: +Transcripts From available tapes/Nutricia/Nutricia.txt
+            source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+            start_line: 1
+          status: supported
+          summary: Claimed control of food energy absorption/use rather than merely food desire.
+        rehearsal:
+          locators:
+          - content_group_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+            end_line: 56
+            file: +Transcripts From available tapes/Nutricia/Nutricia.txt
+            source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+            start_line: 33
+          status: not-present
+          summary: No distinct listener test of physiological outcome is established; teaching repetition
+            and ASR ambient tokens are not outcome verification.
+        safety_claims:
+          locators:
+          - content_group_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+            end_line: 56
+            file: +Transcripts From available tapes/Nutricia/Nutricia.txt
+            source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+            start_line: 33
+          status: supported
+          summary: voluntary-caloric-absorption-control; excess-energy-elimination; perfect-nutritional-balance.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+            end_line: 32
+            file: +Transcripts From available tapes/Nutricia/Nutricia.txt
+            source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+            start_line: 27
+          status: supported
+          summary: Reference learning shell prepares ten, opens eleven, closes to ten and uses sleep-to-twenty
+            plus waking return where preserved; runtime OCF requirements remain separate and unknown.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+            end_line: 199
+            file: +Transcripts From available tapes/Nutricia/Nutricia.txt
+            source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Source-designated
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
+            or original underlay; unspecified cancellation remains unknown.
+      source_extent:
+        content_group_sha256: a4722ea4cc6e024374663ac2997577ef99a71eba81c290d0190813340e4d419b
+        end_line: 199
+        file: +Transcripts From available tapes/Nutricia/Nutricia.txt
+        source_sha256: c57a1573700b190e1b76d34f083d6fb70de0d81aad43f540e09458a45abb7bb6
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-BOD-010:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-BOD-010:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-BOD-010:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-BOD-010:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-BOD-010:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-BOD-010:main
+        operations:
+        - choose-more-or-less-food-energy-use
+        - close-eyes-inhale-and-hold
+        - represent-food-processing-region
+        - issue-selected-food-mode-cue
+        - exhale-and-open-eyes
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-BOD-010:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-BOD-010:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-BOD-010:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-BOD-010:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-BOD-010:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Source-designated derivative is unauthenticated. Count/repetition/ambient artifacts do not establish
+      exact timing or original underlay; unspecified cancellation remains unknown.
+    - Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
+      reinterpretation is equivalent. Useful experiential operations and material purpose changes require
+      explicit content review; medical management and breath-hold issues remain outside software efficacy
+      claims.
+    states:
+      preferred: []
+      required: []
+      status: unknown

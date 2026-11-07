@@ -16,11 +16,11 @@ def test_all_175_resources_appear_in_complete_readable_guides_without_repetition
         text = function_guide_markdown(record, catalog=catalog)
         for key in metadata["entries"]:
             entry, _ = catalog.resource(key, "en-US", domain="narration", fallback=False)
-            assert key in text and entry.text in text, (record.id, key)
+            assert key not in text and entry.text in text, (record.id, key)
             count += 1
         if record.id == "OCF-FND-001":
-            assert "hplus.function.ocf-fnd-001.access-close" in text
-            assert "outside the current playback sequence" in text
+            assert "Access channel closure" in text
+            assert "plus, release, eleven, access" in text
     assert count == 175
 
 

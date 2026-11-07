@@ -30,14 +30,21 @@ def test_atomic_failure_keeps_original_and_cleans_temp(tmp_path, monkeypatch):
         utils.read_text(tmp_path / "absent")
 
 
-def test_paths_only_discover_directories_and_metadata_does_not_guess(tmp_path, monkeypatch):
-    monkeypatch.setattr(paths, "FUNCTIONS_DIR", tmp_path / "missing")
-    assert paths.all_function_dirs() == []
-    (tmp_path / "body").mkdir()
-    (tmp_path / "note.txt").write_text("not a domain")
-    monkeypatch.setattr(paths, "FUNCTIONS_DIR", tmp_path)
-    assert paths.all_function_dirs() == [tmp_path / "body"]
-    assert paths.domain_path("body") == tmp_path / "body"
+def test_data_root_requires_canonical_locale_manifest_not_legacy_registry(tmp_path):
+    legacy = tmp_path / "legacy"
+    (legacy / "schemas").mkdir(parents=True)
+    (legacy / "functions").mkdir()
+    with pytest.raises(RuntimeError, match="canonical en-US locale manifest"):
+        paths.resolve_data_root(legacy / "scripts/ocf_tools/paths.py", str(legacy))
+
+    canonical = tmp_path / "canonical"
+    (canonical / "schemas").mkdir(parents=True)
+    (canonical / "locales/en-US").mkdir(parents=True)
+    (canonical / "locales/en-US/manifest.yaml").write_text("resources: []\n")
+    assert (
+        paths.resolve_data_root(canonical / "scripts/ocf_tools/paths.py", str(canonical))
+        == canonical
+    )
 
 
 def test_content_unknown_identity_source_duplicates_and_bad_bindings():

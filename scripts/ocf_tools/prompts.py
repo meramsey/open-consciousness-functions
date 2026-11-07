@@ -20,7 +20,6 @@ from .indexes import load_all_functions, load_yaml_file
 from .models import DOMAINS
 from .paths import (
     AUDIO_MANIFESTS_DIR,
-    FUNCTIONS_DIR,
     PROPOSALS_DIR,
     REPO_ROOT,
     TEMPLATES_DIR,
@@ -461,11 +460,16 @@ def run_function_wizard() -> None:
         notes=str(notes.value),
     )
 
-    target = (
-        FUNCTIONS_DIR / primary_domain / f"{slug.value}.yaml"
-        if slug.value
-        else FUNCTIONS_DIR / primary_domain / f"{function_id.lower()}.yaml"
-    )
+    locale_manifest = REPO_ROOT / "locales/en-US/manifest.yaml"
+    if not locale_manifest.is_file():
+        raise OCFError("canonical en-US locale manifest is required to author a function")
+    from .function_catalog import draft_resource
+    from .locale import LocaleCatalog
+    from .models import function_from_dict
+    from .utils import yaml_safe_load
+
+    target = locale_manifest.parent / f"{function_id}-{slug.value or 'function'}.yaml"
+    record = draft_resource(function_from_dict(record, target), LocaleCatalog())
     print("\n--- Final review ---")
     print(yaml_safe_dump(record))
     confirm = ask_yes_no("Write this file?", default=True)
@@ -476,6 +480,11 @@ def run_function_wizard() -> None:
         print("Overwrite declined; nothing written.")
         return
     write_text_atomic(target, yaml_safe_dump(record))
+    if locale_manifest is not None:
+        manifest = yaml_safe_load(locale_manifest.read_text(encoding="utf-8"))
+        if not any(row["file"] == target.name for row in manifest["resources"]):
+            manifest["resources"].append({"file": target.name, "domain": "function"})
+            write_text_atomic(locale_manifest, yaml_safe_dump(manifest))
     result = validate_function_file(target)
     print_result(result)
     print("\nCreated: " + str(target.relative_to(REPO_ROOT)))

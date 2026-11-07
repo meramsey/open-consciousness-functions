@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-BOD-005
@@ -41,14 +41,68 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.scopes.application.persistence
+    invocation_scope_ref: lifecycle.scopes.application
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-005.function-body
+      before_steps:
+      - id: select-food-response
+        operation: select-intention
+        localization_key: command.procedure.select-intention
+    relationships: {}
+  procedure_steps:
+  - id: select-food-response
+    operation: select-intention
+    instruction:
+      text: Choose an intention.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: eating-choices
   status: draft
+  semantic_id: eating-choices
 - text: habits
   status: draft
+  semantic_id: habits
 - text: self-direction
   status: draft
+  semantic_id: self-direction
 common_uses:
 - text: Reflecting on the difference between a passing craving and a genuine need for nourishment.
   status: draft
@@ -61,8 +115,8 @@ relationships:
   - function_id: OCF-LIF-001
     relationship_type: related
     description:
-      text: Compare deliberate eating choices that preserve nourishment needs with changing a selected unwanted
-        habit; neither justifies ignoring hunger.
+      text: Compare deliberate eating choices that preserve nourishment needs with changing a selected
+        unwanted habit; neither justifies ignoring hunger.
       status: draft
     status: draft
     dependency: optional
@@ -81,10 +135,11 @@ entries:
   hplus.function.ocf-bod-005.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to consciously direct
+    text: 'This OCF exercise will teach you to consciously direct
+
       your appetite and desire for food, giving you greater
-      control over when and why you choose to eat.
+
+      control over when and why you choose to eat.'
   hplus.function.ocf-bod-005.function-body:
     status: reviewed
     version: 1.3.0
@@ -92,104 +147,172 @@ entries:
       function_id: OCF-BOD-005
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, you will have greater
+    text: 'From this moment forward, you will have greater
+
       control over your appetite and your desire for food.
 
-      You will recognize the difference between your body's
+
+      You will recognize the difference between your body''s
+
       genuine need for nourishment and the passing desire
+
       to eat out of habit, boredom, or impulse.
 
+
       Your mind and body will work together in harmony,
+
       helping you make clear, confident decisions
+
       about when and what you choose to eat.
 
+
       When your body needs nourishment, you will recognize
+
       that need clearly and respond appropriately.
 
+
       When a temporary craving arises and you consciously
+
       choose not to eat, you will remain calm,
+
       comfortable, and in complete control of your decision.
 
+
       From this moment forward, this awareness
+
       will become a natural and automatic part
+
       of your everyday life.
 
+
       You will find it easier to recognize when you
+
       have eaten enough, to enjoy the food you choose,
+
       and to stop eating when you are comfortably satisfied.
 
+
       Your choices will become clearer,
+
       your habits more intentional,
+
       and your confidence stronger.
 
+
       Whenever you wish to release a passing craving
+
       or an unnecessary desire for food,
+
       you can do so quickly and easily.
 
+
       Simply pause and bring your awareness
+
       to the desire you wish to release.
 
+
       Take a comfortable breath in
+
       and gently hold it.
 
+
       While holding your breath, silently
+
       say to yourself, "{{ cue.primary }}."
 
+
       Then slowly exhale through your mouth,
+
       as though gently blowing out a candle.
 
+
       As you exhale, the unnecessary desire to eat
+
       will become less and less important to you.
+
 
       Your thoughts will become calm and clear.
 
+
       You will feel satisfied with your decision
+
       and free to direct your attention
+
       toward whatever you choose.
 
+
       Food will no longer demand your attention
+
       simply because it is present,
+
       because you see it, or because you smell it.
 
+
       You will remain free to enjoy food
+
       when you consciously choose to eat.
 
+
       Your body will continue to communicate
+
       its genuine needs clearly and naturally.
 
+
       You will respond to those needs with confidence,
+
       maintaining the nourishment and balance
+
       your body requires.
 
+
       Now know that this pattern of conscious choice
+
       is becoming firmly established within you.
 
+
       From this moment forward, your ability
+
       to recognize unnecessary cravings
+
       and release them will operate automatically.
 
+
       Your mind will naturally pause before
+
       habitual or impulsive eating,
+
       allowing you to make a clear decision.
 
+
       You will feel comfortable and confident
+
       choosing when to eat and when to wait.
 
+
       Each time you use {{ cue.primary }},
+
       your ability to release unnecessary cravings
+
       becomes easier, smoother, and more effective.
 
+
       Remember, your appetite is something
+
       you can understand and consciously direct.
 
-      You will recognize your body's needs,
+
+      You will recognize your body''s needs,
+
       make your decisions clearly,
+
       and remain in control of your choices.
 
+
       This lasting pattern of awareness,
+
       satisfaction, and self-control
-      will continue strengthening every day.
+
+      will continue strengthening every day.'
   hplus.function.ocf-bod-005.closer:
     status: reviewed
     version: 1.3.0
@@ -197,21 +320,731 @@ entries:
       function_id: OCF-BOD-005
       allowed:
       - cue.primary
-    text: |-
-      Remember, from this moment forward,
-      you will recognize your body's genuine
+    text: 'Remember, from this moment forward,
+
+      you will recognize your body''s genuine
+
       need for nourishment and remain in control
+
       of your eating decisions.
 
+
       Whenever you wish to release an unnecessary
+
       craving or desire for food, simply pause.
+
 
       Inhale and gently hold your breath.
 
+
       Silently say to yourself,
+
       "{{ cue.primary }}."
 
+
       Then slowly exhale through your mouth,
+
       as though gently blowing out a candle.
 
-      This concludes your OCF Appetite Choice exercise.
+
+      This concludes your OCF Appetite Choice exercise.'
+slug: eat-no-eat
+classification:
+  primary_domain: body
+  secondary_domains:
+  - lifestyle
+category_labels:
+  body:
+    text: body
+    status: canonical
+  lifestyle:
+    text: lifestyle
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description_key: functions.ocf-bod-005.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description_key: functions.ocf-bod-005.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description_key: functions.ocf-bod-005.lifecycle.scopes.application.description
+      activation: manual
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-005.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-005.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-005.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-BOD-005
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 53079937fa1123577da6decd7ecb9a542ecb66dd259de7a1ec9d367bbf5ce81b
+    classification: RESOLVE PURPOSE OR MODES BEFORE NAMING
+    recommended_title: Appetite Choice
+    recommended_primary_cue: PLUS-SATISFIED, SUPPLIED
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: One complete cue releases unnecessary craving while preserving genuine nutritional
+      need and chosen eating. Pause, attend to craving, inhale/hold/cue/exhale. No independent appetite-increase
+      mode is taught; do not split the two words into directions.
+    pair_reason: The preserved main installation is incomplete. SATISFIED/SUPPLIED could encode different
+      appetite directions; do not invent a directional pair from the title alone. Separate appetite from
+      Nutricia's food-energy utilization intent.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. The preserved main
+      installation is incomplete. SATISFIED/SUPPLIED could encode different appetite directions; do not
+      invent a directional pair from the title alone. Separate appetite from Nutricia's food-energy utilization
+      intent.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Direct desire/appetite for food; the main installation instruction is not preserved
+      in this derivative.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: 1f56bda829eb5501ab32cf7d61a1a8d25326040c820b06699a4559ba52cabb18
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-BOD-005-PRIMARY
+    command_status: unchanged
+    commands:
+    - PLUS-SATISFIED, SUPPLIED
+    name: EAT/NO EAT
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Eat/No Eat
+  compatibility:
+    state: historical-lookup
+    rationale: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording remains
+      historical lookup.
+  historical_lookup:
+  - text: Eat/No Eat
+    kind: former-title
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+  - text: PLUS-SATISFIED, SUPPLIED
+    kind: former-primary
+    decision: OCF-COMMAND-SIMPLIFICATION-001
+    command_id: OCF-CMD-BOD-005-PRIMARY
+  - text: Plus Satisfied Supplied
+    kind: former-teaching
+    decision: OCF-COMMAND-SIMPLIFICATION-001
+    command_id: OCF-CMD-BOD-005-PRIMARY
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-bod-005.title
+    short_description_key: functions.ocf-bod-005.short-description
+    purpose_key: functions.ocf-bod-005.purpose
+  commands:
+  - id: OCF-CMD-BOD-005-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-bod-005-primary.label
+      usage_key: commands.ocf-cmd-bod-005-primary.usage
+      purpose_key: functions.ocf-bod-005.purpose
+      explanation_key: commands.ocf-cmd-bod-005-primary.explanation
+      display_cue_key: commands.ocf-cmd-bod-005-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-bod-005-primary.spoken-cue
+  predecessor_resource_sha256: ba7e61adbd9892bfd19a59ddcdd0f8abc309e8bd10e61df308e4d4bbb5834046
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
+      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
+      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: 0a2e497a96d7ff508c40dcec4db84708afd5688fae57c0b2bb53ceb54e795c2d
+    status: accepted
+    previous_values_sha256: 79baeb1c8ed7fee601ff4d7ce012178c12e1f9648590c92e6b137e90d63d3e28
+    current_values_sha256: c3cfed37e9709df2ac38ce03dbed0f93f9dee15d77e74d17e485d98e3184604e
+    changed_narration_keys:
+    - hplus.function.ocf-bod-005.closer
+    previous_resolved_text_sha256:
+      hplus.function.ocf-bod-005.closer: c652817fbd3d05fa0f420e64cd77f15cb89ff1a6f202a8f4aa149fc85fb21128
+    current_resolved_text_sha256:
+      hplus.function.ocf-bod-005.closer: e2aa5229b7f58a55b80ceba459795b36603db6b45e59e71f31c885b72bdf5501
+    review_note: Change title from Eat/No Eat to Appetite Choice and update exercise sign-off. Keep complete
+      display and spoken cue unchanged. Preserve breathing sequence, automatic reinforcement, genuine
+      nutritional need recognition and freedom to eat when chosen. Retain Eat/No Eat as historical lookup.
+      Satisfied Supplied remains one complete cue; introduce no separate appetite-increase or appetite-decrease
+      mode.
+    approval_response: '1'
+    review_position: 13
+    separate_review_needed: true
+  - id: OCF-FUNCTIONAL-METADATA-PURPOSE
+    kind: approved-functional-metadata
+    source_commit: 4da47a5740ead0be6bc3127437ee7b36a9c86ddf
+    scope: OCF-BOD-005:purpose
+    decision_source: Please do
+    source_row_sha256: a2a3df31e137aabb405ac446718a949db00845dc8125bd827258d419a8e603f5
+    status: accepted
+    current_values_sha256: 823cb37b452e4ca8e49517a7da92117086241c8209a0c0766de5f6358a96ca12
+    review_note: 'Appetite Choice: 1'
+    approval_response: approve
+  - id: OCF-FUNCTIONAL-METADATA-PERSISTENCE
+    kind: approved-functional-metadata
+    source_commit: 4da47a5740ead0be6bc3127437ee7b36a9c86ddf
+    scope: OCF-BOD-005:persistence
+    decision_source: Please do
+    source_row_sha256: 300be13be22971d0b681800f7f43f88b6b8d475b858c50732ab41b1912500cdd
+    status: accepted
+    current_values_sha256: 0264984651521a7a648e83ab44891aa00ab8aaf97f16002ebf7d25b7dc7036ea
+    review_note: 'Appetite Choice: 1'
+    approval_response: approve
+  - id: OCF-COMMAND-SIMPLIFICATION-001
+    kind: approved-command-simplification
+    source_commit: 8ec5b0395c7a5c05fa629d64297d3bf048b097f9
+    scope: Explicitly approved command title/display/spoken substitutions only; commands, lifecycle, procedure
+      and audio settings are unchanged.
+    decision_source: 'Explicit user confirmation: Confirm implementation'
+    source_row_sha256: 6899c7b27f20d7b2e5d8463a77b0bd01a8a373c424d8ff3c91f529d7d9e2a353
+    status: accepted
+    previous_values_sha256: 795863c8f79b89082727c8efddefe733b26a1bd8c31e99e39f26eb801f57f430
+    current_values_sha256: 591542bb23c9bbaf67588b6f82dc2880e232dedcc94e72bc5cbf63c621ed09f8
+    changed_narration_keys: []
+    previous_resolved_text_sha256: {}
+    current_resolved_text_sha256: {}
+    review_note: Narration fingerprints and synthesis cache identity follow the approved canonical wording;
+      listening and release approval remain false.
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9:opener
+      kind: structural-inference
+      line_candidates:
+      - 1
+      - 2
+      - 152
+      - 350
+      scope: document
+      source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    - category: closer
+      confidence: low
+      id: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9:closer
+      kind: structural-inference
+      line_candidates:
+      - 143
+      - 350
+      scope: document
+      source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    - category: preparation
+      confidence: low
+      id: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9:preparation
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 10
+      - 16
+      - 70
+      - 146
+      - 154
+      scope: document
+      source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    - category: command_association
+      confidence: low
+      id: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9:command_association
+      kind: structural-inference
+      line_candidates:
+      - 347
+      scope: document
+      source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    - category: return
+      confidence: low
+      id: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9:return
+      kind: structural-inference
+      line_candidates:
+      - 158
+      - 335
+      - 345
+      scope: document
+      source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    - category: purpose
+      confidence: medium
+      id: review:OCF-BOD-005:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 1
+      scope: document
+      source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    - category: opener
+      confidence: unknown
+      id: review:OCF-BOD-005:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 18
+      - 142
+      scope: document
+      source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    - category: main
+      confidence: medium
+      id: review:OCF-BOD-005:main
+      kind: function-specification-inference
+      line_candidates:
+      - 346
+      - 349
+      scope: document
+      source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    - category: association
+      confidence: medium
+      id: review:OCF-BOD-005:association
+      kind: function-specification-inference
+      line_candidates:
+      - 346
+      - 349
+      scope: document
+      source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    - category: rehearsal
+      confidence: unknown
+      id: review:OCF-BOD-005:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 18
+      - 142
+      scope: document
+      source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    - category: future_use
+      confidence: medium
+      id: review:OCF-BOD-005:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 346
+      - 349
+      scope: document
+      source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-BOD-005:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 351
+      scope: document
+      source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    - category: closer
+      confidence: medium
+      id: review:OCF-BOD-005:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 143
+      - 154
+      scope: document
+      source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-BOD-005:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 155
+      - 316
+      scope: document
+      source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    - category: handoff
+      confidence: medium
+      id: review:OCF-BOD-005:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 317
+      - 351
+      scope: document
+      source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-BOD-005:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 351
+      scope: document
+      source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+      path: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.lrc
+      related_sha256:
+      - 03d1aa45d604e86961decf2664b73a618d5baced3078fac39c0b193bc9b14187
+      - beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+      sha256: 0365b1af66862faca7a058bd4ae3c40dbc1755cbf381ced9f9057af5cd2f58fa
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.ocr.pdf
+      related_sha256: []
+      sha256: 285396127215c2ca824be8d01ba58b62942a63118818b06ccf7497eef3226611
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+      path: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.srt
+      related_sha256:
+      - 0365b1af66862faca7a058bd4ae3c40dbc1755cbf381ced9f9057af5cd2f58fa
+      - beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+      sha256: 03d1aa45d604e86961decf2664b73a618d5baced3078fac39c0b193bc9b14187
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+      path: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+      related_sha256:
+      - 0365b1af66862faca7a058bd4ae3c40dbc1755cbf381ced9f9057af5cd2f58fa
+      - 03d1aa45d604e86961decf2664b73a618d5baced3078fac39c0b193bc9b14187
+      sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Eat-No Eat/folder.jpg
+      related_sha256: []
+      sha256: ecd0ac6cb831bfe77adf1245398db0cab01320097de7b2b395a6823f319b5ddd
+  specifications:
+    analysis_review:
+      claim_categories:
+      - appetite-direction
+      - missing-main-claim-content
+      family: appetite-direction-incomplete-main
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+            end_line: 349
+            file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+            source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+            start_line: 346
+          status: supported
+          summary: Only final cue reminder supports a breathing/cue association; do not invent the missing
+            main response or mode behavior.
+        closer:
+          locators:
+          - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+            end_line: 154
+            file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+            source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+            start_line: 143
+          status: supported
+          summary: Reinforce remembered future use and close the learning context to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+            end_line: 316
+            file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+            source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+            start_line: 155
+          status: supported
+          summary: Sleep-to-twenty shell present; physiological/automatic integration is not established
+            by that instruction.
+        conversion:
+          locators:
+          - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+            end_line: 349
+            file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+            source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+            start_line: 346
+          status: inferred
+          summary: Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
+            reinterpretation is equivalent. Useful experiential operations and material purpose changes
+            require explicit content review; medical management and breath-hold issues remain outside
+            software efficacy claims.
+        future_use:
+          locators:
+          - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+            end_line: 349
+            file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+            source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+            start_line: 346
+          status: supported
+          summary: Final reminder gives a cue/exhale routine for appetite direction; precise intended
+            response/duration remains unknown.
+        handoff:
+          locators:
+          - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+            end_line: 351
+            file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+            source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+            start_line: 317
+          status: supported
+          summary: Counted waking/eyes-open return with target command reminder where intelligible.
+        identity:
+          locators:
+          - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+            end_line: 349
+            file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+            source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+            start_line: 346
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+            end_line: 349
+            file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+            source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+            start_line: 346
+          status: supported
+          summary: remember-appetite-direction-goal; hold-breath-and-issue-satisfied-supplied-cue; exhale
+        opener:
+          locators:
+          - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+            end_line: 142
+            file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+            source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+            start_line: 18
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Large numeric
+            segment replaces expected access/main material; full physiological/behavioral claim and activation
+            conditions cannot be recovered from this TXT. Analytical completeness retains these unknowns.
+        preparation:
+          locators:
+          - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+            end_line: 142
+            file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+            source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+            start_line: 2
+          status: supported
+          summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+            for temporary setting-aside and counted ten-state preparation.
+        provenance:
+          locators:
+          - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+            end_line: 351
+            file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+            source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Large numeric
+            segment replaces expected access/main material; full physiological/behavioral claim and activation
+            conditions cannot be recovered from this TXT. Analytical completeness retains these unknowns.
+        purpose:
+          locators:
+          - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+            end_line: 1
+            file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+            source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+            start_line: 1
+          status: supported
+          summary: Direct desire/appetite for food; the main installation instruction is not preserved
+            in this derivative.
+        rehearsal:
+          locators:
+          - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+            end_line: 142
+            file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+            source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+            start_line: 18
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Large numeric
+            segment replaces expected access/main material; full physiological/behavioral claim and activation
+            conditions cannot be recovered from this TXT. Analytical completeness retains these unknowns.
+        safety_claims:
+          locators:
+          - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+            end_line: 351
+            file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+            source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+            start_line: 1
+          status: supported
+          summary: appetite-direction; missing-main-claim-content. Claims are classified as source assertions,
+            not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+            end_line: 154
+            file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+            source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+            start_line: 143
+          status: supported
+          summary: Ten-state preparation, later closure to ten, sleep-to-twenty and waking return are
+            present; explicit learning-context opening is not preserved.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+            end_line: 351
+            file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+            source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Large numeric
+            segment replaces expected access/main material; full physiological/behavioral claim and activation
+            conditions cannot be recovered from this TXT. Analytical completeness retains these unknowns.
+      source_extent:
+        content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
+        end_line: 351
+        file: +Transcripts From available tapes/Eat-No Eat/Eat-No Eat.txt
+        source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-BOD-005:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-BOD-005:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-BOD-005:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-BOD-005:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-BOD-005:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-BOD-005:main
+        operations:
+        - remember-appetite-direction-goal
+        - hold-breath-and-issue-satisfied-supplied-cue
+        - exhale
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-BOD-005:opener
+        operations: []
+        status: unknown
+      purpose:
+        evidence_refs:
+        - review:OCF-BOD-005:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-BOD-005:rehearsal
+        operations: []
+        status: unknown
+      safety_claims:
+        evidence_refs:
+        - review:OCF-BOD-005:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-BOD-005:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Large numeric segment replaces expected access/main material; full physiological/behavioral claim
+      and activation conditions cannot be recovered from this TXT. Analytical completeness retains these
+      unknowns.
+    - Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
+      reinterpretation is equivalent. Useful experiential operations and material purpose changes require
+      explicit content review; medical management and breath-hold issues remain outside software efficacy
+      claims.
+    states:
+      preferred: []
+      required: []
+      status: unknown

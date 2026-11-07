@@ -210,6 +210,24 @@ def localized_field_sources_json() -> str:
     )
 
 
+def function_contracts_json() -> str:
+    from .function_catalog import contract_hash, resources, structural_contract
+
+    rows = {
+        data["function_id"]: {"sha256": contract_hash(data), "contract": structural_contract(data)}
+        for path, data in resources(REPO_ROOT)
+        if data.get("schema_version") == "2.0"
+    }
+    return generated_content(
+        json.dumps(
+            {"generated": True, "canonical_locale": "en-US", "functions": rows},
+            indent=2,
+            sort_keys=True,
+        )
+        + "\n"
+    )
+
+
 def hplus_command_map_json() -> str:
     from .locale import LocaleCatalog
     from .localized_authority import display_command, title
@@ -540,6 +558,7 @@ def generate_all_content() -> list[tuple[str, str]]:
         ("function-index.json", function_index_json()),
         ("function-index.csv", function_index_csv()),
         ("function-field-sources.json", localized_field_sources_json()),
+        ("function-contracts.json", function_contracts_json()),
         ("legacy/hplus-command-map.json", hplus_command_map_json()),
         ("legacy/hplus-command-map.csv", hplus_command_map_csv()),
         ("docs/COMMAND_REVIEW.md", command_review_markdown()),

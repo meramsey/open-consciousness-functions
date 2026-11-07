@@ -185,6 +185,9 @@ def _build_parser() -> argparse.ArgumentParser:
     cover_cmd.add_argument(
         "--no-description", action="store_true", help="omit optional localized artwork copy"
     )
+    cover_cmd.add_argument(
+        "--lyrics", action="store_true", help="embed compatible measured artwork lyrics"
+    )
     cover_cmd.add_argument("--output", type=Path)
     dev = sub.add_parser(
         "dev",
@@ -916,6 +919,10 @@ def _build_parser() -> argparse.ArgumentParser:
     locale = sub.add_parser("locale", help="locale packs and localized narration")
     locale_sub = locale.add_subparsers(dest="locale_kind")
     locale_sub.add_parser("list", help="list locale packs, provenance, and coverage")
+    function_coverage = locale_sub.add_parser(
+        "functions", help="report complete/partial/missing/outdated function contracts"
+    )
+    function_coverage.add_argument("--locale", default="en-US")
     cov = locale_sub.add_parser(
         "coverage", help="report a locale's key coverage against the canonical pack"
     )
@@ -2176,6 +2183,22 @@ def main(argv: list[str] | None = None) -> int:
             print(HELP_TEXT)
             return 0
         if args.command == "locale":
+            if args.locale_kind == "functions":
+                import json
+
+                from .locale import LocaleCatalog
+
+                print(
+                    json.dumps(
+                        {
+                            "locale": args.locale,
+                            "functions": LocaleCatalog().function_completeness(args.locale),
+                        },
+                        indent=2,
+                        ensure_ascii=False,
+                    )
+                )
+                return 0
             if args.locale_kind == "list" or args.locale_kind is None:
                 return cmd_locale_list()
             if args.locale_kind == "coverage":

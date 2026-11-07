@@ -43,8 +43,9 @@ def test_linked_worktree_uses_common_project_workspace(tmp_path, monkeypatch):
     worktree = project / ".ocf-work" / "feature-worktree"
     common_git = project / ".git"
     git_dir = common_git / "worktrees" / "feature-worktree"
-    for directory in (project / "schemas", project / "functions", worktree, git_dir):
+    for directory in (project / "schemas", project / "locales/en-US", worktree, git_dir):
         directory.mkdir(parents=True, exist_ok=True)
+    (project / "locales/en-US/manifest.yaml").write_text("resources: []\n", encoding="utf-8")
     (worktree / ".ocf-work").mkdir()
     (common_git / "worktrees").mkdir(parents=True, exist_ok=True)
     (git_dir / "commondir").write_text("../..\n", encoding="utf-8")

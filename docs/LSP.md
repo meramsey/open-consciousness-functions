@@ -189,9 +189,9 @@ Check the installed version's help before using these commands. For OpenCode
 ```bash
 python3 scripts/start_ocf_opencode.py debug config
 python3 scripts/start_ocf_opencode.py debug agent ocf-investigator
-python3 scripts/start_ocf_opencode.py debug lsp diagnostics "$PWD/functions/sleep/sleep-easy.yaml"
+python3 scripts/start_ocf_opencode.py debug lsp diagnostics "$PWD/locales/en-US/OCF-SLP-005-Sleep-Easy.yaml"
 python3 scripts/start_ocf_opencode.py debug lsp diagnostics "$PWD/schemas/function.schema.json"
-python3 scripts/start_ocf_opencode.py debug lsp document-symbols "$(python3 -c 'from pathlib import Path; print(Path("functions/sleep/sleep-easy.yaml").resolve().as_uri())')"
+python3 scripts/start_ocf_opencode.py debug lsp document-symbols "$(python3 -c 'from pathlib import Path; print(Path("locales/en-US/OCF-SLP-005-Sleep-Easy.yaml").resolve().as_uri())')"
 ```
 
 Bound diagnostic processes externally (for example, `subprocess.run` with a
@@ -204,7 +204,7 @@ private file rather than relying on buffered CLI output over a pipe.
 The installed version also supports `debug agent NAME --tool lsp --params JSON`
 for a direct read-only operation; it creates a diagnostic session in history.
 For example, `goToDefinition` on Sleep Easy line 45, character 7 resolves its
-function-body resource to `locales/en-US/hplus-OCF-SLP-005.yaml`. Native tool
+function-body resource to `locales/en-US/OCF-SLP-005-Sleep-Easy.yaml`. Native tool
 positions are one-based. Programmatically derive file URIs with `Path.as_uri()`;
 do not concatenate unescaped filesystem paths into `file://` strings.
 
@@ -303,7 +303,7 @@ returns suggestions and contained reference locations, never a `WorkspaceEdit`:
 
 ```json
 {
-  "textDocument": {"uri": "file:///YOUR_CHECKOUT/functions/foundation/attention.yaml"},
+  "textDocument": {"uri": "file:///YOUR_CHECKOUT/locales/en-US/OCF-FND-002-Focus.yaml"},
   "position": {"line": 1, "character": 5},
   "newName": "OCF-FND-099",
   "offset": 0,

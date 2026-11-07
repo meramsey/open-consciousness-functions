@@ -1,82 +1,51 @@
 # Functional metadata and lifecycle scopes
 
-The [current review](releases/OCF_FUNCTIONAL_METADATA_CURRENT.md) implements
-18 explicitly approved decisions across 16 functions, after collection and final
-confirmation. Five purposes, ten persistence/scope decisions, two conditional
-responses and Nutricia's alternative command role are recorded in the
-[metadata-only ledger](../function-content/editorial/functional-metadata-001.json).
-Approved naming remains unchanged.
+The [current review](releases/OCF_FUNCTIONAL_METADATA_CURRENT.md) is a derived
+reader view of 18 explicitly approved decisions across 16 canonical locale
+function resources. Decision notes, review-source hashes, current-value hashes,
+and function-specific purpose/lifecycle changes are embedded in the matching
+resource under `record_metadata.editorial_decisions`. There is no metadata
+sidecar registry.
 
-## Source authority and scope
-
-Function YAML remains the authority for identity, purpose, lifecycle, commands,
-procedures and narration bindings. Existing `lifecycle.persistence` remains the
-function-level summary. Optional `lifecycle.scopes` separates:
+Each `locales/<tag>/OCF-*.yaml` resource remains the sole function authority for
+that identity and locale. The shared schema and validators preserve the
+distinctions among:
 
 - `capability`: lasting learned availability or readiness;
-- `baseline`: ongoing development, adaptive maintenance or retained effects;
+- `baseline`: ongoing development, adaptive maintenance, or retained effects;
 - `application`: one consciously invoked action or reinforcement;
 - `episode`: a conditional, temporary response to an injury or exposure.
 
-Each scope has a persistence value, canonical English `description`, stable
-`description_key`, and optional descriptive activation value. Episode conditions
-reference `lifecycle.trigger_conditions` rather than duplicating trigger text.
-These declarations never evaluate a trigger, schedule an action, detect injury or
-exposure, execute a cue, or control physiology.
+Each scope declares persistence, a stable localized description, and optional
+descriptive activation. Episode conditions refer to
+`lifecycle.trigger_conditions` rather than duplicating trigger text. These
+declarations never evaluate triggers, schedule actions, detect injury or
+exposure, execute cues, or control physiology.
 
-`commands[].effect_scope_ref` accepts only the legacy `lifecycle.persistence`
-or one of the four explicit scoped persistence paths. Missing and unknown
-references fail validation. `invocation_scope_ref` may reference only
-`lifecycle.scopes.application`, which must explicitly be manual. Command views
-resolve the effect separately from invocation, so a lasting effect does not
-imply a continuously running command.
+Command controls use canonical `activation` and `secondary_commands` entries.
+They distinguish effect scope from invocation scope: a lasting effect does not
+imply a continuously running command. Injury Response and Toxic Exposure
+Response retain conditional descriptive triggers, permanent readiness, temporary
+episodes, and optional manual reinforcement. Their approved narration is
+unchanged.
 
-Imprint's primary command retains the permanent storage effect; Plus Recall has
-a temporary retrieval effect. Both invocations are manual and temporary. Habit
-Freedom retains lasting selected-habit change, with a discrete intervention.
-Other adaptive-baseline functions use temporary manual reinforcement. Options
-and Information Access retain temporary selected applications alongside lasting
+Nutricia retains Food More/Food Less identities and cues. Food Less is a mode
+paired with Food More, not a decrement of primary intensity. Options and
+Information Access retain temporary selected applications alongside lasting
 capability and background development.
 
-Injury Response and Toxic Exposure Response use conditional function activation,
-explicit descriptive trigger conditions, permanent readiness, temporary episodes,
-and optional manual reinforcement. Their existing narration is unchanged.
+## Interfaces, localization, and integrity
 
-Nutricia retains both Food More/Food Less cues and IDs. Food Less is a `mode`,
-paired with Food More, rather than a decrement modifying a primary intensity.
-Its role/usage descriptions and current compatibility explanation reflect that
-distinction; historical mappings remain intact.
+CLI, API, MCP, LSP, command views, and guides expose read-only projections from
+canonical locale resources. Missing translations remain explicit; English speech
+is never inherited silently. Locale validation checks cue and scope descriptions
+against stable keys.
 
-## Interfaces and localization
-
-Rich CLI discovery exposes `lifecycle` independently of the historical
-`activation` command-list field. Shared command views expose `effect_scope`,
-optional `effect_scope_details` and `invocation_scope`. Compact MCP function
-lookup additionally supports `purpose`, `lifecycle` and `command_metadata`.
-These are additive response fields; no service restart or configuration change
-is required by the repository migration itself.
-
-The schemas and shared validators also supply LSP property completion and
-diagnostics, including unsaved malformed references. English scope descriptions
-must agree with function YAML. Command documentation resolves their stable locale
-keys with explicit UI fallback provenance. Other languages may use their own
-reviewed terminology; spoken cues retain the existing strict fallback and
-symbolic-reference rules. No PLUS translation or production translation is added.
-
-## Integrity and reproducibility
-
-No narration changes are authorized: all 177 protected resolved entries and raw
-narration resources remain unchanged. The existing text fixture 005 and defaults
-lock 006 stay current; there is no new audio baseline. The metadata successor
-pins the confirmed decision set, exact predecessor/current files, all engineering
-dependencies and all 58 generated source plans (55 legacy-mapped plus 3
-OCF-original function records). Historical naming verifiers use
-the authenticated predecessor view, without rewriting older ledgers.
-
-Speech cache inputs and recording fingerprints remain unchanged. Existing stale
-recordings still fail their normal checks; this migration does not relabel audio
-or change hybrid fallback policy. DSP, measured anchors, pacing, gains and body
-repetitions remain unchanged.
+All 177 protected resolved narration entries remain covered by the path-free
+text-hash fixture. The canonical semantic baseline separately covers the 58
+functions' structure, narration entries, commands, lifecycle, and localized
+presentation. No audio was rendered; DSP, measured anchors, pacing, gains, and
+body repetitions were not changed.
 
 ```bash
 python scripts/tools/current_functional_metadata.py --check

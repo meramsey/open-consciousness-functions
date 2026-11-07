@@ -35,9 +35,10 @@ def fingerprint(function_id):
                 "locale": resolution.origin_locale,
             }
         )
+    # Queue decisions are bound to the current canonical locale resource only.
+    source = owner.path.read_bytes()
     return hashlib.sha256(
-        owner.path.read_bytes()
-        + json.dumps(evidence, ensure_ascii=False, sort_keys=True).encode("utf-8")
+        source + json.dumps(evidence, ensure_ascii=False, sort_keys=True).encode("utf-8")
     ).hexdigest()
 
 
@@ -53,76 +54,51 @@ def check_current(row, source_fingerprint=None):
 
 
 def create():
-    from .editorial_successors import current_decision_record
     from .indexes import load_all_functions
 
     current = json.loads(
         (REPO_ROOT / "docs/releases/OCF_TITLE_CUE_CURRENT.json").read_text(encoding="utf-8")
     )
-    source = json.loads(
-        (REPO_ROOT / "docs/releases/OCF_TITLE_CUE_REVIEW.json").read_text(encoding="utf-8")
-    )
-    recommendations = {row["function_id"]: row for row in source["functions"]}
-    decisions = current_decision_record()
-    approved = {
-        row["function_id"] for row in decisions["decisions"] if not row.get("pending_title")
-    }
-    kept = {row["function_id"] for row in decisions["kept_decisions"]}
     records = {record.id: record for record in load_all_functions()}
     rows = []
-    for row in current["functions"]:
-        owner = row["function_id"]
-        if owner in approved or owner in kept or owner not in recommendations:
-            continue
-        prior = recommendations[owner]
-        if row["decision_status"] == "EXISTING PAIR RETAINED" and owner != "OCF-BOD-006":
-            continue
+    for view in current["functions"]:
+        owner = view["function_id"]
         record = records[owner]
-        mismatch = not row["metadata_teaching_consistent"]
-        rank = (
-            0
-            if mismatch
-            else 1
-            if owner in {"OCF-BOD-010", "OCF-BOD-005", "OCF-EMG-001", "OCF-EMG-002"}
-            else 2
-            if owner == "OCF-BOD-006"
-            else 3
-        )
-        rows.append(
-            {
-                "function_id": owner,
-                "priority": rank,
-                "current_title": record.canonical_name,
-                "display_cue": record.canonical_command,
-                "spoken": next(
-                    (
-                        command.data.get("spoken")
-                        for command in record.command_records
-                        if command.designation == "primary"
+        for proposal in view.get("editorial_proposals", []):
+            if proposal["status"] != "pending":
+                continue
+            rows.append(
+                {
+                    "function_id": owner,
+                    "proposal_id": proposal["id"],
+                    "priority": 0 if not view["metadata_teaching_consistent"] else 2,
+                    "current_title": record.canonical_name,
+                    "display_cue": record.canonical_command,
+                    "spoken": next(
+                        (
+                            command.data.get("spoken")
+                            for command in record.command_records
+                            if command.designation == "primary"
+                        ),
+                        None,
                     ),
-                    None,
-                ),
-                "taught": row["spoken_teaching"],
-                "purpose": record.purpose_summary,
-                "lifecycle": record.data["lifecycle"],
-                "controls": [
-                    {"id": command.id, "role": command.role}
-                    for command in record.command_records
-                    if command.designation != "primary"
-                ],
-                "recommended_title": "Heart Flow"
-                if owner == "OCF-BOD-006"
-                else prior["recommended_title"],
-                "recommended_cue": record.canonical_command
-                if owner == "OCF-BOD-006"
-                else prior["recommended_primary_cue"],
-                "reason": prior["contextual_review"],
-                "alternatives": prior["alternatives"][:2],
-                "status": "pending",
-                "source_sha256": fingerprint(record.id),
-                "decisions": [],
-            }
-        )
+                    "taught": view["spoken_teaching"],
+                    "purpose": record.purpose_summary,
+                    "lifecycle": record.data["lifecycle"],
+                    "controls": [
+                        {"id": command.id, "role": command.role}
+                        for command in record.command_records
+                        if command.designation != "primary"
+                    ],
+                    "recommended_title": proposal["recommended_title"],
+                    "recommended_cue": proposal["recommended_primary_cue"],
+                    "reason": proposal["contextual_review"],
+                    "alternatives": proposal["alternatives"],
+                    "status": "pending",
+                    "source_sha256": fingerprint(owner),
+                    "decisions": [],
+                }
+            )
     rows.sort(key=lambda row: (row["priority"], row["function_id"]))
     return {"schema_version": "1.0", "position": 0, "items": rows}
 

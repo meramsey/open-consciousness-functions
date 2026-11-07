@@ -32,7 +32,13 @@ Slow-test reports are retained in both pytest logs under the local benchmark dir
 
 ## Verified migration and follow-up
 
-See [the implementation/evidence checkpoint](OCF_APPROVED_CUE_MIGRATION.md). Exact approved English values, 21-entry allowlist, immutable 001 artifacts, current 002 lock, locale bindings and historical-only aliases are covered by meaningful unit/integration regressions. Selected stale recordings never fall back silently, changed speech misses cache and unchanged speech remains reusable. Existing CLI/MCP/LSP protocol boundaries are tested, not merely parser acceptance.
+This is a historical coverage report for the earlier cue-migration implementation;
+its measurements and scope are not current-commit validation. The active
+implementation reads approved values from canonical locale resources. See
+[editorial review boundaries](../EDITORIAL_REVIEW.md) and the
+[per-locale authority contract](../PER_LOCALE_FUNCTION_AUTHORITY.md). Current
+stale recordings fail fingerprint validation; no audio is relabelled or
+overwritten by these editorial decisions.
 
 The first plain run found unrelated partial-locale overvalidation, legacy unbound-composition fixture compatibility and one expected display-versus-spoken assertion change. Those causes were corrected. Nested LSP fixture environments initially could not see dependencies inherited via a .pth file; the isolated environment now directly exposes the already-installed dev packages without reinstalling servers or changing the active environment. Failed diagnostics remain local. Passing measurements come from the corrected same-tree pair.
 

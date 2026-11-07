@@ -74,7 +74,7 @@ def test_function_resources_and_profiles_complete_and_navigate(workspace):
     _doc, _span, rows = service.completions(path.as_uri(), at)
     assert "OCF-FND-002" in {row["label"] for row in rows}
     _doc, _span, definitions = service.definitions_at(path.as_uri(), at)
-    assert definitions[0].path.name == "focus.yaml"
+    assert definitions[0].path.name == "OCF-FND-002-Focus.yaml"
     for field, prefix, expected in (
         ("narration_key", "test.", "test.guidance"),
         ("voice_profile", "OCF-VOICE-", "OCF-VOICE-0001"),
@@ -89,27 +89,29 @@ def test_function_resources_and_profiles_complete_and_navigate(workspace):
 
 
 @pytest.mark.integration
-def test_explicit_spoken_binding_navigates_unsaved_narration_not_ui_label(workspace):
+def test_canonical_command_identity_navigates_to_its_unsaved_locale_resource(workspace):
     service, _ = workspace
-    path = service.root / "functions/foundation/focus.yaml"
+    path = service.root / "locales/en-US/OCF-FND-002-Focus.yaml"
     before = path.read_bytes()
     data = yaml_safe_load(path.read_text(encoding="utf-8"))
-    data["commands"][0]["localization"]["spoken_cue_key"] = "test.guidance"
-    data["commands"][0]["localization"]["display_cue_key"] = "test.label"
+    command_id = data["activation"]["command_id"]
+    data["activation"]["spoken_cue"]["text"] = "Temporary spoken wording"
     from ocf_tools.utils import yaml_safe_dump
 
     text = yaml_safe_dump(data)
     service.update(path.as_uri(), text)
-    for key, filename in (("test.guidance", "narration.yaml"), ("test.label", "ui.yaml")):
-        _doc, _span, definitions = service.definitions_at(path.as_uri(), text.index(key) + 2)
-        assert definitions and definitions[0].path.name == filename
+    _doc, _span, definitions = service.definitions_at(path.as_uri(), text.index(command_id) + 2)
+    assert definitions and definitions[0].path == path
+    assert service.records()[0].path == path
     assert path.read_bytes() == before
-    text = text.replace("test.guidance", "test.missing")
+    unknown_command = "OCF-CMD-COG-999-PRIMARY"
+    text = text.replace(command_id, unknown_command)
     service.update(path.as_uri(), text)
-    assert any(
-        item.code == "ocf.unknown-reference" and "test.missing" in item.message
-        for item in service.analyze(path.as_uri())
+    _doc, _span, definitions = service.definitions_at(
+        path.as_uri(), text.index(unknown_command) + 2
     )
+    assert definitions and definitions[0].name == unknown_command
+    assert all(item.path == path for item in definitions)
 
 
 @pytest.mark.integration

@@ -70,11 +70,11 @@ def test_modifying_localized_title_changes_alias_and_trace_not_global_record(tmp
     assert function_record().canonical_name == before.canonical_name == "Empathize"
 
 
-def test_trace_rejects_opaque_registry_references_and_implicit_locale_fallback(tmp_path):
+def test_trace_uses_literal_values_and_never_falls_back_for_missing_function_locale(tmp_path):
     write_pack(tmp_path, function_resource())
     catalog = LocaleCatalog(tmp_path, function_records=lambda: [function_record()])
-    with pytest.raises(LocalizationError, match="literal localized metadata"):
-        catalog.function_field_sources(FUNCTION_ID, "en-US")
+    trace = catalog.function_field_sources(FUNCTION_ID, "en-US")
+    assert trace["fields"]["/title/text"]["value"] == "Empathize"
     with pytest.raises(LocalizationError, match="no localized function metadata"):
         catalog.function_field_sources(FUNCTION_ID, "es")
 

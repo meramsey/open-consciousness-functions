@@ -15,11 +15,10 @@ release-ready remains false for these planning/audition workflows.
    [source-first authoring](SOURCE_FIRST_AUTHORING.md).
 2. Author/review locale narration under stable semantic keys. Preserve wording
    and command provenance; do not promote source availability or human review.
-3. For the existing HPlus resource convention, preview
-   `audio migrate-bindings FUNCTION_ID --dry-run`, then remove `--dry-run` to
-   apply it deliberately. It fills missing sequences, upgrades only the known
-   standard default, retains old templates, and preserves custom bindings.
-   Other authoring styles use explicit `function-content/bindings/` records.
+3. Keep the playback sequence in the canonical locale function resource.
+   Session template, pacing, and DSP profile definitions remain shared reusable
+   resources; function-specific selections live in the resource's embedded
+   `content.bindings` metadata.
 4. Run `validate --all`, `review commands`, and the narration integrity checker.
 5. Generate plans with `audio plan`; the `new session-plan` wizard uses the same
    generator and validators.

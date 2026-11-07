@@ -80,7 +80,7 @@ template, pacing and background policy without synthesizing speech.
 
 ## Explore the functions
 
-The current registry contains **58 OCF function records**, **83 structured
+The current catalog contains **58 OCF function records**, **83 structured
 command records** and **58 generated English session plans**. It comprises 55
 legacy-mapped functions (39 with historical source available and 16 without)
 plus 3 OCF-original functions. Historical source availability is not OCF
@@ -100,8 +100,8 @@ valid plan or rendered file does not imply listening or publication approval.
 [Browse the generated catalog](FUNCTION_INDEX.md) or use
 `python scripts/ocf.py commands describe OCF-SLP-005` for command roles and
 procedures. A function, its activation phrase, its narration and its audio are
-separate identities. Naming recommendations are [audited for human review](docs/releases/OCF_COMMAND_NAMING_AUDIT.md);
-no proposed command or narration renames have been applied.
+separate identities. Current title/cue status is derived from canonical locale
+resources; see the [current title/cue view](docs/releases/OCF_TITLE_CUE_CURRENT.md).
 
 ## From intention to audio
 
@@ -201,8 +201,8 @@ describe bounded jobs, targeted validation and protected-data rules.
 - **Packaging?** Select a registered implementation and approved/custom artwork;
   [preview the release](docs/AUDIO_PIPELINE.md#final-release-packages) before any
   deliberate packaging. Successful encoding is not publication approval.
-- **Editorial review?** Read the [command audit](docs/releases/OCF_COMMAND_NAMING_AUDIT.md)
-  and [identifier audit](docs/releases/OCF_IDENTIFIER_NEUTRALIZATION_AUDIT.md).
+- **Editorial review?** Read [editorial review boundaries](docs/EDITORIAL_REVIEW.md)
+  and the generated [current title/cue view](docs/releases/OCF_TITLE_CUE_CURRENT.md).
 
 OCF is independent and unaffiliated with The Monroe Institute, Hemi-Sync or
 related entities. Historical source recordings and private voices/models are

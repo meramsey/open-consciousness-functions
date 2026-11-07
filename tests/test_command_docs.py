@@ -41,7 +41,7 @@ def test_localized_command_data_preserves_canonical_phrases_and_fallback_provena
     assert "Localized fallback marker" in render_command_index(index)
 
 
-def test_generated_command_documents_are_deterministic_and_include_function_sheets():
+def test_generated_command_documents_are_deterministic_without_function_sheet_snapshots():
     first = generated_command_documents()
     second = generated_command_documents()
 
@@ -50,10 +50,16 @@ def test_generated_command_documents_are_deterministic_and_include_function_shee
     assert "docs/COMMAND_INDEX.md" in paths
     assert "docs/COMMAND_QUICK_REFERENCE.md" in paths
     assert "function-command-index.json" in paths
-    assert "docs/functions/OCF-SLP-005.md" in paths
+    assert len(paths) == 3  # Two global guides and one machine-readable index only.
     export = next(content for path, content in first if path == "function-command-index.json")
     assert export.startswith("{")
     assert json.loads(export)["command_count"] > 0
+
+    index = build_command_index("en-US")
+    rendered = render_command_index(index)
+    sleep = next(row for row in index["functions"] if row["function_id"] == "OCF-SLP-005")
+    assert sleep["canonical_resource"] == "../locales/en-US/OCF-SLP-005-Sleep-Easy.yaml"
+    assert f"]({sleep['canonical_resource']})" in rendered
 
 
 def test_reference_renders_scope_secondary_roles_and_role_specific_procedures():

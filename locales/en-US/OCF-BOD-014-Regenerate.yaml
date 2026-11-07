@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-BOD-014
@@ -31,6 +31,65 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-FOCUS-OPEN
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-014.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: focus-target
+    operation: focus-target
+    instruction:
+      text: Focus attention on the selected target.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: open-eyes
+    operation: open-eyes
+    instruction:
+      text: Open your eyes.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-BOD-014-LEGACY-01
   display_cue:
@@ -48,13 +107,28 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-BOD-014-LEGACY-01
+    availability: historical-lookup
+    documentation:
+      visible: false
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: renewal
   status: draft
+  semantic_id: renewal
 - text: visualization
   status: draft
+  semantic_id: visualization
 - text: body-awareness
   status: draft
+  semantic_id: body-awareness
 common_uses:
 - text: Imagining a chosen area of the body in a comfortable, renewed state.
   status: draft
@@ -71,11 +145,13 @@ entries:
   hplus.function.ocf-bod-014.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to direct your body's
+    text: 'This OCF exercise will teach you to direct your body''s
+
       natural powers of repair, regeneration, and reconstruction,
+
       restoring damaged or missing physical structures
-      toward their original healthy form and function.
+
+      toward their original healthy form and function.'
   hplus.function.ocf-bod-014.function-body:
     status: reviewed
     version: 1.2.1
@@ -83,90 +159,151 @@ entries:
       function_id: OCF-BOD-014
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, your body's natural
+    text: 'From this moment forward, your body''s natural
+
       powers of repair, rebuilding, and regeneration
+
       are becoming stronger and more effective.
 
+
       Your physical body contains the knowledge
+
       and biological patterns from which
+
       its healthy structures were originally formed.
 
-      These patterns guide your body's natural
+
+      These patterns guide your body''s natural
+
       processes of cellular renewal, repair,
+
       and organized tissue growth.
 
+
       Whenever any part of your body is injured,
+
       damaged, weakened, or missing,
+
       your regenerative processes will respond,
+
       working toward the restoration
+
       of its healthy form and function.
 
+
       Bring your awareness to the remarkable
+
       ability of living cells to renew,
+
       multiply, specialize, and work together
+
       to create healthy tissue.
 
-      Your body's natural regenerative signals
+
+      Your body''s natural regenerative signals
+
       coordinate these processes,
+
       directing rebuilding where it is needed.
 
+
       Healthy circulation provides the oxygen
+
       and nourishment required for this work,
-      while your body's maintenance systems
+
+      while your body''s maintenance systems
+
       clear away damaged and unnecessary material.
 
+
       New healthy tissue forms in the proper
+
       structure, position, and organization,
+
       restoring strength, connection, and function.
 
+
       Every part of this process works in harmony
+
       with the rest of your physical body.
 
+
       Regeneration proceeds accurately,
+
       creating what is needed and completing
+
       its work when the proper structure is restored.
 
+
       From this moment forward, this pattern
+
       of repair, reconstruction, and regeneration
+
       is permanently established within you.
 
+
       Whether awake, resting, or sleeping,
-      your body's natural regenerative processes
+
+      your body''s natural regenerative processes
+
       continue automatically, without conscious effort.
 
+
       Whenever you wish to direct additional
+
       regenerative activity toward a particular area,
+
       close your eyes and focus your attention
+
       on the part you wish to restore.
 
+
       Picture its complete, healthy form
+
       and the function it is designed to perform.
 
+
       If its precise internal structure is unknown,
-      allow your body's natural intelligence
+
+      allow your body''s natural intelligence
+
       to guide the rebuilding process.
+
 
       Inhale deeply and gently hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth
+
       and open your eyes.
 
+
       Your entire physical system will respond,
+
       directing its coordinated processes
+
       of repair, rebuilding, and regeneration
+
       toward the selected area.
 
+
       Each time you use {{ cue.primary }},
+
       directing this regenerative pattern
+
       becomes easier, faster, and more effective.
 
-      Your body's natural powers of regeneration
+
+      Your body''s natural powers of regeneration
+
       will continue working automatically,
+
       restoring healthy structure and function
-      wherever rebuilding is needed.
+
+      wherever rebuilding is needed.'
   hplus.function.ocf-bod-014.closer:
     status: reviewed
     version: 1.2.1
@@ -174,17 +311,760 @@ entries:
       function_id: OCF-BOD-014
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to direct regeneration
+    text: 'Remember, whenever you wish to direct regeneration
+
       toward any part of your physical body,
+
       close your eyes and picture that area
+
       restored to its healthy form and function.
+
 
       Inhale deeply and hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth
+
       and open your eyes.
 
-      This concludes your OCF Regenerate exercise.
+
+      This concludes your OCF Regenerate exercise.'
+slug: regenerate
+classification:
+  primary_domain: body
+  secondary_domains: []
+category_labels:
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-014.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-014.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-014.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-BOD-014
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 55ae13f44ea08b5b7efa90d41512d6e7c0a21c3a68a193476ecd146b1671dae1
+    classification: KEEP CUE — ALIGN TITLE OR NARRATION
+    recommended_title: Regenerate
+    recommended_primary_cue: PLUS-REGENERATE
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Automatic repair/reconstruction and selected damaged/impaired/missing physical
+      structure intent. Select area, picture complete form/function, close eyes, inhale/hold/cue/exhale.
+      Regenerate is not yet taught; retain reconstruction provenance and scope.
+    pair_reason: REGENERATE is already a distinctive OCF-native intended outcome. Preserve the reviewed
+      legacy-form association and source-unavailable provenance rather than inventing recovered historical
+      wording.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. REGENERATE is already
+      a distinctive OCF-native intended outcome. Preserve the reviewed legacy-form association and source-unavailable
+      provenance rather than inventing recovered historical wording.
+    teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
+    documentary_intent: Brochure claims assistance with healing/replacement of body parts, permanently
+      installed with command intensification; it explicitly does not replace medical care.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: e69d0305a5263926e46b7e36b4c19c86be0e6852cb867bc823a860ba21dfd1b3
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-BOD-014-LEGACY-01
+    command_status: proposed
+    commands:
+    - PLUS-BUILD, LIVE
+    name: REGENERATE
+    source_availability: unavailable
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Regenerate
+  compatibility:
+    legacy_commands:
+    - PLUS-BUILD, LIVE
+    rationale: User approved Regenerate / PLUS-REGENERATE / Plus Regenerate in OCF-EDITORIAL-TITLE-CUES-003.
+      Build Live wording remains historical lookup only; no bridge lesson is added.
+    state: historical-lookup
+  historical_lookup:
+  - text: PLUS-BUILD, LIVE
+    kind: legacy-phrase
+    command_id: OCF-CMD-BOD-014-LEGACY-01
+    decision: OCF-EDITORIAL-TITLE-CUES-003
+  - text: Plus Build Live
+    kind: former-teaching
+    command_id: OCF-CMD-BOD-014-PRIMARY
+    decision: OCF-EDITORIAL-TITLE-CUES-003
+  status:
+    evidence: community-hypothesis
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-bod-014.title
+    short_description_key: functions.ocf-bod-014.short-description
+    purpose_key: functions.ocf-bod-014.purpose
+  commands:
+  - id: OCF-CMD-BOD-014-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-bod-014-primary.label
+      usage_key: commands.ocf-cmd-bod-014-primary.usage
+      purpose_key: functions.ocf-bod-014.purpose
+      explanation_key: commands.ocf-cmd-bod-014-primary.explanation
+      display_cue_key: commands.ocf-cmd-bod-014-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-bod-014-primary.spoken-cue
+    observed_phrase:
+      text: Plus Regenerate
+      narration_key: hplus.function.ocf-bod-014.function-body
+      relationship: canonical-match
+  - id: OCF-CMD-BOD-014-LEGACY-01
+    localization:
+      label_key: commands.ocf-cmd-bod-014-legacy-01.label
+      usage_key: commands.ocf-cmd-bod-014-legacy-01.usage
+      purpose_key: functions.ocf-bod-014.purpose
+      explanation_key: commands.ocf-cmd-bod-014-legacy-01.explanation
+  predecessor_resource_sha256: 4bf24a66112aac01c2078c501cc35e7bd9324a1774d78e1df91929aa4f1cde8e
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-003
+    kind: approved-title-cue
+    source_commit: 83f7b850779c9b67f2ec40f5001c00c2e9c4af75
+    scope: One function's English title/primary cue and necessary body, reinforcement, closer and sign-off
+      substitutions. Historical Build Live lookup retained; no procedure, persistence, mechanism, mode,
+      timing or translation change.
+    decision_source: User response '1' to OCF FUNCTION REVIEW [2/32], explicitly approving Regenerate
+      / PLUS-REGENERATE / Plus Regenerate
+    source_row_sha256: 0ba0887af856d5957f7c37746384c6a29239828a6751717b0022a3a3fbca6025
+    status: accepted
+    previous_values_sha256: b41f0166f92dfad67648def21787057e24781fb195a98a15e5341a8b4ec6b966
+    current_values_sha256: 68c0d7bfddca43d443905cb58a3d0dda3e00743f753c191ce6645c65e5ab881e
+    changed_narration_keys:
+    - hplus.function.ocf-bod-014.closer
+    - hplus.function.ocf-bod-014.function-body
+    previous_resolved_text_sha256:
+      hplus.function.ocf-bod-014.function-body: 3ca7b66bae8526730df908748bca3de4b7fb4be28495a402d7524d35e1f99f3b
+      hplus.function.ocf-bod-014.closer: 4253396a13716d7362f6b703f845f1286d3dd216f48901208ccefe0ef430ef89
+    current_resolved_text_sha256:
+      hplus.function.ocf-bod-014.function-body: a08749de7579962b1c9f69f5013cdee34c7c8e215af079ca919d2642221edb12
+      hplus.function.ocf-bod-014.closer: 4a6d471865b0b9af6be308f366d239f9dd720117ab78dc5c13825c26b119d197
+    review_note: 'Preserve lasting automatic repair/reconstruction suggestions and optional conscious
+      targeting: close eyes, picture healthy form and function, inhale/hold, internal cue, exhale and
+      open eyes. Permanent persistence; no separate mode or release. Preserve reconstruction provenance
+      and historical source-unavailable status.'
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: main
+      confidence: low
+      id: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e:main
+      kind: structural-inference
+      line_candidates:
+      - 40
+      scope: document
+      source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+    - category: preparation
+      confidence: low
+      id: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e:preparation
+      kind: structural-inference
+      line_candidates:
+      - 34
+      scope: document
+      source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+    - category: command_association
+      confidence: low
+      id: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e:command_association
+      kind: structural-inference
+      line_candidates:
+      - 64
+      scope: document
+      source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+    - category: opener
+      confidence: low
+      id: 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1:opener
+      kind: structural-inference
+      line_candidates:
+      - 53
+      - 256
+      - 363
+      scope: document
+      source_sha256: 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1
+    - category: main
+      confidence: low
+      id: 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1:main
+      kind: structural-inference
+      line_candidates:
+      - 146
+      - 150
+      scope: document
+      source_sha256: 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1
+    - category: closer
+      confidence: low
+      id: 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1:closer
+      kind: structural-inference
+      line_candidates:
+      - 241
+      - 363
+      scope: document
+      source_sha256: 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1
+    - category: preparation
+      confidence: low
+      id: 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1:preparation
+      kind: structural-inference
+      line_candidates:
+      - 32
+      - 33
+      - 54
+      - 71
+      - 85
+      - 95
+      - 131
+      - 245
+      - 258
+      scope: document
+      source_sha256: 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1
+    - category: command_association
+      confidence: low
+      id: 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1:command_association
+      kind: structural-inference
+      line_candidates:
+      - 170
+      - 236
+      - 354
+      scope: document
+      source_sha256: 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1
+    - category: future_use
+      confidence: low
+      id: 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1:future_use
+      kind: structural-inference
+      line_candidates:
+      - 238
+      scope: document
+      source_sha256: 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1
+    - category: return
+      confidence: low
+      id: 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1:return
+      kind: structural-inference
+      line_candidates:
+      - 264
+      - 323
+      - 346
+      scope: document
+      source_sha256: 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1
+    - category: purpose
+      confidence: medium
+      id: review:OCF-BOD-014:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 30
+      - 31
+      scope: document
+      source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+    - category: opener
+      confidence: medium
+      id: review:OCF-BOD-014:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 147
+      scope: document
+      source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+    - category: main
+      confidence: medium
+      id: review:OCF-BOD-014:main
+      kind: function-specification-inference
+      line_candidates:
+      - 39
+      - 111
+      scope: document
+      source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+    - category: association
+      confidence: medium
+      id: review:OCF-BOD-014:association
+      kind: function-specification-inference
+      line_candidates:
+      - 60
+      - 111
+      scope: document
+      source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+    - category: rehearsal
+      confidence: unknown
+      id: review:OCF-BOD-014:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 147
+      scope: document
+      source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+    - category: future_use
+      confidence: medium
+      id: review:OCF-BOD-014:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 113
+      - 138
+      scope: document
+      source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-BOD-014:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 147
+      scope: document
+      source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+    - category: closer
+      confidence: medium
+      id: review:OCF-BOD-014:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 144
+      - 147
+      scope: document
+      source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-BOD-014:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 144
+      - 147
+      scope: document
+      source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+    - category: handoff
+      confidence: medium
+      id: review:OCF-BOD-014:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 144
+      - 147
+      scope: document
+      source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-BOD-014:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 147
+      scope: document
+      source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Regenerate/Regenerate.ocr.pdf
+      related_sha256: []
+      sha256: a8de0c4d72ed5241b026da0e23f41a39547a4dfc031a03878fb6c6ebc112b655
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Regenerate/Regenerate_881050P_README.md
+      related_sha256: []
+      sha256: 638830ecc132b2bf73a762861d64c977f1f7f534c9143689f1ac2f5eb34f9c2c
+    - authentication: unverified
+      completeness: reconstruction; historical completeness not applicable
+      evidence_class: reconstructed_mockup
+      normalized_content_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+      path: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+      related_sha256: []
+      sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+    - authentication: unverified
+      completeness: reconstruction; historical completeness not applicable
+      evidence_class: reconstructed_mockup
+      normalized_content_sha256: 8f3de7d09bb197a30300fbe524b07c7bc979512fe04fc946193f30d5f063b0f7
+      path: Regenerate/Regenerate_881050P_reconstructed_clean.txt
+      related_sha256: []
+      sha256: 365c64adc2ded19d193e8058fb6ad3a34f890f5fba269001220e51ee93ecdee1
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Regenerate/Regenerate_881050P_reconstruction_notes.md
+      related_sha256: []
+      sha256: 35e456ef36522d806da2974462e2955743e03ecb02b7228e2f799e7382921a7e
+  specifications:
+    analysis_review:
+      claim_categories:
+      - body-part-reconstruction
+      - tissue-replacement-regeneration
+      - persistent-healing-pattern
+      family: body-reconstruction-claims
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+            end_line: 111
+            file: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+            source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+            start_line: 60
+          status: inferred
+          summary: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath
+            procedure; the exact historical association wording/method is unknown.
+        closer:
+          locators:
+          - content_group_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+            end_line: 147
+            file: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+            source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+            start_line: 144
+          status: inferred
+          summary: Historical closer unknown; annotated mockup borrows remember/use, access close and
+            return shell from related transcripts.
+        consolidation:
+          locators:
+          - content_group_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+            end_line: 147
+            file: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+            source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+            start_line: 144
+          status: inferred
+          summary: Historical target consolidation unknown; proposed sleep/ambient segment is related-function
+            inference, never measured target timing.
+        conversion:
+          locators:
+          - content_group_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+            end_line: 147
+            file: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+            source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+            start_line: 1
+          status: inferred
+          summary: Original OCF design is still required; do not convert mockup expression by synonyms
+            or adopt unsupported mechanisms. Any safer/material reframing needs explicit human review,
+            not historical promotion.
+        future_use:
+          locators:
+          - content_group_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+            end_line: 138
+            file: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+            source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+            start_line: 113
+          - file: Regenerate/Regenerate.ocr.pdf
+            page: 1
+            source_sha256: a8de0c4d72ed5241b026da0e23f41a39547a4dfc031a03878fb6c6ebc112b655
+          - file: Regenerate/Regenerate.ocr.pdf
+            page: 2
+            source_sha256: a8de0c4d72ed5241b026da0e23f41a39547a4dfc031a03878fb6c6ebc112b655
+          status: inferred
+          summary: Brochure marks permanence/intensification and related functions; detailed repair/representation
+            procedure is mockup inference.
+        handoff:
+          locators:
+          - content_group_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+            end_line: 147
+            file: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+            source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+            start_line: 144
+          status: inferred
+          summary: Historical handoff unknown; mockup's waking return/reminder is inferred, not recovered.
+        identity:
+          locators:
+          - content_group_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+            end_line: 111
+            file: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+            source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+            start_line: 60
+          - file: Regenerate/Regenerate.ocr.pdf
+            page: 1
+            source_sha256: a8de0c4d72ed5241b026da0e23f41a39547a4dfc031a03878fb6c6ebc112b655
+          - file: Regenerate/Regenerate.ocr.pdf
+            page: 2
+            source_sha256: a8de0c4d72ed5241b026da0e23f41a39547a4dfc031a03878fb6c6ebc112b655
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+            end_line: 111
+            file: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+            source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+            start_line: 39
+          status: inferred
+          summary: identify-body-area; proposed-representation-of-normal-function; proposed-build-live-breath-cue;
+            proposed-repair-and-adaptation-association
+        opener:
+          locators:
+          - content_group_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+            end_line: 147
+            file: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+            source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+            start_line: 1
+          status: inferred
+          summary: Historical opener unknown; mockup supplies purpose orientation and related-function
+            learning shell as structural inference.
+        preparation:
+          locators:
+          - content_group_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+            end_line: 147
+            file: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+            source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+            start_line: 1
+          - file: Regenerate/Regenerate.ocr.pdf
+            page: 1
+            source_sha256: a8de0c4d72ed5241b026da0e23f41a39547a4dfc031a03878fb6c6ebc112b655
+          - file: Regenerate/Regenerate.ocr.pdf
+            page: 2
+            source_sha256: a8de0c4d72ed5241b026da0e23f41a39547a4dfc031a03878fb6c6ebc112b655
+          status: supported
+          summary: Brochure gives prior Preparation Exercise or prior H-PLUS learning, a quiet supported
+            position, soft stereo/headphone listening and next-day target exercise. Exact lost narration
+            procedure is unknown; mockup shell is related-function inference.
+        provenance:
+          locators:
+          - content_group_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+            end_line: 147
+            file: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+            source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+            start_line: 1
+          - file: Regenerate/Regenerate.ocr.pdf
+            page: 1
+            source_sha256: a8de0c4d72ed5241b026da0e23f41a39547a4dfc031a03878fb6c6ebc112b655
+          - file: Regenerate/Regenerate.ocr.pdf
+            page: 2
+            source_sha256: a8de0c4d72ed5241b026da0e23f41a39547a4dfc031a03878fb6c6ebc112b655
+          status: inferred
+          summary: Complete available reconstructed_mockup text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Annotated
+            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
+            historical operations remain unknown. Both brochure pages inspected separately; catalogue
+            assertions are documentary evidence, not recovered audio instructions.
+        purpose:
+          locators:
+          - content_group_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+            end_line: 31
+            file: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+            source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+            start_line: 30
+          - file: Regenerate/Regenerate.ocr.pdf
+            page: 1
+            source_sha256: a8de0c4d72ed5241b026da0e23f41a39547a4dfc031a03878fb6c6ebc112b655
+          - file: Regenerate/Regenerate.ocr.pdf
+            page: 2
+            source_sha256: a8de0c4d72ed5241b026da0e23f41a39547a4dfc031a03878fb6c6ebc112b655
+          status: supported
+          summary: Brochure claims assistance with healing/replacement of body parts, permanently installed
+            with command intensification; it explicitly does not replace medical care.
+        rehearsal:
+          locators:
+          - content_group_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+            end_line: 147
+            file: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+            source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Annotated
+            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
+            historical operations remain unknown.
+        safety_claims:
+          locators:
+          - content_group_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+            end_line: 147
+            file: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+            source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+            start_line: 1
+          - file: Regenerate/Regenerate.ocr.pdf
+            page: 1
+            source_sha256: a8de0c4d72ed5241b026da0e23f41a39547a4dfc031a03878fb6c6ebc112b655
+          - file: Regenerate/Regenerate.ocr.pdf
+            page: 2
+            source_sha256: a8de0c4d72ed5241b026da0e23f41a39547a4dfc031a03878fb6c6ebc112b655
+          status: inferred
+          summary: body-part-reconstruction; tissue-replacement-regeneration; persistent-healing-pattern.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+            end_line: 147
+            file: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+            source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+            start_line: 1
+          status: inferred
+          summary: Historical target recording's exact state sequence remains unknown. Mockup imports
+            ten/eleven/ten/sleep/waking grammar from surviving Hearing/Seeing, not recovered target audio.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+            end_line: 147
+            file: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+            source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Annotated
+            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
+            historical operations remain unknown.
+      source_extent:
+        content_group_sha256: b6f7a91110be0e98d05833fc800d9f9bd14a5b9f5138ad3b3164af87e5ab4d32
+        end_line: 147
+        file: Regenerate/Regenerate_881050P_reconstructed_annotated.txt
+        source_sha256: 065df90f2b73e4e5a50c760a53589065b9ef1529c1f0b4cb53620c9678673d9e
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-BOD-014:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-BOD-014:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-BOD-014:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-BOD-014:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-BOD-014:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-BOD-014:main
+        operations:
+        - identify-body-area
+        - proposed-representation-of-normal-function
+        - proposed-build-live-breath-cue
+        - proposed-repair-and-adaptation-association
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-BOD-014:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-BOD-014:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-BOD-014:rehearsal
+        operations: []
+        status: unknown
+      safety_claims:
+        evidence_refs:
+        - review:OCF-BOD-014:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-BOD-014:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication.
+      Catalogue purpose/command/use limits and proposed mockup operations are separate evidence axes.
+      Missing historical operations remain unknown.
+    - Original OCF design is still required; do not convert mockup expression by synonyms or adopt unsupported
+      mechanisms. Any safer/material reframing needs explicit human review, not historical promotion.
+    states:
+      preferred: []
+      required: []
+      status: unknown

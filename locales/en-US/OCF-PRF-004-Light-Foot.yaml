@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-PRF-004
@@ -37,6 +37,57 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.scopes.application.persistence
+    invocation_scope_ref: lifecycle.scopes.application
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-prf-004.function-body
+      before_steps:
+      - id: select-movement-context
+        operation: select-purpose
+        localization_key: command.procedure.select-purpose
+    relationships: {}
+  procedure_steps:
+  - id: select-movement-context
+    operation: select-purpose
+    instruction:
+      text: Choose the purpose for using this function.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-PRF-004-LEGACY-01
   display_cue:
@@ -54,13 +105,28 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-PRF-004-LEGACY-01
+    availability: historical-lookup
+    documentation:
+      visible: false
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: movement
   status: draft
+  semantic_id: movement
 - text: coordination
   status: draft
+  semantic_id: coordination
 - text: body-awareness
   status: draft
+  semantic_id: body-awareness
 common_uses:
 - text: Bringing attention to lighter, quieter steps in ordinary movement.
   status: draft
@@ -76,10 +142,11 @@ entries:
   hplus.function.ocf-prf-004.opener:
     status: reviewed
     version: 1.1.0
-    text: |-
-      This OCF exercise will teach you to move with lightness,
+    text: 'This OCF exercise will teach you to move with lightness,
+
       quiet precision, and natural efficiency, making smooth,
-      effortless steps an increasingly permanent part of the way you move.
+
+      effortless steps an increasingly permanent part of the way you move.'
   hplus.function.ocf-prf-004.function-body:
     status: reviewed
     version: 1.2.1
@@ -87,53 +154,86 @@ entries:
       function_id: OCF-PRF-004
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, your body will learn
+    text: 'From this moment forward, your body will learn
+
       a lighter, quieter, and more efficient way of moving.
 
+
       Whether walking through daily life, climbing steps,
+
       jogging, or running, your feet and legs will work
+
       together with natural ease and precision.
 
+
       Your feet will lift cleanly from the ground,
+
       moving forward without dragging or scraping.
+
       Each foot will return gently and deliberately,
+
       with just the pressure needed for stable support.
 
+
       Your steps will grow quieter, smoother, and lighter.
+
       Unnecessary impact, tension, and wasted motion
+
       will fade from the way you move.
 
+
       Your posture, balance, and rhythm will adjust together.
+
       You will place each foot where you intend,
+
       adapting naturally to the ground beneath you
+
       and the movement you have chosen.
 
+
       Your total self will learn this pattern so thoroughly
+
       that it becomes your natural way of walking,
+
       without needing to think about each separate step.
 
+
       This improvement will remain part of your everyday
+
       movement, even when you are not consciously
+
       using the Light Foot command.
 
+
       Whenever you wish to strengthen this lightness
+
       and efficiency even further, inhale deeply
+
       and gently hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth.
 
+
       Your movement will immediately become lighter,
+
       quieter, more balanced, and more economical,
+
       while maintaining the awareness and control
+
       appropriate to your surroundings.
 
+
       Each time you move, your body will reinforce
+
       this effortless pattern. Each time you use
+
       {{ cue.primary }}, it will become easier
-      and more effective to express at will.
+
+      and more effective to express at will.'
   hplus.function.ocf-prf-004.closer:
     status: reviewed
     version: 1.2.1
@@ -141,13 +241,779 @@ entries:
       function_id: OCF-PRF-004
       allowed:
       - cue.primary
-    text: |-
-      Remember, your lighter, quieter, more efficient way
+    text: 'Remember, your lighter, quieter, more efficient way
+
       of moving will continue naturally, and whenever
+
       you wish to strengthen it, inhale deeply,
+
       hold your breath, and think or say in your mind,
+
       "{{ cue.primary }}."
+
 
       Then exhale slowly through your mouth.
 
-      This concludes your OCF Light Foot exercise.
+
+      This concludes your OCF Light Foot exercise.'
+slug: light-foot
+classification:
+  primary_domain: performance
+  secondary_domains:
+  - body
+category_labels:
+  performance:
+    text: performance
+    status: canonical
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description_key: functions.ocf-prf-004.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description_key: functions.ocf-prf-004.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description_key: functions.ocf-prf-004.lifecycle.scopes.application.description
+      activation: manual
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-prf-004.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-prf-004.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-prf-004.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-PRF-004
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 6ded86aab9a92dfe7930cce84f23a5ecf79324a3155a6391a27b9a9bdb3bd1b7
+    classification: RENAME TITLE/CUE — UPDATE TEACHING
+    recommended_title: Light Foot
+    recommended_primary_cue: PLUS-LIGHT STEP
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Lasting efficient gait, clean foot lift, controlled placement and reduced impact;
+      optional inhale/hold/cue/slow mouth exhale. Preserve automatic baseline rather than imply command-only
+      walking/jogging/running scope.
+    pair_reason: LIGHT STEP distinguishes moving-foot ease from brightness or a generic light state. Preserve
+      the actual moving-feet condition; do not broaden to all-body levitation or unrelated movement.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. LIGHT STEP distinguishes
+      moving-foot ease from brightness or a generic light state. Preserve the actual moving-feet condition;
+      do not broaden to all-body levitation or unrelated movement.
+    teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
+    documentary_intent: Brochure describes easier walking/jogging/running and explicitly limits operation
+      to actually moving the feet.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: f124f44697d726ae367d7a02c137e8d50dfd146c0728a7ac2378891201c7a1c0
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-PRF-004-LEGACY-01
+    command_status: proposed
+    commands:
+    - PLUS-LIGHTER, LIGHTER
+    name: LIGHT FOOT
+    source_availability: unavailable
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Light Foot
+  compatibility:
+    legacy_commands:
+    - PLUS-LIGHTER, LIGHTER
+    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is
+      historical lookup. Existing controls remain unchanged.
+    state: historical-lookup
+  historical_lookup:
+  - text: PLUS-LIGHT
+    kind: former-primary
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+    command_id: OCF-CMD-PRF-004-PRIMARY
+  - text: Plus Lighter Lighter
+    kind: former-teaching
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+    command_id: OCF-CMD-PRF-004-PRIMARY
+  status:
+    evidence: community-hypothesis
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-prf-004.title
+    short_description_key: functions.ocf-prf-004.short-description
+    purpose_key: functions.ocf-prf-004.purpose
+  commands:
+  - id: OCF-CMD-PRF-004-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-prf-004-primary.label
+      usage_key: commands.ocf-cmd-prf-004-primary.usage
+      purpose_key: functions.ocf-prf-004.purpose
+      explanation_key: commands.ocf-cmd-prf-004-primary.explanation
+      display_cue_key: commands.ocf-cmd-prf-004-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-prf-004-primary.spoken-cue
+    observed_phrase:
+      text: Plus Light Step
+      narration_key: hplus.function.ocf-prf-004.function-body
+      relationship: canonical-match
+  - id: OCF-CMD-PRF-004-LEGACY-01
+    localization:
+      label_key: commands.ocf-cmd-prf-004-legacy-01.label
+      usage_key: commands.ocf-cmd-prf-004-legacy-01.usage
+      purpose_key: functions.ocf-prf-004.purpose
+      explanation_key: commands.ocf-cmd-prf-004-legacy-01.explanation
+  predecessor_resource_sha256: 0b6e79e874f90f1a5ed5507696249555621e1898ea366307fbd7dfbb7081ea64
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
+      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
+      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: 792a37ae239b3d4ec5d27398171746b0384acddb7da3941f3f12b2985ed85e78
+    status: accepted
+    previous_values_sha256: 09333c77a5cdc0d6518b86d50c7d92b353c305eeff78618d1e8ce2894dd0520b
+    current_values_sha256: 6292ca3d494d783b98077704526d33105bf9c50dae74de7046e2be10538c2de8
+    changed_narration_keys:
+    - hplus.function.ocf-prf-004.closer
+    - hplus.function.ocf-prf-004.function-body
+    previous_resolved_text_sha256:
+      hplus.function.ocf-prf-004.function-body: 10e9bfc960925b5aaafcf5cf8c6db42f75280c0a67627f9cedbe42e7d99865a5
+      hplus.function.ocf-prf-004.closer: c1f4ab3838bfce228293c048f7af94b62b6d0979f2b413921463c6d03abb15db
+    current_resolved_text_sha256:
+      hplus.function.ocf-prf-004.function-body: ee5962f5aebe304a7edb71dee26d9f2b9cd9968081389d86e9f0a899cb1d7c4a
+      hplus.function.ocf-prf-004.closer: 54cdc579aecbe14e371d164669f7f07ce5a358ab0a30801f1877a60dd9155dcb
+    review_note: Change display cue to PLUS-LIGHT STEP; replace two body mentions and one closer mention
+      with Plus Light Step. Keep Light Foot title, automatic everyday baseline, optional reinforcement,
+      breathing procedure and surrounding movement suggestions. Retain superseded cue wording as historical
+      lookup; introduce no mode or release.
+    approval_response: '1'
+    review_position: 8
+    separate_review_needed: true
+  - id: OCF-FUNCTIONAL-METADATA-PERSISTENCE
+    kind: approved-functional-metadata
+    source_commit: 4da47a5740ead0be6bc3127437ee7b36a9c86ddf
+    scope: OCF-PRF-004:persistence
+    decision_source: Please do
+    source_row_sha256: 0ef98695a59e1e69ae29800f0e655230f6e561e0070d75d183bd49b41cbc278b
+    status: accepted
+    current_values_sha256: 9821a99d255a8e0531082de4c56291da26f539dcb23fab1fa3dcf728e685296c
+    review_note: 'Light Foot: 1'
+    approval_response: approve
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: main
+      confidence: low
+      id: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70:main
+      kind: structural-inference
+      line_candidates:
+      - 36
+      scope: document
+      source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+    - category: preparation
+      confidence: low
+      id: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70:preparation
+      kind: structural-inference
+      line_candidates:
+      - 31
+      - 71
+      scope: document
+      source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+    - category: command_association
+      confidence: low
+      id: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70:command_association
+      kind: structural-inference
+      line_candidates:
+      - 41
+      scope: document
+      source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+    - category: opener
+      confidence: low
+      id: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73:opener
+      kind: structural-inference
+      line_candidates:
+      - 49
+      - 228
+      - 331
+      scope: document
+      source_sha256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
+    - category: main
+      confidence: low
+      id: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73:main
+      kind: structural-inference
+      line_candidates:
+      - 142
+      - 146
+      scope: document
+      source_sha256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
+    - category: closer
+      confidence: low
+      id: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73:closer
+      kind: structural-inference
+      line_candidates:
+      - 213
+      - 331
+      scope: document
+      source_sha256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
+    - category: preparation
+      confidence: low
+      id: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73:preparation
+      kind: structural-inference
+      line_candidates:
+      - 28
+      - 29
+      - 50
+      - 67
+      - 81
+      - 91
+      - 127
+      - 172
+      - 217
+      - 230
+      scope: document
+      source_sha256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
+    - category: command_association
+      confidence: low
+      id: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73:command_association
+      kind: structural-inference
+      line_candidates:
+      - 150
+      - 208
+      - 323
+      scope: document
+      source_sha256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
+    - category: future_use
+      confidence: low
+      id: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73:future_use
+      kind: structural-inference
+      line_candidates:
+      - 210
+      scope: document
+      source_sha256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
+    - category: return
+      confidence: low
+      id: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73:return
+      kind: structural-inference
+      line_candidates:
+      - 236
+      - 295
+      - 318
+      scope: document
+      source_sha256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
+    - category: purpose
+      confidence: medium
+      id: review:OCF-PRF-004:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 27
+      - 28
+      scope: document
+      source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+    - category: opener
+      confidence: medium
+      id: review:OCF-PRF-004:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 112
+      scope: document
+      source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+    - category: main
+      confidence: medium
+      id: review:OCF-PRF-004:main
+      kind: function-specification-inference
+      line_candidates:
+      - 35
+      - 84
+      scope: document
+      source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+    - category: association
+      confidence: medium
+      id: review:OCF-PRF-004:association
+      kind: function-specification-inference
+      line_candidates:
+      - 35
+      - 84
+      scope: document
+      source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+    - category: rehearsal
+      confidence: unknown
+      id: review:OCF-PRF-004:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 112
+      scope: document
+      source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+    - category: future_use
+      confidence: medium
+      id: review:OCF-PRF-004:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 86
+      - 107
+      scope: document
+      source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+    - category: suspend_cancel_reset
+      confidence: medium
+      id: review:OCF-PRF-004:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 86
+      - 96
+      scope: document
+      source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+    - category: closer
+      confidence: medium
+      id: review:OCF-PRF-004:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 109
+      - 112
+      scope: document
+      source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-PRF-004:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 109
+      - 112
+      scope: document
+      source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+    - category: handoff
+      confidence: medium
+      id: review:OCF-PRF-004:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 109
+      - 112
+      scope: document
+      source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-PRF-004:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 112
+      scope: document
+      source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Light Foot/Light Foot.ocr.pdf
+      related_sha256: []
+      sha256: 70f40710b84c5ce114061c065fb5d957f99ada7f1d343c6b3ff32ffac203bfa1
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Light Foot/Light_Foot_881047_README.md
+      related_sha256: []
+      sha256: eb709474c5eb4405e7d60e309d09740df91865e12ef161ea3b7088c7cfff34d9
+    - authentication: unverified
+      completeness: reconstruction; historical completeness not applicable
+      evidence_class: reconstructed_mockup
+      normalized_content_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+      path: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+      related_sha256: []
+      sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+    - authentication: unverified
+      completeness: reconstruction; historical completeness not applicable
+      evidence_class: reconstructed_mockup
+      normalized_content_sha256: 0979f0c7c66d487a91f56fa26606ecadc75bfd6251f0cca84d90361a01a0164b
+      path: Light Foot/Light_Foot_881047_reconstructed_clean.txt
+      related_sha256: []
+      sha256: b7162a671d0dbc3cfbcce49fa4c2057407eaec7bb91dbbc1f9e8cff75fc11b73
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Light Foot/Light_Foot_881047_reconstruction_notes.md
+      related_sha256: []
+      sha256: 522aeb90cfbe94e32f04f5411505876593c8569f0059f65121c74777e4abed1f
+  specifications:
+    analysis_review:
+      claim_categories:
+      - easier-locomotion
+      - recovery-from-leg-or-foot-dysfunction
+      - motion-conditioned-operation
+      family: movement-conditioned-ease
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+            end_line: 84
+            file: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+            source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+            start_line: 35
+          status: inferred
+          summary: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath
+            procedure; the exact historical association wording/method is unknown.
+        closer:
+          locators:
+          - content_group_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+            end_line: 112
+            file: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+            source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+            start_line: 109
+          status: inferred
+          summary: Historical closer unknown; annotated mockup borrows remember/use, access close and
+            return shell from related transcripts.
+        consolidation:
+          locators:
+          - content_group_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+            end_line: 112
+            file: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+            source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+            start_line: 109
+          status: inferred
+          summary: Historical target consolidation unknown; proposed sleep/ambient segment is related-function
+            inference, never measured target timing.
+        conversion:
+          locators:
+          - content_group_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+            end_line: 112
+            file: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+            source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+            start_line: 1
+          status: inferred
+          summary: Original OCF design is still required; do not convert mockup expression by synonyms
+            or adopt unsupported mechanisms. Any safer/material reframing needs explicit human review,
+            not historical promotion.
+        future_use:
+          locators:
+          - content_group_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+            end_line: 107
+            file: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+            source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+            start_line: 86
+          - file: Light Foot/Light Foot.ocr.pdf
+            page: 1
+            source_sha256: 70f40710b84c5ce114061c065fb5d957f99ada7f1d343c6b3ff32ffac203bfa1
+          - file: Light Foot/Light Foot.ocr.pdf
+            page: 2
+            source_sha256: 70f40710b84c5ce114061c065fb5d957f99ada7f1d343c6b3ff32ffac203bfa1
+          status: inferred
+          summary: Cue intensifies the movement-conditioned pattern; catalogue foot-motion restriction
+            is separate from reconstructed gait/rhythm/awareness details.
+        handoff:
+          locators:
+          - content_group_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+            end_line: 112
+            file: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+            source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+            start_line: 109
+          status: inferred
+          summary: Historical handoff unknown; mockup's waking return/reminder is inferred, not recovered.
+        identity:
+          locators:
+          - content_group_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+            end_line: 84
+            file: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+            source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+            start_line: 35
+          - file: Light Foot/Light Foot.ocr.pdf
+            page: 1
+            source_sha256: 70f40710b84c5ce114061c065fb5d957f99ada7f1d343c6b3ff32ffac203bfa1
+          - file: Light Foot/Light Foot.ocr.pdf
+            page: 2
+            source_sha256: 70f40710b84c5ce114061c065fb5d957f99ada7f1d343c6b3ff32ffac203bfa1
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+            end_line: 84
+            file: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+            source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+            start_line: 35
+          status: inferred
+          summary: select-ongoing-foot-movement; proposed-lighter-breath-cue; proposed-smoother-less-effortful-movement-association
+        opener:
+          locators:
+          - content_group_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+            end_line: 112
+            file: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+            source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+            start_line: 1
+          status: inferred
+          summary: Historical opener unknown; mockup supplies purpose orientation and related-function
+            learning shell as structural inference.
+        preparation:
+          locators:
+          - content_group_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+            end_line: 112
+            file: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+            source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+            start_line: 1
+          - file: Light Foot/Light Foot.ocr.pdf
+            page: 1
+            source_sha256: 70f40710b84c5ce114061c065fb5d957f99ada7f1d343c6b3ff32ffac203bfa1
+          - file: Light Foot/Light Foot.ocr.pdf
+            page: 2
+            source_sha256: 70f40710b84c5ce114061c065fb5d957f99ada7f1d343c6b3ff32ffac203bfa1
+          status: supported
+          summary: Brochure gives prior Preparation Exercise or prior H-PLUS learning, a quiet supported
+            position, soft stereo/headphone listening and next-day target exercise. Exact lost narration
+            procedure is unknown; mockup shell is related-function inference.
+        provenance:
+          locators:
+          - content_group_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+            end_line: 112
+            file: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+            source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+            start_line: 1
+          - file: Light Foot/Light Foot.ocr.pdf
+            page: 1
+            source_sha256: 70f40710b84c5ce114061c065fb5d957f99ada7f1d343c6b3ff32ffac203bfa1
+          - file: Light Foot/Light Foot.ocr.pdf
+            page: 2
+            source_sha256: 70f40710b84c5ce114061c065fb5d957f99ada7f1d343c6b3ff32ffac203bfa1
+          status: inferred
+          summary: Complete available reconstructed_mockup text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Annotated
+            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
+            historical operations remain unknown. Both brochure pages inspected separately; catalogue
+            assertions are documentary evidence, not recovered audio instructions.
+        purpose:
+          locators:
+          - content_group_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+            end_line: 28
+            file: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+            source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+            start_line: 27
+          - file: Light Foot/Light Foot.ocr.pdf
+            page: 1
+            source_sha256: 70f40710b84c5ce114061c065fb5d957f99ada7f1d343c6b3ff32ffac203bfa1
+          - file: Light Foot/Light Foot.ocr.pdf
+            page: 2
+            source_sha256: 70f40710b84c5ce114061c065fb5d957f99ada7f1d343c6b3ff32ffac203bfa1
+          status: supported
+          summary: Brochure describes easier walking/jogging/running and explicitly limits operation to
+            actually moving the feet.
+        rehearsal:
+          locators:
+          - content_group_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+            end_line: 112
+            file: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+            source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Annotated
+            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
+            historical operations remain unknown.
+        safety_claims:
+          locators:
+          - content_group_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+            end_line: 112
+            file: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+            source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+            start_line: 1
+          - file: Light Foot/Light Foot.ocr.pdf
+            page: 1
+            source_sha256: 70f40710b84c5ce114061c065fb5d957f99ada7f1d343c6b3ff32ffac203bfa1
+          - file: Light Foot/Light Foot.ocr.pdf
+            page: 2
+            source_sha256: 70f40710b84c5ce114061c065fb5d957f99ada7f1d343c6b3ff32ffac203bfa1
+          status: inferred
+          summary: easier-locomotion; recovery-from-leg-or-foot-dysfunction; motion-conditioned-operation.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+            end_line: 112
+            file: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+            source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+            start_line: 1
+          status: inferred
+          summary: Historical target recording's exact state sequence remains unknown. Mockup imports
+            ten/eleven/ten/sleep/waking grammar from surviving Hearing/Seeing, not recovered target audio.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+            end_line: 96
+            file: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+            source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+            start_line: 86
+          status: inferred
+          summary: Operation while moving is catalogue-limited; precise stop/resume process is inferred,
+            not a documented reset cue.
+      source_extent:
+        content_group_sha256: 64cb426221b340ce4c6e316bd3de5c142881e2505eccdf22f4ab1dfa74e9a4b2
+        end_line: 112
+        file: Light Foot/Light_Foot_881047_reconstructed_annotated.txt
+        source_sha256: 151cdef4dc70f91f869f89c7f951836ff2462b1095c7b01f63b9b8e1c4ebee70
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-PRF-004:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-PRF-004:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-PRF-004:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-PRF-004:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-PRF-004:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-PRF-004:main
+        operations:
+        - select-ongoing-foot-movement
+        - proposed-lighter-breath-cue
+        - proposed-smoother-less-effortful-movement-association
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-PRF-004:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-PRF-004:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-PRF-004:rehearsal
+        operations: []
+        status: unknown
+      safety_claims:
+        evidence_refs:
+        - review:OCF-PRF-004:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-PRF-004:suspend_cancel_reset
+        operations:
+        - documented-suspend-cancel-reset
+        status: inferred
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication.
+      Catalogue purpose/command/use limits and proposed mockup operations are separate evidence axes.
+      Missing historical operations remain unknown.
+    - Original OCF design is still required; do not convert mockup expression by synonyms or adopt unsupported
+      mechanisms. Any safer/material reframing needs explicit human review, not historical promotion.
+    states:
+      preferred: []
+      required: []
+      status: unknown

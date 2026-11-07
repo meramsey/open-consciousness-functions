@@ -6,9 +6,10 @@ import pytest
 import yaml
 from ocf_tools.command_docs import build_command_index
 from ocf_tools.commands import localized_cue
+from ocf_tools.function_catalog import resources
 from ocf_tools.indexes import load_all_functions
 from ocf_tools.locale import LocaleCatalog, LocalizationError
-from ocf_tools.localized_migration import build_batch
+from ocf_tools.paths import REPO_ROOT
 
 pytestmark = pytest.mark.integration
 
@@ -17,14 +18,13 @@ pytestmark = pytest.mark.integration
 def literal_catalog(tmp_path):
     records = load_all_functions()
     original = LocaleCatalog()
-    batch = build_batch(records=records, catalog=original)
     directory = tmp_path / "en-US"
     directory.mkdir()
-    resources = []
-    for relative, text in batch["files"].items():
-        filename = relative.rsplit("/", 1)[-1]
-        (directory / filename).write_text(text, encoding="utf-8")
-        resources.append({"file": filename, "domain": "function"})
+    manifest_resources = []
+    for path, _data in resources(REPO_ROOT):
+        filename = path.name
+        (directory / filename).write_bytes(path.read_bytes())
+        manifest_resources.append({"file": filename, "domain": "function"})
     (directory / "manifest.yaml").write_text(
         yaml.safe_dump(
             {
@@ -33,7 +33,7 @@ def literal_catalog(tmp_path):
                 "status": "canonical",
                 "language_name": "English",
                 "semantic_version": "1.0.0",
-                "resources": resources,
+                "resources": manifest_resources,
             }
         ),
         encoding="utf-8",

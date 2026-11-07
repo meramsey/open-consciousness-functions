@@ -162,7 +162,13 @@ def validate_function_schema(record: FunctionRecord) -> ValidationResult:
     """Validate one function record against function.schema.json."""
     result = ValidationResult()
     schema = _load_schema("function.schema.json")
-    for message in validate_against_schema(record.data, schema):
+    # The FunctionRecord API includes a read-only projection of consolidated
+    # locale content. Its legacy structural schema intentionally validates only
+    # the compatibility view; the full localized-function schema validates the
+    # embedded content authority separately.
+    compatibility = dict(record.data)
+    compatibility.pop("content", None)
+    for message in validate_against_schema(compatibility, schema):
         result.add("error", "schema", message, record.id)
     return result
 
@@ -1522,6 +1528,20 @@ def validate_function_file(path: Path) -> ValidationResult:
     """Validate a single function YAML file."""
     result = ValidationResult()
     data = load_yaml_file(path)
+    if data.get("domain") == "function" and data.get("schema_version") == "2.0":
+        from .function_catalog import project
+
+        for message in validate_against_schema(
+            data, _load_schema("localized-function.schema.json")
+        ):
+            result.add("error", "schema", message, str(path))
+        if not result.ok:
+            return result
+        record = project(data, path, path.resolve().parents[2])
+        result.extend(validate_function_schema(record))
+        result.extend(validate_command_rules(record))
+        result.extend(validate_command_metadata([record]))
+        return result
     record = FunctionRecord(
         id=str(data.get("id", "")),
         slug=str(data.get("slug", "")),

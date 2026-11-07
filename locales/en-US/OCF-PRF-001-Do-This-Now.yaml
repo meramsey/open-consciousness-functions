@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-PRF-001
@@ -30,14 +30,67 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-prf-001.function-body
+      before_steps:
+      - id: select-activity
+        operation: select-activity
+        localization_key: command.procedure.select-activity
+    relationships: {}
+  procedure_steps:
+  - id: select-activity
+    operation: select-activity
+    instruction:
+      text: Choose an activity.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: action
   status: draft
+  semantic_id: action
 - text: intention
   status: draft
+  semantic_id: intention
 - text: motivation
   status: draft
+  semantic_id: motivation
 common_uses:
 - text: Preparing to begin a chosen task with a clear next action.
   status: draft
@@ -50,8 +103,8 @@ relationships:
   - function_id: OCF-FND-002
     relationship_type: complementary
     description:
-      text: Starting or completing a task and sustaining attention address different aspects of chosen activity;
-        no combined activation is required.
+      text: Starting or completing a task and sustaining attention address different aspects of chosen
+        activity; no combined activation is required.
       status: draft
     status: draft
     dependency: optional
@@ -70,11 +123,13 @@ entries:
   hplus.function.ocf-prf-001.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to turn your
+    text: 'This OCF exercise will teach you to turn your
+
       intentions into action, bringing energy,
+
       enthusiasm, and momentum to starting,
-      continuing, and completing what you choose.
+
+      continuing, and completing what you choose.'
   hplus.function.ocf-prf-001.function-body:
     status: reviewed
     version: 1.2.0
@@ -82,55 +137,90 @@ entries:
       function_id: OCF-PRF-001
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, you have the ability
+    text: 'From this moment forward, you have the ability
+
       to turn your intentions into action
+
       whenever you choose.
 
+
       Whether you wish to begin something new,
+
       continue what you have started,
+
       or bring an activity to completion,
+
       your total self is ready to move forward.
 
+
       Bring the activity you desire clearly into your mind.
+
       Know what you intend to do and the next action to take.
+
 
       Inhale deeply and gently hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
+
       Immediately, your conscious mind,
+
       subconscious mind, physical body,
+
       and higher self will work together
+
       in harmony with your chosen purpose.
 
+
       Hesitation, delay, and unnecessary resistance
+
       will release and fade away.
+
       Energy, willingness, and enthusiasm
+
       will rise naturally within you.
 
+
       You will move into action with confidence,
+
       ease, and a clear sense of direction.
+
       Each step will create momentum for the next,
+
       making it easier to continue and complete
+
       what you have chosen to accomplish.
 
+
       You will recognize the satisfaction of progress
+
       and the pleasure of creating positive change.
+
       Your attention and energy will remain aligned
+
       with the activity until its purpose is fulfilled.
 
+
       From this moment forward, this ability
+
       to begin, continue, and complete
+
       your chosen activities is permanently
+
       available whenever you desire.
 
+
       Each time you use {{ cue.primary }},
+
       moving from intention into action
-      becomes easier, quicker, and more effective.
+
+      becomes easier, quicker, and more effective.'
   hplus.function.ocf-prf-001.closer:
     status: reviewed
     version: 1.2.0
@@ -138,16 +228,580 @@ entries:
       function_id: OCF-PRF-001
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to begin,
+    text: 'Remember, whenever you wish to begin,
+
       continue, or complete an activity,
+
       bring that activity clearly into your mind.
+
 
       Inhale deeply and hold your breath.
 
+
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
-      This concludes your OCF Do This Now exercise.
+
+      This concludes your OCF Do This Now exercise.'
+slug: do-this-now
+classification:
+  primary_domain: performance
+  secondary_domains: []
+category_labels:
+  performance:
+    text: performance
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-prf-001.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-prf-001.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-prf-001.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-PRF-001
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: d4df5d9709a52c96698e1315bbf6d9f1b53818d3b5ad0f723a7ca31cdaba51da
+    classification: KEEP — TITLE, CUE, AND TEACHING ALREADY CONSISTENT
+    recommended_title: Do This Now
+    recommended_primary_cue: PLUS-DO-THIS-NOW
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Select activity and next action, inhale/hold/cue/candle-like exhale. Beginning,
+      continuing and completing belong to one activity-directed operation, not three modes.
+    pair_reason: The phrase is natural and immediately actionable. Hyphens are a representation/spoken-tokenization
+      audit issue, not authorization to normalize an existing command.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. The phrase is natural
+      and immediately actionable. Hyphens are a representation/spoken-tokenization audit issue, not authorization
+      to normalize an existing command.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Begin, continue or complete a chosen activity with increased enthusiasm and readiness.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: 782ffc0caf81140bff7f948b21f7a2ae29542241e76c4afca83cef3419d6a778
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-PRF-001-PRIMARY
+    command_status: unchanged
+    commands:
+    - PLUS-DO-THIS-NOW
+    name: DO THIS NOW
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Do This Now
+  compatibility:
+    state: unchanged
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-prf-001.title
+    short_description_key: functions.ocf-prf-001.short-description
+    purpose_key: functions.ocf-prf-001.purpose
+  commands:
+  - id: OCF-CMD-PRF-001-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-prf-001-primary.label
+      usage_key: commands.ocf-cmd-prf-001-primary.usage
+      purpose_key: functions.ocf-prf-001.purpose
+      explanation_key: commands.ocf-cmd-prf-001-primary.explanation
+  predecessor_resource_sha256: 74e418df3ca906d999ac850c9a63719036ae81afc7d21d83bbd57e1caeca1cdc
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: preparation
+      confidence: low
+      id: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2:preparation
+      kind: structural-inference
+      line_candidates:
+      - 6
+      scope: document
+      source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+    - category: future_use
+      confidence: low
+      id: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2:future_use
+      kind: structural-inference
+      line_candidates:
+      - 77
+      - 89
+      scope: document
+      source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+    - category: purpose
+      confidence: medium
+      id: review:OCF-PRF-001:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 5
+      scope: document
+      source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+    - category: opener
+      confidence: medium
+      id: review:OCF-PRF-001:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 35
+      scope: document
+      source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+    - category: main
+      confidence: medium
+      id: review:OCF-PRF-001:main
+      kind: function-specification-inference
+      line_candidates:
+      - 64
+      - 89
+      scope: document
+      source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+    - category: association
+      confidence: medium
+      id: review:OCF-PRF-001:association
+      kind: function-specification-inference
+      line_candidates:
+      - 66
+      - 77
+      scope: document
+      source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-PRF-001:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 64
+      - 89
+      scope: document
+      source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+    - category: future_use
+      confidence: medium
+      id: review:OCF-PRF-001:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 66
+      - 89
+      scope: document
+      source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-PRF-001:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 276
+      scope: document
+      source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+    - category: closer
+      confidence: medium
+      id: review:OCF-PRF-001:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 90
+      - 97
+      scope: document
+      source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-PRF-001:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 97
+      - 276
+      scope: document
+      source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+    - category: handoff
+      confidence: unknown
+      id: review:OCF-PRF-001:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 140
+      - 276
+      scope: document
+      source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-PRF-001:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 64
+      - 89
+      scope: document
+      source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+      path: +Transcripts From available tapes/Do This Now/Do This Now.lrc
+      related_sha256:
+      - 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+      - 2ca81bc8f759708d6a5267ff8ddd8090828657338ec5cfc142c12a60394fa646
+      sha256: cc67f9a04b676b74deb4e9e86b11c2df0118182adb73ffc03c8e262a16b80902
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+      path: +Transcripts From available tapes/Do This Now/Do This Now.srt
+      related_sha256:
+      - 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+      - cc67f9a04b676b74deb4e9e86b11c2df0118182adb73ffc03c8e262a16b80902
+      sha256: 2ca81bc8f759708d6a5267ff8ddd8090828657338ec5cfc142c12a60394fa646
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+      path: +Transcripts From available tapes/Do This Now/Do This Now.txt
+      related_sha256:
+      - 2ca81bc8f759708d6a5267ff8ddd8090828657338ec5cfc142c12a60394fa646
+      - cc67f9a04b676b74deb4e9e86b11c2df0118182adb73ffc03c8e262a16b80902
+      sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Do This Now/folder.jpg
+      related_sha256: []
+      sha256: 97ade0be6832b1472566c555d66fbb3f8c8e1fada0d050dcb7dc6b915a007abd
+  specifications:
+    analysis_review:
+      claim_categories:
+      - automatic-resistance-removal
+      - subconscious-self-programming
+      - guaranteed-momentum
+      - life-force-or-reality-creation
+      family: activity-initiation-and-completion
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+            end_line: 77
+            file: +Transcripts From available tapes/Do This Now/Do This Now.txt
+            source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+            start_line: 66
+          status: supported
+          summary: Deliberate legacy cue paired with selected goal and breathing; canonical variants/aliases
+            are separate identity metadata, not silently changed source speech.
+        closer:
+          locators:
+          - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+            end_line: 97
+            file: +Transcripts From available tapes/Do This Now/Do This Now.txt
+            source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+            start_line: 90
+          status: supported
+          summary: Future-use reinforcement and learning-context closure to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+            end_line: 276
+            file: +Transcripts From available tapes/Do This Now/Do This Now.txt
+            source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+            start_line: 97
+          status: supported
+          summary: Post-close ten-state enjoyment/rest of the asserted new pattern; sleep-to-twenty is
+            not established in this available text.
+        conversion:
+          locators:
+          - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+            end_line: 89
+            file: +Transcripts From available tapes/Do This Now/Do This Now.txt
+            source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+            start_line: 64
+          status: inferred
+          summary: Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath
+            holding and automatic whole-system learning need review. Reframing a physical/metaphysical
+            goal is a material choice, not assumed equivalence.
+        future_use:
+          locators:
+          - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+            end_line: 89
+            file: +Transcripts From available tapes/Do This Now/Do This Now.txt
+            source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+            start_line: 66
+          status: supported
+          summary: Use the cue for beginning, continuing or completing a selected activity; voluntary
+            desire is a condition, not an accidental spoken trigger.
+        handoff:
+          locators:
+          - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+            end_line: 276
+            file: +Transcripts From available tapes/Do This Now/Do This Now.txt
+            source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+            start_line: 140
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Final ending/return
+            unavailable; numeric contamination before main instruction is not evidence of additional states.
+        identity:
+          locators:
+          - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+            end_line: 77
+            file: +Transcripts From available tapes/Do This Now/Do This Now.txt
+            source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+            start_line: 66
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+            end_line: 89
+            file: +Transcripts From available tapes/Do This Now/Do This Now.txt
+            source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+            start_line: 64
+          status: supported
+          summary: select-activity; inhale-and-hold; issue-do-this-now-cue; exhale; associate-action-with-readiness-and-momentum
+        opener:
+          locators:
+          - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+            end_line: 35
+            file: +Transcripts From available tapes/Do This Now/Do This Now.txt
+            source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+            start_line: 1
+          status: supported
+          summary: Explain self-programming, receptivity and intended future waking use; describe access
+            reaching remembered patterns/beliefs/habits/body.
+        preparation:
+          locators:
+          - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+            end_line: 22
+            file: +Transcripts From available tapes/Do This Now/Do This Now.txt
+            source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+            start_line: 6
+          status: supported
+          summary: Quiet comfortable environment and explicit benefit intention; counted relaxation. Repository-box
+            step is not established in this version.
+        provenance:
+          locators:
+          - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+            end_line: 276
+            file: +Transcripts From available tapes/Do This Now/Do This Now.txt
+            source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Final ending/return
+            unavailable; numeric contamination before main instruction is not evidence of additional states.
+        purpose:
+          locators:
+          - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+            end_line: 5
+            file: +Transcripts From available tapes/Do This Now/Do This Now.txt
+            source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+            start_line: 1
+          status: supported
+          summary: Begin, continue or complete a chosen activity with increased enthusiasm and readiness.
+        rehearsal:
+          locators:
+          - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+            end_line: 89
+            file: +Transcripts From available tapes/Do This Now/Do This Now.txt
+            source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+            start_line: 64
+          status: supported
+          summary: Repeated teaching does not prove an explicit listener performance trial; no distinct
+            intelligible trial established in the available text.
+        safety_claims:
+          locators:
+          - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+            end_line: 89
+            file: +Transcripts From available tapes/Do This Now/Do This Now.txt
+            source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+            start_line: 64
+          status: supported
+          summary: automatic-resistance-removal; subconscious-self-programming; guaranteed-momentum; life-force-or-reality-creation.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+            end_line: 35
+            file: +Transcripts From available tapes/Do This Now/Do This Now.txt
+            source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+            start_line: 23
+          status: supported
+          summary: Reference learning shell uses ten preparation, eleven opening, ten close and sleep-to-twenty/waking
+            return where preserved; not runtime OCF state requirements.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+            end_line: 276
+            file: +Transcripts From available tapes/Do This Now/Do This Now.txt
+            source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Final ending/return
+            unavailable; numeric contamination before main instruction is not evidence of additional states.
+      source_extent:
+        content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
+        end_line: 276
+        file: +Transcripts From available tapes/Do This Now/Do This Now.txt
+        source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-PRF-001:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-PRF-001:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-PRF-001:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-PRF-001:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-PRF-001:handoff
+        operations: []
+        status: unknown
+      main:
+        evidence_refs:
+        - review:OCF-PRF-001:main
+        operations:
+        - select-activity
+        - inhale-and-hold
+        - issue-do-this-now-cue
+        - exhale
+        - associate-action-with-readiness-and-momentum
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-PRF-001:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-PRF-001:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-PRF-001:rehearsal
+        operations:
+        - documented-rehearsal
+        status: inferred
+      safety_claims:
+        evidence_refs:
+        - review:OCF-PRF-001:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-PRF-001:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Final ending/return unavailable; numeric contamination before main instruction is not evidence of
+      additional states.
+    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and automatic
+      whole-system learning need review. Reframing a physical/metaphysical goal is a material choice,
+      not assumed equivalence.
+    states:
+      preferred: []
+      required: []
+      status: unknown

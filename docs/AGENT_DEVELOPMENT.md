@@ -5,10 +5,12 @@ map for targeted investigation, not a replacement for schemas or tests.
 
 ## Repository map
 
-- `functions/`: 58 canonical function records, including 55 historical targets; YAML owns identity and command
-  metadata.
-- `function-content/`: evidence, extracted specifications, OCF decisions, and
-  runtime bindings; provenance layers must not be merged.
+- `locales/<tag>/OCF-*.yaml`: the sole complete function definition per
+  function and locale. en-US owns all 58 current canonical resources; each embeds
+  function-specific identity/provenance and content layers. No registry or
+  predecessor YAML is read for runtime resolution.
+- `function-content/command-procedures.yaml`: reusable shared procedures only.
+  Editorial review records remain non-runtime approvals, not function definitions.
 - `schemas/`: canonical JSON Schemas. Inspect before changing YAML or a data
   contract.
 - `locales/`: locale manifests, UI/function metadata, and spoken narration
@@ -81,8 +83,9 @@ path/hash cleanup receipt for any authorized private-workspace migration.
 ## Code and data entry points
 
 - CLI entry: `scripts/ocf.py` delegates to `ocf_tools.cli.main`.
-- Function discovery: `indexes.py` -> `models.py`; explicit validation is in
-  `validators.py`; derived views are produced by `generators.py`.
+- Function discovery: manifest resources -> `function_catalog.py` projections
+  -> `models.py`; explicit validation is in `validators.py`; derived views are
+  produced by `generators.py`.
 - Composition: `session.py` loads templates and resolves locale resources;
   `transcript.py` resolves timed events and measured dependencies.
 - Voice: `voice.py` selects explicit recording, disabled narration, or TTS and

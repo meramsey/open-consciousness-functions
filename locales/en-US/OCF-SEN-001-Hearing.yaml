@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-SEN-001
@@ -31,6 +31,61 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-OPEN
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-sen-001.function-body
+      before_steps: []
+    relationships:
+      pairs_with:
+      - OCF-CMD-SEN-001-HEAR-LESS
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: open-eyes
+    operation: open-eyes
+    instruction:
+      text: Open your eyes.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-SEN-001-HEAR-LESS
   display_cue:
@@ -51,13 +106,73 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: decrease
+  control:
+    designation: secondary
+    phrase_ref:
+      source: canonical-mode
+      command_id: OCF-CMD-SEN-001-HEAR-LESS
+    documentation:
+      visible: true
+      order: 11
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-OPEN
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-sen-001.function-body
+      before_steps: []
+    relationships:
+      pairs_with:
+      - OCF-CMD-SEN-001-PRIMARY
+      modifies:
+      - OCF-CMD-SEN-001-PRIMARY
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: open-eyes
+    operation: open-eyes
+    instruction:
+      text: Open your eyes.
+      status: canonical
+      version: 1.0.0
 tags:
 - text: sensory-awareness
   status: draft
+  semantic_id: sensory-awareness
 - text: hearing
   status: draft
+  semantic_id: hearing
 - text: imagination
   status: draft
+  semantic_id: imagination
 common_uses:
 - text: Exploring attention to sounds or remembered sound.
   status: draft
@@ -74,10 +189,11 @@ entries:
   hplus.function.ocf-sen-001.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to regulate
+    text: 'This OCF exercise will teach you to regulate
+
       your sense of hearing and strengthen your ability
-      to remember, imagine, and experience sounds within your mind.
+
+      to remember, imagine, and experience sounds within your mind.'
   hplus.function.ocf-sen-001.function-body:
     status: reviewed
     version: 1.3.0
@@ -86,53 +202,89 @@ entries:
       allowed:
       - cue.id.OCF-CMD-SEN-001-HEAR-LESS
       - cue.primary
-    text: |-
-      From this moment forward, you have the ability
+    text: 'From this moment forward, you have the ability
+
       to regulate your hearing and develop vivid,
+
       clear sound within your imagination.
 
+
       Your hearing will respond to your intention.
+
       You can bring subtle sounds into clearer awareness
+
       or allow unwanted sounds to fade into the background.
 
+
       To enhance your hearing, close your eyes,
+
       inhale deeply, and gently hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Then exhale slowly through your mouth and open your eyes.
 
+
       Faint sounds will become clearer and more distinct.
+
       You will notice delicate differences in pitch,
+
       tone, rhythm, and sounds both high and low.
+
       Your awareness will recognize the sounds
+
       you wish to hear with greater ease.
 
+
       To reduce unwanted sound, use the same eye
+
       and breathing sequence, thinking or saying,
+
       "{{ cue.id.OCF-CMD-SEN-001-HEAR-LESS }}."
+
       Distracting sounds will become less prominent,
+
       while you remain free to change the adjustment
+
       or return to your usual hearing condition.
 
+
       Your inner sense of hearing will also grow stronger.
+
       You will recall familiar voices, melodies,
+
       conversations, and sounds of places you remember.
+
       Even in silence, you can imagine a voice speaking,
+
       music playing, or a sound moving through space.
 
+
       You can hold an inner sound clearly, hear its
+
       pitch and rhythm, change its volume or tone,
+
       and create new combinations through imagination.
+
       You will recognize the difference between sounds
+
       you imagine and sounds around your physical body.
 
+
       This ability to remember and create sound within
+
       your mind will become a permanent part of your total self.
+
       Whenever you choose, these commands can strengthen
+
       an imagined sound or allow it to gently fade.
 
+
       Each time you use this function, your hearing regulation
+
       and inner auditory imagery will become easier,
-      clearer, and more effective.
+
+      clearer, and more effective.'
   hplus.function.ocf-sen-001.closer:
     status: reviewed
     version: 1.2.1
@@ -141,12 +293,704 @@ entries:
       allowed:
       - cue.id.OCF-CMD-SEN-001-HEAR-LESS
       - cue.primary
-    text: |-
-      Remember, to regulate your hearing or strengthen
+    text: 'Remember, to regulate your hearing or strengthen
+
       your inner experience of sound, close your eyes,
+
       inhale deeply, and hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}"
+
       or "{{ cue.id.OCF-CMD-SEN-001-HEAR-LESS }}," according to your intention.
+
       Then exhale slowly through your mouth and open your eyes.
 
-      This concludes your OCF Hearing exercise.
+
+      This concludes your OCF Hearing exercise.'
+slug: hearing
+classification:
+  primary_domain: sensory
+  secondary_domains: []
+category_labels:
+  sensory:
+    text: sensory
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-sen-001.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-sen-001.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-sen-001.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-SEN-001
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: e4d40ab0e6a424a902b5952b5193971c43fc66452b321367c211568c8105c45b
+    classification: KEEP CUE — ALIGN TITLE OR NARRATION
+    recommended_title: Hearing
+    recommended_primary_cue: PLUS-HEAR MORE
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Close eyes, inhale/hold/chosen MORE or LESS cue/exhale/open eyes for external hearing;
+      intention also selects imagined sound. Temporary adjustments differ from lasting imagery development.
+      No normal/reset cue; frozen pilot untouched.
+    pair_reason: Meaningful directional hearing controls are already clear. Do not conflate physical/perceived
+      sound with only inner listening; keep the frozen Hearing review separate.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. Meaningful directional
+      hearing controls are already clear. Do not conflate physical/perceived sound with only inner listening;
+      keep the frozen Hearing review separate.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Regulate perceived sound with more/less modes, including claimed physical sensitivity/frequency-range
+      enhancement.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: d46d313f8ffd834005879c89542ecf07a84a8a712f31f2f336b8cc026b2138e7
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-SEN-001-PRIMARY
+    - OCF-CMD-SEN-001-HEAR-LESS
+    command_status: normalized
+    commands:
+    - PLUS-HEAR MORE
+    - PLUS-HEAR LESS
+    name: 'SENSORY: HEARING'
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - 'Sensory: Hearing'
+  compatibility:
+    legacy_commands:
+    - PLUS-HEAR MORE
+    - PLUS-HEAR LESS
+    rationale: 'Vocabulary normalization: auditory magnitudes standardize on MORE/LESS.'
+    state: alias-listed
+  historical_lookup:
+  - text: 'Sensory: Hearing'
+    kind: former-title
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+  status:
+    evidence: community-hypothesis
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-sen-001.title
+    short_description_key: functions.ocf-sen-001.short-description
+    purpose_key: functions.ocf-sen-001.purpose
+  commands:
+  - id: OCF-CMD-SEN-001-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-sen-001-primary.label
+      usage_key: commands.ocf-cmd-sen-001-primary.usage
+      purpose_key: functions.ocf-sen-001.purpose
+      explanation_key: commands.ocf-cmd-sen-001-primary.explanation
+      display_cue_key: commands.ocf-cmd-sen-001-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-sen-001-primary.spoken-cue
+  - id: OCF-CMD-SEN-001-HEAR-LESS
+    localization:
+      label_key: commands.ocf-cmd-sen-001-hear-less.label
+      usage_key: commands.ocf-cmd-sen-001-hear-less.usage
+      purpose_key: functions.ocf-sen-001.purpose
+      explanation_key: commands.ocf-cmd-sen-001-hear-less.explanation
+  predecessor_resource_sha256: 02726d88ddc42a1d272dde7d6b6a9f315e2127530c632109f01430f2b4ed16ba
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
+      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
+      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: 741358d7ad4be7e7355af800f32114c3f9eb6624935ffc7b6406deff5698a02b
+    status: accepted
+    previous_values_sha256: d57e98b1b1c5307caf3754bb4e6957905f3b637e4dc4481496f00e5e70747ff8
+    current_values_sha256: 248c3e32a8521cce7e37f7a2a2707104a92e3266835093d64eaae565b5085cee
+    changed_narration_keys:
+    - hplus.function.ocf-sen-001.closer
+    previous_resolved_text_sha256:
+      hplus.function.ocf-sen-001.closer: 77cb40b753b08dfb449b0fb9666c759caafd62f2ee93ca95b5febe5c6cc63f98
+    current_resolved_text_sha256:
+      hplus.function.ocf-sen-001.closer: 593ecefdbbf8dc4588b5dc60375ec5f1fadb05ba1023d2e4fe3decfa72ec24ee
+    review_note: 'Change title from Sensory: Hearing to Hearing and update exercise sign-off. Keep BOTH
+      cues unchanged: PLUS-HEAR MORE / Plus Hear More and PLUS-HEAR LESS / Plus Hear Less. Preserve close
+      eyes/inhale/hold/selected cue/slow mouth exhale/open eyes sequence, consciously selected adjustments,
+      auditory memory and imagination, and distinction between imagined and external sound. Retain Sensory:
+      Hearing as historical lookup; introduce no normal, reset or release cue. Preserve lasting inner
+      auditory-imagery ability and leave frozen Hearing pilot resources untouched.'
+    approval_response: '1'
+    review_position: 28
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources:
+    - key: pilot.function.complete
+      locale: en-US
+    - key: pilot.hearing.associate
+      locale: en-US
+    - key: pilot.hearing.future
+      locale: en-US
+    - key: pilot.hearing.practice
+      locale: en-US
+    - key: pilot.hearing.purpose
+      locale: en-US
+    - key: pilot.hearing.rehearse
+      locale: en-US
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-PILOT-HEARING-001
+    voice_sources:
+    - externally-generated
+    - prerecorded-user
+    - tts
+  decisions:
+    decisions:
+    - id: hearing-pilot-attention-reinterpretation
+      kind: ocf-design-choice
+      scope: pilot
+      status: provisional
+      description: Existing frozen pilot reframes physical hearing enhancement as attention practice.
+        This material reinterpretation is not approved policy for Hearing or other functions.
+      material_change: true
+      human_review: required
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:opener
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 55
+      - 173
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - category: main
+      confidence: low
+      id: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:main
+      kind: structural-inference
+      line_candidates:
+      - 35
+      - 36
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - category: closer
+      confidence: low
+      id: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:closer
+      kind: structural-inference
+      line_candidates:
+      - 52
+      - 173
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - category: preparation
+      confidence: low
+      id: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:preparation
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 11
+      - 17
+      - 30
+      - 53
+      - 56
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - category: command_association
+      confidence: low
+      id: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:command_association
+      kind: structural-inference
+      line_candidates:
+      - 38
+      - 50
+      - 169
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - category: future_use
+      confidence: low
+      id: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:future_use
+      kind: structural-inference
+      line_candidates:
+      - 47
+      - 50
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - category: return
+      confidence: low
+      id: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e:return
+      kind: structural-inference
+      line_candidates:
+      - 58
+      - 158
+      - 167
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - category: purpose
+      confidence: medium
+      id: review:OCF-SEN-001:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 1
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - category: opener
+      confidence: medium
+      id: review:OCF-SEN-001:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 35
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - category: main
+      confidence: medium
+      id: review:OCF-SEN-001:main
+      kind: function-specification-inference
+      line_candidates:
+      - 36
+      - 47
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - category: association
+      confidence: medium
+      id: review:OCF-SEN-001:association
+      kind: function-specification-inference
+      line_candidates:
+      - 36
+      - 47
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-SEN-001:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 36
+      - 51
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - category: future_use
+      confidence: medium
+      id: review:OCF-SEN-001:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 36
+      - 51
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - category: suspend_cancel_reset
+      confidence: medium
+      id: review:OCF-SEN-001:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 46
+      - 47
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - category: closer
+      confidence: medium
+      id: review:OCF-SEN-001:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 48
+      - 56
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-SEN-001:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 57
+      - 154
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - category: handoff
+      confidence: medium
+      id: review:OCF-SEN-001:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 155
+      - 175
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-SEN-001:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 36
+      - 47
+      scope: document
+      source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+      path: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).lrc
+      related_sha256:
+      - 29a06bb1920f96537f77a6f769877e2f41c59ef9d8798ba12aa6fee6c7794894
+      - 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+      sha256: 1928511754326b06c12b02e48a2cd7d692ac17397bb3a95ff8e49742561b4779
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+      path: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).srt
+      related_sha256:
+      - 1928511754326b06c12b02e48a2cd7d692ac17397bb3a95ff8e49742561b4779
+      - 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+      sha256: 29a06bb1920f96537f77a6f769877e2f41c59ef9d8798ba12aa6fee6c7794894
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+      path: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+      related_sha256:
+      - 1928511754326b06c12b02e48a2cd7d692ac17397bb3a95ff8e49742561b4779
+      - 29a06bb1920f96537f77a6f769877e2f41c59ef9d8798ba12aa6fee6c7794894
+      sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Sensory (Hearing)/Sensory-Hearing.ocr.pdf
+      related_sha256: []
+      sha256: 375444ca4c16e6f05be2bb434f8ae288ac6ad7c15967675d9ea82d5a29a116d5
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Sensory (Hearing)/folder.jpg
+      related_sha256: []
+      sha256: 593ee57ebb28f4b2a0c0a0b7d504e6d07cfcd28bed1cd2dd57e94a21400b4fe9
+  specifications:
+    analysis_review:
+      claim_categories:
+      - expanded-physical-hearing-range
+      - softest-sound-perception
+      - repeated-sound-reduction
+      - persistent-until-desired-return
+      family: adjustable-sensory-perception
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+            end_line: 47
+            file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+            source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+            start_line: 36
+          status: supported
+          summary: MORE claims sharper/clearer and newly perceived high/low sounds; LESS reduces disturbing
+            sound importance, continuing until voluntary normal return.
+        closer:
+          locators:
+          - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+            end_line: 56
+            file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+            source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+            start_line: 48
+          status: supported
+          summary: Future-use reinforcement and learning-context closure to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+            end_line: 154
+            file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+            source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+            start_line: 57
+          status: supported
+          summary: Sleep-to-twenty shell present; repeated ASR numbers do not establish reinforcement
+            or measured timing.
+        conversion:
+          locators:
+          - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+            end_line: 47
+            file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+            source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+            start_line: 36
+          status: inferred
+          summary: Physical-hearing enhancement and attention allocation are not equivalent. Existing
+            Hearing pilot reinterpretation remains frozen/provisional and is not propagated as policy.
+        future_use:
+          locators:
+          - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+            end_line: 51
+            file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+            source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+            start_line: 36
+          status: supported
+          summary: Choose a mode and use its cue/procedure; source says effect continues until desire
+            for normal hearing, without an explicit reset phrase.
+        handoff:
+          locators:
+          - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+            end_line: 175
+            file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+            source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+            start_line: 155
+          status: supported
+          summary: Waking countdown, eyes-open return and target reminder where preserved.
+        identity:
+          locators:
+          - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+            end_line: 47
+            file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+            source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+            start_line: 36
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+            end_line: 47
+            file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+            source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+            start_line: 36
+          status: supported
+          summary: choose-hearing-direction; close-eyes-inhale-and-hold; issue-more-or-less-hearing-cue;
+            exhale-and-open-eyes; repeat-less-mode-if-desired
+        opener:
+          locators:
+          - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+            end_line: 35
+            file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+            source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+            start_line: 31
+          status: supported
+          summary: Orient to the function and establish receptive learning context before the target instruction.
+        preparation:
+          locators:
+          - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+            end_line: 30
+            file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+            source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+            start_line: 2
+          status: supported
+          summary: Supported uninterrupted relaxation, temporary repository setting-aside and counted
+            ten-state entry where described.
+        provenance:
+          locators:
+          - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+            end_line: 175
+            file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+            source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+            text is unauthenticated; corrupted counts/ambient material cannot establish original repetition,
+            timing or mechanism.
+        purpose:
+          locators:
+          - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+            end_line: 1
+            file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+            source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+            start_line: 1
+          status: supported
+          summary: Regulate perceived sound with more/less modes, including claimed physical sensitivity/frequency-range
+            enhancement.
+        rehearsal:
+          locators:
+          - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+            end_line: 51
+            file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+            source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+            start_line: 36
+          status: not-present
+          summary: Repeated teaching does not prove an explicit listener performance trial; no distinct
+            intelligible trial established in the available text.
+        safety_claims:
+          locators:
+          - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+            end_line: 47
+            file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+            source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+            start_line: 36
+          status: supported
+          summary: expanded-physical-hearing-range; softest-sound-perception; repeated-sound-reduction;
+            persistent-until-desired-return. Claims are classified as source assertions, not accepted
+            OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+            end_line: 35
+            file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+            source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+            start_line: 31
+          status: supported
+          summary: Reference learning shell uses ten preparation, eleven opening, ten close and sleep-to-twenty/waking
+            return where preserved; not runtime OCF state requirements.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+            end_line: 47
+            file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+            source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+            start_line: 46
+          status: supported
+          summary: Voluntary return to normal hearing is described, but no specific reset command is given.
+      source_extent:
+        content_group_sha256: 7059f135f83f2b64589d936a33e9c46164cec017f7920f2550ba12f57bc5bd29
+        end_line: 175
+        file: +Transcripts From available tapes/Sensory (Hearing)/Sensory (Hearing).txt
+        source_sha256: 5a2ddc67141e3c6f8eacf5ca2aaec24801a52f2d2e3a88d438c965748dc1349e
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-SEN-001:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-SEN-001:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-SEN-001:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-SEN-001:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-SEN-001:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-SEN-001:main
+        operations:
+        - choose-hearing-direction
+        - close-eyes-inhale-and-hold
+        - issue-more-or-less-hearing-cue
+        - exhale-and-open-eyes
+        - repeat-less-mode-if-desired
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-SEN-001:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-SEN-001:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-SEN-001:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-SEN-001:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-SEN-001:suspend_cancel_reset
+        operations:
+        - documented-suspend-cancel-reset
+        status: inferred
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: pilot
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Source-designated text is unauthenticated; corrupted counts/ambient material cannot establish original
+      repetition, timing or mechanism.
+    - Physical-hearing enhancement and attention allocation are not equivalent. Existing Hearing pilot
+      reinterpretation remains frozen/provisional and is not propagated as policy.
+    states:
+      preferred: []
+      required: []
+      status: unknown

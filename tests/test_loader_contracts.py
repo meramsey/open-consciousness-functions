@@ -12,7 +12,6 @@ pytestmark = pytest.mark.unit
 @pytest.fixture
 def tree(monkeypatch, tmp_path):
     paths = {
-        "FUNCTIONS_DIR": "functions",
         "AUDIO_MANIFESTS_DIR": "audio/manifests",
         "AUDIO_IMPLEMENTATIONS_DIR": "audio/implementations",
         "AUDIO_SCRIPTS_DIR": "audio/scripts",
@@ -31,23 +30,25 @@ def put(root, relative, text):
     return path
 
 
-def test_function_discovery_sorting_identity_errors_and_lookups(tree):
-    assert indexes.discover_function_files() == []
-    assert indexes.load_all_functions() == []
-    first = put(tree, "functions/nested/z.YAML", "id: OCF-COG-001\nslug: café\n")
-    second = put(tree, "functions/a.yml", "id: OCF-COG-002\nslug: other\n")
-    put(tree, "functions/ignore.txt", "ignored")
-    (tree / "functions/directory.yaml").mkdir()
-    assert indexes.discover_function_files() == sorted([first, second])
-    assert [r.id for r in indexes.load_all_functions()] == ["OCF-COG-001", "OCF-COG-002"]
-    assert indexes.load_function_by_id("OCF-COG-002").path == second
-    assert indexes.load_function_by_slug_or_id("café").path == first
-    assert indexes.load_function_by_slug_or_id("OCF-COG-001").path == first
-    assert indexes.load_function_by_id("missing") is None
-    assert indexes.load_function_by_slug_or_id("missing") is None
-    put(tree, "functions/invalid.yaml", "slug: invalid\n")
-    with pytest.raises(utils.OCFError, match="missing 'id' or 'slug'"):
-        indexes.load_all_functions()
+def test_function_discovery_is_manifest_scoped_and_checks_stable_ids(tree):
+    first = put(
+        tree, "locales/en-US/OCF-COG-001-Cafe.yaml", "function_id: OCF-COG-001\nlocale: en-US\n"
+    )
+    second = put(
+        tree, "locales/en-US/OCF-COG-002-Other.yaml", "function_id: OCF-COG-002\nlocale: en-US\n"
+    )
+    put(tree, "locales/en-US/ignored.txt", "not YAML")
+    put(
+        tree,
+        "locales/en-US/manifest.yaml",
+        "resources:\n- file: OCF-COG-001-Cafe.yaml\n  domain: function\n"
+        "- file: OCF-COG-002-Other.yaml\n  domain: function\n",
+    )
+    assert indexes.discover_function_files(root=tree) == [first, second]
+    duplicate = "resources:\n- file: OCF-COG-001-Cafe.yaml\n  domain: function\n- file: OCF-COG-001-Cafe.yaml\n  domain: function\n"
+    (tree / "locales/en-US/manifest.yaml").write_text(duplicate, encoding="utf-8")
+    with pytest.raises(utils.OCFError, match="duplicate or inconsistent"):
+        indexes.discover_function_files(root=tree)
 
 
 def test_yaml_mapping_banner_and_error_translation(tree):

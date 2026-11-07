@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-BOD-003
@@ -31,6 +31,59 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-FOCUS
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-003.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: focus-target
+    operation: focus-target
+    instruction:
+      text: Focus attention on the selected target.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-BOD-003-LEGACY-01
   display_cue:
@@ -48,13 +101,28 @@ secondary_commands:
     status: canonical
     version: 1.0.0
   role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-BOD-003-LEGACY-01
+    availability: historical-lookup
+    documentation:
+      visible: false
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
 tags:
 - text: comfort
   status: draft
+  semantic_id: comfort
 - text: body-awareness
   status: draft
+  semantic_id: body-awareness
 - text: relaxation
   status: draft
+  semantic_id: relaxation
 common_uses:
 - text: Practicing attention to a sense of physical ease.
   status: draft
@@ -67,8 +135,8 @@ relationships:
   - function_id: OCF-FND-004
     relationship_type: complementary
     description:
-      text: Area-focused comfort and whole-body relaxation offer separate intentions for ease, without dismissing
-        symptoms or replacing care.
+      text: Area-focused comfort and whole-body relaxation offer separate intentions for ease, without
+        dismissing symptoms or replacing care.
       status: draft
     status: draft
     dependency: optional
@@ -87,10 +155,11 @@ entries:
   hplus.function.ocf-bod-003.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will teach you to reduce and control
+    text: 'This OCF exercise will teach you to reduce and control
+
       physical discomfort signals within your body,
-      whenever and wherever you choose.
+
+      whenever and wherever you choose.'
   hplus.function.ocf-bod-003.function-body:
     status: reviewed
     version: 1.2.1
@@ -98,61 +167,96 @@ entries:
       function_id: OCF-BOD-003
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, whenever you wish to reduce
+    text: 'From this moment forward, whenever you wish to reduce
+
       physical discomfort in any part of your body,
+
       you can do so quickly and easily.
 
+
       Begin by bringing your awareness to the area
+
       where the discomfort begins.
+
 
       Close your eyes and focus your attention on that area.
 
+
       Take a deep breath in and gently hold it.
 
+
       While holding your breath, silently say to yourself,
+
       "{{ cue.primary }}."
 
+
       Then slowly exhale through your mouth,
+
       as though gently blowing out a candle.
 
+
       As you exhale, the discomfort signals will begin
+
       to diminish, becoming weaker and weaker.
 
+
       Feel the discomfort fading away,
+
       less and less, until it no longer demands
+
       your attention.
 
+
       Your body will become more comfortable,
+
       calm, and relaxed.
 
+
       Your mind will become clear and peaceful,
+
       free to focus on whatever you choose.
 
-      You will remain aware of your body's needs
+
+      You will remain aware of your body''s needs
+
       while experiencing greater comfort and ease.
 
+
       Whenever you wish to reduce discomfort,
+
       simply close your eyes, inhale deeply,
+
       and gently hold your breath.
 
+
       Focus on the area of discomfort and silently
+
       say to yourself, "{{ cue.primary }}."
+
 
       Then exhale slowly through your mouth.
 
+
       The discomfort will quickly become less and less,
+
       fading into the background until it is
+
       no longer important to you.
 
+
       Each time you use {{ cue.primary }},
+
       this process becomes easier, smoother,
+
       faster, and more effective.
+
 
       You are in control of your response to discomfort.
 
+
       You can return to a state of calm,
-      comfort, and relaxation whenever you desire.
+
+      comfort, and relaxation whenever you desire.'
   hplus.function.ocf-bod-003.closer:
     status: reviewed
     version: 1.2.1
@@ -160,22 +264,711 @@ entries:
       function_id: OCF-BOD-003
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to reduce discomfort
+    text: 'Remember, whenever you wish to reduce discomfort
+
       in any part of your body, simply close your eyes.
 
+
       Bring your attention to the area
+
       where the discomfort begins.
+
 
       Inhale deeply and gently hold your breath.
 
+
       Silently say to yourself,
+
       "{{ cue.primary }}."
 
+
       Then slowly exhale through your mouth,
+
       as though gently blowing out a candle.
 
+
       The discomfort will diminish,
+
       becoming less and less important to you.
 
-      This concludes your OCF Comfort exercise.
+
+      This concludes your OCF Comfort exercise.'
+slug: de-discomfort
+classification:
+  primary_domain: body
+  secondary_domains: []
+category_labels:
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-003.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-003.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-003.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-BOD-003
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: d598f39235265ab6b5619b5507acb36b7d8d28d12ed513eac4083fdeffd3d236
+    classification: KEEP CUE — ALIGN TITLE OR NARRATION
+    recommended_title: Comfort
+    recommended_primary_cue: PLUS-COMFORT
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Locate physical discomfort, close eyes, inhale/hold/numeric cue/candle-like exhale.
+      Reduces signal salience while retaining bodily awareness; COMFORT is a new association, not speech
+      already taught. Distinct from temporary numbing.
+    pair_reason: COMFORT is a clear constructive outcome and a substantial usability improvement over
+      a numeric mnemonic; do not conflate it with temporary numbing and its release procedure.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. COMFORT is a clear
+      constructive outcome and a substantial usability improvement over a numeric mnemonic; do not conflate
+      it with temporary numbing and its release procedure.
+    teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
+    documentary_intent: Reduce the importance of discomfort signals from a selected body location.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: 472133be89c48549b940230a333baf2a52bb200f038b341f7674f39325287ee9
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-BOD-003-LEGACY-01
+    command_status: proposed
+    commands:
+    - PLUS-55515
+    name: DE-DISCOMFORT
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - De-Discomfort
+  compatibility:
+    legacy_commands:
+    - PLUS-55515
+    rationale: User approved Comfort / PLUS-COMFORT / Plus Comfort in OCF-EDITORIAL-TITLE-CUES-002. Numeric
+      wording remains historical lookup only; no bridge lesson is added.
+    state: historical-lookup
+  historical_lookup:
+  - text: De-Discomfort
+    kind: former-title
+    decision: OCF-EDITORIAL-TITLE-CUES-002
+  - text: PLUS-55515
+    kind: legacy-phrase
+    command_id: OCF-CMD-BOD-003-LEGACY-01
+    decision: OCF-EDITORIAL-TITLE-CUES-002
+  - text: Plus Five Five Five One Five
+    kind: former-teaching
+    command_id: OCF-CMD-BOD-003-PRIMARY
+    decision: OCF-EDITORIAL-TITLE-CUES-002
+  status:
+    evidence: community-hypothesis
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-bod-003.title
+    short_description_key: functions.ocf-bod-003.short-description
+    purpose_key: functions.ocf-bod-003.purpose
+  commands:
+  - id: OCF-CMD-BOD-003-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-bod-003-primary.label
+      usage_key: commands.ocf-cmd-bod-003-primary.usage
+      purpose_key: functions.ocf-bod-003.purpose
+      explanation_key: commands.ocf-cmd-bod-003-primary.explanation
+      display_cue_key: commands.ocf-cmd-bod-003-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-bod-003-primary.spoken-cue
+    observed_phrase:
+      text: Plus Comfort
+      narration_key: hplus.function.ocf-bod-003.function-body
+      relationship: canonical-match
+  - id: OCF-CMD-BOD-003-LEGACY-01
+    localization:
+      label_key: commands.ocf-cmd-bod-003-legacy-01.label
+      usage_key: commands.ocf-cmd-bod-003-legacy-01.usage
+      purpose_key: functions.ocf-bod-003.purpose
+      explanation_key: commands.ocf-cmd-bod-003-legacy-01.explanation
+  predecessor_resource_sha256: eb409cf13ad9fe036fd11871e6e4e97c7ef12e6f7e3385c4fc0d54a3a0b88e9b
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-002
+    kind: approved-title-cue
+    source_commit: 848ac6381bd0832edf9ce60da8a8f794eefa8afe
+    scope: One function's English title/primary cue and necessary body, reinforcement, closer and sign-off
+      substitutions. Historical numeric lookup retained; no procedure, persistence, mechanism, mode, timing
+      or translation change.
+    decision_source: User response '1' to OCF FUNCTION REVIEW [1/32], explicitly approving Comfort / PLUS-COMFORT
+      / Plus Comfort
+    source_row_sha256: ebf4b5a091c8d0c16c9e13a8b84c4d18c60235e2f2a457196834da19d391e465
+    status: accepted
+    previous_values_sha256: ff84892fae5569c93b49e4aba708db999bb62e72b3adbea54d6c852df6476b6a
+    current_values_sha256: b4b8a43281d8dd7c16fbd39b8544e3e78dc68f00121860895d5571e1d77b016f
+    changed_narration_keys:
+    - hplus.function.ocf-bod-003.closer
+    - hplus.function.ocf-bod-003.function-body
+    previous_resolved_text_sha256:
+      hplus.function.ocf-bod-003.function-body: 2e036b97bbbd507429ae09e3716f2fde966e652df6a6aabc17533eb42d5e8597
+      hplus.function.ocf-bod-003.closer: 0899beb5c4f1f3ddd1c357cb4606ebdfddfe42992bde156c5b06abd28498586b
+    current_resolved_text_sha256:
+      hplus.function.ocf-bod-003.function-body: 2ca65cb982d284bd894e933bf30869da8a4093437a18ff8e25df3309ebd6c2fb
+      hplus.function.ocf-bod-003.closer: 13a57c7669c928555124e68094d9ded80c26acf25c9f506303538931db4a66b1
+    review_note: Selected physical discomfort/signal salience, with bodily awareness retained. Preserve
+      targeting, close eyes, inhale/hold, internal cue and candle-like exhale; no separate mode or release
+      is introduced.
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:opener
+      kind: structural-inference
+      line_candidates:
+      - 1
+      - 2
+      - 3
+      - 57
+      - 108
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - category: main
+      confidence: low
+      id: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:main
+      kind: structural-inference
+      line_candidates:
+      - 29
+      - 30
+      - 37
+      - 44
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - category: closer
+      confidence: low
+      id: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:closer
+      kind: structural-inference
+      line_candidates:
+      - 54
+      - 108
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - category: preparation
+      confidence: low
+      id: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:preparation
+      kind: structural-inference
+      line_candidates:
+      - 3
+      - 8
+      - 11
+      - 55
+      - 58
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - category: command_association
+      confidence: low
+      id: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:command_association
+      kind: structural-inference
+      line_candidates:
+      - 33
+      - 40
+      - 47
+      - 53
+      - 106
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - category: future_use
+      confidence: low
+      id: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:future_use
+      kind: structural-inference
+      line_candidates:
+      - 42
+      - 49
+      - 53
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - category: return
+      confidence: low
+      id: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae:return
+      kind: structural-inference
+      line_candidates:
+      - 85
+      - 100
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - category: purpose
+      confidence: medium
+      id: review:OCF-BOD-003:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 2
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - category: opener
+      confidence: medium
+      id: review:OCF-BOD-003:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 25
+      - 29
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - category: main
+      confidence: medium
+      id: review:OCF-BOD-003:main
+      kind: function-specification-inference
+      line_candidates:
+      - 30
+      - 50
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - category: association
+      confidence: medium
+      id: review:OCF-BOD-003:association
+      kind: function-specification-inference
+      line_candidates:
+      - 30
+      - 36
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-BOD-003:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 30
+      - 50
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - category: future_use
+      confidence: medium
+      id: review:OCF-BOD-003:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 30
+      - 54
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-BOD-003:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 109
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - category: closer
+      confidence: medium
+      id: review:OCF-BOD-003:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 51
+      - 58
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-BOD-003:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 59
+      - 83
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - category: handoff
+      confidence: medium
+      id: review:OCF-BOD-003:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 84
+      - 109
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-BOD-003:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 30
+      - 50
+      scope: document
+      source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+      path: +Transcripts From available tapes/De-Discomfort/De-Discomfort.lrc
+      related_sha256:
+      - 1b46619ad21f3ebb55c382c75da200416050fd0273f282c8bab1c468f201448e
+      - bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+      sha256: 44eba0dc46a9eff52887ed6c2b806664502cb64a4e136c35ea4a47ab8befc203
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/De-Discomfort/De-Discomfort.ocr.pdf
+      related_sha256: []
+      sha256: 746b224e70f1ea4fa1216662ec3b59d0c521404bf40f26753f9642f05e137a0b
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+      path: +Transcripts From available tapes/De-Discomfort/De-Discomfort.srt
+      related_sha256:
+      - 44eba0dc46a9eff52887ed6c2b806664502cb64a4e136c35ea4a47ab8befc203
+      - bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+      sha256: 1b46619ad21f3ebb55c382c75da200416050fd0273f282c8bab1c468f201448e
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+      path: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+      related_sha256:
+      - 1b46619ad21f3ebb55c382c75da200416050fd0273f282c8bab1c468f201448e
+      - 44eba0dc46a9eff52887ed6c2b806664502cb64a4e136c35ea4a47ab8befc203
+      sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/De-Discomfort/folder.jpg
+      related_sha256: []
+      sha256: 97bff944c0bb6552284ff4310458fb85f6bf9ae4b3147798ac0fb58995b730ca
+  specifications:
+    analysis_review:
+      claim_categories:
+      - guaranteed-discomfort-reduction
+      - altered-signal-importance
+      - automatic-whole-system-learning
+      family: targeted-sensation-reduction
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+            end_line: 36
+            file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+            source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+            start_line: 30
+          status: supported
+          summary: Pair source cue/breathing with the selected body-related response; actual canonical
+            and legacy command variants stay in identity metadata.
+        closer:
+          locators:
+          - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+            end_line: 58
+            file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+            source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+            start_line: 51
+          status: supported
+          summary: Reinforce remembered future use and close the learning context to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+            end_line: 83
+            file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+            source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+            start_line: 59
+          status: supported
+          summary: Sleep-to-twenty shell present; physiological/automatic integration is not established
+            by that instruction.
+        conversion:
+          locators:
+          - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+            end_line: 50
+            file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+            source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+            start_line: 30
+          status: inferred
+          summary: Pain/discomfort modulation is not treatment or proof of safety. Legacy numeric cue
+            differs from canonical COMFORT; preserve compatibility metadata and flag mechanism/purpose
+            review.
+        future_use:
+          locators:
+          - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+            end_line: 54
+            file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+            source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+            start_line: 30
+          status: supported
+          summary: Use the cue/breathing procedure as described for the selected response; asserted effectiveness
+            is a claim, not an observed result.
+        handoff:
+          locators:
+          - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+            end_line: 109
+            file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+            source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+            start_line: 84
+          status: supported
+          summary: Counted waking/eyes-open return with target command reminder where intelligible.
+        identity:
+          locators:
+          - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+            end_line: 36
+            file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+            source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+            start_line: 30
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+            end_line: 50
+            file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+            source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+            start_line: 30
+          status: supported
+          summary: select-discomfort-source; close-eyes-inhale-and-hold; direct-internal-attention-to-location;
+            issue-legacy-numeric-cue; exhale; associate-signals-with-reduced-importance
+        opener:
+          locators:
+          - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+            end_line: 29
+            file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+            source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+            start_line: 25
+          status: supported
+          summary: Introduce a body-oriented intended response and receptive learning context, not evidence
+            that the physiology changed.
+        preparation:
+          locators:
+          - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+            end_line: 24
+            file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+            source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+            start_line: 3
+          status: supported
+          summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+            for temporary setting-aside and counted ten-state preparation.
+        provenance:
+          locators:
+          - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+            end_line: 109
+            file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+            source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
+            or original underlay; unspecified cancellation remains unknown.
+        purpose:
+          locators:
+          - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+            end_line: 2
+            file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+            source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+            start_line: 1
+          status: supported
+          summary: Reduce the importance of discomfort signals from a selected body location.
+        rehearsal:
+          locators:
+          - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+            end_line: 50
+            file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+            source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+            start_line: 30
+          status: not-present
+          summary: No distinct listener test of physiological outcome is established; teaching repetition
+            and ASR ambient tokens are not outcome verification.
+        safety_claims:
+          locators:
+          - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+            end_line: 50
+            file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+            source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+            start_line: 30
+          status: supported
+          summary: guaranteed-discomfort-reduction; altered-signal-importance; automatic-whole-system-learning.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+            end_line: 29
+            file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+            source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+            start_line: 25
+          status: supported
+          summary: Reference learning shell prepares ten, opens eleven, closes to ten and uses sleep-to-twenty
+            plus waking return where preserved; runtime OCF requirements remain separate and unknown.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+            end_line: 109
+            file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+            source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Source-designated
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
+            or original underlay; unspecified cancellation remains unknown.
+      source_extent:
+        content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
+        end_line: 109
+        file: +Transcripts From available tapes/De-Discomfort/De-Discomfort.txt
+        source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-BOD-003:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-BOD-003:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-BOD-003:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-BOD-003:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-BOD-003:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-BOD-003:main
+        operations:
+        - select-discomfort-source
+        - close-eyes-inhale-and-hold
+        - direct-internal-attention-to-location
+        - issue-legacy-numeric-cue
+        - exhale
+        - associate-signals-with-reduced-importance
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-BOD-003:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-BOD-003:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-BOD-003:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-BOD-003:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-BOD-003:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Source-designated derivative is unauthenticated. Count/repetition/ambient artifacts do not establish
+      exact timing or original underlay; unspecified cancellation remains unknown.
+    - Pain/discomfort modulation is not treatment or proof of safety. Legacy numeric cue differs from
+      canonical COMFORT; preserve compatibility metadata and flag mechanism/purpose review.
+    states:
+      preferred: []
+      required: []
+      status: unknown

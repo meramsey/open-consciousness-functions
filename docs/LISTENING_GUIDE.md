@@ -82,7 +82,8 @@ alert before resuming activities that require attention.
 ## Transcripts
 
 Use an edition-matched transcript when available to preview wording or follow
-along without audio. A function guide is not a transcript. Source transcripts,
+along without audio. Current individual function guides include the complete
+canonical narration, shown once rather than repeating playback passes. Source transcripts,
 working drafts, and released wording have different review and rights statuses;
 missing or private text is not reproduced here.
 

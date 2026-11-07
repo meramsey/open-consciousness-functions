@@ -7,7 +7,7 @@ import platform
 import shutil
 import sys
 
-from .paths import FUNCTIONS_DIR, SCHEMAS_DIR
+from .paths import LOCALES_DIR, SCHEMAS_DIR
 
 WORKFLOWS = {
     "core": (),
@@ -61,9 +61,9 @@ def diagnose(
     )
     check(
         "functions",
-        FUNCTIONS_DIR.is_dir() if functions is None else functions,
+        (LOCALES_DIR / "en-US/manifest.yaml").is_file() if functions is None else functions,
         "core",
-        "authoritative packaged/source function records",
+        "authoritative manifest-listed locale function records",
     )
     for name in ("ffmpeg", "ffprobe", "farfield", "sbagenx", "piper", "docker", "podman"):
         path = which(name)

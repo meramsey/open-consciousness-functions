@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-BOD-009
@@ -31,14 +31,58 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      order: 1
+      visible: true
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      before_steps: []
+      evidence_keys:
+      - hplus.function.ocf-bod-009.function-body
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+    relationships: {}
+  procedure_steps:
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: breathing
   status: draft
+  semantic_id: breathing
 - text: body-awareness
   status: draft
+  semantic_id: body-awareness
 - text: comfort
   status: draft
+  semantic_id: comfort
 common_uses:
 - text: Exploring awareness of comfortable, unforced breathing.
   status: draft
@@ -72,11 +116,13 @@ entries:
   hplus.function.ocf-bod-009.opener:
     status: reviewed
     version: 1.2.0
-    text: |-
-      This OCF exercise will strengthen and reinforce your
-      respiratory system's natural processes of breathing,
+    text: 'This OCF exercise will strengthen and reinforce your
+
+      respiratory system''s natural processes of breathing,
+
       renewal, and maintenance, establishing a lasting,
-      automatic pattern of healthy, efficient breathing.
+
+      automatic pattern of healthy, efficient breathing.'
   hplus.function.ocf-bod-009.function-body:
     status: reviewed
     version: 1.2.0
@@ -84,78 +130,128 @@ entries:
       function_id: OCF-BOD-009
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, your entire respiratory
+    text: 'From this moment forward, your entire respiratory
+
       system is becoming stronger, healthier,
+
       and more efficient.
 
+
       Bring your awareness to your nose, throat,
+
       airways, and lungs, working together
+
       to provide the oxygen your body needs.
 
+
       Feel your nasal passages becoming clear
+
       and comfortable, allowing air to flow
+
       smoothly and naturally.
 
+
       Tiny protective cilia help move mucus
+
       and trapped particles out of your airways,
+
       while incoming air is warmed and moistened.
 
+
       Your airways remain clear and open,
+
       supporting smooth, comfortable breathing.
+
 
       Now bring your awareness to your lungs.
 
+
       Deep within them, millions of tiny air sacs
+
       called alveoli exchange oxygen and carbon dioxide.
 
+
       Oxygen passes into your bloodstream,
+
       while carbon dioxide moves from your blood
+
       into your lungs to be released as you exhale.
 
+
       This exchange is becoming smoother,
+
       more balanced, and more efficient.
 
+
       Your diaphragm and breathing muscles
+
       work together with strength and coordination,
+
       moving air naturally and without unnecessary effort.
 
-      Your body's natural processes of cellular
+
+      Your body''s natural processes of cellular
+
       maintenance and renewal continually support
+
       the healthy function of your respiratory system.
 
+
       From this moment forward, this pattern
+
       of efficient breathing and maintenance
+
       is permanently established within you.
 
+
       Whether awake, resting, or sleeping,
+
       your breathing continues automatically,
-      adjusting smoothly to your body's needs.
+
+      adjusting smoothly to your body''s needs.
+
 
       Your respiratory system maintains
+
       its natural strength, flexibility,
+
       and efficient function without conscious effort.
 
+
       Whenever you wish to reinforce this
+
       improving pattern, inhale deeply
+
       and gently hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth.
 
+
       Your breathing will become smoother,
+
       easier, and more efficient,
+
       strengthening this established pattern
+
       of healthy respiratory function.
 
+
       Each time you use {{ cue.primary }},
+
       this reinforcement becomes easier,
+
       faster, and more effective.
 
+
       Your respiratory system will continue
+
       its natural maintenance and renewal
-      automatically, every day and every night.
+
+      automatically, every day and every night.'
   hplus.function.ocf-bod-009.closer:
     status: reviewed
     version: 1.2.1
@@ -163,14 +259,680 @@ entries:
       function_id: OCF-BOD-009
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to reinforce
-      your respiratory system's natural strength
+    text: 'Remember, whenever you wish to reinforce
+
+      your respiratory system''s natural strength
+
       and healthy function, inhale deeply
+
       and hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth.
 
-      This concludes your OCF Breathe Better exercise.
+
+      This concludes your OCF Breathe Better exercise.'
+slug: lungs-repairs
+classification:
+  primary_domain: body
+  secondary_domains: []
+category_labels:
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-009.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-009.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-009.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-BOD-009
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 3cfeb2dfe3b29f3c0e05caf4b90e78d1ed296e0b6db604801bcb582a7a1626f4
+    classification: KEEP CUE — ALIGN TITLE OR NARRATION
+    recommended_title: Breathe Better
+    recommended_primary_cue: PLUS-BREATHE BETTER
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Respiratory-system maintenance, airway clearance, gas exchange and adaptive breathing.
+      Inhale/hold/cue/exhale, without an added eye-closing step. Breathe is a verb/pronunciation correction,
+      not formatting of Breath.
+    pair_reason: BREATHE is the natural spoken verb and already appears in reviewed narration; BREATH
+      is the noun. A registry correction could align the phrase without rewriting that speech, but still
+      needs command approval.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. BREATHE is the natural
+      spoken verb and already appears in reviewed narration; BREATH is the noun. A registry correction
+      could align the phrase without rewriting that speech, but still needs command approval.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Claimed improvement/renewal of breathing structures and oxygen/waste exchange.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: 7d15134464bb5c196efbe563828092e7bb0e286a9be61f930bf36e1f0c685dca
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-BOD-009-PRIMARY
+    command_status: unchanged
+    commands:
+    - PLUS-BREATH BETTER
+    name: 'LUNGS: REPAIRS & MAINTENANCE'
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    command_ids: []
+    commands: []
+    names:
+    - 'Lungs: Repairs & Maintenance'
+  compatibility:
+    rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
+      operational commands remain unchanged.
+    state: historical-lookup
+  historical_lookup:
+  - decision: OCF-EDITORIAL-TITLE-CUES-001
+    kind: former-title
+    text: 'Lungs: Repairs & Maintenance'
+  - command_id: OCF-CMD-BOD-009-PRIMARY
+    decision: OCF-EDITORIAL-TITLE-CUES-001
+    kind: former-primary
+    text: PLUS-BREATH BETTER
+  - command_id: OCF-CMD-BOD-009-PRIMARY
+    decision: OCF-EDITORIAL-TITLE-CUES-001
+    kind: former-teaching
+    text: Plus Breathe Better
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    purpose_key: functions.ocf-bod-009.purpose
+    short_description_key: functions.ocf-bod-009.short-description
+    title_key: functions.ocf-bod-009.title
+  commands:
+  - id: OCF-CMD-BOD-009-PRIMARY
+    localization:
+      display_cue_key: commands.ocf-cmd-bod-009-primary.display-cue
+      explanation_key: commands.ocf-cmd-bod-009-primary.explanation
+      label_key: commands.ocf-cmd-bod-009-primary.label
+      purpose_key: functions.ocf-bod-009.purpose
+      spoken_cue_key: commands.ocf-cmd-bod-009-primary.spoken-cue
+      usage_key: commands.ocf-cmd-bod-009-primary.usage
+    observed_phrase:
+      narration_key: hplus.function.ocf-bod-009.function-body
+      relationship: canonical-match
+      text: Plus Breathe Better
+  predecessor_resource_sha256: c797f9420b237a52ac42bfc963be16a9ab6b08b33d3fb037fcbeda7549bfc3f9
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-001
+    kind: approved-title-cue
+    source_commit: 21e63ac6f8bf5a7bce9506f033330df967aa4f97
+    scope: English primary cue, finalized title where supplied, exact teaching substitutions and necessary
+      presentation summaries; procedures/mechanisms/secondary controls unchanged.
+    decision_source: Explicit user approval in the approved English title-cue migration task
+    source_row_sha256: c4819de2e1a5bc05c19c47343857d4047e6adac7306f5aebdeab97713e05ec1d
+    status: accepted
+    previous_values_sha256: 6f850d730c019002ee8a43ce77e8e9b09eec66250333116e282d275a81df3808
+    current_values_sha256: 908f7b92fe86be9f1cffa15141d6cc8cbd22b6b412732dd80712805931489159
+    changed_narration_keys:
+    - hplus.function.ocf-bod-009.closer
+    previous_resolved_text_sha256:
+      hplus.function.ocf-bod-009.closer: c362af663c523b239a689ec59b8d3c88f40d3a7e167706bf7654cfd37637a35d
+    current_resolved_text_sha256:
+      hplus.function.ocf-bod-009.closer: 25f332161f349cc401b990a3797644bb003f60ed5f9951bee8ddb3431354635d
+    review_note: Respiratory-support intent and procedures remain; Breathe is the approved verb. Existing
+      body speech already matches.
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87:opener
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 72
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - category: main
+      confidence: low
+      id: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87:main
+      kind: structural-inference
+      line_candidates:
+      - 30
+      - 54
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - category: closer
+      confidence: low
+      id: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87:closer
+      kind: structural-inference
+      line_candidates:
+      - 64
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - category: preparation
+      confidence: low
+      id: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87:preparation
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 10
+      - 16
+      - 67
+      - 73
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - category: command_association
+      confidence: low
+      id: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87:command_association
+      kind: structural-inference
+      line_candidates:
+      - 55
+      - 61
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - category: future_use
+      confidence: low
+      id: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87:future_use
+      kind: structural-inference
+      line_candidates:
+      - 54
+      - 59
+      - 63
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - category: return
+      confidence: low
+      id: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87:return
+      kind: structural-inference
+      line_candidates:
+      - 76
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - category: purpose
+      confidence: medium
+      id: review:OCF-BOD-009:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 1
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - category: opener
+      confidence: medium
+      id: review:OCF-BOD-009:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 26
+      - 30
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - category: main
+      confidence: medium
+      id: review:OCF-BOD-009:main
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 59
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - category: association
+      confidence: medium
+      id: review:OCF-BOD-009:association
+      kind: function-specification-inference
+      line_candidates:
+      - 54
+      - 59
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - category: rehearsal
+      confidence: unknown
+      id: review:OCF-BOD-009:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 63
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - category: future_use
+      confidence: medium
+      id: review:OCF-BOD-009:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 54
+      - 63
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-BOD-009:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 219
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - category: closer
+      confidence: medium
+      id: review:OCF-BOD-009:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 60
+      - 74
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-BOD-009:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 75
+      - 219
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - category: handoff
+      confidence: unknown
+      id: review:OCF-BOD-009:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 117
+      - 219
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-BOD-009:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 59
+      scope: document
+      source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+      path: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.lrc
+      related_sha256:
+      - f2c55427d6d91153c1bc29410429c5bca5cf9df61b655bb9b3a6eafb7197047b
+      - f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+      sha256: 9071bddef2bad2136923e783c2e0e319f22ab2f5f26fcc5f10daf141aaab2ccf
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.ocr.pdf
+      related_sha256: []
+      sha256: 35826c5d3642b6759099b2809399f118dbcf9e88135a20c326d87135b80f5a19
+    - authentication: operator-designated
+      completeness: explicit gaps
+      evidence_class: partial_source_transcript
+      normalized_content_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+      path: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.srt
+      related_sha256:
+      - 9071bddef2bad2136923e783c2e0e319f22ab2f5f26fcc5f10daf141aaab2ccf
+      - f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+      sha256: f2c55427d6d91153c1bc29410429c5bca5cf9df61b655bb9b3a6eafb7197047b
+    - authentication: operator-designated
+      completeness: explicit gaps
+      evidence_class: partial_source_transcript
+      normalized_content_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+      path: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+      related_sha256:
+      - 9071bddef2bad2136923e783c2e0e319f22ab2f5f26fcc5f10daf141aaab2ccf
+      - f2c55427d6d91153c1bc29410429c5bca5cf9df61b655bb9b3a6eafb7197047b
+      sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Lung Support and Maintenance/folder.jpg
+      related_sha256: []
+      sha256: e2c1882797ac25de7e6cb1d5a9cc8674a231c8a1dd945526b17dfa505cad9a29
+  specifications:
+    analysis_review:
+      claim_categories:
+      - lung-and-airway-renewal
+      - tissue-regeneration
+      - improved-oxygen-exchange
+      - persistent-physiological-perfection
+      family: organ-renewal-intensification
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+            end_line: 59
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+            start_line: 54
+          status: supported
+          summary: Pair source cue/breathing with the selected body-related response; actual canonical
+            and legacy command variants stay in identity metadata.
+        closer:
+          locators:
+          - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+            end_line: 74
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+            start_line: 60
+          status: supported
+          summary: Reinforce remembered future use and close the learning context to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+            end_line: 219
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+            start_line: 75
+          status: supported
+          summary: Sleep-to-twenty shell present; physiological/automatic integration is not established
+            by that instruction.
+        conversion:
+          locators:
+          - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+            end_line: 59
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+            start_line: 31
+          status: inferred
+          summary: Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
+            reinterpretation is equivalent. Useful experiential operations and material purpose changes
+            require explicit content review; medical management and breath-hold issues remain outside
+            software efficacy claims.
+        future_use:
+          locators:
+          - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+            end_line: 63
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+            start_line: 54
+          status: supported
+          summary: Use the cue/breathing procedure as described for the selected response; asserted effectiveness
+            is a claim, not an observed result.
+        handoff:
+          locators:
+          - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+            end_line: 219
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+            start_line: 117
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Final waking
+            ending absent. Source ASR renders breathe-better while canonical metadata uses BREATH BETTER;
+            command provenance needs audio review, not silent correction.
+        identity:
+          locators:
+          - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+            end_line: 59
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+            start_line: 54
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+            end_line: 59
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+            start_line: 31
+          status: supported
+          summary: represent-nose-throat-lungs-diaphragm; imagine-opening-cleaning-and-airflow; imagine-oxygen-exchange-and-cell-renewal;
+            inhale-hold-and-issue-breathing-improvement-cue; exhale
+        opener:
+          locators:
+          - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+            end_line: 30
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+            start_line: 26
+          status: supported
+          summary: Introduce a body-oriented intended response and receptive learning context, not evidence
+            that the physiology changed.
+        preparation:
+          locators:
+          - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+            end_line: 25
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+            start_line: 2
+          status: supported
+          summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+            for temporary setting-aside and counted ten-state preparation.
+        provenance:
+          locators:
+          - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+            end_line: 219
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+            start_line: 1
+          status: supported
+          summary: Complete available partial_source_transcript text inspected; shared representations
+            are not independent corroboration. Source accuracy/authentication remains unresolved. Final
+            waking ending absent. Source ASR renders breathe-better while canonical metadata uses BREATH
+            BETTER; command provenance needs audio review, not silent correction.
+        purpose:
+          locators:
+          - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+            end_line: 1
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+            start_line: 1
+          status: supported
+          summary: Claimed improvement/renewal of breathing structures and oxygen/waste exchange.
+        rehearsal:
+          locators:
+          - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+            end_line: 63
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+            start_line: 31
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Final waking
+            ending absent. Source ASR renders breathe-better while canonical metadata uses BREATH BETTER;
+            command provenance needs audio review, not silent correction.
+        safety_claims:
+          locators:
+          - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+            end_line: 59
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+            start_line: 31
+          status: supported
+          summary: lung-and-airway-renewal; tissue-regeneration; improved-oxygen-exchange; persistent-physiological-perfection.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+            end_line: 30
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+            start_line: 26
+          status: supported
+          summary: Reference learning shell prepares ten, opens eleven, closes to ten and uses sleep-to-twenty
+            plus waking return where preserved; runtime OCF requirements remain separate and unknown.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+            end_line: 219
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Final waking
+            ending absent. Source ASR renders breathe-better while canonical metadata uses BREATH BETTER;
+            command provenance needs audio review, not silent correction.
+      source_extent:
+        content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
+        end_line: 219
+        file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+        source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-BOD-009:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-BOD-009:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-BOD-009:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-BOD-009:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-BOD-009:handoff
+        operations: []
+        status: unknown
+      main:
+        evidence_refs:
+        - review:OCF-BOD-009:main
+        operations:
+        - represent-nose-throat-lungs-diaphragm
+        - imagine-opening-cleaning-and-airflow
+        - imagine-oxygen-exchange-and-cell-renewal
+        - inhale-hold-and-issue-breathing-improvement-cue
+        - exhale
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-BOD-009:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-BOD-009:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-BOD-009:rehearsal
+        operations: []
+        status: unknown
+      safety_claims:
+        evidence_refs:
+        - review:OCF-BOD-009:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-BOD-009:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Final waking ending absent. Source ASR renders breathe-better while canonical metadata uses BREATH
+      BETTER; command provenance needs audio review, not silent correction.
+    - Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
+      reinterpretation is equivalent. Useful experiential operations and material purpose changes require
+      explicit content review; medical management and breath-hold issues remain outside software efficacy
+      claims.
+    states:
+      preferred: []
+      required: []
+      status: unknown

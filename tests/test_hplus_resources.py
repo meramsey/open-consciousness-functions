@@ -107,6 +107,10 @@ def test_standard_shared_and_function_resources_resolve_without_local_sources(ow
 
 
 def test_all_55_legacy_functions_have_review_files_without_fabricated_missing_speech():
+    from ocf_tools.canonical_integrity import verify as verify_semantic_baseline
+    from tools.check_hplus_narration_integrity import check as check_narration
+    from tools.check_hplus_narration_integrity import narration_texts
+
     owners = [
         r
         for r in load_all_functions()
@@ -124,6 +128,9 @@ def test_all_55_legacy_functions_have_review_files_without_fabricated_missing_sp
     unavailable = [owner for owner in owners if owner.source_availability == "unavailable"]
     assert len(unavailable) == 16
     catalog = LocaleCatalog()
+    protected = narration_texts()
+    assert verify_semantic_baseline() == []
+    assert check_narration() == []
     for owner in owners:
         assert owner.audio_script_status == "approved"
         path = (
@@ -132,18 +139,17 @@ def test_all_55_legacy_functions_have_review_files_without_fabricated_missing_sp
             / catalog.require("en-US").localized_function_files[owner.id]
         )
         doc = yaml.safe_load(path.read_text())
-        from ocf_tools.locale_history import before_consolidation, read_logical
-
-        logical = f"locales/en-US/hplus-{owner.id}.yaml"
-        historical = yaml.safe_load(
-            before_consolidation(REPO_ROOT, logical, read_logical(REPO_ROOT, logical))
-        )
-        # Editorial notes moved out of the human-editable resource. Bind the
-        # current wording/status/version to its exact checked provenance copy.
-        assert doc["entries"] == {
-            key: {field: value for field, value in entry.items() if field != "notes"}
-            for key, entry in historical["entries"].items()
-        }
+        # Protected narration is verified by path-free hashes; sequence and
+        # function ownership remain canonical in the locale resource.
+        assert {row["key"] for row in owner.data["narration"]["sequence"]} <= set(doc["entries"])
+        for row in owner.data["narration"]["sequence"]:
+            key = row["key"]
+            identity = f"{path.relative_to(REPO_ROOT).as_posix()}::{key}"
+            if identity in protected:
+                assert (
+                    catalog.resource(key, "en-US", domain="narration", fallback=False)[0].text
+                    == protected[identity]
+                )
         prefix = f"hplus.function.{owner.id.lower()}."
         if owner.source_availability == "unavailable":
             assert owner.reimplementation_status == "planned"
@@ -158,13 +164,14 @@ def test_all_55_legacy_functions_have_review_files_without_fabricated_missing_sp
             assert set(doc["entries"]) == {
                 prefix + slot for slot in ("opener", "function-body", "closer")
             }
+            source_rows = owner.data["content"]["evidence"]["sources"]
+            assert any(
+                row["path"] == proposal_input["file"] and row["sha256"] == proposal_input["sha256"]
+                for row in source_rows
+            )
             for key, entry in doc["entries"].items():
                 assert entry["status"] == "reviewed"
-                # The resource notes must bind this narration to the structured
-                # reconstruction record, without making prose capitalization or
-                # one preferred description part of the provenance contract.
-                assert proposal_input["file"] in historical["entries"][key]["notes"]
-                assert proposal_input["sha256"] in historical["entries"][key]["notes"]
+                assert key.startswith(prefix)
         else:
             assert doc["domain"] == "function"
             assert doc["function_id"] == owner.id
@@ -176,12 +183,30 @@ def test_all_55_legacy_functions_have_review_files_without_fabricated_missing_sp
                     assert slot in selection["missing"]
                     assert entry_key in doc["entries"]
                     assert doc["entries"][entry_key]["status"] == "reviewed"
-                    assert historical["entries"][entry_key]["notes"].strip()
+                    section = owner.data["content"]["specifications"]["analysis_review"][
+                        "sections"
+                    ][slot]
+                    source_hashes = {
+                        source["sha256"] for source in owner.data["content"]["evidence"]["sources"]
+                    }
+                    assert section["status"] in {"supported", "inferred", "unknown"}
+                    assert section["locators"] and all(
+                        locator["source_sha256"] in source_hashes for locator in section["locators"]
+                    )
                 elif owner.id in SUPPLEMENTARY_OPENERS and slot == "opener":
                     assert slot in selection["missing"]
                     assert entry_key in doc["entries"]
                     assert doc["entries"][entry_key]["status"] == "reviewed"
-                    assert historical["entries"][entry_key]["notes"].strip()
+                    section = owner.data["content"]["specifications"]["analysis_review"][
+                        "sections"
+                    ][slot]
+                    source_hashes = {
+                        source["sha256"] for source in owner.data["content"]["evidence"]["sources"]
+                    }
+                    assert section["status"] in {"supported", "inferred", "unknown"}
+                    assert section["locators"] and all(
+                        locator["source_sha256"] in source_hashes for locator in section["locators"]
+                    )
                 else:
                     assert (entry_key in doc["entries"]) == (
                         slot in selection["slots"] or slot in selection["missing"]

@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-BOD-011
@@ -38,14 +38,59 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.scopes.application.persistence
+    invocation_scope_ref: lifecycle.scopes.application
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-011.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: transitions
   status: draft
+  semantic_id: transitions
 - text: emotional-balance
   status: draft
+  semantic_id: emotional-balance
 - text: comfort
   status: draft
+  semantic_id: comfort
 common_uses:
 - text: Practicing steadiness during personally experienced hormonal transitions.
   status: draft
@@ -62,13 +107,17 @@ entries:
   hplus.function.ocf-bod-011.opener:
     status: reviewed
     version: 1.1.0
-    text: |-
-      This OCF exercise will strengthen your body's natural
+    text: 'This OCF exercise will strengthen your body''s natural
+
       ability to maintain hormonal balance and harmony,
+
       supporting your physical, emotional, mental, and
+
       spiritual well-being throughout the hormonal changes
+
       of premenstrual cycles, perimenopause, menopause,
-      and postmenopause.
+
+      and postmenopause.'
   hplus.function.ocf-bod-011.function-body:
     status: reviewed
     version: 1.2.1
@@ -76,68 +125,113 @@ entries:
       function_id: OCF-BOD-011
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, your body's natural
+    text: 'From this moment forward, your body''s natural
+
       processes of hormonal regulation are becoming
+
       smoother, more balanced, and more harmonious.
 
+
       Your body recognizes its changing needs
+
       and adjusts naturally and appropriately
+
       through every stage of life.
 
+
       Your hormonal systems work together
+
       in harmony, maintaining the balance
+
       needed for your physical and emotional
+
       well-being.
 
+
       As your hormone levels naturally change,
+
       your body adapts smoothly and efficiently,
+
       maintaining its strength, comfort, and stability.
 
+
       Unnecessary physical discomfort and tension
+
       will diminish, allowing your body
+
       to remain comfortable and at ease.
 
+
       Your emotions will become calm and steady,
+
       your thoughts clear and focused,
+
       and your sense of inner balance stronger.
 
+
       You will move through hormonal changes
+
       with greater comfort, confidence,
+
       and emotional stability.
 
+
       From this moment forward, this pattern
+
       of healthy regulation and adaptation
+
       is firmly and permanently established within you.
 
+
       Whether awake, resting, or sleeping,
-      your body's natural regulatory systems
+
+      your body''s natural regulatory systems
+
       continue working automatically,
+
       maintaining the balance appropriate
+
       for your changing needs.
 
+
       Whenever you wish to reinforce this
+
       pattern of hormonal balance and harmony,
+
       inhale deeply and gently hold your breath.
 
+
       Think or say in your mind,
+
       "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
+
       Your body will return to its natural balance,
+
       easing unwanted physical, mental,
+
       and emotional effects of hormonal changes.
 
+
       Each time you use {{ cue.primary }},
+
       this process becomes easier, smoother,
+
       and more effective.
 
+
       Your natural pattern of hormonal regulation,
+
       comfort, and harmony will continue
+
       working automatically,
-      every day and every night.
+
+      every day and every night.'
   hplus.function.ocf-bod-011.closer:
     status: reviewed
     version: 1.2.1
@@ -145,19 +239,719 @@ entries:
       function_id: OCF-BOD-011
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to restore
+    text: 'Remember, whenever you wish to restore
+
       physical, mental, and emotional balance
+
       during hormonal changes, inhale deeply
+
       and hold your breath.
 
+
       Think or say in your mind,
+
       "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
+
       As you exhale, you may also express gratitude
+
       to amplify the entire process.
 
-      This concludes your OCF Hormonal Transitions exercise.
+
+      This concludes your OCF Hormonal Transitions exercise.'
+slug: passages
+classification:
+  primary_domain: body
+  secondary_domains:
+  - lifestyle
+category_labels:
+  body:
+    text: body
+    status: canonical
+  lifestyle:
+    text: lifestyle
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description_key: functions.ocf-bod-011.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description_key: functions.ocf-bod-011.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description_key: functions.ocf-bod-011.lifecycle.scopes.application.description
+      activation: manual
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-011.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-011.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-011.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-BOD-011
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 9ae865ef6636cc442b05ba3c140449d58e78c2e80c25ed004610bf881db48eeb
+    classification: RENAME TITLE/CUE — UPDATE TEACHING
+    recommended_title: Hormonal Transitions
+    recommended_primary_cue: PLUS-HORMONE BALANCE
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Hormonal adaptation through premenstrual/perimenopausal/menopausal/postmenopausal
+      transitions, not generic life change. Inhale/hold/cue/exhale; gratitude is optional, not a cue.
+      Adaptive balance is not fixed hormone levels.
+    pair_reason: Passages and the abstract verb pair conceal the hormonal-transition context. HORMONE
+      BALANCE states that intent; EASE TRANSITION would be a different experiential framing and must not
+      be assumed equivalent.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. Passages and the
+      abstract verb pair conceal the hormonal-transition context. HORMONE BALANCE states that intent;
+      EASE TRANSITION would be a different experiential framing and must not be assumed equivalent.
+    teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
+    documentary_intent: Claimed relief/support for physical/mental/emotional effects of hormonal transitions.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: b8039f6b6e415d031aa406a1245380303d61d895d2f8611d856caebc79206d63
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-BOD-011-PRIMARY
+    command_status: unchanged
+    commands:
+    - PLUS-EQUALIZE-HARMONIZE
+    name: PASSAGES
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Passages
+  compatibility:
+    state: historical-lookup
+    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is
+      historical lookup. Existing controls remain unchanged.
+  historical_lookup:
+  - text: Passages
+    kind: former-title
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+  - text: PLUS-EQUALIZE-HARMONIZE
+    kind: former-primary
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+    command_id: OCF-CMD-BOD-011-PRIMARY
+  - text: Plus Equalize Harmonize
+    kind: former-teaching
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+    command_id: OCF-CMD-BOD-011-PRIMARY
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-bod-011.title
+    short_description_key: functions.ocf-bod-011.short-description
+    purpose_key: functions.ocf-bod-011.purpose
+  commands:
+  - id: OCF-CMD-BOD-011-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-bod-011-primary.label
+      usage_key: commands.ocf-cmd-bod-011-primary.usage
+      purpose_key: functions.ocf-bod-011.purpose
+      explanation_key: commands.ocf-cmd-bod-011-primary.explanation
+      display_cue_key: commands.ocf-cmd-bod-011-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-bod-011-primary.spoken-cue
+    observed_phrase:
+      text: Plus Hormone Balance
+      narration_key: hplus.function.ocf-bod-011.function-body
+      relationship: canonical-match
+  predecessor_resource_sha256: f9cb58f3505b7a02e6ad59fc418d5964e31a0aca663fe9ea94c3e9065d1ebdc2
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
+      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
+      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: 85108686b5501f45a194a9b7415a8f9347599c87d9839c91edaf81409b45d882
+    status: accepted
+    previous_values_sha256: 93f700dbe2c73fa23cce50ee7ddab29210a445919fa3f6cdcaaac74e39b81ba1
+    current_values_sha256: 79085ba9967a538b3444717af63994f7d75d2b4795418adfb463baff35a02d29
+    changed_narration_keys:
+    - hplus.function.ocf-bod-011.closer
+    - hplus.function.ocf-bod-011.function-body
+    previous_resolved_text_sha256:
+      hplus.function.ocf-bod-011.function-body: 3c54ae617a86950a66b0e8d36eaae8b49b8fdb1e816af5d4433fe559f3b09157
+      hplus.function.ocf-bod-011.closer: d6c4c9d0dfda2ef8debd46c5ef35781878fc03aad2602ec4fecdf6031ba89016
+    current_resolved_text_sha256:
+      hplus.function.ocf-bod-011.function-body: dbf1cefe096cd6a4fa07a8444b58c1b86d535d2d1c119f31501c8223eea35c5d
+      hplus.function.ocf-bod-011.closer: 2302d75095241802683fabbe5f1187d24fba7b975ab339a2d2e62d70d2976d04
+    review_note: Change title from Passages to Hormonal Transitions and update exercise sign-off. Replace
+      two body mentions and one closer mention from Plus Equalize Harmonize to Plus Hormone Balance. Preserve
+      premenstrual/perimenopausal/menopausal/postmenopausal scope, automatic adaptation to changing needs,
+      physical comfort, emotional stability, mental clarity, inhale/hold/cue/candle-like exhale and optional
+      gratitude in closer. Retain Passages and superseded cue as historical lookup; introduce no mode
+      or release. Adaptive balance does not mean fixed hormone levels or permanently heightened endocrine
+      activity; gratitude is not a cue.
+    approval_response: '1'
+    review_position: 21
+    separate_review_needed: true
+  - id: OCF-FUNCTIONAL-METADATA-PERSISTENCE
+    kind: approved-functional-metadata
+    source_commit: 4da47a5740ead0be6bc3127437ee7b36a9c86ddf
+    scope: OCF-BOD-011:persistence
+    decision_source: Please do
+    source_row_sha256: a8c176cde34c86e0e8587cd96dac761ca6f7402e6e3242f315a81b7396411b61
+    status: accepted
+    current_values_sha256: 8f41df3385a7bbaea83b1cdca87a1ed6e76bfcb4171acf3a28254681e804cb38
+    review_note: 'Hormonal Transitions: 1'
+    approval_response: approve
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: main
+      confidence: low
+      id: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88:main
+      kind: structural-inference
+      line_candidates:
+      - 41
+      - 42
+      - 49
+      - 106
+      - 116
+      - 184
+      scope: document
+      source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    - category: closer
+      confidence: low
+      id: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88:closer
+      kind: structural-inference
+      line_candidates:
+      - 56
+      scope: document
+      source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    - category: preparation
+      confidence: low
+      id: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88:preparation
+      kind: structural-inference
+      line_candidates:
+      - 4
+      - 5
+      - 6
+      - 58
+      scope: document
+      source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    - category: command_association
+      confidence: low
+      id: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88:command_association
+      kind: structural-inference
+      line_candidates:
+      - 43
+      - 50
+      - 108
+      - 117
+      - 187
+      scope: document
+      source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    - category: future_use
+      confidence: low
+      id: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88:future_use
+      kind: structural-inference
+      line_candidates:
+      - 42
+      - 49
+      - 106
+      - 116
+      - 184
+      scope: document
+      source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    - category: return
+      confidence: low
+      id: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88:return
+      kind: structural-inference
+      line_candidates:
+      - 79
+      - 130
+      - 164
+      - 172
+      - 183
+      scope: document
+      source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    - category: purpose
+      confidence: medium
+      id: review:OCF-BOD-011:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 3
+      scope: document
+      source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    - category: opener
+      confidence: medium
+      id: review:OCF-BOD-011:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 36
+      - 41
+      scope: document
+      source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    - category: main
+      confidence: medium
+      id: review:OCF-BOD-011:main
+      kind: function-specification-inference
+      line_candidates:
+      - 42
+      - 55
+      scope: document
+      source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    - category: association
+      confidence: medium
+      id: review:OCF-BOD-011:association
+      kind: function-specification-inference
+      line_candidates:
+      - 42
+      - 54
+      scope: document
+      source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-BOD-011:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 42
+      - 55
+      scope: document
+      source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    - category: future_use
+      confidence: medium
+      id: review:OCF-BOD-011:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 184
+      - 190
+      scope: document
+      source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-BOD-011:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 191
+      scope: document
+      source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    - category: closer
+      confidence: medium
+      id: review:OCF-BOD-011:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 56
+      - 77
+      scope: document
+      source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-BOD-011:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 78
+      - 128
+      scope: document
+      source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    - category: handoff
+      confidence: medium
+      id: review:OCF-BOD-011:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 129
+      - 191
+      scope: document
+      source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-BOD-011:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 42
+      - 55
+      scope: document
+      source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+      path: +Transcripts From available tapes/Passages/Passages.lrc
+      related_sha256:
+      - 5e62b5d2207e4507b13bcba6911685c64643b4ab5e4b99b2863d233dbb3d4e85
+      - d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+      sha256: 1be14d7210af703f0ccadf16802253399540cfac3bb0f64a8a5b68f5c7123b03
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+      path: +Transcripts From available tapes/Passages/Passages.srt
+      related_sha256:
+      - 1be14d7210af703f0ccadf16802253399540cfac3bb0f64a8a5b68f5c7123b03
+      - d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+      sha256: 5e62b5d2207e4507b13bcba6911685c64643b4ab5e4b99b2863d233dbb3d4e85
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+      path: +Transcripts From available tapes/Passages/Passages.txt
+      related_sha256:
+      - 1be14d7210af703f0ccadf16802253399540cfac3bb0f64a8a5b68f5c7123b03
+      - 5e62b5d2207e4507b13bcba6911685c64643b4ab5e4b99b2863d233dbb3d4e85
+      sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Passages/folder.jpg
+      related_sha256: []
+      sha256: e7df09f56add830d7e44044d6214da954ee354d7315153b2fe415db397698683
+  specifications:
+    analysis_review:
+      claim_categories:
+      - hormonal-symptom-relief
+      - organ-and-circulatory-equalization
+      - spiritual-physical-mechanism
+      - gratitude-amplification
+      family: hormone-related-symptom-support-claims
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+            end_line: 54
+            file: +Transcripts From available tapes/Passages/Passages.txt
+            source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+            start_line: 42
+          status: supported
+          summary: Pair source cue/breathing with the selected body-related response; actual canonical
+            and legacy command variants stay in identity metadata.
+        closer:
+          locators:
+          - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+            end_line: 77
+            file: +Transcripts From available tapes/Passages/Passages.txt
+            source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+            start_line: 56
+          status: supported
+          summary: Access closes to ten until listener chooses to reopen; no standard remember-and-act
+            paragraph is established here.
+        consolidation:
+          locators:
+          - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+            end_line: 128
+            file: +Transcripts From available tapes/Passages/Passages.txt
+            source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+            start_line: 78
+          status: supported
+          summary: Sleep-to-twenty shell present; physiological/automatic integration is not established
+            by that instruction.
+        conversion:
+          locators:
+          - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+            end_line: 55
+            file: +Transcripts From available tapes/Passages/Passages.txt
+            source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+            start_line: 42
+          status: inferred
+          summary: Symptom-support and physiological regulation are different claims. Optional gratitude
+            is documented, not a required religious/metaphysical interpretation or OCF mechanism.
+        future_use:
+          locators:
+          - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+            end_line: 190
+            file: +Transcripts From available tapes/Passages/Passages.txt
+            source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+            start_line: 184
+          status: supported
+          summary: Use the cue/breathing procedure as described for the selected response; asserted effectiveness
+            is a claim, not an observed result.
+        handoff:
+          locators:
+          - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+            end_line: 191
+            file: +Transcripts From available tapes/Passages/Passages.txt
+            source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+            start_line: 129
+          status: supported
+          summary: Initial waking count is followed by body/spiritual equalization suggestions and a second
+            ten-to-one waking return; final cue/gratitude reminder.
+        identity:
+          locators:
+          - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+            end_line: 54
+            file: +Transcripts From available tapes/Passages/Passages.txt
+            source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+            start_line: 42
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+            end_line: 55
+            file: +Transcripts From available tapes/Passages/Passages.txt
+            source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+            start_line: 42
+          status: supported
+          summary: identify-desired-hormonal-symptom-relief; inhale-and-hold; issue-equalize-harmonize-cue;
+            exhale; optionally-express-gratitude
+        opener:
+          locators:
+          - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+            end_line: 41
+            file: +Transcripts From available tapes/Passages/Passages.txt
+            source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+            start_line: 36
+          status: supported
+          summary: Introduce a body-oriented intended response and receptive learning context, not evidence
+            that the physiology changed.
+        preparation:
+          locators:
+          - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+            end_line: 35
+            file: +Transcripts From available tapes/Passages/Passages.txt
+            source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+            start_line: 4
+          status: supported
+          summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+            for temporary setting-aside and counted ten-state preparation.
+        provenance:
+          locators:
+          - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+            end_line: 191
+            file: +Transcripts From available tapes/Passages/Passages.txt
+            source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
+            or original underlay; unspecified cancellation remains unknown.
+        purpose:
+          locators:
+          - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+            end_line: 3
+            file: +Transcripts From available tapes/Passages/Passages.txt
+            source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+            start_line: 1
+          status: supported
+          summary: Claimed relief/support for physical/mental/emotional effects of hormonal transitions.
+        rehearsal:
+          locators:
+          - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+            end_line: 55
+            file: +Transcripts From available tapes/Passages/Passages.txt
+            source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+            start_line: 42
+          status: not-present
+          summary: No distinct listener test of physiological outcome is established; teaching repetition
+            and ASR ambient tokens are not outcome verification.
+        safety_claims:
+          locators:
+          - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+            end_line: 55
+            file: +Transcripts From available tapes/Passages/Passages.txt
+            source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+            start_line: 42
+          status: supported
+          summary: hormonal-symptom-relief; organ-and-circulatory-equalization; spiritual-physical-mechanism;
+            gratitude-amplification. Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+            end_line: 41
+            file: +Transcripts From available tapes/Passages/Passages.txt
+            source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+            start_line: 36
+          status: supported
+          summary: Reference learning shell prepares ten, opens eleven, closes to ten and uses sleep-to-twenty
+            plus waking return where preserved; runtime OCF requirements remain separate and unknown.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+            end_line: 191
+            file: +Transcripts From available tapes/Passages/Passages.txt
+            source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Source-designated
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
+            or original underlay; unspecified cancellation remains unknown.
+      source_extent:
+        content_group_sha256: 71a7f2beadadac0f70530dd5f60da8f9417d77d62a00c52720506c91cfbf3641
+        end_line: 191
+        file: +Transcripts From available tapes/Passages/Passages.txt
+        source_sha256: d5376e95889c5200e9f081ca6c61b7bca72e23080a6838ef7dbbfbd7f0d69a88
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-BOD-011:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-BOD-011:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-BOD-011:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-BOD-011:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-BOD-011:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-BOD-011:main
+        operations:
+        - identify-desired-hormonal-symptom-relief
+        - inhale-and-hold
+        - issue-equalize-harmonize-cue
+        - exhale
+        - optionally-express-gratitude
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-BOD-011:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-BOD-011:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-BOD-011:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-BOD-011:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-BOD-011:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Source-designated derivative is unauthenticated. Count/repetition/ambient artifacts do not establish
+      exact timing or original underlay; unspecified cancellation remains unknown.
+    - Symptom-support and physiological regulation are different claims. Optional gratitude is documented,
+      not a required religious/metaphysical interpretation or OCF mechanism.
+    states:
+      preferred: []
+      required: []
+      status: unknown

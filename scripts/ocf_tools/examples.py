@@ -23,19 +23,10 @@ SCHEMA_FILES = {
     "brand-import": "brand/versions/0.3.0/identity.json",
     "brand-refinement": "brand/versions/0.2.0/identity.json",
     "command-procedure": "function-content/command-procedures.yaml",
-    "editorial-cue-migration": "function-content/editorial/approved-title-cues-001.json",
-    "functional-metadata": "function-content/editorial/functional-metadata-001.json",
-    "symbolic-cue-migration": "function-content/editorial/symbolic-cues-001.json",
-    "cue-header-successor": "function-content/editorial/cue-headers-001.json",
-    "cue-completion-successor": "function-content/editorial/cue-completion-001.json",
     "community-voice": "templates/community-voice.yaml",
     "corpus-inventory": "docs/research/humanplus-corpus-inventory.json",
     "cue-profile": "audio/cues/profiles/OCF-CUE-PROFILE-DEFAULT.yaml",
     "function": "tests/fixtures/function-sample.yaml",
-    "function-binding": "function-content/bindings/OCF-FND-002.yaml",
-    "function-decisions": "function-content/decisions/OCF-FND-002.yaml",
-    "function-evidence": "function-content/evidence/OCF-FND-002.yaml",
-    "function-specification": "function-content/specifications/OCF-FND-002.yaml",
     "locale-manifest": "locales/en-US/manifest.yaml",
     "locale-resource": "locales/en-US/shared-ui.yaml",
     "semantic-dsp-profile": "audio/background/state-profiles/OCF-DSP-DEFAULT-001.yaml",
@@ -193,6 +184,19 @@ def schema_examples():
     for path in sorted(SCHEMAS_DIR.glob("*.schema.json")):
         schema = validators._load_schema(path.name)
         stem = path.name.removesuffix(".schema.json")
+        if stem in {
+            "function-binding",
+            "function-decisions",
+            "function-evidence",
+            "function-specification",
+        }:
+            rows.append(
+                {
+                    "schema": path.name,
+                    "verification": "standalone function layer retired; canonical data is nested in per-locale function resources",
+                }
+            )
+            continue
         if stem in SCHEMA_FILES:
             source = SCHEMA_FILES[stem]
             if not (REPO_ROOT / source).is_file():

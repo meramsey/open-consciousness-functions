@@ -168,9 +168,10 @@ documented in `docs/LOCALIZATION.md` and `locales/README.md`.
       translations never inherit English word-level timestamps.
 - [x] DSP language-independence: binaural/SAM config, background, transitions,
       crossfades, and cue events are never duplicated per language.
-- [ ] Translations on *function records* (one source language + zero or more
-      translations); per-function narration is keyed and localizable today,
-      but a translated function record needs its own schema change.
+- [x] Complete per-locale function records: each locale owns its full localized
+      definition (structure, cues, instructions, lifecycle, narration order and
+      readable speech); English never silently substitutes for a partial locale.
+      See `docs/PER_LOCALE_FUNCTION_AUTHORITY.md`.
 - [ ] Remaining surface: the preparation toolchain, RTL layout, translator
       review tooling, and a real ICU runtime.
 
@@ -236,7 +237,8 @@ remains at 58 functions.
       common-use examples, and separately labeled, evidenced optional companion
       proposals; these do not count as human editorial approval.
 - [x] Remove the 65 unlisted historical-reference stubs from active en-US storage
-      after verified stub-free historical replay through the existing resolver.
+      after canonical-resource equivalence verification. Historical records are
+      recoverable from Git only; no archive reader or replay fallback remains.
 
 ### Audio baselines, voice privacy, and listening review
 

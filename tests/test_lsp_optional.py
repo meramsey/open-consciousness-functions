@@ -29,10 +29,8 @@ def test_schema_associations_never_select_unregistered_paths(tmp_path):
     path = tmp_path / "custom.yaml"
     with pytest.raises(OCFError, match="registered local"):
         schema_name(path, {}, tmp_path, {"*.yaml": "../../outside.json"})
-    assert (
+    with pytest.raises(OCFError, match="standalone function YAML registries are retired"):
         schema_name(path, {}, tmp_path, {"*.yaml": "function.schema.json"})
-        == "function.schema.json"
-    )
 
 
 @pytest.mark.unit

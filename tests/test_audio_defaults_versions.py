@@ -103,3 +103,59 @@ def test_atomic_immutable_write_refuses_a_racing_creator(monkeypatch, tmp_path):
     with pytest.raises(OCFError):
         defaults.create_lock(new, dependency_names=["content.yaml"])
     assert new.read_text() == "concurrent human data\n"
+
+
+def test_missing_historical_function_key_uses_predecessor_digest_without_reading_it(
+    monkeypatch, tmp_path
+):
+    from ocf_tools import function_catalog
+
+    monkeypatch.setattr(defaults, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(
+        semantic_dsp, "load_profile", lambda identifier: {"id": identifier, "version": "1"}
+    )
+    monkeypatch.setattr(
+        session, "load_template", lambda identifier: {"id": identifier, "version": "1"}
+    )
+    monkeypatch.setattr(
+        session, "load_pacing_profile", lambda identifier: {"id": identifier, "version": "1"}
+    )
+    previous = tmp_path / "audio/defaults" / f"{defaults.PREVIOUS_BASELINE_ID}.json"
+    previous.parent.mkdir(parents=True)
+    previous.write_text(
+        json.dumps(
+            {
+                "profiles": {
+                    "template": {"id": "OCF-TPL-SESSION-HPLUS-LOCKED-004"},
+                    "pacing": {"id": "OCF-PACING-HPLUS-LOCKED-004"},
+                    "dsp": {"id": "OCF-DSP-HPLUS-LOCKED-002"},
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+    legacy_key = "locales/en-US/hplus-OCF-COG-001.yaml"
+    legacy_path = tmp_path / legacy_key
+    expected = "a" * 64
+    monkeypatch.setattr(
+        function_catalog,
+        "resources",
+        lambda root: [
+            (
+                root / "locales/en-US/OCF-COG-001-Information-Access.yaml",
+                {
+                    "function_id": "OCF-COG-001",
+                    "record_metadata": {"predecessor_resource_sha256": expected},
+                },
+            )
+        ],
+    )
+
+    def forbidden_file_read(path):
+        pytest.fail(f"historical path must not be opened: {path}")
+
+    monkeypatch.setattr(defaults, "sha256_of_file", forbidden_file_read)
+    lock = defaults.configuration_lock([legacy_key], baseline_id=defaults.PREVIOUS_BASELINE_ID)
+
+    assert not legacy_path.exists()
+    assert lock["files"] == {legacy_key: expected}

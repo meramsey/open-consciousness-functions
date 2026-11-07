@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-COM-001
@@ -30,14 +30,67 @@ activation:
     text: Use only when you choose to activate the documented function.
     status: canonical
     version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-com-001.function-body
+      before_steps:
+      - id: select-speaking-task
+        operation: select-purpose
+        localization_key: command.procedure.select-purpose
+    relationships: {}
+  procedure_steps:
+  - id: select-speaking-task
+    operation: select-purpose
+    instruction:
+      text: Choose the purpose for using this function.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: communication
   status: draft
+  semantic_id: communication
 - text: confidence
   status: draft
+  semantic_id: confidence
 - text: expression
   status: draft
+  semantic_id: expression
 common_uses:
 - text: Preparing to speak or read aloud with a sense of ease.
   status: draft
@@ -53,11 +106,13 @@ entries:
   hplus.function.ocf-com-001.opener:
     status: reviewed
     version: 1.1.0
-    text: |-
-      This OCF exercise will strengthen your ability
+    text: 'This OCF exercise will strengthen your ability
+
       to speak, read aloud, and communicate
+
       clearly, confidently, and effectively,
-      expressing yourself naturally and with ease.
+
+      expressing yourself naturally and with ease.'
   hplus.function.ocf-com-001.function-body:
     status: reviewed
     version: 1.1.0
@@ -65,81 +120,136 @@ entries:
       function_id: OCF-COM-001
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, your ability to speak,
+    text: 'From this moment forward, your ability to speak,
+
       read aloud, and communicate with others
+
       is becoming clearer, stronger, and more effective.
 
+
       Your thoughts naturally organize themselves
+
       into clear, meaningful words,
+
       allowing you to express exactly
+
       what you wish to communicate.
 
+
       You speak calmly, confidently,
+
       and fluently, without unnecessary
+
       hesitation, effort, or strain.
 
+
       Your breathing becomes smooth and natural,
+
       providing the comfortable, steady airflow
+
       needed for clear and effortless speech.
 
+
       Your vocal cords, throat, mouth,
+
       tongue, and lips work together
+
       in smooth and precise coordination.
 
+
       Words form naturally and easily,
+
       with clear pronunciation,
+
       comfortable rhythm, and confident expression.
 
+
       Whenever you read aloud,
+
       you recognize written words quickly,
+
       understand their meaning,
+
       and pronounce them clearly and accurately.
 
+
       Your mind selects the appropriate words
+
       and arranges them naturally,
+
       allowing your ideas to flow
+
       smoothly into spoken expression.
 
+
       You communicate with clarity,
+
       confidence, and understanding,
+
       expressing your meaning exactly
+
       as you intend.
 
+
       Even in unfamiliar situations,
+
       you remain calm and self-assured,
+
       speaking naturally and effectively.
 
+
       From this moment forward,
+
       these abilities are permanently
+
       established and growing within you.
 
+
       Your mind, breathing, and voice
+
       will automatically work together,
+
       making fluent and confident
+
       communication increasingly natural.
 
+
       Whenever you wish to strengthen
+
       your speaking ability even more,
+
       inhale deeply and gently hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
+
       Your thoughts will flow smoothly
+
       into clear, confident speech,
+
       and you will express yourself
+
       naturally, comfortably, and effectively.
 
+
       Each time you use {{ cue.primary }},
+
       your ability to speak and communicate
+
       becomes easier, clearer, and more effective.
 
+
       This growing ability remains with you,
+
       strengthening naturally every day
-      through speaking, reading, and communication.
+
+      through speaking, reading, and communication.'
   hplus.function.ocf-com-001.closer:
     status: reviewed
     version: 1.1.0
@@ -147,15 +257,641 @@ entries:
       function_id: OCF-COM-001
       allowed:
       - cue.primary
-    text: |-
-      Remember, whenever you wish to speak,
+    text: 'Remember, whenever you wish to speak,
+
       read aloud, or communicate more clearly
+
       and confidently, inhale deeply
+
       and hold your breath.
+
 
       Think or say in your mind, "{{ cue.primary }}."
 
+
       Then exhale slowly through your mouth,
+
       as though gently blowing out a candle.
 
-      This concludes your OCF Speak Up exercise.
+
+      This concludes your OCF Speak Up exercise.'
+slug: speak-up
+classification:
+  primary_domain: communication
+  secondary_domains: []
+category_labels:
+  communication:
+    text: communication
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-com-001.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-com-001.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-com-001.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-COM-001
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 19a3860224b65b3c4eebfeb0b0206874fec493a78264535d1588e05f1ca6d1e4
+    classification: KEEP — TITLE, CUE, AND TEACHING ALREADY CONSISTENT
+    recommended_title: Speak Up
+    recommended_primary_cue: PLUS-SPEAK UP
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Automatic articulation, organization, vocal coordination, reading and everyday
+      fluency; optional inhale/hold/cue/candle-like reinforcement. Speak Up is not volume-only or assertiveness-only.
+    pair_reason: Natural spoken phrasing, a recognizable title and clear communication intent already
+      align.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. Natural spoken phrasing,
+      a recognizable title and clear communication intent already align.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Improve speaking/reading communication, articulatory coordination and confidence,
+      with optional intensification.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: 69dfbc1793438b8942657cea684da4af3bb5b75fea169903e17838464eb9a146
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-COM-001-PRIMARY
+    command_status: unchanged
+    commands:
+    - PLUS-SPEAK UP
+    name: SPEAK UP
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Speak Up
+  compatibility:
+    state: unchanged
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-com-001.title
+    short_description_key: functions.ocf-com-001.short-description
+    purpose_key: functions.ocf-com-001.purpose
+  commands:
+  - id: OCF-CMD-COM-001-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-com-001-primary.label
+      usage_key: commands.ocf-cmd-com-001-primary.usage
+      purpose_key: functions.ocf-com-001.purpose
+      explanation_key: commands.ocf-cmd-com-001-primary.explanation
+  predecessor_resource_sha256: 7188ca74dc3b2dbacc677cd68f9cc9ca3d9068063239a1b74fa7cbb12eba3869
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc:opener
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 87
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - category: main
+      confidence: low
+      id: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc:main
+      kind: structural-inference
+      line_candidates:
+      - 33
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - category: closer
+      confidence: low
+      id: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc:closer
+      kind: structural-inference
+      line_candidates:
+      - 47
+      - 87
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - category: preparation
+      confidence: low
+      id: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc:preparation
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 10
+      - 15
+      - 48
+      - 51
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - category: command_association
+      confidence: low
+      id: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc:command_association
+      kind: structural-inference
+      line_candidates:
+      - 40
+      - 46
+      - 85
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - category: future_use
+      confidence: low
+      id: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc:future_use
+      kind: structural-inference
+      line_candidates:
+      - 41
+      - 42
+      - 43
+      - 46
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - category: return
+      confidence: low
+      id: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc:return
+      kind: structural-inference
+      line_candidates:
+      - 53
+      - 66
+      - 67
+      - 69
+      - 80
+      - 84
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - category: purpose
+      confidence: medium
+      id: review:OCF-COM-001:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 1
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - category: opener
+      confidence: medium
+      id: review:OCF-COM-001:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 33
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - category: main
+      confidence: medium
+      id: review:OCF-COM-001:main
+      kind: function-specification-inference
+      line_candidates:
+      - 34
+      - 43
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - category: association
+      confidence: medium
+      id: review:OCF-COM-001:association
+      kind: function-specification-inference
+      line_candidates:
+      - 39
+      - 43
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-COM-001:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 34
+      - 43
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - category: future_use
+      confidence: medium
+      id: review:OCF-COM-001:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 34
+      - 47
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-COM-001:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 87
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - category: closer
+      confidence: medium
+      id: review:OCF-COM-001:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 44
+      - 51
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-COM-001:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 52
+      - 65
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - category: handoff
+      confidence: medium
+      id: review:OCF-COM-001:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 66
+      - 87
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-COM-001:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 32
+      - 43
+      scope: document
+      source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+      path: +Transcripts From available tapes/Speak Up/Speak Up.lrc
+      related_sha256:
+      - 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+      - b673d4d405cb41b97c059a41f2bf55ea81f00540d216abfd19d1464abedba2b9
+      sha256: c33026b49364a0c5681af6b2ad5be68b1d31e5737ce8d25b1df8c8a7f23f184c
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Speak Up/Speak Up.ocr.pdf
+      related_sha256: []
+      sha256: be030b10f16cce5ba3fca0dc4b2a40ac446e34e7d555360a921d6640c9055eaf
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+      path: +Transcripts From available tapes/Speak Up/Speak Up.srt
+      related_sha256:
+      - 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+      - c33026b49364a0c5681af6b2ad5be68b1d31e5737ce8d25b1df8c8a7f23f184c
+      sha256: b673d4d405cb41b97c059a41f2bf55ea81f00540d216abfd19d1464abedba2b9
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+      path: +Transcripts From available tapes/Speak Up/Speak Up.txt
+      related_sha256:
+      - b673d4d405cb41b97c059a41f2bf55ea81f00540d216abfd19d1464abedba2b9
+      - c33026b49364a0c5681af6b2ad5be68b1d31e5737ce8d25b1df8c8a7f23f184c
+      sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Speak Up/folder.jpg
+      related_sha256: []
+      sha256: bdb153c9778a6a54b69eea7bd6517c9bd70f941bd8808cb5383f4074d3b15fea
+  specifications:
+    analysis_review:
+      claim_categories:
+      - guaranteed-persistent-speaking-improvement
+      - respiratory-articulatory-mechanism
+      - perfect-control
+      - automatic-whole-system-learning
+      family: communication-enhancement
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+            end_line: 43
+            file: +Transcripts From available tapes/Speak Up/Speak Up.txt
+            source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+            start_line: 39
+          status: supported
+          summary: Pair the deliberately selected legacy cue with the target response and breathing procedure;
+            canonical spelling/compatibility remains separate metadata.
+        closer:
+          locators:
+          - content_group_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+            end_line: 51
+            file: +Transcripts From available tapes/Speak Up/Speak Up.txt
+            source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+            start_line: 44
+          status: supported
+          summary: Reinforce future remembering/use and close the learning context to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+            end_line: 65
+            file: +Transcripts From available tapes/Speak Up/Speak Up.txt
+            source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+            start_line: 52
+          status: supported
+          summary: Counted sleep-to-twenty segment is present; automatic integration is a source assertion,
+            not established mechanism.
+        conversion:
+          locators:
+          - content_group_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+            end_line: 43
+            file: +Transcripts From available tapes/Speak Up/Speak Up.txt
+            source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+            start_line: 34
+          status: inferred
+          summary: Preserve voluntary target selection and learned association where appropriate; breath
+            holding, guaranteed response and automatic whole-system learning require editorial review
+            rather than scientific endorsement.
+        future_use:
+          locators:
+          - content_group_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+            end_line: 47
+            file: +Transcripts From available tapes/Speak Up/Speak Up.txt
+            source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+            start_line: 34
+          status: supported
+          summary: Optional cue intensifies an asserted ongoing improvement; no specific aloud practice
+            trial or cancellation supplied.
+        handoff:
+          locators:
+          - content_group_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+            end_line: 87
+            file: +Transcripts From available tapes/Speak Up/Speak Up.txt
+            source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+            start_line: 66
+          status: supported
+          summary: Waking countdown and eyes-open return, followed by target cue reminder.
+        identity:
+          locators:
+          - content_group_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+            end_line: 43
+            file: +Transcripts From available tapes/Speak Up/Speak Up.txt
+            source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+            start_line: 39
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+            end_line: 43
+            file: +Transcripts From available tapes/Speak Up/Speak Up.txt
+            source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+            start_line: 34
+          status: supported
+          summary: associate-speaking-with-calm-confidence; associate-breathing-and-articulation-with-coordination;
+            recognize-word-meaning-and-pronunciation; intensify-via-breath-and-speak-up-cue
+        opener:
+          locators:
+          - content_group_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+            end_line: 33
+            file: +Transcripts From available tapes/Speak Up/Speak Up.txt
+            source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+            start_line: 31
+          status: supported
+          summary: Orient to the target function and establish receptive learning context before the instruction.
+        preparation:
+          locators:
+          - content_group_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+            end_line: 30
+            file: +Transcripts From available tapes/Speak Up/Speak Up.txt
+            source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+            start_line: 2
+          status: supported
+          summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary setting-aside
+            in repository representation and counted ten-state entry.
+        provenance:
+          locators:
+          - content_group_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+            end_line: 87
+            file: +Transcripts From available tapes/Speak Up/Speak Up.txt
+            source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+            derivative is not authenticated; ASR repetition/count artifacts do not establish original
+            wording, duration or repetition intent. Undeclared reset/termination remains unknown.
+        purpose:
+          locators:
+          - content_group_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+            end_line: 1
+            file: +Transcripts From available tapes/Speak Up/Speak Up.txt
+            source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+            start_line: 1
+          status: supported
+          summary: Improve speaking/reading communication, articulatory coordination and confidence, with
+            optional intensification.
+        rehearsal:
+          locators:
+          - content_group_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+            end_line: 43
+            file: +Transcripts From available tapes/Speak Up/Speak Up.txt
+            source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+            start_line: 34
+          status: not-present
+          summary: Repeated instruction does not establish a distinct listener performance trial; apparent
+            ambient transcription artifacts are not practice evidence.
+        safety_claims:
+          locators:
+          - content_group_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+            end_line: 43
+            file: +Transcripts From available tapes/Speak Up/Speak Up.txt
+            source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+            start_line: 32
+          status: supported
+          summary: guaranteed-persistent-speaking-improvement; respiratory-articulatory-mechanism; perfect-control;
+            automatic-whole-system-learning. Claims are classified as source assertions, not accepted
+            OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+            end_line: 33
+            file: +Transcripts From available tapes/Speak Up/Speak Up.txt
+            source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+            start_line: 31
+          status: supported
+          summary: Reference learning shell uses ten preparation, eleven opening, ten closure, sleep-to-twenty
+            and waking return where the available ending supports it; not an OCF runtime requirement.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+            end_line: 87
+            file: +Transcripts From available tapes/Speak Up/Speak Up.txt
+            source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Source-designated
+            derivative is not authenticated; ASR repetition/count artifacts do not establish original
+            wording, duration or repetition intent. Undeclared reset/termination remains unknown.
+      source_extent:
+        content_group_sha256: c689b04a798e12e7ce9880e27d5778e4e4247992cccd1c76af1eba09137366c9
+        end_line: 87
+        file: +Transcripts From available tapes/Speak Up/Speak Up.txt
+        source_sha256: 92b9c54c581a0fac83c442729106fc6050c41d0d49d36edd5e6ffecf7c837bdc
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-COM-001:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-COM-001:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-COM-001:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-COM-001:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-COM-001:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-COM-001:main
+        operations:
+        - associate-speaking-with-calm-confidence
+        - associate-breathing-and-articulation-with-coordination
+        - recognize-word-meaning-and-pronunciation
+        - intensify-via-breath-and-speak-up-cue
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-COM-001:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-COM-001:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-COM-001:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-COM-001:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-COM-001:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Source-designated derivative is not authenticated; ASR repetition/count artifacts do not establish
+      original wording, duration or repetition intent. Undeclared reset/termination remains unknown.
+    - Preserve voluntary target selection and learned association where appropriate; breath holding, guaranteed
+      response and automatic whole-system learning require editorial review rather than scientific endorsement.
+    states:
+      preferred: []
+      required: []
+      status: unknown

@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: '2.0'
 locale: en-US
 domain: function
 function_id: OCF-EXP-003
@@ -38,14 +38,69 @@ activation:
   usage:
     text: Deliberately follow the ordered procedure; proposed exercise instructions, not software execution.
     status: reviewed
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    effect_scope_ref: lifecycle.scopes.application.persistence
+    procedure:
+      status: documented
+      override_steps:
+      - id: select-pattern
+        operation: select-intention
+      - id: inhale-deeply
+        operation: inhale
+      - id: hold-gently
+        operation: hold-breath
+      - id: think-or-say-in-mind
+        operation: think-or-say-command
+      - id: exhale-slowly-easily
+        operation: exhale
+      evidence_keys:
+      - hplus.function.ocf-exp-003.function-body
+  procedure_steps:
+  - id: select-pattern
+    operation: select-intention
+    instruction:
+      text: Choose an intention.
+      status: canonical
+      version: 1.0.0
+  - id: inhale-deeply
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold-gently
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: think-or-say-in-mind
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale-slowly-easily
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
 secondary_commands: []
 tags:
 - text: letting-go
   status: draft
+  semantic_id: letting-go
 - text: emotional-balance
   status: draft
+  semantic_id: emotional-balance
 - text: self-direction
   status: draft
+  semantic_id: self-direction
 common_uses:
 - text: Reflecting on a selected unwanted belief or expectation.
   status: draft
@@ -68,10 +123,15 @@ entries:
   hplus.function.ocf-exp-003.opener:
     status: reviewed
     version: 1.0.0
-    text: |-
-      This OCF exercise will teach you to dissolve unwanted beliefs,
+    text: 'This OCF exercise will teach you to dissolve unwanted beliefs,
+
       emotional responses, and recurring life patterns,
-      freeing your energy and attention for what you choose to create.
+
+      freeing your energy and attention for what you choose to create.'
+    notes: New OCF-authored narration proposal informed by the user-supplied Plus Dis-Create excerpt.
+      Introduces conscious dissolution of selected beliefs, emotional responses, and recurring life patterns.
+      No historical transcript identity or prior editorial approval is claimed. Proposed identity OCF-EXP-003
+      remains subject to registration and review.
   hplus.function.ocf-exp-003.function-body:
     status: reviewed
     version: 1.0.0
@@ -79,54 +139,101 @@ entries:
       function_id: OCF-EXP-003
       allowed:
       - cue.primary
-    text: |-
-      From this moment forward, you are free to dissolve
+    text: 'From this moment forward, you are free to dissolve
+
       patterns that no longer belong in the life you choose to create.
 
+
       Bring one unwanted pattern clearly into your awareness:
+
       a belief, an expectation, an emotional response,
+
       or a recurring pattern in your life.
+
       Recognize what you are ready to release,
+
       without replaying its history or explaining every cause.
 
+
       Inhale deeply and gently hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Then exhale slowly and easily.
 
+
       Your conscious mind, subconscious mind, physical being,
+
       and higher self unite around this intention.
+
       Every level of your total self participates
+
       in releasing the pattern you have chosen.
 
+
       Picture, feel, or simply know its structure loosening.
+
       The connections holding it together soften and separate.
+
       Its emotional charge subsides. Its familiar pull releases.
+
       The pattern loses its hold and dissolves
+
       from the way you think, feel, and respond.
 
+
       You are not required to fight what you are releasing.
+
       Meet yourself with understanding and kindness.
+
       The lessons and useful knowledge of your experience remain,
+
       while you release the expectation that the past must repeat.
 
+
       Energy and attention once tied to sustaining this pattern
+
       return to your use, available for clarity, creativity,
+
       love, and purposeful action.
+
       You remain whole, grounded, and free to choose
+
       what you wish to create in its place.
 
+
       Let this change continue with steadiness and patience,
+
       whether release is immediate or unfolds in layers.
+
       Your total self carries the intention forward
+
       without constant effort or repeated checking.
 
+
       Your new freedom becomes a lasting part of your life.
+
       The ability to dissolve a selected pattern remains
+
       permanently available whenever you consciously choose it.
 
+
       The more you use this function,
+
       the more naturally you release what no longer serves you
-      and make room for what you choose next.
+
+      and make room for what you choose next.'
+    notes: New OCF-authored programming passage, not a transcription or synonym-only rewrite of the supplied
+      comparison. Preserves deliberate selection, inhale-hold-command-exhale, total-self cooperation,
+      dissolution rather than temporary concealment, and energy available for constructive use. Adds representation-neutral
+      intention, useful learning retained without repeating an old pattern, self-directed choice, and
+      patient integration without requiring distress or a fixed completion time. The ability is intended
+      to remain available; activation targets a consciously selected pattern rather than every passing
+      thought. No clinical or external outcome is established by these suggestions. The supplied meditation
+      prerequisites and Focus-state sequence are not imported. One passage is intended for four scheduled
+      body repetitions; composition remains separate. The proposed primary command is Plus Dissolve, supplied
+      through cue.primary after registration and review. Manifest remains independent. Editorial, rights/provenance,
+      integration, and audio review are pending.
   hplus.function.ocf-exp-003.closer:
     status: reviewed
     version: 1.0.0
@@ -134,12 +241,164 @@ entries:
       function_id: OCF-EXP-003
       allowed:
       - cue.primary
-    text: |-
-      Remember, to dissolve an unwanted pattern,
+    text: 'Remember, to dissolve an unwanted pattern,
+
       bring what you wish to release clearly into your awareness.
 
+
       Inhale deeply and gently hold your breath.
+
       Think or say in your mind, "{{ cue.primary }}."
+
       Then exhale slowly and easily.
 
-      This concludes your OCF exercise.
+
+      This concludes your OCF exercise.'
+    notes: New OCF-authored closer with one purpose reminder, deliberate pattern selection, the proposed
+      primary cue, and the inhale-hold-command-exhale sequence. No repeated reinforcement, second function
+      command, or session-state transition is included. Cue resolution requires the proposed function
+      and its reviewed locale cue to be registered. Editorial approval and finished-session review remain
+      pending.
+slug: dissolve
+classification:
+  primary_domain: experimental
+  secondary_domains: []
+category_labels:
+  experimental:
+    text: experimental
+    status: canonical
+lifecycle:
+  persistence: permanent
+  activation: manual
+  release:
+    required: false
+    command: null
+  trigger_conditions:
+  - Deliberate selection of an unwanted pattern followed by the command procedure.
+  scopes:
+    capability:
+      persistence: permanent
+      description_key: functions.ocf-exp-003.capability
+    application:
+      persistence: conditional
+      activation: manual
+      description_key: functions.ocf-exp-003.application
+audio:
+  script_status: approved
+  implementation_status: not-started
+  background_audio:
+    strategy: optional
+    engine: farfield
+    preset: null
+safety:
+  level: experimental
+  medical_relevance: false
+  notes:
+  - Exercise intentions do not establish clinical or external outcomes.
+function_version:
+  current: 0.1.0
+  created: '2026-10-19'
+  updated: '2026-10-19'
+narration:
+  sequence:
+  - key: hplus.function.ocf-exp-003.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-exp-003.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-exp-003.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+localization:
+  status: complete
+  contract_sha256: efa9755bcc5b08e38278c1234dfab43e55cf8e062671b7148b29b8adc8a46d46
+record_metadata:
+  legacy:
+    source_system: null
+    name: ''
+    commands: []
+    command_status: proposed
+    source_availability: pending-source-review
+    source_notes: New OCF draft informed by a user-supplied comparison; no historical lineage or inherited
+      rights approval.
+  aliases:
+    names: []
+    commands: []
+    command_ids: []
+  compatibility:
+    state: none
+    rationale: Original draft; no historical command is being replaced.
+  status:
+    maturity: community-proposed
+    implementation: script-approved
+    evidence: unverified
+  sources: []
+  claims:
+    intended_effects:
+    - Deliberate release of a selected unwanted pattern with useful learning retained.
+    prohibited_claims:
+    - No guaranteed psychological
+    - physiological
+    - medical or external result is claimed.
+  attribution:
+    original_authors: []
+    ocf_contributors: []
+  ocf:
+    reimplementation_status: in-progress
+    command_review: approved
+  documentation:
+    title_key: functions.ocf-exp-003.title
+    purpose_key: functions.ocf-exp-003.purpose
+    short_description_key: functions.ocf-exp-003.purpose
+  commands:
+  - id: OCF-CMD-EXP-003-PRIMARY
+    localization:
+      spoken_cue_key: commands.ocf-cmd-exp-003-primary.spoken-cue
+      label_key: commands.ocf-cmd-exp-003-primary.label
+      usage_key: commands.ocf-cmd-exp-003-primary.usage
+      explanation_key: commands.ocf-cmd-exp-003-primary.explanation
+  editorial_approval:
+    approval_id: OCF-APPROVED-CANDIDATES-001
+    decision: approve_full_draft
+    user_response: '1'
+    implementation_confirmation: Confirm implementation
+    scope: Exact presented narration, cues and procedures for all four candidates; Intuition registration;
+      no DSP, pacing, listening or release approval.
+    presented_snapshot_sha256: 929f81f7d6fc3f6d44f5d3c00e1890c86765c1b7e0ce06bab75a6dbde953c471
+    resolved_text_sha256:
+      hplus.function.ocf-exp-003.closer: b9ff19524160322e0692e64b0f825881fc64dae9529f4721f48d9567a552f4fd
+      hplus.function.ocf-exp-003.function-body: 1ccd21d6e9d4e3e8e6dad4975994ff0cd28ffb8ac69450f3668cd3b2a5e5b451
+      hplus.function.ocf-exp-003.opener: 39f21edbf745061de4f0deba2f001da071488bfdb4a300ea6523e49798048c06
+    listening_approval: false
+    release_ready: false
+    source_commit: 911dbd0f24618091e34e8a816275ab7eabbf97bb
+  editorial_decisions:
+  - id: REL-EXP003-EXP006
+    kind: approved-relationship
+    source_commit: 2b26883148ee1c218a917cd7ff4119943d2eb03f
+    scope: Optional approved function relationship; discovery guidance only, never a runtime prerequisite.
+    decision_source: Explicit user-approved guide relationship review.
+    source_row_sha256: 204cdee0e12dde1d8e4d0bae57bfe2efbef0948882d89dccb39db07f3d6e0955
+    status: accepted
+    current_values_sha256: dcee3df0a102e4a67fff85e1e5f0c5644ec094190e5fdbbc84d41525e8363496
+    review_note: Approved optional relationship remains embedded in the canonical locale resource. Evidence
+      provenance and reciprocal approval are retained as metadata.
+    approval_response: '1'
+    relationship_id: REL-EXP003-EXP006
+    related_function_id: OCF-EXP-006
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    voice_sources:
+    - tts

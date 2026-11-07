@@ -10,7 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 from ocf_tools.content import BLOCKS, load_layers, validate_layers  # noqa: E402
-from ocf_tools.indexes import load_yaml_file  # noqa: E402
+from ocf_tools.indexes import load_function_by_id, load_yaml_file  # noqa: E402
 from ocf_tools.utils import OCFError, write_text_atomic, yaml_safe_dump  # noqa: E402
 
 SECTIONS = (
@@ -197,11 +197,17 @@ def main():
         notes = {**reviews.get("defaults", {}), **notes}
         layers = apply_review(function_id, notes, args.corpus)
         if args.apply:
+            record = load_function_by_id(function_id)
+            if record is None:
+                raise OCFError("canonical function disappeared during review: " + function_id)
+            data = load_yaml_file(record.path)
             for layer in ("evidence", "specifications"):
-                write_text_atomic(
-                    ROOT / "function-content" / layer / f"{function_id}.yaml",
-                    yaml_safe_dump(layers[layer]),
-                )
+                data.setdefault("content", {})[layer] = {
+                    key: value
+                    for key, value in layers[layer].items()
+                    if key not in {"schema_version", "function_id"}
+                }
+            write_text_atomic(record.path, yaml_safe_dump(data))
     print(
         f"Validated full-content analytical reviews for {len(reviews['functions'])} functions; no wording or approval changes"
     )
