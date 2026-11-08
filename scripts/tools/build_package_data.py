@@ -14,7 +14,6 @@ DIRECTORIES = (
     "locales",
     "templates",
     "audio/templates/stages",
-    "audio/templates/pacing",
     "audio/templates/sessions",
     "audio/templates/pacing",
     "audio/cues/profiles",
