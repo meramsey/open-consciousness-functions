@@ -132,8 +132,10 @@ Under `.ocf-work/agent-continuity/RELAXATION-LONG-20261107/`:
 - `relaxation-only.yaml`: validated, key-bound, revision-selected local audition input.
 - `*-cli-dry-run-local-voice.json`: actual CLI normal-template dry-runs with the available local voice override.
 - `generation/`: independent source-pinned generation receipts and logs.
+- `generation-r2/`: refreshed 58-plan receipts after the affirmation-policy preservation.
 
-No audio was synthesized, listened to, uploaded or published. The unchanged
+No new relaxation or complete-session audition was synthesized, listened to,
+uploaded or published. The unchanged
 default OCF-VOICE-0003 Lessac model path is unavailable here, so its no-override
 CLI render preflight is blocked. `voice doctor` verified an already installed
 local OCF-VOICE-9003 model; both representative CLI dry-runs succeeded with that
@@ -166,13 +168,25 @@ An additional validator-adapter check exposed an unnecessary revision-method cal
 for unrevisioned templates. The fix limits that call to selected revisions;
 all 12 adapter tests then passed, preserving their existing coverage. Ruff check
 and format checks pass across all 315 Python files.
+Final scope review also found that selecting a narration revision normally opts
+into a separate preparation/affirmation default policy. This relaxation-only
+revision is explicitly excluded from that unrelated policy: legacy explicit
+affirmation enable behavior, all existing choices and defaults are preserved.
+Six added selector/enable regressions plus the narration-revision and adapter
+checks passed: 67 tests in 121.69 seconds. No wording, narration/resource hash,
+locked profile or previous revision policy changed in this correction. The
+in-progress first final-gate job was stopped before editing its pinned inputs
+and marked superseded, not passing; full pytest had not started there.
+All 58 compact source plans were then regenerated successfully against the
+corrected composition metadata, without changing spoken text or the new lock.
 Final full-suite, coverage and repository-gate results are recorded in the
 subsequent verification checkpoint; not claimed here yet.
 
 Scoped non-narration integration changes are limited to the 58 binding selections,
 their two generated capability/field-source indexes and 59 compact source-plan
 files, selectors/explicit migration support, revision-aware generation/validation,
-the existing measured-session audit's successor-ID allowance, regression tests,
+the scoped affirmation-policy preservation, the existing measured-session audit's
+successor-ID allowance, regression tests,
 approval hashes and this report/documentation inventory. No unrelated content
 or configuration profile is changed.
 
