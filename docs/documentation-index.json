@@ -366,6 +366,26 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "audio/voices/private-packs/README.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Durable local OCF voice packs",
+      "related_commands": [
+        "workspace clean"
+      ],
+      "related_schemas": [],
+      "sha256": "3e2007bad4535dad04dce316b5fc0967eda5d21e768dbc170f8f4375163cdda9",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "brand/README.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "OCF candidate asset sources",
@@ -2885,7 +2905,7 @@
       "related_schemas": [
         "schemas/shared-state-cues.schema.json"
       ],
-      "sha256": "f75a84871fa688af0af85509bc14dac9d2f9efcf5f38b1e768e1fd21539effcd",
+      "sha256": "96ac92586710047d744f47797f215cfbda3a59b52a283ff41061960f8697735d",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4453,5 +4473,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 206
+  "total": 207
 }

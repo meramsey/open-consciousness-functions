@@ -130,14 +130,18 @@ ocf commands shared-state --locale en-US
 ocf session compose --template OCF-TPL-SESSION-PREP-LEARN-002 \
   --locale en-US --output /tmp/opencode/preparation-learning-v3.yaml
 
-# Example routine override JSON (exactly one affirmation; optionals explicit)
+# Example override file then explicit routine selection
+cat > /tmp/opencode/routine-overrides.json <<'JSON'
 {"affirmation":"Gateway","enabled_stages":["resonant-tuning","energy-ball"]}
+JSON
+ocf audio render OCF-SEN-001 --overrides /tmp/opencode/routine-overrides.json --locale en-US
 ```
 
 For complete routine rendering, pass a reviewed override JSON file with
 `ocf audio render OCF-SEN-001 --overrides FILE --locale en-US`. Custom affirmation
 text is a JSON string selected with `affirmation: custom` and must be nonempty;
-locale must be en-US. Other selector values are `none`, `Gateway`, `SyncCreation`,
+include `custom_affirmation` and `custom_affirmation_locale: en-US`. Other selector
+values are `none`, `Gateway`, `SyncCreation`,
 `OCF`. Tuning/Energy Ball default off; each contributes one 15-second configured
 practice interval only while explicitly enabled. Gateway/SyncCreation remain
 supplied wording with authenticated source/rights/publication status unclaimed.
@@ -147,10 +151,21 @@ The shared successor has 20 preview combinations in
 presets and custom × tuning off/on × Energy Ball off/on, each with full resolved
 transcript and estimated timeline. `routine-default.txt/json` and
 `preparation-learning-v3.txt/json` are the default and learning editions.
+Voice-independent default Hearing and Seeing resolved transcripts/timelines
+are `OCF-SEN-001-routine-default.txt/json` and
+`OCF-SEN-002-routine-default.txt/json`.
+The working CLI lesson composition is `preparation-learning-v3-cli.yaml`; its
+transcript structural review reports 0 errors and 41 expected resolved-key plus
+materialized-text warnings (not duplicated speech requests). The authored/keyed
+template itself remains canonical and is the selected session composition.
 Estimates use inherited 160 wpm plus resolved unit rates, semantic pauses and
 the actual speech/event-anchor graph; they are not measured synthesis. Every
 routine optional combination is estimated below 45 minutes. Learning preview
 also retains the designated 510 seconds, separate from speech and transition time.
+Hearing estimates 1,889.780 seconds; explicit LOCKED-006 before estimates
+1,891.619 seconds (estimated delta -1.839 seconds). Named quiet/transition holds
+are explicit in the timing JSON and remain unchanged; the estimate is not a
+measured synthesis duration.
 The old `relaxation-long-002` task's transcript/timeline remain in the sibling
 `/tmp/opencode/ocf-relaxation-20261107/previews/`.
 
@@ -175,7 +190,11 @@ durable profile and asset roots are the ignored private-packs `profiles/` and
 `assets/` folders, outside cleanup-targeted workspace paths.
 No runtime or weights were downloaded, and no different voice was substituted.
 Thus requested Mike Hearing/Seeing and learning audio renders are still blocked
-on compatible already-local Chatterbox runtime/weights. Allen's approved pack
+on compatible already-local Chatterbox runtime/weights. `voice doctor` reports
+the 0.1.7 Chatterbox optional environment absent; `audio check-engine` reports
+Farfield unavailable (SBaGenX alone is available), while the locked current F10
+BG-0012 requires Farfield. Full sessions cannot be built faithfully without both;
+no alternate voice/background is substituted. Allen's approved pack
 has not been supplied in this follow-up; Allen renders are deferred per request.
 
 The user's requested Farfield Focus 10 SAM/gamma switch is not silently applied.
@@ -195,16 +214,34 @@ Baseline snapshot and initial shared-cue focused tests are under
 The first final all-58 gate exposed stale plans after lock succession; those
 58 plans were regenerated and pushed.
 
-One expanded focused run passed 55 tests with 2 warnings, and validate-all passed.
-The current manifest has a single long-form resource entry with explicit revision
-alias, avoiding duplication while supporting LOCKED-006 history and v3. A later
-focused run passed 135 tests, 1 existing opt-in skip, with one durable-root fixture
-failure due to the test fixture's malformed synthetic voice ID; it was corrected.
-An earlier full run during source edits reported 2,954 pass/3 fail/5 skip, but its
-source tree changed while the run was active, so it is not a valid source-pinned
-gate. The final make-check/lint/integrity/full-suite run is still required and
-will be reported only at terminal status. Technical/full verification, focused
-checks, rendered audio, listening, and publication are separate statuses.
+Latest focused verification passed **212 tests, 1 skipped** in 198.34 seconds
+across v3 composition/cues, DSP, audio defaults, session/voice, pack import and
+package tests. The skip is an existing opt-in Chatterbox test. A separate
+2-test durable voice-store cleanup check also passed. An earlier invocation
+globally injected the durable voice-store environment into pytest and correctly
+failed isolated tests; that run is invalid because it overrode each fixture's
+temporary `OCF_WORK_DIR`. The supported rerun unset those variables and passed.
+
+All 58 compact session plans were regenerated for defaults lock 018. Docs
+inventory (206 documents), examples (110 CLI/43 schemas), current cue report,
+locale validation and the 177-entry historical narration integrity check pass.
+The initial full suite at a source tree being edited found a duplicate manifest
+resource and stale docs inventory; those were corrected with a single long-form
+revision alias and regenerated inventory. That source-changing run is not called
+passing. The final stable-source `make check`, `make lint`, and full coverage
+suite remains active and will be recorded only on its terminal receipt.
+
+Full voice-independent sample transcripts and timelines are under
+`/tmp/opencode/ocf-shared-session-v3-20261108/previews/`. The default routine
+estimate is 1,889.780 seconds; the explicit LOCKED-006 predecessor is 1,891.619
+seconds (estimated delta -1.839 seconds). Longest of 20 optional combinations is
+2,173.405 seconds, below the soft target. Learning estimate is 1,924.070 seconds
+with exactly 510 seconds of designated practice. These are planning estimates,
+not measured TTS or mix times. Mike voice samples are not synthesized: the pack's
+required Chatterbox runtime is absent; Farfield is absent for complete locked
+mixes. No model or dependency was downloaded. Allen is deferred. A5/A6 settings
+were not recovered from the user-deleted workspace and are not guessed. No audio,
+listening approval or publication is claimed.
 
 No PR merge or audio publication. The draft PR is pushed for review while final
 verification continues. Rollback is a scoped revert of v3 commits or explicit
